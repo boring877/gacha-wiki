@@ -1,0 +1,204 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import FormattedDate from '../../components/FormattedDate.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Zone Nova - GachaWiki" description="Explore Zone Nova gacha game guides and content" />
+		<style>
+			main {
+				width: 960px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			
+			.hero-section {
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+			
+			.hero-image {
+				width: 100%;
+				max-width: 800px;
+				height: 400px;
+				object-fit: cover;
+				object-position: center;
+				border-radius: 16px;
+				margin-bottom: 2rem;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+			}
+			
+			.game-title {
+				font-size: 3rem;
+				font-weight: bold;
+				color: #8B4513;
+				margin: 0 0 1rem 0;
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+			}
+			
+			.game-subtitle {
+				font-size: 1.2rem;
+				color: rgb(var(--gray));
+				margin: 0 0 2rem 0;
+			}
+			
+			.content-section {
+				background: rgba(255, 255, 255, 0.8);
+				padding: 2rem;
+				border-radius: 16px;
+				margin-bottom: 2rem;
+				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+			}
+			
+			.section-title {
+				font-size: 2rem;
+				color: #8B4513;
+				margin: 0 0 1rem 0;
+				border-bottom: 3px solid #8B4513;
+				padding-bottom: 0.5rem;
+			}
+			
+			.guides-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1.5rem;
+				margin-top: 2rem;
+			}
+			
+			.guide-card {
+				background: white;
+				padding: 1.5rem;
+				border-radius: 12px;
+				border: 2px solid #8B4513;
+				transition: 0.3s ease;
+				cursor: pointer;
+			}
+			
+			.guide-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 24px rgba(139, 69, 19, 0.15);
+				background-color: #8B4513;
+				color: white;
+			}
+			
+			.guide-card h3 {
+				color: #8B4513;
+				margin: 0 0 0.5rem 0;
+				transition: 0.3s ease;
+				text-align: left;
+			}
+			
+			.guide-card:hover h3 {
+				color: white;
+			}
+			
+			.guide-card p {
+				margin: 0;
+				line-height: 1.5;
+			}
+			
+			.guide-card-link {
+				text-decoration: none;
+				color: inherit;
+			}
+			
+			.guide-card-link:hover {
+				text-decoration: none;
+			}
+			
+			@media (max-width: 720px) {
+				main {
+					padding: 1rem;
+				}
+				
+				.game-title {
+					font-size: 2rem;
+				}
+				
+				.hero-image {
+					height: 250px;
+				}
+				
+				.guides-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Hero Section -->
+			<section class="hero-section">
+				<img src="/images/zonenova1.jpg" alt="Zone Nova" class="hero-image" />
+				<h1 class="game-title">Zone Nova</h1>
+				<p class="game-subtitle"> Gacha Waifu </p>
+				<p class="date">
+					Last Updated: <FormattedDate date={new Date()} />
+				</p>
+			</section>
+
+			<!-- Game Overview -->
+			<section class="content-section">
+				<h2 class="section-title">About Zone Nova</h2>
+				<p>
+					In the year 20XX, mysterious black spheres suddenly appeared hovering above cities worldwide, drawing the attention of all nations. However, these spheres instantly expanded into massive black holes, crashing down and destroying everything in their path. They continued to devour entire cities, spawning demonic beasts and mutated soldiers that ravaged all living beings.
+				</p>
+			</section>
+
+			<!-- Guides Section -->
+			<section class="content-section">
+				<h2 class="section-title">Game Guides</h2>
+				<div class="guides-grid">
+					<a href="/blog/zone-nova/maintenance/" class="guide-card-link">
+						<div class="guide-card">
+							<h3>🔧 Maintenance</h3>
+							<p>Patch notes.</p>
+						</div>
+					</a>
+					
+					<a href="/blog/zone-nova/events/" class="guide-card-link">
+						<div class="guide-card">
+							<h3>🎉 Events</h3>
+							<p>Current events and shops.</p>
+						</div>
+					</a>
+					
+					<a href="/blog/zone-nova/characters/" class="guide-card-link">
+						<div class="guide-card">
+							<h3>⚔️ Characters</h3>
+							<p>Character guides.</p>
+						</div>
+					</a>
+					
+					<a href="/blog/zone-nova/runes/" class="guide-card-link">
+						<div class="guide-card">
+							<h3>🔮 Runes</h3>
+							<p>Runes Information</p>
+						</div>
+					</a>
+					
+					<a href="/blog/zone-nova/crafting/" class="guide-card-link">
+						<div class="guide-card">
+							<h3>🛠️ Crafting</h3>
+							<p>Runes crafting and materials.</p>
+						</div>
+					</a>
+					
+					<a href="/blog/zone-nova/contributing/" class="guide-card-link">
+						<div class="guide-card">
+							<h3>🤝 Contributing</h3>
+							<p>How to contribute to the wiki and help.</p>
+						</div>
+					</a>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

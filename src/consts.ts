@@ -2,4 +2,4 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = 'GachaWiki';
-export const SITE_DESCRIPTION = 'Your ultimate guide to gacha games, characters, and strategies!';
+export const SITE_DESCRIPTION = 'Personal Work, Trying to make a wiki for Gacha Games';

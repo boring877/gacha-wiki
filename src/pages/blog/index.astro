@@ -6,9 +6,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+// Remove the posts fetching since we're adding static content
+// const posts = (await getCollection('blog')).sort(
+// 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+// );
 ---
 
 <!doctype html>
@@ -19,6 +20,7 @@ const posts = (await getCollection('blog')).sort(
 			main {
 				width: 960px;
 			}
+			
 			ul {
 				display: flex;
 				flex-wrap: wrap;
@@ -28,7 +30,7 @@ const posts = (await getCollection('blog')).sort(
 				padding: 0;
 			}
 			ul li {
-				width: calc(50% - 1rem);
+				width: calc(80% - 1rem);
 			}
 			ul li * {
 				text-decoration: none;
@@ -38,20 +40,62 @@ const posts = (await getCollection('blog')).sort(
 				width: 100%;
 				margin-bottom: 1rem;
 				text-align: center;
+				display: flex;
+				justify-content: center;
 			}
-			ul li:first-child img {
+			
+			/* Special styling for the image card */
+			ul li:first-child .image-card {
+				width: calc(80% - 1rem);
+				max-width: 720px;
+				display: block;
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
+			
+			ul li:first-child .image-card img {
 				width: 100%;
+				height: auto;
+				aspect-ratio: 2/1;
+				object-fit: cover;
+				object-position: center 20%;
+				border-radius: 12px;
+				margin-bottom: 0.5rem;
 			}
+			
+			ul li:first-child .image-card:hover img {
+				box-shadow: var(--box-shadow);
+			}
+			
 			ul li:first-child .title {
-				font-size: 2.369rem;
+				font-size: 1.5rem;
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
 			}
+			
 			ul li img {
 				margin-bottom: 0.5rem;
 				border-radius: 12px;
 			}
 			ul li a {
 				display: block;
+				padding: 0.5rem;
+				border-radius: 16px;
+				transition: 0.2s ease;
 			}
+			
+			/* Zone Nova card brown hover effect */
+			ul li a:hover {
+				background-color: #8B4513; /* Brown color */
+				transform: translateY(-2px);
+			}
+			
+			ul li a:hover .title,
+			ul li a:hover .date {
+				color: white;
+			}
+			
 			.title {
 				margin: 0;
 				color: rgb(var(--black));
@@ -60,10 +104,6 @@ const posts = (await getCollection('blog')).sort(
 			.date {
 				margin: 0;
 				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
 			}
 			ul a:hover img {
 				box-shadow: var(--box-shadow);
@@ -79,8 +119,11 @@ const posts = (await getCollection('blog')).sort(
 				ul li:first-child {
 					margin-bottom: 0;
 				}
+				ul li:first-child .image-card {
+					width: 90%;
+				}
 				ul li:first-child .title {
-					font-size: 1.563em;
+					font-size: 1.25rem;
 				}
 			}
 		</style>
@@ -90,19 +133,24 @@ const posts = (await getCollection('blog')).sort(
 		<main>
 			<section>
 				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
+					<!-- Design Image Card -->
+					<li>
+						<div class="image-card">
+							<img src="/images/home.jpg" alt="Featured Design" />
+							<h4 class="title">Featured Content</h4>
+						</div>
+					</li>
+					
+					<!-- Zone Nova Blog Post -->
+					<li>
+						<a href="/blog/zone-nova/">
+							<img width={720} height={360} src="/images/zonenova1.jpg" alt="Zone Nova" />
+							<h4 class="title">Zone Nova</h4>
+							<p class="date">
+								<FormattedDate date={new Date()} />
+							</p>
+						</a>
+					</li>
 				</ul>
 			</section>
 		</main>

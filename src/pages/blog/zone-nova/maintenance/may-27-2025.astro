@@ -1,0 +1,278 @@
+---
+import BaseHead from '../../../../components/BaseHead.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../../../consts';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Zone Nova May 27 Maintenance - GachaWiki" description="May 27 maintenance with Empress Guinevere and Thunder King event" />
+		<style>
+			main {
+				width: 960px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+				line-height: 1.6;
+			}
+			
+			.breadcrumb {
+				margin-bottom: 2rem;
+				color: rgb(var(--gray));
+			}
+			
+			.breadcrumb a {
+				color: #8B4513;
+				text-decoration: none;
+			}
+			
+			.breadcrumb a:hover {
+				text-decoration: underline;
+			}
+			
+			.patch-note {
+				background: rgba(255, 255, 255, 0.95);
+				border: 2px solid #8B4513;
+				border-radius: 12px;
+				padding: 2rem;
+				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+			}
+			
+			.patch-note h1 {
+				color: #8B4513;
+				font-size: 2rem;
+				margin: 0 0 1rem 0;
+				border-bottom: 3px solid #8B4513;
+				padding-bottom: 0.5rem;
+			}
+			
+			.patch-note h2 {
+				color: #8B4513;
+				font-size: 1.5rem;
+				margin: 2rem 0 1rem 0;
+				border-left: 4px solid #8B4513;
+				padding-left: 1rem;
+			}
+			
+			.patch-note h3 {
+				color: #8B4513;
+				font-size: 1.3rem;
+				margin: 1.5rem 0 0.8rem 0;
+			}
+			
+			.info-box {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+			
+			.info-box.important {
+				background: #fff5f5;
+				border-color: #8B4513;
+			}
+			
+			.event-card {
+				background: #f8f6f0;
+				border: 1px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+			
+			.character-info {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1rem;
+				margin: 1rem 0;
+				font-family: monospace;
+				white-space: pre-line;
+			}
+			
+			.event-table {
+				background: #f8f6f0;
+				border: 1px solid #8B4513;
+				border-radius: 8px;
+				padding: 1rem;
+				margin: 1rem 0;
+				font-family: monospace;
+				white-space: pre-line;
+			}
+			
+			.pro-tips {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 2rem 0;
+			}
+			
+			.pro-tips h2 {
+				color: #8B4513 !important;
+				border-left: 4px solid #8B4513 !important;
+				padding-left: 1rem !important;
+				margin: 0 0 1rem 0 !important;
+			}
+			
+			blockquote {
+				background: #f8f6f0;
+				border-left: 4px solid #8B4513;
+				padding: 1rem;
+				margin: 1rem 0;
+				border-radius: 4px;
+			}
+			
+			ul, ol {
+				padding-left: 2rem;
+			}
+			
+			li {
+				margin-bottom: 0.5rem;
+			}
+			
+			strong {
+				color: #8B4513;
+			}
+			
+			hr {
+				border: none;
+				border-top: 2px solid #8B4513;
+				margin: 2rem 0;
+			}
+			
+			@media (max-width: 720px) {
+				main {
+					padding: 1rem;
+				}
+				
+				.patch-note {
+					padding: 1.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Breadcrumb -->
+			<nav class="breadcrumb">
+				<a href="/blog/">Blog</a> → 
+				<a href="/blog/zone-nova/">Zone Nova</a> → 
+				<a href="/blog/zone-nova/maintenance/">Maintenance</a> → 
+				May 27, 2025
+			</nav>
+
+			<!-- Patch Notes Content -->
+			<article class="patch-note">
+				<h1>🎮 ZONE NOVA - May 27 Maintenance</h1>
+
+				<div class="info-box">
+					🎯 <strong>TL;DR:</strong> On May 27th with new Empress Guinevere character, Thunder King event, and multiple limited-time activities!
+				</div>
+
+				<hr>
+
+				<div class="info-box important">
+					<h2>🔧 Maintenance Schedule</h2>
+					<blockquote>
+						⚠️ IMPORTANT: Servers will be down during maintenance<br><br>
+						<strong>Date & Time:</strong> May 27, 2025 | 14:00 - 16:00 (UTC+8)<br><br>
+						<strong>What's Included:</strong> System optimization, activity updates<br><br>
+						<strong>Compensation:</strong> 300 Light Ethstone for all players who logged in before May 31st
+					</blockquote>
+				</div>
+
+				<hr>
+
+				<h2>🎊 New Events & Activities</h2>
+
+				<h3>⚡ Thunder King Route - Main Event</h3>
+				<div class="event-card">
+					<p><strong>📅 Duration:</strong> May 27 - June 10, 2025</p>
+					<ul>
+						<li><strong>Requirements:</strong> Complete Main Story Chapter 6</li>
+						<li><strong>Rewards:</strong> Light Ethstone, enhancement materials, favorability items</li>
+						<li><strong>How to Play:</strong> Collect activity currency from story cards → Exchange in shop</li>
+					</ul>
+					<p><strong>💎 Login Bonus:</strong> May 28 - June 24</p>
+					<ul>
+						<li><strong>Daily Reward:</strong> Prismatic Magic Power (up to ×10)</li>
+					</ul>
+				</div>
+
+				<h3>👑 Limited Character: Empress Guinevere</h3>
+				<div class="character-info">Detail Information
+⏰ Summon Period: May 27 - June 10, 2025
+🛡️ Class: Guardian
+🔥 Element: Flame
+🏰 Lore: Seven domain ruler, Avalon Round Table Knights commander</div>
+
+				<h3>💭 Limited Memory: Simple Reminiscence</h3>
+				<div class="event-card">
+					<p><strong>📅 Duration:</strong> May 27 - June 10, 2025</p>
+					<ul>
+						<li><strong>Best For:</strong> Guardian class characters</li>
+						<li><strong>Lore Connection:</strong> Tied to Guinevere's story and inner fears</li>
+					</ul>
+				</div>
+
+				<h3>⚔️ Boss Battle: Empress Charlotte Petra</h3>
+				<div class="event-card">
+					<p><strong>📅 Duration:</strong> May 27 - June 24, 2025</p>
+					<p><strong>🎯 Gameplay:</strong></p>
+					<ul>
+						<li>Daily limited attempts</li>
+						<li>Maximize damage for better rewards</li>
+						<li>Earn star coins → Exchange in star shop</li>
+						<li>Exclusive memories available</li>
+					</ul>
+				</div>
+
+				<h3>🌀 Space-Time Rift Events</h3>
+				<div class="event-table">Event                Duration           Status
+Rift Tide II         May 13 - June 10   🟢 Active
+Rift Tide III        May 7 - June 24    🟢 Active</div>
+				<p><strong>🎮 How to Play:</strong> Team up using [Rift Laws] to defeat waves of enemies surging through dimensional tears</p>
+
+				<h3>📋 Battle Pass</h3>
+				<div class="event-table">Type      Duration        Key Rewards
+Standard  May 7 - June 24  Gold Coins, Prismatic Magic Power, materials
+Advanced  Same period     Instant: 680 Light Ethstone + all standard rewards
+Luxury    Same period     Instant: +10 levels, 200 Light Ethstone, limited avatars</div>
+
+				<hr>
+
+				<div class="pro-tips">
+					<h2>💡 Pro Tips</h2>
+					
+					<p><strong>🎯 Priority List:</strong></p>
+					<ol>
+						<li><strong>Must Do:</strong> Complete Thunder King event (best rewards)</li>
+						<li><strong>If You Summon:</strong> Go for Guinevere if you need a Flame Guardian</li>
+						<li><strong>Daily Tasks:</strong> Login for Prismatic Magic Power, attempt boss battle</li>
+						<li><strong>Long-term:</strong> Progress Battle Pass throughout the month</li>
+					</ol>
+
+					<p><strong>💰 F2P Friendly:</strong></p>
+					<ul>
+						<li>Focus on Thunder King event for free resources</li>
+						<li>Daily login rewards require no spending</li>
+						<li>Battle Pass has decent free tier</li>
+					</ul>
+
+					<p><strong>🐋 For Spenders:</strong></p>
+					<ul>
+						<li>Advanced Battle Pass = great value (680 Light Ethstone)</li>
+						<li>Luxury Battle Pass = convenience (instant +10 levels)</li>
+						<li>Summon budget: Prioritize Guinevere over Memory if choosing one</li>
+					</ul>
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>

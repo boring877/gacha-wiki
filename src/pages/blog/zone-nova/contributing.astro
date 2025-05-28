@@ -1,0 +1,343 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
+import FormattedDate from '../../../components/FormattedDate.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Contributing & Helping - Zone Nova - GachaWiki" description="How to contribute to the Zone Nova wiki and help the community" />
+		<style>
+			main {
+				width: 960px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+				line-height: 1.6;
+			}
+			
+			.breadcrumb {
+				margin-bottom: 2rem;
+				color: rgb(var(--gray));
+			}
+			
+			.breadcrumb a {
+				color: #8B4513;
+				text-decoration: none;
+			}
+			
+			.breadcrumb a:hover {
+				text-decoration: underline;
+			}
+			
+			.contribute-guide {
+				background: rgba(255, 255, 255, 0.95);
+				border: 2px solid #8B4513;
+				border-radius: 12px;
+				padding: 2rem;
+				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+			}
+			
+			.page-header {
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+			
+			.page-title {
+				font-size: 2.5rem;
+				color: #8B4513;
+				margin: 0 0 1rem 0;
+				border-bottom: 3px solid #8B4513;
+				padding-bottom: 0.5rem;
+			}
+			
+			.page-subtitle {
+				font-size: 1.1rem;
+				color: rgb(var(--gray));
+				margin: 0 0 2rem 0;
+			}
+			
+			.contribute-guide h2 {
+				color: #8B4513;
+				font-size: 1.8rem;
+				margin: 2rem 0 1rem 0;
+				border-left: 4px solid #8B4513;
+				padding-left: 1rem;
+			}
+			
+			.contribute-guide h3 {
+				color: #8B4513;
+				font-size: 1.4rem;
+				margin: 1.5rem 0 0.8rem 0;
+			}
+			
+			.contribute-section {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 2rem 0;
+			}
+			
+			.help-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 1.5rem;
+				margin: 1rem 0;
+			}
+			
+			.help-card {
+				background: white;
+				border: 1px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+			}
+			
+			.help-card h4 {
+				color: #8B4513;
+				font-size: 1.2rem;
+				margin: 0 0 1rem 0;
+			}
+			
+			.help-card ul {
+				margin: 0;
+				padding-left: 1rem;
+			}
+			
+			.help-card li {
+				margin: 0.5rem 0;
+			}
+			
+			.contact-section {
+				background: #e8f4f8;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 2rem 0;
+				text-align: center;
+			}
+			
+			.contact-section h3 {
+				color: #8B4513;
+				margin: 0 0 1rem 0;
+			}
+			
+			.contact-button {
+				background: #8B4513;
+				color: white;
+				padding: 0.75rem 1.5rem;
+				border: none;
+				border-radius: 8px;
+				font-size: 1.1rem;
+				text-decoration: none;
+				display: inline-block;
+				margin: 0.5rem;
+				transition: 0.3s ease;
+			}
+			
+			.contact-button:hover {
+				background: #654321;
+				transform: translateY(-2px);
+			}
+			
+			.highlight-box {
+				background: #fff3cd;
+				border: 1px solid #ffc107;
+				border-radius: 6px;
+				padding: 1rem;
+				margin: 1rem 0;
+			}
+			
+			.highlight-box h4 {
+				color: #856404;
+				margin: 0 0 0.5rem 0;
+			}
+			
+			.highlight-box p {
+				margin: 0;
+				color: #856404;
+			}
+			
+			strong {
+				color: #8B4513;
+			}
+			
+			hr {
+				border: none;
+				border-top: 2px solid #8B4513;
+				margin: 2rem 0;
+			}
+			
+			@media (max-width: 720px) {
+				main {
+					padding: 1rem;
+				}
+				
+				.contribute-guide {
+					padding: 1.5rem;
+				}
+				
+				.page-title {
+					font-size: 2rem;
+				}
+				
+				.help-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Breadcrumb -->
+			<nav class="breadcrumb">
+				<a href="/blog/">Blog</a> → 
+				<a href="/blog/zone-nova/">Zone Nova</a> → 
+				Contributing & Helping
+			</nav>
+
+			<!-- Contributing Guide Content -->
+			<article class="contribute-guide">
+				<!-- Page Header -->
+				<header class="page-header">
+					<h1 class="page-title">🤝 Contributing & Helping</h1>
+					<p class="page-subtitle">Join our community and help make the Zone Nova wiki better for everyone</p>
+				</header>
+
+				<p>
+					Welcome to the Zone Nova community! We're always looking for passionate players to help expand and 
+					improve our wiki. Whether you're a veteran strategist or a newcomer with fresh insights, your 
+					contributions are valuable and appreciated.
+				</p>
+
+				<h2>🎯 How to Contribute</h2>
+				<div class="contribute-section">
+					<p>
+						Contributing to the Zone Nova wiki is easy and rewarding! We welcome all types of contributions, 
+						from detailed character guides to quick corrections of outdated information.
+					</p>
+					
+					<div class="highlight-box">
+						<h4>🚀 Getting Started</h4>
+						<p>
+							The best way to contribute is to start with what you know best. Whether it's your favorite character, 
+							a recent event you've mastered, or game mechanics you've figured out, your expertise helps everyone!
+						</p>
+					</div>
+				</div>
+
+				<h2>📝 What We Need Help With</h2>
+				<div class="contribute-section">
+					<div class="help-grid">
+						<div class="help-card">
+							<h4>⚔️ Character Guides & Builds</h4>
+							<ul>
+								<li>Detailed character reviews</li>
+								<li>Optimal rune builds</li>
+								<li>Team composition strategies</li>
+								<li>Character tier rankings</li>
+								<li>Skill rotation guides</li>
+							</ul>
+						</div>
+						
+						<div class="help-card">
+							<h4>🎉 Event Walkthroughs</h4>
+							<ul>
+								<li>Step-by-step event guides</li>
+								<li>Efficient farming strategies</li>
+								<li>Event shop priority lists</li>
+								<li>Boss battle tactics</li>
+								<li>Time management tips</li>
+							</ul>
+						</div>
+						
+						<div class="help-card">
+							<h4>📊 Tier List Updates</h4>
+							<ul>
+								<li>Current meta analysis</li>
+								<li>Character rankings</li>
+								<li>Equipment tier lists</li>
+								<li>Team comp evaluations</li>
+								<li>Balance change assessments</li>
+							</ul>
+						</div>
+						
+						<div class="help-card">
+							<h4>🌐 Translation Work</h4>
+							<ul>
+								<li>Game announcement translations</li>
+								<li>Patch note summaries</li>
+								<li>Character story translations</li>
+								<li>Event description translations</li>
+								<li>Item description clarifications</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<hr>
+
+				<h2>🛠️ How to Help</h2>
+				<div class="contribute-section">
+					<div class="contact-section">
+						<h3>📢 Join Our Community</h3>
+						<p style="margin-bottom: 1rem;">Ready to contribute? Here's how to get started:</p>
+						<p><strong>Ask for access in YouTube channel or X .</strong></p>
+						<a href="https://www.youtube.com/@GachaJunkie888" target="_blank" class="contact-button">🎥 YouTube Channel</a>
+						<a href="https://x.com/EcchiPen" target="_blank" class="contact-button">🐦 X</a>
+					</div>
+
+					<h3>🎯 Ways You Can Help Right Now</h3>
+					<div class="help-grid">
+						<div class="help-card">
+							<h4>📚 Share Your Knowledge</h4>
+							<p>Have insights about character builds, team strategies, or game mechanics? Share them with the community!</p>
+						</div>
+						
+						<div class="help-card">
+							<h4>🔍 Report Outdated Information</h4>
+							<p>Found information that's no longer accurate? Let us know so we can keep the wiki up to date!</p>
+						</div>
+						
+						<div class="help-card">
+							<h4>📸 Submit Screenshots & Guides</h4>
+							<p>Visual guides are incredibly helpful! Share screenshots, infographics, or step-by-step visual guides.</p>
+						</div>
+					</div>
+
+					<div class="highlight-box">
+						<h4>💡 Quick Contribution Tips</h4>
+						<p>
+							<strong>Quality over quantity:</strong> Even small, accurate contributions are more valuable than lengthy but 
+							incomplete guides. Start with what you know well and expand from there!
+						</p>
+					</div>
+				</div>
+
+				<hr>
+
+				<h2>🌟 Community Guidelines</h2>
+				<div class="contribute-section">
+					<ul>
+						<li><strong>Be Respectful:</strong> Treat all community members with kindness and respect</li>
+						<li><strong>Stay Accurate:</strong> Verify information before sharing to maintain wiki quality</li>
+						<li><strong>Give Credit:</strong> Acknowledge sources and other contributors when appropriate</li>
+						<li><strong>Be Patient:</strong> Changes and updates may take time to review and implement</li>
+						<li><strong>Have Fun:</strong> We're all here because we love Zone Nova - enjoy the process!</li>
+					</ul>
+				</div>
+
+				<div class="contact-section">
+					<h3>🎉 Thank You!</h3>
+					<p>
+						Every contribution, no matter how small, helps make the wiki better for all players. 
+					</p>
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html> 

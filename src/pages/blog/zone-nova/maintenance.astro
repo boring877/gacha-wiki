@@ -1,0 +1,147 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
+import FormattedDate from '../../../components/FormattedDate.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Zone Nova Maintenance & Patch Notes - GachaWiki" description="Latest patch notes and maintenance updates for Zone Nova" />
+		<style>
+			main {
+				width: 960px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			
+			.breadcrumb {
+				margin-bottom: 2rem;
+				color: rgb(var(--gray));
+			}
+			
+			.breadcrumb a {
+				color: #8B4513;
+				text-decoration: none;
+			}
+			
+			.breadcrumb a:hover {
+				text-decoration: underline;
+			}
+			
+			.page-header {
+				text-align: center;
+				margin-bottom: 3rem;
+			}
+			
+			.page-title {
+				font-size: 2.5rem;
+				color: #8B4513;
+				margin: 0 0 1rem 0;
+			}
+			
+			.page-subtitle {
+				font-size: 1.1rem;
+				color: rgb(var(--gray));
+				margin: 0;
+			}
+			
+			.patch-list {
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+			}
+			
+			.patch-card {
+				background: rgba(255, 255, 255, 0.95);
+				border: 2px solid #8B4513;
+				border-radius: 12px;
+				padding: 2rem;
+				transition: 0.3s ease;
+				text-decoration: none;
+				color: inherit;
+			}
+			
+			.patch-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 24px rgba(139, 69, 19, 0.15);
+				background-color: #8B4513;
+				color: white;
+			}
+			
+			.patch-card:hover h2,
+			.patch-card:hover .patch-date,
+			.patch-card:hover .patch-summary {
+				color: white;
+			}
+			
+			.patch-card h2 {
+				color: #8B4513;
+				font-size: 1.8rem;
+				margin: 0 0 0.5rem 0;
+				transition: 0.3s ease;
+			}
+			
+			.patch-date {
+				color: rgb(var(--gray));
+				font-size: 1rem;
+				margin: 0 0 1rem 0;
+				transition: 0.3s ease;
+			}
+			
+			.patch-summary {
+				margin: 0;
+				line-height: 1.5;
+				transition: 0.3s ease;
+			}
+			
+			@media (max-width: 720px) {
+				main {
+					padding: 1rem;
+				}
+				
+				.page-title {
+					font-size: 2rem;
+				}
+				
+				.patch-card {
+					padding: 1.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Breadcrumb -->
+			<nav class="breadcrumb">
+				<a href="/blog/">Blog</a> → 
+				<a href="/blog/zone-nova/">Zone Nova</a> → 
+				Maintenance
+			</nav>
+
+			<!-- Page Header -->
+			<header class="page-header">
+				<h1 class="page-title">🔧 Maintenance & Patch Notes</h1>
+				<p class="page-subtitle">Stay updated with the latest Zone Nova updates and server maintenance</p>
+			</header>
+
+			<!-- Patch Notes List -->
+			<div class="patch-list">
+				<a href="/blog/zone-nova/maintenance/may-27-2025/" class="patch-card">
+					<h2>🎮 ZONE NOVA - May 27 Maintenance</h2>
+					<p class="patch-date">May 27, 2025</p>
+					<p class="patch-summary">
+						New Empress Guinevere character, Thunder King event, and multiple limited-time activities! 
+						Major update with new events, boss battles, and exclusive rewards.
+					</p>
+				</a>
+				
+				<!-- Add new patch notes here as new links -->
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

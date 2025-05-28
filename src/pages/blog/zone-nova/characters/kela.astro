@@ -1,0 +1,415 @@
+---
+import BaseHead from '../../../../components/BaseHead.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../../../consts';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Kela Character Guide - Zone Nova - GachaWiki" description="Complete guide for Kela, the premier single-target healer in Zone Nova" />
+		<style>
+			main {
+				width: 960px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+				line-height: 1.6;
+			}
+			
+			.breadcrumb {
+				margin-bottom: 2rem;
+				color: rgb(var(--gray));
+			}
+			
+			.breadcrumb a {
+				color: #8B4513;
+				text-decoration: none;
+			}
+			
+			.breadcrumb a:hover {
+				text-decoration: underline;
+			}
+			
+			.character-guide {
+				background: rgba(255, 255, 255, 0.95);
+				border: 2px solid #8B4513;
+				border-radius: 12px;
+				padding: 2rem;
+				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+			}
+			
+			.character-header {
+				text-align: center;
+				margin-bottom: 2rem;
+			}
+			
+			.character-image {
+				width: 100%;
+				max-width: 400px;
+				height: auto;
+				border-radius: 12px;
+				margin-bottom: 1rem;
+				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+			}
+			
+			.character-guide h1 {
+				color: #8B4513;
+				font-size: 2rem;
+				margin: 0 0 1rem 0;
+				border-bottom: 3px solid #8B4513;
+				padding-bottom: 0.5rem;
+			}
+			
+			.character-guide h2 {
+				color: #8B4513;
+				font-size: 1.5rem;
+				margin: 2rem 0 1rem 0;
+				border-left: 4px solid #8B4513;
+				padding-left: 1rem;
+			}
+			
+			.character-guide h3 {
+				color: #8B4513;
+				font-size: 1.3rem;
+				margin: 1.5rem 0 0.8rem 0;
+			}
+			
+			.video-section {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 2rem 0;
+				text-align: center;
+			}
+			
+			.video-container {
+				position: relative;
+				width: 100%;
+				height: 0;
+				padding-bottom: 56.25%; /* 16:9 aspect ratio */
+				margin-top: 1rem;
+			}
+			
+			.video-container iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 8px;
+			}
+			
+			.info-box {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+			
+			.character-stats {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1rem;
+				margin: 1rem 0;
+				font-family: monospace;
+				white-space: pre-line;
+			}
+			
+			.skill-card {
+				background: #f8f6f0;
+				border: 1px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+			
+			.build-section {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 2rem 0;
+			}
+			
+			.awakening-list {
+				background: #f8f6f0;
+				border: 1px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+			
+			.strengths-weaknesses {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.5rem;
+				margin: 1rem 0;
+			}
+			
+			.strengths, .weaknesses {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+			}
+			
+			ul, ol {
+				padding-left: 2rem;
+			}
+			
+			li {
+				margin-bottom: 0.5rem;
+			}
+			
+			strong {
+				color: #8B4513;
+			}
+			
+			hr {
+				border: none;
+				border-top: 2px solid #8B4513;
+				margin: 2rem 0;
+			}
+			
+			@media (max-width: 720px) {
+				main {
+					padding: 1rem;
+				}
+				
+				.character-guide {
+					padding: 1.5rem;
+				}
+				
+				.strengths-weaknesses {
+					grid-template-columns: 1fr;
+				}
+				
+				.character-image {
+					max-width: 300px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Breadcrumb -->
+			<nav class="breadcrumb">
+				<a href="/blog/">Blog</a> → 
+				<a href="/blog/zone-nova/">Zone Nova</a> → 
+				<a href="/blog/zone-nova/characters/">Characters</a> → 
+				Kela
+			</nav>
+
+			<!-- Character Guide Content -->
+			<article class="character-guide">
+				<div class="character-header">
+					<h1>✨ Kela Character Guide</h1>
+				</div>
+
+				<h2>Character Overview</h2>
+				<div class="info-box">
+					Kela (克拉/Carat) stands as Zone Nova's premier single-target healer, specializing in keeping your most valuable team members alive through intense battles. What sets her apart from other healers is her unique focus on rescuing critically injured allies - her healing becomes dramatically more powerful when targeting units below 50% health, making her the ultimate clutch healer.
+
+					Her kit revolves around intelligent targeting, automatically healing the ally with the lowest health percentage while providing crucial damage reduction buffs through her signature memory card. Unlike AoE healers who spread their power thin, Kela concentrates her full healing potential on the ally who needs it most, making her indispensable for tank-heavy teams and challenging content.
+
+					What makes Kela truly exceptional is her attack-scaling healing, meaning she benefits tremendously from team buffers and attack-boosting allies. Combined with her awakening effects that provide additional damage reduction, she can single-handedly keep tanks alive through devastating enemy burst phases. Her energy-efficient design and low cooldowns ensure consistent healing uptime, making her a reliable foundation for any sustained combat strategy.
+				</div>
+
+				<!-- Video Guide Section -->
+				<div class="video-section">
+					<h3>📺 You Can Watch This Video to Learn More About Her!</h3>
+					<div class="video-container">
+						<iframe 
+							src="https://www.youtube.com/embed/Prg7XPVRbRA" 
+							title="Kela Character Guide - Zone Nova" 
+							frameborder="0" 
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+							allowfullscreen>
+						</iframe>
+					</div>
+				</div>
+
+				<h2>Basic Information</h2>
+				<div class="character-stats">Role: Single-Target Healer
+Attribute: Holy/Divine
+Rarity: SR
+
+Base Stats at Level 80:
+HP: 7,650
+Attack: 837
+Defense: 608</div>
+
+				<hr>
+
+				<h2>✨ Skills Breakdown</h2>
+
+				<h3>Auto Attack</h3>
+				<div class="skill-card">
+					<p><strong>Cooldown:</strong> 2.0s</p>
+					<p><strong>Level:</strong> 10+4</p>
+					<p><strong>Effect:</strong> Deals 120% of attack power as Holy damage to a single enemy</p>
+				</div>
+
+				<h3>Auto Skill (Primary Healing)</h3>
+				<div class="skill-card">
+					<p><strong>Cooldown:</strong> 5.0s</p>
+					<p><strong>Level:</strong> 10+4</p>
+					<p><strong>Effect:</strong> Heals the ally with the lowest health percentage</p>
+					<p><strong>Healing Amount:</strong> 69% of attack power + 335 HP</p>
+					<p><strong>Note:</strong> Critical for tank survival</p>
+				</div>
+
+				<h3>Ultimate Skill</h3>
+				<div class="skill-card">
+					<p><strong>Energy Cost:</strong> 3</p>
+					<p><strong>Cooldown:</strong> 1.0s</p>
+					<p><strong>Effect:</strong> Heals the ally with the lowest HP percentage</p>
+					<p><strong>Healing Amount:</strong> 128% of attack power + 682 HP</p>
+					<p><strong>Special Feature:</strong> Scales with attack buffs, making it potent when paired with attack-boosting allies</p>
+				</div>
+
+				<h3>Passive Ability — 万事通之力 (Master of All)</h3>
+				<div class="skill-card">
+					<p><strong>Effect:</strong> When healing allies below 50% health, healing amount increases by 24%</p>
+				</div>
+
+				<hr>
+
+				<h2>🃏 Memory/Card — 一人之境 (Solitary Realm)</h2>
+				<div class="info-box">
+					<p><strong>Effect 1:</strong> Healing amount increases by 30%</p>
+					<p><strong>Effect 2:</strong> When healing a target below 50% health, reduces damage they take by 8% for 10 seconds</p>
+				</div>
+
+				<h2>⭐ Awakening Effects & Duplicate System</h2>
+				<div class="info-box">
+					<p>The duplicate system offers powerful benefits, especially for damage reduction:</p>
+				</div>
+				<div class="awakening-list">
+					<ol>
+						<li><strong>Awakening 1:</strong> After using ultimate to heal an ally, reduces their damage taken by 5% for 5 seconds</li>
+						<li><strong>Awakening 2:</strong> When your health drops below 20%, recover health equal to 50% of your attack power (once per battle)</li>
+						<li><strong>Awakening 3:</strong> [Skills] and [Normal Attack] level and level cap +4</li>
+						<li><strong>Awakening 4:</strong> Healing amount increases by 20%</li>
+						<li><strong>Awakening 5:</strong> [Ultimate Skills] and [Passive Skills] level and level cap +4</li>
+						<li><strong>Awakening 6:</strong> Awakening 1's effect doubles (damage reduction becomes 10% for 5 seconds)</li>
+					</ol>
+				</div>
+
+				<div class="info-box">
+					<p><strong>Duplicate Priority:</strong> Focus on Awakening 1 and 6 for maximum damage reduction</p>
+				</div>
+
+				<hr>
+
+				<h2>🏗️ Recommended Builds</h2>
+
+				<h3>Rune Build Strategy</h3>
+				<div class="build-section">
+					<h4>Optimal Rune Configuration:</h4>
+					<ul>
+						<li><strong>Position 1:</strong> HP (fixed) — Seek attack % substats</li>
+						<li><strong>Position 2:</strong> ATK (fixed) — Seek attack % substats</li>
+						<li><strong>Position 3:</strong> DEF (fixed) — Seek attack % substats</li>
+						<li><strong>Position 4:</strong> Increase Healing or ATK% — Seek attack % substats</li>
+						<li><strong>Position 5:</strong> ATK% — Seek attack % substats</li>
+						<li><strong>Position 6:</strong> ATK% — Seek attack % substats</li>
+					</ul>
+					
+					<h4>Substat Priority:</h4>
+					<ol>
+						<li>Attack</li>
+						<li>HP</li>
+						<li>Defense</li>
+					</ol>
+				</div>
+
+				<h3>Rune Sets</h3>
+				
+				<h4>Primary Set: 达莱特 (Daleth) — Healing Focus</h4>
+				<div class="skill-card">
+					<p><strong>2-piece bonus:</strong> Healing effect increases by 10%</p>
+					<p><strong>4-piece bonus:</strong> Start battle with 1 energy point</p>
+					<p><strong>Why it works:</strong> Faster ultimate activation for better damage reduction uptime</p>
+				</div>
+
+				<h4>Alternative Set: 埃普西隆 (Epsilon) — Offensive Support</h4>
+				<div class="skill-card">
+					<p><strong>2-piece bonus:</strong> Attack power increases by 8%</p>
+					<p><strong>4-piece bonus:</strong> After ultimate skill, all allies' damage increases by 10% for 10 seconds</p>
+					<p><strong>Why it works:</strong> Maximizes healing through attack scaling</p>
+				</div>
+
+				<h2>👥 Team Composition & Synergies</h2>
+				
+				<h3>Core Team Buff</h3>
+				<div class="info-box">
+					<p><strong>Requirement:</strong> 2 Holy characters in team</p>
+					<p><strong>Effect:</strong> Self attack increases by 10%, healing amount increases by 12.5%</p>
+				</div>
+
+				<h3>Best Character Pairings</h3>
+				<div class="skill-card">
+					<ul>
+						<li><strong>S-Tier Synergy:</strong> Any Buffer that increases ATK</li>
+						<li><strong>Tank Partners:</strong> Any tank that regularly drops below 50% HP</li>
+						<li><strong>Strategy:</strong> Kela's passive and memory card provide tremendous value on damaged tanks</li>
+					</ul>
+				</div>
+
+				<h2>💰 Investment Priority</h2>
+				<div class="build-section">
+					<ol>
+						<li><strong>Memory:</strong> 一人之境 (Solitary Realm) — First priority</li>
+						<li><strong>Awakening Order:</strong> 1 > 4 > 6 > 5 > 3 > 2</li>
+						<li><strong>Skill Priority:</strong> Ultimate > Auto Skill > Passive > Auto Attack</li>
+						<li><strong>Rune Priority:</strong> Positions 4 & 6 (ATK%) > Position 3 (ATK%) > Position 5 (Healing Bonus)</li>
+					</ol>
+				</div>
+
+				<hr>
+
+				<h2>⚖️ Strengths & Weaknesses</h2>
+				<div class="strengths-weaknesses">
+					<div class="strengths">
+						<h3>Strengths</h3>
+						<ul>
+							<li>✅ Premier single-target tank healer</li>
+							<li>✅ Outstanding damage reduction through memory and awakening</li>
+							<li>✅ Exceptional attack buff scaling</li>
+							<li>✅ Low HP healing specialist</li>
+							<li>✅ Energy-efficient when built properly</li>
+						</ul>
+					</div>
+					<div class="weaknesses">
+						<h3>Weaknesses</h3>
+						<ul>
+							<li>❌ Lacks AoE healing</li>
+							<li>❌ Limited self-protection</li>
+							<li>❌ Needs damaged allies for peak performance</li>
+							<li>❌ Heavily memory-dependent</li>
+							<li>❌ Requires specific team composition</li>
+						</ul>
+					</div>
+				</div>
+
+				<h2>🏆 Final Verdict</h2>
+				<div class="info-box">
+					Kela stands as an S-tier healer indispensable to tank-focused teams. Her ability to sustain single targets through powerful healing and damage reduction makes her vital in challenging content. With optimal rune configuration (ATK% in positions 3, 4, and 6) and her signature 一人之境 memory card, she can trivialize otherwise demanding encounters. Kela is a must-have investment for players building sustainable team compositions.
+				</div>
+
+				<div class="info-box">
+					<p><strong>📺 For more detailed strategies and gameplay tips, check out the video guide above!</strong></p>
+					<p>Video Source: [YouTube Guide](https://www.youtube.com/watch?v=Prg7XPVRbRA)</p>
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
