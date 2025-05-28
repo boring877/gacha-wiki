@@ -1,0 +1,78 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
+		<Header />
+		<main class="max-w-6xl mx-auto px-4 py-12">
+			<!-- Hero Section -->
+			<section class="text-center mb-16">
+				<h1 class="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent mb-6">
+					🎲 GachaWiki
+				</h1>
+				<p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+					Your ultimate destination for gacha game guides, character tier lists, and winning strategies
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<a href="/blog" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl">
+						📚 Browse Guides
+					</a>
+					<a href="/about" class="bg-white hover:bg-gray-50 text-primary-600 px-8 py-4 rounded-lg font-semibold border-2 border-primary-600 transition-colors duration-200">
+						🎯 Learn More
+					</a>
+				</div>
+			</section>
+
+			<!-- Features Section -->
+			<section class="grid md:grid-cols-3 gap-8 mb-16">
+				<div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-200">
+					<div class="text-4xl mb-4">⭐</div>
+					<h3 class="text-xl font-bold text-gray-800 mb-3">Character Guides</h3>
+					<p class="text-gray-600">In-depth character analyses, builds, and tier lists for all your favorite gacha games.</p>
+				</div>
+				<div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-200">
+					<div class="text-4xl mb-4">🎯</div>
+					<h3 class="text-xl font-bold text-gray-800 mb-3">Pull Strategies</h3>
+					<p class="text-gray-600">Smart summoning strategies to maximize your resources and get the characters you want.</p>
+				</div>
+				<div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-200">
+					<div class="text-4xl mb-4">📊</div>
+					<h3 class="text-xl font-bold text-gray-800 mb-3">Game Updates</h3>
+					<p class="text-gray-600">Stay updated with the latest patches, events, and meta changes across all gacha games.</p>
+				</div>
+			</section>
+
+			<!-- Popular Games Section -->
+			<section class="bg-white rounded-2xl p-8 shadow-lg">
+				<h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Popular Gacha Games</h2>
+				<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+					<div class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+						<div class="text-3xl mb-2">🗡️</div>
+						<p class="font-semibold text-gray-700">Genshin Impact</p>
+					</div>
+					<div class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+						<div class="text-3xl mb-2">🚂</div>
+						<p class="font-semibold text-gray-700">Honkai Star Rail</p>
+					</div>
+					<div class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+						<div class="text-3xl mb-2">👥</div>
+						<p class="font-semibold text-gray-700">Fate/Grand Order</p>
+					</div>
+					<div class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+						<div class="text-3xl mb-2">⚔️</div>
+						<p class="font-semibold text-gray-700">Epic Seven</p>
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
