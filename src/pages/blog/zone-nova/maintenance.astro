@@ -9,7 +9,7 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title="Zone Nova Maintenance & Patch Notes - GachaWiki" description="Latest patch notes and maintenance updates for Zone Nova" />
+		<BaseHead title="Zone Nova Maintenance & Announcements - GachaWiki" description="Latest patch notes, maintenance updates, and announcements for Zone Nova" />
 		<style>
 			main {
 				width: 960px;
@@ -64,6 +64,18 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 				color: inherit;
 			}
 			
+			.patch-card.announcement {
+				border-color: #8B4513;
+			}
+			
+			.patch-card.announcement:hover {
+				background-color: #8B4513;
+			}
+			
+			.patch-card.announcement h2 {
+				color: #8B4513;
+			}
+			
 			.patch-card:hover {
 				transform: translateY(-4px);
 				box-shadow: 0 8px 24px rgba(139, 69, 19, 0.15);
@@ -97,6 +109,25 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 				transition: 0.3s ease;
 			}
 			
+			.tag {
+				display: inline-block;
+				padding: 0.25rem 0.75rem;
+				border-radius: 20px;
+				font-size: 0.85rem;
+				font-weight: bold;
+				margin-left: 0.5rem;
+			}
+			
+			.tag.maintenance {
+				background-color: #8B4513;
+				color: white;
+			}
+			
+			.tag.announcement {
+				background-color: #8B4513;
+				color: white;
+			}
+			
 			@media (max-width: 720px) {
 				main {
 					padding: 1rem;
@@ -119,19 +150,34 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 			<nav class="breadcrumb">
 				<a href="/blog/">Blog</a> → 
 				<a href="/blog/zone-nova/">Zone Nova</a> → 
-				Maintenance
+				Announcements & Maintenance 
 			</nav>
 
 			<!-- Page Header -->
 			<header class="page-header">
-				<h1 class="page-title">🔧 Maintenance & Patch Notes</h1>
-				<p class="page-subtitle">Stay updated with the latest Zone Nova updates and server maintenance</p>
+				<h1 class="page-title">🔧 Announcements & Maintenance</h1>
+				<p class="page-subtitle">Stay updated with the latest Zone Nova updates, maintenance schedules, and important announcements</p>
 			</header>
 
 			<!-- Patch Notes List -->
 			<div class="patch-list">
+				<a href="/blog/zone-nova/announcements/idle-income-bugfix/" class="patch-card announcement">
+					<h2>🛠️ Idle Income System Bug Fix & Compensation <span class="tag announcement">ANNOUNCEMENT</span></h2>
+					<p class="patch-date">May 29, 2025</p>
+					<p class="patch-summary">
+						Idle income system bug fix, abnormal Energy Supplement recovery, and compensation for all players (x5 Energy Supplement).
+					</p>
+				</a>
+				<a href="/blog/zone-nova/announcements/500k-downloads/" class="patch-card announcement">
+					<h2>🎉 500,000 Downloads Milestone <span class="tag announcement">ANNOUNCEMENT</span></h2>
+					<p class="patch-date">May 28, 2025</p>
+					<p class="patch-summary">
+						ZONE NOVA celebrates reaching 500,000 cross-platform downloads! Special celebration rewards 
+						including Fantasy Color Cubes and Energy Supplements for all captains.
+					</p>
+				</a>
 				<a href="/blog/zone-nova/maintenance/may-27-2025/" class="patch-card">
-					<h2>🎮 ZONE NOVA - May 27 Maintenance</h2>
+					<h2>🎮 May 27 Maintenance <span class="tag maintenance">MAINTENANCE</span></h2>
 					<p class="patch-date">May 27, 2025</p>
 					<p class="patch-summary">
 						New Empress Guinevere character, Thunder King event, and multiple limited-time activities! 
@@ -139,7 +185,16 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 					</p>
 				</a>
 				
-				<!-- Add new patch notes here as new links -->
+				<!-- Example announcement card (you can add more) -->
+				<!-- <a href="/blog/zone-nova/announcements/example/" class="patch-card announcement">
+					<h2>📢 Important Notice <span class="tag announcement">ANNOUNCEMENT</span></h2>
+					<p class="patch-date">Date here</p>
+					<p class="patch-summary">
+						Announcement summary here...
+					</p>
+				</a> -->
+				
+				<!-- Add new maintenance notes and announcements here -->
 			</div>
 		</main>
 		<Footer />

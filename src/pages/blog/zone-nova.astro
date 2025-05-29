@@ -65,41 +65,65 @@ import FormattedDate from '../../components/FormattedDate.astro';
 			
 			.guides-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 				gap: 1.5rem;
 				margin-top: 2rem;
 			}
 			
 			.guide-card {
 				background: white;
-				padding: 1.5rem;
-				border-radius: 12px;
-				border: 2px solid #8B4513;
-				transition: 0.3s ease;
+				padding: 2rem;
+				border-radius: 16px;
+				border: 1px solid rgba(139, 69, 19, 0.1);
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 				cursor: pointer;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.guide-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 4px;
+				background: linear-gradient(90deg, #8B4513 0%, #D2691E 100%);
+				transform: translateX(-100%);
+				transition: transform 0.3s ease;
 			}
 			
 			.guide-card:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 8px 24px rgba(139, 69, 19, 0.15);
-				background-color: #8B4513;
-				color: white;
+				transform: translateY(-6px);
+				box-shadow: 0 12px 32px rgba(139, 69, 19, 0.12);
+				border-color: rgba(139, 69, 19, 0.2);
+			}
+			
+			.guide-card:hover::before {
+				transform: translateX(0);
 			}
 			
 			.guide-card h3 {
 				color: #8B4513;
-				margin: 0 0 0.5rem 0;
+				margin: 0 0 0.75rem 0;
 				transition: 0.3s ease;
 				text-align: left;
+				font-size: 1.75rem;
+				font-weight: 600;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
 			}
 			
 			.guide-card:hover h3 {
-				color: white;
+				color: #8B4513;
 			}
 			
 			.guide-card p {
 				margin: 0;
-				line-height: 1.5;
+				line-height: 1.6;
+				color: #666;
+				font-size: 1.1rem;
 			}
 			
 			.guide-card-link {
@@ -154,14 +178,19 @@ import FormattedDate from '../../components/FormattedDate.astro';
 			<!-- Guides Section -->
 			<section class="content-section">
 				<h2 class="section-title">Game Guides</h2>
-				<div class="guides-grid">
+				
+				<!-- Maintenance & Announcements - Full Width -->
+				<div style="margin-top: 2rem; margin-bottom: 2rem;">
 					<a href="/blog/zone-nova/maintenance/" class="guide-card-link">
 						<div class="guide-card">
-							<h3>🔧 Maintenance</h3>
-							<p>Patch notes.</p>
+							<h3 style="font-size: 1.6rem;">🔧 Announcements & Maintenance </h3>
+							<p>Patch notes, maintenance schedules, and important announcements.</p>
 						</div>
 					</a>
-					
+				</div>
+				
+				<!-- Other Guide Cards -->
+				<div class="guides-grid">
 					<a href="/blog/zone-nova/events/" class="guide-card-link">
 						<div class="guide-card">
 							<h3>🎉 Events</h3>

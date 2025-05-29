@@ -1,0 +1,255 @@
+---
+import BaseHead from '../../../../components/BaseHead.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../../../consts';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="500,000 Downloads Milestone - Zone Nova" description="ZONE NOVA celebrates 500,000 cross-platform downloads with special rewards" />
+		<style>
+			main {
+				width: 960px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+				line-height: 1.6;
+			}
+			
+			.breadcrumb {
+				margin-bottom: 2rem;
+				color: rgb(var(--gray));
+			}
+			
+			.breadcrumb a {
+				color: #8B4513;
+				text-decoration: none;
+			}
+			
+			.breadcrumb a:hover {
+				text-decoration: underline;
+			}
+			
+			.announcement {
+				background: rgba(255, 255, 255, 0.95);
+				border: 2px solid #8B4513;
+				border-radius: 12px;
+				padding: 2rem;
+				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+			}
+			
+			.announcement h1 {
+				color: #8B4513;
+				font-size: 2rem;
+				margin: 0 0 1rem 0;
+				border-bottom: 3px solid #8B4513;
+				padding-bottom: 0.5rem;
+			}
+			
+			.announcement h2 {
+				color: #8B4513;
+				font-size: 1.5rem;
+				margin: 2rem 0 1rem 0;
+				border-left: 4px solid #8B4513;
+				padding-left: 1rem;
+			}
+			
+			.announcement h3 {
+				color: #8B4513;
+				font-size: 1.3rem;
+				margin: 1.5rem 0 0.8rem 0;
+			}
+			
+			.info-box {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+			
+			.milestone-details {
+				background: #f8f6f0;
+				border: 1px solid #8B4513;
+				border-radius: 8px;
+				padding: 1rem;
+				margin: 1rem 0;
+			}
+			
+			.rewards-table {
+				background: #f8f6f0;
+				border: 2px solid #8B4513;
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin: 1.5rem 0;
+			}
+			
+			.rewards-table table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+			
+			.rewards-table th,
+			.rewards-table td {
+				padding: 0.75rem;
+				text-align: left;
+				border-bottom: 1px solid #8B4513;
+			}
+			
+			.rewards-table th {
+				background: #fff5f5;
+				color: #8B4513;
+				font-weight: bold;
+			}
+			
+			.rewards-table tr:last-child td {
+				border-bottom: none;
+			}
+			
+			.celebration-banner {
+				background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+				color: white;
+				padding: 2rem;
+				border-radius: 12px;
+				text-align: center;
+				margin: 2rem 0;
+			}
+			
+			.celebration-banner h2 {
+				color: white !important;
+				border: none !important;
+				padding: 0 !important;
+				margin: 0 0 0.5rem 0 !important;
+			}
+			
+			blockquote {
+				background: #f8f6f0;
+				border-left: 4px solid #8B4513;
+				padding: 1rem;
+				margin: 1rem 0;
+				border-radius: 4px;
+			}
+			
+			ul, ol {
+				padding-left: 2rem;
+			}
+			
+			li {
+				margin-bottom: 0.5rem;
+			}
+			
+			strong {
+				color: #8B4513;
+			}
+			
+			hr {
+				border: none;
+				border-top: 2px solid #8B4513;
+				margin: 2rem 0;
+			}
+			
+			.source-note {
+				text-align: center;
+				color: rgb(var(--gray));
+				font-style: italic;
+				margin-top: 2rem;
+			}
+			
+			@media (max-width: 720px) {
+				main {
+					padding: 1rem;
+				}
+				
+				.announcement {
+					padding: 1.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Breadcrumb -->
+			<nav class="breadcrumb">
+				<a href="/blog/">Blog</a> → 
+				<a href="/blog/zone-nova/">Zone Nova</a> → 
+				<a href="/blog/zone-nova/maintenance/">Maintenance & Announcements</a> → 
+				500,000 Downloads Milestone
+			</nav>
+
+			<!-- Announcement Content -->
+			<article class="announcement">
+				<h1>🎉 ZONE NOVA - 500,000 Downloads Milestone Celebration</h1>
+
+				<div class="info-box">
+					<h2>📢 Announcement Details</h2>
+					<p><strong>Date:</strong> May 28, 2025</p>
+					<p><strong>Milestone:</strong> 500,000 cross-platform downloads achieved</p>
+					<p><strong>Game:</strong> ZONE NOVA</p>
+				</div>
+
+				<div class="celebration-banner">
+					<h2>🎊 Thank You, Captains! 🎊</h2>
+					<p style="font-size: 1.2rem; margin: 0;">500,000 Downloads Achieved!</p>
+				</div>
+
+				<h2>💌 Official Message</h2>
+				
+				<blockquote>
+					<p><strong>Dear Captains:</strong></p>
+					
+					<p>Thank you to all captains for your enthusiastic support and love for ZONE NOVA! We are very pleased to announce that as of May 28, 2025, the cross-platform download count for ZONE NOVA has officially broken through 500,000!</p>
+					
+					<p>This achievement is inseparable from the companionship and support of every captain - your enthusiasm is the driving force for our progress!</p>
+					
+					<p>To celebrate this milestone, the development team has prepared the following rewards to thank all captains for their participation.</p>
+				</blockquote>
+
+				<h2>🎁 Celebration Rewards</h2>
+				
+				<div class="rewards-table">
+					<table>
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Fantasy Color Cube</td>
+								<td>×5</td>
+							</tr>
+							<tr>
+								<td>Energy Supplement</td>
+								<td>×30</td>
+							</tr>
+							<tr>
+								<td>Energy Cube</td>
+								<td>×5</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="milestone-details">
+					<p><strong>📅 Eligibility:</strong> Captains who have logged into the game before June 7, 2025 03:59:59</p>
+					<p><strong>📬 Distribution Method:</strong> Rewards will be distributed through in-game mail</p>
+				</div>
+
+				<h2>💫 Closing Message</h2>
+				
+				<blockquote>
+					<p>Once again, thank you to all captains for your support! Let us continue in the world of ZONE NOVA, working together to create even more exciting adventures!</p>
+				</blockquote>
+
+				<hr>
+				
+				<p class="source-note">Source: Official ZONE NOVA announcement</p>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html> 
