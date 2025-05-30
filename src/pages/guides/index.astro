@@ -1,0 +1,168 @@
+---
+import HomeLayout from '../../layouts/HomeLayout.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import FormattedDate from '../../components/FormattedDate.astro';
+---
+
+<HomeLayout title={`${SITE_TITLE} - Guides`} description={SITE_DESCRIPTION}>
+	<!-- Main Content Area -->
+	<main style="max-width: 60rem; margin: 0 auto; padding: 8rem 2rem 4rem 2rem; min-height: 100vh;">
+		
+		<!-- Page Header -->
+		<section style="text-align: center; margin-bottom: 5rem;">
+			<h1 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 5vw, 4rem); font-weight: 700; color: var(--text-primary); background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; animation: titleGlow 3s ease-in-out infinite alternate;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+				Game Guides
+			</h1>
+			<p style="color: var(--text-secondary); font-size: 1.3rem; max-width: 45rem; margin: 0 auto; line-height: 1.6;">
+				You can find guides for all the games we cover here.
+			</p>
+		</section>
+
+		<!-- Games Grid -->
+		<section>
+			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+				
+				<!-- Zone Nova Game Card -->
+				<div style="background: var(--bg-primary); border-radius: 24px; overflow: hidden; border: 1px solid var(--amber-glow); box-shadow: 0 15px 40px rgba(164, 120, 100, 0.2); transition: all 0.4s ease; position: relative;" onmouseover="this.style.transform='translateY(-8px) scale(1.02)'; this.style.boxShadow='0 20px 50px rgba(164, 120, 100, 0.4)'; this.style.borderColor='var(--teal-crystal)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 40px rgba(164, 120, 100, 0.2)'; this.style.borderColor='var(--amber-glow)'">
+					
+					<!-- Game Image -->
+					<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit; display: block;">
+						<div style="height: 200px; overflow: hidden; position: relative;">
+							<img src="/images/zonenova.jpg" alt="Zone Nova" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+							
+							<!-- Status Badge -->
+							<div style="position: absolute; top: 1rem; right: 1rem; background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow)); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+								✅ Complete Guides
+							</div>
+							
+							<!-- Overlay Gradient -->
+							<div style="position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(transparent, rgba(0,0,0,0.7));"></div>
+						</div>
+					</a>
+
+					<!-- Content Area -->
+					<div style="padding: 2rem;">
+						<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit;">
+							<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem 0;">
+								Zone Nova
+							</h2>
+							<p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+								Character Information, Runes, Maintenance and Announcements, Crafting and more can be found here.
+							</p>
+						</a>
+						
+						<!-- Animated Buttons -->
+						<div style="margin-bottom: 2rem;">
+							<div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 350px; margin: 0 auto;">
+								<a href="/guides/zone-nova/" style="text-decoration: none; background: var(--amber-glow); color: white; padding: 1.2rem 2rem; border-radius: 12px; text-align: center; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.background='var(--teal-crystal)'" onmouseout="this.style.background='var(--amber-glow)'">Explore Zone Nova</a>
+								<a href="/guides/zone-nova/characters/" style="text-decoration: none; background: var(--teal-crystal); color: white; padding: 1.2rem 2rem; border-radius: 12px; text-align: center; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.background='var(--amber-glow)'" onmouseout="this.style.background='var(--teal-crystal)'">Character Guides</a>
+								<a href="/guides/zone-nova/updates/" style="text-decoration: none; background: var(--rose-quartz); color: white; padding: 1.2rem 2rem; border-radius: 12px; text-align: center; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.background='var(--amber-glow)'" onmouseout="this.style.background='var(--rose-quartz)'">Updates & News</a>
+							</div>
+						</div>
+						
+						<!-- Action Button -->
+						<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit; display: block;">
+							<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 16px; text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3); cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(164, 120, 100, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(164, 120, 100, 0.3)'">
+								Browse All Zone Nova Guides →
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- Coming Soon Game Card 1 -->
+				<div style="background: var(--bg-primary); border-radius: 24px; overflow: hidden; border: 1px solid var(--mocha-mousse); box-shadow: 0 15px 40px rgba(164, 120, 100, 0.1); transition: all 0.4s ease; opacity: 0.7; position: relative;" onmouseover="this.style.transform='translateY(-4px)'; this.style.opacity='0.9'" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='0.7'">
+					
+					<!-- Game Image Placeholder -->
+					<div style="height: 200px; background: linear-gradient(135deg, var(--mocha-mousse), var(--amber-glow)); display: flex; align-items: center; justify-content: center; position: relative;">
+						<span style="font-size: 4rem; opacity: 0.6;">🎮</span>
+						
+						<!-- Status Badge -->
+						<div style="position: absolute; top: 1rem; right: 1rem; background: var(--mocha-mousse); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">
+							🚧 Coming Soon
+						</div>
+					</div>
+
+					<!-- Content Area -->
+					<div style="padding: 2rem;">
+						<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem 0;">
+							Next Game Title
+						</h2>
+						<p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+						</p>
+						
+						<!-- Coming Soon Button -->
+						<div style="background: var(--mocha-mousse); color: white; padding: 1rem; border-radius: 16px; text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600;">
+							Guides Coming Soon...
+						</div>
+					</div>
+				</div>
+
+				<!-- Coming Soon Game Card 2 -->
+				<div style="background: var(--bg-primary); border-radius: 24px; overflow: hidden; border: 1px solid var(--rose-quartz); box-shadow: 0 15px 40px rgba(164, 120, 100, 0.1); transition: all 0.4s ease; opacity: 0.7; position: relative;" onmouseover="this.style.transform='translateY(-4px)'; this.style.opacity='0.9'" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='0.7'">
+					
+					<!-- Game Image Placeholder -->
+					<div style="height: 200px; background: linear-gradient(135deg, var(--rose-quartz), var(--teal-crystal)); display: flex; align-items: center; justify-content: center; position: relative;">
+						<span style="font-size: 4rem; opacity: 0.6;">⚔️</span>
+						
+						<!-- Status Badge -->
+						<div style="position: absolute; top: 1rem; right: 1rem; background: var(--rose-quartz); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">
+							📋 Planning
+						</div>
+					</div>
+
+					<!-- Content Area -->
+					<div style="padding: 2rem;">
+						<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem 0;">
+							Future Game
+						</h2>
+						<p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+						</p>
+						
+						<!-- Request Button -->
+						<div style="background: var(--rose-quartz); color: white; padding: 1rem; border-radius: 16px; text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#d81b60'" onmouseout="this.style.background='var(--rose-quartz)'">
+							Request Game Guides
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- Call to Action -->
+		<section style="text-align: center; margin-top: 6rem; padding: 3rem; background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1)); border-radius: 24px; border: 1px solid var(--amber-glow);">
+			<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">
+				Don't See Your Game?
+			</h3>
+			<p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem; max-width: 35rem; margin-left: auto; margin-right: auto;">
+				Request guides for your favorite gacha games. We prioritize Waifu.
+			</p>
+			<button onclick="window.open('https://github.com/boring877/gacha-wiki/issues/new?labels=game-request&title=Game%20Request%3A%20%5BGAME%20NAME%5D', '_blank')" style="background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow)); color: white; padding: 1rem 2rem; border: none; border-radius: 25px; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(164, 120, 100, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+				🐙 Submit Game Request
+			</button>
+		</section>
+
+	</main>
+</HomeLayout>
+
+<style>
+@keyframes titleGlow {
+	0% {
+		text-shadow: 
+			0 0 20px rgba(255, 183, 77, 0.3),
+			0 0 30px rgba(255, 183, 77, 0.2),
+			0 0 40px rgba(0, 172, 193, 0.1);
+	}
+	100% {
+		text-shadow: 
+			0 0 30px rgba(255, 183, 77, 0.6),
+			0 0 40px rgba(255, 183, 77, 0.4),
+			0 0 50px rgba(0, 172, 193, 0.3);
+	}
+}
+
+@media (max-width: 768px) {
+	main {
+		padding: 6rem 1rem 3rem 1rem !important;
+	}
+}
+</style>

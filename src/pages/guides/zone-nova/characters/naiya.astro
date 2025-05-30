@@ -1,0 +1,957 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout1 
+	title="Naiya Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Naiya, elite SSR ice buffer in Zone Nova"
+	gameTitle="Naiya Character Guide"
+	showBreadcrumb={true}
+	breadcrumbText="Characters"
+>
+	<Fragment slot="head">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-image {
+				width: 300px;
+				height: 300px;
+				border-radius: 20px;
+				object-fit: cover;
+				margin: 0 auto 2rem auto;
+				display: block;
+				box-shadow: 0 12px 30px rgba(0, 172, 193, 0.3);
+				transition: all 0.3s ease;
+			}
+
+			.character-image:hover {
+				transform: scale(1.05);
+				box-shadow: 0 16px 40px rgba(0, 172, 193, 0.4);
+			}
+
+			.character-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}
+
+			.subsection-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 2rem 0 1rem 0;
+				padding-left: 1rem;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.skill-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin: 1.5rem 0 0.8rem 0;
+			}
+
+			.info-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.info-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.info-card:hover::before {
+				left: 100%;
+			}
+
+			.info-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.skill-card {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1rem 0;
+				transition: all 0.3s ease;
+				border-left: 4px solid var(--teal-crystal);
+			}
+
+			.skill-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);
+				border-left-color: var(--amber-glow);
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1rem;
+				margin: 1.5rem 0;
+			}
+
+			.stat-item {
+				background: var(--bg-primary);
+				padding: 1rem;
+				border-radius: 10px;
+				border: 1px solid var(--neutral-200);
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				background: var(--neutral-50);
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.1);
+			}
+
+			.stat-label {
+				font-weight: 600;
+				color: var(--amber-glow);
+				font-size: 0.9rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				font-size: 1.1rem;
+				color: var(--text-primary);
+				font-weight: 700;
+			}
+
+			.video-container {
+				background: var(--bg-primary);
+				border-radius: 15px;
+				padding: 2rem;
+				text-align: center;
+				border: 1px solid var(--amber-glow);
+				margin: 2rem 0;
+			}
+
+			.video-wrapper {
+				position: relative;
+				width: 100%;
+				height: 0;
+				padding-bottom: 56.25%;
+				border-radius: 12px;
+				overflow: hidden;
+				margin-top: 1rem;
+				box-shadow: 0 8px 25px var(--neutral-300);
+			}
+
+			.video-wrapper iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			.strengths-weaknesses {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 2rem;
+				margin: 2rem 0;
+			}
+
+			.strengths-card, .weaknesses-card {
+				background: var(--bg-primary);
+				border-radius: 15px;
+				padding: 2rem;
+				border: 1px solid var(--neutral-200);
+				transition: all 0.3s ease;
+			}
+
+			.strengths-card {
+				border-left: 4px solid var(--success-color);
+			}
+
+			.weaknesses-card {
+				border-left: 4px solid var(--accent-highlight);
+			}
+
+			.strengths-card:hover, .weaknesses-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+			}
+
+			.list-item {
+				margin: 0.8rem 0;
+				padding: 0.5rem 0;
+				border-bottom: 1px solid var(--neutral-200);
+				transition: all 0.3s ease;
+			}
+
+			.list-item:last-child {
+				border-bottom: none;
+			}
+
+			.awakening-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1.5rem;
+				margin: 2rem 0;
+			}
+
+			.awakening-item {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border: 1px solid var(--neutral-200);
+				border-radius: 12px;
+				padding: 1.5rem;
+				transition: all 0.3s ease;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.awakening-item:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.1);
+				border-left-color: var(--teal-crystal);
+			}
+
+			.awakening-number {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: 700;
+				margin-right: 1rem;
+			}
+
+			.text-content {
+				color: var(--text-primary);
+				line-height: 1.7;
+				font-size: 1rem;
+			}
+
+			.text-content p {
+				margin: 1rem 0;
+			}
+
+			.text-content ul, .text-content ol {
+				padding-left: 2rem;
+				margin: 1rem 0;
+			}
+
+			.text-content li {
+				margin: 0.5rem 0;
+				line-height: 1.6;
+			}
+
+			.text-content strong {
+				color: var(--amber-glow);
+				font-weight: 600;
+			}
+
+			.highlight-text {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				padding: 0.2rem 0.5rem;
+				border-radius: 6px;
+				font-weight: 600;
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes titleGlow {
+				0% {
+					text-shadow: 
+						0 0 10px rgba(255, 183, 77, 0.3),
+						0 0 20px rgba(255, 183, 77, 0.2);
+				}
+				100% {
+					text-shadow: 
+						0 0 20px rgba(255, 183, 77, 0.6),
+						0 0 30px rgba(255, 183, 77, 0.4);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header {
+					padding: 2rem;
+				}
+
+				.character-title {
+					font-size: 2rem;
+				}
+
+				.character-image {
+					width: 200px;
+					height: 200px;
+				}
+
+				.content-section {
+					padding: 2rem;
+				}
+
+				.strengths-weaknesses {
+					grid-template-columns: 1fr;
+					gap: 1rem;
+				}
+
+				.stats-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.awakening-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+			
+			/* Enhanced Mobile Responsiveness */
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 0.5rem !important;
+				}
+
+				.character-header {
+					padding: 1.5rem !important;
+					flex-direction: column !important;
+					text-align: center !important;
+					gap: 1rem !important;
+				}
+
+				.character-image {
+					width: 150px !important;
+					height: 150px !important;
+					margin: 0 auto !important;
+				}
+
+				.character-title {
+					font-size: 1.8rem !important;
+					margin-bottom: 0.5rem !important;
+				}
+
+				.character-subtitle {
+					font-size: 1rem !important;
+				}
+
+				.content-section {
+					padding: 1.5rem !important;
+					margin-bottom: 1.5rem !important;
+				}
+
+				.section-title {
+					font-size: 1.8rem !important;
+				}
+
+				.info-card {
+					padding: 1.5rem !important;
+				}
+
+				.skill-card {
+					padding: 1.5rem !important;
+					margin: 1rem 0 !important;
+				}
+
+				.stats-grid {
+					grid-template-columns: repeat(2, 1fr) !important;
+					gap: 0.75rem !important;
+				}
+
+				.stat-item {
+					padding: 0.75rem !important;
+				}
+
+				.strengths-weaknesses {
+					grid-template-columns: 1fr !important;
+					gap: 1rem !important;
+				}
+
+				.strengths-card, .weaknesses-card {
+					padding: 1.5rem !important;
+				}
+
+				.awakening-grid {
+					grid-template-columns: 1fr !important;
+					gap: 1rem !important;
+				}
+
+				.awakening-card {
+					padding: 1.5rem !important;
+				}
+
+				.back-button {
+					padding: 0.75rem 1.25rem !important;
+					font-size: 0.9rem !important;
+					margin-bottom: 1rem !important;
+				}
+
+				.video-container {
+					padding: 1.5rem !important;
+				}
+
+				.video-wrapper {
+					padding-bottom: 56.25% !important;
+				}
+
+				/* Text adjustments for mobile */
+				.text-content {
+					font-size: 0.95rem !important;
+				}
+
+				.list-item {
+					margin: 0.6rem 0 !important;
+					padding: 0.4rem 0 !important;
+				}
+			}
+
+			/* Extra Small Mobile */
+			@media (max-width: 480px) {
+				.character-container {
+					padding: 0 0.25rem !important;
+				}
+
+				.character-header {
+					padding: 1rem !important;
+				}
+
+				.character-image {
+					width: 120px !important;
+					height: 120px !important;
+				}
+
+				.character-title {
+					font-size: 1.5rem !important;
+				}
+
+				.character-subtitle {
+					font-size: 0.9rem !important;
+				}
+
+				.content-section {
+					padding: 1.25rem !important;
+				}
+
+				.section-title {
+					font-size: 1.5rem !important;
+				}
+
+				.stats-grid {
+					grid-template-columns: 1fr !important;
+				}
+
+				.stat-item {
+					padding: 0.5rem !important;
+				}
+
+				.stat-label {
+					font-size: 0.8rem !important;
+				}
+
+				.stat-value {
+					font-size: 1rem !important;
+				}
+
+				.strengths-card, .weaknesses-card {
+					padding: 1.25rem !important;
+				}
+
+				.awakening-card {
+					padding: 1.25rem !important;
+				}
+
+				.back-button {
+					padding: 0.625rem 1rem !important;
+					font-size: 0.85rem !important;
+				}
+
+				.text-content {
+					font-size: 0.9rem !important;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<!-- Back Button -->
+			<a href="/guides/zone-nova/characters/" class="back-button">
+				<span class="back-arrow">←</span>
+				Back to Characters
+			</a>
+
+			<!-- Character Header -->
+			<div class="character-header">
+				<img src="/images/naiya.jpg" alt="Naiya - Zone Nova Character" class="character-image" />
+				<h1 class="character-title">❄️ Naiya</h1>
+				<p class="character-subtitle">Elite SSR Ice Buffer & War Intent Specialist</p>
+			</div>
+
+			<!-- Character Overview -->
+			<section class="content-section">
+				<h2 class="section-title">Character Overview</h2>
+				<div class="info-card">
+					<div class="text-content">
+						<p>Naiya is an elite support buffer who specializes in empowering allies through the unique "War Intent" mechanic. She excels at turning your strongest attacker into a hyper-carry while providing team-wide offensive buffs. Her kit revolves around massive attack power increases and synergizes exceptionally well with ice damage dealers.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Video Guide Section -->
+			<section class="content-section">
+				<h2 class="section-title">📺 Video Guide</h2>
+				<div class="video-container">
+					<p class="text-content">Watch this comprehensive guide to master Naiya's gameplay and strategies:</p>
+					<div class="video-wrapper">
+						<iframe 
+							src="https://www.youtube.com/embed/A7wG_puhjyM" 
+							title="Naiya Character Guide - Zone Nova" 
+							frameborder="0" 
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+							allowfullscreen>
+						</iframe>
+					</div>
+				</div>
+			</section>
+
+			<!-- Basic Information -->
+			<section class="content-section">
+				<h2 class="section-title">Basic Information</h2>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Role</div>
+						<div class="stat-value">Support/Buffer</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Attribute</div>
+						<div class="stat-value">❄️ Ice Frost</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Function</div>
+						<div class="stat-value">Attack Buffer</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Base Stats at Level 80</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">HP</div>
+						<div class="stat-value">9,564</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Attack</div>
+						<div class="stat-value">1,004</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Defense</div>
+						<div class="stat-value">672</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Skills Breakdown -->
+			<section class="content-section">
+				<h2 class="section-title">❄️ Skills Breakdown</h2>
+
+				<h3 class="skill-title">Normal Attack - Light Art Shot (光术射击)</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<p><strong>Cooldown:</strong> 2.0 seconds</p>
+						<p><strong>Effect:</strong> Deals 120% attack power as ice frost damage to specified enemy</p>
+						<p><strong>Level:</strong> 10+4</p>
+					</div>
+				</div>
+
+				<h3 class="skill-title">Auto Skill - Precise Deployment (精准部署)</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<p><strong>Cooldown:</strong> 5.0 seconds</p>
+						<p><strong>Level:</strong> 10+4</p>
+						<p><strong>Effect:</strong> Grants [War Intent] buff to the ally with highest attack power</p>
+						<p><strong>Buff Details:</strong> Increases attack by <span class="highlight-text">168%</span>, capped at 84% of their initial entry attack power</p>
+						<p><strong>Duration:</strong> 15 seconds (20 seconds with Awakening 6)</p>
+					</div>
+				</div>
+
+				<h3 class="skill-title">Ultimate Skill - Zero Lock (零号锁定)</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<p><strong>Energy Cost:</strong> 3</p>
+						<p><strong>Cooldown:</strong> 1.0 seconds</p>
+						<p><strong>Level:</strong> 10+4</p>
+						<p><strong>Damage:</strong> 480% attack power as ice frost damage</p>
+						<p><strong>Team Buff:</strong> Increases all allies' attack by <span class="highlight-text">36%</span> and critical damage by <span class="highlight-text">53.6%</span></p>
+						<p><strong>Duration:</strong> 10 seconds</p>
+					</div>
+				</div>
+
+				<h3 class="skill-title">Passive - War Intent Link (战意连携)</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<p><strong>Level:</strong> 10+4</p>
+						<p><strong>Effect 1:</strong> After a [War Intent] character kills an enemy, damage increases by <span class="highlight-text">17%</span> for 10 seconds (stacks up to 3 times)</p>
+						<p><strong>Effect 2:</strong> Immediately restore 1 energy point to entire team (max once per second)</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Memory/Card -->
+			<section class="content-section">
+				<h2 class="section-title">🍫 Memory/Card - Still Have Chocolate</h2>
+				<div class="info-card">
+					<div class="text-content">
+						<p><strong>Effect 1:</strong> Increases attack power by <span class="highlight-text">40%</span></p>
+						<p><strong>Effect 2:</strong> After using ultimate skill, entire team gains <span class="highlight-text">40%</span> increased ultimate skill damage for 5 seconds</p>
+						<p><strong>Why Essential:</strong> Synergizes perfectly with her support role and ultimate buff stacking</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Awakening Effects -->
+			<section class="content-section">
+				<h2 class="section-title">⭐ Awakening Effects</h2>
+				<div class="awakening-grid">
+					<div class="awakening-item">
+						<div style="display: flex; align-items: flex-start; gap: 1rem;">
+							<span class="awakening-number">1</span>
+							<div class="text-content">
+								<strong>After activating main skill, all units gain 20% attack power for 20 seconds</strong>
+							</div>
+						</div>
+					</div>
+					<div class="awakening-item">
+						<div style="display: flex; align-items: flex-start; gap: 1rem;">
+							<span class="awakening-number">2</span>
+							<div class="text-content">
+								<strong>After killing an enemy with [War Intent], recover 1 energy for entire team (once per second)</strong>
+							</div>
+						</div>
+					</div>
+					<div class="awakening-item">
+						<div style="display: flex; align-items: flex-start; gap: 1rem;">
+							<span class="awakening-number">3</span>
+							<div class="text-content">
+								<strong>[Skills] and [Normal Attack] level and cap +4</strong>
+							</div>
+						</div>
+					</div>
+					<div class="awakening-item">
+						<div style="display: flex; align-items: flex-start; gap: 1rem;">
+							<span class="awakening-number">4</span>
+							<div class="text-content">
+								<strong>When [War Intent] character attacks, deals ice frost damage equal to 500% attack power (max once per 10 seconds)</strong>
+							</div>
+						</div>
+					</div>
+					<div class="awakening-item">
+						<div style="display: flex; align-items: flex-start; gap: 1rem;">
+							<span class="awakening-number">5</span>
+							<div class="text-content">
+								<strong>[Main Skill] and [Passive] level and cap +4</strong>
+							</div>
+						</div>
+					</div>
+					<div class="awakening-item">
+						<div style="display: flex; align-items: flex-start; gap: 1rem;">
+							<span class="awakening-number">6</span>
+							<div class="text-content">
+								<strong>Main skill duration extended to 20 seconds, damage multiplier increased by 100%</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Team Buff Requirements</h3>
+				<div class="info-card">
+					<div class="text-content">
+						<p><strong>Trigger:</strong> 2 [Support] characters OR 2 [Ice Frost] characters</p>
+						<p><strong>Effect:</strong></p>
+						<ul>
+							<li>Beginning of battle: Team damage increases by <span class="highlight-text">10%</span></li>
+							<li>For every 500 attack power, team gains additional <span class="highlight-text">5%</span> damage (max 6 stacks = 30% total)</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Build Recommendations -->
+			<section class="content-section">
+				<h2 class="section-title">🏗️ Build Recommendations</h2>
+
+				<h3 class="subsection-title">Rune Priority</h3>
+				<div class="info-card">
+					<div class="text-content">
+						<ul>
+							<li><strong>Positions 4, 6:</strong> ATK% (maximize her own damage and buff calculations)</li>
+							<li><strong>Position 5:</strong> Element Damage or ATK%</li>
+							<li><strong>Substats:</strong> ATK% > HP% > DEF%</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Gameplay Strategy -->
+			<section class="content-section">
+				<h2 class="section-title">🎯 Gameplay Strategy</h2>
+
+				<h3 class="subsection-title">Buff Management</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<ol>
+							<li><strong>Target Selection:</strong> Always ensure War Intent goes to your strongest DPS</li>
+							<li><strong>Timing:</strong> Use main skill at battle start for immediate pressure</li>
+							<li><strong>Ultimate Usage:</strong> Stack with awakening 1 for maximum team damage</li>
+						</ol>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Combat Flow</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<ol>
+							<li>Apply War Intent to main DPS</li>
+							<li>Use ultimate during burst windows</li>
+							<li>Let War Intent character secure kills for energy</li>
+							<li>Maintain buff uptime with proper cooldown management</li>
+						</ol>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Advanced Tips</h3>
+				<div class="info-card">
+					<div class="text-content">
+						<ul>
+							<li><strong>Energy Loop:</strong> War Intent kills → Team energy → More ultimates</li>
+							<li><strong>Damage Stacking:</strong> Ultimate + Memory + Awakening 1 = Massive burst</li>
+							<li><strong>Positioning:</strong> Keep Naiya safe to maintain buffs</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Investment Priority -->
+			<section class="content-section">
+				<h2 class="section-title">💎 Investment Priority</h2>
+				<div class="info-card">
+					<div class="text-content">
+						<ol>
+							<li><strong>Memory:</strong> Still Have Chocolate - Essential</li>
+							<li><strong>Awakening Order:</strong> 6 > 1 > 4 > 2 > 5 > 3</li>
+							<li><strong>Skill Priority:</strong> Main Skill > Ultimate > Passive > Normal Attack</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+
+			<!-- Strengths & Weaknesses -->
+			<section class="content-section">
+				<h2 class="section-title">⚖️ Strengths & Weaknesses</h2>
+				<div class="strengths-weaknesses">
+					<div class="strengths-card">
+						<h3 style="color: var(--success-color); margin-bottom: 1.5rem; font-family: 'Space Grotesk', sans-serif;">Strengths</h3>
+						<div class="text-content">
+							<div class="list-item">✅ Massive single-target attack buff (168%)</div>
+							<div class="list-item">✅ Team-wide damage amplification</div>
+							<div class="list-item">✅ Energy battery through passive</div>
+							<div class="list-item">✅ Excellent burst enabler</div>
+							<div class="list-item">✅ Additional ice damage procs</div>
+						</div>
+					</div>
+					<div class="weaknesses-card">
+						<h3 style="color: var(--accent-highlight); margin-bottom: 1.5rem; font-family: 'Space Grotesk', sans-serif;">Weaknesses</h3>
+						<div class="text-content">
+							<div class="list-item">❌ Buff limited to one ally</div>
+							<div class="list-item">❌ Requires high-attack allies to maximize value</div>
+							<div class="list-item">❌ Energy dependent for full potential</div>
+							<div class="list-item">❌ No defensive utility</div>
+							<div class="list-item">❌ Buff has attack cap limitation</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Tips for Maximum Effectiveness -->
+			<section class="content-section">
+				<h2 class="section-title">💡 Tips for Maximum Effectiveness</h2>
+				<div class="info-card">
+					<div class="text-content">
+						<ol>
+							<li><strong>Pre-battle Planning:</strong> Know who gets War Intent</li>
+							<li><strong>Buff Stacking:</strong> Layer multiple damage increases</li>
+							<li><strong>Kill Securing:</strong> Help War Intent target get kills</li>
+							<li><strong>Team Building:</strong> Build around one hyper-carry</li>
+							<li><strong>Timing:</strong> Coordinate team bursts with ultimate</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+
+			<!-- Common Mistakes -->
+			<section class="content-section">
+				<h2 class="section-title">⚠️ Common Mistakes</h2>
+				<div class="info-card">
+					<div class="text-content">
+						<ul>
+							<li>❌ Giving War Intent to wrong ally</li>
+							<li>❌ Using ultimate without setup</li>
+							<li>❌ Ignoring energy generation passive</li>
+							<li>❌ Not building enough attack on Naiya</li>
+							<li>❌ Poor team composition for buff activation</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Final Verdict -->
+			<section class="content-section">
+				<h2 class="section-title">🏆 Final Verdict</h2>
+				<div class="info-card">
+					<div class="text-content">
+						<p>Naiya is an SSR-tier support who transforms one ally into an unstoppable force while providing significant team-wide benefits. Her unique War Intent mechanic creates a snowball effect through kills, energy generation, and damage stacking. Essential for any player looking to maximize single-target damage output and create devastating burst combos.</p>
+					</div>
+				</div>
+
+				<div class="info-card">
+					<div class="text-content">
+						<p><strong>📺 For more detailed strategies and gameplay tips, check out the video guide above!</strong></p>
+						<p>Video Source: <a href="https://www.youtube.com/watch?v=A7wG_puhjyM" target="_blank" style="color: var(--amber-glow); text-decoration: none;">YouTube Guide</a></p>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</ZoneNovaLayout1>

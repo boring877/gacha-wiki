@@ -1,0 +1,249 @@
+---
+import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout 
+	title="Zone Nova Character Guides - GachaWiki" 
+	description="Character guides, tier lists, and builds for Zone Nova"
+	gameTitle="Characters"
+	showBreadcrumb={true}
+	breadcrumbText="Characters"
+>
+	<Fragment slot="head">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: white;
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.content-section {
+				background: rgba(240, 240, 240, 0.95);
+				padding: 3rem;
+				border-radius: 20px;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.3);
+				border-color: var(--teal-crystal);
+			}
+			
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2.5rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1.5rem 0;
+				text-align: center;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.section-description {
+				color: #666;
+				font-size: 1.2rem;
+				line-height: 1.7;
+				margin-bottom: 2rem;
+				text-align: center;
+				max-width: 60rem;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.character-list {
+				display: flex;
+				flex-direction: column;
+				gap: 2rem;
+				margin-top: 2rem;
+			}
+			
+			.character-card {
+				background: var(--bg-primary);
+				border: 1px solid var(--mocha-mousse);
+				border-radius: 16px;
+				padding: 2.5rem;
+				transition: all 0.4s ease;
+				text-decoration: none;
+				color: inherit;
+				position: relative;
+				overflow: hidden;
+				animation: cardSlideUp 0.6s ease-out;
+			}
+
+			.character-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.character-card:hover::before {
+				left: 100%;
+			}
+			
+			.character-card:hover {
+				transform: translateY(-8px) scale(1.02);
+				box-shadow: 0 20px 40px rgba(0, 172, 193, 0.3);
+				border-color: var(--teal-crystal);
+				background: var(--bg-secondary);
+			}
+			
+			.character-card h2 {
+				color: var(--text-primary);
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+				font-weight: 600;
+				margin: 0 0 0.75rem 0;
+				transition: all 0.3s ease;
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				flex-wrap: nowrap;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+
+			.character-card:hover h2 {
+				color: var(--amber-glow);
+				transform: translateX(5px);
+			}
+			
+			.character-class {
+				color: var(--text-secondary);
+				font-size: 1rem;
+				margin: 0 0 1rem 0;
+				font-weight: 500;
+				transition: color 0.3s ease;
+			}
+
+			.character-card:hover .character-class {
+				color: var(--teal-crystal);
+			}
+			
+			.character-summary {
+				margin: 0;
+				line-height: 1.6;
+				color: var(--text-secondary);
+				font-size: 1.1rem;
+				transition: color 0.3s ease;
+			}
+
+			.character-card:hover .character-summary {
+				color: var(--text-primary);
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes cardSlideUp {
+				0% {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.content-section {
+					padding: 2rem;
+					margin-bottom: 2rem;
+				}
+				
+				.section-title {
+					font-size: 2rem;
+				}
+
+				.character-card {
+					padding: 2rem;
+				}
+
+				.character-card h2 {
+					font-size: clamp(1.1rem, 3vw, 1.5rem);
+					gap: 0.5rem;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<!-- Back Button -->
+	<a href="/guides/zone-nova/" class="back-button">
+		<span class="back-arrow">←</span>
+		Back to Zone Nova
+	</a>
+
+	<!-- Characters Overview Section -->
+	<section class="content-section">
+		
+		<!-- Character Guides List -->
+		<div class="character-list">
+			<a href="/guides/zone-nova/characters/naiya/" class="character-card">
+				<h2>❄️ Naiya</h2>
+				<p class="character-class">🌟 SSR • ❄️ Ice • 🎭 Buffer</p>
+				<p class="character-summary">
+					Elite support buffer who specializes in empowering allies through the unique "War Intent" mechanic. 
+					Excels at turning your strongest attacker into a hyper-carry.
+				</p>
+			</a>
+			
+			<a href="/guides/zone-nova/characters/kela/" class="character-card">
+				<h2>✨ Kela</h2>
+				<p class="character-class">🌟 SR • ✨ Holy Light • 💚 Healer</p>
+				<p class="character-summary">
+					Single-target healer who becomes incredibly powerful when allies drop below 50% health.
+				</p>
+			</a>
+		</div>
+	</section>
+</ZoneNovaLayout>

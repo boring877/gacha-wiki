@@ -1,0 +1,336 @@
+---
+import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout 
+	title="Zone Nova Rune Guides - GachaWiki" 
+	description="Complete rune guides, builds, and optimization for Zone Nova"
+	gameTitle="Rune System Guide"
+	showBreadcrumb={true}
+	breadcrumbText="Runes"
+>
+	<Fragment slot="head">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: white;
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.content-section {
+				background: rgba(240, 240, 240, 0.95);
+				padding: 3rem;
+				border-radius: 20px;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.3);
+				border-color: var(--teal-crystal);
+			}
+			
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2.5rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1.5rem 0;
+				text-align: center;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.section-description {
+				color: #666;
+				font-size: 1.2rem;
+				line-height: 1.7;
+				margin-bottom: 2rem;
+				text-align: center;
+				max-width: 60rem;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.rune-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 2rem;
+				margin-top: 2rem;
+			}
+			
+			.rune-card {
+				background: var(--bg-primary);
+				border: 1px solid var(--mocha-mousse);
+				border-radius: 16px;
+				padding: 2.5rem;
+				transition: all 0.4s ease;
+				position: relative;
+				overflow: hidden;
+				animation: cardSlideUp 0.6s ease-out;
+			}
+
+			.rune-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.rune-card:hover::before {
+				left: 100%;
+			}
+			
+			.rune-card:hover {
+				transform: translateY(-8px) scale(1.02);
+				box-shadow: 0 20px 40px rgba(0, 172, 193, 0.3);
+				border-color: var(--teal-crystal);
+				background: var(--bg-secondary);
+			}
+			
+			.rune-card h3 {
+				color: var(--text-primary);
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.6rem;
+				font-weight: 600;
+				margin: 0 0 1rem 0;
+				transition: all 0.3s ease;
+			}
+
+			.rune-card:hover h3 {
+				color: var(--amber-glow);
+			}
+
+			.rune-card p {
+				color: var(--text-secondary);
+				line-height: 1.6;
+				margin-bottom: 1rem;
+				transition: color 0.3s ease;
+			}
+
+			.rune-card:hover p {
+				color: var(--text-primary);
+			}
+
+			.stat-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.stat-list li {
+				color: var(--text-secondary);
+				padding: 0.5rem 0;
+				border-bottom: 1px solid rgba(164, 120, 100, 0.2);
+				transition: color 0.3s ease;
+			}
+
+			.stat-list li:last-child {
+				border-bottom: none;
+			}
+
+			.rune-card:hover .stat-list li {
+				color: var(--text-primary);
+			}
+
+			.priority-number {
+				color: var(--amber-glow);
+				font-weight: 600;
+				margin-right: 0.5rem;
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes cardSlideUp {
+				0% {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.content-section {
+					padding: 2rem;
+					margin-bottom: 2rem;
+				}
+				
+				.section-title {
+					font-size: 2rem;
+				}
+
+				.rune-grid {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+
+				.rune-card {
+					padding: 2rem;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<!-- Back Button -->
+	<a href="/guides/zone-nova/" class="back-button">
+		<span class="back-arrow">←</span>
+		Back to Zone Nova
+	</a>
+
+	<!-- Rune Sets Section -->
+	<section class="content-section">
+		<h2 class="section-title">Rune Sets</h2>
+		<div class="section-description">
+			Complete guide to rune sets, main stats, and optimization strategies for Zone Nova
+		</div>
+		
+		<div class="rune-grid">
+			<div class="rune-card">
+				<h3>🔱 Alpha (阿尔法符)</h3>
+				<p><strong>2-Piece:</strong> Attack Power +8%</p>
+				<p><strong>4-Piece:</strong> Basic Attack Damage +30%</p>
+				<p><strong>Best For:</strong> Basic attack focused DPS characters</p>
+			</div>
+
+			<div class="rune-card">
+				<h3>🏆 Shattered Foundation (碎基)</h3>
+				<p><strong>2-Piece:</strong> Defense +12%</p>
+				<p><strong>4-Piece:</strong> Shield Effectiveness +20%</p>
+				<p><strong>Best For:</strong> Tanks and shield-based characters</p>
+			</div>
+
+			<div class="rune-card">
+				<h3>🏠 Beth (贝丝)</h3>
+				<p><strong>2-Piece:</strong> Critical Hit Rate +6%</p>
+				<p><strong>4-Piece:</strong> When HP >80%: Critical Hit Damage +24%</p>
+				<p><strong>Best For:</strong> High HP critical DPS units</p>
+			</div>
+
+			<div class="rune-card">
+				<h3>⚡ Zahn (札恩)</h3>
+				<p><strong>2-Piece:</strong> HP +8%</p>
+				<p><strong>4-Piece:</strong> After Ultimate: Take 5% less damage (10s)</p>
+				<p><strong>Best For:</strong> Survivability and ultimate-dependent characters</p>
+			</div>
+
+			<div class="rune-card">
+				<h3>🚪 Daleth (达莱特)</h3>
+				<p><strong>2-Piece:</strong> Healing Effectiveness +10%</p>
+				<p><strong>4-Piece:</strong> Battle Start: Gain 1 Energy immediately</p>
+				<p><strong>Best For:</strong> Healers and energy-hungry supports</p>
+			</div>
+
+			<div class="rune-card">
+				<h3>✛ Epsilon (埃普西隆)</h3>
+				<p><strong>2-Piece:</strong> Attack Power +8%</p>
+				<p><strong>4-Piece:</strong> After Ultimate: Team damage +10% (10s)</p>
+				<p><strong>Best For:</strong> Team support DPS and ultimate-based builds</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Substat Priorities Section -->
+	<section class="content-section">
+		<h2 class="section-title">Substat Priorities</h2>
+		<div class="section-description">
+			Optimal substat priorities for different character roles
+		</div>
+		
+		<div class="rune-grid">
+			<div class="rune-card">
+				<h3>🗡️ DPS Priority</h3>
+				<ul class="stat-list">
+					<li><span class="priority-number">1.</span> Critical Rate / Critical Damage</li>
+					<li><span class="priority-number">2.</span> Attack %</li>
+					<li><span class="priority-number">3.</span> Penetration</li>
+					<li><span class="priority-number">4.</span> Attack (Flat)</li>
+					<li><span class="priority-number">5.</span> HP% / Defense%</li>
+				</ul>
+			</div>
+
+			<div class="rune-card">
+				<h3>🛡️ Tank Priority</h3>
+				<ul class="stat-list">
+					<li><span class="priority-number">1.</span> HP%</li>
+					<li><span class="priority-number">2.</span> Defense%</li>
+					<li><span class="priority-number">3.</span> HP (Flat)</li>
+					<li><span class="priority-number">4.</span> Defense (Flat)</li>
+					<li><span class="priority-number">5.</span> Critical Rate</li>
+				</ul>
+			</div>
+
+			<div class="rune-card">
+				<h3>💚 Healer Priority</h3>
+				<ul class="stat-list">
+					<li><span class="priority-number">1.</span> Attack% (if healing scales with ATK)</li>
+					<li><span class="priority-number">2.</span> HP%</li>
+					<li><span class="priority-number">3.</span> Attack (Flat)</li>
+					<li><span class="priority-number">4.</span> Defense%</li>
+					<li><span class="priority-number">5.</span> Critical Rate</li>
+				</ul>
+			</div>
+
+			<div class="rune-card">
+				<h3>💡 Optimization Tips</h3>
+				<ul class="stat-list">
+					<li>Aim for 1:2 Critical Rate : Critical Damage ratio</li>
+					<li>ATK% is usually better than flat ATK</li>
+					<li>Don't ignore survivability on DPS units</li>
+					<li>Match element damage with character element</li>
+					<li>Complete 2-piece sets before perfecting individual runes</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</ZoneNovaLayout>
+

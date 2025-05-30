@@ -1,40 +1,639 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import HomeLayout from '../layouts/HomeLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="bg-gradient-to-br from-amber-50 to-orange-50 min-h-screen">
-		<Header />
-		<main class="max-w-6xl mx-auto px-4 py-12">
-			<!-- Hero Section -->
-			<section class="text-center mb-16">
-				<h1 class="text-5xl md:text-7xl font-bold mb-6 flex items-center justify-center gap-2">
-					🎲
-					<span class="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">GachaWiki</span>
-				</h1>
-				<p class="text-xl md:text-2xl text-amber-400 mb-8 max-w-3xl mx-auto">
-					Built by someone who's spent way too much time on gacha games...RNG can be cruel (╥﹏╥) 
-				</p>
-			</section>
+<HomeLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<!-- Main Content Area -->
+	<main style="max-width: 50rem; margin: 0 auto; padding: 8rem 2rem 4rem 2rem; min-height: 100vh;">
+		<!-- Games Section - Option 5: Featured Showcase Style -->
+		<section style="margin-bottom: 6rem;">
+			<div style="text-align: center; margin-bottom: 3rem;">
+				<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; color: var(--text-primary); background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; animation: titleGlow 3s ease-in-out infinite alternate, fadeInScale 1s ease-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+					Game Guide Library
+				</h2>
+			</div>
 
-			<!-- Popular Games Section -->
-			<section class="bg-white rounded-2xl p-8 shadow-lg">
-				<h2 class="text-3xl font-bold text-center text-amber-400 mb-8">Gacha Games</h2>
-				<div class="flex justify-center">
-					<a href="/blog/zone-nova/" class="text-center p-4 rounded-lg hover:bg-amber-100 transition-colors duration-200 block no-underline">
-						<img src="/images/zonenova.jpg" alt="Zone NOVA" class="w-20 h-20 mx-auto mb-2">
-						<p class="font-semibold text-amber-400 text-xl">Zone Nova</p>
+			<!-- Featured Game - Zone Nova -->
+			<div style="margin-bottom: 3rem;">
+				<div style="background: var(--bg-primary); border-radius: 20px; overflow: hidden; border: 1px solid var(--amber-glow); box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 15px 35px rgba(164, 120, 100, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 12px 30px rgba(164, 120, 100, 0.2)'">
+					<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit; display: block;">
+						
+						<!-- Featured Header -->
+						<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); padding: 1rem 2rem; text-align: center;">
+							<span style="color: white; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+								<span style="font-size: 1.2rem;">⭐</span>
+								FEATURED GAME
+							</span>
+						</div>
+
+						<!-- Content Area -->
+						<div style="padding: 2rem; display: flex; align-items: center; gap: 2rem;">
+							
+							<!-- Game Image -->
+							<div style="flex-shrink: 0;">
+								<div style="width: 10rem; height: 10rem; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3);">
+									<img src="/images/zonenova.jpg" alt="Zone Nova" style="width: 100%; height: 100%; object-fit: cover;">
+								</div>
+							</div>
+
+							<!-- Game Info -->
+							<div style="flex: 1;">
+								<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem 0;">
+									Zone Nova
+								</h3>
+								<p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin: 0 0 1rem 0; max-width: 35rem;">
+									Character guides, runes, events, and announcements.
+								</p>
+
+								<!-- Active Events Section -->
+								<div style="background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border-radius: 12px; padding: 1rem; margin: 0 0 1rem 0; border-left: 4px solid var(--teal-crystal);">
+									<div style="font-size: 0.9rem; font-weight: 600; color: var(--amber-glow); margin-bottom: 0.5rem;">🌀 Active Events</div>
+									<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; font-size: 0.85rem;">
+										<div style="background: rgba(0, 172, 193, 0.15); padding: 0.5rem; border-radius: 6px;">
+											<div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;">Rift Tide II</div>
+											<div id="riftTimer2" style="color: var(--teal-crystal); font-weight: 600; font-family: 'Courier New', monospace;">Loading...</div>
+										</div>
+										<div style="background: rgba(255, 183, 77, 0.15); padding: 0.5rem; border-radius: 6px;">
+											<div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;">Rift Tide III</div>
+											<div id="riftTimer3" style="color: var(--amber-glow); font-weight: 600; font-family: 'Courier New', monospace;">Loading...</div>
+										</div>
+										<div style="background: rgba(255, 77, 77, 0.15); padding: 0.5rem; border-radius: 6px;">
+											<div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;">⚡ Thunder King</div>
+											<div id="thunderTimer" style="color: var(--rose-quartz); font-weight: 600; font-family: 'Courier New', monospace;">Loading...</div>
+										</div>
+									</div>
+								</div>
+
+								<p style="color: var(--amber-glow); font-size: 0.9rem; font-weight: 500; margin: 0 0 2rem 0;">
+									Last updated: {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+								</p>
+								
+								<!-- Action Button -->
+								<div style="background: var(--amber-glow); color: white; padding: 1rem 2rem; border-radius: 25px; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.75rem; transition: all 0.3s ease;" onmouseover="this.style.background='#e6a843'; this.style.transform='translateX(2px)'" onmouseout="this.style.background='var(--amber-glow)'; this.style.transform='translateX(0)'">
+									Explore Zone Nova
+									<span style="font-size: 1.25rem;">→</span>
+								</div>
+							</div>
+						</div>
 					</a>
 				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+			</div>
+
+			<!-- Other Games Section -->
+			<div style="text-align: center; margin-bottom: 2rem;">
+				<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 600; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
+					More Games Coming Soon
+				</h3>
+			</div>
+
+			<!-- Coming Soon Grid -->
+			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+				
+				<!-- Coming Soon Card 1 -->
+				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--mocha-mousse); text-align: center; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='0.8'; this.style.transform='translateY(0)'">
+					<div style="width: 4rem; height: 4rem; border-radius: 12px; background: linear-gradient(135deg, var(--mocha-mousse), var(--amber-glow)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
+						<span style="font-size: 2rem;">🎮</span>
+					</div>
+					<h4 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin: 0 0 0.75rem 0;">Coming Soon</h4>
+					<div style="background: var(--mocha-mousse); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">
+						In Development
+					</div>
+				</div>
+
+				<!-- Coming Soon Card 2 -->
+				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--rose-quartz); text-align: center; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='0.8'; this.style.transform='translateY(0)'">
+					<div style="width: 4rem; height: 4rem; border-radius: 12px; background: linear-gradient(135deg, var(--rose-quartz), var(--teal-crystal)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
+						<span style="font-size: 2rem;">⏳</span>
+					</div>
+					<h4 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin: 0 0 0.75rem 0;">Coming Soon</h4>
+					<div style="background: var(--rose-quartz); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">
+						Stay Tuned
+					</div>
+				</div>
+
+				<!-- Coming Soon Card 3 -->
+				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--teal-crystal); text-align: center; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='0.8'; this.style.transform='translateY(0)'">
+					<div style="width: 4rem; height: 4rem; border-radius: 12px; background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
+						<span style="font-size: 2rem;">🔮</span>
+					</div>
+					<h4 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin: 0 0 0.75rem 0;">Coming Soon</h4>
+					<div style="background: var(--teal-crystal); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">
+						Future Release
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- "Built by" Section -->
+		<section style="text-align: center; margin-bottom: 6rem;">
+			<div style="animation: fadeInUp 1s ease-out;">
+				<p style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; line-height: 1.4; max-width: 42rem; margin: 0 auto; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(255, 183, 77, 0.3); animation: glow 3s ease-in-out infinite alternate;">
+					Built by someone who's spent way too much time on gacha games...
+				</p>
+			</div>
+		</section>
+
+		<!-- Floating Games Modal -->
+		<div id="gamesModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease;">
+			<div style="display: flex; align-items: center; justify-content: center; height: 100%; padding: 2rem;">
+				<div style="background: var(--bg-primary); border-radius: 20px; padding: 2rem; max-width: 60rem; width: 100%; max-height: 80vh; overflow-y: auto; border: 1px solid var(--amber-glow); box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+					
+					<!-- Modal Header -->
+					<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+						<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text-primary); margin: 0; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+							Choose Your Game
+						</h2>
+						<button id="closeModal" style="background: none; border: none; color: var(--text-secondary); font-size: 2rem; cursor: pointer; padding: 0.5rem;" onmouseover="this.style.color='var(--rose-quartz)'" onmouseout="this.style.color='var(--text-secondary)'">
+							×
+						</button>
+					</div>
+
+					<!-- Games Grid -->
+					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+						
+						<!-- Zone Nova Card -->
+						<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--amber-glow); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='var(--teal-crystal)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='var(--amber-glow)'">
+							<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit;">
+								<div style="width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(0, 172, 193, 0.3);">
+									<img src="/images/zonenova.jpg" alt="Zone NOVA" style="width: 100%; height: 100%; object-fit: cover;">
+								</div>
+								<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem 0;">Zone Nova</h3>
+								<p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Character guides, runes, events, and announcements</p>
+								<div style="display: flex; gap: 0.5rem;">
+									<span style="background: var(--amber-glow); color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;">4 Sections</span>
+									<span style="background: var(--teal-crystal); color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;">Active</span>
+								</div>
+							</a>
+						</div>
+
+						<!-- Coming Soon Cards -->
+						<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--mocha-mousse); transition: all 0.3s ease; opacity: 0.6;">
+							<div style="width: 100%; height: 150px; border-radius: 12px; background: linear-gradient(135deg, var(--mocha-mousse), var(--amber-glow)); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+								<span style="font-size: 3rem;">🚧</span>
+							</div>
+							<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem 0;">Coming Soon</h3>
+							<p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">More games in development</p>
+							<span style="background: var(--mocha-mousse); color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;">Soon™</span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+</HomeLayout>
+
+<style>
+@keyframes pulse {
+	0%, 100% { opacity: 1; transform: scale(1); }
+	50% { opacity: 0.4; transform: scale(1.1); }
+}
+
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeInScale {
+	0% {
+		opacity: 0;
+		transform: scale(0.9) translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+@keyframes titleGlow {
+	0% {
+		text-shadow: 
+			0 0 10px rgba(255, 183, 77, 0.3),
+			0 0 20px rgba(255, 183, 77, 0.2),
+			0 0 30px rgba(0, 172, 193, 0.1);
+		filter: brightness(1);
+	}
+	100% {
+		text-shadow: 
+			0 0 20px rgba(255, 183, 77, 0.6),
+			0 0 30px rgba(255, 183, 77, 0.4),
+			0 0 40px rgba(0, 172, 193, 0.3);
+		filter: brightness(1.2);
+	}
+}
+
+@keyframes glow {
+	0% {
+		text-shadow: 
+			0 0 10px rgba(255, 183, 77, 0.3),
+			0 0 20px rgba(255, 183, 77, 0.2),
+			0 0 30px rgba(255, 183, 77, 0.1);
+	}
+	100% {
+		text-shadow: 
+			0 0 20px rgba(255, 183, 77, 0.6),
+			0 0 30px rgba(255, 183, 77, 0.4),
+			0 0 40px rgba(255, 183, 77, 0.2);
+	}
+}
+
+.games-track::-webkit-scrollbar {
+	display: none;
+}
+
+.game-card:hover {
+	cursor: pointer;
+}
+
+@keyframes shimmer {
+	0% { transform: translateX(-100%); }
+	100% { transform: translateX(100%); }
+}
+
+.tab-content {
+	display: none;
+	opacity: 0;
+	transform: translateY(20px);
+}
+
+.tab-content.active {
+	display: block;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+	main {
+		padding: 6rem 1rem 2rem 1rem !important;
+		max-width: 100% !important;
+	}
+
+	/* Game Guide Library Title */
+	h2 {
+		font-size: clamp(2rem, 6vw, 2.5rem) !important;
+		margin-bottom: 1rem !important;
+	}
+
+	/* Featured Zone Nova Section */
+	.featured-game {
+		margin-bottom: 2rem !important;
+	}
+
+	/* Zone Nova Card Mobile Layout */
+	div[style*="padding: 2rem; display: flex; align-items: center; gap: 2rem;"] {
+		flex-direction: column !important;
+		text-align: center !important;
+		gap: 1.5rem !important;
+		padding: 1.5rem !important;
+	}
+
+	/* Game Image Mobile */
+	div[style*="width: 10rem; height: 10rem;"] {
+		width: 8rem !important;
+		height: 8rem !important;
+		margin: 0 auto !important;
+	}
+
+	/* Game Title Mobile */
+	h3[style*="font-size: 2.5rem;"] {
+		font-size: 2rem !important;
+		margin-bottom: 1rem !important;
+	}
+
+	/* Description Mobile */
+	p[style*="max-width: 35rem;"] {
+		max-width: 100% !important;
+		font-size: 1rem !important;
+		margin-bottom: 1rem !important;
+	}
+
+	/* Active Events Section Mobile */
+	div[style*="display: grid; grid-template-columns: 1fr 1fr 1fr;"] {
+		grid-template-columns: 1fr !important;
+		gap: 0.5rem !important;
+		font-size: 0.8rem !important;
+	}
+
+	/* Event Cards Mobile */
+	div[style*="background: rgba(0, 172, 193, 0.15);"],
+	div[style*="background: rgba(255, 183, 77, 0.15);"],
+	div[style*="background: rgba(255, 77, 77, 0.15);"] {
+		padding: 0.75rem !important;
+		text-align: center !important;
+	}
+
+	/* Timer Text Mobile */
+	#riftTimer2, #riftTimer3, #thunderTimer {
+		font-size: 0.75rem !important;
+	}
+
+	/* Action Button Mobile */
+	div[style*="background: var(--amber-glow); color: white; padding: 1rem 2rem;"] {
+		padding: 0.875rem 1.5rem !important;
+		font-size: 0.9rem !important;
+		margin-top: 1rem !important;
+		width: fit-content !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
+	/* Coming Soon Section Mobile */
+	h3[style*="More Games Coming Soon"] {
+		font-size: 1rem !important;
+		margin-bottom: 1.5rem !important;
+	}
+
+	/* Coming Soon Grid Mobile */
+	div[style*="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));"] {
+		grid-template-columns: 1fr !important;
+		gap: 1rem !important;
+		margin: 0 !important;
+	}
+
+	/* Coming Soon Cards Mobile */
+	div[style*="padding: 2rem; border: 1px solid var(--mocha-mousse);"],
+	div[style*="padding: 2rem; border: 1px solid var(--rose-quartz);"],
+	div[style*="padding: 2rem; border: 1px solid var(--teal-crystal);"] {
+		padding: 1.5rem !important;
+	}
+
+	/* Coming Soon Card Icons Mobile */
+	div[style*="width: 4rem; height: 4rem;"] {
+		width: 3rem !important;
+		height: 3rem !important;
+	}
+
+	/* Coming Soon Card Titles Mobile */
+	h4[style*="font-size: 1.3rem;"] {
+		font-size: 1.1rem !important;
+	}
+
+	/* Built By Section Mobile */
+	p[style*="font-size: clamp(1.5rem, 3vw, 2rem);"] {
+		font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+		line-height: 1.3 !important;
+		padding: 0 0.5rem !important;
+	}
+
+	/* Modal Mobile */
+	#gamesModal div[style*="padding: 2rem;"] {
+		padding: 1rem !important;
+		margin: 1rem !important;
+		max-height: 90vh !important;
+	}
+
+	/* Modal Header Mobile */
+	#gamesModal h2 {
+		font-size: 1.5rem !important;
+	}
+
+	/* Modal Games Grid Mobile */
+	#gamesModal div[style*="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));"] {
+		grid-template-columns: 1fr !important;
+		gap: 1rem !important;
+	}
+
+	/* Modal Game Cards Mobile */
+	#gamesModal div[style*="padding: 1.5rem;"] {
+		padding: 1.25rem !important;
+	}
+
+	/* Modal Game Images Mobile */
+	#gamesModal div[style*="height: 150px;"] {
+		height: 120px !important;
+	}
+}
+
+/* Extra Small Mobile (iPhone SE, etc.) */
+@media (max-width: 480px) {
+	main {
+		padding: 5rem 0.75rem 1.5rem 0.75rem !important;
+	}
+
+	/* Very Small Screen Adjustments */
+	h2 {
+		font-size: 1.8rem !important;
+	}
+
+	/* Zone Nova Game Image - Smaller */
+	div[style*="width: 10rem; height: 10rem;"] {
+		width: 6rem !important;
+		height: 6rem !important;
+	}
+
+	/* Zone Nova Title - Smaller */
+	h3[style*="font-size: 2.5rem;"] {
+		font-size: 1.6rem !important;
+	}
+
+	/* Active Events Grid - Single Column */
+	div[style*="display: grid; grid-template-columns: 1fr 1fr 1fr;"] {
+		grid-template-columns: 1fr !important;
+		gap: 0.4rem !important;
+	}
+
+	/* Event Cards - Smaller Padding */
+	div[style*="background: rgba(0, 172, 193, 0.15);"],
+	div[style*="background: rgba(255, 183, 77, 0.15);"],
+	div[style*="background: rgba(255, 77, 77, 0.15);"] {
+		padding: 0.5rem !important;
+	}
+
+	/* Event Names - Smaller Font */
+	div[style*="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;"] {
+		font-size: 0.8rem !important;
+	}
+
+	/* Timer Font - Even Smaller */
+	#riftTimer2, #riftTimer3, #thunderTimer {
+		font-size: 0.7rem !important;
+	}
+
+	/* Action Button - Smaller */
+	div[style*="background: var(--amber-glow); color: white; padding: 1rem 2rem;"] {
+		padding: 0.75rem 1.25rem !important;
+		font-size: 0.85rem !important;
+	}
+
+	/* Coming Soon Cards - More Compact */
+	div[style*="padding: 2rem; border: 1px solid var(--mocha-mousse);"],
+	div[style*="padding: 2rem; border: 1px solid var(--rose-quartz);"],
+	div[style*="padding: 2rem; border: 1px solid var(--teal-crystal);"] {
+		padding: 1.25rem !important;
+	}
+
+	/* Built By Text - Smaller */
+	p[style*="font-size: clamp(1.5rem, 3vw, 2rem);"] {
+		font-size: 1.1rem !important;
+		line-height: 1.4 !important;
+	}
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+	/* Remove hover effects on touch devices */
+	div[onmouseover] {
+		transition: none !important;
+	}
+
+	/* Increase tap targets */
+	a, button, [onclick] {
+		min-height: 44px !important;
+		min-width: 44px !important;
+		touch-action: manipulation;
+	}
+
+	/* Ensure buttons are easily tappable */
+	div[style*="background: var(--amber-glow); color: white; padding:"] {
+		min-height: 48px !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+	}
+}
+</style>
+
+<script>
+// Modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+	const browseBtn = document.getElementById('browseGamesBtn');
+	const modal = document.getElementById('gamesModal');
+	const closeBtn = document.getElementById('closeModal');
+	
+	browseBtn?.addEventListener('click', () => {
+		if (modal) {
+			modal.style.opacity = '1';
+			modal.style.visibility = 'visible';
+		}
+	});
+	
+	closeBtn?.addEventListener('click', () => {
+		if (modal) {
+			modal.style.opacity = '0';
+			modal.style.visibility = 'hidden';
+		}
+	});
+	
+	modal?.addEventListener('click', (e) => {
+		if (e.target === modal) {
+			modal.style.opacity = '0';
+			modal.style.visibility = 'hidden';
+		}
+	});
+});
+
+// Simple Event Timers
+document.addEventListener('DOMContentLoaded', function() {
+	// Set end dates for events
+	const rift2End = new Date('2025-06-10T23:59:59').getTime();
+	const rift3End = new Date('2025-06-24T23:59:59').getTime();
+	const thunderEnd = new Date('2025-06-10T03:59:00+08:00').getTime();
+
+	function updateTimers() {
+		const now = new Date().getTime();
+		
+		// Update Rift Tide II
+		const timer2 = document.getElementById('riftTimer2');
+		if (timer2) {
+			const timeLeft2 = rift2End - now;
+			if (timeLeft2 > 0) {
+				const days2 = Math.floor(timeLeft2 / (1000 * 60 * 60 * 24));
+				const hours2 = Math.floor((timeLeft2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				timer2.textContent = `${days2}d ${hours2}h left`;
+			} else {
+				timer2.textContent = 'Event Ended';
+				timer2.style.opacity = '0.6';
+			}
+		}
+		
+		// Update Rift Tide III
+		const timer3 = document.getElementById('riftTimer3');
+		if (timer3) {
+			const timeLeft3 = rift3End - now;
+			if (timeLeft3 > 0) {
+				const days3 = Math.floor(timeLeft3 / (1000 * 60 * 60 * 24));
+				const hours3 = Math.floor((timeLeft3 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				timer3.textContent = `${days3}d ${hours3}h left`;
+			} else {
+				timer3.textContent = 'Event Ended';
+				timer3.style.opacity = '0.6';
+			}
+		}
+		
+		// Update Thunder King Flame
+		const thunderTimer = document.getElementById('thunderTimer');
+		if (thunderTimer) {
+			const timeLeftThunder = thunderEnd - now;
+			if (timeLeftThunder > 0) {
+				const daysThunder = Math.floor(timeLeftThunder / (1000 * 60 * 60 * 24));
+				const hoursThunder = Math.floor((timeLeftThunder % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				thunderTimer.textContent = `${daysThunder}d ${hoursThunder}h left`;
+			} else {
+				thunderTimer.textContent = 'Event Ended';
+				thunderTimer.style.opacity = '0.6';
+			}
+		}
+	}
+
+	// Update immediately and then every minute
+	updateTimers();
+	setInterval(updateTimers, 60000);
+});
+
+// Tab switching functionality
+document.addEventListener('DOMContentLoaded', function() {
+	const tabBtns = document.querySelectorAll('.tab-btn');
+	const tabContents = document.querySelectorAll('.tab-content');
+	
+	tabBtns.forEach(btn => {
+		btn.addEventListener('click', () => {
+			const targetTab = btn.getAttribute('data-tab');
+			
+			// Remove active class from all tabs and contents
+			tabBtns.forEach(b => {
+				const button = b as HTMLElement;
+				b.classList.remove('active');
+				button.style.background = 'transparent';
+				button.style.color = 'var(--text-secondary)';
+				button.style.boxShadow = 'none';
+			});
+			
+			tabContents.forEach(content => {
+				const contentEl = content as HTMLElement;
+				content.classList.remove('active');
+				contentEl.style.display = 'none';
+				contentEl.style.opacity = '0';
+				contentEl.style.transform = 'translateY(20px)';
+			});
+			
+			// Add active class to clicked tab
+			const button = btn as HTMLElement;
+			btn.classList.add('active');
+			button.style.background = 'linear-gradient(135deg, var(--amber-glow), var(--teal-crystal))';
+			button.style.color = 'white';
+			button.style.boxShadow = '0 4px 12px rgba(164, 120, 100, 0.3)';
+			
+			// Show target content with animation
+			const targetContent = document.getElementById(`${targetTab}-content`);
+			if (targetContent) {
+				const contentEl = targetContent as HTMLElement;
+				targetContent.classList.add('active');
+				contentEl.style.display = 'block';
+				setTimeout(() => {
+					contentEl.style.opacity = '1';
+					contentEl.style.transform = 'translateY(0)';
+				}, 10);
+			}
+		});
+	});
+});
+</script>

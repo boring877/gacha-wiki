@@ -1,0 +1,49 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from "@vercel/speed-insights/astro";
+// Import CSS files properly
+import '../styles/colors.css';
+import '../styles/global.css';
+
+export interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en" transition:animate="fade">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<BaseHead title={title} description={description || ""} />
+		<slot name="head" />
+	</head>
+
+	<body style="background: var(--bg-dark); min-height: 100vh;">
+		<!-- Premium background with warm accents -->
+		<div style="position: fixed; inset: 0; background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);"></div>
+		<div style="position: fixed; inset: 0; background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent); pointer-events: none;"></div>
+		<div style="position: fixed; inset: 0; background: radial-gradient(circle at 80% 20%, rgba(255, 183, 77, 0.08), transparent); pointer-events: none;"></div>
+		<div style="position: fixed; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(0, 172, 193, 0.05), transparent); pointer-events: none;"></div>
+		
+		<div style="position: relative; z-index: 10;">
+			<Header />
+			<main>
+				<slot />
+			</main>
+			<Footer />
+		</div>
+		<Analytics />
+		<SpeedInsights />
+	</body>
+</html> 

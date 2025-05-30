@@ -1,0 +1,742 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout1 
+	title="Thunder King Flame Event Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for the Thunder King Flame event in Zone Nova"
+	gameTitle="Thunder King Flame Event"
+	showBreadcrumb={true}
+	breadcrumbText="Events"
+>
+	<Fragment slot="head">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0 0 1rem 0;
+				font-weight: 500;
+			}
+
+			.event-timer {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.15), rgba(0, 172, 193, 0.15));
+				padding: 1rem;
+				border-radius: 12px;
+				border-left: 4px solid var(--amber-glow);
+				font-weight: 600;
+				color: var(--text-primary);
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}
+
+			.subsection-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 2rem 0 1rem 0;
+				padding-left: 1rem;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.info-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.info-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.info-card:hover::before {
+				left: 100%;
+			}
+
+			.info-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.skill-card {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1rem 0;
+				transition: all 0.3s ease;
+				border-left: 4px solid var(--teal-crystal);
+			}
+
+			.skill-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);
+				border-left-color: var(--amber-glow);
+			}
+
+			.mode-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1.5rem;
+				margin: 2rem 0;
+			}
+
+			.mode-card {
+				background: var(--bg-primary);
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 1.5rem;
+				transition: all 0.3s ease;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.mode-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-left-color: var(--teal-crystal);
+			}
+
+			.mode-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.2rem;
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin-bottom: 1rem;
+			}
+
+			.shop-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 1.5rem;
+				margin: 2rem 0;
+			}
+
+			.shop-image {
+				width: 100%;
+				border-radius: 12px;
+				border: 1px solid var(--neutral-200);
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.1);
+			}
+
+			.shop-image:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.2);
+			}
+
+			.event-image {
+				width: 100%;
+				border-radius: 15px;
+				margin: 2rem 0;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.1);
+				transition: all 0.3s ease;
+			}
+
+			.event-image:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 25px rgba(164, 120, 100, 0.15);
+			}
+
+			.text-content {
+				color: var(--text-primary);
+				line-height: 1.7;
+				font-size: 1rem;
+			}
+
+			.text-content p {
+				margin: 1rem 0;
+			}
+
+			.text-content ul, .text-content ol {
+				padding-left: 2rem;
+				margin: 1rem 0;
+			}
+
+			.text-content li {
+				margin: 0.5rem 0;
+				line-height: 1.6;
+			}
+
+			.text-content strong {
+				color: var(--amber-glow);
+				font-weight: 600;
+			}
+
+			.highlight-text {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				padding: 0.2rem 0.5rem;
+				border-radius: 6px;
+				font-weight: 600;
+			}
+
+			.tip-box {
+				background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 2rem 0;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.tip-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.2rem;
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin-bottom: 1rem;
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes titleGlow {
+				0% {
+					text-shadow: 
+						0 0 10px rgba(255, 183, 77, 0.3),
+						0 0 20px rgba(255, 183, 77, 0.2);
+				}
+				100% {
+					text-shadow: 
+						0 0 20px rgba(255, 183, 77, 0.6),
+						0 0 30px rgba(255, 183, 77, 0.4);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header {
+					padding: 2rem;
+				}
+
+				.character-title {
+					font-size: 2rem;
+				}
+
+				.content-section {
+					padding: 2rem;
+				}
+
+				.mode-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.shop-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			/* Enhanced Mobile Responsiveness */
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 0.5rem !important;
+				}
+
+				.character-header {
+					padding: 1.5rem !important;
+					text-align: center !important;
+				}
+
+				.character-title {
+					font-size: 1.8rem !important;
+					margin-bottom: 0.5rem !important;
+				}
+
+				.character-subtitle {
+					font-size: 1rem !important;
+				}
+
+				.content-section {
+					padding: 1.5rem !important;
+					margin-bottom: 1.5rem !important;
+				}
+
+				.section-title {
+					font-size: 1.8rem !important;
+				}
+
+				.info-card {
+					padding: 1.5rem !important;
+				}
+
+				.event-timer-card {
+					padding: 1.5rem !important;
+					text-align: center !important;
+				}
+
+				.timer-display {
+					font-size: 1.5rem !important;
+				}
+
+				.timer-label {
+					font-size: 0.9rem !important;
+				}
+
+				.stats-grid {
+					grid-template-columns: repeat(2, 1fr) !important;
+					gap: 0.75rem !important;
+				}
+
+				.stat-item {
+					padding: 0.75rem !important;
+				}
+
+				.shop-grid {
+					grid-template-columns: 1fr !important;
+					gap: 1rem !important;
+				}
+
+				.shop-image {
+					max-width: 100% !important;
+					height: auto !important;
+				}
+
+				.event-image {
+					max-width: 100% !important;
+					height: auto !important;
+				}
+
+				.tip-box {
+					padding: 1.5rem !important;
+					margin: 1.5rem 0 !important;
+				}
+
+				.tip-title {
+					font-size: 1.1rem !important;
+				}
+
+				.back-button {
+					padding: 0.75rem 1.25rem !important;
+					font-size: 0.9rem !important;
+					margin-bottom: 1rem !important;
+				}
+
+				/* Text adjustments for mobile */
+				.text-content {
+					font-size: 0.95rem !important;
+				}
+
+				.text-content p {
+					margin: 0.8rem 0 !important;
+				}
+
+				.text-content ul, .text-content ol {
+					padding-left: 1.5rem !important;
+				}
+			}
+
+			/* Extra Small Mobile */
+			@media (max-width: 480px) {
+				.character-container {
+					padding: 0 0.25rem !important;
+				}
+
+				.character-header {
+					padding: 1rem !important;
+				}
+
+				.character-title {
+					font-size: 1.5rem !important;
+				}
+
+				.character-subtitle {
+					font-size: 0.9rem !important;
+				}
+
+				.content-section {
+					padding: 1.25rem !important;
+				}
+
+				.section-title {
+					font-size: 1.5rem !important;
+				}
+
+				.event-timer-card {
+					padding: 1.25rem !important;
+				}
+
+				.timer-display {
+					font-size: 1.25rem !important;
+				}
+
+				.timer-label {
+					font-size: 0.8rem !important;
+				}
+
+				.stats-grid {
+					grid-template-columns: 1fr !important;
+				}
+
+				.stat-item {
+					padding: 0.5rem !important;
+				}
+
+				.stat-label {
+					font-size: 0.8rem !important;
+				}
+
+				.stat-value {
+					font-size: 1rem !important;
+				}
+
+				.tip-box {
+					padding: 1.25rem !important;
+				}
+
+				.tip-title {
+					font-size: 1rem !important;
+				}
+
+				.back-button {
+					padding: 0.625rem 1rem !important;
+					font-size: 0.85rem !important;
+				}
+
+				.text-content {
+					font-size: 0.9rem !important;
+				}
+
+				.text-content ul, .text-content ol {
+					padding-left: 1.25rem !important;
+				}
+			}
+
+			/* Timer-specific mobile styles */
+			@media (max-width: 768px) {
+				#thunderEventTimer {
+					font-size: 1.4rem !important;
+					font-weight: 700 !important;
+				}
+			}
+
+			@media (max-width: 480px) {
+				#thunderEventTimer {
+					font-size: 1.2rem !important;
+				}
+			}
+
+			@keyframes pulse {
+				0%, 100% { 
+					opacity: 1; 
+					transform: scale(1); 
+				}
+				50% { 
+					opacity: 0.7; 
+					transform: scale(1.05); 
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<!-- Back Button -->
+			<a href="/guides/zone-nova/events/" class="back-button">
+				<span class="back-arrow">←</span>
+				Back to Events
+			</a>
+
+			<!-- Event Header -->
+			<div class="character-header">
+				<h1 class="character-title">⚡ Thunder King Flame Event</h1>
+				<p class="character-subtitle">雷鸣王焰 - Limited Time Event</p>
+				<div class="event-timer">
+					📅 Event Period: May 27, 2025 14:15 - June 10, 2025 03:59 (UTC+8)
+					<div style="margin-top: 0.5rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+						<span style="color: var(--teal-crystal); font-weight: 600;">⏰ Time Remaining:</span>
+						<span id="eventTimer" style="color: var(--amber-glow); font-weight: 600; font-family: 'Courier New', monospace; font-size: 1.1rem;">Loading...</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Event Overview -->
+			<section class="content-section">
+				<img src="/images/event-kingflame/Eventkingflame.jpg" alt="Thunder King Flame Event" class="event-image" />
+				<div class="text-content">
+					<p>Experience the power of thunder and flame in this epic limited-time event! Battle through story stages, tackle challenging modes, and collect exclusive rewards in the event shop.</p>
+				</div>
+			</section>
+
+			<!-- Event Structure -->
+			<section class="content-section">
+				<h2 class="section-title">📋 Event Structure</h2>
+				
+				<div class="mode-grid">
+					<div class="mode-card">
+						<div class="mode-title">📖 Story Mode (故事)</div>
+						<div class="text-content">
+							<p><strong>13 Stages Total</strong></p>
+							<ul>
+								<li>活动剧情 01-05: Initial stages</li>
+								<li>活动剧情 06-09: Mid-tier stages</li>
+								<li>活动剧情 10-13: Final stages</li>
+							</ul>
+							<p><strong>Note:</strong> Progressive unlock - complete stages in order</p>
+						</div>
+					</div>
+					
+					<div class="mode-card">
+						<div class="mode-title">⚔️ Challenge Mode (挑战)</div>
+						<div class="text-content">
+							<p><strong>3 Difficulty Levels</strong></p>
+							<ul>
+								<li>简单 (Easy) - ⭐</li>
+								<li>正常 (Normal) - ⭐⭐</li>
+								<li>困难 (Hard) - ⭐⭐⭐</li>
+							</ul>
+							<p>Higher difficulty levels offer better rewards</p>
+						</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">📊 Story Stage Rewards</h3>
+				<div class="info-card">
+					<div class="text-content">
+						<ul>
+							<li>First clear rewards for each stage</li>
+							<li>Event currency for shop exchanges</li>
+							<li>Various crafting materials</li>
+							<li>Character experience and gold</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Event Shop -->
+			<section class="content-section">
+				<h2 class="section-title">🛒 Event Shop</h2>
+				<div class="text-content">
+					<p>Use event currency to purchase exclusive items and materials:</p>
+				</div>
+				
+				<div class="shop-grid">
+					<img src="/images/event-kingflame/EventShop1.jpg" alt="Event Shop Page 1" class="shop-image" />
+					<img src="/images/event-kingflame/eventshop2.jpg" alt="Event Shop Page 2" class="shop-image" />
+					<img src="/images/event-kingflame/eventshop3.jpg" alt="Event Shop Page 3" class="shop-image" />
+				</div>
+				
+				<div class="tip-box">
+					<div class="tip-title">💡 General good buys available in the event shop!</div>
+				</div>
+
+				<h3 class="subsection-title">🎯 Shop Priority Guide</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<ol>
+							<li><strong>Limited Character Shards</strong> - Only available during this event</li>
+							<li><strong>Rare Crafting Materials</strong> - Hard to obtain elsewhere</li>
+							<li><strong>Rune Enhancement Items</strong> - Always valuable for progression</li>
+							<li><strong>Premium Currencies</strong> - Good value for long-term planning</li>
+							<li><strong>Common Materials</strong> - Buy if you have excess currency</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+
+			<!-- Activity Bonus System -->
+			<section class="content-section">
+				<h2 class="section-title">🎯 Activity Bonus System</h2>
+				<p class="text-content" style="color: var(--text-secondary); margin-bottom: 1.5rem;">活动加成效果</p>
+				
+				<img src="/images/event-kingflame/bounseevent.jpg" alt="Activity Bonus System" class="event-image" />
+				
+				<h3 class="subsection-title">🌟 Bonus Character System</h3>
+				<div class="info-card">
+					<div class="text-content">
+						<p>Use specific characters to increase event currency gains:</p>
+						<ul>
+							<li><strong>主加乘角色 (Main Bonus Characters):</strong> Provide 20%-80% currency bonus</li>
+							<li><strong>加成角色 (Additional Bonus Characters):</strong> Provide 10%-30% currency bonus</li>
+							<li><strong>💡 Pro Tip:</strong> You don't need to use the characters in battle - just having them in your roster is enough!</li>
+							<li><strong>⚡ Maximum Efficiency:</strong> Use a full team of bonus characters to maximize farming efficiency!</li>
+						</ul>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">📈 Bonus Calculation</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<p>Bonuses from different characters stack additively. A team with multiple bonus characters can significantly increase your farming efficiency, allowing you to clear the event shop faster.</p>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</ZoneNovaLayout1>
+
+<script>
+// Thunder King Flame Event Timer
+document.addEventListener('DOMContentLoaded', function() {
+	// Set end date for Thunder King Flame event: June 10, 2025 03:59 UTC+8
+	const eventEnd = new Date('2025-06-10T03:59:00+08:00').getTime();
+
+	function updateEventTimer() {
+		const now = new Date().getTime();
+		const timer = document.getElementById('eventTimer');
+		
+		if (timer) {
+			const timeLeft = eventEnd - now;
+			if (timeLeft > 0) {
+				const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+				const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+				
+				if (days > 0) {
+					timer.textContent = `${days}d ${hours}h ${minutes}m left`;
+				} else if (hours > 0) {
+					timer.textContent = `${hours}h ${minutes}m left`;
+				} else {
+					timer.textContent = `${minutes}m left`;
+				}
+				
+				// Add pulsing effect when less than 1 hour left
+				if (timeLeft < 3600000) { // 1 hour in milliseconds
+					timer.style.animation = 'pulse 1s infinite';
+				}
+			} else {
+				timer.textContent = 'Event Ended';
+				timer.style.opacity = '0.6';
+				timer.style.color = 'var(--text-secondary)';
+			}
+		}
+	}
+
+	// Update immediately and then every minute
+	updateEventTimer();
+	setInterval(updateEventTimer, 60000);
+});
+</script> 

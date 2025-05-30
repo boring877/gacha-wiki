@@ -2,44 +2,220 @@
 const today = new Date();
 ---
 
-<footer> Made with ❤️ (◕‿◕) 🎮✨
-	<div class="social-links">
-		<a href="https://x.com/EcchiPen" target="_blank">
-			<span class="sr-only">Follow us on X</span>
-			<svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32" astro-icon="social/x">
-				<path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-			</svg>
-		</a>
-		<a href="https://bsky.app/profile/ecchipen.bsky.social" target="_blank" class="bluesky-text">
-			<span class="sr-only">Follow us on Bluesky</span>
-			Bluesky
-		</a>
+<footer style="background: rgba(28, 28, 28, 0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--amber-glow); box-shadow: 0 -4px 20px rgba(255, 183, 77, 0.2); margin-top: 5rem;">
+	<div style="max-width: 72rem; margin: 0 auto; padding: 0 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem;">
+		<div style="position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25rem;">
+			<!-- Version Badge - Left Position -->
+			<div style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);">
+				<a href="https://github.com/boring877/gacha-wiki" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+					<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); padding: 0.25rem 0.75rem; border-radius: 12px; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; font-weight: 600; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.5); box-shadow: 0 2px 8px rgba(255, 183, 77, 0.3); transition: all 0.3s ease; text-align: center; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(255, 183, 77, 0.5)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(255, 183, 77, 0.3)'" title="View source code on GitHub">
+						v2.0
+					</div>
+				</a>
+				<!-- License Notice -->
+				<div style="margin-top: 0.5rem;">
+					<p style="color: var(--text-inverse); font-size: 0.65rem; opacity: 0.6; margin: 0;">
+						Open source under <a href="/LICENSE" style="color: var(--teal-crystal); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--amber-glow)'" onmouseout="this.style.color='var(--teal-crystal)'" title="View full license terms">MIT License</a>
+					</p>
+				</div>
+			</div>
+
+			<!-- Copyright - Centered -->
+			<div style="display: flex; align-items: center; gap: 0.25rem;">
+				<p style="color: var(--text-inverse); font-size: 1rem; opacity: 0.9; font-weight: 500; margin: 0; line-height: 1;">© {today.getFullYear()} Made with</p>
+				<span style="color: var(--rose-quartz); font-size: 1.2rem; animation: heartbeat 1.5s infinite; filter: drop-shadow(0 0 4px rgba(233, 30, 99, 0.5)); text-shadow: 0 0 8px rgba(233, 30, 99, 0.3); display: inline-flex; align-items: center; vertical-align: middle; line-height: 1;">❤️</span>
+			</div>
+			
+			<!-- Decorative Line -->
+			<div style="width: 50px; height: 1px; background: linear-gradient(to right, transparent, var(--amber-glow), transparent); opacity: 0.6;"></div>
+			
+			<!-- Message - Centered -->
+			<div style="text-align: center;">
+				<p id="positiveMessage" style="color: var(--text-inverse); font-size: 0.8rem; opacity: 0.8; font-style: italic; font-weight: 400; cursor: pointer; transition: all 0.3s ease; padding: 0.5rem 1rem; border-radius: 20px; margin: 0;" 
+				   onmouseover="this.style.opacity='1'; this.style.background='rgba(255, 183, 77, 0.1)'; this.style.transform='scale(1.05)'" 
+				   onmouseout="this.style.opacity='0.8'; this.style.background='transparent'; this.style.transform='scale(1)'"
+				   title="Click for a mood boost! ✨">
+					I Hope You Have Wonderful Day ✨
+				</p>
+			</div>
+		</div>
 	</div>
 </footer>
+
 <style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: #fef7e0;
-		color: #92400e;
-		text-align: center;
-		border-top: 1px solid #fcd34d;
+	@keyframes pulse {
+		0%, 100% { transform: scale(1); }
+		50% { transform: scale(1.1); }
 	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-		align-items: center;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: #92400e;
-	}
-	.social-links a:hover {
-		color: #78350f;
-	}
-	.bluesky-text {
-		font-weight: 600;
-		font-size: 1rem;
+
+	@keyframes heartbeat {
+		0%, 100% { 
+			transform: scale(1); 
+			filter: drop-shadow(0 0 4px rgba(233, 30, 99, 0.5));
+		}
+		14% { 
+			transform: scale(1.15); 
+			filter: drop-shadow(0 0 8px rgba(233, 30, 99, 0.8));
+		}
+		28% { 
+			transform: scale(1); 
+			filter: drop-shadow(0 0 4px rgba(233, 30, 99, 0.5));
+		}
+		42% { 
+			transform: scale(1.15); 
+			filter: drop-shadow(0 0 8px rgba(233, 30, 99, 0.8));
+		}
+		70% { 
+			transform: scale(1); 
+			filter: drop-shadow(0 0 4px rgba(233, 30, 99, 0.5));
+		}
 	}
 </style>
+
+<script>
+// Array of positive messages
+const positiveMessages = [
+	"I Hope You Have Wonderful Day ✨",
+	"You're doing amazing! Keep it up! 🌟",
+	"Remember: You are stronger than you think! 💪",
+	"Every small step forward is progress! 🚀",
+	"You've got this - believe in yourself! ✨",
+	"Take a moment to appreciate how far you've come! 🌈",
+	"Your kindness makes the world brighter! ☀️",
+	"Today is full of new possibilities! 🌸",
+	"You are exactly where you need to be! 💫",
+	"Your positive energy is contagious! 😊",
+	"Take time to celebrate the little wins! 🎉",
+	"You bring something special to this world! 💝",
+	"Every challenge is a chance to grow! 🌱",
+	"The best is yet to come! 🌅",
+	"You're braver than you believe! 🦋",
+	"Rest when you need to - it's not giving up! 🛋️",
+	"Your dreams are worth pursuing! ⭐",
+	"You make a difference just by being you! 🌺",
+	"Tomorrow is a fresh start! 🌄",
+	"Remember to be kind to yourself today! 💚"
+];
+
+let currentMessageIndex = 0;
+
+function showRandomPositiveMessage() {
+	const messageElement = document.getElementById('positiveMessage');
+	if (!messageElement) {
+		console.log('Message element not found');
+		return;
+	}
+	
+	console.log('Showing positive message...');
+	
+	// Get next message (cycling through all messages)
+	currentMessageIndex = (currentMessageIndex + 1) % positiveMessages.length;
+	const newMessage = positiveMessages[currentMessageIndex];
+	
+	// Add click animation
+	messageElement.style.transform = 'scale(0.95)';
+	messageElement.style.opacity = '0.6';
+	
+	// Create sparkle effect
+	createSparkles(messageElement);
+	
+	setTimeout(() => {
+		// Change the message
+		messageElement.textContent = newMessage;
+		
+		// Animate back to normal with a bounce
+		messageElement.style.transform = 'scale(1.1)';
+		messageElement.style.opacity = '1';
+		messageElement.style.background = 'rgba(255, 183, 77, 0.2)';
+		messageElement.style.color = 'var(--amber-glow)';
+		
+		setTimeout(() => {
+			messageElement.style.transform = 'scale(1)';
+			messageElement.style.background = 'transparent';
+			messageElement.style.color = 'var(--text-inverse)';
+		}, 300);
+	}, 150);
+}
+
+function createSparkles(element: HTMLElement) {
+	const rect = element.getBoundingClientRect();
+	const sparkleCount = 6;
+	
+	for (let i = 0; i < sparkleCount; i++) {
+		const sparkle = document.createElement('div');
+		sparkle.innerHTML = '✨';
+		sparkle.style.position = 'fixed';
+		sparkle.style.left = (rect.left + rect.width / 2) + 'px';
+		sparkle.style.top = (rect.top + rect.height / 2) + 'px';
+		sparkle.style.fontSize = '1rem';
+		sparkle.style.pointerEvents = 'none';
+		sparkle.style.zIndex = '9999';
+		sparkle.style.transition = 'all 1s ease-out';
+		
+		document.body.appendChild(sparkle);
+		
+		// Animate sparkles outward
+		setTimeout(() => {
+			const angle = (i / sparkleCount) * 2 * Math.PI;
+			const distance = 50 + Math.random() * 30;
+			const x = Math.cos(angle) * distance;
+			const y = Math.sin(angle) * distance;
+			
+			sparkle.style.transform = `translate(${x}px, ${y}px) scale(0)`;
+			sparkle.style.opacity = '0';
+		}, 50);
+		
+		// Remove sparkle after animation
+		setTimeout(() => {
+			if (sparkle.parentNode) {
+				sparkle.parentNode.removeChild(sparkle);
+			}
+		}, 1100);
+	}
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+	console.log('Footer script loaded');
+	const messageElement = document.getElementById('positiveMessage');
+	
+	if (messageElement) {
+		console.log('Adding click listener to positive message');
+		
+		// Add click event listener
+		messageElement.addEventListener('click', function() {
+			console.log('Message clicked!');
+			showRandomPositiveMessage();
+		});
+		
+		// Add a subtle pulse animation to hint it's clickable
+		setInterval(() => {
+			if (Math.random() < 0.1) { // 10% chance every interval
+				messageElement.style.textShadow = '0 0 10px rgba(255, 183, 77, 0.5)';
+				setTimeout(() => {
+					messageElement.style.textShadow = 'none';
+				}, 1000);
+			}
+		}, 3000);
+	} else {
+		console.log('Message element not found during initialization');
+	}
+});
+
+// Also try to initialize immediately in case DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+	// Document is still loading, wait for DOMContentLoaded
+} else {
+	// Document is already loaded, initialize immediately
+	setTimeout(() => {
+		const messageElement = document.getElementById('positiveMessage');
+		if (messageElement && !messageElement.onclick) {
+			messageElement.addEventListener('click', function() {
+				console.log('Message clicked! (immediate)');
+				showRandomPositiveMessage();
+			});
+		}
+	}, 100);
+}
+</script>
+

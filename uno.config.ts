@@ -2,8 +2,17 @@ import { defineConfig, presetUno, presetTypography } from 'unocss'
 
 export default defineConfig({
   presets: [
-    presetUno(),
+    presetUno({
+      // Disable CSS reset to avoid conflicts with our custom styles
+      preflight: false,
+    }),
     presetTypography(),
+  ],
+  // Only apply UnoCSS to specific classes to avoid conflicts
+  safelist: [],
+  // Exclude certain patterns to avoid conflicts
+  blocklist: [
+    // Don't interfere with our custom styled elements
   ],
   theme: {
     colors: {

@@ -1,0 +1,551 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout1 
+	title="Zone Nova May 27 Maintenance - GachaWiki" 
+	description="May 27 maintenance with Empress Guinevere and Thunder King event"
+	gameTitle="May 27 Maintenance"
+	showBreadcrumb={true}
+	breadcrumbText="News & Maintenance"
+>
+	<Fragment slot="head">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}
+
+			.subsection-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 2rem 0 1rem 0;
+				padding-left: 1rem;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.info-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.info-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.info-card:hover::before {
+				left: 100%;
+			}
+
+			.info-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.skill-card {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1rem 0;
+				transition: all 0.3s ease;
+				border-left: 4px solid var(--teal-crystal);
+			}
+
+			.skill-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);
+				border-left-color: var(--amber-glow);
+			}
+
+			.warning-card {
+				background: linear-gradient(135deg, rgba(255, 82, 82, 0.1), rgba(255, 183, 77, 0.1));
+				border: 2px solid var(--accent-highlight);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 2rem 0;
+				border-left: 4px solid var(--accent-highlight);
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1rem;
+				margin: 1.5rem 0;
+			}
+
+			.stat-item {
+				background: var(--bg-primary);
+				padding: 1rem;
+				border-radius: 10px;
+				border: 1px solid var(--neutral-200);
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				background: var(--neutral-50);
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.1);
+			}
+
+			.stat-label {
+				font-weight: 600;
+				color: var(--amber-glow);
+				font-size: 0.9rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				font-size: 1.1rem;
+				color: var(--text-primary);
+				font-weight: 700;
+			}
+
+			.text-content {
+				color: var(--text-primary);
+				line-height: 1.7;
+				font-size: 1rem;
+			}
+
+			.text-content p {
+				margin: 1rem 0;
+			}
+
+			.text-content ul, .text-content ol {
+				padding-left: 2rem;
+				margin: 1rem 0;
+			}
+
+			.text-content li {
+				margin: 0.5rem 0;
+				line-height: 1.6;
+			}
+
+			.text-content strong {
+				color: var(--amber-glow);
+				font-weight: 600;
+			}
+
+			.highlight-text {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				padding: 0.2rem 0.5rem;
+				border-radius: 6px;
+				font-weight: 600;
+			}
+
+			.character-info {
+				background: var(--bg-primary);
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				font-family: 'Courier New', monospace;
+				border-left: 4px solid var(--amber-glow);
+				white-space: pre-line;
+			}
+
+			.event-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 1.5rem;
+				margin: 2rem 0;
+			}
+
+			.event-item {
+				background: var(--bg-primary);
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 1.5rem;
+				transition: all 0.3s ease;
+				border-left: 4px solid var(--teal-crystal);
+			}
+
+			.event-item:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);
+				border-left-color: var(--amber-glow);
+			}
+
+			.event-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.2rem;
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin-bottom: 1rem;
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes titleGlow {
+				0% {
+					text-shadow: 
+						0 0 10px rgba(255, 183, 77, 0.3),
+						0 0 20px rgba(255, 183, 77, 0.2);
+				}
+				100% {
+					text-shadow: 
+						0 0 20px rgba(255, 183, 77, 0.6),
+						0 0 30px rgba(255, 183, 77, 0.4);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header {
+					padding: 2rem;
+				}
+
+				.character-title {
+					font-size: 2rem;
+				}
+
+				.content-section {
+					padding: 2rem;
+				}
+
+				.stats-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.event-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<!-- Back Button -->
+			<a href="/guides/zone-nova/updates/" class="back-button">
+				<span class="back-arrow">←</span>
+				Back to News & Maintenance
+			</a>
+
+			<!-- Character Header -->
+			<div class="character-header">
+				<h1 class="character-title">🎮 May 27 Maintenance</h1>
+				<p class="character-subtitle">New Events, Characters & System Updates</p>
+			</div>
+
+			<!-- TL;DR Summary -->
+			<div class="warning-card">
+				<div class="text-content">
+					<p><strong>🎯 TL;DR:</strong> On May 27th with new Empress Guinevere character, Thunder King event, and multiple limited-time activities!</p>
+				</div>
+			</div>
+
+			<!-- Maintenance Schedule -->
+			<section class="content-section">
+				<h2 class="section-title">🔧 Maintenance Schedule</h2>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Date</div>
+						<div class="stat-value">May 27, 2025</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Time</div>
+						<div class="stat-value">14:00 - 16:00 UTC+8</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Duration</div>
+						<div class="stat-value">2 Hours</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Compensation</div>
+						<div class="stat-value">300 Light Ethstone</div>
+					</div>
+				</div>
+				
+				<div class="warning-card">
+					<div class="text-content">
+						<p><strong>⚠️ IMPORTANT:</strong> Servers will be down during maintenance</p>
+						<p><strong>Compensation Eligibility:</strong> All players who logged in before May 31st</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- New Events & Activities -->
+			<section class="content-section">
+				<h2 class="section-title">🎊 New Events & Activities</h2>
+
+				<h3 class="subsection-title">⚡ Thunder King Route - Main Event</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<p><strong>📅 Duration:</strong> May 27 - June 10, 2025</p>
+						<ul>
+							<li><strong>Requirements:</strong> Complete Main Story Chapter 6</li>
+							<li><strong>Rewards:</strong> Light Ethstone, enhancement materials, favorability items</li>
+							<li><strong>How to Play:</strong> Collect activity currency from story cards → Exchange in shop</li>
+						</ul>
+						<p><strong>💎 Login Bonus:</strong> May 28 - June 24</p>
+						<ul>
+							<li><strong>Daily Reward:</strong> Prismatic Magic Power (up to ×10)</li>
+						</ul>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">👑 Limited Character: Empress Guinevere</h3>
+				<div class="character-info">Detail Information
+⏰ Summon Period: May 27 - June 10, 2025
+🛡️ Class: Guardian
+🔥 Element: Flame
+🏰 Lore: Seven domain ruler, Avalon Round Table Knights commander</div>
+
+				<h3 class="subsection-title">💭 Limited Memory: Simple Reminiscence</h3>
+				<div class="info-card">
+					<div class="text-content">
+						<p><strong>📅 Duration:</strong> May 27 - June 10, 2025</p>
+						<ul>
+							<li><strong>Best For:</strong> Guardian class characters</li>
+							<li><strong>Lore Connection:</strong> Tied to Guinevere's story and inner fears</li>
+						</ul>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">⚔️ Boss Battle: Empress Charlotte Petra</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<p><strong>📅 Duration:</strong> May 27 - June 24, 2025</p>
+						<p><strong>🎯 Gameplay:</strong></p>
+						<ul>
+							<li>Daily limited attempts</li>
+							<li>Maximize damage for better rewards</li>
+							<li>Earn star coins → Exchange in star shop</li>
+							<li>Exclusive memories available</li>
+						</ul>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">🌀 Space-Time Rift Events</h3>
+				<div class="event-grid">
+					<div class="event-item">
+						<div class="event-title">Rift Tide II</div>
+						<div class="text-content">
+							<p><strong>Duration:</strong> May 13 - June 10</p>
+							<p><strong>Status:</strong> <span class="highlight-text">🟢 Active</span></p>
+						</div>
+					</div>
+					<div class="event-item">
+						<div class="event-title">Rift Tide III</div>
+						<div class="text-content">
+							<p><strong>Duration:</strong> May 7 - June 24</p>
+							<p><strong>Status:</strong> <span class="highlight-text">🟢 Active</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="info-card">
+					<div class="text-content">
+						<p><strong>🎮 How to Play:</strong> Team up using [Rift Laws] to defeat waves of enemies surging through dimensional tears</p>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">📋 Battle Pass</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Standard</div>
+						<div class="stat-value">Free Tier</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Advanced</div>
+						<div class="stat-value">680 Light Ethstone</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Luxury</div>
+						<div class="stat-value">+10 Levels + Extras</div>
+					</div>
+				</div>
+				<div class="info-card">
+					<div class="text-content">
+						<p><strong>Duration:</strong> May 7 - June 24</p>
+						<p><strong>Standard Rewards:</strong> Gold Coins, Prismatic Magic Power, materials</p>
+						<p><strong>Advanced Instant:</strong> 680 Light Ethstone + all standard rewards</p>
+						<p><strong>Luxury Instant:</strong> +10 levels, 200 Light Ethstone, limited avatars</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Pro Tips -->
+			<section class="content-section">
+				<h2 class="section-title">💡 Pro Tips</h2>
+
+				<h3 class="subsection-title">🎯 Priority List</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<ol>
+							<li><strong>Must Do:</strong> Complete Thunder King event (best rewards)</li>
+							<li><strong>If You Summon:</strong> Go for Guinevere if you need a Flame Guardian</li>
+							<li><strong>Daily Tasks:</strong> Login for Prismatic Magic Power, attempt boss battle</li>
+							<li><strong>Long-term:</strong> Progress Battle Pass throughout the month</li>
+						</ol>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">💰 F2P Friendly</h3>
+				<div class="info-card">
+					<div class="text-content">
+						<ul>
+							<li>Focus on Thunder King event for free resources</li>
+							<li>Daily login rewards require no spending</li>
+							<li>Battle Pass has decent free tier</li>
+						</ul>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">🐋 For Spenders</h3>
+				<div class="skill-card">
+					<div class="text-content">
+						<ul>
+							<li>Advanced Battle Pass = great value (680 Light Ethstone)</li>
+							<li>Luxury Battle Pass = convenience (instant +10 levels)</li>
+							<li>Summon budget: Prioritize Guinevere over Memory if choosing one</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</ZoneNovaLayout1>

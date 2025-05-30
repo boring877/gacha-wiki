@@ -1,68 +1,105 @@
-# Astro Starter Kit: Blog
+# 🎲 GachaWiki
 
-```sh
-bun create astro@latest -- --template blog
-```
+> **Comprehensive guides, character builds, and game strategies for popular gacha games**
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+A beautifully designed wiki and guide platform built with Astro, featuring comprehensive content for gacha gaming enthusiasts.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🌐 **Live Site**: [gachawiki.info](https://gachawiki.info)  
+📖 **Source Code**: [GitHub Repository](https://github.com/boring877/gacha-wiki)
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+## ✨ Features
 
-Features:
+- 🎮 **Game Guides**: In-depth coverage of gacha games starting with Zone Nova
+- 📱 **Mobile Responsive**: Optimized for all devices with touch-friendly interfaces
+- ⚡ **Performance**: Lightning-fast loading with 100/100 Lighthouse scores
+- 🎨 **Modern Design**: Beautiful UI with custom color palette and animations
+- 🔍 **SEO Optimized**: Meta tags, Open Graph data, and sitemap support
+- 🎯 **Interactive Elements**: Event timers, character stats, and dynamic content
+- 📋 **MIT Licensed**: Open source and freely available for the community
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+## 🎮 Game Coverage
+
+### Zone Nova
+- **Characters**: Detailed guides for Naiya, Kela, and more
+- **Events**: Live event tracking with countdown timers
+- **Runes & Crafting**: Complete equipment and upgrade systems
+- **News & Updates**: Latest patches and community announcements
+
+*More games coming soon!*
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
 ```text
+gacha-wiki/
 ├── public/
+│   ├── images/           # Game assets and screenshots
+│   └── tabicoin.svg      # Custom gaming favicon
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+│   ├── components/       # Reusable Astro components
+│   ├── layouts/          # Page layouts and templates
+│   ├── pages/            # Site pages and routing
+│   │   ├── guides/       # Game guides and content
+│   │   └── index.astro   # Homepage with featured games
+│   └── styles/           # Global styles and color system
+├── LICENSE               # MIT License
+└── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Tech Stack
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **Framework**: [Astro](https://astro.build) - Modern static site generator
+- **Styling**: Custom CSS with design system variables
+- **Icons**: Custom SVG favicon with theme-aware colors
+- **Deployment**: Vercel with automatic deployments
+- **Package Manager**: Bun for fast dependency management
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## 🧞 Development Commands
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+| `bun install`             | Install dependencies                             |
+| `bun dev`                 | Start dev server at `localhost:4321`            |
+| `bun build`               | Build production site to `./dist/`              |
+| `bun preview`             | Preview build locally before deploying          |
+| `bun astro add <package>` | Add Astro integrations                          |
+| `bun astro check`         | Run type checking and diagnostics               |
 
-## 👀 Want to learn more?
+## 🎨 Design System
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The site uses a carefully crafted color palette:
 
-## Credit
+- **Rich Black** (`#1C1C1C`) - Main backgrounds
+- **Amber Glow** (`#FFB74D`) - Important UI elements  
+- **Teal Crystal** (`#00ACC1`) - Links and interactions
+- **Rose Quartz** (`#E91E63`) - Special events and highlights
+- **Mocha Mousse** (`#A47864`) - Secondary backgrounds
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+## 🤝 Contributing
+
+We welcome contributions! Whether it's:
+- 📝 Adding new game guides
+- 🐛 Fixing bugs or improving performance  
+- 🎨 Enhancing the design and user experience
+- 📱 Mobile responsiveness improvements
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [Astro](https://astro.build) framework
+- Deployed on [Vercel](https://vercel.com)
+- Inspired by the amazing gacha gaming community
+
+---
+
+**Made with ❤️ by someone who's spent way too much time on gacha games...**
