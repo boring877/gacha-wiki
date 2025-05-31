@@ -4,23 +4,28 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <HomeLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<!-- Critical resource hints -->
+	<link rel="preload" href="/images/zonenova.jpg" as="image" type="image/jpeg" />
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	
 	<!-- Main Content Area -->
-	<main style="max-width: 50rem; margin: 0 auto; padding: 8rem 2rem 4rem 2rem; min-height: 100vh;">
+	<main style="max-width: 50rem; margin: 0 auto; padding: 8rem 2rem 4rem 2rem; min-height: 100vh; contain: layout style;">
 		<!-- Games Section - Option 5: Featured Showcase Style -->
-		<section style="margin-bottom: 6rem;">
+		<section style="margin-bottom: 6rem; contain: layout style;">
 			<div style="text-align: center; margin-bottom: 3rem;">
-				<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; color: var(--text-primary); background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; will-change: transform; transform: translateZ(0);" class="title-hover">
+				<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; color: var(--text-primary); background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; will-change: transform; transform: translateZ(0); contain: layout style paint;" class="title-hover">
 					Game Guide Library
 				</h2>
 			</div>
 
 			<!-- Featured Game - Zone Nova -->
 			<div style="margin-bottom: 3rem;">
-				<div style="background: var(--bg-primary); border-radius: 20px; overflow: hidden; border: 1px solid var(--amber-glow); box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2); will-change: transform, box-shadow; transform: translateZ(0);" class="featured-card">
+				<div style="background: var(--bg-primary); border-radius: 20px; overflow: hidden; border: 1px solid var(--amber-glow); box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2); will-change: transform, box-shadow; transform: translateZ(0); contain: layout style paint;" class="featured-card">
 					<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit; display: block;">
 						
 						<!-- Featured Header -->
-						<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); padding: 1rem 2rem; text-align: center;">
+						<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); padding: 1rem 2rem; text-align: center; min-height: 56px; display: flex; align-items: center; justify-content: center;">
 							<span style="color: white; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
 								<span style="font-size: 1.2rem;" aria-hidden="true">⭐</span>
 								FEATURED GAME
@@ -28,20 +33,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 						</div>
 
 						<!-- Content Area -->
-						<div style="padding: 2rem; display: flex; align-items: center; gap: 2rem;">
+						<div style="padding: 2rem; display: flex; align-items: center; gap: 2rem; min-height: 220px;">
 							
 							<!-- Game Image -->
 							<div style="flex-shrink: 0;">
-								<div style="width: 10rem; height: 10rem; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); position: relative;">
-									<!-- Placeholder to prevent CLS -->
-									<div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0;"></div>
-									<img src="/images/zonenova.jpg" alt="Zone Nova" style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1;" loading="eager" decoding="async" width="160" height="160">
+								<div style="width: 10rem; height: 10rem; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
+									<!-- Fixed placeholder to prevent CLS -->
+									<div style="width: 160px; height: 160px; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0; border-radius: 16px;"></div>
+									<img src="/images/zonenova.jpg" alt="Zone Nova" style="width: 160px; height: 160px; object-fit: cover; position: relative; z-index: 1; border-radius: 16px;" loading="eager" decoding="async" width="160" height="160" fetchpriority="high">
 								</div>
 							</div>
 
 							<!-- Game Info -->
-							<div style="flex: 1;">
-								<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem 0;">
+							<div style="flex: 1; min-height: 180px;">
+								<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem 0; line-height: 1.2;">
 									Zone Nova
 								</h3>
 								<p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin: 0 0 1rem 0; max-width: 35rem;">
@@ -49,20 +54,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 								</p>
 
 								<!-- Active Events Section -->
-								<div style="background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border-radius: 12px; padding: 1rem; margin: 0 0 1rem 0; border-left: 4px solid var(--teal-crystal);">
+								<div style="background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border-radius: 12px; padding: 1rem; margin: 0 0 1rem 0; border-left: 4px solid var(--teal-crystal); min-height: 120px;">
 									<div style="font-size: 0.9rem; font-weight: 600; color: var(--amber-glow); margin-bottom: 0.5rem;">🌀 Active Events</div>
 									<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; font-size: 0.85rem;">
-										<div style="background: rgba(0, 172, 193, 0.15); padding: 0.5rem; border-radius: 6px; min-height: 3rem; display: flex; flex-direction: column; justify-content: space-between;">
+										<div style="background: rgba(0, 172, 193, 0.15); padding: 0.5rem; border-radius: 6px; min-height: 3.5rem; display: flex; flex-direction: column; justify-content: space-between;">
 											<div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; font-size: 0.8rem;">Rift Tide II</div>
-											<div id="riftTimer2" style="color: var(--teal-crystal); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem;">Loading...</div>
+											<div id="riftTimer2" style="color: var(--teal-crystal); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem; min-height: 1rem;">Loading...</div>
 										</div>
-										<div style="background: rgba(255, 183, 77, 0.15); padding: 0.5rem; border-radius: 6px; min-height: 3rem; display: flex; flex-direction: column; justify-content: space-between;">
+										<div style="background: rgba(255, 183, 77, 0.15); padding: 0.5rem; border-radius: 6px; min-height: 3.5rem; display: flex; flex-direction: column; justify-content: space-between;">
 											<div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; font-size: 0.8rem;">Rift Tide III</div>
-											<div id="riftTimer3" style="color: var(--amber-glow); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem;">Loading...</div>
+											<div id="riftTimer3" style="color: var(--amber-glow); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem; min-height: 1rem;">Loading...</div>
 										</div>
-										<div style="background: rgba(255, 77, 77, 0.15); padding: 0.5rem; border-radius: 6px; min-height: 3rem; display: flex; flex-direction: column; justify-content: space-between;">
+										<div style="background: rgba(255, 77, 77, 0.15); padding: 0.5rem; border-radius: 6px; min-height: 3.5rem; display: flex; flex-direction: column; justify-content: space-between;">
 											<div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; font-size: 0.8rem;">⚡ Thunder King</div>
-											<div id="thunderTimer" style="color: var(--rose-quartz); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem;">Loading...</div>
+											<div id="thunderTimer" style="color: var(--rose-quartz); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem; min-height: 1rem;">Loading...</div>
 										</div>
 									</div>
 								</div>
@@ -72,7 +77,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 								</p>
 								
 								<!-- Action Button -->
-								<div style="background: var(--amber-glow); color: white; padding: 1rem 2rem; border-radius: 25px; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.75rem; will-change: transform, background-color; transform: translateZ(0); cursor: pointer;" class="action-button">
+								<div style="background: var(--amber-glow); color: white; padding: 1rem 2rem; border-radius: 25px; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.75rem; will-change: transform, background-color; transform: translateZ(0); cursor: pointer; min-height: 48px;" class="action-button">
 									Explore Zone Nova
 									<span style="font-size: 1.25rem;" aria-hidden="true">→</span>
 								</div>
@@ -84,7 +89,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 			<!-- Other Games Section -->
 			<div style="text-align: center; margin-bottom: 2rem;">
-				<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 600; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
+				<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 600; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; contain: layout style paint;">
 					More Games Coming Soon
 				</h3>
 			</div>
@@ -93,7 +98,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
 				
 				<!-- Coming Soon Card 1 -->
-				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--mocha-mousse); text-align: center; opacity: 0.8; will-change: transform, opacity; transform: translateZ(0);" class="coming-soon-card">
+				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--mocha-mousse); text-align: center; opacity: 0.8; will-change: transform, opacity; transform: translateZ(0); min-height: 180px; contain: layout style;" class="coming-soon-card">
 					<div style="width: 4rem; height: 4rem; border-radius: 12px; background: linear-gradient(135deg, var(--mocha-mousse), var(--amber-glow)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
 						<span style="font-size: 2rem;" aria-hidden="true">🎮</span>
 					</div>
@@ -104,7 +109,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				</div>
 
 				<!-- Coming Soon Card 2 -->
-				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--rose-quartz); text-align: center; opacity: 0.8; will-change: transform, opacity; transform: translateZ(0);" class="coming-soon-card">
+				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--rose-quartz); text-align: center; opacity: 0.8; will-change: transform, opacity; transform: translateZ(0); min-height: 180px; contain: layout style;" class="coming-soon-card">
 					<div style="width: 4rem; height: 4rem; border-radius: 12px; background: linear-gradient(135deg, var(--rose-quartz), var(--teal-crystal)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
 						<span style="font-size: 2rem;" aria-hidden="true">⏳</span>
 					</div>
@@ -115,7 +120,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				</div>
 
 				<!-- Coming Soon Card 3 -->
-				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--teal-crystal); text-align: center; opacity: 0.8; will-change: transform, opacity; transform: translateZ(0);" class="coming-soon-card">
+				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--teal-crystal); text-align: center; opacity: 0.8; will-change: transform, opacity; transform: translateZ(0); min-height: 180px; contain: layout style;" class="coming-soon-card">
 					<div style="width: 4rem; height: 4rem; border-radius: 12px; background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
 						<span style="font-size: 2rem;" aria-hidden="true">🔮</span>
 					</div>
@@ -128,7 +133,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		</section>
 
 		<!-- "Built by" Section -->
-		<section style="text-align: center; margin-bottom: 6rem;">
+		<section style="text-align: center; margin-bottom: 6rem; contain: layout style;">
 			<div style="opacity: 0; transform: translateY(30px);" class="fade-in-section">
 				<p style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; line-height: 1.4; max-width: 42rem; margin: 0 auto; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(255, 183, 77, 0.3);">
 					Built by someone who's spent way too much time on gacha games...
@@ -157,10 +162,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 						<!-- Zone Nova Card -->
 						<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--amber-glow); will-change: transform; transform: translateZ(0);" class="modal-card">
 							<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit;">
-								<div style="width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(0, 172, 193, 0.3); position: relative;">
-									<!-- Placeholder -->
-									<div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0;"></div>
-									<img src="/images/zonenova.jpg" alt="Zone NOVA" style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1;" loading="lazy" decoding="async" width="280" height="150">
+								<div style="width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
+									<!-- Fixed placeholder -->
+									<div style="width: 280px; height: 150px; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0; border-radius: 12px;"></div>
+									<img src="/images/zonenova.jpg" alt="Zone NOVA" style="width: 280px; height: 150px; object-fit: cover; position: relative; z-index: 1; border-radius: 12px;" loading="lazy" decoding="async" width="280" height="150">
 								</div>
 								<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem 0;">Zone Nova</h3>
 								<p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Character guides, runes, events, and announcements</p>
@@ -172,7 +177,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 						</div>
 
 						<!-- Coming Soon Cards -->
-						<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--mocha-mousse); opacity: 0.6; transform: translateZ(0);">
+						<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--mocha-mousse); opacity: 0.6; transform: translateZ(0); min-height: 250px;">
 							<div style="width: 100%; height: 150px; border-radius: 12px; background: linear-gradient(135deg, var(--mocha-mousse), var(--amber-glow)); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
 								<span style="font-size: 3rem;" aria-hidden="true">🚧</span>
 							</div>

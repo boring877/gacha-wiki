@@ -32,38 +32,195 @@ const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="dns-prefetch" href="https://vitals.vercel-analytics.com" />
-<link rel="preload" href="/images/zonenova.jpg" as="image" type="image/jpeg" />
 
-<!-- Critical CSS inline for above-the-fold content -->
+<!-- Critical font preload -->
+<link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mPbF4C-11Jw.woff2" as="font" type="font/woff2" crossorigin />
+
+<!-- Critical image preload -->
+<link rel="preload" href="/images/zonenova.jpg" as="image" type="image/jpeg" fetchpriority="high" />
+
+<!-- Critical CSS inline for above-the-fold content and CLS prevention -->
 <style>
-	/* Critical inline styles for CLS prevention */
+	/* Critical inline styles for maximum CLS prevention */
+	:root {
+		--bg-primary: #1a1a1a;
+		--bg-secondary: #2a2a2a;
+		--text-primary: #ffffff;
+		--text-secondary: #b3b3b3;
+		--amber-glow: #FFB74D;
+		--teal-crystal: #00ACC1;
+		--rose-quartz: #F48FB1;
+		--mocha-mousse: #A4785C;
+	}
+	
+	/* Prevent FOUC and layout shift */
+	html {
+		visibility: hidden;
+		opacity: 0;
+	}
+	
+	html.fonts-loaded {
+		visibility: visible;
+		opacity: 1;
+		transition: opacity 0.1s ease;
+	}
+	
+	/* Critical layout styles */
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+		background-color: var(--bg-primary);
+		color: var(--text-primary);
+		line-height: 1.6;
+		/* Force hardware acceleration */
+		transform: translateZ(0);
+		backface-visibility: hidden;
+		perspective: 1000px;
+	}
+	
+	/* Header fixed height to prevent CLS */
+	.header-container {
+		min-height: 72px;
+		position: sticky;
+		top: 0;
+		z-index: 1000;
+		background: rgba(28, 28, 28, 0.95);
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--amber-glow);
+		contain: layout style paint;
+		will-change: transform;
+	}
+	
+	/* Main layout container with fixed dimensions */
 	.main-layout {
 		max-width: 50rem;
 		margin: 0 auto;
 		padding: 8rem 2rem 4rem 2rem;
 		min-height: 100vh;
+		contain: layout style;
 	}
 	
-	.image-placeholder {
-		width: 100%;
-		height: 100%;
+	/* Featured card fixed dimensions to prevent CLS */
+	.featured-card-container {
+		margin-bottom: 3rem;
+		min-height: 340px;
+		contain: layout style paint;
+	}
+	
+	.featured-card {
+		background: var(--bg-primary);
+		border-radius: 20px;
+		overflow: hidden;
+		border: 1px solid var(--amber-glow);
+		box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
+		min-height: 336px;
+		contain: layout style paint;
+		will-change: transform, box-shadow;
+		transform: translateZ(0);
+	}
+	
+	/* Image containers with fixed dimensions */
+	.game-image-container {
+		width: 160px;
+		height: 160px;
+		border-radius: 16px;
+		overflow: hidden;
+		box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3);
+		position: relative;
 		background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));
-		position: absolute;
-		top: 0;
-		left: 0;
+		flex-shrink: 0;
 	}
 	
+	.game-image {
+		width: 160px;
+		height: 160px;
+		object-fit: cover;
+		border-radius: 16px;
+		position: relative;
+		z-index: 1;
+	}
+	
+	/* Timer card fixed heights */
 	.timer-card {
-		min-height: 3rem;
+		min-height: 3.5rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		padding: 0.5rem;
+		border-radius: 6px;
 	}
 	
+	.timer-text {
+		min-height: 1rem;
+		font-family: 'Courier New', monospace;
+		font-size: 0.75rem;
+		font-weight: 600;
+	}
+	
+	/* Coming soon cards fixed height */
+	.coming-soon-card {
+		min-height: 180px;
+		background: var(--bg-primary);
+		border-radius: 16px;
+		padding: 2rem;
+		text-align: center;
+		opacity: 0.8;
+		contain: layout style;
+		will-change: transform, opacity;
+		transform: translateZ(0);
+	}
+	
+	/* Action button fixed dimensions */
+	.action-button {
+		background: var(--amber-glow);
+		color: white;
+		padding: 1rem 2rem;
+		border-radius: 25px;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 1rem;
+		font-weight: 600;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		min-height: 48px;
+		cursor: pointer;
+		will-change: transform, background-color;
+		transform: translateZ(0);
+		transition: transform 0.2s ease, background-color 0.2s ease;
+	}
+	
+	/* Mobile optimizations */
 	@media (max-width: 768px) {
 		.main-layout {
 			padding: 6rem 1rem 2rem 1rem;
 		}
+		
+		.featured-card-container {
+			min-height: auto;
+		}
+		
+		/* Disable animations on mobile */
+		*, *::before, *::after {
+			animation-duration: 0.01ms !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+	
+	/* Accessibility */
+	@media (prefers-reduced-motion: reduce) {
+		*, *::before, *::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+	
+	/* GPU acceleration for all elements */
+	* {
+		transform: translateZ(0);
+		backface-visibility: hidden;
 	}
 </style>
 
@@ -89,22 +246,35 @@ const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- Google Fonts -->
+<!-- Google Fonts with optimized loading -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <!-- Performance Hints -->
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
-<!-- Prefetch key pages for faster navigation -->
+<!-- Prefetch key pages for instant navigation -->
 <link rel="prefetch" href="/guides/zone-nova/">
 <link rel="prefetch" href="/about/">
+<link rel="prefetch" href="/guides/">
 
-<!-- Cache control hints -->
+<!-- Cache control and security -->
 <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
-
-<!-- Performance and Security -->
 <meta name="theme-color" content="#FFB74D">
 <meta name="msapplication-TileColor" content="#FFB74D">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+
+<!-- Font loading detection script -->
+<script>
+	// Optimize font loading to prevent FOUC
+	document.fonts.ready.then(() => {
+		document.documentElement.classList.add('fonts-loaded');
+	});
+	
+	// Fallback in case fonts don't load
+	setTimeout(() => {
+		document.documentElement.classList.add('fonts-loaded');
+	}, 3000);
+</script>

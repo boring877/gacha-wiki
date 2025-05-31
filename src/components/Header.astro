@@ -399,7 +399,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// Close menu when clicking on overlay or links
 	mobileMenu?.addEventListener('click', (e) => {
-		if (e.target === mobileMenu || e.target.classList.contains('mobile-nav-link')) {
+		const target = e.target as HTMLElement;
+		if (target === mobileMenu || (target && target.classList?.contains('mobile-nav-link'))) {
 			closeMenu();
 		}
 	}, { passive: true });
@@ -412,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}, { passive: true });
 
 	// Close menu on window resize (desktop breakpoint)
-	let resizeTimeout;
+	let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
 	window.addEventListener('resize', () => {
 		clearTimeout(resizeTimeout);
 		resizeTimeout = setTimeout(() => {
