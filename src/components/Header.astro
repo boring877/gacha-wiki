@@ -5,6 +5,7 @@ import { SITE_TITLE } from '../consts';
 <style>
 	@import '/src/styles/colors.css';
 	
+	/* Optimized animations for mobile performance */
 	@keyframes subtleGlow {
 		0%, 100% { text-shadow: 0 0 10px rgba(255, 183, 77, 0.3); }
 		50% { text-shadow: 0 0 15px rgba(255, 183, 77, 0.6); }
@@ -12,9 +13,114 @@ import { SITE_TITLE } from '../consts';
 	
 	.simple-title {
 		color: var(--amber-glow);
+		transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+		will-change: transform, background-color;
 	}
 
-	/* Mobile Navigation Styles */
+	/* Header optimizations for CLS prevention */
+	.header-container {
+		background: rgba(28, 28, 28, 0.95);
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--amber-glow);
+		box-shadow: 0 4px 20px rgba(255, 183, 77, 0.2);
+		padding: 1rem 0;
+		position: sticky;
+		top: 0;
+		z-index: 1000;
+		/* Prevent layout shift */
+		min-height: 72px;
+		contain: layout style paint;
+	}
+
+	.nav-container {
+		max-width: 72rem;
+		margin: 0 auto;
+		/* Prevent horizontal overflow */
+		overflow-x: hidden;
+	}
+
+	.header-content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 2rem;
+		/* Fixed height to prevent CLS */
+		min-height: 40px;
+	}
+
+	/* Logo optimizations */
+	.logo-container {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		/* Prevent shrinking */
+		flex-shrink: 0;
+	}
+
+	.logo-title {
+		text-decoration: none;
+		padding: 0.5rem 1rem;
+		border-radius: 0.75rem;
+		font-size: 1.5rem;
+		transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+		will-change: transform, background-color;
+		/* Touch optimization */
+		touch-action: manipulation;
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+	}
+
+	/* Desktop navigation */
+	.desktop-nav {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		/* Prevent shrinking */
+		flex-shrink: 0;
+	}
+
+	.nav-link {
+		color: var(--amber-glow);
+		text-decoration: none;
+		padding: 0.5rem 1rem;
+		border-radius: 0.75rem;
+		font-weight: 500;
+		font-size: 1.3rem;
+		transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+		will-change: transform, background-color;
+		/* Touch optimization */
+		touch-action: manipulation;
+		min-height: 44px;
+		min-width: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/* Social links */
+	.social-links {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		flex-shrink: 0;
+	}
+
+	.social-link {
+		color: var(--amber-glow);
+		padding: 0.5rem;
+		border-radius: 0.75rem;
+		transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+		will-change: transform, background-color;
+		touch-action: manipulation;
+		min-height: 44px;
+		min-width: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/* Mobile Navigation Styles - Performance optimized */
 	.mobile-menu {
 		display: none;
 		position: fixed;
@@ -31,7 +137,11 @@ import { SITE_TITLE } from '../consts';
 		gap: 2rem;
 		opacity: 0;
 		visibility: hidden;
-		transition: all 0.3s ease;
+		transition: opacity 0.3s ease, visibility 0.3s ease;
+		/* Optimize for mobile performance */
+		will-change: opacity, visibility;
+		/* Prevent scrolling on body when open */
+		overscroll-behavior: contain;
 	}
 
 	.mobile-menu.active {
@@ -40,40 +150,45 @@ import { SITE_TITLE } from '../consts';
 		visibility: visible;
 	}
 
-	.mobile-menu a {
+	.mobile-nav-link {
 		color: var(--amber-glow);
 		text-decoration: none;
 		font-size: 1.5rem;
 		font-weight: 600;
 		padding: 1rem 2rem;
 		border-radius: 12px;
-		transition: all 0.3s ease;
+		transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 		min-height: 48px;
+		min-width: 200px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		touch-action: manipulation;
+		will-change: transform, background-color;
 	}
 
-	.mobile-menu a:hover {
-		background: var(--rose-quartz);
-		color: var(--text-inverse);
-		transform: scale(1.05);
-	}
-
+	/* Hamburger menu optimizations */
 	.hamburger {
 		display: none;
 		flex-direction: column;
 		cursor: pointer;
 		padding: 0.5rem;
 		gap: 4px;
+		/* Touch optimization */
+		touch-action: manipulation;
+		min-height: 44px;
+		min-width: 44px;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.hamburger span {
 		width: 25px;
 		height: 3px;
 		background: var(--amber-glow);
-		transition: all 0.3s ease;
+		transition: transform 0.3s ease, opacity 0.3s ease;
 		border-radius: 3px;
+		will-change: transform, opacity;
 	}
 
 	.hamburger.active span:nth-child(1) {
@@ -88,26 +203,57 @@ import { SITE_TITLE } from '../consts';
 		transform: rotate(-45deg) translate(6px, -6px);
 	}
 
+	/* Hover effects - Desktop only */
+	@media (hover: hover) and (pointer: fine) {
+		.logo-title:hover,
+		.nav-link:hover,
+		.social-link:hover,
+		.mobile-nav-link:hover {
+			background: var(--rose-quartz);
+			color: var(--text-inverse);
+			transform: translateY(-2px);
+		}
+	}
+
 	/* Mobile Responsive Design */
 	@media (max-width: 768px) {
+		/* Hide desktop navigation */
 		.desktop-nav {
 			display: none !important;
 		}
 
+		/* Show hamburger */
 		.hamburger {
 			display: flex !important;
 		}
 
+		/* Optimize header padding */
 		.header-content {
 			padding: 0 1rem !important;
 		}
 
+		/* Adjust logo size */
 		.logo-title {
 			font-size: 1.25rem !important;
 		}
 
+		/* Hide social links on mobile header */
 		.social-links {
 			display: none !important;
+		}
+
+		/* Disable animations on mobile for better performance */
+		.simple-title,
+		.logo-title,
+		.nav-link,
+		.social-link {
+			transition: none;
+			will-change: auto;
+		}
+
+		/* Optimize mobile menu */
+		.mobile-menu {
+			backdrop-filter: blur(10px);
 		}
 	}
 
@@ -118,101 +264,96 @@ import { SITE_TITLE } from '../consts';
 
 		.logo-title {
 			font-size: 1.1rem !important;
+			padding: 0.5rem 0.75rem !important;
+		}
+	}
+
+	/* Reduce motion for accessibility */
+	@media (prefers-reduced-motion: reduce) {
+		.simple-title,
+		.logo-title,
+		.nav-link,
+		.social-link,
+		.mobile-nav-link,
+		.hamburger span,
+		.mobile-menu {
+			transition: none !important;
+			animation: none !important;
 		}
 	}
 </style>
 
-<header style="background: rgba(28, 28, 28, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--amber-glow); box-shadow: 0 4px 20px rgba(255, 183, 77, 0.2); padding: 1rem 0; position: sticky; top: 0; z-index: 1000;">
-	<nav style="max-width: 72rem; margin: 0 auto;">
-		<div class="header-content" style="display: flex; align-items: center; justify-content: space-between; padding: 0 2rem;">
+<header class="header-container">
+	<nav class="nav-container">
+		<div class="header-content">
 			<!-- Logo and Title -->
-			<div style="display: flex; align-items: center; gap: 0.75rem;">
+			<div class="logo-container">
 				<h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; margin: 0;">
-					<a href="/" class="simple-title logo-title" style="text-decoration: none; padding: 0.5rem 1rem; border-radius: 0.75rem; transition: all 0.3s ease; font-size: 1.5rem;" 
-					onmouseover="this.style.background='var(--rose-quartz)'; this.style.color='var(--text-inverse)'; this.style.transform='translateY(-2px)'" 
-					onmouseout="this.style.background='transparent'; this.style.color='var(--amber-glow)'; this.style.transform='translateY(0)'">{SITE_TITLE}</a>
+					<a href="/" class="simple-title logo-title">{SITE_TITLE}</a>
 				</h2>
 			</div>
 			
 			<!-- Desktop Navigation Links -->
-			<div class="desktop-nav" style="display: flex; align-items: center; gap: 1.5rem;">
-				<a href="/" style="color: var(--amber-glow); text-decoration: none; padding: 0.5rem 1rem; border-radius: 0.75rem; transition: all 0.3s ease; font-weight: 500; font-size: 1.3rem;" 
-				onmouseover="this.style.background='var(--rose-quartz)'; this.style.color='var(--text-inverse)'; this.style.transform='translateY(-2px)'" 
-				onmouseout="this.style.background='transparent'; this.style.color='var(--amber-glow)'; this.style.transform='translateY(0)'">Home</a>
-				
-				<a href="/guides/" style="color: var(--amber-glow); text-decoration: none; padding: 0.5rem 1rem; border-radius: 0.75rem; transition: all 0.3s ease; font-weight: 500; font-size: 1.3rem;" 
-				onmouseover="this.style.background='var(--rose-quartz)'; this.style.color='var(--text-inverse)'; this.style.transform='translateY(-2px)'" 
-				onmouseout="this.style.background='transparent'; this.style.color='var(--amber-glow)'; this.style.transform='translateY(0)'">Guides</a>
-				
-				<a href="/about/" style="color: var(--amber-glow); text-decoration: none; padding: 0.5rem 1rem; border-radius: 0.75rem; transition: all 0.3s ease; font-weight: 500; font-size: 1.3rem;" 
-				onmouseover="this.style.background='var(--rose-quartz)'; this.style.color='var(--text-inverse)'; this.style.transform='translateY(-2px)'" 
-				onmouseout="this.style.background='transparent'; this.style.color='var(--amber-glow)'; this.style.transform='translateY(0)'">About</a>
+			<div class="desktop-nav">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/guides/" class="nav-link">Guides</a>
+				<a href="/about/" class="nav-link">About</a>
 			</div>
 			
 			<!-- Desktop Social Media Links -->
-			<div class="social-links" style="display: flex; align-items: center; gap: 0.75rem;">
-				<a href="https://github.com/boring877/gacha-wiki" target="_blank" style="color: var(--amber-glow); padding: 0.5rem; border-radius: 0.75rem; transition: all 0.3s ease;" 
-				onmouseover="this.style.background='var(--rose-quartz)'; this.style.color='var(--text-inverse)'; this.style.transform='translateY(-2px)'" 
-				onmouseout="this.style.background='transparent'; this.style.color='var(--amber-glow)'; this.style.transform='translateY(0)'"
-				title="View source code on GitHub">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+			<div class="social-links">
+				<a href="https://github.com/boring877/gacha-wiki" target="_blank" class="social-link" 
+				title="View source code on GitHub" aria-label="GitHub">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 						<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
 					</svg>
 				</a>
-				<a href="https://www.youtube.com/@GachaJunkie888" target="_blank" style="color: var(--amber-glow); padding: 0.5rem; border-radius: 0.75rem; transition: all 0.3s ease;" 
-				onmouseover="this.style.background='var(--rose-quartz)'; this.style.color='var(--text-inverse)'; this.style.transform='translateY(-2px)'" 
-				onmouseout="this.style.background='transparent'; this.style.color='var(--amber-glow)'; this.style.transform='translateY(0)'">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+				<a href="https://www.youtube.com/@GachaJunkie888" target="_blank" class="social-link" 
+				title="YouTube Channel" aria-label="YouTube">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 						<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136C4.495 20.455 12 20.455 12 20.455s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
 					</svg>
 				</a>
-				<a href="https://x.com/EcchiPen" target="_blank" style="color: var(--amber-glow); padding: 0.5rem; border-radius: 0.75rem; transition: all 0.3s ease;" 
-				onmouseover="this.style.background='var(--rose-quartz)'; this.style.color='var(--text-inverse)'; this.style.transform='translateY(-2px)'" 
-				onmouseout="this.style.background='transparent'; this.style.color='var(--amber-glow)'; this.style.transform='translateY(0)'">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+				<a href="https://x.com/EcchiPen" target="_blank" class="social-link" 
+				title="Twitter/X Profile" aria-label="Twitter">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 						<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
 					</svg>
 				</a>
 			</div>
 
 			<!-- Mobile Hamburger Menu -->
-			<div class="hamburger" id="hamburger">
+			<button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
 				<span></span>
 				<span></span>
 				<span></span>
-			</div>
+			</button>
 		</div>
 	</nav>
 
 	<!-- Mobile Menu Overlay -->
-	<div class="mobile-menu" id="mobileMenu">
-		<a href="/">Home</a>
-		<a href="/guides/">Guides</a>
-		<a href="/about/">About</a>
+	<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+		<a href="/" class="mobile-nav-link">Home</a>
+		<a href="/guides/" class="mobile-nav-link">Guides</a>
+		<a href="/about/" class="mobile-nav-link">About</a>
 		
 		<!-- Mobile Social Links -->
 		<div style="display: flex; gap: 1.5rem; margin-top: 2rem;">
-			<a href="https://github.com/boring877/gacha-wiki" target="_blank" style="color: var(--amber-glow); padding: 1rem; border-radius: 12px; transition: all 0.3s ease; font-size: 0;" 
-			onmouseover="this.style.background='var(--rose-quartz)'; this.style.color='var(--text-inverse)'" 
-			onmouseout="this.style.background='transparent'; this.style.color='var(--amber-glow)'"
-			title="GitHub">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+			<a href="https://github.com/boring877/gacha-wiki" target="_blank" class="social-link" 
+			title="GitHub" aria-label="GitHub">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 					<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
 				</svg>
 			</a>
-			<a href="https://www.youtube.com/@GachaJunkie888" target="_blank" style="color: var(--amber-glow); padding: 1rem; border-radius: 12px; transition: all 0.3s ease; font-size: 0;" 
-			onmouseover="this.style.background='var(--rose-quartz)'; this.style.color='var(--text-inverse)'" 
-			onmouseout="this.style.background='transparent'; this.style.color='var(--amber-glow)'"
-			title="YouTube">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+			<a href="https://www.youtube.com/@GachaJunkie888" target="_blank" class="social-link" 
+			title="YouTube" aria-label="YouTube">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 					<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136C4.495 20.455 12 20.455 12 20.455s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
 				</svg>
 			</a>
-			<a href="https://x.com/EcchiPen" target="_blank" style="color: var(--amber-glow); padding: 1rem; border-radius: 12px; transition: all 0.3s ease; font-size: 0;" 
-			onmouseover="this.style.background='var(--rose-quartz)'; this.style.color='var(--text-inverse)'" 
-			onmouseout="this.style.background='transparent'; this.style.color='var(--amber-glow)'"
-			title="X (Twitter)">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+			<a href="https://x.com/EcchiPen" target="_blank" class="social-link" 
+			title="Twitter" aria-label="Twitter">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 					<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
 				</svg>
 			</a>
@@ -221,38 +362,64 @@ import { SITE_TITLE } from '../consts';
 </header>
 
 <script>
-// Mobile menu functionality
+// Optimized mobile menu functionality with passive event listeners
 document.addEventListener('DOMContentLoaded', function() {
 	const hamburger = document.getElementById('hamburger');
 	const mobileMenu = document.getElementById('mobileMenu');
-	
-	if (hamburger && mobileMenu) {
-		hamburger.addEventListener('click', function() {
-			hamburger.classList.toggle('active');
-			mobileMenu.classList.toggle('active');
-			
-			// Prevent body scroll when menu is open
-			document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-		});
+	let isMenuOpen = false;
+
+	function toggleMenu() {
+		isMenuOpen = !isMenuOpen;
 		
-		// Close menu when clicking on links
-		const mobileLinks = mobileMenu.querySelectorAll('a');
-		mobileLinks.forEach(link => {
-			link.addEventListener('click', function() {
-				hamburger.classList.remove('active');
-				mobileMenu.classList.remove('active');
-				document.body.style.overflow = '';
-			});
-		});
+		if (hamburger) {
+			hamburger.classList.toggle('active', isMenuOpen);
+			hamburger.setAttribute('aria-expanded', isMenuOpen.toString());
+		}
 		
-		// Close menu when clicking outside
-		mobileMenu.addEventListener('click', function(e) {
-			if (e.target === mobileMenu) {
-				hamburger.classList.remove('active');
-				mobileMenu.classList.remove('active');
-				document.body.style.overflow = '';
-			}
-		});
+		if (mobileMenu) {
+			mobileMenu.classList.toggle('active', isMenuOpen);
+		}
+		
+		// Prevent body scrolling when menu is open
+		document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+		
+		// Optimize performance by disabling scroll events when menu is open
+		document.body.style.position = isMenuOpen ? 'fixed' : '';
+		document.body.style.width = isMenuOpen ? '100%' : '';
 	}
+
+	function closeMenu() {
+		if (isMenuOpen) {
+			toggleMenu();
+		}
+	}
+
+	// Event listeners with passive option for better performance
+	hamburger?.addEventListener('click', toggleMenu, { passive: true });
+	
+	// Close menu when clicking on overlay or links
+	mobileMenu?.addEventListener('click', (e) => {
+		if (e.target === mobileMenu || e.target.classList.contains('mobile-nav-link')) {
+			closeMenu();
+		}
+	}, { passive: true });
+
+	// Close menu on escape key
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && isMenuOpen) {
+			closeMenu();
+		}
+	}, { passive: true });
+
+	// Close menu on window resize (desktop breakpoint)
+	let resizeTimeout;
+	window.addEventListener('resize', () => {
+		clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(() => {
+			if (window.innerWidth > 768 && isMenuOpen) {
+				closeMenu();
+			}
+		}, 100);
+	}, { passive: true });
 });
 </script>
