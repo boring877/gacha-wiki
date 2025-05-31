@@ -33,10 +33,6 @@ const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="dns-prefetch" href="https://vitals.vercel-analytics.com" />
 
-<!-- Critical font preload -->
-<link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mPbF4C-11Jw.woff2" as="font" type="font/woff2" crossorigin />
-
 <!-- Critical image preload -->
 <link rel="preload" href="/images/zonenova.jpg" as="image" type="image/jpeg" fetchpriority="high" />
 
@@ -52,18 +48,6 @@ const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
 		--teal-crystal: #00ACC1;
 		--rose-quartz: #F48FB1;
 		--mocha-mousse: #A4785C;
-	}
-	
-	/* Prevent FOUC and layout shift */
-	html {
-		visibility: hidden;
-		opacity: 0;
-	}
-	
-	html.fonts-loaded {
-		visibility: visible;
-		opacity: 1;
-		transition: opacity 0.1s ease;
 	}
 	
 	/* Critical layout styles */
@@ -249,7 +233,12 @@ const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
 <!-- Google Fonts with optimized loading -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+<!-- Fallback for font loading -->
+<noscript>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</noscript>
 
 <!-- Performance Hints -->
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -265,16 +254,3 @@ const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
 <meta name="theme-color" content="#FFB74D">
 <meta name="msapplication-TileColor" content="#FFB74D">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-
-<!-- Font loading detection script -->
-<script>
-	// Optimize font loading to prevent FOUC
-	document.fonts.ready.then(() => {
-		document.documentElement.classList.add('fonts-loaded');
-	});
-	
-	// Fallback in case fonts don't load
-	setTimeout(() => {
-		document.documentElement.classList.add('fonts-loaded');
-	}, 3000);
-</script>
