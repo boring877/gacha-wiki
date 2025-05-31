@@ -1,0 +1,706 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout1 
+	title="Guinevere Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Guinevere, the defense-scaling guardian tank in Zone Nova"
+	gameTitle="Guinevere Character Guide"
+	showBreadcrumb={true}
+	breadcrumbText="Characters"
+>
+	<Fragment slot="head">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-image {
+				width: 300px;
+				height: 300px;
+				border-radius: 20px;
+				object-fit: cover;
+				margin: 0 auto 2rem auto;
+				display: block;
+				box-shadow: 0 12px 30px rgba(0, 172, 193, 0.3);
+				transition: all 0.3s ease;
+			}
+
+			.character-image:hover {
+				transform: scale(1.05);
+				box-shadow: 0 16px 40px rgba(0, 172, 193, 0.4);
+			}
+
+			.character-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}
+
+			.subsection-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 2rem 0 1rem 0;
+				padding-left: 1rem;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.skill-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin: 1.5rem 0 0.8rem 0;
+			}
+
+			.info-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.info-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.info-card:hover::before {
+				left: 100%;
+			}
+
+			.info-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.skill-card {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1rem 0;
+				transition: all 0.3s ease;
+			}
+
+			.skill-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 1.5rem;
+				margin: 1.5rem 0;
+			}
+
+			.stat-item {
+				background: var(--bg-secondary);
+				padding: 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--neutral-200);
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				border-color: var(--amber-glow);
+				transform: translateY(-2px);
+			}
+
+			.stat-label {
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				color: var(--text-primary);
+				font-size: 1.1rem;
+			}
+
+			.priority-high {
+				color: #dc3545;
+				font-weight: 600;
+			}
+
+			.priority-medium {
+				color: #ffc107;
+				font-weight: 600;
+			}
+
+			.priority-low {
+				color: #28a745;
+				font-weight: 600;
+			}
+
+			.awakening-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 12px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+
+			.critical-awakening {
+				background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1));
+				border-color: #dc3545;
+			}
+
+			.warning-box {
+				background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1));
+				border: 1px solid #ffc107;
+				border-radius: 12px;
+				padding: 1.5rem;
+				margin: 1.5rem 0;
+			}
+
+			.warning-box .warning-title {
+				color: #ffc107;
+				font-weight: 600;
+				margin-bottom: 0.5rem;
+			}
+
+			@keyframes titleGlow {
+				0% {
+					text-shadow: 0 0 10px rgba(255, 183, 77, 0.3);
+				}
+				100% {
+					text-shadow: 0 0 20px rgba(255, 183, 77, 0.6);
+				}
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header,
+				.content-section {
+					padding: 2rem;
+				}
+
+				.character-title {
+					font-size: 2.5rem;
+				}
+
+				.character-image {
+					width: 250px;
+					height: 250px;
+				}
+
+				.stats-grid {
+					grid-template-columns: 1fr;
+				}
+
+				/* Memory Card mobile layout */
+				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
+					flex-direction: column !important;
+					align-items: center !important;
+				}
+
+				.content-section img[alt="Guinevere Card"] {
+					width: 160px !important;
+					height: 240px !important;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<!-- Back Button -->
+			<a href="/guides/zone-nova/characters/" class="back-button">
+				<span class="back-arrow">←</span>
+				Back to Characters
+			</a>
+
+			<!-- Character Header -->
+			<header class="character-header">
+				<!-- Character Image -->
+				<img src="/images/characters/Guinevere.jpg" alt="Guinevere" class="character-image" loading="eager" />
+				
+				<h1 class="character-title">⚔️ Guinevere</h1>
+				<p class="character-subtitle">🌟 SSR • 🔥 Fire • 🛡️ Tank/Defense DPS</p>
+			</header>
+
+			<!-- Character Overview -->
+			<section class="content-section">
+				<h2 class="section-title">Character Overview</h2>
+				
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Class</div>
+						<div class="stat-value">Guardian</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Faction</div>
+						<div class="stat-value">Avalon</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Role</div>
+						<div class="stat-value">Tank/Defense DPS</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">First Release</div>
+						<div class="stat-value">2025-05-27</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Base Stats at Level 80</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">HP</div>
+						<div class="stat-value">10,520</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Attack</div>
+						<div class="stat-value">734</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Defense</div>
+						<div class="stat-value">1,232</div>
+					</div>
+				</div>
+
+				<div class="info-card">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
+						Guinevere is a powerful defense-scaling tank who excels at absorbing damage while dealing respectable damage based on her defense stat. Her unique kit revolves around blocking attacks to gain Domination Authority stacks, which unlock her enhanced ultimate ability.
+					</p>
+				</div>
+			</section>
+
+			<!-- Skills Section -->
+			<section class="content-section">
+				<h2 class="section-title">Skills</h2>
+
+				<div class="skill-card">
+					<h3 class="skill-title">🔥 Normal Attack: Inferno</h3>
+					<p><strong>Level:</strong> 14 | <strong>CD:</strong> 2.0s</p>
+					<p>Deals fire damage equal to <strong>120% of Defense</strong> to designated enemy unit</p>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">⚡ Auto Skill: Supreme Power</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>Auto-trigger Interval:</strong> 5.0s</p>
+					<ul>
+						<li><strong>Automatically</strong> grants self <strong>58% block rate</strong> for 10 seconds (triggers every 5 seconds)</li>
+						<li><strong>[Block]:</strong> Has a chance to reduce incoming damage by 30%. Continuous damage ignores block determination</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">💥 Ultimate: Devastating Heavenly Fire</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 3</p>
+					<ul>
+						<li>Launches <strong>[Pursuit]</strong> against designated enemy units</li>
+						<li>Deals fire damage equal to <strong>240% of Defense</strong></li>
+						<li>Gains 1 layer of <strong>[Domination Authority]</strong></li>
+						<li>Reduces damage taken by 24% for 10 seconds</li>
+					</ul>
+
+					<div class="warning-box">
+						<div class="warning-title">🌟 Enhanced Ultimate (Requires 10 Domination Authority stacks)</div>
+						<ul>
+							<li>Clears all <strong>[Domination Authority]</strong> to gain one passive life recovery count</li>
+							<li>Launches <strong>[Pursuit]</strong> against frontal targets</li>
+							<li>Deals fire damage equal to <strong>240% of Defense</strong></li>
+							<li>Reduces damage taken by 24% for 10 seconds</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">👑 Passive: Evil Star Explosion</h3>
+					<p><strong>Level:</strong> 14</p>
+					
+					<div style="margin: 1rem 0;">
+						<p><strong>Effect 1:</strong> After successful <strong>[Block]</strong>, increases own defense by 60% for 10 seconds</p>
+						
+						<p><strong>Effect 2:</strong> After successful <strong>[Block]</strong>, gains 1 layer of <strong>[Domination Authority]</strong>, maximum 1 layer per second. When <strong>[Domination Authority]</strong> reaches 10 layers, can cast <strong>[Enhanced Ultimate]</strong></p>
+						
+						<p><strong>Effect 3:</strong> When HP drops to 40% or below, triggers life recovery:</p>
+						<ul>
+							<li>Restores 58% max HP within 0.5 seconds</li>
+							<li>Increases block rate to 100% for 10 seconds</li>
+							<li>Increases critical resistance by 100% for 10 seconds</li>
+							<li>This effect has one initial trigger, can accumulate maximum once</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Awakening Effects -->
+			<section class="content-section">
+				<h2 class="section-title">Awakening Effects</h2>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 1 (CRITICAL)</h3>
+					<ul>
+						<li><strong>[Block]</strong> After success, increases own defense by 30% for 5 seconds</li>
+						<li>Passive life recovery count can be accumulated up to 2 times (allows Enhanced Ultimate to restore a second charge)</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 2 (CRITICAL)</h3>
+					<ul>
+						<li>Launching normal ultimate skill can additionally gain 1 layer of <strong>[Domination Authority]</strong></li>
+						<li>After launching enhanced ultimate skill, immediately gains 2 layers of <strong>[Domination Authority]</strong></li>
+					</ul>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 3</h3>
+					<p><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 4</h3>
+					<p>Defense increased by 45%</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 5</h3>
+					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 6</h3>
+					<ul>
+						<li>All resistance +15%, Fire resistance additional +15%</li>
+						<li>Starting passive life recovery count changes to 2 times</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Recommended Builds -->
+			<section class="content-section">
+				<h2 class="section-title">Recommended Builds</h2>
+
+				<h3 class="subsection-title">Rune Sets</h3>
+				
+				<div class="info-card">
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build</h4>
+					<ul>
+						<li><strong>2-Piece Shattered Foundation (碎基):</strong> Defense +12%</li>
+						<li><strong>4-Piece Zahn (札恩):</strong> HP +8%, After Ultimate: Take 5% less damage (10s)</li>
+					</ul>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build</h4>
+					<ul>
+						<li><strong>4-Piece Shattered Foundation:</strong> Defense +12%, Shield Effectiveness +20%</li>
+						<li><strong>2-Piece Zahn:</strong> HP +8%</li>
+					</ul>
+				</div>
+
+				<h3 class="subsection-title">Main Stats</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Position 1</div>
+						<div class="stat-value">HP (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 2</div>
+						<div class="stat-value">ATK (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 3</div>
+						<div class="stat-value">DEF (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 4</div>
+						<div class="stat-value">DEF%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 5</div>
+						<div class="stat-value">DEF%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 6</div>
+						<div class="stat-value">DEF%</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Substat Priorities</h3>
+				<div class="info-card">
+					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li>Defense%</li>
+						<li>HP%</li>
+						<li>Defense (Flat)</li>
+						<li>HP (Flat)</li>
+					</ol>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Note:</strong> While her defense-scaling skills can crit, investing in crit rate/damage is not optimal for a tank. Focus on survivability stats - her base damage from high defense is sufficient.
+					</p>
+				</div>
+			</section>
+
+			<!-- Memory Card -->
+			<section class="content-section">
+				<h2 class="section-title">Memory Card: Simple Birdcage</h2>
+				
+				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
+					<img src="/images/characters/Guinevere-card.jpg" alt="Guinevere Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+					
+					<div style="flex: 1; min-width: 300px;">
+						<div class="info-card" style="margin: 0;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid">
+								<div class="stat-item">
+									<div class="stat-label">HP</div>
+									<div class="stat-value">6,600</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Attack</div>
+									<div class="stat-value">480</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Defense</div>
+									<div class="stat-value">690</div>
+								</div>
+							</div>
+
+							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Effects</h4>
+							<ul>
+								<li>Defense increased by 64%</li>
+								<li>Block rate after success reduces damage by 10%, lasts 5 seconds</li>
+								<li>Immediately gains 30% maximum HP shield after battle starts</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Usage Tips -->
+			<section class="content-section">
+				<h2 class="section-title">Usage Tips</h2>
+
+				<h3 class="subsection-title">Strengths</h3>
+				<div class="info-card">
+					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li>Exceptional tankiness with multiple damage reduction layers</li>
+						<li>Good damage output for a tank due to defense scaling</li>
+						<li>Self-sustaining with passive life recovery (up to 2 charges with Awakening 1)</li>
+						<li>Can reach 100% block rate when low HP</li>
+						<li>Enhanced Ultimate can restore spent life recovery charges</li>
+						<li><strong>With Awakenings 1+2:</strong> Becomes an unkillable cycling machine - faster ult charging + more lives</li>
+					</ul>
+				</div>
+
+				<h3 class="subsection-title">Playstyle</h3>
+				<div class="info-card">
+					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li><strong>Supreme Power</strong> automatically maintains high block rate</li>
+						<li>Block attacks to stack <strong>Domination Authority</strong> (faster with Awakening 1's DEF boost)</li>
+						<li>Use normal ultimate to build stacks (2 stacks per use with Awakening 2)</li>
+						<li>Enhanced ultimate for burst + restore life recovery charge</li>
+						<li>With Awakening 2, immediately gain 2 stacks after enhanced ult to start next cycle</li>
+					</ol>
+				</div>
+
+				<div class="warning-box">
+					<div class="warning-title">🔄 Core Loop with Awakenings 1+2</div>
+					<p>Block → Stack Authority faster → Ultimate more often → More enhanced ultimates → More life recovery charges → Nearly unkillable</p>
+				</div>
+
+				<h3 class="subsection-title">Life Recovery Charge System</h3>
+				<div class="info-card">
+					<ul>
+						<li><strong>Base:</strong> 1 charge available, max 1</li>
+						<li><strong>With Awakening 1:</strong> 1 charge available, max 2 (Enhanced Ultimate can add a 2nd)</li>
+						<li><strong>With Awakening 1+6:</strong> 2 charges available at start, max 2</li>
+						<li><strong>Enhanced Ultimate:</strong> Consumes 10 Domination Authority to restore 1 used charge</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Investment Priority -->
+			<section class="content-section">
+				<h2 class="section-title">Investment Priority</h2>
+				
+				<div class="warning-box">
+					<div class="warning-title">⭐ High Priority Investment</div>
+					<p>Excellent tank with good damage output. Worth full investment for both PvE and PvP content.</p>
+				</div>
+
+				<h3 class="subsection-title">Awakening Priority</h3>
+				<div class="critical-awakening" style="padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
+					<h4 style="color: #dc3545; margin: 0 0 1rem 0;">🚨 Awakenings 1+2 are MANDATORY</h4>
+					<p>These transform her from a good tank to an exceptional one:</p>
+					<ul>
+						<li><strong>Without them:</strong> Slow stacking, limited survivability</li>
+						<li><strong>With them:</strong> Fast cycling ultimates, multiple lives, significantly higher damage from DEF boosts</li>
+					</ul>
+				</div>
+
+				<h3 class="subsection-title">Key Breakpoints</h3>
+				<div class="info-card">
+					<ul>
+						<li><span class="priority-high">Awakening 1: CRITICAL</span> - Doubles life recovery charges + 30% DEF boost on block</li>
+						<li><span class="priority-high">Awakening 2: CRITICAL</span> - Faster Domination Authority stacking (extra stack on normal ult, 2 stacks after enhanced)</li>
+						<li><span class="priority-medium">Awakening 4:</span> 45% defense increase (huge for both tanking and damage)</li>
+						<li><span class="priority-medium">Awakening 6:</span> Significant resistance improvements + starts with 2 life recovery charges</li>
+						<li><span class="priority-low">Max memory card</span> for massive defense boost</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Character Story -->
+			<section class="content-section">
+				<h2 class="section-title">Character Story</h2>
+				
+				<h3 class="subsection-title">Memory Story: Simple Birdcage</h3>
+				<div class="info-card">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
+						The Simple Birdcage represents Guinevere's innermost sorrow and deepest dream. It emerges from her fantasy field, not as a cage that trapped her, but as something she created for her Knight Order [Fantasy] in Avalon. This memory manifests as both protection and limitation - symbolizing her internal conflict between self-imposed isolation and the desire to expand beyond her boundaries.
+					</p>
+				</div>
+
+				<h3 class="subsection-title">Background</h3>
+				<div class="info-card">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
+						Leader of the Seven Realm Domination - Avalon Empire Knight Order, [Fantasy], sage of the Round Table, self-proclaimed [King's Seat]. A solitary swordsman who regards herself as the Sword Emperor outside of all living beings, wrapping her Knight Order [Fantasy] in an isolated world. Her past injuries led her to abandon previous beliefs, and her unique appearance represents both her knightly duties and everything she has forsaken.
+					</p>
+				</div>
+			</section>
+
+		</div>
+	</div>
+</ZoneNovaLayout1> 
