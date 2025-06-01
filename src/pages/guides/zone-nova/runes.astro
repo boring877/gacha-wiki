@@ -273,61 +273,205 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 			<div class="rune-card">
 				<h3>✛ Epsilon (埃普西隆)</h3>
 				<p><strong>2-Piece:</strong> Attack Power +8%</p>
-				<p><strong>4-Piece:</strong> After Ultimate: Team damage +10% (10s)</p>
+				<p><strong>4-Piece:</strong> After activating ultimate skill, entire team damage increased by <strong>10%</strong>, lasts 10 seconds</p>
+				<div style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 8px;">
+					<p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
+						<span style="color: #ffc107; font-weight: 600;">⚠️ Note:</span> 
+						Same passive effect cannot stack
+					</p>
+				</div>
 				<p><strong>Best For:</strong> Team support DPS and ultimate-based builds</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- Substat Priorities Section -->
+	<!-- Main Stats by Position Section -->
 	<section class="content-section">
-		<h2 class="section-title">Substat Priorities</h2>
+		<h2 class="section-title">Main Stats by Position</h2>
 		<div class="section-description">
-			Optimal substat priorities for different character roles
+			Main stat possibilities for each rune position in Zone Nova
 		</div>
 		
 		<div class="rune-grid">
+			<!-- Position 1 -->
 			<div class="rune-card">
-				<h3>🗡️ DPS Priority</h3>
-				<ul class="stat-list">
-					<li><span class="priority-number">1.</span> Critical Rate / Critical Damage</li>
-					<li><span class="priority-number">2.</span> Attack %</li>
-					<li><span class="priority-number">3.</span> Penetration</li>
-					<li><span class="priority-number">4.</span> Attack (Flat)</li>
-					<li><span class="priority-number">5.</span> HP% / Defense%</li>
-				</ul>
+				<h3>🎯 Position 1 — Fixed Main Stat</h3>
+				<div style="text-align: center; margin: 1.5rem 0;">
+					<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;">
+						HP (Flat Value)
+					</div>
+				</div>
+				<p style="text-align: center; color: var(--text-secondary); font-style: italic;">Always HP - no other options</p>
 			</div>
 
+			<!-- Position 2 -->
 			<div class="rune-card">
-				<h3>🛡️ Tank Priority</h3>
-				<ul class="stat-list">
-					<li><span class="priority-number">1.</span> HP%</li>
-					<li><span class="priority-number">2.</span> Defense%</li>
-					<li><span class="priority-number">3.</span> HP (Flat)</li>
-					<li><span class="priority-number">4.</span> Defense (Flat)</li>
-					<li><span class="priority-number">5.</span> Critical Rate</li>
-				</ul>
+				<h3>🎯 Position 2 — Fixed Main Stat</h3>
+				<div style="text-align: center; margin: 1.5rem 0;">
+					<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;">
+						Attack (Flat Value)
+					</div>
+				</div>
+				<p style="text-align: center; color: var(--text-secondary); font-style: italic;">Always Attack - no other options</p>
 			</div>
 
+			<!-- Position 3 -->
 			<div class="rune-card">
-				<h3>💚 Healer Priority</h3>
+				<h3>🎯 Position 3 — Fixed Main Stat</h3>
+				<div style="text-align: center; margin: 1.5rem 0;">
+					<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;">
+						Defense (Flat Value)
+					</div>
+				</div>
+				<p style="text-align: center; color: var(--text-secondary); font-style: italic;">Always Defense - no other options</p>
+			</div>
+
+			<!-- Position 4 -->
+			<div class="rune-card">
+				<h3>🎯 Position 4 — Variable Main Stats</h3>
+				<div style="margin: 1rem 0;">
+					<h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
+					<ul class="stat-list">
+						<li>Healing Effectiveness (%)</li>
+						<li>Critical Rate (%)</li>
+						<li>Critical Damage (%)</li>
+						<li style="background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1)); padding: 0.75rem; border-radius: 8px; border: 1px solid #dc3545; margin: 0.5rem 0; font-weight: 600;">⚡ Attack Penetration (%)</li>
+						<li>Attack (%)</li>
+						<li>HP (%)</li>
+						<li>Defense (%)</li>
+					</ul>
+				</div>
+				<div style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #dc3545; border-radius: 8px;">
+					<p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
+						<span style="color: #dc3545; font-weight: 600;">🔥 Attack Penetration:</span> 
+						Available as percentage (%) in main stats here, and as flat values in sub stats
+					</p>
+				</div>
+			</div>
+
+			<!-- Position 5 -->
+			<div class="rune-card">
+				<h3>🎯 Position 5 — Variable Main Stats</h3>
+				<div style="margin: 1rem 0;">
+					<h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
+					<ul class="stat-list">
+						<li>Elemental Damage Increase (%)</li>
+						<li>Attack (%)</li>
+						<li>HP (%)</li>
+						<li>Defense (%)</li>
+					</ul>
+				</div>
+				<p style="color: var(--text-secondary); font-style: italic;">Elemental damage types match character elements</p>
+			</div>
+
+			<!-- Position 6 -->
+			<div class="rune-card">
+				<h3>🎯 Position 6 — Variable Main Stats</h3>
+				<div style="margin: 1rem 0;">
+					<h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
+					<ul class="stat-list">
+						<li>Attack (%)</li>
+						<li>HP (%)</li>
+						<li>Defense (%)</li>
+					</ul>
+				</div>
+				<p style="color: var(--text-secondary); font-style: italic;">Core percentage stats only</p>
+			</div>
+
+			<!-- Summary Card -->
+			<div class="rune-card" style="grid-column: 1 / -1; max-width: 900px; margin: 0 auto;">
+				<h3>📋 Summary</h3>
 				<ul class="stat-list">
-					<li><span class="priority-number">1.</span> Attack% (if healing scales with ATK)</li>
-					<li><span class="priority-number">2.</span> HP%</li>
-					<li><span class="priority-number">3.</span> Attack (Flat)</li>
-					<li><span class="priority-number">4.</span> Defense%</li>
-					<li><span class="priority-number">5.</span> Critical Rate</li>
+					<li><strong>Positions 1-3:</strong> Fixed main stats (HP, ATK, DEF respectively) - flat values</li>
+					<li><strong>Position 4:</strong> Most diverse options including utility stats and exclusive Attack Penetration (%)</li>
+					<li><strong>Position 5:</strong> Core stats plus elemental damage increases - all percentages</li>
+					<li><strong>Position 6:</strong> Focus on core percentage stat increases only</li>
 				</ul>
+				<div style="margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 12px;">
+					<p style="margin: 0; color: var(--text-primary); font-weight: 500;">
+						<span style="color: #ffc107; font-weight: 600;">💡 Pro Tip:</span> 
+						Position 4 runes are highly valuable for their unique utility stats, especially Attack Penetration for DPS characters.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Sub Stats Possibility Section -->
+	<section class="content-section">
+		<h2 class="section-title">Sub Stats Possibility</h2>
+		<div class="section-description">
+			All possible substats that can roll on runes in Zone Nova
+		</div>
+		
+		<div class="rune-grid">
+			<div class="rune-card" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
+				<h3>📊 Available Sub Stats</h3>
+				<div style="overflow-x: auto; margin-top: 1.5rem;">
+					<table style="width: 100%; border-collapse: collapse; font-family: 'Space Grotesk', sans-serif;">
+						<thead>
+							<tr style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white;">
+								<th style="padding: 1rem; text-align: left; border: 1px solid rgba(255,255,255,0.2);">Stat Type</th>
+								<th style="padding: 1rem; text-align: left; border: 1px solid rgba(255,255,255,0.2);">Available Forms</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="background: rgba(255, 183, 77, 0.05);">
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">Attack</td>
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Flat Number, Percentage (%)</td>
+							</tr>
+							<tr style="background: rgba(0, 172, 193, 0.05);">
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">HP</td>
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Flat Number, Percentage (%)</td>
+							</tr>
+							<tr style="background: rgba(255, 183, 77, 0.05);">
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">Defense</td>
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Flat Number, Percentage (%)</td>
+							</tr>
+							<tr style="background: rgba(0, 172, 193, 0.05);">
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">Critical Rate</td>
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Percentage (%) only</td>
+							</tr>
+							<tr style="background: rgba(255, 183, 77, 0.05);">
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">Critical Damage</td>
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Percentage (%) only</td>
+							</tr>
+							<tr style="background: rgba(0, 172, 193, 0.05);">
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">Penetration</td>
+								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Flat Number only</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div style="margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 12px;">
+					<p style="margin: 0; color: var(--text-primary); font-weight: 500;">
+						<span style="color: #ffc107; font-weight: 600;">📝 Note:</span> 
+						All runes can roll any combination of these sub stats. The actual values and number of substats depend on rune rarity and upgrade level.
+					</p>
+				</div>
 			</div>
 
 			<div class="rune-card">
 				<h3>💡 Optimization Tips</h3>
 				<ul class="stat-list">
 					<li>Aim for 1:2 Critical Rate : Critical Damage ratio</li>
-					<li>ATK% is usually better than flat ATK</li>
-					<li>Don't ignore survivability on DPS units</li>
-					<li>Match element damage with character element</li>
+					<li>ATK% is usually better than flat ATK for most characters</li>
+					<li>HP% and DEF% scale better than flat values at higher levels</li>
+					<li>Penetration is valuable for breaking through enemy defenses</li>
+					<li>Prioritize percentage stats over flat stats when possible</li>
 					<li>Complete 2-piece sets before perfecting individual runes</li>
+				</ul>
+			</div>
+
+			<div class="rune-card">
+				<h3>🎯 Understanding Stat Scaling</h3>
+				<ul class="stat-list">
+					<li><strong>Check Character Skills:</strong> Read if abilities scale with ATK, HP, or DEF to prioritize accordingly</li>
+					<li><strong>Role Consideration:</strong> Tanks need survivability, DPS need damage, but some overlap (e.g., HP-scaling DPS)</li>
+					<li><strong>Percentage vs Flat:</strong> % stats scale better at higher levels, flat stats provide base value</li>
+					<li><strong>Critical Synergy:</strong> Critical Rate and Critical Damage work together - need both for effectiveness</li>
+					<li><strong>Character-Specific:</strong> Always check individual character guides for optimal stat priorities</li>
+					<li><strong>Team Context:</strong> Consider your team composition - some characters need specific stats for team synergy</li>
 				</ul>
 			</div>
 		</div>

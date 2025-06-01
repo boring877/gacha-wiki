@@ -11,6 +11,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 	breadcrumbText="Characters"
 >
 	<Fragment slot="head">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 		<style>
 			.back-button {
 				display: inline-flex;
@@ -197,11 +198,11 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			}
 
 			.skill-card {
-				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.08), rgba(0, 172, 193, 0.08));
 				border: 1px solid var(--amber-glow);
 				border-radius: 15px;
 				padding: 2rem;
-				margin: 1rem 0;
+				margin: 1.5rem 0;
 				transition: all 0.3s ease;
 			}
 
@@ -326,6 +327,30 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				}
 			}
 
+			.video-container {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+			}
+
+			.video-wrapper {
+				position: relative;
+				padding-bottom: 56.25%;
+				height: 0;
+				overflow: hidden;
+				border-radius: 12px;
+			}
+
+			.video-wrapper iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
 			@keyframes sectionFadeIn {
 				0% {
 					opacity: 0;
@@ -360,15 +385,80 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					grid-template-columns: 1fr;
 				}
 
-				.character-images {
-					flex-direction: column;
-					gap: 1.5rem;
+				/* Memory Card mobile layout */
+				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
+					flex-direction: column !important;
+					align-items: center !important;
 				}
 
-				.character-art,
-				.character-card-art {
-					min-width: 100%;
+				.content-section img[alt="Greed Mammon Memory Card"] {
+					width: 160px !important;
+					height: 240px !important;
 				}
+			}
+
+			.class-showcase {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.class-showcase::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.class-showcase:hover::before {
+				left: 100%;
+			}
+
+			.class-showcase:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.class-image {
+				width: 64px;
+				height: 64px;
+				border-radius: 12px;
+				border: 2px solid var(--amber-glow);
+				flex-shrink: 0;
+				transition: all 0.3s ease;
+			}
+
+			.class-showcase:hover .class-image {
+				transform: scale(1.05);
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3);
+			}
+
+			.class-info h3 {
+				color: var(--amber-glow);
+				margin: 0 0 0.5rem 0;
+				font-size: 1.4rem;
+				font-weight: 600;
+				font-family: 'Space Grotesk', sans-serif;
+			}
+
+			.class-info p {
+				color: var(--text-secondary);
+				margin: 0;
+				font-size: 1rem;
+				line-height: 1.5;
 			}
 		</style>
 	</Fragment>
@@ -384,32 +474,37 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			<!-- Character Header -->
 			<header class="character-header">
 				<!-- Character Image -->
-				<img src="/images/characters/Greed-Mammon.jpg" alt="Greed Mammon" class="character-image" loading="eager" />
+				<img src="/images/characters/Greed-Mammon.jpg" alt="Greed Mammon" class="character-image" loading="lazy" />
 				
-				<h1 class="character-title">💰 Greed Mammon</h1>
-				<p class="character-subtitle">⭐ SR • 🌀 Chaos • ⚡ Burst DPS</p>
+				<h1 class="character-title">Greed Mammon</h1>
+				<p class="character-subtitle">SR • Chaos • Burst DPS</p>
 			</header>
 
 			<!-- Character Overview -->
 			<section class="content-section">
 				<h2 class="section-title">Character Overview</h2>
 				
+				<!-- Class Showcase -->
+				<div class="class-showcase">
+					<img src="/images/characters/class/Destroyer.jpg" alt="Destroyer Class" class="class-image" loading="lazy" />
+					<div class="class-info">
+						<h3>界灭使 (Destroyer)</h3>
+						<p>Heavy DPS/Annihilator role - Specializes in overwhelming burst damage and battlefield domination</p>
+					</div>
+				</div>
+				
 				<div class="stats-grid">
 					<div class="stat-item">
-						<div class="stat-label">Class</div>
-						<div class="stat-value">Chaos Mage</div>
-					</div>
-					<div class="stat-item">
 						<div class="stat-label">Faction</div>
-						<div class="stat-value">Bibilota</div>
+						<div class="stat-value">Seven Sins</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Role</div>
-						<div class="stat-value">Burst DPS</div>
+						<div class="stat-value">DPS/Burst</div>
 					</div>
 					<div class="stat-item">
-						<div class="stat-label">First Encounter</div>
-						<div class="stat-value">2025-04-29</div>
+						<div class="stat-label">First Release</div>
+						<div class="stat-value">2025-05-27</div>
 					</div>
 				</div>
 
@@ -643,13 +738,6 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 						</div>
 					</div>
 				</div>
-
-				<h3 class="subsection-title">Memory Story</h3>
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1rem; line-height: 1.6; margin: 0;">
-						The ability to feel the wealth of the world's richest person should be enjoyable for anyone who isn't otherworldly. This is a method where greed becomes the evil thought that no one can refuse. Even the weak lacking in soft spots have a thing or two they want to possess. The more originally from nothing, the more insatiable the desire becomes. In her muddy existence, the girl who lost everything muddies this innocent humanity as well, like a vengeful ghost hunting the wealthy and noble. This is the method of revenge for Mammon, and also the sole means of survival for this girl.
-					</p>
-				</div>
 			</section>
 
 			<!-- Usage Tips -->
@@ -720,48 +808,20 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				</div>
 			</section>
 
-			<!-- Character Story -->
+			<!-- Video Guide Section -->
 			<section class="content-section">
-				<h2 class="section-title">Character Story</h2>
-				
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Greed Mammon, the embodiment of the Seven Deadly Sins [Greed, Gold, Riches, Mammon], works as the CEO of [Mammon] Consortium in the Kingdom of Steam. As a greedy Angel of Heaven, she uses her extraordinary financial prowess to turn greed into ability. The girl who grew up with nothing has become the richest in the Bibilota Tower region, becoming someone who embraces the greatest greed and power. But the curse of greed has caused her to involuntarily overflow with leaking gold. Although she seems to have lost much of her wealth from outside appearances, her actual net worth has actually soared through clever utilization of greed, becoming the wealthiest in the Bibilota Tower through exploitation and plunder.
-					</p>
-				</div>
-			</section>
-
-			<!-- Community Guides -->
-			<section class="content-section">
-				<h2 class="section-title">Community Guides</h2>
-				
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">📹 Video Guide</h4>
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0 0 1rem 0;">
-						Check out this comprehensive video guide for Greed Mammon covering her skills, builds, and team compositions:
-					</p>
-					<div style="background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary)); border: 1px solid var(--teal-crystal); border-radius: 12px; padding: 1.5rem; margin: 1rem 0;">
-						<div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-							<div style="background: var(--amber-glow); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem;">
-								🎥 YouTube
-							</div>
-							<h5 style="color: var(--text-primary); margin: 0; font-size: 1.2rem; font-weight: 600;">
-								Greed Mammon Character Guide
-							</h5>
-						</div>
-						<p style="color: var(--text-secondary); margin: 0 0 1rem 0; font-size: 1rem;">
-							In-depth gameplay analysis, build recommendations, and team synergy explanations for maximizing Greed Mammon's Enhanced Ultimate potential.
-						</p>
-						<a href="https://www.youtube.com/watch?v=4yNjfXUVnuU" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--teal-crystal); color: white; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; font-size: 1rem;" onmouseover="this.style.background='var(--amber-glow)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--teal-crystal)'; this.style.transform='translateY(0)'">
-							<span>▶️ Watch Guide</span>
-							<span style="font-size: 0.8rem; opacity: 0.8;">↗</span>
-						</a>
+				<h2 class="section-title">📺 Video Guide</h2>
+				<div class="video-container">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">Watch this comprehensive guide to master Greed Mammon's enhanced ultimate mechanics and team synergies:</p>
+					<div class="video-wrapper">
+						<iframe 
+							src="https://www.youtube.com/embed/4yNjfXUVnuU" 
+							title="Greed Mammon Character Guide - Zone Nova" 
+							frameborder="0" 
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+							allowfullscreen>
+						</iframe>
 					</div>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">💡 Community Contribution</div>
-					<p>This video guide provides additional insights and visual demonstrations that complement the written guide above. Great for players who prefer video content!</p>
 				</div>
 			</section>
 

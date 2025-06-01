@@ -4,9 +4,9 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 ---
 
 <ZoneNovaLayout1 
-	title="Naiya Character Guide - Zone Nova - GachaWiki" 
-	description="Complete guide for Naiya, the water element healer and support specialist in Zone Nova"
-	gameTitle="Naiya Character Guide"
+	title="Shu Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Shu, the powerful DoT specialist and wind debuffer in Zone Nova"
+	gameTitle="Shu Character Guide"
 	showBreadcrumb={true}
 	breadcrumbText="Characters"
 >
@@ -333,41 +333,6 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				}
 			}
 
-			@media (max-width: 768px) {
-				.character-container {
-					padding: 0 1rem;
-				}
-
-				.character-header,
-				.content-section {
-					padding: 2rem;
-				}
-
-				.character-title {
-					font-size: 2.5rem;
-				}
-
-				.character-image {
-					width: 250px;
-					height: 250px;
-				}
-
-				.stats-grid {
-					grid-template-columns: 1fr;
-				}
-
-				/* Memory Card mobile layout */
-				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
-					flex-direction: column !important;
-					align-items: center !important;
-				}
-
-				.content-section img[alt="Naiya Memory Card"] {
-					width: 160px !important;
-					height: 240px !important;
-				}
-			}
-
 			.class-showcase {
 				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
 				border: 1px solid var(--amber-glow);
@@ -431,6 +396,41 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				font-size: 1rem;
 				line-height: 1.5;
 			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header,
+				.content-section {
+					padding: 2rem;
+				}
+
+				.character-title {
+					font-size: 2.5rem;
+				}
+
+				.character-image {
+					width: 250px;
+					height: 250px;
+				}
+
+				.stats-grid {
+					grid-template-columns: 1fr;
+				}
+
+				/* Memory Card mobile layout */
+				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
+					flex-direction: column !important;
+					align-items: center !important;
+				}
+
+				.content-section img[alt="Shu Memory Card"] {
+					width: 160px !important;
+					height: 240px !important;
+				}
+			}
 		</style>
 	</Fragment>
 
@@ -445,10 +445,10 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			<!-- Character Header -->
 			<header class="character-header">
 				<!-- Character Image -->
-				<img src="/images/characters/naiya.jpg" alt="Naiya" class="character-image" loading="lazy" />
+				<img src="/images/characters/shu.jpg" alt="Shu" class="character-image" loading="lazy" />
 				
-				<h1 class="character-title">Naiya</h1>
-				<p class="character-subtitle">🌟 SSR • ❄️ Ice • 📈 Buffer/DPS</p>
+				<h1 class="character-title">Shu</h1>
+				<p class="character-subtitle">SR • Wind • DoT Dealer/Debuffer</p>
 			</header>
 
 			<!-- Character Overview -->
@@ -457,24 +457,24 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				
 				<!-- Class Showcase -->
 				<div class="class-showcase">
-					<img src="/images/characters/class/Support.jpg" alt="Support Class" class="class-image">
+					<img src="/images/characters/class/Disruptor.jpg" alt="Disruptor Class" class="class-image" loading="lazy" />
 					<div class="class-info">
-						<h3>支援使 (Support)</h3>
-						<p>Buffer/Support role - Specializes in empowering allies through buffs and strategic enhancement</p>
+						<h3>干扰使 (Disruptor)</h3>
+						<p>Debuffer/Control role - Specializes in disabling enemies through debuffs and crowd control</p>
 					</div>
 				</div>
 				
 				<div class="stats-grid">
 					<div class="stat-item">
 						<div class="stat-label">Faction</div>
-						<div class="stat-value">Savile</div>
+						<div class="stat-value">Kaimiki</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Role</div>
-						<div class="stat-value">Buffer/DPS</div>
+						<div class="stat-value">DoT Dealer/Debuffer</div>
 					</div>
 					<div class="stat-item">
-						<div class="stat-label">First Encounter</div>
+						<div class="stat-label">First Release</div>
 						<div class="stat-value">2025-04-29</div>
 					</div>
 				</div>
@@ -483,21 +483,21 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<div class="stats-grid">
 					<div class="stat-item">
 						<div class="stat-label">HP</div>
-						<div class="stat-value">8,415</div>
+						<div class="stat-value">7,970</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Attack</div>
-						<div class="stat-value">747</div>
+						<div class="stat-value">837</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Defense</div>
-						<div class="stat-value">665</div>
+						<div class="stat-value">560</div>
 					</div>
 				</div>
 
 				<div class="info-card">
 					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Elite support buffer who specializes in empowering allies through the unique "War Intent" mechanic. Excels at turning your strongest attacker into a hyper-carry by identifying and amplifying their damage potential.
+						Shu is a powerful DoT (Damage over Time) specialist and debuffer who excels at applying continuous damage effects and exploiting vulnerable enemies. Her kit revolves around wind/storm damage and the unique [Weathering] debuff that stacks up to 5 times. She becomes increasingly powerful against enemies suffering from continuous damage effects, making her excellent for prolonged battles and synergizing with other DoT characters.
 					</p>
 				</div>
 			</section>
@@ -507,38 +507,55 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h2 class="section-title">Skills</h2>
 
 				<div class="skill-card">
-					<h3 class="skill-title">❄️ Normal Attack: Frost Strike</h3>
+					<h3 class="skill-title">🌪️ Normal Attack: Wind Assault (疾风突袭)</h3>
 					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 2.0s</p>
-					<p>Deals <strong>120% attack power</strong> as ice damage to designated enemy unit</p>
+					<p>Deals <strong>120% attack power</strong> as storm damage to designated enemy unit</p>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">🔮 Auto Skill: War Intent Detection</h3>
+					<h3 class="skill-title">⚡ Auto Skill: Eye of the Storm (风暴之眼)</h3>
 					<p><strong>Level:</strong> 10+4 | <strong>Auto-trigger Interval:</strong> 5.0s</p>
 					<ul>
-						<li>Automatically identifies the ally with highest attack power within <strong>6-meter radius</strong></li>
-						<li>Grants them <strong>War Intent</strong>: +20% attack power and +15% critical rate for 12 seconds</li>
-						<li>War Intent stacks up to 3 times on the same target</li>
+						<li>Deals storm damage to enemy unit and surrounding enemies within <strong>4 meters</strong></li>
+						<li>Causes <strong>72% attack power</strong> as storm damage to all affected targets</li>
+						<li>AoE ability for clearing groups and applying pressure</li>
 					</ul>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">💥 Ultimate: Hyper-Carry Awakening</h3>
+					<h3 class="skill-title">💥 Ultimate: Sticky Bat Storm (粘蝠之风暴)</h3>
 					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 3</p>
 					<ul>
-						<li>Deals ice damage equal to <strong>180% attack power</strong> to all enemies within a <strong>6-meter radius</strong></li>
-						<li>Grants all allies <strong>Enhanced War Intent</strong> for 15 seconds:</li>
-						<li>+30% attack power, +20% critical rate, +15% critical damage</li>
-						<li>The ally with highest attack receives <strong>Hyper-Carry Status</strong>: Additional +25% damage for 20 seconds</li>
+						<li>Deals wind damage to enemies within <strong>4 meters</strong></li>
+						<li>Causes <strong>120% attack power</strong> as wind damage</li>
+						<li>Applies <strong>[Vulnerability]</strong>: Affected enemies take <strong>34% increased damage for 15 seconds</strong></li>
 					</ul>
+
+					<div class="warning-box">
+						<div class="warning-title">🌟 Enhanced Ultimate (With Awakening 6)</div>
+						<ul>
+							<li>Also applies <strong>[Weathering]</strong> debuff to affected enemies</li>
+							<li>Dramatically improves combo potential and DoT stacking</li>
+						</ul>
+					</div>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">👑 Passive: Tactical Analysis</h3>
+					<h3 class="skill-title">👑 Passive: Fierce Wind Burst (烈风爆发)</h3>
 					<p><strong>Level:</strong> 10+4</p>
-					<p>When allies with <strong>War Intent</strong> deal critical hits, Naiya gains <strong>Tactical Stack</strong> (max 5)</p>
-					<p>Each stack: +3% ice damage and +2% energy recovery for Naiya</p>
-					<p>At 5 stacks: Next ultimate costs 1 less energy and applies War Intent to the entire team</p>
+					
+					<div style="margin: 1rem 0;">
+						<p><strong>Effect 1:</strong> Can apply <strong>[Weathering]</strong> debuff to enemies</p>
+						
+						<p><strong>Weathering Details:</strong> Deals damage once per second</p>
+						<ul>
+							<li>Each stack causes <strong>14.4% attack power</strong> as storm damage</li>
+							<li><strong>Maximum 5 stacks</strong> (total: 72% attack power per second at max stacks)</li>
+							<li><strong>DoT effects ignore block</strong> - Ensures consistent damage against defensive enemies</li>
+						</ul>
+						
+						<p><strong>Effect 2:</strong> When dealing damage to targets that have continuous damage status effects, self attack power increases by <strong>20%</strong> (with Awakening 1)</p>
+					</div>
 				</div>
 			</section>
 
@@ -547,26 +564,21 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h2 class="section-title">Team Composition Skill</h2>
 
 				<div class="skill-card">
-					<h3 class="skill-title">⚔️ Combination Skill: Strategic Command</h3>
+					<h3 class="skill-title">🏢 Combination Skill</h3>
 					<p><strong>Level:</strong> 1</p>
 					
 					<div class="warning-box">
-						<div class="warning-title">⚔️ Activation Requirements</div>
-						<p>Triggers when team contains <strong>2 [Ice] characters</strong> OR <strong>2 [DPS] characters</strong></p>
+						<div class="warning-title">🌪️ Activation Requirements</div>
+						<p>Triggers when team contains <strong>2 [Kaimiki] characters</strong> OR <strong>2 [Wind] characters</strong></p>
 					</div>
 
 					<div style="margin: 1rem 0;">
-						<p><strong>Effects:</strong></p>
-						<ul>
-							<li>War Intent effectiveness increased by <strong>25%</strong></li>
-							<li>War Intent duration increased by <strong>5 seconds</strong></li>
-							<li>Hyper-Carry Status grants additional <strong>+10% attack speed</strong></li>
-						</ul>
+						<p><strong>Effect:</strong> Self-inflicted damage increased by <strong>20%</strong></p>
 					</div>
 
 					<div class="info-card">
 						<p style="color: var(--text-primary); font-size: 1rem; line-height: 1.6; margin: 0;">
-							<strong>Why This Matters:</strong> This team skill maximizes Naiya's hyper-carry potential by extending and amplifying War Intent effects. Building teams with strong DPS characters or ice synergy creates devastating offensive combinations where one ally becomes an unstoppable force.
+							<strong>Why This Matters:</strong> This unusual team skill boosts Shu's own damage output when paired with Kaimiki or Wind allies. The 20% damage increase significantly amplifies both her direct damage and DoT effects, making team composition crucial for optimal performance.
 						</p>
 					</div>
 				</div>
@@ -578,13 +590,18 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 				<div class="awakening-card critical-awakening">
 					<h3 class="skill-title">🌟 Awakening 1 (CRITICAL)</h3>
-					<p>War Intent effects have a <strong>30% chance to grant 1 energy</strong> to the buffed ally</p>
-					<p>Enables hyper-carries to use ultimates more frequently</p>
+					<ul>
+						<li>When dealing damage to targets that have continuous damage status effects, self attack power increases by <strong>20%</strong></li>
+						<li>Synergizes perfectly with her Weathering stacks and other DoT effects</li>
+					</ul>
 				</div>
 
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 2</h3>
-					<p>Ice damage increases by <strong>18%</strong></p>
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 2 (CRITICAL)</h3>
+					<ul>
+						<li>Damage dealt by continuous damage effects has penetration rate increased by <strong>10%</strong></li>
+						<li>Enhances DoT effectiveness against high-defense enemies</li>
+					</ul>
 				</div>
 
 				<div class="awakening-card">
@@ -594,19 +611,21 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 				<div class="awakening-card critical-awakening">
 					<h3 class="skill-title">🌟 Awakening 4 (CRITICAL)</h3>
-					<p>When allies with <strong>War Intent</strong> are above 80% health, War Intent effectiveness increases by <strong>40%</strong></p>
-					<p>Maximizes hyper-carry potential when team is in optimal condition</p>
+					<p><strong>[Continuous Damage]</strong> damage increased by <strong>25%</strong></p>
+					<p>Massive boost to Weathering DoT effectiveness</p>
 				</div>
 
 				<div class="awakening-card">
 					<h3 class="skill-title">Awakening 5</h3>
-					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
+					<p><strong>[Ultimate Skill]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
 				</div>
 
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 6 (CRITICAL)</h3>
-					<p>Allies with <strong>Hyper-Carry Status</strong> gain <strong>damage immunity for 3 seconds</strong> after receiving the buff</p>
-					<p>Transforms hyper-carry activation into both offensive and defensive advantage</p>
+				<div class="awakening-card">
+					<h3 class="skill-title">🌟 Awakening 6 (GAME-CHANGING)</h3>
+					<ul>
+						<li>Ultimate skill can also apply <strong>[Weathering]</strong></li>
+						<li>Allows ultimate to stack DoT debuffs, dramatically improving her combo potential</li>
+					</ul>
 				</div>
 			</section>
 
@@ -617,21 +636,36 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h3 class="subsection-title">Rune Sets</h3>
 				
 				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Offensive Buffer Focus)</h4>
-					<p><strong>4-Piece Alpha (阿尔法):</strong> Attack Power +12%, Critical Rate +8%</p>
-					<p><strong>2-Piece Epsilon (厄普西隆):</strong> Ice Damage +15%</p>
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build Option 1 (2+2+2)</h4>
+					<p><strong>2-Piece Epsilon (埃普西隆):</strong> Attack Power +8%</p>
+					<p><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</p>
+					<p><strong>2-Piece Zahn (札恩):</strong> HP +8%</p>
 					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Perfect synergy:</strong> Maximizes personal damage output while enhancing team offensive capabilities
+						<strong>Total:</strong> +16% Attack Power and +8% HP for balanced damage and survivability
 					</p>
 				</div>
 
 				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build (Support Focus)</h4>
-					<p><strong>4-Piece Delta (德尔塔):</strong> Energy Recovery +20%, Skill CD reduction +10%</p>
-					<p><strong>2-Piece Alpha (阿尔法):</strong> Attack Power +8%</p>
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build Option 2 (Team Support)</h4>
+					<p><strong>4-Piece Epsilon (埃普西隆):</strong> Attack Power +8%, After Ultimate: Team damage +10% (10s)</p>
+					<p><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</p>
 					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Focus:</strong> More frequent ultimate usage for consistent team buffing and damage
+						<strong>Total:</strong> +16% Attack Power with team damage amplification after ultimate
 					</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build Option 3 (Basic Attack Focus)</h4>
+					<p><strong>4-Piece Alpha (阿尔法符):</strong> Attack Power +8%, Basic Attack Damage +30%</p>
+					<p><strong>2-Piece Epsilon (埃普西隆):</strong> Attack Power +8%</p>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Total:</strong> +16% Attack Power with enhanced basic attack damage
+					</p>
+				</div>
+
+				<div class="warning-box">
+					<div class="warning-title">⚠️ Important</div>
+					<p>Epsilon team buff can only apply once per team - avoid multiple Epsilon users if going 4-piece</p>
 				</div>
 
 				<h3 class="subsection-title">Main Stat Priorities</h3>
@@ -666,33 +700,32 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<div class="info-card">
 					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
 						<li>Attack%</li>
-						<li>Healing Effectiveness%</li>
 						<li>Attack (Flat)</li>
-						<li>Energy Recovery</li>
+						<li>Penetration%</li>
 						<li>HP%</li>
+						<li>Defense%</li>
 					</ol>
 					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Note:</strong> Attack scaling is primary since all healing scales with attack power. Energy recovery helps with ultimate frequency.
+						<strong>Note:</strong> Avoid Critical Rate and Critical Damage since DoT effects cannot crit. Focus entirely on Attack and survivability stats.
 					</p>
 				</div>
 			</section>
 
 			<!-- Memory Card -->
 			<section class="content-section">
-				<h2 class="section-title">Memory Card: Serene Waters</h2>
+				<h2 class="section-title">Memory Card: Busy Officer (忙里偷闲)</h2>
 				
 				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
-					<img src="/images/characters/naiyacard.jpg" alt="Naiya Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+					<img src="/images/characters/shucard.jpg" alt="Shu Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
 					
 					<div style="flex: 1; min-width: 300px;">
 						<div class="info-card" style="margin: 0;">
 							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Effects</h4>
 
-							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
+							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effect</h4>
 							<ul>
-								<li><strong>Effect 1:</strong> AoE healing radius increased by <strong>25%</strong></li>
-								<li><strong>Effect 2:</strong> When healing multiple allies (3+), healing amount increases by <strong>15%</strong></li>
-								<li>Essential for maximizing AoE healing potential</li>
+								<li>When dealing continuous damage, target takes <strong>12% increased damage</strong> for 2 seconds</li>
+								<li>Synergizes perfectly with her Weathering DoT stacks</li>
 							</ul>
 						</div>
 					</div>
@@ -706,39 +739,39 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h3 class="subsection-title">Strengths</h3>
 				<div class="info-card">
 					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Excellent AoE healing for team-wide sustain</li>
-						<li>Consistent healing output through automatic skills</li>
-						<li>Provides water resistance buffs to healed allies</li>
-						<li>Energy regeneration through Awakening 1 for more ultimates</li>
-						<li>Damage reduction support with Awakening 6</li>
-						<li>Works well in clustered team formations</li>
-						<li><strong>With Awakenings 1+4+6:</strong> Becomes an unstoppable AoE healing machine</li>
+						<li>Exceptional DoT damage that ignores block mechanics</li>
+						<li>Team debuffer with 34% Vulnerability application</li>
+						<li>Self-scaling against DoT-affected enemies (20% attack boost)</li>
+						<li>AoE capabilities with 4-meter radius on multiple skills</li>
+						<li>No crit dependency - simple stat building focused on Attack</li>
+						<li>Team support utility with Epsilon rune synergy</li>
+						<li><strong>With Awakenings 1+4+6:</strong> Becomes a DoT powerhouse with enhanced combo potential</li>
 					</ul>
 				</div>
 
 				<h3 class="subsection-title">Playstyle</h3>
 				<div class="info-card">
 					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Position Naiya centrally to maximize healing radius</li>
-						<li>Keep team clustered within her AoE range</li>
-						<li>Use ultimate when multiple allies need healing</li>
-						<li>Focus on attack stats to amplify healing output</li>
-						<li>Coordinate with water element allies for team skill bonuses</li>
+						<li>Apply <strong>Weathering</strong> through passive and abilities</li>
+						<li>Stack DoT effects up to maximum (5 stacks = 72% attack power per second)</li>
+						<li>Use <strong>Ultimate for Vulnerability</strong> - 34% team damage boost</li>
+						<li>Maintain pressure with Eye of the Storm AoE</li>
+						<li>With Awakening 6, ultimate also applies Weathering for faster stacking</li>
 					</ol>
 				</div>
 
 				<div class="warning-box">
-					<div class="warning-title">💡 Pro Tip</div>
-					<p>Naiya's memory card significantly increases her AoE radius and provides bonus healing when hitting multiple allies. Position your team to take advantage of these effects for maximum efficiency.</p>
+					<div class="warning-title">🔄 Core Loop with Awakenings 1+4+6</div>
+					<p>Weathering Stacks → 20% Attack Boost → Enhanced DoT Damage (+25%) → Ultimate Applies More Weathering → Vulnerability Amplifies Team Damage</p>
 				</div>
 
-				<h3 class="subsection-title">Team Synergy</h3>
+				<h3 class="subsection-title">Key DoT Mechanics</h3>
 				<div class="info-card">
 					<ul>
-						<li><strong>Perfect with:</strong> Clustered melee teams and close-formation strategies</li>
-						<li><strong>Water Element Teams:</strong> Activate team skill for 20% healing boost</li>
-						<li><strong>Multiple Healers:</strong> Alternative team skill activation method</li>
-						<li><strong>Attack Buffers:</strong> Characters that boost team attack power amplify her healing</li>
+						<li><strong>DoT Effects:</strong> Cannot crit but ignore block completely</li>
+						<li><strong>Weathering Stacks:</strong> Up to 5 stacks, each dealing 14.4% attack power per second</li>
+						<li><strong>With Awakening 2:</strong> DoT effects gain 10% penetration against tanky enemies</li>
+						<li><strong>Memory Card Synergy:</strong> DoT triggers 12% increased damage debuff</li>
 					</ul>
 				</div>
 			</section>
@@ -748,32 +781,32 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h2 class="section-title">Investment Priority</h2>
 				
 				<div class="warning-box">
-					<div class="warning-title">⭐ Solid Investment Choice</div>
-					<p>Excellent AoE healer for teams that stay clustered. Worth investment for players who prefer group healing over single-target focus.</p>
+					<div class="warning-title">⭐ Excellent DoT Investment</div>
+					<p>Outstanding investment for players who enjoy DoT playstyles and team support roles. Worth full investment for sustained damage content.</p>
 				</div>
 
 				<h3 class="subsection-title">Awakening Priority</h3>
 				<div class="critical-awakening" style="padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
-					<h4 style="color: #dc3545; margin: 0 0 1rem 0;">🚨 Awakenings 1+4+6 Create Synergy</h4>
-					<p>These awakenings transform her into a premier AoE support:</p>
+					<h4 style="color: #dc3545; margin: 0 0 1rem 0;">🚨 Awakenings 1+4+6 Transform Her</h4>
+					<p>These awakenings create powerful synergy loops:</p>
 					<ul>
-						<li><strong>Without them:</strong> Basic AoE healer</li>
-						<li><strong>With them:</strong> Energy-efficient healing machine with damage reduction support</li>
+						<li><strong>Without them:</strong> Basic DoT dealer with team utility</li>
+						<li><strong>With them:</strong> Self-scaling DoT powerhouse with enhanced combo potential</li>
 					</ul>
 				</div>
 
 				<h3 class="subsection-title">Key Breakpoints</h3>
 				<div class="info-card">
 					<ul>
-						<li><span class="priority-high">Awakening 1: CRITICAL</span> - Energy regeneration for ultimate frequency</li>
-						<li><span class="priority-high">Awakening 4: CRITICAL</span> - 30% healing boost for injured allies</li>
-						<li><span class="priority-high">Awakening 6: CRITICAL</span> - Damage reduction for healed allies</li>
-						<li><span class="priority-medium">Awakening 2:</span> 18% general healing increase</li>
-						<li><span class="priority-low">Max memory card</span> for AoE radius and efficiency</li>
+						<li><span class="priority-high">Awakening 1: CRITICAL</span> - 20% attack boost against DoT-affected enemies</li>
+						<li><span class="priority-high">Awakening 4: CRITICAL</span> - 25% DoT damage increase</li>
+						<li><span class="priority-high">Awakening 6: GAME-CHANGING</span> - Ultimate applies Weathering for combo potential</li>
+						<li><span class="priority-medium">Awakening 2:</span> DoT penetration for tanky enemies</li>
+						<li><span class="priority-low">Max memory card</span> for DoT synergy boost</li>
 					</ul>
 				</div>
 			</section>
 
 		</div>
 	</div>
-</ZoneNovaLayout1>
+</ZoneNovaLayout1> 

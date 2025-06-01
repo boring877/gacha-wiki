@@ -11,6 +11,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 	breadcrumbText="Characters"
 >
 	<Fragment slot="head">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 		<style>
 			.back-button {
 				display: inline-flex;
@@ -197,11 +198,11 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			}
 
 			.skill-card {
-				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.08), rgba(0, 172, 193, 0.08));
 				border: 1px solid var(--amber-glow);
 				border-radius: 15px;
 				padding: 2rem;
-				margin: 1rem 0;
+				margin: 1.5rem 0;
 				transition: all 0.3s ease;
 			}
 
@@ -284,6 +285,30 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				margin-bottom: 0.5rem;
 			}
 
+			.video-container {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+			}
+
+			.video-wrapper {
+				position: relative;
+				padding-bottom: 56.25%;
+				height: 0;
+				overflow: hidden;
+				border-radius: 12px;
+			}
+
+			.video-wrapper iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
 			@keyframes titleGlow {
 				0% {
 					text-shadow: 0 0 10px rgba(255, 183, 77, 0.3);
@@ -302,6 +327,70 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					opacity: 1;
 					transform: translateY(0);
 				}
+			}
+
+			.class-showcase {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.class-showcase::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.class-showcase:hover::before {
+				left: 100%;
+			}
+
+			.class-showcase:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.class-image {
+				width: 64px;
+				height: 64px;
+				border-radius: 12px;
+				border: 2px solid var(--amber-glow);
+				flex-shrink: 0;
+				transition: all 0.3s ease;
+			}
+
+			.class-showcase:hover .class-image {
+				transform: scale(1.05);
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3);
+			}
+
+			.class-info h3 {
+				color: var(--amber-glow);
+				margin: 0 0 0.5rem 0;
+				font-size: 1.4rem;
+				font-weight: 600;
+				font-family: 'Space Grotesk', sans-serif;
+			}
+
+			.class-info p {
+				color: var(--text-secondary);
+				margin: 0;
+				font-size: 1rem;
+				line-height: 1.5;
 			}
 
 			@media (max-width: 768px) {
@@ -326,6 +415,17 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				.stats-grid {
 					grid-template-columns: 1fr;
 				}
+
+				/* Memory Card mobile layout */
+				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
+					flex-direction: column !important;
+					align-items: center !important;
+				}
+
+				.content-section img[alt="Lancelot Memory Card"] {
+					width: 160px !important;
+					height: 240px !important;
+				}
 			}
 		</style>
 	</Fragment>
@@ -341,33 +441,38 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			<!-- Character Header -->
 			<header class="character-header">
 				<!-- Character Image -->
-				<img src="/images/characters/Lancelot0.jpg" alt="Lancelot - Drowning Knight of the Lake" class="character-image" loading="eager" />
+				<img src="/images/characters/Lancelot0.jpg" alt="Lancelot - Drowning Knight of the Lake" class="character-image" loading="lazy" />
 				
-				<h1 class="character-title">🌊 Lancelot</h1>
+				<h1 class="character-title">Lancelot</h1>
 				<p class="character-subtitle">Drowning Knight of the Lake</p>
-				<p class="character-subtitle">⭐ SR • ⭐ Holy • 🛡️ Guardian/Tank</p>
+				<p class="character-subtitle">SR • Holy • Guardian/Tank</p>
 			</header>
 
 			<!-- Character Overview -->
 			<section class="content-section">
 				<h2 class="section-title">Character Overview</h2>
 				
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Class</div>
-						<div class="stat-value">Guardian</div>
+				<!-- Class Showcase -->
+				<div class="class-showcase">
+					<img src="/images/characters/class/tank.jpg" alt="Guardian Class" class="class-image">
+					<div class="class-info">
+						<h3>守护使 (Guardian)</h3>
+						<p>Tank/Defender role - Specializes in protecting allies and absorbing damage</p>
 					</div>
+				</div>
+				
+				<div class="stats-grid">
 					<div class="stat-item">
 						<div class="stat-label">Faction</div>
 						<div class="stat-value">Avalon</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Role</div>
-						<div class="stat-value">Guardian/Tank</div>
+						<div class="stat-value">Tank/Support</div>
 					</div>
 					<div class="stat-item">
-						<div class="stat-label">First Summon</div>
-						<div class="stat-value">2025-04-29</div>
+						<div class="stat-label">Story</div>
+						<div class="stat-value">A knight who has fallen into darkness</div>
 					</div>
 				</div>
 
@@ -725,36 +830,6 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 							Complete showcase of Lancelot's defensive abilities, HP-scaling mechanics, and team protection capabilities. See her in action across different content types and learn optimal positioning and timing for her ultimate ability.
 						</p>
 					</a>
-				</div>
-			</section>
-
-			<!-- Character Story -->
-			<section class="content-section">
-				<h2 class="section-title">Character Story</h2>
-				
-				<h3 class="subsection-title">Background</h3>
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						As the premier knight of the Avalon Round Table Knights, she stands as the foremost among the Round Table Knights. She inherited the legendary power of the lake sword, making her a formidable border knight who protects everything precious to the realm.
-					</p>
-				</div>
-
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Due to inheriting the legendary lake sword power, she gained tremendous strength, yet she was also blessed by the lake spirits. This blessing opened her heart to protecting others, leading her to frantically shield her allies and launch herself into impossible battles to defend those she cares about.
-					</p>
-				</div>
-
-				<h3 class="subsection-title">Role in Avalon</h3>
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						She serves as both protector and guardian spirit within the Round Table Knights, her legendary abilities matched only by her unwavering dedication. Her connection to the lake sword grants her exceptional defensive power, allowing her to serve as an unbreakable shield for those who fight alongside her.
-					</p>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">💭 Character Summary</div>
-					<p>However, this burden of protection has brought her both purpose and pain. Unable to find rest, she has grown weary of endless battles, often pushing herself to the brink to ensure others' safety. To allow her allies some peace and enable them to find their own strength, she quietly endures her duty, carrying the same melancholic destiny as other knights bound by ancient powers.</p>
 				</div>
 			</section>
 

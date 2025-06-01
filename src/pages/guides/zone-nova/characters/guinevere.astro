@@ -11,6 +11,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 	breadcrumbText="Characters"
 >
 	<Fragment slot="head">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 		<style>
 			.back-button {
 				display: inline-flex;
@@ -197,11 +198,11 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			}
 
 			.skill-card {
-				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.08), rgba(0, 172, 193, 0.08));
 				border: 1px solid var(--amber-glow);
 				border-radius: 15px;
 				padding: 2rem;
-				margin: 1rem 0;
+				margin: 1.5rem 0;
 				transition: all 0.3s ease;
 			}
 
@@ -209,6 +210,70 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				transform: translateY(-2px);
 				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
 				border-color: var(--teal-crystal);
+			}
+
+			.class-showcase {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.class-showcase::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.class-showcase:hover::before {
+				left: 100%;
+			}
+
+			.class-showcase:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.class-image {
+				width: 64px;
+				height: 64px;
+				border-radius: 12px;
+				border: 2px solid var(--amber-glow);
+				flex-shrink: 0;
+				transition: all 0.3s ease;
+			}
+
+			.class-showcase:hover .class-image {
+				transform: scale(1.05);
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3);
+			}
+
+			.class-info h3 {
+				color: var(--amber-glow);
+				margin: 0 0 0.5rem 0;
+				font-size: 1.4rem;
+				font-weight: 600;
+				font-family: 'Space Grotesk', sans-serif;
+			}
+
+			.class-info p {
+				color: var(--text-secondary);
+				margin: 0;
+				font-size: 1rem;
+				line-height: 1.5;
 			}
 
 			.stats-grid {
@@ -284,6 +349,30 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				margin-bottom: 0.5rem;
 			}
 
+			.video-container {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+			}
+
+			.video-wrapper {
+				position: relative;
+				padding-bottom: 56.25%;
+				height: 0;
+				overflow: hidden;
+				border-radius: 12px;
+			}
+
+			.video-wrapper iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
 			@keyframes titleGlow {
 				0% {
 					text-shadow: 0 0 10px rgba(255, 183, 77, 0.3);
@@ -354,19 +443,24 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<!-- Character Image -->
 				<img src="/images/characters/Guinevere.jpg" alt="Guinevere" class="character-image" loading="eager" />
 				
-				<h1 class="character-title">⚔️ Guinevere</h1>
-				<p class="character-subtitle">🌟 SSR • 🔥 Fire • 🛡️ Tank/Defense DPS</p>
+				<h1 class="character-title">Guinevere</h1>
+				<p class="character-subtitle">SSR • Fire • Tank/Defense DPS</p>
 			</header>
 
 			<!-- Character Overview -->
 			<section class="content-section">
 				<h2 class="section-title">Character Overview</h2>
 				
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Class</div>
-						<div class="stat-value">Guardian</div>
+				<!-- Class Showcase -->
+				<div class="class-showcase">
+					<img src="/images/characters/class/tank.jpg" alt="Guardian Class" class="class-image" loading="eager" />
+					<div class="class-info">
+						<h3>守护使 (Guardian)</h3>
+						<p>Tank/Defender role - Specializes in protecting allies and absorbing damage</p>
 					</div>
+				</div>
+				
+				<div class="stats-grid">
 					<div class="stat-item">
 						<div class="stat-label">Faction</div>
 						<div class="stat-value">Avalon</div>
@@ -640,6 +734,23 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				</div>
 			</section>
 
+			<!-- Video Guide Section -->
+			<section class="content-section">
+				<h2 class="section-title">📺 Video Guide</h2>
+				<div class="video-container">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">Watch this comprehensive guide to master Guinevere's defensive strategies and tanking techniques:</p>
+					<div class="video-wrapper">
+						<iframe 
+							src="https://www.youtube.com/embed/-LYs10B_9EY" 
+							title="Guinevere Character Guide - Zone Nova" 
+							frameborder="0" 
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+							allowfullscreen>
+						</iframe>
+					</div>
+				</div>
+			</section>
+
 			<!-- Usage Tips -->
 			<section class="content-section">
 				<h2 class="section-title">Usage Tips</h2>
@@ -711,59 +822,6 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 						<li><span class="priority-medium">Awakening 6:</span> Significant resistance improvements + starts with 2 life recovery charges</li>
 						<li><span class="priority-low">Max memory card</span> for massive defense boost</li>
 					</ul>
-				</div>
-			</section>
-
-			<!-- Character Story -->
-			<section class="content-section">
-				<h2 class="section-title">Character Story</h2>
-				
-				<h3 class="subsection-title">Memory Story: Simple Birdcage</h3>
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						The Simple Birdcage represents Guinevere's innermost sorrow and deepest dream. It emerges from her fantasy field, not as a cage that trapped her, but as something she created for her Knight Order [Fantasy] in Avalon. This memory manifests as both protection and limitation - symbolizing her internal conflict between self-imposed isolation and the desire to expand beyond her boundaries.
-					</p>
-				</div>
-
-				<h3 class="subsection-title">Background</h3>
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Leader of the Seven Realm Domination - Avalon Empire Knight Order, [Fantasy], sage of the Round Table, self-proclaimed [King's Seat]. A solitary swordsman who regards herself as the Sword Emperor outside of all living beings, wrapping her Knight Order [Fantasy] in an isolated world. Her past injuries led her to abandon previous beliefs, and her unique appearance represents both her knightly duties and everything she has forsaken.
-					</p>
-				</div>
-			</section>
-
-			<!-- Community Guides -->
-			<section class="content-section">
-				<h2 class="section-title">Community Guides</h2>
-				
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">📹 Video Guide</h4>
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0 0 1rem 0;">
-						Check out this comprehensive video guide for Guinevere covering her defensive mechanics, awakening priorities, and team compositions:
-					</p>
-					<div style="background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary)); border: 1px solid var(--teal-crystal); border-radius: 12px; padding: 1.5rem; margin: 1rem 0;">
-						<div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-							<div style="background: var(--amber-glow); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem;">
-								🎥 YouTube
-							</div>
-							<h5 style="color: var(--text-primary); margin: 0; font-size: 1.2rem; font-weight: 600;">
-								Guinevere Character Guide
-							</h5>
-						</div>
-						<p style="color: var(--text-secondary); margin: 0 0 1rem 0; font-size: 1rem;">
-							Detailed analysis of Domination Authority stacking, Enhanced Ultimate cycling, and how her Awakening 1+2 transform her into an unkillable defense powerhouse.
-						</p>
-						<a href="https://www.youtube.com/watch?v=-LYs10B_9EY" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--teal-crystal); color: white; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; font-size: 1rem;" onmouseover="this.style.background='var(--amber-glow)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--teal-crystal)'; this.style.transform='translateY(0)'">
-							<span>▶️ Watch Guide</span>
-							<span style="font-size: 0.8rem; opacity: 0.8;">↗</span>
-						</a>
-					</div>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">💡 Community Contribution</div>
-					<p>This video guide provides visual demonstrations of her blocking mechanics and shows the dramatic difference between pre and post-Awakening 1+2 performance!</p>
 				</div>
 			</section>
 
