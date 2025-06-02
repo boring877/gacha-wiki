@@ -490,15 +490,18 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 				<button class="filter-button" data-filter="element" data-value="holy">Holy</button>
 				<button class="filter-button" data-filter="element" data-value="chaos">Chaos</button>
 				<button class="filter-button" data-filter="element" data-value="wind">Wind</button>
+				<button class="filter-button" data-filter="element" data-value="storm">Storm</button>
+				<button class="filter-button" data-filter="element" data-value="divine">Divine</button>
 			</div>
 		</div>
 
 		<!-- Character Grid -->
 		<div class="character-grid">
-			<a href="/guides/zone-nova/characters/guinevere/" class="character-card guardian-class" 
+			<a href="/guides/zone-nova/characters/guinevere/" class="character-card" 
 			   data-name="Guinevere" data-rarity="ssr" data-role="tank" data-element="fire">
 				<div class="character-header-section">
 					<img src="/images/characters/Guinevere.jpg" alt="Guinevere" class="character-profile-image">
+					<img src="/images/characters/class/tank.jpg" alt="Tank Class" class="character-class-image">
 					<div class="character-info">
 						<h3>Guinevere</h3>
 						<p class="character-meta">SSR • Fire • Tank/Defense DPS</p>
@@ -509,10 +512,11 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 				</p>
 			</a>
 			
-			<a href="/guides/zone-nova/characters/naiya/" class="character-card support-class"
+			<a href="/guides/zone-nova/characters/naiya/" class="character-card"
 			   data-name="Naiya" data-rarity="ssr" data-role="buffer" data-element="ice">
 				<div class="character-header-section">
 					<img src="/images/characters/naiya.jpg" alt="Naiya" class="character-profile-image">
+					<img src="/images/characters/class/Support.jpg" alt="Support Class" class="character-class-image">
 					<div class="character-info">
 						<h3>Naiya</h3>
 						<p class="character-meta">SSR • Ice • Buffer</p>
@@ -522,11 +526,72 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 					Elite support buffer who specializes in empowering allies through the unique "War Intent" mechanic. Excels at turning your strongest attacker into a hyper-carry.
 				</p>
 			</a>
+
+			<a href="/guides/zone-nova/characters/artemis/" class="character-card"
+			   data-name="Artemis" data-rarity="ssr" data-role="dps" data-element="wind">
+				<div class="character-header-section">
+					<img src="/images/characters/Artemis.jpg" alt="Artemis" class="character-profile-image">
+					<img src="/images/characters/class/Assault.jpg" alt="Assault Class" class="character-class-image">
+					<div class="character-info">
+						<h3>Artemis</h3>
+						<p class="character-meta">SSR • Wind • High-Risk DPS</p>
+					</div>
+				</div>
+				<p class="character-summary">
+					High-risk, high-reward Assault character who sacrifices HP to unlock devastating damage potential. Excels below 50% HP threshold with massive damage amplification and elemental penetration.
+				</p>
+			</a>
+
+			<a href="/guides/zone-nova/characters/afrodite/" class="character-card"
+			   data-name="Afrodite" data-rarity="ssr" data-role="dps" data-element="holy">
+				<div class="character-header-section">
+					<img src="/images/characters/Afrodite.jpg" alt="Afrodite" class="character-profile-image">
+					<img src="/images/characters/class/Assault.jpg" alt="Assault Class" class="character-class-image">
+					<div class="character-info">
+						<h3>Afrodite</h3>
+						<p class="character-meta">SSR • Holy • Enhanced Ultimate DPS</p>
+					</div>
+				</div>
+				<p class="character-summary">
+					Enhanced ultimate specialist who builds power through normal attacks to unleash devastating 2160% attack power damage. Excels at high-HP situations with dual-phase survivability mechanics.
+				</p>
+			</a>
+
+			<a href="/guides/zone-nova/characters/chiya/" class="character-card"
+			   data-name="Chiya" data-rarity="ssr" data-role="dps" data-element="ice">
+				<div class="character-header-section">
+					<img src="/images/characters/Chiya.jpg" alt="Chiya" class="character-profile-image">
+					<img src="/images/characters/class/Assault.jpg" alt="Assault Class" class="character-class-image">
+					<div class="character-info">
+						<h3>Chiya</h3>
+						<p class="character-meta">SSR • Ice • Burst DPS</p>
+					</div>
+				</div>
+				<p class="character-summary">
+					High-burst ice damage dealer specializing in enhanced ultimate mechanics and focus state management. Features guaranteed critical strengthened ultimates with infinite cycling potential.
+				</p>
+			</a>
+
+			<a href="/guides/zone-nova/characters/shanna/" class="character-card"
+			   data-name="Shanna" data-rarity="sr" data-role="dps" data-element="fire">
+				<div class="character-header-section">
+					<img src="/images/characters/Shanna.jpg" alt="Shanna" class="character-profile-image">
+					<img src="/images/characters/class/Guerrilla.jpg" alt="Guerrilla Class" class="character-class-image">
+					<div class="character-info">
+						<h3>Shanna</h3>
+						<p class="character-meta">SR • Fire • Focus Stack DPS</p>
+					</div>
+				</div>
+				<p class="character-summary">
+					Single-target specialist who builds Focus stacks for escalating damage bonuses. Excels in prolonged encounters with powerful focus stacking mechanics and memory card synergy.
+				</p>
+			</a>
 			
-			<a href="/guides/zone-nova/characters/lancelot/" class="character-card guardian-class"
+			<a href="/guides/zone-nova/characters/lancelot/" class="character-card"
 			   data-name="Lancelot" data-rarity="sr" data-role="tank" data-element="holy">
 				<div class="character-header-section">
 					<img src="/images/characters/Lancelot0.jpg" alt="Lancelot" class="character-profile-image">
+					<img src="/images/characters/class/tank.jpg" alt="Tank Class" class="character-class-image">
 					<div class="character-info">
 						<h3>Lancelot</h3>
 						<p class="character-meta">SR • Holy • Guardian/Tank</p>
@@ -536,11 +601,42 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 					Powerful HP-scaling tank who excels at protecting the team through damage reduction and self-sustaining shields.
 				</p>
 			</a>
+
+			<a href="/guides/zone-nova/characters/tefnut/" class="character-card" 
+			   data-name="Tefnut" data-rarity="sr" data-role="dps" data-element="holy">
+				<div class="character-header-section">
+					<img src="/images/characters/Tefnut.jpg" alt="Tefnut" class="character-profile-image">
+					<img src="/images/characters/class/Guerrilla.jpg" alt="Guerrilla Class" class="character-class-image">
+					<div class="character-info">
+						<h3>Tefnut</h3>
+						<p class="character-meta">SR • Holy • DOT Specialist</p>
+					</div>
+				</div>
+				<p class="character-summary">
+					Holy DOT specialist who excels at continuous damage through [Holy] stacks and bloodthirst mechanics. Features strong memory card synergy for penetrating high-defense targets.
+				</p>
+			</a>
+
+			<a href="/guides/zone-nova/characters/leviathan/" class="character-card" 
+			   data-name="Leviathan" data-rarity="sr" data-role="dps" data-element="storm">
+				<div class="character-header-section">
+					<img src="/images/characters/Leviathan.jpg" alt="Leviathan" class="character-profile-image">
+					<img src="/images/characters/class/Guerrilla.jpg" alt="Guerrilla Class" class="character-class-image">
+					<div class="character-info">
+						<h3>Leviathan</h3>
+						<p class="character-meta">SR • Storm • Pursuit Specialist</p>
+					</div>
+				</div>
+				<p class="character-summary">
+					Elite pursuit specialist who excels at critical damage through mark system mechanics. Masters the art of pursuit attacks with devastating critical synergy and team support capabilities.
+				</p>
+			</a>
 			
-			<a href="/guides/zone-nova/characters/greed-mammon/" class="character-card destroyer-class"
+			<a href="/guides/zone-nova/characters/greed-mammon/" class="character-card"
 			   data-name="Greed Mammon" data-rarity="sr" data-role="dps" data-element="chaos">
 				<div class="character-header-section">
 					<img src="/images/characters/Greed-Mammon.jpg" alt="Greed Mammon" class="character-profile-image">
+					<img src="/images/characters/class/Destroyer.jpg" alt="Destroyer Class" class="character-class-image">
 					<div class="character-info">
 						<h3>Greed Mammon</h3>
 						<p class="character-meta">SR • Chaos • Burst DPS</p>
@@ -550,11 +646,12 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 					High-damage chaos mage who specializes in burst damage through her Enhanced Ultimate mechanic. Requires ally buffers to unlock her devastating AoE potential.
 				</p>
 			</a>
-			
-			<a href="/guides/zone-nova/characters/kela/" class="character-card healer-class"
+
+			<a href="/guides/zone-nova/characters/kela/" class="character-card"
 			   data-name="Kela" data-rarity="sr" data-role="healer" data-element="holy">
 				<div class="character-header-section">
 					<img src="/images/characters/kela.jpg" alt="Kela" class="character-profile-image">
+					<img src="/images/characters/class/healer.jpg" alt="Healer Class" class="character-class-image">
 					<div class="character-info">
 						<h3>Kela</h3>
 						<p class="character-meta">SR • Holy Light • Healer</p>
@@ -565,10 +662,11 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 				</p>
 			</a>
 
-			<a href="/guides/zone-nova/characters/shu/" class="character-card disruptor-class"
+			<a href="/guides/zone-nova/characters/shu/" class="character-card"
 			   data-name="Shu" data-rarity="sr" data-role="dps" data-element="wind">
 				<div class="character-header-section">
 					<img src="/images/characters/shu.jpg" alt="Shu" class="character-profile-image">
+					<img src="/images/characters/class/Guerrilla.jpg" alt="Guerrilla Class" class="character-class-image">
 					<div class="character-info">
 						<h3>Shu</h3>
 						<p class="character-meta">SR • Wind • Debuffer/DoT Dealer</p>
@@ -576,6 +674,36 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 				</div>
 				<p class="character-summary">
 					Powerful DoT specialist and debuffer who excels at applying continuous damage effects through Weathering stacks. Amplifies team damage through Vulnerability debuffs.
+				</p>
+			</a>
+
+			<a href="/guides/zone-nova/characters/mordred/" class="character-card"
+			   data-name="Mordred" data-rarity="sr" data-role="dps" data-element="fire">
+				<div class="character-header-section">
+					<img src="/images/characters/mordredcard.jpg" alt="Mordred" class="character-profile-image">
+					<img src="/images/characters/class/Assault.jpg" alt="Assault Class" class="character-class-image">
+					<div class="character-info">
+						<h3>Mordred</h3>
+						<p class="character-meta">SR • Fire • HP-Scaling DPS</p>
+					</div>
+				</div>
+				<p class="character-summary">
+					Unique HP-scaling Assault character who combines high damage output with exceptional survivability. Her abilities scale with HP, creating a tanky DPS that gets stronger as fights continue.
+				</p>
+			</a>
+
+			<a href="/guides/zone-nova/characters/merlin/" class="character-card"
+			   data-name="Merlin" data-rarity="ssr" data-role="dps" data-element="fire">
+				<div class="character-header-section">
+					<img src="/images/characters/Merlin.jpg" alt="Merlin" class="character-profile-image">
+					<img src="/images/characters/class/Guerrilla.jpg" alt="Guerrilla Class" class="character-class-image">
+					<div class="character-info">
+						<h3>Merlin</h3>
+						<p class="character-meta">SSR • Fire • Critical Burst DPS</p>
+					</div>
+				</div>
+				<p class="character-summary">
+					High-critical flame damage dealer who specializes in mark-based burst combos and strengthened ultimate mechanics. Excels at single-target elimination with massive damage multipliers and critical rate scaling.
 				</p>
 			</a>
 

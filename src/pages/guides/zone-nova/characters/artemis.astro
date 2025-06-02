@@ -1,0 +1,857 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout1 
+	title="Artemis Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Artemis, the high-risk HP sacrifice DPS in Zone Nova"
+	gameTitle="Artemis Character Guide"
+	showBreadcrumb={true}
+	breadcrumbText="Characters"
+>
+	<Fragment slot="head">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-image {
+				width: 300px;
+				height: 300px;
+				border-radius: 20px;
+				object-fit: cover;
+				margin: 0 auto 2rem auto;
+				display: block;
+				box-shadow: 0 12px 30px rgba(0, 172, 193, 0.3);
+				transition: all 0.3s ease;
+			}
+
+			.character-image:hover {
+				transform: scale(1.05);
+				box-shadow: 0 16px 40px rgba(0, 172, 193, 0.4);
+			}
+
+			.character-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}
+
+			.subsection-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 2rem 0 1rem 0;
+				padding-left: 1rem;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.skill-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin: 1.5rem 0 0.8rem 0;
+			}
+
+			.info-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.info-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.info-card:hover::before {
+				left: 100%;
+			}
+
+			.info-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.skill-card {
+				background: linear-gradient(135deg, rgba(164, 120, 100, 0.1), rgba(97, 174, 201, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.skill-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(164, 120, 100, 0.15), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.skill-card:hover::before {
+				left: 100%;
+			}
+
+			.skill-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.2);
+				border-color: var(--teal-crystal);
+			}
+
+			.awakening-card {
+				background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
+				border: 1px solid #FFD700;
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.awakening-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+				border-color: var(--amber-glow);
+			}
+
+			.critical-awakening {
+				background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), rgba(255, 69, 0, 0.1));
+				border: 2px solid #DC143C;
+				box-shadow: 0 4px 15px rgba(220, 20, 60, 0.2);
+			}
+
+			.critical-awakening:hover {
+				box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+			}
+
+			.priority-high {
+				background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), rgba(255, 255, 255, 0.05));
+				border-left: 4px solid #DC143C;
+				padding: 1rem;
+				margin: 0.5rem 0;
+			}
+
+			.priority-medium {
+				background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.05));
+				border-left: 4px solid #FFD700;
+				padding: 1rem;
+				margin: 0.5rem 0;
+			}
+
+			.priority-low {
+				background: linear-gradient(135deg, rgba(128, 128, 128, 0.1), rgba(255, 255, 255, 0.05));
+				border-left: 4px solid #808080;
+				padding: 1rem;
+				margin: 0.5rem 0;
+			}
+
+			.warning-box {
+				background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 235, 59, 0.1));
+				border: 1px solid #FFC107;
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.warning-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.2rem;
+				font-weight: 700;
+				color: #F57C00;
+				margin-bottom: 0.75rem;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+				gap: 1rem;
+				margin: 1.5rem 0;
+			}
+
+			.stat-item {
+				background: linear-gradient(135deg, var(--bg-secondary), rgba(255, 183, 77, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 12px;
+				padding: 1.5rem;
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.15);
+				border-color: var(--amber-glow);
+			}
+
+			.stat-label {
+				font-size: 0.9rem;
+				color: var(--amber-glow);
+				font-weight: 600;
+				display: block;
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				font-size: 1.3rem;
+				font-weight: 700;
+				color: var(--text-primary);
+			}
+
+			.video-container {
+				margin: 2rem 0;
+				padding: 2rem;
+				background: linear-gradient(135deg, var(--bg-secondary), rgba(0, 172, 193, 0.05));
+				border-radius: 15px;
+				border: 1px solid var(--teal-crystal);
+			}
+
+			.video-wrapper {
+				position: relative;
+				width: 100%;
+				height: 0;
+				padding-bottom: 56.25%;
+				overflow: hidden;
+				border-radius: 12px;
+				box-shadow: 0 8px 25px rgba(0, 172, 193, 0.3);
+			}
+
+			.video-wrapper iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			@keyframes sectionFadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes titleGlow {
+				0% {
+					filter: brightness(1) drop-shadow(0 0 5px rgba(164, 120, 100, 0.3));
+				}
+				100% {
+					filter: brightness(1.1) drop-shadow(0 0 20px rgba(164, 120, 100, 0.6));
+				}
+			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header {
+					padding: 2rem;
+				}
+
+				.character-image {
+					width: 250px;
+					height: 250px;
+				}
+
+				.character-title {
+					font-size: 2.5rem;
+				}
+
+				.content-section {
+					padding: 2rem;
+				}
+
+				.section-title {
+					font-size: 1.8rem;
+				}
+
+				.subsection-title {
+					font-size: 1.3rem;
+				}
+
+				.stats-grid {
+					grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+				}
+			}
+
+			.class-showcase {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.class-showcase::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.class-showcase:hover::before {
+				left: 100%;
+			}
+
+			.class-showcase:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.class-image {
+				width: 64px;
+				height: 64px;
+				border-radius: 12px;
+				border: 2px solid var(--amber-glow);
+				flex-shrink: 0;
+				transition: all 0.3s ease;
+			}
+
+			.class-showcase:hover .class-image {
+				transform: scale(1.05);
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3);
+			}
+
+			.class-info h3 {
+				color: var(--amber-glow);
+				margin: 0 0 0.5rem 0;
+				font-size: 1.4rem;
+				font-weight: 600;
+				font-family: 'Space Grotesk', sans-serif;
+			}
+
+			.class-info p {
+				color: var(--text-secondary);
+				margin: 0;
+				font-size: 1rem;
+				line-height: 1.5;
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<!-- Back Button -->
+			<a href="/guides/zone-nova/characters/" class="back-button">
+				<span class="back-arrow">←</span>
+				Back to Characters
+			</a>
+
+			<!-- Character Header -->
+			<header class="character-header">
+				<img src="/images/characters/Artemis.jpg" alt="Artemis" class="character-image" loading="eager" />
+				<h1 class="character-title">Artemis</h1>
+				<p class="character-subtitle">SSR Wind Assault • High-Risk DPS</p>
+			</header>
+
+			<!-- Character Overview -->
+			<section class="content-section">
+				<h2 class="section-title">Character Overview</h2>
+				
+				<!-- Class Showcase -->
+				<div class="class-showcase">
+					<img src="/images/characters/class/Assault.jpg" alt="Assault Class" class="class-image">
+					<div class="class-info">
+						<h3>强袭使 (Assault)</h3>
+					</div>
+				</div>
+				
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Faction</div>
+						<div class="stat-value">Otis</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Role</div>
+						<div class="stat-value">High-Risk DPS</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Base Stats at Level 80</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">HP</div>
+						<div class="stat-value">8,033</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Attack</div>
+						<div class="stat-value">1,461</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Defense</div>
+						<div class="stat-value">530</div>
+					</div>
+				</div>
+				
+				<div class="info-card">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
+						<strong>Artemis</strong> is a unique high-risk, high-reward Assault character who voluntarily sacrifices HP to unlock devastating damage potential. Her kit revolves around the 50% HP threshold - below this point, she gains massive damage amplification through her passive and awakening effects. Her ultimate consumes 50% of her current HP, making her both powerful and dangerous to pilot effectively.
+					</p>
+				</div>
+			</section>
+
+			<!-- Skills -->
+			<section class="content-section">
+				<h2 class="section-title">Skills</h2>
+
+				<div class="skill-card">
+					<h3 class="skill-title">🌙 Normal Attack: Moon Rising Fist (月升拳)</h3>
+					<p><strong>Level</strong>: 10+4 | <strong>CD</strong>: 2.0s</p>
+					<ul>
+						<li>Deals <strong>120% attack power</strong> as storm damage to designated enemy unit</li>
+						<li>Standard attack scaling for consistent damage output</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">⚡ Auto Skill: Moon Ancient Boxing (月之古拳法)</h3>
+					<p><strong>Level</strong>: 10+4 | <strong>Auto-trigger Interval</strong>: 5.0s</p>
+					<ul>
+						<li><strong>Automatically</strong> deals <strong>240% attack power</strong> as storm damage to designated enemy and nearby enemies</li>
+						<li><strong>Each hit restores 10% max HP</strong></li>
+						<li>AoE damage with built-in sustain mechanism that triggers automatically</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">💥 Ultimate: Silver Moon Judgment (银月审判)</h3>
+					<p><strong>Level</strong>: 10+4 | <strong>CD</strong>: 1.0s | <strong>Energy Cost</strong>: 3</p>
+					<ul>
+						<li><strong>Consumes 50% current HP</strong></li>
+						<li>Teleports in front of designated enemy</li>
+						<li>Deals <strong>264% attack power</strong> as storm damage to target and nearby enemies</li>
+						<li><strong>High-risk, high-reward ability</strong> that activates low-HP bonuses</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">👑 Passive: Moon Shadow Hunt (月影追猎)</h3>
+					<p><strong>Level</strong>: 10+4</p>
+					<ul>
+						<li><strong>When HP is below 50%</strong>: All attacks deal additional <strong>60% attack power</strong> as storm damage</li>
+						<li><strong>Core low-HP mechanic</strong> that significantly amplifies damage output</li>
+						<li>Synergizes with ultimate's HP consumption</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Team Composition Skill -->
+			<section class="content-section">
+				<h2 class="section-title">Team Composition Skill</h2>
+
+				<div class="skill-card">
+					<h3 class="skill-title">🌟 Combination Skill</h3>
+					<p><strong>Level</strong>: 1</p>
+					
+					<div class="warning-box">
+						<div class="warning-title">⚡ Activation Requirements</div>
+						<p>Triggers when team contains 2 [Otis] characters OR 2 [Storm] characters</p>
+					</div>
+
+					<div class="info-card" style="margin: 1rem 0;">
+						<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Effects:</h4>
+						<ul>
+							<li><strong>Self max HP increased by 10%</strong></li>
+							<li><strong>At battle start</strong>: For every 4,000 max HP, increase self attack power by <strong>5%</strong> (maximum 6 times)</li>
+							<li><strong>Maximum scaling</strong>: 30% attack power boost at 24,000+ HP</li>
+						</ul>
+						
+						<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+							<strong>Why This Matters</strong>: This team skill provides both survivability (more HP to sacrifice) and scaling damage based on HP investment. The HP-to-attack conversion creates interesting build optimization where HP stats contribute to both survivability and damage output.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Awakening Effects -->
+			<section class="content-section">
+				<h2 class="section-title">Awakening Effects</h2>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">🌟 Awakening 1 (RECOMMENDED)</h3>
+					<ul>
+						<li><strong>Attack power increased by 20%</strong></li>
+						<li>Solid damage boost that amplifies all abilities</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 2</h3>
+					<ul>
+						<li><strong>When HP is below 50%</strong>: Damage taken reduced by <strong>10%</strong></li>
+						<li>Decent survivability improvement for low-HP gameplay</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 3</h3>
+					<ul>
+						<li><strong>[Skills] and [Normal Attack] level and level cap +4</strong></li>
+						<li>Increases damage output across core abilities</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 4 (CRITICAL)</h3>
+					<ul>
+						<li><strong>Storm damage increased by 35%</strong></li>
+						<li><strong>Massive damage amplification</strong> for all her storm-based abilities</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 5</h3>
+					<ul>
+						<li><strong>[Ultimate] and [Passive] level and level cap +4</strong></li>
+						<li>Enhances both her high-risk ultimate and core passive</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 6 (CRITICAL)</h3>
+					<ul>
+						<li><strong>When HP is below 50%</strong>: All damage ignores <strong>20% elemental resistance</strong></li>
+						<li><strong>Essential penetration boost</strong> that ensures low-HP damage isn't mitigated by enemy resistances</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Recommended Builds -->
+			<section class="content-section">
+				<h2 class="section-title">Recommended Builds</h2>
+
+				<h3 class="subsection-title">Rune Sets</h3>
+				
+				<div class="info-card">
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 High-Risk Maximum Damage</h4>
+					<ul>
+						<li><strong>4-Piece Alpha (阿尔法符):</strong> Attack Power +8%, Basic Attack Damage +30%</li>
+						<li><strong>2-Piece Epsilon (埃普西隆):</strong> Attack Power +8%</li>
+					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						Best for maximum damage output with frequent low-HP gameplay.
+					</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">⚔️ Team Support Build</h4>
+					<ul>
+						<li><strong>4-Piece Epsilon (埃普西隆):</strong> Attack Power +8%, After Ultimate: Team damage +10% (10s)</li>
+						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
+					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						Provides team utility while maintaining personal damage output.
+					</p>
+					<div class="warning-box" style="margin-top: 1rem;">
+						<div class="warning-title">⚠️ Team Buff Limitation</div>
+						<p>The team damage +10% buff can only stack <strong>1 time in the team</strong>. Multiple characters with Epsilon sets will not stack this effect.</p>
+					</div>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--neutral-300); margin: 0 0 1rem 0;">⚖️ HP Scaling Optimization</h4>
+					<ul>
+						<li><strong>4-Piece Zahn (札恩):</strong> HP +8%, After Ultimate: Take 5% less damage (10s)</li>
+						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
+					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						Maximizing team composition scaling and ultimate synergy.
+					</p>
+				</div>
+
+				<h3 class="subsection-title">Main Stats</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Position 1</div>
+						<div class="stat-value">HP (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 2</div>
+						<div class="stat-value">ATK (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 3</div>
+						<div class="stat-value">DEF (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 4</div>
+						<div class="stat-value">Penetration% / ATK%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 5</div>
+						<div class="stat-value">Wind Damage% / ATK%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 6</div>
+						<div class="stat-value">ATK%</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Substat Priorities</h3>
+				<div class="info-card">
+					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li>Attack%</li>
+						<li>Attack (Flat)</li>
+						<li>Penetration%</li>
+						<li>HP%</li>
+						<li>HP (Flat)</li>
+						<li>Critical Rate%</li>
+						<li>Critical Damage%</li>
+					</ol>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Note:</strong> Attack stats are the primary scaling for all abilities. Penetration becomes extremely valuable for low-HP gameplay, especially with Awakening 6. HP stats provide team composition scaling and more HP to sacrifice for ultimate usage. Critical stats offer additional damage potential during sustained combat.
+					</p>
+				</div>
+			</section>
+
+			<!-- Memory Card -->
+			<section class="content-section">
+				<h2 class="section-title">Memory Card: The World Seems to Have Stopped</h2>
+				
+				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
+					<img src="/images/characters/Artemiscard.jpg" alt="Artemis Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+					
+					<div style="flex: 1; min-width: 300px;">
+						<div class="info-card" style="margin: 0;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid">
+								<div class="stat-item">
+									<div class="stat-label">HP</div>
+									<div class="stat-value">5,040</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Attack</div>
+									<div class="stat-value">780</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Defense</div>
+									<div class="stat-value">474</div>
+								</div>
+							</div>
+
+							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
+							<ul>
+								<li><strong>Attack power increased by 40%</strong></li>
+								<li><strong>When HP is below 50%</strong>: All damage increased by <strong>40%</strong></li>
+								<li><strong>Only effective for Assault class characters</strong></li>
+								<li><strong>5-star awakening tier</strong></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;"><strong>Perfect Synergy</strong>: This memory card is perfectly designed for Artemis's risk/reward playstyle, providing both baseline attack power and massive low-HP damage amplification that stacks with her passive and awakening effects.</p>
+			</section>
+
+			<!-- Usage Tips -->
+			<section class="content-section">
+				<h2 class="section-title">Usage Tips</h2>
+
+				<h3 class="subsection-title">Strengths</h3>
+				<div class="info-card">
+					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li><strong>Exceptional low-HP damage output</strong> - Multiple damage bonuses below 50% HP</li>
+						<li><strong>Built-in sustain</strong> - Skill provides 10% HP recovery per hit</li>
+						<li><strong>AoE capabilities</strong> - Both skill and ultimate hit multiple enemies</li>
+						<li><strong>Team composition scaling</strong> - HP investment provides attack power returns</li>
+						<li><strong>High burst potential</strong> - Ultimate provides both positioning and massive damage</li>
+						<li><strong>Elemental penetration</strong> - Awakening 6 ignores resistances when low</li>
+					</ul>
+				</div>
+
+				<h3 class="subsection-title">Combat Strategies</h3>
+				<div class="info-card">
+					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li><strong>Ultimate timing</strong>: Use ultimate to drop below 50% HP and activate damage bonuses</li>
+						<li><strong>Sustain management</strong>: Use Moon Ancient Boxing to recover HP when needed</li>
+						<li><strong>Risk assessment</strong>: Balance between low-HP damage and survival needs</li>
+						<li><strong>Positioning</strong>: Ultimate teleport allows aggressive engagements</li>
+						<li><strong>Team coordination</strong>: Maximize Otis/Storm team composition bonuses</li>
+					</ol>
+				</div>
+			</section>
+
+			<!-- Investment Priority -->
+			<section class="content-section">
+				<h2 class="section-title">Investment Priority</h2>
+				
+				<h3 class="subsection-title">Awakening Priority</h3>
+				<div class="critical-awakening" style="padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
+					<h4 style="color: #dc3545; margin: 0 0 1rem 0;">🚨 Awakenings 4 and 6 are CRITICAL</h4>
+					<p>These transform her from a glass cannon to a devastating low-HP powerhouse:</p>
+					<ul>
+						<li><strong>Without them:</strong> Extremely fragile and loses significant damage potential</li>
+						<li><strong>With them:</strong> Essential survivability + massive storm damage amplification</li>
+					</ul>
+				</div>
+
+				<h3 class="subsection-title">Key Breakpoints</h3>
+				<div class="info-card">
+					<ul>
+						<li><span class="priority-high">Awakening 4: CRITICAL</span> - 35% storm damage increase amplifies all abilities</li>
+						<li><span class="priority-high">Awakening 6:</span> Elemental penetration for unmitigated damage</li>
+						<li><span class="priority-medium">Awakening 5:</span> Enhanced ultimate and passive scaling</li>
+					</ul>
+				</div>
+
+				<div class="warning-box">
+					<div class="warning-title">🌙 Low-HP Synergy Chain</div>
+					<p>Ultimate consumption (50% HP) → Passive activation (+60% ATK storm damage) → Awakening 6 (20% resistance ignore) creates a devastating combination where sacrificing HP unlocks massive, unmitigated damage potential.</p>
+				</div>
+			</section>
+
+		</div>
+	</div>
+</ZoneNovaLayout1> 

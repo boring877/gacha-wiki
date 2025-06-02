@@ -1,0 +1,743 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+---
+
+<ZoneNovaLayout1 title="Shanna - Zone Nova Character Guide" description="Complete guide for Shanna, the SR Fire Guerrilla Focus Stack DPS from Zone Nova">
+	<Fragment slot="head">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-image {
+				width: 300px;
+				height: 300px;
+				border-radius: 20px;
+				object-fit: cover;
+				margin: 0 auto 2rem auto;
+				display: block;
+				box-shadow: 0 12px 30px rgba(0, 172, 193, 0.3);
+				transition: all 0.3s ease;
+			}
+
+			.character-image:hover {
+				transform: scale(1.05);
+				box-shadow: 0 16px 40px rgba(0, 172, 193, 0.4);
+			}
+
+			.character-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}
+
+			.subsection-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 2rem 0 1rem 0;
+				padding-left: 1rem;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.skill-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin: 1.5rem 0 0.8rem 0;
+			}
+
+			.info-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.info-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.info-card:hover::before {
+				left: 100%;
+			}
+
+			.info-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.skill-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.08), rgba(0, 172, 193, 0.08));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+			}
+
+			.skill-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.class-showcase {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.class-showcase::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.class-showcase:hover::before {
+				left: 100%;
+			}
+
+			.class-showcase:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.class-image {
+				width: 64px;
+				height: 64px;
+				border-radius: 12px;
+				border: 2px solid var(--amber-glow);
+				flex-shrink: 0;
+				transition: all 0.3s ease;
+			}
+
+			.class-showcase:hover .class-image {
+				transform: scale(1.05);
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3);
+			}
+
+			.class-info h3 {
+				color: var(--amber-glow);
+				margin: 0 0 0.5rem 0;
+				font-size: 1.4rem;
+				font-weight: 600;
+				font-family: 'Space Grotesk', sans-serif;
+			}
+
+			.class-info p {
+				color: var(--text-secondary);
+				margin: 0;
+				font-size: 1rem;
+				line-height: 1.5;
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+				gap: 1rem;
+				margin: 1.5rem 0;
+			}
+
+			.stat-item {
+				background: linear-gradient(135deg, var(--bg-secondary), rgba(255, 183, 77, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 12px;
+				padding: 1.5rem;
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.15);
+				border-color: var(--amber-glow);
+			}
+
+			.stat-label {
+				font-size: 0.9rem;
+				color: var(--amber-glow);
+				font-weight: 600;
+				display: block;
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				font-size: 1.3rem;
+				font-weight: 700;
+				color: var(--text-primary);
+			}
+
+			.awakening-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 12px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+
+			.critical-awakening {
+				background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1));
+				border-color: #dc3545;
+			}
+
+			.warning-box {
+				background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 235, 59, 0.1));
+				border: 1px solid #FFC107;
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.warning-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.2rem;
+				font-weight: 700;
+				color: #F57C00;
+				margin-bottom: 0.75rem;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+
+			.priority-high {
+				background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), rgba(255, 255, 255, 0.05));
+				border-left: 4px solid #DC143C;
+				padding: 1rem;
+				margin: 0.5rem 0;
+			}
+
+			.priority-medium {
+				background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.05));
+				border-left: 4px solid #FFD700;
+				padding: 1rem;
+				margin: 0.5rem 0;
+			}
+
+			.priority-low {
+				background: linear-gradient(135deg, rgba(128, 128, 128, 0.1), rgba(255, 255, 255, 0.05));
+				border-left: 4px solid #808080;
+				padding: 1rem;
+				margin: 0.5rem 0;
+			}
+
+			@keyframes titleGlow {
+				0% { filter: brightness(1) drop-shadow(0 0 5px rgba(164, 120, 100, 0.3)); }
+				100% { filter: brightness(1.1) drop-shadow(0 0 15px rgba(164, 120, 100, 0.5)); }
+			}
+
+			@keyframes sectionFadeIn {
+				from { opacity: 0; transform: translateY(20px); }
+				to { opacity: 1; transform: translateY(0); }
+			}
+
+			@media (max-width: 768px) {
+				.character-container { padding: 0 1rem; }
+				.character-header { padding: 2rem; }
+				.content-section { padding: 2rem; }
+				.character-title { font-size: 2rem; }
+				.section-title { font-size: 1.5rem; }
+				.stats-grid { grid-template-columns: 1fr; }
+				.character-image { width: 250px; height: 250px; }
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<a href="/guides/zone-nova/characters/" class="back-button">
+				<span class="back-arrow">←</span>
+				Back to Characters
+			</a>
+
+			<!-- Character Header -->
+			<header class="character-header">
+				<img src="/images/characters/Shanna.jpg" alt="Shanna" class="character-image" loading="eager" />
+				<h1 class="character-title">Shanna</h1>
+				<p class="character-subtitle">SR Fire Guerrilla • Focus Stack DPS</p>
+			</header>
+
+			<!-- Character Overview -->
+			<section class="content-section">
+				<h2 class="section-title">Character Overview</h2>
+				
+				<!-- Class Showcase -->
+				<div class="class-showcase">
+					<img src="/images/characters/class/Guerrilla.jpg" alt="Guerrilla Class" class="class-image">
+					<div class="class-info">
+						<h3>游击使 (Guerrilla)</h3>
+					</div>
+				</div>
+				
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Faction</div>
+						<div class="stat-value">Savier</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Role</div>
+						<div class="stat-value">Focus Stack DPS</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Base Stats at Level 80</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">HP</div>
+						<div class="stat-value">6,694</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Attack</div>
+						<div class="stat-value">1,088</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Defense</div>
+						<div class="stat-value">442</div>
+					</div>
+				</div>
+				
+				<div class="info-card">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
+						<strong>Shanna</strong> is a single-target specialist who builds Focus stacks by consistently attacking the same enemy, gaining escalating damage bonuses through sustained combat. Her kit revolves around the [Focus] mechanic that provides both violent damage scaling and additional burn damage at maximum stacks. She excels in prolonged single-target encounters and becomes increasingly dangerous the longer she can focus on one opponent.
+					</p>
+				</div>
+			</section>
+
+			<!-- Skills -->
+			<section class="content-section">
+				<h2 class="section-title">Skills</h2>
+
+				<div class="skill-card">
+					<h3 class="skill-title">🔥 Normal Attack: Light Strike (光术打击)</h3>
+					<p><strong>Level</strong>: 10+4 | <strong>CD</strong>: 2.0s</p>
+					<ul>
+						<li>Deals <strong>120% attack power</strong> as burn damage to designated enemy</li>
+						<li><strong>Builds Focus stacks</strong> when targeting the same enemy repeatedly</li>
+						<li>Core mechanic for Focus accumulation</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">⚔️ Skill: Big! Big! Big! Treasure Sword! (大！大！大！宝剑！)</h3>
+					<p><strong>Level</strong>: 10+4 | <strong>CD</strong>: 5.0s</p>
+					<ul>
+						<li>Deals <strong>240% attack power</strong> as burn damage to designated enemy</li>
+						<li>Strong single-target burst ability with enthusiastic naming</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">💥 Ultimate: Flawless Sword (无故之剑)</h3>
+					<p><strong>Level</strong>: 10+4 | <strong>CD</strong>: 1.0s | <strong>Energy Cost</strong>: 3</p>
+					<ul>
+						<li><strong>Rushes to designated enemy</strong></li>
+						<li>Deals <strong>480% attack power</strong> as burn damage</li>
+						<li><strong>Positioning ability</strong> with high damage output</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">👑 Passive: Heroes Never Retreat! (英雄不会临阵退缩！)</h3>
+					<p><strong>Level</strong>: 10+4</p>
+					<ul>
+						<li><strong>When targeting same enemy with normal attacks</strong>: Gains [Focus] stacks</li>
+						<li><strong>Each stack</strong>: Increases violent damage by <strong>2.8%</strong> (maximum 10 stacks)</li>
+						<li><strong>Maximum bonus</strong>: 28% violent damage at 10 stacks</li>
+						<li><strong>Core stacking mechanic</strong> that defines her playstyle</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Team Composition Skill -->
+			<section class="content-section">
+				<h2 class="section-title">Team Composition Skill</h2>
+
+				<div class="skill-card">
+					<h3 class="skill-title">🌟 Combination Skill</h3>
+					<p><strong>Level</strong>: 1</p>
+					
+					<div class="warning-box">
+						<div class="warning-title">🔥 Activation Requirements</div>
+						<p>Triggers when team contains 2 [Savier] characters OR 2 [Burn] characters</p>
+					</div>
+
+					<div class="info-card" style="margin: 1rem 0;">
+						<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Effects:</h4>
+						<ul>
+							<li><strong>Self damage increased by 20%</strong></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Awakening Effects -->
+			<section class="content-section">
+				<h2 class="section-title">Awakening Effects</h2>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">🌟 Awakening 1 (HIGHLY RECOMMENDED)</h3>
+					<ul>
+						<li><strong>When [Focus] reaches 10 stacks</strong>: Normal attacks additionally deal <strong>20% attack power</strong> as burn damage</li>
+						<li><strong>Reward for maximum stacks</strong> - adds consistent damage bonus</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 2 (CRITICAL)</h3>
+					<ul>
+						<li><strong>Each normal attack targeting same enemy</strong>: Additionally adds <strong>one [Focus] stack</strong></li>
+						<li><strong>Doubles Focus stacking speed</strong> - essential for efficient stack building</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 3</h3>
+					<ul>
+						<li><strong>[Skills] and [Normal Attack] level and level cap +4</strong></li>
+						<li>Increases damage output across core abilities</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">🌟 Awakening 4 (HIGHLY RECOMMENDED)</h3>
+					<ul>
+						<li><strong>Skill damage increased by 30%</strong></li>
+						<li><strong>Significant boost</strong> to Treasure Sword damage output</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 5</h3>
+					<ul>
+						<li><strong>[Ultimate] and [Passive] level and level cap +4</strong></li>
+						<li>Enhances ultimate damage and Focus stacking mechanics</li>
+					</ul>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 6 (EXCELLENT)</h3>
+					<ul>
+						<li><strong>When [Focus] reaches 10 stacks</strong>: Normal attack violent damage increased by <strong>50%</strong></li>
+						<li><strong>Massive damage amplification</strong> at maximum Focus stacks</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Recommended Builds -->
+			<section class="content-section">
+				<h2 class="section-title">Recommended Builds</h2>
+
+				<h3 class="subsection-title">Rune Sets</h3>
+				
+				<div class="info-card">
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Maximum Single-Target DPS</h4>
+					<ul>
+						<li><strong>4-Piece Alpha (阿尔法符):</strong> Attack Power +8%, Basic Attack Damage +30%</li>
+						<li><strong>2-Piece Epsilon (埃普西隆):</strong> Attack Power +8%</li>
+					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						Best for maximizing Focus stack damage and normal attack output.
+					</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--neutral-300); margin: 0 0 1rem 0;">⚖️ Balanced Survivability</h4>
+					<ul>
+						<li><strong>4-Piece Beth (贝丝):</strong> Critical Hit Rate +6%, When HP >80%: Critical Hit Damage +24%</li>
+						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
+					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						Best for critical hit builds with sustained combat survivability.
+					</p>
+				</div>
+
+				<h3 class="subsection-title">Main Stats</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Position 1</div>
+						<div class="stat-value">HP (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 2</div>
+						<div class="stat-value">ATK (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 3</div>
+						<div class="stat-value">DEF (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 4</div>
+						<div class="stat-value">ATK%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 5</div>
+						<div class="stat-value">ATK%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 6</div>
+						<div class="stat-value">ATK%</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Substat Priorities</h3>
+				<div class="info-card">
+					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li>Attack%</li>
+						<li>Attack (Flat)</li>
+						<li>Critical Rate%</li>
+						<li>Critical Damage%</li>
+						<li>HP%</li>
+					</ol>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Note:</strong> Focus heavily on Attack stats since her entire kit scales with attack power and she needs to survive long enough to build and maintain Focus stacks. Critical stats become valuable when using Beth set for sustained combat.
+					</p>
+				</div>
+			</section>
+
+			<!-- Memory Card -->
+			<section class="content-section">
+				<h2 class="section-title">Memory Card: Heroes, Never Stop</h2>
+				
+				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
+					<img src="/images/characters/Shannacard.jpg" alt="Shanna Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+					
+					<div style="flex: 1; min-width: 300px;">
+						<div class="info-card" style="margin: 0;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid">
+								<div class="stat-item">
+									<div class="stat-label">HP</div>
+									<div class="stat-value">4,200</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Attack</div>
+									<div class="stat-value">650</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Defense</div>
+									<div class="stat-value">395</div>
+								</div>
+							</div>
+
+							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
+							<ul>
+								<li><strong>When the number of enemies on field is less than 2</strong>: Increase violent damage by <strong>72%</strong></li>
+								<li><strong>Only effective for Guerrilla class characters</strong></li>
+								<li><strong>5-star awakening tier</strong></li>
+							</ul>
+							
+							<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+								Perfect synergy with Shanna's single-target focus, providing massive violent damage amplification in situations where she can focus on individual enemies without distractions.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Usage Tips -->
+			<section class="content-section">
+				<h2 class="section-title">Usage Tips</h2>
+
+				<h3 class="subsection-title">Strengths</h3>
+				<div class="info-card">
+					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li><strong>Exceptional single-target damage</strong> - Focus stacking provides escalating damage bonuses</li>
+						<li><strong>Self-sufficient stacking</strong> - Can build Focus through normal attacks alone</li>
+						<li><strong>Positioning control</strong> - Ultimate provides gap-closing capability</li>
+						<li><strong>Sustained combat excellence</strong> - Becomes stronger the longer fights continue</li>
+						<li><strong>Memory card synergy</strong> - 72% violent damage in low-enemy situations</li>
+						<li><strong>Team composition scaling</strong> - 20% damage increase with proper allies</li>
+						<li><strong>Multiple damage types</strong> - Both burn and violent damage scaling</li>
+					</ul>
+				</div>
+
+				<h3 class="subsection-title">Combat Strategies</h3>
+				<div class="info-card">
+					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li><strong>Target consistency</strong>: Always focus the same enemy to build Focus stacks</li>
+						<li><strong>Stack management</strong>: Reach 10 Focus stacks for maximum damage bonuses</li>
+						<li><strong>Positioning</strong>: Use ultimate to close gaps and maintain target focus</li>
+						<li><strong>Team coordination</strong>: Pair with Savier/Burn allies for damage bonus</li>
+						<li><strong>Sustained combat</strong>: Excel in prolonged single-target encounters</li>
+					</ol>
+				</div>
+
+				<div class="warning-box">
+					<div class="warning-title">🎯 Focus Stacking Loop</div>
+					<p>Core gameplay: Target same enemy with normal attacks → Build Focus stacks → Reach 10 stacks for maximum bonuses → Use ultimate to reposition if needed → Continue focusing same target. With Awakening 2, each normal attack adds an additional Focus stack for faster buildup.</p>
+				</div>
+			</section>
+
+			<!-- Investment Priority -->
+			<section class="content-section">
+				<h2 class="section-title">Investment Priority</h2>
+				
+				<h3 class="subsection-title">Awakening Priority</h3>
+				<div class="critical-awakening" style="padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
+					<h4 style="color: #dc3545; margin: 0 0 1rem 0;">🚨 Awakening 2 is CRITICAL</h4>
+					<p>This awakening transforms her effectiveness:</p>
+					<ul>
+						<li><strong>Without it:</strong> Slow Focus stacking reduces her ability to reach maximum damage potential</li>
+						<li><strong>With it:</strong> Doubles Focus stacking speed for efficient buildup and sustained damage</li>
+					</ul>
+				</div>
+
+				<h3 class="subsection-title">Key Breakpoints</h3>
+				<div class="info-card">
+					<ul>
+						<li><span class="priority-high">Awakening 2: CRITICAL</span> - Doubles Focus stacking speed (essential for efficient buildup)</li>
+						<li><span class="priority-high">Awakening 6: EXCELLENT</span> - 50% violent damage increase at max stacks</li>
+						<li><span class="priority-medium">Awakening 1:</span> Additional burn damage at max Focus stacks</li>
+						<li><span class="priority-medium">Awakening 4:</span> 30% skill damage increase for Treasure Sword</li>
+						<li><span class="priority-medium">Awakening 5:</span> Enhanced ultimate and passive scaling</li>
+						<li><span class="priority-low">Awakening 3:</span> Basic ability level increases</li>
+					</ul>
+				</div>
+
+				<div class="warning-box">
+					<div class="warning-title">🔥 Single-Target Mastery</div>
+					<p>Focus stacking (28% violent damage) → Awakening 6 (50% violent damage at max stacks) → Memory card (72% violent damage vs few enemies) → Team composition (20% damage) creates a powerful combination for devastating single-target damage in appropriate scenarios.</p>
+				</div>
+			</section>
+
+		</div>
+	</div>
+</ZoneNovaLayout1> 

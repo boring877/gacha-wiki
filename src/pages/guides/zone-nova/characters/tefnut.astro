@@ -4,9 +4,9 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 ---
 
 <ZoneNovaLayout1 
-	title="Greed Mammon Character Guide - Zone Nova - GachaWiki" 
-	description="Complete guide for Greed Mammon, the chaos mage burst DPS in Zone Nova"
-	gameTitle="Greed Mammon Character Guide"
+	title="Tefnut Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Tefnut (泰芙努特), the SR Holy DOT specialist in Zone Nova"
+	gameTitle="Tefnut Character Guide"
 	showBreadcrumb={true}
 	breadcrumbText="Characters"
 >
@@ -243,32 +243,12 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				font-size: 1.1rem;
 			}
 
-			.priority-high {
-				color: #dc3545;
-				font-weight: 600;
-			}
-
-			.priority-medium {
-				color: #ffc107;
-				font-weight: 600;
-			}
-
-			.priority-low {
-				color: #28a745;
-				font-weight: 600;
-			}
-
 			.awakening-card {
 				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
 				border: 1px solid var(--amber-glow);
 				border-radius: 12px;
 				padding: 1.5rem;
 				margin: 1rem 0;
-			}
-
-			.critical-awakening {
-				background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1));
-				border-color: #dc3545;
 			}
 
 			.warning-box {
@@ -283,118 +263,6 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				color: #ffc107;
 				font-weight: 600;
 				margin-bottom: 0.5rem;
-			}
-
-			.character-images {
-				display: flex;
-				gap: 2rem;
-				align-items: flex-start;
-				margin: 1.5rem 0;
-				flex-wrap: wrap;
-			}
-
-			.character-art {
-				flex: 1;
-				min-width: 300px;
-			}
-
-			.character-card-art {
-				flex: 1;
-				min-width: 250px;
-			}
-
-			.character-art img,
-			.character-card-art img {
-				width: 100%;
-				height: auto;
-				border-radius: 12px;
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.3);
-				transition: all 0.3s ease;
-			}
-
-			.character-art img:hover,
-			.character-card-art img:hover {
-				transform: scale(1.02);
-				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.4);
-			}
-
-			@keyframes titleGlow {
-				0% {
-					text-shadow: 0 0 10px rgba(255, 183, 77, 0.3);
-				}
-				100% {
-					text-shadow: 0 0 20px rgba(255, 183, 77, 0.6);
-				}
-			}
-
-			.video-container {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
-				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-			}
-
-			.video-wrapper {
-				position: relative;
-				padding-bottom: 56.25%;
-				height: 0;
-				overflow: hidden;
-				border-radius: 12px;
-			}
-
-			.video-wrapper iframe {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-			}
-
-			@keyframes sectionFadeIn {
-				0% {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				100% {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			@media (max-width: 768px) {
-				.character-container {
-					padding: 0 1rem;
-				}
-
-				.character-header,
-				.content-section {
-					padding: 2rem;
-				}
-
-				.character-title {
-					font-size: 2.5rem;
-				}
-
-				.character-image {
-					width: 250px;
-					height: 250px;
-				}
-
-				.stats-grid {
-					grid-template-columns: 1fr;
-				}
-
-				/* Memory Card mobile layout */
-				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
-					flex-direction: column !important;
-					align-items: center !important;
-				}
-
-				.content-section img[alt="Greed Mammon Memory Card"] {
-					width: 160px !important;
-					height: 240px !important;
-				}
 			}
 
 			.class-showcase {
@@ -460,6 +328,76 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				font-size: 1rem;
 				line-height: 1.5;
 			}
+
+			/* Animations */
+			@keyframes titleGlow {
+				0% { filter: brightness(1); }
+				100% { filter: brightness(1.2); }
+			}
+
+			@keyframes sectionFadeIn {
+				0% { opacity: 0; transform: translateY(20px); }
+				100% { opacity: 1; transform: translateY(0); }
+			}
+
+			/* Responsive */
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header,
+				.content-section {
+					padding: 2rem;
+				}
+
+				.character-title {
+					font-size: 2.5rem;
+				}
+
+				.character-image {
+					width: 250px;
+					height: 250px;
+				}
+
+				.stats-grid {
+					grid-template-columns: 1fr;
+				}
+
+				/* Memory Card mobile layout */
+				.content-section div[style*="display: flex"] {
+					flex-direction: column !important;
+					align-items: center !important;
+				}
+
+				.content-section img[alt="Tefnut Memory Card"] {
+					width: 100% !important;
+					max-width: 250px !important;
+					height: auto !important;
+					margin-bottom: 1rem !important;
+				}
+			}
+
+			/* Priority Classes */
+			.priority-high {
+				color: #ff6b6b;
+				font-weight: 700;
+			}
+
+			.priority-medium {
+				color: #ffd93d;
+				font-weight: 600;
+			}
+
+			.priority-low {
+				color: #6bcf7f;
+				font-weight: 500;
+			}
+
+			.critical-awakening {
+				border-color: #ff6b6b;
+				background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 183, 77, 0.1));
+			}
 		</style>
 	</Fragment>
 
@@ -474,10 +412,10 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			<!-- Character Header -->
 			<header class="character-header">
 				<!-- Character Image -->
-				<img src="/images/characters/Greed-Mammon.jpg" alt="Greed Mammon" class="character-image" loading="lazy" />
+				<img src="/images/characters/Tefnut.jpg" alt="Tefnut" class="character-image" loading="lazy" />
 				
-				<h1 class="character-title">Greed Mammon</h1>
-				<p class="character-subtitle">SR • Chaos • Burst DPS</p>
+				<h1 class="character-title">Tefnut</h1>
+				<p class="character-subtitle">SR • Holy • DOT Specialist</p>
 			</header>
 
 			<!-- Character Overview -->
@@ -486,20 +424,20 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				
 				<!-- Class Showcase -->
 				<div class="class-showcase">
-					<img src="/images/characters/class/Destroyer.jpg" alt="Destroyer Class" class="class-image">
+					<img src="/images/characters/class/Guerrilla.jpg" alt="Guerrilla Class" class="class-image">
 					<div class="class-info">
-						<h3>破坏使 (Destroyer)</h3>
+						<h3>游击使 (Guerrilla)</h3>
 					</div>
 				</div>
 				
 				<div class="stats-grid">
 					<div class="stat-item">
 						<div class="stat-label">Faction</div>
-						<div class="stat-value">Avalon</div>
+						<div class="stat-value">Kemichi (凯米奇)</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Role</div>
-						<div class="stat-value">Support/DPS</div>
+						<div class="stat-value">DOT Specialist</div>
 					</div>
 				</div>
 
@@ -533,7 +471,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 				<div class="info-card">
 					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Greed Mammon is a high-damage chaos mage who specializes in burst damage through her ultimate abilities. She excels when paired with buffers and requires specific team compositions to maximize her potential. Her Enhanced Ultimate mechanic makes her incredibly dangerous when properly supported.
+						Tefnut is a Holy DOT specialist who excels at continuous damage through [Holy] stacks and bloodthirst mechanics. She features strong memory card synergy for penetrating high-defense targets and requires specific team compositions to maximize her potential.
 					</p>
 				</div>
 			</section>
@@ -543,41 +481,50 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h2 class="section-title">Skills</h2>
 
 				<div class="skill-card">
-					<h3 class="skill-title">💰 Normal Attack: The More You Hit, The Richer</h3>
+					<h3 class="skill-title">🗡️ Normal Attack: Claw Strike (撕裂爪击)</h3>
 					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 2.0s</p>
-					<p>Deals chaos damage equal to <strong>120% of Attack</strong> to designated enemy unit</p>
+					<p>Deals <strong>120% of Attack</strong> as divine damage to designated enemy unit</p>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">🪙 Auto Skill: Golden Curse</h3>
+					<h3 class="skill-title">⚡ Auto Skill: Ruthless Hunt (无情猎杀)</h3>
 					<p><strong>Level:</strong> 10+4 | <strong>Auto-trigger Interval:</strong> 5.0s</p>
 					<ul>
-						<li>Deals <strong>96% of Attack</strong> as chaos damage to enemies within a 3-meter radius around self</li>
+						<li>Deals divine damage equal to <strong>240% of Attack</strong> to designated enemy unit</li>
 						<li><strong>Automatically triggers every 5 seconds</strong></li>
 					</ul>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">😈 Ultimate: Seven Deadly Sins: Greed</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 5</p>
+					<h3 class="skill-title">🩸 Ultimate: Bloodthirsty Killing (嗜血杀戮)</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 8</p>
 					<ul>
-						<li>Deals chaos damage equal to <strong>180% of Attack</strong> to designated enemy unit</li>
-						<li><strong>[Buffer]</strong> After an ally uses ultimate skill, can activate <strong>[Enhanced Ultimate]</strong> once within 5 seconds</li>
+						<li>Jumps toward the enemy unit and causes <strong>960% attack power</strong> holy damage to the target</li>
+						<li><strong>Prerequisite:</strong> Target must have <strong>5 stacks of [Holy Erosion]</strong> (from passive)</li>
+						<li><strong>When used on a target with 5 Holy Erosion stacks:</strong> Additionally applies <strong>[Light Erosion]</strong> debuff</li>
 					</ul>
 
 					<div class="warning-box">
-						<div class="warning-title">🌟 Enhanced Ultimate</div>
-						<ul>
-							<li>Deals chaos damage equal to <strong>240% of Attack</strong> to enemies within a 4-meter radius around self</li>
-							<li>Activated within 5 seconds after an ally uses their ultimate</li>
-						</ul>
+						<div class="warning-title">✨ [Light Erosion] (光蚀)</div>
+						<p>New DOT debuff applied only when ultimate is used on targets with 5 Holy Erosion stacks. Deals <strong>180% attack power holy damage</strong> every 3 seconds, maximum 1 layer</p>
 					</div>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">💸 Passive: Passive Tax Burden</h3>
+					<h3 class="skill-title">🔥 Passive: Bloodthirst (嗜血之血欲)</h3>
 					<p><strong>Level:</strong> 10+4</p>
-					<p>After using enhanced special skill, damage increases by <strong>29%</strong></p>
+					<ul>
+						<li><strong>Passive Effect:</strong> Auto skills apply <strong>[Holy Erosion]</strong> DOT debuff to targets</li>
+						<li><strong>[Holy Erosion] (圣蚀):</strong> Passive DOT that activates when auto skills are used. Deals <strong>24% attack power holy damage</strong> every 3 seconds, maximum 5 stacks</li>
+					</ul>
+
+					<div class="warning-box">
+						<div class="warning-title">📈 DOT Combo Sequence</div>
+						<p><strong>Step 1:</strong> Auto skill triggers every 5 seconds → Applies 1 stack of [Holy Erosion]</p>
+						<p><strong>Step 2:</strong> Repeat until target has 5 stacks (25 seconds total)</p>
+						<p><strong>Step 3:</strong> Actively use Ultimate → Applies [Light Erosion] on top</p>
+						<p><strong>Result:</strong> Target has both DOTs running simultaneously for massive damage over time</p>
+					</div>
 				</div>
 			</section>
 
@@ -586,58 +533,17 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h2 class="section-title">Team Composition Skill</h2>
 
 				<div class="skill-card">
-					<h3 class="skill-title">🏢 Combo Skill</h3>
+					<h3 class="skill-title">🤝 Combo Skill</h3>
 					<p><strong>Level:</strong> 1</p>
 					
 					<div class="warning-box">
 						<div class="warning-title">🌀 Activation Requirements</div>
-						<p>Triggers when team contains <strong>2 [Bibilota] characters</strong> OR <strong>2 [Chaos] characters</strong></p>
+						<p>Triggers when team contains <strong>2 [Kemichi] characters</strong> AND <strong>2 [Holy] characters</strong></p>
 					</div>
 
 					<div style="margin: 1rem 0;">
-						<p><strong>Effect:</strong> Own damage increased by <strong>20%</strong></p>
+						<p><strong>Effect:</strong> Self-caused damage increased by <strong>20%</strong></p>
 					</div>
-
-					<div class="info-card">
-						<p style="color: var(--text-primary); font-size: 1rem; line-height: 1.6; margin: 0;">
-							<strong>Team Building:</strong> This substantial damage boost makes faction/element synergy important for Greed Mammon. Easy to activate with other Bibilota characters or Chaos element teammates.
-						</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Awakening Effects -->
-			<section class="content-section">
-				<h2 class="section-title">Awakening Effects</h2>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 1</h3>
-					<p>When you have buff effects, special skill critical damage increases by <strong>20%</strong></p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 2</h3>
-					<p>After using a special skill, damage taken is reduced by <strong>10%</strong> for 10 seconds</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 3</h3>
-					<p><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 4</h3>
-					<p>Special skill damage increases by <strong>20%</strong></p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 5</h3>
-					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 6 (CRITICAL)</h3>
-					<p>After successfully casting an enhanced special skill, gain <strong>1 additional energy point</strong></p>
 				</div>
 			</section>
 
@@ -648,21 +554,26 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h3 class="subsection-title">Rune Sets</h3>
 				
 				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build</h4>
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Recommended)</h4>
 					<ul>
 						<li><strong>2-Piece Beth (贝丝):</strong> Critical Hit Rate +6%</li>
-						<li><strong>4-Piece Beth (贝丝):</strong> When HP >80%: Critical Hit Damage +24%</li>
+						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
 						<li><strong>2-Piece Epsilon (埃普西隆):</strong> Attack Power +8%</li>
 					</ul>
+					<p style="color: var(--text-secondary); margin-top: 0.5rem; font-style: italic;">
+						Balanced build providing +16% attack power and +6% critical rate for consistent DOT damage.
+					</p>
 				</div>
 
 				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build</h4>
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">⚡ Critical Focused Build</h4>
 					<ul>
+						<li><strong>4-Piece Beth (贝丝):</strong> Critical Hit Rate +6% | When HP >80%: Critical Hit Damage +24%</li>
 						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
-						<li><strong>4-Piece Alpha (阿尔法符):</strong> Basic Attack Damage +30%</li>
-						<li><strong>2-Piece Beth (贝丝):</strong> Critical Hit Rate +6%</li>
 					</ul>
+					<p style="color: var(--text-secondary); margin-top: 0.5rem; font-style: italic;">
+						High critical damage build that synergizes with Awakening 1 and high HP requirements.
+					</p>
 				</div>
 
 				<h3 class="subsection-title">Main Stats</h3>
@@ -681,11 +592,11 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Position 4</div>
-						<div class="stat-value">Crit Rate / Crit DMG / ATK%</div>
+						<div class="stat-value">ATK% / Crit Rate / Attack Penetration%</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Position 5</div>
-						<div class="stat-value">Chaos Damage%</div>
+						<div class="stat-value">Holy Damage% / ATK%</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Position 6</div>
@@ -696,40 +607,86 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h3 class="subsection-title">Substat Priorities</h3>
 				<div class="info-card">
 					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Critical Rate / Critical Damage</li>
-						<li>Attack %</li>
-						<li>Penetration</li>
-						<li>Attack (Flat)</li>
-						<li>HP% / Defense%</li>
+						<li><strong>Attack %</strong> - Core scaling for all DOT effects</li>
+						<li><strong>Critical Rate</strong> - Synergizes with Awakening 1 (+10% crit vs DOT targets)</li>
+						<li><strong>Critical Damage</strong> - Amplifies ultimate and auto skill damage</li>
+						<li><strong>Penetration</strong> - Flat number only, helps break through enemy defenses</li>
+						<li><strong>Attack (Flat)</strong> - Secondary attack scaling</li>
+						<li><strong>Defense%</strong> - Survivability and defensive scaling</li>
+						<li><strong>HP%</strong></li>
 					</ol>
+				</div>
+			</section>
+
+			<!-- Awakening Effects -->
+			<section class="content-section">
+				<h2 class="section-title">Awakening Effects</h2>
+				
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 1</h3>
+					<p>When attacking targets with [Continuous Damage], critical rate increases by <strong>10%</strong></p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 2</h3>
+					<p>When self HP is 100%, attack power increases by <strong>20%</strong></p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 3</h3>
+					<p><strong>[Skills]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 4 (RECOMMENDED)</h3>
+					<p><strong>[Continuous Damage]</strong> damage increased by <strong>25%</strong></p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 5</h3>
+					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 6 (VERY GOOD)</h3>
+					<p><strong>[Ultimate]</strong> makes target receive <strong>[Continuous Damage]</strong> with <strong>20% increased damage</strong> for 15 seconds</p>
 				</div>
 			</section>
 
 			<!-- Memory Card -->
 			<section class="content-section">
-				<h2 class="section-title">Memory Card: Method of Revenge</h2>
+				<h2 class="section-title">Memory Card: Secret Room Reality</h2>
 				
-				<div style="text-align: center; margin: 1.5rem 0;">
-					<div style="max-width: 400px; margin: 0 auto;">
-						<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0; text-align: center;">Memory Card Art</h4>
-						<img src="/images/characters/Greed-Mammon-card.jpg" alt="Greed Mammon Memory Card" loading="lazy" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(164, 120, 100, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 12px 35px rgba(164, 120, 100, 0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(164, 120, 100, 0.3)'" />
-					</div>
-				</div>
-				
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">复仇的方式 - Level 80/80 Base Stats</h4>
-					<div class="stats-grid">
-						<div class="stat-item">
-							<div class="stat-label">HP</div>
-							<div class="stat-value">4,200</div>
-						</div>
-						<div class="stat-item">
-							<div class="stat-label">Attack</div>
-							<div class="stat-value">650</div>
-						</div>
-						<div class="stat-item">
-							<div class="stat-label">Defense</div>
-							<div class="stat-value">395</div>
+				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
+					<img src="/images/characters/Tefnutcard.jpg" alt="Tefnut Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+					
+					<div style="flex: 1; min-width: 300px;">
+						<div class="info-card" style="margin: 0;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">秘密房间实况 - Level 80/80 Base Stats</h4>
+							<div class="stats-grid">
+								<div class="stat-item">
+									<div class="stat-label">HP</div>
+									<div class="stat-value">4,200</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Attack</div>
+									<div class="stat-value">650</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Defense</div>
+									<div class="stat-value">395</div>
+								</div>
+							</div>
+
+							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
+							<ul>
+								<li><strong>Continuous Damage Penetration Rate +36%</strong></li>
+								<li><strong>Only effective for Guerrilla (Rangers) class characters</strong></li>
+							</ul>
+							
+							<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+								Perfect synergy with Tefnut's DOT-focused kit, making her continuous damage effects more effective against high-defense targets. Essential for maximizing her damage over time potential.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -741,85 +698,34 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 				<h3 class="subsection-title">Strengths</h3>
 				<div class="info-card">
-					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Extremely high burst damage with enhanced ultimate</li>
-						<li>Good AoE damage potential with both auto skill and enhanced ultimate</li>
-						<li>Synergizes well with buffer characters</li>
-						<li>Energy refund on enhanced ultimate helps cycling</li>
-						<li>High base attack stat for an SR character</li>
+					<ul style="margin: 0; padding-left: 1.5rem;">
+						<li>Exceptional DOT (Damage Over Time) capabilities through [Holy] stacks</li>
+						<li>Self-sustaining through bloodthirst mechanics</li>
+						<li>Scales effectively with continuous damage amplification</li>
+						<li>Strong memory card synergy for penetrating high-defense targets</li>
 					</ul>
 				</div>
 
-				<h3 class="subsection-title">Playstyle</h3>
+				<h3 class="subsection-title">Optimal Usage</h3>
 				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li><strong>Golden Curse</strong> auto-triggers AoE damage every 5 seconds</li>
-						<li>Use normal ultimate for single target damage (180% ATK)</li>
-						<li>Watch for ally ultimates to trigger <strong>Enhanced Ultimate</strong> window</li>
-						<li>Enhanced Ultimate deals massive AoE damage (240% ATK)</li>
-						<li>With Awakening 6, gain 1 energy after enhanced ultimate for faster cycling</li>
-					</ol>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">🔄 Core Loop</div>
-					<p>Ally buffer uses ultimate → 5-second window → Enhanced Ultimate → Energy refund → Repeat</p>
-				</div>
-
-				<h3 class="subsection-title">Key Synergies</h3>
-				<div class="info-card">
-					<ul>
-						<li><strong>Essential:</strong> Requires buffer characters who use ultimates frequently to trigger Enhanced Ultimate</li>
-						<li>Team buff activates with 2 Bibilota/Chaos characters for 20% damage boost</li>
-						<li>Benefits from crit rate buffers due to Awakening 1</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- Investment Priority -->
-			<section class="content-section">
-				<h2 class="section-title">Investment Priority</h2>
-				
-				<div class="warning-box">
-					<div class="warning-title">⚡ SR Burst DPS</div>
-					<p>High value SR character when properly built with the right team support. Requires specific team compositions to shine.</p>
-				</div>
-
-				<h3 class="subsection-title">Awakening Priority</h3>
-				<div class="info-card">
-					<ul>
-						<li><span class="priority-high">Awakening 6: CRITICAL</span> - Energy refund enables skill cycling</li>
-						<li><span class="priority-medium">Awakening 4:</span> 20% special skill damage increase</li>
-						<li><span class="priority-medium">Awakening 1:</span> 20% crit damage with buffs (important for burst)</li>
-						<li><span class="priority-low">Awakening 2:</span> 10% damage reduction for survivability</li>
-						<li><span class="priority-low">Awakenings 3 & 5:</span> Skill level increases</li>
+					<ul style="margin: 0; padding-left: 1.5rem;">
+						<li>Best used as a DOT specialist against high-HP enemies</li>
+						<li>Excels in prolonged fights where DOT can stack and tick</li>
+						<li>Maintain high HP for maximum damage bonus from Awakening 2</li>
+						<li>Team synergy requires specific faction composition (2 Kemichi + 2 Holy)</li>
 					</ul>
 				</div>
 
+				<h3 class="subsection-title">Recommended Team Compositions</h3>
 				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1rem; line-height: 1.6; margin: 0;">
-						<strong>Note:</strong> As an SR unit, Greed Mammon requires good team composition with buffers to maximize her potential. Awakening 6 is essential for energy cycling and maintaining high DPS output.
-					</p>
+					<ul style="margin: 0; padding-left: 1.5rem;">
+						<li>Focus on Kemichi and Holy faction characters for team synergy</li>
+						<li>Include support characters that can maintain HP and extend fight duration</li>
+						<li>Pair with characters that can apply debuffs to enhance DOT effectiveness</li>
+						<li>Consider healers to keep her at full HP for Awakening 2 bonus</li>
+					</ul>
 				</div>
 			</section>
-
-			<!-- Video Guide Section -->
-			<section class="content-section">
-				<h2 class="section-title">📺 Video Guide</h2>
-				<div class="video-container">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">Watch this comprehensive guide to master Greed Mammon's enhanced ultimate mechanics and team synergies:</p>
-					<div class="video-wrapper">
-						<iframe 
-							src="https://www.youtube.com/embed/4yNjfXUVnuU" 
-							title="Greed Mammon Character Guide - Zone Nova" 
-							frameborder="0" 
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-							allowfullscreen>
-						</iframe>
-					</div>
-				</div>
-			</section>
-
 		</div>
 	</div>
 </ZoneNovaLayout1> 

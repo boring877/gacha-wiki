@@ -4,9 +4,9 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 ---
 
 <ZoneNovaLayout1 
-	title="Guinevere Character Guide - Zone Nova - GachaWiki" 
-	description="Complete guide for Guinevere, the defense-scaling guardian tank in Zone Nova"
-	gameTitle="Guinevere Character Guide"
+	title="Chiya Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Chiya (千夜), the SSR Ice burst DPS specialist in Zone Nova"
+	gameTitle="Chiya Character Guide"
 	showBreadcrumb={true}
 	breadcrumbText="Characters"
 >
@@ -307,21 +307,6 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				font-size: 1.1rem;
 			}
 
-			.priority-high {
-				color: #dc3545;
-				font-weight: 600;
-			}
-
-			.priority-medium {
-				color: #ffc107;
-				font-weight: 600;
-			}
-
-			.priority-low {
-				color: #28a745;
-				font-weight: 600;
-			}
-
 			.awakening-card {
 				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
 				border: 1px solid var(--amber-glow);
@@ -373,12 +358,90 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				height: 100%;
 			}
 
-			@keyframes titleGlow {
-				0% {
-					text-shadow: 0 0 10px rgba(255, 183, 77, 0.3);
+			.priority-high {
+				color: #dc3545;
+				font-weight: 600;
+			}
+
+			.priority-medium {
+				color: #ffc107;
+				font-weight: 600;
+			}
+
+			.priority-low {
+				color: #28a745;
+				font-weight: 600;
+			}
+
+			.game-changing {
+				background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+				color: white;
+				padding: 0.3rem 0.8rem;
+				border-radius: 20px;
+				font-size: 0.8rem;
+				font-weight: 700;
+				margin-left: 0.5rem;
+			}
+
+			.build-section {
+				margin: 2rem 0;
+			}
+
+			.build-card {
+				background: var(--bg-secondary);
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+
+			.build-title {
+				font-size: 1.2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin-bottom: 1rem;
+			}
+
+			.rune-list {
+				list-style: none;
+				padding: 0;
+				margin: 1rem 0;
+			}
+
+			.rune-list li {
+				padding: 0.5rem 0;
+				border-bottom: 1px solid var(--neutral-200);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.rune-list li:last-child {
+				border-bottom: none;
+			}
+
+			.substat-list {
+				list-style: none;
+				padding: 0;
+				margin: 1rem 0;
+			}
+
+			.substat-list li {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0.3rem 0;
+			}
+
+			/* Memory Card mobile layout */
+			@media (max-width: 768px) {
+				.memory-card-layout {
+					flex-direction: column !important;
+					align-items: center !important;
 				}
-				100% {
-					text-shadow: 0 0 20px rgba(255, 183, 77, 0.6);
+				
+				.memory-card-layout img {
+					margin-bottom: 1rem;
 				}
 			}
 
@@ -393,38 +456,39 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				}
 			}
 
+			@keyframes titleGlow {
+				0% {
+					filter: brightness(1);
+				}
+				100% {
+					filter: brightness(1.2);
+				}
+			}
+
 			@media (max-width: 768px) {
 				.character-container {
 					padding: 0 1rem;
 				}
-
-				.character-header,
-				.content-section {
+				
+				.character-header {
 					padding: 2rem;
 				}
-
-				.character-title {
-					font-size: 2.5rem;
-				}
-
+				
 				.character-image {
 					width: 250px;
 					height: 250px;
 				}
-
-				.stats-grid {
-					grid-template-columns: 1fr;
+				
+				.character-title {
+					font-size: 2.5rem;
 				}
-
-				/* Memory Card mobile layout */
-				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
-					flex-direction: column !important;
-					align-items: center !important;
+				
+				.content-section {
+					padding: 2rem;
 				}
-
-				.content-section img[alt="Guinevere Card"] {
-					width: 160px !important;
-					height: 240px !important;
+				
+				.section-title {
+					font-size: 1.8rem;
 				}
 			}
 		</style>
@@ -440,11 +504,9 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 			<!-- Character Header -->
 			<header class="character-header">
-				<!-- Character Image -->
-				<img src="/images/characters/Guinevere.jpg" alt="Guinevere" class="character-image" loading="eager" />
-				
-				<h1 class="character-title">Guinevere</h1>
-				<p class="character-subtitle">SSR • Fire • Tank/Defense DPS</p>
+				<img src="/images/characters/Chiya.jpg" alt="Chiya" class="character-image" loading="eager" />
+				<h1 class="character-title">Chiya</h1>
+				<p class="character-subtitle">SSR • Ice • Burst DPS</p>
 			</header>
 
 			<!-- Character Overview -->
@@ -453,102 +515,107 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				
 				<!-- Class Showcase -->
 				<div class="class-showcase">
-					<img src="/images/characters/class/tank.jpg" alt="Tank Class" class="class-image">
+					<img src="/images/characters/class/Guerrilla.jpg" alt="Guerrilla Class" class="class-image">
 					<div class="class-info">
-						<h3>守护使 (Guardian)</h3>
+						<h3>游击队 (Guerrilla)</h3>
+						<p>High-burst damage specialist focused on critical strikes and enhanced ultimates</p>
 					</div>
 				</div>
 				
 				<div class="stats-grid">
 					<div class="stat-item">
-						<div class="stat-label">Faction</div>
-						<div class="stat-value">Avalon</div>
+						<div class="stat-label">Role</div>
+						<div class="stat-value">Burst DPS</div>
 					</div>
 					<div class="stat-item">
-						<div class="stat-label">Role</div>
-						<div class="stat-value">Tank/Defense DPS</div>
+						<div class="stat-label">Faction</div>
+						<div class="stat-value"></div>
 					</div>
 				</div>
 
-				<h3 class="subsection-title">Base Stats at Level 80</h3>
+				<h3 class="subsection-title">Base Stats (Level 80)</h3>
 				<div class="stats-grid">
 					<div class="stat-item">
-						<div class="stat-label">HP</div>
-						<div class="stat-value">10,520</div>
+						<div class="stat-label">HP (血量)</div>
+						<div class="stat-value">8,033</div>
 					</div>
 					<div class="stat-item">
-						<div class="stat-label">Attack</div>
-						<div class="stat-value">734</div>
+						<div class="stat-label">Attack (攻击)</div>
+						<div class="stat-value">1,305</div>
 					</div>
 					<div class="stat-item">
-						<div class="stat-label">Defense</div>
-						<div class="stat-value">1,232</div>
+						<div class="stat-label">Defense (防御)</div>
+						<div class="stat-value">530</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Energy Recovery</div>
+						<div class="stat-value">2.50/s</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Critical Rate</div>
+						<div class="stat-value">0%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Critical Damage</div>
+						<div class="stat-value">50%</div>
 					</div>
 				</div>
 
 				<div class="info-card">
 					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Guinevere is a powerful defense-scaling tank who excels at absorbing damage while dealing respectable damage based on her defense stat. Her unique kit revolves around blocking attacks to gain Domination Authority stacks, which unlock her enhanced ultimate ability.
+						Chiya is a high-burst ice damage dealer who specializes in enhanced ultimate mechanics and focus state management. Her unique kit revolves around building up to powerful "Strengthened Must Kill" attacks that deal massive critical damage, while maintaining constant pressure through her focus state that enhances all non-ultimate abilities.
 					</p>
 				</div>
 			</section>
 
-			<!-- Skills Section -->
+			<!-- Skills -->
 			<section class="content-section">
 				<h2 class="section-title">Skills</h2>
-
+				
 				<div class="skill-card">
-					<h3 class="skill-title">🔥 Normal Attack: Inferno</h3>
+					<h3 class="skill-title">❄️ Normal Attack: Heavy Hammer Strike (重锤击)</h3>
 					<p><strong>Level:</strong> 14 | <strong>CD:</strong> 2.0s</p>
-					<p>Deals fire damage equal to <strong>120% of Defense</strong> to designated enemy unit</p>
+					<p>Deals ice damage equal to <strong>120% of Attack</strong> to designated enemy unit</p>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">⚡ Auto Skill: Supreme Power</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>Auto-trigger Interval:</strong> 5.0s</p>
-					<ul>
-						<li><strong>Automatically</strong> grants self <strong>58% block rate</strong> for 10 seconds (triggers every 5 seconds)</li>
-						<li><strong>[Block]:</strong> Has a chance to reduce incoming damage by 30%. Continuous damage ignores block determination</li>
-					</ul>
+					<h3 class="skill-title">⚡ Auto Skill: Cold Steel Combo (冷钢连击)</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 5.0s</p>
+					<p>Deals ice damage equal to <strong>480% of Attack</strong> to designated enemy unit</p>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">💥 Ultimate: Devastating Heavenly Fire</h3>
+					<h3 class="skill-title">💥 Ultimate: Society Master's Fist (社主之拳)</h3>
 					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 3</p>
-					<ul>
-						<li>Launches <strong>[Pursuit]</strong> against designated enemy units</li>
-						<li>Deals fire damage equal to <strong>240% of Defense</strong></li>
-						<li>Gains 1 layer of <strong>[Domination Authority]</strong></li>
-						<li>Reduces damage taken by 24% for 10 seconds</li>
+					
+					<p><strong>Normal Version:</strong></p>
+					<ul style="margin: 0.5rem 0; padding-left: 2rem;">
+						<li>Rushes to target and deals ice damage equal to <strong>600% of Attack</strong></li>
 					</ul>
 
 					<div class="warning-box">
-						<div class="warning-title">🌟 Enhanced Ultimate (Requires 10 Domination Authority stacks)</div>
-						<ul>
-							<li>Clears all <strong>[Domination Authority]</strong> to gain one passive life recovery count</li>
-							<li>Launches <strong>[Pursuit]</strong> against frontal targets</li>
-							<li>Deals fire damage equal to <strong>240% of Defense</strong></li>
-							<li>Reduces damage taken by 24% for 10 seconds</li>
-						</ul>
+						<div class="warning-title">[Strengthened Must Kill] Version</div>
+						<div class="warning-content">
+							<ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+								<li>Gets <strong>100% critical hit rate</strong></li>
+								<li>Rushes to target and deals ice damage equal to <strong>840% of Attack</strong></li>
+								<li>Guaranteed critical strike</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">👑 Passive: Evil Star Explosion</h3>
+					<h3 class="skill-title">👑 Passive: Beam Assist Framework (光束辅助骨架)</h3>
 					<p><strong>Level:</strong> 14</p>
-					
-					<div style="margin: 1rem 0;">
-						<p><strong>Effect 1:</strong> After successful <strong>[Block]</strong>, increases own defense by 60% for 10 seconds</p>
-						
-						<p><strong>Effect 2:</strong> After successful <strong>[Block]</strong>, gains 1 layer of <strong>[Domination Authority]</strong>, maximum 1 layer per second. When <strong>[Domination Authority]</strong> reaches 10 layers, can cast <strong>[Enhanced Ultimate]</strong></p>
-						
-						<p><strong>Effect 3:</strong> When HP drops to 40% or below, triggers life recovery:</p>
-						<ul>
-							<li>Restores 58% max HP within 0.5 seconds</li>
-							<li>Increases block rate to 100% for 10 seconds</li>
-							<li>Increases critical resistance by 100% for 10 seconds</li>
-							<li>This effect has one initial trigger, can accumulate maximum once</li>
-						</ul>
+					<p><strong>After using must kill, enters [Focus] state for 10 seconds:</strong></p>
+					<ul style="margin: 1rem 0; padding-left: 2rem;">
+						<li>All attacks outside must kill deal an additional <strong>36% attack power ice damage</strong></li>
+						<li>Gains one <strong>[Strengthened Must Kill] charge</strong></li>
+					</ul>
+
+					<div class="info-card">
+						<p><strong>Focus State Explained:</strong> This transforms Chiya into a sustained damage threat while building toward her next enhanced ultimate. The 36% bonus applies to normal attacks and skills, making her dangerous even when ultimate is on cooldown.</p>
 					</div>
 				</div>
 			</section>
@@ -556,32 +623,20 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			<!-- Team Composition Skill -->
 			<section class="content-section">
 				<h2 class="section-title">Team Composition Skill</h2>
-
+				
 				<div class="skill-card">
 					<h3 class="skill-title">🏰 Combination Skill</h3>
 					<p><strong>Level:</strong> 1</p>
 					
 					<div class="warning-box">
-						<div class="warning-title">🔥 Activation Requirements</div>
-						<p>Triggers when team contains <strong>2 [Avalon] characters</strong> OR <strong>2 [Fire] characters</strong></p>
+						<div class="warning-title">🧊 Activation Requirements</div>
+						<div class="warning-content">
+							<p>Triggers when team contains <strong>2 [Savill (萨维尔)] characters</strong> OR <strong>2 [Ice (冰霜)] characters</strong></p>
+						</div>
 					</div>
 
-					<div style="margin: 1rem 0;">
-						<p><strong>Effect 1:</strong> Self defense increases by <strong>15%</strong></p>
-						
-						<p><strong>Effect 2:</strong> For every <strong>500 defense</strong> in battle, reduces damage taken by the <strong>whole team by 1.5%</strong></p>
-						<ul>
-							<li>Maximum 6 stacks (3,000 defense)</li>
-							<li>Maximum team damage reduction: <strong>9%</strong></li>
-							<li>Scales with Guinevere's total defense (base + equipment + buffs)</li>
-						</ul>
-					</div>
-
-					<div class="info-card">
-						<p style="color: var(--text-primary); font-size: 1rem; line-height: 1.6; margin: 0;">
-							<strong>Why This Matters:</strong> This team skill makes Guinevere even tankier while providing significant team-wide damage reduction. With high defense builds, she can easily reach the 3,000 defense threshold for maximum team protection. Pair her with other Avalon or Fire characters to activate this powerful defensive buff.
-						</p>
-					</div>
+					<p><strong>Effect 1:</strong> Self attack power increased by <strong>10%</strong></p>
+					<p><strong>Effect 2:</strong> At battle start, every 500 attack power can increase self critical damage by <strong>7.5%</strong>, maximum 6 times (up to <strong>45% critical damage</strong>)</p>
 				</div>
 			</section>
 
@@ -591,40 +646,50 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 				<div class="awakening-card critical-awakening">
 					<h3 class="skill-title">🌟 Awakening 1 (CRITICAL)</h3>
-					<ul>
-						<li><strong>[Block]</strong> After success, increases own defense by 30% for 5 seconds</li>
-						<li>Passive life recovery count can be accumulated up to 2 times (allows Enhanced Ultimate to restore a second charge)</li>
+					<ul style="margin: 1rem 0; padding-left: 2rem;">
+						<li>At battle start, immediately gains one <strong>[Strengthened Must Kill]</strong></li>
 					</ul>
+					<p><strong>Impact:</strong> Allows immediate access to her 840% damage critical ultimate, providing strong opening burst</p>
 				</div>
 
 				<div class="awakening-card critical-awakening">
 					<h3 class="skill-title">🌟 Awakening 2 (CRITICAL)</h3>
-					<ul>
-						<li>Launching normal ultimate skill can additionally gain 1 layer of <strong>[Domination Authority]</strong></li>
-						<li>After launching enhanced ultimate skill, immediately gains 2 layers of <strong>[Domination Authority]</strong></li>
+					<ul style="margin: 1rem 0; padding-left: 2rem;">
+						<li>During [Focus] state, attack speed increased by <strong>50%</strong></li>
 					</ul>
+					<p><strong>Impact:</strong> Dramatically increases DPS during the 10-second focus windows, making her sustained damage much more threatening</p>
 				</div>
 
 				<div class="awakening-card">
 					<h3 class="skill-title">Awakening 3</h3>
-					<p><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
+					<p>[Skill] and [Normal Attack] level and level cap +4</p>
 				</div>
 
 				<div class="awakening-card">
 					<h3 class="skill-title">Awakening 4</h3>
-					<p>Defense increased by 45%</p>
+					<p>Ice damage increased by <strong>30%</strong></p>
 				</div>
 
 				<div class="awakening-card">
 					<h3 class="skill-title">Awakening 5</h3>
-					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
+					<p>[Must Kill] and [Passive] level and level cap +4</p>
 				</div>
 
 				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 6</h3>
-					<ul>
-						<li>All resistance +15%, Fire resistance additional +15%</li>
-						<li>Starting passive life recovery count changes to 2 times</li>
+					<h3 class="skill-title">🌟 Awakening 6 (GAME-CHANGING)</h3>
+					<ul style="margin: 1rem 0; padding-left: 2rem;">
+						<li>After using normal must kill, gains one <strong>[Strengthened Must Kill]</strong></li>
+						<li>Must kill damage increased by <strong>30%</strong></li>
+					</ul>
+					<p><strong>Impact:</strong> Creates an infinite cycle - every ultimate grants the next enhanced ultimate, while boosting all ultimate damage</p>
+				</div>
+
+				<div class="warning-box">
+					<div class="warning-title">🚨 Awakenings 1+6 are MANDATORY</div>
+					<p>These transform her from good to exceptional:</p>
+					<ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+						<li><strong>Without them:</strong> Limited strengthened ultimate access, no cycling capability</li>
+						<li><strong>With them:</strong> Immediate burst access + infinite strengthened ultimate cycling</li>
 					</ul>
 				</div>
 			</section>
@@ -638,17 +703,19 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<div class="info-card">
 					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build</h4>
 					<ul>
-						<li><strong>2-Piece Shattered Foundation (碎基):</strong> Defense +12%</li>
-						<li><strong>4-Piece Zahn (札恩):</strong> HP +8%, After Ultimate: Take 5% less damage (10s)</li>
+						<li><strong>4-Piece Beth (贝丝):</strong> Critical Hit Rate +6%, When HP >80%: Critical Hit Damage +24%</li>
+						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
 					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">Total: +8% ATK, +6% Crit Rate, +24% Crit DMG (when HP >80%)</p>
 				</div>
 
 				<div class="info-card">
 					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build</h4>
 					<ul>
-						<li><strong>4-Piece Shattered Foundation:</strong> Defense +12%, Shield Effectiveness +20%</li>
-						<li><strong>2-Piece Zahn:</strong> HP +8%</li>
+						<li><strong>4-Piece Alpha (阿尔法符):</strong> Attack Power +8%, Basic Attack Damage +30%</li>
+						<li><strong>2-Piece Beth:</strong> Critical Hit Rate +6%</li>
 					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">Total: +8% ATK, +6% Crit Rate, +30% Basic Attack DMG</p>
 				</div>
 
 				<h3 class="subsection-title">Main Stats</h3>
@@ -667,38 +734,39 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Position 4</div>
-						<div class="stat-value">DEF%</div>
+						<div class="stat-value">ATK% / CRIT DMG%</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Position 5</div>
-						<div class="stat-value">DEF%</div>
+						<div class="stat-value">Ice DMG%</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Position 6</div>
-						<div class="stat-value">DEF%</div>
+						<div class="stat-value">ATK%</div>
 					</div>
 				</div>
 
 				<h3 class="subsection-title">Substat Priorities</h3>
 				<div class="info-card">
 					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Defense%</li>
-						<li>HP%</li>
-						<li>Defense (Flat)</li>
-						<li>HP (Flat)</li>
+						<li>Attack %</li>
+						<li>Critical Damage %</li>
+						<li>Critical Rate %</li>
+						<li>Penetration</li>
+						<li>HP% / Defense%</li>
 					</ol>
 					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Note:</strong> While her defense-scaling skills can crit, investing in crit rate/damage is not optimal for a tank. Focus on survivability stats - her base damage from high defense is sufficient.
+						<strong>Note:</strong> Focus heavily on Attack % to maximize the team synergy critical damage bonus (up to 45% at 3,000+ attack). Every 500 attack grants 7.5% critical damage.
 					</p>
 				</div>
 			</section>
 
 			<!-- Memory Card -->
 			<section class="content-section">
-				<h2 class="section-title">Memory Card: Simple Birdcage</h2>
+				<h2 class="section-title">Memory Card: Lonely Dark Deep Night</h2>
 				
-				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
-					<img src="/images/characters/Guinevere-card.jpg" alt="Guinevere Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;" class="memory-card-layout">
+					<img src="/images/characters/Chiyacard.jpg" alt="Chiya Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
 					
 					<div style="flex: 1; min-width: 300px;">
 						<div class="info-card" style="margin: 0;">
@@ -706,42 +774,29 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 							<div class="stats-grid">
 								<div class="stat-item">
 									<div class="stat-label">HP</div>
-									<div class="stat-value">6,600</div>
+									<div class="stat-value">5,040</div>
 								</div>
 								<div class="stat-item">
 									<div class="stat-label">Attack</div>
-									<div class="stat-value">480</div>
+									<div class="stat-value">780</div>
 								</div>
 								<div class="stat-item">
 									<div class="stat-label">Defense</div>
-									<div class="stat-value">690</div>
+									<div class="stat-value">474</div>
 								</div>
 							</div>
 
-							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Effects</h4>
+							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effect: Lonely Dark Deep Night</h4>
 							<ul>
-								<li>Defense increased by 64%</li>
-								<li>Block rate after success reduces damage by 10%, lasts 5 seconds</li>
-								<li>Immediately gains 30% maximum HP shield after battle starts</li>
+								<li><strong>Critical Damage increased by 60%</strong></li>
+								<li><strong>Kill Stacking:</strong> After equipped character kills an enemy, increase attack power by 10% for this battle</li>
+								<li><strong>Maximum 4 stacks</strong> (up to 40% attack power increase)</li>
 							</ul>
-						</div>
-					</div>
-				</div>
-			</section>
 
-			<!-- Video Guide Section -->
-			<section class="content-section">
-				<h2 class="section-title">📺 Video Guide</h2>
-				<div class="video-container">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">Watch this comprehensive guide to master Guinevere's defensive strategies and tanking techniques:</p>
-					<div class="video-wrapper">
-						<iframe 
-							src="https://www.youtube.com/embed/-LYs10B_9EY" 
-							title="Guinevere Character Guide - Zone Nova" 
-							frameborder="0" 
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-							allowfullscreen>
-						</iframe>
+							<div class="info-card" style="margin-top: 1.5rem;">
+								<p><strong>🎯 Synergy Notes:</strong> This memory card is perfect for Chiya's burst playstyle. The 60% critical damage boost amplifies her guaranteed critical strengthened ultimates, while the kill stacking provides escalating damage throughout longer battles. Excellent synergy with her team skill's attack-to-critical-damage conversion.</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -753,73 +808,40 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h3 class="subsection-title">Strengths</h3>
 				<div class="info-card">
 					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Exceptional tankiness with multiple damage reduction layers</li>
-						<li>Good damage output for a tank due to defense scaling</li>
-						<li>Self-sustaining with passive life recovery (up to 2 charges with Awakening 1)</li>
-						<li>Can reach 100% block rate when low HP</li>
-						<li>Enhanced Ultimate can restore spent life recovery charges</li>
-						<li><strong>With Awakenings 1+2:</strong> Becomes an unkillable cycling machine - faster ult charging + more lives</li>
+						<li>Guaranteed critical burst with strengthened ultimates (840% + 30% damage)</li>
+						<li>Focus state provides sustained pressure with +36% bonus damage</li>
+						<li>Self-sustaining cycle with Awakening 6 creating infinite strengthened ultimate loop</li>
+						<li>High attack scaling converts into critical damage through team synergy</li>
+						<li>Versatile damage output in both burst windows and sustained DPS phases</li>
+						<li><strong>With Awakenings 1+6:</strong> Becomes a cycling machine with immediate burst access</li>
 					</ul>
 				</div>
 
 				<h3 class="subsection-title">Playstyle</h3>
 				<div class="info-card">
 					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li><strong>Supreme Power</strong> automatically maintains high block rate</li>
-						<li>Block attacks to stack <strong>Domination Authority</strong> (faster with Awakening 1's DEF boost)</li>
-						<li>Use normal ultimate to build stacks (2 stacks per use with Awakening 2)</li>
-						<li>Enhanced ultimate for burst + restore life recovery charge</li>
-						<li>With Awakening 2, immediately gain 2 stacks after enhanced ult to start next cycle</li>
+						<li><strong>Strengthened Ultimate</strong> (840% guaranteed crit) → Enter Focus state</li>
+						<li><strong>Enhanced normals/skills</strong> for 10s with +36% damage</li>
+						<li><strong>Normal Ultimate</strong> → Gain new Strengthened charge (with Awakening 6)</li>
+						<li><strong>Repeat</strong> the cycle for continuous pressure</li>
 					</ol>
 				</div>
 
 				<div class="warning-box">
-					<div class="warning-title">🔄 Core Loop with Awakenings 1+2</div>
-					<p>Block → Stack Authority faster → Ultimate more often → More enhanced ultimates → More life recovery charges → Nearly unkillable</p>
+					<div class="warning-title">⚡ Core Rotation with Awakenings 1+6</div>
+					<p>Start with Strengthened Ultimate → Focus state sustained damage → Normal ultimate grants next enhanced charge → Infinite cycling</p>
 				</div>
 
-				<h3 class="subsection-title">Life Recovery Charge System</h3>
+				<h3 class="subsection-title">Focus State Management</h3>
 				<div class="info-card">
 					<ul>
-						<li><strong>Base:</strong> 1 charge available, max 1</li>
-						<li><strong>With Awakening 1:</strong> 1 charge available, max 2 (Enhanced Ultimate can add a 2nd)</li>
-						<li><strong>With Awakening 1+6:</strong> 2 charges available at start, max 2</li>
-						<li><strong>Enhanced Ultimate:</strong> Consumes 10 Domination Authority to restore 1 used charge</li>
+						<li><strong>Duration:</strong> 10 seconds after using any ultimate</li>
+						<li><strong>Bonus Damage:</strong> +36% attack power as ice damage on normal attacks and skills</li>
+						<li><strong>Strengthened Charge:</strong> Always grants one [Strengthened Must Kill] when entering focus</li>
+						<li><strong>Attack Speed:</strong> +50% during focus with Awakening 2</li>
 					</ul>
 				</div>
 			</section>
-
-			<!-- Investment Priority -->
-			<section class="content-section">
-				<h2 class="section-title">Investment Priority</h2>
-				
-				<div class="warning-box">
-					<div class="warning-title">⭐ High Priority Investment</div>
-					<p>Excellent tank with good damage output. Worth full investment for both PvE and PvP content.</p>
-				</div>
-
-				<h3 class="subsection-title">Awakening Priority</h3>
-				<div class="critical-awakening" style="padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
-					<h4 style="color: #dc3545; margin: 0 0 1rem 0;">🚨 Awakenings 1+2 are MANDATORY</h4>
-					<p>These transform her from a good tank to an exceptional one:</p>
-					<ul>
-						<li><strong>Without them:</strong> Slow stacking, limited survivability</li>
-						<li><strong>With them:</strong> Fast cycling ultimates, multiple lives, significantly higher damage from DEF boosts</li>
-					</ul>
-				</div>
-
-				<h3 class="subsection-title">Key Breakpoints</h3>
-				<div class="info-card">
-					<ul>
-						<li><span class="priority-high">Awakening 1: CRITICAL</span> - Doubles life recovery charges + 30% DEF boost on block</li>
-						<li><span class="priority-high">Awakening 2: CRITICAL</span> - Faster Domination Authority stacking (extra stack on normal ult, 2 stacks after enhanced)</li>
-						<li><span class="priority-medium">Awakening 4:</span> 45% defense increase (huge for both tanking and damage)</li>
-						<li><span class="priority-medium">Awakening 6:</span> Significant resistance improvements + starts with 2 life recovery charges</li>
-						<li><span class="priority-low">Max memory card</span> for massive defense boost</li>
-					</ul>
-				</div>
-			</section>
-
 		</div>
 	</div>
 </ZoneNovaLayout1> 
