@@ -1,0 +1,637 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout1 
+	title="Nini Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Nini, the ice element DPS specialist in Zone Nova"
+	gameTitle="Nini Character Guide"
+	showBreadcrumb={true}
+	breadcrumbText="Characters"
+>
+	<Fragment slot="head">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-image {
+				width: 300px;
+				height: 300px;
+				border-radius: 20px;
+				object-fit: cover;
+				margin: 0 auto 2rem auto;
+				display: block;
+				box-shadow: 0 12px 30px rgba(173, 216, 230, 0.3);
+				transition: all 0.3s ease;
+			}
+
+			.character-image:hover {
+				transform: scale(1.05);
+				box-shadow: 0 16px 40px rgba(173, 216, 230, 0.4);
+			}
+
+			.character-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}
+
+			.subsection-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 2rem 0 1rem 0;
+				padding-left: 1rem;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.skill-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin: 1.5rem 0 0.8rem 0;
+			}
+
+			.info-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.info-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.info-card:hover::before {
+				left: 100%;
+			}
+
+			.info-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.skill-card {
+				background: var(--bg-secondary);
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+			}
+
+			.skill-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--amber-glow);
+			}
+
+			.awakening-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+			}
+
+			.awakening-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.critical-awakening {
+				background: linear-gradient(135deg, rgba(255, 87, 51, 0.1), rgba(255, 183, 77, 0.1));
+				border-color: #ff5733;
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1rem;
+				margin: 1.5rem 0;
+			}
+
+			.stat-item {
+				background: var(--bg-secondary);
+				border: 1px solid var(--neutral-200);
+				border-radius: 12px;
+				padding: 1rem;
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				transform: translateY(-2px);
+				border-color: var(--amber-glow);
+			}
+
+			.stat-label {
+				color: var(--text-secondary);
+				font-size: 0.9rem;
+				font-weight: 600;
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				color: var(--text-primary);
+				font-size: 1.2rem;
+				font-weight: 700;
+			}
+
+			.warning-box {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(255, 87, 51, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 12px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+
+			.warning-title {
+				color: var(--amber-glow);
+				font-weight: 700;
+				font-size: 1.1rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.class-showcase {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				margin: 1.5rem 0;
+				padding: 1rem;
+				background: var(--bg-secondary);
+				border-radius: 12px;
+				border: 1px solid var(--neutral-200);
+			}
+
+			.class-image {
+				width: 60px;
+				height: 60px;
+				border-radius: 12px;
+				object-fit: cover;
+			}
+
+			.class-info h3 {
+				margin: 0;
+				color: var(--text-primary);
+				font-size: 1.3rem;
+			}
+
+			@keyframes titleGlow {
+				0% { filter: brightness(1); }
+				100% { filter: brightness(1.2); }
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header {
+					padding: 2rem;
+				}
+
+				.character-title {
+					font-size: 2rem;
+				}
+
+				.content-section {
+					padding: 2rem;
+				}
+
+				.stats-grid {
+					grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<!-- Back Button -->
+			<a href="/guides/zone-nova/characters/" class="back-button">
+				<span class="back-arrow">←</span>
+				Back to Characters
+			</a>
+
+			<!-- Character Header -->
+			<header class="character-header">
+				<!-- Character Image -->
+				<img src="/images/characters/nini.jpg" alt="Nini" class="character-image" loading="lazy" />
+				
+				<h1 class="character-title">Nini</h1>
+				<p class="character-subtitle">⭐ SR • ❄️ Ice • ⚔️ DPS/Debuffer</p>
+			</header>
+
+			<!-- Character Overview -->
+			<section class="content-section">
+				<h2 class="section-title">Character Overview</h2>
+				
+				<!-- Class Showcase -->
+				<div class="class-showcase">
+					<img src="/images/characters/class/Disruptor.jpg" alt="Disruptor Class" class="class-image">
+					<div class="class-info">
+						<h3>破坏者 (Disruptor)</h3>
+					</div>
+				</div>
+				
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Faction</div>
+						<div class="stat-value">Black Empire</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Role</div>
+						<div class="stat-value">DPS/Debuffer</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Base Stats at Level 80</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">HP</div>
+						<div class="stat-value">7,870</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Attack</div>
+						<div class="stat-value">837</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Defense</div>
+						<div class="stat-value">560</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Energy Recovery</div>
+						<div class="stat-value">2.50/s</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Critical Rate</div>
+						<div class="stat-value">0%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Critical Damage</div>
+						<div class="stat-value">50%</div>
+					</div>
+				</div>
+
+				<div class="info-card">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
+						Nini is a powerful ice DPS character who specializes in exploiting enemy weaknesses and debuffs. Her unique kit revolves around applying and stacking [Weakness] debuffs while dealing increased damage to debuffed enemies. She excels at sustained damage output through her battle fanatic passive.
+					</p>
+				</div>
+			</section>
+
+			<!-- Skills Section -->
+			<section class="content-section">
+				<h2 class="section-title">Skills</h2>
+
+				<div class="skill-card">
+					<h3 class="skill-title">❄️ Normal Attack: Suppressive Fire</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 2.0s</p>
+					<p>Deals ice damage equal to <strong>120% of Attack Power</strong> to designated enemy unit</p>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">⚡ Auto Skill: Steel Charge</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 5.0s</p>
+					<ul>
+						<li>Deals ice damage equal to <strong>60% of Attack Power</strong> to frontal enemy units</li>
+						<li>Applies <strong>[Weakness]</strong> debuff</li>
+						<li>Each layer of [Weakness] causes enemy to take <strong>5.8% more damage</strong></li>
+						<li><strong>Maximum 3 layers</strong>, lasts 10 seconds</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">💥 Ultimate: Glory of the Black Empire</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 3</p>
+					<ul>
+						<li>Deals ice damage equal to <strong>84% of Attack Power</strong> to frontal enemy units</li>
+						<li>Applies <strong>[Weakness]</strong> debuff to targets</li>
+						<li>Nini gains <strong>[Weakness]</strong> effect, causing damage to increase by <strong>38%</strong></li>
+						<li><strong>Self-buff duration:</strong> 10 seconds</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">👑 Passive: Battle Fanatic</h3>
+					<p><strong>Level:</strong> 10+4</p>
+					<ul>
+						<li>When attacking enemy units, if target has <strong>any debuff status</strong></li>
+						<li>This attack's damage increases by <strong>38%</strong></li>
+						<li><strong>Synergy:</strong> Works with all debuffs, not just [Weakness]</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Team Composition Skill -->
+			<section class="content-section">
+				<h2 class="section-title">Team Composition Skill</h2>
+
+				<div class="skill-card">
+					<h3 class="skill-title">🏰 Combination Skill</h3>
+					<p><strong>Level:</strong> 1</p>
+					
+					<div class="warning-box">
+						<div class="warning-title">🏰 Activation Requirements</div>
+						<p>Triggers when team contains <strong>2 [Black Empire] characters</strong> OR <strong>2 [Ice] characters</strong></p>
+					</div>
+
+					<div style="margin: 1rem 0;">
+						<p><strong>Effect:</strong> Self damage increases by <strong>20%</strong></p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Awakening Effects -->
+			<section class="content-section">
+				<h2 class="section-title">Awakening Effects</h2>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 1 (CRITICAL)</h3>
+					<p>When using skills on enemies with <strong>debuff effects</strong>, skill damage increases by <strong>30%</strong></p>
+					<p><strong>Impact:</strong> Massive damage boost for Steel Charge and Ultimate against debuffed targets</p>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 2 (CRITICAL)</h3>
+					<p><strong>[Weakness]</strong> can stack up to <strong>5 layers</strong> (increased from base 3 layers)</p>
+					<p><strong>Impact:</strong> Maximum weakness effect increases from 17.4% to 29% bonus damage taken</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 3</h3>
+					<p><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 4 (TEAM UTILITY)</h3>
+					<p><strong>[Weakness]</strong> affects targets to receive <strong>10% more ice damage</strong> from all sources</p>
+					<p><strong>Impact:</strong> Team-wide ice damage amplification for coordinated compositions</p>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 5 (REQUIRED)</h3>
+					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
+					<p><strong>Critical:</strong> Required for memory card access</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 6 (EXECUTION)</h3>
+					<p>When skill hits enemy with <strong>HP ≤50%</strong>, immediately gains <strong>[Weakness]</strong> effect</p>
+					<p><strong>Impact:</strong> Automatic self-buff when finishing off low-health enemies</p>
+				</div>
+			</section>
+
+			<!-- Memory Card -->
+			<section class="content-section">
+				<h2 class="section-title">Memory Card: Battlefield Flower</h2>
+				
+				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
+					<img src="/images/characters/ninicard.jpg" alt="Nini Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(173, 216, 230, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+					
+					<div style="flex: 1; min-width: 300px;">
+						<div class="info-card" style="margin: 0;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid">
+								<div class="stat-item">
+									<div class="stat-label">HP</div>
+									<div class="stat-value">5,000</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Attack</div>
+									<div class="stat-value">500</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Defense</div>
+									<div class="stat-value">500</div>
+								</div>
+							</div>
+
+							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
+							<ul>
+								<li><strong>Class Restriction:</strong> Only effective against officers</li>
+								<li><strong>5th Stage Awakening Required</strong></li>
+								<li><strong>Battlefield Flower:</strong> When attacking targets with negative effects, damage increases by <strong>20%</strong></li>
+								<li><strong>Maximum 3 stacks</strong>, Duration: 5 seconds</li>
+							</ul>
+
+							<div class="warning-box" style="margin-top: 1rem;">
+								<div class="warning-title">❄️ Perfect Synergy</div>
+								<p>This memory card perfectly complements Nini's Battle Fanatic passive, providing additional damage against debuffed enemies and reinforcing her specialty.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Recommended Builds -->
+			<section class="content-section">
+				<h2 class="section-title">Recommended Builds</h2>
+
+				<h3 class="subsection-title">Rune Sets</h3>
+				
+				<div class="info-card">
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Pure Attack Focus)</h4>
+					<p><strong>4-Piece Alpha (阿尔法符):</strong> Attack Power +8%, Basic Attack Damage +30%</p>
+					<p><strong>2-Piece Zahn (扎因):</strong> Attack Power +8%</p>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Total:</strong> +16% Attack Power + 30% Basic Attack Damage for maximum raw damage output
+					</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build (Balanced Attack)</h4>
+					<p><strong>2-Piece Alpha:</strong> Attack Power +8%</p>
+					<p><strong>2-Piece Zahn:</strong> Attack Power +8%</p>
+					<p><strong>2-Piece Beth (贝丝):</strong> Critical Hit Rate +6%</p>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Focus:</strong> +16% Attack Power with some critical rate for occasional damage spikes
+					</p>
+				</div>
+
+				<h3 class="subsection-title">Main Stat Priorities</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Position 1</div>
+						<div class="stat-value">HP (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 2</div>
+						<div class="stat-value">ATK (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 3</div>
+						<div class="stat-value">DEF (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 4</div>
+						<div class="stat-value">ATK%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 5</div>
+						<div class="stat-value">ATK%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 6</div>
+						<div class="stat-value">ATK%</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Substat Priorities</h3>
+				<div class="info-card">
+					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li>Attack % (Primary damage scaling)</li>
+						<li>Attack (Flat) (Additional raw damage)</li>
+						<li>Penetration (Break through enemy defenses)</li>
+						<li>HP % (Survivability)</li>
+						<li>Defense % (Additional survivability)</li>
+					</ol>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Focus:</strong> Pure attack scaling for consistent high damage output through her [Weakness] debuff synergy and Battle Fanatic passive.
+					</p>
+				</div>
+			</section>
+
+		</div>
+	</div>
+</ZoneNovaLayout1> 

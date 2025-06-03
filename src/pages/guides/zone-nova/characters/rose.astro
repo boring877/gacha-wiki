@@ -4,9 +4,9 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 ---
 
 <ZoneNovaLayout1 
-	title="Leviathan Character Guide - Zone Nova - GachaWiki" 
-	description="Complete guide for Leviathan (娇炉-利维坦), the SR Wind pursuit DPS specialist in Zone Nova"
-	gameTitle="Leviathan Character Guide"
+	title="Rose Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Rose, the critical DPS ice specialist in Zone Nova"
+	gameTitle="Rose Character Guide"
 	showBreadcrumb={true}
 	breadcrumbText="Characters"
 >
@@ -251,6 +251,11 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				margin: 1rem 0;
 			}
 
+			.critical-awakening {
+				background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1));
+				border-color: #dc3545;
+			}
+
 			.warning-box {
 				background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1));
 				border: 1px solid #ffc107;
@@ -263,6 +268,21 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				color: #ffc107;
 				font-weight: 600;
 				margin-bottom: 0.5rem;
+			}
+
+			.priority-high {
+				color: #fd7e14;
+				font-weight: 600;
+			}
+
+			.priority-medium {
+				color: #ffc107;
+				font-weight: 600;
+			}
+
+			.priority-low {
+				color: #28a745;
+				font-weight: 600;
 			}
 
 			.class-showcase {
@@ -329,7 +349,30 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				line-height: 1.5;
 			}
 
-			/* Responsive */
+			@keyframes titleGlow {
+				0% {
+					text-shadow: 
+						0 0 10px rgba(255, 183, 77, 0.3),
+						0 0 20px rgba(255, 183, 77, 0.2);
+				}
+				100% {
+					text-shadow: 
+						0 0 20px rgba(255, 183, 77, 0.6),
+						0 0 30px rgba(255, 183, 77, 0.4);
+				}
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
 			@media (max-width: 768px) {
 				.character-container {
 					padding: 0 1rem;
@@ -354,49 +397,15 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				}
 
 				/* Memory Card mobile layout */
-				.content-section div[style*="display: flex"] {
+				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
 					flex-direction: column !important;
 					align-items: center !important;
 				}
 
-				.content-section img[alt="Leviathan Memory Card"] {
-					width: 100% !important;
-					max-width: 250px !important;
-					height: auto !important;
-					margin-bottom: 1rem !important;
+				.content-section img[alt="Rose Memory Card"] {
+					width: 160px !important;
+					height: 240px !important;
 				}
-			}
-
-			/* Priority Classes */
-			.priority-high {
-				color: #ff6b6b;
-				font-weight: 700;
-			}
-
-			.priority-medium {
-				color: #ffd93d;
-				font-weight: 600;
-			}
-
-			.priority-low {
-				color: #6bcf7f;
-				font-weight: 500;
-			}
-
-			.critical-awakening {
-				border-color: #ff6b6b;
-				background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 183, 77, 0.1));
-			}
-
-			/* Animations */
-			@keyframes titleGlow {
-				0% { filter: brightness(1); }
-				100% { filter: brightness(1.2); }
-			}
-
-			@keyframes sectionFadeIn {
-				0% { opacity: 0; transform: translateY(20px); }
-				100% { opacity: 1; transform: translateY(0); }
 			}
 		</style>
 	</Fragment>
@@ -412,10 +421,10 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			<!-- Character Header -->
 			<header class="character-header">
 				<!-- Character Image -->
-				<img src="/images/characters/Leviathan.jpg" alt="Leviathan" class="character-image" loading="lazy" />
+				<img src="/images/characters/Rose.jpg" alt="Rose" class="character-image" loading="lazy" />
 				
-				<h1 class="character-title">Leviathan</h1>
-				<p class="character-subtitle">SR • Wind • Pursuit DPS</p>
+				<h1 class="character-title">Rose</h1>
+				<p class="character-subtitle">🌟 SSR • ❄️ Ice • ⚔️ Critical DPS</p>
 			</header>
 
 			<!-- Character Overview -->
@@ -424,20 +433,20 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				
 				<!-- Class Showcase -->
 				<div class="class-showcase">
-					<img src="/images/characters/class/Guerrilla.jpg" alt="Guerrilla Class" class="class-image">
+					<img src="/images/characters/class/Disruptor.jpg" alt="Disruptor Class" class="class-image">
 					<div class="class-info">
-						<h3>游击使 (Guerrilla)</h3>
+						<h3>开灾使 (Disaster Bringer)</h3>
 					</div>
 				</div>
 				
 				<div class="stats-grid">
 					<div class="stat-item">
 						<div class="stat-label">Faction</div>
-						<div class="stat-value">Huájiān (花间)</div>
+						<div class="stat-value">Black and White Country</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Role</div>
-						<div class="stat-value">Pursuit DPS Specialist</div>
+						<div class="stat-value">Critical DPS</div>
 					</div>
 				</div>
 
@@ -445,7 +454,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<div class="stats-grid">
 					<div class="stat-item">
 						<div class="stat-label">HP</div>
-						<div class="stat-value">6,694</div>
+						<div class="stat-value">5,694</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Attack</div>
@@ -471,7 +480,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 				<div class="info-card">
 					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Leviathan is a pursuit attack specialist who excels at chaining additional attacks triggered by ally skill usage. Her unique mark-based system allows her to store and consume marks for consistent damage output, while her critical rate scaling makes her increasingly dangerous as fights progress.
+						Rose is a transformation-based critical DPS who excels at building critical rate through combat and unleashing devastating ice damage during her enhanced Frost Cannon state. Her kit revolves around accumulating critical rate stacks and maximizing damage output during her powerful ultimate transformation.
 					</p>
 				</div>
 			</section>
@@ -481,45 +490,42 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h2 class="section-title">Skills</h2>
 
 				<div class="skill-card">
-					<h3 class="skill-title">⛈️ Normal Attack: Leviathan's Kiss (利维坦之吻)</h3>
-					<p><strong>Level:</strong> 14 | <strong>CD:</strong> 2.0s</p>
-					<p>Deals <strong>120% of Attack</strong> as wind damage to designated enemy unit</p>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">⚡ Auto Skill: Abyss Roar (深渊之咆哮)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 5.0s</p>
+					<h3 class="skill-title">❄️ Normal Attack: Shatter! Shatter! Shatter! (碎！碎！碎！)</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 4.0s</p>
 					<ul>
-						<li>Deals wind damage equal to <strong>120% of Attack</strong> to designated enemy unit</li>
-						<li>Gains <strong>2 layers of [Mark]</strong></li>
+						<li><strong>Base:</strong> Deals ice damage equal to <strong>96% of Attack</strong> to designated enemy</li>
+						<li><strong>Enhanced</strong> (during Frost Cannon): Deals ice damage equal to <strong>96% of Attack</strong> to designated enemy and surrounding <strong>2-meter range</strong></li>
 					</ul>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">💥 Ultimate: Seven Deadly Sins: Jiāolú (七大罪：娇炉)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 5</p>
+					<h3 class="skill-title">🎯 Skill: Bullet Hell Scatter (弹幕散射)</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 10.0s</p>
 					<ul>
-						<li>Deals wind damage equal to <strong>600% of Attack</strong> to designated enemy unit</li>
-						<li>Immediately launches <strong>1 pursuit attack</strong> against target</li>
-						<li><strong>Subsequent pursuit attacks do not consume marks</strong></li>
+						<li><strong>Base:</strong> Deals ice damage equal to <strong>180% of Attack</strong> to designated enemy</li>
+						<li><strong>Enhanced</strong> (during Frost Cannon): Deals ice damage equal to <strong>180% of Attack</strong> to designated enemy and surrounding <strong>4-meter range</strong></li>
 					</ul>
 				</div>
 
 				<div class="skill-card">
-					<h3 class="skill-title">👑 Passive: Grudge Deep Chain (怨恨深链)</h3>
-					<p><strong>Level:</strong> 14</p>
+					<h3 class="skill-title">❄️ Ultimate: Frost Cannon Transformation</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 8</p>
 					<ul>
-						<li>When our allies activate skills and hit enemies, consumes <strong>1 layer of [Mark]</strong> and triggers pursuit</li>
-						<li>Pursuit deals wind damage equal to <strong>180% of Attack</strong></li>
+						<li>Enters <strong>[Frost Cannon]</strong> state for <strong>10 seconds</strong></li>
+						<li>Increases attack speed by <strong>58%</strong></li>
+						<li><strong>Gains enhanced normal attacks and enhanced skills</strong></li>
+						<li>All abilities become AoE during this state</li>
 					</ul>
+				</div>
 
-					<div class="warning-box">
-						<div class="warning-title">📊 Mark System Explained</div>
-						<p><strong>Mark Gain:</strong> Abyss Roar grants +2 marks</p>
-						<p><strong>Mark Consumption:</strong> Ally skills consume 1 mark to trigger pursuit (180% ATK)</p>
-						<p><strong>Ultimate Exception:</strong> Ultimate pursuit attacks don't consume marks</p>
-						<p><strong>Strategy:</strong> This creates a reactive playstyle where team activity directly enhances Leviathan's damage output</p>
-					</div>
+				<div class="skill-card">
+					<h3 class="skill-title">🎲 Passive: Reckless Spirit's Foundation (冒失鬼的底蕴)</h3>
+					<p><strong>Level:</strong> 10+4</p>
+					<ul>
+						<li>Each normal attack increases critical rate by <strong>2.4%</strong></li>
+						<li><strong>Maximum 20 stacks</strong> (48% maximum critical rate increase)</li>
+						<li>Stacks persist through combat and ultimate transformations</li>
+					</ul>
 				</div>
 			</section>
 
@@ -528,23 +534,56 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h2 class="section-title">Team Composition Skill</h2>
 
 				<div class="skill-card">
-					<h3 class="skill-title">🏰 Combination Skill</h3>
+					<h3 class="skill-title">❄️ Combination Skill</h3>
 					<p><strong>Level:</strong> 1</p>
 					
 					<div class="warning-box">
-						<div class="warning-title">🌀 Activation Requirements</div>
-						<p>Triggers when team contains <strong>2 [Huájiān] characters</strong> OR <strong>2 [Wind] characters</strong></p>
+						<div class="warning-title">❄️ Activation Requirements</div>
+						<p>Triggers when team contains <strong>2 [Black and White Country] characters</strong> OR <strong>2 [Frost] characters</strong></p>
 					</div>
 
 					<div style="margin: 1rem 0;">
-						<p><strong>Effect:</strong> Self damage increased by <strong>20%</strong></p>
+						<p><strong>Effect:</strong> Self ice damage increases by <strong>20%</strong></p>
 					</div>
+				</div>
+			</section>
 
-					<div class="info-card" style="margin-top: 1rem;">
-						<p style="color: var(--text-secondary); margin: 0; font-style: italic;">
-							This team skill significantly boosts Leviathan's already high damage multipliers. Huájiān and Wind faction characters often have complementary kits that work well with pursuit mechanics.
-						</p>
-					</div>
+			<!-- Awakening Effects -->
+			<section class="content-section">
+				<h2 class="section-title">Awakening Effects</h2>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 1 (IMPORTANT)</h3>
+					<p>When in <strong>[Frost Cannon]</strong> state, critical rate increases by <strong>15%</strong></p>
+					<p><strong>Synergy:</strong> Combines with passive stacks for massive critical rate during ultimate</p>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 2 (IMPORTANT)</h3>
+					<p>When in <strong>[Frost Cannon]</strong> state, damage taken reduced by <strong>10%</strong></p>
+					<p><strong>Impact:</strong> Provides survivability during aggressive AoE phases</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 3</h3>
+					<p><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 4 (HIGH PRIORITY)</h3>
+					<p>Normal attack damage increases by <strong>20%</strong></p>
+					<p><strong>Critical:</strong> Significant DPS boost since normal attacks build critical stacks</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 5</h3>
+					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 6 (CRITICAL)</h3>
+					<p><strong>[Frost Cannon]</strong> state duration becomes <strong>15 seconds</strong></p>
+					<p><strong>Game Changer:</strong> 50% longer transformation window for AoE dominance</p>
 				</div>
 			</section>
 
@@ -555,28 +594,36 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h3 class="subsection-title">Rune Sets</h3>
 				
 				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Recommended)</h4>
-					<ul>
-						<li><strong>4-Piece Beth (贝丝):</strong> Critical Hit Rate +6% | When HP >80%: Critical Hit Damage +24%</li>
-						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 0.5rem; font-style: italic;">
-						Maximizes critical potential for pursuit attacks. Synergizes perfectly with Awakening 2 and memory card.
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Critical Focus)</h4>
+					<p><strong>4-Piece Beth (贝丝):</strong> Critical Rate +6%, When HP >80%: Critical Damage +24%</p>
+					<p><strong>2-Piece Alpha (阿尔法符):</strong> Attack +8%</p>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Perfect synergy:</strong> Maximizes critical scaling with passive stacks and Frost Cannon state
 					</p>
 				</div>
 
 				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">⚡ Team Support Build</h4>
-					<ul>
-						<li><strong>4-Piece Epsilon (埃普西隆):</strong> Attack Power +8% | After Ultimate: Team damage +10% (10s)</li>
-						<li><strong>2-Piece Beth (贝丝):</strong> Critical Hit Rate +6%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 0.5rem; font-style: italic;">
-						Provides team-wide damage boost after ultimate while maintaining personal critical scaling.
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build (Balanced)</h4>
+					<p><strong>4-Piece Alpha:</strong> Attack +8%, Basic Attack Damage +30%</p>
+					<p><strong>2-Piece Beth:</strong> Critical Rate +6%</p>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Focus:</strong> Enhanced normal attack damage for faster critical stack building
 					</p>
 				</div>
 
-				<h3 class="subsection-title">Main Stats</h3>
+				<div class="info-card">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">❄️ Ice Specialist Build</h4>
+					<ul>
+						<li><strong>2-Piece Alpha:</strong> Attack +8%</li>
+						<li><strong>2-Piece Beth:</strong> Critical Rate +6%</li>
+						<li><strong>2-Piece Zahn (札恩):</strong> HP +8%</li>
+					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Focus:</strong> Survivability for extended combat with Beth set bonus
+					</p>
+				</div>
+
+				<h3 class="subsection-title">Main Stat Priorities</h3>
 				<div class="stats-grid">
 					<div class="stat-item">
 						<div class="stat-label">Position 1</div>
@@ -592,11 +639,11 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Position 4</div>
-						<div class="stat-value">Crit Rate / Crit Damage / ATK%</div>
+						<div class="stat-value">CRIT DMG%</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Position 5</div>
-						<div class="stat-value">Wind Damage% / ATK%</div>
+						<div class="stat-value">❄️ Ice DMG% / ATK%</div>
 					</div>
 					<div class="stat-item">
 						<div class="stat-label">Position 6</div>
@@ -607,70 +654,28 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h3 class="subsection-title">Substat Priorities</h3>
 				<div class="info-card">
 					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li><strong>Critical Rate</strong> - Essential for pursuit attacks with Awakening 2</li>
-						<li><strong>Critical Damage</strong> - Maximizes critical scaling potential</li>
-						<li><strong>Attack %</strong> - Core scaling for all damage abilities</li>
-						<li><strong>Penetration</strong> - Flat number only, helps break through enemy defenses</li>
-						<li><strong>Attack (Flat)</strong> - Secondary attack scaling</li>
-						<li><strong>Defense%</strong> - Survivability and defensive scaling</li>
-						<li><strong>HP%</strong></li>
+						<li><strong>Critical Damage</strong> (Most important with guaranteed high crit rate)</li>
+						<li><strong>Attack%</strong></li>
+						<li><strong>Critical Rate</strong> (Early game until passive stacks reliably)</li>
+						<li><strong>Attack (Flat)</strong></li>
+						<li><strong>HP% / Defense%</strong></li>
 					</ol>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">🎯 Critical Rate Focus</div>
-					<p>Aim for 1:2 Critical Rate : Critical Damage ratio. With Awakening 2 (+20%) and Memory Card (+36%), pursuit attacks can reach very high critical rates.</p>
-				</div>
-			</section>
-
-			<!-- Awakening Effects -->
-			<section class="content-section">
-				<h2 class="section-title">Awakening Effects</h2>
-				
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 1 (CRITICAL)</h3>
-					<p>Self triggers <strong>[Skills]</strong> can trigger activation effects</p>
-					<p style="color: var(--text-secondary); margin-top: 0.5rem; font-style: italic;">Allows Leviathan's skills to benefit from various trigger-based team effects and equipment bonuses</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 2 (CRITICAL)</h3>
-					<p><strong>[Pursuit]</strong> critical rate increased by <strong>20%</strong></p>
-					<p style="color: var(--text-secondary); margin-top: 0.5rem; font-style: italic;">Essential for critical-focused builds, synergizes perfectly with memory card</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 3</h3>
-					<p><strong>[Skills]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 4</h3>
-					<p><strong>[Pursuit]</strong> damage increased by <strong>20%</strong></p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 5</h3>
-					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 6 (GAME-CHANGING)</h3>
-					<p>When releasing <strong>[Ultimate]</strong> skills, the number of pursuit attacks triggered changes from <strong>1 to 2</strong></p>
-					<p style="color: var(--text-secondary); margin-top: 0.5rem; font-style: italic;">Doubles ultimate damage output - massive DPS increase that transforms her into an elite damage dealer</p>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Note:</strong> Critical damage is prioritized since passive provides up to 48% crit rate through normal attacks, with additional 15% during Frost Cannon state.
+					</p>
 				</div>
 			</section>
 
 			<!-- Memory Card -->
 			<section class="content-section">
-				<h2 class="section-title">Memory Card: Perverted Little Nurse</h2>
+				<h2 class="section-title">Memory Card: During Military Academy Training</h2>
 				
 				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
-					<img src="/images/characters/Leviathancard.jpg" alt="Leviathan Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+					<img src="/images/characters/Rosecard.jpg" alt="Rose Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
 					
 					<div style="flex: 1; min-width: 300px;">
 						<div class="info-card" style="margin: 0;">
-							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">变态小护士 - Level 80/80 Base Stats</h4>
+							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">在军校训练时 - Level 80/80 Base Stats</h4>
 							<div class="stats-grid">
 								<div class="stat-item">
 									<div class="stat-label">HP</div>
@@ -688,17 +693,18 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
 							<ul>
-								<li><strong>After causing pursuit damage, critical rate increased by 36% for 10 seconds</strong></li>
-								<li><strong>Only effective for Guerrilla (Rangers) class characters</strong></li>
+								<li><strong>Class Restriction:</strong> Only effective for Disaster Bringers (开灾使)</li>
+								<li><strong>Effect:</strong> After using ultimate skill, normal attack and skill damage increased by <strong>60%</strong> for 10 seconds</li>
 							</ul>
 							
 							<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-								Perfect synergy with Awakening 2 (+20% pursuit crit). Combined effect: 56% critical rate after any pursuit attack, making her incredibly dangerous in extended fights.
+								Perfect synergy with Frost Cannon ultimate, providing massive damage amplification during transformation state. The 60% damage boost applies to both enhanced normal attacks and enhanced skills during the 10-15 second ultimate window.
 							</p>
 						</div>
 					</div>
 				</div>
 			</section>
+
 		</div>
 	</div>
 </ZoneNovaLayout1> 

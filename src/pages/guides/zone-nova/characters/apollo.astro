@@ -1,0 +1,686 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout1 
+	title="Apollo Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Apollo, the fire element buffer specialist in Zone Nova"
+	gameTitle="Apollo Character Guide"
+	showBreadcrumb={true}
+	breadcrumbText="Characters"
+>
+	<Fragment slot="head">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-image {
+				width: 300px;
+				height: 300px;
+				border-radius: 20px;
+				object-fit: cover;
+				margin: 0 auto 2rem auto;
+				display: block;
+				box-shadow: 0 12px 30px rgba(255, 87, 51, 0.3);
+				transition: all 0.3s ease;
+			}
+
+			.character-image:hover {
+				transform: scale(1.05);
+				box-shadow: 0 16px 40px rgba(255, 87, 51, 0.4);
+			}
+
+			.character-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}
+
+			.subsection-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 2rem 0 1rem 0;
+				padding-left: 1rem;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.skill-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin: 1.5rem 0 0.8rem 0;
+			}
+
+			.info-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.info-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.info-card:hover::before {
+				left: 100%;
+			}
+
+			.info-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.skill-card {
+				background: var(--bg-secondary);
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+			}
+
+			.skill-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--amber-glow);
+			}
+
+			.awakening-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+			}
+
+			.awakening-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.critical-awakening {
+				background: linear-gradient(135deg, rgba(255, 87, 51, 0.1), rgba(255, 183, 77, 0.1));
+				border-color: #ff5733;
+			}
+
+			.game-changing-awakening {
+				background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 183, 77, 0.15));
+				border-color: #ffd700;
+				box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1rem;
+				margin: 1.5rem 0;
+			}
+
+			.stat-item {
+				background: var(--bg-secondary);
+				border: 1px solid var(--neutral-200);
+				border-radius: 12px;
+				padding: 1rem;
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				transform: translateY(-2px);
+				border-color: var(--amber-glow);
+			}
+
+			.stat-label {
+				color: var(--text-secondary);
+				font-size: 0.9rem;
+				font-weight: 600;
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				color: var(--text-primary);
+				font-size: 1.2rem;
+				font-weight: 700;
+			}
+
+			.warning-box {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(255, 87, 51, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 12px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+
+			.warning-title {
+				color: var(--amber-glow);
+				font-weight: 700;
+				font-size: 1.1rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.class-showcase {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				margin: 1.5rem 0;
+				padding: 1rem;
+				background: var(--bg-secondary);
+				border-radius: 12px;
+				border: 1px solid var(--neutral-200);
+			}
+
+			.class-image {
+				width: 60px;
+				height: 60px;
+				border-radius: 12px;
+				object-fit: cover;
+			}
+
+			.class-info h3 {
+				margin: 0;
+				color: var(--text-primary);
+				font-size: 1.3rem;
+			}
+
+			.priority-high { color: #ff5733; font-weight: 700; }
+			.priority-medium { color: #ffa500; font-weight: 600; }
+			.priority-low { color: var(--text-secondary); font-weight: 500; }
+
+			@keyframes titleGlow {
+				0% { filter: brightness(1); }
+				100% { filter: brightness(1.2); }
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header {
+					padding: 2rem;
+				}
+
+				.character-title {
+					font-size: 2rem;
+				}
+
+				.content-section {
+					padding: 2rem;
+				}
+
+				.stats-grid {
+					grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<!-- Back Button -->
+			<a href="/guides/zone-nova/characters/" class="back-button">
+				<span class="back-arrow">←</span>
+				Back to Characters
+			</a>
+
+			<!-- Character Header -->
+			<header class="character-header">
+				<!-- Character Image -->
+				<img src="/images/characters/Apollo.jpg" alt="Apollo" class="character-image" loading="lazy" />
+				
+				<h1 class="character-title">Apollo</h1>
+				<p class="character-subtitle">⭐ SSR • 🔥 Fire • 🎭 Buffer</p>
+			</header>
+
+			<!-- Character Overview -->
+			<section class="content-section">
+				<h2 class="section-title">Character Overview</h2>
+				
+				<!-- Class Showcase -->
+				<div class="class-showcase">
+					<img src="/images/characters/class/Support.jpg" alt="Support Class" class="class-image">
+					<div class="class-info">
+						<h3>支援使 (Support)</h3>
+					</div>
+				</div>
+				
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Faction</div>
+						<div class="stat-value">Olympus</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Role</div>
+						<div class="stat-value">Buffer</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Base Stats at Level 80</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">HP</div>
+						<div class="stat-value">8,564</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Attack</div>
+						<div class="stat-value">1,004</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Defense</div>
+						<div class="stat-value">672</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Energy Recovery</div>
+						<div class="stat-value">2.50/s</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Critical Rate</div>
+						<div class="stat-value">0%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Critical Damage</div>
+						<div class="stat-value">50%</div>
+					</div>
+				</div>
+
+				<div class="info-card">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
+						Apollo is an advanced buffer specialist who excels at orchestrating complex team synergies through the "Brilliant" stacking system and "Pursuit" mechanics. His kit revolves around the powerful Day Brilliance transformation that provides massive team attack bonuses while enabling intricate combo chains through pursuit attacks and critical rate scaling.
+					</p>
+				</div>
+			</section>
+
+			<!-- Pursuit Attacks -->
+			<section class="content-section">
+				<h2 class="section-title">Pursuit Attacks</h2>
+				
+				<div class="info-card">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
+						<strong>Pursuit attacks</strong> are a specific type of attack that certain characters can perform. Apollo specializes in enhancing these pursuit attacks, providing <strong>+36% pursuit damage</strong> for the entire team through his skill and an additional <strong>+40% pursuit damage</strong> through his memory card.
+					</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">Apollo's Pursuit Enhancement</h4>
+					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li><strong>Team Pursuit Damage:</strong> +36% from Divine Music Accompaniment</li>
+						<li><strong>Memory Card Boost:</strong> Additional +40% pursuit damage</li>
+						<li><strong>Personal Mastery:</strong> Apollo can trigger up to 5 pursuit attacks during Day Brilliance</li>
+						<li><strong>Brilliant Synergy:</strong> Pursuit attacks can generate [Brilliant] stacks for the team</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Skills Section -->
+			<section class="content-section">
+				<h2 class="section-title">Skills</h2>
+
+				<div class="skill-card">
+					<h3 class="skill-title">🔥 Normal Attack: Day Brilliance Flash</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 2.0s</p>
+					<p>Deals fire damage equal to <strong>120% of Attack</strong> to designated enemy</p>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">🎵 Skill: Divine Music Accompaniment</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 5.0s</p>
+					<ul>
+						<li><strong>Allied units gain 24% damage increase</strong></li>
+						<li><strong>[Pursuit] damage additionally increases by 36%</strong></li>
+						<li><strong>Triggers Brilliant stacking</strong> through passive system</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">☀️ Ultimate: Day Brilliance Chanting</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 8</p>
+					<ul>
+						<li><strong>Enters [Day Brilliance] state for 10 seconds</strong></li>
+						<li><strong>During transformation:</strong> Allied attack power increases by <strong>120%</strong></li>
+						<li><strong>Apollo gains enhanced abilities:</strong> When releasing ultimate, triggers [Pursuit] attacks</li>
+						<li><strong>Critical rate boost:</strong> 100% critical rate increase during transformation</li>
+						<li><strong>Pursuit mechanics:</strong> Can trigger up to 5 pursuit attacks within range</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">⚡ Passive: Brilliant Verdict</h3>
+					<p><strong>Level:</strong> 10+4</p>
+					<ul>
+						<li><strong>Each skill use:</strong> All allies gain 1 layer [Brilliant]</li>
+						<li><strong>[Brilliant] Effect:</strong> +2.4% critical rate and +4.8% critical damage per layer</li>
+						<li><strong>Maximum 10 layers</strong> (24% crit rate + 48% crit damage at full stacks)</li>
+						<li><strong>Pursuit Synergy:</strong> Allied pursuit attacks grant additional [Brilliant] layers</li>
+						<li><strong>Radiance System:</strong> Apollo gains [Radiance] stacks that enhance his capabilities</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Team Composition Skill -->
+			<section class="content-section">
+				<h2 class="section-title">Team Composition Skill</h2>
+
+				<div class="skill-card">
+					<h3 class="skill-title">☀️ Combination Skill</h3>
+					<p><strong>Level:</strong> 1</p>
+					
+					<div class="warning-box">
+						<div class="warning-title">☀️ Activation Requirements</div>
+						<p>Triggers when team contains <strong>2 [Olympus] characters</strong> OR <strong>2 [Fire] characters</strong></p>
+					</div>
+
+					<div style="margin: 1rem 0;">
+						<p><strong>Effect 1:</strong> Battle start: Team damage increases by <strong>10%</strong></p>
+						<p><strong>Effect 2:</strong> Every 500 attack power adds 5% team damage, maximum 6 times (<strong>30% max</strong>)</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Awakening Effects -->
+			<section class="content-section">
+				<h2 class="section-title">Awakening Effects</h2>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 1 (HIGH SYNERGY)</h3>
+					<p>Allied characters dealing <strong>[Pursuit]</strong> damage can additionally gain <strong>1 layer [Brilliant]</strong></p>
+					<p><strong>Each character can trigger once within 1 second maximum</strong></p>
+					<p><strong>Impact:</strong> Dramatically accelerates Brilliant stacking through pursuit chains</p>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 2 (CRITICAL SURVIVABILITY)</h3>
+					<p>During <strong>[Day Brilliance]</strong> state, damage taken reduced by <strong>50%</strong></p>
+					<p><strong>Impact:</strong> Ensures Apollo survives his transformation to maintain team buffs</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 3</h3>
+					<p><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 4 (TEAM PENETRATION)</h3>
+					<p>During <strong>[Day Brilliance]</strong> state, allied characters gain <strong>10% elemental resistance penetration</strong></p>
+					<p><strong>Impact:</strong> Massive team damage amplification against resistant enemies</p>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 5 (REQUIRED)</h3>
+					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
+					<p><strong>Critical:</strong> Required for memory card access</p>
+				</div>
+
+				<div class="awakening-card game-changing-awakening">
+					<h3 class="skill-title">🌟 Awakening 6 (APOLLO ENHANCEMENT)</h3>
+					<p>During <strong>[Day Brilliance]</strong> state, Apollo's <strong>[Pursuit]</strong> additionally gains <strong>50% critical damage</strong></p>
+					<p><strong>Impact:</strong> Makes Apollo's own pursuit attacks devastating</p>
+				</div>
+			</section>
+
+			<!-- Memory Card -->
+			<section class="content-section">
+				<h2 class="section-title">Memory Card: The Loneliest Moment</h2>
+				
+				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
+					<img src="/images/characters/Apollocard.jpg" alt="Apollo Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(255, 87, 51, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+					
+					<div style="flex: 1; min-width: 300px;">
+						<div class="info-card" style="margin: 0;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid">
+								<div class="stat-item">
+									<div class="stat-label">HP</div>
+									<div class="stat-value">6,000</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Attack</div>
+									<div class="stat-value">600</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Defense</div>
+									<div class="stat-value">600</div>
+								</div>
+							</div>
+
+							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
+							<ul>
+								<li><strong>Class Restriction:</strong> Only effective for Support (支援使)</li>
+								<li><strong>5th Stage Awakening Required</strong></li>
+								<li><strong>Effect 1:</strong> Battle start: All allied characters' damage increases by <strong>40%</strong>, pursuit damage additionally increases by <strong>40%</strong></li>
+								<li><strong>Effect 2:</strong> When equipped character releases ultimate or energy >8, all allied characters' energy acquisition efficiency increases by <strong>100%</strong> for 10 seconds</li>
+							</ul>
+
+							<div class="warning-box" style="margin-top: 1rem;">
+								<div class="warning-title">☀️ Perfect Synergy</div>
+								<p>This memory card transforms Apollo into the ultimate team enabler, providing immediate damage amplification and energy acceleration for the entire team.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Recommended Builds -->
+			<section class="content-section">
+				<h2 class="section-title">Recommended Builds</h2>
+
+				<h3 class="subsection-title">Rune Sets</h3>
+				
+				<div class="info-card">
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Team Support)</h4>
+					<p><strong>4-Piece Epsilon (埃普西隆):</strong> Attack +8%, After Ultimate: Team damage +10% (10s)</p>
+					<p><strong>2-Piece Alpha (阿尔法符):</strong> Attack +8%</p>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Perfect synergy:</strong> Double attack boost enhances team combination skill scaling, ultimate bonus provides additional team damage
+					</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build (Survivability)</h4>
+					<p><strong>4-Piece Zahn (札恩):</strong> HP +8%, After Ultimate: Take 5% less damage (10s)</p>
+					<p><strong>2-Piece Alpha:</strong> Attack +8%</p>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Focus:</strong> Survivability during Day Brilliance transformations while maintaining attack scaling
+					</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--rose-quartz); margin: 0 0 1rem 0;">☀️ Hybrid Build (Balanced)</h4>
+					<p><strong>2-Piece Alpha:</strong> Attack +8%</p>
+					<p><strong>2-Piece Epsilon:</strong> Attack +8%</p>
+					<p><strong>2-Piece Zahn:</strong> HP +8%</p>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Balance:</strong> Maximum attack scaling with HP for survivability
+					</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">💥 Critical Build (Day Brilliance Focus)</h4>
+					<p><strong>4-Piece Beth (贝丝):</strong> Critical Hit Rate +6%, When HP >80%: Critical Hit Damage +24%</p>
+					<p><strong>2-Piece Alpha:</strong> Attack +8%</p>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Synergy:</strong> Maximizes Apollo's 100% crit rate boost during Day Brilliance transformation for devastating personal damage
+					</p>
+				</div>
+
+				<h3 class="subsection-title">Main Stat Priorities</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Position 1</div>
+						<div class="stat-value">HP (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 2</div>
+						<div class="stat-value">ATK (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 3</div>
+						<div class="stat-value">DEF (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 4</div>
+						<div class="stat-value">ATK% or CRIT DMG%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 5</div>
+						<div class="stat-value">Fire DMG% or ATK%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 6</div>
+						<div class="stat-value">ATK%</div>
+					</div>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">Main Stat Strategy</h4>
+					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li><strong>Position 4 - Critical Damage:</strong> Excellent choice due to 100% crit rate during Day Brilliance</li>
+						<li><strong>Position 4 - Attack%:</strong> Safe option for team combination skill scaling</li>
+						<li><strong>Position 5 - Fire Damage:</strong> Best for Apollo's personal damage during transformation</li>
+						<li><strong>Position 5 - Attack%:</strong> Better for team support scaling</li>
+					</ul>
+				</div>
+			</section>
+
+		</div>
+	</div>
+</ZoneNovaLayout1> 
