@@ -1,0 +1,449 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout1 
+	title="Zeus Limited Recruitment - Zone Nova - GachaWiki" 
+	description="Zeus Limited Recruitment event with God of Judgment character and Frozen Heart relic"
+	gameTitle="Zeus Limited Recruitment"
+	showBreadcrumb={true}
+	breadcrumbText="News & Updates"
+>
+	<Fragment slot="head">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}
+
+			.subsection-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 2rem 0 1rem 0;
+				padding-left: 1rem;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.info-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.info-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.info-card:hover::before {
+				left: 100%;
+			}
+
+			.info-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.skill-card {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1rem 0;
+				transition: all 0.3s ease;
+				border-left: 4px solid var(--teal-crystal);
+			}
+
+			.skill-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);
+				border-left-color: var(--amber-glow);
+			}
+
+			.warning-card {
+				background: linear-gradient(135deg, rgba(255, 82, 82, 0.1), rgba(255, 183, 77, 0.1));
+				border: 2px solid var(--accent-highlight);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 2rem 0;
+				border-left: 4px solid var(--accent-highlight);
+			}
+
+			.holy-card {
+				background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.1));
+				border: 2px solid #FFD700;
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 2rem 0;
+				border-left: 4px solid #FFD700;
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1rem;
+				margin: 1.5rem 0;
+			}
+
+			.stat-item {
+				background: var(--bg-primary);
+				padding: 1rem;
+				border-radius: 10px;
+				border: 1px solid var(--neutral-200);
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				background: var(--neutral-50);
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.1);
+			}
+
+			.stat-label {
+				font-weight: 600;
+				color: var(--amber-glow);
+				font-size: 0.9rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				font-size: 1.1rem;
+				color: var(--text-primary);
+				font-weight: 700;
+			}
+
+			.text-content {
+				color: var(--text-primary);
+				line-height: 1.7;
+				font-size: 1rem;
+			}
+
+			.text-content p {
+				margin: 1rem 0;
+			}
+
+			.text-content ul, .text-content ol {
+				padding-left: 2rem;
+				margin: 1rem 0;
+			}
+
+			.text-content li {
+				margin: 0.5rem 0;
+				line-height: 1.6;
+			}
+
+			.text-content strong {
+				color: var(--amber-glow);
+				font-weight: 600;
+			}
+
+			.highlight-text {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				padding: 0.2rem 0.5rem;
+				border-radius: 6px;
+				font-weight: 600;
+			}
+
+			.character-info {
+				background: var(--bg-primary);
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				font-family: 'Courier New', monospace;
+				border-left: 4px solid var(--amber-glow);
+				white-space: pre-line;
+			}
+
+			.quote-box {
+				background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 255, 255, 0.05));
+				border: 1px solid #FFD700;
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				font-style: italic;
+				border-left: 4px solid #FFD700;
+				position: relative;
+			}
+
+			.quote-box::before {
+				content: '"';
+				font-size: 4rem;
+				color: #FFD700;
+				position: absolute;
+				top: -10px;
+				left: 15px;
+				font-family: serif;
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes titleGlow {
+				0% {
+					text-shadow: 
+						0 0 10px rgba(255, 183, 77, 0.3),
+						0 0 20px rgba(255, 183, 77, 0.2);
+				}
+				100% {
+					text-shadow: 
+						0 0 20px rgba(255, 183, 77, 0.6),
+						0 0 30px rgba(255, 183, 77, 0.4);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header {
+					padding: 2rem;
+				}
+
+				.character-title {
+					font-size: 2rem;
+				}
+
+				.content-section {
+					padding: 2rem;
+				}
+
+				.stats-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<!-- Back Button -->
+			<a href="/guides/zone-nova/updates/" class="back-button">
+				<span class="back-arrow">←</span>
+				Back to News & Updates
+			</a>
+
+			<!-- Character Header -->
+			<div class="character-header">
+				<h1 class="character-title">⚡ Zeus Limited Recruitment</h1>
+			</div>
+
+			<!-- TL;DR Summary -->
+			<div class="warning-card">
+				<div class="text-content">
+					<p><strong>🎯 TL;DR:</strong> Zeus, master of Divine Judgment, arrives as a Limited Holy character with pursuit mechanics! Get her and the exclusive "Frozen Heart" relic from June 10-24, 2025.</p>
+				</div>
+			</div>
+
+			<!-- Event Schedule -->
+			<section class="content-section">
+				<h2 class="section-title">📅 Recruitment Schedule</h2>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Start Date</div>
+						<div class="stat-value">June 10, 2025</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Start Time</div>
+						<div class="stat-value">14:15:00 UTC+8</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">End Date</div>
+						<div class="stat-value">June 24, 2025</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">End Time</div>
+						<div class="stat-value">03:59:59 UTC+8</div>
+					</div>
+				</div>
+				
+				<div class="warning-card">
+					<div class="text-content">
+						<p><strong>⚠️ LIMITED TIME:</strong> 14 days only! Don't miss this exclusive recruitment opportunity.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Character Information -->
+			<section class="content-section">
+				<h2 class="section-title">👑 Meet Zeus - Divine Judgment</h2>
+
+				<h3 class="subsection-title">⚔️ Character Overview</h3>
+				<div class="holy-card">
+					<div class="stats-grid">
+						<div class="stat-item">
+							<div class="stat-label">Name</div>
+							<div class="stat-value">Zeus</div>
+						</div>
+						<div class="stat-item">
+							<div class="stat-label">Rarity</div>
+							<div class="stat-value">SSR</div>
+						</div>
+						<div class="stat-item">
+							<div class="stat-label">Element</div>
+							<div class="stat-value">Holy</div>
+						</div>
+						<div class="stat-item">
+							<div class="stat-label">Combat Style</div>
+							<div class="stat-value">Pursuit</div>
+						</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">🏛️ Character Background</h3>
+				<div class="info-card">
+					<div class="text-content">
+						<p>Zeus is a member of the <strong>Arbitration Council</strong> and serves as <strong>Otis (Federation) Supreme Court Chief Justice</strong>, holding an important government position.</p>
+						<p>With firm belief in <strong>fair and impartial judgment</strong>, she earned recognition for her <strong>Divine Judgment</strong> abilities.</p>
+						<p>Despite her <span class="highlight-text">doll-like, pure girl appearance</span>, she hides the heart of an <strong>iron-faced, selfless grand justice</strong> - the very embodiment of the Federation's judicial justice.</p>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">⚖️ Character Quote</h3>
+				<div class="quote-box">
+					<div class="text-content">
+						<p style="margin-left: 2rem; font-size: 1.1rem; color: var(--text-primary);">According to Federation Law Article 384 [Theft and Obscenity Crime Without Permission], your frivolous eyes and actions! You have violated the law!!</p>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</ZoneNovaLayout1> 
