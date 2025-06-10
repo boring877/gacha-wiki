@@ -1,0 +1,478 @@
+---
+import ZoneNovaLayout from '../../../../layouts/ZoneNovaLayout.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+
+const riftData = {
+	id: "rift-tide-3",
+	name: "Rift Tide III",
+	status: "Active",
+	endDate: "2025-06-23T23:59:59",
+	eventPeriod: "May 7 - June 23, 2025",
+	description: "Block-focused rift with energy recovery and damage stacking mechanics. Team up using [Rift Laws] to defeat waves of enemies surging through dimensional tears.",
+	lawEffects: [
+		"When our characters successfully [Block], deals damage equal to 30% of own defense to nearby enemies, maximum trigger once every 0.5 seconds.",
+		"When our characters successfully [Block], our entire team increases energy recovery speed by 1%, maximum 50 stacks, lasting 15 seconds.",
+		"When our characters successfully [Block], our entire team increases damage by 2%, maximum 25 stacks, lasting 15 seconds."
+	]
+};
+---
+
+<ZoneNovaLayout 
+	title="Rift Tide III - Zone Nova Space-Time Rifts - GachaWiki" 
+	description="Detailed law effects and mechanics for Rift Tide III in Zone Nova"
+	gameTitle="Rift Tide III"
+	showBreadcrumb={true}
+	breadcrumbText="Rift Tide III"
+>
+	<Fragment slot="head">
+		<style>
+			/* Back Button */
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.75rem;
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 2rem;
+				border-radius: 16px;
+				border: 2px solid transparent;
+				background-clip: padding-box;
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 3rem;
+				transition: all 0.4s ease;
+				position: relative;
+				overflow: hidden;
+				box-shadow: 0 8px 25px rgba(255, 183, 77, 0.15);
+			}
+
+			.back-button::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.back-button:hover::before {
+				left: 100%;
+			}
+
+			.back-button:hover {
+				transform: translateY(-2px);
+				border-color: var(--amber-glow);
+				box-shadow: 0 12px 35px rgba(255, 183, 77, 0.25);
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				color: white;
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			/* Content Sections */
+			.content-section {
+				background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.95));
+				padding: 3rem;
+				border-radius: 24px;
+				margin-bottom: 3rem;
+				border: 1px solid rgba(255, 183, 77, 0.1);
+				box-shadow: 
+					0 20px 40px rgba(0, 0, 0, 0.08),
+					0 8px 16px rgba(255, 183, 77, 0.06),
+					inset 0 1px 0 rgba(255, 255, 255, 0.8);
+				position: relative;
+				transition: all 0.4s ease;
+				backdrop-filter: blur(10px);
+			}
+
+			.content-section::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 4px;
+				background: linear-gradient(90deg, var(--teal-crystal), var(--amber-glow));
+				border-radius: 24px 24px 0 0;
+			}
+
+			/* Section Titles */
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2.25rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 2rem 0;
+				text-align: center;
+				position: relative;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -0.5rem;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 60px;
+				height: 3px;
+				background: linear-gradient(90deg, var(--teal-crystal), var(--amber-glow));
+				border-radius: 2px;
+			}
+
+			/* Rift Overview */
+			.rift-overview {
+				background: linear-gradient(135deg, rgba(0, 172, 193, 0.05), rgba(255, 183, 77, 0.03));
+				padding: 2rem;
+				border-radius: 16px;
+				margin-bottom: 2rem;
+				border: 1px solid rgba(0, 172, 193, 0.1);
+			}
+
+			.rift-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 1.5rem;
+				gap: 1rem;
+			}
+
+			.rift-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0;
+			}
+
+			.rift-timer {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(255, 183, 77, 0.05));
+				color: var(--amber-glow);
+				padding: 0.75rem 1.5rem;
+				border-radius: 12px;
+				font-size: 1rem;
+				font-weight: 600;
+				border: 1px solid rgba(255, 183, 77, 0.2);
+				white-space: nowrap;
+				animation: pulse 2s infinite;
+			}
+
+			.rift-description {
+				color: var(--text-secondary);
+				line-height: 1.6;
+				margin-bottom: 1.5rem;
+				font-size: 1.1rem;
+			}
+
+			.rift-meta {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1rem;
+			}
+
+			.meta-item {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0.75rem;
+				background: rgba(255, 255, 255, 0.5);
+				border-radius: 8px;
+				border: 1px solid rgba(0, 0, 0, 0.05);
+			}
+
+			.meta-label {
+				font-weight: 600;
+				color: var(--text-primary);
+			}
+
+			.meta-value {
+				color: var(--text-secondary);
+			}
+
+			/* Law Effect Cards */
+			.law-effect-card {
+				background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+				padding: 2rem;
+				border-radius: 16px;
+				margin-bottom: 1.5rem;
+				border: 1px solid rgba(0, 172, 193, 0.1);
+				display: flex;
+				align-items: flex-start;
+				gap: 1.5rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 8px 20px rgba(0, 172, 193, 0.08);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.law-effect-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(0, 172, 193, 0.05), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.law-effect-card:hover::before {
+				left: 100%;
+			}
+
+			.law-effect-card:hover {
+				transform: translateX(8px);
+				border-color: var(--teal-crystal);
+				box-shadow: 0 12px 30px rgba(0, 172, 193, 0.15);
+			}
+
+			.law-effect-card:last-child {
+				margin-bottom: 0;
+			}
+
+			.effect-number {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 40px;
+				height: 40px;
+				background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow));
+				color: white;
+				border-radius: 12px;
+				font-weight: 700;
+				font-size: 1.1rem;
+				flex-shrink: 0;
+				box-shadow: 0 4px 12px rgba(0, 172, 193, 0.3);
+				position: relative;
+			}
+
+			.effect-number::after {
+				content: '';
+				position: absolute;
+				top: -2px;
+				left: -2px;
+				right: -2px;
+				bottom: -2px;
+				background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow));
+				border-radius: 14px;
+				z-index: -1;
+				opacity: 0.3;
+				filter: blur(4px);
+			}
+
+			.effect-content {
+				flex: 1;
+			}
+
+			.effect-content p {
+				color: var(--text-secondary);
+				line-height: 1.7;
+				margin: 0;
+				font-size: 1.05rem;
+				font-weight: 500;
+			}
+
+			.effect-content strong {
+				color: var(--amber-glow);
+				font-weight: 700;
+			}
+
+			/* Status Badges */
+			.status-badge {
+				display: inline-block;
+				padding: 0.25rem 0.75rem;
+				border-radius: 12px;
+				font-size: 0.85rem;
+				font-weight: 600;
+			}
+
+			.status-active {
+				background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.1));
+				color: #22c55e;
+				border: 1px solid rgba(34, 197, 94, 0.2);
+			}
+
+			/* Animations */
+			@keyframes titleGlow {
+				0% {
+					text-shadow: 
+						0 0 10px rgba(0, 172, 193, 0.3),
+						0 0 20px rgba(0, 172, 193, 0.2);
+				}
+				100% {
+					text-shadow: 
+						0 0 20px rgba(0, 172, 193, 0.6),
+						0 0 30px rgba(0, 172, 193, 0.4);
+				}
+			}
+
+			@keyframes pulse {
+				0%, 100% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 0.7;
+				}
+			}
+
+			/* Mobile Responsiveness */
+			@media (max-width: 768px) {
+				.content-section {
+					padding: 2rem;
+					margin-bottom: 2rem;
+				}
+				
+				.section-title {
+					font-size: 1.75rem;
+				}
+
+				.rift-header {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 1rem;
+				}
+
+				.rift-timer {
+					align-self: flex-start;
+				}
+
+				.law-effect-card {
+					padding: 1.5rem;
+					gap: 1rem;
+					flex-direction: column;
+					text-align: center;
+				}
+
+				.effect-number {
+					align-self: center;
+				}
+
+				.back-button {
+					padding: 0.875rem 1.5rem;
+					margin-bottom: 2rem;
+				}
+			}
+
+			@media (max-width: 480px) {
+				.content-section {
+					padding: 1.5rem;
+				}
+
+				.section-title {
+					font-size: 1.5rem;
+				}
+
+				.rift-overview {
+					padding: 1.5rem;
+				}
+
+				.law-effect-card {
+					padding: 1.25rem;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<!-- Back Button -->
+	<a href="/guides/zone-nova/rifts/" class="back-button">
+		<span class="back-arrow">←</span>
+		Back to Rifts
+	</a>
+
+	<!-- Rift Overview -->
+	<section class="content-section">
+		<div class="rift-overview">
+			<div class="rift-header">
+				<h1 class="rift-title">{riftData.name}</h1>
+				<div class="rift-timer" id="rift-timer">Loading...</div>
+			</div>
+			
+			<p class="rift-description">{riftData.description}</p>
+			
+			<div class="rift-meta">
+				<div class="meta-item">
+					<span class="meta-label">Status:</span>
+					<span class={`status-badge status-${riftData.status.toLowerCase()}`}>{riftData.status}</span>
+				</div>
+				
+				{riftData.eventPeriod && (
+					<div class="meta-item">
+						<span class="meta-label">Event Period:</span>
+						<span class="meta-value">{riftData.eventPeriod}</span>
+					</div>
+				)}
+				
+				<div class="meta-item">
+					<span class="meta-label">Effects:</span>
+					<span class="meta-value">{riftData.lawEffects.length} effects</span>
+				</div>
+				
+				<div class="meta-item">
+					<span class="meta-label">Focus:</span>
+					<span class="meta-value">Block mechanics</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Effects Section -->
+	<section class="content-section">
+		<h2 class="section-title">Effects</h2>
+		
+		{riftData.lawEffects.map((effect, index) => (
+			<div class="law-effect-card">
+				<div class="effect-number">{index + 1}</div>
+				<div class="effect-content">
+					<p set:html={effect.replace(/\[(.*?)\]/g, '<strong>[$1]</strong>').replace(/(\d+%)/g, '<strong>$1</strong>')} />
+				</div>
+			</div>
+		))}
+	</section>
+
+	<script define:vars={{ riftData }}>
+		document.addEventListener('DOMContentLoaded', function() {
+			const endTime = new Date(riftData.endDate).getTime();
+
+			function updateTimer() {
+				const now = new Date().getTime();
+				const timeLeft = endTime - now;
+				const timerElement = document.getElementById('rift-timer');
+				
+				if (timeLeft > 0) {
+					const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+					const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+					const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+					
+					if (days > 0) {
+						timerElement.textContent = `${days}d ${hours}h remaining`;
+					} else if (hours > 0) {
+						timerElement.textContent = `${hours}h ${minutes}m remaining`;
+					} else {
+						timerElement.textContent = `${minutes}m remaining`;
+					}
+				} else {
+					timerElement.textContent = 'Event Ended';
+					timerElement.style.background = 'linear-gradient(135deg, rgba(156, 163, 175, 0.1), rgba(156, 163, 175, 0.05))';
+					timerElement.style.color = '#9ca3af';
+					timerElement.style.border = '1px solid rgba(156, 163, 175, 0.2)';
+				}
+			}
+
+			updateTimer();
+			setInterval(updateTimer, 60000);
+		});
+	</script>
+</ZoneNovaLayout> 

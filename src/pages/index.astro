@@ -54,21 +54,29 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 								</p>
 
 								<!-- Active Events Section -->
-								<div style="background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border-radius: 12px; padding: 1rem; margin: 0 0 1rem 0; border-left: 4px solid var(--teal-crystal); min-height: 120px;">
-									<div style="font-size: 0.9rem; font-weight: 600; color: var(--amber-glow); margin-bottom: 0.5rem;">🌀 Active Events</div>
-									<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; font-size: 0.85rem;">
-										<div style="background: rgba(0, 172, 193, 0.15); padding: 0.5rem; border-radius: 6px; min-height: 3.5rem; display: flex; flex-direction: column; justify-content: space-between;">
-											<div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; font-size: 0.8rem;">Rift Tide II</div>
-											<div id="riftTimer2" style="color: var(--teal-crystal); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem; min-height: 1rem;">Loading...</div>
-										</div>
-										<div style="background: rgba(255, 183, 77, 0.15); padding: 0.5rem; border-radius: 6px; min-height: 3.5rem; display: flex; flex-direction: column; justify-content: space-between;">
-											<div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; font-size: 0.8rem;">Rift Tide III</div>
-											<div id="riftTimer3" style="color: var(--amber-glow); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem; min-height: 1rem;">Loading...</div>
-										</div>
-										<div style="background: rgba(255, 77, 77, 0.15); padding: 0.5rem; border-radius: 6px; min-height: 3.5rem; display: flex; flex-direction: column; justify-content: space-between;">
-											<div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; font-size: 0.8rem;">⚡ Thunder King</div>
-											<div id="thunderTimer" style="color: var(--rose-quartz); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem; min-height: 1rem;">Loading...</div>
-										</div>
+								<div style="background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border-radius: 12px; padding: 1rem; margin: 0 0 1rem 0; border-left: 4px solid var(--teal-crystal);">
+									<div style="font-size: 0.9rem; font-weight: 600; color: var(--amber-glow); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+										<span>🌀</span> Active Events
+									</div>
+									<div style="display: flex; flex-direction: column; gap: 0.5rem;">
+										<a href="/guides/zone-nova/rifts/rift-tide-4/" style="text-decoration: none; color: inherit;">
+											<div style="background: rgba(0, 172, 193, 0.15); padding: 0.75rem; border-radius: 6px; min-height: 3.5rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(0, 172, 193, 0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.background='rgba(0, 172, 193, 0.25)'; this.style.borderColor='rgba(0, 172, 193, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(0, 172, 193, 0.15)'; this.style.borderColor='rgba(0, 172, 193, 0.2)'">
+												<div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">Rift Tide IV</div>
+												<div id="riftTide4Timer" style="color: var(--teal-crystal); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem;">Loading...</div>
+											</div>
+										</a>
+										<a href="/guides/zone-nova/rifts/rift-tide-3/" style="text-decoration: none; color: inherit;">
+											<div style="background: rgba(255, 183, 77, 0.15); padding: 0.75rem; border-radius: 6px; min-height: 3.5rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(255, 183, 77, 0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.background='rgba(255, 183, 77, 0.25)'; this.style.borderColor='rgba(255, 183, 77, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 183, 77, 0.15)'; this.style.borderColor='rgba(255, 183, 77, 0.2)'">
+												<div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">Rift Tide III</div>
+												<div id="riftTide3Timer" style="color: var(--amber-glow); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem;">Loading...</div>
+											</div>
+										</a>
+										<a href="/guides/zone-nova/characters/yuis/" style="text-decoration: none; color: inherit;">
+											<div style="background: rgba(255, 77, 77, 0.15); padding: 0.75rem; border-radius: 6px; min-height: 3.5rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(255, 77, 77, 0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.background='rgba(255, 77, 77, 0.25)'; this.style.borderColor='rgba(255, 77, 77, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 77, 77, 0.15)'; this.style.borderColor='rgba(255, 77, 77, 0.2)'">
+												<div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">New Characters</div>
+												<div style="color: var(--rose-quartz); font-weight: 600; font-size: 0.75rem;">Yuis Available</div>
+											</div>
+										</a>
 									</div>
 								</div>
 
@@ -333,16 +341,15 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	}
 
 	/* Active Events Section Mobile */
-	div[style*="display: grid; grid-template-columns: 1fr 1fr 1fr;"] {
-		grid-template-columns: 1fr !important;
-		gap: 0.5rem !important;
+	div[style*="display: flex; flex-direction: column;"] {
+		gap: 0.4rem !important;
 	}
 
 	/* Event Cards Mobile */
-	div[style*="min-height: 3rem;"] {
-		min-height: 2.5rem !important;
-		padding: 0.5rem !important;
-		text-align: center !important;
+	div[style*="min-height: 3.5rem;"] {
+		min-height: 3rem !important;
+		padding: 0.6rem !important;
+		font-size: 0.8rem !important;
 	}
 
 	/* Action Button Mobile */
@@ -461,55 +468,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Optimized Event Timers with requestAnimationFrame
 document.addEventListener('DOMContentLoaded', function() {
-	// Set end dates for events
-	const rift2End = new Date('2025-06-10T23:59:59').getTime();
-	const rift3End = new Date('2025-06-24T23:59:59').getTime();
-	const thunderEnd = new Date('2025-06-10T03:59:00+08:00').getTime();
+	// Set end dates for events (updated to match rifts page)
+	const rift3End = new Date('2025-06-23T23:59:59').getTime(); // Rift Tide III - ends June 23, 2025
+	const rift4End = new Date('2025-07-08T23:59:59').getTime(); // Rift Tide IV - ends July 8, 2025
 
 	let timerRAF;
 
+	// Timer function optimized for performance
 	function updateTimers() {
 		const now = new Date().getTime();
 		
-		// Update Rift Tide II
-		const timer2 = document.getElementById('riftTimer2');
-		if (timer2) {
-			const timeLeft2 = rift2End - now;
-			if (timeLeft2 > 0) {
-				const days2 = Math.floor(timeLeft2 / (1000 * 60 * 60 * 24));
-				const hours2 = Math.floor((timeLeft2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				timer2.textContent = `${days2}d ${hours2}h left`;
+		// Update Rift Tide III timer
+		const rift3Timer = document.getElementById('riftTide3Timer');
+		if (rift3Timer) {
+			const timeLeft = rift3End - now;
+			if (timeLeft > 0) {
+				const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+				const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				rift3Timer.textContent = `${days}d ${hours}h`;
 			} else {
-				timer2.textContent = 'Event Ended';
-				timer2.style.opacity = '0.6';
+				rift3Timer.textContent = 'Ended';
 			}
 		}
-		
-		// Update Rift Tide III
-		const timer3 = document.getElementById('riftTimer3');
-		if (timer3) {
-			const timeLeft3 = rift3End - now;
-			if (timeLeft3 > 0) {
-				const days3 = Math.floor(timeLeft3 / (1000 * 60 * 60 * 24));
-				const hours3 = Math.floor((timeLeft3 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				timer3.textContent = `${days3}d ${hours3}h left`;
+
+		// Update Rift Tide IV timer  
+		const rift4Timer = document.getElementById('riftTide4Timer');
+		if (rift4Timer) {
+			const timeLeft = rift4End - now;
+			if (timeLeft > 0) {
+				const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+				const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				rift4Timer.textContent = `${days}d ${hours}h`;
 			} else {
-				timer3.textContent = 'Event Ended';
-				timer3.style.opacity = '0.6';
-			}
-		}
-		
-		// Update Thunder King Flame
-		const thunderTimer = document.getElementById('thunderTimer');
-		if (thunderTimer) {
-			const timeLeftThunder = thunderEnd - now;
-			if (timeLeftThunder > 0) {
-				const daysThunder = Math.floor(timeLeftThunder / (1000 * 60 * 60 * 24));
-				const hoursThunder = Math.floor((timeLeftThunder % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				thunderTimer.textContent = `${daysThunder}d ${hoursThunder}h left`;
-			} else {
-				thunderTimer.textContent = 'Event Ended';
-				thunderTimer.style.opacity = '0.6';
+				rift4Timer.textContent = 'Ended';
 			}
 		}
 	}

@@ -1,0 +1,812 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout1 
+	title="Belphegar Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Belphegar (急侦-贝尔芬格), the SR Chaos debuffer specialist in Zone Nova"
+	gameTitle="Belphegar Character Guide"
+	showBreadcrumb={true}
+	breadcrumbText="Characters"
+>
+	<Fragment slot="head">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: var(--text-inverse);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.back-button:hover .back-arrow {
+				transform: translateX(-3px);
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-image {
+				width: 300px;
+				height: 300px;
+				border-radius: 20px;
+				object-fit: cover;
+				margin: 0 auto 2rem auto;
+				display: block;
+				box-shadow: 0 12px 30px rgba(139, 69, 193, 0.3);
+				transition: all 0.3s ease;
+			}
+
+			.character-image:hover {
+				transform: scale(1.05);
+				box-shadow: 0 16px 40px rgba(139, 69, 193, 0.4);
+			}
+
+			.character-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}
+
+			.subsection-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 2rem 0 1rem 0;
+				padding-left: 1rem;
+				border-left: 4px solid var(--amber-glow);
+			}
+
+			.skill-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin: 1.5rem 0 0.8rem 0;
+			}
+
+			.info-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.info-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.info-card:hover::before {
+				left: 100%;
+			}
+
+			.info-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.skill-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.08), rgba(0, 172, 193, 0.08));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin: 1.5rem 0;
+				transition: all 0.3s ease;
+			}
+
+			.skill-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.class-showcase {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.class-showcase::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.class-showcase:hover::before {
+				left: 100%;
+			}
+
+			.class-showcase:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+				border-color: var(--teal-crystal);
+			}
+
+			.class-image {
+				width: 64px;
+				height: 64px;
+				border-radius: 12px;
+				border: 2px solid var(--amber-glow);
+				flex-shrink: 0;
+				transition: all 0.3s ease;
+			}
+
+			.class-showcase:hover .class-image {
+				transform: scale(1.05);
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3);
+			}
+
+			.class-info h3 {
+				color: var(--amber-glow);
+				margin: 0 0 0.5rem 0;
+				font-size: 1.4rem;
+				font-weight: 600;
+				font-family: 'Space Grotesk', sans-serif;
+			}
+
+			.class-info p {
+				color: var(--text-secondary);
+				margin: 0;
+				font-size: 1rem;
+				line-height: 1.5;
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 1.5rem;
+				margin: 1.5rem 0;
+			}
+
+			.stat-item {
+				background: var(--bg-secondary);
+				padding: 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--neutral-200);
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				border-color: var(--amber-glow);
+				transform: translateY(-2px);
+			}
+
+			.stat-label {
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				color: var(--text-primary);
+				font-size: 1.1rem;
+			}
+
+			.awakening-card {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+				border: 1px solid var(--amber-glow);
+				border-radius: 12px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+
+			.critical-awakening {
+				background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1));
+				border-color: #dc3545;
+			}
+
+			.warning-box {
+				background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1));
+				border: 1px solid #ffc107;
+				border-radius: 12px;
+				padding: 1.5rem;
+				margin: 1.5rem 0;
+			}
+
+			.warning-box .warning-title {
+				color: #ffc107;
+				font-weight: 600;
+				margin-bottom: 0.5rem;
+			}
+
+			.priority-high {
+				color: #dc3545;
+				font-weight: 600;
+			}
+
+			.priority-medium {
+				color: #ffc107;
+				font-weight: 600;
+			}
+
+			.priority-low {
+				color: #28a745;
+				font-weight: 600;
+			}
+
+			.game-changing {
+				background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+				color: white;
+				padding: 0.3rem 0.8rem;
+				border-radius: 20px;
+				font-size: 0.8rem;
+				font-weight: 700;
+				margin-left: 0.5rem;
+			}
+
+			.build-section {
+				margin: 2rem 0;
+			}
+
+			.build-card {
+				background: var(--bg-secondary);
+				border: 1px solid var(--amber-glow);
+				border-radius: 15px;
+				padding: 1.5rem;
+				margin: 1rem 0;
+			}
+
+			.build-title {
+				font-size: 1.2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin-bottom: 1rem;
+			}
+
+			/* Memory Card mobile layout */
+			@media (max-width: 768px) {
+				.memory-card-layout {
+					flex-direction: column !important;
+					align-items: center !important;
+				}
+				
+				.memory-card-layout img {
+					margin-bottom: 1rem;
+				}
+			}
+
+			@keyframes sectionFadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes titleGlow {
+				0% {
+					filter: brightness(1);
+				}
+				100% {
+					filter: brightness(1.2);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+				
+				.character-header {
+					padding: 2rem;
+				}
+				
+				.character-image {
+					width: 250px;
+					height: 250px;
+				}
+				
+				.character-title {
+					font-size: 2.5rem;
+				}
+				
+				.content-section {
+					padding: 2rem;
+				}
+				
+				.section-title {
+					font-size: 1.8rem;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<!-- Back Button -->
+			<a href="/guides/zone-nova/characters/" class="back-button">
+				<span class="back-arrow">←</span>
+				Back to Characters
+			</a>
+
+			<!-- Character Header -->
+			<header class="character-header">
+				<img src="/images/characters/Belphegar.jpg" alt="Belphegar" class="character-image" loading="eager" />
+				<h1 class="character-title">Belphegar</h1>
+				<p class="character-subtitle">SR • Chaos • Sleep Debuffer</p>
+			</header>
+
+			<!-- Character Overview -->
+			<section class="content-section">
+				<h2 class="section-title">Character Overview</h2>
+				
+				<!-- Class Showcase -->
+				<div class="class-showcase">
+					<img src="/images/characters/class/Disruptor.jpg" alt="Disruptor Class" class="class-image">
+					<div class="class-info">
+						<h3>干扰使 (Disruptor)</h3>
+						<p>Sleep-focused crowd control specialist with battlefield disruption abilities</p>
+					</div>
+				</div>
+				
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Role</div>
+						<div class="stat-value">Debuffer</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Faction</div>
+						<div class="stat-value">守执使 (Guardian)</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Base Stats (Level 80)</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">HP (血量)</div>
+						<div class="stat-value">6,200</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Attack (攻击)</div>
+						<div class="stat-value">950</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Defense (防御)</div>
+						<div class="stat-value">480</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Energy Recovery</div>
+						<div class="stat-value">2.50/s</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Critical Rate</div>
+						<div class="stat-value">0%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Critical Damage</div>
+						<div class="stat-value">50%</div>
+					</div>
+				</div>
+
+				<div class="info-card">
+					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
+						Belphegar is a specialized sleep-focused debuffer who excels at crowd control and disruption through the "Sleep" status effect system. Her kit revolves around the powerful Seven Deadly Sins: Sloth ultimate that applies team-wide sleep effects while providing damage amplification against sleeping targets, making her the ultimate battlefield disruptor.
+					</p>
+				</div>
+			</section>
+
+			<!-- Skills -->
+			<section class="content-section">
+				<h2 class="section-title">Skills</h2>
+				
+				<div class="skill-card">
+					<h3 class="skill-title">🌀 Normal Attack: Fatigue Bombardment (疲劳轰炸)</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 2.0s</p>
+					<p>Deals chaos damage equal to <strong>120% of Attack</strong> to designated enemy unit</p>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">🛏️ Auto Skill: Power of the Blanket (毛毯之力)</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 5.0s</p>
+					<ul>
+						<li>Attacks the enemy with highest attack, dealing <strong>120% attack damage</strong></li>
+						<li>Reduces target's critical rate and critical damage by <strong>24%</strong> for 10 seconds</li>
+					</ul>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">😴 Ultimate: Seven Deadly Sins: Sloth (七大罪：怠惰)</h3>
+					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 3</p>
+					
+					<ul style="margin: 0.5rem 0; padding-left: 2rem;">
+						<li>Deals <strong>120% attack damage</strong> to all targets</li>
+						<li>Causes all enemies to enter <strong>[Sleep] state</strong> for 10 seconds</li>
+						<li>Sleep effectiveness increases by <strong>58%</strong></li>
+					</ul>
+
+					<div class="warning-box">
+						<div class="warning-title">💤 Sleep Status Effect</div>
+						<div class="warning-content">
+							<p>Sleep incapacitates targets, preventing them from taking actions while active. Belphegar's enhanced version has 58% increased effectiveness and duration.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="skill-card">
+					<h3 class="skill-title">🌙 Passive: Have a Good Sleep~ (好好睡觉~)</h3>
+					<p><strong>Level:</strong> 10+4</p>
+					<p><strong>Sleep Amplification Effect:</strong></p>
+					<ul style="margin: 1rem 0; padding-left: 2rem;">
+						<li>When using skills, targets affected by <strong>[Sleep] status</strong> take additional <strong>58% damage</strong> for 10 seconds</li>
+						<li><strong>Sleep Synergy:</strong> Enhances all damage against sleeping enemies</li>
+						<li><strong>Duration Extension:</strong> Maintains damage amplification throughout sleep duration</li>
+					</ul>
+
+					<div class="info-card">
+						<p><strong>Sleep Synergy Explained:</strong> This passive transforms Belphegar's team into a sleep exploitation machine. After applying sleep with her ultimate, all team damage gains massive amplification against the helpless enemies.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Team Composition Skill -->
+			<section class="content-section">
+				<h2 class="section-title">Team Composition Skill</h2>
+				
+				<div class="skill-card">
+					<h3 class="skill-title">🌀 Combination Skill</h3>
+					<p><strong>Level:</strong> 1</p>
+					
+					<div class="warning-box">
+						<div class="warning-title">🌌 Activation Requirements</div>
+						<div class="warning-content">
+							<p>Triggers when team contains <strong>2 [Olympus (奥林匹斯)] characters</strong> OR <strong>2 [Chaos (混沌)] characters</strong></p>
+						</div>
+					</div>
+
+					<p><strong>Effect:</strong> Personal damage increases by <strong>20%</strong></p>
+				</div>
+			</section>
+
+			<!-- Awakening Effects -->
+			<section class="content-section">
+				<h2 class="section-title">Awakening Effects</h2>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 1 (IMPORTANT)</h3>
+					<p>When using skills to attack targets with immunity effects, critical rate increases by <strong>30%</strong></p>
+					<p><strong>Impact:</strong> Provides reliable damage against protected enemies and immune targets</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 2</h3>
+					<p>Normal attacks additionally deal <strong>20% attack power</strong> as damage</p>
+					<p><strong>Impact:</strong> Consistent damage boost for sustained combat scenarios</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 3</h3>
+					<p><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
+				</div>
+
+				<div class="awakening-card critical-awakening">
+					<h3 class="skill-title">🌟 Awakening 4 (IMPORTANT)</h3>
+					<p>Attack power increases by <strong>20%</strong></p>
+					<p><strong>Impact:</strong> Enhances all damage calculations and team synergy scaling</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">Awakening 5</h3>
+					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
+				</div>
+
+				<div class="awakening-card">
+					<h3 class="skill-title">🌟 Awakening 6 (GAME-CHANGING)</h3>
+					<p>Ultimate can additionally cause targets to take <strong>20% more damage</strong> for 5 seconds</p>
+					<p><strong>Impact:</strong> Stacks with passive for devastating 78% total damage amplification against sleeping targets</p>
+				</div>
+
+				<div class="warning-box">
+					<div class="warning-title">💤 Sleep Combo Mastery</div>
+					<p>With Awakenings 4+6, Belphegar achieves maximum sleep exploitation:</p>
+					<ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+						<li><strong>Ultimate Sleep Application</strong> → All enemies sleep for 10 seconds</li>
+						<li><strong>Combined Damage Amplification:</strong> 58% (passive) + 20% (A6) = 78% extra damage</li>
+						<li><strong>Enhanced Attack Power:</strong> +20% from Awakening 4</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Recommended Builds -->
+			<section class="content-section">
+				<h2 class="section-title">Recommended Builds</h2>
+
+				<h3 class="subsection-title">Rune Sets</h3>
+				
+				<div class="info-card">
+					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Sleep Control Master)</h4>
+					<ul>
+						<li><strong>4-Piece Zahn (札恩):</strong> HP +8%, After Ultimate: Take 5% less damage (10s)</li>
+						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
+					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">Perfect synergy: Enhanced survivability during sleep rotations while maintaining damage scaling for team amplification</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">💥 Team Support Build</h4>
+					<ul>
+						<li><strong>4-Piece Epsilon (埃普西隆):</strong> Attack +8%, After Ultimate: Team damage +10% (10s)</li>
+						<li><strong>2-Piece Alpha:</strong> Attack +8%</li>
+					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">Focus: Maximizes team damage output after applying sleep effects, creating devastating sleep combo windows</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--rose-quartz); margin: 0 0 1rem 0;">⚖️ Hybrid Build (Balanced Control)</h4>
+					<ul>
+						<li><strong>2-Piece Alpha:</strong> Attack +8%</li>
+						<li><strong>2-Piece Epsilon:</strong> Attack +8%</li>
+						<li><strong>2-Piece Zahn:</strong> HP +8%</li>
+					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">Balance: Survivability with consistent damage for extended crowd control scenarios</p>
+				</div>
+
+				<div class="info-card">
+					<h4 style="color: var(--text-primary); margin: 0 0 1rem 0;">⚡ Critical Build (Immunity Breaker)</h4>
+					<ul>
+						<li><strong>4-Piece Beth (贝丝):</strong> Critical Hit Rate +6%, When HP >80%: Critical Hit Damage +24%</li>
+						<li><strong>2-Piece Alpha:</strong> Attack +8%</li>
+					</ul>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">Synergy: Maximizes Awakening 1 critical rate bonus against immune targets</p>
+				</div>
+
+				<h3 class="subsection-title">Main Stats</h3>
+				<div class="stats-grid">
+					<div class="stat-item">
+						<div class="stat-label">Position 1</div>
+						<div class="stat-value">HP (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 2</div>
+						<div class="stat-value">ATK (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 3</div>
+						<div class="stat-value">DEF (Fixed)</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 4</div>
+						<div class="stat-value">ATK% / HP%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 5</div>
+						<div class="stat-value">🌀 Chaos DMG% / ATK%</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-label">Position 6</div>
+						<div class="stat-value">ATK%</div>
+					</div>
+				</div>
+
+				<h3 class="subsection-title">Substat Priorities</h3>
+				<div class="info-card">
+					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li>Attack%</li>
+						<li>HP% (for survivability during sleep rotations)</li>
+						<li>Critical Rate / Critical Damage</li>
+						<li>Penetration</li>
+						<li>Attack (Flat)</li>
+						<li>Defense%</li>
+					</ol>
+					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+						<strong>Note:</strong> Focus on Attack% for team combination skill scaling and damage amplification effects. HP% helps survive while enemies are sleeping.
+					</p>
+				</div>
+			</section>
+
+			<!-- Memory Card -->
+			<section class="content-section">
+				<h2 class="section-title">Memory Card: Reason for Drowsiness</h2>
+				
+				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;" class="memory-card-layout">
+					<img src="/images/characters/Belphegarcard.jpg" alt="Belphegar Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(139, 69, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+					
+					<div style="flex: 1; min-width: 300px;">
+						<div class="info-card" style="margin: 0;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid">
+								<div class="stat-item">
+									<div class="stat-label">HP</div>
+									<div class="stat-value">5,000</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Attack</div>
+									<div class="stat-value">500</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-label">Defense</div>
+									<div class="stat-value">500</div>
+								</div>
+							</div>
+
+							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effect: Reason for Drowsiness</h4>
+							<ul>
+								<li><strong>Class Restriction:</strong> Only effective for Disruptor (干扰使)</li>
+								<li><strong>5th Stage Awakening Required</strong></li>
+								<li><strong>Effect:</strong> Ultimate reduces all enemies' energy acquisition efficiency by <strong>18%</strong></li>
+							</ul>
+
+							<div class="info-card" style="margin-top: 1.5rem;">
+								<p><strong>🎯 Perfect Sleep Control:</strong> This memory card transforms Belphegar into the ultimate crowd control specialist, combining sleep effects with energy disruption to completely shut down enemy teams. The energy reduction prevents enemies from using ultimates while sleeping.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Usage Tips -->
+			<section class="content-section">
+				<h2 class="section-title">Usage Tips</h2>
+
+				<h3 class="subsection-title">Strengths</h3>
+				<div class="info-card">
+					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li>Ultimate crowd control through team-wide sleep application</li>
+						<li>Massive damage amplification (58%+) against sleeping targets</li>
+						<li>Critical rate disruption reduces enemy damage output</li>
+						<li>Energy reduction prevents enemy ultimate usage</li>
+						<li>Team synergy provides 20% personal damage boost</li>
+						<li><strong>With Awakening 6:</strong> Creates devastating 78% damage amplification windows</li>
+					</ul>
+				</div>
+
+				<h3 class="subsection-title">Core Strategy</h3>
+				<div class="info-card">
+					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
+						<li><strong>Sleep Application</strong> → Use ultimate to put all enemies to sleep</li>
+						<li><strong>Damage Window</strong> → Team focuses damage on sleeping targets for 58%+ amplification</li>
+						<li><strong>Critical Disruption</strong> → Use skill to reduce enemy critical capabilities</li>
+						<li><strong>Energy Control</strong> → Memory card prevents enemy ultimates during sleep</li>
+					</ol>
+				</div>
+
+				<div class="warning-box">
+					<div class="warning-title">💤 Sleep Team Composition</div>
+					<p>Pair Belphegar with high-damage dealers who can exploit the sleep windows:</p>
+					<ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+						<li><strong>Burst DPS characters</strong> to maximize damage during sleep</li>
+						<li><strong>AoE damage dealers</strong> to hit multiple sleeping targets</li>
+						<li><strong>Olympus/Chaos characters</strong> for team synergy activation</li>
+					</ul>
+				</div>
+
+				<h3 class="subsection-title">Sleep Management</h3>
+				<div class="info-card">
+					<ul>
+						<li><strong>Duration:</strong> 10 seconds of enemy incapacitation</li>
+						<li><strong>Effectiveness:</strong> 58% increased sleep potency</li>
+						<li><strong>Damage Amplification:</strong> 58% bonus damage for 10 seconds</li>
+						<li><strong>Team Coordination:</strong> Focus all damage during sleep windows</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</ZoneNovaLayout1> 

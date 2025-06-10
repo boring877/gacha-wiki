@@ -1,0 +1,298 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+---
+
+<ZoneNovaLayout1 
+	title="June 10th Maintenance Updates - Zone Nova - GachaWiki" 
+	description="June 10th maintenance bringing UI improvements, team presets expansion, bug fixes and system optimizations"
+	gameTitle="June 10th Maintenance Updates"
+	showBreadcrumb={true}
+	breadcrumbText="Maintenance Updates"
+>
+	<Fragment slot="head">
+		<style>
+			.back-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--bg-primary);
+				color: var(--text-primary);
+				text-decoration: none;
+				padding: 1rem 1.5rem;
+				border-radius: 12px;
+				border: 1px solid var(--amber-glow);
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				margin-bottom: 2rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+			}
+
+			.back-button:hover {
+				background: var(--amber-glow);
+				color: white;
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+			}
+
+			.maintenance-header {
+				background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));
+				padding: 3rem;
+				border-radius: 20px;
+				margin-bottom: 3rem;
+				border: 1px solid var(--teal-crystal);
+				text-align: center;
+			}
+
+			.maintenance-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 3rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin: 0 0 1rem 0;
+			}
+
+			.maintenance-date {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+			}
+
+			.content-section {
+				background: rgba(240, 240, 240, 0.95);
+				padding: 2.5rem;
+				border-radius: 16px;
+				margin-bottom: 2rem;
+				border: 1px solid var(--mocha-mousse);
+				box-shadow: 0 8px 24px rgba(164, 120, 100, 0.15);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.8rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+			}
+
+			.improvements-section {
+				background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+				border-left: 4px solid #22c55e;
+			}
+
+			.bug-fixes-section {
+				background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+				border-left: 4px solid #3b82f6;
+			}
+
+			.improvement-card {
+				background: white;
+				padding: 1.5rem;
+				border-radius: 12px;
+				margin-bottom: 1.5rem;
+				border: 1px solid var(--neutral-200);
+				transition: all 0.3s ease;
+			}
+
+			.improvement-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+				border-color: #22c55e;
+			}
+
+			.improvement-card:last-child {
+				margin-bottom: 0;
+			}
+
+			.improvement-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.2rem;
+				font-weight: 600;
+				color: #22c55e;
+				margin: 0 0 0.75rem 0;
+			}
+
+			.bug-fix-card {
+				background: white;
+				padding: 1.25rem;
+				border-radius: 10px;
+				margin-bottom: 1rem;
+				border: 1px solid var(--neutral-200);
+				border-left: 3px solid #3b82f6;
+			}
+
+			.bug-fix-card:last-child {
+				margin-bottom: 0;
+			}
+
+			.bug-category {
+				font-weight: 600;
+				color: #3b82f6;
+				font-size: 1rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.bug-description {
+				color: var(--text-secondary);
+				line-height: 1.5;
+				margin: 0;
+			}
+
+			.highlight-feature {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.2), rgba(255, 183, 77, 0.1));
+				padding: 1rem;
+				border-radius: 8px;
+				border-left: 3px solid var(--amber-glow);
+				margin: 1rem 0;
+			}
+
+			.back-arrow {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+			}
+
+			.announcement-header-image {
+				margin-bottom: 3rem;
+				border-radius: 16px;
+				overflow: hidden;
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.3);
+				transition: all 0.4s ease;
+			}
+
+			.announcement-header-image:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.4);
+			}
+
+			.announcement-header-image img {
+				width: 100%;
+				height: auto;
+				display: block;
+				max-height: 400px;
+				object-fit: cover;
+			}
+
+			@media (max-width: 768px) {
+				.maintenance-title {
+					font-size: 2rem;
+				}
+
+				.content-section {
+					padding: 1.5rem;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<!-- Back Button -->
+	<a href="/guides/zone-nova/updates/" class="back-button">
+		<span class="back-arrow">←</span>
+		Back to Updates
+	</a>
+
+	<!-- Header Image -->
+	<div class="announcement-header-image">
+		<img src="/images/Maintenance/6-10-maintenance.jpg" alt="June 10th Maintenance" />
+	</div>
+
+	<!-- Maintenance Header -->
+	<div class="maintenance-header">
+		<h1 class="maintenance-title">Zone Nova Maintenance Updates</h1>
+		<p class="maintenance-date">Published on <FormattedDate date={new Date('2025-06-10')} /></p>
+	</div>
+
+	<!-- Captain's Notice -->
+	<section class="content-section">
+		<h2 class="section-title">📢 Captain's Notice</h2>
+		<p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">
+			Dear Captains, thank you for your continued support! The June 10th maintenance has been completed, bringing various improvements and optimizations to enhance your gaming experience.
+		</p>
+	</section>
+
+	<!-- Adjustments & Improvements -->
+	<section class="content-section improvements-section">
+		<h2 class="section-title">⚡ Adjustments & Improvements</h2>
+
+		<div class="improvement-card">
+			<h3 class="improvement-title">🎯 Team Presets Expansion</h3>
+			<div class="highlight-feature">
+				<p style="margin: 0; color: var(--text-primary); font-weight: 500;">
+					Team presets have been expanded from 5 to <strong>8 teams</strong>, allowing you to save and quickly switch between more strategic formations!
+				</p>
+			</div>
+		</div>
+
+		<div class="improvement-card">
+			<h3 class="improvement-title">🔔 Enhanced Notifications</h3>
+			<p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">
+				Improved notification system with clearer messaging and better timing to keep you informed of important game events and updates.
+			</p>
+		</div>
+
+		<div class="improvement-card">
+			<h3 class="improvement-title">🎨 Interface Optimizations</h3>
+			<p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">
+				Various UI elements have been refined for better usability, including smoother animations, improved button responsiveness, and enhanced visual clarity across different screen sizes.
+			</p>
+		</div>
+
+		<div class="improvement-card">
+			<h3 class="improvement-title">⚙️ Performance Enhancements</h3>
+			<p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">
+				General performance improvements to reduce loading times, optimize memory usage, and provide a smoother overall gaming experience.
+			</p>
+		</div>
+	</section>
+
+	<!-- Bug Fixes -->
+	<section class="content-section bug-fixes-section">
+		<h2 class="section-title">🔧 Bug Fixes</h2>
+
+		<div class="bug-fix-card">
+			<div class="bug-category">Combat System</div>
+			<p class="bug-description">Fixed issues with skill cooldown calculations that were causing inconsistent ability timing in certain scenarios.</p>
+		</div>
+
+		<div class="bug-fix-card">
+			<div class="bug-category">Character Management</div>
+			<p class="bug-description">Resolved character sorting problems in inventory and formation screens that prevented proper organization by level and rarity.</p>
+		</div>
+
+		<div class="bug-fix-card">
+			<div class="bug-category">Equipment System</div>
+			<p class="bug-description">Fixed equipment enhancement calculations that were displaying incorrect stat improvements during upgrade previews.</p>
+		</div>
+
+		<div class="bug-fix-card">
+			<div class="bug-category">User Interface</div>
+			<p class="bug-description">Corrected display issues with menu overlays and modal windows that could cause interface elements to become unresponsive.</p>
+		</div>
+
+		<div class="bug-fix-card">
+			<div class="bug-category">Network & Connectivity</div>
+			<p class="bug-description">Improved connection stability and reduced instances of timeouts during peak usage periods.</p>
+		</div>
+
+		<div class="bug-fix-card">
+			<div class="bug-category">Data Synchronization</div>
+			<p class="bug-description">Fixed rare cases where player progress might not sync properly between different devices or after network interruptions.</p>
+		</div>
+
+		<div class="bug-fix-card">
+			<div class="bug-category">Audio & Visual</div>
+			<p class="bug-description">Resolved audio playback issues and visual glitches that could occur during intense battle sequences or rapid screen transitions.</p>
+		</div>
+
+		<div class="bug-fix-card">
+			<div class="bug-category">Localization</div>
+			<p class="bug-description">Fixed text display problems and translation inconsistencies across multiple language settings.</p>
+		</div>
+	</section>
+</ZoneNovaLayout1> 

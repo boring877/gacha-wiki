@@ -4,11 +4,11 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 ---
 
 <ZoneNovaLayout1 
-	title="Zeus Limited Recruitment - Zone Nova - GachaWiki" 
-	description="Zeus Limited Recruitment event with God of Judgment character and Frozen Heart relic"
-	gameTitle="Zeus Limited Recruitment"
+	title="June 10th Maintenance - Zone Nova Updates - GachaWiki" 
+	description="Major June 10th maintenance bringing Thunder King Part 2, new character Yuis, Guild Trials, and multiple limited events"
+	gameTitle="June 10th Maintenance"
 	showBreadcrumb={true}
-	breadcrumbText="News & Updates"
+	breadcrumbText="June 10th Maintenance"
 >
 	<Fragment slot="head">
 		<style>
@@ -32,49 +32,21 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 			.back-button:hover {
 				background: var(--amber-glow);
-				color: var(--text-inverse);
+				color: white;
 				transform: translateY(-2px);
 				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
 			}
 
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
-
-			.character-page {
-				background: var(--bg-secondary);
-				min-height: 100vh;
-				padding: 2rem 0;
-			}
-
-			.character-container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 0 2rem;
-			}
-
-			.character-header {
-				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
-				border-radius: 20px;
+			.announcement-header {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
 				padding: 3rem;
+				border-radius: 20px;
 				margin-bottom: 3rem;
 				border: 1px solid var(--amber-glow);
-				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
 				text-align: center;
-				transition: all 0.4s ease;
 			}
 
-			.character-header:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
-			}
-
-			.character-title {
+			.announcement-title {
 				font-family: 'Space Grotesk', sans-serif;
 				font-size: 3rem;
 				font-weight: 700;
@@ -82,368 +54,366 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 				margin: 0 0 1rem 0;
-				animation: titleGlow 3s ease-in-out infinite alternate;
 			}
 
-			.character-subtitle {
+			.announcement-date {
 				color: var(--text-secondary);
 				font-size: 1.2rem;
 				margin: 0;
-				font-weight: 500;
 			}
 
 			.content-section {
-				background: var(--bg-primary);
-				border-radius: 20px;
-				padding: 3rem;
+				background: rgba(240, 240, 240, 0.95);
+				padding: 2.5rem;
+				border-radius: 16px;
 				margin-bottom: 2rem;
-				border: 1px solid var(--neutral-200);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
-				transition: all 0.4s ease;
-				animation: sectionFadeIn 0.8s ease-out;
-			}
-
-			.content-section:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
-				border-color: var(--teal-crystal);
+				border: 1px solid var(--mocha-mousse);
+				box-shadow: 0 8px 24px rgba(164, 120, 100, 0.15);
 			}
 
 			.section-title {
 				font-family: 'Space Grotesk', sans-serif;
-				font-size: 2rem;
-				font-weight: 700;
-				color: var(--text-primary);
-				margin: 0 0 1.5rem 0;
-				padding-bottom: 0.75rem;
-				border-bottom: 2px solid var(--amber-glow);
-				position: relative;
-			}
-
-			.section-title::after {
-				content: '';
-				position: absolute;
-				bottom: -2px;
-				left: 0;
-				width: 60px;
-				height: 2px;
-				background: var(--teal-crystal);
-			}
-
-			.subsection-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.5rem;
+				font-size: 1.8rem;
 				font-weight: 600;
 				color: var(--text-primary);
-				margin: 2rem 0 1rem 0;
-				padding-left: 1rem;
-				border-left: 4px solid var(--amber-glow);
+				margin: 0 0 1.5rem 0;
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
 			}
 
-			.info-card {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
-				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-				transition: all 0.3s ease;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.info-card::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-				transition: left 0.6s ease;
-			}
-
-			.info-card:hover::before {
-				left: 100%;
-			}
-
-			.info-card:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
-			}
-
-			.skill-card {
-				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
-				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1rem 0;
-				transition: all 0.3s ease;
+			.maintenance-info {
+				background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(0, 172, 193, 0.05));
 				border-left: 4px solid var(--teal-crystal);
 			}
 
-			.skill-card:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);
-				border-left-color: var(--amber-glow);
+			.events-section {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(255, 183, 77, 0.05));
+				border-left: 4px solid var(--amber-glow);
 			}
 
-			.warning-card {
-				background: linear-gradient(135deg, rgba(255, 82, 82, 0.1), rgba(255, 183, 77, 0.1));
-				border: 2px solid var(--accent-highlight);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 2rem 0;
-				border-left: 4px solid var(--accent-highlight);
+			.gemstone-section {
+				background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(147, 51, 234, 0.05));
+				border-left: 4px solid #9333ea;
 			}
 
-			.holy-card {
-				background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.1));
-				border: 2px solid #FFD700;
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 2rem 0;
-				border-left: 4px solid #FFD700;
+			.compensation-section {
+				background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+				border-left: 4px solid #22c55e;
 			}
 
-			.stats-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-				gap: 1rem;
-				margin: 1.5rem 0;
-			}
-
-			.stat-item {
-				background: var(--bg-primary);
-				padding: 1rem;
-				border-radius: 10px;
+			.event-item {
+				background: white;
+				padding: 1.5rem;
+				border-radius: 12px;
+				margin-bottom: 1.5rem;
 				border: 1px solid var(--neutral-200);
-				text-align: center;
 				transition: all 0.3s ease;
 			}
 
-			.stat-item:hover {
-				background: var(--neutral-50);
+			.event-item:hover {
 				transform: translateY(-2px);
-				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.1);
+				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+				border-color: var(--amber-glow);
 			}
 
-			.stat-label {
+			.event-item:last-child {
+				margin-bottom: 0;
+			}
+
+			.event-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.3rem;
 				font-weight: 600;
 				color: var(--amber-glow);
-				font-size: 0.9rem;
+				margin: 0 0 0.5rem 0;
+			}
+
+			.event-time {
+				color: var(--teal-crystal);
+				font-weight: 500;
+				font-size: 0.95rem;
+				margin: 0 0 1rem 0;
+			}
+
+			.event-description {
+				color: var(--text-secondary);
+				line-height: 1.6;
+				margin: 0;
+			}
+
+			.character-highlight {
+				background: linear-gradient(135deg, rgba(255, 183, 77, 0.2), rgba(255, 183, 77, 0.1));
+				padding: 1rem;
+				border-radius: 8px;
+				border-left: 3px solid var(--amber-glow);
+				margin: 1rem 0;
+			}
+
+			.character-quote {
+				font-style: italic;
+				color: var(--amber-glow);
+				font-weight: 500;
+				text-align: center;
+				margin: 1rem 0;
+				padding: 1rem;
+				background: rgba(255, 183, 77, 0.1);
+				border-radius: 8px;
+			}
+
+			.rule-effects {
+				background: rgba(0, 172, 193, 0.1);
+				padding: 1.5rem;
+				border-radius: 8px;
+				margin: 1rem 0;
+			}
+
+			.rule-effects h4 {
+				color: var(--teal-crystal);
+				font-family: 'Space Grotesk', sans-serif;
+				margin: 0 0 1rem 0;
+			}
+
+			.rule-effects ol {
+				margin: 0;
+				padding-left: 1.5rem;
+			}
+
+			.rule-effects li {
+				color: var(--text-secondary);
+				margin-bottom: 0.5rem;
+				line-height: 1.5;
+			}
+
+			.maintenance-details {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1rem;
+				margin: 1rem 0;
+			}
+
+			.maintenance-item {
+				background: white;
+				padding: 1rem;
+				border-radius: 8px;
+				border: 1px solid var(--neutral-200);
+			}
+
+			.maintenance-item strong {
+				color: var(--teal-crystal);
+				display: block;
 				margin-bottom: 0.5rem;
 			}
 
-			.stat-value {
+			.compensation-details {
+				background: white;
+				padding: 1.5rem;
+				border-radius: 8px;
+				border: 1px solid #22c55e;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1rem;
+			}
+
+			.compensation-item {
+				text-align: center;
+			}
+
+			.compensation-item strong {
+				color: #22c55e;
+				display: block;
 				font-size: 1.1rem;
-				color: var(--text-primary);
-				font-weight: 700;
-			}
-
-			.text-content {
-				color: var(--text-primary);
-				line-height: 1.7;
-				font-size: 1rem;
-			}
-
-			.text-content p {
-				margin: 1rem 0;
-			}
-
-			.text-content ul, .text-content ol {
-				padding-left: 2rem;
-				margin: 1rem 0;
-			}
-
-			.text-content li {
-				margin: 0.5rem 0;
-				line-height: 1.6;
-			}
-
-			.text-content strong {
-				color: var(--amber-glow);
-				font-weight: 600;
-			}
-
-			.highlight-text {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
-				padding: 0.2rem 0.5rem;
-				border-radius: 6px;
-				font-weight: 600;
-			}
-
-			.character-info {
-				background: var(--bg-primary);
-				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-				font-family: 'Courier New', monospace;
-				border-left: 4px solid var(--amber-glow);
-				white-space: pre-line;
-			}
-
-			.quote-box {
-				background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 255, 255, 0.05));
-				border: 1px solid #FFD700;
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-				font-style: italic;
-				border-left: 4px solid #FFD700;
-				position: relative;
-			}
-
-			.quote-box::before {
-				content: '"';
-				font-size: 4rem;
-				color: #FFD700;
-				position: absolute;
-				top: -10px;
-				left: 15px;
-				font-family: serif;
-			}
-
-			@keyframes sectionFadeIn {
-				0% {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				100% {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			@keyframes titleGlow {
-				0% {
-					text-shadow: 
-						0 0 10px rgba(255, 183, 77, 0.3),
-						0 0 20px rgba(255, 183, 77, 0.2);
-				}
-				100% {
-					text-shadow: 
-						0 0 20px rgba(255, 183, 77, 0.6),
-						0 0 30px rgba(255, 183, 77, 0.4);
-				}
+				margin-bottom: 0.25rem;
 			}
 
 			@media (max-width: 768px) {
-				.character-container {
-					padding: 0 1rem;
-				}
-
-				.character-header {
-					padding: 2rem;
-				}
-
-				.character-title {
+				.announcement-title {
 					font-size: 2rem;
 				}
 
 				.content-section {
-					padding: 2rem;
+					padding: 1.5rem;
 				}
 
-				.stats-grid {
+				.maintenance-details {
+					grid-template-columns: 1fr;
+				}
+
+				.compensation-details {
 					grid-template-columns: 1fr;
 				}
 			}
 		</style>
 	</Fragment>
 
-	<div class="character-page">
-		<div class="character-container">
-			<!-- Back Button -->
-			<a href="/guides/zone-nova/updates/" class="back-button">
-				<span class="back-arrow">←</span>
-				Back to News & Updates
-			</a>
+	<!-- Back Button -->
+	<a href="/guides/zone-nova/updates/" class="back-button">
+		<span>←</span>
+		Back to Updates
+	</a>
 
-			<!-- Character Header -->
-			<div class="character-header">
-				<h1 class="character-title">⚡ Zeus Limited Recruitment</h1>
-			</div>
-
-			<!-- TL;DR Summary -->
-			<div class="warning-card">
-				<div class="text-content">
-					<p><strong>🎯 TL;DR:</strong> Zeus, master of Divine Judgment, arrives as a Limited Holy character with pursuit mechanics! Get her and the exclusive "Frozen Heart" relic from June 10-24, 2025.</p>
-				</div>
-			</div>
-
-			<!-- Event Schedule -->
-			<section class="content-section">
-				<h2 class="section-title">📅 Recruitment Schedule</h2>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Start Date</div>
-						<div class="stat-value">June 10, 2025</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Start Time</div>
-						<div class="stat-value">14:15:00 UTC+8</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">End Date</div>
-						<div class="stat-value">June 24, 2025</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">End Time</div>
-						<div class="stat-value">03:59:59 UTC+8</div>
-					</div>
-				</div>
-				
-				<div class="warning-card">
-					<div class="text-content">
-						<p><strong>⚠️ LIMITED TIME:</strong> 14 days only! Don't miss this exclusive recruitment opportunity.</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Character Information -->
-			<section class="content-section">
-				<h2 class="section-title">👑 Meet Zeus - Divine Judgment</h2>
-
-				<h3 class="subsection-title">⚔️ Character Overview</h3>
-				<div class="holy-card">
-					<div class="stats-grid">
-						<div class="stat-item">
-							<div class="stat-label">Name</div>
-							<div class="stat-value">Zeus</div>
-						</div>
-						<div class="stat-item">
-							<div class="stat-label">Rarity</div>
-							<div class="stat-value">SSR</div>
-						</div>
-						<div class="stat-item">
-							<div class="stat-label">Element</div>
-							<div class="stat-value">Holy</div>
-						</div>
-						<div class="stat-item">
-							<div class="stat-label">Combat Style</div>
-							<div class="stat-value">Pursuit</div>
-						</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">🏛️ Character Background</h3>
-				<div class="info-card">
-					<div class="text-content">
-						<p>Zeus is a member of the <strong>Arbitration Council</strong> and serves as <strong>Otis (Federation) Supreme Court Chief Justice</strong>, holding an important government position.</p>
-						<p>With firm belief in <strong>fair and impartial judgment</strong>, she earned recognition for her <strong>Divine Judgment</strong> abilities.</p>
-						<p>Despite her <span class="highlight-text">doll-like, pure girl appearance</span>, she hides the heart of an <strong>iron-faced, selfless grand justice</strong> - the very embodiment of the Federation's judicial justice.</p>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">⚖️ Character Quote</h3>
-				<div class="quote-box">
-					<div class="text-content">
-						<p style="margin-left: 2rem; font-size: 1.1rem; color: var(--text-primary);">According to Federation Law Article 384 [Theft and Obscenity Crime Without Permission], your frivolous eyes and actions! You have violated the law!!</p>
-					</div>
-				</div>
-			</section>
-		</div>
+	<!-- Announcement Header -->
+	<div class="announcement-header">
+		<h1 class="announcement-title">Zone Nova June 10th Maintenance</h1>
+		<p class="announcement-date">Published on <FormattedDate date={new Date('2025-06-10')} /></p>
 	</div>
+
+	<!-- Captain's Notice -->
+	<section class="content-section">
+		<h2 class="section-title">📢 Captain's Notice</h2>
+		<p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">
+			Thank you for your continued support of "ZONE NOVA"! We will conduct game updates and maintenance on June 10, 2025, to bring a better gaming experience. Please review the details below and prepare accordingly.
+		</p>
+	</section>
+
+	<!-- Maintenance Information -->
+	<section class="content-section maintenance-info">
+		<h2 class="section-title">🔧 Maintenance Information</h2>
+		
+		<div class="maintenance-details">
+			<div class="maintenance-item">
+				<strong>Maintenance Time:</strong>
+				Starting June 10, 2025 at 14:00<br>
+				Estimated duration: 4 hours
+			</div>
+			<div class="maintenance-item">
+				<strong>Maintenance Content:</strong>
+				System optimization, event updates, and brand new gameplay going online
+			</div>
+		</div>
+
+		<p style="color: var(--text-secondary); margin: 1rem 0 0 0; font-style: italic;">
+			⚠️ During maintenance, captains will be unable to log into the game. Please prepare in advance.
+		</p>
+	</section>
+
+	<!-- Event Information -->
+	<section class="content-section events-section">
+		<h2 class="section-title">🎉 Event Information</h2>
+
+		<div class="event-item">
+			<h3 class="event-title">1. Thunder King's Reign: Trial and Domination Symphony Part 2</h3>
+			<p class="event-time">📅 June 10 after server opens ~ June 24, 03:59:59</p>
+			<div class="event-description">
+				<p>Captains can enter through the event entrance on the main interface after completing Chapter 6 of the main storyline. In the event story cards, you'll receive "Event Currency" that can be exchanged for:</p>
+				<ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+					<li>Photon Stones</li>
+					<li>Enhancement materials</li>
+					<li>Affection materials</li>
+					<li>Other generous rewards in the event shop</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="event-item">
+			<h3 class="event-title">2. Limited Character Recruitment - Yuis</h3>
+			<p class="event-time">📅 June 10 after server opens ~ June 24, 03:59:59</p>
+			<div class="character-highlight">
+				<p><strong>Class:</strong> Ranger | <strong>Attribute:</strong> Holy</p>
+				<p style="margin: 1rem 0;"><strong>Introduction:</strong> One of the [Mother's] dependents, Yuis from [Federation] is the highest-ranking judge, holding an important position in the [Federation] government. Due to her fair and impartial judgments, she earned the title of [God of Judgment]. Don't be deceived by her doll-like cute appearance - beneath that adorable exterior lies an iron-faced, impartial judge who embodies the [Federation's] judicial justice.</p>
+			</div>
+			<div class="character-quote">
+				"According to [Federation Law] Article 384 [Theft and Obscenity Crimes], your frivolous gaze and actions! You have violated the law!"
+			</div>
+		</div>
+
+		<div class="event-item">
+			<h3 class="event-title">3. Limited Memory Recruitment - Frozen Heart</h3>
+			<p class="event-time">📅 June 10 after server opens ~ June 24, 03:59:59</p>
+			<div class="event-description">
+				<p><strong>Compatible Class:</strong> Ranger</p>
+				<p><strong>Introduction:</strong> This is the deepest secret scene in Yuis's heart. The Frozen Heart carries her loneliness and persistence as the God of Judgment. Captains will have the opportunity to glimpse the struggles and emotions deep within her heart.</p>
+			</div>
+		</div>
+
+		<div class="event-item">
+			<h3 class="event-title">4. Guild Trial</h3>
+			<p class="event-time">📅 June 10 after server opens (Permanent Feature)</p>
+			<div class="event-description">
+				<p>Captains can participate in guild trials after completing Chapter 6 of the main storyline, unlocking the guild system and joining a guild.</p>
+				<p><strong>Gameplay Introduction:</strong> Brand new guild gameplay is online! Guild members can team up to challenge powerful guild bosses. The guild as a whole needs strategy to defeat the highest difficulty bosses and earn more guild boss kill counts to obtain generous rewards. Finally, you can compete with other guilds in rankings for kill counts and output!</p>
+			</div>
+		</div>
+
+		<div class="event-item">
+			<h3 class="event-title">5. Limited Recommended Package</h3>
+			<p class="event-time">📅 June 10 after server opens ~ June 24, 03:59:59</p>
+			<div class="event-description">
+				<p>Get Phantom Magic x10 at super cost-effective prices!</p>
+			</div>
+		</div>
+
+		<div class="event-item">
+			<h3 class="event-title">6. Questionnaire Survey</h3>
+			<p class="event-time">📅 June 10 after server opens ~ June 24, 03:59:59</p>
+			<div class="event-description">
+				<p>To provide everyone with a better gaming experience, the development team invites all captains to fill out this "ZONE NOVA" adjustment questionnaire. Complete the questionnaire during the open period to receive <strong>Energy Magic x1</strong> as a reward.</p>
+			</div>
+		</div>
+
+		<div class="event-item">
+			<h3 class="event-title">7. Instance Limited Double Drop Rate (Phase 1)</h3>
+			<p class="event-time">📅 June 10 after server opens ~ June 17, 03:59:59</p>
+			<div class="event-description">
+				<p>During the event period, when challenging instances "Resource Instance," "Character Upgrade Instance," "Character Awakening Instance," and "Memory Upgrade Instance," you can get double rewards. Double rewards have limited uses - available remaining uses and usage limits are displayed in the interface.</p>
+			</div>
+		</div>
+
+		<div class="event-item">
+			<h3 class="event-title">8. Instance Limited Double Drop Rate (Phase 2)</h3>
+			<p class="event-time">📅 June 17, 14:15 ~ June 24, 03:59:59</p>
+			<div class="event-description">
+				<p>During the event period, when challenging the "Gemstone Instance," you can get double rewards. Double rewards have limited uses. Double reward usage will not reset during the event period, so please arrange your challenge time reasonably.</p>
+			</div>
+		</div>
+
+		<div class="event-item">
+			<h3 class="event-title">9. Space-Time Rift: Rift Tide IV</h3>
+			<p class="event-time">📅 June 10 after server opens ~ July 8, 03:59:59</p>
+			
+			<div class="rule-effects">
+				<h4>Space-Time Rift Rule Effects:</h4>
+				<ol>
+					<li>Characters gain 100% increased damage when pursuing enemies</li>
+					<li>When characters deal pursuit damage to enemies, they gain 1 stack of [Mark]. When our characters deal damage to enemies with 10 stacks of [Mark], it will trigger [Mark], dealing 300% of own attack power as Holy damage, and the enemy will take 50% increased pursuit damage for the next 5 seconds</li>
+					<li>Each time characters successfully [Block], they deal damage equal to 30% of their own defense to nearby enemies, with a maximum trigger of once every 0.5 seconds</li>
+					<li>Each time characters successfully [Block], the entire team gains 2% increased damage, up to 25 stacks, lasting 15 seconds</li>
+				</ol>
+			</div>
+		</div>
+	</section>
+
+	<!-- Gemstone Additions -->
+	<section class="content-section gemstone-section">
+		<h2 class="section-title">💎 Gemstone Additions</h2>
+		
+		<div style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid #9333ea;">
+			<p style="color: var(--text-secondary); line-height: 1.6; margin: 0 0 1rem 0;">
+				Added "Jimmel" and "Herter" gemstone sets. Captains can obtain gemstones through guild trial gameplay and the new guild trial exchange shop.
+			</p>
+			<p style="color: #9333ea; font-weight: 500; margin: 0;">
+				✨ New gemstones will be available in future gemstone instances.
+			</p>
+		</div>
+	</section>
+
+	<!-- Maintenance Compensation -->
+	<section class="content-section compensation-section">
+		<h2 class="section-title">🎁 Maintenance Update Compensation</h2>
+		
+		<div class="compensation-details">
+			<div class="compensation-item">
+				<strong>Compensation Content</strong>
+				Photon Stones x600
+			</div>
+			<div class="compensation-item">
+				<strong>Compensation Target</strong>
+				Captains who logged in before June 17, 23:59
+			</div>
+			<div class="compensation-item">
+				<strong>Distribution Method</strong>
+				Via in-game mail after maintenance completion
+			</div>
+		</div>
+	</section>
 </ZoneNovaLayout1> 
