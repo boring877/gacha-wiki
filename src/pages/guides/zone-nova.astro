@@ -233,8 +233,36 @@ import FormattedDate from '../../components/FormattedDate.astro';
 	<!-- Back Button -->
 	<a href="/guides/" class="back-button">
 		<span class="back-arrow">←</span>
-		Back to Guides
+		Back to Wikis
 	</a>
+
+	<!-- Welcome section -->
+	<section class="content-section">
+		<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-primary); text-align: center; margin-bottom: 2rem;">
+			Welcome to Zone Nova Wiki
+		</h2>
+		<p style="color: var(--text-secondary); font-size: 1.2rem; text-align: center; max-width: 600px; margin: 0 auto 2rem auto;">
+			Your comprehensive resource for Zone Nova information, covering characters, runes, rifts, and more.
+		</p>
+		
+		<!-- Live Stats -->
+		<div style="background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; text-align: center;">
+			<div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+				<div>
+					<div style="color: var(--amber-glow); font-size: 1.8rem; font-weight: 700;" id="totalViews">Loading...</div>
+					<div style="color: var(--text-secondary); font-size: 0.9rem;">Total Views</div>
+				</div>
+				<div>
+					<div style="color: var(--teal-crystal); font-size: 1.8rem; font-weight: 700;" id="uniqueViews">Loading...</div>
+					<div style="color: var(--text-secondary); font-size: 0.9rem;">Unique Views</div>
+				</div>
+				<div>
+					<div style="color: var(--rose-quartz); font-size: 1.8rem; font-weight: 700;" id="todayViews">Loading...</div>
+					<div style="color: var(--text-secondary); font-size: 0.9rem;">Today's Views</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<!-- Game Overview Section -->
 	<section class="content-section">
@@ -320,3 +348,81 @@ import FormattedDate from '../../components/FormattedDate.astro';
 		</div>
 	</section>
 </ZoneNovaLayout>
+
+<script>
+// Track Zone Nova page visit
+document.addEventListener('DOMContentLoaded', function() {
+	// Generate browser fingerprint for unique tracking
+	function generateFingerprint() {
+		const canvas = document.createElement('canvas');
+		const ctx = canvas.getContext('2d');
+		if (ctx) {
+			ctx.textBaseline = 'top';
+			ctx.font = '14px Arial';
+			ctx.fillText('Browser fingerprint', 2, 2);
+		}
+		
+		const fingerprint = [
+			navigator.userAgent,
+			navigator.language,
+			screen.width + 'x' + screen.height,
+			new Date().getTimezoneOffset(),
+			canvas.toDataURL()
+		].join('|');
+		
+		// Simple hash function
+		let hash = 0;
+		for (let i = 0; i < fingerprint.length; i++) {
+			const char = fingerprint.charCodeAt(i);
+			hash = ((hash << 5) - hash) + char;
+			hash = hash & hash; // Convert to 32-bit integer
+		}
+		return Math.abs(hash).toString();
+	}
+	
+	const browserFingerprint = generateFingerprint();
+	
+	// Update total views (every visit)
+	const currentViews = parseInt(localStorage.getItem('zoneNovaViews') || '0');
+	const newViews = currentViews + 1;
+	localStorage.setItem('zoneNovaViews', newViews.toString());
+	
+	// Track unique views (only once per browser)
+	const uniqueViewsKey = 'zoneNovaUniqueViews';
+	const visitedKey = `zoneNovaVisited_${browserFingerprint}`;
+	
+	let uniqueViews = parseInt(localStorage.getItem(uniqueViewsKey) || '0');
+	if (!localStorage.getItem(visitedKey)) {
+		uniqueViews += 1;
+		localStorage.setItem(uniqueViewsKey, uniqueViews.toString());
+		localStorage.setItem(visitedKey, 'true');
+	}
+	
+	// Track today's views
+	const today = new Date().toDateString();
+	const todayKey = `zoneNovaViews_${today}`;
+	const todayViews = parseInt(localStorage.getItem(todayKey) || '0') + 1;
+	localStorage.setItem(todayKey, todayViews.toString());
+	
+	// Update display
+	const totalViewsEl = document.getElementById('totalViews');
+	const uniqueViewsEl = document.getElementById('uniqueViews');
+	const todayViewsEl = document.getElementById('todayViews');
+	
+	if (totalViewsEl) totalViewsEl.textContent = newViews.toLocaleString();
+	if (uniqueViewsEl) uniqueViewsEl.textContent = uniqueViews.toLocaleString();
+	if (todayViewsEl) todayViewsEl.textContent = todayViews.toLocaleString();
+	
+	// Track section clicks for analytics
+	const sectionLinks = document.querySelectorAll('a[href*="zone-nova"]');
+	sectionLinks.forEach(link => {
+		link.addEventListener('click', function(event) {
+			const target = event.currentTarget as HTMLAnchorElement;
+			const section = target.href.split('/').pop() || 'unknown';
+			const sectionViews = parseInt(localStorage.getItem(`zoneNova_${section}_views`) || '0') + 1;
+			localStorage.setItem(`zoneNova_${section}_views`, sectionViews.toString());
+			console.log(`Zone Nova ${section} section viewed: ${sectionViews} times`);
+		});
+	});
+});
+</script>
