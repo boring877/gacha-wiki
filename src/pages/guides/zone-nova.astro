@@ -45,6 +45,8 @@ import FormattedDate from '../../components/FormattedDate.astro';
 				transition: transform 0.3s ease;
 			}
 
+
+
 			.content-section {
 				background: var(--bg-secondary);
 				padding: 3rem;
@@ -230,11 +232,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 		</style>
 	</Fragment>
 
-	<!-- Back Button -->
-	<a href="/guides/" class="back-button">
-		<span class="back-arrow">←</span>
-		Back to Wikis
-	</a>
+
 
 	<!-- Welcome section -->
 	<section class="content-section">
@@ -287,12 +285,12 @@ import FormattedDate from '../../components/FormattedDate.astro';
 
 	<!-- Guides Section -->
 	<section class="content-section">
-		<h2 class="section-title">Game Guides</h2>
+						<h2 class="section-title">Resource</h2>
 		
 		<div class="guides-grid">
 			<a href="/guides/zone-nova/updates/" class="guide-card-link">
 				<div class="guide-card">
-					<h3><span class="guide-emoji">🔧</span> News & Maintenance</h3>
+					<h3><span class="guide-emoji">🔧</span> Updates</h3>
 					<p>Patch notes, maintenance, and announcements.</p>
 				</div>
 			</a>
@@ -424,5 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			console.log(`Zone Nova ${section} section viewed: ${sectionViews} times`);
 		});
 	});
+
+
 });
 </script>

@@ -1,0 +1,162 @@
+---
+// Zone Nova Quick Navigation Component
+export interface Props {
+	currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+// Zone Nova navigation items
+const quickLinks = [
+	{ name: 'Overview', href: '/guides/zone-nova/', icon: '🏠' },
+	{ name: 'Characters', href: '/guides/zone-nova/characters/', icon: '⚔️' },
+	{ name: 'Events', href: '/guides/zone-nova/events/', icon: '🎉' },
+	{ name: 'Rifts', href: '/guides/zone-nova/rifts/', icon: '🌌' },
+	{ name: 'Runes', href: '/guides/zone-nova/runes/', icon: '💎' },
+	{ name: 'Crafting', href: '/guides/zone-nova/crafting/', icon: '🔨' },
+	{ name: 'Updates', href: '/guides/zone-nova/updates/', icon: '📰' },
+	{ name: 'Contributing', href: '/guides/zone-nova/contributing/', icon: '🤝' }
+];
+
+// Check if current path matches a navigation item
+function isActive(href: string): boolean {
+	if (!currentPath) return false;
+	
+	// Special handling for the overview page
+	if (href === '/guides/zone-nova/') {
+		return currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova';
+	}
+	
+	// For other sections, check if the current path starts with the href
+	// but make sure we're not on a subsection when checking overview
+	if (href !== '/guides/zone-nova/' && currentPath.startsWith(href)) {
+		return true;
+	}
+	
+	return false;
+}
+
+// Function to get back button text based on current page
+function getBackButtonText(): string {
+	// On the main Zone Nova page, show "Back to Wikis"
+	if (currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova') {
+		return 'Back to Wikis';
+	}
+	// On category pages (characters, events, rifts, etc.), show "Back to Zone Nova"
+	if (currentPath === '/guides/zone-nova/characters/' || 
+		currentPath === '/guides/zone-nova/events/' ||
+		currentPath === '/guides/zone-nova/rifts/' ||
+		currentPath === '/guides/zone-nova/runes/' ||
+		currentPath === '/guides/zone-nova/crafting/' ||
+		currentPath === '/guides/zone-nova/updates/' ||
+		currentPath === '/guides/zone-nova/contributing/') {
+		return 'Back to Zone Nova';
+	}
+	// On individual pages within categories, show just "Back"
+	return 'Back';
+}
+---
+
+<!-- Zone Nova Quick Navigation -->
+<div class="zone-nova-nav">
+	<a href={currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova' ? '/guides/' : '/guides/zone-nova/'} class="back-button">
+		<span class="back-arrow">←</span>
+		{getBackButtonText()}
+	</a>
+	
+	<div class="quick-nav-container">
+		{quickLinks.map(link => (
+			<a 
+				href={link.href} 
+				class={`nav-link ${isActive(link.href) ? 'active' : ''}`}
+			>
+				{link.name}
+			</a>
+		))}
+	</div>
+</div>
+
+<style>
+	.zone-nova-nav {
+		margin-bottom: 2rem;
+	}
+
+	.back-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		background: var(--bg-primary);
+		color: var(--text-primary);
+		text-decoration: none;
+		border: 1px solid var(--amber-glow);
+		padding: 1rem 1.5rem;
+		border-radius: 12px;
+		font-family: 'Space Grotesk', sans-serif;
+		font-weight: 600;
+		font-size: 1rem;
+		margin-bottom: 1rem;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+	}
+
+	.back-button:hover {
+		background: var(--amber-glow);
+		color: var(--text-inverse);
+		transform: translateY(-2px);
+		box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+	}
+
+	.back-button:hover .back-arrow {
+		transform: translateX(-3px);
+	}
+
+	.back-arrow {
+		font-size: 1.2rem;
+		transition: transform 0.3s ease;
+	}
+
+	.quick-nav-container {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+
+	.nav-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.75rem 1rem;
+		background: var(--bg-primary);
+		color: var(--text-secondary);
+		text-decoration: none;
+		border-radius: 10px;
+		border: 1px solid var(--mocha-mousse);
+		transition: all 0.3s ease;
+		font-size: 0.9rem;
+		font-weight: 500;
+		font-family: 'Space Grotesk', sans-serif;
+		flex-shrink: 0;
+		white-space: nowrap;
+	}
+
+	.nav-link:hover {
+		background: var(--bg-secondary);
+		color: var(--text-primary);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	}
+
+	.nav-link.active {
+		background: var(--amber-glow);
+		color: white;
+		box-shadow: 0 4px 15px rgba(255, 183, 77, 0.4);
+	}
+
+	@media (max-width: 768px) {
+		.quick-nav-container {
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+	}
+</style>

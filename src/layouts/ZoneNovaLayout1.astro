@@ -2,6 +2,8 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ZoneNovaQuickNav from '../components/ZoneNovaQuickNav.astro';
+
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from "@vercel/speed-insights/astro";
 
@@ -92,9 +94,13 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 			
 			<!-- Content Area -->
 			<div style="animation: contentSlideUp 1s ease-out 0.3s both;">
+				<ZoneNovaQuickNav currentPath={Astro.url.pathname} />
 				<slot />
 			</div>
 		</main>
+		
+		<!-- Zone Nova Quick Navigation -->
+
 		
 		<Footer />
 		<Analytics />

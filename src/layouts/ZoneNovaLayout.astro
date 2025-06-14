@@ -2,6 +2,8 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ZoneNovaQuickNav from '../components/ZoneNovaQuickNav.astro';
+
 // Import CSS files properly
 import '../styles/colors.css';
 import '../styles/global.css';
@@ -27,7 +29,9 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 	<body style="background: linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 50%, #1C1C1C 100%); color: var(--text-primary); min-height: 100vh; font-family: 'Inter', sans-serif;">
 		<Header />
 		
-		<main style="max-width: 75rem; margin: 0 auto; padding: 2rem; min-height: 100vh;">
+		<!-- Zone Nova Content Container -->
+		<div class="zone-nova-container">
+			<main class="zone-nova-main">
 			
 			<!-- Breadcrumb Navigation -->
 			{showBreadcrumb && (
@@ -93,13 +97,45 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 			
 			<!-- Content Area -->
 			<div style="animation: contentSlideUp 1s ease-out 0.3s both;">
+				<ZoneNovaQuickNav currentPath={Astro.url.pathname} />
 				<slot />
 			</div>
-		</main>
+			</main>
+		</div>
+		
+		<!-- Zone Nova Quick Navigation -->
+
 		
 		<Footer />
 	</body>
 </html>
+
+<style>
+.zone-nova-container {
+	position: relative;
+	min-height: 100vh;
+}
+
+.zone-nova-main {
+	max-width: 75rem;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+	.zone-nova-main {
+		padding: 1rem;
+	}
+}
+</style>
+
+<script>
+// Zone Nova layout functionality
+document.addEventListener('DOMContentLoaded', function() {
+	// Any additional Zone Nova layout functionality can go here
+});
+</script>
 
 <style>
 	@import '/src/styles/colors.css';
