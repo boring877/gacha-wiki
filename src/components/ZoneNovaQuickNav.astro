@@ -52,14 +52,24 @@ function getBackButtonText(): string {
 		currentPath === '/guides/zone-nova/contributing/') {
 		return 'Back to Zone Nova';
 	}
-	// On individual pages within categories, show just "Back"
+	// On individual character pages, show "Back to Characters"
+	if (currentPath.startsWith('/guides/zone-nova/characters/')) {
+		return 'Back to Characters';
+	}
+	// On individual pages within other categories, show just "Back"
 	return 'Back';
 }
 ---
 
 <!-- Zone Nova Quick Navigation -->
 <div class="zone-nova-nav">
-	<a href={currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova' ? '/guides/' : '/guides/zone-nova/'} class="back-button">
+	<a href={
+		currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova' 
+			? '/guides/' 
+			: currentPath.startsWith('/guides/zone-nova/characters/') && currentPath !== '/guides/zone-nova/characters/'
+				? '/guides/zone-nova/characters'
+				: '/guides/zone-nova/'
+	} class="back-button">
 		<span class="back-arrow">←</span>
 		{getBackButtonText()}
 	</a>

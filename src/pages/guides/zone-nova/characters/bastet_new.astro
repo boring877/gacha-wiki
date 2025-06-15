@@ -1,0 +1,490 @@
+---
+import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+---
+
+<ZoneNovaLayout1 
+	title="Bastet Character Guide - Zone Nova - GachaWiki" 
+	description="Complete guide for Bastet, the violence element AoE DPS specialist in Zone Nova"
+	gameTitle="Bastet Character Guide"
+	showBreadcrumb={true}
+	breadcrumbText="Characters"
+>
+	<Fragment slot="head">
+		<style>
+			.character-page {
+				background: var(--bg-secondary);
+				min-height: 100vh;
+				padding: 2rem 0;
+			}
+
+			.character-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.character-header {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 3rem;
+				border: 1px solid var(--amber-glow);
+				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
+				text-align: center;
+				transition: all 0.4s ease;
+			}
+
+			.character-header:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
+			}
+
+			.character-image {
+				width: 300px;
+				height: 300px;
+				border-radius: 20px;
+				object-fit: cover;
+				margin: 0 auto 2rem auto;
+				display: block;
+				box-shadow: 0 12px 30px rgba(0, 172, 193, 0.3);
+				transition: all 0.3s ease;
+			}
+
+			.character-image:hover {
+				transform: scale(1.05);
+				box-shadow: 0 16px 40px rgba(0, 172, 193, 0.4);
+			}
+
+			.character-title {
+				font-size: 3.5rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1rem 0;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.character-subtitle {
+				color: var(--text-secondary);
+				font-size: 1.2rem;
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
+				animation: titleGlow 3s ease-in-out infinite alternate;
+			}
+
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+				box-shadow: 0 0 10px var(--teal-crystal);
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1.5rem;
+				margin-bottom: 2rem;
+			}
+
+			.stat-item {
+				background: var(--bg-secondary);
+				padding: 1rem;
+				border-radius: 10px;
+				border: 1px solid var(--neutral-300);
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				border-color: var(--amber-glow);
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.1);
+			}
+
+			.stat-label {
+				font-weight: 600;
+				color: var(--text-secondary);
+				font-size: 0.9rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				font-size: 1.1rem;
+				font-weight: 700;
+				color: var(--text-primary);
+			}
+
+			.badge {
+				display: inline-block;
+				padding: 0.5rem 1rem;
+				border-radius: 25px;
+				font-size: 0.8rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+				margin: 0.25rem;
+				transition: all 0.3s ease;
+				border: 1px solid transparent;
+			}
+
+			.badge-rarity {
+				background: linear-gradient(135deg, #6366f1, #8b5cf6);
+				color: white;
+				box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+			}
+
+			.badge-element {
+				background: linear-gradient(135deg, #dc2626, #7f1d1d);
+				color: white;
+				box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+			}
+
+			.badge-class {
+				background: linear-gradient(135deg, #059669, #065f46);
+				color: white;
+				box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+			}
+
+			.badge:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+			}
+
+			.skills-table, .awakening-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 1rem;
+				background: var(--bg-secondary);
+				border-radius: 10px;
+				overflow: hidden;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			}
+
+			.skills-table th, .awakening-table th {
+				background: linear-gradient(135deg, var(--amber-glow), #d97706);
+				color: white;
+				padding: 1rem;
+				text-align: left;
+				font-weight: 600;
+				font-size: 0.9rem;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			.skills-table td, .awakening-table td {
+				padding: 1rem;
+				border-bottom: 1px solid var(--neutral-200);
+				color: var(--text-primary);
+			}
+
+			.skills-table tr:hover, .awakening-table tr:hover {
+				background: var(--bg-primary);
+			}
+
+			.skill-name, .awakening-name {
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin-bottom: 0.5rem;
+			}
+
+			.skill-description, .awakening-description {
+				color: var(--text-secondary);
+				line-height: 1.6;
+			}
+
+			@keyframes titleGlow {
+				0% {
+					text-shadow: 
+						0 0 10px rgba(255, 183, 77, 0.3),
+						0 0 20px rgba(255, 183, 77, 0.2);
+				}
+				100% {
+					text-shadow: 
+						0 0 20px rgba(255, 183, 77, 0.6),
+						0 0 30px rgba(255, 183, 77, 0.4);
+				}
+			}
+
+			@keyframes sectionFadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+
+				.character-header,
+				.content-section {
+					padding: 2rem;
+				}
+
+				.character-title {
+					font-size: 2.5rem;
+				}
+
+				.character-image {
+					width: 250px;
+					height: 250px;
+				}
+
+				.stats-grid {
+					grid-template-columns: 1fr;
+				}
+
+				/* Memory Card mobile layout */
+				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
+					flex-direction: column !important;
+					align-items: center !important;
+				}
+
+				.content-section img[alt="Bastet Memory Card"] {
+					width: 160px !important;
+					height: 240px !important;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="character-page">
+		<div class="character-container">
+			<!-- Character Header & Overview (merged) -->
+			<section class="content-section">
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Hero Card (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/Bastet.jpg" alt="Bastet" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+							<h1 class="character-title" style="margin: 0; font-size: 2.8rem; text-align:center; font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">Bastet</h1>
+						</div>
+						<!-- Badges in separate box with better styling -->
+						<div class="badges-container" style="margin-top: 1.8rem;">
+							<div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+								<span class="badge badge-rarity">SSR</span>
+								<span class="badge badge-element">Violence</span>
+								<span class="badge badge-class">Assault</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Stats (Right) -->
+					<div style="flex: 2; min-width: 320px;">
+						<div class="stats-grid">
+							<div class="stat-item">
+								<div class="stat-label">ATK</div>
+								<div class="stat-value">1,728</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-label">DEF</div>
+								<div class="stat-value">1,440</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-label">HP</div>
+								<div class="stat-value">11,520</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-label">CRIT</div>
+								<div class="stat-value">576</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-label">CRIT DMG</div>
+								<div class="stat-value">1,152</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-label">Accuracy</div>
+								<div class="stat-value">576</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-label">Resistance</div>
+								<div class="stat-value">576</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-label">Speed</div>
+								<div class="stat-value">96</div>
+							</div>
+						</div>
+
+						<div style="background: var(--bg-secondary); padding: 1.8rem; border-radius: 12px; border: 1px solid var(--neutral-200); margin-top: 1.5rem;">
+							<p style="margin: 0; color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; text-align: justify;">
+								<strong>Bastet</strong> is an SSR Violence element Assault-class character who excels as an AoE DPS specialist. 
+								Her kit focuses on dealing massive area damage while providing utility through debuffs and crowd control effects. 
+								She's particularly effective in content requiring multi-target damage output.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Skills Section -->
+			<section class="content-section">
+				<h2 class="section-title">Skills</h2>
+				<table class="skills-table">
+					<thead>
+						<tr>
+							<th style="width: 25%;">Skill</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<div class="skill-name">Shadow Claw</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Basic Attack</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									Deals 100% ATK damage to a single enemy. Has a 30% chance to inflict Bleed for 2 turns.
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="skill-name">Feline Fury</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Skill 1 • CD: 3</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									Deals 120% ATK damage to all enemies. Increases own Speed by 20% for 3 turns.
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="skill-name">Divine Wrath</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Ultimate • CD: 5</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									Deals 200% ATK damage to all enemies. Reduces enemy ATK by 30% for 2 turns. Grants self Immunity to debuffs for 2 turns.
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="skill-name">Cat's Grace</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Passive</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									Increases CRIT Rate by 15%. When attacking bleeding enemies, deals 25% additional damage.
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<!-- Awakening Effects Section -->
+			<section class="content-section">
+				<h2 class="section-title">Awakening Effects</h2>
+				<table class="awakening-table">
+					<thead>
+						<tr>
+							<th style="width: 15%;">Star</th>
+							<th>Effect</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><strong>★</strong></td>
+							<td>ATK +5%</td>
+						</tr>
+						<tr>
+							<td><strong>★★</strong></td>
+							<td>Shadow Claw: Bleed chance increased to 50%</td>
+						</tr>
+						<tr>
+							<td><strong>★★★</strong></td>
+							<td>HP +10%</td>
+						</tr>
+						<tr>
+							<td><strong>★★★★</strong></td>
+							<td>Feline Fury: Speed buff increased to 30%</td>
+						</tr>
+						<tr>
+							<td><strong>★★★★★</strong></td>
+							<td>Divine Wrath: Now also grants ATK +50% for 2 turns</td>
+						</tr>
+						<tr>
+							<td><strong>★★★★★★</strong></td>
+							<td>Cat's Grace: CRIT Rate bonus increased to 25%, additional damage increased to 40%</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<!-- Memory Card Section -->
+			<section class="content-section">
+				<h2 class="section-title">Memory Card</h2>
+				<div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+					<div style="flex-shrink: 0;">
+						<img src="/images/characters/Bastetcard.jpg" alt="Bastet Memory Card" style="width: 200px; height: 300px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); object-fit: cover;" />
+					</div>
+					<div style="flex: 1; min-width: 300px;">
+						<h3 style="color: var(--amber-glow); margin-bottom: 1rem; font-size: 1.3rem;">Memory Card Effects</h3>
+						<ul style="list-style: none; padding: 0; margin: 0;">
+							<li style="padding: 0.7rem 0; border-bottom: 1px solid var(--neutral-200); display: flex; align-items: flex-start; gap: 1rem;">
+								<span style="color: var(--amber-glow); font-weight: bold; flex-shrink: 0; width: 60px;">★</span>
+								<span>Increases ATK by 8%</span>
+							</li>
+							<li style="padding: 0.7rem 0; border-bottom: 1px solid var(--neutral-200); display: flex; align-items: flex-start; gap: 1rem;">
+								<span style="color: var(--amber-glow); font-weight: bold; flex-shrink: 0; width: 60px;">★★</span>
+								<span>Increases CRIT Rate by 12%</span>
+							</li>
+							<li style="padding: 0.7rem 0; border-bottom: 1px solid var(--neutral-200); display: flex; align-items: flex-start; gap: 1rem;">
+								<span style="color: var(--amber-glow); font-weight: bold; flex-shrink: 0; width: 60px;">★★★</span>
+								<span>Increases CRIT DMG by 20%</span>
+							</li>
+							<li style="padding: 0.7rem 0; border-bottom: 1px solid var(--neutral-200); display: flex; align-items: flex-start; gap: 1rem;">
+								<span style="color: var(--amber-glow); font-weight: bold; flex-shrink: 0; width: 60px;">★★★★</span>
+								<span>When using Ultimate skill, recovers 20% MP</span>
+							</li>
+							<li style="padding: 0.7rem 0; display: flex; align-items: flex-start; gap: 1rem;">
+								<span style="color: var(--amber-glow); font-weight: bold; flex-shrink: 0; width: 60px;">★★★★★</span>
+								<span>At battle start, grants self ATK +30% for 3 turns</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</div>
+</ZoneNovaLayout1>

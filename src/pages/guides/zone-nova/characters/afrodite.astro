@@ -2,43 +2,8 @@
 import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 ---
 
-<ZoneNovaLayout1 title="Afrodite - Zone Nova Character Guide" description="Complete guide for Afrodite, the SSR Holy Assault enhanced ultimate specialist from Zone Nova">
-	<Fragment slot="head">
-		<style>
-			.back-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: var(--bg-primary);
-				color: var(--text-primary);
-				text-decoration: none;
-				padding: 1rem 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--amber-glow);
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 600;
-				font-size: 1rem;
-				margin-bottom: 2rem;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-			}
-
-			.back-button:hover {
-				background: var(--amber-glow);
-				color: var(--text-inverse);
-				transform: translateY(-2px);
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-			}
-
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
-
+<ZoneNovaLayout1 title="Afrodite - Zone Nova Character Guide" description="Complete guide for Afrodite, the SSR Holy Assault enhanced ultimate specialist from Zone Nova" gameTitle="Afrodite Character Information">
+	<Fragment slot="head">		<style>
 			.character-page {
 				background: var(--bg-secondary);
 				min-height: 100vh;
@@ -93,6 +58,25 @@ import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 				margin: 0 0 1rem 0;
 				animation: titleGlow 3s ease-in-out infinite alternate;
 			}
+
+			.animated-gradient {
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 50%, #43e97b 100%);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine-move 2.5s linear infinite;
+}
+
+@keyframes shine-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
 
 			.character-subtitle {
 				color: var(--text-secondary);
@@ -359,6 +343,203 @@ import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 				margin: 0.5rem 0;
 			}
 
+			.character-badge {
+  display: inline-block;
+  padding: 0.38rem 1.1rem;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  margin: 0 0.1rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  border: none;
+}
+.ssr-badge {
+  background: #ffe066;
+  color: #222;
+  border: 1.5px solid #eecb4d;
+}
+.holy-badge {
+  background: #ffe066;
+  color: #222;
+  border: 1.5px solid #ffd700;
+}
+.dps-badge {
+  background: #ffb347;
+  color: #222;
+  border: 1.5px solid #ff9800;
+}
+
+.badges-container {
+  background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+  border-radius: 14px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+  padding: 1.2rem 1.8rem;
+  border: 1px solid var(--neutral-200);
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.badges-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.badges-container:hover::before {
+  left: 100%;
+}
+
+.badges-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  border-color: var(--amber-glow);
+}
+
+.skills-table-container {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+}
+
+.skills-table th {
+  background: var(--amber-glow);
+  color: #222;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 2px solid var(--neutral-200);
+}
+
+.skills-table td {
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid var(--neutral-200);
+  vertical-align: top;
+}
+
+.skills-table tr:hover {
+  background: rgba(255, 183, 77, 0.05);
+}
+
+.skills-table td:first-child {
+  width: 150px;
+  text-align: center;
+}
+
+.skills-table td:nth-child(2) {
+  width: 250px;
+}
+
+.skills-table td:last-child {
+  min-width: 400px;
+}
+
+.skills-table ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.skills-table li {
+  margin-bottom: 0.5rem;
+}
+
+.skills-table strong {
+  color: var(--amber-glow);
+}
+
+.skills-table small {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.skill-type {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.skill-type.normal-attack {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.skill-type.auto-skill {
+  background: #f3e5f5;
+  color: #7b1fa2;
+  border: 1px solid #ce93d8;
+}
+
+.skill-type.ultimate {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.skill-type.passive {
+  background: #e8f5e8;
+  color: #388e3c;
+  border: 1px solid #a5d6a7;
+}
+
+.skill-type.team-skill {
+  background: #fce4ec;
+  color: #c2185b;
+  border: 1px solid #f8bbd9;
+}
+
+.priority-badge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.priority-badge.critical {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.priority-badge.high {
+  background: #fff3e0;
+  color: #ef6c00;
+  border: 1px solid #ffb74d;
+}
+
+.priority-badge.recommended {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #81c784;
+}
+
+.priority-badge.normal {
+  background: #f5f5f5;
+  color: #616161;
+  border: 1px solid #bdbdbd;
+}
+
 			@keyframes titleGlow {
 				0% { filter: brightness(1) drop-shadow(0 0 5px rgba(164, 120, 100, 0.3)); }
 				100% { filter: brightness(1.1) drop-shadow(0 0 15px rgba(164, 120, 100, 0.5)); }
@@ -379,388 +560,210 @@ import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 				.character-image { width: 250px; height: 250px; }
 			}
 		</style>
-	</Fragment>
-
-	<div class="character-page">
+	</Fragment>	<div class="character-page">
 		<div class="character-container">
-			<a href="/guides/zone-nova/characters/" class="back-button">
-				<span class="back-arrow">←</span>
-				Back to Characters
-			</a>
-
-			<!-- Character Header -->
-			<header class="character-header">
-				<img src="/images/characters/Afrodite.jpg" alt="Afrodite" class="character-image" loading="eager" />
-				<h1 class="character-title">Afrodite</h1>
-				<p class="character-subtitle">SSR Holy Assault • Enhanced Ultimate DPS</p>
-			</header>
-
-			<!-- Character Overview -->
+			<!-- Character Header & Overview (merged) -->
 			<section class="content-section">
-				<h2 class="section-title">Character Overview</h2>
-				
-				<!-- Class Showcase -->
-				<div class="class-showcase">
-					<img src="/images/characters/class/Assault.jpg" alt="Assault Class" class="class-image">
-					<div class="class-info">
-						<h3>强袭使 (Assault)</h3>
-					</div>
-				</div>
-				
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Faction</div>
-						<div class="stat-value"></div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Role</div>
-						<div class="stat-value">Enhanced Ultimate DPS</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Base Stats at Level 80</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">HP</div>
-						<div class="stat-value">8,033</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Attack</div>
-						<div class="stat-value">1,805</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Defense</div>
-						<div class="stat-value">530</div>
-					</div>
-				</div>
-				
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						<strong>Afrodite</strong> is a unique enhanced ultimate specialist who builds up power through normal attacks to unleash devastating enhanced ultimates. Her kit revolves around the 10-normal-attack requirement to unlock her enhanced ultimate, which deals massive 2160% attack power damage. She excels at high-HP situations for maximum damage output and becomes incredibly tanky when her HP drops below 50%.
-					</p>
-				</div>
-			</section>
-
-			<!-- Skills -->
+    <h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+    <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+        <!-- Hero Card (Right) -->        <div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">            <div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+                <img src="/images/characters/Afrodite.jpg" alt="Afrodite" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+                <h1 class="character-title" style="margin: 0; font-size: 2.8rem; text-align:center; font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">Afrodite</h1>
+            </div>
+            <!-- Badges in separate box with better styling -->
+            <div class="badges-container" style="margin-top: 1.8rem;">
+                <div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+                    <span class="character-badge ssr-badge">SSR</span>
+                    <span class="character-badge holy-badge">Holy</span>
+                    <span class="character-badge dps-badge">DPS</span>
+                </div>
+            </div>
+        </div>
+        <!-- Stats Box (Left) -->
+        <div style="flex: 1; min-width: 260px; max-width: 400px;">
+            <div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+                <div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Faction</div><div class="stat-value" style="font-size:1.25rem; font-weight:600; letter-spacing:1px; color:#222;">Ortis</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Role</div><div class="stat-value" style="font-size:1.25rem; font-weight:700; color:#d32f2f; letter-spacing:1px;">DPS</div></div>
+                </div>                <div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">HP</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">8,033</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Attack</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">1305</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Defense</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">530</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Energy Regen</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0.25/s</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Crit Rate</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0%</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Crit Damage</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">50%</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>			<!-- Skills -->
 			<section class="content-section">
 				<h2 class="section-title">Skills</h2>
 
-				<div class="skill-card">
-					<h3 class="skill-title">✨ Normal Attack: Love God Fist (爱神之拳)</h3>
-					<p><strong>Level</strong>: 10+4 | <strong>CD</strong>: 2.0s</p>
-					<ul>
-						<li>Deals <strong>120% attack power</strong> as holy damage to designated enemy unit</li>
-						<li><strong>Builds toward enhanced ultimate</strong> - core mechanic for ultimate enhancement</li>
-					</ul>
+				<div class="skills-table-container">
+					<table class="skills-table">
+						<thead>
+							<tr>
+								<th>Skill Type</th>
+								<th>Skill Name</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span class="skill-type normal-attack">Normal Attack</span></td>
+								<td><strong>Love God Fist (爱神之拳)</strong><br><small>Level: 10+4 | CD: 2.0s</small></td>
+								<td>
+									<ul>
+										<li>Deals <strong>120% attack power</strong> as holy damage to designated enemy unit</li>
+										<li><strong>Builds toward enhanced ultimate</strong> - core mechanic for ultimate enhancement</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type auto-skill">Auto Skill</span></td>
+								<td><strong>Charm Impact (魅惑冲拳)</strong><br><small>Level: 10+4 | Auto-trigger: 8.0s</small></td>
+								<td>
+									<ul>
+										<li><strong>Automatically</strong> deals <strong>816% attack power</strong> as holy damage to designated enemy</li>
+										<li><strong>Increases self attack by 58%</strong></li>
+										<li>High damage auto skill with substantial self-buffing component</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type ultimate">Ultimate</span></td>
+								<td><strong>Love and Beauty Waltz (爱与美之圆舞曲)</strong><br><small>Level: 10+4 | CD: 1.0s | Energy: 8</small></td>
+								<td>
+									<ul>
+										<li><strong>Normal Ultimate:</strong> Deals <strong>1800% attack power</strong> as holy damage to designated enemy</li>
+										<li><strong>Enhanced Ultimate</strong> (after 10 normal attacks):</li>
+										<ul>
+											<li>Deals <strong>2160% attack power</strong> as holy damage to designated enemy</li>
+											<li><strong>Recovers 2 energy</strong> at the end</li>
+											<li><strong>Damage converted to normal attack damage</strong> (benefits from different scaling)</li>
+										</ul>
+										<li><strong>Core mechanic:</strong> Build up through normal attacks for maximum damage</li>
+									</ul>
+								</td>
+							</tr>							<tr>
+								<td><span class="skill-type passive">Passive</span></td>
+								<td><strong>Beautiful Kill (美丽杀意)</strong><br><small>Level: 10+4</small></td>
+								<td>
+									<ul>
+										<li><strong>When HP > 50%:</strong> All attacks deal additional <strong>48% attack power</strong> as violent damage</li>
+										<li><strong>When HP < 50%:</strong> Damage taken reduced by <strong>96%</strong></li>
+										<li><strong>Dual-phase passive</strong> that provides offensive power when healthy, defensive power when injured</li>
+									</ul>
+								</td>
+							</tr>							<tr>
+								<td><span class="skill-type team-skill">Team Skill</span></td>
+								<td><strong>Combination Skill</strong><br><small>Level: 1</small><br><small style="color: var(--amber-glow);">Requires: 2 [Faction] OR 2 [Holy] characters</small></td>
+								<td>
+									<ul>
+										<li><strong>Self attack power increased by 10%</strong></li>
+										<li><strong>At battle start:</strong> For every <strong>500 attack power</strong>, increase self holy damage by <strong>5%</strong> (maximum 6 times)</li>
+										<li><strong>Maximum scaling:</strong> 30% holy damage boost at 3,000+ attack power</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">⚔️ Auto Skill: Charm Impact (魅惑冲拳)</h3>
-					<p><strong>Level</strong>: 10+4 | <strong>Auto-trigger Interval</strong>: 8.0s</p>
-					<ul>
-						<li><strong>Automatically</strong> deals <strong>816% attack power</strong> as holy damage to designated enemy</li>
-						<li><strong>Increases self attack by 58%</strong></li>
-						<li>High damage auto skill with substantial self-buffing component</li>
-					</ul>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">💥 Ultimate: Love and Beauty Waltz (爱与美之圆舞曲)</h3>
-					<p><strong>Level</strong>: 10+4 | <strong>CD</strong>: 1.0s | <strong>Energy Cost</strong>: 8</p>
-					<ul>
-						<li><strong>Normal Ultimate:</strong> Deals <strong>1800% attack power</strong> as holy damage to designated enemy</li>
-						<li><strong>Enhanced Ultimate</strong> (after 10 normal attacks):</li>
-						<ul>
-							<li>Deals <strong>2160% attack power</strong> as holy damage to designated enemy</li>
-							<li><strong>Recovers 2 energy</strong> at the end</li>
-							<li><strong>Damage converted to normal attack damage</strong> (benefits from different scaling)</li>
-						</ul>
-						<li><strong>Core mechanic:</strong> Build up through normal attacks for maximum damage</li>
-					</ul>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">👑 Passive: Beautiful Kill (美丽杀意)</h3>
-					<p><strong>Level</strong>: 10+4</p>
-					<ul>
-						<li><strong>When HP > 50%:</strong> All attacks deal additional <strong>48% attack power</strong> as violent damage</li>
-						<li><strong>When HP < 50%:</strong> Damage taken reduced by <strong>96%</strong></li>
-						<li><strong>Dual-phase passive</strong> that provides offensive power when healthy, defensive power when injured</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- Team Composition Skill -->
+			</section>			<!-- Awakening Effects -->
 			<section class="content-section">
-				<h2 class="section-title">Team Composition Skill</h2>
-
-				<div class="skill-card">
-					<h3 class="skill-title">🌟 Combination Skill</h3>
-					<p><strong>Level</strong>: 1</p>
-					
-					<div class="warning-box">
-						<div class="warning-title">✨ Activation Requirements</div>
-						<p>Triggers when team contains 2 [Faction] characters OR 2 [Holy] characters</p>
-					</div>
-
-					<div class="info-card" style="margin: 1rem 0;">
-						<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Effects:</h4>
-						<ul>
-							<li><strong>Self attack power increased by 10%</strong></li>
-							<li><strong>At battle start</strong>: For every <strong>500 attack power</strong>, increase self holy damage by <strong>5%</strong> (maximum 6 times)</li>
-							<li><strong>Maximum scaling</strong>: 30% holy damage boost at 3,000+ attack power</li>
-						</ul>
-						
-						<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-							<strong>Why This Matters</strong>: This team skill provides both baseline attack power and scaling holy damage amplification. With high attack investment, the holy damage bonus significantly amplifies her ultimate damage output. The scaling encourages attack-focused builds.
-						</p>
-					</div>
+				<h2 class="section-title">Awakening Effects</h2>				<div class="skills-table-container">
+					<table class="skills-table">
+						<thead>
+							<tr>
+								<th>Awakening</th>
+								<th>Effects</th>
+							</tr>
+						</thead>						<tbody>
+							<tr>
+								<td><strong>Awakening 1</strong></td>
+								<td>
+									<ul>
+										<li><strong>When using skill:</strong> Can accumulate <strong>4 times</strong> to strengthen the required normal attack count for enhanced ultimate</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 2</strong></td>
+								<td>
+									<ul>
+										<li><strong>When using enhanced ultimate and skill:</strong> Damage taken reduced by <strong>10%</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 3</strong></td>
+								<td>
+									<ul>
+										<li><strong>[Skills] and [Normal Attack] level and level cap +4</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 4</strong></td>
+								<td>
+									<ul>
+										<li><strong>Normal attack damage increased by 35%</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 5</strong></td>
+								<td>
+									<ul>
+										<li><strong>[Ultimate] and [Passive] level and level cap +4</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 6</strong></td>
+								<td>
+									<ul>
+										<li><strong>[Enhanced Ultimate] ignores 20% elemental resistance</strong></li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-			</section>
-
-			<!-- Awakening Effects -->
+			</section>			<!-- Memory Card -->
 			<section class="content-section">
-				<h2 class="section-title">Awakening Effects</h2>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">🌟 Awakening 1 (RECOMMENDED)</h3>
-					<ul>
-						<li><strong>When using skill</strong>: Can accumulate <strong>4 times</strong> to strengthen the required normal attack count for enhanced ultimate</li>
-						<li><strong>Helps accelerate enhanced ultimate access</strong> by reducing normal attack requirement through skill usage</li>
-					</ul>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">🌟 Awakening 2 (RECOMMENDED)</h3>
-					<ul>
-						<li><strong>When using enhanced ultimate and skill</strong>: Damage taken reduced by <strong>10%</strong></li>
-						<li><strong>Survivability boost</strong> during high-damage windows</li>
-					</ul>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 3</h3>
-					<ul>
-						<li><strong>[Skills] and [Normal Attack] level and level cap +4</strong></li>
-						<li>Increases damage output across core abilities</li>
-					</ul>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 4 (CRITICAL)</h3>
-					<ul>
-						<li><strong>Normal attack damage increased by 35%</strong></li>
-						<li><strong>Massive boost</strong> to enhanced ultimate damage since it converts to normal attack damage</li>
-					</ul>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 5</h3>
-					<ul>
-						<li><strong>[Ultimate] and [Passive] level and level cap +4</strong></li>
-						<li>Enhances both ultimate scaling and passive effects</li>
-					</ul>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 6 (VERY GOOD)</h3>
-					<ul>
-						<li><strong>[Enhanced Ultimate] ignores 20% elemental resistance</strong></li>
-						<li><strong>Penetration boost</strong> ensures maximum damage isn't mitigated by enemy resistances</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- Recommended Builds -->
-			<section class="content-section">
-				<h2 class="section-title">Recommended Builds</h2>
-
-				<h3 class="subsection-title">Rune Sets</h3>
-				
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Maximum Attack Scaling</h4>
-					<ul>
-						<li><strong>4-Piece Alpha (阿尔法符):</strong> Attack Power +8%, Basic Attack Damage +30%</li>
-						<li><strong>2-Piece Epsilon (埃普西隆):</strong> Attack Power +8%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						Best for maximizing team composition scaling and enhanced ultimate damage.
-					</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">⚔️ Enhanced Ultimate Focus</h4>
-					<ul>
-						<li><strong>4-Piece Epsilon (埃普西隆):</strong> Attack Power +8%, After Ultimate: Team damage +10% (10s)</li>
-						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						Team support with consistent enhanced ultimate usage.
-					</p>
-					<div class="warning-box" style="margin-top: 1rem;">
-						<div class="warning-title">⚠️ Team Buff Limitation</div>
-						<p>The team damage +10% buff can only stack <strong>1 time in the team</strong>. Multiple characters with Epsilon sets will not stack this effect.</p>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Memory Card: Secret Garden</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Memory Card Image (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/Afroditecard.jpg" alt="Afrodite Memory Card" style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" loading="lazy" />
+						</div>
 					</div>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--neutral-300); margin: 0 0 1rem 0;">⚖️ Balanced Survivability</h4>
-					<ul>
-						<li><strong>4-Piece Beth (贝丝):</strong> Critical Hit Rate +6%, When HP >80%: Critical Hit Damage +24%</li>
-						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						High-HP builds that synergize with passive's >50% HP bonus.
-					</p>
-				</div>
-
-				<h3 class="subsection-title">Main Stats</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Position 1</div>
-						<div class="stat-value">HP (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 2</div>
-						<div class="stat-value">ATK (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 3</div>
-						<div class="stat-value">DEF (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 4</div>
-						<div class="stat-value">Penetration% / ATK%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 5</div>
-						<div class="stat-value">Holy Damage%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 6</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Substat Priorities</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Attack%</li>
-						<li>Attack (Flat)</li>
-						<li>Penetration%</li>
-						<li>Critical Rate%</li>
-						<li>Critical Damage%</li>
-						<li>HP%</li>
-						<li>Defense%</li>
-					</ol>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Note:</strong> Focus heavily on Attack stats since her team composition skill scales with attack power and enhanced ultimate damage benefits from high attack investment. Penetration helps maximize enhanced ultimate damage output, while critical stats become valuable when using Beth set for high-HP synergy.
-					</p>
-				</div>
-			</section>
-
-			<!-- Memory Card -->
-			<section class="content-section">
-				<h2 class="section-title">Memory Card: Secret Garden</h2>
-				
-				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
-					<img src="/images/characters/Afroditecard.jpg" alt="Afrodite Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
-					
-					<div style="flex: 1; min-width: 300px;">
-						<div class="info-card" style="margin: 0;">
-							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Base Stats</h4>
-							<div class="stats-grid">
-								<div class="stat-item">
-									<div class="stat-label">HP</div>
-									<div class="stat-value">5,040</div>
-								</div>
-								<div class="stat-item">
-									<div class="stat-label">Attack</div>
-									<div class="stat-value">780</div>
-								</div>
-								<div class="stat-item">
-									<div class="stat-label">Defense</div>
-									<div class="stat-value">474</div>
-								</div>
+					<!-- Memory Card Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">HP</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">5,040</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Attack</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">780</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Defense</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">474</div></div>
 							</div>
-
-							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
-							<ul>
-								<li><strong>Attack power increased by 40%</strong></li>
-								<li><strong>When equipped character releases enhanced ultimate or higher</strong>: Damage increased by <strong>40% for 10 seconds</strong></li>
-								<li><strong>Only effective for Assault class characters</strong></li>
-								<li><strong>5-star awakening tier</strong></li>
-							</ul>
-							
-							<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-								Perfect synergy with Afrodite's enhanced ultimate playstyle, providing both baseline attack power and massive damage amplification specifically when using enhanced ultimates.
-							</p>
 						</div>
 					</div>
 				</div>
-			</section>
-
-			<!-- Usage Tips -->
-			<section class="content-section">
-				<h2 class="section-title">Usage Tips</h2>
-
-				<h3 class="subsection-title">Strengths</h3>
-				<div class="info-card">
-					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li><strong>Exceptional enhanced ultimate damage</strong> - 2160% attack power scaling</li>
-						<li><strong>Attack power scaling synergy</strong> - Team composition and memory card both scale with attack</li>
-						<li><strong>Self-buffing capabilities</strong> - Skill provides 58% attack power increase</li>
-						<li><strong>Dual-phase survivability</strong> - 96% damage reduction when below 50% HP</li>
-						<li><strong>Energy recovery</strong> - Enhanced ultimate recovers 2 energy</li>
-						<li><strong>High-HP damage bonus</strong> - 48% additional violent damage when above 50% HP</li>
-						<li><strong>Resistance penetration</strong> - Awakening 6 ignores 20% elemental resistance</li>
-					</ul>
-				</div>
-
-				<h3 class="subsection-title">Combat Strategies</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li><strong>Normal attack cycling</strong>: Build up 10 normal attacks for enhanced ultimate access</li>
-						<li><strong>Skill timing</strong>: Use Charm Impact for damage and attack buff before enhanced ultimate</li>
-						<li><strong>HP threshold management</strong>: Stay above 50% HP for maximum damage output</li>
-						<li><strong>Enhanced ultimate priority</strong>: Always use enhanced ultimate when available</li>
-						<li><strong>Team coordination</strong>: Maximize Otis/Holy team composition bonuses</li>
-					</ol>
-				</div>
-			</section>
-
-			<!-- Investment Priority -->
-			<section class="content-section">
-				<h2 class="section-title">Investment Priority</h2>
 				
-				<h3 class="subsection-title">Awakening Priority</h3>
-				<div class="critical-awakening" style="padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
-					<h4 style="color: #dc3545; margin: 0 0 1rem 0;">🚨 Awakenings 4 and 6 are CRITICAL</h4>
-					<p>These transform her from a basic ultimate user to a devastating enhanced ultimate specialist:</p>
-					<ul>
-						<li><strong>Without them:</strong> Lower enhanced ultimate damage and resistances can mitigate her damage</li>
-						<li><strong>With them:</strong> Massive enhanced ultimate damage amplification + resistance penetration</li>
+				<!-- Memory Effects Box -->
+				<div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Memory Effects</h4>
+					<ul style="margin: 0; padding-left: 1.5rem; max-width: none;">
+						<li style="margin-bottom: 0.8rem;"><strong>Attack power increased by 40%</strong></li>
+						<li style="margin-bottom: 0.8rem;"><strong>When equipped character releases enhanced ultimate or higher:</strong> Damage increased by <strong>40% for 10 seconds</strong></li>
 					</ul>
-				</div>
-
-				<h3 class="subsection-title">Key Breakpoints</h3>
-				<div class="info-card">
-					<ul>
-						<li><span class="priority-high">Awakening 4: CRITICAL</span> - 35% normal attack damage increase (affects enhanced ultimate)</li>
-						<li><span class="priority-high">Awakening 6: VERY GOOD</span> - Enhanced ultimate penetration for unmitigated damage</li>
-						<li><span class="priority-medium">Awakening 1:</span> Enhanced ultimate access optimization through skill usage</li>
-						<li><span class="priority-medium">Awakening 2:</span> Survivability during damage windows</li>
-						<li><span class="priority-medium">Awakening 5:</span> Enhanced ultimate and passive scaling</li>
-						<li><span class="priority-low">Awakening 3:</span> Basic ability level increases</li>
-					</ul>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">✨ Enhanced Ultimate Synergy Chain</div>
-					<p>Team composition scaling (attack → holy damage) → Memory card (40% attack + 40% enhanced ultimate damage) → Awakening 4 (35% normal attack damage) → Awakening 6 (20% resistance ignore) creates a powerful combination where high attack investment unlocks devastating enhanced ultimate damage.</p>
 				</div>
 			</section>
 
 		</div>
 	</div>
-</ZoneNovaLayout1> 
+</ZoneNovaLayout1>

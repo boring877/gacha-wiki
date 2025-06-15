@@ -6,7 +6,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 <ZoneNovaLayout1 
 	title="Arthur Character Guide - Zone Nova - GachaWiki" 
 	description="Complete guide for Arthur, the holy element crit DPS in Zone Nova"
-	gameTitle="Arthur Character Guide"
+	gameTitle="Arthur Character Information"
 	showBreadcrumb={true}
 	breadcrumbText="Characters"
 >
@@ -398,219 +398,407 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				transition: all 0.3s ease;
 			}
 
-			.class-showcase:hover .class-image {
-				transform: scale(1.05);
-				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3);
+			.character-badge {
+				display: inline-block;
+				padding: 0.38rem 1.1rem;
+				border-radius: 14px;
+				font-weight: 700;
+				font-size: 1.05rem;
+				letter-spacing: 0.5px;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+				margin: 0 0.1rem;
+				text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+				border: none;
+			}
+			.ssr-badge {
+				background: #ffe066;
+				color: #222;
+				border: 1.5px solid #eecb4d;
+			}
+			.holy-badge {
+				background: #ffe066;
+				color: #222;
+				border: 1.5px solid #ffd700;
+			}
+			.dps-badge {
+				background: #ffb347;
+				color: #222;
+				border: 1.5px solid #ff9800;
 			}
 
-			.class-info h3 {
-				color: var(--amber-glow);
-				margin: 0 0 0.5rem 0;
-				font-size: 1.4rem;
-				font-weight: 600;
-				font-family: 'Space Grotesk', sans-serif;
+			.badges-container {
+				background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+				border-radius: 14px;
+				box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+				padding: 1.2rem 1.8rem;
+				border: 1px solid var(--neutral-200);
+				margin-top: 1rem;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
 			}
 
-			.class-info p {
-				color: var(--text-secondary);
+			.badges-container::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.badges-container:hover::before {
+				left: 100%;
+			}
+
+			.badges-container:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+				border-color: var(--amber-glow);
+			}
+
+			.skills-table-container {
+				background: var(--bg-primary);
+				border-radius: 12px;
+				padding: 1.5rem;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+				overflow-x: auto;
+			}
+
+			.skills-table {
+				width: 100%;
+				border-collapse: collapse;
+				background: transparent;
+			}
+
+			.skills-table th {
+				background: var(--amber-glow);
+				color: #222;
+				padding: 1rem;
+				text-align: left;
+				font-weight: 700;
+				border-bottom: 2px solid var(--neutral-200);
+			}
+
+			.skills-table td {
+				padding: 1.2rem 1rem;
+				border-bottom: 1px solid var(--neutral-200);
+				vertical-align: top;
+			}
+
+			.skills-table tr:hover {
+				background: rgba(255, 183, 77, 0.05);
+			}
+
+			.skills-table td:first-child {
+				width: 150px;
+				text-align: center;
+			}
+
+			.skills-table td:nth-child(2) {
+				width: 250px;
+			}
+
+			.skills-table td:last-child {
+				min-width: 400px;
+			}
+
+			.skills-table ul {
 				margin: 0;
-				font-size: 1rem;
-				line-height: 1.5;
+				padding-left: 1.5rem;
+			}
+
+			.skills-table li {
+				margin-bottom: 0.5rem;
+			}
+
+			.skills-table strong {
+				color: var(--amber-glow);
+			}
+
+			.skills-table small {
+				color: var(--text-secondary);
+				font-size: 0.85rem;
+			}
+
+			.skill-type {
+				display: inline-block;
+				padding: 0.4rem 0.8rem;
+				border-radius: 8px;
+				font-weight: 600;
+				font-size: 0.85rem;
+				text-align: center;
+			}
+
+			.skill-type.normal-attack {
+				background: #e3f2fd;
+				color: #1976d2;
+				border: 1px solid #bbdefb;
+			}
+
+			.skill-type.auto-skill {
+				background: #f3e5f5;
+				color: #7b1fa2;
+				border: 1px solid #ce93d8;
+			}
+
+			.skill-type.ultimate {
+				background: #fff3e0;
+				color: #f57c00;
+				border: 1px solid #ffcc02;
+			}
+
+			.skill-type.passive {
+				background: #e8f5e8;
+				color: #388e3c;
+				border: 1px solid #a5d6a7;
+			}			.skill-type.team-skill {
+				background: #fce4ec;
+				color: #c2185b;
+				border: 1px solid #f8bbd9;
+			}
+
+			.awakening-table-container {
+				background: var(--bg-primary);
+				border-radius: 12px;
+				padding: 1.5rem;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+				overflow-x: auto;
+			}
+
+			.awakening-table {
+				width: 100%;
+				border-collapse: collapse;
+				background: transparent;
+			}
+
+			.awakening-table th {
+				background: var(--amber-glow);
+				color: #222;
+				padding: 1rem;
+				text-align: left;
+				font-weight: 700;
+				border-bottom: 2px solid var(--neutral-200);
+			}
+
+			.awakening-table td {
+				padding: 1.2rem 1rem;
+				border-bottom: 1px solid var(--neutral-200);
+				vertical-align: top;
+			}			.awakening-table tr:hover {
+				background: rgba(255, 183, 77, 0.05);
+			}
+
+			.awakening-table ul {
+				margin: 0;
+				padding-left: 1.2rem;
+				list-style-type: disc;
+			}
+
+			.awakening-table li {
+				margin-bottom: 0.3rem;
+				line-height: 1.4;
+			}
+
+			.awakening-table td:first-child {
+				width: 150px;
+				text-align: center;
+				font-weight: 600;
+			}
+
+			.awakening-table td:last-child {
+				min-width: 400px;
+			}
+
+			.awakening-table small {
+				color: var(--text-secondary);
+				font-size: 0.85rem;
+				display: block;
+				margin-top: 0.5rem;
 			}
 		</style>
 	</Fragment>
 
-	<div class="character-page">
-		<div class="character-container">
-
-
-			<!-- Character Header -->
-			<header class="character-header">
-				<!-- Character Image -->
-				<img src="/images/characters/Arthur.jpg" alt="Arthur" class="character-image" loading="lazy" />
-				
-				<h1 class="character-title">Arthur</h1>
-				<p class="character-subtitle">🌟 SSR • ✨ Holy • 💥 Crit DPS</p>
-			</header>
-
-			<!-- Character Overview -->
+	<div class="character-page">		<div class="character-container">
+			<!-- Character Header & Overview (merged) -->
 			<section class="content-section">
-				<h2 class="section-title">Character Overview</h2>
-				
-				<!-- Class Showcase -->
-				<div class="class-showcase">
-					<img src="/images/characters/class/Destroyer.jpg" alt="Destroyer Class" class="class-image">
-					<div class="class-info">
-						<h3>开灾使 (Disaster Bringer)</h3>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Hero Card (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/Arthur.jpg" alt="Arthur" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+							<h1 class="character-title" style="margin: 0; font-size: 2.8rem; text-align:center; font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">Arthur</h1>
+						</div>
+						<!-- Badges in separate box with better styling -->
+						<div class="badges-container" style="margin-top: 1.8rem;">
+							<div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+								<span class="character-badge ssr-badge">SSR</span>
+								<span class="character-badge holy-badge">Holy</span>
+								<span class="character-badge dps-badge">DPS</span>
+							</div>
+						</div>
+					</div>
+					<!-- Stats Box (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Faction</div><div class="stat-value" style="font-size:1.25rem; font-weight:600; letter-spacing:1px; color:#222;">Camelot</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Role</div><div class="stat-value" style="font-size:1.25rem; font-weight:700; color:#d32f2f; letter-spacing:1px;">DPS</div></div>
+							</div>
+							<div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">HP</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">8,033</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Attack</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">1,305</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Defense</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">530</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Energy Regen</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0.25/s</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Crit Rate</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">15%</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Crit Damage</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">50%</div></div>
+							</div>
+						</div>
 					</div>
 				</div>
-				
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Faction</div>
-						<div class="stat-value"></div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Role</div>
-						<div class="stat-value">Crit DPS</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Base Stats at Level 80</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">HP</div>
-						<div class="stat-value">8,033</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Attack</div>
-						<div class="stat-value">1,305</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Defense</div>
-						<div class="stat-value">530</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Energy Recovery</div>
-						<div class="stat-value">2.50/s</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Critical Rate</div>
-						<div class="stat-value">15%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Critical Damage</div>
-						<div class="stat-value">50%</div>
-					</div>
-				</div>
-
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Arthur is a versatile holy damage dealer with dual ultimate modes and support capabilities. His kit revolves around stacking passive bonuses through combat, building holy damage through his skill, and choosing between normal and enhanced ultimate modes. His unique support mode mechanics make him valuable in both solo and team compositions.
-					</p>
-				</div>
-			</section>
-
-			<!-- Skills Section -->
+			</section>			<!-- Skills Section -->
 			<section class="content-section">
 				<h2 class="section-title">Skills</h2>
-
-				<div class="skill-card">
-					<h3 class="skill-title">⚔️ Normal Attack: Oath Victory Sword</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 2.0s</p>
-					<p>Deals holy damage equal to <strong>120% of Attack</strong> to designated enemy</p>
+				<div class="skills-table-container">
+					<table class="skills-table">
+						<thead>
+							<tr>
+								<th>Skill Type</th>
+								<th>Skill Name</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span class="skill-type normal-attack">Normal Attack</span></td>
+								<td><strong>Oath Victory Sword</strong><br><small>Level: 10+4 | CD: 2.0s</small></td>
+								<td>Deals holy damage equal to <strong>120% of Attack</strong> to designated enemy</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type auto-skill">Skill</span></td>
+								<td><strong>King's Sword</strong><br><small>Level: 10+4 | CD: 5.0s</small></td>
+								<td>
+									<ul>
+										<li>Deals holy damage equal to <strong>240% of Attack</strong> to frontal enemy units</li>
+										<li><strong>For each target hit:</strong> Holy damage increases by <strong>12%</strong>, maximum 4 layers, lasts 5 seconds</li>
+										<li><strong>Maximum Potential:</strong> 48% holy damage increase with 4+ targets</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type ultimate">Ultimate</span></td>
+								<td><strong>Imperial Sacred Judgment</strong><br><small>Level: 10+4 | CD: 1.0s | Energy: 6</small></td>
+								<td>
+									<ul>
+										<li><strong>Normal Mode:</strong> Deals holy damage equal to <strong>600% of Attack</strong> to frontal enemy units</li>
+										<li><strong>Enhanced Mode Access:</strong> In [Support Mode], can trigger [Enhanced Ultimate] within 5 seconds after normal ultimate</li>
+										<li><strong>Enhanced Ultimate:</strong> Attack increases by <strong>36%</strong> for 10 seconds, deals holy damage equal to <strong>720% of Attack</strong> to frontal enemy units</li>
+										<li><strong>With Awakening 2:</strong> Enhanced ultimate holy damage increases by <strong>30%</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type passive">Passive</span></td>
+								<td><strong>Royal Dominance</strong><br><small>Level: 10+4</small></td>
+								<td>
+									<ul>
+										<li><strong>Each ultimate use:</strong> Increases attack by <strong>12%</strong> and defense by <strong>5.6%</strong></li>
+										<li><strong>Maximum 3 layers</strong>, lasts 10 seconds</li>
+										<li><strong>Full Stack Potential:</strong> 36% attack + 16.8% defense</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type team-skill">Team Skill</span></td>
+								<td><strong>Combination Skill</strong><br><small>Level: 1</small></td>
+								<td>
+									<ul>
+										<li><strong>Activation:</strong> Team contains <strong>2 [Camelot] characters</strong> OR <strong>2 [Holy] characters</strong></li>
+										<li><strong>Effect 1:</strong> Self critical rate increases by <strong>7.5%</strong></li>
+										<li><strong>Effect 2:</strong> Battle start: Every <strong>15% critical rate</strong> adds <strong>5% holy damage</strong>, maximum 6 times</li>
+										<li><strong>Maximum Potential:</strong> 30% holy damage increase with optimal critical rate</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">👑 Skill: King's Sword</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 5.0s</p>
-					<ul>
-						<li>Deals holy damage equal to <strong>240% of Attack</strong> to frontal enemy units</li>
-						<li><strong>For each target hit:</strong> Holy damage increases by <strong>12%</strong>, maximum 4 layers, lasts 5 seconds</li>
-						<li><strong>Maximum Potential:</strong> 48% holy damage increase with 4+ targets</li>
-					</ul>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">⚡ Ultimate: Imperial Sacred Judgment</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 6</p>
-					<ul>
-						<li><strong>Normal Mode:</strong> Deals holy damage equal to <strong>600% of Attack</strong> to frontal enemy units</li>
-						<li><strong>Enhanced Mode Access:</strong> In [Support Mode], can trigger [Enhanced Ultimate] within 5 seconds after normal ultimate</li>
-					</ul>
-
-					<div class="warning-box">
-						<div class="warning-title">⚡ Enhanced Ultimate</div>
-						<ul>
-							<li>Attack increases by <strong>36%</strong> for 10 seconds</li>
-							<li>Deals holy damage equal to <strong>720% of Attack</strong> to frontal enemy units</li>
-							<li><strong>With Awakening 2:</strong> Holy damage increases by <strong>30%</strong></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">👑 Passive: Royal Dominance</h3>
-					<p><strong>Level:</strong> 10+4</p>
-					<ul>
-						<li><strong>Each ultimate use:</strong> Increases attack by <strong>12%</strong> and defense by <strong>5.6%</strong></li>
-						<li><strong>Maximum 3 layers</strong>, lasts 10 seconds</li>
-						<li><strong>Full Stack Potential:</strong> 36% attack + 16.8% defense</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- Team Composition Skill -->
-			<section class="content-section">
-				<h2 class="section-title">Team Composition Skill</h2>
-
-				<div class="skill-card">
-					<h3 class="skill-title">⚔️ Combination Skill</h3>
-					<p><strong>Level:</strong> 1</p>
-					
-					<div class="warning-box">
-						<div class="warning-title">⚔️ Activation Requirements</div>
-						<p>Triggers when team contains <strong>2 [Avalon] characters</strong> OR <strong>2 [Holy] characters</strong></p>
-					</div>
-
-					<div style="margin: 1rem 0;">
-						<p><strong>Effect 1:</strong> Self critical rate increases by <strong>7.5%</strong></p>
-						<p><strong>Effect 2:</strong> Battle start: Every <strong>15% critical rate</strong> can additionally add <strong>5% holy damage</strong>, maximum 6 times</p>
-						<ul>
-							<li>With base 15% + Awakening 1 (15%) + team skill (7.5%) = <strong>37.5% critical rate</strong></li>
-							<li>Grants significant holy damage bonuses. Maximum potential: <strong>30% holy damage increase</strong></li>
-						</ul>
-					</div>
-				</div>
-			</section>
-
-			<!-- Awakening Effects -->
+			</section>			<!-- Awakening Effects -->
 			<section class="content-section">
 				<h2 class="section-title">Awakening Effects</h2>
-
-				<div class="awakening-card important-awakening">
-					<h3 class="skill-title">🌟 Awakening 1 (IMPORTANT)</h3>
-					<p>Critical rate increases by <strong>15%</strong></p>
-					<p><strong>Impact:</strong> Synergizes with team skill for holy damage scaling</p>
+				<div class="awakening-table-container">
+					<table class="awakening-table">
+						<thead>
+							<tr>
+								<th>Awakening</th>
+								<th>Effects</th>
+							</tr>
+						</thead>						<tbody>
+							<tr>
+								<td><strong>Awakening 1</strong></td>
+								<td>
+									<ul>
+										<li>Critical rate increases by <strong>15%</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 2</strong></td>
+								<td>
+									<ul>
+										<li>When releasing <strong>[Enhanced Ultimate]</strong>, holy damage increases by <strong>30%</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 3</strong></td>
+								<td>
+									<ul>
+										<li><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 4</strong></td>
+								<td>
+									<ul>
+										<li>Ultimate damage increases by <strong>35%</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 5</strong></td>
+								<td>
+									<ul>
+										<li><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 6</strong></td>
+								<td>
+									<ul>
+										<li><strong>[Enhanced Ultimate]</strong> ignores target's <strong>20% elemental resistance</strong></li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 2 (CRITICAL)</h3>
-					<p>When releasing <strong>[Enhanced Ultimate]</strong>, holy damage increases by <strong>30%</strong></p>
-					<p><strong>Impact:</strong> Massive damage amplification for enhanced ultimate mode</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 3</h3>
-					<p><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card high-priority">
-					<h3 class="skill-title">🌟 Awakening 4 (HIGH PRIORITY)</h3>
-					<p>Ultimate damage increases by <strong>35%</strong></p>
-					<p><strong>Impact:</strong> Applies to both normal and enhanced ultimate modes</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 5 (REQUIRED)</h3>
-					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
-					<p><strong>Critical:</strong> Required for memory card access</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 6 (CRITICAL)</h3>
-					<p><strong>[Enhanced Ultimate]</strong> ignores target's <strong>20% elemental resistance</strong></p>
-					<p><strong>Impact:</strong> Ensures full enhanced ultimate damage penetration</p>
-				</div>
-			</section>
-
-			<!-- Memory Card -->
+			</section><!-- Memory Card -->
 			<section class="content-section">
 				<h2 class="section-title">Memory Card: Summer Afternoon Rest Time</h2>
 				
 				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
-					<img src="/images/characters/Arthurcard.jpg" alt="Arthur Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
+					<!-- Card Image (Left) -->
+					<div style="flex-shrink: 0;">
+						<img src="/images/characters/Arthurcard.jpg" alt="Arthur Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3); transition: all 0.3s ease;" loading="lazy" />
+					</div>
 					
+					<!-- Stats (Right) -->
 					<div style="flex: 1; min-width: 300px;">
 						<div class="info-card" style="margin: 0;">
 							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Base Stats</h4>
@@ -628,100 +816,19 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 									<div class="stat-value">395</div>
 								</div>
 							</div>
-
-							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
-							<ul>
-								<li><strong>Class Restriction:</strong> Only effective for Disaster Bringers (开灾使)</li>
-								<li><strong>Effect 1:</strong> Attack increases by <strong>20%</strong></li>
-								<li><strong>Effect 2:</strong> When there's one enemy on the field, attack additionally increases by <strong>5%</strong>, maximum 4 times</li>
-								<li><strong>Total Single-Target Bonus:</strong> 20% + 20% = <strong>40% attack boost</strong> vs single targets</li>
-							</ul>
-
-							<div class="warning-box" style="margin-top: 1rem;">
-								<div class="warning-title">📋 Synergy</div>
-								<p>This memory card provides substantial attack amplification, especially against single targets, perfectly complementing Arthur's enhanced ultimate system.</p>
-							</div>
 						</div>
 					</div>
 				</div>
-			</section>
 
-			<!-- Recommended Builds -->
-			<section class="content-section">
-				<h2 class="section-title">Recommended Builds</h2>
-
-				<h3 class="subsection-title">Rune Sets</h3>
-				
+				<!-- Memory Effects in separate box -->
 				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Holy Focus)</h4>
-					<p><strong>4-Piece Epsilon (埃普西隆):</strong> Attack +8%, After Ultimate: Team damage +10% (10s)</p>
-					<p><strong>2-Piece Beth (贝丝):</strong> Critical Rate +6%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Perfect synergy:</strong> Ultimate team buff complements support role while maximizing critical rate for holy damage scaling
-					</p>
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">Memory Effects</h4>
+					<ul>
+						<li><strong>Effect 1:</strong> Attack increases by <strong>20%</strong></li>
+						<li><strong>Effect 2:</strong> When there's one enemy on the field, attack additionally increases by <strong>5%</strong>, maximum 4 times</li>
+						<li><strong>Total Single-Target Bonus:</strong> 20% + 20% = <strong>40% attack boost</strong> vs single targets</li>
+					</ul>
 				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build (Critical Scaling)</h4>
-					<p><strong>4-Piece Beth:</strong> Critical Rate +6%, When HP >80%: Critical Damage +24%</p>
-					<p><strong>2-Piece Alpha (阿尔法符):</strong> Attack +8%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Focus:</strong> Maximizes critical damage output with high base critical rate</p>
-					</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--rose-quartz); margin: 0 0 1rem 0;">⚔️ Hybrid Build (Balanced)</h4>
-					<p><strong>2-Piece Alpha:</strong> Attack +8%</p>
-					<p><strong>2-Piece Beth:</strong> Critical Rate +6%</p>
-					<p><strong>2-Piece Zahn (札恩):</strong> HP +8%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Balance:</strong> Maintains damage output while improving survivability for sustained combat
-					</p>
-				</div>
-
-				<h3 class="subsection-title">Main Stat Priorities</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Position 1</div>
-						<div class="stat-value">HP (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 2</div>
-						<div class="stat-value">ATK (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 3</div>
-						<div class="stat-value">DEF (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 4</div>
-						<div class="stat-value">ATK% or Critical Damage%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 5</div>
-						<div class="stat-value">Holy Damage% or ATK%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 6</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Substat Priorities</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Attack% (Most important for all damage scaling)</li>
-						<li>Critical Damage (High base crit rate makes this valuable)</li>
-						<li>Critical Rate (Until team skill threshold)</li>
-						<li>HP% / Defense%</li>
-					</ol>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Note:</strong> With 15% base critical rate + awakenings + team skill, Arthur reaches high critical thresholds easily, making critical damage very valuable. Focus on attack scaling and critical damage for maximum effectiveness.
-					</p>
-				</div>
-			</section>
-
-		</div>
+			</section>		</div>
 	</div>
-</ZoneNovaLayout1> 
+</ZoneNovaLayout1>
