@@ -4,75 +4,21 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 ---
 
 <ZoneNovaLayout1 
-	title="Naiya Character Guide - Zone Nova - GachaWiki" 
-	description="Complete guide for Naiya, the water element healer and support specialist in Zone Nova"
-	gameTitle="Naiya Character Guide"
+	title="Naiya Character Information - Zone Nova - GachaWiki" 
+	description="Complete information for Naiya, the water element healer and support specialist in Zone Nova"
+	gameTitle="Naiya Character Information"
 	showBreadcrumb={true}
 	breadcrumbText="Characters"
->
-	<Fragment slot="head">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-		<style>
-			.back-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: var(--bg-primary);
-				color: var(--text-primary);
-				text-decoration: none;
-				padding: 1rem 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--amber-glow);
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 600;
-				font-size: 1rem;
-				margin-bottom: 2rem;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-			}
-
-			.back-button:hover {
-				background: var(--amber-glow);
-				color: var(--text-inverse);
-				transform: translateY(-2px);
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-			}
-
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
-
+>	<Fragment slot="head">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">		<style>
 			.character-page {
 				background: var(--bg-secondary);
 				min-height: 100vh;
 				padding: 2rem 0;
-			}
-
-			.character-container {
+			}			.character-container {
 				max-width: 1200px;
 				margin: 0 auto;
 				padding: 0 2rem;
-			}
-
-			.character-header {
-				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
-				border-radius: 20px;
-				padding: 3rem;
-				margin-bottom: 3rem;
-				border: 1px solid var(--amber-glow);
-				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
-				text-align: center;
-				transition: all 0.4s ease;
-			}
-
-			.character-header:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
 			}
 
 			.character-image {
@@ -195,24 +141,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				transform: translateY(-2px);
 				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
 				border-color: var(--teal-crystal);
-			}
-
-			.skill-card {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.08), rgba(0, 172, 193, 0.08));
-				border: 1px solid var(--amber-glow);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-				transition: all 0.3s ease;
-			}
-
-			.skill-card:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
-			}
-
-			.stats-grid {
+			}			.stats-grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 				gap: 1.5rem;
@@ -241,48 +170,16 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			.stat-value {
 				color: var(--text-primary);
 				font-size: 1.1rem;
-			}
-
-			.awakening-card {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
-				border: 1px solid var(--amber-glow);
-				border-radius: 12px;
-				padding: 1.5rem;
-				margin: 1rem 0;
-			}
-
-			.critical-awakening {
-				background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1));
-				border-color: #dc3545;
-			}
-
-			.warning-box {
+			}			.warning-box {
 				background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1));
 				border: 1px solid #ffc107;
 				border-radius: 12px;
 				padding: 1.5rem;
 				margin: 1.5rem 0;
-			}
-
-			.warning-box .warning-title {
+			}			.warning-box .warning-title {
 				color: #ffc107;
 				font-weight: 600;
 				margin-bottom: 0.5rem;
-			}
-
-			.priority-high {
-				color: #fd7e14;
-				font-weight: 600;
-			}
-
-			.priority-medium {
-				color: #ffc107;
-				font-weight: 600;
-			}
-
-			.priority-low {
-				color: #28a745;
-				font-weight: 600;
 			}
 
 			.video-container {
@@ -309,80 +206,91 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				height: 100%;
 			}
 
-			@keyframes sectionFadeIn {
-				0% {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				100% {
-					opacity: 1;
-					transform: translateY(0);
-				}
+			/* Modern Badge System */
+			.character-badge {
+				display: inline-block;
+				padding: 0.38rem 1.1rem;
+				border-radius: 14px;
+				font-weight: 700;
+				font-size: 1.05rem;
+				letter-spacing: 0.5px;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+				margin: 0 0.1rem;
+				text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+				border: none;
+				text-align: center;
+				text-transform: uppercase;
+				min-width: 60px;
+				transition: all 0.3s ease;
+				cursor: pointer;
 			}
 
-			@keyframes titleGlow {
-				0% {
-					text-shadow: 
-						0 0 10px rgba(255, 183, 77, 0.3),
-						0 0 20px rgba(255, 183, 77, 0.2);
-				}
-				100% {
-					text-shadow: 
-						0 0 20px rgba(255, 183, 77, 0.6),
-						0 0 30px rgba(255, 183, 77, 0.4);
-				}
+			.character-badge:hover {
+				transform: translateY(-2px) scale(1.05);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 			}
 
-			@media (max-width: 768px) {
-				.character-container {
-					padding: 0 1rem;
-				}
-
-				.character-header,
-				.content-section {
-					padding: 2rem;
-				}
-
-				.character-title {
-					font-size: 2.5rem;
-				}
-
-				.character-image {
-					width: 250px;
-					height: 250px;
-				}
-
-				.stats-grid {
-					grid-template-columns: 1fr;
-				}
-
-				/* Memory Card mobile layout */
-				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
-					flex-direction: column !important;
-					align-items: center !important;
-				}
-
-				.content-section img[alt="Naiya Memory Card"] {
-					width: 160px !important;
-					height: 240px !important;
-				}
+			.ssr-badge {
+				background: #ffe066;
+				color: #222;
 			}
 
-			.class-showcase {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
-				border: 1px solid var(--amber-glow);
-				border-radius: 15px;
-				padding: 2rem;
-				margin-bottom: 2rem;
-				display: flex;
-				align-items: center;
-				gap: 1.5rem;
+			.ssr-badge:hover {
+				background: #ffdd33;
+				box-shadow: 0 4px 15px rgba(255, 224, 102, 0.4);
+			}			.water-badge {
+				background: #b3e5fc;
+				color: #01579b;
+			}
+
+			.water-badge:hover {
+				background: #81d4fa;
+				box-shadow: 0 4px 15px rgba(179, 229, 252, 0.4);
+			}			.ice-badge {
+				background: #e3f2fd;
+				color: #0277bd;
+				border: 1.5px solid #90caf9;
+			}
+
+			.ice-badge:hover {
+				background: #bbdefb;
+				box-shadow: 0 4px 15px rgba(227, 242, 253, 0.4);
+			}
+
+			.support-badge {
+				background: #c8e6c9;
+				color: #2e7d32;
+			}
+
+			.support-badge:hover {
+				background: #a5d6a7;
+				box-shadow: 0 4px 15px rgba(200, 230, 201, 0.4);
+			}
+
+			.buffer-badge {
+				background: #66d9ef;
+				color: #222;
+				border: 1.5px solid #4fc3f7;
+			}
+
+			.buffer-badge:hover {
+				background: #4fc3f7;
+				box-shadow: 0 4px 15px rgba(102, 217, 239, 0.4);
+			}
+
+			.badges-container {
+				background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+				border-radius: 14px;
+				box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+				padding: 1.2rem 1.8rem;
+				border: 1px solid var(--neutral-200);
+				margin-top: 1rem;
 				transition: all 0.3s ease;
 				position: relative;
 				overflow: hidden;
 			}
 
-			.class-showcase::before {
+			.badges-container::before {
 				content: '';
 				position: absolute;
 				top: 0;
@@ -393,382 +301,412 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				transition: left 0.6s ease;
 			}
 
-			.class-showcase:hover::before {
+			.badges-container:hover::before {
 				left: 100%;
 			}
 
-			.class-showcase:hover {
+			.badges-container:hover {
 				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
+				box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+				border-color: var(--amber-glow);
 			}
 
-			.class-image {
-				width: 64px;
-				height: 64px;
+			/* Skills Table */
+			.skills-table-container {
+				background: var(--bg-primary);
 				border-radius: 12px;
-				border: 2px solid var(--amber-glow);
-				flex-shrink: 0;
+				padding: 1.5rem;
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.08);
+				border: 1px solid var(--neutral-200);
+			}
+
+			.skills-table {
+				width: 100%;
+				border-collapse: collapse;
+				background: transparent;
+			}
+
+			.skills-table thead {
+				background: var(--amber-glow);
+			}
+
+			.skills-table thead th {
+				color: #222;
+				padding: 1rem;
+				text-align: left;
+				font-weight: 700;
+				border-bottom: 2px solid var(--neutral-200);
+			}			.skills-table td {
+				padding: 1.2rem 1rem;
+				border-bottom: 1px solid var(--neutral-200);
+				vertical-align: top;
+			}
+
+			.skills-table td:first-child {
+				white-space: nowrap;
+				min-width: 120px;
+			}.skills-table tr:hover {
+				background: rgba(255, 183, 77, 0.05);
+			}
+
+			.skills-table ul {
+				margin: 0;
+				padding-left: 1.5rem;
+				list-style-type: disc;
+			}			.skills-table li {
+				margin-bottom: 0.5rem;
+				line-height: 1.4;
+			}
+
+			.skills-table strong {
+				color: var(--amber-glow);
+			}
+
+			.skills-table small {
+				color: var(--text-secondary);
+				font-size: 0.85rem;
+			}
+
+			.skill-name {
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin-bottom: 0.3rem;
+			}
+
+			.skill-description {
+				color: var(--text-secondary);
+				line-height: 1.6;
+			}
+
+			/* Skill Type Badges */
+			.skill-type {
+				display: inline-block;
+				padding: 0.3rem 0.8rem;
+				border-radius: 10px;
+				font-size: 0.85rem;
+				font-weight: 600;
+				text-align: center;
+				min-width: 80px;
+			}
+
+			.skill-type.normal-attack {
+				background: #e3f2fd;
+				color: #1976d2;
+				border: 1px solid #bbdefb;
+			}
+
+			.skill-type.auto-skill {
+				background: #f3e5f5;
+				color: #7b1fa2;
+				border: 1px solid #e1bee7;
+			}
+
+			.skill-type.ultimate {
+				background: #ffebee;
+				color: #c62828;
+				border: 1px solid #ffcdd2;
+			}
+
+			.skill-type.passive {
+				background: #e8f5e8;
+				color: #388e3c;
+				border: 1px solid #a5d6a7;
+			}
+
+			.skill-type.team-skill {
+				background: #fce4ec;
+				color: #c2185b;
+				border: 1px solid #f8bbd9;
+			}			/* Stats and Layout */
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1.5rem;
+				margin-bottom: 2rem;
+			}
+
+			.stat-label {
+				font-size: 0.9rem;
+				color: var(--amber-glow);
+				font-weight: 600;
+				display: block;
+				margin-bottom: 0.5rem;
+			}
+
+			.stat-value {
+				font-size: 1.3rem;
+				font-weight: 700;
+				color: var(--text-primary);
+			}
+
+			.stat-item {
+				background: linear-gradient(135deg, var(--bg-secondary), rgba(255, 183, 77, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 12px;
+				padding: 1.5rem;
+				text-align: center;
 				transition: all 0.3s ease;
 			}
 
-			.class-showcase:hover .class-image {
-				transform: scale(1.05);
-				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3);
+			.stat-item:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.15);
+				border-color: var(--amber-glow);
 			}
 
-			.class-info h3 {
-				color: var(--amber-glow);
-				margin: 0 0 0.5rem 0;
-				font-size: 1.4rem;
-				font-weight: 600;
+			.content-section {
+				background: var(--bg-primary);
+				border-radius: 20px;
+				padding: 3rem;
+				margin-bottom: 2rem;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
+				transition: all 0.4s ease;
+				animation: sectionFadeIn 0.8s ease-out;
+			}
+
+			.content-section:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
+				border-color: var(--teal-crystal);
+			}
+
+			.section-title {
 				font-family: 'Space Grotesk', sans-serif;
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin: 0 0 1.5rem 0;
+				padding-bottom: 0.75rem;
+				border-bottom: 2px solid var(--amber-glow);
+				position: relative;
 			}
 
-			.class-info p {
-				color: var(--text-secondary);
-				margin: 0;
-				font-size: 1rem;
-				line-height: 1.5;
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--teal-crystal);
+			}			/* Responsive */
+			@media (max-width: 768px) {
+				.character-container {
+					padding: 0 1rem;
+				}
+				.content-section {
+					padding: 2rem;
+				}
+				.character-image { 
+					width: 250px; 
+					height: 250px; 
+				}
 			}
 		</style>
-	</Fragment>
-
-	<div class="character-page">
+	</Fragment>	<div class="character-page">
 		<div class="character-container">
-			<!-- Back Button -->
-			<a href="/guides/zone-nova/characters/" class="back-button">
-				<span class="back-arrow">←</span>
-				Back to Characters
-			</a>
-
-			<!-- Character Header -->
-			<header class="character-header">
-				<!-- Character Image -->
-				<img src="/images/characters/naiya.jpg" alt="Naiya" class="character-image" loading="lazy" />
-				
-				<h1 class="character-title">Naiya</h1>
-				<p class="character-subtitle">🌟 SSR • ❄️ Ice • 📈 Buffer/DPS</p>
-			</header>
-
-			<!-- Character Overview -->
+			<!-- Character Header & Overview (merged) -->
 			<section class="content-section">
-				<h2 class="section-title">Character Overview</h2>
-				
-				<!-- Class Showcase -->
-				<div class="class-showcase">
-					<img src="/images/characters/class/Support.jpg" alt="Support Class" class="class-image">
-					<div class="class-info">
-						<h3>支援使 (Support)</h3>
-					</div>
-				</div>
-				
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Faction</div>
-						<div class="stat-value">Avalon</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Role</div>
-						<div class="stat-value">Support/Healer</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Base Stats at Level 80</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">HP</div>
-						<div class="stat-value">8,415</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Attack</div>
-						<div class="stat-value">747</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Defense</div>
-						<div class="stat-value">665</div>
-					</div>
-				</div>
-
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Elite support buffer who specializes in empowering allies through the unique "War Intent" mechanic. Excels at turning your strongest attacker into a hyper-carry by identifying and amplifying their damage potential.
-					</p>
-				</div>
-			</section>
-
-			<!-- Skills Section -->
+    <h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+    <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+        <!-- Hero Card (Right) -->
+        <div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+            <div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+                <img src="/images/characters/naiya.jpg" alt="Naiya" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+                <h1 class="character-title" style="margin: 0; font-size: 2.8rem; text-align:center; font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">Naiya</h1>
+            </div>            <!-- Badges in separate box with better styling -->
+            <div class="badges-container" style="margin-top: 1.8rem;">
+                <div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+                    <span class="character-badge ssr-badge">SSR</span>
+                    <span class="character-badge ice-badge">Ice</span>
+                    <span class="character-badge buffer-badge">Buffer</span>
+                </div>
+            </div>
+        </div>
+        <!-- Stats Box (Left) -->
+        <div style="flex: 1; min-width: 260px; max-width: 400px;">
+            <div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+                <div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Faction</div><div class="stat-value" style="font-size:1.25rem; font-weight:600; letter-spacing:1px; color:#222;">Avalon</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Role</div><div class="stat-value" style="font-size:1.25rem; font-weight:700; color:#222; letter-spacing:1px;">Buffer</div></div>
+                </div>
+                <div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">HP</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">9,564</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Attack</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">1,004</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Defense</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">672</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Energy Regen</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0.25/s</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Crit Rate</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0%</div></div>
+                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Crit Damage</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">50%</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>			<!-- Skills Section -->
 			<section class="content-section">
 				<h2 class="section-title">Skills</h2>
 
-				<div class="skill-card">
-					<h3 class="skill-title">❄️ Normal Attack: Frost Strike</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 2.0s</p>
-					<p>Deals <strong>120% attack power</strong> as ice damage to designated enemy unit</p>
+				<div class="skills-table-container">
+					<table class="skills-table">
+						<thead>
+							<tr>
+								<th>Skill Type</th>
+								<th>Skill Name</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span class="skill-type normal-attack">Normal Attack</span></td>
+								<td><strong>Frost Strike</strong><br><small>Level: 10+4 | CD: 2.0s</small></td>
+								<td>
+									<ul>
+										<li>Deals <strong>120% attack power</strong> as ice damage to designated enemy unit</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type auto-skill">Auto Skill</span></td>
+								<td><strong>War Intent Detection</strong><br><small>Level: 10+4 | Auto-trigger: 5.0s</small></td>
+								<td>
+									<ul>
+										<li>Automatically identifies ally with highest attack power within <strong>6-meter radius</strong></li>
+										<li>Grants <strong>War Intent</strong>: +20% attack power and +15% critical rate for 12 seconds</li>
+										<li>War Intent stacks up to 3 times on same target</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type ultimate">Ultimate</span></td>
+								<td><strong>Hyper-Carry Awakening</strong><br><small>Level: 10+4 | CD: 1.0s | Energy: 3</small></td>
+								<td>
+									<ul>
+										<li>Deals ice damage equal to <strong>180% attack power</strong> to all enemies within <strong>6-meter radius</strong></li>
+										<li>Grants all allies <strong>Enhanced War Intent</strong> for 15 seconds: +30% attack power, +20% critical rate, +15% critical damage</li>
+										<li>Ally with highest attack receives <strong>Hyper-Carry Status</strong>: Additional +25% damage for 20 seconds</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type passive">Passive</span></td>
+								<td><strong>Tactical Analysis</strong><br><small>Level: 10+4</small></td>
+								<td>
+									<ul>
+										<li>When allies with <strong>War Intent</strong> deal critical hits, Naiya gains <strong>Tactical Stack</strong> (max 5)</li>
+										<li>Each stack: +3% ice damage and +2% energy recovery</li>
+										<li>At 5 stacks: Next ultimate costs 1 less energy and applies War Intent to entire team</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type team-skill">Team Skill</span></td>
+								<td><strong>Strategic Command</strong><br><small>Level: 1</small><br><small style="color: var(--amber-glow);">Requires: 2 [Ice] OR 2 [Buffer] characters</small></td>
+								<td>
+									<ul>
+										<li>War Intent effectiveness increased by <strong>25%</strong></li>
+										<li>War Intent duration increased by <strong>5 seconds</strong></li>
+										<li>Hyper-Carry Status grants additional <strong>+10% attack speed</strong></li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">🔮 Auto Skill: War Intent Detection</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>Auto-trigger Interval:</strong> 5.0s</p>
-					<ul>
-						<li>Automatically identifies the ally with highest attack power within <strong>6-meter radius</strong></li>
-						<li>Grants them <strong>War Intent</strong>: +20% attack power and +15% critical rate for 12 seconds</li>
-						<li>War Intent stacks up to 3 times on the same target</li>
-					</ul>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">💥 Ultimate: Hyper-Carry Awakening</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 3</p>
-					<ul>
-						<li>Deals ice damage equal to <strong>180% attack power</strong> to all enemies within a <strong>6-meter radius</strong></li>
-						<li>Grants all allies <strong>Enhanced War Intent</strong> for 15 seconds:</li>
-						<li>+30% attack power, +20% critical rate, +15% critical damage</li>
-						<li>The ally with highest attack receives <strong>Hyper-Carry Status</strong>: Additional +25% damage for 20 seconds</li>
-					</ul>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">👑 Passive: Tactical Analysis</h3>
-					<p><strong>Level:</strong> 10+4</p>
-					<p>When allies with <strong>War Intent</strong> deal critical hits, Naiya gains <strong>Tactical Stack</strong> (max 5)</p>
-					<p>Each stack: +3% ice damage and +2% energy recovery for Naiya</p>
-					<p>At 5 stacks: Next ultimate costs 1 less energy and applies War Intent to the entire team</p>
-				</div>
-			</section>
-
-			<!-- Team Composition Skill -->
-			<section class="content-section">
-				<h2 class="section-title">Team Composition Skill</h2>
-
-				<div class="skill-card">
-					<h3 class="skill-title">⚔️ Combination Skill: Strategic Command</h3>
-					<p><strong>Level:</strong> 1</p>
-					
-					<div class="warning-box">
-						<div class="warning-title">⚔️ Activation Requirements</div>
-						<p>Triggers when team contains <strong>2 [Ice] characters</strong> OR <strong>2 [DPS] characters</strong></p>
-					</div>
-
-					<div style="margin: 1rem 0;">
-						<p><strong>Effects:</strong></p>
-						<ul>
-							<li>War Intent effectiveness increased by <strong>25%</strong></li>
-							<li>War Intent duration increased by <strong>5 seconds</strong></li>
-							<li>Hyper-Carry Status grants additional <strong>+10% attack speed</strong></li>
-						</ul>
-					</div>
-
-					<div class="info-card">
-						<p style="color: var(--text-primary); font-size: 1rem; line-height: 1.6; margin: 0;">
-							<strong>Why This Matters:</strong> This team skill maximizes Naiya's hyper-carry potential by extending and amplifying War Intent effects. Building teams with strong DPS characters or ice synergy creates devastating offensive combinations where one ally becomes an unstoppable force.
-						</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Awakening Effects -->
+			</section>			<!-- Awakening Effects -->
 			<section class="content-section">
 				<h2 class="section-title">Awakening Effects</h2>
 
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 1 (CRITICAL)</h3>
-					<p>War Intent effects have a <strong>30% chance to grant 1 energy</strong> to the buffed ally</p>
-					<p>Enables hyper-carries to use ultimates more frequently</p>
+				<div class="skills-table-container">
+					<table class="skills-table">
+						<thead>
+							<tr>
+								<th>Awakening</th>
+								<th>Effects</th>
+							</tr>
+						</thead>						<tbody>
+							<tr>
+								<td><strong>Awakening 1</strong></td>
+								<td>
+									<ul>
+										<li><strong>After using ultimate:</strong> All friendly units' attack power increased by <strong>20%</strong> for 20 seconds</li>
+									</ul>
+								</td>
+							</tr>							<tr>
+								<td><strong>Awakening 2</strong></td>
+								<td>
+									<ul>
+										<li><strong>When characters with [War Intent] defeat an enemy:</strong> Recovers <strong>1 energy</strong> for the team</li>
+										<li>Triggers at most once per battle</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 3</strong></td>
+								<td>
+									<ul>
+										<li><strong>Skill and Normal Attack:</strong> Level and level cap increased by <strong>+4</strong></li>
+									</ul>
+								</td>
+							</tr>							<tr>
+								<td><strong>Awakening 4</strong></td>
+								<td>
+									<ul>
+										<li><strong>Characters with [War Intent] when attacking:</strong> Deal an additional <strong>500% attack power</strong> as ice damage</li>
+										<li>Triggers at most once every 10 seconds</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 5</strong></td>
+								<td>
+									<ul>
+										<li><strong>Ultimate Skill and Passive:</strong> Level and level cap increased by <strong>+4</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 6</strong></td>
+								<td>
+									<ul>
+										<li><strong>Ultimate skill duration extended to 20 seconds</strong></li>
+										<li><strong>Damage multiplier increased by 100%</strong></li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 2</h3>
-					<p>Ice damage increases by <strong>18%</strong></p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 3</h3>
-					<p><strong>[Skills]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 4 (CRITICAL)</h3>
-					<p>When allies with <strong>War Intent</strong> are above 80% health, War Intent effectiveness increases by <strong>40%</strong></p>
-					<p>Maximizes hyper-carry potential when team is in optimal condition</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 5</h3>
-					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 6 (CRITICAL)</h3>
-					<p>Allies with <strong>Hyper-Carry Status</strong> gain <strong>damage immunity for 3 seconds</strong> after receiving the buff</p>
-					<p>Transforms hyper-carry activation into both offensive and defensive advantage</p>
-				</div>
-			</section>
-
-			<!-- Recommended Builds -->
+			</section>			<!-- Memory Card -->
 			<section class="content-section">
-				<h2 class="section-title">Recommended Builds</h2>
-
-				<h3 class="subsection-title">Rune Sets</h3>
-				
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Offensive Buffer Focus)</h4>
-					<p><strong>4-Piece Alpha (阿尔法):</strong> Attack Power +12%, Critical Rate +8%</p>
-					<p><strong>2-Piece Epsilon (厄普西隆):</strong> Ice Damage +15%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Perfect synergy:</strong> Maximizes personal damage output while enhancing team offensive capabilities
-					</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build (Support Focus)</h4>
-					<p><strong>4-Piece Delta (德尔塔):</strong> Energy Recovery +20%, Skill CD reduction +10%</p>
-					<p><strong>2-Piece Alpha (阿尔法):</strong> Attack Power +8%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Focus:</strong> More frequent ultimate usage for consistent team buffing and damage
-					</p>
-				</div>
-
-				<h3 class="subsection-title">Main Stat Priorities</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Position 1</div>
-						<div class="stat-value">HP (Fixed)</div>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Memory Card: Frost Dominion</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Memory Card Image (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/naiyacard.jpg" alt="Naiya Memory Card" style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" loading="lazy" />
+						</div>
 					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 2</div>
-						<div class="stat-value">ATK (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 3</div>
-						<div class="stat-value">DEF (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 4</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 5</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 6</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Substat Priorities</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Attack%</li>
-						<li>Healing Effectiveness%</li>
-						<li>Attack (Flat)</li>
-						<li>Energy Recovery</li>
-						<li>HP%</li>
-					</ol>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Note:</strong> Attack scaling is primary since all healing scales with attack power. Energy recovery helps with ultimate frequency.
-					</p>
-				</div>
-			</section>
-
-			<!-- Memory Card -->
-			<section class="content-section">
-				<h2 class="section-title">Memory Card: Serene Waters</h2>
-				
-				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
-					<img src="/images/characters/naiyacard.jpg" alt="Naiya Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
-					
-					<div style="flex: 1; min-width: 300px;">
-						<div class="info-card" style="margin: 0;">
-							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Effects</h4>
-
-							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
-							<ul>
-								<li><strong>Effect 1:</strong> AoE healing radius increased by <strong>25%</strong></li>
-								<li><strong>Effect 2:</strong> When healing multiple allies (3+), healing amount increases by <strong>15%</strong></li>
-								<li>Essential for maximizing AoE healing potential</li>
-							</ul>
+					<!-- Memory Card Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">HP</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">6,000</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Attack</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">600</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Defense</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">600</div></div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</section>
-
-			<!-- Usage Tips -->
-			<section class="content-section">
-				<h2 class="section-title">Usage Tips</h2>
-
-				<h3 class="subsection-title">Strengths</h3>
-				<div class="info-card">
-					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Excellent AoE healing for team-wide sustain</li>
-						<li>Consistent healing output through automatic skills</li>
-						<li>Provides water resistance buffs to healed allies</li>
-						<li>Energy regeneration through Awakening 1 for more ultimates</li>
-						<li>Damage reduction support with Awakening 6</li>
-						<li>Works well in clustered team formations</li>
-						<li><strong>With Awakenings 1+4+6:</strong> Becomes an unstoppable AoE healing machine</li>
-					</ul>
-				</div>
-
-				<h3 class="subsection-title">Playstyle</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Position Naiya centrally to maximize healing radius</li>
-						<li>Keep team clustered within her AoE range</li>
-						<li>Use ultimate when multiple allies need healing</li>
-						<li>Focus on attack stats to amplify healing output</li>
-						<li>Coordinate with water element allies for team skill bonuses</li>
-					</ol>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">💡 Pro Tip</div>
-					<p>Naiya's memory card significantly increases her AoE radius and provides bonus healing when hitting multiple allies. Position your team to take advantage of these effects for maximum efficiency.</p>
-				</div>
-
-				<h3 class="subsection-title">Team Synergy</h3>
-				<div class="info-card">
-					<ul>
-						<li><strong>Perfect with:</strong> Clustered melee teams and close-formation strategies</li>
-						<li><strong>Water Element Teams:</strong> Activate team skill for 20% healing boost</li>
-						<li><strong>Multiple Healers:</strong> Alternative team skill activation method</li>
-						<li><strong>Attack Buffers:</strong> Characters that boost team attack power amplify her healing</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- Investment Priority -->
-			<section class="content-section">
-				<h2 class="section-title">Investment Priority</h2>
 				
-				<div class="warning-box">
-					<div class="warning-title">⭐ Solid Investment Choice</div>
-					<p>Excellent AoE healer for teams that stay clustered. Worth investment for players who prefer group healing over single-target focus.</p>
-				</div>
-
-				<h3 class="subsection-title">Awakening Priority</h3>
-				<div class="critical-awakening" style="padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
-					<h4 style="color: #dc3545; margin: 0 0 1rem 0;">🚨 Awakenings 1+4+6 Create Synergy</h4>
-					<p>These awakenings transform her into a premier AoE support:</p>
-					<ul>
-						<li><strong>Without them:</strong> Basic AoE healer</li>
-						<li><strong>With them:</strong> Energy-efficient healing machine with damage reduction support</li>
+				<!-- Memory Effects Box -->
+				<div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Memory Effects</h4>
+					<ul style="margin: 0; padding-left: 1.5rem; max-width: none;">
+						<li style="margin-bottom: 0.8rem;"><strong>Attack power increased by 40%</strong></li>
+						<li style="margin-bottom: 0.8rem;"><strong>Team Must-Kill Damage increased by 40% for 5 seconds after Ultimate:</strong> Enhances team finishing power after ultimate usage</li>
 					</ul>
 				</div>
-
-				<h3 class="subsection-title">Key Breakpoints</h3>
-				<div class="info-card">
-					<ul>
-						<li><span class="priority-high">Awakening 1: CRITICAL</span> - Energy regeneration for ultimate frequency</li>
-						<li><span class="priority-high">Awakening 4: CRITICAL</span> - 30% healing boost for injured allies</li>
-						<li><span class="priority-high">Awakening 6: CRITICAL</span> - Damage reduction for healed allies</li>
-						<li><span class="priority-medium">Awakening 2:</span> 18% general healing increase</li>
-						<li><span class="priority-low">Max memory card</span> for AoE radius and efficiency</li>
-					</ul>
-				</div>
-			</section>
-
-		</div>
+			</section></div>
 	</div>
 </ZoneNovaLayout1>

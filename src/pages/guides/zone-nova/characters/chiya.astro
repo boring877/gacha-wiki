@@ -13,40 +13,6 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 	<Fragment slot="head">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 		<style>
-			.back-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: var(--bg-primary);
-				color: var(--text-primary);
-				text-decoration: none;
-				padding: 1rem 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--amber-glow);
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 600;
-				font-size: 1rem;
-				margin-bottom: 2rem;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-			}
-
-			.back-button:hover {
-				background: var(--amber-glow);
-				color: var(--text-inverse);
-				transform: translateY(-2px);
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-			}
-
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
-
 			.character-page {
 				background: var(--bg-secondary);
 				min-height: 100vh;
@@ -82,13 +48,13 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				object-fit: cover;
 				margin: 0 auto 2rem auto;
 				display: block;
-				box-shadow: 0 12px 30px rgba(0, 172, 193, 0.3);
+				box-shadow: 0 12px 30px rgba(139, 69, 193, 0.3);
 				transition: all 0.3s ease;
 			}
 
 			.character-image:hover {
 				transform: scale(1.05);
-				box-shadow: 0 16px 40px rgba(0, 172, 193, 0.4);
+				box-shadow: 0 16px 40px rgba(139, 69, 193, 0.4);
 			}
 
 			.character-title {
@@ -334,30 +300,6 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				margin-bottom: 0.5rem;
 			}
 
-			.video-container {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
-				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-			}
-
-			.video-wrapper {
-				position: relative;
-				padding-bottom: 56.25%;
-				height: 0;
-				overflow: hidden;
-				border-radius: 12px;
-			}
-
-			.video-wrapper iframe {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-			}
-
 			.priority-high {
 				color: #dc3545;
 				font-weight: 600;
@@ -400,37 +342,6 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				font-weight: 700;
 				color: var(--text-primary);
 				margin-bottom: 1rem;
-			}
-
-			.rune-list {
-				list-style: none;
-				padding: 0;
-				margin: 1rem 0;
-			}
-
-			.rune-list li {
-				padding: 0.5rem 0;
-				border-bottom: 1px solid var(--neutral-200);
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-
-			.rune-list li:last-child {
-				border-bottom: none;
-			}
-
-			.substat-list {
-				list-style: none;
-				padding: 0;
-				margin: 1rem 0;
-			}
-
-			.substat-list li {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 0.3rem 0;
 			}
 
 			/* Memory Card mobile layout */
@@ -481,8 +392,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				
 				.character-title {
 					font-size: 2.5rem;
-				}
-				
+				} 				
 				.content-section {
 					padding: 2rem;
 				}
@@ -490,358 +400,450 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				.section-title {
 					font-size: 1.8rem;
 				}
+			}			.character-badge {
+				display: inline-block;
+				padding: 0.38rem 1.1rem;
+				border-radius: 14px;
+				font-weight: 700;
+				font-size: 1.05rem;
+				letter-spacing: 0.5px;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+				margin: 0 0.1rem;
+				text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+				border: none; 			}
+
+			.role-badge, .element-badge, .rarity-badge {
+				display: inline-block;
+				padding: 0.25rem 0.85rem;
+				border-radius: 14px;
+				font-size: 1rem;
+				font-weight: 700;
+				margin: 0 0.1rem;
+				box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+				letter-spacing: 0.02em;
+			}
+
+			.rarity-badge.sr { 
+				background: #7ecfff; 
+				color: #222; 
+				border: 1.5px solid #4dbfff; 
+			}
+
+			.chaos-badge {
+				background: #e1bee7;
+				color: #4a148c;
+				border: 1.5px solid #9c27b0;
+			}
+
+			.debuffer-badge {
+				background: #d1c4e9;
+				color: #4527a0;
+				border: 1.5px solid #673ab7;
+			}
+
+			.skills-table-container {
+				overflow-x: auto;
+				border-radius: 16px;
+				box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+				margin: 2rem 0;
+			} 			.skills-table {
+				width: 100%;
+				border-collapse: collapse;
+				background: transparent;
+			}.skills-table thead {
+				background: var(--amber-glow);
+			}
+
+			.skills-table thead th {
+				background: var(--amber-glow);
+				color: #222;
+				padding: 1rem;
+				text-align: left;
+				font-weight: 700;
+				border-bottom: 2px solid var(--neutral-200);
+			} 			.skills-table td {
+				padding: 1.2rem 1rem;
+				border-bottom: 1px solid var(--neutral-200);
+				vertical-align: top;
+			}
+
+			.skills-table tr:hover {
+				background: rgba(255, 183, 77, 0.05);
+			}
+
+			.skills-table td:first-child {
+				width: 150px;
+				text-align: center;
+			}
+
+			.skills-table td:nth-child(2) {
+				width: 250px;
+			}
+
+			.skills-table td:last-child {
+				min-width: 400px;
+			}
+
+			.skills-table ul {
+				margin: 0;
+				padding-left: 1.5rem;
+			}
+
+			.skills-table li {
+				margin-bottom: 0.5rem;
+			}
+
+			.skills-table strong {
+				color: var(--amber-glow);
+			}
+
+			.skills-table small {
+				color: var(--text-secondary);
+				font-size: 0.85rem;
+			} 			.skill-type {
+				display: inline-block;
+				padding: 0.4rem 0.8rem;
+				border-radius: 8px;
+				font-weight: 600;
+				font-size: 0.85rem;
+				text-align: center;
+			}
+
+			.skill-type.normal-attack {
+				background: #e3f2fd;
+				color: #1565c0;
+				border: 1px solid #90caf9;
+			}
+
+			.skill-type.auto-skill {
+				background: #f3e5f5;
+				color: #7b1fa2;
+				border: 1px solid #ce93db;
+			}
+
+			.skill-type.ultimate {
+				background: #fff3e0;
+				color: #ef6c00;
+				border: 1px solid #ffb74d;
+			}
+
+			.skill-type.passive {
+				background: #e8f5e8;
+				color: #388e3c;
+				border: 1px solid #a5d6a7;
+			}
+
+			.skill-type.team-skill {
+				background: #fce4ec;
+				color: #c2185b;
+				border: 1px solid #f8bbd9;
+			}
+
+			.stat-item {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				padding: 0.5rem;
+			}
+
+			.stat-label {
+				font-size: 0.9rem;
+				font-weight: 600;
+				margin-bottom: 0.3rem;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			.stat-value {
+				font-size: 1.15rem;
+				font-weight: 700;
+				color: var(--text-primary);
+			}
+
+			.stats-grid {
+				display: grid;
+				gap: 1rem;
+			}
+
+			.badges-container {
+				background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+				border-radius: 14px;
+				box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+				padding: 1.2rem 1.8rem;
+				border: 1px solid var(--neutral-200);
+				width: 100%;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.badges-container::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.badges-container:hover::before {
+				left: 100%;
+			}
+
+			.badges-container:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+			}
+
+			.stat-item {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 1.2rem 1rem;
+				background: linear-gradient(135deg, #ffffff 60%, #f8fafc 100%);
+				border-radius: 12px;
+				border: 1px solid var(--neutral-200);
+				box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+				border-color: var(--amber-glow);
+			}
+
+			.stat-label {
+				font-size: 0.9rem;
+				font-weight: 600;
+				color: var(--text-secondary);
+				margin-bottom: 0.5rem;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			.stat-value {
+				font-size: 1.1rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				text-align: center;
+			}
+
+			.stats-grid {
+				display: grid;
+				gap: 1rem;
+				margin-bottom: 1.5rem;
 			}
 		</style>
 	</Fragment>
-
 	<div class="character-page">
-		<div class="character-container">
-			<!-- Back Button -->
-			<a href="/guides/zone-nova/characters/" class="back-button">
-				<span class="back-arrow">←</span>
-				Back to Characters
-			</a>
-
-			<!-- Character Header -->
-			<header class="character-header">
-				<img src="/images/characters/Chiya.jpg" alt="Chiya" class="character-image" loading="eager" />
-				<h1 class="character-title">Chiya</h1>
-				<p class="character-subtitle">SSR • Ice • Burst DPS</p>
-			</header>
-
-			<!-- Character Overview -->
+		<div class="character-container">			<!-- Character Header & Overview (merged) -->
 			<section class="content-section">
-				<h2 class="section-title">Character Overview</h2>
-				
-				<!-- Class Showcase -->
-				<div class="class-showcase">
-					<img src="/images/characters/class/Guerrilla.jpg" alt="Guerrilla Class" class="class-image">
-					<div class="class-info">
-						<h3>游击队 (Guerrilla)</h3>
-						<p>High-burst damage specialist focused on critical strikes and enhanced ultimates</p>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Hero Card (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/Chiya.jpg" alt="Chiya" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+							<h1 class="character-title" style="margin: 0; font-size: 2.8rem; text-align:center; font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">Chiya</h1>
+						</div>
+						<!-- Badges in separate box with better styling -->
+						<div class="badges-container" style="margin-top: 1.8rem;">
+							<div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+								<span class="rarity-badge ssr">SSR</span>
+								<span class="character-badge ice-badge">Ice</span>
+								<span class="character-badge burst-dps-badge">Burst DPS</span>
+							</div>
+						</div>
+					</div>
+					<!-- Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
+								<div class="stat-item"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Faction</div><div class="stat-value" style="font-size:1.25rem; font-weight:600; letter-spacing:1px; color:#222;">Saville</div></div>
+								<div class="stat-item"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Role</div><div class="stat-value" style="font-size:1.25rem; font-weight:700; color:#8e24aa; letter-spacing:1px;">DPS</div></div>
+							</div>
+							<div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">
+								<div class="stat-item"><div class="stat-label" style="color:#fbc02d;">HP</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">8,033</div></div>
+								<div class="stat-item"><div class="stat-label" style="color:#ff9800;">Attack</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">1,305</div></div>
+								<div class="stat-item"><div class="stat-label" style="color:#fbc02d;">Defense</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">530</div></div>
+								<div class="stat-item"><div class="stat-label" style="color:#ff9800;">Energy Regen</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0.25/s</div></div>
+								<div class="stat-item"><div class="stat-label" style="color:#fbc02d;">Crit Rate</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0%</div></div>
+								<div class="stat-item"><div class="stat-label" style="color:#ff9800;">Crit Damage</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">50%</div></div>
+							</div>
+						</div>
 					</div>
 				</div>
-				
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Role</div>
-						<div class="stat-value">Burst DPS</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Faction</div>
-						<div class="stat-value"></div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Base Stats (Level 80)</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">HP (血量)</div>
-						<div class="stat-value">8,033</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Attack (攻击)</div>
-						<div class="stat-value">1,305</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Defense (防御)</div>
-						<div class="stat-value">530</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Energy Recovery</div>
-						<div class="stat-value">2.50/s</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Critical Rate</div>
-						<div class="stat-value">0%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Critical Damage</div>
-						<div class="stat-value">50%</div>
-					</div>
-				</div>
-
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Chiya is a high-burst ice damage dealer who specializes in enhanced ultimate mechanics and focus state management. Her unique kit revolves around building up to powerful "Strengthened Must Kill" attacks that deal massive critical damage, while maintaining constant pressure through her focus state that enhances all non-ultimate abilities.
-					</p>
-				</div>
-			</section>
-
-			<!-- Skills -->
+			</section>			<!-- Skills -->
 			<section class="content-section">
 				<h2 class="section-title">Skills</h2>
 				
-				<div class="skill-card">
-					<h3 class="skill-title">❄️ Normal Attack: Heavy Hammer Strike (重锤击)</h3>
-					<p><strong>Level:</strong> 14 | <strong>CD:</strong> 2.0s</p>
-					<p>Deals ice damage equal to <strong>120% of Attack</strong> to designated enemy unit</p>
+				<div class="skills-table-container">
+					<table class="skills-table">
+						<thead>
+							<tr>
+								<th>Skill Type</th>
+								<th>Skill Name</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span class="skill-type normal-attack">Normal Attack</span></td>
+								<td><strong>Heavy Hammer Strike (重锤击)</strong><br><small>Level: 14 | CD: 2.0s</small></td>
+								<td>
+									<ul>
+										<li>Deals ice damage equal to <strong>120% of Attack</strong> to designated enemy unit</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type auto-skill">Auto Skill</span></td>
+								<td><strong>Cold Steel Combo (冷钢连击)</strong><br><small>Level: 10+4 | CD: 5.0s</small></td>
+								<td>
+									<ul>
+										<li>Deals ice damage equal to <strong>480% of Attack</strong> to designated enemy unit</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type ultimate">Ultimate</span></td>
+								<td><strong>Society Master's Fist (社主之拳)</strong><br><small>Level: 10+4 | CD: 1.0s | Energy: 3</small></td>
+								<td>
+									<p><strong>Normal Version:</strong></p>
+									<ul>
+										<li>Rushes to target and deals ice damage equal to <strong>600% of Attack</strong></li>
+									</ul>
+									<p><strong>[Strengthened Must Kill] Version:</strong></p>
+									<ul>
+										<li>Gets <strong>100% critical hit rate</strong></li>
+										<li>Rushes to target and deals ice damage equal to <strong>840% of Attack</strong></li>
+										<li>Guaranteed critical strike</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type passive">Passive</span></td>
+								<td><strong>Beam Assist Framework (光束辅助骨架)</strong><br><small>Level: 14</small></td>
+								<td>
+									<ul>
+										<li>After using must kill, enters <strong>[Focus] state</strong> for 10 seconds</li>
+										<li>All attacks outside must kill deal an additional <strong>36% attack power ice damage</strong></li>
+										<li>Gains one <strong>[Strengthened Must Kill] charge</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type team-skill">Team Skill</span></td>
+								<td><strong>Combination Skill</strong><br><small>Level: 1</small><br><small style="color: var(--amber-glow);">Requires: 2 [Savill] OR 2 [Ice] characters</small></td>
+								<td>
+									<ul>
+										<li><strong>Effect 1:</strong> Self attack power increased by <strong>10%</strong></li>
+										<li><strong>Effect 2:</strong> At battle start, every 500 attack power can increase self critical damage by <strong>7.5%</strong>, maximum 6 times (up to <strong>45% critical damage</strong>)</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">⚡ Auto Skill: Cold Steel Combo (冷钢连击)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 5.0s</p>
-					<p>Deals ice damage equal to <strong>480% of Attack</strong> to designated enemy unit</p>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">💥 Ultimate: Society Master's Fist (社主之拳)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 3</p>
-					
-					<p><strong>Normal Version:</strong></p>
-					<ul style="margin: 0.5rem 0; padding-left: 2rem;">
-						<li>Rushes to target and deals ice damage equal to <strong>600% of Attack</strong></li>
-					</ul>
-
-					<div class="warning-box">
-						<div class="warning-title">[Strengthened Must Kill] Version</div>
-						<div class="warning-content">
-							<ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
-								<li>Gets <strong>100% critical hit rate</strong></li>
-								<li>Rushes to target and deals ice damage equal to <strong>840% of Attack</strong></li>
-								<li>Guaranteed critical strike</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">👑 Passive: Beam Assist Framework (光束辅助骨架)</h3>
-					<p><strong>Level:</strong> 14</p>
-					<p><strong>After using must kill, enters [Focus] state for 10 seconds:</strong></p>
-					<ul style="margin: 1rem 0; padding-left: 2rem;">
-						<li>All attacks outside must kill deal an additional <strong>36% attack power ice damage</strong></li>
-						<li>Gains one <strong>[Strengthened Must Kill] charge</strong></li>
-					</ul>
-
-					<div class="info-card">
-						<p><strong>Focus State Explained:</strong> This transforms Chiya into a sustained damage threat while building toward her next enhanced ultimate. The 36% bonus applies to normal attacks and skills, making her dangerous even when ultimate is on cooldown.</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Team Composition Skill -->
-			<section class="content-section">
-				<h2 class="section-title">Team Composition Skill</h2>
-				
-				<div class="skill-card">
-					<h3 class="skill-title">🏰 Combination Skill</h3>
-					<p><strong>Level:</strong> 1</p>
-					
-					<div class="warning-box">
-						<div class="warning-title">🧊 Activation Requirements</div>
-						<div class="warning-content">
-							<p>Triggers when team contains <strong>2 [Savill (萨维尔)] characters</strong> OR <strong>2 [Ice (冰霜)] characters</strong></p>
-						</div>
-					</div>
-
-					<p><strong>Effect 1:</strong> Self attack power increased by <strong>10%</strong></p>
-					<p><strong>Effect 2:</strong> At battle start, every 500 attack power can increase self critical damage by <strong>7.5%</strong>, maximum 6 times (up to <strong>45% critical damage</strong>)</p>
-				</div>
-			</section>
-
-			<!-- Awakening Effects -->
+			</section>			<!-- Awakening Effects -->
 			<section class="content-section">
 				<h2 class="section-title">Awakening Effects</h2>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 1 (CRITICAL)</h3>
-					<ul style="margin: 1rem 0; padding-left: 2rem;">
-						<li>At battle start, immediately gains one <strong>[Strengthened Must Kill]</strong></li>
-					</ul>
-					<p><strong>Impact:</strong> Allows immediate access to her 840% damage critical ultimate, providing strong opening burst</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 2 (CRITICAL)</h3>
-					<ul style="margin: 1rem 0; padding-left: 2rem;">
-						<li>During [Focus] state, attack speed increased by <strong>50%</strong></li>
-					</ul>
-					<p><strong>Impact:</strong> Dramatically increases DPS during the 10-second focus windows, making her sustained damage much more threatening</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 3</h3>
-					<p>[Skill] and [Normal Attack] level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 4</h3>
-					<p>Ice damage increased by <strong>30%</strong></p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 5</h3>
-					<p>[Must Kill] and [Passive] level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">🌟 Awakening 6 (GAME-CHANGING)</h3>
-					<ul style="margin: 1rem 0; padding-left: 2rem;">
-						<li>After using normal must kill, gains one <strong>[Strengthened Must Kill]</strong></li>
-						<li>Must kill damage increased by <strong>30%</strong></li>
-					</ul>
-					<p><strong>Impact:</strong> Creates an infinite cycle - every ultimate grants the next enhanced ultimate, while boosting all ultimate damage</p>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">🚨 Awakenings 1+6 are MANDATORY</div>
-					<p>These transform her from good to exceptional:</p>
-					<ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
-						<li><strong>Without them:</strong> Limited strengthened ultimate access, no cycling capability</li>
-						<li><strong>With them:</strong> Immediate burst access + infinite strengthened ultimate cycling</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- Recommended Builds -->
-			<section class="content-section">
-				<h2 class="section-title">Recommended Builds</h2>
-
-				<h3 class="subsection-title">Rune Sets</h3>
 				
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build</h4>
-					<ul>
-						<li><strong>4-Piece Beth (贝丝):</strong> Critical Hit Rate +6%, When HP >80%: Critical Hit Damage +24%</li>
-						<li><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">Total: +8% ATK, +6% Crit Rate, +24% Crit DMG (when HP >80%)</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build</h4>
-					<ul>
-						<li><strong>4-Piece Alpha (阿尔法符):</strong> Attack Power +8%, Basic Attack Damage +30%</li>
-						<li><strong>2-Piece Beth:</strong> Critical Hit Rate +6%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">Total: +8% ATK, +6% Crit Rate, +30% Basic Attack DMG</p>
-				</div>
-
-				<h3 class="subsection-title">Main Stats</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Position 1</div>
-						<div class="stat-value">HP (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 2</div>
-						<div class="stat-value">ATK (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 3</div>
-						<div class="stat-value">DEF (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 4</div>
-						<div class="stat-value">ATK% / CRIT DMG%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 5</div>
-						<div class="stat-value">Ice DMG%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 6</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Substat Priorities</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Attack %</li>
-						<li>Critical Damage %</li>
-						<li>Critical Rate %</li>
-						<li>Penetration</li>
-						<li>HP% / Defense%</li>
-					</ol>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Note:</strong> Focus heavily on Attack % to maximize the team synergy critical damage bonus (up to 45% at 3,000+ attack). Every 500 attack grants 7.5% critical damage.
-					</p>
-				</div>
-			</section>
-
-			<!-- Memory Card -->
+				<div class="skills-table-container">
+					<table class="skills-table">
+						<thead>
+							<tr>
+								<th>Awakening</th>
+								<th>Effects</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><strong>Awakening 1</strong></td>
+								<td>
+									<ul>
+										<li>At battle start, immediately gains one <strong>[Strengthened Must Kill]</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 2</strong></td>
+								<td>
+									<ul>
+										<li>During [Focus] state, attack speed increased by <strong>50%</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 3</strong></td>
+								<td>
+									<ul>
+										<li><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 4</strong></td>
+								<td>
+									<ul>
+										<li>Ice damage increased by <strong>30%</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 5</strong></td>
+								<td>
+									<ul>
+										<li><strong>[Must Kill]</strong> and <strong>[Passive]</strong> level and level cap +4</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 6</strong></td>
+								<td>
+									<ul>
+										<li>After using normal must kill, gains one <strong>[Strengthened Must Kill]</strong></li>
+										<li>Must kill damage increased by <strong>30%</strong></li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>			</section>			<!-- Memory Card -->
 			<section class="content-section">
-				<h2 class="section-title">Memory Card: Lonely Dark Deep Night</h2>
-				
-				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;" class="memory-card-layout">
-					<img src="/images/characters/Chiyacard.jpg" alt="Chiya Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
-					
-					<div style="flex: 1; min-width: 300px;">
-						<div class="info-card" style="margin: 0;">
-							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Base Stats</h4>
-							<div class="stats-grid">
-								<div class="stat-item">
-									<div class="stat-label">HP</div>
-									<div class="stat-value">5,040</div>
-								</div>
-								<div class="stat-item">
-									<div class="stat-label">Attack</div>
-									<div class="stat-value">780</div>
-								</div>
-								<div class="stat-item">
-									<div class="stat-label">Defense</div>
-									<div class="stat-value">474</div>
-								</div>
-							</div>
-
-							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effect: Lonely Dark Deep Night</h4>
-							<ul>
-								<li><strong>Critical Damage increased by 60%</strong></li>
-								<li><strong>Kill Stacking:</strong> After equipped character kills an enemy, increase attack power by 10% for this battle</li>
-								<li><strong>Maximum 4 stacks</strong> (up to 40% attack power increase)</li>
-							</ul>
-
-							<div class="info-card" style="margin-top: 1.5rem;">
-								<p><strong>🎯 Synergy Notes:</strong> This memory card is perfect for Chiya's burst playstyle. The 60% critical damage boost amplifies her guaranteed critical strengthened ultimates, while the kill stacking provides escalating damage throughout longer battles. Excellent synergy with her team skill's attack-to-critical-damage conversion.</p>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Memory Card: Lonely Dark Deep Night</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Memory Card Image (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/Chiyacard.jpg" alt="Chiya Memory Card" style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" loading="lazy" />
+						</div>
+					</div>
+					<!-- Memory Card Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">HP</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">5,040</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Attack</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">780</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Defense</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">474</div></div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
-
-			<!-- Usage Tips -->
-			<section class="content-section">
-				<h2 class="section-title">Usage Tips</h2>
-
-				<h3 class="subsection-title">Strengths</h3>
-				<div class="info-card">
-					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Guaranteed critical burst with strengthened ultimates (840% + 30% damage)</li>
-						<li>Focus state provides sustained pressure with +36% bonus damage</li>
-						<li>Self-sustaining cycle with Awakening 6 creating infinite strengthened ultimate loop</li>
-						<li>High attack scaling converts into critical damage through team synergy</li>
-						<li>Versatile damage output in both burst windows and sustained DPS phases</li>
-						<li><strong>With Awakenings 1+6:</strong> Becomes a cycling machine with immediate burst access</li>
-					</ul>
-				</div>
-
-				<h3 class="subsection-title">Playstyle</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li><strong>Strengthened Ultimate</strong> (840% guaranteed crit) → Enter Focus state</li>
-						<li><strong>Enhanced normals/skills</strong> for 10s with +36% damage</li>
-						<li><strong>Normal Ultimate</strong> → Gain new Strengthened charge (with Awakening 6)</li>
-						<li><strong>Repeat</strong> the cycle for continuous pressure</li>
-					</ol>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">⚡ Core Rotation with Awakenings 1+6</div>
-					<p>Start with Strengthened Ultimate → Focus state sustained damage → Normal ultimate grants next enhanced charge → Infinite cycling</p>
-				</div>
-
-				<h3 class="subsection-title">Focus State Management</h3>
-				<div class="info-card">
-					<ul>
-						<li><strong>Duration:</strong> 10 seconds after using any ultimate</li>
-						<li><strong>Bonus Damage:</strong> +36% attack power as ice damage on normal attacks and skills</li>
-						<li><strong>Strengthened Charge:</strong> Always grants one [Strengthened Must Kill] when entering focus</li>
-						<li><strong>Attack Speed:</strong> +50% during focus with Awakening 2</li>
+				
+				<!-- Memory Effects Box -->
+				<div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Memory Effects</h4>					<ul style="margin: 0; padding-left: 1.5rem; max-width: none;">
+						<li style="margin-bottom: 0.8rem;"><strong>Critical Damage increased by 60%</strong></li>
+						<li style="margin-bottom: 0.8rem;"><strong>Kill Stacking:</strong> After equipped character kills an enemy, increase attack power by 10% for this battle</li>
+						<li style="margin-bottom: 0.8rem;"><strong>Maximum 4 stacks</strong> (up to 40% attack power increase)</li>
 					</ul>
 				</div>
 			</section>
 		</div>
 	</div>
-</ZoneNovaLayout1> 
+</ZoneNovaLayout1>

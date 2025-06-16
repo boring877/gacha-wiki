@@ -13,7 +13,7 @@ import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
 		<style>			.page-flex {
 				display: flex;
 				gap: 2.5rem;
-			}
+										<tr><td>18</td><td><img src="/images/Character Database/mordred.jpg" alt="Mordred" class="character-img"></td><td>Mordred</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>8,470</td><td>837</td><td>560</td><td>0.25</td><td>0</td><td>50</td></tr>
 					.main-content-container {
 				width: 100%;
 				display: flex;
@@ -214,36 +214,19 @@ import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
 				border-bottom: 1px solid var(--neutral-200);
 				transition: background 0.2s;
 			}			table.character-table th {
-				background: linear-gradient(135deg, 
-					rgba(255, 255, 255, 0.95) 0%,
-					rgba(248, 250, 252, 0.9) 50%,
-					rgba(241, 245, 249, 0.95) 100%);
-				color: var(--text-primary);
-				font-weight: 600;
-				font-size: 0.9rem;
+				background: var(--amber-glow);
+				color: #222;
+				font-weight: 800;
+				font-size: 1.1rem;
 				font-family: 'Space Grotesk', sans-serif;
 				position: sticky;
 				top: 0;
 				z-index: 2;
 				cursor: default;
 				letter-spacing: 0.02em;
-				box-shadow: 
-					0 2px 12px rgba(0, 0, 0, 0.08),
-					inset 0 1px 0 rgba(255, 255, 255, 0.9),
-					inset 0 -1px 0 rgba(0, 0, 0, 0.03);
-				border-left: 1px solid rgba(220, 220, 235, 0.6);
-				border-right: 1px solid rgba(200, 200, 220, 0.4);
-				border-top: 1px solid rgba(240, 240, 250, 0.8);
-				border-bottom: 3px solid transparent;
-				border-image: linear-gradient(90deg, 
-					rgba(100, 116, 139, 0.3) 0%, 
-					rgba(71, 85, 105, 0.4) 30%,
-					rgba(51, 65, 85, 0.5) 50%,
-					rgba(71, 85, 105, 0.4) 70%,
-					rgba(100, 116, 139, 0.3) 100%) 1;
+				border-bottom: 2px solid var(--neutral-200);
 				padding: 1rem 0.8rem;
 				transition: none;
-				text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 			}
 			table.character-table th:first-child {
 				border-top-left-radius: 18px;
@@ -384,13 +367,11 @@ import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
 							<option value="Debuffer">Debuffer</option>
 							<option value="Healer">Healer</option>
 						</select>
-					</div>
-
-					<div class="sort-controls">
+					</div>					<div class="sort-controls">
 						<button class="sort-btn" data-sort="hp">HP</button>
 						<button class="sort-btn" data-sort="attack">ATK</button>
 						<button class="sort-btn" data-sort="defense">DEF</button>
-						<button class="sort-btn" data-sort="speed">SPD</button>
+						<button class="sort-btn" data-sort="speed">Energy Recovery</button>
 						<button class="sort-btn" data-sort="critrate">Crit%</button>
 						<button class="sort-btn" data-sort="critdmg">Crit DMG</button>
 						<button class="reset-btn" id="reset-table">Reset</button>
@@ -398,8 +379,7 @@ import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
 				</div>
 				<div class="character-table-container">
 					<table class="character-table">
-						<thead>
-							<tr>
+						<thead>							<tr>
 								<th>#</th>
 								<th>Image</th>
 								<th>Name</th>
@@ -409,37 +389,30 @@ import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
 								<th class="sortable">HP</th>
 								<th class="sortable">Attack</th>
 								<th class="sortable">Defense</th>
-								<th class="sortable">Speed</th>
+								<th class="sortable">Energy Recovery</th>
 								<th class="sortable">Crit Rate %</th>
 								<th class="sortable">Crit DMG %</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr><td>1</td><td><img src="/images/Character Database/Afrodite.jpg" alt="Afrodite" class="character-img"></td><td>Afrodite</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge tank">Tank</span></td><td>17688</td><td>233</td><td>3285</td><td>125</td><td>5.45</td><td>90</td></tr>
-							<tr><td>2</td><td><img src="/images/Character Database/Apollo.jpg" alt="Apollo" class="character-img"></td><td>Apollo</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>21000</td><td>220</td><td>1800</td><td>120</td><td>15.0</td><td>100</td></tr>
-							<tr><td>3</td><td><img src="/images/Character Database/Artemis.jpg" alt="Artemis" class="character-img"></td><td>Artemis</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge buffer">Buffer</span></td><td>21406</td><td>233</td><td>816</td><td>130</td><td>9.9</td><td>120</td></tr>
-							<tr><td>4</td><td><img src="/images/Character Database/Arthur.jpg" alt="Arthur" class="character-img"></td><td>Arthur</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge healer">Healer</span></td><td>20000</td><td>210</td><td>2000</td><td>110</td><td>10.0</td><td>100</td></tr>
-							<tr><td>5</td><td><img src="/images/Character Database/Bastet.jpg" alt="Bastet" class="character-img"></td><td>Bastet</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge dps">DPS</span></td><td>18000</td><td>200</td><td>1500</td><td>115</td><td>8.0</td><td>80</td></tr>
-							<tr><td>6</td><td><img src="/images/Character Database/belphegar.jpg" alt="Belphegar" class="character-img"></td><td>Belphegar</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>17000</td><td>180</td><td>1400</td><td>110</td><td>7.0</td><td>75</td></tr>
-							<tr><td>7</td><td><img src="/images/Character Database/Chiya.jpg" alt="Chiya" class="character-img"></td><td>Chiya</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge healer">Healer</span></td><td>22000</td><td>250</td><td>2000</td><td>115</td><td>12.5</td><td>100</td></tr>
-							<tr><td>8</td><td><img src="/images/Character Database/Cleopatra.jpg" alt="Cleopatra" class="character-img"></td><td>Cleopatra</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge dps">DPS</span></td><td>19500</td><td>210</td><td>1700</td><td>120</td><td>11.0</td><td>95</td></tr>
-							<tr><td>9</td><td><img src="/images/Character Database/Greed Mammon.jpg" alt="Greed Mammon" class="character-img"></td><td>Greed Mammon</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>17500</td><td>190</td><td>1300</td><td>108</td><td>6.0</td><td>70</td></tr>
-							<tr><td>10</td><td><img src="/images/Character Database/Guinevere.jpg" alt="Guinevere" class="character-img"></td><td>Guinevere</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge healer">Healer</span></td><td>22979</td><td>233</td><td>2185</td><td>120</td><td>21.3</td><td>90</td></tr>
-							<tr><td>11</td><td><img src="/images/Character Database/Horus.jpg" alt="Horus" class="character-img"></td><td>Horus</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge tank">Tank</span></td><td>21000</td><td>220</td><td>1800</td><td>120</td><td>15.0</td><td>100</td></tr>
-							<tr><td>12</td><td><img src="/images/Character Database/kela.jpg" alt="Kela" class="character-img"></td><td>Kela</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge healer">Healer</span></td><td>16000</td><td>170</td><td>1200</td><td>105</td><td>5.0</td><td>60</td></tr>
-							<tr><td>13</td><td><img src="/images/Character Database/Lancelot.jpg" alt="Lancelot" class="character-img"></td><td>Lancelot</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge tank">Tank</span></td><td>18000</td><td>200</td><td>1500</td><td>115</td><td>8.0</td><td>80</td></tr>
-							<tr><td>14</td><td><img src="/images/Character Database/Leviathan.jpg" alt="Leviathan" class="character-img"></td><td>Leviathan</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge dps">DPS</span></td><td>17000</td><td>180</td><td>1400</td><td>110</td><td>7.0</td><td>75</td></tr>
-							<tr><td>15</td><td><img src="/images/Character Database/Loki.jpg" alt="Loki" class="character-img"></td><td>Loki</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge dps">DPS</span></td><td>19500</td><td>210</td><td>1700</td><td>120</td><td>11.0</td><td>95</td></tr>
-							<tr><td>16</td><td><img src="/images/Character Database/Lyra.jpg" alt="Lyra" class="character-img"></td><td>Lyra</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge healer">Healer</span></td><td>20000</td><td>210</td><td>2000</td><td>110</td><td>10.0</td><td>100</td></tr>
-							<tr><td>17</td><td><img src="/images/Character Database/Merlin.jpg" alt="Merlin" class="character-img"></td><td>Merlin</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge healer">Healer</span></td><td>21000</td><td>220</td><td>1800</td><td>120</td><td>15.0</td><td>100</td></tr>
-							<tr><td>18</td><td><img src="/images/Character Database/Mordred.jpg" alt="Mordred" class="character-img"></td><td>Mordred</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>17000</td><td>180</td><td>1400</td><td>110</td><td>7.0</td><td>75</td></tr>
-							<tr><td>19</td><td><img src="/images/Character Database/Nini.jpg" alt="Nini" class="character-img"></td><td>Nini</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge healer">Healer</span></td><td>16000</td><td>170</td><td>1200</td><td>105</td><td>5.0</td><td>60</td></tr>
-							<tr><td>20</td><td><img src="/images/Character Database/Rose.jpg" alt="Rose" class="character-img"></td><td>Rose</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge healer">Healer</span></td><td>22000</td><td>250</td><td>2000</td><td>115</td><td>12.5</td><td>100</td></tr>
-							<tr><td>21</td><td><img src="/images/Character Database/Shanna.jpg" alt="Shanna" class="character-img"></td><td>Shanna</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>18000</td><td>200</td><td>1500</td><td>115</td><td>8.0</td><td>80</td></tr>
-							<tr><td>22</td><td><img src="/images/Character Database/Shu.jpg" alt="Shu" class="character-img"></td><td>Shu</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge dps">DPS</span></td><td>17000</td><td>180</td><td>1400</td><td>110</td><td>7.0</td><td>75</td></tr>							<tr><td>23</td><td><img src="/images/Character Database/Tefnut.jpg" alt="Tefnut" class="character-img"></td><td>Tefnut</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge healer">Healer</span></td><td>16000</td><td>170</td><td>1200</td><td>105</td><td>5.0</td><td>60</td></tr>
-							<tr><td>24</td><td><img src="/images/Character Database/Yuis.jpg" alt="Yuis" class="character-img"></td><td>Yuis</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge dps">DPS</span></td><td>22000</td><td>250</td><td>2000</td><td>115</td><td>12.5</td><td>100</td></tr>
-							<tr><td>25</td><td><img src="/images/Character Database/Zashiki-warashi.jpg" alt="Zashiki-warashi" class="character-img"></td><td>Zashiki-warashi</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge buffer">Buffer</span></td><td>17000</td><td>180</td><td>1400</td><td>110</td><td>7.0</td><td>75</td></tr>
-							<tr><td>26</td><td><img src="/images/Character Database/Naiya.jpg" alt="Naiya" class="character-img"></td><td>Naiya</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge buffer">Buffer</span></td><td>22115</td><td>381</td><td>1788</td><td>110</td><td>21.3</td><td>90</td></tr>						</tbody>
+						<tbody>							<tr><td>1</td><td><img src="/images/Character Database/Afrodite.jpg" alt="Afrodite" class="character-img"></td><td>Afrodite</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>2</td><td><img src="/images/Character Database/Apollo.jpg" alt="Apollo" class="character-img"></td><td>Apollo</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge buffer">Buffer</span></td><td>9,564</td><td>1,004</td><td>672</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>3</td><td><img src="/images/Character Database/Artemis.jpg" alt="Artemis" class="character-img"></td><td>Artemis</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,461</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>4</td><td><img src="/images/Character Database/Arthur.jpg" alt="Arthur" class="character-img"></td><td>Arthur</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>15</td><td>50</td></tr>
+							<tr><td>5</td><td><img src="/images/Character Database/Bastet.jpg" alt="Bastet" class="character-img"></td><td>Bastet</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>							<tr><td>6</td><td><img src="/images/Character Database/belphegar.jpg" alt="Belphegar" class="character-img"></td><td>Belphegar</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>7,970</td><td>837</td><td>560</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>7</td><td><img src="/images/Character Database/Chiya.jpg" alt="Chiya" class="character-img"></td><td>Chiya</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>8</td><td><img src="/images/Character Database/Cleopatra.jpg" alt="Cleopatra" class="character-img"></td><td>Cleopatra</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,461</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>9</td><td><img src="/images/Character Database/Greed Mammon.jpg" alt="Greed Mammon" class="character-img"></td><td>Greed Mammon</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>10</td><td><img src="/images/Character Database/Guinevere.jpg" alt="Guinevere" class="character-img"></td><td>Guinevere</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge tank">Tank</span></td><td>10,520</td><td>734</td><td>1,232</td><td>0.25/s</td><td>0</td><td>50</td></tr>							<tr><td>11</td><td><img src="/images/Character Database/Horus.jpg" alt="Horus" class="character-img"></td><td>Horus</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>8,033</td><td>1,461</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>12</td><td><img src="/images/Character Database/kela.jpg" alt="Kela" class="character-img"></td><td>Kela</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge healer">Healer</span></td><td>7,650</td><td>837</td><td>608</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>13</td><td><img src="/images/Character Database/Lancelot.jpg" alt="Lancelot" class="character-img"></td><td>Lancelot</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge tank">Tank</span></td><td>10,857</td><td>612</td><td>957</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>14</td><td><img src="/images/Character Database/Leviathan.jpg" alt="Leviathan" class="character-img"></td><td>Leviathan</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>15</td><td><img src="/images/Character Database/Loki.jpg" alt="Loki" class="character-img"></td><td>Loki</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>9,564</td><td>1,004</td><td>672</td><td>0.25/s</td><td>0</td><td>50</td></tr>							<tr><td>16</td><td><img src="/images/Character Database/Lyra.jpg" alt="Lyra" class="character-img"></td><td>Lyra</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>15</td><td>50</td></tr>
+							<tr><td>17</td><td><img src="/images/Character Database/Merlin.jpg" alt="Merlin" class="character-img"></td><td>Merlin</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>15</td><td>50</td></tr>							<tr><td>18</td><td><img src="/images/Character Database/Mordred.jpg" alt="Mordred" class="character-img"></td><td>Mordred</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>8,470</td><td>837</td><td>560</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>19</td><td><img src="/images/Character Database/Naiya.jpg" alt="Naiya" class="character-img"></td><td>Naiya</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge buffer">Buffer</span></td><td>9,564</td><td>1,004</td><td>672</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>20</td><td><img src="/images/Character Database/Nini.jpg" alt="Nini" class="character-img"></td><td>Nini</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>7,970</td><td>837</td><td>560</td><td>0.25/s</td><td>0</td><td>50</td></tr><tr><td>20</td><td><img src="/images/Character Database/Nini.jpg" alt="Nini" class="character-img"></td><td>Nini</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>7,970</td><td>837</td><td>560</td><td>0.25</td><td>0</td><td>50</td></tr>							<tr><td>21</td><td><img src="/images/Character Database/Rose.jpg" alt="Rose" class="character-img"></td><td>Rose</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>22</td><td><img src="/images/Character Database/Shanna.jpg" alt="Shanna" class="character-img"></td><td>Shanna</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>							<tr><td>23</td><td><img src="/images/Character Database/Shu.jpg" alt="Shu" class="character-img"></td><td>Shu</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>7,970</td><td>837</td><td>560</td><td>0.25/s</td><td>0</td><td>50</td></tr>							<tr><td>24</td><td><img src="/images/Character Database/Tefnut.jpg" alt="Tefnut" class="character-img"></td><td>Tefnut</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>25</td><td><img src="/images/Character Database/Yuis.jpg" alt="Yuis" class="character-img"></td><td>Yuis</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
+							<tr><td>26</td><td><img src="/images/Character Database/Zashiki-warashi.jpg" alt="Zashiki-warashi" class="character-img"></td><td>Zashiki-warashi</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge buffer">Buffer</span></td><td>7,970</td><td>837</td><td>560</td><td>0.25/s</td><td>0</td><td>50</td></tr></tbody>
 					</table>
 				</div>
 			</div>

@@ -89,9 +89,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			.character-image:hover {
 				transform: scale(1.05);
 				box-shadow: 0 16px 40px rgba(0, 172, 193, 0.4);
-			}
-
-			.character-title {
+			}			.character-title {
 				font-family: 'Space Grotesk', sans-serif;
 				font-size: 3rem;
 				font-weight: 700;
@@ -99,7 +97,39 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 				margin: 0 0 1rem 0;
-				animation: titleGlow 3s ease-in-out infinite alternate;
+				animation: titleGlow 3s ease-in-out infinite alternate;			}
+
+			.badges-container {
+				background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+				border-radius: 15px;
+				padding: 1.5rem;
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.08);
+				border: 1px solid var(--neutral-200);
+				transition: all 0.4s ease;
+				position: relative;
+				overflow: hidden;
+				width: 100%;
+				max-width: 400px;
+			}
+
+			.badges-container::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.badges-container:hover::before {
+				left: 100%;
+			}
+
+			.badges-container:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
 			}
 
 			.character-subtitle {
@@ -340,13 +370,143 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				font-size: 1.4rem;
 				font-weight: 600;
 				font-family: 'Space Grotesk', sans-serif;
-			}
-
-			.class-info p {
+			}			.class-info p {
 				color: var(--text-secondary);
 				margin: 0;
 				font-size: 1rem;
 				line-height: 1.5;
+			}
+
+			.skills-table-container {
+				background: var(--bg-primary);
+				border-radius: 12px;
+				padding: 1.5rem;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+				overflow-x: auto;
+			}
+
+			.skills-table {
+				width: 100%;
+				border-collapse: collapse;
+				background: transparent;
+			}
+
+			.skills-table th {
+				background: var(--amber-glow);
+				color: #222;
+				padding: 1rem;
+				text-align: left;
+				font-weight: 700;
+				border-bottom: 2px solid var(--neutral-200);
+			}
+
+			.skills-table td {
+				padding: 1.2rem 1rem;
+				border-bottom: 1px solid var(--neutral-200);
+				vertical-align: top;
+			}
+
+			.skills-table tr:hover {
+				background: rgba(255, 183, 77, 0.05);
+			}
+
+			.skills-table td:first-child {
+				width: 150px;
+				text-align: center;
+			}
+
+			.skills-table td:nth-child(2) {
+				width: 250px;
+			}
+
+			.skills-table td:last-child {
+				width: auto;
+			}
+
+			.skills-table ul {
+				margin: 0;
+				padding-left: 1.2rem;
+			}
+
+			.skills-table li {
+				margin-bottom: 0.5rem;
+			}
+
+			.skills-table strong {
+				color: var(--amber-glow);
+			}
+
+			.skills-table small {
+				color: var(--text-secondary);
+				font-size: 0.9rem;
+			}
+
+			.skill-type {
+				display: inline-block;
+				padding: 0.4rem 0.8rem;
+				border-radius: 8px;
+				font-weight: 600;
+				font-size: 0.85rem;
+				text-align: center;
+			}
+
+			.skill-type.normal-attack {
+				background: #e3f2fd;
+				color: #1976d2;
+				border: 1px solid #bbdefb;
+			}
+
+			.skill-type.auto-skill {
+				background: #f3e5f5;
+				color: #7b1fa2;
+				border: 1px solid #ce93d8;
+			}
+
+			.skill-type.ultimate {
+				background: #fff3e0;
+				color: #f57c00;
+				border: 1px solid #ffcc02;
+			}
+
+			.skill-type.passive {
+				background: #e8f5e8;
+				color: #388e3c;
+				border: 1px solid #a5d6a7;
+			}			.skill-type.team-skill {
+				background: #fce4ec;
+				color: #c2185b;
+				border: 1px solid #f8bbd9;
+			}
+
+			.character-badge {
+				display: inline-block;
+				padding: 0.38rem 1.1rem;
+				border-radius: 14px;
+				font-weight: 700;
+				font-size: 1.05rem;
+				letter-spacing: 0.5px;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+				margin: 0 0.1rem;
+				text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+				border: none;
+			}
+
+			.ssr-badge {
+				background: #ffe066;
+				color: #222;
+				border: 1.5px solid #eecb4d;
+			}
+
+			.ice-badge {
+				background: #b3e5fc;
+				color: #0277bd;
+				border: 1.5px solid #29b6f6;
+			}
+
+			.dps-badge {
+				background: #ffb347;
+				color: #222;
+				border: 1.5px solid #ff9800;
 			}
 
 			@keyframes titleGlow {
@@ -409,299 +569,184 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			}
 		</style>
 	</Fragment>
-
 	<div class="character-page">
 		<div class="character-container">
-			<!-- Back Button -->
-			<a href="/guides/zone-nova/characters/" class="back-button">
-				<span class="back-arrow">←</span>
-				Back to Characters
-			</a>
-
-			<!-- Character Header -->
-			<header class="character-header">
-				<!-- Character Image -->
-				<img src="/images/characters/Rose.jpg" alt="Rose" class="character-image" loading="lazy" />
-				
-				<h1 class="character-title">Rose</h1>
-				<p class="character-subtitle">🌟 SSR • ❄️ Ice • ⚔️ Critical DPS</p>
-			</header>
-
-			<!-- Character Overview -->
+			<!-- Character Header & Overview (merged) -->
 			<section class="content-section">
-				<h2 class="section-title">Character Overview</h2>
-				
-				<!-- Class Showcase -->
-				<div class="class-showcase">
-					<img src="/images/characters/class/Disruptor.jpg" alt="Disruptor Class" class="class-image">
-					<div class="class-info">
-						<h3>开灾使 (Disaster Bringer)</h3>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Hero Card (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/Rose.jpg" alt="Rose" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+							<h1 class="character-title">Rose</h1>
+						</div>
+						<!-- Badges in separate box with better styling -->
+						<div class="badges-container" style="margin-top: 1.8rem;">							<div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+								<span class="character-badge ssr-badge">SSR</span>
+								<span class="character-badge ice-badge">Ice</span>
+								<span class="character-badge dps-badge">DPS</span>
+							</div>
+						</div>
+					</div>
+					<!-- Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
+								<div class="stat-item"><div class="stat-label">Faction</div><div class="stat-value">Black & White Country</div></div>
+								<div class="stat-item"><div class="stat-label">Role</div><div class="stat-value" style="color:#d32f2f; font-weight:700; letter-spacing:1px;">DPS</div></div>
+							</div>							<div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">
+								<div class="stat-item"><div class="stat-label">HP</div><div class="stat-value">6,694</div></div>
+								<div class="stat-item"><div class="stat-label">Attack</div><div class="stat-value">1,088</div></div>
+								<div class="stat-item"><div class="stat-label">Defense</div><div class="stat-value">442</div></div>
+								<div class="stat-item"><div class="stat-label">Energy Regen</div><div class="stat-value">0.25/s</div></div>
+								<div class="stat-item"><div class="stat-label">Crit Rate</div><div class="stat-value">0%</div></div>
+								<div class="stat-item"><div class="stat-label">Crit Damage</div><div class="stat-value">50%</div></div>
+							</div>
+						</div>
 					</div>
 				</div>
-				
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Faction</div>
-						<div class="stat-value">Black and White Country</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Role</div>
-						<div class="stat-value">Critical DPS</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Base Stats at Level 80</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">HP</div>
-						<div class="stat-value">5,694</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Attack</div>
-						<div class="stat-value">1,088</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Defense</div>
-						<div class="stat-value">442</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Energy Recovery</div>
-						<div class="stat-value">2.50/s</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Critical Rate</div>
-						<div class="stat-value">0%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Critical Damage</div>
-						<div class="stat-value">50%</div>
-					</div>
-				</div>
-
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Rose is a transformation-based critical DPS who excels at building critical rate through combat and unleashing devastating ice damage during her enhanced Frost Cannon state. Her kit revolves around accumulating critical rate stacks and maximizing damage output during her powerful ultimate transformation.
-					</p>
-				</div>
-			</section>
-
-			<!-- Skills Section -->
+			</section>			<!-- Skills Section -->
 			<section class="content-section">
 				<h2 class="section-title">Skills</h2>
 
-				<div class="skill-card">
-					<h3 class="skill-title">❄️ Normal Attack: Shatter! Shatter! Shatter! (碎！碎！碎！)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 4.0s</p>
-					<ul>
-						<li><strong>Base:</strong> Deals ice damage equal to <strong>96% of Attack</strong> to designated enemy</li>
-						<li><strong>Enhanced</strong> (during Frost Cannon): Deals ice damage equal to <strong>96% of Attack</strong> to designated enemy and surrounding <strong>2-meter range</strong></li>
-					</ul>
+				<div class="skills-table-container">
+					<table class="skills-table">
+						<thead>
+							<tr>
+								<th>Skill Type</th>
+								<th>Skill Name</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span class="skill-type normal-attack">Normal Attack</span></td>
+								<td><strong>Shatter! Shatter! Shatter! (碎！碎！碎！)</strong><br><small>Level: 10+4 | CD: 4.0s</small></td>
+								<td>
+									<ul>
+										<li><strong>Base:</strong> Deals ice damage equal to <strong>96% of Attack</strong> to designated enemy</li>
+										<li><strong>Enhanced</strong> (during Frost Cannon): Deals ice damage equal to <strong>96% of Attack</strong> to designated enemy and surrounding <strong>2-meter range</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type auto-skill">Skill</span></td>
+								<td><strong>Bullet Hell Scatter (弹幕散射)</strong><br><small>Level: 10+4 | CD: 10.0s</small></td>
+								<td>
+									<ul>
+										<li><strong>Base:</strong> Deals ice damage equal to <strong>180% of Attack</strong> to designated enemy</li>
+										<li><strong>Enhanced</strong> (during Frost Cannon): Deals ice damage equal to <strong>180% of Attack</strong> to designated enemy and surrounding <strong>4-meter range</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type ultimate">Ultimate</span></td>
+								<td><strong>Frost Cannon Transformation</strong><br><small>Level: 10+4 | CD: 1.0s | Energy: 8</small></td>
+								<td>
+									<ul>
+										<li>Enters <strong>[Frost Cannon]</strong> state for <strong>10 seconds</strong></li>
+										<li>Increases attack speed by <strong>58%</strong></li>
+										<li><strong>Gains enhanced normal attacks and enhanced skills</strong></li>
+										<li>All abilities become AoE during this state</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type passive">Passive</span></td>
+								<td><strong>Reckless Spirit's Foundation (冒失鬼的底蕴)</strong><br><small>Level: 10+4</small></td>
+								<td>
+									<ul>
+										<li>Each normal attack increases critical rate by <strong>2.4%</strong></li>
+										<li><strong>Maximum 20 stacks</strong> (48% maximum critical rate increase)</li>
+										<li>Stacks persist through combat and ultimate transformations</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="skill-type team-skill">Team Skill</span></td>
+								<td><strong>Combination Skill</strong><br><small>Level: 1</small><br><small style="color: var(--amber-glow);">Requires: 2 [Black and White Country] OR 2 [Frost] characters</small></td>
+								<td>
+									<ul>
+										<li><strong>Self ice damage increases by 20%</strong></li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">🎯 Skill: Bullet Hell Scatter (弹幕散射)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 10.0s</p>
-					<ul>
-						<li><strong>Base:</strong> Deals ice damage equal to <strong>180% of Attack</strong> to designated enemy</li>
-						<li><strong>Enhanced</strong> (during Frost Cannon): Deals ice damage equal to <strong>180% of Attack</strong> to designated enemy and surrounding <strong>4-meter range</strong></li>
-					</ul>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">❄️ Ultimate: Frost Cannon Transformation</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 8</p>
-					<ul>
-						<li>Enters <strong>[Frost Cannon]</strong> state for <strong>10 seconds</strong></li>
-						<li>Increases attack speed by <strong>58%</strong></li>
-						<li><strong>Gains enhanced normal attacks and enhanced skills</strong></li>
-						<li>All abilities become AoE during this state</li>
-					</ul>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">🎲 Passive: Reckless Spirit's Foundation (冒失鬼的底蕴)</h3>
-					<p><strong>Level:</strong> 10+4</p>
-					<ul>
-						<li>Each normal attack increases critical rate by <strong>2.4%</strong></li>
-						<li><strong>Maximum 20 stacks</strong> (48% maximum critical rate increase)</li>
-						<li>Stacks persist through combat and ultimate transformations</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- Team Composition Skill -->
+			</section>			<!-- Awakening Effects -->
 			<section class="content-section">
-				<h2 class="section-title">Team Composition Skill</h2>
-
-				<div class="skill-card">
-					<h3 class="skill-title">❄️ Combination Skill</h3>
-					<p><strong>Level:</strong> 1</p>
-					
-					<div class="warning-box">
-						<div class="warning-title">❄️ Activation Requirements</div>
-						<p>Triggers when team contains <strong>2 [Black and White Country] characters</strong> OR <strong>2 [Frost] characters</strong></p>
-					</div>
-
-					<div style="margin: 1rem 0;">
-						<p><strong>Effect:</strong> Self ice damage increases by <strong>20%</strong></p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Awakening Effects -->
-			<section class="content-section">
-				<h2 class="section-title">Awakening Effects</h2>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 1 (IMPORTANT)</h3>
-					<p>When in <strong>[Frost Cannon]</strong> state, critical rate increases by <strong>15%</strong></p>
-					<p><strong>Synergy:</strong> Combines with passive stacks for massive critical rate during ultimate</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 2 (IMPORTANT)</h3>
-					<p>When in <strong>[Frost Cannon]</strong> state, damage taken reduced by <strong>10%</strong></p>
-					<p><strong>Impact:</strong> Provides survivability during aggressive AoE phases</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 3</h3>
-					<p><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 4 (HIGH PRIORITY)</h3>
-					<p>Normal attack damage increases by <strong>20%</strong></p>
-					<p><strong>Critical:</strong> Significant DPS boost since normal attacks build critical stacks</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 5</h3>
-					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 6 (CRITICAL)</h3>
-					<p><strong>[Frost Cannon]</strong> state duration becomes <strong>15 seconds</strong></p>
-					<p><strong>Game Changer:</strong> 50% longer transformation window for AoE dominance</p>
-				</div>
-			</section>
-
-			<!-- Recommended Builds -->
-			<section class="content-section">
-				<h2 class="section-title">Recommended Builds</h2>
-
-				<h3 class="subsection-title">Rune Sets</h3>
-				
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Critical Focus)</h4>
-					<p><strong>4-Piece Beth (贝丝):</strong> Critical Rate +6%, When HP >80%: Critical Damage +24%</p>
-					<p><strong>2-Piece Alpha (阿尔法符):</strong> Attack +8%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Perfect synergy:</strong> Maximizes critical scaling with passive stacks and Frost Cannon state
-					</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build (Balanced)</h4>
-					<p><strong>4-Piece Alpha:</strong> Attack +8%, Basic Attack Damage +30%</p>
-					<p><strong>2-Piece Beth:</strong> Critical Rate +6%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Focus:</strong> Enhanced normal attack damage for faster critical stack building
-					</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">❄️ Ice Specialist Build</h4>
-					<ul>
-						<li><strong>2-Piece Alpha:</strong> Attack +8%</li>
-						<li><strong>2-Piece Beth:</strong> Critical Rate +6%</li>
-						<li><strong>2-Piece Zahn (札恩):</strong> HP +8%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Focus:</strong> Survivability for extended combat with Beth set bonus
-					</p>
-				</div>
-
-				<h3 class="subsection-title">Main Stat Priorities</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Position 1</div>
-						<div class="stat-value">HP (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 2</div>
-						<div class="stat-value">ATK (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 3</div>
-						<div class="stat-value">DEF (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 4</div>
-						<div class="stat-value">CRIT DMG%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 5</div>
-						<div class="stat-value">❄️ Ice DMG% / ATK%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 6</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Substat Priorities</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li><strong>Critical Damage</strong> (Most important with guaranteed high crit rate)</li>
-						<li><strong>Attack%</strong></li>
-						<li><strong>Critical Rate</strong> (Early game until passive stacks reliably)</li>
-						<li><strong>Attack (Flat)</strong></li>
-						<li><strong>HP% / Defense%</strong></li>
-					</ol>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Note:</strong> Critical damage is prioritized since passive provides up to 48% crit rate through normal attacks, with additional 15% during Frost Cannon state.
-					</p>
-				</div>
-			</section>
+				<h2 class="section-title">Awakening Effects</h2>				<div class="skills-table-container">
+					<table class="skills-table">						<thead>
+							<tr>
+								<th>Awakening</th>
+								<th>Effect</th>
+								<th>Notes</th>
+							</tr>
+						</thead>
+						<tbody>							<tr>
+								<td><strong>Awakening 1</strong></td>
+								<td>When in <strong>[Frost Cannon]</strong> state, critical rate increases by <strong>15%</strong></td>
+								<td>Combines with passive stacks for massive critical rate during ultimate</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 2</strong></td>
+								<td>When in <strong>[Frost Cannon]</strong> state, damage taken reduced by <strong>10%</strong></td>
+								<td>Provides survivability during aggressive AoE phases</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 3</strong></td>
+								<td><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</td>
+								<td>Essential skill level upgrade</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 4</strong></td>
+								<td>Normal attack damage increases by <strong>20%</strong></td>
+								<td>Significant DPS boost since normal attacks build critical stacks</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 5</strong></td>
+								<td><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</td>
+								<td>Essential skill level upgrade</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 6</strong></td>
+								<td><strong>[Frost Cannon]</strong> state duration becomes <strong>15 seconds</strong></td>
+								<td>50% longer transformation window for AoE dominance</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>			</section>
 
 			<!-- Memory Card -->
 			<section class="content-section">
-				<h2 class="section-title">Memory Card: During Military Academy Training</h2>
-				
-				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
-					<img src="/images/characters/Rosecard.jpg" alt="Rose Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
-					
-					<div style="flex: 1; min-width: 300px;">
-						<div class="info-card" style="margin: 0;">
-							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">在军校训练时 - Level 80/80 Base Stats</h4>
-							<div class="stats-grid">
-								<div class="stat-item">
-									<div class="stat-label">HP</div>
-									<div class="stat-value">4,200</div>
-								</div>
-								<div class="stat-item">
-									<div class="stat-label">Attack</div>
-									<div class="stat-value">650</div>
-								</div>
-								<div class="stat-item">
-									<div class="stat-label">Defense</div>
-									<div class="stat-value">395</div>
-								</div>
-							</div>
-
-							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
-							<ul>
-								<li><strong>Class Restriction:</strong> Only effective for Disaster Bringers (开灾使)</li>
-								<li><strong>Effect:</strong> After using ultimate skill, normal attack and skill damage increased by <strong>60%</strong> for 10 seconds</li>
-							</ul>
-							
-							<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-								Perfect synergy with Frost Cannon ultimate, providing massive damage amplification during transformation state. The 60% damage boost applies to both enhanced normal attacks and enhanced skills during the 10-15 second ultimate window.
-							</p>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Memory Card: During Military Academy Training</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Memory Card Image (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/Rosecard.jpg" alt="Rose Memory Card" style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" loading="lazy" />
 						</div>
 					</div>
+					<!-- Memory Card Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">HP</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">4,200</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Attack</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">650</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Defense</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">395</div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Memory Effects Box -->
+				<div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Memory Effects</h4>					<ul style="margin: 0; padding-left: 1.5rem; max-width: none;">
+						<li style="margin-bottom: 0.8rem;"><strong>After using ultimate skill, normal attack and skill damage increased by 60% for 10 seconds</strong></li>
+					</ul>
 				</div>
 			</section>
 

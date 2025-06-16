@@ -4,49 +4,14 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 ---
 
 <ZoneNovaLayout1 
-	title="Lyra Character Guide - Zone Nova - GachaWiki" 
-	description="Complete guide for Lyra, the critical fire DPS specialist in Zone Nova"
-	gameTitle="Lyra Character Guide"
+	title="Lyra Character Information - Zone Nova - GachaWiki" 
+	description="Complete information for Lyra, the fire DPS specialist in Zone Nova"
+	gameTitle="Lyra Character Information"
 	showBreadcrumb={true}
 	breadcrumbText="Characters"
 >
 	<Fragment slot="head">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-		<style>
-			.back-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: var(--bg-primary);
-				color: var(--text-primary);
-				text-decoration: none;
-				padding: 1rem 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--amber-glow);
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 600;
-				font-size: 1rem;
-				margin-bottom: 2rem;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-			}
-
-			.back-button:hover {
-				background: var(--amber-glow);
-				color: var(--text-inverse);
-				transform: translateY(-2px);
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-			}
-
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
-
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">		<style>
 			.character-page {
 				background: var(--bg-secondary);
 				min-height: 100vh;
@@ -343,9 +308,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					opacity: 1;
 					transform: translateY(0);
 				}
-			}
-
-			@keyframes titleGlow {
+			}			@keyframes titleGlow {
 				0% {
 					text-shadow: 
 						0 0 10px rgba(255, 183, 77, 0.3),
@@ -358,7 +321,192 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				}
 			}
 
-			@media (max-width: 768px) {
+			.badges-container {
+				background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+				border-radius: 14px;
+				padding: 1.2rem 1.5rem;
+				box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+				border: 1px solid var(--neutral-200);
+				width: 100%;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.badges-container::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.badges-container:hover::before {
+				left: 100%;
+			}
+
+			.badges-container:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+				border-color: var(--amber-glow);
+			}
+
+			.character-badge {
+				display: inline-block;
+				padding: 0.38rem 1.1rem;
+				border-radius: 14px;
+				font-weight: 700;
+				font-size: 1.05rem;
+				letter-spacing: 0.5px;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+				margin: 0 0.1rem;
+				text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+				border: none;
+				text-align: center;
+				text-transform: uppercase;
+				min-width: 60px;
+				transition: all 0.3s ease;
+				cursor: pointer;
+			}
+
+			.character-badge:hover {
+				transform: translateY(-2px) scale(1.05);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+			}
+
+			.ssr-badge {
+				background: #ffe066;
+				color: #222;
+			}
+
+			.ssr-badge:hover {
+				background: #ffdd33;
+				box-shadow: 0 4px 15px rgba(255, 224, 102, 0.4);
+			}
+
+			.fire-badge {
+				background: #ffcccb;
+				color: #b71c1c;
+			}
+
+			.fire-badge:hover {
+				background: #ffb3ba;
+				box-shadow: 0 4px 15px rgba(255, 204, 203, 0.4);
+			}
+
+			.dps-badge {
+				background: #ffecb3;
+				color: #ff8f00;
+			}
+
+			.dps-badge:hover {
+				background: #ffe082;
+				box-shadow: 0 4px 15px rgba(255, 236, 179, 0.4);
+			}
+
+			.skills-table-container {
+				background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+				border-radius: 18px;
+				padding: 2rem;
+				box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+				border: 1px solid var(--neutral-200);
+				overflow-x: auto;
+			}
+
+			.skills-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 0;
+				background: transparent;
+			}
+
+			.skills-table th,
+			.skills-table td {
+				text-align: left;
+				vertical-align: top;
+			}
+
+			.skills-table td {
+				padding: 1.2rem 1rem;
+				border-bottom: 1px solid var(--neutral-200);
+			}
+
+			.skills-table th {
+				background: var(--amber-glow);
+				color: #222;
+				font-weight: 700;
+				font-size: 1.1rem;
+				letter-spacing: 0.5px;
+				padding: 1rem;
+				border-bottom: 2px solid var(--neutral-200);
+			}
+
+			.skills-table tr:hover {
+				background: rgba(255, 183, 77, 0.04);
+			}
+
+			.skills-table ul {
+				margin: 0;
+				padding-left: 1.2rem;
+			}
+
+			.skills-table li {
+				margin-bottom: 0.5rem;
+			}
+
+			.skills-table small {
+				color: var(--text-secondary);
+				font-size: 0.85rem;
+			}
+
+			.skill-name, .awakening-name {
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin-bottom: 0.5rem;
+			}
+
+			.skill-type {
+				display: inline-block;
+				padding: 0.3rem 0.6rem;
+				border-radius: 4px;
+				font-size: 0.75rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			.skill-type.normal-attack {
+				background: #e3f2fd;
+				color: #1976d2;
+				border: 1px solid #90caf9;
+			}
+
+			.skill-type.auto-skill {
+				background: #f3e5f5;
+				color: #7b1fa2;
+				border: 1px solid #ce93d8;
+			}
+
+			.skill-type.ultimate {
+				background: #fff3e0;
+				color: #f57c00;
+				border: 1px solid #ffcc02;
+			}
+
+			.skill-type.passive {
+				background: #e8f5e8;
+				color: #388e3c;
+				border: 1px solid #81c784;
+			}
+
+			.skill-type.team {
+				background: #fce4ec;
+				color: #c2185b;
+				border: 1px solid #f8bbd9;
+			}			@media (max-width: 768px) {
 				.character-container {
 					padding: 0 1rem;
 				}
@@ -368,327 +516,261 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					padding: 2rem;
 				}
 
-				.character-title {
-					font-size: 2.5rem;
-				}
-
 				.character-image {
 					width: 250px;
 					height: 250px;
 				}
 
+				.character-title {
+					font-size: 2.5rem;
+				}
+
+				.section-title {
+					font-size: 1.5rem;
+				}
+
 				.stats-grid {
 					grid-template-columns: 1fr;
+					gap: 0.8rem;
 				}
 
-				/* Memory Card mobile layout */
-				.content-section div[style*="display: flex; gap: 2rem; align-items: flex-start"] {
-					flex-direction: column !important;
-					align-items: center !important;
-				}
-
-				.content-section img[alt="Lyra Memory Card"] {
-					width: 160px !important;
-					height: 240px !important;
+				.skills-table-container {
+					overflow-x: auto;
 				}
 			}
 		</style>
 	</Fragment>
 
-	<div class="character-page">
-		<div class="character-container">
-			<!-- Back Button -->
-			<a href="/guides/zone-nova/characters/" class="back-button">
-				<span class="back-arrow">←</span>
-				Back to Characters
-			</a>
-
-			<!-- Character Header -->
-			<header class="character-header">
-				<!-- Character Image -->
-				<img src="/images/characters/Lyra.jpg" alt="Lyra" class="character-image" loading="lazy" />
-				
-				<h1 class="character-title">Lyra</h1>
-				<p class="character-subtitle">🌟 SSR • 🔥 Fire • ⚔️ Critical DPS</p>
-			</header>
-
-			<!-- Character Overview -->
+	<div class="character-page">		<div class="character-container">
+			<!-- Character Header & Overview (merged) -->
 			<section class="content-section">
-				<h2 class="section-title">Character Overview</h2>
-				
-				<!-- Class Showcase -->
-				<div class="class-showcase">
-					<img src="/images/characters/class/Disruptor.jpg" alt="Disruptor Class" class="class-image">
-					<div class="class-info">
-						<h3>开灾使 (Disaster Bringer)</h3>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Hero Card (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/Lyra.jpg" alt="Lyra" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+							<h1 class="character-title" style="margin: 0; font-size: 2.8rem; text-align:center; font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">Lyra</h1>
+						</div>
+						<!-- Badges in separate box with better styling -->
+						<div class="badges-container" style="margin-top: 1.8rem;">
+							<div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+								<span class="character-badge ssr-badge">SSR</span>
+								<span class="character-badge fire-badge">FIRE</span>
+								<span class="character-badge dps-badge">DPS</span>
+							</div>
+						</div>
+					</div>
+					<!-- Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+						<div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
+							<div class="stat-item"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Faction</div><div class="stat-value" style="font-size:1.25rem; font-weight:600; letter-spacing:1px; color:#222;">Urtexteer</div></div>
+							<div class="stat-item"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Role</div><div class="stat-value" style="font-size:1.25rem; font-weight:700; color:#ff8f00; letter-spacing:1px;">DPS</div></div>
+						</div>
+						<div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">
+							<div class="stat-item"><div class="stat-label" style="color:#fbc02d;">HP</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">8,033</div></div>
+							<div class="stat-item"><div class="stat-label" style="color:#ff9800;">Attack</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">1,305</div></div>
+							<div class="stat-item"><div class="stat-label" style="color:#fbc02d;">Defense</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">530</div></div>
+							<div class="stat-item"><div class="stat-label" style="color:#ff9800;">Energy Recovery</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0.25/s</div></div>
+							<div class="stat-item"><div class="stat-label" style="color:#fbc02d;">Critical Rate</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">15%</div></div>
+							<div class="stat-item"><div class="stat-label" style="color:#ff9800;">Critical Damage</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">50%</div></div>
+						</div>
+						</div>
 					</div>
 				</div>
-				
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Faction</div>
-						<div class="stat-value">Urtexteer</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Role</div>
-						<div class="stat-value">Critical DPS</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Base Stats at Level 80</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">HP</div>
-						<div class="stat-value">8,033</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Attack</div>
-						<div class="stat-value">1,305</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Defense</div>
-						<div class="stat-value">530</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Energy Recovery</div>
-						<div class="stat-value">2.50/s</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Critical Rate</div>
-						<div class="stat-value">15%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Critical Damage</div>
-						<div class="stat-value">50%</div>
-					</div>
-				</div>
-
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Lyra is a high-critical rate fire DPS who excels at single-target elimination and scales damage based on enemy count. Her dual-blade fighting style revolves around applying Fire Essence debuffs and consuming them for devastating backstrike damage, while her passive provides massive attack bonuses in multi-enemy scenarios.
-					</p>
-				</div>
-			</section>
-
-			<!-- Skills Section -->
+			</section>			<!-- Skills Section -->
 			<section class="content-section">
 				<h2 class="section-title">Skills</h2>
-
-				<div class="skill-card">
-					<h3 class="skill-title">🔥 Normal Attack: End Blade Continuous Strike (末刀连击)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 2.0s</p>
-					<p>Deals fire damage equal to <strong>120% of Attack</strong> to designated enemy</p>
+				<div class="skills-table-container">
+					<table class="skills-table">
+					<thead>
+						<tr>
+							<th style="width: 25%;">Skill Type</th>
+							<th style="width: 25%;">Skill Name</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><span class="skill-type normal-attack">Normal Attack</span></td>
+							<td>
+								<div class="skill-name">End Blade Continuous Strike</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 10+4 | CD: 2.0s</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									Deals fire damage equal to <strong>120% of Attack</strong> to designated enemy
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type auto-skill">Auto Skill</span></td>
+							<td>
+								<div class="skill-name">Two-Blade Flow - End Blade - Continuous Slash</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 10+4 | CD: 8.0s (4.8s with Awakening 2)</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									<ul>
+										<li>Deals fire damage equal to <strong>480% of Attack</strong> to designated enemy</li>
+										<li><strong>Applies [Fire Essence] debuff</strong> for 10 seconds</li>
+										<li><strong>With Awakening 2:</strong> Cooldown reduced to 4.8 seconds</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type ultimate">Ultimate</span></td>
+							<td>
+								<div class="skill-name">Two-Blade Flow - End Blade - Ghost Blade Flow</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 10+4 | CD: 1.0s | Energy: 5</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									<ul>
+										<li><strong>Base:</strong> Deals fire damage equal to <strong>360% of Attack</strong> to designated enemy</li>
+										<li><strong>Enhanced</strong> (if target has Fire Essence): Consumes [Fire Essence] and deals fire damage equal to <strong>360% of Attack</strong> to target and enemies behind</li>
+										<li><strong>With Memory Card:</strong> Up to 80% damage amplification vs single targets</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type passive">Passive</span></td>
+							<td>
+								<div class="skill-name">Black Armor Recommendation System</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 10+4</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									<ul>
+										<li><strong>For each enemy unit on the field, increases attack by 19%</strong></li>
+										<li><strong>Maximum 4 stacks</strong> (76% total attack increase in 4+ enemy scenarios)</li>
+										<li>Scales inversely with memory card bonus (fewer enemies = higher ultimate damage, more enemies = higher base attack)</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type team">Team Skill</span></td>
+							<td>
+								<div class="skill-name">Combination Skill</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 1</div>
+								<div style="font-size: 0.8rem; color: var(--amber-glow);">Requires: 2 [Urtexteer] OR 2 [Fire] characters</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									<ul>
+										<li>Self critical rate increases by <strong>7.5%</strong></li>
+										<li>Combat start: Each 15% critical rate can additionally add <strong>7.5% critical damage</strong>, maximum 6 times</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					</table>
 				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">⚔️ Skill: Two-Blade Flow - End Blade - Continuous Slash (二刀流—末刀—连斩)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 8.0s (4.8s with Awakening 2)</p>
-					<ul>
-						<li>Deals fire damage equal to <strong>480% of Attack</strong> to designated enemy</li>
-						<li><strong>Applies [Fire Essence] debuff</strong> for 10 seconds</li>
-						<li><strong>With Awakening 2:</strong> Cooldown reduced to 4.8 seconds</li>
-					</ul>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">🗡️ Ultimate: Two-Blade Flow - End Blade - Ghost Blade Flow (二刀流—末刀—鬼刀流)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 5</p>
-					<ul>
-						<li><strong>Base:</strong> Deals fire damage equal to <strong>360% of Attack</strong> to designated enemy</li>
-						<li><strong>Enhanced</strong> (if target has Fire Essence): Consumes [Fire Essence] and deals fire damage equal to <strong>360% of Attack</strong> to target and enemies behind</li>
-						<li><strong>With Memory Card:</strong> Up to 80% damage amplification vs single targets</li>
-					</ul>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">🔧 Passive: Black Armor Recommendation System (黑铠推进系统)</h3>
-					<p><strong>Level:</strong> 10+4</p>
-					<ul>
-						<li><strong>For each enemy unit on the field, increases attack by 19%</strong></li>
-						<li><strong>Maximum 4 stacks</strong> (76% total attack increase in 4+ enemy scenarios)</li>
-						<li>Scales inversely with memory card bonus (fewer enemies = higher ultimate damage, more enemies = higher base attack)</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- Team Composition Skill -->
-			<section class="content-section">
-				<h2 class="section-title">Team Composition Skill</h2>
-
-				<div class="skill-card">
-					<h3 class="skill-title">🔥 Combination Skill</h3>
-					<p><strong>Level:</strong> 1</p>
-					
-					<div class="warning-box">
-						<div class="warning-title">🔥 Activation Requirements</div>
-						<p>Triggers when team contains <strong>2 [Urtexteer] characters</strong> OR <strong>2 [Fire] characters</strong></p>
-					</div>
-
-					<div style="margin: 1rem 0;">
-						<p><strong>Effects:</strong></p>
-						<ul>
-							<li><strong>Effect 1:</strong> Self critical rate increases by <strong>7.5%</strong></li>
-							<li><strong>Effect 2:</strong> Combat start: Each 15% critical rate can additionally add <strong>7.5% critical damage</strong>, maximum 6 times</li>
-						</ul>
-					</div>
-				</div>
-			</section>
-
-			<!-- Awakening Effects -->
+			</section>			<!-- Awakening Effects -->
 			<section class="content-section">
 				<h2 class="section-title">Awakening Effects</h2>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 1 (CRITICAL)</h3>
-					<p>Critical rate increases by <strong>15%</strong></p>
-					<p><strong>Impact:</strong> Combined with base 15% and team skill, reaches high critical rate thresholds</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 2 (GAME CHANGING)</h3>
-					<p>Skill cooldown time reduced by <strong>40%</strong></p>
-					<p><strong>Impact:</strong> Continuous Slash cooldown: 8.0s → 4.8s (dramatically improves Fire Essence uptime)</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 3</h3>
-					<p><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 4 (HIGH PRIORITY)</h3>
-					<p>Fire damage increases by <strong>35%</strong></p>
-					<p><strong>Impact:</strong> Massive damage amplification for all abilities</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 5</h3>
-					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 6 (CRITICAL)</h3>
-					<p>Ultimate damage ignores target's <strong>20% fire resistance</strong></p>
-					<p><strong>Impact:</strong> Ensures full damage against fire-resistant enemies</p>
-				</div>
-			</section>
-
-			<!-- Recommended Builds -->
-			<section class="content-section">
-				<h2 class="section-title">Recommended Builds</h2>
-
-				<h3 class="subsection-title">Rune Sets</h3>
 				
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (Critical Focus)</h4>
-					<p><strong>4-Piece Beth (贝丝):</strong> Critical Rate +6%, When HP >80%: Critical Damage +24%</p>
-					<p><strong>2-Piece Alpha (阿尔法符):</strong> Attack +8%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Perfect synergy:</strong> Maximizes critical scaling with high base critical rate and team skill bonuses
-					</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build (Fire Specialist)</h4>
-					<p><strong>4-Piece Epsilon (埃普西隆):</strong> Attack +8%, After Ultimate: Team damage +10% (10s)</p>
-					<p><strong>2-Piece Beth:</strong> Critical Rate +6%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Focus:</strong> Team support while maintaining personal critical scaling
-					</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">⚔️ Hybrid Build (Survivability)</h4>
-					<ul>
-						<li><strong>2-Piece Alpha:</strong> Attack +8%</li>
-						<li><strong>2-Piece Beth:</strong> Critical Rate +6%</li>
-						<li><strong>2-Piece Zahn (札恩):</strong> HP +8%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Focus:</strong> Survivability for extended combat with Beth set bonus
-					</p>
-				</div>
-
-				<h3 class="subsection-title">Main Stat Priorities</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Position 1</div>
-						<div class="stat-value">HP (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 2</div>
-						<div class="stat-value">ATK (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 3</div>
-						<div class="stat-value">DEF (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 4</div>
-						<div class="stat-value">CRIT DMG%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 5</div>
-						<div class="stat-value">🔥 Fire DMG% / ATK%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 6</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Substat Priorities</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li><strong>Critical Damage</strong> (Most important with high base crit rate)</li>
-						<li><strong>Attack%</strong></li>
-						<li><strong>Critical Rate</strong> (Until comfortable threshold)</li>
-						<li><strong>Fire Damage%</strong></li>
-						<li><strong>HP% / Defense%</strong></li>
-					</ol>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Note:</strong> Critical damage is prioritized since Lyra has high base critical rate (15%) plus awakening (15%) plus team skill (7.5%) for excellent critical scaling.
-					</p>
-				</div>
-			</section>
+				<div class="skills-table-container">
+					<table class="skills-table">
+						<thead>
+							<tr>
+								<th style="width: 20%;">Awakening</th>
+								<th>Effects</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><strong>Awakening 1</strong></td>
+								<td>
+									<ul>
+										<li>Critical rate increases by <strong>15%</strong></li>
+										<li><em>Combined with base 15% and team skill, reaches high critical rate thresholds</em></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 2</strong></td>
+								<td>
+									<ul>
+										<li>Skill cooldown time reduced by <strong>40%</strong></li>
+										<li><em>Continuous Slash cooldown: 8.0s → 4.8s (dramatically improves Fire Essence uptime)</em></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 3</strong></td>
+								<td>
+									<ul>
+										<li><strong>[Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap <strong>+4</strong></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 4</strong></td>
+								<td>
+									<ul>
+										<li>Fire damage increases by <strong>35%</strong></li>
+										<li><em>Massive damage amplification for all abilities</em></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 5</strong></td>
+								<td>
+									<ul>
+										<li><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap <strong>+4</strong></li>
+										<li><em>Required for memory card access</em></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Awakening 6</strong></td>
+								<td>
+									<ul>
+										<li>Ultimate damage ignores target's <strong>20% fire resistance</strong></li>
+										<li><em>Ensures full damage against fire-resistant enemies</em></li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>			</section>
 
 			<!-- Memory Card -->
 			<section class="content-section">
-				<h2 class="section-title">Memory Card: Self-Release</h2>
-				
-				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
-					<img src="/images/characters/Lyracard.jpg" alt="Lyra Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
-					
-					<div style="flex: 1; min-width: 300px;">
-						<div class="info-card" style="margin: 0;">
-							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">自我放纵 - Level 80/80 Base Stats</h4>
-							<div class="stats-grid">
-								<div class="stat-item">
-									<div class="stat-label">HP</div>
-									<div class="stat-value">5,040</div>
-								</div>
-								<div class="stat-item">
-									<div class="stat-label">Attack</div>
-									<div class="stat-value">780</div>
-								</div>
-								<div class="stat-item">
-									<div class="stat-label">Defense</div>
-									<div class="stat-value">474</div>
-								</div>
-							</div>
-
-							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
-							<ul>
-								<li><strong>Class Restriction:</strong> Only effective for Disaster Bringers (开灾使)</li>
-								<li><strong>Effect:</strong> Ultimate damage increased by <strong>40%</strong></li>
-								<li><strong>Bonus Effect:</strong> When there's one enemy on the field, ultimate damage additionally increases by <strong>10%</strong>, maximum 4 times (total possible: 40% + 40% = <strong>80% ultimate damage boost</strong> vs single targets)</li>
-							</ul>
-							
-							<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-								This memory card transforms Lyra into a devastating single-target assassin, providing up to 80% ultimate damage amplification against isolated enemies. Perfect synergy with her Fire Essence combo system.
-							</p>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Memory Card: Self-Release (自我放纵)</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Memory Card Image (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/Lyracard.jpg" alt="Lyra Memory Card" style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" loading="lazy" />
 						</div>
 					</div>
+					<!-- Memory Card Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">HP</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">5,040</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Attack</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">780</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Defense</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">474</div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Memory Effects Box -->
+				<div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Memory Effects</h4>					<ul style="margin: 0; padding-left: 1.5rem; max-width: none;">
+						<li style="margin-bottom: 0.8rem;"><strong>Ultimate Damage:</strong> Ultimate damage increased by <strong>40%</strong></li>
+						<li style="margin-bottom: 0.8rem;"><strong>Single Target Bonus:</strong> When there's one enemy on the field, ultimate damage additionally increases by <strong>10%</strong>, maximum 4 times</li>
+						<li style="margin-bottom: 0.8rem;"><strong>Maximum Potential:</strong> Up to <strong>80% ultimate damage boost</strong> vs single targets (40% + 40%)</li>
+					</ul>
 				</div>
 			</section>
 

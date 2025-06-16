@@ -1,52 +1,16 @@
 ---
 import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
-import FormattedDate from '../../../../components/FormattedDate.astro';
 ---
 
 <ZoneNovaLayout1 
 	title="Shu Character Guide - Zone Nova - GachaWiki" 
-	description="Complete guide for Shu, the powerful DoT specialist and wind debuffer in Zone Nova"
-	gameTitle="Shu Character Guide"
+	description="Complete guide for Shu, the SR Wind element Debuffer specialist from the Kaimiki faction in Zone Nova"
+	gameTitle="Shu Character Information"
 	showBreadcrumb={true}
 	breadcrumbText="Characters"
 >
 	<Fragment slot="head">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 		<style>
-			.back-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: var(--bg-primary);
-				color: var(--text-primary);
-				text-decoration: none;
-				padding: 1rem 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--amber-glow);
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 600;
-				font-size: 1rem;
-				margin-bottom: 2rem;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-			}
-
-			.back-button:hover {
-				background: var(--amber-glow);
-				color: var(--text-inverse);
-				transform: translateY(-2px);
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-			}
-
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
-
 			.character-page {
 				background: var(--bg-secondary);
 				min-height: 100vh;
@@ -102,6 +66,25 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				animation: titleGlow 3s ease-in-out infinite alternate;
 			}
 
+			.animated-gradient {
+				background: linear-gradient(90deg, #43e97b 0%, #38f9d7 50%, #43e97b 100%);
+				background-size: 200% auto;
+				color: transparent;
+				background-clip: text;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				animation: shine-move 2.5s linear infinite;
+			}
+
+			@keyframes shine-move {
+				0% {
+					background-position: 0% 50%;
+				}
+				100% {
+					background-position: 200% 50%;
+				}
+			}
+
 			.character-subtitle {
 				color: var(--text-secondary);
 				font-size: 1.2rem;
@@ -147,36 +130,69 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				background: var(--teal-crystal);
 			}
 
-			.subsection-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.5rem;
-				font-weight: 600;
-				color: var(--text-primary);
-				margin: 2rem 0 1rem 0;
-				padding-left: 1rem;
-				border-left: 4px solid var(--amber-glow);
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1.5rem;
+				margin-bottom: 2rem;
 			}
 
-			.skill-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.3rem;
-				font-weight: 600;
+			.stat-label {
+				font-size: 0.9rem;
 				color: var(--amber-glow);
-				margin: 1.5rem 0 0.8rem 0;
+				font-weight: 600;
+				display: block;
+				margin-bottom: 0.5rem;
 			}
 
-			.info-card {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+			.stat-value {
+				font-size: 1.3rem;
+				font-weight: 700;
+				color: var(--text-primary);
+			}
+
+			.role-badge, .element-badge, .rarity-badge {
+				display: inline-block;
+				padding: 0.25rem 0.85rem;
+				border-radius: 14px;
+				font-size: 1rem;
+				font-weight: 700;
+				margin: 0 0.1rem;
+				box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+				letter-spacing: 0.02em;
+			}
+
+			.rarity-badge.sr { 
+				background: #7ecfff; 
+				color: #222; 
+				border: 1.5px solid #4dbfff; 
+			}
+
+			.element-badge.wind { 
+				background: #4dffb8; 
+				color: #222; 
+				border: 1.5px solid #00e6a8; 
+			}
+
+			.role-badge.debuffer { 
+				background: #b39ddb; 
+				color: #222; 
+				border: 1.5px solid #7b1fa2; 
+			}
+
+			.badges-container {
+				background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+				border-radius: 14px;
+				box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+				padding: 1.2rem 1.8rem;
 				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
+				margin-top: 1rem;
 				transition: all 0.3s ease;
 				position: relative;
 				overflow: hidden;
 			}
 
-			.info-card::before {
+			.badges-container::before {
 				content: '';
 				position: absolute;
 				top: 0;
@@ -187,137 +203,123 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				transition: left 0.6s ease;
 			}
 
-			.info-card:hover::before {
+			.badges-container:hover::before {
 				left: 100%;
 			}
 
-			.info-card:hover {
+			.badges-container:hover {
 				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
-			}
-
-			.skill-card {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.08), rgba(0, 172, 193, 0.08));
-				border: 1px solid var(--amber-glow);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-				transition: all 0.3s ease;
-			}
-
-			.skill-card:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
-			}
-
-			.stats-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-				gap: 1.5rem;
-				margin: 1.5rem 0;
-			}
-
-			.stat-item {
-				background: var(--bg-secondary);
-				padding: 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--neutral-200);
-				transition: all 0.3s ease;
-			}
-
-			.stat-item:hover {
+				box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 				border-color: var(--amber-glow);
-				transform: translateY(-2px);
 			}
 
-			.stat-label {
+			.skills-table, .awakening-table {
+				width: 100%;
+				border-collapse: collapse;
+				background: transparent;
+			}
+
+			.skills-table th, .awakening-table th {
+				background: var(--amber-glow);
+				color: #222;
+				padding: 1rem;
+				text-align: left;
+				font-weight: 700;
+				border-bottom: 2px solid var(--neutral-200);
+			}
+
+			.skills-table td, .awakening-table td {
+				padding: 1.2rem 1rem;
+				border-bottom: 1px solid var(--neutral-200);
+				vertical-align: top;
+			}
+
+			.skills-table tr:hover, .awakening-table tr:hover {
+				background: rgba(255, 183, 77, 0.05);
+			}
+
+			.skills-table td:first-child {
+				width: 150px;
+				text-align: center;
+			}
+
+			.skills-table td:nth-child(2) {
+				width: 250px;
+			}
+
+			.skills-table td:last-child {
+				min-width: 400px;
+			}
+
+			.skills-table ul {
+				margin: 0;
+				padding-left: 1.5rem;
+			}
+
+			.skills-table li {
+				margin-bottom: 0.5rem;
+			}
+
+			.skills-table strong {
+				color: var(--amber-glow);
+			}
+
+			.skills-table small {
+				color: var(--text-secondary);
+				font-size: 0.85rem;
+			}
+
+			.skill-name, .awakening-name {
 				font-weight: 600;
 				color: var(--amber-glow);
 				margin-bottom: 0.5rem;
 			}
 
-			.stat-value {
-				color: var(--text-primary);
-				font-size: 1.1rem;
+			.skill-description, .awakening-description {
+				color: var(--text-secondary);
+				line-height: 1.6;
 			}
 
-			.awakening-card {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
-				border: 1px solid var(--amber-glow);
+			.skills-table-container {
+				background: var(--bg-primary);
 				border-radius: 12px;
 				padding: 1.5rem;
-				margin: 1rem 0;
-			}
-
-			.critical-awakening {
-				background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1));
-				border-color: #dc3545;
-			}
-
-			.warning-box {
-				background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1));
-				border: 1px solid #ffc107;
-				border-radius: 12px;
-				padding: 1.5rem;
-				margin: 1.5rem 0;
-			}
-
-			.warning-box .warning-title {
-				color: #ffc107;
-				font-weight: 600;
-				margin-bottom: 0.5rem;
-			}
-
-			.priority-high {
-				color: #fd7e14;
-				font-weight: 600;
-			}
-
-			.priority-medium {
-				color: #ffc107;
-				font-weight: 600;
-			}
-
-			.priority-low {
-				color: #28a745;
-				font-weight: 600;
-			}
-
-			.video-container {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.08);
 				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
 			}
 
-			.video-wrapper {
-				position: relative;
-				padding-bottom: 56.25%;
-				height: 0;
-				overflow: hidden;
+			.awakening-table-container {
+				background: var(--bg-primary);
 				border-radius: 12px;
+				padding: 1.5rem;
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.08);
+				border: 1px solid var(--neutral-200);
 			}
 
-			.video-wrapper iframe {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
+			.awakening-table ul {
+				margin: 0;
+				padding-left: 1.2rem;
+				list-style-type: disc;
 			}
 
-			@keyframes sectionFadeIn {
-				0% {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				100% {
-					opacity: 1;
-					transform: translateY(0);
-				}
+			.awakening-table li {
+				margin-bottom: 0.3rem;
+				line-height: 1.4;
+			}
+
+			.stat-item {
+				background: linear-gradient(135deg, var(--bg-secondary), rgba(255, 183, 77, 0.05));
+				border: 1px solid var(--neutral-200);
+				border-radius: 12px;
+				padding: 1.5rem;
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.stat-item:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.15);
+				border-color: var(--amber-glow);
 			}
 
 			@keyframes titleGlow {
@@ -333,68 +335,15 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				}
 			}
 
-			.class-showcase {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
-				border: 1px solid var(--amber-glow);
-				border-radius: 15px;
-				padding: 2rem;
-				margin-bottom: 2rem;
-				display: flex;
-				align-items: center;
-				gap: 1.5rem;
-				transition: all 0.3s ease;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.class-showcase::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-				transition: left 0.6s ease;
-			}
-
-			.class-showcase:hover::before {
-				left: 100%;
-			}
-
-			.class-showcase:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
-			}
-
-			.class-image {
-				width: 64px;
-				height: 64px;
-				border-radius: 12px;
-				border: 2px solid var(--amber-glow);
-				flex-shrink: 0;
-				transition: all 0.3s ease;
-			}
-
-			.class-showcase:hover .class-image {
-				transform: scale(1.05);
-				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3);
-			}
-
-			.class-info h3 {
-				color: var(--amber-glow);
-				margin: 0 0 0.5rem 0;
-				font-size: 1.4rem;
-				font-weight: 600;
-				font-family: 'Space Grotesk', sans-serif;
-			}
-
-			.class-info p {
-				color: var(--text-secondary);
-				margin: 0;
-				font-size: 1rem;
-				line-height: 1.5;
+			@keyframes sectionFadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
 			}
 
 			@media (max-width: 768px) {
@@ -431,380 +380,267 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					height: 240px !important;
 				}
 			}
+
+			.skill-type {
+				display: inline-block;
+				padding: 0.4rem 0.8rem;
+				border-radius: 8px;
+				font-weight: 600;
+				font-size: 0.85rem;
+				text-align: center;
+			}
+
+			.skill-type.normal-attack {
+				background: #e3f2fd;
+				color: #1976d2;
+				border: 1px solid #bbdefb;
+			}
+
+			.skill-type.auto-skill {
+				background: #f3e5f5;
+				color: #7b1fa2;
+				border: 1px solid #ce93d8;
+			}
+
+			.skill-type.ultimate {
+				background: #fff3e0;
+				color: #f57c00;
+				border: 1px solid #ffcc02;
+			}
+
+			.skill-type.passive {
+				background: #e8f5e8;
+				color: #388e3c;
+				border: 1px solid #a5d6a7;
+			}
+
+			.skill-type.team-skill {
+				background: #fce4ec;
+				color: #c2185b;
+				border: 1px solid #f8bbd9;
+			}
 		</style>
 	</Fragment>
 
 	<div class="character-page">
 		<div class="character-container">
-			<!-- Back Button -->
-			<a href="/guides/zone-nova/characters/" class="back-button">
-				<span class="back-arrow">←</span>
-				Back to Characters
-			</a>
-
-			<!-- Character Header -->
-			<header class="character-header">
-				<!-- Character Image -->
-				<img src="/images/characters/shu.jpg" alt="Shu" class="character-image" loading="lazy" />
-				
-				<h1 class="character-title">Shu</h1>
-				<p class="character-subtitle">SR • Wind • DoT Dealer/Debuffer</p>
-			</header>
-
-			<!-- Character Overview -->
+			<!-- Character Header & Overview (merged) -->
 			<section class="content-section">
-				<h2 class="section-title">Character Overview</h2>
-				
-				<!-- Class Showcase -->
-				<div class="class-showcase">
-					<img src="/images/characters/class/Disruptor.jpg" alt="Disruptor Class" class="class-image" loading="lazy" />
-					<div class="class-info">
-						<h3>干扰使 (Disruptor)</h3>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Hero Card (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/shu.jpg" alt="Shu" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+							<h1 class="character-title">Shu</h1>
+						</div>
+						<!-- Badges in separate box with better styling -->
+						<div class="badges-container" style="margin-top: 1.8rem;">
+							<div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+								<span class="rarity-badge sr">SR</span>
+								<span class="element-badge wind">Wind</span>
+								<span class="role-badge debuffer">Debuffer</span>
+							</div>
+						</div>
 					</div>
-				</div>
-				
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Faction</div>
-						<div class="stat-value">Otis</div>
+					<!-- Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
+								<div class="stat-item"><div class="stat-label">Faction</div><div class="stat-value">Kaimiki</div></div>
+								<div class="stat-item"><div class="stat-label">Role</div><div class="stat-value" style="color:#7b1fa2; font-weight:700; letter-spacing:1px;">Debuffer</div></div>
+							</div>
+							<div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">
+								<div class="stat-item"><div class="stat-label">HP</div><div class="stat-value">7,970</div></div>
+								<div class="stat-item"><div class="stat-label">Attack</div><div class="stat-value">837</div></div>
+								<div class="stat-item"><div class="stat-label">Defense</div><div class="stat-value">560</div></div>
+								<div class="stat-item"><div class="stat-label">Energy Regen</div><div class="stat-value">0.25/s</div></div>
+								<div class="stat-item"><div class="stat-label">Crit Rate</div><div class="stat-value">0%</div></div>
+								<div class="stat-item"><div class="stat-label">Crit Damage</div><div class="stat-value">50%</div></div>
+							</div>
+						</div>
 					</div>
-					<div class="stat-item">
-						<div class="stat-label">Role</div>
-						<div class="stat-value">Wind DPS</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Base Stats at Level 80</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">HP</div>
-						<div class="stat-value">7,970</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Attack</div>
-						<div class="stat-value">837</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Defense</div>
-						<div class="stat-value">560</div>
-					</div>
-				</div>
-
-				<div class="info-card">
-					<p style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0;">
-						Shu is a powerful DoT (Damage over Time) specialist and debuffer who excels at applying continuous damage effects and exploiting vulnerable enemies. Her kit revolves around wind/storm damage and the unique [Weathering] debuff that stacks up to 5 times. She becomes increasingly powerful against enemies suffering from continuous damage effects, making her excellent for prolonged battles and synergizing with other DoT characters.
-					</p>
 				</div>
 			</section>
 
 			<!-- Skills Section -->
 			<section class="content-section">
 				<h2 class="section-title">Skills</h2>
-
-				<div class="skill-card">
-					<h3 class="skill-title">🌪️ Normal Attack: Wind Assault (疾风突袭)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 2.0s</p>
-					<p>Deals <strong>120% attack power</strong> as storm damage to designated enemy unit</p>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">⚡ Auto Skill: Eye of the Storm (风暴之眼)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>Auto-trigger Interval:</strong> 5.0s</p>
-					<ul>
-						<li>Deals storm damage to enemy unit and surrounding enemies within <strong>4 meters</strong></li>
-						<li>Causes <strong>72% attack power</strong> as storm damage to all affected targets</li>
-						<li>AoE ability for clearing groups and applying pressure</li>
-					</ul>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">💥 Ultimate: Sticky Bat Storm (粘蝠之风暴)</h3>
-					<p><strong>Level:</strong> 10+4 | <strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 3</p>
-					<ul>
-						<li>Deals wind damage to enemies within <strong>4 meters</strong></li>
-						<li>Causes <strong>120% attack power</strong> as wind damage</li>
-						<li>Applies <strong>[Vulnerability]</strong>: Affected enemies take <strong>34% increased damage for 15 seconds</strong></li>
-					</ul>
-
-					<div class="warning-box">
-						<div class="warning-title">🌟 Enhanced Ultimate (With Awakening 6)</div>
-						<ul>
-							<li>Also applies <strong>[Weathering]</strong> debuff to affected enemies</li>
-							<li>Dramatically improves combo potential and DoT stacking</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">👑 Passive: Fierce Wind Burst (烈风爆发)</h3>
-					<p><strong>Level:</strong> 10+4</p>
-					
-					<div style="margin: 1rem 0;">
-						<p><strong>Effect 1:</strong> Can apply <strong>[Weathering]</strong> debuff to enemies</p>
-						
-						<p><strong>Weathering Details:</strong> Deals damage once per second</p>
-						<ul>
-							<li>Each stack causes <strong>14.4% attack power</strong> as storm damage</li>
-							<li><strong>Maximum 5 stacks</strong> (total: 72% attack power per second at max stacks)</li>
-							<li><strong>DoT effects ignore block</strong> - Ensures consistent damage against defensive enemies</li>
-						</ul>
-						
-						<p><strong>Effect 2:</strong> When dealing damage to targets that have continuous damage status effects, self attack power increases by <strong>20%</strong> (with Awakening 1)</p>
-					</div>
+				<div class="skills-table-container">
+					<table class="skills-table">
+					<thead>
+						<tr>
+							<th style="width: 25%;">Skill Type</th>
+							<th style="width: 25%;">Skill Name</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><span class="skill-type normal-attack">Normal Attack</span></td>
+							<td>
+								<div class="skill-name">Wind Assault</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 10+4 • CD: 2.0s</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									Deals wind damage equal to <strong>120% of Attack</strong> to designated enemy unit
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type auto-skill">Skill</span></td>
+							<td>
+								<div class="skill-name">Eye of the Storm</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 10+4 • CD: 5.0s</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									Deals wind damage equal to <strong>72% of Attack</strong> to enemy unit and surrounding enemies within <strong>4 meters</strong>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type ultimate">Ultimate</span></td>
+							<td>
+								<div class="skill-name">Sticky Bat Storm</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 10+4 • CD: 1.0s • Energy: 3</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									<ul style="margin: 0; padding-left: 1rem;">
+										<li>Deals wind damage equal to <strong>120% of Attack</strong> to enemies within <strong>4 meters</strong></li>
+										<li>Applies <strong>[Vulnerability]</strong>: Affected enemies take <strong>34% increased damage for 15 seconds</strong></li>
+										<li><strong>With Awakening 6:</strong> Also applies <strong>[Weathering]</strong> debuff to affected enemies</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type passive">Passive</span></td>
+							<td>
+								<div class="skill-name">Fierce Wind Burst</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 10+4</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									<ul style="margin: 0; padding-left: 1rem;">
+										<li>Can apply <strong>[Weathering]</strong> debuff to enemies</li>
+										<li><strong>Weathering:</strong> Each stack causes <strong>14.4% of Attack</strong> as wind damage per second (maximum 5 stacks)</li>
+										<li><strong>With Awakening 1:</strong> When dealing damage to targets with continuous damage effects, self attack power increases by <strong>20%</strong></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type team-skill">Team Skill</span></td>
+							<td>
+								<div class="skill-name">Combination Skill</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 1</div>
+								<div style="font-size: 0.8rem; color: var(--amber-glow);">Requires: 2 [Kaimiki] OR 2 [Wind] characters</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									Self damage increased by <strong>20%</strong>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					</table>
 				</div>
 			</section>
 
-			<!-- Team Composition Skill -->
-			<section class="content-section">
-				<h2 class="section-title">Team Composition Skill</h2>
-
-				<div class="skill-card">
-					<h3 class="skill-title">🏢 Combination Skill</h3>
-					<p><strong>Level:</strong> 1</p>
-					
-					<div class="warning-box">
-						<div class="warning-title">🌪️ Activation Requirements</div>
-						<p>Triggers when team contains <strong>2 [Kaimiki] characters</strong> OR <strong>2 [Wind] characters</strong></p>
-					</div>
-
-					<div style="margin: 1rem 0;">
-						<p><strong>Effect:</strong> Self-inflicted damage increased by <strong>20%</strong></p>
-					</div>
-
-					<div class="info-card">
-						<p style="color: var(--text-primary); font-size: 1rem; line-height: 1.6; margin: 0;">
-							<strong>Why This Matters:</strong> This unusual team skill boosts Shu's own damage output when paired with Kaimiki or Wind allies. The 20% damage increase significantly amplifies both her direct damage and DoT effects, making team composition crucial for optimal performance.
-						</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Awakening Effects -->
+			<!-- Awakening Effects Section -->
 			<section class="content-section">
 				<h2 class="section-title">Awakening Effects</h2>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 1 (CRITICAL)</h3>
-					<ul>
-						<li>When dealing damage to targets that have continuous damage status effects, self attack power increases by <strong>20%</strong></li>
-						<li>Synergizes perfectly with her Weathering stacks and other DoT effects</li>
-					</ul>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 2 (CRITICAL)</h3>
-					<ul>
-						<li>Damage dealt by continuous damage effects has penetration rate increased by <strong>10%</strong></li>
-						<li>Enhances DoT effectiveness against high-defense enemies</li>
-					</ul>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 3</h3>
-					<p><strong>[Skills]</strong> and <strong>[Normal Attack]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 4 (CRITICAL)</h3>
-					<p><strong>[Continuous Damage]</strong> damage increased by <strong>25%</strong></p>
-					<p>Massive boost to Weathering DoT effectiveness</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 5</h3>
-					<p><strong>[Ultimate Skill]</strong> and <strong>[Passive]</strong> level and level cap +4</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">🌟 Awakening 6 (GAME-CHANGING)</h3>
-					<ul>
-						<li>Ultimate skill can also apply <strong>[Weathering]</strong></li>
-						<li>Allows ultimate to stack DoT debuffs, dramatically improving her combo potential</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- Recommended Builds -->
-			<section class="content-section">
-				<h2 class="section-title">Recommended Builds</h2>
-
-				<h3 class="subsection-title">Rune Sets</h3>
-				
-				<div class="build-option">
-					<h4>⚔️ Team Support Build</h4>
-					<p><strong>4-Piece Epsilon (埃普西隆):</strong> Attack Power +8%, After Ultimate: Team damage +10% (10s)</p>
-					<p><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						Provides team utility while maintaining personal damage output.
-					</p>
-					<div class="warning-box" style="margin-top: 1rem;">
-						<div class="warning-title">⚠️ Team Buff Limitation</div>
-						<p>The team damage +10% buff can only stack <strong>1 time in the team</strong>. Multiple characters with Epsilon sets will not stack this effect.</p>
-					</div>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build Option 2 (Team Support)</h4>
-					<p><strong>4-Piece Epsilon (埃普西隆):</strong> Attack Power +8%, After Ultimate: Team damage +10% (10s)</p>
-					<p><strong>2-Piece Alpha (阿尔法符):</strong> Attack Power +8%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Total:</strong> +16% Attack Power with team damage amplification after ultimate
-					</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build Option 3 (Basic Attack Focus)</h4>
-					<p><strong>4-Piece Alpha (阿尔法符):</strong> Attack Power +8%, Basic Attack Damage +30%</p>
-					<p><strong>2-Piece Epsilon (埃普西隆):</strong> Attack Power +8%</p>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Total:</strong> +16% Attack Power with enhanced basic attack damage
-					</p>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">⚠️ Important</div>
-					<p>Epsilon team buff can only apply once per team - avoid multiple Epsilon users if going 4-piece</p>
-				</div>
-
-				<h3 class="subsection-title">Main Stat Priorities</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Position 1</div>
-						<div class="stat-value">HP (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 2</div>
-						<div class="stat-value">ATK (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 3</div>
-						<div class="stat-value">DEF (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 4</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 5</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 6</div>
-						<div class="stat-value">ATK%</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Substat Priorities</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Attack%</li>
-						<li>Attack (Flat)</li>
-						<li>Penetration%</li>
-						<li>HP%</li>
-						<li>Defense%</li>
-					</ol>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Note:</strong> Avoid Critical Rate and Critical Damage since DoT effects cannot crit. Focus entirely on Attack and survivability stats.
-					</p>
+				<div class="awakening-table-container">
+					<table class="awakening-table">
+					<thead>
+						<tr>
+							<th style="width: 20%;">Awakening</th>
+							<th>Effects</th>
+						</tr>
+					</thead>
+					<tbody>						<tr>
+							<td><strong>Awakening 1</strong></td>
+							<td>
+								<ul>
+									<li><strong>When dealing damage to targets with continuous damage effects:</strong> Self attack power increases by <strong>20%</strong></li>
+								</ul>
+							</td>
+						</tr>						<tr>
+							<td><strong>Awakening 2</strong></td>
+							<td>
+								<ul>
+									<li><strong>Continuous damage effects penetration rate increased by 10%</strong></li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Awakening 3</strong></td>
+							<td>
+								<ul>
+									<li><strong>[Skills] and [Normal Attack] level and level cap +4</strong></li>
+								</ul>
+							</td>
+						</tr>						<tr>
+							<td><strong>Awakening 4</strong></td>
+							<td>
+								<ul>
+									<li><strong>Continuous damage effects damage increased by 25%</strong></li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Awakening 5</strong></td>
+							<td>
+								<ul>
+									<li><strong>[Ultimate Skill] and [Passive] level and level cap +4</strong></li>
+								</ul>
+							</td>
+						</tr>						<tr>
+							<td><strong>Awakening 6</strong></td>
+							<td>
+								<ul>
+									<li><strong>Ultimate skill can also apply [Weathering] debuff</strong></li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+					</table>
 				</div>
 			</section>
 
-			<!-- Memory Card -->
+			<!-- Memory Card Section -->
 			<section class="content-section">
-				<h2 class="section-title">Memory Card: Busy Officer (忙里偷闲)</h2>
-				
-				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
-					<img src="/images/characters/shucard.jpg" alt="Shu Memory Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
-					
-					<div style="flex: 1; min-width: 300px;">
-						<div class="info-card" style="margin: 0;">
-							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Effects</h4>
-
-							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effect</h4>
-							<ul>
-								<li>When dealing continuous damage, target takes <strong>12% increased damage</strong> for 2 seconds</li>
-								<li>Synergizes perfectly with her Weathering DoT stacks</li>
-							</ul>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Memory Card: Busy Officer (忙里偷闲)</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Memory Card Image (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/shucard.jpg" alt="Shu Memory Card" style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" loading="lazy" />
+						</div>
+					</div>
+					<!-- Memory Card Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">HP</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">5,000</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Attack</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">500</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Defense</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">500</div></div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</section>
-
-			<!-- Usage Tips -->
-			<section class="content-section">
-				<h2 class="section-title">Usage Tips</h2>
-
-				<h3 class="subsection-title">Strengths</h3>
-				<div class="info-card">
-					<ul style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Exceptional DoT damage that ignores block mechanics</li>
-						<li>Team debuffer with 34% Vulnerability application</li>
-						<li>Self-scaling against DoT-affected enemies (20% attack boost)</li>
-						<li>AoE capabilities with 4-meter radius on multiple skills</li>
-						<li>No crit dependency - simple stat building focused on Attack</li>
-						<li>Team support utility with Epsilon rune synergy</li>
-						<li><strong>With Awakenings 1+4+6:</strong> Becomes a DoT powerhouse with enhanced combo potential</li>
-					</ul>
-				</div>
-
-				<h3 class="subsection-title">Playstyle</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>Apply <strong>Weathering</strong> through passive and abilities</li>
-						<li>Stack DoT effects up to maximum (5 stacks = 72% attack power per second)</li>
-						<li>Use <strong>Ultimate for Vulnerability</strong> - 34% team damage boost</li>
-						<li>Maintain pressure with Eye of the Storm AoE</li>
-						<li>With Awakening 6, ultimate also applies Weathering for faster stacking</li>
-					</ol>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">🔄 Core Loop with Awakenings 1+4+6</div>
-					<p>Weathering Stacks → 20% Attack Boost → Enhanced DoT Damage (+25%) → Ultimate Applies More Weathering → Vulnerability Amplifies Team Damage</p>
-				</div>
-
-				<h3 class="subsection-title">Key DoT Mechanics</h3>
-				<div class="info-card">
-					<ul>
-						<li><strong>DoT Effects:</strong> Cannot crit but ignore block completely</li>
-						<li><strong>Weathering Stacks:</strong> Up to 5 stacks, each dealing 14.4% attack power per second</li>
-						<li><strong>With Awakening 2:</strong> DoT effects gain 10% penetration against tanky enemies</li>
-						<li><strong>Memory Card Synergy:</strong> DoT triggers 12% increased damage debuff</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- Investment Priority -->
-			<section class="content-section">
-				<h2 class="section-title">Investment Priority</h2>
-				
-				<div class="warning-box">
-					<div class="warning-title">⭐ Excellent DoT Investment</div>
-					<p>Outstanding investment for players who enjoy DoT playstyles and team support roles. Worth full investment for sustained damage content.</p>
-				</div>
-
-				<h3 class="subsection-title">Awakening Priority</h3>
-				<div class="critical-awakening" style="padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
-					<h4 style="color: #dc3545; margin: 0 0 1rem 0;">🚨 Awakenings 1+4+6 Transform Her</h4>
-					<p>These awakenings create powerful synergy loops:</p>
-					<ul>
-						<li><strong>Without them:</strong> Basic DoT dealer with team utility</li>
-						<li><strong>With them:</strong> Self-scaling DoT powerhouse with enhanced combo potential</li>
-					</ul>
-				</div>
-
-				<h3 class="subsection-title">Key Breakpoints</h3>
-				<div class="info-card">
-					<ul>
-						<li><span class="priority-high">Awakening 1: CRITICAL</span> - 20% attack boost against DoT-affected enemies</li>
-						<li><span class="priority-high">Awakening 4: CRITICAL</span> - 25% DoT damage increase</li>
-						<li><span class="priority-high">Awakening 6: GAME-CHANGING</span> - Ultimate applies Weathering for combo potential</li>
-						<li><span class="priority-medium">Awakening 2:</span> DoT penetration for tanky enemies</li>
-						<li><span class="priority-low">Max memory card</span> for DoT synergy boost</li>
+				<!-- Memory Effects Box -->
+				<div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Memory Effects</h4>					<ul style="margin: 0; padding-left: 1.5rem; max-width: none;">
+						<li style="margin-bottom: 0.8rem;"><strong>When dealing continuous damage effects:</strong> Target takes <strong>12% increased damage</strong> for <strong>2 seconds</strong></li>
 					</ul>
 				</div>
 			</section>
 
 		</div>
 	</div>
-</ZoneNovaLayout1> 
+</ZoneNovaLayout1>

@@ -4,48 +4,14 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 ---
 
 <ZoneNovaLayout1 
-	title="Mordred Character Guide - Zone Nova - GachaWiki" 
-	description="Complete guide for Mordred, the HP-scaling Assault character in Zone Nova"
-	gameTitle="Mordred Character Guide"
+	title="Mordred Character Information - Zone Nova - GachaWiki" 
+	description="Complete guide for Mordred, the SR Fire element HP-Scaling DPS from the Avalon faction in Zone Nova"
+	gameTitle="Mordred Character Information"
 	showBreadcrumb={true}
 	breadcrumbText="Characters"
 >
 	<Fragment slot="head">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-		<style>
-			.back-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: var(--bg-primary);
-				color: var(--text-primary);
-				text-decoration: none;
-				padding: 1rem 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--amber-glow);
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 600;
-				font-size: 1rem;
-				margin-bottom: 2rem;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-			}
-
-			.back-button:hover {
-				background: var(--amber-glow);
-				color: var(--text-inverse);
-				transform: translateY(-2px);
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-			}
-
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">		<style>
 
 			.character-page {
 				background: var(--bg-secondary);
@@ -284,27 +250,32 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 			}
 
 			.stat-item {
-				background: var(--bg-secondary);
-				padding: 1.5rem;
-				border-radius: 12px;
+				background: linear-gradient(135deg, var(--bg-secondary), rgba(255, 183, 77, 0.05));
 				border: 1px solid var(--neutral-200);
+				border-radius: 12px;
+				padding: 1.5rem;
+				text-align: center;
 				transition: all 0.3s ease;
 			}
 
 			.stat-item:hover {
-				border-color: var(--amber-glow);
 				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.15);
+				border-color: var(--amber-glow);
 			}
 
 			.stat-label {
-				font-weight: 600;
+				font-size: 0.9rem;
 				color: var(--amber-glow);
+				font-weight: 600;
+				display: block;
 				margin-bottom: 0.5rem;
 			}
 
 			.stat-value {
+				font-size: 1.3rem;
+				font-weight: 700;
 				color: var(--text-primary);
-				font-size: 1.1rem;
 			}
 
 			.priority-high {
@@ -456,8 +427,7 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 				.stats-grid {
 					grid-template-columns: 1fr;
-				}
-				
+				}				
 				.build-grid {
 					grid-template-columns: 1fr;
 				}
@@ -471,357 +441,444 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					width: 48px;
 					height: 48px;
 				}
+			}			/* Badge System */
+			.role-badge, .element-badge, .rarity-badge {
+				display: inline-block;
+				padding: 0.38rem 1.1rem;
+				border-radius: 14px;
+				font-weight: 700;
+				font-size: 1.05rem;
+				letter-spacing: 0.5px;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+				margin: 0 0.1rem;
+				text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+				border: none;
+				text-align: center;
+				text-transform: uppercase;
+				min-width: 60px;
+				transition: all 0.3s ease;
+				cursor: pointer;
+			}
+
+			.rarity-badge.sr { 
+				background: #b3e5fc;
+				color: #01579b;
+			}
+
+			.rarity-badge.sr:hover {
+				background: #81d4fa;
+				box-shadow: 0 4px 15px rgba(179, 229, 252, 0.4);
+			}
+
+			.element-badge.fire { 
+				background: #ffcccb;
+				color: #b71c1c;
+			}
+
+			.element-badge.fire:hover {
+				background: #ffb3ba;
+				box-shadow: 0 4px 15px rgba(255, 204, 203, 0.4);
+			}
+
+			.role-badge.dps { 
+				background: #ffecb3;
+				color: #ff8f00;
+			}
+
+			.role-badge.dps:hover {
+				background: #ffe082;
+				box-shadow: 0 4px 15px rgba(255, 236, 179, 0.4);
+			}
+
+			.badges-container {
+				background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+				border-radius: 14px;
+				box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+				padding: 1.2rem 1.8rem;
+				border: 1px solid var(--neutral-200);
+				margin-top: 1rem;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.badges-container::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			.badges-container:hover::before {
+				left: 100%;
+			}
+
+			.badges-container:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+				border-color: var(--amber-glow);
+			}			/* Skills and Awakening Tables */
+			.skills-table-container, .awakening-table-container {
+				background: var(--bg-primary);
+				border-radius: 12px;
+				padding: 1.5rem;
+				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.08);
+				border: 1px solid var(--neutral-200);
+			}
+
+			.skills-table, .awakening-table {
+				width: 100%;
+				border-collapse: collapse;
+				background: transparent;
+			}
+
+			.skills-table th, .awakening-table th {
+				background: var(--amber-glow);
+				color: #222;
+				padding: 1rem;
+				text-align: left;
+				font-weight: 700;
+				border-bottom: 2px solid var(--neutral-200);
+			}
+
+			.skills-table td, .awakening-table td {
+				padding: 1.2rem 1rem;
+				border-bottom: 1px solid var(--neutral-200);
+				vertical-align: top;
+			}
+
+			.skills-table tr:hover, .awakening-table tr:hover {
+				background: rgba(255, 183, 77, 0.05);
+			}			.skills-table td:first-child {
+				width: 150px;
+				text-align: center;
+			}
+
+			.skills-table td:nth-child(2) {
+				width: 250px;
+			}
+
+			.skills-table td:last-child {
+				min-width: 400px;
+			}
+
+			.skills-table ul {
+				margin: 0;
+				padding-left: 1.5rem;
+			}
+
+			.skills-table li {
+				margin-bottom: 0.5rem;
+			}
+
+			.skills-table strong {
+				color: var(--amber-glow);
+			}
+
+			.skills-table small {
+				color: var(--text-secondary);
+				font-size: 0.85rem;
+			}
+
+			/* Skill Type Badges */
+			.skill-type {
+				display: inline-block;
+				padding: 0.4rem 0.8rem;
+				border-radius: 8px;
+				font-weight: 600;
+				font-size: 0.85rem;
+				text-align: center;
+			}
+
+			.skill-type.normal-attack {
+				background: #e3f2fd;
+				color: #1976d2;
+				border: 1px solid #bbdefb;
+			}
+
+			.skill-type.auto-skill {
+				background: #f3e5f5;
+				color: #7b1fa2;
+				border: 1px solid #ce93d8;
+			}
+
+			.skill-type.ultimate {
+				background: #fff3e0;
+				color: #f57c00;
+				border: 1px solid #ffcc02;
+			}
+
+			.skill-type.passive {
+				background: #e8f5e8;
+				color: #388e3c;
+				border: 1px solid #a5d6a7;
+			}
+
+			.skill-type.team-skill {
+				background: #fce4ec;
+				color: #c2185b;
+				border: 1px solid #f8bbd9;
+			}			/* Awakening Table */
+			.awakening-table ul {
+				margin: 0;
+				padding-left: 1.2rem;
+				list-style-type: disc;
+			}
+
+			.awakening-table li {
+				margin-bottom: 0.3rem;
+				line-height: 1.4;
+			}			.skill-name, .awakening-name {
+				font-weight: 600;
+				color: var(--amber-glow);
+				margin-bottom: 0.5rem;
+			}
+
+			.skill-description, .awakening-description {
+				color: var(--text-secondary);
+				line-height: 1.6;
+			}
+
+			/* Character Title Animation */
+			@keyframes titleGlow {
+				0% {
+					text-shadow: 0 0 10px rgba(255, 183, 77, 0.3);
+				}
+				100% {
+					text-shadow: 0 0 20px rgba(255, 183, 77, 0.6);
+				}
 			}
 		</style>
 	</Fragment>
-
 	<div class="character-page">
 		<div class="character-container">
-			<a href="/guides/zone-nova/characters/" class="back-button">
-				<span class="back-arrow">←</span>
-				Back to Characters
-			</a>
-
-			<!-- Character Header -->
-			<header class="character-header">
-				<!-- Character Image -->
-				<img src="/images/characters/mordred.jpg" alt="Mordred" class="character-image" loading="eager" />
-				
-				<h1 class="character-title">Mordred</h1>
-				<p class="character-subtitle">SR • Fire • HP-Scaling DPS</p>
-			</header>
-
-			<!-- Character Overview -->
+			<!-- Character Header & Overview (merged) -->
 			<section class="content-section">
-				<h2 class="section-title">Character Overview</h2>
-				
-				<!-- Class Showcase -->
-				<div class="class-showcase">
-					<img src="/images/characters/class/Assault.jpg" alt="Assault Class" class="class-image">
-					<div class="class-info">
-						<h3>强袭使 (Assault)</h3>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Hero Card (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/mordred.jpg" alt="Mordred" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+							<h1 class="character-title">Mordred</h1>
+						</div>
+						<!-- Badges in separate box with better styling -->
+						<div class="badges-container" style="margin-top: 1.8rem;">						<div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+							<span class="rarity-badge sr">SR</span>
+							<span class="element-badge fire">Fire</span>
+							<span class="role-badge dps">DPS</span>
+						</div>
+						</div>
+					</div>
+					<!-- Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">						<div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
+							<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Faction</div><div class="stat-value" style="font-size:1.25rem; font-weight:600; letter-spacing:1px; color:#222;">Avalon</div></div>
+							<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Role</div><div class="stat-value" style="font-size:1.25rem; font-weight:700; color:#d32f2f; letter-spacing:1px;">DPS</div></div>
+						</div>
+						<div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">
+							<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">HP</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">8,470</div></div>
+							<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Attack</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">837</div></div>
+							<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Defense</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">560</div></div>
+							<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Energy Regen</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0.25/s</div></div>
+							<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Crit Rate</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0%</div></div>
+							<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Crit Damage</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">50%</div></div>
+						</div>
+						</div>
 					</div>
 				</div>
-				
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Faction</div>
-						<div class="stat-value">Avalon</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Role</div>
-						<div class="stat-value">HP-Scaling DPS</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Base Stats at Level 80</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">HP</div>
-						<div class="stat-value">8,470</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Attack</div>
-						<div class="stat-value">837</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Defense</div>
-						<div class="stat-value">560</div>
-					</div>
-				</div>
-
-				<div class="info-card">
-					<p><strong>Mordred</strong> is a unique HP-scaling Assault character who combines high damage output with exceptional survivability. Her abilities scale primarily with HP rather than attack, making her a tanky damage dealer who becomes more dangerous as fights continue. Her kit revolves around burn damage and HP-based healing, creating a self-sustaining DPS unit.</p>
-				</div>
-			</section>
-
-			<!-- Skills -->
+			</section>			<!-- Skills Section -->
 			<section class="content-section">
 				<h2 class="section-title">Skills</h2>
-
-				<div class="skill-card">
-					<h3 class="skill-title">Normal Attack: Petty Sword</h3>
-					<p><strong>CD:</strong> 2.0s</p>
-					<p>Deals <strong>120% attack power</strong> as burn damage to designated enemy unit. With Awakening 6: Additionally deals <strong>5% max HP</strong> as burn damage.</p>
+				<div class="skills-table-container">
+					<table class="skills-table">
+					<thead>
+						<tr>
+							<th style="width: 25%;">Skill Type</th>
+							<th style="width: 25%;">Skill Name</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><span class="skill-type normal-attack">Normal Attack</span></td>
+							<td>
+								<div class="skill-name">Petty Sword</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 14 • CD: 2.0s</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									<ul style="margin: 0; padding-left: 1rem;">
+										<li>Deals <strong>120% attack power</strong> as burn damage to designated enemy unit</li>
+										<li><strong>With Awakening 6:</strong> Additionally deals <strong>5% max HP</strong> as burn damage</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type auto-skill">Skill</span></td>
+							<td>
+								<div class="skill-name">Revenge Blade</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 10+4 • CD: 5.0s</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									Automatically deals burn damage to designated enemy unit equal to <strong>36% of own maximum HP</strong>. Pure HP-scaling ability that triggers automatically.
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type ultimate">Ultimate</span></td>
+							<td>
+								<div class="skill-name">Destructive Fury</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 10+4 • CD: 1.0s • Energy: 5</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									<ul style="margin: 0; padding-left: 1rem;">
+										<li><strong>Recovers 36% max HP</strong> to self</li>
+										<li>Deals burn damage to target equal to <strong>144% of own max HP</strong></li>
+										<li>Massive HP-scaling nuke with built-in healing</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type passive">Passive</span></td>
+							<td>
+								<div class="skill-name">Deep Hatred</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 14</div>
+							</td>
+							<td>
+								<div class="skill-description">									<ul style="margin: 0; padding-left: 1rem;">
+										<li>Every normal attack recovers <strong>5.8% max HP</strong></li>
+										<li><strong>When HP falls below 50%:</strong> All received healing increased by <strong>60%</strong></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="skill-type team-skill">Team Skill</span></td>							<td>
+								<div class="skill-name">Combination Skill</div>
+								<div style="font-size: 0.8rem; color: var(--text-secondary);">Level: 1</div>
+								<div style="font-size: 0.8rem; color: var(--amber-glow);">Requires: 2 [Avalon] OR 2 [Burn] characters</div>
+							</td>
+							<td>
+								<div class="skill-description">
+									<ul style="margin: 0; padding-left: 1rem;">
+										<li><strong>Self attack increased by 10%</strong></li>
+										<li><strong>Healing amount increased by 12.5%</strong></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					</table>
 				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">Auto Skill: Revenge Blade</h3>
-					<p><strong>CD:</strong> 5.0s</p>
-					<p>Automatically deals burn damage to designated enemy unit equal to <strong>36% of own maximum HP</strong>. Pure HP-scaling ability that triggers automatically.</p>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">Ultimate: Destructive Fury</h3>
-					<p><strong>CD:</strong> 1.0s | <strong>Energy Cost:</strong> 5</p>
-					<p><strong>Recovers 36% max HP</strong> to self and deals burn damage to target equal to <strong>144% of own max HP</strong>. Massive HP-scaling nuke with built-in healing.</p>
-				</div>
-
-				<div class="skill-card">
-					<h3 class="skill-title">Passive: Deep Hatred</h3>
-					<p>Every normal attack recovers <strong>5.8% max HP</strong>. When HP falls below 50%: All received healing increased by <strong>60%</strong>.</p>
-				</div>
-			</section>
-
-			<!-- Team Composition -->
-			<section class="content-section">
-				<h2 class="section-title">Team Composition Skill</h2>
-				
-				<div class="skill-card">
-					<h3 class="skill-title">🔥 Combination Skill</h3>
-					<p><strong>Level:</strong> 1</p>
-					
-					<div class="warning-box">
-						<div class="warning-title">⭐ Activation Requirements</div>
-						<p>Triggers when team contains <strong>2 [Avalon] characters</strong> OR <strong>2 [Burn] characters</strong></p>
-					</div>
-
-					<div style="margin: 1rem 0;">
-						<p><strong>Effects:</strong></p>
-						<ul>
-							<li>Self attack increased by <strong>10%</strong></li>
-							<li>Healing amount increased by <strong>12.5%</strong></li>
-						</ul>
-					</div>
-
-					<div class="info-card">
-						<p style="color: var(--text-primary); font-size: 1rem; line-height: 1.6; margin: 0;">
-							<strong>Why This Matters:</strong> This team skill enhances both her damage output and sustain capabilities, making Avalon or Burn team compositions highly recommended. The attack boost improves her normal attacks while the healing bonus strengthens her passive regeneration and ultimate healing.
-						</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Awakening Effects -->
+			</section>			<!-- Awakening Effects -->
 			<section class="content-section">
 				<h2 class="section-title">Awakening Effects</h2>
+				<div class="awakening-table-container">
+					<table class="awakening-table">
+					<thead>
+						<tr>
+							<th style="width: 20%;">Awakening</th>
+							<th>Effects</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><strong>Awakening 1</strong></td>
+							<td>
+								<ul>
+									<li><strong>Damage taken reduced by 10%</strong></li>
+									<li>Basic survivability improvement, lowest priority</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Awakening 2</strong></td>
+							<td>
+								<ul>
+									<li><strong>When dealing damage to enemies, Defense is increased by 10% for 10 seconds, stacks up to 5 times</strong></li>
+									<li>Provides up to 50% defense boost through consistent attacking - excellent for survivability</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Awakening 3</strong></td>
+							<td>
+								<ul>
+									<li><strong>[Auto Skill] and [Normal Attack] level and level cap +4</strong></li>
+									<li>Increases damage output across her core abilities</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Awakening 4</strong></td>
+							<td>
+								<ul>
+									<li><strong>HP increased by 30%</strong></li>
+									<li>Massive boost to all HP-scaling abilities and overall survivability - essential for her kit</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Awakening 5</strong></td>
+							<td>
+								<ul>
+									<li><strong>[Ultimate] and [Passive] level and level cap +4</strong></li>
+									<li>Enhances her biggest nuke and sustain mechanics</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Awakening 6</strong></td>
+							<td>
+								<ul>
+									<li><strong>Normal attacks additionally deal burn damage equal to 5% of own max HP</strong></li>
+									<li>Transforms her most frequent ability into HP-scaling damage - game-changing for DPS output</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>				</div>
 
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 1</h3>
-					<p>Damage taken reduced by <strong>10%</strong></p>
-					<p>Basic survivability improvement, lowest priority</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 2 (HIGHLY RECOMMENDED)</h3>
-					<p>When dealing damage to enemies, Defense is increased by <strong>10%</strong> for 10 seconds, stacks up to 5 times</p>
-					<p>Provides up to 50% defense boost through consistent attacking - excellent for survivability</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 3</h3>
-					<p><strong>[Auto Skill]</strong> and <strong>[Normal Attack]</strong> level and level cap <strong>+4</strong></p>
-					<p>Increases damage output across her core abilities</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 4 (CRITICAL)</h3>
-					<p>HP increased by <strong>30%</strong></p>
-					<p>Massive boost to all HP-scaling abilities and overall survivability - essential for her kit</p>
-				</div>
-
-				<div class="awakening-card">
-					<h3 class="skill-title">Awakening 5</h3>
-					<p><strong>[Ultimate]</strong> and <strong>[Passive]</strong> level and level cap <strong>+4</strong></p>
-					<p>Enhances her biggest nuke and sustain mechanics</p>
-				</div>
-
-				<div class="awakening-card critical-awakening">
-					<h3 class="skill-title">🌟 Awakening 6 (CRITICAL)</h3>
-					<p>Normal attacks additionally deal burn damage equal to <strong>5% of own max HP</strong></p>
-					<p>Transforms her most frequent ability into HP-scaling damage - game-changing for DPS output</p>
-				</div>
-			</section>
-
-			<!-- Builds & Strategy -->
-			<section class="content-section">
-				<h2 class="section-title">Recommended Builds</h2>
-
-				<h3 class="subsection-title">Rune Sets</h3>
-				
-				<div class="info-card">
-					<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">🌟 Primary Build (HP Scaling Focus)</h4>
-					<ul>
-						<li><strong>4-Piece Zahn (札恩):</strong> HP +8%, After Ultimate: Take 5% less damage (10s)</li>
-						<li><strong>2-Piece Daleth (达列斯):</strong> Healing Effectiveness +10%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						Best for maximizing HP scaling across all abilities while boosting her self-sustain.
-					</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1rem 0;">🔄 Alternative Build (Sustained DPS)</h4>
-					<ul>
-						<li><strong>4-Piece Alpha (阿尔法):</strong> Attack Power +8%, Basic Attack Damage +30%</li>
-						<li><strong>2-Piece Daleth (达列斯):</strong> Healing Effectiveness +10%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						Focuses on normal attack damage while maintaining healing optimization.
-					</p>
-				</div>
-
-				<div class="info-card">
-					<h4 style="color: var(--neutral-300); margin: 0 0 1rem 0;">⚖️ Balanced Build</h4>
-					<ul>
-						<li><strong>4-Piece Daleth (达列斯):</strong> Healing Effectiveness +10%, Battle Start: Gain 1 Energy</li>
-						<li><strong>2-Piece Zahn (札恩):</strong> HP +8%</li>
-					</ul>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						Maximum healing optimization with faster ultimate access for emergencies.
-					</p>
-				</div>
-
-				<h3 class="subsection-title">Main Stats</h3>
-				<div class="stats-grid">
-					<div class="stat-item">
-						<div class="stat-label">Position 1</div>
-						<div class="stat-value">HP (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 2</div>
-						<div class="stat-value">ATK (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 3</div>
-						<div class="stat-value">DEF (Fixed)</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 4</div>
-						<div class="stat-value">HP%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 5</div>
-						<div class="stat-value">HP%</div>
-					</div>
-					<div class="stat-item">
-						<div class="stat-label">Position 6</div>
-						<div class="stat-value">HP%</div>
-					</div>
-				</div>
-
-				<h3 class="subsection-title">Substat Priorities</h3>
-				<div class="info-card">
-					<ol style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6;">
-						<li>HP%</li>
-						<li>HP (Flat)</li>
-						<li>Attack%</li>
-						<li>Defense%</li>
-						<li>Defense (Flat)</li>
-					</ol>
-					<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-						<strong>Note:</strong> Since her core abilities scale with HP (Auto Skill, Ultimate, and Normal Attack with Awakening 6), prioritize HP stats above all else. Critical stats provide minimal value since critical hits do not increase healing amounts.
-					</p>
-				</div>
 			</section>
 
 			<!-- Memory Card -->
 			<section class="content-section">
-				<h2 class="section-title">Memory Card: Behind the Regret</h2>
-				
-				<div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
-					<img src="/images/characters/mordredcard.jpg" alt="Mordred Card" style="width: 200px; height: 300px; border-radius: 15px; object-fit: cover; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); transition: all 0.3s ease; flex-shrink: 0;" loading="lazy" />
-					
-					<div style="flex: 1; min-width: 300px;">
-						<div class="info-card" style="margin: 0;">
-							<h4 style="color: var(--amber-glow); margin: 0 0 1rem 0;">Level 80/80 Base Stats</h4>
-							<div class="stats-grid">
-								<div class="stat-item">
-									<div class="stat-label">HP</div>
-									<div class="stat-value">5,000</div>
-								</div>
-								<div class="stat-item">
-									<div class="stat-label">Attack</div>
-									<div class="stat-value">500</div>
-								</div>
-								<div class="stat-item">
-									<div class="stat-label">Defense</div>
-									<div class="stat-value">500</div>
-								</div>
+				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Memory Card: Behind the Regret</h2>
+						<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+					<!-- Memory Card Image (Left) -->
+					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+							<img src="/images/characters/mordredcard.jpg" alt="Mordred Memory Card" style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" loading="lazy" />
+						</div>
+					</div>					<!-- Memory Card Stats (Right) -->
+					<div style="flex: 1; min-width: 260px; max-width: 400px;">
+						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+							<h4 style="color: var(--amber-glow); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Level 80/80 Base Stats</h4>
+							<div class="stats-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">HP</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">5,000</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Attack</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">500</div></div>
+								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Defense</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">500</div></div>
 							</div>
-
-							<h4 style="color: var(--teal-crystal); margin: 1.5rem 0 1rem 0;">Memory Effects</h4>
-							<ul>
-								<li>HP increased by <strong>24%</strong></li>
-								<li>Self healing amount increased by <strong>30%</strong></li>
-								<li>Only effective for Assault class characters</li>
-								<li>5-star awakening tier</li>
-							</ul>
-							
-							<p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
-								Perfect synergy with Mordred's HP-scaling kit and healing mechanics.
-							</p>
 						</div>
 					</div>
 				</div>
-			</section>
-
-			<!-- Usage Tips -->
-			<section class="content-section">
-				<h2 class="section-title">Usage Tips</h2>
-				
-				<div class="build-grid">
-					<div class="build-card">
-						<h3 class="build-title">Strengths</h3>
-						<ul>
-							<li>Exceptional HP-scaling damage output</li>
-							<li>Outstanding survivability through multiple healing sources</li>
-							<li>Self-sustaining with 5.8% HP recovery per attack</li>
-							<li>Simple stat building - focus on HP</li>
-							<li>Strong team synergy with Avalon/Burn compositions</li>
-						</ul>
-					</div>
-
-					<div class="build-card">
-						<h3 class="build-title">Combat Strategy</h3>
-						<ul>
-							<li>Build defense stacks through consistent attacking</li>
-							<li>Use ultimate for both burst damage and emergency healing</li>
-							<li>Let HP drop below 50% to trigger enhanced healing when safe</li>
-							<li>Maintain HP threshold management for optimal bonuses</li>
-							<li>Leverage HP scaling - more HP equals more damage</li>
-						</ul>
-					</div>
-				</div>
-			</section>
-
-			<!-- Investment Priority -->
-			<section class="content-section">
-				<h2 class="section-title">Investment Priority</h2>
-				
-				<div class="warning-box">
-					<div class="warning-title">⭐ Excellent Investment</div>
-					<p>Unique HP-scaling damage dealer with exceptional survivability. Worth full investment for players seeking a tanky DPS that becomes more powerful with better gear.</p>
-				</div>
-
-				<h3 class="subsection-title">Awakening Priority</h3>
-				<div class="critical-awakening" style="padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
-					<h4 style="color: #dc3545; margin: 0 0 1rem 0;">🚨 Awakenings 6+4 are CRITICAL</h4>
-					<p>These transform her normal attacks and HP scaling capabilities:</p>
-					<ul>
-						<li><strong>Without them:</strong> Limited to basic attack scaling, lower HP pool</li>
-						<li><strong>With them:</strong> Every normal attack becomes HP-scaling + massive HP boost for all abilities</li>
+				<!-- Memory Effects Box -->
+				<div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
+					<h4 style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Memory Effects</h4>					<ul style="margin: 0; padding-left: 1.5rem; max-width: none;">
+						<li style="margin-bottom: 0.8rem;"><strong>HP increased by 24%</strong></li>
+						<li style="margin-bottom: 0.8rem;"><strong>Self healing amount increased by 30%</strong></li>
 					</ul>
 				</div>
-
-				<h3 class="subsection-title">Key Breakpoints</h3>
-				<div class="info-card">
-					<ul>
-						<li><span class="priority-high">Awakening 6: CRITICAL</span> - Normal attacks add 5% max HP burn damage - transforms her most frequent ability</li>
-						<li><span class="priority-high">Awakening 4: CRITICAL</span> - HP increased by 30% - massive boost to all HP-scaling abilities and survivability</li>
-						<li><span class="priority-medium">Awakening 2:</span> Defense stacks up to 50% - makes her nearly unkillable with consistent attacking</li>
-						<li><span class="priority-medium">Awakening 3:</span> [Auto Skill] and [Normal Attack] level +4 - increases damage output across core abilities</li>
-						<li><span class="priority-low">Awakening 5:</span> [Ultimate] and [Passive] level +4 - enhances biggest nuke and sustain mechanics</li>
-						<li><span class="priority-low">Awakening 1:</span> Damage taken reduced by 10% - basic survivability improvement</li>
-					</ul>
-				</div>
-
-				<div class="warning-box">
-					<div class="warning-title">🔄 Core Synergy: Awakenings 2+4+6</div>
-					<p>Defense stacking + HP scaling + normal attack transformation = Maximum damage output with exceptional survivability</p>
-				</div>
 			</section>
-
 		</div>
 	</div>
-</ZoneNovaLayout1> 
+</ZoneNovaLayout1>
