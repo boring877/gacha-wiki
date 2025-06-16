@@ -7,6 +7,8 @@ A beautifully designed wiki and guide platform built with Astro, featuring compr
 🌐 **Live Site**: [gachawiki.info](https://gachawiki.info)  
 📖 **Source Code**: [GitHub Repository](https://github.com/boring877/gacha-wiki)
 
+<!-- v2.0.5 deployment trigger -->
+
 ## ✨ Features
 
 - 🎮 **Game Guides**: In-depth coverage of gacha games starting with Zone Nova
