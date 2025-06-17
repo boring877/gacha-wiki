@@ -1,4 +1,4 @@
-import { defineConfig, presetUno, presetTypography } from 'unocss'
+import { defineConfig, presetUno, presetTypography, presetIcons } from 'unocss'
 
 export default defineConfig({
   presets: [
@@ -7,15 +7,27 @@ export default defineConfig({
       preflight: false,
     }),
     presetTypography(),
+    presetIcons({
+      // Options
+    }),
   ],
   // Only apply UnoCSS to specific classes to avoid conflicts
-  safelist: [],
+  safelist: [
+    'i-lucide-github',
+    'i-lucide-youtube',
+    'i-lucide-twitter',
+    'i-simple-icons-discord',
+    'text-xl',
+    'text-2xl',
+    'text-amber-glow',
+  ],
   // Exclude certain patterns to avoid conflicts
   blocklist: [
     // Don't interfere with our custom styled elements
   ],
   theme: {
     colors: {
+      'amber-glow': 'var(--amber-glow)',
       // GachaWiki color scheme
       primary: {
         50: '#f0f9ff',
@@ -30,4 +42,4 @@ export default defineConfig({
       }
     }
   }
-}) 
+})
