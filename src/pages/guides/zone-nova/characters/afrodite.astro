@@ -541,6 +541,161 @@ import OptimizedImage from '../../../../components/OptimizedImage.astro';
   border: 1px solid #bdbdbd;
 }
 
+.overview-section .section-title, .memory-card-section .section-title {
+    font-size: 2.1rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.overview-container, .memory-card-container {
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.hero-card, .memory-card-image-section {
+    flex: 1.5;
+    min-width: 340px;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-card-inner, .memory-card-image-inner {
+    background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    padding: 2.5rem 1.5rem;
+    border: 1.5px solid var(--amber-glow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    width: 100%;
+}
+
+.hero-card-inner {
+    padding-bottom: 1.5rem;
+}
+
+.hero-character-image {
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    width: 340px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+    max-width: 100%;
+}
+
+.hero-character-title {
+    margin: 0;
+    font-size: 2.8rem;
+    text-align: center;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.hero-badges-container {
+    margin-top: 1.8rem;
+}
+
+.hero-badges-container-inner {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+
+.stats-box, .memory-card-stats-section {
+    flex: 1;
+    min-width: 260px;
+    max-width: 400px;
+}
+
+.stats-box-inner, .memory-card-stats-inner {
+    background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    padding: 2.2rem 1.5rem;
+    border: 1px solid var(--neutral-200);
+    width: 100%;
+}
+
+.hero-stats-top {
+    margin-bottom: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.hero-stats-bottom {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+}
+
+.hero-stat-item { text-align: center; }
+.hero-stat-label { font-size: 1.1rem; }
+.hero-stat-value { font-size: 1.25rem; font-weight: 600; letter-spacing: 1px; color: #222; }
+.hero-stats-top .stat-item:first-child .hero-stat-label { color: #fbc02d; }
+.hero-stats-top .stat-item:last-child .hero-stat-label { color: #ff9800; }
+.hero-stats-top .stat-item:last-child .hero-stat-value { font-weight: 700; color: #d32f2f; }
+.hero-stats-bottom .stat-value { font-size: 1.15rem; font-weight: 600; }
+.hero-stats-bottom .stat-item:nth-child(odd) .stat-label { color: #fbc02d; }
+.hero-stats-bottom .stat-item:nth-child(even) .stat-label { color: #ff9800; }
+
+.memory-card-image {
+    width: 280px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+    max-width: 100%;
+}
+
+.memory-card-stats-section .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+.memory-card-stats-section .stat-item { text-align: center; }
+.memory-card-stats-section .stat-label { font-size: 1.1rem; }
+.memory-card-stats-section .stat-value { font-size: 1.25rem; font-weight: 600; }
+.memory-card-stats-section .stat-item:nth-child(1) .stat-label { color: #fbc02d; }
+.memory-card-stats-section .stat-item:nth-child(2) .stat-label { color: #ff9800; }
+.memory-card-stats-section .stat-item:nth-child(3) .stat-label { color: #fbc02d; }
+
+.memory-card-stats-title, .memory-effects-title {
+    color: var(--amber-glow);
+    margin: 0 0 1.5rem 0;
+    font-size: 1.3rem;
+    text-align: center;
+}
+.memory-effects-title {
+    color: var(--teal-crystal);
+}
+
+.memory-effects-box {
+    background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    padding: 2.2rem 1.5rem;
+    border: 1px solid var(--teal-crystal);
+    margin-top: 2rem;
+}
+.memory-effects-box ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    max-width: none;
+}
+.memory-effects-box li {
+    margin-bottom: 0.8rem;
+}
+
 			@keyframes titleGlow {
 				0% { filter: brightness(1) drop-shadow(0 0 5px rgba(164, 120, 100, 0.3)); }
 				100% { filter: brightness(1.1) drop-shadow(0 0 15px rgba(164, 120, 100, 0.5)); }
@@ -563,32 +718,126 @@ import OptimizedImage from '../../../../components/OptimizedImage.astro';
 	.skills-table-container { padding: 0.5rem; }
 	.skills-table th, .skills-table td { padding: 0.5rem; font-size: 0.95rem; }
 	.skills-table td:last-child { min-width: 220px; }
+	.skills-table, .skills-table-container { display: none !important; }
+	.mobile-skill-list, .mobile-awakening-list { display: block !important; }
 	/* Stack flex layouts vertically */
 	[style*='display: flex'] { flex-direction: column !important; gap: 1rem !important; align-items: stretch !important; }
 	/* Make tables scrollable */
 	.skills-table-container { overflow-x: auto; }
 }
-		</style>
+@media (min-width: 769px) {
+	.mobile-skill-list, .mobile-awakening-list { display: none !important; }
+	.mobile-awakening-card > strong {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+  }
+}
+
+.mobile-skill-list, .mobile-awakening-list {
+  margin-top: 1rem;
+}
+.mobile-skill-card, .mobile-awakening-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+  padding: 1.2rem 1rem 1.1rem 1rem;
+  margin-bottom: 1.3rem;
+  border: 1.5px solid var(--teal-crystal);
+  transition: box-shadow 0.2s;
+}
+.mobile-skill-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+}
+.mobile-skill-title {
+  font-weight: 700;
+  margin: 0.7rem 0 0.7rem 0;
+  font-size: 1.13rem;
+  color: var(--amber-glow);
+  line-height: 1.3;
+}
+.mobile-skill-title small {
+  display: block;
+  font-size: 0.98rem;
+  color: #bfae7c;
+  font-weight: 500;
+  margin-top: 0.1rem;
+}
+.mobile-skill-card ul {
+  margin: 0.5rem 0 0 1.1rem;
+  padding-left: 1.1rem;
+}
+.mobile-skill-card li {
+  margin-bottom: 0.45rem;
+  font-size: 1.01rem;
+  line-height: 1.5;
+}
+.mobile-awakening-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+  padding: 1.2rem 1rem 1.1rem 1rem;
+  margin-bottom: 1.3rem;
+  border: 1.5px solid var(--amber-glow);
+  transition: box-shadow 0.2s;
+}
+.mobile-awakening-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+}
+.mobile-awakening-card > strong {
+				display: block;
+				font-size: 1.08rem;
+				color: var(--amber-glow);
+				margin-bottom: 0.5rem;
+				font-weight: 700;
+			}
+.mobile-awakening-card li, .mobile-awakening-card ul, .mobile-awakening-card {
+				color: var(--text-primary);
+}
+
+			.awakening-effects strong {
+					color: var(--text-primary);
+			}
+			.awakening-effects td:first-child strong {
+					color: var(--amber-glow);
+			}
+.awakening-effects ul, .mobile-awakening-card ul {
+  list-style-position: inside;
+  padding-left: 0.5rem;
+}
+.awakening-effects li, .mobile-awakening-card li {
+  padding-left: 0.2rem;
+  text-indent: -0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.skills-table th:first-child,
+.skills-table td:first-child {
+  text-align: left;
+  padding-left: 1.5rem;
+}
+
+					</style>
 	</Fragment>	<div class="character-page">
 		<div class="character-container">
 			<!-- Character Header & Overview (merged) -->
-			<section class="content-section">
-    <h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
-    <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">        <!-- Hero Card (Right) -->        <div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">            <div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+			<section class="content-section overview-section">
+    <h2 class="section-title">Character Overview</h2>
+    <div class="overview-container">        <!-- Hero Card (Right) -->        <div class="hero-card">            <div class="hero-card-inner">
                 <OptimizedImage 
                     src="/images/characters/Afrodite.jpg" 
                     alt="Afrodite" 
                     width={340}
                     height={340}
-                    class="character-image"
+                    class="hero-character-image"
                     priority={true}
-                    style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;"
                 />
-                <h1 class="character-title" style="margin: 0; font-size: 2.8rem; text-align:center; font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">Afrodite</h1>
+                <h1 class="hero-character-title">Afrodite</h1>
             </div>
             <!-- Badges in separate box with better styling -->
-            <div class="badges-container" style="margin-top: 1.8rem;">
-                <div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+            <div class="badges-container hero-badges-container">
+                <div class="hero-badges-container-inner">
                     <span class="character-badge ssr-badge">SSR</span>
                     <span class="character-badge holy-badge">Holy</span>
                     <span class="character-badge dps-badge">DPS</span>
@@ -596,18 +845,18 @@ import OptimizedImage from '../../../../components/OptimizedImage.astro';
             </div>
         </div>
         <!-- Stats Box (Left) -->
-        <div style="flex: 1; min-width: 260px; max-width: 400px;">
-            <div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
-                <div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Faction</div><div class="stat-value" style="font-size:1.25rem; font-weight:600; letter-spacing:1px; color:#222;">Ortis</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Role</div><div class="stat-value" style="font-size:1.25rem; font-weight:700; color:#d32f2f; letter-spacing:1px;">DPS</div></div>
-                </div>                <div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">HP</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">8,033</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Attack</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">1305</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Defense</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">530</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Energy Regen</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0.25/s</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Crit Rate</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0%</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Crit Damage</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">50%</div></div>
+        <div class="stats-box">
+            <div class="stats-box-inner">
+                <div class="stats-grid hero-stats-top">
+                    <div class="stat-item hero-stat-item"><div class="hero-stat-label">Faction</div><div class="hero-stat-value">Ortis</div></div>
+                    <div class="stat-item hero-stat-item"><div class="hero-stat-label">Role</div><div class="hero-stat-value">DPS</div></div>
+                </div>                <div class="stats-grid hero-stats-bottom">
+                    <div class="stat-item"><div class="stat-label">HP</div><div class="stat-value">8,033</div></div>
+                    <div class="stat-item"><div class="stat-label">Attack</div><div class="stat-value">1305</div></div>
+                    <div class="stat-item"><div class="stat-label">Defense</div><div class="stat-value">530</div></div>
+                    <div class="stat-item"><div class="stat-label">Energy Regen</div><div class="stat-value">0.25/s</div></div>
+                    <div class="stat-item"><div class="stat-label">Crit Rate</div><div class="stat-value">0%</div></div>
+                    <div class="stat-item"><div class="stat-label">Crit Damage</div><div class="stat-value">50%</div></div>
                 </div>
             </div>
         </div>
@@ -686,6 +935,59 @@ import OptimizedImage from '../../../../components/OptimizedImage.astro';
 						</tbody>
 					</table>
 				</div>
+				<div class="mobile-skill-list">
+  <div class="mobile-skill-card">
+    <span class="skill-type normal-attack">Normal Attack</span>
+    <div class="mobile-skill-title">Love God Fist (爱神之拳) <small>Lv. 10+4 | CD: 2.0s</small></div>
+    <ul>
+      <li>Deals <strong>120% attack power</strong> as holy damage to designated enemy unit</li>
+      <li><strong>Builds toward enhanced ultimate</strong> - core mechanic for ultimate enhancement</li>
+    </ul>
+  </div>
+  <div class="mobile-skill-card">
+    <span class="skill-type auto-skill">Auto Skill</span>
+    <div class="mobile-skill-title">Charm Impact (魅惑冲拳) <small>Lv. 10+4 | Auto: 8.0s</small></div>
+    <ul>
+      <li><strong>Automatically</strong> deals <strong>816% attack power</strong> as holy damage to designated enemy</li>
+      <li><strong>Increases self attack by 58%</strong></li>
+      <li>High damage auto skill with substantial self-buffing component</li>
+    </ul>
+  </div>
+  <div class="mobile-skill-card">
+    <span class="skill-type ultimate">Ultimate</span>
+    <div class="mobile-skill-title">Love and Beauty Waltz (爱与美之圆舞曲) <small>Lv. 10+4 | CD: 1.0s | Energy: 8</small></div>
+    <ul>
+      <li><strong>Normal Ultimate:</strong> Deals <strong>1800% attack power</strong> as holy damage to designated enemy</li>
+      <li><strong>Enhanced Ultimate</strong> (after 10 normal attacks):
+        <ul>
+          <li>Deals <strong>2160% attack power</strong> as holy damage to designated enemy</li>
+          <li><strong>Recovers 2 energy</strong> at the end</li>
+          <li><strong>Damage converted to normal attack damage</strong> (benefits from different scaling)</li>
+        </ul>
+      </li>
+      <li><strong>Core mechanic:</strong> Build up through normal attacks for maximum damage</li>
+    </ul>
+  </div>
+  <div class="mobile-skill-card">
+    <span class="skill-type passive">Passive</span>
+    <div class="mobile-skill-title">Beautiful Kill (美丽杀意) <small>Lv. 10+4</small></div>
+    <ul>
+      <li><strong>When HP > 50%:</strong> All attacks deal additional <strong>48% attack power</strong> as violent damage</li>
+      <li><strong>When HP &lt; 50%:</strong> Damage taken reduced by <strong>96%</strong></li>
+      <li><strong>Dual-phase passive</strong> that provides offensive power when healthy, defensive power when injured</li>
+    </ul>
+  </div>
+  <div class="mobile-skill-card">
+    <span class="skill-type team-skill">Team Skill</span>
+    <div class="mobile-skill-title">Combination Skill <small>Lv. 1</small></div>
+    <div style="color: #fbc02d; font-size: 0.98rem; font-weight: 600; margin-bottom: 0.5rem;">Requires: 2 [Faction] OR 2 [Holy] characters</div>
+    <ul>
+      <li><strong>Self attack power increased by 10%</strong></li>
+      <li><strong>At battle start:</strong> For every <strong>500 attack power</strong>, increase self holy damage by <strong>5%</strong> (maximum 6 times)</li>
+      <li><strong>Maximum scaling:</strong> 30% holy damage boost at 3,000+ attack power</li>
+    </ul>
+  </div>
+</div>
 			</section>			<!-- Awakening Effects -->
 			<section class="content-section">
 				<h2 class="section-title">Awakening Effects</h2>				<div class="skills-table-container">
@@ -695,7 +997,7 @@ import OptimizedImage from '../../../../components/OptimizedImage.astro';
 								<th>Awakening</th>
 								<th>Effects</th>
 							</tr>
-						</thead>						<tbody>
+						</thead>						<tbody class="awakening-effects">
 							<tr>
 								<td><strong>Awakening 1</strong></td>
 								<td>
@@ -747,40 +1049,60 @@ import OptimizedImage from '../../../../components/OptimizedImage.astro';
 						</tbody>
 					</table>
 				</div>
+				<div class="mobile-awakening-list">
+  <div class="mobile-awakening-card"><strong>Awakening 1:</strong>
+    <ul><li><strong>When using skill:</strong> Can accumulate <strong>4 times</strong> to strengthen the required normal attack count for enhanced ultimate</li></ul>
+  </div>
+  <div class="mobile-awakening-card"><strong>Awakening 2:</strong>
+    <ul><li><strong>When using enhanced ultimate and skill:</strong> Damage taken reduced by <strong>10%</strong></li></ul>
+  </div>
+  <div class="mobile-awakening-card"><strong>Awakening 3:</strong>
+    <ul><li><strong>[Skills] and [Normal Attack] level and level cap +4</strong></li></ul>
+  </div>
+  <div class="mobile-awakening-card"><strong>Awakening 4:</strong>
+    <ul><li><strong>Normal attack damage increased by 35%</strong></li></ul>
+  </div>
+  <div class="mobile-awakening-card"><strong>Awakening 5:</strong>
+    <ul><li><strong>[Ultimate] and [Passive] level and level cap +4</strong></li></ul>
+  </div>
+  <div class="mobile-awakening-card"><strong>Awakening 6:</strong>
+    <ul><li><strong>[Enhanced Ultimate] ignores 20% elemental resistance</strong></li></ul>
+  </div>
+</div>
 			</section>			<!-- Memory Card -->
-			<section class="content-section">
-				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Memory Card: Secret Garden</h2>
-				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">					<!-- Memory Card Image (Left) -->
-					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
-						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+			<section class="content-section memory-card-section">
+				<h2 class="section-title">Memory Card: Secret Garden</h2>
+				<div class="memory-card-container">					<!-- Memory Card Image (Left) -->
+					<div class="memory-card-image-section">
+						<div class="memory-card-image-inner">
 							<OptimizedImage 
 								src="/images/characters/Afroditecard.jpg" 
 								alt="Afrodite Memory Card" 
 								width={280}
 								height={420}
-								style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;"
+								class="memory-card-image"
 							/>
 						</div>
 					</div>
 					<!-- Memory Card Stats (Right) -->
-					<div style="flex: 1; min-width: 260px; max-width: 400px;">
-						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
-							<h4 style="color: var(--amber-glow); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Level 80/80 Base Stats</h4>
-							<div class="stats-grid" style="grid-template-columns: 1fr; gap: 1rem;">
-								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">HP</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">5,040</div></div>
-								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Attack</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">780</div></div>
-								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Defense</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">474</div></div>
+					<div class="memory-card-stats-section">
+						<div class="memory-card-stats-inner">
+							<h4 class="memory-card-stats-title">Level 80/80 Base Stats</h4>
+							<div class="stats-grid">
+								<div class="stat-item"><div class="stat-label">HP</div><div class="stat-value">5,040</div></div>
+								<div class="stat-item"><div class="stat-label">Attack</div><div class="stat-value">780</div></div>
+								<div class="stat-item"><div class="stat-label">Defense</div><div class="stat-value">474</div></div>
 							</div>
 						</div>
 					</div>
 				</div>
 				
 				<!-- Memory Effects Box -->
-				<div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Memory Effects</h4>
-					<ul style="margin: 0; padding-left: 1.5rem; max-width: none;">
-						<li style="margin-bottom: 0.8rem;"><strong>Attack power increased by 40%</strong></li>
-						<li style="margin-bottom: 0.8rem;"><strong>When equipped character releases enhanced ultimate or higher:</strong> Damage increased by <strong>40% for 10 seconds</strong></li>
+				<div class="memory-effects-box">
+					<h4 class="memory-effects-title">Memory Effects</h4>
+					<ul>
+						<li ><strong>Attack power increased by 40%</strong></li>
+						<li ><strong>When equipped character releases enhanced ultimate or higher:</strong> Damage increased by <strong>40% for 10 seconds</strong></li>
 					</ul>
 				</div>
 			</section>
