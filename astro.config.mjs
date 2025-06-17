@@ -5,13 +5,12 @@ import UnoCSS from '@unocss/astro';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://gachawiki.info',
-	integrations: [
+	site: 'https://gachawiki.info',	integrations: [
 		sitemap(),
-		UnoCSS({
-			// Enable UnoCSS inspector only in dev mode
-			inspector: process.env.NODE_ENV === 'development',
-		}),
+		// UnoCSS({
+		// 	// Enable UnoCSS inspector only in dev mode
+		// 	inspector: process.env.NODE_ENV === 'development',
+		// }),
 	],
 	// Keep it simple for now - static generation
 	output: 'static',
