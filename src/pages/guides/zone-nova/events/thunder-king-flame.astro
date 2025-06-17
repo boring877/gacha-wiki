@@ -1,6 +1,7 @@
 ---
 import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 import FormattedDate from '../../../../components/FormattedDate.astro';
+import OptimizedImage from '../../../../components/OptimizedImage.astro';
 ---
 
 <ZoneNovaLayout1 
@@ -577,11 +578,16 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 						<span id="eventTimer" style="color: var(--amber-glow); font-weight: 600; font-family: 'Courier New', monospace; font-size: 1.1rem;">Loading...</span>
 					</div>
 				</div>
-			</div>
-
-			<!-- Event Overview -->
+			</div>			<!-- Event Overview -->
 			<section class="content-section">
-				<img src="/images/event-kingflame/Eventkingflame.jpg" alt="Thunder King Flame Event" class="event-image" />
+				<OptimizedImage 
+					src="/images/event-kingflame/Eventkingflame.jpg" 
+					alt="Thunder King Flame Event" 
+					width={800}
+					height={450}
+					class="event-image"
+					priority={true}
+				/>
 				<div class="text-content">
 					<p>Experience the power of thunder and flame in this epic limited-time event! Battle through story stages, tackle challenging modes, and collect exclusive rewards in the event shop.</p>
 				</div>
@@ -638,11 +644,28 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<div class="text-content">
 					<p>Use event currency to purchase exclusive items and materials:</p>
 				</div>
-				
-				<div class="shop-grid">
-					<img src="/images/event-kingflame/EventShop1.jpg" alt="Event Shop Page 1" class="shop-image" />
-					<img src="/images/event-kingflame/eventshop2.jpg" alt="Event Shop Page 2" class="shop-image" />
-					<img src="/images/event-kingflame/eventshop3.jpg" alt="Event Shop Page 3" class="shop-image" />
+						<div class="shop-grid">
+					<OptimizedImage 
+						src="/images/event-kingflame/EventShop1.jpg" 
+						alt="Event Shop Page 1" 
+						width={600}
+						height={400}
+						class="shop-image"
+					/>
+					<OptimizedImage 
+						src="/images/event-kingflame/eventshop2.jpg" 
+						alt="Event Shop Page 2" 
+						width={600}
+						height={400}
+						class="shop-image"
+					/>
+					<OptimizedImage 
+						src="/images/event-kingflame/eventshop3.jpg" 
+						alt="Event Shop Page 3" 
+						width={600}
+						height={400}
+						class="shop-image"
+					/>
 				</div>
 				
 				<div class="tip-box">
@@ -668,7 +691,13 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 				<h2 class="section-title">🎯 Activity Bonus System</h2>
 				<p class="text-content" style="color: var(--text-secondary); margin-bottom: 1.5rem;">活动加成效果</p>
 				
-				<img src="/images/event-kingflame/bounseevent.jpg" alt="Activity Bonus System" class="event-image" />
+				<OptimizedImage 
+					src="/images/event-kingflame/bounseevent.jpg" 
+					alt="Activity Bonus System" 
+					width={600}
+					height={400}
+					class="event-image"
+				/>
 				
 				<h3 class="subsection-title">🌟 Bonus Character System</h3>
 				<div class="info-card">

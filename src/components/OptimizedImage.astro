@@ -1,0 +1,169 @@
+---
+// Optimized Image Component for better performance
+// Works with both original and optimized images
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'sync' | 'auto';
+  sizes?: string;
+  class?: string;
+  style?: string;
+  priority?: boolean;
+  useOptimized?: boolean; // Whether to use optimized versions
+}
+
+const {
+  src,
+  alt,
+  width = 400,
+  height = 300,
+  loading = 'lazy',
+  decoding = 'async',
+  sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+  class: className = '',
+  style = '',
+  priority = false,
+  useOptimized = true,
+} = Astro.props;
+
+// Helper function to generate optimized image paths
+function getOptimizedPath(originalSrc: string, format: string, size: string = '') {
+  if (!useOptimized) return originalSrc;
+  
+  const pathParts = originalSrc.split('/');
+  const filename = pathParts[pathParts.length - 1];
+  const [name, ext] = filename.split('.');
+  
+  // Convert /images/characters/file.jpg to /images/optimized/characters/file
+  // Convert /images/event-kingflame/file.jpg to /images/optimized/event-kingflame/file
+  const directory = pathParts.slice(0, -1).join('/'); // e.g., /images/characters
+  const subdirectory = pathParts.slice(2).slice(0, -1).join('/'); // e.g., characters
+  
+  const optimizedDir = subdirectory ? `/images/optimized/${subdirectory}` : '/images/optimized';
+  
+  return `${optimizedDir}/${name}${size}.${format}`;
+}
+
+// Generate responsive image sources - smarter sizing based on image type
+const isCardImage = src.toLowerCase().includes('card');
+const isCharacterDatabaseImage = src.toLowerCase().includes('character database');
+const isSmallImage = src.toLowerCase().includes('laser') || 
+                     src.toLowerCase().includes('zeus') ||
+                     src.toLowerCase().includes('maintenance');
+
+const sizes_array = isCardImage || isSmallImage || isCharacterDatabaseImage
+  ? [{ suffix: '', width: 400, media: '' }] // Single size for cards, database thumbnails, and small images
+  : [
+      { suffix: '-small', width: 400, media: '(max-width: 480px)' },
+      { suffix: '-medium', width: 800, media: '(max-width: 768px)' },
+      { suffix: '-large', width: 1200, media: '' }, // Default for large screens
+    ];
+
+// Generate srcsets for different formats
+const avifSrcset = sizes_array
+  .map(size => {
+    const path = getOptimizedPath(src, 'avif', size.suffix);
+    return `${path} ${size.width}w`;
+  })
+  .join(', ');
+
+const webpSrcset = sizes_array
+  .map(size => {
+    const path = getOptimizedPath(src, 'webp', size.suffix);
+    return `${path} ${size.width}w`;
+  })
+  .join(', ');
+
+const jpegSrcset = useOptimized 
+  ? sizes_array
+      .map(size => {
+        const path = getOptimizedPath(src, 'jpg', size.suffix);
+        return `${path} ${size.width}w`;
+      })
+      .join(', ')
+  : src;
+
+// Fallback image (smallest optimized or original)
+const fallbackSrc = useOptimized 
+  ? getOptimizedPath(src, 'jpg', '-small')
+  : src;
+---
+
+<picture>
+  <!-- AVIF format (best compression, newest browsers) -->
+  {useOptimized && (
+    <source
+      srcset={avifSrcset}
+      sizes={sizes}
+      type="image/avif"
+    />
+  )}
+  
+  <!-- WebP format (good compression, wide support) -->
+  {useOptimized && (
+    <source
+      srcset={webpSrcset}
+      sizes={sizes}
+      type="image/webp"
+    />
+  )}
+  
+  <!-- JPEG fallback (universal support) -->
+  <source
+    srcset={jpegSrcset}
+    sizes={sizes}
+    type="image/jpeg"
+  />
+  
+  <!-- Final fallback img element -->
+  <img
+    src={fallbackSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={priority ? 'eager' : loading}
+    decoding={decoding}
+    class={className}
+    style={style}
+    fetchpriority={priority ? 'high' : 'auto'}
+  />
+</picture>
+
+<style>
+  picture {
+    display: block;
+    line-height: 0;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit;
+  }
+  
+  /* Aspect ratio preservation */
+  picture.aspect-ratio {
+    position: relative;
+    display: block;
+  }
+  
+  picture.aspect-ratio::before {
+    content: '';
+    display: block;
+    padding-bottom: calc(var(--aspect-ratio, 75) * 1%);
+  }
+  
+  picture.aspect-ratio img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

@@ -1,270 +1,206 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
 import { SITE_TITLE } from '../consts';
+import OptimizedImage from '../components/OptimizedImage.astro';
 ---
 
 <HomeLayout title={`${SITE_TITLE} - About`} description="Information about this gacha games site">
-	<!-- Design Palette - Far Left Position -->
-	<aside style="position: absolute; left: 1rem; top: 10rem; z-index: 10;">
-		<div style="background: var(--bg-primary); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--amber-glow); box-shadow: 0 8px 20px rgba(255, 183, 77, 0.15); width: 6rem;">
-			<h4 style="font-family: 'Space Grotesk', sans-serif; color: var(--text-primary); margin: 0 0 1rem 0; text-align: center; font-size: 0.9rem; font-weight: 700;">Design<br>Palette</h4>
-			<div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-				<div style="display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
-					<div 
-						class="color-circle" 
-						data-color="#1C1C1C"
-						style="width: 1.75rem; height: 1.75rem; background: #1C1C1C; border-radius: 50%; border: 1.5px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(28, 28, 28, 0.3); cursor: pointer; transition: all 0.2s ease; position: relative;"
-						title="Copy color code"
-						onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 4px 12px rgba(28, 28, 28, 0.5)'"
-						onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(28, 28, 28, 0.3)'"
-					></div>
-					<span style="font-size: 0.75rem; color: var(--text-primary); font-family: 'Inter', sans-serif; font-weight: 700;">Rich</span>
-				</div>
-				<div style="display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
-					<div 
-						class="color-circle" 
-						data-color="#A47864"
-						style="width: 1.75rem; height: 1.75rem; background: #A47864; border-radius: 50%; border: 1.5px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(164, 120, 100, 0.3); cursor: pointer; transition: all 0.2s ease; position: relative;"
-						title="Copy color code"
-						onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 4px 12px rgba(164, 120, 100, 0.5)'"
-						onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(164, 120, 100, 0.3)'"
-					></div>
-					<span style="font-size: 0.75rem; color: var(--text-primary); font-family: 'Inter', sans-serif; font-weight: 700;">Mocha</span>
-				</div>
-				<div style="display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
-					<div 
-						class="color-circle" 
-						data-color="#FFB74D"
-						style="width: 1.75rem; height: 1.75rem; background: #FFB74D; border-radius: 50%; border: 1.5px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(255, 183, 77, 0.3); cursor: pointer; transition: all 0.2s ease; position: relative;"
-						title="Copy color code"
-						onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 4px 12px rgba(255, 183, 77, 0.5)'"
-						onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(255, 183, 77, 0.3)'"
-					></div>
-					<span style="font-size: 0.75rem; color: var(--text-primary); font-family: 'Inter', sans-serif; font-weight: 700;">Amber</span>
-				</div>
-				<div style="display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
-					<div 
-						class="color-circle" 
-						data-color="#00ACC1"
-						style="width: 1.75rem; height: 1.75rem; background: #00ACC1; border-radius: 50%; border: 1.5px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(0, 172, 193, 0.3); cursor: pointer; transition: all 0.2s ease; position: relative;"
-						title="Copy color code"
-						onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 4px 12px rgba(0, 172, 193, 0.5)'"
-						onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(0, 172, 193, 0.3)'"
-					></div>
-					<span style="font-size: 0.75rem; color: var(--text-primary); font-family: 'Inter', sans-serif; font-weight: 700;">Teal</span>
-				</div>
-				<div style="display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
-					<div 
-						class="color-circle" 
-						data-color="#E91E63"
-						style="width: 1.75rem; height: 1.75rem; background: #E91E63; border-radius: 50%; border: 1.5px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3); cursor: pointer; transition: all 0.2s ease; position: relative;"
-						title="Copy color code"
-						onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 4px 12px rgba(233, 30, 99, 0.5)'"
-						onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(233, 30, 99, 0.3)'"
-					></div>
-					<span style="font-size: 0.75rem; color: var(--text-primary); font-family: 'Inter', sans-serif; font-weight: 700;">Rose</span>
-				</div>
-			</div>
-		</div>
-	</aside>
-
-	<!-- Typography Showcase - Right of Palette -->
-	<aside style="position: absolute; left: 8.5rem; top: 10rem; z-index: 10;">
-		<div style="background: var(--bg-primary); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--teal-crystal); box-shadow: 0 8px 20px rgba(0, 172, 193, 0.15); width: 10rem;">
-			<h4 style="font-family: 'Space Grotesk', sans-serif; color: var(--text-primary); margin: 0 0 1rem 0; text-align: center; font-size: 0.9rem; font-weight: 700;">Typography</h4>
-			<div style="display: flex; flex-direction: column; gap: 1rem;">
-				
-				<!-- Heading Font -->
-				<div style="text-align: center;">
-					<div 
-						class="font-sample" 
-						data-font="Space Grotesk"
-						style="font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s ease; padding: 0.5rem; border-radius: 8px;"
-						title="Copy font name"
-						onmouseover="this.style.background='rgba(255, 183, 77, 0.1)'; this.style.color='var(--amber-glow)'; this.style.transform='scale(1.05)'"
-						onmouseout="this.style.background='transparent'; this.style.color='var(--text-primary)'; this.style.transform='scale(1)'"
-					>
-						Heading
-					</div>
-					<span style="font-size: 0.7rem; color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 500;">Space Grotesk</span>
-				</div>
-				
-				<!-- Body Font -->
-				<div style="text-align: center;">
-					<div 
-						class="font-sample" 
-						data-font="Inter"
-						style="font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 400; color: var(--text-primary); margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s ease; padding: 0.5rem; border-radius: 8px;"
-						title="Copy font name"
-						onmouseover="this.style.background='rgba(0, 172, 193, 0.1)'; this.style.color='var(--teal-crystal)'; this.style.transform='scale(1.05)'"
-						onmouseout="this.style.background='transparent'; this.style.color='var(--text-primary)'; this.style.transform='scale(1)'"
-					>
-						Body Text
-					</div>
-					<span style="font-size: 0.7rem; color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 500;">Inter</span>
-				</div>
-				
-				<!-- Font Weights -->
-				<div style="border-top: 1px solid var(--teal-crystal); padding-top: 0.75rem;">
-					<div style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; margin-bottom: 0.5rem;">Weights</div>
-					<div style="display: flex; justify-content: space-between; gap: 0.5rem;">
-						<span style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.8rem; color: var(--text-primary);">400</span>
-						<span style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.8rem; color: var(--text-primary);">500</span>
-						<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.8rem; color: var(--text-primary);">600</span>
-						<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--text-primary);">700</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</aside>
-
 	<!-- Main Content Area -->
-	<main style="max-width: 70rem; margin: 0 auto; padding: 8rem 2rem 4rem 2rem; min-height: 100vh;">
-		
-		<!-- Post Card Container -->
-		<article style="background: var(--bg-secondary); border-radius: 20px; padding: 3rem; border: 1px solid var(--amber-glow); box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2); overflow: hidden; transition: all 0.4s ease; transform: translateY(0); animation: cardFadeIn 0.8s ease-out;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(164, 120, 100, 0.3)'; this.style.borderColor='var(--teal-crystal)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 12px 30px rgba(164, 120, 100, 0.2)'; this.style.borderColor='var(--amber-glow)'">
-			
+	<main class="main-content">
+		<!-- About Card Container -->
+		<article class="about-card">
 			<!-- Hero Image Section -->
-			<div style="margin: -3rem -3rem 3rem -3rem; overflow: hidden;">
-				<img src="/images/about.jpg" alt="About" style="width: 100%; height: 500px; object-fit: cover; transition: transform 0.6s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+			<div class="hero-image">
+				<OptimizedImage 
+					src="/images/about.jpg" 
+					alt="About our gacha games community" 
+					width={800}
+					height={400}
+					priority={true}
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
+				/>
 			</div>
 
 			<!-- Content -->
-			<div style="padding: 0 1rem; animation: contentSlideUp 1s ease-out 0.3s both;">
-				<p style="color: var(--text-primary); font-size: 1.3rem; line-height: 1.7; margin-bottom: 1.5rem; transition: color 0.3s ease; font-weight: 500;" onmouseover="this.style.color='var(--amber-glow)'" onmouseout="this.style.color='var(--text-primary)'">
-					Hey there! 👋
+			<div class="content">
+				<p class="intro">
+					This is an open-source wiki that tries to have the most accurate info possible. Anyone can help build it or use whatever they find useful.
 				</p>
 
-				<p style="color: var(--text-secondary); font-size: 1.2rem; line-height: 1.7; margin-bottom: 2rem; font-weight: 400;">
-					This site is built by someone who's probably spent way too much time (and maybe money) on gacha games. Started as a personal project to keep track of my favorite games and share tips with friends, it's grown into something bigger.
+				<p class="description">
+					I built this personally as a hobby project, but hey - if it helps other people avoid the mistakes I've made or find something cool, that's awesome.
 				</p>
 
-				<p style="color: var(--text-secondary); font-size: 1.2rem; line-height: 1.7; margin-bottom: 2rem; font-weight: 400;">
-					Remember: It's all about having fun! Whether you're F2P, a dolphin, or a whale, you're welcome here.
-				</p>
-
-				<blockquote style="background: rgba(255, 183, 77, 0.1); border-left: 4px solid var(--amber-glow); padding: 1.5rem; border-radius: 12px; margin: 2rem 0; font-style: italic; transition: all 0.4s ease; transform: translateX(0);" onmouseover="this.style.background='rgba(255, 183, 77, 0.15)'; this.style.transform='translateX(10px)'; this.style.borderLeftWidth='6px'" onmouseout="this.style.background='rgba(255, 183, 77, 0.1)'; this.style.transform='translateX(0)'; this.style.borderLeftWidth='4px'">
-					<strong style="color: var(--text-primary); font-size: 1.2rem;">Note:</strong> <span style="color: var(--text-secondary); font-size: 1.1rem;">This is a fan-made site. All content is based on personal experience and community knowledge.</span>
-				</blockquote>
+				<div class="disclaimer">
+					<strong>Note:</strong> <span>This is a fan-made site. All content is based on personal experience and community knowledge.</span>
+				</div>
 			</div>
-
 		</article>
-
-		<!-- Success Toast Notification -->
-		<div id="copyToast" style="position: fixed; top: 2rem; right: 2rem; background: var(--bg-primary); color: var(--amber-glow); padding: 0.75rem 1.5rem; border-radius: 8px; border: 1px solid var(--amber-glow); box-shadow: 0 4px 16px rgba(164, 120, 100, 0.3); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; z-index: 1000; opacity: 0; transform: translateY(-20px); transition: all 0.3s ease;">
-			✓ Color copied to clipboard!
-		</div>
-
 	</main>
 </HomeLayout>
 
 <style>
-@keyframes cardFadeIn {
-	0% {
-		opacity: 0;
-		transform: translateY(30px);
+	/* Main Content */
+	.main-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 4rem 1rem 2rem 1rem;
+		min-height: 100vh;
 	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
 
-@keyframes contentSlideUp {
-	0% {
-		opacity: 0;
-		transform: translateY(20px);
+	/* About Card */
+	.about-card {
+		background: var(--bg-secondary);
+		border-radius: 20px;
+		border: 1px solid var(--amber-glow);
+		box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
+		overflow: hidden;
+		transition: all 0.4s ease;
+		animation: cardFadeIn 0.8s ease-out;
+		margin-top: 5rem;
 	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
 
-@media (max-width: 768px) {
-	main {
-		padding: 6rem 1rem 3rem 1rem !important;
+	.about-card:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 20px 40px rgba(164, 120, 100, 0.3);
+		border-color: var(--teal-crystal);
 	}
-}
+
+	/* Hero Image */
+	.hero-image {
+		overflow: hidden;
+		line-height: 0;
+	}
+
+	.hero-image :global(img) {
+		width: 100%;
+		height: auto;
+		display: block;
+		transition: transform 0.4s ease;
+	}
+
+	.about-card:hover .hero-image :global(img) {
+		transform: scale(1.05);	}
+
+	/* Content */
+	.content {
+		padding: 3.5rem;
+		animation: contentSlideUp 1s ease-out 0.3s both;
+	}
+
+	.intro, .description {
+		color: var(--text-secondary);
+		font-size: 1.2rem;
+		line-height: 1.7;
+		margin-bottom: 2.5rem;
+		font-weight: 400;
+	}
+	.disclaimer {
+		background: rgba(255, 183, 77, 0.1);
+		border-left: 4px solid var(--amber-glow);
+		padding: 1.5rem;
+		border-radius: 12px;
+		margin: 3rem 0;
+		transition: all 0.4s ease;
+	}
+
+	.disclaimer:hover {
+		background: rgba(255, 183, 77, 0.15);
+		transform: translateX(10px);
+		border-left-width: 6px;
+	}
+
+	.disclaimer strong {
+		color: var(--text-primary);
+		font-size: 1.2rem;
+	}
+
+	.disclaimer span {
+		color: var(--text-secondary);
+		font-size: 1.1rem;
+	}
+
+	/* Animations */
+	@keyframes cardFadeIn {
+		0% {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes contentSlideUp {
+		0% {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* Mobile Responsive */
+	@media (max-width: 768px) {
+		.main-content {
+			padding: 1rem 0.5rem;
+		}
+		.content {
+			padding: 2rem 1.5rem;
+		}
+
+		.intro, .description {
+			font-size: 1.1rem;
+		}
+
+		.disclaimer {
+			padding: 1.25rem;
+			margin: 1.5rem 0;
+		}
+
+		.disclaimer strong {
+			font-size: 1.1rem;
+		}
+
+		.disclaimer span {
+			font-size: 1rem;
+		}
+	}
+
+	@media (max-width: 480px) {		.content {
+			padding: 1.5rem 1rem;
+		}
+
+		.intro, .description {
+			font-size: 1rem;
+		}
+
+		.disclaimer {
+			padding: 1rem;
+		}
+	}
+
+	/* Performance optimizations */
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+
+	/* High contrast mode support */
+	@media (prefers-contrast: high) {
+		.about-card {
+			border-width: 2px;
+		}
+		
+		.disclaimer {
+			border-left-width: 6px;
+		}
+	}
 </style>
 
-<script>
-// Copy color to clipboard functionality
-function copyColorToClipboard(color: string): void {
-	navigator.clipboard.writeText(color).then(function() {
-		// Show success toast
-		const toast = document.getElementById('copyToast');
-		if (toast) {
-			toast.innerHTML = '✓ Color copied to clipboard!';
-			toast.style.opacity = '1';
-			toast.style.transform = 'translateY(0)';
-			
-			// Hide toast after 2 seconds
-			setTimeout(() => {
-				toast.style.opacity = '0';
-				toast.style.transform = 'translateY(-20px)';
-			}, 2000);
-		}
-	}).catch(function(err) {
-		console.error('Failed to copy color: ', err);
-	});
-}
-
-// Copy font name to clipboard functionality
-function copyFontToClipboard(font: string): void {
-	navigator.clipboard.writeText(font).then(function() {
-		// Show success toast
-		const toast = document.getElementById('copyToast');
-		if (toast) {
-			toast.innerHTML = `✓ Font "${font}" copied to clipboard!`;
-			toast.style.opacity = '1';
-			toast.style.transform = 'translateY(0)';
-			
-			// Hide toast after 2 seconds
-			setTimeout(() => {
-				toast.style.opacity = '0';
-				toast.style.transform = 'translateY(-20px)';
-			}, 2000);
-		}
-	}).catch(function(err) {
-		console.error('Failed to copy font: ', err);
-	});
-}
-
-// Add click listeners to all color circles and font samples
-document.addEventListener('DOMContentLoaded', function() {
-	// Color circles
-	const colorCircles = document.querySelectorAll('.color-circle');
-	colorCircles.forEach((circle: Element) => {
-		circle.addEventListener('click', function(this: HTMLElement) {
-			const color = this.getAttribute('data-color');
-			if (color) {
-				copyColorToClipboard(color);
-				
-				// Add visual feedback - quick pulse effect
-				this.style.transform = 'scale(1.2)';
-				setTimeout(() => {
-					this.style.transform = 'scale(1)';
-				}, 150);
-			}
-		});
-	});
-
-	// Font samples
-	const fontSamples = document.querySelectorAll('.font-sample');
-	fontSamples.forEach((sample: Element) => {
-		sample.addEventListener('click', function(this: HTMLElement) {
-			const font = this.getAttribute('data-font');
-			if (font) {
-				copyFontToClipboard(font);
-				
-				// Add visual feedback - quick pulse effect
-				this.style.transform = 'scale(1.1)';
-				setTimeout(() => {
-					this.style.transform = 'scale(1)';
-				}, 150);
-			}
-		});
-	});
-});
-</script>

@@ -1,5 +1,6 @@
 ---
 import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import OptimizedImage from '../../../../components/OptimizedImage.astro';
 ---
 
 <ZoneNovaLayout1 title="Afrodite - Zone Nova Character Guide" description="Complete guide for Afrodite, the SSR Holy Assault enhanced ultimate specialist from Zone Nova" gameTitle="Afrodite Character Information">
@@ -551,23 +552,38 @@ import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 			}
 
 			@media (max-width: 768px) {
-				.character-container { padding: 0 1rem; }
-				.character-header { padding: 2rem; }
-				.content-section { padding: 2rem; }
-				.character-title { font-size: 2rem; }
-				.section-title { font-size: 1.5rem; }
-				.stats-grid { grid-template-columns: 1fr; }
-				.character-image { width: 250px; height: 250px; }
-			}
+	.character-container { padding: 0 0.5rem; }
+	.character-header { padding: 1.2rem; }
+	.content-section { padding: 1rem; }
+	.character-title { font-size: 1.5rem; }
+	.section-title { font-size: 1.1rem; }
+	.stats-grid { grid-template-columns: 1fr; }
+	.character-image { width: 100%; max-width: 180px; height: auto; }
+	.badges-container { padding: 0.7rem 0.5rem; }
+	.skills-table-container { padding: 0.5rem; }
+	.skills-table th, .skills-table td { padding: 0.5rem; font-size: 0.95rem; }
+	.skills-table td:last-child { min-width: 220px; }
+	/* Stack flex layouts vertically */
+	[style*='display: flex'] { flex-direction: column !important; gap: 1rem !important; align-items: stretch !important; }
+	/* Make tables scrollable */
+	.skills-table-container { overflow-x: auto; }
+}
 		</style>
 	</Fragment>	<div class="character-page">
 		<div class="character-container">
 			<!-- Character Header & Overview (merged) -->
 			<section class="content-section">
     <h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
-    <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
-        <!-- Hero Card (Right) -->        <div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">            <div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
-                <img src="/images/characters/Afrodite.jpg" alt="Afrodite" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+    <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">        <!-- Hero Card (Right) -->        <div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">            <div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+                <OptimizedImage 
+                    src="/images/characters/Afrodite.jpg" 
+                    alt="Afrodite" 
+                    width={340}
+                    height={340}
+                    class="character-image"
+                    priority={true}
+                    style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;"
+                />
                 <h1 class="character-title" style="margin: 0; font-size: 2.8rem; text-align:center; font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">Afrodite</h1>
             </div>
             <!-- Badges in separate box with better styling -->
@@ -652,7 +668,7 @@ import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 								<td>
 									<ul>
 										<li><strong>When HP > 50%:</strong> All attacks deal additional <strong>48% attack power</strong> as violent damage</li>
-										<li><strong>When HP < 50%:</strong> Damage taken reduced by <strong>96%</strong></li>
+										<li><strong>When HP &lt; 50%:</strong> Damage taken reduced by <strong>96%</strong></li>
 										<li><strong>Dual-phase passive</strong> that provides offensive power when healthy, defensive power when injured</li>
 									</ul>
 								</td>
@@ -734,11 +750,16 @@ import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 			</section>			<!-- Memory Card -->
 			<section class="content-section">
 				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Memory Card: Secret Garden</h2>
-				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
-					<!-- Memory Card Image (Left) -->
+				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">					<!-- Memory Card Image (Left) -->
 					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
 						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
-							<img src="/images/characters/Afroditecard.jpg" alt="Afrodite Memory Card" style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" loading="lazy" />
+							<OptimizedImage 
+								src="/images/characters/Afroditecard.jpg" 
+								alt="Afrodite Memory Card" 
+								width={280}
+								height={420}
+								style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;"
+							/>
 						</div>
 					</div>
 					<!-- Memory Card Stats (Right) -->

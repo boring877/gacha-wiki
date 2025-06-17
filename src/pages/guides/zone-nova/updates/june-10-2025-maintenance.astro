@@ -1,6 +1,7 @@
 ---
 import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 import FormattedDate from '../../../../components/FormattedDate.astro';
+import OptimizedImage from '../../../../components/OptimizedImage.astro';
 ---
 
 <ZoneNovaLayout1 
@@ -199,7 +200,13 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 
 	<!-- Header Image -->
 	<div class="announcement-header-image">
-		<img src="/images/Maintenance/6-10-maintenance.jpg" alt="June 10th Maintenance" />
+		<OptimizedImage 
+          src="/images/Maintenance/6-10-maintenance.jpg" 
+          alt="June 10th Maintenance" 
+          width={400}
+          height={300}
+          
+        />
 	</div>
 
 	<!-- Maintenance Header -->

@@ -1,5 +1,6 @@
 ---
 import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
+import OptimizedImage from '../../../../components/OptimizedImage.astro';
 ---
 
 <ZoneNovaLayout1 
@@ -291,7 +292,14 @@ import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 					<!-- Hero Card (Left) -->
 					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
 						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
-							<img src="/images/characters/Bastet.jpg" alt="Bastet" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+							<OptimizedImage 
+          src="/images/characters/Bastet.jpg" 
+          alt="Bastet" 
+          width={340}
+          height={340}
+          class="character-image"
+          priority={true}
+        />
 							<h1 class="character-title" style="margin: 0; font-size: 2.8rem; text-align:center; font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">Bastet</h1>
 						</div>
 						<!-- Badges in separate box with better styling -->
@@ -455,7 +463,12 @@ import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 				<h2 class="section-title">Memory Card</h2>
 				<div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
 					<div style="flex-shrink: 0;">
-						<img src="/images/characters/Bastetcard.jpg" alt="Bastet Memory Card" style="width: 200px; height: 300px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); object-fit: cover;" />
+						<OptimizedImage 
+          src="/images/characters/Bastetcard.jpg" 
+          alt="Bastet Memory Card" 
+          width={280}
+          height={420}
+        />
 					</div>
 					<div style="flex: 1; min-width: 300px;">
 						<h3 style="color: var(--amber-glow); margin-bottom: 1rem; font-size: 1.3rem;">Memory Card Effects</h3>

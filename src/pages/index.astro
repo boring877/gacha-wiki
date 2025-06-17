@@ -1,5 +1,6 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -8,14 +9,16 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<link rel="preload" href="/images/zonenova.jpg" as="image" type="image/jpeg" />
 	<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<!-- Performance hints -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="prefetch" href="/guides/zone-nova/" />
 	
 	<!-- Main Content Area -->
 	<main style="max-width: 50rem; margin: 0 auto; padding: 8rem 2rem 4rem 2rem; min-height: 100vh; contain: layout style;">
 		<!-- Games Section - Option 5: Featured Showcase Style -->
 		<section style="margin-bottom: 6rem; contain: layout style;">
-			<div style="text-align: center; margin-bottom: 3rem;">
-				<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; color: var(--text-primary); background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; will-change: transform; transform: translateZ(0); contain: layout style paint;" class="title-hover">
-					Game Guide Library
+			<div style="text-align: center; margin-bottom: 3rem;">				<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; color: var(--text-primary); background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; will-change: transform; transform: translateZ(0); contain: layout style paint;" class="title-hover">
+					Game Wiki Library
 				</h2>
 			</div>
 
@@ -34,24 +37,25 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 						<!-- Content Area -->
 						<div style="padding: 2rem; display: flex; align-items: center; gap: 2rem; min-height: 220px;">
-							
-							<!-- Game Image -->
-							<div style="flex-shrink: 0;">
-								<div style="width: 10rem; height: 10rem; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
+									<!-- Game Image -->
+							<div style="flex-shrink: 0;">								<div style="width: 10rem; height: 10rem; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
 									<!-- Fixed placeholder to prevent CLS -->
 									<div style="width: 160px; height: 160px; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0; border-radius: 16px;"></div>
-									<img src="/images/zonenova.jpg" alt="Zone Nova" style="width: 160px; height: 160px; object-fit: cover; position: relative; z-index: 1; border-radius: 16px;" loading="eager" decoding="async" width="160" height="160" fetchpriority="high">
+									<OptimizedImage 
+										src="/images/zonenova.jpg" 
+										alt="Zone Nova" 
+										width={160} 
+										height={160}
+										priority={true}
+										useOptimized={false}
+										style="width: 160px; height: 160px; object-fit: cover; position: relative; z-index: 1; border-radius: 16px;"
+									/>
 								</div>
-							</div>
-
-							<!-- Game Info -->
+							</div>							<!-- Game Info -->
 							<div style="flex: 1; min-height: 180px;">
 								<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem 0; line-height: 1.2;">
 									Zone Nova
 								</h3>
-								<p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin: 0 0 1rem 0; max-width: 35rem;">
-									Character guides, runes, events, and announcements.
-								</p>
 
 								<!-- Active Events Section -->
 								<div style="background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border-radius: 12px; padding: 1rem; margin: 0 0 1rem 0; border-left: 4px solid var(--teal-crystal);">
@@ -83,20 +87,19 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 								<p style="color: var(--amber-glow); font-size: 0.9rem; font-weight: 500; margin: 0 0 2rem 0;">
 									Last updated: {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
 								</p>
-								
-								<!-- Action Button -->
-								<div style="background: var(--amber-glow); color: white; padding: 1rem 2rem; border-radius: 25px; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.75rem; will-change: transform, background-color; transform: translateZ(0); cursor: pointer; min-height: 48px;" class="action-button">
-									Explore Zone Nova
-									<span style="font-size: 1.25rem;" aria-hidden="true">→</span>
-								</div>
+										<!-- Action Button -->
+								<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit; display: inline-block;">
+									<div style="background: var(--amber-glow); color: white; padding: 1rem 2rem; border-radius: 25px; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.75rem; will-change: transform, background-color; transform: translateZ(0); cursor: pointer; min-height: 48px;" class="action-button">
+										Explore Zone Nova
+										<span style="font-size: 1.25rem;" aria-hidden="true">→</span>
+									</div>
+								</a>
 							</div>
 						</div>
 					</a>
 				</div>
-			</div>
-
-			<!-- Other Games Section -->
-			<div style="text-align: center; margin-bottom: 2rem;">
+			</div>			<!-- Other Games Section -->
+			<div style="text-align: center; margin-bottom: 2.5rem; margin-top: 2rem;">
 				<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 600; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; contain: layout style paint;">
 					More Games Coming Soon
 				</h3>
@@ -166,14 +169,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 					<!-- Games Grid -->
 					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-						
-						<!-- Zone Nova Card -->
+								<!-- Zone Nova Card -->
 						<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--amber-glow); will-change: transform; transform: translateZ(0);" class="modal-card">
-							<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit;">
-								<div style="width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
+							<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit;">								<div style="width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
 									<!-- Fixed placeholder -->
 									<div style="width: 280px; height: 150px; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0; border-radius: 12px;"></div>
-									<img src="/images/zonenova.jpg" alt="Zone NOVA" style="width: 280px; height: 150px; object-fit: cover; position: relative; z-index: 1; border-radius: 12px;" loading="lazy" decoding="async" width="280" height="150">
+									<OptimizedImage 
+										src="/images/zonenova.jpg" 
+										alt="Zone NOVA" 
+										width={280} 
+										height={150}
+										loading="lazy"
+										useOptimized={false}
+										style="width: 280px; height: 150px; object-fit: cover; position: relative; z-index: 1; border-radius: 12px;"
+									/>
 								</div>
 								<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem 0;">Zone Nova</h3>
 								<p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Character guides, runes, events, and announcements</p>
@@ -281,11 +290,92 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	transform: translateY(0) !important;
 }
 
+/* Desktop Layout - Ensure horizontal layout is preserved */
+@media (min-width: 769px) {
+	/* Ensure desktop layout stays horizontal */
+	div[style*="padding: 2rem; display: flex; align-items: center; gap: 2rem;"] {
+		flex-direction: row !important;
+		text-align: left !important;
+		gap: 2rem !important;
+		padding: 2rem !important;
+		align-items: center !important;
+	}
+
+	/* Game Image Desktop - left aligned */
+	div[style*="width: 10rem; height: 10rem;"] {
+		width: 10rem !important;
+		height: 10rem !important;
+		margin: 0 !important;
+		flex-shrink: 0 !important;
+	}
+
+	/* Game Info Desktop - takes remaining space */
+	div[style*="flex: 1; min-height: 180px;"] {
+		flex: 1 !important;
+		min-height: 180px !important;
+		text-align: left !important;
+	}
+
+	/* Featured card styling for desktop */
+	.featured-card {
+		margin: 0 !important;
+	}
+
+	/* Main container desktop spacing */
+	main {
+		padding: 8rem 2rem 4rem 2rem !important;
+	}
+
+	/* Section spacing desktop */
+	section {
+		margin-bottom: 6rem !important;
+		padding: 0 !important;
+	}
+}
+
 /* Mobile Responsive Design - Optimized */
 @media (max-width: 768px) {
 	main {
-		padding: 6rem 1rem 2rem 1rem !important;
+		padding: 4rem 0.75rem 2rem 0.75rem !important;
 		max-width: 100% !important;
+		min-height: auto !important;
+	}
+
+	/* Remove white space at top and bottom */
+	body {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	/* Improved section spacing for mobile - more breathing room */
+	section {
+		margin-bottom: 5rem !important;
+		padding: 0 0.5rem !important;
+	}
+
+	/* First section (Games) spacing - extra space at top */
+	section:first-of-type {
+		margin-top: 1.5rem !important;
+		margin-bottom: 5.5rem !important;
+	}
+
+	/* Last section spacing */
+	section:last-of-type {
+		margin-bottom: 3rem !important;
+	}
+	/* Title spacing - more generous */
+	div[style*="margin-bottom: 3rem"] {
+		margin-bottom: 2.5rem !important;
+	}
+
+	/* Main title container - add extra space above on mobile */
+	div[style*="text-align: center; margin-bottom: 3rem"]:first-child {
+		margin-top: 1rem !important;
+		margin-bottom: 2.5rem !important;
+	}
+
+	/* Featured game card container spacing */
+	div[style*="margin-bottom: 3rem"]:has(.featured-card) {
+		margin-bottom: 3rem !important;
 	}
 
 	/* Reduce animations on mobile for better performance */
@@ -296,6 +386,16 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	.modal-card {
 		transition: none;
 		will-change: auto;
+		transform: none;
+	}
+
+	/* Disable expensive effects on mobile */
+	*[style*="box-shadow"] {
+		box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+	}
+
+	*[style*="backdrop-filter"] {
+		backdrop-filter: none !important;
 	}
 
 	/* Touch-optimized hover states */
@@ -317,54 +417,115 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	h2 {
 		font-size: clamp(2rem, 6vw, 2.5rem) !important;
 		margin-bottom: 1rem !important;
-	}
-
-	/* Zone Nova Card Mobile Layout */
+	}	/* Zone Nova Card Mobile Layout - Only apply on mobile */
 	div[style*="padding: 2rem; display: flex; align-items: center; gap: 2rem;"] {
 		flex-direction: column !important;
 		text-align: center !important;
 		gap: 1.5rem !important;
 		padding: 1.5rem !important;
+		align-items: center !important;
 	}
 
-	/* Game Image Mobile */
+	/* Featured card container */
+	div[style*="margin-bottom: 3rem"] {
+		margin-bottom: 2.5rem !important;
+	}
+
+	/* Featured card styling - more generous spacing */
+	.featured-card {
+		margin: 0 0.75rem 2rem 0.75rem !important;
+		border-radius: 16px !important;
+	}
+
+	/* Game Image Mobile - centered and appropriately sized */
 	div[style*="width: 10rem; height: 10rem;"] {
-		width: 8rem !important;
-		height: 8rem !important;
-		margin: 0 auto !important;
+		width: 10rem !important;
+		height: 10rem !important;
+		margin: 0 auto 1rem auto !important;
+		flex-shrink: 0 !important;
 	}
 
-	/* Game Title Mobile */
+	/* OptimizedImage inside the container - ensure proper sizing */
+	div[style*="width: 10rem; height: 10rem;"] img,
+	div[style*="width: 10rem; height: 10rem;"] picture {
+		width: 160px !important;
+		height: 160px !important;
+	}
+
+	/* Fixed placeholder mobile sizing */
+	div[style*="width: 160px; height: 160px; background: linear-gradient"] {
+		width: 160px !important;
+		height: 160px !important;
+	}
+	/* Game Info Mobile - ensure proper stacking */
+	div[style*="flex: 1; min-height: 180px;"] {
+		flex: none !important;
+		min-height: auto !important;
+		text-align: center !important;
+	}
+
+	/* Featured header mobile optimization */
+	div[style*="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal))"] {
+		padding: 0.75rem 1rem !important;
+		min-height: 48px !important;
+	}
+
+	/* Featured header text mobile */
+	div[style*="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal))"] span {
+		font-size: 0.8rem !important;
+		gap: 0.4rem !important;
+	}
+	/* Game Title Mobile - with better spacing */
 	h3[style*="font-size: 2.5rem;"] {
 		font-size: 2rem !important;
-		margin-bottom: 1rem !important;
+		margin-bottom: 1.5rem !important;
 	}
 
-	/* Active Events Section Mobile */
+	/* Active Events Section Mobile - improved spacing */
 	div[style*="display: flex; flex-direction: column;"] {
-		gap: 0.4rem !important;
+		gap: 0.6rem !important;
+		margin-bottom: 1.5rem !important;
 	}
 
 	/* Event Cards Mobile */
 	div[style*="min-height: 3.5rem;"] {
 		min-height: 3rem !important;
-		padding: 0.6rem !important;
+		padding: 0.75rem !important;
 		font-size: 0.8rem !important;
 	}
 
-	/* Action Button Mobile */
+	/* Action Button Mobile - with better spacing */
 	.action-button {
-		padding: 0.875rem 1.5rem !important;
+		padding: 1rem 1.75rem !important;
 		font-size: 0.9rem !important;
-		margin-top: 1rem !important;
+		margin-top: 1.5rem !important;
 		width: fit-content !important;
 		margin-left: auto !important;
 		margin-right: auto !important;
 	}
+	/* "More Games Coming Soon" section title spacing */
+	div[style*="text-align: center; margin-bottom: 2rem;"] h3 {
+		margin-bottom: 2.5rem !important;
+	}
 
-	/* Coming Soon Cards Mobile */
+	/* "More Games Coming Soon" section header - better spacing */
+	div[style*="text-align: center; margin-bottom: 2rem;"] {
+		margin-bottom: 3rem !important;
+		margin-top: 3rem !important;
+	}
+
+	/* Coming Soon Cards Mobile - improved spacing */
 	.coming-soon-card {
-		padding: 1.5rem !important;
+		padding: 1.75rem !important;
+		contain: layout style paint;
+		margin: 0 0.75rem 1.5rem 0.75rem !important;
+	}
+
+	/* Coming Soon grid mobile - better spacing */
+	div[style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
+		grid-template-columns: 1fr !important;
+		gap: 1.5rem !important;
+		margin: 0 0.75rem !important;
 	}
 
 	/* Modal Mobile */
@@ -379,34 +540,112 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		grid-template-columns: 1fr !important;
 		gap: 1rem !important;
 	}
+	/* Mobile-specific optimizations */
+	section {
+		contain: layout style;
+		padding: 0 0.5rem !important;
+	}
+	/* "More Games Coming Soon" section header - consistent with above */
+	div[style*="text-align: center; margin-bottom: 2rem;"] {
+		margin-bottom: 3rem !important;
+		margin-top: 3rem !important;
+	}
+
+	/* Built by section spacing */
+	section[style*="text-align: center; margin-bottom: 6rem;"] {
+		margin-bottom: 3rem !important;
+		margin-top: 2rem !important;
+		padding-top: 1rem !important;
+	}
+	/* Preserve important gradients on mobile */
+	/* Keep featured header gradient - it's important for branding */
+	div[style*="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal))"] {
+		background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)) !important;
+	}
+
+	/* Simplify other gradients on mobile for better performance (but preserve featured header) */
+	*[style*="linear-gradient"]:not([style*="background-clip"]):not([style*="amber-glow"]) {
+		background: var(--bg-primary) !important;
+	}
 }
 
 /* Extra Small Mobile (iPhone SE, etc.) */
 @media (max-width: 480px) {
 	main {
-		padding: 5rem 0.75rem 1.5rem 0.75rem !important;
+		padding: 3.5rem 0.5rem 1.5rem 0.5rem !important;
+	}
+
+	/* Better section spacing on very small screens */
+	section {
+		margin-bottom: 4.5rem !important;
+		padding: 0 0.25rem !important;
+	}
+
+	/* First section spacing */
+	section:first-of-type {
+		margin-top: 1.25rem !important;
+		margin-bottom: 5rem !important;
 	}
 
 	h2 {
 		font-size: 1.8rem !important;
+		margin-bottom: 1.5rem !important;
 	}
 
+	/* Keep image reasonably sized even on very small screens */
 	div[style*="width: 10rem; height: 10rem;"] {
-		width: 6rem !important;
-		height: 6rem !important;
+		width: 8rem !important;
+		height: 8rem !important;
+		margin: 0 auto 1.25rem auto !important;
 	}
 
-	h3[style*="font-size: 2.5rem;"] {
-		font-size: 1.6rem !important;
+	/* OptimizedImage sizing for very small screens */
+	div[style*="width: 10rem; height: 10rem;"] img,
+	div[style*="width: 10rem; height: 10rem;"] picture {
+		width: 128px !important;
+		height: 128px !important;
 	}
 
-	.action-button {
-		padding: 0.75rem 1.25rem !important;
-		font-size: 0.85rem !important;
+	/* Fixed placeholder for very small screens */
+	div[style*="width: 160px; height: 160px; background: linear-gradient"] {
+		width: 128px !important;
+		height: 128px !important;
 	}
 
-	.coming-soon-card {
+	/* Smaller card padding for very small screens but maintain comfort */
+	div[style*="padding: 2rem; display: flex; align-items: center; gap: 2rem;"] {
 		padding: 1.25rem !important;
+		gap: 1.25rem !important;
+	}
+
+	/* Featured card margins with better spacing */
+	.featured-card {
+		margin: 0 0.5rem 2rem 0.5rem !important;
+	}
+
+	/* Game title sizing */
+	h3[style*="font-size: 2.5rem;"] {
+		font-size: 1.7rem !important;
+		margin-bottom: 1.25rem !important;
+	}
+
+	/* Action button with comfortable spacing */
+	.action-button {
+		padding: 0.875rem 1.5rem !important;
+		font-size: 0.85rem !important;
+		margin-top: 1.25rem !important;
+	}
+
+	/* Coming soon cards with adequate spacing */
+	.coming-soon-card {
+		padding: 1.5rem !important;
+		margin: 0 0.5rem 1.25rem 0.5rem !important;
+	}
+
+	/* Coming soon grid spacing */
+	div[style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
+		gap: 1.25rem !important;
+		margin: 0 0.5rem !important;
 	}
 }
 
@@ -472,48 +711,38 @@ document.addEventListener('DOMContentLoaded', function() {
 	const rift3End = new Date('2025-06-23T23:59:59').getTime(); // Rift Tide III - ends June 23, 2025
 	const rift4End = new Date('2025-07-08T23:59:59').getTime(); // Rift Tide IV - ends July 8, 2025
 
-	let timerRAF;
+	// Cache DOM elements for better performance
+	const rift3Timer = document.getElementById('riftTide3Timer');
+	const rift4Timer = document.getElementById('riftTide4Timer');
 
 	// Timer function optimized for performance
 	function updateTimers() {
 		const now = new Date().getTime();
 		
 		// Update Rift Tide III timer
-		const rift3Timer = document.getElementById('riftTide3Timer');
 		if (rift3Timer) {
 			const timeLeft = rift3End - now;
-			if (timeLeft > 0) {
-				const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-				const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				rift3Timer.textContent = `${days}d ${hours}h`;
-			} else {
-				rift3Timer.textContent = 'Ended';
+			const newText = timeLeft > 0 ? 
+				`${Math.floor(timeLeft / (1000 * 60 * 60 * 24))}d ${Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h` : 
+				'Ended';
+			if (rift3Timer.textContent !== newText) {
+				rift3Timer.textContent = newText;
 			}
 		}
 
 		// Update Rift Tide IV timer  
-		const rift4Timer = document.getElementById('riftTide4Timer');
 		if (rift4Timer) {
 			const timeLeft = rift4End - now;
-			if (timeLeft > 0) {
-				const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-				const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				rift4Timer.textContent = `${days}d ${hours}h`;
-			} else {
-				rift4Timer.textContent = 'Ended';
+			const newText = timeLeft > 0 ? 
+				`${Math.floor(timeLeft / (1000 * 60 * 60 * 24))}d ${Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h` : 
+				'Ended';
+			if (rift4Timer.textContent !== newText) {
+				rift4Timer.textContent = newText;
 			}
 		}
 	}
 
-	// Optimized timer updates (every 30 seconds instead of 1 minute)
-	updateTimers();
+	// Optimized timer updates (every 30 seconds instead of 1 minute)	updateTimers();
 	setInterval(updateTimers, 30000);
 });
-
-// Preload critical resources
-const preloadLink = document.createElement('link');
-preloadLink.rel = 'preload';
-preloadLink.href = '/images/zonenova.jpg';
-preloadLink.as = 'image';
-document.head.appendChild(preloadLink);
 </script>

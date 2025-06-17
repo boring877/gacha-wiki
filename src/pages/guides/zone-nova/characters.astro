@@ -1,5 +1,12 @@
 ---
+// Import your layout
 import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
+
+// Import character data and utilities
+import { 
+  ZONE_NOVA_CHARACTERS, 
+  CHARACTER_METADATA 
+} from '../../../data/zoneNovaCharacters.js';
 ---
 
 <ZoneNovaLayout 
@@ -10,554 +17,323 @@ import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
 	breadcrumbText="Character Database"
 >
 	<Fragment slot="head">
-		<style>			.page-flex {
-				display: flex;
-				gap: 2.5rem;
-										<tr><td>18</td><td><img src="/images/Character Database/mordred.jpg" alt="Mordred" class="character-img"></td><td>Mordred</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>8,470</td><td>837</td><td>560</td><td>0.25</td><td>0</td><td>50</td></tr>
-					.main-content-container {
-				width: 100%;
-				display: flex;
-				justify-content: center;
-				padding: 0 2rem;
-			}			.content-wrapper {
-				max-width: 1200px;
-				width: 100%;
-				margin: 0 auto;
-			}/* Remove sidebar styles and add top-right filter bar styles */			.filter-bar {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				gap: 2rem;
-				margin: 4rem auto 3rem auto;
-				flex-wrap: nowrap;
-				max-width: 100%;
-				padding: 0 1rem;
-				position: relative;
-			}
-			
-			.filter-controls {
-				display: flex;
-				gap: 0.6rem;
-				align-items: center;
-				justify-content: center;
-				flex-wrap: nowrap;
-				flex: 0 0 auto;
-			}
-			
-			.sort-controls {
-				display: flex;
-				gap: 0.6rem;
-				align-items: center;
-				justify-content: center;
-				flex-wrap: nowrap;
-				flex: 0 0 auto;
-			}			.filter-select, .sort-btn {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				padding: 0.5rem 0.8rem;
-				background: var(--bg-primary);
-				color: var(--text-secondary);
-				text-decoration: none;
-				border-radius: 10px;
-				border: 1px solid var(--mocha-mousse);
-				transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-				font-size: 0.85rem;
-				font-weight: 500;
-				font-family: 'Space Grotesk', sans-serif;
-				flex-shrink: 0;
-				white-space: nowrap;
-				cursor: pointer;
-				appearance: none;
-				position: relative;
-				overflow: hidden;
-				min-width: auto;
-				text-align: center;
-			}
-			
-			.filter-select::before, .sort-btn::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, 
-					transparent, 
-					rgba(255, 183, 77, 0.1), 
-					transparent);
-				transition: left 0.6s ease;
-			}
-			
-			.filter-select:hover::before, .sort-btn:hover::before {
-				left: 100%;
-			}			.filter-select {
-				position: relative;
-				padding-right: 0.8rem;
-			}.filter-select:hover, .sort-btn:hover {
-				background: var(--bg-secondary);
-				color: var(--text-primary);
-				transform: translateY(-3px) scale(1.05);
-				box-shadow: 
-					0 8px 25px rgba(0, 0, 0, 0.15),
-					0 0 0 1px rgba(255, 183, 77, 0.3);
-				border-color: var(--amber-glow);
-			}
-			
-			.filter-select:active, .sort-btn:active {
-				transform: translateY(-1px) scale(1.02);
-				transition: all 0.1s ease;
-			}
-			.filter-select:focus, .sort-btn:focus {
-				outline: none;
-				background: var(--bg-secondary);
-				color: var(--text-primary);
-				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-				border-color: var(--amber-glow);			}			.sort-btn.active {
-				background: var(--amber-glow);
-				color: white;
-				box-shadow: 0 4px 15px rgba(255, 183, 77, 0.4);
-			}			.sort-btn.active.desc::after {
-				content: ' ↑';
-				font-weight: bold;
-				margin-left: 0.25rem;
-			}			.sort-btn.active.asc::after {
-				content: ' ↓';
-				font-weight: bold;
-				margin-left: 0.25rem;
-			}.reset-btn {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				padding: 0.5rem 0.8rem;
-				background: linear-gradient(135deg, var(--amber-glow), rgba(255, 183, 77, 0.8));
-				color: white;
-				text-decoration: none;
-				border-radius: 10px;
-				border: 1px solid var(--amber-glow);
-				transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-				font-size: 0.85rem;
-				font-weight: 600;
-				font-family: 'Space Grotesk', sans-serif;
-				flex-shrink: 0;
-				white-space: nowrap;
-				cursor: pointer;
-				box-shadow: 
-					0 4px 15px rgba(255, 183, 77, 0.4),
-					inset 0 1px 0 rgba(255, 255, 255, 0.2);
-				position: relative;
-				overflow: hidden;
-				animation: resetPulse 3s ease-in-out infinite;
-				min-width: auto;
-				text-align: center;
-			}
-			
-			.reset-btn::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, 
-					transparent, 
-					rgba(255, 255, 255, 0.2), 
-					transparent);
-				transition: left 0.6s ease;
-			}
-			
-			.reset-btn:hover::before {
-				left: 100%;
-			}
-			
-			.reset-btn:hover {
-				background: linear-gradient(135deg, var(--teal-crystal), rgba(0, 172, 193, 0.8));
-				border-color: var(--teal-crystal);
-				transform: translateY(-3px) scale(1.05);
-				box-shadow: 
-					0 8px 25px rgba(0, 172, 193, 0.4),
-					inset 0 1px 0 rgba(255, 255, 255, 0.3);
-				animation: none;
-			}
-			
-			@keyframes resetPulse {
-				0%, 100% {
-					box-shadow: 
-						0 4px 15px rgba(255, 183, 77, 0.4),
-						inset 0 1px 0 rgba(255, 255, 255, 0.2);
-				}
-				50% {
-					box-shadow: 
-						0 6px 20px rgba(255, 183, 77, 0.6),
-						inset 0 1px 0 rgba(255, 255, 255, 0.3),
-						0 0 0 1px rgba(255, 183, 77, 0.3);
-				}
-			}			.character-table-container {
-				overflow-x: auto;
-				margin: 3rem auto;
-				padding: 0 1rem;
-				max-width: 100%;
-			}
-			table.character-table {
-				width: 100%;
-				border-collapse: separate;
-				border-spacing: 0;
-				background: var(--bg-primary);
-				border-radius: 18px;
-				box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-				font-family: 'Space Grotesk', sans-serif;
-				overflow: hidden;
-			}
-			table.character-table th, table.character-table td {
-				padding: 1rem 0.5rem;
-				text-align: center;
-				border-bottom: 1px solid var(--neutral-200);
-				transition: background 0.2s;
-			}			table.character-table th {
-				background: var(--amber-glow);
-				color: #222;
-				font-weight: 800;
-				font-size: 1.1rem;
-				font-family: 'Space Grotesk', sans-serif;
-				position: sticky;
-				top: 0;
-				z-index: 2;
-				cursor: default;
-				letter-spacing: 0.02em;
-				border-bottom: 2px solid var(--neutral-200);
-				padding: 1rem 0.8rem;
-				transition: none;
-			}
-			table.character-table th:first-child {
-				border-top-left-radius: 18px;
-				padding-left: 1.2rem;
-			}
-			table.character-table th:last-child {
-				border-top-right-radius: 18px;
-				padding-right: 1.2rem;
-			}
-			table.character-table tr:nth-child(even) {
-				background: rgba(245, 245, 255, 0.7);
-			}			table.character-table tr:hover {
-				background: linear-gradient(135deg, 
-					rgba(255, 255, 255, 0.95) 0%, 
-					rgba(240, 248, 255, 0.85) 30%,
-					rgba(230, 240, 255, 0.9) 70%,
-					rgba(255, 255, 255, 0.95) 100%);
-				color: #333;
-				box-shadow: 
-					0 2px 20px rgba(0, 172, 193, 0.15),
-					0 0 30px rgba(255, 183, 77, 0.1),
-					inset 0 1px 0 rgba(255, 255, 255, 0.6);
-				transform: translateY(-1px);
-				position: relative;
-				transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-			}
-			
-			table.character-table tr:hover::after {
-				content: '';
-				position: absolute;
-				top: 50%;
-				right: 20px;
-				width: 4px;
-				height: 4px;
-				background: radial-gradient(circle, 
-					rgba(255, 183, 77, 0.8) 0%, 
-					rgba(255, 183, 77, 0.4) 50%, 
-					transparent 100%);
-				border-radius: 50%;
-				animation: sparkle 2s ease-in-out infinite;
-				pointer-events: none;
-				z-index: 1;
-			}
-			
-			@keyframes sparkle {
-				0%, 100% {
-					transform: translateY(-50%) scale(1);
-					box-shadow: 
-						0 0 6px rgba(255, 183, 77, 0.4),
-						0 0 12px rgba(255, 183, 77, 0.2);
-				}
-				50% {
-					transform: translateY(-50%) scale(1.5);
-					box-shadow: 
-						0 0 12px rgba(255, 183, 77, 0.6),
-						0 0 24px rgba(255, 183, 77, 0.3),
-						0 0 36px rgba(255, 183, 77, 0.1);
-				}
-			}
-			.character-img {
-				width: 48px;
-				height: 48px;
-				border-radius: 12px;
-				object-fit: cover;
-				border: 2px solid var(--amber-glow);
-				box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-				background: #fff;
-			}
-			.role-badge, .element-badge, .rarity-badge {
-				display: inline-block;
-				padding: 0.25rem 0.85rem;
-				border-radius: 14px;
-				font-size: 1rem;
-				font-weight: 700;
-				margin: 0 0.1rem;
-				box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-				letter-spacing: 0.02em;
-			}
-			.rarity-badge.ssr { background: #ffe066; color: #222; border: 1.5px solid #eecb4d; }
-			.rarity-badge.sr { background: #7ecfff; color: #222; border: 1.5px solid #4dbfff; }
-			.element-badge.fire { background: #ff6b6b; color: #fff; border: 1.5px solid #ff3b3b; }
-			.element-badge.ice { background: #4dbfff; color: #fff; border: 1.5px solid #1e90ff; }
-			.element-badge.wind { background: #4dffb8; color: #222; border: 1.5px solid #00e6a8; }
-			.element-badge.holy { background: #ffe066; color: #222; border: 1.5px solid #ffd700; }
-			.element-badge.chaos { background: #b266ff; color: #fff; border: 1.5px solid #7c3aed; }
-			.role-badge.tank { background: #b0b0b0; color: #222; border: 1.5px solid #888; }
-			.role-badge.dps { background: #ffb347; color: #222; border: 1.5px solid #ff9800; }
-			.role-badge.buffer { background: #7ecfff; color: #222; border: 1.5px solid #4dbfff; }
-			.role-badge.debuffer { background: #b266ff; color: #fff; border: 1.5px solid #7c3aed; }			.role-badge.healer { background: #a3ffb7; color: #222; border: 1.5px solid #00e676; }
-			
-			@media (max-width: 900px) {
-				.page-flex { flex-direction: column; gap: 1.5rem; }
-				.filter-bar { 
-					flex-direction: column;
-					gap: 0.8rem; 
-					flex-wrap: wrap;
-					padding: 0.4rem 0.5rem;
-				}
-				.filter-controls { 
-					order: 1; 
-					width: 100%;
-					justify-content: center;
-				}
-				.sort-controls { 
-					order: 3; 
-					width: 100%;
-					justify-content: center;
-				}
-				.filter-select, .sort-btn, .reset-btn { font-size: 0.92rem; min-width: 70px; height: 1.8rem; padding: 0.15rem 0.7rem; }
-				table.character-table th, table.character-table td {
-					font-size: 0.9rem;
-					padding: 0.5rem 0.2rem;
-				}
-				.character-img { width: 36px; height: 36px; }
-			}
+		{/* Import styles and add mobile card improvements */}
+		<link rel="preload" as="image" href="/images/Character Database/Afrodite.jpg" />
+		<style>
+    /* Layout and filter bar */
+    .page-flex { display: flex; gap: 2.5rem; }
+    .main-content-container { width: 100%; display: flex; justify-content: center; padding: 0 2rem; }
+    .content-wrapper { max-width: 1200px; width: 100%; margin: 0 auto; }
+    .filter-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 2rem auto 1.5rem auto; flex-wrap: wrap; padding: 0 1rem; }
+    .filter-controls, .sort-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+    .filter-select, .sort-btn, .reset-btn { padding: 0.4rem 0.7rem; background: var(--bg-primary); color: var(--text-secondary); border-radius: 8px; border: 1px solid var(--mocha-mousse); font-size: 0.8rem; cursor: pointer; }
+    .filter-select:hover, .sort-btn:hover, .reset-btn:hover { background: var(--bg-secondary); color: var(--text-primary); border-color: var(--amber-glow); }
+    .sort-btn.active { background: var(--amber-glow); color: white; }
+    /* Table styles */
+    .character-table-container { overflow-x: auto; margin: 1.5rem auto; padding: 0 1rem; }
+    table.character-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--bg-primary); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); font-family: 'Space Grotesk', sans-serif; }
+    table.character-table th, table.character-table td { padding: 0.8rem 0.4rem; text-align: center; border-bottom: 1px solid var(--neutral-200); }
+    table.character-table th { background: var(--amber-glow); color: #222; font-weight: 700; font-size: 0.9rem; position: sticky; top: 0; z-index: 2; }
+    .character-img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; border: 1px solid var(--amber-glow); }
+    .rarity-badge, .element-badge, .role-badge { padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; }
+    .rarity-badge.ssr { background: #ffe066; color: #222; }
+    .rarity-badge.sr { background: #7ecfff; color: #222; }
+    .element-badge.fire { background: #ff6b6b; color: #fff; }
+    .element-badge.ice { background: #4dbfff; color: #fff; }
+    .element-badge.wind { background: #4dffb8; color: #222; }
+    .element-badge.holy { background: #ffe066; color: #222; }
+    .element-badge.chaos { background: #b266ff; color: #fff; }
+    .role-badge.tank { background: #b0b0b0; color: #222; }
+    .role-badge.dps { background: #ffb347; color: #222; }
+    .role-badge.buffer { background: #7ecfff; color: #222; }
+    .role-badge.debuffer { background: #b266ff; color: #fff; }
+    .role-badge.healer { background: #a3ffb7; color: #222; }
+    /* Mobile card styles */
+    .mobile-character-card { background: var(--bg-primary, #232323); border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.10); padding: 1.2rem 1rem 1rem 1rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; border: 1px solid var(--amber-glow, #ffe066); }
+    .mobile-card-header { display: flex; align-items: center; gap: 1rem; }
+    .mobile-character-card img { width: 64px; height: 64px; border-radius: 10px; border: 2px solid var(--amber-glow, #ffe066); background: #fff; margin-bottom: 0; }
+    .mobile-card-title-group { display: flex; flex-direction: column; gap: 0.2rem; }
+    .mobile-character-card h3 { margin: 0 0 0.1rem 0; font-size: 1.25rem; color: var(--amber-glow, #ffe066); font-weight: 700; letter-spacing: 0.5px; }
+    .mobile-card-badges { display: flex; gap: 0.4rem; margin-top: 0.1rem; }
+    .mobile-character-card .rarity-badge, .mobile-character-card .element-badge, .mobile-character-card .role-badge { font-size: 0.95em; padding: 0.18em 0.7em; border-radius: 8px; font-weight: 600; display: inline-block; margin: 0; }
+    .mobile-card-stats, .mobile-card-stats-secondary { display: flex; gap: 1.2rem; margin-top: 0.5rem; font-size: 1.05em; color: var(--text-secondary, #e0e0e0); font-weight: 500; }
+    .mobile-card-stats-secondary { margin-top: 0.2rem; font-size: 0.98em; }
+    .mobile-card-stats .stat-label, .mobile-card-stats-secondary .stat-label { color: var(--amber-glow, #ffe066); font-weight: 700; margin-right: 0.2em; }
+    @media (max-width: 768px) {
+      .character-table-container { display: none; }
+      .mobile-card-view { display: block; }
+      .filter-bar { flex-direction: column; gap: 0.8rem; }
+      .filter-controls, .sort-controls { width: 100%; justify-content: center; }
+    }
 		</style>
 	</Fragment>
-	<section class="page-flex">		<div class="main-content-container">			<div class="content-wrapper">				<div class="filter-bar">
+	
+	<section class="page-flex">
+		<div class="main-content-container">
+			<div class="content-wrapper">
+				{/* <!-- Filter Bar --> */}
+				<div class="filter-bar">
 					<div class="filter-controls">
 						<select class="filter-select" id="element-filter">
 							<option value="">Element</option>
-							<option value="Fire">Fire</option>
-							<option value="Ice">Ice</option>
-							<option value="Wind">Wind</option>
-							<option value="Holy">Holy</option>
-							<option value="Chaos">Chaos</option>
+							{CHARACTER_METADATA.elements.map(element => (
+                <option value={element}>{element}</option>
+              ))}
 						</select>
 						<select class="filter-select" id="rarity-filter">
 							<option value="">Rarity</option>
-							<option value="SSR">SSR</option>
-							<option value="SR">SR</option>
+							{CHARACTER_METADATA.rarities.map(rarity => (
+                <option value={rarity}>{rarity}</option>
+              ))}
 						</select>
 						<select class="filter-select" id="role-filter">
 							<option value="">Role</option>
-							<option value="Tank">Tank</option>
-							<option value="DPS">DPS</option>
-							<option value="Buffer">Buffer</option>
-							<option value="Debuffer">Debuffer</option>
-							<option value="Healer">Healer</option>
+							{CHARACTER_METADATA.roles.map(role => (
+                <option value={role}>{role}</option>
+              ))}
 						</select>
-					</div>					<div class="sort-controls">
+					</div>
+					<div class="sort-controls">
 						<button class="sort-btn" data-sort="hp">HP</button>
 						<button class="sort-btn" data-sort="attack">ATK</button>
 						<button class="sort-btn" data-sort="defense">DEF</button>
-						<button class="sort-btn" data-sort="speed">Energy Recovery</button>
-						<button class="sort-btn" data-sort="critrate">Crit%</button>
-						<button class="sort-btn" data-sort="critdmg">Crit DMG</button>
+						<button class="sort-btn" data-sort="energyRecovery">Energy</button>
+						<button class="sort-btn" data-sort="critRate">Crit%</button>
+						<button class="sort-btn" data-sort="critDmg">CritDMG</button>
 						<button class="reset-btn" id="reset-table">Reset</button>
 					</div>
 				</div>
+				
+				{/* <!-- Desktop table view --> */}
 				<div class="character-table-container">
 					<table class="character-table">
-						<thead>							<tr>
+						<thead>
+							<tr>
 								<th>#</th>
 								<th>Image</th>
 								<th>Name</th>
 								<th>Rarity</th>
 								<th>Element</th>
 								<th>Role</th>
-								<th class="sortable">HP</th>
-								<th class="sortable">Attack</th>
-								<th class="sortable">Defense</th>
-								<th class="sortable">Energy Recovery</th>
-								<th class="sortable">Crit Rate %</th>
-								<th class="sortable">Crit DMG %</th>
+								<th>HP</th>
+								<th>Attack</th>
+								<th>Defense</th>
+								<th>Energy Recovery</th>
+								<th>Crit Rate %</th>
+								<th>Crit DMG %</th>
 							</tr>
 						</thead>
-						<tbody>							<tr><td>1</td><td><img src="/images/Character Database/Afrodite.jpg" alt="Afrodite" class="character-img"></td><td>Afrodite</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>2</td><td><img src="/images/Character Database/Apollo.jpg" alt="Apollo" class="character-img"></td><td>Apollo</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge buffer">Buffer</span></td><td>9,564</td><td>1,004</td><td>672</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>3</td><td><img src="/images/Character Database/Artemis.jpg" alt="Artemis" class="character-img"></td><td>Artemis</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,461</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>4</td><td><img src="/images/Character Database/Arthur.jpg" alt="Arthur" class="character-img"></td><td>Arthur</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>15</td><td>50</td></tr>
-							<tr><td>5</td><td><img src="/images/Character Database/Bastet.jpg" alt="Bastet" class="character-img"></td><td>Bastet</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>							<tr><td>6</td><td><img src="/images/Character Database/belphegar.jpg" alt="Belphegar" class="character-img"></td><td>Belphegar</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>7,970</td><td>837</td><td>560</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>7</td><td><img src="/images/Character Database/Chiya.jpg" alt="Chiya" class="character-img"></td><td>Chiya</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>8</td><td><img src="/images/Character Database/Cleopatra.jpg" alt="Cleopatra" class="character-img"></td><td>Cleopatra</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,461</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>9</td><td><img src="/images/Character Database/Greed Mammon.jpg" alt="Greed Mammon" class="character-img"></td><td>Greed Mammon</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>10</td><td><img src="/images/Character Database/Guinevere.jpg" alt="Guinevere" class="character-img"></td><td>Guinevere</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge tank">Tank</span></td><td>10,520</td><td>734</td><td>1,232</td><td>0.25/s</td><td>0</td><td>50</td></tr>							<tr><td>11</td><td><img src="/images/Character Database/Horus.jpg" alt="Horus" class="character-img"></td><td>Horus</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>8,033</td><td>1,461</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>12</td><td><img src="/images/Character Database/kela.jpg" alt="Kela" class="character-img"></td><td>Kela</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge healer">Healer</span></td><td>7,650</td><td>837</td><td>608</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>13</td><td><img src="/images/Character Database/Lancelot.jpg" alt="Lancelot" class="character-img"></td><td>Lancelot</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge tank">Tank</span></td><td>10,857</td><td>612</td><td>957</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>14</td><td><img src="/images/Character Database/Leviathan.jpg" alt="Leviathan" class="character-img"></td><td>Leviathan</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>15</td><td><img src="/images/Character Database/Loki.jpg" alt="Loki" class="character-img"></td><td>Loki</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge chaos"><span class="element-dot"></span>Chaos</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>9,564</td><td>1,004</td><td>672</td><td>0.25/s</td><td>0</td><td>50</td></tr>							<tr><td>16</td><td><img src="/images/Character Database/Lyra.jpg" alt="Lyra" class="character-img"></td><td>Lyra</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>15</td><td>50</td></tr>
-							<tr><td>17</td><td><img src="/images/Character Database/Merlin.jpg" alt="Merlin" class="character-img"></td><td>Merlin</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>15</td><td>50</td></tr>							<tr><td>18</td><td><img src="/images/Character Database/Mordred.jpg" alt="Mordred" class="character-img"></td><td>Mordred</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>8,470</td><td>837</td><td>560</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>19</td><td><img src="/images/Character Database/Naiya.jpg" alt="Naiya" class="character-img"></td><td>Naiya</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge buffer">Buffer</span></td><td>9,564</td><td>1,004</td><td>672</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>20</td><td><img src="/images/Character Database/Nini.jpg" alt="Nini" class="character-img"></td><td>Nini</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>7,970</td><td>837</td><td>560</td><td>0.25/s</td><td>0</td><td>50</td></tr><tr><td>20</td><td><img src="/images/Character Database/Nini.jpg" alt="Nini" class="character-img"></td><td>Nini</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>7,970</td><td>837</td><td>560</td><td>0.25</td><td>0</td><td>50</td></tr>							<tr><td>21</td><td><img src="/images/Character Database/Rose.jpg" alt="Rose" class="character-img"></td><td>Rose</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge ice"><span class="element-dot"></span>Ice</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>22</td><td><img src="/images/Character Database/Shanna.jpg" alt="Shanna" class="character-img"></td><td>Shanna</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>							<tr><td>23</td><td><img src="/images/Character Database/Shu.jpg" alt="Shu" class="character-img"></td><td>Shu</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge wind"><span class="element-dot"></span>Wind</span></td><td><span class="role-badge debuffer">Debuffer</span></td><td>7,970</td><td>837</td><td>560</td><td>0.25/s</td><td>0</td><td>50</td></tr>							<tr><td>24</td><td><img src="/images/Character Database/Tefnut.jpg" alt="Tefnut" class="character-img"></td><td>Tefnut</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge dps">DPS</span></td><td>6,694</td><td>1,088</td><td>442</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>25</td><td><img src="/images/Character Database/Yuis.jpg" alt="Yuis" class="character-img"></td><td>Yuis</td><td><span class="rarity-badge ssr">SSR</span></td><td><span class="element-badge holy"><span class="element-dot"></span>Holy</span></td><td><span class="role-badge dps">DPS</span></td><td>8,033</td><td>1,305</td><td>530</td><td>0.25/s</td><td>0</td><td>50</td></tr>
-							<tr><td>26</td><td><img src="/images/Character Database/Zashiki-warashi.jpg" alt="Zashiki-warashi" class="character-img"></td><td>Zashiki-warashi</td><td><span class="rarity-badge sr">SR</span></td><td><span class="element-badge fire"><span class="element-dot"></span>Fire</span></td><td><span class="role-badge buffer">Buffer</span></td><td>7,970</td><td>837</td><td>560</td><td>0.25/s</td><td>0</td><td>50</td></tr></tbody>
+						<tbody id="character-table-body">
+							{ZONE_NOVA_CHARACTERS.map((char, idx) => (
+                <tr data-character-id={char.id} data-slug={char.slug} data-url={char.detailUrl} style="cursor:pointer;">
+                  <td>{idx + 1}</td>
+                  <td><img src={char.image} alt={char.name} class="character-img" loading="lazy"/></td>
+                  <td>{char.name}</td>
+                  <td><span class={`rarity-badge ${char.rarity.toLowerCase()}`} data-sort-key="rarity">{char.rarity}</span></td>
+                  <td><span class={`element-badge ${char.element.toLowerCase()}`} data-sort-key="element">{char.element}</span></td>
+                  <td><span class={`role-badge ${char.role.toLowerCase()}`} data-sort-key="role">{char.role}</span></td>
+                  <td data-sort-key="hp">{char.stats.hp}</td>
+                  <td data-sort-key="attack">{char.stats.attack}</td>
+                  <td data-sort-key="defense">{char.stats.defense}</td>
+                  <td data-sort-key="energyRecovery">{char.stats.energyRecovery}</td>
+                  <td data-sort-key="critRate">{char.stats.critRate}</td>
+                  <td data-sort-key="critDmg">{char.stats.critDmg}</td>
+                </tr>
+              ))}
+						</tbody>
 					</table>
+				</div>
+				
+				{/* <!-- Mobile card view container --> */}
+				<div class="mobile-card-view" id="mobile-cards-container">
+					{ZONE_NOVA_CHARACTERS.map(char => (
+            <div class="mobile-character-card" data-character-id={char.id} data-slug={char.slug} data-url={char.detailUrl} style="cursor:pointer;">
+              <div class="mobile-card-header">
+                <img src={char.image} alt={char.name} class="character-img"/>
+                <div class="mobile-card-title-group">
+                  <h3>{char.name}</h3>
+                  <div class="mobile-card-badges">
+                    <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+                    <span class={`element-badge ${char.element.toLowerCase()}`}>{char.element}</span>
+                    <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mobile-card-stats">
+                <div><span class="stat-label">HP:</span> {char.stats.hp.toLocaleString()}</div>
+                <div><span class="stat-label">ATK:</span> {char.stats.attack.toLocaleString()}</div>
+                <div><span class="stat-label">DEF:</span> {char.stats.defense.toLocaleString()}</div>
+              </div>
+              <div class="mobile-card-stats mobile-card-stats-secondary">
+                <div><span class="stat-label">Energy:</span> {char.stats.energyRecovery}</div>
+                <div><span class="stat-label">Crit%:</span> {char.stats.critRate}</div>
+                <div><span class="stat-label">CritDMG:</span> {char.stats.critDmg}</div>
+              </div>
+            </div>
+          ))}
 				</div>
 			</div>
 		</div>
 	</section>
 
-		<script is:inline>
-	document.addEventListener('DOMContentLoaded', function() {
-		const table = document.querySelector('.character-table');
-		const tbody = table.querySelector('tbody');
-		const originalRows = Array.from(tbody.querySelectorAll('tr')).map(tr => tr.cloneNode(true));
-
-		function updateRowNumbers() {
-			Array.from(tbody.querySelectorAll('tr')).forEach((tr, idx) => {
-				tr.children[0].innerText = idx + 1;
-			});
-		}
-
-		// Element filter
-		document.getElementById('element-filter').addEventListener('change', function() {
-			const val = this.value;
-			Array.from(tbody.querySelectorAll('tr')).forEach(tr => {
-				const cell = tr.children[4];
-				if (!val || (cell && cell.innerText.trim().toLowerCase() === val.toLowerCase())) {
-					tr.style.display = '';
-				} else {
-					tr.style.display = 'none';
-				}
-			});
-			updateRowNumbers();
-		});
-
-		// Rarity filter
-		document.getElementById('rarity-filter').addEventListener('change', function() {
-			const val = this.value;
-			Array.from(tbody.querySelectorAll('tr')).forEach(tr => {
-				const cell = tr.children[3];
-			if (!val || (cell && cell.innerText.trim().toLowerCase() === val.toLowerCase())) {
-				tr.style.display = '';
-			} else {
-				tr.style.display = 'none';
-			}
-		});
-		updateRowNumbers();
-	});
-
-	// Role filter
-	document.getElementById('role-filter').addEventListener('change', function() {
-		const val = this.value;
-		Array.from(tbody.querySelectorAll('tr')).forEach(tr => {
-			const cell = tr.children[5]; // Role column
-			if (!val || (cell && cell.innerText.trim().toLowerCase() === val.toLowerCase())) {
-				tr.style.display = '';
-			} else {
-				tr.style.display = 'none';
-			}
-		});
-		updateRowNumbers();
-	});
-	// Reset button - also clear active sort buttons
-	document.getElementById('reset-table').addEventListener('click', function() {
-		tbody.innerHTML = '';
-		originalRows.forEach(tr => tbody.appendChild(tr.cloneNode(true)));
-		updateRowNumbers();
-		document.getElementById('element-filter').value = '';
-		document.getElementById('rarity-filter').value = '';
-		document.getElementById('role-filter').value = '';
-		// Clear all active sort buttons
-		document.querySelectorAll('.sort-btn').forEach(btn => {
-			btn.classList.remove('active', 'asc', 'desc');
-		});
-	});	// Single-select sort buttons - 3-state: desc -> asc -> off
-	document.querySelectorAll('.sort-btn').forEach((btn, idx) => {
-		btn.addEventListener('click', function() {
-			// Clear all other active buttons first
-			document.querySelectorAll('.sort-btn').forEach(b => {
-				if (b !== btn) {
-					b.classList.remove('active', 'asc', 'desc');
-				}
-			});
-			
-			const sortKey = btn.getAttribute('data-sort');
-			const colIdx = { hp: 6, attack: 7, defense: 8, speed: 9, critrate: 10, critdmg: 11 }[sortKey];
-			
-			// 3-state cycle: no state -> desc (highest first) -> asc (lowest first) -> back to no state
-			if (!btn.classList.contains('active')) {
-				// First click: activate with desc (highest first)
-				btn.classList.add('active', 'desc');
-				
-				const rows = Array.from(tbody.querySelectorAll('tr')).filter(tr => tr.style.display !== 'none');
-				rows.sort((a, b) => {
-					const v1 = parseFloat(a.children[colIdx].innerText.trim());
-					const v2 = parseFloat(b.children[colIdx].innerText.trim());
-					return v2 - v1; // desc: highest first
-				});
-				rows.forEach(tr => tbody.appendChild(tr));
-				
-			} else if (btn.classList.contains('desc')) {
-				// Second click: switch to asc (lowest first)
-				btn.classList.remove('desc');
-				btn.classList.add('asc');
-				
-				const rows = Array.from(tbody.querySelectorAll('tr')).filter(tr => tr.style.display !== 'none');
-				rows.sort((a, b) => {
-					const v1 = parseFloat(a.children[colIdx].innerText.trim());
-					const v2 = parseFloat(b.children[colIdx].innerText.trim());
-					return v1 - v2; // asc: lowest first
-				});
-				rows.forEach(tr => tbody.appendChild(tr));
-				
-			} else {
-				// Third click: turn off sorting, restore original order
-				btn.classList.remove('active', 'asc');
-				
-				// Restore original order by re-appending filtered rows in original sequence
-				const visibleOriginalRows = originalRows.filter(tr => {
-					const clone = tr.cloneNode(true);
-					const elementFilter = document.getElementById('element-filter').value;
-					const rarityFilter = document.getElementById('rarity-filter').value;
-					const roleFilter = document.getElementById('role-filter').value;
-					
-					let matches = true;
-					if (elementFilter) matches = matches && clone.children[4].innerText.trim() === elementFilter;
-					if (rarityFilter) matches = matches && clone.children[3].innerText.trim() === rarityFilter;
-					if (roleFilter) matches = matches && clone.children[5].innerText.trim() === roleFilter;
-					
-					return matches;
-				});
-				
-				// Clear and re-add in original order
-				tbody.innerHTML = '';
-				visibleOriginalRows.forEach(tr => tbody.appendChild(tr.cloneNode(true)));
-			}
-			
-			updateRowNumbers();
-		});
-	});
-
-	tbody.querySelectorAll('tr').forEach(row => {
-		row.style.cursor = 'pointer';
-		row.addEventListener('click', function() {
-			const name = row.querySelector('td:nth-child(3)').innerText.trim().replace(/\s+/g, '-').toLowerCase();
-			window.location.href = `/guides/zone-nova/characters/${name}/`;
-		});
-	});
-});
+	{/* <!-- Pass character data to client-side JavaScript --> */}
+	<script is:inline>
+  // Handles filtering, sorting, and row numbering for both table and mobile cards
+  document.addEventListener('DOMContentLoaded', () => {
+    // --- DOM references ---
+    const tableBody = document.getElementById('character-table-body');
+    const mobileCardsContainer = document.getElementById('mobile-cards-container');
+    const elementFilter = document.getElementById('element-filter');
+    const rarityFilter = document.getElementById('rarity-filter');
+    const roleFilter = document.getElementById('role-filter');
+    const sortButtons = document.querySelectorAll('.sort-btn');
+    const resetButton = document.getElementById('reset-table');
+    // --- State ---
+    let currentSortKey = null;
+    let currentSortDirection = 'asc';
+    const originalRows = Array.from(tableBody.children);
+    const originalCards = Array.from(mobileCardsContainer.children);
+    if (!tableBody || !mobileCardsContainer || !elementFilter || !rarityFilter || !roleFilter || !resetButton) {
+      console.error('Character table or filter elements not found!');
+      return;
+    }
+    // --- Helpers ---
+    function renumberRows() {
+      let visibleIndex = 1;
+      Array.from(tableBody.children).forEach(row => {
+        if (row.style.display !== 'none') {
+          row.querySelector('td').textContent = visibleIndex++;
+        }
+      });
+    }
+    // --- Filtering ---
+    function filterRows() {
+      const element = elementFilter.value;
+      const rarity = rarityFilter.value;
+      const role = roleFilter.value;
+      Array.from(tableBody.children).forEach(row => {
+        const matches = (!element || row.querySelector('.element-badge').textContent === element)
+          && (!rarity || row.querySelector('.rarity-badge').textContent === rarity)
+          && (!role || row.querySelector('.role-badge').textContent === role);
+        row.style.display = matches ? '' : 'none';
+      });
+      Array.from(mobileCardsContainer.children).forEach(card => {
+        const matches = (!element || card.querySelector('.element-badge').textContent === element)
+          && (!rarity || card.querySelector('.rarity-badge').textContent === rarity)
+          && (!role || card.querySelector('.role-badge').textContent === role);
+        card.style.display = matches ? '' : 'none';
+      });
+      renumberRows();
+    }
+    // --- Sorting ---
+    function sortRows(sortKey) {
+      if (currentSortKey === sortKey) {
+        currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+      } else {
+        currentSortKey = sortKey;
+        currentSortDirection = 'asc';
+      }
+      sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));
+      const activeBtn = Array.from(sortButtons).find(btn => btn.dataset.sort === sortKey);
+      if (activeBtn) {
+        activeBtn.classList.add('active', currentSortDirection);
+      }
+      // Table rows
+      const rows = Array.from(tableBody.children).filter(row => row.style.display !== 'none');
+      rows.sort((a, b) => {
+        let valA = a.querySelector(`[data-sort-key="${sortKey}"]`)?.textContent || '';
+        let valB = b.querySelector(`[data-sort-key="${sortKey}"]`)?.textContent || '';
+        valA = isNaN(Number(valA)) ? valA : Number(valA);
+        valB = isNaN(Number(valB)) ? valB : Number(valB);
+        if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
+        if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
+        return 0;
+      });
+      rows.forEach(row => tableBody.appendChild(row));
+      // Mobile cards
+      const cards = Array.from(mobileCardsContainer.children).filter(card => card.style.display !== 'none');
+      cards.sort((a, b) => {
+        let valA = '';
+        let valB = '';
+        if (sortKey === 'hp') {
+          valA = a.querySelector('.mobile-card-stats div:nth-child(1)')?.textContent.replace(/\D/g, '') || '';
+          valB = b.querySelector('.mobile-card-stats div:nth-child(1)')?.textContent.replace(/\D/g, '') || '';
+        } else if (sortKey === 'attack') {
+          valA = a.querySelector('.mobile-card-stats div:nth-child(2)')?.textContent.replace(/\D/g, '') || '';
+          valB = b.querySelector('.mobile-card-stats div:nth-child(2)')?.textContent.replace(/\D/g, '') || '';
+        } else if (sortKey === 'defense') {
+          valA = a.querySelector('.mobile-card-stats div:nth-child(3)')?.textContent.replace(/\D/g, '') || '';
+          valB = b.querySelector('.mobile-card-stats div:nth-child(3)')?.textContent.replace(/\D/g, '') || '';
+        } else if (sortKey === 'energyRecovery') {
+          valA = a.querySelector('.mobile-card-stats-secondary div:nth-child(1)')?.textContent.replace(/[^\d.]/g, '') || '';
+          valB = b.querySelector('.mobile-card-stats-secondary div:nth-child(1)')?.textContent.replace(/[^\d.]/g, '') || '';
+        } else if (sortKey === 'critRate') {
+          valA = a.querySelector('.mobile-card-stats-secondary div:nth-child(2)')?.textContent.replace(/[^\d.]/g, '') || '';
+          valB = b.querySelector('.mobile-card-stats-secondary div:nth-child(2)')?.textContent.replace(/[^\d.]/g, '') || '';
+        } else if (sortKey === 'critDmg') {
+          valA = a.querySelector('.mobile-card-stats-secondary div:nth-child(3)')?.textContent.replace(/[^\d.]/g, '') || '';
+          valB = b.querySelector('.mobile-card-stats-secondary div:nth-child(3)')?.textContent.replace(/[^\d.]/g, '') || '';
+        } else {
+          valA = a.querySelector(`.${sortKey}-badge`)?.textContent || '';
+          valB = b.querySelector(`.${sortKey}-badge`)?.textContent || '';
+        }
+        valA = isNaN(Number(valA)) ? valA : Number(valA);
+        valB = isNaN(Number(valB)) ? valB : Number(valB);
+        if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
+        if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
+        return 0;
+      });
+      cards.forEach(card => mobileCardsContainer.appendChild(card));
+      renumberRows();
+    }
+    // --- Event listeners ---
+    elementFilter.addEventListener('change', () => {
+      filterRows();
+      if (currentSortKey) sortRows(currentSortKey);
+    });
+    rarityFilter.addEventListener('change', () => {
+      filterRows();
+      if (currentSortKey) sortRows(currentSortKey);
+    });
+    roleFilter.addEventListener('change', () => {
+      filterRows();
+      if (currentSortKey) sortRows(currentSortKey);
+    });
+    sortButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        sortRows(button.dataset.sort);
+      });
+    });
+    resetButton.addEventListener('click', () => {
+      elementFilter.value = '';
+      rarityFilter.value = '';
+      roleFilter.value = '';
+      sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));
+      currentSortKey = null;
+      currentSortDirection = 'asc';
+      originalRows.forEach(row => {
+        row.style.display = '';
+        tableBody.appendChild(row);
+      });
+      originalCards.forEach(card => {
+        card.style.display = '';
+        mobileCardsContainer.appendChild(card);
+      });
+      renumberRows();
+    });
+    // --- Click to detail ---
+    Array.from(tableBody.children).forEach(row => {
+      row.addEventListener('click', () => {
+        const url = row.dataset.url;
+        if (url) window.location.href = url;
+      });
+    });
+    Array.from(mobileCardsContainer.children).forEach(card => {
+      card.addEventListener('click', () => {
+        const url = card.dataset.url;
+        if (url) window.location.href = url;
+      });
+    });
+  });
 	</script>
 </ZoneNovaLayout>

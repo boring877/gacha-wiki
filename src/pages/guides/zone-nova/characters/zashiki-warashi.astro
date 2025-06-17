@@ -1,6 +1,7 @@
 ---
 import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 import FormattedDate from '../../../../components/FormattedDate.astro';
+import OptimizedImage from '../../../../components/OptimizedImage.astro';
 ---
 
 <ZoneNovaLayout1 	title="Zashiki-warashi Character Guide - Zone Nova - GachaWiki" 
@@ -623,7 +624,14 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					<!-- Hero Card (Left) -->
 					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
 						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
-							<img src="/images/characters/Zashiki-warashi.jpg" alt="Zashiki-warashi" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
+							<OptimizedImage 
+          src="/images/characters/Zashiki-warashi.jpg" 
+          alt="Zashiki-warashi" 
+          width={340}
+          height={340}
+          class="character-image"
+          priority={true}
+        />
 							<h1 class="character-title">Zashiki-warashi</h1>
 						</div>
 						<!-- Badges in separate box with better styling -->
@@ -820,7 +828,12 @@ import FormattedDate from '../../../../components/FormattedDate.astro';
 					<!-- Memory Card Image (Left) -->
 					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
 						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
-							<img src="/images/characters/Zashiki-warashicard.jpg" alt="Zashiki-warashi Memory Card" style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" loading="lazy" />
+							<OptimizedImage 
+          src="/images/characters/Zashiki-warashicard.jpg" 
+          alt="Zashiki-warashi Memory Card" 
+          width={280}
+          height={420}
+        />
 						</div>
 					</div>
 					<!-- Memory Card Stats (Right) -->

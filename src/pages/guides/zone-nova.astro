@@ -8,45 +8,8 @@ import FormattedDate from '../../components/FormattedDate.astro';
 	description="Explore Zone Nova gacha game guides and content"
 	gameTitle="Zone Nova"
 	heroImage="/images/zonenova1.jpg"
->
-	<Fragment slot="head">
+>	<Fragment slot="head">
 		<style>
-			.back-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: var(--bg-primary);
-				color: var(--text-primary);
-				text-decoration: none;
-				padding: 1rem 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--amber-glow);
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 600;
-				font-size: 1rem;
-				margin-bottom: 2rem;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-			}
-
-			.back-button:hover {
-				background: var(--amber-glow);
-				color: var(--text-inverse);
-				transform: translateY(-2px);
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-			}
-
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
-
-
-
 			.content-section {
 				background: var(--bg-secondary);
 				padding: 3rem;
@@ -94,10 +57,9 @@ import FormattedDate from '../../components/FormattedDate.astro';
 				font-weight: 500;
 				opacity: 0.9;
 			}
-			
-			.guides-grid {
+					.guides-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 				gap: 2rem;
 				margin-top: 3rem;
 			}
@@ -201,9 +163,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 					opacity: 1;
 					transform: translateY(0);
 				}
-			}
-
-			@keyframes playButtonGlow {
+			}			@keyframes playButtonGlow {
 				0% {
 					box-shadow: 0 8px 20px rgba(255, 183, 77, 0.4);
 					filter: brightness(1);
@@ -212,9 +172,41 @@ import FormattedDate from '../../components/FormattedDate.astro';
 					box-shadow: 0 8px 20px rgba(255, 183, 77, 0.6), 0 0 20px rgba(0, 172, 193, 0.3);
 					filter: brightness(1.1);
 				}
+			}			/* Play Button */
+			.play-button-container {
+				text-align: center;
+				margin: 2rem 0;
 			}
 
-			@media (max-width: 768px) {
+			.play-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.75rem;
+				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+				color: white;
+				padding: 1rem 2.5rem;
+				border-radius: 25px;
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.2rem;
+				font-weight: 600;
+				text-decoration: none;
+				box-shadow: 0 8px 20px rgba(255, 183, 77, 0.4);
+				transition: all 0.3s ease;
+				animation: playButtonGlow 2s ease-in-out infinite alternate;
+			}
+
+			.play-button:hover {
+				transform: translateY(-3px) scale(1.05);
+				box-shadow: 0 12px 30px rgba(255, 183, 77, 0.6);
+			}
+
+			.play-emoji {
+				font-size: 1.5rem;
+			}
+
+			.play-arrow {
+				font-size: 1.2rem;
+			}			@media (max-width: 768px) {
 				.guides-grid {
 					grid-template-columns: 1fr;
 					gap: 1.5rem;
@@ -224,43 +216,100 @@ import FormattedDate from '../../components/FormattedDate.astro';
 					padding: 2rem;
 					margin-bottom: 2rem;
 				}
-				
-				.section-title {
+						.section-title {
 					font-size: 2rem;
+				}
+
+				.play-button {
+					font-size: 1.1rem;
+					padding: 0.9rem 2rem;
+				}
+
+				.guide-card {
+					padding: 2rem;
+				}				.guide-card h3 {
+					font-size: 1.4rem;
+				}
+			}
+
+			@media (max-width: 480px) {				.content-section {
+					padding: 1.5rem;
+					margin-bottom: 1.5rem;
+				}
+
+				.section-title {
+					font-size: 1.8rem;
+				}
+
+				.play-button {
+					font-size: 1rem;
+					padding: 0.8rem 1.5rem;
+					gap: 0.5rem;
+				}
+
+				.play-emoji {
+					font-size: 1.3rem;
+				}
+
+				.play-arrow {
+					font-size: 1rem;
+				}
+
+				.guide-card {
+					padding: 1.5rem;
+				}
+
+				.guide-card h3 {
+					font-size: 1.2rem;
+					gap: 0.5rem;
+				}
+
+				.guide-card p {
+					font-size: 1rem;
+				}
+
+				.guide-emoji {
+					font-size: 1.5rem;
+				}
+
+				.back-button {
+					padding: 0.7rem 1rem;
+					font-size: 0.85rem;
+					margin-bottom: 1.5rem;
+				}			}
+
+			/* Performance optimizations */
+			@media (prefers-reduced-motion: reduce) {
+				* {
+					animation-duration: 0.01ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.01ms !important;
+				}
+			}
+
+			/* High contrast mode support */
+			@media (prefers-contrast: high) {
+				.content-section {
+					border-width: 2px;
+				}
+				
+				.guide-card {
+					border-width: 2px;
+				}
+			}
+
+			/* Touch device optimizations */
+			@media (hover: none) and (pointer: coarse) {
+				.guide-card:hover {
+					transform: none;
+					box-shadow: 0 12px 30px rgba(0, 172, 193, 0.2);
+				}				.play-button:hover {
+					transform: none;
+					box-shadow: 0 8px 20px rgba(255, 183, 77, 0.4);
 				}
 			}
 		</style>
 	</Fragment>
-
-
-
-	<!-- Welcome section -->
-	<section class="content-section">
-		<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-primary); text-align: center; margin-bottom: 2rem;">
-			Welcome to Zone Nova Wiki
-		</h2>
-		<p style="color: var(--text-secondary); font-size: 1.2rem; text-align: center; max-width: 600px; margin: 0 auto 2rem auto;">
-			Your comprehensive resource for Zone Nova information, covering characters, runes, rifts, and more.
-		</p>
-		
-		<!-- Live Stats -->
-		<div style="background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; text-align: center;">
-			<div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
-				<div>
-					<div style="color: var(--amber-glow); font-size: 1.8rem; font-weight: 700;" id="totalViews">Loading...</div>
-					<div style="color: var(--text-secondary); font-size: 0.9rem;">Total Views</div>
-				</div>
-				<div>
-					<div style="color: var(--teal-crystal); font-size: 1.8rem; font-weight: 700;" id="uniqueViews">Loading...</div>
-					<div style="color: var(--text-secondary); font-size: 0.9rem;">Unique Views</div>
-				</div>
-				<div>
-					<div style="color: var(--rose-quartz); font-size: 1.8rem; font-weight: 700;" id="todayViews">Loading...</div>
-					<div style="color: var(--text-secondary); font-size: 0.9rem;">Today's Views</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<!-- Game Overview Section -->
 	<section class="content-section">
@@ -268,13 +317,12 @@ import FormattedDate from '../../components/FormattedDate.astro';
 		<div class="game-description">
 			In the year 20XX, mysterious black spheres suddenly appeared hovering above cities worldwide, drawing the attention of all nations. However, these spheres instantly expanded into massive black holes, crashing down and destroying everything in their path.
 		</div>
-		
-		<!-- Play Game Button -->
-		<div style="text-align: center; margin: 2rem 0;">
-			<a href="https://game.erolabsshare.net/app/f302f717/Zone_Nova" target="_blank" style="display: inline-flex; align-items: center; gap: 0.75rem; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem 2.5rem; border-radius: 25px; font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 600; text-decoration: none; box-shadow: 0 8px 20px rgba(255, 183, 77, 0.4); transition: all 0.3s ease; animation: playButtonGlow 2s ease-in-out infinite alternate;" onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 12px 30px rgba(255, 183, 77, 0.6)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 20px rgba(255, 183, 77, 0.4)'">
-				<span style="font-size: 1.5rem;">🎮</span>
+				<!-- Play Game Button -->
+		<div class="play-button-container">
+			<a href="https://game.erolabsshare.net/app/f302f717/Zone_Nova" target="_blank" class="play-button">
+				<span class="play-emoji">🎮</span>
 				Play Zone Nova
-				<span style="font-size: 1.2rem;">→</span>
+				<span class="play-arrow">→</span>
 			</a>
 		</div>
 		
@@ -282,10 +330,9 @@ import FormattedDate from '../../components/FormattedDate.astro';
 			Last Updated: <FormattedDate date={new Date()} />
 		</p>
 	</section>
-
 	<!-- Guides Section -->
 	<section class="content-section">
-						<h2 class="section-title">Resource</h2>
+		<h2 class="section-title">Resources</h2>
 		
 		<div class="guides-grid">
 			<a href="/guides/zone-nova/updates/" class="guide-card-link">
@@ -346,83 +393,3 @@ import FormattedDate from '../../components/FormattedDate.astro';
 		</div>
 	</section>
 </ZoneNovaLayout>
-
-<script>
-// Track Zone Nova page visit
-document.addEventListener('DOMContentLoaded', function() {
-	// Generate browser fingerprint for unique tracking
-	function generateFingerprint() {
-		const canvas = document.createElement('canvas');
-		const ctx = canvas.getContext('2d');
-		if (ctx) {
-			ctx.textBaseline = 'top';
-			ctx.font = '14px Arial';
-			ctx.fillText('Browser fingerprint', 2, 2);
-		}
-		
-		const fingerprint = [
-			navigator.userAgent,
-			navigator.language,
-			screen.width + 'x' + screen.height,
-			new Date().getTimezoneOffset(),
-			canvas.toDataURL()
-		].join('|');
-		
-		// Simple hash function
-		let hash = 0;
-		for (let i = 0; i < fingerprint.length; i++) {
-			const char = fingerprint.charCodeAt(i);
-			hash = ((hash << 5) - hash) + char;
-			hash = hash & hash; // Convert to 32-bit integer
-		}
-		return Math.abs(hash).toString();
-	}
-	
-	const browserFingerprint = generateFingerprint();
-	
-	// Update total views (every visit)
-	const currentViews = parseInt(localStorage.getItem('zoneNovaViews') || '0');
-	const newViews = currentViews + 1;
-	localStorage.setItem('zoneNovaViews', newViews.toString());
-	
-	// Track unique views (only once per browser)
-	const uniqueViewsKey = 'zoneNovaUniqueViews';
-	const visitedKey = `zoneNovaVisited_${browserFingerprint}`;
-	
-	let uniqueViews = parseInt(localStorage.getItem(uniqueViewsKey) || '0');
-	if (!localStorage.getItem(visitedKey)) {
-		uniqueViews += 1;
-		localStorage.setItem(uniqueViewsKey, uniqueViews.toString());
-		localStorage.setItem(visitedKey, 'true');
-	}
-	
-	// Track today's views
-	const today = new Date().toDateString();
-	const todayKey = `zoneNovaViews_${today}`;
-	const todayViews = parseInt(localStorage.getItem(todayKey) || '0') + 1;
-	localStorage.setItem(todayKey, todayViews.toString());
-	
-	// Update display
-	const totalViewsEl = document.getElementById('totalViews');
-	const uniqueViewsEl = document.getElementById('uniqueViews');
-	const todayViewsEl = document.getElementById('todayViews');
-	
-	if (totalViewsEl) totalViewsEl.textContent = newViews.toLocaleString();
-	if (uniqueViewsEl) uniqueViewsEl.textContent = uniqueViews.toLocaleString();
-	if (todayViewsEl) todayViewsEl.textContent = todayViews.toLocaleString();
-	
-	// Track section clicks for analytics
-	const sectionLinks = document.querySelectorAll('a[href*="zone-nova"]');
-	sectionLinks.forEach(link => {
-		link.addEventListener('click', function(event) {
-			const target = event.currentTarget as HTMLAnchorElement;
-			const section = target.href.split('/').pop() || 'unknown';
-			const sectionViews = parseInt(localStorage.getItem(`zoneNova_${section}_views`) || '0') + 1;
-			localStorage.setItem(`zoneNova_${section}_views`, sectionViews.toString());
-			console.log(`Zone Nova ${section} section viewed: ${sectionViews} times`);
-		});
-	});
-
-
-});
-</script>

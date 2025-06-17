@@ -19,6 +19,7 @@ const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/tabicoin.svg" />
+<link rel="manifest" href="/manifest.json" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
 	rel="alternate"
@@ -35,6 +36,10 @@ const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
 
 <!-- Critical image preload -->
 <link rel="preload" href="/images/zonenova.jpg" as="image" type="image/jpeg" fetchpriority="high" />
+
+<!-- Resource hints for key assets -->
+<link rel="preload" href="/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/space-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin />
 
 <!-- Critical CSS inline for above-the-fold content and CLS prevention -->
 <style>
@@ -240,14 +245,33 @@ const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </noscript>
 
-<!-- Performance Hints -->
+<!-- Enhanced Performance Hints -->
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://vitals.vercel-analytics.com">
 
 <!-- Prefetch key pages for instant navigation -->
 <link rel="prefetch" href="/guides/zone-nova/">
 <link rel="prefetch" href="/about/">
 <link rel="prefetch" href="/guides/">
+
+<!-- Service Worker Registration -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}
+</script>
+
+<!-- Module preload for critical JavaScript -->
+<link rel="modulepreload" href="/src/utils/performance-monitor.ts">
 
 <!-- Cache control and security -->
 <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">

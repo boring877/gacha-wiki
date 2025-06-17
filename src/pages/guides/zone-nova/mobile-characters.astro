@@ -1,0 +1,737 @@
+---
+import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
+---
+
+<ZoneNovaLayout 
+	title="Zone Nova Characters - Mobile - GachaWiki" 
+	description="Mobile-optimized character database for Zone Nova"
+	gameTitle="Characters (Mobile)"
+	showBreadcrumb={true}
+	breadcrumbText="Characters"
+>
+	<Fragment slot="head">
+		<style>
+			.mobile-container {
+				max-width: 100%;
+				padding: 1rem;
+				margin: 0 auto;
+			}
+
+			.filter-bar {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				margin: 1rem 0 2rem 0;
+				padding: 1rem;
+				background: var(--bg-primary);
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+			}
+
+			.filter-row {
+				display: flex;
+				gap: 0.5rem;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+
+			.filter-select {
+				flex: 1;
+				min-width: 100px;
+				max-width: 120px;
+				padding: 0.5rem;
+				background: var(--bg-secondary);
+				color: var(--text-primary);
+				border: 1px solid var(--mocha-mousse);
+				border-radius: 8px;
+				font-size: 0.85rem;
+				font-family: 'Space Grotesk', sans-serif;
+			}
+
+			.reset-btn {
+				padding: 0.5rem 1rem;
+				background: var(--amber-glow);
+				color: #222;
+				border: none;
+				border-radius: 8px;
+				font-weight: 600;
+				font-size: 0.85rem;
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+
+			.reset-btn:hover {
+				background: var(--teal-crystal);
+				transform: translateY(-1px);
+			}
+
+			.character-cards {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1rem;
+				margin-top: 1rem;
+			}			.character-card {
+				background: var(--bg-primary);
+				border-radius: 12px;
+				padding: 1rem;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+				border: 1px solid var(--mocha-mousse);
+				transition: all 0.3s ease;
+			}
+
+			.character-card-link {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+
+			.character-card-link:hover .character-card {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+			}
+
+			.character-card-header {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				margin-bottom: 1rem;
+			}
+
+			.character-img {
+				width: 60px;
+				height: 60px;
+				border-radius: 12px;
+				object-fit: cover;
+				border: 2px solid var(--amber-glow);
+				box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+				background: #fff;
+			}
+
+			.character-card-info h3 {
+				margin: 0 0 0.5rem 0;
+				font-size: 1.2rem;
+				color: var(--text-primary);
+				font-weight: 700;
+			}
+
+			.character-card-badges {
+				display: flex;
+				gap: 0.5rem;
+				flex-wrap: wrap;
+				margin: 0.5rem 0;
+			}
+
+			.role-badge, .element-badge, .rarity-badge {
+				display: inline-block;
+				padding: 0.3rem 0.8rem;
+				border-radius: 12px;
+				font-size: 0.8rem;
+				font-weight: 700;
+				box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+			}
+
+			.rarity-badge.ssr { background: #ffe066; color: #222; }
+			.rarity-badge.sr { background: #7ecfff; color: #222; }
+			.element-badge.fire { background: #ff6b6b; color: #fff; }
+			.element-badge.ice { background: #4dbfff; color: #fff; }
+			.element-badge.wind { background: #4dffb8; color: #222; }
+			.element-badge.holy { background: #ffe066; color: #222; }
+			.element-badge.chaos { background: #b266ff; color: #fff; }
+			.role-badge.tank { background: #b0b0b0; color: #222; }
+			.role-badge.dps { background: #ffb347; color: #222; }
+			.role-badge.buffer { background: #7ecfff; color: #222; }
+			.role-badge.debuffer { background: #b266ff; color: #fff; }
+			.role-badge.healer { background: #a3ffb7; color: #222; }
+
+			.character-card-stats {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 0.5rem;
+				margin-top: 1rem;
+				padding-top: 1rem;
+				border-top: 1px solid var(--neutral-200);
+			}
+
+			.character-card-stat {
+				display: flex;
+				justify-content: space-between;
+				padding: 0.3rem 0;
+				font-size: 0.85rem;
+			}
+
+			.character-card-stat strong {
+				color: var(--text-primary);
+				font-weight: 600;
+			}
+
+			.character-card-stat span {
+				color: var(--text-secondary);
+				font-weight: 500;
+			}
+
+			.no-results {
+				text-align: center;
+				padding: 2rem;
+				color: var(--text-secondary);
+				font-style: italic;
+			}
+
+			@media (min-width: 768px) {
+				.character-cards {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+
+			@media (min-width: 1024px) {
+				.mobile-container {
+					max-width: 1200px;
+				}
+				.character-cards {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="mobile-container">
+		<div class="filter-bar">
+			<div class="filter-row">
+				<select class="filter-select" id="element-filter">
+					<option value="">All Elements</option>
+					<option value="Fire">Fire</option>
+					<option value="Ice">Ice</option>
+					<option value="Wind">Wind</option>
+					<option value="Holy">Holy</option>
+					<option value="Chaos">Chaos</option>
+				</select>
+				<select class="filter-select" id="rarity-filter">
+					<option value="">All Rarities</option>
+					<option value="SSR">SSR</option>
+					<option value="SR">SR</option>
+				</select>
+				<select class="filter-select" id="role-filter">
+					<option value="">All Roles</option>
+					<option value="Tank">Tank</option>
+					<option value="DPS">DPS</option>
+					<option value="Buffer">Buffer</option>
+					<option value="Debuffer">Debuffer</option>
+					<option value="Healer">Healer</option>
+				</select>
+				<button class="reset-btn" id="reset-filters">Reset</button>
+			</div>
+		</div>
+
+		<div class="character-cards" id="character-cards">
+			<!-- Character cards will be populated here -->
+		</div>
+
+		<div class="no-results" id="no-results" style="display: none;">
+			No characters match your filters.
+		</div>
+	</div>
+	<script>		// Generate slug from character name
+		function generateSlug(name: string) {
+			return name.toLowerCase()
+				.replace(/[^a-z0-9 -]/g, '') // Remove special characters
+				.replace(/\s+/g, '-')        // Replace spaces with hyphens
+				.replace(/-+/g, '-')         // Replace multiple hyphens with single
+				.trim();
+		}
+
+		// Character data
+		const characters = [
+			{
+				id: 1,
+				name: "Afrodite",
+				slug: "afrodite",
+				image: "/images/Character Database/Afrodite.jpg",
+				rarity: "SSR",
+				element: "Holy",
+				role: "DPS",
+				hp: 8033,
+				attack: 1305,
+				defense: 530,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 2,
+				name: "Apollo",
+				slug: "apollo",
+				image: "/images/Character Database/Apollo.jpg",
+				rarity: "SSR",
+				element: "Fire",
+				role: "Buffer",
+				hp: 9564,
+				attack: 1004,
+				defense: 672,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 3,
+				name: "Artemis",
+				slug: "artemis",
+				image: "/images/Character Database/Artemis.jpg",
+				rarity: "SSR",
+				element: "Wind",
+				role: "DPS",
+				hp: 8033,
+				attack: 1461,
+				defense: 530,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},			{
+				id: 4,
+				name: "Arthur",
+				slug: "arthur",
+				image: "/images/Character Database/Arthur.jpg",
+				rarity: "SSR",
+				element: "Holy",
+				role: "DPS",
+				hp: 8033,
+				attack: 1305,
+				defense: 530,
+				energy: "0.25/s",
+				critRate: 15,
+				critDmg: 50
+			},
+			{
+				id: 5,
+				name: "Bastet",
+				slug: "bastet",
+				image: "/images/Character Database/Bastet.jpg",
+				rarity: "SR",
+				element: "Wind",
+				role: "DPS",
+				hp: 6694,
+				attack: 1088,
+				defense: 442,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 6,
+				name: "Belphegar",
+				slug: "belphegar",
+				image: "/images/Character Database/belphegar.jpg",
+				rarity: "SR",
+				element: "Chaos",
+				role: "Debuffer",
+				hp: 7970,
+				attack: 837,
+				defense: 560,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 7,
+				name: "Chiya",
+				slug: "chiya",
+				image: "/images/Character Database/Chiya.jpg",
+				rarity: "SSR",
+				element: "Ice",
+				role: "DPS",
+				hp: 8033,
+				attack: 1305,
+				defense: 530,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 8,
+				name: "Cleopatra",
+				slug: "cleopatra",
+				image: "/images/Character Database/Cleopatra.jpg",
+				rarity: "SSR",
+				element: "Chaos",
+				role: "DPS",
+				hp: 8033,
+				attack: 1461,
+				defense: 530,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 9,
+				name: "Greed Mammon",
+				slug: "greed-mammon",
+				image: "/images/Character Database/Greed Mammon.jpg",
+				rarity: "SR",
+				element: "Chaos",
+				role: "DPS",
+				hp: 6694,
+				attack: 1088,
+				defense: 442,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 10,
+				name: "Guinevere",
+				slug: "guinevere",
+				image: "/images/Character Database/Guinevere.jpg",
+				rarity: "SSR",
+				element: "Fire",
+				role: "Tank",
+				hp: 10520,
+				attack: 734,
+				defense: 1232,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 11,
+				name: "Horus",
+				slug: "horus",
+				image: "/images/Character Database/Horus.jpg",
+				rarity: "SSR",
+				element: "Holy",
+				role: "Debuffer",
+				hp: 8033,
+				attack: 1461,
+				defense: 530,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 12,
+				name: "Kela",
+				slug: "kela",
+				image: "/images/Character Database/kela.jpg",
+				rarity: "SR",
+				element: "Holy",
+				role: "Healer",
+				hp: 7650,
+				attack: 837,
+				defense: 608,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 13,
+				name: "Lancelot",
+				slug: "lancelot",
+				image: "/images/Character Database/Lancelot.jpg",
+				rarity: "SR",
+				element: "Holy",
+				role: "Tank",
+				hp: 10857,
+				attack: 612,
+				defense: 957,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 14,
+				name: "Leviathan",
+				slug: "leviathan",
+				image: "/images/Character Database/Leviathan.jpg",
+				rarity: "SR",
+				element: "Wind",
+				role: "DPS",
+				hp: 6694,
+				attack: 1088,
+				defense: 442,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 15,
+				name: "Loki",
+				slug: "loki",
+				image: "/images/Character Database/Loki.jpg",
+				rarity: "SSR",
+				element: "Chaos",
+				role: "Debuffer",
+				hp: 9564,
+				attack: 1004,
+				defense: 672,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 16,
+				name: "Lyra",
+				slug: "lyra",
+				image: "/images/Character Database/Lyra.jpg",
+				rarity: "SSR",
+				element: "Fire",
+				role: "DPS",
+				hp: 8033,
+				attack: 1305,
+				defense: 560,
+				energy: "0.25/s",
+				critRate: 15,
+				critDmg: 50
+			},
+			{
+				id: 17,
+				name: "Merlin",
+				slug: "merlin",
+				image: "/images/Character Database/Merlin.jpg",
+				rarity: "SSR",
+				element: "Fire",
+				role: "DPS",
+				hp: 8033,
+				attack: 1305,
+				defense: 560,
+				energy: "0.25/s",
+				critRate: 15,
+				critDmg: 50
+			},
+			{
+				id: 18,
+				name: "Mordred",
+				slug: "mordred",
+				image: "/images/Character Database/mordred.jpg",
+				rarity: "SR",
+				element: "Fire",
+				role: "DPS",
+				hp: 8470,
+				attack: 837,
+				defense: 560,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 19,
+				name: "Naiya",
+				slug: "naiya",
+				image: "/images/Character Database/Naiya.jpg",
+				rarity: "SSR",
+				element: "Ice",
+				role: "Buffer",
+				hp: 9564,
+				attack: 1004,
+				defense: 672,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 20,
+				name: "Nini",
+				slug: "nini",
+				image: "/images/Character Database/Nini.jpg",
+				rarity: "SR",
+				element: "Ice",
+				role: "Debuffer",
+				hp: 7970,
+				attack: 837,
+				defense: 560,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 21,
+				name: "Rose",
+				slug: "rose",
+				image: "/images/Character Database/Rose.jpg",
+				rarity: "SR",
+				element: "Ice",
+				role: "DPS",
+				hp: 6694,
+				attack: 1088,
+				defense: 442,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 22,
+				name: "Shanna",
+				slug: "shanna",
+				image: "/images/Character Database/Shanna.jpg",
+				rarity: "SR",
+				element: "Holy",
+				role: "Healer",
+				hp: 7650,
+				attack: 837,
+				defense: 608,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 23,
+				name: "Shu",
+				slug: "shu",
+				image: "/images/Character Database/Shu.jpg",
+				rarity: "SSR",
+				element: "Wind",
+				role: "Buffer",
+				hp: 9564,
+				attack: 1004,
+				defense: 672,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 24,
+				name: "Tefnut",
+				slug: "tefnut",
+				image: "/images/Character Database/Tefnut.jpg",
+				rarity: "SSR",
+				element: "Ice",
+				role: "Tank",
+				hp: 10520,
+				attack: 734,
+				defense: 1232,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 25,
+				name: "Yuis",
+				slug: "yuis",
+				image: "/images/Character Database/Yuis.jpg",
+				rarity: "SR",
+				element: "Wind",
+				role: "Healer",
+				hp: 7650,
+				attack: 837,
+				defense: 608,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			},
+			{
+				id: 26,
+				name: "Zashiki-warashi",
+				slug: "zashiki-warashi",
+				image: "/images/Character Database/Zashiki-warashi.jpg",
+				rarity: "SR",
+				element: "Chaos",
+				role: "Buffer", 
+				hp: 9027,
+				attack: 612,
+				defense: 797,
+				energy: "0.25/s",
+				critRate: 0,
+				critDmg: 50
+			}
+		];
+		// DOM elements
+		const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+		const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+		const roleFilter = document.getElementById('role-filter') as HTMLSelectElement;
+		const resetBtn = document.getElementById('reset-filters') as HTMLButtonElement;
+		const cardsContainer = document.getElementById('character-cards') as HTMLDivElement;
+		const noResults = document.getElementById('no-results') as HTMLDivElement;		// Create character card HTML
+		function createCharacterCard(character: any) {
+			return `
+				<a href="/guides/zone-nova/characters/${character.slug}" class="character-card-link">
+					<div class="character-card" data-element="${character.element}" data-rarity="${character.rarity}" data-role="${character.role}">
+						<div class="character-card-header">
+							<img src="${character.image}" alt="${character.name}" class="character-img" loading="lazy">
+							<div class="character-card-info">
+								<h3>${character.name}</h3>
+								<div class="character-card-badges">
+									<span class="rarity-badge ${character.rarity.toLowerCase()}">${character.rarity}</span>
+									<span class="element-badge ${character.element.toLowerCase()}"><span class="element-dot"></span>${character.element}</span>
+									<span class="role-badge ${character.role.toLowerCase()}">${character.role}</span>
+								</div>
+							</div>
+						</div>
+						<div class="character-card-stats">
+							<div class="character-card-stat">
+								<strong>HP:</strong>
+								<span>${character.hp.toLocaleString()}</span>
+							</div>
+							<div class="character-card-stat">
+								<strong>Attack:</strong>
+								<span>${character.attack.toLocaleString()}</span>
+							</div>
+							<div class="character-card-stat">
+								<strong>Defense:</strong>
+								<span>${character.defense.toLocaleString()}</span>
+							</div>
+							<div class="character-card-stat">
+								<strong>Energy:</strong>
+								<span>${character.energy}</span>
+							</div>
+							<div class="character-card-stat">
+								<strong>Crit Rate:</strong>
+								<span>${character.critRate}%</span>
+							</div>
+							<div class="character-card-stat">
+								<strong>Crit DMG:</strong>
+								<span>${character.critDmg}%</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			`;
+		}
+
+		// Render all characters
+		function renderCharacters() {
+			cardsContainer.innerHTML = characters.map(createCharacterCard).join('');
+		}
+		// Filter characters
+		function filterCharacters() {
+			const elementValue = elementFilter.value;
+			const rarityValue = rarityFilter.value;
+			const roleValue = roleFilter.value;
+
+			const cards = cardsContainer.querySelectorAll('.character-card') as NodeListOf<HTMLDivElement>;
+			let visibleCount = 0;
+
+			cards.forEach((card: HTMLDivElement) => {
+				const matchesElement = !elementValue || card.dataset.element === elementValue;
+				const matchesRarity = !rarityValue || card.dataset.rarity === rarityValue;
+				const matchesRole = !roleValue || card.dataset.role === roleValue;
+
+				if (matchesElement && matchesRarity && matchesRole) {
+					card.style.display = '';
+					visibleCount++;
+				} else {
+					card.style.display = 'none';
+				}
+			});
+
+			// Show/hide no results message
+			if (visibleCount === 0) {
+				noResults.style.display = 'block';
+			} else {
+				noResults.style.display = 'none';
+			}
+		}
+
+		// Reset filters
+		function resetFilters() {
+			elementFilter.value = '';
+			rarityFilter.value = '';
+			roleFilter.value = '';
+			filterCharacters();
+		}
+
+		// Event listeners
+		elementFilter.addEventListener('change', filterCharacters);
+		rarityFilter.addEventListener('change', filterCharacters);
+		roleFilter.addEventListener('change', filterCharacters);
+		resetBtn.addEventListener('click', resetFilters);
+
+		// Initial render
+		renderCharacters();
+	</script>
+</ZoneNovaLayout>

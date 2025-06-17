@@ -397,6 +397,22 @@ a:hover {
     }
 }
 
+/* Responsive table: horizontal scroll on small screens */
+@media (max-width: 600px) {
+  .character-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    /* Optional: visually indicate scroll */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .character-table {
+    min-width: 700px;
+    /* Prevent table from shrinking too much */
+  }
+}
+
 /* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
     *,
@@ -467,4 +483,84 @@ a:hover {
 .heavy-content {
     content-visibility: auto;
     contain-intrinsic-size: 200px;
-} 
+}
+
+/* Responsive Utility Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.container-wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Responsive Grid System */
+.grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Responsive Display Utilities */
+.mobile-only {
+    display: none;
+}
+
+.desktop-only {
+    display: block;
+}
+
+/* Responsive Spacing */
+.space-y-mobile {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.space-y-desktop {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+    
+    .grid {
+        gap: 0.75rem;
+    }
+    
+    .grid-auto-fit,
+    .grid-auto-fill {
+        grid-template-columns: 1fr;
+    }
+    
+    .mobile-only {
+        display: block;
+    }
+    
+    .desktop-only {
+        display: none;
+    }
+    
+    .space-y-mobile {
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .space-y-desktop {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}

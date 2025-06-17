@@ -5,8 +5,17 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:prod": "astro build && bun run compress",
+    "build:analyze": "astro build && bun run analyze",
+    "compress": "bun run scripts/compress.ts",
+    "analyze": "bun run scripts/analyze.ts",
+    "optimize-images": "bun run scripts/optimize-images.ts",
+    "perf": "bun run scripts/perf-test.ts",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "sync": "astro sync"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.11",
@@ -15,10 +24,14 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "astro": "^5.8.0",
-    "gsap": "^3.13.0"
+    "gsap": "^3.13.0",
+    "sharp": "^0.34.2"
   },
   "devDependencies": {
     "@unocss/astro": "^66.1.2",
     "unocss": "^66.1.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

@@ -1,6 +1,7 @@
 ---
 import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
+import OptimizedImage from '../../../components/OptimizedImage.astro';
 ---
 
 <ZoneNovaLayout 
@@ -415,7 +416,13 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 		<!-- Item Showcase -->
 		<div class="item-showcase">
 			<div class="item-image">
-				<img src="/images/laser-engraving-tool.jpg" alt="Laser Engraving Tool (激光雕刻仪)" />
+				<OptimizedImage 
+          src="/images/laser-engraving-tool.jpg" 
+          alt="Laser Engraving Tool (激光雕刻仪)" 
+          width={400}
+          height={300}
+          
+        />
 			</div>
 			<div class="item-info">
 				<h3>🔧 Laser Engraving Tool (激光雕刻仪)</h3>

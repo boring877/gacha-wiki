@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ZoneNovaQuickNav from '../components/ZoneNovaQuickNav.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 
 // Import CSS files properly
 import '../styles/colors.css';
@@ -25,92 +26,108 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 		<BaseHead title={title} description={description || ""} />
 		<slot name="head" />
 	</head>
-
-	<body style="background: linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 50%, #1C1C1C 100%); color: var(--text-primary); min-height: 100vh; font-family: 'Inter', sans-serif;">
+	<body class="zone-nova-body">
 		<Header />
 		
-		<!-- Zone Nova Content Container -->
 		<div class="zone-nova-container">
 			<main class="zone-nova-main">
 			
 			<!-- Breadcrumb Navigation -->
 			{showBreadcrumb && (
-				<nav style="margin: 2rem 0; padding: 0 1rem;">
-					<div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
-						<a href="/" style="color: var(--amber-glow); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--teal-crystal)'" onmouseout="this.style.color='var(--amber-glow)'">Home</a>
-						<span>→</span>
-						<a href="/guides/" style="color: var(--amber-glow); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--teal-crystal)'" onmouseout="this.style.color='var(--amber-glow)'">Guides</a>
-						<span style="color: var(--text-secondary); margin: 0 0.5rem;">></span>
-						<a href="/guides/zone-nova/" style="color: var(--amber-glow); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--teal-crystal)'" onmouseout="this.style.color='var(--amber-glow)'">Zone Nova</a>
+				<nav class="breadcrumb-nav">
+					<div class="breadcrumb-container">
+						<a href="/" class="breadcrumb-link">Home</a>
+						<span class="breadcrumb-separator">→</span>
+						<a href="/guides/" class="breadcrumb-link">Guides</a>
+						<span class="breadcrumb-separator">→</span>
+						<a href="/guides/zone-nova/" class="breadcrumb-link">Zone Nova</a>
 						{breadcrumbText && (
 							<>
-								<span>→</span>
-								<span style="color: var(--text-primary);">{breadcrumbText}</span>
+								<span class="breadcrumb-separator">→</span>
+								<span class="breadcrumb-current">{breadcrumbText}</span>
 							</>
 						)}
 					</div>
 				</nav>
-			)}
-
-			<!-- Zone Nova Hero Section -->
+			)}<!-- Zone Nova Hero Section -->
 			{heroImage && gameTitle && (
-				<section style="text-align: center; margin-bottom: 4rem; padding: 3rem 1rem;">
+				<section class="hero-section">
 					<!-- Hero Image Container -->
-					<div style="position: relative; margin-bottom: 3rem; animation: heroFadeIn 1s ease-out;">
-						<div style="width: 100%; max-width: 60rem; height: 25rem; border-radius: 20px; overflow: hidden; margin: 0 auto; position: relative; box-shadow: 0 20px 50px rgba(0, 172, 193, 0.3); border: 2px solid var(--teal-crystal);">
-							<img src={heroImage} alt={gameTitle} style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+					<div class="hero-image-wrapper">
+						<div class="hero-image-container">							<OptimizedImage 
+								src={heroImage} 
+								alt={gameTitle} 
+								width={960}
+								height={400}
+								priority={true}
+								sizes="(max-width: 480px) 100vw, (max-width: 768px) 90vw, (max-width: 1200px) 80vw, 960px"
+								useOptimized={true}
+								class="hero-image"
+								loading="eager"
+								decoding="async"
+							/>
 							<!-- Overlay Gradient -->
-							<div style="position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(transparent, rgba(28, 28, 28, 0.8)); pointer-events: none;"></div>
+							<div class="hero-overlay"></div>
 						</div>
 					</div>
 					
 					<!-- Game Title -->
-					<h1 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0 0 1rem 0; animation: titleGlow 3s ease-in-out infinite alternate;">
+					<h1 class="hero-title">
 						{gameTitle}
 					</h1>
-					
-					<!-- Decorative Elements -->
-					<div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
-						<div style="width: 3rem; height: 2px; background: var(--amber-glow); border-radius: 1px; animation: pulse 2s infinite;"></div>
-						<div style="width: 2rem; height: 2px; background: var(--teal-crystal); border-radius: 1px; animation: pulse 2s infinite 0.5s;"></div>
-						<div style="width: 1rem; height: 2px; background: var(--rose-quartz); border-radius: 1px; animation: pulse 2s infinite 1s;"></div>
+							<!-- Decorative Elements -->
+					<div class="hero-decorative">
+						<div class="hero-line hero-line-1"></div>
+						<div class="hero-line hero-line-2"></div>
+						<div class="hero-line hero-line-3"></div>
 					</div>
 				</section>
-			)}
-
-			<!-- Title Only Section (when no hero image) -->
+			)}			<!-- Title Only Section (when no hero image) -->
 			{!heroImage && gameTitle && (
-				<section style="text-align: center; margin-bottom: 4rem; padding: 2rem 1rem;">
-					<!-- Game Title -->
-					<h1 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0 0 1rem 0; animation: titleGlow 3s ease-in-out infinite alternate; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;">
+				<section class="title-only-section">
+					<h1 class="title-only-heading">
 						{gameTitle}
 					</h1>
 					
-					<!-- Decorative Elements -->
-					<div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
-						<div style="width: 3rem; height: 2px; background: var(--amber-glow); border-radius: 1px; animation: pulse 2s infinite;"></div>
-						<div style="width: 2rem; height: 2px; background: var(--teal-crystal); border-radius: 1px; animation: pulse 2s infinite 0.5s;"></div>
-						<div style="width: 1rem; height: 2px; background: var(--rose-quartz); border-radius: 1px; animation: pulse 2s infinite 1s;"></div>
+					<div class="hero-decorative">
+						<div class="hero-line hero-line-1"></div>
+						<div class="hero-line hero-line-2"></div>
+						<div class="hero-line hero-line-3"></div>
 					</div>
 				</section>
 			)}
 			
 			<!-- Content Area -->
-			<div style="animation: contentSlideUp 1s ease-out 0.3s both;">
+			<div class="content-area">
 				<ZoneNovaQuickNav currentPath={Astro.url.pathname} />
 				<slot />
 			</div>
 			</main>
 		</div>
 		
-		<!-- Zone Nova Quick Navigation -->
-
-		
 		<Footer />
 	</body>
 </html>
 
+<!-- Image Preloading for Performance -->
+		{heroImage && (
+			<>
+				<link rel="preload" as="image" href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.avif')} type="image/avif" />
+				<link rel="preload" as="image" href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.webp')} type="image/webp" />
+				<link rel="preload" as="image" href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.jpg')} type="image/jpeg" />
+			</>
+		)}
+
 <style>
+/* Body Styles */
+.zone-nova-body {
+	background: linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 50%, #1C1C1C 100%);
+	color: var(--text-primary);
+	min-height: 100vh;
+	font-family: 'Inter', sans-serif;
+}
+
+/* Container Styles */
 .zone-nova-container {
 	position: relative;
 	min-height: 100vh;
@@ -122,69 +139,272 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 	padding: 2rem;
 }
 
-/* Mobile responsive */
+/* Breadcrumb Styles */
+.breadcrumb-nav {
+	margin: 2rem 0;
+	padding: 0 1rem;
+}
+
+.breadcrumb-container {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+}
+
+.breadcrumb-link {
+	color: var(--amber-glow);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+	color: var(--teal-crystal);
+}
+
+.breadcrumb-separator {
+	color: var(--text-secondary);
+}
+
+.breadcrumb-current {
+	color: var(--text-primary);
+}
+
+/* Content Area */
+.content-area {
+	animation: contentSlideUp 1s ease-out 0.3s both;
+}
+
+/* Title Only Section */
+.title-only-section {
+	text-align: center;
+	margin-bottom: 4rem;
+	padding: 2rem 1rem;
+}
+
+.title-only-heading {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: clamp(2rem, 5vw, 3.5rem);
+	font-weight: 700;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin: 0 0 1rem 0;
+	animation: titleGlow 3s ease-in-out infinite alternate;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+}
+
+/* Mobile Optimizations */
 @media (max-width: 768px) {
 	.zone-nova-main {
 		padding: 1rem;
 	}
+	
+	.breadcrumb-nav {
+		margin: 1rem 0;
+		padding: 0 0.5rem;
+	}
+	
+	.breadcrumb-container {
+		font-size: 0.8rem;
+		flex-wrap: wrap;
+		gap: 0.25rem;
+	}
+	
+	.hero-section {
+		padding: 2rem 1rem 3rem 1rem;
+	}
+
+	.hero-image-container {
+		height: 15rem;
+		max-width: 100%;
+		margin: 0;
+	}
+
+	.hero-title {
+		font-size: clamp(2rem, 8vw, 3rem);
+	}
+	
+	.title-only-section {
+		padding: 1.5rem 0.5rem 2rem 0.5rem;
+	}
+	
+	.title-only-heading {
+		font-size: clamp(1.5rem, 6vw, 2.5rem);
+		white-space: normal;
+	}
+}
+
+@media (max-width: 480px) {
+	.zone-nova-main {
+		padding: 0.5rem;
+	}
+	
+	.hero-image-container {
+		height: 12rem;
+		border-radius: 15px;
+	}
+
+	.hero-title {
+		font-size: clamp(1.5rem, 6vw, 2.5rem);
+	}
+
+	.hero-section {
+		padding: 1.5rem 0.5rem 2rem 0.5rem;
+	}
+	
+	.breadcrumb-container {
+		font-size: 0.75rem;
+	}
+}
+
+/* Hero Section Styles */
+.hero-section {
+	text-align: center;
+	margin-bottom: 4rem;
+	padding: 3rem 1rem;
+}
+
+.hero-image-wrapper {
+	position: relative;
+	margin-bottom: 3rem;
+	animation: heroFadeIn 1s ease-out;
+}
+
+.hero-image-container {
+	width: 100%;
+	max-width: 60rem;
+	height: 25rem;
+	border-radius: 20px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	box-shadow: 0 20px 50px rgba(0, 172, 193, 0.3);
+	border: 2px solid var(--teal-crystal);
+}
+
+.hero-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.6s ease;
+}
+
+.hero-overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 50%;
+	background: linear-gradient(transparent, rgba(28, 28, 28, 0.8));
+	pointer-events: none;
+}
+
+.hero-title {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: clamp(3rem, 6vw, 5rem);
+	font-weight: 700;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin: 0 0 1rem 0;
+	animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+/* Hero Decorative Elements */
+.hero-decorative {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+.hero-line {
+	height: 2px;
+	border-radius: 1px;
+}
+
+.hero-line-1 {
+	width: 3rem;
+	background: var(--amber-glow);
+	animation: pulse 2s infinite;
+}
+
+.hero-line-2 {
+	width: 2rem;
+	background: var(--teal-crystal);
+	animation: pulse 2s infinite 0.5s;
+}
+
+.hero-line-3 {
+	width: 1rem;
+	background: var(--rose-quartz);
+	animation: pulse 2s infinite 1s;
+}
+
+/* Animation Keyframes */
+@keyframes heroFadeIn {
+	0% {
+		opacity: 0;
+		transform: translateY(30px) scale(0.95);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes contentSlideUp {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes titleGlow {
+	0% {
+		text-shadow: 
+			0 0 10px rgba(255, 183, 77, 0.3),
+			0 0 20px rgba(255, 183, 77, 0.2),
+			0 0 30px rgba(0, 172, 193, 0.1);
+	}
+	100% {
+		text-shadow: 
+			0 0 20px rgba(255, 183, 77, 0.6),
+			0 0 30px rgba(255, 183, 77, 0.4),
+			0 0 40px rgba(0, 172, 193, 0.3);
+	}
+}
+
+@keyframes pulse {
+	0%, 100% { 
+		opacity: 1; 
+		transform: scaleX(1); 
+	}
+	50% { 
+		opacity: 0.6; 
+		transform: scaleX(0.8); 
+	}
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+	.hero-image-wrapper,
+	.content-area,
+	.title-only-heading,
+	.hero-line-1,
+	.hero-line-2,
+	.hero-line-3 {
+		animation: none;
+	}
 }
 </style>
-
-<script>
-// Zone Nova layout functionality
-document.addEventListener('DOMContentLoaded', function() {
-	// Any additional Zone Nova layout functionality can go here
-});
-</script>
-
-<style>
-	@import '/src/styles/colors.css';
-
-	@keyframes heroFadeIn {
-		0% {
-			opacity: 0;
-			transform: translateY(30px) scale(0.95);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0) scale(1);
-		}
-	}
-
-	@keyframes contentSlideUp {
-		0% {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	@keyframes titleGlow {
-		0% {
-			text-shadow: 
-				0 0 10px rgba(255, 183, 77, 0.3),
-				0 0 20px rgba(255, 183, 77, 0.2),
-				0 0 30px rgba(0, 172, 193, 0.1);
-		}
-		100% {
-			text-shadow: 
-				0 0 20px rgba(255, 183, 77, 0.6),
-				0 0 30px rgba(255, 183, 77, 0.4),
-				0 0 40px rgba(0, 172, 193, 0.3);
-		}
-	}
-
-	@keyframes pulse {
-		0%, 100% { opacity: 1; transform: scaleX(1); }
-		50% { opacity: 0.6; transform: scaleX(0.8); }
-	}
-
-	@media (max-width: 768px) {
-		main {
-			padding: 1rem !important;
-		}
-	}
-</style> 

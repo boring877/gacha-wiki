@@ -1,231 +1,221 @@
 ---
 import HomeLayout from '../../layouts/HomeLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import FormattedDate from '../../components/FormattedDate.astro';
-
-// Get actual Zone Nova page count
-import fs from 'fs';
-import path from 'path';
-
-let zoneNovaPageCount = 0;
-let lastEditDate = 'Dec 28, 2024';
-
-try {
-	// Count actual Zone Nova pages
-	const zoneNovaDir = path.join(process.cwd(), 'src/pages/guides/zone-nova');
-	const countPages = (dir: string): number => {
-		let count = 0;
-		const items = fs.readdirSync(dir, { withFileTypes: true });
-		for (const item of items) {
-			if (item.isDirectory()) {
-				count += countPages(path.join(dir, item.name));
-			} else if (item.name.endsWith('.astro')) {
-				count++;
-			}
-		}
-		return count;
-	};
-	
-	zoneNovaPageCount = countPages(zoneNovaDir);
-	
-	// Get most recent modification date
-	const getAllFiles = (dir: string): string[] => {
-		let files: string[] = [];
-		const items = fs.readdirSync(dir, { withFileTypes: true });
-		for (const item of items) {
-			const fullPath = path.join(dir, item.name);
-			if (item.isDirectory()) {
-				files.push(...getAllFiles(fullPath));
-			} else if (item.name.endsWith('.astro')) {
-				files.push(fullPath);
-			}
-		}
-		return files;
-	};
-	
-	const allFiles = getAllFiles(zoneNovaDir);
-	let latestDate = new Date(0);
-	
-	for (const file of allFiles) {
-		const stats = fs.statSync(file);
-		if (stats.mtime > latestDate) {
-			latestDate = stats.mtime;
-		}
-	}
-	
-	if (latestDate.getTime() > 0) {
-		lastEditDate = latestDate.toLocaleDateString('en-US', { 
-			month: 'short', 
-			day: 'numeric', 
-			year: 'numeric' 
-		});
-	}
-} catch (error) {
-	console.warn('Could not count pages or get last edit date:', error);
-	zoneNovaPageCount = 45; // fallback based on search result
-}
+import OptimizedImage from '../../components/OptimizedImage.astro';
 ---
 
 <HomeLayout title={`${SITE_TITLE} - Wikis`} description={SITE_DESCRIPTION}>
 	<!-- Main Content Area -->
-	<main style="max-width: 60rem; margin: 0 auto; padding: 6rem 2rem 4rem 2rem; min-height: 100vh;">
-		
+	<main class="main-content">
 		<!-- Page Header -->
-		<section style="text-align: center; margin-bottom: 4rem;">
-			<h1 style="font-family: 'Space Grotesk', sans-serif; font-size: 3.5rem; font-weight: 700; color: var(--text-primary); margin: 0;">
-				Gacha Wikis
+		<section class="page-header">
+			<h1 class="page-title">
+				Gacha wikis library!
 			</h1>
 		</section>
 
 		<!-- Games List -->
-		<section>
+		<section class="games-section">
 			<!-- Zone Nova -->
-			<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit; display: block;" onclick="trackZoneNovaClick()">
-				<div style="background: var(--bg-primary); border-radius: 16px; border: 1px solid var(--amber-glow); margin-bottom: 2rem; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(164, 120, 100, 0.1);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(164, 120, 100, 0.2)'; this.style.borderColor='var(--teal-crystal)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(164, 120, 100, 0.1)'; this.style.borderColor='var(--amber-glow)'">
-					
+			<a href="/guides/zone-nova/" class="game-link">
+				<article class="game-card">
 					<!-- Game Header -->
-					<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); padding: 2rem; display: flex; align-items: center; gap: 2rem;">
-						<div style="width: 80px; height: 80px; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-							<img src="/images/zonenova.jpg" alt="Zone Nova" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" width="80" height="80">
+					<div class="game-header">
+						<div class="game-icon">
+							<OptimizedImage 
+								src="/images/zonenova1.jpg" 
+								alt="Zone Nova" 
+								width={120}
+								height={68}
+								priority={true}
+								sizes="(max-width: 480px) 80px, (max-width: 768px) 100px, 120px"
+								useOptimized={true}
+							/>
 						</div>
-						<div style="flex: 1;">
-							<h2 style="color: white; font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; margin: 0 0 0.5rem 0;">
+						<div class="game-info">
+							<h2 class="game-title">
 								Zone Nova
 							</h2>
-							<p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin: 0; line-height: 1.4;">
+							<p class="game-description">
 								Characters • Runes • Events • Rifts • Crafting • Updates
 							</p>
 						</div>
-						<div style="color: white; font-size: 2rem; opacity: 0.8;">
+						<div class="game-arrow">
 							→
 						</div>
 					</div>
-
-					<!-- Wiki Statistics -->
-					<div style="padding: 1.5rem 2rem; background: var(--bg-secondary); border-top: 1px solid rgba(255, 183, 77, 0.1);">
-						<div style="display: flex; justify-content: space-between; align-items: center; gap: 2rem;">
-							<div style="display: flex; gap: 2rem;">
-								<div style="display: flex; align-items: center; gap: 0.5rem;">
-									<span style="color: var(--teal-crystal); font-size: 1rem;">👁️</span>
-									<span style="color: var(--text-secondary); font-size: 0.9rem;">Views:</span>
-									<span style="color: var(--text-primary); font-weight: 600; font-size: 0.9rem;" id="zoneNovaViews">Loading...</span>
-								</div>
-								<div style="display: flex; align-items: center; gap: 0.5rem;">
-									<span style="color: var(--amber-glow); font-size: 1rem;">📊</span>
-									<span style="color: var(--text-secondary); font-size: 0.9rem;">Pages:</span>
-									<span style="color: var(--text-primary); font-weight: 600; font-size: 0.9rem;">{zoneNovaPageCount}</span>
-								</div>
-							</div>
-							<div style="text-align: right;">
-								<div style="color: var(--text-secondary); font-size: 0.8rem;">Last edited:</div>
-								<div style="color: var(--rose-quartz); font-weight: 600; font-size: 0.9rem;">{lastEditDate}</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				</article>
 			</a>
 		</section>
-
 	</main>
 </HomeLayout>
 
 <style>
-/* Responsive design */
-@media (max-width: 768px) {
-	main {
-		padding: 5rem 1rem 3rem 1rem !important;
-		max-width: 100% !important;
+	/* Main Content */
+	.main-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 4rem 1rem 2rem 1rem;
+		min-height: 100vh;
 	}
 
-	/* Mobile game header */
-	div[style*="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal))"] {
-		flex-direction: column !important;
-		text-align: center !important;
-		gap: 1rem !important;
+	/* Page Header */
+	.page-header {
+		text-align: center;
+		margin-bottom: 4rem;
 	}
 
-	/* Hide arrow on mobile */
-	div[style*="font-size: 2rem; opacity: 0.8;"] {
-		display: none !important;
+	.page-title {
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin: 0;
 	}
 
-	/* Mobile wiki statistics */
-	div[style*="display: flex; justify-content: space-between; align-items: center; gap: 2rem;"] {
-		flex-direction: column !important;
-		gap: 1rem !important;
-		align-items: flex-start !important;
+	/* Games Section */
+	.games-section {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
 	}
 
-	/* Stack statistics vertically on mobile */
-	div[style*="display: flex; gap: 2rem;"] {
-		flex-direction: column !important;
-		gap: 0.75rem !important;
-	}
-}
-
-@media (max-width: 480px) {
-	h1 {
-		font-size: 2rem !important;
-	}
-	
-	h2 {
-		font-size: 1.6rem !important;
+	.game-link {
+		text-decoration: none;
+		color: inherit;
+		display: block;
 	}
 
-	/* Stack game header vertically on very small screens */
-	div[style*="padding: 2rem; display: flex; align-items: center; gap: 2rem;"] {
-		padding: 1.5rem !important;
-		gap: 1rem !important;
+	.game-card {
+		background: var(--bg-primary);
+		border-radius: 16px;
+		border: 1px solid var(--amber-glow);
+		overflow: hidden;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 15px rgba(164, 120, 100, 0.1);
 	}
 
-	/* Reduce statistics padding on small screens */
-	div[style*="padding: 1.5rem 2rem; background: var(--bg-secondary);"] {
-		padding: 1rem !important;
+	.game-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 25px rgba(164, 120, 100, 0.2);
+		border-color: var(--teal-crystal);
 	}
-}
-</style>
+	/* Game Header */
+	.game-header {
+		background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+		padding: 2rem;
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+	}
 
-<script>
-// Real analytics tracking
-document.addEventListener('DOMContentLoaded', function() {
-	// Load and display current view count
-	function updateViewCount() {
-		const currentViews = localStorage.getItem('zoneNovaViews') || '0';
-		const viewsElement = document.getElementById('zoneNovaViews');
-		if (viewsElement) {
-			const viewCount = parseInt(currentViews);
-			viewsElement.textContent = viewCount.toLocaleString();
+	.game-icon {
+		width: 120px;
+		height: 68px;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+		flex-shrink: 0;
+		background: rgba(255,255,255,0.1);
+	}
+
+	.game-icon :global(img) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.game-info {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.game-title {
+		color: white;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 2rem;
+		font-weight: 700;
+		margin: 0 0 0.5rem 0;
+	}
+	.game-description {
+		color: rgba(255,255,255,0.9);
+		font-size: 1rem;
+		margin: 0;
+		line-height: 1.4;
+	}
+
+	.game-arrow {
+		color: white;
+		font-size: 2rem;
+		opacity: 0.8;
+		flex-shrink: 0;
+	}
+
+	/* Mobile Responsive */
+	@media (max-width: 768px) {
+		.main-content {
+			padding: 2rem 1rem;
+		}
+
+		.page-title {
+			font-size: 2rem;
+		}
+
+		.game-header {
+			flex-direction: column;
+			text-align: center;
+			gap: 1rem;
+			padding: 1.5rem;
+		}
+
+		.game-title {
+			font-size: 1.6rem;
+		}
+
+		.game-description {
+			font-size: 0.9rem;
+		}
+		.game-arrow {
+			display: none;
+		}
+
+		.game-icon {
+			width: 100px;
+			height: 56px;
 		}
 	}
 
-	// Track Zone Nova clicks
-	(window as any).trackZoneNovaClick = function() {
-		const currentViews = parseInt(localStorage.getItem('zoneNovaViews') || '0');
-		const newViews = currentViews + 1;
-		localStorage.setItem('zoneNovaViews', newViews.toString());
-		
-		// Also track in session for this visit
-		const sessionViews = parseInt(sessionStorage.getItem('sessionViews') || '0');
-		sessionStorage.setItem('sessionViews', (sessionViews + 1).toString());
-		
-		console.log(`Zone Nova view tracked: ${newViews} total views`);
-	};
+	@media (max-width: 480px) {
+		.page-title {
+			font-size: 1.8rem;
+		}
 
-	// Initialize view count display
-	updateViewCount();
-	
-	// Track page view (not click) for overall wiki engagement
-	const wikiViews = parseInt(localStorage.getItem('wikiPageViews') || '0');
-	localStorage.setItem('wikiPageViews', (wikiViews + 1).toString());
-});
+		.game-title {
+			font-size: 1.4rem;
+		}
+		.game-header {
+			padding: 1rem;
+		}
 
-// Track Zone Nova related page visits across the site
-window.addEventListener('beforeunload', function() {
-	// This will help track engagement across all Zone Nova pages
-	const currentPath = window.location.pathname;
-	if (currentPath.includes('zone-nova')) {
-		const zoneNovaPageViews = parseInt(localStorage.getItem('zoneNovaPageViews') || '0');
-		localStorage.setItem('zoneNovaPageViews', (zoneNovaPageViews + 1).toString());
+		.game-icon {
+			width: 80px;
+			height: 45px;
+		}
 	}
-});
-</script>
+
+	/* Performance optimizations */
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+	/* High contrast mode support */
+	@media (prefers-contrast: high) {
+		.game-card {
+			border-width: 2px;
+		}
+	}
+</style>
