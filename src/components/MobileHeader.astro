@@ -1,0 +1,46 @@
+---
+---
+
+<div class="mobile-nav">
+    <button id="hamburger" class="hamburger-menu" aria-label="Open Menu" aria-expanded="false">
+        <svg width="30" height="30" viewBox="0 0 30 30">
+            <path d="M4 7h22M4 15h22M4 23h22" stroke="var(--amber-glow)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+    </button>
+</div>
+
+<style>
+    @import '/src/styles/colors.css';
+
+    .mobile-nav {
+        display: block;
+    }
+
+    @media (min-width: 768px) {
+        .mobile-nav {
+            display: none;
+        }
+    }
+
+    .hamburger-menu {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        touch-action: manipulation;
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.2s ease;
+    }
+
+    .hamburger-menu:hover {
+        transform: scale(1.05);
+    }
+
+    .hamburger-menu:active {
+        transform: scale(0.95);
+    }
+</style>

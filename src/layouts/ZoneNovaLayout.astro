@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ZoneNovaQuickNav from '../components/ZoneNovaQuickNav.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
+import MobileMenu from '../components/MobileMenu.astro';
 
 // Import CSS files properly
 import '../styles/colors.css';
@@ -28,6 +29,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 	</head>
 	<body class="zone-nova-body">
 		<Header />
+		<MobileMenu />
 		
 		<div class="zone-nova-container">
 			<main class="zone-nova-main">
