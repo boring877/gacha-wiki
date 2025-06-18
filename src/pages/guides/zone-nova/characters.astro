@@ -58,10 +58,14 @@ import {
     .mobile-character-card .rarity-badge, .mobile-character-card .element-badge, .mobile-character-card .role-badge { font-size: 0.95em; padding: 0.18em 0.7em; border-radius: 8px; font-weight: 600; display: inline-block; margin: 0; }
     .mobile-card-stats, .mobile-card-stats-secondary { display: flex; gap: 1.2rem; margin-top: 0.5rem; font-size: 1.05em; color: var(--text-secondary, #e0e0e0); font-weight: 500; }
     .mobile-card-stats-secondary { margin-top: 0.2rem; font-size: 0.98em; }
-    .mobile-card-stats .stat-label, .mobile-card-stats-secondary .stat-label { color: var(--amber-glow, #ffe066); font-weight: 700; margin-right: 0.2em; }
+    .mobile-card-stats .stat-label, .mobile-card-stats-secondary .stat-label { color: var(--amber-glow, #ffe066); font-weight: 700; margin-right: 0.2em; }    /* Desktop: show table, hide mobile cards */
+    .character-table-container { display: block; }
+    .mobile-card-view { display: none; }
+    
+    /* Mobile: show cards, hide table */
     @media (max-width: 768px) {
-      .character-table-container { display: none; }
-      .mobile-card-view { display: block; }
+      .character-table-container { display: none !important; }
+      .mobile-card-view { display: block !important; }
       .filter-bar { flex-direction: column; gap: 0.8rem; }
       .filter-controls, .sort-controls { width: 100%; justify-content: center; }
     }
