@@ -1,1112 +1,190 @@
 ---
 import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
 import OptimizedImage from '../../../../components/OptimizedImage.astro';
+import { afroditeData, afroditeSEO } from './afrodite.js';
+
+export const prerender = true;
+
+// Import character data from penny.js
+const characterData = afroditeData;
+
+// SEO optimization using imported data
+const title = afroditeSEO.title;
+const description = afroditeSEO.description;
 ---
 
-<ZoneNovaLayout1 title="Afrodite - Zone Nova Character Guide" description="Complete guide for Afrodite, the SSR Holy Assault enhanced ultimate specialist from Zone Nova" gameTitle="Afrodite Character Information">
-	<Fragment slot="head">		<style>
-			.character-page {
-				background: var(--bg-secondary);
-				min-height: 100vh;
-				padding: 2rem 0;
-			}
-
-			.character-container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 0 2rem;
-			}
-
-			.character-header {
-				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
-				border-radius: 20px;
-				padding: 3rem;
-				margin-bottom: 3rem;
-				border: 1px solid var(--amber-glow);
-				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.1);
-				text-align: center;
-				transition: all 0.4s ease;
-			}
-
-			.character-header:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.15);
-			}
-
-			.character-image {
-				width: 300px;
-				height: 300px;
-				border-radius: 20px;
-				object-fit: cover;
-				margin: 0 auto 2rem auto;
-				display: block;
-				box-shadow: 0 12px 30px rgba(0, 172, 193, 0.3);
-				transition: all 0.3s ease;
-			}
-
-			.character-image:hover {
-				transform: scale(1.05);
-				box-shadow: 0 16px 40px rgba(0, 172, 193, 0.4);
-			}
-
-			.character-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 3rem;
-				font-weight: 700;
-				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				margin: 0 0 1rem 0;
-				animation: titleGlow 3s ease-in-out infinite alternate;
-			}
-
-			.animated-gradient {
-  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 50%, #43e97b 100%);
-  background-size: 200% auto;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine-move 2.5s linear infinite;
-}
-
-@keyframes shine-move {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
-}
-
-			.character-subtitle {
-				color: var(--text-secondary);
-				font-size: 1.2rem;
-				margin: 0;
-				font-weight: 500;
-			}
-
-			.content-section {
-				background: var(--bg-primary);
-				border-radius: 20px;
-				padding: 3rem;
-				margin-bottom: 2rem;
-				border: 1px solid var(--neutral-200);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
-				transition: all 0.4s ease;
-				animation: sectionFadeIn 0.8s ease-out;
-			}
-
-			.content-section:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
-				border-color: var(--teal-crystal);
-			}
-
-			.section-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 2rem;
-				font-weight: 700;
-				color: var(--text-primary);
-				margin: 0 0 1.5rem 0;
-				padding-bottom: 0.75rem;
-				border-bottom: 2px solid var(--amber-glow);
-				position: relative;
-			}
-
-			.section-title::after {
-				content: '';
-				position: absolute;
-				bottom: -2px;
-				left: 0;
-				width: 60px;
-				height: 2px;
-				background: var(--teal-crystal);
-			}
-
-			.subsection-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.5rem;
-				font-weight: 600;
-				color: var(--text-primary);
-				margin: 2rem 0 1rem 0;
-				padding-left: 1rem;
-				border-left: 4px solid var(--amber-glow);
-			}
-
-			.skill-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.3rem;
-				font-weight: 600;
-				color: var(--amber-glow);
-				margin: 1.5rem 0 0.8rem 0;
-			}
-
-			.info-card {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
-				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-				transition: all 0.3s ease;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.info-card::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-				transition: left 0.6s ease;
-			}
-
-			.info-card:hover::before {
-				left: 100%;
-			}
-
-			.info-card:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
-			}
-
-			.skill-card {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.08), rgba(0, 172, 193, 0.08));
-				border: 1px solid var(--amber-glow);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-				transition: all 0.3s ease;
-			}
-
-			.skill-card:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
-			}
-
-			.class-showcase {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
-				border: 1px solid var(--amber-glow);
-				border-radius: 15px;
-				padding: 2rem;
-				margin-bottom: 2rem;
-				display: flex;
-				align-items: center;
-				gap: 1.5rem;
-				transition: all 0.3s ease;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.class-showcase::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-				transition: left 0.6s ease;
-			}
-
-			.class-showcase:hover::before {
-				left: 100%;
-			}
-
-			.class-showcase:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
-			}
-
-			.class-image {
-				width: 64px;
-				height: 64px;
-				border-radius: 12px;
-				border: 2px solid var(--amber-glow);
-				flex-shrink: 0;
-				transition: all 0.3s ease;
-			}
-
-			.class-showcase:hover .class-image {
-				transform: scale(1.05);
-				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.3);
-			}
-
-			.class-info h3 {
-				color: var(--amber-glow);
-				margin: 0 0 0.5rem 0;
-				font-size: 1.4rem;
-				font-weight: 600;
-				font-family: 'Space Grotesk', sans-serif;
-			}
-
-			.class-info p {
-				color: var(--text-secondary);
-				margin: 0;
-				font-size: 1rem;
-				line-height: 1.5;
-			}
-
-			.stats-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-				gap: 1rem;
-				margin: 1.5rem 0;
-			}
-
-			.stat-item {
-				background: linear-gradient(135deg, var(--bg-secondary), rgba(255, 183, 77, 0.05));
-				border: 1px solid var(--neutral-200);
-				border-radius: 12px;
-				padding: 1.5rem;
-				text-align: center;
-				transition: all 0.3s ease;
-			}
-
-			.stat-item:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.15);
-				border-color: var(--amber-glow);
-			}
-
-			.stat-label {
-				font-size: 0.9rem;
-				color: var(--amber-glow);
-				font-weight: 600;
-				display: block;
-				margin-bottom: 0.5rem;
-			}
-
-			.stat-value {
-				font-size: 1.3rem;
-				font-weight: 700;
-				color: var(--text-primary);
-			}
-
-			.awakening-card {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
-				border: 1px solid var(--amber-glow);
-				border-radius: 12px;
-				padding: 1.5rem;
-				margin: 1rem 0;
-			}
-
-			.critical-awakening {
-				background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1));
-				border-color: #dc3545;
-			}
-
-			.warning-box {
-				background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 235, 59, 0.1));
-				border: 1px solid #FFC107;
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.warning-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.2rem;
-				font-weight: 700;
-				color: #F57C00;
-				margin-bottom: 0.75rem;
-				display: flex;
-				align-items: center;
-				gap: 0.5rem;
-			}
-
-			.priority-high {
-				background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), rgba(255, 255, 255, 0.05));
-				border-left: 4px solid #DC143C;
-				padding: 1rem;
-				margin: 0.5rem 0;
-			}
-
-			.priority-medium {
-				background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.05));
-				border-left: 4px solid #FFD700;
-				padding: 1rem;
-				margin: 0.5rem 0;
-			}
-
-			.priority-low {
-				background: linear-gradient(135deg, rgba(128, 128, 128, 0.1), rgba(255, 255, 255, 0.05));
-				border-left: 4px solid #808080;
-				padding: 1rem;
-				margin: 0.5rem 0;
-			}
-
-			.character-badge {
-  display: inline-block;
-  padding: 0.38rem 1.1rem;
-  border-radius: 14px;
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  margin: 0 0.1rem;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.08);
-  border: none;
-}
-.ssr-badge {
-  background: #ffe066;
-  color: #222;
-  border: 1.5px solid #eecb4d;
-}
-.holy-badge {
-  background: #ffe066;
-  color: #222;
-  border: 1.5px solid #ffd700;
-}
-.dps-badge {
-  background: #ffb347;
-  color: #222;
-  border: 1.5px solid #ff9800;
-}
-
-.badges-container {
-  background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
-  border-radius: 14px;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-  padding: 1.2rem 1.8rem;
-  border: 1px solid var(--neutral-200);
-  margin-top: 1rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.badges-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-  transition: left 0.6s ease;
-}
-
-.badges-container:hover::before {
-  left: 100%;
-}
-
-.badges-container:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-  border-color: var(--amber-glow);
-}
-
-.skills-table-container {
-  background: var(--bg-primary);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow-x: auto;
-}
-
-.skills-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: transparent;
-}
-
-.skills-table th {
-  background: var(--amber-glow);
-  color: #222;
-  padding: 1rem;
-  text-align: left;
-  font-weight: 700;
-  border-bottom: 2px solid var(--neutral-200);
-}
-
-.skills-table td {
-  padding: 1.2rem 1rem;
-  border-bottom: 1px solid var(--neutral-200);
-  vertical-align: top;
-}
-
-.skills-table tr:hover {
-  background: rgba(255, 183, 77, 0.05);
-}
-
-.skills-table td:first-child {
-  width: 150px;
-  text-align: center;
-}
-
-.skills-table td:nth-child(2) {
-  width: 250px;
-}
-
-.skills-table td:last-child {
-  min-width: 400px;
-}
-
-.skills-table ul {
-  margin: 0;
-  padding-left: 1.5rem;
-}
-
-.skills-table li {
-  margin-bottom: 0.5rem;
-}
-
-.skills-table strong {
-  color: var(--amber-glow);
-}
-
-.skills-table small {
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-}
-
-.skill-type {
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  text-align: center;
-}
-
-.skill-type.normal-attack {
-  background: #e3f2fd;
-  color: #1976d2;
-  border: 1px solid #bbdefb;
-}
-
-.skill-type.auto-skill {
-  background: #f3e5f5;
-  color: #7b1fa2;
-  border: 1px solid #ce93d8;
-}
-
-.skill-type.ultimate {
-  background: #fff3e0;
-  color: #f57c00;
-  border: 1px solid #ffcc02;
-}
-
-.skill-type.passive {
-  background: #e8f5e8;
-  color: #388e3c;
-  border: 1px solid #a5d6a7;
-}
-
-.skill-type.team-skill {
-  background: #fce4ec;
-  color: #c2185b;
-  border: 1px solid #f8bbd9;
-}
-
-.priority-badge {
-  display: inline-block;
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.8rem;
-  text-align: center;
-}
-
-.priority-badge.critical {
-  background: #ffebee;
-  color: #c62828;
-  border: 1px solid #ef9a9a;
-}
-
-.priority-badge.high {
-  background: #fff3e0;
-  color: #ef6c00;
-  border: 1px solid #ffb74d;
-}
-
-.priority-badge.recommended {
-  background: #e8f5e8;
-  color: #2e7d32;
-  border: 1px solid #81c784;
-}
-
-.priority-badge.normal {
-  background: #f5f5f5;
-  color: #616161;
-  border: 1px solid #bdbdbd;
-}
-
-.overview-section .section-title, .memory-card-section .section-title {
-    font-size: 2.1rem;
-    margin-bottom: 2.5rem;
-    text-align: center;
-}
-
-.overview-container, .memory-card-container {
-    display: flex;
-    gap: 2.5rem;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-
-.hero-card, .memory-card-image-section {
-    flex: 1.5;
-    min-width: 340px;
-    max-width: 520px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.hero-card-inner, .memory-card-image-inner {
-    background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
-    border-radius: 18px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-    padding: 2.5rem 1.5rem;
-    border: 1.5px solid var(--amber-glow);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 420px;
-    width: 100%;
-}
-
-.hero-card-inner {
-    padding-bottom: 1.5rem;
-}
-
-.hero-character-image {
-    margin-bottom: 1.5rem;
-    margin-top: 0;
-    width: 340px;
-    height: 340px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
-    max-width: 100%;
-}
-
-.hero-character-title {
-    margin: 0;
-    font-size: 2.8rem;
-    text-align: center;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-.hero-badges-container {
-    margin-top: 1.8rem;
-}
-
-.hero-badges-container-inner {
-    display: flex;
-    justify-content: center;
-    gap: 0.7rem;
-    flex-wrap: wrap;
-}
-
-.stats-box, .memory-card-stats-section {
-    flex: 1;
-    min-width: 260px;
-    max-width: 400px;
-}
-
-.stats-box-inner, .memory-card-stats-inner {
-    background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%);
-    border-radius: 18px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-    padding: 2.2rem 1.5rem;
-    border: 1px solid var(--neutral-200);
-    width: 100%;
-}
-
-.hero-stats-top {
-    margin-bottom: 1.5rem;
-    grid-template-columns: 1fr 1fr;
-}
-
-.hero-stats-bottom {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.1rem;
-}
-
-.hero-stat-item { text-align: center; }
-.hero-stat-label { font-size: 1.1rem; }
-.hero-stat-value { font-size: 1.25rem; font-weight: 600; letter-spacing: 1px; color: #222; }
-.hero-stats-top .stat-item:first-child .hero-stat-label { color: #fbc02d; }
-.hero-stats-top .stat-item:last-child .hero-stat-label { color: #ff9800; }
-.hero-stats-top .stat-item:last-child .hero-stat-value { font-weight: 700; color: #d32f2f; }
-.hero-stats-bottom .stat-value { font-size: 1.15rem; font-weight: 600; }
-.hero-stats-bottom .stat-item:nth-child(odd) .stat-label { color: #fbc02d; }
-.hero-stats-bottom .stat-item:nth-child(even) .stat-label { color: #ff9800; }
-
-.memory-card-image {
-    width: 280px;
-    height: 420px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
-    max-width: 100%;
-}
-
-.memory-card-stats-section .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-}
-.memory-card-stats-section .stat-item { text-align: center; }
-.memory-card-stats-section .stat-label { font-size: 1.1rem; }
-.memory-card-stats-section .stat-value { font-size: 1.25rem; font-weight: 600; }
-.memory-card-stats-section .stat-item:nth-child(1) .stat-label { color: #fbc02d; }
-.memory-card-stats-section .stat-item:nth-child(2) .stat-label { color: #ff9800; }
-.memory-card-stats-section .stat-item:nth-child(3) .stat-label { color: #fbc02d; }
-
-.memory-card-stats-title, .memory-effects-title {
-    color: var(--amber-glow);
-    margin: 0 0 1.5rem 0;
-    font-size: 1.3rem;
-    text-align: center;
-}
-.memory-effects-title {
-    color: var(--teal-crystal);
-}
-
-.memory-effects-box {
-    background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%);
-    border-radius: 18px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-    padding: 2.2rem 1.5rem;
-    border: 1px solid var(--teal-crystal);
-    margin-top: 2rem;
-}
-.memory-effects-box ul {
-    margin: 0;
-    padding-left: 1.5rem;
-    max-width: none;
-}
-.memory-effects-box li {
-    margin-bottom: 0.8rem;
-}
-
-			@keyframes titleGlow {
-				0% { filter: brightness(1) drop-shadow(0 0 5px rgba(164, 120, 100, 0.3)); }
-				100% { filter: brightness(1.1) drop-shadow(0 0 15px rgba(164, 120, 100, 0.5)); }
-			}
-
-			@keyframes sectionFadeIn {
-				from { opacity: 0; transform: translateY(20px); }
-				to { opacity: 1; transform: translateY(0); }
-			}
-
-			@media (max-width: 768px) {
-	.character-container { padding: 0 0.5rem; }
-	.character-header { padding: 1.2rem; }
-	.content-section { padding: 1rem; }
-	.character-title { font-size: 1.5rem; }
-	.section-title { font-size: 1.1rem; }
-	.stats-grid { grid-template-columns: 1fr; }
-	.character-image { width: 100%; max-width: 180px; height: auto; }
-	.badges-container { padding: 0.7rem 0.5rem; }
-	.skills-table-container { padding: 0.5rem; }
-	.skills-table th, .skills-table td { padding: 0.5rem; font-size: 0.95rem; }
-	.skills-table td:last-child { min-width: 220px; }
-	.skills-table, .skills-table-container { display: none !important; }
-	.mobile-skill-list, .mobile-awakening-list { display: block !important; }
-	/* Stack flex layouts vertically */
-	[style*='display: flex'] { flex-direction: column !important; gap: 1rem !important; align-items: stretch !important; }
-	/* Make tables scrollable */
-	.skills-table-container { overflow-x: auto; }
-}
-@media (min-width: 769px) {
-	.mobile-skill-list, .mobile-awakening-list { display: none !important; }
-	.mobile-awakening-card > strong {
-    text-align: left;
-    margin-left: 0;
-    margin-right: 0;
-    display: block;
-  }
-}
-
-.mobile-skill-list, .mobile-awakening-list {
-  margin-top: 1rem;
-}
-.mobile-skill-card, .mobile-awakening-card {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
-  padding: 1.2rem 1rem 1.1rem 1rem;
-  margin-bottom: 1.3rem;
-  border: 1.5px solid var(--teal-crystal);
-  transition: box-shadow 0.2s;
-}
-.mobile-skill-card:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
-}
-.mobile-skill-title {
-  font-weight: 700;
-  margin: 0.7rem 0 0.7rem 0;
-  font-size: 1.13rem;
-  color: var(--amber-glow);
-  line-height: 1.3;
-}
-.mobile-skill-title small {
-  display: block;
-  font-size: 0.98rem;
-  color: #bfae7c;
-  font-weight: 500;
-  margin-top: 0.1rem;
-}
-.mobile-skill-card ul {
-  margin: 0.5rem 0 0 1.1rem;
-  padding-left: 1.1rem;
-}
-.mobile-skill-card li {
-  margin-bottom: 0.45rem;
-  font-size: 1.01rem;
-  line-height: 1.5;
-}
-.mobile-awakening-card {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
-  padding: 1.2rem 1rem 1.1rem 1rem;
-  margin-bottom: 1.3rem;
-  border: 1.5px solid var(--amber-glow);
-  transition: box-shadow 0.2s;
-}
-.mobile-awakening-card:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
-}
-.mobile-awakening-card > strong {
-				display: block;
-				font-size: 1.08rem;
-				color: var(--amber-glow);
-				margin-bottom: 0.5rem;
-				font-weight: 700;
-			}
-.mobile-awakening-card li, .mobile-awakening-card ul, .mobile-awakening-card {
-				color: var(--text-primary);
-}
-
-			.awakening-effects strong {
-					color: var(--text-primary);
-			}
-			.awakening-effects td:first-child strong {
-					color: var(--amber-glow);
-			}
-.awakening-effects ul, .mobile-awakening-card ul {
-  list-style-position: inside;
-  padding-left: 0.5rem;
-}
-.awakening-effects li, .mobile-awakening-card li {
-  padding-left: 0.2rem;
-  text-indent: -0.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.skills-table th:first-child,
-.skills-table td:first-child {
-  text-align: left;
-  padding-left: 1.5rem;
-}
-
-					</style>
-	</Fragment>	<div class="character-page">
-		<div class="character-container">
-			<!-- Character Header & Overview (merged) -->
-			<section class="content-section overview-section">
-    <h2 class="section-title">Character Overview</h2>
-    <div class="overview-container">        <!-- Hero Card (Right) -->        <div class="hero-card">            <div class="hero-card-inner">
-                <OptimizedImage 
-                    src="/images/characters/Afrodite.jpg" 
-                    alt="Afrodite" 
-                    width={340}
-                    height={340}
-                    class="hero-character-image"
-                    priority={true}
-                />
-                <h1 class="hero-character-title">Afrodite</h1>
-            </div>
-            <!-- Badges in separate box with better styling -->
-            <div class="badges-container hero-badges-container">
-                <div class="hero-badges-container-inner">
-                    <span class="character-badge ssr-badge">SSR</span>
-                    <span class="character-badge holy-badge">Holy</span>
-                    <span class="character-badge dps-badge">DPS</span>
-                </div>
-            </div>
+<ZoneNovaLayout1 
+  title={title} 
+  description={description}
+  gameTitle={characterData.name}
+  showBreadcrumb={true}  breadcrumbText="Characters"
+>  <!-- Character Header & Overview (merged) -->
+  <section class="content-section test-debug">
+    <h2 class="section-title" style="margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+    <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+      <!-- Hero Card (Left) -->
+      <div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+        <div style="background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(28,28,28,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+          <OptimizedImage 
+            src={`/images/characters/${characterData.image}`}
+            alt={characterData.name}
+            width={340}
+            height={340}
+            loading="eager"
+            priority={true}
+            class="character-portrait"
+            style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(28,28,28,0.10); max-width: 100%;"
+          />
+          <h1 class="character-name" style="margin: 0; text-align:center; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">{characterData.name}</h1>
         </div>
-        <!-- Stats Box (Left) -->
-        <div class="stats-box">
-            <div class="stats-box-inner">
-                <div class="stats-grid hero-stats-top">
-                    <div class="stat-item hero-stat-item"><div class="hero-stat-label">Faction</div><div class="hero-stat-value">Ortis</div></div>
-                    <div class="stat-item hero-stat-item"><div class="hero-stat-label">Role</div><div class="hero-stat-value">DPS</div></div>
-                </div>                <div class="stats-grid hero-stats-bottom">
-                    <div class="stat-item"><div class="stat-label">HP</div><div class="stat-value">8,033</div></div>
-                    <div class="stat-item"><div class="stat-label">Attack</div><div class="stat-value">1305</div></div>
-                    <div class="stat-item"><div class="stat-label">Defense</div><div class="stat-value">530</div></div>
-                    <div class="stat-item"><div class="stat-label">Energy Regen</div><div class="stat-value">0.25/s</div></div>
-                    <div class="stat-item"><div class="stat-label">Crit Rate</div><div class="stat-value">0%</div></div>
-                    <div class="stat-item"><div class="stat-label">Crit Damage</div><div class="stat-value">50%</div></div>
-                </div>
-            </div>
+        <!-- Badges in separate box with better styling -->
+        <div class="badges-container" style="margin-top: 1.8rem; background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 14px; box-shadow: 0 3px 15px rgba(28,28,28,0.08); padding: 1.2rem 1.8rem; border: 1px solid var(--neutral-200); transition: all 0.3s ease; position: relative; overflow: hidden;">
+          <div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+            <span class={`rarity-badge ${characterData.rarity.toLowerCase()}`}>{characterData.rarity}</span>
+            <span class={`element-badge ${characterData.element.toLowerCase()}`}>{characterData.element}</span>
+            <span class={`role-badge ${characterData.class.toLowerCase()}`}>{characterData.class}</span>
+          </div>
         </div>
+      </div>
+      <!-- Stats Box (Right) -->
+      <div style="flex: 1; min-width: 260px; max-width: 500px;">
+        <div style="background: linear-gradient(135deg, var(--neutral-50) 60%, var(--bg-primary) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(28,28,28,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+          <div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Faction</div><div class="stat-value" style="color:var(--amber-glow);">{characterData.faction}</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Role</div><div class="stat-value" style="color:var(--amber-glow);">{characterData.class}</div></div>
+          </div>
+          <div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">HP</div><div class="stat-value">{characterData.stats.hp}</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Attack</div><div class="stat-value">{characterData.stats.attack}</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Defense</div><div class="stat-value">{characterData.stats.defense}</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Energy Regen</div><div class="stat-value">0.25/s</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Crit Rate</div><div class="stat-value">0%</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Crit Damage</div><div class="stat-value">50%</div></div>
+          </div>
+        </div>
+      </div>
     </div>
-</section>			<!-- Skills -->
-			<section class="content-section">
-				<h2 class="section-title">Skills</h2>
+  </section>    <!-- Skills & Team Composition -->
+    <section class="content-section">
+      <h2 class="section-title">Skills & Team Composition</h2>
+      
+      <div class="skill-card">
+        <h3 class="skill-title"> (Normal Attack) {characterData.skills.normal.name} </h3>
+        <p>{characterData.skills.normal.description}</p>
+      </div>
+        <div class="skill-card">
+        <h3 class="skill-title"> (Auto Skill) {characterData.skills.auto.name} </h3>
+        <div class="skill-stats">
+          <span class="skill-stat-item">
+            <span class="skill-stat-label">Cooldown:</span>
+            <span class="skill-stat-value">{characterData.skills.auto.cooldown}</span>
+          </span>
+        </div>
+        <p>{characterData.skills.auto.description}</p>
+      </div>
+      
+      <div class="skill-card">
+        <h3 class="skill-title">(Ultimate) {characterData.skills.ultimate.name}</h3>
+        <div class="skill-stats">
+          <span class="skill-stat-item">
+            <span class="skill-stat-label">Energy Cost:</span>
+            <span class="skill-stat-value">{characterData.skills.ultimate.energyCost}</span>
+          </span>
+        </div>
+        <p>{characterData.skills.ultimate.description}</p>
+      </div>
+      
+      <div class="skill-card">
+        <h3 class="skill-title">(Passive) {characterData.skills.passive.name}</h3>
+        <p>{characterData.skills.passive.description}</p>
+      </div>
+        <!-- Team Composition Skill -->      <div class="skill-card" style="border-left-color: var(--rose-quartz); background: linear-gradient(135deg, rgba(244, 143, 177, 0.05) 0%, var(--neutral-50) 100%);">
+        <h3 class="skill-title" style="color: var(--rose-quartz);">(Team Skill) {characterData.teamSkill.name}  </h3>
+        <div class="team-skill-details">
+          <div class="skill-effect">
+            <span class="skill-label">Effect:</span>
+            <p class="skill-description">{characterData.teamSkill.description}</p>
+          </div>
+          <div class="skill-requirements">
+            <span class="skill-label requirements-label">Requires:</span>
+            <p class="requirements-text">2 {characterData.teamSkill.requirements.faction} OR 2 {characterData.teamSkill.requirements.element} characters</p>
+          </div>
+        </div>
+      </div>
+    </section><!-- Awakening Effects -->
+    <section class="content-section">
+      <h2 class="section-title">Awakening Effects</h2>      {characterData.awakenings.map((awakening) => (
+        <div class="awakening-card">
+          <h3 class="awakening-title" data-level={awakening.level}>Awakening {awakening.level}</h3>
+          <p><strong>Effect:</strong> {awakening.effect}</p>
+        </div>
+      ))}
+    </section>    <!-- Memory Card -->
+    <section class="content-section">
+      <h2 class="section-title" style="margin-bottom:2.5rem; text-align:center;">Memory Card: {characterData.memoryCard.name}</h2>      <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+        <!-- Memory Card Image (Left) -->
+        <div style="flex: 1; min-width: 280px; max-width: 320px; display: flex; justify-content: center;">
+          <div style="background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(28,28,28,0.08); padding: 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; justify-content: center; align-items: center;">
+            <OptimizedImage 
+              src={`/images/characters/${characterData.memoryCard.image}`}
+              alt={characterData.memoryCard.name}
+              width={280}
+              height={420}
+              loading="lazy"
+              style="width: 280px; height: 420px; border-radius: 16px; object-fit: cover; box-shadow: 0 8px 32px rgba(28, 28, 28, 0.15); border: 2px solid var(--amber-glow); transition: all 0.3s ease;"
+            />
+          </div>
+        </div>
+        
+        <!-- Stats (Right) -->
+        <div style="flex: 1; min-width: 300px;">
+          <div style="background: linear-gradient(135deg, var(--neutral-50) 60%, var(--bg-primary) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(28,28,28,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+            <h3 class="memory-card-title" style="margin: 0 0 1.5rem 0; text-align: center; color: var(--text-primary);">Base Stats</h3>            <div class="stats-grid" style="grid-template-columns: 1fr; gap: 1.1rem;">
+              <div class="stat-item" style="display: flex; justify-content: space-between; align-items: center; text-align: left; padding: 0.8rem 1.2rem;">
+                <div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0;">HP</div>
+                <div class="stat-value" style="color:var(--amber-glow); font-weight: 600;">{characterData.memoryCard.stats.hp}</div>
+              </div>
+              <div class="stat-item" style="display: flex; justify-content: space-between; align-items: center; text-align: left; padding: 0.8rem 1.2rem;">
+                <div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0;">Attack</div>
+                <div class="stat-value" style="color:var(--amber-glow); font-weight: 600;">{characterData.memoryCard.stats.attack}</div>
+              </div>
+              <div class="stat-item" style="display: flex; justify-content: space-between; align-items: center; text-align: left; padding: 0.8rem 1.2rem;">
+                <div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0;">Defense</div>
+                <div class="stat-value" style="color:var(--amber-glow); font-weight: 600;">{characterData.memoryCard.stats.defense}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Memory Effects Box -->
+      <div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
+        <h4 class="memory-card-title" style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; text-align: center;">Memory Card Effects</h4>
+        <div style="display: grid; gap: 1rem;">
+          {characterData.memoryCard.effects.map((effect) => (
+            <div style="background: rgba(255, 255, 255, 0.7); border-radius: 12px; padding: 1rem 1.5rem; border-left: 4px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+              <p class="memory-effect-text" style="margin: 0; color: var(--text-primary);">• {effect}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
-				<div class="skills-table-container">
-					<table class="skills-table">
-						<thead>
-							<tr>
-								<th>Skill Type</th>
-								<th>Skill Name</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><span class="skill-type normal-attack">Normal Attack</span></td>
-								<td><strong>Love God Fist (爱神之拳)</strong><br><small>Level: 10+4 | CD: 2.0s</small></td>
-								<td>
-									<ul>
-										<li>Deals <strong>120% attack power</strong> as holy damage to designated enemy unit</li>
-										<li><strong>Builds toward enhanced ultimate</strong> - core mechanic for ultimate enhancement</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><span class="skill-type auto-skill">Auto Skill</span></td>
-								<td><strong>Charm Impact (魅惑冲拳)</strong><br><small>Level: 10+4 | Auto-trigger: 8.0s</small></td>
-								<td>
-									<ul>
-										<li><strong>Automatically</strong> deals <strong>816% attack power</strong> as holy damage to designated enemy</li>
-										<li><strong>Increases self attack by 58%</strong></li>
-										<li>High damage auto skill with substantial self-buffing component</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><span class="skill-type ultimate">Ultimate</span></td>
-								<td><strong>Love and Beauty Waltz (爱与美之圆舞曲)</strong><br><small>Level: 10+4 | CD: 1.0s | Energy: 8</small></td>
-								<td>
-									<ul>
-										<li><strong>Normal Ultimate:</strong> Deals <strong>1800% attack power</strong> as holy damage to designated enemy</li>
-										<li><strong>Enhanced Ultimate</strong> (after 10 normal attacks):</li>
-										<ul>
-											<li>Deals <strong>2160% attack power</strong> as holy damage to designated enemy</li>
-											<li><strong>Recovers 2 energy</strong> at the end</li>
-											<li><strong>Damage converted to normal attack damage</strong> (benefits from different scaling)</li>
-										</ul>
-										<li><strong>Core mechanic:</strong> Build up through normal attacks for maximum damage</li>
-									</ul>
-								</td>
-							</tr>							<tr>
-								<td><span class="skill-type passive">Passive</span></td>
-								<td><strong>Beautiful Kill (美丽杀意)</strong><br><small>Level: 10+4</small></td>
-								<td>
-									<ul>
-										<li><strong>When HP > 50%:</strong> All attacks deal additional <strong>48% attack power</strong> as violent damage</li>
-										<li><strong>When HP &lt; 50%:</strong> Damage taken reduced by <strong>96%</strong></li>
-										<li><strong>Dual-phase passive</strong> that provides offensive power when healthy, defensive power when injured</li>
-									</ul>
-								</td>
-							</tr>							<tr>
-								<td><span class="skill-type team-skill">Team Skill</span></td>
-								<td><strong>Combination Skill</strong><br><small>Level: 1</small><br><small style="color: var(--amber-glow);">Requires: 2 [Faction] OR 2 [Holy] characters</small></td>
-								<td>
-									<ul>
-										<li><strong>Self attack power increased by 10%</strong></li>
-										<li><strong>At battle start:</strong> For every <strong>500 attack power</strong>, increase self holy damage by <strong>5%</strong> (maximum 6 times)</li>
-										<li><strong>Maximum scaling:</strong> 30% holy damage boost at 3,000+ attack power</li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="mobile-skill-list">
-  <div class="mobile-skill-card">
-    <span class="skill-type normal-attack">Normal Attack</span>
-    <div class="mobile-skill-title">Love God Fist (爱神之拳) <small>Lv. 10+4 | CD: 2.0s</small></div>
-    <ul>
-      <li>Deals <strong>120% attack power</strong> as holy damage to designated enemy unit</li>
-      <li><strong>Builds toward enhanced ultimate</strong> - core mechanic for ultimate enhancement</li>
-    </ul>
-  </div>
-  <div class="mobile-skill-card">
-    <span class="skill-type auto-skill">Auto Skill</span>
-    <div class="mobile-skill-title">Charm Impact (魅惑冲拳) <small>Lv. 10+4 | Auto: 8.0s</small></div>
-    <ul>
-      <li><strong>Automatically</strong> deals <strong>816% attack power</strong> as holy damage to designated enemy</li>
-      <li><strong>Increases self attack by 58%</strong></li>
-      <li>High damage auto skill with substantial self-buffing component</li>
-    </ul>
-  </div>
-  <div class="mobile-skill-card">
-    <span class="skill-type ultimate">Ultimate</span>
-    <div class="mobile-skill-title">Love and Beauty Waltz (爱与美之圆舞曲) <small>Lv. 10+4 | CD: 1.0s | Energy: 8</small></div>
-    <ul>
-      <li><strong>Normal Ultimate:</strong> Deals <strong>1800% attack power</strong> as holy damage to designated enemy</li>
-      <li><strong>Enhanced Ultimate</strong> (after 10 normal attacks):
-        <ul>
-          <li>Deals <strong>2160% attack power</strong> as holy damage to designated enemy</li>
-          <li><strong>Recovers 2 energy</strong> at the end</li>
-          <li><strong>Damage converted to normal attack damage</strong> (benefits from different scaling)</li>
-        </ul>
-      </li>
-      <li><strong>Core mechanic:</strong> Build up through normal attacks for maximum damage</li>
-    </ul>
-  </div>
-  <div class="mobile-skill-card">
-    <span class="skill-type passive">Passive</span>
-    <div class="mobile-skill-title">Beautiful Kill (美丽杀意) <small>Lv. 10+4</small></div>
-    <ul>
-      <li><strong>When HP > 50%:</strong> All attacks deal additional <strong>48% attack power</strong> as violent damage</li>
-      <li><strong>When HP &lt; 50%:</strong> Damage taken reduced by <strong>96%</strong></li>
-      <li><strong>Dual-phase passive</strong> that provides offensive power when healthy, defensive power when injured</li>
-    </ul>
-  </div>
-  <div class="mobile-skill-card">
-    <span class="skill-type team-skill">Team Skill</span>
-    <div class="mobile-skill-title">Combination Skill <small>Lv. 1</small></div>
-    <div style="color: #fbc02d; font-size: 0.98rem; font-weight: 600; margin-bottom: 0.5rem;">Requires: 2 [Faction] OR 2 [Holy] characters</div>
-    <ul>
-      <li><strong>Self attack power increased by 10%</strong></li>
-      <li><strong>At battle start:</strong> For every <strong>500 attack power</strong>, increase self holy damage by <strong>5%</strong> (maximum 6 times)</li>
-      <li><strong>Maximum scaling:</strong> 30% holy damage boost at 3,000+ attack power</li>
-    </ul>
-  </div>
-</div>
-			</section>			<!-- Awakening Effects -->
-			<section class="content-section">
-				<h2 class="section-title">Awakening Effects</h2>				<div class="skills-table-container">
-					<table class="skills-table">
-						<thead>
-							<tr>
-								<th>Awakening</th>
-								<th>Effects</th>
-							</tr>
-						</thead>						<tbody class="awakening-effects">
-							<tr>
-								<td><strong>Awakening 1</strong></td>
-								<td>
-									<ul>
-										<li><strong>When using skill:</strong> Can accumulate <strong>4 times</strong> to strengthen the required normal attack count for enhanced ultimate</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><strong>Awakening 2</strong></td>
-								<td>
-									<ul>
-										<li><strong>When using enhanced ultimate and skill:</strong> Damage taken reduced by <strong>10%</strong></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><strong>Awakening 3</strong></td>
-								<td>
-									<ul>
-										<li><strong>[Skills] and [Normal Attack] level and level cap +4</strong></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><strong>Awakening 4</strong></td>
-								<td>
-									<ul>
-										<li><strong>Normal attack damage increased by 35%</strong></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><strong>Awakening 5</strong></td>
-								<td>
-									<ul>
-										<li><strong>[Ultimate] and [Passive] level and level cap +4</strong></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><strong>Awakening 6</strong></td>
-								<td>
-									<ul>
-										<li><strong>[Enhanced Ultimate] ignores 20% elemental resistance</strong></li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="mobile-awakening-list">
-  <div class="mobile-awakening-card"><strong>Awakening 1:</strong>
-    <ul><li><strong>When using skill:</strong> Can accumulate <strong>4 times</strong> to strengthen the required normal attack count for enhanced ultimate</li></ul>
-  </div>
-  <div class="mobile-awakening-card"><strong>Awakening 2:</strong>
-    <ul><li><strong>When using enhanced ultimate and skill:</strong> Damage taken reduced by <strong>10%</strong></li></ul>
-  </div>
-  <div class="mobile-awakening-card"><strong>Awakening 3:</strong>
-    <ul><li><strong>[Skills] and [Normal Attack] level and level cap +4</strong></li></ul>
-  </div>
-  <div class="mobile-awakening-card"><strong>Awakening 4:</strong>
-    <ul><li><strong>Normal attack damage increased by 35%</strong></li></ul>
-  </div>
-  <div class="mobile-awakening-card"><strong>Awakening 5:</strong>
-    <ul><li><strong>[Ultimate] and [Passive] level and level cap +4</strong></li></ul>
-  </div>
-  <div class="mobile-awakening-card"><strong>Awakening 6:</strong>
-    <ul><li><strong>[Enhanced Ultimate] ignores 20% elemental resistance</strong></li></ul>
-  </div>
-</div>
-			</section>			<!-- Memory Card -->
-			<section class="content-section memory-card-section">
-				<h2 class="section-title">Memory Card: Secret Garden</h2>
-				<div class="memory-card-container">					<!-- Memory Card Image (Left) -->
-					<div class="memory-card-image-section">
-						<div class="memory-card-image-inner">
-							<OptimizedImage 
-								src="/images/characters/Afroditecard.jpg" 
-								alt="Afrodite Memory Card" 
-								width={280}
-								height={420}
-								class="memory-card-image"
-							/>
-						</div>
-					</div>
-					<!-- Memory Card Stats (Right) -->
-					<div class="memory-card-stats-section">
-						<div class="memory-card-stats-inner">
-							<h4 class="memory-card-stats-title">Level 80/80 Base Stats</h4>
-							<div class="stats-grid">
-								<div class="stat-item"><div class="stat-label">HP</div><div class="stat-value">5,040</div></div>
-								<div class="stat-item"><div class="stat-label">Attack</div><div class="stat-value">780</div></div>
-								<div class="stat-item"><div class="stat-label">Defense</div><div class="stat-value">474</div></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<!-- Memory Effects Box -->
-				<div class="memory-effects-box">
-					<h4 class="memory-effects-title">Memory Effects</h4>
-					<ul>
-						<li ><strong>Attack power increased by 40%</strong></li>
-						<li ><strong>When equipped character releases enhanced ultimate or higher:</strong> Damage increased by <strong>40% for 10 seconds</strong></li>
-					</ul>
-				</div>
-			</section>
-
-		</div>
-	</div>
+    
+  <!-- Minimal JavaScript for progressive enhancement -->
+  <script>
+    // Lazy load images that aren't immediately visible
+    if ('IntersectionObserver' in window) {
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement;
+            img.setAttribute('loading', 'eager');
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+      images.forEach(img => imageObserver.observe(img));
+    }
+  </script>
 </ZoneNovaLayout1>

@@ -80,21 +80,21 @@ self.addEventListener('fetch', (event) => {
     );
     return;
   }
-
   // Handle pages with network-first strategy
   event.respondWith(
-    fetch(request).then((response) => {
-      // Cache successful page responses
-      if (response.status === 200 && request.mode === 'navigate') {
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
+    (async () => {
+      try {
+        const response = await fetch(request);
+        // Cache successful page responses
+        if (response.status === 200 && request.mode === 'navigate') {
+          const responseToCache = response.clone();
+          const cache = await caches.open(CACHE_NAME);
           cache.put(request, responseToCache);
-        });
-      }
-      return response;
-    }).catch(() => {
-      // Fallback to cache if network fails
-      return caches.match(request).then((cachedResponse) => {
+        }
+        return response;
+      } catch {
+        // Fallback to cache if network fails
+        const cachedResponse = await caches.match(request);
         if (cachedResponse) {
           return cachedResponse;
         }
@@ -103,8 +103,8 @@ self.addEventListener('fetch', (event) => {
           return caches.match(OFFLINE_URL);
         }
         return new Response('Offline', { status: 503 });
-      });
-    })
+      }
+    })()
   );
 });
 

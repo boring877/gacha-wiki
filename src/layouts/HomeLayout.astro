@@ -2,11 +2,14 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Analytics from '@vercel/analytics/astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
+// Note: Using Vercel adapter built-in analytics instead of manual imports
+// import Analytics from '@vercel/analytics/astro';
+// import SpeedInsights from '@vercel/speed-insights/astro';
 // Import CSS files properly
 import '../styles/colors.css';
 import '../styles/global.css';
+import '../styles/Zonenova/zn-typography.css';
+
 import MobileMenu from '../components/MobileMenu.astro';
 
 export interface Props {
@@ -43,10 +46,9 @@ const { title, description } = Astro.props;
 			<main>
 				<slot />
 			</main>
-			<Footer />
-		</div>
-		<Analytics />
-		<SpeedInsights />
+			<Footer />		</div>
+		
+		<!-- Vercel Analytics and Speed Insights are automatically injected by @astrojs/vercel adapter -->
 	</body>
 </html>
 
@@ -94,10 +96,15 @@ const { title, description } = Astro.props;
 	.bg-accent-3 {
 		display: none;
 	}
-	
-	.bg-accent-1 {
+		.bg-accent-1 {
 		opacity: 0.5;
 	}
+}
+
+/* Header Color Fix - Ensure amber color is applied */
+.header-container .logo-title.simple-title {
+	color: #FFB74D !important; /* Fallback color */
+	color: var(--amber-glow) !important; /* Preferred color */
 }
 
 /* Performance Optimizations */

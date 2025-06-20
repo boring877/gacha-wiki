@@ -1,712 +1,190 @@
 ---
 import ZoneNovaLayout1 from '../../../../layouts/ZoneNovaLayout1.astro';
-import FormattedDate from '../../../../components/FormattedDate.astro';
+import OptimizedImage from '../../../../components/OptimizedImage.astro';
+import { naiyaData, naiyaSEO } from './naiya.js';
+
+export const prerender = true;
+
+// Import character data from naiya.js
+const characterData = naiyaData;
+
+// SEO optimization using imported data
+const title = naiyaSEO.title;
+const description = naiyaSEO.description;
 ---
 
 <ZoneNovaLayout1 
-	title="Naiya Character Information - Zone Nova - GachaWiki" 
-	description="Complete information for Naiya, the water element healer and support specialist in Zone Nova"
-	gameTitle="Naiya Character Information"
-	showBreadcrumb={true}
-	breadcrumbText="Characters"
->	<Fragment slot="head">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">		<style>
-			.character-page {
-				background: var(--bg-secondary);
-				min-height: 100vh;
-				padding: 2rem 0;
-			}			.character-container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 0 2rem;
-			}
-
-			.character-image {
-				width: 300px;
-				height: 300px;
-				border-radius: 20px;
-				object-fit: cover;
-				margin: 0 auto 2rem auto;
-				display: block;
-				box-shadow: 0 12px 30px rgba(0, 172, 193, 0.3);
-				transition: all 0.3s ease;
-			}
-
-			.character-image:hover {
-				transform: scale(1.05);
-				box-shadow: 0 16px 40px rgba(0, 172, 193, 0.4);
-			}
-
-			.character-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 3rem;
-				font-weight: 700;
-				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				margin: 0 0 1rem 0;
-				animation: titleGlow 3s ease-in-out infinite alternate;
-			}
-
-			.character-subtitle {
-				color: var(--text-secondary);
-				font-size: 1.2rem;
-				margin: 0;
-				font-weight: 500;
-			}
-
-			.content-section {
-				background: var(--bg-primary);
-				border-radius: 20px;
-				padding: 3rem;
-				margin-bottom: 2rem;
-				border: 1px solid var(--neutral-200);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
-				transition: all 0.4s ease;
-				animation: sectionFadeIn 0.8s ease-out;
-			}
-
-			.content-section:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
-				border-color: var(--teal-crystal);
-			}
-
-			.section-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 2rem;
-				font-weight: 700;
-				color: var(--text-primary);
-				margin: 0 0 1.5rem 0;
-				padding-bottom: 0.75rem;
-				border-bottom: 2px solid var(--amber-glow);
-				position: relative;
-			}
-
-			.section-title::after {
-				content: '';
-				position: absolute;
-				bottom: -2px;
-				left: 0;
-				width: 60px;
-				height: 2px;
-				background: var(--teal-crystal);
-			}
-
-			.subsection-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.5rem;
-				font-weight: 600;
-				color: var(--text-primary);
-				margin: 2rem 0 1rem 0;
-				padding-left: 1rem;
-				border-left: 4px solid var(--amber-glow);
-			}
-
-			.skill-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.3rem;
-				font-weight: 600;
-				color: var(--amber-glow);
-				margin: 1.5rem 0 0.8rem 0;
-			}
-
-			.info-card {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
-				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-				transition: all 0.3s ease;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.info-card::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-				transition: left 0.6s ease;
-			}
-
-			.info-card:hover::before {
-				left: 100%;
-			}
-
-			.info-card:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
-			}			.stats-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-				gap: 1.5rem;
-				margin: 1.5rem 0;
-			}
-
-			.stat-item {
-				background: var(--bg-secondary);
-				padding: 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--neutral-200);
-				transition: all 0.3s ease;
-			}
-
-			.stat-item:hover {
-				border-color: var(--amber-glow);
-				transform: translateY(-2px);
-			}
-
-			.stat-label {
-				font-weight: 600;
-				color: var(--amber-glow);
-				margin-bottom: 0.5rem;
-			}
-
-			.stat-value {
-				color: var(--text-primary);
-				font-size: 1.1rem;
-			}			.warning-box {
-				background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1));
-				border: 1px solid #ffc107;
-				border-radius: 12px;
-				padding: 1.5rem;
-				margin: 1.5rem 0;
-			}			.warning-box .warning-title {
-				color: #ffc107;
-				font-weight: 600;
-				margin-bottom: 0.5rem;
-			}
-
-			.video-container {
-				background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
-				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-			}
-
-			.video-wrapper {
-				position: relative;
-				padding-bottom: 56.25%;
-				height: 0;
-				overflow: hidden;
-				border-radius: 12px;
-			}
-
-			.video-wrapper iframe {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-			}
-
-			/* Modern Badge System */
-			.character-badge {
-				display: inline-block;
-				padding: 0.38rem 1.1rem;
-				border-radius: 14px;
-				font-weight: 700;
-				font-size: 1.05rem;
-				letter-spacing: 0.5px;
-				box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-				margin: 0 0.1rem;
-				text-shadow: 0 1px 2px rgba(0,0,0,0.08);
-				border: none;
-				text-align: center;
-				text-transform: uppercase;
-				min-width: 60px;
-				transition: all 0.3s ease;
-				cursor: pointer;
-			}
-
-			.character-badge:hover {
-				transform: translateY(-2px) scale(1.05);
-				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-			}
-
-			.ssr-badge {
-				background: #ffe066;
-				color: #222;
-			}
-
-			.ssr-badge:hover {
-				background: #ffdd33;
-				box-shadow: 0 4px 15px rgba(255, 224, 102, 0.4);
-			}			.water-badge {
-				background: #b3e5fc;
-				color: #01579b;
-			}
-
-			.water-badge:hover {
-				background: #81d4fa;
-				box-shadow: 0 4px 15px rgba(179, 229, 252, 0.4);
-			}			.ice-badge {
-				background: #e3f2fd;
-				color: #0277bd;
-				border: 1.5px solid #90caf9;
-			}
-
-			.ice-badge:hover {
-				background: #bbdefb;
-				box-shadow: 0 4px 15px rgba(227, 242, 253, 0.4);
-			}
-
-			.support-badge {
-				background: #c8e6c9;
-				color: #2e7d32;
-			}
-
-			.support-badge:hover {
-				background: #a5d6a7;
-				box-shadow: 0 4px 15px rgba(200, 230, 201, 0.4);
-			}
-
-			.buffer-badge {
-				background: #66d9ef;
-				color: #222;
-				border: 1.5px solid #4fc3f7;
-			}
-
-			.buffer-badge:hover {
-				background: #4fc3f7;
-				box-shadow: 0 4px 15px rgba(102, 217, 239, 0.4);
-			}
-
-			.badges-container {
-				background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
-				border-radius: 14px;
-				box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-				padding: 1.2rem 1.8rem;
-				border: 1px solid var(--neutral-200);
-				margin-top: 1rem;
-				transition: all 0.3s ease;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.badges-container::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-				transition: left 0.6s ease;
-			}
-
-			.badges-container:hover::before {
-				left: 100%;
-			}
-
-			.badges-container:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-				border-color: var(--amber-glow);
-			}
-
-			/* Skills Table */
-			.skills-table-container {
-				background: var(--bg-primary);
-				border-radius: 12px;
-				padding: 1.5rem;
-				box-shadow: 0 4px 15px rgba(164, 120, 100, 0.08);
-				border: 1px solid var(--neutral-200);
-			}
-
-			.skills-table {
-				width: 100%;
-				border-collapse: collapse;
-				background: transparent;
-			}
-
-			.skills-table thead {
-				background: var(--amber-glow);
-			}
-
-			.skills-table thead th {
-				color: #222;
-				padding: 1rem;
-				text-align: left;
-				font-weight: 700;
-				border-bottom: 2px solid var(--neutral-200);
-			}			.skills-table td {
-				padding: 1.2rem 1rem;
-				border-bottom: 1px solid var(--neutral-200);
-				vertical-align: top;
-			}
-
-			.skills-table td:first-child {
-				white-space: nowrap;
-				min-width: 120px;
-			}.skills-table tr:hover {
-				background: rgba(255, 183, 77, 0.05);
-			}
-
-			.skills-table ul {
-				margin: 0;
-				padding-left: 1.5rem;
-				list-style-type: disc;
-			}			.skills-table li {
-				margin-bottom: 0.5rem;
-				line-height: 1.4;
-			}
-
-			.skills-table strong {
-				color: var(--amber-glow);
-			}
-
-			.skills-table small {
-				color: var(--text-secondary);
-				font-size: 0.85rem;
-			}
-
-			.skill-name {
-				font-weight: 600;
-				color: var(--amber-glow);
-				margin-bottom: 0.3rem;
-			}
-
-			.skill-description {
-				color: var(--text-secondary);
-				line-height: 1.6;
-			}
-
-			/* Skill Type Badges */
-			.skill-type {
-				display: inline-block;
-				padding: 0.3rem 0.8rem;
-				border-radius: 10px;
-				font-size: 0.85rem;
-				font-weight: 600;
-				text-align: center;
-				min-width: 80px;
-			}
-
-			.skill-type.normal-attack {
-				background: #e3f2fd;
-				color: #1976d2;
-				border: 1px solid #bbdefb;
-			}
-
-			.skill-type.auto-skill {
-				background: #f3e5f5;
-				color: #7b1fa2;
-				border: 1px solid #e1bee7;
-			}
-
-			.skill-type.ultimate {
-				background: #ffebee;
-				color: #c62828;
-				border: 1px solid #ffcdd2;
-			}
-
-			.skill-type.passive {
-				background: #e8f5e8;
-				color: #388e3c;
-				border: 1px solid #a5d6a7;
-			}
-
-			.skill-type.team-skill {
-				background: #fce4ec;
-				color: #c2185b;
-				border: 1px solid #f8bbd9;
-			}			/* Stats and Layout */
-			.stats-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-				gap: 1.5rem;
-				margin-bottom: 2rem;
-			}
-
-			.stat-label {
-				font-size: 0.9rem;
-				color: var(--amber-glow);
-				font-weight: 600;
-				display: block;
-				margin-bottom: 0.5rem;
-			}
-
-			.stat-value {
-				font-size: 1.3rem;
-				font-weight: 700;
-				color: var(--text-primary);
-			}
-
-			.stat-item {
-				background: linear-gradient(135deg, var(--bg-secondary), rgba(255, 183, 77, 0.05));
-				border: 1px solid var(--neutral-200);
-				border-radius: 12px;
-				padding: 1.5rem;
-				text-align: center;
-				transition: all 0.3s ease;
-			}
-
-			.stat-item:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 6px 20px rgba(164, 120, 100, 0.15);
-				border-color: var(--amber-glow);
-			}
-
-			.content-section {
-				background: var(--bg-primary);
-				border-radius: 20px;
-				padding: 3rem;
-				margin-bottom: 2rem;
-				border: 1px solid var(--neutral-200);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.08);
-				transition: all 0.4s ease;
-				animation: sectionFadeIn 0.8s ease-out;
-			}
-
-			.content-section:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 12px 35px rgba(164, 120, 100, 0.12);
-				border-color: var(--teal-crystal);
-			}
-
-			.section-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 2rem;
-				font-weight: 700;
-				color: var(--text-primary);
-				margin: 0 0 1.5rem 0;
-				padding-bottom: 0.75rem;
-				border-bottom: 2px solid var(--amber-glow);
-				position: relative;
-			}
-
-			.section-title::after {
-				content: '';
-				position: absolute;
-				bottom: -2px;
-				left: 0;
-				width: 60px;
-				height: 2px;
-				background: var(--teal-crystal);
-			}			/* Responsive */
-			@media (max-width: 768px) {
-				.character-container {
-					padding: 0 1rem;
-				}
-				.content-section {
-					padding: 2rem;
-				}
-				.character-image { 
-					width: 250px; 
-					height: 250px; 
-				}
-			}
-		</style>
-	</Fragment>	<div class="character-page">
-		<div class="character-container">
-			<!-- Character Header & Overview (merged) -->
-			<section class="content-section">
-    <h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
+  title={title} 
+  description={description}
+  gameTitle={characterData.name}
+  showBreadcrumb={true}  breadcrumbText="Characters"
+>  <!-- Character Header & Overview (merged) -->
+  <section class="content-section test-debug">
+    <h2 class="section-title" style="margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
     <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
-        <!-- Hero Card (Right) -->
-        <div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
-            <div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
-                <img src="/images/characters/naiya.jpg" alt="Naiya" class="character-image" loading="eager" style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" />
-                <h1 class="character-title" style="margin: 0; font-size: 2.8rem; text-align:center; font-weight: 700; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">Naiya</h1>
-            </div>            <!-- Badges in separate box with better styling -->
-            <div class="badges-container" style="margin-top: 1.8rem;">
-                <div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
-                    <span class="character-badge ssr-badge">SSR</span>
-                    <span class="character-badge ice-badge">Ice</span>
-                    <span class="character-badge buffer-badge">Buffer</span>
-                </div>
-            </div>
+      <!-- Hero Card (Left) -->
+      <div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
+        <div style="background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(28,28,28,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
+          <OptimizedImage 
+            src={`/images/characters/${characterData.image}`}
+            alt={characterData.name}
+            width={340}
+            height={340}
+            loading="eager"
+            priority={true}
+            class="character-portrait"
+            style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(28,28,28,0.10); max-width: 100%;"
+          />
+          <h1 class="character-name" style="margin: 0; text-align:center; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">{characterData.name}</h1>
         </div>
-        <!-- Stats Box (Left) -->
-        <div style="flex: 1; min-width: 260px; max-width: 400px;">
-            <div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
-                <div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Faction</div><div class="stat-value" style="font-size:1.25rem; font-weight:600; letter-spacing:1px; color:#222;">Avalon</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Role</div><div class="stat-value" style="font-size:1.25rem; font-weight:700; color:#222; letter-spacing:1px;">Buffer</div></div>
-                </div>
-                <div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">HP</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">9,564</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Attack</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">1,004</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Defense</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">672</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Energy Regen</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0.25/s</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d;">Crit Rate</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">0%</div></div>
-                    <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800;">Crit Damage</div><div class="stat-value" style="font-size:1.15rem; font-weight:600;">50%</div></div>
-                </div>
-            </div>
+        <!-- Badges in separate box with better styling -->
+        <div class="badges-container" style="margin-top: 1.8rem; background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 14px; box-shadow: 0 3px 15px rgba(28,28,28,0.08); padding: 1.2rem 1.8rem; border: 1px solid var(--neutral-200); transition: all 0.3s ease; position: relative; overflow: hidden;">
+          <div style="display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;">
+            <span class={`rarity-badge ${characterData.rarity.toLowerCase()}`}>{characterData.rarity}</span>
+            <span class={`element-badge ${characterData.element.toLowerCase()}`}>{characterData.element}</span>
+            <span class={`role-badge ${characterData.class.toLowerCase()}`}>{characterData.class}</span>
+          </div>
         </div>
+      </div>
+      <!-- Stats Box (Right) -->
+      <div style="flex: 1; min-width: 260px; max-width: 500px;">
+        <div style="background: linear-gradient(135deg, var(--neutral-50) 60%, var(--bg-primary) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(28,28,28,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+          <div class="stats-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr 1fr;">
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Faction</div><div class="stat-value" style="color:var(--amber-glow);">{characterData.faction}</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Role</div><div class="stat-value" style="color:var(--amber-glow);">{characterData.class}</div></div>
+          </div>
+          <div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 1.1rem;">            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">HP</div><div class="stat-value">{characterData.stats.hp}</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Attack</div><div class="stat-value">{characterData.stats.attack}</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Defense</div><div class="stat-value">{characterData.stats.defense}</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Energy Regen</div><div class="stat-value">0.25/s</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Crit Rate</div><div class="stat-value">0%</div></div>
+            <div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0.5rem;">Crit Damage</div><div class="stat-value">50%</div></div>
+          </div>
+        </div>
+      </div>
     </div>
-</section>			<!-- Skills Section -->
-			<section class="content-section">
-				<h2 class="section-title">Skills</h2>
+  </section>    <!-- Skills & Team Composition -->
+    <section class="content-section">
+      <h2 class="section-title">Skills & Team Composition</h2>
+      
+      <div class="skill-card">
+        <h3 class="skill-title"> (Normal Attack) {characterData.skills.normal.name} </h3>
+        <p>{characterData.skills.normal.description}</p>
+      </div>
+        <div class="skill-card">
+        <h3 class="skill-title"> (Auto Skill) {characterData.skills.auto.name} </h3>
+        <div class="skill-stats">
+          <span class="skill-stat-item">
+            <span class="skill-stat-label">Cooldown:</span>
+            <span class="skill-stat-value">{characterData.skills.auto.cooldown}</span>
+          </span>
+        </div>
+        <p>{characterData.skills.auto.description}</p>
+      </div>
+      
+      <div class="skill-card">
+        <h3 class="skill-title">(Ultimate) {characterData.skills.ultimate.name}</h3>
+        <div class="skill-stats">
+          <span class="skill-stat-item">
+            <span class="skill-stat-label">Energy Cost:</span>
+            <span class="skill-stat-value">{characterData.skills.ultimate.energyCost}</span>
+          </span>
+        </div>
+        <p>{characterData.skills.ultimate.description}</p>
+      </div>
+      
+      <div class="skill-card">
+        <h3 class="skill-title">(Passive) {characterData.skills.passive.name}</h3>
+        <p>{characterData.skills.passive.description}</p>
+      </div>
+        <!-- Team Composition Skill -->      <div class="skill-card" style="border-left-color: var(--rose-quartz); background: linear-gradient(135deg, rgba(244, 143, 177, 0.05) 0%, var(--neutral-50) 100%);">
+        <h3 class="skill-title" style="color: var(--rose-quartz);">(Team Skill) {characterData.teamSkill.name}  </h3>
+        <div class="team-skill-details">
+          <div class="skill-effect">
+            <span class="skill-label">Effect:</span>
+            <p class="skill-description">{characterData.teamSkill.description}</p>
+          </div>
+          <div class="skill-requirements">
+            <span class="skill-label requirements-label">Requires:</span>
+            <p class="requirements-text">2 {characterData.teamSkill.requirements.faction} OR 2 {characterData.teamSkill.requirements.element} characters</p>
+          </div>
+        </div>
+      </div>
+    </section><!-- Awakening Effects -->
+    <section class="content-section">
+      <h2 class="section-title">Awakening Effects</h2>      {characterData.awakenings.map((awakening) => (
+        <div class="awakening-card">
+          <h3 class="awakening-title" data-level={awakening.level}>Awakening {awakening.level}</h3>
+          <p><strong>Effect:</strong> {awakening.effect}</p>
+        </div>
+      ))}
+    </section>    <!-- Memory Card -->
+    <section class="content-section">
+      <h2 class="section-title" style="margin-bottom:2.5rem; text-align:center;">Memory Card: {characterData.memoryCard.name}</h2>      <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+        <!-- Memory Card Image (Left) -->
+        <div style="flex: 1; min-width: 280px; max-width: 320px; display: flex; justify-content: center;">
+          <div style="background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(28,28,28,0.08); padding: 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; justify-content: center; align-items: center;">
+            <OptimizedImage 
+              src={`/images/characters/${characterData.memoryCard.image}`}
+              alt={characterData.memoryCard.name}
+              width={280}
+              height={420}
+              loading="lazy"
+              style="width: 280px; height: 420px; border-radius: 16px; object-fit: cover; box-shadow: 0 8px 32px rgba(28, 28, 28, 0.15); border: 2px solid var(--amber-glow); transition: all 0.3s ease;"
+            />
+          </div>
+        </div>
+        
+        <!-- Stats (Right) -->
+        <div style="flex: 1; min-width: 300px;">
+          <div style="background: linear-gradient(135deg, var(--neutral-50) 60%, var(--bg-primary) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(28,28,28,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
+            <h3 class="memory-card-title" style="margin: 0 0 1.5rem 0; text-align: center; color: var(--text-primary);">Base Stats</h3>            <div class="stats-grid" style="grid-template-columns: 1fr; gap: 1.1rem;">
+              <div class="stat-item" style="display: flex; justify-content: space-between; align-items: center; text-align: left; padding: 0.8rem 1.2rem;">
+                <div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0;">HP</div>
+                <div class="stat-value" style="color:var(--amber-glow); font-weight: 600;">{characterData.memoryCard.stats.hp}</div>
+              </div>
+              <div class="stat-item" style="display: flex; justify-content: space-between; align-items: center; text-align: left; padding: 0.8rem 1.2rem;">
+                <div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0;">Attack</div>
+                <div class="stat-value" style="color:var(--amber-glow); font-weight: 600;">{characterData.memoryCard.stats.attack}</div>
+              </div>
+              <div class="stat-item" style="display: flex; justify-content: space-between; align-items: center; text-align: left; padding: 0.8rem 1.2rem;">
+                <div class="stat-label" style="color:var(--text-secondary); margin-bottom: 0;">Defense</div>
+                <div class="stat-value" style="color:var(--amber-glow); font-weight: 600;">{characterData.memoryCard.stats.defense}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Memory Effects Box -->
+      <div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
+        <h4 class="memory-card-title" style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; text-align: center;">Memory Card Effects</h4>
+        <div style="display: grid; gap: 1rem;">
+          {characterData.memoryCard.effects.map((effect) => (
+            <div style="background: rgba(255, 255, 255, 0.7); border-radius: 12px; padding: 1rem 1.5rem; border-left: 4px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+              <p class="memory-effect-text" style="margin: 0; color: var(--text-primary);">• {effect}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
-				<div class="skills-table-container">
-					<table class="skills-table">
-						<thead>
-							<tr>
-								<th>Skill Type</th>
-								<th>Skill Name</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><span class="skill-type normal-attack">Normal Attack</span></td>
-								<td><strong>Frost Strike</strong><br><small>Level: 10+4 | CD: 2.0s</small></td>
-								<td>
-									<ul>
-										<li>Deals <strong>120% attack power</strong> as ice damage to designated enemy unit</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><span class="skill-type auto-skill">Auto Skill</span></td>
-								<td><strong>War Intent Detection</strong><br><small>Level: 10+4 | Auto-trigger: 5.0s</small></td>
-								<td>
-									<ul>
-										<li>Automatically identifies ally with highest attack power within <strong>6-meter radius</strong></li>
-										<li>Grants <strong>War Intent</strong>: +20% attack power and +15% critical rate for 12 seconds</li>
-										<li>War Intent stacks up to 3 times on same target</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><span class="skill-type ultimate">Ultimate</span></td>
-								<td><strong>Hyper-Carry Awakening</strong><br><small>Level: 10+4 | CD: 1.0s | Energy: 3</small></td>
-								<td>
-									<ul>
-										<li>Deals ice damage equal to <strong>180% attack power</strong> to all enemies within <strong>6-meter radius</strong></li>
-										<li>Grants all allies <strong>Enhanced War Intent</strong> for 15 seconds: +30% attack power, +20% critical rate, +15% critical damage</li>
-										<li>Ally with highest attack receives <strong>Hyper-Carry Status</strong>: Additional +25% damage for 20 seconds</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><span class="skill-type passive">Passive</span></td>
-								<td><strong>Tactical Analysis</strong><br><small>Level: 10+4</small></td>
-								<td>
-									<ul>
-										<li>When allies with <strong>War Intent</strong> deal critical hits, Naiya gains <strong>Tactical Stack</strong> (max 5)</li>
-										<li>Each stack: +3% ice damage and +2% energy recovery</li>
-										<li>At 5 stacks: Next ultimate costs 1 less energy and applies War Intent to entire team</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><span class="skill-type team-skill">Team Skill</span></td>
-								<td><strong>Strategic Command</strong><br><small>Level: 1</small><br><small style="color: var(--amber-glow);">Requires: 2 [Ice] OR 2 [Buffer] characters</small></td>
-								<td>
-									<ul>
-										<li>War Intent effectiveness increased by <strong>25%</strong></li>
-										<li>War Intent duration increased by <strong>5 seconds</strong></li>
-										<li>Hyper-Carry Status grants additional <strong>+10% attack speed</strong></li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</section>			<!-- Awakening Effects -->
-			<section class="content-section">
-				<h2 class="section-title">Awakening Effects</h2>
-
-				<div class="skills-table-container">
-					<table class="skills-table">
-						<thead>
-							<tr>
-								<th>Awakening</th>
-								<th>Effects</th>
-							</tr>
-						</thead>						<tbody>
-							<tr>
-								<td><strong>Awakening 1</strong></td>
-								<td>
-									<ul>
-										<li><strong>After using ultimate:</strong> All friendly units' attack power increased by <strong>20%</strong> for 20 seconds</li>
-									</ul>
-								</td>
-							</tr>							<tr>
-								<td><strong>Awakening 2</strong></td>
-								<td>
-									<ul>
-										<li><strong>When characters with [War Intent] defeat an enemy:</strong> Recovers <strong>1 energy</strong> for the team</li>
-										<li>Triggers at most once per battle</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><strong>Awakening 3</strong></td>
-								<td>
-									<ul>
-										<li><strong>Skill and Normal Attack:</strong> Level and level cap increased by <strong>+4</strong></li>
-									</ul>
-								</td>
-							</tr>							<tr>
-								<td><strong>Awakening 4</strong></td>
-								<td>
-									<ul>
-										<li><strong>Characters with [War Intent] when attacking:</strong> Deal an additional <strong>500% attack power</strong> as ice damage</li>
-										<li>Triggers at most once every 10 seconds</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><strong>Awakening 5</strong></td>
-								<td>
-									<ul>
-										<li><strong>Ultimate Skill and Passive:</strong> Level and level cap increased by <strong>+4</strong></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td><strong>Awakening 6</strong></td>
-								<td>
-									<ul>
-										<li><strong>Ultimate skill duration extended to 20 seconds</strong></li>
-										<li><strong>Damage multiplier increased by 100%</strong></li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</section>			<!-- Memory Card -->
-			<section class="content-section">
-				<h2 class="section-title" style="font-size:2.1rem; margin-bottom:2.5rem; text-align:center;">Memory Card: Frost Dominion</h2>
-				<div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
-					<!-- Memory Card Image (Left) -->
-					<div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
-						<div style="background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 2.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
-							<img src="/images/characters/naiyacard.jpg" alt="Naiya Memory Card" style="width: 280px; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); max-width: 100%;" loading="lazy" />
-						</div>
-					</div>
-					<!-- Memory Card Stats (Right) -->
-					<div style="flex: 1; min-width: 260px; max-width: 400px;">
-						<div style="background: linear-gradient(135deg, #fffde7 60%, #e0f2f1 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--neutral-200); width: 100%;">
-							<h4 style="color: var(--amber-glow); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Level 80/80 Base Stats</h4>
-							<div class="stats-grid" style="grid-template-columns: 1fr; gap: 1rem;">
-								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">HP</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">6,000</div></div>
-								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#ff9800; font-size:1.1rem;">Attack</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">600</div></div>
-								<div class="stat-item" style="text-align:center;"><div class="stat-label" style="color:#fbc02d; font-size:1.1rem;">Defense</div><div class="stat-value" style="font-size:1.25rem; font-weight:600;">600</div></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<!-- Memory Effects Box -->
-				<div style="background: linear-gradient(135deg, #f0f4f8 60%, #e6fffa 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 2.2rem 1.5rem; border: 1px solid var(--teal-crystal); margin-top: 2rem;">
-					<h4 style="color: var(--teal-crystal); margin: 0 0 1.5rem 0; font-size: 1.3rem; text-align: center;">Memory Effects</h4>
-					<ul style="margin: 0; padding-left: 1.5rem; max-width: none;">
-						<li style="margin-bottom: 0.8rem;"><strong>Attack power increased by 40%</strong></li>
-						<li style="margin-bottom: 0.8rem;"><strong>Team Must-Kill Damage increased by 40% for 5 seconds after Ultimate:</strong> Enhances team finishing power after ultimate usage</li>
-					</ul>
-				</div>
-			</section></div>
-	</div>
+    
+  <!-- Minimal JavaScript for progressive enhancement -->
+  <script>
+    // Lazy load images that aren't immediately visible
+    if ('IntersectionObserver' in window) {
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement;
+            img.setAttribute('loading', 'eager');
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+      images.forEach(img => imageObserver.observe(img));
+    }
+  </script>
 </ZoneNovaLayout1>

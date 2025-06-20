@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist", "node_modules"],
+  "include": [".astro/types.d.ts", "**/*", "src/env.d.ts"],
+  "exclude": ["dist", "node_modules", "**/*.md", "**/*.astro"],
   "compilerOptions": {
     "strictNullChecks": true,
     "baseUrl": ".",
@@ -11,9 +11,13 @@
       "@/layouts/*": ["src/layouts/*"],
       "@/pages/*": ["src/pages/*"],
       "@/styles/*": ["src/styles/*"]
-    },
-    "resolveJsonModule": true,
+    },    "resolveJsonModule": true,
     "allowImportingTsExtensions": false,
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false,
+    "jsx": "preserve",
+    "jsxImportSource": "astro",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false
   }
 }

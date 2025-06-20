@@ -276,8 +276,7 @@ export const ZONE_NOVA_CHARACTERS = [
     image: "/images/Character Database/Yuis.jpg",
     slug: "yuis",
     detailUrl: "/guides/zone-nova/characters/yuis"
-  },
-  {
+  },  {
     id: 26,
     name: "Zashiki-warashi",
     rarity: "SR",
@@ -287,6 +286,17 @@ export const ZONE_NOVA_CHARACTERS = [
     image: "/images/Character Database/Zashiki-warashi.jpg",
     slug: "zashiki-warashi",
     detailUrl: "/guides/zone-nova/characters/zashiki-warashi"
+  },
+  {
+    id: 27,
+    name: "Penny",
+    rarity: "SSR",
+    element: "Wind",
+    role: "Tank",
+    stats: { hp: 10520, attack: 794, defense: 1232, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
+    image: "/images/Character Database/penny.jpg",
+    slug: "penny",
+    detailUrl: "/guides/zone-nova/characters/penny"
   }
 ];
 

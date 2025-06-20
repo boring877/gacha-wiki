@@ -89,7 +89,7 @@ const jpegSrcset = useOptimized
 
 // Fallback image (smallest optimized or original)
 const fallbackSrc = useOptimized 
-  ? getOptimizedPath(src, 'jpg', '-small')
+  ? getOptimizedPath(src, 'jpg', isCardImage || isSmallImage || isCharacterDatabaseImage ? '' : '-small')
   : src;
 ---
 

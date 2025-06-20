@@ -150,7 +150,7 @@ gacha-wiki/
 - **Icons**: Custom SVG favicon with theme-aware colors
 - **Deployment**: Vercel with automatic deployments
 - **Package Manager**: Bun for fast dependency management
-- **CSS Framework**: UnoCSS for utility-first styling
+- **CSS Framework**: Traditional CSS with modular imports for maintainability
 
 ## 🎨 Design System
 

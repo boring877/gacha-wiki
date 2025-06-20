@@ -66,10 +66,10 @@ function cleanDirectory(dirPath: string): CleanupStats {
   // Process each group
   for (const [baseName, groupFiles] of imageGroups) {
     console.log(`\n📁 Processing: ${baseName}`);
+      // Separate by type
+    const cardImages = groupFiles.filter(f => f.includes('card'));
     
-    // Separate by type
-    const mainImages = groupFiles.filter(f => !f.includes('card'));
-    const cardImages = groupFiles.filter(f => f.includes('card'));    // Check for duplicates (files with and without size suffix)
+    // Check for duplicates (files with and without size suffix)
     const duplicates: string[] = [];
     
     for (const format of ['avif', 'webp', 'jpg']) {

@@ -1,16 +1,17 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import UnoCSS from '@unocss/astro';
+import vercel from '@astrojs/vercel/static';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://gachawiki.info',	integrations: [
+	site: 'https://gachawiki.info',
+	adapter: vercel({
+		webAnalytics: {
+			enabled: true,
+		},
+	}),	integrations: [
 		sitemap(),
-		// UnoCSS({
-		// 	// Enable UnoCSS inspector only in dev mode
-		// 	inspector: process.env.NODE_ENV === 'development',
-		// }),
 	],
 	// Keep it simple for now - static generation
 	output: 'static',
@@ -39,18 +40,15 @@ export default defineConfig({
 				output: {
 					// Better chunk naming for caching
 					chunkFileNames: 'assets/[name]-[hash].js',
-					assetFileNames: 'assets/[name]-[hash][extname]',
-					// Manual chunks for better caching
+					assetFileNames: 'assets/[name]-[hash][extname]',					// Manual chunks for better caching
 					manualChunks: {
 						'vendor': ['gsap'],
-						'analytics': ['@vercel/analytics', '@vercel/speed-insights'],
 					},
 				},
 			},
-		},
-		// Optimize dependencies
+		},		// Optimize dependencies
 		optimizeDeps: {
-			include: ['gsap', '@vercel/analytics', '@vercel/speed-insights'],
+			include: ['gsap'],
 		},
 		// Enable esbuild for faster builds with Bun
 		esbuild: {
