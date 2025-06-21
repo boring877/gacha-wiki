@@ -1,326 +1,378 @@
 ---
 import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
-import FormattedDate from '../../../components/FormattedDate.astro';
+import { zoneNovaUpdates, getUpdateClass, getTagText, getTagEmoji, paginateUpdates } from './updates.js';
+import '../../../styles/Zonenova/zn-updates.css';
+
+// Always show all updates initially - filtering is now client-side only
+const currentPage = 1;
+const filterType = 'all';
+const searchQuery = '';
+
+// Show all updates by default
+const filteredUpdates = zoneNovaUpdates;
+
+// Paginate results (show first 10 initially)
+const pagination = paginateUpdates(filteredUpdates, currentPage, 10);
 ---
+
 
 <ZoneNovaLayout 
 	title="Zone Nova Maintenance & Announcements - GachaWiki" 
 	description="Latest patch notes, maintenance updates, and announcements for Zone Nova"
 	gameTitle="Announcements & Maintenance"
-	
-	
 >
-	<Fragment slot="head">
-		<style>
-			.back-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: var(--bg-primary);
-				color: var(--text-primary);
-				text-decoration: none;
-				padding: 1rem 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--amber-glow);
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 600;
-				font-size: 1rem;
-				margin-bottom: 2rem;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-			}
-
-			.back-button:hover {
-				background: var(--amber-glow);
-				color: white;
-				transform: translateY(-2px);
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-			}
-
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
-
-			.content-section {
-				background: rgba(240, 240, 240, 0.95);
-				padding: 3rem;
-				border-radius: 20px;
-				margin-bottom: 3rem;
-				border: 1px solid var(--amber-glow);
-				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
-				transition: all 0.4s ease;
-				animation: sectionFadeIn 0.8s ease-out;
-			}
-
-			.content-section:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.3);
-				border-color: var(--teal-crystal);
-			}
-			
-			.section-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 2.5rem;
-				font-weight: 700;
-				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				margin: 0 0 1.5rem 0;
-				text-align: center;
-				animation: titleGlow 3s ease-in-out infinite alternate;
-			}
-
-			.section-description {
-				color: #666;
-				font-size: 1.2rem;
-				line-height: 1.7;
-				margin-bottom: 2rem;
-				text-align: center;
-				max-width: 60rem;
-				margin-left: auto;
-				margin-right: auto;
-			}
-			
-			.patch-list {
-				display: flex;
-				flex-direction: column;
-				gap: 2rem;
-				margin-top: 2rem;
-			}
-			
-			.patch-card {
-				background: var(--bg-primary);
-				border: 1px solid var(--mocha-mousse);
-				border-radius: 16px;
-				padding: 2.5rem;
-				transition: all 0.4s ease;
-				text-decoration: none;
-				color: inherit;
-				position: relative;
-				overflow: hidden;
-				animation: cardSlideUp 0.6s ease-out;
-			}
-
-			.patch-card::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-				transition: left 0.6s ease;
-			}
-
-			.patch-card:hover::before {
-				left: 100%;
-			}
-
-			.patch-card.announcement {
-				border-color: var(--amber-glow);
-			}
-			
-			.patch-card:hover {
-				transform: translateY(-8px) scale(1.02);
-				box-shadow: 0 20px 40px rgba(0, 172, 193, 0.3);
-				border-color: var(--teal-crystal);
-				background: var(--bg-secondary);
-			}
-			
-			.patch-card h2 {
-				color: var(--text-primary);
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-				font-weight: 600;
-				margin: 0 0 0.75rem 0;
-				transition: all 0.3s ease;
-				display: flex;
-				align-items: center;
-				gap: 0.75rem;
-				flex-wrap: nowrap;
-				overflow: hidden;
-				white-space: nowrap;
-				text-overflow: ellipsis;
-			}
-
-			.patch-card:hover h2 {
-				color: var(--amber-glow);
-				transform: translateX(5px);
-			}
-			
-			.patch-date {
-				color: var(--text-secondary);
-				font-size: 1rem;
-				margin: 0 0 1rem 0;
-				font-weight: 500;
-				transition: color 0.3s ease;
-			}
-
-			.patch-card:hover .patch-date {
-				color: var(--amber-glow);
-			}
-			
-			.patch-summary {
-				margin: 0;
-				line-height: 1.6;
-				color: var(--text-secondary);
-				font-size: 1.1rem;
-				transition: color 0.3s ease;
-			}
-
-			.patch-card:hover .patch-summary {
-				color: var(--text-primary);
-			}
-			
-			.tag {
-				display: inline-block;
-				padding: 0.4rem 1rem;
-				border-radius: 20px;
-				font-size: 0.85rem;
-				font-weight: 600;
-				transition: all 0.3s ease;
-				font-family: 'Space Grotesk', sans-serif;
-			}
-			
-			.tag.maintenance {
-				background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow));
-				color: white;
-				box-shadow: 0 4px 12px rgba(0, 172, 193, 0.3);
-			}
-			
-			.tag.announcement {
-				background: linear-gradient(135deg, var(--amber-glow), var(--rose-quartz));
-				color: white;
-				box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3);
-			}
-
-			.patch-card:hover .tag {
-				transform: scale(1.05);
-				box-shadow: 0 6px 16px rgba(0, 172, 193, 0.4);
-			}
-
-			@keyframes sectionFadeIn {
-				0% {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				100% {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			@keyframes cardSlideUp {
-				0% {
-					opacity: 0;
-					transform: translateY(30px);
-				}
-				100% {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			@media (max-width: 768px) {
-				.content-section {
-					padding: 2rem;
-					margin-bottom: 2rem;
-				}
-				
-				.section-title {
-					font-size: 2rem;
-				}
-
-				.patch-card {
-					padding: 2rem;
-				}
-
-				.patch-card h2 {
-					font-size: clamp(1.1rem, 3vw, 1.5rem);
-					gap: 0.5rem;
-				}
-
-				.tag {
-					font-size: 0.75rem;
-					padding: 0.3rem 0.8rem;
-				}
-			}
-		</style>
-	</Fragment>
-
-
-
-	<!-- Maintenance Overview Section -->
 	<section class="content-section">
 		<h2 class="section-title">Latest Updates</h2>
 		<div class="section-description">
 			Stay updated with the latest Zone Nova updates, maintenance schedules, and important announcements
 		</div>
-		
-		<!-- Patch Notes List -->
-		<div class="patch-list">
-			<a href="/guides/zone-nova/updates/june-17-2025/" class="patch-card maintenance">
-				<h2>June 17th Maintenance <span class="tag maintenance">MAINTENANCE</span></h2>
-				<p class="patch-date">June 17, 2025</p>
-				<p class="patch-summary">
-					Maintenance on June 17, 2025, including system updates, 300 Quartz compensation, and the launch of the 618 Carnival Special Event with Energy Potion x5, Stamina Refill x15, and a Starter Gift Pack.
-				</p>
-			</a>
 
-			<a href="/guides/zone-nova/updates/june-10-2025/" class="patch-card">
-				<h2>Thunder King Event Part 2 <span class="tag announcement">EVENT</span></h2>
-				<p class="patch-date">June 10, 2025</p>
-				<p class="patch-summary">
-					Thunder King's Reign Part 2 featuring new character Yuis (Holy Ranger), Guild Trials system, Space-Time Rift IV, double drop events, and new gemstone sets.
-				</p>
-			</a>
+		<!-- Search and Filter Controls -->
+		<div class="updates-controls">
+			<div class="search-container">
+				<div class="search-wrapper">
+					<input 
+						type="text" 
+						id="search-input" 
+						placeholder="Search updates (e.g. Zeus, maintenance, Thunder King)..."
+						value={searchQuery}
+						class="search-input"
+						autocomplete="off"
+					/>
+					<div id="search-suggestions" class="search-suggestions"></div>
+				</div>
+				<button type="button" id="search-btn" class="search-btn">Search</button>
+				{searchQuery && (
+					<button type="button" id="clear-search" class="clear-search-btn">Clear</button>
+				)}
+			</div>
 
-			<a href="/guides/zone-nova/updates/june-10-2025-maintenance/" class="patch-card">
-				<h2>June 10th Maintenance <span class="tag maintenance">MAINTENANCE</span></h2>
-				<p class="patch-date">June 10, 2025</p>
-				<p class="patch-summary">
-					Technical maintenance bringing UI improvements, team presets expansion (now 8 teams), enhanced notifications, interface optimizations, and comprehensive bug fixes.
-				</p>
-			</a>
-
-			<a href="/guides/zone-nova/updates/june-10-2025/" class="patch-card announcement">
-				<h2>Zeus Limited Recruitment <span class="tag announcement">LIMITED RECRUITMENT</span></h2>
-				<p class="patch-date">June 10, 2025</p>
-				<p class="patch-summary">
-					Zeus, master of Divine Judgment, arrives as a Limited Holy character with pursuit mechanics! Get her and the exclusive "Frozen Heart" relic. Limited time only: June 10-24, 2025.
-				</p>
-			</a>
-
-			<a href="/guides/zone-nova/news/idle-income-bugfix/" class="patch-card announcement">
-				<h2>Idle Income System Bug Fix & Compensation <span class="tag announcement">ANNOUNCEMENT</span></h2>
-				<p class="patch-date">May 29, 2025</p>
-				<p class="patch-summary">
-					Idle income system bug fix, abnormal Energy Supplement recovery, and compensation for all players (x5 Energy Supplement).
-				</p>
-			</a>
-			
-			<a href="/guides/zone-nova/news/500k-downloads/" class="patch-card announcement">
-				<h2>500,000 Downloads Milestone <span class="tag announcement">ANNOUNCEMENT</span></h2>
-				<p class="patch-date">May 28, 2025</p>
-				<p class="patch-summary">
-					ZONE NOVA celebrates reaching 500,000 cross-platform downloads! Special celebration rewards 
-					including Fantasy Color Cubes and Energy Supplements for all captains.
-				</p>
-			</a>
-			
-			<a href="/guides/zone-nova/updates/may-27-2025/" class="patch-card">
-				<h2>May 27 Maintenance <span class="tag maintenance">MAINTENANCE</span></h2>
-				<p class="patch-date">May 27, 2025</p>
-				<p class="patch-summary">
-					New Empress Guinevere character, Thunder King event, and multiple limited-time activities! 
-					Major update with new events, boss battles, and exclusive rewards.
-				</p>
-			</a>
+			<div class="filter-container">
+				<select id="type-filter" class="filter-select">
+					<option value="all" selected>All Updates</option>
+					<option value="maintenance">Maintenance</option>
+					<option value="event">Events</option>
+					<option value="announcement">Announcements</option>
+					<option value="recruitment">Recruitment</option>
+				</select>
+			</div>
 		</div>
+
+		<!-- Results Info -->
+		<div class="results-info">
+			Showing {pagination.updates.length} of {pagination.totalUpdates} updates
+			{searchQuery && <span class="search-query">for "{searchQuery}"</span>}
+		</div>
+		
+		<!-- Updates List -->
+		<div class="patch-list">
+			{pagination.updates.map((update) => (
+				<a href={update.url} class={`patch-card ${getUpdateClass(update.type)}`}>
+					<div class="patch-card-header">
+						<div class="patch-header-top">
+							<span class={`update-tag ${update.type}`}>
+								<span class="tag-emoji">{getTagEmoji(update.type)}</span>
+								{getTagText(update.type)}
+							</span>
+							<p class="patch-date">{update.date}</p>
+						</div>
+						<h2>{update.title}</h2>
+					</div>
+					<div class="patch-card-body">
+						<p class="patch-summary">{update.summary}</p>
+					</div>
+				</a>
+			))}
+		</div>
+
+		<!-- Pagination (hidden by default, shown by JavaScript when appropriate) -->
+		{pagination.totalPages > 1 && (
+			<div class="pagination" style="display: flex;">
+				{pagination.hasPrev && (
+					<a href="#" class="pagination-btn pagination-prev">
+						← Previous
+					</a>
+				)}
+				
+				<div class="pagination-numbers">
+					{Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map((page) => (
+						<a 
+							href="#"
+							class={`pagination-number ${page === currentPage ? 'active' : ''}`}
+						>
+							{page}
+						</a>
+					))}
+				</div>
+
+				{pagination.hasNext && (
+					<a href="#" class="pagination-btn pagination-next">
+						Next →
+					</a>
+				)}
+			</div>
+		)}
 	</section>
+
+	<!-- Client-side JavaScript for instant search and filtering -->
+	<script define:vars={{ updatesData: zoneNovaUpdates }}>
+		document.addEventListener('DOMContentLoaded', function() {
+			const searchInput = document.getElementById('search-input');
+			const searchBtn = document.getElementById('search-btn');
+			const clearBtn = document.getElementById('clear-search');
+			const typeFilter = document.getElementById('type-filter');
+			const suggestions = document.getElementById('search-suggestions');
+			const patchList = document.querySelector('.patch-list');
+			const resultsInfo = document.querySelector('.results-info');
+			const pagination = document.querySelector('.pagination');
+
+			let allUpdates = [...updatesData];
+			let filteredUpdates = [...allUpdates];
+			let currentSearchTerm = '';
+			let currentTypeFilter = 'all';
+
+			// Extract keywords from all updates
+			const keywords = new Set();
+			updatesData.forEach(update => {
+				// Add title words
+				update.title.split(' ').forEach(word => {
+					if (word.length > 2) keywords.add(word.toLowerCase());
+				});
+				// Add summary words
+				update.summary.split(' ').forEach(word => {
+					if (word.length > 3) keywords.add(word.toLowerCase());
+				});
+				// Add type
+				keywords.add(update.type);
+			});
+
+			// Common search terms
+			['zeus', 'maintenance', 'event', 'recruitment', 'thunder', 'king', 'guinevere', 'yuis', 'bug', 'fix', 'download', 'update', 'character', 'limited'].forEach(term => {
+				keywords.add(term);
+			});
+
+			const keywordsArray = Array.from(keywords);
+
+			function getUpdateClass(type) {
+				const classes = {
+					maintenance: 'maintenance',
+					event: 'announcement',
+					recruitment: 'announcement',
+					announcement: 'announcement'
+				};
+				return classes[type] || '';
+			}
+
+			function getTagText(type) {
+				const tags = {
+					maintenance: 'MAINTENANCE',
+					event: 'EVENT',
+					recruitment: 'LIMITED RECRUITMENT',
+					announcement: 'ANNOUNCEMENT'
+				};
+				return tags[type] || 'UPDATE';
+			}
+
+			function getTagEmoji(type) {
+				const emojis = {
+					maintenance: '🔧',
+					event: '🎉',
+					recruitment: '⭐',
+					announcement: '📢'
+				};
+				return emojis[type] || '📄';
+			}
+
+			function showSuggestions(query) {
+				if (!query || query.length < 2) {
+					suggestions.style.display = 'none';
+					return;
+				}
+
+				const matches = keywordsArray
+					.filter(keyword => keyword.includes(query.toLowerCase()))
+					.slice(0, 6);
+
+				if (matches.length === 0) {
+					suggestions.style.display = 'none';
+					return;
+				}
+
+				suggestions.innerHTML = matches
+					.map(match => `<div class="suggestion-item" data-keyword="${match}">${match}</div>`)
+					.join('');
+				
+				suggestions.style.display = 'block';
+
+				// Add click handlers to suggestions
+				suggestions.querySelectorAll('.suggestion-item').forEach(item => {
+					item.addEventListener('click', function() {
+						const keyword = this.getAttribute('data-keyword') || '';
+						searchInput.value = keyword;
+						suggestions.style.display = 'none';
+						performInstantSearch();
+					});
+				});
+			}
+
+			function hideSuggestions() {
+				setTimeout(() => {
+					suggestions.style.display = 'none';
+				}, 200);
+			}
+
+			function performInstantSearch() {
+				const searchTerm = searchInput && searchInput.value ? searchInput.value.trim().toLowerCase() : '';
+				const typeFilter = document.getElementById('type-filter').value;
+				
+				currentSearchTerm = searchTerm;
+				currentTypeFilter = typeFilter;
+
+				// Filter updates
+				filteredUpdates = allUpdates.filter(update => {
+					// Type filter
+					const typeMatch = typeFilter === 'all' || update.type === typeFilter;
+					
+					// Search filter
+					const searchMatch = !searchTerm || 
+						update.title.toLowerCase().includes(searchTerm) ||
+						update.summary.toLowerCase().includes(searchTerm);
+					
+					return typeMatch && searchMatch;
+				});
+
+				renderUpdates();
+				updateResultsInfo();
+				updateClearButton();
+			}
+
+			function renderUpdates() {
+				if (filteredUpdates.length === 0) {
+					patchList.innerHTML = `
+						<div class="no-results">
+							<p>No updates found ${currentSearchTerm ? `for "${currentSearchTerm}"` : ''}.</p>
+							<p>Try a different search term or filter.</p>
+						</div>
+					`;
+				} else {
+					patchList.innerHTML = filteredUpdates.map(update => `
+						<a href="${update.url}" class="patch-card ${getUpdateClass(update.type)}">
+							<div class="patch-card-header">
+								<div class="patch-header-top">
+									<span class="update-tag ${update.type}">
+										<span class="tag-emoji">${getTagEmoji(update.type)}</span>
+										${getTagText(update.type)}
+									</span>
+									<p class="patch-date">${update.date}</p>
+								</div>
+								<h2>${update.title}</h2>
+							</div>
+							<div class="patch-card-body">
+								<p class="patch-summary">${update.summary}</p>
+							</div>
+						</a>
+					`).join('');
+				}
+
+				// Hide pagination for instant search
+				if (pagination) {
+					pagination.style.display = currentSearchTerm || currentTypeFilter !== 'all' ? 'none' : 'flex';
+				}
+			}
+
+			function updateResultsInfo() {
+				const totalUpdates = allUpdates.length;
+				const showingCount = filteredUpdates.length;
+				
+				let infoText = `Showing ${showingCount} of ${totalUpdates} updates`;
+				if (currentSearchTerm) {
+					infoText += ` <span class="search-query">for "${currentSearchTerm}"</span>`;
+				}
+				
+				resultsInfo.innerHTML = infoText;
+			}
+
+			function updateClearButton() {
+				if (clearBtn) {
+					clearBtn.style.display = currentSearchTerm ? 'block' : 'none';
+				}
+			}
+
+			function clearSearch() {
+				searchInput.value = '';
+				typeFilter.value = 'all';
+				currentSearchTerm = '';
+				currentTypeFilter = 'all';
+				filteredUpdates = [...allUpdates];
+				renderUpdates();
+				updateResultsInfo();
+				updateClearButton();
+			}
+
+			// Event listeners
+			if (searchInput) {
+				searchInput.addEventListener('input', function() {
+					showSuggestions(this.value);
+					// Instant search as you type (with debounce)
+					clearTimeout(searchInput.searchTimeout);
+					searchInput.searchTimeout = setTimeout(() => {
+						performInstantSearch();
+					}, 300);
+				});
+
+				searchInput.addEventListener('focus', function() {
+					showSuggestions(this.value);
+				});
+
+				searchInput.addEventListener('blur', hideSuggestions);
+
+				searchInput.addEventListener('keypress', function(e) {
+					if (e.key === 'Enter') {
+						suggestions.style.display = 'none';
+						performInstantSearch();
+					}
+				});
+			}
+
+			if (searchBtn) {
+				searchBtn.addEventListener('click', performInstantSearch);
+			}
+
+			if (clearBtn) {
+				clearBtn.addEventListener('click', clearSearch);
+			}
+			
+			if (typeFilter) {
+				typeFilter.addEventListener('change', performInstantSearch);
+			}
+
+			// Hide suggestions when clicking outside
+			document.addEventListener('click', function(e) {
+				if (searchInput && suggestions && 
+					!searchInput.contains(e.target) && 
+					!suggestions.contains(e.target)) {
+					suggestions.style.display = 'none';
+				}
+			});
+
+			// Clear URL parameters on page load and show all updates by default
+			if (window.location.search) {
+				// Remove search parameters from URL without triggering page reload
+				const newUrl = window.location.pathname;
+				window.history.replaceState({}, document.title, newUrl);
+			}
+
+			// Reset everything to default state
+			searchInput.value = '';
+			typeFilter.value = 'all';
+			currentSearchTerm = '';
+			currentTypeFilter = 'all';
+			filteredUpdates = [...allUpdates];
+			
+			// Show all updates on initial load
+			renderUpdates();
+			updateResultsInfo();
+			updateClearButton();
+		});
+	</script>
 </ZoneNovaLayout>

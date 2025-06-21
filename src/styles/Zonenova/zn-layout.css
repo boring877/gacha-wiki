@@ -35,14 +35,16 @@
 }
 
 .title-only-heading {
+	font-family: var(--font-display);
 	font-size: var(--text-4xl);
-	font-weight: 700;
+	font-weight: var(--font-bold);
+	color: var(--text-inverse);
+	margin: 0 0 2rem 0;
 	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
 	-webkit-background-clip: text;
-	background-clip: text;
 	-webkit-text-fill-color: transparent;
-	margin: 0 0 1rem 0;
-	animation: titleGlow 3s ease-in-out infinite alternate;
+	background-clip: text;
+	line-height: var(--leading-tight);
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -92,13 +94,16 @@
 }
 
 .hero-title {
+	font-family: var(--font-display);
 	font-size: var(--text-4xl);
-	font-weight: 700;
+	font-weight: var(--font-bold);
+	color: var(--text-inverse);
+	margin: 0 0 2rem 0;
 	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
 	-webkit-background-clip: text;
-	background-clip: text;
 	-webkit-text-fill-color: transparent;
-	margin: 0 0 1rem 0;
+	background-clip: text;
+	line-height: var(--leading-tight);
 }
 
 /* Animation Keyframes */
@@ -189,6 +194,9 @@
 		padding: 1.5rem 0.5rem 2rem 0.5rem;
 	}
 	
+	.title-only-heading {
+		font-size: var(--text-2xl);
+	}
 
 }
 
