@@ -1,0 +1,398 @@
+---
+// Zone Nova Quick Navigation Component - Mobile Version
+export interface Props {
+	currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+// Zone Nova navigation items
+const quickLinks = [
+	{ name: 'Overview', href: '/guides/zone-nova/' },
+	{ name: 'Characters', href: '/guides/zone-nova/characters/' },
+	{ name: 'Events', href: '/guides/zone-nova/events/' },
+	{ name: 'Rifts', href: '/guides/zone-nova/rifts/' },
+	{ name: 'Runes', href: '/guides/zone-nova/runes/' },
+	{ name: 'Crafting', href: '/guides/zone-nova/crafting/' },
+	{ name: 'Updates', href: '/guides/zone-nova/updates/' },
+	{ name: 'Contributing', href: '/guides/zone-nova/contributing/' }
+];
+
+// Check if current path matches a navigation item
+function isActive(href: string): boolean {
+	if (!currentPath) return false;
+	
+	// Special handling for the overview page
+	if (href === '/guides/zone-nova/') {
+		return currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova';
+	}
+	
+	// For other sections, check if the current path starts with the href
+	if (href !== '/guides/zone-nova/' && currentPath.startsWith(href)) {
+		return true;
+	}
+	
+	return false;
+}
+
+// Function to get back button text and URL based on current page
+function getBackButton(): { text: string; url: string } {
+	// On the main Zone Nova page, go back to Wikis
+	if (currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova') {
+		return { text: 'Back to Wikis', url: '/wikis' };
+	}
+	// On category pages, go back to Zone Nova
+	if (currentPath === '/guides/zone-nova/characters/' || 
+		currentPath === '/guides/zone-nova/events/' ||
+		currentPath === '/guides/zone-nova/rifts/' ||
+		currentPath === '/guides/zone-nova/runes/' ||
+		currentPath === '/guides/zone-nova/crafting/' ||
+		currentPath === '/guides/zone-nova/updates/' ||
+		currentPath === '/guides/zone-nova/contributing/') {
+		return { text: 'Back to Zone Nova', url: '/guides/zone-nova/' };
+	}
+	// On individual character pages, go back to Characters
+	if (currentPath.startsWith('/guides/zone-nova/characters/')) {
+		return { text: 'Back to Characters', url: '/guides/zone-nova/characters/' };
+	}
+	// Default fallback
+	return { text: 'Back', url: '/guides/zone-nova/' };
+}
+---
+
+<!-- Zone Nova Quick Navigation - Mobile -->
+<div class="zone-nova-nav-mobile mobile-only">
+	<a href={getBackButton().url} class="back-button">
+		<span class="back-arrow">←</span>
+		{getBackButton().text}
+	</a>
+	
+	<div class="nav-wrapper">
+		<div class="quick-nav-container" id="quickNavContainer">
+			{quickLinks.map(link => (
+				<a 
+					href={link.href} 
+					class={`nav-link ${isActive(link.href) ? 'active' : ''}`}
+				>
+					{link.name}
+				</a>
+			))}
+		</div>
+		<div class="swipe-hint" id="swipeHint">
+			<span class="hint-text">← Swipe for more →</span>
+		</div>
+	</div>
+</div>
+
+<style>
+	.zone-nova-nav-mobile {
+		margin-bottom: 2rem;
+	}
+
+	.nav-wrapper {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.swipe-hint {
+		text-align: center;
+		margin-top: 0.5rem;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.swipe-hint.show {
+		opacity: 1;
+		animation: fadeInUp 0.5s ease-out forwards;
+	}
+
+	.swipe-hint.hide {
+		animation: fadeOut 0.3s ease-out forwards;
+	}
+
+	.hint-text {
+		font-family: var(--font-primary);
+		font-size: var(--text-xs);
+		color: var(--amber-glow);
+		font-weight: 500;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fadeOut {
+		from {
+			opacity: 0.7;
+		}
+		to {
+			opacity: 0;
+		}
+	}
+
+	.back-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		background: var(--bg-primary);
+		color: var(--text-primary);
+		text-decoration: none;
+		border: 1px solid var(--amber-glow);
+		padding: 1rem 1.5rem;
+		border-radius: 12px;
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: var(--text-base);
+		margin-bottom: 1rem;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+		touch-action: manipulation;
+	}
+
+	.back-button:hover {
+		background: var(--amber-glow);
+		color: var(--text-inverse);
+		transform: translateY(-2px);
+		box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+	}
+
+	.back-button:hover .back-arrow {
+		transform: translateX(-3px);
+	}
+
+	.back-arrow {
+		font-size: 1.2rem;
+		transition: transform 0.3s ease;
+	}
+
+	.quick-nav-container {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		scroll-snap-type: x mandatory;
+		padding: 1rem 0;
+		margin-bottom: 1rem;
+		/* Performance optimizations */
+		will-change: scroll-position;
+		transform: translateZ(0);
+		-webkit-transform: translateZ(0);
+	}
+
+	.quick-nav-container::-webkit-scrollbar {
+		display: none;
+	}
+
+	.nav-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1.25rem 1.75rem;
+		background: var(--bg-primary);
+		color: var(--text-primary);
+		text-decoration: none;
+		border-radius: 15px;
+		border: 2px solid var(--amber-glow);
+		transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+		font-size: var(--text-lg);
+		font-weight: 600;
+		font-family: var(--font-display);
+		flex-shrink: 0;
+		white-space: nowrap;
+		min-height: 56px;
+		min-width: 140px;
+		box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+		scroll-snap-align: start;
+		touch-action: manipulation;
+		/* Performance optimizations */
+		will-change: transform;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+	}
+
+	.nav-link:hover {
+		background: var(--bg-secondary);
+		color: var(--text-primary);
+		transform: translateY(-3px);
+		box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+		border-color: var(--teal-crystal);
+	}
+
+	.nav-link.active {
+		background: var(--amber-glow);
+		color: white;
+		box-shadow: 0 6px 18px rgba(255, 183, 77, 0.5);
+		border-color: var(--amber-glow);
+		transform: translateY(-2px);
+	}
+
+	/* Performance Optimizations */
+	@media (prefers-reduced-motion: reduce) {
+		.nav-link,
+		.back-button,
+		.swipe-hint {
+			transition: none;
+			transform: none;
+			animation: none;
+		}
+	}
+</style>
+
+<script>
+	// Mobile swipe functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const container = document.getElementById('quickNavContainer');
+		const swipeHint = document.getElementById('swipeHint');
+		if (!container) return;
+
+		let isDown = false;
+		let startX;
+		let scrollLeft;
+		let animationFrame;
+		let indicatorTimeout;
+
+		// Throttle function for performance
+		function throttle(func, limit) {
+			let inThrottle;
+			return function() {
+				const args = arguments;
+				const context = this;
+				if (!inThrottle) {
+					func.apply(context, args);
+					inThrottle = true;
+					setTimeout(() => inThrottle = false, limit);
+				}
+			}
+		}
+
+		// Show/hide swipe hint
+		function updateSwipeHint() {
+			if (!swipeHint || !container) return;
+			
+			const scrollWidth = container.scrollWidth;
+			const clientWidth = container.clientWidth;
+			
+			// Only show hint if there's content to scroll
+			if (scrollWidth > clientWidth) {
+				swipeHint.classList.add('show');
+				swipeHint.classList.remove('hide');
+			} else {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+			}
+		}
+
+		// Reset scroll position to default on page load
+		container.scrollLeft = 0;
+		
+		// Additional reset after a short delay to override browser restoration
+		setTimeout(() => {
+			container.scrollLeft = 0;
+		}, 50);
+
+		// Handle browser back/forward navigation
+		window.addEventListener('pageshow', () => {
+			container.scrollLeft = 0;
+		});
+
+		// Initial hint setup
+		if (swipeHint) {
+			setTimeout(() => {
+				updateSwipeHint();
+				// Auto-hide hint after 4 seconds
+				indicatorTimeout = setTimeout(() => {
+					if (swipeHint) {
+						swipeHint.classList.add('hide');
+						swipeHint.classList.remove('show');
+					}
+				}, 4000);
+			}, 500);
+		}
+
+		// Touch events for mobile (optimized)
+		container.addEventListener('touchstart', (e) => {
+			isDown = true;
+			startX = e.touches[0].clientX;
+			scrollLeft = container.scrollLeft;
+			if (animationFrame) {
+				cancelAnimationFrame(animationFrame);
+			}
+		}, { passive: true });
+
+		const handleTouchMove = throttle((e) => {
+			if (!isDown) return;
+			const x = e.touches[0].clientX;
+			const walk = (x - startX) * 1.5;
+			
+			animationFrame = requestAnimationFrame(() => {
+				container.scrollLeft = scrollLeft - walk;
+			});
+		}, 16); // ~60fps
+
+		container.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+		container.addEventListener('touchend', () => {
+			isDown = false;
+			if (animationFrame) {
+				cancelAnimationFrame(animationFrame);
+			}
+			// Hide hint after user interacts
+			if (swipeHint) {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+			}
+		}, { passive: true });
+
+		// Hide hint on scroll
+		container.addEventListener('scroll', () => {
+			if (swipeHint) {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+			}
+		}, { passive: true });
+
+		// Simplified keyboard navigation
+		container.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') {
+				container.scrollBy({ left: -150, behavior: 'smooth' });
+			} else if (e.key === 'ArrowRight') {
+				container.scrollBy({ left: 150, behavior: 'smooth' });
+			}
+		});
+
+		// Optimized scroll to active item
+		const activeItem = container.querySelector('.nav-link.active');
+		if (activeItem) {
+			// Use intersection observer for better performance
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (!entry.isIntersecting) {
+						activeItem.scrollIntoView({ 
+							behavior: 'smooth', 
+							block: 'nearest', 
+							inline: 'center' 
+						});
+					}
+				});
+				observer.disconnect();
+			}, { threshold: 0.5 });
+			
+			setTimeout(() => observer.observe(activeItem), 100);
+		}
+	});
+</script> 

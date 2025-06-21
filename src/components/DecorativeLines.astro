@@ -19,51 +19,120 @@ const { className = '' } = Astro.props;
   .hero-decorative {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
     margin-top: 2rem;
+    position: relative;
   }
 
   .hero-line {
     height: 2px;
     border-radius: 1px;
+    position: relative;
+    /* Force hardware acceleration for smooth animations */
+    transform: translateZ(0);
+    will-change: opacity, transform;
   }
 
   .hero-line-1 {
     width: 3rem;
     background: var(--amber-glow);
-    animation: pulse 2s infinite;
+    animation: pulseGlow 2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(255, 183, 77, 0.6);
   }
 
   .hero-line-2 {
     width: 2rem;
     background: var(--teal-crystal);
-    animation: pulse 2s infinite 0.5s;
+    animation: pulseGlow 2s ease-in-out infinite 0.5s;
+    box-shadow: 0 0 8px rgba(0, 172, 193, 0.6);
   }
 
   .hero-line-3 {
     width: 1rem;
     background: var(--rose-quartz);
-    animation: pulse 2s infinite 1s;
+    animation: pulseGlow 2s ease-in-out infinite 1s;
+    box-shadow: 0 0 8px rgba(233, 30, 99, 0.6);
   }
 
-  /* Animation */
-  @keyframes pulse {
+  /* Enhanced Animation with glow effect */
+  @keyframes pulseGlow {
     0%, 100% { 
       opacity: 1; 
-      transform: scaleX(1); 
+      transform: scaleX(1) scaleY(1);
+      filter: brightness(1);
     }
     50% { 
-      opacity: 0.6; 
-      transform: scaleX(0.8); 
+      opacity: 0.7; 
+      transform: scaleX(0.85) scaleY(1.5);
+      filter: brightness(1.3);
     }
   }
 
-  /* Accessibility - Reduce motion */
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .hero-decorative {
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    
+    .hero-line {
+      height: 3px; /* Slightly thicker on mobile for better visibility */
+    }
+    
+    .hero-line-1 {
+      width: 2.5rem;
+      box-shadow: 0 0 6px rgba(255, 183, 77, 0.8);
+    }
+    
+    .hero-line-2 {
+      width: 1.75rem;
+      box-shadow: 0 0 6px rgba(0, 172, 193, 0.8);
+    }
+    
+    .hero-line-3 {
+      width: 1rem;
+      box-shadow: 0 0 6px rgba(233, 30, 99, 0.8);
+    }
+    
+    /* Ensure animations work on mobile */
+    .hero-line-1,
+    .hero-line-2,
+    .hero-line-3 {
+      animation-duration: 2.5s; /* Slightly slower for mobile */
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  /* Extra small mobile */
+  @media (max-width: 480px) {
+    .hero-decorative {
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .hero-line-1 {
+      width: 2rem;
+    }
+    
+    .hero-line-2 {
+      width: 1.5rem;
+    }
+    
+    .hero-line-3 {
+      width: 0.75rem;
+    }
+  }
+
+  /* Accessibility - Reduce motion only if user specifically requests it */
   @media (prefers-reduced-motion: reduce) {
     .hero-line-1,
     .hero-line-2,
     .hero-line-3 {
       animation: none;
+      transform: none;
+      filter: none;
     }
   }
 </style> 

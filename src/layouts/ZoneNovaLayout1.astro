@@ -3,9 +3,9 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileMenu from '../components/MobileMenu.astro';
-import ZoneNovaQuickNav from '../components/ZoneNovaQuickNav.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import DecorativeLines from '../components/DecorativeLines.astro';
+import ZnBackButton from '../components/zn-backbutton.astro';
 
 // CSS Imports
 import '../styles/colors.css';
@@ -93,7 +93,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 				</section>
 			)}			<!-- Content Area -->
 			<div class="content-area">
-				<ZoneNovaQuickNav currentPath={Astro.url.pathname} />
+				<ZnBackButton href="/guides/zone-nova/characters/" text="Back to Characters" />
 				<slot />
 			</div>
 		</main>
