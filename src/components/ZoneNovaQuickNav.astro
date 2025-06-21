@@ -131,6 +131,10 @@ function getBackButton(): { text: string; url: string } {
 		-ms-overflow-style: none;
 		scroll-snap-type: x mandatory;
 		padding: 0.5rem 0;
+		/* Performance optimizations */
+		will-change: scroll-position;
+		transform: translateZ(0);
+		-webkit-transform: translateZ(0);
 	}
 
 	.quick-nav-container::-webkit-scrollbar {
@@ -142,12 +146,12 @@ function getBackButton(): { text: string; url: string } {
 		align-items: center;
 		justify-content: center;
 		padding: 1rem 1.5rem;
-		background: var(--rich-black);
-		color: var(--text-inverse);
+		background: var(--bg-primary);
+		color: var(--text-primary);
 		text-decoration: none;
 		border-radius: 15px;
 		border: 2px solid var(--amber-glow);
-		transition: all 0.3s ease;
+		transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 		font-size: var(--text-base);
 		font-weight: 600;
 		font-family: var(--font-display);
@@ -155,20 +159,24 @@ function getBackButton(): { text: string; url: string } {
 		white-space: nowrap;
 		min-height: 48px;
 		min-width: 120px;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+		/* Performance optimizations */
+		will-change: transform;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
 	}
 
 	.nav-link:hover {
-		background: var(--mocha-mousse);
-		color: var(--text-inverse);
+		background: var(--bg-secondary);
+		color: var(--text-primary);
 		transform: translateY(-3px);
-		box-shadow: 0 8px 20px rgba(164, 120, 100, 0.4);
+		box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
 		border-color: var(--teal-crystal);
 	}
 
 	.nav-link.active {
 		background: var(--amber-glow);
-		color: var(--rich-black);
+		color: white;
 		box-shadow: 0 6px 18px rgba(255, 183, 77, 0.5);
 		border-color: var(--amber-glow);
 		transform: translateY(-2px);
@@ -218,7 +226,7 @@ function getBackButton(): { text: string; url: string } {
 </style>
 
 <script>
-	// Enhanced mobile swipe functionality
+	// Optimized mobile swipe functionality
 	document.addEventListener('DOMContentLoaded', function() {
 		const container = document.getElementById('quickNavContainer');
 		if (!container) return;
@@ -226,71 +234,52 @@ function getBackButton(): { text: string; url: string } {
 		let isDown = false;
 		let startX;
 		let scrollLeft;
-		let startTime;
-		let velocity = 0;
+		let animationFrame;
 
-		// Mouse events for desktop testing
-		container.addEventListener('mousedown', (e) => {
-			if (window.innerWidth > 768) return; // Only on mobile
-			isDown = true;
-			startX = e.pageX - container.offsetLeft;
-			scrollLeft = container.scrollLeft;
-			startTime = Date.now();
-			container.style.cursor = 'grabbing';
-		});
+		// Throttle function for performance
+		function throttle(func, limit) {
+			let inThrottle;
+			return function() {
+				const args = arguments;
+				const context = this;
+				if (!inThrottle) {
+					func.apply(context, args);
+					inThrottle = true;
+					setTimeout(() => inThrottle = false, limit);
+				}
+			}
+		}
 
-		container.addEventListener('mouseleave', () => {
-			isDown = false;
-			container.style.cursor = 'grab';
-		});
-
-		container.addEventListener('mouseup', () => {
-			isDown = false;
-			container.style.cursor = 'grab';
-		});
-
-		container.addEventListener('mousemove', (e) => {
-			if (!isDown) return;
-			e.preventDefault();
-			const x = e.pageX - container.offsetLeft;
-			const walk = (x - startX) * 2;
-			container.scrollLeft = scrollLeft - walk;
-		});
-
-		// Touch events for mobile
+		// Touch events for mobile (optimized)
 		container.addEventListener('touchstart', (e) => {
 			isDown = true;
-			startX = e.touches[0].pageX - container.offsetLeft;
+			startX = e.touches[0].clientX;
 			scrollLeft = container.scrollLeft;
-			startTime = Date.now();
-		}, { passive: true });
-
-		container.addEventListener('touchmove', (e) => {
-			if (!isDown) return;
-			const x = e.touches[0].pageX - container.offsetLeft;
-			const walk = (x - startX) * 2;
-			container.scrollLeft = scrollLeft - walk;
-			
-			// Calculate velocity for momentum
-			const currentTime = Date.now();
-			const timeElapsed = currentTime - startTime;
-			velocity = walk / timeElapsed;
-		}, { passive: true });
-
-		container.addEventListener('touchend', () => {
-			isDown = false;
-			
-			// Add momentum scrolling
-			if (Math.abs(velocity) > 0.5) {
-				const momentum = velocity * 100;
-				container.scrollTo({
-					left: container.scrollLeft - momentum,
-					behavior: 'smooth'
-				});
+			if (animationFrame) {
+				cancelAnimationFrame(animationFrame);
 			}
 		}, { passive: true });
 
-		// Keyboard navigation
+		const handleTouchMove = throttle((e) => {
+			if (!isDown) return;
+			const x = e.touches[0].clientX;
+			const walk = (x - startX) * 1.5;
+			
+			animationFrame = requestAnimationFrame(() => {
+				container.scrollLeft = scrollLeft - walk;
+			});
+		}, 16); // ~60fps
+
+		container.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+		container.addEventListener('touchend', () => {
+			isDown = false;
+			if (animationFrame) {
+				cancelAnimationFrame(animationFrame);
+			}
+		}, { passive: true });
+
+		// Simplified keyboard navigation
 		container.addEventListener('keydown', (e) => {
 			if (e.key === 'ArrowLeft') {
 				container.scrollBy({ left: -150, behavior: 'smooth' });
@@ -299,16 +288,24 @@ function getBackButton(): { text: string; url: string } {
 			}
 		});
 
-		// Smooth scroll to active item on load
+		// Optimized scroll to active item
 		const activeItem = container.querySelector('.nav-link.active');
 		if (activeItem) {
-			setTimeout(() => {
-				activeItem.scrollIntoView({ 
-					behavior: 'smooth', 
-					block: 'nearest', 
-					inline: 'center' 
+			// Use intersection observer for better performance
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (!entry.isIntersecting) {
+						activeItem.scrollIntoView({ 
+							behavior: 'smooth', 
+							block: 'nearest', 
+							inline: 'center' 
+						});
+					}
 				});
-			}, 100);
+				observer.disconnect();
+			}, { threshold: 0.5 });
+			
+			setTimeout(() => observer.observe(activeItem), 100);
 		}
 	});
 </script>
