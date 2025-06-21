@@ -12,20 +12,19 @@
     "typescript": "^5.8.3"
   },
   "engines": {
-    "node": ">=20.0.0",
-    "bun": ">=1.2.0"
+    "node": ">=20.0.0"
   },
-  "packageManager": "bun@1.2.16",
+  "packageManager": "pnpm@8.15.4",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "build:prod": "astro check && astro build && bun run compress",
-    "build:analyze": "astro check && astro build && bun run analyze",
+    "build:prod": "astro check && astro build && pnpm exec tsx scripts/compress.ts",
+    "build:analyze": "astro check && astro build && pnpm exec tsx scripts/analyze.ts",
     "build:vercel": "astro build",
-    "compress": "bun run scripts/compress.ts",
-    "analyze": "bun run scripts/analyze.ts",
-    "optimize-images": "bun run scripts/optimize-images.ts",
-    "perf": "bun run scripts/perf-test.ts",
+    "compress": "pnpm exec tsx scripts/compress.ts",
+    "analyze": "pnpm exec tsx scripts/analyze.ts",
+    "optimize-images": "pnpm exec tsx scripts/optimize-images.ts",
+    "perf": "pnpm exec tsx scripts/perf-test.ts",
     "preview": "astro preview",
     "start": "astro preview",
     "astro": "astro",

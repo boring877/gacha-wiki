@@ -1,0 +1,360 @@
+/* Gacha Wikis Library - Complete Styles */
+
+/* Gacha Wikis Library - Following Design Palette */
+
+/* Remove background overrides - let HomeLayout handle backgrounds */
+
+/* Hero Section (if used) */
+.hero-section {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 1rem 0;
+}
+
+.hero-decoration {
+  width: 100px;
+  height: 2px;
+  background: var(--amber-glow);
+  margin: 0 auto;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb-nav {
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.breadcrumb-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumb-link {
+  color: var(--amber-glow);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+  color: var(--teal-crystal);
+}
+
+.breadcrumb-separator {
+  color: var(--text-secondary);
+  margin: 0 0.5rem;
+}
+
+.breadcrumb-current {
+  color: var(--text-inverse);
+  font-weight: 600;
+}
+
+/* Let layout handle background - no overrides needed */
+
+/* Main Content */
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 1rem 2rem 1rem;
+  min-height: 100vh;
+  background: transparent; /* Let parent background show through */
+}
+
+/* Page Header with Space Animation */
+.page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  background: transparent;
+  position: relative;
+  padding-bottom: 3rem;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--text-inverse);
+  margin: 0 0 2rem 0;
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+
+/* SIMPLE GAMES SECTION */
+.games-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.game-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.game-link:hover {
+  transform: scale(1.02);
+}
+
+/* ELEGANT CARD DESIGN */
+.game-card {
+  background: linear-gradient(135deg, 
+    rgba(28, 28, 28, 0.9) 0%, 
+    rgba(164, 120, 100, 0.15) 30%, 
+    rgba(42, 42, 42, 0.95) 70%, 
+    rgba(28, 28, 28, 0.9) 100%);
+  border-radius: 20px;
+  border: 3px solid var(--amber-glow);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 12px 35px rgba(255, 183, 77, 0.4),
+    0 6px 15px rgba(0, 172, 193, 0.3),
+    inset 0 1px 0 rgba(255, 183, 77, 0.2);
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+
+
+.game-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 20px 45px rgba(255, 183, 77, 0.6),
+    0 12px 25px rgba(0, 172, 193, 0.4),
+    0 0 30px rgba(233, 30, 99, 0.3);
+  border-color: var(--teal-crystal);
+}
+
+.game-header {
+  padding: 1.25rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.game-icon {
+  width: 75px;
+  height: 75px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 20px rgba(28, 28, 28, 0.5),
+    0 0 15px rgba(255, 183, 77, 0.3);
+  flex-shrink: 0;
+  border: 3px solid var(--amber-glow);
+  transition: all 0.4s ease;
+}
+
+.game-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.game-card:hover .game-icon {
+  border-color: var(--teal-crystal);
+  box-shadow: 
+    0 10px 25px rgba(28, 28, 28, 0.6),
+    0 0 20px rgba(0, 172, 193, 0.5);
+}
+
+.game-card:hover .game-icon img {
+  transform: scale(1.15);
+}
+
+.game-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-title {
+  color: var(--text-inverse);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin: 0 0 0.4rem 0;
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: var(--leading-tight);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.4;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.game-arrow {
+  color: var(--amber-glow);
+  font-size: 1.5rem;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.game-card:hover .game-arrow {
+  transform: translateX(5px);
+  opacity: 1;
+  color: var(--teal-crystal);
+  text-shadow: 0 0 10px rgba(0, 172, 193, 0.5);
+}
+
+
+
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 2rem 1rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+
+
+
+
+  .game-card {
+    height: 130px;
+  }
+
+  .game-header {
+    padding: 1.2rem;
+    gap: 1.2rem;
+  }
+
+  .game-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 14px;
+  }
+
+  .game-title {
+    font-size: 1.2rem;
+  }
+
+  .game-description {
+    font-size: 0.8rem;
+  }
+  
+  .game-arrow {
+    font-size: 1.4rem;
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .main-content {
+    padding: 1.5rem 0.75rem;
+  }
+
+
+
+
+
+  .game-card {
+    height: 115px;
+  }
+
+  .game-header {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .game-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+  }
+
+  .game-title {
+    font-size: 1.1rem;
+  }
+
+  .game-description {
+    font-size: 0.75rem;
+  }
+
+  .game-arrow {
+    font-size: 1.3rem;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .game-card {
+    border-width: 3px;
+  }
+}

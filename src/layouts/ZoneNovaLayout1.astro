@@ -5,11 +5,12 @@ import Footer from '../components/Footer.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import ZoneNovaQuickNav from '../components/ZoneNovaQuickNav.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
+import DecorativeLines from '../components/DecorativeLines.astro';
 
 // CSS Imports
 import '../styles/colors.css';
 import '../styles/global.css';
-import '../styles/Zonenova/zn-typography.css';
+import '../styles/typography.css';
 import '../styles/Zonenova/zn-badge-colour.css';
 import '../styles/Zonenova/zn-character-styles.css';
 
@@ -77,11 +78,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 						{gameTitle}
 					</h1>
 					
-					<div class="hero-decorative">
-						<div class="hero-line hero-line-1"></div>
-						<div class="hero-line hero-line-2"></div>
-						<div class="hero-line hero-line-3"></div>
-					</div>
+					<DecorativeLines />
 				</section>
 			)}
 
@@ -92,11 +89,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 						{gameTitle}
 					</h1>
 					
-					<div class="hero-decorative">
-						<div class="hero-line hero-line-1"></div>
-						<div class="hero-line hero-line-2"></div>
-						<div class="hero-line hero-line-3"></div>
-					</div>
+					<DecorativeLines />
 				</section>
 			)}			<!-- Content Area -->
 			<div class="content-area">
@@ -253,36 +246,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 	animation: contentSlideUp 1s ease-out 0.3s both;
 }
 
-/* Hero Decorative Elements */
-.hero-decorative {
-	display: flex;
-	justify-content: center;
-	gap: 1rem;
-	margin-top: 2rem;
-}
 
-.hero-line {
-	height: 2px;
-	border-radius: 1px;
-}
-
-.hero-line-1 {
-	width: 3rem;
-	background: var(--amber-glow);
-	animation: pulse 2s infinite;
-}
-
-.hero-line-2 {
-	width: 2rem;
-	background: var(--teal-crystal);
-	animation: pulse 2s infinite 0.5s;
-}
-
-.hero-line-3 {
-	width: 1rem;
-	background: var(--rose-quartz);
-	animation: pulse 2s infinite 1s;
-}
 
 /* Animation Keyframes */
 @keyframes heroFadeIn {
@@ -322,16 +286,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 	}
 }
 
-@keyframes pulse {
-	0%, 100% { 
-		opacity: 1; 
-		transform: scaleX(1); 
-	}
-	50% { 
-		opacity: 0.6; 
-		transform: scaleX(0.8); 
-	}
-}
+
 
 /* Mobile Optimizations */
 @media (max-width: 768px) {
@@ -375,17 +330,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 		white-space: normal;
 	}
 
-	.hero-decorative {
-		gap: 0.5rem;
-	}
 
-	.hero-line-1 {
-		width: 2rem;
-	}
-
-	.hero-line-2 {
-		width: 1.5rem;
-	}
 }
 
 /* Extra Small Mobile */
@@ -417,9 +362,6 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 	.content-area,
 	.hero-title,
 	.title-only-heading,
-	.hero-line-1,
-	.hero-line-2,
-	.hero-line-3,
 	.hero-image {
 		animation: none;
 		transition: none;

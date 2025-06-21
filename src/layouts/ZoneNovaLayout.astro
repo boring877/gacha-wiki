@@ -5,11 +5,12 @@ import Footer from '../components/Footer.astro';
 import ZoneNovaQuickNav from '../components/ZoneNovaQuickNav.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import MobileMenu from '../components/MobileMenu.astro';
+import DecorativeLines from '../components/DecorativeLines.astro';
 
 // Import CSS files properly
 import '../styles/colors.css';
 import '../styles/global.css';
-import '../styles/Zonenova/zn-typography.css';
+import '../styles/typography.css';
 
 
 export interface Props {
@@ -80,11 +81,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 						{gameTitle}
 					</h1>
 							<!-- Decorative Elements -->
-					<div class="hero-decorative">
-						<div class="hero-line hero-line-1"></div>
-						<div class="hero-line hero-line-2"></div>
-						<div class="hero-line hero-line-3"></div>
-					</div>
+					<DecorativeLines />
 				</section>
 			)}			<!-- Title Only Section (when no hero image) -->
 			{!heroImage && gameTitle && (
@@ -93,11 +90,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 						{gameTitle}
 					</h1>
 					
-					<div class="hero-decorative">
-						<div class="hero-line hero-line-1"></div>
-						<div class="hero-line hero-line-2"></div>
-						<div class="hero-line hero-line-3"></div>
-					</div>
+					<DecorativeLines />
 				</section>
 			)}
 			
@@ -320,36 +313,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 	animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
-/* Hero Decorative Elements */
-.hero-decorative {
-	display: flex;
-	justify-content: center;
-	gap: 1rem;
-	margin-top: 2rem;
-}
 
-.hero-line {
-	height: 2px;
-	border-radius: 1px;
-}
-
-.hero-line-1 {
-	width: 3rem;
-	background: var(--amber-glow);
-	animation: pulse 2s infinite;
-}
-
-.hero-line-2 {
-	width: 2rem;
-	background: var(--teal-crystal);
-	animation: pulse 2s infinite 0.5s;
-}
-
-.hero-line-3 {
-	width: 1rem;
-	background: var(--rose-quartz);
-	animation: pulse 2s infinite 1s;
-}
 
 /* Animation Keyframes */
 @keyframes heroFadeIn {
@@ -389,25 +353,13 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 	}
 }
 
-@keyframes pulse {
-	0%, 100% { 
-		opacity: 1; 
-		transform: scaleX(1); 
-	}
-	50% { 
-		opacity: 0.6; 
-		transform: scaleX(0.8); 
-	}
-}
+
 
 /* Performance Optimizations */
 @media (prefers-reduced-motion: reduce) {
 	.hero-image-wrapper,
 	.content-area,
-	.title-only-heading,
-	.hero-line-1,
-	.hero-line-2,
-	.hero-line-3 {
+	.title-only-heading {
 		animation: none;
 	}
 }

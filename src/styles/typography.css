@@ -1,39 +1,87 @@
-/* Typography System for Zone Nova Characters */
-/* Consistent font usage throughout all character pages */
+/* Unified Typography System */
+/* Clean, modern typography for all gacha wiki pages */
 
-/* === TYPOGRAPHY SYSTEM === */
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap');
 
-/* Main Typography */
+/* CSS Custom Properties for Typography */
+:root {
+    /* Font Families */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-accent: 'Orbitron', monospace;
+    
+    /* Font Sizes - Fluid Typography */
+    --text-xs: clamp(0.75rem, 1vw, 0.875rem);
+    --text-sm: clamp(0.875rem, 1.2vw, 1rem);
+    --text-base: clamp(1rem, 1.5vw, 1.125rem);
+    --text-lg: clamp(1.125rem, 2vw, 1.25rem);
+    --text-xl: clamp(1.25rem, 2.5vw, 1.5rem);
+    --text-2xl: clamp(1.5rem, 3vw, 2rem);
+    --text-3xl: clamp(2rem, 4vw, 3rem);
+    --text-4xl: clamp(2.5rem, 5vw, 4rem);
+    
+    /* Line Heights */
+    --leading-tight: 1.1;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.6;
+    
+    /* Letter Spacing */
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.02em;
+    
+    /* Font Weights */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+    --font-black: 900;
+}
+
+/* Base Typography */
 body {
   font-family: var(--font-primary);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   letter-spacing: var(--tracking-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings Hierarchy */
-h1, .character-name {
+/* Headings */
+h1, .character-name, .display-title {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
   font-weight: 700;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
 }
 
 h2, .section-title {
   font-family: var(--font-display);
-  font-size: var(--text-3xl);  /* Larger section titles: 2rem-3rem */
+  font-size: var(--text-3xl);
   font-weight: 700;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-normal);
+  margin-bottom: 1.25rem;
 }
 
-h3, .skill-title, .awakening-title {
+h3, .skill-title, .awakening-title, .subsection-title {
   font-family: var(--font-display);
-  font-size: var(--text-xl);   /* Larger skill/awakening titles: 1.25rem-1.5rem */
+  font-size: var(--text-xl);
   font-weight: 600;
   line-height: var(--leading-normal);
   letter-spacing: var(--tracking-wide);
+  color: var(--amber-glow);
+  margin-bottom: 1rem;
 }
 
 h4 {
@@ -42,6 +90,29 @@ h4 {
   font-weight: 600;
   line-height: var(--leading-normal);
   letter-spacing: var(--tracking-normal);
+  margin-bottom: 0.75rem;
+}
+
+h5 {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+h6 {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 
 /* Body Text */
@@ -50,9 +121,10 @@ p {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   letter-spacing: var(--tracking-normal);
+  margin-bottom: 1rem;
 }
 
-/* Small Text */
+/* Small Text & Labels */
 .stat-label, small {
   font-family: var(--font-primary);
   font-size: var(--text-sm);
@@ -69,19 +141,23 @@ p {
   font-weight: 700;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-normal);
+  color: var(--amber-glow);
 }
 
-/* Accent Text */
-.tag {
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  font-weight: 600;
+/* Game Title */
+.game-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Strong/Labels */
+/* Strong Text */
 strong {
   font-family: var(--font-primary);
   font-size: var(--text-sm);
@@ -90,7 +166,50 @@ strong {
   text-transform: uppercase;
 }
 
-/* Additional typography for specific elements */
+/* Character Page Typography Classes */
+.skill-stat-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.skill-stat-value {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+
+.skill-label {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.skill-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+}
+
+.requirements-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  font-style: italic;
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-wide);
+}
+
 .memory-card-title {
   font-family: var(--font-display);
   font-size: var(--text-xl);
@@ -107,4 +226,57 @@ strong {
   letter-spacing: var(--tracking-normal);
 }
 
-/* === END TYPOGRAPHY SYSTEM === */
+.warning-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1, .character-name, .display-title {
+    font-size: var(--text-3xl);
+  }
+  
+  h2, .section-title {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  h1, .character-name, .display-title,
+  .game-title {
+    -webkit-text-fill-color: var(--text-primary);
+    background: none;
+    text-shadow: none;
+  }
+}
+
+/* Optimize font loading */
+@font-face {
+    font-family: 'Inter';
+    font-display: swap;
+    src: local('Inter');
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    font-display: swap;
+    src: local('Space Grotesk');
+}
+
+@font-face {
+    font-family: 'Orbitron';
+    font-display: swap;
+    src: local('Orbitron');
+}

@@ -1,0 +1,69 @@
+---
+// Decorative Lines Component
+// Reusable 3-line decoration using the design palette colors
+export interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<div class={`hero-decorative ${className}`}>
+  <div class="hero-line hero-line-1"></div>
+  <div class="hero-line hero-line-2"></div>
+  <div class="hero-line hero-line-3"></div>
+</div>
+
+<style>
+  /* Hero Decorative Elements - Reusable Component */
+  .hero-decorative {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .hero-line {
+    height: 2px;
+    border-radius: 1px;
+  }
+
+  .hero-line-1 {
+    width: 3rem;
+    background: var(--amber-glow);
+    animation: pulse 2s infinite;
+  }
+
+  .hero-line-2 {
+    width: 2rem;
+    background: var(--teal-crystal);
+    animation: pulse 2s infinite 0.5s;
+  }
+
+  .hero-line-3 {
+    width: 1rem;
+    background: var(--rose-quartz);
+    animation: pulse 2s infinite 1s;
+  }
+
+  /* Animation */
+  @keyframes pulse {
+    0%, 100% { 
+      opacity: 1; 
+      transform: scaleX(1); 
+    }
+    50% { 
+      opacity: 0.6; 
+      transform: scaleX(0.8); 
+    }
+  }
+
+  /* Accessibility - Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-line-1,
+    .hero-line-2,
+    .hero-line-3 {
+      animation: none;
+    }
+  }
+</style> 

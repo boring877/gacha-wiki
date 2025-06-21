@@ -1,0 +1,109 @@
+---
+// Layout for Gacha Wikis Library
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+
+// Import CSS files properly - wikis-specific styling
+import '../styles/colors.css';
+import '../styles/global.css';
+import '../styles/typography.css';
+import '../styles/gacha-wikis-library.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/tabicoin.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <BaseHead title={title} description={description || ""} />
+    <slot name="head" />
+  </head>
+  <body class="home-body">
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+    
+    <div class="home-content">
+      <Header />
+      <MobileMenu />
+      
+      <main>
+        <slot />
+      </main>
+      
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style>
+/* Home Layout Styles - Same as HomeLayout */
+.home-body {
+	background: var(--bg-dark);
+	min-height: 100vh;
+}
+
+/* Background Layers */
+.bg-layer {
+	position: fixed;
+	inset: 0;
+}
+
+.bg-primary {
+	background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+}
+
+.bg-accent-1 {
+	background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent);
+	pointer-events: none;
+}
+
+.bg-accent-2 {
+	background: radial-gradient(circle at 80% 20%, rgba(255, 183, 77, 0.08), transparent);
+	pointer-events: none;
+}
+
+.bg-accent-3 {
+	background: radial-gradient(circle at 50% 50%, rgba(0, 172, 193, 0.05), transparent);
+	pointer-events: none;
+}
+
+.home-content {
+	position: relative;
+	z-index: 10;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+	/* Reduce background complexity on mobile for better performance */
+	.bg-accent-2,
+	.bg-accent-3 {
+		display: none;
+	}
+	.bg-accent-1 {
+		opacity: 0.5;
+	}
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+	.bg-layer {
+		animation: none;
+		transition: none;
+	}
+}
+</style>

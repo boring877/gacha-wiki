@@ -1,0 +1,40 @@
+---
+import GachaWikisLibraryLayout from '../layouts/GachaWikisLibraryLayout.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import OptimizedImage from '../components/OptimizedImage.astro';
+import DecorativeLines from '../components/DecorativeLines.astro';
+---
+
+<GachaWikisLibraryLayout title={`${SITE_TITLE} - Wikis`} description={SITE_DESCRIPTION}>
+	<!-- Main Content Area -->
+	<div class="main-content">
+		<!-- Page Header -->
+		<header class="page-header">
+			<h1 class="page-title">
+				Gacha Wikis Library
+			</h1>
+			
+			<!-- Decorative Lines -->
+			<DecorativeLines />
+		</header>
+
+		<!-- Games Section - Simple Layout -->
+		<div class="games-section">
+			<!-- Zone Nova Card -->
+			<a href="/guides/zone-nova/" class="game-link">
+				<article class="game-card">
+					<div class="game-header">
+						<div class="game-icon">
+							<img src="/images/zonenova1.jpg" alt="Zone Nova" width="75" height="75" loading="lazy" />
+						</div>
+						<div class="game-info">
+							<h3 class="game-title">Zone Nova</h3>
+							<p class="game-description">Characters • Runes • Events • Rifts • Crafting • Updates</p>
+						</div>
+						<div class="game-arrow">→</div>
+					</div>
+				</article>
+			</a>
+		</div>
+	</div>
+</GachaWikisLibraryLayout>
