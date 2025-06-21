@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import MobileMenu from '../components/MobileMenu.astro';
 import ZoneNovaQuickNav from '../components/ZoneNovaQuickNav.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 
@@ -33,6 +34,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 		<slot name="head" />
 	</head><body class="zone-nova-body">
 		<Header />
+		<MobileMenu />
 		
 		<main class="zone-nova-main-content">
 			
