@@ -23,9 +23,12 @@ export interface Props {
 	description?: string;
 	gameTitle?: string;
 	heroImage?: string;
+	showBackButton?: boolean;
+	backButtonHref?: string;
+	backButtonText?: string;
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle, heroImage, showBackButton = true, backButtonHref = "/guides/zone-nova/characters/", backButtonText = "Back to Characters" } = Astro.props;
 ---
 
 <html lang="en">	<head>
@@ -76,7 +79,9 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 				</section>
 			)}			<!-- Content Area -->
 			<div class="content-area">
-				<ZnBackButton href="/guides/zone-nova/characters/" text="Back to Characters" />
+				{showBackButton && (
+					<ZnBackButton href={backButtonHref} text={backButtonText} />
+				)}
 				<slot />
 			</div>
 		</main>
@@ -160,15 +165,14 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 }
 
 .hero-title {
-	font-family: 'Space Grotesk', sans-serif;
-	font-size: clamp(3rem, 6vw, 5rem);
+	font-family: var(--font-display);
+	font-size: var(--text-4xl);
 	font-weight: 700;
 	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	margin: 0 0 1rem 0;
-	animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
 /* Title Only Section */
@@ -179,19 +183,14 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 }
 
 .title-only-heading {
-	font-family: 'Space Grotesk', sans-serif;
-	font-size: clamp(2rem, 5vw, 3.5rem);
+	font-family: var(--font-display);
+	font-size: var(--text-4xl);
 	font-weight: 700;
 	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	margin: 0 0 1rem 0;
-	animation: titleGlow 3s ease-in-out infinite alternate;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 100%;
 }
 
 /* Content Area */

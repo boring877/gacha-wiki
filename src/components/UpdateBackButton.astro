@@ -1,0 +1,132 @@
+---
+// Update Pages Back Button Component - Midnight Professional Theme
+export interface Props {
+	href: string;
+	text?: string;
+	className?: string;
+}
+
+const { 
+	href, 
+	text = 'Back', 
+	className = '' 
+} = Astro.props;
+---
+
+<div class={`update-back-button-container ${className}`}>
+	<a href={href} class="update-back-button">
+		<span class="update-back-arrow">←</span>
+		<span class="update-back-text">{text}</span>
+	</a>
+</div>
+
+<style>
+	.update-back-button-container {
+		margin-bottom: 2rem;
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.update-back-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+		color: var(--text-inverse);
+		text-decoration: none;
+		padding: 1rem 1.5rem;
+		border-radius: 12px;
+		border: 2px solid var(--neutral-600);
+		font-family: var(--font-display);
+		font-weight: var(--font-semibold);
+		font-size: var(--text-base);
+		transition: all 0.3s ease;
+		box-shadow: 0 6px 18px rgba(15, 23, 42, 0.4);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.update-back-button::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+		transition: left 0.6s ease;
+	}
+
+	.update-back-button:hover::before {
+		left: 100%;
+	}
+
+	.update-back-button:hover {
+		background: linear-gradient(135deg, var(--amber-glow) 0%, rgba(255, 183, 77, 0.9) 100%);
+		color: var(--rich-black);
+		transform: translateY(-3px);
+		box-shadow: 0 10px 25px rgba(255, 183, 77, 0.4);
+		border-color: var(--amber-glow);
+	}
+
+	.update-back-button:hover .update-back-arrow {
+		transform: translateX(-4px);
+		color: var(--rich-black);
+	}
+
+	.update-back-arrow {
+		font-size: var(--text-lg);
+		transition: all 0.3s ease;
+		color: var(--amber-glow);
+		font-weight: var(--font-bold);
+	}
+
+	.update-back-text {
+		font-weight: var(--font-semibold);
+		letter-spacing: var(--tracking-normal);
+	}
+
+	/* Mobile optimizations */
+	@media (max-width: 768px) {
+		.update-back-button {
+			padding: 0.875rem 1.25rem;
+			font-size: var(--text-sm);
+		}
+
+		.update-back-arrow {
+			font-size: var(--text-base);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.update-back-button {
+			padding: 0.75rem 1rem;
+			font-size: var(--text-sm);
+		}
+
+		.update-back-arrow {
+			font-size: var(--text-sm);
+		}
+	}
+
+	/* Performance optimizations */
+	@media (prefers-reduced-motion: reduce) {
+		.update-back-button,
+		.update-back-button::before,
+		.update-back-arrow {
+			animation: none !important;
+			transition: none !important;
+		}
+		
+		.update-back-button:hover {
+			transform: none !important;
+		}
+	}
+
+	/* High contrast mode support */
+	@media (prefers-contrast: high) {
+		.update-back-button {
+			border-width: 3px;
+		}
+	}
+</style> 

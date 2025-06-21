@@ -1,0 +1,149 @@
+---
+import ZoneNovaUpdateLayout from '../../../../layouts/ZoneNovaUpdateLayout.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+import OptimizedImage from '../../../../components/OptimizedImage.astro';
+
+export interface Props {
+	updateData: {
+		title: string;
+		date: string;
+		type: string;
+		data?: any; // flexible data object
+		tldr?: string[];
+		officialUpdate: {
+			greeting?: string;
+			content: string[];
+			closing?: string;
+		};
+		sourceInfo: {
+			source: string;
+			verified: boolean;
+			gameUrl?: string;
+		};
+	};
+	seoData: {
+		title: string;
+		description: string;
+	};
+}
+
+const { updateData, seoData } = Astro.props;
+
+// You can also get updateType from the filename
+// const updateType = getUpdateType(Astro.url.pathname);
+---
+
+<ZoneNovaUpdateLayout 
+	title={seoData.title}
+	description={seoData.description}
+	gameTitle={updateData.title}
+	showBackButton={true}
+	backButtonHref="/guides/zone-nova/updates/"
+	backButtonText="Back to Updates"
+>
+	<Fragment slot="head">
+		<style>
+			/* Override layout title glow for update pages */
+			.hero-title, .title-only-heading {
+				animation: none !important;
+			}
+		</style>
+	</Fragment>
+
+	<div class="update-page">
+		<div class="update-container">
+
+			<!-- Data Section -->
+			{updateData.data && (
+				<section class="content-section">
+					<h2 class="section-title">Data</h2>
+					<div class="data-grid">
+						<div class="data-item">
+							<div class="data-label">Date</div>
+							<div class="data-value">{updateData.date}</div>
+						</div>
+						<div class="data-item">
+							<div class="data-label">Type</div>
+							<div class="data-value">{updateData.type}</div>
+						</div>
+						{Object.entries(updateData.data).map(([key, value]) => (
+							<div class="data-item">
+								<div class="data-label">{key}</div>
+								<div class="data-value">{value}</div>
+							</div>
+						))}
+					</div>
+				</section>
+			)}
+
+			<!-- TLDR Section -->
+			{updateData.tldr && updateData.tldr.length > 0 && (
+				<section class="content-section tldr-section">
+					<h2 class="section-title">TL;DR</h2>
+					<div class="info-card">
+						<div class="text-content">
+							<ul>
+								{updateData.tldr.map((point) => (
+									<li>{point}</li>
+								))}
+							</ul>
+						</div>
+					</div>
+				</section>
+			)}
+
+			<!-- Official Update -->
+			<section class="content-section official-section">
+				<h2 class="section-title">Official Update</h2>
+				<div class="info-card">
+					<div class="text-content">
+						{updateData.officialUpdate.greeting && (
+							<p><strong>{updateData.officialUpdate.greeting}</strong></p>
+						)}
+						{updateData.officialUpdate.content.map((paragraph) => (
+							<p>{paragraph}</p>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<!-- Closing -->
+			{updateData.officialUpdate.closing && (
+				<section class="content-section">
+					<h2 class="section-title">Closing</h2>
+					<div class="info-card">
+						<div class="text-content">
+							<p>{updateData.officialUpdate.closing}</p>
+						</div>
+					</div>
+				</section>
+			)}
+
+			<!-- Source Information -->
+			<section class="content-section">
+				<h2 class="section-title">Source Information</h2>
+				{updateData.sourceInfo.gameUrl ? (
+					<a href={updateData.sourceInfo.gameUrl} target="_blank" style="text-decoration: none; color: inherit;">
+						<div class="info-card" style="cursor: pointer; transition: all 0.3s ease;">
+							<div class="text-content">
+								<p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+									Source: <span style="color: var(--amber-glow);">{updateData.sourceInfo.source}</span>
+									{updateData.sourceInfo.verified && " ✓"}
+								</p>
+							</div>
+						</div>
+					</a>
+				) : (
+					<div class="info-card">
+						<div class="text-content">
+							<p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+								Source: {updateData.sourceInfo.source}
+								{updateData.sourceInfo.verified && " ✓"}
+							</p>
+						</div>
+					</div>
+				)}
+			</section>
+		</div>
+	</div>
+</ZoneNovaUpdateLayout> 

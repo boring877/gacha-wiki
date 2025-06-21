@@ -1,0 +1,177 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import DecorativeLines from '../components/DecorativeLines.astro';
+import UpdateBackButton from '../components/UpdateBackButton.astro';
+
+
+// CSS Imports - Only what we need for update pages
+import '../styles/colors.css';
+import '../styles/global.css';
+import '../styles/typography.css';
+import '../styles/Zonenova/zn-update-pages.css';
+
+export interface Props {
+	title: string;
+	description?: string;
+	gameTitle?: string;
+	showBackButton?: boolean;
+	backButtonHref?: string;
+	backButtonText?: string;
+}
+
+const { title, description, gameTitle, showBackButton = true, backButtonHref = "/guides/zone-nova/updates/", backButtonText = "Back to Updates" } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description || ""} />
+		<slot name="head" />
+	</head>
+	<body class="zone-nova-update-body">
+		<Header />
+		<MobileMenu />
+		
+		<main class="zone-nova-update-main">
+			<!-- Title Section -->
+			{gameTitle && (
+				<section class="update-title-section">
+					<h1 class="update-page-title">
+						{gameTitle}
+					</h1>
+					<DecorativeLines />
+				</section>
+			)}
+
+			<!-- Content Area -->
+			<div class="update-content-area">
+				{showBackButton && (
+					<UpdateBackButton href={backButtonHref} text={backButtonText} />
+				)}
+				<slot />
+			</div>
+		</main>
+		
+		<Footer />
+	</body>
+</html>
+
+<style>
+/* Update Page Body - Using Typography System */
+.zone-nova-update-body {
+	background: linear-gradient(135deg, var(--neutral-900) 0%, var(--neutral-800) 100%);
+	color: var(--text-inverse);
+	min-height: 100vh;
+	font-family: var(--font-primary);
+	font-size: var(--text-base);
+	line-height: var(--leading-normal);
+	letter-spacing: var(--tracking-normal);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.zone-nova-update-main {
+	max-width: 75rem;
+	margin: 0 auto;
+	padding: 2rem;
+	min-height: 100vh;
+	background: transparent;
+}
+
+/* Title Section */
+.update-title-section {
+	text-align: center;
+	margin-bottom: 4rem;
+	padding: 2rem 1rem;
+}
+
+/* Update Page Title - Consistent with Typography System */
+.update-page-title {
+	font-family: var(--font-display);
+	font-size: var(--text-4xl);
+	font-weight: var(--font-bold);
+	line-height: var(--leading-tight);
+	letter-spacing: var(--tracking-tight);
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin: 0 0 1.5rem 0;
+	/* No glow animation - clean professional look */
+}
+
+.update-content-area {
+	animation: contentSlideUp 0.8s ease-out;
+	background: transparent;
+	/* Ensure content inherits proper typography */
+	font-family: var(--font-primary);
+	font-size: var(--text-base);
+	line-height: var(--leading-relaxed);
+	letter-spacing: var(--tracking-normal);
+}
+
+/* Animation */
+@keyframes contentSlideUp {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Mobile Responsive - Using Typography System */
+@media (max-width: 768px) {
+	.zone-nova-update-main {
+		padding: 1rem;
+		max-width: 100%;
+	}
+
+	.update-page-title {
+		font-size: var(--text-3xl);
+		margin-bottom: 1rem;
+	}
+
+	.update-title-section {
+		margin-bottom: 2rem;
+		padding: 1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.zone-nova-update-main {
+		padding: 0.75rem;
+	}
+
+	.update-page-title {
+		font-size: var(--text-2xl);
+		margin-bottom: 0.75rem;
+	}
+
+	.update-title-section {
+		margin-bottom: 1.5rem;
+		padding: 0.75rem;
+	}
+}
+
+/* Accessibility & Performance - Following Typography System */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
+@media (prefers-contrast: high) {
+	.update-page-title {
+		background: none !important;
+		-webkit-background-clip: unset !important;
+		-webkit-text-fill-color: var(--amber-glow) !important;
+		color: var(--amber-glow) !important;
+	}
+}
+</style> 

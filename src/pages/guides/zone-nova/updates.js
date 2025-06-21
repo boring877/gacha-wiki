@@ -1,36 +1,44 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
 	{
+		id: 'athena-recruitment',
+		title: 'Athena Limited Recruitment',
+		date: 'June 24, 2025',
+		type: 'recruitment',
+		summary: 'New legendary character Athena (Buffer, Wind) available through Limited Recruitment from June 24 - July 8, 2025. Wind attribute Buffer with enhanced bullets, attack speed boost for teammates, and exclusive memory "Sadistic Appearance".',
+		url: '/guides/zone-nova/updates/announcement-athena-recruitment/'
+	},
+	{
+		id: 'june-24-maintenance',
+		title: 'June 24 Maintenance Update',
+		date: 'June 24, 2025',
+		type: 'maintenance',
+		summary: 'Major maintenance bringing "Harmonious Generation Price: Divine Punishment Song Part One" event, Athena recruitment, Travel Pass system, Spacetime Rift V, Battle: Empress Cinnamon, double drop events, and 300 Photon Stone compensation.',
+		url: '/guides/zone-nova/updates/maintenance-june-24-2025/'
+	},
+	{
 		id: 'june-17-2025',
 		title: 'June 17th Maintenance',
 		date: 'June 17, 2025',
 		type: 'maintenance',
-		summary: 'Maintenance on June 17, 2025, including system updates, 300 Quartz compensation, and the launch of the 618 Carnival Special Event with Energy Potion x5, Stamina Refill x15, and a Starter Gift Pack.',
-		url: '/guides/zone-nova/updates/june-17-2025/'
+		summary: 'Maintenance on June 17, 2025, including 300 Quartz compensation and the launch of the 618 Carnival Special Event with Summoning normal banner x5, Stamina Refill x15, and a Starter Gift Pack.',
+		url: '/guides/zone-nova/updates/maintenance-june-17-2025/'
 	},
 	{
 		id: 'thunder-king-part-2',
-		title: 'Thunder King Event Part 2',
+		title: 'Thunder King\'s Reign: Trial and Domination Symphony Part 2',
 		date: 'June 10, 2025',
 		type: 'event',
 		summary: 'Thunder King\'s Reign Part 2 featuring new character Yuis (Holy Ranger), Guild Trials system, Space-Time Rift IV, double drop events, and new gemstone sets.',
-		url: '/guides/zone-nova/updates/june-10-2025/'
+		url: '/guides/zone-nova/updates/event-thunder-king-flame/'
 	},
 	{
-		id: 'june-10-maintenance',
-		title: 'June 10th Maintenance',
+		id: 'june-10-maintenance-ui',
+		title: 'June 10th UI Improvements & Team Presets Expansion',
 		date: 'June 10, 2025',
 		type: 'maintenance',
 		summary: 'Technical maintenance bringing UI improvements, team presets expansion (now 8 teams), enhanced notifications, interface optimizations, and comprehensive bug fixes.',
-		url: '/guides/zone-nova/updates/june-10-2025-maintenance/'
-	},
-	{
-		id: 'zeus-recruitment',
-		title: 'Zeus Limited Recruitment',
-		date: 'June 10, 2025',
-		type: 'recruitment',
-		summary: 'Zeus, master of Divine Judgment, arrives as a Limited Holy character with pursuit mechanics! Get her and the exclusive "Frozen Heart" relic. Limited time only: June 10-24, 2025.',
-		url: '/guides/zone-nova/updates/june-10-2025/'
+		url: '/guides/zone-nova/updates/maintenance-june-10-2025-ui-updates/'
 	},
 	{
 		id: 'idle-income-bugfix',
@@ -38,7 +46,7 @@ export const zoneNovaUpdates = [
 		date: 'May 29, 2025',
 		type: 'announcement',
 		summary: 'Idle income system bug fix, abnormal Energy Supplement recovery, and compensation for all players (x5 Energy Supplement).',
-		url: '/guides/zone-nova/news/idle-income-bugfix/'
+		url: '/guides/zone-nova/updates/announcement-idle-income-bugfix/'
 	},
 	{
 		id: '500k-downloads',
@@ -46,15 +54,15 @@ export const zoneNovaUpdates = [
 		date: 'May 28, 2025',
 		type: 'announcement',
 		summary: 'ZONE NOVA celebrates reaching 500,000 cross-platform downloads! Special celebration rewards including Fantasy Color Cubes and Energy Supplements for all captains.',
-		url: '/guides/zone-nova/news/500k-downloads/'
+		url: '/guides/zone-nova/updates/announcement-500k-downloads/'
 	},
 	{
 		id: 'may-27-maintenance',
 		title: 'May 27 Maintenance',
 		date: 'May 27, 2025',
 		type: 'maintenance',
-		summary: 'New Empress Guinevere character, Thunder King event, and multiple limited-time activities! Major update with new events, boss battles, and exclusive rewards.',
-		url: '/guides/zone-nova/updates/may-27-2025/'
+		summary: 'Thunder King Route event, Empress Guinevere (Guardian/Flame) recruitment, Boss Battle Empress Charlotte Petra, Space-Time Rift events, Battle Pass, and 300 Light Ethstone compensation.',
+		url: '/guides/zone-nova/updates/maintenance-may-27-2025/'
 	}
 ];
 
