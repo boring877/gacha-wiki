@@ -68,21 +68,90 @@ function getBackButton(): { text: string; url: string } {
 		{getBackButton().text}
 	</a>
 	
-	<div class="quick-nav-container" id="quickNavContainer">
-		{quickLinks.map(link => (
-			<a 
-				href={link.href} 
-				class={`nav-link ${isActive(link.href) ? 'active' : ''}`}
-			>
-				{link.name}
-			</a>
-		))}
+	<div class="nav-wrapper">
+		<div class="swipe-indicator left" id="leftIndicator">
+			<span class="arrow">‹</span>
+		</div>
+		<div class="quick-nav-container" id="quickNavContainer">
+			{quickLinks.map(link => (
+				<a 
+					href={link.href} 
+					class={`nav-link ${isActive(link.href) ? 'active' : ''}`}
+				>
+					{link.name}
+				</a>
+			))}
+		</div>
+		<div class="swipe-indicator right" id="rightIndicator">
+			<span class="arrow">›</span>
+		</div>
 	</div>
 </div>
 
 <style>
 	.zone-nova-nav {
 		margin-bottom: 2rem;
+	}
+
+	.nav-wrapper {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	.swipe-indicator {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 40px;
+		height: 40px;
+		background: rgba(255, 183, 77, 0.9);
+		border-radius: 50%;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		z-index: 10;
+		box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3);
+		backdrop-filter: blur(10px);
+		animation: pulse 2s infinite;
+		pointer-events: none;
+	}
+
+	.swipe-indicator.left {
+		left: -20px;
+	}
+
+	.swipe-indicator.right {
+		right: -20px;
+	}
+
+	.swipe-indicator .arrow {
+		color: white;
+		font-size: 1.5rem;
+		font-weight: bold;
+		line-height: 1;
+	}
+
+	@keyframes pulse {
+		0%, 100% {
+			opacity: 0.7;
+			transform: translateY(-50%) scale(1);
+		}
+		50% {
+			opacity: 1;
+			transform: translateY(-50%) scale(1.1);
+		}
+	}
+
+	@keyframes slideIn {
+		from {
+			opacity: 0;
+			transform: translateY(-50%) translateX(-10px);
+		}
+		to {
+			opacity: 0.7;
+			transform: translateY(-50%) translateX(0);
+		}
 	}
 
 	.back-button {
@@ -201,6 +270,18 @@ function getBackButton(): { text: string; url: string } {
 			touch-action: manipulation;
 		}
 
+		.swipe-indicator {
+			display: flex;
+		}
+
+		.swipe-indicator.show {
+			animation: slideIn 0.5s ease-out forwards;
+		}
+
+		.swipe-indicator.hide {
+			animation: fadeOut 0.3s ease-out forwards;
+		}
+
 		/* Add scroll indicators */
 		.quick-nav-container::before,
 		.quick-nav-container::after {
@@ -223,18 +304,30 @@ function getBackButton(): { text: string; url: string } {
 			background: linear-gradient(to left, var(--bg-primary), transparent);
 		}
 	}
+
+	@keyframes fadeOut {
+		from {
+			opacity: 0.7;
+		}
+		to {
+			opacity: 0;
+		}
+	}
 </style>
 
 <script>
 	// Optimized mobile swipe functionality
 	document.addEventListener('DOMContentLoaded', function() {
 		const container = document.getElementById('quickNavContainer');
+		const leftIndicator = document.getElementById('leftIndicator');
+		const rightIndicator = document.getElementById('rightIndicator');
 		if (!container) return;
 
 		let isDown = false;
 		let startX;
 		let scrollLeft;
 		let animationFrame;
+		let indicatorTimeout;
 
 		// Throttle function for performance
 		function throttle(func, limit) {
@@ -248,6 +341,62 @@ function getBackButton(): { text: string; url: string } {
 					setTimeout(() => inThrottle = false, limit);
 				}
 			}
+		}
+
+		// Show/hide swipe indicators based on scroll position
+		function updateIndicators() {
+			if (window.innerWidth > 768 || !leftIndicator || !rightIndicator || !container) return;
+			
+			const scrollLeft = container.scrollLeft;
+			const scrollWidth = container.scrollWidth;
+			const clientWidth = container.clientWidth;
+			const maxScroll = scrollWidth - clientWidth;
+
+			// Show left indicator if we can scroll left
+			if (scrollLeft > 10) {
+				leftIndicator.classList.add('show');
+				leftIndicator.classList.remove('hide');
+			} else {
+				leftIndicator.classList.add('hide');
+				leftIndicator.classList.remove('show');
+			}
+
+			// Show right indicator if we can scroll right
+			if (scrollLeft < maxScroll - 10) {
+				rightIndicator.classList.add('show');
+				rightIndicator.classList.remove('hide');
+			} else {
+				rightIndicator.classList.add('hide');
+				rightIndicator.classList.remove('show');
+			}
+		}
+
+		// Reset scroll position to default on page load
+		// Force reset even if browser tries to restore position
+		container.scrollLeft = 0;
+		
+		// Additional reset after a short delay to override browser restoration
+		setTimeout(() => {
+			container.scrollLeft = 0;
+		}, 50);
+
+		// Handle browser back/forward navigation
+		window.addEventListener('pageshow', () => {
+			container.scrollLeft = 0;
+		});
+
+		// Initial indicator setup
+		if (leftIndicator && rightIndicator) {
+			setTimeout(() => {
+				updateIndicators();
+				// Auto-hide indicators after 3 seconds
+				indicatorTimeout = setTimeout(() => {
+					if (leftIndicator && rightIndicator) {
+						leftIndicator.classList.add('hide');
+						rightIndicator.classList.add('hide');
+					}
+				}, 3000);
+			}, 500);
 		}
 
 		// Touch events for mobile (optimized)
@@ -277,7 +426,12 @@ function getBackButton(): { text: string; url: string } {
 			if (animationFrame) {
 				cancelAnimationFrame(animationFrame);
 			}
+			// Update indicators after touch ends
+			setTimeout(updateIndicators, 100);
 		}, { passive: true });
+
+		// Update indicators on scroll
+		container.addEventListener('scroll', throttle(updateIndicators, 100), { passive: true });
 
 		// Simplified keyboard navigation
 		container.addEventListener('keydown', (e) => {
