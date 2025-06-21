@@ -35,38 +35,11 @@ function isActive(href: string): boolean {
 	return false;
 }
 
-// Function to get back button text and URL based on current page
-function getBackButton(): { text: string; url: string } {
-	// On the main Zone Nova page, go back to Wikis
-	if (currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova') {
-		return { text: 'Back to Wikis', url: '/wikis' };
-	}
-	// On category pages, go back to Zone Nova
-	if (currentPath === '/guides/zone-nova/characters/' || 
-		currentPath === '/guides/zone-nova/events/' ||
-		currentPath === '/guides/zone-nova/rifts/' ||
-		currentPath === '/guides/zone-nova/runes/' ||
-		currentPath === '/guides/zone-nova/crafting/' ||
-		currentPath === '/guides/zone-nova/updates/' ||
-		currentPath === '/guides/zone-nova/contributing/') {
-		return { text: 'Back to Zone Nova', url: '/guides/zone-nova/' };
-	}
-	// On individual character pages, go back to Characters
-	if (currentPath.startsWith('/guides/zone-nova/characters/')) {
-		return { text: 'Back to Characters', url: '/guides/zone-nova/characters/' };
-	}
-	// Default fallback
-	return { text: 'Back', url: '/guides/zone-nova/' };
-}
+
 ---
 
 <!-- Zone Nova Quick Navigation - Mobile -->
 <div class="zone-nova-nav-mobile mobile-only">
-	<a href={getBackButton().url} class="back-button">
-		<span class="back-arrow">←</span>
-		{getBackButton().text}
-	</a>
-	
 	<div class="nav-wrapper">
 		<div class="quick-nav-container" id="quickNavContainer">
 			{quickLinks.map(link => (
@@ -87,20 +60,31 @@ function getBackButton(): { text: string; url: string } {
 <style>
 	.zone-nova-nav-mobile {
 		margin-bottom: 2rem;
+		width: 100%;
+		max-width: 100%;
+		overflow: hidden;
+		position: relative;
 	}
 
 	.nav-wrapper {
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: stretch;
+		width: 100%;
+		max-width: 100%;
+		overflow: hidden;
 	}
 
 	.swipe-hint {
 		text-align: center;
 		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
 		opacity: 0;
 		transition: opacity 0.3s ease;
+		width: 100%;
+		position: relative;
+		z-index: 10;
 	}
 
 	.swipe-hint.show {
@@ -141,57 +125,30 @@ function getBackButton(): { text: string; url: string } {
 		}
 	}
 
-	.back-button {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		background: var(--bg-primary);
-		color: var(--text-primary);
-		text-decoration: none;
-		border: 1px solid var(--amber-glow);
-		padding: 1rem 1.5rem;
-		border-radius: 12px;
-		font-family: var(--font-display);
-		font-weight: 600;
-		font-size: var(--text-base);
-		margin-bottom: 1rem;
-		transition: all 0.3s ease;
-		box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-		touch-action: manipulation;
-	}
 
-	.back-button:hover {
-		background: var(--amber-glow);
-		color: var(--text-inverse);
-		transform: translateY(-2px);
-		box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-	}
-
-	.back-button:hover .back-arrow {
-		transform: translateX(-3px);
-	}
-
-	.back-arrow {
-		font-size: 1.2rem;
-		transition: transform 0.3s ease;
-	}
 
 	.quick-nav-container {
 		display: flex;
 		align-items: center;
 		gap: 1.5rem;
 		overflow-x: auto;
+		overflow-y: visible;
 		scroll-behavior: smooth;
 		-webkit-overflow-scrolling: touch;
 		scrollbar-width: none;
 		-ms-overflow-style: none;
 		scroll-snap-type: x mandatory;
-		padding: 1rem 0;
+		padding: 1rem 1rem 1rem 0;
 		margin-bottom: 1rem;
+		width: 100%;
+		max-width: 100vw;
+		box-sizing: border-box;
 		/* Performance optimizations */
 		will-change: scroll-position;
 		transform: translateZ(0);
 		-webkit-transform: translateZ(0);
+		/* Ensure proper containment */
+		contain: layout;
 	}
 
 	.quick-nav-container::-webkit-scrollbar {
@@ -209,13 +166,14 @@ function getBackButton(): { text: string; url: string } {
 		border-radius: 15px;
 		border: 2px solid var(--amber-glow);
 		transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-		font-size: var(--text-lg);
+		font-size: var(--text-base);
 		font-weight: 600;
 		font-family: var(--font-display);
 		flex-shrink: 0;
 		white-space: nowrap;
 		min-height: 56px;
-		min-width: 140px;
+		min-width: 120px;
+		max-width: 180px;
 		box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
 		scroll-snap-align: start;
 		touch-action: manipulation;
@@ -223,6 +181,9 @@ function getBackButton(): { text: string; url: string } {
 		will-change: transform;
 		backface-visibility: hidden;
 		-webkit-backface-visibility: hidden;
+		/* Ensure proper text handling */
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 
 	.nav-link:hover {
@@ -287,13 +248,15 @@ function getBackButton(): { text: string; url: string } {
 			const scrollWidth = container.scrollWidth;
 			const clientWidth = container.clientWidth;
 			
-			// Only show hint if there's content to scroll
-			if (scrollWidth > clientWidth) {
+			// Only show hint if there's content to scroll (with small buffer)
+			if (scrollWidth > clientWidth + 10) {
 				swipeHint.classList.add('show');
 				swipeHint.classList.remove('hide');
+				return true;
 			} else {
 				swipeHint.classList.add('hide');
 				swipeHint.classList.remove('show');
+				return false;
 			}
 		}
 
@@ -310,17 +273,29 @@ function getBackButton(): { text: string; url: string } {
 			container.scrollLeft = 0;
 		});
 
+		// Handle window resize to update hint visibility
+		if (typeof ResizeObserver !== 'undefined') {
+			const resizeObserver = new ResizeObserver(() => {
+				setTimeout(() => {
+					updateSwipeHint();
+				}, 100);
+			});
+			resizeObserver.observe(container);
+		}
+
 		// Initial hint setup
 		if (swipeHint) {
 			setTimeout(() => {
-				updateSwipeHint();
-				// Auto-hide hint after 4 seconds
-				indicatorTimeout = setTimeout(() => {
-					if (swipeHint) {
-						swipeHint.classList.add('hide');
-						swipeHint.classList.remove('show');
-					}
-				}, 4000);
+				const hasOverflow = updateSwipeHint();
+				// Auto-hide hint after 4 seconds only if there's overflow
+				if (hasOverflow) {
+					indicatorTimeout = setTimeout(() => {
+						if (swipeHint) {
+							swipeHint.classList.add('hide');
+							swipeHint.classList.remove('show');
+						}
+					}, 4000);
+				}
 			}, 500);
 		}
 
