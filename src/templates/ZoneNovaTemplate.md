@@ -19,8 +19,7 @@ src/templates/ZoneNovaTemplate.astro
   - `title` (string): SEO title.
   - `description` (string): SEO description.
   - `gameTitle` (string): Displayed as the page heading.
-  - `showBreadcrumb` (boolean): Toggle breadcrumb visibility.
-  - `breadcrumbText` (string): Text for the parent breadcrumb link.
+  
 
 
 ## Character Data

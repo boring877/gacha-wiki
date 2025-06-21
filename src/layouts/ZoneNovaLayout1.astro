@@ -23,11 +23,9 @@ export interface Props {
 	description?: string;
 	gameTitle?: string;
 	heroImage?: string;
-	showBreadcrumb?: boolean;
-	breadcrumbText?: string;
 }
 
-const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadcrumbText } = Astro.props;
+const { title, description, gameTitle, heroImage } = Astro.props;
 ---
 
 <html lang="en">	<head>
@@ -39,22 +37,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 		
 		<main class="zone-nova-main-content">
 			
-			<!-- Breadcrumb Navigation -->
-			{showBreadcrumb && (				<nav class="breadcrumb-nav">					<div class="breadcrumb-container">
-						<a href="/" class="breadcrumb-link">Home</a>
-						<span class="breadcrumb-separator">→</span>
-						<a href="/guides/" class="breadcrumb-link">Guides</a>
-						<span class="breadcrumb-separator">→</span>
-						<a href="/guides/zone-nova/" class="breadcrumb-link">Zone Nova</a>
-						{breadcrumbText && (
-							<>
-								<span class="breadcrumb-separator">→</span>
-								<span class="breadcrumb-current">{breadcrumbText}</span>
-							</>
-						)}
-					</div>
-				</nav>
-			)}			<!-- Zone Nova Hero Section -->
+			<!-- Zone Nova Hero Section -->
 			{heroImage && gameTitle && (
 				<section class="hero-section">
 					<div class="hero-image-wrapper">
@@ -128,37 +111,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 	min-height: 100vh;
 }
 
-/* Breadcrumb Styles */
-.breadcrumb-nav {
-	margin: 2rem 0;
-	padding: 0 1rem;
-}
 
-.breadcrumb-container {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	font-size: 0.9rem;
-	color: var(--text-secondary);
-}
-
-.breadcrumb-link {
-	color: var(--amber-glow);
-	text-decoration: none;
-	transition: color 0.3s ease;
-}
-
-.breadcrumb-link:hover {
-	color: var(--teal-crystal);
-}
-
-.breadcrumb-separator {
-	color: var(--text-secondary);
-}
-
-.breadcrumb-current {
-	color: var(--text-primary);
-}
 
 /* Hero Section Styles */
 .hero-section {
@@ -295,16 +248,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 		max-width: 100%;
 	}
 
-	.breadcrumb-nav {
-		margin: 1rem 0;
-		padding: 0 0.5rem;
-	}
 
-	.breadcrumb-container {
-		gap: 0.25rem;
-		font-size: 0.8rem;
-		flex-wrap: wrap;
-	}
 
 	.hero-section {
 		padding: 2rem 0.5rem;
@@ -351,9 +295,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 		font-size: clamp(1.25rem, 8vw, 2rem);
 	}
 
-	.breadcrumb-container {
-		font-size: 0.7rem;
-	}
+
 }
 
 /* Performance Optimizations */
@@ -449,15 +391,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 .corner-cat.pos-49 { top: 75%; right: 30%; transform: rotate(-10deg); }
 .corner-cat.pos-50 { top: 85%; left: 50%; transform: rotate(15deg); }
 
-.breadcrumb-cat {
-	font-size: var(--text-xs);
-	margin-right: 0.5rem;
-	opacity: 0.4;
-	color: var(--amber-glow);
-	transform: rotate(5deg);
-	font-family: var(--font-primary);
-	white-space: nowrap;
-}
+
 
 .content-divider-cat {
 	text-align: center;
@@ -489,9 +423,7 @@ const { title, description, gameTitle, heroImage, showBreadcrumb = false, breadc
 		display: none;
 	}
 	
-	.breadcrumb-cat {
-		font-size: 0.6rem;
-	}
+
 	
 	.content-divider-cat {
 		font-size: var(--text-xs);
