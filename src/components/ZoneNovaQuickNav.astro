@@ -69,9 +69,6 @@ function getBackButton(): { text: string; url: string } {
 	</a>
 	
 	<div class="nav-wrapper">
-		<div class="swipe-indicator left" id="leftIndicator">
-			<span class="arrow">‹</span>
-		</div>
 		<div class="quick-nav-container" id="quickNavContainer">
 			{quickLinks.map(link => (
 				<a 
@@ -82,8 +79,8 @@ function getBackButton(): { text: string; url: string } {
 				</a>
 			))}
 		</div>
-		<div class="swipe-indicator right" id="rightIndicator">
-			<span class="arrow">›</span>
+		<div class="swipe-hint" id="swipeHint">
+			<span class="hint-text">← Swipe for more →</span>
 		</div>
 	</div>
 </div>
@@ -99,37 +96,30 @@ function getBackButton(): { text: string; url: string } {
 		align-items: center;
 	}
 
-	.swipe-indicator {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 40px;
-		height: 40px;
-		background: rgba(255, 183, 77, 0.9);
-		border-radius: 50%;
+	.swipe-hint {
 		display: none;
-		align-items: center;
-		justify-content: center;
-		z-index: 10;
-		box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3);
-		backdrop-filter: blur(10px);
-		animation: pulse 2s infinite;
-		pointer-events: none;
+		text-align: center;
+		margin-top: 0.5rem;
+		opacity: 0;
+		transition: opacity 0.3s ease;
 	}
 
-	.swipe-indicator.left {
-		left: -20px;
+	.swipe-hint.show {
+		opacity: 1;
+		animation: fadeInUp 0.5s ease-out forwards;
 	}
 
-	.swipe-indicator.right {
-		right: -20px;
+	.swipe-hint.hide {
+		animation: fadeOut 0.3s ease-out forwards;
 	}
 
-	.swipe-indicator .arrow {
-		color: white;
-		font-size: 1.5rem;
-		font-weight: bold;
-		line-height: 1;
+	.hint-text {
+		font-family: var(--font-primary);
+		font-size: var(--text-xs);
+		color: var(--amber-glow);
+		font-weight: 500;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
 	}
 
 	@keyframes pulse {
@@ -143,14 +133,14 @@ function getBackButton(): { text: string; url: string } {
 		}
 	}
 
-	@keyframes slideIn {
+	@keyframes fadeInUp {
 		from {
 			opacity: 0;
-			transform: translateY(-50%) translateX(-10px);
+			transform: translateY(10px);
 		}
 		to {
-			opacity: 0.7;
-			transform: translateY(-50%) translateX(0);
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 
@@ -270,16 +260,8 @@ function getBackButton(): { text: string; url: string } {
 			touch-action: manipulation;
 		}
 
-		.swipe-indicator {
-			display: flex;
-		}
-
-		.swipe-indicator.show {
-			animation: slideIn 0.5s ease-out forwards;
-		}
-
-		.swipe-indicator.hide {
-			animation: fadeOut 0.3s ease-out forwards;
+		.swipe-hint {
+			display: block;
 		}
 
 		/* Add scroll indicators */
@@ -319,8 +301,7 @@ function getBackButton(): { text: string; url: string } {
 	// Optimized mobile swipe functionality
 	document.addEventListener('DOMContentLoaded', function() {
 		const container = document.getElementById('quickNavContainer');
-		const leftIndicator = document.getElementById('leftIndicator');
-		const rightIndicator = document.getElementById('rightIndicator');
+		const swipeHint = document.getElementById('swipeHint');
 		if (!container) return;
 
 		let isDown = false;
@@ -343,31 +324,20 @@ function getBackButton(): { text: string; url: string } {
 			}
 		}
 
-		// Show/hide swipe indicators based on scroll position
-		function updateIndicators() {
-			if (window.innerWidth > 768 || !leftIndicator || !rightIndicator || !container) return;
+		// Show/hide swipe hint
+		function updateSwipeHint() {
+			if (window.innerWidth > 768 || !swipeHint || !container) return;
 			
-			const scrollLeft = container.scrollLeft;
 			const scrollWidth = container.scrollWidth;
 			const clientWidth = container.clientWidth;
-			const maxScroll = scrollWidth - clientWidth;
-
-			// Show left indicator if we can scroll left
-			if (scrollLeft > 10) {
-				leftIndicator.classList.add('show');
-				leftIndicator.classList.remove('hide');
+			
+			// Only show hint if there's content to scroll
+			if (scrollWidth > clientWidth) {
+				swipeHint.classList.add('show');
+				swipeHint.classList.remove('hide');
 			} else {
-				leftIndicator.classList.add('hide');
-				leftIndicator.classList.remove('show');
-			}
-
-			// Show right indicator if we can scroll right
-			if (scrollLeft < maxScroll - 10) {
-				rightIndicator.classList.add('show');
-				rightIndicator.classList.remove('hide');
-			} else {
-				rightIndicator.classList.add('hide');
-				rightIndicator.classList.remove('show');
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
 			}
 		}
 
@@ -385,17 +355,17 @@ function getBackButton(): { text: string; url: string } {
 			container.scrollLeft = 0;
 		});
 
-		// Initial indicator setup
-		if (leftIndicator && rightIndicator) {
+		// Initial hint setup
+		if (swipeHint) {
 			setTimeout(() => {
-				updateIndicators();
-				// Auto-hide indicators after 3 seconds
+				updateSwipeHint();
+				// Auto-hide hint after 4 seconds
 				indicatorTimeout = setTimeout(() => {
-					if (leftIndicator && rightIndicator) {
-						leftIndicator.classList.add('hide');
-						rightIndicator.classList.add('hide');
+					if (swipeHint) {
+						swipeHint.classList.add('hide');
+						swipeHint.classList.remove('show');
 					}
-				}, 3000);
+				}, 4000);
 			}, 500);
 		}
 
@@ -426,12 +396,20 @@ function getBackButton(): { text: string; url: string } {
 			if (animationFrame) {
 				cancelAnimationFrame(animationFrame);
 			}
-			// Update indicators after touch ends
-			setTimeout(updateIndicators, 100);
+			// Hide hint after user interacts
+			if (swipeHint) {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+			}
 		}, { passive: true });
 
-		// Update indicators on scroll
-		container.addEventListener('scroll', throttle(updateIndicators, 100), { passive: true });
+		// Hide hint on scroll
+		container.addEventListener('scroll', () => {
+			if (swipeHint) {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+			}
+		}, { passive: true });
 
 		// Simplified keyboard navigation
 		container.addEventListener('keydown', (e) => {
