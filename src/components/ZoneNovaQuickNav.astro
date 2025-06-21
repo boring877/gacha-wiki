@@ -8,14 +8,14 @@ const { currentPath = '' } = Astro.props;
 
 // Zone Nova navigation items
 const quickLinks = [
-	{ name: 'Overview', href: '/guides/zone-nova/', icon: '🏠' },
-	{ name: 'Characters', href: '/guides/zone-nova/characters/', icon: '⚔️' },
-	{ name: 'Events', href: '/guides/zone-nova/events/', icon: '🎉' },
-	{ name: 'Rifts', href: '/guides/zone-nova/rifts/', icon: '🌌' },
-	{ name: 'Runes', href: '/guides/zone-nova/runes/', icon: '💎' },
-	{ name: 'Crafting', href: '/guides/zone-nova/crafting/', icon: '🔨' },
-	{ name: 'Updates', href: '/guides/zone-nova/updates/', icon: '📰' },
-	{ name: 'Contributing', href: '/guides/zone-nova/contributing/', icon: '🤝' }
+	{ name: 'Overview', href: '/guides/zone-nova/' },
+	{ name: 'Characters', href: '/guides/zone-nova/characters/' },
+	{ name: 'Events', href: '/guides/zone-nova/events/' },
+	{ name: 'Rifts', href: '/guides/zone-nova/rifts/' },
+	{ name: 'Runes', href: '/guides/zone-nova/runes/' },
+	{ name: 'Crafting', href: '/guides/zone-nova/crafting/' },
+	{ name: 'Updates', href: '/guides/zone-nova/updates/' },
+	{ name: 'Contributing', href: '/guides/zone-nova/contributing/' }
 ];
 
 // Check if current path matches a navigation item
@@ -36,13 +36,13 @@ function isActive(href: string): boolean {
 	return false;
 }
 
-// Function to get back button text based on current page
-function getBackButtonText(): string {
-	// On the main Zone Nova page, show "Back to Wikis"
+// Function to get back button text and URL based on current page
+function getBackButton(): { text: string; url: string } {
+	// On the main Zone Nova page, go back to Wikis
 	if (currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova') {
-		return 'Back to Wikis';
+		return { text: 'Back to Wikis', url: '/wikis' };
 	}
-	// On category pages (characters, events, rifts, etc.), show "Back to Zone Nova"
+	// On category pages, go back to Zone Nova
 	if (currentPath === '/guides/zone-nova/characters/' || 
 		currentPath === '/guides/zone-nova/events/' ||
 		currentPath === '/guides/zone-nova/rifts/' ||
@@ -50,31 +50,25 @@ function getBackButtonText(): string {
 		currentPath === '/guides/zone-nova/crafting/' ||
 		currentPath === '/guides/zone-nova/updates/' ||
 		currentPath === '/guides/zone-nova/contributing/') {
-		return 'Back to Zone Nova';
+		return { text: 'Back to Zone Nova', url: '/guides/zone-nova/' };
 	}
-	// On individual character pages, show "Back to Characters"
+	// On individual character pages, go back to Characters
 	if (currentPath.startsWith('/guides/zone-nova/characters/')) {
-		return 'Back to Characters';
+		return { text: 'Back to Characters', url: '/guides/zone-nova/characters/' };
 	}
-	// On individual pages within other categories, show just "Back"
-	return 'Back';
+	// Default fallback
+	return { text: 'Back', url: '/guides/zone-nova/' };
 }
 ---
 
 <!-- Zone Nova Quick Navigation -->
 <div class="zone-nova-nav">
-	<a href={
-		currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova' 
-			? '/guides/' 
-			: currentPath.startsWith('/guides/zone-nova/characters/') && currentPath !== '/guides/zone-nova/characters/'
-				? '/guides/zone-nova/characters'
-				: '/guides/zone-nova/'
-	} class="back-button">
+	<a href={getBackButton().url} class="back-button">
 		<span class="back-arrow">←</span>
-		{getBackButtonText()}
+		{getBackButton().text}
 	</a>
 	
-	<div class="quick-nav-container">
+	<div class="quick-nav-container" id="quickNavContainer">
 		{quickLinks.map(link => (
 			<a 
 				href={link.href} 
@@ -101,9 +95,9 @@ function getBackButtonText(): string {
 		border: 1px solid var(--amber-glow);
 		padding: 1rem 1.5rem;
 		border-radius: 12px;
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: var(--font-display);
 		font-weight: 600;
-		font-size: 1rem;
+		font-size: var(--text-base);
 		margin-bottom: 1rem;
 		transition: all 0.3s ease;
 		box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
@@ -128,45 +122,193 @@ function getBackButtonText(): string {
 	.quick-nav-container {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: 1rem;
 		flex-wrap: wrap;
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		scroll-snap-type: x mandatory;
+		padding: 0.5rem 0;
+	}
+
+	.quick-nav-container::-webkit-scrollbar {
+		display: none;
 	}
 
 	.nav-link {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.75rem 1rem;
-		background: var(--bg-primary);
-		color: var(--text-secondary);
+		padding: 1rem 1.5rem;
+		background: var(--rich-black);
+		color: var(--text-inverse);
 		text-decoration: none;
-		border-radius: 10px;
-		border: 1px solid var(--mocha-mousse);
+		border-radius: 15px;
+		border: 2px solid var(--amber-glow);
 		transition: all 0.3s ease;
-		font-size: 0.9rem;
-		font-weight: 500;
-		font-family: 'Space Grotesk', sans-serif;
+		font-size: var(--text-base);
+		font-weight: 600;
+		font-family: var(--font-display);
 		flex-shrink: 0;
 		white-space: nowrap;
+		min-height: 48px;
+		min-width: 120px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 	}
 
 	.nav-link:hover {
-		background: var(--bg-secondary);
-		color: var(--text-primary);
-		transform: translateY(-2px);
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+		background: var(--mocha-mousse);
+		color: var(--text-inverse);
+		transform: translateY(-3px);
+		box-shadow: 0 8px 20px rgba(164, 120, 100, 0.4);
+		border-color: var(--teal-crystal);
 	}
 
 	.nav-link.active {
 		background: var(--amber-glow);
-		color: white;
-		box-shadow: 0 4px 15px rgba(255, 183, 77, 0.4);
+		color: var(--rich-black);
+		box-shadow: 0 6px 18px rgba(255, 183, 77, 0.5);
+		border-color: var(--amber-glow);
+		transform: translateY(-2px);
 	}
 
 	@media (max-width: 768px) {
 		.quick-nav-container {
-			justify-content: center;
-			flex-wrap: wrap;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			padding: 1rem 0;
+			margin-bottom: 1rem;
+			gap: 1.5rem;
+		}
+
+		.nav-link {
+			flex-shrink: 0;
+			min-width: 140px;
+			min-height: 56px;
+			padding: 1.25rem 1.75rem;
+			font-size: var(--text-lg);
+			scroll-snap-align: start;
+			touch-action: manipulation;
+		}
+
+		/* Add scroll indicators */
+		.quick-nav-container::before,
+		.quick-nav-container::after {
+			content: '';
+			position: sticky;
+			top: 0;
+			width: 20px;
+			height: 100%;
+			pointer-events: none;
+			z-index: 1;
+		}
+
+		.quick-nav-container::before {
+			left: 0;
+			background: linear-gradient(to right, var(--bg-primary), transparent);
+		}
+
+		.quick-nav-container::after {
+			right: 0;
+			background: linear-gradient(to left, var(--bg-primary), transparent);
 		}
 	}
 </style>
+
+<script>
+	// Enhanced mobile swipe functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const container = document.getElementById('quickNavContainer');
+		if (!container) return;
+
+		let isDown = false;
+		let startX;
+		let scrollLeft;
+		let startTime;
+		let velocity = 0;
+
+		// Mouse events for desktop testing
+		container.addEventListener('mousedown', (e) => {
+			if (window.innerWidth > 768) return; // Only on mobile
+			isDown = true;
+			startX = e.pageX - container.offsetLeft;
+			scrollLeft = container.scrollLeft;
+			startTime = Date.now();
+			container.style.cursor = 'grabbing';
+		});
+
+		container.addEventListener('mouseleave', () => {
+			isDown = false;
+			container.style.cursor = 'grab';
+		});
+
+		container.addEventListener('mouseup', () => {
+			isDown = false;
+			container.style.cursor = 'grab';
+		});
+
+		container.addEventListener('mousemove', (e) => {
+			if (!isDown) return;
+			e.preventDefault();
+			const x = e.pageX - container.offsetLeft;
+			const walk = (x - startX) * 2;
+			container.scrollLeft = scrollLeft - walk;
+		});
+
+		// Touch events for mobile
+		container.addEventListener('touchstart', (e) => {
+			isDown = true;
+			startX = e.touches[0].pageX - container.offsetLeft;
+			scrollLeft = container.scrollLeft;
+			startTime = Date.now();
+		}, { passive: true });
+
+		container.addEventListener('touchmove', (e) => {
+			if (!isDown) return;
+			const x = e.touches[0].pageX - container.offsetLeft;
+			const walk = (x - startX) * 2;
+			container.scrollLeft = scrollLeft - walk;
+			
+			// Calculate velocity for momentum
+			const currentTime = Date.now();
+			const timeElapsed = currentTime - startTime;
+			velocity = walk / timeElapsed;
+		}, { passive: true });
+
+		container.addEventListener('touchend', () => {
+			isDown = false;
+			
+			// Add momentum scrolling
+			if (Math.abs(velocity) > 0.5) {
+				const momentum = velocity * 100;
+				container.scrollTo({
+					left: container.scrollLeft - momentum,
+					behavior: 'smooth'
+				});
+			}
+		}, { passive: true });
+
+		// Keyboard navigation
+		container.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') {
+				container.scrollBy({ left: -150, behavior: 'smooth' });
+			} else if (e.key === 'ArrowRight') {
+				container.scrollBy({ left: 150, behavior: 'smooth' });
+			}
+		});
+
+		// Smooth scroll to active item on load
+		const activeItem = container.querySelector('.nav-link.active');
+		if (activeItem) {
+			setTimeout(() => {
+				activeItem.scrollIntoView({ 
+					behavior: 'smooth', 
+					block: 'nearest', 
+					inline: 'center' 
+				});
+			}, 100);
+		}
+	});
+</script>
