@@ -2,336 +2,39 @@
 import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
 import OptimizedImage from '../../../components/OptimizedImage.astro';
+import '../../../styles/Zonenova/zn-crafting.css';
 ---
 
 <ZoneNovaLayout 
 	title="Zone Nova Crafting Guide - GachaWiki" 
 	description="Complete crafting guide for Zone Nova - runes, materials, and recipes"
 	gameTitle="Crafting Guide"
-	
-	
 >
-	<Fragment slot="head">
-		<style>
-			.back-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: var(--bg-primary);
-				color: var(--text-primary);
-				text-decoration: none;
-				padding: 1rem 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--amber-glow);
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 600;
-				font-size: 1rem;
-				margin-bottom: 2rem;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-			}
-
-			.back-button:hover {
-				background: var(--amber-glow);
-				color: white;
-				transform: translateY(-2px);
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-			}
-
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
-
-			.content-section {
-				background: rgba(240, 240, 240, 0.95);
-				padding: 3rem;
-				border-radius: 20px;
-				margin-bottom: 3rem;
-				border: 1px solid var(--amber-glow);
-				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
-				transition: all 0.4s ease;
-				animation: sectionFadeIn 0.8s ease-out;
-			}
-
-			.content-section:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.3);
-				border-color: var(--teal-crystal);
-			}
-			
-			.section-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 2.5rem;
-				font-weight: 700;
-				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				margin: 0 0 1.5rem 0;
-				text-align: center;
-				animation: titleGlow 3s ease-in-out infinite alternate;
-			}
-
-			.section-description {
-				color: #666;
-				font-size: 1.2rem;
-				line-height: 1.7;
-				margin-bottom: 2rem;
-				text-align: center;
-				max-width: 60rem;
-				margin-left: auto;
-				margin-right: auto;
-			}
-
-			.crafting-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-				gap: 2rem;
-				margin-top: 2rem;
-			}
-			
-			.crafting-card {
-				background: var(--bg-primary);
-				border: 1px solid var(--mocha-mousse);
-				border-radius: 16px;
-				padding: 2.5rem;
-				transition: all 0.4s ease;
-				position: relative;
-				overflow: hidden;
-				animation: cardSlideUp 0.6s ease-out;
-			}
-
-			.crafting-card::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-				transition: left 0.6s ease;
-			}
-
-			.crafting-card:hover::before {
-				left: 100%;
-			}
-			
-			.crafting-card:hover {
-				transform: translateY(-8px) scale(1.02);
-				box-shadow: 0 20px 40px rgba(0, 172, 193, 0.3);
-				border-color: var(--teal-crystal);
-				background: var(--bg-secondary);
-			}
-			
-			.crafting-card h3 {
-				color: var(--text-primary);
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.6rem;
-				font-weight: 600;
-				margin: 0 0 1rem 0;
-				transition: all 0.3s ease;
-			}
-
-			.crafting-card:hover h3 {
-				color: var(--amber-glow);
-			}
-
-			.crafting-card p {
-				color: var(--text-secondary);
-				line-height: 1.6;
-				margin-bottom: 1rem;
-				transition: color 0.3s ease;
-			}
-
-			.crafting-card:hover p {
-				color: var(--text-primary);
-			}
-
-			.material-list {
-				list-style: none;
-				padding: 0;
-				margin: 1rem 0;
-			}
-
-			.material-list li {
-				color: var(--text-secondary);
-				padding: 0.5rem 0;
-				border-bottom: 1px solid rgba(164, 120, 100, 0.2);
-				display: flex;
-				justify-content: space-between;
-				transition: color 0.3s ease;
-			}
-
-			.material-list li:last-child {
-				border-bottom: none;
-			}
-
-			.crafting-card:hover .material-list li {
-				color: var(--text-primary);
-			}
-
-			.rarity-rare { color: var(--teal-crystal); font-weight: 500; }
-			.rarity-epic { color: var(--rose-quartz); font-weight: 500; }
-			.rarity-legendary { color: var(--amber-glow); font-weight: 500; }
-
-			.item-showcase {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				text-align: center;
-				gap: 2rem;
-				margin-bottom: 2rem;
-				padding: 2rem;
-				background: var(--bg-primary);
-				border: 1px solid var(--amber-glow);
-				border-radius: 16px;
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.2);
-				transition: all 0.4s ease;
-			}
-
-			.item-showcase:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.3);
-				border-color: var(--teal-crystal);
-			}
-
-			.item-image {
-				flex-shrink: 0;
-				width: 150px;
-				height: 150px;
-				border-radius: 12px;
-				overflow: hidden;
-				box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3);
-				transition: all 0.3s ease;
-				margin: 0 auto;
-			}
-
-			.item-showcase:hover .item-image {
-				transform: scale(1.05) rotate(2deg);
-				box-shadow: 0 12px 30px rgba(0, 172, 193, 0.4);
-			}
-
-			.item-image img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-
-			.item-info {
-				flex: 1;
-				text-align: center;
-				width: 100%;
-			}
-
-			.item-info h3 {
-				color: var(--text-primary);
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.8rem;
-				font-weight: 700;
-				margin: 0 0 1rem 0;
-				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				text-align: center;
-			}
-
-			.item-info p {
-				color: var(--text-secondary);
-				line-height: 1.6;
-				margin: 0;
-				font-size: 1.1rem;
-				text-align: center;
-			}
-
-			@keyframes sectionFadeIn {
-				0% {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				100% {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			@keyframes cardSlideUp {
-				0% {
-					opacity: 0;
-					transform: translateY(30px);
-				}
-				100% {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			@media (max-width: 768px) {
-				.content-section {
-					padding: 2rem;
-					margin-bottom: 2rem;
-				}
-				
-				.section-title {
-					font-size: 2rem;
-				}
-
-				.crafting-grid {
-					grid-template-columns: 1fr;
-					gap: 1.5rem;
-				}
-
-				.crafting-card {
-					padding: 2rem;
-				}
-
-				.item-showcase {
-					flex-direction: column;
-					text-align: center;
-					gap: 1.5rem;
-					padding: 1.5rem;
-				}
-
-				.item-image {
-					width: 120px;
-					height: 120px;
-				}
-			}
-		</style>
-	</Fragment>
-
-
 
 	<!-- Featured Video Section -->
 	<section class="content-section">
-		<h2 class="section-title">📹 Crafting Guide Video</h2>
+		<h2 class="section-title">Crafting Guide Video</h2>
 		<div class="section-description">
 			Watch our comprehensive video guide for Zone Nova crafting mechanics
 		</div>
 		
-		<div style="display: flex; justify-content: center; margin: 2rem 0;">
-			<div style="position: relative; width: 100%; max-width: 800px; height: 0; padding-bottom: 56.25%; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 30px rgba(164, 120, 100, 0.3); border: 1px solid var(--amber-glow); background: var(--bg-primary);">
+		<div class="video-container">
+			<div class="video-wrapper">
 				<iframe 
 					src="https://www.youtube.com/embed/J5ip-LQApRc" 
 					title="Zone Nova Crafting Guide" 
-					frameborder="0" 
+					style="border: none;" 
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
 					allowfullscreen
-					style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
 				></iframe>
 			</div>
 		</div>
 		
 		<div style="text-align: center; margin-top: 1rem;">
 			<p style="color: var(--text-secondary); font-style: italic;">
-				🎬 Complete walkthrough of crafting systems, materials, and optimization strategies
+				Complete walkthrough of crafting systems, materials, and optimization strategies
 			</p>
-			<a href="https://www.youtube.com/watch?v=J5ip-LQApRc" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--amber-glow); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--teal-crystal)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.color='var(--amber-glow)'; this.style.transform='translateY(0)'">
-				<span>🔗</span>
+			<a href="https://www.youtube.com/watch?v=J5ip-LQApRc" target="_blank" class="video-link">
 				Watch on YouTube
 			</a>
 		</div>
@@ -346,21 +49,21 @@ import OptimizedImage from '../../../components/OptimizedImage.astro';
 		
 		<div class="crafting-grid">
 			<div class="crafting-card">
-				<h3>🔄 Synthesis (合成)</h3>
+				<h3>Synthesis (合成)</h3>
 				<p><strong>Function:</strong> Combines rune fragments into complete runes</p>
 				<p><strong>Use:</strong> Upgrades lower-tier materials into higher-tier runes</p>
 				<p>Entry-level crafting for building your initial rune collection.</p>
 			</div>
 
 			<div class="crafting-card">
-				<h3>⚡ Decompose (分解)</h3>
+				<h3>Decompose (分解)</h3>
 				<p><strong>Function:</strong> Breaks down runes into materials</p>
 				<p><strong>Use:</strong> Convert unwanted runes back into crafting materials</p>
 				<p>Perfect for recycling low-quality runes into useful materials.</p>
 			</div>
 
 			<div class="crafting-card">
-				<h3>⚒️ Advanced Crafting (制作)</h3>
+				<h3>Advanced Crafting (制作)</h3>
 				<p><strong>Function:</strong> Creates runes with specific effects</p>
 				<p><strong>Special Feature:</strong> Allows customization of stats through hexagonal interface</p>
 				<p><strong>Use:</strong> Advanced crafting for end-game optimization</p>
@@ -377,7 +80,7 @@ import OptimizedImage from '../../../components/OptimizedImage.astro';
 		
 		<div class="crafting-grid">
 			<div class="crafting-card">
-				<h3>🔵 Rare Rune Crafting</h3>
+				<h3>Rare Rune Crafting</h3>
 				<ul class="material-list">
 					<li><span>Success Rate</span> <span class="rarity-rare">10% → Epic</span></li>
 					<li><span>Pity System</span> <span>Guaranteed Epic after 5 fails</span></li>
@@ -386,7 +89,7 @@ import OptimizedImage from '../../../components/OptimizedImage.astro';
 			</div>
 
 			<div class="crafting-card">
-				<h3>🟣 Epic Rune Crafting</h3>
+				<h3>Epic Rune Crafting</h3>
 				<ul class="material-list">
 					<li><span>Success Rate</span> <span class="rarity-epic">10% → Legendary</span></li>
 					<li><span>Pity System</span> <span>Guaranteed Legendary after 5 fails</span></li>
@@ -395,7 +98,7 @@ import OptimizedImage from '../../../components/OptimizedImage.astro';
 			</div>
 
 			<div class="crafting-card">
-				<h3>🟡 Legendary Rune Crafting</h3>
+				<h3>Legendary Rune Crafting</h3>
 				<ul class="material-list">
 					<li><span>Special Feature</span> <span class="rarity-legendary">Specify main attributes</span></li>
 					<li><span>Requires</span> <span>Laser Engraving Tool</span></li>
@@ -416,23 +119,23 @@ import OptimizedImage from '../../../components/OptimizedImage.astro';
 		<!-- Item Showcase -->
 		<div class="item-showcase">
 			<div class="item-image">
-				<OptimizedImage 
+				<img 
           src="/images/laser-engraving-tool.jpg" 
           alt="Laser Engraving Tool (激光雕刻仪)" 
-          width={400}
-          height={300}
-          
+          width="400"
+          height="300"
+          loading="lazy"
         />
 			</div>
 			<div class="item-info">
-				<h3>🔧 Laser Engraving Tool (激光雕刻仪)</h3>
+				<h3>Laser Engraving Tool (激光雕刻仪)</h3>
 				<p>The most valuable crafting item in Zone Nova. Removes RNG from legendary rune crafting by allowing players to specify exact main stats. Essential for end-game optimization and perfect rune building.</p>
 			</div>
 		</div>
 		
 		<div class="crafting-grid">
 			<div class="crafting-card">
-				<h3>🎯 Primary Purpose</h3>
+				<h3>Primary Purpose</h3>
 				<ul class="material-list">
 					<li><span>Used exclusively in</span> <span>Legendary Rune Crafting</span></li>
 					<li><span>Allows selection of</span> <span>Specific main stat values</span></li>
@@ -441,7 +144,7 @@ import OptimizedImage from '../../../components/OptimizedImage.astro';
 			</div>
 
 			<div class="crafting-card">
-				<h3>✨ Why It's Essential</h3>
+				<h3>Why It's Essential</h3>
 				<ul class="material-list">
 					<li><span>Perfect Stats</span> <span>Ensures optimal main stats</span></li>
 					<li><span>Resource Efficiency</span> <span>Saves materials from bad rolls</span></li>
@@ -451,7 +154,7 @@ import OptimizedImage from '../../../components/OptimizedImage.astro';
 			</div>
 
 			<div class="crafting-card">
-				<h3>🎯 Priority Usage</h3>
+				<h3>Priority Usage</h3>
 				<ul class="material-list">
 					<li><span>1st Priority</span> <span class="rarity-legendary">Position 4 runes</span></li>
 					<li><span>2nd Priority</span> <span class="rarity-epic">Position 5 runes</span></li>

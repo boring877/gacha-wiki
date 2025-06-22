@@ -98,6 +98,7 @@ import {
 						</select>
 					</div>
 					<div class="sort-controls">
+						<button class="sort-btn active" data-sort="name">Name</button>
 						<button class="sort-btn" data-sort="hp">HP</button>
 						<button class="sort-btn" data-sort="attack">ATK</button>
 						<button class="sort-btn" data-sort="defense">DEF</button>
@@ -193,7 +194,7 @@ import {
     const sortButtons = document.querySelectorAll('.sort-btn');
     const resetButton = document.getElementById('reset-table');
     // --- State ---
-    let currentSortKey = null;
+    let currentSortKey = 'name';
     let currentSortDirection = 'asc';
     const originalRows = Array.from(tableBody.children);
     const originalCards = Array.from(mobileCardsContainer.children);
@@ -277,6 +278,9 @@ import {
         } else if (sortKey === 'critDmg') {
           valA = a.querySelector('.mobile-card-stats-secondary div:nth-child(3)')?.textContent.replace(/[^\d.]/g, '') || '';
           valB = b.querySelector('.mobile-card-stats-secondary div:nth-child(3)')?.textContent.replace(/[^\d.]/g, '') || '';
+        } else if (sortKey === 'name') {
+          valA = a.querySelector('h3')?.textContent || '';
+          valB = b.querySelector('h3')?.textContent || '';
         } else {
           valA = a.querySelector(`.${sortKey}-badge`)?.textContent || '';
           valB = b.querySelector(`.${sortKey}-badge`)?.textContent || '';
@@ -308,23 +312,23 @@ import {
         sortRows(button.dataset.sort);
       });
     });
-    resetButton.addEventListener('click', () => {
-      elementFilter.value = '';
-      rarityFilter.value = '';
-      roleFilter.value = '';
-      sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));
-      currentSortKey = null;
-      currentSortDirection = 'asc';
-      originalRows.forEach(row => {
-        row.style.display = '';
-        tableBody.appendChild(row);
+          resetButton.addEventListener('click', () => {
+        elementFilter.value = '';
+        rarityFilter.value = '';
+        roleFilter.value = '';
+        sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));
+        currentSortKey = 'name';
+        currentSortDirection = 'asc';
+        originalRows.forEach(row => {
+          row.style.display = '';
+          tableBody.appendChild(row);
+        });
+        originalCards.forEach(card => {
+          card.style.display = '';
+          mobileCardsContainer.appendChild(card);
+        });
+        sortRows('name'); // Sort alphabetically after reset
       });
-      originalCards.forEach(card => {
-        card.style.display = '';
-        mobileCardsContainer.appendChild(card);
-      });
-      renumberRows();
-    });
     // --- Click to detail ---
     Array.from(tableBody.children).forEach(row => {
       row.addEventListener('click', () => {
@@ -338,6 +342,9 @@ import {
         if (url) window.location.href = url;
       });
     });
+    
+    // Sort alphabetically by default on page load
+    sortRows('name');
   });
 	</script>
 </ZoneNovaLayout>

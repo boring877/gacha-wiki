@@ -1,6 +1,6 @@
 // Zone Nova Character Data & Utilities
 
-// Character array
+// Character array - sorted alphabetically by name
 export const ZONE_NOVA_CHARACTERS = [
   {
     id: 1,
@@ -12,6 +12,17 @@ export const ZONE_NOVA_CHARACTERS = [
     image: "/images/Character Database/Afrodite.jpg",
     slug: "afrodite",
     detailUrl: "/guides/zone-nova/characters/afrodite"
+  },
+  {
+    id: 28,
+    name: "Anubis",
+    rarity: "SSR",
+    element: "Chaos",
+    role: "Healer",
+    stats: { hp: 9180, attack: 1004, defense: 729, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
+    image: "/images/Character Database/Anubis.jpg",
+    slug: "anubis",
+    detailUrl: "/guides/zone-nova/characters/anubis"
   },
   {
     id: 2,
@@ -113,6 +124,17 @@ export const ZONE_NOVA_CHARACTERS = [
     detailUrl: "/guides/zone-nova/characters/guinevere"
   },
   {
+    id: 31,
+    name: "Hera",
+    rarity: "SSR",
+    element: "Chaos",
+    role: "DPS",
+    stats: { hp: 8033, attack: 1461, defense: 530, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
+    image: "/images/Character Database/Hera.jpg",
+    slug: "hera",
+    detailUrl: "/guides/zone-nova/characters/hera"
+  },
+  {
     id: 11,
     name: "Horus",
     rarity: "SSR",
@@ -122,6 +144,17 @@ export const ZONE_NOVA_CHARACTERS = [
     image: "/images/Character Database/Horus.jpg",
     slug: "horus",
     detailUrl: "/guides/zone-nova/characters/horus"
+  },
+  {
+    id: 29,
+    name: "Jeanne d'Arc",
+    rarity: "SSR",
+    element: "Wind",
+    role: "Healer",
+    stats: { hp: 9180, attack: 1004, defense: 729, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
+    image: "/images/Character Database/JoanofArc .jpg",
+    slug: "jeanne-darc",
+    detailUrl: "/guides/zone-nova/characters/jeanne-darc"
   },
   {
     id: 12,
@@ -223,9 +256,20 @@ export const ZONE_NOVA_CHARACTERS = [
     detailUrl: "/guides/zone-nova/characters/nini"
   },
   {
+    id: 27,
+    name: "Penny",
+    rarity: "SSR",
+    element: "Wind",
+    role: "Tank",
+    stats: { hp: 10520, attack: 794, defense: 1232, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
+    image: "/images/Character Database/penny.jpg",
+    slug: "penny",
+    detailUrl: "/guides/zone-nova/characters/penny"
+  },
+  {
     id: 21,
     name: "Rose",
-    rarity: "SSR",
+    rarity: "SR",
     element: "Ice",
     role: "DPS",
     stats: { hp: 6694, attack: 1088, defense: 442, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
@@ -256,6 +300,17 @@ export const ZONE_NOVA_CHARACTERS = [
     detailUrl: "/guides/zone-nova/characters/shu"
   },
   {
+    id: 30,
+    name: "Snow Girl",
+    rarity: "SR",
+    element: "Ice",
+    role: "Healer",
+    stats: { hp: 7850, attack: 837, defense: 608, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
+    image: "/images/Character Database/Snow.jpg",
+    slug: "snow-girl",
+    detailUrl: "/guides/zone-nova/characters/snow-girl"
+  },
+  {
     id: 24,
     name: "Tefnut",
     rarity: "SR",
@@ -276,7 +331,8 @@ export const ZONE_NOVA_CHARACTERS = [
     image: "/images/Character Database/Yuis.jpg",
     slug: "yuis",
     detailUrl: "/guides/zone-nova/characters/yuis"
-  },  {
+  },
+  {
     id: 26,
     name: "Zashiki-warashi",
     rarity: "SR",
@@ -286,17 +342,6 @@ export const ZONE_NOVA_CHARACTERS = [
     image: "/images/Character Database/Zashiki-warashi.jpg",
     slug: "zashiki-warashi",
     detailUrl: "/guides/zone-nova/characters/zashiki-warashi"
-  },
-  {
-    id: 27,
-    name: "Penny",
-    rarity: "SSR",
-    element: "Wind",
-    role: "Tank",
-    stats: { hp: 10520, attack: 794, defense: 1232, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
-    image: "/images/Character Database/penny.jpg",
-    slug: "penny",
-    detailUrl: "/guides/zone-nova/characters/penny"
   }
 ];
 

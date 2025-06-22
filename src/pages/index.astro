@@ -57,10 +57,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 									Zone Nova
 								</h3>
 
-								<!-- Active Events Section -->
+								<!-- Active Rifts Section -->
 								<div style="background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border-radius: 12px; padding: 1rem; margin: 0 0 1rem 0; border-left: 4px solid var(--teal-crystal);">
 									<div style="font-size: 0.9rem; font-weight: 600; color: var(--amber-glow); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
-										<span>🌀</span> Active Events
+										<span>🌀</span> Active Rifts
 									</div>
 									<div style="display: flex; flex-direction: column; gap: 0.5rem;">
 										<a href="/guides/zone-nova/rifts/rift-tide-4/" style="text-decoration: none; color: inherit;">
@@ -185,7 +185,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 									/>
 								</div>
 								<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem 0;">Zone Nova</h3>
-								<p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Character guides, runes, events, and announcements</p>
+								<p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Character guides, runes, rifts, and announcements</p>
 								<div style="display: flex; gap: 0.5rem;">
 									<span style="background: var(--amber-glow); color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;">4 Sections</span>
 									<span style="background: var(--teal-crystal); color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;">Active</span>
@@ -481,7 +481,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		margin-bottom: 1.5rem !important;
 	}
 
-	/* Active Events Section Mobile - improved spacing */
+								/* Active Rifts Section Mobile - improved spacing */
 	div[style*="display: flex; flex-direction: column;"] {
 		gap: 0.6rem !important;
 		margin-bottom: 1.5rem !important;
@@ -707,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Optimized Event Timers with requestAnimationFrame
 document.addEventListener('DOMContentLoaded', function() {
-	// Set end dates for events (updated to match rifts page)
+								// Set end dates for rifts (updated to match rifts page)
 	const rift3End = new Date('2025-06-23T23:59:59').getTime(); // Rift Tide III - ends June 23, 2025
 	const rift4End = new Date('2025-07-08T23:59:59').getTime(); // Rift Tide IV - ends July 8, 2025
 

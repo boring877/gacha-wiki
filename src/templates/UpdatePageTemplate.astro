@@ -80,15 +80,11 @@ const { updateData, seoData } = Astro.props;
 			{updateData.tldr && updateData.tldr.length > 0 && (
 				<section class="content-section tldr-section">
 					<h2 class="section-title">TL;DR</h2>
-					<div class="info-card">
-						<div class="text-content">
-							<ul>
-								{updateData.tldr.map((point) => (
-									<li>{point}</li>
-								))}
-							</ul>
-						</div>
-					</div>
+					<ul>
+						{updateData.tldr.map((point) => (
+							<li>{point}</li>
+						))}
+					</ul>
 				</section>
 			)}
 
@@ -96,14 +92,12 @@ const { updateData, seoData } = Astro.props;
 			<section class="content-section official-section">
 				<h2 class="section-title">Official Update</h2>
 				<div class="info-card">
-					<div class="text-content">
-						{updateData.officialUpdate.greeting && (
-							<p><strong>{updateData.officialUpdate.greeting}</strong></p>
-						)}
-						{updateData.officialUpdate.content.map((paragraph) => (
-							<p>{paragraph}</p>
-						))}
-					</div>
+					{updateData.officialUpdate.greeting && (
+						<p><strong>{updateData.officialUpdate.greeting}</strong></p>
+					)}
+					{updateData.officialUpdate.content.map((paragraph) => (
+						<p>{paragraph}</p>
+					))}
 				</div>
 			</section>
 
@@ -112,9 +106,7 @@ const { updateData, seoData } = Astro.props;
 				<section class="content-section">
 					<h2 class="section-title">Closing</h2>
 					<div class="info-card">
-						<div class="text-content">
-							<p>{updateData.officialUpdate.closing}</p>
-						</div>
+						<p>{updateData.officialUpdate.closing}</p>
 					</div>
 				</section>
 			)}
@@ -125,22 +117,18 @@ const { updateData, seoData } = Astro.props;
 				{updateData.sourceInfo.gameUrl ? (
 					<a href={updateData.sourceInfo.gameUrl} target="_blank" style="text-decoration: none; color: inherit;">
 						<div class="info-card" style="cursor: pointer; transition: all 0.3s ease;">
-							<div class="text-content">
-								<p style="text-align: center; color: var(--text-secondary); font-style: italic;">
-									Source: <span style="color: var(--amber-glow);">{updateData.sourceInfo.source}</span>
-									{updateData.sourceInfo.verified && " ✓"}
-								</p>
-							</div>
+							<p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+								Source: <span style="color: var(--amber-glow);">{updateData.sourceInfo.source}</span>
+								{updateData.sourceInfo.verified && " ✓"}
+							</p>
 						</div>
 					</a>
 				) : (
 					<div class="info-card">
-						<div class="text-content">
-							<p style="text-align: center; color: var(--text-secondary); font-style: italic;">
-								Source: {updateData.sourceInfo.source}
-								{updateData.sourceInfo.verified && " ✓"}
-							</p>
-						</div>
+						<p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+							Source: {updateData.sourceInfo.source}
+							{updateData.sourceInfo.verified && " ✓"}
+						</p>
 					</div>
 				)}
 			</section>

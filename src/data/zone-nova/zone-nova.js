@@ -37,14 +37,7 @@ export const zoneNovaConfig = {
       url: "/guides/zone-nova/updates/",
       category: "info"
     },
-    {
-      id: "events",
-      title: "Events",
-      emoji: "🎉", 
-      description: "Current events, limited-time shops.",
-      url: "/guides/zone-nova/events/",
-      category: "content"
-    },
+
     {
       id: "characters",
       title: "Characters",

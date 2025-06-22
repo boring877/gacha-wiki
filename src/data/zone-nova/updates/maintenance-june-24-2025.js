@@ -45,7 +45,7 @@ export const june24MaintenanceData = {
       '',
       'Launch time: 2025/06/24 after server launch ~ 2025/07/08 03:59:59',
       'Suitable class: Buffer',
-      'Introduction: As one of the most secretive battle gods of the Otis Federation, Athena is always cold-faced when executing secret missions, even her fellow gods dare not easily approach. But in reality, she longs to communicate with people in her heart, just that she has always maintained a cold demeanor that makes her seem like she\'s rejecting people thousands of miles away, making people afraid to get close. Helplessly, she can only turn to online shopping for Apollo\'s help - but never expected that this sun god\'s number one "socialite" would actually help her put on a body-hugging sexy outfit...',
+      'Introduction: As one of the most secretive battle of the Otis Federation, Athena is always cold-faced when executing secret missions, even her fellow dare not easily approach. But in reality, she longs to communicate with people in her heart, just that she has always maintained a cold demeanor that makes her seem like she\'s rejecting people thousands of miles away, making people afraid to get close. Helplessly, she can only turn to online shopping for Apollo\'s help - but never expected that this sun  number one "socialite" would actually help her put on a body-hugging sexy outfit...',
       '',
       '4. Limited Event Login Rewards',
       'Launch time: 2025/06/25 04:00:00 ~ 2025/07/22 03:59:59',

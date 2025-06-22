@@ -11,7 +11,7 @@ if (typeof document !== 'undefined') {
         name: "Zone Nova",
         url: "/guides/zone-nova/",
         image: "/images/zonenova1.jpg",
-        description: "Characters • Runes • Events • Rifts • Crafting • Updates"
+        description: "Characters • Runes • Rifts • Crafting • Updates"
       },
       // Add more games here easily
       // {

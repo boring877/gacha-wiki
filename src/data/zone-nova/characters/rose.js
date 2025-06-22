@@ -5,7 +5,7 @@ export const roseData = {
   // Basic Character Information
   name: 'Rose',
   image: 'Rose', // Character image identifier
-  rarity: 'SSR',
+  rarity: 'SR',
   element: 'Ice',
   class: 'DPS',
   faction: 'Black & White Country',

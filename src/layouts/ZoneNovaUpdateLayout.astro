@@ -31,10 +31,17 @@ const { title, description, gameTitle, showBackButton = true, backButtonHref = "
 		<slot name="head" />
 	</head>
 	<body class="zone-nova-update-body">
-		<Header />
-		<MobileMenu />
+		<!-- Background layers for visual depth similar to landing page -->
+		<div class="bg-layer bg-primary"></div>
+		<div class="bg-layer bg-accent-1"></div>
+		<div class="bg-layer bg-accent-2"></div>
+		<div class="bg-layer bg-accent-3"></div>
 		
-		<main class="zone-nova-update-main">
+		<div class="update-content">
+			<Header />
+			<MobileMenu />
+			
+			<main class="zone-nova-update-main">
 			<!-- Title Section -->
 			{gameTitle && (
 				<section class="update-title-section">
@@ -55,13 +62,14 @@ const { title, description, gameTitle, showBackButton = true, backButtonHref = "
 		</main>
 		
 		<Footer />
+		</div>
 	</body>
 </html>
 
 <style>
-/* Update Page Body - Using Typography System */
+/* Update Page Body - Using Typography System with Landing Page Background */
 .zone-nova-update-body {
-	background: linear-gradient(135deg, var(--neutral-900) 0%, var(--neutral-800) 100%);
+	background: var(--bg-dark);
 	color: var(--text-inverse);
 	min-height: 100vh;
 	font-family: var(--font-primary);
@@ -70,6 +78,36 @@ const { title, description, gameTitle, showBackButton = true, backButtonHref = "
 	letter-spacing: var(--tracking-normal);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Background Layers - Similar to Landing Page */
+.bg-layer {
+	position: fixed;
+	inset: 0;
+}
+
+.bg-primary {
+	background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+}
+
+.bg-accent-1 {
+	background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent);
+	pointer-events: none;
+}
+
+.bg-accent-2 {
+	background: radial-gradient(circle at 80% 20%, rgba(255, 183, 77, 0.08), transparent);
+	pointer-events: none;
+}
+
+.bg-accent-3 {
+	background: radial-gradient(circle at 50% 50%, rgba(0, 172, 193, 0.05), transparent);
+	pointer-events: none;
+}
+
+.update-content {
+	position: relative;
+	z-index: 10;
 }
 
 .zone-nova-update-main {
@@ -139,6 +177,16 @@ const { title, description, gameTitle, showBackButton = true, backButtonHref = "
 	.update-title-section {
 		margin-bottom: 2rem;
 		padding: 1rem;
+	}
+
+	/* Reduce background complexity on mobile for better performance */
+	.bg-accent-2,
+	.bg-accent-3 {
+		display: none;
+	}
+	
+	.bg-accent-1 {
+		opacity: 0.5;
 	}
 }
 
