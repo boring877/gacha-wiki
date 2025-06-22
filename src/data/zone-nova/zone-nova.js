@@ -71,6 +71,14 @@ export const zoneNovaConfig = {
       category: "guides"
     },
     {
+      id: "summon-faq",
+      title: "Summon FAQ",
+      emoji: "💎",
+      description: "Complete guide to summoning, rates, pity system, and strategies.",
+      url: "/guides/zone-nova/summon-faq/",
+      category: "guides"
+    },
+    {
       id: "surveys",
       title: "Player Surveys",
       emoji: "📋",

@@ -1,0 +1,1145 @@
+---
+import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
+import { summonFaqData } from '../../../data/zone-nova/summon-faq.js';
+---
+
+<ZoneNovaLayout 
+	title="Zone Nova Summon FAQ - Gacha Wiki"
+	description="Complete FAQ guide for summoning in Zone Nova. Learn about rates, pity system, banners, and summoning strategies."
+	gameTitle="Summon FAQ"
+>
+	<div class="faq-container">
+
+		<section class="content-section">
+			<h2 class="section-title">{summonFaqData.characterSummons.title}</h2>
+			
+			<h3 class="subsection-title">Character Summon Rates</h3>
+			<div class="rate-note">
+				<p><strong>Note:</strong> The "effective rate" includes the pity system guarantee. For example, 1.6% effective rate means when you include the fact that you're guaranteed an SSR within 90 pulls maximum.</p>
+			</div>
+			<div class="rates-grid">
+				<div class="rate-category">
+					<h3>{summonFaqData.characterSummons.summonRates.ssrCharacters.title}</h3>
+					<div class="rate-stats">
+						<div class="stat-item">
+							<span class="stat-label">Base Rate:</span>
+							<span class="stat-value ssr">{summonFaqData.characterSummons.summonRates.ssrCharacters.baseRate}</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Effective Rate:</span>
+							<span class="stat-value ssr">{summonFaqData.characterSummons.summonRates.ssrCharacters.effectiveRate}</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Guaranteed:</span>
+							<span class="stat-value">{summonFaqData.characterSummons.summonRates.ssrCharacters.guaranteed}</span>
+						</div>
+						
+						<div class="rate-up-section">
+							<h4 class="rate-up-title">SSR Rate-Up</h4>
+							<div class="stat-item">
+								<span class="stat-label">Chance:</span>
+								<span class="stat-value rate-up">50% chance to get featured SSR character</span>
+							</div>
+							<div class="stat-item">
+								<span class="stat-label">Guarantee:</span>
+								<span class="stat-value rate-up">If non-featured SSR obtained, next SSR is guaranteed to be featured</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="rate-category">
+					<h3>{summonFaqData.characterSummons.summonRates.srObjects.title}</h3>
+					<div class="rate-stats">
+						<div class="stat-item">
+							<span class="stat-label">Base Rate:</span>
+							<span class="stat-value sr">{summonFaqData.characterSummons.summonRates.srObjects.baseRate}</span>
+						</div>
+						<div class="rate-breakdown">
+							<div class="breakdown-item">
+								<span class="breakdown-label">SR Characters:</span>
+								<span class="breakdown-value">{summonFaqData.characterSummons.summonRates.srObjects.breakdown.srCharacters}</span>
+							</div>
+							<div class="breakdown-item">
+								<span class="breakdown-label">SR Memories:</span>
+								<span class="breakdown-value">{summonFaqData.characterSummons.summonRates.srObjects.breakdown.srMemories}</span>
+							</div>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Effective Rate:</span>
+							<span class="stat-value sr">{summonFaqData.characterSummons.summonRates.srObjects.effectiveRate}</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Guaranteed:</span>
+							<span class="stat-value">{summonFaqData.characterSummons.summonRates.srObjects.guaranteed}</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">SR+ Guarantee Rate:</span>
+							<span class="stat-value small">{summonFaqData.characterSummons.summonRates.srObjects.srGuaranteeRate}</span>
+						</div>
+						
+						<div class="rate-up-section">
+							<h4 class="rate-up-title">SR Character Rate-Up</h4>
+							<div class="stat-item">
+								<span class="stat-label">Chance:</span>
+								<span class="stat-value rate-up">50% chance to get one of the featured SR characters</span>
+							</div>
+							<div class="stat-item">
+								<span class="stat-label">Guarantee:</span>
+								<span class="stat-value rate-up">If non-featured SR obtained, next SR is guaranteed to be one of the featured characters</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="content-section">
+			<h2 class="section-title">{summonFaqData.memorySummons.title}</h2>
+			
+			<h3 class="subsection-title">Memory Summon Rates</h3>
+			<div class="rates-grid">
+				<div class="rate-category">
+					<h3>{summonFaqData.memorySummons.summonRates.ssrMemories.title}</h3>
+					<div class="rate-stats">
+						<div class="stat-item">
+							<span class="stat-label">Base Rate:</span>
+							<span class="stat-value ssr">{summonFaqData.memorySummons.summonRates.ssrMemories.baseRate}</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Effective Rate:</span>
+							<span class="stat-value ssr">{summonFaqData.memorySummons.summonRates.ssrMemories.comprehensiveRate}</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Guaranteed:</span>
+							<span class="stat-value">{summonFaqData.memorySummons.summonRates.ssrMemories.guaranteed}</span>
+						</div>
+						
+						<div class="rate-up-section">
+							<h4 class="rate-up-title">SSR Memory Rate-Up</h4>
+							<div class="stat-item">
+								<span class="stat-label">Chance:</span>
+								<span class="stat-value rate-up">75% chance to get featured SSR memory</span>
+							</div>
+							<div class="stat-item">
+								<span class="stat-label">Guarantee:</span>
+								<span class="stat-value rate-up">If non-featured SSR memory obtained, next SSR memory is guaranteed to be featured</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="rate-category">
+					<h3>{summonFaqData.memorySummons.summonRates.srObjects.title}</h3>
+					<div class="rate-stats">
+						<div class="stat-item">
+							<span class="stat-label">Base Rate:</span>
+							<span class="stat-value sr">{summonFaqData.memorySummons.summonRates.srObjects.baseRate}</span>
+						</div>
+						<div class="rate-breakdown">
+							<div class="breakdown-item">
+								<span class="breakdown-label">SR Characters:</span>
+								<span class="breakdown-value">{summonFaqData.memorySummons.summonRates.srObjects.breakdown.srCharacters}</span>
+							</div>
+							<div class="breakdown-item">
+								<span class="breakdown-label">SR Memories:</span>
+								<span class="breakdown-value">{summonFaqData.memorySummons.summonRates.srObjects.breakdown.srMemories}</span>
+							</div>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Effective Rate:</span>
+							<span class="stat-value sr">{summonFaqData.memorySummons.summonRates.srObjects.comprehensiveRate}</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Guaranteed:</span>
+							<span class="stat-value">{summonFaqData.memorySummons.summonRates.srObjects.guaranteed}</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">SR+ Guarantee Rate:</span>
+							<span class="stat-value small">{summonFaqData.memorySummons.summonRates.srObjects.srGuaranteeRate}</span>
+						</div>
+						
+						<div class="rate-up-section">
+							<h4 class="rate-up-title">SR Memory Rate-Up</h4>
+							<div class="stat-item">
+								<span class="stat-label">Chance:</span>
+								<span class="stat-value rate-up">75% chance to get one of the featured SR memories</span>
+							</div>
+							<div class="stat-item">
+								<span class="stat-label">Guarantee:</span>
+								<span class="stat-value rate-up">If non-featured SR memory obtained, next SR memory is guaranteed to be one of the featured memories</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="content-section">
+			<h2 class="section-title">Regular Character Summons</h2>
+			
+			<h3 class="subsection-title">Regular Character Summon Rates</h3>
+			<div class="rates-grid">
+				<div class="rate-category">
+					<h3>SSR Characters</h3>
+					<div class="rate-stats">
+						<div class="stat-item">
+							<span class="stat-label">Base Rate:</span>
+							<span class="stat-value ssr">0.6%</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Effective Rate:</span>
+							<span class="stat-value ssr">1.6%</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Guaranteed:</span>
+							<span class="stat-value">Within 90 summons maximum</span>
+						</div>
+						
+						<div class="rate-up-section">
+							<h4 class="rate-up-title">Character Selection System</h4>
+							<div class="stat-item">
+								<span class="stat-label">SSR Characters:</span>
+								<span class="stat-value rate-up">100% chance to be one of the selectable characters with equal rates for each</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="rate-category">
+					<h3>SR Memories</h3>
+					<div class="rate-stats">
+						<div class="stat-item">
+							<span class="stat-label">Base Rate:</span>
+							<span class="stat-value sr">6%</span>
+						</div>
+						<div class="rate-breakdown">
+							<div class="breakdown-item">
+								<span class="breakdown-label">SR Characters:</span>
+								<span class="breakdown-value">3%</span>
+							</div>
+							<div class="breakdown-item">
+								<span class="breakdown-label">SR Memories:</span>
+								<span class="breakdown-value">3%</span>
+							</div>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Effective Rate:</span>
+							<span class="stat-value sr">13%</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Guaranteed:</span>
+							<span class="stat-value">Within 10 summons maximum</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">SR+ Guarantee Rate:</span>
+							<span class="stat-value small">99.4% SR characters/memories, 0.6% SSR characters</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="content-section">
+			<h2 class="section-title">Regular Memory Summons</h2>
+			
+			<h3 class="subsection-title">Regular Memory Summon Rates</h3>
+			<div class="rates-grid">
+				<div class="rate-category">
+					<h3>SSR Memories</h3>
+					<div class="rate-stats">
+						<div class="stat-item">
+							<span class="stat-label">Base Rate:</span>
+							<span class="stat-value ssr">0.8%</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Effective Rate:</span>
+							<span class="stat-value ssr">1.87%</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Guaranteed:</span>
+							<span class="stat-value">Within 80 summons maximum</span>
+						</div>
+						
+						<div class="rate-up-section">
+							<h4 class="rate-up-title">Memory Selection System</h4>
+							<div class="stat-item">
+								<span class="stat-label">SSR Memories:</span>
+								<span class="stat-value rate-up">100% chance to be one of the selectable memories with equal rates for each</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="rate-category">
+					<h3>SR Memories</h3>
+					<div class="rate-stats">
+						<div class="stat-item">
+							<span class="stat-label">Base Rate:</span>
+							<span class="stat-value sr">9.1%</span>
+						</div>
+						<div class="rate-breakdown">
+							<div class="breakdown-item">
+								<span class="breakdown-label">SR Characters:</span>
+								<span class="breakdown-value">4.55%</span>
+							</div>
+							<div class="breakdown-item">
+								<span class="breakdown-label">SR Memories:</span>
+								<span class="breakdown-value">4.55%</span>
+							</div>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Effective Rate:</span>
+							<span class="stat-value sr">14.8%</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Guaranteed:</span>
+							<span class="stat-value">Within 10 summons maximum</span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">SR+ Guarantee Rate:</span>
+							<span class="stat-value small">99.2% SR characters/memories, 0.8% SSR memories</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="content-section">
+			<h2 class="section-title">Conversion Systems Comparison</h2>
+			
+			<h3 class="subsection-title">Character Summon Conversion</h3>
+			<div class="conversion-grid">
+				<div class="conversion-category">
+					<h3>Character Duplicate Rewards</h3>
+					
+					<div class="duplicate-type">
+						<h4>{summonFaqData.characterSummons.conversionSystem.duplicateRewards.ssrCharacters.title}</h4>
+						<div class="duplicate-rewards">
+							<div class="reward-item">
+								<span class="reward-label">2nd - 7th duplicate:</span>
+								<span class="reward-value">{summonFaqData.characterSummons.conversionSystem.duplicateRewards.ssrCharacters.secondToSeventh}</span>
+							</div>
+							<div class="reward-item">
+								<span class="reward-label">8th+ duplicate:</span>
+								<span class="reward-value">{summonFaqData.characterSummons.conversionSystem.duplicateRewards.ssrCharacters.eighthPlus}</span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="duplicate-type">
+						<h4>{summonFaqData.characterSummons.conversionSystem.duplicateRewards.srCharacters.title}</h4>
+						<div class="duplicate-rewards">
+							<div class="reward-item">
+								<span class="reward-label">2nd - 7th duplicate:</span>
+								<span class="reward-value">{summonFaqData.characterSummons.conversionSystem.duplicateRewards.srCharacters.secondToSeventh}</span>
+							</div>
+							<div class="reward-item">
+								<span class="reward-label">8th+ duplicate:</span>
+								<span class="reward-value">{summonFaqData.characterSummons.conversionSystem.duplicateRewards.srCharacters.eighthPlus}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="conversion-category">
+					<h3>{summonFaqData.characterSummons.conversionSystem.memoryRewards.title}</h3>
+					<div class="memory-rewards">
+						<div class="reward-item">
+							<span class="reward-label">SR Memory:</span>
+							<span class="reward-value">{summonFaqData.characterSummons.conversionSystem.memoryRewards.srMemory}</span>
+						</div>
+						<div class="reward-item">
+							<span class="reward-label">Rare Memory:</span>
+							<span class="reward-value">{summonFaqData.characterSummons.conversionSystem.memoryRewards.rareMemory}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<h3 class="subsection-title">Memory Summon Conversion</h3>
+			<div class="conversion-grid">
+				<div class="conversion-category">
+					<h3>{summonFaqData.memorySummons.conversionSystem.memoryRewards.title}</h3>
+					<div class="memory-rewards">
+						<div class="reward-item">
+							<span class="reward-label">SSR Memory:</span>
+							<span class="reward-value">{summonFaqData.memorySummons.conversionSystem.memoryRewards.ssrMemory}</span>
+						</div>
+						<div class="reward-item">
+							<span class="reward-label">SR Memory:</span>
+							<span class="reward-value">{summonFaqData.memorySummons.conversionSystem.memoryRewards.srMemory}</span>
+						</div>
+						<div class="reward-item">
+							<span class="reward-label">Rare Memory:</span>
+							<span class="reward-value">{summonFaqData.memorySummons.conversionSystem.memoryRewards.rareMemory}</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="conversion-category">
+					<h3>{summonFaqData.memorySummons.conversionSystem.duplicateCharacterRewards.title}</h3>
+					<div class="duplicate-rewards">
+						<div class="reward-item">
+							<span class="reward-label">2nd - 7th duplicate:</span>
+							<span class="reward-value">{summonFaqData.memorySummons.conversionSystem.duplicateCharacterRewards.secondToSeventh}</span>
+						</div>
+						<div class="reward-item">
+							<span class="reward-label">8th+ duplicate:</span>
+							<span class="reward-value">{summonFaqData.memorySummons.conversionSystem.duplicateCharacterRewards.eighthPlus}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+
+		<section class="content-section">
+			<h2 class="section-title">Frequently Asked Questions</h2>
+			<div class="faq-grid">
+				{summonFaqData.faqItems.map((faq) => (
+					<div class="faq-item" id={`faq-${faq.id}`}>
+						<div class="faq-question">
+							<h3>{faq.question}</h3>
+							<span class="faq-toggle">+</span>
+						</div>
+						<div class="faq-answer">
+							<p>{faq.answer}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section class="content-section">
+			<h2 class="section-title">Need More Help?</h2>
+			<div class="help-links">
+				{summonFaqData.helpLinks.map((link) => (
+					<a href={link.href} class="help-link">
+						<span class="help-icon">{link.icon}</span>
+						<span class="help-text">{link.text}</span>
+					</a>
+				))}
+			</div>
+		</section>
+	</div>
+</ZoneNovaLayout>
+
+<style>
+	.faq-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+
+	.content-section {
+		background: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-700) 100%);
+		border-radius: 20px;
+		padding: 3rem;
+		margin-bottom: 3rem;
+		border: 1px solid var(--teal-crystal);
+		box-shadow: 0 12px 30px rgba(0, 172, 193, 0.2);
+		transition: all 0.4s ease;
+	}
+
+	.content-section:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 16px 40px rgba(0, 172, 193, 0.3);
+		border-color: var(--amber-glow);
+	}
+
+	.section-title {
+		font-family: var(--font-display);
+		font-size: var(--text-4xl);
+		font-weight: var(--font-bold);
+		background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		margin: 0 0 2rem 0;
+		text-align: center;
+	}
+
+	.subsection-title {
+		font-family: var(--font-display);
+		font-size: var(--text-2xl);
+		font-weight: var(--font-semibold);
+		color: var(--amber-glow);
+		margin: 2rem 0 1.5rem 0;
+		text-align: center;
+		border-bottom: 2px solid var(--teal-crystal);
+		padding-bottom: 0.5rem;
+	}
+
+	.rate-note {
+		background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 172, 193, 0.1));
+		border: 1px solid var(--amber-glow);
+		border-radius: 12px;
+		padding: 1.5rem;
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+
+	.rate-note p {
+		color: var(--text-inverse);
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
+		margin: 0;
+	}
+
+	.rate-note strong {
+		color: var(--amber-glow);
+		font-weight: var(--font-bold);
+	}
+
+	.rate-up-section {
+		margin-top: 1.5rem;
+		padding-top: 1.5rem;
+		border-top: 2px solid var(--amber-glow);
+	}
+
+	.rate-up-title {
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-normal);
+		letter-spacing: var(--tracking-wide);
+		color: var(--amber-glow);
+		margin: 0 0 1rem 0;
+		text-align: center;
+	}
+
+	.stat-value.rate-up {
+		color: var(--amber-glow);
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
+		text-align: center;
+		word-wrap: break-word;
+		white-space: pre-wrap;
+		max-width: 100%;
+		padding: 0.5rem;
+	}
+
+	.stat-value.ssr {
+		color: #fbbf24;
+		font-weight: var(--font-bold);
+	}
+
+	.stat-value.sr {
+		color: #a855f7;
+		font-weight: var(--font-bold);
+	}
+
+	.summon-system-info {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1.5rem;
+		margin-bottom: 2rem;
+		padding: 2rem;
+		background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+		border-radius: 16px;
+		border: 1px solid var(--neutral-600);
+	}
+
+	.detail-item {
+		text-align: center;
+	}
+
+	.detail-item h4 {
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: var(--font-bold);
+		color: var(--amber-glow);
+		margin: 0 0 0.5rem 0;
+	}
+
+	.detail-item p {
+		font-family: var(--font-primary);
+		font-size: var(--text-base);
+		color: var(--text-inverse);
+		margin: 0;
+		line-height: var(--leading-relaxed);
+	}
+
+	.faq-intro {
+		text-align: center;
+		color: var(--text-inverse);
+		font-size: var(--text-lg);
+		line-height: var(--leading-relaxed);
+		max-width: 60rem;
+		margin: 0 auto;
+	}
+
+	.faq-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.faq-item {
+		background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+		border-radius: 16px;
+		border: 1px solid var(--neutral-600);
+		overflow: hidden;
+		transition: all 0.4s ease;
+	}
+
+	.faq-item:hover {
+		transform: translateY(-2px);
+		border-color: var(--teal-crystal);
+		box-shadow: 0 8px 20px rgba(0, 172, 193, 0.2);
+	}
+
+	.faq-question {
+		padding: 2rem;
+		cursor: pointer;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		transition: all 0.3s ease;
+	}
+
+	.faq-question:hover {
+		background: rgba(0, 172, 193, 0.1);
+	}
+
+	.faq-question h3 {
+		font-family: var(--font-display);
+		font-size: var(--text-xl);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-normal);
+		letter-spacing: var(--tracking-wide);
+		color: var(--text-inverse);
+		margin: 0;
+		flex: 1;
+	}
+
+	.faq-toggle {
+		font-size: var(--text-2xl);
+		font-weight: var(--font-bold);
+		color: var(--amber-glow);
+		transition: transform 0.3s ease;
+		min-width: 2rem;
+		text-align: center;
+	}
+
+	.faq-answer {
+		padding: 0 2rem 2rem 2rem;
+		border-top: 1px solid var(--neutral-600);
+	}
+
+	.faq-answer p {
+		font-family: var(--font-primary);
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
+		letter-spacing: var(--tracking-normal);
+		color: var(--text-inverse);
+		margin: 1rem 0 0 0;
+	}
+
+	.tips-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+	}
+
+	.tip-card {
+		background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+		border-radius: 16px;
+		padding: 2rem;
+		border: 1px solid var(--neutral-600);
+		transition: all 0.4s ease;
+		text-align: center;
+	}
+
+	.tip-card:hover {
+		transform: translateY(-4px);
+		border-color: var(--amber-glow);
+		box-shadow: 0 8px 20px rgba(255, 183, 77, 0.2);
+	}
+
+	.tip-card h4 {
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: var(--font-bold);
+		color: var(--amber-glow);
+		margin: 0 0 1rem 0;
+	}
+
+	.tip-card p {
+		color: var(--text-inverse);
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
+		margin: 0;
+	}
+
+	.help-links {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+
+	.help-link {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 2rem;
+		background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+		border-radius: 16px;
+		border: 1px solid var(--neutral-600);
+		text-decoration: none;
+		transition: all 0.4s ease;
+	}
+
+	.help-link:hover {
+		transform: translateY(-4px);
+		border-color: var(--teal-crystal);
+		box-shadow: 0 8px 20px rgba(0, 172, 193, 0.2);
+	}
+
+	.help-icon {
+		font-size: var(--text-2xl);
+	}
+
+	.help-text {
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: var(--font-semibold);
+		color: var(--text-inverse);
+	}
+
+	/* Detail Grid Styles */
+	.detail-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+
+	.detail-item {
+		background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+		border-radius: 16px;
+		padding: 2rem;
+		border: 1px solid var(--neutral-600);
+		transition: all 0.4s ease;
+	}
+
+	.detail-item:hover {
+		transform: translateY(-4px);
+		border-color: var(--teal-crystal);
+		box-shadow: 0 8px 20px rgba(0, 172, 193, 0.2);
+	}
+
+	.detail-item h4 {
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: var(--font-bold);
+		color: var(--amber-glow);
+		margin: 0 0 1rem 0;
+	}
+
+	.detail-item p {
+		color: var(--text-inverse);
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
+		margin: 0;
+	}
+
+	.detail-item ul {
+		color: var(--text-inverse);
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
+		margin: 0;
+		padding-left: 1.5rem;
+	}
+
+	.detail-item li {
+		color: var(--text-inverse);
+		margin: 0.5rem 0;
+	}
+
+	.summon-system-info {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.subsection-title {
+		font-family: var(--font-display);
+		font-size: var(--text-2xl);
+		font-weight: var(--font-bold);
+		color: var(--amber-glow);
+		margin: 2rem 0 1.5rem 0;
+		text-align: center;
+	}
+
+	/* Rates Grid Styles */
+	.rates-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		gap: 2rem;
+	}
+
+	.rate-category {
+		background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+		border-radius: 16px;
+		padding: 2.5rem;
+		border: 1px solid var(--neutral-600);
+		transition: all 0.4s ease;
+	}
+
+	.rate-category:hover {
+		transform: translateY(-4px);
+		border-color: var(--amber-glow);
+		box-shadow: 0 8px 20px rgba(255, 183, 77, 0.2);
+	}
+
+	.rate-category h3 {
+		font-family: var(--font-display);
+		font-size: var(--text-xl);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-normal);
+		letter-spacing: var(--tracking-wide);
+		color: var(--teal-crystal);
+		margin: 0 0 1.5rem 0;
+		text-align: center;
+	}
+
+	.rate-stats {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.stat-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 1.5rem;
+		background: rgba(0, 172, 193, 0.1);
+		border-radius: 12px;
+		border: 1px solid rgba(0, 172, 193, 0.2);
+		transition: all 0.3s ease;
+	}
+
+	.stat-item:hover {
+		background: rgba(0, 172, 193, 0.15);
+		border-color: var(--teal-crystal);
+	}
+
+	.stat-label {
+		font-family: var(--font-primary);
+		font-size: var(--text-xs);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-normal);
+		letter-spacing: var(--tracking-wide);
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		margin-bottom: 0.25rem;
+	}
+
+	.stat-value {
+		font-family: var(--font-display);
+		font-size: var(--text-xl);
+		font-weight: var(--font-bold);
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-normal);
+		color: var(--amber-glow);
+		word-wrap: break-word;
+		text-align: center;
+	}
+
+	.stat-value.ssr {
+		color: #fbbf24;
+	}
+
+	.stat-value.sr {
+		color: #a855f7;
+	}
+
+	.stat-value.small {
+		font-size: var(--text-sm);
+	}
+
+	.rate-breakdown {
+		background: rgba(255, 183, 77, 0.1);
+		border-radius: 12px;
+		padding: 1rem;
+		margin: 1rem 0;
+		border: 1px solid rgba(255, 183, 77, 0.2);
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.breakdown-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.75rem 1rem;
+		gap: 1rem;
+		background: rgba(255, 183, 77, 0.05);
+		border-radius: 8px;
+		margin: 0.25rem 0;
+	}
+
+
+
+	.breakdown-label {
+		font-family: var(--font-primary);
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-normal);
+		letter-spacing: var(--tracking-normal);
+		color: var(--text-inverse);
+		flex: 1;
+	}
+
+	.breakdown-value {
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: var(--font-bold);
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-normal);
+		color: var(--amber-glow);
+		flex-shrink: 0;
+		min-width: fit-content;
+	}
+
+	/* Rate-Up Grid Styles */
+	.rateup-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+
+	.rateup-category {
+		background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+		border-radius: 16px;
+		padding: 2.5rem;
+		border: 1px solid var(--neutral-600);
+		transition: all 0.4s ease;
+	}
+
+	.rateup-category:hover {
+		transform: translateY(-4px);
+		border-color: var(--teal-crystal);
+		box-shadow: 0 8px 20px rgba(0, 172, 193, 0.2);
+	}
+
+	.rateup-category h3 {
+		font-family: var(--font-display);
+		font-size: var(--text-xl);
+		font-weight: var(--font-bold);
+		color: var(--amber-glow);
+		margin: 0 0 1.5rem 0;
+		text-align: center;
+	}
+
+	.rateup-info p {
+		color: var(--text-inverse);
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
+		margin: 1rem 0;
+	}
+
+	.rateup-info strong {
+		color: var(--teal-crystal);
+		font-weight: var(--font-bold);
+	}
+
+	/* Conversion Grid Styles */
+	.conversion-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		gap: 2rem;
+	}
+
+	.conversion-category {
+		background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+		border-radius: 16px;
+		padding: 2.5rem;
+		border: 1px solid var(--neutral-600);
+		transition: all 0.4s ease;
+	}
+
+	.conversion-category:hover {
+		transform: translateY(-4px);
+		border-color: var(--amber-glow);
+		box-shadow: 0 8px 20px rgba(255, 183, 77, 0.2);
+	}
+
+	.conversion-category h3 {
+		font-family: var(--font-display);
+		font-size: var(--text-xl);
+		font-weight: var(--font-bold);
+		color: var(--teal-crystal);
+		margin: 0 0 1.5rem 0;
+		text-align: center;
+	}
+
+	.duplicate-type {
+		margin-bottom: 2rem;
+	}
+
+	.duplicate-type h4 {
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: var(--font-bold);
+		color: var(--amber-glow);
+		margin: 0 0 1rem 0;
+	}
+
+	.duplicate-rewards,
+	.memory-rewards {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.reward-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem;
+		background: rgba(0, 172, 193, 0.1);
+		border-radius: 12px;
+		border: 1px solid rgba(0, 172, 193, 0.2);
+		transition: all 0.3s ease;
+	}
+
+	.reward-item:hover {
+		background: rgba(0, 172, 193, 0.15);
+		border-color: var(--teal-crystal);
+	}
+
+	.reward-label {
+		font-family: var(--font-primary);
+		font-size: var(--text-base);
+		font-weight: var(--font-semibold);
+		color: var(--text-inverse);
+	}
+
+	.reward-value {
+		font-family: var(--font-display);
+		font-size: var(--text-base);
+		font-weight: var(--font-bold);
+		color: var(--amber-glow);
+	}
+
+	/* Mobile Responsiveness */
+	@media (max-width: 768px) {
+		.faq-container {
+			padding: 1rem;
+		}
+
+		.content-section {
+			padding: 2rem;
+			margin-bottom: 2rem;
+		}
+
+		.section-title {
+			font-size: var(--text-3xl);
+		}
+
+		.detail-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.rates-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.rateup-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.conversion-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.detail-item,
+		.rate-category,
+		.rateup-category,
+		.conversion-category {
+			padding: 1.5rem;
+		}
+
+		.faq-question {
+			padding: 1.5rem;
+		}
+
+		.faq-question h3 {
+			font-size: var(--text-lg);
+		}
+
+		.faq-answer {
+			padding: 0 1.5rem 1.5rem 1.5rem;
+		}
+
+		.tips-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.tip-card {
+			padding: 1.5rem;
+		}
+
+		.help-links {
+			grid-template-columns: 1fr;
+		}
+
+		.help-link {
+			padding: 1.5rem;
+		}
+	}
+
+	/* FAQ Toggle Animation */
+	.faq-item.active .faq-toggle {
+		transform: rotate(45deg);
+	}
+</style>
+
+<script>
+	// FAQ Toggle Functionality
+	document.addEventListener('DOMContentLoaded', () => {
+		const faqItems = document.querySelectorAll('.faq-item');
+		
+		faqItems.forEach(item => {
+			const question = item.querySelector('.faq-question') as HTMLElement;
+			const answer = item.querySelector('.faq-answer') as HTMLElement;
+			const toggle = item.querySelector('.faq-toggle') as HTMLElement;
+			
+			if (!question || !answer || !toggle) return;
+			
+			// Initially hide all answers
+			answer.style.display = 'none';
+			
+			question.addEventListener('click', () => {
+				const isActive = item.classList.contains('active');
+				
+				// Close all other FAQ items
+				faqItems.forEach(otherItem => {
+					if (otherItem !== item) {
+						otherItem.classList.remove('active');
+						const otherAnswer = otherItem.querySelector('.faq-answer') as HTMLElement;
+						const otherToggle = otherItem.querySelector('.faq-toggle') as HTMLElement;
+						if (otherAnswer) otherAnswer.style.display = 'none';
+						if (otherToggle) otherToggle.textContent = '+';
+					}
+				});
+				
+				// Toggle current item
+				if (isActive) {
+					item.classList.remove('active');
+					answer.style.display = 'none';
+					toggle.textContent = '+';
+				} else {
+					item.classList.add('active');
+					answer.style.display = 'block';
+					toggle.textContent = '−';
+				}
+			});
+		});
+	});
+</script> 
