@@ -28,7 +28,7 @@ if (typeof document !== 'undefined') {
     if (gamesList) {
       console.log('Rendering', games.length, 'games...');
       
-      games.forEach((game, index) => {
+      games.forEach((game) => {
         console.log('Rendering game:', game.name);
         
         const a = document.createElement('a');
