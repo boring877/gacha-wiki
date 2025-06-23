@@ -72,6 +72,45 @@
 	border-color: var(--teal-crystal);
 }
 
+/* Rune Image Styling */
+.rune-image-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1.5rem;
+	padding: 1rem;
+	background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));
+	border-radius: 50%;
+	width: 140px;
+	height: 140px;
+	margin-left: auto;
+	margin-right: auto;
+	transition: all 0.4s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.rune-card:hover .rune-image-container {
+	background: linear-gradient(135deg, rgba(0, 172, 193, 0.2), rgba(255, 183, 77, 0.2));
+	transform: scale(1.05);
+	box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3);
+}
+
+.rune-image {
+	width: 100px !important;
+	height: 100px !important;
+	border-radius: 50%;
+	object-fit: cover;
+	transition: all 0.4s ease;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.rune-card:hover .rune-image {
+	transform: scale(1.1);
+	border-color: rgba(255, 255, 255, 0.8);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 .rune-card h3 {
 	font-family: var(--font-display);
 	font-size: var(--text-xl);
@@ -79,6 +118,7 @@
 	color: var(--text-primary);
 	margin: 0 0 1rem 0;
 	transition: all 0.3s ease;
+	text-align: center;
 }
 
 .rune-card:hover h3 {
@@ -189,6 +229,18 @@ td:first-child {
 		font-size: var(--text-lg);
 	}
 
+	/* Mobile Rune Image Styling */
+	.rune-image-container {
+		width: 120px;
+		height: 120px;
+		margin-bottom: 1rem;
+	}
+
+	.rune-image {
+		width: 80px !important;
+		height: 80px !important;
+	}
+
 	table {
 		font-size: var(--text-sm);
 	}
@@ -214,6 +266,18 @@ td:first-child {
 
 	.rune-card h3 {
 		font-size: var(--text-base);
+	}
+
+	/* Extra Small Mobile Rune Image Styling */
+	.rune-image-container {
+		width: 100px;
+		height: 100px;
+		margin-bottom: 1rem;
+	}
+
+	.rune-image {
+		width: 70px !important;
+		height: 70px !important;
 	}
 
 	table {

@@ -26,9 +26,35 @@ import {
     .content-wrapper { max-width: 1200px; width: 100%; margin: 0 auto; }
     .filter-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 2rem auto 1.5rem auto; flex-wrap: wrap; padding: 0 1rem; }
     .filter-controls, .sort-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-    .filter-select, .sort-btn, .reset-btn { padding: 0.4rem 0.7rem; background: var(--bg-primary); color: var(--text-secondary); border-radius: 8px; border: 1px solid var(--mocha-mousse); font-size: 0.8rem; cursor: pointer; }
-    .filter-select:hover, .sort-btn:hover, .reset-btn:hover { background: var(--bg-secondary); color: var(--text-primary); border-color: var(--amber-glow); }
+    .filter-select, .sort-btn { padding: 0.4rem 0.7rem; background: var(--bg-primary); color: var(--text-secondary); border-radius: 8px; border: 1px solid var(--mocha-mousse); font-size: 0.8rem; cursor: pointer; }
+    .filter-select:hover, .sort-btn:hover { background: var(--bg-secondary); color: var(--text-primary); border-color: var(--amber-glow); }
     .sort-btn.active { background: var(--amber-glow); color: white; }
+    
+    /* Reset button unique styling */
+    .reset-btn { 
+      padding: 0.5rem 1rem; 
+      background: linear-gradient(135deg, var(--rose-quartz), #e91e63); 
+      color: white; 
+      border-radius: 10px; 
+      border: 2px solid var(--rose-quartz); 
+      font-size: 0.85rem; 
+      font-weight: 600; 
+      cursor: pointer; 
+      box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .reset-btn:hover { 
+      background: linear-gradient(135deg, #d81b60, var(--rose-quartz)); 
+      transform: translateY(-1px); 
+      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+      border-color: #d81b60;
+    }
+    .reset-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(233, 30, 99, 0.3);
+    }
     /* Table styles */
     .character-table-container { overflow-x: auto; margin: 1.5rem auto; padding: 0 1rem; }
     table.character-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--bg-primary); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); font-family: 'Space Grotesk', sans-serif; }
@@ -98,8 +124,7 @@ import {
 						</select>
 					</div>
 					<div class="sort-controls">
-						<button class="sort-btn active" data-sort="name">Name</button>
-						<button class="sort-btn" data-sort="hp">HP</button>
+						<button class="sort-btn active" data-sort="hp">HP</button>
 						<button class="sort-btn" data-sort="attack">ATK</button>
 						<button class="sort-btn" data-sort="defense">DEF</button>
 						<button class="sort-btn" data-sort="energyRecovery">Energy</button>
@@ -194,7 +219,7 @@ import {
     const sortButtons = document.querySelectorAll('.sort-btn');
     const resetButton = document.getElementById('reset-table');
     // --- State ---
-    let currentSortKey = 'name';
+    let currentSortKey = 'hp';
     let currentSortDirection = 'asc';
     const originalRows = Array.from(tableBody.children);
     const originalCards = Array.from(mobileCardsContainer.children);

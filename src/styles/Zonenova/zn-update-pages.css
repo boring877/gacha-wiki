@@ -25,7 +25,7 @@
 }
 
 .update-header:hover {
-	transform: translateY(-4px);
+	/* Removed distracting transform effect */
 	box-shadow: 0 16px 40px rgba(164, 120, 100, 0.3);
 	border-color: var(--teal-crystal);
 }
@@ -69,7 +69,7 @@
 }
 
 .update-page .content-section:hover {
-	transform: translateY(-4px);
+	/* Removed distracting transform effect */
 	box-shadow: 0 16px 40px rgba(0, 172, 193, 0.3);
 	border-color: var(--amber-glow);
 }
@@ -103,41 +103,12 @@
 
 /* ===== INFO CARDS ===== */
 .update-page .info-card {
-	background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
-	border-radius: 16px;
-	padding: 2.5rem;
-	margin: 2rem 0;
-	border-left: 4px solid var(--teal-crystal);
-	transition: all 0.4s ease;
-	box-shadow: 0 8px 20px rgba(0, 172, 193, 0.15);
-	border: 1px solid var(--neutral-600);
-	position: relative;
-	overflow: hidden;
-	animation: cardSlideUp 0.6s ease-out;
+	/* Removed box styling for better text flow */
+	padding: 2rem 0;
+	margin: 1rem 0;
 }
 
-.info-card::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: -100%;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-	transition: left 0.6s ease;
-}
-
-.info-card:hover::before {
-	left: 100%;
-}
-
-.update-page .info-card:hover {
-	transform: translateY(-8px) scale(1.02);
-	box-shadow: 0 20px 40px rgba(0, 172, 193, 0.3);
-	border-left-color: var(--amber-glow);
-	border-color: var(--teal-crystal);
-	background: linear-gradient(135deg, var(--neutral-600) 0%, var(--neutral-700) 100%);
-}
+/* Removed info-card hover effects and animations for cleaner text flow */
 
 /* ===== DATA GRID ===== */
 .data-grid {
@@ -162,7 +133,7 @@
 }
 
 .data-item:hover {
-	transform: translateY(-4px);
+	/* Removed distracting transform effect */
 	box-shadow: 0 8px 20px rgba(0, 172, 193, 0.2);
 	border-color: var(--teal-crystal);
 	background: linear-gradient(135deg, var(--neutral-600) 0%, var(--neutral-700) 100%);
@@ -196,7 +167,6 @@
 	font-weight: var(--font-normal);
 	line-height: var(--leading-relaxed);
 	letter-spacing: var(--tracking-normal);
-	color: var(--text-secondary);
 	max-width: 60rem;
 	margin-left: auto;
 	margin-right: auto;
@@ -207,7 +177,6 @@
 	font-size: var(--text-lg);
 	line-height: var(--leading-relaxed);
 	letter-spacing: var(--tracking-normal);
-	color: var(--text-secondary);
 	margin: 1.5rem 0;
 	text-align: center;
 }
@@ -222,7 +191,6 @@
 	font-size: var(--text-lg);
 	line-height: var(--leading-relaxed);
 	letter-spacing: var(--tracking-normal);
-	color: var(--text-secondary);
 	margin: 1rem 0;
 }
 
@@ -232,6 +200,84 @@
 	letter-spacing: var(--tracking-wide);
 	color: var(--amber-glow);
 }
+
+/* ===== CONTENT FORMATTING IMPROVEMENTS ===== */
+.official-section .info-card {
+	position: relative;
+}
+
+/* Removed visual separation lines for cleaner text flow */
+
+/* Style for event/maintenance section headers */
+.content-section-header {
+	font-weight: var(--font-bold) !important;
+	margin-top: 1.5rem !important;
+	margin-bottom: 0.75rem !important;
+}
+
+/* Style for numbered event items */
+.event-item-header {
+	font-weight: var(--font-semibold) !important;
+	margin-top: 2rem !important;
+	margin-bottom: 1rem !important;
+}
+
+/* ===== COLLAPSIBLE CONTENT FOR MOBILE ===== */
+.collapsible-section {
+	border: 1px solid var(--neutral-600);
+	border-radius: 12px;
+	margin: 1rem 0;
+	overflow: hidden;
+}
+
+.collapsible-header {
+	background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+	padding: 1rem 1.5rem;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: all 0.3s ease;
+	border: none;
+	width: 100%;
+	text-align: left;
+	color: white;
+	font-family: var(--font-primary);
+	font-size: var(--text-base);
+	font-weight: var(--font-medium);
+}
+
+.collapsible-header:hover {
+	background: linear-gradient(135deg, var(--neutral-600) 0%, var(--neutral-700) 100%);
+}
+
+.collapsible-toggle {
+	color: white;
+	font-size: var(--text-lg);
+	font-weight: var(--font-bold);
+	transition: transform 0.3s ease;
+}
+
+.collapsible-section.expanded .collapsible-toggle {
+	transform: rotate(180deg);
+}
+
+.collapsible-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease;
+}
+
+.collapsible-section.expanded .collapsible-content {
+	max-height: none;
+}
+
+.collapsible-inner {
+	padding: 1.5rem;
+	background: transparent;
+}
+
+/* Removed all color overrides - let layout handle colors naturally */
 
 /* ===== SECTION SPECIFIC STYLING ===== */
 .update-page .tldr-section {
@@ -298,14 +344,14 @@
 }
 
 .update-page .tldr-section li:hover {
-	transform: translateY(-2px) scale(1.01);
+	/* Removed distracting transform and scale effects */
 	box-shadow: 0 12px 30px rgba(0, 172, 193, 0.3);
 	border-color: var(--teal-crystal);
 	background: linear-gradient(135deg, var(--neutral-600) 0%, var(--neutral-700) 100%);
 }
 
 .update-page .tldr-section:hover {
-	transform: translateY(-4px);
+	/* Removed distracting transform effect */
 	box-shadow: 0 16px 40px rgba(0, 172, 193, 0.3);
 	border-color: var(--amber-glow);
 }
@@ -331,9 +377,10 @@
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
-	border-bottom: none;
+	border-bottom: 2px solid var(--amber-glow);
 	text-align: center;
 	margin: 0 0 1.5rem 0;
+	padding-bottom: 1rem;
 }
 
 .official-section .section-title::after {
@@ -341,16 +388,13 @@
 }
 
 .official-section .info-card p {
-	color: var(--text-inverse);
 	font-family: var(--font-primary);
 	font-size: var(--text-lg);
 	font-weight: var(--font-normal);
 	line-height: var(--leading-relaxed);
-	margin: 1.5rem 0;
-	text-align: center;
-	max-width: 60rem;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 2rem 0;
+	text-align: left;
+	max-width: none;
 }
 
 .official-section .info-card strong {
@@ -361,22 +405,17 @@
 
 .update-page .official-section .info-card ul,
 .update-page .official-section .info-card ol {
-	color: var(--text-inverse);
 	padding-left: 2rem;
-	margin: 1rem 0;
-	max-width: 60rem;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 2rem 0;
 }
 
 .update-page .official-section .info-card li {
-	color: var(--text-inverse);
 	font-size: var(--text-lg);
-	margin: 1rem 0;
+	margin: 1.5rem 0;
 }
 
 .update-page .official-section:hover {
-	transform: translateY(-4px);
+	/* Removed distracting transform effect */
 	box-shadow: 0 16px 40px rgba(255, 183, 77, 0.3);
 	border-color: var(--teal-crystal);
 }
@@ -422,46 +461,169 @@
 
 @media (max-width: 767px) {
 	.update-page {
-		padding: 1rem;
+		padding: 0.75rem;
 		max-width: 100%;
 	}
 
 	.update-header {
-		padding: 2rem;
-		margin-bottom: 2rem;
-	}
-
-	.update-title {
-		font-size: var(--text-3xl);
-	}
-
-	.update-page .section-title {
-		font-size: var(--text-3xl);
-	}
-
-	.update-page .content-section {
-		padding: 2rem;
-		margin-bottom: 2rem;
+		padding: 1.5rem;
+		margin-bottom: 1.5rem;
 		border-radius: 16px;
 	}
 
-	.update-page .info-card {
-		padding: 2rem;
-		margin: 1.5rem 0;
+	.update-title {
+		font-size: var(--text-2xl);
+		line-height: var(--leading-tight);
 	}
 
+	.update-subtitle {
+		font-size: var(--text-base);
+		line-height: var(--leading-normal);
+		margin-top: 0.75rem;
+	}
+
+	.update-page .section-title {
+		font-size: var(--text-2xl);
+		margin-bottom: 1rem;
+	}
+
+	.update-page .content-section {
+		padding: 1.5rem;
+		margin-bottom: 1.5rem;
+		border-radius: 12px;
+	}
+
+	.update-page .info-card {
+		padding: 1rem 0;
+		margin: 0.5rem 0;
+	}
+
+	/* Mobile-optimized typography */
 	.text-content {
 		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
 	}
 
 	.text-content p {
 		font-size: var(--text-base);
-		margin: 1rem 0;
+		line-height: var(--leading-relaxed);
+		margin: 1.25rem 0;
+		text-align: left;
 	}
 
+	/* Official section mobile improvements */
+	.official-section .info-card p {
+		font-size: var(--text-base) !important;
+		line-height: var(--leading-relaxed) !important;
+		margin: 1.5rem 0 !important;
+		text-align: left !important;
+		max-width: none !important;
+	}
+
+	/* Break up long content blocks on mobile */
+	.official-section .info-card p:empty {
+		margin: 0.75rem 0 !important;
+		height: 0.5rem;
+	}
+
+	/* TL;DR section mobile styling */
+	.update-page .tldr-section ul {
+		padding-left: 0;
+		margin: 0;
+	}
+
+	.update-page .tldr-section li {
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
+		padding: 1.25rem;
+		margin: 1rem 0;
+		border-radius: 12px;
+	}
+
+	.update-page .tldr-section li::before {
+		font-size: var(--text-base);
+		margin-right: 0.75rem;
+	}
+
+	/* Data grid mobile optimization */
 	.data-grid {
 		grid-template-columns: 1fr;
-		gap: 1rem;
+		gap: 0.75rem;
+	}
+
+	.data-item {
+		padding: 1rem;
+		min-height: auto;
+		border-radius: 12px;
+	}
+
+	.data-label {
+		font-size: var(--text-sm);
+		margin-bottom: 0.375rem;
+	}
+
+	.data-value {
+		font-size: var(--text-base);
+	}
+}
+
+/* ===== EXTRA MOBILE IMPROVEMENTS ===== */
+@media (max-width: 480px) {
+	.update-page {
+		padding: 0.5rem;
+	}
+
+	.update-header {
+		padding: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.update-title {
+		font-size: var(--text-xl);
+	}
+
+	.update-subtitle {
+		font-size: var(--text-sm);
+	}
+
+	.update-page .section-title {
+		font-size: var(--text-xl);
+		margin-bottom: 0.75rem;
+	}
+
+	.update-page .content-section {
+		padding: 1rem;
+		margin-bottom: 1rem;
+		border-radius: 10px;
+	}
+
+	.update-page .info-card {
+		padding: 0.5rem 0;
+		margin: 0.5rem 0;
+	}
+
+	.official-section .info-card p {
+		font-size: var(--text-sm) !important;
+		line-height: 1.6 !important;
+		margin: 1.25rem 0 !important;
+	}
+
+	.update-page .tldr-section li {
+		font-size: var(--text-sm);
+		padding: 1rem;
+		margin: 0.75rem 0;
+	}
+
+	.data-item {
+		padding: 0.75rem;
+	}
+
+	.data-label {
+		font-size: var(--text-xs);
+	}
+
+	.data-value {
+		font-size: var(--text-sm);
 	}
 }
 
@@ -472,6 +634,7 @@
 		transition: none !important;
 	}
 
+	/* Transform effects already removed for better UX */
 	.update-header:hover,
 	.content-section:hover,
 	.info-card:hover,
