@@ -10,9 +10,9 @@ export const riftTide5Data = {
   fullDescription: 'The most challenging Rift Tide yet, featuring powerful Divine Power (神罚之力) mechanics that reward strategic character positioning and attack coordination. Enemies gain explosive Divine Power effects when defeated.',
   focus: 'Divine Power & Attack Scaling',
   lawEffects: [
-    'When our characters defeat enemies, normal attack damage increased by 50%.',
-    'When our characters defeat enemies after normal attacks, gain 1 layer [Divine Power]. When our characters have 20 layers [Divine Power], the next time enemies are defeated, will summon [Divine Power] against enemies, dealing 300% of own attack power as Divine holy damage and reducing enemy defense by 30%.',
-    'When our characters are attacked, defense damage increased by 100%.',
-    'When our characters are attacked after defense, additionally gain 1 layer [Thunder Print]. When our characters have 10 layers [Thunder Print] against enemies, will trigger explosion [Thunder Print], dealing 300% of own attack power as Divine holy damage and causing the next 5 seconds for this enemy to take 50% increased pursuit damage.'
+    'Normal Attack Enhancement: Our characters deal +50% normal attack damage to enemies',
+    'Divine Message Power System: Our characters gain 1 layer [Divine Message Power] after normal attacking enemies. When our characters have 20 layers [Divine Message Power], the next time they deal damage to enemies, they will summon Divine Message Sword to deal 300% attack power wind damage to the enemy and reduce that enemy\'s defense by 30% for the next 5 seconds',
+    'Pursuit Attack Enhancement: Our characters deal +100% pursuit attack damage to enemies',
+    'Thunder Mark System: Our characters add an additional 1 layer [Thunder Mark] after dealing pursuit attack damage to enemies. When our characters deal damage to enemies with 10 layers [Thunder Mark], they will detonate [Thunder Mark], dealing 300% attack power holy damage to the enemy and increasing that enemy\'s received pursuit attack damage by 50% for the next 5 seconds'
   ]
 }; 

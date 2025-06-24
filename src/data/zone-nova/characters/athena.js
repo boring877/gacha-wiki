@@ -55,9 +55,9 @@ export const athenaData = {
   awakenings: [
     { level: 1, effect: 'When allies deal normal attack damage, Athena gets 1 additional layer [Typical] per normal attack (cannot stack, max once per character per second)' },
     { level: 2, effect: 'Using ultimate skill gains 6 layers [Aegis] instead of 3' },
-    { level: 3, effect: '[Normal Attack], [Skill], [Ultimate] and [Passive] level cap +2' },
+    { level: 3, effect: '[Normal Attack], [Skill], [Ultimate] and [Passive] level cap +4' },
     { level: 4, effect: 'When Athena has [Aegis], all allies receive 10% less damage, strikers receive additional 10% less damage (total 20% for strikers)' },
-    { level: 5, effect: '[Normal Attack], [Skill], [Ultimate] and [Passive] level cap +2' },
+    { level: 5, effect: '[Normal Attack], [Skill], [Ultimate] and [Passive] level cap +4' },
     { level: 6, effect: "Athena's strengthening bullets deal double damage (120% attack power per bullet)" }
   ],
   
