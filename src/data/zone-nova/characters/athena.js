@@ -32,11 +32,12 @@ export const athenaData = {
     ultimate: {
       name: "Athena's Aegis (雅典娜的埃癸斯)",
       energyCost: '3', // e.g., '5'
-      description: 'Immediately gains 3 layers [Aegis] (6 with Awakening 2). When having [Aegis], normal attacks become full auto mode, continuously firing strengthening bullets. Each layer fires 12 bullets (60% attack power wind damage each). Every 5 bullet hits grant all allies +2.4% crit rate and +4.6% normal attack damage (max 10 stacks, 10s duration).'
+      description: 'Immediately gains 3 layers [Aegis]. When having [Aegis], normal attacks become full auto mode, can continuously fire strengthening bullets during the period. Each layer [Aegis] can fire 12 strengthening bullets. After interrupting normal attack, need to consume 1 layer [Aegis] again to reload. Each strengthening bullet deals 60% attack power wind damage. Every 5 strengthening bullet hits on targets, all friendly characters gain +2.4% crit rate and +4.6% normal attack damage, max 10 stacks, lasts 10 seconds'
     },
+
     passive: {
       name: 'Divine Combat Mastery (被动)',
-      description: 'All damage from Athena is considered normal attack damage. Every 10 normal attacks by Athena gains 1 layer [Typical]. When allies deal normal attack damage, Athena gains 1 layer [Typical] (max once per character per second). Every 10 layers [Typical] grants all team +1 energy.'
+      description: 'All damage from Athena is considered normal attack damage. Every 5 normal attack damage dealt by Athena, all friendly characters gain +4.8% attack speed and skill cooldown reduced by 2.4%, max 10 stacks, lasts 10 seconds. Every 10 normal attack damage dealt by Athena, Athena gains 1 layer [Typical]. When other friendly characters deal normal attack damage, Athena gains 1 layer [Typical], each character can trigger once per second maximum. Every 10 layers [Typical] Athena gains, all team energy +1 point'
     }
   },
   
