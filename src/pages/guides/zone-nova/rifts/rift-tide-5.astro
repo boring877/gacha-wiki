@@ -2,20 +2,20 @@
 import ZoneNovaLayout from '../../../../layouts/ZoneNovaLayout.astro';
 import FormattedDate from '../../../../components/FormattedDate.astro';
 import ZnRiftBackButton from '../../../../components/zn-riftbackbutton.astro';
-import { riftTide4Data } from '../../../../data/zone-nova/rifts/rift-tide-4.js';
+import { riftTide5Data } from '../../../../data/zone-nova/rifts/rift-tide-5.js';
 import { getDynamicRiftStatus } from '../../../../data/zone-nova/rifts.js';
 
 // Use the imported rift data with dynamic status
 const riftData = {
-	...riftTide4Data,
-	status: getDynamicRiftStatus(riftTide4Data)
+	...riftTide5Data,
+	status: getDynamicRiftStatus(riftTide5Data)
 };
 ---
 
 <ZoneNovaLayout 
-	title="Rift Tide IV - Zone Nova Space-Time Rifts - GachaWiki" 
-	description="Detailed law effects and mechanics for Rift Tide IV in Zone Nova"
-	gameTitle="Rift Tide IV"
+	title="Rift Tide V - Zone Nova Space-Time Rifts - GachaWiki" 
+	description="Detailed law effects and mechanics for Rift Tide V in Zone Nova"
+	gameTitle="Rift Tide V"
 >
 	<ZnRiftBackButton />
 	

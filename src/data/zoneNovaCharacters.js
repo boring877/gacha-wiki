@@ -47,6 +47,17 @@ export const ZONE_NOVA_CHARACTERS = [
     detailUrl: "/guides/zone-nova/characters/artemis"
   },
   {
+    id: 32,
+    name: "Athena",
+    rarity: "SSR",
+    element: "Wind",
+    role: "Buffer",
+    stats: { hp: 9564, attack: 1004, defense: 672, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
+    image: "/images/Character Database/Athena.jpg",
+    slug: "athena",
+    detailUrl: "/guides/zone-nova/characters/athena"
+  },
+  {
     id: 4,
     name: "Arthur",
     rarity: "SSR",

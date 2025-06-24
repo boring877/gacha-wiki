@@ -2,26 +2,43 @@
 import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
 import { 
-	zoneNovaRifts, 
 	getActiveRifts, 
 	getUpcomingRifts, 
 	getRiftsByStatus,
 	getRiftsWithDynamicStatus,
-	getDynamicRiftStatus,
 	RIFT_STATUS,
-	getRiftStatusText,
-	getRiftTypeText,
-	formatRiftDateRange,
-	getDaysRemaining,
-	getTimeRemaining,
-	getRiftCounts
+	getRiftStatusText
 } from '../../../data/zone-nova/rifts.js';
 
 // Get rifts organized by status (with dynamic status)
 const activeRifts = getActiveRifts();
 const upcomingRifts = getUpcomingRifts();
 const recentRifts = getRiftsByStatus(RIFT_STATUS.ENDED).slice(0, 3); // Show last 3 ended rifts
-const allRifts = getRiftsWithDynamicStatus(); // Use dynamic status for display
+const riftsWithStatus = getRiftsWithDynamicStatus(); // Use dynamic status for display
+
+// Sort rifts to show active ones at the top, then upcoming, then ended
+// Within each status group, sort by rift number in descending order (5, 4, 3)
+const allRifts = riftsWithStatus.sort((a, b) => {
+	const statusPriority = {
+		'active': 1,
+		'upcoming': 2,
+		'ended': 3
+	};
+	
+	// First sort by status priority
+	const statusDiff = statusPriority[a.status] - statusPriority[b.status];
+	if (statusDiff !== 0) return statusDiff;
+	
+	// Within same status, sort by rift number descending (extract number from ID)
+	const getNumberFromId = (id) => {
+		const match = id.match(/(\d+)$/);
+		return match ? parseInt(match[1]) : 0;
+	};
+	
+	const numberA = getNumberFromId(a.id);
+	const numberB = getNumberFromId(b.id);
+	return numberB - numberA; // Descending order (5, 4, 3)
+});
 ---
 
 <ZoneNovaLayout 
