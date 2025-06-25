@@ -49,7 +49,7 @@ export const zoneNovaConfig = {
     {
       id: "memories",
       title: "Memory Database",
-      emoji: "🧠",
+      emoji: "🃏",
       description: "Sortable memory cards database with stats, effects, and characters.",
       url: "/guides/zone-nova/memories/",
       category: "guides"
