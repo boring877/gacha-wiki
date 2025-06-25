@@ -47,6 +47,14 @@ export const zoneNovaConfig = {
       category: "guides"
     },
     {
+      id: "memories",
+      title: "Memory Database",
+      emoji: "🧠",
+      description: "Sortable memory cards database with stats, effects, and characters.",
+      url: "/guides/zone-nova/memories/",
+      category: "guides"
+    },
+    {
       id: "rifts",
       title: "Space-Time Rifts", 
       emoji: "🌀",

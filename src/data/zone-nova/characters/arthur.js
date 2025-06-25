@@ -62,17 +62,17 @@ export const arthurData = {
   
   // Memory Card
   memoryCard: {
-    name: 'Summer Afternoon Rest Time',
-    image: 'Arthurcard', // Use format: characternamecard (e.g., 'pennycard')
+    name: 'Night of Bloody Storm',
+    image: 'Night-of-Bloody-Storm', // Using the actual Night of Bloody Storm image
     stats: {
-      hp: '4,200', // e.g., '8,600'
-      attack: '650', // e.g., '480'
-      defense: '395' // e.g., '690'
+      hp: '5,040', // e.g., '8,600'
+      attack: '780', // e.g., '480'
+      defense: '474' // e.g., '690'
     },
     effects: [
-      'Attack increases by 20%',
-      'When there\'s one enemy on the field, attack additionally increases by 5%, maximum 4 times',
-      'Total Single-Target Bonus: 20% + 20% = 40% attack boost vs single targets'
+      'Attack power increased by 40%',
+      'After an ally in [Support Position, like buffers] uses their ultimate skill, this character\'s ultimate skill damage increases by 40% for 5 seconds',
+      'Total Potential: 40% base attack + 40% conditional ultimate damage boost'
     ]
   }
 };

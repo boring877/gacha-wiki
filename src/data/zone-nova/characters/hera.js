@@ -78,7 +78,7 @@ export const heraData = {
   
   // Memory Card
   memoryCard: {
-    name: 'Black Face Ugly Person',
+    name: 'Hera Memory',
     chineseName: '黑脸丑人',
     image: 'Heracard', // Use format: characternamecard
     level: '80/80',
@@ -89,7 +89,7 @@ export const heraData = {
     },
     effects: [
       'Only effective for DPS, 5-price awakening',
-      'Black Face Ugly Person: Attack power +40%, when attack receives sustained damage effect impact targets, damage +40%'
+      'Hera Memory: Attack power +40%, when attack receives sustained damage effect impact targets, damage +40%'
     ]
   }
 };

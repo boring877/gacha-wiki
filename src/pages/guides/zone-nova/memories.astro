@@ -1,0 +1,362 @@
+---
+// Import your layout
+import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
+
+// Import memory data and utilities
+import { 
+  ZONE_NOVA_MEMORIES, 
+  MEMORY_METADATA 
+} from '../../../data/zoneNovaMemories.js';
+---
+
+<ZoneNovaLayout 
+	title="Zone Nova Memory Database - GachaWiki" 
+	description="Sortable and filterable memory database for Zone Nova"
+	gameTitle="Memory Database"
+>
+	<Fragment slot="head">
+		{/* Import styles and add mobile card improvements */}
+		<link rel="preload" as="image" href="/images/characters/Athenacard.jpg" />
+		<style>
+    /* Layout and filter bar */
+    .page-flex { display: flex; gap: 2.5rem; }
+    .main-content-container { width: 100%; display: flex; justify-content: center; padding: 0 2rem; }
+    .content-wrapper { max-width: 1200px; width: 100%; margin: 0 auto; }
+    .filter-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 2rem auto 1.5rem auto; flex-wrap: wrap; padding: 0 1rem; }
+    .filter-controls, .sort-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+    .filter-select, .sort-btn { padding: 0.4rem 0.7rem; background: var(--bg-primary); color: var(--text-secondary); border-radius: 8px; border: 1px solid var(--mocha-mousse); font-size: 0.8rem; cursor: pointer; }
+    .filter-select:hover, .sort-btn:hover { background: var(--bg-secondary); color: var(--text-primary); border-color: var(--amber-glow); }
+    .sort-btn.active { background: var(--amber-glow); color: white; }
+    
+    /* Reset button unique styling */
+    .reset-btn { 
+      padding: 0.5rem 1rem; 
+      background: linear-gradient(135deg, var(--rose-quartz), #e91e63); 
+      color: white; 
+      border-radius: 10px; 
+      border: 2px solid var(--rose-quartz); 
+      font-size: 0.85rem; 
+      font-weight: 600; 
+      cursor: pointer; 
+      box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .reset-btn:hover { 
+      background: linear-gradient(135deg, #d81b60, var(--rose-quartz)); 
+      transform: translateY(-1px); 
+      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+      border-color: #d81b60;
+    }
+    .reset-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(233, 30, 99, 0.3);
+    }
+    /* Table styles */
+    .memory-table-container { overflow-x: auto; margin: 1.5rem auto; padding: 0 1rem; }
+    table.memory-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--bg-primary); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); font-family: 'Space Grotesk', sans-serif; }
+    table.memory-table th, table.memory-table td { padding: 1rem 0.5rem; text-align: center; border-bottom: 1px solid var(--neutral-200); }
+    table.memory-table th { background: var(--amber-glow); color: #222; font-weight: 700; font-size: 0.9rem; position: sticky; top: 0; z-index: 2; }
+    .memory-img { width: 80px; height: 80px; border-radius: 12px; object-fit: cover; border: 2px solid var(--amber-glow); }
+    .rarity-badge, .element-badge, .type-badge { padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; }
+    .rarity-badge.ssr { background: #ffe066; color: #222; }
+    .rarity-badge.sr { background: #7ecfff; color: #222; }
+    .rarity-badge.r { background: #b0b0b0; color: #fff; }
+    .element-badge.fire { background: #ff6b6b; color: #fff; }
+    .element-badge.ice { background: #4dbfff; color: #fff; }
+    .element-badge.wind { background: #4dffb8; color: #222; }
+    .element-badge.holy { background: #ffe066; color: #222; }
+    .element-badge.chaos { background: #b266ff; color: #fff; }
+    .type-badge.buffer { background: #7ecfff; color: #222; }
+    .type-badge.offensive { background: #ffb347; color: #222; }
+    .type-badge.defensive { background: #b0b0b0; color: #222; }
+    .type-badge.special { background: #b266ff; color: #fff; }
+    .effects-cell { max-width: 300px; text-align: left; font-size: 0.8rem; }
+    .effect-item { margin: 0.25rem 0; padding: 0.25rem; background: rgba(255, 183, 77, 0.1); border-radius: 4px; }
+    /* Mobile card styles */
+    .mobile-memory-card { background: var(--bg-primary, #232323); border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.10); padding: 1.2rem 1rem 1rem 1rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; border: 1px solid var(--amber-glow, #ffe066); }
+    .mobile-card-header { display: flex; align-items: center; gap: 1rem; }
+    .mobile-memory-card img { width: 120px; height: 120px; border-radius: 14px; border: 3px solid var(--amber-glow, #ffe066); background: #fff; margin-bottom: 0; }
+    .mobile-card-title-group { display: flex; flex-direction: column; gap: 0.2rem; }
+    .mobile-memory-card h3 { margin: 0 0 0.1rem 0; font-size: 1.25rem; color: var(--amber-glow, #ffe066); font-weight: 700; letter-spacing: 0.5px; }
+    .mobile-card-badges { display: flex; gap: 0.4rem; margin-top: 0.1rem; flex-wrap: wrap; }
+    .mobile-memory-card .rarity-badge, .mobile-memory-card .element-badge, .mobile-memory-card .type-badge { font-size: 0.95em; padding: 0.18em 0.7em; border-radius: 8px; font-weight: 600; display: inline-block; margin: 0; }
+    .mobile-card-stats { display: flex; gap: 1.2rem; margin-top: 0.5rem; font-size: 1.05em; color: var(--text-secondary, #e0e0e0); font-weight: 500; }
+    .mobile-card-stats .stat-label { color: var(--amber-glow, #ffe066); font-weight: 700; margin-right: 0.2em; }
+    .mobile-card-effects { margin-top: 0.75rem; }
+    .mobile-card-effects h4 { margin: 0 0 0.5rem 0; font-size: 0.9rem; color: var(--amber-glow); font-weight: 600; }
+    .mobile-effect-item { background: rgba(255, 183, 77, 0.1); padding: 0.5rem; border-radius: 6px; margin: 0.25rem 0; font-size: 0.85rem; color: var(--text-secondary); }
+    
+    /* Desktop: show table, hide mobile cards */
+    .memory-table-container { display: block; }
+    .mobile-card-view { display: none; }
+    
+    /* Mobile: show cards, hide table */
+    @media (max-width: 768px) {
+      .memory-table-container { display: none !important; }
+      .mobile-card-view { display: block !important; }
+      .filter-bar { flex-direction: column; gap: 0.8rem; }
+      .filter-controls, .sort-controls { width: 100%; justify-content: center; }
+    }
+		</style>
+	</Fragment>
+	
+	<section class="page-flex">
+		<div class="main-content-container">
+			<div class="content-wrapper">
+				{/* <!-- Filter Bar --> */}
+				<div class="filter-bar">
+					<div class="filter-controls">
+						<select class="filter-select" id="rarity-filter">
+							<option value="">Rarity</option>
+							{MEMORY_METADATA.rarities.map(rarity => (
+                <option value={rarity}>{rarity}</option>
+              ))}
+						</select>
+
+					</div>
+					<div class="sort-controls">
+						<button class="sort-btn" data-sort="hp">HP</button>
+						<button class="sort-btn" data-sort="attack">ATK</button>
+						<button class="sort-btn" data-sort="defense">DEF</button>
+						<button class="reset-btn" id="reset-table">Reset</button>
+					</div>
+				</div>
+				
+				{/* <!-- Desktop table view --> */}
+				<div class="memory-table-container">
+					<table class="memory-table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Image</th>
+								<th>Name</th>
+								<th>Rarity</th>
+								<th>HP</th>
+								<th>Attack</th>
+								<th>Defense</th>
+							</tr>
+						</thead>
+						<tbody id="memory-table-body">
+							{ZONE_NOVA_MEMORIES.map((memory, idx) => (
+                <tr data-memory-id={memory.id} data-slug={memory.slug} data-url={memory.detailUrl} style="cursor:pointer;">
+                  <td>{idx + 1}</td>
+                  <td><img src={memory.image} alt={memory.name} class="memory-img" loading="lazy"/></td>
+                  <td>{memory.name}</td>
+                  <td><span class={`rarity-badge ${memory.rarity.toLowerCase()}`} data-sort-key="rarity">{memory.rarity}</span></td>
+                  <td data-sort-key="hp">{memory.stats.hp.toLocaleString()}</td>
+                  <td data-sort-key="attack">{memory.stats.attack.toLocaleString()}</td>
+                  <td data-sort-key="defense">{memory.stats.defense.toLocaleString()}</td>
+                </tr>
+              ))}
+						</tbody>
+					</table>
+				</div>
+				
+				{/* <!-- Mobile card view container --> */}
+				<div class="mobile-card-view" id="mobile-cards-container">
+					{ZONE_NOVA_MEMORIES.map(memory => (
+            <div class="mobile-memory-card" data-memory-id={memory.id} data-slug={memory.slug} data-url={memory.detailUrl} style="cursor:pointer;">
+              <div class="mobile-card-header">
+                <img src={memory.image} alt={memory.name} class="memory-img"/>
+                <div class="mobile-card-title-group">
+                  <h3>{memory.name}</h3>
+                  <div class="mobile-card-badges">
+                    <span class={`rarity-badge ${memory.rarity.toLowerCase()}`}>{memory.rarity}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mobile-card-stats">
+                <div><span class="stat-label">HP:</span> {memory.stats.hp.toLocaleString()}</div>
+                <div><span class="stat-label">ATK:</span> {memory.stats.attack.toLocaleString()}</div>
+                <div><span class="stat-label">DEF:</span> {memory.stats.defense.toLocaleString()}</div>
+              </div>
+            </div>
+          ))}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		// Memory database functionality
+		document.addEventListener('DOMContentLoaded', function() {
+			const memoryTableBody = document.getElementById('memory-table-body');
+			const mobileCardsContainer = document.getElementById('mobile-cards-container');
+			const elementFilter = document.getElementById('element-filter') as HTMLSelectElement | null;
+			const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement | null;
+
+			const characterFilter = document.getElementById('character-filter') as HTMLSelectElement | null;
+			const resetButton = document.getElementById('reset-table');
+			const sortButtons = document.querySelectorAll('.sort-btn');
+
+			let currentSortKey = '';
+			let isAscending = false;
+			let allMemories: any[] = [];
+
+			// Initialize memories data
+			function initializeMemories() {
+				const tableRows = document.querySelectorAll('#memory-table-body tr');
+				const mobileCards = document.querySelectorAll('.mobile-memory-card');
+				
+				allMemories = Array.from(tableRows).map((row, index) => {
+					const mobileCard = mobileCards[index];
+					const tableRow = row as HTMLTableRowElement;
+					return {
+						element: row,
+						mobileElement: mobileCard,
+						data: {
+							element: row.querySelector('[data-sort-key="element"]')?.textContent?.toLowerCase() || '',
+							rarity: row.querySelector('[data-sort-key="rarity"]')?.textContent?.toLowerCase() || '',
+							character: tableRow.cells[3]?.textContent?.toLowerCase() || '',
+							name: tableRow.cells[2]?.textContent?.toLowerCase() || '',
+							hp: parseInt(row.querySelector('[data-sort-key="hp"]')?.textContent?.replace(/,/g, '') || '0'),
+							attack: parseInt(row.querySelector('[data-sort-key="attack"]')?.textContent?.replace(/,/g, '') || '0'),
+							defense: parseInt(row.querySelector('[data-sort-key="defense"]')?.textContent?.replace(/,/g, '') || '0')
+						}
+					};
+				});
+			}
+
+			// Update row numbers for visible rows only
+			function updateRowNumbers() {
+				let visibleCount = 0;
+				const visibleRows = Array.from(memoryTableBody?.children || []).filter(row => 
+					(row as HTMLElement).style.display !== 'none'
+				);
+				
+				visibleRows.forEach((row) => {
+					visibleCount++;
+					(row as HTMLTableRowElement).cells[0].textContent = String(visibleCount);
+				});
+			}
+
+			// Filter memories
+			function filterMemories() {
+				const rarityValue = rarityFilter?.value.toLowerCase() || '';
+
+				allMemories.forEach(memory => {
+					const matchesRarity = !rarityValue || memory.data.rarity === rarityValue;
+
+					const isVisible = matchesRarity;
+					memory.element.style.display = isVisible ? '' : 'none';
+					memory.mobileElement.style.display = isVisible ? '' : 'none';
+				});
+
+				// Update row numbers after filtering
+				updateRowNumbers();
+			}
+
+			// Sort memories
+			function sortMemories(sortKey) {
+				if (currentSortKey === sortKey) {
+					isAscending = !isAscending;
+				} else {
+					currentSortKey = sortKey;
+					isAscending = false;
+				}
+
+				// Update active button
+				sortButtons.forEach(btn => btn.classList.remove('active'));
+				document.querySelector(`[data-sort="${sortKey}"]`)?.classList.add('active');
+
+				// Sort the memories
+				const sortedMemories = [...allMemories].sort((a, b) => {
+					let aVal = a.data[sortKey];
+					let bVal = b.data[sortKey];
+
+					if (typeof aVal === 'string') {
+						return isAscending ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+					} else {
+						return isAscending ? aVal - bVal : bVal - aVal;
+					}
+				});
+
+				// Reorder DOM elements
+				sortedMemories.forEach((memory) => {
+					memoryTableBody?.appendChild(memory.element);
+					mobileCardsContainer?.appendChild(memory.mobileElement);
+				});
+
+				// Update row numbers after sorting
+				updateRowNumbers();
+			}
+
+			// Sort memories by name (default)
+			function sortMemoriesByName() {
+				// Sort alphabetically by name (A-Z)
+				const sortedMemories = [...allMemories].sort((a, b) => {
+					return a.data.name.localeCompare(b.data.name);
+				});
+
+				// Reorder DOM elements
+				sortedMemories.forEach((memory) => {
+					memoryTableBody?.appendChild(memory.element);
+					mobileCardsContainer?.appendChild(memory.mobileElement);
+				});
+
+				// Update row numbers after sorting
+				updateRowNumbers();
+			}
+
+			// Reset filters and sorting
+			function resetTable() {
+				if (rarityFilter) rarityFilter.value = '';
+				
+				// Clear sorting - show original order
+				currentSortKey = '';
+				isAscending = false;
+				sortButtons.forEach(btn => btn.classList.remove('active'));
+
+				// Show all memories in original order
+				allMemories.forEach((memory) => {
+					memory.element.style.display = '';
+					memory.mobileElement.style.display = '';
+					memoryTableBody?.appendChild(memory.element);
+					mobileCardsContainer?.appendChild(memory.mobileElement);
+				});
+
+				// Update row numbers after reset
+				updateRowNumbers();
+			}
+
+			// Add click handlers for navigation
+			function addNavigationHandlers() {
+				document.querySelectorAll('[data-url]').forEach(element => {
+					element.addEventListener('click', function() {
+						const url = this.getAttribute('data-url');
+						if (url) {
+							window.location.href = url;
+						}
+					});
+				});
+			}
+
+			// Check if all required elements exist
+							if (!memoryTableBody || !mobileCardsContainer || !rarityFilter || !resetButton) {
+				console.error('Required elements not found');
+				return;
+			}
+
+			// Initialize everything
+			initializeMemories();
+			
+			// Event listeners
+			rarityFilter.addEventListener('change', filterMemories);
+
+			resetButton.addEventListener('click', resetTable);
+
+			sortButtons.forEach(button => {
+				button.addEventListener('click', function() {
+					sortMemories(this.getAttribute('data-sort'));
+				});
+			});
+
+			addNavigationHandlers();
+
+			// Sort by name alphabetically by default
+			sortMemoriesByName();
+		});
+	</script>
+</ZoneNovaLayout> 

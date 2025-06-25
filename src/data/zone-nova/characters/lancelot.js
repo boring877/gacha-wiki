@@ -68,8 +68,12 @@ export const lancelotData = {
       defense: '575'
     },
     effects: [
-      'HP Enhancement: HP increased by 24%',
-      'Ultimate Protection: After using ultimate skill, the wearer receives 10% less damage for 5 seconds'
+      'Only effective for Guardian class',
+      '5th Stage Awakening',
+      'Ability: Knight of the Tidal Lake (潮水的湖中骑士)',
+      'Passive: Defense increased by 36%',
+      'Team Buff: After entering battle, all allied characters take 8% less damage',
+      'Note: Same skill effects cannot stack'
     ]
   }
 };
