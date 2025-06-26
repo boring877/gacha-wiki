@@ -4,7 +4,7 @@
 export const battlefieldFlowerData = {
   // Basic Memory Information
   name: 'Battlefield Flower',
-  image: '/images/characters/ninicard.jpg',
+  image: '/images/games/zone-nova/memories/ninicard.jpg',
   rarity: 'SR',
   character: 'Nini',
   

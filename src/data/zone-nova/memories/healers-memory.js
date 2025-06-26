@@ -5,7 +5,7 @@ export const healersMemoryData = {
   // Basic Memory Information
   name: "Healer's Memory",
   chineseName: '治愈使追忆',
-  image: "/images/memories/Healer's-Memory.jpg",
+  image: "/images/games/zone-nova/memories/Healer's-Memory.jpg",
   rarity: 'R',
   character: null, // No specific character associated
   

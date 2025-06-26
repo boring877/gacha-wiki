@@ -6,7 +6,7 @@ export const zoneNovaConfig = {
     title: "Zone Nova - GachaWiki",
     description: "Explore Zone Nova gacha game guides and content",
     gameTitle: "Zone Nova",
-    heroImage: "/images/zonenova1.jpg"
+    heroImage: "/images/games/zone-nova/zonenova1.jpg"
   },
   
   gameInfo: {

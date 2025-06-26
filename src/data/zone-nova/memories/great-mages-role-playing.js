@@ -5,7 +5,7 @@ export const greatMagesRolePlayingData = {
   // Basic Memory Information
   name: "Great Mage's Role Playing",
   chineseName: '大魔法师的角色扮演',
-  image: "/images/memories/Great-Mage's-Role-Playing.jpg",
+  image: "/images/games/zone-nova/memories/Great-Mage's-Role-Playing.jpg",
   rarity: 'SR',
   character: null, // No specific character associated
   

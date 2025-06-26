@@ -5,7 +5,7 @@ export const supportUsersReminiscenceData = {
   // Basic Memory Information
   name: "Support User's Reminiscence",
   chineseName: '支援使追忆',
-  image: "/images/memories/Support-User's-Reminiscence.jpg",
+  image: "/images/games/zone-nova/memories/Support-User's-Reminiscence.jpg",
   rarity: 'R',
   character: null, // No specific character associated
   

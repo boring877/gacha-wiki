@@ -4,7 +4,7 @@
 export const sleepyGuardianData = {
   // Basic Information
   name: 'Sleepy Guardian',
-  image: '/images/characters/Belphegarcard.jpg',
+  image: '/images/games/zone-nova/memories/Belphegarcard.jpg',
   character: 'Belphegar',
   rarity: 'SR',
   

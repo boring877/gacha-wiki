@@ -5,7 +5,7 @@ export const swimsuitGoddessWhoMakesHeartsFlutterData = {
   // Basic Memory Information
   name: 'Swimsuit Goddess Who Makes Hearts Flutter',
   chineseName: '心动不已的泳装爱神',
-  image: '/images/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg',
+  image: '/images/games/zone-nova/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg',
   rarity: 'SR',
   character: null, // No specific character associated
   

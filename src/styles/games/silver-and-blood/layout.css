@@ -1,0 +1,87 @@
+/* Silver and Blood Game-Specific Styles */
+
+/* Import base game styles */
+@import '../../colors.css';
+@import '../../global.css';
+@import '../../typography.css';
+
+/* Silver and Blood Color Scheme */
+:root {
+  /* Primary colors for Silver and Blood */
+  --sab-silver: #c0c0c0;
+  --sab-blood: #8b0000;
+  --sab-dark-silver: #808080;
+  --sab-light-blood: #dc143c;
+  
+  /* Game-specific gradients */
+  --sab-gradient: linear-gradient(135deg, var(--sab-silver), var(--sab-blood));
+  --sab-accent-gradient: linear-gradient(90deg, var(--sab-dark-silver), var(--sab-light-blood));
+}
+
+/* Game body styling */
+.game-silver-and-blood {
+  background: linear-gradient(
+    135deg,
+    rgba(192, 192, 192, 0.1) 0%,
+    rgba(139, 0, 0, 0.1) 100%
+  );
+}
+
+/* Hero section customization */
+.game-silver-and-blood .hero-title {
+  background: var(--sab-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Content sections */
+.game-silver-and-blood .content-section {
+  border-left: 3px solid var(--sab-silver);
+}
+
+.game-silver-and-blood .section-title {
+  color: var(--sab-blood);
+}
+
+/* Guide cards for Silver and Blood */
+.game-silver-and-blood .guide-card {
+  border-color: var(--sab-silver);
+  background: linear-gradient(
+    135deg,
+    rgba(192, 192, 192, 0.05) 0%,
+    rgba(139, 0, 0, 0.05) 100%
+  );
+}
+
+.game-silver-and-blood .guide-card:hover {
+  border-color: var(--sab-blood);
+  box-shadow: 0 8px 32px rgba(139, 0, 0, 0.2);
+}
+
+/* Status badges */
+.game-silver-and-blood .status-badge {
+  background: var(--sab-blood);
+  color: white;
+}
+
+/* Coming soon styling */
+.game-silver-and-blood .coming-soon-notice {
+  background: linear-gradient(
+    135deg,
+    rgba(192, 192, 192, 0.1),
+    rgba(139, 0, 0, 0.1)
+  );
+  border-color: var(--sab-silver);
+}
+
+.game-silver-and-blood .coming-soon-notice h3 {
+  color: var(--sab-blood);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .game-silver-and-blood .content-section {
+    border-left-width: 2px;
+  }
+} 

@@ -6,7 +6,7 @@ export const simpleBirdcageData = {
   id: 'simple-birdcage',
   slug: 'simple-birdcage',
   name: 'Simple Birdcage',
-  image: '/images/characters/Guinevere-card.jpg',
+  image: '/images/games/zone-nova/memories/Guinevere-card.jpg',
   rarity: 'SSR',
   character: 'Guinevere',
   detailUrl: '/guides/zone-nova/characters/guinevere/',

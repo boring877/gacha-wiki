@@ -4,7 +4,7 @@
 export const secretRoomRealityData = {
   // Basic Memory Information
   name: 'Secret Room Reality',
-  image: '/images/characters/Tefnutcard.jpg',
+  image: '/images/games/zone-nova/memories/Tefnutcard.jpg',
   rarity: 'SR',
   character: 'Tefnut',
   

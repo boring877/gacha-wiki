@@ -1,7 +1,7 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "astro/tsconfigs/base",
   "include": [".astro/types.d.ts", "**/*", "src/env.d.ts"],
-  "exclude": ["dist", "node_modules", "**/*.md", "**/*.astro"],
+  "exclude": ["dist", "node_modules", "**/*.md", "**/*.astro", "**/*.js"],
   "compilerOptions": {
     "strictNullChecks": true,
     "baseUrl": ".",
@@ -18,6 +18,9 @@
     "jsxImportSource": "astro",
     "allowJs": true,
     "skipLibCheck": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "declaration": false,
+    "outDir": "./.astro",
+    "noEmit": true
   }
 }

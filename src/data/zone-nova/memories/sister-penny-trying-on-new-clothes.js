@@ -5,7 +5,7 @@ export const sisterPennyTryingOnNewClothesData = {
   // Basic Memory Information
   name: 'Sister Penny Trying on New Clothes',
   chineseName: '新衣试穿的潘妮妹妹',
-  image: '/images/memories/Sister-Penny-Trying-on-New Clothes.jpg',
+  image: '/images/games/zone-nova/memories/Sister-Penny-Trying-on-New Clothes.jpg',
   rarity: 'SR',
   character: null, // No specific character associated
   

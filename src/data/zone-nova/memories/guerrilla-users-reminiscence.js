@@ -5,7 +5,7 @@ export const guerrillaUsersReminiscenceData = {
   // Basic Memory Information
   name: "Guerrilla User's Reminiscence",
   chineseName: '游击使追忆',
-  image: '/images/memories/Increase-User-Attack-TwoSwords.jpg',
+  image: '/images/games/zone-nova/memories/Increase-User-Attack-TwoSwords.jpg',
   rarity: 'R',
   character: null, // No specific character associated
   

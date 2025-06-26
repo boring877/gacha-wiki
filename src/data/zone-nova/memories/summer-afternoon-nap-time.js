@@ -5,7 +5,7 @@ export const summerAfternoonNapTimeData = {
   // Basic Memory Information
   name: 'Summer Afternoon Nap Time',
   chineseName: '夏日午休时间',
-  image: '/images/memories/Summer-Afternoon-Nap-Time.jpg',
+  image: '/images/games/zone-nova/memories/Summer-Afternoon-Nap-Time.jpg',
   rarity: 'SR',
   character: null, // No specific character associated
   

@@ -6,7 +6,7 @@ export const kingsSwordData = {
   id: 'kings-sword',
   slug: 'kings-sword',
   name: "King's Sword",
-  image: '/images/characters/Merlincard.jpg',
+  image: '/images/games/zone-nova/memories/Merlincard.jpg',
   rarity: 'SSR',
   character: 'Merlin',
   detailUrl: '/guides/zone-nova/characters/merlin/',

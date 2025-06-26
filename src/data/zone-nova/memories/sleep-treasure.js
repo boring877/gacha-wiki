@@ -4,7 +4,7 @@
 export const sleepTreasureData = {
   // Basic Memory Information
   name: 'Sleep Treasure',
-  image: '/images/characters/Zashiki-warashicard.jpg',
+  image: '/images/games/zone-nova/memories/Zashiki-warashicard.jpg',
   rarity: 'SR',
   character: 'Zashiki-warashi',
   

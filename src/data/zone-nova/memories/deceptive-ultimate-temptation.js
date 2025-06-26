@@ -5,7 +5,7 @@ export const deceptiveUltimateTemptationData = {
   // Basic Memory Information
   name: 'Deceptive Ultimate Temptation',
   chineseName: '敗诈的极致诱惑',
-  image: '/images/memories/Deceptive-Ultimate-Temptation.jpg',
+  image: '/images/games/zone-nova/memories/Deceptive-Ultimate-Temptation.jpg',
   rarity: 'SR',
   character: null, // No specific character associated
   

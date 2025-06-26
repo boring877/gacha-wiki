@@ -5,7 +5,7 @@ export const guardianUsersReminiscenceData = {
   // Basic Memory Information
   name: "Guardian User's Reminiscence",
   chineseName: '守护使追忆',
-  image: '/images/memories/Guardian-User-Defence.jpg',
+  image: '/images/games/zone-nova/memories/Guardian-User-Defence.jpg',
   rarity: 'R',
   character: null, // No specific character associated
   

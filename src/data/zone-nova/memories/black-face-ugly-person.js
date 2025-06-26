@@ -5,7 +5,7 @@ export const heraMemoryData = {
   // Basic Information
   name: 'Hera Memory',
   chineseName: '黑脸丑人',
-  image: '/images/characters/Heracard.jpg',
+  image: '/images/games/zone-nova/memories/Heracard.jpg',
   character: 'Hera',
   rarity: 'SSR',
   

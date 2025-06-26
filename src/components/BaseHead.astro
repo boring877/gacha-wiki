@@ -11,7 +11,7 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
+const { title, description, image = '/images/games/zone-nova/zonenova1.jpg' } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -34,7 +34,7 @@ const { title, description, image = '/images/zonenova.jpg' } = Astro.props;
 <link rel="dns-prefetch" href="https://vitals.vercel-analytics.com" />
 
 <!-- Critical image preload -->
-<link rel="preload" href="/images/zonenova.jpg" as="image" type="image/jpeg" fetchpriority="high" />
+	<link rel="preload" href="/images/games/zone-nova/zonenova1.jpg" as="image" type="image/jpeg" fetchpriority="high" />
 
 <!-- Critical CSS inline for above-the-fold content and CLS prevention -->
 <style>
@@ -266,7 +266,6 @@ if ('serviceWorker' in navigator) {
 </script>
 
 <!-- Module preload for critical JavaScript -->
-<link rel="modulepreload" href="/src/utils/performance-monitor.ts">
 
 <!-- Cache control and security -->
 <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">

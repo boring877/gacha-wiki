@@ -5,7 +5,7 @@ export const midnightWorkData = {
   // Basic Information
   name: 'Midnight Work',
   chineseName: '熬夜工作',
-  image: '/images/characters/Anubiscard.jpg',
+  image: '/images/games/zone-nova/memories/Anubiscard.jpg',
   character: 'Anubis',
   rarity: 'SSR',
   

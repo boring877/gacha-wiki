@@ -6,7 +6,7 @@ export const lancelotHertrainerData = {
   id: 'lancelot-hertrainer',
   slug: 'lancelot-hertrainer',
   name: 'Lancelot-HerTrainer',
-  image: '/images/characters/Lancelotcard.jpg',
+  image: '/images/games/zone-nova/memories/Lancelotcard.jpg',
   rarity: 'SR',
   character: 'Lancelot',
   detailUrl: '/guides/zone-nova/characters/lancelot/',

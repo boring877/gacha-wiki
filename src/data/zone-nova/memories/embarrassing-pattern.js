@@ -6,7 +6,7 @@ export const embarrassingPatternData = {
   id: 'embarrassing-pattern',
   slug: 'embarrassing-pattern',
   name: 'Embarrassing Pattern',
-  image: '/images/characters/Athenacard.jpg',
+  image: '/images/games/zone-nova/memories/Athenacard.jpg',
   rarity: 'SSR',
   character: 'Athena',
   detailUrl: '/guides/zone-nova/characters/athena/',

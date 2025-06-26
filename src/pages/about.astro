@@ -1,23 +1,20 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
 import { SITE_TITLE } from '../consts';
-import OptimizedImage from '../components/OptimizedImage.astro';
 ---
 
-<HomeLayout title={`${SITE_TITLE} - About`} description="Information about this gacha games site">
+<HomeLayout title={`${SITE_TITLE} - About`} description="Information about this gacha games community">
 	<!-- Main Content Area -->
 	<main class="main-content">
 		<!-- About Card Container -->
 		<article class="about-card">
 			<!-- Hero Image Section -->
 			<div class="hero-image">
-				<OptimizedImage 
+				<img 
 					src="/images/about.jpg" 
 					alt="About our gacha games community" 
-					width={800}
-					height={400}
-					priority={true}
-					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
+					width="800"
+					height="400"
 				/>
 			</div>
 

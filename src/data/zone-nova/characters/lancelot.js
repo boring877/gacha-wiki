@@ -4,7 +4,7 @@
 export const lancelotData = {
   // Basic Character Information
   name: 'Lancelot',
-  image: 'Lancelot0', // Character image identifier
+  image: 'Lancelot', // Character image identifier
   rarity: 'SR',
   element: 'Holy',
   class: 'Tank',

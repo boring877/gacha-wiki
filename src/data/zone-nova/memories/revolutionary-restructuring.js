@@ -4,7 +4,7 @@
 export const revolutionaryRestructuringData = {
   // Basic Information
   name: 'Revolutionary Restructuring',
-  image: '/images/characters/Cleopatracard.jpg',
+  image: '/images/games/zone-nova/memories/Cleopatracard.jpg',
   character: 'Cleopatra',
   rarity: 'SSR',
   

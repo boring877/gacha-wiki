@@ -4,7 +4,7 @@
 export const frozenHeartData = {
   // Basic Memory Information
   name: 'Frozen Heart',
-  image: '/images/characters/Yuiscard.jpg',
+  image: '/images/games/zone-nova/memories/Yuiscard.jpg',
   rarity: 'SSR',
   character: 'Yuis',
   

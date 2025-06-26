@@ -4,7 +4,7 @@
 export const theWorldSeemsToHaveStoppedData = {
   // Basic Information
   name: 'The World Seems to Have Stopped',
-  image: '/images/characters/Artemiscard.jpg',
+  image: '/images/games/zone-nova/memories/Artemiscard.jpg',
   character: 'Artemis',
   rarity: 'SSR',
   

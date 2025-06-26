@@ -1,12 +1,13 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
-import OptimizedImage from '../components/OptimizedImage.astro';
+import DecorativeLines from '../components/DecorativeLines.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getActiveGames } from '../data/games';
 ---
 
 <HomeLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<!-- Critical resource hints -->
-	<link rel="preload" href="/images/zonenova.jpg" as="image" type="image/jpeg" />
+	<link rel="preload" href="/images/games/zone-nova/zonenova1.jpg" as="image" type="image/jpeg" />
 	<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<!-- Performance hints -->
@@ -41,13 +42,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 							<div style="flex-shrink: 0;">								<div style="width: 10rem; height: 10rem; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
 									<!-- Fixed placeholder to prevent CLS -->
 									<div style="width: 160px; height: 160px; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0; border-radius: 16px;"></div>
-									<OptimizedImage 
-										src="/images/zonenova.jpg" 
+									<img 
+										src="/images/games/zone-nova/zonenova1.jpg" 
 										alt="Zone Nova" 
 										width={160} 
 										height={160}
-										priority={true}
-										useOptimized={false}
 										style="width: 160px; height: 160px; object-fit: cover; position: relative; z-index: 1; border-radius: 16px;"
 									/>
 								</div>
@@ -167,31 +166,35 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 						</button>
 					</div>
 
-					<!-- Games Grid -->
+										<!-- Games Grid -->
 					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-								<!-- Zone Nova Card -->
-						<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--amber-glow); will-change: transform; transform: translateZ(0);" class="modal-card">
-							<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit;">								<div style="width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
-									<!-- Fixed placeholder -->
-									<div style="width: 280px; height: 150px; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0; border-radius: 12px;"></div>
-									<OptimizedImage 
-										src="/images/zonenova.jpg" 
-										alt="Zone NOVA" 
-										width={280} 
-										height={150}
-										loading="lazy"
-										useOptimized={false}
-										style="width: 280px; height: 150px; object-fit: cover; position: relative; z-index: 1; border-radius: 12px;"
-									/>
-								</div>
-								<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem 0;">Zone Nova</h3>
-								<p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Character guides, runes, rifts, and announcements</p>
-								<div style="display: flex; gap: 0.5rem;">
-									<span style="background: var(--amber-glow); color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;">4 Sections</span>
-									<span style="background: var(--teal-crystal); color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;">Active</span>
-								</div>
-							</a>
-						</div>
+						{getActiveGames().map(game => (
+							<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--amber-glow); will-change: transform; transform: translateZ(0);" class="modal-card">
+								<a href={game.url} style="text-decoration: none; color: inherit;">
+									<div style="width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
+										<!-- Fixed placeholder -->
+										<div style="width: 280px; height: 150px; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0; border-radius: 12px;"></div>
+										<img 
+											src={game.image} 
+											alt={game.name} 
+											width={280} 
+											height={150}
+											loading="lazy"
+											style="width: 280px; height: 150px; object-fit: cover; position: relative; z-index: 1; border-radius: 12px;"
+										/>
+									</div>
+									<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem 0;">{game.name}</h3>
+									<p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">{game.description}</p>
+									<div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+										<span style="background: var(--amber-glow); color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;">{game.sections.length} Sections</span>
+										<span style={`background: ${game.status === 'active' ? 'var(--teal-crystal)' : 'var(--text-secondary)'}; color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;`}>
+											{game.status === 'active' ? 'Active' : 'Coming Soon'}
+										</span>
+									</div>
+								</a>
+							</div>
+						))}
+					</div>
 
 						<!-- Coming Soon Cards -->
 						<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--mocha-mousse); opacity: 0.6; transform: translateZ(0); min-height: 250px;">

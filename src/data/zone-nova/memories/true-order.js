@@ -4,7 +4,7 @@
 export const trueOrderData = {
   // Basic Memory Information
   name: 'True Order (真正的秩序)',
-  image: '/images/characters/Lokicard.jpg',
+  image: '/images/games/zone-nova/memories/Lokicard.jpg',
   rarity: 'SSR',
   character: 'Loki',
   

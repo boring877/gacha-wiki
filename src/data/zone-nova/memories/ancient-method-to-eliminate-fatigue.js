@@ -5,7 +5,7 @@ export const ancientMethodToEliminateFatigueData = {
   // Basic Memory Information
   name: 'Ancient Method to Eliminate Fatigue',
   chineseName: '消除疲劳的古法治疗',
-  image: '/images/memories/Ancient-Method-to-Eliminate-Fatigue.jpg',
+  image: '/images/games/zone-nova/memories/Ancient-Method-to-Eliminate-Fatigue.jpg',
   rarity: 'SR',
   character: null, // No specific character associated
   

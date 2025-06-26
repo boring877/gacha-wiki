@@ -1,0 +1,106 @@
+---
+import GameLayout from '../../layouts/GameLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { silverAndBloodConfig } from '../../data/silver-and-blood/silver-and-blood.js';
+
+// Extract data for easier use in template
+const { meta, gameInfo, guides } = silverAndBloodConfig;
+---
+
+<GameLayout 
+	title={meta.title}
+	description={meta.description}
+	gameTitle={meta.gameTitle}
+	gameSlug="silver-and-blood"
+	heroImage={meta.heroImage}
+>
+	<!-- Game Overview Section -->
+	<section class="content-section">
+		<h2 class="section-title">About</h2>
+		<div class="game-description">
+			{gameInfo.description}
+		</div>
+		
+		{gameInfo.status === 'coming-soon' && (
+			<div class="coming-soon-notice">
+				<h3>🚀 Coming Soon!</h3>
+				<p>We're working hard to bring you comprehensive guides for Silver and Blood. Stay tuned for updates!</p>
+			</div>
+		)}
+		
+		{gameInfo.playUrl !== '#' && (
+			<div class="play-button-container">
+				<a href={gameInfo.playUrl} target="_blank" class="play-button">
+					<span class="play-emoji">🎮</span>
+					Play Silver and Blood
+					<span class="play-arrow">→</span>
+				</a>
+			</div>
+		)}
+		
+		<p class="last-updated">
+			Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+		</p>
+	</section>
+
+	<!-- Guides Section -->
+	<section class="content-section">
+		<h2 class="section-title">Planned Resources</h2>
+		
+		<div class="guides-grid">
+			{guides.map(guide => (
+				<div class={`guide-card ${guide.status === 'coming-soon' ? 'coming-soon' : ''}`}>
+					<h3>
+						<span class="guide-emoji">{guide.emoji}</span> 
+						{guide.title}
+						{guide.status === 'coming-soon' && <span class="status-badge">Coming Soon</span>}
+					</h3>
+					<p>{guide.description}</p>
+				</div>
+			))}
+		</div>
+	</section>
+</GameLayout>
+
+<style>
+.coming-soon-notice {
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(220, 53, 69, 0.1));
+  border: 1px solid #c0c0c0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.coming-soon-notice h3 {
+  color: #c0c0c0;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.coming-soon-notice p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.guide-card.coming-soon {
+  opacity: 0.7;
+  border-color: var(--text-secondary);
+  cursor: default;
+}
+
+.guide-card.coming-soon:hover {
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.guide-card .status-badge {
+  background: #dc3545;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.6rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+</style> 

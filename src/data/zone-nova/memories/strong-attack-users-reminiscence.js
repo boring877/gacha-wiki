@@ -5,7 +5,7 @@ export const strongAttackUsersReminiscenceData = {
   // Basic Memory Information
   name: "Strong Attack User's Reminiscence",
   chineseName: '强袭使追忆',
-  image: '/images/memories/Axe-Attack-User.jpg',
+  image: '/images/games/zone-nova/memories/Axe-Attack-User.jpg',
   rarity: 'R',
   character: null, // No specific character associated
   

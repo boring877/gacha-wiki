@@ -4,7 +4,7 @@
 export const heroesNeverStopData = {
   // Basic Memory Information
   name: 'Heroes, Never Stop',
-  image: '/images/characters/Shannacard.jpg',
+  image: '/images/games/zone-nova/memories/Shannacard.jpg',
   rarity: 'SR',
   character: 'Shanna',
   

@@ -4,7 +4,7 @@
 export const secretGardenData = {
   // Basic Memory Information
   name: 'Secret Garden',
-  image: '/images/characters/Afroditecard.jpg',
+  image: '/images/games/zone-nova/memories/Afroditecard.jpg',
   character: 'Afrodite',
   rarity: 'SSR',
   

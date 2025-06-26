@@ -5,7 +5,7 @@
 export const belphegarData = {
   // Basic Character Information
   name: 'Belphegar',
-  image: 'Belphegar', // Use format: charactername (e.g., 'penny')
+  image: 'belphegar', // Use format: charactername (e.g., 'penny')
   rarity: 'SR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer

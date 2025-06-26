@@ -4,7 +4,7 @@
 export const pervertedLittleNurseData = {
   // Basic Memory Information
   name: 'Perverted Little Nurse (变态小护士)',
-  image: '/images/characters/Leviathancard.jpg',
+  image: '/images/games/zone-nova/memories/Leviathancard.jpg',
   rarity: 'SR',
   character: 'Leviathan',
   

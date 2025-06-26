@@ -6,7 +6,7 @@ export const herTrainerData = {
   id: 'her-trainer',
   slug: 'her-trainer',
   name: 'Her Trainer',
-  image: '/images/characters/pennycard.jpg',
+  image: '/images/games/zone-nova/memories/pennycard.jpg',
   rarity: 'SSR',
   character: 'Penny',
   detailUrl: '/guides/zone-nova/characters/penny/',

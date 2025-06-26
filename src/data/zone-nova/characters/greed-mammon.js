@@ -4,7 +4,7 @@
 export const greedMammonData = {
   // Basic Character Information
   name: 'Greed Mammon',
-  image: 'Greed-Mammon', // Character image identifier
+  image: 'Greed Mammon', // Character image identifier
   rarity: 'SR',
   element: 'Chaos',
   class: 'DPS',

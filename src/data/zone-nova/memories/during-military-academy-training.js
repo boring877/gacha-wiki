@@ -6,7 +6,7 @@ export const duringMilitaryAcademyTrainingData = {
   id: 'during-military-academy-training',
   slug: 'during-military-academy-training',
   name: 'During Military Academy Training',
-  image: '/images/characters/Rosecard.jpg',
+  image: '/images/games/zone-nova/memories/Rosecard.jpg',
   rarity: 'SR',
   character: 'Rose',
   detailUrl: '/guides/zone-nova/characters/rose/',

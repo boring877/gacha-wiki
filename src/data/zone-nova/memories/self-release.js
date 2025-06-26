@@ -4,7 +4,7 @@
 export const selfReleaseData = {
   // Basic Memory Information
   name: 'Self-Release (自我放纵)',
-  image: '/images/characters/Lyracard.jpg',
+  image: '/images/games/zone-nova/memories/Lyracard.jpg',
   rarity: 'SSR',
   character: 'Lyra',
   

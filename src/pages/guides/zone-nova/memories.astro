@@ -1,12 +1,13 @@
 ---
 // Import your layout
-import ZoneNovaLayout from '../../../layouts/ZoneNovaLayout.astro';
+import ZoneNovaLayout from '../../../layouts/zone-nova/Layout.astro';
 
 // Import memory data and utilities
 import { 
   ZONE_NOVA_MEMORIES, 
-  MEMORY_METADATA 
-} from '../../../data/zoneNovaMemories.js';
+  MEMORY_METADATA,
+  getMemoriesByCharacter
+} from '../../../data/zone-nova/memories.js';
 ---
 
 <ZoneNovaLayout 
@@ -16,7 +17,7 @@ import {
 >
 	<Fragment slot="head">
 		{/* Import styles and add mobile card improvements */}
-		<link rel="preload" as="image" href="/images/characters/Athenacard.jpg" />
+		<link rel="preload" as="image" href="/images/games/zone-nova/memories/Athenacard.jpg" />
 		<style>
     /* Layout and filter bar */
     .page-flex { display: flex; gap: 2.5rem; }
@@ -144,7 +145,7 @@ import {
     table.memory-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--bg-primary); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); font-family: 'Space Grotesk', sans-serif; }
     table.memory-table th, table.memory-table td { padding: 1rem 0.5rem; text-align: center; border-bottom: 1px solid var(--neutral-200); }
     table.memory-table th { background: var(--amber-glow); color: #222; font-weight: 700; font-size: 0.9rem; position: sticky; top: 0; z-index: 2; }
-    .memory-img { width: 80px; height: 80px; border-radius: 12px; object-fit: cover; border: 2px solid var(--amber-glow); }
+    .memory-img { width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid var(--amber-glow); }
     .rarity-badge, .element-badge, .type-badge { padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; }
     .rarity-badge.ssr { background: #ffe066; color: #222; }
     .rarity-badge.sr { background: #7ecfff; color: #222; }
@@ -163,7 +164,7 @@ import {
     /* Mobile card styles */
     .mobile-memory-card { background: var(--bg-primary, #232323); border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.10); padding: 1.2rem 1rem 1rem 1rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; border: 1px solid var(--amber-glow, #ffe066); }
     .mobile-card-header { display: flex; align-items: center; gap: 1rem; }
-    .mobile-memory-card img { width: 120px; height: 120px; border-radius: 14px; border: 3px solid var(--amber-glow, #ffe066); background: #fff; margin-bottom: 0; }
+    .mobile-memory-card img { width: 80px; height: 80px; border-radius: 14px; border: 3px solid var(--amber-glow, #ffe066); background: #fff; margin-bottom: 0; }
     .mobile-card-title-group { display: flex; flex-direction: column; gap: 0.2rem; }
     .mobile-memory-card h3 { margin: 0 0 0.1rem 0; font-size: 1.25rem; color: var(--amber-glow, #ffe066); font-weight: 700; letter-spacing: 0.5px; }
     .mobile-card-badges { display: flex; gap: 0.4rem; margin-top: 0.1rem; flex-wrap: wrap; }

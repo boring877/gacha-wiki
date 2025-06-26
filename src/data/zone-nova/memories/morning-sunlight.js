@@ -5,7 +5,7 @@ export const morningSunlightData = {
   // Basic Memory Information
   name: 'Morning Sunlight',
   chineseName: '晨曦的阳光',
-  image: '/images/memories/Morning-Sunlight .jpg',
+  image: '/images/games/zone-nova/memories/Morning-Sunlight .jpg',
   rarity: 'SR',
   character: null, // No specific character associated
   

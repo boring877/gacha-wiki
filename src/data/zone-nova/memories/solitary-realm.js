@@ -4,7 +4,7 @@
 export const solitaryRealmData = {
   // Basic Memory Information
   name: 'Solitary Realm (一人之境)',
-  image: '/images/characters/kelacard.jpg',
+  image: '/images/games/zone-nova/memories/kelacard.jpg',
   rarity: 'SR',
   character: 'Kela',
   

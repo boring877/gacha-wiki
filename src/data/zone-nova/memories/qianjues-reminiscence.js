@@ -5,7 +5,7 @@ export const qianjuesReminiscenceData = {
   // Basic Memory Information
   name: "Qianjue's Reminiscence",
   chineseName: '千玦使追忆',
-  image: "/images/memories/Qianjue's-Reminiscence.jpg",
+  image: "/images/games/zone-nova/memories/Qianjue's-Reminiscence.jpg",
   rarity: 'R',
   character: null, // No specific character associated
   

@@ -6,7 +6,7 @@ export const annoyingClassroomData = {
   id: 'annoying-classroom',
   slug: 'annoying-classroom',
   name: 'Annoying Classroom',
-  image: '/images/characters/Bastetcard.jpg',
+  image: '/images/games/zone-nova/memories/Bastetcard.jpg',
   rarity: 'SR',
   character: 'Bastet',
   detailUrl: '/guides/zone-nova/characters/bastet/',

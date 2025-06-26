@@ -4,7 +4,7 @@
 export const lonelyDarkDeepNightData = {
   // Basic Information
   name: 'Lonely Dark Deep Night',
-  image: '/images/characters/Chiyacard.jpg',
+  image: '/images/games/zone-nova/memories/Chiyacard.jpg',
   character: 'Chiya',
   rarity: 'SSR',
   

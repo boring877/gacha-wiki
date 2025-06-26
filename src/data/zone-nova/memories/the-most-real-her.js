@@ -5,7 +5,7 @@ export const theMostRealHerData = {
   // Basic Information
   name: 'The Most Real Her',
   chineseName: '最真实的她',
-  image: '/images/characters/JoanofArccard.jpg',
+  image: '/images/games/zone-nova/memories/JoanofArccard.jpg',
   character: 'Jeanne d\'Arc',
   rarity: 'SSR',
   

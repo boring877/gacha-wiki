@@ -6,7 +6,7 @@ export const frostDominionData = {
   id: 'frost-dominion',
   slug: 'frost-dominion',
   name: 'Frost Dominion',
-  image: '/images/characters/naiyacard.jpg',
+  image: '/images/games/zone-nova/memories/naiyacard.jpg',
   rarity: 'SSR',
   character: 'Naiya',
   detailUrl: '/guides/zone-nova/characters/naiya/',

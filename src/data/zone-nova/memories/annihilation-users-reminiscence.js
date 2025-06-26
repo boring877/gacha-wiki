@@ -5,7 +5,7 @@ export const annihilationUsersReminiscenceData = {
   // Basic Memory Information
   name: 'Increase User Attack',
   chineseName: '歼灭使追忆',
-  image: '/images/memories/Increase-User-Attack.jpg',
+  image: '/images/games/zone-nova/memories/Increase-User-Attack.jpg',
   rarity: 'R',
   character: null, // No specific character associated
   

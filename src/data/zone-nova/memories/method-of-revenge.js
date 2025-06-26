@@ -4,7 +4,7 @@
 export const methodOfRevengeData = {
   // Basic Information
   name: 'Method of Revenge',
-  image: '/images/characters/Greed-Mammon-card.jpg',
+  image: '/images/games/zone-nova/memories/Greed-Mammon-card.jpg',
   character: 'Greed Mammon',
   rarity: 'SR',
   
