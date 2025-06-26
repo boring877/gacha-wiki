@@ -25,12 +25,12 @@ const description = yuisSEO.description;
       <!-- Hero Card (Left) -->
       <div style="flex: 1.5; min-width: 340px; max-width: 520px; display: flex; flex-direction: column; align-items: center;">
         <div style="background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(28,28,28,0.08); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
-          <OptimizedImage 
+          <img 
             src={`/images/games/zone-nova/characters/${characterData.image}.jpg`}
             alt={characterData.name}
             width={340}
             height={340}
-            loading="eager" useOptimized={false} class="character-portrait"
+            loading="eager" class="character-portrait"
             style="margin-bottom: 1.5rem; margin-top: 0; width: 340px; height: 340px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(28,28,28,0.10); max-width: 100%;"
           />
           <h1 class="character-name" style="margin: 0; text-align:center; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: titleGlow 3s ease-in-out infinite alternate;">{characterData.name}</h1>
@@ -122,7 +122,7 @@ const description = yuisSEO.description;
         <!-- Memory Card Image (Left) -->
         <div style="flex: 1; min-width: 200px; max-width: 240px; display: flex; justify-content: center;">
           <div style="background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(28,28,28,0.08); padding: 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; justify-content: center; align-items: center;">
-            <OptimizedImage 
+            <img 
               src={`/images/games/zone-nova/memories/${characterData.memoryCard.image}.jpg`}
               alt={characterData.memoryCard.name}
               width={280}
@@ -185,6 +185,7 @@ const description = yuisSEO.description;
     }
   </script>
 </ZoneNovaLayout1>
+
 
 
 
