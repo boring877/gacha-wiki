@@ -2,9 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-// Note: Using Vercel adapter built-in analytics instead of manual imports
-// import Analytics from '@vercel/analytics/astro';
-// import SpeedInsights from '@vercel/speed-insights/astro';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 // Import CSS files properly
 import '../styles/colors.css';
 import '../styles/global.css';
@@ -48,7 +46,10 @@ const { title, description } = Astro.props;
 			</main>
 			<Footer />		</div>
 		
-		<!-- Vercel Analytics and Speed Insights are automatically injected by @astrojs/vercel adapter -->
+		<script>
+			import { injectSpeedInsights } from '@vercel/speed-insights';
+			injectSpeedInsights();
+		</script>
 	</body>
 </html>
 
