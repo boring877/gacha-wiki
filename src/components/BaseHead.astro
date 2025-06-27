@@ -2,6 +2,7 @@
 // CSS imports are now handled by layouts for better organization
 // Each layout imports the appropriate styles via index.css
 import { SITE_TITLE } from '../consts';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 export interface Props {
 	title: string;
@@ -272,3 +273,7 @@ if ('serviceWorker' in navigator) {
 <meta name="theme-color" content="#FFB74D">
 <meta name="msapplication-TileColor" content="#FFB74D">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+
+<!-- Speed Insights -->
+{/* @ts-ignore */}
+<SpeedInsights />

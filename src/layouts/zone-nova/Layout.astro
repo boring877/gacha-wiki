@@ -5,7 +5,6 @@ import Footer from '../../components/Footer.astro';
 import ZoneNovaQuickNav from '../../components/zone-nova/ZoneNovaQuickNav.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import { injectSpeedInsights } from '@vercel/speed-insights';
 
 // Import CSS files properly
 import '../../styles/colors.css';
@@ -92,11 +91,6 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 		
 		<Footer />
 		</div>
-		
-		<script>
-			import { injectSpeedInsights } from '@vercel/speed-insights';
-			injectSpeedInsights();
-		</script>
 	</body>
 </html>
 

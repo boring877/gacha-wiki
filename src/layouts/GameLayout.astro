@@ -4,7 +4,6 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import DecorativeLines from '../components/DecorativeLines.astro';
-import { injectSpeedInsights } from '@vercel/speed-insights';
 
 // Import CSS files
 import '../styles/colors.css';
@@ -101,10 +100,5 @@ if (gameSlug && customStyles.length === 0) {
 			
 			<Footer />
 		</div>
-		
-		<script>
-			import { injectSpeedInsights } from '@vercel/speed-insights';
-			injectSpeedInsights();
-		</script>
 	</body>
 </html> 
