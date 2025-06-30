@@ -1,17 +1,19 @@
 ---
-import GameLayout from '../../layouts/GameLayout.astro';
+import SilverAndBloodLayout from '../../layouts/silver-and-blood/Layout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { silverAndBloodConfig } from '../../data/silver-and-blood/silver-and-blood.js';
+
+// Import the landing page CSS
+import '../../styles/games/silver-and-blood/sab-landing-page.css';
 
 // Extract data for easier use in template
 const { meta, gameInfo, guides } = silverAndBloodConfig;
 ---
 
-<GameLayout 
+<SilverAndBloodLayout 
 	title={meta.title}
 	description={meta.description}
 	gameTitle={meta.gameTitle}
-	gameSlug="silver-and-blood"
 	heroImage={meta.heroImage}
 >
 	<!-- Game Overview Section -->
@@ -31,7 +33,7 @@ const { meta, gameInfo, guides } = silverAndBloodConfig;
 		{gameInfo.playUrl !== '#' && (
 			<div class="play-button-container">
 				<a href={gameInfo.playUrl} target="_blank" class="play-button">
-					<span class="play-emoji">🎮</span>
+					<span class="play-emoji">⚔️</span>
 					Play Silver and Blood
 					<span class="play-arrow">→</span>
 				</a>
@@ -45,22 +47,24 @@ const { meta, gameInfo, guides } = silverAndBloodConfig;
 
 	<!-- Guides Section -->
 	<section class="content-section">
-		<h2 class="section-title">Planned Resources</h2>
+		<h2 class="section-title">Resources</h2>
 		
 		<div class="guides-grid">
 			{guides.map(guide => (
-				<div class={`guide-card ${guide.status === 'coming-soon' ? 'coming-soon' : ''}`}>
-					<h3>
-						<span class="guide-emoji">{guide.emoji}</span> 
-						{guide.title}
-						{guide.status === 'coming-soon' && <span class="status-badge">Coming Soon</span>}
-					</h3>
-					<p>{guide.description}</p>
-				</div>
+				<a href={guide.url} class="guide-card-link">
+					<div class="guide-card">
+						<h3>
+							<span class="guide-emoji">{guide.emoji}</span> 
+							{guide.title}
+							{guide.status === 'coming-soon' && <span class="status-badge">Coming Soon</span>}
+						</h3>
+						<p>{guide.description}</p>
+					</div>
+				</a>
 			))}
 		</div>
 	</section>
-</GameLayout>
+</SilverAndBloodLayout>
 
 <style>
 .coming-soon-notice {

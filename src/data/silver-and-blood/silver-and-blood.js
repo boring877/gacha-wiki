@@ -6,13 +6,13 @@ export const silverAndBloodConfig = {
     title: "Silver and Blood - GachaWiki",
     description: "Explore Silver and Blood gacha game guides and content",
     gameTitle: "Silver and Blood",
-    heroImage: "/images/games/silver-and-blood/main.jpg"
+    heroImage: "/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg"
   },
   
   gameInfo: {
-    description: "Coming Soon - A new gacha adventure awaits! Stay tuned for character guides, equipment systems, and epic stories.",
+    description: "A new gacha adventure awaits! Dive into character guides, equipment systems, and epic stories.",
     playUrl: "#", // Will be updated when game launches
-    status: "coming-soon",
+    status: "active",
     lastUpdated: new Date()
   },
 
@@ -37,7 +37,7 @@ export const silverAndBloodConfig = {
       description: "Character guides, skills information, and builds.",
       url: "/guides/silver-and-blood/characters/",
       category: "guides",
-      status: "coming-soon"
+      status: "active"
     },
     {
       id: "equipment",
@@ -46,7 +46,7 @@ export const silverAndBloodConfig = {
       description: "Weapons, armor, and enhancement systems.",
       url: "/guides/silver-and-blood/equipment/",
       category: "guides",
-      status: "coming-soon"
+      status: "active"
     },
     {
       id: "stories",
@@ -55,7 +55,7 @@ export const silverAndBloodConfig = {
       description: "Main storyline, side quests, and lore.",
       url: "/guides/silver-and-blood/stories/",
       category: "content",
-      status: "coming-soon"
+      status: "active"
     },
     {
       id: "updates",
@@ -64,7 +64,7 @@ export const silverAndBloodConfig = {
       description: "Patch notes, maintenance, and announcements.",
       url: "/guides/silver-and-blood/updates/",
       category: "info",
-      status: "coming-soon"
+      status: "active"
     }
   ]
 };

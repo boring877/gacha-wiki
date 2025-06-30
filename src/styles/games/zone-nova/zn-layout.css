@@ -50,8 +50,6 @@
 	padding: 2rem;
 }
 
-
-
 /* Content Area */
 .content-area {
 	animation: contentSlideUp 1s ease-out 0.3s both;
@@ -180,8 +178,6 @@
 		padding: 1rem;
 	}
 	
-
-	
 	.hero-section {
 		padding: 2rem 1rem 3rem 1rem;
 	}
@@ -247,4 +243,13 @@
 	.title-only-heading {
 		animation: none;
 	}
+}
+
+/* Zone Nova Layout, Background, and Hero Section Styles */
+.zn-layout-override h2,
+.zn-layout-override .section-title {
+    background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 } 

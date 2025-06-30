@@ -4,7 +4,7 @@
 export const mordredData = {
   // Basic Character Information
   name: 'Mordred',
-  image: 'mordred', // Character image identifier
+  image: 'Mordred', // Character image identifier
   rarity: 'SR',
   element: 'Fire',
   class: 'DPS',

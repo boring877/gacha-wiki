@@ -29,11 +29,12 @@ export const GAMES: Game[] = [
     id: 'silver-and-blood',
     name: 'Silver and Blood',
     slug: 'silver-and-blood',
-    description: 'Coming Soon - Character guides and game mechanics',
+    description: 'Character guides and game mechanics',
     image: '/images/games/silver-and-blood/main-images/silver-and-blood-main4.jpg',
     url: '/guides/silver-and-blood/',
-    status: 'coming-soon',
-    sections: ['Characters', 'Equipment', 'Stories']
+    status: 'active',
+    sections: ['Characters', 'Equipment', 'Stories'],
+    lastUpdated: new Date()
   }
 ];
 

@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import DecorativeLines from '../components/DecorativeLines.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 
 // Import CSS files
 import '../styles/colors.css';
@@ -59,11 +60,9 @@ if (gameSlug && customStyles.length === 0) {
 						<section class="hero-section">
 							<div class="hero-image-wrapper">
 								<div class="hero-image-container">
-									<img 
+									<OptimizedImage 
 										src={heroImage} 
 										alt={gameTitle} 
-										width={960}
-										height={400}
 										class="hero-image"
 										loading="eager"
 										decoding="async"

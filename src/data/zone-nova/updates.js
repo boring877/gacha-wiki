@@ -1,11 +1,35 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
 	{
+		id: 'july-8-maintenance',
+		title: 'July 8th Maintenance Update',
+		date: 'July 8, 2025',
+		type: 'maintenance',
+		summary: 'Major maintenance bringing new main story Olympus, Gaia recruitment & historical battle, "Harmony Generation: Divine Symphony" Part 2 event, Rift Surge VI, double rewards, gameplay optimizations, and 600 Photostone compensation.',
+		url: '/guides/zone-nova/updates/maintenance-july-8-2025/'
+	},
+	{
+		id: 'gaia-recruitment',
+		title: 'Limited Recruitment Character [Master Mother] Gaia',
+		date: 'July 8, 2025',
+		type: 'recruitment',
+		summary: 'New SSR character Gaia (Healer, Divine) - divine master-level healer with powerful recovery abilities and shield support. Available through Limited Recruitment from July 8-22, 2025, with exclusive memory "Yizhuan City".',
+		url: '/guides/zone-nova/updates/announcement-gaia-recruitment/'
+	},
+	{
+		id: 'memory-recruitment-optimization',
+		title: 'Limited-Time Memory Recruitment Optimization',
+		date: 'July 8, 2025',
+		type: 'announcement',
+		summary: 'Memory recruitment system optimized to guarantee 100% limited SSR memories. Includes Summoning Cube x30 compensation for all eligible players who logged in before July 7, 2025.',
+		url: '/guides/zone-nova/updates/announcement-memory-recruitment-optimization/'
+	},
+	{
 		id: 'athena-recruitment',
 		title: 'Athena Limited Recruitment',
 		date: 'June 24, 2025',
 		type: 'recruitment',
-		summary: 'New legendary character Athena (Buffer, Wind) available through Limited Recruitment from June 24 - July 8, 2025. Wind attribute Buffer with enhanced bullets, attack speed boost for teammates, and exclusive memory "Sadistic Appearance".',
+		summary: 'New SSR character Athena (Buffer, Wind) available through Limited Recruitment from June 24 - July 8, 2025. Wind attribute Buffer with enhanced bullets, attack speed boost for teammates, and exclusive memory "Sadistic Appearance".',
 		url: '/guides/zone-nova/updates/announcement-athena-recruitment/'
 	},
 	{

@@ -1,0 +1,323 @@
+/* Silver and Blood Character Page Styles */
+/* This file contains layout and component styles for character pages */
+
+/* ===== GLOBAL STYLE OVERRIDES (FOR SAB SECTION) ===== */
+/* Force title colors to override global typography styles */
+.sab-body h2.section-title,
+.sab-body .section-title {
+  background: linear-gradient(135deg, #c0c0c0, #dc3545) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important; /* Fallback */
+}
+
+.sab-body h3, .sab-body h4 {
+  color: #c0c0c0 !important;
+}
+/* ===== END GLOBAL OVERRIDES ===== */
+
+/* ===== MAIN CONTENT SECTIONS ===== */
+.content-section {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: 16px;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.content-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.1);
+  border-color: rgba(192, 192, 192, 0.3);
+}
+
+.section-title {
+  background: linear-gradient(135deg, #c0c0c0, #dc3545);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 2rem 0 !important;
+  border-bottom: 3px solid #dc3545 !important;
+  padding-bottom: 0.8rem !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+}
+
+h3 {
+  color: #c0c0c0 !important;
+}
+
+/* ===== CHARACTER OVERVIEW SECTION ===== */
+.character-portrait {
+  transition: all 0.3s ease;
+  filter: brightness(1.1) contrast(1.05);
+}
+
+.character-portrait:hover {
+  transform: none;
+  box-shadow: none;
+  filter: brightness(1.1) contrast(1.05);
+}
+
+.character-name {
+  text-shadow: 0 0 15px rgba(220, 53, 69, 0.4);
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% { text-shadow: 0 0 15px rgba(220, 53, 69, 0.4); }
+  100% { text-shadow: 0 0 25px rgba(220, 53, 69, 0.6); }
+}
+
+.badges-container {
+  transition: all 0.3s ease;
+}
+
+.badges-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(192, 192, 192, 0.5);
+}
+
+/* Enhanced badge styling with subtle animation */
+.badges-container:hover > div > span {
+  transform: scale(1.05);
+}
+
+/* ===== STATS GRID ===== */
+.stats-grid .stat-item {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-grid .stat-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(220, 53, 69, 0.15);
+  border-color: #dc3545;
+  background: linear-gradient(135deg, #1a1a1a 60%, #2a2a2a 100%);
+}
+
+.stats-grid .stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.stats-grid .stat-item:hover::before {
+  left: 100%;
+}
+
+/* ===== SKILL CARDS ===== */
+.skill-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(192, 192, 192, 0.5);
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.skill-card:hover::before {
+  left: 100%;
+}
+
+/* ===== SKILL BADGES ===== */
+.skill-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.skill-badge.normal-attack {
+  background: linear-gradient(135deg, #6c757d, #495057);
+  color: white;
+  border: 1px solid #6c757d;
+}
+
+.skill-badge.special {
+  background: linear-gradient(135deg, #fd7e14, #e65100);
+  color: white;
+  border: 1px solid #fd7e14;
+}
+
+.skill-badge.passive {
+  background: linear-gradient(135deg, #28a745, #1e7e34);
+  color: white;
+  border: 1px solid #28a745;
+}
+
+.skill-badge.ultimate {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  border: 1px solid #dc3545;
+}
+
+/* ===== TAG BADGES (new) ===== */
+.tag-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease;
+}
+
+.tag-badge.melee {
+  background: #ff6b6b;
+  color: #fff;
+  border-color: #ff5252;
+}
+
+.tag-badge.aoe-dmg {
+  background: #ff8c00;
+  color: #fff;
+  border-color: #ffa500;
+}
+
+.tag-badge.continuous-dmg {
+  background: #9932cc;
+  color: #fff;
+  border-color: #8a2be2;
+}
+
+/* Disable zoom for tag badges */
+.badges-container:hover > div > .tag-badge {
+  transform: none;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .content-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Mobile stats grid adjustment */
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem !important;
+  }
+  
+  /* Mobile skill cards */
+  .skill-card {
+    padding: 1.2rem !important;
+  }
+  
+  .overview-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Stretch hero card and stats box to full width on mobile */
+  .overview-flex > div:first-child,
+  .overview-flex > div:last-child {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  
+  .overview-flex > div:last-child {
+    margin-top: 1.5rem; /* spacing between stacked blocks */
+  }
+  
+  .overview-flex > div {
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-section {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+  }
+  
+  /* Extra small screen adjustments */
+  .character-portrait {
+    width: 280px !important;
+    height: 280px !important;
+  }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .character-portrait:hover,
+  .skill-card:hover,
+  .stats-grid .stat-item:hover {
+    transform: none;
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+@media (prefers-contrast: high) {
+  .content-section {
+    border-width: 2px;
+    border-color: #fff;
+  }
+  
+  .section-title {
+    border-bottom-width: 4px;
+  }
+  
+  .skill-card {
+    border-left-width: 6px;
+  }
+}
+
+/* ===== LAYOUT FLEX ===== */
+.overview-flex {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .overview-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+} 

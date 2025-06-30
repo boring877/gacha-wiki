@@ -1,0 +1,278 @@
+---
+import SilverAndBloodLayout from '../../../layouts/silver-and-blood/Layout.astro';
+import { 
+	characters as SILVER_AND_BLOOD_CHARACTERS, 
+	gameInfo
+} from '../../../data/silver-and-blood/characters.js';
+---
+
+<SilverAndBloodLayout 
+	title="Silver and Blood Character Database - GachaWiki" 
+	description="Sortable and filterable character database for Silver and Blood"
+	gameTitle="Character Database"
+>
+	<Fragment slot="head">
+		<style>
+    /* Layout and filter bar */
+    .page-flex { display: flex; gap: 2.5rem; }
+    .main-content-container { width: 100%; display: flex; justify-content: center; padding: 0 2rem; }
+    .content-wrapper { max-width: 1400px; width: 100%; margin: 0 auto; }
+    .filter-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 2rem auto 1.5rem auto; flex-wrap: wrap; padding: 0 1rem; }
+    .filter-controls, .sort-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+    .filter-select, .sort-btn { padding: 0.4rem 0.7rem; background: #2c2c2c; color: #e0e0e0; border-radius: 8px; border: 1px solid #4f4f4f; font-size: 0.8rem; cursor: pointer; font-family: 'Space Grotesk', sans-serif; }
+    .filter-select:hover, .sort-btn:hover { background: #3a3a3a; color: #ffffff; border-color: #c0c0c0; }
+    .sort-btn.active { background: #dc3545; color: white; border-color: #dc3545; }
+    
+    /* Reset button unique styling */
+    .reset-btn { 
+      padding: 0.5rem 1rem; 
+      background: linear-gradient(135deg, #c0c0c0, #a9a9a9); 
+      color: #1a1a1a; 
+      border-radius: 10px; 
+      border: 2px solid #c0c0c0; 
+      font-size: 0.85rem; 
+      font-weight: 600; 
+      cursor: pointer; 
+      box-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .reset-btn:hover { 
+      background: linear-gradient(135deg, #d3d3d3, #b0b0b0); 
+      transform: translateY(-1px); 
+      box-shadow: 0 4px 12px rgba(192, 192, 192, 0.4);
+      border-color: #d3d3d3;
+    }
+    .reset-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(192, 192, 192, 0.3);
+    }
+
+    /* Table styles */
+    .character-table-container { overflow-x: auto; margin: 1.5rem auto; padding: 0 1rem; }
+    table.character-table { width: 100%; border-collapse: separate; border-spacing: 0; background: #2a2a2a; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); font-family: 'Space Grotesk', sans-serif; }
+    table.character-table th, table.character-table td { padding: 0.8rem 0.4rem; text-align: center; border-bottom: 1px solid #3a3a3a; color: #e0e0e0; }
+    table.character-table th { background: linear-gradient(135deg, #dc3545, #b22222); color: white; font-weight: 700; font-size: 0.9rem; position: sticky; top: 0; z-index: 2; }
+    .character-img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; border: 1px solid #c0c0c0; }
+    
+    /* Badge styles are now imported from sab-badge-colours.css */
+
+    /* Mobile card styles */
+    .mobile-character-card { background: #2c2c2c; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); padding: 1.2rem 1rem 1rem 1rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; border: 1px solid #c0c0c0; }
+    .mobile-card-header { display: flex; align-items: center; gap: 1rem; }
+    .mobile-character-card img { width: 64px; height: 64px; border-radius: 10px; border: 2px solid #c0c0c0; background: #fff; margin-bottom: 0; }
+    .mobile-card-title-group { display: flex; flex-direction: column; gap: 0.2rem; }
+    .mobile-character-card h3 { margin: 0 0 0.1rem 0; font-size: 1.25rem; color: #c0c0c0; font-weight: 700; letter-spacing: 0.5px; }
+    .mobile-card-badges { display: flex; gap: 0.4rem; margin-top: 0.1rem; flex-wrap: wrap; }
+    .mobile-character-card .rarity-badge, .mobile-character-card .class-badge, .mobile-character-card .faction-badge { font-size: 0.95em; padding: 0.18em 0.7em; border-radius: 8px; font-weight: 600; display: inline-block; margin: 0; }
+    .mobile-card-stats, .mobile-card-stats-secondary { display: flex; gap: 1.2rem; margin-top: 0.5rem; font-size: 1.05em; color: #e0e0e0; font-weight: 500; flex-wrap: wrap; }
+    .mobile-card-stats-secondary { margin-top: 0.2rem; font-size: 0.98em; }
+    .mobile-card-stats .stat-label, .mobile-card-stats-secondary .stat-label { color: #c0c0c0; font-weight: 700; margin-right: 0.2em; }
+
+    /* Desktop: show table, hide mobile cards */
+    .character-table-container { display: block; }
+    .mobile-card-view { display: none; }
+    
+    /* Mobile: show cards, hide table */
+    @media (max-width: 768px) {
+      .character-table-container { display: none !important; }
+      .mobile-card-view { display: block !important; }
+      .filter-bar { flex-direction: column; gap: 0.8rem; }
+      .filter-controls, .sort-controls { width: 100%; justify-content: center; }
+    }
+		</style>
+	</Fragment>
+	
+	<section class="page-flex">
+		<div class="main-content-container">
+			<div class="content-wrapper">
+				<div class="filter-bar">
+					<div class="filter-controls">
+						<select class="filter-select" id="class-filter">
+							<option value="">Class</option>
+							{gameInfo.classes.map(cls => (
+                <option value={cls.name}>{cls.name}</option>
+              ))}
+						</select>
+						<select class="filter-select" id="rarity-filter">
+							<option value="">Rarity</option>
+							{gameInfo.rarities.map(rarity => (
+                <option value={rarity}>{rarity}</option>
+              ))}
+						</select>
+						<select class="filter-select" id="faction-filter">
+							<option value="">Faction</option>
+							{gameInfo.factions.map(faction => (
+                <option value={faction.name}>{faction.name}</option>
+              ))}
+						</select>
+					</div>
+					<div class="sort-controls">
+						<button class="sort-btn active" data-sort="hp">HP</button>
+						<button class="sort-btn" data-sort="atk">ATK</button>
+						<button class="sort-btn" data-sort="pDef">P.DEF</button>
+						<button class="sort-btn" data-sort="mDef">M.DEF</button>
+						<button class="sort-btn" data-sort="critRate">Crit%</button>
+						<button class="sort-btn" data-sort="bloodPower">Blood Power</button>
+						<button class="reset-btn" id="reset-table">Reset</button>
+					</div>
+				</div>
+				
+				<div class="character-table-container">
+					<table class="character-table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Image</th>
+								<th>Name</th>
+								<th>Rarity</th>
+								<th>Class</th>
+								<th>Faction</th>
+								<th>HP</th>
+								<th>ATK</th>
+								<th>P.DEF</th>
+								<th>M.DEF</th>
+								<th>Crit%</th>
+								<th>Blood Power</th>
+							</tr>
+						</thead>
+						<tbody id="character-table-body">
+							{SILVER_AND_BLOOD_CHARACTERS.map((char, idx) => (
+                <tr data-character-id={char.id} data-url={`/guides/silver-and-blood/characters/${char.id}`} style="cursor:pointer;">
+                  <td>{idx + 1}</td>
+                  <td><img src={char.image} alt={char.name} class="character-img" loading="lazy"/></td>
+                  <td>{char.name}</td>
+                  <td><span class={`rarity-badge ${char.rarity.toLowerCase()}`} data-sort-key="rarity">{char.rarity}</span></td>
+                  <td><span class={`class-badge ${char.class.toLowerCase()}`} data-sort-key="class">{char.class}</span></td>
+                  <td><span class={`faction-badge ${char.faction.toLowerCase()}`} data-sort-key="faction">{char.faction}</span></td>
+                  <td data-sort-key="hp">{char.stats.hp.toLocaleString()}</td>
+                  <td data-sort-key="atk">{char.stats.atk.toLocaleString()}</td>
+                  <td data-sort-key="pDef">{char.stats.pDef.toLocaleString()}</td>
+                  <td data-sort-key="mDef">{char.stats.mDef.toLocaleString()}</td>
+                  <td data-sort-key="critRate">{char.stats.critRate}%</td>
+                  <td data-sort-key="bloodPower">{char.stats.bloodPower.toLocaleString()}</td>
+                </tr>
+              ))}
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="mobile-card-view" id="mobile-cards-container">
+					{SILVER_AND_BLOOD_CHARACTERS.map(char => (
+            <div class="mobile-character-card" data-character-id={char.id} data-url={`/guides/silver-and-blood/characters/${char.id}`} style="cursor:pointer;">
+              <div class="mobile-card-header">
+                <img src={char.image} alt={char.name} class="character-img"/>
+                <div class="mobile-card-title-group">
+                  <h3>{char.name}</h3>
+                  <div class="mobile-card-badges">
+                    <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+                    <span class={`class-badge ${char.class.toLowerCase()}`}>{char.class}</span>
+                    <span class={`faction-badge ${char.faction.toLowerCase()}`}>{char.faction}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mobile-card-stats">
+                <div><span class="stat-label">HP:</span> {char.stats.hp.toLocaleString()}</div>
+                <div><span class="stat-label">ATK:</span> {char.stats.atk.toLocaleString()}</div>
+                <div><span class="stat-label">P.DEF:</span> {char.stats.pDef.toLocaleString()}</div>
+                <div><span class="stat-label">M.DEF:</span> {char.stats.mDef.toLocaleString()}</div>
+                <div><span class="stat-label">Crit%:</span> {char.stats.critRate}</div>
+              </div>
+              <div class="mobile-card-stats mobile-card-stats-secondary">
+                <!-- Removed extra secondary stats to match compact desktop table -->
+              </div>
+            </div>
+          ))}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script is:inline>
+		document.addEventListener('DOMContentLoaded', () => {
+			const clickableElements = document.querySelectorAll('[data-url]');
+			clickableElements.forEach(element => {
+				element.addEventListener('click', () => {
+					window.location.href = element.dataset.url;
+				});
+			});
+
+			const classFilter = document.getElementById('class-filter');
+			const rarityFilter = document.getElementById('rarity-filter');
+			const factionFilter = document.getElementById('faction-filter');
+			const resetBtn = document.getElementById('reset-table');
+
+			function filterTable() {
+				const classValue = classFilter.value.toLowerCase();
+				const rarityValue = rarityFilter.value.toLowerCase();
+				const factionValue = factionFilter.value.toLowerCase();
+
+				const rows = document.querySelectorAll('#character-table-body tr');
+				const mobileCards = document.querySelectorAll('.mobile-character-card');
+
+				rows.forEach(row => {
+					const classCell = row.querySelector('.class-badge');
+					const rarityCell = row.querySelector('.rarity-badge');
+					const factionCell = row.querySelector('.faction-badge');
+					
+					const matchesClass = !classValue || classCell.textContent.toLowerCase().includes(classValue);
+					const matchesRarity = !rarityValue || rarityCell.textContent.toLowerCase().includes(rarityValue);
+					const matchesFaction = !factionValue || factionCell.textContent.toLowerCase().includes(factionValue);
+					
+					row.style.display = (matchesClass && matchesRarity && matchesFaction) ? '' : 'none';
+				});
+
+				mobileCards.forEach(card => {
+					const classBadge = card.querySelector('.class-badge');
+					const rarityBadge = card.querySelector('.rarity-badge');
+					const factionBadge = card.querySelector('.faction-badge');
+					
+					const matchesClass = !classValue || classBadge.textContent.toLowerCase().includes(classValue);
+					const matchesRarity = !rarityValue || rarityBadge.textContent.toLowerCase().includes(rarityValue);
+					const matchesFaction = !factionValue || factionBadge.textContent.toLowerCase().includes(factionValue);
+					
+					card.style.display = (matchesClass && matchesRarity && matchesFaction) ? '' : 'none';
+				});
+			}
+
+			if (classFilter) classFilter.addEventListener('change', filterTable);
+			if (rarityFilter) rarityFilter.addEventListener('change', filterTable);
+			if (factionFilter) factionFilter.addEventListener('change', filterTable);
+
+			if (resetBtn) {
+				resetBtn.addEventListener('click', () => {
+					classFilter.value = '';
+					rarityFilter.value = '';
+					factionFilter.value = '';
+					filterTable();
+				});
+			}
+
+			const sortButtons = document.querySelectorAll('.sort-btn');
+			function sortTable(column){
+				const tbody=document.getElementById('character-table-body');
+				const rows=[...tbody.querySelectorAll('tr')];
+				const multiplier=sortState.asc?1:-1;
+				rows.sort((a,b)=>{
+					const av=parseFloat(a.querySelector(`[data-sort-key="${column}"]`).textContent.replace(/[, %]/g,''));
+					const bv=parseFloat(b.querySelector(`[data-sort-key="${column}"]`).textContent.replace(/[, %]/g,''));
+					return (av-bv)*multiplier;
+				});
+				rows.forEach(r=>tbody.appendChild(r));
+			}
+			let sortState={column:'hp',asc:false};
+			sortButtons.forEach(btn=>{
+				btn.addEventListener('click',()=>{
+					const col=btn.dataset.sort;
+					sortState.asc= sortState.column===col ? !sortState.asc : true;
+					sortState.column=col;
+					document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
+					btn.classList.add('active');
+					sortTable(col);
+				});
+			});
+		});
+	</script>
+</SilverAndBloodLayout> 

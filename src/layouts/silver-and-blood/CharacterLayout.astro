@@ -1,0 +1,78 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import OptimizedImage from '../../components/OptimizedImage.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+// Note: Back button can be a shared component or a new SAB-specific one
+import BackButton from '../../components/silver-and-blood/sab-backbutton.astro'; 
+
+// Import Silver and Blood specific styles
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+// -import '../../styles/games/silver-and-blood/sab-character-styles.css';
+
+export interface Props {
+	title: string;
+	description?: string;
+	characterName?: string;
+	characterImage?: string;
+}
+
+const { title, description, characterName, characterImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title || ''} description={description || ''} />
+        <!-- SAB character-page styles need to override global headings, so we load them last -->
+        <style is:global>
+            @import '../../styles/games/silver-and-blood/sab-character-styles.css';
+        </style>
+		<slot name="head" />
+	</head>
+	<body class="sab-body">
+		<!-- Background layers for visual depth similar to landing page -->
+		<div class="bg-layer bg-primary"></div>
+		<div class="bg-layer bg-accent-1"></div>
+		<div class="bg-layer bg-accent-2"></div>
+		<div class="bg-layer bg-accent-3"></div>
+		
+		<div class="sab-content">
+			<Header />
+			<MobileMenu />
+			
+			<div class="sab-container">
+				<main class="sab-main">
+					<!-- Character Title Section -->
+					{characterName && (
+						<section class="title-only-section">
+							<h1 class="title-only-heading">
+								{characterName}
+							</h1>
+							
+							<DecorativeLines />
+						</section>
+					)}
+
+					<!-- Content Area -->
+					<div class="content-area">
+						<!-- Back Button -->
+						<div class="back-button-container" style="margin-bottom: 2rem;">
+							<BackButton href="/guides/silver-and-blood/characters/" text="Back to Character List" />
+						</div>
+						
+						<!-- Main content slot -->
+						<slot />
+					</div>
+				</main>
+			</div>
+			
+			<Footer />
+		</div>
+	</body>
+</html> 

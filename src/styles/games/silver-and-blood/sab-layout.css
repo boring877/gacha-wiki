@@ -1,0 +1,137 @@
+/* 
+  Silver and Blood - Layout Styles
+  This file can be customized to create a unique feel for the Silver and Blood section.
+*/
+
+.sab-body {
+	background: var(--bg-dark);
+	color: var(--text-primary);
+	min-height: 100vh;
+	font-family: 'Inter', sans-serif;
+}
+
+/* Background layers can be customized with Silver and Blood's color palette */
+.bg-layer {
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+}
+
+.bg-primary {
+	background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+}
+
+/* Accents can be changed to match the game's theme (e.g., silver and red) */
+.bg-accent-1 {
+	background: radial-gradient(circle at 15% 85%, rgba(192, 192, 192, 0.08), transparent 70%);
+}
+
+.bg-accent-2 {
+	background: radial-gradient(circle at 85% 15%, rgba(220, 53, 69, 0.1), transparent 70%);
+}
+
+.bg-accent-3 {
+	background: radial-gradient(circle at 50% 50%, rgba(108, 117, 125, 0.05), transparent 70%);
+}
+
+.sab-content {
+	position: relative;
+	z-index: 10;
+}
+
+.sab-container {
+	max-width: 75rem;
+	margin: 0 auto;
+	padding: 2rem;
+	min-height: calc(100vh - 10rem);
+}
+
+.sab-main {
+	/* Main content styles */
+}
+
+/* Hero Section Styles */
+.hero-section {
+	text-align: center;
+	margin-bottom: 3rem;
+	animation: fadeIn 1s ease-out;
+}
+
+.hero-image-wrapper {
+	position: relative;
+	margin-bottom: 2rem;
+}
+
+.hero-image-container {
+	width: 100%;
+	max-width: 60rem;
+	height: 25rem;
+	border-radius: 1rem;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	box-shadow: 0 15px 40px rgba(220, 53, 69, 0.2);
+	border: 2px solid rgba(220, 53, 69, 0.5);
+}
+
+.hero-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s ease;
+}
+
+.hero-image:hover {
+	transform: scale(1.03);
+}
+
+.hero-overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 60%;
+	background: linear-gradient(transparent, rgba(26, 26, 26, 0.9));
+}
+
+.hero-title {
+	font-family: var(--font-display);
+	font-size: var(--text-4xl);
+	font-weight: 700;
+	background: linear-gradient(135deg, #c0c0c0, #dc3545);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin: 0;
+	text-shadow: 0 2px 15px rgba(220, 53, 69, 0.3);
+}
+
+.title-only-section {
+	text-align: center;
+	margin-bottom: 3rem;
+	padding: 2rem 0;
+}
+
+.title-only-heading {
+	font-family: var(--font-display);
+	font-size: var(--text-4xl);
+	font-weight: 700;
+	background: linear-gradient(135deg, #c0c0c0, #dc3545);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.content-area {
+	animation: slideUp 0.8s ease-out 0.2s both;
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes slideUp {
+	from { opacity: 0; transform: translateY(20px); }
+	to { opacity: 1; transform: translateY(0); }
+} 
