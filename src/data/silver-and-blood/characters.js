@@ -24,13 +24,13 @@ export const gameInfo = {
     { name: 'Heavy', description: 'Survival-focused gear with maximum protection' }
   ],
   moonPhases: [
-    { name: 'New Moon', effect: 'Ultimate Bloodsoul Cost -1, +25% DMG' },
-    { name: 'Crescent Moon', effect: 'Ultimate Bloodsoul Cost -1, +25% DMG' },
+    { name: 'New Moon', effect: 'Activate Moon Phase: New Moon by using Ultimate in battle. While Blood Moon is active, all Vassals gains Ultimate Bloodsoul Cost -1 and 25% more DMG' },
+    { name: 'Crescent Moon', effect: 'Activate Moon Phase: Crescent Moon by using Ultimate in battle. While Blood Moon is active, all Vassals gains Ultimate Bloodsoul Cost -1 and 25% more DMG' },
     { name: 'Full Moon', effect: 'Activate Moon Phase: Full Moon by using Ultimate in battle. While Blood Moon is active, all Vassals gains Ultimate Bloodsoul Cost -1 and 25% more DMG.' }
   ],
   attackTypes: [
     { name: 'P.DMG', description: 'DMG dealt through physical means like swords and bows. Increasing P. DEF reduces DMG taken from this type.' },
-    { name: 'M.DMG', description: 'Magical damage through blood formulas and alchemy. Reduced by M.DEF.' }
+    { name: 'M.DMG', description: 'DMG dealt throught magical means like blood formulas and alchemical formulas.Increasing M.DEF reduces DMG taken from this type.' }
   ],
   skillTypes: [
     { name: 'Normal Attack', description: 'Basic attack skill that generates Bloodsoul' },
@@ -48,11 +48,13 @@ export const gameInfo = {
 // Import individual character files
 import { transcendentHati } from './characters/transcendent-hati.js';
 import { transcendentAmi } from './characters/transcendent-ami.js';
+import { limine } from './characters/limine.js';
 
 // Characters array - Add new characters here
 export const characters = [
   transcendentHati,
   transcendentAmi,
+  limine,
   // Add more characters as they are created
 ];
 

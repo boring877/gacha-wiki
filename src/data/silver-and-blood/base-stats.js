@@ -44,5 +44,23 @@ export const baseStats = {
     bloodPower: 21110
   },
 
+  // Limine
+  'limine': {
+    hp: 150000,           // 150K
+    atk: 10441,
+    pDef: 2843,
+    mDef: 3640,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20964
+  },
+
   // --- add more characters below ---
 }; 
