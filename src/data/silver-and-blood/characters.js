@@ -49,12 +49,14 @@ export const gameInfo = {
 import { transcendentHati } from './characters/transcendent-hati.js';
 import { transcendentAmi } from './characters/transcendent-ami.js';
 import { limine } from './characters/limine.js';
+import { incendiaryAgares } from './characters/incendiary-agares.js';
 
 // Characters array - Add new characters here
 export const characters = [
   transcendentHati,
   transcendentAmi,
   limine,
+  incendiaryAgares,
   // Add more characters as they are created
 ];
 
