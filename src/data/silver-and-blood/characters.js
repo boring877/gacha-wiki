@@ -46,13 +46,13 @@ export const gameInfo = {
 };
 
 // Import individual character files
-import { kael } from './characters/kael.js';
 import { transcendentHati } from './characters/transcendent-hati.js';
+import { transcendentAmi } from './characters/transcendent-ami.js';
 
 // Characters array - Add new characters here
 export const characters = [
-  kael,
   transcendentHati,
+  transcendentAmi,
   // Add more characters as they are created
 ];
 

@@ -26,5 +26,23 @@ export const baseStats = {
     bloodPower: 21383
   },
 
+  // Transcendent Ami
+  'transcendent-ami': {
+    hp: 197000,           // 197K
+    atk: 7919,
+    pDef: 4388,
+    mDef: 5434,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 21110
+  },
+
   // --- add more characters below ---
 }; 
