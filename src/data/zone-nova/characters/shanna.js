@@ -35,8 +35,8 @@ export const shannaData = {
       description: 'Rushes to designated enemy and deals fire damage equal to 480% of Attack'
     },
     passive: {
-      name: 'Heroes Never Retreat!',
-      description: 'When targeting same enemy with normal attacks: Gains [Focus] stacks. Each stack increases critical hit damage by 2.8% (maximum 10 stacks). With Awakening 2: Each normal attack targeting same enemy additionally adds one [Focus] stack'
+      name: 'Heroes Won\'t Retreat in Battle! (被动英雄不会临阵退缩！)',
+      description: 'Level: 10+4. When attacking the same target consecutively, gain 2 stacks of "Focus." Each stack increases critical hit chance by 2.8%, with a maximum of 10 stacks.'
     }
   },
   
