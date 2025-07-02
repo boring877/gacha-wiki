@@ -50,6 +50,8 @@ import { transcendentHati } from './characters/transcendent-hati.js';
 import { transcendentAmi } from './characters/transcendent-ami.js';
 import { limine } from './characters/limine.js';
 import { incendiaryAgares } from './characters/incendiary-agares.js';
+import { hati } from './characters/hati.js';
+import { vanHelsing } from './characters/van-helsing.js';
 
 // Characters array - Add new characters here
 export const characters = [
@@ -57,6 +59,8 @@ export const characters = [
   transcendentAmi,
   limine,
   incendiaryAgares,
+  hati,
+  vanHelsing,
   // Add more characters as they are created
 ];
 
