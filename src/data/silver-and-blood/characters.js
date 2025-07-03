@@ -5,12 +5,12 @@
 export const gameInfo = {
   rarities: ['SSR', 'SR', 'R'],
   classes: [
-    { name: 'Warrior', description: 'Powerful melee fighters with high durability' },
-    { name: 'Assassin', description: 'Swift attackers specializing in critical strikes' },
-    { name: 'Defender', description: 'Protective units with high defensive capabilities' },
-    { name: 'Marksman', description: 'Ranged attackers with precision strikes' },
-    { name: 'Sorcerer', description: 'Magic users dealing elemental damage' },
-    { name: 'Enchanter', description: 'Support units with buffs and healing abilities' }
+    { name: 'Warrior', description: 'Has strong survivability and DPS. Performs well in varying scenarios.' },
+    { name: 'Assassin', description: 'Adept at breaking through or avoiding the front line, directly striking the weaker middle and backline enemies.' },
+    { name: 'Defender', description: 'A hero with reliable survivability and protection skills.' },
+    { name: 'Marksman', description: 'Deals consistent, strong DMG to a single target or targets in a small area.' },
+    { name: 'Sorcerer', description: 'A hero with a versatile attack style who can destroy many enemies using various methods.' },
+    { name: 'Enchanter', description: 'Each possesses distinctive abilities, offering various benefits to their teams.' }
   ],
   factions: [
     { name: 'Kingdom', description: 'Noble houses defending traditional order' },
@@ -52,6 +52,14 @@ import { limine } from './characters/limine.js';
 import { incendiaryAgares } from './characters/incendiary-agares.js';
 import { hati } from './characters/hati.js';
 import { vanHelsing } from './characters/van-helsing.js';
+import { transcendentNoah } from './characters/transcendent-noah.js';
+import { seth } from './characters/seth.js';
+import { acappella } from './characters/acappella.js';
+import { gilrain } from './characters/gilrain.js';
+import { joan } from './characters/joan.js';
+import { darcias } from './characters/darcias.js';
+import { ressa } from './characters/ressa.js';
+import { ottavia } from './characters/ottavia.js';
 
 // Characters array - Add new characters here
 export const characters = [
@@ -61,6 +69,14 @@ export const characters = [
   incendiaryAgares,
   hati,
   vanHelsing,
+  transcendentNoah,
+  seth,
+  acappella,
+  gilrain,
+  joan,
+  darcias,
+  ressa,
+  ottavia,
   // Add more characters as they are created
 ];
 

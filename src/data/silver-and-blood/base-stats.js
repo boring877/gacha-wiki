@@ -95,7 +95,7 @@ export const baseStats = {
     pDmgBonus: 0,
     mDmgBonus: 0,
     receivedHealingBonus: 0,
-    bloodPower: 21110
+    bloodPower: 20937
   },
 
   // Van Helsing
@@ -114,6 +114,150 @@ export const baseStats = {
     mDmgBonus: 0,
     receivedHealingBonus: 0,
     bloodPower: 20924
+  },
+
+  // Transcendent Noah
+  'transcendent-noah': {
+    hp: 144000,           // 144K
+    atk: 10441,
+    pDef: 3744,
+    mDef: 3359,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20904
+  },
+
+  // Seth
+  'seth': {
+    hp: 151000,           // 151K
+    atk: 10042,
+    pDef: 3195,
+    mDef: 4384,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20899
+  },
+
+  // Acappella
+  'acappella': {
+    hp: 143000,           // 143K
+    atk: 10548,
+    pDef: 3025,
+    mDef: 3747,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20871
+  },
+
+  // Gilrain
+  'gilrain': {
+    hp: 180000,           // 180K
+    atk: 8850,
+    pDef: 4287,
+    mDef: 3747,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20866
+  },
+
+  // Joan
+  'joan': {
+    hp: 171000,           // 171K
+    atk: 9014,
+    pDef: 4341,
+    mDef: 4150,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20863
+  },
+
+  // Darcias
+  'darcias': {
+    hp: 171000,           // 171K
+    atk: 8835,
+    pDef: 4914,
+    mDef: 4150,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20851
+  },
+
+  // Ressa
+  'ressa': {
+    hp: 166000,           // 166K
+    atk: 9637,
+    pDef: 3565,
+    mDef: 3385,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20851
+  },
+
+  // Ottavia
+  'ottavia': {
+    hp: 158000,           // 158K
+    atk: 9631,
+    pDef: 3753,
+    mDef: 3971,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20761
   },
 
   // --- add more characters below ---
