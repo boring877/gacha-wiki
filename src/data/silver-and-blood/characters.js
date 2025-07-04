@@ -60,6 +60,26 @@ import { joan } from './characters/joan.js';
 import { darcias } from './characters/darcias.js';
 import { ressa } from './characters/ressa.js';
 import { ottavia } from './characters/ottavia.js';
+import { pavana } from './characters/pavana.js';
+import { lamia } from './characters/lamia.js';
+import { cecia } from './characters/cecia.js';
+import { augustine } from './characters/augustine.js';
+import { starryEyedAiona } from './characters/starry-eyed-aiona.js';
+import { yggdrasill } from './characters/yggdrasill.js';
+import { friedrich } from './characters/friedrich.js';
+import { nicole } from './characters/nicole.js';
+import { edina } from './characters/edina.js';
+import { agares } from './characters/agares.js';
+import { bella } from './characters/bella.js';
+import { thibault } from './characters/thibault.js';
+import { theophane } from './characters/theophane.js';
+import { cain } from './characters/cain.js';
+import { selena } from './characters/selena.js';
+import { spectralGilrain } from './characters/spectral-gilrain.js';
+import { piera } from './characters/piera.js';
+import { ami } from './characters/ami.js';
+import { tris } from './characters/tris.js';
+import { mass } from './characters/mass.js';
 
 // Characters array - Add new characters here
 export const characters = [
@@ -77,6 +97,26 @@ export const characters = [
   darcias,
   ressa,
   ottavia,
+  pavana,
+  lamia,
+  cecia,
+  augustine,
+  starryEyedAiona,
+  yggdrasill,
+  friedrich,
+  nicole,
+  edina,
+  agares,
+  bella,
+  thibault,
+  theophane,
+  cain,
+  selena,
+  spectralGilrain,
+  piera,
+  ami,
+  tris,
+  mass,
   // Add more characters as they are created
 ];
 

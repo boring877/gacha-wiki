@@ -260,5 +260,365 @@ export const baseStats = {
     bloodPower: 20761
   },
 
+  // Pavana
+  'pavana': {
+    hp: 151000,           // 151K
+    atk: 9977,
+    pDef: 3385,
+    mDef: 3927,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20760
+  },
+
+  // Lamia
+  'lamia': {
+    hp: 143000,           // 143K
+    atk: 10441,
+    pDef: 3162,
+    mDef: 3640,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20760
+  },
+
+  // Cecia
+  'cecia': {
+    hp: 169000,           // 169K
+    atk: 9569,
+    pDef: 3003,
+    mDef: 3640,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20759
+  },
+
+  // Augustine
+  'augustine': {
+    hp: 176000,           // 176K
+    atk: 8683,
+    pDef: 4724,
+    mDef: 3959,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20745
+  },
+
+  // Starry-Eyed Aiona
+  'starry-eyed-aiona': {
+    hp: 134000,           // 134K
+    atk: 10726,
+    pDef: 3262,
+    mDef: 3534,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20717
+  },
+
+  // Yggdrasill
+  'yggdrasill': {
+    hp: 176000,           // 176K
+    atk: 8683,
+    pDef: 4724,
+    mDef: 3959,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20692
+  },
+
+  // Friedrich
+  'friedrich': {
+    hp: 184000,           // 184K
+    atk: 7994,
+    pDef: 5434,
+    mDef: 4382,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20661
+  },
+
+  // Nicole
+  'nicole': {
+    hp: 164000,           // 164K
+    atk: 9198,
+    pDef: 4180,
+    mDef: 3891,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20645
+  },
+
+  // Edina
+  'edina': {
+    hp: 129000,           // 129K
+    atk: 10823,
+    pDef: 3195,
+    mDef: 3466,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20606
+  },
+
+  // Agares
+  'agares': {
+    hp: 149000,           // 149K
+    atk: 10150,
+    pDef: 3162,
+    mDef: 3417,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20597
+  },
+
+  // Bella
+  'bella': {
+    hp: 155000,           // 155K
+    atk: 9618,
+    pDef: 3565,
+    mDef: 3927,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20542
+  },
+
+  // Thibault
+  'thibault': {
+    hp: 137000,           // 137K
+    atk: 10467,
+    pDef: 2868,
+    mDef: 3892,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20535
+  },
+
+  // Theophane
+  'theophane': {
+    hp: 184000,           // 184K
+    atk: 7919,
+    pDef: 5333,
+    mDef: 4341,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20526
+  },
+
+  // Cain
+  'cain': {
+    hp: 155000,           // 155K
+    atk: 9860,
+    pDef: 3162,
+    mDef: 3322,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20479
+  },
+
+  // Selena
+  'selena': {
+    hp: 144000,           // 144K
+    atk: 9957,
+    pDef: 3640,
+    mDef: 3640,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20405
+  },
+
+  // Spectral Gilrain
+  'spectral-gilrain': {
+    hp: 138000,           // 138K
+    atk: 10263,
+    pDef: 3874,
+    mDef: 3025,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20393
+  },
+
+  // Piera
+  'piera': {
+    hp: 146000,           // 146K
+    atk: 10085,
+    pDef: 3025,
+    mDef: 3529,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20389
+  },
+
+  // Ami
+  'ami': {
+    hp: 150000,           // 150K
+    atk: 9407,
+    pDef: 3541,
+    mDef: 4263,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20208
+  },
+
+  // Tris
+  'tris': {
+    hp: 146000,           // 146K
+    atk: 9581,
+    pDef: 3640,
+    mDef: 3827,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20147
+  },
+
+  // Mass
+  'mass': {
+    hp: 149000,           // 149K
+    atk: 9407,
+    pDef: 3716,
+    mDef: 3614,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20022
+  },
+
   // --- add more characters below ---
 }; 
