@@ -1,8 +1,8 @@
 /* Silver and Blood – Canonical Base Stats
    --------------------------------------------------------
    Each entry is keyed by the character id.
-   All numbers should reflect the in-game "Attribute Details" panel at Lv.1
-   or whatever baseline your wiki uses.
+   All numbers reflect the in-game "Attribute Details" panel at Level 200,
+   which is the maximum level as of now.
 
    When you add a new character, just drop their numeric values here.
 */

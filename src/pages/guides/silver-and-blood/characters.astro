@@ -82,12 +82,25 @@ import {
       .filter-bar { flex-direction: column; gap: 0.8rem; }
       .filter-controls, .sort-controls { width: 100%; justify-content: center; }
     }
+    
+    /* Consistent width for moon badges in character table */
+    .character-table .moon-badge {
+      min-width: 85px;
+      text-align: center;
+      white-space: nowrap;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.4rem;
+    }
 		</style>
 	</Fragment>
 	
 	<section class="page-flex">
 		<div class="main-content-container">
 			<div class="content-wrapper">
+				<div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: linear-gradient(135deg, #2a2a2a 60%, #1a1a1a 100%); border-radius: 12px; border: 1px solid #3a3a3a;">
+					<p style="color: #c0c0c0; margin: 0; font-size: 1rem; font-weight: 600;">Character Database</p>
+					<p style="color: #a0a0a0; margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;">All stats shown at Level 200 (current max level)</p>
+				</div>
 				<div class="filter-bar">
 					<div class="filter-controls">
 						<select class="filter-select" id="class-filter">
@@ -108,13 +121,18 @@ import {
                 <option value={faction.name}>{faction.name}</option>
               ))}
 						</select>
+						<select class="filter-select" id="moonphase-filter">
+							<option value="">Moon Phase</option>
+							{gameInfo.moonPhases.map(moon => (
+                <option value={moon.name}>{moon.name}</option>
+              ))}
+						</select>
 					</div>
 					<div class="sort-controls">
-						<button class="sort-btn active" data-sort="hp">HP</button>
+						<button class="sort-btn" data-sort="hp">HP</button>
 						<button class="sort-btn" data-sort="atk">ATK</button>
 						<button class="sort-btn" data-sort="pDef">P.DEF</button>
 						<button class="sort-btn" data-sort="mDef">M.DEF</button>
-						<button class="sort-btn" data-sort="critRate">Crit%</button>
 						<button class="sort-btn" data-sort="bloodPower">Blood Power</button>
 						<button class="reset-btn" id="reset-table">Reset</button>
 					</div>
@@ -134,7 +152,7 @@ import {
 								<th>ATK</th>
 								<th>P.DEF</th>
 								<th>M.DEF</th>
-								<th>Crit%</th>
+								<th>Moon Phase</th>
 								<th>Blood Power</th>
 							</tr>
 						</thead>
@@ -151,7 +169,7 @@ import {
                   <td data-sort-key="atk">{char.stats.atk.toLocaleString()}</td>
                   <td data-sort-key="pDef">{char.stats.pDef.toLocaleString()}</td>
                   <td data-sort-key="mDef">{char.stats.mDef.toLocaleString()}</td>
-                  <td data-sort-key="critRate">{char.stats.critRate}%</td>
+                  <td><span class={`moon-badge ${char.moonPhase.toLowerCase().replace(' ', '-')}`} data-sort-key="moonPhase">{char.moonPhase}</span></td>
                   <td data-sort-key="bloodPower">{char.stats.bloodPower.toLocaleString()}</td>
                 </tr>
               ))}
@@ -178,7 +196,8 @@ import {
                 <div><span class="stat-label">ATK:</span> {char.stats.atk.toLocaleString()}</div>
                 <div><span class="stat-label">P.DEF:</span> {char.stats.pDef.toLocaleString()}</div>
                 <div><span class="stat-label">M.DEF:</span> {char.stats.mDef.toLocaleString()}</div>
-                <div><span class="stat-label">Crit%:</span> {char.stats.critRate}</div>
+                <div><span class="stat-label">Moon Phase:</span> <span class={`moon-badge ${char.moonPhase.toLowerCase().replace(' ', '-')}`}>{char.moonPhase}</span></div>
+                <div><span class="stat-label">Blood Power:</span> {char.stats.bloodPower.toLocaleString()}</div>
               </div>
               <div class="mobile-card-stats mobile-card-stats-secondary">
                 <!-- Removed extra secondary stats to match compact desktop table -->
@@ -202,12 +221,14 @@ import {
 			const classFilter = document.getElementById('class-filter');
 			const rarityFilter = document.getElementById('rarity-filter');
 			const factionFilter = document.getElementById('faction-filter');
+			const moonphaseFilter = document.getElementById('moonphase-filter');
 			const resetBtn = document.getElementById('reset-table');
 
 			function filterTable() {
 				const classValue = classFilter.value.toLowerCase();
 				const rarityValue = rarityFilter.value.toLowerCase();
 				const factionValue = factionFilter.value.toLowerCase();
+				const moonphaseValue = moonphaseFilter.value.toLowerCase();
 
 				const rows = document.querySelectorAll('#character-table-body tr');
 				const mobileCards = document.querySelectorAll('.mobile-character-card');
@@ -216,37 +237,65 @@ import {
 					const classCell = row.querySelector('.class-badge');
 					const rarityCell = row.querySelector('.rarity-badge');
 					const factionCell = row.querySelector('.faction-badge');
+					const moonphaseCell = row.querySelector('.moon-badge');
 					
 					const matchesClass = !classValue || classCell.textContent.toLowerCase().includes(classValue);
 					const matchesRarity = !rarityValue || rarityCell.textContent.toLowerCase().includes(rarityValue);
 					const matchesFaction = !factionValue || factionCell.textContent.toLowerCase().includes(factionValue);
+					const matchesMoonphase = !moonphaseValue || moonphaseCell.textContent.toLowerCase().includes(moonphaseValue);
 					
-					row.style.display = (matchesClass && matchesRarity && matchesFaction) ? '' : 'none';
+					row.style.display = (matchesClass && matchesRarity && matchesFaction && matchesMoonphase) ? '' : 'none';
 				});
 
 				mobileCards.forEach(card => {
 					const classBadge = card.querySelector('.class-badge');
 					const rarityBadge = card.querySelector('.rarity-badge');
 					const factionBadge = card.querySelector('.faction-badge');
+					const moonphaseBadge = card.querySelector('.moon-badge');
 					
 					const matchesClass = !classValue || classBadge.textContent.toLowerCase().includes(classValue);
 					const matchesRarity = !rarityValue || rarityBadge.textContent.toLowerCase().includes(rarityValue);
 					const matchesFaction = !factionValue || factionBadge.textContent.toLowerCase().includes(factionValue);
+					const matchesMoonphase = !moonphaseValue || moonphaseBadge.textContent.toLowerCase().includes(moonphaseValue);
 					
-					card.style.display = (matchesClass && matchesRarity && matchesFaction) ? '' : 'none';
+					card.style.display = (matchesClass && matchesRarity && matchesFaction && matchesMoonphase) ? '' : 'none';
 				});
 			}
 
 			if (classFilter) classFilter.addEventListener('change', filterTable);
 			if (rarityFilter) rarityFilter.addEventListener('change', filterTable);
 			if (factionFilter) factionFilter.addEventListener('change', filterTable);
+			if (moonphaseFilter) moonphaseFilter.addEventListener('change', filterTable);
+
+			// Store the original order immediately
+			const tbody = document.getElementById('character-table-body');
+			let originalOrder = [];
+			if (tbody) {
+				originalOrder = [...tbody.querySelectorAll('tr')];
+			}
 
 			if (resetBtn) {
 				resetBtn.addEventListener('click', () => {
-					classFilter.value = '';
-					rarityFilter.value = '';
-					factionFilter.value = '';
-					filterTable();
+					if (classFilter) classFilter.value = '';
+					if (rarityFilter) rarityFilter.value = '';
+					if (factionFilter) factionFilter.value = '';
+					if (moonphaseFilter) moonphaseFilter.value = '';
+					
+					// Show all rows/cards
+					const rows = document.querySelectorAll('#character-table-body tr');
+					const mobileCards = document.querySelectorAll('.mobile-character-card');
+					
+					rows.forEach(row => row.style.display = '');
+					mobileCards.forEach(card => card.style.display = '');
+					
+					// Restore original order
+					const tbody = document.getElementById('character-table-body');
+					if (tbody && originalOrder.length > 0) {
+						originalOrder.forEach(row => tbody.appendChild(row));
+					}
+					
+					// Clear all active sort buttons (no default sorting)
+					document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
 				});
 			}
 
@@ -262,7 +311,7 @@ import {
 				});
 				rows.forEach(r=>tbody.appendChild(r));
 			}
-			let sortState={column:'hp',asc:false};
+			let sortState={column:null,asc:false};
 			sortButtons.forEach(btn=>{
 				btn.addEventListener('click',()=>{
 					const col=btn.dataset.sort;

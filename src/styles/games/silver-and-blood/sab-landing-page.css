@@ -1,7 +1,258 @@
-/* 
-  Silver and Blood - Landing Page Styles
-  Reusing and adapting styles from Zone Nova's landing page.
-*/
+/* Silver and Blood Landing Page Styles */
+
+/* Story Introduction */
+.story-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 1rem;
+}
+
+.story-subtitle {
+  color: #c0c0c0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(135deg, #c0c0c0, #dc3545);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.story-tagline {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+/* Story Grid Layout */
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.story-card {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid #3a3a3a;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  opacity: 0.7;
+}
+
+.blood-card {
+  --accent-color: #dc3545;
+  border-left: 4px solid #dc3545;
+}
+
+.destiny-card {
+  --accent-color: #c0c0c0;
+  border-left: 4px solid #c0c0c0;
+}
+
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent-color);
+}
+
+.story-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.story-card-title {
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.story-card-subtitle {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  margin: 0 0 1.5rem 0;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.story-content {
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.story-content p {
+  margin: 0 0 1rem 0;
+}
+
+.story-content p:last-child {
+  margin-bottom: 0;
+}
+
+.story-content strong {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* Epic Conclusion */
+.story-conclusion {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(220, 53, 69, 0.1));
+  border-radius: 16px;
+  border: 1px solid rgba(192, 192, 192, 0.2);
+}
+
+.epic-text {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0;
+  background: linear-gradient(135deg, #c0c0c0, #dc3545);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+}
+
+/* Play Button Enhancements */
+.play-button-container {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.play-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #dc3545, #c0c0c0);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.play-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+  background: linear-gradient(135deg, #e63946, #d0d0d0);
+}
+
+.play-emoji, .play-arrow {
+  font-size: 1.2rem;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .story-intro {
+    padding: 1.5rem 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .story-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .story-tagline {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .story-card {
+    padding: 1.5rem;
+  }
+
+  .story-icon {
+    font-size: 2rem;
+  }
+
+  .story-card-title {
+    font-size: 1.3rem;
+  }
+
+  .story-content {
+    font-size: 0.95rem;
+  }
+
+  .story-conclusion {
+    margin: 2rem 0;
+    padding: 1.5rem 1rem;
+  }
+
+  .epic-text {
+    font-size: 1.1rem;
+  }
+
+  .play-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-intro {
+    padding: 1rem 0.25rem;
+  }
+
+  .story-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .story-tagline {
+    font-size: 0.9rem;
+  }
+
+  .story-card {
+    padding: 1.25rem;
+  }
+
+  .story-card-title {
+    font-size: 1.2rem;
+  }
+
+  .story-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .epic-text {
+    font-size: 1rem;
+  }
+
+  .play-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
 
 .content-section {
 	padding: 2.5rem;

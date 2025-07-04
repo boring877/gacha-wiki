@@ -10,8 +10,21 @@ export const silverAndBloodConfig = {
   },
   
   gameInfo: {
-    description: "A new gacha adventure awaits! Dive into character guides, equipment systems, and epic stories.",
-    playUrl: "#", // Will be updated when game launches
+    description: `This is a story of "Blood and Destiny."
+
+"Blood" is the essence of life and the vessel of memory.
+Long before the dawn of the Continental Era, thirteen alchemists consumed the blood of Abel—the First Martyr.
+Through this sacrament, they unearthed the secret to transferring memories through blood, seizing a form of "immortality." Yet with each transference, their blood darkened, growing ever more tainted.
+Thus the first "Bloodborn" came to be: Immortal beings who defied the natural cycle of life and death—the harbingers of calamity upon the mortal world.
+
+"Destiny" is the confluence of cause and effect, the immutable cycle which governs existence.
+Back in that distant age, a young girl deciphered a divine prophecy inscribed upon a fallen star.
+From this, she grasped the truth of the world: Only time remains impartial, and only cycles are eternal.
+In the name of Aeon, the God of Time, she raised the silver banner of the "Tempus Church," vowing to return "heretics" to the natural cycle of life and death, and steer "history" back upon its destined course.
+
+This is the age-old tale of Blood and Destiny.
+This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet still unwritten.`,
+    playUrl: "https://silverandblood.moonton.com/",
     status: "active",
     lastUpdated: new Date()
   },

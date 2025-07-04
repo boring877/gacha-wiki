@@ -33,6 +33,8 @@ const { title, description, characterName, characterImage } = Astro.props;
         <style is:global>
             @import '../../styles/games/silver-and-blood/sab-character-styles.css';
         </style>
+		<!-- Canonical URL -->
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 		<slot name="head" />
 	</head>
 	<body class="sab-body">

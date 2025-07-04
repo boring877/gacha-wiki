@@ -18,11 +18,44 @@ const { meta, gameInfo, guides } = silverAndBloodConfig;
 >
 	<!-- Game Overview Section -->
 	<section class="content-section">
-		<h2 class="section-title">About</h2>
-		<div class="game-description">
-			{gameInfo.description}
-		</div>
+		<h2 class="section-title">About Silver and Blood</h2>
 		
+		<!-- Story Introduction -->
+		<div class="story-intro">
+			<h3 class="story-subtitle">A Tale of Blood and Destiny</h3>
+			<p class="story-tagline">An epic struggle between immortal Bloodborn and the Tempus Church that will determine the fate of all existence.</p>
+		</div>
+
+		<!-- Story Content Grid -->
+		<div class="story-grid">
+			<!-- Blood Section -->
+			<div class="story-card blood-card">
+				<div class="story-icon">🩸</div>
+				<h4 class="story-card-title">Blood</h4>
+				<p class="story-card-subtitle">The Essence of Life</p>
+				<div class="story-content">
+					<p>Long before the Continental Era, thirteen alchemists consumed the blood of Abel—the First Martyr. Through this forbidden sacrament, they discovered the secret to transferring memories through blood, seizing immortality itself.</p>
+					<p>Yet with each transference, their blood darkened and grew tainted. Thus the first <strong>Bloodborn</strong> came to be—immortal beings who defied death and became harbingers of calamity.</p>
+				</div>
+			</div>
+
+			<!-- Destiny Section -->
+			<div class="story-card destiny-card">
+				<div class="story-icon">⏳</div>
+				<h4 class="story-card-title">Destiny</h4>
+				<p class="story-card-subtitle">The Immutable Cycle</p>
+				<div class="story-content">
+					<p>In that distant age, a young girl deciphered a divine prophecy from a fallen star. She grasped the truth: only time remains impartial, and only cycles are eternal.</p>
+					<p>In the name of Aeon, God of Time, she raised the silver banner of the <strong>Tempus Church</strong>, vowing to return heretics to the natural cycle and steer history back to its destined course.</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Epic Conclusion -->
+		<div class="story-conclusion">
+			<p class="epic-text">This is the age-old tale of Blood and Destiny—an unfinished epic whose ending is both foretold, yet still unwritten.</p>
+		</div>
+
 		{gameInfo.status === 'coming-soon' && (
 			<div class="coming-soon-notice">
 				<h3>🚀 Coming Soon!</h3>

@@ -1,5 +1,6 @@
 // Silver and Blood Characters Database
 // This file contains character data and metadata for the Silver and Blood wiki
+// All character stats are based on Level 200, which is the current maximum level
 
 // Game Mechanics Reference
 export const gameInfo = {

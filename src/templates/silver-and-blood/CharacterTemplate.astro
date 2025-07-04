@@ -1,6 +1,7 @@
 ---
 import CharacterLayout from '../../layouts/silver-and-blood/CharacterLayout.astro';
 import { gameInfo } from '../../data/silver-and-blood/characters.js';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 export interface Props {
   character: any; // The full character data object
@@ -21,14 +22,66 @@ const equipmentNote = equipData ? `${equipmentType} Equipment: ${equipData.descr
 
 const classData = gameInfo.classes.find((c) => c.name === charClass);
 const classInfo = classData ? `${charClass}: ${classData.description}` : null;
+
+// Find related characters (same class or faction)
+const relatedCharacters = [];
+// This would be populated from a characters database - for now we'll add a placeholder section
 ---
 
 <CharacterLayout
-  title={`${name} - Silver and Blood`}
-  description={`Character details for ${name}, the ${charClass}.`}
+  title={`${name} - Silver and Blood Character Guide`}
+  description={`Complete ${name} character guide for Silver and Blood. ${rarity} ${charClass} with ${attackType} attacks. Stats, skills, and builds for ${name}.`}
   characterName={name}
   characterImage={image}
 >
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGameCharacter",
+      "name": "${name}",
+      "description": "${description}",
+      "image": "${image}",
+      "isPartOf": {
+        "@type": "VideoGame",
+        "name": "Silver and Blood"
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Class",
+          "value": "${charClass}"
+        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Rarity",
+          "value": "${rarity}"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Faction", 
+          "value": "${faction}"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Attack Type",
+          "value": "${attackType}"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Moon Phase",
+          "value": "${moonPhase}"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb items={[
+    { name: 'Home', href: '/' },
+    { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
+    { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
+    { name: name }
+  ]} />
 
   <!-- Character Header & Overview -->
   <section class="content-section">
@@ -40,7 +93,7 @@ const classInfo = classData ? `${charClass}: ${classData.description}` : null;
         <div style="background: linear-gradient(135deg, #2a2a2a 60%, #1a1a1a 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.15); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid #c0c0c0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;">
           <img 
             src={image}
-            alt={name}
+            alt={`${name} - ${rarity} ${charClass} character from Silver and Blood gacha game`}
             width={300}
             height={300}
             loading="eager"
@@ -101,7 +154,8 @@ const classInfo = classData ? `${charClass}: ${classData.description}` : null;
         <div style="background: linear-gradient(135deg, #1a1a1a 60%, #2a2a2a 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.15); padding: 2rem; border: 1px solid #3a3a3a; width: 100%;">
           
           <!-- All Base Stats -->
-          <h3 style="color: #c0c0c0; margin: 0 0 1.5rem 0; text-align: center; font-size: 1.4rem; border-bottom: 2px solid #dc3545; padding-bottom: 0.5rem;">Complete Base Stats</h3>
+          <h3 style="color: #c0c0c0; margin: 0 0 1rem 0; text-align: center; font-size: 1.4rem; border-bottom: 2px solid #dc3545; padding-bottom: 0.5rem;">Complete Base Stats</h3>
+          <p style="color: #a0a0a0; margin: 0 0 1.5rem 0; text-align: center; font-size: 0.9rem; font-style: italic;">Stats shown at Level 200 (current max level)</p>
           
           <!-- Core Combat Stats -->
           <h4 style="color: #c0c0c0; margin: 0 0 1rem 0; font-size: 1.1rem;">Core Combat Stats</h4>
@@ -242,5 +296,25 @@ const classInfo = classData ? `${charClass}: ${classData.description}` : null;
       )}
     </section>
   )}
+
+  <!-- Related Characters Section -->
+  <section class="content-section">
+    <h2 class="section-title">Related Characters</h2>
+    <div class="related-characters">
+      <div class="related-section">
+        <h3 style="color: #c0c0c0; margin-bottom: 1rem; font-size: 1.1rem;">Other {charClass} Characters</h3>
+        <p style="color: #a0a0a0; margin-bottom: 1rem;">
+          Explore other {charClass} characters in the <a href="/guides/silver-and-blood/characters/" style="color: #c0c0c0; text-decoration: underline;">character database</a>.
+        </p>
+      </div>
+      
+      <div class="related-section">
+        <h3 style="color: #c0c0c0; margin-bottom: 1rem; font-size: 1.1rem;">More {faction} Characters</h3>
+        <p style="color: #a0a0a0; margin-bottom: 1rem;">
+          Discover other {faction} faction characters in the <a href="/guides/silver-and-blood/characters/" style="color: #c0c0c0; text-decoration: underline;">complete character list</a>.
+        </p>
+      </div>
+    </div>
+  </section>
 
 </CharacterLayout> 
