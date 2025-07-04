@@ -18,7 +18,7 @@
 }
 
 .story-tagline {
-  color: var(--text-secondary);
+  color: #b0b0b0;
   font-size: 1.1rem;
   line-height: 1.6;
   max-width: 600px;
@@ -93,7 +93,7 @@
 }
 
 .story-content {
-  color: var(--text-primary);
+  color: #e0e0e0;
   line-height: 1.7;
 }
 
@@ -257,18 +257,21 @@
 .content-section {
 	padding: 2.5rem;
 	margin-bottom: 2rem;
-	background: rgba(255, 255, 255, 0.03);
-	border-radius: 12px;
-	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: linear-gradient(135deg, rgba(42, 42, 42, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
+	border-radius: 16px;
+	border: 1px solid rgba(192, 192, 192, 0.2);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .section-title {
-	font-size: var(--text-2xl);
+	font-size: 2.5rem;
 	margin-bottom: 1.5rem;
-	font-weight: 600;
-	color: #e5e7eb; /* A light silver color */
-	padding-bottom: 0.5rem;
-	border-bottom: 2px solid rgba(220, 53, 69, 0.6); /* Red accent */
+	font-weight: 700;
+	text-align: center;
+	background: linear-gradient(135deg, #f0f0f0, #dc3545);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
 }
 
 .game-description {
@@ -278,38 +281,13 @@
 	max-width: 70ch;
 }
 
-/* Play Button */
-.play-button-container {
-	margin-top: 2rem;
-	text-align: left;
-}
-
-.play-button {
-	display: inline-block;
-	background: linear-gradient(135deg, #dc3545, #b22222); /* Red gradient */
-	color: white;
-	padding: 0.8rem 1.8rem;
-	border-radius: 8px;
-	text-decoration: none;
-	font-weight: 600;
-	transition: all 0.3s ease;
-	box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
-}
-
-.play-button:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
-}
-
-.play-emoji, .play-arrow {
-	display: inline-block;
-	margin: 0 0.5rem;
-}
 
 .last-updated {
 	margin-top: 1.5rem;
 	font-size: 0.9rem;
-	color: var(--text-muted);
+	color: #c0c0c0;
+	text-align: center;
+	font-weight: 500;
 }
 
 /* Guides Grid */
@@ -324,34 +302,44 @@
 }
 
 .guide-card {
-	background: #2a2a2a;
-	padding: 1.5rem;
-	border-radius: 10px;
-	border: 2px solid transparent;
+	background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+	padding: 2rem;
+	border-radius: 16px;
+	border: 1px solid #3a3a3a;
 	transition: all 0.3s ease;
 	height: 100%;
-	border-image: linear-gradient(to right, #c0c0c0, #dc3545) 1;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .guide-card:hover {
 	transform: translateY(-5px);
-	border-color: rgba(220, 53, 69, 0.8);
-	background: #333;
+	border-color: #dc3545;
+	background: linear-gradient(135deg, #333 0%, #2a2a2a 100%);
+	box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
 }
 
 .guide-card h3 {
 	margin-top: 0;
 	color: #f0f0f0;
-	font-size: 1.25rem;
+	font-size: 1.3rem;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
 }
 
 .guide-card p {
-	color: var(--text-secondary);
+	color: #b0b0b0;
 	font-size: 1rem;
 	line-height: 1.6;
+	margin: 0;
 }
 
 .guide-emoji {
-	margin-right: 0.75rem;
-	font-size: 1.5rem;
+	font-size: 1.8rem;
+	transition: transform 0.3s ease;
+}
+
+.guide-card:hover .guide-emoji {
+	transform: scale(1.1) rotate(5deg);
 } 
