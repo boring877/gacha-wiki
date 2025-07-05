@@ -3,6 +3,25 @@
   This file can be customized to create a unique feel for the Silver and Blood section.
 */
 
+/* Silver and Blood Color Variables */
+:root {
+  /* Primary colors for Silver and Blood */
+  --sab-silver: #c0c0c0;
+  --sab-blood: #8b0000;
+  --sab-dark-silver: #808080;
+  --sab-light-blood: #dc143c;
+  --sab-gold: #ffd700;
+  --sab-purple: #9370db;
+  
+  /* Legacy variable names (for backward compatibility) */
+  --blood-red: #dc143c;
+  --silver-metallic: #c0c0c0;
+  
+  /* Game-specific gradients */
+  --sab-gradient: linear-gradient(135deg, var(--sab-silver), var(--sab-blood));
+  --sab-accent-gradient: linear-gradient(90deg, var(--sab-dark-silver), var(--sab-light-blood));
+}
+
 .sab-body {
 	background: var(--bg-dark);
 	color: var(--text-primary);

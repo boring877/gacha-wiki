@@ -1,0 +1,14 @@
+---
+import EventDetailLayout from '../../../../layouts/silver-and-blood/EventDetailLayout.astro';
+import { eventData, eventSeoData } from '../../../../data/silver-and-blood/events/far-side-of-the-moon.js';
+---
+
+<EventDetailLayout 
+  title={eventSeoData.title}
+  description={eventSeoData.description}
+  gameTitle={eventData.title}
+  eventData={eventData}
+>
+  <!-- Any additional custom content can go here -->
+  <!-- This will be inserted into the custom-content slot in the layout -->
+</EventDetailLayout>

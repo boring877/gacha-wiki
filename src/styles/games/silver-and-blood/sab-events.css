@@ -1,0 +1,356 @@
+/* Silver and Blood Events Page Styles */
+
+.events-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.5rem;
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--sab-blood-red);
+  box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.search-btn,
+.clear-search-btn {
+  padding: 0.625rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.search-btn {
+  background: var(--sab-blood-red);
+  color: white;
+}
+
+.search-btn:hover {
+  background: var(--sab-dark-red);
+  transform: translateY(-1px);
+}
+
+.clear-search-btn {
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
+  display: none;
+}
+
+.clear-search-btn:hover {
+  background: var(--bg-hover);
+}
+
+.filter-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.filter-select {
+  padding: 0.625rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.5rem;
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--sab-blood-red);
+}
+
+.results-info {
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.search-query {
+  color: var(--sab-blood-red);
+  font-weight: 500;
+}
+
+/* Event List */
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event-card {
+  display: block;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--sab-blood-red);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-color: var(--sab-blood-red);
+}
+
+.event-card:hover::before {
+  opacity: 1;
+}
+
+/* Event type specific styles */
+.event-card.festival {
+  border-left: 4px solid #ffd700;
+}
+
+.event-card.seasonal {
+  border-left: 4px solid var(--sab-blood-red);
+}
+
+.event-card.limited-time {
+  border-left: 4px solid #ff4500;
+}
+
+.event-card.special {
+  border-left: 4px solid #9400d3;
+}
+
+.event-card-header {
+  margin-bottom: 0.75rem;
+}
+
+.event-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.event-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.event-tag.festival {
+  background: rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+}
+
+.event-tag.seasonal {
+  background: rgba(139, 0, 0, 0.1);
+  color: var(--sab-blood-red);
+}
+
+.event-tag.limited-time {
+  background: rgba(255, 69, 0, 0.1);
+  color: #ff4500;
+}
+
+.event-tag.special {
+  background: rgba(148, 0, 211, 0.1);
+  color: #9400d3;
+}
+
+.tag-emoji {
+  font-size: 1rem;
+}
+
+.event-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.event-card h2 {
+  font-size: 1.25rem;
+  color: var(--text-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+.event-card-body {
+  color: var(--text-secondary);
+}
+
+.event-summary {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+}
+
+.no-results p {
+  margin: 0.5rem 0;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.pagination-btn,
+.pagination-number {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.5rem;
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pagination-btn:hover,
+.pagination-number:hover {
+  border-color: var(--sab-blood-red);
+  color: var(--sab-blood-red);
+}
+
+.pagination-number.active {
+  background: var(--sab-blood-red);
+  color: white;
+  border-color: var(--sab-blood-red);
+}
+
+.pagination-numbers {
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .events-controls {
+    gap: 1rem;
+  }
+
+  .search-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-wrapper {
+    min-width: 100%;
+  }
+
+  .search-btn,
+  .clear-search-btn {
+    width: 100%;
+  }
+
+  .event-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .event-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+  }
+
+  .pagination-numbers {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Dark mode adjustments */
+:root[data-theme="dark"] {
+  --sab-blood-red: #dc143c;
+  --sab-dark-red: #8b0000;
+  --sab-silver: #c0c0c0;
+  --sab-gold: #ffd700;
+  --sab-purple: #9370db;
+}

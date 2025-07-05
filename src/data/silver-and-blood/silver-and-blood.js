@@ -47,7 +47,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       id: "characters",
       title: "Characters",
       emoji: "⚔️",
-      description: "Character guides, skills information, and builds.",
+      description: "Character information.",
       url: "/guides/silver-and-blood/characters/",
       category: "guides",
       status: "active"
@@ -56,7 +56,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       id: "summon-faq",
       title: "Summon FAQ",
       emoji: "💎",
-      description: "Complete guide to summoning, rates, pity system, and strategies.",
+      description: "General knowledge about summoning and FAQ.",
       url: "/guides/silver-and-blood/summon-faq/",
       category: "guides",
       status: "active"
@@ -65,8 +65,17 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       id: "dutchmans-revenge",
       title: "Dutchman's Revenge",
       emoji: "🧩",
-      description: "Master challenging puzzle mechanics and strategic thinking challenges.",
+      description: "Helping with little puzzle thingy :D",
       url: "/guides/silver-and-blood/dutchmans-revenge/",
+      category: "guides",
+      status: "active"
+    },
+    {
+      id: "events",
+      title: "Events",
+      emoji: "🌙",
+      description: "Events and Related things to Events !",
+      url: "/guides/silver-and-blood/events/",
       category: "guides",
       status: "active"
     }

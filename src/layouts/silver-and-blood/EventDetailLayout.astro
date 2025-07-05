@@ -1,0 +1,291 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import SilverAndBloodSimpleNav from '../../components/silver-and-blood/SilverAndBloodSimpleNav.astro';
+
+// Import consolidated CSS file for events
+import '../../styles/games/silver-and-blood/sab-event-complete.css';
+
+export interface Props {
+	title: string;
+	description?: string;
+	gameTitle?: string;
+	eventData?: any;
+}
+
+const { title, description, gameTitle, eventData } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description || ""} />
+		<meta name="keywords" content="Silver and Blood, events, character events, guides, vampire game, limited time events" />
+		<meta name="author" content="GachaWiki" />
+		<meta name="robots" content="index, follow" />
+		
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description || ""} />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+		
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description || ""} />
+		
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="theme-color" content="#8B0000" />
+		
+		<slot name="head" />
+	</head>
+	<body class="sab-body">
+		<!-- Background layers for visual depth -->
+		<div class="bg-layer bg-primary"></div>
+		<div class="bg-layer bg-accent-1"></div>
+		<div class="bg-layer bg-accent-2"></div>
+		<div class="bg-layer bg-accent-3"></div>
+		
+		<div class="sab-content">
+			<Header />
+			<MobileMenu />
+			
+			<div class="sab-container">
+				<main class="sab-main">
+					<!-- Title Section -->
+					{gameTitle && (
+						<section class="title-only-section">
+							<h1 class="title-only-heading">
+								{gameTitle}
+							</h1>
+							
+							<DecorativeLines />
+						</section>
+					)}
+					
+					<!-- Silver and Blood Simple Navigation -->
+					<SilverAndBloodSimpleNav currentPath={Astro.url.pathname} />
+					
+					<!-- Content Area -->
+					<div class="content-area">
+						{eventData && (
+							<section class="event-details-section">
+								<div class="event-header">
+									<div class="guide-author">
+										<p class="author-info">
+											<strong>Author:</strong> {eventData.author}<br />
+											<em>{eventData.authorNote}</em>
+										</p>
+										<p class="community-link">
+											<strong>Community Discord:</strong> 
+											<a href={eventData.communityDiscord} target="_blank" rel="noopener noreferrer">
+												{eventData.communityDiscord}
+											</a>
+										</p>
+									</div>
+								</div>
+
+
+								<!-- Introduction Section with Embedded Images -->
+								<div class="introduction-section">
+									<h2>{eventData.introduction?.title}</h2>
+									{eventData.introduction?.content.map((paragraph, index) => (
+										<div class="intro-paragraph-section">
+											<div class="content-paragraph">
+												<p>{paragraph}</p>
+											</div>
+											{(() => {
+												const imageInfo = eventData.introduction?.images?.find(img => img.afterParagraph === index);
+												if (imageInfo) {
+													const img = eventData.images?.find(image => image.id === imageInfo.imageId);
+													return img && (
+														<div class="guide-image-section">
+															<div class="guide-image">
+																<img src={img.src} alt={img.alt} loading="lazy" />
+															</div>
+															{img.description && (
+																<div class="image-description">
+																	<p>{img.description}</p>
+																</div>
+															)}
+														</div>
+													);
+												}
+												return null;
+											})()}
+										</div>
+									))}
+								</div>
+
+								<!-- Guide Synopsis Navigation -->
+								{eventData.guideSynopsis && (
+									<div class="guide-synopsis">
+										<h2>{eventData.guideSynopsis.title}</h2>
+										<p class="synopsis-subtitle">{eventData.guideSynopsis.subtitle}</p>
+										<div class="synopsis-grid">
+											{eventData.guideSynopsis.sections.map(section => (
+												<a href={`#${section.id}`} class="synopsis-card">
+													<div class="synopsis-title">{section.title}</div>
+													<div class="synopsis-subtitle">{section.subtitle}</div>
+													<div class="synopsis-description">{section.description}</div>
+												</a>
+											))}
+										</div>
+									</div>
+								)}
+
+								<!-- Upcoming Event Notice -->
+								{eventData.upcomingEvent && (
+									<div class="upcoming-event-notice">
+										<h3>Upcoming Event</h3>
+										<p>
+											<strong>{eventData.upcomingEvent.name}</strong> featuring {eventData.upcomingEvent.character} - {eventData.upcomingEvent.date}
+										</p>
+									</div>
+								)}
+
+								<!-- Guide Sections -->
+								<div class="guide-sections">
+									{eventData.sections?.map(section => (
+										<div class="guide-section" id={section.id}>
+											<h2>{section.title}</h2>
+											{section.contentWithImages ? (
+												<div class="section-content">
+													{section.contentWithImages.map(item => {
+														if (item.type === 'text') {
+															return (
+																<p class="inline-text">{item.content}</p>
+															);
+														} else if (item.type === 'image') {
+															const img = eventData.images?.find(image => image.id === item.imageId);
+															return img && (
+																<div class="inline-small-image">
+																	<img src={img.src} alt={img.alt} loading="lazy" />
+																</div>
+															);
+														}
+														return null;
+													})}
+												</div>
+											) : section.content && section.content.length > 0 ? (
+												<div class="section-content">
+													{section.content.map(item => (
+														<p>{item}</p>
+													))}
+												</div>
+											) : (
+												<p class="coming-soon">Content coming soon...</p>
+											)}
+										</div>
+									))}
+								</div>
+
+								<!-- Custom Content Slot -->
+								<div class="custom-content">
+									<slot />
+								</div>
+
+								<!-- Source Information -->
+								<div class="source-info">
+									<p class="source-label">Source: {eventData.sourceInfo?.source}</p>
+									{eventData.sourceInfo?.verified && (
+										<span class="verified-badge">✓ Verified</span>
+									)}
+									<p class="last-updated">Last updated: {eventData.sourceInfo?.lastUpdated}</p>
+								</div>
+
+							</section>
+						)}
+						
+						{!eventData && (
+							<slot />
+						)}
+					</div>
+				</main>
+			</div>
+			
+			<Footer />
+		</div>
+
+		<!-- Image Modal -->
+		<div id="imageModal" class="image-modal">
+			<span class="image-modal-close">&times;</span>
+			<div class="image-modal-content">
+				<img id="modalImage" src="" alt="">
+			</div>
+		</div>
+
+		<script is:inline>
+			// Image modal functionality
+			function initImageModal() {
+				console.log('Initializing image modal...');
+				
+				const modal = document.getElementById('imageModal');
+				const modalImg = document.getElementById('modalImage');
+				const closeBtn = document.querySelector('.image-modal-close');
+				
+				if (!modal || !modalImg || !closeBtn) {
+					console.error('Modal elements not found');
+					return;
+				}
+				
+				// Add click handlers to all images
+				const images = document.querySelectorAll('.inline-small-image img, .guide-image img');
+				console.log('Found images:', images.length);
+				
+				images.forEach((img, index) => {
+					console.log('Adding click handler to image', index);
+					img.addEventListener('click', function() {
+						console.log('Image clicked:', this.src);
+						modal.classList.add('active');
+						modalImg.src = this.src;
+						modalImg.alt = this.alt;
+						document.body.style.overflow = 'hidden';
+					});
+				});
+				
+				// Close modal when clicking the X
+				closeBtn.addEventListener('click', function() {
+					console.log('Close button clicked');
+					closeModal();
+				});
+				
+				// Close modal when clicking outside the image
+				modal.addEventListener('click', function(e) {
+					if (e.target === modal) {
+						console.log('Clicked outside image');
+						closeModal();
+					}
+				});
+				
+				// Close modal with Escape key
+				document.addEventListener('keydown', function(e) {
+					if (e.key === 'Escape' && modal.classList.contains('active')) {
+						console.log('Escape key pressed');
+						closeModal();
+					}
+				});
+				
+				function closeModal() {
+					console.log('Closing modal');
+					modal.classList.remove('active');
+					document.body.style.overflow = '';
+				}
+			}
+			
+			// Try multiple initialization methods
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', initImageModal);
+			} else {
+				initImageModal();
+			}
+			
+			// Fallback initialization
+			window.addEventListener('load', function() {
+				setTimeout(initImageModal, 100);
+			});
+		</script>
+	</body>
+</html>

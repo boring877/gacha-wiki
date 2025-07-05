@@ -3,43 +3,49 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
-import OptimizedImage from '../../components/OptimizedImage.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-// Note: Back button can be a shared component or a new SAB-specific one
-import BackButton from '../../components/silver-and-blood/sab-backbutton.astro';
-import SilverAndBloodSimpleNav from '../../components/silver-and-blood/SilverAndBloodSimpleNav.astro'; 
+import SilverAndBloodSimpleNav from '../../components/silver-and-blood/SilverAndBloodSimpleNav.astro';
 
-// Import Silver and Blood specific styles
+// Import CSS files
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
 import '../../styles/games/silver-and-blood/sab-badge-colours.css';
-// -import '../../styles/games/silver-and-blood/sab-character-styles.css';
 
 export interface Props {
 	title: string;
 	description?: string;
-	characterName?: string;
-	characterImage?: string;
+	gameTitle?: string;
 }
 
-const { title, description, characterName, characterImage } = Astro.props;
+const { title, description, gameTitle } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title || ''} description={description || ''} />
-        <!-- SAB character-page styles need to override global headings, so we load them last -->
-        <style is:global>
-            @import '../../styles/games/silver-and-blood/sab-character-styles.css';
-        </style>
-		<!-- Canonical URL -->
+		<BaseHead title={title} description={description || ""} />
+		<meta name="keywords" content="Silver and Blood, events, festivals, vampire game, limited time events" />
+		<meta name="author" content="GachaWiki" />
+		<meta name="robots" content="index, follow" />
+		
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description || ""} />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+		
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description || ""} />
+		
 		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="theme-color" content="#8B0000" />
+		
 		<slot name="head" />
 	</head>
 	<body class="sab-body">
-		<!-- Background layers for visual depth similar to landing page -->
+		<!-- Background layers for visual depth -->
 		<div class="bg-layer bg-primary"></div>
 		<div class="bg-layer bg-accent-1"></div>
 		<div class="bg-layer bg-accent-2"></div>
@@ -51,28 +57,22 @@ const { title, description, characterName, characterImage } = Astro.props;
 			
 			<div class="sab-container">
 				<main class="sab-main">
-					<!-- Character Title Section -->
-					{characterName && (
+					<!-- Title Section -->
+					{gameTitle && (
 						<section class="title-only-section">
 							<h1 class="title-only-heading">
-								{characterName}
+								{gameTitle}
 							</h1>
 							
 							<DecorativeLines />
 						</section>
 					)}
-
+					
 					<!-- Silver and Blood Simple Navigation -->
 					<SilverAndBloodSimpleNav currentPath={Astro.url.pathname} />
 					
 					<!-- Content Area -->
 					<div class="content-area">
-						<!-- Back Button -->
-						<div class="back-button-container" style="margin-bottom: 2rem;">
-							<BackButton href="/guides/silver-and-blood/characters/" text="Back to Character List" />
-						</div>
-						
-						<!-- Main content slot -->
 						<slot />
 					</div>
 				</main>
@@ -81,4 +81,4 @@ const { title, description, characterName, characterImage } = Astro.props;
 			<Footer />
 		</div>
 	</body>
-</html> 
+</html>

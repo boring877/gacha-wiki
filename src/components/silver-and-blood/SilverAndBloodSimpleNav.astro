@@ -11,7 +11,8 @@ const quickLinks = [
 	{ name: 'Overview', href: '/guides/silver-and-blood/' },
 	{ name: 'Characters', href: '/guides/silver-and-blood/characters/' },
 	{ name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
-	{ name: 'Dutchman\'s Revenge', href: '/guides/silver-and-blood/dutchmans-revenge/' }
+	{ name: 'Dutchman\'s Revenge', href: '/guides/silver-and-blood/dutchmans-revenge/' },
+	{ name: 'Events', href: '/guides/silver-and-blood/events/' }
 ];
 
 // Function to check if a link is active
@@ -32,7 +33,7 @@ function isActiveLink(href: string): boolean {
 			<h3 class="nav-title">Silver and Blood Navigation</h3>
 		</div>
 		
-		<div class="nav-links">
+		<div class="nav-links" id="sabNavContainer">
 			{quickLinks.map(link => (
 				<a 
 					href={link.href} 
@@ -42,6 +43,9 @@ function isActiveLink(href: string): boolean {
 					{link.name}
 				</a>
 			))}
+		</div>
+		<div class="swipe-hint" id="sabSwipeHint">
+			<span class="hint-text">← Swipe for more →</span>
 		</div>
 	</div>
 </nav>
@@ -142,8 +146,16 @@ function isActiveLink(href: string): boolean {
 		display: none;
 	}
 
-	/* Mobile responsive */
+	/* Mobile responsive with Zone Nova optimizations */
 	@media (max-width: 768px) {
+		.sab-simple-nav {
+			margin-bottom: 2rem;
+		}
+
+		.nav-container {
+			overflow: visible;
+		}
+
 		.nav-links {
 			display: flex;
 			flex-direction: row;
@@ -153,8 +165,14 @@ function isActiveLink(href: string): boolean {
 			-webkit-overflow-scrolling: touch;
 			scrollbar-width: none;
 			-ms-overflow-style: none;
+			scroll-snap-type: x mandatory;
 			padding: 1rem;
 			gap: 1rem;
+			/* Performance optimizations */
+			will-change: scroll-position;
+			transform: translateZ(0);
+			-webkit-transform: translateZ(0);
+			contain: layout;
 		}
 		
 		.nav-links::-webkit-scrollbar {
@@ -165,8 +183,17 @@ function isActiveLink(href: string): boolean {
 			flex-shrink: 0;
 			white-space: nowrap;
 			min-width: 120px;
-			padding: 0.75rem 1rem;
+			max-width: 180px;
+			padding: 0.875rem 1.25rem;
 			font-size: 0.875rem;
+			scroll-snap-align: start;
+			touch-action: manipulation;
+			/* Performance optimizations */
+			will-change: transform;
+			backface-visibility: hidden;
+			-webkit-backface-visibility: hidden;
+			text-overflow: ellipsis;
+			overflow: hidden;
 		}
 		
 		.nav-header {
@@ -175,6 +202,66 @@ function isActiveLink(href: string): boolean {
 		
 		.nav-title {
 			font-size: 1.1rem;
+		}
+
+		/* Add swipe hint */
+		.swipe-hint {
+			display: block;
+			text-align: center;
+			margin-top: 0.5rem;
+			margin-bottom: 0.5rem;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+			position: relative;
+			z-index: 10;
+		}
+	}
+
+	/* Hide swipe hint on desktop */
+	@media (min-width: 769px) {
+		.swipe-hint {
+			display: none !important;
+		}
+	}
+
+	/* Swipe hint animations - mobile only */
+	@media (max-width: 768px) {
+		.swipe-hint.show {
+			opacity: 1;
+			animation: fadeInUp 0.5s ease-out forwards;
+		}
+
+		.swipe-hint.hide {
+			animation: fadeOut 0.3s ease-out forwards;
+		}
+
+		.hint-text {
+			font-family: 'Inter', sans-serif;
+			font-size: 0.75rem;
+			color: #dc2626;
+			font-weight: 500;
+			letter-spacing: 0.5px;
+			text-transform: uppercase;
+		}
+
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes fadeOut {
+			from {
+				opacity: 0.7;
+			}
+			to {
+				opacity: 0;
+			}
 		}
 	}
 	
@@ -185,8 +272,13 @@ function isActiveLink(href: string): boolean {
 		
 		.nav-link {
 			min-width: 100px;
-			padding: 0.6rem 0.8rem;
+			max-width: 140px;
+			padding: 0.75rem 1rem;
 			font-size: 0.8rem;
+		}
+
+		.nav-links {
+			padding: 0.75rem;
 		}
 	}
 
@@ -202,3 +294,161 @@ function isActiveLink(href: string): boolean {
 		}
 	}
 </style>
+
+<script>
+	// Mobile navigation optimizations for Silver and Blood
+	document.addEventListener('DOMContentLoaded', function() {
+		const container = document.getElementById('sabNavContainer');
+		const swipeHint = document.getElementById('sabSwipeHint');
+		if (!container) return;
+
+		let isDown = false;
+		let startX;
+		let scrollLeft;
+		let animationFrame;
+		let indicatorTimeout;
+
+		// Throttle function for performance
+		function throttle(func, limit) {
+			let inThrottle;
+			return function() {
+				const args = arguments;
+				const context = this;
+				if (!inThrottle) {
+					func.apply(context, args);
+					inThrottle = true;
+					setTimeout(() => inThrottle = false, limit);
+				}
+			}
+		}
+
+		// Show/hide swipe hint
+		function updateSwipeHint() {
+			if (!swipeHint || !container) return;
+			
+			const scrollWidth = container.scrollWidth;
+			const clientWidth = container.clientWidth;
+			
+			// Only show hint if there's content to scroll (with small buffer)
+			if (scrollWidth > clientWidth + 10) {
+				swipeHint.classList.add('show');
+				swipeHint.classList.remove('hide');
+				return true;
+			} else {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+				return false;
+			}
+		}
+
+		// Reset scroll position to default on page load
+		container.scrollLeft = 0;
+		
+		// Additional reset after a short delay to override browser restoration
+		setTimeout(() => {
+			container.scrollLeft = 0;
+		}, 50);
+
+		// Handle browser back/forward navigation
+		window.addEventListener('pageshow', () => {
+			container.scrollLeft = 0;
+		});
+
+		// Handle window resize to update hint visibility
+		if (typeof ResizeObserver !== 'undefined') {
+			const resizeObserver = new ResizeObserver(() => {
+				setTimeout(() => {
+					updateSwipeHint();
+				}, 100);
+			});
+			resizeObserver.observe(container);
+		}
+
+		// Initial hint setup
+		if (swipeHint) {
+			setTimeout(() => {
+				const hasOverflow = updateSwipeHint();
+				// Auto-hide hint after 4 seconds only if there's overflow
+				if (hasOverflow) {
+					indicatorTimeout = setTimeout(() => {
+						if (swipeHint) {
+							swipeHint.classList.add('hide');
+							swipeHint.classList.remove('show');
+						}
+					}, 4000);
+				}
+			}, 500);
+		}
+
+		// Touch events for mobile (optimized)
+		container.addEventListener('touchstart', (e) => {
+			isDown = true;
+			startX = e.touches[0].clientX;
+			scrollLeft = container.scrollLeft;
+			if (animationFrame) {
+				cancelAnimationFrame(animationFrame);
+			}
+		}, { passive: true });
+
+		const handleTouchMove = throttle((e) => {
+			if (!isDown) return;
+			const x = e.touches[0].clientX;
+			const walk = (x - startX) * 1.5;
+			
+			animationFrame = requestAnimationFrame(() => {
+				container.scrollLeft = scrollLeft - walk;
+			});
+		}, 16); // ~60fps
+
+		container.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+		container.addEventListener('touchend', () => {
+			isDown = false;
+			if (animationFrame) {
+				cancelAnimationFrame(animationFrame);
+			}
+			// Hide hint after user interacts
+			if (swipeHint) {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+			}
+		}, { passive: true });
+
+		// Hide hint on scroll
+		container.addEventListener('scroll', () => {
+			if (swipeHint) {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+			}
+		}, { passive: true });
+
+		// Keyboard navigation
+		container.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') {
+				container.scrollBy({ left: -150, behavior: 'smooth' });
+			} else if (e.key === 'ArrowRight') {
+				container.scrollBy({ left: 150, behavior: 'smooth' });
+			}
+		});
+
+		// Optimized scroll to active item
+		const activeItem = container.querySelector('.nav-link.active');
+		if (activeItem) {
+			// Use intersection observer for better performance
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (!entry.isIntersecting) {
+						activeItem.scrollIntoView({ 
+							behavior: 'smooth', 
+							block: 'nearest', 
+							inline: 'center' 
+						});
+					}
+				});
+				observer.disconnect();
+			}, { threshold: 0.5 });
+			
+			setTimeout(() => observer.observe(activeItem), 100);
+		}
+	});
+</script>
