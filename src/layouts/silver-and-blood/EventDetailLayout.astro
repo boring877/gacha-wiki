@@ -209,83 +209,27 @@ const { title, description, gameTitle, eventData } = Astro.props;
 			<Footer />
 		</div>
 
-		<!-- Image Modal -->
-		<div id="imageModal" class="image-modal">
-			<span class="image-modal-close">&times;</span>
-			<div class="image-modal-content">
-				<img id="modalImage" src="" alt="">
-			</div>
-		</div>
-
 		<script is:inline>
-			// Image modal functionality
-			function initImageModal() {
-				console.log('Initializing image modal...');
-				
-				const modal = document.getElementById('imageModal');
-				const modalImg = document.getElementById('modalImage');
-				const closeBtn = document.querySelector('.image-modal-close');
-				
-				if (!modal || !modalImg || !closeBtn) {
-					console.error('Modal elements not found');
-					return;
-				}
-				
+			// Simple image click handler - opens in new tab
+			function initImageClick() {
 				// Add click handlers to all images
 				const images = document.querySelectorAll('.inline-small-image img, .guide-image img');
-				console.log('Found images:', images.length);
 				
-				images.forEach((img, index) => {
-					console.log('Adding click handler to image', index);
+				images.forEach(img => {
+					img.style.cursor = 'pointer';
 					img.addEventListener('click', function() {
-						console.log('Image clicked:', this.src);
-						modal.classList.add('active');
-						modalImg.src = this.src;
-						modalImg.alt = this.alt;
-						document.body.style.overflow = 'hidden';
+						// Open image in new tab/window
+						window.open(this.src, '_blank');
 					});
 				});
-				
-				// Close modal when clicking the X
-				closeBtn.addEventListener('click', function() {
-					console.log('Close button clicked');
-					closeModal();
-				});
-				
-				// Close modal when clicking outside the image
-				modal.addEventListener('click', function(e) {
-					if (e.target === modal) {
-						console.log('Clicked outside image');
-						closeModal();
-					}
-				});
-				
-				// Close modal with Escape key
-				document.addEventListener('keydown', function(e) {
-					if (e.key === 'Escape' && modal.classList.contains('active')) {
-						console.log('Escape key pressed');
-						closeModal();
-					}
-				});
-				
-				function closeModal() {
-					console.log('Closing modal');
-					modal.classList.remove('active');
-					document.body.style.overflow = '';
-				}
 			}
 			
-			// Try multiple initialization methods
+			// Initialize when page loads
 			if (document.readyState === 'loading') {
-				document.addEventListener('DOMContentLoaded', initImageModal);
+				document.addEventListener('DOMContentLoaded', initImageClick);
 			} else {
-				initImageModal();
+				initImageClick();
 			}
-			
-			// Fallback initialization
-			window.addEventListener('load', function() {
-				setTimeout(initImageModal, 100);
-			});
 		</script>
 	</body>
 </html>

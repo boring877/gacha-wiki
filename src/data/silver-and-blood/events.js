@@ -2,7 +2,7 @@ export const silverAndBloodEvents = [
   {
     id: 'far-side-of-the-moon',
     title: 'Far Side of the Moon',
-    date: 'December 15, 2024',
+    date: 'July 5, 2025',
     summary: 'A mysterious lunar event that unveils hidden secrets and new challenges in the Silver and Blood universe',
     url: '/guides/silver-and-blood/events/far-side-of-the-moon/'
   }
