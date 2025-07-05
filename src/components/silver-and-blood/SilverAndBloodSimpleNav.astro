@@ -1,0 +1,204 @@
+---
+// Simple Silver and Blood Navigation for dedicated layouts
+export interface Props {
+	currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+// Navigation items
+const quickLinks = [
+	{ name: 'Overview', href: '/guides/silver-and-blood/' },
+	{ name: 'Characters', href: '/guides/silver-and-blood/characters/' },
+	{ name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
+	{ name: 'Dutchman\'s Revenge', href: '/guides/silver-and-blood/dutchmans-revenge/' }
+];
+
+// Function to check if a link is active
+function isActiveLink(href: string): boolean {
+	if (href === '/guides/silver-and-blood/' && (currentPath === '/guides/silver-and-blood/' || currentPath === '/guides/silver-and-blood')) {
+		return true;
+	}
+	if (href !== '/guides/silver-and-blood/' && currentPath.startsWith(href)) {
+		return true;
+	}
+	return false;
+}
+---
+
+<nav class="sab-simple-nav" aria-label="Silver and Blood Navigation">
+	<div class="nav-container">
+		<div class="nav-header">
+			<h3 class="nav-title">Silver and Blood Navigation</h3>
+		</div>
+		
+		<div class="nav-links">
+			{quickLinks.map(link => (
+				<a 
+					href={link.href} 
+					class={`nav-link ${isActiveLink(link.href) ? 'active' : ''}`}
+					aria-current={isActiveLink(link.href) ? 'page' : undefined}
+				>
+					{link.name}
+				</a>
+			))}
+		</div>
+	</div>
+</nav>
+
+<style>
+	.sab-simple-nav {
+		width: 100%;
+		margin-bottom: 3rem;
+		position: relative;
+		z-index: 10;
+	}
+
+	.nav-container {
+		background: rgba(28, 28, 28, 0.95);
+		border: 2px solid #dc2626;
+		border-radius: 16px;
+		backdrop-filter: blur(10px);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+		overflow: hidden;
+	}
+
+	.nav-header {
+		padding: 1.5rem;
+		background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(192, 192, 192, 0.1));
+		border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+		text-align: center;
+	}
+
+	.nav-title {
+		font-family: 'Inter', sans-serif;
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: #f8f9fa;
+		margin: 0;
+		background: linear-gradient(135deg, #dc2626, #c0c0c0);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.nav-links {
+		padding: 1.5rem;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
+	}
+
+	.nav-link {
+		display: block;
+		padding: 1rem 1.5rem;
+		color: #e8e8e8;
+		text-decoration: none;
+		border-radius: 12px;
+		font-family: 'Inter', sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		transition: all 0.3s ease;
+		border: 1px solid rgba(220, 38, 38, 0.2);
+		position: relative;
+		overflow: hidden;
+		text-align: center;
+		background: rgba(220, 38, 38, 0.05);
+	}
+
+	.nav-link::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.15), transparent);
+		transition: left 0.5s ease;
+	}
+
+	.nav-link:hover {
+		color: #ffffff;
+		background: linear-gradient(135deg, #dc2626, #b91c1c);
+		border-color: #dc2626;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+	}
+
+	.nav-link:hover::before {
+		left: 100%;
+	}
+
+	.nav-link.active {
+		color: #ffffff;
+		background: linear-gradient(135deg, #dc2626, #c0c0c0);
+		border-color: #c0c0c0;
+		font-weight: 600;
+		box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5);
+		transform: translateY(-1px);
+	}
+
+	.nav-link.active::before {
+		display: none;
+	}
+
+	/* Mobile responsive */
+	@media (max-width: 768px) {
+		.nav-links {
+			display: flex;
+			flex-direction: row;
+			overflow-x: auto;
+			overflow-y: visible;
+			scroll-behavior: smooth;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
+			padding: 1rem;
+			gap: 1rem;
+		}
+		
+		.nav-links::-webkit-scrollbar {
+			display: none;
+		}
+		
+		.nav-link {
+			flex-shrink: 0;
+			white-space: nowrap;
+			min-width: 120px;
+			padding: 0.75rem 1rem;
+			font-size: 0.875rem;
+		}
+		
+		.nav-header {
+			padding: 1rem;
+		}
+		
+		.nav-title {
+			font-size: 1.1rem;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.sab-simple-nav {
+			margin-bottom: 2rem;
+		}
+		
+		.nav-link {
+			min-width: 100px;
+			padding: 0.6rem 0.8rem;
+			font-size: 0.8rem;
+		}
+	}
+
+	/* Performance optimizations */
+	@media (prefers-reduced-motion: reduce) {
+		.nav-link {
+			transition: none;
+			transform: none;
+		}
+		
+		.nav-link::before {
+			transition: none;
+		}
+	}
+</style>
