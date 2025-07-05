@@ -2,22 +2,269 @@
 
 /* FAQ Specific Styles */
 .faq-intro {
-  background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(220, 53, 69, 0.1));
-  padding: 1.5rem;
-  border-radius: 12px;
-  border-left: 4px solid #dc3545;
-  margin-bottom: 2rem;
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.98), rgba(35, 35, 35, 0.95));
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid #dc2626;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-intro::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #dc2626, #c0c0c0, #dc2626);
 }
 
 .faq-intro p {
   margin: 0;
-  color: #e0e0e0;
+  color: #f8f9fa;
   font-size: 1.1rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  text-align: center;
+  font-weight: 500;
 }
 
 .faq-section {
   margin-bottom: 3rem;
+}
+
+.faq-section-title {
+  color: #f8f9fa;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #dc2626;
+  padding-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.faq-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #c0c0c0, transparent);
+}
+
+.faq-card {
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.98), rgba(35, 35, 35, 0.95));
+  border: 2px solid #374151;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #dc2626, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.faq-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  border-color: #dc2626;
+}
+
+.faq-card:hover::before {
+  opacity: 1;
+}
+
+.faq-card h4 {
+  color: #f8f9fa;
+  margin-bottom: 1.5rem;
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.faq-card p {
+  color: #e5e7eb;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: var(--text-base);
+}
+
+.faq-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.faq-card li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+  color: #d1d5db;
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+.faq-card li:before {
+  content: "▸";
+  color: #dc2626;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.faq-card li:last-child {
+  border-bottom: none;
+}
+
+.faq-card li strong {
+  color: #f8f9fa;
+  font-weight: 600;
+}
+
+.currency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.currency-card {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.98), rgba(40, 40, 40, 0.95));
+  border: 2px solid #6b7280;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.currency-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  border-color: #dc2626;
+}
+
+.currency-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.currency-card h4 {
+  color: #f8f9fa;
+  margin-bottom: 1rem;
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.currency-card p {
+  color: #e5e7eb;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+  font-size: var(--text-base);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .currency-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .faq-section {
+    margin-bottom: 3rem;
+  }
+  
+  .faq-section-title {
+    font-size: var(--text-xl);
+    margin-bottom: 1.5rem;
+  }
+  
+  .faq-card,
+  .currency-card {
+    padding: 1.5rem;
+  }
+  
+  .currency-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .currency-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .faq-intro {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .faq-intro p {
+    font-size: var(--text-base);
+  }
+  
+  .faq-card h4,
+  .currency-card h4 {
+    font-size: var(--text-lg);
+  }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 480px) {
+  .faq-intro {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .faq-card,
+  .currency-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .faq-section-title {
+    font-size: var(--text-lg);
+    gap: 0.5rem;
+  }
+  
+  .currency-image {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Touch and accessibility improvements */
+@media (hover: none) and (pointer: coarse) {
+  .faq-card:hover,
+  .currency-card:hover {
+    transform: none;
+  }
+  
+  .faq-card,
+  .currency-card {
+    transition: none;
+  }
 }
 
 .faq-section-title {

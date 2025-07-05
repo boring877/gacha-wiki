@@ -8,6 +8,8 @@
 	color: var(--text-primary);
 	min-height: 100vh;
 	font-family: 'Inter', sans-serif;
+	display: flex;
+	flex-direction: column;
 }
 
 /* Background layers can be customized with Silver and Blood's color palette */
@@ -36,14 +38,14 @@
 
 .sab-content {
 	position: relative;
-	z-index: 10;
+	z-index: 1;
+	flex: 1;
 }
 
 .sab-container {
 	max-width: 75rem;
 	margin: 0 auto;
 	padding: 2rem;
-	min-height: calc(100vh - 10rem);
 }
 
 .sab-main {

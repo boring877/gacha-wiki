@@ -1,0 +1,365 @@
+---
+// Silver and Blood Quick Navigation Component - Mobile Version
+export interface Props {
+	currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+// Silver and Blood navigation items
+const quickLinks = [
+	{ name: 'Overview', href: '/guides/silver-and-blood/' },
+	{ name: 'Characters', href: '/guides/silver-and-blood/characters/' },
+	{ name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
+	{ name: 'Dutchman\'s Revenge', href: '/guides/silver-and-blood/dutchmans-revenge/' }
+];
+
+// Check if current path matches a navigation item
+function isActive(href: string): boolean {
+	if (!currentPath) return false;
+	
+	// Special handling for the overview page
+	if (href === '/guides/silver-and-blood/') {
+		return currentPath === '/guides/silver-and-blood/' || currentPath === '/guides/silver-and-blood';
+	}
+	
+	// For other sections, check if the current path starts with the href
+	if (href !== '/guides/silver-and-blood/' && currentPath.startsWith(href)) {
+		return true;
+	}
+	
+	return false;
+}
+---
+
+<!-- Silver and Blood Quick Navigation - Mobile -->
+<div class="silver-and-blood-nav-mobile mobile-only">
+	<div class="nav-wrapper">
+		<div class="quick-nav-container" id="quickNavContainer">
+			{quickLinks.map(link => (
+				<a 
+					href={link.href} 
+					class={`nav-link ${isActive(link.href) ? 'active' : ''}`}
+				>
+					{link.name}
+				</a>
+			))}
+		</div>
+		<div class="swipe-hint" id="swipeHint">
+			<span class="hint-text">← Swipe for more →</span>
+		</div>
+	</div>
+</div>
+
+<style>
+	.silver-and-blood-nav-mobile {
+		margin-bottom: 2rem;
+		width: 100%;
+		max-width: 100%;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.nav-wrapper {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		width: 100%;
+		max-width: 100%;
+		overflow: hidden;
+	}
+
+	.swipe-hint {
+		text-align: center;
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		width: 100%;
+		position: relative;
+		z-index: 10;
+	}
+
+	.swipe-hint.show {
+		opacity: 1;
+		animation: fadeInUp 0.5s ease-out forwards;
+	}
+
+	.swipe-hint.hide {
+		animation: fadeOut 0.3s ease-out forwards;
+	}
+
+	.hint-text {
+		font-family: var(--font-primary);
+		font-size: var(--text-xs);
+		color: var(--blood-red);
+		font-weight: 500;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fadeOut {
+		from {
+			opacity: 0.7;
+		}
+		to {
+			opacity: 0;
+		}
+	}
+
+	.quick-nav-container {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		overflow-x: auto;
+		overflow-y: visible;
+		scroll-behavior: smooth;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		scroll-snap-type: x mandatory;
+		padding: 1rem 1rem 1rem 0;
+		margin-bottom: 1rem;
+		width: 100%;
+		max-width: 100vw;
+		box-sizing: border-box;
+		/* Performance optimizations */
+		will-change: scroll-position;
+		transform: translateZ(0);
+		-webkit-transform: translateZ(0);
+		/* Ensure proper containment */
+		contain: layout;
+	}
+
+	.quick-nav-container::-webkit-scrollbar {
+		display: none;
+	}
+
+	.nav-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1.25rem 1.75rem;
+		background: var(--bg-primary);
+		color: var(--text-primary);
+		text-decoration: none;
+		border-radius: 15px;
+		border: 2px solid var(--blood-red);
+		transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+		font-size: var(--text-base);
+		font-weight: 600;
+		font-family: var(--font-display);
+		flex-shrink: 0;
+		white-space: nowrap;
+		min-height: 56px;
+		min-width: 120px;
+		max-width: 180px;
+		box-shadow: 0 4px 12px rgba(139, 0, 0, 0.2);
+		scroll-snap-align: start;
+		touch-action: manipulation;
+		/* Performance optimizations */
+		will-change: transform;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		/* Ensure proper text handling */
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	.nav-link:hover {
+		background: var(--bg-secondary);
+		color: var(--text-primary);
+		transform: translateY(-3px);
+		box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
+		border-color: var(--silver-metallic);
+	}
+
+	.nav-link.active {
+		background: var(--blood-red);
+		color: white;
+		box-shadow: 0 6px 18px rgba(139, 0, 0, 0.5);
+		border-color: var(--blood-red);
+		transform: translateY(-2px);
+	}
+
+	/* Performance Optimizations */
+	@media (prefers-reduced-motion: reduce) {
+		.nav-link,
+		.back-button,
+		.swipe-hint {
+			transition: none;
+			transform: none;
+			animation: none;
+		}
+	}
+</style>
+
+<script>
+	// Mobile swipe functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const container = document.getElementById('quickNavContainer');
+		const swipeHint = document.getElementById('swipeHint');
+		if (!container) return;
+
+		let isDown = false;
+		let startX;
+		let scrollLeft;
+		let animationFrame;
+		let indicatorTimeout;
+
+		// Throttle function for performance
+		function throttle(func, limit) {
+			let inThrottle;
+			return function() {
+				const args = arguments;
+				const context = this;
+				if (!inThrottle) {
+					func.apply(context, args);
+					inThrottle = true;
+					setTimeout(() => inThrottle = false, limit);
+				}
+			}
+		}
+
+		// Show/hide swipe hint
+		function updateSwipeHint() {
+			if (!swipeHint || !container) return;
+			
+			const scrollWidth = container.scrollWidth;
+			const clientWidth = container.clientWidth;
+			
+			// Only show hint if there's content to scroll (with small buffer)
+			if (scrollWidth > clientWidth + 10) {
+				swipeHint.classList.add('show');
+				swipeHint.classList.remove('hide');
+				return true;
+			} else {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+				return false;
+			}
+		}
+
+		// Reset scroll position to default on page load
+		container.scrollLeft = 0;
+		
+		// Additional reset after a short delay to override browser restoration
+		setTimeout(() => {
+			container.scrollLeft = 0;
+		}, 50);
+
+		// Handle browser back/forward navigation
+		window.addEventListener('pageshow', () => {
+			container.scrollLeft = 0;
+		});
+
+		// Handle window resize to update hint visibility
+		if (typeof ResizeObserver !== 'undefined') {
+			const resizeObserver = new ResizeObserver(() => {
+				setTimeout(() => {
+					updateSwipeHint();
+				}, 100);
+			});
+			resizeObserver.observe(container);
+		}
+
+		// Initial hint setup
+		if (swipeHint) {
+			setTimeout(() => {
+				const hasOverflow = updateSwipeHint();
+				// Auto-hide hint after 4 seconds only if there's overflow
+				if (hasOverflow) {
+					indicatorTimeout = setTimeout(() => {
+						if (swipeHint) {
+							swipeHint.classList.add('hide');
+							swipeHint.classList.remove('show');
+						}
+					}, 4000);
+				}
+			}, 500);
+		}
+
+		// Touch events for mobile (optimized)
+		container.addEventListener('touchstart', (e) => {
+			isDown = true;
+			startX = e.touches[0].clientX;
+			scrollLeft = container.scrollLeft;
+			if (animationFrame) {
+				cancelAnimationFrame(animationFrame);
+			}
+		}, { passive: true });
+
+		const handleTouchMove = throttle((e) => {
+			if (!isDown) return;
+			const x = e.touches[0].clientX;
+			const walk = (x - startX) * 1.5;
+			
+			animationFrame = requestAnimationFrame(() => {
+				container.scrollLeft = scrollLeft - walk;
+			});
+		}, 16); // ~60fps
+
+		container.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+		container.addEventListener('touchend', () => {
+			isDown = false;
+			if (animationFrame) {
+				cancelAnimationFrame(animationFrame);
+			}
+			// Hide hint after user interacts
+			if (swipeHint) {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+			}
+		}, { passive: true });
+
+		// Hide hint on scroll
+		container.addEventListener('scroll', () => {
+			if (swipeHint) {
+				swipeHint.classList.add('hide');
+				swipeHint.classList.remove('show');
+			}
+		}, { passive: true });
+
+		// Simplified keyboard navigation
+		container.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') {
+				container.scrollBy({ left: -150, behavior: 'smooth' });
+			} else if (e.key === 'ArrowRight') {
+				container.scrollBy({ left: 150, behavior: 'smooth' });
+			}
+		});
+
+		// Optimized scroll to active item
+		const activeItem = container.querySelector('.nav-link.active');
+		if (activeItem) {
+			// Use intersection observer for better performance
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (!entry.isIntersecting) {
+						activeItem.scrollIntoView({ 
+							behavior: 'smooth', 
+							block: 'nearest', 
+							inline: 'center' 
+						});
+					}
+				});
+				observer.disconnect();
+			}, { threshold: 0.5 });
+			
+			setTimeout(() => observer.observe(activeItem), 100);
+		}
+	});
+</script>

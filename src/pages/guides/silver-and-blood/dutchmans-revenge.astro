@@ -1,0 +1,162 @@
+---
+import SilverAndBloodLayout from '../../../layouts/silver-and-blood/Layout.astro';
+import { dutchmansRevengeData } from '../../../data/silver-and-blood/dutchmans-revenge.js';
+
+// Import CSS
+import '../../../styles/games/silver-and-blood/sab-dutchmans-revenge.css';
+
+// Extract data for easier use in template
+const { meta, intro, gameplayMechanics, futureArtifacts, videoGuide } = dutchmansRevengeData;
+---
+
+<SilverAndBloodLayout 
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+>
+  <head slot="head">
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="keywords" content={meta.keywords} />
+    <meta name="author" content="GachaWiki" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={meta.ogTitle} />
+    <meta property="og:description" content={meta.ogDescription} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta.ogTitle} />
+    <meta name="twitter:description" content={meta.ogDescription} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    
+    <!-- Mobile Optimization -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#8B0000" />
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Guide",
+        "name": meta.title,
+        "description": meta.description,
+        "about": {
+          "@type": "VideoGame",
+          "name": "Silver and Blood"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "GachaWiki"
+        },
+        "video": {
+          "@type": "VideoObject",
+          "name": "Dutchman's Revenge Guide - Part 1",
+          "description": "Complete walkthrough of Dutchman's Revenge chapters",
+          "embedUrl": "https://www.youtube.com/embed/NnLUB6BqYWc"
+        }
+      })}
+    </script>
+  </head>
+  <!-- Page Content -->
+  <section class="content-section">
+    
+    <!-- Introduction -->
+    <div class="puzzle-intro">
+      <p>{intro.text}</p>
+    </div>
+
+    <!-- Video Guide -->
+    <div class="puzzle-section">
+      <h3 class="puzzle-section-title">{videoGuide.title}</h3>
+      
+      <div class="puzzle-card">
+        <h4>Chapter Walkthrough</h4>
+        <p>{videoGuide.description}</p>
+        <p><strong>{videoGuide.note}</strong></p>
+        <div class="video-container">
+          <iframe 
+            width="100%" 
+            height="315" 
+            src="https://www.youtube.com/embed/NnLUB6BqYWc" 
+            title="Dutchman's Revenge Guide - Part 1"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gameplay Mechanics -->
+    <div class="puzzle-section">
+      <h3 class="puzzle-section-title">{gameplayMechanics.infiltration.title}</h3>
+      
+      <div class="puzzle-card">
+        <h4>{gameplayMechanics.infiltration.title.replace('🐱 ', '')}</h4>
+        <p>{gameplayMechanics.infiltration.description}</p>
+        <ul>
+          {gameplayMechanics.infiltration.mechanics.map(mechanic => (
+            <li>{mechanic}</li>
+          ))}
+        </ul>
+      </div>
+      
+      <div class="puzzle-card">
+        <h4>{gameplayMechanics.reset.title.replace('🔄 ', '')}</h4>
+        <p>{gameplayMechanics.reset.description}</p>
+        <ul>
+          {gameplayMechanics.reset.mechanics.map(mechanic => (
+            <li>{mechanic}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Future Artifacts System -->
+    <div class="puzzle-section">
+      <h3 class="puzzle-section-title">{futureArtifacts.title}</h3>
+      
+      <div class="puzzle-card">
+        <h4>{futureArtifacts.overview.title}</h4>
+        <p>{futureArtifacts.overview.description}</p>
+      </div>
+      
+      <div class="puzzle-card">
+        <h4>{futureArtifacts.artifactGallery.title}</h4>
+        <p>{futureArtifacts.artifactGallery.description}</p>
+      </div>
+      
+      <div class="puzzle-card">
+        <h4>{futureArtifacts.equipping.title}</h4>
+        <p>{futureArtifacts.equipping.description}</p>
+        <ul>
+          {futureArtifacts.equipping.rules.map(rule => (
+            <li>{rule}</li>
+          ))}
+        </ul>
+      </div>
+      
+      <div class="puzzle-card">
+        <h4>{futureArtifacts.enhancement.title}</h4>
+        <p>{futureArtifacts.enhancement.description}</p>
+        <ul>
+          {futureArtifacts.enhancement.benefits.map(benefit => (
+            <li>{benefit}</li>
+          ))}
+        </ul>
+        <br/>
+        <ul>
+          {futureArtifacts.enhancement.development.map(dev => (
+            <li>{dev}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+  </section>
+</SilverAndBloodLayout>

@@ -53,24 +53,6 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: "active"
     },
     {
-      id: "equipment",
-      title: "Equipment",
-      emoji: "🛡️",
-      description: "Weapons, armor, and enhancement systems.",
-      url: "/guides/silver-and-blood/equipment/",
-      category: "guides",
-      status: "active"
-    },
-    {
-      id: "stories",
-      title: "Stories",
-      emoji: "📚",
-      description: "Main storyline, side quests, and lore.",
-      url: "/guides/silver-and-blood/stories/",
-      category: "content",
-      status: "active"
-    },
-    {
       id: "summon-faq",
       title: "Summon FAQ",
       emoji: "💎",
@@ -80,12 +62,12 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: "active"
     },
     {
-      id: "updates",
-      title: "Updates", 
-      emoji: "🔧",
-      description: "Patch notes, maintenance, and announcements.",
-      url: "/guides/silver-and-blood/updates/",
-      category: "info",
+      id: "dutchmans-revenge",
+      title: "Dutchman's Revenge",
+      emoji: "🧩",
+      description: "Master challenging puzzle mechanics and strategic thinking challenges.",
+      url: "/guides/silver-and-blood/dutchmans-revenge/",
+      category: "guides",
       status: "active"
     }
   ]

@@ -6,7 +6,8 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 // Note: Back button can be a shared component or a new SAB-specific one
-import BackButton from '../../components/silver-and-blood/sab-backbutton.astro'; 
+import BackButton from '../../components/silver-and-blood/sab-backbutton.astro';
+import SilverAndBloodQuickNav from '../../components/silver-and-blood/SilverAndBloodQuickNav.astro'; 
 
 // Import Silver and Blood specific styles
 import '../../styles/colors.css';
@@ -61,6 +62,9 @@ const { title, description, characterName, characterImage } = Astro.props;
 						</section>
 					)}
 
+					<!-- Silver and Blood Quick Navigation -->
+					<SilverAndBloodQuickNav currentPath={Astro.url.pathname} />
+					
 					<!-- Content Area -->
 					<div class="content-area">
 						<!-- Back Button -->

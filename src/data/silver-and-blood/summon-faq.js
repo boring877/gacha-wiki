@@ -1,13 +1,16 @@
 // Silver and Blood Summon FAQ Data
 export const summonFaqData = {
   meta: {
-    title: "Summon FAQ - Silver and Blood",
-    description: "Complete guide to Silver and Blood summoning system, rates, pity mechanics, and optimal strategies for character acquisition.",
-    gameTitle: "Summon FAQ"
+    title: "Silver and Blood Summon FAQ - Complete Gacha Guide | Rates, Pity & Strategy",
+    description: "Master Silver and Blood summoning with our complete guide covering summon rates, pity system, Future Artifacts, Moon Tears, and optimal character acquisition strategies.",
+    gameTitle: "Summon FAQ",
+    keywords: "Silver and Blood, summon guide, gacha rates, pity system, Moon Tear, Future Artifacts, character summoning, limited banners",
+    ogTitle: "Silver and Blood Summon FAQ - Complete Gacha Guide",
+    ogDescription: "Everything you need to know about Silver and Blood summoning: rates, pity mechanics, currencies, and strategies for optimal character acquisition."
   },
 
   intro: {
-    text: ""
+    text: "It's highly recommended to spend your Moon Tear (gems) in limited summons, there are also very limited characters and collab characters. So I would personally save my Moon Tears and spend other tickets!"
   },
 
   summonTypes: [
