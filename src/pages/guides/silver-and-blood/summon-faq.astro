@@ -1,0 +1,114 @@
+---
+import SilverAndBloodLayout from '../../../layouts/silver-and-blood/Layout.astro';
+import { summonFaqData } from '../../../data/silver-and-blood/summon-faq.js';
+
+// Import CSS
+import '../../../styles/games/silver-and-blood/sab-summon-faq.css';
+
+const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq } = summonFaqData;
+---
+
+<SilverAndBloodLayout 
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+>
+  <!-- Page Content -->
+  <section class="content-section">
+    <h2 class="section-title">Summon System Guide</h2>
+    
+    <!-- Introduction -->
+    <div class="faq-intro">
+      <p>{intro.text}</p>
+    </div>
+
+    <!-- Summon Types -->
+    <div class="faq-section">
+      <h3 class="faq-section-title">💎 Summon Types</h3>
+      
+      {summonTypes.map(type => (
+        <div class="faq-card">
+          <h4>{type.title}</h4>
+          <p><strong>Cost:</strong> {type.cost}</p>
+          <p><strong>Total SSR Rate:</strong> {type.totalSSRRate}</p>
+          <ul>
+            {type.details.map(detail => (
+              <li>{detail}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Pity System -->
+    <div class="faq-section">
+      <h3 class="faq-section-title">🎯 Pity System</h3>
+      
+      <div class="pity-info">
+        {pitySystem.map(pity => (
+          <div class="pity-card">
+            <h4>{pity.title}</h4>
+            <p><strong>{pity.pullCount}</strong> - Guaranteed SSR character</p>
+            <p>{pity.description}</p>
+            <p>{pity.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Currency Guide -->
+    <div class="faq-section">
+      <h3 class="faq-section-title">💰 Summon Currency & Rewards</h3>
+      
+      <div class="currency-grid">
+        {currencies.map(currency => (
+          <div class="currency-card">
+            {currency.image ? (
+              <div class="currency-image-container">
+                <img 
+                  src={currency.image} 
+                  alt={currency.title}
+                  class="currency-image"
+                  loading="lazy"
+                />
+              </div>
+            ) : (
+              <div class="currency-icon">{currency.icon}</div>
+            )}
+            <h4>{currency.title}</h4>
+            <p>{currency.description}</p>
+            <p><strong>Use:</strong> {currency.use}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Selection System -->
+    <div class="faq-section">
+      <h3 class="faq-section-title">🎯 Selection System</h3>
+      
+      <div class="faq-card">
+        <h4>How It Works</h4>
+        <p><strong>Unlock Requirement:</strong> {selectionSystem.unlockRequirement}</p>
+        <p><strong>Selection Process:</strong> {selectionSystem.selectionProcess}</p>
+        <p><strong>Effect:</strong> {selectionSystem.effect}</p>
+        <p><strong>Important:</strong> {selectionSystem.note}</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h3 class="faq-section-title">❓ Frequently Asked Questions</h3>
+      
+      <div class="faq-items">
+        {faq.map(item => (
+          <div class="faq-item">
+            <h4>Q: {item.question}</h4>
+            <p>A: {item.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </section>
+</SilverAndBloodLayout>

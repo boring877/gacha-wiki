@@ -1,0 +1,262 @@
+/* Silver and Blood Summon FAQ Styles */
+
+/* FAQ Specific Styles */
+.faq-intro {
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(220, 53, 69, 0.1));
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid #dc3545;
+  margin-bottom: 2rem;
+}
+
+.faq-intro p {
+  margin: 0;
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.faq-section {
+  margin-bottom: 3rem;
+}
+
+.faq-section-title {
+  color: #f0f0f0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #dc3545;
+}
+
+.faq-card {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #3a3a3a;
+  margin-bottom: 1rem;
+}
+
+.faq-card h4 {
+  color: #dc3545;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.faq-card p {
+  color: #e0e0e0;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.faq-card strong {
+  color: #c0c0c0;
+}
+
+.faq-card ul {
+  color: #e0e0e0;
+  padding-left: 1.2rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+}
+
+.faq-card li {
+  margin-bottom: 0.5rem;
+}
+
+/* Pity System */
+.pity-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.pity-card {
+  background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(192, 192, 192, 0.1));
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  text-align: center;
+}
+
+.pity-card h4 {
+  color: #dc3545;
+  font-size: 1.3rem;
+  margin: 0 0 1rem 0;
+}
+
+.pity-card p {
+  color: #e0e0e0;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+/* Currency Grid */
+.currency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.currency-card {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #3a3a3a;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.currency-card:hover {
+  transform: translateY(-2px);
+  border-color: #c0c0c0;
+}
+
+.currency-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.currency-image-container {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+  border: 2px solid rgba(192, 192, 192, 0.2);
+  transition: all 0.3s ease;
+}
+
+.currency-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.currency-card:hover .currency-image-container {
+  border-color: #dc3545;
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.5);
+}
+
+.currency-card:hover .currency-image {
+  transform: scale(1.1);
+}
+
+.currency-card h4 {
+  color: #f0f0f0;
+  margin: 0 0 1rem 0;
+}
+
+.currency-card p {
+  color: #b0b0b0;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.currency-card strong {
+  color: #c0c0c0;
+}
+
+/* Strategy Cards */
+.strategy-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.strategy-card {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #3a3a3a;
+  border-left: 4px solid #c0c0c0;
+}
+
+.strategy-card h4 {
+  color: #c0c0c0;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.strategy-card ul {
+  color: #e0e0e0;
+  padding-left: 1.2rem;
+  line-height: 1.6;
+}
+
+.strategy-card li {
+  margin-bottom: 0.5rem;
+}
+
+/* FAQ Items */
+.faq-items {
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-item {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #3a3a3a;
+}
+
+.faq-item h4 {
+  color: #dc3545;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.faq-item p {
+  color: #e0e0e0;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .pity-info,
+  .currency-grid,
+  .strategy-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .faq-section-title {
+    font-size: 1.3rem;
+  }
+  
+  .faq-card,
+  .pity-card,
+  .currency-card,
+  .strategy-card,
+  .faq-item {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-intro,
+  .faq-card,
+  .pity-card,
+  .currency-card,
+  .strategy-card,
+  .faq-item {
+    padding: 1rem;
+  }
+  
+  .faq-section-title {
+    font-size: 1.2rem;
+  }
+  
+  .currency-icon {
+    font-size: 1.5rem;
+  }
+
+  .currency-image-container {
+    width: 60px;
+    height: 60px;
+  }
+}

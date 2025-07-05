@@ -71,6 +71,15 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: "active"
     },
     {
+      id: "summon-faq",
+      title: "Summon FAQ",
+      emoji: "💎",
+      description: "Complete guide to summoning, rates, pity system, and strategies.",
+      url: "/guides/silver-and-blood/summon-faq/",
+      category: "guides",
+      status: "active"
+    },
+    {
       id: "updates",
       title: "Updates", 
       emoji: "🔧",
