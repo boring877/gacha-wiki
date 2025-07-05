@@ -1,0 +1,440 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import SilverAndBloodQuickNav from '../../components/silver-and-blood/SilverAndBloodQuickNav.astro';
+
+// Import only essential CSS files
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+
+export interface Props {
+	title: string;
+	description?: string;
+	gameTitle?: string;
+	data: any;
+}
+
+const { title, description, gameTitle, data } = Astro.props;
+const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq } = data;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description || ""} />
+		<meta name="keywords" content={meta.keywords} />
+		<meta name="author" content="GachaWiki" />
+		<meta name="robots" content="index, follow" />
+		
+		<meta property="og:title" content={meta.ogTitle} />
+		<meta property="og:description" content={meta.ogDescription} />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+		
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={meta.ogTitle} />
+		<meta name="twitter:description" content={meta.ogDescription} />
+		
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="theme-color" content="#8B0000" />
+		
+		<script type="application/ld+json">
+			{JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "Guide",
+				"name": meta.title,
+				"description": meta.description,
+				"about": {
+					"@type": "VideoGame",
+					"name": "Silver and Blood"
+				},
+				"publisher": {
+					"@type": "Organization",
+					"name": "GachaWiki"
+				}
+			})}
+		</script>
+	</head>
+	<body>
+		<div class="page-wrapper">
+			<Header />
+			<MobileMenu />
+			
+			<main class="main-content">
+				<!-- Title Section -->
+				{gameTitle && (
+					<section class="title-section">
+						<h1 class="page-title">{gameTitle}</h1>
+						<DecorativeLines />
+					</section>
+				)}
+				
+				<!-- Navigation -->
+				<SilverAndBloodQuickNav currentPath={Astro.url.pathname} />
+				
+				<!-- Content -->
+				<div class="content-container">
+					<div class="summon-faq-container">
+						<div class="intro-section">
+							<p>{intro.text}</p>
+						</div>
+
+						<div class="section">
+							<h2 class="section-title">💎 Summon Types</h2>
+							{summonTypes.map(type => (
+								<div class="card">
+									<h4>{type.title}</h4>
+									<p><strong>Cost:</strong> {type.cost}</p>
+									<p><strong>Total SSR Rate:</strong> {type.totalSSRRate}</p>
+									<ul>
+										{type.details.map(detail => (
+											<li>{detail}</li>
+										))}
+									</ul>
+								</div>
+							))}
+						</div>
+
+						<div class="section">
+							<h2 class="section-title">🎯 Pity System</h2>
+							<div class="pity-grid">
+								{pitySystem.map(pity => (
+									<div class="pity-card">
+										<h4>{pity.title}</h4>
+										<p><strong>{pity.pullCount}</strong> - Guaranteed SSR character</p>
+										<p>{pity.description}</p>
+										<p>{pity.note}</p>
+									</div>
+								))}
+							</div>
+						</div>
+
+						<div class="section">
+							<h2 class="section-title">💰 Summon Currency & Rewards</h2>
+							<div class="currency-grid">
+								{currencies.map(currency => (
+									<div class="currency-card">
+										{currency.image ? (
+											<img 
+												src={currency.image} 
+												alt={currency.title}
+												class="currency-image"
+												loading="lazy"
+											/>
+										) : (
+											<div class="currency-icon">{currency.icon}</div>
+										)}
+										<h4>{currency.title}</h4>
+										<p>{currency.description}</p>
+										<p><strong>Use:</strong> {currency.use}</p>
+									</div>
+								))}
+							</div>
+						</div>
+
+						<div class="section">
+							<h2 class="section-title">🎯 Selection System</h2>
+							<div class="card">
+								<h4>How It Works</h4>
+								<p><strong>Unlock Requirement:</strong> {selectionSystem.unlockRequirement}</p>
+								<p><strong>Selection Process:</strong> {selectionSystem.selectionProcess}</p>
+								<p><strong>Effect:</strong> {selectionSystem.effect}</p>
+								<p><strong>Important:</strong> {selectionSystem.note}</p>
+							</div>
+						</div>
+
+						<div class="section">
+							<h2 class="section-title">❓ Frequently Asked Questions</h2>
+							<div class="faq-grid">
+								{faq.map(item => (
+									<div class="faq-item">
+										<h4>Q: {item.question}</h4>
+										<p>A: {item.answer}</p>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			
+			<Footer />
+		</div>
+	</body>
+</html>
+
+<style>
+	body {
+		background: var(--bg-dark);
+		color: var(--text-primary);
+		min-height: 100vh;
+		margin: 0;
+		padding: 0;
+		font-family: 'Inter', sans-serif;
+	}
+	
+	.page-wrapper {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.main-content {
+		flex: 1;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	
+	.title-section {
+		text-align: center;
+		margin-bottom: 3rem;
+		padding: 2rem 0;
+	}
+	
+	.page-title {
+		font-family: var(--font-display);
+		font-size: 3rem;
+		font-weight: 700;
+		background: linear-gradient(135deg, #c0c0c0, #dc3545);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		margin: 0 0 2rem 0;
+	}
+	
+	.content-container {
+		margin-top: 2rem;
+	}
+	
+	.summon-faq-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0;
+	}
+	
+	.intro-section {
+		background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+		padding: 2rem;
+		border-radius: 16px;
+		border: 2px solid #dc2626;
+		margin-bottom: 3rem;
+		text-align: center;
+	}
+	
+	.intro-section p {
+		color: #f8f9fa;
+		font-size: 1.1rem;
+		line-height: 1.7;
+		margin: 0;
+	}
+	
+	.section {
+		margin-bottom: 3rem;
+	}
+	
+	.section-title {
+		color: #f8f9fa;
+		font-size: 2rem;
+		font-weight: 700;
+		margin-bottom: 2rem;
+		border-bottom: 3px solid #dc2626;
+		padding-bottom: 0.75rem;
+	}
+	
+	.card {
+		background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+		border: 2px solid #374151;
+		border-radius: 16px;
+		padding: 2rem;
+		margin-bottom: 1.5rem;
+		transition: transform 0.3s ease, border-color 0.3s ease;
+	}
+	
+	.card:hover {
+		transform: translateY(-2px);
+		border-color: #dc2626;
+	}
+	
+	.card h4 {
+		color: #f8f9fa;
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+	
+	.card p {
+		color: #e5e7eb;
+		line-height: 1.7;
+		margin: 0.5rem 0;
+	}
+	
+	.card strong {
+		color: #f8f9fa;
+	}
+	
+	.card ul {
+		color: #e5e7eb;
+		padding-left: 1.5rem;
+		margin: 1rem 0;
+	}
+	
+	.card li {
+		margin-bottom: 0.5rem;
+		line-height: 1.6;
+	}
+	
+	.currency-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+	
+	.currency-card {
+		background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(40, 40, 40, 0.9));
+		border: 2px solid #6b7280;
+		border-radius: 16px;
+		padding: 2rem;
+		text-align: center;
+		transition: transform 0.3s ease, border-color 0.3s ease;
+	}
+	
+	.currency-card:hover {
+		transform: translateY(-2px);
+		border-color: #dc2626;
+	}
+	
+	.currency-card h4 {
+		color: #f8f9fa;
+		font-size: 1.25rem;
+		margin-bottom: 1rem;
+	}
+	
+	.currency-card p {
+		color: #e5e7eb;
+		line-height: 1.6;
+		margin: 0.5rem 0;
+	}
+	
+	.currency-image {
+		width: 80px;
+		height: 80px;
+		object-fit: contain;
+		margin-bottom: 1rem;
+	}
+	
+	.currency-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.pity-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+	
+	.pity-card {
+		background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(192, 192, 192, 0.1));
+		border: 2px solid rgba(220, 53, 69, 0.3);
+		border-radius: 16px;
+		padding: 2rem;
+		text-align: center;
+	}
+	
+	.pity-card h4 {
+		color: #dc2626;
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+	}
+	
+	.pity-card p {
+		color: #e5e7eb;
+		line-height: 1.6;
+		margin: 0.5rem 0;
+	}
+	
+	.faq-grid {
+		display: grid;
+		gap: 1.5rem;
+		margin-top: 2rem;
+	}
+	
+	.faq-item {
+		background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+		border: 2px solid #374151;
+		border-radius: 16px;
+		padding: 2rem;
+		transition: border-color 0.3s ease;
+	}
+	
+	.faq-item:hover {
+		border-color: #dc2626;
+	}
+	
+	.faq-item h4 {
+		color: #dc2626;
+		font-size: 1.25rem;
+		margin-bottom: 1rem;
+	}
+	
+	.faq-item p {
+		color: #e5e7eb;
+		line-height: 1.7;
+		margin: 0;
+	}
+	
+	@media (max-width: 768px) {
+		.main-content {
+			padding: 1rem;
+		}
+		
+		.page-title {
+			font-size: 2rem;
+		}
+		
+		.section-title {
+			font-size: 1.5rem;
+		}
+		
+		.card, .currency-card, .pity-card, .faq-item {
+			padding: 1.5rem;
+		}
+		
+		.currency-grid, .pity-grid {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.main-content {
+			padding: 0.5rem;
+		}
+		
+		.page-title {
+			font-size: 1.75rem;
+		}
+		
+		.intro-section, .card, .currency-card, .pity-card, .faq-item {
+			padding: 1rem;
+		}
+		
+		.currency-image {
+			width: 60px;
+			height: 60px;
+		}
+		
+		.currency-icon {
+			font-size: 2.5rem;
+		}
+	}
+</style>
