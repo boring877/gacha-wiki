@@ -12,7 +12,7 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/images/games/zone-nova/zonenova1.jpg' } = Astro.props;
+const { title, description, image = '/images/about.jpg' } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -35,7 +35,7 @@ const { title, description, image = '/images/games/zone-nova/zonenova1.jpg' } = 
 <link rel="dns-prefetch" href="https://vitals.vercel-analytics.com" />
 
 <!-- Critical image preload -->
-	<link rel="preload" href="/images/games/zone-nova/zonenova1.jpg" as="image" type="image/jpeg" fetchpriority="high" />
+	<link rel="preload" href="/images/about.jpg" as="image" type="image/jpeg" fetchpriority="high" />
 
 <!-- Critical CSS inline for above-the-fold content and CLS prevention -->
 <style>
