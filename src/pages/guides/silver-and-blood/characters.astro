@@ -157,7 +157,7 @@ import {
 							</tr>
 						</thead>
 						<tbody id="character-table-body">
-							{SILVER_AND_BLOOD_CHARACTERS.map((char, idx) => (
+							{SILVER_AND_BLOOD_CHARACTERS.sort((a, b) => a.name.localeCompare(b.name)).map((char, idx) => (
                 <tr data-character-id={char.id} data-url={`/guides/silver-and-blood/characters/${char.id}`} style="cursor:pointer;">
                   <td>{idx + 1}</td>
                   <td><img src={char.image} alt={char.name} class="character-img" loading="lazy"/></td>
@@ -178,7 +178,7 @@ import {
 				</div>
 				
 				<div class="mobile-card-view" id="mobile-cards-container">
-					{SILVER_AND_BLOOD_CHARACTERS.map(char => (
+					{SILVER_AND_BLOOD_CHARACTERS.sort((a, b) => a.name.localeCompare(b.name)).map(char => (
             <div class="mobile-character-card" data-character-id={char.id} data-url={`/guides/silver-and-blood/characters/${char.id}`} style="cursor:pointer;">
               <div class="mobile-card-header">
                 <img src={char.image} alt={char.name} class="character-img"/>
@@ -267,7 +267,7 @@ import {
 			if (factionFilter) factionFilter.addEventListener('change', filterTable);
 			if (moonphaseFilter) moonphaseFilter.addEventListener('change', filterTable);
 
-			// Store the original order immediately
+			// Store the original order immediately (already sorted alphabetically)
 			const tbody = document.getElementById('character-table-body');
 			let originalOrder = [];
 			if (tbody) {

@@ -78,6 +78,15 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       url: "/guides/silver-and-blood/events/",
       category: "guides",
       status: "active"
+    },
+    {
+      id: "waifu-cutscenes",
+      title: "Waifu CutScenes",
+      emoji: "💕",
+      description: "Beautiful character cutscenes and memorable moments featuring beloved Silver and Blood characters.",
+      url: "/guides/silver-and-blood/waifu-cutscenes/",
+      category: "guides",
+      status: "active"
     }
   ]
 };

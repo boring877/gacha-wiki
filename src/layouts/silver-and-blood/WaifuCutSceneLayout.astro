@@ -1,0 +1,117 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import SilverAndBloodSimpleNav from '../../components/silver-and-blood/SilverAndBloodSimpleNav.astro';
+
+// Import CSS files
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-waifu-cutscene.css';
+
+export interface Props {
+	title: string;
+	description?: string;
+	gameTitle?: string;
+}
+
+const { title, description, gameTitle } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description || ""} />
+		<meta name="keywords" content="Silver and Blood, waifu, cutscenes, character scenes, visual novel, anime cutscenes, character interactions" />
+		<meta name="author" content="GachaWiki" />
+		<meta name="robots" content="index, follow" />
+		
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description || ""} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+		
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description || ""} />
+		
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="theme-color" content="#8B0000" />
+		
+		<slot name="head" />
+	</head>
+	<body class="sab-body">
+		<!-- Background layers for visual depth -->
+		<div class="bg-layer bg-primary"></div>
+		<div class="bg-layer bg-accent-1"></div>
+		<div class="bg-layer bg-accent-2"></div>
+		<div class="bg-layer bg-accent-3"></div>
+		
+		<div class="sab-content">
+			<Header />
+			<MobileMenu />
+			
+			<div class="sab-container">
+				<main class="sab-main">
+					<!-- Title Section -->
+					{gameTitle && (
+						<section class="title-only-section">
+							<h1 class="title-only-heading">
+								{gameTitle}
+							</h1>
+							
+							<DecorativeLines />
+						</section>
+					)}
+					
+					<!-- Silver and Blood Simple Navigation -->
+					<SilverAndBloodSimpleNav currentPath={Astro.url.pathname} />
+					
+					<!-- Waifu CutScene Content Area -->
+					<div class="waifu-cutscene-content">
+						<section class="waifu-cutscene-section">
+							<div class="waifu-cutscene-header">
+							</div>
+							
+							<!-- Content Slot -->
+							<div class="cutscene-content">
+								<slot />
+							</div>
+						</section>
+					</div>
+				</main>
+			</div>
+			
+			<Footer />
+		</div>
+
+		<script is:inline>
+			// Add any interactive functionality for cutscene viewing
+			document.addEventListener('DOMContentLoaded', function() {
+				// Image gallery functionality
+				const cutsceneImages = document.querySelectorAll('.cutscene-image');
+				
+				cutsceneImages.forEach(img => {
+					img.style.cursor = 'pointer';
+					img.addEventListener('click', function() {
+						// Open image in new tab for full view
+						window.open(this.src, '_blank');
+					});
+				});
+				
+				// Video controls if any
+				const cutsceneVideos = document.querySelectorAll('.cutscene-video');
+				cutsceneVideos.forEach(video => {
+					video.addEventListener('loadstart', function() {
+						console.log('Loading cutscene video...');
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

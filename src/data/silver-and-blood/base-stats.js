@@ -620,5 +620,23 @@ export const baseStats = {
     bloodPower: 20022
   },
 
+  // Dalcarlo
+  'dalcarlo': {
+    hp: 147000,           // 147K
+    atk: 10072,
+    pDef: 3565,
+    mDef: 3747,
+    atkSpd: 0,            // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5,          // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20687
+  },
+
   // --- add more characters below ---
 }; 

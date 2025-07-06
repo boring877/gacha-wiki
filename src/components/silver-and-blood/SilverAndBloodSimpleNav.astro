@@ -12,7 +12,8 @@ const quickLinks = [
 	{ name: 'Characters', href: '/guides/silver-and-blood/characters/' },
 	{ name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
 	{ name: 'Dutchman\'s Revenge', href: '/guides/silver-and-blood/dutchmans-revenge/' },
-	{ name: 'Events', href: '/guides/silver-and-blood/events/' }
+	{ name: 'Events', href: '/guides/silver-and-blood/events/' },
+	{ name: 'Waifu Gallery', href: '/guides/silver-and-blood/waifu-cutscenes/' }
 ];
 
 // Function to check if a link is active
@@ -89,25 +90,31 @@ function isActiveLink(href: string): boolean {
 	.nav-links {
 		padding: 1.5rem;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 		gap: 1rem;
 	}
 
 	.nav-link {
-		display: block;
-		padding: 1rem 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem 1rem;
 		color: #e8e8e8;
 		text-decoration: none;
 		border-radius: 12px;
 		font-family: 'Inter', sans-serif;
 		font-weight: 500;
-		font-size: 1rem;
+		font-size: 0.9rem;
 		transition: all 0.3s ease;
 		border: 1px solid rgba(220, 38, 38, 0.2);
 		position: relative;
 		overflow: hidden;
 		text-align: center;
 		background: rgba(220, 38, 38, 0.05);
+		height: 60px;
+		line-height: 1.2;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 
 	.nav-link::before {
@@ -144,6 +151,29 @@ function isActiveLink(href: string): boolean {
 
 	.nav-link.active::before {
 		display: none;
+	}
+
+	/* Responsive layout for smaller screens */
+	@media (max-width: 1200px) {
+		.nav-links {
+			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+			gap: 0.8rem;
+		}
+		
+		.nav-link {
+			font-size: 0.85rem;
+			padding: 0.8rem 0.5rem;
+		}
+	}
+
+	@media (max-width: 900px) {
+		.nav-links {
+			grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+		}
+		
+		.nav-link {
+			font-size: 0.8rem;
+		}
 	}
 
 	/* Mobile responsive with Zone Nova optimizations */
