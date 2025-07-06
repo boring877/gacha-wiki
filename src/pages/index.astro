@@ -3,660 +3,1102 @@ import HomeLayout from '../layouts/HomeLayout.astro';
 import DecorativeLines from '../components/DecorativeLines.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getActiveGames } from '../data/games';
+import { getClockGames, getShowcaseGames } from '../data/homepage-games.js';
+
+// Get games configuration for use in client-side scripts
+const clockGames = getClockGames();
+const showcaseGames = getShowcaseGames();
 ---
 
 <HomeLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<!-- Critical resource hints -->
-	<link rel="preload" href="/images/games/zone-nova/zonenova1.jpg" as="image" type="image/jpeg" />
+	{clockGames.map(game => (
+		<link rel="preload" href={game.image} as="image" type="image/jpeg" />
+	))}
 	<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<!-- Performance hints -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="prefetch" href="/guides/zone-nova/" />
+	<link rel="prefetch" href="/guides/silver-and-blood/" />
 	
 	<!-- Main Content Area -->
-	<main style="max-width: 50rem; margin: 0 auto; padding: 8rem 2rem 4rem 2rem; min-height: 100vh; contain: layout style;">
-		<!-- Games Section - Option 5: Featured Showcase Style -->
-		<section style="margin-bottom: 6rem; contain: layout style;">
-			<div style="text-align: center; margin-bottom: 3rem;">				<h2 style="font-family: var(--font-display); font-size: var(--text-4xl); font-weight: 700; color: var(--text-inverse); margin: 0 0 2rem 0; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;" class="title-hover">
-					Gacha Wikis Library
-				</h2>
-			</div>
-
-			<!-- Featured Game - Zone Nova -->
-			<div style="margin-bottom: 3rem;">
-				<div style="background: var(--bg-primary); border-radius: 20px; overflow: hidden; border: 1px solid var(--amber-glow); box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2); will-change: transform, box-shadow; transform: translateZ(0); contain: layout style paint;" class="featured-card">
-					<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit; display: block;">
-						
-						<!-- Featured Header -->
-						<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); padding: 1rem 2rem; text-align: center; min-height: 56px; display: flex; align-items: center; justify-content: center;">
-							<span style="color: white; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-								<span style="font-size: 1.2rem;" aria-hidden="true">⭐</span>
-								FEATURED GAME
-							</span>
-						</div>
-
-						<!-- Content Area -->
-						<div style="padding: 2rem; display: flex; align-items: center; gap: 2rem; min-height: 220px;">
-									<!-- Game Image -->
-							<div style="flex-shrink: 0;">								<div style="width: 10rem; height: 10rem; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
-									<!-- Fixed placeholder to prevent CLS -->
-									<div style="width: 160px; height: 160px; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0; border-radius: 16px;"></div>
-									<img 
-										src="/images/games/zone-nova/zonenova1.jpg" 
-										alt="Zone Nova" 
-										width={160} 
-										height={160}
-										style="width: 160px; height: 160px; object-fit: cover; position: relative; z-index: 1; border-radius: 16px;"
-									/>
-								</div>
-							</div>							<!-- Game Info -->
-							<div style="flex: 1; min-height: 180px;">
-								<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem 0; line-height: 1.2;">
-									Zone Nova
-								</h3>
-
-								<!-- Active Rifts Section -->
-								<div style="background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border-radius: 12px; padding: 1rem; margin: 0 0 1rem 0; border-left: 4px solid var(--teal-crystal);">
-									<div style="font-size: 0.9rem; font-weight: 600; color: var(--amber-glow); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
-										<span>🌀</span> Active Rifts
-									</div>
-									<div style="display: flex; flex-direction: column; gap: 0.5rem;">
-										<a href="/guides/zone-nova/rifts/rift-tide-5/" style="text-decoration: none; color: inherit;">
-											<div style="background: rgba(138, 43, 226, 0.15); padding: 0.75rem; border-radius: 6px; min-height: 3.5rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(138, 43, 226, 0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.background='rgba(138, 43, 226, 0.25)'; this.style.borderColor='rgba(138, 43, 226, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(138, 43, 226, 0.15)'; this.style.borderColor='rgba(138, 43, 226, 0.2)'">
-												<div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">🔥 Rift Tide V</div>
-												<div style="color: #8a2be2; font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem;">27 Days Left</div>
-											</div>
-										</a>
-										<a href="/guides/zone-nova/rifts/rift-tide-4/" style="text-decoration: none; color: inherit;">
-											<div style="background: rgba(0, 172, 193, 0.15); padding: 0.75rem; border-radius: 6px; min-height: 3.5rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(0, 172, 193, 0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.background='rgba(0, 172, 193, 0.25)'; this.style.borderColor='rgba(0, 172, 193, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(0, 172, 193, 0.15)'; this.style.borderColor='rgba(0, 172, 193, 0.2)'">
-												<div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">Rift Tide IV</div>
-												<div style="color: var(--teal-crystal); font-weight: 600; font-family: 'Courier New', monospace; font-size: 0.75rem;">13 Days Left</div>
-											</div>
-										</a>
-										<a href="/guides/zone-nova/characters/athena/" style="text-decoration: none; color: inherit;">
-											<div style="background: rgba(255, 77, 77, 0.15); padding: 0.75rem; border-radius: 6px; min-height: 3.5rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(255, 77, 77, 0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.background='rgba(255, 77, 77, 0.25)'; this.style.borderColor='rgba(255, 77, 77, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 77, 77, 0.15)'; this.style.borderColor='rgba(255, 77, 77, 0.2)'">
-												<div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">✨ New Character</div>
-												<div style="color: var(--rose-quartz); font-weight: 600; font-size: 0.75rem;">Athena Available</div>
-											</div>
-										</a>
-									</div>
-								</div>
-
-								<p style="color: var(--amber-glow); font-size: 0.9rem; font-weight: 500; margin: 0 0 2rem 0;">
-									Last updated: {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-								</p>
-										<!-- Action Button -->
-								<a href="/guides/zone-nova/" style="text-decoration: none; color: inherit; display: inline-block;">
-									<div style="background: var(--amber-glow); color: white; padding: 1rem 2rem; border-radius: 25px; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.75rem; will-change: transform, background-color; transform: translateZ(0); cursor: pointer; min-height: 48px;" class="action-button">
-										Explore Zone Nova
-										<span style="font-size: 1.25rem;" aria-hidden="true">→</span>
-									</div>
-								</a>
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>			<!-- Other Games Section -->
-			<div style="text-align: center; margin-bottom: 2.5rem; margin-top: 2rem;">
-				<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 600; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; contain: layout style paint;">
-					More Games Coming Soon
-				</h3>
-			</div>
-
-			<!-- Coming Soon Grid -->
-			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+	<main class="home-main">
+		<!-- Hero Section with Server Reset Timer -->
+		<section class="hero-section">
+			<div class="hero-bg-animation"></div>
+			<div class="hero-content">
+				<h1 class="hero-title">
+					<span class="hero-text-gradient">Gacha Wikis</span>
+					<span class="hero-subtitle">Your Premium Game Resource</span>
+				</h1>
 				
-				<!-- Coming Soon Card 1 -->
-				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--mocha-mousse); text-align: center; opacity: 0.8; will-change: transform, opacity; transform: translateZ(0); min-height: 180px; contain: layout style;" class="coming-soon-card">
-					<div style="width: 4rem; height: 4rem; border-radius: 12px; background: linear-gradient(135deg, var(--mocha-mousse), var(--amber-glow)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
-						<span style="font-size: 2rem;" aria-hidden="true">🎮</span>
-					</div>
-					<h4 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin: 0 0 0.75rem 0;">Coming Soon</h4>
-					<div style="background: var(--mocha-mousse); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">
-						In Development
-					</div>
-				</div>
-
-				<!-- Coming Soon Card 2 -->
-				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--rose-quartz); text-align: center; opacity: 0.8; will-change: transform, opacity; transform: translateZ(0); min-height: 180px; contain: layout style;" class="coming-soon-card">
-					<div style="width: 4rem; height: 4rem; border-radius: 12px; background: linear-gradient(135deg, var(--rose-quartz), var(--teal-crystal)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
-						<span style="font-size: 2rem;" aria-hidden="true">⏳</span>
-					</div>
-					<h4 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin: 0 0 0.75rem 0;">Coming Soon</h4>
-					<div style="background: var(--rose-quartz); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">
-						Stay Tuned
-					</div>
-				</div>
-
-				<!-- Coming Soon Card 3 -->
-				<div style="background: var(--bg-primary); border-radius: 16px; padding: 2rem; border: 1px solid var(--teal-crystal); text-align: center; opacity: 0.8; will-change: transform, opacity; transform: translateZ(0); min-height: 180px; contain: layout style;" class="coming-soon-card">
-					<div style="width: 4rem; height: 4rem; border-radius: 12px; background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
-						<span style="font-size: 2rem;" aria-hidden="true">🔮</span>
-					</div>
-					<h4 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin: 0 0 0.75rem 0;">Coming Soon</h4>
-					<div style="background: var(--teal-crystal); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">
-						Future Release
+				<!-- Beautiful Rotating Clock -->
+				<div class="master-clock-container">
+					<div class="master-clock" id="masterClock">
+						<!-- Clock Background Animation -->
+						<div class="clock-bg-animation"></div>
+						
+						<!-- Game Info Header -->
+						<div class="clock-header">
+							<div class="game-image-container" id="clockGameImageContainer">
+								<img class="game-image" id="clockGameImage" src="/images/games/zone-nova/zonenova1.jpg" alt="Zone Nova" width="80" height="80" />
+							</div>
+							<div class="game-info">
+								<h3 class="game-name" id="clockGameName">Zone Nova</h3>
+								<div class="game-status">Server Reset - Dailies • Events • Grinds</div>
+							</div>
+						</div>
+						
+						<!-- Main Clock Display -->
+						<div class="clock-display">
+							<div class="time-unit-group">
+								<div class="time-unit">
+									<span class="time-value" id="clockHours">--</span>
+									<span class="time-label">Hours</span>
+								</div>
+								<div class="time-separator">:</div>
+								<div class="time-unit">
+									<span class="time-value" id="clockMinutes">--</span>
+									<span class="time-label">Minutes</span>
+								</div>
+								<div class="time-separator">:</div>
+								<div class="time-unit">
+									<span class="time-value" id="clockSeconds">--</span>
+									<span class="time-label">Seconds</span>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Timer Description -->
+						<div class="timer-description-section">
+							<div class="timer-main-label">Time until server reset</div>
+							<div class="timer-details">Daily quests • Event rewards • Shop refresh • Stamina reset</div>
+							<div class="timer-reset-time">Resets at <span id="resetTimeDisplay">5:00</span> UTC</div>
+						</div>
+						
+						<!-- Game Navigation -->
+						<div class="clock-navigation">
+							<button class="nav-btn prev-btn" id="prevGame" aria-label="Previous game">
+								<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+									<path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</button>
+							
+							<div class="game-indicators" id="gameIndicators">
+								<!-- Dots will be generated by JavaScript -->
+							</div>
+							
+							<button class="nav-btn next-btn" id="nextGame" aria-label="Next game">
+								<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+									<path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</button>
+						</div>
+						
+						<!-- Auto-rotation toggle -->
+						<div class="clock-controls">
+							<button class="rotation-toggle" id="rotationToggle" aria-label="Toggle auto-rotation">
+								<svg class="play-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+									<path d="M3 2L11 7L3 12V2Z" fill="currentColor"/>
+								</svg>
+								<svg class="pause-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" style="display: none;">
+									<rect x="3" y="2" width="2" height="10" fill="currentColor"/>
+									<rect x="9" y="2" width="2" height="10" fill="currentColor"/>
+								</svg>
+								<span class="rotation-text">Auto-rotate</span>
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- "Built by" Section -->
-		<section style="text-align: center; margin-bottom: 6rem; contain: layout style;">
-			<div style="opacity: 0; transform: translateY(30px);" class="fade-in-section">
-				<p style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; line-height: 1.4; max-width: 42rem; margin: 0 auto; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(255, 183, 77, 0.3);">
-					Built by someone who's spent way too much time on gacha games...
-				</p>
-			</div>
-		</section>
-
-		<!-- Floating Games Modal -->
-		<div id="gamesModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">
-			<div style="display: flex; align-items: center; justify-content: center; height: 100%; padding: 2rem;">
-				<div style="background: var(--bg-primary); border-radius: 20px; padding: 2rem; max-width: 60rem; width: 100%; max-height: 80vh; overflow-y: auto; border: 1px solid var(--amber-glow); box-shadow: 0 20px 50px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s ease;" id="modalContent">
+		<!-- Auto-Rotating Games Showcase -->
+		<section class="auto-showcase">
+			<div class="showcase-container">
+				<div class="showcase-content" id="showcaseContent">
+					<!-- Image Section -->
+					<div class="showcase-image-section">
+						<img class="showcase-game-image" id="showcaseGameImage" src={showcaseGames[0]?.image} alt={showcaseGames[0]?.name} />
+						<div class="showcase-image-overlay"></div>
+					</div>
 					
-					<!-- Modal Header -->
-					<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-						<h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text-primary); margin: 0; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-							Choose Your Game
-						</h2>
-						<button id="closeModal" style="background: none; border: none; color: var(--text-secondary); font-size: 2rem; cursor: pointer; padding: 0.5rem; transition: color 0.2s ease;" aria-label="Close modal">
-							×
-						</button>
-					</div>
-
-										<!-- Games Grid -->
-					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-						{getActiveGames().map(game => (
-							<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--amber-glow); will-change: transform; transform: translateZ(0);" class="modal-card">
-								<a href={game.url} style="text-decoration: none; color: inherit;">
-									<div style="width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(0, 172, 193, 0.3); position: relative; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1));">
-										<!-- Fixed placeholder -->
-										<div style="width: 280px; height: 150px; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); position: absolute; top: 0; left: 0; border-radius: 12px;"></div>
-										<img 
-											src={game.image} 
-											alt={game.name} 
-											width={280} 
-											height={150}
-											loading="lazy"
-											style="width: 280px; height: 150px; object-fit: cover; position: relative; z-index: 1; border-radius: 12px;"
-										/>
-									</div>
-									<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem 0;">{game.name}</h3>
-									<p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">{game.description}</p>
-									<div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-										<span style="background: var(--amber-glow); color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;">{game.sections.length} Sections</span>
-										<span style={`background: ${game.status === 'active' ? 'var(--teal-crystal)' : 'var(--text-secondary)'}; color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;`}>
-											{game.status === 'active' ? 'Active' : 'Coming Soon'}
-										</span>
-									</div>
+					<!-- Content Section -->
+					<div class="showcase-content-section">
+						<div class="showcase-game-info">
+							<h2 class="showcase-title" id="showcaseTitle">{showcaseGames[0]?.name}</h2>
+							<p class="showcase-description" id="showcaseDescription">{showcaseGames[0]?.description}</p>
+							
+							<div class="showcase-features" id="showcaseFeatures">
+								{showcaseGames[0]?.features.map(feature => (
+									<div class="showcase-feature-tag">{feature}</div>
+								))}
+							</div>
+							
+							<div class="showcase-actions">
+								<a href={showcaseGames[0]?.url} class="showcase-btn primary" id="showcaseLink">
+									<span>Explore Wiki</span>
+									<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+										<path d="M4 10h12m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
 								</a>
 							</div>
-						))}
-					</div>
-
-						<!-- Coming Soon Cards -->
-						<div style="background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--mocha-mousse); opacity: 0.6; transform: translateZ(0); min-height: 250px;">
-							<div style="width: 100%; height: 150px; border-radius: 12px; background: linear-gradient(135deg, var(--mocha-mousse), var(--amber-glow)); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-								<span style="font-size: 3rem;" aria-hidden="true">🚧</span>
-							</div>
-							<h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem 0;">Coming Soon</h3>
-							<p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">More games in development</p>
-							<span style="background: var(--mocha-mousse); color: white; padding: 4px 8px; border-radius: 8px; font-size: 0.7rem;">Soon™</span>
 						</div>
-
 					</div>
+					
 				</div>
+				
 			</div>
-		</div>
+		</section>
+
 
 	</main>
 </HomeLayout>
 
 <style>
-/* Performance-optimized animations */
-@keyframes fadeInScale {
-	0% {
+/* Main Layout */
+.home-main {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0;
+	min-height: 100vh;
+	contain: layout style;
+}
+
+/* Hero Section */
+.hero-section {
+	position: relative;
+	min-height: 500px;
+	padding: 6rem 2rem 4rem 2rem;
+	overflow: hidden;
+	background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%);
+	border-bottom: 2px solid var(--amber-glow);
+}
+
+.hero-bg-animation {
+	position: absolute;
+	inset: 0;
+	background: 
+		radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),
+		radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),
+		radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent);
+	animation: heroGlow 20s ease-in-out infinite;
+}
+
+@keyframes heroGlow {
+	0%, 100% { opacity: 0.8; transform: scale(1) rotate(0deg); }
+	50% { opacity: 1; transform: scale(1.1) rotate(2deg); }
+}
+
+.hero-content {
+	position: relative;
+	z-index: 10;
+	text-align: center;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.hero-title {
+	margin-bottom: 3rem;
+	animation: fadeInUp 1s ease-out;
+}
+
+.hero-text-gradient {
+	display: block;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: clamp(3rem, 8vw, 5rem);
+	font-weight: 900;
+	line-height: 1.1;
+	background: linear-gradient(135deg, var(--amber-glow) 0%, var(--teal-crystal) 50%, var(--rose-quartz) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-shadow: 0 0 60px rgba(255, 183, 77, 0.5);
+	margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+	display: block;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: clamp(1rem, 3vw, 1.5rem);
+	font-weight: 400;
+	color: var(--text-inverse);
+	opacity: 0.9;
+	letter-spacing: 0.05em;
+}
+
+/* Master Clock Styles */
+.master-clock-container {
+	display: flex;
+	justify-content: center;
+	max-width: 900px;
+	margin: 0 auto;
+	animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.master-clock {
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(30px);
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	border-radius: 32px;
+	padding: 2rem 3rem;
+	position: relative;
+	overflow: hidden;
+	min-height: 280px;
+	width: 100%;
+	max-width: 800px;
+	transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.master-clock:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+	border-color: rgba(255, 255, 255, 0.2);
+}
+
+.clock-bg-animation {
+	position: absolute;
+	inset: -2px;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz));
+	border-radius: 32px;
+	opacity: 0;
+	transition: opacity 0.6s ease;
+	z-index: -1;
+	animation: clockRotate 20s linear infinite;
+}
+
+.master-clock:hover .clock-bg-animation {
+	opacity: 0.1;
+}
+
+@keyframes clockRotate {
+	0% { transform: rotate(0deg) scale(1); }
+	50% { transform: rotate(180deg) scale(1.05); }
+	100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Clock Header */
+.clock-header {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	margin-bottom: 2rem;
+	text-align: left;
+	justify-content: flex-start;
+}
+
+.game-image-container {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	border-radius: 20px;
+	overflow: hidden;
+	box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	flex-shrink: 0;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.game-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: opacity 0.4s ease;
+}
+
+.game-info {
+	text-align: left;
+}
+
+.game-name {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: var(--text-inverse);
+	margin: 0 0 0.5rem 0;
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.game-status {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.7);
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+/* Clock Display */
+.clock-display {
+	margin-bottom: 2rem;
+}
+
+.time-unit-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.time-unit {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.time-value {
+	font-family: 'Courier New', monospace;
+	font-size: 3.5rem;
+	font-weight: 700;
+	color: var(--text-inverse);
+	text-shadow: 0 0 30px currentColor;
+	transition: all 0.3s ease;
+	line-height: 1;
+	min-width: 2.5ch;
+	text-align: center;
+}
+
+.time-label {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.8rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.6);
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.time-separator {
+	font-family: 'Courier New', monospace;
+	font-size: 3rem;
+	font-weight: 700;
+	color: var(--text-inverse);
+	animation: blink 2s ease-in-out infinite;
+	opacity: 0.8;
+}
+
+/* Timer Description */
+.timer-description-section {
+	text-align: center;
+	margin-bottom: 1.5rem;
+	padding: 1rem 1.5rem;
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timer-main-label {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--text-inverse);
+	margin-bottom: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.timer-details {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: var(--amber-glow);
+	margin-bottom: 0.75rem;
+	line-height: 1.5;
+}
+
+.timer-reset-time {
+	font-family: 'Courier New', monospace;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+#resetTimeDisplay {
+	color: var(--teal-crystal);
+	font-weight: 700;
+}
+
+/* Clock Navigation */
+.clock-navigation {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.nav-btn {
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-inverse);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+	background: rgba(255, 255, 255, 0.2);
+	border-color: var(--amber-glow);
+	transform: scale(1.1);
+}
+
+.nav-btn:active {
+	transform: scale(0.95);
+}
+
+.game-indicators {
+	display: flex;
+	gap: 0.75rem;
+	align-items: center;
+}
+
+.indicator-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.3);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+	background: var(--amber-glow);
+	box-shadow: 0 0 12px var(--amber-glow);
+	transform: scale(1.2);
+}
+
+.indicator-dot:hover {
+	background: rgba(255, 255, 255, 0.6);
+	transform: scale(1.1);
+}
+
+/* Clock Controls */
+.clock-controls {
+	display: flex;
+	justify-content: center;
+}
+
+.rotation-toggle {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 20px;
+	padding: 0.75rem 1.25rem;
+	color: var(--text-inverse);
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.85rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.rotation-toggle:hover {
+	background: rgba(255, 255, 255, 0.15);
+	border-color: var(--amber-glow);
+	transform: translateY(-2px);
+}
+
+.rotation-toggle.active {
+	background: rgba(255, 183, 77, 0.2);
+	border-color: var(--amber-glow);
+	color: var(--amber-glow);
+}
+
+.rotation-text {
+	user-select: none;
+}
+
+.timer-display {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+	font-family: 'Courier New', monospace;
+	font-size: 2.5rem;
+	font-weight: 700;
+	color: var(--text-inverse);
+	text-shadow: 0 0 20px currentColor;
+}
+
+.timer-separator {
+	animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.3; }
+}
+
+.timer-info {
+	text-align: center;
+	font-size: 0.85rem;
+	color: var(--text-inverse);
+	opacity: 0.7;
+}
+
+/* Auto-Rotating Games Showcase */
+.auto-showcase {
+	position: relative;
+	min-height: 600px;
+	overflow: hidden;
+	background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%);
+	padding: 4rem 0;
+}
+
+.auto-showcase::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: 
+		radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),
+		radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),
+		radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent);
+	animation: heroGlow 20s ease-in-out infinite;
+	z-index: 1;
+}
+
+.showcase-container {
+	position: relative;
+	height: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+	z-index: 2;
+}
+
+.showcase-content {
+	position: relative;
+	height: 500px;
+	border-radius: 32px;
+	overflow: hidden;
+	margin: 0 2rem;
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(30px);
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 
+		0 30px 80px rgba(0, 0, 0, 0.5),
+		inset 0 1px 0 rgba(255, 255, 255, 0.2),
+		0 0 40px rgba(255, 183, 77, 0.1);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	gap: 0;
+	transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.showcase-content:hover {
+	transform: translateY(-8px);
+	box-shadow: 
+		0 40px 100px rgba(0, 0, 0, 0.6),
+		inset 0 1px 0 rgba(255, 255, 255, 0.3),
+		0 0 60px rgba(255, 183, 77, 0.2);
+	border-color: rgba(255, 183, 77, 0.3);
+}
+
+.showcase-content::after {
+	content: '';
+	position: absolute;
+	inset: -2px;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz));
+	border-radius: 32px;
+	opacity: 0;
+	transition: opacity 0.6s ease;
+	z-index: -1;
+	animation: showcaseRotate 20s linear infinite;
+}
+
+.showcase-content:hover::after {
+	opacity: 0.1;
+}
+
+@keyframes showcaseRotate {
+	0% { transform: rotate(0deg) scale(1); }
+	50% { transform: rotate(180deg) scale(1.02); }
+	100% { transform: rotate(360deg) scale(1); }
+}
+
+.showcase-image-section {
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
+	border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.showcase-game-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+	filter: brightness(0.85) contrast(1.2) saturate(1.1);
+	transform: scale(1.05);
+}
+
+.showcase-content:hover .showcase-game-image {
+	transform: scale(1.1);
+	filter: brightness(0.9) contrast(1.3) saturate(1.2);
+}
+
+.showcase-image-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.05) 0%,
+		transparent 30%,
+		rgba(28, 28, 28, 0.4) 70%,
+		rgba(28, 28, 28, 0.8) 100%
+	);
+	z-index: 2;
+	transition: all 0.6s ease;
+}
+
+.showcase-content:hover .showcase-image-overlay {
+	background: linear-gradient(
+		135deg,
+		rgba(255, 183, 77, 0.1) 0%,
+		transparent 30%,
+		rgba(28, 28, 28, 0.3) 70%,
+		rgba(28, 28, 28, 0.7) 100%
+	);
+}
+
+.showcase-content-section {
+	padding: 3rem;
+	background: rgba(255, 255, 255, 0.02);
+	backdrop-filter: blur(20px);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+	z-index: 10;
+	border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.showcase-content-section::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, rgba(255, 183, 77, 0.03), rgba(0, 172, 193, 0.03));
+	opacity: 0;
+	transition: opacity 0.6s ease;
+	z-index: -1;
+}
+
+.showcase-content:hover .showcase-content-section::before {
+	opacity: 1;
+}
+
+.showcase-game-info {
+	color: var(--text-inverse);
+}
+
+.showcase-title {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: clamp(2.5rem, 5vw, 3.5rem);
+	font-weight: 900;
+	margin-bottom: 1rem;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	background-size: 200% 200%;
+	animation: titleGradient 8s ease-in-out infinite;
+	text-shadow: 0 0 40px rgba(255, 183, 77, 0.3);
+	opacity: 0;
+	transform: translateY(30px);
+	transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+}
+
+.showcase-title::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.showcase-content:hover .showcase-title::after {
+	opacity: 0.3;
+}
+
+.showcase-title.active {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+@keyframes titleGradient {
+	0%, 100% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+}
+
+.showcase-description {
+	font-size: 1.2rem;
+	line-height: 1.6;
+	margin-bottom: 2rem;
+	opacity: 0.9;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.showcase-description.active {
+	opacity: 0.9;
+	transform: translateY(0);
+}
+
+.showcase-features {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin-bottom: 2.5rem;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+}
+
+.showcase-features.active {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.showcase-feature-tag {
+	background: rgba(255, 255, 255, 0.08);
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	padding: 0.75rem 1.5rem;
+	border-radius: 30px;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--text-inverse);
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	overflow: hidden;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	box-shadow: 
+		0 4px 15px rgba(0, 0, 0, 0.2),
+		inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.showcase-feature-tag::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	z-index: -1;
+}
+
+.showcase-feature-tag:hover {
+	background: rgba(255, 183, 77, 0.15);
+	border-color: var(--amber-glow);
+	transform: translateY(-2px);
+	box-shadow: 
+		0 8px 25px rgba(255, 183, 77, 0.3),
+		inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.showcase-feature-tag:hover::before {
+	opacity: 0.1;
+}
+
+.showcase-actions {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
+}
+
+.showcase-actions.active {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.showcase-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 1rem 2rem;
+	background: var(--amber-glow);
+	color: var(--text-primary);
+	text-decoration: none;
+	border-radius: 50px;
+	font-family: 'Space Grotesk', sans-serif;
+	font-weight: 600;
+	font-size: 1rem;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 0 4px 20px rgba(255, 183, 77, 0.3);
+}
+
+.showcase-btn:hover {
+	background: var(--primary-hover);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 30px rgba(255, 183, 77, 0.4);
+}
+
+.showcase-btn svg {
+	transition: transform 0.3s ease;
+}
+
+.showcase-btn:hover svg {
+	transform: translateX(4px);
+}
+
+
+
+/* Animations */
+@keyframes fadeInUp {
+	from {
 		opacity: 0;
-		transform: scale(0.95) translateY(20px);
+		transform: translateY(30px);
 	}
-	100% {
+	to {
 		opacity: 1;
-		transform: scale(1) translateY(0);
+		transform: translateY(0);
 	}
 }
 
-@keyframes titleGlow {
-	0% {
-		text-shadow: 0 0 10px rgba(255, 183, 77, 0.3);
-		filter: brightness(1);
-	}
-	100% {
-		text-shadow: 0 0 20px rgba(255, 183, 77, 0.6);
-		filter: brightness(1.1);
-	}
-}
-
-/* Optimized hover effects with GPU acceleration */
-.title-hover {
-	transition: transform 0.2s ease;
-}
-
-.title-hover:hover {
-	transform: scale(1.02) translateZ(0);
-}
-
-.featured-card {
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.featured-card:hover {
-	transform: translateY(-2px) translateZ(0);
-	box-shadow: 0 15px 35px rgba(164, 120, 100, 0.3);
-}
-
-.action-button {
-	transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.action-button:hover {
-	background-color: #e6a843 !important;
-	transform: translateX(2px) translateZ(0);
-}
-
-.coming-soon-card {
-	transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.coming-soon-card:hover {
-	opacity: 1 !important;
-	transform: translateY(-2px) translateZ(0);
-}
-
-.modal-card {
-	transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.modal-card:hover {
-	transform: translateY(-4px) translateZ(0);
-	border-color: var(--teal-crystal) !important;
-}
-
-/* Fade-in animation for sections */
-.fade-in-section {
-	transition: opacity 1s ease, transform 1s ease;
-}
-
-.fade-in-section.visible {
-	opacity: 1 !important;
-	transform: translateY(0) !important;
-}
-
-/* Desktop Layout - Ensure horizontal layout is preserved */
-@media (min-width: 769px) {
-	/* Ensure desktop layout stays horizontal */
-	div[style*="padding: 2rem; display: flex; align-items: center; gap: 2rem;"] {
-		flex-direction: row !important;
-		text-align: left !important;
-		gap: 2rem !important;
-		padding: 2rem !important;
-		align-items: center !important;
-	}
-
-	/* Game Image Desktop - left aligned */
-	div[style*="width: 10rem; height: 10rem;"] {
-		width: 10rem !important;
-		height: 10rem !important;
-		margin: 0 !important;
-		flex-shrink: 0 !important;
-	}
-
-	/* Game Info Desktop - takes remaining space */
-	div[style*="flex: 1; min-height: 180px;"] {
-		flex: 1 !important;
-		min-height: 180px !important;
-		text-align: left !important;
-	}
-
-	/* Featured card styling for desktop */
-	.featured-card {
-		margin: 0 !important;
-	}
-
-	/* Main container desktop spacing */
-	main {
-		padding: 8rem 2rem 4rem 2rem !important;
-	}
-
-	/* Section spacing desktop */
-	section {
-		margin-bottom: 6rem !important;
-		padding: 0 !important;
-	}
-}
-
-/* Mobile Responsive Design - Optimized */
+/* Mobile Responsive */
 @media (max-width: 768px) {
-	main {
-		padding: 4rem 0.75rem 2rem 0.75rem !important;
-		max-width: 100% !important;
-		min-height: auto !important;
+	.hero-section {
+		padding: 4rem 1rem 3rem 1rem;
+		min-height: auto;
 	}
 
-	/* Remove white space at top and bottom */
-	body {
-		margin: 0 !important;
-		padding: 0 !important;
-	}
-	/* Improved section spacing for mobile - more breathing room */
-	section {
-		margin-bottom: 5rem !important;
-		padding: 0 0.5rem !important;
+	.hero-text-gradient {
+		font-size: 2.5rem;
 	}
 
-	/* First section (Games) spacing - extra space at top */
-	section:first-of-type {
-		margin-top: 1.5rem !important;
-		margin-bottom: 5.5rem !important;
+	.reset-timers-container {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		padding: 0 0.5rem;
 	}
 
-	/* Last section spacing */
-	section:last-of-type {
-		margin-bottom: 3rem !important;
-	}
-	/* Title spacing - more generous */
-	div[style*="margin-bottom: 3rem"] {
-		margin-bottom: 2.5rem !important;
+	/* Master Clock Mobile */
+	.master-clock {
+		padding: 2rem 1.5rem;
+		min-height: 350px;
+		max-width: 90vw;
 	}
 
-	/* Main title container - add extra space above on mobile */
-	div[style*="text-align: center; margin-bottom: 3rem"]:first-child {
-		margin-top: 1rem !important;
-		margin-bottom: 2.5rem !important;
+	.clock-header {
+		gap: 1rem;
+		margin-bottom: 2rem;
+		flex-direction: column;
+		text-align: center;
 	}
 
-	/* Featured game card container spacing */
-	div[style*="margin-bottom: 3rem"]:has(.featured-card) {
-		margin-bottom: 3rem !important;
+	.game-image-container {
+		width: 60px;
+		height: 60px;
+		border-radius: 16px;
 	}
 
-	/* Reduce animations on mobile for better performance */
-	.title-hover,
-	.featured-card,
-	.action-button,
-	.coming-soon-card,
-	.modal-card {
-		transition: none;
-		will-change: auto;
+	.game-name {
+		font-size: 1.5rem;
+	}
+
+	.game-status {
+		font-size: 0.8rem;
+	}
+
+	.time-unit-group {
+		gap: 1rem;
+	}
+
+	.time-value {
+		font-size: 2.5rem;
+	}
+
+	.time-separator {
+		font-size: 2rem;
+	}
+
+	.time-label {
+		font-size: 0.7rem;
+	}
+
+	.clock-navigation {
+		gap: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.nav-btn {
+		width: 40px;
+		height: 40px;
+	}
+
+	.indicator-dot {
+		width: 8px;
+		height: 8px;
+	}
+
+	.rotation-toggle {
+		padding: 0.625rem 1rem;
+		font-size: 0.8rem;
+		gap: 0.5rem;
+	}
+
+	.auto-showcase {
+		min-height: auto;
+		padding: 2rem 0;
+	}
+
+	.showcase-content {
+		height: auto;
+		min-height: 500px;
+		margin: 0 0.75rem;
+		border-radius: 24px;
+		grid-template-columns: 1fr;
+		grid-template-rows: 280px 1fr;
+		overflow: visible;
+	}
+
+	.showcase-content:hover {
+		transform: translateY(-4px);
+	}
+
+	.showcase-image-section {
+		order: 1;
+		border-right: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.showcase-content-section {
+		order: 2;
+		padding: 2rem 1.5rem;
+		border-left: none;
+	}
+
+	.showcase-title {
+		font-size: clamp(1.8rem, 6vw, 2.5rem);
+		margin-bottom: 1rem;
+		text-align: center;
+	}
+
+	.showcase-description {
+		font-size: 1rem;
+		text-align: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.showcase-features {
+		gap: 0.5rem;
+		margin-bottom: 2rem;
+		justify-content: center;
+	}
+
+	.showcase-feature-tag {
+		padding: 0.6rem 1rem;
+		font-size: 0.75rem;
+		border-radius: 20px;
+	}
+
+	.showcase-actions {
+		text-align: center;
+	}
+
+	.showcase-btn {
+		padding: 0.875rem 2rem;
+		font-size: 0.9rem;
+		border-radius: 40px;
+	}
+
+
+}
+
+/* Small Mobile Optimization (480px and below) */
+@media (max-width: 480px) {
+	.auto-showcase {
+		padding: 1.5rem 0;
+	}
+
+	.showcase-content {
+		margin: 0 0.5rem;
+		min-height: 450px;
+		grid-template-rows: 240px 1fr;
+		border-radius: 20px;
+	}
+
+	.showcase-content-section {
+		padding: 1.5rem 1rem;
+	}
+
+	.showcase-title {
+		font-size: clamp(1.5rem, 8vw, 2rem);
+		margin-bottom: 0.75rem;
+	}
+
+	.showcase-description {
+		font-size: 0.9rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.showcase-features {
+		gap: 0.4rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.showcase-feature-tag {
+		padding: 0.5rem 0.75rem;
+		font-size: 0.7rem;
+		border-radius: 16px;
+	}
+
+	.showcase-btn {
+		padding: 0.75rem 1.75rem;
+		font-size: 0.85rem;
+	}
+
+
+	/* Disable hover effects on touch devices */
+	.showcase-content:hover {
 		transform: none;
 	}
-
-	/* Disable expensive effects on mobile */
-	*[style*="box-shadow"] {
-		box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
-	}
-
-	*[style*="backdrop-filter"] {
-		backdrop-filter: none !important;
-	}
-
-	/* Touch-optimized hover states */
-	@media (hover: none) {
-		.title-hover:hover,
-		.featured-card:hover,
-		.action-button:hover,
-		.coming-soon-card:hover,
-		.modal-card:hover {
-			transform: none;
-			background-color: initial;
-			opacity: initial;
-			box-shadow: initial;
-			border-color: initial;
-		}
-	}
-
-	/* Gacha Wikis Library Title - Match wikis page styling */
-	h2 {
-		font-size: 2rem !important;
-		margin: 0 0 2rem 0 !important;
-	}	/* Zone Nova Card Mobile Layout - Only apply on mobile */
-	div[style*="padding: 2rem; display: flex; align-items: center; gap: 2rem;"] {
-		flex-direction: column !important;
-		text-align: center !important;
-		gap: 1.5rem !important;
-		padding: 1.5rem !important;
-		align-items: center !important;
-	}
-
-	/* Featured card container */
-	div[style*="margin-bottom: 3rem"] {
-		margin-bottom: 2.5rem !important;
-	}
-
-	/* Featured card styling - more generous spacing */
-	.featured-card {
-		margin: 0 0.75rem 2rem 0.75rem !important;
-		border-radius: 16px !important;
-	}
-
-	/* Game Image Mobile - centered and appropriately sized */
-	div[style*="width: 10rem; height: 10rem;"] {
-		width: 10rem !important;
-		height: 10rem !important;
-		margin: 0 auto 1rem auto !important;
-		flex-shrink: 0 !important;
-	}
-
-	/* OptimizedImage inside the container - ensure proper sizing */
-	div[style*="width: 10rem; height: 10rem;"] img,
-	div[style*="width: 10rem; height: 10rem;"] picture {
-		width: 160px !important;
-		height: 160px !important;
-	}
-
-	/* Fixed placeholder mobile sizing */
-	div[style*="width: 160px; height: 160px; background: linear-gradient"] {
-		width: 160px !important;
-		height: 160px !important;
-	}
-	/* Game Info Mobile - ensure proper stacking */
-	div[style*="flex: 1; min-height: 180px;"] {
-		flex: none !important;
-		min-height: auto !important;
-		text-align: center !important;
-	}
-
-	/* Featured header mobile optimization */
-	div[style*="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal))"] {
-		padding: 0.75rem 1rem !important;
-		min-height: 48px !important;
-	}
-
-	/* Featured header text mobile */
-	div[style*="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal))"] span {
-		font-size: 0.8rem !important;
-		gap: 0.4rem !important;
-	}
-	/* Game Title Mobile - with better spacing */
-	h3[style*="font-size: 2.5rem;"] {
-		font-size: 2rem !important;
-		margin-bottom: 1.5rem !important;
-	}
-
-								/* Active Rifts Section Mobile - improved spacing */
-	div[style*="display: flex; flex-direction: column;"] {
-		gap: 0.6rem !important;
-		margin-bottom: 1.5rem !important;
-	}
-
-	/* Event Cards Mobile */
-	div[style*="min-height: 3.5rem;"] {
-		min-height: 3rem !important;
-		padding: 0.75rem !important;
-		font-size: 0.8rem !important;
-	}
-
-	/* Action Button Mobile - with better spacing */
-	.action-button {
-		padding: 1rem 1.75rem !important;
-		font-size: 0.9rem !important;
-		margin-top: 1.5rem !important;
-		width: fit-content !important;
-		margin-left: auto !important;
-		margin-right: auto !important;
-	}
-	/* "More Games Coming Soon" section title spacing */
-	div[style*="text-align: center; margin-bottom: 2rem;"] h3 {
-		margin-bottom: 2.5rem !important;
-	}
-
-	/* "More Games Coming Soon" section header - better spacing */
-	div[style*="text-align: center; margin-bottom: 2rem;"] {
-		margin-bottom: 3rem !important;
-		margin-top: 3rem !important;
-	}
-
-	/* Coming Soon Cards Mobile - improved spacing */
-	.coming-soon-card {
-		padding: 1.75rem !important;
-		contain: layout style paint;
-		margin: 0 0.75rem 1.5rem 0.75rem !important;
-	}
-
-	/* Coming Soon grid mobile - better spacing */
-	div[style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
-		grid-template-columns: 1fr !important;
-		gap: 1.5rem !important;
-		margin: 0 0.75rem !important;
-	}
-
-	/* Modal Mobile */
-	#gamesModal div[style*="padding: 2rem;"] {
-		padding: 1rem !important;
-		margin: 1rem !important;
-		max-height: 90vh !important;
-	}
-
-	/* Modal Games Grid Mobile */
-	#gamesModal div[style*="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));"] {
-		grid-template-columns: 1fr !important;
-		gap: 1rem !important;
-	}
-	/* Mobile-specific optimizations */
-	section {
-		contain: layout style;
-		padding: 0 0.5rem !important;
-	}
-	/* "More Games Coming Soon" section header - consistent with above */
-	div[style*="text-align: center; margin-bottom: 2rem;"] {
-		margin-bottom: 3rem !important;
-		margin-top: 3rem !important;
-	}
-
-	/* Built by section spacing */
-	section[style*="text-align: center; margin-bottom: 6rem;"] {
-		margin-bottom: 3rem !important;
-		margin-top: 2rem !important;
-		padding-top: 1rem !important;
-	}
-	/* Preserve important gradients on mobile */
-	/* Keep featured header gradient - it's important for branding */
-	div[style*="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal))"] {
-		background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)) !important;
-	}
-
-	/* Simplify other gradients on mobile for better performance (but preserve featured header) */
-	*[style*="linear-gradient"]:not([style*="background-clip"]):not([style*="amber-glow"]) {
-		background: var(--bg-primary) !important;
+	
+	.showcase-content::after {
+		animation: none;
 	}
 }
 
-/* Extra Small Mobile (iPhone SE, etc.) */
-@media (max-width: 480px) {
-	main {
-		padding: 3.5rem 0.5rem 1.5rem 0.5rem !important;
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+	.showcase-content:hover {
+		transform: none;
+		box-shadow: 
+			0 30px 80px rgba(0, 0, 0, 0.5),
+			inset 0 1px 0 rgba(255, 255, 255, 0.2),
+			0 0 40px rgba(255, 183, 77, 0.1);
 	}
-
-	/* Better section spacing on very small screens */
-	section {
-		margin-bottom: 4.5rem !important;
-		padding: 0 0.25rem !important;
+	
+	.showcase-feature-tag:hover {
+		transform: none;
+		background: rgba(255, 255, 255, 0.08);
 	}
-
-	/* First section spacing */
-	section:first-of-type {
-		margin-top: 1.25rem !important;
-		margin-bottom: 5rem !important;
-	}
-
-	h2 {
-		font-size: 1.8rem !important;
-		margin-bottom: 1.5rem !important;
-	}
-
-	/* Keep image reasonably sized even on very small screens */
-	div[style*="width: 10rem; height: 10rem;"] {
-		width: 8rem !important;
-		height: 8rem !important;
-		margin: 0 auto 1.25rem auto !important;
-	}
-
-	/* OptimizedImage sizing for very small screens */
-	div[style*="width: 10rem; height: 10rem;"] img,
-	div[style*="width: 10rem; height: 10rem;"] picture {
-		width: 128px !important;
-		height: 128px !important;
-	}
-
-	/* Fixed placeholder for very small screens */
-	div[style*="width: 160px; height: 160px; background: linear-gradient"] {
-		width: 128px !important;
-		height: 128px !important;
-	}
-
-	/* Smaller card padding for very small screens but maintain comfort */
-	div[style*="padding: 2rem; display: flex; align-items: center; gap: 2rem;"] {
-		padding: 1.25rem !important;
-		gap: 1.25rem !important;
-	}
-
-	/* Featured card margins with better spacing */
-	.featured-card {
-		margin: 0 0.5rem 2rem 0.5rem !important;
-	}
-
-	/* Game title sizing */
-	h3[style*="font-size: 2.5rem;"] {
-		font-size: 1.7rem !important;
-		margin-bottom: 1.25rem !important;
-	}
-
-	/* Action button with comfortable spacing */
-	.action-button {
-		padding: 0.875rem 1.5rem !important;
-		font-size: 0.85rem !important;
-		margin-top: 1.25rem !important;
-	}
-
-	/* Coming soon cards with adequate spacing */
-	.coming-soon-card {
-		padding: 1.5rem !important;
-		margin: 0 0.5rem 1.25rem 0.5rem !important;
-	}
-
-	/* Coming soon grid spacing */
-	div[style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
-		gap: 1.25rem !important;
-		margin: 0 0.5rem !important;
-	}
+	
 }
 
-/* Reduce motion for accessibility */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-	*,
-	*::before,
-	*::after {
+	*, *::before, *::after {
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
@@ -664,88 +1106,449 @@ import { getActiveGames } from '../data/games';
 }
 </style>
 
-<script>
-// Optimized modal functionality with passive event listeners
+<script define:vars={{ clockGames, showcaseGames }}>
+// Beautiful Master Clock with dynamic games configuration
 document.addEventListener('DOMContentLoaded', function() {
-	const modal = document.getElementById('gamesModal');
-	const modalContent = document.getElementById('modalContent');
-	const closeBtn = document.getElementById('closeModal');
+	// Games configuration from server-side data
+	const featuredGames = clockGames;
 	
-	// Intersection Observer for fade-in animations
+	// State management
+	let currentGameIndex = 0;
+	let isAutoRotating = true;
+	let autoRotateInterval = null;
+	let clockUpdateInterval = null;
+	
+	// DOM elements - Master Clock
+	const clockGameImage = document.getElementById('clockGameImage');
+	const clockGameName = document.getElementById('clockGameName');
+	const clockHours = document.getElementById('clockHours');
+	const clockMinutes = document.getElementById('clockMinutes');
+	const clockSeconds = document.getElementById('clockSeconds');
+	const resetTimeDisplay = document.getElementById('resetTimeDisplay');
+	const gameIndicators = document.getElementById('gameIndicators');
+	const prevBtn = document.getElementById('prevGame');
+	const nextBtn = document.getElementById('nextGame');
+	const rotationToggle = document.getElementById('rotationToggle');
+	const masterClock = document.getElementById('masterClock');
+	
+	// Calculate time until reset
+	function getTimeUntilReset(resetHour) {
+		const now = new Date();
+		const utcHour = now.getUTCHours();
+		const utcMinutes = now.getUTCMinutes();
+		const utcSeconds = now.getUTCSeconds();
+		
+		let hoursUntilReset = resetHour - utcHour;
+		let minutesUntilReset = 60 - utcMinutes - 1;
+		let secondsUntilReset = 60 - utcSeconds;
+		
+		// Handle when current time is past reset time
+		if (hoursUntilReset < 0 || (hoursUntilReset === 0 && minutesUntilReset < 0)) {
+			hoursUntilReset += 24;
+		}
+		
+		// Adjust for negative minutes
+		if (minutesUntilReset < 0) {
+			minutesUntilReset += 60;
+			hoursUntilReset -= 1;
+		}
+		
+		// Handle seconds overflow
+		if (secondsUntilReset === 60) {
+			secondsUntilReset = 0;
+		} else {
+			minutesUntilReset -= 1;
+			if (minutesUntilReset < 0) {
+				minutesUntilReset = 59;
+				hoursUntilReset -= 1;
+			}
+		}
+		
+		return {
+			hours: Math.max(0, hoursUntilReset),
+			minutes: Math.max(0, minutesUntilReset),
+			seconds: Math.max(0, secondsUntilReset)
+		};
+	}
+	
+	// Update master clock display
+	function updateClock() {
+		const currentGame = featuredGames[currentGameIndex];
+		const time = getTimeUntilReset(currentGame.resetHour);
+		
+		if (clockHours) clockHours.textContent = String(time.hours).padStart(2, '0');
+		if (clockMinutes) clockMinutes.textContent = String(time.minutes).padStart(2, '0');
+		if (clockSeconds) clockSeconds.textContent = String(time.seconds).padStart(2, '0');
+	}
+	
+	// Switch master clock to a specific game with smooth animation
+	function switchToGame(index, direction = 'next') {
+		if (index < 0 || index >= featuredGames.length) return;
+		
+		currentGameIndex = index;
+		const game = featuredGames[currentGameIndex];
+		
+		// Fade out image
+		if (clockGameImage) {
+			clockGameImage.style.opacity = '0';
+		}
+		
+		// Fade out text slightly
+		if (clockGameName) {
+			clockGameName.style.opacity = '0.5';
+			clockGameName.style.transform = 'translateY(10px)';
+		}
+		
+		setTimeout(() => {
+			// Update content
+			if (clockGameImage && game.image) {
+				clockGameImage.src = game.image;
+				clockGameImage.alt = game.name;
+				clockGameImage.style.opacity = '1';
+			}
+			if (clockGameName) {
+				clockGameName.textContent = game.name;
+				clockGameName.style.opacity = '1';
+				clockGameName.style.transform = 'translateY(0)';
+			}
+			
+			// Update reset time display
+			if (resetTimeDisplay) {
+				const resetTime = game.resetHour === 0 ? '0:00' : `${game.resetHour}:00`;
+				resetTimeDisplay.textContent = resetTime;
+			}
+			
+			// Update indicators
+			updateIndicators();
+			
+			// Update clock immediately
+			updateClock();
+		}, 300);
+		
+		// Save preference
+		localStorage.setItem('master-clock-game', game.id);
+	}
+	
+	// Create indicator dots for master clock
+	function createIndicators() {
+		if (!gameIndicators) return;
+		
+		gameIndicators.innerHTML = '';
+		featuredGames.forEach((game, index) => {
+			const dot = document.createElement('div');
+			dot.className = 'indicator-dot';
+			dot.setAttribute('data-index', index);
+			dot.setAttribute('title', game.name);
+			
+			dot.addEventListener('click', () => {
+				stopAutoRotation();
+				const direction = index > currentGameIndex ? 'next' : 'prev';
+				switchToGame(index, direction);
+			});
+			
+			gameIndicators.appendChild(dot);
+		});
+		
+		updateIndicators();
+	}
+	
+	// Update indicator states
+	function updateIndicators() {
+		if (!gameIndicators) return;
+		
+		const dots = gameIndicators.querySelectorAll('.indicator-dot');
+		dots.forEach((dot, index) => {
+			dot.classList.toggle('active', index === currentGameIndex);
+		});
+	}
+	
+	
+	// Start auto-rotation for master clock
+	function startAutoRotation() {
+		if (autoRotateInterval) clearInterval(autoRotateInterval);
+		
+		autoRotateInterval = setInterval(() => {
+			const nextIndex = (currentGameIndex + 1) % featuredGames.length;
+			switchToGame(nextIndex, 'next');
+		}, 6000); // Switch every 6 seconds
+	}
+	
+	// Stop auto-rotation
+	function stopAutoRotation() {
+		if (autoRotateInterval) {
+			clearInterval(autoRotateInterval);
+			autoRotateInterval = null;
+		}
+		isAutoRotating = false;
+		updateRotationToggle();
+	}
+	
+	// Toggle auto-rotation
+	function toggleAutoRotation() {
+		if (isAutoRotating) {
+			stopAutoRotation();
+		} else {
+			isAutoRotating = true;
+			startAutoRotation();
+			updateRotationToggle();
+		}
+	}
+	
+	// Update rotation toggle button
+	function updateRotationToggle() {
+		if (!rotationToggle) return;
+		
+		const playIcon = rotationToggle.querySelector('.play-icon');
+		const pauseIcon = rotationToggle.querySelector('.pause-icon');
+		
+		rotationToggle.classList.toggle('active', isAutoRotating);
+		
+		if (isAutoRotating) {
+			playIcon.style.display = 'none';
+			pauseIcon.style.display = 'block';
+		} else {
+			playIcon.style.display = 'block';
+			pauseIcon.style.display = 'none';
+		}
+	}
+	
+	// Load saved game preference
+	function loadSavedGame() {
+		const savedGameId = localStorage.getItem('master-clock-game');
+		let savedIndex = 0; // Default to Zone Nova
+		
+		if (savedGameId) {
+			const foundIndex = featuredGames.findIndex(game => game.id === savedGameId);
+			if (foundIndex !== -1) {
+				savedIndex = foundIndex;
+			}
+		}
+		
+		switchToGame(savedIndex, 'next');
+	}
+	
+	// Setup event listeners
+	function setupEventListeners() {
+		// Navigation buttons
+		if (prevBtn) {
+			prevBtn.addEventListener('click', () => {
+				stopAutoRotation();
+				const prevIndex = currentGameIndex === 0 ? featuredGames.length - 1 : currentGameIndex - 1;
+				switchToGame(prevIndex, 'prev');
+			});
+		}
+		
+		if (nextBtn) {
+			nextBtn.addEventListener('click', () => {
+				stopAutoRotation();
+				const nextIndex = (currentGameIndex + 1) % featuredGames.length;
+				switchToGame(nextIndex, 'next');
+			});
+		}
+		
+		// Auto-rotation toggle
+		if (rotationToggle) {
+			rotationToggle.addEventListener('click', toggleAutoRotation);
+		}
+		
+		// Pause auto-rotation on hover
+		if (masterClock) {
+			masterClock.addEventListener('mouseenter', () => {
+				if (isAutoRotating && autoRotateInterval) {
+					clearInterval(autoRotateInterval);
+				}
+			});
+			
+			masterClock.addEventListener('mouseleave', () => {
+				if (isAutoRotating) {
+					startAutoRotation();
+				}
+			});
+		}
+	}
+	
+	// Initialize the master clock
+	function initializeClock() {
+		createIndicators();
+		loadSavedGame();
+		setupEventListeners();
+		updateRotationToggle();
+		
+		// Initialize reset time display
+		const currentGame = featuredGames[currentGameIndex];
+		if (resetTimeDisplay) {
+			const resetTime = currentGame.resetHour === 0 ? '0:00' : `${currentGame.resetHour}:00`;
+			resetTimeDisplay.textContent = resetTime;
+		}
+		
+		// Start clock updates
+		updateClock();
+		clockUpdateInterval = setInterval(updateClock, 1000);
+		
+		// Start auto-rotation
+		if (isAutoRotating) {
+			startAutoRotation();
+		}
+	}
+	
+	// Initialize everything
+	initializeClock();
+	
+	// Auto-Rotating Games Showcase - using configuration from server
+	
+	let currentShowcaseIndex = 0;
+	let isShowcaseAutoPlaying = true;
+	let showcaseAutoInterval = null;
+	
+	// DOM elements for showcase
+	const showcaseGameImage = document.getElementById('showcaseGameImage');
+	const showcaseTitle = document.getElementById('showcaseTitle');
+	const showcaseDescription = document.getElementById('showcaseDescription');
+	const showcaseFeatures = document.getElementById('showcaseFeatures');
+	const showcaseLink = document.getElementById('showcaseLink');
+	
+	// Update showcase content
+	function updateShowcase(index, animate = true) {
+		if (index < 0 || index >= showcaseGames.length) return;
+		
+		currentShowcaseIndex = index;
+		const game = showcaseGames[currentShowcaseIndex];
+		
+		if (animate) {
+			// Fade out current content
+			const elements = [showcaseTitle, showcaseDescription, showcaseFeatures, document.querySelector('.showcase-actions')];
+			elements.forEach(el => {
+				if (el) el.classList.remove('active');
+			});
+			
+			setTimeout(() => {
+				updateShowcaseContent(game);
+				// Fade in new content
+				setTimeout(() => {
+					elements.forEach(el => {
+						if (el) el.classList.add('active');
+					});
+				}, 100);
+			}, 400);
+		} else {
+			updateShowcaseContent(game);
+			// Make content immediately active
+			const elements = [showcaseTitle, showcaseDescription, showcaseFeatures, document.querySelector('.showcase-actions')];
+			elements.forEach(el => {
+				if (el) el.classList.add('active');
+			});
+		}
+	}
+	
+	// Update showcase content elements
+	function updateShowcaseContent(game) {
+		// Update image
+		if (showcaseGameImage) {
+			showcaseGameImage.src = game.image;
+			showcaseGameImage.alt = game.name;
+		}
+		
+		// Update text content
+		if (showcaseTitle) showcaseTitle.textContent = game.name;
+		if (showcaseDescription) showcaseDescription.textContent = game.description;
+		if (showcaseLink) {
+			showcaseLink.href = game.url;
+		}
+		
+		// Update features with staggered animation
+		if (showcaseFeatures) {
+			showcaseFeatures.innerHTML = '';
+			game.features.forEach((feature, index) => {
+				const tag = document.createElement('div');
+				tag.className = 'showcase-feature-tag';
+				tag.textContent = feature;
+				tag.style.opacity = '0';
+				tag.style.transform = 'translateY(20px)';
+				tag.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
+				showcaseFeatures.appendChild(tag);
+				
+				// Trigger animation
+				setTimeout(() => {
+					tag.style.opacity = '1';
+					tag.style.transform = 'translateY(0)';
+				}, 50);
+			});
+		}
+	}
+	
+	
+	// Start showcase auto-play
+	function startShowcaseAutoPlay() {
+		if (showcaseAutoInterval) clearInterval(showcaseAutoInterval);
+		
+		// Longer interval on mobile for better UX
+		const isMobile = window.innerWidth <= 768;
+		const interval = isMobile ? 7000 : 5000; // 7s on mobile, 5s on desktop
+		
+		showcaseAutoInterval = setInterval(() => {
+			const nextIndex = (currentShowcaseIndex + 1) % showcaseGames.length;
+			updateShowcase(nextIndex);
+		}, interval);
+	}
+	
+	
+	// Setup showcase event listeners
+	function setupShowcaseListeners() {
+		// Adjust auto-play timing on window resize
+		let resizeTimeout;
+		window.addEventListener('resize', () => {
+			clearTimeout(resizeTimeout);
+			resizeTimeout = setTimeout(() => {
+				if (isShowcaseAutoPlaying) {
+					startShowcaseAutoPlay(); // Restart with new timing
+				}
+			}, 250);
+		});
+	}
+	
+	// Preload images for better quality
+	function preloadShowcaseImages() {
+		showcaseGames.forEach(game => {
+			const img = new Image();
+			img.src = game.image;
+		});
+	}
+	
+	// Initialize showcase
+	function initializeShowcase() {
+		preloadShowcaseImages();
+		updateShowcase(0, false); // Initialize without animation
+		setupShowcaseListeners();
+		
+		// Start auto-play
+		startShowcaseAutoPlay();
+	}
+	
+	// Initialize showcase
+	initializeShowcase();
+	
+	// Smooth scroll animation for sections
 	const observerOptions = {
 		threshold: 0.1,
-		rootMargin: '0px 0px -50px 0px'
+		rootMargin: '0px 0px -100px 0px'
 	};
 	
 	const observer = new IntersectionObserver((entries) => {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
-				entry.target.classList.add('visible');
+				entry.target.style.opacity = '1';
+				entry.target.style.transform = 'translateY(0)';
 				observer.unobserve(entry.target);
 			}
 		});
 	}, observerOptions);
 	
-	// Observe fade-in sections
-	const fadeInSections = document.querySelectorAll('.fade-in-section');
-	fadeInSections.forEach(section => observer.observe(section));
-	
-	// Modal functionality
-	closeBtn?.addEventListener('click', () => {
-		if (modal && modalContent) {
-			modal.style.opacity = '0';
-			modal.style.visibility = 'hidden';
-			modalContent.style.transform = 'scale(0.9)';
-		}
-	}, { passive: true });
-	
-	modal?.addEventListener('click', (e) => {
-		if (e.target === modal && modalContent) {
-			modal.style.opacity = '0';
-			modal.style.visibility = 'hidden';
-			modalContent.style.transform = 'scale(0.9)';
-		}
-	}, { passive: true });
-});
-
-// Optimized Event Timers with requestAnimationFrame
-document.addEventListener('DOMContentLoaded', function() {
-								// Set end dates for rifts (updated to match rifts page)
-	const rift3End = new Date('2025-06-23T23:59:59').getTime(); // Rift Tide III - ends June 23, 2025
-	const rift4End = new Date('2025-07-08T23:59:59').getTime(); // Rift Tide IV - ends July 8, 2025
-
-	// Cache DOM elements for better performance
-	const rift3Timer = document.getElementById('riftTide3Timer');
-	const rift4Timer = document.getElementById('riftTide4Timer');
-
-	// Timer function optimized for performance
-	function updateTimers() {
-		const now = new Date().getTime();
-		
-		// Update Rift Tide III timer
-		if (rift3Timer) {
-			const timeLeft = rift3End - now;
-			const newText = timeLeft > 0 ? 
-				`${Math.floor(timeLeft / (1000 * 60 * 60 * 24))}d ${Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h` : 
-				'Ended';
-			if (rift3Timer.textContent !== newText) {
-				rift3Timer.textContent = newText;
-			}
-		}
-
-		// Update Rift Tide IV timer  
-		if (rift4Timer) {
-			const timeLeft = rift4End - now;
-			const newText = timeLeft > 0 ? 
-				`${Math.floor(timeLeft / (1000 * 60 * 60 * 24))}d ${Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h` : 
-				'Ended';
-			if (rift4Timer.textContent !== newText) {
-				rift4Timer.textContent = newText;
-			}
-		}
-	}
-
-	// Optimized timer updates (every 30 seconds instead of 1 minute)	updateTimers();
-	setInterval(updateTimers, 30000);
+	// Observe all sections
+	document.querySelectorAll('section').forEach(section => {
+		section.style.opacity = '0';
+		section.style.transform = 'translateY(30px)';
+		section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+		observer.observe(section);
+	});
 });
 </script>
