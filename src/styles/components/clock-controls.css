@@ -1,0 +1,256 @@
+/* Clock Controls and Navigation */
+
+/* Timer Description */
+.timer-description-section {
+	text-align: center;
+	margin-bottom: 1.5rem;
+	padding: 1rem 1.5rem;
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timer-main-label {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--text-inverse);
+	margin-bottom: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.timer-details {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: var(--amber-glow);
+	margin-bottom: 0.75rem;
+	line-height: 1.5;
+}
+
+.timer-reset-time {
+	font-family: 'Courier New', monospace;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+#resetTimeDisplay {
+	color: var(--teal-crystal);
+	font-weight: 700;
+}
+
+/* Clock Navigation */
+.clock-navigation {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.nav-btn {
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-inverse);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+	background: rgba(255, 255, 255, 0.2);
+	border-color: var(--amber-glow);
+	transform: scale(1.1);
+}
+
+.nav-btn:active {
+	transform: scale(0.95);
+}
+
+.game-indicators {
+	display: flex;
+	gap: 0.75rem;
+	align-items: center;
+}
+
+.indicator-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.3);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+	background: var(--amber-glow);
+	box-shadow: 0 0 12px var(--amber-glow);
+	transform: scale(1.2);
+}
+
+.indicator-dot:hover {
+	background: rgba(255, 255, 255, 0.6);
+	transform: scale(1.1);
+}
+
+/* Clock Footer Controls Container */
+.clock-footer-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 1.5rem;
+	gap: 1rem;
+}
+
+.rotation-toggle {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 20px;
+	padding: 0.75rem 1.25rem;
+	color: var(--text-inverse);
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.85rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.rotation-toggle:hover {
+	background: rgba(255, 255, 255, 0.15);
+	border-color: var(--amber-glow);
+	transform: translateY(-2px);
+}
+
+.rotation-toggle.active {
+	background: rgba(255, 183, 77, 0.2);
+	border-color: var(--amber-glow);
+	color: var(--amber-glow);
+}
+
+.rotation-text {
+	user-select: none;
+}
+
+/* Open Source Link in Footer */
+.clock-opensource-link {
+	display: inline-block;
+	text-decoration: none;
+	color: inherit;
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clock-opensource-content {
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 30px;
+	padding: 0.5rem 1rem;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	box-shadow: 
+		0 4px 15px rgba(0, 0, 0, 0.2),
+		inset 0 1px 0 rgba(255, 255, 255, 0.2);
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	overflow: hidden;
+}
+
+.clock-opensource-content::before {
+	content: '';
+	position: absolute;
+	inset: -1px;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz));
+	border-radius: 30px;
+	opacity: 0;
+	transition: opacity 0.6s ease;
+	z-index: -1;
+}
+
+.clock-opensource-link:hover .clock-opensource-content {
+	background: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 183, 77, 0.3);
+	box-shadow: 
+		0 8px 25px rgba(0, 0, 0, 0.3),
+		inset 0 1px 0 rgba(255, 255, 255, 0.3);
+	transform: translateY(-2px);
+}
+
+.clock-opensource-link:hover .clock-opensource-content::before {
+	opacity: 0.3;
+}
+
+.clock-github-icon {
+	color: var(--text-inverse);
+	transition: all 0.3s ease;
+	flex-shrink: 0;
+}
+
+.clock-opensource-link:hover .clock-github-icon {
+	color: var(--amber-glow);
+	transform: scale(1.1);
+	filter: drop-shadow(0 0 8px rgba(255, 183, 77, 0.5));
+}
+
+.clock-opensource-text {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.75rem;
+	font-weight: 600;
+	color: var(--text-inverse);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	transition: all 0.3s ease;
+	white-space: nowrap;
+}
+
+.clock-opensource-link:hover .clock-opensource-text {
+	color: var(--amber-glow);
+	text-shadow: 0 0 12px rgba(255, 183, 77, 0.4);
+}
+
+.clock-opensource-star {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.25rem 0.5rem;
+	background: rgba(255, 183, 77, 0.1);
+	border-radius: 20px;
+	border: 1px solid rgba(255, 183, 77, 0.2);
+	transition: all 0.3s ease;
+}
+
+.clock-opensource-link:hover .clock-opensource-star {
+	background: rgba(255, 183, 77, 0.15);
+	border-color: rgba(255, 183, 77, 0.4);
+	transform: scale(1.05);
+	box-shadow: 0 0 15px rgba(255, 183, 77, 0.2);
+}
+
+.clock-opensource-star svg {
+	color: var(--amber-glow);
+	transition: transform 0.3s ease;
+}
+
+.clock-opensource-link:hover .clock-opensource-star svg {
+	transform: scale(1.1);
+	filter: drop-shadow(0 0 6px rgba(255, 183, 77, 0.6));
+}
+
+.clock-star-count {
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.65rem;
+	font-weight: 600;
+	color: var(--amber-glow);
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+}

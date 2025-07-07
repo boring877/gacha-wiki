@@ -1,0 +1,425 @@
+/* Mobile Responsive Styles for Home Page */
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+	.hero-section {
+		padding: 3rem 1rem 2rem 1rem;
+		min-height: auto;
+	}
+
+	.hero-text-gradient {
+		font-size: clamp(2rem, 8vw, 2.8rem);
+		text-shadow: 0 0 40px rgba(255, 183, 77, 0.4);
+	}
+
+	.hero-subtitle {
+		font-size: clamp(0.9rem, 3vw, 1.2rem);
+	}
+
+	/* Hero CTA Mobile */
+	.hero-cta {
+		margin-bottom: 2rem;
+	}
+
+	.cta-button {
+		padding: 1rem 1.75rem;
+		font-size: 0.95rem;
+		gap: 0.5rem;
+		border-radius: 40px;
+	}
+
+	/* Master Clock Mobile */
+	.master-clock-container {
+		max-width: 95vw;
+		padding: 0 0.5rem;
+	}
+
+	.master-clock {
+		padding: 1.5rem 1.25rem;
+		min-height: 320px;
+		max-width: 100%;
+		border-radius: 24px;
+		backdrop-filter: blur(20px);
+	}
+
+	.clock-header {
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+		flex-direction: row;
+		text-align: left;
+		justify-content: flex-start;
+	}
+
+	.game-image-container {
+		width: 50px;
+		height: 50px;
+		border-radius: 12px;
+	}
+
+	.game-name {
+		font-size: 1.3rem;
+		line-height: 1.2;
+	}
+
+	.game-status {
+		font-size: 0.75rem;
+		line-height: 1.3;
+	}
+
+	.clock-display {
+		margin-bottom: 1.5rem;
+	}
+
+	.time-unit-group {
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.time-unit {
+		min-width: 70px;
+		gap: 0.5rem;
+	}
+
+	.time-value {
+		font-size: 2.2rem;
+		min-width: 2ch;
+	}
+
+	.time-separator {
+		font-size: 1.8rem;
+		align-self: flex-start;
+		margin-top: 0.5rem;
+	}
+
+	.time-label {
+		font-size: 0.65rem;
+		font-weight: 600;
+	}
+
+	.timer-description-section {
+		padding: 0.75rem 1rem;
+		margin-bottom: 1rem;
+		border-radius: 12px;
+	}
+
+	.timer-main-label {
+		font-size: 0.95rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.timer-details {
+		font-size: 0.8rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.timer-reset-time {
+		font-size: 0.75rem;
+	}
+
+	.clock-navigation {
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.nav-btn {
+		width: 36px;
+		height: 36px;
+	}
+
+	.nav-btn svg {
+		width: 14px;
+		height: 14px;
+	}
+
+	.indicator-dot {
+		width: 7px;
+		height: 7px;
+	}
+
+	.rotation-toggle {
+		padding: 0.5rem 0.875rem;
+		font-size: 0.75rem;
+		gap: 0.4rem;
+		border-radius: 16px;
+	}
+
+	/* Showcase Mobile */
+	.auto-showcase {
+		min-height: auto;
+		padding: 1.5rem 0;
+	}
+
+	.showcase-content {
+		height: auto;
+		min-height: 450px;
+		margin: 0 0.5rem;
+		border-radius: 20px;
+		grid-template-columns: 1fr;
+		grid-template-rows: 240px 1fr;
+		overflow: hidden;
+	}
+
+	.showcase-content:hover {
+		transform: translateY(-2px);
+	}
+
+	.showcase-image-section {
+		order: 1;
+		border-right: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		height: 240px;
+	}
+
+	.showcase-content-section {
+		order: 2;
+		padding: 1.5rem 1.25rem;
+		border-left: none;
+	}
+
+	.showcase-title {
+		font-size: clamp(1.5rem, 6vw, 2.2rem);
+		margin-bottom: 0.75rem;
+		text-align: center;
+		line-height: 1.2;
+	}
+
+	.showcase-description {
+		font-size: 0.9rem;
+		text-align: center;
+		margin-bottom: 1.25rem;
+		line-height: 1.5;
+	}
+
+	.showcase-features {
+		gap: 0.4rem;
+		margin-bottom: 1.5rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.showcase-feature-tag {
+		padding: 0.5rem 0.875rem;
+		font-size: 0.7rem;
+		border-radius: 18px;
+		white-space: nowrap;
+	}
+
+	.showcase-actions {
+		text-align: center;
+	}
+
+	.showcase-btn {
+		padding: 0.75rem 1.75rem;
+		font-size: 0.85rem;
+		border-radius: 35px;
+		gap: 0.5rem;
+	}
+
+	/* Clock Footer Controls Mobile */
+	.clock-footer-controls {
+		flex-direction: column-reverse;
+		gap: 0.75rem;
+		margin-top: 1rem;
+	}
+
+	.clock-opensource-content {
+		padding: 0.4rem 0.6rem;
+		gap: 0.3rem;
+		border-radius: 18px;
+		min-height: 32px;
+		align-items: center;
+	}
+
+	.clock-opensource-text {
+		font-size: 0.7rem;
+		font-weight: 600;
+	}
+
+	.clock-opensource-star {
+		padding: 0.2rem 0.4rem;
+		gap: 0.2rem;
+		border-radius: 14px;
+	}
+
+	.clock-github-icon {
+		width: 14px;
+		height: 14px;
+		flex-shrink: 0;
+	}
+
+	.clock-opensource-star svg {
+		width: 10px;
+		height: 10px;
+	}
+
+	.clock-star-count {
+		font-size: 0.65rem;
+		font-weight: 700;
+	}
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+	.auto-showcase {
+		padding: 1.5rem 0;
+	}
+
+	.showcase-content {
+		margin: 0 0.5rem;
+		min-height: 450px;
+		grid-template-rows: 240px 1fr;
+		border-radius: 20px;
+	}
+
+	.showcase-content-section {
+		padding: 1.5rem 1rem;
+	}
+
+	.showcase-title {
+		font-size: clamp(1.5rem, 8vw, 2rem);
+		margin-bottom: 0.75rem;
+	}
+
+	.showcase-description {
+		font-size: 0.9rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.showcase-features {
+		gap: 0.4rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.showcase-feature-tag {
+		padding: 0.5rem 0.75rem;
+		font-size: 0.7rem;
+		border-radius: 16px;
+	}
+
+	.showcase-btn {
+		padding: 0.75rem 1.75rem;
+		font-size: 0.85rem;
+	}
+
+	/* Disable hover effects on touch devices */
+	.showcase-content:hover {
+		transform: none;
+	}
+	
+	.showcase-content::after {
+		animation: none;
+	}
+
+	/* Clock Footer Controls Small Mobile */
+	.clock-footer-controls {
+		flex-direction: column-reverse;
+		gap: 0.6rem;
+		margin-top: 0.75rem;
+	}
+
+	.clock-opensource-content {
+		padding: 0.35rem 0.5rem;
+		gap: 0.3rem;
+		border-radius: 16px;
+		min-height: 28px;
+		align-items: center;
+	}
+
+	.clock-opensource-text {
+		font-size: 0.65rem;
+		font-weight: 600;
+	}
+
+	.clock-opensource-star {
+		padding: 0.15rem 0.35rem;
+		gap: 0.15rem;
+		border-radius: 12px;
+	}
+	
+	.clock-github-icon {
+		width: 12px;
+		height: 12px;
+		flex-shrink: 0;
+	}
+	
+	.clock-opensource-star svg {
+		width: 8px;
+		height: 8px;
+	}
+
+	.clock-star-count {
+		font-size: 0.6rem;
+		font-weight: 700;
+	}
+}
+
+/* Extra Small Mobile (360px and below) */
+@media (max-width: 360px) {
+	/* Extra small mobile footer controls */
+	.clock-footer-controls {
+		flex-direction: column-reverse;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+	}
+
+	.clock-opensource-content {
+		padding: 0.3rem 0.45rem;
+		gap: 0.25rem;
+		border-radius: 14px;
+		min-height: 24px;
+		align-items: center;
+	}
+	
+	.clock-opensource-text {
+		font-size: 0.6rem;
+		font-weight: 600;
+	}
+	
+	.clock-opensource-star {
+		padding: 0.1rem 0.25rem;
+		gap: 0.1rem;
+		border-radius: 10px;
+	}
+	
+	.clock-github-icon {
+		width: 10px;
+		height: 10px;
+		flex-shrink: 0;
+	}
+	
+	.clock-opensource-star svg {
+		width: 6px;
+		height: 6px;
+	}
+
+	.clock-star-count {
+		font-size: 0.55rem;
+		font-weight: 700;
+	}
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+	.showcase-content:hover {
+		transform: none;
+		box-shadow: 
+			0 30px 80px rgba(0, 0, 0, 0.5),
+			inset 0 1px 0 rgba(255, 255, 255, 0.2),
+			0 0 40px rgba(255, 183, 77, 0.1);
+	}
+	
+	.showcase-feature-tag:hover {
+		transform: none;
+		background: rgba(255, 255, 255, 0.08);
+	}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

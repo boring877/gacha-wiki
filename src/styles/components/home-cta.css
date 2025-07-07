@@ -1,0 +1,87 @@
+/* Hero CTA Button */
+.hero-cta {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 3rem;
+	animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.cta-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 1.25rem 2.5rem;
+	background: linear-gradient(135deg, var(--amber-glow) 0%, #FFD54F 100%);
+	color: var(--text-primary);
+	text-decoration: none;
+	border-radius: 50px;
+	font-family: 'Space Grotesk', sans-serif;
+	font-weight: 700;
+	font-size: 1.1rem;
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 
+		0 8px 30px rgba(255, 183, 77, 0.4),
+		inset 0 1px 0 rgba(255, 255, 255, 0.3);
+	position: relative;
+	overflow: hidden;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	border: 2px solid transparent;
+}
+
+.cta-button::before {
+	content: '';
+	position: absolute;
+	inset: -2px;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz));
+	border-radius: 52px;
+	opacity: 0;
+	transition: opacity 0.6s ease;
+	z-index: -1;
+}
+
+.cta-button::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+	border-radius: 50px;
+	opacity: 0;
+	transition: opacity 0.4s ease;
+	z-index: -1;
+}
+
+.cta-button:hover {
+	background: linear-gradient(135deg, #FFD54F 0%, var(--amber-glow) 100%);
+	transform: translateY(-4px);
+	box-shadow: 
+		0 12px 40px rgba(255, 183, 77, 0.5),
+		inset 0 1px 0 rgba(255, 255, 255, 0.4);
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cta-button:hover::before {
+	opacity: 0.8;
+}
+
+.cta-button:hover::after {
+	opacity: 1;
+}
+
+.cta-button:active {
+	transform: translateY(-2px);
+}
+
+.cta-text {
+	font-weight: 700;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cta-icon {
+	transition: transform 0.3s ease;
+	filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.cta-button:hover .cta-icon {
+	transform: translateX(4px);
+}
