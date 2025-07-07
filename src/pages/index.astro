@@ -59,7 +59,7 @@ const showcaseGames = getShowcaseGames();
 						<!-- Game Info Header -->
 						<div class="clock-header">
 							<div class="game-image-container" id="clockGameImageContainer">
-								<OptimizedImage 
+								<img 
 									class="game-image" 
 									id="clockGameImage" 
 									src="/images/games/zone-nova/zonenova1.jpg" 
@@ -161,7 +161,7 @@ const showcaseGames = getShowcaseGames();
 				<div class="showcase-content" id="showcaseContent">
 					<!-- Image Section -->
 					<div class="showcase-image-section">
-						<OptimizedImage 
+						<img 
 							class="showcase-game-image" 
 							id="showcaseGameImage" 
 							src={showcaseGames[0]?.image} 
@@ -442,13 +442,6 @@ const showcaseGames = getShowcaseGames();
 	height: 100%;
 	object-fit: cover;
 	transition: opacity 0.4s ease;
-	display: block;
-}
-
-.game-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
 	display: block;
 }
 
@@ -910,17 +903,6 @@ const showcaseGames = getShowcaseGames();
 	display: block;
 }
 
-.showcase-game-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center;
-	transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-	filter: brightness(0.85) contrast(1.2) saturate(1.1);
-	transform: scale(1.05);
-	display: block;
-}
-
 .showcase-content:hover .showcase-game-image {
 	transform: scale(1.1);
 	filter: brightness(0.9) contrast(1.3) saturate(1.2);
@@ -1370,33 +1352,43 @@ const showcaseGames = getShowcaseGames();
 
 	/* Clock Open Source Badge Mobile */
 	.clock-opensource-badge {
-		top: 0.75rem;
-		right: 0.75rem;
+		top: 0.5rem;
+		right: 0.5rem;
 	}
 
 	.clock-opensource-content {
-		padding: 0.4rem 0.8rem;
-		gap: 0.5rem;
-		border-radius: 25px;
+		padding: 0.5rem 0.75rem;
+		gap: 0.4rem;
+		border-radius: 20px;
+		min-height: 36px;
+		align-items: center;
 	}
 
 	.clock-opensource-text {
-		font-size: 0.7rem;
+		font-size: 0.75rem;
+		font-weight: 600;
 	}
 
 	.clock-opensource-star {
-		padding: 0.2rem 0.4rem;
-		gap: 0.2rem;
+		padding: 0.25rem 0.5rem;
+		gap: 0.25rem;
+		border-radius: 16px;
 	}
 
 	.clock-github-icon {
-		width: 14px;
-		height: 14px;
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
 	}
 
 	.clock-opensource-star svg {
-		width: 10px;
-		height: 10px;
+		width: 12px;
+		height: 12px;
+	}
+
+	.clock-star-count {
+		font-size: 0.7rem;
+		font-weight: 700;
 	}
 
 }
@@ -1456,66 +1448,86 @@ const showcaseGames = getShowcaseGames();
 
 	/* Clock Open Source Badge Small Mobile */
 	.clock-opensource-badge {
-		top: 0.5rem;
-		right: 0.5rem;
+		top: 0.4rem;
+		right: 0.4rem;
 	}
 
 	.clock-opensource-content {
-		padding: 0.35rem 0.7rem;
-		gap: 0.4rem;
-		border-radius: 20px;
+		padding: 0.4rem 0.6rem;
+		gap: 0.35rem;
+		border-radius: 18px;
+		min-height: 32px;
+		align-items: center;
 	}
 
 	.clock-opensource-text {
-		font-size: 0.65rem;
+		font-size: 0.7rem;
+		font-weight: 600;
 	}
 
 	.clock-opensource-star {
-		padding: 0.15rem 0.35rem;
-		gap: 0.15rem;
+		padding: 0.2rem 0.4rem;
+		gap: 0.2rem;
+		border-radius: 14px;
 	}
 	
 	.clock-github-icon {
-		width: 12px;
-		height: 12px;
+		width: 14px;
+		height: 14px;
+		flex-shrink: 0;
 	}
 	
 	.clock-opensource-star svg {
-		width: 8px;
-		height: 8px;
+		width: 10px;
+		height: 10px;
+	}
+
+	.clock-star-count {
+		font-size: 0.65rem;
+		font-weight: 700;
 	}
 }
 
 /* Extra Small Mobile Optimization (360px and below) */
 @media (max-width: 360px) {
 	.clock-opensource-badge {
-		top: 0.4rem;
-		right: 0.4rem;
+		top: 0.3rem;
+		right: 0.3rem;
 	}
 
 	.clock-opensource-content {
-		padding: 0.3rem 0.6rem;
-		gap: 0.35rem;
-		border-radius: 18px;
+		padding: 0.35rem 0.55rem;
+		gap: 0.3rem;
+		border-radius: 16px;
+		min-height: 28px;
+		align-items: center;
 	}
 	
 	.clock-opensource-text {
-		font-size: 0.6rem;
+		font-size: 0.65rem;
+		font-weight: 600;
 	}
 	
 	.clock-opensource-star {
-		padding: 0.1rem 0.3rem;
-		gap: 0.1rem;
+		padding: 0.15rem 0.35rem;
+		gap: 0.15rem;
+		border-radius: 12px;
 	}
 	
 	.clock-github-icon {
-		width: 10px;
-		height: 10px;
+		width: 12px;
+		height: 12px;
+		flex-shrink: 0;
 	}
 	
 	.clock-opensource-star svg {
-		width: 6px;
-		height: 6px;
+		width: 8px;
+		height: 8px;
+	}
+
+	.clock-star-count {
+		font-size: 0.6rem;
+		font-weight: 700;
 	}
 }
 
@@ -1669,8 +1681,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			updateClock();
 		}, 300);
 		
-		// Save preference
-		localStorage.setItem('master-clock-game', game.id);
+		// Save preference only for manual interactions (not auto-rotation)
+		if (direction !== 'auto') {
+			localStorage.setItem('master-clock-game', game.id);
+			localStorage.setItem('master-clock-last-interaction', Date.now().toString());
+		}
 	}
 	
 	// Create indicator dots for master clock
@@ -1688,6 +1703,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				stopAutoRotation();
 				const direction = index > currentGameIndex ? 'next' : 'prev';
 				switchToGame(index, direction);
+				// Sync showcase with clock
+				updateShowcase(index, true);
 			});
 			
 			gameIndicators.appendChild(dot);
@@ -1713,7 +1730,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 		autoRotateInterval = setInterval(() => {
 			const nextIndex = (currentGameIndex + 1) % featuredGames.length;
-			switchToGame(nextIndex, 'next');
+			switchToGame(nextIndex, 'auto');
+			// Sync showcase with clock
+			updateShowcase(nextIndex, true);
 		}, 6000); // Switch every 6 seconds
 	}
 	
@@ -1758,10 +1777,20 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// Load saved game preference
 	function loadSavedGame() {
-		const savedGameId = localStorage.getItem('master-clock-game');
-		let savedIndex = 0; // Default to Zone Nova
+		// Start with Silver & Blood to ensure it shows up
+		let savedIndex = 1; // Silver & Blood is index 1
 		
-		if (savedGameId) {
+		if (featuredGames.length <= 1) {
+			savedIndex = 0; // Fallback to first game if only one exists
+		}
+		
+		// Only respect saved preference if user manually interacted recently
+		const savedGameId = localStorage.getItem('master-clock-game');
+		const lastInteraction = localStorage.getItem('master-clock-last-interaction');
+		const now = Date.now();
+		const oneHour = 60 * 60 * 1000;
+		
+		if (savedGameId && lastInteraction && (now - parseInt(lastInteraction)) < oneHour) {
 			const foundIndex = featuredGames.findIndex(game => game.id === savedGameId);
 			if (foundIndex !== -1) {
 				savedIndex = foundIndex;
@@ -1779,6 +1808,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				stopAutoRotation();
 				const prevIndex = currentGameIndex === 0 ? featuredGames.length - 1 : currentGameIndex - 1;
 				switchToGame(prevIndex, 'prev');
+				// Sync showcase with clock
+				updateShowcase(prevIndex, true);
 			});
 		}
 		
@@ -1787,6 +1818,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				stopAutoRotation();
 				const nextIndex = (currentGameIndex + 1) % featuredGames.length;
 				switchToGame(nextIndex, 'next');
+				// Sync showcase with clock
+				updateShowcase(nextIndex, true);
 			});
 		}
 		
@@ -1837,6 +1870,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// Initialize everything
 	initializeClock();
+	
+	// Initialize showcase after clock (so currentGameIndex is set)
+	initializeShowcase();
 	
 	// Auto-Rotating Games Showcase - using configuration from server
 	
@@ -1971,15 +2007,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Initialize showcase
 	function initializeShowcase() {
 		preloadShowcaseImages();
-		updateShowcase(0, false); // Initialize without animation
+		// Sync with clock's initial game (currentGameIndex will be set by loadSavedGame)
+		updateShowcase(currentGameIndex, false); // Initialize without animation
 		setupShowcaseListeners();
 		
-		// Start auto-play
-		startShowcaseAutoPlay();
+		// Don't start auto-play - let the clock control both sections
+		// startShowcaseAutoPlay();
 	}
 	
-	// Initialize showcase
-	initializeShowcase();
 	
 	// Smooth scroll animation for sections
 	const observerOptions = {

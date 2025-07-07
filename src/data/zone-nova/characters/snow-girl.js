@@ -49,7 +49,7 @@ export const snowGirlData = {
       name: 'Frost Blessing',
       chineseName: '冰霜祝福',
       level: '10+4',
-      description: 'Required skill healing can add 5 second sustained recovery effect to targets, each second recovers Snow Girl\'s attack power 5%+29 HP'
+      description: 'Ultimate skill healing can add a 5-second continuous recovery effect to the target, recovering 75% of Snow Girls attack power + 29 HP per second'
     }
   },
   
@@ -68,12 +68,12 @@ export const snowGirlData = {
   
   // Awakening Effects (6 levels)
   awakenings: [
-    { level: 1, effect: 'After required skill heals friendly units, additionally makes targets take 10% less damage for 10 seconds' },
-    { level: 2, effect: 'Normal attacks deal self attack power 50% additional ice frost damage' },
+    { level: 1, effect: 'After ultimate skill heals friendly units, additionally increases targets damage dealt by 10% for 10 second' },
+    { level: 2, effect: 'Normal attacks deal additional frost damage equal to 50% of own attack power' },
     { level: 3, effect: '[Skills] and [Normal Attack] level cap +4' },
     { level: 4, effect: 'Healing amount increased by 20%' },
     { level: 5, effect: '[Required Skills] and [Passive] level cap +4' },
-    { level: 6, effect: 'Skills can also trigger passive\'s sustained recovery effect when healing friendly units' }
+    { level: 6, effect: 'Skills that heal friendly units can also trigger the passives continuous recovery effect' }
   ],
   
   // Memory Card
@@ -88,8 +88,8 @@ export const snowGirlData = {
       defense: '500'
     },
     effects: [
-      'Only effective for healers, 5-price awakening',
-      'The Beauty of Heijing Castle: Healing amount +30%, when recovering targets\' life value is full, target damage +24% for 10 seconds'
+      
+      'When the healed targets HP is full, targets damage is increased by 24% for 10 seconds'
     ]
   }
 };
