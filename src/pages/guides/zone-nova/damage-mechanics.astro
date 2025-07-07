@@ -146,18 +146,40 @@ Final Damage = 972,950 / 1,945.9 × 0.25 = 125.0</pre>
 </ZoneNovaLayout>
 
 <script>
+	// Declare the function on the Window interface
+	declare global {
+		interface Window {
+			calculateDamage: () => void;
+		}
+	}
+
 	// Make calculateDamage function global
 	window.calculateDamage = function() {
+		// Get elements with null checks
+		const attackElement = document.getElementById('attack') as HTMLInputElement;
+		const defenseElement = document.getElementById('defense') as HTMLInputElement;
+		const damageReductionElement = document.getElementById('damageReduction') as HTMLInputElement;
+		const finalDamageElement = document.getElementById('finalDamage');
+		const percentageElement = document.getElementById('percentage');
+		const calculationElement = document.getElementById('calculation');
+		
+		// Check if all elements exist
+		if (!attackElement || !defenseElement || !damageReductionElement || 
+			!finalDamageElement || !percentageElement || !calculationElement) {
+			console.error('Calculator elements not found');
+			return;
+		}
+		
 		// Get input values
-		const attack = parseFloat(document.getElementById('attack').value) || 0;
-		const defense = parseFloat(document.getElementById('defense').value) || 0;
-		const damageReduction = parseFloat(document.getElementById('damageReduction').value) || 0;
+		const attack = parseFloat(attackElement.value) || 0;
+		const defense = parseFloat(defenseElement.value) || 0;
+		const damageReduction = parseFloat(damageReductionElement.value) || 0;
 		
 		// Validate inputs
 		if (attack <= 0) {
-			document.getElementById('finalDamage').textContent = 'Final Damage: Please enter valid attack value';
-			document.getElementById('percentage').textContent = 'Percentage of Attack: 0%';
-			document.getElementById('calculation').textContent = 'Calculation: Invalid inputs';
+			finalDamageElement.textContent = 'Final Damage: Please enter valid attack value';
+			percentageElement.textContent = 'Percentage of Attack: 0%';
+			calculationElement.textContent = 'Calculation: Invalid inputs';
 			return;
 		}
 		
@@ -168,8 +190,8 @@ Final Damage = 972,950 / 1,945.9 × 0.25 = 125.0</pre>
 		const percentage = (finalDamage / attack) * 100;
 		
 		// Display results
-		document.getElementById('finalDamage').textContent = `Final Damage: ${finalDamage.toFixed(2)}`;
-		document.getElementById('percentage').textContent = `Percentage of Attack: ${percentage.toFixed(2)}%`;
+		finalDamageElement.textContent = `Final Damage: ${finalDamage.toFixed(2)}`;
+		percentageElement.textContent = `Percentage of Attack: ${percentage.toFixed(2)}%`;
 		
 		// Show calculation with proper formatting
 		const step1 = `(${attack} × ${K}) / (${defense} + ${K})`;
@@ -177,7 +199,7 @@ Final Damage = 972,950 / 1,945.9 × 0.25 = 125.0</pre>
 		const step3 = `${baseDamage.toFixed(2)} × (1 - ${damageReduction}%)`;
 		const step4 = `${baseDamage.toFixed(2)} × ${(1 - damageReduction/100).toFixed(2)}`;
 		
-		document.getElementById('calculation').textContent = `Calculation: ${step1} = ${step2} = ${baseDamage.toFixed(2)}, then ${step3} = ${step4} = ${finalDamage.toFixed(2)}`;
+		calculationElement.textContent = `Calculation: ${step1} = ${step2} = ${baseDamage.toFixed(2)}, then ${step3} = ${step4} = ${finalDamage.toFixed(2)}`;
 	}
 	
 	// Calculate on page load
