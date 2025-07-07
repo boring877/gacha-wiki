@@ -1,0 +1,239 @@
+/* Zone Nova Damage Mechanics - Simple Styles */
+
+.content-section {
+	background: white;
+	padding: 2rem;
+	border-radius: 8px;
+	margin-bottom: 2rem;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	line-height: 1.6;
+}
+
+.content-section h2 {
+	color: var(--text-primary);
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.content-section h3 {
+	color: var(--text-primary);
+	margin: 1.5rem 0 0.5rem 0;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.content-section p {
+	color: var(--text-secondary);
+	margin-bottom: 1rem;
+}
+
+.content-section hr {
+	border: none;
+	border-top: 1px solid #ddd;
+	margin: 2rem 0;
+}
+
+.formula-box {
+	background: #f8f9fa;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 1rem;
+	margin: 1rem 0;
+	text-align: center;
+}
+
+.formula-box p {
+	margin: 0;
+	font-family: monospace;
+	font-size: 1.1rem;
+}
+
+.calculation-box {
+	background: #f8f9fa;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 1rem;
+	margin: 1rem 0;
+}
+
+.calculation-box pre {
+	margin: 0;
+	font-family: monospace;
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.content-section a {
+	color: var(--teal-crystal);
+	text-decoration: underline;
+}
+
+.content-section a:hover {
+	text-decoration: none;
+}
+
+/* Calculator Styles */
+.calculator {
+	background: #f8f9fa;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 1.5rem;
+	margin: 1rem 0;
+}
+
+.input-group {
+	margin-bottom: 1rem;
+}
+
+.input-group label {
+	display: block;
+	margin-bottom: 0.25rem;
+	font-weight: bold;
+	color: var(--text-primary);
+}
+
+.input-group input {
+	width: 100%;
+	max-width: 200px;
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 1rem;
+}
+
+.input-group input:focus {
+	outline: none;
+	border-color: var(--teal-crystal);
+	box-shadow: 0 0 0 2px rgba(0, 172, 193, 0.2);
+}
+
+.calculator button {
+	background: var(--teal-crystal);
+	color: white;
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: 4px;
+	font-size: 1rem;
+	cursor: pointer;
+	margin: 1rem 0;
+}
+
+.calculator button:hover {
+	background: #0056b3;
+}
+
+.result {
+	background: white;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 1rem;
+	margin-top: 1rem;
+}
+
+.result h3 {
+	margin-top: 0;
+	color: var(--text-primary);
+}
+
+.result p {
+	margin: 0.5rem 0;
+	font-family: monospace;
+	color: var(--text-secondary);
+}
+
+#finalDamage {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: var(--amber-glow) !important;
+}
+
+#percentage {
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: var(--teal-crystal) !important;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+	.content-section {
+		padding: 1rem;
+	}
+	
+	.content-section h2 {
+		font-size: 1.3rem;
+	}
+	
+	.content-section h3 {
+		font-size: 1.1rem;
+	}
+	
+	.formula-box p {
+		font-size: 1rem;
+	}
+	
+	.calculation-box pre {
+		font-size: 0.8rem;
+	}
+	
+	.calculator {
+		padding: 1rem;
+	}
+	
+	.input-group input {
+		max-width: 100%;
+	}
+	
+	.calculator button {
+		width: 100%;
+		padding: 1rem;
+	}
+	
+	#finalDamage {
+		font-size: 1.1rem;
+	}
+	
+	#percentage {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.content-section {
+		padding: 0.75rem;
+	}
+	
+	.content-section h2 {
+		font-size: 1.2rem;
+	}
+	
+	.content-section h3 {
+		font-size: 1rem;
+	}
+	
+	.formula-box p {
+		font-size: 0.9rem;
+	}
+	
+	.calculation-box pre {
+		font-size: 0.7rem;
+	}
+	
+	.calculator {
+		padding: 0.75rem;
+	}
+	
+	.calculator button {
+		font-size: 0.9rem;
+	}
+	
+	#finalDamage {
+		font-size: 1rem;
+	}
+	
+	#percentage {
+		font-size: 0.9rem;
+	}
+}

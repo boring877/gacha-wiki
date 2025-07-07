@@ -13,6 +13,7 @@ const quickLinks = [
 	{ name: 'Memories', href: '/guides/zone-nova/memories/' },
 	{ name: 'Rifts', href: '/guides/zone-nova/rifts/' },
 	{ name: 'Runes', href: '/guides/zone-nova/runes/' },
+	{ name: 'Damage Mechanics', href: '/guides/zone-nova/damage-mechanics/' },
 	{ name: 'Crafting', href: '/guides/zone-nova/crafting/' },
 	{ name: 'Redeem Codes', href: '/guides/zone-nova/redeem-codes/' },
 	{ name: 'Summon FAQ', href: '/guides/zone-nova/summon-faq/' },
@@ -91,13 +92,16 @@ function isActiveLink(href: string): boolean {
 	.nav-links {
 		padding: 1.5rem;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: repeat(4, 1fr);
 		gap: 1rem;
 	}
 
 	.nav-link {
-		display: block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		padding: 1rem 1.5rem;
+		min-height: 60px;
 		color: #e8e8e8;
 		text-decoration: none;
 		border-radius: 12px;
@@ -151,13 +155,13 @@ function isActiveLink(href: string): boolean {
 	/* Responsive grid adjustments */
 	@media (max-width: 1200px) {
 		.nav-links {
-			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 
 	@media (max-width: 900px) {
 		.nav-links {
-			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			grid-template-columns: repeat(2, 1fr);
 			gap: 0.75rem;
 		}
 		

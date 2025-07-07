@@ -79,6 +79,14 @@ export const zoneNovaConfig = {
       category: "guides"
     },
     {
+      id: "damage-mechanics",
+      title: "Damage Mechanics",
+      emoji: "⚔️",
+      description: "Complete guide to Zone Nova's damage calculation system and defense mechanics.",
+      url: "/guides/zone-nova/damage-mechanics/",
+      category: "guides"
+    },
+    {
       id: "summon-faq",
       title: "Summon FAQ",
       emoji: "💎",
