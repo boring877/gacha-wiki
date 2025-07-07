@@ -7,9 +7,11 @@ export interface Props {
   loading?: 'eager' | 'lazy';
   decoding?: 'async' | 'auto' | 'sync';
   class?: string;
+  width?: number | string;
+  height?: number | string;
 }
 
-const { src, alt, loading = 'lazy', decoding = 'async', class: className } = Astro.props;
+const { src, alt, loading = 'lazy', decoding = 'async', class: className, width, height } = Astro.props;
 
 const optimizedDir = '/images/optimized';
 const originalDir = '/images';
@@ -59,7 +61,7 @@ const fallbackSrc = `${optimizedDir}${dir}/${name}-large.jpg`;
     loading={loading}
     decoding={decoding}
     class={className}
-    width="1200"
-    height="675"
+    {...(width && { width })}
+    {...(height && { height })}
   />
 </picture> 

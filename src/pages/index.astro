@@ -1,6 +1,7 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
 import DecorativeLines from '../components/DecorativeLines.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getActiveGames } from '../data/games';
 import { getClockGames, getShowcaseGames } from '../data/homepage-games.js';
@@ -12,15 +13,19 @@ const showcaseGames = getShowcaseGames();
 
 <HomeLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<!-- Critical resource hints -->
-	{clockGames.map(game => (
+	{clockGames.slice(0, 2).map(game => (
 		<link rel="preload" href={game.image} as="image" type="image/jpeg" />
 	))}
 	<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<!-- Performance hints -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 	<link rel="prefetch" href="/guides/zone-nova/" />
 	<link rel="prefetch" href="/guides/silver-and-blood/" />
+	<!-- Optimize for mobile -->
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	
 	<!-- Main Content Area -->
 	<main class="home-main">
@@ -54,7 +59,13 @@ const showcaseGames = getShowcaseGames();
 						<!-- Game Info Header -->
 						<div class="clock-header">
 							<div class="game-image-container" id="clockGameImageContainer">
-								<img class="game-image" id="clockGameImage" src="/images/games/zone-nova/zonenova1.jpg" alt="Zone Nova" width="80" height="80" />
+								<OptimizedImage 
+									class="game-image" 
+									id="clockGameImage" 
+									src="/images/games/zone-nova/zonenova1.jpg" 
+									alt="Zone Nova"
+									loading="eager"
+								/>
 							</div>
 							<div class="game-info">
 								<h3 class="game-name" id="clockGameName">Zone Nova</h3>
@@ -150,7 +161,14 @@ const showcaseGames = getShowcaseGames();
 				<div class="showcase-content" id="showcaseContent">
 					<!-- Image Section -->
 					<div class="showcase-image-section">
-						<img class="showcase-game-image" id="showcaseGameImage" src={showcaseGames[0]?.image} alt={showcaseGames[0]?.name} />
+						<OptimizedImage 
+							class="showcase-game-image" 
+							id="showcaseGameImage" 
+							src={showcaseGames[0]?.image} 
+							alt={showcaseGames[0]?.name}
+							loading="lazy"
+							decoding="async"
+						/>
 						<div class="showcase-image-overlay"></div>
 					</div>
 					
@@ -424,6 +442,14 @@ const showcaseGames = getShowcaseGames();
 	height: 100%;
 	object-fit: cover;
 	transition: opacity 0.4s ease;
+	display: block;
+}
+
+.game-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
 }
 
 .game-info {
@@ -881,6 +907,18 @@ const showcaseGames = getShowcaseGames();
 	transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 	filter: brightness(0.85) contrast(1.2) saturate(1.1);
 	transform: scale(1.05);
+	display: block;
+}
+
+.showcase-game-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+	filter: brightness(0.85) contrast(1.2) saturate(1.1);
+	transform: scale(1.05);
+	display: block;
 }
 
 .showcase-content:hover .showcase-game-image {
@@ -1118,18 +1156,17 @@ const showcaseGames = getShowcaseGames();
 /* Mobile Responsive */
 @media (max-width: 768px) {
 	.hero-section {
-		padding: 4rem 1rem 3rem 1rem;
+		padding: 3rem 1rem 2rem 1rem;
 		min-height: auto;
 	}
 
 	.hero-text-gradient {
-		font-size: 2.5rem;
+		font-size: clamp(2rem, 8vw, 2.8rem);
+		text-shadow: 0 0 40px rgba(255, 183, 77, 0.4);
 	}
 
-	.reset-timers-container {
-		grid-template-columns: 1fr;
-		gap: 1.5rem;
-		padding: 0 0.5rem;
+	.hero-subtitle {
+		font-size: clamp(0.9rem, 3vw, 1.2rem);
 	}
 
 	/* Hero CTA Mobile */
@@ -1138,129 +1175,186 @@ const showcaseGames = getShowcaseGames();
 	}
 
 	.cta-button {
-		padding: 1rem 2rem;
-		font-size: 1rem;
+		padding: 1rem 1.75rem;
+		font-size: 0.95rem;
 		gap: 0.5rem;
+		border-radius: 40px;
 	}
 
-	/* Master Clock Mobile */
+	/* Master Clock Mobile - Improved */
+	.master-clock-container {
+		max-width: 95vw;
+		padding: 0 0.5rem;
+	}
+
 	.master-clock {
-		padding: 2rem 1.5rem;
-		min-height: 350px;
-		max-width: 90vw;
+		padding: 1.5rem 1.25rem;
+		min-height: 320px;
+		max-width: 100%;
+		border-radius: 24px;
+		backdrop-filter: blur(20px);
 	}
 
 	.clock-header {
 		gap: 1rem;
-		margin-bottom: 2rem;
-		flex-direction: column;
-		text-align: center;
+		margin-bottom: 1.5rem;
+		flex-direction: row;
+		text-align: left;
+		justify-content: flex-start;
 	}
 
 	.game-image-container {
-		width: 60px;
-		height: 60px;
-		border-radius: 16px;
+		width: 50px;
+		height: 50px;
+		border-radius: 12px;
 	}
 
 	.game-name {
-		font-size: 1.5rem;
+		font-size: 1.3rem;
+		line-height: 1.2;
 	}
 
 	.game-status {
-		font-size: 0.8rem;
+		font-size: 0.75rem;
+		line-height: 1.3;
 	}
 
-	.time-unit-group {
-		gap: 1rem;
-	}
-
-	.time-value {
-		font-size: 2.5rem;
-	}
-
-	.time-separator {
-		font-size: 2rem;
-	}
-
-	.time-label {
-		font-size: 0.7rem;
-	}
-
-	.clock-navigation {
-		gap: 1.5rem;
+	.clock-display {
 		margin-bottom: 1.5rem;
 	}
 
+	.time-unit-group {
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.time-unit {
+		min-width: 70px;
+		gap: 0.5rem;
+	}
+
+	.time-value {
+		font-size: 2.2rem;
+		min-width: 2ch;
+	}
+
+	.time-separator {
+		font-size: 1.8rem;
+		align-self: flex-start;
+		margin-top: 0.5rem;
+	}
+
+	.time-label {
+		font-size: 0.65rem;
+		font-weight: 600;
+	}
+
+	.timer-description-section {
+		padding: 0.75rem 1rem;
+		margin-bottom: 1rem;
+		border-radius: 12px;
+	}
+
+	.timer-main-label {
+		font-size: 0.95rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.timer-details {
+		font-size: 0.8rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.timer-reset-time {
+		font-size: 0.75rem;
+	}
+
+	.clock-navigation {
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+
 	.nav-btn {
-		width: 40px;
-		height: 40px;
+		width: 36px;
+		height: 36px;
+	}
+
+	.nav-btn svg {
+		width: 14px;
+		height: 14px;
 	}
 
 	.indicator-dot {
-		width: 8px;
-		height: 8px;
+		width: 7px;
+		height: 7px;
 	}
 
 	.rotation-toggle {
-		padding: 0.625rem 1rem;
-		font-size: 0.8rem;
-		gap: 0.5rem;
+		padding: 0.5rem 0.875rem;
+		font-size: 0.75rem;
+		gap: 0.4rem;
+		border-radius: 16px;
 	}
 
 	.auto-showcase {
 		min-height: auto;
-		padding: 2rem 0;
+		padding: 1.5rem 0;
 	}
 
 	.showcase-content {
 		height: auto;
-		min-height: 500px;
-		margin: 0 0.75rem;
-		border-radius: 24px;
+		min-height: 450px;
+		margin: 0 0.5rem;
+		border-radius: 20px;
 		grid-template-columns: 1fr;
-		grid-template-rows: 280px 1fr;
-		overflow: visible;
+		grid-template-rows: 240px 1fr;
+		overflow: hidden;
 	}
 
 	.showcase-content:hover {
-		transform: translateY(-4px);
+		transform: translateY(-2px);
 	}
 
 	.showcase-image-section {
 		order: 1;
 		border-right: none;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		height: 240px;
 	}
 
 	.showcase-content-section {
 		order: 2;
-		padding: 2rem 1.5rem;
+		padding: 1.5rem 1.25rem;
 		border-left: none;
 	}
 
 	.showcase-title {
-		font-size: clamp(1.8rem, 6vw, 2.5rem);
-		margin-bottom: 1rem;
+		font-size: clamp(1.5rem, 6vw, 2.2rem);
+		margin-bottom: 0.75rem;
 		text-align: center;
+		line-height: 1.2;
 	}
 
 	.showcase-description {
-		font-size: 1rem;
+		font-size: 0.9rem;
 		text-align: center;
-		margin-bottom: 1.5rem;
+		margin-bottom: 1.25rem;
+		line-height: 1.5;
 	}
 
 	.showcase-features {
-		gap: 0.5rem;
-		margin-bottom: 2rem;
+		gap: 0.4rem;
+		margin-bottom: 1.5rem;
 		justify-content: center;
+		flex-wrap: wrap;
 	}
 
 	.showcase-feature-tag {
-		padding: 0.6rem 1rem;
-		font-size: 0.75rem;
-		border-radius: 20px;
+		padding: 0.5rem 0.875rem;
+		font-size: 0.7rem;
+		border-radius: 18px;
+		white-space: nowrap;
 	}
 
 	.showcase-actions {
@@ -1268,9 +1362,10 @@ const showcaseGames = getShowcaseGames();
 	}
 
 	.showcase-btn {
-		padding: 0.875rem 2rem;
-		font-size: 0.9rem;
-		border-radius: 40px;
+		padding: 0.75rem 1.75rem;
+		font-size: 0.85rem;
+		border-radius: 35px;
+		gap: 0.5rem;
 	}
 
 	/* Clock Open Source Badge Mobile */
@@ -1545,11 +1640,15 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		
 		setTimeout(() => {
-			// Update content
+			// Update content with preloading for better UX
 			if (clockGameImage && game.image) {
-				clockGameImage.src = game.image;
-				clockGameImage.alt = game.name;
-				clockGameImage.style.opacity = '1';
+				const preloadImage = new Image();
+				preloadImage.src = game.image;
+				preloadImage.onload = () => {
+					clockGameImage.src = game.image;
+					clockGameImage.alt = game.name;
+					clockGameImage.style.opacity = '1';
+				};
 			}
 			if (clockGameName) {
 				clockGameName.textContent = game.name;
@@ -1787,10 +1886,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// Update showcase content elements
 	function updateShowcaseContent(game) {
-		// Update image
+		// Update image with lazy loading
 		if (showcaseGameImage) {
-			showcaseGameImage.src = game.image;
-			showcaseGameImage.alt = game.name;
+			// Preload the new image for smooth transition
+			const newImage = new Image();
+			newImage.src = game.image;
+			newImage.onload = () => {
+				showcaseGameImage.src = game.image;
+				showcaseGameImage.alt = game.name;
+			};
 		}
 		
 		// Update text content
@@ -1826,9 +1930,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	function startShowcaseAutoPlay() {
 		if (showcaseAutoInterval) clearInterval(showcaseAutoInterval);
 		
-		// Longer interval on mobile for better UX
+		// Adjust timing based on device capabilities
 		const isMobile = window.innerWidth <= 768;
-		const interval = isMobile ? 7000 : 5000; // 7s on mobile, 5s on desktop
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
+		
+		let interval = 5000; // Default 5s
+		if (isMobile) interval = 7000; // 7s on mobile
+		if (prefersReducedMotion || isLowEndDevice) interval = 10000; // 10s for low-end devices
 		
 		showcaseAutoInterval = setInterval(() => {
 			const nextIndex = (currentShowcaseIndex + 1) % showcaseGames.length;

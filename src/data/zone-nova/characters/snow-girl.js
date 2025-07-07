@@ -35,7 +35,7 @@ export const snowGirlData = {
       chineseName: '冰雪治愈',
       level: '10+4',
       cooldown: '5.0s',
-      description: 'Heals all friendly units, recovers self attack power 33.6%+182 HP'
+      description: 'Heals all friendly units, restoring HP equal to 33.6% + 182 of own attack power'
     },
     ultimate: {
       name: 'Ice Seal Protection',
@@ -43,7 +43,7 @@ export const snowGirlData = {
       level: '10+4',
       cooldown: '1.0s',
       energyCost: '3',
-      description: 'Heals all friendly units, recovers self attack power 47.2%+182 HP'
+      description: 'Heals all friendly units, restoring HP equal to 47.2% + 182 of own attack power'
     },
     passive: {
       name: 'Frost Blessing',
@@ -58,7 +58,7 @@ export const snowGirlData = {
     name: 'Combination Skill',
     chineseName: '组合技',
     level: '1',
-    description: 'Passive: Self attack power +10%, healing amount +12.5%',
+    description: 'Own attack increased by 10%, healing amount increased by 12.5%',
     requirements: {
       faction: 'Heijing Castle',
       element: 'Ice Frost',
