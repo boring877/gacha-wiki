@@ -1,0 +1,738 @@
+/* Zone Nova Redeem Codes - Premium Design with Zone Nova Colors */
+
+/* Core Animations */
+@keyframes znGlow {
+	0%, 100% { 
+		opacity: 0.4; 
+		transform: scale(1) rotate(0deg); 
+	}
+	50% { 
+		opacity: 0.8; 
+		transform: scale(1.05) rotate(180deg); 
+	}
+}
+
+@keyframes znShimmer {
+	0% { 
+		background-position: -200% center; 
+	}
+	100% { 
+		background-position: 200% center; 
+	}
+}
+
+@keyframes znFloat {
+	0%, 100% { 
+		transform: translateY(0px); 
+	}
+	50% { 
+		transform: translateY(-10px); 
+	}
+}
+
+@keyframes znPulse {
+	0%, 100% { 
+		box-shadow: 0 0 20px rgba(255, 183, 77, 0.3), 
+		           0 0 40px rgba(0, 172, 193, 0.2);
+	}
+	50% { 
+		box-shadow: 0 0 30px rgba(255, 183, 77, 0.5), 
+		           0 0 60px rgba(0, 172, 193, 0.4);
+	}
+}
+
+@keyframes borderGlow {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+/* Page Header - Zone Nova Style */
+.redeem-codes-header {
+	text-align: center;
+	margin-bottom: 4rem;
+	padding: 3rem 1rem;
+}
+
+.redeem-codes-title {
+	font-size: var(--text-4xl);
+	font-weight: var(--font-bold);
+	margin-bottom: 1.5rem;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	line-height: var(--leading-tight);
+	animation: znShimmer 3s ease-in-out infinite;
+}
+
+.redeem-codes-description {
+	font-size: var(--text-lg);
+	color: var(--text-secondary);
+	line-height: var(--leading-relaxed);
+	max-width: 60rem;
+	margin: 0 auto 2rem;
+}
+
+/* Warning Card - Zone Nova Style */
+.redeem-codes-warning {
+	background: var(--bg-secondary);
+	border: 1px solid var(--amber-glow);
+	border-radius: 20px;
+	padding: 2rem;
+	margin: 2rem auto;
+	max-width: 60rem;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0 12px 30px rgba(255, 183, 77, 0.2);
+}
+
+.redeem-codes-warning::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+	animation: znShimmer 3s ease-in-out infinite;
+}
+
+.redeem-codes-warning h3 {
+	color: var(--amber-glow);
+	margin-bottom: 1rem;
+	font-size: var(--text-xl);
+	font-weight: var(--font-bold);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.redeem-codes-warning p {
+	color: var(--text-secondary);
+	line-height: var(--leading-relaxed);
+	margin: 0;
+	font-size: var(--text-base);
+}
+
+.last-updated {
+	color: var(--amber-glow);
+	font-size: var(--text-sm);
+	margin-top: 1rem;
+	font-style: italic;
+	opacity: 0.9;
+}
+
+/* Section Styling */
+.section-title {
+	font-family: var(--font-display);
+	font-size: var(--text-4xl);
+	font-weight: var(--font-bold);
+	color: var(--text-inverse);
+	margin: 0 0 2rem 0;
+	text-align: center;
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	line-height: var(--leading-tight);
+}
+
+.section-description {
+	text-align: center;
+	color: var(--text-secondary);
+	margin-bottom: 2rem;
+	font-size: var(--text-lg);
+	line-height: var(--leading-relaxed);
+}
+
+/* Available Codes Container */
+.available-codes-container {
+	background: linear-gradient(135deg, 
+		rgba(28, 28, 28, 0.02) 0%,
+		rgba(164, 120, 100, 0.03) 100%);
+	border-radius: 30px;
+	padding: 3rem;
+	margin-bottom: 3rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.available-codes-container::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: linear-gradient(90deg, 
+		var(--amber-glow), 
+		var(--teal-crystal), 
+		var(--amber-glow));
+	background-size: 200% auto;
+	animation: znShimmer 3s ease-in-out infinite;
+}
+
+/* Codes Table Design */
+.redeem-codes-table {
+	width: 100%;
+	background: var(--bg-primary);
+	border-radius: 20px;
+	overflow: hidden;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--neutral-200);
+}
+
+.redeem-codes-table-header {
+	background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(28, 28, 28, 0.95) 100%);
+	padding: 1.5rem 2rem;
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	gap: 2rem;
+	border-bottom: 2px solid var(--amber-glow);
+}
+
+.table-header-item {
+	color: var(--amber-glow);
+	font-weight: var(--font-bold);
+	font-size: var(--text-sm);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* Code Row Design */
+.redeem-code-row {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	gap: 2rem;
+	padding: 1.5rem 2rem;
+	border-bottom: 1px solid var(--neutral-100);
+	transition: all 0.3s ease;
+	position: relative;
+	align-items: center;
+}
+
+.redeem-code-row:last-child {
+	border-bottom: none;
+}
+
+.redeem-code-row:hover {
+	background: var(--bg-secondary);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.redeem-code-row::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 3px;
+	background: var(--amber-glow);
+	transform: scaleY(0);
+	transition: transform 0.3s ease;
+}
+
+.redeem-code-row:hover::before {
+	transform: scaleY(1);
+}
+
+/* Code Cell Styles */
+.code-cell {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.code-display {
+	background: var(--bg-dark);
+	padding: 0.75rem 1.5rem;
+	border-radius: 10px;
+	position: relative;
+	overflow: hidden;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	border: 1px solid transparent;
+	transition: all 0.3s ease;
+}
+
+.code-display:hover {
+	border-color: var(--amber-glow);
+	box-shadow: 0 0 20px rgba(255, 183, 77, 0.2);
+}
+
+.code-text {
+	font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+	font-size: var(--text-base);
+	font-weight: var(--font-bold);
+	color: var(--text-inverse);
+	letter-spacing: 2px;
+}
+
+.copy-icon-btn {
+	background: none;
+	border: none;
+	color: var(--amber-glow);
+	cursor: pointer;
+	padding: 0.5rem;
+	border-radius: 8px;
+	transition: all 0.3s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.copy-icon-btn:hover {
+	background: rgba(255, 183, 77, 0.1);
+	transform: scale(1.1);
+}
+
+.copy-icon-btn svg {
+	width: 20px;
+	height: 20px;
+}
+
+.status-cell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.status-badge {
+	padding: 0.5rem 1rem;
+	border-radius: 20px;
+	font-size: var(--text-sm);
+	font-weight: var(--font-semibold);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.status-badge.unknown {
+	background: rgba(255, 183, 77, 0.1);
+	color: var(--amber-glow);
+	border: 1px solid rgba(255, 183, 77, 0.3);
+}
+
+.status-badge.active {
+	background: rgba(76, 175, 80, 0.1);
+	color: #4CAF50;
+	border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.status-indicator {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: currentColor;
+	animation: znPulse 2s ease-in-out infinite;
+}
+
+.date-cell {
+	color: var(--text-secondary);
+	font-size: var(--text-sm);
+	text-align: center;
+}
+
+/* Alternative Card Grid Design */
+.redeem-codes-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+	margin-bottom: 3rem;
+}
+
+.redeem-code-card {
+	background: var(--bg-primary);
+	border: 1px solid var(--neutral-200);
+	border-radius: 16px;
+	padding: 1.5rem;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 1rem;
+	align-items: center;
+}
+
+.redeem-code-card:hover {
+	transform: translateX(5px);
+	box-shadow: 0 10px 30px rgba(0, 172, 193, 0.2);
+	border-color: var(--teal-crystal);
+}
+
+.redeem-code-card::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 4px;
+	background: linear-gradient(180deg, var(--amber-glow), var(--teal-crystal));
+	transform: scaleY(0);
+	transition: transform 0.3s ease;
+}
+
+.redeem-code-card:hover::before {
+	transform: scaleY(1);
+}
+
+.code-info {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.code-main {
+	flex: 1;
+}
+
+.code-label {
+	font-size: var(--text-xs);
+	color: var(--text-secondary);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-bottom: 0.25rem;
+}
+
+.code-value-display {
+	font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+	font-size: var(--text-lg);
+	font-weight: var(--font-bold);
+	color: var(--text-primary);
+	letter-spacing: 2px;
+}
+
+.code-meta {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	margin-top: 0.5rem;
+}
+
+.code-status {
+	padding: 0.25rem 0.75rem;
+	border-radius: 15px;
+	font-size: var(--text-xs);
+	font-weight: var(--font-semibold);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.code-status.unknown {
+	background: rgba(255, 183, 77, 0.1);
+	color: var(--amber-glow);
+}
+
+.code-date {
+	color: var(--text-muted);
+	font-size: var(--text-xs);
+}
+
+.code-action {
+	display: flex;
+	align-items: center;
+}
+
+.copy-button {
+	background: var(--bg-dark);
+	color: var(--text-inverse);
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: 12px;
+	font-weight: var(--font-semibold);
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: var(--text-sm);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.copy-button:hover {
+	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(255, 183, 77, 0.3);
+}
+
+.copy-button:active {
+	transform: translateY(0);
+}
+
+/* Instructions Section - Zone Nova Style */
+.redeem-instructions-container {
+	margin-bottom: 3rem;
+}
+
+.redeem-instructions-card {
+	background: var(--bg-secondary);
+	border: 1px solid var(--amber-glow);
+	border-radius: 20px;
+	padding: 3rem;
+	box-shadow: 0 12px 30px rgba(255, 183, 77, 0.2);
+	position: relative;
+	overflow: hidden;
+}
+
+.redeem-instructions-card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background: linear-gradient(90deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz));
+	animation: znShimmer 3s ease-in-out infinite;
+}
+
+.redeem-instructions-card h3 {
+	color: var(--amber-glow);
+	margin-bottom: 2rem;
+	font-size: var(--text-2xl);
+	font-weight: var(--font-bold);
+	text-align: center;
+}
+
+/* Instruction Steps */
+.redeem-instruction-step {
+	margin-bottom: 2.5rem;
+	padding-bottom: 2rem;
+	border-bottom: 1px solid var(--neutral-200);
+}
+
+.redeem-instruction-step:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.redeem-instruction-step h4 {
+	color: var(--teal-crystal);
+	font-size: var(--text-xl);
+	margin-bottom: 1rem;
+	font-weight: var(--font-semibold);
+}
+
+.redeem-instruction-step p {
+	color: var(--text-secondary);
+	margin-bottom: 1.5rem;
+	line-height: var(--leading-relaxed);
+}
+
+.redeem-step-list {
+	color: var(--text-secondary);
+	line-height: var(--leading-relaxed);
+	margin-bottom: 1.5rem;
+}
+
+.redeem-step-list li {
+	margin-bottom: 0.75rem;
+	padding-left: 0.5rem;
+}
+
+.redeem-instruction-image {
+	background: var(--bg-primary);
+	border: 1px solid var(--neutral-200);
+	border-radius: 12px;
+	padding: 1rem;
+	text-align: center;
+}
+
+.redeem-instruction-image img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	transition: transform 0.3s ease;
+}
+
+.redeem-instruction-image img:hover {
+	transform: scale(1.02);
+}
+
+/* Empty Section */
+.redeem-empty-section {
+	text-align: center;
+	padding: 3rem 2rem;
+	background: var(--bg-secondary);
+	border: 1px solid var(--teal-crystal);
+	border-radius: 15px;
+	margin: 2rem 0;
+}
+
+.redeem-empty-message {
+	color: var(--text-secondary);
+	font-size: var(--text-lg);
+	margin: 0;
+	font-style: italic;
+}
+
+/* Community Section - Zone Nova Style */
+.redeem-community-card {
+	background: var(--bg-secondary);
+	border: 1px solid var(--teal-crystal);
+	border-radius: 20px;
+	padding: 3rem;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0 12px 30px rgba(0, 172, 193, 0.2);
+}
+
+.redeem-community-card::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(circle at center, rgba(0, 172, 193, 0.05), transparent);
+	animation: znGlow 4s ease-in-out infinite;
+}
+
+.redeem-community-buttons {
+	display: flex;
+	gap: 1.5rem;
+	justify-content: center;
+	margin-top: 2rem;
+	flex-wrap: wrap;
+}
+
+.redeem-discord-btn, .redeem-contribute-btn, .redeem-github-btn {
+	padding: 1rem 2rem;
+	border-radius: 50px;
+	text-decoration: none;
+	font-weight: var(--font-semibold);
+	transition: all 0.3s ease;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.redeem-discord-btn {
+	background: #5865F2;
+	color: white;
+	border: 2px solid #5865F2;
+}
+
+.redeem-contribute-btn {
+	background: var(--amber-glow);
+	color: var(--text-inverse);
+	border: 2px solid var(--amber-glow);
+}
+
+.redeem-github-btn {
+	background: transparent;
+	color: var(--teal-crystal);
+	border: 2px solid var(--teal-crystal);
+}
+
+.redeem-discord-btn:hover, .redeem-contribute-btn:hover, .redeem-github-btn:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.redeem-discord-btn:hover {
+	background: #4752C4;
+	border-color: #4752C4;
+}
+
+.redeem-github-btn:hover {
+	background: var(--teal-crystal);
+	color: white;
+}
+
+/* Copy Success Animation */
+.copy-success {
+	background: var(--success-color) !important;
+	transform: scale(1.05) !important;
+}
+
+.code-copied {
+	border-color: var(--success-color) !important;
+	box-shadow: 0 0 20px rgba(76, 175, 80, 0.3) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.redeem-codes-grid {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+	
+	.redeem-code-card {
+		padding: 1.25rem;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+	
+	.code-info {
+		gap: 1rem;
+	}
+	
+	.code-value-display {
+		font-size: var(--text-base);
+		letter-spacing: 1px;
+	}
+	
+	.copy-button {
+		padding: 0.5rem 1rem;
+		font-size: var(--text-xs);
+		width: 100%;
+		justify-content: center;
+	}
+	
+	.redeem-instructions-card {
+		padding: 2rem 1.5rem;
+	}
+	
+	.redeem-instruction-step h4 {
+		font-size: var(--text-lg);
+	}
+	
+	.redeem-instruction-image {
+		padding: 0.75rem;
+	}
+	
+	.redeem-instruction-image img:hover {
+		transform: none;
+	}
+	
+	.redeem-community-buttons {
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+	
+	.redeem-discord-btn, .redeem-contribute-btn, .redeem-github-btn {
+		width: 100%;
+		max-width: 250px;
+		text-align: center;
+	}
+	
+	.redeem-codes-title {
+		font-size: var(--text-3xl);
+	}
+	
+	.redeem-codes-header {
+		padding: 2rem 1rem;
+		margin-bottom: 3rem;
+	}
+	
+	.redeem-codes-warning {
+		padding: 1.5rem;
+		margin: 1.5rem 1rem;
+	}
+	
+	.redeem-community-card {
+		padding: 2rem 1.5rem;
+	}
+}
+

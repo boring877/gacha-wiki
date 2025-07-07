@@ -87,6 +87,14 @@ export const zoneNovaConfig = {
       category: "guides"
     },
     {
+      id: "redeem-codes",
+      title: "Redeem Codes",
+      emoji: "🎁",
+      description: "Active redeem codes for free gems, energy, characters and rewards.",
+      url: "/guides/zone-nova/redeem-codes/",
+      category: "rewards"
+    },
+    {
       id: "surveys",
       title: "Player Surveys",
       emoji: "📋",
