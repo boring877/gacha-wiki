@@ -87,6 +87,15 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       url: "/guides/silver-and-blood/waifu-cutscenes/",
       category: "guides",
       status: "active"
+    },
+    {
+      id: "character-comparison",
+      title: "Character Comparison",
+      emoji: "📊",
+      description: "Compare up to 4 characters side by side to analyze their stats and abilities for optimal team building.",
+      url: "/guides/silver-and-blood/character-comparison/",
+      category: "guides",
+      status: "active"
     }
   ]
 };
