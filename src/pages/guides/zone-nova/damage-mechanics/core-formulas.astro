@@ -1,12 +1,11 @@
 ---
-import ZoneNovaLayout from '../../../layouts/zone-nova/Layout.astro';
-import '../../../styles/games/zone-nova/zn-damage-mechanics.css';
+import DamageMechanicsPageLayout from '../../../../layouts/zone-nova/DamageMechanicsPageLayout.astro';
 ---
 
-<ZoneNovaLayout 
-	title="Zone Nova Damage Mechanics - GachaWiki" 
+<DamageMechanicsPageLayout 
+	title="Zone Nova Core Damage Formulas - GachaWiki" 
 	description="Complete guide to Zone Nova's damage calculation system, defense mechanics, and damage reduction formulas"
-	gameTitle="Damage Mechanics"
+	gameTitle="Core Damage Formulas"
 >
 
 	<section class="content-section">
@@ -28,8 +27,6 @@ import '../../../styles/games/zone-nova/zn-damage-mechanics.css';
 				<label for="damageReduction">Damage Reduction (%):</label>
 				<input type="number" id="damageReduction" value="0" min="0" max="100" oninput="calculateDamage()">
 			</div>
-			
-			<button onclick="calculateDamage()">Calculate Damage</button>
 			
 			<div class="result" id="result">
 				<h3>Results:</h3>
@@ -143,7 +140,8 @@ Final Damage = 972,950 / 1,945.9 × 0.25 = 125.0</pre>
 		<p><strong>Key Point</strong>: Damage Reduction% is applied as the final step and affects ALL damage equally! Even small amounts of damage reduction can be more effective than massive defense increases. 25% damage reduction saves you 125 damage, which would require going from 972.95 defense to about 3900 defense to achieve the same result. Very effected Against bosses !</p>
 	</section>
 
-</ZoneNovaLayout>
+
+</DamageMechanicsPageLayout>
 
 <script>
 	// Declare the function on the Window interface

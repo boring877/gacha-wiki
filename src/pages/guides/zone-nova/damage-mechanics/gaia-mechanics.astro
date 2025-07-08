@@ -1,0 +1,386 @@
+---
+import DamageMechanicsPageLayout from '../../../../layouts/zone-nova/DamageMechanicsPageLayout.astro';
+
+export const prerender = true;
+---
+
+<DamageMechanicsPageLayout 
+  title="Gaia Mechanics - Zone Nova Damage Mechanics | GachaWiki" 
+  description="Complete guide to 【Matriarch】Gaia's complex HP manipulation mechanics, healing calculations, and Motherly Love system in Zone Nova"
+  gameTitle="Gaia Mechanics Guide"
+>
+  <!-- Character Introduction -->
+  <section class="content-section">
+    <div class="character-mechanics-section">
+      <!-- Interactive Calculator -->
+      <div class="gaia-calculator">
+        <h2>Gaia HP Calculator</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+          <div class="input-group">
+            <label for="gaiaHP">Gaia's Base HP:</label>
+            <input type="number" id="gaiaHP" value="10548" min="1">
+          </div>
+          
+          <div class="input-group">
+            <label for="allyHP">Ally's Base HP:</label>
+            <input type="number" id="allyHP" value="8000" min="1">
+          </div>
+        </div>
+        
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="hasMotherlyLove"> Motherly Love (Passive)</label>
+          <label><input type="checkbox" id="hasUltimate"> Ultimate Active</label>
+          <label><input type="checkbox" id="hasAwakening6"> Awakening VI</label>
+          <label><input type="checkbox" id="hasTeamSkill"> Team Skill Active</label>
+        </div>
+        
+        <div class="result" id="gaiaResult">
+          <h3>Results:</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1rem 0;">
+            <div style="padding: 1rem; background: rgba(255, 183, 77, 0.1); border-radius: 8px; text-align: center;">
+              <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Gaia's Final HP</div>
+              <div id="gaiaFinalHP" style="font-size: 1.2rem; font-weight: 700; color: var(--amber-glow);">0</div>
+            </div>
+            <div style="padding: 1rem; background: rgba(0, 172, 193, 0.1); border-radius: 8px; text-align: center;">
+              <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Ally Final HP</div>
+              <div id="allyFinalHP" style="font-size: 1.2rem; font-weight: 700; color: var(--teal-crystal);">0</div>
+            </div>
+            <div style="padding: 1rem; background: rgba(0, 172, 193, 0.1); border-radius: 8px; text-align: center;">
+              <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Ally HP Increase</div>
+              <div id="hpIncrease" style="font-size: 1.2rem; font-weight: 700; color: var(--teal-crystal);">0</div>
+            </div>
+            <div style="padding: 1rem; background: rgba(244, 143, 177, 0.1); border-radius: 8px; text-align: center;">
+              <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Emergency Heal</div>
+              <div id="emergencyHeal" style="font-size: 1.2rem; font-weight: 700; color: var(--rose-quartz);">0</div>
+            </div>
+            <div style="padding: 1rem; background: rgba(0, 172, 193, 0.1); border-radius: 8px; text-align: center;">
+              <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Healing Bonus</div>
+              <div id="gaiaHealingBonus" style="font-size: 1.2rem; font-weight: 700; color: var(--teal-crystal);">0%</div>
+            </div>
+          </div>
+          <div id="gaiaCalculations" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; margin-top: 1rem; font-family: monospace; font-size: 0.9rem; line-height: 1.6;">
+            Calculations will appear here
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mathematical Formulas -->
+  <section class="content-section">
+    <h2>Gaia Formulas</h2>
+    
+    <div class="formula-box">
+      <h3>HP Increase Formula</h3>
+      <pre>HP Increase = min(Ally Base HP × 60%, Gaia Max HP × 15%)</pre>
+      <p>All HP increases are capped at 15% of Gaia's max HP.</p>
+    </div>
+
+    <div class="formula-box">
+      <h3>Emergency Treatment</h3>
+      <pre>Heal Amount = Gaia Max HP × 12%</pre>
+      <p>Heals the ally with lowest HP percentage.</p>
+    </div>
+
+    <div class="formula-box">
+      <h3>Awakening VI Enhancement</h3>
+      <pre>Total HP Increase = min(Ally Base HP × 110%, Gaia Max HP × 15%)</pre>
+      <p>Base 60% + Additional 50% = 110% total (still capped at 15% of Gaia's HP)</p>
+    </div>
+
+    <div class="formula-box">
+      <h3>Team Skill Healing Bonus</h3>
+      <pre>Healing Bonus = floor(Gaia Max HP / 5000) × 5% (max 30%)</pre>
+      <p>Gaia's healing increases by 5% per 5,000 max HP (up to 6 stacks)</p>
+    </div>
+  </section>
+
+  <!-- Effectiveness Charts Section -->
+  <section class="content-section">
+    <h2>Gaia 15% Cap Analysis</h2>
+    <p>This chart shows the critical breakpoint where Gaia's 15% HP cap prevents allies from getting the full 60% HP increase.</p>
+    
+    <div class="chart-container">
+      <h3>Cap vs 60% Comparison</h3>
+      <p style="color: rgba(255, 255, 255, 0.8); text-align: center; margin-bottom: 2rem;">
+        <strong>Red line shows when 15% cap kicks in and blocks the full 60% increase</strong>
+      </p>
+      <canvas id="capAnalysisChart" width="800" height="400"></canvas>
+    </div>
+  </section>
+
+</DamageMechanicsPageLayout>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  // Declare the function on the Window interface
+  declare global {
+    interface Window {
+      calculateGaiaEffects: () => void;
+    }
+  }
+
+  // Gaia Mechanics Calculator
+  window.calculateGaiaEffects = function() {
+    // Get elements with null checks
+    const gaiaHPElement = document.getElementById('gaiaHP') as HTMLInputElement;
+    const allyHPElement = document.getElementById('allyHP') as HTMLInputElement;
+    const hasMotherlyLoveElement = document.getElementById('hasMotherlyLove') as HTMLInputElement;
+    const hasUltimateElement = document.getElementById('hasUltimate') as HTMLInputElement;
+    const hasAwakening6Element = document.getElementById('hasAwakening6') as HTMLInputElement;
+    const hasTeamSkillElement = document.getElementById('hasTeamSkill') as HTMLInputElement;
+    
+    const gaiaFinalHPElement = document.getElementById('gaiaFinalHP');
+    const allyFinalHPElement = document.getElementById('allyFinalHP');
+    const hpIncreaseElement = document.getElementById('hpIncrease');
+    const emergencyHealElement = document.getElementById('emergencyHeal');
+    const gaiaHealingBonusElement = document.getElementById('gaiaHealingBonus');
+    const gaiaCalculationsElement = document.getElementById('gaiaCalculations');
+    
+    // Check if all elements exist
+    if (!gaiaHPElement || !allyHPElement || !gaiaFinalHPElement || !allyFinalHPElement || 
+        !hpIncreaseElement || !emergencyHealElement || !gaiaHealingBonusElement || !gaiaCalculationsElement) {
+      console.error('Gaia calculator elements not found');
+      return;
+    }
+    
+    // Get input values
+    const gaiaBaseHP = parseFloat(gaiaHPElement.value) || 0;
+    const allyBaseHP = parseFloat(allyHPElement.value) || 0;
+    const hasMotherlyLove = hasMotherlyLoveElement?.checked || false;
+    const hasUltimate = hasUltimateElement?.checked || false;
+    const hasAwakening6 = hasAwakening6Element?.checked || false;
+    const hasTeamSkill = hasTeamSkillElement?.checked || false;
+    
+    // Validate inputs
+    if (gaiaBaseHP <= 0 || allyBaseHP <= 0) {
+      gaiaFinalHPElement.textContent = 'Please enter valid HP values';
+      allyFinalHPElement.textContent = 'Please enter valid HP values';
+      hpIncreaseElement.textContent = '0';
+      emergencyHealElement.textContent = '0';
+      gaiaHealingBonusElement.textContent = '0%';
+      gaiaCalculationsElement.textContent = 'Invalid inputs';
+      return;
+    }
+    
+    // Calculate Gaia's effective HP (base + team skill bonus)
+    let gaiaCurrentHP = gaiaBaseHP;
+    if (hasTeamSkill) {
+      gaiaCurrentHP = gaiaBaseHP * 1.10; // +10% from team skill
+    }
+    
+    // Calculate HP effects for allies
+    let totalIncrease = 0;
+    const cap = gaiaBaseHP * 0.15; // 15% of Gaia's BASE HP cap (each skill has separate cap)
+    let calculations = [];
+    
+    // Gaia gets ultimate HP boost too (capped at 15% of base HP)
+    let gaiaFinalHP = gaiaCurrentHP;
+    if (hasUltimate) {
+      const gaiaUltimateIncrease = Math.min(gaiaBaseHP * 0.60, gaiaBaseHP * 0.15); // 60% increase, capped at 15% of base HP
+      gaiaFinalHP = gaiaCurrentHP + gaiaUltimateIncrease;
+      calculations.push(`Gaia Ultimate HP: ${gaiaCurrentHP.toFixed(0)} + min(${gaiaBaseHP} × 60%, ${gaiaBaseHP} × 15%) = ${gaiaCurrentHP.toFixed(0)} + ${gaiaUltimateIncrease.toFixed(0)} = ${gaiaFinalHP.toFixed(0)}`);
+    }
+    
+    // Motherly Love calculation (separate 15% cap)
+    if (hasMotherlyLove) {
+      const motherlyLoveIncrease = Math.min(allyBaseHP * 0.60, cap);
+      totalIncrease += motherlyLoveIncrease;
+      calculations.push(`Motherly Love: min(${allyBaseHP} × 60%, ${gaiaBaseHP} × 15%) = min(${(allyBaseHP * 0.60).toFixed(0)}, ${cap.toFixed(0)}) = ${motherlyLoveIncrease.toFixed(0)}`);
+      
+      // Awakening VI additional HP (adds to Motherly Love, shared cap)
+      if (hasAwakening6) {
+        const additionalIncrease = Math.min(allyBaseHP * 0.50, cap - motherlyLoveIncrease);
+        totalIncrease += additionalIncrease;
+        calculations.push(`Awakening VI Bonus: min(${allyBaseHP} × 50%, ${cap.toFixed(0)} - ${motherlyLoveIncrease.toFixed(0)}) = ${additionalIncrease.toFixed(0)}`);
+      }
+    }
+    
+    // Ultimate calculation (separate 15% cap, can stack with Motherly Love)
+    if (hasUltimate) {
+      const ultimateIncrease = Math.min(allyBaseHP * 0.60, cap);
+      totalIncrease += ultimateIncrease;
+      calculations.push(`Ultimate: min(${allyBaseHP} × 60%, ${gaiaBaseHP} × 15%) = min(${(allyBaseHP * 0.60).toFixed(0)}, ${cap.toFixed(0)}) = ${ultimateIncrease.toFixed(0)}`);
+    }
+    
+    if (hasMotherlyLove && hasUltimate) {
+      calculations.push(`Total HP Increase: ${totalIncrease.toFixed(0)} (Motherly Love + Ultimate, each capped separately)`);
+    }
+    
+    const allyFinalHP = allyBaseHP + totalIncrease;
+    
+    // Emergency Treatment healing (based on Gaia's final HP)
+    const emergencyHeal = gaiaFinalHP * 0.12;
+    
+    // Team Skill healing bonus calculation
+    let healingBonus = 0;
+    if (hasTeamSkill) {
+      const stacks = Math.floor(gaiaFinalHP / 5000);
+      const cappedStacks = Math.min(stacks, 6);
+      healingBonus = cappedStacks * 5;
+      calculations.push(`Team Skill Healing: floor(${gaiaFinalHP.toFixed(0)} / 5000) × 5% = ${cappedStacks} stacks × 5% = ${healingBonus}%`);
+    }
+    
+    // Display results
+    gaiaFinalHPElement.textContent = `${gaiaFinalHP.toFixed(0)}`;
+    allyFinalHPElement.textContent = `${allyFinalHP.toFixed(0)}`;
+    hpIncreaseElement.textContent = `+${totalIncrease.toFixed(0)} (+${((totalIncrease / allyBaseHP) * 100).toFixed(1)}%)`;
+    emergencyHealElement.textContent = `${emergencyHeal.toFixed(0)}`;
+    gaiaHealingBonusElement.textContent = `+${healingBonus}%`;
+    gaiaCalculationsElement.innerHTML = calculations.length > 0 ? '<strong>Step-by-step calculations:</strong><br>' + calculations.join('<br>') : 'No effects active - check options above to see calculations';
+  }
+
+  // Chart variables
+  let capAnalysisChart = null;
+
+  // Create cap analysis chart
+  function createEffectivenessCharts() {
+    const gaiaHPElement = document.getElementById('gaiaHP') as HTMLInputElement;
+    const gaiaBaseHP = parseFloat(gaiaHPElement?.value) || 10548;
+    const cap = gaiaBaseHP * 0.15;
+    
+    // Calculate the breakpoint where cap kicks in
+    const breakpointHP = cap / 0.60; // When ally HP * 60% equals the cap
+    
+    // Generate smooth data points from 5k to 50k
+    const allyHPValues = [];
+    const theoretical60Data = [];
+    const actualIncreaseData = [];
+    const capLineData = [];
+    
+    for (let hp = 5000; hp <= 50000; hp += 1000) {
+      allyHPValues.push(hp);
+      theoretical60Data.push(hp * 0.60); // What 60% would give
+      actualIncreaseData.push(Math.min(hp * 0.60, cap)); // What you actually get
+      capLineData.push(cap); // The 15% cap line
+    }
+
+    // Cap Analysis Chart
+    const ctx = document.getElementById('capAnalysisChart') as HTMLCanvasElement;
+    if (capAnalysisChart) capAnalysisChart.destroy();
+    
+    capAnalysisChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: allyHPValues.map(hp => (hp / 1000) + 'k'),
+        datasets: [
+          {
+            label: 'Theoretical 60% HP Increase',
+            data: theoretical60Data,
+            borderColor: '#90EE90',
+            backgroundColor: 'rgba(144, 238, 144, 0.1)',
+            tension: 0.1,
+            borderWidth: 3
+          },
+          {
+            label: 'Actual HP Increase (Capped)',
+            data: actualIncreaseData,
+            borderColor: '#FFD700',
+            backgroundColor: 'rgba(255, 215, 0, 0.1)',
+            tension: 0.1,
+            borderWidth: 3
+          },
+          {
+            label: `15% Cap (${cap.toLocaleString()} HP)`,
+            data: capLineData,
+            borderColor: '#FF6B6B',
+            backgroundColor: 'rgba(255, 107, 107, 0.2)',
+            borderDash: [8, 4],
+            pointRadius: 0,
+            borderWidth: 3,
+            fill: '+1'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        interaction: {
+          intersect: false,
+          mode: 'index'
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: `CAP BREAKPOINT: ${breakpointHP.toLocaleString()} Ally HP (Gaia: ${gaiaBaseHP.toLocaleString()} HP)`,
+            color: '#FF6B6B',
+            font: { size: 16, weight: 'bold' }
+          },
+          legend: {
+            labels: { color: '#FFFFFF', font: { size: 12 } }
+          },
+          tooltip: {
+            callbacks: {
+              afterBody: function(context) {
+                const allyHP = allyHPValues[context[0].dataIndex];
+                if (allyHP > breakpointHP) {
+                  const lost = (allyHP * 0.60) - cap;
+                  return [`HP LOST TO CAP: ${lost.toLocaleString()}`];
+                }
+                return [];
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: { 
+              display: true, 
+              text: 'Ally Base HP', 
+              color: '#FFFFFF',
+              font: { size: 14, weight: 'bold' }
+            },
+            ticks: { 
+              color: '#FFFFFF',
+              font: { size: 12 }
+            },
+            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+          },
+          y: {
+            title: { 
+              display: true, 
+              text: 'HP Increase Amount', 
+              color: '#FFFFFF',
+              font: { size: 14, weight: 'bold' }
+            },
+            ticks: { 
+              color: '#FFFFFF',
+              font: { size: 12 },
+              callback: function(value) {
+                return (value / 1000).toFixed(0) + 'k';
+              }
+            },
+            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+            beginAtZero: true
+          }
+        },
+        elements: {
+          point: {
+            radius: 4,
+            hoverRadius: 8
+          }
+        }
+      }
+    });
+  }
+  
+  // Calculate on page load and auto-calculate on any input change
+  document.addEventListener('DOMContentLoaded', function() {
+    window.calculateGaiaEffects();
+    createEffectivenessCharts();
+    
+    // Auto-calculate on input changes
+    const inputs = document.querySelectorAll('#gaiaHP, #allyHP, #hasMotherlyLove, #hasUltimate, #hasAwakening6, #hasTeamSkill');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        window.calculateGaiaEffects();
+        createEffectivenessCharts(); // Update charts when Gaia HP changes
+      });
+      input.addEventListener('change', () => {
+        window.calculateGaiaEffects();
+        createEffectivenessCharts(); // Update charts when Gaia HP changes
+      });
+    });
+  });
+</script>

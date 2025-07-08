@@ -1,0 +1,77 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import UpdateBackButton from '../../components/zone-nova/UpdateBackButton.astro';
+import ZoneNovaQuickNav from '../../components/zone-nova/ZoneNovaQuickNav.astro';
+
+// Import Zone Nova specific styles
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/zone-nova/zn-layout.css';
+import '../../styles/games/zone-nova/zn-badge-colour.css';
+
+export interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title || ''} description={description || ''} />
+		<!-- ZN comparison styles need to override global styles, so we load them last -->
+		<style is:global>
+			@import '../../styles/games/zone-nova/zn-character-comparison.css';
+		</style>
+		<!-- Canonical URL -->
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<slot name="head" />
+	</head>
+	<body class="zone-nova-body">
+		<!-- Background layers for visual depth similar to landing page -->
+		<div class="bg-layer bg-primary"></div>
+		<div class="bg-layer bg-accent-1"></div>
+		<div class="bg-layer bg-accent-2"></div>
+		<div class="bg-layer bg-accent-3"></div>
+		
+		<div class="zone-nova-content">
+			<Header />
+			<MobileMenu />
+			
+			<div class="zone-nova-container">
+				<main class="zone-nova-main">
+					<!-- Page Title Section -->
+					<section class="title-only-section">
+						<h1 class="title-only-heading">
+							Character Comparison Tool
+						</h1>
+						
+						<DecorativeLines />
+					</section>
+
+					<!-- Zone Nova Quick Navigation -->
+					<ZoneNovaQuickNav currentPath={Astro.url.pathname} />
+					
+					<!-- Content Area -->
+					<div class="content-area">
+						<!-- Back Button -->
+						<div class="back-button-container" style="margin-bottom: 2rem;">
+							<UpdateBackButton href="/guides/zone-nova/characters/" text="Back to Character List" />
+						</div>
+						
+						<!-- Main content slot -->
+						<slot />
+					</div>
+				</main>
+			</div>
+			
+			<Footer />
+		</div>
+	</body>
+</html>

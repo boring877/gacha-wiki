@@ -78,64 +78,123 @@ function getClassMemorySubtitle(effects: string[]): string {
     <!-- Back Button -->
     <ZnBackButton href="/guides/zone-nova/memories/" text="Back to Memories" />
 
-    <!-- Memory Overview Header -->
-    <section class="memory-overview">
-      <div class="memory-image-container">
-        <img 
-          src={memoryData.image}
-          alt={memoryData.name}
-          width={150}
-          height={225}
-          loading="lazy"
-          class="memory-card-image"
-        />
+    <!-- Premium Memory Overview Header -->
+    <section class="memory-overview-premium">
+      <div class="memory-hero-container">
+        <!-- Memory Card Display -->
+        <div class="memory-card-showcase">
+          <div class="memory-card-frame">
+            <img 
+              src={memoryData.image}
+              alt={memoryData.name}
+              width={200}
+              height={300}
+              loading="lazy"
+              class="memory-card-image-premium"
+            />
+            <div class="memory-card-glow"></div>
+          </div>
+          
+          <!-- Rarity Badge Overlay -->
+          <div class="memory-rarity-overlay">
+            <span class={`memory-rarity-badge-premium ${memoryData.rarity.toLowerCase()}`}>
+              {memoryData.rarity}
+            </span>
+          </div>
+        </div>
+
+        <!-- Memory Information Panel -->
+        <div class="memory-info-panel">
+          <div class="memory-header-section">
+            <h1 class="memory-title-premium">{memoryData.name}</h1>
+            <p class="memory-subtitle-premium">
+              {memoryData.character ? `Exclusive Memory for ${memoryData.character}` : getClassMemorySubtitle(memoryData.effects)}
+            </p>
+            
+            {memoryData.element && (
+              <div class="memory-element-display">
+                <span class={`memory-element-badge-premium ${memoryData.element.toLowerCase()}`}>
+                  {memoryData.element}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <!-- Premium Stats Display -->
+          <div class="memory-stats-premium">
+            <h3 class="stats-section-title">Memory Stats</h3>
+            <div class="memory-stats-grid-premium">
+              <div class="memory-stat-premium hp">
+                <div class="stat-icon">❤️</div>
+                <div class="stat-info">
+                  <div class="stat-label">HP</div>
+                  <div class="stat-value">{memoryData.stats.hp.toLocaleString()}</div>
+                </div>
+              </div>
+              <div class="memory-stat-premium attack">
+                <div class="stat-icon">⚔️</div>
+                <div class="stat-info">
+                  <div class="stat-label">ATK</div>
+                  <div class="stat-value">{memoryData.stats.attack.toLocaleString()}</div>
+                </div>
+              </div>
+              <div class="memory-stat-premium defense">
+                <div class="stat-icon">🛡️</div>
+                <div class="stat-info">
+                  <div class="stat-label">DEF</div>
+                  <div class="stat-value">{memoryData.stats.defense.toLocaleString()}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Premium Memory Effects Section -->
+    <section class="memory-effects-premium">
+      <div class="effects-header">
+        <h2 class="effects-title-premium">Memory Effects</h2>
+        <p class="effects-subtitle">Abilities granted by this memory card</p>
       </div>
       
-      <div class="memory-info">
-        <h1 class="memory-title">{memoryData.name}</h1>
-        <p class="memory-subtitle">{memoryData.character ? `Memory Card for ${memoryData.character}` : getClassMemorySubtitle(memoryData.effects)}</p>
-        
-        <div class="memory-badges">
-          <span class={`memory-rarity-badge ${memoryData.rarity.toLowerCase()}`}>{memoryData.rarity}</span>
-        </div>
-
-        <!-- Quick Stats in Overview -->
-        <div class="memory-stats-grid">
-          <div class="memory-stat-item">
-            <div class="memory-stat-label">HP</div>
-            <div class="memory-stat-value">{memoryData.stats.hp.toLocaleString()}</div>
-          </div>
-          <div class="memory-stat-item">
-            <div class="memory-stat-label">Attack</div>
-            <div class="memory-stat-value">{memoryData.stats.attack.toLocaleString()}</div>
-          </div>
-          <div class="memory-stat-item">
-            <div class="memory-stat-label">Defense</div>
-            <div class="memory-stat-value">{memoryData.stats.defense.toLocaleString()}</div>
-          </div>
-        </div>
+      <div class="effects-content-premium">
+        <ul class="effects-list-premium">
+          {memoryData.effects.map(effect => (
+            <li class="effect-item-premium">{effect}</li>
+          ))}
+        </ul>
       </div>
     </section>
 
-    <!-- Memory Effects - Most Important Info First -->
-    <section class="memory-content-section">
-      <h2 class="memory-section-title">Memory Effects</h2>
-      <ul class="memory-effects-list">
-        {memoryData.effects.map(effect => (
-          <li class="memory-effect-item">{effect}</li>
-        ))}
-      </ul>
-    </section>
-
-    <!-- Character Information -->
+    <!-- Premium Character Synergy Section -->
     {memoryData.character && (
-      <section class="memory-content-section">
-        <h2 class="memory-section-title">Character Synergy</h2>
-        <p>This memory card is specifically designed for <strong>{memoryData.character}</strong> and provides optimal synergy with their abilities and playstyle.</p>
-        <a href={getCharacterUrl(memoryData.character)} class="memory-character-link">
-          <span>View {memoryData.character} Character Guide</span>
-          <span>→</span>
-        </a>
+      <section class="character-synergy-premium">
+        <div class="synergy-container">
+          <div class="synergy-header">
+            <h2 class="synergy-title-premium">Character Synergy</h2>
+            <div class="synergy-character-highlight">
+              <span class="character-name-premium">{memoryData.character}</span>
+              <span class="exclusive-badge">Exclusive</span>
+            </div>
+          </div>
+          
+          <div class="synergy-content">
+            <p class="synergy-description">
+              This memory card is specifically designed for <strong>{memoryData.character}</strong> and provides optimal synergy with their abilities and playstyle. The effects complement their kit perfectly for maximum effectiveness.
+            </p>
+            
+            <a href={getCharacterUrl(memoryData.character)} class="character-guide-link-premium">
+              <div class="link-icon">
+                <div class="icon-text">CHAR</div>
+              </div>
+              <div class="link-content">
+                <span class="link-text">View {memoryData.character} Character Guide</span>
+                <span class="link-arrow">→</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </section>
     )}
   </div>

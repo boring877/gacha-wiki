@@ -47,6 +47,14 @@ export const zoneNovaConfig = {
       category: "guides"
     },
     {
+      id: "character-comparison",
+      title: "Character Comparison",
+      emoji: "📊",
+      description: "Compare up to 4 characters side by side to analyze their stats and roles for optimal team building.",
+      url: "/guides/zone-nova/character-comparison/",
+      category: "guides"
+    },
+    {
       id: "memories",
       title: "Memory Database",
       emoji: "🃏",

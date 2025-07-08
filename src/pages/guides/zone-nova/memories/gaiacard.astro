@@ -1,0 +1,28 @@
+---
+import MemoryTemplate from '../../../../templates/zone-nova/MemoryTemplate.astro';
+import { gaiamemoryData } from '../../../../data/zone-nova/memories/gaiacard.js';
+
+export const prerender = true;
+
+// Memory-specific data
+const memoryData = {
+  ...gaiamemoryData,
+  effects: [
+    'Max HP +40%',
+    'Healing output +40%',
+    'If wearer healed within last 1 second: additional +40% healing output',
+    'Total Potential: Up to 80% healing output (40% base + 40% conditional)'
+  ]
+};
+
+// SEO data
+const memorySEO = {
+  title: 'A Smile That Topples Cities - Gaia Memory Card | Zone Nova | GachaWiki',
+  description: 'Complete guide to A Smile That Topples Cities memory card for Gaia in Zone Nova. SSR Holy memory with Max HP +40% and up to 80% healing output boost.'
+};
+---
+
+<MemoryTemplate 
+  memoryData={memoryData}
+  memorySEO={memorySEO}
+/>

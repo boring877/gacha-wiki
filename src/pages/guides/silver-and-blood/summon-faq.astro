@@ -1,11 +1,153 @@
 ---
-import SummonFAQLayout from '../../../layouts/silver-and-blood/SummonFAQLayout.astro';
+import '../../../styles/games/silver-and-blood/sab-summon-faq.css';
+import SilverAndBloodLayout from '../../../layouts/silver-and-blood/Layout.astro';
 import { summonFaqData } from '../../../data/silver-and-blood/summon-faq.js';
+
+const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq } = summonFaqData;
 ---
 
-<SummonFAQLayout 
-  title={summonFaqData.meta.title}
-  description={summonFaqData.meta.description}
-  gameTitle={summonFaqData.meta.gameTitle}
-  data={summonFaqData}
-/>
+<SilverAndBloodLayout 
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+>
+  <Fragment slot="head">
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="keywords" content={meta.keywords} />
+    <meta name="author" content="GachaWiki" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={meta.ogTitle} />
+    <meta property="og:description" content={meta.ogDescription} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta.ogTitle} />
+    <meta name="twitter:description" content={meta.ogDescription} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    
+    <!-- Mobile Optimization -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#8B0000" />
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Guide",
+        "name": meta.title,
+        "description": meta.description,
+        "about": {
+          "@type": "VideoGame",
+          "name": "Silver and Blood"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "GachaWiki"
+        }
+      })}
+    </script>
+  </Fragment>
+
+  <!-- Page Content -->
+  <h2 class="section-title">Summon FAQ</h2>
+  
+  <!-- Introduction -->
+  <div class="faq-intro">
+    <p>{intro.text}</p>
+  </div>
+
+  <!-- Summon Types -->
+  <div class="faq-section">
+    <h3 class="faq-section-title">💎 Summon Types</h3>
+    
+    {summonTypes.map(type => (
+      <div class="faq-card">
+        <h4>{type.title}</h4>
+        <p><strong>Cost:</strong> {type.cost}</p>
+        <p><strong>Total SSR Rate:</strong> {type.totalSSRRate}</p>
+        <ul>
+          {type.details.map(detail => (
+            <li>{detail}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <!-- Pity System -->
+  <div class="faq-section">
+    <h3 class="faq-section-title">🎯 Pity System</h3>
+    
+    <div class="pity-info">
+      {pitySystem.map(pity => (
+        <div class="pity-card">
+          <h4>{pity.title}</h4>
+          <p><strong>{pity.pullCount}</strong> - Guaranteed SSR character</p>
+          <p>{pity.description}</p>
+          <p>{pity.note}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Currency Guide -->
+  <div class="faq-section">
+    <h3 class="faq-section-title">💰 Summon Currency & Rewards</h3>
+    
+    <div class="currency-grid">
+      {currencies.map(currency => (
+        <div class="currency-card">
+          {currency.image ? (
+            <div class="currency-image-container">
+              <img 
+                src={currency.image} 
+                alt={currency.title}
+                class="currency-image"
+                loading="lazy"
+              />
+            </div>
+          ) : (
+            <div class="currency-icon">{currency.icon}</div>
+          )}
+          <h4>{currency.title}</h4>
+          <p>{currency.description}</p>
+          <p><strong>Use:</strong> {currency.use}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Selection System -->
+  <div class="faq-section">
+    <h3 class="faq-section-title">🎯 Selection System</h3>
+    
+    <div class="faq-card">
+      <h4>How It Works</h4>
+      <p><strong>Unlock Requirement:</strong> {selectionSystem.unlockRequirement}</p>
+      <p><strong>Selection Process:</strong> {selectionSystem.selectionProcess}</p>
+      <p><strong>Effect:</strong> {selectionSystem.effect}</p>
+      <p><strong>Important:</strong> {selectionSystem.note}</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h3 class="faq-section-title">❓ Frequently Asked Questions</h3>
+    
+    <div class="faq-items">
+      {faq.map(item => (
+        <div class="faq-item">
+          <h4>Q: {item.question}</h4>
+          <p>A: {item.answer}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</SilverAndBloodLayout>

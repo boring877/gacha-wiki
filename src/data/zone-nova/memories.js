@@ -883,6 +883,27 @@ export const ZONE_NOVA_MEMORIES = [
       'After an ally in [Support Position] uses their ultimate skill, this character\'s ultimate skill damage increases by 40% for 5 seconds',
       'Total Potential: 40% base attack + 40% conditional ultimate damage boost'
     ]
+  },
+  {
+    id: 'gaiacard',
+    slug: 'gaiacard',
+    name: 'A Smile That Topples Cities',
+    image: '/images/games/zone-nova/memories/Gaiacard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: 'Gaia',
+    detailUrl: '/guides/zone-nova/memories/gaiacard/',
+    stats: {
+      hp: 6300,
+      attack: 580,
+      defense: 585
+    },
+    effects: [
+      'Max HP +40%',
+      'Healing output +40%',
+      'If wearer healed within last 1 second: additional +40% healing output',
+      'Total Potential: Up to 80% healing output (40% base + 40% conditional)'
+    ]
   }
 ];
 
@@ -890,7 +911,7 @@ export const ZONE_NOVA_MEMORIES = [
 export const MEMORY_METADATA = {
   rarities: ['SSR', 'SR', 'R'],
   elements: ['Fire', 'Ice', 'Wind', 'Holy', 'Chaos'],
-  characters: ['Anubis', 'Apollo', 'Artemis', 'Arthur', 'Athena', 'Bastet', 'Belphegar', 'Chiya', 'Cleopatra', 'Greed Mammon', 'Guinevere', 'Hera', 'Horus', 'Jeanne d\'Arc', 'Kela', 'Lancelot', 'Leviathan', 'Loki', 'Lyra', 'Merlin', 'Mordred', 'Naiya', 'Nini', 'Penny', 'Rose', 'Shanna', 'Shu', 'Snow Girl', 'Tefnut', 'Yuis', 'Zashiki-warashi']
+  characters: ['Anubis', 'Apollo', 'Artemis', 'Arthur', 'Athena', 'Bastet', 'Belphegar', 'Chiya', 'Cleopatra', 'Gaia', 'Greed Mammon', 'Guinevere', 'Hera', 'Horus', 'Jeanne d\'Arc', 'Kela', 'Lancelot', 'Leviathan', 'Loki', 'Lyra', 'Merlin', 'Mordred', 'Naiya', 'Nini', 'Penny', 'Rose', 'Shanna', 'Shu', 'Snow Girl', 'Tefnut', 'Yuis', 'Zashiki-warashi']
 };
 
 // Helper functions for memory management

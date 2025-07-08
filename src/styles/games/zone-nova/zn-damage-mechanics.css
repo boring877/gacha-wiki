@@ -1,239 +1,409 @@
-/* Zone Nova Damage Mechanics - Simple Styles */
+/* Zone Nova Damage Mechanics - Premium Design System */
 
+/* Content Sections */
 .content-section {
-	background: white;
-	padding: 2rem;
-	border-radius: 8px;
-	margin-bottom: 2rem;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	line-height: 1.6;
+  margin: 2.5rem 0;
 }
 
 .content-section h2 {
-	color: var(--text-primary);
-	margin-bottom: 1rem;
-	font-size: 1.5rem;
-	font-weight: bold;
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF6347 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 20px rgba(255, 215, 0, 0.2);
 }
 
 .content-section h3 {
-	color: var(--text-primary);
-	margin: 1.5rem 0 0.5rem 0;
-	font-size: 1.2rem;
-	font-weight: bold;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #00E5FF;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
 }
 
 .content-section p {
-	color: var(--text-secondary);
-	margin-bottom: 1rem;
-}
-
-.content-section hr {
-	border: none;
-	border-top: 1px solid #ddd;
-	margin: 2rem 0;
-}
-
-.formula-box {
-	background: #f8f9fa;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	padding: 1rem;
-	margin: 1rem 0;
-	text-align: center;
-}
-
-.formula-box p {
-	margin: 0;
-	font-family: monospace;
-	font-size: 1.1rem;
-}
-
-.calculation-box {
-	background: #f8f9fa;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	padding: 1rem;
-	margin: 1rem 0;
-}
-
-.calculation-box pre {
-	margin: 0;
-	font-family: monospace;
-	font-size: 0.9rem;
-	color: var(--text-secondary);
-	white-space: pre-wrap;
-	word-wrap: break-word;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
 }
 
 .content-section a {
-	color: var(--teal-crystal);
-	text-decoration: underline;
+  color: #FFD700;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .content-section a:hover {
-	text-decoration: none;
+  color: #FFA500;
+  text-decoration: none;
 }
 
-/* Calculator Styles */
-.calculator {
-	background: #f8f9fa;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	padding: 1.5rem;
-	margin: 1rem 0;
+.content-section hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FFD700, transparent);
+  margin: 2.5rem 0;
 }
 
+/* Calculator Styling - Glass Morphism */
+.calculator, .gaia-calculator {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.04) 0%, 
+    rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin: 2.5rem 0;
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+.calculator h2, .gaia-calculator h2 {
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Input Group Styling */
 .input-group {
-	margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .input-group label {
-	display: block;
-	margin-bottom: 0.25rem;
-	font-weight: bold;
-	color: var(--text-primary);
+  display: block;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
 }
 
 .input-group input {
-	width: 100%;
-	max-width: 200px;
-	padding: 0.5rem;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 1rem;
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .input-group input:focus {
-	outline: none;
-	border-color: var(--teal-crystal);
-	box-shadow: 0 0 0 2px rgba(0, 172, 193, 0.2);
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #FFD700;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
 }
 
-.calculator button {
-	background: var(--teal-crystal);
-	color: white;
-	border: none;
-	padding: 0.75rem 1.5rem;
-	border-radius: 4px;
-	font-size: 1rem;
-	cursor: pointer;
-	margin: 1rem 0;
+/* Checkbox Styling */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
 }
 
-.calculator button:hover {
-	background: #0056b3;
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  cursor: pointer;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
 }
 
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #FFD700;
+  cursor: pointer;
+}
+
+/* Result Section - Premium Glass */
 .result {
-	background: white;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	padding: 1rem;
-	margin-top: 1rem;
+  background: linear-gradient(135deg, 
+    rgba(0, 229, 255, 0.08) 0%, 
+    rgba(0, 229, 255, 0.03) 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  backdrop-filter: blur(5px);
 }
 
-.result h3 {
-	margin-top: 0;
-	color: var(--text-primary);
+.result h3, .result h4 {
+  color: #00E5FF;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
 }
 
 .result p {
-	margin: 0.5rem 0;
-	font-family: monospace;
-	color: var(--text-secondary);
+  margin: 0.75rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 1.05rem;
 }
 
-#finalDamage {
-	font-size: 1.2rem;
-	font-weight: bold;
-	color: var(--amber-glow) !important;
+#finalDamage, #percentage {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #FFD700 !important;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
-#percentage {
-	font-size: 1.1rem;
-	font-weight: bold;
-	color: var(--teal-crystal) !important;
+#calculation, #gaiaCalculations {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  border: 1px solid rgba(255, 215, 0, 0.1);
 }
 
-/* Mobile Styles */
+/* Formula Box - Premium Card Design */
+.formula-box {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.05) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.formula-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FFD700, transparent);
+  opacity: 0.8;
+}
+
+
+.formula-box h3 {
+  color: #FFD700;
+  margin-bottom: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.formula-box pre {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+  color: #00E5FF;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  overflow-x: auto;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.formula-box p {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Calculation Box for Core Formulas */
+.calculation-box {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  font-family: 'Fira Code', monospace;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.calculation-box pre {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #00E5FF;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Key Points List - Premium Style */
+.content-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.content-section li {
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.03) 0%, 
+    rgba(255, 255, 255, 0.01) 100%);
+  border-radius: 12px;
+  border-left: 3px solid #FFD700;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+}
+
+
+.content-section li strong {
+  color: #FFD700;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+/* Character Mechanics Section */
+.character-mechanics-section {
+  margin: 2rem 0;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-	.content-section {
-		padding: 1rem;
-	}
-	
-	.content-section h2 {
-		font-size: 1.3rem;
-	}
-	
-	.content-section h3 {
-		font-size: 1.1rem;
-	}
-	
-	.formula-box p {
-		font-size: 1rem;
-	}
-	
-	.calculation-box pre {
-		font-size: 0.8rem;
-	}
-	
-	.calculator {
-		padding: 1rem;
-	}
-	
-	.input-group input {
-		max-width: 100%;
-	}
-	
-	.calculator button {
-		width: 100%;
-		padding: 1rem;
-	}
-	
-	#finalDamage {
-		font-size: 1.1rem;
-	}
-	
-	#percentage {
-		font-size: 1rem;
-	}
+  .content-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .content-section h3 {
+    font-size: 1.2rem;
+  }
+  
+  .calculator, .gaia-calculator {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .formula-box {
+    padding: 1.5rem;
+  }
+  
+  .formula-box pre {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+  
+  .input-group input {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .checkbox-group label {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .result {
+    padding: 1.5rem;
+  }
+  
+  #finalDamage, #percentage {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 480px) {
-	.content-section {
-		padding: 0.75rem;
-	}
-	
-	.content-section h2 {
-		font-size: 1.2rem;
-	}
-	
-	.content-section h3 {
-		font-size: 1rem;
-	}
-	
-	.formula-box p {
-		font-size: 0.9rem;
-	}
-	
-	.calculation-box pre {
-		font-size: 0.7rem;
-	}
-	
-	.calculator {
-		padding: 0.75rem;
-	}
-	
-	.calculator button {
-		font-size: 0.9rem;
-	}
-	
-	#finalDamage {
-		font-size: 1rem;
-	}
-	
-	#percentage {
-		font-size: 0.9rem;
-	}
+  .content-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .calculator, .gaia-calculator {
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  
+  .formula-box {
+    padding: 1.25rem;
+    margin: 1rem 0;
+  }
+  
+  .formula-box pre {
+    font-size: 0.85rem;
+  }
+  
+  .content-section li {
+    padding: 1rem;
+    margin: 0.75rem 0;
+  }
+}
+
+/* Chart Container Styling */
+.chart-container {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.04) 0%, 
+    rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin: 2.5rem 0;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-container h3 {
+  color: #00E5FF;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+.chart-container canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+}
+
+/* Mobile Chart Adjustments */
+@media (max-width: 768px) {
+  .chart-container {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .chart-container h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .chart-container canvas {
+    padding: 0.5rem;
+  }
 }

@@ -124,6 +124,17 @@ export const ZONE_NOVA_CHARACTERS = [
     detailUrl: "/guides/zone-nova/characters/greed-mammon"
   },
   {
+    id: 33,
+    name: "【Matriarch】Gaia",
+    rarity: "SSR",
+    element: "Holy",
+    role: "Healer",
+    stats: { hp: 10548, attack: 580, defense: 918, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
+    image: "/images/games/zone-nova/characters/Gaia.jpg",
+    slug: "gaia",
+    detailUrl: "/guides/zone-nova/characters/gaia"
+  },
+  {
     id: 10,
     name: "Guinevere",
     rarity: "SSR",
