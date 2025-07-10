@@ -1,5 +1,113 @@
 /* Silver and Blood Summon FAQ Styles */
 
+/* Title Section Styles */
+.title-section {
+	text-align: center;
+	margin-bottom: 3rem;
+	padding: 2rem 0;
+}
+
+.page-title {
+	font-family: var(--font-display);
+	font-size: 3rem;
+	font-weight: 700;
+	background: linear-gradient(135deg, #c0c0c0, #dc3545);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin: 0 0 2rem 0;
+}
+
+.summon-faq-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.intro-section {
+	background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+	padding: 2rem;
+	border-radius: 16px;
+	border: 2px solid #dc2626;
+	margin-bottom: 3rem;
+	text-align: center;
+}
+
+.intro-section p {
+	color: #f8f9fa;
+	font-size: 1.1rem;
+	line-height: 1.7;
+	margin: 0;
+}
+
+.section {
+	margin-bottom: 3rem;
+}
+
+.section-title {
+	color: #f8f9fa;
+	font-size: 2rem;
+	font-weight: 700;
+	margin-bottom: 2rem;
+	border-bottom: 3px solid #dc2626;
+	padding-bottom: 0.75rem;
+}
+
+.card {
+	background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+	border: 2px solid #374151;
+	border-radius: 16px;
+	padding: 2rem;
+	margin-bottom: 1.5rem;
+	transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+	transform: translateY(-2px);
+	border-color: #dc2626;
+}
+
+.card h4 {
+	color: #f8f9fa;
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin-bottom: 1rem;
+}
+
+.card p {
+	color: #e5e7eb;
+	line-height: 1.7;
+	margin: 0.5rem 0;
+}
+
+.card strong {
+	color: #f8f9fa;
+}
+
+.card ul {
+	color: #e5e7eb;
+	padding-left: 1.5rem;
+	margin: 1rem 0;
+}
+
+.card li {
+	margin-bottom: 0.5rem;
+	line-height: 1.6;
+}
+
+.pity-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+.faq-grid {
+	display: grid;
+	gap: 1.5rem;
+	margin-top: 2rem;
+}
+
 /* FAQ Specific Styles */
 .faq-intro {
   background: linear-gradient(135deg, rgba(25, 25, 25, 0.98), rgba(35, 35, 35, 0.95));
@@ -187,7 +295,19 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .currency-grid {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .card, .currency-card, .pity-card, .faq-item {
+    padding: 1.5rem;
+  }
+  
+  .currency-grid, .pity-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
@@ -232,6 +352,23 @@
 
 /* Additional mobile optimizations */
 @media (max-width: 480px) {
+  .page-title {
+    font-size: 1.75rem;
+  }
+  
+  .intro-section, .card, .currency-card, .pity-card, .faq-item {
+    padding: 1rem;
+  }
+  
+  .currency-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .currency-icon {
+    font-size: 2.5rem;
+  }
+  
   .faq-intro {
     padding: 1rem;
     border-radius: 12px;
@@ -246,11 +383,6 @@
   .faq-section-title {
     font-size: var(--text-lg);
     gap: 0.5rem;
-  }
-  
-  .currency-image {
-    width: 50px;
-    height: 50px;
   }
 }
 
@@ -267,243 +399,3 @@
   }
 }
 
-.faq-section-title {
-  color: #f0f0f0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #dc3545;
-}
-
-.faq-card {
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #3a3a3a;
-  margin-bottom: 1rem;
-}
-
-.faq-card h4 {
-  color: #dc3545;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 1rem 0;
-}
-
-.faq-card p {
-  color: #e0e0e0;
-  margin: 0.5rem 0;
-  line-height: 1.6;
-}
-
-.faq-card strong {
-  color: #c0c0c0;
-}
-
-.faq-card ul {
-  color: #e0e0e0;
-  padding-left: 1.2rem;
-  line-height: 1.6;
-  margin: 0.5rem 0;
-}
-
-.faq-card li {
-  margin-bottom: 0.5rem;
-}
-
-/* Pity System */
-.pity-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-.pity-card {
-  background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(192, 192, 192, 0.1));
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid rgba(220, 53, 69, 0.3);
-  text-align: center;
-}
-
-.pity-card h4 {
-  color: #dc3545;
-  font-size: 1.3rem;
-  margin: 0 0 1rem 0;
-}
-
-.pity-card p {
-  color: #e0e0e0;
-  margin: 0.5rem 0;
-  line-height: 1.6;
-}
-
-/* Currency Grid */
-.currency-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
-
-.currency-card {
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #3a3a3a;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.currency-card:hover {
-  transform: translateY(-2px);
-  border-color: #c0c0c0;
-}
-
-.currency-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.currency-image-container {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1rem auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
-  border: 2px solid rgba(192, 192, 192, 0.2);
-  transition: all 0.3s ease;
-}
-
-.currency-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.currency-card:hover .currency-image-container {
-  border-color: #dc3545;
-  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.5);
-}
-
-.currency-card:hover .currency-image {
-  transform: scale(1.1);
-}
-
-.currency-card h4 {
-  color: #f0f0f0;
-  margin: 0 0 1rem 0;
-}
-
-.currency-card p {
-  color: #b0b0b0;
-  margin: 0.5rem 0;
-  line-height: 1.6;
-}
-
-.currency-card strong {
-  color: #c0c0c0;
-}
-
-/* Strategy Cards */
-.strategy-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.strategy-card {
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #3a3a3a;
-  border-left: 4px solid #c0c0c0;
-}
-
-.strategy-card h4 {
-  color: #c0c0c0;
-  margin: 0 0 1rem 0;
-  font-size: 1.2rem;
-}
-
-.strategy-card ul {
-  color: #e0e0e0;
-  padding-left: 1.2rem;
-  line-height: 1.6;
-}
-
-.strategy-card li {
-  margin-bottom: 0.5rem;
-}
-
-/* FAQ Items */
-.faq-items {
-  display: grid;
-  gap: 1rem;
-}
-
-.faq-item {
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #3a3a3a;
-}
-
-.faq-item h4 {
-  color: #dc3545;
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
-}
-
-.faq-item p {
-  color: #e0e0e0;
-  margin: 0;
-  line-height: 1.6;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .pity-info,
-  .currency-grid,
-  .strategy-cards {
-    grid-template-columns: 1fr;
-  }
-  
-  .faq-section-title {
-    font-size: 1.3rem;
-  }
-  
-  .faq-card,
-  .pity-card,
-  .currency-card,
-  .strategy-card,
-  .faq-item {
-    padding: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .faq-intro,
-  .faq-card,
-  .pity-card,
-  .currency-card,
-  .strategy-card,
-  .faq-item {
-    padding: 1rem;
-  }
-  
-  .faq-section-title {
-    font-size: 1.2rem;
-  }
-  
-  .currency-icon {
-    font-size: 1.5rem;
-  }
-
-  .currency-image-container {
-    width: 60px;
-    height: 60px;
-  }
-}

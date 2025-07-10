@@ -7,7 +7,7 @@ import OptimizedImage from '../../components/OptimizedImage.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 // Note: Back button can be a shared component or a new SAB-specific one
 import BackButton from '../../components/silver-and-blood/sab-backbutton.astro';
-import SilverAndBloodSimpleNav from '../../components/silver-and-blood/SilverAndBloodSimpleNav.astro'; 
+import SilverAndBloodNavigation from '../../components/silver-and-blood/SilverAndBloodNavigation.astro'; 
 
 // Import Silver and Blood specific styles
 import '../../styles/colors.css';
@@ -34,8 +34,53 @@ const { title, description, characterName, characterImage } = Astro.props;
         <style is:global>
             @import '../../styles/games/silver-and-blood/sab-character-styles.css';
         </style>
+		
+		<!-- SEO Meta Tags -->
+		<meta name="keywords" content="Silver and Blood, ${characterName}, character guide, vampire game, skills, stats, builds" />
+		<meta name="author" content="GachaWiki" />
+		<meta name="robots" content="index, follow" />
+		
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description || `Complete character guide for ${characterName} in Silver and Blood`} />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+		{characterImage && <meta property="og:image" content={characterImage} />}
+		
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description || `Complete character guide for ${characterName} in Silver and Blood`} />
+		{characterImage && <meta name="twitter:image" content={characterImage} />}
+		
+		<!-- Mobile Optimization -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="theme-color" content="#8B0000" />
+		
 		<!-- Canonical URL -->
 		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		
+		<script type="application/ld+json">
+			{JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": characterName,
+				"description": description || `Character guide for ${characterName} in Silver and Blood`,
+				"about": {
+					"@type": "VideoGame",
+					"name": "Silver and Blood"
+				},
+				"publisher": {
+					"@type": "Organization",
+					"name": "GachaWiki"
+				},
+				"mainEntityOfPage": {
+					"@type": "WebPage",
+					"@id": new URL(Astro.url.pathname, Astro.site)
+				}
+			})}
+		</script>
+		
 		<slot name="head" />
 	</head>
 	<body class="sab-body">
@@ -62,8 +107,8 @@ const { title, description, characterName, characterImage } = Astro.props;
 						</section>
 					)}
 
-					<!-- Silver and Blood Simple Navigation -->
-					<SilverAndBloodSimpleNav currentPath={Astro.url.pathname} />
+					<!-- Silver and Blood Navigation -->
+					<SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
 					
 					<!-- Content Area -->
 					<div class="content-area">

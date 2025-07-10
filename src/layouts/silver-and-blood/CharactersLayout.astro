@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import SilverAndBloodSimpleNav from '../../components/silver-and-blood/SilverAndBloodSimpleNav.astro';
+import SilverAndBloodNavigation from '../../components/silver-and-blood/SilverAndBloodNavigation.astro';
 
 // Import CSS files
 import '../../styles/colors.css';
@@ -39,6 +39,27 @@ const { title, description, gameTitle } = Astro.props;
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description || ""} />
 		
+		<script type="application/ld+json">
+			{JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "CollectionPage",
+				"name": title,
+				"description": description || "Complete character database for Silver and Blood",
+				"about": {
+					"@type": "VideoGame",
+					"name": "Silver and Blood"
+				},
+				"publisher": {
+					"@type": "Organization",
+					"name": "GachaWiki"
+				},
+				"mainEntityOfPage": {
+					"@type": "WebPage",
+					"@id": new URL(Astro.url.pathname, Astro.site)
+				}
+			})}
+		</script>
+		
 		<slot name="head" />
 	</head>
 	<body class="sab-body">
@@ -65,8 +86,8 @@ const { title, description, gameTitle } = Astro.props;
 						</section>
 					)}
 					
-					<!-- Silver and Blood Simple Navigation -->
-					<SilverAndBloodSimpleNav currentPath={Astro.url.pathname} />
+					<!-- Silver and Blood Navigation -->
+					<SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
 					
 					<!-- Content Area -->
 					<div class="content-area">

@@ -592,6 +592,256 @@
 .puzzle-section:nth-child(5) { animation-delay: 0.4s; }
 .puzzle-section:nth-child(6) { animation-delay: 0.5s; }
 
+/* Layout styles moved from inline */
+.dutchmans-revenge-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.intro-section {
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid #dc2626;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.intro-section p {
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  color: #f8f9fa;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #dc2626;
+  padding-bottom: 0.75rem;
+}
+
+.video-section {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(40, 40, 40, 0.9));
+  border: 2px solid #6b7280;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.video-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.video-info h4 {
+  color: #f8f9fa;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.video-info p {
+  color: #e5e7eb;
+  line-height: 1.7;
+  margin: 0.5rem 0;
+}
+
+.chapters-list {
+  background: rgba(20, 20, 20, 0.5);
+  border: 1px solid #4b5563;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.chapters-list h5 {
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #dc2626;
+  padding-bottom: 0.5rem;
+}
+
+.chapters-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chapters-list li {
+  color: #e5e7eb;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(107, 114, 128, 0.3);
+  font-size: 0.95rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.chapters-list li:before {
+  content: "▸";
+  color: #dc2626;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.chapters-list li:last-child {
+  border-bottom: none;
+}
+
+.mechanic-card {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(40, 40, 40, 0.9));
+  border: 2px solid #6b7280;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.mechanic-card:hover {
+  transform: translateY(-2px);
+  border-color: #dc2626;
+}
+
+.mechanic-card h4 {
+  color: #f8f9fa;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.mechanic-card p {
+  color: #e5e7eb;
+  line-height: 1.7;
+  margin: 0.5rem 0;
+}
+
+.mechanic-card ul {
+  color: #e5e7eb;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.mechanic-card li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.artifact-card {
+  background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(192, 192, 192, 0.1));
+  border: 2px solid rgba(220, 53, 69, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.artifact-card:hover {
+  transform: translateY(-2px);
+  border-color: #dc2626;
+}
+
+.artifact-card h4 {
+  color: #dc2626;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.artifact-card p {
+  color: #e5e7eb;
+  line-height: 1.7;
+  margin: 0.5rem 0;
+}
+
+.artifact-card ul {
+  color: #e5e7eb;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.artifact-card li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.reward-highlight {
+  background: linear-gradient(135deg, rgba(220, 53, 69, 0.15), rgba(192, 192, 192, 0.1));
+  border: 2px solid rgba(220, 53, 69, 0.4);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.reward-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #dc2626, #c0c0c0, #dc2626);
+}
+
+.reward-highlight h4 {
+  color: #dc2626;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.reward-highlight p {
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .video-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .video-section, .mechanic-card, .artifact-card {
+    padding: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-section, .video-section, .mechanic-card, .artifact-card, .reward-highlight {
+    padding: 1rem;
+  }
+  
+  .chapters-list {
+    padding: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.25rem;
+  }
+}
+
 /* Performance optimizations */
 @media (prefers-reduced-motion: reduce) {
   .puzzle-card,

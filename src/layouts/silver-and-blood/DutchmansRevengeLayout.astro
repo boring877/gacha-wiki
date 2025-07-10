@@ -4,12 +4,15 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import SilverAndBloodSimpleNav from '../../components/silver-and-blood/SilverAndBloodSimpleNav.astro';
+import SilverAndBloodNavigation from '../../components/silver-and-blood/SilverAndBloodNavigation.astro';
 
 // Import only essential CSS files
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-dutchmans-revenge.css';
 
 export interface Props {
 	title: string;
@@ -65,25 +68,32 @@ const { meta, intro, gameplayMechanics, futureArtifacts, videoGuide, chapters } 
 			})}
 		</script>
 	</head>
-	<body>
-		<div class="page-wrapper">
+	<body class="sab-body">
+		<!-- Background layers for visual depth -->
+		<div class="bg-layer bg-primary"></div>
+		<div class="bg-layer bg-accent-1"></div>
+		<div class="bg-layer bg-accent-2"></div>
+		<div class="bg-layer bg-accent-3"></div>
+		
+		<div class="sab-content">
 			<Header />
 			<MobileMenu />
 			
-			<main class="main-content">
-				<!-- Title Section -->
-				{gameTitle && (
-					<section class="title-section">
-						<h1 class="page-title">{gameTitle}</h1>
-						<DecorativeLines />
-					</section>
-				)}
+			<div class="sab-container">
+				<main class="sab-main">
+					<!-- Title Section -->
+					{gameTitle && (
+						<section class="title-only-section">
+							<h1 class="title-only-heading">{gameTitle}</h1>
+							<DecorativeLines />
+						</section>
+					)}
 				
 				<!-- Navigation -->
-				<SilverAndBloodSimpleNav currentPath={Astro.url.pathname} />
+				<SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
 				
-				<!-- Content -->
-				<div class="content-container">
+					<!-- Content -->
+					<div class="content-area">
 					<div class="dutchmans-revenge-container">
 						<div class="intro-section">
 							<p>{intro.text}</p>
@@ -198,361 +208,11 @@ const { meta, intro, gameplayMechanics, futureArtifacts, videoGuide, chapters } 
 							</div>
 						</div>
 					</div>
-				</div>
-			</main>
+					</div>
+				</main>
+			</div>
 			
 			<Footer />
 		</div>
 	</body>
 </html>
-
-<style>
-	body {
-		background: var(--bg-dark);
-		color: var(--text-primary);
-		min-height: 100vh;
-		margin: 0;
-		padding: 0;
-		font-family: 'Inter', sans-serif;
-	}
-	
-	.page-wrapper {
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-	}
-	
-	.main-content {
-		flex: 1;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 2rem;
-		width: 100%;
-		box-sizing: border-box;
-	}
-	
-	.title-section {
-		text-align: center;
-		margin-bottom: 3rem;
-		padding: 2rem 0;
-	}
-	
-	.page-title {
-		font-family: var(--font-display);
-		font-size: 3rem;
-		font-weight: 700;
-		background: linear-gradient(135deg, #c0c0c0, #dc3545);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		margin: 0 0 2rem 0;
-	}
-	
-	.content-container {
-		margin-top: 2rem;
-	}
-	
-	.dutchmans-revenge-container {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0;
-	}
-	
-	.intro-section {
-		background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
-		padding: 2rem;
-		border-radius: 16px;
-		border: 2px solid #dc2626;
-		margin-bottom: 3rem;
-		text-align: center;
-	}
-	
-	.intro-section p {
-		color: #f8f9fa;
-		font-size: 1.1rem;
-		line-height: 1.7;
-		margin: 0;
-		font-style: italic;
-	}
-	
-	.section {
-		margin-bottom: 3rem;
-	}
-	
-	.section-title {
-		color: #f8f9fa;
-		font-size: 2rem;
-		font-weight: 700;
-		margin-bottom: 2rem;
-		border-bottom: 3px solid #dc2626;
-		padding-bottom: 0.75rem;
-	}
-	
-	.section-description {
-		color: #e5e7eb;
-		font-size: 1.1rem;
-		line-height: 1.6;
-		margin-bottom: 2rem;
-		text-align: center;
-		font-style: italic;
-	}
-	
-	.video-section {
-		background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(40, 40, 40, 0.9));
-		border: 2px solid #6b7280;
-		border-radius: 16px;
-		padding: 2rem;
-		margin-bottom: 3rem;
-	}
-	
-	.video-content {
-		display: grid;
-		grid-template-columns: 2fr 1fr;
-		gap: 2rem;
-		align-items: start;
-	}
-	
-	.video-info h4 {
-		color: #f8f9fa;
-		font-size: 1.5rem;
-		font-weight: 700;
-		margin-bottom: 1rem;
-	}
-	
-	.video-info p {
-		color: #e5e7eb;
-		line-height: 1.7;
-		margin: 0.5rem 0;
-	}
-	
-	.chapters-list {
-		background: rgba(20, 20, 20, 0.5);
-		border: 1px solid #4b5563;
-		border-radius: 12px;
-		padding: 1.5rem;
-	}
-	
-	.chapters-list h5 {
-		color: #f8f9fa;
-		font-size: 1.1rem;
-		font-weight: 600;
-		margin-bottom: 1rem;
-		border-bottom: 2px solid #dc2626;
-		padding-bottom: 0.5rem;
-	}
-	
-	.chapters-list ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	
-	.chapters-list li {
-		color: #e5e7eb;
-		padding: 0.5rem 0;
-		border-bottom: 1px solid rgba(107, 114, 128, 0.3);
-		font-size: 0.95rem;
-		position: relative;
-		padding-left: 1.2rem;
-	}
-	
-	.chapters-list li:before {
-		content: "▸";
-		color: #dc2626;
-		position: absolute;
-		left: 0;
-		font-weight: bold;
-	}
-	
-	.chapters-list li:last-child {
-		border-bottom: none;
-	}
-	
-	.video-container {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding-bottom: 56.25%; /* 16:9 aspect ratio */
-		margin-top: 1.5rem;
-		border-radius: 12px;
-		overflow: hidden;
-		box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
-	}
-	
-	.video-container iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		border: none;
-		border-radius: 12px;
-	}
-	
-	
-	.mechanic-card {
-		background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(40, 40, 40, 0.9));
-		border: 2px solid #6b7280;
-		border-radius: 16px;
-		padding: 2rem;
-		transition: transform 0.3s ease, border-color 0.3s ease;
-	}
-	
-	.mechanic-card:hover {
-		transform: translateY(-2px);
-		border-color: #dc2626;
-	}
-	
-	.mechanic-card h4 {
-		color: #f8f9fa;
-		font-size: 1.5rem;
-		font-weight: 700;
-		margin-bottom: 1rem;
-	}
-	
-	.mechanic-card p {
-		color: #e5e7eb;
-		line-height: 1.7;
-		margin: 0.5rem 0;
-	}
-	
-	.mechanic-card ul {
-		color: #e5e7eb;
-		padding-left: 1.5rem;
-		margin: 1rem 0;
-	}
-	
-	.mechanic-card li {
-		margin-bottom: 0.5rem;
-		line-height: 1.6;
-	}
-	
-	
-	.artifact-card {
-		background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(192, 192, 192, 0.1));
-		border: 2px solid rgba(220, 53, 69, 0.3);
-		border-radius: 16px;
-		padding: 2rem;
-		transition: transform 0.3s ease, border-color 0.3s ease;
-	}
-	
-	.artifact-card:hover {
-		transform: translateY(-2px);
-		border-color: #dc2626;
-	}
-	
-	.artifact-card h4 {
-		color: #dc2626;
-		font-size: 1.5rem;
-		font-weight: 700;
-		margin-bottom: 1rem;
-	}
-	
-	.artifact-card p {
-		color: #e5e7eb;
-		line-height: 1.7;
-		margin: 0.5rem 0;
-	}
-	
-	.artifact-card ul {
-		color: #e5e7eb;
-		padding-left: 1.5rem;
-		margin: 1rem 0;
-	}
-	
-	.artifact-card li {
-		margin-bottom: 0.5rem;
-		line-height: 1.6;
-	}
-	
-	.reward-highlight {
-		background: linear-gradient(135deg, rgba(220, 53, 69, 0.15), rgba(192, 192, 192, 0.1));
-		border: 2px solid rgba(220, 53, 69, 0.4);
-		border-radius: 16px;
-		padding: 2rem;
-		margin: 2rem 0;
-		text-align: center;
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.reward-highlight::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: linear-gradient(90deg, #dc2626, #c0c0c0, #dc2626);
-	}
-	
-	.reward-highlight h4 {
-		color: #dc2626;
-		font-size: 1.5rem;
-		font-weight: 700;
-		margin-bottom: 1rem;
-	}
-	
-	.reward-highlight p {
-		color: #f8f9fa;
-		font-size: 1.1rem;
-		line-height: 1.7;
-		margin: 0;
-		font-weight: 500;
-	}
-	
-	
-	@media (max-width: 768px) {
-		.main-content {
-			padding: 1rem;
-		}
-		
-		.page-title {
-			font-size: 2rem;
-		}
-		
-		.section-title {
-			font-size: 1.5rem;
-		}
-		
-		.video-section, .mechanic-card, .artifact-card {
-			padding: 1.5rem;
-		}
-		
-		.video-content {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
-		}
-		
-		
-		.video-container {
-			border-radius: 8px;
-		}
-		
-		.video-container iframe {
-			border-radius: 8px;
-		}
-	}
-	
-	@media (max-width: 480px) {
-		.main-content {
-			padding: 0.5rem;
-		}
-		
-		.page-title {
-			font-size: 1.75rem;
-		}
-		
-		.intro-section, .video-section, .mechanic-card, .artifact-card, .reward-highlight {
-			padding: 1rem;
-		}
-		
-		.chapters-list {
-			padding: 1rem;
-		}
-		
-		.section-title {
-			font-size: 1.25rem;
-		}
-	}
-</style>

@@ -1,21 +1,37 @@
 ---
-// Simple Silver and Blood Navigation for dedicated layouts
+// Unified Silver and Blood Navigation Component
 export interface Props {
 	currentPath?: string;
+	showWaifuGallery?: boolean;
+	excludeOnLandingPage?: boolean;
+	variant?: 'full' | 'simple';
 }
 
-const { currentPath = '' } = Astro.props;
+const { 
+	currentPath = '', 
+	showWaifuGallery = false, 
+	excludeOnLandingPage = false,
+	variant = 'full' 
+} = Astro.props;
 
-// Navigation items
-const quickLinks = [
+// Base navigation items
+const baseLinks = [
 	{ name: 'Overview', href: '/guides/silver-and-blood/' },
 	{ name: 'Characters', href: '/guides/silver-and-blood/characters/' },
 	{ name: 'Character Comparison', href: '/guides/silver-and-blood/character-comparison/' },
 	{ name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
 	{ name: 'Dutchman\'s Revenge', href: '/guides/silver-and-blood/dutchmans-revenge/' },
-	{ name: 'Events', href: '/guides/silver-and-blood/events/' },
-	{ name: 'Waifu Gallery', href: '/guides/silver-and-blood/waifu-cutscenes/' }
+	{ name: 'Events', href: '/guides/silver-and-blood/events/' }
 ];
+
+// Add Waifu Gallery if requested
+const quickLinks = showWaifuGallery 
+	? [...baseLinks, { name: 'Waifu Gallery', href: '/guides/silver-and-blood/waifu-cutscenes/' }]
+	: baseLinks;
+
+
+// Check if we're on the main Silver and Blood landing page
+const isLandingPage = currentPath === '/guides/silver-and-blood/' || currentPath === '/guides/silver-and-blood';
 
 // Function to check if a link is active
 function isActiveLink(href: string): boolean {
@@ -27,9 +43,16 @@ function isActiveLink(href: string): boolean {
 	}
 	return false;
 }
+
+
+// Don't render on landing page if requested
+if (excludeOnLandingPage && isLandingPage) {
+	return;
+}
 ---
 
-<nav class="sab-simple-nav" aria-label="Silver and Blood Navigation">
+<!-- Silver and Blood Unified Navigation -->
+<nav class="sab-navigation" aria-label="Silver and Blood Navigation">
 	<div class="nav-container">
 		<div class="nav-header">
 			<h3 class="nav-title">Silver and Blood Navigation</h3>
@@ -41,11 +64,14 @@ function isActiveLink(href: string): boolean {
 					href={link.href} 
 					class={`nav-link ${isActiveLink(link.href) ? 'active' : ''}`}
 					aria-current={isActiveLink(link.href) ? 'page' : undefined}
+					title={link.name}
 				>
 					{link.name}
 				</a>
 			))}
 		</div>
+		
+		<!-- Mobile swipe hint -->
 		<div class="swipe-hint" id="sabSwipeHint">
 			<span class="hint-text">← Swipe for more →</span>
 		</div>
@@ -53,16 +79,16 @@ function isActiveLink(href: string): boolean {
 </nav>
 
 <style>
-	.sab-simple-nav {
+	.sab-navigation {
 		width: 100%;
 		margin-bottom: 3rem;
 		position: relative;
-		z-index: 10;
+		z-index: 100;
 	}
 
 	.nav-container {
 		background: rgba(28, 28, 28, 0.95);
-		border: 2px solid #dc2626;
+		border: 2px solid var(--blood-red);
 		border-radius: 16px;
 		backdrop-filter: blur(10px);
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -71,18 +97,18 @@ function isActiveLink(href: string): boolean {
 
 	.nav-header {
 		padding: 1.5rem;
-		background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(192, 192, 192, 0.1));
-		border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+		background: linear-gradient(135deg, rgba(139, 0, 0, 0.1), rgba(220, 20, 60, 0.1));
+		border-bottom: 1px solid rgba(139, 0, 0, 0.2);
 		text-align: center;
 	}
 
 	.nav-title {
-		font-family: 'Inter', sans-serif;
-		font-size: 1.25rem;
+		font-family: var(--font-display);
+		font-size: var(--text-xl);
 		font-weight: 700;
-		color: #f8f9fa;
+		color: var(--text-primary);
 		margin: 0;
-		background: linear-gradient(135deg, #dc2626, #c0c0c0);
+		background: linear-gradient(135deg, var(--blood-red), var(--silver-metallic));
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
@@ -91,31 +117,32 @@ function isActiveLink(href: string): boolean {
 	.nav-links {
 		padding: 1.5rem;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		gap: 1rem;
+		align-items: stretch;
 	}
 
 	.nav-link {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 1rem 1rem;
+		padding: 1rem 1.5rem;
 		color: #e8e8e8;
 		text-decoration: none;
 		border-radius: 12px;
-		font-family: 'Inter', sans-serif;
+		font-family: var(--font-display);
 		font-weight: 500;
-		font-size: 0.9rem;
+		font-size: var(--text-base);
 		transition: all 0.3s ease;
-		border: 1px solid rgba(220, 38, 38, 0.2);
+		border: 1px solid rgba(139, 0, 0, 0.2);
 		position: relative;
 		overflow: hidden;
 		text-align: center;
-		background: rgba(220, 38, 38, 0.05);
-		height: 60px;
-		line-height: 1.2;
-		white-space: nowrap;
-		text-overflow: ellipsis;
+		background: rgba(139, 0, 0, 0.05);
+		min-height: 60px;
+		line-height: 1.3;
+		word-wrap: break-word;
+		hyphens: auto;
 	}
 
 	.nav-link::before {
@@ -125,16 +152,16 @@ function isActiveLink(href: string): boolean {
 		left: -100%;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.15), transparent);
+		background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.15), transparent);
 		transition: left 0.5s ease;
 	}
 
 	.nav-link:hover {
 		color: #ffffff;
-		background: linear-gradient(135deg, #dc2626, #b91c1c);
-		border-color: #dc2626;
+		background: linear-gradient(135deg, var(--blood-red), #dc143c);
+		border-color: var(--blood-red);
 		transform: translateY(-2px);
-		box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+		box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
 	}
 
 	.nav-link:hover::before {
@@ -143,10 +170,10 @@ function isActiveLink(href: string): boolean {
 
 	.nav-link.active {
 		color: #ffffff;
-		background: linear-gradient(135deg, #dc2626, #c0c0c0);
-		border-color: #c0c0c0;
+		background: linear-gradient(135deg, var(--blood-red), var(--silver-metallic));
+		border-color: var(--silver-metallic);
 		font-weight: 600;
-		box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5);
+		box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
 		transform: translateY(-1px);
 	}
 
@@ -154,32 +181,40 @@ function isActiveLink(href: string): boolean {
 		display: none;
 	}
 
-	/* Responsive layout for smaller screens */
+	/* Hide swipe hint on desktop */
+	.swipe-hint {
+		display: none;
+	}
+
+	/* Responsive grid adjustments */
+	@media (max-width: 1400px) {
+		.nav-links {
+			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		}
+	}
+	
 	@media (max-width: 1200px) {
 		.nav-links {
-			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-			gap: 0.8rem;
-		}
-		
-		.nav-link {
-			font-size: 0.85rem;
-			padding: 0.8rem 0.5rem;
+			grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 		}
 	}
 
 	@media (max-width: 900px) {
 		.nav-links {
-			grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+			gap: 0.75rem;
 		}
 		
 		.nav-link {
-			font-size: 0.8rem;
+			padding: 0.75rem 1rem;
+			font-size: var(--text-sm);
+			min-height: 55px;
 		}
 	}
 
-	/* Mobile responsive with Zone Nova optimizations */
+	/* Mobile responsive layout */
 	@media (max-width: 768px) {
-		.sab-simple-nav {
+		.sab-navigation {
 			margin-bottom: 2rem;
 		}
 
@@ -235,7 +270,7 @@ function isActiveLink(href: string): boolean {
 			font-size: 1.1rem;
 		}
 
-		/* Add swipe hint */
+		/* Show swipe hint on mobile */
 		.swipe-hint {
 			display: block;
 			text-align: center;
@@ -246,17 +281,7 @@ function isActiveLink(href: string): boolean {
 			position: relative;
 			z-index: 10;
 		}
-	}
 
-	/* Hide swipe hint on desktop */
-	@media (min-width: 769px) {
-		.swipe-hint {
-			display: none !important;
-		}
-	}
-
-	/* Swipe hint animations - mobile only */
-	@media (max-width: 768px) {
 		.swipe-hint.show {
 			opacity: 1;
 			animation: fadeInUp 0.5s ease-out forwards;
@@ -267,9 +292,9 @@ function isActiveLink(href: string): boolean {
 		}
 
 		.hint-text {
-			font-family: 'Inter', sans-serif;
-			font-size: 0.75rem;
-			color: #dc2626;
+			font-family: var(--font-primary);
+			font-size: var(--text-xs);
+			color: var(--blood-red);
 			font-weight: 500;
 			letter-spacing: 0.5px;
 			text-transform: uppercase;
@@ -297,7 +322,7 @@ function isActiveLink(href: string): boolean {
 	}
 	
 	@media (max-width: 480px) {
-		.sab-simple-nav {
+		.sab-navigation {
 			margin-bottom: 2rem;
 		}
 		
@@ -313,7 +338,7 @@ function isActiveLink(href: string): boolean {
 		}
 	}
 
-	/* Performance optimizations */
+	/* Performance Optimizations */
 	@media (prefers-reduced-motion: reduce) {
 		.nav-link {
 			transition: none;
@@ -323,11 +348,15 @@ function isActiveLink(href: string): boolean {
 		.nav-link::before {
 			transition: none;
 		}
+		
+		.swipe-hint {
+			animation: none;
+		}
 	}
 </style>
 
 <script>
-	// Mobile navigation optimizations for Silver and Blood
+	// Mobile navigation functionality
 	document.addEventListener('DOMContentLoaded', function() {
 		const container = document.getElementById('sabNavContainer');
 		const swipeHint = document.getElementById('sabSwipeHint');

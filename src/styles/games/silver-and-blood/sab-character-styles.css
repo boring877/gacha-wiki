@@ -320,4 +320,256 @@ h3 {
     flex-direction: column;
     align-items: center;
   }
+}
+
+/* ===== CHARACTER DATABASE STYLES ===== */
+/* Layout and filter bar */
+.page-flex { 
+  display: flex; 
+  gap: 2.5rem; 
+}
+
+.main-content-container { 
+  width: 100%; 
+  display: flex; 
+  justify-content: center; 
+  padding: 0 2rem; 
+}
+
+.content-wrapper { 
+  max-width: 1400px; 
+  width: 100%; 
+  margin: 0 auto; 
+}
+
+.filter-bar { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 1rem; 
+  margin: 2rem auto 1.5rem auto; 
+  flex-wrap: wrap; 
+  padding: 0 1rem; 
+}
+
+.filter-controls, .sort-controls { 
+  display: flex; 
+  gap: 0.5rem; 
+  align-items: center; 
+  flex-wrap: wrap; 
+}
+
+.filter-select, .sort-btn { 
+  padding: 0.4rem 0.7rem; 
+  background: #2c2c2c; 
+  color: #e0e0e0; 
+  border-radius: 8px; 
+  border: 1px solid #4f4f4f; 
+  font-size: 0.8rem; 
+  cursor: pointer; 
+  font-family: 'Space Grotesk', sans-serif; 
+}
+
+.filter-select:hover, .sort-btn:hover { 
+  background: #3a3a3a; 
+  color: #ffffff; 
+  border-color: #c0c0c0; 
+}
+
+.sort-btn.active { 
+  background: #dc3545; 
+  color: white; 
+  border-color: #dc3545; 
+}
+
+/* Reset button unique styling */
+.reset-btn { 
+  padding: 0.5rem 1rem; 
+  background: linear-gradient(135deg, #c0c0c0, #a9a9a9); 
+  color: #1a1a1a; 
+  border-radius: 10px; 
+  border: 2px solid #c0c0c0; 
+  font-size: 0.85rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  box-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.reset-btn:hover { 
+  background: linear-gradient(135deg, #d3d3d3, #b0b0b0); 
+  transform: translateY(-1px); 
+  box-shadow: 0 4px 12px rgba(192, 192, 192, 0.4);
+  border-color: #d3d3d3;
+}
+
+.reset-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(192, 192, 192, 0.3);
+}
+
+/* Table styles */
+.character-table-container { 
+  overflow-x: auto; 
+  margin: 1.5rem auto; 
+  padding: 0 1rem; 
+}
+
+table.character-table { 
+  width: 100%; 
+  border-collapse: separate; 
+  border-spacing: 0; 
+  background: #2a2a2a; 
+  border-radius: 12px; 
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15); 
+  font-family: 'Space Grotesk', sans-serif; 
+}
+
+table.character-table th, table.character-table td { 
+  padding: 0.8rem 0.4rem; 
+  text-align: center; 
+  border-bottom: 1px solid #3a3a3a; 
+  color: #e0e0e0; 
+}
+
+table.character-table th { 
+  background: linear-gradient(135deg, #dc3545, #b22222); 
+  color: white; 
+  font-weight: 700; 
+  font-size: 0.9rem; 
+  position: sticky; 
+  top: 0; 
+  z-index: 2; 
+}
+
+.character-img { 
+  width: 40px; 
+  height: 40px; 
+  border-radius: 8px; 
+  object-fit: cover; 
+  border: 1px solid #c0c0c0; 
+}
+
+/* Mobile card styles */
+.mobile-character-card { 
+  background: #2c2c2c; 
+  border-radius: 14px; 
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15); 
+  padding: 1.2rem 1rem 1rem 1rem; 
+  margin-bottom: 1.5rem; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.7rem; 
+  border: 1px solid #c0c0c0; 
+}
+
+.mobile-card-header { 
+  display: flex; 
+  align-items: center; 
+  gap: 1rem; 
+}
+
+.mobile-character-card img { 
+  width: 64px; 
+  height: 64px; 
+  border-radius: 10px; 
+  border: 2px solid #c0c0c0; 
+  background: #fff; 
+  margin-bottom: 0; 
+}
+
+.mobile-card-title-group { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.2rem; 
+}
+
+.mobile-character-card h3 { 
+  margin: 0 0 0.1rem 0; 
+  font-size: 1.25rem; 
+  color: #c0c0c0; 
+  font-weight: 700; 
+  letter-spacing: 0.5px; 
+}
+
+.mobile-card-badges { 
+  display: flex; 
+  gap: 0.4rem; 
+  margin-top: 0.1rem; 
+  flex-wrap: wrap; 
+}
+
+.mobile-character-card .rarity-badge, 
+.mobile-character-card .class-badge, 
+.mobile-character-card .faction-badge { 
+  font-size: 0.95em; 
+  padding: 0.18em 0.7em; 
+  border-radius: 8px; 
+  font-weight: 600; 
+  display: inline-block; 
+  margin: 0; 
+}
+
+.mobile-card-stats, .mobile-card-stats-secondary { 
+  display: flex; 
+  gap: 1.2rem; 
+  margin-top: 0.5rem; 
+  font-size: 1.05em; 
+  color: #e0e0e0; 
+  font-weight: 500; 
+  flex-wrap: wrap; 
+}
+
+.mobile-card-stats-secondary { 
+  margin-top: 0.2rem; 
+  font-size: 0.98em; 
+}
+
+.mobile-card-stats .stat-label, 
+.mobile-card-stats-secondary .stat-label { 
+  color: #c0c0c0; 
+  font-weight: 700; 
+  margin-right: 0.2em; 
+}
+
+/* Desktop: show table, hide mobile cards */
+.character-table-container { 
+  display: block !important; 
+}
+
+.mobile-card-view { 
+  display: none !important; 
+}
+
+/* Mobile: show cards, hide table */
+@media (max-width: 768px) {
+  .character-table-container { 
+    display: none !important; 
+  }
+  
+  .mobile-card-view { 
+    display: block !important; 
+  }
+  
+  .filter-bar { 
+    flex-direction: column; 
+    gap: 0.8rem; 
+  }
+  
+  .filter-controls, .sort-controls { 
+    width: 100%; 
+    justify-content: center; 
+  }
+}
+
+/* Consistent width for moon badges in character table */
+.character-table .moon-badge {
+  min-width: 85px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.4rem;
 } 
