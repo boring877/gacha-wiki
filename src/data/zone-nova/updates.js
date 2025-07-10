@@ -1,6 +1,30 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
 	{
+		id: 'july-8-maintenance-completion',
+		title: 'July 8 Maintenance Completion',
+		date: 'July 8, 2025',
+		type: 'maintenance',
+		summary: 'Extended maintenance on July 8 has been completed. All Captains who logged in before July 15, 2025 receive 600 Gems compensation via in-game mail for the prolonged downtime.',
+		url: '/guides/zone-nova/updates/maintenance-july-8-completion/'
+	},
+	{
+		id: 'gaia-chilling-gift',
+		title: 'Beat the Heat! Gaia\'s Chilling Gift for Captains',
+		date: 'July 8, 2025',
+		type: 'recruitment',
+		summary: 'Gaia has prepared special frosty drinks to help Captains beat the summer heat! All eligible players receive 15 Stamina Potions via in-game mail as a refreshing gift from Gaia.',
+		url: '/guides/zone-nova/updates/announcement-gaia-chilling-gift/'
+	},
+	{
+		id: 'arena-settlement-issue',
+		title: 'Arena Settlement Issue and Server Response Delays',
+		date: 'July 8, 2025',
+		type: 'announcement',
+		summary: 'Arena reward distribution issue resolved and server upgrades implemented to address latency during peak hours. All eligible players receive 800 Gems compensation via in-game mail.',
+		url: '/guides/zone-nova/updates/announcement-arena-settlement-issue/'
+	},
+	{
 		id: 'july-8-maintenance',
 		title: 'July 8th Maintenance Update',
 		date: 'July 8, 2025',

@@ -4,6 +4,7 @@
 import { riftTide3Data } from './rifts/rift-tide-3.js';
 import { riftTide4Data } from './rifts/rift-tide-4.js';
 import { riftTide5Data } from './rifts/rift-tide-5.js';
+import { riftTide6Data } from './rifts/rift-tide-6.js';
 
 // Rift status constants
 export const RIFT_STATUS = {
@@ -17,9 +18,10 @@ export const RIFT_STATUS = {
 
 // Main rifts data array - imported from individual files
 export const zoneNovaRifts = [
-  riftTide3Data,
+  riftTide6Data,
+  riftTide5Data,
   riftTide4Data,
-  riftTide5Data
+  riftTide3Data
 ];
 
 // Helper functions for rift management
