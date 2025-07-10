@@ -9,6 +9,8 @@ export const homepageGames = [
     image: '/images/games/zone-nova/zonenova1.jpg',
     url: '/guides/zone-nova/',
     resetHour: 5, // UTC time for daily reset
+    resetMinute: 0, // UTC minute for daily reset
+    timerDescription: 'Time until server reset',
     features: ['30+ Characters', 'Active Rifts', 'Memory System', 'Strategic Combat'],
     active: true // Show in clock and showcase
   },
@@ -18,7 +20,9 @@ export const homepageGames = [
     description: 'Dark fantasy gacha with rich storytelling and immersive lore',
     image: '/images/games/silver-and-blood/main-images/silver-and-blood-main3.jpg',
     url: '/guides/silver-and-blood/',
-    resetHour: 0, // UTC time for daily reset
+    resetHour: 12, // UTC time for daily reset (20:00 UTC+8)
+    resetMinute: 0, // UTC minute for daily reset  
+    timerDescription: 'This time reset for US and other regions',
     features: ['35+ Heroes', 'Rich Story', 'Dutchman\'s Revenge', 'Dark Fantasy'],
     active: true // Show in clock and showcase
   },

@@ -22,8 +22,6 @@
 }
 
 .master-clock:hover {
-	transform: translateY(-8px);
-	box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 	border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -35,18 +33,12 @@
 	opacity: 0;
 	transition: opacity 0.6s ease;
 	z-index: -1;
-	animation: clockRotate 20s linear infinite;
 }
 
 .master-clock:hover .clock-bg-animation {
-	opacity: 0.1;
+	opacity: 0;
 }
 
-@keyframes clockRotate {
-	0% { transform: rotate(0deg) scale(1); }
-	50% { transform: rotate(180deg) scale(1.05); }
-	100% { transform: rotate(360deg) scale(1); }
-}
 
 /* Clock Header */
 .clock-header {
@@ -64,7 +56,6 @@
 	height: 80px;
 	border-radius: 20px;
 	overflow: hidden;
-	box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
 	border: 2px solid rgba(255, 255, 255, 0.1);
 	flex-shrink: 0;
 	background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
@@ -86,7 +77,7 @@
 	font-family: 'Space Grotesk', sans-serif;
 	font-size: 1.8rem;
 	font-weight: 700;
-	color: var(--text-inverse);
+	color: var(--amber-glow);
 	margin: 0 0 0.5rem 0;
 	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -124,7 +115,6 @@
 	font-size: 3.5rem;
 	font-weight: 700;
 	color: var(--text-inverse);
-	text-shadow: 0 0 30px currentColor;
 	transition: all 0.3s ease;
 	line-height: 1;
 	min-width: 2.5ch;

@@ -47,17 +47,16 @@
 	animation: fadeInUp 1s ease-out;
 }
 
-.hero-text-gradient {
+/* Home page specific title override */
+.hero-section .hero-title .hero-text-gradient {
 	display: block;
 	font-family: 'Space Grotesk', sans-serif;
 	font-size: clamp(3rem, 8vw, 5rem);
 	font-weight: 900;
 	line-height: 1.1;
-	background: linear-gradient(135deg, var(--amber-glow) 0%, var(--teal-crystal) 50%, var(--rose-quartz) 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	text-shadow: 0 0 60px rgba(255, 183, 77, 0.5);
+	color: var(--amber-glow) !important;
+	background: none !important;
+	-webkit-text-fill-color: var(--amber-glow) !important;
 	margin-bottom: 0.5rem;
 }
 

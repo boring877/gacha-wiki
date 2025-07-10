@@ -24,14 +24,13 @@ import { SITE_TITLE } from '../consts';
     }
 
     .nav-link {
-        color: var(--amber-glow);
+        color: #ffffff;
         text-decoration: none;
-        padding: 0.5rem 1rem;
-        border-radius: 0.75rem;
-        font-weight: 500;
-        font-size: 1.3rem;
-        transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-        will-change: transform, background-color;
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
         touch-action: manipulation;
         min-height: 44px;
         min-width: 44px;
@@ -42,8 +41,8 @@ import { SITE_TITLE } from '../consts';
 
     @media (hover: hover) and (pointer: fine) {
 		.nav-link:hover {
-			background: var(--rose-quartz);
-			color: var(--text-inverse);
+			background: rgba(255, 183, 77, 0.15);
+			color: var(--amber-glow);
 			transform: translateY(-2px);
 		}
 	}

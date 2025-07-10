@@ -58,10 +58,6 @@ h1, .character-name, .display-title {
   font-weight: 700;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
-  background: linear-gradient(135deg, #c0c0c0, #dc3545);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   margin-bottom: 1.5rem;
 }
 
@@ -72,7 +68,6 @@ h2, .section-title {
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-normal);
   margin-bottom: 1.25rem;
-  color: #c0c0c0;
 }
 
 h3, .skill-title, .awakening-title, .subsection-title {
@@ -81,7 +76,6 @@ h3, .skill-title, .awakening-title, .subsection-title {
   font-weight: 600;
   line-height: var(--leading-normal);
   letter-spacing: var(--tracking-wide);
-  color: #c0c0c0;
   margin-bottom: 1rem;
 }
 
@@ -100,7 +94,6 @@ h5 {
   font-weight: var(--font-medium);
   line-height: var(--leading-normal);
   letter-spacing: var(--tracking-wide);
-  color: var(--text-secondary);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
 }
@@ -111,7 +104,6 @@ h6 {
   font-weight: var(--font-semibold);
   line-height: var(--leading-normal);
   letter-spacing: var(--tracking-wide);
-  color: var(--text-muted);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
 }
@@ -142,7 +134,6 @@ p {
   font-weight: 700;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-normal);
-  color: var(--amber-glow);
 }
 
 /* Game Title */
@@ -152,10 +143,6 @@ p {
   font-weight: 700;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-wide);
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* Strong Text */
@@ -257,7 +244,6 @@ strong {
 @media (prefers-contrast: high) {
   h1, .character-name, .display-title,
   .game-title {
-    -webkit-text-fill-color: var(--text-primary);
     background: none;
     text-shadow: none;
   }

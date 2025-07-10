@@ -35,10 +35,10 @@ import SocialLinks from './SocialLinks.astro';
 
 	/* Header optimizations for CLS prevention */
 	.header-container {
-		background: rgba(28, 28, 28, 0.95);
+		background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
 		backdrop-filter: blur(12px);
-		border-bottom: 1px solid var(--amber-glow);
-		box-shadow: 0 4px 20px rgba(255, 183, 77, 0.2);
+		border-bottom: 1px solid rgba(255, 183, 77, 0.3);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 		padding: 1rem 0;
 		position: sticky;
 		top: 0;
@@ -78,8 +78,10 @@ import SocialLinks from './SocialLinks.astro';
 		padding: 0.5rem 1rem;
 		border-radius: 0.75rem;
 		font-size: 1.5rem;
-		transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-		will-change: transform, background-color;
+		font-weight: 700;
+		color: var(--amber-glow);
+		transition: all 0.3s ease;
+		will-change: transform;
 		/* Touch optimization */
 		touch-action: manipulation;
 		min-height: 44px;
@@ -87,14 +89,6 @@ import SocialLinks from './SocialLinks.astro';
 		align-items: center;
 	}
 
-	/* Hover effects - Desktop only */
-	@media (hover: hover) and (pointer: fine) {
-		.logo-title:hover {
-			background: var(--rose-quartz);
-			color: var(--text-inverse);
-			transform: translateY(-2px);
-		}
-	}
 
 	/* Mobile Responsive Design */
 	@media (max-width: 768px) {

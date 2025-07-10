@@ -49,7 +49,6 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 			<div class="hero-content">
 				<h1 class="hero-title">
 					<span class="hero-text-gradient">Gacha Wikis</span>
-					<span class="hero-subtitle">Your Premium Game Resource</span>
 				</h1>
 				
 				<!-- Primary CTA Button -->
@@ -107,8 +106,7 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 						
 						<!-- Timer Description -->
 						<div class="timer-description-section">
-							<div class="timer-main-label">Time until server reset</div>
-							<div class="timer-details">Daily quests • Event rewards • Shop refresh • Stamina reset</div>
+							<div class="timer-main-label" id="timerMainLabel">Time until server reset</div>
 							<div class="timer-reset-time">Resets at <span id="resetTimeDisplay">5:00</span> UTC</div>
 						</div>
 						
@@ -231,6 +229,7 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 			const clockMinutes = document.getElementById('clockMinutes');
 			const clockSeconds = document.getElementById('clockSeconds');
 			const resetTimeDisplay = document.getElementById('resetTimeDisplay');
+			const timerMainLabel = document.getElementById('timerMainLabel');
 			const gameIndicators = document.getElementById('gameIndicators');
 			const prevBtn = document.getElementById('prevGame');
 			const nextBtn = document.getElementById('nextGame');
@@ -245,37 +244,28 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 			const showcaseLink = document.getElementById('showcaseLink');
 			
 			// Calculate time until reset
-			function getTimeUntilReset(resetHour) {
+			function getTimeUntilReset(resetHour, resetMinute = 0) {
 				const now = new Date();
 				const utcHour = now.getUTCHours();
 				const utcMinutes = now.getUTCMinutes();
 				const utcSeconds = now.getUTCSeconds();
 				
-				let hoursUntilReset = resetHour - utcHour;
-				let minutesUntilReset = 60 - utcMinutes - 1;
-				let secondsUntilReset = 60 - utcSeconds;
+				// Calculate target reset time
+				const resetTime = new Date();
+				resetTime.setUTCHours(resetHour, resetMinute, 0, 0);
 				
-				// Handle when current time is past reset time
-				if (hoursUntilReset < 0 || (hoursUntilReset === 0 && minutesUntilReset < 0)) {
-					hoursUntilReset += 24;
+				// If reset time has passed today, set it for tomorrow
+				if (resetTime <= now) {
+					resetTime.setUTCDate(resetTime.getUTCDate() + 1);
 				}
 				
-				// Adjust for negative minutes
-				if (minutesUntilReset < 0) {
-					minutesUntilReset += 60;
-					hoursUntilReset -= 1;
-				}
+				// Calculate time difference in milliseconds
+				const timeDiff = resetTime.getTime() - now.getTime();
 				
-				// Handle seconds overflow
-				if (secondsUntilReset === 60) {
-					secondsUntilReset = 0;
-				} else {
-					minutesUntilReset -= 1;
-					if (minutesUntilReset < 0) {
-						minutesUntilReset = 59;
-						hoursUntilReset -= 1;
-					}
-				}
+				// Convert to hours, minutes, seconds
+				const hoursUntilReset = Math.floor(timeDiff / (1000 * 60 * 60));
+				const minutesUntilReset = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+				const secondsUntilReset = Math.floor((timeDiff % (1000 * 60)) / 1000);
 				
 				return {
 					hours: Math.max(0, hoursUntilReset),
@@ -287,7 +277,7 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 			// Update master clock display
 			function updateClock() {
 				const currentGame = featuredGames[currentGameIndex];
-				const time = getTimeUntilReset(currentGame.resetHour);
+				const time = getTimeUntilReset(currentGame.resetHour, currentGame.resetMinute || 0);
 				
 				if (clockHours) clockHours.textContent = String(time.hours).padStart(2, '0');
 				if (clockMinutes) clockMinutes.textContent = String(time.minutes).padStart(2, '0');
@@ -327,8 +317,14 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 					
 					// Update reset time display
 					if (resetTimeDisplay) {
-						const resetTime = game.resetHour === 0 ? '0:00' : `${game.resetHour}:00`;
-						resetTimeDisplay.textContent = resetTime;
+						const resetHour = String(game.resetHour).padStart(2, '0');
+						const resetMin = String(game.resetMinute || 0).padStart(2, '0');
+						resetTimeDisplay.textContent = `${resetHour}:${resetMin}`;
+					}
+					
+					// Update timer description
+					if (timerMainLabel) {
+						timerMainLabel.textContent = game.timerDescription || 'Time until server reset';
 					}
 					
 					// Update indicators
@@ -371,7 +367,9 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 				}
 				
 				// Update text content
-				if (showcaseTitle) showcaseTitle.textContent = game.name;
+				if (showcaseTitle) {
+					showcaseTitle.textContent = game.name;
+				}
 				if (showcaseDescription) showcaseDescription.textContent = game.description;
 				if (showcaseLink) showcaseLink.href = game.url;
 				
@@ -549,11 +547,15 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 				setupEventListeners();
 				updateRotationToggle();
 				
-				// Initialize reset time display
+				// Initialize reset time display and timer description
 				const currentGame = featuredGames[currentGameIndex];
 				if (resetTimeDisplay) {
-					const resetTime = currentGame.resetHour === 0 ? '0:00' : `${currentGame.resetHour}:00`;
-					resetTimeDisplay.textContent = resetTime;
+					const resetHour = String(currentGame.resetHour).padStart(2, '0');
+					const resetMin = String(currentGame.resetMinute || 0).padStart(2, '0');
+					resetTimeDisplay.textContent = `${resetHour}:${resetMin}`;
+				}
+				if (timerMainLabel) {
+					timerMainLabel.textContent = currentGame.timerDescription || 'Time until server reset';
 				}
 				
 				// Start clock updates

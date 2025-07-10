@@ -9,7 +9,6 @@
 
 	.hero-text-gradient {
 		font-size: clamp(2rem, 8vw, 2.8rem);
-		text-shadow: 0 0 40px rgba(255, 183, 77, 0.4);
 	}
 
 	.hero-subtitle {
@@ -161,7 +160,6 @@
 	}
 
 	.showcase-content:hover {
-		transform: translateY(-2px);
 	}
 
 	.showcase-image-section {
@@ -304,7 +302,6 @@
 
 	/* Disable hover effects on touch devices */
 	.showcase-content:hover {
-		transform: none;
 	}
 	
 	.showcase-content::after {
@@ -403,14 +400,9 @@
 @media (hover: none) and (pointer: coarse) {
 	.showcase-content:hover {
 		transform: none;
-		box-shadow: 
-			0 30px 80px rgba(0, 0, 0, 0.5),
-			inset 0 1px 0 rgba(255, 255, 255, 0.2),
-			0 0 40px rgba(255, 183, 77, 0.1);
 	}
 	
 	.showcase-feature-tag:hover {
-		transform: none;
 		background: rgba(255, 255, 255, 0.08);
 	}
 }
