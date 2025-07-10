@@ -34,7 +34,7 @@
 .search-input:focus {
   outline: none;
   border-color: var(--sab-blood-red);
-  box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px rgba(166, 77, 77, 0.1);
 }
 
 .search-suggestions {
@@ -50,7 +50,6 @@
   overflow-y: auto;
   display: none;
   z-index: 10;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .suggestion-item {
@@ -160,7 +159,6 @@
 
 .event-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   border-color: var(--sab-blood-red);
 }
 
@@ -216,7 +214,7 @@
 }
 
 .event-tag.seasonal {
-  background: rgba(139, 0, 0, 0.1);
+  background: rgba(166, 77, 77, 0.1);
   color: var(--sab-blood-red);
 }
 
@@ -401,15 +399,14 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: #dc143c;
+  background: #c26b6b;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .sab-event-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(220, 20, 60, 0.2);
-  border-color: #dc143c;
+  border-color: #c26b6b;
 }
 
 .sab-event-card:hover::before {
@@ -472,9 +469,9 @@
 
 /* Dark mode adjustments */
 :root[data-theme="dark"] {
-  --sab-blood-red: #dc143c;
-  --sab-dark-red: #8b0000;
+  --sab-blood-red: #c26b6b;
+  --sab-dark-red: #a64d4d;
   --sab-silver: #c0c0c0;
   --sab-gold: #ffd700;
-  --sab-purple: #9370db;
+  --sab-purple: #7a95b8;
 }

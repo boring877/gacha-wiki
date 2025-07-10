@@ -88,17 +88,16 @@ if (excludeOnLandingPage && isLandingPage) {
 
 	.nav-container {
 		background: rgba(28, 28, 28, 0.95);
-		border: 2px solid var(--blood-red);
+		border: 2px solid var(--sab-calm-red);
 		border-radius: 16px;
 		backdrop-filter: blur(10px);
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 		overflow: hidden;
 	}
 
 	.nav-header {
 		padding: 1.5rem;
-		background: linear-gradient(135deg, rgba(139, 0, 0, 0.1), rgba(220, 20, 60, 0.1));
-		border-bottom: 1px solid rgba(139, 0, 0, 0.2);
+		background: linear-gradient(135deg, rgba(166, 77, 77, 0.1), rgba(90, 123, 167, 0.1));
+		border-bottom: 1px solid rgba(166, 77, 77, 0.2);
 		text-align: center;
 	}
 
@@ -108,7 +107,7 @@ if (excludeOnLandingPage && isLandingPage) {
 		font-weight: 700;
 		color: var(--text-primary);
 		margin: 0;
-		background: linear-gradient(135deg, var(--blood-red), var(--silver-metallic));
+		background: var(--sab-silver-gradient);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
@@ -134,11 +133,11 @@ if (excludeOnLandingPage && isLandingPage) {
 		font-weight: 500;
 		font-size: var(--text-base);
 		transition: all 0.3s ease;
-		border: 1px solid rgba(139, 0, 0, 0.2);
+		border: 1px solid rgba(166, 77, 77, 0.2);
 		position: relative;
 		overflow: hidden;
 		text-align: center;
-		background: rgba(139, 0, 0, 0.05);
+		background: rgba(166, 77, 77, 0.05);
 		min-height: 60px;
 		line-height: 1.3;
 		word-wrap: break-word;
@@ -152,16 +151,15 @@ if (excludeOnLandingPage && isLandingPage) {
 		left: -100%;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.15), transparent);
+		background: linear-gradient(90deg, transparent, rgba(166, 77, 77, 0.15), transparent);
 		transition: left 0.5s ease;
 	}
 
 	.nav-link:hover {
 		color: #ffffff;
-		background: linear-gradient(135deg, var(--blood-red), #dc143c);
-		border-color: var(--blood-red);
+		background: var(--sab-light-blue);
+		border-color: var(--sab-light-blue);
 		transform: translateY(-2px);
-		box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
 	}
 
 	.nav-link:hover::before {
@@ -170,11 +168,22 @@ if (excludeOnLandingPage && isLandingPage) {
 
 	.nav-link.active {
 		color: #ffffff;
-		background: linear-gradient(135deg, var(--blood-red), var(--silver-metallic));
-		border-color: var(--silver-metallic);
+		background: var(--sab-calm-blue);
+		border-color: var(--sab-light-blue);
 		font-weight: 600;
-		box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
 		transform: translateY(-1px);
+		position: relative;
+	}
+	
+	.nav-link.active::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: var(--sab-light-blue);
+		border-radius: 0 0 8px 8px;
 	}
 
 	.nav-link.active::before {
@@ -294,7 +303,7 @@ if (excludeOnLandingPage && isLandingPage) {
 		.hint-text {
 			font-family: var(--font-primary);
 			font-size: var(--text-xs);
-			color: var(--blood-red);
+			color: var(--sab-calm-red);
 			font-weight: 500;
 			letter-spacing: 0.5px;
 			text-transform: uppercase;

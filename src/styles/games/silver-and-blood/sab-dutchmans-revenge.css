@@ -3,11 +3,10 @@
 /* Base Introduction Styling */
 .puzzle-intro {
   background: linear-gradient(135deg, rgba(20, 20, 20, 0.98), rgba(30, 30, 30, 0.95));
-  border: 2px solid #dc2626;
+  border: 2px solid var(--sab-calm-red);
   border-radius: 16px;
   padding: 2.5rem;
   margin-bottom: 3rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -19,7 +18,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #dc2626, #c0c0c0, #dc2626);
+  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-red));
 }
 
 .puzzle-intro p {
@@ -42,7 +41,7 @@
   font-size: var(--text-2xl);
   font-weight: 700;
   margin-bottom: 2rem;
-  border-bottom: 3px solid #dc2626;
+  border-bottom: 3px solid var(--sab-calm-red);
   padding-bottom: 0.75rem;
   display: flex;
   align-items: center;
@@ -57,7 +56,7 @@
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #c0c0c0, transparent);
+  background: linear-gradient(90deg, var(--sab-blue-silver), transparent);
 }
 
 /* Card Components */
@@ -67,7 +66,7 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -79,15 +78,14 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #dc2626, transparent);
+  background: linear-gradient(90deg, transparent, var(--sab-calm-red), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .puzzle-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  border-color: #dc2626;
+  border-color: var(--sab-calm-red);
 }
 
 .puzzle-card:hover::before {
@@ -126,7 +124,7 @@
 
 .puzzle-card li:before {
   content: "▸";
-  color: #dc2626;
+  color: var(--sab-calm-red);
   position: absolute;
   left: 0;
   font-weight: bold;
@@ -156,7 +154,7 @@
   border-radius: 20px;
   padding: 2.5rem 2rem;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -179,15 +177,14 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #dc2626, #c0c0c0, #dc2626);
+  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-red));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .reward-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
-  border-color: #dc2626;
+  border-color: var(--sab-calm-red);
 }
 
 .reward-card:hover::before {
@@ -230,7 +227,7 @@
   border: 2px solid var(--silver-metallic);
   border-radius: 16px;
   padding: 2rem;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -252,7 +249,6 @@
 .strategy-card:hover {
   transform: translateY(-5px);
   border-color: var(--blood-red);
-  box-shadow: 0 10px 35px rgba(139, 0, 0, 0.3);
 }
 
 .strategy-card:hover::before {
@@ -311,7 +307,7 @@
   border: 2px solid #6b7280;
   border-radius: 18px;
   padding: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -323,7 +319,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #dc2626, #c0c0c0, #dc2626);
+  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-red));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -336,7 +332,7 @@
   right: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(to bottom, #dc2626, #c0c0c0);
+  background: linear-gradient(to bottom, var(--sab-calm-red), var(--sab-blue-silver));
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.3s ease 0.1s;
@@ -344,8 +340,7 @@
 
 .puzzle-type-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-  border-color: #dc2626;
+  border-color: var(--sab-calm-red);
 }
 
 .puzzle-type-card:hover::before {
@@ -382,7 +377,6 @@
   margin-top: 1.5rem;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
 }
 
 .video-container iframe {
@@ -407,7 +401,7 @@
   border: 2px solid rgba(139, 0, 0, 0.3);
   border-radius: 12px;
   padding: 2rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -428,7 +422,6 @@
 
 .faq-item:hover {
   border-color: var(--blood-red);
-  box-shadow: 0 8px 30px rgba(139, 0, 0, 0.2);
   transform: translateX(4px);
 }
 
@@ -603,7 +596,7 @@
   background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
   padding: 2rem;
   border-radius: 16px;
-  border: 2px solid #dc2626;
+  border: 2px solid var(--sab-calm-red);
   margin-bottom: 3rem;
   text-align: center;
 }
@@ -625,7 +618,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  border-bottom: 3px solid #dc2626;
+  border-bottom: 3px solid var(--sab-calm-red);
   padding-bottom: 0.75rem;
 }
 
@@ -669,7 +662,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  border-bottom: 2px solid #dc2626;
+  border-bottom: 2px solid var(--sab-calm-red);
   padding-bottom: 0.5rem;
 }
 
@@ -690,7 +683,7 @@
 
 .chapters-list li:before {
   content: "▸";
-  color: #dc2626;
+  color: var(--sab-calm-red);
   position: absolute;
   left: 0;
   font-weight: bold;
@@ -711,7 +704,7 @@
 
 .mechanic-card:hover {
   transform: translateY(-2px);
-  border-color: #dc2626;
+  border-color: var(--sab-calm-red);
 }
 
 .mechanic-card h4 {
@@ -749,11 +742,11 @@
 
 .artifact-card:hover {
   transform: translateY(-2px);
-  border-color: #dc2626;
+  border-color: var(--sab-calm-red);
 }
 
 .artifact-card h4 {
-  color: #dc2626;
+  color: var(--sab-calm-red);
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -794,11 +787,11 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #dc2626, #c0c0c0, #dc2626);
+  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-red));
 }
 
 .reward-highlight h4 {
-  color: #dc2626;
+  color: var(--sab-calm-red);
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;

@@ -43,7 +43,7 @@ const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq }
 		
 		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-		<meta name="theme-color" content="#8B0000" />
+		<meta name="theme-color" content="#5a7ba7" />
 		
 		<script type="application/ld+json">
 			{JSON.stringify({
@@ -77,8 +77,8 @@ const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq }
 				<main class="sab-main">
 				<!-- Title Section -->
 				{gameTitle && (
-					<section class="title-section">
-						<h1 class="page-title">{gameTitle}</h1>
+					<section class="title-only-section">
+						<h1 class="title-only-heading">{gameTitle}</h1>
 						<DecorativeLines />
 					</section>
 				)}
@@ -88,10 +88,9 @@ const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq }
 				
 				<!-- Content Area -->
 				<div class="content-area">
-					<div class="summon-faq-container">
-						<div class="intro-section">
-							<p>{intro.text}</p>
-						</div>
+					<div class="intro-section">
+						<p>{intro.text}</p>
+					</div>
 
 						<div class="section">
 							<h2 class="section-title">💎 Summon Types</h2>
@@ -168,7 +167,6 @@ const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq }
 								))}
 							</div>
 						</div>
-					</div>
 				</div>
 				</main>
 			</div>

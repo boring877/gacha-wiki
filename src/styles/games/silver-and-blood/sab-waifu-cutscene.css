@@ -3,17 +3,17 @@
 
 /* Custom CSS Variables for Waifu CutScene */
 :root {
-  --waifu-primary: #dc3545;
-  --waifu-primary-light: #ff4757;
-  --waifu-secondary: #8B0000;
-  --waifu-accent: #FF69B4;
+  --waifu-primary: var(--sab-calm-red);
+  --waifu-primary-light: var(--sab-light-red);
+  --waifu-secondary: var(--sab-dark-red);
+  --waifu-accent: var(--sab-light-blue);
   --waifu-text-light: #F5F5DC;
   --waifu-text-muted: #C0C0C0;
   --waifu-bg-dark: #1A1A1A;
   --waifu-bg-card: #2D2D2D;
-  --waifu-bg-gradient: linear-gradient(135deg, #dc3545 0%, #8B0000 100%);
-  --waifu-shadow: 0 8px 32px rgba(220, 53, 69, 0.3);
-  --waifu-shadow-light: 0 4px 16px rgba(220, 53, 69, 0.15);
+  --waifu-bg-gradient: var(--sab-blood-gradient);
+  --waifu-shadow: 0 8px 32px rgba(166, 77, 77, 0.3);
+  --waifu-shadow-light: 0 4px 16px rgba(166, 77, 77, 0.15);
   --waifu-border-radius: 16px;
   --waifu-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -28,7 +28,6 @@
 .waifu-cutscene-section {
   background: var(--waifu-bg-dark);
   border-radius: var(--waifu-border-radius);
-  box-shadow: var(--waifu-shadow);
   position: relative;
   overflow: hidden;
 }
@@ -114,13 +113,11 @@
   border: 1px solid var(--waifu-primary);
   overflow: hidden;
   transition: var(--waifu-transition);
-  box-shadow: var(--waifu-shadow-light);
   position: relative;
 }
 
 .cutscene-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--waifu-shadow);
   border-color: var(--waifu-accent);
 }
 
@@ -219,7 +216,6 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: var(--waifu-shadow-light);
 }
 
 /* Character Tags */
@@ -247,12 +243,10 @@
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: var(--waifu-shadow-light);
 }
 
 .character-tag:hover {
   transform: translateY(-3px) scale(1.05);
-  box-shadow: var(--waifu-shadow);
   background: linear-gradient(135deg, var(--waifu-accent), var(--waifu-primary-light));
   border-color: var(--waifu-accent);
 }
@@ -274,7 +268,6 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--waifu-shadow-light);
 }
 
 .category-card::before {
@@ -296,7 +289,6 @@
 
 .category-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--waifu-shadow);
   border-color: var(--waifu-accent);
 }
 
@@ -464,14 +456,11 @@
 /* Animation Keyframes */
 @keyframes waifuGlow {
   0% { 
-    box-shadow: var(--waifu-shadow-light);
-  }
+    }
   50% { 
-    box-shadow: var(--waifu-shadow), 0 0 20px rgba(255, 105, 180, 0.3);
   }
   100% { 
-    box-shadow: var(--waifu-shadow-light);
-  }
+    }
 }
 
 .cutscene-card:hover {
@@ -502,7 +491,6 @@
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   border: 1px solid #444;
   display: flex;
@@ -511,8 +499,7 @@
 
 .waifu-hero-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
-  border-color: #dc3545;
+  border-color: var(--sab-calm-red);
 }
 
 .hero-image {
@@ -543,7 +530,7 @@
 }
 
 .hero-name {
-  color: #dc3545;
+  color: var(--sab-calm-red);
   font-size: 1.2rem;
   font-weight: 700;
   margin: 0;
@@ -557,7 +544,6 @@
   aspect-ratio: 16/9;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .video-preview iframe {
@@ -585,7 +571,7 @@
 }
 
 .video-button-small {
-  background: #dc3545;
+  background: var(--sab-calm-red);
   color: white;
   padding: 0.4rem 0.8rem;
   border-radius: 15px;

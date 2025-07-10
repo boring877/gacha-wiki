@@ -1,34 +1,14 @@
 /* Silver and Blood Summon FAQ Styles */
+/* This file contains styles specifically for the Summon FAQ section */
 
-/* Title Section Styles */
-.title-section {
-	text-align: center;
-	margin-bottom: 3rem;
-	padding: 2rem 0;
-}
+/* ===== MAIN LAYOUT SECTIONS ===== */
 
-.page-title {
-	font-family: var(--font-display);
-	font-size: 3rem;
-	font-weight: 700;
-	background: linear-gradient(135deg, #c0c0c0, #dc3545);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	margin: 0 0 2rem 0;
-}
-
-.summon-faq-container {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0;
-}
 
 .intro-section {
 	background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
 	padding: 2rem;
 	border-radius: 16px;
-	border: 2px solid #dc2626;
+	border: 2px solid var(--sab-dark-red);
 	margin-bottom: 3rem;
 	text-align: center;
 }
@@ -49,7 +29,7 @@
 	font-size: 2rem;
 	font-weight: 700;
 	margin-bottom: 2rem;
-	border-bottom: 3px solid #dc2626;
+	border-bottom: 3px solid var(--sab-calm-red);
 	padding-bottom: 0.75rem;
 }
 
@@ -64,7 +44,7 @@
 
 .card:hover {
 	transform: translateY(-2px);
-	border-color: #dc2626;
+	border-color: var(--sab-calm-red);
 }
 
 .card h4 {
@@ -95,6 +75,7 @@
 	line-height: 1.6;
 }
 
+/* ===== GRID LAYOUTS ===== */
 .pity-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -108,14 +89,13 @@
 	margin-top: 2rem;
 }
 
-/* FAQ Specific Styles */
+/* ===== FAQ SPECIFIC STYLES ===== */
 .faq-intro {
   background: linear-gradient(135deg, rgba(25, 25, 25, 0.98), rgba(35, 35, 35, 0.95));
   padding: 2rem;
   border-radius: 16px;
-  border: 2px solid #dc2626;
+  border: 2px solid var(--sab-calm-red);
   margin-bottom: 3rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -127,7 +107,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #dc2626, #c0c0c0, #dc2626);
+  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-red));
 }
 
 .faq-intro p {
@@ -148,7 +128,7 @@
   font-size: var(--text-2xl);
   font-weight: 700;
   margin-bottom: 2rem;
-  border-bottom: 3px solid #dc2626;
+  border-bottom: 3px solid var(--sab-calm-red);
   padding-bottom: 0.75rem;
   display: flex;
   align-items: center;
@@ -163,90 +143,104 @@
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #c0c0c0, transparent);
+  background: linear-gradient(90deg, var(--sab-blue-silver), transparent);
 }
 
-.faq-card {
+/* Pity Card Styles */
+.pity-card {
   background: linear-gradient(135deg, rgba(25, 25, 25, 0.98), rgba(35, 35, 35, 0.95));
   border: 2px solid #374151;
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.faq-card::before {
+.pity-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #dc2626, transparent);
+  background: linear-gradient(90deg, transparent, var(--sab-calm-red), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.faq-card:hover {
+.pity-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  border-color: #dc2626;
+  border-color: var(--sab-calm-red);
 }
 
-.faq-card:hover::before {
+.pity-card:hover::before {
   opacity: 1;
 }
 
-.faq-card h4 {
+.pity-card h4 {
   color: #f8f9fa;
   margin-bottom: 1.5rem;
   font-size: var(--text-xl);
   font-weight: 700;
 }
 
-.faq-card p {
+.pity-card p {
   color: #e5e7eb;
   line-height: 1.7;
   margin-bottom: 1.5rem;
   font-size: var(--text-base);
 }
 
-.faq-card ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.faq-card li {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(55, 65, 81, 0.5);
-  color: #d1d5db;
+/* FAQ Item Styles */
+.faq-item {
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.98), rgba(35, 35, 35, 0.95));
+  border: 2px solid #374151;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   position: relative;
-  padding-left: 1.5rem;
-  font-size: var(--text-base);
-  line-height: 1.6;
+  overflow: hidden;
 }
 
-.faq-card li:before {
-  content: "▸";
-  color: #dc2626;
+.faq-item::before {
+  content: '';
   position: absolute;
+  top: 0;
   left: 0;
-  font-weight: bold;
-  font-size: 1.1em;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--sab-calm-red), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.faq-card li:last-child {
-  border-bottom: none;
+.faq-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--sab-calm-red);
 }
 
-.faq-card li strong {
+.faq-item:hover::before {
+  opacity: 1;
+}
+
+.faq-item h4 {
   color: #f8f9fa;
-  font-weight: 600;
+  margin-bottom: 1.5rem;
+  font-size: var(--text-xl);
+  font-weight: 700;
 }
 
+.faq-item p {
+  color: #e5e7eb;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: var(--text-base);
+}
+
+/* ===== CURRENCY SECTION ===== */
 .currency-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -260,15 +254,14 @@
   border-radius: 20px;
   padding: 2.5rem 2rem;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
 .currency-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
-  border-color: #dc2626;
+  border-color: var(--sab-calm-red);
 }
 
 .currency-image {
@@ -276,7 +269,6 @@
   height: 80px;
   object-fit: contain;
   margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 .currency-card h4 {
@@ -293,7 +285,7 @@
   font-size: var(--text-base);
 }
 
-/* Responsive Design */
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
   .page-title {
     font-size: 2rem;

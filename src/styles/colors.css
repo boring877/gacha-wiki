@@ -46,4 +46,24 @@
   --secondary-hover: #0097A7;     /* Darker teal */
   --accent-highlight: #E91E63;    /* Rose quartz */
   --success-color: #4CAF50;       /* Success green */
+
+  /* === SILVER AND BLOOD - CALM RED & BLUE PALETTE === */
+  /* Primary calm colors for Silver and Blood section */
+  --sab-calm-red: #c26b6b;        /* Calm muted red */
+  --sab-calm-blue: #5a7ba7;       /* Calm blue */
+  --sab-blue-silver: #b8c5d1;     /* Calm blue-silver metallic */
+  --sab-dark-red: #a64d4d;        /* Darker calm red */
+  --sab-dark-blue: #4a6b8a;       /* Darker calm blue */
+  --sab-light-red: #d67e7e;       /* Lighter calm red */
+  --sab-light-blue: #7a95b8;      /* Lighter calm blue */
+  
+  /* Secondary SAB colors */
+  --sab-muted-gold: #d4af37;      /* Muted gold accent */
+  --sab-silver-accent: #9fb3c4;   /* Silver accent */
+  --sab-blood-accent: #b85a5a;    /* Blood accent */
+  
+  /* SAB gradients for calm theme */
+  --sab-primary-gradient: linear-gradient(135deg, var(--sab-calm-blue), var(--sab-calm-red));
+  --sab-silver-gradient: linear-gradient(135deg, var(--sab-blue-silver), var(--sab-light-blue));
+  --sab-blood-gradient: linear-gradient(135deg, var(--sab-calm-red), var(--sab-dark-red));
 } 

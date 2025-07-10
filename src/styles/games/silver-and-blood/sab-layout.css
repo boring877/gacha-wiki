@@ -3,28 +3,30 @@
   This file can be customized to create a unique feel for the Silver and Blood section.
 */
 
-/* Silver and Blood Color Variables */
+/* Silver and Blood Color Variables - Using Base Colors */
 :root {
-  /* Primary colors for Silver and Blood */
-  --sab-silver: #c0c0c0;
-  --sab-blood: #8b0000;
-  --sab-dark-silver: #808080;
-  --sab-light-blood: #dc143c;
-  --sab-gold: #ffd700;
-  --sab-purple: #9370db;
+  /* Primary colors for Silver and Blood - Reference base colors */
+  --sab-silver: var(--sab-blue-silver);      /* Blue-silver from base */
+  --sab-blood: var(--sab-dark-red);          /* Dark red from base */
+  --sab-dark-silver: var(--sab-dark-blue);   /* Dark blue from base */
+  --sab-light-blood: var(--sab-calm-red);    /* Calm red from base */
+  --sab-gold: var(--sab-muted-gold);         /* Muted gold from base */
+  --sab-blue: var(--sab-calm-blue);          /* Calm blue from base */
+  --sab-dark-blue: var(--sab-dark-blue);     /* Dark blue from base */
   
   /* Legacy variable names (for backward compatibility) */
-  --blood-red: #dc143c;
-  --silver-metallic: #c0c0c0;
+  --blood-red: var(--sab-calm-red);          /* Reference base calm red */
+  --silver-metallic: var(--sab-blue-silver); /* Reference base blue-silver */
   
-  /* Game-specific gradients */
-  --sab-gradient: linear-gradient(135deg, var(--sab-silver), var(--sab-blood));
-  --sab-accent-gradient: linear-gradient(90deg, var(--sab-dark-silver), var(--sab-light-blood));
+  /* Game-specific gradients - Using base gradient variables */
+  --sab-gradient: var(--sab-primary-gradient);
+  --sab-accent-gradient: var(--sab-silver-gradient);
+  --sab-calm-gradient: var(--sab-silver-gradient);
 }
 
 .sab-body {
 	background: var(--bg-dark);
-	color: var(--text-primary);
+	color: var(--text-inverse);
 	min-height: 100vh;
 	font-family: 'Inter', sans-serif;
 	display: flex;
@@ -42,17 +44,17 @@
 	background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
 }
 
-/* Accents can be changed to match the game's theme (e.g., silver and red) */
+/* Accents updated for calm red & blue theme */
 .bg-accent-1 {
-	background: radial-gradient(circle at 15% 85%, rgba(192, 192, 192, 0.08), transparent 70%);
+	background: radial-gradient(circle at 15% 85%, rgba(184, 197, 209, 0.08), transparent 70%);
 }
 
 .bg-accent-2 {
-	background: radial-gradient(circle at 85% 15%, rgba(220, 53, 69, 0.1), transparent 70%);
+	background: radial-gradient(circle at 85% 15%, rgba(90, 123, 167, 0.08), transparent 70%);
 }
 
 .bg-accent-3 {
-	background: radial-gradient(circle at 50% 50%, rgba(108, 117, 125, 0.05), transparent 70%);
+	background: radial-gradient(circle at 50% 50%, rgba(166, 77, 77, 0.06), transparent 70%);
 }
 
 .sab-content {
@@ -91,7 +93,6 @@
 	overflow: hidden;
 	margin: 0 auto;
 	position: relative;
-	box-shadow: 0 15px 40px rgba(220, 53, 69, 0.2);
 	border: 2px solid rgba(220, 53, 69, 0.5);
 }
 
@@ -154,7 +155,7 @@
 	font-family: var(--font-display);
 	font-size: var(--text-4xl);
 	font-weight: 700;
-	background: linear-gradient(135deg, #c0c0c0, #dc3545);
+	background: linear-gradient(135deg, #c0c0c0, #c26b6b);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
@@ -172,7 +173,7 @@
 	font-family: var(--font-display);
 	font-size: var(--text-4xl);
 	font-weight: 700;
-	background: linear-gradient(135deg, #c0c0c0, #dc3545);
+	background: linear-gradient(135deg, #c0c0c0, #c26b6b);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;

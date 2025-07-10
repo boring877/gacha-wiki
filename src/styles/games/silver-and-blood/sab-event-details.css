@@ -1,18 +1,16 @@
 /* Silver and Blood Event Details Page - Enhanced Styles */
 
-/* Custom CSS Variables for Event Pages */
+/* Custom CSS Variables for Event Pages - Using Base SAB Colors */
 :root {
-  --sab-primary: #8B0000;
-  --sab-primary-light: #DC143C;
+  --sab-primary: var(--sab-calm-red);
+  --sab-primary-light: var(--sab-light-red);
   --sab-secondary: #2C1810;
-  --sab-accent: #D4AF37;
+  --sab-accent: var(--sab-muted-gold);
   --sab-text-light: #F5F5DC;
   --sab-text-muted: #C0C0C0;
   --sab-bg-dark: #1A1A1A;
   --sab-bg-card: #2D2D2D;
-  --sab-bg-gradient: linear-gradient(135deg, #8B0000 0%, #4A0000 100%);
-  --sab-shadow: 0 8px 32px rgba(139, 0, 0, 0.3);
-  --sab-shadow-light: 0 4px 16px rgba(139, 0, 0, 0.15);
+  --sab-bg-gradient: var(--sab-blood-gradient);
   --sab-border-radius: 12px;
   --sab-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -24,7 +22,6 @@
   padding: 2rem;
   background: var(--sab-bg-dark);
   border-radius: var(--sab-border-radius);
-  box-shadow: var(--sab-shadow);
   position: relative;
   overflow: hidden;
 }
@@ -83,7 +80,7 @@
 
 /* Guide Author Section */
 .guide-author {
-  background: rgba(139, 0, 0, 0.1);
+  background: rgba(166, 77, 77, 0.1);
   border: 1px solid var(--sab-primary);
   border-radius: var(--sab-border-radius);
   padding: 1.5rem;
@@ -121,7 +118,7 @@
   transition: var(--sab-transition);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
-  background: rgba(220, 20, 60, 0.1);
+  background: rgba(166, 77, 77, 0.1);
 }
 
 .community-link a:hover {
@@ -135,7 +132,6 @@
   margin-bottom: 3rem;
   border-radius: var(--sab-border-radius);
   overflow: hidden;
-  box-shadow: var(--sab-shadow);
   position: relative;
   background: var(--sab-bg-card);
 }
@@ -260,7 +256,6 @@
 
 .synopsis-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--sab-shadow);
   border-color: var(--sab-accent);
 }
 
@@ -378,7 +373,6 @@
   border-radius: var(--sab-border-radius);
   border: 1px solid var(--sab-primary);
   overflow: hidden;
-  box-shadow: var(--sab-shadow);
 }
 
 .guide-image {
@@ -401,7 +395,7 @@
 
 .image-description {
   padding: 1.5rem;
-  background: rgba(139, 0, 0, 0.1);
+  background: rgba(166, 77, 77, 0.1);
   border-top: 1px solid var(--sab-primary);
 }
 
@@ -466,7 +460,6 @@
 
 .guide-section:hover {
   transform: translateY(-2px);
-  box-shadow: var(--sab-shadow);
 }
 
 .guide-section::before {
@@ -529,14 +522,12 @@
   height: auto;
   border-radius: 8px;
   border: 1px solid var(--sab-primary);
-  box-shadow: var(--sab-shadow-light);
   transition: var(--sab-transition);
   cursor: pointer;
 }
 
 .inline-small-image img:hover {
   transform: scale(1.05);
-  box-shadow: var(--sab-shadow);
 }
 
 
@@ -545,7 +536,7 @@
   font-style: italic;
   text-align: center;
   padding: 3rem;
-  background: rgba(139, 0, 0, 0.05);
+  background: rgba(166, 77, 77, 0.05);
   border-radius: var(--sab-border-radius);
   border: 2px dashed var(--sab-primary);
   font-size: 1.1rem;
@@ -745,10 +736,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--sab-primary);
+  background: var(--sab-calm-red);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--sab-primary-light);
+  background: var(--sab-light-blue);
 }

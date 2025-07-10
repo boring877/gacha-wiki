@@ -33,9 +33,9 @@
 
 /* Class Badge Colors */
 .class-badge.warrior, .badge.warrior {
-  background: #ff6b6b;
+  background: var(--sab-calm-red);
   color: #fff;
-  border: 1px solid #ff5252;
+  border: 1px solid var(--sab-dark-red);
 }
 
 .class-badge.assassin, .badge.assassin {
@@ -45,9 +45,9 @@
 }
 
 .class-badge.defender, .badge.defender {
-  background: #4682b4;
+  background: var(--sab-calm-blue);
   color: #fff;
-  border: 1px solid #4169e1;
+  border: 1px solid var(--sab-dark-blue);
 }
 
 .class-badge.marksman, .badge.marksman {
@@ -57,22 +57,22 @@
 }
 
 .class-badge.sorcerer, .badge.sorcerer {
-  background: #9932cc;
+  background: var(--sab-light-blue);
   color: #fff;
-  border: 1px solid #8a2be2;
+  border: 1px solid var(--sab-dark-blue);
 }
 
 .class-badge.enchanter, .badge.enchanter {
-  background: #ffd700;
+  background: var(--sab-muted-gold);
   color: #222;
-  border: 1px solid #ffed4a;
+  border: 1px solid var(--sab-blood-accent);
 }
 
 /* Faction Badge Colors */
 .faction-badge.kingdom, .badge.kingdom {
-  background: #4169e1;
+  background: var(--sab-calm-blue);
   color: #fff;
-  border: 1px solid #6495ed;
+  border: 1px solid var(--sab-light-blue);
 }
 
 .faction-badge.ancestors, .badge.ancestors {
@@ -82,15 +82,15 @@
 }
 
 .faction-badge.church, .badge.church {
-  background: #ffd700;
+  background: var(--sab-muted-gold);
   color: #222;
-  border: 1px solid #ffed4a;
+  border: 1px solid var(--sab-silver-accent);
 }
 
 .faction-badge.bloodborn, .badge.bloodborn {
-  background: #8b0000;
+  background: var(--sab-dark-red);
   color: #fff;
-  border: 1px solid #dc143c;
+  border: 1px solid var(--sab-calm-red);
 }
 
 /* Equipment Type Badge Colors */
@@ -164,9 +164,9 @@
 }
 
 .skill-badge.ultimate, .badge.ultimate {
-  background: #8b0000;
+  background: var(--sab-dark-red);
   color: #fff;
-  border: 1px solid #dc143c;
+  border: 1px solid var(--sab-calm-red);
 }
 
 /* ================= TAG BADGES (Gameplay Tags) ================ */
@@ -194,9 +194,9 @@
 }
 
 .tag-badge.continuous-dmg {
-  background: #9932cc;
+  background: var(--sab-light-blue);
   color: #fff;
-  border-color: #8a2be2;
+  border-color: var(--sab-calm-blue);
 }
 
 .tag-badge.control {
@@ -212,9 +212,9 @@
 }
 
 .tag-badge.single-target-dmg {
-  background: #dc3545;
+  background: var(--sab-calm-red);
   color: #fff;
-  border-color: #c82333;
+  border-color: var(--sab-dark-red);
 }
 
 .tag-badge.rush {
@@ -230,9 +230,9 @@
 }
 
 .tag-badge.summon {
-  background: #9932cc;
+  background: var(--sab-light-blue);
   color: #fff;
-  border-color: #8a2be2;
+  border-color: var(--sab-calm-blue);
 }
 
 .tag-badge.healing {
@@ -254,9 +254,9 @@
 }
 
 .tag-badge.debuff {
-  background: #dc143c;
+  background: var(--sab-calm-red);
   color: #fff;
-  border-color: #b22222;
+  border-color: var(--sab-dark-red);
 }
 
 /* Hover effects for all badges */
@@ -264,7 +264,6 @@
 .equipment-badge:hover, .moon-badge:hover, .attack-badge:hover, .skill-badge:hover, .tag-badge:hover {
   transform: none; /* Removed zoom effect */
   transition: background-color 0.15s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
 /* Small badge variant */

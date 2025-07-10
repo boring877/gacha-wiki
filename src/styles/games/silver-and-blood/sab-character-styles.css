@@ -5,7 +5,7 @@
 /* Force title colors to override global typography styles */
 .sab-body h2.section-title,
 .sab-body .section-title {
-  background: linear-gradient(135deg, #c0c0c0, #dc3545) !important;
+  background: linear-gradient(135deg, #c0c0c0, #c26b6b) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -24,23 +24,21 @@
   background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
   border-radius: 16px;
   border: 1px solid #3a3a3a;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
 
 .content-section:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.1);
   border-color: rgba(192, 192, 192, 0.3);
 }
 
 .section-title {
-  background: linear-gradient(135deg, #c0c0c0, #dc3545);
+  background: var(--sab-silver-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin: 0 0 2rem 0 !important;
-  border-bottom: 3px solid #dc3545 !important;
+  border-bottom: 3px solid var(--sab-calm-red) !important;
   padding-bottom: 0.8rem !important;
   font-size: 2rem !important;
   font-weight: 700 !important;
@@ -59,7 +57,6 @@ h3 {
 
 .character-portrait:hover {
   transform: none;
-  box-shadow: none;
   filter: brightness(1.1) contrast(1.05);
 }
 
@@ -79,7 +76,6 @@ h3 {
 
 .badges-container:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   border-color: rgba(192, 192, 192, 0.5);
 }
 
@@ -97,8 +93,7 @@ h3 {
 
 .stats-grid .stat-item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(220, 53, 69, 0.15);
-  border-color: #dc3545;
+  border-color: var(--sab-calm-red);
   background: linear-gradient(135deg, #1a1a1a 60%, #2a2a2a 100%);
 }
 
@@ -126,7 +121,6 @@ h3 {
 
 .skill-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   border-color: rgba(192, 192, 192, 0.5);
 }
 
@@ -175,9 +169,9 @@ h3 {
 }
 
 .skill-badge.ultimate {
-  background: linear-gradient(135deg, #dc3545, #c82333);
+  background: linear-gradient(135deg, #c26b6b, #c82333);
   color: white;
-  border: 1px solid #dc3545;
+  border: 1px solid #c26b6b;
 }
 
 /* ===== TAG BADGES (new) ===== */
@@ -377,9 +371,9 @@ h3 {
 }
 
 .sort-btn.active { 
-  background: #dc3545; 
+  background: var(--sab-calm-red); 
   color: white; 
-  border-color: #dc3545; 
+  border-color: var(--sab-calm-red); 
 }
 
 /* Reset button unique styling */
@@ -392,7 +386,6 @@ h3 {
   font-size: 0.85rem; 
   font-weight: 600; 
   cursor: pointer; 
-  box-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -402,13 +395,11 @@ h3 {
 .reset-btn:hover { 
   background: linear-gradient(135deg, #d3d3d3, #b0b0b0); 
   transform: translateY(-1px); 
-  box-shadow: 0 4px 12px rgba(192, 192, 192, 0.4);
   border-color: #d3d3d3;
 }
 
 .reset-btn:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(192, 192, 192, 0.3);
 }
 
 /* Table styles */
@@ -424,7 +415,7 @@ table.character-table {
   border-spacing: 0; 
   background: #2a2a2a; 
   border-radius: 12px; 
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15); 
+ 
   font-family: 'Space Grotesk', sans-serif; 
 }
 
@@ -436,7 +427,7 @@ table.character-table th, table.character-table td {
 }
 
 table.character-table th { 
-  background: linear-gradient(135deg, #dc3545, #b22222); 
+  background: linear-gradient(135deg, #c26b6b, #b22222); 
   color: white; 
   font-weight: 700; 
   font-size: 0.9rem; 
@@ -457,7 +448,7 @@ table.character-table th {
 .mobile-character-card { 
   background: #2c2c2c; 
   border-radius: 14px; 
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15); 
+ 
   padding: 1.2rem 1rem 1rem 1rem; 
   margin-bottom: 1.5rem; 
   display: flex; 
