@@ -8,7 +8,7 @@ export const homepageGames = [
     description: 'Strategic RPG with stunning visuals and deep mechanics',
     image: '/images/games/zone-nova/zonenova1.jpg',
     url: '/guides/zone-nova/',
-    resetHour: 5, // UTC time for daily reset
+    resetHour: 20, // UTC time for daily reset
     resetMinute: 0, // UTC minute for daily reset
     timerDescription: 'Time until server reset',
     features: ['30+ Characters', 'Active Rifts', 'Memory System', 'Strategic Combat'],
