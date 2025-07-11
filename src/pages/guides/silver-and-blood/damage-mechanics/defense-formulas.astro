@@ -115,6 +115,34 @@ const { meta, header, sections, formulas, examples, tips } = defenseFormulasData
       </div>
       
     </div>
+
+    <!-- Defense Effectiveness Chart Section -->
+    <div class="content-section">
+      <h2>Defense Effectiveness Chart</h2>
+      <p>This chart shows how defense effectiveness diminishes due to the K coefficient (1300). Notice how higher defense values provide less benefit per point invested.</p>
+      
+      <div class="chart-container">
+        <canvas id="defenseChart" width="800" height="400"></canvas>
+      </div>
+      
+      <div class="highlight-box">
+        <p><strong>📊 Chart Explanation:</strong> The curve shows that defense has diminishing returns. At 1300 defense (equal to K), you take 50% damage. Beyond this point, each additional defense point provides less protection.</p>
+      </div>
+    </div>
+
+    <!-- Defense vs Damage Reduction Comparison Chart -->
+    <div class="content-section">
+      <h2>Defense vs Damage Reduction Comparison</h2>
+      <p>This chart compares the effectiveness of stacking defense versus investing in damage reduction. Damage reduction is often more effective because it's applied as the final step!</p>
+      
+      <div class="chart-container">
+        <canvas id="comparisonChart" width="800" height="400"></canvas>
+      </div>
+      
+      <div class="highlight-box">
+        <p><strong>🛡️ Key Insight:</strong> Damage reduction is applied AFTER defense calculations, making it multiplicatively powerful. Even small amounts of damage reduction can outperform massive defense investments!</p>
+      </div>
+    </div>
     
   </div>
 </DamageMechanicsPageLayout>
@@ -253,9 +281,312 @@ const { meta, header, sections, formulas, examples, tips } = defenseFormulasData
 		`;
 	}
 	
+	// Create Defense Effectiveness Chart
+	function createDefenseChart() {
+		const canvas = document.getElementById('defenseChart') as HTMLCanvasElement;
+		if (!canvas) return;
+		
+		const ctx = canvas.getContext('2d');
+		if (!ctx) return;
+		
+		const width = canvas.width;
+		const height = canvas.height;
+		
+		// Clear canvas
+		ctx.clearRect(0, 0, width, height);
+		
+		// Chart settings
+		const margin = 60;
+		const chartWidth = width - 2 * margin;
+		const chartHeight = height - 2 * margin;
+		
+		// Data points (Defense values from 0 to 5000)
+		const maxDefense = 5000;
+		const points: { defense: number; damagePercent: number }[] = [];
+		const K = 1300;
+		const baseAttack = 1000; // Example attack for calculations
+		
+		for (let defense = 0; defense <= maxDefense; defense += 100) {
+			const damagePercent = (baseAttack * K) / (defense + K) / baseAttack * 100;
+			points.push({ defense, damagePercent });
+		}
+		
+		// Find min/max values
+		const minDamage = Math.min(...points.map(p => p.damagePercent));
+		const maxDamage = Math.max(...points.map(p => p.damagePercent));
+		
+		// Set up canvas styles
+		ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+		ctx.strokeStyle = '#C06B6B';
+		ctx.lineWidth = 2;
+		ctx.font = '12px Arial';
+		
+		// Draw axes
+		ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+		ctx.lineWidth = 1;
+		
+		// X-axis
+		ctx.beginPath();
+		ctx.moveTo(margin, height - margin);
+		ctx.lineTo(width - margin, height - margin);
+		ctx.stroke();
+		
+		// Y-axis
+		ctx.beginPath();
+		ctx.moveTo(margin, margin);
+		ctx.lineTo(margin, height - margin);
+		ctx.stroke();
+		
+		// Draw grid lines and labels
+		ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+		ctx.textAlign = 'center';
+		
+		// X-axis labels (Defense values)
+		for (let i = 0; i <= 5; i++) {
+			const defense = i * 1000;
+			const x = margin + (defense / maxDefense) * chartWidth;
+			
+			// Grid line
+			ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+			ctx.beginPath();
+			ctx.moveTo(x, margin);
+			ctx.lineTo(x, height - margin);
+			ctx.stroke();
+			
+			// Label
+			ctx.fillText(defense.toString(), x, height - margin + 20);
+		}
+		
+		// Y-axis labels (Damage percentage)
+		ctx.textAlign = 'right';
+		for (let i = 0; i <= 10; i++) {
+			const percent = i * 10;
+			const y = height - margin - (percent / 100) * chartHeight;
+			
+			// Grid line
+			ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+			ctx.beginPath();
+			ctx.moveTo(margin, y);
+			ctx.lineTo(width - margin, y);
+			ctx.stroke();
+			
+			// Label
+			ctx.fillText(percent + '%', margin - 10, y + 4);
+		}
+		
+		// Draw the curve
+		ctx.strokeStyle = '#C06B6B';
+		ctx.lineWidth = 3;
+		ctx.beginPath();
+		
+		points.forEach((point, index) => {
+			const x = margin + (point.defense / maxDefense) * chartWidth;
+			const y = height - margin - (point.damagePercent / 100) * chartHeight;
+			
+			if (index === 0) {
+				ctx.moveTo(x, y);
+			} else {
+				ctx.lineTo(x, y);
+			}
+		});
+		
+		ctx.stroke();
+		
+		// Highlight the 50% damage point (Defense = K = 1300)
+		const x50 = margin + (1300 / maxDefense) * chartWidth;
+		const y50 = height - margin - (50 / 100) * chartHeight;
+		
+		ctx.fillStyle = 'rgba(192, 107, 107, 0.8)';
+		ctx.beginPath();
+		ctx.arc(x50, y50, 6, 0, 2 * Math.PI);
+		ctx.fill();
+		
+		// Add annotation for 50% point
+		ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+		ctx.textAlign = 'center';
+		ctx.fillText('50% at 1300 Defense', x50, y50 - 15);
+		
+		// Add axis labels
+		ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+		ctx.textAlign = 'center';
+		ctx.font = '14px Arial';
+		ctx.fillText('Defense Value', width / 2, height - 10);
+		
+		ctx.save();
+		ctx.translate(20, height / 2);
+		ctx.rotate(-Math.PI / 2);
+		ctx.fillText('Damage Taken (%)', 0, 0);
+		ctx.restore();
+	}
+	
+	// Create Defense vs Damage Reduction Comparison Chart
+	function createComparisonChart() {
+		const canvas = document.getElementById('comparisonChart') as HTMLCanvasElement;
+		if (!canvas) return;
+		
+		const ctx = canvas.getContext('2d');
+		if (!ctx) return;
+		
+		const width = canvas.width;
+		const height = canvas.height;
+		
+		// Clear canvas
+		ctx.clearRect(0, 0, width, height);
+		
+		// Chart settings
+		const margin = 80;
+		const chartWidth = width - 2 * margin;
+		const chartHeight = height - 2 * margin;
+		
+		// Constants
+		const K = 1300;
+		const baseAttack = 1000;
+		const skillMultiplier = 2.0;
+		
+		// Create scenarios for comparison
+		const scenarios = [
+			// Base scenario: 500 defense, 0% damage reduction
+			{ defense: 500, damageReduction: 0, label: "500 Def, 0% DR", color: '#FF6B6B' },
+			// High defense scenario: 3000 defense, 0% damage reduction
+			{ defense: 3000, damageReduction: 0, label: "3000 Def, 0% DR", color: '#4ECDC4' },
+			// Medium defense + damage reduction: 1000 defense, 25% damage reduction
+			{ defense: 1000, damageReduction: 25, label: "1000 Def, 25% DR", color: '#45B7D1' },
+			// Low defense + high damage reduction: 500 defense, 50% damage reduction
+			{ defense: 500, damageReduction: 50, label: "500 Def, 50% DR", color: '#96CEB4' },
+			// Balanced: 1300 defense, 20% damage reduction
+			{ defense: 1300, damageReduction: 20, label: "1300 Def, 20% DR", color: '#FFEAA7' }
+		];
+		
+		// Calculate damage taken for each scenario across different boss attack powers
+		const bossAttackRange = { min: 500, max: 3000 };
+		const dataPoints: any[] = [];
+		
+		scenarios.forEach(scenario => {
+			const points: { bossAttack: number; finalDamage: number }[] = [];
+			for (let bossAttack = bossAttackRange.min; bossAttack <= bossAttackRange.max; bossAttack += 100) {
+				const baseDamage = (bossAttack * skillMultiplier * K) / (scenario.defense + K);
+				const finalDamage = baseDamage * (1 - scenario.damageReduction / 100);
+				points.push({ bossAttack, finalDamage });
+			}
+			dataPoints.push({ ...scenario, points });
+		});
+		
+		// Find min/max values for scaling
+		const allDamages = dataPoints.flatMap(d => d.points.map(p => p.finalDamage));
+		const minDamage = Math.min(...allDamages);
+		const maxDamage = Math.max(...allDamages);
+		
+		// Draw axes
+		ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+		ctx.lineWidth = 1;
+		
+		// X-axis
+		ctx.beginPath();
+		ctx.moveTo(margin, height - margin);
+		ctx.lineTo(width - margin, height - margin);
+		ctx.stroke();
+		
+		// Y-axis
+		ctx.beginPath();
+		ctx.moveTo(margin, margin);
+		ctx.lineTo(margin, height - margin);
+		ctx.stroke();
+		
+		// Draw grid lines and labels
+		ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+		ctx.font = '12px Arial';
+		ctx.textAlign = 'center';
+		
+		// X-axis labels (Boss Attack Power)
+		for (let i = 0; i <= 5; i++) {
+			const attack = bossAttackRange.min + (i * (bossAttackRange.max - bossAttackRange.min) / 5);
+			const x = margin + (i / 5) * chartWidth;
+			
+			// Grid line
+			ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+			ctx.beginPath();
+			ctx.moveTo(x, margin);
+			ctx.lineTo(x, height - margin);
+			ctx.stroke();
+			
+			// Label
+			ctx.fillText(Math.round(attack).toString(), x, height - margin + 20);
+		}
+		
+		// Y-axis labels (Final Damage)
+		ctx.textAlign = 'right';
+		for (let i = 0; i <= 8; i++) {
+			const damage = minDamage + (i * (maxDamage - minDamage) / 8);
+			const y = height - margin - (i / 8) * chartHeight;
+			
+			// Grid line
+			ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+			ctx.beginPath();
+			ctx.moveTo(margin, y);
+			ctx.lineTo(width - margin, y);
+			ctx.stroke();
+			
+			// Label
+			ctx.fillText(Math.round(damage).toString(), margin - 10, y + 4);
+		}
+		
+		// Draw the lines for each scenario
+		dataPoints.forEach((scenario, index) => {
+			ctx.strokeStyle = scenario.color;
+			ctx.lineWidth = 3;
+			ctx.beginPath();
+			
+			scenario.points.forEach((point, pointIndex) => {
+				const x = margin + ((point.bossAttack - bossAttackRange.min) / (bossAttackRange.max - bossAttackRange.min)) * chartWidth;
+				const y = height - margin - ((point.finalDamage - minDamage) / (maxDamage - minDamage)) * chartHeight;
+				
+				if (pointIndex === 0) {
+					ctx.moveTo(x, y);
+				} else {
+					ctx.lineTo(x, y);
+				}
+			});
+			
+			ctx.stroke();
+		});
+		
+		// Draw legend
+		const legendStartY = margin + 20;
+		const legendSpacing = 25;
+		
+		ctx.font = '12px Arial';
+		ctx.textAlign = 'left';
+		
+		scenarios.forEach((scenario, index) => {
+			const legendY = legendStartY + (index * legendSpacing);
+			
+			// Legend color box
+			ctx.fillStyle = scenario.color;
+			ctx.fillRect(width - margin - 200, legendY - 8, 15, 15);
+			
+			// Legend text
+			ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+			ctx.fillText(scenario.label, width - margin - 180, legendY + 4);
+		});
+		
+		// Add axis labels
+		ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+		ctx.textAlign = 'center';
+		ctx.font = '14px Arial';
+		ctx.fillText('Boss Attack Power', width / 2, height - 10);
+		
+		ctx.save();
+		ctx.translate(20, height / 2);
+		ctx.rotate(-Math.PI / 2);
+		ctx.fillText('Final Damage Taken', 0, 0);
+		ctx.restore();
+	}
+	
 	// Calculate on page load
 	document.addEventListener('DOMContentLoaded', function() {
 		window.calculateDamage();
 		window.calculateAttackPower();
+		createDefenseChart();
+		createComparisonChart();
 	});
 </script>
