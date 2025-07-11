@@ -148,11 +148,16 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		
 		if (mobileMenu) {
-			mobileMenu.classList.toggle('active', isMenuOpen);
+			if (isMenuOpen) {
+				// Simple approach: prevent scrolling and show menu
+				document.body.style.overflow = 'hidden';
+				mobileMenu.classList.add('active');
+			} else {
+				// Restore scrolling and hide menu
+				document.body.style.overflow = '';
+				mobileMenu.classList.remove('active');
+			}
 		}
-		
-		// Prevent body scrolling when menu is open
-		document.body.style.overflow = isMenuOpen ? 'hidden' : '';
 	}
 
 	function closeMenu() {

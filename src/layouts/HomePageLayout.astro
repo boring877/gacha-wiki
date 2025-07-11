@@ -274,14 +274,25 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 				};
 			}
 			
-			// Update master clock display
+			// Update master clock display with performance optimization
 			function updateClock() {
 				const currentGame = featuredGames[currentGameIndex];
 				const time = getTimeUntilReset(currentGame.resetHour, currentGame.resetMinute || 0);
 				
-				if (clockHours) clockHours.textContent = String(time.hours).padStart(2, '0');
-				if (clockMinutes) clockMinutes.textContent = String(time.minutes).padStart(2, '0');
-				if (clockSeconds) clockSeconds.textContent = String(time.seconds).padStart(2, '0');
+				const newHours = String(time.hours).padStart(2, '0');
+				const newMinutes = String(time.minutes).padStart(2, '0');
+				const newSeconds = String(time.seconds).padStart(2, '0');
+				
+				// Only update if value changed to reduce DOM manipulation
+				if (clockHours && clockHours.textContent !== newHours) {
+					clockHours.textContent = newHours;
+				}
+				if (clockMinutes && clockMinutes.textContent !== newMinutes) {
+					clockMinutes.textContent = newMinutes;
+				}
+				if (clockSeconds && clockSeconds.textContent !== newSeconds) {
+					clockSeconds.textContent = newSeconds;
+				}
 			}
 			
 			// Switch master clock to a specific game with smooth animation
@@ -302,37 +313,40 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 					clockGameName.style.transform = 'translateY(10px)';
 				}
 				
-				setTimeout(() => {
-					// Update content
-					if (clockGameImage && game.image) {
-						clockGameImage.src = game.image;
-						clockGameImage.alt = game.name;
-						clockGameImage.style.opacity = '1';
-					}
-					if (clockGameName) {
-						clockGameName.textContent = game.name;
-						clockGameName.style.opacity = '1';
-						clockGameName.style.transform = 'translateY(0)';
-					}
-					
-					// Update reset time display
-					if (resetTimeDisplay) {
-						const resetHour = String(game.resetHour).padStart(2, '0');
-						const resetMin = String(game.resetMinute || 0).padStart(2, '0');
-						resetTimeDisplay.textContent = `${resetHour}:${resetMin}`;
-					}
-					
-					// Update timer description
-					if (timerMainLabel) {
-						timerMainLabel.textContent = game.timerDescription || 'Time until server reset';
-					}
-					
-					// Update indicators
-					updateIndicators();
-					
-					// Update clock immediately
-					updateClock();
-				}, 300);
+				// Use requestAnimationFrame for smoother transitions
+				requestAnimationFrame(() => {
+					setTimeout(() => {
+						// Update content with smooth transitions
+						if (clockGameImage && game.image) {
+							clockGameImage.src = game.image;
+							clockGameImage.alt = game.name;
+							clockGameImage.style.opacity = '1';
+						}
+						if (clockGameName) {
+							clockGameName.textContent = game.name;
+							clockGameName.style.opacity = '1';
+							clockGameName.style.transform = 'translateY(0)';
+						}
+						
+						// Update reset time display
+						if (resetTimeDisplay) {
+							const resetHour = String(game.resetHour).padStart(2, '0');
+							const resetMin = String(game.resetMinute || 0).padStart(2, '0');
+							resetTimeDisplay.textContent = `${resetHour}:${resetMin}`;
+						}
+						
+						// Update timer description
+						if (timerMainLabel) {
+							timerMainLabel.textContent = game.timerDescription || 'Time until server reset';
+						}
+						
+						// Update indicators
+						updateIndicators();
+						
+						// Update clock immediately
+						updateClock();
+					}, 200);
+				});
 				
 				// Save preference only for manual interactions (not auto-rotation)
 				if (direction !== 'auto') {
