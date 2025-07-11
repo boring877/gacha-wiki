@@ -1,0 +1,353 @@
+/* Silver and Blood Damage Mechanics Pages - Premium Design */
+
+/* Main Content Container */
+.damage-mechanics-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Introduction Section */
+.intro-section {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.intro-header {
+  margin-bottom: 2rem;
+}
+
+.mechanics-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: var(--sab-silver-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 20px rgba(192, 107, 107, 0.2);
+}
+
+.mechanics-subtitle {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+.intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  text-align: left;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 3rem 0 2rem 0;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-dark-red));
+}
+
+/* Formula Section */
+.formula-section {
+  margin-bottom: 4rem;
+}
+
+.formula-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.formula-display {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 1.5rem;
+  font-family: 'Courier New', monospace;
+}
+
+.formula-label {
+  color: rgba(255, 255, 255, 0.7);
+  margin-right: 1rem;
+}
+
+.formula-main {
+  color: var(--sab-calm-red);
+  text-shadow: 0 0 10px rgba(192, 107, 107, 0.3);
+}
+
+.formula-description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Formula Breakdown */
+.formula-breakdown {
+  margin-top: 2rem;
+}
+
+.formula-breakdown h3 {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.breakdown-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.breakdown-item h4 {
+  color: var(--sab-calm-red);
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.breakdown-item p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Examples Section */
+.examples-section {
+  margin-bottom: 4rem;
+}
+
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.example-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.05) 0%, 
+    rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.example-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(192, 107, 107, 0.2);
+}
+
+.example-card h3 {
+  color: var(--sab-calm-red);
+  font-size: 1.3rem;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.calculation p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0.5rem 0;
+  font-family: 'Courier New', monospace;
+}
+
+.calculation strong {
+  color: var(--sab-calm-red);
+  font-weight: 700;
+}
+
+/* Insights Section */
+.insights-section {
+  margin-bottom: 4rem;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.insight-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.04) 0%, 
+    rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.insight-card h3 {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.insight-card p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Thresholds Section */
+.thresholds-section {
+  margin-bottom: 4rem;
+}
+
+.thresholds-table {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.06) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 2rem;
+}
+
+.threshold-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.threshold-row.header {
+  background: rgba(192, 107, 107, 0.1);
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--sab-calm-red);
+  margin-bottom: 0.5rem;
+}
+
+.threshold-row.highlighted {
+  background: rgba(192, 107, 107, 0.05);
+  border-radius: 8px;
+  color: var(--sab-calm-red);
+  font-weight: 600;
+}
+
+.threshold-row:last-child {
+  border-bottom: none;
+}
+
+.threshold-def,
+.threshold-reduction,
+.threshold-effective {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Tips Section */
+.tips-section {
+  margin-bottom: 4rem;
+}
+
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.tip-item {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.04) 0%, 
+    rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tip-item h3 {
+  color: var(--sab-calm-red);
+  font-size: 1.2rem;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.tip-item p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .damage-mechanics-content {
+    padding: 0 1rem;
+  }
+  
+  .mechanics-title {
+    font-size: 2rem;
+  }
+  
+  .formula-card {
+    padding: 2rem;
+  }
+  
+  .formula-display {
+    font-size: 1.4rem;
+  }
+  
+  .breakdown-grid,
+  .examples-grid,
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .threshold-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .threshold-def,
+  .threshold-reduction,
+  .threshold-effective {
+    padding: 0.5rem;
+  }
+}

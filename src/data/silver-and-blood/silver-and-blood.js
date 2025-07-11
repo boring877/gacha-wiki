@@ -96,6 +96,15 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       url: "/guides/silver-and-blood/character-comparison/",
       category: "guides",
       status: "active"
+    },
+    {
+      id: "damage-mechanics",
+      title: "Damage Mechanics Hub",
+      emoji: "⚔️",
+      description: "Master Silver and Blood's combat system with comprehensive damage calculation guides and defense formulas.",
+      url: "/guides/silver-and-blood/damage-mechanics/",
+      category: "guides",
+      status: "active"
     }
   ]
 };

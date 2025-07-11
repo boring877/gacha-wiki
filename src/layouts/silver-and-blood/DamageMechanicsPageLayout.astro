@@ -1,0 +1,78 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SilverAndBloodNavigation from '../../components/silver-and-blood/SilverAndBloodNavigation.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import SabBackButton from '../../components/silver-and-blood/sab-backbutton.astro';
+
+// Import CSS files properly
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-damage-mechanics.css';
+
+export interface Props {
+	title: string;
+	description: string;
+	gameTitle?: string;
+	showBackButton?: boolean;
+	backButtonHref?: string;
+	backButtonText?: string;
+}
+
+const { 
+	title, 
+	description, 
+	gameTitle = "Silver and Blood",
+	showBackButton = true,
+	backButtonHref = "/guides/silver-and-blood/damage-mechanics/",
+	backButtonText = "Back to Damage Mechanics"
+} = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description || ""} />
+		<slot name="head" />
+	</head>
+	<body class="sab-body sab-layout-override">
+		<!-- Background layers for visual depth similar to landing page -->
+		<div class="bg-layer bg-primary"></div>
+		<div class="bg-layer bg-accent-1"></div>
+		<div class="bg-layer bg-accent-2"></div>
+		<div class="bg-layer bg-accent-3"></div>
+		
+		<div class="sab-content">
+			<Header />
+			<MobileMenu />
+			
+			<div class="sab-container">
+				<main class="sab-main">
+				
+					<!-- Title Only Section -->
+					<section class="title-only-section">
+						<h1 class="title-only-heading">
+							{gameTitle}
+						</h1>
+						
+						<DecorativeLines />
+					</section>
+					
+					<!-- Content Area -->
+					<div class="content-area">
+						<SilverAndBloodNavigation currentPath={Astro.url.pathname} />
+						{showBackButton && (
+							<SabBackButton href={backButtonHref} text={backButtonText} />
+						)}
+						<slot />
+					</div>
+				</main>
+			</div>
+			
+			<Footer />
+		</div>
+	</body>
+</html>

@@ -1,0 +1,426 @@
+/* Silver and Blood Damage Mechanics - Shared Components */
+
+/* Main Content Container */
+.damage-mechanics-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Content Sections */
+.content-section {
+  margin: 2.5rem 0;
+}
+
+.content-section h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: var(--sab-silver-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 20px rgba(192, 107, 107, 0.2);
+}
+
+.content-section h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--sab-calm-red);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(192, 107, 107, 0.3);
+}
+
+.content-section p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.content-section a {
+  color: var(--sab-calm-red);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.content-section a:hover {
+  color: var(--sab-light-red);
+  text-decoration: none;
+}
+
+.content-section hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--sab-calm-red), transparent);
+  margin: 2rem 0;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 3rem 0 2rem 0;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-dark-red));
+}
+
+/* Cards and Containers */
+.mechanics-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.05) 0%, 
+    rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.mechanics-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(192, 107, 107, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.mechanics-card h3 {
+  color: var(--sab-calm-red);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.mechanics-card p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Formula Display */
+.formula-display {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  margin: 2rem 0;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+.formula-main {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sab-calm-red);
+  text-shadow: 0 0 10px rgba(192, 107, 107, 0.3);
+  text-align: center;
+  padding: 0.5rem;
+  word-break: break-word;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.formula-description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1rem;
+  font-family: var(--font-primary);
+}
+
+/* Grids */
+.mechanics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.mechanics-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Tables */
+.mechanics-table {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.06) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.mechanics-table-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mechanics-table-row.header {
+  background: rgba(192, 107, 107, 0.1);
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--sab-calm-red);
+  margin-bottom: 0.5rem;
+}
+
+.mechanics-table-row.highlighted {
+  background: rgba(192, 107, 107, 0.05);
+  border-radius: 8px;
+  color: var(--sab-calm-red);
+  font-weight: 600;
+}
+
+.mechanics-table-row:last-child {
+  border-bottom: none;
+}
+
+.mechanics-table-cell {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem;
+}
+
+/* Lists */
+.mechanics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.mechanics-list-item {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.04) 0%, 
+    rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mechanics-list-item h3 {
+  color: var(--sab-calm-red);
+  font-size: 1.2rem;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.mechanics-list-item p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Highlighted Content */
+.highlight-box {
+  background: linear-gradient(135deg, 
+    rgba(192, 107, 107, 0.1) 0%, 
+    rgba(192, 107, 107, 0.05) 100%);
+  border-left: 4px solid var(--sab-calm-red);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.highlight-box p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* Calculator Styles */
+.calculator {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  margin: 2rem 0;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: var(--sab-calm-red);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.input-group label .note {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.input-group input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-family: 'Courier New', monospace;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--sab-calm-red);
+  box-shadow: 0 0 0 2px rgba(192, 107, 107, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.input-group input:hover {
+  border-color: rgba(192, 107, 107, 0.3);
+}
+
+.result {
+  background: rgba(192, 107, 107, 0.1);
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.result h3 {
+  color: var(--sab-calm-red);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.result p {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Courier New', monospace;
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.result p:last-child {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  word-break: break-word;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .formula-main {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .damage-mechanics-content {
+    padding: 0 1rem;
+  }
+  
+  .mechanics-card {
+    padding: 1.5rem;
+  }
+  
+  .formula-display {
+    padding: 1.5rem;
+  }
+  
+  .formula-main {
+    font-size: 1.2rem;
+  }
+  
+  .mechanics-grid,
+  .mechanics-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .mechanics-table-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .mechanics-table-cell {
+    padding: 0.75rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .content-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .calculator {
+    padding: 1.5rem;
+  }
+  
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  
+  .input-group label {
+    font-size: 1rem;
+  }
+  
+  .input-group input {
+    font-size: 0.9rem;
+  }
+  
+  .result {
+    padding: 1.5rem;
+  }
+  
+  .result h3 {
+    font-size: 1.2rem;
+  }
+  
+  .result p {
+    font-size: 1rem;
+  }
+  
+  .result p:last-child {
+    font-size: 0.9rem;
+  }
+  
+  .formula-main {
+    font-size: 0.75rem;
+    padding: 0.25rem;
+    line-height: 1.6;
+  }
+}

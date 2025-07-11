@@ -1,0 +1,261 @@
+---
+import DamageMechanicsPageLayout from '../../../../layouts/silver-and-blood/DamageMechanicsPageLayout.astro';
+import { defenseFormulasData } from '../../../../data/silver-and-blood/damage-mechanics.js';
+import '../../../../styles/games/silver-and-blood/sab-damage-mechanics-shared.css';
+
+export const prerender = true;
+
+const { meta, header, sections, formulas, examples, tips } = defenseFormulasData;
+---
+
+<DamageMechanicsPageLayout 
+  title={meta.title}
+  description={meta.description}
+  gameTitle={header.title}
+  showBackButton={true}
+  backButtonHref="/guides/silver-and-blood/damage-mechanics/"
+  backButtonText="Back to Damage Mechanics Hub"
+>
+  <div class="damage-mechanics-content">
+    
+    <!-- Interactive Calculator Section -->
+    <div class="content-section">
+      <h2>Defense Calculator</h2>
+      <p>Calculate how much damage your character will take from boss attacks using the Silver and Blood defense formula:</p>
+      
+      <div class="highlight-box">
+        <p><strong>⚠️ Accuracy Note:</strong> These calculations may have an error margin of approximately 1.5% due to game rendering and calculation rounding differences.</p>
+      </div>
+      
+      <div class="formula-display">
+        <div class="formula-main">Final Damage = (Attack × Skill Multiplier × K) ÷ (Defense + K) × (1 - Damage Reduction%)</div>
+      </div>
+      
+      <div class="calculator">
+        <div class="input-group">
+          <label for="attack">Boss Attack Power:</label>
+          <input type="number" id="attack" value="1000" min="1" oninput="calculateDamage()">
+        </div>
+        
+        <div class="input-group">
+          <label for="skillMultiplier">Boss Skill Multiplier (%):</label>
+          <input type="number" id="skillMultiplier" value="200" min="10" step="10" oninput="calculateDamage()">
+        </div>
+        
+        <div class="input-group">
+          <label for="defense">Your Character Defense:</label>
+          <input type="number" id="defense" value="500" min="0" oninput="calculateDamage()">
+        </div>
+        
+        <div class="input-group">
+          <label for="coefficient">K (Coefficient): <span class="note">(This should be constant at 1300)</span></label>
+          <input type="number" id="coefficient" value="1300" min="1" oninput="calculateDamage()">
+        </div>
+        
+        <div class="input-group">
+          <label for="damageReduction">Your Damage Reduction (%):</label>
+          <input type="number" id="damageReduction" value="0" min="0" max="100" oninput="calculateDamage()">
+        </div>
+        
+        <div class="result" id="result">
+          <h3>Damage You Will Take:</h3>
+          <p id="finalDamage">Final Damage Taken: 0</p>
+          <p id="baseDamage">Boss Skill Damage: 0</p>
+          <p id="defenseReduction">Defense Reduction: 0%</p>
+          <p id="calculation">Calculation: Enter values to see the math</p>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Reverse Calculator Section -->
+    <div class="content-section">
+      <h2>Boss Attack Power</h2>
+      <p>Calculate the boss's attack power when you know how much damage you took:</p>
+      
+      <div class="highlight-box">
+        <p><strong>⚠️ Accuracy Note:</strong> These calculations may have an error margin of approximately 1.5% due to game rendering and calculation rounding differences.</p>
+      </div>
+      
+      <div class="formula-display">
+        <div class="formula-main">Boss Attack Power = Final Damage ÷ ((Skill Multiplier% ÷ 100) × K ÷ (Defense + K) × (1 - Damage Reduction% ÷ 100))</div>
+      </div>
+      
+      <div class="calculator">
+        <div class="input-group">
+          <label for="finalDamageInput">Final Damage Taken:</label>
+          <input type="number" id="finalDamageInput" value="1444" min="1" oninput="calculateAttackPower()">
+        </div>
+        
+        <div class="input-group">
+          <label for="skillMultiplierReverse">Boss Skill Multiplier (%):</label>
+          <input type="number" id="skillMultiplierReverse" value="200" min="10" step="10" oninput="calculateAttackPower()">
+        </div>
+        
+        <div class="input-group">
+          <label for="defenseReverse">Your Character Defense:</label>
+          <input type="number" id="defenseReverse" value="500" min="0" oninput="calculateAttackPower()">
+        </div>
+        
+        <div class="input-group">
+          <label for="coefficientReverse">K (Coefficient): <span class="note">(This should be constant at 1300)</span></label>
+          <input type="number" id="coefficientReverse" value="1300" min="1" oninput="calculateAttackPower()">
+        </div>
+        
+        <div class="input-group">
+          <label for="damageReductionReverse">Your Damage Reduction (%):</label>
+          <input type="number" id="damageReductionReverse" value="0" min="0" max="100" oninput="calculateAttackPower()">
+        </div>
+        
+        <div class="result" id="reverseResult">
+          <h3>Boss Attack Power:</h3>
+          <p id="calculatedAttack">Boss Attack Power: 0</p>
+          <p id="reverseCalculation">Calculation: Enter values to see the math</p>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+</DamageMechanicsPageLayout>
+
+<script>
+	// Declare the function on the Window interface
+	declare global {
+		interface Window {
+			calculateDamage: () => void;
+			calculateAttackPower: () => void;
+		}
+	}
+
+	// Make calculateDamage function global
+	window.calculateDamage = function() {
+		// Get elements with null checks
+		const attackElement = document.getElementById('attack') as HTMLInputElement;
+		const skillMultiplierElement = document.getElementById('skillMultiplier') as HTMLInputElement;
+		const defenseElement = document.getElementById('defense') as HTMLInputElement;
+		const coefficientElement = document.getElementById('coefficient') as HTMLInputElement;
+		const damageReductionElement = document.getElementById('damageReduction') as HTMLInputElement;
+		const finalDamageElement = document.getElementById('finalDamage');
+		const baseDamageElement = document.getElementById('baseDamage');
+		const defenseReductionElement = document.getElementById('defenseReduction');
+		const calculationElement = document.getElementById('calculation');
+		
+		// Check if all elements exist
+		if (!attackElement || !skillMultiplierElement || !defenseElement || !coefficientElement || !damageReductionElement || 
+			!finalDamageElement || !baseDamageElement || !defenseReductionElement || !calculationElement) {
+			console.error('Calculator elements not found');
+			return;
+		}
+		
+		// Get input values
+		const attack = parseFloat(attackElement.value) || 0;
+		const skillMultiplierPercent = parseFloat(skillMultiplierElement.value) || 0;
+		const skillMultiplier = skillMultiplierPercent / 100; // Convert percentage to decimal
+		const defense = parseFloat(defenseElement.value) || 0;
+		const coefficient = parseFloat(coefficientElement.value) || 1300;
+		const damageReduction = parseFloat(damageReductionElement.value) || 0;
+		
+		// Validate inputs
+		if (attack <= 0 || skillMultiplier <= 0 || coefficient <= 0) {
+			finalDamageElement.textContent = 'Final Damage Taken: Please enter valid values';
+			baseDamageElement.textContent = 'Boss Skill Damage: 0';
+			defenseReductionElement.textContent = 'Defense Reduction: 0%';
+			calculationElement.textContent = 'Calculation: Invalid inputs';
+			return;
+		}
+		
+		// Silver and Blood formula: Final Damage = (Attack × Skill Multiplier × K) ÷ (Defense + K) × (1 - Damage Reduction%)
+		const baseAttackDamage = attack * skillMultiplier; // Base damage without K
+		const baseDamageWithK = baseAttackDamage * coefficient; // Base damage with K coefficient
+		const afterDefense = baseDamageWithK / (defense + coefficient);
+		const finalDamage = afterDefense * (1 - damageReduction / 100);
+		const defenseReductionPercent = ((baseAttackDamage - afterDefense) / baseAttackDamage) * 100;
+		
+		// Display results
+		finalDamageElement.textContent = `Final Damage Taken: ${finalDamage.toFixed(2)}`;
+		baseDamageElement.textContent = `Boss Skill Damage: ${baseAttackDamage.toFixed(0)}`;
+		defenseReductionElement.textContent = `Defense Reduction: ${defenseReductionPercent.toFixed(2)}%`;
+		
+		// Show calculation with proper formatting and breakdown
+		const step1 = `(${attack} × ${skillMultiplierPercent}% × ${coefficient}) ÷ (${defense} + ${coefficient})`;
+		const step2 = `${baseDamageWithK.toFixed(0)} ÷ ${(defense + coefficient).toFixed(0)}`;
+		const step3 = `${afterDefense.toFixed(2)}`;
+		const step4 = `${afterDefense.toFixed(2)} × (1 - ${damageReduction}%)`;
+		const step5 = `${afterDefense.toFixed(2)} × ${(1 - damageReduction/100).toFixed(2)}`;
+		const step6 = `${finalDamage.toFixed(2)}`;
+		
+		calculationElement.innerHTML = `
+			<strong>Calculation Breakdown:</strong><br>
+			<span style="color: rgba(255, 255, 255, 0.9);">Step 1: Apply boss damage formula</span><br>
+			<span style="font-family: monospace; color: var(--sab-calm-red);">${step1} = ${step2} = ${step3}</span><br><br>
+			<span style="color: rgba(255, 255, 255, 0.9);">Step 2: Apply damage reduction</span><br>
+			<span style="font-family: monospace; color: var(--sab-calm-red);">${step4} = ${step5} = ${step6}</span>
+		`;
+	}
+	
+	// Make calculateAttackPower function global
+	window.calculateAttackPower = function() {
+		// Get elements with null checks
+		const finalDamageInputElement = document.getElementById('finalDamageInput') as HTMLInputElement;
+		const skillMultiplierReverseElement = document.getElementById('skillMultiplierReverse') as HTMLInputElement;
+		const defenseReverseElement = document.getElementById('defenseReverse') as HTMLInputElement;
+		const coefficientReverseElement = document.getElementById('coefficientReverse') as HTMLInputElement;
+		const damageReductionReverseElement = document.getElementById('damageReductionReverse') as HTMLInputElement;
+		const calculatedAttackElement = document.getElementById('calculatedAttack');
+		const reverseCalculationElement = document.getElementById('reverseCalculation');
+		
+		// Check if all elements exist
+		if (!finalDamageInputElement || !skillMultiplierReverseElement || !defenseReverseElement || !coefficientReverseElement || 
+			!damageReductionReverseElement || !calculatedAttackElement || !reverseCalculationElement) {
+			console.error('Reverse calculator elements not found');
+			return;
+		}
+		
+		// Get input values
+		const finalDamage = parseFloat(finalDamageInputElement.value) || 0;
+		const skillMultiplierPercent = parseFloat(skillMultiplierReverseElement.value) || 0;
+		const skillMultiplier = skillMultiplierPercent / 100;
+		const defense = parseFloat(defenseReverseElement.value) || 0;
+		const coefficient = parseFloat(coefficientReverseElement.value) || 1300;
+		const damageReduction = parseFloat(damageReductionReverseElement.value) || 0;
+		
+		// Validate inputs
+		if (finalDamage <= 0 || skillMultiplier <= 0 || coefficient <= 0) {
+			calculatedAttackElement.textContent = 'Boss Attack Power: Please enter valid values';
+			reverseCalculationElement.textContent = 'Calculation: Invalid inputs';
+			return;
+		}
+		
+		// Reverse formula: Boss Attack Power = Final Damage ÷ ((Skill Multiplier × K) ÷ (Defense + K) × (1 - Damage Reduction%))
+		const defenseReductionFactor = 1 - (damageReduction / 100);
+		const defenseFactor = coefficient / (defense + coefficient);
+		const totalMultiplier = skillMultiplier * defenseFactor * defenseReductionFactor;
+		const calculatedAttack = finalDamage / totalMultiplier;
+		
+		// Display results
+		calculatedAttackElement.textContent = `Boss Attack Power: ${calculatedAttack.toFixed(2)}`;
+		
+		// Show calculation with proper formatting and breakdown
+		const step1 = `${finalDamage} ÷ ((${skillMultiplierPercent}% ÷ 100) × ${coefficient} ÷ (${defense} + ${coefficient}) × (1 - ${damageReduction}%))`;
+		const step2 = `${finalDamage} ÷ (${skillMultiplier.toFixed(2)} × ${defenseFactor.toFixed(4)} × ${defenseReductionFactor.toFixed(2)})`;
+		const step3 = `${finalDamage} ÷ ${totalMultiplier.toFixed(4)}`;
+		const step4 = `${calculatedAttack.toFixed(2)}`;
+		
+		reverseCalculationElement.innerHTML = `
+			<strong>Calculation Breakdown:</strong><br>
+			<span style="color: rgba(255, 255, 255, 0.9);">Step 1: Apply reverse damage formula</span><br>
+			<span style="font-family: monospace; color: var(--sab-calm-red);">${step1}</span><br><br>
+			<span style="color: rgba(255, 255, 255, 0.9);">Step 2: Simplify multipliers</span><br>
+			<span style="font-family: monospace; color: var(--sab-calm-red);">${step2}</span><br><br>
+			<span style="color: rgba(255, 255, 255, 0.9);">Step 3: Final calculation</span><br>
+			<span style="font-family: monospace; color: var(--sab-calm-red);">${step3} = ${step4}</span>
+		`;
+	}
+	
+	// Calculate on page load
+	document.addEventListener('DOMContentLoaded', function() {
+		window.calculateDamage();
+		window.calculateAttackPower();
+	});
+</script>

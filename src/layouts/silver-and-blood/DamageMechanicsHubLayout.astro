@@ -1,0 +1,101 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import SilverAndBloodNavigation from '../../components/silver-and-blood/SilverAndBloodNavigation.astro';
+
+// Import CSS files
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+
+export interface Props {
+	title: string;
+	description?: string;
+	gameTitle?: string;
+}
+
+const { title, description, gameTitle } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description || ""} />
+		<meta name="keywords" content="Silver and Blood, damage mechanics, combat system, defense formulas, game mechanics" />
+		<meta name="author" content="GachaWiki" />
+		<meta name="robots" content="index, follow" />
+		
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description || ""} />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+		
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description || ""} />
+		
+		<script type="application/ld+json">
+			{JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "CollectionPage",
+				"name": title,
+				"description": description || "Complete damage mechanics guide for Silver and Blood",
+				"about": {
+					"@type": "VideoGame",
+					"name": "Silver and Blood"
+				},
+				"publisher": {
+					"@type": "Organization",
+					"name": "GachaWiki"
+				},
+				"mainEntityOfPage": {
+					"@type": "WebPage",
+					"@id": new URL(Astro.url.pathname, Astro.site)
+				}
+			})}
+		</script>
+		
+		<slot name="head" />
+	</head>
+	<body class="sab-body">
+		<!-- Background layers for visual depth -->
+		<div class="bg-layer bg-primary"></div>
+		<div class="bg-layer bg-accent-1"></div>
+		<div class="bg-layer bg-accent-2"></div>
+		<div class="bg-layer bg-accent-3"></div>
+		
+		<div class="sab-content">
+			<Header />
+			<MobileMenu />
+			
+			<div class="sab-container">
+				<main class="sab-main">
+					<!-- Title Section -->
+					{gameTitle && (
+						<section class="title-only-section">
+							<h1 class="title-only-heading">
+								{gameTitle}
+							</h1>
+							
+							<DecorativeLines />
+						</section>
+					)}
+					
+					<!-- Silver and Blood Navigation -->
+					<SilverAndBloodNavigation currentPath={Astro.url.pathname} />
+					
+					<!-- Content Area -->
+					<div class="content-area">
+						<slot />
+					</div>
+				</main>
+			</div>
+			
+			<Footer />
+		</div>
+	</body>
+</html>
