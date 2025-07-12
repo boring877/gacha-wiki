@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Close menu when clicking on overlay or links
 	mobileMenu?.addEventListener('click', (e) => {
 		const target = e.target as HTMLElement;
-		if (target === mobileMenu || (target && (target.classList?.contains('mobile-nav-link') || target.classList?.contains('mobile-social-link')))) {
+		if (target === mobileMenu || target.classList?.contains('mobile-menu-overlay') || (target && (target.classList?.contains('mobile-nav-link') || target.classList?.contains('mobile-social-link')))) {
 			closeMenu();
 		}
 	});

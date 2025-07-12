@@ -355,21 +355,49 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 				}
 			}
 			
-			// Update showcase content - SIMPLIFIED
+			// Update showcase content - MOBILE OPTIMIZED
 			function updateShowcase(index) {
 				if (index < 0 || index >= showcaseGames.length) return;
 				
 				currentShowcaseIndex = index;
 				const game = showcaseGames[currentShowcaseIndex];
 				
-				// Simple update without complex animations
-				updateShowcaseContent(game);
+				// Check if mobile device
+				const isMobile = window.innerWidth <= 768;
 				
-				// Ensure all elements are visible
-				const elements = [showcaseTitle, showcaseDescription, showcaseFeatures, document.querySelector('.showcase-actions')];
-				elements.forEach(el => {
-					if (el) el.classList.add('active');
-				});
+				if (isMobile) {
+					// Mobile-optimized transition - simple fade
+					const elements = [showcaseTitle, showcaseDescription, showcaseFeatures, document.querySelector('.showcase-actions'), showcaseGameImage];
+					
+					// Quick fade out
+					elements.forEach(el => {
+						if (el) {
+							el.style.opacity = '0.3';
+							el.style.transform = 'translateY(5px)';
+						}
+					});
+					
+					// Update content after minimal delay
+					setTimeout(() => {
+						updateShowcaseContent(game);
+						
+						// Fade back in
+						elements.forEach(el => {
+							if (el) {
+								el.style.opacity = '1';
+								el.style.transform = 'translateY(0)';
+							}
+						});
+					}, 150);
+				} else {
+					// Desktop version - keep existing animations
+					updateShowcaseContent(game);
+					
+					const elements = [showcaseTitle, showcaseDescription, showcaseFeatures, document.querySelector('.showcase-actions')];
+					elements.forEach(el => {
+						if (el) el.classList.add('active');
+					});
+				}
 			}
 			
 			// Update showcase content elements - SIMPLIFIED
@@ -434,16 +462,20 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 				});
 			}
 			
-			// Start auto-rotation for master clock
+			// Start auto-rotation for master clock - MOBILE OPTIMIZED
 			function startAutoRotation() {
 				if (autoRotateInterval) clearInterval(autoRotateInterval);
+				
+				// Detect mobile for optimized intervals
+				const isMobile = window.innerWidth <= 768;
+				const rotationInterval = isMobile ? 8000 : 6000; // Slower on mobile for better performance
 				
 				autoRotateInterval = setInterval(() => {
 					const nextIndex = (currentGameIndex + 1) % featuredGames.length;
 					switchToGame(nextIndex, 'auto');
 					// Sync showcase with clock
 					updateShowcase(nextIndex);
-				}, 6000); // Switch every 6 seconds
+				}, rotationInterval);
 			}
 			
 			// Stop auto-rotation
@@ -582,7 +614,7 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 				}
 			}
 			
-			// Initialize showcase
+			// Initialize showcase with mobile optimizations
 			function initializeShowcase() {
 				// Preload images
 				showcaseGames.forEach(game => {
@@ -592,6 +624,31 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 				
 				// Sync with clock's initial game
 				updateShowcase(currentGameIndex);
+				
+				// Mobile optimization: Pause animations when showcase is not visible
+				if (window.IntersectionObserver) {
+					const showcaseElement = document.querySelector('.auto-showcase');
+					if (showcaseElement) {
+						const observer = new IntersectionObserver((entries) => {
+							entries.forEach(entry => {
+								if (entry.isIntersecting) {
+									// Resume animations when visible
+									if (isAutoRotating && !autoRotateInterval) {
+										startAutoRotation();
+									}
+								} else {
+									// Pause animations when not visible (performance optimization)
+									if (autoRotateInterval) {
+										clearInterval(autoRotateInterval);
+										autoRotateInterval = null;
+									}
+								}
+							});
+						}, { threshold: 0.1 });
+						
+						observer.observe(showcaseElement);
+					}
+				}
 			}
 			
 			// Initialize everything

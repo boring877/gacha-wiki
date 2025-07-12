@@ -24,6 +24,7 @@
 	height: 100%;
 	max-width: 1400px;
 	margin: 0 auto;
+	padding: 0 2rem;
 	z-index: 2;
 }
 
@@ -32,7 +33,7 @@
 	height: 500px;
 	border-radius: 32px;
 	overflow: hidden;
-	margin: 0 2rem;
+	margin: 0 auto;
 	background: rgba(255, 255, 255, 0.03);
 	backdrop-filter: blur(30px);
 	border: 2px solid rgba(255, 255, 255, 0.1);
@@ -40,6 +41,7 @@
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
 	gap: 0;
+	max-width: 1200px;
 	transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

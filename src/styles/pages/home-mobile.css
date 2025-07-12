@@ -29,8 +29,8 @@
 
 	/* Master Clock Mobile */
 	.master-clock-container {
-		max-width: 95vw;
-		padding: 0 0.5rem;
+		max-width: 1400px;
+		padding: 0 1rem;
 	}
 
 	.master-clock {
@@ -163,23 +163,31 @@
 		border-radius: 16px;
 	}
 
-	/* Showcase Mobile */
+	/* Showcase Mobile - Optimized Transitions */
 	.auto-showcase {
 		min-height: auto;
 		padding: 1.5rem 0;
 	}
 
+	.showcase-container {
+		padding: 0 1rem;
+	}
+
 	.showcase-content {
 		height: auto;
 		min-height: 450px;
-		margin: 0 0.5rem;
+		margin: 0 auto;
 		border-radius: 20px;
 		grid-template-columns: 1fr;
 		grid-template-rows: 240px 1fr;
 		overflow: hidden;
+		transition: transform 0.3s ease, opacity 0.3s ease !important;
+		will-change: transform, opacity;
+		transform: translateZ(0);
 	}
 
 	.showcase-content:hover {
+		transform: none;
 	}
 
 	.showcase-image-section {
@@ -187,12 +195,22 @@
 		border-right: none;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 		height: 240px;
+		transition: opacity 0.4s ease !important;
+		will-change: opacity;
+	}
+
+	.showcase-game-image {
+		transition: opacity 0.4s ease !important;
+		will-change: opacity;
+		transform: none !important;
 	}
 
 	.showcase-content-section {
 		order: 2;
 		padding: 1.5rem 1.25rem;
 		border-left: none;
+		transition: opacity 0.3s ease !important;
+		will-change: opacity;
 	}
 
 	.showcase-title {
@@ -200,6 +218,8 @@
 		margin-bottom: 0.75rem;
 		text-align: center;
 		line-height: 1.2;
+		transition: opacity 0.3s ease, transform 0.3s ease !important;
+		will-change: opacity, transform;
 	}
 
 	.showcase-description {
@@ -207,6 +227,8 @@
 		text-align: center;
 		margin-bottom: 1.25rem;
 		line-height: 1.5;
+		transition: opacity 0.3s ease, transform 0.3s ease !important;
+		will-change: opacity, transform;
 	}
 
 	.showcase-features {
@@ -214,6 +236,8 @@
 		margin-bottom: 1.5rem;
 		justify-content: center;
 		flex-wrap: wrap;
+		transition: opacity 0.3s ease !important;
+		will-change: opacity;
 	}
 
 	.showcase-feature-tag {
@@ -221,10 +245,14 @@
 		font-size: 0.7rem;
 		border-radius: 18px;
 		white-space: nowrap;
+		transition: opacity 0.2s ease, transform 0.2s ease !important;
+		will-change: opacity, transform;
 	}
 
 	.showcase-actions {
 		text-align: center;
+		transition: opacity 0.3s ease !important;
+		will-change: opacity;
 	}
 
 	.showcase-btn {
@@ -279,6 +307,11 @@
 
 /* Small Mobile (480px and below) */
 @media (max-width: 480px) {
+	/* Master Clock Small Mobile */
+	.master-clock-container {
+		padding: 0 0.5rem;
+	}
+	
 	/* Improved clock alignment for small screens */
 	.master-clock {
 		padding: 1.25rem 1rem;
@@ -314,8 +347,12 @@
 		padding: 1.5rem 0;
 	}
 
+	.showcase-container {
+		padding: 0 0.5rem;
+	}
+
 	.showcase-content {
-		margin: 0 0.5rem;
+		margin: 0 auto;
 		min-height: 450px;
 		grid-template-rows: 240px 1fr;
 		border-radius: 20px;
@@ -449,12 +486,50 @@
 
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
+	.showcase-content {
+		touch-action: manipulation;
+		-webkit-tap-highlight-color: transparent;
+	}
+	
 	.showcase-content:hover {
 		transform: none;
 	}
 	
 	.showcase-feature-tag:hover {
 		background: rgba(255, 255, 255, 0.08);
+	}
+	
+	/* Optimize transitions for touch devices */
+	.showcase-title,
+	.showcase-description,
+	.showcase-features,
+	.showcase-actions,
+	.showcase-game-image {
+		transition-duration: 0.2s !important;
+	}
+}
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+	/* Use GPU acceleration for better performance */
+	.showcase-content,
+	.showcase-game-image,
+	.showcase-title,
+	.showcase-description,
+	.showcase-features,
+	.showcase-actions {
+		transform: translateZ(0);
+		backface-visibility: hidden;
+		perspective: 1000px;
+	}
+	
+	/* Reduce backdrop blur complexity on mobile */
+	.showcase-content {
+		backdrop-filter: blur(15px) !important;
+	}
+	
+	.showcase-content-section {
+		backdrop-filter: blur(10px) !important;
 	}
 }
 
@@ -464,5 +539,15 @@
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
+	}
+	
+	.showcase-content,
+	.showcase-game-image,
+	.showcase-title,
+	.showcase-description,
+	.showcase-features,
+	.showcase-actions {
+		will-change: auto !important;
+		transform: none !important;
 	}
 }
