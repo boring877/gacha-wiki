@@ -627,20 +627,4 @@
   }
 }
 
-/* Scrollbar Styling */
-.waifu-cutscene-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.waifu-cutscene-content::-webkit-scrollbar-track {
-  background: var(--waifu-bg-dark);
-}
-
-.waifu-cutscene-content::-webkit-scrollbar-thumb {
-  background: var(--waifu-primary);
-  border-radius: 4px;
-}
-
-.waifu-cutscene-content::-webkit-scrollbar-thumb:hover {
-  background: var(--waifu-accent);
-}
+/* Scrollbar styling removed - now handled by CustomScrollbar component */

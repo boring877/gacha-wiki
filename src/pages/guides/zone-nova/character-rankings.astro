@@ -1,0 +1,490 @@
+---
+import CharacterRankingsLayout from '../../../layouts/zone-nova/CharacterRankingsLayout.astro';
+import { ZONE_NOVA_CHARACTERS } from '../../../data/zone-nova/characters.js';
+import UpdateBackButton from '../../../components/zone-nova/UpdateBackButton.astro';
+
+// Calculate rankings for key stats
+function calculateRankings() {
+  const stats = ['hp', 'attack', 'defense', 'critRate'];
+  const rankings = {};
+  
+  stats.forEach(statKey => {
+    // Sort characters by stat value (highest first)
+    // Handle missing stats gracefully
+    const sorted = [...ZONE_NOVA_CHARACTERS]
+      .filter(char => char.stats[statKey] !== undefined)
+      .sort((a, b) => {
+        const aVal = typeof a.stats[statKey] === 'string' ? parseFloat(a.stats[statKey].replace(/[,%]/g, '')) || 0 : a.stats[statKey];
+        const bVal = typeof b.stats[statKey] === 'string' ? parseFloat(b.stats[statKey].replace(/[,%]/g, '')) || 0 : b.stats[statKey];
+        return bVal - aVal;
+      });
+    
+    rankings[statKey] = {};
+    let currentRank = 1;
+    
+    sorted.forEach((char, index) => {
+      // Handle ties - characters with same value get same rank
+      const currentVal = typeof char.stats[statKey] === 'string' ? parseFloat(char.stats[statKey].replace(/[,%]/g, '')) || 0 : char.stats[statKey];
+      const prevVal = index > 0 ? (typeof sorted[index - 1].stats[statKey] === 'string' ? parseFloat(sorted[index - 1].stats[statKey].replace(/[,%]/g, '')) || 0 : sorted[index - 1].stats[statKey]) : null;
+      
+      if (index > 0 && currentVal === prevVal) {
+        rankings[statKey][char.id] = rankings[statKey][sorted[index - 1].id];
+      } else {
+        rankings[statKey][char.id] = currentRank;
+      }
+      currentRank = index + 2; // Next unique rank
+    });
+  });
+  
+  return rankings;
+}
+
+// Calculate overall ranking analysis (3 core stats)
+function calculateOverallAnalysis() {
+  const coreStats = ['hp', 'attack', 'defense'];
+  const rankings = calculateRankings();
+  const analysis = {};
+  
+  // First pass: calculate total rank scores
+  ZONE_NOVA_CHARACTERS.forEach(char => {
+    let totalRankScore = 0;
+    let top3Count = 0;
+    let top10Count = 0;
+    const statBreakdown = {};
+    
+    coreStats.forEach(statKey => {
+      const rank = rankings[statKey][char.id];
+      statBreakdown[statKey] = rank;
+      
+      // Lower rank = better (rank 1 is best)
+      totalRankScore += rank;
+      
+      if (rank <= 3) top3Count++;
+      if (rank <= 10) top10Count++;
+    });
+    
+    analysis[char.id] = {
+      character: char,
+      totalRankScore,
+      top3Count,
+      top10Count,
+      statBreakdown
+    };
+  });
+  
+  // Second pass: rank characters by their total rank score (lower = better)
+  const sortedCharacters = Object.values(analysis).sort((a: any, b: any) => a.totalRankScore - b.totalRankScore);
+  
+  // Assign overall ranks
+  sortedCharacters.forEach((entry: any, index) => {
+    analysis[entry.character.id].overallRank = index + 1;
+  });
+  
+  return analysis;
+}
+
+const rankings = calculateRankings();
+const overallAnalysis = calculateOverallAnalysis();
+const totalCharacters = ZONE_NOVA_CHARACTERS.length;
+
+// Helper function to get rank display
+function getRankDisplay(rank) {
+  if (rank <= 3) return `#${rank}`;
+  if (rank <= 10) return `#${rank}`;
+  return `#${rank}`;
+}
+
+// Helper function to get rank class for styling
+function getRankClass(rank) {
+  if (rank <= 3) return 'rank-top3';
+  if (rank <= 10) return 'rank-top10';
+  return 'rank-other';
+}
+
+// Stat display names
+const statNames = {
+  hp: 'HP',
+  attack: 'ATK', 
+  defense: 'DEF',
+  critRate: 'CRIT'
+};
+---
+
+<CharacterRankingsLayout
+  title="Character Rankings - Zone Nova"
+  description="View character stat rankings for HP, ATK, and DEF in Zone Nova"
+  gameTitle="Character Rankings"
+>
+
+  <section class="content-section">
+    <div class="rankings-intro">
+      <h2 class="section-title">Character Stat Rankings</h2>
+      <p class="intro-text">
+        See how each character ranks in key combat stats among all {totalCharacters} characters
+      </p>
+      <p class="level-note">
+        All stats shown at Level 80 (current max level)
+      </p>
+    </div>
+
+    <!-- Character Selector -->
+    <div class="character-selector">
+      <h3 class="selector-title">Select Character</h3>
+      
+      <!-- Filters and Sort Controls -->
+      <div class="filter-bar">
+        <div class="filter-controls">
+          <select class="filter-select" id="role-filter">
+            <option value="">Role</option>
+            <option value="Tank">Tank</option>
+            <option value="DPS">DPS</option>
+            <option value="Buffer">Buffer</option>
+            <option value="Debuffer">Debuffer</option>
+            <option value="Healer">Healer</option>
+          </select>
+          <select class="filter-select" id="rarity-filter">
+            <option value="">Rarity</option>
+            <option value="SSR">SSR</option>
+            <option value="SR">SR</option>
+            <option value="R">R</option>
+          </select>
+          <select class="filter-select" id="element-filter">
+            <option value="">Element</option>
+            <option value="Fire">Fire</option>
+            <option value="Ice">Ice</option>
+            <option value="Wind">Wind</option>
+            <option value="Holy">Holy</option>
+            <option value="Chaos">Chaos</option>
+          </select>
+        </div>
+        <div class="sort-controls">
+          <button class="sort-btn" data-sort="hp">HP</button>
+          <button class="sort-btn" data-sort="attack">ATK</button>
+          <button class="sort-btn" data-sort="defense">DEF</button>
+          <button class="sort-btn" data-sort="critRate">CRIT</button>
+          <button class="reset-btn" id="clear-filters">Reset</button>
+        </div>
+      </div>
+      
+      <!-- Character Grid -->
+      <div class="character-grid" id="character-grid">
+        {ZONE_NOVA_CHARACTERS.sort((a, b) => a.name.localeCompare(b.name)).map(char => (
+          <button class="character-select-card" data-character-id={char.id}>
+            <img 
+              src={char.image} 
+              alt={char.name}
+              class="character-portrait"
+              width="80"
+              height="80"
+              loading="lazy"
+            />
+            <div class="character-info">
+              <h3>{char.name}</h3>
+              <div class="character-badges">
+                <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+                <span class={`role-badge ${char.role.toLowerCase().replace(' ', '-')}`}>{char.role}</span>
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Rankings Display -->
+    <div id="rankings-display" class="rankings-display">
+      <div id="character-info" class="character-info">
+        <img id="character-image" class="character-image" />
+        <h3 id="character-name" class="character-name"></h3>
+        <p id="character-class" class="character-details"></p>
+      </div>
+
+      <div class="rankings-container">
+        <h3 class="rankings-title">Stat Rankings</h3>
+        
+        <div id="rankings-grid" class="rankings-grid">
+          {Object.keys(statNames).filter(statKey => statKey !== 'critRate').map(statKey => (
+            <div class="ranking-card">
+              <h4 class="ranking-card-title">{statNames[statKey]}</h4>
+              <div class={`rank-display rank-${statKey}`}></div>
+              <div class={`rank-total rank-${statKey}-total`}></div>
+              <div class={`stat-value stat-${statKey}`}></div>
+            </div>
+          ))}
+          <!-- Crit Rate card - conditionally shown -->
+          <div class="ranking-card" id="crit-rate-card" style="display: none;">
+            <h4 class="ranking-card-title">CRIT RATE</h4>
+            <div class="crit-message" style="text-align: center; color: #64b5f6; font-weight: 600; font-size: 1.1rem; margin: 1rem 0;">Has Crit Rate</div>
+            <div class="stat-value stat-critRate" style="text-align: center; font-size: 1.2rem; color: #e0e0e0; font-weight: 700;"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Character Performance Analysis -->
+      <div id="character-analysis" class="character-analysis" style="display: none;">
+        <h4 class="character-analysis-title">Character Performance Breakdown</h4>
+        <div class="performance-summary">
+          <div class="summary-stats">
+            <div class="summary-stat">
+              <span class="summary-label">Overall Rank:</span>
+              <span class="summary-value" id="overall-rank"></span>
+              <span class="summary-note">based on 3 core stats</span>
+            </div>
+            <div class="summary-stat">
+              <span class="summary-label">Top 3 Stats:</span>
+              <div class="summary-stat-details">
+                <span class="summary-count" id="top3-count"></span>
+                <div class="stat-badges" id="top3-stats"></div>
+              </div>
+            </div>
+            <div class="summary-stat">
+              <span class="summary-label">Top 10 Stats:</span>
+              <div class="summary-stat-details">
+                <span class="summary-count" id="top10-count"></span>
+                <div class="stat-badges" id="top10-stats"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Database Link -->
+    <div class="back-button-container">
+      <a href="/guides/zone-nova/characters/" class="back-button">
+        ← Back to Character Database
+      </a>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ characters: ZONE_NOVA_CHARACTERS, rankings, overallAnalysis, statNames, totalCharacters }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const characterCards = document.querySelectorAll('.character-select-card');
+      const roleFilter = document.getElementById('role-filter');
+      const rarityFilter = document.getElementById('rarity-filter');
+      const elementFilter = document.getElementById('element-filter');
+      const resetBtn = document.getElementById('clear-filters');
+      const sortButtons = document.querySelectorAll('.sort-btn');
+      const rankingsDisplay = document.getElementById('rankings-display');
+      const characterImage = document.getElementById('character-image');
+      const characterName = document.getElementById('character-name');
+      const characterClass = document.getElementById('character-class');
+
+      // Filter functionality
+      function filterCharacters() {
+        const roleValue = roleFilter?.value.toLowerCase() || '';
+        const rarityValue = rarityFilter?.value.toLowerCase() || '';
+        const elementValue = elementFilter?.value.toLowerCase() || '';
+
+        characterCards.forEach((card) => {
+          const character = characters.find(c => c.id === parseInt(card.dataset.characterId || '0'));
+          if (!character) return;
+          
+          const matchesRole = !roleValue || character.role.toLowerCase().includes(roleValue);
+          const matchesRarity = !rarityValue || character.rarity.toLowerCase().includes(rarityValue);
+          const matchesElement = !elementValue || character.element.toLowerCase().includes(elementValue);
+          
+          card.style.display = (matchesRole && matchesRarity && matchesElement) ? 'flex' : 'none';
+        });
+      }
+
+      // Sort functionality
+      let sortState = { column: null, asc: false };
+      
+      function sortCharacters(column) {
+        const cardContainer = document.getElementById('character-grid');
+        const cards = Array.from(characterCards);
+        const multiplier = sortState.asc ? 1 : -1;
+        
+        cards.sort((a, b) => {
+          const aChar = characters.find(c => c.id === parseInt(a.dataset.characterId || '0'));
+          const bChar = characters.find(c => c.id === parseInt(b.dataset.characterId || '0'));
+          
+          if (!aChar || !bChar) return 0;
+          
+          let aValue = 0, bValue = 0;
+          if (column === 'hp' || column === 'attack' || column === 'defense' || column === 'critRate') {
+            aValue = typeof aChar.stats[column] === 'string' ? parseFloat(aChar.stats[column].replace(/[,%]/g, '')) || 0 : aChar.stats[column] || 0;
+            bValue = typeof bChar.stats[column] === 'string' ? parseFloat(bChar.stats[column].replace(/[,%]/g, '')) || 0 : bChar.stats[column] || 0;
+          }
+          
+          return (aValue - bValue) * multiplier;
+        });
+        
+        cards.forEach(card => cardContainer?.appendChild(card));
+      }
+
+      // Event listeners for filters
+      if (roleFilter) roleFilter.addEventListener('change', filterCharacters);
+      if (rarityFilter) rarityFilter.addEventListener('change', filterCharacters);
+      if (elementFilter) elementFilter.addEventListener('change', filterCharacters);
+
+      // Event listeners for sort buttons
+      sortButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const col = btn.dataset.sort || '';
+          sortState.asc = sortState.column === col ? !sortState.asc : true;
+          sortState.column = col;
+          
+          sortButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          sortCharacters(col);
+        });
+      });
+
+      // Reset functionality
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (roleFilter) roleFilter.value = '';
+          if (rarityFilter) rarityFilter.value = '';
+          if (elementFilter) elementFilter.value = '';
+          
+          characterCards.forEach(card => card.style.display = 'flex');
+          sortButtons.forEach(b => b.classList.remove('active'));
+          sortState = { column: null, asc: false };
+        });
+      }
+
+      characterCards.forEach((card) => {
+        card.addEventListener('click', (e) => {
+          const characterId = parseInt(card.dataset.characterId || '0');
+          
+          // Remove active class from all cards
+          characterCards.forEach(c => c.classList.remove('selected'));
+          
+          // Add active class to clicked card
+          card.classList.add('selected');
+          
+          if (!characterId) {
+            rankingsDisplay?.classList.remove('active');
+            return;
+          }
+
+        const character = characters.find(c => c.id === characterId);
+        if (!character) return;
+
+        // Update character info
+        if (characterImage) {
+          characterImage.src = character.image;
+          characterImage.alt = character.name;
+        }
+        if (characterName) characterName.textContent = character.name;
+        if (characterClass) characterClass.textContent = `${character.rarity} ${character.role} • ${character.element}`;
+
+        // Update rankings
+        Object.keys(statNames).forEach(statKey => {
+          const rank = rankings[statKey][characterId];
+          const statValue = character.stats[statKey];
+          
+          // Special handling for crit rate - only show if > 0%
+          if (statKey === 'critRate') {
+            const critCard = document.getElementById('crit-rate-card');
+            const critVal = typeof statValue === 'string' ? parseFloat(statValue.replace(/[,%]/g, '')) || 0 : statValue || 0;
+            
+            if (critVal > 0) {
+              if (critCard) critCard.style.display = 'block';
+              const statValueDisplay = document.querySelector(`.stat-${statKey}`);
+              if (statValueDisplay) {
+                statValueDisplay.textContent = typeof statValue === 'string' ? statValue : `${statValue}%`;
+              }
+            } else {
+              if (critCard) critCard.style.display = 'none';
+            }
+            return; // Skip normal ranking processing for crit rate
+          }
+          
+          const rankDisplay = document.querySelector(`.rank-${statKey}`);
+          const rankTotal = document.querySelector(`.rank-${statKey}-total`);
+          const statValueDisplay = document.querySelector(`.stat-${statKey}`);
+          
+          if (rankDisplay && rankTotal && statValueDisplay && statValue !== undefined) {
+            rankDisplay.textContent = rank ? `#${rank}` : 'N/A';
+            rankTotal.textContent = `out of ${totalCharacters}`;
+            
+            // Format stat value
+            statValueDisplay.textContent = typeof statValue === 'string' ? statValue : statValue.toLocaleString();
+            
+            // Apply rank styling
+            rankDisplay.className = rankDisplay.className.replace(/rank-(top3|top10|other)/g, '');
+            if (rank <= 3) {
+              rankDisplay.classList.add('rank-top3');
+              rankDisplay.style.color = '#ffd700'; // Gold
+            } else if (rank <= 10) {
+              rankDisplay.classList.add('rank-top10'); 
+              rankDisplay.style.color = '#64b5f6'; // Zone Nova Blue
+            } else {
+              rankDisplay.classList.add('rank-other');
+              rankDisplay.style.color = '#81c784'; // Green
+            }
+          }
+        });
+
+        rankingsDisplay?.classList.add('active');
+        
+        // Update character analysis
+        updateCharacterAnalysis(characterId);
+        
+        // Smooth scroll to rankings display
+        setTimeout(() => {
+          rankingsDisplay?.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }, 100);
+        });
+      });
+    });
+    
+    function updateCharacterAnalysis(characterId) {
+      const analysis = overallAnalysis[characterId];
+      if (!analysis) return;
+      
+      const overallRankEl = document.getElementById('overall-rank');
+      const top3CountEl = document.getElementById('top3-count');
+      const top3StatsEl = document.getElementById('top3-stats');
+      const top10CountEl = document.getElementById('top10-count');
+      const top10StatsEl = document.getElementById('top10-stats');
+      const characterAnalysisEl = document.getElementById('character-analysis');
+      
+      // Get stat names for display
+      const coreStats = ['hp', 'attack', 'defense'];
+      const top3Stats = [];
+      const top10Stats = [];
+      
+      coreStats.forEach(statKey => {
+        const rank = rankings[statKey][characterId];
+        if (rank <= 3) {
+          top3Stats.push(statNames[statKey]);
+        }
+        if (rank <= 10) {
+          top10Stats.push(statNames[statKey]);
+        }
+      });
+      
+      // Update overall rank
+      if (overallRankEl) overallRankEl.textContent = `#${analysis.overallRank}`;
+      
+      // Update top 3 stats
+      if (top3CountEl) top3CountEl.textContent = `${top3Stats.length}/3`;
+      if (top3Stats.length > 0) {
+        if (top3StatsEl) top3StatsEl.innerHTML = top3Stats.map(stat => 
+          `<span class="stat-badge top3-badge">${stat}</span>`
+        ).join('');
+      } else {
+        if (top3StatsEl) top3StatsEl.innerHTML = '<span class="no-stats">None</span>';
+      }
+      
+      // Update top 10 stats
+      if (top10CountEl) top10CountEl.textContent = `${top10Stats.length}/3`;
+      if (top10Stats.length > 0) {
+        if (top10StatsEl) top10StatsEl.innerHTML = top10Stats.map(stat => 
+          `<span class="stat-badge top10-badge">${stat}</span>`
+        ).join('');
+      } else {
+        if (top10StatsEl) top10StatsEl.innerHTML = '<span class="no-stats">None</span>';
+      }
+      
+      if (characterAnalysisEl) characterAnalysisEl.style.display = 'block';
+    }
+  </script>
+</CharacterRankingsLayout>

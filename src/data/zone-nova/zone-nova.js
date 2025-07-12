@@ -55,6 +55,14 @@ export const zoneNovaConfig = {
       category: "guides"
     },
     {
+      id: "character-rankings",
+      title: "Character Rankings",
+      emoji: "🏆",
+      description: "View character stat rankings and overall performance analysis across HP, ATK, and DEF.",
+      url: "/guides/zone-nova/character-rankings/",
+      category: "guides"
+    },
+    {
       id: "memories",
       title: "Memory Database",
       emoji: "🃏",

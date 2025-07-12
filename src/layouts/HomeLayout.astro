@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CustomScrollbar from '../components/CustomScrollbar.astro';
 // Import CSS files properly
 import '../styles/colors.css';
 import '../styles/global.css';
@@ -31,6 +32,7 @@ const { title, description } = Astro.props;
 		<slot name="head" />
 	</head>
 	<body class="home-body">
+		<CustomScrollbar />
 		<!-- Premium background with warm accents -->
 		<div class="bg-layer bg-primary"></div>
 		<div class="bg-layer bg-accent-1"></div>
@@ -51,7 +53,6 @@ const { title, description } = Astro.props;
 /* Home Layout Styles */
 .home-body {
 	background: var(--bg-dark);
-	min-height: 100vh;
 }
 
 /* Background Layers */

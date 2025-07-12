@@ -295,8 +295,7 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
   .character-table {
-    min-width: 700px;
-    /* Prevent table from shrinking too much */
+    /* Responsive table handling */
   }
 }
 
@@ -312,26 +311,7 @@
     }
 }
 
-/* Optimized Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-    border-radius: 10px;
-    transition: background 0.2s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow));
-}
+/* Scrollbar styling removed - now handled by CustomScrollbar component */
 
 /* Performance optimizations for high-DPI displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {

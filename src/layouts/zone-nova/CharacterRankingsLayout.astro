@@ -2,23 +2,23 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import ZoneNovaQuickNav from '../../components/zone-nova/ZoneNovaQuickNav.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import ZoneNovaQuickNav from '../../components/zone-nova/ZoneNovaQuickNav.astro';
 import ZnBackButton from '../../components/zone-nova/zn-backbutton.astro';
-import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
-// Import Zone Nova specific styles
+// Import CSS files properly
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/games/zone-nova/zn-badge-colour.css';
-import '../../styles/games/zone-nova/zn-character-comparison.css';
+import '../../styles/games/zone-nova/zn-character-rankings.css';
+
 
 export interface Props {
 	title: string;
-	description?: string;
+	description: string;
 	gameTitle?: string;
 	showBackButton?: boolean;
 	backButtonHref?: string;
@@ -37,7 +37,7 @@ const {
 
 <html lang="en">
 	<head>
-		<BaseHead title={title || ''} description={description || ''} />
+		<BaseHead title={title} description={description || ""} />
 		<slot name="head" />
 	</head>
 	<body class="zone-nova-body zn-layout-override">
@@ -47,13 +47,13 @@ const {
 		<div class="bg-layer bg-accent-2"></div>
 		<div class="bg-layer bg-accent-3"></div>
 		
-		<CustomScrollbar />
 		<div class="zone-nova-content">
 			<Header />
 			<MobileMenu />
 			
 			<div class="zone-nova-container">
 				<main class="zone-nova-main">
+				
 					<!-- Title Only Section -->
 					<section class="title-only-section">
 						<h1 class="title-only-heading">

@@ -726,20 +726,4 @@
   animation: fadeInUp 0.7s ease-out;
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--sab-bg-dark);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--sab-calm-red);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--sab-light-blue);
-}
+/* Scrollbar styling removed - now handled by CustomScrollbar component */

@@ -1,9 +1,9 @@
-// 【Matriarch】Gaia - Zone Nova Character Data
+// Gaia - Zone Nova Character Data
 // Support/Healer character from Odius faction
 
 export const gaiaData = {
   // Basic Character Information
-  name: '【Matriarch】Gaia',
+  name: 'Gaia',
   image: 'Gaia',
   rarity: 'SSR',
   element: 'Holy',

@@ -636,7 +636,18 @@
   width: 100%;
   border-collapse: collapse;
   background: #1a1a1a;
-  min-width: 800px;
+}
+
+.comparison-container {
+  width: 100%;
+  margin: 1rem 0;
+  overflow-x: hidden;
+}
+
+@media (min-width: 800px) {
+  .comparison-table {
+    min-width: 800px;
+  }
 }
 
 .comparison-table th,
@@ -657,15 +668,25 @@
 
 .stat-header {
   width: 200px;
-  min-width: 200px;
   background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%) !important;
   font-weight: 700;
 }
 
+@media (min-width: 800px) {
+  .stat-header {
+    min-width: 200px;
+  }
+}
+
 .character-header {
-  min-width: 200px;
   text-align: center;
   font-weight: 700;
+}
+
+@media (min-width: 800px) {
+  .character-header {
+    min-width: 200px;
+  }
 }
 
 .section-header td {
@@ -681,7 +702,12 @@
 .stat-name {
   font-weight: 600;
   background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-  min-width: 200px;
+}
+
+@media (min-width: 800px) {
+  .stat-name {
+    min-width: 200px;
+  }
 }
 
 .comparison-table td {

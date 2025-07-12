@@ -125,15 +125,14 @@
     .mobile-menu-drawer {
         position: fixed;
         top: 0;
-        left: 0;
+        left: -320px;
         width: 320px;
         height: 100vh;
         height: 100dvh;
         background: rgba(28, 28, 28, 0.98);
         backdrop-filter: blur(30px);
         border-right: 1px solid rgba(255, 183, 77, 0.2);
-        transform: translateX(-100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         overflow-y: auto;
         display: flex;
         flex-direction: column;
@@ -142,7 +141,7 @@
     }
 
     .mobile-menu.active .mobile-menu-drawer {
-        transform: translateX(0);
+        left: 0;
     }
 
     .drawer-header {
@@ -323,6 +322,7 @@
     @media screen and (max-width: 380px) {
         .mobile-menu-drawer {
             width: 280px;
+            left: -280px;
         }
         
         .drawer-header {

@@ -1,7 +1,6 @@
 /* Auto-Rotating Games Showcase */
 .auto-showcase {
 	position: relative;
-	min-height: 600px;
 	overflow: hidden;
 	background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%);
 	padding: 4rem 0;
@@ -30,7 +29,6 @@
 
 .showcase-content {
 	position: relative;
-	height: 500px;
 	border-radius: 32px;
 	overflow: hidden;
 	margin: 0 auto;
@@ -38,6 +36,7 @@
 	backdrop-filter: blur(30px);
 	border: 2px solid rgba(255, 255, 255, 0.1);
 	display: grid;
+	min-height: 400px;
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
 	gap: 0;
