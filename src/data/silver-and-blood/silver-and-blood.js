@@ -98,6 +98,15 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: "active"
     },
     {
+      id: "character-rankings",
+      title: "Character Rankings",
+      emoji: "🏆",
+      description: "View character stat rankings and overall performance analysis across HP, ATK, P.DEF, and M.DEF.",
+      url: "/guides/silver-and-blood/character-rankings/",
+      category: "guides",
+      status: "active"
+    },
+    {
       id: "damage-mechanics",
       title: "Damage Mechanics Hub",
       emoji: "⚔️",

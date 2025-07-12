@@ -73,7 +73,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 			)}
 			
 			<div class="content-area">
-				<SilverAndBloodNavigation currentPath={Astro.url.pathname} />
+				<SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
 				<slot />
 			</div>
 			</main>
