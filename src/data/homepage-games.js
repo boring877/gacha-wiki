@@ -10,7 +10,7 @@ export const homepageGames = [
     url: '/guides/zone-nova/',
     resetHour: 20, // UTC time for daily reset
     resetMinute: 0, // UTC minute for daily reset
-    timerDescription: 'Time until server reset',
+    timerDescription: 'Daily reset timer',
     features: ['30+ Characters', 'Active Rifts', 'Memory System', 'Strategic Combat'],
     active: true // Show in clock and showcase
   },
@@ -22,7 +22,7 @@ export const homepageGames = [
     url: '/guides/silver-and-blood/',
     resetHour: 12, // UTC time for daily reset (20:00 UTC+8)
     resetMinute: 0, // UTC minute for daily reset  
-    timerDescription: 'This time reset for US and other regions',
+    timerDescription: 'Daily reset timer',
     features: ['35+ Heroes', 'Rich Story', 'Dutchman\'s Revenge', 'Dark Fantasy'],
     active: true // Show in clock and showcase
   },

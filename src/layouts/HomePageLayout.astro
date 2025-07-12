@@ -335,9 +335,12 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 							resetTimeDisplay.textContent = `${resetHour}:${resetMin}`;
 						}
 						
-						// Update timer description
+						// Update timer description with mobile-responsive text
 						if (timerMainLabel) {
-							timerMainLabel.textContent = game.timerDescription || 'Time until server reset';
+							const isMobile = window.innerWidth <= 768;
+							const desktopText = game.timerDescription || 'Server reset timer';
+							const mobileText = isMobile ? 'Daily reset' : desktopText;
+							timerMainLabel.textContent = mobileText;
 						}
 						
 						// Update indicators
@@ -601,7 +604,10 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 					resetTimeDisplay.textContent = `${resetHour}:${resetMin}`;
 				}
 				if (timerMainLabel) {
-					timerMainLabel.textContent = currentGame.timerDescription || 'Time until server reset';
+					const isMobile = window.innerWidth <= 768;
+					const desktopText = currentGame.timerDescription || 'Server reset timer';
+					const mobileText = isMobile ? 'Daily reset' : desktopText;
+					timerMainLabel.textContent = mobileText;
 				}
 				
 				// Start clock updates

@@ -121,20 +121,31 @@
 		padding: 0.75rem 1rem;
 		margin-bottom: 1rem;
 		border-radius: 12px;
+		min-height: 60px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
 	}
 
 	.timer-main-label {
-		font-size: 0.95rem;
-		margin-bottom: 0.5rem;
+		font-size: 0.9rem;
+		margin-bottom: 0.25rem;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		line-height: 1.2;
 	}
 
 	.timer-details {
 		font-size: 0.8rem;
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.25rem;
 	}
 
 	.timer-reset-time {
 		font-size: 0.75rem;
+		white-space: nowrap;
+		line-height: 1.2;
 	}
 
 	.clock-navigation {
@@ -320,6 +331,20 @@
 		min-height: 300px;
 		max-width: 1200px;
 		margin: 0 auto;
+	}
+	
+	/* Timer description small mobile */
+	.timer-description-section {
+		min-height: 55px;
+		padding: 0.6rem 0.8rem;
+	}
+	
+	.timer-main-label {
+		font-size: 0.85rem;
+	}
+	
+	.timer-reset-time {
+		font-size: 0.7rem;
 	}
 	
 	.time-unit-group {
