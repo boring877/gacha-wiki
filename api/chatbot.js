@@ -423,7 +423,8 @@ export default async function handler(req, res) {
     const data = await response.json();
     
     if (!response.ok) {
-      throw new Error(`OpenRouter API error: ${data.error?.message || 'Unknown error'}`);
+      console.error('OpenRouter API error:', response.status, data);
+      throw new Error(`OpenRouter API error: ${data.error?.message || `HTTP ${response.status}`}`);
     }
 
     const answer = data.choices[0].message.content;
