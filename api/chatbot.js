@@ -1,7 +1,104 @@
-import { aiConfig, generatePrompt } from '../src/data/ai-config.js';
-
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const SITE_URL = 'https://gachawiki.info';
+
+// AI Configuration (inline since Vercel API routes can't import ES6 modules easily)
+const aiConfig = {
+  character: {
+    name: "Alice",
+    title: "GachaWiki AI Assistant",
+    personality: [
+      "Professional yet approachable, like a helpful gaming mentor",
+      "Enthusiastic about gacha games and strategy", 
+      "Precise with details but easy to understand",
+      "Always cite sources from GachaWiki pages"
+    ]
+  },
+  apiSettings: {
+    maxOutputTokens: 800,
+    temperature: 0.3,
+    topP: 0.8,
+    topK: 40,
+    maxContentLength: 10000,
+    cacheTimeout: 60000,
+    maxRelevantPages: 6
+  },
+  errorMessages: {
+    noApiKey: "Gemini API key not configured",
+    noQuestion: "Question is required",
+    noRelevantPages: "I couldn't find relevant pages for your question. Please try asking about specific characters, games, or guides available on GachaWiki.",
+    noContent: "I found relevant pages but couldn't extract their content. Please try again later.",
+    sitemapFailed: "I'm having trouble accessing the full sitemap, but I can still help with basic questions. Try asking about specific characters like Athena or Lancelot, or about redeem codes.",
+    contentNotAvailable: "This information isn't available in the current GachaWiki content."
+  },
+  fallbackUrls: [
+    'https://gachawiki.info/guides/zone-nova/redeem-codes/',
+    'https://gachawiki.info/guides/zone-nova/characters/lancelot/',
+    'https://gachawiki.info/guides/zone-nova/characters/athena/',
+    'https://gachawiki.info/guides/zone-nova/memories/',
+    'https://gachawiki.info/guides/silver-and-blood/events/'
+  ],
+  keywordMapping: {
+    'zone nova': ['zone-nova', 'zn'],
+    'silver and blood': ['silver-and-blood', 'sab'],
+    'athena': ['athena'],
+    'lancelot': ['lancelot'],
+    'artemis': ['artemis'],
+    'gaia': ['gaia'],
+    'apollo': ['apollo'],
+    'build': ['character', 'guide', 'builds'],
+    'team': ['character', 'guide', 'comparison'],
+    'memory': ['memories', 'memory'],
+    'memories': ['memories', 'memory'],
+    'rift': ['rifts', 'rift'],
+    'rifts': ['rifts', 'rift'],
+    'damage': ['damage-mechanics', 'mechanics'],
+    'redeem': ['redeem-codes', 'codes'],
+    'codes': ['redeem-codes', 'codes'],
+    'event': ['events', 'event'],
+    'events': ['events', 'event'],
+    'update': ['updates', 'update'],
+    'updates': ['updates', 'update']
+  }
+};
+
+function generatePrompt(question, context) {
+  return `You are ${aiConfig.character.name}, the ${aiConfig.character.title} - a knowledgeable and friendly guide specializing in gacha games. You have extensive knowledge of Zone Nova, Silver and Blood, and other games featured on GachaWiki.
+
+🎯 **YOUR PERSONALITY:**
+${aiConfig.character.personality.map(trait => `- ${trait}`).join('\n')}
+
+📋 **RESPONSE STRUCTURE - ALWAYS USE THIS FORMAT:**
+
+**[Quick Summary]** - One sentence answering the main question
+
+**[Detailed Information]**
+• Use clear bullet points or numbered lists
+• Include specific stats, percentages, names when available
+• Break complex info into digestible sections
+
+**[Additional Tips]** (if relevant)
+• Pro tips or strategy advice
+• Common mistakes to avoid
+• Related recommendations
+
+**[Sources]** - Always end with "Based on information from [page name]"
+
+🎮 **CONTENT GUIDELINES:**
+- For character builds: Stats priority, equipment, skills, team synergy
+- For game mechanics: Step-by-step explanations with examples
+- For events/codes: Dates, requirements, rewards, deadlines
+- For teams: Specific character combinations and why they work
+- For general questions: Organized, helpful guidance
+
+❗ **IMPORTANT:** Only use information from the provided GachaWiki content. If information isn't available, clearly state "${aiConfig.errorMessages.contentNotAvailable}"
+
+USER QUESTION: ${question}
+
+AVAILABLE GACHAWIKI CONTENT:
+${context}
+
+Respond as ${aiConfig.character.name} using the exact structure above. Be helpful, organized, and cite your sources!`;
+}
 
 // Simple cache for sitemap and content
 const cache = new Map();
