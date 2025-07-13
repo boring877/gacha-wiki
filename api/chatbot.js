@@ -1,4 +1,4 @@
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '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';
 const SITE_URL = 'https://gachawiki.info';
 
 // AI Configuration (inline since Vercel API routes can't import ES6 modules easily)
@@ -23,7 +23,7 @@ const aiConfig = {
     maxRelevantPages: 6
   },
   errorMessages: {
-    noApiKey: "Gemini API key not configured",
+    noApiKey: "OpenRouter API key not configured",
     noQuestion: "Question is required",
     noRelevantPages: "I couldn't find relevant pages for your question. Please try asking about specific characters, games, or guides available on GachaWiki.",
     noContent: "I found relevant pages but couldn't extract their content. Please try again later.",
@@ -259,8 +259,8 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     return res.status(200).json({ 
       status: 'API is working',
-      hasGeminiKey: !!GEMINI_API_KEY,
-      keyLength: GEMINI_API_KEY ? GEMINI_API_KEY.length : 0
+      hasOpenRouterKey: !!OPENROUTER_API_KEY,
+      keyLength: OPENROUTER_API_KEY ? OPENROUTER_API_KEY.length : 0
     });
   }
 
@@ -268,7 +268,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  if (!GEMINI_API_KEY) {
+  if (!OPENROUTER_API_KEY) {
     return res.status(500).json({ error: aiConfig.errorMessages.noApiKey });
   }
 
@@ -326,41 +326,38 @@ export default async function handler(req, res) {
       .map(page => `Source: ${page.url}\nContent: ${page.content}`)
       .join('\n\n---\n\n');
     
-    // Generate response using Google Gemini
-    console.log('Calling Gemini API...');
-    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent', {
+    // Generate response using OpenRouter
+    console.log('Calling OpenRouter API...');
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
+        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
-        'x-goog-api-key': GEMINI_API_KEY,
+        'HTTP-Referer': SITE_URL,
+        'X-Title': 'GachaWiki AI Assistant',
       },
       body: JSON.stringify({
-        contents: [
+        model: 'deepseek/deepseek-r1-0528:free',
+        messages: [
           {
-            parts: [
-              {
-                text: generatePrompt(question, context)
-              }
-            ]
+            role: 'user',
+            content: generatePrompt(question, context)
           }
         ],
-        generationConfig: {
-          maxOutputTokens: aiConfig.apiSettings.maxOutputTokens,
-          temperature: aiConfig.apiSettings.temperature,
-          topP: aiConfig.apiSettings.topP,
-          topK: aiConfig.apiSettings.topK,
-        }
+        max_tokens: aiConfig.apiSettings.maxOutputTokens,
+        temperature: aiConfig.apiSettings.temperature,
+        top_p: aiConfig.apiSettings.topP,
       }),
     });
 
     const data = await response.json();
     
     if (!response.ok) {
-      throw new Error(`Gemini API error: ${data.error?.message || 'Unknown error'}`);
+      throw new Error(`OpenRouter API error: ${data.error?.message || 'Unknown error'}`);
     }
 
-    const answer = data.candidates[0].content.parts[0].text;
-    console.log('Got response from Gemini');
+    const answer = data.choices[0].message.content;
+    console.log('Got response from OpenRouter');
     
     return res.status(200).json({
       answer,
