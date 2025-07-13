@@ -256,6 +256,14 @@ function findRelevantPages(urls, question) {
   const questionLower = question.toLowerCase();
   const keywords = questionLower.split(' ').filter(word => word.length > 2);
   
+  // Determine which game is being asked about
+  let targetGame = null;
+  if (questionLower.includes('zone nova') || questionLower.includes('zone-nova')) {
+    targetGame = 'zone-nova';
+  } else if (questionLower.includes('silver and blood') || questionLower.includes('silver-and-blood')) {
+    targetGame = 'silver-and-blood';
+  }
+  
   // Use keyword mapping from character config
   const allKeywords = {
     ...ariaCharacter.keywords.games,
@@ -276,6 +284,15 @@ function findRelevantPages(urls, question) {
   const scored = urls.map(url => {
     let score = 0;
     const urlLower = url.toLowerCase();
+    
+    // If a specific game is mentioned, heavily prioritize that game's pages
+    if (targetGame) {
+      if (urlLower.includes(`/${targetGame}/`)) {
+        score += 10; // Heavy boost for correct game
+      } else if (urlLower.includes('/zone-nova/') || urlLower.includes('/silver-and-blood/')) {
+        score -= 5; // Penalty for wrong game
+      }
+    }
     
     keywords.forEach(keyword => {
       if (urlLower.includes(keyword)) {
