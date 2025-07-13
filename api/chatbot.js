@@ -16,9 +16,7 @@ async function fetchSitemap() {
   try {
     // Try to fetch the main sitemap directly first
     console.log('Fetching sitemap-0.xml directly...');
-    const response = await fetch(`${SITE_URL}/sitemap-0.xml`, { 
-      timeout: 10000 // 10 second timeout
-    });
+    const response = await fetch(`${SITE_URL}/sitemap-0.xml`);
     
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
@@ -139,11 +137,20 @@ function findRelevantPages(urls, question) {
 export default async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
+  }
+  
+  // Add a simple test endpoint
+  if (req.method === 'GET') {
+    return res.json({ 
+      status: 'API is working',
+      hasGeminiKey: !!GEMINI_API_KEY,
+      keyLength: GEMINI_API_KEY ? GEMINI_API_KEY.length : 0
+    });
   }
   
   if (req.method !== 'POST') {
