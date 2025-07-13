@@ -247,6 +247,8 @@ export default async function handler(req, res) {
     }
     
     console.log('Using model:', ariaCharacter.settings.model);
+    console.log('Has Gemini API Key:', !!GEMINI_API_KEY);
+    console.log('Gemini API Key length:', GEMINI_API_KEY ? GEMINI_API_KEY.length : 0);
     
     // Get all URLs from sitemap
     const urls = await fetchSitemap();
@@ -319,11 +321,27 @@ export default async function handler(req, res) {
       }),
     });
 
-    const data = await response.json();
+    const responseText = await response.text();
+    console.log('Gemini API response status:', response.status);
+    console.log('Gemini API response preview:', responseText.substring(0, 200));
     
     if (!response.ok) {
-      console.error('Gemini API error:', response.status, data);
-      throw new Error(`Gemini API error: ${data.error?.message || `HTTP ${response.status}`}`);
+      console.error('Gemini API error:', response.status, responseText);
+      throw new Error(`Gemini API error: HTTP ${response.status} - ${responseText.substring(0, 100)}`);
+    }
+
+    let data;
+    try {
+      data = JSON.parse(responseText);
+    } catch (parseError) {
+      console.error('Failed to parse Gemini response as JSON:', parseError);
+      console.error('Response was:', responseText);
+      throw new Error('Invalid JSON response from Gemini API');
+    }
+
+    if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+      console.error('Unexpected Gemini response structure:', data);
+      throw new Error('Unexpected response structure from Gemini API');
     }
 
     const answer = data.candidates[0].content.parts[0].text;
