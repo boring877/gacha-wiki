@@ -65,7 +65,7 @@ const ariaCharacter = {
   },
   
   "settings": {
-    "model": "deepseek/deepseek-r1-0528:free",
+    "model": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
     "temperature": 0.3,
     "max_tokens": 800,
     "maxContentLength": 10000,
