@@ -3,30 +3,24 @@ import ChatbotLayout from '../layouts/ChatbotLayout.astro';
 ---
 
 <ChatbotLayout title="GachaWiki AI" description="Ask questions about gacha games and get answers from GachaWiki content">
-  <div class="chatbot-intro">
-    <p>Ask me anything about the gacha games covered on this wiki. I'll search through the latest content to give you accurate answers.</p>
-    
-    <div class="chatbot-examples">
-      <h4>Try asking about:</h4>
-      <ul>
-        <li data-question="How do I build Athena in Zone Nova?">• How do I build Athena in Zone Nova?</li>
-        <li data-question="What are the best memories for Lancelot?">• What are the best memories for Lancelot?</li>
-        <li data-question="Tell me about Silver and Blood events">• Tell me about Silver and Blood events</li>
-        <li data-question="What are the redeem codes for Zone Nova?">• What are the redeem codes for Zone Nova?</li>
-      </ul>
-    </div>
-  </div>
-  
-  <div class="chat-interface">
+  <div class="chat-interface-fullscreen">
     <div class="chat-messages" id="messages"></div>
-    <div class="chat-input">
-      <input 
-        type="text" 
-        id="questionInput" 
-        placeholder="Ask a question about gacha games..."
-        maxlength="500"
-      />
-      <button id="sendButton">Send</button>
+    
+    <div class="chat-input-container">
+      <div class="chat-input">
+        <input 
+          type="text" 
+          id="questionInput" 
+          placeholder="Ask a question about gacha games..."
+          maxlength="500"
+        />
+        <button id="sendButton">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/>
+          </svg>
+        </button>
+      </div>
+      
     </div>
   </div>
 
@@ -151,15 +145,6 @@ import ChatbotLayout from '../layouts/ChatbotLayout.astro';
         });
       }
 
-      // Handle example clicks
-      document.querySelectorAll('.chatbot-examples li').forEach(function(li) {
-        li.addEventListener('click', function() {
-          const question = this.getAttribute('data-question');
-          if (question) {
-            askExample(question);
-          }
-        });
-      });
 
       // Add welcome message
       addMessage('Hello! I\'m the GachaWiki AI. Ask me anything about the gacha games covered on this site, and I\'ll search through the latest content to help you.');

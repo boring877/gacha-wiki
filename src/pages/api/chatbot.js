@@ -50,20 +50,40 @@ async function fetchPageContent(url) {
     const response = await fetch(url);
     const html = await response.text();
     
-    // Basic HTML cleaning - remove nav, footer, scripts, styles
+    // Enhanced HTML cleaning for better content extraction
     let cleanText = html
+      // Remove unwanted sections
       .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, '')
       .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, '')
       .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
       .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
       .replace(/<header[^>]*>[\s\S]*?<\/header>/gi, '')
       .replace(/<!--[\s\S]*?-->/g, '')
+      // Preserve structure with line breaks for headings and lists
+      .replace(/<h[1-6][^>]*>/gi, '\n### ')
+      .replace(/<\/h[1-6]>/gi, '\n')
+      .replace(/<li[^>]*>/gi, '\n• ')
+      .replace(/<\/li>/gi, '')
+      .replace(/<p[^>]*>/gi, '\n')
+      .replace(/<\/p>/gi, '\n')
+      .replace(/<br[^>]*>/gi, '\n')
+      .replace(/<div[^>]*>/gi, '\n')
+      .replace(/<\/div>/gi, '')
+      // Remove remaining HTML tags
       .replace(/<[^>]+>/g, ' ')
-      .replace(/\s+/g, ' ')
+      // Clean up whitespace but preserve structure
+      .replace(/\n\s*\n\s*\n/g, '\n\n')
+      .replace(/[ \t]+/g, ' ')
       .trim();
     
-    // Limit content length to avoid token limits
-    cleanText = cleanText.substring(0, 8000);
+    // Limit content length but try to keep complete sentences
+    if (cleanText.length > 10000) {
+      cleanText = cleanText.substring(0, 10000);
+      const lastSentence = cleanText.lastIndexOf('.');
+      if (lastSentence > 8000) {
+        cleanText = cleanText.substring(0, lastSentence + 1);
+      }
+    }
     
     cache.set(cacheKey, { data: cleanText, timestamp: Date.now() });
     return cleanText;
@@ -83,11 +103,23 @@ function findRelevantPages(urls, question) {
     'zone nova': ['zone-nova', 'zn'],
     'silver and blood': ['silver-and-blood', 'sab'],
     'athena': ['athena'],
+    'lancelot': ['lancelot'],
+    'artemis': ['artemis'],
+    'gaia': ['gaia'],
+    'apollo': ['apollo'],
     'build': ['character', 'guide', 'builds'],
     'team': ['character', 'guide', 'comparison'],
     'memory': ['memories', 'memory'],
+    'memories': ['memories', 'memory'],
     'rift': ['rifts', 'rift'],
-    'damage': ['damage-mechanics', 'mechanics']
+    'rifts': ['rifts', 'rift'],
+    'damage': ['damage-mechanics', 'mechanics'],
+    'redeem': ['redeem-codes', 'codes'],
+    'codes': ['redeem-codes', 'codes'],
+    'event': ['events', 'event'],
+    'events': ['events', 'event'],
+    'update': ['updates', 'update'],
+    'updates': ['updates', 'update']
   };
   
   const scored = urls.map(url => {
@@ -229,28 +261,36 @@ export async function POST({ request }) {
           {
             parts: [
               {
-                text: `You are a helpful assistant that answers questions about gacha games using only the provided content from GachaWiki.info.
+                text: `You are GachaWiki AI, an expert assistant for gacha games. Answer questions using ONLY the provided content from GachaWiki.info.
 
-IMPORTANT RULES:
-- Only use information from the provided content below
-- If the answer isn't in the provided content, say so clearly
-- Always cite which page(s) your answer comes from
-- Be concise but helpful
-- Focus on factual information about characters, game mechanics, events, etc.
+RESPONSE GUIDELINES:
+1. **Be Direct & Helpful**: Give clear, actionable answers
+2. **Use Game Terminology**: Use proper character names, game terms, and mechanics
+3. **Structure Information**: Use bullet points, numbers, or sections for clarity
+4. **Cite Sources**: Always mention which page(s) contain the information
+5. **Stay In-Scope**: Only use provided content - if info isn't available, say so clearly
 
-User Question: ${question}
+ANSWER FORMAT:
+- For character builds: Include stats, equipment, skills, team compositions
+- For game mechanics: Explain step-by-step with examples
+- For events/codes: Include dates, requirements, rewards
+- For team building: Suggest specific character combinations and synergies
 
-Available Content:
+USER QUESTION: ${question}
+
+AVAILABLE CONTENT:
 ${context}
 
-Please provide a helpful answer based only on the content above, and cite your sources.`
+Provide a comprehensive answer using the format above. Include specific details like numbers, percentages, and exact names when available.`
               }
             ]
           }
         ],
         generationConfig: {
-          maxOutputTokens: 500,
-          temperature: 0.7,
+          maxOutputTokens: 800,
+          temperature: 0.3,
+          topP: 0.8,
+          topK: 40,
         }
       }),
     });
