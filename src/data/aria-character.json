@@ -83,9 +83,12 @@
   },
   
   "settings": {
-    "model": "moonshotai/kimi-vl-a3b-thinking:free",
+    "model": "deepseek/deepseek-r1-distill-llama-70b:free",
     "temperature": 0.7,
     "max_tokens": 1500,
+    "maxContentLength": 10000,
+    "cacheTimeout": 60000,
+    "maxRelevantPages": 6,
     "response_validation": {
       "require_sources": true,
       "check_relevance": true,
@@ -124,9 +127,21 @@
     ],
     "closing": "Just ask me anything, and I'll provide organized, detailed answers with sources from GachaWiki! (＾◡＾)",
     "error_messages": {
+      "no_api_key": "OpenRouter API key not configured",
+      "no_question": "Question is required",
       "unclear_question": "I need more information to help you! Could you ask a specific question about Zone Nova, Silver and Blood, or other gacha games? (｡•́‿•̀｡)",
       "no_content": "I found relevant pages but couldn't extract their content. Please try again later! (｡•́︿•̀｡)",
-      "no_relevant_pages": "I couldn't find relevant pages for your question. Please try asking about specific characters, games, or guides available on GachaWiki! (◔_◔)"
+      "no_relevant_pages": "I couldn't find relevant pages for your question. Please try asking about specific characters, games, or guides available on GachaWiki! (◔_◔)",
+      "sitemap_failed": "I'm having trouble accessing the full sitemap, but I can still help with basic questions. Try asking about specific characters like Athena or Lancelot, or about redeem codes! (｡•́︿•̀｡)",
+      "content_not_available": "This information isn't available in the current GachaWiki content (╥﹏╥)"
     }
-  }
+  },
+  
+  "fallback_urls": [
+    "https://gachawiki.info/guides/zone-nova/redeem-codes/",
+    "https://gachawiki.info/guides/zone-nova/characters/lancelot/",
+    "https://gachawiki.info/guides/zone-nova/characters/athena/",
+    "https://gachawiki.info/guides/zone-nova/memories/",
+    "https://gachawiki.info/guides/silver-and-blood/events/"
+  ]
 }
