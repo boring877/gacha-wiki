@@ -13,8 +13,8 @@ export default defineConfig({
 	}),	integrations: [
 		sitemap(),
 	],
-	// Hybrid mode - static pages with server endpoints
-	output: 'hybrid',
+	// Server mode for API endpoints
+	output: 'server',
 	// Build optimizations
 	build: {
 		// Inline stylesheets smaller than 4kb
