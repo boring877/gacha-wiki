@@ -13,8 +13,8 @@ export default defineConfig({
 	}),	integrations: [
 		sitemap(),
 	],
-	// Server mode for API endpoints
-	output: 'server',
+	// Static site with Vercel API routes
+	output: 'static',
 	// Build optimizations
 	build: {
 		// Inline stylesheets smaller than 4kb
