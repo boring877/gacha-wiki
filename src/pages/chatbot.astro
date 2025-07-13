@@ -1,6 +1,6 @@
 ---
 import ChatbotLayout from '../layouts/ChatbotLayout.astro';
-import { generateWelcomeMessage } from '../data/ai-config.js';
+import ariaCharacter from '../data/aria-character.json';
 ---
 
 <ChatbotLayout title="GachaWiki AI" description="Ask questions about gacha games and get answers from GachaWiki content">
@@ -37,13 +37,15 @@ import { generateWelcomeMessage } from '../data/ai-config.js';
       
       // Better formatting for readability
       let formattedContent = content
-        // Add spacing around sections
-        .replace(/\*\*([^*]+)\*\*/g, '\n\n**$1**\n')
-        // Add spacing around bullet points
-        .replace(/•/g, '\n• ')
-        // Clean up multiple newlines
+        // Clean up excessive newlines first
         .replace(/\n{3,}/g, '\n\n')
-        // Trim whitespace
+        // Ensure proper spacing around bold sections
+        .replace(/\*\*([^*]+)\*\*:/g, '\n\n**$1:**\n')
+        // Fix bullet point spacing
+        .replace(/•\s*/g, '\n• ')
+        // Add spacing between sections
+        .replace(/\n\*\*Sources:\*\*/g, '\n\n**Sources:**')
+        // Clean up whitespace
         .trim();
       
       let html = formattedContent;
@@ -134,7 +136,7 @@ import { generateWelcomeMessage } from '../data/ai-config.js';
         isLoading = false;
         if (button instanceof HTMLButtonElement) {
           button.disabled = false;
-          button.innerHTML = 'Send';
+          button.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/></svg>';
         }
       }
     }
@@ -158,17 +160,8 @@ import { generateWelcomeMessage } from '../data/ai-config.js';
       }
 
 
-      // Add welcome message
-      const welcomeMessage = `👋 **Hello! I'm Alice, your GachaWiki AI Assistant!**
-
-I specialize in **Zone Nova**, **Silver and Blood**, and other gacha games featured on this site. I can help you with:
-
-🎯 **Character builds & team compositions**
-⚔️ **Game mechanics & strategies** 
-🎁 **Events, codes & updates**
-📊 **Damage calculations & optimization**
-
-Just ask me anything, and I'll provide organized, detailed answers with sources from GachaWiki!`;
+      // Simple welcome message
+      const welcomeMessage = "Hello! I'm Aria (｡◕‿◕｡)";
       addMessage(welcomeMessage);
     });
   </script>
