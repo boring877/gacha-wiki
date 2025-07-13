@@ -83,7 +83,21 @@
   },
   
   "settings": {
-    "model": "tngtech/deepseek-r1t2-chimera:free",
+    "available_models": [
+      {
+        "name": "DeepSeek R1T2 Chimera",
+        "id": "tngtech/deepseek-r1t2-chimera:free",
+        "description": "Reasoning model with chain-of-thought",
+        "strengths": ["reasoning", "step-by-step thinking", "complex problems"]
+      },
+      {
+        "name": "Dolphin Mistral Venice",
+        "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free", 
+        "description": "Large uncensored model, creative and detailed",
+        "strengths": ["creativity", "detailed responses", "uncensored"]
+      }
+    ],
+    "default_model": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
     "temperature": 0.3,
     "max_tokens": 800,
     "response_validation": {

@@ -39,12 +39,16 @@ import ariaCharacter from '../data/aria-character.json';
       let formattedContent = content
         // Clean up excessive newlines first
         .replace(/\n{3,}/g, '\n\n')
-        // Ensure proper spacing around bold sections
-        .replace(/\*\*([^*]+)\*\*:/g, '\n\n**$1:**\n')
-        // Fix bullet point spacing
-        .replace(/•\s*/g, '\n• ')
-        // Add spacing between sections
-        .replace(/\n\*\*Sources:\*\*/g, '\n\n**Sources:**')
+        // Add proper spacing around main sections
+        .replace(/\*\*Quick Answer:\*\*/g, '\n**Quick Answer:**\n')
+        .replace(/\*\*Key Details:\*\*/g, '\n\n**Key Details:**\n')
+        .replace(/\*\*Sources:\*\*/g, '\n\n**Sources:**\n')
+        // Fix bullet point spacing - add line break before each bullet
+        .replace(/•/g, '\n• ')
+        // Add spacing after bullet points
+        .replace(/• ([^\n]+)/g, '• $1\n')
+        // Clean up multiple newlines but keep double spacing
+        .replace(/\n{4,}/g, '\n\n\n')
         // Clean up whitespace
         .trim();
       

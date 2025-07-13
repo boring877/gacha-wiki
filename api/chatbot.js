@@ -65,7 +65,21 @@ const ariaCharacter = {
   },
   
   "settings": {
-    "model": "tngtech/deepseek-r1t2-chimera:free",
+    "available_models": [
+      {
+        "name": "DeepSeek R1T2 Chimera",
+        "id": "tngtech/deepseek-r1t2-chimera:free",
+        "description": "Reasoning model with chain-of-thought",
+        "strengths": ["reasoning", "step-by-step thinking", "complex problems"]
+      },
+      {
+        "name": "Dolphin Mistral Venice",
+        "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free", 
+        "description": "Large uncensored model, creative and detailed",
+        "strengths": ["creativity", "detailed responses", "uncensored"]
+      }
+    ],
+    "default_model": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
     "temperature": 0.3,
     "max_tokens": 800,
     "maxContentLength": 10000,
@@ -313,6 +327,23 @@ function findRelevantPages(urls, question) {
     .map(item => item.url);
 }
 
+// Helper function to get model from request or use default
+function getSelectedModel(req) {
+  const modelParam = req.query?.model || req.body?.model;
+  
+  if (modelParam) {
+    // Check if the requested model is available
+    const availableModel = ariaCharacter.settings.available_models.find(
+      model => model.id === modelParam || model.name === modelParam
+    );
+    if (availableModel) {
+      return availableModel.id;
+    }
+  }
+  
+  return ariaCharacter.settings.default_model;
+}
+
 export default async function handler(req, res) {
   // Handle CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -328,6 +359,8 @@ export default async function handler(req, res) {
       status: 'API is working',
       character: ariaCharacter.name,
       version: ariaCharacter.version,
+      available_models: ariaCharacter.settings.available_models,
+      default_model: ariaCharacter.settings.default_model,
       hasOpenRouterKey: !!OPENROUTER_API_KEY,
       keyLength: OPENROUTER_API_KEY ? OPENROUTER_API_KEY.length : 0
     });
@@ -347,6 +380,10 @@ export default async function handler(req, res) {
     if (!question || typeof question !== 'string') {
       return res.status(400).json({ error: ariaCharacter.responses.error_messages.no_question });
     }
+    
+    // Get selected model (default or from request)
+    const selectedModel = getSelectedModel(req);
+    console.log('Using model:', selectedModel);
     
     // Get all URLs from sitemap
     const urls = await fetchSitemap();
@@ -405,7 +442,7 @@ export default async function handler(req, res) {
         'X-Title': `${ariaCharacter.name} - ${ariaCharacter.title}`,
       },
       body: JSON.stringify({
-        model: ariaCharacter.settings.model,
+        model: selectedModel,
         messages: [
           {
             role: 'user',

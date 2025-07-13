@@ -160,12 +160,30 @@
   border-radius: 1.5rem;
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  line-height: 1.8;
+  line-height: 1.7;
   animation: messageSlideIn 0.4s ease-out;
   position: relative;
   backdrop-filter: blur(10px);
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+/* Better spacing for bold sections */
+.message strong {
+  display: block;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+/* Bullet point styling */
+.message ul {
+  margin: 0.5rem 0;
+  padding-left: 0;
+}
+
+.message li {
+  margin: 0.3rem 0;
+  list-style: none;
 }
 
 @keyframes messageSlideIn {
