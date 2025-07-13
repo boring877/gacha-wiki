@@ -28,7 +28,7 @@ import ariaCharacter from '../data/aria-character.json';
   <script>
     let isLoading = false;
 
-    function addMessage(content, type = 'assistant', sources = []) {
+    function addMessage(content, type = 'assistant', sources = [], usage = null) {
       const messagesDiv = document.getElementById('messages');
       if (!messagesDiv) return;
       
@@ -66,6 +66,11 @@ import ariaCharacter from '../data/aria-character.json';
           }
         });
         html += '</div>';
+      }
+      
+      // Add token usage info for assistant messages
+      if (type === 'assistant' && usage && usage.total_tokens > 0) {
+        html += '\n\n<div class="token-usage">Tokens: ' + usage.total_tokens + ' (' + usage.prompt_tokens + ' prompt + ' + usage.completion_tokens + ' response)</div>';
       }
       
       messageDiv.innerHTML = html;
@@ -117,7 +122,7 @@ import ariaCharacter from '../data/aria-character.json';
           throw new Error(data.error || 'Something went wrong');
         }
         
-        addMessage(data.answer, 'assistant', data.sources);
+        addMessage(data.answer, 'assistant', data.sources, data.usage);
         
       } catch (error) {
         console.error('Error:', error);

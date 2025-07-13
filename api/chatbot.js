@@ -65,9 +65,9 @@ const ariaCharacter = {
   },
   
   "settings": {
-    "model": "google/gemma-3n-e4b-it:free",
-    "temperature": 0.3,
-    "max_tokens": 800,
+    "model": "moonshotai/kimi-vl-a3b-thinking:free",
+    "temperature": 0.7,
+    "max_tokens": 1500,
     "maxContentLength": 10000,
     "cacheTimeout": 60000,
     "maxRelevantPages": 6,
@@ -445,11 +445,18 @@ export default async function handler(req, res) {
     }
 
     const answer = data.choices[0].message.content;
+    const usage = data.usage || {};
     console.log('Got response from OpenRouter');
+    console.log('Token usage:', usage);
     
     return res.status(200).json({
       answer,
-      sources: validPages.map(page => page.url)
+      sources: validPages.map(page => page.url),
+      usage: {
+        prompt_tokens: usage.prompt_tokens || 0,
+        completion_tokens: usage.completion_tokens || 0,
+        total_tokens: usage.total_tokens || 0
+      }
     });
     
   } catch (error) {
