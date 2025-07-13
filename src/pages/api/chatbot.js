@@ -1,5 +1,10 @@
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const SITE_URL = 'https://gachawiki.info';
+
+// Initialize Google AI
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 // Simple cache for sitemap and content
 const cache = new Map();
@@ -167,7 +172,11 @@ function findRelevantPages(urls, question) {
 }
 
 export async function POST({ request }) {
+  // Test if API route is working at all
+  console.log('=== POST request received ===');
+  
   if (!GEMINI_API_KEY) {
+    console.log('No GEMINI_API_KEY found');
     return new Response(JSON.stringify({ error: 'Gemini API key not configured' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
@@ -176,6 +185,7 @@ export async function POST({ request }) {
 
   try {
     const { question } = await request.json();
+    console.log('Question received:', question);
     
     if (!question || typeof question !== 'string') {
       return new Response(JSON.stringify({ error: 'Question is required' }), {
@@ -248,20 +258,15 @@ export async function POST({ request }) {
       .map(page => `Source: ${page.url}\nContent: ${page.content}`)
       .join('\n\n---\n\n');
     
-    // Generate response using Google Gemini
+    // Generate response using Google Generative AI SDK
     console.log('Calling Gemini API...');
-    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-goog-api-key': GEMINI_API_KEY,
-      },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: `You are GachaWiki AI, an expert assistant for gacha games. Answer questions using ONLY the provided content from GachaWiki.info.
+    console.log('Has Gemini API Key:', !!GEMINI_API_KEY);
+    console.log('Gemini API Key length:', GEMINI_API_KEY ? GEMINI_API_KEY.length : 0);
+    
+    try {
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+      
+      const prompt = `You are GachaWiki AI, an expert assistant for gacha games. Answer questions using ONLY the provided content from GachaWiki.info.
 
 RESPONSE GUIDELINES:
 1. **Be Direct & Helpful**: Give clear, actionable answers
@@ -281,31 +286,27 @@ USER QUESTION: ${question}
 AVAILABLE CONTENT:
 ${context}
 
-Provide a comprehensive answer using the format above. Include specific details like numbers, percentages, and exact names when available.`
-              }
-            ]
-          }
-        ],
-        generationConfig: {
-          maxOutputTokens: 800,
-          temperature: 0.3,
-          topP: 0.8,
-          topK: 40,
-        }
-      }),
-    });
+Provide a comprehensive answer using the format above. Include specific details like numbers, percentages, and exact names when available.`;
 
-    const data = await response.json();
-    const answer = data.candidates[0].content.parts[0].text;
-    console.log('Got response from Gemini');
-    
-    return new Response(JSON.stringify({
-      answer,
-      sources: validPages.map(page => page.url)
-    }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' }
-    });
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      const answer = response.text();
+      
+      console.log('Got response from Gemini SDK');
+      console.log('Response length:', answer.length);
+      
+      return new Response(JSON.stringify({
+        answer,
+        sources: validPages.map(page => page.url)
+      }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      });
+      
+    } catch (geminiError) {
+      console.error('Gemini API error:', geminiError);
+      throw new Error(`Gemini API error: ${geminiError.message}`);
+    }
     
   } catch (error) {
     console.error('Chatbot error:', error);
