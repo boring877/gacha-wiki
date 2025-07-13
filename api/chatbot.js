@@ -1,10 +1,5 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
-
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const SITE_URL = 'https://gachawiki.info';
-
-const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
 // Simple cache for sitemap and content
 const cache = new Map();
@@ -115,17 +110,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
   
-  console.log('GEMINI_API_KEY present:', !!GEMINI_API_KEY);
-  console.log('GEMINI_API_KEY length:', GEMINI_API_KEY ? GEMINI_API_KEY.length : 0);
-  
   if (!GEMINI_API_KEY) {
-    return res.status(500).json({ 
-      error: 'API key not configured',
-      debug: {
-        hasKey: !!GEMINI_API_KEY,
-        envKeys: Object.keys(process.env).filter(k => k.includes('GEMINI'))
-      }
-    });
+    return res.status(500).json({ error: 'Gemini API key not configured' });
   }
   
   try {
@@ -189,9 +175,47 @@ ${context}
 
 Please provide a helpful answer based only on the content above, and cite your sources.`;
     
-    // Generate response using Gemini
-    const result = await model.generateContent(prompt);
-    const answer = result.response.text();
+    // Generate response using Google Gemini
+    console.log('Calling Gemini API...');
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: `You are a helpful assistant that answers questions about gacha games using only the provided content from GachaWiki.info.
+
+IMPORTANT RULES:
+- Only use information from the provided content below
+- If the answer isn't in the provided content, say so clearly
+- Always cite which page(s) your answer comes from
+- Be concise but helpful
+- Focus on factual information about characters, game mechanics, events, etc.
+
+User Question: ${question}
+
+Available Content:
+${context}
+
+Please provide a helpful answer based only on the content above, and cite your sources.`
+              }
+            ]
+          }
+        ],
+        generationConfig: {
+          maxOutputTokens: 500,
+          temperature: 0.7,
+        }
+      }),
+    });
+
+    const data = await response.json();
+    const answer = data.candidates[0].content.parts[0].text;
+    console.log('Got response from Gemini');
     
     return res.json({
       answer,
