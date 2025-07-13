@@ -65,7 +65,7 @@ const ariaCharacter = {
   },
   
   "settings": {
-    "model": "mistralai/mistral-small-3.2-24b-instruct:free",
+    "model": "tencent/hunyuan-a13b-instruct:free",
     "temperature": 0.3,
     "max_tokens": 800,
     "maxContentLength": 10000,
