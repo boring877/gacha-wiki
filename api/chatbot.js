@@ -1,4 +1,4 @@
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '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';
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const SITE_URL = 'https://gachawiki.info';
 
 // AI Configuration (inline since Vercel API routes can't import ES6 modules easily)
