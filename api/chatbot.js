@@ -14,15 +14,36 @@ async function fetchSitemap() {
   }
   
   try {
-    const response = await fetch(`${SITE_URL}/sitemap-index.xml`);
-    const text = await response.text();
+    // First fetch the sitemap index
+    const indexResponse = await fetch(`${SITE_URL}/sitemap-index.xml`);
+    const indexText = await indexResponse.text();
+    console.log('Fetched sitemap index');
     
-    // Extract URLs from sitemap
-    const urlMatches = text.matchAll(/<loc>(.*?)<\/loc>/g);
-    const urls = Array.from(urlMatches, match => match[1]);
+    // Extract sitemap URLs from index
+    const sitemapMatches = indexText.matchAll(/<loc>(.*?)<\/loc>/g);
+    const sitemapUrls = Array.from(sitemapMatches, match => match[1]);
+    console.log('Found sitemaps:', sitemapUrls);
     
-    cache.set(cacheKey, { data: urls, timestamp: Date.now() });
-    return urls;
+    // Fetch all individual sitemaps
+    const allUrls = [];
+    for (const sitemapUrl of sitemapUrls) {
+      try {
+        const response = await fetch(sitemapUrl);
+        const text = await response.text();
+        
+        // Extract page URLs from this sitemap
+        const urlMatches = text.matchAll(/<loc>(.*?)<\/loc>/g);
+        const urls = Array.from(urlMatches, match => match[1]);
+        allUrls.push(...urls);
+        console.log(`Fetched ${urls.length} URLs from ${sitemapUrl}`);
+      } catch (err) {
+        console.error(`Failed to fetch sitemap ${sitemapUrl}:`, err);
+      }
+    }
+    
+    console.log(`Total URLs collected: ${allUrls.length}`);
+    cache.set(cacheKey, { data: allUrls, timestamp: Date.now() });
+    return allUrls;
   } catch (error) {
     console.error('Failed to fetch sitemap:', error);
     return [];
