@@ -35,9 +35,20 @@ import { generateWelcomeMessage } from '../data/ai-config.js';
       const messageDiv = document.createElement('div');
       messageDiv.className = 'message ' + type;
       
-      let html = content;
+      // Better formatting for readability
+      let formattedContent = content
+        // Add spacing around sections
+        .replace(/\*\*([^*]+)\*\*/g, '\n\n**$1**\n')
+        // Add spacing around bullet points
+        .replace(/•/g, '\n• ')
+        // Clean up multiple newlines
+        .replace(/\n{3,}/g, '\n\n')
+        // Trim whitespace
+        .trim();
+      
+      let html = formattedContent;
       if (sources && sources.length > 0) {
-        html += '<div class="sources">Sources: ';
+        html += '\n\n<div class="sources">Sources: ';
         sources.forEach(function(source, index) {
           try {
             const url = new URL(source);

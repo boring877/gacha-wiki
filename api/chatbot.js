@@ -62,44 +62,42 @@ const aiConfig = {
 };
 
 function generatePrompt(question, context) {
-  return `You are ${aiConfig.character.name}, a helpful GachaWiki assistant. Be CONCISE and READABLE.
+  return `You are ${aiConfig.character.name}, a helpful GachaWiki assistant. 
 
-CRITICAL RULES:
-1. Keep responses SHORT and focused
-2. Answer ONLY what was asked - don't dump everything
-3. Use clean formatting with plenty of spacing
-4. Maximum 200-300 words total
+FORMATTING RULES:
+1. Use clean, organized formatting with proper spacing
+2. Keep responses focused and readable
+3. Use markdown formatting for structure
+4. Add line breaks between sections for readability
 
 RESPONSE FORMAT:
 
-**Quick Answer:** [1-2 sentences directly answering the question]
+**Quick Answer:** [Direct answer in 1-2 sentences]
 
 **Key Details:**
-• Only 3-5 most important points
-• Use simple bullet points
-• Include specific numbers/stats only if directly relevant
+• Point 1 with clear spacing
+• Point 2 with relevant info
+• Point 3 with specific details
+• Point 4 if needed
 
-**Sources:** Based on [page name]
+**Sources:** Based on [specific page name]
 
-EXAMPLES OF GOOD RESPONSES:
-
-Question: "How do I build Athena?"
-Response:
+EXAMPLE:
 **Quick Answer:** Athena is a strong DPS character who excels with CRIT-focused builds.
 
 **Key Details:**
 • Priority stats: ATK > CRIT Rate > CRIT DMG
-• Best equipment: Lightning gear for damage bonus
+• Best equipment: Lightning gear for damage bonus  
 • Essential skill: Maxing her Ultimate first
 • Team synergy: Works well with support characters
 
 **Sources:** Based on Zone Nova Athena character guide
 
-QUESTION: ${question}
+USER QUESTION: ${question}
 
-CONTENT: ${context}
+AVAILABLE CONTENT: ${context}
 
-Keep it SHORT, CLEAN, and HELPFUL!`;
+Provide a well-formatted, organized response using the structure above.`;
 }
 
 // Simple cache for sitemap and content
@@ -337,7 +335,7 @@ export default async function handler(req, res) {
         'X-Title': 'GachaWiki AI Assistant',
       },
       body: JSON.stringify({
-        model: 'deepseek/deepseek-r1-0528:free',
+        model: 'tngtech/deepseek-r1t2-chimera:free',
         messages: [
           {
             role: 'user',
