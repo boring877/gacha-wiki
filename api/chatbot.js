@@ -115,8 +115,17 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
   
+  console.log('GEMINI_API_KEY present:', !!GEMINI_API_KEY);
+  console.log('GEMINI_API_KEY length:', GEMINI_API_KEY ? GEMINI_API_KEY.length : 0);
+  
   if (!GEMINI_API_KEY) {
-    return res.status(500).json({ error: 'API key not configured' });
+    return res.status(500).json({ 
+      error: 'API key not configured',
+      debug: {
+        hasKey: !!GEMINI_API_KEY,
+        envKeys: Object.keys(process.env).filter(k => k.includes('GEMINI'))
+      }
+    });
   }
   
   try {
