@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const SITE_URL = 'https://gachawiki.info';
 
 // Load Aria Character Configuration from JSON file
@@ -226,8 +226,8 @@ export default async function handler(req, res) {
       character: ariaCharacter.name,
       version: ariaCharacter.version,
       model: ariaCharacter.settings.model,
-      hasOpenRouterKey: !!OPENROUTER_API_KEY,
-      keyLength: OPENROUTER_API_KEY ? OPENROUTER_API_KEY.length : 0
+      hasGeminiKey: !!GEMINI_API_KEY,
+      keyLength: GEMINI_API_KEY ? GEMINI_API_KEY.length : 0
     });
   }
 
@@ -235,8 +235,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  if (!OPENROUTER_API_KEY) {
-    return res.status(500).json({ error: ariaCharacter.responses.error_messages.no_api_key });
+  if (!GEMINI_API_KEY) {
+    return res.status(500).json({ error: 'Gemini API key not configured' });
   }
 
   try {
@@ -294,48 +294,50 @@ export default async function handler(req, res) {
       .map(page => `Source: ${page.url}\nContent: ${page.content}`)
       .join('\n\n---\n\n');
     
-    // Generate response using OpenRouter
-    console.log('Calling OpenRouter API...');
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    // Generate response using Google Gemini API
+    console.log('Calling Google Gemini API...');
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${ariaCharacter.settings.model}:generateContent`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': SITE_URL,
-        'X-Title': `${ariaCharacter.name} - ${ariaCharacter.title}`,
+        'X-goog-api-key': GEMINI_API_KEY,
       },
       body: JSON.stringify({
-        model: ariaCharacter.settings.model,
-        messages: [
+        contents: [
           {
-            role: 'user',
-            content: generatePrompt(question, context)
+            parts: [
+              {
+                text: generatePrompt(question, context)
+              }
+            ]
           }
         ],
-        max_tokens: ariaCharacter.settings.max_tokens,
-        temperature: ariaCharacter.settings.temperature,
+        generationConfig: {
+          temperature: ariaCharacter.settings.temperature,
+          maxOutputTokens: ariaCharacter.settings.max_tokens,
+        }
       }),
     });
 
     const data = await response.json();
     
     if (!response.ok) {
-      console.error('OpenRouter API error:', response.status, data);
-      throw new Error(`OpenRouter API error: ${data.error?.message || `HTTP ${response.status}`}`);
+      console.error('Gemini API error:', response.status, data);
+      throw new Error(`Gemini API error: ${data.error?.message || `HTTP ${response.status}`}`);
     }
 
-    const answer = data.choices[0].message.content;
-    const usage = data.usage || {};
-    console.log('Got response from OpenRouter');
+    const answer = data.candidates[0].content.parts[0].text;
+    const usage = data.usageMetadata || {};
+    console.log('Got response from Gemini');
     console.log('Token usage:', usage);
     
     return res.status(200).json({
       answer,
       sources: validPages.map(page => page.url),
       usage: {
-        prompt_tokens: usage.prompt_tokens || 0,
-        completion_tokens: usage.completion_tokens || 0,
-        total_tokens: usage.total_tokens || 0
+        prompt_tokens: usage.promptTokenCount || 0,
+        completion_tokens: usage.candidatesTokenCount || 0,
+        total_tokens: usage.totalTokenCount || 0
       }
     });
     
