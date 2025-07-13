@@ -134,38 +134,22 @@ function findRelevantPages(urls, question) {
     .map(item => item.url);
 }
 
-export default async function handler(req, res) {
-  // CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-  
-  // Add a simple test endpoint
-  if (req.method === 'GET') {
-    return res.json({ 
-      status: 'API is working',
-      hasGeminiKey: !!GEMINI_API_KEY,
-      keyLength: GEMINI_API_KEY ? GEMINI_API_KEY.length : 0
+export async function POST({ request }) {
+  if (!GEMINI_API_KEY) {
+    return new Response(JSON.stringify({ error: 'Gemini API key not configured' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
     });
   }
-  
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-  
-  if (!GEMINI_API_KEY) {
-    return res.status(500).json({ error: 'Gemini API key not configured' });
-  }
-  
+
   try {
-    const { question } = req.body;
+    const { question } = await request.json();
     
     if (!question || typeof question !== 'string') {
-      return res.status(400).json({ error: 'Question is required' });
+      return new Response(JSON.stringify({ error: 'Question is required' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
     
     // Get all URLs from sitemap
@@ -182,9 +166,12 @@ export default async function handler(req, res) {
         'https://gachawiki.info/guides/silver-and-blood/events/'
       ];
       console.log('Using fallback URLs');
-      return res.json({
+      return new Response(JSON.stringify({
         answer: "I'm having trouble accessing the full sitemap, but I can still help with basic questions. Try asking about specific characters like Athena or Lancelot, or about redeem codes.",
         sources: fallbackUrls
+      }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
       });
     }
     
@@ -196,9 +183,12 @@ export default async function handler(req, res) {
     console.log('Sample URLs:', urls.slice(0, 5));
     
     if (relevantUrls.length === 0) {
-      return res.json({
+      return new Response(JSON.stringify({
         answer: "I couldn't find relevant pages for your question. Please try asking about specific characters, games, or guides available on GachaWiki.",
         sources: []
+      }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
       });
     }
     
@@ -212,9 +202,12 @@ export default async function handler(req, res) {
     const validPages = pages.filter(page => page.content.length > 100);
     
     if (validPages.length === 0) {
-      return res.json({
+      return new Response(JSON.stringify({
         answer: "I found relevant pages but couldn't extract their content. Please try again later.",
         sources: relevantUrls
+      }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
       });
     }
     
@@ -222,22 +215,6 @@ export default async function handler(req, res) {
     const context = validPages
       .map(page => `Source: ${page.url}\nContent: ${page.content}`)
       .join('\n\n---\n\n');
-    
-    const prompt = `You are a helpful assistant that answers questions about gacha games using only the provided content from GachaWiki.info.
-
-IMPORTANT RULES:
-- Only use information from the provided content below
-- If the answer isn't in the provided content, say so clearly
-- Always cite which page(s) your answer comes from
-- Be concise but helpful
-- Focus on factual information about characters, game mechanics, events, etc.
-
-User Question: ${question}
-
-Available Content:
-${context}
-
-Please provide a helpful answer based only on the content above, and cite your sources.`;
     
     // Generate response using Google Gemini
     console.log('Calling Gemini API...');
@@ -282,18 +259,35 @@ Please provide a helpful answer based only on the content above, and cite your s
     const answer = data.candidates[0].content.parts[0].text;
     console.log('Got response from Gemini');
     
-    return res.json({
+    return new Response(JSON.stringify({
       answer,
       sources: validPages.map(page => page.url)
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
     });
     
   } catch (error) {
     console.error('Chatbot error:', error);
     console.error('Error stack:', error.stack);
-    return res.status(500).json({ 
+    return new Response(JSON.stringify({ 
       error: 'Internal server error',
       message: error.message,
       details: error.stack
+    }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
     });
   }
+}
+
+export async function GET() {
+  return new Response(JSON.stringify({ 
+    status: 'API is working',
+    hasGeminiKey: !!GEMINI_API_KEY,
+    keyLength: GEMINI_API_KEY ? GEMINI_API_KEY.length : 0
+  }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' }
+  });
 }
