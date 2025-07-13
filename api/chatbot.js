@@ -1,9 +1,11 @@
+import { aiConfig, generatePrompt } from '../src/data/ai-config.js';
+
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const SITE_URL = 'https://gachawiki.info';
 
 // Simple cache for sitemap and content
 const cache = new Map();
-const CACHE_DURATION = 60 * 1000; // 60 seconds
+const CACHE_DURATION = aiConfig.apiSettings.cacheTimeout;
 
 async function fetchSitemap() {
   const cacheKey = 'sitemap';
@@ -77,8 +79,8 @@ async function fetchPageContent(url) {
       .trim();
     
     // Limit content length but try to keep complete sentences
-    if (cleanText.length > 10000) {
-      cleanText = cleanText.substring(0, 10000);
+    if (cleanText.length > aiConfig.apiSettings.maxContentLength) {
+      cleanText = cleanText.substring(0, aiConfig.apiSettings.maxContentLength);
       const lastSentence = cleanText.lastIndexOf('.');
       if (lastSentence > 8000) {
         cleanText = cleanText.substring(0, lastSentence + 1);
@@ -98,29 +100,8 @@ function findRelevantPages(urls, question) {
   const questionLower = question.toLowerCase();
   const keywords = questionLower.split(' ').filter(word => word.length > 2);
   
-  // Game-specific keywords mapping
-  const gameKeywords = {
-    'zone nova': ['zone-nova', 'zn'],
-    'silver and blood': ['silver-and-blood', 'sab'],
-    'athena': ['athena'],
-    'lancelot': ['lancelot'],
-    'artemis': ['artemis'],
-    'gaia': ['gaia'],
-    'apollo': ['apollo'],
-    'build': ['character', 'guide', 'builds'],
-    'team': ['character', 'guide', 'comparison'],
-    'memory': ['memories', 'memory'],
-    'memories': ['memories', 'memory'],
-    'rift': ['rifts', 'rift'],
-    'rifts': ['rifts', 'rift'],
-    'damage': ['damage-mechanics', 'mechanics'],
-    'redeem': ['redeem-codes', 'codes'],
-    'codes': ['redeem-codes', 'codes'],
-    'event': ['events', 'event'],
-    'events': ['events', 'event'],
-    'update': ['updates', 'update'],
-    'updates': ['updates', 'update']
-  };
+  // Use keyword mapping from config
+  const gameKeywords = aiConfig.keywordMapping;
   
   const scored = urls.map(url => {
     let score = 0;
@@ -162,7 +143,7 @@ function findRelevantPages(urls, question) {
   return scored
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 6)
+    .slice(0, aiConfig.apiSettings.maxRelevantPages)
     .map(item => item.url);
 }
 
@@ -189,14 +170,14 @@ export default async function handler(req, res) {
   }
 
   if (!GEMINI_API_KEY) {
-    return res.status(500).json({ error: 'Gemini API key not configured' });
+    return res.status(500).json({ error: aiConfig.errorMessages.noApiKey });
   }
 
   try {
     const { question } = req.body;
     
     if (!question || typeof question !== 'string') {
-      return res.status(400).json({ error: 'Question is required' });
+      return res.status(400).json({ error: aiConfig.errorMessages.noQuestion });
     }
     
     // Get all URLs from sitemap
@@ -204,18 +185,10 @@ export default async function handler(req, res) {
     console.log('Sitemap fetch completed, URLs:', urls.length);
     
     if (urls.length === 0) {
-      // Fallback with some known URLs if sitemap fails
-      const fallbackUrls = [
-        'https://gachawiki.info/guides/zone-nova/redeem-codes/',
-        'https://gachawiki.info/guides/zone-nova/characters/lancelot/',
-        'https://gachawiki.info/guides/zone-nova/characters/athena/',
-        'https://gachawiki.info/guides/zone-nova/memories/',
-        'https://gachawiki.info/guides/silver-and-blood/events/'
-      ];
       console.log('Using fallback URLs');
       return res.status(200).json({
-        answer: "I'm having trouble accessing the full sitemap, but I can still help with basic questions. Try asking about specific characters like Athena or Lancelot, or about redeem codes.",
-        sources: fallbackUrls
+        answer: aiConfig.errorMessages.sitemapFailed,
+        sources: aiConfig.fallbackUrls
       });
     }
     
@@ -228,7 +201,7 @@ export default async function handler(req, res) {
     
     if (relevantUrls.length === 0) {
       return res.status(200).json({
-        answer: "I couldn't find relevant pages for your question. Please try asking about specific characters, games, or guides available on GachaWiki.",
+        answer: aiConfig.errorMessages.noRelevantPages,
         sources: []
       });
     }
@@ -244,7 +217,7 @@ export default async function handler(req, res) {
     
     if (validPages.length === 0) {
       return res.status(200).json({
-        answer: "I found relevant pages but couldn't extract their content. Please try again later.",
+        answer: aiConfig.errorMessages.noContent,
         sources: relevantUrls
       });
     }
@@ -267,36 +240,16 @@ export default async function handler(req, res) {
           {
             parts: [
               {
-                text: `You are GachaWiki AI, an expert assistant for gacha games. Answer questions using ONLY the provided content from GachaWiki.info.
-
-RESPONSE GUIDELINES:
-1. **Be Direct & Helpful**: Give clear, actionable answers
-2. **Use Game Terminology**: Use proper character names, game terms, and mechanics
-3. **Structure Information**: Use bullet points, numbers, or sections for clarity
-4. **Cite Sources**: Always mention which page(s) contain the information
-5. **Stay In-Scope**: Only use provided content - if info isn't available, say so clearly
-
-ANSWER FORMAT:
-- For character builds: Include stats, equipment, skills, team compositions
-- For game mechanics: Explain step-by-step with examples
-- For events/codes: Include dates, requirements, rewards
-- For team building: Suggest specific character combinations and synergies
-
-USER QUESTION: ${question}
-
-AVAILABLE CONTENT:
-${context}
-
-Provide a comprehensive answer using the format above. Include specific details like numbers, percentages, and exact names when available.`
+                text: generatePrompt(question, context)
               }
             ]
           }
         ],
         generationConfig: {
-          maxOutputTokens: 800,
-          temperature: 0.3,
-          topP: 0.8,
-          topK: 40,
+          maxOutputTokens: aiConfig.apiSettings.maxOutputTokens,
+          temperature: aiConfig.apiSettings.temperature,
+          topP: aiConfig.apiSettings.topP,
+          topK: aiConfig.apiSettings.topK,
         }
       }),
     });

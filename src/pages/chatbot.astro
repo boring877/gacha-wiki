@@ -1,5 +1,6 @@
 ---
 import ChatbotLayout from '../layouts/ChatbotLayout.astro';
+import { generateWelcomeMessage } from '../data/ai-config.js';
 ---
 
 <ChatbotLayout title="GachaWiki AI" description="Ask questions about gacha games and get answers from GachaWiki content">
@@ -146,8 +147,18 @@ import ChatbotLayout from '../layouts/ChatbotLayout.astro';
       }
 
 
-      // Add welcome message
-      addMessage('Hello! I\'m the GachaWiki AI. Ask me anything about the gacha games covered on this site, and I\'ll search through the latest content to help you.');
+      // Add welcome message from config
+      const welcomeMessage = `${import.meta.env.SSR ? '' : ''}👋 **Hello! I'm Aria, your GachaWiki AI Assistant!**
+
+I specialize in **Zone Nova**, **Silver and Blood**, and other gacha games featured on this site. I can help you with:
+
+🎯 **Character builds & team compositions**
+⚔️ **Game mechanics & strategies** 
+🎁 **Events, codes & updates**
+📊 **Damage calculations & optimization**
+
+Just ask me anything, and I'll provide organized, detailed answers with sources from GachaWiki!`;
+      addMessage(welcomeMessage);
     });
   </script>
 </ChatbotLayout>
