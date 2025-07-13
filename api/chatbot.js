@@ -65,7 +65,7 @@ const ariaCharacter = {
   },
   
   "settings": {
-    "model": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+    "model": "mistralai/mistral-small-3.2-24b-instruct:free",
     "temperature": 0.3,
     "max_tokens": 800,
     "maxContentLength": 10000,
