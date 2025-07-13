@@ -1,5 +1,6 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
+import CharacterSEO from '../../components/CharacterSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
@@ -22,9 +23,10 @@ export interface Props {
 	description?: string;
 	characterName?: string;
 	characterImage?: string;
+	character?: any; // For SEO optimization
 }
 
-const { title, description, characterName, characterImage } = Astro.props;
+const { title, description, characterName, characterImage, character } = Astro.props;
 ---
 
 <html lang="en">
@@ -35,10 +37,19 @@ const { title, description, characterName, characterImage } = Astro.props;
             @import '../../styles/games/silver-and-blood/sab-character-styles.css';
         </style>
 		
-		<!-- SEO Meta Tags -->
-		<meta name="keywords" content="Silver and Blood, ${characterName}, character guide, vampire game, skills, stats, builds" />
-		<meta name="author" content="GachaWiki" />
-		<meta name="robots" content="index, follow" />
+		{character ? (
+			<CharacterSEO 
+				gameKey="silver-and-blood"
+				character={character}
+				customTitle={title}
+				customDescription={description}
+			/>
+		) : (
+			<!-- Fallback SEO for pages without character data -->
+			<meta name="keywords" content={`Silver and Blood, ${characterName}, character guide, vampire game, skills, stats, builds`} />
+			<meta name="author" content="GachaWiki" />
+			<meta name="robots" content="index, follow" />
+		)}
 		
 		<!-- Open Graph Meta Tags -->
 		<meta property="og:title" content={title} />

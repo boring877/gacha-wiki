@@ -1,0 +1,66 @@
+---
+// Reusable SEO component for game pages
+import { 
+  generateGameKeywords, 
+  generateGameStructuredData, 
+  getGameConfig,
+  GLOBAL_SEO 
+} from '../utils/seo.js';
+
+export interface Props {
+  gameKey: string; // e.g., 'zone-nova', 'silver-and-blood'
+  title?: string;
+  description?: string;
+  additionalKeywords?: string[];
+  structuredData?: object;
+  themeColor?: string;
+}
+
+const { 
+  gameKey, 
+  title, 
+  description, 
+  additionalKeywords = [], 
+  structuredData,
+  themeColor 
+} = Astro.props;
+
+const gameConfig = getGameConfig(gameKey);
+
+if (!gameConfig) {
+  throw new Error(`Game configuration not found for: ${gameKey}`);
+}
+
+const keywords = generateGameKeywords(gameKey, additionalKeywords);
+const finalThemeColor = themeColor || gameConfig.themeColor;
+const finalStructuredData = structuredData || generateGameStructuredData(gameKey, description);
+---
+
+<!-- Game-Specific SEO Meta Tags -->
+<meta name="keywords" content={keywords} />
+<meta name="author" content={GLOBAL_SEO.author} />
+<meta name="robots" content="index, follow" />
+
+<!-- Mobile Optimization -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content={finalThemeColor} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+<!-- Schema.org Structured Data -->
+{finalStructuredData && (
+  <script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)} />
+)}
+
+<!-- Game-specific Open Graph tags -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={GLOBAL_SEO.siteName} />
+{title && <meta property="og:title" content={title} />}
+{description && <meta property="og:description" content={description} />}
+
+<!-- Twitter Card tags -->
+<meta name="twitter:card" content="summary_large_image" />
+{GLOBAL_SEO.social.twitter && <meta name="twitter:site" content={GLOBAL_SEO.social.twitter} />}
+{title && <meta name="twitter:title" content={title} />}
+{description && <meta name="twitter:description" content={description} />}

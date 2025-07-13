@@ -1,0 +1,88 @@
+---
+// Reusable SEO component for character pages
+import { 
+  generateGameKeywords, 
+  generateCharacterStructuredData,
+  generateTitle,
+  generateDescription,
+  getGameConfig,
+  GLOBAL_SEO 
+} from '../utils/seo.js';
+
+export interface Props {
+  gameKey: string; // e.g., 'zone-nova', 'silver-and-blood'
+  character: any; // Character data object
+  customTitle?: string;
+  customDescription?: string;
+  additionalKeywords?: string[];
+}
+
+const { 
+  gameKey, 
+  character,
+  customTitle,
+  customDescription,
+  additionalKeywords = []
+} = Astro.props;
+
+const gameConfig = getGameConfig(gameKey);
+
+if (!gameConfig) {
+  throw new Error(`Game configuration not found for: ${gameKey}`);
+}
+
+// Generate character-specific SEO data
+const characterKeywords = [
+  character.name,
+  character.rarity || '',
+  character.class || character.role || '',
+  character.faction || '',
+  'build guide',
+  'tier list',
+  'skills',
+  'stats'
+].filter(Boolean);
+
+const keywords = generateGameKeywords(gameKey, [...characterKeywords, ...additionalKeywords]);
+const title = customTitle || generateTitle(gameKey, 'character', character);
+const description = customDescription || generateDescription(gameKey, 'character', character);
+const structuredData = generateCharacterStructuredData(gameKey, character);
+---
+
+<!-- Character-Specific SEO Meta Tags -->
+<meta name="keywords" content={keywords} />
+<meta name="author" content={GLOBAL_SEO.author} />
+<meta name="robots" content="index, follow" />
+
+<!-- Mobile Optimization -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content={gameConfig.themeColor} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+<!-- Schema.org Structured Data for Character -->
+{structuredData && (
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+)}
+
+<!-- Character-specific Open Graph tags -->
+<meta property="og:type" content="profile" />
+<meta property="og:profile:username" content={character.name} />
+<meta property="og:site_name" content={GLOBAL_SEO.siteName} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+{character.image && <meta property="og:image" content={new URL(character.image, Astro.site)} />}
+
+<!-- Twitter Card tags -->
+<meta name="twitter:card" content="summary_large_image" />
+{GLOBAL_SEO.social.twitter && <meta name="twitter:site" content={GLOBAL_SEO.social.twitter} />}
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{character.image && <meta name="twitter:image" content={new URL(character.image, Astro.site)} />}
+
+<!-- Character-specific meta tags -->
+<meta name="character:name" content={character.name} />
+{character.rarity && <meta name="character:rarity" content={character.rarity} />}
+{character.class && <meta name="character:class" content={character.class} />}
+{character.faction && <meta name="character:faction" content={character.faction} />}
