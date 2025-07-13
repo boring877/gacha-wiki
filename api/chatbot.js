@@ -14,36 +14,26 @@ async function fetchSitemap() {
   }
   
   try {
-    // First fetch the sitemap index
-    const indexResponse = await fetch(`${SITE_URL}/sitemap-index.xml`);
-    const indexText = await indexResponse.text();
-    console.log('Fetched sitemap index');
+    // Try to fetch the main sitemap directly first
+    console.log('Fetching sitemap-0.xml directly...');
+    const response = await fetch(`${SITE_URL}/sitemap-0.xml`, { 
+      timeout: 10000 // 10 second timeout
+    });
     
-    // Extract sitemap URLs from index
-    const sitemapMatches = indexText.matchAll(/<loc>(.*?)<\/loc>/g);
-    const sitemapUrls = Array.from(sitemapMatches, match => match[1]);
-    console.log('Found sitemaps:', sitemapUrls);
-    
-    // Fetch all individual sitemaps
-    const allUrls = [];
-    for (const sitemapUrl of sitemapUrls) {
-      try {
-        const response = await fetch(sitemapUrl);
-        const text = await response.text();
-        
-        // Extract page URLs from this sitemap
-        const urlMatches = text.matchAll(/<loc>(.*?)<\/loc>/g);
-        const urls = Array.from(urlMatches, match => match[1]);
-        allUrls.push(...urls);
-        console.log(`Fetched ${urls.length} URLs from ${sitemapUrl}`);
-      } catch (err) {
-        console.error(`Failed to fetch sitemap ${sitemapUrl}:`, err);
-      }
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
     }
     
-    console.log(`Total URLs collected: ${allUrls.length}`);
-    cache.set(cacheKey, { data: allUrls, timestamp: Date.now() });
-    return allUrls;
+    const text = await response.text();
+    console.log('Sitemap response length:', text.length);
+    
+    // Extract URLs from sitemap
+    const urlMatches = text.matchAll(/<loc>(.*?)<\/loc>/g);
+    const urls = Array.from(urlMatches, match => match[1]);
+    
+    console.log(`Found ${urls.length} URLs in sitemap`);
+    cache.set(cacheKey, { data: urls, timestamp: Date.now() });
+    return urls;
   } catch (error) {
     console.error('Failed to fetch sitemap:', error);
     return [];
@@ -173,9 +163,22 @@ export default async function handler(req, res) {
     
     // Get all URLs from sitemap
     const urls = await fetchSitemap();
+    console.log('Sitemap fetch completed, URLs:', urls.length);
     
     if (urls.length === 0) {
-      return res.status(500).json({ error: 'Could not fetch sitemap' });
+      // Fallback with some known URLs if sitemap fails
+      const fallbackUrls = [
+        'https://gachawiki.info/guides/zone-nova/redeem-codes/',
+        'https://gachawiki.info/guides/zone-nova/characters/lancelot/',
+        'https://gachawiki.info/guides/zone-nova/characters/athena/',
+        'https://gachawiki.info/guides/zone-nova/memories/',
+        'https://gachawiki.info/guides/silver-and-blood/events/'
+      ];
+      console.log('Using fallback URLs');
+      return res.json({
+        answer: "I'm having trouble accessing the full sitemap, but I can still help with basic questions. Try asking about specific characters like Athena or Lancelot, or about redeem codes.",
+        sources: fallbackUrls
+      });
     }
     
     // Find most relevant pages
@@ -279,9 +282,11 @@ Please provide a helpful answer based only on the content above, and cite your s
     
   } catch (error) {
     console.error('Chatbot error:', error);
+    console.error('Error stack:', error.stack);
     return res.status(500).json({ 
       error: 'Internal server error',
-      message: error.message 
+      message: error.message,
+      details: error.stack
     });
   }
 }
