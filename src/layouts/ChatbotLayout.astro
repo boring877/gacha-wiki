@@ -1,0 +1,61 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CustomScrollbar from '../components/CustomScrollbar.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import DecorativeLines from '../components/DecorativeLines.astro';
+
+// Import CSS files properly
+import '../styles/colors.css';
+import '../styles/global.css';
+import '../styles/typography.css';
+import '../styles/pages/chatbot.css';
+
+export interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description || ""} />
+		<slot name="head" />
+	</head>
+	<body class="chatbot-body">
+		<CustomScrollbar />
+		<!-- Background layers for visual depth similar to other pages -->
+		<div class="bg-layer bg-primary"></div>
+		<div class="bg-layer bg-accent-1"></div>
+		<div class="bg-layer bg-accent-2"></div>
+		<div class="bg-layer bg-accent-3"></div>
+		
+		<div class="chatbot-content">
+			<Header />
+			<MobileMenu />
+			
+			<div class="chatbot-container">
+				<main class="chatbot-main">
+					<!-- Title Section -->
+					<section class="title-only-section">
+						<h1 class="title-only-heading">
+							GachaWiki AI
+						</h1>
+						
+						<DecorativeLines />
+					</section>
+					
+					<!-- Content Area -->
+					<div class="content-area">
+						<slot />
+					</div>
+				</main>
+			</div>
+			
+			<Footer />
+		</div>
+	</body>
+</html>

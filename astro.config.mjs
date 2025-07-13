@@ -13,7 +13,7 @@ export default defineConfig({
 	}),	integrations: [
 		sitemap(),
 	],
-	// Keep it simple for now - static generation
+	// Static mode - API routes via Vercel
 	output: 'static',
 	// Build optimizations
 	build: {

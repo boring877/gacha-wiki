@@ -1,0 +1,168 @@
+---
+import ChatbotLayout from '../layouts/ChatbotLayout.astro';
+---
+
+<ChatbotLayout title="GachaWiki AI" description="Ask questions about gacha games and get answers from GachaWiki content">
+  <div class="chatbot-intro">
+    <p>Ask me anything about the gacha games covered on this wiki. I'll search through the latest content to give you accurate answers.</p>
+    
+    <div class="chatbot-examples">
+      <h4>Try asking about:</h4>
+      <ul>
+        <li data-question="How do I build Athena in Zone Nova?">• How do I build Athena in Zone Nova?</li>
+        <li data-question="What are the best memories for Lancelot?">• What are the best memories for Lancelot?</li>
+        <li data-question="Tell me about Silver and Blood events">• Tell me about Silver and Blood events</li>
+        <li data-question="What are the redeem codes for Zone Nova?">• What are the redeem codes for Zone Nova?</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="chat-interface">
+    <div class="chat-messages" id="messages"></div>
+    <div class="chat-input">
+      <input 
+        type="text" 
+        id="questionInput" 
+        placeholder="Ask a question about gacha games..."
+        maxlength="500"
+      />
+      <button id="sendButton">Send</button>
+    </div>
+  </div>
+
+  <script>
+    let isLoading = false;
+
+    function addMessage(content, type = 'assistant', sources = []) {
+      const messagesDiv = document.getElementById('messages');
+      if (!messagesDiv) return;
+      
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message ' + type;
+      
+      let html = content;
+      if (sources && sources.length > 0) {
+        html += '<div class="sources">Sources: ';
+        sources.forEach(function(source, index) {
+          try {
+            const url = new URL(source);
+            const pathParts = url.pathname.split('/').filter(function(p) { return p; });
+            const displayName = pathParts[pathParts.length - 1] || 'Home';
+            html += '<a href="' + source + '" target="_blank">' + displayName + '</a>';
+          } catch (e) {
+            html += '<a href="' + source + '" target="_blank">Link</a>';
+          }
+        });
+        html += '</div>';
+      }
+      
+      messageDiv.innerHTML = html;
+      messagesDiv.appendChild(messageDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function askExample(question) {
+      const input = document.getElementById('questionInput');
+      if (!input) return;
+      if (input instanceof HTMLInputElement) {
+        input.value = question;
+      }
+      sendMessage();
+    }
+
+    async function sendMessage() {
+      if (isLoading) return;
+      
+      const input = document.getElementById('questionInput');
+      const button = document.getElementById('sendButton');
+      if (!input || !button) return;
+      if (!(input instanceof HTMLInputElement) || !(button instanceof HTMLButtonElement)) return;
+      
+      const question = input.value.trim();
+      if (!question) return;
+      
+      // Add user message
+      addMessage(question, 'user');
+      
+      // Clear input and show loading
+      input.value = '';
+      isLoading = true;
+      button.disabled = true;
+      button.innerHTML = '<span class="loading"></span>';
+      
+      try {
+        const response = await fetch('/api/chatbot', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ question: question }),
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.error || 'Something went wrong');
+        }
+        
+        addMessage(data.answer, 'assistant', data.sources);
+        
+      } catch (error) {
+        console.error('Error:', error);
+        
+        // Check if we're in local development and API isn't available
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          addMessage('🚧 <strong>Local Development Mode</strong><br><br>' +
+            'The chatbot API is not available in local development. To test the full chatbot experience:<br><br>' +
+            '<strong>Option 1 - Quick Test:</strong><br>' +
+            'Deploy to Vercel with: <code>vercel --prod</code><br><br>' +
+            '<strong>Option 2 - Local API Test:</strong><br>' +
+            '1. Make sure you have the API key in .env<br>' +
+            '2. The Vercel API endpoint (/api/chatbot.js) will work when deployed<br><br>' +
+            '<strong>Your question was:</strong> "' + question + '"<br>' +
+            '<strong>This will work perfectly once deployed! 🚀</strong>', 'assistant');
+        } else {
+          addMessage('Sorry, I encountered an error: ' + error.message, 'error');
+        }
+      } finally {
+        isLoading = false;
+        if (button instanceof HTMLButtonElement) {
+          button.disabled = false;
+          button.innerHTML = 'Send';
+        }
+      }
+    }
+
+    // Add click event listener to send button
+    document.addEventListener('DOMContentLoaded', function() {
+      const sendButton = document.getElementById('sendButton');
+      if (sendButton) {
+        sendButton.addEventListener('click', sendMessage);
+      }
+
+      // Handle Enter key
+      const questionInput = document.getElementById('questionInput');
+      if (questionInput && questionInput instanceof HTMLInputElement) {
+        questionInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+          }
+        });
+      }
+
+      // Handle example clicks
+      document.querySelectorAll('.chatbot-examples li').forEach(function(li) {
+        li.addEventListener('click', function() {
+          const question = this.getAttribute('data-question');
+          if (question) {
+            askExample(question);
+          }
+        });
+      });
+
+      // Add welcome message
+      addMessage('Hello! I\'m the GachaWiki AI. Ask me anything about the gacha games covered on this site, and I\'ll search through the latest content to help you.');
+    });
+  </script>
+</ChatbotLayout>
