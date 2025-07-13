@@ -65,7 +65,7 @@ const ariaCharacter = {
   },
   
   "settings": {
-    "model": "tencent/hunyuan-a13b-instruct:free",
+    "model": "deepseek/deepseek-r1-0528:free",
     "temperature": 0.3,
     "max_tokens": 800,
     "maxContentLength": 10000,
