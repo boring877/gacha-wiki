@@ -65,7 +65,7 @@ const ariaCharacter = {
   },
   
   "settings": {
-    "model": "moonshotai/kimi-vl-a3b-thinking:free",
+    "model": "deepseek/deepseek-r1-distill-llama-70b:free",
     "temperature": 0.7,
     "max_tokens": 1500,
     "maxContentLength": 10000,
