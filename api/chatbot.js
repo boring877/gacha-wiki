@@ -65,34 +65,63 @@ async function fetchPageContent(url) {
 }
 
 function findRelevantPages(urls, question) {
-  // Simple keyword matching to find most relevant pages
+  // Enhanced keyword matching to find most relevant pages
   const questionLower = question.toLowerCase();
   const keywords = questionLower.split(' ').filter(word => word.length > 2);
+  
+  // Game-specific keywords mapping
+  const gameKeywords = {
+    'zone nova': ['zone-nova', 'zn'],
+    'silver and blood': ['silver-and-blood', 'sab'],
+    'athena': ['athena'],
+    'build': ['character', 'guide', 'builds'],
+    'team': ['character', 'guide', 'comparison'],
+    'memory': ['memories', 'memory'],
+    'rift': ['rifts', 'rift'],
+    'damage': ['damage-mechanics', 'mechanics']
+  };
   
   const scored = urls.map(url => {
     let score = 0;
     const urlLower = url.toLowerCase();
     
-    // Score based on keyword matches in URL
+    // Score based on direct keyword matches in URL
     keywords.forEach(keyword => {
       if (urlLower.includes(keyword)) {
-        score += 2;
+        score += 3;
+      }
+      
+      // Check mapped keywords
+      if (gameKeywords[keyword]) {
+        gameKeywords[keyword].forEach(mappedKeyword => {
+          if (urlLower.includes(mappedKeyword)) {
+            score += 2;
+          }
+        });
       }
     });
     
-    // Boost specific sections
-    if (urlLower.includes('/characters/')) score += 1;
-    if (urlLower.includes('/guides/')) score += 1;
-    if (urlLower.includes('/zone-nova/') || urlLower.includes('/silver-and-blood/')) score += 1;
+    // Boost specific sections with lower threshold
+    if (urlLower.includes('/characters/')) score += 2;
+    if (urlLower.includes('/guides/')) score += 2;
+    if (urlLower.includes('/zone-nova/')) score += 1;
+    if (urlLower.includes('/silver-and-blood/')) score += 1;
+    if (urlLower.includes('/memories/')) score += 1;
+    if (urlLower.includes('/damage-mechanics/')) score += 1;
+    
+    // Special handling for common questions
+    if (questionLower.includes('build') && urlLower.includes('/characters/')) score += 2;
+    if (questionLower.includes('team') && (urlLower.includes('/characters/') || urlLower.includes('/comparison'))) score += 2;
+    if (questionLower.includes('athena') && urlLower.includes('athena')) score += 3;
     
     return { url, score };
   });
   
-  // Return top 3-5 most relevant pages
+  // Return top pages with lower score threshold
   return scored
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 4)
+    .slice(0, 6)
     .map(item => item.url);
 }
 
@@ -130,6 +159,10 @@ export default async function handler(req, res) {
     
     // Find most relevant pages
     const relevantUrls = findRelevantPages(urls, question);
+    console.log('Question:', question);
+    console.log('Total URLs found:', urls.length);
+    console.log('Relevant URLs:', relevantUrls.length);
+    console.log('Sample URLs:', urls.slice(0, 5));
     
     if (relevantUrls.length === 0) {
       return res.json({
