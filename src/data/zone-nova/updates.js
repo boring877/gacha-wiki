@@ -1,6 +1,14 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
 	{
+		id: 'gaia-care-2nd-edition',
+		title: 'Gaia\'s Care – 2nd Edition!',
+		date: 'July 14, 2025',
+		type: 'announcement',
+		summary: 'Gaia provides another special care package with 20 Stamina Potions for Captains who log in before July 22, 2025. A heartfelt gift to help restore energy during the ongoing heat.',
+		url: '/guides/zone-nova/updates/announcement-gaia-care-2nd-edition/'
+	},
+	{
 		id: 'july-8-maintenance-completion',
 		title: 'July 8 Maintenance Completion',
 		date: 'July 8, 2025',
