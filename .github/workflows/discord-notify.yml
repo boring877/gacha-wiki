@@ -1,0 +1,55 @@
+name: Discord Notification
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+        
+    - name: Get commit info
+      id: commit
+      run: |
+        COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
+        COMMIT_AUTHOR=$(git log -1 --pretty=format:"%an")
+        COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+        COMMIT_SHORT_SHA=$(git rev-parse --short ${{ github.sha }})
+        
+        echo "message=$COMMIT_MESSAGE" >> $GITHUB_OUTPUT
+        echo "author=$COMMIT_AUTHOR" >> $GITHUB_OUTPUT
+        echo "url=$COMMIT_URL" >> $GITHUB_OUTPUT
+        echo "short_sha=$COMMIT_SHORT_SHA" >> $GITHUB_OUTPUT
+        
+    - name: Send Discord notification
+      if: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      uses: tsickert/discord-webhook@v5.3.0
+      with:
+        webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        embed-title: "🚀 New push to Gacha Wiki"
+        embed-description: |
+          **Commit:** [${{ steps.commit.outputs.short_sha }}](${{ steps.commit.outputs.url }})
+          **Author:** ${{ steps.commit.outputs.author }}
+          **Message:** ${{ steps.commit.outputs.message }}
+          **Branch:** ${{ github.ref_name }}
+        embed-color: 3447003
+        embed-footer-text: "Gacha Wiki • gachawiki.info"
+        embed-timestamp: true
+        
+    - name: Send fallback notification (if webhook configured)
+      if: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      run: |
+        if [ "${{ job.status }}" == "failure" ]; then
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d "{\"content\": \"⚠️ Failed to send formatted notification for commit \`${{ steps.commit.outputs.short_sha }}\` by **${{ steps.commit.outputs.author }}**\"}" \
+               ${{ secrets.DISCORD_WEBHOOK_URL }}
+        fi
+      continue-on-error: true
