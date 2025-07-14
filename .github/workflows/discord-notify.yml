@@ -30,26 +30,27 @@ jobs:
         
     - name: Send Discord notification
       if: ${{ secrets.DISCORD_WEBHOOK_URL }}
-      uses: tsickert/discord-webhook@v5.3.0
-      with:
-        webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        embed-title: "🚀 New push to Gacha Wiki"
-        embed-description: |
-          **Commit:** [${{ steps.commit.outputs.short_sha }}](${{ steps.commit.outputs.url }})
-          **Author:** ${{ steps.commit.outputs.author }}
-          **Message:** ${{ steps.commit.outputs.message }}
-          **Branch:** ${{ github.ref_name }}
-        embed-color: 3447003
-        embed-footer-text: "Gacha Wiki • gachawiki.info"
-        embed-timestamp: true
-        
-    - name: Send fallback notification (if webhook configured)
-      if: ${{ secrets.DISCORD_WEBHOOK_URL }}
       run: |
-        if [ "${{ job.status }}" == "failure" ]; then
-          curl -H "Content-Type: application/json" \
-               -X POST \
-               -d "{\"content\": \"⚠️ Failed to send formatted notification for commit \`${{ steps.commit.outputs.short_sha }}\` by **${{ steps.commit.outputs.author }}**\"}" \
-               ${{ secrets.DISCORD_WEBHOOK_URL }}
-        fi
+        curl -H "Content-Type: application/json" \
+             -X POST \
+             -d '{
+               "embeds": [{
+                 "title": "🚀 New push to Gacha Wiki",
+                 "description": "**Commit:** [${{ steps.commit.outputs.short_sha }}](${{ steps.commit.outputs.url }})\n**Author:** ${{ steps.commit.outputs.author }}\n**Message:** ${{ steps.commit.outputs.message }}\n**Branch:** ${{ github.ref_name }}",
+                 "color": 3447003,
+                 "footer": {
+                   "text": "Gacha Wiki • gachawiki.info"
+                 },
+                 "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)'"
+               }]
+             }' \
+             ${{ secrets.DISCORD_WEBHOOK_URL }}
+             
+    - name: Send simple fallback notification
+      if: failure()
+      run: |
+        curl -H "Content-Type: application/json" \
+             -X POST \
+             -d '{"content": "📝 New commit `${{ steps.commit.outputs.short_sha }}` by **${{ steps.commit.outputs.author }}** - ${{ steps.commit.outputs.message }}"}' \
+             ${{ secrets.DISCORD_WEBHOOK_URL }}
       continue-on-error: true
