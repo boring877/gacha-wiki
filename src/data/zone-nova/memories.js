@@ -945,11 +945,12 @@ export function sortMemories(memories, sortBy, ascending = true) {
         aVal = a.name.toLowerCase();
         bVal = b.name.toLowerCase();
         break;
-      case 'rarity':
+      case 'rarity': {
         const rarityOrder = { 'SSR': 3, 'SR': 2, 'R': 1 };
         aVal = rarityOrder[a.rarity];
         bVal = rarityOrder[b.rarity];
         break;
+      }
       case 'hp':
       case 'attack':
       case 'defense':

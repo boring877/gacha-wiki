@@ -364,4 +364,10 @@ export function initializeHomepage(clockGames, showcaseGames) {
 	// Initialize everything
 	initializeClock();
 	initializeShowcase();
+	
+	// Return cleanup function
+	return function cleanup() {
+		if (autoRotateInterval) clearInterval(autoRotateInterval);
+		if (clockUpdateInterval) clearInterval(clockUpdateInterval);
+	};
 }

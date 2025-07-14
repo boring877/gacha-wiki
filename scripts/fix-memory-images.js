@@ -13,7 +13,7 @@ console.log(`📁 Found ${memoryFiles.length} memory data files to fix`);
 // Fix each memory file
 memoryFiles.forEach(filename => {
   const filePath = join(memoriesDir, filename);
-  let content = readFileSync(filePath, 'utf8');
+  const content = readFileSync(filePath, 'utf8');
   
   // Revert optimized paths back to original paths
   const updatedContent = content.replace(

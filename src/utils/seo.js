@@ -8,28 +8,45 @@ export const GLOBAL_SEO = {
   defaultImage: '/images/about.jpg',
   social: {
     twitter: '@gachawiki',
-    facebook: 'gachawiki'
-  }
+    facebook: 'gachawiki',
+  },
 };
 
 // Game-specific SEO configurations
 export const GAME_SEO_CONFIG = {
   'zone-nova': {
     gameName: 'Zone Nova',
-    keywords: ['Zone Nova', 'gacha game', 'character guides', 'game wiki', 'RPG', 'memories', 'rifts', 'damage mechanics'],
+    keywords: [
+      'Zone Nova',
+      'gacha game',
+      'character guides',
+      'game wiki',
+      'RPG',
+      'memories',
+      'rifts',
+      'damage mechanics',
+    ],
     themeColor: '#4a90e2',
-    description: 'Complete guide and wiki for Zone Nova gacha game with character guides, damage mechanics, and more',
+    description:
+      'Complete guide and wiki for Zone Nova gacha game with character guides, damage mechanics, and more',
     genres: ['RPG', 'Gacha', 'Strategy'],
-    platform: 'Mobile'
+    platform: 'Mobile',
   },
   'silver-and-blood': {
     gameName: 'Silver and Blood',
-    keywords: ['Silver and Blood', 'vampire game', 'gacha game', 'character guides', 'game wiki', 'RPG'],
+    keywords: [
+      'Silver and Blood',
+      'vampire game',
+      'gacha game',
+      'character guides',
+      'game wiki',
+      'RPG',
+    ],
     themeColor: '#5a7ba7',
     description: 'Complete guide and wiki for Silver and Blood vampire game',
     genres: ['RPG', 'Gacha', 'Strategy'],
-    platform: 'Mobile'
-  }
+    platform: 'Mobile',
+  },
   // Add new games here as needed
 };
 
@@ -37,7 +54,7 @@ export const GAME_SEO_CONFIG = {
 export function generateGameKeywords(gameKey, additionalKeywords = []) {
   const gameConfig = GAME_SEO_CONFIG[gameKey];
   if (!gameConfig) return [];
-  
+
   return [...gameConfig.keywords, ...additionalKeywords].join(', ');
 }
 
@@ -47,22 +64,22 @@ export function generateGameStructuredData(gameKey, customDescription = null) {
   if (!gameConfig) return null;
 
   return {
-    "@context": "https://schema.org",
-    "@type": "VideoGame",
-    "name": gameConfig.gameName,
-    "description": customDescription || gameConfig.description,
-    "genre": gameConfig.genres,
-    "platform": gameConfig.platform,
-    "publisher": {
-      "@type": "Organization",
-      "name": GLOBAL_SEO.siteName
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: gameConfig.gameName,
+    description: customDescription || gameConfig.description,
+    genre: gameConfig.genres,
+    platform: gameConfig.platform,
+    publisher: {
+      '@type': 'Organization',
+      name: GLOBAL_SEO.siteName,
     },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock"
-    }
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
   };
 }
 
@@ -72,32 +89,33 @@ export function generateCharacterStructuredData(gameKey, character) {
   if (!gameConfig) return null;
 
   return {
-    "@context": "https://schema.org",
-    "@type": "VideoGameCharacter",
-    "name": character.name,
-    "description": character.description || `${character.name} character guide for ${gameConfig.gameName}`,
-    "image": character.image,
-    "isPartOf": {
-      "@type": "VideoGame",
-      "name": gameConfig.gameName
+    '@context': 'https://schema.org',
+    '@type': 'VideoGameCharacter',
+    name: character.name,
+    description:
+      character.description || `${character.name} character guide for ${gameConfig.gameName}`,
+    image: character.image,
+    isPartOf: {
+      '@type': 'VideoGame',
+      name: gameConfig.gameName,
     },
-    "additionalProperty": [
+    additionalProperty: [
       {
-        "@type": "PropertyValue",
-        "name": "Rarity",
-        "value": character.rarity || "Unknown"
+        '@type': 'PropertyValue',
+        name: 'Rarity',
+        value: character.rarity || 'Unknown',
       },
       {
-        "@type": "PropertyValue",
-        "name": "Class",
-        "value": character.class || character.role || "Unknown"
+        '@type': 'PropertyValue',
+        name: 'Class',
+        value: character.class || character.role || 'Unknown',
       },
       {
-        "@type": "PropertyValue",
-        "name": "Faction",
-        "value": character.faction || "Unknown"
-      }
-    ]
+        '@type': 'PropertyValue',
+        name: 'Faction',
+        value: character.faction || 'Unknown',
+      },
+    ],
   };
 }
 
@@ -112,7 +130,7 @@ export function generateTitle(gameKey, pageType, specificData = {}) {
     characters: `${gameConfig.gameName} Characters - Complete Guide | ${GLOBAL_SEO.siteName}`,
     guide: `${specificData.title} - ${gameConfig.gameName} Guide | ${GLOBAL_SEO.siteName}`,
     tier_list: `${gameConfig.gameName} Tier List - Best Characters | ${GLOBAL_SEO.siteName}`,
-    update: `${specificData.title} - ${gameConfig.gameName} Update | ${GLOBAL_SEO.siteName}`
+    update: `${specificData.title} - ${gameConfig.gameName} Update | ${GLOBAL_SEO.siteName}`,
   };
 
   return templates[pageType] || `${gameConfig.gameName} - ${GLOBAL_SEO.siteName}`;
@@ -129,7 +147,7 @@ export function generateDescription(gameKey, pageType, specificData = {}) {
     characters: `Complete character database for ${gameConfig.gameName}. Detailed guides, tier lists, builds, and stats for all playable characters.`,
     guide: `${specificData.description || ''} Complete guide for ${gameConfig.gameName} players.`,
     tier_list: `${gameConfig.gameName} tier list ranking the best characters. Updated rankings with detailed analysis and recommendations.`,
-    update: `${specificData.description || ''} Latest ${gameConfig.gameName} update news and patch notes.`
+    update: `${specificData.description || ''} Latest ${gameConfig.gameName} update news and patch notes.`,
   };
 
   return templates[pageType] || gameConfig.description;
@@ -149,6 +167,6 @@ export function addGameConfig(gameKey, config) {
     themeColor: config.themeColor || '#4a90e2',
     description: config.description || `Complete guide for ${config.gameName}`,
     genres: config.genres || ['RPG', 'Gacha'],
-    platform: config.platform || 'Mobile'
+    platform: config.platform || 'Mobile',
   };
 }

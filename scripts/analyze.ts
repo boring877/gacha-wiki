@@ -57,12 +57,16 @@ function walkDirectory(dir: string, assets: AssetInfo[] = []): AssetInfo[] {
       try {
         const gzipStat = statSync(fullPath + '.gz');
         asset.gzipSize = gzipStat.size;
-      } catch {}
+      } catch {
+        // Gzip file doesn't exist
+      }
       
       try {
         const brotliStat = statSync(fullPath + '.br');
         asset.brotliSize = brotliStat.size;
-      } catch {}
+      } catch {
+        // Brotli file doesn't exist
+      }
       
       assets.push(asset);
     }

@@ -40,20 +40,57 @@ export default defineConfig({
 				output: {
 					// Better chunk naming for caching
 					chunkFileNames: 'assets/[name]-[hash].js',
-					assetFileNames: 'assets/[name]-[hash][extname]',					// Manual chunks for better caching
+					assetFileNames: 'assets/[name]-[hash][extname]',
+					// Advanced manual chunks for better caching
 					manualChunks: {
+						// Vendor libraries
 						'vendor': ['gsap'],
+						'charts': ['chart.js'],
+						
+						// Game-specific data chunks
+						'zone-nova-data': [
+							'../src/data/zone-nova/characters.js',
+							'../src/data/zone-nova/memories.js',
+							'../src/data/zone-nova/updates.js',
+							'../src/data/zone-nova/rifts.js'
+						],
+						'silver-blood-data': [
+							'../src/data/silver-and-blood/characters.js',
+							'../src/data/silver-and-blood/events.js',
+							'../src/data/silver-and-blood/damage-mechanics.js'
+						],
+						
+						// Utility chunks
+						'utils': [
+							'../src/utils/character-utils.ts',
+							'../src/utils/data-validation.ts',
+							'../src/utils/seo.js'
+						],
+						
+						// Component chunks for lazy loading
+						'character-components': [
+							'../src/components/zone-nova/CharacterComparison.astro',
+							'../src/components/silver-and-blood/CharacterComparison.astro'
+						]
 					},
 				},
 			},
-		},		// Optimize dependencies
+		},
+		// Optimize dependencies
 		optimizeDeps: {
-			include: ['gsap'],
+			include: ['gsap', 'chart.js'],
 		},
 		// Enable esbuild for faster builds with Bun
 		esbuild: {
 			target: 'es2022',
 			legalComments: 'none',
 		},
+		// Performance optimizations
+		server: {
+			fs: {
+				// Allow serving files from one level up
+				allow: ['..']
+			}
+		}
 	},
 });
