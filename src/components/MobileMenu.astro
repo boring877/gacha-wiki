@@ -1,422 +1,441 @@
 ---
+import { SITE } from '../consts';
 ---
 
 <div id="mobileMenu" class="mobile-menu">
-    <div class="mobile-menu-overlay"></div>
-    <div class="mobile-menu-drawer">
-        <div class="drawer-header">
-            <h2 class="drawer-title">Menu</h2>
-            <button id="closeMenu" class="close-menu-btn" aria-label="Close Menu">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                </svg>
-            </button>
-        </div>
-        
-        <div class="drawer-content">
-            <nav class="mobile-nav-links">
-                <a href="/" class="mobile-nav-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                    </svg>
-                    <span>Home</span>
-                </a>
-                <a href="/wikis" class="mobile-nav-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                    </svg>
-                    <span>Wikis</span>
-                </a>
-                <a href="/about" class="mobile-nav-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"/>
-                    </svg>
-                    <span>About</span>
-                </a>
-            </nav>
-
-            <div class="drawer-divider"></div>
-
-            <div class="mobile-social-section">
-                <h3 class="social-title">Connect</h3>
-                <div class="mobile-social-links">
-                    <a href="https://github.com/boring877/gacha-wiki" class="mobile-social-link" aria-label="Github">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.youtube.com/@GachaJunkie888" class="mobile-social-link" aria-label="YouTube">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                        <span>YouTube</span>
-                    </a>
-                    <a href="https://discord.gg/JKCNtkSGNE" class="mobile-social-link" aria-label="Discord">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.222 0c1.406 0 2.54 1.137 2.607 2.475V24l-2.677-2.273-1.47-1.338-1.604-1.398.67 2.205H3.71c-1.402 0-2.54-1.065-2.54-2.476V2.48C1.17 1.142 2.31.003 3.715.003h16.5L20.222 0zm-6.118 5.683h-.03l-.202.2c2.073.6 3.076 1.537 3.076 1.537-1.336-.668-2.54-1.002-3.744-1.137-.87-.135-1.74-.064-2.475 0h-.2c-.47 0-1.47.2-2.81.735-.467.203-.735.336-.735.336s1.002-1.002 3.21-1.537l-.135-.135s-1.672-.064-3.477 1.27c0 0-1.805 3.144-1.805 7.02 0 0 1 1.74 3.743 1.806 0 0 .4-.533.805-1.002-1.54-.4-2.172-1.27-2.172-1.27s.135.095.335.2h.06c.03 0 .044.015.06.03v.006c.016.016.03.03.06.03.33.136.66.27.93.4.466.202 1.065.403 1.8.536.93.135 1.996.2 3.21 0 .6-.135 1.2-.267 1.8-.535.39-.2.87-.4 1.397-.737 0 0-.6.936-2.205 1.337.33.466.795 1 .795 1 2.744-.06 3.81-1.8 3.87-1.726 0-3.87-1.815-7.02-1.815-7.02-1.635-1.214-3.165-1.26-3.435-1.26l.056-.02zm.168 4.413c.703 0 1.27.6 1.27 1.335 0 .74-.57 1.34-1.27 1.34-.7 0-1.27-.6-1.27-1.34.002-.74.573-1.338 1.27-1.335zm-4.64 0c.7 0 1.266.6 1.266 1.335 0 .74-.57 1.34-1.27 1.34-.7 0-1.27-.6-1.27-1.34 0-.74.57-1.335 1.27-1.335z"/>
-                        </svg>
-                        <span>Discord</span>
-                    </a>
-                    <a href="https://x.com/EcchiPen" class="mobile-social-link" aria-label="X">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                        <span>X (Twitter)</span>
-                    </a>
-                    <a href="https://rumble.com/user/EcchiPen" class="mobile-social-link" aria-label="Rumble">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.28 3.72c3.62 3.62 3.62 9.48 0 13.1-3.62 3.62-9.48 3.62-13.1 0-3.62-3.62-3.62-9.48 0-13.1 3.62-3.62 9.48-3.62 13.1 0zm-8.78 7.68c.78 0 1.5-.72 1.5-1.5s-.72-1.5-1.5-1.5-1.5.72-1.5 1.5.72 1.5 1.5 1.5zm-3 0c.78 0 1.5-.72 1.5-1.5s-.72-1.5-1.5-1.5-1.5.72-1.5 1.5.72 1.5 1.5 1.5zm1.5 3c-.78 0-1.5.72-1.5 1.5s.72 1.5 1.5 1.5 1.5-.72 1.5-1.5-.72-1.5-1.5-1.5z"/>
-                        </svg>
-                        <span>Rumble</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu-drawer">
+    <div class="drawer-header">
+      <h2 class="drawer-title">Menu</h2>
+      <button id="closeMenu" class="close-menu-btn" aria-label="Close Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          ></path>
+        </svg>
+      </button>
     </div>
+
+    <div class="drawer-content">
+      <nav class="mobile-nav-links">
+        <a href="/" class="mobile-nav-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+          </svg>
+          <span>Home</span>
+        </a>
+        <a href="/wikis" class="mobile-nav-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+            ></path>
+          </svg>
+          <span>Wikis</span>
+        </a>
+        <a href="/about" class="mobile-nav-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"
+            ></path>
+          </svg>
+          <span>About</span>
+        </a>
+      </nav>
+
+      <div class="drawer-divider"></div>
+
+      <div class="mobile-social-section">
+        <h3 class="social-title">Connect</h3>
+        <div class="mobile-social-links">
+          <a href={SITE.SOCIAL.GITHUB} class="mobile-social-link" aria-label="Github">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              ></path>
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href={SITE.SOCIAL.YOUTUBE} class="mobile-social-link" aria-label="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+              ></path>
+            </svg>
+            <span>YouTube</span>
+          </a>
+          <a href={SITE.SOCIAL.DISCORD} class="mobile-social-link" aria-label="Discord">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.222 0c1.406 0 2.54 1.137 2.607 2.475V24l-2.677-2.273-1.47-1.338-1.604-1.398.67 2.205H3.71c-1.402 0-2.54-1.065-2.54-2.476V2.48C1.17 1.142 2.31.003 3.715.003h16.5L20.222 0zm-6.118 5.683h-.03l-.202.2c2.073.6 3.076 1.537 3.076 1.537-1.336-.668-2.54-1.002-3.744-1.137-.87-.135-1.74-.064-2.475 0h-.2c-.47 0-1.47.2-2.81.735-.467.203-.735.336-.735.336s1.002-1.002 3.21-1.537l-.135-.135s-1.672-.064-3.477 1.27c0 0-1.805 3.144-1.805 7.02 0 0 1 1.74 3.743 1.806 0 0 .4-.533.805-1.002-1.54-.4-2.172-1.27-2.172-1.27s.135.095.335.2h.06c.03 0 .044.015.06.03v.006c.016.016.03.03.06.03.33.136.66.27.93.4.466.202 1.065.403 1.8.536.93.135 1.996.2 3.21 0 .6-.135 1.2-.267 1.8-.535.39-.2.87-.4 1.397-.737 0 0-.6.936-2.205 1.337.33.466.795 1 .795 1 2.744-.06 3.81-1.8 3.87-1.726 0-3.87-1.815-7.02-1.815-7.02-1.635-1.214-3.165-1.26-3.435-1.26l.056-.02zm.168 4.413c.703 0 1.27.6 1.27 1.335 0 .74-.57 1.34-1.27 1.34-.7 0-1.27-.6-1.27-1.34.002-.74.573-1.338 1.27-1.335zm-4.64 0c.7 0 1.266.6 1.266 1.335 0 .74-.57 1.34-1.27 1.34-.7 0-1.27-.6-1.27-1.34 0-.74.57-1.335 1.27-1.335z"
+              ></path>
+            </svg>
+            <span>Discord</span>
+          </a>
+          <a href={SITE.SOCIAL.X} class="mobile-social-link" aria-label="X">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              ></path>
+            </svg>
+            <span>X (Twitter)</span>
+          </a>
+          <a href={SITE.SOCIAL.RUMBLE} class="mobile-social-link" aria-label="Rumble">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.28 3.72c3.62 3.62 3.62 9.48 0 13.1-3.62 3.62-9.48 3.62-13.1 0-3.62-3.62-3.62-9.48 0-13.1 3.62-3.62 9.48-3.62 13.1 0zm-8.78 7.68c.78 0 1.5-.72 1.5-1.5s-.72-1.5-1.5-1.5-1.5.72-1.5 1.5.72 1.5 1.5 1.5zm-3 0c.78 0 1.5-.72 1.5-1.5s-.72-1.5-1.5-1.5-1.5.72-1.5 1.5.72 1.5 1.5 1.5zm1.5 3c-.78 0-1.5.72-1.5 1.5s.72 1.5 1.5 1.5 1.5-.72 1.5-1.5-.72-1.5-1.5-1.5z"
+              ></path>
+            </svg>
+            <span>Rumble</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
-    /* Mobile Menu - Slide-in Drawer Style */
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100vw;
-        height: 100vh;
-        height: 100dvh;
-        z-index: 9999;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-        overscroll-behavior: contain;
-        /* Remove blue highlights and selections */
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
+  /* Mobile Menu - Slide-in Drawer Style */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    overscroll-behavior: contain;
+    /* Remove blue highlights and selections */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-    .mobile-menu.active {
-        opacity: 1;
-        visibility: visible;
-    }
+  .mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+  }
 
-    .mobile-menu-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100vw;
-        height: 100vh;
-        height: 100dvh;
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(8px);
-        cursor: pointer;
-        transition: background 0.3s ease;
-        z-index: 9999;
-    }
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    z-index: 9999;
+  }
 
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 320px;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(28, 28, 28, 0.98);
+    backdrop-filter: blur(30px);
+    border-right: 1px solid rgba(255, 183, 77, 0.2);
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+  }
+
+  .mobile-menu.active .mobile-menu-drawer {
+    left: 0;
+  }
+
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 183, 77, 0.1);
+    min-height: 80px;
+  }
+
+  .drawer-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--amber-glow);
+    margin: 0;
+  }
+
+  .close-menu-btn {
+    background: rgba(255, 183, 77, 0.1);
+    border: 1px solid rgba(255, 183, 77, 0.3);
+    border-radius: 8px;
+    color: var(--amber-glow);
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    touch-action: manipulation;
+    /* Remove blue highlights */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+  }
+
+  .close-menu-btn:hover,
+  .close-menu-btn:active {
+    background: var(--amber-glow);
+    color: var(--text-inverse);
+    transform: scale(1.05);
+  }
+
+  .drawer-content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .mobile-nav-link {
+    color: var(--text-inverse);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    touch-action: manipulation;
+    /* Remove blue highlights */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link:active {
+    background: rgba(255, 183, 77, 0.1);
+    border-color: rgba(255, 183, 77, 0.3);
+    color: var(--amber-glow);
+    transform: translateX(8px);
+  }
+
+  .mobile-nav-link svg {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .mobile-nav-link:hover svg {
+    opacity: 1;
+  }
+
+  .drawer-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 183, 77, 0.2), transparent);
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  .mobile-social-section {
+    margin-top: auto;
+  }
+
+  .social-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 1rem 0;
+  }
+
+  .mobile-social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mobile-social-link {
+    color: var(--text-inverse);
+    text-decoration: none;
+    padding: 0.875rem 1rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    touch-action: manipulation;
+    /* Remove blue highlights */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+  }
+
+  .mobile-social-link:hover,
+  .mobile-social-link:active {
+    background: rgba(255, 183, 77, 0.08);
+    border-color: rgba(255, 183, 77, 0.2);
+    color: var(--amber-glow);
+    transform: translateX(4px);
+  }
+
+  .mobile-social-link svg {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .mobile-social-link:hover svg {
+    opacity: 1;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 380px) {
     .mobile-menu-drawer {
-        position: fixed;
-        top: 0;
-        left: -320px;
-        width: 320px;
-        height: 100vh;
-        height: 100dvh;
-        background: rgba(28, 28, 28, 0.98);
-        backdrop-filter: blur(30px);
-        border-right: 1px solid rgba(255, 183, 77, 0.2);
-        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 4px 0 30px rgba(0, 0, 0, 0.3);
-        z-index: 10000;
-    }
-
-    .mobile-menu.active .mobile-menu-drawer {
-        left: 0;
+      width: 280px;
+      left: -280px;
     }
 
     .drawer-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1.5rem 1.5rem 1rem 1.5rem;
-        border-bottom: 1px solid rgba(255, 183, 77, 0.1);
-        min-height: 80px;
+      padding: 1.25rem 1.25rem 1rem 1.25rem;
     }
 
     .drawer-title {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--amber-glow);
-        margin: 0;
-    }
-
-    .close-menu-btn {
-        background: rgba(255, 183, 77, 0.1);
-        border: 1px solid rgba(255, 183, 77, 0.3);
-        border-radius: 8px;
-        color: var(--amber-glow);
-        cursor: pointer;
-        padding: 0.5rem;
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.2s ease;
-        touch-action: manipulation;
-        /* Remove blue highlights */
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        outline: none;
-    }
-
-    .close-menu-btn:hover,
-    .close-menu-btn:active {
-        background: var(--amber-glow);
-        color: var(--text-inverse);
-        transform: scale(1.05);
+      font-size: 1.3rem;
     }
 
     .drawer-content {
-        flex: 1;
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .mobile-nav-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-bottom: 2rem;
+      padding: 1.25rem;
     }
 
     .mobile-nav-link {
-        color: var(--text-inverse);
-        text-decoration: none;
-        font-size: 1rem;
-        font-weight: 500;
-        padding: 1rem 1.25rem;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        touch-action: manipulation;
-        /* Remove blue highlights */
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        outline: none;
-    }
-
-    .mobile-nav-link:hover,
-    .mobile-nav-link:active {
-        background: rgba(255, 183, 77, 0.1);
-        border-color: rgba(255, 183, 77, 0.3);
-        color: var(--amber-glow);
-        transform: translateX(8px);
-    }
-
-    .mobile-nav-link svg {
-        width: 20px;
-        height: 20px;
-        opacity: 0.7;
-        transition: opacity 0.2s ease;
-    }
-
-    .mobile-nav-link:hover svg {
-        opacity: 1;
-    }
-
-    .drawer-divider {
-        height: 1px;
-        background: linear-gradient(to right, transparent, rgba(255, 183, 77, 0.2), transparent);
-        margin: 1rem 0 1.5rem 0;
-    }
-
-    .mobile-social-section {
-        margin-top: auto;
-    }
-
-    .social-title {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.6);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin: 0 0 1rem 0;
-    }
-
-    .mobile-social-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+      padding: 0.875rem 1rem;
+      font-size: 0.95rem;
     }
 
     .mobile-social-link {
-        color: var(--text-inverse);
-        text-decoration: none;
-        padding: 0.875rem 1rem;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-size: 0.9rem;
-        font-weight: 500;
-        touch-action: manipulation;
-        /* Remove blue highlights */
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        outline: none;
+      padding: 0.75rem 0.875rem;
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Short screens */
+  @media screen and (max-height: 600px) {
+    .drawer-header {
+      min-height: 60px;
+      padding: 1rem 1.5rem 0.75rem 1.5rem;
     }
 
-    .mobile-social-link:hover,
-    .mobile-social-link:active {
-        background: rgba(255, 183, 77, 0.08);
-        border-color: rgba(255, 183, 77, 0.2);
-        color: var(--amber-glow);
-        transform: translateX(4px);
+    .drawer-title {
+      font-size: 1.3rem;
     }
 
-    .mobile-social-link svg {
-        width: 18px;
-        height: 18px;
-        opacity: 0.7;
-        transition: opacity 0.2s ease;
+    .drawer-content {
+      padding: 1rem 1.5rem 1.5rem 1.5rem;
     }
 
-    .mobile-social-link:hover svg {
-        opacity: 1;
+    .mobile-nav-links {
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
     }
 
-    /* Mobile Responsive */
-    @media screen and (max-width: 380px) {
-        .mobile-menu-drawer {
-            width: 280px;
-            left: -280px;
-        }
-        
-        .drawer-header {
-            padding: 1.25rem 1.25rem 1rem 1.25rem;
-        }
-        
-        .drawer-title {
-            font-size: 1.3rem;
-        }
-        
-        .drawer-content {
-            padding: 1.25rem;
-        }
-        
-        .mobile-nav-link {
-            padding: 0.875rem 1rem;
-            font-size: 0.95rem;
-        }
-        
-        .mobile-social-link {
-            padding: 0.75rem 0.875rem;
-            font-size: 0.85rem;
-        }
+    .mobile-nav-link {
+      padding: 0.75rem 1rem;
     }
 
-    /* Short screens */
-    @media screen and (max-height: 600px) {
-        .drawer-header {
-            min-height: 60px;
-            padding: 1rem 1.5rem 0.75rem 1.5rem;
-        }
-        
-        .drawer-title {
-            font-size: 1.3rem;
-        }
-        
-        .drawer-content {
-            padding: 1rem 1.5rem 1.5rem 1.5rem;
-        }
-        
-        .mobile-nav-links {
-            gap: 0.4rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .mobile-nav-link {
-            padding: 0.75rem 1rem;
-        }
-        
-        .mobile-social-links {
-            gap: 0.4rem;
-        }
-        
-        .mobile-social-link {
-            padding: 0.6rem 0.875rem;
-        }
+    .mobile-social-links {
+      gap: 0.4rem;
     }
 
-    /* Very short screens (landscape phones) */
-    @media screen and (max-height: 450px) {
-        .drawer-header {
-            min-height: 50px;
-            padding: 0.75rem 1.25rem 0.5rem 1.25rem;
-        }
-        
-        .drawer-title {
-            font-size: 1.2rem;
-        }
-        
-        .drawer-content {
-            padding: 0.75rem 1.25rem 1.25rem 1.25rem;
-        }
-        
-        .mobile-nav-links {
-            gap: 0.3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .mobile-nav-link {
-            padding: 0.6rem 0.875rem;
-            font-size: 0.9rem;
-        }
-        
-        .mobile-social-links {
-            gap: 0.3rem;
-        }
-        
-        .mobile-social-link {
-            padding: 0.5rem 0.75rem;
-            font-size: 0.8rem;
-        }
-        
-        .drawer-divider {
-            margin: 0.75rem 0 1rem 0;
-        }
+    .mobile-social-link {
+      padding: 0.6rem 0.875rem;
     }
+  }
+
+  /* Very short screens (landscape phones) */
+  @media screen and (max-height: 450px) {
+    .drawer-header {
+      min-height: 50px;
+      padding: 0.75rem 1.25rem 0.5rem 1.25rem;
+    }
+
+    .drawer-title {
+      font-size: 1.2rem;
+    }
+
+    .drawer-content {
+      padding: 0.75rem 1.25rem 1.25rem 1.25rem;
+    }
+
+    .mobile-nav-links {
+      gap: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .mobile-nav-link {
+      padding: 0.6rem 0.875rem;
+      font-size: 0.9rem;
+    }
+
+    .mobile-social-links {
+      gap: 0.3rem;
+    }
+
+    .mobile-social-link {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .drawer-divider {
+      margin: 0.75rem 0 1rem 0;
+    }
+  }
 </style>

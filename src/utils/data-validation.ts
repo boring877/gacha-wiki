@@ -1,6 +1,8 @@
 // Data validation utilities for ensuring data integrity
 // Helps catch data issues early in development
 
+import { URLS } from '../consts';
+
 // Types are available for future expansion when needed
 // import type { ZoneNovaCharacter, SilverBloodCharacter, ZoneNovaMemory, GameUpdate, ZoneNovaRift, RedeemCode } from '../types/characters';
 
@@ -86,8 +88,8 @@ export function validateZoneNovaCharacter(character: any): ValidationResult {
   }
 
   // URL validation
-  if (character.detailUrl && !character.detailUrl.startsWith('/guides/zone-nova/characters/')) {
-    errors.push('Character detailUrl must start with "/guides/zone-nova/characters/"');
+  if (character.detailUrl && !character.detailUrl.startsWith(URLS.ZONE_NOVA.CHARACTERS + '/')) {
+    errors.push(`Character detailUrl must start with "${URLS.ZONE_NOVA.CHARACTERS}/"`);
   }
 
   return {

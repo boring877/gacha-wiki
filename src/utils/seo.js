@@ -1,23 +1,28 @@
 // Centralized SEO Configuration and Utilities
 // This file manages all SEO-related functionality across games
 
-// Global SEO Configuration
+import { SITE, GAMES } from '../consts';
+
+// Global SEO Configuration (imported from consts.ts)
 export const GLOBAL_SEO = {
-  siteName: 'GachaWiki',
-  author: 'GachaWiki',
-  defaultImage: '/images/about.jpg',
+  siteName: SITE.TITLE,
+  author: SITE.AUTHOR,
+  defaultImage: SITE.DEFAULT_IMAGE,
   social: {
-    twitter: '@gachawiki',
-    facebook: 'gachawiki',
+    github: SITE.SOCIAL.GITHUB,
+    youtube: SITE.SOCIAL.YOUTUBE,
+    discord: SITE.SOCIAL.DISCORD,
+    x: SITE.SOCIAL.X,
+    rumble: SITE.SOCIAL.RUMBLE,
   },
 };
 
-// Game-specific SEO configurations
+// Game-specific SEO configurations (enhanced with consts.ts integration)
 export const GAME_SEO_CONFIG = {
-  'zone-nova': {
-    gameName: 'Zone Nova',
+  [GAMES.ZONE_NOVA.KEY]: {
+    gameName: GAMES.ZONE_NOVA.NAME,
     keywords: [
-      'Zone Nova',
+      GAMES.ZONE_NOVA.NAME,
       'gacha game',
       'character guides',
       'game wiki',
@@ -26,24 +31,23 @@ export const GAME_SEO_CONFIG = {
       'rifts',
       'damage mechanics',
     ],
-    themeColor: '#4a90e2',
-    description:
-      'Complete guide and wiki for Zone Nova gacha game with character guides, damage mechanics, and more',
+    themeColor: GAMES.ZONE_NOVA.THEME_COLOR,
+    description: `Complete guide and wiki for ${GAMES.ZONE_NOVA.NAME} gacha game with character guides, damage mechanics, and more`,
     genres: ['RPG', 'Gacha', 'Strategy'],
     platform: 'Mobile',
   },
-  'silver-and-blood': {
-    gameName: 'Silver and Blood',
+  [GAMES.SILVER_AND_BLOOD.KEY]: {
+    gameName: GAMES.SILVER_AND_BLOOD.NAME,
     keywords: [
-      'Silver and Blood',
+      GAMES.SILVER_AND_BLOOD.NAME,
       'vampire game',
       'gacha game',
       'character guides',
       'game wiki',
       'RPG',
     ],
-    themeColor: '#5a7ba7',
-    description: 'Complete guide and wiki for Silver and Blood vampire game',
+    themeColor: GAMES.SILVER_AND_BLOOD.THEME_COLOR,
+    description: `Complete guide and wiki for ${GAMES.SILVER_AND_BLOOD.NAME} vampire game`,
     genres: ['RPG', 'Gacha', 'Strategy'],
     platform: 'Mobile',
   },
