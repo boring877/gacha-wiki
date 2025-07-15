@@ -9,20 +9,13 @@ import { riftTide6Data } from './rifts/rift-tide-6.js';
 // Rift status constants
 export const RIFT_STATUS = {
   ACTIVE: 'active',
-  UPCOMING: 'upcoming', 
+  UPCOMING: 'upcoming',
   ENDED: 'ended',
-  SCHEDULED: 'scheduled'
+  SCHEDULED: 'scheduled',
 };
 
-
-
 // Main rifts data array - imported from individual files
-export const zoneNovaRifts = [
-  riftTide6Data,
-  riftTide5Data,
-  riftTide4Data,
-  riftTide3Data
-];
+export const zoneNovaRifts = [riftTide6Data, riftTide5Data, riftTide4Data, riftTide3Data];
 
 // Helper functions for rift management
 
@@ -47,7 +40,7 @@ export function getDynamicRiftStatus(rift) {
   const now = new Date();
   const startDate = new Date(rift.startDate);
   const endDate = new Date(rift.endDate);
-  
+
   if (now < startDate) {
     return RIFT_STATUS.UPCOMING;
   } else if (now >= startDate && now <= endDate) {
@@ -62,7 +55,7 @@ export function getRiftsWithDynamicStatus() {
   return zoneNovaRifts.map(rift => ({
     ...rift,
     status: getDynamicRiftStatus(rift),
-    originalStatus: rift.status // Keep original for reference
+    originalStatus: rift.status, // Keep original for reference
   }));
 }
 
@@ -72,9 +65,7 @@ export function getRiftStatusText(status) {
     [RIFT_STATUS.ACTIVE]: 'ACTIVE NOW',
     [RIFT_STATUS.UPCOMING]: 'COMING SOON',
     [RIFT_STATUS.ENDED]: 'ENDED',
-    [RIFT_STATUS.SCHEDULED]: 'SCHEDULED'
+    [RIFT_STATUS.SCHEDULED]: 'SCHEDULED',
   };
   return statusTexts[status] || 'UNKNOWN';
 }
-
- 

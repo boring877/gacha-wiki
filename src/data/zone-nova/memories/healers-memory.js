@@ -8,24 +8,25 @@ export const healersMemoryData = {
   image: "/images/games/zone-nova/memories/Healer's-Memory.jpg",
   rarity: 'R',
   character: null, // No specific character associated
-  
+
   // Memory Stats
   stats: {
     hp: 4000,
     attack: 400,
-    defense: 400
+    defense: 400,
   },
-  
+
   // Memory Effects
   effects: [
     'Restriction: Only effective for healers',
     'Cost: 5-price awakening',
-    'Healing amount increased by 40%'
-  ]
+    'Healing amount increased by 40%',
+  ],
 };
 
 // SEO Data
 export const healersMemorySEO = {
   title: "Healer's Memory - Healer Memory Card | Zone Nova",
-  description: "Complete guide for Healer's Memory memory card in Zone Nova. Learn about its healer-specific effects and healing amount bonuses."
-}; 
+  description:
+    "Complete guide for Healer's Memory memory card in Zone Nova. Learn about its healer-specific effects and healing amount bonuses.",
+};

@@ -1,160 +1,164 @@
 /* Master Clock Styles */
 .master-clock-container {
-	display: flex;
-	justify-content: center;
-	max-width: 1400px;
-	margin: 0 auto;
-	padding: 0 2rem;
-	animation: fadeInUp 1s ease-out 0.3s both;
+  display: flex;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  animation: fadeInUp 1s ease-out 0.3s both;
 }
 
 .master-clock {
-	background: rgba(255, 255, 255, 0.05);
-	backdrop-filter: blur(30px);
-	border: 2px solid rgba(255, 255, 255, 0.1);
-	border-radius: 32px;
-	padding: 2rem 3rem;
-	position: relative;
-	overflow: hidden;
-	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
-	transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-	will-change: transform, opacity;
-	transform: translateZ(0);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  padding: 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 .master-clock:hover {
-	border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .clock-bg-animation {
-	position: absolute;
-	inset: -2px;
-	background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz));
-	border-radius: 32px;
-	opacity: 0;
-	transition: opacity 0.6s ease;
-	z-index: -1;
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz));
+  border-radius: 32px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
 }
 
 .master-clock:hover .clock-bg-animation {
-	opacity: 0;
+  opacity: 0;
 }
-
 
 /* Clock Header */
 .clock-header {
-	display: flex;
-	align-items: center;
-	gap: 2rem;
-	margin-bottom: 2rem;
-	text-align: left;
-	justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  justify-content: flex-start;
 }
 
 .game-image-container {
-	position: relative;
-	width: 80px;
-	height: 80px;
-	border-radius: 20px;
-	overflow: hidden;
-	border: 2px solid rgba(255, 255, 255, 0.1);
-	flex-shrink: 0;
-	background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
 }
 
 .game-image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-	display: block;
-	will-change: opacity;
-	transform: translateZ(0);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  will-change: opacity;
+  transform: translateZ(0);
 }
 
 .game-info {
-	text-align: left;
+  text-align: left;
 }
 
 .game-name {
-	font-family: 'Space Grotesk', sans-serif;
-	font-size: 1.8rem;
-	font-weight: 700;
-	color: var(--amber-glow);
-	margin: 0 0 0.5rem 0;
-	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--amber-glow);
+  margin: 0 0 0.5rem 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .game-status {
-	font-family: 'Space Grotesk', sans-serif;
-	font-size: 0.9rem;
-	font-weight: 500;
-	color: rgba(255, 255, 255, 0.7);
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 /* Clock Display */
 .clock-display {
-	margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .time-unit-group {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .time-unit {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .time-value {
-	font-family: 'Courier New', monospace;
-	font-size: 3.5rem;
-	font-weight: 700;
-	color: var(--text-inverse);
-	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-	line-height: 1;
-	min-width: 2.5ch;
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 1.2em;
+  font-family: 'Courier New', monospace;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--text-inverse);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1;
+  min-width: 2.5ch;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 1.2em;
 }
 
 .time-label {
-	font-family: 'Space Grotesk', sans-serif;
-	font-size: 0.8rem;
-	font-weight: 500;
-	color: rgba(255, 255, 255, 0.6);
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .time-separator {
-	font-family: 'Courier New', monospace;
-	font-size: 3rem;
-	font-weight: 700;
-	color: var(--text-inverse);
-	animation: blink 2s ease-in-out infinite;
-	opacity: 0.8;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 1.2em;
-	line-height: 1;
+  font-family: 'Courier New', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-inverse);
+  animation: blink 2s ease-in-out infinite;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.2em;
+  line-height: 1;
 }
 
 @keyframes blink {
-	0%, 100% { opacity: 1; }
-	50% { opacity: 0.3; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }

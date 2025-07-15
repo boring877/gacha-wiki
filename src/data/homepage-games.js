@@ -12,7 +12,7 @@ export const homepageGames = [
     resetMinute: 0, // UTC minute for daily reset
     timerDescription: 'Daily reset timer',
     features: ['30+ Characters', 'Active Rifts', 'Memory System', 'Strategic Combat'],
-    active: true // Show in clock and showcase
+    active: true, // Show in clock and showcase
   },
   {
     id: 'silver-blood',
@@ -21,10 +21,10 @@ export const homepageGames = [
     image: '/images/games/silver-and-blood/main-images/silver-and-blood-main3.jpg',
     url: '/guides/silver-and-blood/',
     resetHour: 12, // UTC time for daily reset (20:00 UTC+8)
-    resetMinute: 0, // UTC minute for daily reset  
+    resetMinute: 0, // UTC minute for daily reset
     timerDescription: 'Daily reset timer',
-    features: ['35+ Heroes', 'Rich Story', 'Dutchman\'s Revenge', 'Dark Fantasy'],
-    active: true // Show in clock and showcase
+    features: ['35+ Heroes', 'Rich Story', "Dutchman's Revenge", 'Dark Fantasy'],
+    active: true, // Show in clock and showcase
   },
   // Add more games here as needed
   // {

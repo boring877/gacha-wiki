@@ -2,583 +2,593 @@
 
 /* Mobile (768px and below) */
 @media (max-width: 768px) {
-	.hero-section {
-		padding: 3rem 1rem 2rem 1rem;
-		min-height: auto;
-	}
+  .hero-section {
+    padding: 3rem 1rem 2rem 1rem;
+    min-height: auto;
+  }
 
-	.hero-text-gradient {
-		font-size: clamp(2rem, 8vw, 2.8rem);
-	}
+  .hero-text-gradient {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
 
-	.hero-subtitle {
-		font-size: clamp(0.9rem, 3vw, 1.2rem);
-	}
+  .hero-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+  }
 
-	/* Hero CTA Mobile */
-	.hero-cta {
-		margin-bottom: 2rem;
-	}
+  /* Hero CTA Mobile */
+  .hero-cta {
+    margin-bottom: 2rem;
+  }
 
-	.cta-button {
-		padding: 1rem 1.75rem;
-		font-size: 0.95rem;
-		gap: 0.5rem;
-		border-radius: 40px;
-	}
+  .cta-button {
+    padding: 1rem 1.75rem;
+    font-size: 0.95rem;
+    gap: 0.5rem;
+    border-radius: 40px;
+  }
 
-	/* Master Clock Mobile */
-	.master-clock-container {
-		max-width: 1400px;
-		padding: 0 1rem;
-	}
+  /* Master Clock Mobile */
+  .master-clock-container {
+    max-width: 1400px;
+    padding: 0 1rem;
+  }
 
-	.master-clock {
-		padding: 1.5rem 1.25rem;
-		max-width: 1200px;
-		margin: 0 auto;
-		border-radius: 24px;
-		backdrop-filter: blur(20px);
-	}
+  .master-clock {
+    padding: 1.5rem 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+  }
 
-	.clock-header {
-		gap: 1rem;
-		margin-bottom: 1.5rem;
-		flex-direction: row;
-		text-align: left;
-		justify-content: flex-start;
-	}
+  .clock-header {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-direction: row;
+    text-align: left;
+    justify-content: flex-start;
+  }
 
-	.game-image-container {
-		width: 50px;
-		height: 50px;
-		border-radius: 12px;
-	}
+  .game-image-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+  }
 
-	.game-name {
-		font-size: 1.3rem;
-		line-height: 1.2;
-	}
+  .game-name {
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
 
-	.game-status {
-		font-size: 0.75rem;
-		line-height: 1.3;
-	}
+  .game-status {
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
 
-	.clock-display {
-		margin-bottom: 1.5rem;
-	}
+  .clock-display {
+    margin-bottom: 1.5rem;
+  }
 
-	.time-unit-group {
-		gap: 0.5rem;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		max-width: 300px;
-		margin: 0 auto;
-	}
+  .time-unit-group {
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
 
-	.time-unit {
-		flex: 1;
-		min-width: 70px;
-		max-width: 80px;
-		gap: 0.5rem;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
+  .time-unit {
+    flex: 1;
+    min-width: 70px;
+    max-width: 80px;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-	.time-value {
-		font-size: 2.2rem;
-		min-width: 2ch;
-		width: 100%;
-		height: 1.1em;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-variant-numeric: tabular-nums;
-	}
+  .time-value {
+    font-size: 2.2rem;
+    min-width: 2ch;
+    width: 100%;
+    height: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-variant-numeric: tabular-nums;
+  }
 
-	.time-separator {
-		font-size: 1.8rem;
-		flex: 0 0 auto;
-		width: 20px;
-		height: 1.1em;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin-top: -2rem;
-	}
+  .time-separator {
+    font-size: 1.8rem;
+    flex: 0 0 auto;
+    width: 20px;
+    height: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -2rem;
+  }
 
-	.time-label {
-		font-size: 0.65rem;
-		font-weight: 600;
-	}
+  .time-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+  }
 
-	.timer-description-section {
-		padding: 0.75rem 1rem;
-		margin-bottom: 1rem;
-		border-radius: 12px;
-		min-height: 60px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		text-align: center;
-	}
+  .timer-description-section {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 
-	.timer-main-label {
-		font-size: 0.9rem;
-		margin-bottom: 0.25rem;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		line-height: 1.2;
-	}
+  .timer-main-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+  }
 
-	.timer-details {
-		font-size: 0.8rem;
-		margin-bottom: 0.25rem;
-	}
+  .timer-details {
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+  }
 
-	.timer-reset-time {
-		font-size: 0.75rem;
-		white-space: nowrap;
-		line-height: 1.2;
-	}
+  .timer-reset-time {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    line-height: 1.2;
+  }
 
-	.clock-navigation {
-		gap: 1rem;
-		margin-bottom: 1rem;
-	}
+  .clock-navigation {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
 
-	.nav-btn {
-		width: 36px;
-		height: 36px;
-	}
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+  }
 
-	.nav-btn svg {
-		width: 14px;
-		height: 14px;
-	}
+  .nav-btn svg {
+    width: 14px;
+    height: 14px;
+  }
 
-	.indicator-dot {
-		width: 7px;
-		height: 7px;
-	}
+  .indicator-dot {
+    width: 7px;
+    height: 7px;
+  }
 
-	.rotation-toggle {
-		padding: 0.5rem 0.875rem;
-		font-size: 0.75rem;
-		gap: 0.4rem;
-		border-radius: 16px;
-	}
+  .rotation-toggle {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.75rem;
+    gap: 0.4rem;
+    border-radius: 16px;
+  }
 
-	/* Showcase Mobile - Optimized Transitions */
-	.auto-showcase {
-		min-height: auto;
-		padding: 1.5rem 0;
-	}
+  /* Showcase Mobile - Optimized Transitions */
+  .auto-showcase {
+    min-height: auto;
+    padding: 1.5rem 0;
+  }
 
-	.showcase-container {
-		padding: 0 1rem;
-	}
+  .showcase-container {
+    padding: 0 1rem;
+  }
 
-	.showcase-content {
-		height: auto;
-		margin: 0 auto;
-		max-width: 1200px;
-		border-radius: 24px;
-		grid-template-columns: 1fr;
-		grid-template-rows: 240px 1fr;
-		overflow: hidden;
-		transition: transform 0.3s ease, opacity 0.3s ease !important;
-		will-change: transform, opacity;
-		transform: translateZ(0);
-	}
+  .showcase-content {
+    height: auto;
+    margin: 0 auto;
+    max-width: 1200px;
+    border-radius: 24px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 240px 1fr;
+    overflow: hidden;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease !important;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
 
-	.showcase-content:hover {
-		transform: none;
-	}
+  .showcase-content:hover {
+    transform: none;
+  }
 
-	.showcase-image-section {
-		order: 1;
-		border-right: none;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-		height: 240px;
-		transition: opacity 0.4s ease !important;
-		will-change: opacity;
-	}
+  .showcase-image-section {
+    order: 1;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    height: 240px;
+    transition: opacity 0.4s ease !important;
+    will-change: opacity;
+  }
 
-	.showcase-game-image {
-		transition: opacity 0.4s ease !important;
-		will-change: opacity;
-		transform: none !important;
-	}
+  .showcase-game-image {
+    transition: opacity 0.4s ease !important;
+    will-change: opacity;
+    transform: none !important;
+  }
 
-	.showcase-content-section {
-		order: 2;
-		padding: 1.5rem 1.25rem;
-		border-left: none;
-		transition: opacity 0.3s ease !important;
-		will-change: opacity;
-	}
+  .showcase-content-section {
+    order: 2;
+    padding: 1.5rem 1.25rem;
+    border-left: none;
+    transition: opacity 0.3s ease !important;
+    will-change: opacity;
+  }
 
-	.showcase-title {
-		font-size: clamp(1.5rem, 6vw, 2.2rem);
-		margin-bottom: 0.75rem;
-		text-align: center;
-		line-height: 1.2;
-		transition: opacity 0.3s ease, transform 0.3s ease !important;
-		will-change: opacity, transform;
-	}
+  .showcase-title {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    margin-bottom: 0.75rem;
+    text-align: center;
+    line-height: 1.2;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease !important;
+    will-change: opacity, transform;
+  }
 
-	.showcase-description {
-		font-size: 0.9rem;
-		text-align: center;
-		margin-bottom: 1.25rem;
-		line-height: 1.5;
-		transition: opacity 0.3s ease, transform 0.3s ease !important;
-		will-change: opacity, transform;
-	}
+  .showcase-description {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease !important;
+    will-change: opacity, transform;
+  }
 
-	.showcase-features {
-		gap: 0.4rem;
-		margin-bottom: 1.5rem;
-		justify-content: center;
-		flex-wrap: wrap;
-		transition: opacity 0.3s ease !important;
-		will-change: opacity;
-	}
+  .showcase-features {
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    transition: opacity 0.3s ease !important;
+    will-change: opacity;
+  }
 
-	.showcase-feature-tag {
-		padding: 0.5rem 0.875rem;
-		font-size: 0.7rem;
-		border-radius: 18px;
-		white-space: nowrap;
-		transition: opacity 0.2s ease, transform 0.2s ease !important;
-		will-change: opacity, transform;
-	}
+  .showcase-feature-tag {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.7rem;
+    border-radius: 18px;
+    white-space: nowrap;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease !important;
+    will-change: opacity, transform;
+  }
 
-	.showcase-actions {
-		text-align: center;
-		transition: opacity 0.3s ease !important;
-		will-change: opacity;
-	}
+  .showcase-actions {
+    text-align: center;
+    transition: opacity 0.3s ease !important;
+    will-change: opacity;
+  }
 
-	.showcase-btn {
-		padding: 0.75rem 1.75rem;
-		font-size: 0.85rem;
-		border-radius: 35px;
-		gap: 0.5rem;
-	}
+  .showcase-btn {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.85rem;
+    border-radius: 35px;
+    gap: 0.5rem;
+  }
 
-	/* Clock Footer Controls Mobile */
-	.clock-footer-controls {
-		flex-direction: column-reverse;
-		gap: 0.75rem;
-		margin-top: 1rem;
-	}
+  /* Clock Footer Controls Mobile */
+  .clock-footer-controls {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
 
-	.clock-opensource-content {
-		padding: 0.4rem 0.6rem;
-		gap: 0.3rem;
-		border-radius: 18px;
-		min-height: 32px;
-		align-items: center;
-	}
+  .clock-opensource-content {
+    padding: 0.4rem 0.6rem;
+    gap: 0.3rem;
+    border-radius: 18px;
+    min-height: 32px;
+    align-items: center;
+  }
 
-	.clock-opensource-text {
-		font-size: 0.7rem;
-		font-weight: 600;
-	}
+  .clock-opensource-text {
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
 
-	.clock-opensource-star {
-		padding: 0.2rem 0.4rem;
-		gap: 0.2rem;
-		border-radius: 14px;
-	}
+  .clock-opensource-star {
+    padding: 0.2rem 0.4rem;
+    gap: 0.2rem;
+    border-radius: 14px;
+  }
 
-	.clock-github-icon {
-		width: 14px;
-		height: 14px;
-		flex-shrink: 0;
-	}
+  .clock-github-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
 
-	.clock-opensource-star svg {
-		width: 10px;
-		height: 10px;
-	}
+  .clock-opensource-star svg {
+    width: 10px;
+    height: 10px;
+  }
 
-	.clock-star-count {
-		font-size: 0.65rem;
-		font-weight: 700;
-	}
+  .clock-star-count {
+    font-size: 0.65rem;
+    font-weight: 700;
+  }
 }
 
 /* Small Mobile (480px and below) */
 @media (max-width: 480px) {
-	/* Master Clock Small Mobile */
-	.master-clock-container {
-		padding: 0 0.5rem;
-	}
-	
-	/* Improved clock alignment for small screens */
-	.master-clock {
-		padding: 1.25rem 1rem;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-	
-	/* Timer description small mobile */
-	.timer-description-section {
-		min-height: 55px;
-		padding: 0.6rem 0.8rem;
-	}
-	
-	.timer-main-label {
-		font-size: 0.85rem;
-	}
-	
-	.timer-reset-time {
-		font-size: 0.7rem;
-	}
-	
-	.time-unit-group {
-		gap: 0.4rem;
-		max-width: 280px;
-	}
-	
-	.time-unit {
-		min-width: 65px;
-		max-width: 75px;
-	}
-	
-	.time-value {
-		font-size: 2rem;
-		height: 1em;
-	}
-	
-	.time-separator {
-		font-size: 1.6rem;
-		width: 18px;
-		height: 1em;
-		margin-top: -1.8rem;
-	}
-	
-	.time-label {
-		font-size: 0.6rem;
-	}
-	.auto-showcase {
-		padding: 1.5rem 0;
-	}
+  /* Master Clock Small Mobile */
+  .master-clock-container {
+    padding: 0 0.5rem;
+  }
 
-	.showcase-container {
-		padding: 0 0.5rem;
-	}
+  /* Improved clock alignment for small screens */
+  .master-clock {
+    padding: 1.25rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-	.showcase-content {
-		margin: 0 auto;
-		min-height: 450px;
-		max-width: 1200px;
-		grid-template-rows: 240px 1fr;
-		border-radius: 24px;
-	}
+  /* Timer description small mobile */
+  .timer-description-section {
+    min-height: 55px;
+    padding: 0.6rem 0.8rem;
+  }
 
-	.showcase-content-section {
-		padding: 1.5rem 1rem;
-	}
+  .timer-main-label {
+    font-size: 0.85rem;
+  }
 
-	.showcase-title {
-		font-size: clamp(1.5rem, 8vw, 2rem);
-		margin-bottom: 0.75rem;
-	}
+  .timer-reset-time {
+    font-size: 0.7rem;
+  }
 
-	.showcase-description {
-		font-size: 0.9rem;
-		margin-bottom: 1.25rem;
-	}
+  .time-unit-group {
+    gap: 0.4rem;
+    max-width: 280px;
+  }
 
-	.showcase-features {
-		gap: 0.4rem;
-		margin-bottom: 1.5rem;
-	}
+  .time-unit {
+    min-width: 65px;
+    max-width: 75px;
+  }
 
-	.showcase-feature-tag {
-		padding: 0.5rem 0.75rem;
-		font-size: 0.7rem;
-		border-radius: 16px;
-	}
+  .time-value {
+    font-size: 2rem;
+    height: 1em;
+  }
 
-	.showcase-btn {
-		padding: 0.75rem 1.75rem;
-		font-size: 0.85rem;
-	}
+  .time-separator {
+    font-size: 1.6rem;
+    width: 18px;
+    height: 1em;
+    margin-top: -1.8rem;
+  }
 
-	/* Disable hover effects on touch devices */
-	.showcase-content:hover {
-	}
-	
-	.showcase-content::after {
-		animation: none;
-	}
+  .time-label {
+    font-size: 0.6rem;
+  }
+  .auto-showcase {
+    padding: 1.5rem 0;
+  }
 
-	/* Clock Footer Controls Small Mobile */
-	.clock-footer-controls {
-		flex-direction: column-reverse;
-		gap: 0.6rem;
-		margin-top: 0.75rem;
-	}
+  .showcase-container {
+    padding: 0 0.5rem;
+  }
 
-	.clock-opensource-content {
-		padding: 0.35rem 0.5rem;
-		gap: 0.3rem;
-		border-radius: 16px;
-		min-height: 28px;
-		align-items: center;
-	}
+  .showcase-content {
+    margin: 0 auto;
+    min-height: 450px;
+    max-width: 1200px;
+    grid-template-rows: 240px 1fr;
+    border-radius: 24px;
+  }
 
-	.clock-opensource-text {
-		font-size: 0.65rem;
-		font-weight: 600;
-	}
+  .showcase-content-section {
+    padding: 1.5rem 1rem;
+  }
 
-	.clock-opensource-star {
-		padding: 0.15rem 0.35rem;
-		gap: 0.15rem;
-		border-radius: 12px;
-	}
-	
-	.clock-github-icon {
-		width: 12px;
-		height: 12px;
-		flex-shrink: 0;
-	}
-	
-	.clock-opensource-star svg {
-		width: 8px;
-		height: 8px;
-	}
+  .showcase-title {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+    margin-bottom: 0.75rem;
+  }
 
-	.clock-star-count {
-		font-size: 0.6rem;
-		font-weight: 700;
-	}
+  .showcase-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .showcase-features {
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .showcase-feature-tag {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.7rem;
+    border-radius: 16px;
+  }
+
+  .showcase-btn {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.85rem;
+  }
+
+  /* Disable hover effects on touch devices */
+  .showcase-content:hover {
+  }
+
+  .showcase-content::after {
+    animation: none;
+  }
+
+  /* Clock Footer Controls Small Mobile */
+  .clock-footer-controls {
+    flex-direction: column-reverse;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+  }
+
+  .clock-opensource-content {
+    padding: 0.35rem 0.5rem;
+    gap: 0.3rem;
+    border-radius: 16px;
+    min-height: 28px;
+    align-items: center;
+  }
+
+  .clock-opensource-text {
+    font-size: 0.65rem;
+    font-weight: 600;
+  }
+
+  .clock-opensource-star {
+    padding: 0.15rem 0.35rem;
+    gap: 0.15rem;
+    border-radius: 12px;
+  }
+
+  .clock-github-icon {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  .clock-opensource-star svg {
+    width: 8px;
+    height: 8px;
+  }
+
+  .clock-star-count {
+    font-size: 0.6rem;
+    font-weight: 700;
+  }
 }
 
 /* Extra Small Mobile (360px and below) */
 @media (max-width: 360px) {
-	/* Extra small mobile footer controls */
-	.clock-footer-controls {
-		flex-direction: column-reverse;
-		gap: 0.5rem;
-		margin-top: 0.5rem;
-	}
+  /* Extra small mobile footer controls */
+  .clock-footer-controls {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
 
-	.clock-opensource-content {
-		padding: 0.3rem 0.45rem;
-		gap: 0.25rem;
-		border-radius: 14px;
-		min-height: 24px;
-		align-items: center;
-	}
-	
-	.clock-opensource-text {
-		font-size: 0.6rem;
-		font-weight: 600;
-	}
-	
-	.clock-opensource-star {
-		padding: 0.1rem 0.25rem;
-		gap: 0.1rem;
-		border-radius: 10px;
-	}
-	
-	.clock-github-icon {
-		width: 10px;
-		height: 10px;
-		flex-shrink: 0;
-	}
-	
-	.clock-opensource-star svg {
-		width: 6px;
-		height: 6px;
-	}
+  .clock-opensource-content {
+    padding: 0.3rem 0.45rem;
+    gap: 0.25rem;
+    border-radius: 14px;
+    min-height: 24px;
+    align-items: center;
+  }
 
-	.clock-star-count {
-		font-size: 0.55rem;
-		font-weight: 700;
-	}
+  .clock-opensource-text {
+    font-size: 0.6rem;
+    font-weight: 600;
+  }
+
+  .clock-opensource-star {
+    padding: 0.1rem 0.25rem;
+    gap: 0.1rem;
+    border-radius: 10px;
+  }
+
+  .clock-github-icon {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+  }
+
+  .clock-opensource-star svg {
+    width: 6px;
+    height: 6px;
+  }
+
+  .clock-star-count {
+    font-size: 0.55rem;
+    font-weight: 700;
+  }
 }
 
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
-	.showcase-content {
-		touch-action: manipulation;
-		-webkit-tap-highlight-color: transparent;
-	}
-	
-	.showcase-content:hover {
-		transform: none;
-	}
-	
-	.showcase-feature-tag:hover {
-		background: rgba(255, 255, 255, 0.08);
-	}
-	
-	/* Optimize transitions for touch devices */
-	.showcase-title,
-	.showcase-description,
-	.showcase-features,
-	.showcase-actions,
-	.showcase-game-image {
-		transition-duration: 0.2s !important;
-	}
+  .showcase-content {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .showcase-content:hover {
+    transform: none;
+  }
+
+  .showcase-feature-tag:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Optimize transitions for touch devices */
+  .showcase-title,
+  .showcase-description,
+  .showcase-features,
+  .showcase-actions,
+  .showcase-game-image {
+    transition-duration: 0.2s !important;
+  }
 }
 
 /* Mobile Performance Optimizations */
 @media (max-width: 768px) {
-	/* Use GPU acceleration for better performance */
-	.showcase-content,
-	.showcase-game-image,
-	.showcase-title,
-	.showcase-description,
-	.showcase-features,
-	.showcase-actions {
-		transform: translateZ(0);
-		backface-visibility: hidden;
-		perspective: 1000px;
-	}
-	
-	/* Reduce backdrop blur complexity on mobile */
-	.master-clock {
-		backdrop-filter: blur(20px) !important;
-	}
-	
-	.showcase-content {
-		backdrop-filter: blur(20px) !important;
-	}
-	
-	.showcase-content-section {
-		backdrop-filter: blur(15px) !important;
-	}
+  /* Use GPU acceleration for better performance */
+  .showcase-content,
+  .showcase-game-image,
+  .showcase-title,
+  .showcase-description,
+  .showcase-features,
+  .showcase-actions {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Reduce backdrop blur complexity on mobile */
+  .master-clock {
+    backdrop-filter: blur(20px) !important;
+  }
+
+  .showcase-content {
+    backdrop-filter: blur(20px) !important;
+  }
+
+  .showcase-content-section {
+    backdrop-filter: blur(15px) !important;
+  }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-	*, *::before, *::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-	}
-	
-	.showcase-content,
-	.showcase-game-image,
-	.showcase-title,
-	.showcase-description,
-	.showcase-features,
-	.showcase-actions {
-		will-change: auto !important;
-		transform: none !important;
-	}
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .showcase-content,
+  .showcase-game-image,
+  .showcase-title,
+  .showcase-description,
+  .showcase-features,
+  .showcase-actions {
+    will-change: auto !important;
+    transform: none !important;
+  }
 }

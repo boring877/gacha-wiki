@@ -7,14 +7,14 @@ import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
 function calculateRankings() {
   const stats = ['hp', 'atk', 'pDef', 'mDef', 'bloodPower'];
   const rankings = {};
-  
+
   stats.forEach(statKey => {
     // Sort characters by stat value (highest first)
     const sorted = [...characters].sort((a, b) => b.stats[statKey] - a.stats[statKey]);
-    
+
     rankings[statKey] = {};
     let currentRank = 1;
-    
+
     sorted.forEach((char, index) => {
       // Handle ties - characters with same value get same rank
       if (index > 0 && char.stats[statKey] === sorted[index - 1].stats[statKey]) {
@@ -25,7 +25,7 @@ function calculateRankings() {
       currentRank = index + 2; // Next unique rank
     });
   });
-  
+
   return rankings;
 }
 
@@ -34,42 +34,44 @@ function calculateOverallAnalysis() {
   const coreStats = ['hp', 'atk', 'pDef', 'mDef']; // Removed bloodPower
   const rankings = calculateRankings();
   const analysis = {};
-  
+
   // First pass: calculate total rank scores
   characters.forEach(char => {
     let totalRankScore = 0;
     let top3Count = 0;
     let top10Count = 0;
     const statBreakdown = {};
-    
+
     coreStats.forEach(statKey => {
       const rank = rankings[statKey][char.id];
       statBreakdown[statKey] = rank;
-      
+
       // Lower rank = better (rank 1 is best)
       totalRankScore += rank;
-      
+
       if (rank <= 3) top3Count++;
       if (rank <= 10) top10Count++;
     });
-    
+
     analysis[char.id] = {
       character: char,
       totalRankScore,
       top3Count,
       top10Count,
-      statBreakdown
+      statBreakdown,
     };
   });
-  
+
   // Second pass: rank characters by their total rank score (lower = better)
-  const sortedCharacters = Object.values(analysis).sort((a, b) => a.totalRankScore - b.totalRankScore);
-  
+  const sortedCharacters = Object.values(analysis).sort(
+    (a, b) => a.totalRankScore - b.totalRankScore
+  );
+
   // Assign overall ranks
   sortedCharacters.forEach((entry, index) => {
     analysis[entry.character.id].overallRank = index + 1;
   });
-  
+
   return analysis;
 }
 
@@ -94,10 +96,10 @@ function getRankClass(rank) {
 // Stat display names
 const statNames = {
   hp: 'HP',
-  atk: 'ATK', 
+  atk: 'ATK',
   pDef: 'P.DEF',
   mDef: 'M.DEF',
-  bloodPower: 'Blood Power'
+  bloodPower: 'Blood Power',
 };
 ---
 
@@ -107,12 +109,14 @@ const statNames = {
   gameTitle="Character Rankings"
 >
   <!-- Breadcrumb Navigation -->
-  <Breadcrumb items={[
-    { name: 'Home', href: '/' },
-    { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
-    { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
-    { name: 'Character Rankings' }
-  ]} />
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
+      { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
+      { name: 'Character Rankings' },
+    ]}
+  />
 
   <section class="content-section">
     <div class="rankings-intro">
@@ -120,15 +124,13 @@ const statNames = {
       <p class="intro-text">
         See how each character ranks in key combat stats among all {totalCharacters} characters
       </p>
-      <p class="level-note">
-        All stats shown at Level 200 (current max level)
-      </p>
+      <p class="level-note">All stats shown at Level 200 (current max level)</p>
     </div>
 
     <!-- Character Selector -->
     <div class="character-selector">
       <h3 class="selector-title">Select Character</h3>
-      
+
       <!-- Filters and Sort Controls -->
       <div class="filter-bar">
         <div class="filter-controls">
@@ -170,28 +172,34 @@ const statNames = {
           <button class="reset-btn" id="clear-filters">Reset</button>
         </div>
       </div>
-      
+
       <!-- Character Grid -->
       <div class="character-grid" id="character-grid">
-        {characters.sort((a, b) => a.name.localeCompare(b.name)).map(char => (
-          <button class="character-select-card" data-character-id={char.id}>
-            <img 
-              src={char.image} 
-              alt={char.name}
-              class="character-portrait"
-              width="80"
-              height="80"
-              loading="lazy"
-            />
-            <div class="character-info">
-              <h3>{char.name}</h3>
-              <div class="character-badges">
-                <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
-                <span class={`class-badge ${char.class.toLowerCase().replace(' ', '-')}`}>{char.class}</span>
-              </div>
-            </div>
-          </button>
-        ))}
+        {
+          characters
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map(char => (
+              <button class="character-select-card" data-character-id={char.id}>
+                <img
+                  src={char.image}
+                  alt={char.name}
+                  class="character-portrait"
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                />
+                <div class="character-info">
+                  <h3>{char.name}</h3>
+                  <div class="character-badges">
+                    <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+                    <span class={`class-badge ${char.class.toLowerCase().replace(' ', '-')}`}>
+                      {char.class}
+                    </span>
+                  </div>
+                </div>
+              </button>
+            ))
+        }
       </div>
     </div>
 
@@ -205,19 +213,21 @@ const statNames = {
 
       <div class="rankings-container">
         <h3 class="rankings-title">Stat Rankings</h3>
-        
+
         <div id="rankings-grid" class="rankings-grid">
-          {Object.keys(statNames).map(statKey => (
-            <div class="ranking-card">
-              <h4 class="ranking-card-title">{statNames[statKey]}</h4>
-              <div class={`rank-display rank-${statKey}`}></div>
-              <div class={`rank-total rank-${statKey}-total`}></div>
-              <div class={`stat-value stat-${statKey}`}></div>
-            </div>
-          ))}
+          {
+            Object.keys(statNames).map(statKey => (
+              <div class="ranking-card">
+                <h4 class="ranking-card-title">{statNames[statKey]}</h4>
+                <div class={`rank-display rank-${statKey}`} />
+                <div class={`rank-total rank-${statKey}-total`} />
+                <div class={`stat-value stat-${statKey}`} />
+              </div>
+            ))
+          }
         </div>
       </div>
-      
+
       <!-- Character Performance Analysis -->
       <div id="character-analysis" class="character-analysis" style="display: none;">
         <h4 class="character-analysis-title">Character Performance Breakdown</h4>
@@ -255,7 +265,10 @@ const statNames = {
     </div>
   </section>
 
-  <script is:inline define:vars={{ characters, rankings, overallAnalysis, statNames, totalCharacters }}>
+  <script
+    is:inline
+    define:vars={{ characters, rankings, overallAnalysis, statNames, totalCharacters }}
+  >
     document.addEventListener('DOMContentLoaded', () => {
       const characterCards = document.querySelectorAll('.character-select-card');
       const classFilter = document.getElementById('class-filter');
@@ -278,37 +291,47 @@ const statNames = {
 
         characterCards.forEach(card => {
           const character = characters.find(c => c.id === card.dataset.characterId);
-          
+
           const matchesClass = !classValue || character.class.toLowerCase().includes(classValue);
-          const matchesRarity = !rarityValue || character.rarity.toLowerCase().includes(rarityValue);
-          const matchesFaction = !factionValue || character.faction.toLowerCase().includes(factionValue);
-          const matchesMoonphase = !moonphaseValue || character.moonPhase.toLowerCase().includes(moonphaseValue);
-          
-          card.style.display = (matchesClass && matchesRarity && matchesFaction && matchesMoonphase) ? 'flex' : 'none';
+          const matchesRarity =
+            !rarityValue || character.rarity.toLowerCase().includes(rarityValue);
+          const matchesFaction =
+            !factionValue || character.faction.toLowerCase().includes(factionValue);
+          const matchesMoonphase =
+            !moonphaseValue || character.moonPhase.toLowerCase().includes(moonphaseValue);
+
+          card.style.display =
+            matchesClass && matchesRarity && matchesFaction && matchesMoonphase ? 'flex' : 'none';
         });
       }
 
       // Sort functionality
       let sortState = { column: null, asc: false };
-      
+
       function sortCharacters(column) {
         const cardContainer = document.getElementById('character-grid');
         const cards = Array.from(characterCards);
         const multiplier = sortState.asc ? 1 : -1;
-        
+
         cards.sort((a, b) => {
           const aChar = characters.find(c => c.id === a.dataset.characterId);
           const bChar = characters.find(c => c.id === b.dataset.characterId);
-          
+
           let aValue, bValue;
-          if (column === 'hp' || column === 'atk' || column === 'pDef' || column === 'mDef' || column === 'bloodPower') {
+          if (
+            column === 'hp' ||
+            column === 'atk' ||
+            column === 'pDef' ||
+            column === 'mDef' ||
+            column === 'bloodPower'
+          ) {
             aValue = aChar.stats[column];
             bValue = bChar.stats[column];
           }
-          
+
           return (aValue - bValue) * multiplier;
         });
-        
+
         cards.forEach(card => cardContainer.appendChild(card));
       }
 
@@ -324,10 +347,10 @@ const statNames = {
           const col = btn.dataset.sort;
           sortState.asc = sortState.column === col ? !sortState.asc : true;
           sortState.column = col;
-          
+
           sortButtons.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          
+
           sortCharacters(col);
         });
       });
@@ -339,104 +362,110 @@ const statNames = {
           if (rarityFilter) rarityFilter.value = '';
           if (factionFilter) factionFilter.value = '';
           if (moonphaseFilter) moonphaseFilter.value = '';
-          
-          characterCards.forEach(card => card.style.display = 'flex');
+
+          characterCards.forEach(card => (card.style.display = 'flex'));
           sortButtons.forEach(b => b.classList.remove('active'));
           sortState = { column: null, asc: false };
         });
       }
 
       characterCards.forEach(card => {
-        card.addEventListener('click', (e) => {
+        card.addEventListener('click', e => {
           const characterId = card.dataset.characterId;
-          
+
           // Remove active class from all cards
           characterCards.forEach(c => c.classList.remove('selected'));
-          
+
           // Add active class to clicked card
           card.classList.add('selected');
-          
+
           if (!characterId) {
             rankingsDisplay.classList.remove('active');
             return;
           }
 
-        const character = characters.find(c => c.id === characterId);
-        if (!character) return;
+          const character = characters.find(c => c.id === characterId);
+          if (!character) return;
 
-        // Update character info
-        characterImage.src = character.image;
-        characterImage.alt = character.name;
-        characterName.textContent = character.name;
-        characterClass.textContent = `${character.rarity} ${character.class} • ${character.faction}`;
+          // Update character info
+          characterImage.src = character.image;
+          characterImage.alt = character.name;
+          characterName.textContent = character.name;
+          characterClass.textContent = `${character.rarity} ${character.class} • ${character.faction}`;
 
-        // Update rankings
-        Object.keys(statNames).forEach(statKey => {
-          const rank = rankings[statKey][characterId];
-          const statValue = character.stats[statKey];
-          
-          const rankDisplay = document.querySelector(`.rank-${statKey}`);
-          const rankTotal = document.querySelector(`.rank-${statKey}-total`);
-          const statValueDisplay = document.querySelector(`.stat-${statKey}`);
-          
-          if (rankDisplay && rankTotal && statValueDisplay) {
-            rankDisplay.textContent = `#${rank}`;
-            rankTotal.textContent = `out of ${totalCharacters}`;
-            
-            // Format stat value
-            if (statKey === 'bloodPower' || statKey === 'hp' || statKey === 'atk' || statKey === 'pDef' || statKey === 'mDef') {
-              statValueDisplay.textContent = statValue.toLocaleString();
-            } else {
-              statValueDisplay.textContent = `${statValue}%`;
+          // Update rankings
+          Object.keys(statNames).forEach(statKey => {
+            const rank = rankings[statKey][characterId];
+            const statValue = character.stats[statKey];
+
+            const rankDisplay = document.querySelector(`.rank-${statKey}`);
+            const rankTotal = document.querySelector(`.rank-${statKey}-total`);
+            const statValueDisplay = document.querySelector(`.stat-${statKey}`);
+
+            if (rankDisplay && rankTotal && statValueDisplay) {
+              rankDisplay.textContent = `#${rank}`;
+              rankTotal.textContent = `out of ${totalCharacters}`;
+
+              // Format stat value
+              if (
+                statKey === 'bloodPower' ||
+                statKey === 'hp' ||
+                statKey === 'atk' ||
+                statKey === 'pDef' ||
+                statKey === 'mDef'
+              ) {
+                statValueDisplay.textContent = statValue.toLocaleString();
+              } else {
+                statValueDisplay.textContent = `${statValue}%`;
+              }
+
+              // Apply rank styling
+              rankDisplay.className = rankDisplay.className.replace(/rank-(top3|top10|other)/g, '');
+              if (rank <= 3) {
+                rankDisplay.classList.add('rank-top3');
+                rankDisplay.style.color = '#ffd700'; // Gold
+              } else if (rank <= 10) {
+                rankDisplay.classList.add('rank-top10');
+                rankDisplay.style.color = '#c0c0c0'; // Silver
+              } else {
+                rankDisplay.classList.add('rank-other');
+                rankDisplay.style.color = '#cd7f32'; // Bronze
+              }
             }
-            
-            // Apply rank styling
-            rankDisplay.className = rankDisplay.className.replace(/rank-(top3|top10|other)/g, '');
-            if (rank <= 3) {
-              rankDisplay.classList.add('rank-top3');
-              rankDisplay.style.color = '#ffd700'; // Gold
-            } else if (rank <= 10) {
-              rankDisplay.classList.add('rank-top10'); 
-              rankDisplay.style.color = '#c0c0c0'; // Silver
-            } else {
-              rankDisplay.classList.add('rank-other');
-              rankDisplay.style.color = '#cd7f32'; // Bronze
-            }
-          }
-        });
-
-        rankingsDisplay.classList.add('active');
-        
-        // Update character analysis
-        updateCharacterAnalysis(characterId);
-        
-        // Smooth scroll to rankings display
-        setTimeout(() => {
-          rankingsDisplay.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
           });
-        }, 100);
+
+          rankingsDisplay.classList.add('active');
+
+          // Update character analysis
+          updateCharacterAnalysis(characterId);
+
+          // Smooth scroll to rankings display
+          setTimeout(() => {
+            rankingsDisplay.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }, 100);
         });
       });
     });
-    
+
     function updateCharacterAnalysis(characterId) {
       const analysis = overallAnalysis[characterId];
       if (!analysis) return;
-      
+
       const overallRankEl = document.getElementById('overall-rank');
       const top3CountEl = document.getElementById('top3-count');
       const top3StatsEl = document.getElementById('top3-stats');
       const top10CountEl = document.getElementById('top10-count');
       const top10StatsEl = document.getElementById('top10-stats');
       const characterAnalysisEl = document.getElementById('character-analysis');
-      
+
       // Get stat names for display
       const coreStats = ['hp', 'atk', 'pDef', 'mDef'];
       const top3Stats = [];
       const top10Stats = [];
-      
+
       coreStats.forEach(statKey => {
         const rank = rankings[statKey][characterId];
         if (rank <= 3) {
@@ -446,30 +475,30 @@ const statNames = {
           top10Stats.push(statNames[statKey]);
         }
       });
-      
+
       // Update overall rank
       overallRankEl.textContent = `#${analysis.overallRank}`;
-      
+
       // Update top 3 stats
       top3CountEl.textContent = `${top3Stats.length}/4`;
       if (top3Stats.length > 0) {
-        top3StatsEl.innerHTML = top3Stats.map(stat => 
-          `<span class="stat-badge top3-badge">${stat}</span>`
-        ).join('');
+        top3StatsEl.innerHTML = top3Stats
+          .map(stat => `<span class="stat-badge top3-badge">${stat}</span>`)
+          .join('');
       } else {
         top3StatsEl.innerHTML = '<span class="no-stats">None</span>';
       }
-      
+
       // Update top 10 stats
       top10CountEl.textContent = `${top10Stats.length}/4`;
       if (top10Stats.length > 0) {
-        top10StatsEl.innerHTML = top10Stats.map(stat => 
-          `<span class="stat-badge top10-badge">${stat}</span>`
-        ).join('');
+        top10StatsEl.innerHTML = top10Stats
+          .map(stat => `<span class="stat-badge top10-badge">${stat}</span>`)
+          .join('');
       } else {
         top10StatsEl.innerHTML = '<span class="no-stats">None</span>';
       }
-      
+
       characterAnalysisEl.style.display = 'block';
     }
   </script>

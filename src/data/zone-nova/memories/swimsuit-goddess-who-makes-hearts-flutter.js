@@ -8,25 +8,26 @@ export const swimsuitGoddessWhoMakesHeartsFlutterData = {
   image: '/images/games/zone-nova/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg',
   rarity: 'SR',
   character: null, // No specific character associated
-  
+
   // Memory Stats
   stats: {
     hp: 5000,
     attack: 500,
-    defense: 500
+    defense: 500,
   },
-  
+
   // Memory Effects
   effects: [
     'Restriction: Only effective for enhancers',
     'Cost: 5-price awakening',
     'Attack increased by 20%',
-    'Defense increased by 20%'
-  ]
+    'Defense increased by 20%',
+  ],
 };
 
 // SEO Data
 export const swimsuitGoddessWhoMakesHeartsFlutterSEO = {
   title: 'Swimsuit Goddess Who Makes Hearts Flutter - Enhancer Memory Card | Zone Nova',
-  description: 'Complete guide for Swimsuit Goddess Who Makes Hearts Flutter memory card in Zone Nova. Learn about its enhancer-specific effects and balanced stat bonuses.'
-}; 
+  description:
+    'Complete guide for Swimsuit Goddess Who Makes Hearts Flutter memory card in Zone Nova. Learn about its enhancer-specific effects and balanced stat bonuses.',
+};

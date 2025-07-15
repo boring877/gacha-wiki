@@ -3,90 +3,91 @@
 
 /* ===== MAIN LAYOUT SECTIONS ===== */
 
-
 .intro-section {
-	background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
-	padding: 2rem;
-	border-radius: 16px;
-	border: 2px solid var(--sab-dark-red);
-	margin-bottom: 3rem;
-	text-align: center;
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid var(--sab-dark-red);
+  margin-bottom: 3rem;
+  text-align: center;
 }
 
 .intro-section p {
-	color: #f8f9fa;
-	font-size: 1.1rem;
-	line-height: 1.7;
-	margin: 0;
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .section {
-	margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 
 .section-title {
-	color: #f8f9fa;
-	font-size: 2rem;
-	font-weight: 700;
-	margin-bottom: 2rem;
-	border-bottom: 3px solid var(--sab-calm-red);
-	padding-bottom: 0.75rem;
+  color: #f8f9fa;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid var(--sab-calm-red);
+  padding-bottom: 0.75rem;
 }
 
 .card {
-	background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
-	border: 2px solid #374151;
-	border-radius: 16px;
-	padding: 2rem;
-	margin-bottom: 1.5rem;
-	transition: transform 0.3s ease, border-color 0.3s ease;
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+  border: 2px solid #374151;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .card:hover {
-	transform: translateY(-2px);
-	border-color: var(--sab-calm-red);
+  transform: translateY(-2px);
+  border-color: var(--sab-calm-red);
 }
 
 .card h4 {
-	color: #f8f9fa;
-	font-size: 1.5rem;
-	font-weight: 700;
-	margin-bottom: 1rem;
+  color: #f8f9fa;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .card p {
-	color: #e5e7eb;
-	line-height: 1.7;
-	margin: 0.5rem 0;
+  color: #e5e7eb;
+  line-height: 1.7;
+  margin: 0.5rem 0;
 }
 
 .card strong {
-	color: #f8f9fa;
+  color: #f8f9fa;
 }
 
 .card ul {
-	color: #e5e7eb;
-	padding-left: 1.5rem;
-	margin: 1rem 0;
+  color: #e5e7eb;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
 }
 
 .card li {
-	margin-bottom: 0.5rem;
-	line-height: 1.6;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
 }
 
 /* ===== GRID LAYOUTS ===== */
 .pity-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 2rem;
-	margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .faq-grid {
-	display: grid;
-	gap: 1.5rem;
-	margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 /* ===== FAQ SPECIFIC STYLES ===== */
@@ -107,7 +108,12 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-red));
+  background: linear-gradient(
+    90deg,
+    var(--sab-calm-red),
+    var(--sab-blue-silver),
+    var(--sab-calm-red)
+  );
 }
 
 .faq-intro p {
@@ -153,7 +159,9 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -200,7 +208,9 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -290,52 +300,56 @@
   .page-title {
     font-size: 2rem;
   }
-  
+
   .section-title {
     font-size: 1.5rem;
   }
-  
-  .card, .currency-card, .pity-card, .faq-item {
+
+  .card,
+  .currency-card,
+  .pity-card,
+  .faq-item {
     padding: 1.5rem;
   }
-  
-  .currency-grid, .pity-grid {
+
+  .currency-grid,
+  .pity-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .faq-section {
     margin-bottom: 3rem;
   }
-  
+
   .faq-section-title {
     font-size: var(--text-xl);
     margin-bottom: 1.5rem;
   }
-  
+
   .faq-card,
   .currency-card {
     padding: 1.5rem;
   }
-  
+
   .currency-card {
     padding: 2rem 1.5rem;
   }
-  
+
   .currency-image {
     width: 60px;
     height: 60px;
   }
-  
+
   .faq-intro {
     padding: 1.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .faq-intro p {
     font-size: var(--text-base);
   }
-  
+
   .faq-card h4,
   .currency-card h4 {
     font-size: var(--text-lg);
@@ -347,31 +361,35 @@
   .page-title {
     font-size: 1.75rem;
   }
-  
-  .intro-section, .card, .currency-card, .pity-card, .faq-item {
+
+  .intro-section,
+  .card,
+  .currency-card,
+  .pity-card,
+  .faq-item {
     padding: 1rem;
   }
-  
+
   .currency-image {
     width: 60px;
     height: 60px;
   }
-  
+
   .currency-icon {
     font-size: 2.5rem;
   }
-  
+
   .faq-intro {
     padding: 1rem;
     border-radius: 12px;
   }
-  
+
   .faq-card,
   .currency-card {
     padding: 1rem;
     border-radius: 12px;
   }
-  
+
   .faq-section-title {
     font-size: var(--text-lg);
     gap: 0.5rem;
@@ -384,10 +402,9 @@
   .currency-card:hover {
     transform: none;
   }
-  
+
   .faq-card,
   .currency-card {
     transition: none;
   }
 }
-

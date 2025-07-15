@@ -45,21 +45,20 @@ const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq }
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 		<meta name="theme-color" content="#5a7ba7" />
 		
-		<script type="application/ld+json">
-			{JSON.stringify({
-				"@context": "https://schema.org",
-				"@type": "Guide",
-				"name": meta.title,
-				"description": meta.description,
-				"about": {
-					"@type": "VideoGame",
-					"name": "Silver and Blood"
-				},
-				"publisher": {
-					"@type": "Organization",
-					"name": "GachaWiki"
-				}
-			})}
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Guide",
+			"name": meta.title,
+			"description": meta.description,
+			"about": {
+				"@type": "VideoGame",
+				"name": "Silver and Blood"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "GachaWiki"
+			}
+		})}>
 		</script>
 	</head>
 	<body class="sab-body">

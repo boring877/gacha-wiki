@@ -192,7 +192,7 @@
   box-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
 }
 
-.character-select-card[data-selected="true"] {
+.character-select-card[data-selected='true'] {
   border-color: #c26b6b;
   background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
   box-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
@@ -322,7 +322,9 @@
   padding: 1.5rem;
   border: 1px solid #3a3a3a;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .ranking-card:hover {
@@ -369,7 +371,6 @@
 .rank-other {
   color: #cd7f32 !important; /* Bronze */
 }
-
 
 /* Character Analysis Section */
 .character-analysis {
@@ -508,94 +509,95 @@
   .rankings-intro .section-title {
     font-size: 1.6rem;
   }
-  
+
   .character-selector {
     margin-bottom: 1.5rem;
   }
-  
+
   .selector-title {
     font-size: 1.1rem;
     margin-bottom: 1rem;
   }
-  
+
   .filter-bar {
     flex-direction: column;
     gap: 0.8rem;
   }
-  
-  .filter-controls, .sort-controls {
+
+  .filter-controls,
+  .sort-controls {
     width: 100%;
     justify-content: center;
   }
-  
+
   .character-grid {
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
-  
+
   .character-select-card {
     padding: 1rem;
     flex-direction: column;
     text-align: center;
     gap: 0.75rem;
   }
-  
+
   .character-portrait {
     width: 70px;
     height: 70px;
   }
-  
+
   .character-select-card .character-info {
     align-items: center;
   }
-  
+
   .character-info h3 {
     font-size: 1.1rem;
   }
-  
+
   .character-badges .rarity-badge,
   .character-badges .class-badge {
     font-size: 0.7rem;
     padding: 0.2rem 0.4rem;
   }
-  
+
   .character-subtitle {
     font-size: 0.85rem;
   }
-  
+
   .rankings-display .character-info {
     padding: 1rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .character-image {
     width: 100px;
     height: 100px;
     margin: 0 auto 1rem auto;
   }
-  
+
   .character-name {
     font-size: 1.3rem;
     text-align: center;
   }
-  
+
   .rankings-container {
     padding: 1.5rem;
   }
-  
+
   .rankings-grid {
     grid-template-columns: 1fr !important;
     gap: 0.75rem;
   }
-  
+
   .ranking-card {
     padding: 1rem !important;
   }
-  
+
   .ranking-card-title {
     font-size: 1rem;
   }
-  
+
   .rank-display {
     font-size: 1.5rem;
   }
@@ -605,100 +607,101 @@
   .rankings-intro .section-title {
     font-size: 1.4rem;
   }
-  
+
   .rankings-intro .intro-text {
     font-size: 0.9rem;
   }
-  
+
   .selector-title {
     font-size: 1rem;
     margin-bottom: 0.75rem;
   }
-  
+
   .filter-bar {
     flex-direction: column;
     gap: 0.6rem;
     padding: 0 0.5rem;
   }
-  
-  .filter-controls, .sort-controls {
+
+  .filter-controls,
+  .sort-controls {
     width: 100%;
     justify-content: center;
   }
-  
+
   .character-grid {
     gap: 0.5rem;
   }
-  
+
   .character-select-card {
     padding: 0.75rem;
     gap: 0.5rem;
   }
-  
+
   .character-portrait {
     width: 60px;
     height: 60px;
   }
-  
+
   .character-info h3 {
     font-size: 1rem;
   }
-  
+
   .character-badges .rarity-badge,
   .character-badges .class-badge {
     font-size: 0.65rem;
     padding: 0.15rem 0.35rem;
   }
-  
+
   .character-subtitle {
     font-size: 0.8rem;
   }
-  
+
   .rankings-display .character-info {
     padding: 0.75rem;
   }
-  
+
   .character-image {
     width: 80px;
     height: 80px;
     margin: 0 auto 1rem auto;
   }
-  
+
   .character-name {
     font-size: 1.2rem;
     text-align: center;
   }
-  
+
   .character-details {
     font-size: 0.9rem;
     text-align: center;
   }
-  
+
   .rankings-container {
     padding: 1rem;
   }
-  
+
   .ranking-card {
     padding: 0.75rem !important;
   }
-  
+
   .back-button {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
   }
-  
+
   .summary-stats {
     gap: 1rem;
   }
-  
+
   .summary-stat {
     min-width: 100px;
   }
-  
+
   .stat-badges {
     max-width: 120px;
   }
-  
+
   .stat-badge {
     font-size: 0.7rem;
     padding: 0.15rem 0.4rem;

@@ -1,6 +1,7 @@
 # Discord Webhook Setup Guide
 
-This guide will help you set up Discord notifications for your Gacha Wiki repository pushes.
+This guide will help you set up Discord notifications for your Gacha Wiki
+repository pushes.
 
 ## Prerequisites
 
@@ -48,6 +49,7 @@ This guide will help you set up Discord notifications for your Gacha Wiki reposi
 ## What You'll See
 
 The Discord notifications will include:
+
 - 🚀 Formatted embed message
 - Commit hash (short) with link to full commit
 - Author name
@@ -59,16 +61,19 @@ The Discord notifications will include:
 ## Troubleshooting
 
 ### No Notifications Appearing
+
 - Check that the webhook URL is correct in GitHub secrets
 - Ensure the webhook URL ends with the correct Discord channel
 - Verify the GitHub Actions workflow ran successfully
 
 ### Workflow Failing
+
 - Check the Actions tab for error messages
 - Ensure the `DISCORD_WEBHOOK_URL` secret is properly set
 - Webhook URL should start with `https://discord.com/api/webhooks/`
 
 ### Rate Limiting
+
 - The workflow includes built-in rate limiting protection
 - Only triggers on pushes to main branch
 - Uses efficient Discord webhook format
@@ -82,7 +87,8 @@ The Discord notifications will include:
 
 ## Customization
 
-To customize the notification format, edit `.github/workflows/discord-notify.yml`:
+To customize the notification format, edit
+`.github/workflows/discord-notify.yml`:
 
 - **embed-title**: Change the notification title
 - **embed-color**: Change the embed color (decimal number)
@@ -92,6 +98,7 @@ To customize the notification format, edit `.github/workflows/discord-notify.yml
 ## Need Help?
 
 If you encounter issues:
+
 1. Check the GitHub Actions logs
 2. Verify the webhook URL format
 3. Test the webhook URL directly with a simple curl command

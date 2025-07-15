@@ -4,332 +4,420 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 import '../../../styles/games/zone-nova/zn-runes.css';
 ---
 
-<ZoneNovaLayout 
-	title="Zone Nova Rune Guides - GachaWiki" 
-	description="Complete rune guides, builds, and optimization for Zone Nova"
-	gameTitle="Rune System Guide"
+<ZoneNovaLayout
+  title="Zone Nova Rune Guides - GachaWiki"
+  description="Complete rune guides, builds, and optimization for Zone Nova"
+  gameTitle="Rune System Guide"
 >
+  <!-- Rune Sets Section -->
+  <section class="content-section">
+    <h2 class="section-title">Rune Sets</h2>
+    <div class="section-description">
+      Complete guide to rune sets, main stats, and optimization strategies for Zone Nova
+    </div>
 
-	<!-- Rune Sets Section -->
-	<section class="content-section">
-		<h2 class="section-title">Rune Sets</h2>
-		<div class="section-description">
-			Complete guide to rune sets, main stats, and optimization strategies for Zone Nova
-		</div>
-		
-		<div class="rune-grid">
-			<div class="rune-card">
-				<div class="rune-image-container">
-					<img 
-						src="/images/games/zone-nova/runes/Alpha.jpg" 
-						alt="Alpha Rune" 
-						width={120} 
-						height={120}
-						class="rune-image"
-					/>
-				</div>
-				<h3>Alpha (阿尔法符)</h3>
-				<p><strong>2-Piece:</strong> Attack Power +8%</p>
-				<p><strong>4-Piece:</strong> Basic Attack Damage +30%</p>
-			</div>
+    <div class="rune-grid">
+      <div class="rune-card">
+        <div class="rune-image-container">
+          <img
+            src="/images/games/zone-nova/runes/Alpha.jpg"
+            alt="Alpha Rune"
+            width={120}
+            height={120}
+            class="rune-image"
+          />
+        </div>
+        <h3>Alpha (阿尔法符)</h3>
+        <p><strong>2-Piece:</strong> Attack Power +8%</p>
+        <p><strong>4-Piece:</strong> Basic Attack Damage +30%</p>
+      </div>
 
-			<div class="rune-card">
-				<div class="rune-image-container">
-					<img 
-						src="/images/games/zone-nova/runes/Shattered-Foundation.jpg" 
-						alt="Shattered Foundation Rune" 
-						width={120} 
-						height={120}
-						class="rune-image"
-					/>
-				</div>
-				<h3>Shattered Foundation (碎基)</h3>
-				<p><strong>2-Piece:</strong> Defense +12%</p>
-				<p><strong>4-Piece:</strong> Shield Effectiveness +20%</p>
-			</div>
+      <div class="rune-card">
+        <div class="rune-image-container">
+          <img
+            src="/images/games/zone-nova/runes/Shattered-Foundation.jpg"
+            alt="Shattered Foundation Rune"
+            width={120}
+            height={120}
+            class="rune-image"
+          />
+        </div>
+        <h3>Shattered Foundation (碎基)</h3>
+        <p><strong>2-Piece:</strong> Defense +12%</p>
+        <p><strong>4-Piece:</strong> Shield Effectiveness +20%</p>
+      </div>
 
-			<div class="rune-card">
-				<div class="rune-image-container">
-					<img 
-						src="/images/games/zone-nova/runes/Beth.jpg" 
-						alt="Beth Rune" 
-						width={120} 
-						height={120}
-						class="rune-image"
-					/>
-				</div>
-				<h3>Beth (贝丝)</h3>
-				<p><strong>2-Piece:</strong> Critical Hit Rate +6%</p>
-				<p><strong>4-Piece:</strong> When HP >80%: Critical Hit Damage +24%</p>
-			</div>
+      <div class="rune-card">
+        <div class="rune-image-container">
+          <img
+            src="/images/games/zone-nova/runes/Beth.jpg"
+            alt="Beth Rune"
+            width={120}
+            height={120}
+            class="rune-image"
+          />
+        </div>
+        <h3>Beth (贝丝)</h3>
+        <p><strong>2-Piece:</strong> Critical Hit Rate +6%</p>
+        <p><strong>4-Piece:</strong> When HP >80%: Critical Hit Damage +24%</p>
+      </div>
 
-			<div class="rune-card">
-				<div class="rune-image-container">
-					<img 
-						src="/images/games/zone-nova/runes/Zahn.jpg" 
-						alt="Zahn Rune" 
-						width={120} 
-						height={120}
-						class="rune-image"
-					/>
-				</div>
-				<h3>Zahn (札恩)</h3>
-				<p><strong>2-Piece:</strong> HP +8%</p>
-				<p><strong>4-Piece:</strong> After Ultimate: Take 5% less damage (10s)</p>
-			</div>
+      <div class="rune-card">
+        <div class="rune-image-container">
+          <img
+            src="/images/games/zone-nova/runes/Zahn.jpg"
+            alt="Zahn Rune"
+            width={120}
+            height={120}
+            class="rune-image"
+          />
+        </div>
+        <h3>Zahn (札恩)</h3>
+        <p><strong>2-Piece:</strong> HP +8%</p>
+        <p><strong>4-Piece:</strong> After Ultimate: Take 5% less damage (10s)</p>
+      </div>
 
-			<div class="rune-card">
-				<div class="rune-image-container">
-					<img 
-						src="/images/games/zone-nova/runes/Daleth.jpg" 
-						alt="Daleth Rune" 
-						width={120} 
-						height={120}
-						class="rune-image"
-					/>
-				</div>
-				<h3>Daleth (达莱特)</h3>
-				<p><strong>2-Piece:</strong> Healing Effectiveness +10%</p>
-				<p><strong>4-Piece:</strong> Battle Start: Gain 1 Energy immediately</p>
-			</div>
+      <div class="rune-card">
+        <div class="rune-image-container">
+          <img
+            src="/images/games/zone-nova/runes/Daleth.jpg"
+            alt="Daleth Rune"
+            width={120}
+            height={120}
+            class="rune-image"
+          />
+        </div>
+        <h3>Daleth (达莱特)</h3>
+        <p><strong>2-Piece:</strong> Healing Effectiveness +10%</p>
+        <p><strong>4-Piece:</strong> Battle Start: Gain 1 Energy immediately</p>
+      </div>
 
-			<div class="rune-card">
-				<div class="rune-image-container">
-					<img 
-						src="/images/games/zone-nova/runes/Epsilon.jpg" 
-						alt="Epsilon Rune" 
-						width={120} 
-						height={120}
-						class="rune-image"
-					/>
-				</div>
-				<h3>Epsilon (埃普西隆)</h3>
-				<p><strong>2-Piece:</strong> Attack Power +8%</p>
-				<p><strong>4-Piece:</strong> After activating ultimate skill, entire team damage increased by <strong>10%</strong>, lasts 10 seconds</p>
-				<div style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 8px;">
-					<p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
-						<span style="color: #ffc107; font-weight: 600;">Note:</span> 
-						Same passive effect cannot stack
-					</p>
-				</div>
-			</div>
+      <div class="rune-card">
+        <div class="rune-image-container">
+          <img
+            src="/images/games/zone-nova/runes/Epsilon.jpg"
+            alt="Epsilon Rune"
+            width={120}
+            height={120}
+            class="rune-image"
+          />
+        </div>
+        <h3>Epsilon (埃普西隆)</h3>
+        <p><strong>2-Piece:</strong> Attack Power +8%</p>
+        <p>
+          <strong>4-Piece:</strong> After activating ultimate skill, entire team damage increased by
+          <strong>10%</strong>, lasts 10 seconds
+        </p>
+        <div
+          style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 8px;"
+        >
+          <p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
+            <span style="color: #ffc107; font-weight: 600;">Note:</span>
+            Same passive effect cannot stack
+          </p>
+        </div>
+      </div>
 
-			<div class="rune-card">
-				<div class="rune-image-container">
-					<img 
-						src="/images/games/zone-nova/runes/Hert-Pursuit-Damage.jpg" 
-						alt="Hert Pursuit Damage Rune" 
-						width={120} 
-						height={120}
-						class="rune-image"
-					/>
-				</div>
-				<h3>Hert Pursuit Damage (赫特追击伤害)</h3>
-				<p><strong>2-Piece:</strong> Pursuit damage increased by 20%</p>
-				<p><strong>4-Piece:</strong> After dealing pursuit damage, critical hit rate increases by 15%, lasts 10 seconds</p>
-				<div style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 8px;">
-					<p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
-						<span style="color: #ffc107; font-weight: 600;">Note:</span> 
-						This can only be obtained in guild raids
-					</p>
-				</div>
-			</div>
+      <div class="rune-card">
+        <div class="rune-image-container">
+          <img
+            src="/images/games/zone-nova/runes/Hert-Pursuit-Damage.jpg"
+            alt="Hert Pursuit Damage Rune"
+            width={120}
+            height={120}
+            class="rune-image"
+          />
+        </div>
+        <h3>Hert Pursuit Damage (赫特追击伤害)</h3>
+        <p><strong>2-Piece:</strong> Pursuit damage increased by 20%</p>
+        <p>
+          <strong>4-Piece:</strong> After dealing pursuit damage, critical hit rate increases by 15%,
+          lasts 10 seconds
+        </p>
+        <div
+          style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 8px;"
+        >
+          <p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
+            <span style="color: #ffc107; font-weight: 600;">Note:</span>
+            This can only be obtained in guild raids
+          </p>
+        </div>
+      </div>
 
-			<div class="rune-card">
-				<div class="rune-image-container">
-					<img 
-						src="/images/games/zone-nova/runes/Gimel-Continuous-Damage.jpg" 
-						alt="Gimel Continuous Damage Rune" 
-						width={120} 
-						height={120}
-						class="rune-image"
-					/>
-				</div>
-				<h3>Gimel Continuous Damage (吉梅尔持续伤害)</h3>
-				<p><strong>2-Piece:</strong> Continuous damage increased by 20%</p>
-				<p><strong>4-Piece:</strong> After dealing continuous damage, own attack power increases by 2%, can stack up to 10 layers, lasts 5 seconds</p>
-				<div style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 8px;">
-					<p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
-						<span style="color: #ffc107; font-weight: 600;">Note:</span> 
-						This can only be obtained in guild raids
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
+      <div class="rune-card">
+        <div class="rune-image-container">
+          <img
+            src="/images/games/zone-nova/runes/Gimel-Continuous-Damage.jpg"
+            alt="Gimel Continuous Damage Rune"
+            width={120}
+            height={120}
+            class="rune-image"
+          />
+        </div>
+        <h3>Gimel Continuous Damage (吉梅尔持续伤害)</h3>
+        <p><strong>2-Piece:</strong> Continuous damage increased by 20%</p>
+        <p>
+          <strong>4-Piece:</strong> After dealing continuous damage, own attack power increases by 2%,
+          can stack up to 10 layers, lasts 5 seconds
+        </p>
+        <div
+          style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 8px;"
+        >
+          <p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
+            <span style="color: #ffc107; font-weight: 600;">Note:</span>
+            This can only be obtained in guild raids
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<!-- Main Stats by Position Section -->
-	<section class="content-section">
-		<h2 class="section-title">Main Stats by Position</h2>
-		<div class="section-description">
-			Main stat possibilities for each rune position in Zone Nova
-		</div>
-		
-		<div class="rune-grid">
-			<!-- Position 1 -->
-			<div class="rune-card">
-				<h3>🎯 Position 1 — Fixed Main Stat</h3>
-				<div style="text-align: center; margin: 1.5rem 0;">
-					<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;">
-						HP (Flat Value)
-					</div>
-				</div>
-				<p style="text-align: center; color: var(--text-secondary); font-style: italic;">Always HP - no other options</p>
-			</div>
+  <!-- Main Stats by Position Section -->
+  <section class="content-section">
+    <h2 class="section-title">Main Stats by Position</h2>
+    <div class="section-description">
+      Main stat possibilities for each rune position in Zone Nova
+    </div>
 
-			<!-- Position 2 -->
-			<div class="rune-card">
-				<h3>🎯 Position 2 — Fixed Main Stat</h3>
-				<div style="text-align: center; margin: 1.5rem 0;">
-					<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;">
-						Attack (Flat Value)
-					</div>
-				</div>
-				<p style="text-align: center; color: var(--text-secondary); font-style: italic;">Always Attack - no other options</p>
-			</div>
+    <div class="rune-grid">
+      <!-- Position 1 -->
+      <div class="rune-card">
+        <h3>🎯 Position 1 — Fixed Main Stat</h3>
+        <div style="text-align: center; margin: 1.5rem 0;">
+          <div
+            style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;"
+          >
+            HP (Flat Value)
+          </div>
+        </div>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+          Always HP - no other options
+        </p>
+      </div>
 
-			<!-- Position 3 -->
-			<div class="rune-card">
-				<h3>🎯 Position 3 — Fixed Main Stat</h3>
-				<div style="text-align: center; margin: 1.5rem 0;">
-					<div style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;">
-						Defense (Flat Value)
-					</div>
-				</div>
-				<p style="text-align: center; color: var(--text-secondary); font-style: italic;">Always Defense - no other options</p>
-			</div>
+      <!-- Position 2 -->
+      <div class="rune-card">
+        <h3>🎯 Position 2 — Fixed Main Stat</h3>
+        <div style="text-align: center; margin: 1.5rem 0;">
+          <div
+            style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;"
+          >
+            Attack (Flat Value)
+          </div>
+        </div>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+          Always Attack - no other options
+        </p>
+      </div>
 
-			<!-- Position 4 -->
-			<div class="rune-card">
-				<h3>🎯 Position 4 — Variable Main Stats</h3>
-				<div style="margin: 1rem 0;">
-					<h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
-					<ul class="stat-list">
-						<li>Healing Effectiveness (%)</li>
-						<li>Critical Rate (%)</li>
-						<li>Critical Damage (%)</li>
-						<li style="background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1)); padding: 0.75rem; border-radius: 8px; border: 1px solid #dc3545; margin: 0.5rem 0; font-weight: 600;">⚡ Attack Penetration (%)</li>
-						<li>Attack (%)</li>
-						<li>HP (%)</li>
-						<li>Defense (%)</li>
-					</ul>
-				</div>
-				<div style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #dc3545; border-radius: 8px;">
-					<p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
-						<span style="color: #dc3545; font-weight: 600;">🔥 Attack Penetration:</span> 
-						Available as percentage (%) in main stats here, and as flat values in sub stats
-					</p>
-				</div>
-			</div>
+      <!-- Position 3 -->
+      <div class="rune-card">
+        <h3>🎯 Position 3 — Fixed Main Stat</h3>
+        <div style="text-align: center; margin: 1.5rem 0;">
+          <div
+            style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;"
+          >
+            Defense (Flat Value)
+          </div>
+        </div>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+          Always Defense - no other options
+        </p>
+      </div>
 
-			<!-- Position 5 -->
-			<div class="rune-card">
-				<h3>🎯 Position 5 — Variable Main Stats</h3>
-				<div style="margin: 1rem 0;">
-					<h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
-					<ul class="stat-list">
-						<li>🔥 Fire Element Damage (%)</li>
-						<li>❄️ Ice Element Damage (%)</li>
-						<li>💨 Wind Element Damage (%)</li>
-						<li>✨ Holy Damage (%)</li>
-						<li>🌑 Chaos Damage (%)</li>
-						<li>Attack (%)</li>
-						<li>HP (%)</li>
-						<li>Defense (%)</li>
-					</ul>
-				</div>
-				<p style="color: var(--text-secondary); font-style: italic;">Choose elemental damage that matches your character's element for maximum effectiveness</p>
-			</div>
+      <!-- Position 4 -->
+      <div class="rune-card">
+        <h3>🎯 Position 4 — Variable Main Stats</h3>
+        <div style="margin: 1rem 0;">
+          <h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
+          <ul class="stat-list">
+            <li>Healing Effectiveness (%)</li>
+            <li>Critical Rate (%)</li>
+            <li>Critical Damage (%)</li>
+            <li
+              style="background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1)); padding: 0.75rem; border-radius: 8px; border: 1px solid #dc3545; margin: 0.5rem 0; font-weight: 600;"
+            >
+              ⚡ Attack Penetration (%)
+            </li>
+            <li>Attack (%)</li>
+            <li>HP (%)</li>
+            <li>Defense (%)</li>
+          </ul>
+        </div>
+        <div
+          style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #dc3545; border-radius: 8px;"
+        >
+          <p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
+            <span style="color: #dc3545; font-weight: 600;">🔥 Attack Penetration:</span>
+            Available as percentage (%) in main stats here, and as flat values in sub stats
+          </p>
+        </div>
+      </div>
 
-			<!-- Position 6 -->
-			<div class="rune-card">
-				<h3>🎯 Position 6 — Variable Main Stats</h3>
-				<div style="margin: 1rem 0;">
-					<h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
-					<ul class="stat-list">
-						<li>Attack (%)</li>
-						<li>HP (%)</li>
-						<li>Defense (%)</li>
-					</ul>
-				</div>
-				<p style="color: var(--text-secondary); font-style: italic;">Core percentage stats only</p>
-			</div>
+      <!-- Position 5 -->
+      <div class="rune-card">
+        <h3>🎯 Position 5 — Variable Main Stats</h3>
+        <div style="margin: 1rem 0;">
+          <h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
+          <ul class="stat-list">
+            <li>🔥 Fire Element Damage (%)</li>
+            <li>❄️ Ice Element Damage (%)</li>
+            <li>💨 Wind Element Damage (%)</li>
+            <li>✨ Holy Damage (%)</li>
+            <li>🌑 Chaos Damage (%)</li>
+            <li>Attack (%)</li>
+            <li>HP (%)</li>
+            <li>Defense (%)</li>
+          </ul>
+        </div>
+        <p style="color: var(--text-secondary); font-style: italic;">
+          Choose elemental damage that matches your character's element for maximum effectiveness
+        </p>
+      </div>
 
-			<!-- Summary Card -->
-			<div class="rune-card" style="grid-column: 1 / -1; max-width: 900px; margin: 0 auto;">
-				<h3>📋 Summary</h3>
-				<ul class="stat-list">
-					<li><strong>Positions 1-3:</strong> Fixed main stats (HP, ATK, DEF respectively) - flat values</li>
-					<li><strong>Position 4:</strong> Most diverse options including utility stats and exclusive Attack Penetration (%)</li>
-					<li><strong>Position 5:</strong> Core stats plus elemental damage increases - all percentages</li>
-					<li><strong>Position 6:</strong> Focus on core percentage stat increases only</li>
-				</ul>
-				<div style="margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 12px;">
-					<p style="margin: 0; color: var(--text-primary); font-weight: 500;">
-						<span style="color: #ffc107; font-weight: 600;">💡 Pro Tip:</span> 
-						Position 4 runes are highly valuable for their unique utility stats, especially Attack Penetration for DPS characters.
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
+      <!-- Position 6 -->
+      <div class="rune-card">
+        <h3>🎯 Position 6 — Variable Main Stats</h3>
+        <div style="margin: 1rem 0;">
+          <h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
+          <ul class="stat-list">
+            <li>Attack (%)</li>
+            <li>HP (%)</li>
+            <li>Defense (%)</li>
+          </ul>
+        </div>
+        <p style="color: var(--text-secondary); font-style: italic;">Core percentage stats only</p>
+      </div>
 
-	<!-- Sub Stats Possibility Section -->
-	<section class="content-section">
-		<h2 class="section-title">Sub Stats Possibility</h2>
-		<div class="section-description">
-			All possible substats that can roll on runes in Zone Nova
-		</div>
-		
-		<div class="rune-grid">
-			<div class="rune-card" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
-				<h3>📊 Available Sub Stats</h3>
-				<div style="overflow-x: auto; margin-top: 1.5rem;">
-					<table style="width: 100%; border-collapse: collapse; font-family: 'Space Grotesk', sans-serif;">
-						<thead>
-							<tr style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white;">
-								<th style="padding: 1rem; text-align: left; border: 1px solid rgba(255,255,255,0.2);">Stat Type</th>
-								<th style="padding: 1rem; text-align: left; border: 1px solid rgba(255,255,255,0.2);">Available Forms</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr style="background: rgba(255, 183, 77, 0.05);">
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">Attack</td>
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Flat Number, Percentage (%)</td>
-							</tr>
-							<tr style="background: rgba(0, 172, 193, 0.05);">
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">HP</td>
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Flat Number, Percentage (%)</td>
-							</tr>
-							<tr style="background: rgba(255, 183, 77, 0.05);">
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">Defense</td>
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Flat Number, Percentage (%)</td>
-							</tr>
-							<tr style="background: rgba(0, 172, 193, 0.05);">
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">Critical Rate</td>
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Percentage (%) only</td>
-							</tr>
-							<tr style="background: rgba(255, 183, 77, 0.05);">
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">Critical Damage</td>
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Percentage (%) only</td>
-							</tr>
-							<tr style="background: rgba(0, 172, 193, 0.05);">
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);">Penetration</td>
-								<td style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);">Flat Number only</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div style="margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 12px;">
-					<p style="margin: 0; color: var(--text-primary); font-weight: 500;">
-						<span style="color: #ffc107; font-weight: 600;">📝 Note:</span> 
-						All runes can roll any combination of these sub stats. The actual values and number of substats depend on rune rarity and upgrade level.
-					</p>
-				</div>
-			</div>
+      <!-- Summary Card -->
+      <div class="rune-card" style="grid-column: 1 / -1; max-width: 900px; margin: 0 auto;">
+        <h3>📋 Summary</h3>
+        <ul class="stat-list">
+          <li>
+            <strong>Positions 1-3:</strong> Fixed main stats (HP, ATK, DEF respectively) - flat values
+          </li>
+          <li>
+            <strong>Position 4:</strong> Most diverse options including utility stats and exclusive Attack
+            Penetration (%)
+          </li>
+          <li>
+            <strong>Position 5:</strong> Core stats plus elemental damage increases - all percentages
+          </li>
+          <li><strong>Position 6:</strong> Focus on core percentage stat increases only</li>
+        </ul>
+        <div
+          style="margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 12px;"
+        >
+          <p style="margin: 0; color: var(--text-primary); font-weight: 500;">
+            <span style="color: #ffc107; font-weight: 600;">💡 Pro Tip:</span>
+            Position 4 runes are highly valuable for their unique utility stats, especially Attack Penetration
+            for DPS characters.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Sub Stats Possibility Section -->
+  <section class="content-section">
+    <h2 class="section-title">Sub Stats Possibility</h2>
+    <div class="section-description">All possible substats that can roll on runes in Zone Nova</div>
 
-		</div>
-	</section>
+    <div class="rune-grid">
+      <div class="rune-card" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
+        <h3>📊 Available Sub Stats</h3>
+        <div style="overflow-x: auto; margin-top: 1.5rem;">
+          <table
+            style="width: 100%; border-collapse: collapse; font-family: 'Space Grotesk', sans-serif;"
+          >
+            <thead>
+              <tr
+                style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white;"
+              >
+                <th
+                  style="padding: 1rem; text-align: left; border: 1px solid rgba(255,255,255,0.2);"
+                  >Stat Type</th
+                >
+                <th
+                  style="padding: 1rem; text-align: left; border: 1px solid rgba(255,255,255,0.2);"
+                  >Available Forms</th
+                >
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: rgba(255, 183, 77, 0.05);">
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);"
+                  >Attack</td
+                >
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);"
+                  >Flat Number, Percentage (%)</td
+                >
+              </tr>
+              <tr style="background: rgba(0, 172, 193, 0.05);">
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);"
+                  >HP</td
+                >
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);"
+                  >Flat Number, Percentage (%)</td
+                >
+              </tr>
+              <tr style="background: rgba(255, 183, 77, 0.05);">
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);"
+                  >Defense</td
+                >
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);"
+                  >Flat Number, Percentage (%)</td
+                >
+              </tr>
+              <tr style="background: rgba(0, 172, 193, 0.05);">
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);"
+                  >Critical Rate</td
+                >
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);"
+                  >Percentage (%) only</td
+                >
+              </tr>
+              <tr style="background: rgba(255, 183, 77, 0.05);">
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);"
+                  >Critical Damage</td
+                >
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);"
+                  >Percentage (%) only</td
+                >
+              </tr>
+              <tr style="background: rgba(0, 172, 193, 0.05);">
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); font-weight: 600; color: var(--text-primary);"
+                  >Penetration</td
+                >
+                <td
+                  style="padding: 1rem; border: 1px solid var(--neutral-200); color: var(--text-secondary);"
+                  >Flat Number only</td
+                >
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          style="margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 12px;"
+        >
+          <p style="margin: 0; color: var(--text-primary); font-weight: 500;">
+            <span style="color: #ffc107; font-weight: 600;">📝 Note:</span>
+            All runes can roll any combination of these sub stats. The actual values and number of substats
+            depend on rune rarity and upgrade level.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </ZoneNovaLayout>
-

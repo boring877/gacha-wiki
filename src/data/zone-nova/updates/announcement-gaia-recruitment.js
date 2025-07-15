@@ -6,12 +6,12 @@ export const gaiaRecruitmentData = {
   title: 'Limited Recruitment Character [Master Mother] Gaia',
   date: 'July 8, 2025',
   type: 'recruitment', // recruitment, event, maintenance, etc.
-  
+
   // TL;DR Summary
   tldr: [
-    'New SSR character [Master Mother] Gaia (Healer, Divine) available through Limited Recruitment from July 8-22, 2025. Divine master-level healer with powerful recovery abilities and shield support, plus exclusive legendary memory "Yizhuan City".'
+    'New SSR character [Master Mother] Gaia (Healer, Divine) available through Limited Recruitment from July 8-22, 2025. Divine master-level healer with powerful recovery abilities and shield support, plus exclusive legendary memory "Yizhuan City".',
   ],
-  
+
   // Official Update
   officialUpdate: {
     greeting: 'Dear Captains,',
@@ -34,22 +34,22 @@ export const gaiaRecruitmentData = {
       '',
       'Event Details:',
       '• Event Period: After maintenance on 2025/07/08 ~ 2025/07/22 03:59:59',
-      '• Event Description: Through the [Limited Character Recruitment] event, you can obtain [Master Mother] Gaia and the [Limited Memory Recruitment] event to get exclusive SSR memories "Yizhuan City".'
-    ]
+      '• Event Description: Through the [Limited Character Recruitment] event, you can obtain [Master Mother] Gaia and the [Limited Memory Recruitment] event to get exclusive SSR memories "Yizhuan City".',
+    ],
   },
-  
+
   // Source Information
   sourceInfo: {
     source: 'Official ZONE NOVA announcement',
     verified: true,
-    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova'
-  }
+    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova',
+  },
 };
 
 // SEO data for Gaia Recruitment announcement
 export const gaiaRecruitmentSEO = {
   title: `${gaiaRecruitmentData.title} - Zone Nova - GachaWiki`,
-  description: `New SSR character Master Mother Gaia (Healer, Divine) available through Limited Recruitment. Divine healer with powerful recovery abilities and shield support.`
+  description: `New SSR character Master Mother Gaia (Healer, Divine) available through Limited Recruitment. Divine healer with powerful recovery abilities and shield support.`,
 };
 
 // Export default for easy importing

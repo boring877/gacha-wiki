@@ -2,7 +2,13 @@
 /* This file defines consistent badge colors across the entire Silver and Blood wiki */
 
 /* Base badge styling */
-.badge, .rarity-badge, .class-badge, .faction-badge, .equipment-badge, .moon-badge, .attack-badge {
+.badge,
+.rarity-badge,
+.class-badge,
+.faction-badge,
+.equipment-badge,
+.moon-badge,
+.attack-badge {
   padding: 0.2rem 0.6rem;
   border-radius: 10px;
   font-size: 0.85rem;
@@ -13,157 +19,182 @@
 }
 
 /* Rarity Badge Colors */
-.rarity-badge.ssr, .badge.ssr {
+.rarity-badge.ssr,
+.badge.ssr {
   background: #ffe066;
   color: #222;
   border: 1px solid #ffd700;
 }
 
-.rarity-badge.sr, .badge.sr {
+.rarity-badge.sr,
+.badge.sr {
   background: #7ecfff;
   color: #222;
   border: 1px solid #4dbfff;
 }
 
-.rarity-badge.r, .badge.r {
+.rarity-badge.r,
+.badge.r {
   background: #b0b0b0;
   color: #222;
   border: 1px solid #999999;
 }
 
 /* Class Badge Colors */
-.class-badge.warrior, .badge.warrior {
+.class-badge.warrior,
+.badge.warrior {
   background: var(--sab-calm-red);
   color: #fff;
   border: 1px solid var(--sab-dark-red);
 }
 
-.class-badge.assassin, .badge.assassin {
+.class-badge.assassin,
+.badge.assassin {
   background: #4d4d4d;
   color: #fff;
   border: 1px solid #333333;
 }
 
-.class-badge.defender, .badge.defender {
+.class-badge.defender,
+.badge.defender {
   background: var(--sab-calm-blue);
   color: #fff;
   border: 1px solid var(--sab-dark-blue);
 }
 
-.class-badge.marksman, .badge.marksman {
+.class-badge.marksman,
+.badge.marksman {
   background: #228b22;
   color: #fff;
   border: 1px solid #32cd32;
 }
 
-.class-badge.sorcerer, .badge.sorcerer {
+.class-badge.sorcerer,
+.badge.sorcerer {
   background: var(--sab-light-blue);
   color: #fff;
   border: 1px solid var(--sab-dark-blue);
 }
 
-.class-badge.enchanter, .badge.enchanter {
+.class-badge.enchanter,
+.badge.enchanter {
   background: var(--sab-muted-gold);
   color: #222;
   border: 1px solid var(--sab-blood-accent);
 }
 
 /* Faction Badge Colors */
-.faction-badge.kingdom, .badge.kingdom {
+.faction-badge.kingdom,
+.badge.kingdom {
   background: var(--sab-calm-blue);
   color: #fff;
   border: 1px solid var(--sab-light-blue);
 }
 
-.faction-badge.ancestors, .badge.ancestors {
+.faction-badge.ancestors,
+.badge.ancestors {
   background: #8b4513;
   color: #fff;
   border: 1px solid #a0522d;
 }
 
-.faction-badge.church, .badge.church {
+.faction-badge.church,
+.badge.church {
   background: var(--sab-muted-gold);
   color: #222;
   border: 1px solid var(--sab-silver-accent);
 }
 
-.faction-badge.bloodborn, .badge.bloodborn {
+.faction-badge.bloodborn,
+.badge.bloodborn {
   background: var(--sab-dark-red);
   color: #fff;
   border: 1px solid var(--sab-calm-red);
 }
 
 /* Equipment Type Badge Colors */
-.equipment-badge.light, .badge.light {
+.equipment-badge.light,
+.badge.light {
   background: #87ceeb;
   color: #222;
   border: 1px solid #4fc3f7;
 }
 
-.equipment-badge.medium, .badge.medium {
+.equipment-badge.medium,
+.badge.medium {
   background: #daa520;
   color: #222;
   border: 1px solid #ffb74d;
 }
 
-.equipment-badge.heavy, .badge.heavy {
+.equipment-badge.heavy,
+.badge.heavy {
   background: #696969;
   color: #fff;
   border: 1px solid #9e9e9e;
 }
 
 /* Moon Phase Badge Colors */
-.moon-badge.new-moon, .badge.new-moon {
+.moon-badge.new-moon,
+.badge.new-moon {
   background: #2f2f2f;
   color: #fff;
   border: 1px solid #424242;
 }
 
-.moon-badge.crescent-moon, .badge.crescent-moon {
+.moon-badge.crescent-moon,
+.badge.crescent-moon {
   background: #708090;
   color: #fff;
   border: 1px solid #90a4ae;
 }
 
-.moon-badge.full-moon, .badge.full-moon {
+.moon-badge.full-moon,
+.badge.full-moon {
   background: #f5f5dc;
   color: #222;
   border: 1px solid #fff8dc;
 }
 
 /* Attack Type Badge Colors */
-.attack-badge.pdmg, .badge.pdmg {
+.attack-badge.pdmg,
+.badge.pdmg {
   background: #cd853f;
   color: #fff;
   border: 1px solid #deb887;
 }
 
-.attack-badge.mdmg, .badge.mdmg {
+.attack-badge.mdmg,
+.badge.mdmg {
   background: #4169e1;
   color: #fff;
   border: 1px solid #6495ed;
 }
 
 /* Skill Type Badge Colors */
-.skill-badge.normal-attack, .badge.normal-attack {
+.skill-badge.normal-attack,
+.badge.normal-attack {
   background: #808080;
   color: #fff;
   border: 1px solid #a0a0a0;
 }
 
-.skill-badge.special, .badge.special {
+.skill-badge.special,
+.badge.special {
   background: #ff8c00;
   color: #fff;
   border: 1px solid #ffa500;
 }
 
-.skill-badge.passive, .badge.passive {
+.skill-badge.passive,
+.badge.passive {
   background: #32cd32;
   color: #fff;
   border: 1px solid #7cfc00;
 }
 
-.skill-badge.ultimate, .badge.ultimate {
+.skill-badge.ultimate,
+.badge.ultimate {
   background: var(--sab-dark-red);
   color: #fff;
   border: 1px solid var(--sab-calm-red);
@@ -260,22 +291,41 @@
 }
 
 /* Hover effects for all badges */
-.badge:hover, .rarity-badge:hover, .class-badge:hover, .faction-badge:hover, 
-.equipment-badge:hover, .moon-badge:hover, .attack-badge:hover, .skill-badge:hover, .tag-badge:hover {
+.badge:hover,
+.rarity-badge:hover,
+.class-badge:hover,
+.faction-badge:hover,
+.equipment-badge:hover,
+.moon-badge:hover,
+.attack-badge:hover,
+.skill-badge:hover,
+.tag-badge:hover {
   transform: none; /* Removed zoom effect */
   transition: background-color 0.15s ease;
 }
 
 /* Small badge variant */
-.badge.small, .rarity-badge.small, .class-badge.small, .faction-badge.small,
-.equipment-badge.small, .moon-badge.small, .attack-badge.small, .skill-badge.small {
+.badge.small,
+.rarity-badge.small,
+.class-badge.small,
+.faction-badge.small,
+.equipment-badge.small,
+.moon-badge.small,
+.attack-badge.small,
+.skill-badge.small {
   padding: 0.15rem 0.4rem;
   font-size: 0.75rem;
 }
 
 /* Large badge variant */
-.badge.large, .rarity-badge.large, .class-badge.large, .faction-badge.large,
-.equipment-badge.large, .moon-badge.large, .attack-badge.large, .skill-badge.large {
+.badge.large,
+.rarity-badge.large,
+.class-badge.large,
+.faction-badge.large,
+.equipment-badge.large,
+.moon-badge.large,
+.attack-badge.large,
+.skill-badge.large {
   padding: 0.3rem 0.8rem;
   font-size: 1rem;
-} 
+}

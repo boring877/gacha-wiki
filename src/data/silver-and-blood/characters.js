@@ -6,44 +6,93 @@
 export const gameInfo = {
   rarities: ['SSR', 'SR', 'R'],
   classes: [
-    { name: 'Warrior', description: 'Has strong survivability and DPS. Performs well in varying scenarios.' },
-    { name: 'Assassin', description: 'Adept at breaking through or avoiding the front line, directly striking the weaker middle and backline enemies.' },
+    {
+      name: 'Warrior',
+      description: 'Has strong survivability and DPS. Performs well in varying scenarios.',
+    },
+    {
+      name: 'Assassin',
+      description:
+        'Adept at breaking through or avoiding the front line, directly striking the weaker middle and backline enemies.',
+    },
     { name: 'Defender', description: 'A hero with reliable survivability and protection skills.' },
-    { name: 'Marksman', description: 'Deals consistent, strong DMG to a single target or targets in a small area.' },
-    { name: 'Sorcerer', description: 'A hero with a versatile attack style who can destroy many enemies using various methods.' },
-    { name: 'Enchanter', description: 'Each possesses distinctive abilities, offering various benefits to their teams.' }
+    {
+      name: 'Marksman',
+      description: 'Deals consistent, strong DMG to a single target or targets in a small area.',
+    },
+    {
+      name: 'Sorcerer',
+      description:
+        'A hero with a versatile attack style who can destroy many enemies using various methods.',
+    },
+    {
+      name: 'Enchanter',
+      description:
+        'Each possesses distinctive abilities, offering various benefits to their teams.',
+    },
   ],
   factions: [
     { name: 'Kingdom', description: 'Noble houses defending traditional order' },
     { name: 'Ancestors', description: 'Ancient beings with forgotten wisdom' },
     { name: 'Church', description: 'Holy order wielding divine power' },
-    { name: 'Bloodborn', description: 'Those who embraced forbidden blood magic' }
+    { name: 'Bloodborn', description: 'Those who embraced forbidden blood magic' },
   ],
   equipmentTypes: [
     { name: 'Light', description: 'Attack-focused gear with high offensive stats' },
     { name: 'Medium', description: 'It fits medium equipment, offering balanced attributes.' },
-    { name: 'Heavy', description: 'Survival-focused gear with maximum protection' }
+    { name: 'Heavy', description: 'Survival-focused gear with maximum protection' },
   ],
   moonPhases: [
-    { name: 'New Moon', effect: 'Activate Moon Phase: New Moon by using Ultimate in battle. While Blood Moon is active, all Vassals gains Ultimate Bloodsoul Cost -1 and 25% more DMG' },
-    { name: 'Crescent Moon', effect: 'Activate Moon Phase: Crescent Moon by using Ultimate in battle. While Blood Moon is active, all Vassals gains Ultimate Bloodsoul Cost -1 and 25% more DMG' },
-    { name: 'Full Moon', effect: 'Activate Moon Phase: Full Moon by using Ultimate in battle. While Blood Moon is active, all Vassals gains Ultimate Bloodsoul Cost -1 and 25% more DMG.' }
+    {
+      name: 'New Moon',
+      effect:
+        'Activate Moon Phase: New Moon by using Ultimate in battle. While Blood Moon is active, all Vassals gains Ultimate Bloodsoul Cost -1 and 25% more DMG',
+    },
+    {
+      name: 'Crescent Moon',
+      effect:
+        'Activate Moon Phase: Crescent Moon by using Ultimate in battle. While Blood Moon is active, all Vassals gains Ultimate Bloodsoul Cost -1 and 25% more DMG',
+    },
+    {
+      name: 'Full Moon',
+      effect:
+        'Activate Moon Phase: Full Moon by using Ultimate in battle. While Blood Moon is active, all Vassals gains Ultimate Bloodsoul Cost -1 and 25% more DMG.',
+    },
   ],
   attackTypes: [
-    { name: 'P.DMG', description: 'DMG dealt through physical means like swords and bows. Increasing P. DEF reduces DMG taken from this type.' },
-    { name: 'M.DMG', description: 'DMG dealt throught magical means like blood formulas and alchemical formulas.Increasing M.DEF reduces DMG taken from this type.' }
+    {
+      name: 'P.DMG',
+      description:
+        'DMG dealt through physical means like swords and bows. Increasing P. DEF reduces DMG taken from this type.',
+    },
+    {
+      name: 'M.DMG',
+      description:
+        'DMG dealt throught magical means like blood formulas and alchemical formulas.Increasing M.DEF reduces DMG taken from this type.',
+    },
   ],
   skillTypes: [
     { name: 'Normal Attack', description: 'Basic attack skill that generates Bloodsoul' },
     { name: 'Special', description: 'Enhanced ability with moderate Bloodsoul cost' },
     { name: 'Passive', description: 'Always-active ability that provides constant effects' },
-    { name: 'Ultimate', description: 'Most powerful skill that activates Moon Phase effects' }
+    { name: 'Ultimate', description: 'Most powerful skill that activates Moon Phase effects' },
   ],
   stats: [
-    'HP', 'ATK', 'P.DEF', 'M.DEF', 'ATK SPD', 'Bloodsoul Recovery',
-    'CRIT Rate', 'CRIT DMG Increase', 'All DMG Bonus', 'All DMG Reduction',
-    'P.DMG Bonus', 'M.DMG Bonus', 'Received Healing Bonus', 'Blood Power'
-  ]
+    'HP',
+    'ATK',
+    'P.DEF',
+    'M.DEF',
+    'ATK SPD',
+    'Bloodsoul Recovery',
+    'CRIT Rate',
+    'CRIT DMG Increase',
+    'All DMG Bonus',
+    'All DMG Reduction',
+    'P.DMG Bonus',
+    'M.DMG Bonus',
+    'Received Healing Bonus',
+    'Blood Power',
+  ],
 };
 
 // Import individual character files
@@ -163,12 +212,10 @@ export function getCharacterStats() {
     byFaction: gameInfo.factions.reduce((acc, faction) => {
       acc[faction.name] = getCharactersByFaction(faction.name).length;
       return acc;
-    }, {})
+    }, {}),
   };
 }
 
 // Legacy exports for compatibility
 export const SILVER_AND_BLOOD_CHARACTERS = characters;
-export const CHARACTERS_BY_SLUG = new Map(
-  characters.map(char => [char.id, char])
-); 
+export const CHARACTERS_BY_SLUG = new Map(characters.map(char => [char.id, char]));

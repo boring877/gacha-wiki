@@ -3,466 +3,732 @@
 import ZoneNovaLayout from '../../../layouts/zone-nova/Layout.astro';
 
 // Import memory data and utilities
-import { 
-  ZONE_NOVA_MEMORIES, 
+import {
+  ZONE_NOVA_MEMORIES,
   MEMORY_METADATA,
-  getMemoriesByCharacter
+  getMemoriesByCharacter,
 } from '../../../data/zone-nova/memories.js';
 ---
 
-<ZoneNovaLayout 
-	title="Zone Nova Memory Database - GachaWiki" 
-	description="Sortable and filterable memory database for Zone Nova"
-	gameTitle="Memory Database"
+<ZoneNovaLayout
+  title="Zone Nova Memory Database - GachaWiki"
+  description="Sortable and filterable memory database for Zone Nova"
+  gameTitle="Memory Database"
 >
-	<Fragment slot="head">
-		{/* Import styles and add mobile card improvements */}
-		<link rel="preload" as="image" href="/images/games/zone-nova/memories/Athenacard.jpg" />
-		<style>
-    /* Layout and filter bar */
-    .page-flex { display: flex; gap: 2.5rem; }
-    .main-content-container { width: 100%; display: flex; justify-content: center; padding: 0 2rem; }
-    .content-wrapper { max-width: 1200px; width: 100%; margin: 0 auto; }
-    .filter-bar { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; margin: 2rem auto 1.5rem auto; flex-wrap: wrap; padding: 0 1rem; }
-    .filter-controls, .sort-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-    
-    /* Rarity Filter Buttons */
-    .rarity-filter-group { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-    .rarity-filter-label { 
-      font-size: 1rem; 
-      color: #ffffff; 
-      font-weight: 700; 
-      margin-right: 0.75rem; 
-      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-      display: inline-block;
-    }
-    .rarity-filter-btn { 
-      padding: 0.4rem 0.7rem; 
-      border: 2px solid transparent; 
-      border-radius: 8px; 
-      font-size: 0.8rem; 
-      font-weight: 600; 
-      cursor: pointer; 
-      transition: all 0.3s ease; 
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      position: relative;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .rarity-filter-btn:hover { 
-      transform: translateY(-2px); 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    .rarity-filter-btn.active {
-      border-color: #fff !important;
-      color: #fff !important;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-    }
-    
-    /* SSR Rarity Button */
-    .rarity-filter-btn.ssr { 
-      background: linear-gradient(135deg, #ffcc02, #e6ac00); 
-      color: #000; 
-      text-shadow: 0 1px 2px rgba(255,255,255,0.3);
-    }
-    .rarity-filter-btn.ssr:hover { 
-      background: linear-gradient(135deg, #e6ac00, #cc9900); 
-    }
-    .rarity-filter-btn.ssr.active { 
-      background: linear-gradient(135deg, #cc9900, #b88600) !important; 
-    }
-    
-    /* SR Rarity Button */
-    .rarity-filter-btn.sr { 
-      background: linear-gradient(135deg, #2196f3, #1976d2); 
-      color: #fff; 
-    }
-    .rarity-filter-btn.sr:hover { 
-      background: linear-gradient(135deg, #1976d2, #1565c0); 
-    }
-    .rarity-filter-btn.sr.active { 
-      background: linear-gradient(135deg, #1565c0, #0d47a1) !important; 
-    }
-    
-    /* R Rarity Button */
-    .rarity-filter-btn.r { 
-      background: linear-gradient(135deg, #757575, #616161); 
-      color: #fff; 
-    }
-    .rarity-filter-btn.r:hover { 
-      background: linear-gradient(135deg, #616161, #424242); 
-    }
-    .rarity-filter-btn.r.active { 
-      background: linear-gradient(135deg, #424242, #212121) !important; 
-    }
-    
-    /* All Rarity Button */
-    .rarity-filter-btn.all { 
-      background: linear-gradient(135deg, var(--rose-quartz), #e91e63); 
-      color: #fff; 
-    }
-    .rarity-filter-btn.all:hover { 
-      background: linear-gradient(135deg, #d81b60, var(--rose-quartz)); 
-    }
-    .rarity-filter-btn.all.active { 
-      background: linear-gradient(135deg, #c2185b, #ad1457) !important; 
-    }
-    
-    /* Sort buttons */
-    .sort-btn { padding: 0.4rem 0.7rem; background: var(--bg-primary); color: var(--text-secondary); border-radius: 8px; border: 1px solid var(--mocha-mousse); font-size: 0.8rem; cursor: pointer; }
-    .sort-btn:hover { background: var(--bg-secondary); color: var(--text-primary); border-color: var(--amber-glow); }
-    .sort-btn.active { background: var(--amber-glow); color: white; }
-    
-    /* Reset button unique styling */
-    .reset-btn { 
-      padding: 0.5rem 1rem; 
-      background: linear-gradient(135deg, var(--rose-quartz), #e91e63); 
-      color: white; 
-      border-radius: 10px; 
-      border: 2px solid var(--rose-quartz); 
-      font-size: 0.85rem; 
-      font-weight: 600; 
-      cursor: pointer; 
-      box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .reset-btn:hover { 
-      background: linear-gradient(135deg, #d81b60, var(--rose-quartz)); 
-      transform: translateY(-1px); 
-      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
-      border-color: #d81b60;
-    }
-    .reset-btn:active {
-      transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(233, 30, 99, 0.3);
-    }
-    /* Table styles */
-    .memory-table-container { overflow-x: auto; margin: 1.5rem auto; padding: 0 1rem; }
-    table.memory-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--bg-primary); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); font-family: 'Space Grotesk', sans-serif; }
-    table.memory-table th, table.memory-table td { padding: 1rem 0.5rem; text-align: center; border-bottom: 1px solid var(--neutral-200); }
-    table.memory-table th { background: var(--amber-glow); color: #222; font-weight: 700; font-size: 0.9rem; position: sticky; top: 0; z-index: 2; }
-    .memory-img { width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid var(--amber-glow); }
-    .rarity-badge, .element-badge, .type-badge { padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; }
-    .rarity-badge.ssr { background: #ffe066; color: #222; }
-    .rarity-badge.sr { background: #7ecfff; color: #222; }
-    .rarity-badge.r { background: #b0b0b0; color: #fff; }
-    .element-badge.fire { background: #ff6b6b; color: #fff; }
-    .element-badge.ice { background: #4dbfff; color: #fff; }
-    .element-badge.wind { background: #4dffb8; color: #222; }
-    .element-badge.holy { background: #ffe066; color: #222; }
-    .element-badge.chaos { background: #b266ff; color: #fff; }
-    .type-badge.buffer { background: #7ecfff; color: #222; }
-    .type-badge.offensive { background: #ffb347; color: #222; }
-    .type-badge.defensive { background: #b0b0b0; color: #222; }
-    .type-badge.special { background: #b266ff; color: #fff; }
-    .effects-cell { max-width: 300px; text-align: left; font-size: 0.8rem; }
-    .effect-item { margin: 0.25rem 0; padding: 0.25rem; background: rgba(255, 183, 77, 0.1); border-radius: 4px; }
-    /* Mobile card styles */
-    .mobile-memory-card { background: var(--bg-primary, #232323); border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.10); padding: 1.2rem 1rem 1rem 1rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; border: 1px solid var(--amber-glow, #ffe066); }
-    .mobile-card-header { display: flex; align-items: center; gap: 1rem; }
-    .mobile-memory-card img { width: 80px; height: 80px; border-radius: 14px; border: 3px solid var(--amber-glow, #ffe066); background: #fff; margin-bottom: 0; }
-    .mobile-card-title-group { display: flex; flex-direction: column; gap: 0.2rem; }
-    .mobile-memory-card h3 { margin: 0 0 0.1rem 0; font-size: 1.25rem; color: var(--amber-glow, #ffe066); font-weight: 700; letter-spacing: 0.5px; }
-    .mobile-card-badges { display: flex; gap: 0.4rem; margin-top: 0.1rem; flex-wrap: wrap; }
-    .mobile-memory-card .rarity-badge, .mobile-memory-card .element-badge, .mobile-memory-card .type-badge { font-size: 0.95em; padding: 0.18em 0.7em; border-radius: 8px; font-weight: 600; display: inline-block; margin: 0; }
-    .mobile-card-stats { display: flex; gap: 1.2rem; margin-top: 0.5rem; font-size: 1.05em; color: var(--text-secondary, #e0e0e0); font-weight: 500; }
-    .mobile-card-stats .stat-label { color: var(--amber-glow, #ffe066); font-weight: 700; margin-right: 0.2em; }
-    .mobile-card-effects { margin-top: 0.75rem; }
-    .mobile-card-effects h4 { margin: 0 0 0.5rem 0; font-size: 0.9rem; color: var(--amber-glow); font-weight: 600; }
-    .mobile-effect-item { background: rgba(255, 183, 77, 0.1); padding: 0.5rem; border-radius: 6px; margin: 0.25rem 0; font-size: 0.85rem; color: var(--text-secondary); }
-    
-    /* Desktop: show table, hide mobile cards */
-    .memory-table-container { display: block; }
-    .mobile-card-view { display: none; }
-    
-    /* Mobile: show cards, hide table */
-    @media (max-width: 768px) {
-      .memory-table-container { display: none !important; }
-      .mobile-card-view { display: block !important; }
-      .filter-bar { flex-direction: column; gap: 0.8rem; }
-      .filter-controls, .sort-controls { width: 100%; justify-content: center; }
-      .rarity-filter-group { justify-content: center; gap: 0.5rem; }
-      .rarity-filter-label { 
-        margin-right: 0.5rem; 
-        font-size: 0.9rem; 
-        color: #ffffff !important;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.7) !important;
+  <Fragment slot="head">
+    {/* Import styles and add mobile card improvements */}
+    <link rel="preload" as="image" href="/images/games/zone-nova/memories/Athenacard.jpg" />
+    <style>
+      /* Layout and filter bar */
+      .page-flex {
+        display: flex;
+        gap: 2.5rem;
       }
-      .rarity-filter-btn { padding: 0.4rem 0.7rem; font-size: 0.8rem; letter-spacing: 0.5px; }
-    }
-		</style>
-	</Fragment>
-	
-	<section class="page-flex">
-		<div class="main-content-container">
-			<div class="content-wrapper">
-				{/* <!-- Filter Bar --> */}
-				<div class="filter-bar">
-					<div class="filter-controls">
-						<div class="rarity-filter-group">
-							<button class="rarity-filter-btn all active" data-rarity="">All</button>
-							<button class="rarity-filter-btn ssr" data-rarity="SSR">SSR</button>
-							<button class="rarity-filter-btn sr" data-rarity="SR">SR</button>
-							<button class="rarity-filter-btn r" data-rarity="R">R</button>
-						</div>
-					</div>
-					<div class="sort-controls">
-						<button class="sort-btn" data-sort="hp">HP</button>
-						<button class="sort-btn" data-sort="attack">ATK</button>
-						<button class="sort-btn" data-sort="defense">DEF</button>
-						<button class="reset-btn" id="reset-table">Reset</button>
-					</div>
-				</div>
-				
-				{/* <!-- Desktop table view --> */}
-				<div class="memory-table-container">
-					<table class="memory-table">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Image</th>
-								<th>Name</th>
-								<th>Rarity</th>
-								<th>HP</th>
-								<th>Attack</th>
-								<th>Defense</th>
-							</tr>
-						</thead>
-						<tbody id="memory-table-body">
-							{ZONE_NOVA_MEMORIES.map((memory, idx) => (
-                <tr data-memory-id={memory.id} data-slug={memory.slug} data-url={memory.detailUrl} style="cursor:pointer;">
-                  <td>{idx + 1}</td>
-                  <td><img src={memory.image} alt={memory.name} class="memory-img" loading="lazy"/></td>
-                  <td>{memory.name}</td>
-                  <td><span class={`rarity-badge ${memory.rarity.toLowerCase()}`} data-sort-key="rarity">{memory.rarity}</span></td>
-                  <td data-sort-key="hp">{memory.stats.hp.toLocaleString()}</td>
-                  <td data-sort-key="attack">{memory.stats.attack.toLocaleString()}</td>
-                  <td data-sort-key="defense">{memory.stats.defense.toLocaleString()}</td>
-                </tr>
-              ))}
-						</tbody>
-					</table>
-				</div>
-				
-				{/* <!-- Mobile card view container --> */}
-				<div class="mobile-card-view" id="mobile-cards-container">
-					{ZONE_NOVA_MEMORIES.map(memory => (
-            <div class="mobile-memory-card" data-memory-id={memory.id} data-slug={memory.slug} data-url={memory.detailUrl} style="cursor:pointer;">
-              <div class="mobile-card-header">
-                <img src={memory.image} alt={memory.name} class="memory-img"/>
-                <div class="mobile-card-title-group">
-                  <h3>{memory.name}</h3>
-                  <div class="mobile-card-badges">
-                    <span class={`rarity-badge ${memory.rarity.toLowerCase()}`}>{memory.rarity}</span>
+      .main-content-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0 2rem;
+      }
+      .content-wrapper {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .filter-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+        margin: 2rem auto 1.5rem auto;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+      }
+      .filter-controls,
+      .sort-controls {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      /* Rarity Filter Buttons */
+      .rarity-filter-group {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .rarity-filter-label {
+        font-size: 1rem;
+        color: #ffffff;
+        font-weight: 700;
+        margin-right: 0.75rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        display: inline-block;
+      }
+      .rarity-filter-btn {
+        padding: 0.4rem 0.7rem;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .rarity-filter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      .rarity-filter-btn.active {
+        border-color: #fff !important;
+        color: #fff !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      /* SSR Rarity Button */
+      .rarity-filter-btn.ssr {
+        background: linear-gradient(135deg, #ffcc02, #e6ac00);
+        color: #000;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+      }
+      .rarity-filter-btn.ssr:hover {
+        background: linear-gradient(135deg, #e6ac00, #cc9900);
+      }
+      .rarity-filter-btn.ssr.active {
+        background: linear-gradient(135deg, #cc9900, #b88600) !important;
+      }
+
+      /* SR Rarity Button */
+      .rarity-filter-btn.sr {
+        background: linear-gradient(135deg, #2196f3, #1976d2);
+        color: #fff;
+      }
+      .rarity-filter-btn.sr:hover {
+        background: linear-gradient(135deg, #1976d2, #1565c0);
+      }
+      .rarity-filter-btn.sr.active {
+        background: linear-gradient(135deg, #1565c0, #0d47a1) !important;
+      }
+
+      /* R Rarity Button */
+      .rarity-filter-btn.r {
+        background: linear-gradient(135deg, #757575, #616161);
+        color: #fff;
+      }
+      .rarity-filter-btn.r:hover {
+        background: linear-gradient(135deg, #616161, #424242);
+      }
+      .rarity-filter-btn.r.active {
+        background: linear-gradient(135deg, #424242, #212121) !important;
+      }
+
+      /* All Rarity Button */
+      .rarity-filter-btn.all {
+        background: linear-gradient(135deg, var(--rose-quartz), #e91e63);
+        color: #fff;
+      }
+      .rarity-filter-btn.all:hover {
+        background: linear-gradient(135deg, #d81b60, var(--rose-quartz));
+      }
+      .rarity-filter-btn.all.active {
+        background: linear-gradient(135deg, #c2185b, #ad1457) !important;
+      }
+
+      /* Sort buttons */
+      .sort-btn {
+        padding: 0.4rem 0.7rem;
+        background: var(--bg-primary);
+        color: var(--text-secondary);
+        border-radius: 8px;
+        border: 1px solid var(--mocha-mousse);
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+      .sort-btn:hover {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        border-color: var(--amber-glow);
+      }
+      .sort-btn.active {
+        background: var(--amber-glow);
+        color: white;
+      }
+
+      /* Reset button unique styling */
+      .reset-btn {
+        padding: 0.5rem 1rem;
+        background: linear-gradient(135deg, var(--rose-quartz), #e91e63);
+        color: white;
+        border-radius: 10px;
+        border: 2px solid var(--rose-quartz);
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .reset-btn:hover {
+        background: linear-gradient(135deg, #d81b60, var(--rose-quartz));
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+        border-color: #d81b60;
+      }
+      .reset-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(233, 30, 99, 0.3);
+      }
+      /* Table styles */
+      .memory-table-container {
+        overflow-x: auto;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+      }
+      table.memory-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: var(--bg-primary);
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      table.memory-table th,
+      table.memory-table td {
+        padding: 1rem 0.5rem;
+        text-align: center;
+        border-bottom: 1px solid var(--neutral-200);
+      }
+      table.memory-table th {
+        background: var(--amber-glow);
+        color: #222;
+        font-weight: 700;
+        font-size: 0.9rem;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+      .memory-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        object-fit: cover;
+        border: 2px solid var(--amber-glow);
+      }
+      .rarity-badge,
+      .element-badge,
+      .type-badge {
+        padding: 0.2rem 0.6rem;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      .rarity-badge.ssr {
+        background: #ffe066;
+        color: #222;
+      }
+      .rarity-badge.sr {
+        background: #7ecfff;
+        color: #222;
+      }
+      .rarity-badge.r {
+        background: #b0b0b0;
+        color: #fff;
+      }
+      .element-badge.fire {
+        background: #ff6b6b;
+        color: #fff;
+      }
+      .element-badge.ice {
+        background: #4dbfff;
+        color: #fff;
+      }
+      .element-badge.wind {
+        background: #4dffb8;
+        color: #222;
+      }
+      .element-badge.holy {
+        background: #ffe066;
+        color: #222;
+      }
+      .element-badge.chaos {
+        background: #b266ff;
+        color: #fff;
+      }
+      .type-badge.buffer {
+        background: #7ecfff;
+        color: #222;
+      }
+      .type-badge.offensive {
+        background: #ffb347;
+        color: #222;
+      }
+      .type-badge.defensive {
+        background: #b0b0b0;
+        color: #222;
+      }
+      .type-badge.special {
+        background: #b266ff;
+        color: #fff;
+      }
+      .effects-cell {
+        max-width: 300px;
+        text-align: left;
+        font-size: 0.8rem;
+      }
+      .effect-item {
+        margin: 0.25rem 0;
+        padding: 0.25rem;
+        background: rgba(255, 183, 77, 0.1);
+        border-radius: 4px;
+      }
+      /* Mobile card styles */
+      .mobile-memory-card {
+        background: var(--bg-primary, #232323);
+        border-radius: 14px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        padding: 1.2rem 1rem 1rem 1rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        border: 1px solid var(--amber-glow, #ffe066);
+      }
+      .mobile-card-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .mobile-memory-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 14px;
+        border: 3px solid var(--amber-glow, #ffe066);
+        background: #fff;
+        margin-bottom: 0;
+      }
+      .mobile-card-title-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      .mobile-memory-card h3 {
+        margin: 0 0 0.1rem 0;
+        font-size: 1.25rem;
+        color: var(--amber-glow, #ffe066);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      .mobile-card-badges {
+        display: flex;
+        gap: 0.4rem;
+        margin-top: 0.1rem;
+        flex-wrap: wrap;
+      }
+      .mobile-memory-card .rarity-badge,
+      .mobile-memory-card .element-badge,
+      .mobile-memory-card .type-badge {
+        font-size: 0.95em;
+        padding: 0.18em 0.7em;
+        border-radius: 8px;
+        font-weight: 600;
+        display: inline-block;
+        margin: 0;
+      }
+      .mobile-card-stats {
+        display: flex;
+        gap: 1.2rem;
+        margin-top: 0.5rem;
+        font-size: 1.05em;
+        color: var(--text-secondary, #e0e0e0);
+        font-weight: 500;
+      }
+      .mobile-card-stats .stat-label {
+        color: var(--amber-glow, #ffe066);
+        font-weight: 700;
+        margin-right: 0.2em;
+      }
+      .mobile-card-effects {
+        margin-top: 0.75rem;
+      }
+      .mobile-card-effects h4 {
+        margin: 0 0 0.5rem 0;
+        font-size: 0.9rem;
+        color: var(--amber-glow);
+        font-weight: 600;
+      }
+      .mobile-effect-item {
+        background: rgba(255, 183, 77, 0.1);
+        padding: 0.5rem;
+        border-radius: 6px;
+        margin: 0.25rem 0;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      /* Desktop: show table, hide mobile cards */
+      .memory-table-container {
+        display: block;
+      }
+      .mobile-card-view {
+        display: none;
+      }
+
+      /* Mobile: show cards, hide table */
+      @media (max-width: 768px) {
+        .memory-table-container {
+          display: none !important;
+        }
+        .mobile-card-view {
+          display: block !important;
+        }
+        .filter-bar {
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+        .filter-controls,
+        .sort-controls {
+          width: 100%;
+          justify-content: center;
+        }
+        .rarity-filter-group {
+          justify-content: center;
+          gap: 0.5rem;
+        }
+        .rarity-filter-label {
+          margin-right: 0.5rem;
+          font-size: 0.9rem;
+          color: #ffffff !important;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+        }
+        .rarity-filter-btn {
+          padding: 0.4rem 0.7rem;
+          font-size: 0.8rem;
+          letter-spacing: 0.5px;
+        }
+      }
+    </style>
+  </Fragment>
+
+  <section class="page-flex">
+    <div class="main-content-container">
+      <div class="content-wrapper">
+        {/* <!-- Filter Bar --> */}
+        <div class="filter-bar">
+          <div class="filter-controls">
+            <div class="rarity-filter-group">
+              <button class="rarity-filter-btn all active" data-rarity="">All</button>
+              <button class="rarity-filter-btn ssr" data-rarity="SSR">SSR</button>
+              <button class="rarity-filter-btn sr" data-rarity="SR">SR</button>
+              <button class="rarity-filter-btn r" data-rarity="R">R</button>
+            </div>
+          </div>
+          <div class="sort-controls">
+            <button class="sort-btn" data-sort="hp">HP</button>
+            <button class="sort-btn" data-sort="attack">ATK</button>
+            <button class="sort-btn" data-sort="defense">DEF</button>
+            <button class="reset-btn" id="reset-table">Reset</button>
+          </div>
+        </div>
+
+        {/* <!-- Desktop table view --> */}
+        <div class="memory-table-container">
+          <table class="memory-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Rarity</th>
+                <th>HP</th>
+                <th>Attack</th>
+                <th>Defense</th>
+              </tr>
+            </thead>
+            <tbody id="memory-table-body">
+              {
+                ZONE_NOVA_MEMORIES.map((memory, idx) => (
+                  <tr
+                    data-memory-id={memory.id}
+                    data-slug={memory.slug}
+                    data-url={memory.detailUrl}
+                    style="cursor:pointer;"
+                  >
+                    <td>{idx + 1}</td>
+                    <td>
+                      <img src={memory.image} alt={memory.name} class="memory-img" loading="lazy" />
+                    </td>
+                    <td>{memory.name}</td>
+                    <td>
+                      <span
+                        class={`rarity-badge ${memory.rarity.toLowerCase()}`}
+                        data-sort-key="rarity"
+                      >
+                        {memory.rarity}
+                      </span>
+                    </td>
+                    <td data-sort-key="hp">{memory.stats.hp.toLocaleString()}</td>
+                    <td data-sort-key="attack">{memory.stats.attack.toLocaleString()}</td>
+                    <td data-sort-key="defense">{memory.stats.defense.toLocaleString()}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+
+        {/* <!-- Mobile card view container --> */}
+        <div class="mobile-card-view" id="mobile-cards-container">
+          {
+            ZONE_NOVA_MEMORIES.map(memory => (
+              <div
+                class="mobile-memory-card"
+                data-memory-id={memory.id}
+                data-slug={memory.slug}
+                data-url={memory.detailUrl}
+                style="cursor:pointer;"
+              >
+                <div class="mobile-card-header">
+                  <img src={memory.image} alt={memory.name} class="memory-img" />
+                  <div class="mobile-card-title-group">
+                    <h3>{memory.name}</h3>
+                    <div class="mobile-card-badges">
+                      <span class={`rarity-badge ${memory.rarity.toLowerCase()}`}>
+                        {memory.rarity}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mobile-card-stats">
+                  <div>
+                    <span class="stat-label">HP:</span> {memory.stats.hp.toLocaleString()}
+                  </div>
+                  <div>
+                    <span class="stat-label">ATK:</span> {memory.stats.attack.toLocaleString()}
+                  </div>
+                  <div>
+                    <span class="stat-label">DEF:</span> {memory.stats.defense.toLocaleString()}
                   </div>
                 </div>
               </div>
-              <div class="mobile-card-stats">
-                <div><span class="stat-label">HP:</span> {memory.stats.hp.toLocaleString()}</div>
-                <div><span class="stat-label">ATK:</span> {memory.stats.attack.toLocaleString()}</div>
-                <div><span class="stat-label">DEF:</span> {memory.stats.defense.toLocaleString()}</div>
-              </div>
-            </div>
-          ))}
-				</div>
-			</div>
-		</div>
-	</section>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<script>
-		// Memory database functionality
-		document.addEventListener('DOMContentLoaded', function() {
-			const memoryTableBody = document.getElementById('memory-table-body');
-			const mobileCardsContainer = document.getElementById('mobile-cards-container');
-			const elementFilter = document.getElementById('element-filter') as HTMLSelectElement | null;
-			const rarityFilterButtons = document.querySelectorAll('.rarity-filter-btn');
+  <script>
+    // Memory database functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const memoryTableBody = document.getElementById('memory-table-body');
+      const mobileCardsContainer = document.getElementById('mobile-cards-container');
+      const elementFilter = document.getElementById('element-filter') as HTMLSelectElement | null;
+      const rarityFilterButtons = document.querySelectorAll('.rarity-filter-btn');
 
-			const characterFilter = document.getElementById('character-filter') as HTMLSelectElement | null;
-			const resetButton = document.getElementById('reset-table');
-			const sortButtons = document.querySelectorAll('.sort-btn');
+      const characterFilter = document.getElementById(
+        'character-filter'
+      ) as HTMLSelectElement | null;
+      const resetButton = document.getElementById('reset-table');
+      const sortButtons = document.querySelectorAll('.sort-btn');
 
-			let currentSortKey = '';
-			let isAscending = false;
-			let allMemories: any[] = [];
+      let currentSortKey = '';
+      let isAscending = false;
+      let allMemories: any[] = [];
 
-			// Initialize memories data
-			function initializeMemories() {
-				const tableRows = document.querySelectorAll('#memory-table-body tr');
-				const mobileCards = document.querySelectorAll('.mobile-memory-card');
-				
-				allMemories = Array.from(tableRows).map((row, index) => {
-					const mobileCard = mobileCards[index];
-					const tableRow = row as HTMLTableRowElement;
-					return {
-						element: row,
-						mobileElement: mobileCard,
-						data: {
-							element: row.querySelector('[data-sort-key="element"]')?.textContent?.toLowerCase() || '',
-							rarity: row.querySelector('[data-sort-key="rarity"]')?.textContent?.toLowerCase() || '',
-							character: tableRow.cells[3]?.textContent?.toLowerCase() || '',
-							name: tableRow.cells[2]?.textContent?.toLowerCase() || '',
-							hp: parseInt(row.querySelector('[data-sort-key="hp"]')?.textContent?.replace(/,/g, '') || '0'),
-							attack: parseInt(row.querySelector('[data-sort-key="attack"]')?.textContent?.replace(/,/g, '') || '0'),
-							defense: parseInt(row.querySelector('[data-sort-key="defense"]')?.textContent?.replace(/,/g, '') || '0')
-						}
-					};
-				});
-			}
+      // Initialize memories data
+      function initializeMemories() {
+        const tableRows = document.querySelectorAll('#memory-table-body tr');
+        const mobileCards = document.querySelectorAll('.mobile-memory-card');
 
-			// Update row numbers for visible rows only
-			function updateRowNumbers() {
-				let visibleCount = 0;
-				const visibleRows = Array.from(memoryTableBody?.children || []).filter(row => 
-					(row as HTMLElement).style.display !== 'none'
-				);
-				
-				visibleRows.forEach((row) => {
-					visibleCount++;
-					(row as HTMLTableRowElement).cells[0].textContent = String(visibleCount);
-				});
-			}
+        allMemories = Array.from(tableRows).map((row, index) => {
+          const mobileCard = mobileCards[index];
+          const tableRow = row as HTMLTableRowElement;
+          return {
+            element: row,
+            mobileElement: mobileCard,
+            data: {
+              element:
+                row.querySelector('[data-sort-key="element"]')?.textContent?.toLowerCase() || '',
+              rarity:
+                row.querySelector('[data-sort-key="rarity"]')?.textContent?.toLowerCase() || '',
+              character: tableRow.cells[3]?.textContent?.toLowerCase() || '',
+              name: tableRow.cells[2]?.textContent?.toLowerCase() || '',
+              hp: parseInt(
+                row.querySelector('[data-sort-key="hp"]')?.textContent?.replace(/,/g, '') || '0'
+              ),
+              attack: parseInt(
+                row.querySelector('[data-sort-key="attack"]')?.textContent?.replace(/,/g, '') || '0'
+              ),
+              defense: parseInt(
+                row.querySelector('[data-sort-key="defense"]')?.textContent?.replace(/,/g, '') ||
+                  '0'
+              ),
+            },
+          };
+        });
+      }
 
-			// Filter memories
-			function filterMemories() {
-				const activeRarityButton = document.querySelector('.rarity-filter-btn.active') as HTMLElement;
-				const rarityValue = activeRarityButton?.dataset.rarity?.toLowerCase() || '';
+      // Update row numbers for visible rows only
+      function updateRowNumbers() {
+        let visibleCount = 0;
+        const visibleRows = Array.from(memoryTableBody?.children || []).filter(
+          row => (row as HTMLElement).style.display !== 'none'
+        );
 
-				allMemories.forEach(memory => {
-					const matchesRarity = !rarityValue || memory.data.rarity === rarityValue;
+        visibleRows.forEach(row => {
+          visibleCount++;
+          (row as HTMLTableRowElement).cells[0].textContent = String(visibleCount);
+        });
+      }
 
-					const isVisible = matchesRarity;
-					memory.element.style.display = isVisible ? '' : 'none';
-					memory.mobileElement.style.display = isVisible ? '' : 'none';
-				});
+      // Filter memories
+      function filterMemories() {
+        const activeRarityButton = document.querySelector(
+          '.rarity-filter-btn.active'
+        ) as HTMLElement;
+        const rarityValue = activeRarityButton?.dataset.rarity?.toLowerCase() || '';
 
-				// Update row numbers after filtering
-				updateRowNumbers();
-			}
+        allMemories.forEach(memory => {
+          const matchesRarity = !rarityValue || memory.data.rarity === rarityValue;
 
-			// Sort memories
-			function sortMemories(sortKey) {
-				if (currentSortKey === sortKey) {
-					isAscending = !isAscending;
-				} else {
-					currentSortKey = sortKey;
-					isAscending = false;
-				}
+          const isVisible = matchesRarity;
+          memory.element.style.display = isVisible ? '' : 'none';
+          memory.mobileElement.style.display = isVisible ? '' : 'none';
+        });
 
-				// Update active button
-				sortButtons.forEach(btn => btn.classList.remove('active'));
-				document.querySelector(`[data-sort="${sortKey}"]`)?.classList.add('active');
+        // Update row numbers after filtering
+        updateRowNumbers();
+      }
 
-				// Sort the memories
-				const sortedMemories = [...allMemories].sort((a, b) => {
-					let aVal = a.data[sortKey];
-					let bVal = b.data[sortKey];
+      // Sort memories
+      function sortMemories(sortKey) {
+        if (currentSortKey === sortKey) {
+          isAscending = !isAscending;
+        } else {
+          currentSortKey = sortKey;
+          isAscending = false;
+        }
 
-					if (typeof aVal === 'string') {
-						return isAscending ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
-					} else {
-						return isAscending ? aVal - bVal : bVal - aVal;
-					}
-				});
+        // Update active button
+        sortButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`[data-sort="${sortKey}"]`)?.classList.add('active');
 
-				// Reorder DOM elements
-				sortedMemories.forEach((memory) => {
-					memoryTableBody?.appendChild(memory.element);
-					mobileCardsContainer?.appendChild(memory.mobileElement);
-				});
+        // Sort the memories
+        const sortedMemories = [...allMemories].sort((a, b) => {
+          let aVal = a.data[sortKey];
+          let bVal = b.data[sortKey];
 
-				// Update row numbers after sorting
-				updateRowNumbers();
-			}
+          if (typeof aVal === 'string') {
+            return isAscending ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+          } else {
+            return isAscending ? aVal - bVal : bVal - aVal;
+          }
+        });
 
-			// Sort memories by name (default)
-			function sortMemoriesByName() {
-				// Sort alphabetically by name (A-Z)
-				const sortedMemories = [...allMemories].sort((a, b) => {
-					return a.data.name.localeCompare(b.data.name);
-				});
+        // Reorder DOM elements
+        sortedMemories.forEach(memory => {
+          memoryTableBody?.appendChild(memory.element);
+          mobileCardsContainer?.appendChild(memory.mobileElement);
+        });
 
-				// Reorder DOM elements
-				sortedMemories.forEach((memory) => {
-					memoryTableBody?.appendChild(memory.element);
-					mobileCardsContainer?.appendChild(memory.mobileElement);
-				});
+        // Update row numbers after sorting
+        updateRowNumbers();
+      }
 
-				// Update row numbers after sorting
-				updateRowNumbers();
-			}
+      // Sort memories by name (default)
+      function sortMemoriesByName() {
+        // Sort alphabetically by name (A-Z)
+        const sortedMemories = [...allMemories].sort((a, b) => {
+          return a.data.name.localeCompare(b.data.name);
+        });
 
-			// Reset filters and sorting
-			function resetTable() {
-				// Reset rarity filter to "All"
-				rarityFilterButtons.forEach(btn => btn.classList.remove('active'));
-				document.querySelector('.rarity-filter-btn.all')?.classList.add('active');
-				
-				// Clear sorting - show original order
-				currentSortKey = '';
-				isAscending = false;
-				sortButtons.forEach(btn => btn.classList.remove('active'));
+        // Reorder DOM elements
+        sortedMemories.forEach(memory => {
+          memoryTableBody?.appendChild(memory.element);
+          mobileCardsContainer?.appendChild(memory.mobileElement);
+        });
 
-				// Show all memories in original order
-				allMemories.forEach((memory) => {
-					memory.element.style.display = '';
-					memory.mobileElement.style.display = '';
-					memoryTableBody?.appendChild(memory.element);
-					mobileCardsContainer?.appendChild(memory.mobileElement);
-				});
+        // Update row numbers after sorting
+        updateRowNumbers();
+      }
 
-				// Update row numbers after reset
-				updateRowNumbers();
-			}
+      // Reset filters and sorting
+      function resetTable() {
+        // Reset rarity filter to "All"
+        rarityFilterButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelector('.rarity-filter-btn.all')?.classList.add('active');
 
-			// Add click handlers for navigation
-			function addNavigationHandlers() {
-				document.querySelectorAll('[data-url]').forEach(element => {
-					element.addEventListener('click', function() {
-						const url = this.getAttribute('data-url');
-						if (url) {
-							window.location.href = url;
-						}
-					});
-				});
-			}
+        // Clear sorting - show original order
+        currentSortKey = '';
+        isAscending = false;
+        sortButtons.forEach(btn => btn.classList.remove('active'));
 
-			// Check if all required elements exist
-			if (!memoryTableBody || !mobileCardsContainer || !resetButton) {
-				console.error('Required elements not found');
-				return;
-			}
+        // Show all memories in original order
+        allMemories.forEach(memory => {
+          memory.element.style.display = '';
+          memory.mobileElement.style.display = '';
+          memoryTableBody?.appendChild(memory.element);
+          mobileCardsContainer?.appendChild(memory.mobileElement);
+        });
 
-			// Initialize everything
-			initializeMemories();
-			
-			// Event listeners for rarity filter buttons
-			rarityFilterButtons.forEach(button => {
-				button.addEventListener('click', function() {
-					// Remove active class from all rarity buttons
-					rarityFilterButtons.forEach(btn => btn.classList.remove('active'));
-					// Add active class to clicked button
-					this.classList.add('active');
-					// Filter memories
-					filterMemories();
-				});
-			});
+        // Update row numbers after reset
+        updateRowNumbers();
+      }
 
-			resetButton.addEventListener('click', resetTable);
+      // Add click handlers for navigation
+      function addNavigationHandlers() {
+        document.querySelectorAll('[data-url]').forEach(element => {
+          element.addEventListener('click', function () {
+            const url = this.getAttribute('data-url');
+            if (url) {
+              window.location.href = url;
+            }
+          });
+        });
+      }
 
-			sortButtons.forEach(button => {
-				button.addEventListener('click', function() {
-					sortMemories(this.getAttribute('data-sort'));
-				});
-			});
+      // Check if all required elements exist
+      if (!memoryTableBody || !mobileCardsContainer || !resetButton) {
+        console.error('Required elements not found');
+        return;
+      }
 
-			addNavigationHandlers();
+      // Initialize everything
+      initializeMemories();
 
-			// Sort by name alphabetically by default
-			sortMemoriesByName();
-		});
-	</script>
-</ZoneNovaLayout> 
+      // Event listeners for rarity filter buttons
+      rarityFilterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          // Remove active class from all rarity buttons
+          rarityFilterButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+          // Filter memories
+          filterMemories();
+        });
+      });
+
+      resetButton.addEventListener('click', resetTable);
+
+      sortButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          sortMemories(this.getAttribute('data-sort'));
+        });
+      });
+
+      addNavigationHandlers();
+
+      // Sort by name alphabetically by default
+      sortMemoriesByName();
+    });
+  </script>
+</ZoneNovaLayout>

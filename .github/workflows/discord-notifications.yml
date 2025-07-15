@@ -11,54 +11,54 @@ jobs:
   notify-discord:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2  # Fetch current and previous commit to compare
-      
+          fetch-depth: 2 # Fetch current and previous commit to compare
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          
+
       - name: Install dependencies
         run: npm install --production
-        
+
       - name: Detect new Zone Nova updates
         id: detect-updates
         run: |
           echo "Detecting changes in Zone Nova update files..."
-          
+
           # Get list of changed files in the Zone Nova updates directory
           CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep -E '^src/(data|pages)/guides/zone-nova/updates/' | grep -v '.astro$' || true)
-          
+
           if [ -z "$CHANGED_FILES" ]; then
             echo "No Zone Nova update files changed"
             echo "has_updates=false" >> $GITHUB_OUTPUT
             exit 0
           fi
-          
+
           echo "Changed files:"
           echo "$CHANGED_FILES"
-          
+
           # Check if any of the changed files are new (added files)
           NEW_FILES=$(git diff --name-status HEAD~1 HEAD | grep -E '^A.*src/(data|pages)/guides/zone-nova/updates/' | cut -f2 | grep -v '.astro$' || true)
-          
+
           if [ -z "$NEW_FILES" ]; then
             echo "No new Zone Nova update files added"
             echo "has_updates=false" >> $GITHUB_OUTPUT
             exit 0
           fi
-          
+
           echo "New update files detected:"
           echo "$NEW_FILES"
           echo "has_updates=true" >> $GITHUB_OUTPUT
-          
+
           # Store the new files for the next step
           echo "$NEW_FILES" > new_update_files.txt
-          
+
       - name: Send Discord notifications
         if: steps.detect-updates.outputs.has_updates == 'true'
         env:
@@ -68,10 +68,10 @@ jobs:
           cat > send_notifications.js << 'EOF'
           const fs = require('fs');
           const path = require('path');
-          
+
           // Import our Discord webhook utility
           const { sendDiscordNotification, validateUpdateData } = require('./src/utils/discord-webhook.js');
-          
+
           async function main() {
             const webhookUrl = process.env.ZONE_NOVA_UPDATES;
             
@@ -151,18 +151,18 @@ jobs:
               process.exit(1);
             }
           }
-          
+
           main().catch(console.error);
           EOF
-          
+
           # Run the notification script
           node send_notifications.js
-          
+
       - name: Cleanup
         if: always()
         run: |
           rm -f new_update_files.txt send_notifications.js
-          
+
       - name: Summary
         if: steps.detect-updates.outputs.has_updates == 'true'
         run: |

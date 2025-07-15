@@ -2,11 +2,11 @@ export const arenaSettlementIssueData = {
   title: 'Arena Settlement Issue and Server Response Delays',
   date: '2025-07-08',
   type: 'announcement',
-  
+
   tldr: [
-    'Arena reward distribution issue has been resolved and server upgrades implemented to address latency during peak hours. All eligible players will receive 800 Gems compensation via in-game mail for the inconvenience caused.'
+    'Arena reward distribution issue has been resolved and server upgrades implemented to address latency during peak hours. All eligible players will receive 800 Gems compensation via in-game mail for the inconvenience caused.',
   ],
-  
+
   officialUpdate: {
     greeting: 'Dear Captains,',
     content: [
@@ -21,18 +21,19 @@ export const arenaSettlementIssueData = {
       '• 800 Gems',
       '• Delivery: Via in-game mail',
       '',
-      'We appreciate your patience and understanding as we continue to improve the game experience for all Captains.'
-    ]
+      'We appreciate your patience and understanding as we continue to improve the game experience for all Captains.',
+    ],
   },
-  
+
   sourceInfo: {
     source: 'Official ZONE NOVA announcement',
     verified: true,
-    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova'
-  }
+    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova',
+  },
 };
 
 export const arenaSettlementIssueSEO = {
   title: 'Arena Settlement Issue and Server Response Delays - Zone Nova - GachaWiki',
-  description: 'Arena reward distribution issue resolved and server upgrades implemented. 800 Gems compensation for all eligible Zone Nova players.'
+  description:
+    'Arena reward distribution issue resolved and server upgrades implemented. 800 Gems compensation for all eligible Zone Nova players.',
 };

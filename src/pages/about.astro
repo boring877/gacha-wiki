@@ -3,201 +3,214 @@ import HomeLayout from '../layouts/HomeLayout.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
-<HomeLayout title={`${SITE_TITLE} - About`} description="Information about this gacha games community">
-	<!-- Main Content Area -->
-	<main class="main-content">
-		<!-- About Card Container -->
-		<article class="about-card">
-			<!-- Hero Image Section -->
-			<div class="hero-image">
-				<img 
-					src="/images/about.jpg" 
-					alt="About our gacha games community" 
-					width="800"
-					height="400"
-				/>
-			</div>
+<HomeLayout
+  title={`${SITE_TITLE} - About`}
+  description="Information about this gacha games community"
+>
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <!-- About Card Container -->
+    <article class="about-card">
+      <!-- Hero Image Section -->
+      <div class="hero-image">
+        <img
+          src="/images/about.jpg"
+          alt="About our gacha games community"
+          width="800"
+          height="400"
+        />
+      </div>
 
-			<!-- Content -->
-			<div class="content">
-				<p class="intro">
-					This is an open-source wiki that tries to have the most accurate info possible. Anyone can help build it or use whatever they find useful.
-				</p>
+      <!-- Content -->
+      <div class="content">
+        <p class="intro">
+          This is an open-source wiki that tries to have the most accurate info possible. Anyone can
+          help build it or use whatever they find useful.
+        </p>
 
-				<p class="description">
-					I built this personally as a hobby project, but hey - if it helps other people avoid the mistakes I've made or find something cool, that's awesome.
-				</p>
+        <p class="description">
+          I built this personally as a hobby project, but hey - if it helps other people avoid the
+          mistakes I've made or find something cool, that's awesome.
+        </p>
 
-				<div class="disclaimer">
-					<strong>Note:</strong> <span>This is a fan-made site. All content is based on personal experience and community knowledge.</span>
-				</div>
-			</div>
-		</article>
-	</main>
+        <div class="disclaimer">
+          <strong>Note:</strong>
+          <span
+            >This is a fan-made site. All content is based on personal experience and community
+            knowledge.</span
+          >
+        </div>
+      </div>
+    </article>
+  </main>
 </HomeLayout>
 
 <style>
-	/* Main Content */
-	.main-content {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 4rem 1rem 2rem 1rem;
-		min-height: 100vh;
-	}
+  /* Main Content */
+  .main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1rem 2rem 1rem;
+    min-height: 100vh;
+  }
 
-	/* About Card */
-	.about-card {
-		background: var(--bg-secondary);
-		border-radius: 20px;
-		border: 1px solid var(--amber-glow);
-		box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
-		overflow: hidden;
-		transition: all 0.4s ease;
-		animation: cardFadeIn 0.8s ease-out;
-		margin-top: 5rem;
-	}
+  /* About Card */
+  .about-card {
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    border: 1px solid var(--amber-glow);
+    box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    animation: cardFadeIn 0.8s ease-out;
+    margin-top: 5rem;
+  }
 
-	.about-card:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 20px 40px rgba(164, 120, 100, 0.3);
-		border-color: var(--teal-crystal);
-	}
+  .about-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(164, 120, 100, 0.3);
+    border-color: var(--teal-crystal);
+  }
 
-	/* Hero Image */
-	.hero-image {
-		overflow: hidden;
-		line-height: 0;
-	}
+  /* Hero Image */
+  .hero-image {
+    overflow: hidden;
+    line-height: 0;
+  }
 
-	.hero-image :global(img) {
-		width: 100%;
-		height: auto;
-		display: block;
-		transition: transform 0.4s ease;
-	}
+  .hero-image :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+  }
 
-	.about-card:hover .hero-image :global(img) {
-		transform: scale(1.05);	}
+  .about-card:hover .hero-image :global(img) {
+    transform: scale(1.05);
+  }
 
-	/* Content */
-	.content {
-		padding: 3.5rem;
-		animation: contentSlideUp 1s ease-out 0.3s both;
-	}
+  /* Content */
+  .content {
+    padding: 3.5rem;
+    animation: contentSlideUp 1s ease-out 0.3s both;
+  }
 
-	.intro, .description {
-		color: var(--text-secondary);
-		font-size: 1.2rem;
-		line-height: 1.7;
-		margin-bottom: 2.5rem;
-		font-weight: 400;
-	}
-	.disclaimer {
-		background: rgba(255, 183, 77, 0.1);
-		border-left: 4px solid var(--amber-glow);
-		padding: 1.5rem;
-		border-radius: 12px;
-		margin: 3rem 0;
-		transition: all 0.4s ease;
-	}
+  .intro,
+  .description {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+  .disclaimer {
+    background: rgba(255, 183, 77, 0.1);
+    border-left: 4px solid var(--amber-glow);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 3rem 0;
+    transition: all 0.4s ease;
+  }
 
-	.disclaimer:hover {
-		background: rgba(255, 183, 77, 0.15);
-		transform: translateX(10px);
-		border-left-width: 6px;
-	}
+  .disclaimer:hover {
+    background: rgba(255, 183, 77, 0.15);
+    transform: translateX(10px);
+    border-left-width: 6px;
+  }
 
-	.disclaimer strong {
-		color: var(--text-primary);
-		font-size: 1.2rem;
-	}
+  .disclaimer strong {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+  }
 
-	.disclaimer span {
-		color: var(--text-secondary);
-		font-size: 1.1rem;
-	}
+  .disclaimer span {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
 
-	/* Animations */
-	@keyframes cardFadeIn {
-		0% {
-			opacity: 0;
-			transform: translateY(30px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+  /* Animations */
+  @keyframes cardFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-	@keyframes contentSlideUp {
-		0% {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+  @keyframes contentSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-	/* Mobile Responsive */
-	@media (max-width: 768px) {
-		.main-content {
-			padding: 1rem 0.5rem;
-		}
-		.content {
-			padding: 2rem 1.5rem;
-		}
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .main-content {
+      padding: 1rem 0.5rem;
+    }
+    .content {
+      padding: 2rem 1.5rem;
+    }
 
-		.intro, .description {
-			font-size: 1.1rem;
-		}
+    .intro,
+    .description {
+      font-size: 1.1rem;
+    }
 
-		.disclaimer {
-			padding: 1.25rem;
-			margin: 1.5rem 0;
-		}
+    .disclaimer {
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
 
-		.disclaimer strong {
-			font-size: 1.1rem;
-		}
+    .disclaimer strong {
+      font-size: 1.1rem;
+    }
 
-		.disclaimer span {
-			font-size: 1rem;
-		}
-	}
+    .disclaimer span {
+      font-size: 1rem;
+    }
+  }
 
-	@media (max-width: 480px) {		.content {
-			padding: 1.5rem 1rem;
-		}
+  @media (max-width: 480px) {
+    .content {
+      padding: 1.5rem 1rem;
+    }
 
-		.intro, .description {
-			font-size: 1rem;
-		}
+    .intro,
+    .description {
+      font-size: 1rem;
+    }
 
-		.disclaimer {
-			padding: 1rem;
-		}
-	}
+    .disclaimer {
+      padding: 1rem;
+    }
+  }
 
-	/* Performance optimizations */
-	@media (prefers-reduced-motion: reduce) {
-		* {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			transition-duration: 0.01ms !important;
-		}
-	}
+  /* Performance optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 
-	/* High contrast mode support */
-	@media (prefers-contrast: high) {
-		.about-card {
-			border-width: 2px;
-		}
-		
-		.disclaimer {
-			border-left-width: 6px;
-		}
-	}
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .about-card {
+      border-width: 2px;
+    }
+
+    .disclaimer {
+      border-left-width: 6px;
+    }
+  }
 </style>
-

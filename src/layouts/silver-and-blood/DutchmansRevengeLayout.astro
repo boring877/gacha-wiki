@@ -45,27 +45,26 @@ const { meta, intro, gameplayMechanics, futureArtifacts, videoGuide, chapters } 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 		<meta name="theme-color" content="#5a7ba7" />
 		
-		<script type="application/ld+json">
-			{JSON.stringify({
-				"@context": "https://schema.org",
-				"@type": "Guide",
-				"name": meta.title,
-				"description": meta.description,
-				"about": {
-					"@type": "VideoGame",
-					"name": "Silver and Blood"
-				},
-				"publisher": {
-					"@type": "Organization",
-					"name": "GachaWiki"
-				},
-				"video": {
-					"@type": "VideoObject",
-					"name": "Dutchman's Revenge Guide - Part 1",
-					"description": "Complete walkthrough of Dutchman's Revenge chapters",
-					"embedUrl": "https://www.youtube.com/embed/NnLUB6BqYWc"
-				}
-			})}
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Guide",
+			"name": meta.title,
+			"description": meta.description,
+			"about": {
+				"@type": "VideoGame",
+				"name": "Silver and Blood"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "GachaWiki"
+			},
+			"video": {
+				"@type": "VideoObject",
+				"name": "Dutchman's Revenge Guide - Part 1",
+				"description": "Complete walkthrough of Dutchman's Revenge chapters",
+				"embedUrl": "https://www.youtube.com/embed/NnLUB6BqYWc"
+			}
+		})}>
 		</script>
 	</head>
 	<body class="sab-body">

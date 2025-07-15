@@ -3,202 +3,224 @@ import ZoneNovaLayout from '../../../layouts/zone-nova/Layout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
 
 // Import redeem codes data and CSS
-import { zoneNovaRedeemCodes, generateRedeemCodesStructuredData } from '../../../data/zone-nova/redeem-codes.js';
+import {
+  zoneNovaRedeemCodes,
+  generateRedeemCodesStructuredData,
+} from '../../../data/zone-nova/redeem-codes.js';
 import '../../../styles/games/zone-nova/zn-redeem-codes.css';
 
 // Extract data from the data file
-const { meta, availableCodes, expiredCodes, redeemInstructions, communitySection, warnings } = zoneNovaRedeemCodes;
+const { meta, availableCodes, expiredCodes, redeemInstructions, communitySection, warnings } =
+  zoneNovaRedeemCodes;
 
 // Page metadata
 const title = meta.title;
 const description = meta.description;
-const gameTitle = "Zone Nova";
-const heroImage = "/images/games/zone-nova/zonenova1.jpg";
+const gameTitle = 'Zone Nova';
+const heroImage = '/images/games/zone-nova/zonenova1.jpg';
 const lastUpdated = meta.lastUpdated;
 
 // Generate structured data for SEO
 const structuredData = generateRedeemCodesStructuredData();
 ---
 
-<ZoneNovaLayout 
-	title={title}
-	description={description}
-	gameTitle={gameTitle}
-	heroImage={heroImage}
->
-	<!-- Page Header -->
-	<section class="content-section">
-		<div class="redeem-codes-header">
-			<h1 class="redeem-codes-title">Redeem Codes</h1>
-			<p class="redeem-codes-description">
-				{warnings.important}
-			</p>
-			<div class="redeem-codes-warning">
-				<h3>{warnings.noGuarantees.title}</h3>
-				<p>{warnings.noGuarantees.message}</p>
-			</div>
-			<p class="last-updated">
-				Last Updated: <FormattedDate date={lastUpdated} />
-			</p>
-		</div>
-	</section>
+<ZoneNovaLayout title={title} description={description} gameTitle={gameTitle} heroImage={heroImage}>
+  <!-- Page Header -->
+  <section class="content-section">
+    <div class="redeem-codes-header">
+      <h1 class="redeem-codes-title">Redeem Codes</h1>
+      <p class="redeem-codes-description">
+        {warnings.important}
+      </p>
+      <div class="redeem-codes-warning">
+        <h3>{warnings.noGuarantees.title}</h3>
+        <p>{warnings.noGuarantees.message}</p>
+      </div>
+      <p class="last-updated">
+        Last Updated: <FormattedDate date={lastUpdated} />
+      </p>
+    </div>
+  </section>
 
-	<!-- Available Codes Section -->
-	<section class="content-section">
-		<h2 class="section-title">Available Codes</h2>
-		<p class="section-description">These codes were shared by the community. They might work, they might not - try them and see!</p>
-		
-		<!-- Modern Card List Design -->
-		<div class="redeem-codes-grid">
-			{availableCodes.map(codeData => (
-				<div class="redeem-code-card">
-					<div class="code-info">
-						<div class="code-main">
-							<div class="code-label">Redeem Code</div>
-							<div class="code-value-display">{codeData.code}</div>
-							<div class="code-meta">
-								<span class={`code-status ${codeData.status}`}>
-									{codeData.status === 'unknown' ? 'Unverified' : codeData.status}
-								</span>
-								<span class="code-date">Last checked: {codeData.lastChecked}</span>
-							</div>
-						</div>
-					</div>
-					<div class="code-action">
-						<button class="copy-button" data-code={codeData.code} onclick="copyCode(this)">
-							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-								<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-								<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-							</svg>
-							Copy
-						</button>
-					</div>
-				</div>
-			))}
-		</div>
-	</section>
+  <!-- Available Codes Section -->
+  <section class="content-section">
+    <h2 class="section-title">Available Codes</h2>
+    <p class="section-description">
+      These codes were shared by the community. They might work, they might not - try them and see!
+    </p>
 
-	<!-- How to Redeem Section -->
-	<section class="content-section">
-		<h2 class="section-title">{redeemInstructions.title}</h2>
-		<p class="section-description">{redeemInstructions.description}</p>
-		
-		<div class="redeem-instructions-container">
-			<div class="redeem-instructions-card">
-				<h3>Step-by-Step Guide:</h3>
-				
-				{redeemInstructions.steps.map(step => (
-					<div class="redeem-instruction-step">
-						<h4>{step.title}</h4>
-						<p>{step.description}</p>
-						{step.substeps && (
-							<ol class="redeem-step-list">
-								{step.substeps.map(substep => (
-									<li set:html={substep}></li>
-								))}
-							</ol>
-						)}
-						{step.image && (
-							<div class="redeem-instruction-image">
-								<img src={step.image} alt={step.imageAlt} />
-							</div>
-						)}
-					</div>
-				))}
-			</div>
-		</div>
-	</section>
+    <!-- Modern Card List Design -->
+    <div class="redeem-codes-grid">
+      {
+        availableCodes.map(codeData => (
+          <div class="redeem-code-card">
+            <div class="code-info">
+              <div class="code-main">
+                <div class="code-label">Redeem Code</div>
+                <div class="code-value-display">{codeData.code}</div>
+                <div class="code-meta">
+                  <span class={`code-status ${codeData.status}`}>
+                    {codeData.status === 'unknown' ? 'Unverified' : codeData.status}
+                  </span>
+                  <span class="code-date">Last checked: {codeData.lastChecked}</span>
+                </div>
+              </div>
+            </div>
+            <div class="code-action">
+              <button class="copy-button" data-code={codeData.code} onclick="copyCode(this)">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                Copy
+              </button>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-	<!-- Expired Codes Section -->
-	<section class="content-section">
-		<h2 class="section-title">Expired Codes</h2>
-		{expiredCodes.length > 0 ? (
-			<>
-				<p class="section-description">These codes are no longer active but kept for reference.</p>
-				<div class="redeem-codes-grid expired-section">
-					{expiredCodes.map(codeData => (
-						<div class="redeem-code-card expired">
-							<div class="redeem-code-header">
-								<span class="redeem-code-status expired">Expired</span>
-							</div>
-							<div class="redeem-code-value expired">
-								<span class="redeem-code-text">{codeData.code}</span>
-								<span class="expired-label">Expired</span>
-							</div>
-							<p class="code-expiry">Expired: {codeData.expiryDate}</p>
-						</div>
-					))}
-				</div>
-			</>
-		) : (
-			<div class="redeem-empty-section">
-				<p class="redeem-empty-message">No expired codes yet! All available codes are still worth trying.</p>
-			</div>
-		)}
-	</section>
+  <!-- How to Redeem Section -->
+  <section class="content-section">
+    <h2 class="section-title">{redeemInstructions.title}</h2>
+    <p class="section-description">{redeemInstructions.description}</p>
 
-	<!-- Community Section -->
-	<section class="content-section">
-		<div class="redeem-community-card">
-			<h2 class="section-title">{communitySection.title}</h2>
-			<p>{communitySection.description}</p>
-			<div class="redeem-community-buttons">
-				{communitySection.buttons.map(button => (
-					<a 
-						href={button.url} 
-						class={`redeem-${button.type}-btn`}
-						{...(button.external && { target: "_blank", rel: "noopener noreferrer" })}
-					>
-						{button.text}
-					</a>
-				))}
-			</div>
-		</div>
-	</section>
+    <div class="redeem-instructions-container">
+      <div class="redeem-instructions-card">
+        <h3>Step-by-Step Guide:</h3>
 
-	<!-- Structured Data for SEO -->
-	<script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+        {
+          redeemInstructions.steps.map(step => (
+            <div class="redeem-instruction-step">
+              <h4>{step.title}</h4>
+              <p>{step.description}</p>
+              {step.substeps && (
+                <ol class="redeem-step-list">
+                  {step.substeps.map(substep => (
+                    <li set:html={substep} />
+                  ))}
+                </ol>
+              )}
+              {step.image && (
+                <div class="redeem-instruction-image">
+                  <img src={step.image} alt={step.imageAlt} />
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Expired Codes Section -->
+  <section class="content-section">
+    <h2 class="section-title">Expired Codes</h2>
+    {
+      expiredCodes.length > 0 ? (
+        <>
+          <p class="section-description">
+            These codes are no longer active but kept for reference.
+          </p>
+          <div class="redeem-codes-grid expired-section">
+            {expiredCodes.map(codeData => (
+              <div class="redeem-code-card expired">
+                <div class="redeem-code-header">
+                  <span class="redeem-code-status expired">Expired</span>
+                </div>
+                <div class="redeem-code-value expired">
+                  <span class="redeem-code-text">{codeData.code}</span>
+                  <span class="expired-label">Expired</span>
+                </div>
+                <p class="code-expiry">Expired: {codeData.expiryDate}</p>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div class="redeem-empty-section">
+          <p class="redeem-empty-message">
+            No expired codes yet! All available codes are still worth trying.
+          </p>
+        </div>
+      )
+    }
+  </section>
+
+  <!-- Community Section -->
+  <section class="content-section">
+    <div class="redeem-community-card">
+      <h2 class="section-title">{communitySection.title}</h2>
+      <p>{communitySection.description}</p>
+      <div class="redeem-community-buttons">
+        {
+          communitySection.buttons.map(button => (
+            <a
+              href={button.url}
+              class={`redeem-${button.type}-btn`}
+              {...(button.external && { target: '_blank', rel: 'noopener noreferrer' })}
+            >
+              {button.text}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </ZoneNovaLayout>
 
-
 <script>
-// Copy code functionality
-function copyCode(button) {
-	const code = button.getAttribute('data-code');
-	const originalHTML = button.innerHTML;
-	
-	// Copy to clipboard
-	navigator.clipboard.writeText(code).then(() => {
-		// Success feedback
-		button.innerHTML = `
+  // Copy code functionality
+  function copyCode(button) {
+    const code = button.getAttribute('data-code');
+    const originalHTML = button.innerHTML;
+
+    // Copy to clipboard
+    navigator.clipboard
+      .writeText(code)
+      .then(() => {
+        // Success feedback
+        button.innerHTML = `
 			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 				<polyline points="20 6 9 17 4 12"></polyline>
 			</svg>
 			Copied!
 		`;
-		button.classList.add('copy-success');
-		
-		// Find the parent card and add success class
-		const card = button.closest('.redeem-code-card');
-		if (card) card.classList.add('code-copied');
-		
-		// Reset after 2 seconds
-		setTimeout(() => {
-			button.innerHTML = originalHTML;
-			button.classList.remove('copy-success');
-			if (card) card.classList.remove('code-copied');
-		}, 2000);
-	}).catch(err => {
-		// Fallback for older browsers
-		button.textContent = 'Failed';
-		setTimeout(() => {
-			button.innerHTML = originalHTML;
-		}, 2000);
-	});
-}
+        button.classList.add('copy-success');
 
-// Alternative: attach event listeners if you prefer
-document.addEventListener('DOMContentLoaded', function() {
-	// Optional: Add any additional initialization here
-});
+        // Find the parent card and add success class
+        const card = button.closest('.redeem-code-card');
+        if (card) card.classList.add('code-copied');
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+          button.innerHTML = originalHTML;
+          button.classList.remove('copy-success');
+          if (card) card.classList.remove('code-copied');
+        }, 2000);
+      })
+      .catch(err => {
+        // Fallback for older browsers
+        button.textContent = 'Failed';
+        setTimeout(() => {
+          button.innerHTML = originalHTML;
+        }, 2000);
+      });
+  }
+
+  // Alternative: attach event listeners if you prefer
+  document.addEventListener('DOMContentLoaded', function () {
+    // Optional: Add any additional initialization here
+  });
 </script>

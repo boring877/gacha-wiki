@@ -3,15 +3,15 @@
 
 export const thunderKingFlameData = {
   // Basic Information
-  title: 'Thunder King\'s Reign: Trial and Domination Symphony Part 2',
+  title: "Thunder King's Reign: Trial and Domination Symphony Part 2",
   date: 'June 10, 2025',
   type: 'event',
-  
+
   // TL;DR Summary
   tldr: [
-    'Major maintenance on June 10, 2025 brings Thunder King\'s Reign Part 2, new character Yuis (Holy Ranger), Guild Trials system, Space-Time Rift IV, double drop events, and new gemstone sets. Complete Chapter 6 to access most features.'
+    "Major maintenance on June 10, 2025 brings Thunder King's Reign Part 2, new character Yuis (Holy Ranger), Guild Trials system, Space-Time Rift IV, double drop events, and new gemstone sets. Complete Chapter 6 to access most features.",
   ],
-  
+
   // Official Update
   officialUpdate: {
     content: [
@@ -27,7 +27,7 @@ export const thunderKingFlameData = {
       '',
       '🎉 Event Information',
       '',
-      '1. Thunder King\'s Reign: Trial and Domination Symphony Part 2',
+      "1. Thunder King's Reign: Trial and Domination Symphony Part 2",
       '📅 June 10 after server opens ~ June 24, 03:59:59',
       '',
       'Captains can enter through the event entrance on the main interface after completing Chapter 6 of the main storyline. In the event story cards, you\'ll receive "Event Currency" that can be exchanged for:',
@@ -40,7 +40,7 @@ export const thunderKingFlameData = {
       '📅 June 10 after server opens ~ June 24, 03:59:59',
       'Class: Ranger | Attribute: Holy',
       '',
-      'Introduction: One of the [Mother\'s] dependents, Yuis from [Federation] is the highest-ranking judge, holding an important position in the [Federation] government. Due to her fair and impartial judgments, she earned the title of [King of Judgment]. Don\'t be deceived by her doll-like cute appearance - beneath that adorable exterior lies an iron-faced, impartial judge who embodies the [Federation\'s] judicial justice.',
+      "Introduction: One of the [Mother's] dependents, Yuis from [Federation] is the highest-ranking judge, holding an important position in the [Federation] government. Due to her fair and impartial judgments, she earned the title of [King of Judgment]. Don't be deceived by her doll-like cute appearance - beneath that adorable exterior lies an iron-faced, impartial judge who embodies the [Federation's] judicial justice.",
       '',
       '"According to [Federation Law] Article 384 [Theft and Obscenity Crimes], your frivolous gaze and actions! You have violated the law!"',
       '',
@@ -48,7 +48,7 @@ export const thunderKingFlameData = {
       '📅 June 10 after server opens ~ June 24, 03:59:59',
       'Compatible Class: Ranger',
       '',
-      'Introduction: This is the deepest secret scene in Yuis\'s heart. The Frozen Heart carries her loneliness and persistence as the King of Judgment. Captains will have the opportunity to glimpse the struggles and emotions deep within her heart.',
+      "Introduction: This is the deepest secret scene in Yuis's heart. The Frozen Heart carries her loneliness and persistence as the King of Judgment. Captains will have the opportunity to glimpse the struggles and emotions deep within her heart.",
       '',
       '4. Guild Trial',
       '📅 June 10 after server opens (Permanent Feature)',
@@ -90,23 +90,23 @@ export const thunderKingFlameData = {
       '🎁 Maintenance Update Compensation',
       'Compensation Content: Photon Stones x600',
       'Compensation Target: Captains who logged in before June 17, 23:59',
-      'Distribution Method: Via in-game mail after maintenance completion'
-    ]
+      'Distribution Method: Via in-game mail after maintenance completion',
+    ],
   },
-  
+
   // Source Information
   sourceInfo: {
     source: 'Official ZONE NOVA announcement',
     verified: true,
-    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova'
-  }
+    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova',
+  },
 };
 
 // SEO data for Thunder King's Reign Part 2
 export const thunderKingFlameSEO = {
   title: `${thunderKingFlameData.title} - Zone Nova - GachaWiki`,
-  description: `Major maintenance brings Thunder King's Reign Part 2, new character Yuis (Holy Ranger), Guild Trials system, Space-Time Rift IV, and more exciting content.`
+  description: `Major maintenance brings Thunder King's Reign Part 2, new character Yuis (Holy Ranger), Guild Trials system, Space-Time Rift IV, and more exciting content.`,
 };
 
 // Export default for easy importing
-export default thunderKingFlameData; 
+export default thunderKingFlameData;

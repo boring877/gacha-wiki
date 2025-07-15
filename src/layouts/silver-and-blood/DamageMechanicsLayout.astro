@@ -14,76 +14,81 @@ import '../../styles/games/silver-and-blood/sab-layout.css';
 import '../../styles/games/silver-and-blood/sab-damage-mechanics.css';
 
 export interface Props {
-	title: string;
-	description?: string;
-	gameTitle?: string;
-	heroImage?: string;
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
 }
 
 const { title, description, gameTitle, heroImage } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description || ""} />
-		<slot name="head" />
-	</head>
-	<body class="sab-body sab-layout-override">
-		<div class="bg-layer bg-primary"></div>
-		<div class="bg-layer bg-accent-1"></div>
-		<div class="bg-layer bg-accent-2"></div>
-		<div class="bg-layer bg-accent-3"></div>
-		
-		<div class="sab-content">
-			<Header />
-			<MobileMenu />
-			
-			<div class="sab-container">
-			<main class="sab-main">
-			
-			{heroImage && gameTitle && (
-				<section class="hero-section">
-					<div class="hero-image-wrapper">
-						<div class="hero-image-container">
-							<OptimizedImage 
-								src={heroImage} 
-								alt={gameTitle} 
-								class="hero-image"
-								loading="eager"
-								decoding="async"
-							/>
-							<div class="hero-overlay"></div>
-						</div>
-					</div>
-					
-					<h1 class="hero-title">
-						{gameTitle}
-					</h1>
-					<DecorativeLines />
-				</section>
-			)}
-			
-			{!heroImage && gameTitle && (
-				<section class="title-only-section">
-					<h1 class="title-only-heading">
-						{gameTitle}
-					</h1>
-					<DecorativeLines />
-				</section>
-			)}
-			
-			<div class="content-area">
-				<SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
-				<slot />
-			</div>
-			</main>
-		</div>
-		
-		<Footer />
-		</div>
-	</body>
-</html>
+  <head>
+    <BaseHead title={title} description={description || ''} />
+    <slot name="head" />
+  </head>
+  <body class="sab-body sab-layout-override">
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
 
-{heroImage && (
-	<link rel="preload" as="image" href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.webp')} type="image/webp" />
-)}
+    <div class="sab-content">
+      <Header />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="sab-main">
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <OptimizedImage
+                      src={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+
+                <h1 class="hero-title">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <div class="content-area">
+            <SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+    {
+      heroImage && (
+        <link
+          rel="preload"
+          as="image"
+          href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.webp')}
+          type="image/webp"
+        />
+      )
+    }
+  </body>
+</html>

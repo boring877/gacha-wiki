@@ -5,13 +5,13 @@
  * Discord embed colors for different update types
  */
 const DISCORD_COLORS = {
-  maintenance: 0x4A90E2,      // Zone Nova blue
-  event: 0xFF6B35,           // Orange for events
-  recruitment: 0xFFB700,     // Gold for character recruitment
-  announcement: 0x00D4AA,    // Teal for announcements
-  milestone: 0x9C27B0,       // Purple for milestones
-  bugfix: 0x4CAF50,          // Green for bug fixes
-  default: 0x4A90E2          // Default Zone Nova blue
+  maintenance: 0x4a90e2, // Zone Nova blue
+  event: 0xff6b35, // Orange for events
+  recruitment: 0xffb700, // Gold for character recruitment
+  announcement: 0x00d4aa, // Teal for announcements
+  milestone: 0x9c27b0, // Purple for milestones
+  bugfix: 0x4caf50, // Green for bug fixes
+  default: 0x4a90e2, // Default Zone Nova blue
 };
 
 /**
@@ -24,7 +24,7 @@ const DISCORD_EMOJIS = {
   announcement: '📢',
   milestone: '🎊',
   bugfix: '🛠️',
-  default: '📄'
+  default: '📄',
 };
 
 /**
@@ -34,16 +34,7 @@ const DISCORD_EMOJIS = {
  * @returns {Object} Discord embed object
  */
 export function formatUpdateEmbed(updateData, websiteUrl = 'https://gachawiki.info') {
-  const {
-    title,
-    date,
-    type,
-    summary,
-    data,
-    tldr,
-    url,
-    discord = {}
-  } = updateData;
+  const { title, date, type, summary, data, tldr, url, discord = {} } = updateData;
 
   // Check if Discord notifications are disabled for this update
   if (discord.enabled === false) {
@@ -51,7 +42,9 @@ export function formatUpdateEmbed(updateData, websiteUrl = 'https://gachawiki.in
   }
 
   // Get color and emoji for this update type (with Discord overrides)
-  const color = discord.customColor ? parseInt(discord.customColor.replace('#', ''), 16) : (DISCORD_COLORS[type] || DISCORD_COLORS.default);
+  const color = discord.customColor
+    ? parseInt(discord.customColor.replace('#', ''), 16)
+    : DISCORD_COLORS[type] || DISCORD_COLORS.default;
   const emoji = discord.customEmoji || DISCORD_EMOJIS[type] || DISCORD_EMOJIS.default;
 
   // Create the embed object
@@ -63,9 +56,9 @@ export function formatUpdateEmbed(updateData, websiteUrl = 'https://gachawiki.in
     timestamp: new Date(date).toISOString(),
     footer: {
       text: 'GachaWiki • Zone Nova',
-      icon_url: `${websiteUrl}/images/about.jpg`
+      icon_url: `${websiteUrl}/images/about.jpg`,
     },
-    fields: []
+    fields: [],
   };
 
   // Add TL;DR section if available
@@ -73,33 +66,34 @@ export function formatUpdateEmbed(updateData, websiteUrl = 'https://gachawiki.in
     embed.fields.push({
       name: '📝 TL;DR',
       value: tldr.join('\n').substring(0, 1024), // Discord field limit
-      inline: false
+      inline: false,
     });
   }
 
   // Add data fields if available
   if (data && typeof data === 'object') {
     const dataEntries = Object.entries(data);
-    
+
     // Add up to 3 data fields inline
     dataEntries.slice(0, 3).forEach(([key, value]) => {
       embed.fields.push({
         name: key,
         value: String(value),
-        inline: true
+        inline: true,
       });
     });
 
     // If there are more than 3 data fields, add them as a single field
     if (dataEntries.length > 3) {
-      const remainingData = dataEntries.slice(3)
+      const remainingData = dataEntries
+        .slice(3)
         .map(([key, value]) => `**${key}**: ${value}`)
         .join('\n');
-      
+
       embed.fields.push({
         name: 'Additional Info',
         value: remainingData.substring(0, 1024),
-        inline: false
+        inline: false,
       });
     }
   }
@@ -108,7 +102,7 @@ export function formatUpdateEmbed(updateData, websiteUrl = 'https://gachawiki.in
   embed.fields.push({
     name: 'Type',
     value: type.charAt(0).toUpperCase() + type.slice(1),
-    inline: true
+    inline: true,
   });
 
   return embed;
@@ -121,7 +115,11 @@ export function formatUpdateEmbed(updateData, websiteUrl = 'https://gachawiki.in
  * @param {string} websiteUrl - Base website URL
  * @returns {Promise<boolean>} Success status
  */
-export async function sendDiscordNotification(webhookUrl, updateData, websiteUrl = 'https://gachawiki.info') {
+export async function sendDiscordNotification(
+  webhookUrl,
+  updateData,
+  websiteUrl = 'https://gachawiki.info'
+) {
   if (!webhookUrl) {
     console.warn('Discord webhook URL not provided');
     return false;
@@ -129,7 +127,7 @@ export async function sendDiscordNotification(webhookUrl, updateData, websiteUrl
 
   try {
     const discord = updateData.discord || {};
-    
+
     // Check if Discord notifications are disabled for this update
     if (discord.enabled === false) {
       console.log('Discord notifications disabled for this update');
@@ -137,15 +135,15 @@ export async function sendDiscordNotification(webhookUrl, updateData, websiteUrl
     }
 
     const embed = formatUpdateEmbed(updateData, websiteUrl);
-    
+
     if (!embed) {
       console.log('No embed generated for this update');
       return true;
     }
-    
+
     const payload = {
       username: 'GachaWiki Updates',
-      avatar_url: `${websiteUrl}/images/about.jpg`
+      avatar_url: `${websiteUrl}/images/about.jpg`,
     };
 
     // Handle role mentions
@@ -167,7 +165,7 @@ export async function sendDiscordNotification(webhookUrl, updateData, websiteUrl
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {
@@ -176,7 +174,6 @@ export async function sendDiscordNotification(webhookUrl, updateData, websiteUrl
 
     console.log('Discord notification sent successfully');
     return true;
-
   } catch (error) {
     console.error('Failed to send Discord notification:', error);
     return false;
@@ -190,11 +187,15 @@ export async function sendDiscordNotification(webhookUrl, updateData, websiteUrl
  * @param {string} websiteUrl - Base website URL
  * @returns {Promise<Object>} Results object with success/failure counts
  */
-export async function sendBatchDiscordNotifications(webhookUrl, updateDataArray, websiteUrl = 'https://gachawiki.info') {
+export async function sendBatchDiscordNotifications(
+  webhookUrl,
+  updateDataArray,
+  websiteUrl = 'https://gachawiki.info'
+) {
   const results = {
     sent: 0,
     failed: 0,
-    errors: []
+    errors: [],
   };
 
   for (const updateData of updateDataArray) {
@@ -205,15 +206,14 @@ export async function sendBatchDiscordNotifications(webhookUrl, updateDataArray,
       } else {
         results.failed++;
       }
-      
+
       // Add delay between requests to avoid rate limiting
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
     } catch (error) {
       results.failed++;
       results.errors.push({
         update: updateData.title || 'Unknown',
-        error: error.message
+        error: error.message,
       });
     }
   }
@@ -245,14 +245,15 @@ export async function sendTestNotification(webhookUrl) {
     title: 'Discord Webhook Test',
     date: new Date().toISOString().split('T')[0],
     type: 'announcement',
-    summary: 'Testing the Discord webhook integration for Zone Nova updates. If you see this message, the webhook is working correctly!',
+    summary:
+      'Testing the Discord webhook integration for Zone Nova updates. If you see this message, the webhook is working correctly!',
     url: '/guides/zone-nova/updates/',
     data: {
       'Test Status': 'Success ✅',
-      'Integration': 'Discord Webhook',
-      'Game': 'Zone Nova'
+      Integration: 'Discord Webhook',
+      Game: 'Zone Nova',
     },
-    tldr: ['This is a test notification to verify the Discord webhook is functioning properly.']
+    tldr: ['This is a test notification to verify the Discord webhook is functioning properly.'],
   };
 
   return await sendDiscordNotification(webhookUrl, testUpdate);
@@ -266,5 +267,5 @@ export default {
   validateUpdateData,
   sendTestNotification,
   DISCORD_COLORS,
-  DISCORD_EMOJIS
+  DISCORD_EMOJIS,
 };

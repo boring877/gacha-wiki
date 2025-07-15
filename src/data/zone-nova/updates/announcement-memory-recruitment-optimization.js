@@ -6,12 +6,12 @@ export const memoryRecruitmentOptimizationData = {
   title: 'Limited-Time Memory Recruitment Optimization',
   date: 'July 8, 2025',
   type: 'optimization', // optimization, event, maintenance, etc.
-  
+
   // TL;DR Summary
   tldr: [
-    'Memory recruitment system optimized after July 8, 2025 maintenance to guarantee 100% limited SSR memories when obtained. Summoning Cube ×30 compensation provided to all captains who logged in before July 7, 2025.'
+    'Memory recruitment system optimized after July 8, 2025 maintenance to guarantee 100% limited SSR memories when obtained. Summoning Cube ×30 compensation provided to all captains who logged in before July 7, 2025.',
   ],
-  
+
   // Official Update
   officialUpdate: {
     greeting: 'Dear Captains,',
@@ -28,22 +28,22 @@ export const memoryRecruitmentOptimizationData = {
       '• Eligible Players: Captains who logged into the game before 23:59 on 2025/07/07',
       '• Distribution Method: Compensation will be sent via in-game mail after maintenance completion on 2025/07/08',
       '',
-      'Thank you again for your tolerance and companionship, Captains! We will continue to listen to everyone\'s feedback and optimize the ZONE NOVA gaming experience. We look forward to creating more exciting adventures with all players!'
-    ]
+      "Thank you again for your tolerance and companionship, Captains! We will continue to listen to everyone's feedback and optimize the ZONE NOVA gaming experience. We look forward to creating more exciting adventures with all players!",
+    ],
   },
-  
+
   // Source Information
   sourceInfo: {
     source: 'Official ZONE NOVA announcement',
     verified: true,
-    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova'
-  }
+    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova',
+  },
 };
 
 // SEO data for Memory Recruitment Optimization announcement
 export const memoryRecruitmentOptimizationSEO = {
   title: `${memoryRecruitmentOptimizationData.title} - Zone Nova - GachaWiki`,
-  description: `Zone Nova optimizes memory recruitment system to guarantee limited legendary memories with Phantom Cube compensation for all eligible players.`
+  description: `Zone Nova optimizes memory recruitment system to guarantee limited legendary memories with Phantom Cube compensation for all eligible players.`,
 };
 
 // Export default for easy importing

@@ -2,7 +2,10 @@
 /* Consistent badge colors across all character pages */
 
 /* Base Badge Styling */
-.tag, .rarity-badge, .element-badge, .role-badge {
+.tag,
+.rarity-badge,
+.element-badge,
+.role-badge {
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   text-transform: uppercase;
@@ -15,101 +18,121 @@
   letter-spacing: var(--tracking-wide);
 }
 
-.tag:hover, .rarity-badge:hover, .element-badge:hover, .role-badge:hover {
+.tag:hover,
+.rarity-badge:hover,
+.element-badge:hover,
+.role-badge:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Rarity Badge Colors */
-.tag-rarity.ssr, .rarity-badge.ssr { 
+.tag-rarity.ssr,
+.rarity-badge.ssr {
   background: #ffe066 !important;
   color: #222 !important;
   box-shadow: 0 2px 8px rgba(255, 224, 102, 0.3);
 }
 
-.tag-rarity.sr, .rarity-badge.sr { 
+.tag-rarity.sr,
+.rarity-badge.sr {
   background: #7ecfff !important;
   color: #222 !important;
   box-shadow: 0 2px 8px rgba(126, 207, 255, 0.3);
 }
 
-.tag-rarity.r, .rarity-badge.r { 
+.tag-rarity.r,
+.rarity-badge.r {
   background: #a0a0a0 !important;
   color: #fff !important;
   box-shadow: 0 2px 8px rgba(160, 160, 160, 0.3);
 }
 
 /* Element Badge Colors */
-.tag-element.fire, .element-badge.fire { 
+.tag-element.fire,
+.element-badge.fire {
   background: #ff6b6b !important;
   color: #fff !important;
   box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
 }
 
-.tag-element.ice, .element-badge.ice { 
+.tag-element.ice,
+.element-badge.ice {
   background: #4dbfff !important;
   color: #fff !important;
   box-shadow: 0 2px 8px rgba(77, 191, 255, 0.3);
 }
 
-.tag-element.wind, .element-badge.wind { 
+.tag-element.wind,
+.element-badge.wind {
   background: #4dffb8 !important;
   color: #222 !important;
   box-shadow: 0 2px 8px rgba(77, 255, 184, 0.3);
 }
 
-.tag-element.holy, .element-badge.holy { 
+.tag-element.holy,
+.element-badge.holy {
   background: #ffe066 !important;
   color: #222 !important;
   box-shadow: 0 2px 8px rgba(255, 224, 102, 0.3);
 }
 
-.tag-element.chaos, .element-badge.chaos { 
+.tag-element.chaos,
+.element-badge.chaos {
   background: #b266ff !important;
   color: #fff !important;
   box-shadow: 0 2px 8px rgba(178, 102, 255, 0.3);
 }
 
 /* Role Badge Colors */
-.tag-class.tank, .role-badge.tank { 
+.tag-class.tank,
+.role-badge.tank {
   background: #b0b0b0 !important;
   color: #222 !important;
   box-shadow: 0 2px 8px rgba(176, 176, 176, 0.3);
 }
 
-.tag-class.dps, .role-badge.dps { 
+.tag-class.dps,
+.role-badge.dps {
   background: #ffb347 !important;
   color: #222 !important;
   box-shadow: 0 2px 8px rgba(255, 179, 71, 0.3);
 }
 
-.tag-class.buffer, .role-badge.buffer { 
+.tag-class.buffer,
+.role-badge.buffer {
   background: #7ecfff !important;
   color: #222 !important;
   box-shadow: 0 2px 8px rgba(126, 207, 255, 0.3);
 }
 
-.tag-class.debuffer, .role-badge.debuffer { 
+.tag-class.debuffer,
+.role-badge.debuffer {
   background: #b266ff !important;
   color: #fff !important;
   box-shadow: 0 2px 8px rgba(178, 102, 255, 0.3);
 }
 
-.tag-class.healer, .role-badge.healer { 
+.tag-class.healer,
+.role-badge.healer {
   background: #a3ffb7 !important;
   color: #222 !important;
   box-shadow: 0 2px 8px rgba(163, 255, 183, 0.3);
 }
 
 /* Faction Badge */
-.tag-faction, .faction-badge { 
+.tag-faction,
+.faction-badge {
   background: linear-gradient(135deg, var(--rose-quartz), #c2185b);
   color: #fff;
   box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
 }
 
 /* Special Badge States */
-.tag:active, .rarity-badge:active, .element-badge:active, .role-badge:active {
+.tag:active,
+.rarity-badge:active,
+.element-badge:active,
+.role-badge:active {
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

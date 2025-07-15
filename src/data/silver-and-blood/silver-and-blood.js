@@ -3,12 +3,12 @@
 
 export const silverAndBloodConfig = {
   meta: {
-    title: "Silver and Blood - GachaWiki",
-    description: "Explore Silver and Blood gacha game guides and content",
-    gameTitle: "Silver and Blood",
-    heroImage: "/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg"
+    title: 'Silver and Blood - GachaWiki',
+    description: 'Explore Silver and Blood gacha game guides and content',
+    gameTitle: 'Silver and Blood',
+    heroImage: '/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg',
   },
-  
+
   gameInfo: {
     description: `This is a story of "Blood and Destiny."
 
@@ -24,98 +24,102 @@ In the name of Aeon, the God of Time, she raised the silver banner of the "Tempu
 
 This is the age-old tale of Blood and Destiny.
 This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet still unwritten.`,
-    playUrl: "https://silverandblood.moonton.com/",
-    status: "active",
-    lastUpdated: new Date()
+    playUrl: 'https://silverandblood.moonton.com/',
+    status: 'active',
+    lastUpdated: new Date(),
   },
 
   sections: [
     {
-      id: "about",
-      title: "About",
-      type: "game-info"
+      id: 'about',
+      title: 'About',
+      type: 'game-info',
     },
     {
-      id: "resources", 
-      title: "Resources",
-      type: "guides-grid"
-    }
+      id: 'resources',
+      title: 'Resources',
+      type: 'guides-grid',
+    },
   ],
 
   guides: [
     {
-      id: "characters",
-      title: "Characters",
-      emoji: "⚔️",
-      description: "Character information.",
-      url: "/guides/silver-and-blood/characters/",
-      category: "guides",
-      status: "active"
+      id: 'characters',
+      title: 'Characters',
+      emoji: '⚔️',
+      description: 'Character information.',
+      url: '/guides/silver-and-blood/characters/',
+      category: 'guides',
+      status: 'active',
     },
     {
-      id: "summon-faq",
-      title: "Summon FAQ",
-      emoji: "💎",
-      description: "General knowledge about summoning and FAQ.",
-      url: "/guides/silver-and-blood/summon-faq/",
-      category: "guides",
-      status: "active"
+      id: 'summon-faq',
+      title: 'Summon FAQ',
+      emoji: '💎',
+      description: 'General knowledge about summoning and FAQ.',
+      url: '/guides/silver-and-blood/summon-faq/',
+      category: 'guides',
+      status: 'active',
     },
     {
-      id: "dutchmans-revenge",
+      id: 'dutchmans-revenge',
       title: "Dutchman's Revenge",
-      emoji: "🧩",
-      description: "Helping with little puzzle thingy :D",
-      url: "/guides/silver-and-blood/dutchmans-revenge/",
-      category: "guides",
-      status: "active"
+      emoji: '🧩',
+      description: 'Helping with little puzzle thingy :D',
+      url: '/guides/silver-and-blood/dutchmans-revenge/',
+      category: 'guides',
+      status: 'active',
     },
     {
-      id: "events",
-      title: "Events",
-      emoji: "🌙",
-      description: "Events and Related things to Events !",
-      url: "/guides/silver-and-blood/events/",
-      category: "guides",
-      status: "active"
+      id: 'events',
+      title: 'Events',
+      emoji: '🌙',
+      description: 'Events and Related things to Events !',
+      url: '/guides/silver-and-blood/events/',
+      category: 'guides',
+      status: 'active',
     },
     {
-      id: "waifu-cutscenes",
-      title: "Waifu CutScenes",
-      emoji: "💕",
-      description: "Beautiful character cutscenes and memorable moments featuring beloved Silver and Blood characters.",
-      url: "/guides/silver-and-blood/waifu-cutscenes/",
-      category: "guides",
-      status: "active"
+      id: 'waifu-cutscenes',
+      title: 'Waifu CutScenes',
+      emoji: '💕',
+      description:
+        'Beautiful character cutscenes and memorable moments featuring beloved Silver and Blood characters.',
+      url: '/guides/silver-and-blood/waifu-cutscenes/',
+      category: 'guides',
+      status: 'active',
     },
     {
-      id: "character-comparison",
-      title: "Character Comparison",
-      emoji: "📊",
-      description: "Compare up to 4 characters side by side to analyze their stats and abilities for optimal team building.",
-      url: "/guides/silver-and-blood/character-comparison/",
-      category: "guides",
-      status: "active"
+      id: 'character-comparison',
+      title: 'Character Comparison',
+      emoji: '📊',
+      description:
+        'Compare up to 4 characters side by side to analyze their stats and abilities for optimal team building.',
+      url: '/guides/silver-and-blood/character-comparison/',
+      category: 'guides',
+      status: 'active',
     },
     {
-      id: "character-rankings",
-      title: "Character Rankings",
-      emoji: "🏆",
-      description: "View character stat rankings and overall performance analysis across HP, ATK, P.DEF, and M.DEF.",
-      url: "/guides/silver-and-blood/character-rankings/",
-      category: "guides",
-      status: "active"
+      id: 'character-rankings',
+      title: 'Character Rankings',
+      emoji: '🏆',
+      description:
+        'View character stat rankings and overall performance analysis across HP, ATK, P.DEF, and M.DEF.',
+      url: '/guides/silver-and-blood/character-rankings/',
+      category: 'guides',
+      status: 'active',
     },
     {
-      id: "damage-mechanics",
-      title: "Damage Mechanics Hub",
-      emoji: "⚔️",
-      description: "Master Silver and Blood's combat system with comprehensive damage calculation guides and defense formulas.",
-      url: "/guides/silver-and-blood/damage-mechanics/",
-      category: "guides",
-      status: "active"
-    }
-  ]
+      id: 'damage-mechanics',
+      title: 'Damage Mechanics Hub',
+      emoji: '⚔️',
+      description:
+        "Master Silver and Blood's combat system with comprehensive damage calculation guides and defense formulas.",
+      url: '/guides/silver-and-blood/damage-mechanics/',
+      category: 'guides',
+      status: 'active',
+    },
+  ],
 };
 
-export default silverAndBloodConfig; 
+export default silverAndBloodConfig;

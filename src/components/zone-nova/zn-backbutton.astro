@@ -1,124 +1,120 @@
 ---
 // Zone Nova Back Button Component
 export interface Props {
-	href: string;
-	text?: string;
-	className?: string;
+  href: string;
+  text?: string;
+  className?: string;
 }
 
-const { 
-	href, 
-	text = 'Back', 
-	className = '' 
-} = Astro.props;
+const { href, text = 'Back', className = '' } = Astro.props;
 ---
 
 <div class={`zn-back-button-container ${className}`}>
-	<a href={href} class="zn-back-button">
-		<span class="zn-back-arrow">←</span>
-		<span class="zn-back-text">{text}</span>
-	</a>
+  <a href={href} class="zn-back-button">
+    <span class="zn-back-arrow">←</span>
+    <span class="zn-back-text">{text}</span>
+  </a>
 </div>
 
 <style>
-	.zn-back-button-container {
-		margin-bottom: 2rem;
-		display: flex;
-		justify-content: flex-start;
-	}
+  .zn-back-button-container {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-start;
+  }
 
-	.zn-back-button {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.75rem;
-		background: linear-gradient(135deg, 
-			rgba(255, 255, 255, 0.04) 0%, 
-			rgba(255, 255, 255, 0.01) 100%);
-		backdrop-filter: blur(10px);
-		color: #FFD700;
-		text-decoration: none;
-		border: 1px solid rgba(255, 215, 0, 0.3);
-		padding: 1rem 1.5rem;
-		border-radius: 16px;
-		font-family: var(--font-display);
-		font-weight: 600;
-		font-size: var(--text-base);
-		transition: all 0.3s ease;
-		box-shadow: 
-			0 8px 25px rgba(0, 0, 0, 0.2),
-			inset 0 0 20px rgba(255, 255, 255, 0.02);
-		position: relative;
-		overflow: hidden;
-	}
+  .zn-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.01) 100%
+    );
+    backdrop-filter: blur(10px);
+    color: #ffd700;
+    text-decoration: none;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-base);
+    transition: all 0.3s ease;
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.2),
+      inset 0 0 20px rgba(255, 255, 255, 0.02);
+    position: relative;
+    overflow: hidden;
+  }
 
-	.zn-back-button::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-		transition: left 0.5s ease;
-	}
+  .zn-back-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
 
-	.zn-back-button:hover {
-		background: linear-gradient(135deg, 
-			rgba(255, 215, 0, 0.1) 0%, 
-			rgba(0, 229, 255, 0.05) 100%);
-		color: #FFD700;
-		transform: translateY(-2px);
-		box-shadow: 
-			0 12px 35px rgba(255, 215, 0, 0.3),
-			inset 0 0 30px rgba(255, 255, 255, 0.05);
-		border-color: rgba(255, 215, 0, 0.5);
-	}
+  .zn-back-button:hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(0, 229, 255, 0.05) 100%);
+    color: #ffd700;
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 35px rgba(255, 215, 0, 0.3),
+      inset 0 0 30px rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 215, 0, 0.5);
+  }
 
-	.zn-back-button:hover::before {
-		left: 100%;
-	}
+  .zn-back-button:hover::before {
+    left: 100%;
+  }
 
-	.zn-back-button:hover .zn-back-arrow {
-		transform: translateX(-3px);
-	}
+  .zn-back-button:hover .zn-back-arrow {
+    transform: translateX(-3px);
+  }
 
-	.zn-back-arrow {
-		font-size: 1.25rem;
-		transition: transform 0.3s ease;
-		font-weight: 700;
-	}
+  .zn-back-arrow {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+    font-weight: 700;
+  }
 
-	.zn-back-text {
-		font-weight: 600;
-		letter-spacing: 0.02em;
-	}
+  .zn-back-text {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
 
-	/* Mobile optimizations */
-	@media (max-width: 768px) {
-		.zn-back-button {
-			padding: 0.875rem 1.25rem;
-			font-size: var(--text-sm);
-		}
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .zn-back-button {
+      padding: 0.875rem 1.25rem;
+      font-size: var(--text-sm);
+    }
 
-		.zn-back-arrow {
-			font-size: 1.1rem;
-		}
-	}
+    .zn-back-arrow {
+      font-size: 1.1rem;
+    }
+  }
 
-	/* Performance optimizations */
-	@media (prefers-reduced-motion: reduce) {
-		.zn-back-button {
-			transition: none;
-			transform: none;
-		}
-		
-		.zn-back-button:hover {
-			transform: none;
-		}
-		
-		.zn-back-button::before,
-		.zn-back-arrow {
-			transition: none;
-		}
-	}
-</style> 
+  /* Performance optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .zn-back-button {
+      transition: none;
+      transform: none;
+    }
+
+    .zn-back-button:hover {
+      transform: none;
+    }
+
+    .zn-back-button::before,
+    .zn-back-arrow {
+      transition: none;
+    }
+  }
+</style>

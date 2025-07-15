@@ -19,9 +19,9 @@ const CACHE_PATTERNS = [
   /\/assets\//,
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
+    caches.open(CACHE_NAME).then(cache => {
       return cache.addAll(STATIC_ASSETS);
     })
   );
@@ -29,11 +29,11 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.map((cacheName) => {
+        cacheNames.map(cacheName => {
           if (cacheName !== CACHE_NAME) {
             return caches.delete(cacheName);
           }
@@ -45,7 +45,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
 
@@ -62,15 +62,15 @@ self.addEventListener('fetch', (event) => {
   // Handle static assets with cache-first strategy
   if (CACHE_PATTERNS.some(pattern => pattern.test(url.pathname))) {
     event.respondWith(
-      caches.match(request).then((cachedResponse) => {
+      caches.match(request).then(cachedResponse => {
         if (cachedResponse) {
           return cachedResponse;
         }
-        return fetch(request).then((response) => {
+        return fetch(request).then(response => {
           // Only cache successful responses
           if (response.status === 200) {
             const responseToCache = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
+            caches.open(CACHE_NAME).then(cache => {
               cache.put(request, responseToCache);
             });
           }
@@ -109,7 +109,7 @@ self.addEventListener('fetch', (event) => {
 });
 
 // Handle background sync for analytics
-self.addEventListener('sync', (event) => {
+self.addEventListener('sync', event => {
   if (event.tag === 'analytics-sync') {
     event.waitUntil(syncAnalytics());
   }

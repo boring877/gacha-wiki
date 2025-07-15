@@ -1,124 +1,129 @@
 ---
+
 ---
 
 <div class="mobile-nav">
-    <!-- Empty space for balance -->
-    <div class="mobile-nav-spacer"></div>
-    
-    <!-- Wiki Link (Centered) -->
-    <a href="/wikis" class="mobile-nav-link">Wiki Library</a>
-    
-    <!-- Hamburger Menu (Right) -->
-    <button id="hamburger" class="hamburger-menu" aria-label="Open Menu" aria-expanded="false">
-        <svg width="30" height="30" viewBox="0 0 30 30">
-            <path d="M4 7h22M4 15h22M4 23h22" stroke="var(--amber-glow)" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-    </button>
+  <!-- Empty space for balance -->
+  <div class="mobile-nav-spacer"></div>
+
+  <!-- Wiki Link (Centered) -->
+  <a href="/wikis" class="mobile-nav-link">Wiki Library</a>
+
+  <!-- Hamburger Menu (Right) -->
+  <button id="hamburger" class="hamburger-menu" aria-label="Open Menu" aria-expanded="false">
+    <svg width="30" height="30" viewBox="0 0 30 30">
+      <path
+        d="M4 7h22M4 15h22M4 23h22"
+        stroke="var(--amber-glow)"
+        stroke-width="3"
+        stroke-linecap="round"></path>
+    </svg>
+  </button>
 </div>
 
 <style>
-    /* Colors are available via layout's index.css import */
+  /* Colors are available via layout's index.css import */
 
+  .mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
     .mobile-nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        position: relative;
+      display: none;
     }
+  }
 
-    @media (min-width: 768px) {
-        .mobile-nav {
-            display: none;
-        }
-    }
+  .mobile-nav-spacer {
+    width: 44px; /* Same width as hamburger menu for balance */
+  }
 
-    .mobile-nav-spacer {
-        width: 44px; /* Same width as hamburger menu for balance */
+  .mobile-nav-link {
+    flex: 1;
+    text-align: center;
+  }
+
+  .mobile-nav-link {
+    color: var(--amber-glow);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    touch-action: manipulation;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 183, 77, 0.1);
+    border: 1px solid transparent;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    white-space: nowrap;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link:active {
+    background: var(--amber-glow);
+    color: white;
+    transform: translateY(-1px);
+    border-color: var(--teal-crystal);
+    box-shadow: 0 4px 8px rgba(255, 183, 77, 0.3);
+  }
+
+  .hamburger-menu {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    touch-action: manipulation;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+    /* Remove blue highlights */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+  }
+
+  .hamburger-menu:hover {
+    transform: scale(1.05);
+  }
+
+  .hamburger-menu:active {
+    transform: scale(0.95);
+  }
+
+  /* Extra small mobile adjustments */
+  @media (max-width: 480px) {
+    .mobile-nav {
+      gap: 0.5rem;
     }
 
     .mobile-nav-link {
-        flex: 1;
-        text-align: center;
+      padding: 0.375rem 0.5rem;
+      min-height: 36px;
+      font-size: 0.75rem;
     }
+  }
 
-    .mobile-nav-link {
-        color: var(--amber-glow);
-        text-decoration: none;
-        padding: 0.5rem 0.75rem;
-        border-radius: 8px;
-        transition: all 0.2s ease;
-        touch-action: manipulation;
-        min-height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 183, 77, 0.1);
-        border: 1px solid transparent;
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: var(--text-sm);
-        white-space: nowrap;
-    }
-
-    .mobile-nav-link:hover,
-    .mobile-nav-link:active {
-        background: var(--amber-glow);
-        color: white;
-        transform: translateY(-1px);
-        border-color: var(--teal-crystal);
-        box-shadow: 0 4px 8px rgba(255, 183, 77, 0.3);
-    }
-
+  /* Performance optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-nav-link,
     .hamburger-menu {
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-        touch-action: manipulation;
-        min-height: 44px;
-        min-width: 44px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: transform 0.2s ease;
-        /* Remove blue highlights */
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        outline: none;
+      transition: none;
+      transform: none;
     }
-
-    .hamburger-menu:hover {
-        transform: scale(1.05);
-    }
-
-    .hamburger-menu:active {
-        transform: scale(0.95);
-    }
-
-    /* Extra small mobile adjustments */
-    @media (max-width: 480px) {
-        .mobile-nav {
-            gap: 0.5rem;
-        }
-        
-        .mobile-nav-link {
-            padding: 0.375rem 0.5rem;
-            min-height: 36px;
-            font-size: 0.75rem;
-        }
-    }
-
-    /* Performance optimizations */
-    @media (prefers-reduced-motion: reduce) {
-        .mobile-nav-link,
-        .hamburger-menu {
-            transition: none;
-            transform: none;
-        }
-    }
+  }
 </style>

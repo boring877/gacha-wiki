@@ -71,25 +71,24 @@ const { title, description, characterName, characterImage, character } = Astro.p
 		<!-- Canonical URL -->
 		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 		
-		<script type="application/ld+json">
-			{JSON.stringify({
-				"@context": "https://schema.org",
-				"@type": "Person",
-				"name": characterName,
-				"description": description || `Character guide for ${characterName} in Silver and Blood`,
-				"about": {
-					"@type": "VideoGame",
-					"name": "Silver and Blood"
-				},
-				"publisher": {
-					"@type": "Organization",
-					"name": "GachaWiki"
-				},
-				"mainEntityOfPage": {
-					"@type": "WebPage",
-					"@id": new URL(Astro.url.pathname, Astro.site)
-				}
-			})}
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": characterName,
+			"description": description || `Character guide for ${characterName} in Silver and Blood`,
+			"about": {
+				"@type": "VideoGame",
+				"name": "Silver and Blood"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "GachaWiki"
+			},
+			"mainEntityOfPage": {
+				"@type": "WebPage",
+				"@id": new URL(Astro.url.pathname, Astro.site)
+			}
+		})}>
 		</script>
 		
 		<slot name="head" />

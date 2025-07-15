@@ -1,525 +1,544 @@
 ---
 // Unified Silver and Blood Navigation Component
 export interface Props {
-	currentPath?: string;
-	showWaifuGallery?: boolean;
-	excludeOnLandingPage?: boolean;
-	variant?: 'full' | 'simple';
+  currentPath?: string;
+  showWaifuGallery?: boolean;
+  excludeOnLandingPage?: boolean;
+  variant?: 'full' | 'simple';
 }
 
-const { 
-	currentPath = '', 
-	showWaifuGallery = false, 
-	excludeOnLandingPage = false,
-	variant = 'full' 
+const {
+  currentPath = '',
+  showWaifuGallery = false,
+  excludeOnLandingPage = false,
+  variant = 'full',
 } = Astro.props;
 
 // Base navigation items
 const baseLinks = [
-	{ name: 'Overview', href: '/guides/silver-and-blood/' },
-	{ name: 'Characters', href: '/guides/silver-and-blood/characters/' },
-	{ name: 'Character Comparison', href: '/guides/silver-and-blood/character-comparison/' },
-	{ name: 'Character Rankings', href: '/guides/silver-and-blood/character-rankings/' },
-	{ name: 'Damage Mechanics', href: '/guides/silver-and-blood/damage-mechanics/' },
-	{ name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
-	{ name: 'Dutchman\'s Revenge', href: '/guides/silver-and-blood/dutchmans-revenge/' },
-	{ name: 'Events', href: '/guides/silver-and-blood/events/' }
+  { name: 'Overview', href: '/guides/silver-and-blood/' },
+  { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
+  { name: 'Character Comparison', href: '/guides/silver-and-blood/character-comparison/' },
+  { name: 'Character Rankings', href: '/guides/silver-and-blood/character-rankings/' },
+  { name: 'Damage Mechanics', href: '/guides/silver-and-blood/damage-mechanics/' },
+  { name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
+  { name: "Dutchman's Revenge", href: '/guides/silver-and-blood/dutchmans-revenge/' },
+  { name: 'Events', href: '/guides/silver-and-blood/events/' },
 ];
 
 // Add Waifu Gallery if requested
-const quickLinks = showWaifuGallery 
-	? [...baseLinks, { name: 'Waifu Gallery', href: '/guides/silver-and-blood/waifu-cutscenes/' }]
-	: baseLinks;
-
+const quickLinks = showWaifuGallery
+  ? [...baseLinks, { name: 'Waifu Gallery', href: '/guides/silver-and-blood/waifu-cutscenes/' }]
+  : baseLinks;
 
 // Check if we're on the main Silver and Blood landing page
-const isLandingPage = currentPath === '/guides/silver-and-blood/' || currentPath === '/guides/silver-and-blood';
+const isLandingPage =
+  currentPath === '/guides/silver-and-blood/' || currentPath === '/guides/silver-and-blood';
 
 // Function to check if a link is active
 function isActiveLink(href: string): boolean {
-	if (href === '/guides/silver-and-blood/' && (currentPath === '/guides/silver-and-blood/' || currentPath === '/guides/silver-and-blood')) {
-		return true;
-	}
-	if (href !== '/guides/silver-and-blood/' && currentPath.startsWith(href)) {
-		return true;
-	}
-	return false;
+  if (
+    href === '/guides/silver-and-blood/' &&
+    (currentPath === '/guides/silver-and-blood/' || currentPath === '/guides/silver-and-blood')
+  ) {
+    return true;
+  }
+  if (href !== '/guides/silver-and-blood/' && currentPath.startsWith(href)) {
+    return true;
+  }
+  return false;
 }
-
 
 // Don't render on landing page if requested
 if (excludeOnLandingPage && isLandingPage) {
-	return;
+  return;
 }
 ---
 
 <!-- Silver and Blood Unified Navigation -->
 <nav class="sab-navigation" aria-label="Silver and Blood Navigation">
-	<div class="nav-container">
-		<div class="nav-header">
-			<h3 class="nav-title">Silver and Blood Navigation</h3>
-		</div>
-		
-		<div class="nav-links" id="sabNavContainer">
-			{quickLinks.map(link => (
-				<a 
-					href={link.href} 
-					class={`nav-link ${isActiveLink(link.href) ? 'active' : ''}`}
-					aria-current={isActiveLink(link.href) ? 'page' : undefined}
-					title={link.name}
-				>
-					{link.name}
-				</a>
-			))}
-		</div>
-		
-		<!-- Mobile swipe hint -->
-		<div class="swipe-hint" id="sabSwipeHint">
-			<span class="hint-text">← Swipe for more →</span>
-		</div>
-	</div>
+  <div class="nav-container">
+    <div class="nav-header">
+      <h3 class="nav-title">Silver and Blood Navigation</h3>
+    </div>
+
+    <div class="nav-links" id="sabNavContainer">
+      {
+        quickLinks.map(link => (
+          <a
+            href={link.href}
+            class={`nav-link ${isActiveLink(link.href) ? 'active' : ''}`}
+            aria-current={isActiveLink(link.href) ? 'page' : undefined}
+            title={link.name}
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Mobile swipe hint -->
+    <div class="swipe-hint" id="sabSwipeHint">
+      <span class="hint-text">← Swipe for more →</span>
+    </div>
+  </div>
 </nav>
 
 <style>
-	.sab-navigation {
-		width: 100%;
-		margin-bottom: 3rem;
-		position: relative;
-		z-index: 100;
-	}
+  .sab-navigation {
+    width: 100%;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 100;
+  }
 
-	.nav-container {
-		background: rgba(28, 28, 28, 0.95);
-		border: 2px solid var(--sab-calm-red);
-		border-radius: 16px;
-		backdrop-filter: blur(10px);
-		overflow: hidden;
-	}
+  .nav-container {
+    background: rgba(28, 28, 28, 0.95);
+    border: 2px solid var(--sab-calm-red);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+  }
 
-	.nav-header {
-		padding: 1.5rem;
-		background: linear-gradient(135deg, rgba(166, 77, 77, 0.1), rgba(90, 123, 167, 0.1));
-		border-bottom: 1px solid rgba(166, 77, 77, 0.2);
-		text-align: center;
-	}
+  .nav-header {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(166, 77, 77, 0.1), rgba(90, 123, 167, 0.1));
+    border-bottom: 1px solid rgba(166, 77, 77, 0.2);
+    text-align: center;
+  }
 
-	.nav-title {
-		font-family: var(--font-display);
-		font-size: var(--text-xl);
-		font-weight: 700;
-		color: var(--text-primary);
-		margin: 0;
-		background: var(--sab-silver-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
+  .nav-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    background: var(--sab-silver-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
-	.nav-links {
-		padding: 1.5rem;
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 1rem;
-		align-items: stretch;
-	}
+  .nav-links {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+  }
 
-	.nav-link {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem 1.5rem;
-		color: #e8e8e8;
-		text-decoration: none;
-		border-radius: 12px;
-		font-family: var(--font-display);
-		font-weight: 500;
-		font-size: var(--text-base);
-		transition: all 0.3s ease;
-		border: 1px solid rgba(166, 77, 77, 0.2);
-		position: relative;
-		overflow: hidden;
-		text-align: center;
-		background: rgba(166, 77, 77, 0.05);
-		min-height: 60px;
-		line-height: 1.3;
-		word-wrap: break-word;
-		hyphens: auto;
-	}
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    color: #e8e8e8;
+    text-decoration: none;
+    border-radius: 12px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-base);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(166, 77, 77, 0.2);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background: rgba(166, 77, 77, 0.05);
+    min-height: 60px;
+    line-height: 1.3;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
 
-	.nav-link::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(166, 77, 77, 0.15), transparent);
-		transition: left 0.5s ease;
-	}
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(166, 77, 77, 0.15), transparent);
+    transition: left 0.5s ease;
+  }
 
-	.nav-link:hover {
-		color: #ffffff;
-		background: var(--sab-light-blue);
-		border-color: var(--sab-light-blue);
-		transform: translateY(-2px);
-	}
+  .nav-link:hover {
+    color: #ffffff;
+    background: var(--sab-light-blue);
+    border-color: var(--sab-light-blue);
+    transform: translateY(-2px);
+  }
 
-	.nav-link:hover::before {
-		left: 100%;
-	}
+  .nav-link:hover::before {
+    left: 100%;
+  }
 
-	.nav-link.active {
-		color: #ffffff;
-		background: var(--sab-calm-blue);
-		border-color: var(--sab-light-blue);
-		font-weight: 600;
-		transform: translateY(-1px);
-		position: relative;
-	}
-	
-	.nav-link.active::after {
-		content: '';
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: var(--sab-light-blue);
-		border-radius: 0 0 8px 8px;
-	}
+  .nav-link.active {
+    color: #ffffff;
+    background: var(--sab-calm-blue);
+    border-color: var(--sab-light-blue);
+    font-weight: 600;
+    transform: translateY(-1px);
+    position: relative;
+  }
 
-	.nav-link.active::before {
-		display: none;
-	}
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--sab-light-blue);
+    border-radius: 0 0 8px 8px;
+  }
 
-	/* Hide swipe hint on desktop */
-	.swipe-hint {
-		display: none;
-	}
+  .nav-link.active::before {
+    display: none;
+  }
 
-	/* Responsive grid adjustments */
-	@media (max-width: 1400px) {
-		.nav-links {
-			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-		}
-	}
-	
-	@media (max-width: 1200px) {
-		.nav-links {
-			grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-		}
-	}
+  /* Hide swipe hint on desktop */
+  .swipe-hint {
+    display: none;
+  }
 
-	@media (max-width: 900px) {
-		.nav-links {
-			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-			gap: 0.75rem;
-		}
-		
-		.nav-link {
-			padding: 0.75rem 1rem;
-			font-size: var(--text-sm);
-			min-height: 55px;
-		}
-	}
+  /* Responsive grid adjustments */
+  @media (max-width: 1400px) {
+    .nav-links {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+  }
 
-	/* Mobile responsive layout */
-	@media (max-width: 768px) {
-		.sab-navigation {
-			margin-bottom: 2rem;
-		}
+  @media (max-width: 1200px) {
+    .nav-links {
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    }
+  }
 
-		.nav-container {
-			overflow: visible;
-		}
+  @media (max-width: 900px) {
+    .nav-links {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
 
-		.nav-links {
-			display: flex;
-			flex-direction: row;
-			overflow-x: auto;
-			overflow-y: visible;
-			scroll-behavior: smooth;
-			-webkit-overflow-scrolling: touch;
-			scrollbar-width: none;
-			-ms-overflow-style: none;
-			scroll-snap-type: x mandatory;
-			padding: 1rem;
-			gap: 1rem;
-			/* Performance optimizations */
-			will-change: scroll-position;
-			transform: translateZ(0);
-			-webkit-transform: translateZ(0);
-			contain: layout;
-		}
-		
-		.nav-links::-webkit-scrollbar {
-			display: none;
-		}
-		
-		.nav-link {
-			flex-shrink: 0;
-			white-space: nowrap;
-			min-width: 120px;
-			max-width: 180px;
-			padding: 0.875rem 1.25rem;
-			font-size: 0.875rem;
-			scroll-snap-align: start;
-			touch-action: manipulation;
-			/* Performance optimizations */
-			will-change: transform;
-			backface-visibility: hidden;
-			-webkit-backface-visibility: hidden;
-			text-overflow: ellipsis;
-			overflow: hidden;
-		}
-		
-		.nav-header {
-			padding: 1rem;
-		}
-		
-		.nav-title {
-			font-size: 1.1rem;
-		}
+    .nav-link {
+      padding: 0.75rem 1rem;
+      font-size: var(--text-sm);
+      min-height: 55px;
+    }
+  }
 
-		/* Show swipe hint on mobile */
-		.swipe-hint {
-			display: block;
-			text-align: center;
-			margin-top: 0.5rem;
-			margin-bottom: 0.5rem;
-			opacity: 0;
-			transition: opacity 0.3s ease;
-			position: relative;
-			z-index: 10;
-		}
+  /* Mobile responsive layout */
+  @media (max-width: 768px) {
+    .sab-navigation {
+      margin-bottom: 2rem;
+    }
 
-		.swipe-hint.show {
-			opacity: 1;
-			animation: fadeInUp 0.5s ease-out forwards;
-		}
+    .nav-container {
+      overflow: visible;
+    }
 
-		.swipe-hint.hide {
-			animation: fadeOut 0.3s ease-out forwards;
-		}
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: visible;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-snap-type: x mandatory;
+      padding: 1rem;
+      gap: 1rem;
+      /* Performance optimizations */
+      will-change: scroll-position;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      contain: layout;
+    }
 
-		.hint-text {
-			font-family: var(--font-primary);
-			font-size: var(--text-xs);
-			color: var(--sab-calm-red);
-			font-weight: 500;
-			letter-spacing: 0.5px;
-			text-transform: uppercase;
-		}
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
 
-		@keyframes fadeInUp {
-			from {
-				opacity: 0;
-				transform: translateY(10px);
-			}
-			to {
-				opacity: 1;
-				transform: translateY(0);
-			}
-		}
+    .nav-link {
+      flex-shrink: 0;
+      white-space: nowrap;
+      min-width: 120px;
+      max-width: 180px;
+      padding: 0.875rem 1.25rem;
+      font-size: 0.875rem;
+      scroll-snap-align: start;
+      touch-action: manipulation;
+      /* Performance optimizations */
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
 
-		@keyframes fadeOut {
-			from {
-				opacity: 0.7;
-			}
-			to {
-				opacity: 0;
-			}
-		}
-	}
-	
-	@media (max-width: 480px) {
-		.sab-navigation {
-			margin-bottom: 2rem;
-		}
-		
-		.nav-link {
-			min-width: 100px;
-			max-width: 140px;
-			padding: 0.75rem 1rem;
-			font-size: 0.8rem;
-		}
+    .nav-header {
+      padding: 1rem;
+    }
 
-		.nav-links {
-			padding: 0.75rem;
-		}
-	}
+    .nav-title {
+      font-size: 1.1rem;
+    }
 
-	/* Performance Optimizations */
-	@media (prefers-reduced-motion: reduce) {
-		.nav-link {
-			transition: none;
-			transform: none;
-		}
-		
-		.nav-link::before {
-			transition: none;
-		}
-		
-		.swipe-hint {
-			animation: none;
-		}
-	}
+    /* Show swipe hint on mobile */
+    .swipe-hint {
+      display: block;
+      text-align: center;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      position: relative;
+      z-index: 10;
+    }
+
+    .swipe-hint.show {
+      opacity: 1;
+      animation: fadeInUp 0.5s ease-out forwards;
+    }
+
+    .swipe-hint.hide {
+      animation: fadeOut 0.3s ease-out forwards;
+    }
+
+    .hint-text {
+      font-family: var(--font-primary);
+      font-size: var(--text-xs);
+      color: var(--sab-calm-red);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 0.7;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .sab-navigation {
+      margin-bottom: 2rem;
+    }
+
+    .nav-link {
+      min-width: 100px;
+      max-width: 140px;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      padding: 0.75rem;
+    }
+  }
+
+  /* Performance Optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link {
+      transition: none;
+      transform: none;
+    }
+
+    .nav-link::before {
+      transition: none;
+    }
+
+    .swipe-hint {
+      animation: none;
+    }
+  }
 </style>
 
 <script>
-	// Mobile navigation functionality
-	document.addEventListener('DOMContentLoaded', function() {
-		const container = document.getElementById('sabNavContainer');
-		const swipeHint = document.getElementById('sabSwipeHint');
-		if (!container) return;
+  // Mobile navigation functionality
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('sabNavContainer');
+    const swipeHint = document.getElementById('sabSwipeHint');
+    if (!container) return;
 
-		let isDown = false;
-		let startX;
-		let scrollLeft;
-		let animationFrame;
-		let indicatorTimeout;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let animationFrame;
+    let indicatorTimeout;
 
-		// Throttle function for performance
-		function throttle(func, limit) {
-			let inThrottle;
-			return function() {
-				const args = arguments;
-				const context = this;
-				if (!inThrottle) {
-					func.apply(context, args);
-					inThrottle = true;
-					setTimeout(() => inThrottle = false, limit);
-				}
-			}
-		}
+    // Throttle function for performance
+    function throttle(func, limit) {
+      let inThrottle;
+      return function () {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => (inThrottle = false), limit);
+        }
+      };
+    }
 
-		// Show/hide swipe hint
-		function updateSwipeHint() {
-			if (!swipeHint || !container) return;
-			
-			const scrollWidth = container.scrollWidth;
-			const clientWidth = container.clientWidth;
-			
-			// Only show hint if there's content to scroll (with small buffer)
-			if (scrollWidth > clientWidth + 10) {
-				swipeHint.classList.add('show');
-				swipeHint.classList.remove('hide');
-				return true;
-			} else {
-				swipeHint.classList.add('hide');
-				swipeHint.classList.remove('show');
-				return false;
-			}
-		}
+    // Show/hide swipe hint
+    function updateSwipeHint() {
+      if (!swipeHint || !container) return;
 
-		// Reset scroll position to default on page load
-		container.scrollLeft = 0;
-		
-		// Additional reset after a short delay to override browser restoration
-		setTimeout(() => {
-			container.scrollLeft = 0;
-		}, 50);
+      const scrollWidth = container.scrollWidth;
+      const clientWidth = container.clientWidth;
 
-		// Handle browser back/forward navigation
-		window.addEventListener('pageshow', () => {
-			container.scrollLeft = 0;
-		});
+      // Only show hint if there's content to scroll (with small buffer)
+      if (scrollWidth > clientWidth + 10) {
+        swipeHint.classList.add('show');
+        swipeHint.classList.remove('hide');
+        return true;
+      } else {
+        swipeHint.classList.add('hide');
+        swipeHint.classList.remove('show');
+        return false;
+      }
+    }
 
-		// Handle window resize to update hint visibility
-		if (typeof ResizeObserver !== 'undefined') {
-			const resizeObserver = new ResizeObserver(() => {
-				setTimeout(() => {
-					updateSwipeHint();
-				}, 100);
-			});
-			resizeObserver.observe(container);
-		}
+    // Reset scroll position to default on page load
+    container.scrollLeft = 0;
 
-		// Initial hint setup
-		if (swipeHint) {
-			setTimeout(() => {
-				const hasOverflow = updateSwipeHint();
-				// Auto-hide hint after 4 seconds only if there's overflow
-				if (hasOverflow) {
-					indicatorTimeout = setTimeout(() => {
-						if (swipeHint) {
-							swipeHint.classList.add('hide');
-							swipeHint.classList.remove('show');
-						}
-					}, 4000);
-				}
-			}, 500);
-		}
+    // Additional reset after a short delay to override browser restoration
+    setTimeout(() => {
+      container.scrollLeft = 0;
+    }, 50);
 
-		// Touch events for mobile (optimized)
-		container.addEventListener('touchstart', (e) => {
-			isDown = true;
-			startX = e.touches[0].clientX;
-			scrollLeft = container.scrollLeft;
-			if (animationFrame) {
-				cancelAnimationFrame(animationFrame);
-			}
-		}, { passive: true });
+    // Handle browser back/forward navigation
+    window.addEventListener('pageshow', () => {
+      container.scrollLeft = 0;
+    });
 
-		const handleTouchMove = throttle((e) => {
-			if (!isDown) return;
-			const x = e.touches[0].clientX;
-			const walk = (x - startX) * 1.5;
-			
-			animationFrame = requestAnimationFrame(() => {
-				container.scrollLeft = scrollLeft - walk;
-			});
-		}, 16); // ~60fps
+    // Handle window resize to update hint visibility
+    if (typeof ResizeObserver !== 'undefined') {
+      const resizeObserver = new ResizeObserver(() => {
+        setTimeout(() => {
+          updateSwipeHint();
+        }, 100);
+      });
+      resizeObserver.observe(container);
+    }
 
-		container.addEventListener('touchmove', handleTouchMove, { passive: true });
+    // Initial hint setup
+    if (swipeHint) {
+      setTimeout(() => {
+        const hasOverflow = updateSwipeHint();
+        // Auto-hide hint after 4 seconds only if there's overflow
+        if (hasOverflow) {
+          indicatorTimeout = setTimeout(() => {
+            if (swipeHint) {
+              swipeHint.classList.add('hide');
+              swipeHint.classList.remove('show');
+            }
+          }, 4000);
+        }
+      }, 500);
+    }
 
-		container.addEventListener('touchend', () => {
-			isDown = false;
-			if (animationFrame) {
-				cancelAnimationFrame(animationFrame);
-			}
-			// Hide hint after user interacts
-			if (swipeHint) {
-				swipeHint.classList.add('hide');
-				swipeHint.classList.remove('show');
-			}
-		}, { passive: true });
+    // Touch events for mobile (optimized)
+    container.addEventListener(
+      'touchstart',
+      e => {
+        isDown = true;
+        startX = e.touches[0].clientX;
+        scrollLeft = container.scrollLeft;
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+        }
+      },
+      { passive: true }
+    );
 
-		// Hide hint on scroll
-		container.addEventListener('scroll', () => {
-			if (swipeHint) {
-				swipeHint.classList.add('hide');
-				swipeHint.classList.remove('show');
-			}
-		}, { passive: true });
+    const handleTouchMove = throttle(e => {
+      if (!isDown) return;
+      const x = e.touches[0].clientX;
+      const walk = (x - startX) * 1.5;
 
-		// Keyboard navigation
-		container.addEventListener('keydown', (e) => {
-			if (e.key === 'ArrowLeft') {
-				container.scrollBy({ left: -150, behavior: 'smooth' });
-			} else if (e.key === 'ArrowRight') {
-				container.scrollBy({ left: 150, behavior: 'smooth' });
-			}
-		});
+      animationFrame = requestAnimationFrame(() => {
+        container.scrollLeft = scrollLeft - walk;
+      });
+    }, 16); // ~60fps
 
-		// Optimized scroll to active item
-		const activeItem = container.querySelector('.nav-link.active');
-		if (activeItem) {
-			// Use intersection observer for better performance
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-					if (!entry.isIntersecting) {
-						activeItem.scrollIntoView({ 
-							behavior: 'smooth', 
-							block: 'nearest', 
-							inline: 'center' 
-						});
-					}
-				});
-				observer.disconnect();
-			}, { threshold: 0.5 });
-			
-			setTimeout(() => observer.observe(activeItem), 100);
-		}
-	});
+    container.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+    container.addEventListener(
+      'touchend',
+      () => {
+        isDown = false;
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+        }
+        // Hide hint after user interacts
+        if (swipeHint) {
+          swipeHint.classList.add('hide');
+          swipeHint.classList.remove('show');
+        }
+      },
+      { passive: true }
+    );
+
+    // Hide hint on scroll
+    container.addEventListener(
+      'scroll',
+      () => {
+        if (swipeHint) {
+          swipeHint.classList.add('hide');
+          swipeHint.classList.remove('show');
+        }
+      },
+      { passive: true }
+    );
+
+    // Keyboard navigation
+    container.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') {
+        container.scrollBy({ left: -150, behavior: 'smooth' });
+      } else if (e.key === 'ArrowRight') {
+        container.scrollBy({ left: 150, behavior: 'smooth' });
+      }
+    });
+
+    // Optimized scroll to active item
+    const activeItem = container.querySelector('.nav-link.active');
+    if (activeItem) {
+      // Use intersection observer for better performance
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              activeItem.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center',
+              });
+            }
+          });
+          observer.disconnect();
+        },
+        { threshold: 0.5 }
+      );
+
+      setTimeout(() => observer.observe(activeItem), 100);
+    }
+  });
 </script>

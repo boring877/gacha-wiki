@@ -1,6 +1,12 @@
 ---
 import ZoneNovaLayout from '../../../layouts/zone-nova/Layout.astro';
-import { zoneNovaUpdates, getUpdateClass, getTagText, getTagEmoji, paginateUpdates } from '../../../data/zone-nova/updates.js';
+import {
+  zoneNovaUpdates,
+  getUpdateClass,
+  getTagText,
+  getTagEmoji,
+  paginateUpdates,
+} from '../../../data/zone-nova/updates.js';
 import '../../../styles/games/zone-nova/zn-updates.css';
 
 // Always show all updates initially - filtering is now client-side only
@@ -15,247 +21,271 @@ const filteredUpdates = zoneNovaUpdates;
 const pagination = paginateUpdates(filteredUpdates, currentPage, 10);
 ---
 
-
-<ZoneNovaLayout 
-	title="Zone Nova Maintenance & Announcements - GachaWiki" 
-	description="Latest patch notes, maintenance updates, and announcements for Zone Nova"
-	gameTitle="Announcements & Maintenance"
+<ZoneNovaLayout
+  title="Zone Nova Maintenance & Announcements - GachaWiki"
+  description="Latest patch notes, maintenance updates, and announcements for Zone Nova"
+  gameTitle="Announcements & Maintenance"
 >
-	<section class="content-section">
-		<h2 class="section-title">Latest Updates</h2>
-		<div class="section-description">
-			Stay updated with the latest Zone Nova updates, maintenance schedules, and important announcements
-		</div>
+  <section class="content-section">
+    <h2 class="section-title">Latest Updates</h2>
+    <div class="section-description">
+      Stay updated with the latest Zone Nova updates, maintenance schedules, and important
+      announcements
+    </div>
 
-		<!-- Search and Filter Controls -->
-		<div class="updates-controls">
-			<div class="search-container">
-				<div class="search-wrapper">
-					<input 
-						type="text" 
-						id="search-input" 
-						placeholder="Search updates (e.g. Zeus, maintenance, Thunder King)..."
-						value={searchQuery}
-						class="search-input"
-						autocomplete="off"
-					/>
-					<div id="search-suggestions" class="search-suggestions"></div>
-				</div>
-				<button type="button" id="search-btn" class="search-btn">Search</button>
-				{searchQuery && (
-					<button type="button" id="clear-search" class="clear-search-btn">Clear</button>
-				)}
-			</div>
+    <!-- Search and Filter Controls -->
+    <div class="updates-controls">
+      <div class="search-container">
+        <div class="search-wrapper">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search updates (e.g. Zeus, maintenance, Thunder King)..."
+            value={searchQuery}
+            class="search-input"
+            autocomplete="off"
+          />
+          <div id="search-suggestions" class="search-suggestions"></div>
+        </div>
+        <button type="button" id="search-btn" class="search-btn">Search</button>
+        {
+          searchQuery && (
+            <button type="button" id="clear-search" class="clear-search-btn">
+              Clear
+            </button>
+          )
+        }
+      </div>
 
-			<div class="filter-container">
-				<select id="type-filter" class="filter-select">
-					<option value="all" selected>All Updates</option>
-					<option value="maintenance">Maintenance</option>
-	
-					<option value="announcement">Announcements</option>
-					<option value="recruitment">Recruitment</option>
-				</select>
-			</div>
-		</div>
+      <div class="filter-container">
+        <select id="type-filter" class="filter-select">
+          <option value="all" selected>All Updates</option>
+          <option value="maintenance">Maintenance</option>
 
-		<!-- Results Info -->
-		<div class="results-info">
-			Showing {pagination.updates.length} of {pagination.totalUpdates} updates
-			{searchQuery && <span class="search-query">for "{searchQuery}"</span>}
-		</div>
-		
-		<!-- Updates List -->
-		<div class="patch-list">
-			{pagination.updates.map((update) => (
-				<a href={update.url} class={`patch-card ${getUpdateClass(update.type)}`}>
-					<div class="patch-card-header">
-						<div class="patch-header-top">
-							<span class={`update-tag ${update.type}`}>
-								<span class="tag-emoji">{getTagEmoji(update.type)}</span>
-								{getTagText(update.type)}
-							</span>
-							<p class="patch-date">{update.date}</p>
-						</div>
-						<h2>{update.title}</h2>
-					</div>
-					<div class="patch-card-body">
-						<p class="patch-summary">{update.summary}</p>
-					</div>
-				</a>
-			))}
-		</div>
+          <option value="announcement">Announcements</option>
+          <option value="recruitment">Recruitment</option>
+        </select>
+      </div>
+    </div>
 
-		<!-- Pagination (hidden by default, shown by JavaScript when appropriate) -->
-		{pagination.totalPages > 1 && (
-			<div class="pagination" style="display: flex;">
-				{pagination.hasPrev && (
-					<a href="#" class="pagination-btn pagination-prev">
-						← Previous
-					</a>
-				)}
-				
-				<div class="pagination-numbers">
-					{Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map((page) => (
-						<a 
-							href="#"
-							class={`pagination-number ${page === currentPage ? 'active' : ''}`}
-						>
-							{page}
-						</a>
-					))}
-				</div>
+    <!-- Results Info -->
+    <div class="results-info">
+      Showing {pagination.updates.length} of {pagination.totalUpdates} updates
+      {searchQuery && <span class="search-query">for "{searchQuery}"</span>}
+    </div>
 
-				{pagination.hasNext && (
-					<a href="#" class="pagination-btn pagination-next">
-						Next →
-					</a>
-				)}
-			</div>
-		)}
-	</section>
+    <!-- Updates List -->
+    <div class="patch-list">
+      {
+        pagination.updates.map(update => (
+          <a href={update.url} class={`patch-card ${getUpdateClass(update.type)}`}>
+            <div class="patch-card-header">
+              <div class="patch-header-top">
+                <span class={`update-tag ${update.type}`}>
+                  <span class="tag-emoji">{getTagEmoji(update.type)}</span>
+                  {getTagText(update.type)}
+                </span>
+                <p class="patch-date">{update.date}</p>
+              </div>
+              <h2>{update.title}</h2>
+            </div>
+            <div class="patch-card-body">
+              <p class="patch-summary">{update.summary}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
 
-	<!-- Client-side JavaScript for instant search and filtering -->
-	<script define:vars={{ updatesData: zoneNovaUpdates }}>
-		document.addEventListener('DOMContentLoaded', function() {
-			const searchInput = document.getElementById('search-input');
-			const searchBtn = document.getElementById('search-btn');
-			const clearBtn = document.getElementById('clear-search');
-			const typeFilter = document.getElementById('type-filter');
-			const suggestions = document.getElementById('search-suggestions');
-			const patchList = document.querySelector('.patch-list');
-			const resultsInfo = document.querySelector('.results-info');
-			const pagination = document.querySelector('.pagination');
+    <!-- Pagination (hidden by default, shown by JavaScript when appropriate) -->
+    {
+      pagination.totalPages > 1 && (
+        <div class="pagination" style="display: flex;">
+          {pagination.hasPrev && (
+            <a href="#" class="pagination-btn pagination-prev">
+              ← Previous
+            </a>
+          )}
 
-			let allUpdates = [...updatesData];
-			let filteredUpdates = [...allUpdates];
-			let currentSearchTerm = '';
-			let currentTypeFilter = 'all';
+          <div class="pagination-numbers">
+            {Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map(page => (
+              <a href="#" class={`pagination-number ${page === currentPage ? 'active' : ''}`}>
+                {page}
+              </a>
+            ))}
+          </div>
 
-			// Extract keywords from all updates
-			const keywords = new Set();
-			updatesData.forEach(update => {
-				// Add title words
-				update.title.split(' ').forEach(word => {
-					if (word.length > 2) keywords.add(word.toLowerCase());
-				});
-				// Add summary words
-				update.summary.split(' ').forEach(word => {
-					if (word.length > 3) keywords.add(word.toLowerCase());
-				});
-				// Add type
-				keywords.add(update.type);
-			});
+          {pagination.hasNext && (
+            <a href="#" class="pagination-btn pagination-next">
+              Next →
+            </a>
+          )}
+        </div>
+      )
+    }
+  </section>
 
-			// Common search terms
-			['zeus', 'maintenance', 'event', 'recruitment', 'thunder', 'king', 'guinevere', 'yuis', 'bug', 'fix', 'download', 'update', 'character', 'limited'].forEach(term => {
-				keywords.add(term);
-			});
+  <!-- Client-side JavaScript for instant search and filtering -->
+  <script define:vars={{ updatesData: zoneNovaUpdates }}>
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchInput = document.getElementById('search-input');
+      const searchBtn = document.getElementById('search-btn');
+      const clearBtn = document.getElementById('clear-search');
+      const typeFilter = document.getElementById('type-filter');
+      const suggestions = document.getElementById('search-suggestions');
+      const patchList = document.querySelector('.patch-list');
+      const resultsInfo = document.querySelector('.results-info');
+      const pagination = document.querySelector('.pagination');
 
-			const keywordsArray = Array.from(keywords);
+      let allUpdates = [...updatesData];
+      let filteredUpdates = [...allUpdates];
+      let currentSearchTerm = '';
+      let currentTypeFilter = 'all';
 
-			function getUpdateClass(type) {
-				const classes = {
-					maintenance: 'maintenance',
-					event: 'announcement',
-					recruitment: 'announcement',
-					announcement: 'announcement'
-				};
-				return classes[type] || '';
-			}
+      // Extract keywords from all updates
+      const keywords = new Set();
+      updatesData.forEach(update => {
+        // Add title words
+        update.title.split(' ').forEach(word => {
+          if (word.length > 2) keywords.add(word.toLowerCase());
+        });
+        // Add summary words
+        update.summary.split(' ').forEach(word => {
+          if (word.length > 3) keywords.add(word.toLowerCase());
+        });
+        // Add type
+        keywords.add(update.type);
+      });
 
-			function getTagText(type) {
-				const tags = {
-					maintenance: 'MAINTENANCE',
-					event: 'EVENT',
-					recruitment: 'LIMITED RECRUITMENT',
-					announcement: 'ANNOUNCEMENT'
-				};
-				return tags[type] || 'UPDATE';
-			}
+      // Common search terms
+      [
+        'zeus',
+        'maintenance',
+        'event',
+        'recruitment',
+        'thunder',
+        'king',
+        'guinevere',
+        'yuis',
+        'bug',
+        'fix',
+        'download',
+        'update',
+        'character',
+        'limited',
+      ].forEach(term => {
+        keywords.add(term);
+      });
 
-			function getTagEmoji(type) {
-				const emojis = {
-					maintenance: '🔧',
-					event: '🎉',
-					recruitment: '⭐',
-					announcement: '📢'
-				};
-				return emojis[type] || '📄';
-			}
+      const keywordsArray = Array.from(keywords);
 
-			function showSuggestions(query) {
-				if (!query || query.length < 2) {
-					suggestions.style.display = 'none';
-					return;
-				}
+      function getUpdateClass(type) {
+        const classes = {
+          maintenance: 'maintenance',
+          event: 'announcement',
+          recruitment: 'announcement',
+          announcement: 'announcement',
+        };
+        return classes[type] || '';
+      }
 
-				const matches = keywordsArray
-					.filter(keyword => keyword.includes(query.toLowerCase()))
-					.slice(0, 6);
+      function getTagText(type) {
+        const tags = {
+          maintenance: 'MAINTENANCE',
+          event: 'EVENT',
+          recruitment: 'LIMITED RECRUITMENT',
+          announcement: 'ANNOUNCEMENT',
+        };
+        return tags[type] || 'UPDATE';
+      }
 
-				if (matches.length === 0) {
-					suggestions.style.display = 'none';
-					return;
-				}
+      function getTagEmoji(type) {
+        const emojis = {
+          maintenance: '🔧',
+          event: '🎉',
+          recruitment: '⭐',
+          announcement: '📢',
+        };
+        return emojis[type] || '📄';
+      }
 
-				suggestions.innerHTML = matches
-					.map(match => `<div class="suggestion-item" data-keyword="${match}">${match}</div>`)
-					.join('');
-				
-				suggestions.style.display = 'block';
+      function showSuggestions(query) {
+        if (!query || query.length < 2) {
+          suggestions.style.display = 'none';
+          return;
+        }
 
-				// Add click handlers to suggestions
-				suggestions.querySelectorAll('.suggestion-item').forEach(item => {
-					item.addEventListener('click', function() {
-						const keyword = this.getAttribute('data-keyword') || '';
-						searchInput.value = keyword;
-						suggestions.style.display = 'none';
-						performInstantSearch();
-					});
-				});
-			}
+        const matches = keywordsArray
+          .filter(keyword => keyword.includes(query.toLowerCase()))
+          .slice(0, 6);
 
-			function hideSuggestions() {
-				setTimeout(() => {
-					suggestions.style.display = 'none';
-				}, 200);
-			}
+        if (matches.length === 0) {
+          suggestions.style.display = 'none';
+          return;
+        }
 
-			function performInstantSearch() {
-				const searchTerm = searchInput && searchInput.value ? searchInput.value.trim().toLowerCase() : '';
-				const typeFilter = document.getElementById('type-filter').value;
-				
-				currentSearchTerm = searchTerm;
-				currentTypeFilter = typeFilter;
+        suggestions.innerHTML = matches
+          .map(match => `<div class="suggestion-item" data-keyword="${match}">${match}</div>`)
+          .join('');
 
-				// Filter updates
-				filteredUpdates = allUpdates.filter(update => {
-					// Type filter
-					const typeMatch = typeFilter === 'all' || update.type === typeFilter;
-					
-					// Search filter
-					const searchMatch = !searchTerm || 
-						update.title.toLowerCase().includes(searchTerm) ||
-						update.summary.toLowerCase().includes(searchTerm);
-					
-					return typeMatch && searchMatch;
-				});
+        suggestions.style.display = 'block';
 
-				renderUpdates();
-				updateResultsInfo();
-				updateClearButton();
-			}
+        // Add click handlers to suggestions
+        suggestions.querySelectorAll('.suggestion-item').forEach(item => {
+          item.addEventListener('click', function () {
+            const keyword = this.getAttribute('data-keyword') || '';
+            searchInput.value = keyword;
+            suggestions.style.display = 'none';
+            performInstantSearch();
+          });
+        });
+      }
 
-			function renderUpdates() {
-				if (filteredUpdates.length === 0) {
-					patchList.innerHTML = `
+      function hideSuggestions() {
+        setTimeout(() => {
+          suggestions.style.display = 'none';
+        }, 200);
+      }
+
+      function performInstantSearch() {
+        const searchTerm =
+          searchInput && searchInput.value ? searchInput.value.trim().toLowerCase() : '';
+        const typeFilter = document.getElementById('type-filter').value;
+
+        currentSearchTerm = searchTerm;
+        currentTypeFilter = typeFilter;
+
+        // Filter updates
+        filteredUpdates = allUpdates.filter(update => {
+          // Type filter
+          const typeMatch = typeFilter === 'all' || update.type === typeFilter;
+
+          // Search filter
+          const searchMatch =
+            !searchTerm ||
+            update.title.toLowerCase().includes(searchTerm) ||
+            update.summary.toLowerCase().includes(searchTerm);
+
+          return typeMatch && searchMatch;
+        });
+
+        renderUpdates();
+        updateResultsInfo();
+        updateClearButton();
+      }
+
+      function renderUpdates() {
+        if (filteredUpdates.length === 0) {
+          patchList.innerHTML = `
 						<div class="no-results">
 							<p>No updates found ${currentSearchTerm ? `for "${currentSearchTerm}"` : ''}.</p>
 							<p>Try a different search term or filter.</p>
 						</div>
 					`;
-				} else {
-					patchList.innerHTML = filteredUpdates.map(update => `
+        } else {
+          patchList.innerHTML = filteredUpdates
+            .map(
+              update => `
 						<a href="${update.url}" class="patch-card ${getUpdateClass(update.type)}">
 							<div class="patch-card-header">
 								<div class="patch-header-top">
@@ -271,108 +301,114 @@ const pagination = paginateUpdates(filteredUpdates, currentPage, 10);
 								<p class="patch-summary">${update.summary}</p>
 							</div>
 						</a>
-					`).join('');
-				}
+					`
+            )
+            .join('');
+        }
 
-				// Hide pagination for instant search
-				if (pagination) {
-					pagination.style.display = currentSearchTerm || currentTypeFilter !== 'all' ? 'none' : 'flex';
-				}
-			}
+        // Hide pagination for instant search
+        if (pagination) {
+          pagination.style.display =
+            currentSearchTerm || currentTypeFilter !== 'all' ? 'none' : 'flex';
+        }
+      }
 
-			function updateResultsInfo() {
-				const totalUpdates = allUpdates.length;
-				const showingCount = filteredUpdates.length;
-				
-				let infoText = `Showing ${showingCount} of ${totalUpdates} updates`;
-				if (currentSearchTerm) {
-					infoText += ` <span class="search-query">for "${currentSearchTerm}"</span>`;
-				}
-				
-				resultsInfo.innerHTML = infoText;
-			}
+      function updateResultsInfo() {
+        const totalUpdates = allUpdates.length;
+        const showingCount = filteredUpdates.length;
 
-			function updateClearButton() {
-				if (clearBtn) {
-					clearBtn.style.display = currentSearchTerm ? 'block' : 'none';
-				}
-			}
+        let infoText = `Showing ${showingCount} of ${totalUpdates} updates`;
+        if (currentSearchTerm) {
+          infoText += ` <span class="search-query">for "${currentSearchTerm}"</span>`;
+        }
 
-			function clearSearch() {
-				searchInput.value = '';
-				typeFilter.value = 'all';
-				currentSearchTerm = '';
-				currentTypeFilter = 'all';
-				filteredUpdates = [...allUpdates];
-				renderUpdates();
-				updateResultsInfo();
-				updateClearButton();
-			}
+        resultsInfo.innerHTML = infoText;
+      }
 
-			// Event listeners
-			if (searchInput) {
-				searchInput.addEventListener('input', function() {
-					showSuggestions(this.value);
-					// Instant search as you type (with debounce)
-					clearTimeout(searchInput.searchTimeout);
-					searchInput.searchTimeout = setTimeout(() => {
-						performInstantSearch();
-					}, 300);
-				});
+      function updateClearButton() {
+        if (clearBtn) {
+          clearBtn.style.display = currentSearchTerm ? 'block' : 'none';
+        }
+      }
 
-				searchInput.addEventListener('focus', function() {
-					showSuggestions(this.value);
-				});
+      function clearSearch() {
+        searchInput.value = '';
+        typeFilter.value = 'all';
+        currentSearchTerm = '';
+        currentTypeFilter = 'all';
+        filteredUpdates = [...allUpdates];
+        renderUpdates();
+        updateResultsInfo();
+        updateClearButton();
+      }
 
-				searchInput.addEventListener('blur', hideSuggestions);
+      // Event listeners
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          showSuggestions(this.value);
+          // Instant search as you type (with debounce)
+          clearTimeout(searchInput.searchTimeout);
+          searchInput.searchTimeout = setTimeout(() => {
+            performInstantSearch();
+          }, 300);
+        });
 
-				searchInput.addEventListener('keypress', function(e) {
-					if (e.key === 'Enter') {
-						suggestions.style.display = 'none';
-						performInstantSearch();
-					}
-				});
-			}
+        searchInput.addEventListener('focus', function () {
+          showSuggestions(this.value);
+        });
 
-			if (searchBtn) {
-				searchBtn.addEventListener('click', performInstantSearch);
-			}
+        searchInput.addEventListener('blur', hideSuggestions);
 
-			if (clearBtn) {
-				clearBtn.addEventListener('click', clearSearch);
-			}
-			
-			if (typeFilter) {
-				typeFilter.addEventListener('change', performInstantSearch);
-			}
+        searchInput.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter') {
+            suggestions.style.display = 'none';
+            performInstantSearch();
+          }
+        });
+      }
 
-			// Hide suggestions when clicking outside
-			document.addEventListener('click', function(e) {
-				if (searchInput && suggestions && 
-					!searchInput.contains(e.target) && 
-					!suggestions.contains(e.target)) {
-					suggestions.style.display = 'none';
-				}
-			});
+      if (searchBtn) {
+        searchBtn.addEventListener('click', performInstantSearch);
+      }
 
-			// Clear URL parameters on page load and show all updates by default
-			if (window.location.search) {
-				// Remove search parameters from URL without triggering page reload
-				const newUrl = window.location.pathname;
-				window.history.replaceState({}, document.title, newUrl);
-			}
+      if (clearBtn) {
+        clearBtn.addEventListener('click', clearSearch);
+      }
 
-			// Reset everything to default state
-			searchInput.value = '';
-			typeFilter.value = 'all';
-			currentSearchTerm = '';
-			currentTypeFilter = 'all';
-			filteredUpdates = [...allUpdates];
-			
-			// Show all updates on initial load
-			renderUpdates();
-			updateResultsInfo();
-			updateClearButton();
-		});
-	</script>
+      if (typeFilter) {
+        typeFilter.addEventListener('change', performInstantSearch);
+      }
+
+      // Hide suggestions when clicking outside
+      document.addEventListener('click', function (e) {
+        if (
+          searchInput &&
+          suggestions &&
+          !searchInput.contains(e.target) &&
+          !suggestions.contains(e.target)
+        ) {
+          suggestions.style.display = 'none';
+        }
+      });
+
+      // Clear URL parameters on page load and show all updates by default
+      if (window.location.search) {
+        // Remove search parameters from URL without triggering page reload
+        const newUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
+      }
+
+      // Reset everything to default state
+      searchInput.value = '';
+      typeFilter.value = 'all';
+      currentSearchTerm = '';
+      currentTypeFilter = 'all';
+      filteredUpdates = [...allUpdates];
+
+      // Show all updates on initial load
+      renderUpdates();
+      updateResultsInfo();
+      updateClearButton();
+    });
+  </script>
 </ZoneNovaLayout>

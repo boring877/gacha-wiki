@@ -18,7 +18,12 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-red));
+  background: linear-gradient(
+    90deg,
+    var(--sab-calm-red),
+    var(--sab-blue-silver),
+    var(--sab-calm-red)
+  );
 }
 
 .puzzle-intro p {
@@ -66,7 +71,9 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -123,7 +130,7 @@
 }
 
 .puzzle-card li:before {
-  content: "▸";
+  content: '▸';
   color: var(--sab-calm-red);
   position: absolute;
   left: 0;
@@ -177,7 +184,12 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-red));
+  background: linear-gradient(
+    90deg,
+    var(--sab-calm-red),
+    var(--sab-blue-silver),
+    var(--sab-calm-red)
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -227,7 +239,9 @@
   border: 2px solid var(--silver-metallic);
   border-radius: 16px;
   padding: 2rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -287,7 +301,7 @@
 }
 
 .strategy-card li:before {
-  content: "▶";
+  content: '▶';
   color: var(--blood-red);
   position: absolute;
   left: 0;
@@ -307,7 +321,9 @@
   border: 2px solid #6b7280;
   border-radius: 18px;
   padding: 2rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -319,7 +335,12 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-red));
+  background: linear-gradient(
+    90deg,
+    var(--sab-calm-red),
+    var(--sab-blue-silver),
+    var(--sab-calm-red)
+  );
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -401,7 +422,9 @@
   border: 2px solid rgba(139, 0, 0, 0.3);
   border-radius: 12px;
   padding: 2rem;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -452,16 +475,16 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .puzzle-section {
     margin-bottom: 3rem;
   }
-  
+
   .puzzle-section-title {
     font-size: var(--text-xl);
     margin-bottom: 1.5rem;
   }
-  
+
   .puzzle-card,
   .reward-card,
   .strategy-card,
@@ -469,38 +492,38 @@
   .faq-item {
     padding: 1.5rem;
   }
-  
+
   .reward-card {
     padding: 2rem 1.5rem;
   }
-  
+
   .reward-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
   }
-  
+
   .puzzle-intro {
     padding: 1.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .puzzle-intro p {
     font-size: var(--text-base);
   }
-  
+
   .puzzle-card h4,
   .reward-card h4,
   .strategy-card h4,
   .puzzle-type-card h4 {
     font-size: var(--text-lg);
   }
-  
+
   /* Video container mobile optimization */
   .video-container {
     margin-top: 1rem;
     border-radius: 8px;
   }
-  
+
   .video-container iframe {
     border-radius: 8px;
   }
@@ -512,7 +535,7 @@
     padding: 1rem;
     border-radius: 12px;
   }
-  
+
   .puzzle-card,
   .reward-card,
   .strategy-card,
@@ -521,12 +544,12 @@
     padding: 1rem;
     border-radius: 12px;
   }
-  
+
   .puzzle-section-title {
     font-size: var(--text-lg);
     gap: 0.5rem;
   }
-  
+
   .reward-icon {
     font-size: 2.5rem;
   }
@@ -541,7 +564,7 @@
   .faq-item:hover {
     transform: none;
   }
-  
+
   .puzzle-card,
   .reward-card,
   .strategy-card,
@@ -555,7 +578,7 @@
   .puzzle-section {
     margin-bottom: 2rem;
   }
-  
+
   .rewards-grid,
   .strategy-cards,
   .puzzle-types {
@@ -579,11 +602,21 @@
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.puzzle-section:nth-child(2) { animation-delay: 0.1s; }
-.puzzle-section:nth-child(3) { animation-delay: 0.2s; }
-.puzzle-section:nth-child(4) { animation-delay: 0.3s; }
-.puzzle-section:nth-child(5) { animation-delay: 0.4s; }
-.puzzle-section:nth-child(6) { animation-delay: 0.5s; }
+.puzzle-section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.puzzle-section:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.puzzle-section:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.puzzle-section:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.puzzle-section:nth-child(6) {
+  animation-delay: 0.5s;
+}
 
 /* Layout styles moved from inline */
 .dutchmans-revenge-container {
@@ -682,7 +715,7 @@
 }
 
 .chapters-list li:before {
-  content: "▸";
+  content: '▸';
   color: var(--sab-calm-red);
   position: absolute;
   left: 0;
@@ -699,7 +732,9 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .mechanic-card:hover {
@@ -737,7 +772,9 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .artifact-card:hover {
@@ -787,7 +824,12 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-red));
+  background: linear-gradient(
+    90deg,
+    var(--sab-calm-red),
+    var(--sab-blue-silver),
+    var(--sab-calm-red)
+  );
 }
 
 .reward-highlight h4 {
@@ -811,25 +853,31 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
-  .video-section, .mechanic-card, .artifact-card {
+
+  .video-section,
+  .mechanic-card,
+  .artifact-card {
     padding: 1.5rem;
   }
-  
+
   .section-title {
     font-size: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .intro-section, .video-section, .mechanic-card, .artifact-card, .reward-highlight {
+  .intro-section,
+  .video-section,
+  .mechanic-card,
+  .artifact-card,
+  .reward-highlight {
     padding: 1rem;
   }
-  
+
   .chapters-list {
     padding: 1rem;
   }
-  
+
   .section-title {
     font-size: 1.25rem;
   }
@@ -845,11 +893,11 @@
     transition: none;
     transform: none;
   }
-  
+
   .puzzle-section {
     animation: none;
   }
-  
+
   .reward-card::before,
   .puzzle-type-card::after {
     display: none;

@@ -3,29 +3,28 @@
 import ZoneNovaUpdateLayout from '../layouts/zone-nova/UpdateLayout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
-
 export interface Props {
-	updateData: {
-		title: string;
-		date: string;
-		type: string;
-		data?: any; // flexible data object
-		tldr?: string[];
-		officialUpdate: {
-			greeting?: string;
-			content: string[];
-			closing?: string;
-		};
-		sourceInfo: {
-			source: string;
-			verified: boolean;
-			gameUrl?: string;
-		};
-	};
-	seoData: {
-		title: string;
-		description: string;
-	};
+  updateData: {
+    title: string;
+    date: string;
+    type: string;
+    data?: any; // flexible data object
+    tldr?: string[];
+    officialUpdate: {
+      greeting?: string;
+      content: string[];
+      closing?: string;
+    };
+    sourceInfo: {
+      source: string;
+      verified: boolean;
+      gameUrl?: string;
+    };
+  };
+  seoData: {
+    title: string;
+    description: string;
+  };
 }
 
 const { updateData, seoData } = Astro.props;
@@ -34,191 +33,230 @@ const { updateData, seoData } = Astro.props;
 // const updateType = getUpdateType(Astro.url.pathname);
 ---
 
-<ZoneNovaUpdateLayout 
-	title={seoData.title}
-	description={seoData.description}
-	gameTitle={updateData.title}
-	showBackButton={true}
-	backButtonHref="/guides/zone-nova/updates/"
-	backButtonText="Back to Updates"
+<ZoneNovaUpdateLayout
+  title={seoData.title}
+  description={seoData.description}
+  gameTitle={updateData.title}
+  showBackButton={true}
+  backButtonHref="/guides/zone-nova/updates/"
+  backButtonText="Back to Updates"
 >
-	<Fragment slot="head">
-		<style>
-			/* Override layout title glow for update pages */
-			.hero-title, .title-only-heading {
-				animation: none !important;
-			}
+  <Fragment slot="head">
+    <style>
+      /* Override layout title glow for update pages */
+      .hero-title,
+      .title-only-heading {
+        animation: none !important;
+      }
 
-			/* Responsive visibility classes */
-			.mobile-only {
-				display: none;
-			}
+      /* Responsive visibility classes */
+      .mobile-only {
+        display: none;
+      }
 
-			.desktop-only {
-				display: block;
-			}
+      .desktop-only {
+        display: block;
+      }
 
-			@media (max-width: 767px) {
-				.mobile-only {
-					display: block;
-				}
+      @media (max-width: 767px) {
+        .mobile-only {
+          display: block;
+        }
 
-				.desktop-only {
-					display: none;
-				}
-			}
-		</style>
+        .desktop-only {
+          display: none;
+        }
+      }
+    </style>
 
-		<script is:inline>
-			function toggleCollapsible(button) {
-				const section = button.parentElement;
-				const content = section?.querySelector('.collapsible-content');
-				
-				if (section && content) {
-					if (section.classList.contains('expanded')) {
-						section.classList.remove('expanded');
-						content.style.maxHeight = '0';
-					} else {
-						section.classList.add('expanded');
-						content.style.maxHeight = content.scrollHeight + 'px';
-					}
-				}
-			}
+    <script is:inline>
+      function toggleCollapsible(button) {
+        const section = button.parentElement;
+        const content = section?.querySelector('.collapsible-content');
 
-			// Auto-expand on desktop or if content is short
-			document.addEventListener('DOMContentLoaded', function() {
-				const collapsibleSections = document.querySelectorAll('.collapsible-section');
-				
-				collapsibleSections.forEach(section => {
-					const content = section.querySelector('.collapsible-content');
-					const isMobile = window.innerWidth <= 767;
-					
-					// Auto-expand if not mobile or if content is short
-					if (content && (!isMobile || content.scrollHeight < 400)) {
-						section.classList.add('expanded');
-						content.style.maxHeight = content.scrollHeight + 'px';
-					}
-				});
-			});
-		</script>
-	</Fragment>
+        if (section && content) {
+          if (section.classList.contains('expanded')) {
+            section.classList.remove('expanded');
+            content.style.maxHeight = '0';
+          } else {
+            section.classList.add('expanded');
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        }
+      }
 
-	<div class="update-page">
-		<div class="update-container">
+      // Auto-expand on desktop or if content is short
+      document.addEventListener('DOMContentLoaded', function () {
+        const collapsibleSections = document.querySelectorAll('.collapsible-section');
 
-			<!-- Data Section -->
-			{updateData.data && (
-				<section class="content-section">
-					<h2 class="section-title">Data</h2>
-					<div class="data-grid">
-						<div class="data-item">
-							<div class="data-label">Date</div>
-							<div class="data-value">{updateData.date}</div>
-						</div>
-						<div class="data-item">
-							<div class="data-label">Type</div>
-							<div class="data-value">{updateData.type}</div>
-						</div>
-						{Object.entries(updateData.data).map(([key, value]) => (
-							<div class="data-item">
-								<div class="data-label">{key}</div>
-								<div class="data-value">{value}</div>
-							</div>
-						))}
-					</div>
-				</section>
-			)}
+        collapsibleSections.forEach(section => {
+          const content = section.querySelector('.collapsible-content');
+          const isMobile = window.innerWidth <= 767;
 
-			<!-- TLDR Section -->
-			{updateData.tldr && updateData.tldr.length > 0 && (
-				<section class="content-section tldr-section">
-					<h2 class="section-title">TL;DR</h2>
-					<ul>
-						{updateData.tldr.map((point) => (
-							<li>{point}</li>
-						))}
-					</ul>
-				</section>
-			)}
+          // Auto-expand if not mobile or if content is short
+          if (content && (!isMobile || content.scrollHeight < 400)) {
+            section.classList.add('expanded');
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        });
+      });
+    </script>
+  </Fragment>
 
-			<!-- Official Update -->
-			<section class="content-section official-section">
-				<h2 class="section-title">Official Update</h2>
-				
-				<!-- Mobile Collapsible Version -->
-				<div class="collapsible-section mobile-only">
-					<button class="collapsible-header" onclick="toggleCollapsible(this)">
-						<span>Full Official Update Details</span>
-						<span class="collapsible-toggle">▼</span>
-					</button>
-					<div class="collapsible-content">
-						<div class="collapsible-inner">
-							{updateData.officialUpdate.greeting && (
-								<p><strong>{updateData.officialUpdate.greeting}</strong></p>
-							)}
-							{updateData.officialUpdate.content.map((paragraph, index) => {
-								// Check if paragraph looks like a section header
-								const isHeader = paragraph.match(/^[A-Z][^:]*:?\s*$/) || paragraph.match(/^[0-9]+\.\s/);
-								// Check if paragraph is a numbered event item
-								const isEventItem = paragraph.match(/^[0-9]+\.\s+Launch\s+/i);
-								
-								return (
-									<p class={isHeader ? 'content-section-header' : isEventItem ? 'event-item-header' : ''}>{paragraph}</p>
-								)
-							})}
-						</div>
-					</div>
-				</div>
+  <div class="update-page">
+    <div class="update-container">
+      <!-- Data Section -->
+      {
+        updateData.data && (
+          <section class="content-section">
+            <h2 class="section-title">Data</h2>
+            <div class="data-grid">
+              <div class="data-item">
+                <div class="data-label">Date</div>
+                <div class="data-value">{updateData.date}</div>
+              </div>
+              <div class="data-item">
+                <div class="data-label">Type</div>
+                <div class="data-value">{updateData.type}</div>
+              </div>
+              {Object.entries(updateData.data).map(([key, value]) => (
+                <div class="data-item">
+                  <div class="data-label">{key}</div>
+                  <div class="data-value">{value}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )
+      }
 
-				<!-- Desktop Version -->
-				<div class="info-card desktop-only">
-					{updateData.officialUpdate.greeting && (
-						<p><strong>{updateData.officialUpdate.greeting}</strong></p>
-					)}
-					{updateData.officialUpdate.content.map((paragraph, index) => {
-						// Check if paragraph looks like a section header
-						const isHeader = paragraph.match(/^[A-Z][^:]*:?\s*$/) || paragraph.match(/^[0-9]+\.\s/);
-						// Check if paragraph is a numbered event item
-						const isEventItem = paragraph.match(/^[0-9]+\.\s+Launch\s+/i);
-						
-						return (
-							<p class={isHeader ? 'content-section-header' : isEventItem ? 'event-item-header' : ''}>{paragraph}</p>
-						)
-					})}
-				</div>
-			</section>
+      <!-- TLDR Section -->
+      {
+        updateData.tldr && updateData.tldr.length > 0 && (
+          <section class="content-section tldr-section">
+            <h2 class="section-title">TL;DR</h2>
+            <ul>
+              {updateData.tldr.map(point => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
 
-			<!-- Closing -->
-			{updateData.officialUpdate.closing && (
-				<section class="content-section">
-					<h2 class="section-title">Closing</h2>
-					<div class="info-card">
-						<p>{updateData.officialUpdate.closing}</p>
-					</div>
-				</section>
-			)}
+      <!-- Official Update -->
+      <section class="content-section official-section">
+        <h2 class="section-title">Official Update</h2>
 
-			<!-- Source Information -->
-			<section class="content-section">
-				<h2 class="section-title">Source Information</h2>
-				{updateData.sourceInfo.gameUrl ? (
-					<a href={updateData.sourceInfo.gameUrl} target="_blank" style="text-decoration: none; color: inherit;">
-						<div class="info-card" style="cursor: pointer; transition: all 0.3s ease;">
-							<p style="text-align: center; color: white; font-style: italic;">
-								Source: <span style="color: var(--amber-glow);">{updateData.sourceInfo.source}</span>
-								{updateData.sourceInfo.verified && " ✓"}
-							</p>
-						</div>
-					</a>
-				) : (
-					<div class="info-card">
-						<p style="text-align: center; color: white; font-style: italic;">
-							Source: {updateData.sourceInfo.source}
-							{updateData.sourceInfo.verified && " ✓"}
-						</p>
-					</div>
-				)}
-			</section>
-		</div>
-	</div>
-</ZoneNovaUpdateLayout> 
+        <!-- Mobile Collapsible Version -->
+        <div class="collapsible-section mobile-only">
+          <button class="collapsible-header" onclick="toggleCollapsible(this)">
+            <span>Full Official Update Details</span>
+            <span class="collapsible-toggle">▼</span>
+          </button>
+          <div class="collapsible-content">
+            <div class="collapsible-inner">
+              {
+                updateData.officialUpdate.greeting && (
+                  <p>
+                    <strong>{updateData.officialUpdate.greeting}</strong>
+                  </p>
+                )
+              }
+              {
+                updateData.officialUpdate.content.map((paragraph, index) => {
+                  // Check if paragraph looks like a section header
+                  const isHeader =
+                    paragraph.match(/^[A-Z][^:]*:?\s*$/) || paragraph.match(/^[0-9]+\.\s/);
+                  // Check if paragraph is a numbered event item
+                  const isEventItem = paragraph.match(/^[0-9]+\.\s+Launch\s+/i);
+
+                  return (
+                    <p
+                      class={
+                        isHeader ? 'content-section-header' : isEventItem ? 'event-item-header' : ''
+                      }
+                    >
+                      {paragraph}
+                    </p>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop Version -->
+        <div class="info-card desktop-only">
+          {
+            updateData.officialUpdate.greeting && (
+              <p>
+                <strong>{updateData.officialUpdate.greeting}</strong>
+              </p>
+            )
+          }
+          {
+            updateData.officialUpdate.content.map((paragraph, index) => {
+              // Check if paragraph looks like a section header
+              const isHeader =
+                paragraph.match(/^[A-Z][^:]*:?\s*$/) || paragraph.match(/^[0-9]+\.\s/);
+              // Check if paragraph is a numbered event item
+              const isEventItem = paragraph.match(/^[0-9]+\.\s+Launch\s+/i);
+
+              return (
+                <p
+                  class={
+                    isHeader ? 'content-section-header' : isEventItem ? 'event-item-header' : ''
+                  }
+                >
+                  {paragraph}
+                </p>
+              );
+            })
+          }
+        </div>
+      </section>
+
+      <!-- Closing -->
+      {
+        updateData.officialUpdate.closing && (
+          <section class="content-section">
+            <h2 class="section-title">Closing</h2>
+            <div class="info-card">
+              <p>{updateData.officialUpdate.closing}</p>
+            </div>
+          </section>
+        )
+      }
+
+      <!-- Source Information -->
+      <section class="content-section">
+        <h2 class="section-title">Source Information</h2>
+        {
+          updateData.sourceInfo.gameUrl ? (
+            <a
+              href={updateData.sourceInfo.gameUrl}
+              target="_blank"
+              style="text-decoration: none; color: inherit;"
+            >
+              <div class="info-card" style="cursor: pointer; transition: all 0.3s ease;">
+                <p style="text-align: center; color: white; font-style: italic;">
+                  Source:{' '}
+                  <span style="color: var(--amber-glow);">{updateData.sourceInfo.source}</span>
+                  {updateData.sourceInfo.verified && ' ✓'}
+                </p>
+              </div>
+            </a>
+          ) : (
+            <div class="info-card">
+              <p style="text-align: center; color: white; font-style: italic;">
+                Source: {updateData.sourceInfo.source}
+                {updateData.sourceInfo.verified && ' ✓'}
+              </p>
+            </div>
+          )
+        }
+      </section>
+    </div>
+  </div>
+</ZoneNovaUpdateLayout>

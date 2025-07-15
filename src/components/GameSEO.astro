@@ -1,10 +1,10 @@
 ---
 // Reusable SEO component for game pages
-import { 
-  generateGameKeywords, 
-  generateGameStructuredData, 
+import {
+  generateGameKeywords,
+  generateGameStructuredData,
   getGameConfig,
-  GLOBAL_SEO 
+  GLOBAL_SEO,
 } from '../utils/seo.js';
 
 export interface Props {
@@ -16,13 +16,13 @@ export interface Props {
   themeColor?: string;
 }
 
-const { 
-  gameKey, 
-  title, 
-  description, 
-  additionalKeywords = [], 
+const {
+  gameKey,
+  title,
+  description,
+  additionalKeywords = [],
   structuredData,
-  themeColor 
+  themeColor,
 } = Astro.props;
 
 const gameConfig = getGameConfig(gameKey);
@@ -49,9 +49,11 @@ const finalStructuredData = structuredData || generateGameStructuredData(gameKey
 <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 
 <!-- Schema.org Structured Data -->
-{finalStructuredData && (
-  <script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)} />
-)}
+{
+  finalStructuredData && (
+    <script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)} />
+  )
+}
 
 <!-- Game-specific Open Graph tags -->
 <meta property="og:type" content="website" />

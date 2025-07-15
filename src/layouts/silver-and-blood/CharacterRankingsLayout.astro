@@ -42,25 +42,24 @@ const { title, description, gameTitle, heroImage } = Astro.props;
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     
     <!-- Schema.org Structured Data for Game -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "VideoGame",
-        "name": "Silver and Blood",
-        "description": description || "Character stat rankings for Silver and Blood vampire game",
-        "genre": ["RPG", "Gacha", "Strategy"],
-        "platform": "Mobile",
-        "publisher": {
-          "@type": "Organization",
-          "name": "GachaWiki"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock"
-        }
-      })}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Silver and Blood",
+      "description": description || "Character stat rankings for Silver and Blood vampire game",
+      "genre": ["RPG", "Gacha", "Strategy"],
+      "platform": "Mobile",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    })}>
     </script>
     
     <slot name="head" />

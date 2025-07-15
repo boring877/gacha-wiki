@@ -43,25 +43,24 @@ const { title, description, gameTitle } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 		<meta name="theme-color" content="#5a7ba7" />
 		
-		<script type="application/ld+json">
-			{JSON.stringify({
-				"@context": "https://schema.org",
-				"@type": "CollectionPage",
-				"name": title,
-				"description": description || "Events and limited time activities in Silver and Blood",
-				"about": {
-					"@type": "VideoGame",
-					"name": "Silver and Blood"
-				},
-				"publisher": {
-					"@type": "Organization",
-					"name": "GachaWiki"
-				},
-				"mainEntityOfPage": {
-					"@type": "WebPage",
-					"@id": new URL(Astro.url.pathname, Astro.site)
-				}
-			})}
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "CollectionPage",
+			"name": title,
+			"description": description || "Events and limited time activities in Silver and Blood",
+			"about": {
+				"@type": "VideoGame",
+				"name": "Silver and Blood"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "GachaWiki"
+			},
+			"mainEntityOfPage": {
+				"@type": "WebPage",
+				"@id": new URL(Astro.url.pathname, Astro.site)
+			}
+		})}>
 		</script>
 		
 		<slot name="head" />

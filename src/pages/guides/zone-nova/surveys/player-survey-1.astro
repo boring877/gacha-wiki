@@ -3,581 +3,612 @@ import ZoneNovaLayout from '../../../../layouts/zone-nova/Layout.astro';
 import FormattedDate from '../../../../components/FormattedDate.astro';
 ---
 
-<ZoneNovaLayout 
-	title="Zone Nova Player Survey 1 - GachaWiki" 
-	description="Translation of the official Zone Nova player survey"
-	gameTitle="Player Survey 1"
-	
-	
+<ZoneNovaLayout
+  title="Zone Nova Player Survey 1 - GachaWiki"
+  description="Translation of the official Zone Nova player survey"
+  gameTitle="Player Survey 1"
 >
-	<Fragment slot="head">
-		<style>
-			.back-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: var(--bg-primary);
-				color: var(--text-primary);
-				text-decoration: none;
-				padding: 1rem 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--amber-glow);
-				font-family: 'Space Grotesk', sans-serif;
-				font-weight: 600;
-				font-size: 1rem;
-				margin-bottom: 2rem;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-			}
-
-			.back-button:hover {
-				background: var(--amber-glow);
-				color: white;
-				transform: translateY(-2px);
-				box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-			}
-
-			.back-button:hover .back-arrow {
-				transform: translateX(-3px);
-			}
-
-			.back-arrow {
-				font-size: 1.2rem;
-				transition: transform 0.3s ease;
-			}
-
-			.content-section {
-				background: rgba(240, 240, 240, 0.95);
-				padding: 3rem;
-				border-radius: 20px;
-				margin-bottom: 3rem;
-				border: 1px solid var(--amber-glow);
-				box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
-				transition: all 0.4s ease;
-				animation: sectionFadeIn 0.8s ease-out;
-			}
-
-			.content-section:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 16px 40px rgba(164, 120, 100, 0.3);
-				border-color: var(--teal-crystal);
-			}
-			
-			.section-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 2.5rem;
-				font-weight: 700;
-				background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				margin: 0 0 1.5rem 0;
-				text-align: center;
-				animation: titleGlow 3s ease-in-out infinite alternate;
-			}
-
-			.subsection-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.8rem;
-				font-weight: 600;
-				color: var(--text-primary);
-				margin: 2rem 0 1rem 0;
-				padding-left: 1rem;
-				border-left: 4px solid var(--amber-glow);
-			}
-
-			.question-card {
-				background: var(--bg-primary);
-				border: 1px solid var(--neutral-200);
-				border-radius: 15px;
-				padding: 2rem;
-				margin: 1.5rem 0;
-				transition: all 0.3s ease;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.question-card::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-				transition: left 0.6s ease;
-				z-index: 1;
-			}
-
-			.question-card:hover::before {
-				left: 100%;
-			}
-
-			.question-card > * {
-				position: relative;
-				z-index: 2;
-			}
-
-			.question-card:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
-				border-color: var(--teal-crystal);
-			}
-
-			.question-title {
-				font-family: 'Space Grotesk', sans-serif;
-				font-size: 1.2rem;
-				font-weight: 600;
-				color: var(--amber-glow);
-				margin: 0 0 1rem 0;
-			}
-
-			.options-list {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-			}
-
-			.options-list li {
-				padding: 0.5rem 0;
-				color: var(--text-primary);
-				font-size: 1rem;
-				border-bottom: 1px solid var(--neutral-200);
-				transition: all 0.3s ease;
-			}
-
-			.options-list li:last-child {
-				border-bottom: none;
-			}
-
-			.options-list li:hover {
-				color: var(--amber-glow);
-				padding-left: 0.5rem;
-			}
-
-			.options-list li::before {
-				content: "•";
-				color: var(--teal-crystal);
-				margin-right: 0.5rem;
-				font-weight: bold;
-			}
-
-			.warning-box {
-				background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05));
-				border: 1px solid rgba(255, 193, 7, 0.3);
-				border-radius: 10px;
-				padding: 1.5rem;
-				margin: 2rem 0;
-			}
-
-			.warning-title {
-				font-weight: 600;
-				color: #856404;
-				margin-bottom: 0.5rem;
-				font-size: 1.1rem;
-			}
-
-			.warning-content {
-				color: #856404;
-				line-height: 1.6;
-			}
-
-			.rating-options {
-				display: flex;
-				gap: 1rem;
-				flex-wrap: wrap;
-				margin: 1rem 0;
-			}
-
-			.rating-option {
-				background: var(--bg-secondary);
-				border: 1px solid var(--neutral-200);
-				border-radius: 8px;
-				padding: 0.5rem 1rem;
-				color: var(--text-primary);
-				transition: all 0.3s ease;
-			}
-
-			.rating-option:hover {
-				background: var(--amber-glow);
-				color: white;
-				transform: scale(1.05);
-			}
-
-			.text-input-box {
-				background: var(--bg-secondary);
-				border: 2px solid var(--neutral-200);
-				border-radius: 10px;
-				padding: 1rem;
-				margin: 1rem 0;
-				color: var(--text-secondary);
-				font-style: italic;
-				min-height: 100px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-
-			@keyframes sectionFadeIn {
-				0% {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				100% {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			@keyframes titleGlow {
-				0% { filter: brightness(1); }
-				100% { filter: brightness(1.2); }
-			}
-
-			@media (max-width: 768px) {
-				.content-section {
-					padding: 2rem;
-					margin-bottom: 2rem;
-				}
-				
-				.section-title {
-					font-size: 2rem;
-				}
-
-				.subsection-title {
-					font-size: 1.5rem;
-				}
-
-				.question-card {
-					padding: 1.5rem;
-				}
-
-				.rating-options {
-					flex-direction: column;
-				}
-			}
-		</style>
-	</Fragment>
-
-	<!-- Back Button -->
-	<a href="/guides/zone-nova/surveys/" class="back-button">
-		<span class="back-arrow">←</span>
-		Back to Surveys
-	</a>
-
-	<!-- Survey Overview Section -->
-	<section class="content-section">
-		<h1 class="section-title">General Player Survey 1</h1>
-		
-		<div class="warning-box">
-			<div class="warning-title">📋 Survey Translation</div>
-			<div class="warning-content">
-				<p>This is a translation of an official Zone Nova player survey. The developers use this information to understand player preferences and improve the game. This survey contains adult content preferences and is intended for mature audiences.</p>
-			</div>
-		</div>
-
-		<!-- Demographic Information -->
-		<h2 class="subsection-title">Demographic Information</h2>
-
-		<div class="question-card">
-			<h3 class="question-title">1. Please select your gender</h3>
-			<ul class="options-list">
-				<li>Male</li>
-				<li>Female</li>
-				<li>Other</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">2. Please select your age group</h3>
-			<ul class="options-list">
-				<li>18-20 years old</li>
-				<li>21-25 years old</li>
-				<li>26-30 years old</li>
-				<li>31-35 years old</li>
-				<li>36-40 years old</li>
-				<li>40+ years old</li>
-			</ul>
-		</div>
-
-		<!-- Character Preferences -->
-		<h2 class="subsection-title">Character Preferences</h2>
-
-		<div class="question-card">
-			<h3 class="question-title">3. Which character personalities do you like (1/2)? [Multiple choice]</h3>
-			<ul class="options-list">
-				<li>Beautiful girl</li>
-				<li>Big sister type</li>
-				<li>Mature woman</li>
-				<li>Arrogant</li>
-				<li>Weak/frail</li>
-				<li>Strong/tough</li>
-				<li>Adventurous</li>
-				<li>Sickly</li>
-				<li>Natural/airhead</li>
-				<li>Dark/scheming</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">4. Which character personalities do you like (2/2)? [Multiple choice]</h3>
-			<ul class="options-list">
-				<li>Poor/impoverished</li>
-				<li>Busty</li>
-				<li>Perverted woman</li>
-				<li>Gentle</li>
-				<li>Natural cute</li>
-				<li>Little devil type</li>
-				<li>Chuunibyou</li>
-				<li>Inhuman</li>
-				<li>Other</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">5. Which female character body types do you like (1/2)? [Multiple choice]</h3>
-			<ul class="options-list">
-				<li>Flat chest</li>
-				<li>Normal bust</li>
-				<li>Busty</li>
-				<li>Super busty</li>
-				<li>Hidden busty</li>
-				<li>A4 waist</li>
-				<li>Small belly</li>
-				<li>Fair skin</li>
-				<li>Childbearing type</li>
-				<li>Beautiful buttocks</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">6. Which female character body types do you like (2/2)? [Multiple choice]</h3>
-			<ul class="options-list">
-				<li>Plump buttocks</li>
-				<li>Plump body type</li>
-				<li>Tall</li>
-				<li>Big thighs</li>
-				<li>Muscular woman</li>
-				<li>Other</li>
-			</ul>
-		</div>
-
-		<!-- Content Preferences -->
-		<h2 class="subsection-title">Content Preferences</h2>
-
-		<div class="warning-box">
-			<div class="warning-title">🔞 Adult Content Warning</div>
-			<div class="warning-content">
-				<p>The following questions contain explicit adult content preferences. This section is intended for mature audiences only.</p>
-			</div>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">7. Do you like R18 content (1/2)? [Multiple choice]</h3>
-			<ul class="options-list">
-				<li>Kissing</li>
-				<li>Anal</li>
-				<li>Oral</li>
-				<li>Breast play</li>
-				<li>Footjob</li>
-				<li>Deep throat</li>
-				<li>Facial</li>
-				<li>Oral climax</li>
-				<li>Squirting</li>
-				<li>Submission</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">8. Do you like R18 content (2/2)? [Multiple choice]</h3>
-			<ul class="options-list">
-				<li>Creampie</li>
-				<li>Exhibitionism</li>
-				<li>Training/domination</li>
-				<li>Multiple partners</li>
-				<li>Other</li>
-			</ul>
-		</div>
-
-		<!-- Gameplay Experience -->
-		<h2 class="subsection-title">Gameplay Experience</h2>
-
-		<div class="question-card">
-			<h3 class="question-title">9. How much time do you spend on 'ZONE NOVA' daily?</h3>
-			<ul class="options-list">
-				<li>Under 5 minutes</li>
-				<li>5-15 minutes</li>
-				<li>15-30 minutes</li>
-				<li>Over 30 minutes</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">10. How did you learn about 'ZONE NOVA'?</h3>
-			<ul class="options-list">
-				<li>Gaming platforms (EROLABS/JS GAME/H365/etc.)</li>
-				<li>SNS platforms (Facebook/Weibo/X/etc.)</li>
-				<li>Online advertising</li>
-				<li>Friend recommendation</li>
-				<li>Other</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">11. Which part of 'ZONE NOVA' interests you most?</h3>
-			<ul class="options-list">
-				<li>Game type (4-person team battles)</li>
-				<li>Character design</li>
-				<li>Story/worldview</li>
-				<li>R18 content</li>
-				<li>Other</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">12. How do you feel about 'ZONE NOVA's' battle controls?</h3>
-			<ul class="options-list">
-				<li>Simple and intuitive for using skills and switching characters</li>
-				<li>Understandable, operations are fairly smooth</li>
-				<li>Hard to understand, controls are clunky</li>
-				<li>Completely don't understand</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">13. What battle modes do you like? [Max 3 choices]</h3>
-			<ul class="options-list">
-				<li>Main story</li>
-				<li>Dungeons</li>
-				<li>Arena</li>
-				<li>Fang Mie battles</li>
-				<li>Space-time rifts</li>
-				<li>Trials</li>
-				<li>Competitive arena</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">14. How do you feel about 'ZONE NOVA's' overall battle difficulty?</h3>
-			<ul class="options-list">
-				<li>Very easy</li>
-				<li>Somewhat easy</li>
-				<li>Just right</li>
-				<li>Somewhat difficult</li>
-				<li>Very difficult</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">15. Do you understand 'ZONE NOVA's' tutorial explanations?</h3>
-			<ul class="options-list">
-				<li>Simple and easy to understand</li>
-				<li>Just right</li>
-				<li>Can understand</li>
-				<li>Hard to understand</li>
-				<li>Completely don't understand</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">16. Can you do what you want daily in 'ZONE NOVA'?</h3>
-			<ul class="options-list">
-				<li>Not enough</li>
-				<li>Too little</li>
-				<li>Just right</li>
-				<li>Somewhat too much</li>
-				<li>Too much</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">17. How do you feel about 'ZONE NOVA's' new character release frequency?</h3>
-			<ul class="options-list">
-				<li>Too fast, I haven't learned existing characters yet</li>
-				<li>A bit fast, I only get basic understanding before new ones arrive</li>
-				<li>Just right</li>
-				<li>A bit slow, I have plenty of time to learn new characters</li>
-				<li>Too slow, I want to see new characters faster</li>
-			</ul>
-		</div>
-
-		<!-- Improvement & Monetization -->
-		<h2 class="subsection-title">Improvement & Monetization</h2>
-
-		<div class="question-card">
-			<h3 class="question-title">18. What should 'ZONE NOVA' prioritize improving? [Max 2 choices]</h3>
-			<ul class="options-list">
-				<li>Story presentation</li>
-				<li>R18 content</li>
-				<li>Battle effects and presentation</li>
-				<li>Interface optimization</li>
-				<li>Level difficulty balance</li>
-				<li>Other</li>
-			</ul>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">19. If requiring payment, what items do you most hope to see? [Max 3 choices]</h3>
-			<ul class="options-list">
-				<li>Display decorations (avatars, frames, cards)</li>
-				<li>Powerful characters and memories</li>
-				<li>Captivating independent storylines</li>
-				<li>Faster character growth to max stats</li>
-				<li>Faster character development to unlock full stories</li>
-				<li>Character skins</li>
-			</ul>
-		</div>
-
-		<!-- Ratings -->
-		<h2 class="subsection-title">Ratings</h2>
-
-		<div class="question-card">
-			<h3 class="question-title">20. Please rate 'ZONE NOVA's' character design (5★ highest)</h3>
-			<div class="rating-options">
-				<div class="rating-option">★ (1 star)</div>
-				<div class="rating-option">★★ (2 stars)</div>
-				<div class="rating-option">★★★ (3 stars)</div>
-				<div class="rating-option">★★★★ (4 stars)</div>
-				<div class="rating-option">★★★★★ (5 stars)</div>
-			</div>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">21. Please rate 'ZONE NOVA's' interface design (5★ highest)</h3>
-			<div class="rating-options">
-				<div class="rating-option">★ (1 star)</div>
-				<div class="rating-option">★★ (2 stars)</div>
-				<div class="rating-option">★★★ (3 stars)</div>
-				<div class="rating-option">★★★★ (4 stars)</div>
-				<div class="rating-option">★★★★★ (5 stars)</div>
-			</div>
-		</div>
-
-		<div class="question-card">
-			<h3 class="question-title">22. Please rate 'ZONE NOVA' overall (5★ highest)</h3>
-			<div class="rating-options">
-				<div class="rating-option">★ (1 star)</div>
-				<div class="rating-option">★★ (2 stars)</div>
-				<div class="rating-option">★★★ (3 stars)</div>
-				<div class="rating-option">★★★★ (4 stars)</div>
-				<div class="rating-option">★★★★★ (5 stars)</div>
-			</div>
-		</div>
-
-		<!-- Additional Feedback -->
-		<h2 class="subsection-title">Additional Feedback</h2>
-
-		<div class="question-card">
-			<h3 class="question-title">23. Thank you for your support and encouragement. To make 'ZONE NOVA' better, we will do our best. If you have any opinions or thoughts, please tell us. (Optional)</h3>
-			<div class="text-input-box">
-				[Text input box for open feedback]
-			</div>
-		</div>
-
-		<div class="warning-box">
-			<div class="warning-title">⚠️ Important Note</div>
-			<div class="warning-content">
-				<p>This survey contains adult content preferences. Please ensure appropriate age verification and content warnings are implemented when using this survey. This translation is provided for informational purposes to help the community understand what feedback the developers are seeking.</p>
-			</div>
-		</div>
-	</section>
-</ZoneNovaLayout> 
+  <Fragment slot="head">
+    <style>
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        text-decoration: none;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--amber-glow);
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+      }
+
+      .back-button:hover {
+        background: var(--amber-glow);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+      }
+
+      .back-button:hover .back-arrow {
+        transform: translateX(-3px);
+      }
+
+      .back-arrow {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .content-section {
+        background: rgba(240, 240, 240, 0.95);
+        padding: 3rem;
+        border-radius: 20px;
+        margin-bottom: 3rem;
+        border: 1px solid var(--amber-glow);
+        box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
+        transition: all 0.4s ease;
+        animation: sectionFadeIn 0.8s ease-out;
+      }
+
+      .content-section:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(164, 120, 100, 0.3);
+        border-color: var(--teal-crystal);
+      }
+
+      .section-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0 0 1.5rem 0;
+        text-align: center;
+        animation: titleGlow 3s ease-in-out infinite alternate;
+      }
+
+      .subsection-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 2rem 0 1rem 0;
+        padding-left: 1rem;
+        border-left: 4px solid var(--amber-glow);
+      }
+
+      .question-card {
+        background: var(--bg-primary);
+        border: 1px solid var(--neutral-200);
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 1.5rem 0;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .question-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
+        transition: left 0.6s ease;
+        z-index: 1;
+      }
+
+      .question-card:hover::before {
+        left: 100%;
+      }
+
+      .question-card > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      .question-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(164, 120, 100, 0.15);
+        border-color: var(--teal-crystal);
+      }
+
+      .question-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--amber-glow);
+        margin: 0 0 1rem 0;
+      }
+
+      .options-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .options-list li {
+        padding: 0.5rem 0;
+        color: var(--text-primary);
+        font-size: 1rem;
+        border-bottom: 1px solid var(--neutral-200);
+        transition: all 0.3s ease;
+      }
+
+      .options-list li:last-child {
+        border-bottom: none;
+      }
+
+      .options-list li:hover {
+        color: var(--amber-glow);
+        padding-left: 0.5rem;
+      }
+
+      .options-list li::before {
+        content: '•';
+        color: var(--teal-crystal);
+        margin-right: 0.5rem;
+        font-weight: bold;
+      }
+
+      .warning-box {
+        background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05));
+        border: 1px solid rgba(255, 193, 7, 0.3);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .warning-title {
+        font-weight: 600;
+        color: #856404;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .warning-content {
+        color: #856404;
+        line-height: 1.6;
+      }
+
+      .rating-options {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin: 1rem 0;
+      }
+
+      .rating-option {
+        background: var(--bg-secondary);
+        border: 1px solid var(--neutral-200);
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        color: var(--text-primary);
+        transition: all 0.3s ease;
+      }
+
+      .rating-option:hover {
+        background: var(--amber-glow);
+        color: white;
+        transform: scale(1.05);
+      }
+
+      .text-input-box {
+        background: var(--bg-secondary);
+        border: 2px solid var(--neutral-200);
+        border-radius: 10px;
+        padding: 1rem;
+        margin: 1rem 0;
+        color: var(--text-secondary);
+        font-style: italic;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @keyframes sectionFadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes titleGlow {
+        0% {
+          filter: brightness(1);
+        }
+        100% {
+          filter: brightness(1.2);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .content-section {
+          padding: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .subsection-title {
+          font-size: 1.5rem;
+        }
+
+        .question-card {
+          padding: 1.5rem;
+        }
+
+        .rating-options {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </Fragment>
+
+  <!-- Back Button -->
+  <a href="/guides/zone-nova/surveys/" class="back-button">
+    <span class="back-arrow">←</span>
+    Back to Surveys
+  </a>
+
+  <!-- Survey Overview Section -->
+  <section class="content-section">
+    <h1 class="section-title">General Player Survey 1</h1>
+
+    <div class="warning-box">
+      <div class="warning-title">📋 Survey Translation</div>
+      <div class="warning-content">
+        <p>
+          This is a translation of an official Zone Nova player survey. The developers use this
+          information to understand player preferences and improve the game. This survey contains
+          adult content preferences and is intended for mature audiences.
+        </p>
+      </div>
+    </div>
+
+    <!-- Demographic Information -->
+    <h2 class="subsection-title">Demographic Information</h2>
+
+    <div class="question-card">
+      <h3 class="question-title">1. Please select your gender</h3>
+      <ul class="options-list">
+        <li>Male</li>
+        <li>Female</li>
+        <li>Other</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">2. Please select your age group</h3>
+      <ul class="options-list">
+        <li>18-20 years old</li>
+        <li>21-25 years old</li>
+        <li>26-30 years old</li>
+        <li>31-35 years old</li>
+        <li>36-40 years old</li>
+        <li>40+ years old</li>
+      </ul>
+    </div>
+
+    <!-- Character Preferences -->
+    <h2 class="subsection-title">Character Preferences</h2>
+
+    <div class="question-card">
+      <h3 class="question-title">
+        3. Which character personalities do you like (1/2)? [Multiple choice]
+      </h3>
+      <ul class="options-list">
+        <li>Beautiful girl</li>
+        <li>Big sister type</li>
+        <li>Mature woman</li>
+        <li>Arrogant</li>
+        <li>Weak/frail</li>
+        <li>Strong/tough</li>
+        <li>Adventurous</li>
+        <li>Sickly</li>
+        <li>Natural/airhead</li>
+        <li>Dark/scheming</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">
+        4. Which character personalities do you like (2/2)? [Multiple choice]
+      </h3>
+      <ul class="options-list">
+        <li>Poor/impoverished</li>
+        <li>Busty</li>
+        <li>Perverted woman</li>
+        <li>Gentle</li>
+        <li>Natural cute</li>
+        <li>Little devil type</li>
+        <li>Chuunibyou</li>
+        <li>Inhuman</li>
+        <li>Other</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">
+        5. Which female character body types do you like (1/2)? [Multiple choice]
+      </h3>
+      <ul class="options-list">
+        <li>Flat chest</li>
+        <li>Normal bust</li>
+        <li>Busty</li>
+        <li>Super busty</li>
+        <li>Hidden busty</li>
+        <li>A4 waist</li>
+        <li>Small belly</li>
+        <li>Fair skin</li>
+        <li>Childbearing type</li>
+        <li>Beautiful buttocks</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">
+        6. Which female character body types do you like (2/2)? [Multiple choice]
+      </h3>
+      <ul class="options-list">
+        <li>Plump buttocks</li>
+        <li>Plump body type</li>
+        <li>Tall</li>
+        <li>Big thighs</li>
+        <li>Muscular woman</li>
+        <li>Other</li>
+      </ul>
+    </div>
+
+    <!-- Content Preferences -->
+    <h2 class="subsection-title">Content Preferences</h2>
+
+    <div class="warning-box">
+      <div class="warning-title">🔞 Adult Content Warning</div>
+      <div class="warning-content">
+        <p>
+          The following questions contain explicit adult content preferences. This section is
+          intended for mature audiences only.
+        </p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">7. Do you like R18 content (1/2)? [Multiple choice]</h3>
+      <ul class="options-list">
+        <li>Kissing</li>
+        <li>Anal</li>
+        <li>Oral</li>
+        <li>Breast play</li>
+        <li>Footjob</li>
+        <li>Deep throat</li>
+        <li>Facial</li>
+        <li>Oral climax</li>
+        <li>Squirting</li>
+        <li>Submission</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">8. Do you like R18 content (2/2)? [Multiple choice]</h3>
+      <ul class="options-list">
+        <li>Creampie</li>
+        <li>Exhibitionism</li>
+        <li>Training/domination</li>
+        <li>Multiple partners</li>
+        <li>Other</li>
+      </ul>
+    </div>
+
+    <!-- Gameplay Experience -->
+    <h2 class="subsection-title">Gameplay Experience</h2>
+
+    <div class="question-card">
+      <h3 class="question-title">9. How much time do you spend on 'ZONE NOVA' daily?</h3>
+      <ul class="options-list">
+        <li>Under 5 minutes</li>
+        <li>5-15 minutes</li>
+        <li>15-30 minutes</li>
+        <li>Over 30 minutes</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">10. How did you learn about 'ZONE NOVA'?</h3>
+      <ul class="options-list">
+        <li>Gaming platforms (EROLABS/JS GAME/H365/etc.)</li>
+        <li>SNS platforms (Facebook/Weibo/X/etc.)</li>
+        <li>Online advertising</li>
+        <li>Friend recommendation</li>
+        <li>Other</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">11. Which part of 'ZONE NOVA' interests you most?</h3>
+      <ul class="options-list">
+        <li>Game type (4-person team battles)</li>
+        <li>Character design</li>
+        <li>Story/worldview</li>
+        <li>R18 content</li>
+        <li>Other</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">12. How do you feel about 'ZONE NOVA's' battle controls?</h3>
+      <ul class="options-list">
+        <li>Simple and intuitive for using skills and switching characters</li>
+        <li>Understandable, operations are fairly smooth</li>
+        <li>Hard to understand, controls are clunky</li>
+        <li>Completely don't understand</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">13. What battle modes do you like? [Max 3 choices]</h3>
+      <ul class="options-list">
+        <li>Main story</li>
+        <li>Dungeons</li>
+        <li>Arena</li>
+        <li>Fang Mie battles</li>
+        <li>Space-time rifts</li>
+        <li>Trials</li>
+        <li>Competitive arena</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">
+        14. How do you feel about 'ZONE NOVA's' overall battle difficulty?
+      </h3>
+      <ul class="options-list">
+        <li>Very easy</li>
+        <li>Somewhat easy</li>
+        <li>Just right</li>
+        <li>Somewhat difficult</li>
+        <li>Very difficult</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">15. Do you understand 'ZONE NOVA's' tutorial explanations?</h3>
+      <ul class="options-list">
+        <li>Simple and easy to understand</li>
+        <li>Just right</li>
+        <li>Can understand</li>
+        <li>Hard to understand</li>
+        <li>Completely don't understand</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">16. Can you do what you want daily in 'ZONE NOVA'?</h3>
+      <ul class="options-list">
+        <li>Not enough</li>
+        <li>Too little</li>
+        <li>Just right</li>
+        <li>Somewhat too much</li>
+        <li>Too much</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">
+        17. How do you feel about 'ZONE NOVA's' new character release frequency?
+      </h3>
+      <ul class="options-list">
+        <li>Too fast, I haven't learned existing characters yet</li>
+        <li>A bit fast, I only get basic understanding before new ones arrive</li>
+        <li>Just right</li>
+        <li>A bit slow, I have plenty of time to learn new characters</li>
+        <li>Too slow, I want to see new characters faster</li>
+      </ul>
+    </div>
+
+    <!-- Improvement & Monetization -->
+    <h2 class="subsection-title">Improvement & Monetization</h2>
+
+    <div class="question-card">
+      <h3 class="question-title">
+        18. What should 'ZONE NOVA' prioritize improving? [Max 2 choices]
+      </h3>
+      <ul class="options-list">
+        <li>Story presentation</li>
+        <li>R18 content</li>
+        <li>Battle effects and presentation</li>
+        <li>Interface optimization</li>
+        <li>Level difficulty balance</li>
+        <li>Other</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">
+        19. If requiring payment, what items do you most hope to see? [Max 3 choices]
+      </h3>
+      <ul class="options-list">
+        <li>Display decorations (avatars, frames, cards)</li>
+        <li>Powerful characters and memories</li>
+        <li>Captivating independent storylines</li>
+        <li>Faster character growth to max stats</li>
+        <li>Faster character development to unlock full stories</li>
+        <li>Character skins</li>
+      </ul>
+    </div>
+
+    <!-- Ratings -->
+    <h2 class="subsection-title">Ratings</h2>
+
+    <div class="question-card">
+      <h3 class="question-title">20. Please rate 'ZONE NOVA's' character design (5★ highest)</h3>
+      <div class="rating-options">
+        <div class="rating-option">★ (1 star)</div>
+        <div class="rating-option">★★ (2 stars)</div>
+        <div class="rating-option">★★★ (3 stars)</div>
+        <div class="rating-option">★★★★ (4 stars)</div>
+        <div class="rating-option">★★★★★ (5 stars)</div>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">21. Please rate 'ZONE NOVA's' interface design (5★ highest)</h3>
+      <div class="rating-options">
+        <div class="rating-option">★ (1 star)</div>
+        <div class="rating-option">★★ (2 stars)</div>
+        <div class="rating-option">★★★ (3 stars)</div>
+        <div class="rating-option">★★★★ (4 stars)</div>
+        <div class="rating-option">★★★★★ (5 stars)</div>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <h3 class="question-title">22. Please rate 'ZONE NOVA' overall (5★ highest)</h3>
+      <div class="rating-options">
+        <div class="rating-option">★ (1 star)</div>
+        <div class="rating-option">★★ (2 stars)</div>
+        <div class="rating-option">★★★ (3 stars)</div>
+        <div class="rating-option">★★★★ (4 stars)</div>
+        <div class="rating-option">★★★★★ (5 stars)</div>
+      </div>
+    </div>
+
+    <!-- Additional Feedback -->
+    <h2 class="subsection-title">Additional Feedback</h2>
+
+    <div class="question-card">
+      <h3 class="question-title">
+        23. Thank you for your support and encouragement. To make 'ZONE NOVA' better, we will do our
+        best. If you have any opinions or thoughts, please tell us. (Optional)
+      </h3>
+      <div class="text-input-box">[Text input box for open feedback]</div>
+    </div>
+
+    <div class="warning-box">
+      <div class="warning-title">⚠️ Important Note</div>
+      <div class="warning-content">
+        <p>
+          This survey contains adult content preferences. Please ensure appropriate age verification
+          and content warnings are implemented when using this survey. This translation is provided
+          for informational purposes to help the community understand what feedback the developers
+          are seeking.
+        </p>
+      </div>
+    </div>
+  </section>
+</ZoneNovaLayout>

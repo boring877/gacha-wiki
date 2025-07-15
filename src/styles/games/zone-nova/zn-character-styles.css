@@ -114,7 +114,8 @@
 }
 
 /* ===== SKILL CARDS & STYLES ===== */
-.skill-card, .info-card {
+.skill-card,
+.info-card {
   background: linear-gradient(135deg, var(--neutral-50) 0%, var(--bg-primary) 100%);
   border-radius: 12px;
   padding: 1.5rem;
@@ -125,7 +126,8 @@
   border: 1px solid var(--neutral-200);
 }
 
-.skill-card:hover, .info-card:hover {
+.skill-card:hover,
+.info-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(28, 28, 28, 0.08);
   border-left-color: var(--amber-glow);
@@ -223,7 +225,8 @@
   text-shadow: 0 1px 2px rgba(255, 183, 77, 0.3);
 }
 
-.skill-description, .requirements-text {
+.skill-description,
+.requirements-text {
   margin: 0;
   color: var(--text-primary);
   line-height: 1.6;
@@ -337,7 +340,7 @@ strong {
 
 .badges-container:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   border-color: var(--amber-glow);
 }
 
@@ -348,8 +351,12 @@ strong {
 
 /* ===== ANIMATIONS ===== */
 @keyframes titleGlow {
-  0% { filter: brightness(1); }
-  100% { filter: brightness(1.2); }
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1.2);
+  }
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -383,7 +390,7 @@ strong {
   .character-header {
     padding: 2.5rem;
   }
-  
+
   .stats-grid {
     gap: 1.5rem;
   }

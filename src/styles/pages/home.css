@@ -2,80 +2,87 @@
 
 /* Main Layout */
 .home-main {
-	max-width: 1400px;
-	margin: 0 auto;
-	padding: 0;
-	contain: layout style;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+  contain: layout style;
 }
 
 /* Hero Section */
 .hero-section {
-	position: relative;
-	padding: 6rem 2rem 4rem 2rem;
-	overflow: hidden;
-	background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%);
-	border-bottom: 2px solid var(--amber-glow);
+  position: relative;
+  padding: 6rem 2rem 4rem 2rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%);
+  border-bottom: 2px solid var(--amber-glow);
 }
 
 .hero-bg-animation {
-	position: absolute;
-	inset: 0;
-	background: 
-		radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),
-		radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),
-		radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent);
-	animation: heroGlow 20s ease-in-out infinite;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),
+    radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),
+    radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent);
+  animation: heroGlow 20s ease-in-out infinite;
 }
 
 @keyframes heroGlow {
-	0%, 100% { opacity: 0.8; transform: scale(1) rotate(0deg); }
-	50% { opacity: 1; transform: scale(1.1) rotate(2deg); }
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(2deg);
+  }
 }
 
 .hero-content {
-	position: relative;
-	z-index: 10;
-	text-align: center;
-	max-width: 1200px;
-	margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero-title {
-	margin-bottom: 3rem;
-	animation: fadeInUp 1s ease-out;
+  margin-bottom: 3rem;
+  animation: fadeInUp 1s ease-out;
 }
 
 /* Home page specific title override */
 .hero-section .hero-title .hero-text-gradient {
-	display: block;
-	font-family: 'Space Grotesk', sans-serif;
-	font-size: clamp(3rem, 8vw, 5rem);
-	font-weight: 900;
-	line-height: 1.1;
-	color: var(--amber-glow) !important;
-	background: none !important;
-	-webkit-text-fill-color: var(--amber-glow) !important;
-	margin-bottom: 0.5rem;
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--amber-glow) !important;
+  background: none !important;
+  -webkit-text-fill-color: var(--amber-glow) !important;
+  margin-bottom: 0.5rem;
 }
 
 .hero-subtitle {
-	display: block;
-	font-family: 'Space Grotesk', sans-serif;
-	font-size: clamp(1rem, 3vw, 1.5rem);
-	font-weight: 400;
-	color: var(--text-inverse);
-	opacity: 0.9;
-	letter-spacing: 0.05em;
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 400;
+  color: var(--text-inverse);
+  opacity: 0.9;
+  letter-spacing: 0.05em;
 }
 
 /* Animations */
 @keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(30px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

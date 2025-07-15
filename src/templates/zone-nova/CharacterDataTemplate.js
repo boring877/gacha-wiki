@@ -11,46 +11,46 @@ export const characterNameData = {
   element: 'ELEMENT', // Fire, Ice, Wind, Holy, Chaos
   class: 'CLASS', // Tank, DPS, Buffer, Debuffer, Healer
   faction: 'FACTION', // Savir, etc.
-  
+
   // Base Stats (Level 80)
   stats: {
     hp: 'BASE_HP', // e.g., '10,520'
     attack: 'BASE_ATTACK', // e.g., '794'
-    defense: 'BASE_DEFENSE' // e.g., '1,232'
+    defense: 'BASE_DEFENSE', // e.g., '1,232'
   },
-  
+
   // Skills
   skills: {
     normal: {
       name: 'NORMAL_ATTACK_NAME',
-      description: 'NORMAL_ATTACK_DESCRIPTION'
+      description: 'NORMAL_ATTACK_DESCRIPTION',
     },
     auto: {
       name: 'AUTO_SKILL_NAME',
       cooldown: 'COOLDOWN', // e.g., '5.0s'
-      description: 'AUTO_SKILL_DESCRIPTION'
+      description: 'AUTO_SKILL_DESCRIPTION',
     },
     ultimate: {
       name: 'ULTIMATE_NAME',
       energyCost: 'ENERGY_COST', // e.g., '5'
-      description: 'ULTIMATE_DESCRIPTION'
+      description: 'ULTIMATE_DESCRIPTION',
     },
     passive: {
       name: 'PASSIVE_NAME',
-      description: 'PASSIVE_DESCRIPTION'
-    }
+      description: 'PASSIVE_DESCRIPTION',
+    },
   },
-  
+
   // Team Skill
   teamSkill: {
     name: 'TEAM_SKILL_NAME', // Usually 'Combination Skill'
     description: 'TEAM_SKILL_DESCRIPTION',
     requirements: {
       faction: 'FACTION_NAME', // Same as character faction
-      element: 'ELEMENT_NAME' // Same as character element
-    }
+      element: 'ELEMENT_NAME', // Same as character element
+    },
   },
-  
+
   // Awakening Effects (6 levels)
   awakenings: [
     { level: 1, effect: 'AWAKENING_1_EFFECT' },
@@ -58,9 +58,9 @@ export const characterNameData = {
     { level: 3, effect: 'AWAKENING_3_EFFECT' },
     { level: 4, effect: 'AWAKENING_4_EFFECT' },
     { level: 5, effect: 'AWAKENING_5_EFFECT' },
-    { level: 6, effect: 'AWAKENING_6_EFFECT' }
+    { level: 6, effect: 'AWAKENING_6_EFFECT' },
   ],
-  
+
   // Memory Card
   memoryCard: {
     name: 'MEMORY_CARD_NAME',
@@ -68,20 +68,16 @@ export const characterNameData = {
     stats: {
       hp: 'MEMORY_HP', // e.g., '8,600'
       attack: 'MEMORY_ATTACK', // e.g., '480'
-      defense: 'MEMORY_DEFENSE' // e.g., '690'
+      defense: 'MEMORY_DEFENSE', // e.g., '690'
     },
-    effects: [
-      'MEMORY_EFFECT_1',
-      'MEMORY_EFFECT_2',
-      'MEMORY_EFFECT_3'
-    ]
-  }
+    effects: ['MEMORY_EFFECT_1', 'MEMORY_EFFECT_2', 'MEMORY_EFFECT_3'],
+  },
 };
 
 // SEO data for CHARACTER_NAME
 export const characterNameSEO = {
   title: `${characterNameData.name} - Zone Nova Character Guide`,
-  description: `Complete guide for ${characterNameData.name}, a ${characterNameData.rarity} ${characterNameData.element} ${characterNameData.class} in Zone Nova. Includes skills, awakenings, builds, and team compositions.`
+  description: `Complete guide for ${characterNameData.name}, a ${characterNameData.rarity} ${characterNameData.element} ${characterNameData.class} in Zone Nova. Includes skills, awakenings, builds, and team compositions.`,
 };
 
 // Export default for easy importing

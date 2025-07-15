@@ -1,45 +1,52 @@
 ---
 import DamageMechanicsHubLayout from '../../../../layouts/silver-and-blood/DamageMechanicsHubLayout.astro';
-import { damageMechanicsIndex, getFeaturedGuides, getNewGuides } from '../../../../data/silver-and-blood/damage-mechanics-index.js';
+import {
+  damageMechanicsIndex,
+  getFeaturedGuides,
+  getNewGuides,
+} from '../../../../data/silver-and-blood/damage-mechanics-index.js';
 import '../../../../styles/games/silver-and-blood/sab-damage-mechanics-index.css';
 
 export const prerender = true;
 
-const { meta, heroSection, mechanicsCategories, quickReference, upcomingGuides } = damageMechanicsIndex;
+const { meta, heroSection, mechanicsCategories, quickReference, upcomingGuides } =
+  damageMechanicsIndex;
 ---
 
-<DamageMechanicsHubLayout 
+<DamageMechanicsHubLayout
   title={meta.title}
   description={meta.description}
   gameTitle="Damage Mechanics Hub"
 >
   <!-- Main Categories -->
   <section class="mechanics-categories">
-    {mechanicsCategories.map(category => (
-      <div class="category-section">
-        <div class="category-header">
-          <h2 class="category-title">{category.title}</h2>
-          <p class="category-description">{category.description}</p>
+    {
+      mechanicsCategories.map(category => (
+        <div class="category-section">
+          <div class="category-header">
+            <h2 class="category-title">{category.title}</h2>
+            <p class="category-description">{category.description}</p>
+          </div>
+
+          <div class="guides-grid">
+            {category.guides.map(guide => (
+              <a href={guide.url} class="guide-card-link">
+                <article class="guide-card">
+                  <h3 class="guide-title">{guide.title}</h3>
+                  <p class="guide-description">{guide.description}</p>
+                </article>
+              </a>
+            ))}
+
+            {category.guides.length === 0 && (
+              <div class="empty-category">
+                <p class="empty-message">Coming Soon</p>
+                <p class="empty-description">Character-specific guides will be added here</p>
+              </div>
+            )}
+          </div>
         </div>
-        
-        <div class="guides-grid">
-          {category.guides.map(guide => (
-            <a href={guide.url} class="guide-card-link">
-              <article class="guide-card">
-                <h3 class="guide-title">{guide.title}</h3>
-                <p class="guide-description">{guide.description}</p>
-              </article>
-            </a>
-          ))}
-          
-          {category.guides.length === 0 && (
-            <div class="empty-category">
-              <p class="empty-message">Coming Soon</p>
-              <p class="empty-description">Character-specific guides will be added here</p>
-            </div>
-          )}
-        </div>
-      </div>
-    ))}
+      ))
+    }
   </section>
 </DamageMechanicsHubLayout>

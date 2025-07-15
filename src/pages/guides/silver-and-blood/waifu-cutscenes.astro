@@ -3,42 +3,37 @@ import WaifuCutSceneLayout from '../../../layouts/silver-and-blood/WaifuCutScene
 import { cutscenes } from '../../../data/silver-and-blood/cutscenes.js';
 ---
 
-<WaifuCutSceneLayout 
-	title="Waifu CutScenes - Silver and Blood - GachaWiki" 
-	description="Explore beautiful character cutscenes and interactions from Silver and Blood's most beloved waifu characters"
-	gameTitle="Waifu CutScenes"
+<WaifuCutSceneLayout
+  title="Waifu CutScenes - Silver and Blood - GachaWiki"
+  description="Explore beautiful character cutscenes and interactions from Silver and Blood's most beloved waifu characters"
+  gameTitle="Waifu CutScenes"
 >
-	
-	
-	
-	<!-- Waifu Gallery -->
-	<div class="waifu-gallery">
-		<h3 class="subsection-title">Waifu Gallery</h3>
-		
-		<div class="waifu-grid">
-			{cutscenes.map(waifu => (
-				<div class="waifu-hero-card">
-					<div class="hero-image">
-						<img src={waifu.image} alt={waifu.character} />
-					</div>
-					<div class="hero-content">
-						<div class="hero-name">
-							{waifu.character}
-						</div>
-						<div class="video-preview">
-							<iframe 
-								src={`https://www.youtube.com/embed/${waifu.videoLink.split('v=')[1]?.split('&')[0]}`}
-								title={`${waifu.character} Cutscene`}
-								frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowfullscreen
-							></iframe>
-						</div>
-					</div>
-				</div>
-			))}
-		</div>
-	</div>
-	
-</WaifuCutSceneLayout>
+  <!-- Waifu Gallery -->
+  <div class="waifu-gallery">
+    <h3 class="subsection-title">Waifu Gallery</h3>
 
+    <div class="waifu-grid">
+      {
+        cutscenes.map(waifu => (
+          <div class="waifu-hero-card">
+            <div class="hero-image">
+              <img src={waifu.image} alt={waifu.character} />
+            </div>
+            <div class="hero-content">
+              <div class="hero-name">{waifu.character}</div>
+              <div class="video-preview">
+                <iframe
+                  src={`https://www.youtube.com/embed/${waifu.videoLink.split('v=')[1]?.split('&')[0]}`}
+                  title={`${waifu.character} Cutscene`}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                />
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</WaifuCutSceneLayout>

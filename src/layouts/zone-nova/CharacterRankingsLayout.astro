@@ -15,66 +15,62 @@ import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/games/zone-nova/zn-badge-colour.css';
 import '../../styles/games/zone-nova/zn-character-rankings.css';
 
-
 export interface Props {
-	title: string;
-	description: string;
-	gameTitle?: string;
-	showBackButton?: boolean;
-	backButtonHref?: string;
-	backButtonText?: string;
+  title: string;
+  description: string;
+  gameTitle?: string;
+  showBackButton?: boolean;
+  backButtonHref?: string;
+  backButtonText?: string;
 }
 
-const { 
-	title, 
-	description, 
-	gameTitle = "Zone Nova",
-	showBackButton = true,
-	backButtonHref = "/guides/zone-nova/characters/",
-	backButtonText = "Back to Character Database"
+const {
+  title,
+  description,
+  gameTitle = 'Zone Nova',
+  showBackButton = true,
+  backButtonHref = '/guides/zone-nova/characters/',
+  backButtonText = 'Back to Character Database',
 } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description || ""} />
-		<slot name="head" />
-	</head>
-	<body class="zone-nova-body zn-layout-override">
-		<!-- Background layers for visual depth similar to landing page -->
-		<div class="bg-layer bg-primary"></div>
-		<div class="bg-layer bg-accent-1"></div>
-		<div class="bg-layer bg-accent-2"></div>
-		<div class="bg-layer bg-accent-3"></div>
-		
-		<div class="zone-nova-content">
-			<Header />
-			<MobileMenu />
-			
-			<div class="zone-nova-container">
-				<main class="zone-nova-main">
-				
-					<!-- Title Only Section -->
-					<section class="title-only-section">
-						<h1 class="title-only-heading">
-							{gameTitle}
-						</h1>
-						
-						<DecorativeLines />
-					</section>
-					
-					<!-- Content Area -->
-					<div class="content-area">
-						<ZoneNovaQuickNav currentPath={Astro.url.pathname} />
-						{showBackButton && (
-							<ZnBackButton href={backButtonHref} text={backButtonText} />
-						)}
-						<slot />
-					</div>
-				</main>
-			</div>
-			
-			<Footer />
-		</div>
-	</body>
+  <head>
+    <BaseHead title={title} description={description || ''} />
+    <slot name="head" />
+  </head>
+  <body class="zone-nova-body zn-layout-override">
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="zone-nova-content">
+      <Header />
+      <MobileMenu />
+
+      <div class="zone-nova-container">
+        <main class="zone-nova-main">
+          <!-- Title Only Section -->
+          <section class="title-only-section">
+            <h1 class="title-only-heading">
+              {gameTitle}
+            </h1>
+
+            <DecorativeLines />
+          </section>
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <ZoneNovaQuickNav currentPath={Astro.url.pathname} />
+            {showBackButton && <ZnBackButton href={backButtonHref} text={backButtonText} />}
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
 </html>

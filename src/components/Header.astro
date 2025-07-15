@@ -6,214 +6,226 @@ import SocialLinks from './SocialLinks.astro';
 ---
 
 <header class="header-container">
-    <nav class="nav-container">
-        <div class="header-content">
-            <div class="logo-container">
-                <a href="/" class="logo-title simple-title">{SITE_TITLE}</a>
-            </div>
-            <div class="center-nav">
-                <DesktopHeader />
-            </div>
-            <div class="right-elements">
-                <SocialLinks />
-                <MobileHeader />
-            </div>
-        </div>
-    </nav>
+  <nav class="nav-container">
+    <div class="header-content">
+      <div class="logo-container">
+        <a href="/" class="logo-title simple-title">{SITE_TITLE}</a>
+      </div>
+      <div class="center-nav">
+        <DesktopHeader />
+      </div>
+      <div class="right-elements">
+        <SocialLinks />
+        <MobileHeader />
+      </div>
+    </div>
+  </nav>
 </header>
 
 <style>
-	/* Colors are available via layout's index.css import */
-	
-	/* Optimized animations for mobile performance */
-	@keyframes subtleGlow {
-		0%, 100% { text-shadow: 0 0 10px rgba(255, 183, 77, 0.3); }
-		50% { text-shadow: 0 0 15px rgba(255, 183, 77, 0.6); }
-	}
-	
-	.simple-title {
-		color: var(--amber-glow);
-		transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
-		will-change: transform, background-color;
-	}
+  /* Colors are available via layout's index.css import */
 
-	/* Header optimizations for CLS prevention */
-	.header-container {
-		background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
-		backdrop-filter: blur(12px);
-		border-bottom: 1px solid rgba(255, 183, 77, 0.3);
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-		padding: 1rem 0;
-		position: sticky;
-		top: 0;
-		z-index: 1000;
-		/* Prevent layout shift */
-		min-height: 72px;
-		contain: layout style paint;
-	}
+  /* Optimized animations for mobile performance */
+  @keyframes subtleGlow {
+    0%,
+    100% {
+      text-shadow: 0 0 10px rgba(255, 183, 77, 0.3);
+    }
+    50% {
+      text-shadow: 0 0 15px rgba(255, 183, 77, 0.6);
+    }
+  }
 
-	.nav-container {
-		max-width: 72rem;
-		margin: 0 auto;
-		/* Prevent horizontal overflow */
-		overflow-x: hidden;
-	}
+  .simple-title {
+    color: var(--amber-glow);
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      transform 0.2s ease;
+    will-change: transform, background-color;
+  }
 
-	.header-content {
-		display: grid;
-		grid-template-columns: 1fr auto 1fr;
-		align-items: center;
-		padding: 0 1rem;
-		/* Fixed height to prevent CLS */
-		min-height: 40px;
-	}
+  /* Header optimizations for CLS prevention */
+  .header-container {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 183, 77, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Prevent layout shift */
+    min-height: 72px;
+    contain: layout style paint;
+  }
 
-	/* Logo optimizations */
-	.logo-container {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		/* Prevent shrinking */
-		flex-shrink: 0;
-		justify-self: start;
-	}
+  .nav-container {
+    max-width: 72rem;
+    margin: 0 auto;
+    /* Prevent horizontal overflow */
+    overflow-x: hidden;
+  }
 
-	/* Center navigation */
-	.center-nav {
-		justify-self: center;
-		display: flex;
-		align-items: center;
-	}
+  .header-content {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 1rem;
+    /* Fixed height to prevent CLS */
+    min-height: 40px;
+  }
 
-	/* Right side elements */
-	.right-elements {
-		justify-self: end;
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		transform: translateX(1rem);
-	}
+  /* Logo optimizations */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    /* Prevent shrinking */
+    flex-shrink: 0;
+    justify-self: start;
+  }
 
-	.logo-title {
-		text-decoration: none;
-		padding: 0.5rem 1rem;
-		border-radius: 0.75rem;
-		font-size: 1.5rem;
-		font-weight: 700;
-		color: var(--amber-glow);
-		transition: all 0.3s ease;
-		will-change: transform;
-		/* Touch optimization */
-		touch-action: manipulation;
-		min-height: 44px;
-		display: flex;
-		align-items: center;
-	}
+  /* Center navigation */
+  .center-nav {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+  }
 
+  /* Right side elements */
+  .right-elements {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transform: translateX(1rem);
+  }
 
-	/* Mobile Responsive Design */
-	@media (max-width: 768px) {
+  .logo-title {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--amber-glow);
+    transition: all 0.3s ease;
+    will-change: transform;
+    /* Touch optimization */
+    touch-action: manipulation;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
 
-		/* Optimize header padding */
-		.header-content {
-			padding: 0 1rem !important;
-		}
+  /* Mobile Responsive Design */
+  @media (max-width: 768px) {
+    /* Optimize header padding */
+    .header-content {
+      padding: 0 1rem !important;
+    }
 
-		/* Adjust logo size */
-		.logo-title {
-			font-size: 1.25rem !important;
-		}
+    /* Adjust logo size */
+    .logo-title {
+      font-size: 1.25rem !important;
+    }
 
-		/* Disable animations on mobile for better performance */
-		.simple-title,
-		.logo-title {
-			transition: none;
-			will-change: auto;
-		}
-	}
+    /* Disable animations on mobile for better performance */
+    .simple-title,
+    .logo-title {
+      transition: none;
+      will-change: auto;
+    }
+  }
 
-	@media (max-width: 480px) {
-		.header-content {
-			padding: 0 0.75rem !important;
-		}
+  @media (max-width: 480px) {
+    .header-content {
+      padding: 0 0.75rem !important;
+    }
 
-		.logo-title {
-			font-size: 1.1rem !important;
-			padding: 0.5rem 0.75rem !important;
-		}
-	}
+    .logo-title {
+      font-size: 1.1rem !important;
+      padding: 0.5rem 0.75rem !important;
+    }
+  }
 
-	/* Reduce motion for accessibility */
-	@media (prefers-reduced-motion: reduce) {
-		.simple-title,
-		.logo-title {
-			transition: none !important;
-			animation: none !important;
-		}
-	}
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .simple-title,
+    .logo-title {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
 </style>
 
 <script>
-// Mobile menu functionality
-document.addEventListener('DOMContentLoaded', function() {
-	const hamburger = document.getElementById('hamburger');
-	const mobileMenu = document.getElementById('mobileMenu');
-	const closeMenuBtn = document.getElementById('closeMenu');
-	let isMenuOpen = false;
+  // Mobile menu functionality
+  document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenuBtn = document.getElementById('closeMenu');
+    let isMenuOpen = false;
 
-	function toggleMenu() {
-		isMenuOpen = !isMenuOpen;
-		
-		if (hamburger) {
-			hamburger.setAttribute('aria-expanded', isMenuOpen.toString());
-		}
-		
-		if (mobileMenu) {
-			if (isMenuOpen) {
-				// Simply prevent scrolling without position manipulation
-				document.body.style.overflow = 'hidden';
-				mobileMenu.classList.add('active');
-			} else {
-				// Restore scrolling
-				document.body.style.overflow = '';
-				mobileMenu.classList.remove('active');
-			}
-		}
-	}
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
 
-	function closeMenu() {
-		if (isMenuOpen) {
-			toggleMenu();
-		}
-	}
+      if (hamburger) {
+        hamburger.setAttribute('aria-expanded', isMenuOpen.toString());
+      }
 
-	// Event listeners
-	hamburger?.addEventListener('click', toggleMenu);
-	closeMenuBtn?.addEventListener('click', closeMenu);
-	// Close menu when clicking on overlay or links
-	mobileMenu?.addEventListener('click', (e) => {
-		const target = e.target as HTMLElement;
-		if (target === mobileMenu || target.classList?.contains('mobile-menu-overlay') || (target && (target.classList?.contains('mobile-nav-link') || target.classList?.contains('mobile-social-link')))) {
-			closeMenu();
-		}
-	});
+      if (mobileMenu) {
+        if (isMenuOpen) {
+          // Simply prevent scrolling without position manipulation
+          document.body.style.overflow = 'hidden';
+          mobileMenu.classList.add('active');
+        } else {
+          // Restore scrolling
+          document.body.style.overflow = '';
+          mobileMenu.classList.remove('active');
+        }
+      }
+    }
 
-	// Close menu on escape key
-	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape' && isMenuOpen) {
-			closeMenu();
-		}
-	});
+    function closeMenu() {
+      if (isMenuOpen) {
+        toggleMenu();
+      }
+    }
 
-	// Close menu on window resize (desktop breakpoint)
-	let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
-	window.addEventListener('resize', () => {
-		clearTimeout(resizeTimeout);
-		resizeTimeout = setTimeout(() => {
-			if (window.innerWidth > 768 && isMenuOpen) {
-				closeMenu();
-			}
-		}, 100);
-	});
-});
+    // Event listeners
+    hamburger?.addEventListener('click', toggleMenu);
+    closeMenuBtn?.addEventListener('click', closeMenu);
+    // Close menu when clicking on overlay or links
+    mobileMenu?.addEventListener('click', e => {
+      const target = e.target as HTMLElement;
+      if (
+        target === mobileMenu ||
+        target.classList?.contains('mobile-menu-overlay') ||
+        (target &&
+          (target.classList?.contains('mobile-nav-link') ||
+            target.classList?.contains('mobile-social-link')))
+      ) {
+        closeMenu();
+      }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        closeMenu();
+      }
+    });
+
+    // Close menu on window resize (desktop breakpoint)
+    let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (window.innerWidth > 768 && isMenuOpen) {
+          closeMenu();
+        }
+      }, 100);
+    });
+  });
 </script>

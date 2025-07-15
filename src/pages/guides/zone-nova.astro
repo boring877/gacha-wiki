@@ -10,49 +10,51 @@ import '../../styles/games/zone-nova/zn-landing-page.css';
 const { meta, gameInfo, guides } = zoneNovaConfig;
 ---
 
-<ZoneNovaLayout 
-	title={meta.title}
-	description={meta.description}
-	gameTitle={meta.gameTitle}
-	heroImage={meta.heroImage}
+<ZoneNovaLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  heroImage={meta.heroImage}
 >
-	<!-- Game Overview Section -->
-	<section class="content-section">
-		<h2 class="section-title">About</h2>
-		<div class="game-description">
-			{gameInfo.description}
-		</div>
-		
-		<!-- Play Game Button -->
-		<div class="play-button-container">
-			<a href={gameInfo.playUrl} target="_blank" class="play-button">
-				<span class="play-emoji">🎮</span>
-				Play Zone Nova
-				<span class="play-arrow">→</span>
-			</a>
-		</div>
-		
-		<p class="last-updated">
-			Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
-		</p>
-	</section>
+  <!-- Game Overview Section -->
+  <section class="content-section">
+    <h2 class="section-title">About</h2>
+    <div class="game-description">
+      {gameInfo.description}
+    </div>
 
-	<!-- Guides Section -->
-	<section class="content-section">
-		<h2 class="section-title">Resources</h2>
-		
-		<div class="guides-grid">
-			{guides.map(guide => (
-				<a href={guide.url} class="guide-card-link">
-					<div class="guide-card">
-						<h3>
-							<span class="guide-emoji">{guide.emoji}</span> 
-							{guide.title}
-						</h3>
-						<p>{guide.description}</p>
-					</div>
-				</a>
-			))}
-		</div>
-	</section>
+    <!-- Play Game Button -->
+    <div class="play-button-container">
+      <a href={gameInfo.playUrl} target="_blank" class="play-button">
+        <span class="play-emoji">🎮</span>
+        Play Zone Nova
+        <span class="play-arrow">→</span>
+      </a>
+    </div>
+
+    <p class="last-updated">
+      Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+    </p>
+  </section>
+
+  <!-- Guides Section -->
+  <section class="content-section">
+    <h2 class="section-title">Resources</h2>
+
+    <div class="guides-grid">
+      {
+        guides.map(guide => (
+          <a href={guide.url} class="guide-card-link">
+            <div class="guide-card">
+              <h3>
+                <span class="guide-emoji">{guide.emoji}</span>
+                {guide.title}
+              </h3>
+              <p>{guide.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
 </ZoneNovaLayout>

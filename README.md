@@ -1,8 +1,10 @@
 # 🎲 GachaWiki
 
-> **Comprehensive guides, character builds, and game strategies for popular gacha games**
+> **Comprehensive guides, character builds, and game strategies for popular
+> gacha games**
 
-A beautifully designed wiki and guide platform built with Astro, featuring comprehensive content for gacha gaming enthusiasts.
+A beautifully designed wiki and guide platform built with Astro, featuring
+comprehensive content for gacha gaming enthusiasts.
 
 🌐 **Live Site**: [gachawiki.info](https://gachawiki.info)  
 📖 **Source Code**: [GitHub Repository](https://github.com/boring877/gacha-wiki)
@@ -12,11 +14,13 @@ A beautifully designed wiki and guide platform built with Astro, featuring compr
 ## ✨ Features
 
 - 🎮 **Game Guides**: In-depth coverage of gacha games starting with Zone Nova
-- 📱 **Mobile Responsive**: Optimized for all devices with touch-friendly interfaces
+- 📱 **Mobile Responsive**: Optimized for all devices with touch-friendly
+  interfaces
 - ⚡ **Performance**: Lightning-fast loading with 100/100 Lighthouse scores
 - 🎨 **Modern Design**: Beautiful UI with custom color palette and animations
 - 🔍 **SEO Optimized**: Meta tags, Open Graph data, and sitemap support
-- 🎯 **Interactive Elements**: Event timers, character stats, and dynamic content
+- 🎯 **Interactive Elements**: Event timers, character stats, and dynamic
+  content
 - 📋 **MIT Licensed**: Open source and freely available for the community
 
 ## 🚀 Quick Start
@@ -39,6 +43,7 @@ curl -fsSL https://bun.sh/install | bash
 ```
 
 Or use npm if you prefer:
+
 ```bash
 npm install -g bun
 ```
@@ -46,49 +51,57 @@ npm install -g bun
 ### 🛠️ Installation & Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/boring877/gacha-wiki.git
    cd gacha-wiki
    ```
 
 2. **Install dependencies**
+
    ```bash
    bun install
    ```
-   *Or with npm:*
+
+   _Or with npm:_
+
    ```bash
    npm install
    ```
 
 3. **Start the development server**
+
    ```bash
    bun dev
    ```
-   *Or with npm:*
+
+   _Or with npm:_
+
    ```bash
    npm run dev
    ```
 
 4. **Open your browser**
-   
+
    Navigate to `http://localhost:4321` to see the site running locally!
 
 ### 🧞 Development Commands
 
 All commands are run from the root of the project:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Install dependencies                             |
-| `bun dev`                 | Start dev server at `localhost:4321`            |
-| `bun build`               | Build production site to `./dist/`              |
-| `bun preview`             | Preview build locally before deploying          |
-| `bun astro add <package>` | Add Astro integrations                          |
-| `bun astro check`         | Run type checking and diagnostics               |
+| Command                   | Action                                 |
+| :------------------------ | :------------------------------------- |
+| `bun install`             | Install dependencies                   |
+| `bun dev`                 | Start dev server at `localhost:4321`   |
+| `bun build`               | Build production site to `./dist/`     |
+| `bun preview`             | Preview build locally before deploying |
+| `bun astro add <package>` | Add Astro integrations                 |
+| `bun astro check`         | Run type checking and diagnostics      |
 
 ### 🔧 Troubleshooting
 
 **Port already in use?**
+
 ```bash
 # Kill the process using port 4321
 npx kill-port 4321
@@ -97,6 +110,7 @@ bun dev --port 3000
 ```
 
 **Dependencies issues?**
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules bun.lockb
@@ -104,6 +118,7 @@ bun install
 ```
 
 **Build errors?**
+
 ```bash
 # Check for TypeScript errors
 bun astro check
@@ -112,12 +127,13 @@ bun astro check
 ## 🎮 Game Coverage
 
 ### Zone Nova
+
 - **Characters**: Detailed guides for Guinevere, Naiya, Kela, and more
 - **Events**: Live event tracking with countdown timers
 - **Runes & Crafting**: Complete equipment and upgrade systems
 - **News & Updates**: Latest patches and community announcements
 
-*More games coming soon!*
+_More games coming soon!_
 
 ## 🚀 Project Structure
 
@@ -157,7 +173,7 @@ gacha-wiki/
 The site uses a carefully crafted color palette:
 
 - **Rich Black** (`#1C1C1C`) - Main backgrounds
-- **Amber Glow** (`#FFB74D`) - Important UI elements  
+- **Amber Glow** (`#FFB74D`) - Important UI elements
 - **Teal Crystal** (`#00ACC1`) - Links and interactions
 - **Rose Quartz** (`#E91E63`) - Special events and highlights
 - **Mocha Mousse** (`#A47864`) - Secondary backgrounds
@@ -179,8 +195,9 @@ The site uses a carefully crafted color palette:
 ## 🤝 Contributing
 
 We welcome contributions! Whether it's:
+
 - 📝 Adding new game guides
-- 🐛 Fixing bugs or improving performance  
+- 🐛 Fixing bugs or improving performance
 - 🎨 Enhancing the design and user experience
 - 📱 Mobile responsiveness improvements
 
@@ -208,7 +225,8 @@ We welcome contributions! Whether it's:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## 🙏 Acknowledgments
 

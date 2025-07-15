@@ -91,7 +91,11 @@
 /* Game-Specific Styling */
 .games-section .game-card.game-zone-nova {
   border-color: var(--amber-glow) !important;
-  background: linear-gradient(135deg, var(--bg-secondary) 60%, rgba(255, 183, 77, 0.05) 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 60%,
+    rgba(255, 183, 77, 0.05) 100%
+  ) !important;
   box-shadow: 0 4px 18px rgba(255, 183, 77, 0.15) !important;
 }
 
@@ -99,12 +103,20 @@
   transform: translateY(-4px) !important;
   box-shadow: 0 12px 32px rgba(255, 183, 77, 0.3) !important;
   border-color: var(--amber-glow) !important;
-  background: linear-gradient(135deg, var(--bg-secondary) 60%, rgba(255, 183, 77, 0.08) 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 60%,
+    rgba(255, 183, 77, 0.08) 100%
+  ) !important;
 }
 
 .games-section .game-card.game-silver-and-blood {
   border-color: #c0c0c0 !important; /* Silver color */
-  background: linear-gradient(135deg, var(--bg-secondary) 60%, rgba(192, 192, 192, 0.05) 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 60%,
+    rgba(192, 192, 192, 0.05) 100%
+  ) !important;
 }
 
 .games-section .game-card.game-silver-and-blood:hover {
@@ -227,7 +239,7 @@
   .game-description {
     font-size: 0.8rem;
   }
-  
+
   .game-arrow {
     font-size: 1.4rem;
   }

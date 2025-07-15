@@ -30,7 +30,7 @@
 .category-title {
   font-size: 2.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347);
+  background: linear-gradient(135deg, #ffd700, #ffa500, #ff6347);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -63,9 +63,7 @@
 }
 
 .guide-card {
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.03) 0%, 
-    rgba(255, 255, 255, 0.01) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
   backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 2.5rem;
@@ -83,21 +81,16 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 215, 0, 0.3), 
-    transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
 .guide-card-link:hover .guide-card {
   transform: translateY(-8px);
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.06) 0%, 
-    rgba(255, 255, 255, 0.02) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
   border-color: rgba(255, 215, 0, 0.2);
-  box-shadow: 
+  box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.3),
     0 0 60px rgba(255, 183, 77, 0.1),
     inset 0 0 20px rgba(255, 255, 255, 0.02);
@@ -117,7 +110,7 @@
 }
 
 .guide-card-link:hover .guide-title {
-  color: #FFD700;
+  color: #ffd700;
   text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
@@ -134,18 +127,17 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .guides-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .guide-card {
     padding: 1.5rem;
   }
-  
+
   .category-title {
     font-size: 1.5rem;
   }

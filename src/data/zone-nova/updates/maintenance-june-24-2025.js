@@ -6,12 +6,12 @@ export const june24MaintenanceData = {
   title: 'June 24 Maintenance Update',
   date: 'June 24, 2025',
   type: 'maintenance',
-  
+
   // TL;DR Summary
   tldr: [
-    'Major maintenance on June 24, 2025 (14:00, 2 hours) bringing "Harmonious Generation Price: Divine Punishment Song Part One" event, Athena Limited Recruitment (Wind Buffer), Sadistic Appearance memory, Travel Pass system, Spacetime Rift V, Battle: Empress Cinnamon, double drop events, and 300 Photon Stone compensation.'
+    'Major maintenance on June 24, 2025 (14:00, 2 hours) bringing "Harmonious Generation Price: Divine Punishment Song Part One" event, Athena Limited Recruitment (Wind Buffer), Sadistic Appearance memory, Travel Pass system, Spacetime Rift V, Battle: Empress Cinnamon, double drop events, and 300 Photon Stone compensation.',
   ],
-  
+
   // Official Update
   officialUpdate: {
     content: [
@@ -37,7 +37,7 @@ export const june24MaintenanceData = {
       'Launch time: 2025/06/24 after server launch ~ 2025/07/08 03:59:59',
       'Class: Buffer',
       'Attribute: Wind',
-      'Introduction: One of [The Matriarch\'s] dependents, Captain of the Otis Federation Special Forces, codename [Law Executor]. She is a perfect killing machine - regardless of who the target is, even if it\'s a former companion, she will complete the mission accurately and coldly. No one inside or outside the Federation doesn\'t fear this silver-haired executioner. However, this warrior who strikes fear into people\'s hearts is a complete living disaster. Her home always looks like it\'s been bombed - clothes, weapons, expired food piled into ruins, to the point where even she can\'t find a place to stand.',
+      "Introduction: One of [The Matriarch's] dependents, Captain of the Otis Federation Special Forces, codename [Law Executor]. She is a perfect killing machine - regardless of who the target is, even if it's a former companion, she will complete the mission accurately and coldly. No one inside or outside the Federation doesn't fear this silver-haired executioner. However, this warrior who strikes fear into people's hearts is a complete living disaster. Her home always looks like it's been bombed - clothes, weapons, expired food piled into ruins, to the point where even she can't find a place to stand.",
       '',
       '["Rest well here... I still need to rush home to pack... pack things..."] (Cold)',
       '',
@@ -86,23 +86,23 @@ export const june24MaintenanceData = {
       '',
       'Compensation content: Photon Stone x 300',
       'Compensation target: Captains who logged into the game before 2025/07/08 23:59',
-      'Distribution method: Compensation will be distributed via in-game mail after maintenance is completed.'
-    ]
+      'Distribution method: Compensation will be distributed via in-game mail after maintenance is completed.',
+    ],
   },
-  
+
   // Source Information
   sourceInfo: {
     source: 'Official ZONE NOVA announcement',
     verified: true,
-    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova'
-  }
+    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova',
+  },
 };
 
 // SEO data for June 24 Maintenance
 export const june24MaintenanceSEO = {
   title: `${june24MaintenanceData.title} - Zone Nova - GachaWiki`,
-  description: `Major June 24, 2025 maintenance update featuring Divine Punishment Song event, Athena Limited Recruitment, Travel Pass system, Spacetime Rift V, Battle: Empress Cinnamon, and 300 Photon Stone compensation.`
+  description: `Major June 24, 2025 maintenance update featuring Divine Punishment Song event, Athena Limited Recruitment, Travel Pass system, Spacetime Rift V, Battle: Empress Cinnamon, and 300 Photon Stone compensation.`,
 };
 
 // Export default for easy importing
-export default june24MaintenanceData; 
+export default june24MaintenanceData;

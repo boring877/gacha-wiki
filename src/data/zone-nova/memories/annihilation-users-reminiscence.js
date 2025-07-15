@@ -8,22 +8,21 @@ export const annihilationUsersReminiscenceData = {
   image: '/images/games/zone-nova/memories/Increase-User-Attack.jpg',
   rarity: 'R',
   character: null, // No specific character associated
-  
+
   // Memory Stats
   stats: {
     hp: 3360,
     attack: 520,
-    defense: 316
+    defense: 316,
   },
-  
+
   // Memory Effects
-  effects: [
-    'Attack increases by 32%'
-  ]
+  effects: ['Attack increases by 32%'],
 };
 
 // SEO Data
 export const annihilationUsersReminiscenceSEO = {
   title: 'Increase User Attack - Universal Memory Card | Zone Nova',
-  description: 'Complete guide for Increase User Attack memory card in Zone Nova. Learn about its attack enhancement effects.'
-}; 
+  description:
+    'Complete guide for Increase User Attack memory card in Zone Nova. Learn about its attack enhancement effects.',
+};

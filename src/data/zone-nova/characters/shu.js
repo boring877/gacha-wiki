@@ -10,56 +10,63 @@ export const shuData = {
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
   class: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer
   faction: 'Kaimiki', // Savir, etc.
-  
+
   // Base Stats (Level 80)
   stats: {
     hp: '7,970', // e.g., '10,520'
     attack: '837', // e.g., '794'
-    defense: '560' // e.g., '1,232'
+    defense: '560', // e.g., '1,232'
   },
-  
+
   // Skills
   skills: {
     normal: {
       name: 'Wind Assault',
-      description: 'Deals wind damage equal to 120% of Attack to designated enemy unit'
+      description: 'Deals wind damage equal to 120% of Attack to designated enemy unit',
     },
     auto: {
       name: 'Eye of the Storm',
       cooldown: '5.0s', // e.g., '5.0s'
-      description: 'Deals wind damage equal to 72% of Attack to enemy unit and surrounding enemies within 4 meters'
+      description:
+        'Deals wind damage equal to 72% of Attack to enemy unit and surrounding enemies within 4 meters',
     },
     ultimate: {
       name: 'Sticky Bat Storm',
       energyCost: '3', // e.g., '5'
-      description: 'Deals wind damage equal to 120% of Attack to enemies within 4 meters. Applies [Vulnerability]: Affected enemies take 34% increased damage for 15 seconds. With Awakening 6: Also applies [Weathering] debuff to affected enemies'
+      description:
+        'Deals wind damage equal to 120% of Attack to enemies within 4 meters. Applies [Vulnerability]: Affected enemies take 34% increased damage for 15 seconds. With Awakening 6: Also applies [Weathering] debuff to affected enemies',
     },
     passive: {
       name: 'Fierce Wind Burst',
-      description: 'Can apply [Weathering] debuff to enemies. Weathering: Each stack causes 14.4% of Attack as wind damage per second (maximum 5 stacks). With Awakening 1: When dealing damage to targets with continuous damage effects, self attack power increases by 20%'
-    }
+      description:
+        'Can apply [Weathering] debuff to enemies. Weathering: Each stack causes 14.4% of Attack as wind damage per second (maximum 5 stacks). With Awakening 1: When dealing damage to targets with continuous damage effects, self attack power increases by 20%',
+    },
   },
-  
+
   // Team Skill
   teamSkill: {
     name: 'Combination Skill', // Usually 'Combination Skill'
     description: 'Self damage increased by 20%',
     requirements: {
       faction: 'Kaimiki', // Same as character faction
-      element: 'Wind' // Same as character element
-    }
+      element: 'Wind', // Same as character element
+    },
   },
-  
+
   // Awakening Effects (6 levels)
   awakenings: [
-    { level: 1, effect: 'When dealing damage to targets with continuous damage effects: Self attack power increases by 20%' },
+    {
+      level: 1,
+      effect:
+        'When dealing damage to targets with continuous damage effects: Self attack power increases by 20%',
+    },
     { level: 2, effect: 'Continuous damage effects penetration rate increased by 10%' },
     { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
     { level: 4, effect: 'Continuous damage effects damage increased by 25%' },
     { level: 5, effect: '[Ultimate Skill] and [Passive] level and level cap +4' },
-    { level: 6, effect: 'Ultimate skill can also apply [Weathering] debuff' }
+    { level: 6, effect: 'Ultimate skill can also apply [Weathering] debuff' },
   ],
-  
+
   // Memory Card
   memoryCard: {
     name: 'Busy Officer (忙里偷闲)',
@@ -67,18 +74,18 @@ export const shuData = {
     stats: {
       hp: '5,000', // e.g., '8,600'
       attack: '500', // e.g., '480'
-      defense: '500' // e.g., '690'
+      defense: '500', // e.g., '690'
     },
     effects: [
-      'When dealing continuous damage effects: Target takes 12% increased damage for 2 seconds'
-    ]
-  }
+      'When dealing continuous damage effects: Target takes 12% increased damage for 2 seconds',
+    ],
+  },
 };
 
 // SEO data for Shu
 export const shuSEO = {
   title: `${shuData.name} - Zone Nova Character Guide`,
-  description: `Complete guide for ${shuData.name}, a ${shuData.rarity} ${shuData.element} ${shuData.class} in Zone Nova. Includes skills, awakenings, builds, and team compositions.`
+  description: `Complete guide for ${shuData.name}, a ${shuData.rarity} ${shuData.element} ${shuData.class} in Zone Nova. Includes skills, awakenings, builds, and team compositions.`,
 };
 
 // Export default for easy importing

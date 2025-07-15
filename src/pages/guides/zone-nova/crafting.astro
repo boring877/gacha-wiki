@@ -4,140 +4,143 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 import '../../../styles/games/zone-nova/zn-crafting.css';
 ---
 
-<ZoneNovaLayout 
-	title="Zone Nova Crafting Guide - GachaWiki" 
-	description="Complete crafting guide for Zone Nova - runes, materials, and recipes"
-	gameTitle="Crafting Guide"
+<ZoneNovaLayout
+  title="Zone Nova Crafting Guide - GachaWiki"
+  description="Complete crafting guide for Zone Nova - runes, materials, and recipes"
+  gameTitle="Crafting Guide"
 >
+  <!-- Featured Video Section -->
+  <section class="content-section">
+    <h2 class="section-title">Crafting Guide Video</h2>
+    <div class="video-container">
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/J5ip-LQApRc"
+          title="Zone Nova Crafting Guide"
+          style="border: none;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+    </div>
 
-	<!-- Featured Video Section -->
-	<section class="content-section">
-		<h2 class="section-title">Crafting Guide Video</h2>
-		<div class="video-container">
-			<div class="video-wrapper">
-				<iframe 
-					src="https://www.youtube.com/embed/J5ip-LQApRc" 
-					title="Zone Nova Crafting Guide" 
-					style="border: none;" 
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-					allowfullscreen
-				></iframe>
-			</div>
-		</div>
-		
-		<div style="text-align: center; margin-top: 1rem;">
-			
-			<a href="https://www.youtube.com/watch?v=J5ip-LQApRc" target="_blank" class="video-link">
-				Watch on YouTube
-			</a>
-		</div>
-	</section>
+    <div style="text-align: center; margin-top: 1rem;">
+      <a href="https://www.youtube.com/watch?v=J5ip-LQApRc" target="_blank" class="video-link">
+        Watch on YouTube
+      </a>
+    </div>
+  </section>
 
-	<!-- Crafting Types Section -->
-	<section class="content-section">
-		<h2 class="section-title">Crafting System</h2>
-	
-		
-		<div class="crafting-grid">
-			<div class="crafting-card">
-				<h3>Synthesis (合成)</h3>
-				
-				<p><strong>Use:</strong> Upgrades lower-tier materials into higher-tier</p>
-				
-			</div>
+  <!-- Crafting Types Section -->
+  <section class="content-section">
+    <h2 class="section-title">Crafting System</h2>
 
-			<div class="crafting-card">
-				<h3>Decompose (分解)</h3>
-				<p><strong>Use:</strong> Convert higher-tier back into lower-tier</p>
-			</div>
+    <div class="crafting-grid">
+      <div class="crafting-card">
+        <h3>Synthesis (合成)</h3>
 
-			<div class="crafting-card">
-				<h3>Advanced Crafting (制作)</h3>
-				<p><strong>Function:</strong> Creates runes with specific effects</p>
-				<p><strong>Special Feature:</strong> Allows customization of stats through hexagonal interface</p>
-				<p><strong>Use:</strong> Advanced crafting for end-game optimization</p>
-			</div>
-		</div>
-	</section>
+        <p><strong>Use:</strong> Upgrades lower-tier materials into higher-tier</p>
+      </div>
 
-	<!-- Crafting Tiers Section -->
-	<section class="content-section">
-		<h2 class="section-title">Crafting Tiers & Success Rates</h2>
-		<div class="section-description">
-			Different rune tiers have unique crafting requirements and success rates
-		</div>
-		
-		<div class="crafting-grid">
-			<div class="crafting-card">
-				<h3>Rare Rune Crafting</h3>
-				<ul class="material-list">
-					<li><span>Success Rate</span> <span class="rarity-rare">10% → Epic</span></li>
-					<li><span>Pity System</span> <span>Guaranteed Epic after 5 fails</span></li>
-				</ul>
-			</div>
+      <div class="crafting-card">
+        <h3>Decompose (分解)</h3>
+        <p><strong>Use:</strong> Convert higher-tier back into lower-tier</p>
+      </div>
 
-			<div class="crafting-card">
-				<h3>Epic Rune Crafting</h3>
-				<ul class="material-list">
-					<li><span>Success Rate</span> <span class="rarity-epic">10% → Legendary</span></li>
-					<li><span>Pity System</span> <span>Guaranteed Legendary after 5 fails</span></li>
-				</ul>
-			</div>
+      <div class="crafting-card">
+        <h3>Advanced Crafting (制作)</h3>
+        <p><strong>Function:</strong> Creates runes with specific effects</p>
+        <p>
+          <strong>Special Feature:</strong> Allows customization of stats through hexagonal interface
+        </p>
+        <p><strong>Use:</strong> Advanced crafting for end-game optimization</p>
+      </div>
+    </div>
+  </section>
 
-			<div class="crafting-card">
-				<h3>Legendary Rune Crafting</h3>
-				<ul class="material-list">
-					<li><span>Special Feature</span> <span class="rarity-legendary">Specify main attributes</span></li>
-					<li><span>Requires</span> <span>Laser Engraving Tool</span></li>
-					<li><span>Best For</span> <span>End-game min-maxing</span></li>
-				</ul>
-			</div>
-		</div>
-	</section>
+  <!-- Crafting Tiers Section -->
+  <section class="content-section">
+    <h2 class="section-title">Crafting Tiers & Success Rates</h2>
+    <div class="section-description">
+      Different rune tiers have unique crafting requirements and success rates
+    </div>
 
-	<!-- Laser Engraving Tool Section -->
-	<section class="content-section">
-		<h2 class="section-title">Laser Engraving Tool</h2>
-		<div class="section-description">
-			Essential premium item for perfect legendary rune crafting
-		</div>
+    <div class="crafting-grid">
+      <div class="crafting-card">
+        <h3>Rare Rune Crafting</h3>
+        <ul class="material-list">
+          <li><span>Success Rate</span> <span class="rarity-rare">10% → Epic</span></li>
+          <li><span>Pity System</span> <span>Guaranteed Epic after 5 fails</span></li>
+        </ul>
+      </div>
 
-		<!-- Item Showcase -->
-		<div class="item-showcase">
-			<div class="item-image">
-				<img 
-          src="/images/games/zone-nova/laser-engraving-tool.jpg" 
-          alt="Laser Engraving Tool (激光雕刻仪)" 
+      <div class="crafting-card">
+        <h3>Epic Rune Crafting</h3>
+        <ul class="material-list">
+          <li><span>Success Rate</span> <span class="rarity-epic">10% → Legendary</span></li>
+          <li><span>Pity System</span> <span>Guaranteed Legendary after 5 fails</span></li>
+        </ul>
+      </div>
+
+      <div class="crafting-card">
+        <h3>Legendary Rune Crafting</h3>
+        <ul class="material-list">
+          <li>
+            <span>Special Feature</span>
+            <span class="rarity-legendary">Specify main attributes</span>
+          </li>
+          <li><span>Requires</span> <span>Laser Engraving Tool</span></li>
+          <li><span>Best For</span> <span>End-game min-maxing</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Laser Engraving Tool Section -->
+  <section class="content-section">
+    <h2 class="section-title">Laser Engraving Tool</h2>
+    <div class="section-description">
+      Essential premium item for perfect legendary rune crafting
+    </div>
+
+    <!-- Item Showcase -->
+    <div class="item-showcase">
+      <div class="item-image">
+        <img
+          src="/images/games/zone-nova/laser-engraving-tool.jpg"
+          alt="Laser Engraving Tool (激光雕刻仪)"
           width="400"
           height="300"
           loading="lazy"
         />
-			</div>
-			<div class="item-info">
-				<h3>Laser Engraving Tool (激光雕刻仪)</h3>
-				<p> Crafting item, removes RNG from legendary rune crafting by allowing players to specify exact main stats. Essential for end-game optimization and perfect rune building.</p>
-			</div>
-		</div>
-		
-		<div class="crafting-grid">
-			<div class="crafting-card">
-				<h3>Primary Purpose</h3>
-				<ul class="material-list">
-					<li><span>Used exclusively in</span> <span>Legendary Rune Crafting</span></li>
-					<li><span>Allows selection of</span> <span>Specific main stat values</span></li>
-					<li><span>Eliminates RNG for</span> <span>Main stat rolls</span></li>
-				</ul>
-			</div>
+      </div>
+      <div class="item-info">
+        <h3>Laser Engraving Tool (激光雕刻仪)</h3>
+        <p>
+          Crafting item, removes RNG from legendary rune crafting by allowing players to specify
+          exact main stats. Essential for end-game optimization and perfect rune building.
+        </p>
+      </div>
+    </div>
 
-			<div class="crafting-card">
-				<h3>Priority Usage</h3>
-				<ul class="material-list">
-					<li><span>1st Priority</span> <span class="rarity-legendary">Position 4 runes</span></li>
-					<li><span>2nd Priority</span> <span class="rarity-epic">Position 5 runes</span></li>
-					<li><span>3rd Priority</span> <span class="rarity-rare">Position 6 runes</span></li>
-				</ul>
-				<p><small>Positions 1, 2, 3 have fixed main stats</small></p>
-			</div>
-		</div>
-	</section>
-</ZoneNovaLayout> 
+    <div class="crafting-grid">
+      <div class="crafting-card">
+        <h3>Primary Purpose</h3>
+        <ul class="material-list">
+          <li><span>Used exclusively in</span> <span>Legendary Rune Crafting</span></li>
+          <li><span>Allows selection of</span> <span>Specific main stat values</span></li>
+          <li><span>Eliminates RNG for</span> <span>Main stat rolls</span></li>
+        </ul>
+      </div>
+
+      <div class="crafting-card">
+        <h3>Priority Usage</h3>
+        <ul class="material-list">
+          <li><span>1st Priority</span> <span class="rarity-legendary">Position 4 runes</span></li>
+          <li><span>2nd Priority</span> <span class="rarity-epic">Position 5 runes</span></li>
+          <li><span>3rd Priority</span> <span class="rarity-rare">Position 6 runes</span></li>
+        </ul>
+        <p><small>Positions 1, 2, 3 have fixed main stats</small></p>
+      </div>
+    </div>
+  </section>
+</ZoneNovaLayout>

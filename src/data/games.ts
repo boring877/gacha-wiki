@@ -23,7 +23,7 @@ export const GAMES: Game[] = [
     url: '/guides/zone-nova/',
     status: 'active',
     sections: ['Characters', 'Memories', 'Rifts', 'Runes', 'Crafting', 'Updates'],
-    lastUpdated: new Date()
+    lastUpdated: new Date(),
   },
   {
     id: 'silver-and-blood',
@@ -34,8 +34,8 @@ export const GAMES: Game[] = [
     url: '/guides/silver-and-blood/',
     status: 'active',
     sections: ['Characters', 'Equipment', 'Stories'],
-    lastUpdated: new Date()
-  }
+    lastUpdated: new Date(),
+  },
 ];
 
 export function getGameById(id: string): Game | undefined {
@@ -52,4 +52,4 @@ export function getActiveGames(): Game[] {
 
 export function getAllGames(): Game[] {
   return GAMES;
-} 
+}

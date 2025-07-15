@@ -6,12 +6,12 @@ export const june17MaintenanceData = {
   title: 'June 17th Maintenance',
   date: 'June 17, 2025',
   type: 'maintenance',
-  
+
   // TL;DR Summary
   tldr: [
-    'June 17th maintenance (14:00-16:00) brings 618 Carnival Special Event with Energy Potion x5, Stamina Refill x15, and Starter Gift Pack. All eligible captains receive 300 Quartz compensation via in-game mail.'
+    'June 17th maintenance (14:00-16:00) brings 618 Carnival Special Event with Energy Potion x5, Stamina Refill x15, and Starter Gift Pack. All eligible captains receive 300 Quartz compensation via in-game mail.',
   ],
-  
+
   // Official Update
   officialUpdate: {
     content: [
@@ -35,23 +35,23 @@ export const june17MaintenanceData = {
       '',
       'Eligibility: Captains who logged in before July 1, 2025, 23:59',
       '',
-      'Distribution: Sent via in-game mail after maintenance'
-    ]
+      'Distribution: Sent via in-game mail after maintenance',
+    ],
   },
-  
+
   // Source Information
   sourceInfo: {
     source: 'Official ZONE NOVA announcement',
     verified: true,
-    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova'
-  }
+    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova',
+  },
 };
 
 // SEO data for June 17th Maintenance
 export const june17MaintenanceSEO = {
   title: `${june17MaintenanceData.title} - Zone Nova - GachaWiki`,
-  description: `June 17th maintenance brings 618 Carnival Special Event with Energy Potion x5, Stamina Refill x15, Starter Gift Pack, and 300 Quartz compensation for Zone Nova.`
+  description: `June 17th maintenance brings 618 Carnival Special Event with Energy Potion x5, Stamina Refill x15, Starter Gift Pack, and 300 Quartz compensation for Zone Nova.`,
 };
 
 // Export default for easy importing
-export default june17MaintenanceData; 
+export default june17MaintenanceData;

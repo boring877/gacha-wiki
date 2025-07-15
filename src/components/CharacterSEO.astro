@@ -1,12 +1,12 @@
 ---
 // Reusable SEO component for character pages
-import { 
-  generateGameKeywords, 
+import {
+  generateGameKeywords,
   generateCharacterStructuredData,
   generateTitle,
   generateDescription,
   getGameConfig,
-  GLOBAL_SEO 
+  GLOBAL_SEO,
 } from '../utils/seo.js';
 
 export interface Props {
@@ -17,13 +17,7 @@ export interface Props {
   additionalKeywords?: string[];
 }
 
-const { 
-  gameKey, 
-  character,
-  customTitle,
-  customDescription,
-  additionalKeywords = []
-} = Astro.props;
+const { gameKey, character, customTitle, customDescription, additionalKeywords = [] } = Astro.props;
 
 const gameConfig = getGameConfig(gameKey);
 
@@ -40,7 +34,7 @@ const characterKeywords = [
   'build guide',
   'tier list',
   'skills',
-  'stats'
+  'stats',
 ].filter(Boolean);
 
 const keywords = generateGameKeywords(gameKey, [...characterKeywords, ...additionalKeywords]);
@@ -62,9 +56,7 @@ const structuredData = generateCharacterStructuredData(gameKey, character);
 <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 
 <!-- Schema.org Structured Data for Character -->
-{structuredData && (
-  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-)}
+{structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
 
 <!-- Character-specific Open Graph tags -->
 <meta property="og:type" content="profile" />

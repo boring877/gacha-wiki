@@ -6,12 +6,12 @@ export const june10UIUpdatesData = {
   title: 'June 10th Maintenance Updates',
   date: 'June 10, 2025',
   type: 'maintenance',
-  
+
   // TL;DR Summary
   tldr: [
-    'June 10th maintenance completed bringing UI improvements, team presets expansion from 5 to 8 teams, enhanced notifications, interface optimizations, performance enhancements, and comprehensive bug fixes across combat, character management, equipment, and connectivity systems.'
+    'June 10th maintenance completed bringing UI improvements, team presets expansion from 5 to 8 teams, enhanced notifications, interface optimizations, performance enhancements, and comprehensive bug fixes across combat, character management, equipment, and connectivity systems.',
   ],
-  
+
   // Official Update
   officialUpdate: {
     content: [
@@ -47,23 +47,23 @@ export const june10UIUpdatesData = {
       '',
       'Audio & Visual: Resolved audio playback issues and visual glitches that could occur during intense battle sequences or rapid screen transitions.',
       '',
-      'Localization: Fixed text display problems and translation inconsistencies across multiple language settings.'
-    ]
+      'Localization: Fixed text display problems and translation inconsistencies across multiple language settings.',
+    ],
   },
-  
+
   // Source Information
   sourceInfo: {
     source: 'Official ZONE NOVA announcement',
     verified: true,
-    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova'
-  }
+    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova',
+  },
 };
 
 // SEO data for June 10th UI Updates
 export const june10UIUpdatesSEO = {
   title: `${june10UIUpdatesData.title} - Zone Nova - GachaWiki`,
-  description: `June 10th maintenance bringing UI improvements, team presets expansion, bug fixes and system optimizations for Zone Nova.`
+  description: `June 10th maintenance bringing UI improvements, team presets expansion, bug fixes and system optimizations for Zone Nova.`,
 };
 
 // Export default for easy importing
-export default june10UIUpdatesData; 
+export default june10UIUpdatesData;

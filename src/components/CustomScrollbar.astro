@@ -4,134 +4,134 @@
 ---
 
 <style>
-/* Premium Custom Scrollbar Design - MAXIMUM SPECIFICITY TO OVERRIDE ALL CSS */
-/* Ultra-high specificity selectors with multiple classes and !important */
+  /* Premium Custom Scrollbar Design - MAXIMUM SPECIFICITY TO OVERRIDE ALL CSS */
+  /* Ultra-high specificity selectors with multiple classes and !important */
 
-/* Webkit browsers (Chrome, Safari, Edge) - HIDDEN SCROLLBAR */
-html.no-js ::-webkit-scrollbar,
-html body ::-webkit-scrollbar,
-body.home-body ::-webkit-scrollbar,
-div.home-content ::-webkit-scrollbar,
-main.main-content ::-webkit-scrollbar,
-html:not(.fake-class) ::-webkit-scrollbar,
-body:not(.fake-class) ::-webkit-scrollbar,
-* ::-webkit-scrollbar,
-*::-webkit-scrollbar,
-html ::-webkit-scrollbar,
-body ::-webkit-scrollbar,
-::-webkit-scrollbar {
-  width: 0px !important;
-  height: 0px !important;
-  background: transparent !important;
-}
-
-html.no-js ::-webkit-scrollbar-track,
-html body ::-webkit-scrollbar-track,
-body.home-body ::-webkit-scrollbar-track,
-div.home-content ::-webkit-scrollbar-track,
-main.main-content ::-webkit-scrollbar-track,
-html:not(.fake-class) ::-webkit-scrollbar-track,
-body:not(.fake-class) ::-webkit-scrollbar-track,
-* ::-webkit-scrollbar-track,
-*::-webkit-scrollbar-track,
-html ::-webkit-scrollbar-track,
-body ::-webkit-scrollbar-track,
-::-webkit-scrollbar-track {
-  display: none !important;
-  background: transparent !important;
-}
-
-html.no-js ::-webkit-scrollbar-thumb,
-html body ::-webkit-scrollbar-thumb,
-body.home-body ::-webkit-scrollbar-thumb,
-div.home-content ::-webkit-scrollbar-thumb,
-main.main-content ::-webkit-scrollbar-thumb,
-html:not(.fake-class) ::-webkit-scrollbar-thumb,
-body:not(.fake-class) ::-webkit-scrollbar-thumb,
-* ::-webkit-scrollbar-thumb,
-*::-webkit-scrollbar-thumb,
-html ::-webkit-scrollbar-thumb,
-body ::-webkit-scrollbar-thumb,
-::-webkit-scrollbar-thumb {
-  display: none !important;
-  background: transparent !important;
-}
-
-html.no-js ::-webkit-scrollbar-thumb:hover,
-html body ::-webkit-scrollbar-thumb:hover,
-body.home-body ::-webkit-scrollbar-thumb:hover,
-div.home-content ::-webkit-scrollbar-thumb:hover,
-main.main-content ::-webkit-scrollbar-thumb:hover,
-html:not(.fake-class) ::-webkit-scrollbar-thumb:hover,
-body:not(.fake-class) ::-webkit-scrollbar-thumb:hover,
-* ::-webkit-scrollbar-thumb:hover,
-*::-webkit-scrollbar-thumb:hover,
-html ::-webkit-scrollbar-thumb:hover,
-body ::-webkit-scrollbar-thumb:hover,
-::-webkit-scrollbar-thumb:hover {
-  display: none !important;
-  background: transparent !important;
-}
-
-html.no-js ::-webkit-scrollbar-corner,
-html body ::-webkit-scrollbar-corner,
-body.home-body ::-webkit-scrollbar-corner,
-div.home-content ::-webkit-scrollbar-corner,
-main.main-content ::-webkit-scrollbar-corner,
-html:not(.fake-class) ::-webkit-scrollbar-corner,
-body:not(.fake-class) ::-webkit-scrollbar-corner,
-* ::-webkit-scrollbar-corner,
-*::-webkit-scrollbar-corner,
-html ::-webkit-scrollbar-corner,
-body ::-webkit-scrollbar-corner,
-::-webkit-scrollbar-corner {
-  display: none !important;
-  background: transparent !important;
-}
-
-/* Firefox scrollbar styling - HIDDEN */
-html.no-js,
-html body,
-body.home-body,
-div.home-content,
-main.main-content,
-html:not(.fake-class),
-body:not(.fake-class),
-*,
-html,
-body {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-}
-
-/* Hide scrollbars on mobile devices */
-@media (max-width: 768px) {
-  /* Hide scrollbar on mobile while keeping functionality */
+  /* Webkit browsers (Chrome, Safari, Edge) - HIDDEN SCROLLBAR */
+  html.no-js ::-webkit-scrollbar,
+  html body ::-webkit-scrollbar,
+  body.home-body ::-webkit-scrollbar,
+  div.home-content ::-webkit-scrollbar,
+  main.main-content ::-webkit-scrollbar,
+  html:not(.fake-class) ::-webkit-scrollbar,
+  body:not(.fake-class) ::-webkit-scrollbar,
   * ::-webkit-scrollbar,
   *::-webkit-scrollbar,
   html ::-webkit-scrollbar,
   body ::-webkit-scrollbar,
   ::-webkit-scrollbar {
     width: 0px !important;
+    height: 0px !important;
     background: transparent !important;
   }
-  
-  /* For Firefox mobile */
-  *,
-  html,
-  body {
-    scrollbar-width: none !important;
-  }
-}
 
-/* Reduced motion accessibility */
-@media (prefers-reduced-motion: reduce) {
+  html.no-js ::-webkit-scrollbar-track,
+  html body ::-webkit-scrollbar-track,
+  body.home-body ::-webkit-scrollbar-track,
+  div.home-content ::-webkit-scrollbar-track,
+  main.main-content ::-webkit-scrollbar-track,
+  html:not(.fake-class) ::-webkit-scrollbar-track,
+  body:not(.fake-class) ::-webkit-scrollbar-track,
+  * ::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-track,
+  html ::-webkit-scrollbar-track,
+  body ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track {
+    display: none !important;
+    background: transparent !important;
+  }
+
+  html.no-js ::-webkit-scrollbar-thumb,
+  html body ::-webkit-scrollbar-thumb,
+  body.home-body ::-webkit-scrollbar-thumb,
+  div.home-content ::-webkit-scrollbar-thumb,
+  main.main-content ::-webkit-scrollbar-thumb,
+  html:not(.fake-class) ::-webkit-scrollbar-thumb,
+  body:not(.fake-class) ::-webkit-scrollbar-thumb,
   * ::-webkit-scrollbar-thumb,
   *::-webkit-scrollbar-thumb,
   html ::-webkit-scrollbar-thumb,
   body ::-webkit-scrollbar-thumb,
   ::-webkit-scrollbar-thumb {
-    transition: none !important;
+    display: none !important;
+    background: transparent !important;
   }
-}
+
+  html.no-js ::-webkit-scrollbar-thumb:hover,
+  html body ::-webkit-scrollbar-thumb:hover,
+  body.home-body ::-webkit-scrollbar-thumb:hover,
+  div.home-content ::-webkit-scrollbar-thumb:hover,
+  main.main-content ::-webkit-scrollbar-thumb:hover,
+  html:not(.fake-class) ::-webkit-scrollbar-thumb:hover,
+  body:not(.fake-class) ::-webkit-scrollbar-thumb:hover,
+  * ::-webkit-scrollbar-thumb:hover,
+  *::-webkit-scrollbar-thumb:hover,
+  html ::-webkit-scrollbar-thumb:hover,
+  body ::-webkit-scrollbar-thumb:hover,
+  ::-webkit-scrollbar-thumb:hover {
+    display: none !important;
+    background: transparent !important;
+  }
+
+  html.no-js ::-webkit-scrollbar-corner,
+  html body ::-webkit-scrollbar-corner,
+  body.home-body ::-webkit-scrollbar-corner,
+  div.home-content ::-webkit-scrollbar-corner,
+  main.main-content ::-webkit-scrollbar-corner,
+  html:not(.fake-class) ::-webkit-scrollbar-corner,
+  body:not(.fake-class) ::-webkit-scrollbar-corner,
+  * ::-webkit-scrollbar-corner,
+  *::-webkit-scrollbar-corner,
+  html ::-webkit-scrollbar-corner,
+  body ::-webkit-scrollbar-corner,
+  ::-webkit-scrollbar-corner {
+    display: none !important;
+    background: transparent !important;
+  }
+
+  /* Firefox scrollbar styling - HIDDEN */
+  html.no-js,
+  html body,
+  body.home-body,
+  div.home-content,
+  main.main-content,
+  html:not(.fake-class),
+  body:not(.fake-class),
+  *,
+  html,
+  body {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  /* Hide scrollbars on mobile devices */
+  @media (max-width: 768px) {
+    /* Hide scrollbar on mobile while keeping functionality */
+    * ::-webkit-scrollbar,
+    *::-webkit-scrollbar,
+    html ::-webkit-scrollbar,
+    body ::-webkit-scrollbar,
+    ::-webkit-scrollbar {
+      width: 0px !important;
+      background: transparent !important;
+    }
+
+    /* For Firefox mobile */
+    *,
+    html,
+    body {
+      scrollbar-width: none !important;
+    }
+  }
+
+  /* Reduced motion accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    * ::-webkit-scrollbar-thumb,
+    *::-webkit-scrollbar-thumb,
+    html ::-webkit-scrollbar-thumb,
+    body ::-webkit-scrollbar-thumb,
+    ::-webkit-scrollbar-thumb {
+      transition: none !important;
+    }
+  }
 </style>

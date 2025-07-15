@@ -12,12 +12,12 @@ import '../styles/global.css';
 import '../styles/typography.css';
 
 export interface Props {
-	title: string;
-	description?: string;
-	gameTitle?: string;
-	gameSlug?: string;
-	heroImage?: string;
-	customStyles?: string[];
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  gameSlug?: string;
+  heroImage?: string;
+  customStyles?: string[];
 }
 
 const { title, description, gameTitle, gameSlug, heroImage, customStyles = [] } = Astro.props;
@@ -30,74 +30,70 @@ if (gameSlug && customStyles.length === 0) {
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description || ""} />
-		
-		<!-- Import custom styles for this game -->
-		{customStyles.map(style => (
-			<style>
-				@import {style};
-			</style>
-		))}
-		
-		<slot name="head" />
-	</head>
-	<body class={`game-body ${gameSlug ? `game-${gameSlug}` : ''}`}>
-		<!-- Background layers for visual depth -->
-		<div class="bg-layer bg-primary"></div>
-		<div class="bg-layer bg-accent-1"></div>
-		<div class="bg-layer bg-accent-2"></div>
-		<div class="bg-layer bg-accent-3"></div>
-		
-		<div class="game-content">
-			<Header />
-			<MobileMenu />
-			
-			<div class="game-container">
-				<main class="game-main">
-					<!-- Hero Section -->
-					{heroImage && gameTitle && (
-						<section class="hero-section">
-							<div class="hero-image-wrapper">
-								<div class="hero-image-container">
-									<OptimizedImage 
-										src={heroImage} 
-										alt={gameTitle} 
-										class="hero-image"
-										loading="eager"
-										decoding="async"
-									/>
-									<div class="hero-overlay"></div>
-								</div>
-							</div>
-							
-							<h1 class="hero-title">
-								{gameTitle}
-							</h1>
-							
-							<DecorativeLines />
-						</section>
-					)}
-					
-					<!-- Title Only Section (when no hero image) -->
-					{!heroImage && gameTitle && (
-						<section class="title-only-section">
-							<h1 class="title-only-heading">
-								{gameTitle}
-							</h1>
-							
-							<DecorativeLines />
-						</section>
-					)}
-					
-					<!-- Content Area -->
-					<div class="content-area">
-						<slot />
-					</div>
-				</main>
-			</div>
-			
-			<Footer />
-		</div>
-	</body>
-</html> 
+  <head>
+    <BaseHead title={title} description={description || ''} />
+
+    <!-- Import custom styles for this game -->
+    {customStyles.map(style => <style set:html={`@import '${style}';`}></style>)}
+
+    <slot name="head" />
+  </head>
+  <body class={`game-body ${gameSlug ? `game-${gameSlug}` : ''}`}>
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="game-content">
+      <Header />
+      <MobileMenu />
+
+      <div class="game-container">
+        <main class="game-main">
+          <!-- Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <OptimizedImage
+                      src={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+
+                <h1 class="hero-title">{gameTitle}</h1>
+
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Title Only Section (when no hero image) -->
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

@@ -8,7 +8,7 @@ In `/src/utils/seo.js`, add your game to the `GAME_SEO_CONFIG`:
 'your-game-key': {
   gameName: 'Your Game Name',
   keywords: ['your game', 'gacha game', 'character guides', 'game wiki', 'RPG', 'specific-keywords'],
-  themeColor: '#yourcolor', // Hex color for mobile theme
+  themeColor: '#yourcolor' // Hex color for mobile theme
   description: 'Complete guide and wiki for Your Game Name',
   genres: ['RPG', 'Gacha', 'Strategy'], // Adjust as needed
   platform: 'Mobile' // or 'PC', 'Console', etc.

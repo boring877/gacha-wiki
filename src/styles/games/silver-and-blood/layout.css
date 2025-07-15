@@ -12,7 +12,7 @@
   --sab-blood: #a64d4d;
   --sab-dark-silver: #808080;
   --sab-light-blood: #c26b6b;
-  
+
   /* Game-specific gradients */
   --sab-gradient: linear-gradient(135deg, var(--sab-silver), var(--sab-blood));
   --sab-accent-gradient: linear-gradient(90deg, var(--sab-dark-silver), var(--sab-light-blood));
@@ -20,11 +20,7 @@
 
 /* Game body styling */
 .game-silver-and-blood {
-  background: linear-gradient(
-    135deg,
-    rgba(192, 192, 192, 0.1) 0%,
-    rgba(139, 0, 0, 0.1) 100%
-  );
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.1) 0%, rgba(139, 0, 0, 0.1) 100%);
 }
 
 /* Hero section customization */
@@ -47,11 +43,7 @@
 /* Guide cards for Silver and Blood */
 .game-silver-and-blood .guide-card {
   border-color: var(--sab-silver);
-  background: linear-gradient(
-    135deg,
-    rgba(192, 192, 192, 0.05) 0%,
-    rgba(139, 0, 0, 0.05) 100%
-  );
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.05) 0%, rgba(139, 0, 0, 0.05) 100%);
 }
 
 .game-silver-and-blood .guide-card:hover {
@@ -67,11 +59,7 @@
 
 /* Coming soon styling */
 .game-silver-and-blood .coming-soon-notice {
-  background: linear-gradient(
-    135deg,
-    rgba(192, 192, 192, 0.1),
-    rgba(139, 0, 0, 0.1)
-  );
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(139, 0, 0, 0.1));
   border-color: var(--sab-silver);
 }
 
@@ -84,4 +72,4 @@
   .game-silver-and-blood .content-section {
     border-left-width: 2px;
   }
-} 
+}

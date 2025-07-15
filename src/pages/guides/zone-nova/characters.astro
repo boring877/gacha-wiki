@@ -3,353 +3,650 @@
 import ZoneNovaLayout from '../../../layouts/zone-nova/Layout.astro';
 
 // Import character data and utilities
-import { 
-  ZONE_NOVA_CHARACTERS, 
-  CHARACTER_METADATA 
-} from '../../../data/zone-nova/characters.js';
+import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nova/characters.js';
 ---
 
-<ZoneNovaLayout 
-	title="Zone Nova Character Database - GachaWiki" 
-	description="Sortable and filterable character database for Zone Nova"
-	gameTitle="Character Database"
-	
-	
+<ZoneNovaLayout
+  title="Zone Nova Character Database - GachaWiki"
+  description="Sortable and filterable character database for Zone Nova"
+  gameTitle="Character Database"
 >
-	<Fragment slot="head">
-		{/* Import styles and add mobile card improvements */}
-		<link rel="preload" as="image" href="/images/games/zone-nova/characters/Afrodite.jpg" />
-		<style>
-    /* Layout and filter bar */
-    .page-flex { display: flex; gap: 2.5rem; }
-    .main-content-container { width: 100%; display: flex; justify-content: center; padding: 0 2rem; }
-    .content-wrapper { max-width: 1200px; width: 100%; margin: 0 auto; }
-    .filter-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 2rem auto 1.5rem auto; flex-wrap: wrap; padding: 0 1rem; }
-    .filter-controls, .sort-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-    .filter-select, .sort-btn { padding: 0.4rem 0.7rem; background: var(--bg-primary); color: var(--text-secondary); border-radius: 8px; border: 1px solid var(--mocha-mousse); font-size: 0.8rem; cursor: pointer; }
-    .filter-select:hover, .sort-btn:hover { background: var(--bg-secondary); color: var(--text-primary); border-color: var(--amber-glow); }
-    .sort-btn.active { background: var(--amber-glow); color: white; }
-    
-    /* Reset button unique styling */
-    .reset-btn { 
-      padding: 0.5rem 1rem; 
-      background: linear-gradient(135deg, var(--rose-quartz), #e91e63); 
-      color: white; 
-      border-radius: 10px; 
-      border: 2px solid var(--rose-quartz); 
-      font-size: 0.85rem; 
-      font-weight: 600; 
-      cursor: pointer; 
-      box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .reset-btn:hover { 
-      background: linear-gradient(135deg, #d81b60, var(--rose-quartz)); 
-      transform: translateY(-1px); 
-      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
-      border-color: #d81b60;
-    }
-    .reset-btn:active {
-      transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(233, 30, 99, 0.3);
-    }
-    /* Table styles */
-    .character-table-container { overflow-x: auto; margin: 1.5rem auto; padding: 0 1rem; }
-    table.character-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--bg-primary); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); font-family: 'Space Grotesk', sans-serif; }
-    table.character-table th, table.character-table td { padding: 0.8rem 0.4rem; text-align: center; border-bottom: 1px solid var(--neutral-200); }
-    table.character-table th { background: var(--amber-glow); color: #222; font-weight: 700; font-size: 0.9rem; position: sticky; top: 0; z-index: 2; }
-    .character-img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; border: 1px solid var(--amber-glow); }
-    .rarity-badge, .element-badge, .role-badge { padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; }
-    .rarity-badge.ssr { background: #ffe066; color: #222; }
-    .rarity-badge.sr { background: #7ecfff; color: #222; }
-    .element-badge.fire { background: #ff6b6b; color: #fff; }
-    .element-badge.ice { background: #4dbfff; color: #fff; }
-    .element-badge.wind { background: #4dffb8; color: #222; }
-    .element-badge.holy { background: #ffe066; color: #222; }
-    .element-badge.chaos { background: #b266ff; color: #fff; }
-    .role-badge.tank { background: #b0b0b0; color: #222; }
-    .role-badge.dps { background: #ffb347; color: #222; }
-    .role-badge.buffer { background: #7ecfff; color: #222; }
-    .role-badge.debuffer { background: #b266ff; color: #fff; }
-    .role-badge.healer { background: #a3ffb7; color: #222; }
-    /* Mobile card styles */
-    .mobile-character-card { background: var(--bg-primary, #232323); border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.10); padding: 1.2rem 1rem 1rem 1rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; border: 1px solid var(--amber-glow, #ffe066); }
-    .mobile-card-header { display: flex; align-items: center; gap: 1rem; }
-    .mobile-character-card img { width: 64px; height: 64px; border-radius: 10px; border: 2px solid var(--amber-glow, #ffe066); background: #fff; margin-bottom: 0; }
-    .mobile-card-title-group { display: flex; flex-direction: column; gap: 0.2rem; }
-    .mobile-character-card h3 { margin: 0 0 0.1rem 0; font-size: 1.25rem; color: var(--amber-glow, #ffe066); font-weight: 700; letter-spacing: 0.5px; }
-    .mobile-card-badges { display: flex; gap: 0.4rem; margin-top: 0.1rem; }
-    .mobile-character-card .rarity-badge, .mobile-character-card .element-badge, .mobile-character-card .role-badge { font-size: 0.95em; padding: 0.18em 0.7em; border-radius: 8px; font-weight: 600; display: inline-block; margin: 0; }
-    .mobile-card-stats, .mobile-card-stats-secondary { display: flex; gap: 1.2rem; margin-top: 0.5rem; font-size: 1.05em; color: var(--text-secondary, #e0e0e0); font-weight: 500; }
-    .mobile-card-stats-secondary { margin-top: 0.2rem; font-size: 0.98em; }
-    .mobile-card-stats .stat-label, .mobile-card-stats-secondary .stat-label { color: var(--amber-glow, #ffe066); font-weight: 700; margin-right: 0.2em; }    /* Desktop: show table, hide mobile cards */
-    .character-table-container { display: block; }
-    .mobile-card-view { display: none; }
-    
-    /* Mobile: show cards, hide table */
-    @media (max-width: 768px) {
-      .character-table-container { display: none !important; }
-      .mobile-card-view { display: block !important; }
-      .filter-bar { flex-direction: column; gap: 0.8rem; }
-      .filter-controls, .sort-controls { width: 100%; justify-content: center; }
-    }
-		</style>
-	</Fragment>
-	
-	<section class="page-flex">
-		<div class="main-content-container">
-			<div class="content-wrapper">
-				<div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 12px; border: 1px solid var(--amber-glow);">
-					<p style="color: var(--amber-glow); margin: 0; font-size: 1rem; font-weight: 600;">Character Database</p>
-					<p style="color: var(--text-secondary); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;">All stats shown at max level</p>
-					<div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;">
-						<a href="/guides/zone-nova/character-comparison/" style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--amber-glow), #FF9800); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3); transition: all 0.3s ease;">
-							🔍 Compare Character Stats
-						</a>
-						<a href="/guides/zone-nova/character-rankings/" style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #64b5f6, #42a5f5); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(100, 181, 246, 0.3); transition: all 0.3s ease;">
-							🏆 Character Rankings
-						</a>
-					</div>
-				</div>
-				{/* <!-- Filter Bar --> */}
-				<div class="filter-bar">
-					<div class="filter-controls">
-						<select class="filter-select" id="element-filter">
-							<option value="">Element</option>
-							{CHARACTER_METADATA.elements.map(element => (
-                <option value={element}>{element}</option>
-              ))}
-						</select>
-						<select class="filter-select" id="rarity-filter">
-							<option value="">Rarity</option>
-							{CHARACTER_METADATA.rarities.map(rarity => (
-                <option value={rarity}>{rarity}</option>
-              ))}
-						</select>
-						<select class="filter-select" id="role-filter">
-							<option value="">Role</option>
-							{CHARACTER_METADATA.roles.map(role => (
-                <option value={role}>{role}</option>
-              ))}
-						</select>
-					</div>
-					<div class="sort-controls">
-						<button class="sort-btn active" data-sort="hp">HP</button>
-						<button class="sort-btn" data-sort="attack">ATK</button>
-						<button class="sort-btn" data-sort="defense">DEF</button>
-						<button class="sort-btn" data-sort="energyRecovery">Energy</button>
-						<button class="sort-btn" data-sort="critRate">Crit%</button>
-						<button class="sort-btn" data-sort="critDmg">CritDMG</button>
-						<button class="reset-btn" id="reset-table">Reset</button>
-					</div>
-				</div>
-				
-				{/* <!-- Desktop table view --> */}
-				<div class="character-table-container">
-					<table class="character-table">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Image</th>
-								<th>Name</th>
-								<th>Rarity</th>
-								<th>Element</th>
-								<th>Role</th>
-								<th>HP</th>
-								<th>Attack</th>
-								<th>Defense</th>
-								<th>Energy Recovery</th>
-								<th>Crit Rate %</th>
-								<th>Crit DMG %</th>
-							</tr>
-						</thead>
-						<tbody id="character-table-body">
-							{ZONE_NOVA_CHARACTERS.map((char, idx) => (
-                <tr data-character-id={char.id} data-slug={char.slug} data-url={char.detailUrl} style="cursor:pointer;">
-                  <td>{idx + 1}</td>
-                  <td><img src={char.image} alt={char.name} class="character-img" loading="lazy"/></td>
-                  <td>{char.name}</td>
-                  <td><span class={`rarity-badge ${char.rarity.toLowerCase()}`} data-sort-key="rarity">{char.rarity}</span></td>
-                  <td><span class={`element-badge ${char.element.toLowerCase()}`} data-sort-key="element">{char.element}</span></td>
-                  <td><span class={`role-badge ${char.role.toLowerCase()}`} data-sort-key="role">{char.role}</span></td>
-                  <td data-sort-key="hp">{char.stats.hp}</td>
-                  <td data-sort-key="attack">{char.stats.attack}</td>
-                  <td data-sort-key="defense">{char.stats.defense}</td>
-                  <td data-sort-key="energyRecovery">{char.stats.energyRecovery}</td>
-                  <td data-sort-key="critRate">{char.stats.critRate}</td>
-                  <td data-sort-key="critDmg">{char.stats.critDmg}</td>
-                </tr>
-              ))}
-						</tbody>
-					</table>
-				</div>
-				
-				{/* <!-- Mobile card view container --> */}
-				<div class="mobile-card-view" id="mobile-cards-container">
-					{ZONE_NOVA_CHARACTERS.map(char => (
-            <div class="mobile-character-card" data-character-id={char.id} data-slug={char.slug} data-url={char.detailUrl} style="cursor:pointer;">
-              <div class="mobile-card-header">
-                <img src={char.image} alt={char.name} class="character-img"/>
-                <div class="mobile-card-title-group">
-                  <h3>{char.name}</h3>
-                  <div class="mobile-card-badges">
-                    <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
-                    <span class={`element-badge ${char.element.toLowerCase()}`}>{char.element}</span>
-                    <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
+  <Fragment slot="head">
+    {/* Import styles and add mobile card improvements */}
+    <link rel="preload" as="image" href="/images/games/zone-nova/characters/Afrodite.jpg" />
+    <style>
+      /* Layout and filter bar */
+      .page-flex {
+        display: flex;
+        gap: 2.5rem;
+      }
+      .main-content-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0 2rem;
+      }
+      .content-wrapper {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .filter-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem auto 1.5rem auto;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+      }
+      .filter-controls,
+      .sort-controls {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .filter-select,
+      .sort-btn {
+        padding: 0.4rem 0.7rem;
+        background: var(--bg-primary);
+        color: var(--text-secondary);
+        border-radius: 8px;
+        border: 1px solid var(--mocha-mousse);
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+      .filter-select:hover,
+      .sort-btn:hover {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        border-color: var(--amber-glow);
+      }
+      .sort-btn.active {
+        background: var(--amber-glow);
+        color: white;
+      }
+
+      /* Reset button unique styling */
+      .reset-btn {
+        padding: 0.5rem 1rem;
+        background: linear-gradient(135deg, var(--rose-quartz), #e91e63);
+        color: white;
+        border-radius: 10px;
+        border: 2px solid var(--rose-quartz);
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .reset-btn:hover {
+        background: linear-gradient(135deg, #d81b60, var(--rose-quartz));
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+        border-color: #d81b60;
+      }
+      .reset-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(233, 30, 99, 0.3);
+      }
+      /* Table styles */
+      .character-table-container {
+        overflow-x: auto;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+      }
+      table.character-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: var(--bg-primary);
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      table.character-table th,
+      table.character-table td {
+        padding: 0.8rem 0.4rem;
+        text-align: center;
+        border-bottom: 1px solid var(--neutral-200);
+      }
+      table.character-table th {
+        background: var(--amber-glow);
+        color: #222;
+        font-weight: 700;
+        font-size: 0.9rem;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+      .character-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        object-fit: cover;
+        border: 1px solid var(--amber-glow);
+      }
+      .rarity-badge,
+      .element-badge,
+      .role-badge {
+        padding: 0.2rem 0.6rem;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      .rarity-badge.ssr {
+        background: #ffe066;
+        color: #222;
+      }
+      .rarity-badge.sr {
+        background: #7ecfff;
+        color: #222;
+      }
+      .element-badge.fire {
+        background: #ff6b6b;
+        color: #fff;
+      }
+      .element-badge.ice {
+        background: #4dbfff;
+        color: #fff;
+      }
+      .element-badge.wind {
+        background: #4dffb8;
+        color: #222;
+      }
+      .element-badge.holy {
+        background: #ffe066;
+        color: #222;
+      }
+      .element-badge.chaos {
+        background: #b266ff;
+        color: #fff;
+      }
+      .role-badge.tank {
+        background: #b0b0b0;
+        color: #222;
+      }
+      .role-badge.dps {
+        background: #ffb347;
+        color: #222;
+      }
+      .role-badge.buffer {
+        background: #7ecfff;
+        color: #222;
+      }
+      .role-badge.debuffer {
+        background: #b266ff;
+        color: #fff;
+      }
+      .role-badge.healer {
+        background: #a3ffb7;
+        color: #222;
+      }
+      /* Mobile card styles */
+      .mobile-character-card {
+        background: var(--bg-primary, #232323);
+        border-radius: 14px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        padding: 1.2rem 1rem 1rem 1rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        border: 1px solid var(--amber-glow, #ffe066);
+      }
+      .mobile-card-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .mobile-character-card img {
+        width: 64px;
+        height: 64px;
+        border-radius: 10px;
+        border: 2px solid var(--amber-glow, #ffe066);
+        background: #fff;
+        margin-bottom: 0;
+      }
+      .mobile-card-title-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      .mobile-character-card h3 {
+        margin: 0 0 0.1rem 0;
+        font-size: 1.25rem;
+        color: var(--amber-glow, #ffe066);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      .mobile-card-badges {
+        display: flex;
+        gap: 0.4rem;
+        margin-top: 0.1rem;
+      }
+      .mobile-character-card .rarity-badge,
+      .mobile-character-card .element-badge,
+      .mobile-character-card .role-badge {
+        font-size: 0.95em;
+        padding: 0.18em 0.7em;
+        border-radius: 8px;
+        font-weight: 600;
+        display: inline-block;
+        margin: 0;
+      }
+      .mobile-card-stats,
+      .mobile-card-stats-secondary {
+        display: flex;
+        gap: 1.2rem;
+        margin-top: 0.5rem;
+        font-size: 1.05em;
+        color: var(--text-secondary, #e0e0e0);
+        font-weight: 500;
+      }
+      .mobile-card-stats-secondary {
+        margin-top: 0.2rem;
+        font-size: 0.98em;
+      }
+      .mobile-card-stats .stat-label,
+      .mobile-card-stats-secondary .stat-label {
+        color: var(--amber-glow, #ffe066);
+        font-weight: 700;
+        margin-right: 0.2em;
+      } /* Desktop: show table, hide mobile cards */
+      .character-table-container {
+        display: block;
+      }
+      .mobile-card-view {
+        display: none;
+      }
+
+      /* Mobile: show cards, hide table */
+      @media (max-width: 768px) {
+        .character-table-container {
+          display: none !important;
+        }
+        .mobile-card-view {
+          display: block !important;
+        }
+        .filter-bar {
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+        .filter-controls,
+        .sort-controls {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </Fragment>
+
+  <section class="page-flex">
+    <div class="main-content-container">
+      <div class="content-wrapper">
+        <div
+          style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 12px; border: 1px solid var(--amber-glow);"
+        >
+          <p style="color: var(--amber-glow); margin: 0; font-size: 1rem; font-weight: 600;">
+            Character Database
+          </p>
+          <p
+            style="color: var(--text-secondary); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;"
+          >
+            All stats shown at max level
+          </p>
+          <div
+            style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"
+          >
+            <a
+              href="/guides/zone-nova/character-comparison/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--amber-glow), #FF9800); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3); transition: all 0.3s ease;"
+            >
+              🔍 Compare Character Stats
+            </a>
+            <a
+              href="/guides/zone-nova/character-rankings/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #64b5f6, #42a5f5); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(100, 181, 246, 0.3); transition: all 0.3s ease;"
+            >
+              🏆 Character Rankings
+            </a>
+          </div>
+        </div>
+        {/* <!-- Filter Bar --> */}
+        <div class="filter-bar">
+          <div class="filter-controls">
+            <select class="filter-select" id="element-filter">
+              <option value="">Element</option>
+              {
+                CHARACTER_METADATA.elements.map(element => (
+                  <option value={element}>{element}</option>
+                ))
+              }
+            </select>
+            <select class="filter-select" id="rarity-filter">
+              <option value="">Rarity</option>
+              {CHARACTER_METADATA.rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
+            </select>
+            <select class="filter-select" id="role-filter">
+              <option value="">Role</option>
+              {CHARACTER_METADATA.roles.map(role => <option value={role}>{role}</option>)}
+            </select>
+          </div>
+          <div class="sort-controls">
+            <button class="sort-btn active" data-sort="hp">HP</button>
+            <button class="sort-btn" data-sort="attack">ATK</button>
+            <button class="sort-btn" data-sort="defense">DEF</button>
+            <button class="sort-btn" data-sort="energyRecovery">Energy</button>
+            <button class="sort-btn" data-sort="critRate">Crit%</button>
+            <button class="sort-btn" data-sort="critDmg">CritDMG</button>
+            <button class="reset-btn" id="reset-table">Reset</button>
+          </div>
+        </div>
+
+        {/* <!-- Desktop table view --> */}
+        <div class="character-table-container">
+          <table class="character-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Rarity</th>
+                <th>Element</th>
+                <th>Role</th>
+                <th>HP</th>
+                <th>Attack</th>
+                <th>Defense</th>
+                <th>Energy Recovery</th>
+                <th>Crit Rate %</th>
+                <th>Crit DMG %</th>
+              </tr>
+            </thead>
+            <tbody id="character-table-body">
+              {
+                ZONE_NOVA_CHARACTERS.map((char, idx) => (
+                  <tr
+                    data-character-id={char.id}
+                    data-slug={char.slug}
+                    data-url={char.detailUrl}
+                    style="cursor:pointer;"
+                  >
+                    <td>{idx + 1}</td>
+                    <td>
+                      <img src={char.image} alt={char.name} class="character-img" loading="lazy" />
+                    </td>
+                    <td>{char.name}</td>
+                    <td>
+                      <span
+                        class={`rarity-badge ${char.rarity.toLowerCase()}`}
+                        data-sort-key="rarity"
+                      >
+                        {char.rarity}
+                      </span>
+                    </td>
+                    <td>
+                      <span
+                        class={`element-badge ${char.element.toLowerCase()}`}
+                        data-sort-key="element"
+                      >
+                        {char.element}
+                      </span>
+                    </td>
+                    <td>
+                      <span class={`role-badge ${char.role.toLowerCase()}`} data-sort-key="role">
+                        {char.role}
+                      </span>
+                    </td>
+                    <td data-sort-key="hp">{char.stats.hp}</td>
+                    <td data-sort-key="attack">{char.stats.attack}</td>
+                    <td data-sort-key="defense">{char.stats.defense}</td>
+                    <td data-sort-key="energyRecovery">{char.stats.energyRecovery}</td>
+                    <td data-sort-key="critRate">{char.stats.critRate}</td>
+                    <td data-sort-key="critDmg">{char.stats.critDmg}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+
+        {/* <!-- Mobile card view container --> */}
+        <div class="mobile-card-view" id="mobile-cards-container">
+          {
+            ZONE_NOVA_CHARACTERS.map(char => (
+              <div
+                class="mobile-character-card"
+                data-character-id={char.id}
+                data-slug={char.slug}
+                data-url={char.detailUrl}
+                style="cursor:pointer;"
+              >
+                <div class="mobile-card-header">
+                  <img src={char.image} alt={char.name} class="character-img" />
+                  <div class="mobile-card-title-group">
+                    <h3>{char.name}</h3>
+                    <div class="mobile-card-badges">
+                      <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+                      <span class={`element-badge ${char.element.toLowerCase()}`}>
+                        {char.element}
+                      </span>
+                      <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mobile-card-stats">
+                  <div>
+                    <span class="stat-label">HP:</span> {char.stats.hp.toLocaleString()}
+                  </div>
+                  <div>
+                    <span class="stat-label">ATK:</span> {char.stats.attack.toLocaleString()}
+                  </div>
+                  <div>
+                    <span class="stat-label">DEF:</span> {char.stats.defense.toLocaleString()}
+                  </div>
+                </div>
+                <div class="mobile-card-stats mobile-card-stats-secondary">
+                  <div>
+                    <span class="stat-label">Energy:</span> {char.stats.energyRecovery}
+                  </div>
+                  <div>
+                    <span class="stat-label">Crit%:</span> {char.stats.critRate}
+                  </div>
+                  <div>
+                    <span class="stat-label">CritDMG:</span> {char.stats.critDmg}
                   </div>
                 </div>
               </div>
-              <div class="mobile-card-stats">
-                <div><span class="stat-label">HP:</span> {char.stats.hp.toLocaleString()}</div>
-                <div><span class="stat-label">ATK:</span> {char.stats.attack.toLocaleString()}</div>
-                <div><span class="stat-label">DEF:</span> {char.stats.defense.toLocaleString()}</div>
-              </div>
-              <div class="mobile-card-stats mobile-card-stats-secondary">
-                <div><span class="stat-label">Energy:</span> {char.stats.energyRecovery}</div>
-                <div><span class="stat-label">Crit%:</span> {char.stats.critRate}</div>
-                <div><span class="stat-label">CritDMG:</span> {char.stats.critDmg}</div>
-              </div>
-            </div>
-          ))}
-				</div>
-			</div>
-		</div>
-	</section>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
 
-	{/* <!-- Pass character data to client-side JavaScript --> */}
-	<script is:inline>
-  // Handles filtering, sorting, and row numbering for both table and mobile cards
-  document.addEventListener('DOMContentLoaded', () => {
-    // --- DOM references ---
-    const tableBody = document.getElementById('character-table-body');
-    const mobileCardsContainer = document.getElementById('mobile-cards-container');
-    const elementFilter = document.getElementById('element-filter');
-    const rarityFilter = document.getElementById('rarity-filter');
-    const roleFilter = document.getElementById('role-filter');
-    const sortButtons = document.querySelectorAll('.sort-btn');
-    const resetButton = document.getElementById('reset-table');
-    // --- State ---
-    let currentSortKey = 'hp';
-    let currentSortDirection = 'asc';
-    const originalRows = Array.from(tableBody.children);
-    const originalCards = Array.from(mobileCardsContainer.children);
-    if (!tableBody || !mobileCardsContainer || !elementFilter || !rarityFilter || !roleFilter || !resetButton) {
-      console.error('Character table or filter elements not found!');
-      return;
-    }
-    // --- Helpers ---
-    function renumberRows() {
-      let visibleIndex = 1;
-      Array.from(tableBody.children).forEach(row => {
-        if (row.style.display !== 'none') {
-          row.querySelector('td').textContent = visibleIndex++;
-        }
-      });
-    }
-    // --- Filtering ---
-    function filterRows() {
-      const element = elementFilter.value;
-      const rarity = rarityFilter.value;
-      const role = roleFilter.value;
-      Array.from(tableBody.children).forEach(row => {
-        const matches = (!element || row.querySelector('.element-badge').textContent === element)
-          && (!rarity || row.querySelector('.rarity-badge').textContent === rarity)
-          && (!role || row.querySelector('.role-badge').textContent === role);
-        row.style.display = matches ? '' : 'none';
-      });
-      Array.from(mobileCardsContainer.children).forEach(card => {
-        const matches = (!element || card.querySelector('.element-badge').textContent === element)
-          && (!rarity || card.querySelector('.rarity-badge').textContent === rarity)
-          && (!role || card.querySelector('.role-badge').textContent === role);
-        card.style.display = matches ? '' : 'none';
-      });
-      renumberRows();
-    }
-    // --- Sorting ---
-    function sortRows(sortKey) {
-      if (currentSortKey === sortKey) {
-        currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
-      } else {
-        currentSortKey = sortKey;
-        currentSortDirection = 'asc';
+  {/* <!-- Pass character data to client-side JavaScript --> */}
+  <script is:inline>
+    // Handles filtering, sorting, and row numbering for both table and mobile cards
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- DOM references ---
+      const tableBody = document.getElementById('character-table-body');
+      const mobileCardsContainer = document.getElementById('mobile-cards-container');
+      const elementFilter = document.getElementById('element-filter');
+      const rarityFilter = document.getElementById('rarity-filter');
+      const roleFilter = document.getElementById('role-filter');
+      const sortButtons = document.querySelectorAll('.sort-btn');
+      const resetButton = document.getElementById('reset-table');
+      // --- State ---
+      let currentSortKey = 'hp';
+      let currentSortDirection = 'asc';
+      const originalRows = Array.from(tableBody.children);
+      const originalCards = Array.from(mobileCardsContainer.children);
+      if (
+        !tableBody ||
+        !mobileCardsContainer ||
+        !elementFilter ||
+        !rarityFilter ||
+        !roleFilter ||
+        !resetButton
+      ) {
+        console.error('Character table or filter elements not found!');
+        return;
       }
-      sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));
-      const activeBtn = Array.from(sortButtons).find(btn => btn.dataset.sort === sortKey);
-      if (activeBtn) {
-        activeBtn.classList.add('active', currentSortDirection);
+      // --- Helpers ---
+      function renumberRows() {
+        let visibleIndex = 1;
+        Array.from(tableBody.children).forEach(row => {
+          if (row.style.display !== 'none') {
+            row.querySelector('td').textContent = visibleIndex++;
+          }
+        });
       }
-      // Table rows
-      const rows = Array.from(tableBody.children).filter(row => row.style.display !== 'none');
-      rows.sort((a, b) => {
-        let valA = a.querySelector(`[data-sort-key="${sortKey}"]`)?.textContent || '';
-        let valB = b.querySelector(`[data-sort-key="${sortKey}"]`)?.textContent || '';
-        valA = isNaN(Number(valA)) ? valA : Number(valA);
-        valB = isNaN(Number(valB)) ? valB : Number(valB);
-        if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
-        if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
-        return 0;
-      });
-      rows.forEach(row => tableBody.appendChild(row));
-      // Mobile cards
-      const cards = Array.from(mobileCardsContainer.children).filter(card => card.style.display !== 'none');
-      cards.sort((a, b) => {
-        let valA = '';
-        let valB = '';
-        if (sortKey === 'hp') {
-          valA = a.querySelector('.mobile-card-stats div:nth-child(1)')?.textContent.replace(/\D/g, '') || '';
-          valB = b.querySelector('.mobile-card-stats div:nth-child(1)')?.textContent.replace(/\D/g, '') || '';
-        } else if (sortKey === 'attack') {
-          valA = a.querySelector('.mobile-card-stats div:nth-child(2)')?.textContent.replace(/\D/g, '') || '';
-          valB = b.querySelector('.mobile-card-stats div:nth-child(2)')?.textContent.replace(/\D/g, '') || '';
-        } else if (sortKey === 'defense') {
-          valA = a.querySelector('.mobile-card-stats div:nth-child(3)')?.textContent.replace(/\D/g, '') || '';
-          valB = b.querySelector('.mobile-card-stats div:nth-child(3)')?.textContent.replace(/\D/g, '') || '';
-        } else if (sortKey === 'energyRecovery') {
-          valA = a.querySelector('.mobile-card-stats-secondary div:nth-child(1)')?.textContent.replace(/[^\d.]/g, '') || '';
-          valB = b.querySelector('.mobile-card-stats-secondary div:nth-child(1)')?.textContent.replace(/[^\d.]/g, '') || '';
-        } else if (sortKey === 'critRate') {
-          valA = a.querySelector('.mobile-card-stats-secondary div:nth-child(2)')?.textContent.replace(/[^\d.]/g, '') || '';
-          valB = b.querySelector('.mobile-card-stats-secondary div:nth-child(2)')?.textContent.replace(/[^\d.]/g, '') || '';
-        } else if (sortKey === 'critDmg') {
-          valA = a.querySelector('.mobile-card-stats-secondary div:nth-child(3)')?.textContent.replace(/[^\d.]/g, '') || '';
-          valB = b.querySelector('.mobile-card-stats-secondary div:nth-child(3)')?.textContent.replace(/[^\d.]/g, '') || '';
-        } else if (sortKey === 'name') {
-          valA = a.querySelector('h3')?.textContent || '';
-          valB = b.querySelector('h3')?.textContent || '';
+      // --- Filtering ---
+      function filterRows() {
+        const element = elementFilter.value;
+        const rarity = rarityFilter.value;
+        const role = roleFilter.value;
+        Array.from(tableBody.children).forEach(row => {
+          const matches =
+            (!element || row.querySelector('.element-badge').textContent === element) &&
+            (!rarity || row.querySelector('.rarity-badge').textContent === rarity) &&
+            (!role || row.querySelector('.role-badge').textContent === role);
+          row.style.display = matches ? '' : 'none';
+        });
+        Array.from(mobileCardsContainer.children).forEach(card => {
+          const matches =
+            (!element || card.querySelector('.element-badge').textContent === element) &&
+            (!rarity || card.querySelector('.rarity-badge').textContent === rarity) &&
+            (!role || card.querySelector('.role-badge').textContent === role);
+          card.style.display = matches ? '' : 'none';
+        });
+        renumberRows();
+      }
+      // --- Sorting ---
+      function sortRows(sortKey) {
+        if (currentSortKey === sortKey) {
+          currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
         } else {
-          valA = a.querySelector(`.${sortKey}-badge`)?.textContent || '';
-          valB = b.querySelector(`.${sortKey}-badge`)?.textContent || '';
+          currentSortKey = sortKey;
+          currentSortDirection = 'asc';
         }
-        valA = isNaN(Number(valA)) ? valA : Number(valA);
-        valB = isNaN(Number(valB)) ? valB : Number(valB);
-        if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
-        if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
-        return 0;
+        sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));
+        const activeBtn = Array.from(sortButtons).find(btn => btn.dataset.sort === sortKey);
+        if (activeBtn) {
+          activeBtn.classList.add('active', currentSortDirection);
+        }
+        // Table rows
+        const rows = Array.from(tableBody.children).filter(row => row.style.display !== 'none');
+        rows.sort((a, b) => {
+          let valA = a.querySelector(`[data-sort-key="${sortKey}"]`)?.textContent || '';
+          let valB = b.querySelector(`[data-sort-key="${sortKey}"]`)?.textContent || '';
+          valA = isNaN(Number(valA)) ? valA : Number(valA);
+          valB = isNaN(Number(valB)) ? valB : Number(valB);
+          if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
+          if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
+          return 0;
+        });
+        rows.forEach(row => tableBody.appendChild(row));
+        // Mobile cards
+        const cards = Array.from(mobileCardsContainer.children).filter(
+          card => card.style.display !== 'none'
+        );
+        cards.sort((a, b) => {
+          let valA = '';
+          let valB = '';
+          if (sortKey === 'hp') {
+            valA =
+              a
+                .querySelector('.mobile-card-stats div:nth-child(1)')
+                ?.textContent.replace(/\D/g, '') || '';
+            valB =
+              b
+                .querySelector('.mobile-card-stats div:nth-child(1)')
+                ?.textContent.replace(/\D/g, '') || '';
+          } else if (sortKey === 'attack') {
+            valA =
+              a
+                .querySelector('.mobile-card-stats div:nth-child(2)')
+                ?.textContent.replace(/\D/g, '') || '';
+            valB =
+              b
+                .querySelector('.mobile-card-stats div:nth-child(2)')
+                ?.textContent.replace(/\D/g, '') || '';
+          } else if (sortKey === 'defense') {
+            valA =
+              a
+                .querySelector('.mobile-card-stats div:nth-child(3)')
+                ?.textContent.replace(/\D/g, '') || '';
+            valB =
+              b
+                .querySelector('.mobile-card-stats div:nth-child(3)')
+                ?.textContent.replace(/\D/g, '') || '';
+          } else if (sortKey === 'energyRecovery') {
+            valA =
+              a
+                .querySelector('.mobile-card-stats-secondary div:nth-child(1)')
+                ?.textContent.replace(/[^\d.]/g, '') || '';
+            valB =
+              b
+                .querySelector('.mobile-card-stats-secondary div:nth-child(1)')
+                ?.textContent.replace(/[^\d.]/g, '') || '';
+          } else if (sortKey === 'critRate') {
+            valA =
+              a
+                .querySelector('.mobile-card-stats-secondary div:nth-child(2)')
+                ?.textContent.replace(/[^\d.]/g, '') || '';
+            valB =
+              b
+                .querySelector('.mobile-card-stats-secondary div:nth-child(2)')
+                ?.textContent.replace(/[^\d.]/g, '') || '';
+          } else if (sortKey === 'critDmg') {
+            valA =
+              a
+                .querySelector('.mobile-card-stats-secondary div:nth-child(3)')
+                ?.textContent.replace(/[^\d.]/g, '') || '';
+            valB =
+              b
+                .querySelector('.mobile-card-stats-secondary div:nth-child(3)')
+                ?.textContent.replace(/[^\d.]/g, '') || '';
+          } else if (sortKey === 'name') {
+            valA = a.querySelector('h3')?.textContent || '';
+            valB = b.querySelector('h3')?.textContent || '';
+          } else {
+            valA = a.querySelector(`.${sortKey}-badge`)?.textContent || '';
+            valB = b.querySelector(`.${sortKey}-badge`)?.textContent || '';
+          }
+          valA = isNaN(Number(valA)) ? valA : Number(valA);
+          valB = isNaN(Number(valB)) ? valB : Number(valB);
+          if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
+          if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
+          return 0;
+        });
+        cards.forEach(card => mobileCardsContainer.appendChild(card));
+        renumberRows();
+      }
+      // --- Event listeners ---
+      elementFilter.addEventListener('change', () => {
+        filterRows();
+        if (currentSortKey) sortRows(currentSortKey);
       });
-      cards.forEach(card => mobileCardsContainer.appendChild(card));
-      renumberRows();
-    }
-    // --- Event listeners ---
-    elementFilter.addEventListener('change', () => {
-      filterRows();
-      if (currentSortKey) sortRows(currentSortKey);
-    });
-    rarityFilter.addEventListener('change', () => {
-      filterRows();
-      if (currentSortKey) sortRows(currentSortKey);
-    });
-    roleFilter.addEventListener('change', () => {
-      filterRows();
-      if (currentSortKey) sortRows(currentSortKey);
-    });
-    sortButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        sortRows(button.dataset.sort);
+      rarityFilter.addEventListener('change', () => {
+        filterRows();
+        if (currentSortKey) sortRows(currentSortKey);
       });
-    });
-          resetButton.addEventListener('click', () => {
+      roleFilter.addEventListener('change', () => {
+        filterRows();
+        if (currentSortKey) sortRows(currentSortKey);
+      });
+      sortButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          sortRows(button.dataset.sort);
+        });
+      });
+      resetButton.addEventListener('click', () => {
         elementFilter.value = '';
         rarityFilter.value = '';
         roleFilter.value = '';
@@ -366,22 +663,22 @@ import {
         });
         sortRows('name'); // Sort alphabetically after reset
       });
-    // --- Click to detail ---
-    Array.from(tableBody.children).forEach(row => {
-      row.addEventListener('click', () => {
-        const url = row.dataset.url;
-        if (url) window.location.href = url;
+      // --- Click to detail ---
+      Array.from(tableBody.children).forEach(row => {
+        row.addEventListener('click', () => {
+          const url = row.dataset.url;
+          if (url) window.location.href = url;
+        });
       });
-    });
-    Array.from(mobileCardsContainer.children).forEach(card => {
-      card.addEventListener('click', () => {
-        const url = card.dataset.url;
-        if (url) window.location.href = url;
+      Array.from(mobileCardsContainer.children).forEach(card => {
+        card.addEventListener('click', () => {
+          const url = card.dataset.url;
+          if (url) window.location.href = url;
+        });
       });
+
+      // Sort alphabetically by default on page load
+      sortRows('name');
     });
-    
-    // Sort alphabetically by default on page load
-    sortRows('name');
-  });
-	</script>
+  </script>
 </ZoneNovaLayout>

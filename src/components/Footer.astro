@@ -5,237 +5,236 @@ const version = packageInfo.version;
 ---
 
 <footer class="footer">
-	<div class="footer-container">
-		<div class="footer-content">
-			<!-- Version Badge -->
-			<div class="version-badge">
-				<a href="https://github.com/boring877/gacha-wiki" target="_blank" rel="noopener noreferrer" class="version-link">
-					<div class="version-pill">
-						v{version}
-					</div>
-				</a>
-				<!-- License Notice -->
-				<div class="license-notice">
-					<p>
-						Open source under <a href="/LICENSE" class="license-link">MIT License</a>
-					</p>
-				</div>
-			</div>
+  <div class="footer-container">
+    <div class="footer-content">
+      <!-- Version Badge -->
+      <div class="version-badge">
+        <a
+          href="https://github.com/boring877/gacha-wiki"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="version-link"
+        >
+          <div class="version-pill">
+            v{version}
+          </div>
+        </a>
+        <!-- License Notice -->
+        <div class="license-notice">
+          <p>
+            Open source under <a href="/LICENSE" class="license-link">MIT License</a>
+          </p>
+        </div>
+      </div>
 
-			<!-- Copyright - Centered -->
-			<div class="copyright">
-				<p>© {today.getFullYear()} - I Hope You Have Wonderful Day ✨</p>
-			</div>
-		</div>
-	</div>
+      <!-- Copyright - Centered -->
+      <div class="copyright">
+        <p>© {today.getFullYear()} - I Hope You Have Wonderful Day ✨</p>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <style>
-	/* Footer Base Styles */
-	.footer {
-		background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
-		backdrop-filter: blur(12px);
-		border-top: 1px solid rgba(255, 183, 77, 0.3);
-		margin-top: 2rem;
-	}
+  /* Footer Base Styles */
+  .footer {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 183, 77, 0.3);
+    margin-top: 2rem;
+  }
 
-	.footer-container {
-		max-width: 72rem;
-		margin: 0 auto;
-		padding: 0.75rem;
-	}
+  .footer-container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0.75rem;
+  }
 
-	.footer-content {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		min-height: 60px;
-		flex-wrap: wrap;
-	}
-	/* Version Badge */
-	.version-badge {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-	}
+  .footer-content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 60px;
+    flex-wrap: wrap;
+  }
+  /* Version Badge */
+  .version-badge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
 
-	.version-link {
-		text-decoration: none;
-		display: block;
-		flex-shrink: 0;
-	}
+  .version-link {
+    text-decoration: none;
+    display: block;
+    flex-shrink: 0;
+  }
 
-	.version-pill {
-		background: var(--amber-glow);
-		padding: 0.35rem 0.75rem;
-		border-radius: 8px;
-		font-family: 'Space Grotesk', sans-serif;
-		font-size: 0.75rem;
-		font-weight: 600;
-		color: var(--bg-dark);
-		transition: all 0.3s ease;
-		text-align: center;
-		cursor: pointer;
-		min-height: 32px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+  .version-pill {
+    background: var(--amber-glow);
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--bg-dark);
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-	.version-pill:hover {
-		background: rgba(255, 183, 77, 0.9);
-		transform: translateY(-2px);
-	}
+  .version-pill:hover {
+    background: rgba(255, 183, 77, 0.9);
+    transform: translateY(-2px);
+  }
 
-	.license-notice {
-		flex-shrink: 0;
-	}
+  .license-notice {
+    flex-shrink: 0;
+  }
 
-	.license-notice p {
-		color: var(--text-inverse);
-		font-size: 0.65rem;
-		opacity: 0.6;
-		margin: 0;
-		line-height: 1.3;
-		white-space: nowrap;
-	}
+  .license-notice p {
+    color: var(--text-inverse);
+    font-size: 0.65rem;
+    opacity: 0.6;
+    margin: 0;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
 
-	.license-link {
-		color: var(--amber-glow);
-		text-decoration: none;
-		transition: color 0.3s ease;
-	}
+  .license-link {
+    color: var(--amber-glow);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
 
-	.license-link:hover {
-		color: rgba(255, 183, 77, 0.8);
-	}
+  .license-link:hover {
+    color: rgba(255, 183, 77, 0.8);
+  }
 
-	/* Copyright */
-	.copyright {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		flex-wrap: wrap;
-		justify-content: center;
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-	}
+  /* Copyright */
+  .copyright {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-	.copyright p {
-		color: var(--text-inverse);
-		font-size: 0.9rem;
-		opacity: 0.9;
-		font-weight: 500;
-		margin: 0;
-		line-height: 1.2;
-	}
+  .copyright p {
+    color: var(--text-inverse);
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.2;
+  }
 
+  /* Tablet Responsive */
+  @media (max-width: 768px) {
+    .footer-container {
+      padding: 1.5rem 1rem;
+    }
 
+    .footer-content {
+      flex-direction: column;
+      gap: 1rem;
+      min-height: auto;
+      padding: 1rem 0;
+    }
 
-	/* Tablet Responsive */
-	@media (max-width: 768px) {
-		.footer-container {
-			padding: 1.5rem 1rem;
-		}
+    .version-badge {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
 
-		.footer-content {
-			flex-direction: column;
-			gap: 1rem;
-			min-height: auto;
-			padding: 1rem 0;
-		}
+    .version-pill {
+      font-size: 0.8rem;
+      padding: 0.6rem 1.2rem;
+    }
 
-		.version-badge {
-			flex-direction: column;
-			align-items: center;
-			gap: 0.5rem;
-			margin-bottom: 0.5rem;
-		}
+    .license-notice {
+      text-align: center;
+    }
 
-		.version-pill {
-			font-size: 0.8rem;
-			padding: 0.6rem 1.2rem;
-		}
+    .license-notice p {
+      font-size: 0.7rem;
+      white-space: normal;
+    }
 
-		.license-notice {
-			text-align: center;
-		}
+    .copyright {
+      position: static;
+      transform: none;
+      font-size: 0.9rem;
+      gap: 0.4rem;
+    }
 
-		.license-notice p {
-			font-size: 0.7rem;
-			white-space: normal;
-		}
+    .copyright p {
+      font-size: 0.9rem;
+    }
+  }
 
-		.copyright {
-			position: static;
-			transform: none;
-			font-size: 0.9rem;
-			gap: 0.4rem;
-		}
+  /* Mobile Responsive */
+  @media (max-width: 480px) {
+    .footer-container {
+      padding: 1.25rem 0.75rem;
+    }
 
-		.copyright p {
-			font-size: 0.9rem;
-		}
+    .footer-content {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
 
-	}
+    .version-badge {
+      margin-bottom: 0.25rem;
+      gap: 0.4rem;
+    }
 
-	/* Mobile Responsive */
-	@media (max-width: 480px) {
-		.footer-container {
-			padding: 1.25rem 0.75rem;
-		}
+    .version-pill {
+      font-size: 0.75rem;
+      padding: 0.5rem 1rem;
+    }
 
-		.footer-content {
-			flex-direction: column;
-			gap: 0.8rem;
-		}
+    .license-notice p {
+      font-size: 0.65rem;
+    }
 
-		.version-badge {
-			margin-bottom: 0.25rem;
-			gap: 0.4rem;
-		}
+    .copyright {
+      position: static;
+      transform: none;
+      gap: 0.3rem;
+    }
 
-		.version-pill {
-			font-size: 0.75rem;
-			padding: 0.5rem 1rem;
-		}
+    .copyright p {
+      font-size: 0.85rem;
+    }
+  }
 
-		.license-notice p {
-			font-size: 0.65rem;
-		}
+  /* Touch Device Optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    .version-pill {
+      min-height: 48px;
+      padding: 0.75rem 1.25rem;
+    }
+  }
 
-		.copyright {
-			position: static;
-			transform: none;
-			gap: 0.3rem;
-		}
-
-		.copyright p {
-			font-size: 0.85rem;
-		}
-
-	}
-
-	/* Touch Device Optimizations */
-	@media (hover: none) and (pointer: coarse) {
-		.version-pill {
-			min-height: 48px;
-			padding: 0.75rem 1.25rem;
-		}
-	}
-
-	/* Reduced Motion */
-	@media (prefers-reduced-motion: reduce) {
-		.version-pill {
-			transition: none;
-		}
-	}
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .version-pill {
+      transition: none;
+    }
+  }
 </style>
-
-

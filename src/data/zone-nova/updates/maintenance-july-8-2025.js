@@ -6,12 +6,12 @@ export const july8MaintenanceData = {
   title: 'July 8th Maintenance Update',
   date: 'July 8, 2025',
   type: 'maintenance', // maintenance, event, recruitment, etc.
-  
+
   // TL;DR Summary
   tldr: [
-    'Major maintenance on July 8, 2025 (14:00, 4 hours) bringing new main story Olympus, Gaia recruitment & historical battle, "Harmony Generation: Divine Symphony" Part 2 event, Rift Surge VI, double rewards, gameplay optimizations, and 600 Photostone compensation for eligible players.'
+    'Major maintenance on July 8, 2025 (14:00, 4 hours) bringing new main story Olympus, Gaia recruitment & historical battle, "Harmony Generation: Divine Symphony" Part 2 event, Rift Surge VI, double rewards, gameplay optimizations, and 600 Photostone compensation for eligible players.',
   ],
-  
+
   // Official Update
   officialUpdate: {
     greeting: 'Dear Captains,',
@@ -45,7 +45,7 @@ export const july8MaintenanceData = {
       '5. Launch [Limited Memory Recruitment] Yizhuan City',
       '• Launch Time: 2025/07/08 after server opening ~ 2025/07/22 03:59:59',
       '• Compatible Class: Healer',
-      '• Description: The soft bed embraces your body, and the familiar bedsheets are just like mother\'s arms, carefully calling you to get up. The cool sensation gently caresses your skin, and she even stole a kiss on your cheek.',
+      "• Description: The soft bed embraces your body, and the familiar bedsheets are just like mother's arms, carefully calling you to get up. The cool sensation gently caresses your skin, and she even stole a kiss on your cheek.",
       '',
       '6. Time Rift Outbreak: Rift Surge VI',
       '• Launch Time: 2025/07/08 after server opening ~ 2025/08/05 03:59:59',
@@ -65,27 +65,27 @@ export const july8MaintenanceData = {
       '',
       '10. Limited Memory Recruitment Optimization',
       '• Launch Time: After server opening on 2025/07/08',
-      '• Description: After the update, when obtaining SSR memories through conquest, there will be a 100% chance of this period\'s limited SSR memories, and other SSR memories will no longer be obtained.',
+      "• Description: After the update, when obtaining SSR memories through conquest, there will be a 100% chance of this period's limited SSR memories, and other SSR memories will no longer be obtained.",
       '',
       'Server Update Compensation:',
       '• Compensation Content: Photostone ×600',
       '• Eligible Recipients: Captains who logged into the game before 23:59 on 2025/07/15',
-      '• Distribution Method: Compensation will be sent via in-game mail after maintenance completion.'
-    ]
+      '• Distribution Method: Compensation will be sent via in-game mail after maintenance completion.',
+    ],
   },
-  
+
   // Source Information
   sourceInfo: {
     source: 'Official ZONE NOVA announcement',
     verified: true,
-    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova'
-  }
+    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova',
+  },
 };
 
 // SEO data for July 8th Maintenance announcement
 export const july8MaintenanceSEO = {
   title: `${july8MaintenanceData.title} - Zone Nova - GachaWiki`,
-  description: `Major maintenance update bringing new Olympus story, Gaia recruitment, Divine Symphony Part 2 event, Rift Surge VI, and various gameplay optimizations with compensation.`
+  description: `Major maintenance update bringing new Olympus story, Gaia recruitment, Divine Symphony Part 2 event, Rift Surge VI, and various gameplay optimizations with compensation.`,
 };
 
 // Export default for easy importing

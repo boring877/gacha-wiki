@@ -3,8 +3,8 @@ import EventsLayout from '../../../layouts/silver-and-blood/EventsLayout.astro';
 import { silverAndBloodEvents } from '../../../data/silver-and-blood/events.js';
 ---
 
-<EventsLayout 
-  title="Silver and Blood Events - GachaWiki" 
+<EventsLayout
+  title="Silver and Blood Events - GachaWiki"
   description="Latest in-game events and special occasions for Silver and Blood"
   gameTitle="Events"
 >
@@ -15,27 +15,29 @@ import { silverAndBloodEvents } from '../../../data/silver-and-blood/events.js';
     </p>
 
     <div class="sab-events-list">
-      {silverAndBloodEvents.length === 0 ? (
-        <div class="sab-no-events">
-          <p>No events currently available. Check back soon for new events!</p>
-        </div>
-      ) : (
-        silverAndBloodEvents
-          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-          .map((event) => (
-            <a href={event.url} class="sab-event-card">
-              <div class="sab-event-header">
-                <div class="sab-event-meta">
-                  <span class="sab-event-date">{event.date}</span>
+      {
+        silverAndBloodEvents.length === 0 ? (
+          <div class="sab-no-events">
+            <p>No events currently available. Check back soon for new events!</p>
+          </div>
+        ) : (
+          silverAndBloodEvents
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .map(event => (
+              <a href={event.url} class="sab-event-card">
+                <div class="sab-event-header">
+                  <div class="sab-event-meta">
+                    <span class="sab-event-date">{event.date}</span>
+                  </div>
+                  <h3 class="sab-event-title">{event.title}</h3>
                 </div>
-                <h3 class="sab-event-title">{event.title}</h3>
-              </div>
-              <div class="sab-event-body">
-                <p class="sab-event-summary">{event.summary}</p>
-              </div>
-            </a>
-          ))
-      )}
+                <div class="sab-event-body">
+                  <p class="sab-event-summary">{event.summary}</p>
+                </div>
+              </a>
+            ))
+        )
+      }
     </div>
   </section>
 </EventsLayout>

@@ -3,47 +3,47 @@ import { SITE_TITLE } from '../consts';
 ---
 
 <div class="desktop-nav">
-    <a href="/" class="nav-link">Home</a>
-    <a href="/wikis" class="nav-link">Wikis</a>
-    <a href="/about" class="nav-link">About</a>
+  <a href="/" class="nav-link">Home</a>
+  <a href="/wikis" class="nav-link">Wikis</a>
+  <a href="/about" class="nav-link">About</a>
 </div>
 
 <style>
-    /* Colors are available via layout's index.css import */
+  /* Colors are available via layout's index.css import */
 
+  .desktop-nav {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
     .desktop-nav {
-        display: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
     }
+  }
 
-    @media (min-width: 768px) {
-        .desktop-nav {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
+  .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    touch-action: manipulation;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:hover {
+      background: rgba(255, 183, 77, 0.15);
+      color: var(--amber-glow);
+      transform: translateY(-2px);
     }
-
-    .nav-link {
-        color: #ffffff;
-        text-decoration: none;
-        padding: 0.75rem 1.25rem;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        font-size: 1.2rem;
-        transition: all 0.3s ease;
-        touch-action: manipulation;
-        min-height: 44px;
-        min-width: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-		.nav-link:hover {
-			background: rgba(255, 183, 77, 0.15);
-			color: var(--amber-glow);
-			transform: translateY(-2px);
-		}
-	}
+  }
 </style>

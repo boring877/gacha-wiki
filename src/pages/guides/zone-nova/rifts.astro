@@ -1,13 +1,13 @@
 ---
 import ZoneNovaLayout from '../../../layouts/zone-nova/Layout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
-import { 
-	getActiveRifts, 
-	getUpcomingRifts, 
-	getRiftsByStatus,
-	getRiftsWithDynamicStatus,
-	RIFT_STATUS,
-	getRiftStatusText
+import {
+  getActiveRifts,
+  getUpcomingRifts,
+  getRiftsByStatus,
+  getRiftsWithDynamicStatus,
+  RIFT_STATUS,
+  getRiftStatusText,
 } from '../../../data/zone-nova/rifts.js';
 
 // Get rifts organized by status (with dynamic status)
@@ -19,127 +19,127 @@ const riftsWithStatus = getRiftsWithDynamicStatus(); // Use dynamic status for d
 // Sort rifts to show active ones at the top, then upcoming, then ended
 // Within each status group, sort by rift number in descending order (5, 4, 3)
 const allRifts = riftsWithStatus.sort((a, b) => {
-	const statusPriority = {
-		'active': 1,
-		'upcoming': 2,
-		'ended': 3
-	};
-	
-	// First sort by status priority
-	const statusDiff = statusPriority[a.status] - statusPriority[b.status];
-	if (statusDiff !== 0) return statusDiff;
-	
-	// Within same status, sort by rift number descending (extract number from ID)
-	const getNumberFromId = (id) => {
-		const match = id.match(/(\d+)$/);
-		return match ? parseInt(match[1]) : 0;
-	};
-	
-	const numberA = getNumberFromId(a.id);
-	const numberB = getNumberFromId(b.id);
-	return numberB - numberA; // Descending order (5, 4, 3)
+  const statusPriority = {
+    active: 1,
+    upcoming: 2,
+    ended: 3,
+  };
+
+  // First sort by status priority
+  const statusDiff = statusPriority[a.status] - statusPriority[b.status];
+  if (statusDiff !== 0) return statusDiff;
+
+  // Within same status, sort by rift number descending (extract number from ID)
+  const getNumberFromId = id => {
+    const match = id.match(/(\d+)$/);
+    return match ? parseInt(match[1]) : 0;
+  };
+
+  const numberA = getNumberFromId(a.id);
+  const numberB = getNumberFromId(b.id);
+  return numberB - numberA; // Descending order (5, 4, 3)
 });
 ---
 
-<ZoneNovaLayout 
-	title="Zone Nova Space-Time Rifts - GachaWiki" 
-	description="Space-Time Rift law effects and current active rifts in Zone Nova"
-	gameTitle="Space-Time Rifts"
-	
-	
+<ZoneNovaLayout
+  title="Zone Nova Space-Time Rifts - GachaWiki"
+  description="Space-Time Rift law effects and current active rifts in Zone Nova"
+  gameTitle="Space-Time Rifts"
 >
+  <!-- Overview Section -->
+  <section class="content-section">
+    <div class="rift-events-grid">
+      {
+        allRifts.map(rift => (
+          <a href={`/guides/zone-nova/rifts/${rift.id}/`} class="rift-event-card">
+            <div class="rift-content">
+              <div class="rift-header">
+                <h3>{rift.name}</h3>
+                <div class="rift-timer" id={`${rift.id}-timer`}>
+                  Loading...
+                </div>
+              </div>
 
+              <p class="rift-description">{rift.shortDescription}</p>
 
+              <div class="rift-details">
+                <div class="rift-detail-item">
+                  <span class="rift-detail-label">Status:</span>
+                  <span
+                    class={`status-badge status-${rift.status.toLowerCase().replace(' ', '-')}`}
+                  >
+                    {getRiftStatusText(rift.status)}
+                  </span>
+                </div>
 
+                {rift.eventPeriod && (
+                  <div class="rift-detail-item">
+                    <span class="rift-detail-label">Period:</span>
+                    <span class="rift-detail-value">{rift.eventPeriod}</span>
+                  </div>
+                )}
 
-	<!-- Overview Section -->
-	<section class="content-section">
-		<div class="rift-events-grid">
-			{allRifts.map(rift => (
-				<a href={`/guides/zone-nova/rifts/${rift.id}/`} class="rift-event-card">
-					<div class="rift-content">
-						<div class="rift-header">
-							<h3>{rift.name}</h3>
-							<div class="rift-timer" id={`${rift.id}-timer`}>Loading...</div>
-						</div>
-						
-						<p class="rift-description">{rift.shortDescription}</p>
-						
-						<div class="rift-details">
-							<div class="rift-detail-item">
-								<span class="rift-detail-label">Status:</span>
-								<span class={`status-badge status-${rift.status.toLowerCase().replace(' ', '-')}`}>{getRiftStatusText(rift.status)}</span>
-							</div>
-							
-							{rift.eventPeriod && (
-								<div class="rift-detail-item">
-									<span class="rift-detail-label">Period:</span>
-									<span class="rift-detail-value">{rift.eventPeriod}</span>
-								</div>
-							)}
-							
-							<div class="rift-detail-item">
-								<span class="rift-detail-label">Effects:</span>
-								<span class="rift-detail-value">{rift.lawEffects.length} effects</span>
-							</div>
+                <div class="rift-detail-item">
+                  <span class="rift-detail-label">Effects:</span>
+                  <span class="rift-detail-value">{rift.lawEffects.length} effects</span>
+                </div>
 
-							<div class="rift-detail-item">
-								<span class="rift-detail-label">Focus:</span>
-								<span class="rift-detail-value">{rift.focus}</span>
-							</div>
-						</div>
-					</div>
-					
-					<div class="rift-meta-right">
-						<button class="view-details-btn">
-							View Details →
-						</button>
-					</div>
-				</a>
-			))}
-		</div>
-	</section>
+                <div class="rift-detail-item">
+                  <span class="rift-detail-label">Focus:</span>
+                  <span class="rift-detail-value">{rift.focus}</span>
+                </div>
+              </div>
+            </div>
 
-	<script define:vars={{ allRifts }}>
-		document.addEventListener('DOMContentLoaded', function() {
-			// Convert rift data end dates to timestamps
-			const riftTimestamps = {};
-			for (const rift of allRifts) {
-				riftTimestamps[rift.id] = new Date(rift.endDate).getTime();
-			}
+            <div class="rift-meta-right">
+              <button class="view-details-btn">View Details →</button>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
 
-			function updateRiftTimers() {
-				const now = new Date().getTime();
-				
-				// Update all rift timers dynamically
-				for (const [riftId, timestamp] of Object.entries(riftTimestamps)) {
-					const timerElement = document.getElementById(`${riftId}-timer`);
-					if (timerElement) {
-						const timeLeft = timestamp - now;
-						if (timeLeft > 0) {
-							const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-							const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-							const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-							
-							// Show different formats based on time remaining
-							if (days > 0) {
-								timerElement.textContent = `${days}d ${hours}h remaining`;
-							} else if (hours > 0) {
-								timerElement.textContent = `${hours}h ${minutes}m remaining`;
-							} else {
-								timerElement.textContent = `${minutes}m remaining`;
-							}
-						} else {
-							timerElement.textContent = 'Rift Ended';
-							timerElement.classList.add('timer-ended');
-						}
-					}
-				}
-			}
+  <script define:vars={{ allRifts }}>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Convert rift data end dates to timestamps
+      const riftTimestamps = {};
+      for (const rift of allRifts) {
+        riftTimestamps[rift.id] = new Date(rift.endDate).getTime();
+      }
 
-			// Update timers immediately and then every minute
-			updateRiftTimers();
-			setInterval(updateRiftTimers, 60000);
-		});
-	</script>
-</ZoneNovaLayout> 
+      function updateRiftTimers() {
+        const now = new Date().getTime();
+
+        // Update all rift timers dynamically
+        for (const [riftId, timestamp] of Object.entries(riftTimestamps)) {
+          const timerElement = document.getElementById(`${riftId}-timer`);
+          if (timerElement) {
+            const timeLeft = timestamp - now;
+            if (timeLeft > 0) {
+              const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+
+              // Show different formats based on time remaining
+              if (days > 0) {
+                timerElement.textContent = `${days}d ${hours}h remaining`;
+              } else if (hours > 0) {
+                timerElement.textContent = `${hours}h ${minutes}m remaining`;
+              } else {
+                timerElement.textContent = `${minutes}m remaining`;
+              }
+            } else {
+              timerElement.textContent = 'Rift Ended';
+              timerElement.classList.add('timer-ended');
+            }
+          }
+        }
+      }
+
+      // Update timers immediately and then every minute
+      updateRiftTimers();
+      setInterval(updateRiftTimers, 60000);
+    });
+  </script>
+</ZoneNovaLayout>

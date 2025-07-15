@@ -190,8 +190,8 @@ async function main() {
     try {
       const silverBloodModule = await import('../src/data/silver-and-blood/characters.js');
       SILVER_BLOOD_CHARACTERS =
-        (silverBloodModule as any).SILVER_BLOOD_CHARACTERS || 
-        (silverBloodModule as any).SILVER_AND_BLOOD_CHARACTERS || 
+        (silverBloodModule as any).SILVER_BLOOD_CHARACTERS ||
+        (silverBloodModule as any).SILVER_AND_BLOOD_CHARACTERS ||
         [];
     } catch (error) {
       console.log('Note: Silver and Blood characters data not found, skipping validation');

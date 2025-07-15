@@ -57,13 +57,14 @@ const { className = '' } = Astro.props;
 
   /* Enhanced Animation with glow effect */
   @keyframes pulseGlow {
-    0%, 100% { 
-      opacity: 1; 
+    0%,
+    100% {
+      opacity: 1;
       transform: scaleX(1) scaleY(1);
       filter: brightness(1);
     }
-    50% { 
-      opacity: 0.7; 
+    50% {
+      opacity: 0.7;
       transform: scaleX(0.85) scaleY(1.5);
       filter: brightness(1.3);
     }
@@ -75,26 +76,26 @@ const { className = '' } = Astro.props;
       gap: 0.75rem;
       margin-top: 1.5rem;
     }
-    
+
     .hero-line {
       height: 3px; /* Slightly thicker on mobile for better visibility */
     }
-    
+
     .hero-line-1 {
       width: 2.5rem;
       box-shadow: 0 0 6px rgba(255, 183, 77, 0.8);
     }
-    
+
     .hero-line-2 {
       width: 1.75rem;
       box-shadow: 0 0 6px rgba(0, 172, 193, 0.8);
     }
-    
+
     .hero-line-3 {
       width: 1rem;
       box-shadow: 0 0 6px rgba(233, 30, 99, 0.8);
     }
-    
+
     /* Ensure animations work on mobile */
     .hero-line-1,
     .hero-line-2,
@@ -111,15 +112,15 @@ const { className = '' } = Astro.props;
       gap: 0.5rem;
       margin-top: 1rem;
     }
-    
+
     .hero-line-1 {
       width: 2rem;
     }
-    
+
     .hero-line-2 {
       width: 1.5rem;
     }
-    
+
     .hero-line-3 {
       width: 0.75rem;
     }
@@ -135,4 +136,4 @@ const { className = '' } = Astro.props;
       filter: none;
     }
   }
-</style> 
+</style>

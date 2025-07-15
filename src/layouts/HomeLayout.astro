@@ -11,8 +11,8 @@ import '../styles/typography.css';
 import MobileMenu from '../components/MobileMenu.astro';
 
 export interface Props {
-	title: string;
-	description?: string;
+  title: string;
+  description?: string;
 }
 
 const { title, description } = Astro.props;
@@ -20,94 +20,95 @@ const { title, description } = Astro.props;
 
 {/* @ts-ignore */}
 <html lang="en" transition:animate="fade">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/tabicoin.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		
-		<BaseHead title={title} description={description || ""} />
-		<slot name="head" />
-	</head>
-	<body class="home-body">
-		<CustomScrollbar />
-		<!-- Premium background with warm accents -->
-		<div class="bg-layer bg-primary"></div>
-		<div class="bg-layer bg-accent-1"></div>
-		<div class="bg-layer bg-accent-2"></div>
-		<div class="bg-layer bg-accent-3"></div>
-		
-		<div class="home-content">
-			<Header />
-			<MobileMenu />
-			<main>
-				<slot />
-			</main>
-			<Footer />		</div>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/tabicoin.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <BaseHead title={title} description={description || ''} />
+    <slot name="head" />
+  </head>
+  <body class="home-body">
+    <CustomScrollbar />
+    <!-- Premium background with warm accents -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="home-content">
+      <Header />
+      <MobileMenu />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
 </html>
 
 <style>
-/* Home Layout Styles */
-.home-body {
-	background: var(--bg-dark);
-}
+  /* Home Layout Styles */
+  .home-body {
+    background: var(--bg-dark);
+  }
 
-/* Background Layers */
-.bg-layer {
-	position: fixed;
-	inset: 0;
-}
+  /* Background Layers */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+  }
 
-.bg-primary {
-	background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
-}
+  .bg-primary {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+  }
 
-.bg-accent-1 {
-	background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent);
-	pointer-events: none;
-}
+  .bg-accent-1 {
+    background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent);
+    pointer-events: none;
+  }
 
-.bg-accent-2 {
-	background: radial-gradient(circle at 80% 20%, rgba(255, 183, 77, 0.08), transparent);
-	pointer-events: none;
-}
+  .bg-accent-2 {
+    background: radial-gradient(circle at 80% 20%, rgba(255, 183, 77, 0.08), transparent);
+    pointer-events: none;
+  }
 
-.bg-accent-3 {
-	background: radial-gradient(circle at 50% 50%, rgba(0, 172, 193, 0.05), transparent);
-	pointer-events: none;
-}
+  .bg-accent-3 {
+    background: radial-gradient(circle at 50% 50%, rgba(0, 172, 193, 0.05), transparent);
+    pointer-events: none;
+  }
 
-.home-content {
-	position: relative;
-	z-index: 10;
-}
+  .home-content {
+    position: relative;
+    z-index: 10;
+  }
 
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-	/* Reduce background complexity on mobile for better performance */
-	.bg-accent-2,
-	.bg-accent-3 {
-		display: none;
-	}
-		.bg-accent-1 {
-		opacity: 0.5;
-	}
-}
+  /* Mobile Optimizations */
+  @media (max-width: 768px) {
+    /* Reduce background complexity on mobile for better performance */
+    .bg-accent-2,
+    .bg-accent-3 {
+      display: none;
+    }
+    .bg-accent-1 {
+      opacity: 0.5;
+    }
+  }
 
-/* Header Color Fix - Ensure amber color is applied */
-.header-container .logo-title.simple-title {
-	color: #FFB74D !important; /* Fallback color */
-	color: var(--amber-glow) !important; /* Preferred color */
-}
+  /* Header Color Fix - Ensure amber color is applied */
+  .header-container .logo-title.simple-title {
+    color: #ffb74d !important; /* Fallback color */
+    color: var(--amber-glow) !important; /* Preferred color */
+  }
 
-/* Performance Optimizations */
-@media (prefers-reduced-motion: reduce) {
-	.bg-layer {
-		animation: none;
-		transition: none;
-	}
-}
+  /* Performance Optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .bg-layer {
+      animation: none;
+      transition: none;
+    }
+  }
 </style>
