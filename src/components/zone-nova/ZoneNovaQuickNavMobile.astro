@@ -1,378 +1,394 @@
 ---
 // Zone Nova Quick Navigation Component - Mobile Version
+import { URLS } from '../../consts';
+
 export interface Props {
-	currentPath?: string;
+  currentPath?: string;
 }
 
 const { currentPath = '' } = Astro.props;
 
-// Zone Nova navigation items
+// Zone Nova navigation items (using centralized URLs)
 const quickLinks = [
-	{ name: 'Overview', href: '/guides/zone-nova/' },
-	{ name: 'Characters', href: '/guides/zone-nova/characters/' },
-	{ name: 'Character Comparison', href: '/guides/zone-nova/character-comparison/' },
-	{ name: 'Character Rankings', href: '/guides/zone-nova/character-rankings/' },
-	{ name: 'Memories', href: '/guides/zone-nova/memories/' },
-	{ name: 'Rifts', href: '/guides/zone-nova/rifts/' },
-	{ name: 'Runes', href: '/guides/zone-nova/runes/' },
-	{ name: 'Damage Mechanics', href: '/guides/zone-nova/damage-mechanics/' },
-	{ name: 'Crafting', href: '/guides/zone-nova/crafting/' },
-	{ name: 'Redeem Codes', href: '/guides/zone-nova/redeem-codes/' },
-	{ name: 'Summon FAQ', href: '/guides/zone-nova/summon-faq/' },
-	{ name: 'Updates', href: '/guides/zone-nova/updates/' },
-	{ name: 'Contributing', href: '/guides/zone-nova/contributing/' }
+  { name: 'Overview', href: URLS.ZONE_NOVA.BASE + '/' },
+  { name: 'Characters', href: URLS.ZONE_NOVA.CHARACTERS + '/' },
+  { name: 'Character Comparison', href: URLS.ZONE_NOVA.CHARACTER_COMPARISON + '/' },
+  { name: 'Character Rankings', href: URLS.ZONE_NOVA.CHARACTER_RANKINGS + '/' },
+  { name: 'Memories', href: URLS.ZONE_NOVA.MEMORIES + '/' },
+  { name: 'Rifts', href: URLS.ZONE_NOVA.RIFTS + '/' },
+  { name: 'Runes', href: URLS.ZONE_NOVA.RUNES + '/' },
+  { name: 'Damage Mechanics', href: URLS.ZONE_NOVA.DAMAGE_MECHANICS + '/' },
+  { name: 'Crafting', href: URLS.ZONE_NOVA.CRAFTING + '/' },
+  { name: 'Redeem Codes', href: URLS.ZONE_NOVA.REDEEM_CODES + '/' },
+  { name: 'Summon FAQ', href: URLS.ZONE_NOVA.SUMMON_FAQ + '/' },
+  { name: 'Updates', href: URLS.ZONE_NOVA.UPDATES + '/' },
+  { name: 'Contributing', href: URLS.ZONE_NOVA.CONTRIBUTING + '/' },
 ];
 
 // Check if current path matches a navigation item
 function isActive(href: string): boolean {
-	if (!currentPath) return false;
-	
-	// Special handling for the overview page
-	if (href === '/guides/zone-nova/') {
-		return currentPath === '/guides/zone-nova/' || currentPath === '/guides/zone-nova';
-	}
-	
-	// For other sections, check if the current path starts with the href
-	if (href !== '/guides/zone-nova/' && currentPath.startsWith(href)) {
-		return true;
-	}
-	
-	return false;
+  if (!currentPath) return false;
+
+  // Special handling for the overview page
+  if (href === URLS.ZONE_NOVA.BASE + '/') {
+    return currentPath === URLS.ZONE_NOVA.BASE + '/' || currentPath === URLS.ZONE_NOVA.BASE;
+  }
+
+  // For other sections, check if the current path starts with the href
+  if (href !== URLS.ZONE_NOVA.BASE + '/' && currentPath.startsWith(href)) {
+    return true;
+  }
+
+  return false;
 }
-
-
 ---
 
 <!-- Zone Nova Quick Navigation - Mobile -->
 <div class="zone-nova-nav-mobile mobile-only">
-	<div class="nav-wrapper">
-		<div class="quick-nav-container" id="quickNavContainer">
-			{quickLinks.map(link => (
-				<a 
-					href={link.href} 
-					class={`nav-link ${isActive(link.href) ? 'active' : ''}`}
-				>
-					{link.name}
-				</a>
-			))}
-		</div>
-		<div class="swipe-hint" id="swipeHint">
-			<span class="hint-text">← Swipe for more →</span>
-		</div>
-	</div>
+  <div class="nav-wrapper">
+    <div class="quick-nav-container" id="quickNavContainer">
+      {
+        quickLinks.map(link => (
+          <a href={link.href} class={`nav-link ${isActive(link.href) ? 'active' : ''}`}>
+            {link.name}
+          </a>
+        ))
+      }
+    </div>
+    <div class="swipe-hint" id="swipeHint">
+      <span class="hint-text">← Swipe for more →</span>
+    </div>
+  </div>
 </div>
 
 <style>
-	.zone-nova-nav-mobile {
-		margin-bottom: 2rem;
-		width: 100%;
-		max-width: 100%;
-		overflow: hidden;
-		position: relative;
-	}
+  .zone-nova-nav-mobile {
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
 
-	.nav-wrapper {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		align-items: stretch;
-		width: 100%;
-		max-width: 100%;
-		overflow: hidden;
-	}
+  .nav-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
 
-	.swipe-hint {
-		text-align: center;
-		margin-top: 0.5rem;
-		margin-bottom: 0.5rem;
-		opacity: 0;
-		transition: opacity 0.3s ease;
-		width: 100%;
-		position: relative;
-		z-index: 10;
-	}
+  .swipe-hint {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+  }
 
-	.swipe-hint.show {
-		opacity: 1;
-		animation: fadeInUp 0.5s ease-out forwards;
-	}
+  .swipe-hint.show {
+    opacity: 1;
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
 
-	.swipe-hint.hide {
-		animation: fadeOut 0.3s ease-out forwards;
-	}
+  .swipe-hint.hide {
+    animation: fadeOut 0.3s ease-out forwards;
+  }
 
-	.hint-text {
-		font-family: var(--font-primary);
-		font-size: var(--text-xs);
-		color: var(--amber-glow);
-		font-weight: 500;
-		letter-spacing: 0.5px;
-		text-transform: uppercase;
-	}
+  .hint-text {
+    font-family: var(--font-primary);
+    font-size: var(--text-xs);
+    color: var(--amber-glow);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
 
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-	@keyframes fadeOut {
-		from {
-			opacity: 0.7;
-		}
-		to {
-			opacity: 0;
-		}
-	}
+  @keyframes fadeOut {
+    from {
+      opacity: 0.7;
+    }
+    to {
+      opacity: 0;
+    }
+  }
 
+  .quick-nav-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 1rem 1rem 0;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    /* Performance optimizations */
+    will-change: scroll-position;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    /* Ensure proper containment */
+    contain: layout;
+  }
 
+  .quick-nav-container::-webkit-scrollbar {
+    display: none;
+  }
 
-	.quick-nav-container {
-		display: flex;
-		align-items: center;
-		gap: 1.5rem;
-		overflow-x: auto;
-		overflow-y: visible;
-		scroll-behavior: smooth;
-		-webkit-overflow-scrolling: touch;
-		scrollbar-width: none;
-		-ms-overflow-style: none;
-		scroll-snap-type: x mandatory;
-		padding: 1rem 1rem 1rem 0;
-		margin-bottom: 1rem;
-		width: 100%;
-		max-width: 100vw;
-		box-sizing: border-box;
-		/* Performance optimizations */
-		will-change: scroll-position;
-		transform: translateZ(0);
-		-webkit-transform: translateZ(0);
-		/* Ensure proper containment */
-		contain: layout;
-	}
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 1.75rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 15px;
+    border: 2px solid var(--amber-glow);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+    font-size: var(--text-base);
+    font-weight: 600;
+    font-family: var(--font-display);
+    flex-shrink: 0;
+    white-space: nowrap;
+    min-height: 56px;
+    min-width: 120px;
+    max-width: 180px;
+    box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
+    scroll-snap-align: start;
+    touch-action: manipulation;
+    /* Performance optimizations */
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    /* Ensure proper text handling */
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 
-	.quick-nav-container::-webkit-scrollbar {
-		display: none;
-	}
+  .nav-link:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
+    border-color: var(--teal-crystal);
+  }
 
-	.nav-link {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1.25rem 1.75rem;
-		background: var(--bg-primary);
-		color: var(--text-primary);
-		text-decoration: none;
-		border-radius: 15px;
-		border: 2px solid var(--amber-glow);
-		transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-		font-size: var(--text-base);
-		font-weight: 600;
-		font-family: var(--font-display);
-		flex-shrink: 0;
-		white-space: nowrap;
-		min-height: 56px;
-		min-width: 120px;
-		max-width: 180px;
-		box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
-		scroll-snap-align: start;
-		touch-action: manipulation;
-		/* Performance optimizations */
-		will-change: transform;
-		backface-visibility: hidden;
-		-webkit-backface-visibility: hidden;
-		/* Ensure proper text handling */
-		text-overflow: ellipsis;
-		overflow: hidden;
-	}
+  .nav-link.active {
+    background: var(--amber-glow);
+    color: white;
+    box-shadow: 0 6px 18px rgba(255, 183, 77, 0.5);
+    border-color: var(--amber-glow);
+    transform: translateY(-2px);
+  }
 
-	.nav-link:hover {
-		background: var(--bg-secondary);
-		color: var(--text-primary);
-		transform: translateY(-3px);
-		box-shadow: 0 8px 20px rgba(164, 120, 100, 0.3);
-		border-color: var(--teal-crystal);
-	}
-
-	.nav-link.active {
-		background: var(--amber-glow);
-		color: white;
-		box-shadow: 0 6px 18px rgba(255, 183, 77, 0.5);
-		border-color: var(--amber-glow);
-		transform: translateY(-2px);
-	}
-
-	/* Performance Optimizations */
-	@media (prefers-reduced-motion: reduce) {
-		.nav-link,
-		.back-button,
-		.swipe-hint {
-			transition: none;
-			transform: none;
-			animation: none;
-		}
-	}
+  /* Performance Optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link,
+    .back-button,
+    .swipe-hint {
+      transition: none;
+      transform: none;
+      animation: none;
+    }
+  }
 </style>
 
 <script>
-	// Mobile swipe functionality
-	document.addEventListener('DOMContentLoaded', function() {
-		const container = document.getElementById('quickNavContainer');
-		const swipeHint = document.getElementById('swipeHint');
-		if (!container) return;
+  // Mobile swipe functionality
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('quickNavContainer');
+    const swipeHint = document.getElementById('swipeHint');
+    if (!container) return;
 
-		let isDown = false;
-		let startX;
-		let scrollLeft;
-		let animationFrame;
-		let indicatorTimeout;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let animationFrame;
+    let indicatorTimeout;
 
-		// Throttle function for performance
-		function throttle(func, limit) {
-			let inThrottle;
-			return function() {
-				const args = arguments;
-				const context = this;
-				if (!inThrottle) {
-					func.apply(context, args);
-					inThrottle = true;
-					setTimeout(() => inThrottle = false, limit);
-				}
-			}
-		}
+    // Throttle function for performance
+    function throttle(func, limit) {
+      let inThrottle;
+      return function () {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => (inThrottle = false), limit);
+        }
+      };
+    }
 
-		// Show/hide swipe hint
-		function updateSwipeHint() {
-			if (!swipeHint || !container) return;
-			
-			const scrollWidth = container.scrollWidth;
-			const clientWidth = container.clientWidth;
-			
-			// Only show hint if there's content to scroll (with small buffer)
-			if (scrollWidth > clientWidth + 10) {
-				swipeHint.classList.add('show');
-				swipeHint.classList.remove('hide');
-				return true;
-			} else {
-				swipeHint.classList.add('hide');
-				swipeHint.classList.remove('show');
-				return false;
-			}
-		}
+    // Show/hide swipe hint
+    function updateSwipeHint() {
+      if (!swipeHint || !container) return;
 
-		// Reset scroll position to default on page load
-		container.scrollLeft = 0;
-		
-		// Additional reset after a short delay to override browser restoration
-		setTimeout(() => {
-			container.scrollLeft = 0;
-		}, 50);
+      const scrollWidth = container.scrollWidth;
+      const clientWidth = container.clientWidth;
 
-		// Handle browser back/forward navigation
-		window.addEventListener('pageshow', () => {
-			container.scrollLeft = 0;
-		});
+      // Only show hint if there's content to scroll (with small buffer)
+      if (scrollWidth > clientWidth + 10) {
+        swipeHint.classList.add('show');
+        swipeHint.classList.remove('hide');
+        return true;
+      } else {
+        swipeHint.classList.add('hide');
+        swipeHint.classList.remove('show');
+        return false;
+      }
+    }
 
-		// Handle window resize to update hint visibility
-		if (typeof ResizeObserver !== 'undefined') {
-			const resizeObserver = new ResizeObserver(() => {
-				setTimeout(() => {
-					updateSwipeHint();
-				}, 100);
-			});
-			resizeObserver.observe(container);
-		}
+    // Reset scroll position to default on page load
+    container.scrollLeft = 0;
 
-		// Initial hint setup
-		if (swipeHint) {
-			setTimeout(() => {
-				const hasOverflow = updateSwipeHint();
-				// Auto-hide hint after 4 seconds only if there's overflow
-				if (hasOverflow) {
-					indicatorTimeout = setTimeout(() => {
-						if (swipeHint) {
-							swipeHint.classList.add('hide');
-							swipeHint.classList.remove('show');
-						}
-					}, 4000);
-				}
-			}, 500);
-		}
+    // Additional reset after a short delay to override browser restoration
+    setTimeout(() => {
+      container.scrollLeft = 0;
+    }, 50);
 
-		// Touch events for mobile (optimized)
-		container.addEventListener('touchstart', (e) => {
-			isDown = true;
-			startX = e.touches[0].clientX;
-			scrollLeft = container.scrollLeft;
-			if (animationFrame) {
-				cancelAnimationFrame(animationFrame);
-			}
-		}, { passive: true });
+    // Handle browser back/forward navigation
+    window.addEventListener('pageshow', () => {
+      container.scrollLeft = 0;
+    });
 
-		const handleTouchMove = throttle((e) => {
-			if (!isDown) return;
-			const x = e.touches[0].clientX;
-			const walk = (x - startX) * 1.5;
-			
-			animationFrame = requestAnimationFrame(() => {
-				container.scrollLeft = scrollLeft - walk;
-			});
-		}, 16); // ~60fps
+    // Handle window resize to update hint visibility
+    if (typeof ResizeObserver !== 'undefined') {
+      const resizeObserver = new ResizeObserver(() => {
+        setTimeout(() => {
+          updateSwipeHint();
+        }, 100);
+      });
+      resizeObserver.observe(container);
+    }
 
-		container.addEventListener('touchmove', handleTouchMove, { passive: true });
+    // Initial hint setup
+    if (swipeHint) {
+      setTimeout(() => {
+        const hasOverflow = updateSwipeHint();
+        // Auto-hide hint after 4 seconds only if there's overflow
+        if (hasOverflow) {
+          indicatorTimeout = setTimeout(() => {
+            if (swipeHint) {
+              swipeHint.classList.add('hide');
+              swipeHint.classList.remove('show');
+            }
+          }, 4000);
+        }
+      }, 500);
+    }
 
-		container.addEventListener('touchend', () => {
-			isDown = false;
-			if (animationFrame) {
-				cancelAnimationFrame(animationFrame);
-			}
-			// Hide hint after user interacts
-			if (swipeHint) {
-				swipeHint.classList.add('hide');
-				swipeHint.classList.remove('show');
-			}
-		}, { passive: true });
+    // Touch events for mobile (optimized)
+    container.addEventListener(
+      'touchstart',
+      e => {
+        isDown = true;
+        startX = e.touches[0].clientX;
+        scrollLeft = container.scrollLeft;
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+        }
+      },
+      { passive: true }
+    );
 
-		// Hide hint on scroll
-		container.addEventListener('scroll', () => {
-			if (swipeHint) {
-				swipeHint.classList.add('hide');
-				swipeHint.classList.remove('show');
-			}
-		}, { passive: true });
+    const handleTouchMove = throttle(e => {
+      if (!isDown) return;
+      const x = e.touches[0].clientX;
+      const walk = (x - startX) * 1.5;
 
-		// Simplified keyboard navigation
-		container.addEventListener('keydown', (e) => {
-			if (e.key === 'ArrowLeft') {
-				container.scrollBy({ left: -150, behavior: 'smooth' });
-			} else if (e.key === 'ArrowRight') {
-				container.scrollBy({ left: 150, behavior: 'smooth' });
-			}
-		});
+      animationFrame = requestAnimationFrame(() => {
+        container.scrollLeft = scrollLeft - walk;
+      });
+    }, 16); // ~60fps
 
-		// Optimized scroll to active item
-		const activeItem = container.querySelector('.nav-link.active');
-		if (activeItem) {
-			// Use intersection observer for better performance
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-					if (!entry.isIntersecting) {
-						activeItem.scrollIntoView({ 
-							behavior: 'smooth', 
-							block: 'nearest', 
-							inline: 'center' 
-						});
-					}
-				});
-				observer.disconnect();
-			}, { threshold: 0.5 });
-			
-			setTimeout(() => observer.observe(activeItem), 100);
-		}
-	});
-</script> 
+    container.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+    container.addEventListener(
+      'touchend',
+      () => {
+        isDown = false;
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+        }
+        // Hide hint after user interacts
+        if (swipeHint) {
+          swipeHint.classList.add('hide');
+          swipeHint.classList.remove('show');
+        }
+      },
+      { passive: true }
+    );
+
+    // Hide hint on scroll
+    container.addEventListener(
+      'scroll',
+      () => {
+        if (swipeHint) {
+          swipeHint.classList.add('hide');
+          swipeHint.classList.remove('show');
+        }
+      },
+      { passive: true }
+    );
+
+    // Simplified keyboard navigation
+    container.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') {
+        container.scrollBy({ left: -150, behavior: 'smooth' });
+      } else if (e.key === 'ArrowRight') {
+        container.scrollBy({ left: 150, behavior: 'smooth' });
+      }
+    });
+
+    // Optimized scroll to active item
+    const activeItem = container.querySelector('.nav-link.active');
+    if (activeItem) {
+      // Use intersection observer for better performance
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              activeItem.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center',
+              });
+            }
+          });
+          observer.disconnect();
+        },
+        { threshold: 0.5 }
+      );
+
+      setTimeout(() => observer.observe(activeItem), 100);
+    }
+  });
+</script>
+

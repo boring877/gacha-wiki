@@ -86,7 +86,6 @@ const { selectedCharacters = [] } = Astro.props;
     <h2>Character Comparison</h2>
     <div class="comparison-controls">
       <button id="clear-comparison" class="clear-btn">Clear All</button>
-      <button id="export-comparison" class="export-btn">Export Data</button>
     </div>
     
     <!-- Desktop Premium View -->
@@ -312,10 +311,8 @@ const { selectedCharacters = [] } = Astro.props;
 
   function initializeComparisonControls() {
     const clearBtn = document.getElementById('clear-comparison');
-    const exportBtn = document.getElementById('export-comparison');
     
     clearBtn?.addEventListener('click', clearComparison);
-    exportBtn?.addEventListener('click', exportComparison);
   }
 
   function initializeFilterControls() {
@@ -669,52 +666,4 @@ const { selectedCharacters = [] } = Astro.props;
     document.getElementById('comparison-table').style.display = 'none';
   }
 
-  function exportComparison() {
-    if (selectedCharacters.length === 0) {
-      alert('Please select characters to compare before exporting.');
-      return;
-    }
-    
-    const selectedData = selectedCharacters.map(id => 
-      characterDataProcessed.characters.find(c => c.id === id)
-    );
-    
-    // Create formatted text output
-    let textOutput = 'SILVER AND BLOOD - CHARACTER COMPARISON\n';
-    textOutput += '======================================\n\n';
-    textOutput += `Date: ${new Date().toLocaleDateString()}\n`;
-    textOutput += `Characters Compared: ${selectedData.length}\n\n`;
-    
-    selectedData.forEach((char, index) => {
-      textOutput += `--- CHARACTER ${index + 1} ---\n`;
-      textOutput += `Name: ${char.name}\n`;
-      textOutput += `Rarity: ${char.rarity}\n`;
-      textOutput += `Class: ${char.class}\n`;
-      textOutput += `Faction: ${char.faction}\n`;
-      textOutput += `Equipment Type: ${char.equipmentType}\n`;
-      textOutput += `Moon Phase: ${char.moonPhase}\n`;
-      textOutput += `Attack Type: ${char.attackType}\n\n`;
-      
-      textOutput += 'BASE STATS (Level 200):\n';
-      const stats = char.stats || {};
-      textOutput += `  HP: ${stats.hp !== undefined ? stats.hp.toLocaleString() : 'N/A'}\n`;
-      textOutput += `  ATK: ${stats.atk !== undefined ? stats.atk.toLocaleString() : 'N/A'}\n`;
-      textOutput += `  P.DEF: ${stats.pDef !== undefined ? stats.pDef.toLocaleString() : 'N/A'}\n`;
-      textOutput += `  M.DEF: ${stats.mDef !== undefined ? stats.mDef.toLocaleString() : 'N/A'}\n`;
-      textOutput += `  ATK SPD: ${stats.atkSpd !== undefined ? stats.atkSpd + '%' : 'N/A'}\n`;
-      textOutput += `  CRIT Rate: ${stats.critRate !== undefined ? stats.critRate + '%' : 'N/A'}\n`;
-      textOutput += `  CRIT DMG: ${stats.critDmgIncrease !== undefined ? stats.critDmgIncrease + '%' : 'N/A'}\n`;
-      textOutput += `  Blood Power: ${stats.bloodPower !== undefined ? stats.bloodPower.toLocaleString() : 'N/A'}\n\n`;
-    });
-    
-    const dataBlob = new Blob([textOutput], { type: 'text/plain' });
-    const url = URL.createObjectURL(dataBlob);
-    
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'character-comparison.txt';
-    link.click();
-    
-    URL.revokeObjectURL(url);
-  }
 </script>

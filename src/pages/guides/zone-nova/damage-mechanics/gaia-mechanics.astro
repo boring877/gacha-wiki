@@ -113,24 +113,20 @@ export const prerender = true;
 </DamageMechanicsPageLayout>
 
 <script>
-  import Chart from 'chart.js/auto';
-
-  // Declare the function on the Window interface
-  declare global {
-    interface Window {
-      calculateGaiaEffects: () => void;
-    }
-  }
+  // Import Chart.js from CDN for browser compatibility
+  const chartScript = document.createElement('script');
+  chartScript.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+  document.head.appendChild(chartScript);
 
   // Gaia Mechanics Calculator
   window.calculateGaiaEffects = function() {
     // Get elements with null checks
-    const gaiaHPElement = document.getElementById('gaiaHP') as HTMLInputElement;
-    const allyHPElement = document.getElementById('allyHP') as HTMLInputElement;
-    const hasMotherlyLoveElement = document.getElementById('hasMotherlyLove') as HTMLInputElement;
-    const hasUltimateElement = document.getElementById('hasUltimate') as HTMLInputElement;
-    const hasAwakening6Element = document.getElementById('hasAwakening6') as HTMLInputElement;
-    const hasTeamSkillElement = document.getElementById('hasTeamSkill') as HTMLInputElement;
+    const gaiaHPElement = document.getElementById('gaiaHP');
+    const allyHPElement = document.getElementById('allyHP');
+    const hasMotherlyLoveElement = document.getElementById('hasMotherlyLove');
+    const hasUltimateElement = document.getElementById('hasUltimate');
+    const hasAwakening6Element = document.getElementById('hasAwakening6');
+    const hasTeamSkillElement = document.getElementById('hasTeamSkill');
     
     const gaiaFinalHPElement = document.getElementById('gaiaFinalHP');
     const allyFinalHPElement = document.getElementById('allyFinalHP');
@@ -237,7 +233,13 @@ export const prerender = true;
 
   // Create cap analysis chart
   function createEffectivenessCharts() {
-    const gaiaHPElement = document.getElementById('gaiaHP') as HTMLInputElement;
+    // Wait for Chart.js to load
+    if (typeof Chart === 'undefined') {
+      setTimeout(createEffectivenessCharts, 100);
+      return;
+    }
+    
+    const gaiaHPElement = document.getElementById('gaiaHP');
     const gaiaBaseHP = parseFloat(gaiaHPElement?.value) || 10548;
     const cap = gaiaBaseHP * 0.15;
     
@@ -258,7 +260,7 @@ export const prerender = true;
     }
 
     // Cap Analysis Chart
-    const ctx = document.getElementById('capAnalysisChart') as HTMLCanvasElement;
+    const ctx = document.getElementById('capAnalysisChart');
     if (capAnalysisChart) capAnalysisChart.destroy();
     
     capAnalysisChart = new Chart(ctx, {

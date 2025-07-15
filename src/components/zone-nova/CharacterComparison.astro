@@ -146,15 +146,14 @@ const { selectedCharacters = [] } = Astro.props;
   </div>
 
   <!-- Comparison Table -->
-  <div class="comparison-container" id="comparison-table" style="display: none;">
+  <div class="comparison-container" id="comparison-table">
     <h2>Character Comparison</h2>
     <div class="comparison-controls">
       <button id="clear-comparison" class="clear-btn">Clear All</button>
-      <button id="export-comparison" class="export-btn">Export Data</button>
     </div>
     
     <!-- Desktop Premium View -->
-    <div class="comparison-container comparison-table-wrapper">
+    <div class="comparison-table-wrapper">
       <div class="premium-comparison-container">
         <!-- Character Headers -->
         <div class="premium-character-headers">
@@ -165,7 +164,7 @@ const { selectedCharacters = [] } = Astro.props;
                 <img class="premium-portrait" data-portrait="1" />
                 <div class="portrait-glow"></div>
               </div>
-              <h3 class="premium-character-name" data-name="1"></h3>
+              <h3 class="character-name" data-name="1"></h3>
               <div class="premium-badges" data-badges="1"></div>
             </div>
           </div>
@@ -175,7 +174,7 @@ const { selectedCharacters = [] } = Astro.props;
                 <img class="premium-portrait" data-portrait="2" />
                 <div class="portrait-glow"></div>
               </div>
-              <h3 class="premium-character-name" data-name="2"></h3>
+              <h3 class="character-name" data-name="2"></h3>
               <div class="premium-badges" data-badges="2"></div>
             </div>
           </div>
@@ -185,7 +184,7 @@ const { selectedCharacters = [] } = Astro.props;
                 <img class="premium-portrait" data-portrait="3" />
                 <div class="portrait-glow"></div>
               </div>
-              <h3 class="premium-character-name" data-name="3"></h3>
+              <h3 class="character-name" data-name="3"></h3>
               <div class="premium-badges" data-badges="3"></div>
             </div>
           </div>
@@ -195,7 +194,7 @@ const { selectedCharacters = [] } = Astro.props;
                 <img class="premium-portrait" data-portrait="4" />
                 <div class="portrait-glow"></div>
               </div>
-              <h3 class="premium-character-name" data-name="4"></h3>
+              <h3 class="character-name" data-name="4"></h3>
               <div class="premium-badges" data-badges="4"></div>
             </div>
           </div>
@@ -376,10 +375,8 @@ const { selectedCharacters = [] } = Astro.props;
 
   function initializeComparisonControls() {
     const clearBtn = document.getElementById('clear-comparison');
-    const exportBtn = document.getElementById('export-comparison');
     
     clearBtn?.addEventListener('click', clearComparison);
-    exportBtn?.addEventListener('click', exportComparison);
   }
 
   function initializeFilterControls() {
@@ -510,11 +507,11 @@ const { selectedCharacters = [] } = Astro.props;
     const comparisonTable = document.getElementById('comparison-table');
     
     if (selectedCharacters.length === 0) {
-      comparisonTable.style.display = 'none';
+      comparisonTable.classList.remove('active');
       return;
     }
     
-    comparisonTable.style.display = 'block';
+    comparisonTable.classList.add('active');
     
     // Clear existing data
     clearTableCells();
@@ -646,7 +643,7 @@ const { selectedCharacters = [] } = Astro.props;
       portrait.alt = character.name;
     }
     
-    const nameEl = document.querySelector(`.premium-character-name[data-name="${columnIndex}"]`);
+    const nameEl = document.querySelector(`.character-name[data-name="${columnIndex}"]`);
     if (nameEl) {
       nameEl.textContent = character.name;
     }
@@ -729,63 +726,7 @@ const { selectedCharacters = [] } = Astro.props;
     });
     
     // Hide comparison table
-    document.getElementById('comparison-table').style.display = 'none';
+    document.getElementById('comparison-table').classList.remove('active');
   }
 
-  function exportComparison() {
-    if (selectedCharacters.length === 0) {
-      alert('Please select characters to compare before exporting.');
-      return;
-    }
-    
-    const selectedData = selectedCharacters.map(slug => 
-      characterDataProcessed.characters.find(c => c.slug === slug)
-    );
-    
-    // Create formatted text output
-    let textOutput = 'ZONE NOVA - CHARACTER COMPARISON\n';
-    textOutput += '=================================\n\n';
-    textOutput += `Date: ${new Date().toLocaleDateString()}\n`;
-    textOutput += `Characters Compared: ${selectedData.length}\n\n`;
-    
-    selectedData.forEach((char, index) => {
-      textOutput += `--- CHARACTER ${index + 1} ---\n`;
-      textOutput += `Name: ${char.name}\n`;
-      textOutput += `Rarity: ${char.rarity}\n`;
-      textOutput += `Element: ${char.element}\n`;
-      textOutput += `Role: ${char.role}\n\n`;
-      
-      textOutput += 'BASE STATS:\n';
-      const stats = char.stats || {};
-      textOutput += `  HP: ${stats.hp !== undefined ? stats.hp.toLocaleString() : 'N/A'}\n`;
-      textOutput += `  ATK: ${stats.attack !== undefined ? stats.attack.toLocaleString() : 'N/A'}\n`;
-      textOutput += `  DEF: ${stats.defense !== undefined ? stats.defense.toLocaleString() : 'N/A'}\n`;
-      textOutput += `  Energy Recovery: ${stats.energyRecovery !== undefined ? stats.energyRecovery : 'N/A'}\n`;
-      textOutput += `  CRIT Rate: ${stats.critRate !== undefined ? stats.critRate + '%' : 'N/A'}\n`;
-      textOutput += `  CRIT DMG: ${stats.critDmg !== undefined ? stats.critDmg + '%' : 'N/A'}\n\n`;
-      
-      textOutput += 'TEAM SKILL:\n';
-      if (char.teamSkill) {
-        textOutput += `  Name: ${char.teamSkill.name}\n`;
-        textOutput += `  Description: ${char.teamSkill.description}\n`;
-        if (char.teamSkill.requirements) {
-          textOutput += `  Conditions: ${char.teamSkill.requirements.faction} faction + ${char.teamSkill.requirements.element} element\n\n`;
-        } else {
-          textOutput += `  Conditions: No conditions specified\n\n`;
-        }
-      } else {
-        textOutput += `  No team skill available\n\n`;
-      }
-    });
-    
-    const dataBlob = new Blob([textOutput], { type: 'text/plain' });
-    const url = URL.createObjectURL(dataBlob);
-    
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'zone-nova-character-comparison.txt';
-    link.click();
-    
-    URL.revokeObjectURL(url);
-  }
 </script>

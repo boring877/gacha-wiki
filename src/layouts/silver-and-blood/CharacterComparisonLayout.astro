@@ -24,7 +24,7 @@ const { title, description } = Astro.props;
 
 <html lang="en">
 	<head>
-		<BaseHead title={title || ''} description={description || ''} />
+		<BaseHead title={title || ''} description={description || ''} shouldPreloadDefaultImage={false} />
 		<!-- SAB comparison styles need to override global styles, so we load them last -->
 		<style is:global>
 			@import '../../styles/games/silver-and-blood/sab-character-comparison.css';
@@ -54,24 +54,22 @@ const { title, description } = Astro.props;
 		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 		
 		<!-- Schema.org Structured Data -->
-		<script type="application/ld+json">
-			{JSON.stringify({
-				"@context": "https://schema.org",
-				"@type": "WebApplication",
-				"name": title,
-				"description": description || "Compare Silver and Blood characters side by side",
-				"about": {
-					"@type": "VideoGame",
-					"name": "Silver and Blood"
-				},
-				"publisher": {
-					"@type": "Organization",
-					"name": "GachaWiki"
-				},
-				"applicationCategory": "GameApplication",
-				"operatingSystem": "Web Browser"
-			})}
-		</script>
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "WebApplication",
+			"name": title,
+			"description": description || "Compare Silver and Blood characters side by side",
+			"about": {
+				"@type": "VideoGame",
+				"name": "Silver and Blood"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "GachaWiki"
+			},
+			"applicationCategory": "GameApplication",
+			"operatingSystem": "Web Browser"
+		})}></script>
 		
 		<slot name="head" />
 	</head>
