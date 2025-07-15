@@ -85,7 +85,7 @@ async function sendUpdateFromFile(filePath, webhookUrl) {
       updateData = updateModule.updateData;
     } else {
       // Look for any export that looks like update data
-      for (const [key, value] of Object.entries(updateModule)) {
+      for (const [, value] of Object.entries(updateModule)) {
         if (value && typeof value === 'object' && value.title && value.date) {
           updateData = value;
           break;

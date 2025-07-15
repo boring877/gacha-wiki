@@ -184,19 +184,12 @@ Final Damage = 972,950 / 1,945.9 × 0.25 = 125.0</pre>
 </DamageMechanicsPageLayout>
 
 <script define:vars={{ kValue: GAMES.ZONE_NOVA.DAMAGE_K_VALUE }}>
-  // Declare the function on the Window interface
-  declare global {
-    interface Window {
-      calculateDamage: () => void;
-    }
-  }
-
   // Make calculateDamage function global
   window.calculateDamage = function () {
     // Get elements with null checks
-    const attackElement = document.getElementById('attack') as HTMLInputElement;
-    const defenseElement = document.getElementById('defense') as HTMLInputElement;
-    const damageReductionElement = document.getElementById('damageReduction') as HTMLInputElement;
+    const attackElement = document.getElementById('attack');
+    const defenseElement = document.getElementById('defense');
+    const damageReductionElement = document.getElementById('damageReduction');
     const finalDamageElement = document.getElementById('finalDamage');
     const percentageElement = document.getElementById('percentage');
     const calculationElement = document.getElementById('calculation');
