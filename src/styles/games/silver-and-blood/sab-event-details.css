@@ -555,6 +555,19 @@
   flex-wrap: wrap;
 }
 
+.source-link {
+  color: var(--sab-accent);
+  text-decoration: none;
+  transition: var(--sab-transition);
+  border-bottom: 1px solid transparent;
+}
+
+.source-link:hover {
+  color: var(--sab-primary-light);
+  border-bottom: 1px solid var(--sab-primary-light);
+  text-decoration: none;
+}
+
 .source-label {
   margin: 0;
   color: var(--sab-text-muted);

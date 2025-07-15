@@ -1,5 +1,12 @@
 export const silverAndBloodEvents = [
   {
+    id: 'summertime-ensemble',
+    title: 'Summertime Ensemble Event',
+    date: 'July 17, 2025',
+    summary: 'A massive summer event featuring story adventures on Sapphire Isle, new vassals Lorelei and Fleeting Bella, exploration, challenges, and mini-games',
+    url: '/guides/silver-and-blood/events/summertime-ensemble/'
+  },
+  {
     id: 'far-side-of-the-moon',
     title: 'Far Side of the Moon',
     date: 'July 5, 2025',

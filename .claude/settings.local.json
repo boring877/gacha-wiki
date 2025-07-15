@@ -71,6 +71,9 @@
       "WebFetch(domain:typicode.github.io)",
       "Bash(npx lint-staged:*)"
     ],
-    "deny": []
+    "deny": [ "Bash(npm run build:*)",
+        "Bash(npm run dev:*)",
+        "Bash(bun run build:*)",
+        "Bash(bun run dev:*)"]
   }
 }
