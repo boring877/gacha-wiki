@@ -163,13 +163,16 @@ export function initializeHomepage(clockGames, showcaseGames) {
     if (showcaseDescription) showcaseDescription.textContent = game.description;
     if (showcaseLink) showcaseLink.href = game.url;
 
-    // Update features - SIMPLE approach
+    // Update features - SECURE approach
     if (showcaseFeatures) {
-      showcaseFeatures.innerHTML = '';
+      // Clear existing content safely
+      while (showcaseFeatures.firstChild) {
+        showcaseFeatures.removeChild(showcaseFeatures.firstChild);
+      }
       game.features.forEach(feature => {
         const tag = document.createElement('div');
         tag.className = 'showcase-feature-tag';
-        tag.textContent = feature;
+        tag.textContent = feature; // Using textContent is safe
         showcaseFeatures.appendChild(tag);
       });
     }
@@ -179,7 +182,10 @@ export function initializeHomepage(clockGames, showcaseGames) {
   function createIndicators() {
     if (!gameIndicators) return;
 
-    gameIndicators.innerHTML = '';
+    // Clear existing content safely
+    while (gameIndicators.firstChild) {
+      gameIndicators.removeChild(gameIndicators.firstChild);
+    }
     clockGames.forEach((game, index) => {
       const dot = document.createElement('div');
       dot.className = 'indicator-dot';
@@ -219,7 +225,7 @@ export function initializeHomepage(clockGames, showcaseGames) {
       switchToGame(nextIndex, 'auto');
       // Sync showcase with clock
       updateShowcase(nextIndex);
-    }, 6000); // Switch every 6 seconds
+    }, 6000); // Switch every 6 seconds - TODO: import from timing-constants.ts
   }
 
   // Stop auto-rotation
@@ -274,7 +280,7 @@ export function initializeHomepage(clockGames, showcaseGames) {
     const savedGameId = localStorage.getItem('master-clock-game');
     const lastInteraction = localStorage.getItem('master-clock-last-interaction');
     const now = Date.now();
-    const oneHour = 60 * 60 * 1000;
+    const oneHour = 60 * 60 * 1000; // TODO: import from timing-constants.ts
 
     if (savedGameId && lastInteraction && now - parseInt(lastInteraction) < oneHour) {
       const foundIndex = clockGames.findIndex(game => game.id === savedGameId);
@@ -346,7 +352,7 @@ export function initializeHomepage(clockGames, showcaseGames) {
 
     // Start clock updates
     updateClock();
-    clockUpdateInterval = setInterval(updateClock, 1000);
+    clockUpdateInterval = setInterval(updateClock, 1000); // TODO: import from timing-constants.ts
 
     // Start auto-rotation
     if (isAutoRotating) {

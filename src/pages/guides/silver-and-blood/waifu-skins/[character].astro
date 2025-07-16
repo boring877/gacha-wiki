@@ -1,0 +1,809 @@
+---
+import WaifuCutSceneLayout from '../../../../layouts/silver-and-blood/WaifuCutSceneLayout.astro';
+import { getCharacterSkins, waifuSkins } from '../../../../data/silver-and-blood/waifu-skins.js';
+import SabBackButton from '../../../../components/silver-and-blood/sab-backbutton.astro';
+
+// Generate static paths for all characters
+export async function getStaticPaths() {
+  return waifuSkins.map(character => ({
+    params: { character: character.id },
+  }));
+}
+
+// Get the character parameter from the URL
+const { character } = Astro.params;
+
+// Get character data
+const characterData = getCharacterSkins(character);
+
+// Handle case where character doesn't exist
+if (!characterData) {
+  return Astro.redirect('/guides/silver-and-blood/waifu-skins/');
+}
+
+// Get all character names for navigation
+const allCharacters = waifuSkins.map(char => ({
+  id: char.id,
+  name: char.characterName,
+}));
+
+// Get all skins (no sorting by rarity)
+const allSkins = [...characterData.skins];
+---
+
+<WaifuCutSceneLayout
+  title={`${characterData.characterName} Skins - Silver and Blood - GachaWiki`}
+  description={`Explore all ${characterData.skins.length} skins for ${characterData.characterName} including GIFs, MP4s, and artwork from Silver and Blood`}
+  gameTitle={`${characterData.characterName} Skins`}
+>
+  <!-- Back Button -->
+  <SabBackButton href="/guides/silver-and-blood/waifu-skins/" text="Back to Waifu Skins Gallery" />
+
+  <!-- Character Header -->
+  <div class="character-header">
+    <div class="character-portrait">
+      <img src={characterData.image} alt={characterData.characterName} />
+    </div>
+    <div class="character-details">
+      <h2 class="character-title">{characterData.characterName}</h2>
+      <p class="character-skin-count">{characterData.skins.length} skins available</p>
+    </div>
+  </div>
+
+  <!-- Character Navigation -->
+  <div class="character-navigation">
+    <div class="nav-scroll">
+      {
+        allCharacters.map(char => (
+          <a
+            href={`/guides/silver-and-blood/waifu-skins/${char.id}/`}
+            class={`char-nav-link ${char.id === character ? 'active' : ''}`}
+          >
+            {char.name}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- All Skins -->
+  <div class="skins-section">
+    <h3 class="skins-title">
+      All Skins
+      <span class="skins-badge">{allSkins.length}</span>
+    </h3>
+
+    <div class="skins-grid">
+      {
+        allSkins.map(skin => (
+          <div class="skin-card" data-rarity={skin.rarity}>
+            <div
+              class="skin-media-container"
+              data-media-url={skin.mediaUrl}
+              data-skin-name={skin.name}
+              data-skin-type={skin.type}
+            >
+              {skin.type === 'mp4' ? (
+                <video
+                  src={skin.mediaUrl}
+                  poster={skin.thumbnailUrl}
+                  muted
+                  loop
+                  class="skin-video"
+                  preload="metadata"
+                  playsinline
+                >
+                  <img src={skin.thumbnailUrl} alt={skin.name} />
+                </video>
+              ) : skin.type === 'gif' ? (
+                <img src={skin.mediaUrl} alt={skin.name} class="skin-gif" loading="lazy" />
+              ) : (
+                <img src={skin.mediaUrl} alt={skin.name} class="skin-image" loading="lazy" />
+              )}
+
+              <div class="skin-overlay">
+                <div class="skin-type-badge">{skin.type.toUpperCase()}</div>
+                <div class="click-hint">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                  </svg>
+                  <span>Click to view</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skin-info">
+              <h4 class="skin-name">{skin.name}</h4>
+              <p class="skin-description">{skin.description}</p>
+              <div class="skin-tags">
+                {skin.tags.map(tag => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</WaifuCutSceneLayout>
+
+<!-- Fullscreen Modal -->
+<div id="fullscreen-modal" class="fullscreen-modal">
+  <div class="modal-backdrop" onclick="closeFullscreen()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeFullscreen()">×</button>
+    <div class="modal-media" id="modal-media">
+      <!-- Media content will be inserted here -->
+    </div>
+    <div class="modal-info">
+      <h3 id="modal-title"></h3>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Import waifu skins styles - Using relative import */
+  @import '../../../../styles/games/silver-and-blood/sab-waifu-skins.css';
+
+  /* Character-specific page styles */
+  .character-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(28, 28, 28, 0.9);
+    border-radius: 16px;
+    border: 1px solid rgba(166, 77, 77, 0.3);
+  }
+
+  .character-portrait {
+    flex-shrink: 0;
+  }
+
+  .character-portrait img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--sab-light-blue);
+  }
+
+  .character-details {
+    flex: 1;
+  }
+
+  .character-title {
+    color: var(--sab-light-blue);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .character-skin-count {
+    color: #b3b3b3;
+    font-size: 1.2rem;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .character-navigation {
+    margin-bottom: 3rem;
+    background: rgba(28, 28, 28, 0.9);
+    border-radius: 16px;
+    padding: 1rem;
+    border: 1px solid rgba(166, 77, 77, 0.3);
+  }
+
+  .nav-scroll {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0.5rem;
+  }
+
+  .char-nav-link {
+    flex-shrink: 0;
+    padding: 0.75rem 1.5rem;
+    background: rgba(166, 77, 77, 0.1);
+    color: #b3b3b3;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 1px solid rgba(166, 77, 77, 0.3);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .char-nav-link:hover {
+    background: var(--sab-light-blue);
+    color: white;
+    border-color: var(--sab-light-blue);
+  }
+
+  .char-nav-link.active {
+    background: var(--sab-calm-red);
+    color: white;
+    border-color: var(--sab-calm-red);
+  }
+
+  .skins-section {
+    margin-bottom: 4rem;
+  }
+
+  .skins-title {
+    color: var(--sab-light-blue);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--sab-calm-red);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .skins-badge {
+    background: var(--sab-calm-red);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .skins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .skin-card {
+    background: rgba(28, 28, 28, 0.9);
+    border-radius: 16px;
+    border: 1px solid rgba(166, 77, 77, 0.3);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .skin-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--sab-light-blue);
+    box-shadow: 0 16px 32px rgba(166, 77, 77, 0.3);
+  }
+
+  .skin-media-container {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .skin-media-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(166, 77, 77, 0.4);
+  }
+
+  .skin-video,
+  .skin-gif,
+  .skin-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .skin-card:hover .skin-video,
+  .skin-card:hover .skin-gif,
+  .skin-card:hover .skin-image {
+    transform: scale(1.05);
+  }
+
+  .skin-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent, rgba(0, 0, 0, 0.7));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    pointer-events: none;
+  }
+
+  .skin-card:hover .skin-overlay {
+    opacity: 1;
+  }
+
+  .skin-type-badge {
+    background: var(--sab-calm-red);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .click-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(28, 28, 28, 0.9);
+    color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .click-hint svg {
+    opacity: 0.8;
+  }
+
+  .skin-info {
+    padding: 1.5rem;
+  }
+
+  .skin-name {
+    color: var(--sab-light-blue);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .skin-description {
+    color: #b3b3b3;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0 0 1rem 0;
+  }
+
+  .skin-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: rgba(166, 77, 77, 0.2);
+    color: var(--sab-light-blue);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(166, 77, 77, 0.3);
+  }
+
+  /* Fullscreen Modal */
+  .fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+  }
+
+  .fullscreen-modal.active {
+    display: flex;
+  }
+
+  .modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: fit-content;
+    height: fit-content;
+    background: rgba(28, 28, 28, 0.95);
+    border-radius: 16px;
+    border: 1px solid rgba(166, 77, 77, 0.3);
+    overflow: hidden;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(28, 28, 28, 0.9);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1002;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-weight: normal;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .modal-close:hover {
+    background: var(--sab-calm-red);
+    transform: scale(1.1);
+    border-color: var(--sab-calm-red);
+  }
+
+  .modal-close:active {
+    transform: scale(0.95);
+  }
+
+  .modal-media {
+    max-width: 80vw;
+    max-height: 70vh;
+  }
+
+  .modal-media video,
+  .modal-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .modal-info {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .modal-info h3 {
+    color: var(--sab-light-blue);
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .character-header {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .character-portrait img {
+      width: 100px;
+      height: 133px;
+    }
+
+    .character-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .character-skin-count {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .skins-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+
+    .skin-media-container {
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .skin-overlay {
+      padding: 0.75rem;
+    }
+
+    .click-hint {
+      padding: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .click-hint svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .nav-scroll {
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .char-nav-link {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      min-width: 80px;
+    }
+
+    .character-navigation {
+      margin-bottom: 2rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    .modal-content {
+      max-width: 95vw;
+      max-height: 95vh;
+      margin: 1rem;
+    }
+
+    .modal-media {
+      max-width: 90vw;
+      max-height: 60vh;
+    }
+
+    .modal-close {
+      width: 50px;
+      height: 50px;
+      font-size: 2rem;
+      top: 0.5rem;
+      right: 0.5rem;
+    }
+
+    .skin-info {
+      padding: 1rem;
+    }
+
+    .skin-name {
+      font-size: 1.1rem;
+    }
+
+    .skin-description {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .character-header {
+      padding: 1rem;
+    }
+
+    .character-title {
+      font-size: 1.5rem;
+    }
+
+    .skins-grid {
+      padding: 0 0.5rem;
+    }
+
+    .skin-card {
+      border-radius: 12px;
+    }
+
+    .click-hint span {
+      font-size: 0.75rem;
+    }
+
+    .nav-scroll {
+      padding: 0.5rem;
+    }
+
+    .char-nav-link {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      min-width: 70px;
+    }
+  }
+</style>
+
+<script>
+  // Fullscreen modal functionality
+  function openFullscreen(mediaUrl: string, title: string, type: string) {
+    const modal = document.getElementById('fullscreen-modal');
+    const modalMedia = document.getElementById('modal-media');
+    const modalTitle = document.getElementById('modal-title');
+
+    // Check if elements exist before proceeding
+    if (!modal || !modalMedia || !modalTitle) {
+      return;
+    }
+
+    // Clear previous content safely
+    while (modalMedia.firstChild) {
+      modalMedia.removeChild(modalMedia.firstChild);
+    }
+
+    // Create media element
+    if (type === 'mp4') {
+      const video = document.createElement('video');
+      video.src = mediaUrl;
+      video.controls = true;
+      video.autoplay = true;
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true; // Better mobile support
+      video.style.maxWidth = '100%';
+      video.style.maxHeight = '100%';
+      modalMedia.appendChild(video);
+    } else {
+      const img = document.createElement('img');
+      img.src = mediaUrl;
+      img.alt = title;
+      img.style.maxWidth = '100%';
+      img.style.maxHeight = '100%';
+      img.style.objectFit = 'contain';
+      modalMedia.appendChild(img);
+    }
+
+    modalTitle.textContent = title;
+    modal.classList.add('active');
+
+    // Prevent background scrolling and lock viewport
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = '0';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.bottom = '0';
+
+    // Ensure modal is on top and centered
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100vw';
+    modal.style.height = '100vh';
+
+    // Add smooth animation
+    setTimeout(() => {
+      modal.style.opacity = '1';
+    }, 10);
+  }
+
+  function closeFullscreen() {
+    const modal = document.getElementById('fullscreen-modal');
+
+    if (!modal) {
+      return;
+    }
+
+    // Smooth close animation
+    modal.style.opacity = '0';
+
+    setTimeout(() => {
+      modal.classList.remove('active');
+
+      // Restore background scrolling and body positioning
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.bottom = '';
+
+      // Stop any playing videos
+      const videos = modal.querySelectorAll('video');
+      videos.forEach(video => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    }, 200);
+  }
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeFullscreen();
+    }
+  });
+
+  // Make functions available globally
+  (window as any).openFullscreen = openFullscreen;
+  (window as any).closeFullscreen = closeFullscreen;
+
+  // Direct click on media containers
+  document.addEventListener('click', function (e) {
+    if (!e.target || !(e.target instanceof Element)) return;
+    const mediaContainer = e.target.closest('.skin-media-container');
+    if (mediaContainer) {
+      // Prevent click if it's on video controls
+      if (e.target instanceof HTMLVideoElement && e.target.controls) {
+        return;
+      }
+
+      const mediaUrl = (mediaContainer as HTMLElement).dataset.mediaUrl;
+      const skinName = (mediaContainer as HTMLElement).dataset.skinName;
+      const skinType = (mediaContainer as HTMLElement).dataset.skinType;
+
+      // Validate data before using
+      if (mediaUrl && skinName && skinType) {
+        openFullscreen(mediaUrl, skinName, skinType);
+      }
+    }
+
+    // Handle modal close button clicks
+    if (e.target && e.target instanceof Element && e.target.classList.contains('modal-close')) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeFullscreen();
+    }
+
+    // Handle backdrop clicks
+    if (e.target && e.target instanceof Element && e.target.classList.contains('modal-backdrop')) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeFullscreen();
+    }
+  });
+
+  // Lazy loading for better performance
+  let imageObserver: IntersectionObserver | null = null;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+    if ('IntersectionObserver' in window) {
+      imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement;
+            img.src = (img as any).dataset.src || img.src;
+            img.classList.remove('lazy');
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      lazyImages.forEach(img => {
+        if (imageObserver) {
+          imageObserver.observe(img);
+        }
+      });
+    }
+  });
+
+  // Cleanup function to prevent memory leaks
+  function cleanup() {
+    if (imageObserver) {
+      imageObserver.disconnect();
+      imageObserver = null;
+    }
+  }
+
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', cleanup);
+
+  // Cleanup for Astro navigation
+  document.addEventListener('astro:before-preparation', cleanup);
+  document.addEventListener('astro:before-swap', cleanup);
+</script>

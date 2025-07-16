@@ -723,9 +723,45 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
         }
       }
 
+      // Cleanup function to prevent memory leaks
+      function cleanup() {
+        if (autoRotateInterval) {
+          clearInterval(autoRotateInterval);
+          autoRotateInterval = null;
+        }
+        if (clockUpdateInterval) {
+          clearInterval(clockUpdateInterval);
+          clockUpdateInterval = null;
+        }
+        if (observer) {
+          observer.disconnect();
+          observer = null;
+        }
+
+        // Remove event listeners
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+        window.removeEventListener('resize', handleWindowResize);
+
+        // Clean up any other intervals or timeouts
+        const intervals = ['autoRotateInterval', 'clockUpdateInterval'];
+        intervals.forEach(intervalName => {
+          if (window[intervalName]) {
+            clearInterval(window[intervalName]);
+            window[intervalName] = null;
+          }
+        });
+      }
+
       // Initialize everything
       initializeClock();
       initializeShowcase();
+
+      // Cleanup on page unload
+      window.addEventListener('beforeunload', cleanup);
+
+      // Cleanup on page visibility change (for SPA navigation)
+      document.addEventListener('astro:before-preparation', cleanup);
+      document.addEventListener('astro:before-swap', cleanup);
     });
   </script>
 </HomeLayout>

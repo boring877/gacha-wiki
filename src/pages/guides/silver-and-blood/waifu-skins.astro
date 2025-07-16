@@ -1,0 +1,200 @@
+---
+import WaifuCutSceneLayout from '../../../layouts/silver-and-blood/WaifuCutSceneLayout.astro';
+import { waifuSkins, getCharacterNames } from '../../../data/silver-and-blood/waifu-skins.js';
+
+// Get character data for the landing page
+const characterNames = getCharacterNames();
+---
+
+<WaifuCutSceneLayout
+  title="Waifu Skins - Silver and Blood - GachaWiki"
+  description="Explore stunning character skins including GIFs, MP4s, and artwork from Silver and Blood's most beloved waifu characters"
+  gameTitle="Waifu Skins Gallery"
+>
+  <!-- Character Selection Grid -->
+  <div class="character-selection">
+    <h3 class="subsection-title">Choose Your Character</h3>
+
+    <div class="character-grid">
+      {
+        characterNames.map(character => (
+          <a href={`/guides/silver-and-blood/waifu-skins/${character.id}/`} class="character-card">
+            <div class="character-image">
+              <img src={character.image} alt={character.name} />
+              <div class="character-overlay">
+                <div class="skin-count">{character.skinCount} skins</div>
+              </div>
+            </div>
+            <div class="character-info">
+              <h4 class="character-name">{character.name}</h4>
+              <p class="character-description">View all {character.skinCount} available skins</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</WaifuCutSceneLayout>
+
+<style>
+  /* Import waifu skins styles - Using relative import */
+  @import '../../../styles/games/silver-and-blood/sab-waifu-skins.css';
+
+  /* Additional page-specific styles */
+  .waifu-skins-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(166, 77, 77, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(166, 77, 77, 0.2);
+  }
+
+  .intro-text {
+    color: #b3b3b3;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .skin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(28, 28, 28, 0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(166, 77, 77, 0.3);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--sab-calm-red);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: #b3b3b3;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .character-card {
+    background: rgba(28, 28, 28, 0.9);
+    border-radius: 16px;
+    border: 1px solid rgba(166, 77, 77, 0.3);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .character-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--sab-light-blue);
+    box-shadow: 0 16px 32px rgba(166, 77, 77, 0.3);
+  }
+
+  .character-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .character-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.3s ease;
+  }
+
+  .character-card:hover .character-image img {
+    transform: scale(1.1);
+  }
+
+  .character-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(45deg, var(--sab-calm-red), var(--sab-light-blue));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 0 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .character-info {
+    padding: 1.5rem;
+  }
+
+  .character-name {
+    color: var(--sab-light-blue);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .character-description {
+    color: #b3b3b3;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+</style>
+
+<script>
+  // Interactive functionality for the landing page
+  function showAllSkins() {
+    // Could implement a modal or redirect to a comprehensive view
+    alert('All skins view - to be implemented!');
+  }
+
+  function showRandomSkin() {
+    // Could implement random skin selection
+    alert('Random skin feature - to be implemented!');
+  }
+
+  function showLatestSkins() {
+    // Could implement latest skins view
+    alert('Latest skins view - to be implemented!');
+  }
+
+  // Add smooth scrolling for internal links
+  document.addEventListener('DOMContentLoaded', function () {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
+      });
+    });
+  });
+</script>

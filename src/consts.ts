@@ -15,9 +15,8 @@ export const SITE = {
     X: 'https://x.com/EcchiPen',
     RUMBLE: 'https://rumble.com/user/EcchiPen',
   },
-  WEBHOOK: {
-    ZONE_NOVA_UPDATES: process.env.ZONE_NOVA_UPDATES || '',
-  },
+  // Webhooks are handled server-side only for security
+  // See scripts/send-discord-update.js for webhook handling
 } as const;
 
 // Game configurations

@@ -25,6 +25,16 @@ const {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/tabicoin.svg" />
+
+<!-- Security Headers -->
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https:; connect-src 'self' https://vercel.live https://vitals.vercel-insights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
+/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="X-Frame-Options" content="DENY" />
+<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 <!-- <link rel="manifest" href="/manifest.json" /> -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
@@ -228,10 +238,25 @@ const {
     }
   }
 
-  /* GPU acceleration for all elements */
-  * {
+  /* GPU acceleration only for specific animated elements */
+  .animated,
+  .rotating,
+  .sliding,
+  .showcase-container,
+  .master-clock,
+  .skin-card:hover {
     transform: translateZ(0);
     backface-visibility: hidden;
+  }
+
+  /* Optimize will-change for animations */
+  .animated {
+    will-change: transform, opacity;
+  }
+
+  /* Remove will-change after animation completes */
+  .animation-complete {
+    will-change: auto;
   }
 </style>
 

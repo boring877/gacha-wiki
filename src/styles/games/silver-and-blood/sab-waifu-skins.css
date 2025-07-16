@@ -1,0 +1,794 @@
+/* Silver and Blood Waifu Skins Styles */
+/* This file contains styles specifically for the Waifu Skins section */
+
+/* Custom CSS Variables for Waifu Skins */
+:root {
+  --skins-primary: var(--sab-calm-red);
+  --skins-primary-light: var(--sab-light-red);
+  --skins-secondary: var(--sab-dark-red);
+  --skins-accent: var(--sab-light-blue);
+  --skins-text-light: #f5f5dc;
+  --skins-text-muted: #c0c0c0;
+  --skins-bg-dark: #1a1a1a;
+  --skins-bg-card: #2d2d2d;
+  --skins-bg-gradient: var(--sab-blood-gradient);
+  --skins-shadow: 0 8px 32px rgba(166, 77, 77, 0.3);
+  --skins-shadow-light: 0 4px 16px rgba(166, 77, 77, 0.15);
+  --skins-border-radius: 16px;
+  --skins-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Rarity Colors */
+  --skins-legendary: linear-gradient(45deg, #ff6b35, #f7931e);
+  --skins-epic: linear-gradient(45deg, #a855f7, #ec4899);
+  --skins-rare: linear-gradient(45deg, #3b82f6, #1d4ed8);
+  --skins-common: linear-gradient(45deg, #6b7280, #4b5563);
+
+  /* Media Type Colors */
+  --skins-video: #10b981;
+  --skins-gif: #f59e0b;
+  --skins-image: #8b5cf6;
+}
+
+/* Base Waifu Skins Layout */
+.waifu-skins-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.waifu-skins-section {
+  background: var(--skins-bg-dark);
+  border-radius: var(--skins-border-radius);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.waifu-skins-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--skins-bg-gradient);
+  z-index: 1;
+}
+
+/* Header Styles */
+.waifu-skins-header {
+  text-align: center;
+  padding: 3rem 2rem 2rem 2rem;
+  background: var(--skins-bg-card);
+  border-radius: var(--skins-border-radius) var(--skins-border-radius) 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.waifu-skins-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--skins-bg-gradient);
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.waifu-skins-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.waifu-skins-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--skins-text-light);
+  margin: 0 0 1rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(45deg, var(--skins-text-light), var(--skins-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.waifu-skins-description {
+  font-size: 1.2rem;
+  color: var(--skins-text-muted);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Featured Skins Styles */
+.featured-skins {
+  margin: 3rem 0;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.featured-skin-card {
+  background: var(--skins-bg-card);
+  border-radius: var(--skins-border-radius);
+  border: 1px solid var(--skins-primary);
+  overflow: hidden;
+  transition: var(--skins-transition);
+  position: relative;
+}
+
+.featured-skin-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-color: var(--skins-accent);
+  box-shadow: var(--skins-shadow);
+}
+
+.featured-skin-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--skins-bg-gradient);
+  transform: scaleX(0);
+  transition: var(--skins-transition);
+}
+
+.featured-skin-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Rarity Styles */
+.rarity-preview {
+  margin: 3rem 0;
+}
+
+.rarity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.rarity-category {
+  background: var(--skins-bg-card);
+  padding: 2rem;
+  border-radius: var(--skins-border-radius);
+  border: 2px solid;
+  transition: var(--skins-transition);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.rarity-category[data-rarity='legendary'] {
+  border-color: #ff6b35;
+}
+
+.rarity-category[data-rarity='epic'] {
+  border-color: #a855f7;
+}
+
+.rarity-category[data-rarity='rare'] {
+  border-color: #3b82f6;
+}
+
+.rarity-category[data-rarity='common'] {
+  border-color: #6b7280;
+}
+
+.rarity-category:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--skins-shadow);
+}
+
+.rarity-icon {
+  margin-bottom: 1rem;
+}
+
+.rarity-gem {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.rarity-gem[data-rarity='legendary'] {
+  background: var(--skins-legendary);
+  animation: legendaryGlow 2s ease-in-out infinite;
+}
+
+.rarity-gem[data-rarity='epic'] {
+  background: var(--skins-epic);
+  animation: epicGlow 2s ease-in-out infinite;
+}
+
+.rarity-gem[data-rarity='rare'] {
+  background: var(--skins-rare);
+  animation: rareGlow 2s ease-in-out infinite;
+}
+
+.rarity-gem[data-rarity='common'] {
+  background: var(--skins-common);
+}
+
+.rarity-gem::before {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.rarity-name {
+  color: var(--skins-primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rarity-count {
+  color: var(--skins-text-light);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+}
+
+.rarity-description {
+  color: var(--skins-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Character Selection Styles */
+.character-selection {
+  margin: 3rem 0;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.character-card {
+  background: rgba(28, 28, 28, 0.9);
+  border-radius: var(--skins-border-radius);
+  border: 1px solid rgba(166, 77, 77, 0.3);
+  overflow: hidden;
+  transition: var(--skins-transition);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.character-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--skins-accent);
+  box-shadow: var(--skins-shadow);
+}
+
+.character-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(166, 77, 77, 0.1) 0%,
+    transparent 50%,
+    rgba(90, 123, 167, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.character-card:hover::before {
+  opacity: 1;
+}
+
+.character-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.character-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.3s ease;
+}
+
+.character-card:hover .character-image img {
+  transform: scale(1.1);
+}
+
+.character-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(45deg, var(--skins-primary), var(--skins-accent));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 0 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.character-info {
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.character-name {
+  color: var(--skins-accent);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.character-description {
+  color: var(--skins-text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Quick Actions Styles */
+.quick-actions {
+  margin: 3rem 0;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.action-card {
+  background: var(--skins-bg-card);
+  padding: 2rem;
+  border-radius: var(--skins-border-radius);
+  border: 1px solid var(--skins-primary);
+  text-align: center;
+  transition: var(--skins-transition);
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--skins-accent);
+  box-shadow: var(--skins-shadow-light);
+}
+
+.action-card h4 {
+  color: var(--skins-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.action-card p {
+  color: var(--skins-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0 0 1.5rem 0;
+}
+
+.action-button {
+  background: var(--skins-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--skins-transition);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.action-button:hover {
+  background: var(--skins-accent);
+  transform: translateY(-2px);
+}
+
+/* Statistics Styles */
+.skin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: rgba(28, 28, 28, 0.7);
+  border-radius: 12px;
+  border: 1px solid rgba(166, 77, 77, 0.3);
+  transition: var(--skins-transition);
+}
+
+.stat-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--skins-accent);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--skins-primary);
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.stat-label {
+  color: var(--skins-text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Subsection Titles */
+.subsection-title {
+  color: var(--skins-text-light);
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin: 3rem 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--skins-primary);
+  display: inline-block;
+  position: relative;
+}
+
+.subsection-title::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--skins-accent);
+}
+
+/* Skin Media Styles */
+.skin-media {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.skin-video,
+.skin-gif,
+.skin-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.skin-video:hover,
+.skin-gif:hover,
+.skin-image:hover {
+  transform: scale(1.05);
+}
+
+/* Rarity Badges */
+.rarity-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.rarity-badge[data-rarity='legendary'] {
+  background: var(--skins-legendary);
+  color: white;
+}
+
+.rarity-badge[data-rarity='epic'] {
+  background: var(--skins-epic);
+  color: white;
+}
+
+.rarity-badge[data-rarity='rare'] {
+  background: var(--skins-rare);
+  color: white;
+}
+
+.rarity-badge[data-rarity='common'] {
+  background: var(--skins-common);
+  color: white;
+}
+
+/* Skin Details */
+.skin-details {
+  padding: 1.5rem;
+  background: rgba(28, 28, 28, 0.9);
+}
+
+.skin-name {
+  color: var(--skins-accent);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.skin-character {
+  color: var(--skins-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skin-description {
+  color: var(--skins-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.skin-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skin-tags .tag {
+  background: rgba(166, 77, 77, 0.2);
+  color: var(--skins-accent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(166, 77, 77, 0.3);
+  transition: var(--skins-transition);
+}
+
+.skin-tags .tag:hover {
+  background: rgba(166, 77, 77, 0.3);
+  border-color: var(--skins-accent);
+}
+
+/* Animation Keyframes */
+@keyframes legendaryGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
+  }
+}
+
+@keyframes epicGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
+  }
+}
+
+@keyframes rareGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Shimmer effect for legendary items */
+.legendary-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.2), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .waifu-skins-container {
+    padding: 1.5rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .waifu-skins-container {
+    padding: 1rem;
+  }
+
+  .waifu-skins-header {
+    padding: 2rem 1.5rem;
+  }
+
+  .waifu-skins-title {
+    font-size: 2.5rem;
+  }
+
+  .waifu-skins-description {
+    font-size: 1.1rem;
+  }
+
+  .featured-grid,
+  .character-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .rarity-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .skin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .character-info {
+    padding: 1rem;
+  }
+
+  .character-name {
+    font-size: 1.2rem;
+  }
+
+  .subsection-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .waifu-skins-title {
+    font-size: 2rem;
+  }
+
+  .skin-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .character-image {
+    height: 150px;
+  }
+
+  .rarity-gem {
+    width: 50px;
+    height: 50px;
+  }
+
+  .action-card,
+  .rarity-category {
+    padding: 1.5rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .waifu-skins-section {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .character-card,
+  .featured-skin-card,
+  .action-card {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .skin-video,
+  .skin-gif {
+    display: none;
+  }
+
+  .action-button {
+    display: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .character-card,
+  .featured-skin-card,
+  .rarity-category {
+    border-width: 3px;
+  }
+
+  .stat-item {
+    border-width: 2px;
+  }
+
+  .subsection-title {
+    border-bottom-width: 4px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .character-card:hover,
+  .featured-skin-card:hover,
+  .rarity-category:hover {
+    transform: none;
+  }
+
+  .skin-video:hover,
+  .skin-gif:hover,
+  .skin-image:hover {
+    transform: none;
+  }
+}

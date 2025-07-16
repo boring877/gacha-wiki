@@ -119,6 +119,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       category: 'guides',
       status: 'active',
     },
+    {
+      id: 'waifu-skins',
+      title: 'Waifu Skins',
+      emoji: '👗',
+      description:
+        'Browse and discover character skins and cosmetic outfits for Silver and Blood characters.',
+      url: '/guides/silver-and-blood/waifu-skins/',
+      category: 'guides',
+      status: 'active',
+    },
   ],
 };
 
