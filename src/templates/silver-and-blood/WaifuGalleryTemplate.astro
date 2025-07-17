@@ -14,8 +14,6 @@ const { characterData } = Astro.props;
   <!-- Back Button -->
   <SabBackButton href="/guides/silver-and-blood/waifu-gallery/" text="Back to Waifu Gallery" />
 
-
-
   <!-- Character Gallery -->
   <div class="character-gallery-section">
     <h2 class="gallery-title">
@@ -29,7 +27,9 @@ const { characterData } = Astro.props;
           <h3 class="preview-title" id="preview-title">Media Preview</h3>
           <button class="close-preview-btn" onclick="closeMediaPreview(event)">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              ></path>
             </svg>
           </button>
         </div>
@@ -41,76 +41,94 @@ const { characterData } = Astro.props;
 
     <div class="gallery-grid">
       <!-- Character Portrait -->
-      {characterData.image && (
-        <div class="gallery-card" id="image-card" onclick={`showMediaPreview('image', '${characterData.image}', '${characterData.character}')`}>
-          <div class="gallery-media-container">
-            <img
-              data-src={characterData.image}
-              alt={characterData.character}
-              class="character-image lazy-image"
-              loading="lazy"
-              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB2aWV3Qm94PSIwIDAgMSAxIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMyMjIiLz48L3N2Zz4="
-            />
-            <h3 class="gallery-item-name">{characterData.character}</h3>
+      {
+        characterData.image && (
+          <div
+            class="gallery-card"
+            id="image-card"
+            onclick={`showMediaPreview('image', '${characterData.image}', '${characterData.character}')`}
+          >
+            <div class="gallery-media-container">
+              <img
+                data-src={characterData.image}
+                alt={characterData.character}
+                class="character-image lazy-image"
+                loading="lazy"
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB2aWV3Qm94PSIwIDAgMSAxIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMyMjIiLz48L3N2Zz4="
+              />
+              <h3 class="gallery-item-name">{characterData.character}</h3>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       <!-- PV Video -->
-      {characterData.pvVideo && (
-        <div class="gallery-card video-card" id="pv-video-card" onclick={`showMediaPreview('video', '${characterData.pvVideo.url}', '${characterData.character} - PV')`}>
-          <div class="gallery-media-container">
-            <video
-              data-src={characterData.pvVideo.url}
-              muted
-              preload="none"
-              playsinline
-              class="gallery-video lazy-video"
-              poster={characterData.pvVideo.thumbnail}
-              onerror="handleVideoError(this)"
-            >
-              Your browser does not support the video tag.
-            </video>
-            <div class="video-overlay">
-              <div class="play-button">
-                <svg width="50" height="50" viewBox="0 0 50 50">
-                  <circle cx="25" cy="25" r="25" fill="rgba(0,0,0,0.7)"/>
-                  <polygon points="20,15 20,35 35,25" fill="white"/>
-                </svg>
+      {
+        characterData.pvVideo && (
+          <div
+            class="gallery-card video-card"
+            id="pv-video-card"
+            onclick={`showMediaPreview('video', '${characterData.pvVideo.url}', '${characterData.character} - PV')`}
+          >
+            <div class="gallery-media-container">
+              <video
+                data-src={characterData.pvVideo.url}
+                muted
+                preload="none"
+                playsinline
+                class="gallery-video lazy-video"
+                poster={characterData.pvVideo.thumbnail}
+                onerror="handleVideoError(this)"
+              >
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay">
+                <div class="play-button">
+                  <svg width="50" height="50" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="25" fill="rgba(0,0,0,0.7)" />
+                    <polygon points="20,15 20,35 35,25" fill="white" />
+                  </svg>
+                </div>
               </div>
+              <h3 class="gallery-item-name">PV Video</h3>
             </div>
-            <h3 class="gallery-item-name">PV Video</h3>
           </div>
-        </div>
-      )}
+        )
+      }
 
       <!-- Character Introduction Video -->
-      {characterData.characterVideo && (
-        <div class="gallery-card video-card" id="intro-video-card" onclick={`showMediaPreview('video', '${characterData.characterVideo.url}', '${characterData.character} - Character Intro')`}>
-          <div class="gallery-media-container">
-            <video
-              data-src={characterData.characterVideo.url}
-              muted
-              preload="none"
-              playsinline
-              class="gallery-video lazy-video"
-              poster={characterData.characterVideo.thumbnail}
-              onerror="handleVideoError(this)"
-            >
-              Your browser does not support the video tag.
-            </video>
-            <div class="video-overlay">
-              <div class="play-button">
-                <svg width="50" height="50" viewBox="0 0 50 50">
-                  <circle cx="25" cy="25" r="25" fill="rgba(0,0,0,0.7)"/>
-                  <polygon points="20,15 20,35 35,25" fill="white"/>
-                </svg>
+      {
+        characterData.characterVideo && (
+          <div
+            class="gallery-card video-card"
+            id="intro-video-card"
+            onclick={`showMediaPreview('video', '${characterData.characterVideo.url}', '${characterData.character} - Character Intro')`}
+          >
+            <div class="gallery-media-container">
+              <video
+                data-src={characterData.characterVideo.url}
+                muted
+                preload="none"
+                playsinline
+                class="gallery-video lazy-video"
+                poster={characterData.characterVideo.thumbnail}
+                onerror="handleVideoError(this)"
+              >
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay">
+                <div class="play-button">
+                  <svg width="50" height="50" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="25" fill="rgba(0,0,0,0.7)" />
+                    <polygon points="20,15 20,35 35,25" fill="white" />
+                  </svg>
+                </div>
               </div>
+              <h3 class="gallery-item-name">Character Intro</h3>
             </div>
-            <h3 class="gallery-item-name">Character Intro</h3>
           </div>
-        </div>
-      )}
+        )
+      }
     </div>
   </div>
 
@@ -128,35 +146,35 @@ const { characterData } = Astro.props;
     </div>
   </div>
 
-<script>
-  // Media preview section functionality
-  function showMediaPreview(type: string, url: string, title: string) {
-    const previewSection = document.getElementById('media-preview-section');
-    const previewContent = document.getElementById('preview-content');
-    const previewTitle = document.getElementById('preview-title');
-    
-    if (!previewSection || !previewContent || !previewTitle) return;
-    
-    // Clear previous content
-    while (previewContent.firstChild) {
-      previewContent.removeChild(previewContent.firstChild);
-    }
-    
-    // Set title
-    previewTitle.textContent = title;
-    
-    if (type === 'image') {
-      // Create image element
-      previewContent.innerHTML = `
+  <script>
+    // Media preview section functionality
+    function showMediaPreview(type: string, url: string, title: string) {
+      const previewSection = document.getElementById('media-preview-section');
+      const previewContent = document.getElementById('preview-content');
+      const previewTitle = document.getElementById('preview-title');
+
+      if (!previewSection || !previewContent || !previewTitle) return;
+
+      // Clear previous content
+      while (previewContent.firstChild) {
+        previewContent.removeChild(previewContent.firstChild);
+      }
+
+      // Set title
+      previewTitle.textContent = title;
+
+      if (type === 'image') {
+        // Create image element
+        previewContent.innerHTML = `
         <img 
           src="${url}" 
           alt="${title}"
           class="preview-media-image"
         />
       `;
-    } else if (type === 'video') {
-      // Create video element
-      previewContent.innerHTML = `
+      } else if (type === 'video') {
+        // Create video element
+        previewContent.innerHTML = `
         <video 
           src="${url}" 
           controls
@@ -168,62 +186,87 @@ const { characterData } = Astro.props;
           <p>Your browser does not support the video tag.</p>
         </video>
       `;
-    }
-    
-    // Show preview section
-    previewSection.style.display = 'block';
-    
-    // Smooth scroll to preview section
-    setTimeout(() => {
-      previewSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  }
+      }
 
-  function closeMediaPreview(event?: Event) {
-    if (event) {
-      event.stopPropagation();
-      event.preventDefault();
-    }
-    
-    const previewSection = document.getElementById('media-preview-section');
-    const previewContent = document.getElementById('preview-content');
-    
-    if (!previewSection || !previewContent) return;
-    
-    // Stop any playing videos
-    const videos = previewContent.querySelectorAll('video');
-    videos.forEach(video => {
-      video.pause();
-      video.currentTime = 0;
-    });
-    
-    // Hide preview section
-    previewSection.style.display = 'none';
-    
-    // Clear content
-    while (previewContent.firstChild) {
-      previewContent.removeChild(previewContent.firstChild);
-    }
-  }
+      // Show preview section
+      previewSection.style.display = 'block';
 
-  // Image preview functionality (keeping for images)
-  function openImagePreview(imageUrl: string, title: string) {
-    const modal = document.getElementById('preview-modal');
-    const modalMedia = document.getElementById('preview-media');
-    const modalTitle = document.getElementById('preview-title');
+      // More mobile-friendly scroll behavior
+      setTimeout(() => {
+        // Check if we're on mobile
+        const isMobile = window.innerWidth <= 768;
 
-    if (!modal || !modalMedia || !modalTitle) {
-      console.error('Preview modal elements not found');
-      return;
+        if (isMobile) {
+          // On mobile, use a gentler scroll approach
+          const rect = previewSection.getBoundingClientRect();
+          const scrollTarget = window.scrollY + rect.top - 20; // 20px offset from top
+
+          // Use smooth scrolling with a small offset
+          window.scrollTo({
+            top: scrollTarget,
+            behavior: 'smooth',
+          });
+        } else {
+          // Desktop behavior remains the same
+          previewSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     }
 
-    // Clear previous content
-    while (modalMedia.firstChild) {
-      modalMedia.removeChild(modalMedia.firstChild);
+    function closeMediaPreview(event?: Event) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+
+      const previewSection = document.getElementById('media-preview-section');
+      const previewContent = document.getElementById('preview-content');
+
+      if (!previewSection || !previewContent) return;
+
+      // Stop any playing videos
+      const videos = previewContent.querySelectorAll('video');
+      videos.forEach(video => {
+        video.pause();
+        video.currentTime = 0;
+        // Clean up mobile-specific styles
+        video.style.transform = '';
+        video.style.willChange = '';
+      });
+
+      // Hide preview section
+      previewSection.style.display = 'none';
+
+      // Clear content
+      while (previewContent.firstChild) {
+        previewContent.removeChild(previewContent.firstChild);
+      }
+
+      // Reset scroll-related flags
+      isScrolling = false;
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
     }
 
-    // Create image element
-    modalMedia.innerHTML = `
+    // Image preview functionality (keeping for images)
+    function openImagePreview(imageUrl: string, title: string) {
+      const modal = document.getElementById('preview-modal');
+      const modalMedia = document.getElementById('preview-media');
+      const modalTitle = document.getElementById('preview-title');
+
+      if (!modal || !modalMedia || !modalTitle) {
+        console.error('Preview modal elements not found');
+        return;
+      }
+
+      // Clear previous content
+      while (modalMedia.firstChild) {
+        modalMedia.removeChild(modalMedia.firstChild);
+      }
+
+      // Create image element
+      modalMedia.innerHTML = `
       <img 
         src="${imageUrl}" 
         alt="${title}"
@@ -231,73 +274,73 @@ const { characterData } = Astro.props;
       />
     `;
 
-    modalTitle.textContent = title;
-    
-    // Show modal with animation
-    modal.style.display = 'flex';
-    setTimeout(() => {
-      modal.classList.add('active');
-    }, 10);
+      modalTitle.textContent = title;
 
-    // Prevent background scrolling
-    document.body.style.overflow = 'hidden';
-  }
+      // Show modal with animation
+      modal.style.display = 'flex';
+      setTimeout(() => {
+        modal.classList.add('active');
+      }, 10);
 
-  // Close preview modal
-  function closePreview() {
-    const modal = document.getElementById('preview-modal');
-
-    if (!modal) {
-      return;
+      // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
     }
 
-    // Remove active class and hide modal
-    modal.classList.remove('active');
-    
-    setTimeout(() => {
-      modal.style.display = 'none';
-    }, 300);
+    // Close preview modal
+    function closePreview() {
+      const modal = document.getElementById('preview-modal');
 
-    // Restore body scrolling
-    document.body.style.overflow = '';
-  }
+      if (!modal) {
+        return;
+      }
 
-  // Close modal with Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      closePreview();
-      closeMediaPreview();
+      // Remove active class and hide modal
+      modal.classList.remove('active');
+
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+
+      // Restore body scrolling
+      document.body.style.overflow = '';
     }
-  });
 
-  // Lazy loading implementation
-  const observerOptions = {
-    root: null,
-    rootMargin: '50px',
-    threshold: 0.1
-  };
-
-  const lazyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const element = entry.target as HTMLImageElement | HTMLVideoElement;
-        const src = element.getAttribute('data-src');
-        if (src) {
-          element.src = src;
-          element.removeAttribute('data-src');
-          element.classList.add('loaded');
-          element.classList.remove('lazy-image', 'lazy-video');
-        }
-        lazyObserver.unobserve(element);
+    // Close modal with Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closePreview();
+        closeMediaPreview();
       }
     });
-  }, observerOptions);
 
-  // Error handling for videos
-  function handleVideoError(videoElement: HTMLVideoElement) {
-    const container = videoElement.closest('.gallery-media-container');
-    if (container) {
-      container.innerHTML = `
+    // Lazy loading implementation
+    const observerOptions = {
+      root: null,
+      rootMargin: '50px',
+      threshold: 0.1,
+    };
+
+    const lazyObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const element = entry.target as HTMLImageElement | HTMLVideoElement;
+          const src = element.getAttribute('data-src');
+          if (src) {
+            element.src = src;
+            element.removeAttribute('data-src');
+            element.classList.add('loaded');
+            element.classList.remove('lazy-image', 'lazy-video');
+          }
+          lazyObserver.unobserve(element);
+        }
+      });
+    }, observerOptions);
+
+    // Error handling for videos
+    function handleVideoError(videoElement: HTMLVideoElement) {
+      const container = videoElement.closest('.gallery-media-container');
+      if (container) {
+        container.innerHTML = `
         <div class="error-state">
           <svg class="error-icon" width="50" height="50" viewBox="0 0 50 50" fill="white">
             <circle cx="25" cy="25" r="20" stroke="white" stroke-width="2" fill="none"/>
@@ -307,46 +350,79 @@ const { characterData } = Astro.props;
           <button class="retry-button" onclick="location.reload()">Retry</button>
         </div>
       `;
-    }
-  }
-
-  // Initialize lazy loading
-  document.addEventListener('DOMContentLoaded', function() {
-    const lazyImages = document.querySelectorAll('.lazy-image, .lazy-video');
-    lazyImages.forEach(img => lazyObserver.observe(img));
-  });
-
-  // Touch gesture support
-  let touchStartX = 0;
-  let touchStartY = 0;
-
-  document.addEventListener('touchstart', function(e) {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  });
-
-  document.addEventListener('touchend', function(e) {
-    const touchEndX = e.changedTouches[0].clientX;
-    const touchEndY = e.changedTouches[0].clientY;
-    
-    const diffX = touchStartX - touchEndX;
-    const diffY = touchStartY - touchEndY;
-    
-    // Swipe down to close preview
-    if (diffY < -100 && Math.abs(diffX) < 50) {
-      const previewSection = document.getElementById('media-preview-section');
-      if (previewSection && previewSection.style.display !== 'none') {
-        closeMediaPreview();
       }
     }
-  });
 
-  // Make functions available globally
-  (window as any).showMediaPreview = showMediaPreview;
-  (window as any).closeMediaPreview = closeMediaPreview;
-  (window as any).openImagePreview = openImagePreview;
-  (window as any).closePreview = closePreview;
-  (window as any).handleVideoError = handleVideoError;
-</script>
+    // Initialize lazy loading
+    document.addEventListener('DOMContentLoaded', function () {
+      const lazyImages = document.querySelectorAll('.lazy-image, .lazy-video');
+      lazyImages.forEach(img => lazyObserver.observe(img));
+    });
 
+    // Touch gesture support and mobile scroll handling
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isScrolling = false;
+    let scrollTimeout: NodeJS.Timeout;
+
+    document.addEventListener('touchstart', function (e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    });
+
+    document.addEventListener('touchend', function (e) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const touchEndY = e.changedTouches[0].clientY;
+
+      const diffX = touchStartX - touchEndX;
+      const diffY = touchStartY - touchEndY;
+
+      // Swipe down to close preview
+      if (diffY < -100 && Math.abs(diffX) < 50) {
+        const previewSection = document.getElementById('media-preview-section');
+        if (previewSection && previewSection.style.display !== 'none') {
+          closeMediaPreview();
+        }
+      }
+    });
+
+    // Prevent video removal during mobile scrolling
+    function handleScroll() {
+      const previewSection = document.getElementById('media-preview-section');
+      if (!previewSection || previewSection.style.display === 'none') return;
+
+      // Mark that we're scrolling
+      isScrolling = true;
+
+      // Clear existing timeout
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+
+      // Set flag to false after scrolling stops
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 150);
+
+      // Ensure video stays visible during scroll on mobile
+      if (window.innerWidth <= 768) {
+        const previewVideo = previewSection.querySelector('.preview-media-video');
+        if (previewVideo) {
+          // Force hardware acceleration to prevent removal
+          previewVideo.style.transform = 'translateZ(0)';
+          previewVideo.style.willChange = 'transform';
+        }
+      }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Make functions available globally
+    (window as any).showMediaPreview = showMediaPreview;
+    (window as any).closeMediaPreview = closeMediaPreview;
+    (window as any).openImagePreview = openImagePreview;
+    (window as any).closePreview = closePreview;
+    (window as any).handleVideoError = handleVideoError;
+  </script>
 </WaifuGalleryLayout>

@@ -96,7 +96,12 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-blue));
+  background: linear-gradient(
+    90deg,
+    var(--sab-calm-red),
+    var(--sab-blue-silver),
+    var(--sab-calm-blue)
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -235,6 +240,11 @@
   border: 1px solid #3a3a3a;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 10;
+  /* Prevent mobile scroll interference */
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 .preview-container {
@@ -365,15 +375,34 @@
   .preview-media-video {
     max-height: 50vh;
   }
+
+  /* Mobile-specific video preview optimizations */
+  .media-preview-section {
+    position: sticky;
+    top: 20px;
+    margin-bottom: 2rem;
+    /* Ensure video stays visible during scroll */
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  .preview-media-video {
+    /* Prevent video from being removed during scroll */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
 }
 
 /* Loading States */
-.lazy-image, .lazy-video {
+.lazy-image,
+.lazy-video {
   opacity: 0.7;
   transition: opacity 0.3s ease;
 }
 
-.lazy-image.loaded, .lazy-video.loaded {
+.lazy-image.loaded,
+.lazy-video.loaded {
   opacity: 1;
 }
 
@@ -389,13 +418,17 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
   animation: loading-shimmer 1.5s infinite;
 }
 
 @keyframes loading-shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 /* Error States */
@@ -456,6 +489,31 @@
     font-size: 1rem;
     padding: 1.2rem 0.6rem 0.6rem 0.6rem;
   }
+
+  /* Enhanced mobile video stability */
+  .media-preview-section {
+    position: sticky;
+    top: 10px;
+    margin-bottom: 1rem;
+    /* Force layer creation for stable rendering */
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .preview-content {
+    /* Prevent content from being removed during scroll */
+    contain: layout style paint;
+    isolation: isolate;
+  }
+
+  .preview-media-video {
+    /* Enhanced video stability on mobile */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+  }
 }
 
 /* ===== ACCESSIBILITY FEATURES ===== */
@@ -486,7 +544,7 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .skin-item:hover,
   .skin-image:hover,
   .skin-video:hover,
