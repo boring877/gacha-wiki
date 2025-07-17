@@ -8,6 +8,12 @@ import '../../styles/games/silver-and-blood/sab-landing-page.css';
 
 // Extract data for easier use in template
 const { meta, gameInfo, guides } = silverAndBloodConfig;
+
+// Breadcrumb data for SEO
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides' },
+  { name: 'Silver and Blood', url: '/guides/silver-and-blood' }
+];
 ---
 
 <SilverAndBloodLayout
@@ -15,7 +21,56 @@ const { meta, gameInfo, guides } = silverAndBloodConfig;
   description={meta.description}
   gameTitle={meta.gameTitle}
   heroImage={meta.heroImage}
+  heroVideo={meta.heroVideo}
+  breadcrumbs={breadcrumbs}
 >
+  <!-- Enhanced SEO Meta Tags -->
+  <meta name="keywords" content="silver and blood wiki, vampire game wiki, bloodborn game guide, tempus church, gacha rpg, character guides, damage mechanics, silver and blood character database" />
+  
+  <!-- Structured Data for Silver and Blood -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Silver and Blood Wiki - GachaWiki",
+      "url": "https://gachawiki.info/guides/silver-and-blood/",
+      "description": "Complete Silver and Blood wiki with character guides, damage mechanics, events, and game strategies. Official unofficial wiki for Silver and Blood vampire gacha game.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gachawiki.info/guides/silver-and-blood/characters/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+
+  <!-- Game-specific structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Silver and Blood",
+      "genre": "Vampire Gacha RPG",
+      "description": "Epic vampire gacha RPG featuring the struggle between immortal Bloodborn and the Tempus Church",
+      "applicationCategory": "Game",
+      "operatingSystem": "Android, iOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.3",
+        "ratingCount": "800"
+      }
+    }
+  </script>
   <!-- Game Overview Section -->
   <section class="content-section">
     <!-- Story Introduction -->
@@ -128,6 +183,166 @@ const { meta, gameInfo, guides } = silverAndBloodConfig;
   </section>
 </SilverAndBloodLayout>
 
+<!-- Hero Video Preview Modal -->
+<div id="preview-modal" class="preview-modal">
+  <div class="preview-backdrop" onclick="closePreview()"></div>
+  <div class="preview-content">
+    <button class="preview-close" onclick="closePreview()">×</button>
+    <div class="preview-media" id="preview-media">
+      <!-- Media content will be inserted here -->
+    </div>
+    <div class="preview-info">
+      <h3 id="preview-title"></h3>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Hero Video preview functionality
+  function openVideoPreview(videoUrl, title) {
+    const modal = document.getElementById('preview-modal');
+    const modalMedia = document.getElementById('preview-media');
+    const modalTitle = document.getElementById('preview-title');
+
+    if (!modal || !modalMedia || !modalTitle) {
+      console.error('Preview modal elements not found');
+      return;
+    }
+
+    // Clear previous content
+    while (modalMedia.firstChild) {
+      modalMedia.removeChild(modalMedia.firstChild);
+    }
+
+    // Create thumbnail image first, then load video
+    const isMobile = window.innerWidth <= 768;
+    const thumbnailUrl = 'https://res.cloudinary.com/dtiiaqlah/image/upload/v1752733808/silver-and-blood-main2_hmkrno.jpg';
+    
+    modalMedia.innerHTML = `
+      <img 
+        src="${thumbnailUrl}" 
+        alt="${title}" 
+        class="video-loading-thumbnail"
+        style="width: 100%; height: auto; max-height: 70vh; object-fit: contain; display: block;"
+      />
+    `;
+    
+    // Load video after thumbnail is visible
+    setTimeout(() => {
+      modalMedia.innerHTML = `
+        <video 
+          src="${videoUrl}" 
+          controls="true"
+          muted 
+          playsinline 
+          class="preview-video"
+          controlsList=""
+          preload="metadata"
+        >
+          <p>Your browser does not support the video tag.</p>
+        </video>
+      `;
+      
+      // Continue with existing video setup code
+      const video = modalMedia.querySelector('video');
+      if (video) {
+        video.controls = true;
+        video.setAttribute('controls', 'controls');
+        
+        // Responsive video sizing
+        video.style.width = '100%';
+        video.style.height = 'auto';
+        video.style.maxHeight = isMobile ? '50vh' : '70vh';
+        
+        // Mobile-specific touch optimizations
+        if (isMobile) {
+          // Prevent zoom on double-tap
+          video.addEventListener('touchstart', function(e) {
+            if (e.touches.length > 1) {
+              e.preventDefault();
+            }
+          });
+        }
+        
+        // Force controls to show after video loads
+        video.addEventListener('loadedmetadata', () => {
+          video.controls = true;
+        });
+        
+        video.addEventListener('canplay', () => {
+          video.controls = true;
+        });
+      }
+    }, 100);
+
+    modalTitle.textContent = title;
+    
+    // Show modal with animation
+    modal.style.display = 'flex';
+    modal.style.visibility = 'visible';
+    setTimeout(() => {
+      modal.classList.add('active');
+    }, 10);
+
+    // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
+    
+    // Additional mobile viewport fixes
+    if (isMobile) {
+      document.body.style.position = 'fixed';
+      document.body.style.top = '0';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.bottom = '0';
+    }
+  }
+
+  // Close preview modal
+  function closePreview() {
+    const modal = document.getElementById('preview-modal');
+
+    if (!modal) {
+      return;
+    }
+
+    // Remove active class and hide modal
+    modal.classList.remove('active');
+    
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 300);
+
+    // Restore body scrolling and mobile viewport
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.bottom = '';
+
+    // Stop any playing videos
+    const videos = modal.querySelectorAll('video');
+    videos.forEach(video => {
+      video.pause();
+      video.currentTime = 0;
+    });
+
+    // Clean up orientation change listeners
+    // Note: Orientation listeners are cleaned up automatically when modal closes
+  }
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closePreview();
+    }
+  });
+
+  // Make functions available globally
+  window.openVideoPreview = openVideoPreview;
+  window.closePreview = closePreview;
+</script>
+
 <style>
   .coming-soon-notice {
     background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(220, 53, 69, 0.1));
@@ -169,4 +384,5 @@ const { meta, gameInfo, guides } = silverAndBloodConfig;
     font-weight: 500;
     margin-left: 0.5rem;
   }
+
 </style>

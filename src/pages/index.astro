@@ -14,4 +14,62 @@ const showcaseGames = getShowcaseGames();
   description={SITE_DESCRIPTION}
   clockGames={clockGames}
   showcaseGames={showcaseGames}
-/>
+>
+  <!-- Main Site Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "GachaWiki",
+      "url": "https://gachawiki.info",
+      "description": "Comprehensive guides, character builds, and game strategies for popular gacha games like Zone Nova and Silver and Blood. Complete wiki with character database, damage mechanics, and game strategies.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info",
+        "sameAs": [
+          "https://github.com/boring877/gacha-wiki",
+          "https://www.youtube.com/@GachaJunkie888",
+          "https://discord.gg/JKCNtkSGNE"
+        ]
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gachawiki.info/guides/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+
+  <!-- Games Collection -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Gacha Games Wiki Collection",
+      "description": "Complete wiki collection for popular gacha games",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "VideoGame",
+            "name": "Zone Nova",
+            "url": "https://gachawiki.info/guides/zone-nova/",
+            "description": "Strategic gacha RPG with mythological characters and turn-based combat"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "VideoGame",
+            "name": "Silver and Blood",
+            "url": "https://gachawiki.info/guides/silver-and-blood/",
+            "description": "Epic vampire gacha RPG featuring the struggle between immortal Bloodborn and the Tempus Church"
+          }
+        }
+      ]
+    }
+  </script>
+</HomePageLayout>

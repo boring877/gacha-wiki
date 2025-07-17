@@ -1,0 +1,9 @@
+---
+import CharacterSkinsTemplate from '../../../../templates/silver-and-blood/CharacterSkinsTemplate.astro';
+import { dalcarloSkinsData } from '../../../../data/silver-and-blood/characterskins/dalcarlo/dalcarlo-skins.js';
+
+// Get Dalcarlo's skins data
+const characterSkinsData = dalcarloSkinsData;
+---
+
+<CharacterSkinsTemplate characterSkinsData={characterSkinsData} />

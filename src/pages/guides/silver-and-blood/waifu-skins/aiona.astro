@@ -1,0 +1,9 @@
+---
+import CharacterSkinsTemplate from '../../../../templates/silver-and-blood/CharacterSkinsTemplate.astro';
+import { aionaSkinsData } from '../../../../data/silver-and-blood/characterskins/aiona/aiona-skins.js';
+
+// Get Aiona's skins data
+const characterSkinsData = aionaSkinsData;
+---
+
+<CharacterSkinsTemplate characterSkinsData={characterSkinsData} />

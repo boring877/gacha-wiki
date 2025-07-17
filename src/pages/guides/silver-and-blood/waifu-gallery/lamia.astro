@@ -1,0 +1,9 @@
+---
+import WaifuGalleryTemplate from '../../../../templates/silver-and-blood/WaifuGalleryTemplate.astro';
+import { lamiaData } from '../../../../data/silver-and-blood/charactergailrydatabse/lamia/lamia.js';
+
+// Get Lamia's character data
+const characterData = lamiaData;
+---
+
+<WaifuGalleryTemplate characterData={characterData} />

@@ -8,6 +8,55 @@ import { summonFaqData } from '../../../data/zone-nova/summon-faq.js';
   description="Complete FAQ guide for summoning in Zone Nova. Learn about rates, pity system, banners, and summoning strategies."
   gameTitle="Summon FAQ"
 >
+  <!-- FAQ Schema Markup -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the SSR character summon rates in Zone Nova?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SSR characters have a 0.6% base rate and 1.6% effective rate with the pity system. You're guaranteed an SSR character within 90 summons maximum."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the pity system work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The pity system guarantees an SSR character within 90 summons on character banners and within 80 summons on memory banners. The effective rate includes this guarantee."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the rate-up system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rate-up banners give you a 50% chance to get the featured SSR character. If you get a non-featured SSR, your next SSR is guaranteed to be the featured one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the SR summon rates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SR objects have a 6% base rate (3% characters, 3% memories) and 13% effective rate with the pity system. You're guaranteed an SR+ within 10 summons."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do duplicate characters work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Duplicate SSR characters give 20 Star Fragments (2nd-7th) or 40 Star Fragments (8th+). Duplicate SR characters give 5 Star Fragments (2nd-7th) or 10 Star Fragments (8th+)."
+          }
+        }
+      ]
+    }
+  </script>
   <div class="faq-container">
     <section class="content-section">
       <h2 class="section-title">{summonFaqData.characterSummons.title}</h2>

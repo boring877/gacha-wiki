@@ -7,6 +7,7 @@ export const silverAndBloodConfig = {
     description: 'Explore Silver and Blood gacha game guides and content',
     gameTitle: 'Silver and Blood',
     heroImage: '/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg',
+    heroVideo: 'https://res.cloudinary.com/dtiiaqlah/video/upload/v1752687395/OP%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%82%A3%E3%82%B6%E3%83%BC_milet_%E3%83%9F%E3%83%AC%E3%82%A4_%E3%82%B7%E3%83%AB%E3%83%90%E3%83%BC_%E3%82%A2%E3%83%B3%E3%83%89_%E3%83%96%E3%83%A9%E3%83%83%E3%83%89_hfm4RtwuAbA_pxdtmg.webm',
   },
 
   gameInfo: {
@@ -44,6 +45,26 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
 
   guides: [
     {
+      id: 'character-comparison',
+      title: 'Character Comparison',
+      emoji: '📊',
+      description:
+        'Compare up to 4 characters side by side to analyze their stats and abilities for optimal team building.',
+      url: '/guides/silver-and-blood/character-comparison/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'character-rankings',
+      title: 'Character Rankings',
+      emoji: '🏆',
+      description:
+        'View character stat rankings and overall performance analysis across HP, ATK, P.DEF, and M.DEF.',
+      url: '/guides/silver-and-blood/character-rankings/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
       id: 'characters',
       title: 'Characters',
       emoji: '⚔️',
@@ -53,11 +74,12 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: 'active',
     },
     {
-      id: 'summon-faq',
-      title: 'Summon FAQ',
-      emoji: '💎',
-      description: 'General knowledge about summoning and FAQ.',
-      url: '/guides/silver-and-blood/summon-faq/',
+      id: 'damage-mechanics',
+      title: 'Damage Mechanics Hub',
+      emoji: '⚔️',
+      description:
+        "Master Silver and Blood's combat system with comprehensive damage calculation guides and defense formulas.",
+      url: '/guides/silver-and-blood/damage-mechanics/',
       category: 'guides',
       status: 'active',
     },
@@ -80,42 +102,21 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: 'active',
     },
     {
-      id: 'waifu-cutscenes',
-      title: 'Waifu CutScenes',
-      emoji: '💕',
-      description:
-        'Beautiful character cutscenes and memorable moments featuring beloved Silver and Blood characters.',
-      url: '/guides/silver-and-blood/waifu-cutscenes/',
+      id: 'summon-faq',
+      title: 'Summon FAQ',
+      emoji: '💎',
+      description: 'General knowledge about summoning and FAQ.',
+      url: '/guides/silver-and-blood/summon-faq/',
       category: 'guides',
       status: 'active',
     },
     {
-      id: 'character-comparison',
-      title: 'Character Comparison',
-      emoji: '📊',
+      id: 'waifu-gallery',
+      title: 'Waifu Gallery',
+      emoji: '🖼️',
       description:
-        'Compare up to 4 characters side by side to analyze their stats and abilities for optimal team building.',
-      url: '/guides/silver-and-blood/character-comparison/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'character-rankings',
-      title: 'Character Rankings',
-      emoji: '🏆',
-      description:
-        'View character stat rankings and overall performance analysis across HP, ATK, P.DEF, and M.DEF.',
-      url: '/guides/silver-and-blood/character-rankings/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'damage-mechanics',
-      title: 'Damage Mechanics Hub',
-      emoji: '⚔️',
-      description:
-        "Master Silver and Blood's combat system with comprehensive damage calculation guides and defense formulas.",
-      url: '/guides/silver-and-blood/damage-mechanics/',
+        'Explore character galleries featuring exclusive videos and promotional content from Silver and Blood.',
+      url: '/guides/silver-and-blood/waifu-gallery/',
       category: 'guides',
       status: 'active',
     },

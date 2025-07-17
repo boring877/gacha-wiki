@@ -5,7 +5,7 @@
 export const SITE = {
   TITLE: 'GachaWiki',
   DESCRIPTION:
-    'Comprehensive guides, character builds, and game strategies for popular gacha games like Zone Nova',
+    'Comprehensive guides, character builds, and game strategies for popular gacha games like Zone Nova and Silver and Blood. Complete wiki with character database, damage mechanics, and game strategies.',
   AUTHOR: 'GachaWiki',
   DEFAULT_IMAGE: '/images/about.jpg',
   SOCIAL: {
@@ -63,7 +63,7 @@ export const URLS = {
     DAMAGE_MECHANICS: '/guides/silver-and-blood/damage-mechanics',
     EVENTS: '/guides/silver-and-blood/events',
     SUMMON_FAQ: '/guides/silver-and-blood/summon-faq',
-    WAIFU_CUTSCENES: '/guides/silver-and-blood/waifu-cutscenes',
+    WAIFU_GALLERY: '/guides/silver-and-blood/waifu-gallery',
     DUTCHMANS_REVENGE: '/guides/silver-and-blood/dutchmans-revenge',
   },
 } as const;

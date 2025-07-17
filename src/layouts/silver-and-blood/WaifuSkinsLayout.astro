@@ -12,7 +12,7 @@ import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
 import '../../styles/games/silver-and-blood/sab-badge-colours.css';
-import '../../styles/games/silver-and-blood/sab-waifu-cutscene.css';
+import '../../styles/games/silver-and-blood/sab-waifu-skins.css';
 
 export interface Props {
   title: string;
@@ -28,7 +28,7 @@ const { title, description, gameTitle } = Astro.props;
     <BaseHead title={title} description={description || ''} />
     <meta
       name="keywords"
-      content="Silver and Blood, waifu, cutscenes, character scenes, visual novel, anime cutscenes, character interactions"
+      content="Silver and Blood, waifu skins, character skins, game skins, waifu outfits, character customization, skin gallery"
     />
     <meta name="author" content="GachaWiki" />
     <meta name="robots" content="index, follow" />
@@ -66,22 +66,21 @@ const { title, description, gameTitle } = Astro.props;
             gameTitle && (
               <section class="title-only-section">
                 <h1 class="title-only-heading">{gameTitle}</h1>
-
                 <DecorativeLines />
               </section>
             )
           }
 
-          <!-- Silver and Blood Simple Navigation -->
+          <!-- Silver and Blood Navigation -->
           <SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
 
-          <!-- Waifu CutScene Content Area -->
-          <div class="waifu-cutscene-content">
-            <section class="waifu-cutscene-section">
-              <div class="waifu-cutscene-header"></div>
+          <!-- Waifu Skins Content Area -->
+          <div class="waifu-skins-content">
+            <section class="waifu-skins-section">
+              <div class="waifu-skins-header"></div>
 
               <!-- Content Slot -->
-              <div class="cutscene-content">
+              <div class="skins-content">
                 <slot />
               </div>
             </section>
@@ -91,29 +90,5 @@ const { title, description, gameTitle } = Astro.props;
 
       <Footer />
     </div>
-
-    <script is:inline>
-      // Add any interactive functionality for cutscene viewing
-      document.addEventListener('DOMContentLoaded', function () {
-        // Image gallery functionality
-        const cutsceneImages = document.querySelectorAll('.cutscene-image');
-
-        cutsceneImages.forEach(img => {
-          img.style.cursor = 'pointer';
-          img.addEventListener('click', function () {
-            // Open image in new tab for full view
-            window.open(this.src, '_blank');
-          });
-        });
-
-        // Video controls if any
-        const cutsceneVideos = document.querySelectorAll('.cutscene-video');
-        cutsceneVideos.forEach(video => {
-          video.addEventListener('loadstart', function () {
-            console.log('Loading cutscene video...');
-          });
-        });
-      });
-    </script>
   </body>
 </html>

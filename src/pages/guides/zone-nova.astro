@@ -8,6 +8,12 @@ import '../../styles/games/zone-nova/zn-landing-page.css';
 
 // Extract data for easier use in template
 const { meta, gameInfo, guides } = zoneNovaConfig;
+
+// Breadcrumb data for SEO
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides' },
+  { name: 'Zone Nova', url: '/guides/zone-nova' }
+];
 ---
 
 <ZoneNovaLayout
@@ -15,7 +21,52 @@ const { meta, gameInfo, guides } = zoneNovaConfig;
   description={meta.description}
   gameTitle={meta.gameTitle}
   heroImage={meta.heroImage}
+  breadcrumbs={breadcrumbs}
 >
+  <!-- Structured Data for Zone Nova -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Zone Nova Wiki - GachaWiki",
+      "url": "https://gachawiki.info/guides/zone-nova/",
+      "description": "Complete Zone Nova wiki with character guides, damage mechanics, memories, and game strategies. Official unofficial wiki for Zone Nova gacha game.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gachawiki.info/guides/zone-nova/characters/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+
+  <!-- Game-specific structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Zone Nova",
+      "genre": "Gacha RPG",
+      "description": "Strategic gacha RPG with mythological characters and turn-based combat",
+      "applicationCategory": "Game",
+      "operatingSystem": "Android, iOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.5",
+        "ratingCount": "1000"
+      }
+    }
+  </script>
   <!-- Game Overview Section -->
   <section class="content-section">
     <h2 class="section-title">About</h2>

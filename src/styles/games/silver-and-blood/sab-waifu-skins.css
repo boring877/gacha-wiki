@@ -1,794 +1,496 @@
 /* Silver and Blood Waifu Skins Styles */
-/* This file contains styles specifically for the Waifu Skins section */
+/* Consistent with existing SAB design system */
 
-/* Custom CSS Variables for Waifu Skins */
-:root {
-  --skins-primary: var(--sab-calm-red);
-  --skins-primary-light: var(--sab-light-red);
-  --skins-secondary: var(--sab-dark-red);
-  --skins-accent: var(--sab-light-blue);
-  --skins-text-light: #f5f5dc;
-  --skins-text-muted: #c0c0c0;
-  --skins-bg-dark: #1a1a1a;
-  --skins-bg-card: #2d2d2d;
-  --skins-bg-gradient: var(--sab-blood-gradient);
-  --skins-shadow: 0 8px 32px rgba(166, 77, 77, 0.3);
-  --skins-shadow-light: 0 4px 16px rgba(166, 77, 77, 0.15);
-  --skins-border-radius: 16px;
-  --skins-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Rarity Colors */
-  --skins-legendary: linear-gradient(45deg, #ff6b35, #f7931e);
-  --skins-epic: linear-gradient(45deg, #a855f7, #ec4899);
-  --skins-rare: linear-gradient(45deg, #3b82f6, #1d4ed8);
-  --skins-common: linear-gradient(45deg, #6b7280, #4b5563);
-
-  /* Media Type Colors */
-  --skins-video: #10b981;
-  --skins-gif: #f59e0b;
-  --skins-image: #8b5cf6;
-}
-
-/* Base Waifu Skins Layout */
-.waifu-skins-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem;
+/* ===== MAIN CONTENT SECTION ===== */
+.waifu-skins-content {
+  padding: 2rem 0;
 }
 
 .waifu-skins-section {
-  background: var(--skins-bg-dark);
-  border-radius: var(--skins-border-radius);
-  position: relative;
-  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.waifu-skins-header {
   margin-bottom: 2rem;
 }
 
-.waifu-skins-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--skins-bg-gradient);
-  z-index: 1;
+.skins-content {
+  width: 100%;
 }
 
-/* Header Styles */
-.waifu-skins-header {
-  text-align: center;
-  padding: 3rem 2rem 2rem 2rem;
-  background: var(--skins-bg-card);
-  border-radius: var(--skins-border-radius) var(--skins-border-radius) 0 0;
-  position: relative;
-  overflow: hidden;
+/* Character Skins Section */
+.character-skins-section {
+  padding: 2rem 0;
 }
 
-.waifu-skins-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--skins-bg-gradient);
-  opacity: 0.1;
-  z-index: 0;
-}
-
-.waifu-skins-header > * {
-  position: relative;
-  z-index: 1;
-}
-
-.waifu-skins-title {
-  font-size: 3rem;
+/* Section Title - Following SAB Pattern */
+.skins-title {
+  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--skins-text-light);
-  margin: 0 0 1rem 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  background: linear-gradient(45deg, var(--skins-text-light), var(--skins-accent));
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #c0c0c0, #c26b6b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-.waifu-skins-description {
-  font-size: 1.2rem;
-  color: var(--skins-text-muted);
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Featured Skins Styles */
-.featured-skins {
-  margin: 3rem 0;
-}
-
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
-}
-
-.featured-skin-card {
-  background: var(--skins-bg-card);
-  border-radius: var(--skins-border-radius);
-  border: 1px solid var(--skins-primary);
-  overflow: hidden;
-  transition: var(--skins-transition);
   position: relative;
 }
 
-.featured-skin-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  border-color: var(--skins-accent);
-  box-shadow: var(--skins-shadow);
-}
-
-.featured-skin-card::before {
+.skins-title::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--skins-bg-gradient);
-  transform: scaleX(0);
-  transition: var(--skins-transition);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sab-calm-blue), var(--sab-calm-red));
+  border-radius: 2px;
 }
 
-.featured-skin-card:hover::before {
-  transform: scaleX(1);
-}
-
-/* Rarity Styles */
-.rarity-preview {
-  margin: 3rem 0;
-}
-
-.rarity-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.rarity-category {
-  background: var(--skins-bg-card);
-  padding: 2rem;
-  border-radius: var(--skins-border-radius);
-  border: 2px solid;
-  transition: var(--skins-transition);
+.skins-subtitle {
   text-align: center;
-  position: relative;
-  overflow: hidden;
+  color: var(--sab-blue-silver);
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  opacity: 0.9;
 }
 
-.rarity-category[data-rarity='legendary'] {
-  border-color: #ff6b35;
-}
-
-.rarity-category[data-rarity='epic'] {
-  border-color: #a855f7;
-}
-
-.rarity-category[data-rarity='rare'] {
-  border-color: #3b82f6;
-}
-
-.rarity-category[data-rarity='common'] {
-  border-color: #6b7280;
-}
-
-.rarity-category:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--skins-shadow);
-}
-
-.rarity-icon {
-  margin-bottom: 1rem;
-}
-
-.rarity-gem {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto;
-  border-radius: 50%;
-  position: relative;
-  overflow: hidden;
-}
-
-.rarity-gem[data-rarity='legendary'] {
-  background: var(--skins-legendary);
-  animation: legendaryGlow 2s ease-in-out infinite;
-}
-
-.rarity-gem[data-rarity='epic'] {
-  background: var(--skins-epic);
-  animation: epicGlow 2s ease-in-out infinite;
-}
-
-.rarity-gem[data-rarity='rare'] {
-  background: var(--skins-rare);
-  animation: rareGlow 2s ease-in-out infinite;
-}
-
-.rarity-gem[data-rarity='common'] {
-  background: var(--skins-common);
-}
-
-.rarity-gem::before {
-  content: '';
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  width: 50%;
-  height: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  transform: rotate(45deg);
-}
-
-.rarity-name {
-  color: var(--skins-primary);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.rarity-count {
-  color: var(--skins-text-light);
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin: 0 0 1rem 0;
-}
-
-.rarity-description {
-  color: var(--skins-text-muted);
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin: 0;
-}
-
-/* Character Selection Styles */
-.character-selection {
-  margin: 3rem 0;
-}
-
-.character-grid {
+/* Skins Grid Layout - Following Gallery Pattern */
+.skins-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  margin: 2rem 0;
+  margin-top: 2rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
 }
 
-.character-card {
-  background: rgba(28, 28, 28, 0.9);
-  border-radius: var(--skins-border-radius);
-  border: 1px solid rgba(166, 77, 77, 0.3);
+/* Skin Item Card - Following SAB Pattern */
+.skin-item {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: 16px;
+  border: 1px solid #3a3a3a;
   overflow: hidden;
-  transition: var(--skins-transition);
-  text-decoration: none;
-  color: inherit;
+  transition: all 0.3s ease;
   position: relative;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
-.character-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--skins-accent);
-  box-shadow: var(--skins-shadow);
+.skin-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(192, 192, 192, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.character-card::before {
+.skin-item::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(166, 77, 77, 0.1) 0%,
-    transparent 50%,
-    rgba(90, 123, 167, 0.1) 100%
-  );
+  height: 2px;
+  background: linear-gradient(90deg, var(--sab-calm-red), var(--sab-blue-silver), var(--sab-calm-blue));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.character-card:hover::before {
+.skin-item:hover::before {
   opacity: 1;
 }
 
-.character-image {
+/* Media Container */
+.skin-media-container {
   position: relative;
-  height: 200px;
+  width: 100%;
+  height: 280px;
+  min-height: 280px;
   overflow: hidden;
+  background: #000;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
-.character-image img {
+/* Image Container */
+.image-container {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  transition: transform 0.3s ease;
 }
 
-.character-card:hover .character-image img {
-  transform: scale(1.1);
-}
-
-.character-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: linear-gradient(45deg, var(--skins-primary), var(--skins-accent));
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0 0 0 16px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  z-index: 2;
-}
-
-.character-info {
-  padding: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.character-name {
-  color: var(--skins-accent);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.character-description {
-  color: var(--skins-text-muted);
-  font-size: 0.95rem;
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Quick Actions Styles */
-.quick-actions {
-  margin: 3rem 0;
-}
-
-.action-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.action-card {
-  background: var(--skins-bg-card);
-  padding: 2rem;
-  border-radius: var(--skins-border-radius);
-  border: 1px solid var(--skins-primary);
-  text-align: center;
-  transition: var(--skins-transition);
-}
-
-.action-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--skins-accent);
-  box-shadow: var(--skins-shadow-light);
-}
-
-.action-card h4 {
-  color: var(--skins-primary);
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 1rem 0;
-}
-
-.action-card p {
-  color: var(--skins-text-muted);
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin: 0 0 1.5rem 0;
-}
-
-.action-button {
-  background: var(--skins-primary);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--skins-transition);
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.action-button:hover {
-  background: var(--skins-accent);
-  transform: translateY(-2px);
-}
-
-/* Statistics Styles */
-.skin-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 2rem auto;
-}
-
-.stat-item {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  background: rgba(28, 28, 28, 0.7);
-  border-radius: 12px;
-  border: 1px solid rgba(166, 77, 77, 0.3);
-  transition: var(--skins-transition);
-}
-
-.stat-item:hover {
-  transform: translateY(-3px);
-  border-color: var(--skins-accent);
-}
-
-.stat-number {
-  display: block;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--skins-primary);
-  margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.stat-label {
-  color: var(--skins-text-muted);
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Subsection Titles */
-.subsection-title {
-  color: var(--skins-text-light);
-  font-size: 2.2rem;
-  font-weight: 600;
-  margin: 3rem 0 1.5rem 0;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid var(--skins-primary);
-  display: inline-block;
-  position: relative;
-}
-
-.subsection-title::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: var(--skins-accent);
-}
-
-/* Skin Media Styles */
-.skin-media {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.skin-video,
-.skin-gif,
 .skin-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.3s ease;
 }
 
-.skin-video:hover,
-.skin-gif:hover,
-.skin-image:hover {
+.skin-item:hover .skin-image {
   transform: scale(1.05);
 }
 
-/* Rarity Badges */
-.rarity-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  z-index: 2;
+/* Video Container */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.rarity-badge[data-rarity='legendary'] {
-  background: var(--skins-legendary);
-  color: white;
+.skin-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
 }
 
-.rarity-badge[data-rarity='epic'] {
-  background: var(--skins-epic);
-  color: white;
+.skin-item:hover .skin-video {
+  transform: scale(1.05);
 }
 
-.rarity-badge[data-rarity='rare'] {
-  background: var(--skins-rare);
-  color: white;
+/* GIF Container */
+.gif-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.rarity-badge[data-rarity='common'] {
-  background: var(--skins-common);
-  color: white;
+.skin-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
 }
 
-/* Skin Details */
-.skin-details {
-  padding: 1.5rem;
-  background: rgba(28, 28, 28, 0.9);
+.skin-item:hover .skin-gif {
+  transform: scale(1.05);
 }
 
-.skin-name {
-  color: var(--skins-accent);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-}
-
-.skin-character {
-  color: var(--skins-primary);
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0 0 1rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.skin-description {
-  color: var(--skins-text-muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 0 0 1rem 0;
-}
-
-.skin-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.skin-tags .tag {
-  background: rgba(166, 77, 77, 0.2);
-  color: var(--skins-accent);
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid rgba(166, 77, 77, 0.3);
-  transition: var(--skins-transition);
-}
-
-.skin-tags .tag:hover {
-  background: rgba(166, 77, 77, 0.3);
-  border-color: var(--skins-accent);
-}
-
-/* Animation Keyframes */
-@keyframes legendaryGlow {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
-  }
-}
-
-@keyframes epicGlow {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
-  }
-}
-
-@keyframes rareGlow {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* Shimmer effect for legendary items */
-.legendary-shimmer::before {
-  content: '';
+/* Skin Overlay */
+.skin-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.2), transparent);
-  transform: translateX(-100%);
-  animation: shimmer 3s infinite;
-  pointer-events: none;
-  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .waifu-skins-container {
-    padding: 1.5rem;
-  }
-
-  .featured-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-
-  .character-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
+.skin-item:hover .skin-overlay {
+  opacity: 1;
 }
 
+/* Preview Icons */
+.preview-icon {
+  transition: transform 0.3s ease;
+}
+
+.preview-icon:hover {
+  transform: scale(1.1);
+}
+
+.play-button {
+  transition: transform 0.3s ease;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+}
+
+/* Skin Name Overlay - Following Gallery Pattern */
+.skin-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 2rem 1rem 1rem 1rem;
+  margin: 0;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Media Preview Section - Following SAB Pattern */
+.media-preview-section {
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: 16px;
+  border: 1px solid #3a3a3a;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.preview-container {
+  position: relative;
+  width: 100%;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(42, 42, 42, 0.5);
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.preview-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--sab-blue-silver);
+  margin: 0;
+}
+
+.close-preview-btn {
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.close-preview-btn:hover {
+  background: rgba(194, 107, 107, 0.9);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.preview-content {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  background: #000;
+}
+
+.preview-media-image {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.preview-media-video {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
-  .waifu-skins-container {
-    padding: 1rem;
+  .waifu-skins-content {
+    padding: 1rem 0;
   }
 
-  .waifu-skins-header {
-    padding: 2rem 1.5rem;
+  .waifu-skins-section {
+    padding: 0 0.5rem;
   }
 
-  .waifu-skins-title {
-    font-size: 2.5rem;
+  .skins-title {
+    font-size: 2rem;
   }
 
-  .waifu-skins-description {
-    font-size: 1.1rem;
+  .skins-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
   }
 
-  .featured-grid,
-  .character-grid {
+  .skins-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    padding: 0 1rem;
   }
 
-  .rarity-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .skin-media-container {
+    height: 260px;
+    min-height: 260px;
   }
 
-  .skin-stats {
-    grid-template-columns: repeat(2, 1fr);
+  .skin-name {
+    font-size: 1.1rem;
+    padding: 1.5rem 0.8rem 0.8rem 0.8rem;
   }
 
-  .character-info {
-    padding: 1rem;
+  .preview-header {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
 
-  .character-name {
+  .preview-title {
     font-size: 1.2rem;
   }
 
-  .subsection-title {
-    font-size: 1.8rem;
+  .close-preview-btn {
+    width: 35px;
+    height: 35px;
   }
+
+  .preview-content {
+    padding: 1rem;
+  }
+
+  .preview-media-image,
+  .preview-media-video {
+    max-height: 50vh;
+  }
+}
+
+/* Loading States */
+.lazy-image, .lazy-video {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.lazy-image.loaded, .lazy-video.loaded {
+  opacity: 1;
+}
+
+.skin-item.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.skin-item.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Error States */
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+}
+
+.error-icon {
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.error-message {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.retry-button {
+  background: var(--sab-calm-red);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.retry-button:hover {
+  background: var(--sab-dark-red);
 }
 
 @media (max-width: 480px) {
-  .waifu-skins-title {
-    font-size: 2rem;
+  .skins-grid {
+    gap: 1rem;
+    padding: 0 0.5rem;
   }
 
-  .skin-stats {
-    grid-template-columns: 1fr;
+  .skin-media-container {
+    height: 320px;
+    min-height: 320px;
   }
 
-  .stat-number {
-    font-size: 2rem;
+  .skins-title {
+    font-size: 1.8rem;
   }
 
-  .character-image {
-    height: 150px;
-  }
-
-  .rarity-gem {
-    width: 50px;
-    height: 50px;
-  }
-
-  .action-card,
-  .rarity-category {
-    padding: 1.5rem;
+  .skin-name {
+    font-size: 1rem;
+    padding: 1.2rem 0.6rem 0.6rem 0.6rem;
   }
 }
 
-/* Print Styles */
-@media print {
-  .waifu-skins-section {
-    break-inside: avoid;
-    box-shadow: none;
-  }
-
-  .character-card,
-  .featured-skin-card,
-  .action-card {
-    break-inside: avoid;
-    box-shadow: none;
-  }
-
-  .skin-video,
-  .skin-gif {
-    display: none;
-  }
-
-  .action-button {
-    display: none;
-  }
+/* ===== ACCESSIBILITY FEATURES ===== */
+/* Focus States for Accessibility */
+.skin-item:focus {
+  outline: 2px solid var(--sab-calm-blue);
+  outline-offset: 2px;
 }
 
-/* High Contrast Mode */
+.close-preview-btn:focus {
+  outline: 2px solid var(--sab-calm-red);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
 @media (prefers-contrast: high) {
-  .character-card,
-  .featured-skin-card,
-  .rarity-category {
-    border-width: 3px;
-  }
-
-  .stat-item {
+  .skin-item,
+  .media-preview-section {
     border-width: 2px;
-  }
-
-  .subsection-title {
-    border-bottom-width: 4px;
+    border-color: #fff;
   }
 }
 
-/* Reduced Motion */
+/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
-  .character-card:hover,
-  .featured-skin-card:hover,
-  .rarity-category:hover {
-    transform: none;
-  }
-
+  
+  .skin-item:hover,
+  .skin-image:hover,
   .skin-video:hover,
-  .skin-gif:hover,
-  .skin-image:hover {
+  .skin-gif:hover {
     transform: none;
   }
 }
