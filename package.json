@@ -39,6 +39,12 @@
     "format": "prettier --write . --ignore-path .gitignore",
     "format:check": "prettier --check . --ignore-path .gitignore",
     "validate": "bun run scripts/validate-data.ts",
+    "seo:score": "node scripts/seo-score.js",
+    "seo:audit": "node scripts/seo-audit.js",
+    "seo:live": "node scripts/seo-audit.js https://gacha-wiki.vercel.app",
+    "seo:monitor": "node scripts/seo-monitor.js",
+    "seo:vitals": "node scripts/core-web-vitals.js",
+    "seo:validate": "node scripts/seo-validator.js",
     "prepare": "husky || exit 0",
     "pre-commit": "lint-staged"
   },
