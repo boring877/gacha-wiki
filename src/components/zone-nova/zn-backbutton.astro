@@ -41,10 +41,6 @@ const { href, text = 'Back', className = '' } = Astro.props;
     font-family: var(--font-display);
     font-weight: 600;
     font-size: var(--text-base);
-    transition: all 0.3s ease;
-    box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.2),
-      inset 0 0 20px rgba(255, 255, 255, 0.02);
     position: relative;
     overflow: hidden;
   }
@@ -63,24 +59,14 @@ const { href, text = 'Back', className = '' } = Astro.props;
   .zn-back-button:hover {
     background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(0, 229, 255, 0.05) 100%);
     color: #ffd700;
-    transform: translateY(-2px);
-    box-shadow:
-      0 12px 35px rgba(255, 215, 0, 0.3),
-      inset 0 0 30px rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 215, 0, 0.5);
   }
 
-  .zn-back-button:hover::before {
-    left: 100%;
-  }
-
   .zn-back-button:hover .zn-back-arrow {
-    transform: translateX(-3px);
   }
 
   .zn-back-arrow {
     font-size: 1.25rem;
-    transition: transform 0.3s ease;
     font-weight: 700;
   }
 

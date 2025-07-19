@@ -1,6 +1,24 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'odin-recruitment',
+    title: 'Limited Recruitment Character [Fire DPS] Odin',
+    date: 'July 22, 2025',
+    type: 'recruitment',
+    summary:
+      'New SSR character Odin (Fire DPS) - ruler of the Aesir family with high mobility, consecutive ultimate skills, and DoT-based damage. Available through Limited Recruitment from July 22 - August 5, 2025, with exclusive memory "Shared Bath Time".',
+    url: '/guides/zone-nova/updates/announcement-odin-recruitment/',
+  },
+  {
+    id: 'july-22-maintenance',
+    title: 'July 22 Maintenance Notice',
+    date: 'July 22, 2025',
+    type: 'maintenance',
+    summary:
+      'Major maintenance bringing "Twilight of the Ancients: Prelude to Winter – Part 1" event, Odin recruitment, Cleopatra rerun, Temporal Rift, Annihilation Battle, Battle Pass update, double drop events, and 300 Lumenite compensation.',
+    url: '/guides/zone-nova/updates/maintenance-july-22-2025/',
+  },
+  {
     id: 'gaia-care-2nd-edition',
     title: "Gaia's Care – 2nd Edition!",
     date: 'July 14, 2025',

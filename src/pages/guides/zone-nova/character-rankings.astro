@@ -318,11 +318,9 @@ const statNames = {
           );
           if (!character) return;
 
-          const matchesRole = !roleValue || character.role.toLowerCase().includes(roleValue);
-          const matchesRarity =
-            !rarityValue || character.rarity.toLowerCase().includes(rarityValue);
-          const matchesElement =
-            !elementValue || character.element.toLowerCase().includes(elementValue);
+          const matchesRole = !roleValue || character.role.toLowerCase() === roleValue;
+          const matchesRarity = !rarityValue || character.rarity.toLowerCase() === rarityValue;
+          const matchesElement = !elementValue || character.element.toLowerCase() === elementValue;
 
           card.style.display = matchesRole && matchesRarity && matchesElement ? 'flex' : 'none';
         });

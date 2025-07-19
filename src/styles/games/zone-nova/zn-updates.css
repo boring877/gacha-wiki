@@ -356,12 +356,9 @@
   overflow: hidden;
   animation: cardSlideUp 0.6s ease-out;
   display: block;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .patch-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);
   border-color: var(--teal-crystal);
 }
 
@@ -412,47 +409,24 @@
 .update-tag.maintenance {
   background: linear-gradient(135deg, var(--teal-crystal), #00bcd4);
   color: var(--text-inverse);
-  box-shadow: 0 2px 8px rgba(0, 172, 193, 0.3);
 }
 
 .update-tag.event {
   background: linear-gradient(135deg, #ff6b6b, #ff8e53);
   color: var(--text-inverse);
-  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
 }
 
 .update-tag.recruitment {
   background: linear-gradient(135deg, var(--amber-glow), #ffa726);
   color: var(--text-inverse);
-  box-shadow: 0 2px 8px rgba(255, 183, 77, 0.3);
 }
 
 .update-tag.announcement {
   background: linear-gradient(135deg, #9c27b0, #ba68c8);
   color: var(--text-inverse);
-  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.3);
 }
 
-/* Tag hover effects */
-.patch-card:hover .update-tag.maintenance {
-  box-shadow: 0 4px 12px rgba(0, 172, 193, 0.4);
-  transform: translateY(-1px);
-}
-
-.patch-card:hover .update-tag.event {
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
-  transform: translateY(-1px);
-}
-
-.patch-card:hover .update-tag.recruitment {
-  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.4);
-  transform: translateY(-1px);
-}
-
-.patch-card:hover .update-tag.announcement {
-  box-shadow: 0 4px 12px rgba(156, 39, 176, 0.4);
-  transform: translateY(-1px);
-}
+/* Tag hover effects removed */
 
 .patch-card h2 {
   color: var(--text-primary);

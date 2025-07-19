@@ -337,7 +337,7 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
             </select>
           </div>
           <div class="sort-controls">
-            <button class="sort-btn active" data-sort="hp">HP</button>
+            <button class="sort-btn" data-sort="hp">HP</button>
             <button class="sort-btn" data-sort="attack">ATK</button>
             <button class="sort-btn" data-sort="defense">DEF</button>
             <button class="sort-btn" data-sort="energyRecovery">Energy</button>
@@ -481,7 +481,7 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
       const sortButtons = document.querySelectorAll('.sort-btn');
       const resetButton = document.getElementById('reset-table');
       // --- State ---
-      let currentSortKey = 'hp';
+      let currentSortKey = 'name';
       let currentSortDirection = 'asc';
       const originalRows = Array.from(tableBody.children);
       const originalCards = Array.from(mobileCardsContainer.children);
@@ -493,7 +493,6 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         !roleFilter ||
         !resetButton
       ) {
-        console.error('Character table or filter elements not found!');
         return;
       }
       // --- Helpers ---
@@ -505,25 +504,75 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
           }
         });
       }
+
+      function sortByName(items, isDesktop = true) {
+        return items.sort((a, b) => {
+          const nameA = isDesktop
+            ? a.querySelector('td:nth-child(3)')?.textContent || ''
+            : a.querySelector('h3')?.textContent || '';
+          const nameB = isDesktop
+            ? b.querySelector('td:nth-child(3)')?.textContent || ''
+            : b.querySelector('h3')?.textContent || '';
+          return nameA.localeCompare(nameB);
+        });
+      }
+
+      function getMobileStatValue(card, sortKey) {
+        const statMap = {
+          hp: '.mobile-card-stats div:nth-child(1)',
+          attack: '.mobile-card-stats div:nth-child(2)',
+          defense: '.mobile-card-stats div:nth-child(3)',
+          energyRecovery: '.mobile-card-stats-secondary div:nth-child(1)',
+          critRate: '.mobile-card-stats-secondary div:nth-child(2)',
+          critDmg: '.mobile-card-stats-secondary div:nth-child(3)',
+        };
+
+        if (sortKey === 'name') {
+          return card.querySelector('h3')?.textContent || '';
+        }
+
+        const selector = statMap[sortKey];
+        if (selector) {
+          return card.querySelector(selector)?.textContent.replace(/[^\d.]/g, '') || '';
+        }
+
+        return card.querySelector(`.${sortKey}-badge`)?.textContent || '';
+      }
       // --- Filtering ---
       function filterRows() {
-        const element = elementFilter.value;
-        const rarity = rarityFilter.value;
-        const role = roleFilter.value;
-        Array.from(tableBody.children).forEach(row => {
+        const element = elementFilter.value.trim();
+        const rarity = rarityFilter.value.trim();
+        const role = roleFilter.value.trim();
+
+        const visibleRows = [];
+        const visibleCards = [];
+
+        // Filter table rows and mobile cards in parallel
+        Array.from(tableBody.children).forEach((row, index) => {
+          const card = mobileCardsContainer.children[index];
+
+          const elementText = row.querySelector('.element-badge')?.textContent?.trim() || '';
+          const rarityText = row.querySelector('.rarity-badge')?.textContent?.trim() || '';
+          const roleText = row.querySelector('.role-badge')?.textContent?.trim() || '';
+
           const matches =
-            (!element || row.querySelector('.element-badge').textContent === element) &&
-            (!rarity || row.querySelector('.rarity-badge').textContent === rarity) &&
-            (!role || row.querySelector('.role-badge').textContent === role);
+            (!element || elementText === element) &&
+            (!rarity || rarityText === rarity) &&
+            (!role || roleText === role);
+
           row.style.display = matches ? '' : 'none';
-        });
-        Array.from(mobileCardsContainer.children).forEach(card => {
-          const matches =
-            (!element || card.querySelector('.element-badge').textContent === element) &&
-            (!rarity || card.querySelector('.rarity-badge').textContent === rarity) &&
-            (!role || card.querySelector('.role-badge').textContent === role);
           card.style.display = matches ? '' : 'none';
+
+          if (matches) {
+            visibleRows.push(row);
+            visibleCards.push(card);
+          }
         });
+
+        // Sort visible items alphabetically
+        sortByName(visibleRows, true).forEach(row => tableBody.appendChild(row));
+        sortByName(visibleCards, false).forEach(card => mobileCardsContainer.appendChild(card));
+
         renumberRows();
       }
       // --- Sorting ---
@@ -542,8 +591,20 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         // Table rows
         const rows = Array.from(tableBody.children).filter(row => row.style.display !== 'none');
         rows.sort((a, b) => {
-          let valA = a.querySelector(`[data-sort-key="${sortKey}"]`)?.textContent || '';
-          let valB = b.querySelector(`[data-sort-key="${sortKey}"]`)?.textContent || '';
+          let valA, valB;
+
+          if (sortKey === 'name') {
+            valA = a.querySelector('td:nth-child(3)')?.textContent || '';
+            valB = b.querySelector('td:nth-child(3)')?.textContent || '';
+            return currentSortDirection === 'asc'
+              ? valA.localeCompare(valB)
+              : valB.localeCompare(valA);
+          } else {
+            valA = a.querySelector(`[data-sort-key="${sortKey}"]`)?.textContent || '';
+            valB = b.querySelector(`[data-sort-key="${sortKey}"]`)?.textContent || '';
+          }
+
+          // For numeric sorting, convert to numbers
           valA = isNaN(Number(valA)) ? valA : Number(valA);
           valB = isNaN(Number(valB)) ? valB : Number(valB);
           if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
@@ -556,69 +617,15 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
           card => card.style.display !== 'none'
         );
         cards.sort((a, b) => {
-          let valA = '';
-          let valB = '';
-          if (sortKey === 'hp') {
-            valA =
-              a
-                .querySelector('.mobile-card-stats div:nth-child(1)')
-                ?.textContent.replace(/\D/g, '') || '';
-            valB =
-              b
-                .querySelector('.mobile-card-stats div:nth-child(1)')
-                ?.textContent.replace(/\D/g, '') || '';
-          } else if (sortKey === 'attack') {
-            valA =
-              a
-                .querySelector('.mobile-card-stats div:nth-child(2)')
-                ?.textContent.replace(/\D/g, '') || '';
-            valB =
-              b
-                .querySelector('.mobile-card-stats div:nth-child(2)')
-                ?.textContent.replace(/\D/g, '') || '';
-          } else if (sortKey === 'defense') {
-            valA =
-              a
-                .querySelector('.mobile-card-stats div:nth-child(3)')
-                ?.textContent.replace(/\D/g, '') || '';
-            valB =
-              b
-                .querySelector('.mobile-card-stats div:nth-child(3)')
-                ?.textContent.replace(/\D/g, '') || '';
-          } else if (sortKey === 'energyRecovery') {
-            valA =
-              a
-                .querySelector('.mobile-card-stats-secondary div:nth-child(1)')
-                ?.textContent.replace(/[^\d.]/g, '') || '';
-            valB =
-              b
-                .querySelector('.mobile-card-stats-secondary div:nth-child(1)')
-                ?.textContent.replace(/[^\d.]/g, '') || '';
-          } else if (sortKey === 'critRate') {
-            valA =
-              a
-                .querySelector('.mobile-card-stats-secondary div:nth-child(2)')
-                ?.textContent.replace(/[^\d.]/g, '') || '';
-            valB =
-              b
-                .querySelector('.mobile-card-stats-secondary div:nth-child(2)')
-                ?.textContent.replace(/[^\d.]/g, '') || '';
-          } else if (sortKey === 'critDmg') {
-            valA =
-              a
-                .querySelector('.mobile-card-stats-secondary div:nth-child(3)')
-                ?.textContent.replace(/[^\d.]/g, '') || '';
-            valB =
-              b
-                .querySelector('.mobile-card-stats-secondary div:nth-child(3)')
-                ?.textContent.replace(/[^\d.]/g, '') || '';
-          } else if (sortKey === 'name') {
-            valA = a.querySelector('h3')?.textContent || '';
-            valB = b.querySelector('h3')?.textContent || '';
-          } else {
-            valA = a.querySelector(`.${sortKey}-badge`)?.textContent || '';
-            valB = b.querySelector(`.${sortKey}-badge`)?.textContent || '';
+          let valA = getMobileStatValue(a, sortKey);
+          let valB = getMobileStatValue(b, sortKey);
+
+          if (sortKey === 'name') {
+            return currentSortDirection === 'asc'
+              ? valA.localeCompare(valB)
+              : valB.localeCompare(valA);
           }
+
           valA = isNaN(Number(valA)) ? valA : Number(valA);
           valB = isNaN(Number(valB)) ? valB : Number(valB);
           if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
@@ -629,18 +636,9 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         renumberRows();
       }
       // --- Event listeners ---
-      elementFilter.addEventListener('change', () => {
-        filterRows();
-        if (currentSortKey) sortRows(currentSortKey);
-      });
-      rarityFilter.addEventListener('change', () => {
-        filterRows();
-        if (currentSortKey) sortRows(currentSortKey);
-      });
-      roleFilter.addEventListener('change', () => {
-        filterRows();
-        if (currentSortKey) sortRows(currentSortKey);
-      });
+      elementFilter.addEventListener('change', filterRows);
+      rarityFilter.addEventListener('change', filterRows);
+      roleFilter.addEventListener('change', filterRows);
       sortButtons.forEach(button => {
         button.addEventListener('click', () => {
           sortRows(button.dataset.sort);
@@ -653,6 +651,8 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));
         currentSortKey = 'name';
         currentSortDirection = 'asc';
+
+        // Show all rows/cards first
         originalRows.forEach(row => {
           row.style.display = '';
           tableBody.appendChild(row);
@@ -661,7 +661,14 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
           card.style.display = '';
           mobileCardsContainer.appendChild(card);
         });
-        sortRows('name'); // Sort alphabetically after reset
+
+        // Sort alphabetically using helper function
+        const allRows = Array.from(tableBody.children);
+        const allCards = Array.from(mobileCardsContainer.children);
+
+        sortByName(allRows, true).forEach(row => tableBody.appendChild(row));
+        sortByName(allCards, false).forEach(card => mobileCardsContainer.appendChild(card));
+        renumberRows();
       });
       // --- Click to detail ---
       Array.from(tableBody.children).forEach(row => {
@@ -678,7 +685,15 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
       });
 
       // Sort alphabetically by default on page load
-      sortRows('name');
+      currentSortKey = 'name';
+      currentSortDirection = 'asc';
+
+      const allRows = Array.from(tableBody.children);
+      const allCards = Array.from(mobileCardsContainer.children);
+
+      sortByName(allRows, true).forEach(row => tableBody.appendChild(row));
+      sortByName(allCards, false).forEach(card => mobileCardsContainer.appendChild(card));
+      renumberRows();
     });
   </script>
 </ZoneNovaLayout>
