@@ -21,33 +21,32 @@ export const leviathanData = {
   skills: {
     normal: {
       name: "Leviathan's Kiss (利维坦之吻)",
-      description: 'Deals 120% of Attack as wind damage to designated enemy unit',
+      description: 'Deals 120 % ATK Wind damage to the targeted enemy.',
     },
     auto: {
       name: 'Abyss Roar (深渊之咆哮)',
       cooldown: '5.0s',
-      description:
-        'Deals wind damage equal to 120% of Attack to designated enemy unit. Gains 2 layers of [Mark]',
+      description: 'Deals 120 % ATK Wind damage to the targeted enemy and gains 2 Marks.',
     },
     ultimate: {
       name: 'Seven Deadly Sins: Jiāolú (七大罪：娇炉)',
       energyCost: '5',
       description:
-        'Deals wind damage equal to 600% of Attack to designated enemy unit. Immediately launches 1 pursuit attack against target. Subsequent pursuit attacks do not consume marks',
+        'Deals 600 % ATK Wind damage to the targeted enemy, then immediately performs 1 extra attack that does NOT consume a Mark.',
     },
     passive: {
       name: 'Grudge Deep Chain (怨恨深链)',
       description:
-        'When our allies activate skills and hit enemies, consumes 1 layer of [Mark] and triggers pursuit. Pursuit deals wind damage equal to 180% of Attack. Mark System: Gain marks from Auto Skill, consume for pursuit attacks',
+        'Trigger: When any allys skill hits an enemy, consume 1 Mark to perform an extra attack dealing 180 % ATK Wind damage.',
     },
   },
 
   // Team Skill
   teamSkill: {
     name: 'Combination Skill',
-    description: 'Self damage increased by 20%. Enhances DPS potential for sustained damage output',
+    description: 'Self damage increased by 20%.',
     requirements: {
-      faction: 'Huájiān',
+      faction: 'Biceta',
       element: 'Wind',
     },
   },
@@ -56,24 +55,21 @@ export const leviathanData = {
   awakenings: [
     {
       level: 1,
-      effect:
-        'Self triggers [Skills] can trigger activation effects. Improves skill synergy and combo potential',
+      effect: 'Auto skill can also trigger the Passive effect.',
     },
     {
       level: 2,
-      effect:
-        '[Pursuit] critical rate increased by 20%. Significantly boosts pursuit attack reliability',
+      effect: 'Extra attacks gain +20 % Crit Rate.',
     },
     { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
     {
       level: 4,
-      effect: '[Pursuit] damage increased by 20%. Major boost to her primary damage source',
+      effect: 'Extra attacks deal +20 % damage.',
     },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
     {
       level: 6,
-      effect:
-        'When releasing [Ultimate] skills, the number of pursuit attacks triggered changes from 1 to 2. Doubles ultimate pursuit potential',
+      effect: 'When casting the Ultimate, the automatic extra attack increases from 1 to 2 hits.',
     },
   ],
 
@@ -86,9 +82,7 @@ export const leviathanData = {
       attack: '650',
       defense: '395',
     },
-    effects: [
-      'Critical Rate Boost: After causing pursuit damage, critical rate increased by 36% for 10 seconds',
-    ],
+    effects: ['After landing an extra attack, gain +36 % Crit Rate for 10 s.'],
   },
 };
 
