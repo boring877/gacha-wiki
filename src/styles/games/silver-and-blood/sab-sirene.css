@@ -1,0 +1,316 @@
+/* Silver and Blood - Ancestral Vault Sirene Page Styles */
+
+/* Sirene Character Image Section */
+.sirene-character-section {
+  width: 100%;
+  margin-bottom: 3rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 2px solid rgba(90, 123, 167, 0.3);
+  transition: all 0.3s ease;
+}
+
+.sirene-character-section:hover {
+  border-color: rgba(90, 123, 167, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(90, 123, 167, 0.2);
+}
+
+.sirene-character-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.sirene-character-section:hover .sirene-character-image {
+  transform: scale(1.02);
+}
+
+/* Background Layer for Sirene theme */
+.sirene-bg {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(90, 123, 167, 0.15), transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(184, 197, 209, 0.1), transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08), transparent 60%);
+}
+
+/* Character-specific body styling */
+.sirene-body {
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+}
+
+/* Content Section Styling */
+.content-section {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 1rem;
+  border: 1px solid rgba(90, 123, 167, 0.3);
+  transition: all 0.3s ease;
+}
+
+.content-section:hover {
+  transform: translateY(-2px);
+  border-color: rgba(90, 123, 167, 0.5);
+}
+
+.section-title {
+  color: var(--sab-blue-silver);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--sab-blue-silver), var(--sab-calm-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-description {
+  color: var(--sab-blue-silver);
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.calculator-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  color: var(--sab-blue-silver);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.calculator-select,
+.calculator-input {
+  background: rgba(40, 40, 40, 0.9);
+  border: 1px solid rgba(90, 123, 167, 0.4);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--text-inverse);
+  font-size: 0.9rem;
+}
+
+.calculator-select:focus,
+.calculator-input:focus {
+  outline: none;
+  border-color: var(--sab-calm-blue);
+  box-shadow: 0 0 0 3px rgba(90, 123, 167, 0.2);
+}
+
+.calculator-select option {
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+}
+
+/* Calculator Results */
+.calculator-results {
+  background: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(90, 123, 167, 0.3);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.calculator-results h3 {
+  color: var(--sab-blue-silver);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.result-content {
+  color: var(--sab-blue-silver);
+  text-align: center;
+  padding: 1rem;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(50, 50, 50, 0.6);
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(90, 123, 167, 0.2);
+}
+
+.result-item:last-child {
+  margin-bottom: 0;
+}
+
+.result-label {
+  color: var(--sab-blue-silver);
+  font-weight: 600;
+}
+
+.result-value {
+  color: var(--sab-calm-blue);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.result-highlight {
+  background: rgba(90, 123, 167, 0.15);
+  border-color: var(--sab-calm-blue);
+}
+
+.result-highlight .result-value {
+  color: var(--sab-muted-gold);
+  font-size: 1.2rem;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 1rem;
+  height: 1rem;
+  overflow: hidden;
+  margin: 0.75rem 0;
+  border: 1px solid rgba(90, 123, 167, 0.3);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sab-calm-blue), var(--sab-blue-silver));
+  transition: width 0.3s ease;
+  border-radius: 1rem;
+}
+
+/* Income Grid Styling */
+
+.income-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.income-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(50, 50, 50, 0.6);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(90, 123, 167, 0.2);
+}
+
+.income-item.total {
+  background: rgba(90, 123, 167, 0.15);
+  border-color: var(--sab-calm-blue);
+}
+
+.income-label {
+  color: var(--sab-blue-silver);
+  font-weight: 600;
+}
+
+.income-value {
+  color: var(--sab-calm-blue);
+  font-weight: 700;
+}
+
+/* Reference Grid Styling */
+
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.reference-item {
+  background: rgba(50, 50, 50, 0.6);
+  border: 1px solid rgba(90, 123, 167, 0.2);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.reference-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--sab-calm-blue);
+}
+
+.reference-item h3 {
+  color: var(--sab-blue-silver);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.reference-item p {
+  color: var(--sab-calm-blue);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Navigation Back */
+.navigation-back {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.back-link {
+  color: var(--sab-blue-silver);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(90, 123, 167, 0.3);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.back-link:hover {
+  background: rgba(90, 123, 167, 0.1);
+  transform: translateY(-2px);
+  border-color: var(--sab-calm-blue);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .calculator-form {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .content-section {
+    padding: 1.5rem;
+  }
+
+  .reference-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .reference-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .content-section {
+    padding: 1rem;
+  }
+}

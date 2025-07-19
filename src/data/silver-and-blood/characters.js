@@ -131,6 +131,9 @@ import { ami } from './characters/ami.js';
 import { tris } from './characters/tris.js';
 import { mass } from './characters/mass.js';
 import { dalcarlo } from './characters/dalcarlo.js';
+import { sirene } from './characters/sirene.js';
+import { jinxedSelena } from './characters/jinxed-selena.js';
+import { lorelei } from './characters/lorelei.js';
 
 // Characters array - Add new characters here
 export const characters = [
@@ -169,6 +172,9 @@ export const characters = [
   tris,
   mass,
   dalcarlo,
+  sirene,
+  jinxedSelena,
+  lorelei,
   // Add more characters as they are created
 ];
 

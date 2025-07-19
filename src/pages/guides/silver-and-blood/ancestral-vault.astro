@@ -1,0 +1,93 @@
+---
+import AncestralVaultLayout from '../../../layouts/silver-and-blood/AncestralVaultLayout.astro';
+import { ancestralVaultIndex } from '../../../data/silver-and-blood/ancestral-vault.js';
+
+const { meta, heroSection, vaultCategories, mechanicsOverview, upcomingGuides } =
+  ancestralVaultIndex;
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'Silver and Blood', url: '/guides/silver-and-blood/' },
+  { name: 'Ancestral Vault', url: '/guides/silver-and-blood/ancestral-vault/' },
+];
+---
+
+<AncestralVaultLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={heroSection.title}
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero Section -->
+  <div class="vault-hero">
+    <h2 class="vault-hero-title">{heroSection.title}</h2>
+    <p class="vault-hero-subtitle">{heroSection.subtitle}</p>
+  </div>
+
+  <!-- Main Information Section -->
+  <div class="vault-main-info">
+    <div class="info-section">
+      <h3 class="info-title">+ Ancient Summoning</h3>
+      <ul class="info-list">
+        <li>Consume Mead of Rebirth to summon Ancient Vassals.</li>
+        <li>
+          The first summon grants a Vassal, and subsequent summons grant Vassal Spirits (Dupes).
+        </li>
+        <li>Each Ancient can be summoned up to 11 times (Maximum dupes for SSR Characters).</li>
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h3 class="info-title">+ How to obtain Mead of Rebirth</h3>
+      <ul class="info-list">
+        <li>Complete Ancestral Vault Tasks to obtain Mead of Rebirth.</li>
+        <li>Mead of Rebirth is also issued based on Clan Hunt Rank.</li>
+        <li>Check each Vassals page to see their calculator!</li>
+      </ul>
+    </div>
+
+    <div class="info-note">
+      <p><strong>Note:</strong> More Ancient Vassals will become available over time.</p>
+    </div>
+  </div>
+
+  <!-- Ancient Vassals Guide Cards -->
+  <section class="vault-category">
+    <div class="vault-guides-grid">
+      {
+        vaultCategories[0].guides.map(guide => (
+          <a href={guide.url} class="vault-guide-card">
+            <div class="vault-guide-header">
+              <h4 class="vault-guide-title">{guide.title}</h4>
+              <div class="vault-guide-badges">
+                {guide.isNew && <span class="vault-badge vault-badge-new">New</span>}
+                {guide.isFeatured && <span class="vault-badge vault-badge-featured">Featured</span>}
+              </div>
+            </div>
+
+            <p class="vault-guide-description">{guide.description}</p>
+
+            <div class="vault-guide-badges">
+              {guide.rarity && (
+                <span class={`rarity-badge ${guide.rarity.toLowerCase()}`}>{guide.rarity}</span>
+              )}
+              {guide.class && (
+                <span class={`class-badge ${guide.class.toLowerCase()}`}>{guide.class}</span>
+              )}
+              {guide.moonPhase && (
+                <span class={`moon-badge ${guide.moonPhase.toLowerCase().replace(' ', '-')}`}>
+                  {guide.moonPhase}
+                </span>
+              )}
+              {guide.attackType && (
+                <span class={`attack-badge ${guide.attackType.toLowerCase().replace('.', '')}`}>
+                  {guide.attackType}
+                </span>
+              )}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</AncestralVaultLayout>

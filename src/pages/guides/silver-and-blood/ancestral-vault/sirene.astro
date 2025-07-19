@@ -1,0 +1,210 @@
+---
+import AncestralVaultLayout from '../../../../layouts/silver-and-blood/AncestralVaultLayout.astro';
+import {
+  sireneConfig,
+  getSireneTargets,
+  getSireneDailyIncome,
+  getSireneReference,
+  SireneCalculator,
+} from '../../../../data/silver-and-blood/sirene.js';
+
+const { meta, character } = sireneConfig;
+const targets = getSireneTargets();
+const dailyIncome = getSireneDailyIncome();
+const reference = getSireneReference();
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'Silver and Blood', url: '/guides/silver-and-blood/' },
+  { name: 'Ancestral Vault', url: '/guides/silver-and-blood/ancestral-vault/' },
+  { name: 'Sirene', url: '/guides/silver-and-blood/ancestral-vault/sirene/' },
+];
+---
+
+<AncestralVaultLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle="Sirene"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Sirene Character Image -->
+  <div class="sirene-character-section">
+    <img
+      src={character.image}
+      alt={character.name}
+      class="sirene-character-image"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+
+  <!-- Sirene Calculator -->
+  <div class="content-section">
+    <h2 class="section-title">Mead of Rebirth Calculator</h2>
+    <p class="section-description">
+      Calculate how many days you need to reach your desired number of Sirene copies.
+    </p>
+
+    <div class="calculator-form">
+      <div class="input-group">
+        <label for="targetCopies">Target Copies:</label>
+        <select id="targetCopies" class="calculator-select">
+          {
+            targets.map(target => (
+              <option value={target.copies}>
+                {target.name} - {target.cost.toLocaleString()} Mead
+              </option>
+            ))
+          }
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="currentMead">Current Mead of Rebirth:</label>
+        <input
+          type="number"
+          id="currentMead"
+          class="calculator-input"
+          value="0"
+          min="0"
+          step="10"
+          placeholder="Enter your current Mead amount"
+        />
+      </div>
+    </div>
+
+    <div class="calculator-results" id="calculatorResults">
+      <h3>Calculation Results</h3>
+      <div class="result-content">
+        <p>Select your target and enter your current Mead of Rebirth to see results.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily Income Information -->
+  <div class="content-section">
+    <h2 class="section-title">Daily Mead Income</h2>
+    <p class="section-description">
+      Complete daily tasks to earn Mead of Rebirth for summoning Sirene.
+    </p>
+
+    <div class="income-grid">
+      <div class="income-item">
+        <span class="income-label">Task 1:</span>
+        <span class="income-value">{dailyIncome.task1} Mead</span>
+      </div>
+      <div class="income-item">
+        <span class="income-label">Task 2:</span>
+        <span class="income-value">{dailyIncome.task2} Mead</span>
+      </div>
+      <div class="income-item">
+        <span class="income-label">Task 3:</span>
+        <span class="income-value">{dailyIncome.task3} Mead</span>
+      </div>
+      <div class="income-item total">
+        <span class="income-label">Total Daily:</span>
+        <span class="income-value">{dailyIncome.total} Mead</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Reference -->
+  <div class="content-section">
+    <h2 class="section-title">Quick Reference</h2>
+
+    <div class="reference-grid">
+      {
+        reference.map(item => (
+          <div class="reference-item">
+            <h3>{item.title}</h3>
+            <p>{item.value}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Back to Ancestral Vault -->
+  <div class="navigation-back">
+    <a href="/guides/silver-and-blood/ancestral-vault/" class="back-link">
+      ← Back to Ancestral Vault
+    </a>
+  </div>
+</AncestralVaultLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    import('../../../../data/silver-and-blood/sirene.js')
+      .then(module => {
+        const { SireneCalculator } = module;
+
+        const targetCopiesSelect = document.getElementById('targetCopies');
+        const currentMeadInput = document.getElementById('currentMead');
+        const resultsDiv = document.getElementById('calculatorResults');
+
+        if (!targetCopiesSelect || !currentMeadInput || !resultsDiv) {
+          console.error('Calculator elements not found');
+          return;
+        }
+
+        const calculator = new SireneCalculator();
+
+        function updateResults() {
+          try {
+            const targetCopies = parseInt(targetCopiesSelect.value, 10);
+            const currentMead = parseInt(currentMeadInput.value, 10) || 0;
+
+            if (currentMead < 0) {
+              currentMeadInput.value = 0;
+              return updateResults();
+            }
+
+            const result = calculator.calculate(targetCopies, currentMead);
+
+            resultsDiv.innerHTML = `
+            <h3>Calculation Results</h3>
+            <div class="result-item ${result.isComplete ? 'result-highlight' : ''}">
+              <span class="result-label">Target:</span>
+              <span class="result-value">${result.targetCopies} cop${result.targetCopies === 1 ? 'y' : 'ies'}</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Total Cost:</span>
+              <span class="result-value">${result.totalCost.toLocaleString()} Mead</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Current Mead:</span>
+              <span class="result-value">${result.currentMead.toLocaleString()} Mead</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Remaining Cost:</span>
+              <span class="result-value">${result.remainingCost.toLocaleString()} Mead</span>
+            </div>
+            <div class="result-item result-highlight">
+              <span class="result-label">Time Needed:</span>
+              <span class="result-value">${result.timeDisplay}</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Progress:</span>
+              <span class="result-value">${result.progressPercentage}%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${Math.min(100, result.progressPercentage)}%"></div>
+            </div>
+          `;
+          } catch (error) {
+            console.error('Error calculating results:', error);
+            resultsDiv.innerHTML =
+              '<div class="result-content"><p>Error calculating results. Please try again.</p></div>';
+          }
+        }
+
+        targetCopiesSelect.addEventListener('change', updateResults);
+        currentMeadInput.addEventListener('input', updateResults);
+
+        updateResults();
+      })
+      .catch(error => {
+        console.error('Failed to load calculator module:', error);
+      });
+  });
+</script>

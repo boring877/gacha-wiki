@@ -1,0 +1,373 @@
+/* Silver and Blood - Ancestral Vault Styles */
+/* Styling for vault-* classes used in ancestral-vault.astro */
+
+/* Ancestral Vault container */
+.ancestral-vault-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Vault Hero Section */
+.vault-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(90, 123, 167, 0.1), rgba(194, 107, 107, 0.05));
+  border: 1px solid rgba(194, 107, 107, 0.2);
+  border-radius: 1rem;
+}
+
+.vault-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--sab-blue-silver), var(--sab-calm-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vault-hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--sab-calm-red);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.vault-hero-description {
+  color: var(--sab-blue-silver);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.vault-info {
+  margin-bottom: 2rem;
+}
+
+.vault-info p {
+  color: var(--sab-blue-silver);
+  margin: 0;
+}
+
+.vault-info strong {
+  color: var(--sab-calm-red);
+}
+
+/* Vault Quick Stats */
+.vault-quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.vault-stat {
+  background: rgba(40, 40, 40, 0.8);
+  border: 1px solid rgba(90, 123, 167, 0.3);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.vault-stat:hover {
+  border-color: var(--sab-calm-red);
+  transform: translateY(-2px);
+}
+
+.vault-stat-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.vault-stat-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--sab-calm-red);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.vault-stat-label {
+  color: var(--sab-blue-silver);
+  font-size: 0.9rem;
+}
+
+/* Vault Main Information Section */
+.vault-main-info {
+  margin-bottom: 3rem;
+}
+
+.info-section {
+  background: rgba(40, 40, 40, 0.6);
+  border: 1px solid rgba(90, 123, 167, 0.2);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-title {
+  color: var(--sab-calm-red);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.info-list {
+  color: var(--sab-blue-silver);
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.info-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.info-note {
+  background: rgba(194, 107, 107, 0.1);
+  border: 1px solid rgba(194, 107, 107, 0.3);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.info-note p {
+  color: var(--sab-blue-silver);
+  margin: 0;
+}
+
+.info-note strong {
+  color: var(--sab-calm-red);
+}
+
+/* Vault Categories */
+.vault-category {
+  margin-bottom: 3rem;
+}
+
+.vault-category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.vault-category-icon {
+  font-size: 2rem;
+}
+
+.vault-category-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--sab-blue-silver);
+  margin: 0;
+}
+
+.vault-category-description {
+  color: var(--sab-blue-silver);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Vault Guides Grid */
+.vault-guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.vault-guide-card {
+  display: block;
+  background: rgba(40, 40, 40, 0.8);
+  border: 2px solid rgba(90, 123, 167, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.vault-guide-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--sab-calm-red);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.vault-guide-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--sab-calm-red);
+  background: rgba(50, 50, 50, 0.9);
+}
+
+.vault-guide-card:hover::before {
+  opacity: 1;
+}
+
+.vault-guide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.vault-guide-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.vault-guide-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.vault-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.vault-badge-new {
+  background: var(--sab-calm-red);
+  color: white;
+}
+
+.vault-badge-featured {
+  background: var(--sab-muted-gold);
+  color: #222;
+}
+
+.vault-guide-description {
+  color: var(--sab-blue-silver);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.vault-guide-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.vault-guide-difficulty,
+.vault-guide-time {
+  color: var(--sab-blue-silver);
+  opacity: 0.8;
+}
+
+.vault-guide-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.vault-guide-feature {
+  background: rgba(90, 123, 167, 0.2);
+  color: var(--sab-blue-silver);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+}
+
+/* Empty State */
+.vault-empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--sab-blue-silver);
+  opacity: 0.7;
+}
+
+/* Upcoming Guides */
+.vault-upcoming {
+  margin-top: 3rem;
+}
+
+.vault-upcoming-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--sab-blue-silver);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.vault-upcoming-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.vault-upcoming-card {
+  background: rgba(40, 40, 40, 0.6);
+  border: 1px solid rgba(90, 123, 167, 0.2);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.vault-upcoming-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--sab-blue-silver);
+  margin: 0 0 0.75rem 0;
+}
+
+.vault-upcoming-description {
+  color: var(--sab-blue-silver);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.vault-upcoming-release {
+  color: var(--sab-calm-red);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .ancestral-vault-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .ancestral-vault-section-title {
+    font-size: 1.75rem;
+  }
+
+  .ancestral-vault-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ancestral-vault-section-title {
+    font-size: 1.5rem;
+  }
+
+  .ancestral-vault-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .ancestral-vault-card-title {
+    font-size: 1.2rem;
+  }
+}
