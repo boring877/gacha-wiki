@@ -227,11 +227,13 @@ import {
       const moonphaseFilter = document.getElementById('moonphase-filter');
       const resetBtn = document.getElementById('reset-table');
 
+
       function filterTable() {
         const classValue = classFilter.value.toLowerCase();
         const rarityValue = rarityFilter.value.toLowerCase();
         const factionValue = factionFilter.value.toLowerCase();
         const moonphaseValue = moonphaseFilter.value.toLowerCase();
+
 
         const rows = document.querySelectorAll('#character-table-body tr');
         const mobileCards = document.querySelectorAll('.mobile-character-card');
@@ -245,14 +247,27 @@ import {
           const matchesClass =
             !classValue || classCell.textContent.toLowerCase().includes(classValue);
           const matchesRarity =
-            !rarityValue || rarityCell.textContent.toLowerCase().includes(rarityValue);
+            !rarityValue || rarityCell.textContent.toLowerCase().trim() === rarityValue;
           const matchesFaction =
             !factionValue || factionCell.textContent.toLowerCase().includes(factionValue);
           const matchesMoonphase =
             !moonphaseValue || moonphaseCell.textContent.toLowerCase().includes(moonphaseValue);
 
+
           row.style.display =
             matchesClass && matchesRarity && matchesFaction && matchesMoonphase ? '' : 'none';
+        });
+
+        // Update row numbers for visible rows only
+        let visibleRowIndex = 1;
+        rows.forEach(row => {
+          if (row.style.display !== 'none') {
+            const numberCell = row.querySelector('td:first-child');
+            if (numberCell) {
+              numberCell.textContent = visibleRowIndex;
+              visibleRowIndex++;
+            }
+          }
         });
 
         mobileCards.forEach(card => {
@@ -264,7 +279,7 @@ import {
           const matchesClass =
             !classValue || classBadge.textContent.toLowerCase().includes(classValue);
           const matchesRarity =
-            !rarityValue || rarityBadge.textContent.toLowerCase().includes(rarityValue);
+            !rarityValue || rarityBadge.textContent.toLowerCase().trim() === rarityValue;
           const matchesFaction =
             !factionValue || factionBadge.textContent.toLowerCase().includes(factionValue);
           const matchesMoonphase =

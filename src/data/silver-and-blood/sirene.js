@@ -25,8 +25,8 @@ export const sireneConfig = {
     dailyIncome: {
       task1: 80,
       task2: 80,
-      task3: 100,
-      total: 280,
+      task3: 80,
+      total: 240,
     },
 
     // Target options for dropdown
@@ -59,7 +59,7 @@ export const sireneConfig = {
       { title: 'Cost per Copy', value: '10,000 Mead of Rebirth' },
       { title: 'Maximum Copies', value: '11 copies maximum' },
       { title: 'Total Cost (Max)', value: '110,000 Mead of Rebirth' },
-      { title: 'Daily Income', value: '280 Mead of Rebirth' },
+      { title: 'Daily Income', value: '240 Mead of Rebirth' },
     ],
   },
 };
