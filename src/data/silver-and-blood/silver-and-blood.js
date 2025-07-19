@@ -7,7 +7,8 @@ export const silverAndBloodConfig = {
     description: 'Explore Silver and Blood gacha game guides and content',
     gameTitle: 'Silver and Blood',
     heroImage: '/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg',
-    heroVideo: 'https://res.cloudinary.com/dtiiaqlah/video/upload/v1752687395/OP%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%82%A3%E3%82%B6%E3%83%BC_milet_%E3%83%9F%E3%83%AC%E3%82%A4_%E3%82%B7%E3%83%AB%E3%83%90%E3%83%BC_%E3%82%A2%E3%83%B3%E3%83%89_%E3%83%96%E3%83%A9%E3%83%83%E3%83%89_hfm4RtwuAbA_pxdtmg.webm',
+    heroVideo:
+      'https://res.cloudinary.com/dtiiaqlah/video/upload/v1752687395/OP%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%82%A3%E3%82%B6%E3%83%BC_milet_%E3%83%9F%E3%83%AC%E3%82%A4_%E3%82%B7%E3%83%AB%E3%83%90%E3%83%BC_%E3%82%A2%E3%83%B3%E3%83%89_%E3%83%96%E3%83%A9%E3%83%83%E3%83%89_hfm4RtwuAbA_pxdtmg.webm',
   },
 
   gameInfo: {
@@ -127,6 +128,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       description:
         'Browse and discover character skins and cosmetic outfits for Silver and Blood characters.',
       url: '/guides/silver-and-blood/waifu-skins/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'ancestral-vault',
+      title: 'Ancestral Vault',
+      emoji: '🏛️',
+      description:
+        'Summon Ancient Vassals with Mead of Rebirth. Calculate progression requirements for Sirene and other Ancient Vassals.',
+      url: '/guides/silver-and-blood/ancestral-vault/',
       category: 'guides',
       status: 'active',
     },
