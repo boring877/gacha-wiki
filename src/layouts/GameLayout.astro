@@ -34,7 +34,7 @@ if (gameSlug && customStyles.length === 0) {
     <BaseHead title={title} description={description || ''} />
 
     <!-- Import custom styles for this game -->
-    {customStyles.map(style => <style set:html={`@import '${style}';`}></style>)}
+    {customStyles.map(style => <style set:html={`@import '${style}';`} />)}
 
     <slot name="head" />
   </head>

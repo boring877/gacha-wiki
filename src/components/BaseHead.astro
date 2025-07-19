@@ -9,7 +9,7 @@ export interface Props {
   description: string;
   image?: string;
   shouldPreloadDefaultImage?: boolean;
-  breadcrumbs?: Array<{name: string; url: string}>;
+  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -269,7 +269,10 @@ const {
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta name="keywords" content="gacha wiki, zone nova wiki, silver and blood wiki, gacha game guide, character database, damage mechanics, game strategies, mobile RPG" />
+<meta
+  name="keywords"
+  content="gacha wiki, zone nova wiki, silver and blood wiki, gacha game guide, character database, damage mechanics, game strategies, mobile RPG"
+/>
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -339,26 +342,31 @@ const {
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 
 <!-- Breadcrumb Schema Markup -->
-{breadcrumbs && breadcrumbs.length > 0 && (
-  <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "GachaWiki",
-          "item": "https://gachawiki.info"
-        },
-        ...breadcrumbs.map((breadcrumb, index) => ({
-          "@type": "ListItem",
-          "position": index + 2,
-          "name": breadcrumb.name,
-          "item": `https://gachawiki.info${breadcrumb.url}`
-        }))
-      ]
-    })} />
-)}
+{
+  breadcrumbs && breadcrumbs.length > 0 && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'GachaWiki',
+            item: 'https://gachawiki.info',
+          },
+          ...breadcrumbs.map((breadcrumb, index) => ({
+            '@type': 'ListItem',
+            position: index + 2,
+            name: breadcrumb.name,
+            item: `https://gachawiki.info${breadcrumb.url}`,
+          })),
+        ],
+      })}
+    />
+  )
+}
 
 <!-- Speed Insights -->
 {/* @ts-ignore */}

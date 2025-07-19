@@ -8,7 +8,7 @@ export const CLOUDINARY_CONFIG = {
   imageUploadPath: '/image/upload/',
   autoOptimize: true,
   format: 'auto',
-  quality: 'auto'
+  quality: 'auto',
 };
 
 /**
@@ -22,11 +22,11 @@ export function getOptimizedVideoUrl(cloudinaryId, transformations = {}) {
     quality = 'auto',
     format = 'auto',
     startOffset = null,
-    endOffset = null
+    endOffset = null,
   } = transformations;
 
   let transformParams = `w_${width},h_${height},c_${crop},q_${quality},f_${format}`;
-  
+
   // Add video trimming if specified
   if (startOffset && endOffset) {
     transformParams += `,so_${startOffset},eo_${endOffset}`;
@@ -47,11 +47,11 @@ export function getVideoThumbnail(cloudinaryId, options = {}) {
     crop = 'fill',
     quality = 'auto',
     format = 'jpg',
-    timeOffset = 'auto'
+    timeOffset = 'auto',
   } = options;
 
   const transformParams = `w_${width},h_${height},c_${crop},q_${quality},f_${format},so_${timeOffset}`;
-  
+
   return `${CLOUDINARY_CONFIG.baseUrl}${CLOUDINARY_CONFIG.videoUploadPath}${transformParams}/${cloudinaryId}`;
 }
 
@@ -63,7 +63,7 @@ export function getResponsiveVideoUrls(cloudinaryId) {
     mobile: getOptimizedVideoUrl(cloudinaryId, { width: 480, height: 270 }),
     tablet: getOptimizedVideoUrl(cloudinaryId, { width: 768, height: 432 }),
     desktop: getOptimizedVideoUrl(cloudinaryId, { width: 1200, height: 675 }),
-    fullscreen: getOptimizedVideoUrl(cloudinaryId, { width: 1920, height: 1080 })
+    fullscreen: getOptimizedVideoUrl(cloudinaryId, { width: 1920, height: 1080 }),
   };
 }
 
@@ -77,7 +77,7 @@ export function getSkillVideoConfig(skillType, _duration) {
     muted: true,
     loop: false,
     preload: 'metadata',
-    playsinline: true
+    playsinline: true,
   };
 
   switch (skillType.toLowerCase()) {
@@ -85,27 +85,27 @@ export function getSkillVideoConfig(skillType, _duration) {
       return {
         ...baseConfig,
         loop: true, // Normal attacks can loop
-        autoplay: true // Quick preview
+        autoplay: true, // Quick preview
       };
     case 'special':
       return {
         ...baseConfig,
         autoplay: false,
-        preload: 'auto' // Preload special skills
+        preload: 'auto', // Preload special skills
       };
     case 'passive':
       return {
         ...baseConfig,
         loop: true,
         autoplay: true,
-        controls: false // Passive skills auto-play without controls
+        controls: false, // Passive skills auto-play without controls
       };
     case 'ultimate':
       return {
         ...baseConfig,
         preload: 'auto',
         autoplay: false,
-        controls: true // Ultimate skills need full controls
+        controls: true, // Ultimate skills need full controls
       };
     default:
       return baseConfig;
@@ -123,15 +123,15 @@ export function createOptimizedVideoElement(videoData, options = {}) {
     showControls = true,
     autoplay = false,
     muted = true,
-    loop = false
+    loop = false,
   } = options;
 
   // Get responsive URLs
   const responsiveUrls = getResponsiveVideoUrls(videoData.cloudinaryId);
-  
+
   // Create video element configuration
   const videoConfig = getSkillVideoConfig(videoData.skillType, videoData.duration);
-  
+
   return {
     src: responsiveUrls.desktop,
     poster: videoData.thumbnailUrl,
@@ -146,7 +146,7 @@ export function createOptimizedVideoElement(videoData, options = {}) {
     playsinline: videoConfig.playsinline,
     'data-cloudinary-id': videoData.cloudinaryId,
     'data-skill-type': videoData.skillType,
-    'data-duration': videoData.duration
+    'data-duration': videoData.duration,
   };
 }
 
@@ -157,16 +157,16 @@ export function getVideoSources(cloudinaryId) {
   return [
     {
       src: getOptimizedVideoUrl(cloudinaryId, { format: 'webm', quality: 'auto' }),
-      type: 'video/webm'
+      type: 'video/webm',
     },
     {
       src: getOptimizedVideoUrl(cloudinaryId, { format: 'mp4', quality: 'auto' }),
-      type: 'video/mp4'
+      type: 'video/mp4',
     },
     {
       src: getOptimizedVideoUrl(cloudinaryId, { format: 'ogg', quality: 'auto' }),
-      type: 'video/ogg'
-    }
+      type: 'video/ogg',
+    },
   ];
 }
 
@@ -180,11 +180,11 @@ export function addVideoOverlay(cloudinaryId, overlayText, options = {}) {
     fontColor = 'white',
     fontWeight = 'bold',
     position = 'south',
-    background = 'black_80'
+    background = 'black_80',
   } = options;
 
   const overlayParams = `l_text:${fontFamily}_${fontSize}_${fontWeight}:${encodeURIComponent(overlayText)},co_${fontColor},g_${position},bg_${background}`;
-  
+
   return getOptimizedVideoUrl(cloudinaryId, { custom: overlayParams });
 }
 
@@ -198,7 +198,7 @@ export function createSkillPlaylist(skills) {
     title: skill.skillName,
     description: skill.description,
     duration: skill.duration,
-    type: skill.skillType
+    type: skill.skillType,
   }));
 }
 
@@ -210,7 +210,7 @@ export function getVideoAnalytics(characterId, skillName) {
     'data-analytics-character': characterId,
     'data-analytics-skill': skillName,
     'data-analytics-category': 'skill-video',
-    'data-analytics-action': 'play'
+    'data-analytics-action': 'play',
   };
 }
 
@@ -218,21 +218,24 @@ export function getVideoAnalytics(characterId, skillName) {
  * Progressive video loading for better performance
  */
 export function createProgressiveVideoLoader(_videoData, _container) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const video = entry.target;
-        const actualSrc = video.getAttribute('data-src');
-        if (actualSrc) {
-          video.src = actualSrc;
-          video.removeAttribute('data-src');
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const video = entry.target;
+          const actualSrc = video.getAttribute('data-src');
+          if (actualSrc) {
+            video.src = actualSrc;
+            video.removeAttribute('data-src');
+          }
+          observer.unobserve(video);
         }
-        observer.unobserve(video);
-      }
-    });
-  }, {
-    rootMargin: '50px'
-  });
+      });
+    },
+    {
+      rootMargin: '50px',
+    }
+  );
 
   return observer;
 }
@@ -241,7 +244,7 @@ export function createProgressiveVideoLoader(_videoData, _container) {
  * Handle video errors with fallback
  */
 export function handleVideoError(videoElement, fallbackUrl) {
-  videoElement.addEventListener('error', (e) => {
+  videoElement.addEventListener('error', e => {
     // console.warn('Video failed to load:', e.target.src);
     if (fallbackUrl && e.target.src !== fallbackUrl) {
       e.target.src = fallbackUrl;
@@ -271,5 +274,5 @@ export default {
   createSkillPlaylist,
   getVideoAnalytics,
   createProgressiveVideoLoader,
-  handleVideoError
+  handleVideoError,
 };

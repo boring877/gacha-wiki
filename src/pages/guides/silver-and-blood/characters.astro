@@ -227,13 +227,11 @@ import {
       const moonphaseFilter = document.getElementById('moonphase-filter');
       const resetBtn = document.getElementById('reset-table');
 
-
       function filterTable() {
         const classValue = classFilter.value.toLowerCase();
         const rarityValue = rarityFilter.value.toLowerCase();
         const factionValue = factionFilter.value.toLowerCase();
         const moonphaseValue = moonphaseFilter.value.toLowerCase();
-
 
         const rows = document.querySelectorAll('#character-table-body tr');
         const mobileCards = document.querySelectorAll('.mobile-character-card');
@@ -252,7 +250,6 @@ import {
             !factionValue || factionCell.textContent.toLowerCase().includes(factionValue);
           const matchesMoonphase =
             !moonphaseValue || moonphaseCell.textContent.toLowerCase().includes(moonphaseValue);
-
 
           row.style.display =
             matchesClass && matchesRarity && matchesFaction && matchesMoonphase ? '' : 'none';
@@ -365,4 +362,3 @@ import {
     });
   </script>
 </CharactersLayout>
-

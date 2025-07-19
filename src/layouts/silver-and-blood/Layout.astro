@@ -22,7 +22,7 @@ export interface Props {
   gameTitle?: string;
   heroImage?: string;
   heroVideo?: string;
-  breadcrumbs?: Array<{name: string; url: string}>;
+  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
 const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Astro.props;
@@ -32,7 +32,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
   <head>
     <BaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
-    
+
     <!-- Image Preloading for Performance -->
     {
       heroImage && (
@@ -44,7 +44,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
         />
       )
     }
-    
+
     <slot name="head" />
   </head>
   <body class="sab-body">
@@ -69,7 +69,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
                 <div class="hero-image-wrapper">
                   <div class="hero-image-container">
                     {false ? (
-                      <div></div>
+                      <div />
                     ) : (
                       heroImage && (
                         <OptimizedImage
@@ -120,7 +120,5 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
 
       <Footer />
     </div>
-
-
   </body>
 </html>

@@ -21,7 +21,7 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: string;
-  breadcrumbs?: Array<{name: string; url: string}>;
+  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
 const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
@@ -94,14 +94,15 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
 
       <Footer />
     </div>
-  </body><!-- Image Preloading for Performance -->{
-    heroImage && (
-      <link
-        rel="preload"
-        as="image"
-        href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.webp')}
-        type="image/webp"
-      />
-    )
-  }
+    {
+      heroImage && (
+        <link
+          rel="preload"
+          as="image"
+          href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.webp')}
+          type="image/webp"
+        />
+      )
+    }
+  </body><!-- Image Preloading for Performance -->
 </html>

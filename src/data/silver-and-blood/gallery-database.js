@@ -44,7 +44,7 @@ export function getGalleryCharacterForDisplay(character) {
     name: character.character,
     image: character.image,
     videoCount: videoCount,
-    hasVideos: videoCount > 0
+    hasVideos: videoCount > 0,
   };
 }
 
@@ -68,7 +68,7 @@ export function getGalleryStatistics() {
   return {
     totalCharacters,
     totalVideos,
-    averageVideosPerCharacter: totalCharacters > 0 ? Math.round(totalVideos / totalCharacters) : 0
+    averageVideosPerCharacter: totalCharacters > 0 ? Math.round(totalVideos / totalCharacters) : 0,
   };
 }
 
@@ -77,11 +77,12 @@ export function getGalleryStatistics() {
  */
 export function searchGalleryCharacters(query) {
   if (!query) return getAllGalleryCharacters();
-  
+
   const searchTerm = query.toLowerCase();
-  return galleryCharacters.filter(character => 
-    character.character.toLowerCase().includes(searchTerm) ||
-    character.id.toLowerCase().includes(searchTerm)
+  return galleryCharacters.filter(
+    character =>
+      character.character.toLowerCase().includes(searchTerm) ||
+      character.id.toLowerCase().includes(searchTerm)
   );
 }
 
@@ -111,12 +112,12 @@ export function getCharactersWithVideoType(videoType) {
 export function validateCharacterData(character) {
   const required = ['id', 'character', 'image'];
   const missing = required.filter(field => !character[field]);
-  
+
   if (missing.length > 0) {
     // console.warn(`Character ${character.id || 'unknown'} missing required fields:`, missing);
     return false;
   }
-  
+
   return true;
 }
 
@@ -127,13 +128,13 @@ export function addCharacterToGallery(characterData) {
   if (!validateCharacterData(characterData)) {
     throw new Error('Invalid character data');
   }
-  
+
   // Check if character already exists
   const existingCharacter = getGalleryCharacter(characterData.id);
   if (existingCharacter) {
     throw new Error(`Character with ID ${characterData.id} already exists`);
   }
-  
+
   galleryCharacters.push(characterData);
   return characterData;
 }
@@ -147,5 +148,5 @@ export default {
   searchGalleryCharacters,
   getCharactersWithVideoType,
   validateCharacterData,
-  addCharacterToGallery
+  addCharacterToGallery,
 };

@@ -15,26 +15,33 @@ const characters = getAllGalleryCharactersForDisplay();
   <!-- Character Selection Grid -->
   <div class="character-selection">
     <h3 class="subsection-title">Choose Your Character</h3>
-    <p class="resource-attribution">All content and assets are sourced from the official Silver and Blood game</p>
+    <p class="resource-attribution">
+      All content and assets are sourced from the official Silver and Blood game
+    </p>
 
     <div class="character-grid">
-      {characters.length > 0 ? (
-        characters.map(character => (
-          <a href={`/guides/silver-and-blood/waifu-gallery/${character.id}/`} class="character-card">
-            <div class="character-image">
-              <img src={character.image} alt={character.name} />
-            </div>
-            <div class="character-info">
-              <h4 class="character-name">{character.name}</h4>
-            </div>
-          </a>
-        ))
-      ) : (
-        <div class="empty-state">
-          <h3>Gallery Coming Soon</h3>
-          <p>Character galleries are being curated. Stay tuned for exclusive content!</p>
-        </div>
-      )}
+      {
+        characters.length > 0 ? (
+          characters.map(character => (
+            <a
+              href={`/guides/silver-and-blood/waifu-gallery/${character.id}/`}
+              class="character-card"
+            >
+              <div class="character-image">
+                <img src={character.image} alt={character.name} />
+              </div>
+              <div class="character-info">
+                <h4 class="character-name">{character.name}</h4>
+              </div>
+            </a>
+          ))
+        ) : (
+          <div class="empty-state">
+            <h3>Gallery Coming Soon</h3>
+            <p>Character galleries are being curated. Stay tuned for exclusive content!</p>
+          </div>
+        )
+      }
     </div>
   </div>
 </GalleryDatabaseLayout>

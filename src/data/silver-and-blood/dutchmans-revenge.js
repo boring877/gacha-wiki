@@ -41,46 +41,35 @@ export const dutchmansRevengeData = {
     },
   },
 
-
-
-  chapters: [
-    'Hermetic Order 1',
-    'The Communion 1',
-    'Hermetic Order 2',
-    'The Tribunal 1',
-    'The Communion 2',
-    'The Tribunal 2',
-  ],
-
   chapterGuides: [
     {
       name: 'The Communion I - All Stages',
-      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOAJ5tqOIpFzvTuHeKz2yWux'
+      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOAJ5tqOIpFzvTuHeKz2yWux',
     },
     {
       name: 'Hermetic Order II - All Stages',
-      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOANC-USJQ4ZAjt1oKtcywud'
+      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOANC-USJQ4ZAjt1oKtcywud',
     },
     {
       name: 'The Tribunal I - All Stages',
-      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOCu9FblVycSkqYhQ99oEaiJ'
+      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOCu9FblVycSkqYhQ99oEaiJ',
     },
     {
       name: 'The Communion II - All Stages',
-      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvODmTRLs-ltcinKoIHVd_eoT'
+      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvODmTRLs-ltcinKoIHVd_eoT',
     },
     {
       name: 'The Tribunal II - All Stages',
-      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOCOljldBV4wUinFoZEBpaCY'
+      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOCOljldBV4wUinFoZEBpaCY',
     },
     {
       name: 'The Reliquary I - All Stages',
-      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvODB2PLto_DfllXGv-97EfpA'
+      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvODB2PLto_DfllXGv-97EfpA',
     },
     {
       name: 'Salvation I - All Stages',
-      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOCjVbN6exdIzhwo_xfw_2Ni'
-    }
+      url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOCjVbN6exdIzhwo_xfw_2Ni',
+    },
   ],
 };
 
