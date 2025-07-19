@@ -15,10 +15,10 @@ import '../../styles/games/silver-and-blood/sab-badge-colours.css';
 import '../../styles/games/silver-and-blood/sab-dutchmans-revenge.css';
 
 export interface Props {
-	title: string;
-	description?: string;
-	gameTitle?: string;
-	data: any;
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  data: any;
 }
 
 const { title, description, gameTitle, data } = Astro.props;
@@ -26,145 +26,165 @@ const { meta, intro, gameplayMechanics, chapters, chapterGuides } = data;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description || ""} />
-		<meta name="keywords" content={meta.keywords} />
-		<meta name="author" content="GachaWiki" />
-		<meta name="robots" content="index, follow" />
-		
-		<meta property="og:title" content={meta.ogTitle} />
-		<meta property="og:description" content={meta.ogDescription} />
-		<meta property="og:type" content="article" />
-		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
-		
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={meta.ogTitle} />
-		<meta name="twitter:description" content={meta.ogDescription} />
-		
-		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-		<meta name="theme-color" content="#5a7ba7" />
-		
-		<script type="application/ld+json" set:html={JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "Guide",
-			"name": meta.title,
-			"description": meta.description,
-			"about": {
-				"@type": "VideoGame",
-				"name": "Silver and Blood"
-			},
-			"publisher": {
-				"@type": "Organization",
-				"name": "GachaWiki"
-			},
-			"video": {
-				"@type": "VideoObject",
-				"name": "Dutchman's Revenge Guide - Part 1",
-				"description": "Complete walkthrough of Dutchman's Revenge chapters",
-				"embedUrl": "https://www.youtube.com/embed/NnLUB6BqYWc"
-			}
-		})}>
-		</script>
-	</head>
-	<body class="sab-body">
-		<!-- Background layers for visual depth -->
-		<div class="bg-layer bg-primary"></div>
-		<div class="bg-layer bg-accent-1"></div>
-		<div class="bg-layer bg-accent-2"></div>
-		<div class="bg-layer bg-accent-3"></div>
-		
-		<div class="sab-content">
-			<Header />
-			<MobileMenu />
-			
-			<div class="sab-container">
-				<main class="sab-main">
-					<!-- Title Section -->
-					{gameTitle && (
-						<section class="title-only-section">
-							<h1 class="title-only-heading">{gameTitle}</h1>
-							<DecorativeLines />
-						</section>
-					)}
-				
-				<!-- Navigation -->
-				<SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
-				
-					<!-- Content -->
-					<div class="content-area">
-					<div class="dutchmans-revenge-container">
-						<div class="intro-section">
-							<p>{intro.text}</p>
-						</div>
+  <head>
+    <BaseHead title={title} description={description || ''} />
+    <meta name="keywords" content={meta.keywords} />
+    <meta name="author" content="GachaWiki" />
+    <meta name="robots" content="index, follow" />
 
-						<div class="section">
-							<h2 class="section-title">Gameplay Mechanics</h2>
-							
-							<div class="mechanic-card">
-								<h4>{gameplayMechanics.infiltration.title}</h4>
-								<ul>
-									{gameplayMechanics.infiltration.mechanics.map(mechanic => (
-										<li>{mechanic}</li>
-									))}
-								</ul>
-							</div>
-							
-							<div class="mechanic-card">
-								<h4>{gameplayMechanics.reset.title}</h4>
-								<ul>
-									{gameplayMechanics.reset.mechanics.map(mechanic => (
-										<li>{mechanic}</li>
-									))}
-								</ul>
-							</div>
+    <meta property="og:title" content={meta.ogTitle} />
+    <meta property="og:description" content={meta.ogDescription} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
 
-							<div class="reward-highlight">
-								<h4>{gameplayMechanics.artifactReward.title}</h4>
-								<p>{gameplayMechanics.artifactReward.description}</p>
-							</div>
-						</div>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta.ogTitle} />
+    <meta name="twitter:description" content={meta.ogDescription} />
 
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#5a7ba7" />
 
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Guide',
+        name: meta.title,
+        description: meta.description,
+        about: {
+          '@type': 'VideoGame',
+          name: 'Silver and Blood',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'GachaWiki',
+        },
+        video: {
+          '@type': 'VideoObject',
+          name: "Dutchman's Revenge Guide - Part 1",
+          description: "Complete walkthrough of Dutchman's Revenge chapters",
+          embedUrl: 'https://www.youtube.com/embed/NnLUB6BqYWc',
+        },
+      })}
+    >
+    </script>
+  </head>
+  <body class="sab-body">
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
 
-						{chapterGuides && chapterGuides.length > 0 && (
-							<div class="section">
-								<h2 class="section-title">Video Guides</h2>
-								<p class="credit-text">
-									Credit to <a href="https://www.youtube.com/@neevee_o7/playlists" target="_blank" rel="noopener noreferrer" class="credit-link">Neevee</a>
-								</p>
-								<div class="chapter-guides">
-									{chapterGuides.map(guide => {
-										const isValidYouTubeUrl = guide.url && (
-											guide.url.startsWith('https://www.youtube.com/') ||
-											guide.url.startsWith('https://youtu.be/') ||
-											guide.url.startsWith('https://m.youtube.com/')
-										);
-										
-										return (
-											<div class="chapter-guide-item">
-												<h4>{guide.name}</h4>
-												{isValidYouTubeUrl ? (
-													<a href={guide.url} target="_blank" rel="noopener noreferrer" class="guide-link">
-														Watch on YouTube
-													</a>
-												) : (
-													<span class="guide-link-disabled">
-														Invalid YouTube URL
-													</span>
-												)}
-											</div>
-										);
-									})}
-								</div>
-							</div>
-						)}
-					</div>
-					</div>
-				</main>
-			</div>
-			
-			<Footer />
-		</div>
-	</body>
+    <div class="sab-content">
+      <Header />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="sab-main">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Navigation -->
+          <SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
+
+          <!-- Content -->
+          <div class="content-area">
+            <div class="dutchmans-revenge-container">
+              <div class="intro-section">
+                <p>{intro.text}</p>
+              </div>
+
+              <div class="section">
+                <h2 class="section-title">Gameplay Mechanics</h2>
+
+                <div class="mechanic-card">
+                  <h4>{gameplayMechanics.infiltration.title}</h4>
+                  <ul>
+                    {
+                      gameplayMechanics.infiltration.mechanics.map((mechanic) => (
+                        <li>{mechanic}</li>
+                      ))
+                    }
+                  </ul>
+                </div>
+
+                <div class="mechanic-card">
+                  <h4>{gameplayMechanics.reset.title}</h4>
+                  <ul>
+                    {
+                      gameplayMechanics.reset.mechanics.map((mechanic) => (
+                        <li>{mechanic}</li>
+                      ))
+                    }
+                  </ul>
+                </div>
+
+                <div class="reward-highlight">
+                  <h4>{gameplayMechanics.artifactReward.title}</h4>
+                  <p>{gameplayMechanics.artifactReward.description}</p>
+                </div>
+              </div>
+
+              {
+                chapterGuides && chapterGuides.length > 0 && (
+                  <div class="section">
+                    <h2 class="section-title">Video Guides</h2>
+                    <p class="credit-text">
+                      Credit to{' '}
+                      <a
+                        href="https://www.youtube.com/@neevee_o7/playlists"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="credit-link"
+                      >
+                        Neevee
+                      </a>
+                    </p>
+                    <div class="chapter-guides">
+                      {chapterGuides.map((guide) => {
+                        const isValidYouTubeUrl =
+                          guide.url &&
+                          (guide.url.startsWith('https://www.youtube.com/') ||
+                            guide.url.startsWith('https://youtu.be/') ||
+                            guide.url.startsWith('https://m.youtube.com/'));
+
+                        return (
+                          <div class="chapter-guide-item">
+                            <h4>{guide.name}</h4>
+                            {isValidYouTubeUrl ? (
+                              <a
+                                href={guide.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="guide-link"
+                              >
+                                Watch on YouTube
+                              </a>
+                            ) : (
+                              <span class="guide-link-disabled">Invalid YouTube URL</span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )
+              }
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
 </html>
