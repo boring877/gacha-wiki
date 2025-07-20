@@ -1,30 +1,92 @@
 ---
-import SilverAndBloodLayout from './Layout.astro';
+import BaseHead from '../../components/BaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import OptimizedImage from '../../components/OptimizedImage.astro';
+import SilverAndBloodNavigation from '../../components/silver-and-blood/SilverAndBloodNavigation.astro';
+
+// Import CSS files properly
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-boss-database.css';
 
 export interface Props {
   title: string;
-  description: string;
-  gameTitle: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  heroVideo?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
-const { title, description, gameTitle } = Astro.props;
+const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Astro.props;
 ---
 
-<SilverAndBloodLayout title={title} description={description} gameTitle={gameTitle}>
-  <main class="boss-database-main">
-    <slot />
-  </main>
-</SilverAndBloodLayout>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
+    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
 
-<style>
-  .boss-database-main {
-    min-height: 100vh;
-    padding: 2rem 0;
-  }
-
-  @media (max-width: 768px) {
-    .boss-database-main {
-      padding: 1rem 0;
+    <!-- Image Preloading for Performance -->
+    {
+      heroImage && (
+        <link
+          rel="preload"
+          as="image"
+          href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.webp')}
+          type="image/webp"
+        />
+      )
     }
-  }
-</style>
+
+    <slot name="head" />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="sab-main">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Silver and Blood Navigation -->
+          <SilverAndBloodNavigation
+            currentPath={Astro.url.pathname}
+            excludeOnLandingPage={true}
+            showWaifuGallery={true}
+          />
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>
