@@ -1,8 +1,6 @@
 /* Silver and Blood - Boss Database Styles */
 
 .boss-database-section,
-.categories-section,
-.filters-section,
 .boss-list-section {
   margin-bottom: 3rem;
 }
@@ -25,132 +23,6 @@
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
-}
-
-/* Categories Grid */
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.category-card {
-  background: var(--sab-card-bg);
-  border: 2px solid var(--sab-border-color);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.category-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--sab-light-blue);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.category-header {
-  margin-bottom: 1rem;
-}
-
-.category-title {
-  font-size: 1.25rem;
-  color: var(--sab-primary-color);
-  margin: 0;
-  font-weight: 600;
-}
-
-.category-description {
-  color: var(--sab-text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 0 0 1rem 0;
-}
-
-.category-status {
-  text-align: center;
-}
-
-.status-badge {
-  display: inline-block;
-  background: rgba(166, 77, 77, 0.2);
-  color: var(--sab-primary-color);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border: 1px solid var(--sab-border-color);
-}
-
-/* Filters Section */
-.filters-container {
-  background: var(--sab-card-bg);
-  border: 2px solid var(--sab-border-color);
-  border-radius: 16px;
-  padding: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.filters-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-  align-items: end;
-}
-
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.filter-group label {
-  font-weight: 600;
-  color: var(--sab-primary-color);
-  font-size: 1rem;
-}
-
-.filter-select {
-  background: rgba(28, 28, 28, 0.8);
-  border: 2px solid var(--sab-border-color);
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  color: var(--sab-text-primary);
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.filter-select:focus {
-  outline: none;
-  border-color: var(--sab-light-blue);
-  box-shadow: 0 0 0 3px rgba(90, 123, 167, 0.2);
-}
-
-.filter-select option {
-  background: #1c1c1c;
-  color: var(--sab-text-primary);
-}
-
-.search-button {
-  background: linear-gradient(135deg, var(--sab-calm-blue), var(--sab-light-blue));
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  height: fit-content;
-}
-
-.search-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(90, 123, 167, 0.4);
-  background: linear-gradient(135deg, var(--sab-light-blue), var(--sab-calm-blue));
 }
 
 /* Boss List Section */
@@ -314,19 +186,11 @@
 }
 
 @media (max-width: 480px) {
-  .categories-grid {
+  .bosses-container {
     margin: 0 -0.5rem;
   }
 
-  .category-card {
+  .boss-card {
     margin: 0 0.5rem;
-  }
-
-  .filters-container {
-    margin: 0 -0.5rem;
-  }
-
-  .placeholder-message {
-    margin: 0 -0.5rem;
   }
 }
