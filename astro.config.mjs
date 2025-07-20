@@ -61,9 +61,9 @@ export default defineConfig({
 
             // Utility chunks
             utils: [
-              '../src/utils/character-utils.ts',
-              '../src/utils/data-validation.ts',
               '../src/utils/seo.js',
+              '../src/utils/timing-constants.ts',
+              '../src/utils/ancestral-vault-calculator.js',
             ],
 
             // Component chunks for lazy loading
