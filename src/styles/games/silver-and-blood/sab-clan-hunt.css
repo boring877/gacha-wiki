@@ -1,0 +1,626 @@
+/* Silver and Blood - Clan Hunt Styles */
+
+.clan-hunt-section,
+.calculator-section,
+.rewards-section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--sab-primary-color);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: var(--sab-text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.mechanics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.mechanic-card {
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mechanic-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--sab-light-blue);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.mechanic-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.mechanic-icon {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(166, 77, 77, 0.1);
+  border-radius: 8px;
+  border: 1px solid var(--sab-border-color);
+}
+
+.mechanic-title {
+  font-size: 1.25rem;
+  color: var(--sab-primary-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+.mechanic-description {
+  color: var(--sab-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Boss Database Link Styles */
+.boss-database-link-section {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.database-link-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.simple-database-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  color: #e8e8e8;
+  text-decoration: none;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-base);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(166, 77, 77, 0.2);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background: rgba(166, 77, 77, 0.05);
+  min-height: 60px;
+  line-height: 1.3;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.simple-database-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(166, 77, 77, 0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.simple-database-link:hover {
+  color: #ffffff;
+  background: var(--sab-light-blue);
+  border-color: var(--sab-light-blue);
+  transform: translateY(-2px);
+}
+
+.simple-database-link:hover::before {
+  left: 100%;
+}
+
+/* Calculator Styles */
+.calculator-container {
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.calculator-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: var(--sab-primary-color);
+  font-size: 1rem;
+}
+
+.ranking-select,
+.mead-input {
+  background: rgba(28, 28, 28, 0.8);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--sab-text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.ranking-select:focus,
+.mead-input:focus {
+  outline: none;
+  border-color: var(--sab-light-blue);
+  box-shadow: 0 0 0 3px rgba(90, 123, 167, 0.2);
+}
+
+.ranking-select option {
+  background: #1c1c1c;
+  color: var(--sab-text-primary);
+}
+
+.ranking-select optgroup {
+  background: #2a2a2a;
+  color: var(--sab-primary-color);
+  font-weight: 600;
+}
+
+.calculator-results {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--sab-border-color);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.result-card {
+  background: rgba(166, 77, 77, 0.1);
+  border: 1px solid var(--sab-border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.result-card:hover {
+  background: rgba(166, 77, 77, 0.15);
+  transform: translateY(-2px);
+}
+
+.result-card.complete {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: #4caf50;
+}
+
+.result-label {
+  font-size: 0.875rem;
+  color: var(--sab-text-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.result-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--sab-primary-color);
+  margin-bottom: 0.25rem;
+}
+
+.result-unit {
+  font-size: 0.875rem;
+  color: var(--sab-text-secondary);
+  font-style: italic;
+}
+
+.progress-section {
+  background: rgba(28, 28, 28, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.progress-label {
+  font-weight: 600;
+  color: var(--sab-primary-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.progress-bar {
+  background: rgba(166, 77, 77, 0.2);
+  border-radius: 8px;
+  height: 12px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--sab-border-color);
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, var(--sab-calm-blue), var(--sab-light-blue));
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 6px;
+}
+
+.progress-fill.complete {
+  background: linear-gradient(90deg, #4caf50, #66bb6a);
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--sab-text-secondary);
+}
+
+/* Charts Section Styles */
+.charts-section {
+  margin-bottom: 3rem;
+}
+
+.chart-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.chart-tabs {
+  display: flex;
+  background: rgba(28, 28, 28, 0.8);
+  border-radius: 12px;
+  border: 2px solid var(--sab-border-color);
+  overflow: hidden;
+}
+
+.chart-tab {
+  background: transparent;
+  border: none;
+  padding: 1rem 1.5rem;
+  color: var(--sab-text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  border-right: 1px solid var(--sab-border-color);
+}
+
+.chart-tab:last-child {
+  border-right: none;
+}
+
+.chart-tab:hover {
+  background: rgba(166, 77, 77, 0.1);
+  color: var(--sab-text-primary);
+}
+
+.chart-tab.active {
+  background: var(--sab-calm-blue);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.chart-container {
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
+}
+
+.chart-panel {
+  display: none;
+  padding: 2rem;
+}
+
+.chart-panel.active {
+  display: block;
+}
+
+.chart-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.chart-header h3 {
+  color: var(--sab-primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.chart-header p {
+  color: var(--sab-text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.chart-wrapper {
+  display: flex;
+  justify-content: center;
+  background: rgba(28, 28, 28, 0.5);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid var(--sab-border-color);
+}
+
+.chart-wrapper canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.chart-conclusions {
+  margin-top: 2rem;
+  background: rgba(28, 28, 28, 0.8);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.conclusions-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--sab-border-color);
+}
+
+.conclusions-header h3 {
+  color: var(--sab-primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  background: var(--sab-silver-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tldr-section {
+  background: rgba(90, 123, 167, 0.15);
+  border: 2px solid var(--sab-light-blue);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.tldr-title {
+  color: var(--sab-light-blue);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tldr-text {
+  color: var(--sab-text-primary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+}
+
+.conclusions-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.conclusion-text {
+  color: var(--sab-text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  text-align: justify;
+  padding: 1rem;
+  background: rgba(166, 77, 77, 0.05);
+  border-left: 4px solid var(--sab-calm-blue);
+  border-radius: 0 8px 8px 0;
+}
+
+.conclusion-text strong {
+  color: var(--sab-primary-color);
+  font-weight: 600;
+}
+
+/* Rewards Tables Styles */
+.rewards-tables {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.rewards-table-container {
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.rewards-table-container h3 {
+  background: linear-gradient(135deg, rgba(166, 77, 77, 0.2), rgba(90, 123, 167, 0.2));
+  color: var(--sab-primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid var(--sab-border-color);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.rewards-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.rewards-table thead {
+  position: sticky;
+  top: 0;
+  background: rgba(28, 28, 28, 0.95);
+  z-index: 10;
+}
+
+.rewards-table th {
+  background: rgba(166, 77, 77, 0.15);
+  color: var(--sab-primary-color);
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--sab-border-color);
+  white-space: nowrap;
+}
+
+.rewards-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid rgba(166, 77, 77, 0.1);
+  color: var(--sab-text-secondary);
+}
+
+.rewards-table tbody tr:hover {
+  background: rgba(166, 77, 77, 0.05);
+}
+
+.rank-cell {
+  font-weight: 600;
+  color: var(--sab-primary-color);
+  white-space: nowrap;
+}
+
+.number-cell {
+  text-align: right;
+  font-family: 'Courier New', monospace;
+  font-weight: 500;
+}
+
+.days-cell {
+  text-align: right;
+  font-weight: 600;
+  color: var(--sab-light-blue);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .mechanics-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .mechanic-card {
+    padding: 1.25rem;
+  }
+
+  .mechanic-header {
+    gap: 0.5rem;
+  }
+
+  .mechanic-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.25rem;
+  }
+
+  .mechanic-title {
+    font-size: 1.1rem;
+  }
+
+  .calculator-container {
+    padding: 1.5rem;
+  }
+
+  .calculator-inputs {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rewards-table-container h3 {
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  .rewards-table th,
+  .rewards-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mechanics-grid {
+    margin: 0 -0.5rem;
+  }
+
+  .mechanic-card {
+    margin: 0 0.5rem;
+  }
+
+  .calculator-container {
+    margin: 0 -0.5rem;
+    padding: 1rem;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-card {
+    padding: 1rem;
+  }
+
+  .result-value {
+    font-size: 1.5rem;
+  }
+
+  .rewards-tables {
+    margin: 0 -0.5rem;
+  }
+}

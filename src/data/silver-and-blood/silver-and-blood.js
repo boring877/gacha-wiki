@@ -141,6 +141,25 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       category: 'guides',
       status: 'active',
     },
+    {
+      id: 'clan-hunt',
+      title: 'Clan Hunt',
+      emoji: '',
+      description: 'Clan Hunt activities and guild content for cooperative gameplay.',
+      url: '/guides/silver-and-blood/clan-hunt/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'boss-database',
+      title: 'Clan Hunt Boss Database',
+      emoji: '',
+      description:
+        'Complete database of all Clan Hunt bosses with mechanics, strategies, and optimal team compositions.',
+      url: '/guides/silver-and-blood/boss-database/',
+      category: 'guides',
+      status: 'active',
+    },
   ],
 };
 

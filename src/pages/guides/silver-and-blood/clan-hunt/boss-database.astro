@@ -1,0 +1,148 @@
+---
+import BossDatabaseLayout from '../../../../layouts/silver-and-blood/BossDatabaseLayout.astro';
+import { bossDatabase } from '../../../../data/silver-and-blood/boss-database.js';
+
+const title = 'Boss Database - Clan Hunt - Silver and Blood';
+const description =
+  'Complete database of all Clan Hunt bosses, their mechanics, weaknesses, and optimal strategies.';
+const gameTitle = 'Clan Hunt Boss Database';
+---
+
+<BossDatabaseLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Overview Section -->
+  <section class="boss-database-section">
+    <div class="section-header">
+      <h2>{bossDatabase.overview.title}</h2>
+      <p class="section-description">
+        {bossDatabase.overview.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Boss Categories Section -->
+  <section class="categories-section">
+    <div class="section-header">
+      <h2>Boss Categories</h2>
+      <p class="section-description">
+        Bosses are organized by round progression and difficulty tiers.
+      </p>
+    </div>
+
+    <div class="categories-grid">
+      {
+        bossDatabase.categories.map(category => (
+          <div class="category-card">
+            <div class="category-header">
+              <h3 class="category-title">{category.title}</h3>
+            </div>
+            <p class="category-description">{category.description}</p>
+            <div class="category-status">
+              <span class="status-badge">Coming Soon</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Search and Filter Section -->
+  <section class="filters-section">
+    <div class="section-header">
+      <h2>Boss Search & Filters</h2>
+      <p class="section-description">
+        Advanced search and filtering options for finding specific bosses.
+      </p>
+    </div>
+
+    <div class="filters-container">
+      <div class="filter-group">
+        <label for="roundFilter">Round Range:</label>
+        <select id="roundFilter" class="filter-select">
+          <option value="">All Rounds</option>
+          {bossDatabase.filterOptions.rounds.map(round => <option value={round}>{round}</option>)}
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="elementFilter">Element:</label>
+        <select id="elementFilter" class="filter-select">
+          <option value="">All Elements</option>
+          {
+            bossDatabase.filterOptions.elements.map(element => (
+              <option value={element}>{element}</option>
+            ))
+          }
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="difficultyFilter">Difficulty:</label>
+        <select id="difficultyFilter" class="filter-select">
+          <option value="">All Difficulties</option>
+          {
+            bossDatabase.filterOptions.difficulty.map(difficulty => (
+              <option value={difficulty}>{difficulty}</option>
+            ))
+          }
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <button class="search-button" id="searchButton">Search Bosses</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Boss List Section -->
+  <section class="boss-list-section">
+    <div class="section-header">
+      <h2>Boss Database</h2>
+      <p class="section-description">
+        Comprehensive list of all Clan Hunt bosses with detailed information.
+      </p>
+    </div>
+
+    <div class="boss-list-container">
+      <div class="placeholder-message">
+        <div class="placeholder-icon">🔧</div>
+        <h3>Database Under Construction</h3>
+        <p>
+          The boss database is currently being populated with detailed boss information, mechanics,
+          and strategies.
+        </p>
+        <p><strong>Coming Soon:</strong></p>
+        <ul class="coming-soon-list">
+          <li>Complete boss roster with stats</li>
+          <li>Detailed mechanics and attack patterns</li>
+          <li>Weakness and resistance information</li>
+          <li>Optimal team compositions</li>
+          <li>Strategy guides for each boss</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BossDatabaseLayout>
+
+<script>
+  // Placeholder functionality for filters
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchButton = document.getElementById('searchButton');
+    const roundFilter = document.getElementById('roundFilter');
+    const elementFilter = document.getElementById('elementFilter');
+    const difficultyFilter = document.getElementById('difficultyFilter');
+
+    if (searchButton) {
+      searchButton.addEventListener('click', function () {
+        // Placeholder search functionality
+        console.log('Search filters:', {
+          round: roundFilter.value,
+          element: elementFilter.value,
+          difficulty: difficultyFilter.value,
+        });
+
+        // Show temporary message
+        alert('Search functionality will be implemented when boss data is added!');
+      });
+    }
+  });
+</script>

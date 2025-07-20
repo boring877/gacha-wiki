@@ -8,7 +8,7 @@ export const leviathanData = {
   rarity: 'SR',
   element: 'Wind',
   class: 'DPS',
-  faction: 'Huájiān',
+  faction: 'Biceta',
 
   // Base Stats (Level 80)
   stats: {

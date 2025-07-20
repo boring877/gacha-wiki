@@ -1,0 +1,109 @@
+---
+import BossDatabaseLayout from '../../../layouts/silver-and-blood/BossDatabaseLayout.astro';
+import { bossDatabase } from '../../../data/silver-and-blood/boss-database.js';
+
+const title = 'Clan Hunt Boss Database - Silver and Blood';
+const description =
+  'Complete database of all Clan Hunt bosses, their mechanics, weaknesses, and optimal strategies.';
+const gameTitle = 'Clan Hunt Boss Database';
+---
+
+<BossDatabaseLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Overview Section -->
+  <section class="boss-database-section">
+    <div class="section-header">
+      <h2>{bossDatabase.overview.title}</h2>
+      <p class="section-description">
+        {bossDatabase.overview.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Boss List Section -->
+  <section class="boss-list-section">
+    <div class="bosses-container">
+      {
+        bossDatabase.bosses.map(boss => (
+          <div class="boss-card">
+            <div class="boss-header">
+              <h2 class="boss-name">{boss.name}</h2>
+            </div>
+
+            <div class="boss-content">
+              <div class="boss-image-container">
+                <img src={boss.image} alt={boss.name} class="boss-image" />
+              </div>
+
+              <div class="boss-details">
+                <div class="boss-info-section">
+                  <h3 class="info-title">{boss.attackType.title}</h3>
+                  <p class="info-description">{boss.attackType.description}</p>
+                </div>
+
+                <div class="boss-info-section">
+                  <h3 class="info-title">{boss.defenseType.title}</h3>
+                  <p class="info-description">{boss.defenseType.description}</p>
+                </div>
+
+                <div class="boss-info-section synergy-section">
+                  <h3 class="info-title">{boss.mapSynergy.title}</h3>
+                  <p class="info-description">{boss.mapSynergy.description}</p>
+
+                  <div class="effective-characters">
+                    <h4 class="characters-title">
+                      {boss.mapSynergy.title.includes('Debuff')
+                        ? 'Characters that help with the debuff:'
+                        : 'Characters that trigger the effect:'}
+                    </h4>
+                    <div class="characters-list">
+                      {boss.mapSynergy.effectiveCharacters.map(character => {
+                        // Convert character name to URL-friendly format
+                        const characterUrl = character
+                          .toLowerCase()
+                          .replace(/\s+/g, '-')
+                          .replace(/[^a-z0-9-]/g, '');
+
+                        return (
+                          <a
+                            href={`/guides/silver-and-blood/characters/${characterUrl}/`}
+                            class="character-tag"
+                          >
+                            {character}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BossDatabaseLayout>
+
+<script>
+  // Placeholder functionality for filters
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchButton = document.getElementById('searchButton');
+    const roundFilter = document.getElementById('roundFilter');
+    const elementFilter = document.getElementById('elementFilter');
+    const difficultyFilter = document.getElementById('difficultyFilter');
+
+    if (searchButton) {
+      searchButton.addEventListener('click', function () {
+        // Placeholder search functionality
+        console.log('Search filters:', {
+          round: roundFilter.value,
+          element: elementFilter.value,
+          difficulty: difficultyFilter.value,
+        });
+
+        // Show temporary message
+        alert('Search functionality will be implemented when boss data is added!');
+      });
+    }
+  });
+</script>

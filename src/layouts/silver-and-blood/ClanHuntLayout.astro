@@ -1,0 +1,30 @@
+---
+import SilverAndBloodLayout from './SilverAndBloodLayout.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  gameTitle: string;
+}
+
+const { title, description, gameTitle } = Astro.props;
+---
+
+<SilverAndBloodLayout title={title} description={description} gameTitle={gameTitle}>
+  <main class="clan-hunt-main">
+    <slot />
+  </main>
+</SilverAndBloodLayout>
+
+<style>
+  .clan-hunt-main {
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .clan-hunt-main {
+      padding: 1rem 0;
+    }
+  }
+</style>

@@ -1,0 +1,499 @@
+---
+import ClanHuntLayout from '../../../layouts/silver-and-blood/ClanHuntLayout.astro';
+import { clanHuntInfo, clanHuntRewards } from '../../../data/silver-and-blood/clan-hunt.js';
+
+const title = 'Clan Hunt - Silver and Blood';
+const description = 'Clan Hunt activities and guild content for Silver and Blood players.';
+const gameTitle = 'Clan Hunt';
+---
+
+<ClanHuntLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Overview Section -->
+  <section class="clan-hunt-section">
+    <div class="section-header">
+      <h2>{clanHuntInfo.overview.title}</h2>
+      <p class="section-description">
+        {clanHuntInfo.overview.description}
+      </p>
+    </div>
+
+    <div class="mechanics-grid">
+      {
+        clanHuntInfo.mechanics.map(mechanic => (
+          <div class="mechanic-card">
+            <div class="mechanic-header">
+              {mechanic.icon && <span class="mechanic-icon">{mechanic.icon}</span>}
+              <h3 class="mechanic-title">{mechanic.title}</h3>
+            </div>
+            <p class="mechanic-description">{mechanic.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Boss Database Link -->
+  <section class="boss-database-link-section">
+    <div class="database-link-wrapper">
+      <a href={clanHuntInfo.bossDatabase.linkUrl} class="simple-database-link">
+        {clanHuntInfo.bossDatabase.linkText}
+      </a>
+    </div>
+  </section>
+
+  <!-- Rewards Calculator Section -->
+  <section class="calculator-section">
+    <div class="section-header">
+      <h2>{clanHuntInfo.calculator.title}</h2>
+      <p class="section-description">
+        {clanHuntInfo.calculator.description}
+      </p>
+    </div>
+
+    <div class="calculator-container">
+      <div class="calculator-inputs">
+        <div class="input-group">
+          <label for="clanRanking">Clan Ranking:</label>
+          <select id="clanRanking" class="ranking-select">
+            <option value="">Select your clan's ranking...</option>
+            <optgroup label="Top 100 Ranks">
+              {
+                clanHuntRewards.rankBased.map(reward => (
+                  <option value={reward.rank}>
+                    {reward.displayRank} - {reward.meadOfRebirth.toLocaleString()} Mead
+                  </option>
+                ))
+              }
+            </optgroup>
+            <optgroup label="Percentage Rankings">
+              {
+                clanHuntRewards.percentageBased.map(reward => (
+                  <option value={reward.percentage}>
+                    {reward.displayPercentage} - {reward.meadOfRebirth.toLocaleString()} Mead
+                  </option>
+                ))
+              }
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="currentMead">Current Mead of Rebirth:</label>
+          <input
+            type="number"
+            id="currentMead"
+            min="0"
+            placeholder="0"
+            value="0"
+            class="mead-input"
+          />
+        </div>
+      </div>
+
+      <div class="calculator-results" id="calculatorResults" style="display: none;">
+        <div class="results-grid">
+          <div class="result-card">
+            <div class="result-label">Days Saved</div>
+            <div class="result-value" id="daysSaved">-</div>
+            <div class="result-unit">days</div>
+          </div>
+
+          <div class="result-card">
+            <div class="result-label">Income Boost</div>
+            <div class="result-value" id="incomeBoost">-</div>
+            <div class="result-unit">%</div>
+          </div>
+
+          <div class="result-card">
+            <div class="result-label">Sirene Progress</div>
+            <div class="result-value" id="sireneProgress">-</div>
+            <div class="result-unit">%</div>
+          </div>
+
+          <div class="result-card">
+            <div class="result-label">Days to Sirene</div>
+            <div class="result-value" id="remainingDays">-</div>
+            <div class="result-unit">days</div>
+          </div>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-label">Progress to 1 SSR Sirene</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-text" id="progressText">0 / 10,000 Mead</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Charts Section -->
+  <section class="charts-section">
+    <div class="section-header">
+      <h2>{clanHuntInfo.chartAnalysis.sectionTitle}</h2>
+      <p class="section-description">
+        {clanHuntInfo.chartAnalysis.sectionDescription}
+      </p>
+    </div>
+
+    <div class="chart-controls">
+      <div class="chart-tabs">
+        {
+          clanHuntInfo.chartAnalysis.charts.map((chart, index) => (
+            <button class={`chart-tab ${index === 0 ? 'active' : ''}`} data-chart={chart.id}>
+              {chart.title}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="chart-container">
+      {
+        clanHuntInfo.chartAnalysis.charts.map((chart, index) => (
+          <div class={`chart-panel ${index === 0 ? 'active' : ''}`} id={`chart-${chart.id}`}>
+            <div class="chart-header">
+              <h3>{chart.title}</h3>
+              <p>{chart.description}</p>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id={`${chart.id}Chart`} width="800" height="400" />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="chart-conclusions">
+      <div class="conclusions-header">
+        <h3>{clanHuntInfo.chartAnalysis.conclusions.title}</h3>
+      </div>
+
+      <!-- TLDR Section -->
+      <div class="tldr-section">
+        <h4 class="tldr-title">{clanHuntInfo.chartAnalysis.conclusions.tldr.title}</h4>
+        <p class="tldr-text">{clanHuntInfo.chartAnalysis.conclusions.tldr.text}</p>
+      </div>
+
+      <div class="conclusions-content">
+        {
+          clanHuntInfo.chartAnalysis.conclusions.content.map(conclusion => (
+            <p
+              class="conclusion-text"
+              set:html={conclusion.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Rewards Tables Section -->
+  <section class="rewards-section">
+    <div class="section-header">
+      <h2>Clan Hunt Rewards Tables</h2>
+      <p class="section-description">Complete ranking rewards for all clan performance tiers.</p>
+    </div>
+
+    <div class="rewards-tables">
+      <!-- Top 100 Ranks Table -->
+      <div class="rewards-table-container">
+        <h3>Rank-Based Rewards (Top 100)</h3>
+        <div class="table-wrapper">
+          <table class="rewards-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Clan Crest</th>
+                <th>Mead of Rebirth</th>
+                <th>Days Saved</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                clanHuntRewards.rankBased.map(reward => (
+                  <tr>
+                    <td class="rank-cell">{reward.displayRank}</td>
+                    <td class="number-cell">{reward.clanCrest.toLocaleString()}</td>
+                    <td class="number-cell">{reward.meadOfRebirth.toLocaleString()}</td>
+                    <td class="days-cell">{Math.round((reward.meadOfRebirth / 240) * 10) / 10}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Percentage-Based Rewards Table -->
+      <div class="rewards-table-container">
+        <h3>Percentage-Based Rewards (Beyond Top 100)</h3>
+        <div class="table-wrapper">
+          <table class="rewards-table">
+            <thead>
+              <tr>
+                <th>Rank Percentage</th>
+                <th>Clan Crest</th>
+                <th>Mead of Rebirth</th>
+                <th>Days Saved</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                clanHuntRewards.percentageBased.map(reward => (
+                  <tr>
+                    <td class="rank-cell">{reward.displayPercentage}</td>
+                    <td class="number-cell">{reward.clanCrest.toLocaleString()}</td>
+                    <td class="number-cell">{reward.meadOfRebirth.toLocaleString()}</td>
+                    <td class="days-cell">{Math.round((reward.meadOfRebirth / 240) * 10) / 10}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</ClanHuntLayout>
+
+<script>
+  // Import calculator and chart data dynamically
+  import('../../../data/silver-and-blood/clan-hunt.js').then(module => {
+    const { ClanHuntCalculator, ClanHuntChartData } = module;
+    const calculator = new ClanHuntCalculator();
+    const chartData = new ClanHuntChartData();
+
+    // Calculator functionality
+    const rankingSelect = document.getElementById('clanRanking');
+    const currentMeadInput = document.getElementById('currentMead');
+    const resultsContainer = document.getElementById('calculatorResults');
+
+    const daysSavedEl = document.getElementById('daysSaved');
+    const incomeBoostEl = document.getElementById('incomeBoost');
+    const sireneProgressEl = document.getElementById('sireneProgress');
+    const remainingDaysEl = document.getElementById('remainingDays');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+
+    function updateCalculation() {
+      const ranking = rankingSelect.value;
+      const currentMead = parseInt(currentMeadInput.value) || 0;
+
+      if (!ranking) {
+        resultsContainer.style.display = 'none';
+        return;
+      }
+
+      const results = calculator.calculateResults(ranking, currentMead);
+
+      if (results) {
+        // Update result values
+        daysSavedEl.textContent = results.daysSaved;
+        incomeBoostEl.textContent = results.incomeBoost;
+        sireneProgressEl.textContent = results.sireneProgress;
+        remainingDaysEl.textContent = results.isComplete ? '0' : results.remainingDays;
+
+        // Update progress bar
+        const totalMead = currentMead + results.meadReward;
+        const progressPercent = Math.min((totalMead / 10000) * 100, 100);
+        progressFill.style.width = progressPercent + '%';
+        progressText.textContent = `${totalMead.toLocaleString()} / 10,000 Mead`;
+
+        // Add completion styling
+        if (results.isComplete) {
+          progressFill.classList.add('complete');
+          remainingDaysEl.parentElement.classList.add('complete');
+        } else {
+          progressFill.classList.remove('complete');
+          remainingDaysEl.parentElement.classList.remove('complete');
+        }
+
+        resultsContainer.style.display = 'block';
+      }
+    }
+
+    // Chart functionality
+    function createSimpleChart(canvasId, data, options = {}) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      const { width, height } = canvas;
+
+      // Clear canvas
+      ctx.clearRect(0, 0, width, height);
+
+      // Chart settings
+      const padding = 60;
+      const chartWidth = width - 2 * padding;
+      const chartHeight = height - 2 * padding;
+
+      // Find data ranges
+      const maxY = Math.max(...data.map(d => d.y));
+      const minY = Math.min(...data.map(d => d.y));
+      const maxX = data.length;
+
+      // Style settings
+      ctx.strokeStyle = options.color || '#5a7ba7';
+      ctx.fillStyle = options.fillColor || 'rgba(90, 123, 167, 0.3)';
+      ctx.lineWidth = 2;
+      ctx.font = '12px Arial';
+
+      // Draw axes
+      ctx.strokeStyle = '#666';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      // Y-axis
+      ctx.moveTo(padding, padding);
+      ctx.lineTo(padding, height - padding);
+      // X-axis
+      ctx.moveTo(padding, height - padding);
+      ctx.lineTo(width - padding, height - padding);
+      ctx.stroke();
+
+      // Draw chart based on type
+      if (options.type === 'bar') {
+        const barWidth = (chartWidth / data.length) * 0.8;
+        data.forEach((point, index) => {
+          const x =
+            padding +
+            (index * chartWidth) / data.length +
+            (chartWidth / data.length - barWidth) / 2;
+          const y = height - padding;
+          const barHeight = (point.y / maxY) * chartHeight;
+
+          ctx.fillStyle = point.y > 1000 ? '#ff6b6b' : point.y > 500 ? '#ffa726' : '#66bb6a';
+          ctx.fillRect(x, y - barHeight, barWidth, barHeight);
+        });
+      } else {
+        // Line chart
+        ctx.strokeStyle = options.color || '#5a7ba7';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+
+        data.forEach((point, index) => {
+          const x = padding + (index * chartWidth) / (maxX - 1);
+          const y = height - padding - ((point.y - minY) / (maxY - minY)) * chartHeight;
+
+          if (index === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        });
+        ctx.stroke();
+
+        // Draw points
+        ctx.fillStyle = options.color || '#5a7ba7';
+        data.forEach((point, index) => {
+          const x = padding + (index * chartWidth) / (maxX - 1);
+          const y = height - padding - ((point.y - minY) / (maxY - minY)) * chartHeight;
+
+          ctx.beginPath();
+          ctx.arc(x, y, 4, 0, 2 * Math.PI);
+          ctx.fill();
+        });
+      }
+
+      // Add Y-axis labels
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '12px Arial';
+      for (let i = 0; i <= 5; i++) {
+        const value = minY + (maxY - minY) * (i / 5);
+        const y = height - padding - (i / 5) * chartHeight;
+        ctx.fillText(Math.round(value).toLocaleString(), 10, y + 4);
+      }
+
+      // Add X-axis labels (every 10th rank)
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '10px Arial';
+      ctx.textAlign = 'center';
+      for (let i = 0; i < data.length; i += 10) {
+        const x = padding + (i * chartWidth) / (maxX - 1);
+        const y = height - padding + 15;
+        ctx.fillText(data[i].label || `#${i + 1}`, x, y);
+      }
+
+      // Add first and last labels
+      if (data.length > 0) {
+        const firstX = padding;
+        const lastX = padding + chartWidth;
+        const labelY = height - padding + 15;
+        ctx.fillText(data[0].label || '#1', firstX, labelY);
+        ctx.fillText(data[data.length - 1].label || `#${data.length}`, lastX, labelY);
+      }
+
+      // Title
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 16px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText(options.title || '', width / 2, 25);
+      ctx.textAlign = 'left';
+    }
+
+    function initializeCharts() {
+      // Get chart data
+      const absoluteData = chartData.getAbsoluteRewardsData();
+      const differenceData = chartData.getRankDifferenceData();
+      const cumulativeData = chartData.getCumulativeLossData();
+      const efficiencyData = chartData.getEfficiencyData();
+
+      // Create charts
+      createSimpleChart('absoluteChart', absoluteData, {
+        color: '#5a7ba7',
+        title: 'Mead Rewards by Rank Position',
+      });
+
+      createSimpleChart('differencesChart', differenceData, {
+        type: 'bar',
+        color: '#ff6b6b',
+        title: 'Mead Lost Between Consecutive Ranks',
+      });
+
+      createSimpleChart('cumulativeChart', cumulativeData, {
+        color: '#ffa726',
+        title: 'Total Mead Lost vs Rank 1',
+      });
+
+      createSimpleChart('efficiencyChart', efficiencyData, {
+        type: 'bar',
+        color: '#66bb6a',
+        title: 'Rank Improvement Efficiency (Top 20 Ranks)',
+      });
+    }
+
+    // Chart tab switching
+    function initializeChartTabs() {
+      const chartTabs = document.querySelectorAll('.chart-tab');
+      const chartPanels = document.querySelectorAll('.chart-panel');
+
+      chartTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remove active class from all tabs and panels
+          chartTabs.forEach(t => t.classList.remove('active'));
+          chartPanels.forEach(p => p.classList.remove('active'));
+
+          // Add active class to clicked tab
+          tab.classList.add('active');
+
+          // Show corresponding panel
+          const chartType = tab.dataset.chart;
+          const panel = document.getElementById(`chart-${chartType}`);
+          if (panel) {
+            panel.classList.add('active');
+          }
+        });
+      });
+    }
+
+    // Initialize everything
+    initializeCharts();
+    initializeChartTabs();
+
+    // Calculator event listeners
+    rankingSelect.addEventListener('change', updateCalculation);
+    currentMeadInput.addEventListener('input', updateCalculation);
+  });
+</script>
