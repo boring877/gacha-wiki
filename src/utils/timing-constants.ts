@@ -48,57 +48,6 @@ export const TIMING = {
   TOAST_FADE_DURATION: 300, // 300ms for toast fade animation
 } as const;
 
-// Validation constants
-export const VALIDATION = {
-  // Character and game data validation
-  SUPPORTED_RARITIES: ['SSR', 'SR', 'R'] as const,
-  SUPPORTED_ELEMENTS: ['Fire', 'Water', 'Earth', 'Air', 'Light', 'Dark'] as const,
-  SUPPORTED_FACTIONS: ['Alliance', 'Empire', 'Neutral'] as const,
-
-  // Image and media validation
-  MAX_IMAGE_SIZE: 5 * 1024 * 1024, // 5MB max image size
-  SUPPORTED_IMAGE_FORMATS: ['jpg', 'jpeg', 'png', 'webp', 'avif'] as const,
-  SUPPORTED_VIDEO_FORMATS: ['mp4', 'webm'] as const,
-
-  // Text validation
-  MAX_DESCRIPTION_LENGTH: 1000,
-  MAX_NAME_LENGTH: 50,
-  MIN_NAME_LENGTH: 2,
-
-  // URL validation
-  MAX_URL_LENGTH: 2000,
-  ALLOWED_PROTOCOLS: ['http:', 'https:'] as const,
-} as const;
-
-// UI Constants
-export const UI_CONSTANTS = {
-  // Breakpoints (matching CSS)
-  BREAKPOINTS: {
-    MOBILE: 768,
-    TABLET: 1024,
-    DESKTOP: 1200,
-    WIDE: 1600,
-  },
-
-  // Touch target sizes
-  MIN_TOUCH_TARGET: 44, // 44px minimum touch target size
-  RECOMMENDED_TOUCH_TARGET: 48, // 48px recommended touch target size
-
-  // Accessibility
-  REDUCED_MOTION_DURATION: 0.01, // 0.01ms for reduced motion
-  FOCUS_OUTLINE_WIDTH: 2, // 2px focus outline width
-
-  // Layout constants
-  HEADER_HEIGHT: 60, // 60px header height
-  FOOTER_HEIGHT: 200, // 200px footer height
-  SIDEBAR_WIDTH: 250, // 250px sidebar width
-
-  // Content limits
-  ITEMS_PER_PAGE: 20,
-  UPDATES_PER_PAGE: 10,
-  SEARCH_RESULTS_LIMIT: 50,
-} as const;
-
 // Export commonly used values for backward compatibility
 export const ROTATION_INTERVAL = TIMING.SHOWCASE_ROTATION_INTERVAL;
 export const CLOCK_INTERVAL = TIMING.CLOCK_UPDATE_INTERVAL;
