@@ -1,6 +1,6 @@
 ---
 import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro';
-
+import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import { bastetData, bastetSEO } from '../../../../data/zone-nova/characters/bastet.js';
 
 export const prerender = true;
@@ -14,6 +14,9 @@ const description = bastetSEO.description;
 ---
 
 <ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>
+  <!-- Character Navigation -->
+  <CharacterNavigation currentCharacter={characterData} />
+
   <!-- Character Header & Overview (merged) -->
   <section class="content-section test-debug">
     <h2 class="section-title" style="margin-bottom:2.5rem; text-align:center;">

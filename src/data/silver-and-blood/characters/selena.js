@@ -8,7 +8,7 @@ export const selena = {
   description:
     'A powerful SSR marksman from the Kingdom faction who specializes in ranged combat, single-target damage, and crowd control through crossbow mastery.',
   image: '/images/games/silver-and-blood/characters/Selena.jpg',
-  tags: ['Range', 'Single-Target DMG', 'Control'],
+  tags: ['Ranged', 'Single-Target DMG', 'Control'],
 
   // Game Mechanics
   rarity: 'SSR',

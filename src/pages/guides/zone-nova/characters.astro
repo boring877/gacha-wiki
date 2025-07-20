@@ -544,6 +544,27 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         const rarity = rarityFilter.value.trim();
         const role = roleFilter.value.trim();
 
+        // Save filter state to sessionStorage
+        const filterState = {
+          element: element || null,
+          rarity: rarity || null,
+          role: role || null
+        };
+        
+        // Only save non-empty filters
+        const activeFilters = {};
+        Object.keys(filterState).forEach(key => {
+          if (filterState[key]) {
+            activeFilters[key] = filterState[key];
+          }
+        });
+        
+        try {
+          sessionStorage.setItem('zone-nova-character-filters', JSON.stringify(activeFilters));
+        } catch (error) {
+          console.log('Could not save filter state to sessionStorage');
+        }
+
         const visibleRows = [];
         const visibleCards = [];
 
@@ -612,6 +633,17 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
           return 0;
         });
         rows.forEach(row => tableBody.appendChild(row));
+
+        // Save sort state to sessionStorage
+        try {
+          sessionStorage.setItem('zone-nova-character-sort', JSON.stringify({
+            column: sortKey,
+            asc: currentSortDirection === 'asc'
+          }));
+        } catch (error) {
+          console.log('Could not save sort state to sessionStorage');
+        }
+
         // Mobile cards
         const cards = Array.from(mobileCardsContainer.children).filter(
           card => card.style.display !== 'none'
@@ -669,6 +701,14 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         sortByName(allRows, true).forEach(row => tableBody.appendChild(row));
         sortByName(allCards, false).forEach(card => mobileCardsContainer.appendChild(card));
         renumberRows();
+
+        // Clear sessionStorage
+        try {
+          sessionStorage.removeItem('zone-nova-character-filters');
+          sessionStorage.removeItem('zone-nova-character-sort');
+        } catch (error) {
+          console.log('Could not clear sessionStorage');
+        }
       });
       // --- Click to detail ---
       Array.from(tableBody.children).forEach(row => {

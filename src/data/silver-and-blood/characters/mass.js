@@ -8,7 +8,7 @@ export const mass = {
   description:
     'A powerful SSR assassin from the Bloodborn faction who specializes in melee combat, teleportation, and devastating area-of-effect ultimate abilities with self-sacrifice mechanics.',
   image: '/images/games/silver-and-blood/characters/Mass.jpg',
-  tags: ['Melee', 'Teleport', 'AOE DMG'],
+  tags: ['Melee', 'Teleport', 'AoE DMG'],
 
   // Game Mechanics
   rarity: 'SSR',

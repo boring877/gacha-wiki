@@ -38,6 +38,12 @@ import {
             >
               📊 Character Rankings
             </a>
+            <a
+              href="/guides/silver-and-blood/character-tag-selection/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #6f42c1, #563d7c); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3); transition: all 0.3s ease;"
+            >
+              🏷️ Character Tag Selection
+            </a>
           </div>
         </div>
         <div class="filter-bar">
@@ -228,10 +234,32 @@ import {
       const resetBtn = document.getElementById('reset-table');
 
       function filterTable() {
-        const classValue = classFilter.value.toLowerCase();
-        const rarityValue = rarityFilter.value.toLowerCase();
-        const factionValue = factionFilter.value.toLowerCase();
-        const moonphaseValue = moonphaseFilter.value.toLowerCase();
+        const classValue = classFilter.value;
+        const rarityValue = rarityFilter.value;
+        const factionValue = factionFilter.value;
+        const moonphaseValue = moonphaseFilter.value;
+
+        // Save filter state to sessionStorage (save original case)
+        const filterState = {
+          class: classValue || null,
+          rarity: rarityValue || null,
+          faction: factionValue || null,
+          moonPhase: moonphaseValue || null
+        };
+        
+        // Only save non-empty filters
+        const activeFilters = {};
+        Object.keys(filterState).forEach(key => {
+          if (filterState[key]) {
+            activeFilters[key] = filterState[key];
+          }
+        });
+        
+        try {
+          sessionStorage.setItem('sab-character-filters', JSON.stringify(activeFilters));
+        } catch (error) {
+          console.log('Could not save filter state to sessionStorage');
+        }
 
         const rows = document.querySelectorAll('#character-table-body tr');
         const mobileCards = document.querySelectorAll('.mobile-character-card');
@@ -243,13 +271,13 @@ import {
           const moonphaseCell = row.querySelector('.moon-badge');
 
           const matchesClass =
-            !classValue || classCell.textContent.toLowerCase().includes(classValue);
+            !classValue || classCell.textContent.toLowerCase().includes(classValue.toLowerCase());
           const matchesRarity =
-            !rarityValue || rarityCell.textContent.toLowerCase().trim() === rarityValue;
+            !rarityValue || rarityCell.textContent.toLowerCase().trim() === rarityValue.toLowerCase();
           const matchesFaction =
-            !factionValue || factionCell.textContent.toLowerCase().includes(factionValue);
+            !factionValue || factionCell.textContent.toLowerCase().includes(factionValue.toLowerCase());
           const matchesMoonphase =
-            !moonphaseValue || moonphaseCell.textContent.toLowerCase().includes(moonphaseValue);
+            !moonphaseValue || moonphaseCell.textContent.toLowerCase().includes(moonphaseValue.toLowerCase());
 
           row.style.display =
             matchesClass && matchesRarity && matchesFaction && matchesMoonphase ? '' : 'none';
@@ -274,13 +302,13 @@ import {
           const moonphaseBadge = card.querySelector('.moon-badge');
 
           const matchesClass =
-            !classValue || classBadge.textContent.toLowerCase().includes(classValue);
+            !classValue || classBadge.textContent.toLowerCase().includes(classValue.toLowerCase());
           const matchesRarity =
-            !rarityValue || rarityBadge.textContent.toLowerCase().trim() === rarityValue;
+            !rarityValue || rarityBadge.textContent.toLowerCase().trim() === rarityValue.toLowerCase();
           const matchesFaction =
-            !factionValue || factionBadge.textContent.toLowerCase().includes(factionValue);
+            !factionValue || factionBadge.textContent.toLowerCase().includes(factionValue.toLowerCase());
           const matchesMoonphase =
-            !moonphaseValue || moonphaseBadge.textContent.toLowerCase().includes(moonphaseValue);
+            !moonphaseValue || moonphaseBadge.textContent.toLowerCase().includes(moonphaseValue.toLowerCase());
 
           card.style.display =
             matchesClass && matchesRarity && matchesFaction && matchesMoonphase ? '' : 'none';
@@ -321,6 +349,14 @@ import {
 
           // Clear all active sort buttons (no default sorting)
           document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+
+          // Clear sessionStorage
+          try {
+            sessionStorage.removeItem('sab-character-filters');
+            sessionStorage.removeItem('sab-character-sort');
+          } catch (error) {
+            console.log('Could not clear sessionStorage');
+          }
         });
       }
 
@@ -347,6 +383,16 @@ import {
             numberCell.textContent = index + 1;
           }
         });
+
+        // Save sort state to sessionStorage
+        try {
+          sessionStorage.setItem('sab-character-sort', JSON.stringify({
+            column: column,
+            asc: sortState.asc
+          }));
+        } catch (error) {
+          console.log('Could not save sort state to sessionStorage');
+        }
       }
       let sortState = { column: null, asc: false };
       sortButtons.forEach(btn => {

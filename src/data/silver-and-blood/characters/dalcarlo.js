@@ -8,7 +8,7 @@ export const dalcarlo = {
   description:
     'A powerful SSR enchanter from the Bloodborn faction who specializes in ranged AOE damage and debuff control through divination magic and tarot card mechanics.',
   image: '/images/games/silver-and-blood/characters/Dalcarlo.jpg',
-  tags: ['Ranged', 'AOE DMG', 'Debuff'],
+  tags: ['Ranged', 'AoE DMG', 'Debuff'],
 
   // Game Mechanics
   rarity: 'SSR',

@@ -1,0 +1,48 @@
+---
+import CharacterTagSelectionLayout from '../../../layouts/silver-and-blood/CharacterTagSelectionLayout.astro';
+import CharacterTagSelectionComponent from '../../../components/silver-and-blood/CharacterTagSelection.astro';
+import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
+
+const title = 'Character Tag Selection - Silver and Blood';
+const description = 'Filter and discover Silver and Blood characters by their combat tags and abilities. Find characters with specific roles like Buff, Healing, AoE DMG, and more.';
+---
+
+<CharacterTagSelectionLayout title={title} description={description} gameTitle="Character Tag Selection">
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
+      { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
+      { name: 'Character Tag Selection' },
+    ]}
+  />
+
+  <section class="content-section">
+    <div class="tag-selection-intro">
+      <h2 class="section-title">Character Tag Selection</h2>
+      <p class="intro-text">
+        Filter characters by their combat roles and special abilities. Select tags to discover characters that match your strategy.
+      </p>
+
+      <div class="feature-tips">
+        <h3>How to Use:</h3>
+        <ul>
+          <li><strong>Select Tags:</strong> Click on tag buttons to filter characters</li>
+          <li><strong>Multiple Tags:</strong> Characters must have ALL selected tags</li>
+          <li><strong>Clear Selection:</strong> Use the "Clear All" button to reset filters</li>
+          <li><strong>Character Details:</strong> Click "View Details" to see full character information</li>
+        </ul>
+      </div>
+    </div>
+
+    <CharacterTagSelectionComponent />
+
+    <!-- Back to Database Link -->
+    <div class="back-button-container">
+      <a href="/guides/silver-and-blood/characters/" class="back-button">
+        ← Back to Character Database
+      </a>
+    </div>
+  </section>
+</CharacterTagSelectionLayout>

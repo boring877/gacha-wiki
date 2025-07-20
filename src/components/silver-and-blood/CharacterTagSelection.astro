@@ -1,0 +1,158 @@
+---
+import { characters } from '../../data/silver-and-blood/characters.js';
+
+// Extract all unique tags from characters and sort alphabetically
+const allTags = [...new Set(characters.flatMap(char => char.tags || []))].sort();
+---
+
+<!-- Tag Selection -->
+<div class="tag-selector">
+    <h2>Filter Characters by Tags</h2>
+    
+    <!-- All Tags -->
+    <div class="all-tags">
+      <h3 class="tags-title">Available Tags</h3>
+      <div class="tag-buttons">
+        {allTags.map(tag => (
+          <button 
+            class="tag-btn" 
+            data-tag={tag}
+            type="button"
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Selected Tags Display -->
+    <div class="selected-tags-container" id="selected-tags-display" style="display: none;">
+      <h3>Selected Tags:</h3>
+      <div class="selected-tags" id="selected-tags"></div>
+      <button class="clear-tags-btn" id="clear-tags">Clear All</button>
+    </div>
+  </div>
+
+  <!-- Character Results -->
+  <div class="character-results">
+    <div class="results-header">
+      <h2>Matching Characters</h2>
+      <div class="results-info">
+        <span class="match-count" id="match-count">0 characters found</span>
+      </div>
+    </div>
+
+    <!-- Character Display -->
+    <div class="character-grid" id="character-results">
+      {characters.map(character => (
+        <div 
+          class="character-card" 
+          data-character-id={character.id}
+          data-tags={JSON.stringify(character.tags || [])}
+          data-rarity={character.rarity}
+          data-class={character.class}
+          data-faction={character.faction}
+        >
+          <div class="character-portrait">
+            <img 
+              src={character.image} 
+              alt={character.name}
+              loading="lazy"
+            />
+            <div class="character-rarity rarity-{character.rarity?.toLowerCase()}">{character.rarity}</div>
+          </div>
+          <div class="character-info">
+            <h3 class="character-name">{character.name}</h3>
+            <p class="character-title">{character.title}</p>
+            <div class="character-details">
+              <span class="character-class">{character.class}</span>
+              <span class="character-faction">{character.faction}</span>
+            </div>
+            <div class="character-tags">
+              {character.tags?.map(tag => (
+                <span class="character-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+          <div class="character-actions">
+            <a href={`/guides/silver-and-blood/characters/${character.id}/`} class="view-character-btn">
+              View Details
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+<script 
+  is:inline
+  define:vars={{ characters }}
+>
+  // Character Tag Selection JavaScript
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Character Tag Selection loaded with characters:', characters.length);
+    
+    // Import the external module and initialize
+    import('../../data/silver-and-blood/character-tag-selection.js')
+      .then(module => {
+        console.log('Module loaded successfully');
+        const { initializeCharacterTagSelector } = module;
+        
+        // Initialize the tag selector with character data
+        const tagSelector = initializeCharacterTagSelector(characters);
+        console.log('Tag selector initialized:', tagSelector);
+        
+        // Make it globally available for debugging
+        window.tagSelector = tagSelector;
+      })
+      .catch(error => {
+        console.error('Failed to load tag selection module:', error);
+        
+        // Fallback: simple inline implementation
+        console.log('Using fallback implementation');
+        initializeFallback();
+      });
+    
+    function initializeFallback() {
+      const tagButtons = document.querySelectorAll('.tag-btn');
+      const characterCards = document.querySelectorAll('.character-card');
+      const matchCount = document.getElementById('match-count');
+      let selectedTags = new Set();
+      
+      tagButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const tag = button.dataset.tag;
+          
+          if (selectedTags.has(tag)) {
+            selectedTags.delete(tag);
+            button.classList.remove('active');
+          } else {
+            selectedTags.add(tag);
+            button.classList.add('active');
+          }
+          
+          // Update results
+          let visibleCount = 0;
+          characterCards.forEach(card => {
+            const characterTags = JSON.parse(card.dataset.tags || '[]');
+            const hasAllTags = selectedTags.size === 0 || 
+              Array.from(selectedTags).every(tag => characterTags.includes(tag));
+            
+            if (hasAllTags) {
+              card.style.display = 'block';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          
+          if (matchCount) {
+            const countText = visibleCount === 1 ? '1 character found' : `${visibleCount} characters found`;
+            matchCount.textContent = countText;
+          }
+        });
+      });
+    }
+  });
+</script>
+

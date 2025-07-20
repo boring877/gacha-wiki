@@ -66,6 +66,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: 'active',
     },
     {
+      id: 'character-tag-selection',
+      title: 'Character Tag Selection',
+      emoji: '🏷️',
+      description:
+        'Filter and discover characters by their combat tags and abilities. Find characters with specific roles like Buff, Healing, AoE DMG, and more.',
+      url: '/guides/silver-and-blood/character-tag-selection/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
       id: 'characters',
       title: 'Characters',
       emoji: '⚔️',
@@ -79,7 +89,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       title: 'Damage Mechanics Hub',
       emoji: '⚔️',
       description:
-        "Master Silver and Blood's combat system with comprehensive damage calculation guides and defense formulas.",
+        "formulas and calculation for damage output .",
       url: '/guides/silver-and-blood/damage-mechanics/',
       category: 'guides',
       status: 'active',
@@ -116,7 +126,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       title: 'Waifu Gallery',
       emoji: '🖼️',
       description:
-        'Explore character galleries featuring exclusive videos and promotional content from Silver and Blood.',
+        'Videos and Images for characters .',
       url: '/guides/silver-and-blood/waifu-gallery/',
       category: 'guides',
       status: 'active',
@@ -126,7 +136,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       title: 'Waifu Skins',
       emoji: '👗',
       description:
-        'Browse and discover character skins and cosmetic outfits for Silver and Blood characters.',
+        'Showcasing skins Videos and Images.',
       url: '/guides/silver-and-blood/waifu-skins/',
       category: 'guides',
       status: 'active',
@@ -144,8 +154,8 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'clan-hunt',
       title: 'Clan Hunt',
-      emoji: '',
-      description: 'Clan Hunt activities and guild content for cooperative gameplay.',
+      emoji: '⚔️',
+      description: 'General knowledge and calculator .',
       url: '/guides/silver-and-blood/clan-hunt/',
       category: 'guides',
       status: 'active',
@@ -153,7 +163,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'boss-database',
       title: 'Clan Hunt Boss Database',
-      emoji: '',
+      emoji: '👹',
       description:
         'Complete database of all Clan Hunt bosses with mechanics, strategies, and optimal team compositions.',
       url: '/guides/silver-and-blood/boss-database/',

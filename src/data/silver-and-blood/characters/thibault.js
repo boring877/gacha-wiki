@@ -8,7 +8,7 @@ export const thibault = {
   description:
     'A powerful SSR sorcerer from the Church faction who specializes in area-of-effect damage, debuffs, and desert magic.',
   image: '/images/games/silver-and-blood/characters/Thibault.jpg',
-  tags: ['Mid-Range', 'AOE DMG', 'Debuff'],
+  tags: ['Mid-Range', 'AoE DMG', 'Debuff'],
 
   // Game Mechanics
   rarity: 'SSR',
