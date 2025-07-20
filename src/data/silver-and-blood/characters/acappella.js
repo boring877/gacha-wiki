@@ -8,7 +8,7 @@ export const acappella = {
   description:
     'A powerful SSR enchanter from the Church faction who specializes in buff support, ally enhancement, and strategic combat amplification.',
   image: '/images/games/silver-and-blood/characters/Acappella.jpg', // official image
-  tags: ['Mid-Range', 'Buff'],
+  tags: ['Mid-Range', 'Buff', 'Healing'],
 
   // Game Mechanics
   rarity: 'SSR',

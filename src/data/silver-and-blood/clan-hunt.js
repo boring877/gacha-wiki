@@ -84,7 +84,7 @@ export const clanHuntInfo = {
       title: 'Analysis Conclusions',
       tldr: {
         title: 'TLDR - Optimal Clan Hunt Targets',
-        text: "Try reaching Rank 1 in Clan Hunt if possible. If you can't, target Ranks 4-10 as your secondary goal. If that's not achievable, aim for Top 50. These represent the 3 most optimal target tiers. After Rank 50, it's just about participating in Clan Hunt - the ranking doesn't matter much at that point.",
+        text: "Try reaching Rank 1 in Clan Hunt if possible. If you can't, target Ranks 4-10 as your secondary goal. If that's not achievable, aim for Top 100. These represent the 3 most optimal target tiers. After Rank 100, it's just about participating in Clan Hunt - the ranking doesn't matter much at that point.",
       },
       content: [
         {
@@ -97,7 +97,7 @@ export const clanHuntInfo = {
         },
         {
           id: 'plateau-effect',
-          text: 'Beyond the Top 50, the reward structure demonstrates a pronounced plateau effect where rank improvements yield minimal gains of approximately 100-200 mead. This indicates that clans in lower tiers should focus on consistent participation rather than intensive competition, as the marginal benefits of small rank improvements become negligible.',
+          text: 'Beyond the Top 100, the reward structure demonstrates a pronounced plateau effect where rank improvements yield minimal gains of approximately 100-200 mead. This indicates that clans in lower tiers should focus on consistent participation rather than intensive competition, as the marginal benefits of small rank improvements become negligible.',
         },
       ],
     },
