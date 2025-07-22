@@ -3,18 +3,18 @@ import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import {
-  zashikiwarashiData,
-  zashikiwarashiSEO,
+  zashikiWarashiData,
+  zashikiWarashiSEO,
 } from '../../../../data/zone-nova/characters/zashiki-warashi.js';
 
 export const prerender = true;
 
 // Import character data from zashiki-warashi.js
-const characterData = zashikiwarashiData;
+const characterData = zashikiWarashiData;
 
 // SEO optimization using imported data
-const title = zashikiwarashiSEO.title;
-const description = zashikiwarashiSEO.description;
+const title = zashikiWarashiSEO.title;
+const description = zashikiWarashiSEO.description;
 ---
 
 <ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>

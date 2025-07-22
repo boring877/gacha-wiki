@@ -2,16 +2,16 @@
 import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
-import { snowgirlData, snowgirlSEO } from '../../../../data/zone-nova/characters/snow-girl.js';
+import { snowGirlData, snowGirlSEO } from '../../../../data/zone-nova/characters/snow-girl.js';
 
 export const prerender = true;
 
 // Import character data from snow-girl.js
-const characterData = snowgirlData;
+const characterData = snowGirlData;
 
 // SEO optimization using imported data
-const title = snowgirlSEO.title;
-const description = snowgirlSEO.description;
+const title = snowGirlSEO.title;
+const description = snowGirlSEO.description;
 ---
 
 <ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>

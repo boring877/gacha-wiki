@@ -3,18 +3,18 @@ import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import {
-  greedmammonData,
-  greedmammonSEO,
+  greedMammonData,
+  greedMammonSEO,
 } from '../../../../data/zone-nova/characters/greed-mammon.js';
 
 export const prerender = true;
 
 // Import character data from greed-mammon.js
-const characterData = greedmammonData;
+const characterData = greedMammonData;
 
 // SEO optimization using imported data
-const title = greedmammonSEO.title;
-const description = greedmammonSEO.description;
+const title = greedMammonSEO.title;
+const description = greedMammonSEO.description;
 ---
 
 <ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>

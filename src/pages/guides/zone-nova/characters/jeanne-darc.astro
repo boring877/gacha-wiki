@@ -3,18 +3,18 @@ import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import {
-  jeannedarcData,
-  jeannedarcSEO,
+  jeanneDArcData,
+  jeanneDArcSEO,
 } from '../../../../data/zone-nova/characters/jeanne-darc.js';
 
 export const prerender = true;
 
 // Import character data from jeanne-darc.js
-const characterData = jeannedarcData;
+const characterData = jeanneDArcData;
 
 // SEO optimization using imported data
-const title = jeannedarcSEO.title;
-const description = jeannedarcSEO.description;
+const title = jeanneDArcSEO.title;
+const description = jeanneDArcSEO.description;
 ---
 
 <ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>
