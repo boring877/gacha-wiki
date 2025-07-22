@@ -699,6 +699,25 @@ export const ZONE_NOVA_MEMORIES = [
     ],
   },
   {
+    id: 'shared-bath-time',
+    slug: 'shared-bath-time',
+    name: 'Shared Bath Time',
+    image: '/images/games/zone-nova/memories/Odincard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: 'Odin',
+    detailUrl: '/guides/zone-nova/memories/shared-bath-time/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    },
+    effects: [
+      'ATK +40%; ultimate damage +40% for the caster.',
+      'After each ultimate, gain 1 [Charge]. When dealing damage, consume [Charge] to apply 1 stack of [Final Flame]: deals 15% ATK Fire damage every 2s, stacks up to 5, lasts 10s.',
+    ],
+  },
+  {
     id: 'sleepy-guardian',
     slug: 'sleepy-guardian',
     name: 'Sleepy Guardian',
@@ -907,6 +926,7 @@ export const MEMORY_METADATA = {
     'Mordred',
     'Naiya',
     'Nini',
+    'Odin',
     'Penny',
     'Rose',
     'Shanna',

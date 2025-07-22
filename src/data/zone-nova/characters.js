@@ -306,6 +306,17 @@ export const ZONE_NOVA_CHARACTERS = [
     detailUrl: '/guides/zone-nova/characters/nini',
   },
   {
+    id: 34,
+    name: 'Odin',
+    rarity: 'SSR',
+    element: 'Fire',
+    role: 'DPS',
+    stats: { hp: 7308, attack: 1305, defense: 530, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
+    image: '/images/games/zone-nova/characters/Odin.jpg',
+    slug: 'odin',
+    detailUrl: '/guides/zone-nova/characters/odin',
+  },
+  {
     id: 27,
     name: 'Penny',
     rarity: 'SSR',

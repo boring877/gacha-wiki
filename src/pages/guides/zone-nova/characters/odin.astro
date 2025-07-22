@@ -2,16 +2,16 @@
 import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
-import { anubisData, anubisSEO } from '../../../../data/zone-nova/characters/anubis.js';
+import { odinData, odinSEO } from '../../../../data/zone-nova/characters/odin.js';
 
 export const prerender = true;
 
-// Import character data from anubis.js
-const characterData = anubisData;
+// Import character data from odin.js
+const characterData = odinData;
 
 // SEO optimization using imported data
-const title = anubisSEO.title;
-const description = anubisSEO.description;
+const title = odinSEO.title;
+const description = odinSEO.description;
 ---
 
 <ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>
