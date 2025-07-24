@@ -1,0 +1,98 @@
+---
+import path from 'path-browserify';
+
+export interface Props {
+  src: string;
+  alt: string;
+  loading?: 'eager' | 'lazy';
+  decoding?: 'async' | 'auto' | 'sync';
+  class?: string;
+  width?: number | string;
+  height?: number | string;
+}
+
+const {
+  src,
+  alt,
+  loading = 'lazy',
+  decoding = 'async',
+  class: className,
+  width,
+  height,
+} = Astro.props;
+
+const optimizedDir = '/images/optimized';
+const originalDir = '/images';
+
+// Remove the original /images prefix and get the relative path
+const imageRelativePath = src.startsWith(originalDir) ? src.substring(originalDir.length) : src;
+const { dir, name } = path.parse(imageRelativePath);
+
+// Check if optimized version exists (only -small variants were created)
+const hasOptimized = [
+  'Anubis',
+  'Apollo',
+  'Artemis',
+  'Bastet',
+  'Chiya',
+  'Gaia',
+  'Greed Mammon',
+  'Guinevere',
+  'Lancelot',
+  'Leviathan',
+  'Loki',
+  'Lyra',
+  'Merlin',
+  'Mordred',
+  'Odin',
+  'Rose',
+].includes(name);
+
+const optimizedWebP = `${optimizedDir}${dir}/${name}-small.webp`;
+const optimizedAVIF = `${optimizedDir}${dir}/${name}-small.avif`;
+const optimizedJPG = `${optimizedDir}${dir}/${name}-small.jpg`;
+---
+
+{
+  hasOptimized ? (
+    <picture class={className}>
+      <source type="image/avif" srcset={optimizedAVIF} />
+      <source type="image/webp" srcset={optimizedWebP} />
+      <img
+        src={optimizedJPG}
+        alt={alt}
+        loading={loading}
+        decoding={decoding}
+        style="width: 100%; height: 100%; object-fit: cover; display: block;"
+        {...(width && { width })}
+        {...(height && { height })}
+      />
+    </picture>
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      loading={loading}
+      decoding={decoding}
+      class={className}
+      style="width: 100%; height: 100%; object-fit: cover; display: block;"
+      {...(width && { width })}
+      {...(height && { height })}
+    />
+  )
+}
+
+<style>
+  picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>

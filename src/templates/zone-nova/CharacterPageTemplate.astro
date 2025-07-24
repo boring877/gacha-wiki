@@ -1,5 +1,6 @@
 ---
 import { getFactionData } from '../../data/zone-nova/factions.js';
+import SimpleOptimizedImage from '../../components/SimpleOptimizedImage.astro';
 
 interface Props {
   characterData: any;
@@ -20,15 +21,18 @@ const factionData = getFactionData(characterData.faction);
       <div
         style="background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(255,183,77,0.15); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;"
       >
-        <img
-          src={`/images/games/zone-nova/characters/${characterData.image}.jpg`}
-          alt={`${characterData.name} - ${characterData.rarity} ${characterData.class} character from Zone Nova gacha game`}
-          width={300}
-          height={300}
-          loading="eager"
-          class="character-portrait"
-          style="margin-bottom: 1.5rem; margin-top: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,172,193,0.20); max-width: 100%; border: 2px solid var(--teal-crystal);"
-        />
+        <div
+          style="margin-bottom: 1.5rem; margin-top: 0; width: 300px; height: 300px; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,172,193,0.20); max-width: 100%; border: 2px solid var(--teal-crystal); overflow: hidden;"
+        >
+          <SimpleOptimizedImage
+            src={`/images/games/zone-nova/characters/${characterData.image}.jpg`}
+            alt={`${characterData.name} - ${characterData.rarity} ${characterData.class} character from Zone Nova gacha game`}
+            width={300}
+            height={300}
+            loading="eager"
+            class="character-portrait"
+          />
+        </div>
         <h1
           class="character-name"
           style="margin: 0; text-align:center; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.2rem; font-weight: 700;"
@@ -306,7 +310,7 @@ const factionData = getFactionData(characterData.faction);
 
   <div
     class="skill-card"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--amber-glow); transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(255,183,77,0.1); border: 1px solid var(--amber-glow);"
+    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(255,183,77,0.1); border: 1px solid var(--amber-glow);"
   >
     <div
       style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;"
@@ -323,7 +327,7 @@ const factionData = getFactionData(characterData.faction);
 
   <div
     class="skill-card"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--teal-crystal); transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,172,193,0.1); border: 1px solid var(--teal-crystal);"
+    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--teal-crystal); box-shadow: 0 2px 8px rgba(0,172,193,0.1); border: 1px solid var(--teal-crystal);"
   >
     <div
       style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;"
@@ -345,7 +349,7 @@ const factionData = getFactionData(characterData.faction);
 
   <div
     class="skill-card"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--amber-glow); transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(255,183,77,0.1); border: 1px solid var(--amber-glow);"
+    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(255,183,77,0.1); border: 1px solid var(--amber-glow);"
   >
     <div
       style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;"
@@ -367,7 +371,7 @@ const factionData = getFactionData(characterData.faction);
 
   <div
     class="skill-card"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--rose-quartz); transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(233,30,99,0.1); border: 1px solid var(--rose-quartz);"
+    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--rose-quartz); box-shadow: 0 2px 8px rgba(233,30,99,0.1); border: 1px solid var(--rose-quartz);"
   >
     <div
       style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;"
@@ -385,7 +389,7 @@ const factionData = getFactionData(characterData.faction);
   <!-- Team Skill -->
   <div
     class="skill-card"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--cosmic-purple); transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(138,43,226,0.1); border: 1px solid var(--cosmic-purple);"
+    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--cosmic-purple); box-shadow: 0 2px 8px rgba(138,43,226,0.1); border: 1px solid var(--cosmic-purple);"
   >
     <div
       style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;"
@@ -418,7 +422,7 @@ const factionData = getFactionData(characterData.faction);
     characterData.awakenings.map((awakening, index) => (
       <div
         class="skill-card"
-        style={`background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid ${awakening.level <= 3 ? 'var(--teal-crystal)' : awakening.level <= 5 ? 'var(--amber-glow)' : 'var(--rose-quartz)'}; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,172,193,0.1); border: 1px solid var(--teal-crystal);`}
+        style={`background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid ${awakening.level <= 3 ? 'var(--teal-crystal)' : awakening.level <= 5 ? 'var(--amber-glow)' : 'var(--rose-quartz)'}; box-shadow: 0 2px 8px rgba(0,172,193,0.1); border: 1px solid var(--teal-crystal);`}
       >
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
           <h3 style="color: var(--text-primary); font-size: 1.3rem; font-weight: 700; margin: 0;">
@@ -448,14 +452,17 @@ const factionData = getFactionData(characterData.faction);
       <div
         style="background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,172,193,0.15); padding: 1.5rem; border: 1.5px solid var(--teal-crystal); display: flex; justify-content: center; align-items: center;"
       >
-        <img
-          src={`/images/games/zone-nova/memories/${characterData.memoryCard.image}.jpg`}
-          alt={characterData.memoryCard.name}
-          width={200}
-          height={300}
-          loading="lazy"
-          style="border-radius: 16px; object-fit: cover; box-shadow: 0 6px 24px rgba(0,172,193,0.20);"
-        />
+        <div
+          style="width: 200px; height: 300px; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,172,193,0.20); overflow: hidden;"
+        >
+          <SimpleOptimizedImage
+            src={`/images/games/zone-nova/memories/${characterData.memoryCard.image}.jpg`}
+            alt={characterData.memoryCard.name}
+            width={200}
+            height={300}
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
 
@@ -563,11 +570,11 @@ const factionData = getFactionData(characterData.faction);
             {/* Image on Left */}
             <div style="flex-shrink: 0;">
               <img
-                src={`/images/games/zone-nova/classes/${characterData.class}.jpg`}
+                src={`/images/games/zone-nova/classes/1${characterData.class}.jpg`}
                 alt={characterData.class}
-                width="120"
-                height="120"
-                style="border-radius: 12px; object-fit: cover; box-shadow: 0 4px 12px rgba(233,30,99,0.25); border: 2px solid var(--rose-quartz);"
+                width="80"
+                height="80"
+                style="border-radius: 10px; object-fit: cover; box-shadow: 0 3px 10px rgba(233,30,99,0.2); border: 2px solid var(--rose-quartz);"
                 loading="lazy"
               />
             </div>

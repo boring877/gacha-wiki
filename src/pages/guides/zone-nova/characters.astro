@@ -1,6 +1,7 @@
 ---
 // Import your layout
 import ZoneNovaLayout from '../../../layouts/zone-nova/Layout.astro';
+import SimpleOptimizedImage from '../../../components/SimpleOptimizedImage.astro';
 
 // Import character data and utilities
 import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nova/characters.js';
@@ -123,12 +124,13 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         top: 0;
         z-index: 2;
       }
-      .character-img {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        object-fit: cover;
-        border: 1px solid var(--amber-glow);
+      .character-img,
+      .character-img img,
+      .character-img picture,
+      .character-img picture img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
       }
       .rarity-badge,
       .element-badge,
@@ -319,13 +321,13 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         gap: 1rem;
         flex-shrink: 0;
       }
-      .mobile-character-card img {
-        width: 64px;
-        height: 64px;
-        border-radius: 10px;
-        border: 2px solid var(--amber-glow, #ffe066);
-        background: #fff;
-        margin-bottom: 0;
+      .mobile-character-card .character-img,
+      .mobile-character-card .character-img img,
+      .mobile-character-card .character-img picture,
+      .mobile-character-card .character-img picture img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
       }
       .mobile-card-title-group {
         display: flex;
@@ -527,7 +529,14 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
                   >
                     <td>{idx + 1}</td>
                     <td>
-                      <img src={char.image} alt={char.name} class="character-img" loading="lazy" />
+                      <div style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--amber-glow); overflow: hidden;">
+                        <SimpleOptimizedImage
+                          src={char.image}
+                          alt={char.name}
+                          class="character-img"
+                          loading="lazy"
+                        />
+                      </div>
                     </td>
                     <td>{char.name}</td>
                     <td>
@@ -599,7 +608,13 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
               >
                 <div class="mobile-card-header">
                   <div class="mobile-card-images">
-                    <img src={char.image} alt={char.name} class="character-img" />
+                    <div style="width: 64px; height: 64px; border-radius: 10px; border: 2px solid var(--amber-glow); overflow: hidden;">
+                      <SimpleOptimizedImage
+                        src={char.image}
+                        alt={char.name}
+                        class="character-img"
+                      />
+                    </div>
                     <img
                       src={`/images/games/zone-nova/classes/1${char.class}.jpg`}
                       alt={char.class}
