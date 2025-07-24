@@ -415,6 +415,293 @@ const factionData = getFactionData(characterData.faction);
   </div>
 </section>
 
+<!-- Node Tree Section -->
+<section class="content-section">
+  <h2 class="section-title">Node Tree</h2>
+
+  <!-- Node Tree Description -->
+  <div
+    class="node-tree-description"
+    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 2.5rem; border: 2px solid var(--teal-crystal); box-shadow: 0 4px 18px rgba(0,172,193,0.15);"
+  >
+    <div class="description-content" style="display: flex; align-items: flex-start; gap: 1.5rem;">
+      <div class="description-image" style="flex-shrink: 0;">
+        <img
+          src="/images/games/zone-nova/nodetree/FullTree.jpg"
+          alt="Complete Node Tree"
+          width="120"
+          height="120"
+          style="border-radius: 8px; border: 2px solid var(--teal-crystal); box-shadow: 0 4px 12px rgba(0,172,193,0.2);"
+          loading="lazy"
+        />
+      </div>
+      <div class="description-text" style="flex: 1; min-width: 0;">
+        <p
+          style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0 0 1rem 0;"
+        >
+          This is the <strong style="color: var(--teal-crystal);">Node Tree</strong> - there are 3 main
+          components:
+        </p>
+        <ul
+          class="node-components"
+          style="color: var(--text-primary); font-size: 1rem; line-height: 1.6; margin: 0; padding-left: 1.5rem;"
+        >
+          <li style="margin-bottom: 0.8rem;">
+            <strong style="color: var(--amber-glow);">Skills</strong> - Level up to 10 and unlock the
+            last 4 levels on Dupe 3 and 5
+          </li>
+          <li style="margin-bottom: 0.8rem;">
+            <strong style="color: var(--teal-crystal);">3 Main Segments</strong> - Give the most boosts
+            (45% HP and ATK total), providing massive stat increases that are very important
+          </li>
+          <li style="margin-bottom: 0;">
+            <strong style="color: var(--cosmic-purple);">Stat Nodes</strong> - 10 specialized nodes depending
+            on the character's main kit
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. Skill Level Up -->
+  <h3 style="color: var(--text-primary); margin: 2rem 0 1rem 0; font-size: 1.4rem;">
+    1. Skill Level Up
+  </h3>
+  <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1rem;">
+    5 types of skills that can be leveled up:
+  </p>
+
+  <div
+    class="skill-levelup-section"
+    style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;"
+  >
+    <div class="skill-image" style="flex-shrink: 0;">
+      <img
+        src="/images/games/zone-nova/nodetree/skills.jpg"
+        alt="Skill Node Tree"
+        width="100"
+        height="100"
+        style="border-radius: 8px; border: 2px solid var(--amber-glow);"
+        loading="lazy"
+      />
+    </div>
+    <div class="skill-content" style="flex: 1; min-width: 0;">
+      <div
+        style="background: var(--bg-primary); border: 1px solid var(--amber-glow); border-radius: 12px; padding: 1.2rem;"
+      >
+        <h4 style="color: var(--amber-glow); margin: 0 0 1rem 0; font-size: 1.1rem;">
+          Skill Types:
+        </h4>
+        <div
+          class="skill-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.6rem;"
+        >
+          <div
+            style="background: rgba(255,183,77,0.1); border: 1px solid rgba(255,183,77,0.2); border-radius: 6px; padding: 0.6rem; text-align: center;"
+          >
+            <div style="color: var(--text-primary); font-weight: 600; font-size: 0.85rem;">
+              Normal Attack
+            </div>
+          </div>
+          <div
+            style="background: rgba(0,172,193,0.1); border: 1px solid rgba(0,172,193,0.2); border-radius: 6px; padding: 0.6rem; text-align: center;"
+          >
+            <div style="color: var(--text-primary); font-weight: 600; font-size: 0.85rem;">
+              Auto Skill
+            </div>
+          </div>
+          <div
+            style="background: rgba(255,183,77,0.1); border: 1px solid rgba(255,183,77,0.2); border-radius: 6px; padding: 0.6rem; text-align: center;"
+          >
+            <div style="color: var(--text-primary); font-weight: 600; font-size: 0.85rem;">
+              Ultimate
+            </div>
+          </div>
+          <div
+            style="background: rgba(233,30,99,0.1); border: 1px solid rgba(233,30,99,0.2); border-radius: 6px; padding: 0.6rem; text-align: center;"
+          >
+            <div style="color: var(--text-primary); font-weight: 600; font-size: 0.85rem;">
+              Passive
+            </div>
+          </div>
+          <div
+            style="background: rgba(138,43,226,0.1); border: 1px solid rgba(138,43,226,0.2); border-radius: 6px; padding: 0.6rem; text-align: center;"
+          >
+            <div style="color: var(--text-primary); font-weight: 600; font-size: 0.85rem;">
+              Team Skill
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ATK & HP Increase -->
+  <h3 style="color: var(--text-primary); margin: 2rem 0 1rem 0; font-size: 1.4rem;">
+    2. ATK & HP Increase
+  </h3>
+  <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1rem;">
+    3 tiers of stat increases - prioritize these first!
+  </p>
+
+  <div
+    class="atk-hp-nodes"
+    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;"
+  >
+    <div
+      class="node-tier"
+      style="background: var(--bg-primary); border: 2px solid var(--teal-crystal); border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; gap: 0.8rem;"
+    >
+      <img
+        src="/images/games/zone-nova/nodetree/1.jpg"
+        alt="10% ATK & HP Node"
+        width="45"
+        height="45"
+        style="border-radius: 6px; border: 1px solid var(--teal-crystal); flex-shrink: 0;"
+        loading="lazy"
+      />
+      <div style="min-width: 0;">
+        <div style="color: var(--teal-crystal); font-weight: 700; font-size: 1rem;">
+          10% ATK & HP
+        </div>
+        <div style="color: var(--text-secondary); font-size: 0.85rem;">Rank 2 Required</div>
+      </div>
+    </div>
+    <div
+      class="node-tier"
+      style="background: var(--bg-primary); border: 2px solid var(--amber-glow); border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; gap: 0.8rem;"
+    >
+      <img
+        src="/images/games/zone-nova/nodetree/2.jpg"
+        alt="15% ATK & HP Node"
+        width="45"
+        height="45"
+        style="border-radius: 6px; border: 1px solid var(--amber-glow); flex-shrink: 0;"
+        loading="lazy"
+      />
+      <div style="min-width: 0;">
+        <div style="color: var(--amber-glow); font-weight: 700; font-size: 1rem;">15% ATK & HP</div>
+        <div style="color: var(--text-secondary); font-size: 0.85rem;">Rank 4 Required</div>
+      </div>
+    </div>
+    <div
+      class="node-tier"
+      style="background: var(--bg-primary); border: 2px solid var(--rose-quartz); border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; gap: 0.8rem;"
+    >
+      <img
+        src="/images/games/zone-nova/nodetree/3.jpg"
+        alt="20% ATK & HP Node"
+        width="45"
+        height="45"
+        style="border-radius: 6px; border: 1px solid var(--rose-quartz); flex-shrink: 0;"
+        loading="lazy"
+      />
+      <div style="min-width: 0;">
+        <div style="color: var(--rose-quartz); font-weight: 700; font-size: 1rem;">
+          20% ATK & HP
+        </div>
+        <div style="color: var(--text-secondary); font-size: 0.85rem;">Rank 6 Required</div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    style="background: rgba(0,172,193,0.1); border-radius: 8px; padding: 1rem; border: 1px solid rgba(0,172,193,0.2); margin-bottom: 2rem;"
+  >
+    <p style="color: var(--text-primary); margin: 0; font-weight: 600;">
+      💡 Materials can be farmed in dungeons and weekly dungeons. These provide the most stats
+      increase!
+    </p>
+  </div>
+
+  <!-- 3. Stat Increase Nodes -->
+  <h3 style="color: var(--text-primary); margin: 2rem 0 1rem 0; font-size: 1.4rem;">
+    3. Stat Increase Nodes
+  </h3>
+  <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1rem;">
+    Each character has 10 unique stat nodes. Activate 8 by level 70!
+  </p>
+
+  <div
+    class="stat-nodes-info"
+    style="background: var(--bg-primary); border: 1px solid var(--cosmic-purple); border-radius: 12px; padding: 1.2rem; margin-bottom: 1.5rem;"
+  >
+    <h4 style="color: var(--cosmic-purple); margin: 0 0 1rem 0; font-size: 1.1rem;">
+      Available Stat Types:
+    </h4>
+    <div
+      class="stat-grid"
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.5rem;"
+    >
+      <div
+        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
+      >
+        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
+          >ATK Increase</span
+        >
+      </div>
+      <div
+        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
+      >
+        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
+          >DEF Increase</span
+        >
+      </div>
+      <div
+        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
+      >
+        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
+          >HP Increase</span
+        >
+      </div>
+      <div
+        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
+      >
+        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
+          >Healing Inc</span
+        >
+      </div>
+      <div
+        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
+      >
+        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
+          >Penetration</span
+        >
+      </div>
+      <div
+        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
+      >
+        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
+          >Element Inc</span
+        >
+      </div>
+      <div
+        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
+      >
+        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
+          >Crit Rate</span
+        >
+      </div>
+      <div
+        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
+      >
+        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
+          >Crit Damage</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <div
+    style="background: rgba(255,183,77,0.1); border-radius: 8px; padding: 1rem; border: 1px solid rgba(255,183,77,0.2);"
+  >
+    <p style="color: var(--text-primary); margin: 0; font-weight: 600;">
+      📋 <strong>Note:</strong> Some nodes require Level 80, others unlock earlier. Activation requirements
+      are fairly simple.
+    </p>
+  </div>
+</section>
+
 <!-- Awakening Effects -->
 <section class="content-section">
   <h2 class="section-title">Awakening Effects</h2>
@@ -606,6 +893,136 @@ const factionData = getFactionData(characterData.faction);
     </div>
   </div>
 </section>
+
+<!-- Mobile-responsive CSS for Node Tree section -->
+<style>
+  @media (max-width: 768px) {
+    /* Node Tree Description - Better mobile layout */
+    .node-tree-description {
+      padding: 1.2rem !important;
+    }
+
+    .node-tree-description .description-content {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      gap: 1.2rem !important;
+    }
+
+    .node-tree-description .description-image {
+      background: rgba(0, 172, 193, 0.1) !important;
+      padding: 0.8rem !important;
+      border-radius: 12px !important;
+      border: 1px solid rgba(0, 172, 193, 0.3) !important;
+    }
+
+    .node-tree-description .description-image img {
+      width: 100px !important;
+      height: 100px !important;
+      border: 1px solid var(--teal-crystal) !important;
+    }
+
+    .node-tree-description .node-components {
+      padding-left: 1rem !important;
+    }
+
+    /* Skill Level Up - Better mobile layout with image */
+    .skill-levelup-section {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 1.2rem !important;
+    }
+
+    .skill-levelup-section .skill-image {
+      background: rgba(255, 183, 77, 0.1) !important;
+      padding: 1rem !important;
+      border-radius: 12px !important;
+      border: 1px solid rgba(255, 183, 77, 0.3) !important;
+    }
+
+    .skill-levelup-section .skill-image img {
+      width: 80px !important;
+      height: 80px !important;
+      border-radius: 8px !important;
+    }
+
+    .skill-levelup-section .skill-content {
+      width: 100% !important;
+    }
+
+    .skill-levelup-section .skill-content > div {
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%) !important;
+      border: 2px solid var(--amber-glow) !important;
+      box-shadow: 0 2px 12px rgba(255, 183, 77, 0.15) !important;
+    }
+
+    .skill-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.8rem !important;
+    }
+
+    .skill-grid > div {
+      padding: 0.8rem !important;
+      border-radius: 8px !important;
+    }
+
+    /* ATK & HP Nodes - Better mobile cards */
+    .atk-hp-nodes {
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+    }
+
+    .node-tier {
+      padding: 1.2rem !important;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .node-tier img {
+      width: 50px !important;
+      height: 50px !important;
+      border-radius: 8px !important;
+    }
+
+    /* Stat Nodes - Clean mobile grid */
+    .stat-nodes-info {
+      padding: 1.2rem !important;
+    }
+
+    .stat-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.6rem !important;
+    }
+
+    .stat-grid > div {
+      padding: 0.6rem 0.4rem !important;
+      border-radius: 8px !important;
+    }
+
+    .stat-grid span {
+      font-size: 0.8rem !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Extra small screens */
+    .node-tree-description {
+      padding: 1rem !important;
+    }
+
+    .skill-levelup-section .skill-content > div {
+      padding: 1rem !important;
+    }
+
+    .stat-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .atk-hp-nodes .node-tier {
+      padding: 0.8rem !important;
+      gap: 0.6rem !important;
+    }
+  }
+</style>
 
 <!-- Minimal JavaScript for progressive enhancement -->
 <script>
