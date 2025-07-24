@@ -134,6 +134,7 @@ import { dalcarlo } from './characters/dalcarlo.js';
 import { sirene } from './characters/sirene.js';
 import { jinxedSelena } from './characters/jinxed-selena.js';
 import { lorelei } from './characters/lorelei.js';
+import { fleetingBella } from './characters/fleeting-bella.js';
 
 // Characters array - Add new characters here
 export const characters = [
@@ -175,6 +176,7 @@ export const characters = [
   sirene,
   jinxedSelena,
   lorelei,
+  fleetingBella,
   // Add more characters as they are created
 ];
 
