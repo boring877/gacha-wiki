@@ -38,7 +38,6 @@
   align-items: center;
   gap: 0.6rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
 }
 
 .class-badge.guardian {
@@ -101,7 +100,6 @@
   letter-spacing: 0.05em;
   display: inline-flex;
   align-items: center;
-  transition: all 0.2s ease;
 }
 
 .rarity-badge.ssr {
@@ -132,7 +130,6 @@
   letter-spacing: 0.05em;
   display: inline-flex;
   align-items: center;
-  transition: all 0.2s ease;
 }
 
 .element-badge.fire {
@@ -176,7 +173,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
   color: #fff;
   min-height: 2.5rem;
   line-height: 1.2;
@@ -263,7 +259,6 @@
   letter-spacing: 0.05em;
   display: inline-flex;
   align-items: center;
-  transition: all 0.2s ease;
 }
 
 .role-badge.tank {
@@ -312,7 +307,6 @@
   letter-spacing: 0.05em;
   display: inline-flex;
   align-items: center;
-  transition: all 0.2s ease;
 }
 
 .skill-badge.normal-attack {
@@ -355,7 +349,6 @@
   letter-spacing: 0.05em;
   display: inline-flex;
   align-items: center;
-  transition: all 0.2s ease;
 }
 
 .awakening-badge.dupe-3,
@@ -389,13 +382,6 @@
   padding: 0.8rem;
   border-radius: 8px;
   border: 1px solid var(--amber-glow);
-  transition: all 0.3s ease;
-}
-
-.stat-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.2);
-  border-color: var(--teal-crystal);
 }
 
 .stat-label {
@@ -414,28 +400,6 @@
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                           HOVER EFFECTS                                 */
 /* ═══════════════════════════════════════════════════════════════════════ */
-
-.skill-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);
-}
-
-.character-portrait:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 30px rgba(0, 172, 193, 0.3);
-}
-
-/* Badge hover effects */
-.class-badge:hover,
-.rarity-badge:hover,
-.element-badge:hover,
-.faction-badge:hover,
-.role-badge:hover,
-.skill-badge:hover,
-.awakening-badge:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.1);
-}
 
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                           RESPONSIVE DESIGN                             */
@@ -545,23 +509,6 @@
     animation: none !important;
     transition: none !important;
   }
-
-  .skill-card:hover,
-  .character-portrait:hover,
-  .stat-item:hover {
-    transform: none !important;
-  }
-
-  .class-badge:hover,
-  .rarity-badge:hover,
-  .element-badge:hover,
-  .faction-badge:hover,
-  .role-badge:hover,
-  .skill-badge:hover,
-  .awakening-badge:hover {
-    transform: none !important;
-    filter: none !important;
-  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -587,14 +534,6 @@
   50% {
     box-shadow: 0 4px 16px rgba(255, 183, 77, 0.5);
   }
-}
-
-.skill-card {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.rarity-badge.ssr {
-  animation: badgeGlow 3s ease-in-out infinite;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -828,5 +767,176 @@
   .class-badge-large {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                 ADDITIONAL MOBILE OPTIMIZATIONS                         */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Character portrait optimization */
+  .character-portrait {
+    width: 250px !important;
+    height: 250px !important;
+    max-width: 90vw !important;
+    max-height: 90vw !important;
+  }
+
+  /* Character name sizing */
+  .character-name {
+    font-size: 1.8rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Section titles mobile */
+  .section-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Skill cards mobile padding */
+  .skill-card {
+    padding: 1.2rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Memory card images mobile */
+  .content-section img[width='200'][height='300'] {
+    width: 150px !important;
+    height: 225px !important;
+    max-width: 100% !important;
+  }
+
+  /* Equipment limitation mobile */
+  .content-section img[width='120'][height='120'] {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  /* Class section mobile */
+  .content-section img[width='48'][height='48'] {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Character portrait extra small screens */
+  .character-portrait {
+    width: 200px !important;
+    height: 200px !important;
+    max-width: 85vw !important;
+    max-height: 85vw !important;
+  }
+
+  /* Character name extra small */
+  .character-name {
+    font-size: 1.5rem !important;
+  }
+
+  /* Section titles extra small */
+  .section-title {
+    font-size: 1.3rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Skill cards extra small */
+  .skill-card {
+    padding: 1rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  /* Memory card images extra small */
+  .content-section img[width='200'][height='300'] {
+    width: 120px !important;
+    height: 180px !important;
+  }
+
+  /* Equipment limitation extra small */
+  .content-section img[width='120'][height='120'] {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  /* Class section extra small */
+  .content-section img[width='48'][height='48'] {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  /* Compact text on very small screens */
+  .content-section p {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .content-section h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .content-section h4 {
+    font-size: 1rem !important;
+  }
+
+  .content-section h5 {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* Additional character page mobile optimizations */
+@media (max-width: 768px) {
+  /* Hero card mobile optimization */
+  .overview-flex > div[style*='min-width: 340px'] {
+    min-width: 300px !important;
+    max-width: 100% !important;
+  }
+
+  /* Stats container mobile */
+  .overview-flex > div[style*='min-width: 500px'] {
+    min-width: 300px !important;
+  }
+
+  /* Character info grid mobile */
+  div[style*='grid-template-columns: 1fr 1fr'] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.8rem !important;
+  }
+
+  /* Memory card layout mobile */
+  .overview-flex[style*='margin-bottom: 2rem'] {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  .overview-flex[style*='margin-bottom: 2rem'] > div:first-child {
+    max-width: 100% !important;
+    min-width: 200px !important;
+    align-self: center;
+  }
+
+  /* Equipment limitation mobile */
+  div[style*='max-width: 600px'] {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Hero card extra mobile */
+  .overview-flex > div[style*='min-width: 340px'] > div:first-child {
+    padding: 1.5rem 1rem !important;
+    min-height: 300px !important;
+  }
+
+  /* Memory layout extra mobile */
+  .overview-flex[style*='margin-bottom: 2rem'] > div:last-child {
+    min-width: 250px !important;
+  }
+
+  /* Equipment limitation extra mobile */
+  div[style*='max-width: 600px'] img {
+    margin-bottom: 0.5rem !important;
   }
 }
