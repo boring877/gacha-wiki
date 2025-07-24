@@ -12,6 +12,13 @@ export default defineConfig({
     },
   }),
   integrations: [sitemap()],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   // Static site with Vercel API routes
   output: 'static',
   // Build optimizations

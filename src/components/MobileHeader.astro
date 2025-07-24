@@ -11,13 +11,11 @@
 
   <!-- Hamburger Menu (Right) -->
   <button id="hamburger" class="hamburger-menu" aria-label="Open Menu" aria-expanded="false">
-    <svg width="30" height="30" viewBox="0 0 30 30">
-      <path
-        d="M4 7h22M4 15h22M4 23h22"
-        stroke="var(--amber-glow)"
-        stroke-width="3"
-        stroke-linecap="round"></path>
-    </svg>
+    <div class="hamburger-lines">
+      <span class="line line1"></span>
+      <span class="line line2"></span>
+      <span class="line line3"></span>
+    </div>
   </button>
 </div>
 
@@ -97,12 +95,44 @@
     outline: none;
   }
 
+  .hamburger-lines {
+    width: 24px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--amber-glow);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
   .hamburger-menu:hover {
     transform: scale(1.05);
   }
 
   .hamburger-menu:active {
     transform: scale(0.95);
+  }
+
+  /* Animated hamburger to X transformation */
+  .hamburger-menu[aria-expanded='true'] .line1 {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .hamburger-menu[aria-expanded='true'] .line2 {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  .hamburger-menu[aria-expanded='true'] .line3 {
+    transform: rotate(-45deg) translate(6px, -6px);
   }
 
   /* Extra small mobile adjustments */

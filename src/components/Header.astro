@@ -2,7 +2,6 @@
 import { SITE_TITLE } from '../consts';
 import DesktopHeader from './DesktopHeader.astro';
 import MobileHeader from './MobileHeader.astro';
-import SocialLinks from './SocialLinks.astro';
 ---
 
 <header class="header-container">
@@ -15,7 +14,6 @@ import SocialLinks from './SocialLinks.astro';
         <DesktopHeader />
       </div>
       <div class="right-elements">
-        <SocialLinks />
         <MobileHeader />
       </div>
     </div>
@@ -99,7 +97,6 @@ import SocialLinks from './SocialLinks.astro';
     display: flex;
     align-items: center;
     gap: 1rem;
-    transform: translateX(1rem);
   }
 
   .logo-title {
@@ -128,6 +125,11 @@ import SocialLinks from './SocialLinks.astro';
     /* Adjust logo size */
     .logo-title {
       font-size: 1.25rem !important;
+    }
+
+    /* Adjust right elements for mobile */
+    .right-elements {
+      gap: 0.5rem;
     }
 
     /* Disable animations on mobile for better performance */
@@ -176,12 +178,31 @@ import SocialLinks from './SocialLinks.astro';
 
       if (mobileMenu) {
         if (isMenuOpen) {
-          // Simply prevent scrolling without position manipulation
+          // Prevent scrolling and ensure menu is visible
           document.body.style.overflow = 'hidden';
+          document.body.style.position = 'fixed';
+          document.body.style.top = `-${window.scrollY}px`;
+          document.body.style.width = '100%';
+
           mobileMenu.classList.add('active');
+
+          // Ensure the menu drawer is visible by scrolling to top
+          const drawer = mobileMenu.querySelector('.mobile-menu-drawer');
+          if (drawer) {
+            drawer.scrollTop = 0;
+          }
         } else {
-          // Restore scrolling
+          // Restore scrolling and position
+          const scrollY = document.body.style.top;
           document.body.style.overflow = '';
+          document.body.style.position = '';
+          document.body.style.top = '';
+          document.body.style.width = '';
+
+          if (scrollY) {
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+          }
+
           mobileMenu.classList.remove('active');
         }
       }

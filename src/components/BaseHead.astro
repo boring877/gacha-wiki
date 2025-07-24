@@ -26,15 +26,30 @@ const {
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/tabicoin.svg" />
+
+<!-- Favicon - Optimized sizes for better performance -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon-32x32.png" />
+<meta name="msapplication-TileImage" content="/android-chrome-192x192.png" />
+<meta name="msapplication-TileColor" content="#FFB74D" />
+
+<!-- Language and Translation Meta Tags -->
+<meta name="google" content="translate" />
+<meta
+  name="google-translate-customization"
+  content="(g$||{}).Element&&g.Element.go?g.Element.go({}):false"
+/>
+<link rel="alternate" hreflang="en" href={canonicalURL} />
+<link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
 <!-- Security Headers -->
 <meta
   http-equiv="Content-Security-Policy"
-  content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://vercel.live https://cdn.vercel-insights.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https:; connect-src 'self' https://vercel.live https://vitals.vercel-insights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
+  content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://vercel.live https://cdn.vercel-insights.com https://va.vercel-scripts.com https://translate.google.com https://translate.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://translate.googleapis.com https://translate.google.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: https://translate.googleapis.com https://translate.google.com; media-src 'self' https:; connect-src 'self' https://vercel.live https://vitals.vercel-insights.com https://translate.googleapis.com https://translate.google.com; object-src 'none'; base-uri 'self'; form-action 'self';"
 />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-<meta http-equiv="X-Frame-Options" content="DENY" />
 <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 <!-- <link rel="manifest" href="/manifest.json" /> -->
@@ -280,6 +295,8 @@ const {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content="GachaWiki" />
+<meta property="og:logo" content={new URL('/android-chrome-192x192.png', Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />

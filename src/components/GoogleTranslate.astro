@@ -1,0 +1,182 @@
+---
+// Google Translate Widget Component
+// Provides automatic translation for global audience
+---
+
+<div id="google_translate_element" class="google-translate-widget">
+  <noscript>
+    <span style="color: var(--text-secondary); font-size: 0.9rem;"
+      >🌐 Translate (requires JavaScript)</span
+    >
+  </noscript>
+</div>
+
+<script>
+  function googleTranslateElementInit() {
+    if (typeof google !== 'undefined' && google.translate) {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'en',
+          includedLanguages:
+            'zh,ja,ko,es,pt,fr,de,ru,ar,hi,th,vi,id,ms,tl,it,nl,sv,no,da,fi,pl,cs,hu,ro,bg,hr,sk,sl,et,lv,lt,el,tr,he,fa,ur,bn,ta,te,ml,kn,gu,mr,ne,si',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false,
+          multilanguagePage: true,
+        },
+        'google_translate_element'
+      );
+    }
+  }
+
+  // Fallback initialization
+  window.addEventListener('load', function () {
+    setTimeout(() => {
+      if (typeof google !== 'undefined' && !document.querySelector('.goog-te-combo')) {
+        googleTranslateElementInit();
+      }
+    }, 1000);
+  });
+</script>
+
+<script
+  type="text/javascript"
+  src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<style>
+  .google-translate-widget {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+
+  /* Style the Google Translate dropdown */
+  .goog-te-combo {
+    background: var(--bg-primary, #1a1a1a) !important;
+    border: 1px solid var(--teal-crystal, #00acc1) !important;
+    border-radius: 6px !important;
+    color: var(--text-primary, #ffffff) !important;
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.9rem !important;
+    font-family: inherit !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .goog-te-combo:hover {
+    border-color: var(--amber-glow, #ffb74d) !important;
+    background: var(--neutral-50, #2a2a2a) !important;
+  }
+
+  .goog-te-combo:focus {
+    outline: none !important;
+    border-color: var(--amber-glow, #ffb74d) !important;
+    box-shadow: 0 0 0 2px rgba(255, 183, 77, 0.2) !important;
+  }
+
+  /* Hide Google branding */
+  .goog-te-gadget {
+    font-family: inherit !important;
+    font-size: 0 !important;
+  }
+
+  .goog-te-gadget > span > a {
+    display: none !important;
+  }
+
+  .goog-te-gadget > span {
+    border: none !important;
+    background: none !important;
+  }
+
+  /* Style the banner */
+  .goog-te-banner-frame {
+    display: none !important;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .google-translate-widget {
+      margin-left: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .goog-te-combo {
+      padding: 0.3rem 0.6rem !important;
+      font-size: 0.8rem !important;
+    }
+  }
+
+  /* Custom styling for translated elements */
+  .goog-te-spinner-pos {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+  }
+
+  /* Prevent layout shift during translation */
+  body.goog-te-faded * {
+    opacity: 1 !important;
+  }
+
+  /* Improve contrast for translated text */
+  font[style*='background-color: rgb(255, 255, 0)'] {
+    background-color: rgba(255, 255, 0, 0.2) !important;
+    color: var(--text-primary, #ffffff) !important;
+  }
+</style>
+
+<!-- Add language detection and persistence -->
+<script>
+  // Save selected language to localStorage
+  function saveLanguagePreference(lang) {
+    localStorage.setItem('preferredLanguage', lang);
+  }
+
+  // Load saved language preference
+  function loadLanguagePreference() {
+    return localStorage.getItem('preferredLanguage');
+  }
+
+  // Monitor language changes
+  function monitorLanguageChanges() {
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
+          const newLang = document.documentElement.lang;
+          if (newLang && newLang !== 'en') {
+            saveLanguagePreference(newLang);
+          }
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['lang'],
+    });
+  }
+
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', function () {
+    // Start monitoring language changes
+    monitorLanguageChanges();
+
+    // Add analytics tracking for translations
+    if (typeof gtag !== 'undefined') {
+      const translateElement = document.getElementById('google_translate_element');
+      if (translateElement) {
+        translateElement.addEventListener('change', function () {
+          const selectedLang = document.querySelector('.goog-te-combo')?.value;
+          if (selectedLang) {
+            gtag('event', 'translate', {
+              event_category: 'engagement',
+              event_label: selectedLang,
+              value: 1,
+            });
+          }
+        });
+      }
+    }
+  });
+</script>
