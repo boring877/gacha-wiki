@@ -1,0 +1,109 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ZoneNovaQuickNav from '../../components/zone-nova/ZoneNovaQuickNav.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import OptimizedImage from '../../components/OptimizedImage.astro';
+
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/zone-nova/zn-layout.css';
+import '../../styles/games/zone-nova/zn-surveys.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
+    <GameSEO gameKey="zone-nova" title={title} description={description} />
+    <slot name="head" />
+  </head>
+  <body class="zone-nova-body zn-layout-override">
+    <CustomScrollbar />
+
+    <!-- Background layers -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="zone-nova-content">
+      <Header />
+      <MobileMenu />
+
+      <div class="zone-nova-container">
+        <main class="zone-nova-main">
+          <!-- Zone Nova Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                {/* Hero Image Container */}
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <OptimizedImage
+                      src={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    {/* Overlay Gradient */}
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+
+                {/* Game Title */}
+                <h1 class="hero-title">{gameTitle}</h1>
+                {/* Decorative Elements */}
+                <DecorativeLines />
+              </section>
+            )
+          }
+          <!-- Title Only Section (when no hero image) -->
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <ZoneNovaQuickNav currentPath={Astro.url.pathname} />
+
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+    {
+      heroImage && (
+        <link
+          rel="preload"
+          as="image"
+          href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.webp')}
+          type="image/webp"
+        />
+      )
+    }
+  </body><!-- Image Preloading for Performance -->
+</html>

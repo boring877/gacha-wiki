@@ -29,7 +29,12 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
+    <BaseHead
+      title={title}
+      description={description || ''}
+      breadcrumbs={breadcrumbs}
+      shouldPreloadDefaultImage={false}
+    />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
     <slot name="head" />
   </head>

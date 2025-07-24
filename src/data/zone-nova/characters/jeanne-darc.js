@@ -8,7 +8,8 @@ export const jeanneDArcData = {
   image: 'JoanofArc ', // Use format: charactername (e.g., 'JoanofArc')
   rarity: 'SSR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Healer', // Tank, DPS, Buffer, Debuffer, Healer
+  class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Healer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
   faction: 'Avalon', // Avalon (亚瓦隆)
 
   // Base Stats (Level 80)

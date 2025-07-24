@@ -1,23 +1,24 @@
 ---
-import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { lokiData, lokiSEO } from '../../../../data/zone-nova/characters/loki.js';
+import { getFactionByCharacter, getFactionData } from '../../../../data/zone-nova/factions.js';
+
+// Get faction data from factions.js
+const factionName = getFactionByCharacter('Loki');
+const factionData = getFactionData(factionName);
+const characterData = {
+  ...lokiData,
+  faction: factionName,
+  factionDescription: factionData?.description,
+  factionChineseName: factionData?.chineseName,
+};
 
 export const prerender = true;
-
-// Import character data from loki.js
-const characterData = lokiData;
-
-// SEO optimization using imported data
-const title = lokiSEO.title;
-const description = lokiSEO.description;
 ---
 
-<ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>
-  <!-- Character Navigation -->
-  <CharacterNavigation currentCharacter={characterData} />
-
-  <!-- Character Page Content -->
+<CharacterLayout title={lokiSEO.title} description={lokiSEO.description} gameTitle={lokiData.name}>
+  <CharacterNavigation currentCharacter={lokiData} />
   <CharacterPageTemplate characterData={characterData} />
-</ZoneNovaLayout1>
+</CharacterLayout>

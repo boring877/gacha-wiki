@@ -1,23 +1,17 @@
 ---
-import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { guinevereData, guinevereSEO } from '../../../../data/zone-nova/characters/guinevere.js';
 
 export const prerender = true;
-
-// Import character data from guinevere.js
-const characterData = guinevereData;
-
-// SEO optimization using imported data
-const title = guinevereSEO.title;
-const description = guinevereSEO.description;
 ---
 
-<ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>
-  <!-- Character Navigation -->
-  <CharacterNavigation currentCharacter={characterData} />
-
-  <!-- Character Page Content -->
-  <CharacterPageTemplate characterData={characterData} />
-</ZoneNovaLayout1>
+<CharacterLayout
+  title={guinevereSEO.title}
+  description={guinevereSEO.description}
+  gameTitle={guinevereData.name}
+>
+  <CharacterNavigation currentCharacter={guinevereData} />
+  <CharacterPageTemplate characterData={guinevereData} />
+</CharacterLayout>

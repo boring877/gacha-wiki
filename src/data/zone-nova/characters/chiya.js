@@ -8,8 +8,9 @@ export const chiyaData = {
   image: 'Chiya', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Ice', // Fire, Ice, Wind, Holy, Chaos
-  class: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Saville', // Savir, etc.
+  class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Sapphire', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const chiyaData = {
     description:
       'Self attack power increased by 10%. At battle start, every 500 attack power can increase self critical damage by 7.5%, maximum 6 times (up to 45% critical damage).',
     requirements: {
-      faction: 'Saville', // Same as character faction
+      faction: 'Sapphire', // Same as character faction
       element: 'Ice', // Same as character element
     },
   },

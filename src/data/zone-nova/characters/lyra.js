@@ -7,8 +7,9 @@ export const lyraData = {
   image: 'Lyra', // Character image identifier
   rarity: 'SSR',
   element: 'Fire',
-  class: 'DPS',
-  faction: 'Urtexteer',
+  class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Sapphire',
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const lyraData = {
     description:
       'Self critical rate increases by 7.5%. Combat start: Each 15% critical rate can additionally add 7.5% critical damage, maximum 6 times. Provides both crit rate and crit damage scaling',
     requirements: {
-      faction: 'Urtexteer',
+      faction: 'Sapphire',
       element: 'Fire',
     },
   },

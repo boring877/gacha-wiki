@@ -8,8 +8,9 @@ export const bastetData = {
   image: 'Bastet', // Use format: charactername (e.g., 'penny')
   rarity: 'SR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
-  class: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Kemichi', // Savir, etc.
+  class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Chemic', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const bastetData = {
     name: 'Storm Synergy', // Usually 'Combination Skill'
     description: 'Self wind damage increases by 20%.',
     requirements: {
-      faction: 'Kemichi', // Same as character faction
+      faction: 'Chemic', // Same as character faction
       element: 'Wind', // Same as character element
     },
   },

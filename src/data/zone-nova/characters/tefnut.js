@@ -8,8 +8,9 @@ export const tefnutData = {
   image: 'Tefnut', // Use format: charactername (e.g., 'Tefnut')
   rarity: 'SR', // SSR, SR, R
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
-  class: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Kemichi', // Savir, etc.
+  class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Chemic', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const tefnutData = {
     name: 'Combo Skill', // Usually 'Combination Skill'
     description: 'Self-caused damage increased by 20%',
     requirements: {
-      faction: 'Kemichi', // Same as character faction
+      faction: 'Chemic', // Same as character faction
       element: 'Holy', // Same as character element
     },
   },

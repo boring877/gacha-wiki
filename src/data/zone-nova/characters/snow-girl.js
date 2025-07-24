@@ -8,8 +8,9 @@ export const snowGirlData = {
   image: 'Snow', // Use format: charactername (e.g., 'Snow')
   rarity: 'SR', // SSR, SR, R
   element: 'Ice', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Healer', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Heijing Castle', // Heijing Castle (平京城)
+  class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Healer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Pingjing City', // Heijing Castle (平京城)
 
   // Base Stats (Level 80)
   stats: {
@@ -63,9 +64,9 @@ export const snowGirlData = {
     level: '1',
     description: 'Own attack increased by 10%, healing amount increased by 12.5%',
     requirements: {
-      faction: 'Heijing Castle',
+      faction: 'Pingjing City',
       element: 'Ice Frost',
-      condition: '2 [Heijing Castle] colored or 2 [Ice Frost] colored characters',
+      condition: '2 [Pingjing City] colored or 2 [Ice Frost] colored characters',
     },
   },
 
@@ -139,7 +140,7 @@ export const snowGirl = {
     card: '/images/characters/Snowcard.jpg',
   },
 
-  tags: ['Healer', 'Support', 'Heijing Castle', 'Ice', 'Sustained Healing'],
+  tags: ['Healer', 'Support', 'Pingjing City', 'Ice', 'Sustained Healing'],
 };
 
 // Export default for easy importing

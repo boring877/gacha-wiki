@@ -1,4 +1,6 @@
 // Zone Nova Character Data & Utilities
+import { getFactionByCharacter } from './factions.js';
+import { CHARACTER_CLASSES } from './classes.js';
 
 // Character array - sorted alphabetically by name
 export const ZONE_NOVA_CHARACTERS = [
@@ -8,6 +10,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Holy',
     role: 'DPS',
+    class: 'Warrior',
+    faction: getFactionByCharacter('Afrodite'),
     stats: { hp: 8033, attack: 1305, defense: 530, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Afrodite.jpg',
     slug: 'afrodite',
@@ -19,6 +23,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Chaos',
     role: 'Healer',
+    class: 'Healer',
+    faction: getFactionByCharacter('Anubis'),
     stats: { hp: 9180, attack: 1004, defense: 729, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Anubis.jpg',
     slug: 'anubis',
@@ -30,6 +36,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Fire',
     role: 'Buffer',
+    class: 'Buffer',
+    faction: getFactionByCharacter('Apollo'),
     stats: { hp: 9564, attack: 1004, defense: 672, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Apollo.jpg',
     slug: 'apollo',
@@ -41,6 +49,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Wind',
     role: 'DPS',
+    class: 'Warrior',
+    faction: getFactionByCharacter('Artemis'),
     stats: { hp: 8033, attack: 1461, defense: 530, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Artemis.jpg',
     slug: 'artemis',
@@ -52,6 +62,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Wind',
     role: 'Buffer',
+    class: 'Buffer',
+    faction: getFactionByCharacter('Athena'),
     stats: { hp: 9564, attack: 1004, defense: 672, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Athena.jpg',
     slug: 'athena',
@@ -63,6 +75,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Holy',
     role: 'DPS',
+    class: 'Mage',
+    faction: getFactionByCharacter('Arthur'),
     stats: {
       hp: 8033,
       attack: 1305,
@@ -81,6 +95,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Wind',
     role: 'DPS',
+    class: 'Mage',
+    faction: getFactionByCharacter('Bastet'),
     stats: { hp: 6694, attack: 1088, defense: 442, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Bastet.jpg',
     slug: 'bastet',
@@ -92,6 +108,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Chaos',
     role: 'Debuffer',
+    class: 'Debuffer',
+    faction: getFactionByCharacter('Belphegar'),
     stats: { hp: 7970, attack: 837, defense: 560, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/belphegar.jpg',
     slug: 'belphegar',
@@ -103,6 +121,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Ice',
     role: 'DPS',
+    class: 'Rogue',
+    faction: getFactionByCharacter('Chiya'),
     stats: { hp: 8033, attack: 1305, defense: 530, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Chiya.jpg',
     slug: 'chiya',
@@ -114,6 +134,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Chaos',
     role: 'DPS',
+    class: 'Mage',
+    faction: getFactionByCharacter('Cleopatra'),
     stats: { hp: 8033, attack: 1461, defense: 530, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Cleopatra.jpg',
     slug: 'cleopatra',
@@ -125,6 +147,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Holy',
     role: 'Healer',
+    class: 'Healer',
+    faction: getFactionByCharacter('Gaia'),
     stats: { hp: 10548, attack: 580, defense: 918, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Gaia.jpg',
     slug: 'gaia',
@@ -136,6 +160,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Chaos',
     role: 'DPS',
+    class: 'Mage',
+    faction: getFactionByCharacter('Greed Mammon'),
     stats: { hp: 6694, attack: 1088, defense: 442, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Greed Mammon.jpg',
     slug: 'greed-mammon',
@@ -147,6 +173,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Fire',
     role: 'Tank',
+    class: 'Guardian',
+    faction: getFactionByCharacter('Guinevere'),
     stats: {
       hp: 10520,
       attack: 734,
@@ -165,6 +193,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Chaos',
     role: 'DPS',
+    class: 'Rogue',
+    faction: getFactionByCharacter('Hera'),
     stats: { hp: 8033, attack: 1461, defense: 530, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Hera.jpg',
     slug: 'hera',
@@ -176,6 +206,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Holy',
     role: 'Debuffer',
+    class: 'Debuffer',
+    faction: getFactionByCharacter('Horus'),
     stats: { hp: 8033, attack: 1461, defense: 530, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Horus.jpg',
     slug: 'horus',
@@ -187,6 +219,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Wind',
     role: 'Healer',
+    class: 'Healer',
+    faction: getFactionByCharacter("Jeanne d'Arc"),
     stats: { hp: 9180, attack: 1004, defense: 729, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/JoanofArc .jpg',
     slug: 'jeanne-darc',
@@ -198,6 +232,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Holy',
     role: 'Healer',
+    class: 'Healer',
+    faction: getFactionByCharacter('Kela'),
     stats: { hp: 7650, attack: 837, defense: 608, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/kela.jpg',
     slug: 'kela',
@@ -209,6 +245,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Holy',
     role: 'Tank',
+    class: 'Guardian',
+    faction: getFactionByCharacter('Lancelot'),
     stats: { hp: 10857, attack: 612, defense: 957, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Lancelot.jpg',
     slug: 'lancelot',
@@ -220,6 +258,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Wind',
     role: 'DPS',
+    class: 'Rogue',
+    faction: getFactionByCharacter('Leviathan'),
     stats: { hp: 6694, attack: 1088, defense: 442, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Leviathan.jpg',
     slug: 'leviathan',
@@ -231,6 +271,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Chaos',
     role: 'Debuffer',
+    class: 'Debuffer',
+    faction: getFactionByCharacter('Loki'),
     stats: { hp: 9564, attack: 1004, defense: 672, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Loki.jpg',
     slug: 'loki',
@@ -242,6 +284,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Fire',
     role: 'DPS',
+    class: 'Mage',
+    faction: getFactionByCharacter('Lyra'),
     stats: {
       hp: 8033,
       attack: 1305,
@@ -260,6 +304,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Fire',
     role: 'DPS',
+    class: 'Rogue',
+    faction: getFactionByCharacter('Merlin'),
     stats: {
       hp: 8033,
       attack: 1305,
@@ -278,6 +324,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Fire',
     role: 'DPS',
+    class: 'Warrior',
+    faction: getFactionByCharacter('Mordred'),
     stats: { hp: 8470, attack: 837, defense: 560, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Mordred.jpg',
     slug: 'mordred',
@@ -289,6 +337,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Ice',
     role: 'Buffer',
+    class: 'Buffer',
+    faction: getFactionByCharacter('Naiya'),
     stats: { hp: 9564, attack: 1004, defense: 672, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Naiya.jpg',
     slug: 'naiya',
@@ -300,6 +350,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Ice',
     role: 'Debuffer',
+    class: 'Debuffer',
+    faction: getFactionByCharacter('Nini'),
     stats: { hp: 7970, attack: 837, defense: 560, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Nini.jpg',
     slug: 'nini',
@@ -311,6 +363,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Fire',
     role: 'DPS',
+    class: 'Rogue',
+    faction: getFactionByCharacter('Odin'),
     stats: { hp: 7308, attack: 1305, defense: 530, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Odin.jpg',
     slug: 'odin',
@@ -322,6 +376,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Wind',
     role: 'Tank',
+    class: 'Guardian',
+    faction: getFactionByCharacter('Penny'),
     stats: {
       hp: 10520,
       attack: 794,
@@ -340,6 +396,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Ice',
     role: 'DPS',
+    class: 'Mage',
+    faction: getFactionByCharacter('Rose'),
     stats: { hp: 6694, attack: 1088, defense: 442, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Rose.jpg',
     slug: 'rose',
@@ -351,6 +409,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Fire',
     role: 'DPS',
+    class: 'Rogue',
+    faction: getFactionByCharacter('Shanna'),
     stats: { hp: 6694, attack: 1088, defense: 442, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Shanna.jpg',
     slug: 'shanna',
@@ -362,6 +422,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Wind',
     role: 'Debuffer',
+    class: 'Debuffer',
+    faction: getFactionByCharacter('Shu'),
     stats: { hp: 7970, attack: 837, defense: 560, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Shu.jpg',
     slug: 'shu',
@@ -373,6 +435,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Ice',
     role: 'Healer',
+    class: 'Healer',
+    faction: getFactionByCharacter('Snow Girl'),
     stats: { hp: 7850, attack: 837, defense: 608, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Snow.jpg',
     slug: 'snow-girl',
@@ -384,6 +448,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Holy',
     role: 'DPS',
+    class: 'Rogue',
+    faction: getFactionByCharacter('Tefnut'),
     stats: { hp: 6694, attack: 1088, defense: 442, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Tefnut.jpg',
     slug: 'tefnut',
@@ -395,6 +461,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Holy',
     role: 'DPS',
+    class: 'Rogue',
+    faction: getFactionByCharacter('Yuis'),
     stats: { hp: 8033, attack: 1305, defense: 530, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Yuis.jpg',
     slug: 'yuis',
@@ -406,6 +474,8 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SR',
     element: 'Fire',
     role: 'Buffer',
+    class: 'Buffer',
+    faction: getFactionByCharacter('Zashiki-warashi'),
     stats: { hp: 7970, attack: 837, defense: 560, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: '/images/games/zone-nova/characters/Zashiki-warashi.jpg',
     slug: 'zashiki-warashi',
@@ -420,15 +490,19 @@ export const CHARACTER_METADATA = {
     a === 'SSR' ? -1 : b === 'SSR' ? 1 : a.localeCompare(b)
   ),
   roles: Array.from(new Set(ZONE_NOVA_CHARACTERS.map(c => c.role))).sort(),
+  classes: Array.from(new Set(ZONE_NOVA_CHARACTERS.map(c => c.class))).sort(),
+  factions: Array.from(new Set(ZONE_NOVA_CHARACTERS.map(c => c.faction))).sort(),
 };
 
 // Utility functions (pure, safe for client)
-export function filterCharacters(characters, { element, rarity, role }) {
+export function filterCharacters(characters, { element, rarity, role, class: charClass, faction }) {
   return characters.filter(
     c =>
       (!element || c.element === element) &&
       (!rarity || c.rarity === rarity) &&
-      (!role || c.role === role)
+      (!role || c.role === role) &&
+      (!charClass || c.class === charClass) &&
+      (!faction || c.faction === faction)
   );
 }
 
@@ -446,4 +520,20 @@ export function sortCharacters(characters, sortKey, direction = 'asc') {
 
 export function getCharacterBySlug(slug) {
   return ZONE_NOVA_CHARACTERS.find(c => c.slug === slug);
+}
+
+export function getCharacterClass(characterName) {
+  const character = ZONE_NOVA_CHARACTERS.find(c => c.name === characterName);
+  return character ? character.class : null;
+}
+
+export function getCharactersByClass(className) {
+  return ZONE_NOVA_CHARACTERS.filter(c => c.class === className);
+}
+
+export function getClassInfo(characterName) {
+  const character = ZONE_NOVA_CHARACTERS.find(c => c.name === characterName);
+  if (!character) return null;
+
+  return CHARACTER_CLASSES[character.class] || null;
 }

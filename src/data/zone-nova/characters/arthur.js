@@ -8,8 +8,9 @@ export const arthurData = {
   image: 'Arthur', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
-  class: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Camelot', // Savir, etc.
+  class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Avalon', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -49,7 +50,7 @@ export const arthurData = {
     description:
       'Self critical rate increases by 7.5%. Battle start: Every 15% critical rate adds 5% holy damage, maximum 6 times. Maximum Potential: 30% holy damage increase with optimal critical rate.',
     requirements: {
-      faction: 'Camelot', // Same as character faction
+      faction: 'Avalon', // Same as character faction
       element: 'Holy', // Same as character element
     },
   },

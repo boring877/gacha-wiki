@@ -7,8 +7,9 @@ export const lokiData = {
   image: 'Loki', // Character image identifier
   rarity: 'SSR',
   element: 'Chaos',
-  class: 'Debuffer',
-  faction: 'Huájiān',
+  class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Asa',
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const lokiData = {
     description:
       'Self damage increased by 20%. Enhances offensive capabilities for sustained debuff application',
     requirements: {
-      faction: 'Huájiān',
+      faction: 'Asa',
       element: 'Chaos',
     },
   },

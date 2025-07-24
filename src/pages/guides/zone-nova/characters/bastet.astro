@@ -1,23 +1,17 @@
 ---
-import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { bastetData, bastetSEO } from '../../../../data/zone-nova/characters/bastet.js';
 
 export const prerender = true;
-
-// Import character data from bastet.js
-const characterData = bastetData;
-
-// SEO optimization using imported data
-const title = bastetSEO.title;
-const description = bastetSEO.description;
 ---
 
-<ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>
-  <!-- Character Navigation -->
-  <CharacterNavigation currentCharacter={characterData} />
-
-  <!-- Character Page Content -->
-  <CharacterPageTemplate characterData={characterData} />
-</ZoneNovaLayout1>
+<CharacterLayout
+  title={bastetSEO.title}
+  description={bastetSEO.description}
+  gameTitle={bastetData.name}
+>
+  <CharacterNavigation currentCharacter={bastetData} />
+  <CharacterPageTemplate characterData={bastetData} />
+</CharacterLayout>

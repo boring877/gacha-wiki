@@ -5,11 +5,12 @@
 export const shuData = {
   // Basic Character Information
   name: 'Shu',
-  image: 'shu', // Use format: charactername (e.g., 'shu')
+  image: 'Shu', // Use format: charactername (e.g., 'shu')
   rarity: 'SR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Kaimiki', // Savir, etc.
+  class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Chemic', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const shuData = {
     name: 'Combination Skill', // Usually 'Combination Skill'
     description: 'Self damage increased by 20%',
     requirements: {
-      faction: 'Kaimiki', // Same as character faction
+      faction: 'Chemic', // Same as character faction
       element: 'Wind', // Same as character element
     },
   },

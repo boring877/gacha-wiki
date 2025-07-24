@@ -1,23 +1,13 @@
 ---
-import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { lyraData, lyraSEO } from '../../../../data/zone-nova/characters/lyra.js';
 
 export const prerender = true;
-
-// Import character data from lyra.js
-const characterData = lyraData;
-
-// SEO optimization using imported data
-const title = lyraSEO.title;
-const description = lyraSEO.description;
 ---
 
-<ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>
-  <!-- Character Navigation -->
-  <CharacterNavigation currentCharacter={characterData} />
-
-  <!-- Character Page Content -->
-  <CharacterPageTemplate characterData={characterData} />
-</ZoneNovaLayout1>
+<CharacterLayout title={lyraSEO.title} description={lyraSEO.description} gameTitle={lyraData.name}>
+  <CharacterNavigation currentCharacter={lyraData} />
+  <CharacterPageTemplate characterData={lyraData} />
+</CharacterLayout>

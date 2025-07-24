@@ -1,23 +1,17 @@
 ---
-import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { shannaData, shannaSEO } from '../../../../data/zone-nova/characters/shanna.js';
 
 export const prerender = true;
-
-// Import character data from shanna.js
-const characterData = shannaData;
-
-// SEO optimization using imported data
-const title = shannaSEO.title;
-const description = shannaSEO.description;
 ---
 
-<ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>
-  <!-- Character Navigation -->
-  <CharacterNavigation currentCharacter={characterData} />
-
-  <!-- Character Page Content -->
-  <CharacterPageTemplate characterData={characterData} />
-</ZoneNovaLayout1>
+<CharacterLayout
+  title={shannaSEO.title}
+  description={shannaSEO.description}
+  gameTitle={shannaData.name}
+>
+  <CharacterNavigation currentCharacter={shannaData} />
+  <CharacterPageTemplate characterData={shannaData} />
+</CharacterLayout>

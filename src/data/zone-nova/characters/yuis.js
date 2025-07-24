@@ -8,8 +8,9 @@ export const yuisData = {
   image: 'Yuis', // Use format: charactername (e.g., 'Yuis')
   rarity: 'SSR', // SSR, SR, R
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
-  class: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Audis', // Savir, etc.
+  class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Odius', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -49,7 +50,7 @@ export const yuisData = {
     description:
       'Self attack power increases by 10%. At battle start, every 500 attack power increases self crit damage by 7.5%, maximum 6 times (45% max)',
     requirements: {
-      faction: 'Audis', // Same as character faction
+      faction: 'Odius', // Same as character faction
       element: 'Holy', // Same as character element
     },
   },

@@ -1,0 +1,76 @@
+---
+import SurveyPageLayout from '../../../../layouts/zone-nova/SurveyPageLayout.astro';
+import { getSurveyBySlug } from '../../../../data/zone-nova/surveys.js';
+
+const survey = getSurveyBySlug('player-survey-2');
+if (!survey) {
+  throw new Error('Survey not found: player-survey-2');
+}
+---
+
+<SurveyPageLayout
+  title={`Zone Nova ${survey.title} - GachaWiki`}
+  description={`Translation of the official Zone Nova survey: ${survey.description}`}
+  gameTitle={survey.title}
+  surveyTitle={survey.title}
+  surveyMeta={survey.meta}
+>
+  <!-- Survey Introduction -->
+  <section class="content-section">
+    <div class="warning-box">
+      <div class="warning-title">📋 Survey Translation</div>
+      <div class="warning-content">
+        <p>
+          This is a translation of an official Zone Nova player survey focused on Guild Raids,
+          Arena, Events, and player preferences. The developers use this information to understand
+          player engagement with different game modes and improve the game experience.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {
+    survey.sections.map(section => (
+      <section class="content-section">
+        <h2 class="section-title">{section.title}</h2>
+
+        {section.questions.map(question => (
+          <div class="question-section">
+            <h3 class="question-title">
+              {question.id}. {question.title}
+            </h3>
+            {question.type === 'text' ? (
+              <div class="text-input-box">[Text input box for open feedback]</div>
+            ) : question.type === 'rating' ? (
+              <div class="rating-options">
+                {question.options.map(option => (
+                  <div class="rating-option">{option}</div>
+                ))}
+              </div>
+            ) : (
+              <ul class="options-list">
+                {question.options.map(option => (
+                  <li>{option}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </section>
+    ))
+  }
+
+  <!-- Final Warning -->
+  <section class="content-section">
+    <div class="warning-box">
+      <div class="warning-title">⚠️ Important Note</div>
+      <div class="warning-content">
+        <p>
+          This survey focuses on game modes and player preferences. This translation is provided for
+          informational purposes to help the community understand what feedback the developers are
+          seeking regarding Guild Raids, Arena, Events, and future game directions.
+        </p>
+      </div>
+    </div>
+  </section>
+</SurveyPageLayout>

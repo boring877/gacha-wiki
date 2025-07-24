@@ -8,8 +8,9 @@ export const athenaData = {
   image: 'Athena', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Buffer', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Otis', // Savir, etc.
+  class: 'Buffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Buffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Odius', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -49,9 +50,9 @@ export const athenaData = {
   teamSkill: {
     name: 'Combination Skill', // Usually 'Combination Skill'
     description:
-      'Team includes 2 [Olympus] or 2 [Wind] characters to trigger. Battle start: All team defense +10%. For every 500 attack power, all team defense additionally +5% (max 6 times, total +40% defense).',
+      'Team includes 2 [Odius] or 2 [Wind] characters to trigger. Battle start: All team defense +10%. For every 500 attack power, all team defense additionally +5% (max 6 times, total +40% defense).',
     requirements: {
-      faction: 'Olympus', // Same as character faction
+      faction: 'Odius', // Same as character faction
       element: 'Wind', // Same as character element
     },
   },

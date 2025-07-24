@@ -7,7 +7,8 @@ export const lancelotData = {
   image: 'Lancelot', // Character image identifier
   rarity: 'SR',
   element: 'Holy',
-  class: 'Tank',
+  class: 'Guardian', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Tank', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
   faction: 'Avalon',
 
   // Base Stats (Level 80)

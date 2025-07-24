@@ -1,23 +1,17 @@
 ---
-import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { athenaData, athenaSEO } from '../../../../data/zone-nova/characters/athena.js';
 
 export const prerender = true;
-
-// Import character data from athena.js
-const characterData = athenaData;
-
-// SEO optimization using imported data
-const title = athenaSEO.title;
-const description = athenaSEO.description;
 ---
 
-<ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>
-  <!-- Character Navigation -->
-  <CharacterNavigation currentCharacter={characterData} />
-
-  <!-- Character Page Content -->
-  <CharacterPageTemplate characterData={characterData} />
-</ZoneNovaLayout1>
+<CharacterLayout
+  title={athenaSEO.title}
+  description={athenaSEO.description}
+  gameTitle={athenaData.name}
+>
+  <CharacterNavigation currentCharacter={athenaData} />
+  <CharacterPageTemplate characterData={athenaData} />
+</CharacterLayout>

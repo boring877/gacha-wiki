@@ -1,13 +1,16 @@
 // Zone Nova Character Template - JavaScript Version
 // Copy this template and fill in all [PLACEHOLDER] values to create a new character
 
+import { getFactionData } from '../../data/zone-nova/factions.js';
+
 export const characterTemplate = {
   // Basic Character Information
   name: '[CHARACTER_NAME]',
   image: '[CHARACTER_IMAGE]', // Use format: charactername (e.g., 'penny')
   rarity: '[RARITY]', // SSR, SR, R
   element: '[ELEMENT]', // Fire, Ice, Wind, Holy, Chaos
-  class: '[CLASS]', // Tank, DPS, Buffer, Debuffer, Healer
+  class: '[CLASS]', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: '[ROLE]', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
   faction: '[FACTION]', // Savir, etc.
 
   // Base Stats (Level 80)

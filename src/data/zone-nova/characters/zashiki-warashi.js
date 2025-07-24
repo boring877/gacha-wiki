@@ -8,8 +8,9 @@ export const zashikiWarashiData = {
   image: 'Zashiki-warashi', // Use format: charactername (e.g., 'Zashiki-warashi')
   rarity: 'SR', // SSR, SR, R
   element: 'Fire', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Buffer', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Heian-kyo', // Savir, etc.
+  class: 'Buffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Buffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Pingjing City', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const zashikiWarashiData = {
     name: 'Combination Skill', // Usually 'Combination Skill'
     description: 'Team attack power increases by 10%. Team defense increases by 10%',
     requirements: {
-      faction: 'Heian-kyo', // Same as character faction
+      faction: 'Pingjing City', // Same as character faction
       element: 'Fire', // Same as character element
     },
   },

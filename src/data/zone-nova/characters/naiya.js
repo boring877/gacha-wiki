@@ -7,8 +7,9 @@ export const naiyaData = {
   image: 'naiya', // Character image identifier
   rarity: 'SSR',
   element: 'Ice',
-  class: 'Buffer',
-  faction: 'Avalon',
+  class: 'Buffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Buffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Sapphire',
 
   // Base Stats (Level 80)
   stats: {
@@ -46,9 +47,9 @@ export const naiyaData = {
   teamSkill: {
     name: 'Combination Skill (组合技)',
     description:
-      'Team includes 2 [Savir] characters or 2 [Ice] characters to trigger. Battle Start: All team damage +10%. Scaling: Every 500 attack power, all team damage additionally +5%, max 6 times',
+      'Team includes 2 [Sapphire] characters or 2 [Ice] characters to trigger. Battle Start: All team damage +10%. Scaling: Every 500 attack power, all team damage additionally +5%, max 6 times',
     requirements: {
-      faction: 'Savir',
+      faction: 'Sapphire',
       element: 'Ice',
     },
   },

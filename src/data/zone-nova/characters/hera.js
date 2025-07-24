@@ -8,8 +8,9 @@ export const heraData = {
   image: 'Hera', // Use format: charactername (e.g., 'Hera')
   rarity: 'SSR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
-  class: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Otis', // Otis (奥蒂斯)
+  class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Odius', // Otis (奥蒂斯)
 
   // Base Stats (Level 80)
   stats: {
@@ -64,9 +65,9 @@ export const heraData = {
     description:
       'Passive: Self attack power +10%. Battle Start: Every 500 attack power increases self penetration by 3%, max 6 times',
     requirements: {
-      faction: 'Olympus',
+      faction: 'Odius',
       element: 'Chaos',
-      condition: '2 [Olympus] colored or 2 [Chaos] colored characters',
+      condition: '2 [Odius] colored or 2 [Chaos] colored characters',
     },
   },
 
@@ -112,7 +113,7 @@ export const hera = {
   rarity: 'SSR',
   element: 'Chaos',
   role: 'DPS',
-  faction: 'Otis',
+  faction: 'Odius',
   chineseFaction: '奥蒂斯',
   maxLevel: 80,
 
@@ -130,7 +131,7 @@ export const hera = {
     card: '/images/characters/Heracard.jpg',
   },
 
-  tags: ['DPS', 'Chaos', 'Otis', 'DOT', 'Enhanced Ultimate'],
+  tags: ['DPS', 'Chaos', 'Odius', 'DOT', 'Enhanced Ultimate'],
 };
 
 // Export default for easy importing

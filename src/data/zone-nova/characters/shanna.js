@@ -8,8 +8,9 @@ export const shannaData = {
   image: 'Shanna', // Use format: charactername (e.g., 'Shanna')
   rarity: 'SR', // SSR, SR, R
   element: 'Fire', // Fire, Ice, Wind, Holy, Chaos
-  class: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Savier', // Savir, etc.
+  class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Sapphire', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -47,7 +48,7 @@ export const shannaData = {
     name: 'Combination Skill', // Usually 'Combination Skill'
     description: 'Self damage increased by 20%',
     requirements: {
-      faction: 'Savier', // Same as character faction
+      faction: 'Sapphire', // Same as character faction
       element: 'Fire', // Same as character element
     },
   },

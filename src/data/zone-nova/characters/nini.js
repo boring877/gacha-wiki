@@ -7,8 +7,9 @@ export const niniData = {
   image: 'nini', // Character image identifier
   rarity: 'SR',
   element: 'Ice',
-  class: 'Debuffer',
-  faction: 'Ortis',
+  class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Monochrome Nation',
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const niniData = {
     description:
       'Self damage reduction increased by 20%. Provides defensive utility to complement her debuffer role',
     requirements: {
-      faction: 'Ortis',
+      faction: 'Monochrome Nation',
       element: 'Ice',
     },
   },

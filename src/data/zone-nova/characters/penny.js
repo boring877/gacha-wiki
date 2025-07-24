@@ -7,8 +7,9 @@ export const pennyData = {
   image: 'penny', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Tank', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Savir', // Savir, etc.
+  class: 'Guardian', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Tank', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Sapphire', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const pennyData = {
     description:
       'Own defense increases by 15%. At battle start, every 500 defense reduces team damage taken by 1.5%, max 6 times.',
     requirements: {
-      faction: 'Savir', // Same as character faction
+      faction: 'Sapphire', // Same as character faction
       element: 'Wind', // Same as character element
     },
   },

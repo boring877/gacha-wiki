@@ -13,7 +13,8 @@ export interface BaseCharacter {
 // Zone Nova specific character interface
 export interface ZoneNovaCharacter extends BaseCharacter {
   element: 'Fire' | 'Wind' | 'Holy' | 'Chaos' | 'Ice';
-  role: 'DPS' | 'Tank' | 'Support' | 'Healer' | 'Buffer' | 'Debuffer';
+  class: 'Guardian' | 'Warrior' | 'Rogue' | 'Mage' | 'Buffer' | 'Debuffer' | 'Healer'; // Determines memory compatibility and gameplay mechanics
+  role: 'Tank' | 'DPS' | 'Buffer' | 'Debuffer' | 'Healer'; // Functional role description
   stats: {
     hp: number;
     attack: number;

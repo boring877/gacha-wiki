@@ -7,8 +7,9 @@ export const horusData = {
   image: 'Horus', // Character image identifier
   rarity: 'SSR',
   element: 'Holy',
-  class: 'Debuffer',
-  faction: 'Kemich',
+  class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Chemic',
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const horusData = {
     description:
       'Effect 1: Self attack power increases by 10%. Effect 2: At battle start, every 500 attack power adds 3% penetration, maximum 6 times (18% max)',
     requirements: {
-      faction: 'Kemich',
+      faction: 'Chemic',
       element: 'Holy',
     },
   },

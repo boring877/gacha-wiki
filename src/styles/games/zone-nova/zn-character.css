@@ -1,0 +1,832 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                      ZONE NOVA CHARACTER PAGES                          */
+/*                 Silver & Blood Structure + Zone Nova Colors             */
+/*                    (Layout handled by zn-layout.css)                    */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                         OVERVIEW FLEX LAYOUT                            */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.overview-flex {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .overview-flex {
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           BADGE SYSTEM                                  */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Class Badges */
+.class-badge {
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.class-badge.guardian {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+  color: #fff;
+}
+
+.class-badge.warrior {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: #fff;
+}
+
+.class-badge.rogue {
+  background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+  color: #fff;
+}
+
+.class-badge.mage {
+  background: linear-gradient(135deg, #673ab7, #512da8);
+  color: #fff;
+}
+
+.class-badge.buffer {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  color: #fff;
+}
+
+.class-badge.debuffer {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  color: #fff;
+}
+
+.class-badge.healer {
+  background: linear-gradient(135deg, var(--teal-crystal), #0097a7);
+  color: #fff;
+}
+
+.class-badge.tank {
+  background: linear-gradient(135deg, #607d8b, #455a64);
+  color: #fff;
+}
+
+.class-badge.dps {
+  background: linear-gradient(135deg, var(--amber-glow), #ff9800);
+  color: #fff;
+}
+
+.class-badge.unknown {
+  background: linear-gradient(135deg, #757575, #616161);
+  color: #fff;
+}
+
+/* Rarity Badges */
+.rarity-badge {
+  padding: 0.5rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.rarity-badge.ssr {
+  background: var(--amber-glow);
+  color: #222;
+  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3);
+}
+
+.rarity-badge.sr {
+  background: #7ecfff;
+  color: #222;
+  box-shadow: 0 4px 12px rgba(126, 207, 255, 0.3);
+}
+
+.rarity-badge.r {
+  background: #a0a0a0;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(160, 160, 160, 0.3);
+}
+
+/* Element Badges */
+.element-badge {
+  padding: 0.5rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.element-badge.fire {
+  background: #ff6b6b;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.element-badge.ice {
+  background: #4dbfff;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(77, 191, 255, 0.3);
+}
+
+.element-badge.wind {
+  background: #4dffb8;
+  color: #222;
+  box-shadow: 0 4px 12px rgba(77, 255, 184, 0.3);
+}
+
+.element-badge.holy {
+  background: var(--amber-glow);
+  color: #222;
+  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3);
+}
+
+.element-badge.chaos {
+  background: #b266ff;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(178, 102, 255, 0.3);
+}
+
+/* Faction Badges */
+.faction-badge {
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #fff;
+  min-height: 2.5rem;
+  line-height: 1.2;
+}
+
+.faction-badge.unaffiliated {
+  background: linear-gradient(135deg, #757575, #616161);
+  box-shadow: 0 4px 12px rgba(117, 117, 117, 0.3);
+}
+
+.faction-badge.sapphire {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+.faction-badge.chemic {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+
+.faction-badge.avalon {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.faction-badge.odius {
+  background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+  box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);
+}
+
+.faction-badge.asa {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.faction-badge.pingjing-city {
+  background: linear-gradient(135deg, #00bcd4, #0097a7);
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+}
+
+.faction-badge.monochrome-nation {
+  background: linear-gradient(135deg, #607d8b, #455a64);
+  box-shadow: 0 4px 12px rgba(96, 125, 139, 0.3);
+}
+
+.faction-badge.bicta-tower {
+  background: linear-gradient(135deg, #673ab7, #512da8);
+  box-shadow: 0 4px 12px rgba(103, 58, 183, 0.3);
+}
+
+/* Faction Section Styling */
+.faction-section {
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.faction-description {
+  color: var(--text-secondary);
+  margin: 0.5rem 0 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faction-chinese-name {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  opacity: 0.85;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Role Badges */
+.role-badge {
+  padding: 0.5rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.role-badge.tank {
+  background: linear-gradient(135deg, #607d8b, #455a64);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(96, 125, 139, 0.3);
+}
+
+.role-badge.dps {
+  background: linear-gradient(135deg, var(--amber-glow), #ff9800);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3);
+}
+
+.role-badge.support {
+  background: linear-gradient(135deg, var(--teal-crystal), #0097a7);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 172, 193, 0.3);
+}
+
+.role-badge.healer {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.role-badge.buffer {
+  background: linear-gradient(135deg, var(--cosmic-purple), #7b1fa2);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+}
+
+.role-badge.debuffer {
+  background: linear-gradient(135deg, var(--rose-quartz), #c2185b);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+}
+
+/* Skill Badges */
+.skill-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.skill-badge.normal-attack {
+  background: linear-gradient(135deg, var(--amber-glow), #ff9800);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255, 183, 77, 0.3);
+}
+
+.skill-badge.auto-skill {
+  background: linear-gradient(135deg, var(--teal-crystal), #0097a7);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 172, 193, 0.3);
+}
+
+.skill-badge.ultimate {
+  background: linear-gradient(135deg, var(--amber-glow), #ff9800);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255, 183, 77, 0.3);
+}
+
+.skill-badge.passive {
+  background: linear-gradient(135deg, var(--rose-quartz), #c2185b);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
+}
+
+.skill-badge.team-skill {
+  background: linear-gradient(135deg, var(--cosmic-purple), #7b1fa2);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(138, 43, 226, 0.3);
+}
+
+/* Awakening Badges */
+.awakening-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.awakening-badge.dupe-3,
+.awakening-badge.dupe-5 {
+  background: linear-gradient(135deg, var(--amber-glow), #ff9800);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255, 183, 77, 0.3);
+}
+
+.awakening-badge.dupe-1,
+.awakening-badge.dupe-2,
+.awakening-badge.dupe-4,
+.awakening-badge.dupe-6 {
+  background: linear-gradient(135deg, var(--teal-crystal), #0097a7);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 172, 193, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           STATS GRID                                    */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.stats-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.stat-item {
+  text-align: center;
+  background: var(--bg-primary);
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--amber-glow);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.2);
+  border-color: var(--teal-crystal);
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.stat-value {
+  color: var(--teal-crystal);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           HOVER EFFECTS                                 */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.skill-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 172, 193, 0.15);
+}
+
+.character-portrait:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 172, 193, 0.3);
+}
+
+/* Badge hover effects */
+.class-badge:hover,
+.rarity-badge:hover,
+.element-badge:hover,
+.faction-badge:hover,
+.role-badge:hover,
+.skill-badge:hover,
+.awakening-badge:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           RESPONSIVE DESIGN                             */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .overview-flex {
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.6rem;
+  }
+
+  .stat-item {
+    padding: 0.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .stat-value {
+    font-size: 0.9rem;
+  }
+
+  .skill-badge,
+  .awakening-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .class-badge,
+  .rarity-badge,
+  .element-badge,
+  .faction-badge,
+  .role-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .faction-badge {
+    min-height: 2rem;
+  }
+
+  .faction-description {
+    font-size: 0.8rem;
+    max-width: 250px;
+  }
+
+  .faction-chinese-name {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem;
+  }
+
+  .stat-item {
+    padding: 0.5rem;
+  }
+
+  .overview-flex {
+    gap: 1rem;
+  }
+
+  .skill-badge,
+  .awakening-badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .class-badge,
+  .rarity-badge,
+  .element-badge,
+  .faction-badge,
+  .role-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.6rem;
+  }
+
+  .faction-badge {
+    min-height: 1.8rem;
+  }
+
+  .faction-description {
+    font-size: 0.75rem;
+    max-width: 200px;
+  }
+
+  .faction-chinese-name {
+    font-size: 0.65rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                        PERFORMANCE OPTIMIZATIONS                        */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .skill-card:hover,
+  .character-portrait:hover,
+  .stat-item:hover {
+    transform: none !important;
+  }
+
+  .class-badge:hover,
+  .rarity-badge:hover,
+  .element-badge:hover,
+  .faction-badge:hover,
+  .role-badge:hover,
+  .skill-badge:hover,
+  .awakening-badge:hover {
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           ANIMATIONS                                    */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes badgeGlow {
+  0%,
+  100% {
+    box-shadow: 0 2px 8px rgba(255, 183, 77, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(255, 183, 77, 0.5);
+  }
+}
+
+.skill-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.rarity-badge.ssr {
+  animation: badgeGlow 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                      HIGH CONTRAST MODE SUPPORT                         */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-contrast: high) {
+  .stat-item,
+  .skill-card {
+    border-width: 2px !important;
+  }
+
+  .class-badge,
+  .rarity-badge,
+  .element-badge,
+  .faction-badge,
+  .role-badge,
+  .skill-badge,
+  .awakening-badge {
+    border: 2px solid currentColor;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           CLASS SECTION                                 */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.class-container {
+  background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0, 172, 193, 0.15);
+  padding: 2rem;
+  border: 1.5px solid var(--teal-crystal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  width: 100%;
+}
+
+.class-icon {
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border: 2px solid var(--teal-crystal);
+}
+
+.class-title {
+  margin: 0;
+  text-align: center;
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.class-role {
+  color: var(--text-secondary);
+  margin: 0.5rem 0 0 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.class-info-container {
+  background: linear-gradient(135deg, var(--neutral-50) 60%, var(--bg-primary) 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0, 172, 193, 0.15);
+  padding: 2rem;
+  border: 1px solid var(--teal-crystal);
+  width: 100%;
+}
+
+.class-info-title {
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--teal-crystal);
+  padding-bottom: 0.5rem;
+}
+
+.class-info-section {
+  margin-bottom: 1.5rem;
+}
+
+.class-info-section:last-child {
+  margin-bottom: 0;
+}
+
+.class-info-subtitle {
+  color: var(--text-primary);
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+}
+
+.memory-compatibility-box {
+  background: rgba(0, 172, 193, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(0, 172, 193, 0.2);
+}
+
+.role-description-box {
+  background: rgba(255, 183, 77, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 183, 77, 0.2);
+}
+
+.class-info-text {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.class-info-highlight {
+  color: var(--teal-crystal);
+}
+
+.role-info-highlight {
+  color: var(--amber-glow);
+}
+
+.class-badge-center {
+  display: flex;
+  justify-content: center;
+}
+
+.class-badge-large {
+  background: var(--teal-crystal);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 172, 193, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                       CLASS SECTION RESPONSIVE                          */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .class-container {
+    padding: 1.5rem;
+    min-height: 250px;
+  }
+
+  .class-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+  }
+
+  .class-title {
+    font-size: 1.5rem;
+  }
+
+  .class-role {
+    font-size: 0.9rem;
+  }
+
+  .class-info-container {
+    padding: 1.5rem;
+  }
+
+  .class-info-title {
+    font-size: 1.2rem;
+  }
+
+  .class-info-subtitle {
+    font-size: 1rem;
+  }
+
+  .class-info-text {
+    font-size: 0.9rem;
+  }
+
+  .class-badge-large {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .class-container {
+    padding: 1rem;
+    min-height: 200px;
+  }
+
+  .class-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .class-title {
+    font-size: 1.3rem;
+  }
+
+  .class-role {
+    font-size: 0.85rem;
+  }
+
+  .class-info-container {
+    padding: 1rem;
+  }
+
+  .class-info-title {
+    font-size: 1.1rem;
+  }
+
+  .class-info-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .class-info-text {
+    font-size: 0.85rem;
+  }
+
+  .class-badge-large {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

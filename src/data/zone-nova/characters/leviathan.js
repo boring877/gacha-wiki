@@ -7,8 +7,9 @@ export const leviathanData = {
   image: 'Leviathan', // Character image identifier
   rarity: 'SR',
   element: 'Wind',
-  class: 'DPS',
-  faction: 'Biceta',
+  class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Bicta Tower',
 
   // Base Stats (Level 80)
   stats: {
@@ -46,7 +47,7 @@ export const leviathanData = {
     name: 'Combination Skill',
     description: 'Self damage increased by 20%.',
     requirements: {
-      faction: 'Biceta',
+      faction: 'Bicta Tower',
       element: 'Wind',
     },
   },

@@ -1,0 +1,182 @@
+/* Zone Nova Surveys Landing Page Styles */
+
+/* ===== CONTENT SECTIONS ===== */
+.content-section {
+  background: var(--bg-secondary);
+  padding: 3rem;
+  border-radius: 20px;
+  margin-bottom: 3rem;
+  border: 1px solid var(--amber-glow);
+  box-shadow: 0 12px 30px rgba(255, 183, 77, 0.2);
+  transition: all 0.4s ease;
+  animation: sectionFadeIn 0.8s ease-out;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--text-inverse);
+  margin: 0 0 2rem 0;
+  text-align: center;
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: var(--leading-tight);
+}
+
+.section-description {
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== SURVEY LIST ===== */
+.surveys-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* ===== SURVEY CARDS ===== */
+.survey-card {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 183, 77, 0.05) 100%);
+  border: 1px solid var(--amber-glow);
+  border-radius: 16px;
+  padding: 2rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(255, 183, 77, 0.1);
+}
+
+.survey-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.survey-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.survey-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.survey-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.survey-info {
+  flex: 1;
+}
+
+.survey-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--amber-glow);
+  margin: 0 0 0.5rem 0;
+  line-height: var(--leading-tight);
+  transition: color 0.3s ease;
+}
+
+.survey-meta {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  margin: 0;
+  line-height: var(--leading-normal);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes sectionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .content-section {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: var(--text-3xl);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-description {
+    font-size: var(--text-base);
+    margin-bottom: 1.5rem;
+  }
+
+  .surveys-grid {
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .survey-card {
+    padding: 1.5rem;
+  }
+
+  .survey-card h3 {
+    font-size: var(--text-lg);
+  }
+
+  .survey-meta {
+    font-size: var(--text-xs);
+  }
+
+  .survey-icon {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .survey-card {
+    padding: 1rem;
+  }
+
+  .survey-header {
+    gap: 0.75rem;
+  }
+
+  .survey-icon {
+    font-size: 1.5rem;
+  }
+
+  .survey-card h3 {
+    font-size: var(--text-base);
+  }
+}

@@ -8,8 +8,9 @@ export const apolloData = {
   image: 'Apollo', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Fire', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Buffer', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Olympus', // Savir, etc.
+  class: 'Buffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Buffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Odius', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -49,7 +50,7 @@ export const apolloData = {
     description:
       'Battle start: Team damage increases by 10%. Every 500 attack power adds 5% team damage, maximum 6 times (30% max).',
     requirements: {
-      faction: 'Olympus', // Same as character faction
+      faction: 'Odius', // Same as character faction
       element: 'Fire', // Same as character element
     },
   },

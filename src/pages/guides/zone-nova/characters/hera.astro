@@ -1,23 +1,13 @@
 ---
-import ZoneNovaLayout1 from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { heraData, heraSEO } from '../../../../data/zone-nova/characters/hera.js';
 
 export const prerender = true;
-
-// Import character data from hera.js
-const characterData = heraData;
-
-// SEO optimization using imported data
-const title = heraSEO.title;
-const description = heraSEO.description;
 ---
 
-<ZoneNovaLayout1 title={title} description={description} gameTitle={characterData.name}>
-  <!-- Character Navigation -->
-  <CharacterNavigation currentCharacter={characterData} />
-
-  <!-- Character Page Content -->
-  <CharacterPageTemplate characterData={characterData} />
-</ZoneNovaLayout1>
+<CharacterLayout title={heraSEO.title} description={heraSEO.description} gameTitle={heraData.name}>
+  <CharacterNavigation currentCharacter={heraData} />
+  <CharacterPageTemplate characterData={heraData} />
+</CharacterLayout>

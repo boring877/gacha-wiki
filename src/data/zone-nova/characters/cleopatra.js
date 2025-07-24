@@ -7,8 +7,9 @@ export const cleopatraData = {
   image: 'Cleopatra', // Character image identifier
   rarity: 'SSR',
   element: 'Chaos',
-  class: 'DPS',
-  faction: 'Kemichi',
+  class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Chemic',
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const cleopatraData = {
     description:
       'Self attack power increases by 10%. Battle start: Every 500 attack adds 3% penetration rate, maximum 6 times. Maximum penetration bonus: 18% (at 3,000+ attack)',
     requirements: {
-      faction: 'Kemichi',
+      faction: 'Chemic',
       element: 'Chaos',
     },
   },

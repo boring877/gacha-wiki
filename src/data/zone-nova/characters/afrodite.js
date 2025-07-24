@@ -8,8 +8,9 @@ export const afroditeData = {
   image: 'Afrodite', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
-  class: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Ortis', // Savir, etc.
+  class: 'Warrior', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Odius', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -50,7 +51,7 @@ export const afroditeData = {
     description:
       'Self attack power increased by 10%. At battle start: For every 500 attack power, increase self holy damage by 5% (maximum 6 times). Maximum scaling: 30% holy damage boost at 3,000+ attack power.',
     requirements: {
-      faction: 'Ortis', // Same as character faction
+      faction: 'Odius', // Same as character faction
       element: 'Holy', // Same as character element
     },
   },

@@ -7,8 +7,9 @@ export const kelaData = {
   image: 'kela', // Character image identifier
   rarity: 'SR',
   element: 'Holy',
-  class: 'Healer',
-  faction: 'Otis',
+  class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Healer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Sapphire',
 
   // Base Stats (Level 80)
   stats: {
@@ -48,7 +49,7 @@ export const kelaData = {
     description:
       "Effect 1: All allies' healing received increases by 15%. Effect 2: When any ally drops below 30% HP, they gain damage reduction of 10% for 8 seconds",
     requirements: {
-      faction: 'Otis',
+      faction: 'Sapphire',
       element: 'Holy',
     },
   },

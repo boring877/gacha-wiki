@@ -7,7 +7,8 @@ export const gaiaData = {
   image: 'Gaia',
   rarity: 'SSR',
   element: 'Holy',
-  class: 'Healer',
+  class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Healer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
   faction: 'Odius',
 
   // Base Stats (Level 80)

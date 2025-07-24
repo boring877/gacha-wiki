@@ -7,7 +7,8 @@ export const guinevereData = {
   image: 'Guinevere', // Character image identifier
   rarity: 'SSR',
   element: 'Fire',
-  class: 'Tank',
+  class: 'Guardian', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Tank', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
   faction: 'Avalon',
 
   // Base Stats (Level 80)

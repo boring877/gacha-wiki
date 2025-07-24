@@ -7,12 +7,13 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import ZnBackButton from '../../components/zone-nova/zn-backbutton.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
 
-// CSS Imports
+// Import CSS files properly
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/games/zone-nova/zn-badge-colour.css';
-import '../../styles/games/zone-nova/zn-character-styles.css';
+import '../../styles/games/zone-nova/zn-character.css';
 
 // Note: Using Vercel adapter built-in analytics instead of manual imports
 // import Analytics from '@vercel/analytics/astro';
@@ -55,47 +56,50 @@ const {
       <Header />
       <MobileMenu />
 
-      <main class="zone-nova-main-content">
-        <!-- Zone Nova Hero Section -->
-        {
-          heroImage && gameTitle && (
-            <section class="hero-section">
-              <div class="hero-image-wrapper">
-                <div class="hero-image-container">
-                  <OptimizedImage
-                    src={heroImage}
-                    alt={gameTitle}
-                    class="hero-image"
-                    loading="eager"
-                    decoding="async"
-                  />
-                  <div class="hero-overlay" />
+      <div class="zone-nova-container">
+        <main class="zone-nova-main">
+          <!-- Zone Nova Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <OptimizedImage
+                      src={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <div class="hero-overlay" />
+                  </div>
                 </div>
-              </div>
 
-              <h1 class="hero-title">{gameTitle}</h1>
+                <h1 class="hero-title">{gameTitle}</h1>
 
-              <DecorativeLines />
-            </section>
-          )
-        }
+                <DecorativeLines />
+              </section>
+            )
+          }
 
-        <!-- Title Only Section (when no hero image) -->
-        {
-          !heroImage && gameTitle && (
-            <section class="title-only-section">
-              <h1 class="title-only-heading">{gameTitle}</h1>
+          <!-- Title Only Section (when no hero image) -->
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
 
-              <DecorativeLines />
-            </section>
-          )
-        }
-        <!-- Content Area -->
-        <div class="content-area">
-          {showBackButton && <ZnBackButton href={backButtonHref} text={backButtonText} />}
-          <slot />
-        </div>
-      </main>
+                <DecorativeLines />
+              </section>
+            )
+          }
+          <!-- Content Area -->
+          <div class="content-area">
+            {showBackButton && <ZnBackButton href={backButtonHref} text={backButtonText} />}
+            <slot />
+          </div>
+        </main>
+      </div>
+
       <Footer />
     </div>
     {
@@ -108,579 +112,5 @@ const {
         />
       )
     }
-
-    <style>
-      /* Body and Main Layout */
-      .zone-nova-body {
-        background: var(--bg-dark);
-        color: var(--text-primary);
-        min-height: 100vh;
-        font-family: 'Inter', sans-serif;
-      }
-
-      /* Background Layers - Similar to Landing Page */
-      .bg-layer {
-        position: fixed;
-        inset: 0;
-      }
-
-      .bg-primary {
-        background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
-      }
-
-      .bg-accent-1 {
-        background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent);
-        pointer-events: none;
-      }
-
-      .bg-accent-2 {
-        background: radial-gradient(circle at 80% 20%, rgba(255, 183, 77, 0.08), transparent);
-        pointer-events: none;
-      }
-
-      .bg-accent-3 {
-        background: radial-gradient(circle at 50% 50%, rgba(0, 172, 193, 0.05), transparent);
-        pointer-events: none;
-      }
-
-      .zone-nova-content {
-        position: relative;
-        z-index: 10;
-      }
-
-      .zone-nova-main-content {
-        max-width: 75rem;
-        margin: 0 auto;
-        padding: 2rem;
-        min-height: 100vh;
-      }
-
-      /* Hero Section Styles */
-      .hero-section {
-        text-align: center;
-        margin-bottom: 4rem;
-        padding: 3rem 1rem;
-      }
-
-      .hero-image-wrapper {
-        position: relative;
-        margin-bottom: 3rem;
-        animation: heroFadeIn 1s ease-out;
-      }
-
-      .hero-image-container {
-        width: 100%;
-        max-width: 60rem;
-        height: 25rem;
-        border-radius: 20px;
-        overflow: hidden;
-        margin: 0 auto;
-        position: relative;
-        box-shadow: 0 20px 50px rgba(0, 172, 193, 0.3);
-        border: 2px solid var(--teal-crystal);
-      }
-
-      .hero-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.6s ease;
-      }
-
-      .hero-image:hover {
-        transform: scale(1.02);
-      }
-
-      .hero-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 50%;
-        background: linear-gradient(transparent, rgba(28, 28, 28, 0.8));
-        pointer-events: none;
-      }
-
-      .hero-title {
-        font-family: var(--font-display);
-        font-size: var(--text-4xl);
-        font-weight: 700;
-        background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin: 0 0 1rem 0;
-      }
-
-      /* Title Only Section */
-      .title-only-section {
-        text-align: center;
-        margin-bottom: 4rem;
-        padding: 2rem 1rem;
-      }
-
-      .title-only-heading {
-        font-family: var(--font-display);
-        font-size: var(--text-4xl);
-        font-weight: 700;
-        background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin: 0 0 1rem 0;
-      }
-
-      /* Content Area */
-      .content-area {
-        animation: contentSlideUp 1s ease-out 0.3s both;
-      }
-
-      /* Animation Keyframes */
-      @keyframes heroFadeIn {
-        0% {
-          opacity: 0;
-          transform: translateY(30px) scale(0.95);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-      }
-
-      @keyframes contentSlideUp {
-        0% {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes titleGlow {
-        0% {
-          text-shadow:
-            0 0 10px rgba(255, 183, 77, 0.3),
-            0 0 20px rgba(255, 183, 77, 0.2),
-            0 0 30px rgba(0, 172, 193, 0.1);
-        }
-        100% {
-          text-shadow:
-            0 0 20px rgba(255, 183, 77, 0.6),
-            0 0 30px rgba(255, 183, 77, 0.4),
-            0 0 40px rgba(0, 172, 193, 0.3);
-        }
-      }
-
-      /* Mobile Optimizations */
-      @media (max-width: 768px) {
-        .zone-nova-main-content {
-          padding: 1rem;
-          max-width: 100%;
-        }
-
-        .hero-section {
-          padding: 2rem 0.5rem;
-          margin-bottom: 2rem;
-        }
-
-        .hero-image-container {
-          height: 15rem;
-          border-radius: 12px;
-        }
-
-        .hero-title {
-          font-size: clamp(2rem, 8vw, 3rem);
-        }
-
-        .title-only-section {
-          padding: 1.5rem 0.5rem;
-          margin-bottom: 2rem;
-        }
-
-        .title-only-heading {
-          font-size: clamp(1.5rem, 7vw, 2.5rem);
-          white-space: normal;
-        }
-
-        /* Reduce background complexity on mobile for better performance */
-        .bg-accent-2,
-        .bg-accent-3 {
-          display: none;
-        }
-
-        .bg-accent-1 {
-          opacity: 0.5;
-        }
-      }
-
-      /* Extra Small Mobile */
-      @media (max-width: 480px) {
-        .zone-nova-main-content {
-          padding: 0.75rem;
-        }
-
-        .hero-image-container {
-          height: 12rem;
-        }
-
-        .hero-title {
-          font-size: clamp(1.5rem, 10vw, 2.5rem);
-        }
-
-        .title-only-heading {
-          font-size: clamp(1.25rem, 8vw, 2rem);
-        }
-      }
-
-      /* Performance Optimizations */
-      @media (prefers-reduced-motion: reduce) {
-        .hero-image-wrapper,
-        .content-area,
-        .hero-title,
-        .title-only-heading,
-        .hero-image {
-          animation: none;
-          transition: none;
-        }
-      }
-
-      /* 🐱 Cat Army - 50 Random Scattered Cats */
-      .corner-cats {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        pointer-events: none;
-        z-index: 1000;
-      }
-
-      .corner-cat {
-        position: absolute;
-        font-size: var(--text-sm);
-        opacity: 0.25;
-        transition: opacity 0.3s ease;
-        cursor: pointer;
-        pointer-events: auto;
-        color: var(--text-secondary);
-        font-family: var(--font-primary);
-        white-space: nowrap;
-        user-select: none;
-      }
-
-      .corner-cat:hover {
-        opacity: 0.6;
-        color: var(--amber-glow);
-      }
-
-      /* Random Positions for 50 Cats */
-      .corner-cat.pos-1 {
-        top: 8%;
-        left: 3%;
-        transform: rotate(-12deg);
-      }
-      .corner-cat.pos-2 {
-        top: 15%;
-        right: 7%;
-        transform: rotate(18deg);
-      }
-      .corner-cat.pos-3 {
-        top: 23%;
-        left: 12%;
-        transform: rotate(-25deg);
-      }
-      .corner-cat.pos-4 {
-        top: 31%;
-        right: 15%;
-        transform: rotate(22deg);
-      }
-      .corner-cat.pos-5 {
-        top: 39%;
-        left: 5%;
-        transform: rotate(-8deg);
-      }
-      .corner-cat.pos-6 {
-        top: 47%;
-        right: 3%;
-        transform: rotate(30deg);
-      }
-      .corner-cat.pos-7 {
-        top: 55%;
-        left: 18%;
-        transform: rotate(-15deg);
-      }
-      .corner-cat.pos-8 {
-        top: 63%;
-        right: 12%;
-        transform: rotate(10deg);
-      }
-      .corner-cat.pos-9 {
-        top: 71%;
-        left: 8%;
-        transform: rotate(-28deg);
-      }
-      .corner-cat.pos-10 {
-        top: 79%;
-        right: 20%;
-        transform: rotate(25deg);
-      }
-      .corner-cat.pos-11 {
-        top: 87%;
-        left: 25%;
-        transform: rotate(-18deg);
-      }
-      .corner-cat.pos-12 {
-        top: 12%;
-        left: 35%;
-        transform: rotate(8deg);
-      }
-      .corner-cat.pos-13 {
-        top: 20%;
-        right: 35%;
-        transform: rotate(-22deg);
-      }
-      .corner-cat.pos-14 {
-        top: 28%;
-        left: 45%;
-        transform: rotate(15deg);
-      }
-      .corner-cat.pos-15 {
-        top: 36%;
-        right: 25%;
-        transform: rotate(-30deg);
-      }
-      .corner-cat.pos-16 {
-        top: 44%;
-        left: 55%;
-        transform: rotate(12deg);
-      }
-      .corner-cat.pos-17 {
-        top: 52%;
-        right: 45%;
-        transform: rotate(-5deg);
-      }
-      .corner-cat.pos-18 {
-        top: 60%;
-        left: 65%;
-        transform: rotate(28deg);
-      }
-      .corner-cat.pos-19 {
-        top: 68%;
-        right: 55%;
-        transform: rotate(-20deg);
-      }
-      .corner-cat.pos-20 {
-        top: 76%;
-        left: 75%;
-        transform: rotate(18deg);
-      }
-      .corner-cat.pos-21 {
-        top: 84%;
-        right: 65%;
-        transform: rotate(-12deg);
-      }
-      .corner-cat.pos-22 {
-        top: 92%;
-        left: 85%;
-        transform: rotate(25deg);
-      }
-      .corner-cat.pos-23 {
-        top: 5%;
-        left: 80%;
-        transform: rotate(-15deg);
-      }
-      .corner-cat.pos-24 {
-        top: 13%;
-        right: 80%;
-        transform: rotate(20deg);
-      }
-      .corner-cat.pos-25 {
-        top: 21%;
-        left: 90%;
-        transform: rotate(-8deg);
-      }
-      .corner-cat.pos-26 {
-        bottom: 5%;
-        left: 10%;
-        transform: rotate(15deg);
-      }
-      .corner-cat.pos-27 {
-        bottom: 13%;
-        right: 8%;
-        transform: rotate(-25deg);
-      }
-      .corner-cat.pos-28 {
-        bottom: 21%;
-        left: 20%;
-        transform: rotate(30deg);
-      }
-      .corner-cat.pos-29 {
-        bottom: 29%;
-        right: 18%;
-        transform: rotate(-18deg);
-      }
-      .corner-cat.pos-30 {
-        bottom: 37%;
-        left: 30%;
-        transform: rotate(8deg);
-      }
-      .corner-cat.pos-31 {
-        bottom: 45%;
-        right: 28%;
-        transform: rotate(-22deg);
-      }
-      .corner-cat.pos-32 {
-        bottom: 53%;
-        left: 40%;
-        transform: rotate(12deg);
-      }
-      .corner-cat.pos-33 {
-        bottom: 61%;
-        right: 38%;
-        transform: rotate(-28deg);
-      }
-      .corner-cat.pos-34 {
-        bottom: 69%;
-        left: 50%;
-        transform: rotate(25deg);
-      }
-      .corner-cat.pos-35 {
-        bottom: 77%;
-        right: 48%;
-        transform: rotate(-15deg);
-      }
-      .corner-cat.pos-36 {
-        bottom: 85%;
-        left: 60%;
-        transform: rotate(18deg);
-      }
-      .corner-cat.pos-37 {
-        bottom: 93%;
-        right: 58%;
-        transform: rotate(-30deg);
-      }
-      .corner-cat.pos-38 {
-        bottom: 8%;
-        left: 70%;
-        transform: rotate(22deg);
-      }
-      .corner-cat.pos-39 {
-        bottom: 16%;
-        right: 68%;
-        transform: rotate(-12deg);
-      }
-      .corner-cat.pos-40 {
-        bottom: 24%;
-        left: 80%;
-        transform: rotate(28deg);
-      }
-      .corner-cat.pos-41 {
-        bottom: 32%;
-        right: 78%;
-        transform: rotate(-8deg);
-      }
-      .corner-cat.pos-42 {
-        bottom: 40%;
-        left: 90%;
-        transform: rotate(15deg);
-      }
-      .corner-cat.pos-43 {
-        bottom: 48%;
-        right: 88%;
-        transform: rotate(-25deg);
-      }
-      .corner-cat.pos-44 {
-        bottom: 56%;
-        left: 95%;
-        transform: rotate(20deg);
-      }
-      .corner-cat.pos-45 {
-        bottom: 64%;
-        right: 95%;
-        transform: rotate(-18deg);
-      }
-      .corner-cat.pos-46 {
-        top: 35%;
-        left: 25%;
-        transform: rotate(10deg);
-      }
-      .corner-cat.pos-47 {
-        top: 65%;
-        right: 85%;
-        transform: rotate(-20deg);
-      }
-      .corner-cat.pos-48 {
-        top: 45%;
-        left: 70%;
-        transform: rotate(25deg);
-      }
-      .corner-cat.pos-49 {
-        top: 75%;
-        right: 30%;
-        transform: rotate(-10deg);
-      }
-      .corner-cat.pos-50 {
-        top: 85%;
-        left: 50%;
-        transform: rotate(15deg);
-      }
-
-      .content-divider-cat {
-        text-align: center;
-        font-size: var(--text-sm);
-        margin: 1rem 0;
-        opacity: 0.3;
-        color: var(--teal-crystal);
-        transform: rotate(-3deg);
-        font-family: var(--font-primary);
-      }
-
-      /* Mobile Adjustments for Cat Army */
-      @media (max-width: 768px) {
-        .corner-cat {
-          font-size: var(--text-xs);
-          opacity: 0.15;
-        }
-
-        .corner-cat:hover {
-          opacity: 0.4;
-        }
-
-        /* Hide some cats on mobile for better performance */
-        .corner-cat.pos-26,
-        .corner-cat.pos-27,
-        .corner-cat.pos-28,
-        .corner-cat.pos-29,
-        .corner-cat.pos-30,
-        .corner-cat.pos-31,
-        .corner-cat.pos-32,
-        .corner-cat.pos-33,
-        .corner-cat.pos-34,
-        .corner-cat.pos-35,
-        .corner-cat.pos-36,
-        .corner-cat.pos-37,
-        .corner-cat.pos-38,
-        .corner-cat.pos-39,
-        .corner-cat.pos-40,
-        .corner-cat.pos-41,
-        .corner-cat.pos-42,
-        .corner-cat.pos-43,
-        .corner-cat.pos-44,
-        .corner-cat.pos-45,
-        .corner-cat.pos-46,
-        .corner-cat.pos-47,
-        .corner-cat.pos-48,
-        .corner-cat.pos-49,
-        .corner-cat.pos-50 {
-          display: none;
-        }
-
-        .content-divider-cat {
-          font-size: var(--text-xs);
-        }
-      }
-    </style>
   </body><!-- Image Preloading for Performance -->
 </html>

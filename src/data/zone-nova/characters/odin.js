@@ -7,8 +7,9 @@ export const odinData = {
   image: 'Odin', // charactername
   rarity: 'SSR', // SSR, SR, R
   element: 'Fire', // Fire, Ice, Wind, Holy, Chaos
-  class: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Aesir', // Savir, etc.
+  class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Asa', // Should match faction names in factions.js
 
   // Base Stats (Level 80)
   stats: {
@@ -55,11 +56,11 @@ export const odinData = {
   teamSkill: {
     name: 'Combination Skill',
     description:
-      'If the party has 2 Aesir or 2 Fire characters:\n' +
+      'If the party has 2 Asa or 2 Fire characters:\n' +
       'ATK +10%.\n' +
       'At battle start, every 500 ATK grants +3% Penetration (max 6 times).',
     requirements: {
-      faction: 'Aesir',
+      faction: 'Asa',
       element: 'Fire',
     },
   },

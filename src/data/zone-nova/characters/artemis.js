@@ -8,8 +8,9 @@ export const artemisData = {
   image: 'Artemis', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
-  class: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Olympus', // Savir, etc.
+  class: 'Warrior', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Odius', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -50,7 +51,7 @@ export const artemisData = {
     description:
       'Self max HP increased by 10%. At battle start: For every 4,000 max HP, increase self attack power by 5% (maximum 6 times). Maximum scaling: 30% attack power boost at 24,000+ max HP.',
     requirements: {
-      faction: 'Olympus', // Same as character faction
+      faction: 'Odius', // Same as character faction
       element: 'Wind', // Same as character element
     },
   },

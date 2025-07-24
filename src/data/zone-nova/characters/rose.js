@@ -7,8 +7,9 @@ export const roseData = {
   image: 'Rose', // Character image identifier
   rarity: 'SR',
   element: 'Ice',
-  class: 'DPS',
-  faction: 'Black & White Country',
+  class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Monochrome Nation',
 
   // Base Stats (Level 80)
   stats: {
@@ -49,7 +50,7 @@ export const roseData = {
     description:
       'Self ice damage increases by 20%. Enhances overall damage output for sustained ice damage dealing',
     requirements: {
-      faction: 'Black & White Country',
+      faction: 'Monochrome Nation',
       element: 'Ice',
     },
   },

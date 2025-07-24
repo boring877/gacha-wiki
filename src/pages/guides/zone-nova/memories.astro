@@ -531,12 +531,7 @@ import {
     document.addEventListener('DOMContentLoaded', function () {
       const memoryTableBody = document.getElementById('memory-table-body');
       const mobileCardsContainer = document.getElementById('mobile-cards-container');
-      const elementFilter = document.getElementById('element-filter') as HTMLSelectElement | null;
       const rarityFilterButtons = document.querySelectorAll('.rarity-filter-btn');
-
-      const characterFilter = document.getElementById(
-        'character-filter'
-      ) as HTMLSelectElement | null;
       const resetButton = document.getElementById('reset-table');
       const sortButtons = document.querySelectorAll('.sort-btn');
 
@@ -556,11 +551,7 @@ import {
             element: row,
             mobileElement: mobileCard,
             data: {
-              element:
-                row.querySelector('[data-sort-key="element"]')?.textContent?.toLowerCase() || '',
-              rarity:
-                row.querySelector('[data-sort-key="rarity"]')?.textContent?.toLowerCase() || '',
-              character: tableRow.cells[3]?.textContent?.toLowerCase() || '',
+              rarity: row.querySelector('[data-sort-key="rarity"]')?.textContent?.trim() || '',
               name: tableRow.cells[2]?.textContent?.toLowerCase() || '',
               hp: parseInt(
                 row.querySelector('[data-sort-key="hp"]')?.textContent?.replace(/,/g, '') || '0'
@@ -595,10 +586,11 @@ import {
         const activeRarityButton = document.querySelector(
           '.rarity-filter-btn.active'
         ) as HTMLElement;
-        const rarityValue = activeRarityButton?.dataset.rarity?.toLowerCase() || '';
+        const rarityValue = activeRarityButton?.dataset.rarity || '';
 
         allMemories.forEach(memory => {
-          const matchesRarity = !rarityValue || memory.data.rarity === rarityValue;
+          const matchesRarity =
+            !rarityValue || memory.data.rarity.toUpperCase() === rarityValue.toUpperCase();
 
           const isVisible = matchesRarity;
           memory.element.style.display = isVisible ? '' : 'none';
@@ -667,21 +659,19 @@ import {
         rarityFilterButtons.forEach(btn => btn.classList.remove('active'));
         document.querySelector('.rarity-filter-btn.all')?.classList.add('active');
 
-        // Clear sorting - show original order
+        // Clear sorting - show alphabetical order
         currentSortKey = '';
         isAscending = false;
         sortButtons.forEach(btn => btn.classList.remove('active'));
 
-        // Show all memories in original order
+        // Show all memories in alphabetical order
         allMemories.forEach(memory => {
           memory.element.style.display = '';
           memory.mobileElement.style.display = '';
-          memoryTableBody?.appendChild(memory.element);
-          mobileCardsContainer?.appendChild(memory.mobileElement);
         });
 
-        // Update row numbers after reset
-        updateRowNumbers();
+        // Sort alphabetically by name and append to DOM
+        sortMemoriesByName();
       }
 
       // Add click handlers for navigation

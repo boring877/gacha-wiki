@@ -7,8 +7,9 @@ export const greedMammonData = {
   image: 'Greed Mammon', // Character image identifier
   rarity: 'SR',
   element: 'Chaos',
-  class: 'DPS',
-  faction: 'Avalon',
+  class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Bicta Tower',
 
   // Base Stats (Level 80)
   stats: {
@@ -46,7 +47,7 @@ export const greedMammonData = {
     name: 'Combo Skill',
     description: 'Self damage increased by 20%',
     requirements: {
-      faction: 'Bibilota',
+      faction: 'Bicta Tower',
       element: 'Chaos',
     },
   },

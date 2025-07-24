@@ -8,8 +8,9 @@ export const belphegarData = {
   image: 'belphegar', // Use format: charactername (e.g., 'penny')
   rarity: 'SR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Guardian', // Savir, etc.
+  class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Bicta Tower', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
@@ -47,9 +48,9 @@ export const belphegarData = {
   teamSkill: {
     name: 'Combination Skill', // Usually 'Combination Skill'
     description:
-      'Team debuff resistance increased. When team has multiple Guardian or Chaos characters, enhances debuff application effectiveness.',
+      'Team debuff resistance increased. When team has multiple Bicta Tower or Chaos characters, enhances debuff application effectiveness.',
     requirements: {
-      faction: 'Guardian', // Same as character faction
+      faction: 'Bicta Tower', // Same as character faction
       element: 'Chaos', // Same as character element
     },
   },

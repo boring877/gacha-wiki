@@ -8,8 +8,9 @@ export const anubisData = {
   image: 'Anubis', // Use format: charactername (e.g., 'Anubis')
   rarity: 'SSR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Healer', // Tank, DPS, Buffer, Debuffer, Healer
-  faction: 'Kaimique', // Kaimique (凯米奇)
+  class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'Healer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  faction: 'Chemic', // Kaimique (凯米奇)
 
   // Base Stats (Level 80)
   stats: {
@@ -64,7 +65,7 @@ export const anubisData = {
     description:
       'Passive: Self attack power +10%. Battle Start: Every 500 attack power increases self healing by 5%, max 6 times.',
     requirements: {
-      faction: 'Kaimique',
+      faction: 'Chemic',
       element: 'Chaos',
       condition: '2 [Kemi] colored or 2 [Chaos] colored characters',
     },

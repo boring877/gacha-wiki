@@ -13,7 +13,6 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
 >
   <Fragment slot="head">
     {/* Import styles and add mobile card improvements */}
-    <link rel="preload" as="image" href="/images/games/zone-nova/characters/Afrodite.jpg" />
     <style>
       /* Layout and filter bar */
       .page-flex {
@@ -110,9 +109,10 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
       }
       table.character-table th,
       table.character-table td {
-        padding: 0.8rem 0.4rem;
+        padding: 1rem 0.4rem;
         text-align: center;
         border-bottom: 1px solid var(--neutral-200);
+        vertical-align: middle;
       }
       table.character-table th {
         background: var(--amber-glow);
@@ -132,7 +132,9 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
       }
       .rarity-badge,
       .element-badge,
-      .role-badge {
+      .role-badge,
+      .class-badge,
+      .faction-badge {
         padding: 0.2rem 0.6rem;
         border-radius: 10px;
         font-size: 0.85rem;
@@ -186,6 +188,113 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         background: #a3ffb7;
         color: #222;
       }
+      .class-badge.guardian {
+        background: #8e24aa;
+        color: #fff;
+      }
+      .class-badge.warrior {
+        background: #d32f2f;
+        color: #fff;
+      }
+      .class-badge.rogue {
+        background: #388e3c;
+        color: #fff;
+      }
+      .class-badge.mage {
+        background: #1976d2;
+        color: #fff;
+      }
+      .class-badge.buffer {
+        background: #f57c00;
+        color: #fff;
+      }
+      .class-badge.debuffer {
+        background: #5d4037;
+        color: #fff;
+      }
+      .class-badge.healer {
+        background: #00796b;
+        color: #fff;
+      }
+      .faction-badge.sapphire {
+        background: #2196f3;
+        color: #fff;
+      }
+      .faction-badge.chemic {
+        background: #ff9800;
+        color: #fff;
+      }
+      .faction-badge.avalon {
+        background: #4caf50;
+        color: #fff;
+      }
+      .faction-badge.odius {
+        background: #9c27b0;
+        color: #fff;
+      }
+      .faction-badge.asa {
+        background: #f44336;
+        color: #fff;
+      }
+      .faction-badge.pingjing-city {
+        background: #00bcd4;
+        color: #fff;
+      }
+      .faction-badge.monochrome-nation {
+        background: #607d8b;
+        color: #fff;
+      }
+      .faction-badge.bicta-tower {
+        background: #673ab7;
+        color: #fff;
+      }
+      .faction-badge.unaffiliated {
+        background: #757575;
+        color: #fff;
+      }
+      .class-icon-standalone {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+        object-fit: contain;
+        object-position: center center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        image-rendering: auto;
+        padding: 3px;
+      }
+      .mobile-class-icon-standalone {
+        width: 64px;
+        height: 64px;
+        border-radius: 10px;
+        object-fit: contain;
+        object-position: center center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid var(--teal-crystal, #00acc1);
+        image-rendering: auto;
+        padding: 4px;
+        flex-shrink: 0;
+      }
+      /* Fix alignment for two-word faction names */
+      .faction-badge {
+        white-space: nowrap !important;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 80px;
+        display: inline-block !important;
+        padding: 0.15rem 0.4rem;
+        font-size: 0.75rem;
+      }
+      /* Make class badges more compact too */
+      .class-badge {
+        padding: 0.15rem 0.4rem;
+        font-size: 0.75rem;
+        max-width: 70px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: inline-block;
+      }
       /* Mobile card styles */
       .mobile-character-card {
         background: var(--bg-primary, #232323);
@@ -200,8 +309,15 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
       }
       .mobile-card-header {
         display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .mobile-card-images {
+        display: flex;
         align-items: center;
         gap: 1rem;
+        flex-shrink: 0;
       }
       .mobile-character-card img {
         width: 64px;
@@ -225,18 +341,33 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
       }
       .mobile-card-badges {
         display: flex;
-        gap: 0.4rem;
+        flex-wrap: wrap;
+        gap: 0.25rem;
         margin-top: 0.1rem;
+        align-items: center;
       }
       .mobile-character-card .rarity-badge,
       .mobile-character-card .element-badge,
       .mobile-character-card .role-badge {
-        font-size: 0.95em;
-        padding: 0.18em 0.7em;
-        border-radius: 8px;
+        font-size: 0.85em;
+        padding: 0.15em 0.5em;
+        border-radius: 6px;
         font-weight: 600;
         display: inline-block;
-        margin: 0;
+        margin: 0 0.2em 0.2em 0;
+      }
+      .mobile-character-card .class-badge,
+      .mobile-character-card .faction-badge {
+        font-size: 0.75em;
+        padding: 0.1em 0.4em;
+        border-radius: 6px;
+        font-weight: 600;
+        display: inline-block;
+        margin: 0 0.2em 0.2em 0;
+        max-width: 80px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
       .mobile-card-stats,
       .mobile-card-stats-secondary {
@@ -335,6 +466,22 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
               <option value="">Role</option>
               {CHARACTER_METADATA.roles.map(role => <option value={role}>{role}</option>)}
             </select>
+            <select class="filter-select" id="class-filter">
+              <option value="">Class</option>
+              {
+                CHARACTER_METADATA.classes.map(charClass => (
+                  <option value={charClass}>{charClass}</option>
+                ))
+              }
+            </select>
+            <select class="filter-select" id="faction-filter">
+              <option value="">Faction</option>
+              {
+                CHARACTER_METADATA.factions.map(faction => (
+                  <option value={faction}>{faction}</option>
+                ))
+              }
+            </select>
           </div>
           <div class="sort-controls">
             <button class="sort-btn" data-sort="hp">HP</button>
@@ -358,12 +505,15 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
                 <th>Rarity</th>
                 <th>Element</th>
                 <th>Role</th>
+                <th>Icon</th>
+                <th>Class</th>
+                <th>Faction</th>
                 <th>HP</th>
                 <th>Attack</th>
                 <th>Defense</th>
-                <th>Energy Recovery</th>
-                <th>Crit Rate %</th>
-                <th>Crit DMG %</th>
+                <th>Energy</th>
+                <th>Crit%</th>
+                <th>CritDMG%</th>
               </tr>
             </thead>
             <tbody id="character-table-body">
@@ -401,6 +551,28 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
                         {char.role}
                       </span>
                     </td>
+                    <td style="text-align: center; vertical-align: middle;">
+                      <img
+                        src={`/images/games/zone-nova/classes/1${char.class}.jpg`}
+                        alt={char.class}
+                        class="class-icon-standalone"
+                        loading="lazy"
+                        title={char.class}
+                      />
+                    </td>
+                    <td>
+                      <span class={`class-badge ${char.class.toLowerCase()}`} data-sort-key="class">
+                        {char.class}
+                      </span>
+                    </td>
+                    <td>
+                      <span
+                        class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-')}`}
+                        data-sort-key="faction"
+                      >
+                        {char.faction}
+                      </span>
+                    </td>
                     <td data-sort-key="hp">{char.stats.hp}</td>
                     <td data-sort-key="attack">{char.stats.attack}</td>
                     <td data-sort-key="defense">{char.stats.defense}</td>
@@ -426,7 +598,16 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
                 style="cursor:pointer;"
               >
                 <div class="mobile-card-header">
-                  <img src={char.image} alt={char.name} class="character-img" />
+                  <div class="mobile-card-images">
+                    <img src={char.image} alt={char.name} class="character-img" />
+                    <img
+                      src={`/images/games/zone-nova/classes/1${char.class}.jpg`}
+                      alt={char.class}
+                      class="mobile-class-icon-standalone"
+                      loading="lazy"
+                      title={char.class}
+                    />
+                  </div>
                   <div class="mobile-card-title-group">
                     <h3>{char.name}</h3>
                     <div class="mobile-card-badges">
@@ -435,6 +616,12 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
                         {char.element}
                       </span>
                       <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
+                      <span class={`class-badge ${char.class.toLowerCase()}`}>{char.class}</span>
+                      <span
+                        class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-')}`}
+                      >
+                        {char.faction}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -478,6 +665,8 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
       const elementFilter = document.getElementById('element-filter');
       const rarityFilter = document.getElementById('rarity-filter');
       const roleFilter = document.getElementById('role-filter');
+      const classFilter = document.getElementById('class-filter');
+      const factionFilter = document.getElementById('faction-filter');
       const sortButtons = document.querySelectorAll('.sort-btn');
       const resetButton = document.getElementById('reset-table');
       // --- State ---
@@ -491,6 +680,8 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         !elementFilter ||
         !rarityFilter ||
         !roleFilter ||
+        !classFilter ||
+        !factionFilter ||
         !resetButton
       ) {
         return;
@@ -543,14 +734,18 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         const element = elementFilter.value.trim();
         const rarity = rarityFilter.value.trim();
         const role = roleFilter.value.trim();
+        const charClass = classFilter.value.trim();
+        const faction = factionFilter.value.trim();
 
         // Save filter state to sessionStorage
         const filterState = {
           element: element || null,
           rarity: rarity || null,
-          role: role || null
+          role: role || null,
+          charClass: charClass || null,
+          faction: faction || null,
         };
-        
+
         // Only save non-empty filters
         const activeFilters = {};
         Object.keys(filterState).forEach(key => {
@@ -558,7 +753,7 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
             activeFilters[key] = filterState[key];
           }
         });
-        
+
         try {
           sessionStorage.setItem('zone-nova-character-filters', JSON.stringify(activeFilters));
         } catch (error) {
@@ -575,11 +770,15 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
           const elementText = row.querySelector('.element-badge')?.textContent?.trim() || '';
           const rarityText = row.querySelector('.rarity-badge')?.textContent?.trim() || '';
           const roleText = row.querySelector('.role-badge')?.textContent?.trim() || '';
+          const classText = row.querySelector('.class-badge')?.textContent?.trim() || '';
+          const factionText = row.querySelector('.faction-badge')?.textContent?.trim() || '';
 
           const matches =
             (!element || elementText === element) &&
             (!rarity || rarityText === rarity) &&
-            (!role || roleText === role);
+            (!role || roleText === role) &&
+            (!charClass || classText === charClass) &&
+            (!faction || factionText === faction);
 
           row.style.display = matches ? '' : 'none';
           card.style.display = matches ? '' : 'none';
@@ -636,10 +835,13 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
 
         // Save sort state to sessionStorage
         try {
-          sessionStorage.setItem('zone-nova-character-sort', JSON.stringify({
-            column: sortKey,
-            asc: currentSortDirection === 'asc'
-          }));
+          sessionStorage.setItem(
+            'zone-nova-character-sort',
+            JSON.stringify({
+              column: sortKey,
+              asc: currentSortDirection === 'asc',
+            })
+          );
         } catch (error) {
           console.log('Could not save sort state to sessionStorage');
         }
@@ -671,6 +873,8 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
       elementFilter.addEventListener('change', filterRows);
       rarityFilter.addEventListener('change', filterRows);
       roleFilter.addEventListener('change', filterRows);
+      classFilter.addEventListener('change', filterRows);
+      factionFilter.addEventListener('change', filterRows);
       sortButtons.forEach(button => {
         button.addEventListener('click', () => {
           sortRows(button.dataset.sort);
@@ -680,6 +884,8 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
         elementFilter.value = '';
         rarityFilter.value = '';
         roleFilter.value = '';
+        classFilter.value = '';
+        factionFilter.value = '';
         sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));
         currentSortKey = 'name';
         currentSortDirection = 'asc';

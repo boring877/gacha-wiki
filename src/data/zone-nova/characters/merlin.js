@@ -7,7 +7,8 @@ export const merlinData = {
   image: 'Merlin', // Character image identifier
   rarity: 'SSR',
   element: 'Fire',
-  class: 'DPS',
+  class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
   faction: 'Avalon',
 
   // Base Stats (Level 80)

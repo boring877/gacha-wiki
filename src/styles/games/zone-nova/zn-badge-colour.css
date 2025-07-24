@@ -1,11 +1,153 @@
 /* Zone Nova Badge Color System */
 /* Consistent badge colors across all character pages */
 
+/* Class Showcase Container */
+.class-showcase-container {
+  position: relative;
+}
+
+/* Class Name Styling */
+.class-name.guardian {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.class-name.warrior {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.class-name.rogue {
+  background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.class-name.mage {
+  background: linear-gradient(135deg, #673ab7, #512da8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.class-name.buffer {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.class-name.debuffer {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.class-name.healer {
+  background: linear-gradient(135deg, #00bcd4, #0097a7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.class-name.unknown {
+  color: var(--text-secondary);
+}
+
+/* Unified Class Card */
+.unified-class-card {
+  position: relative;
+}
+
+/* Gameplay Tags for future use */
+.gameplay-tag {
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.gameplay-tag.dot {
+  background: #ff4757 !important;
+  color: #fff !important;
+}
+
+.gameplay-tag.crit {
+  background: #ffa502 !important;
+  color: #fff !important;
+}
+
+.gameplay-tag.crit-dmg {
+  background: #ff6348 !important;
+  color: #fff !important;
+}
+
+.gameplay-tag.heal {
+  background: #2ed573 !important;
+  color: #fff !important;
+}
+
+.gameplay-tag.shield {
+  background: #3742fa !important;
+  color: #fff !important;
+}
+
+.gameplay-tag.buff {
+  background: #2f3542 !important;
+  color: #fff !important;
+}
+
+.gameplay-tag.debuff {
+  background: #a4b0be !important;
+  color: #222 !important;
+}
+
+/* Responsive design for unified card */
+@media (max-width: 768px) {
+  .unified-class-card {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    text-align: center !important;
+    gap: 1.5rem !important;
+    min-width: unset !important;
+    max-width: unset !important;
+  }
+
+  .unified-class-card > div {
+    grid-column: 1 !important;
+    justify-self: center !important;
+  }
+
+  .unified-class-card img {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .unified-class-card > div:last-child {
+    justify-content: center !important;
+    max-width: unset !important;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Base Badge Styling */
 .tag,
 .rarity-badge,
 .element-badge,
-.role-badge {
+.role-badge,
+.class-badge {
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   text-transform: uppercase;
@@ -18,12 +160,22 @@
   letter-spacing: var(--tracking-wide);
 }
 
-.tag:hover,
-.rarity-badge:hover,
-.element-badge:hover,
-.role-badge:hover {
-  transform: translateY(-2px);
+/* Primary Badge (Class) - Most Important */
+.class-badge {
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  gap: 0.6rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Secondary Badges (Rarity & Element) - Less Important */
+.rarity-badge,
+.element-badge {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 /* Rarity Badge Colors */
@@ -31,21 +183,18 @@
 .rarity-badge.ssr {
   background: #ffe066 !important;
   color: #222 !important;
-  box-shadow: 0 2px 8px rgba(255, 224, 102, 0.3);
 }
 
 .tag-rarity.sr,
 .rarity-badge.sr {
   background: #7ecfff !important;
   color: #222 !important;
-  box-shadow: 0 2px 8px rgba(126, 207, 255, 0.3);
 }
 
 .tag-rarity.r,
 .rarity-badge.r {
   background: #a0a0a0 !important;
   color: #fff !important;
-  box-shadow: 0 2px 8px rgba(160, 160, 160, 0.3);
 }
 
 /* Element Badge Colors */
@@ -53,35 +202,79 @@
 .element-badge.fire {
   background: #ff6b6b !important;
   color: #fff !important;
-  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
 }
 
 .tag-element.ice,
 .element-badge.ice {
   background: #4dbfff !important;
   color: #fff !important;
-  box-shadow: 0 2px 8px rgba(77, 191, 255, 0.3);
 }
 
 .tag-element.wind,
 .element-badge.wind {
   background: #4dffb8 !important;
   color: #222 !important;
-  box-shadow: 0 2px 8px rgba(77, 255, 184, 0.3);
 }
 
 .tag-element.holy,
 .element-badge.holy {
   background: #ffe066 !important;
   color: #222 !important;
-  box-shadow: 0 2px 8px rgba(255, 224, 102, 0.3);
 }
 
 .tag-element.chaos,
 .element-badge.chaos {
   background: #b266ff !important;
   color: #fff !important;
-  box-shadow: 0 2px 8px rgba(178, 102, 255, 0.3);
+}
+
+/* Class Badge Colors - New Class System */
+.tag-class.guardian,
+.class-badge.guardian {
+  background: linear-gradient(135deg, #2196f3, #1565c0) !important;
+  color: #fff !important;
+}
+
+.tag-class.warrior,
+.class-badge.warrior {
+  background: linear-gradient(135deg, #ff9800, #f57c00) !important;
+  color: #fff !important;
+}
+
+.tag-class.rogue,
+.class-badge.rogue {
+  background: linear-gradient(135deg, #9c27b0, #7b1fa2) !important;
+  color: #fff !important;
+}
+
+.tag-class.mage,
+.class-badge.mage {
+  background: linear-gradient(135deg, #673ab7, #512da8) !important;
+  color: #fff !important;
+}
+
+.tag-class.buffer,
+.class-badge.buffer {
+  background: linear-gradient(135deg, #4caf50, #388e3c) !important;
+  color: #fff !important;
+}
+
+.tag-class.debuffer,
+.class-badge.debuffer {
+  background: linear-gradient(135deg, #f44336, #d32f2f) !important;
+  color: #fff !important;
+}
+
+.tag-class.healer,
+.class-badge.healer {
+  background: linear-gradient(135deg, #00bcd4, #0097a7) !important;
+  color: #fff !important;
+}
+
+.tag-class.unknown,
+.class-badge.unknown {
+  background: linear-gradient(135deg, #757575, #616161) !important;
+  color: #fff !important;
 }
 
 /* Role Badge Colors */
@@ -89,35 +282,30 @@
 .role-badge.tank {
   background: #b0b0b0 !important;
   color: #222 !important;
-  box-shadow: 0 2px 8px rgba(176, 176, 176, 0.3);
 }
 
 .tag-class.dps,
 .role-badge.dps {
   background: #ffb347 !important;
   color: #222 !important;
-  box-shadow: 0 2px 8px rgba(255, 179, 71, 0.3);
 }
 
 .tag-class.buffer,
 .role-badge.buffer {
   background: #7ecfff !important;
   color: #222 !important;
-  box-shadow: 0 2px 8px rgba(126, 207, 255, 0.3);
 }
 
 .tag-class.debuffer,
 .role-badge.debuffer {
   background: #b266ff !important;
   color: #fff !important;
-  box-shadow: 0 2px 8px rgba(178, 102, 255, 0.3);
 }
 
 .tag-class.healer,
 .role-badge.healer {
   background: #a3ffb7 !important;
   color: #222 !important;
-  box-shadow: 0 2px 8px rgba(163, 255, 183, 0.3);
 }
 
 /* Faction Badge */
@@ -125,14 +313,6 @@
 .faction-badge {
   background: linear-gradient(135deg, var(--rose-quartz), #c2185b);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
 }
 
 /* Special Badge States */
-.tag:active,
-.rarity-badge:active,
-.element-badge:active,
-.role-badge:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
