@@ -137,9 +137,80 @@ table.character-table tr:hover {
   background: rgba(255, 183, 77, 0.05);
 }
 
-/* Mobile cards - hidden by default */
+/* Enhanced Mobile cards - hidden by default */
 .mobile-card-view {
   display: none;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Enhanced Badge Layout for Mobile */
+.mobile-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Mobile Badge Animations */
+.mobile-card-badges .rarity-badge,
+.mobile-card-badges .element-badge,
+.mobile-card-badges .role-badge,
+.mobile-card-badges .class-badge,
+.mobile-card-badges .faction-badge {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.mobile-card-badges .rarity-badge {
+  animation-delay: 0.1s;
+}
+.mobile-card-badges .element-badge {
+  animation-delay: 0.15s;
+}
+.mobile-card-badges .role-badge {
+  animation-delay: 0.2s;
+}
+.mobile-card-badges .class-badge {
+  animation-delay: 0.25s;
+}
+.mobile-card-badges .faction-badge {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge Stagger Effect for Table Rows */
+.character-table tbody tr {
+  position: relative;
+}
+
+.character-table tbody tr:hover .rarity-badge,
+.character-table tbody tr:hover .element-badge,
+.character-table tbody tr:hover .role-badge,
+.character-table tbody tr:hover .class-badge,
+.character-table tbody tr:hover .faction-badge {
+  animation: pulseGlow 0.6s ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
 }
 
 .mobile-character-card {
@@ -152,7 +223,9 @@ table.character-table tr:hover {
   flex-direction: column;
   gap: 0.7rem;
   border: 1px solid var(--amber-glow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .mobile-character-card:hover {
@@ -251,7 +324,6 @@ table.character-table tr:hover {
   font-weight: 700;
   margin-right: 0.2em;
 }
-
 
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                              IMAGES                                     */
@@ -361,16 +433,16 @@ table.character-table tr:hover {
   .character-table-container {
     display: none;
   }
-  
+
   .mobile-card-view {
     display: block;
   }
-  
+
   .filter-bar {
     flex-direction: column;
     gap: 0.8rem;
   }
-  
+
   .filter-controls,
   .sort-controls {
     width: 100%;
@@ -518,6 +590,71 @@ table.character-table tr:hover {
 
   .reset-btn:hover {
     transform: none;
+  }
+}
+
+/* Enhanced Mobile Badge Responsiveness */
+@media (max-width: 768px) {
+  /* Enhanced Mobile Badge Styles */
+  .rarity-badge,
+  .element-badge,
+  .role-badge,
+  .class-badge,
+  .faction-badge {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.75rem !important;
+    min-height: 32px !important;
+    border-width: 1px !important;
+  }
+
+  .class-badge {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.8rem !important;
+    border-width: 2px !important;
+  }
+
+  /* Improve badge spacing on mobile */
+  .mobile-card-badges {
+    gap: 0.4rem !important;
+    margin-top: 0.6rem !important;
+  }
+
+  /* Mobile badge interactions */
+  .mobile-card-badges .rarity-badge:active,
+  .mobile-card-badges .element-badge:active,
+  .mobile-card-badges .role-badge:active,
+  .mobile-card-badges .class-badge:active,
+  .mobile-card-badges .faction-badge:active {
+    transform: scale(0.95) !important;
+    transition: transform 0.1s ease !important;
+  }
+
+  /* Hide table on mobile */
+  .character-table-container {
+    display: none !important;
+  }
+
+  /* Show mobile cards */
+  .mobile-card-view {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .rarity-badge,
+  .element-badge,
+  .role-badge,
+  .class-badge,
+  .faction-badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .class-badge {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
 }
 

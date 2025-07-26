@@ -142,141 +142,456 @@
   }
 }
 
-/* Base Badge Styling */
+/* Enhanced Base Badge Styling */
 .tag,
 .rarity-badge,
 .element-badge,
 .role-badge,
 .class-badge {
-  padding: 0.7rem 1.3rem;
-  border-radius: 20px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 16px;
   text-transform: uppercase;
-  min-height: 42px;
+  min-height: 38px;
   display: inline-flex;
   align-items: center;
-  transition: all 0.2s ease;
-  font-size: 0.95rem;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  border: none;
-  box-shadow: none;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.08em;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
 }
 
-/* Primary Badge (Class) - Most Important */
+/* Enhanced Badge Hover Effects */
+.tag:hover,
+.rarity-badge:hover,
+.element-badge:hover,
+.role-badge:hover,
+.class-badge:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Badge Shine Effect */
+.tag::before,
+.rarity-badge::before,
+.element-badge::before,
+.role-badge::before,
+.class-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.tag:hover::before,
+.rarity-badge:hover::before,
+.element-badge:hover::before,
+.role-badge:hover::before,
+.class-badge:hover::before {
+  left: 100%;
+}
+
+/* Enhanced Primary Badge (Class) - Most Important */
 .class-badge {
   padding: 0.8rem 1.4rem;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 700;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 800;
   gap: 0.6rem;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-width: 3px;
 }
 
-/* Secondary Badges (Rarity & Element) - Less Important */
+/* Special SSR Badge Effects */
+.rarity-badge.ssr {
+  position: relative;
+  overflow: hidden;
+}
+
+.rarity-badge.ssr::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  animation: rotate 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Enhanced Secondary Badges (Rarity & Element) */
 .rarity-badge,
 .element-badge {
-  padding: 0.7rem 1.3rem;
-  font-size: 0.95rem;
+  padding: 0.65rem 1.2rem;
+  font-size: 0.9rem;
   font-weight: 700;
+  border-radius: 12px;
 }
 
-/* Rarity Badge Colors */
+/* Enhanced Role and Faction Badges */
+.role-badge,
+.faction-badge {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+/* Badge Priority Visual Hierarchy */
+.class-badge {
+  z-index: 5;
+  margin-right: 0.3rem;
+}
+
+.rarity-badge {
+  z-index: 4;
+  margin-right: 0.2rem;
+}
+
+.element-badge,
+.role-badge {
+  z-index: 3;
+}
+
+.faction-badge {
+  z-index: 2;
+}
+
+/* Enhanced Rarity Badge Colors */
 .tag-rarity.ssr,
 .rarity-badge.ssr {
-  background: #ffe066 !important;
-  color: #222 !important;
+  background: linear-gradient(135deg, #ffdd44, #ffa500, #ff8c00) !important;
+  color: #1a0e00 !important;
+  border-color: rgba(255, 221, 68, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(255, 165, 0, 0.4),
+    0 2px 8px rgba(255, 140, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+}
+
+.tag-rarity.ssr:hover,
+.rarity-badge.ssr:hover {
+  box-shadow:
+    0 8px 30px rgba(255, 165, 0, 0.6),
+    0 4px 15px rgba(255, 140, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
 }
 
 .tag-rarity.sr,
 .rarity-badge.sr {
-  background: #7ecfff !important;
-  color: #222 !important;
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6, #0277bd) !important;
+  color: #001122 !important;
+  border-color: rgba(79, 195, 247, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(41, 182, 246, 0.4),
+    0 2px 8px rgba(2, 119, 189, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+}
+
+.tag-rarity.sr:hover,
+.rarity-badge.sr:hover {
+  box-shadow:
+    0 8px 30px rgba(41, 182, 246, 0.6),
+    0 4px 15px rgba(2, 119, 189, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
 }
 
 .tag-rarity.r,
 .rarity-badge.r {
-  background: #a0a0a0 !important;
+  background: linear-gradient(135deg, #bdbdbd, #9e9e9e, #757575) !important;
   color: #fff !important;
+  border-color: rgba(189, 189, 189, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(158, 158, 158, 0.4),
+    0 2px 8px rgba(117, 117, 117, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Element Badge Colors */
+.tag-rarity.r:hover,
+.rarity-badge.r:hover {
+  box-shadow:
+    0 8px 30px rgba(158, 158, 158, 0.6),
+    0 4px 15px rgba(117, 117, 117, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Enhanced Element Badge Colors */
 .tag-element.fire,
 .element-badge.fire {
-  background: #ff6b6b !important;
+  background: linear-gradient(135deg, #ff5722, #f44336, #d32f2f) !important;
   color: #fff !important;
+  border-color: rgba(255, 87, 34, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(244, 67, 54, 0.4),
+    0 2px 8px rgba(211, 47, 47, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-element.fire:hover,
+.element-badge.fire:hover {
+  box-shadow:
+    0 8px 30px rgba(244, 67, 54, 0.6),
+    0 4px 15px rgba(211, 47, 47, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .tag-element.ice,
 .element-badge.ice {
-  background: #4dbfff !important;
+  background: linear-gradient(135deg, #03a9f4, #2196f3, #1976d2) !important;
   color: #fff !important;
+  border-color: rgba(3, 169, 244, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(33, 150, 243, 0.4),
+    0 2px 8px rgba(25, 118, 210, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-element.ice:hover,
+.element-badge.ice:hover {
+  box-shadow:
+    0 8px 30px rgba(33, 150, 243, 0.6),
+    0 4px 15px rgba(25, 118, 210, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .tag-element.wind,
 .element-badge.wind {
-  background: #4dffb8 !important;
-  color: #222 !important;
+  background: linear-gradient(135deg, #4caf50, #66bb6a, #43a047) !important;
+  color: #fff !important;
+  border-color: rgba(76, 175, 80, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(102, 187, 106, 0.4),
+    0 2px 8px rgba(67, 160, 71, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-element.wind:hover,
+.element-badge.wind:hover {
+  box-shadow:
+    0 8px 30px rgba(102, 187, 106, 0.6),
+    0 4px 15px rgba(67, 160, 71, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .tag-element.holy,
 .element-badge.holy {
-  background: #ffe066 !important;
-  color: #222 !important;
+  background: linear-gradient(135deg, #ffeb3b, #ffc107, #ff9800) !important;
+  color: #1a0e00 !important;
+  border-color: rgba(255, 235, 59, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(255, 193, 7, 0.4),
+    0 2px 8px rgba(255, 152, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+}
+
+.tag-element.holy:hover,
+.element-badge.holy:hover {
+  box-shadow:
+    0 8px 30px rgba(255, 193, 7, 0.6),
+    0 4px 15px rgba(255, 152, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
 }
 
 .tag-element.chaos,
 .element-badge.chaos {
-  background: #b266ff !important;
+  background: linear-gradient(135deg, #9c27b0, #8e24aa, #7b1fa2) !important;
   color: #fff !important;
+  border-color: rgba(156, 39, 176, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(142, 36, 170, 0.4),
+    0 2px 8px rgba(123, 31, 162, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Class Badge Colors - Match Character Database */
+.tag-element.chaos:hover,
+.element-badge.chaos:hover {
+  box-shadow:
+    0 8px 30px rgba(142, 36, 170, 0.6),
+    0 4px 15px rgba(123, 31, 162, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Enhanced Class Badge Colors */
 .tag-class.guardian,
 .class-badge.guardian {
-  background: #8e24aa !important;
+  background: linear-gradient(135deg, #9c27b0, #8e24aa, #7b1fa2) !important;
   color: #fff !important;
+  border-color: rgba(156, 39, 176, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(142, 36, 170, 0.4),
+    0 2px 8px rgba(123, 31, 162, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-class.guardian:hover,
+.class-badge.guardian:hover {
+  box-shadow:
+    0 8px 30px rgba(142, 36, 170, 0.6),
+    0 4px 15px rgba(123, 31, 162, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .tag-class.warrior,
 .class-badge.warrior {
-  background: #d32f2f !important;
+  background: linear-gradient(135deg, #f44336, #d32f2f, #c62828) !important;
   color: #fff !important;
+  border-color: rgba(244, 67, 54, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(211, 47, 47, 0.4),
+    0 2px 8px rgba(198, 40, 40, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-class.warrior:hover,
+.class-badge.warrior:hover {
+  box-shadow:
+    0 8px 30px rgba(211, 47, 47, 0.6),
+    0 4px 15px rgba(198, 40, 40, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .tag-class.rogue,
 .class-badge.rogue {
-  background: #388e3c !important;
+  background: linear-gradient(135deg, #4caf50, #388e3c, #2e7d32) !important;
   color: #fff !important;
+  border-color: rgba(76, 175, 80, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(56, 142, 60, 0.4),
+    0 2px 8px rgba(46, 125, 50, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-class.rogue:hover,
+.class-badge.rogue:hover {
+  box-shadow:
+    0 8px 30px rgba(56, 142, 60, 0.6),
+    0 4px 15px rgba(46, 125, 50, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .tag-class.mage,
 .class-badge.mage {
-  background: #1976d2 !important;
+  background: linear-gradient(135deg, #2196f3, #1976d2, #1565c0) !important;
   color: #fff !important;
+  border-color: rgba(33, 150, 243, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(25, 118, 210, 0.4),
+    0 2px 8px rgba(21, 101, 192, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-class.mage:hover,
+.class-badge.mage:hover {
+  box-shadow:
+    0 8px 30px rgba(25, 118, 210, 0.6),
+    0 4px 15px rgba(21, 101, 192, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .tag-class.buffer,
 .class-badge.buffer {
-  background: #f57c00 !important;
+  background: linear-gradient(135deg, #ff9800, #f57c00, #ef6c00) !important;
   color: #fff !important;
+  border-color: rgba(255, 152, 0, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(245, 124, 0, 0.4),
+    0 2px 8px rgba(239, 108, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-class.buffer:hover,
+.class-badge.buffer:hover {
+  box-shadow:
+    0 8px 30px rgba(245, 124, 0, 0.6),
+    0 4px 15px rgba(239, 108, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .tag-class.debuffer,
 .class-badge.debuffer {
-  background: #5d4037 !important;
+  background: linear-gradient(135deg, #795548, #5d4037, #4e342e) !important;
   color: #fff !important;
+  border-color: rgba(121, 85, 72, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(93, 64, 55, 0.4),
+    0 2px 8px rgba(78, 52, 46, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-class.debuffer:hover,
+.class-badge.debuffer:hover {
+  box-shadow:
+    0 8px 30px rgba(93, 64, 55, 0.6),
+    0 4px 15px rgba(78, 52, 46, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .tag-class.healer,
 .class-badge.healer {
-  background: #00796b !important;
+  background: linear-gradient(135deg, #009688, #00796b, #00695c) !important;
   color: #fff !important;
+  border-color: rgba(0, 150, 136, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(0, 121, 107, 0.4),
+    0 2px 8px rgba(0, 105, 92, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-class.healer:hover,
+.class-badge.healer:hover {
+  box-shadow:
+    0 8px 30px rgba(0, 121, 107, 0.6),
+    0 4px 15px rgba(0, 105, 92, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .tag-class.unknown,
 .class-badge.unknown {
-  background: linear-gradient(135deg, #757575, #616161) !important;
+  background: linear-gradient(135deg, #9e9e9e, #757575, #616161) !important;
   color: #fff !important;
+  border-color: rgba(158, 158, 158, 0.4) !important;
+  box-shadow:
+    0 4px 15px rgba(117, 117, 117, 0.4),
+    0 2px 8px rgba(97, 97, 97, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+.tag-class.unknown:hover,
+.class-badge.unknown:hover {
+  box-shadow:
+    0 8px 30px rgba(117, 117, 117, 0.6),
+    0 4px 15px rgba(97, 97, 97, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Role Badge Colors */
