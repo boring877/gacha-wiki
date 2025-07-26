@@ -1,6 +1,32 @@
-/* Mobile Responsive Styles for Home Page */
+/**
+ * ==========================================
+ * HOME PAGE MOBILE RESPONSIVE STYLES
+ * ==========================================
+ * 
+ * Comprehensive mobile optimizations for the home page including hero section,
+ * clock components, and showcase elements. Features performance optimizations
+ * and touch device enhancements.
+ * 
+ * Breakpoints:
+ * - Mobile: 768px and below (main mobile styles)
+ * - Small Mobile: 480px and below (compact mobile phones)
+ * - Extra Small: 360px and below (very small screens)
+ * - Touch Devices: hover:none and pointer:coarse
+ * 
+ * Features:
+ * - Hardware acceleration for smooth animations
+ * - Reduced backdrop blur complexity for performance
+ * - Touch-optimized interactions and sizing
+ * - Accessibility support for reduced motion
+ * - Progressive enhancement for different screen sizes
+ * 
+ * Performance: GPU acceleration and optimized transitions
+ * Accessibility: Reduced motion support and proper touch targets
+ * Browser Support: Modern mobile browsers with CSS Grid support
+ */
 
-/* Mobile (768px and below) */
+/* === MAIN MOBILE BREAKPOINT (768px and below) === */
+/* Primary mobile optimizations for tablets and mobile devices */
 @media (max-width: 768px) {
   .hero-section {
     padding: 3rem 1rem 2rem 1rem;
@@ -15,7 +41,8 @@
     font-size: clamp(0.9rem, 3vw, 1.2rem);
   }
 
-  /* Hero CTA Mobile */
+  /* === HERO CTA MOBILE OPTIMIZATIONS === */
+  /* Adjust hero call-to-action for mobile interaction */
   .hero-cta {
     margin-bottom: 2rem;
   }
@@ -27,7 +54,8 @@
     border-radius: 40px;
   }
 
-  /* Master Clock Mobile */
+  /* === MASTER CLOCK MOBILE LAYOUT === */
+  /* Optimize clock display for smaller screens */
   .master-clock-container {
     max-width: 1400px;
     padding: 0 1rem;
@@ -174,7 +202,8 @@
     border-radius: 16px;
   }
 
-  /* Showcase Mobile - Optimized Transitions */
+  /* === SHOWCASE MOBILE OPTIMIZATIONS === */
+  /* Transform showcase to single-column layout with performance optimizations */
   .auto-showcase {
     min-height: auto;
     padding: 1.5rem 0;
@@ -281,7 +310,8 @@
     gap: 0.5rem;
   }
 
-  /* Clock Footer Controls Mobile */
+  /* === CLOCK FOOTER CONTROLS MOBILE === */
+  /* Stack footer controls vertically for mobile layout */
   .clock-footer-controls {
     flex-direction: column-reverse;
     gap: 0.75rem;
@@ -324,9 +354,11 @@
   }
 }
 
-/* Small Mobile (480px and below) */
+/* === SMALL MOBILE BREAKPOINT (480px and below) === */
+/* Optimizations for smaller mobile phones with limited screen space */
 @media (max-width: 480px) {
-  /* Master Clock Small Mobile */
+  /* === MASTER CLOCK SMALL MOBILE === */
+  /* Further size reductions for very small screens */
   .master-clock-container {
     padding: 0 0.5rem;
   }
@@ -423,7 +455,8 @@
     font-size: 0.85rem;
   }
 
-  /* Disable hover effects on touch devices */
+  /* === TOUCH DEVICE OPTIMIZATIONS === */
+  /* Disable complex hover effects that don't work well on touch */
   .showcase-content:hover {
   }
 
@@ -431,7 +464,8 @@
     animation: none;
   }
 
-  /* Clock Footer Controls Small Mobile */
+  /* === CLOCK FOOTER CONTROLS SMALL MOBILE === */
+  /* Ultra-compact footer for small screens */
   .clock-footer-controls {
     flex-direction: column-reverse;
     gap: 0.6rem;
@@ -474,7 +508,8 @@
   }
 }
 
-/* Extra Small Mobile (360px and below) */
+/* === EXTRA SMALL MOBILE BREAKPOINT (360px and below) === */
+/* Ultra-compact optimizations for the smallest mobile devices */
 @media (max-width: 360px) {
   /* Extra small mobile footer controls */
   .clock-footer-controls {
@@ -519,7 +554,8 @@
   }
 }
 
-/* Touch device optimizations */
+/* === TOUCH DEVICE SPECIFIC OPTIMIZATIONS === */
+/* Optimizations specifically for touch devices (phones, tablets) */
 @media (hover: none) and (pointer: coarse) {
   .showcase-content {
     touch-action: manipulation;
@@ -544,7 +580,8 @@
   }
 }
 
-/* Mobile Performance Optimizations */
+/* === MOBILE PERFORMANCE OPTIMIZATIONS === */
+/* GPU acceleration and performance enhancements for mobile devices */
 @media (max-width: 768px) {
   /* Use GPU acceleration for better performance */
   .showcase-content,
@@ -572,7 +609,8 @@
   }
 }
 
-/* Reduced motion */
+/* === ACCESSIBILITY - REDUCED MOTION === */
+/* Respect user preferences for reduced motion on mobile devices */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

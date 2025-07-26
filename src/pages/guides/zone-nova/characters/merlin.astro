@@ -1,5 +1,5 @@
 ---
-import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { merlinData, merlinSEO } from '../../../../data/zone-nova/characters/merlin.js';
@@ -7,11 +7,11 @@ import { merlinData, merlinSEO } from '../../../../data/zone-nova/characters/mer
 export const prerender = true;
 ---
 
-<CharacterLayout
+<CharacterIndividualLayout
   title={merlinSEO.title}
   description={merlinSEO.description}
   gameTitle={merlinData.name}
 >
   <CharacterNavigation currentCharacter={merlinData} />
   <CharacterPageTemplate characterData={merlinData} />
-</CharacterLayout>
+</CharacterIndividualLayout>

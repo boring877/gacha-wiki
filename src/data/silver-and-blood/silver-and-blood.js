@@ -7,8 +7,6 @@ export const silverAndBloodConfig = {
     description: 'Explore Silver and Blood gacha game guides and content',
     gameTitle: 'Silver and Blood',
     heroImage: '/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg',
-    heroVideo:
-      'https://res.cloudinary.com/dtiiaqlah/video/upload/v1752687395/OP%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%82%A3%E3%82%B6%E3%83%BC_milet_%E3%83%9F%E3%83%AC%E3%82%A4_%E3%82%B7%E3%83%AB%E3%83%90%E3%83%BC_%E3%82%A2%E3%83%B3%E3%83%89_%E3%83%96%E3%83%A9%E3%83%83%E3%83%89_hfm4RtwuAbA_pxdtmg.webm',
   },
 
   gameInfo: {
@@ -29,6 +27,39 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     playUrl: 'https://silverandblood.moonton.com/',
     status: 'active',
     lastUpdated: new Date(),
+  },
+
+  // Organized story content for landing page
+  storyContent: {
+    intro: {
+      title: 'A Tale of Blood and Destiny',
+      tagline: 'An epic struggle between immortal Bloodborn and the Tempus Church that will determine the fate of all existence.'
+    },
+    cards: [
+      {
+        id: 'blood',
+        title: 'Blood',
+        subtitle: 'The Essence of Life',
+        icon: '🩸',
+        theme: 'blood-card',
+        content: [
+          'Long before the Continental Era, thirteen alchemists consumed the blood of Abel—the First Martyr. Through this forbidden sacrament, they discovered the secret to transferring memories through blood, seizing immortality itself.',
+          'Yet with each transference, their blood darkened and grew tainted. Thus the first **Bloodborn** came to be—immortal beings who defied death and became harbingers of calamity.'
+        ]
+      },
+      {
+        id: 'destiny',
+        title: 'Destiny',
+        subtitle: 'The Immutable Cycle',
+        icon: '⏳',
+        theme: 'destiny-card',
+        content: [
+          'In that distant age, a young girl deciphered a divine prophecy from a fallen star. She grasped the truth: only time remains impartial, and only cycles are eternal.',
+          'In the name of Aeon, God of Time, she raised the silver banner of the **Tempus Church**, vowing to return heretics to the natural cycle and steer history back to its destined course.'
+        ]
+      }
+    ],
+    conclusion: 'This is the age-old tale of Blood and Destiny—an unfinished epic whose ending is both foretold, yet still unwritten.'
   },
 
   sections: [

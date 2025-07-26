@@ -1,0 +1,70 @@
+---
+import SimpleOptimizedImage from '../SimpleOptimizedImage.astro';
+import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+---
+
+<!-- Mobile card view container -->
+<div class="mobile-card-view" id="mobile-cards-container">
+  {
+    ZONE_NOVA_CHARACTERS.map(char => (
+      <div
+        class="mobile-character-card"
+        data-character-id={char.id}
+        data-slug={char.slug}
+        data-url={char.detailUrl}
+        style="cursor:pointer;"
+      >
+        <div class="mobile-card-header">
+          <div class="mobile-card-images">
+            <div style="width: 64px; height: 64px; border-radius: 10px; border: 2px solid var(--amber-glow); overflow: hidden;">
+              <SimpleOptimizedImage
+                src={char.image}
+                alt={char.name}
+                class="character-img"
+              />
+            </div>
+            <img
+              src={`/images/games/zone-nova/classes/1${char.class}.jpg`}
+              alt={char.class}
+              class="mobile-class-icon-standalone"
+              loading="lazy"
+              title={char.class}
+            />
+          </div>
+          <div class="mobile-card-title-group">
+            <h3>{char.name}</h3>
+            <div class="mobile-card-badges">
+              <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+              <span class={`element-badge ${char.element.toLowerCase()}`}>
+                {char.element}
+              </span>
+              <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
+              <span class={`class-badge ${char.class.toLowerCase()}`}>{char.class}</span>
+              <span
+                class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-')}`}
+              >
+                {char.faction}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-card-stats">
+          <div>
+            <span class="stat-label">HP:</span> {char.stats.hp.toLocaleString()}
+          </div>
+          <div>
+            <span class="stat-label">ATK:</span> {char.stats.attack.toLocaleString()}
+          </div>
+          <div>
+            <span class="stat-label">DEF:</span> {char.stats.defense.toLocaleString()}
+          </div>
+        </div>
+        <div class="mobile-card-stats mobile-card-stats-secondary">
+          <div>
+            <span class="stat-label">Crit%:</span> {char.stats.critRate}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>

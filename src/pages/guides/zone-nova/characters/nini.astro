@@ -1,5 +1,5 @@
 ---
-import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { niniData, niniSEO } from '../../../../data/zone-nova/characters/nini.js';
@@ -7,7 +7,7 @@ import { niniData, niniSEO } from '../../../../data/zone-nova/characters/nini.js
 export const prerender = true;
 ---
 
-<CharacterLayout title={niniSEO.title} description={niniSEO.description} gameTitle={niniData.name}>
+<CharacterIndividualLayout title={niniSEO.title} description={niniSEO.description} gameTitle={niniData.name}>
   <CharacterNavigation currentCharacter={niniData} />
   <CharacterPageTemplate characterData={niniData} />
-</CharacterLayout>
+</CharacterIndividualLayout>

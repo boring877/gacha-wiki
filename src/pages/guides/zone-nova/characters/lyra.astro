@@ -1,5 +1,5 @@
 ---
-import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { lyraData, lyraSEO } from '../../../../data/zone-nova/characters/lyra.js';
@@ -7,7 +7,7 @@ import { lyraData, lyraSEO } from '../../../../data/zone-nova/characters/lyra.js
 export const prerender = true;
 ---
 
-<CharacterLayout title={lyraSEO.title} description={lyraSEO.description} gameTitle={lyraData.name}>
+<CharacterIndividualLayout title={lyraSEO.title} description={lyraSEO.description} gameTitle={lyraData.name}>
   <CharacterNavigation currentCharacter={lyraData} />
   <CharacterPageTemplate characterData={lyraData} />
-</CharacterLayout>
+</CharacterIndividualLayout>

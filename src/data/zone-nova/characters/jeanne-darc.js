@@ -5,7 +5,7 @@ export const jeanneDArcData = {
   // Basic Character Information
   name: "Jeanne d'Arc",
   chineseName: '贞德',
-  image: 'JoanofArc ', // Use format: charactername (e.g., 'JoanofArc')
+  image: 'JoanofArc', // Use format: charactername (e.g., 'JoanofArc')
   rarity: 'SSR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
   class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

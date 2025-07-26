@@ -1,0 +1,99 @@
+---
+import SimpleOptimizedImage from '../SimpleOptimizedImage.astro';
+import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+---
+
+<!-- Desktop table view -->
+<div class="character-table-container">
+  <table class="character-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Rarity</th>
+        <th>Element</th>
+        <th>Role</th>
+        <th>Icon</th>
+        <th>Class</th>
+        <th>Faction</th>
+        <th>HP</th>
+        <th>Attack</th>
+        <th>Defense</th>
+        <th>Crit%</th>
+      </tr>
+    </thead>
+    <tbody id="character-table-body">
+      {
+        ZONE_NOVA_CHARACTERS.map((char, idx) => (
+          <tr
+            data-character-id={char.id}
+            data-slug={char.slug}
+            data-url={char.detailUrl}
+            style="cursor:pointer;"
+          >
+            <td>{idx + 1}</td>
+            <td>
+              <div style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--amber-glow); overflow: hidden;">
+                <SimpleOptimizedImage
+                  src={char.image}
+                  alt={char.name}
+                  class="character-img"
+                  loading="lazy"
+                />
+              </div>
+            </td>
+            <td>{char.name}</td>
+            <td>
+              <span
+                class={`rarity-badge ${char.rarity.toLowerCase()}`}
+                data-sort-key="rarity"
+              >
+                {char.rarity}
+              </span>
+            </td>
+            <td>
+              <span
+                class={`element-badge ${char.element.toLowerCase()}`}
+                data-sort-key="element"
+              >
+                {char.element}
+              </span>
+            </td>
+            <td>
+              <span class={`role-badge ${char.role.toLowerCase()}`} data-sort-key="role">
+                {char.role}
+              </span>
+            </td>
+            <td style="text-align: center; vertical-align: middle;">
+              <img
+                src={`/images/games/zone-nova/classes/1${char.class}.jpg`}
+                alt={char.class}
+                class="class-icon-standalone"
+                loading="lazy"
+                title={char.class}
+              />
+            </td>
+            <td>
+              <span class={`class-badge ${char.class.toLowerCase()}`} data-sort-key="class">
+                {char.class}
+              </span>
+            </td>
+            <td>
+              <span
+                class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-')}`}
+                data-sort-key="faction"
+              >
+                {char.faction}
+              </span>
+            </td>
+            <td data-sort-key="hp">{char.stats.hp}</td>
+            <td data-sort-key="attack">{char.stats.attack}</td>
+            <td data-sort-key="defense">{char.stats.defense}</td>
+            <td data-sort-key="critRate">{char.stats.critRate}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

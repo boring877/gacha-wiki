@@ -1,5 +1,5 @@
 ---
-import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { odinData, odinSEO } from '../../../../data/zone-nova/characters/odin.js';
@@ -7,7 +7,7 @@ import { odinData, odinSEO } from '../../../../data/zone-nova/characters/odin.js
 export const prerender = true;
 ---
 
-<CharacterLayout title={odinSEO.title} description={odinSEO.description} gameTitle={odinData.name}>
+<CharacterIndividualLayout title={odinSEO.title} description={odinSEO.description} gameTitle={odinData.name}>
   <CharacterNavigation currentCharacter={odinData} />
   <CharacterPageTemplate characterData={odinData} />
-</CharacterLayout>
+</CharacterIndividualLayout>

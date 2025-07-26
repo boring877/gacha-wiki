@@ -53,6 +53,7 @@ function isActiveLink(href: string): boolean {
             href={link.href}
             class={`nav-link ${isActiveLink(link.href) ? 'active' : ''}`}
             aria-current={isActiveLink(link.href) ? 'page' : undefined}
+            data-astro-prefetch
           >
             {link.name}
           </a>
@@ -102,6 +103,9 @@ function isActiveLink(href: string): boolean {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+    /* Performance optimizations */
+    will-change: transform;
+    contain: layout style;
   }
 
   .nav-link {
@@ -122,6 +126,12 @@ function isActiveLink(href: string): boolean {
     overflow: hidden;
     text-align: center;
     background: rgba(255, 183, 77, 0.05);
+    /* Performance optimizations */
+    will-change: transform, box-shadow;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   .nav-link::before {

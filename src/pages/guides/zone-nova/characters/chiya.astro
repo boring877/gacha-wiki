@@ -1,5 +1,5 @@
 ---
-import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { chiyaData, chiyaSEO } from '../../../../data/zone-nova/characters/chiya.js';
@@ -7,11 +7,11 @@ import { chiyaData, chiyaSEO } from '../../../../data/zone-nova/characters/chiya
 export const prerender = true;
 ---
 
-<CharacterLayout
+<CharacterIndividualLayout
   title={chiyaSEO.title}
   description={chiyaSEO.description}
   gameTitle={chiyaData.name}
 >
   <CharacterNavigation currentCharacter={chiyaData} />
   <CharacterPageTemplate characterData={chiyaData} />
-</CharacterLayout>
+</CharacterIndividualLayout>

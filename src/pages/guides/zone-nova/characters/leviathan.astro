@@ -1,5 +1,5 @@
 ---
-import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { leviathanData, leviathanSEO } from '../../../../data/zone-nova/characters/leviathan.js';
@@ -7,11 +7,11 @@ import { leviathanData, leviathanSEO } from '../../../../data/zone-nova/characte
 export const prerender = true;
 ---
 
-<CharacterLayout
+<CharacterIndividualLayout
   title={leviathanSEO.title}
   description={leviathanSEO.description}
   gameTitle={leviathanData.name}
 >
   <CharacterNavigation currentCharacter={leviathanData} />
   <CharacterPageTemplate characterData={leviathanData} />
-</CharacterLayout>
+</CharacterIndividualLayout>

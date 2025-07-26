@@ -1,0 +1,456 @@
+---
+import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+
+// NO IMPORTS of individual character files - we'll load them dynamically!
+---
+
+<div class="character-comparison-container">
+  <!-- Character Selection -->
+  <div class="character-selector">
+    <h2>Select Characters to Compare (Lazy Loading)</h2>
+
+    <!-- Filters and Sort Controls -->
+    <div class="filter-bar">
+      <div class="filter-controls">
+        <select class="filter-select" id="role-filter">
+          <option value="">Role</option>
+          <option value="Tank">Tank</option>
+          <option value="DPS">DPS</option>
+          <option value="Buffer">Buffer</option>
+          <option value="Debuffer">Debuffer</option>
+          <option value="Healer">Healer</option>
+        </select>
+        <select class="filter-select" id="class-filter">
+          <option value="">Class</option>
+          <option value="Guardian">Guardian</option>
+          <option value="Warrior">Warrior</option>
+          <option value="Rogue">Rogue</option>
+          <option value="Mage">Mage</option>
+          <option value="Buffer">Buffer</option>
+          <option value="Debuffer">Debuffer</option>
+          <option value="Healer">Healer</option>
+        </select>
+        <select class="filter-select" id="rarity-filter">
+          <option value="">Rarity</option>
+          <option value="SSR">SSR</option>
+          <option value="SR">SR</option>
+          <option value="R">R</option>
+        </select>
+        <select class="filter-select" id="element-filter">
+          <option value="">Element</option>
+          <option value="Fire">Fire</option>
+          <option value="Ice">Ice</option>
+          <option value="Wind">Wind</option>
+          <option value="Holy">Holy</option>
+          <option value="Chaos">Chaos</option>
+        </select>
+      </div>
+      <button class="reset-btn" id="clear-filters">Reset</button>
+    </div>
+
+    <!-- Character Grid -->
+    <div class="character-grid" id="character-grid">
+      {
+        ZONE_NOVA_CHARACTERS.map((char: any) => (
+          <button class="character-select-card" data-character-slug={char.slug}>
+            <img
+              src={char.image}
+              alt={char.name}
+              class="character-portrait"
+              width="80"
+              height="80"
+              loading="lazy"
+            />
+            <div class="character-info">
+              <h3>{char.name}</h3>
+              <div class="character-badges">
+                <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+                <span class={`class-badge ${char.class.toLowerCase().replace(' ', '-')}`}>
+                  {char.class}
+                </span>
+              </div>
+            </div>
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Comparison Display -->
+  <div class="comparison-display" id="comparison-display">
+    <div class="selected-characters" id="selected-characters">
+      <!-- Selected characters will be added here dynamically -->
+    </div>
+    
+    <div class="comparison-controls">
+      <button class="clear-all-btn" id="clear-all">Clear All</button>
+      <button class="compare-btn" id="compare-btn" disabled>Compare Selected</button>
+    </div>
+
+    <div class="comparison-results" id="comparison-results">
+      <!-- Comparison results will be shown here -->
+    </div>
+  </div>
+</div>
+
+<style>
+  .character-comparison-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .character-selector h2 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-display);
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-select {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--amber-glow);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+  }
+
+  .reset-btn {
+    padding: 0.5rem 1rem;
+    background: var(--amber-glow);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .character-select-card {
+    background: var(--bg-secondary);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .character-select-card:hover {
+    border-color: var(--amber-glow);
+    background: var(--bg-primary);
+  }
+
+  .character-select-card.selected {
+    border-color: var(--teal-crystal);
+    background: rgba(0, 172, 193, 0.1);
+  }
+
+  .character-portrait {
+    border-radius: 8px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+
+  .character-info h3 {
+    color: var(--text-primary);
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .character-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .rarity-badge, .class-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .rarity-badge.ssr { background: #ff6b35; color: white; }
+  .rarity-badge.sr { background: #9b5de5; color: white; }
+  .rarity-badge.r { background: #00bbf9; color: white; }
+
+  .comparison-display {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--amber-glow);
+  }
+
+  .selected-characters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .comparison-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .clear-all-btn, .compare-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .clear-all-btn {
+    background: #dc3545;
+    color: white;
+  }
+
+  .compare-btn {
+    background: var(--amber-glow);
+    color: white;
+  }
+
+  .compare-btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+  }
+
+  .loading-indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--amber-glow);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+<script is:inline define:vars={{ characters: ZONE_NOVA_CHARACTERS }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    let selectedCharacters = [];
+    let characterDataCache = {}; // Cache loaded character data
+    
+    const elements = {
+      characterCards: document.querySelectorAll('.character-select-card'),
+      selectedContainer: document.getElementById('selected-characters'),
+      compareBtn: document.getElementById('compare-btn'),
+      clearAllBtn: document.getElementById('clear-all'),
+      resultsContainer: document.getElementById('comparison-results'),
+      filters: {
+        role: document.getElementById('role-filter'),
+        class: document.getElementById('class-filter'),
+        rarity: document.getElementById('rarity-filter'),
+        element: document.getElementById('element-filter'),
+      },
+      resetBtn: document.getElementById('clear-filters'),
+    };
+
+    // Lazy load character data function
+    async function loadCharacterData(characterSlug) {
+      // Check cache first
+      if (characterDataCache[characterSlug]) {
+        return characterDataCache[characterSlug];
+      }
+
+      try {
+        // Show loading indicator
+        console.log(`Loading character data for: ${characterSlug}`);
+        
+        // Dynamic import - only load the specific character file when needed
+        const module = await import(`../../data/zone-nova/characters/${characterSlug}.js`);
+        const characterData = module[`${characterSlug.replace('-', '')}Data`] || module.default;
+        
+        // Cache the data
+        characterDataCache[characterSlug] = characterData;
+        
+        return characterData;
+      } catch (error) {
+        console.error(`Failed to load character data for ${characterSlug}:`, error);
+        return null;
+      }
+    }
+
+    // Character selection handler
+    elements.characterCards.forEach(card => {
+      card.addEventListener('click', async () => {
+        const characterSlug = card.dataset.characterSlug;
+        
+        if (selectedCharacters.includes(characterSlug)) {
+          // Remove from selection
+          selectedCharacters = selectedCharacters.filter(slug => slug !== characterSlug);
+          card.classList.remove('selected');
+        } else if (selectedCharacters.length < 4) {
+          // Add to selection (max 4)
+          selectedCharacters.push(characterSlug);
+          card.classList.add('selected');
+        } else {
+          alert('You can select up to 4 characters for comparison');
+          return;
+        }
+
+        updateSelectedDisplay();
+        updateCompareButton();
+      });
+    });
+
+    function updateSelectedDisplay() {
+      elements.selectedContainer.innerHTML = selectedCharacters.map(slug => {
+        const char = characters.find(c => c.slug === slug);
+        return `
+          <div class="selected-character">
+            <img src="${char.image}" alt="${char.name}" width="40" height="40">
+            <span>${char.name}</span>
+            <button class="remove-btn" data-slug="${slug}">×</button>
+          </div>
+        `;
+      }).join('');
+
+      // Add remove button handlers
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const slug = btn.dataset.slug;
+          selectedCharacters = selectedCharacters.filter(s => s !== slug);
+          
+          // Update UI
+          const card = document.querySelector(`[data-character-slug="${slug}"]`);
+          if (card) card.classList.remove('selected');
+          
+          updateSelectedDisplay();
+          updateCompareButton();
+        });
+      });
+    }
+
+    function updateCompareButton() {
+      elements.compareBtn.disabled = selectedCharacters.length < 2;
+    }
+
+    // Compare button handler
+    elements.compareBtn.addEventListener('click', async () => {
+      elements.compareBtn.innerHTML = '<span class="loading-indicator"></span> Loading...';
+      elements.compareBtn.disabled = true;
+
+      try {
+        // Load all selected character data (lazy loading!)
+        const characterDataPromises = selectedCharacters.map(slug => loadCharacterData(slug));
+        const characterDataArray = await Promise.all(characterDataPromises);
+
+        // Display comparison results
+        displayComparisonResults(characterDataArray);
+        
+      } catch (error) {
+        console.error('Error during comparison:', error);
+        elements.resultsContainer.innerHTML = '<p>Error loading character data</p>';
+      } finally {
+        elements.compareBtn.innerHTML = 'Compare Selected';
+        elements.compareBtn.disabled = selectedCharacters.length < 2;
+      }
+    });
+
+    function displayComparisonResults(characterDataArray) {
+      if (!characterDataArray.length) return;
+
+      const validData = characterDataArray.filter(data => data !== null);
+      
+      elements.resultsContainer.innerHTML = `
+        <h3>Comparison Results</h3>
+        <div class="comparison-table">
+          ${validData.map(data => `
+            <div class="character-column">
+              <h4>${data.characterInfo.name}</h4>
+              <p>HP: ${data.characterInfo.stats.hp}</p>
+              <p>ATK: ${data.characterInfo.stats.attack}</p>
+              <p>DEF: ${data.characterInfo.stats.defense}</p>
+              <!-- Add more detailed comparison data here -->
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // Clear all button
+    elements.clearAllBtn.addEventListener('click', () => {
+      selectedCharacters = [];
+      elements.characterCards.forEach(card => card.classList.remove('selected'));
+      updateSelectedDisplay();
+      updateCompareButton();
+      elements.resultsContainer.innerHTML = '';
+    });
+
+    // Filter functionality
+    function filterCharacters() {
+      const filters = {
+        role: elements.filters.role?.value.toLowerCase() || '',
+        class: elements.filters.class?.value.toLowerCase() || '',
+        rarity: elements.filters.rarity?.value.toLowerCase() || '',
+        element: elements.filters.element?.value.toLowerCase() || '',
+      };
+
+      elements.characterCards.forEach(card => {
+        const characterSlug = card.dataset.characterSlug;
+        const character = characters.find(c => c.slug === characterSlug);
+        
+        if (!character) return;
+
+        const matches = Object.entries(filters).every(([key, value]) => {
+          if (!value) return true;
+          return character[key]?.toLowerCase() === value;
+        });
+
+        card.style.display = matches ? 'flex' : 'none';
+      });
+    }
+
+    // Add filter event listeners
+    Object.values(elements.filters).forEach(filter => {
+      if (filter) {
+        filter.addEventListener('change', filterCharacters);
+      }
+    });
+
+    elements.resetBtn?.addEventListener('click', () => {
+      Object.values(elements.filters).forEach(filter => {
+        if (filter) filter.value = '';
+      });
+      elements.characterCards.forEach(card => card.style.display = 'flex');
+    });
+  });
+</script>

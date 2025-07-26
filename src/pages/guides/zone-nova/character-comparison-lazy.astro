@@ -1,0 +1,29 @@
+---
+import CharacterComparisonLayout from '../../../layouts/zone-nova/CharacterComparisonLayout.astro';
+import CharacterComparisonLazy from '../../../components/zone-nova/CharacterComparisonLazy.astro';
+---
+
+<CharacterComparisonLayout
+  title="Zone Nova Character Comparison (Lazy Loading) - GachaWiki"
+  description="Compare up to 4 Zone Nova characters side by side with lazy loading for optimal performance."
+  gameTitle="Character Comparison Tool (Lazy Loading)"
+  showBackButton={true}
+  backButtonHref="/guides/zone-nova/characters/"
+  backButtonText="Back to Character Database"
+>
+  <div class="comparison-page-content">
+    <!-- Page Introduction -->
+    <div class="comparison-page-intro">
+      <p style="font-size: 1.3rem; font-weight: 600; line-height: 1.7;">
+        Select up to 4 characters to compare their stats, elements, and abilities side by side. This
+        tool uses lazy loading for optimal performance - character data is only loaded when you select them.
+      </p>
+      <div style="background: rgba(255, 183, 77, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0; border-left: 4px solid var(--amber-glow);">
+        <strong>Performance Optimized:</strong> This version loads character data on-demand instead of loading all 34+ character files upfront.
+      </div>
+    </div>
+
+    <!-- Character Comparison Component -->
+    <CharacterComparisonLazy />
+  </div>
+</CharacterComparisonLayout>

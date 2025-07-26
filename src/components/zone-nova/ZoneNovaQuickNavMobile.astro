@@ -50,7 +50,11 @@ function isActive(href: string): boolean {
     <div class="quick-nav-container" id="quickNavContainer">
       {
         quickLinks.map(link => (
-          <a href={link.href} class={`nav-link ${isActive(link.href) ? 'active' : ''}`}>
+          <a 
+            href={link.href} 
+            class={`nav-link ${isActive(link.href) ? 'active' : ''}`}
+            data-astro-prefetch
+          >
             {link.name}
           </a>
         ))
@@ -146,12 +150,14 @@ function isActive(href: string): boolean {
     width: 100%;
     max-width: 100vw;
     box-sizing: border-box;
-    /* Performance optimizations */
-    will-change: scroll-position;
+    /* Enhanced performance optimizations */
+    will-change: scroll-position, transform;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
-    /* Ensure proper containment */
-    contain: layout;
+    contain: layout style;
+    /* Additional optimizations for smooth scrolling */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   .quick-nav-container::-webkit-scrollbar {
@@ -183,10 +189,15 @@ function isActive(href: string): boolean {
     box-shadow: 0 4px 12px rgba(164, 120, 100, 0.2);
     scroll-snap-align: start;
     touch-action: manipulation;
-    /* Performance optimizations */
-    will-change: transform;
+    /* Enhanced performance optimizations */
+    will-change: transform, box-shadow;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    /* Additional performance boost */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     /* Ensure proper text handling */
     text-overflow: ellipsis;
     overflow: hidden;
@@ -221,21 +232,32 @@ function isActive(href: string): boolean {
 </style>
 
 <script>
-  // Mobile swipe functionality
+  // Extend Window interface to include custom property
+  declare global {
+    interface Window {
+      zoneNovaMobileNavInitialized?: boolean;
+    }
+  }
+  // Mobile swipe functionality - prevent re-initialization
   document.addEventListener('DOMContentLoaded', function () {
+    // Skip if already initialized to prevent multiple event listeners
+    if (window.zoneNovaMobileNavInitialized) return;
+    
     const container = document.getElementById('quickNavContainer');
     const swipeHint = document.getElementById('swipeHint');
     if (!container) return;
+    
+    // Mark as initialized
+    window.zoneNovaMobileNavInitialized = true;
 
     let isDown = false;
-    let startX;
-    let scrollLeft;
-    let animationFrame;
-    let indicatorTimeout;
+    let startX: number;
+    let scrollLeft: number;
+    let animationFrame: number;
 
     // Throttle function for performance
-    function throttle(func, limit) {
-      let inThrottle;
+    function throttle(func: Function, limit: number) {
+      let inThrottle: boolean;
       return function () {
         const args = arguments;
         const context = this;
@@ -295,7 +317,7 @@ function isActive(href: string): boolean {
         const hasOverflow = updateSwipeHint();
         // Auto-hide hint after 4 seconds only if there's overflow
         if (hasOverflow) {
-          indicatorTimeout = setTimeout(() => {
+          setTimeout(() => {
             if (swipeHint) {
               swipeHint.classList.add('hide');
               swipeHint.classList.remove('show');
@@ -319,15 +341,18 @@ function isActive(href: string): boolean {
       { passive: true }
     );
 
-    const handleTouchMove = throttle(e => {
+    const handleTouchMove = throttle((e: TouchEvent) => {
       if (!isDown) return;
       const x = e.touches[0].clientX;
       const walk = (x - startX) * 1.5;
 
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
       animationFrame = requestAnimationFrame(() => {
         container.scrollLeft = scrollLeft - walk;
       });
-    }, 16); // ~60fps
+    }, 8); // ~120fps for smoother experience
 
     container.addEventListener('touchmove', handleTouchMove, { passive: true });
 

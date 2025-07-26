@@ -1,5 +1,5 @@
 ---
-import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { shannaData, shannaSEO } from '../../../../data/zone-nova/characters/shanna.js';
@@ -7,11 +7,11 @@ import { shannaData, shannaSEO } from '../../../../data/zone-nova/characters/sha
 export const prerender = true;
 ---
 
-<CharacterLayout
+<CharacterIndividualLayout
   title={shannaSEO.title}
   description={shannaSEO.description}
   gameTitle={shannaData.name}
 >
   <CharacterNavigation currentCharacter={shannaData} />
   <CharacterPageTemplate characterData={shannaData} />
-</CharacterLayout>
+</CharacterIndividualLayout>

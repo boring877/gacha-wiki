@@ -1,51 +1,76 @@
-/* Auto-Rotating Games Showcase */
+/**
+ * ==========================================
+ * AUTO-ROTATING GAMES SHOWCASE COMPONENT
+ * ==========================================
+ * 
+ * Interactive showcase component featuring automatic game rotation with
+ * advanced visual effects including glassmorphism, gradient animations,
+ * and complex hover states.
+ * 
+ * Features:
+ * - Advanced glassmorphism design with multiple blur layers
+ * - Animated background gradient effects with keyframe animations
+ * - Complex hover states with gradient text and image filters
+ * - Responsive grid layout with image and content sections
+ * - Hardware-accelerated animations for smooth performance
+ * 
+ * Design: Premium glassmorphism with multi-layer effects
+ * Performance: Optimized with backdrop-filter and transforms
+ * Browser Support: Modern browsers with advanced CSS support
+ */
+/* === SHOWCASE MAIN CONTAINER === */
+/* Outer showcase section with gradient background and animated overlays */
 .auto-showcase {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%);
-  padding: 4rem 0;
+  position: relative;                          /* Positioning context for pseudo-elements */
+  overflow: hidden;                            /* Hide animated background overflow */
+  background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%); /* Dark gradient base */
+  padding: 4rem 0;                            /* Vertical padding for section spacing */
 }
 
+/* Animated background glow effects - multiple radial gradients */
 .auto-showcase::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),
-    radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),
-    radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent);
-  animation: heroGlow 20s ease-in-out infinite;
-  z-index: 1;
+  content: '';                                 /* Empty pseudo-element */
+  position: absolute;                          /* Absolute positioning for overlay */
+  inset: 0;                                    /* Cover entire showcase area */
+  background:                                  /* Multi-layer radial gradient system */
+    radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),    /* Amber glow - left */
+    radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),     /* Teal glow - right */
+    radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent);     /* Rose glow - bottom */
+  animation: heroGlow 20s ease-in-out infinite; /* Continuous glow animation */
+  z-index: 1;                                  /* Above background, below content */
 }
 
+/* Showcase content container - centers and constrains width */
 .showcase-container {
-  position: relative;
-  height: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  z-index: 2;
+  position: relative;                          /* Positioning context */
+  height: 100%;                                /* Full height of parent */
+  max-width: 1400px;                          /* Maximum container width */
+  margin: 0 auto;                             /* Center horizontally */
+  padding: 0 2rem;                            /* Side padding for spacing */
+  z-index: 2;                                  /* Above background effects */
 }
 
+/* Main showcase content card with glassmorphism design */
 .showcase-content {
-  position: relative;
-  border-radius: 32px;
-  overflow: hidden;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(30px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  display: grid;
-  min-height: 400px;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 0;
-  max-width: 1200px;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;                          /* Positioning context for pseudo-elements */
+  border-radius: 32px;                        /* Large rounded corners */
+  overflow: hidden;                            /* Hide child overflow */
+  margin: 0 auto;                             /* Center within container */
+  background: rgba(255, 255, 255, 0.03);      /* Subtle glassmorphism background */
+  backdrop-filter: blur(30px);                /* Strong background blur effect */
+  border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border definition */
+  display: grid;                               /* CSS Grid for layout */
+  min-height: 400px;                          /* Minimum height for content */
+  grid-template-columns: 1fr 1fr;             /* Two equal columns */
+  align-items: center;                         /* Vertically center content */
+  gap: 0;                                      /* No gap between grid items */
+  max-width: 1200px;                          /* Maximum content width */
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth hover transitions */
 }
 
+/* Showcase content hover state - enhanced border visibility */
 .showcase-content:hover {
-  border-color: rgba(255, 183, 77, 0.3);
+  border-color: rgba(255, 183, 77, 0.3);      /* Amber-tinted border on hover */
 }
 
 .showcase-content::after {
@@ -63,12 +88,14 @@
   opacity: 0;
 }
 
+/* === SHOWCASE IMAGE SECTION === */
+/* Left side image container with gradient background */
 .showcase-image-section {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05));
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;                          /* Positioning context for overlays */
+  height: 100%;                                /* Full height of parent grid */
+  overflow: hidden;                            /* Clip image overflow */
+  background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05)); /* Subtle gradient tint */
+  border-right: 1px solid rgba(255, 255, 255, 0.1); /* Separator from content section */
 }
 
 .showcase-game-image {
@@ -110,17 +137,19 @@
   );
 }
 
+/* === SHOWCASE CONTENT SECTION === */
+/* Right side text content with glassmorphism background */
 .showcase-content-section {
-  padding: 3rem;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(20px);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  z-index: 10;
-  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 3rem;                               /* Generous internal spacing */
+  background: rgba(255, 255, 255, 0.02);      /* Subtle glassmorphism background */
+  backdrop-filter: blur(20px);                /* Background blur effect */
+  height: 100%;                                /* Full height of parent grid */
+  display: flex;                               /* Flexbox for content layout */
+  flex-direction: column;                      /* Vertical content stacking */
+  justify-content: center;                     /* Vertically center content */
+  position: relative;                          /* Positioning context */
+  z-index: 10;                                 /* Above other elements */
+  border-left: 1px solid rgba(255, 255, 255, 0.05); /* Separator from image section */
 }
 
 .showcase-content-section::before {
@@ -141,15 +170,16 @@
   color: var(--text-inverse);
 }
 
+/* Showcase title with responsive sizing and gradient effects */
 .showcase-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 900;
-  margin-bottom: 1rem;
-  color: var(--amber-glow);
-  opacity: 1;
-  transform: translateY(0);
-  position: relative;
+  font-family: 'Space Grotesk', sans-serif;     /* Display font for prominence */
+  font-size: clamp(2.5rem, 5vw, 3.5rem);      /* Responsive fluid typography */
+  font-weight: 900;                           /* Maximum weight for impact */
+  margin-bottom: 1rem;                        /* Space below title */
+  color: var(--amber-glow);                    /* Amber accent color */
+  opacity: 1;                                  /* Full opacity base state */
+  transform: translateY(0);                    /* No transform base state */
+  position: relative;                          /* Positioning context for pseudo-element */
 }
 
 .showcase-title::after {
@@ -193,21 +223,23 @@
   opacity: 1;
 }
 
+/* === FEATURE TAGS === */
+/* Individual feature pills with glassmorphism design */
 .showcase-feature-tag {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0.75rem 1.5rem;
-  border-radius: 30px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-inverse);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.08);       /* Glassmorphism background */
+  backdrop-filter: blur(15px);                 /* Background blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border definition */
+  padding: 0.75rem 1.5rem;                    /* Comfortable pill padding */
+  border-radius: 30px;                        /* Pill shape */
+  font-family: 'Space Grotesk', sans-serif;    /* Display font for consistency */
+  font-size: 0.85rem;                         /* Small size for tags */
+  font-weight: 600;                           /* Semibold for emphasis */
+  color: var(--text-inverse);                  /* White text color */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth hover transitions */
+  position: relative;                          /* Positioning context */
+  overflow: hidden;                            /* Hide pseudo-element overflow */
+  text-transform: uppercase;                   /* Uppercase for consistency */
+  letter-spacing: 0.05em;                     /* Wide tracking for emphasis */
 }
 
 .showcase-feature-tag::before {
@@ -233,28 +265,34 @@
   opacity: 1;
 }
 
+/* === SHOWCASE ACTION BUTTON === */
+/* Primary call-to-action button for showcase items */
 .showcase-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  background: var(--amber-glow);
-  color: var(--text-primary);
-  text-decoration: none;
-  border-radius: 50px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;                        /* Flexbox for content layout */
+  align-items: center;                         /* Vertically center content */
+  gap: 0.75rem;                                /* Space between text and icon */
+  padding: 1rem 2rem;                         /* Comfortable button padding */
+  background: var(--amber-glow);               /* Amber background for prominence */
+  color: var(--text-primary);                  /* Dark text for contrast */
+  text-decoration: none;                       /* Remove link underline */
+  border-radius: 50px;                        /* Pill-shaped button */
+  font-family: 'Space Grotesk', sans-serif;    /* Display font for consistency */
+  font-weight: 600;                           /* Semibold for emphasis */
+  font-size: 1rem;                           /* Standard button text size */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth hover transitions */
 }
 
+/* Showcase button hover state - darker amber background */
 .showcase-btn:hover {
-  background: var(--primary-hover);
+  background: var(--primary-hover);            /* Darker amber on hover */
 }
 
+/* Showcase button icon with hover animation */
 .showcase-btn svg {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease;            /* Smooth icon transform animation */
 }
 
+/* Icon hover state - could add transform effects here */
 .showcase-btn:hover svg {
+  /* Transform effects can be added here for icon animation */
 }

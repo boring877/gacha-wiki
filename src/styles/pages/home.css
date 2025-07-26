@@ -1,88 +1,115 @@
-/* Home Page Styles */
+/**
+ * ==========================================
+ * HOME PAGE STYLES
+ * ==========================================
+ * 
+ * Styles specific to the home page layout and hero section.
+ * Features animated gradient backgrounds and responsive typography.
+ * 
+ * Features:
+ * - Animated hero section with multi-layer gradient effects
+ * - Responsive fluid typography with clamp() functions
+ * - CSS containment for performance optimization
+ * - Smooth entrance animations with custom keyframes
+ * 
+ * Design: Modern hero section with animated gradient overlays
+ * Performance: CSS containment and optimized animations
+ * Browser Support: Modern browsers with CSS animation support
+ */
 
-/* Main Layout */
+/* === HOME PAGE LAYOUT === */
+/* Main container for home page content with performance optimization */
 .home-main {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0;
-  contain: layout style;
+  max-width: 1400px;                             /* Maximum width for large screens */
+  margin: 0 auto;                                /* Center horizontally */
+  padding: 0;                                     /* No default padding */
+  contain: layout style;                          /* CSS containment for performance */
 }
 
-/* Hero Section */
+/* === HERO SECTION === */
+/* Main hero section with gradient background and animated overlays */
 .hero-section {
-  position: relative;
-  padding: 6rem 2rem 4rem 2rem;
-  overflow: hidden;
-  background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%);
-  border-bottom: 2px solid var(--amber-glow);
+  position: relative;                             /* Positioning context for absolute children */
+  padding: 6rem 2rem 4rem 2rem;                  /* Generous padding with more space at top */
+  overflow: hidden;                               /* Hide animated background overflow */
+  background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%); /* Dark gradient base */
+  border-bottom: 2px solid var(--amber-glow);    /* Amber border accent at bottom */
 }
 
+/* Animated background gradient overlay - creates dynamic color effects */
 .hero-bg-animation {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),
-    radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),
-    radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent);
-  animation: heroGlow 20s ease-in-out infinite;
+  position: absolute;                             /* Absolute positioning for overlay */
+  inset: 0;                                       /* Cover entire hero section */
+  background:                                     /* Multi-layer radial gradient system */
+    radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),  /* Amber glow - left side */
+    radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),   /* Teal glow - right side */
+    radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent);   /* Rose glow - bottom */
+  animation: heroGlow 20s ease-in-out infinite;   /* Continuous glow animation */
 }
 
+/* === HERO ANIMATIONS === */
+/* Keyframe animation for background glow effect */
 @keyframes heroGlow {
   0%,
   100% {
-    opacity: 0.8;
-    transform: scale(1) rotate(0deg);
+    opacity: 0.8;                                /* Base opacity at start and end */
+    transform: scale(1) rotate(0deg);            /* Normal scale and rotation */
   }
   50% {
-    opacity: 1;
-    transform: scale(1.1) rotate(2deg);
+    opacity: 1;                                  /* Full opacity at midpoint */
+    transform: scale(1.1) rotate(2deg);          /* Slight scale and rotation for movement */
   }
 }
 
+/* === HERO CONTENT === */
+/* Container for hero text content positioned above animated background */
 .hero-content {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  position: relative;                             /* Relative positioning for z-index */
+  z-index: 10;                                    /* Above animated background */
+  text-align: center;                             /* Center all hero text */
+  max-width: 1200px;                             /* Maximum width for readability */
+  margin: 0 auto;                                 /* Center horizontally */
 }
 
+/* Hero title container with entrance animation */
 .hero-title {
-  margin-bottom: 3rem;
-  animation: fadeInUp 1s ease-out;
+  margin-bottom: 3rem;                           /* Space below title */
+  animation: fadeInUp 1s ease-out;               /* Fade-in from bottom animation */
 }
 
-/* Home page specific title override */
+/* === HERO TYPOGRAPHY === */
+/* Main hero title with responsive sizing and amber color override */
 .hero-section .hero-title .hero-text-gradient {
-  display: block;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  color: var(--amber-glow) !important;
-  background: none !important;
-  -webkit-text-fill-color: var(--amber-glow) !important;
-  margin-bottom: 0.5rem;
+  display: block;                                 /* Block display for proper spacing */
+  font-family: 'Space Grotesk', sans-serif;       /* Display font for maximum impact */
+  font-size: clamp(3rem, 8vw, 5rem);             /* Responsive fluid typography */
+  font-weight: 900;                              /* Maximum weight for prominence */
+  line-height: 1.1;                             /* Tight line height for display text */
+  color: var(--amber-glow) !important;            /* Amber color override */
+  background: none !important;                    /* Remove gradient background */
+  -webkit-text-fill-color: var(--amber-glow) !important; /* Webkit text color override */
+  margin-bottom: 0.5rem;                         /* Small space below main title */
 }
 
+/* Hero subtitle with responsive sizing and subtle styling */
 .hero-subtitle {
-  display: block;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1rem, 3vw, 1.5rem);
-  font-weight: 400;
-  color: var(--text-inverse);
-  opacity: 0.9;
-  letter-spacing: 0.05em;
+  display: block;                                 /* Block display for proper spacing */
+  font-family: 'Space Grotesk', sans-serif;       /* Consistent font family */
+  font-size: clamp(1rem, 3vw, 1.5rem);           /* Responsive fluid typography */
+  font-weight: 400;                              /* Normal weight for subtitle */
+  color: var(--text-inverse);                     /* White text color */
+  opacity: 0.9;                                   /* Slightly transparent for hierarchy */
+  letter-spacing: 0.05em;                        /* Wide tracking for emphasis */
 }
 
-/* Animations */
+/* Fade-in animation from bottom with upward movement */
 @keyframes fadeInUp {
   from {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 0;                                   /* Start invisible */
+    transform: translateY(30px);                  /* Start 30px below final position */
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1;                                   /* End fully visible */
+    transform: translateY(0);                     /* End at natural position */
   }
 }

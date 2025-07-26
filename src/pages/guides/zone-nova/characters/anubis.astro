@@ -1,5 +1,5 @@
 ---
-import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { anubisData, anubisSEO } from '../../../../data/zone-nova/characters/anubis.js';
@@ -7,11 +7,11 @@ import { anubisData, anubisSEO } from '../../../../data/zone-nova/characters/anu
 export const prerender = true;
 ---
 
-<CharacterLayout
+<CharacterIndividualLayout
   title={anubisSEO.title}
   description={anubisSEO.description}
   gameTitle={anubisData.name}
 >
   <CharacterNavigation currentCharacter={anubisData} />
   <CharacterPageTemplate characterData={anubisData} />
-</CharacterLayout>
+</CharacterIndividualLayout>

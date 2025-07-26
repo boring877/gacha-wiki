@@ -1,5 +1,5 @@
 ---
-import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { guinevereData, guinevereSEO } from '../../../../data/zone-nova/characters/guinevere.js';
@@ -7,11 +7,11 @@ import { guinevereData, guinevereSEO } from '../../../../data/zone-nova/characte
 export const prerender = true;
 ---
 
-<CharacterLayout
+<CharacterIndividualLayout
   title={guinevereSEO.title}
   description={guinevereSEO.description}
   gameTitle={guinevereData.name}
 >
   <CharacterNavigation currentCharacter={guinevereData} />
   <CharacterPageTemplate characterData={guinevereData} />
-</CharacterLayout>
+</CharacterIndividualLayout>

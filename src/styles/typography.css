@@ -1,281 +1,340 @@
-/* Unified Typography System */
-/* Clean, modern typography for all gacha wiki pages */
+/**
+ * ==========================================
+ * TYPOGRAPHY SYSTEM - GACHAWIKI APPLICATION
+ * ==========================================
+ * 
+ * Comprehensive typography system providing consistent text styles across
+ * all game sections and components. Features modern web fonts, fluid
+ * typography, and accessibility optimizations.
+ * 
+ * Font Strategy:
+ * - Inter: Primary readable font for body text and UI
+ * - Space Grotesk: Display font for headings and emphasis
+ * - Orbitron: Accent font for futuristic/sci-fi elements
+ * 
+ * Key Features:
+ * - Fluid typography with clamp() for responsive scaling
+ * - Font display optimization for performance
+ * - WCAG AA compliant contrast and sizing
+ * - Game-specific semantic classes
+ * - Reduced motion support
+ * 
+ * Performance: Fonts loaded with display=swap for faster rendering
+ * Browser Support: Modern browsers supporting CSS custom properties
+ */
 
-/* Font Imports */
+/* === FONT IMPORTS === */
+/* Google Fonts with optimized loading strategy */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap');
 
-/* CSS Custom Properties for Typography */
+/* === TYPOGRAPHY DESIGN TOKENS === */
 :root {
-  /* Font Families */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-accent: 'Orbitron', monospace;
+  /* === FONT FAMILY STACK === */
+  /* Robust font stacks with system fallbacks for performance and reliability */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;    /* Body text - excellent readability */
+  --font-display: 'Space Grotesk', sans-serif;                                /* Headings - modern geometric feel */
+  --font-accent: 'Orbitron', monospace;                                       /* Special text - futuristic aesthetic */
 
-  /* Font Sizes - Fluid Typography */
-  --text-xs: clamp(0.75rem, 1vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 1.2vw, 1rem);
-  --text-base: clamp(1rem, 1.5vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 2vw, 1.25rem);
-  --text-xl: clamp(1.25rem, 2.5vw, 1.5rem);
-  --text-2xl: clamp(1.5rem, 3vw, 2rem);
-  --text-3xl: clamp(2rem, 4vw, 3rem);
-  --text-4xl: clamp(2.5rem, 5vw, 4rem);
+  /* === FLUID TYPOGRAPHY SCALE === */
+  /* Responsive font sizes using clamp() for optimal readability across all devices */
+  /* Scale follows modern type scale principles (1.125 major second ratio) */
+  --text-xs: clamp(0.75rem, 1vw, 0.875rem);       /* 12-14px - Fine print, captions */
+  --text-sm: clamp(0.875rem, 1.2vw, 1rem);        /* 14-16px - Small labels, metadata */
+  --text-base: clamp(1rem, 1.5vw, 1.125rem);      /* 16-18px - Body text, baseline */
+  --text-lg: clamp(1.125rem, 2vw, 1.25rem);       /* 18-20px - Large body, subheadings */
+  --text-xl: clamp(1.25rem, 2.5vw, 1.5rem);       /* 20-24px - Small headings */
+  --text-2xl: clamp(1.5rem, 3vw, 2rem);           /* 24-32px - Medium headings */
+  --text-3xl: clamp(2rem, 4vw, 3rem);             /* 32-48px - Large headings */
+  --text-4xl: clamp(2.5rem, 5vw, 4rem);           /* 40-64px - Display headings */
 
-  /* Line Heights */
-  --leading-tight: 1.1;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.6;
+  /* === LINE HEIGHT SYSTEM === */
+  /* Optimized line heights for different content types and reading experiences */
+  --leading-tight: 1.1;                           /* Headlines and display text */
+  --leading-normal: 1.5;                          /* Standard UI text and short content */
+  --leading-relaxed: 1.6;                         /* Long-form reading content */
 
-  /* Letter Spacing */
-  --tracking-tight: -0.02em;
-  --tracking-normal: 0;
-  --tracking-wide: 0.02em;
+  /* === LETTER SPACING SYSTEM === */
+  /* Subtle tracking adjustments for improved readability and aesthetic appeal */
+  --tracking-tight: -0.02em;                      /* Large headings - tighter for better fit */
+  --tracking-normal: 0;                           /* Default spacing - no adjustment */
+  --tracking-wide: 0.02em;                        /* Small text and labels - wider for clarity */
 
-  /* Font Weights */
-  --font-light: 300;
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
-  --font-extrabold: 800;
-  --font-black: 900;
+  /* === FONT WEIGHT SCALE === */
+  /* Complete weight range for hierarchical emphasis and visual variety */
+  --font-light: 300;                              /* Subtle, light emphasis */
+  --font-normal: 400;                             /* Standard body text weight */
+  --font-medium: 500;                             /* Medium emphasis for UI elements */
+  --font-semibold: 600;                           /* Strong emphasis without heaviness */
+  --font-bold: 700;                               /* Bold emphasis for headers */
+  --font-extrabold: 800;                          /* Extra bold for impact */
+  --font-black: 900;                              /* Maximum weight for dramatic effect */
 }
 
-/* Base Typography */
+/* === BASE TYPOGRAPHY === */
+/* Foundation typography applied to body element for global text styling */
 body {
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-primary);              /* Use primary font stack for all body text */
+  font-size: var(--text-base);                   /* 16-18px baseline for optimal readability */
+  line-height: var(--leading-normal);            /* 1.5 line height for comfortable reading */
+  letter-spacing: var(--tracking-normal);        /* No additional tracking for body text */
+  -webkit-font-smoothing: antialiased;           /* Smooth font rendering on Webkit browsers */
+  -moz-osx-font-smoothing: grayscale;            /* Smooth font rendering on Firefox macOS */
 }
 
-/* Headings */
+/* === HEADING HIERARCHY === */
+
+/* Primary heading - largest and most prominent, used for page titles and character names */
 h1,
 .character-name,
 .display-title {
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: 700;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  margin-bottom: 1.5rem;
+  font-family: var(--font-display);              /* Space Grotesk for modern, clean display */
+  font-size: var(--text-4xl);                    /* 40-64px - maximum visual impact */
+  font-weight: 700;                              /* Bold weight for strong hierarchy */
+  line-height: var(--leading-tight);             /* Tight leading for display text */
+  letter-spacing: var(--tracking-tight);         /* Slightly tighter for better fit */
+  margin-bottom: 1.5rem;                         /* Generous spacing below for separation */
 }
 
+/* Secondary heading - for major sections and important content divisions */
 h2,
 .section-title {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-normal);
-  margin-bottom: 1.25rem;
+  font-family: var(--font-display);              /* Consistent display font for hierarchy */
+  font-size: var(--text-3xl);                    /* 32-48px - strong but secondary presence */
+  font-weight: 700;                              /* Bold weight maintains hierarchy */
+  line-height: var(--leading-tight);             /* Tight leading for display text */
+  letter-spacing: var(--tracking-normal);        /* Normal tracking for medium sizes */
+  margin-bottom: 1.25rem;                        /* Good separation from content */
 }
 
+/* Tertiary heading - for subsections, skills, and detailed content organization */
 h3,
 .skill-title,
 .awakening-title,
 .subsection-title {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 600;
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-wide);
-  margin-bottom: 1rem;
+  font-family: var(--font-display);              /* Display font for consistent hierarchy */
+  font-size: var(--text-xl);                     /* 20-24px - moderate emphasis */
+  font-weight: 600;                              /* Semibold for clear distinction */
+  line-height: var(--leading-normal);            /* Normal leading for readability */
+  letter-spacing: var(--tracking-wide);          /* Wider tracking for smaller display text */
+  margin-bottom: 1rem;                           /* Standard spacing below */
 }
 
+/* Quaternary heading - for minor sections and content groupings */
 h4 {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
-  margin-bottom: 0.75rem;
+  font-family: var(--font-display);              /* Consistent display font */
+  font-size: var(--text-lg);                     /* 18-20px - subtle emphasis */
+  font-weight: 600;                              /* Semibold weight */
+  line-height: var(--leading-normal);            /* Normal leading */
+  letter-spacing: var(--tracking-normal);        /* Normal tracking */
+  margin-bottom: 0.75rem;                        /* Reduced spacing for hierarchy */
 }
 
+/* Fifth level heading - for labels and minor categorization */
 h5 {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: var(--font-medium);
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-wide);
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
+  font-family: var(--font-display);              /* Display font for consistency */
+  font-size: var(--text-base);                   /* Base size - same as body */
+  font-weight: var(--font-medium);               /* Medium weight for subtle emphasis */
+  line-height: var(--leading-normal);            /* Normal leading */
+  letter-spacing: var(--tracking-wide);          /* Wide tracking for uppercase */
+  margin-bottom: 0.5rem;                         /* Minimal spacing */
+  text-transform: uppercase;                      /* Uppercase for label-like appearance */
 }
 
+/* Sixth level heading - for micro-labels and smallest categorization */
 h6 {
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  font-weight: var(--font-semibold);
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-wide);
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
+  font-family: var(--font-primary);              /* Primary font for smaller text */
+  font-size: var(--text-sm);                     /* Small size for subtle hierarchy */
+  font-weight: var(--font-semibold);             /* Semibold for emphasis */
+  line-height: var(--leading-normal);            /* Normal leading */
+  letter-spacing: var(--tracking-wide);          /* Wide tracking for readability */
+  margin-bottom: 0.5rem;                         /* Minimal spacing */
+  text-transform: uppercase;                      /* Uppercase for label consistency */
 }
 
-/* Body Text */
+/* === BODY TEXT STYLES === */
+
+/* Standard paragraph text - optimized for reading comfort */
 p {
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-  letter-spacing: var(--tracking-normal);
-  margin-bottom: 1rem;
+  font-family: var(--font-primary);              /* Primary font for excellent readability */
+  font-size: var(--text-base);                   /* 16-18px baseline for optimal reading */
+  line-height: var(--leading-relaxed);           /* 1.6 leading for comfortable long-form reading */
+  letter-spacing: var(--tracking-normal);        /* Normal tracking for body text */
+  margin-bottom: 1rem;                           /* Standard paragraph spacing */
 }
 
-/* Small Text & Labels */
+/* === UTILITY TEXT STYLES === */
+
+/* Small text and statistical labels - for metadata and secondary information */
 .stat-label,
 small {
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+  font-family: var(--font-primary);              /* Primary font for consistency */
+  font-size: var(--text-sm);                     /* 14-16px for small but readable text */
+  font-weight: 600;                              /* Semibold for emphasis and clarity */
+  line-height: var(--leading-normal);            /* Normal leading for compact text */
+  letter-spacing: var(--tracking-wide);          /* Wide tracking for uppercase readability */
+  text-transform: uppercase;                      /* Uppercase for label-like appearance */
 }
 
-/* Large Values */
+/* Statistical values and important numbers - for game stats and metrics */
 .stat-value {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-normal);
+  font-family: var(--font-display);              /* Display font for prominence */
+  font-size: var(--text-lg);                     /* 18-20px for clear number visibility */
+  font-weight: 700;                              /* Bold for emphasis and hierarchy */
+  line-height: var(--leading-tight);             /* Tight leading for compact presentation */
+  letter-spacing: var(--tracking-normal);        /* Normal tracking for numbers */
 }
 
-/* Game Title */
+/* Game title styling - for section headers and branding */
 .game-title {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-wide);
+  font-family: var(--font-display);              /* Display font for brand consistency */
+  font-size: var(--text-2xl);                    /* 24-32px for strong presence */
+  font-weight: 700;                              /* Bold for brand emphasis */
+  line-height: var(--leading-tight);             /* Tight leading for impact */
+  letter-spacing: var(--tracking-wide);          /* Wide tracking for brand aesthetics */
 }
 
-/* Strong Text */
+/* Strong emphasis text - for important highlighted content */
 strong {
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+  font-family: var(--font-primary);              /* Primary font for consistency */
+  font-size: var(--text-sm);                     /* Slightly smaller for emphasis */
+  font-weight: 700;                              /* Bold for strong emphasis */
+  letter-spacing: var(--tracking-wide);          /* Wide tracking for emphasis */
+  text-transform: uppercase;                      /* Uppercase for strong visual impact */
 }
 
-/* Character Page Typography Classes */
+/* === GAME-SPECIFIC SEMANTIC CLASSES === */
+/* Specialized typography for game content and character information */
+/* Skill statistics labels - for character ability metadata */
 .skill-stat-label {
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+  font-family: var(--font-primary);              /* Primary font for consistency */
+  font-size: var(--text-sm);                     /* Small size for compact display */
+  font-weight: 600;                              /* Semibold for clear labeling */
+  line-height: var(--leading-normal);            /* Normal leading for readability */
+  letter-spacing: var(--tracking-wide);          /* Wide tracking for uppercase */
+  text-transform: uppercase;                      /* Uppercase for label consistency */
 }
 
+/* Skill statistics values - for character ability numbers */
 .skill-stat-value {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-normal);
+  font-family: var(--font-display);              /* Display font for prominence */
+  font-size: var(--text-lg);                     /* Large size for easy scanning */
+  font-weight: 700;                              /* Bold for numerical emphasis */
+  line-height: var(--leading-tight);             /* Tight leading for compact display */
+  letter-spacing: var(--tracking-normal);        /* Normal tracking for numbers */
 }
 
+/* Skill name labels - for character ability titles */
 .skill-label {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+  font-family: var(--font-display);              /* Display font for prominence */
+  font-size: var(--text-lg);                     /* Large size for clear hierarchy */
+  font-weight: 700;                              /* Bold for strong emphasis */
+  line-height: var(--leading-normal);            /* Normal leading for readability */
+  letter-spacing: var(--tracking-wide);          /* Wide tracking for impact */
+  text-transform: uppercase;                      /* Uppercase for label consistency */
 }
 
+/* Skill descriptions - for detailed character ability explanations */
 .skill-description {
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  font-weight: 400;
-  line-height: var(--leading-relaxed);
-  letter-spacing: var(--tracking-normal);
+  font-family: var(--font-primary);              /* Primary font for readability */
+  font-size: var(--text-base);                   /* Base size for comfortable reading */
+  font-weight: 400;                              /* Normal weight for long text */
+  line-height: var(--leading-relaxed);           /* Relaxed leading for easy reading */
+  letter-spacing: var(--tracking-normal);        /* Normal tracking for body text */
 }
 
+/* Requirements text - for game conditions and prerequisites */
 .requirements-text {
-  font-family: var(--font-primary);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  font-style: italic;
-  line-height: var(--leading-relaxed);
-  letter-spacing: var(--tracking-wide);
+  font-family: var(--font-primary);              /* Primary font for consistency */
+  font-size: var(--text-lg);                     /* Slightly larger for importance */
+  font-weight: 600;                              /* Semibold for emphasis */
+  font-style: italic;                            /* Italic for distinctive styling */
+  line-height: var(--leading-relaxed);           /* Relaxed leading for clarity */
+  letter-spacing: var(--tracking-wide);          /* Wide tracking for emphasis */
 }
 
+/* Memory card titles - for game item and card names */
 .memory-card-title {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 600;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-normal);
+  font-family: var(--font-display);              /* Display font for visual hierarchy */
+  font-size: var(--text-xl);                     /* Extra large for card prominence */
+  font-weight: 600;                              /* Semibold for clear distinction */
+  line-height: var(--leading-tight);             /* Tight leading for compact cards */
+  letter-spacing: var(--tracking-normal);        /* Normal tracking for readability */
 }
 
+/* Memory card effect descriptions - for game item abilities */
 .memory-effect-text {
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  font-weight: 500;
-  line-height: var(--leading-relaxed);
-  letter-spacing: var(--tracking-normal);
+  font-family: var(--font-primary);              /* Primary font for readability */
+  font-size: var(--text-base);                   /* Base size for detailed descriptions */
+  font-weight: 500;                              /* Medium weight for subtle emphasis */
+  line-height: var(--leading-relaxed);           /* Relaxed leading for easy reading */
+  letter-spacing: var(--tracking-normal);        /* Normal tracking for descriptions */
 }
 
+/* Warning and alert titles - for important notices and alerts */
 .warning-title {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
+  font-family: var(--font-display);              /* Display font for attention-grabbing */
+  font-size: var(--text-lg);                     /* Large size for clear visibility */
+  font-weight: 600;                              /* Semibold for emphasis */
+  line-height: var(--leading-normal);            /* Normal leading for readability */
+  letter-spacing: var(--tracking-normal);        /* Normal tracking for clarity */
 }
 
-/* Responsive Typography */
+/* === RESPONSIVE TYPOGRAPHY === */
+/* Mobile optimization for better readability on smaller screens */
 @media (max-width: 768px) {
+  /* Reduce primary heading sizes for mobile viewport constraints */
   h1,
   .character-name,
   .display-title {
-    font-size: var(--text-3xl);
+    font-size: var(--text-3xl);                  /* Reduce from 4xl to 3xl for mobile */
   }
 
+  /* Reduce secondary heading sizes for mobile layout */
   h2,
   .section-title {
-    font-size: var(--text-2xl);
+    font-size: var(--text-2xl);                  /* Reduce from 3xl to 2xl for mobile */
   }
 }
 
-/* Accessibility */
+/* === ACCESSIBILITY FEATURES === */
+
+/* Respect user preferences for reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * {
-    transition: none !important;
-    animation: none !important;
+    transition: none !important;                 /* Disable transitions for motion sensitivity */
+    animation: none !important;                  /* Disable animations for motion sensitivity */
   }
 }
 
+/* High contrast mode support for accessibility */
 @media (prefers-contrast: high) {
   h1,
   .character-name,
   .display-title,
   .game-title {
-    background: none;
-    text-shadow: none;
+    background: none;                             /* Remove background effects for clarity */
+    text-shadow: none;                            /* Remove text shadows for better contrast */
   }
 }
 
-/* Optimize font loading */
+/* === FONT LOADING OPTIMIZATION === */
+/* Local font-face declarations for performance optimization */
+/* font-display: swap prevents invisible text during font swap period */
+
 @font-face {
   font-family: 'Inter';
-  font-display: swap;
-  src: local('Inter');
+  font-display: swap;                            /* Show fallback font immediately, swap when loaded */
+  src: local('Inter');                           /* Use local version if available */
 }
 
 @font-face {
   font-family: 'Space Grotesk';
-  font-display: swap;
-  src: local('Space Grotesk');
+  font-display: swap;                            /* Show fallback font immediately, swap when loaded */
+  src: local('Space Grotesk');                  /* Use local version if available */
 }
 
 @font-face {
   font-family: 'Orbitron';
-  font-display: swap;
-  src: local('Orbitron');
+  font-display: swap;                            /* Show fallback font immediately, swap when loaded */
+  src: local('Orbitron');                       /* Use local version if available */
 }

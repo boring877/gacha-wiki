@@ -1,5 +1,5 @@
 ---
-import CharacterLayout from '../../../../layouts/zone-nova/CharacterLayout.astro';
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { gaiaData, gaiaSEO } from '../../../../data/zone-nova/characters/gaia.js';
@@ -7,7 +7,7 @@ import { gaiaData, gaiaSEO } from '../../../../data/zone-nova/characters/gaia.js
 export const prerender = true;
 ---
 
-<CharacterLayout title={gaiaSEO.title} description={gaiaSEO.description} gameTitle={gaiaData.name}>
+<CharacterIndividualLayout title={gaiaSEO.title} description={gaiaSEO.description} gameTitle={gaiaData.name}>
   <CharacterNavigation currentCharacter={gaiaData} />
   <CharacterPageTemplate characterData={gaiaData} />
-</CharacterLayout>
+</CharacterIndividualLayout>

@@ -1,6 +1,19 @@
-/* Silver and Blood Landing Page Styles */
+/* 
+  Silver and Blood Landing Page Styles
+  
+  This file contains styling for the main SAB landing page, including:
+  - Story introduction section with gradient text
+  - Story cards layout (Blood and Destiny theme)
+  - Play button and CTA elements
+  - Resource guides grid
+  - Mobile responsive design
+*/
 
-/* Story Introduction */
+/* ================================
+   STORY INTRODUCTION SECTION
+   ================================ */
+
+/* Main container for story introduction */
 .story-intro {
   text-align: center;
   margin-bottom: 3rem;
@@ -8,29 +21,39 @@
 }
 
 .story-subtitle {
+  /* Fallback color for browsers that don't support gradient text */
   color: #c0c0c0;
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0 0 1rem 0;
+  /* Gradient background for text effect */
   background: linear-gradient(135deg, #c0c0c0, #c26b6b);
+  /* Clip background to text - WebKit browsers */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Standard property for modern browsers */
+  background-clip: text;
 }
 
+/* Subtitle tagline beneath main story title */
 .story-tagline {
   color: #b0b0b0;
   font-size: 1.1rem;
   line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 600px; /* Constrain width for readability */
+  margin: 0 auto; /* Center align */
   font-style: italic;
 }
 
-/* Story Grid Layout */
+/* ================================
+   STORY CARDS LAYOUT
+   ================================ */
+
+/* Grid container for Blood and Destiny story cards */
 .story-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 2rem; /* Space between cards */
   margin-bottom: 3rem;
 }
 
@@ -121,15 +144,20 @@
 }
 
 .epic-text {
+  /* Fallback color for browsers that don't support gradient text */
   color: #e0e0e0;
   font-size: 1.2rem;
   font-style: italic;
   line-height: 1.6;
   margin: 0;
+  font-weight: 500;
+  /* Gradient background for text effect */
   background: linear-gradient(135deg, #c0c0c0, #c26b6b);
+  /* Clip background to text - WebKit browsers */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 500;
+  /* Standard property for modern browsers */
+  background-clip: text;
 }
 
 /* Play Button Enhancements */
@@ -249,6 +277,7 @@
   .section-title {
     font-size: 2rem;
   }
+
 }
 
 @media (max-width: 480px) {
@@ -312,6 +341,7 @@
   .guide-emoji {
     font-size: 1.4rem;
   }
+
 }
 
 .content-section {
@@ -328,18 +358,17 @@
   margin-bottom: 1.5rem;
   font-weight: 700;
   text-align: center;
+  /* Fallback color for browsers that don't support gradient text */
+  color: #f0f0f0;
+  /* Gradient background for text effect */
   background: linear-gradient(135deg, #f0f0f0, #c26b6b);
+  /* Clip background to text - WebKit browsers */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Standard property for modern browsers */
   background-clip: text;
 }
 
-.game-description {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  max-width: 70ch;
-}
 
 .last-updated {
   margin-top: 1.5rem;

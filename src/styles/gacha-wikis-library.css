@@ -1,150 +1,186 @@
-/* Gacha Wikis Library - Complete Styles */
+/**
+ * ==========================================
+ * GACHA WIKIS LIBRARY - MAIN LIBRARY PAGE
+ * ==========================================
+ * 
+ * Styles for the main library page showcasing all available gacha game wikis.
+ * Features game cards with individual branding, hover effects, and responsive design.
+ * 
+ * Features:
+ * - Game-specific card styling with unique colors and effects
+ * - Gradient text effects for titles and headers
+ * - Smooth hover animations with transform and shadow effects
+ * - Responsive design with mobile-optimized layouts
+ * - Accessibility features for reduced motion and high contrast
+ * 
+ * Design: Modern card-based layout with game-specific theming
+ * Performance: Optimized transitions with cubic-bezier easing
+ * Browser Support: Modern browsers with CSS custom properties
+ * 
+ * Background handling: Inherits from parent HomeLayout component
+ */
 
-/* Gacha Wikis Library - Following Design Palette */
-
-/* Remove background overrides - let HomeLayout handle backgrounds */
-
-/* Hero Section (if used) */
+/* === HERO SECTION === */
+/* Optional hero section for library page introduction */
 .hero-section {
-  text-align: center;
-  padding: 2rem 1rem;
+  text-align: center;                         /* Center all hero content */
+  padding: 2rem 1rem;                        /* Comfortable vertical and horizontal padding */
 }
 
+/* Hero content container - constrains width for readability */
 .hero-content {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 800px;                          /* Maximum width for optimal reading */
+  margin: 0 auto;                            /* Center horizontally */
 }
 
+/* Hero title with gradient text effect */
 .hero-title {
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0 0 1rem 0;
+  font-family: var(--font-display);              /* Display font for prominence */
+  font-size: var(--text-4xl);                    /* Large display size */
+  font-weight: 700;                              /* Bold weight for impact */
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); /* Gradient background for text */
+  -webkit-background-clip: text;                 /* Clip background to text (Webkit) */
+  -webkit-text-fill-color: transparent;          /* Make text transparent (Webkit) */
+  background-clip: text;                         /* Standard background-clip property */
+  margin: 0 0 1rem 0;                           /* Bottom margin only */
 }
 
-/* Main Content */
+/* === MAIN CONTENT AREA === */
+/* Primary content container for the entire library page */
 .main-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 4rem 1rem 2rem 1rem;
-  min-height: 100vh;
-  background: transparent; /* Let parent background show through */
+  max-width: 1400px;                            /* Maximum content width for large screens */
+  margin: 0 auto;                               /* Center horizontally */
+  padding: 4rem 1rem 2rem 1rem;                 /* Generous padding with more space at top */
+  min-height: 100vh;                            /* Minimum full viewport height */
+  background: transparent;                       /* Inherit parent background */
 }
 
-/* Page Header */
+/* === PAGE HEADER === */
+/* Main page header with title and spacing */
 .page-header {
-  text-align: center;
-  margin-bottom: 4rem;
-  background: transparent;
-  position: relative;
-  padding-bottom: 3rem;
+  text-align: center;                           /* Center header content */
+  margin-bottom: 4rem;                          /* Large space below header */
+  background: transparent;                       /* Inherit parent background */
+  position: relative;                            /* Positioning context */
+  padding-bottom: 3rem;                         /* Additional bottom padding */
 }
 
+/* Page title with gradient text effect */
 .page-title {
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: 700;
-  color: var(--text-inverse);
-  margin: 0 0 2rem 0;
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: var(--font-display);              /* Display font for prominence */
+  font-size: var(--text-4xl);                    /* Large display size */
+  font-weight: 700;                              /* Bold weight for hierarchy */
+  color: var(--text-inverse);                     /* Fallback white color */
+  margin: 0 0 2rem 0;                            /* Bottom margin for spacing */
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); /* Gradient text effect */
+  -webkit-background-clip: text;                 /* Clip background to text (Webkit) */
+  -webkit-text-fill-color: transparent;          /* Make text transparent (Webkit) */
+  background-clip: text;                         /* Standard background-clip property */
 }
 
-/* Games Section */
+/* === GAMES SECTION === */
+/* Container for all game cards with vertical layout */
 .games-section {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  max-width: 600px;                              /* Constrain width for better readability */
+  margin: 0 auto;                                /* Center horizontally */
+  padding: 2rem 0;                               /* Vertical padding for section spacing */
+  display: flex;                                  /* Flexbox for layout */
+  flex-direction: column;                         /* Vertical stacking of cards */
+  gap: 1.5rem;                                   /* Space between game cards */
 }
 
+/* Game link wrapper - provides hover scaling for entire card */
 .game-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  transition: transform 0.2s ease;
+  text-decoration: none;                          /* Remove link underline */
+  color: inherit;                                 /* Inherit text color from parent */
+  display: block;                                 /* Block display for full clickable area */
+  transition: transform 0.2s ease;               /* Smooth scale transition */
 }
 
+/* Game link hover state - subtle scale increase */
 .game-link:hover {
-  transform: scale(1.02);
+  transform: scale(1.02);                         /* Slight scale increase for feedback */
 }
 
-/* Game Card Design */
+/* === GAME CARD DESIGN === */
+/* Individual game card with default styling before game-specific overrides */
 .game-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--amber-glow);
-  border-radius: 16px;
-  padding: 1.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  background: var(--bg-secondary);                /* Light secondary background */
+  border: 1px solid var(--amber-glow);           /* Amber border by default */
+  border-radius: 16px;                           /* Rounded corners */
+  padding: 1.5rem;                               /* Comfortable internal spacing */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth custom easing */
+  position: relative;                             /* Positioning context */
+  overflow: hidden;                               /* Hide overflow for effects */
 }
 
-/* Game-Specific Styling */
+/* === GAME-SPECIFIC STYLING === */
+/* Zone Nova game card - amber/gold theming */
 .games-section .game-card.game-zone-nova {
-  border-color: var(--amber-glow) !important;
-  background: linear-gradient(
+  border-color: var(--amber-glow) !important;     /* Amber border for Zone Nova branding */
+  background: linear-gradient(                    /* Subtle amber gradient background */
     135deg,
-    var(--bg-secondary) 60%,
-    rgba(255, 183, 77, 0.05) 100%
+    var(--bg-secondary) 60%,                     /* Main background color */
+    rgba(255, 183, 77, 0.05) 100%                /* Subtle amber tint */
   ) !important;
-  box-shadow: 0 4px 18px rgba(255, 183, 77, 0.15) !important;
+  box-shadow: 0 4px 18px rgba(255, 183, 77, 0.15) !important; /* Amber glow shadow */
 }
 
+/* Zone Nova hover state - enhanced amber effects */
 .games-section .game-card.game-zone-nova:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 12px 32px rgba(255, 183, 77, 0.3) !important;
-  border-color: var(--amber-glow) !important;
-  background: linear-gradient(
+  transform: translateY(-4px) !important;         /* Lift effect on hover */
+  box-shadow: 0 12px 32px rgba(255, 183, 77, 0.3) !important; /* Enhanced amber shadow */
+  border-color: var(--amber-glow) !important;     /* Maintain amber border */
+  background: linear-gradient(                    /* Slightly stronger amber gradient */
     135deg,
     var(--bg-secondary) 60%,
-    rgba(255, 183, 77, 0.08) 100%
+    rgba(255, 183, 77, 0.08) 100%                /* Slightly more amber tint */
   ) !important;
 }
 
+/* Silver and Blood game card - silver/red theming */
 .games-section .game-card.game-silver-and-blood {
-  border-color: #c0c0c0 !important; /* Silver color */
-  background: linear-gradient(
+  border-color: #c0c0c0 !important;              /* Silver border for Silver and Blood branding */
+  background: linear-gradient(                    /* Subtle silver gradient background */
     135deg,
-    var(--bg-secondary) 60%,
-    rgba(192, 192, 192, 0.05) 100%
+    var(--bg-secondary) 60%,                     /* Main background color */
+    rgba(192, 192, 192, 0.05) 100%               /* Subtle silver tint */
   ) !important;
 }
 
+/* Silver and Blood hover state - transitions to blood red theme */
 .games-section .game-card.game-silver-and-blood:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 12px 32px rgba(220, 53, 69, 0.2) !important;
-  border-color: #dc3545 !important; /* Blood red color */
+  transform: translateY(-4px) !important;         /* Lift effect on hover */
+  box-shadow: 0 12px 32px rgba(220, 53, 69, 0.2) !important; /* Blood red shadow */
+  border-color: #dc3545 !important;              /* Blood red border on hover */
 }
 
+/* Default game card hover state - for cards without specific game styling */
 .game-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(164, 120, 100, 0.2);
-  border-color: var(--teal-crystal);
+  transform: translateY(-4px);                    /* Lift effect on hover */
+  box-shadow: 0 12px 32px rgba(164, 120, 100, 0.2); /* Mocha-tinted shadow */
+  border-color: var(--teal-crystal);             /* Teal border accent */
 }
 
+/* === COMING SOON CARDS === */
+/* Styling for games that are not yet available */
 .game-card.coming-soon {
-  opacity: 0.8;
-  border-color: var(--text-secondary);
+  opacity: 0.8;                                   /* Reduced opacity for unavailable state */
+  border-color: var(--text-secondary);           /* Muted border color */
 }
 
+/* Coming soon hover state - enhanced visibility */
 .game-card.coming-soon:hover {
-  border-color: var(--amber-glow);
-  opacity: 1;
+  border-color: var(--amber-glow);                /* Amber border on hover */
+  opacity: 1;                                     /* Full opacity on hover */
 }
 
+/* === GAME CARD COMPONENTS === */
+/* Game card header containing icon and title information */
 .game-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: flex;                                  /* Flexbox for horizontal layout */
+  align-items: center;                            /* Vertically center content */
+  gap: 1rem;                                      /* Space between icon and text */
 }
 
 .game-icon {
@@ -160,15 +196,16 @@
   flex: 1;
 }
 
+/* Game title with status badge layout */
 .game-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 0.5rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;       /* Display font for prominence */
+  font-size: 1.25rem;                            /* Large size for hierarchy */
+  font-weight: 700;                              /* Bold weight for emphasis */
+  color: var(--text-primary);                     /* Primary text color */
+  margin: 0 0 0.5rem 0;                          /* Bottom margin only */
+  display: flex;                                  /* Flexbox for badge layout */
+  align-items: center;                            /* Vertically center title and badge */
+  gap: 0.5rem;                                    /* Space between title and badge */
 }
 
 .status-badge {
@@ -205,7 +242,8 @@
   transform: translateX(4px);
 }
 
-/* Mobile Responsive */
+/* === RESPONSIVE DESIGN === */
+/* Mobile tablet breakpoint optimizations */
 @media (max-width: 768px) {
   .main-content {
     padding: 2rem 1rem;
@@ -245,6 +283,7 @@
   }
 }
 
+/* Mobile phone breakpoint optimizations */
 @media (max-width: 480px) {
   .page-title {
     font-size: 1.8rem;
@@ -284,18 +323,19 @@
   }
 }
 
-/* Performance optimizations */
+/* === ACCESSIBILITY FEATURES === */
+/* Performance optimizations for users with motion sensitivity */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;       /* Near-instant animations */
+    animation-iteration-count: 1 !important;      /* Run animations only once */
+    transition-duration: 0.01ms !important;       /* Near-instant transitions */
   }
 }
 
-/* High contrast mode support */
+/* High contrast mode support for better accessibility */
 @media (prefers-contrast: high) {
   .game-card {
-    border-width: 3px;
+    border-width: 3px;                           /* Thicker borders for better definition */
   }
 }

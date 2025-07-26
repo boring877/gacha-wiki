@@ -1,256 +1,307 @@
-/* Clock Controls and Navigation */
+/**
+ * ==========================================
+ * CLOCK CONTROLS COMPONENT
+ * ==========================================
+ * 
+ * Interactive clock component with navigation and timer controls.
+ * Features glassmorphism design with smooth animations and hover effects.
+ * 
+ * Components:
+ * - Timer description section with reset time display
+ * - Navigation controls for clock manipulation
+ * - Game indicators for multi-game timer support
+ * - Rotation toggle for automatic clock updates
+ * - Open source footer link with GitHub integration
+ * 
+ * Design: Modern glassmorphism with blurred backgrounds
+ * Animations: Smooth transitions with transform effects
+ * Browser Support: Modern browsers with backdrop-filter support
+ */
 
-/* Timer Description */
+/* === TIMER DESCRIPTION SECTION === */
+/* Main information panel displaying timer details with glassmorphism effect */
 .timer-description-section {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  padding: 1rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;                           /* Center all text content */
+  margin-bottom: 1.5rem;                       /* Space below section */
+  padding: 1rem 1.5rem;                        /* Comfortable internal spacing */
+  background: rgba(255, 255, 255, 0.05);       /* Subtle white overlay for glassmorphism */
+  border-radius: 16px;                         /* Rounded corners for modern look */
+  border: 1px solid rgba(255, 255, 255, 0.1);  /* Subtle border for definition */
 }
 
+/* Timer primary label - main heading for timer section */
 .timer-main-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-inverse);
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-family: 'Space Grotesk', sans-serif;     /* Display font for prominence */
+  font-size: 1.1rem;                           /* Slightly larger for hierarchy */
+  font-weight: 600;                            /* Semibold for emphasis */
+  color: var(--text-inverse);                  /* White text on dark background */
+  margin-bottom: 0.75rem;                      /* Space below heading */
+  text-transform: uppercase;                    /* Uppercase for label styling */
+  letter-spacing: 0.05em;                      /* Wide tracking for emphasis */
 }
 
+/* Timer details text - descriptive information about timer */
 .timer-details {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--amber-glow);
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
+  font-family: 'Space Grotesk', sans-serif;     /* Consistent font family */
+  font-size: 0.9rem;                           /* Slightly smaller for secondary info */
+  font-weight: 500;                            /* Medium weight for readability */
+  color: var(--amber-glow);                    /* Amber color for visual interest */
+  margin-bottom: 0.75rem;                      /* Space below details */
+  line-height: 1.5;                           /* Comfortable reading line height */
 }
 
+/* Timer reset time display - technical time information */
 .timer-reset-time {
-  font-family: 'Courier New', monospace;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Courier New', monospace;        /* Monospace for technical/time data */
+  font-size: 0.85rem;                          /* Small size for metadata */
+  font-weight: 600;                            /* Semibold for clarity */
+  color: rgba(255, 255, 255, 0.7);             /* Semi-transparent white for subtlety */
 }
 
+/* Reset time display value - highlighted time information */
 #resetTimeDisplay {
-  color: var(--teal-crystal);
-  font-weight: 700;
+  color: var(--teal-crystal);                   /* Teal accent for important time data */
+  font-weight: 700;                            /* Bold for emphasis and clarity */
 }
 
-/* Clock Navigation */
+/* === CLOCK NAVIGATION === */
+/* Interactive navigation controls for clock manipulation */
 .clock-navigation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
+  display: flex;                               /* Flexbox for control layout */
+  align-items: center;                         /* Vertically center controls */
+  justify-content: center;                     /* Horizontally center controls */
+  gap: 1.5rem;                                /* Space between navigation elements */
+  margin-bottom: 1rem;                        /* Space below navigation */
 }
 
+/* Navigation buttons - circular controls for clock interaction */
 .nav-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-inverse);
-  cursor: pointer;
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);        /* Subtle glassmorphism background */
+  border: 1px solid rgba(255, 255, 255, 0.2);  /* Subtle border for definition */
+  border-radius: 50%;                          /* Perfect circle shape */
+  width: 44px;                                 /* Fixed width for consistency */
+  height: 44px;                                /* Fixed height for perfect circle */
+  display: flex;                               /* Flexbox for icon centering */
+  align-items: center;                         /* Vertically center icon */
+  justify-content: center;                     /* Horizontally center icon */
+  color: var(--text-inverse);                  /* White icon color */
+  cursor: pointer;                             /* Pointer cursor for interaction */
+  transition: all 0.3s ease;                  /* Smooth animation for all properties */
 }
 
+/* Navigation button hover state - enhanced visibility and feedback */
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: var(--amber-glow);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);        /* Brighter background on hover */
+  border-color: var(--amber-glow);             /* Amber border for accent */
+  transform: scale(1.1);                       /* Slight scale increase for feedback */
 }
 
+/* Navigation button active state - pressed feedback */
 .nav-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.95);                       /* Slight scale decrease for pressed effect */
 }
 
+/* === GAME INDICATORS === */
+/* Indicator dots for multi-game timer navigation */
 .game-indicators {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
+  display: flex;                               /* Flexbox for dot layout */
+  gap: 0.75rem;                                /* Space between indicator dots */
+  align-items: center;                         /* Vertically center dots */
 }
 
+/* Individual indicator dot - represents game state */
 .indicator-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
+  width: 10px;                                 /* Small dot size */
+  height: 10px;                                /* Perfect circle dimensions */
+  border-radius: 50%;                          /* Perfect circle shape */
+  background: rgba(255, 255, 255, 0.3);       /* Semi-transparent default state */
+  cursor: pointer;                             /* Pointer cursor for interaction */
+  transition: all 0.3s ease;                  /* Smooth state transitions */
 }
 
+/* Active indicator dot - currently selected game */
 .indicator-dot.active {
-  background: var(--amber-glow);
-  box-shadow: 0 0 12px var(--amber-glow);
-  transform: scale(1.2);
+  background: var(--amber-glow);               /* Amber color for active state */
+  box-shadow: 0 0 12px var(--amber-glow);     /* Glowing effect for emphasis */
+  transform: scale(1.2);                       /* Larger size for active state */
 }
 
+/* Indicator dot hover state - preview interaction */
 .indicator-dot:hover {
-  background: rgba(255, 255, 255, 0.6);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.6);        /* Brighter background on hover */
+  transform: scale(1.1);                       /* Slight scale increase for feedback */
 }
 
-/* Clock Footer Controls Container */
+/* === CLOCK FOOTER CONTROLS === */
+/* Container for rotation toggle and external links */
 .clock-footer-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1.5rem;
-  gap: 1rem;
+  display: flex;                               /* Flexbox layout for footer controls */
+  justify-content: space-between;              /* Distribute items to opposite ends */
+  align-items: center;                         /* Vertically center all controls */
+  margin-top: 1.5rem;                         /* Space above footer section */
+  gap: 1rem;                                   /* Minimum space between items */
 }
 
+/* Rotation toggle button - controls automatic clock updates */
 .rotation-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 0.75rem 1.25rem;
-  color: var(--text-inverse);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  display: flex;                               /* Flexbox for content layout */
+  align-items: center;                         /* Vertically center content */
+  gap: 0.75rem;                                /* Space between icon and text */
+  background: rgba(255, 255, 255, 0.1);       /* Glassmorphism background */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border definition */
+  border-radius: 20px;                        /* Rounded pill shape */
+  padding: 0.75rem 1.25rem;                   /* Comfortable internal spacing */
+  color: var(--text-inverse);                  /* White text color */
+  font-family: 'Space Grotesk', sans-serif;    /* Display font for consistency */
+  font-size: 0.85rem;                         /* Small size for secondary control */
+  font-weight: 500;                           /* Medium weight for readability */
+  cursor: pointer;                             /* Pointer cursor for interaction */
+  transition: all 0.3s ease;                  /* Smooth hover transitions */
 }
 
+/* Rotation toggle hover state - enhanced feedback */
 .rotation-toggle:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: var(--amber-glow);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.15);       /* Brighter background on hover */
+  border-color: var(--amber-glow);             /* Amber border for accent */
+  transform: translateY(-2px);                 /* Subtle lift effect */
 }
 
+/* Rotation toggle active state - when auto-rotation is enabled */
 .rotation-toggle.active {
-  background: rgba(255, 183, 77, 0.2);
-  border-color: var(--amber-glow);
-  color: var(--amber-glow);
+  background: rgba(255, 183, 77, 0.2);         /* Amber-tinted background for active state */
+  border-color: var(--amber-glow);             /* Amber border for active indication */
+  color: var(--amber-glow);                    /* Amber text for active state */
 }
 
+/* Rotation toggle text - prevent text selection */
 .rotation-text {
-  user-select: none;
+  user-select: none;                           /* Prevent text selection on toggle */
 }
 
-/* Open Source Link in Footer */
+/* === OPEN SOURCE FOOTER LINK === */
+/* GitHub repository link with advanced hover effects */
 .clock-opensource-link {
-  display: inline-block;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;                       /* Block layout for transform effects */
+  text-decoration: none;                       /* Remove default link underline */
+  color: inherit;                              /* Inherit color from parent */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth custom easing */
 }
 
+/* Open source link content container - glassmorphism design */
 .clock-opensource-content {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 30px;
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  box-shadow:
-    0 4px 15px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);       /* Subtle glassmorphism background */
+  backdrop-filter: blur(15px);                 /* Background blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border definition */
+  border-radius: 30px;                        /* Highly rounded corners */
+  padding: 0.5rem 1rem;                       /* Compact internal spacing */
+  display: flex;                               /* Flexbox for content layout */
+  align-items: center;                         /* Vertically center content */
+  gap: 0.75rem;                                /* Space between elements */
+  box-shadow:                                  /* Multi-layer shadow system */
+    0 4px 15px rgba(0, 0, 0, 0.2),            /* Main drop shadow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);   /* Inner highlight */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth custom easing */
+  position: relative;                          /* Positioning context for pseudo-element */
+  overflow: hidden;                            /* Hide overflow for animations */
 }
 
+/* Animated gradient border effect - appears on hover */
 .clock-opensource-content::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz));
-  border-radius: 30px;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  z-index: -1;
+  content: '';                                 /* Empty pseudo-element */
+  position: absolute;                          /* Absolute positioning for overlay */
+  inset: -1px;                                 /* Extend 1px beyond parent borders */
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz)); /* Multi-color gradient */
+  border-radius: 30px;                        /* Match parent border radius */
+  opacity: 0;                                  /* Hidden by default */
+  transition: opacity 0.6s ease;              /* Smooth fade-in animation */
+  z-index: -1;                                 /* Behind main content */
 }
 
+/* Open source link hover state - enhanced glassmorphism effect */
 .clock-opensource-link:hover .clock-opensource-content {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 183, 77, 0.3);
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);        /* Brighter background on hover */
+  border-color: rgba(255, 183, 77, 0.3);      /* Amber-tinted border */
+  box-shadow:                                  /* Enhanced shadow system */
+    0 8px 25px rgba(0, 0, 0, 0.3),            /* Deeper drop shadow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);   /* Brighter inner highlight */
+  transform: translateY(-2px);                 /* Subtle lift effect */
 }
 
+/* Gradient border reveal on hover */
 .clock-opensource-link:hover .clock-opensource-content::before {
-  opacity: 0.3;
+  opacity: 0.3;                                /* Fade in gradient border */
 }
 
+/* GitHub icon styling - maintains size and animates color */
 .clock-github-icon {
-  color: var(--text-inverse);
-  transition: all 0.3s ease;
-  flex-shrink: 0;
+  color: var(--text-inverse);                  /* White icon color */
+  transition: all 0.3s ease;                  /* Smooth color and transform transitions */
+  flex-shrink: 0;                              /* Prevent icon from shrinking */
 }
 
+/* GitHub icon hover state - amber glow effect */
 .clock-opensource-link:hover .clock-github-icon {
-  color: var(--amber-glow);
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 8px rgba(255, 183, 77, 0.5));
+  color: var(--amber-glow);                    /* Change to amber on hover */
+  transform: scale(1.1);                       /* Slight scale increase */
+  filter: drop-shadow(0 0 8px rgba(255, 183, 77, 0.5)); /* Glowing drop shadow */
 }
 
+/* Open source link text styling */
 .clock-opensource-text {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-inverse);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease;
-  white-space: nowrap;
+  font-family: 'Space Grotesk', sans-serif;     /* Display font for consistency */
+  font-size: 0.75rem;                         /* Small size for compact footer */
+  font-weight: 600;                           /* Semibold for emphasis */
+  color: var(--text-inverse);                  /* White text color */
+  text-transform: uppercase;                   /* Uppercase for label styling */
+  letter-spacing: 0.05em;                     /* Wide tracking for emphasis */
+  transition: all 0.3s ease;                  /* Smooth color transitions */
+  white-space: nowrap;                        /* Prevent text wrapping */
 }
 
+/* Open source text hover state - amber glow effect */
 .clock-opensource-link:hover .clock-opensource-text {
-  color: var(--amber-glow);
-  text-shadow: 0 0 12px rgba(255, 183, 77, 0.4);
+  color: var(--amber-glow);                    /* Change to amber on hover */
+  text-shadow: 0 0 12px rgba(255, 183, 77, 0.4); /* Glowing text shadow */
 }
 
+/* GitHub star count container - pill-shaped badge */
 .clock-opensource-star {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  background: rgba(255, 183, 77, 0.1);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 183, 77, 0.2);
-  transition: all 0.3s ease;
+  display: flex;                               /* Flexbox for icon and count layout */
+  align-items: center;                         /* Vertically center content */
+  gap: 0.25rem;                                /* Small space between icon and count */
+  padding: 0.25rem 0.5rem;                    /* Compact internal spacing */
+  background: rgba(255, 183, 77, 0.1);        /* Amber-tinted background */
+  border-radius: 20px;                        /* Pill shape */
+  border: 1px solid rgba(255, 183, 77, 0.2);  /* Amber-tinted border */
+  transition: all 0.3s ease;                  /* Smooth hover transitions */
 }
 
+/* GitHub star container hover state - enhanced amber effect */
 .clock-opensource-link:hover .clock-opensource-star {
-  background: rgba(255, 183, 77, 0.15);
-  border-color: rgba(255, 183, 77, 0.4);
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(255, 183, 77, 0.2);
+  background: rgba(255, 183, 77, 0.15);        /* Brighter amber background */
+  border-color: rgba(255, 183, 77, 0.4);      /* More prominent amber border */
+  transform: scale(1.05);                      /* Slight scale increase */
+  box-shadow: 0 0 15px rgba(255, 183, 77, 0.2); /* Amber glow shadow */
 }
 
+/* Star icon styling within badge */
 .clock-opensource-star svg {
-  color: var(--amber-glow);
-  transition: transform 0.3s ease;
+  color: var(--amber-glow);                    /* Amber star icon color */
+  transition: transform 0.3s ease;            /* Smooth transform transitions */
 }
 
+/* Star icon hover state - enhanced glow */
 .clock-opensource-link:hover .clock-opensource-star svg {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 6px rgba(255, 183, 77, 0.6));
+  transform: scale(1.1);                       /* Slight scale increase */
+  filter: drop-shadow(0 0 6px rgba(255, 183, 77, 0.6)); /* Enhanced amber glow */
 }
 
+/* GitHub star count number styling */
 .clock-star-count {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--amber-glow);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  font-family: 'Space Grotesk', sans-serif;     /* Display font for consistency */
+  font-size: 0.65rem;                         /* Very small size for compact badge */
+  font-weight: 600;                           /* Semibold for clarity */
+  color: var(--amber-glow);                    /* Amber color matching theme */
+  text-transform: uppercase;                   /* Uppercase for consistency */
+  letter-spacing: 0.02em;                     /* Slight tracking for readability */
 }

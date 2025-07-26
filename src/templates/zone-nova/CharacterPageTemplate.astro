@@ -11,19 +11,13 @@ const factionData = getFactionData(characterData.faction);
 ---
 
 <!-- Character Header & Overview -->
-<section class="content-section">
-  <h2 class="section-title" style="margin-bottom:2.5rem; text-align:center;">Character Overview</h2>
-  <div class="overview-flex" style="gap: 2.5rem;">
+<section class="content-section character-overview-section">
+  <h2 class="section-title character-overview-title">Character Overview</h2>
+  <div class="character-overview-flex">
     <!-- Hero Card (Left) -->
-    <div
-      style="flex: 1.2; min-width: 340px; max-width: 420px; display: flex; flex-direction: column; align-items: center;"
-    >
-      <div
-        style="background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(255,183,77,0.15); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--amber-glow); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;"
-      >
-        <div
-          style="margin-bottom: 1.5rem; margin-top: 0; width: 300px; height: 300px; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,172,193,0.20); max-width: 100%; border: 2px solid var(--teal-crystal); overflow: hidden;"
-        >
+    <div class="character-hero-card">
+      <div class="character-hero-container">
+        <div class="character-portrait-container">
           <SimpleOptimizedImage
             src={`/images/games/zone-nova/characters/${characterData.image}.jpg`}
             alt={`${characterData.name} - ${characterData.rarity} ${characterData.class} character from Zone Nova gacha game`}
@@ -33,27 +27,20 @@ const factionData = getFactionData(characterData.faction);
             class="character-portrait"
           />
         </div>
-        <h1
-          class="character-name"
-          style="margin: 0; text-align:center; background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.2rem; font-weight: 700;"
-        >
+        <h1 class="character-name">
           {characterData.name}
         </h1>
-        <p
-          style="color: var(--teal-crystal); margin: 0.5rem 0 0 0; font-size: 1.1rem; text-align: center;"
-        >
+        <p class="character-class-info">
           {characterData.rarity}
           {characterData.class}
         </p>
-        <p
-          style="color: var(--text-secondary); margin: 0.2rem 0 0 0; font-style: italic; text-align: center;"
-        >
+        <p class="character-faction-info">
           {factionData?.name || characterData.faction}
           {factionData?.chineseName && `(${factionData.chineseName})`}
         </p>
         {
           factionData?.description && (
-            <p style="color: var(--text-muted); margin: 0.3rem 0 0 0; font-size: 0.9rem; text-align: center; line-height: 1.3; max-width: 300px; margin-left: auto; margin-right: auto;">
+            <p class="character-faction-description">
               {factionData.description}
             </p>
           )
@@ -61,14 +48,10 @@ const factionData = getFactionData(characterData.faction);
       </div>
 
       <!-- Character Info -->
-      <div
-        style="margin-top: 1.8rem; background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 14px; box-shadow: 0 3px 15px rgba(255,183,77,0.15); padding: 1.5rem; border: 1px solid var(--amber-glow); width: 100%;"
-      >
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-          <div style="text-align: center;">
-            <div
-              style="color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
-            >
+      <div class="character-info-card">
+        <div class="character-info-grid">
+          <div class="character-info-item">
+            <div class="character-info-label">
               Class
             </div>
             <span
@@ -76,30 +59,24 @@ const factionData = getFactionData(characterData.faction);
               >{characterData.class || 'TBA'}</span
             >
           </div>
-          <div style="text-align: center;">
-            <div
-              style="color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
-            >
+          <div class="character-info-item">
+            <div class="character-info-label">
               Rarity
             </div>
             <span class={`rarity-badge ${characterData.rarity.toLowerCase()}`}
               >{characterData.rarity}</span
             >
           </div>
-          <div style="text-align: center;">
-            <div
-              style="color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
-            >
+          <div class="character-info-item">
+            <div class="character-info-label">
               Element
             </div>
             <span class={`element-badge ${characterData.element.toLowerCase()}`}
               >{characterData.element}</span
             >
           </div>
-          <div style="text-align: center;">
-            <div
-              style="color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
-            >
+          <div class="character-info-item">
+            <div class="character-info-label">
               Role
             </div>
             <span
@@ -108,9 +85,7 @@ const factionData = getFactionData(characterData.faction);
             >
           </div>
           <div class="faction-section">
-            <div
-              style="color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
-            >
+            <div class="character-info-label">
               Faction
             </div>
             <span
@@ -122,7 +97,7 @@ const factionData = getFactionData(characterData.faction);
               {factionData?.name || characterData.faction}
               {
                 factionData?.chineseName && (
-                  <span class="faction-chinese-name" style="margin-left: 0.5rem; font-weight: 500;">
+                  <span class="faction-chinese-name">
                     ({factionData.chineseName})
                   </span>
                 )
@@ -134,166 +109,97 @@ const factionData = getFactionData(characterData.faction);
     </div>
 
     <!-- Complete Stats Box (Right) -->
-    <div style="flex: 1.8; min-width: 500px;">
-      <div
-        style="background: linear-gradient(135deg, var(--neutral-50) 60%, var(--bg-primary) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,172,193,0.15); padding: 2rem; border: 1px solid var(--teal-crystal); width: 100%;"
-      >
+    <div class="character-stats-container">
+      <div class="character-stats-box">
         <!-- Base Stats -->
-        <h3
-          style="color: var(--text-primary); margin: 0 0 1rem 0; text-align: center; font-size: 1.4rem; border-bottom: 2px solid var(--teal-crystal); padding-bottom: 0.5rem;"
-        >
+        <h3 class="character-stats-title">
           Base Stats
         </h3>
 
         <!-- Core Combat Stats -->
-        <h4 style="color: var(--text-primary); margin: 0 0 1rem 0; font-size: 1.1rem;">
+        <h4 class="character-stats-subtitle">
           Core Combat Stats
         </h4>
-        <div
-          class="stats-grid"
-          style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
-        >
-          <div
-            class="stat-item"
-            style="text-align:center; background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--amber-glow);"
-          >
-            <div
-              class="stat-label"
-              style="color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
-            >
+        <div class="character-stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">
               HP
             </div>
-            <div
-              class="stat-value"
-              style="color: var(--teal-crystal); font-weight: 700; font-size: 1rem;"
-            >
+            <div class="stat-value">
               {characterData.stats.hp}
             </div>
           </div>
-          <div
-            class="stat-item"
-            style="text-align:center; background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--amber-glow);"
-          >
-            <div
-              class="stat-label"
-              style="color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
-            >
+          <div class="stat-item">
+            <div class="stat-label">
               Attack
             </div>
-            <div
-              class="stat-value"
-              style="color: var(--teal-crystal); font-weight: 700; font-size: 1rem;"
-            >
+            <div class="stat-value">
               {characterData.stats.attack}
             </div>
           </div>
-          <div
-            class="stat-item"
-            style="text-align:center; background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--amber-glow);"
-          >
-            <div
-              class="stat-label"
-              style="color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
-            >
+          <div class="stat-item">
+            <div class="stat-label">
               Defense
             </div>
-            <div
-              class="stat-value"
-              style="color: var(--teal-crystal); font-weight: 700; font-size: 1rem;"
-            >
+            <div class="stat-value">
               {characterData.stats.defense}
             </div>
           </div>
         </div>
 
         <!-- Additional Stats -->
-        <h4 style="color: var(--text-primary); margin: 0 0 1rem 0; font-size: 1.1rem;">
+        <h4 class="character-stats-subtitle">
           Additional Stats
         </h4>
-        <div
-          class="stats-grid"
-          style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem;"
-        >
-          <div
-            class="stat-item"
-            style="text-align:center; background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--amber-glow);"
-          >
-            <div
-              class="stat-label"
-              style="color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
-            >
+        <div class="character-stats-grid additional-stats">
+          <div class="stat-item">
+            <div class="stat-label small">
               Energy Regen
             </div>
-            <div
-              class="stat-value"
-              style="color: var(--teal-crystal); font-weight: 700; font-size: 0.95rem;"
-            >
+            <div class="stat-value small">
               0.25/s
             </div>
           </div>
-          <div
-            class="stat-item"
-            style="text-align:center; background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--amber-glow);"
-          >
-            <div
-              class="stat-label"
-              style="color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
-            >
+          <div class="stat-item">
+            <div class="stat-label small">
               Crit Rate
             </div>
-            <div
-              class="stat-value"
-              style="color: var(--teal-crystal); font-weight: 700; font-size: 0.95rem;"
-            >
+            <div class="stat-value small">
               0%
             </div>
           </div>
-          <div
-            class="stat-item"
-            style="text-align:center; background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--amber-glow);"
-          >
-            <div
-              class="stat-label"
-              style="color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
-            >
+          <div class="stat-item">
+            <div class="stat-label small">
               Crit Damage
             </div>
-            <div
-              class="stat-value"
-              style="color: var(--teal-crystal); font-weight: 700; font-size: 0.95rem;"
-            >
+            <div class="stat-value small">
               50%
             </div>
           </div>
         </div>
 
         <!-- Class Section -->
-        <h4 style="color: var(--text-primary); margin: 1.5rem 0 1rem 0; font-size: 1.1rem;">
+        <h4 class="character-class-section character-stats-subtitle">
           Class
         </h4>
-        <div
-          style="background: var(--bg-primary); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--amber-glow); display: flex; align-items: center; gap: 1.5rem;"
-        >
+        <div class="character-class-box">
           <img
             src={`/images/games/zone-nova/classes/1${characterData.class}.jpg`}
             alt={`${characterData.class} class icon`}
             width="48"
             height="48"
             loading="lazy"
-            style="border-radius: 8px; object-fit: contain; background: rgba(255, 255, 255, 0.1); padding: 4px; border: 1px solid var(--teal-crystal);"
+            class="character-class-icon"
           />
-          <div style="flex: 1;">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+          <div class="character-class-content">
+            <div class="character-class-badges">
               <span
                 class={`class-badge ${characterData.class ? characterData.class.toLowerCase() : 'unknown'}`}
                 >{characterData.class || 'TBA'}</span
               >
-              <span style="color: var(--text-secondary); font-size: 0.9rem;"
-                >({characterData.role} Role)</span
-              >
             </div>
-            <p style="color: var(--text-muted); margin: 0; font-size: 0.85rem; line-height: 1.4;">
-              Memory Compatibility: <strong style="color: var(--teal-crystal);"
+            <p class="character-class-compatibility">
+              Memory Compatibility: <strong class="character-class-highlight"
                 >{characterData.class}</strong
               > class only
             </p>
@@ -305,108 +211,81 @@ const factionData = getFactionData(characterData.faction);
 </section>
 
 <!-- Skills Section -->
-<section class="content-section">
+<section class="content-section skills-section">
   <h2 class="section-title">Skills</h2>
 
-  <div
-    class="skill-card"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(255,183,77,0.1); border: 1px solid var(--amber-glow);"
-  >
-    <div
-      style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;"
-    >
-      <h3 style="color: var(--text-primary); font-size: 1.3rem; font-weight: 700; margin: 0;">
+  <div class="skill-card normal-attack">
+    <div class="skill-header">
+      <h3 class="skill-title">
         {characterData.skills.normal.name}
       </h3>
       <span class="skill-badge normal-attack"> Normal Attack </span>
     </div>
-    <p style="color: var(--text-primary); line-height: 1.6; margin: 0; font-size: 1rem;">
+    <p class="skill-description">
       {characterData.skills.normal.description}
     </p>
   </div>
 
-  <div
-    class="skill-card"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--teal-crystal); box-shadow: 0 2px 8px rgba(0,172,193,0.1); border: 1px solid var(--teal-crystal);"
-  >
-    <div
-      style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;"
-    >
-      <h3 style="color: var(--text-primary); font-size: 1.3rem; font-weight: 700; margin: 0;">
+  <div class="skill-card auto-skill">
+    <div class="skill-header">
+      <h3 class="skill-title">
         {characterData.skills.auto.name}
       </h3>
-      <div style="display:flex; align-items:center; gap:0.5rem;">
+      <div class="skill-meta">
         <span class="skill-badge auto-skill"> Auto Skill </span>
-        <span style="color: var(--teal-crystal); font-size:0.95rem; font-weight:600;">
+        <span class="skill-cooldown">
           Cooldown: {characterData.skills.auto.cooldown}
         </span>
       </div>
     </div>
-    <p style="color: var(--text-primary); line-height: 1.6; margin: 0; font-size: 1rem;">
+    <p class="skill-description">
       {characterData.skills.auto.description}
     </p>
   </div>
 
-  <div
-    class="skill-card"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--amber-glow); box-shadow: 0 2px 8px rgba(255,183,77,0.1); border: 1px solid var(--amber-glow);"
-  >
-    <div
-      style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;"
-    >
-      <h3 style="color: var(--text-primary); font-size: 1.3rem; font-weight: 700; margin: 0;">
+  <div class="skill-card ultimate">
+    <div class="skill-header">
+      <h3 class="skill-title">
         {characterData.skills.ultimate.name}
       </h3>
-      <div style="display:flex; align-items:center; gap:0.5rem;">
+      <div class="skill-meta">
         <span class="skill-badge ultimate"> Ultimate </span>
-        <span style="color: var(--amber-glow); font-size:0.95rem; font-weight:600;">
+        <span class="skill-cost">
           Cost: {characterData.skills.ultimate.energyCost}
         </span>
       </div>
     </div>
-    <p style="color: var(--text-primary); line-height: 1.6; margin: 0; font-size: 1rem;">
+    <p class="skill-description">
       {characterData.skills.ultimate.description}
     </p>
   </div>
 
-  <div
-    class="skill-card"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--rose-quartz); box-shadow: 0 2px 8px rgba(233,30,99,0.1); border: 1px solid var(--rose-quartz);"
-  >
-    <div
-      style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;"
-    >
-      <h3 style="color: var(--text-primary); font-size: 1.3rem; font-weight: 700; margin: 0;">
+  <div class="skill-card passive">
+    <div class="skill-header">
+      <h3 class="skill-title">
         {characterData.skills.passive.name}
       </h3>
       <span class="skill-badge passive"> Passive </span>
     </div>
-    <p style="color: var(--text-primary); line-height: 1.6; margin: 0; font-size: 1rem;">
+    <p class="skill-description">
       {characterData.skills.passive.description}
     </p>
   </div>
 
   <!-- Team Skill -->
-  <div
-    class="skill-card"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--cosmic-purple); box-shadow: 0 2px 8px rgba(138,43,226,0.1); border: 1px solid var(--cosmic-purple);"
-  >
-    <div
-      style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;"
-    >
-      <h3 style="color: var(--text-primary); font-size: 1.3rem; font-weight: 700; margin: 0;">
+  <div class="skill-card team-skill">
+    <div class="skill-header">
+      <h3 class="skill-title">
         {characterData.teamSkill.name}
       </h3>
       <span class="skill-badge team-skill"> Team Skill </span>
     </div>
-    <p style="color: var(--text-primary); line-height: 1.6; margin: 0 0 1rem 0; font-size: 1rem;">
+    <p class="skill-description">
       {characterData.teamSkill.description}
     </p>
-    <div
-      style="background: rgba(138,43,226,0.1); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid rgba(138,43,226,0.2);"
-    >
-      <strong style="color: var(--cosmic-purple);">Requires:</strong>
-      <span style="color: var(--text-primary);">
+    <div class="team-skill-requirements">
+      <strong>Requires:</strong>
+      <span>
         2 {characterData.teamSkill.requirements.faction} OR 2 {
           characterData.teamSkill.requirements.element
         } characters</span
@@ -420,42 +299,33 @@ const factionData = getFactionData(characterData.faction);
   <h2 class="section-title">Node Tree</h2>
 
   <!-- Node Tree Description -->
-  <div
-    class="node-tree-description"
-    style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 2.5rem; border: 2px solid var(--teal-crystal); box-shadow: 0 4px 18px rgba(0,172,193,0.15);"
-  >
-    <div class="description-content" style="display: flex; align-items: flex-start; gap: 1.5rem;">
-      <div class="description-image" style="flex-shrink: 0;">
+  <div class="node-tree-description">
+    <div class="description-content">
+      <div class="description-image">
         <img
           src="/images/games/zone-nova/nodetree/FullTree.jpg"
           alt="Complete Node Tree"
           width="120"
           height="120"
-          style="border-radius: 8px; border: 2px solid var(--teal-crystal); box-shadow: 0 4px 12px rgba(0,172,193,0.2);"
           loading="lazy"
         />
       </div>
-      <div class="description-text" style="flex: 1; min-width: 0;">
-        <p
-          style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0 0 1rem 0;"
-        >
-          This is the <strong style="color: var(--teal-crystal);">Node Tree</strong> - there are 3 main
+      <div class="description-text">
+        <p class="node-tree-intro">
+          This is the <strong>Node Tree</strong> - there are 3 main
           components:
         </p>
-        <ul
-          class="node-components"
-          style="color: var(--text-primary); font-size: 1rem; line-height: 1.6; margin: 0; padding-left: 1.5rem;"
-        >
-          <li style="margin-bottom: 0.8rem;">
-            <strong style="color: var(--amber-glow);">Skills</strong> - Level up to 10 and unlock the
+        <ul class="node-components">
+          <li>
+            <strong class="highlight-amber">Skills</strong> - Level up to 10 and unlock the
             last 4 levels on Dupe 3 and 5
           </li>
-          <li style="margin-bottom: 0.8rem;">
-            <strong style="color: var(--teal-crystal);">3 Main Segments</strong> - Give the most boosts
+          <li>
+            <strong class="highlight-teal">3 Main Segments</strong> - Give the most boosts
             (45% HP and ATK total), providing massive stat increases that are very important
           </li>
-          <li style="margin-bottom: 0;">
-            <strong style="color: var(--cosmic-purple);">Stat Nodes</strong> - 10 specialized nodes depending
+          <li>
+            <strong class="highlight-purple">Stat Nodes</strong> - 10 specialized nodes depending
             on the character's main kit
           </li>
         </ul>
@@ -464,70 +334,51 @@ const factionData = getFactionData(characterData.faction);
   </div>
 
   <!-- 1. Skill Level Up -->
-  <h3 style="color: var(--text-primary); margin: 2rem 0 1rem 0; font-size: 1.4rem;">
+  <h3 class="node-section-title">
     1. Skill Level Up
   </h3>
-  <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1rem;">
-    5 types of skills that can be leveled up:
+  <p class="node-section-subtitle">
+    4 types of skills that can be leveled up, Team skill don't need level up :
   </p>
 
-  <div
-    class="skill-levelup-section"
-    style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;"
-  >
-    <div class="skill-image" style="flex-shrink: 0;">
+  <div class="skill-levelup-section">
+    <div class="skill-image">
       <img
         src="/images/games/zone-nova/nodetree/skills.jpg"
         alt="Skill Node Tree"
         width="100"
         height="100"
-        style="border-radius: 8px; border: 2px solid var(--amber-glow);"
         loading="lazy"
       />
     </div>
-    <div class="skill-content" style="flex: 1; min-width: 0;">
-      <div
-        style="background: var(--bg-primary); border: 1px solid var(--amber-glow); border-radius: 12px; padding: 1.2rem;"
-      >
-        <h4 style="color: var(--amber-glow); margin: 0 0 1rem 0; font-size: 1.1rem;">
+    <div class="skill-content">
+      <div class="skill-types-box">
+        <h4 class="skill-types-title">
           Skill Types:
         </h4>
-        <div
-          class="skill-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.6rem;"
-        >
-          <div
-            style="background: rgba(255,183,77,0.1); border: 1px solid rgba(255,183,77,0.2); border-radius: 6px; padding: 0.6rem; text-align: center;"
-          >
-            <div style="color: var(--text-primary); font-weight: 600; font-size: 0.85rem;">
+        <div class="skill-grid">
+          <div class="skill-type-item">
+            <div class="skill-type-name">
               Normal Attack
             </div>
           </div>
-          <div
-            style="background: rgba(0,172,193,0.1); border: 1px solid rgba(0,172,193,0.2); border-radius: 6px; padding: 0.6rem; text-align: center;"
-          >
-            <div style="color: var(--text-primary); font-weight: 600; font-size: 0.85rem;">
+          <div class="skill-type-item auto-skill">
+            <div class="skill-type-name">
               Auto Skill
             </div>
           </div>
-          <div
-            style="background: rgba(255,183,77,0.1); border: 1px solid rgba(255,183,77,0.2); border-radius: 6px; padding: 0.6rem; text-align: center;"
-          >
-            <div style="color: var(--text-primary); font-weight: 600; font-size: 0.85rem;">
+          <div class="skill-type-item">
+            <div class="skill-type-name">
               Ultimate
             </div>
           </div>
-          <div
-            style="background: rgba(233,30,99,0.1); border: 1px solid rgba(233,30,99,0.2); border-radius: 6px; padding: 0.6rem; text-align: center;"
-          >
-            <div style="color: var(--text-primary); font-weight: 600; font-size: 0.85rem;">
+          <div class="skill-type-item passive">
+            <div class="skill-type-name">
               Passive
             </div>
           </div>
-          <div
-            style="background: rgba(138,43,226,0.1); border: 1px solid rgba(138,43,226,0.2); border-radius: 6px; padding: 0.6rem; text-align: center;"
-          >
-            <div style="color: var(--text-primary); font-weight: 600; font-size: 0.85rem;">
+          <div class="skill-type-item team-skill">
+            <div class="skill-type-name">
               Team Skill
             </div>
           </div>
@@ -537,165 +388,108 @@ const factionData = getFactionData(characterData.faction);
   </div>
 
   <!-- 2. ATK & HP Increase -->
-  <h3 style="color: var(--text-primary); margin: 2rem 0 1rem 0; font-size: 1.4rem;">
+  <h3 class="node-section-title">
     2. ATK & HP Increase
   </h3>
-  <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1rem;">
+  <p class="node-section-subtitle">
     3 tiers of stat increases - prioritize these first!
   </p>
 
-  <div
-    class="atk-hp-nodes"
-    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;"
-  >
-    <div
-      class="node-tier"
-      style="background: var(--bg-primary); border: 2px solid var(--teal-crystal); border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; gap: 0.8rem;"
-    >
+  <div class="atk-hp-nodes">
+    <div class="node-tier tier-1">
       <img
         src="/images/games/zone-nova/nodetree/1.jpg"
         alt="10% ATK & HP Node"
         width="45"
         height="45"
-        style="border-radius: 6px; border: 1px solid var(--teal-crystal); flex-shrink: 0;"
         loading="lazy"
       />
-      <div style="min-width: 0;">
-        <div style="color: var(--teal-crystal); font-weight: 700; font-size: 1rem;">
+      <div class="node-tier-content">
+        <div class="node-tier-title">
           10% ATK & HP
         </div>
-        <div style="color: var(--text-secondary); font-size: 0.85rem;">Rank 2 Required</div>
+        <div class="node-tier-requirement">Rank 2 Required</div>
       </div>
     </div>
-    <div
-      class="node-tier"
-      style="background: var(--bg-primary); border: 2px solid var(--amber-glow); border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; gap: 0.8rem;"
-    >
+    <div class="node-tier tier-2">
       <img
         src="/images/games/zone-nova/nodetree/2.jpg"
         alt="15% ATK & HP Node"
         width="45"
         height="45"
-        style="border-radius: 6px; border: 1px solid var(--amber-glow); flex-shrink: 0;"
         loading="lazy"
       />
-      <div style="min-width: 0;">
-        <div style="color: var(--amber-glow); font-weight: 700; font-size: 1rem;">15% ATK & HP</div>
-        <div style="color: var(--text-secondary); font-size: 0.85rem;">Rank 4 Required</div>
+      <div class="node-tier-content">
+        <div class="node-tier-title">15% ATK & HP</div>
+        <div class="node-tier-requirement">Rank 4 Required</div>
       </div>
     </div>
-    <div
-      class="node-tier"
-      style="background: var(--bg-primary); border: 2px solid var(--rose-quartz); border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; gap: 0.8rem;"
-    >
+    <div class="node-tier tier-3">
       <img
         src="/images/games/zone-nova/nodetree/3.jpg"
         alt="20% ATK & HP Node"
         width="45"
         height="45"
-        style="border-radius: 6px; border: 1px solid var(--rose-quartz); flex-shrink: 0;"
         loading="lazy"
       />
-      <div style="min-width: 0;">
-        <div style="color: var(--rose-quartz); font-weight: 700; font-size: 1rem;">
+      <div class="node-tier-content">
+        <div class="node-tier-title">
           20% ATK & HP
         </div>
-        <div style="color: var(--text-secondary); font-size: 0.85rem;">Rank 6 Required</div>
+        <div class="node-tier-requirement">Rank 6 Required</div>
       </div>
     </div>
   </div>
 
-  <div
-    style="background: rgba(0,172,193,0.1); border-radius: 8px; padding: 1rem; border: 1px solid rgba(0,172,193,0.2); margin-bottom: 2rem;"
-  >
-    <p style="color: var(--text-primary); margin: 0; font-weight: 600;">
+  <div class="node-info-box teal">
+    <p class="node-info-text">
       💡 Materials can be farmed in dungeons and weekly dungeons. These provide the most stats
       increase!
     </p>
   </div>
 
   <!-- 3. Stat Increase Nodes -->
-  <h3 style="color: var(--text-primary); margin: 2rem 0 1rem 0; font-size: 1.4rem;">
+  <h3 class="node-section-title">
     3. Stat Increase Nodes
   </h3>
-  <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1rem;">
+  <p class="node-section-subtitle">
     Each character has 10 unique stat nodes. Activate 8 by level 70!
   </p>
 
-  <div
-    class="stat-nodes-info"
-    style="background: var(--bg-primary); border: 1px solid var(--cosmic-purple); border-radius: 12px; padding: 1.2rem; margin-bottom: 1.5rem;"
-  >
-    <h4 style="color: var(--cosmic-purple); margin: 0 0 1rem 0; font-size: 1.1rem;">
+  <div class="stat-nodes-info">
+    <h4 class="stat-nodes-title">
       Available Stat Types:
     </h4>
-    <div
-      class="stat-grid"
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.5rem;"
-    >
-      <div
-        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
-      >
-        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
-          >ATK Increase</span
-        >
+    <div class="stat-grid">
+      <div class="stat-grid-item">
+        <span class="stat-grid-text">ATK Increase</span>
       </div>
-      <div
-        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
-      >
-        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
-          >DEF Increase</span
-        >
+      <div class="stat-grid-item">
+        <span class="stat-grid-text">DEF Increase</span>
       </div>
-      <div
-        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
-      >
-        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
-          >HP Increase</span
-        >
+      <div class="stat-grid-item">
+        <span class="stat-grid-text">HP Increase</span>
       </div>
-      <div
-        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
-      >
-        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
-          >Healing Inc</span
-        >
+      <div class="stat-grid-item">
+        <span class="stat-grid-text">Healing Inc</span>
       </div>
-      <div
-        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
-      >
-        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
-          >Penetration</span
-        >
+      <div class="stat-grid-item">
+        <span class="stat-grid-text">Penetration</span>
       </div>
-      <div
-        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
-      >
-        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
-          >Element Inc</span
-        >
+      <div class="stat-grid-item">
+        <span class="stat-grid-text">Element Inc</span>
       </div>
-      <div
-        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
-      >
-        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
-          >Crit Rate</span
-        >
+      <div class="stat-grid-item">
+        <span class="stat-grid-text">Crit Rate</span>
       </div>
-      <div
-        style="background: rgba(138,43,226,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; text-align: center; border: 1px solid rgba(138,43,226,0.2);"
-      >
-        <span style="color: var(--text-primary); font-weight: 600; font-size: 0.8rem;"
-          >Crit Damage</span
-        >
+      <div class="stat-grid-item">
+        <span class="stat-grid-text">Crit Damage</span>
       </div>
     </div>
   </div>
 
-  <div
-    style="background: rgba(255,183,77,0.1); border-radius: 8px; padding: 1rem; border: 1px solid rgba(255,183,77,0.2);"
-  >
-    <p style="color: var(--text-primary); margin: 0; font-weight: 600;">
+  <div class="node-info-box amber">
+    <p class="node-info-text">
       📋 <strong>Note:</strong> Some nodes require Level 80, others unlock earlier. Activation requirements
       are fairly simple.
     </p>
@@ -703,21 +497,17 @@ const factionData = getFactionData(characterData.faction);
 </section>
 
 <!-- Awakening Effects -->
-<section class="content-section">
+<section class="content-section awakening-section">
   <h2 class="section-title">Awakening Effects</h2>
   {
     characterData.awakenings.map((awakening, index) => (
-      <div
-        class="skill-card"
-        style={`background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid ${awakening.level <= 3 ? 'var(--teal-crystal)' : awakening.level <= 5 ? 'var(--amber-glow)' : 'var(--rose-quartz)'}; box-shadow: 0 2px 8px rgba(0,172,193,0.1); border: 1px solid var(--teal-crystal);`}
-      >
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-          <h3 style="color: var(--text-primary); font-size: 1.3rem; font-weight: 700; margin: 0;">
-            Dupe {awakening.level}
+      <div class={`awakening-card dupe-${awakening.level}`}>
+        <div class="awakening-header">
+          <h3 class="awakening-title">
+            Dupe <span class="awakening-level-number">{awakening.level}</span>
           </h3>
-          <span class={`awakening-badge dupe-${awakening.level}`}>Dupe {awakening.level}</span>
         </div>
-        <p style="color: var(--text-primary); line-height: 1.6; margin: 0; font-size: 1rem;">
+        <p class="awakening-description">
           <strong>Effect:</strong> {awakening.effect}
         </p>
       </div>
@@ -726,22 +516,16 @@ const factionData = getFactionData(characterData.faction);
 </section>
 
 <!-- Memory Card Section -->
-<section class="content-section">
-  <h2 class="section-title">
+<section class="content-section memory-card-section">
+  <h2 class="section-title memory-card-title">
     Memory Card: {characterData.memoryCard.name}
   </h2>
 
-  <div class="overview-flex" style="gap: 2.5rem; margin-bottom: 2rem;">
+  <div class="memory-card-flex">
     <!-- Memory Card Image (Left) -->
-    <div
-      style="flex: 1; min-width: 200px; max-width: 300px; display: flex; justify-content: center;"
-    >
-      <div
-        style="background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,172,193,0.15); padding: 1.5rem; border: 1.5px solid var(--teal-crystal); display: flex; justify-content: center; align-items: center;"
-      >
-        <div
-          style="width: 200px; height: 300px; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,172,193,0.20); overflow: hidden;"
-        >
+    <div class="memory-card-image-container">
+      <div class="memory-card-image-box">
+        <div class="memory-card-image-wrapper">
           <SimpleOptimizedImage
             src={`/images/games/zone-nova/memories/${characterData.memoryCard.image}.jpg`}
             alt={characterData.memoryCard.name}
@@ -754,81 +538,47 @@ const factionData = getFactionData(characterData.faction);
     </div>
 
     <!-- Memory Stats (Right) -->
-    <div style="flex: 2; min-width: 300px;">
-      <div
-        style="background: linear-gradient(135deg, var(--neutral-50) 60%, var(--bg-primary) 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,172,193,0.15); padding: 2rem; border: 1px solid var(--teal-crystal); width: 100%;"
-      >
-        <h3
-          style="color: var(--text-primary); margin: 0 0 1rem 0; text-align: center; font-size: 1.4rem; border-bottom: 2px solid var(--teal-crystal); padding-bottom: 0.5rem;"
-        >
+    <div class="memory-card-stats-container">
+      <div class="memory-card-stats-box">
+        <h3 class="memory-card-stats-title">
           Memory Card Stats
         </h3>
 
-        <div
-          class="stats-grid"
-          style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
-        >
-          <div
-            class="stat-item"
-            style="text-align:center; background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--amber-glow);"
-          >
-            <div
-              class="stat-label"
-              style="color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
-            >
+        <div class="character-stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">
               HP
             </div>
-            <div
-              class="stat-value"
-              style="color: var(--teal-crystal); font-weight: 700; font-size: 1rem;"
-            >
+            <div class="stat-value">
               {characterData.memoryCard.stats.hp}
             </div>
           </div>
-          <div
-            class="stat-item"
-            style="text-align:center; background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--amber-glow);"
-          >
-            <div
-              class="stat-label"
-              style="color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
-            >
+          <div class="stat-item">
+            <div class="stat-label">
               Attack
             </div>
-            <div
-              class="stat-value"
-              style="color: var(--teal-crystal); font-weight: 700; font-size: 1rem;"
-            >
+            <div class="stat-value">
               {characterData.memoryCard.stats.attack}
             </div>
           </div>
-          <div
-            class="stat-item"
-            style="text-align:center; background: var(--bg-primary); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--amber-glow);"
-          >
-            <div
-              class="stat-label"
-              style="color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
-            >
+          <div class="stat-item">
+            <div class="stat-label">
               Defense
             </div>
-            <div
-              class="stat-value"
-              style="color: var(--teal-crystal); font-weight: 700; font-size: 1rem;"
-            >
+            <div class="stat-value">
               {characterData.memoryCard.stats.defense}
             </div>
           </div>
         </div>
 
         <!-- Memory Effects -->
-        <h4 style="color: var(--text-primary); margin: 1.5rem 0 1rem 0; font-size: 1.1rem;">
+        <h4 class="memory-effects-title">
           Memory Effects
         </h4>
         {
           characterData.memoryCard.effects.map(effect => (
-            <div style="background: rgba(0,172,193,0.1); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 0.5rem; border: 1px solid rgba(0,172,193,0.2);">
-              <p style="color: var(--text-primary); margin: 0; font-size: 1rem;">• {effect}</p>
+            <div class="memory-effect-item">
+              <p class="memory-effect-text">• {effect}</p>
             </div>
           ))
         }
@@ -837,15 +587,11 @@ const factionData = getFactionData(characterData.faction);
   </div>
 
   <!-- Equipment Limitation -->
-  <div
-    style="background: linear-gradient(135deg, rgba(233,30,99,0.1) 0%, rgba(233,30,99,0.05) 100%); border-radius: 12px; padding: 1.5rem; border: 2px solid var(--rose-quartz); position: relative; overflow: hidden; margin-top: 1.5rem;"
-  >
-    <div style="position: relative; z-index: 1;">
+  <div class="equipment-limitation">
+    <div class="equipment-limitation-content">
       <!-- Title -->
-      <div style="text-align: center; margin-bottom: 1.5rem;">
-        <h4
-          style="background: linear-gradient(135deg, var(--rose-quartz), #c2185b); color: #fff; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; box-shadow: 0 3px 8px rgba(233,30,99,0.3); margin: 0; display: inline-block;"
-        >
+      <div class="equipment-limitation-title-container">
+        <h4 class="equipment-limitation-title">
           ⚠️ Equipment Limitation
         </h4>
       </div>
@@ -853,27 +599,26 @@ const factionData = getFactionData(characterData.faction);
       <!-- Content Layout: Image Left, Text Right -->
       {
         characterData.class && (
-          <div style="display: flex; align-items: center; gap: 2rem; max-width: 600px; margin: 0 auto;">
+          <div class="equipment-limitation-layout">
             {/* Image on Left */}
-            <div style="flex-shrink: 0;">
+            <div class="equipment-limitation-image">
               <img
                 src={`/images/games/zone-nova/classes/1${characterData.class}.jpg`}
                 alt={characterData.class}
                 width="80"
                 height="80"
-                style="border-radius: 10px; object-fit: cover; box-shadow: 0 3px 10px rgba(233,30,99,0.2); border: 2px solid var(--rose-quartz);"
                 loading="lazy"
               />
             </div>
 
             {/* Content on Right */}
-            <div style="flex: 1; text-align: left;">
-              <h5 style="margin: 0 0 0.75rem 0; color: var(--rose-quartz); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; line-height: 1.2;">
+            <div class="equipment-limitation-text">
+              <h5 class="equipment-limitation-class">
                 {characterData.class} Class Only
               </h5>
-              <p style="margin: 0; color: var(--text-primary); font-weight: 600; font-size: 1rem; line-height: 1.5;">
+              <p class="equipment-limitation-description">
                 This memory card is restricted to{' '}
-                <strong style="color: var(--rose-quartz);">{characterData.class}</strong> class
+                <strong>{characterData.class}</strong> class
                 characters only.
               </p>
             </div>
@@ -881,148 +626,9 @@ const factionData = getFactionData(characterData.faction);
         )
       }
     </div>
-
-    <!-- Decorative background pattern -->
-    <div
-      style="position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: radial-gradient(circle, rgba(233,30,99,0.1), transparent); border-radius: 50%; transform: translate(50%, -50%);"
-    >
-    </div>
-    <div
-      style="position: absolute; bottom: 0; left: 0; width: 50px; height: 50px; background: radial-gradient(circle, rgba(233,30,99,0.08), transparent); border-radius: 50%; transform: translate(-40%, 40%);"
-    >
-    </div>
   </div>
 </section>
 
-<!-- Mobile-responsive CSS for Node Tree section -->
-<style>
-  @media (max-width: 768px) {
-    /* Node Tree Description - Better mobile layout */
-    .node-tree-description {
-      padding: 1.2rem !important;
-    }
-
-    .node-tree-description .description-content {
-      flex-direction: column !important;
-      align-items: center !important;
-      text-align: center !important;
-      gap: 1.2rem !important;
-    }
-
-    .node-tree-description .description-image {
-      background: rgba(0, 172, 193, 0.1) !important;
-      padding: 0.8rem !important;
-      border-radius: 12px !important;
-      border: 1px solid rgba(0, 172, 193, 0.3) !important;
-    }
-
-    .node-tree-description .description-image img {
-      width: 100px !important;
-      height: 100px !important;
-      border: 1px solid var(--teal-crystal) !important;
-    }
-
-    .node-tree-description .node-components {
-      padding-left: 1rem !important;
-    }
-
-    /* Skill Level Up - Better mobile layout with image */
-    .skill-levelup-section {
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 1.2rem !important;
-    }
-
-    .skill-levelup-section .skill-image {
-      background: rgba(255, 183, 77, 0.1) !important;
-      padding: 1rem !important;
-      border-radius: 12px !important;
-      border: 1px solid rgba(255, 183, 77, 0.3) !important;
-    }
-
-    .skill-levelup-section .skill-image img {
-      width: 80px !important;
-      height: 80px !important;
-      border-radius: 8px !important;
-    }
-
-    .skill-levelup-section .skill-content {
-      width: 100% !important;
-    }
-
-    .skill-levelup-section .skill-content > div {
-      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%) !important;
-      border: 2px solid var(--amber-glow) !important;
-      box-shadow: 0 2px 12px rgba(255, 183, 77, 0.15) !important;
-    }
-
-    .skill-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 0.8rem !important;
-    }
-
-    .skill-grid > div {
-      padding: 0.8rem !important;
-      border-radius: 8px !important;
-    }
-
-    /* ATK & HP Nodes - Better mobile cards */
-    .atk-hp-nodes {
-      grid-template-columns: 1fr !important;
-      gap: 1rem !important;
-    }
-
-    .node-tier {
-      padding: 1.2rem !important;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1) !important;
-    }
-
-    .node-tier img {
-      width: 50px !important;
-      height: 50px !important;
-      border-radius: 8px !important;
-    }
-
-    /* Stat Nodes - Clean mobile grid */
-    .stat-nodes-info {
-      padding: 1.2rem !important;
-    }
-
-    .stat-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 0.6rem !important;
-    }
-
-    .stat-grid > div {
-      padding: 0.6rem 0.4rem !important;
-      border-radius: 8px !important;
-    }
-
-    .stat-grid span {
-      font-size: 0.8rem !important;
-    }
-  }
-
-  @media (max-width: 480px) {
-    /* Extra small screens */
-    .node-tree-description {
-      padding: 1rem !important;
-    }
-
-    .skill-levelup-section .skill-content > div {
-      padding: 1rem !important;
-    }
-
-    .stat-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
-    }
-
-    .atk-hp-nodes .node-tier {
-      padding: 0.8rem !important;
-      gap: 0.6rem !important;
-    }
-  }
-</style>
 
 <!-- Minimal JavaScript for progressive enhancement -->
 <script>
