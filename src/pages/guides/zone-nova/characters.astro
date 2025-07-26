@@ -489,9 +489,7 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
             <button class="sort-btn" data-sort="hp">HP</button>
             <button class="sort-btn" data-sort="attack">ATK</button>
             <button class="sort-btn" data-sort="defense">DEF</button>
-            <button class="sort-btn" data-sort="energyRecovery">Energy</button>
             <button class="sort-btn" data-sort="critRate">Crit%</button>
-            <button class="sort-btn" data-sort="critDmg">CritDMG</button>
             <button class="reset-btn" id="reset-table">Reset</button>
           </div>
         </div>
@@ -513,9 +511,7 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
                 <th>HP</th>
                 <th>Attack</th>
                 <th>Defense</th>
-                <th>Energy</th>
                 <th>Crit%</th>
-                <th>CritDMG%</th>
               </tr>
             </thead>
             <tbody id="character-table-body">
@@ -585,9 +581,7 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
                     <td data-sort-key="hp">{char.stats.hp}</td>
                     <td data-sort-key="attack">{char.stats.attack}</td>
                     <td data-sort-key="defense">{char.stats.defense}</td>
-                    <td data-sort-key="energyRecovery">{char.stats.energyRecovery}</td>
                     <td data-sort-key="critRate">{char.stats.critRate}</td>
-                    <td data-sort-key="critDmg">{char.stats.critDmg}</td>
                   </tr>
                 ))
               }
@@ -653,13 +647,7 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
                 </div>
                 <div class="mobile-card-stats mobile-card-stats-secondary">
                   <div>
-                    <span class="stat-label">Energy:</span> {char.stats.energyRecovery}
-                  </div>
-                  <div>
                     <span class="stat-label">Crit%:</span> {char.stats.critRate}
-                  </div>
-                  <div>
-                    <span class="stat-label">CritDMG:</span> {char.stats.critDmg}
                   </div>
                 </div>
               </div>
@@ -728,9 +716,7 @@ import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nov
           hp: '.mobile-card-stats div:nth-child(1)',
           attack: '.mobile-card-stats div:nth-child(2)',
           defense: '.mobile-card-stats div:nth-child(3)',
-          energyRecovery: '.mobile-card-stats-secondary div:nth-child(1)',
-          critRate: '.mobile-card-stats-secondary div:nth-child(2)',
-          critDmg: '.mobile-card-stats-secondary div:nth-child(3)',
+          critRate: '.mobile-card-stats-secondary div:nth-child(1)',
         };
 
         if (sortKey === 'name') {

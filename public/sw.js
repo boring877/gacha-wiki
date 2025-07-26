@@ -9,7 +9,9 @@ const STATIC_ASSETS = [
   '/guides/',
   '/guides/zone-nova/',
   '/manifest.json',
-  '/tabicoin.svg',
+  '/favicon-32x32.png',
+  '/favicon-16x16.png',
+  '/apple-touch-icon.png',
 ];
 
 // Assets to cache

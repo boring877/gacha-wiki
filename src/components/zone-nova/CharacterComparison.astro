@@ -94,6 +94,16 @@ const { selectedCharacters = [] } = Astro.props;
           <option value="Buffer">Buffer</option>
           <option value="Debuffer">Debuffer</option>
         </select>
+        <select class="filter-select" id="class-filter">
+          <option value="">Class</option>
+          <option value="Guardian">Guardian</option>
+          <option value="Warrior">Warrior</option>
+          <option value="Rogue">Rogue</option>
+          <option value="Mage">Mage</option>
+          <option value="Buffer">Buffer</option>
+          <option value="Debuffer">Debuffer</option>
+          <option value="Healer">Healer</option>
+        </select>
         <select class="filter-select" id="rarity-filter">
           <option value="">Rarity</option>
           <option value="SSR">SSR</option>
@@ -108,12 +118,24 @@ const { selectedCharacters = [] } = Astro.props;
           <option value="Holy">Holy</option>
           <option value="Chaos">Chaos</option>
         </select>
+        <select class="filter-select" id="faction-filter">
+          <option value="">Faction</option>
+          <option value="Sapphire">Sapphire</option>
+          <option value="Chemic">Chemic</option>
+          <option value="Avalon">Avalon</option>
+          <option value="Odius">Odius</option>
+          <option value="ASA">ASA</option>
+          <option value="Pingjing City">Pingjing City</option>
+          <option value="Monochrome Nation">Monochrome Nation</option>
+          <option value="Bicta Tower">Bicta Tower</option>
+          <option value="Unaffiliated">Unaffiliated</option>
+        </select>
       </div>
       <div class="sort-controls">
         <button class="sort-btn" data-sort="hp">HP</button>
         <button class="sort-btn" data-sort="attack">ATK</button>
         <button class="sort-btn" data-sort="defense">DEF</button>
-        <button class="sort-btn" data-sort="energyRecovery">Energy</button>
+        <button class="sort-btn" data-sort="critRate">CRIT</button>
         <button class="reset-btn" id="clear-filters">Reset</button>
       </div>
     </div>
@@ -122,7 +144,7 @@ const { selectedCharacters = [] } = Astro.props;
       {
         ZONE_NOVA_CHARACTERS.map(character => (
           <button
-            class="character-card"
+            class="character-select-card"
             data-character-slug={character.slug}
             data-selected={selectedCharacters.includes(character.slug)}
           >
@@ -139,10 +161,47 @@ const { selectedCharacters = [] } = Astro.props;
                 <span class={`rarity-badge ${character.rarity.toLowerCase()}`}>
                   {character.rarity}
                 </span>
-                <span class={`element-badge ${character.element.toLowerCase()}`}>
-                  {character.element}
+                <span
+                  class={`class-badge ${character.class?.toLowerCase().replace(' ', '-') || 'unknown'}`}
+                >
+                  {character.class || 'Unknown'}
                 </span>
-                <span class={`role-badge ${character.role.toLowerCase()}`}>{character.role}</span>
+              </div>
+              <div class="character-stats">
+                <div class="stat-item">
+                  <span class="stat-label">HP</span>
+                  <span class="stat-value">
+                    {typeof character.stats.hp === 'string'
+                      ? character.stats.hp
+                      : character.stats.hp?.toLocaleString() || 'N/A'}
+                  </span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">ATK</span>
+                  <span class="stat-value">
+                    {typeof character.stats.attack === 'string'
+                      ? character.stats.attack
+                      : character.stats.attack?.toLocaleString() || 'N/A'}
+                  </span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">DEF</span>
+                  <span class="stat-value">
+                    {typeof character.stats.defense === 'string'
+                      ? character.stats.defense
+                      : character.stats.defense?.toLocaleString() || 'N/A'}
+                  </span>
+                </div>
+                {character.stats.critRate !== undefined && (
+                  <div class="stat-item crit-rate">
+                    <span class="stat-label">CRIT</span>
+                    <span class="stat-value">
+                      {typeof character.stats.critRate === 'string'
+                        ? character.stats.critRate
+                        : `${character.stats.critRate}%`}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </button>
@@ -171,7 +230,6 @@ const { selectedCharacters = [] } = Astro.props;
                 <div class="portrait-glow"></div>
               </div>
               <h3 class="character-name" data-name="1"></h3>
-              <div class="premium-badges" data-badges="1"></div>
             </div>
           </div>
           <div class="premium-character-column" data-character="2">
@@ -181,7 +239,6 @@ const { selectedCharacters = [] } = Astro.props;
                 <div class="portrait-glow"></div>
               </div>
               <h3 class="character-name" data-name="2"></h3>
-              <div class="premium-badges" data-badges="2"></div>
             </div>
           </div>
           <div class="premium-character-column" data-character="3">
@@ -191,7 +248,6 @@ const { selectedCharacters = [] } = Astro.props;
                 <div class="portrait-glow"></div>
               </div>
               <h3 class="character-name" data-name="3"></h3>
-              <div class="premium-badges" data-badges="3"></div>
             </div>
           </div>
           <div class="premium-character-column" data-character="4">
@@ -201,7 +257,6 @@ const { selectedCharacters = [] } = Astro.props;
                 <div class="portrait-glow"></div>
               </div>
               <h3 class="character-name" data-name="4"></h3>
-              <div class="premium-badges" data-badges="4"></div>
             </div>
           </div>
         </div>
@@ -215,6 +270,20 @@ const { selectedCharacters = [] } = Astro.props;
               <h4>Basic Information</h4>
             </div>
             <div class="premium-stat-row">
+              <div class="stat-label-premium">Rarity</div>
+              <div class="stat-value-premium" data-stat="rarity-1"></div>
+              <div class="stat-value-premium" data-stat="rarity-2"></div>
+              <div class="stat-value-premium" data-stat="rarity-3"></div>
+              <div class="stat-value-premium" data-stat="rarity-4"></div>
+            </div>
+            <div class="premium-stat-row">
+              <div class="stat-label-premium">Class</div>
+              <div class="stat-value-premium" data-stat="class-1"></div>
+              <div class="stat-value-premium" data-stat="class-2"></div>
+              <div class="stat-value-premium" data-stat="class-3"></div>
+              <div class="stat-value-premium" data-stat="class-4"></div>
+            </div>
+            <div class="premium-stat-row">
               <div class="stat-label-premium">Role</div>
               <div class="stat-value-premium" data-stat="role-1"></div>
               <div class="stat-value-premium" data-stat="role-2"></div>
@@ -222,18 +291,18 @@ const { selectedCharacters = [] } = Astro.props;
               <div class="stat-value-premium" data-stat="role-4"></div>
             </div>
             <div class="premium-stat-row">
+              <div class="stat-label-premium">Faction</div>
+              <div class="stat-value-premium" data-stat="faction-1"></div>
+              <div class="stat-value-premium" data-stat="faction-2"></div>
+              <div class="stat-value-premium" data-stat="faction-3"></div>
+              <div class="stat-value-premium" data-stat="faction-4"></div>
+            </div>
+            <div class="premium-stat-row">
               <div class="stat-label-premium">Element</div>
               <div class="stat-value-premium" data-stat="element-1"></div>
               <div class="stat-value-premium" data-stat="element-2"></div>
               <div class="stat-value-premium" data-stat="element-3"></div>
               <div class="stat-value-premium" data-stat="element-4"></div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">Rarity</div>
-              <div class="stat-value-premium" data-stat="rarity-1"></div>
-              <div class="stat-value-premium" data-stat="rarity-2"></div>
-              <div class="stat-value-premium" data-stat="rarity-3"></div>
-              <div class="stat-value-premium" data-stat="rarity-4"></div>
             </div>
           </div>
 
@@ -294,14 +363,21 @@ const { selectedCharacters = [] } = Astro.props;
               <h4>Team Skill</h4>
             </div>
             <div class="premium-stat-row">
-              <div class="stat-label-premium">Combination Skill</div>
+              <div class="stat-label-premium">Skill Name</div>
+              <div class="stat-value-premium team-skill-name" data-stat="teamskillname-1"></div>
+              <div class="stat-value-premium team-skill-name" data-stat="teamskillname-2"></div>
+              <div class="stat-value-premium team-skill-name" data-stat="teamskillname-3"></div>
+              <div class="stat-value-premium team-skill-name" data-stat="teamskillname-4"></div>
+            </div>
+            <div class="premium-stat-row">
+              <div class="stat-label-premium">Description</div>
               <div class="stat-value-premium team-skill" data-stat="teamskill-1"></div>
               <div class="stat-value-premium team-skill" data-stat="teamskill-2"></div>
               <div class="stat-value-premium team-skill" data-stat="teamskill-3"></div>
               <div class="stat-value-premium team-skill" data-stat="teamskill-4"></div>
             </div>
             <div class="premium-stat-row">
-              <div class="stat-label-premium">Conditions</div>
+              <div class="stat-label-premium">Requirements</div>
               <div class="stat-value-premium team-conditions" data-stat="teamconditions-1"></div>
               <div class="stat-value-premium team-conditions" data-stat="teamconditions-2"></div>
               <div class="stat-value-premium team-conditions" data-stat="teamconditions-3"></div>
@@ -331,6 +407,8 @@ const { selectedCharacters = [] } = Astro.props;
         rarity: char.rarity,
         element: char.element,
         role: char.role,
+        class: char.class, // Add class field
+        faction: char.faction, // Add faction field
         image: char.image,
         stats: char.stats || {},
         teamSkill: detailedData?.teamSkill || null,
@@ -352,7 +430,7 @@ const { selectedCharacters = [] } = Astro.props;
   });
 
   function initializeCharacterSelection() {
-    const characterCards = document.querySelectorAll('.character-card');
+    const characterCards = document.querySelectorAll('.character-select-card');
 
     characterCards.forEach(card => {
       card.addEventListener('click', function () {
@@ -388,13 +466,17 @@ const { selectedCharacters = [] } = Astro.props;
   function initializeFilterControls() {
     const rarityFilter = document.getElementById('rarity-filter');
     const roleFilter = document.getElementById('role-filter');
+    const classFilter = document.getElementById('class-filter');
     const elementFilter = document.getElementById('element-filter');
+    const factionFilter = document.getElementById('faction-filter');
     const sortBtns = document.querySelectorAll('.sort-btn');
     const clearFiltersBtn = document.getElementById('clear-filters');
 
     rarityFilter?.addEventListener('change', applyFilters);
     roleFilter?.addEventListener('change', applyFilters);
+    classFilter?.addEventListener('change', applyFilters);
     elementFilter?.addEventListener('change', applyFilters);
+    factionFilter?.addEventListener('change', applyFilters);
 
     sortBtns.forEach(btn => {
       btn.addEventListener('click', function () {
@@ -417,15 +499,19 @@ const { selectedCharacters = [] } = Astro.props;
   function applyFilters() {
     const rarityFilter = document.getElementById('rarity-filter').value;
     const roleFilter = document.getElementById('role-filter').value;
+    const classFilter = document.getElementById('class-filter').value;
     const elementFilter = document.getElementById('element-filter').value;
+    const factionFilter = document.getElementById('faction-filter').value;
 
     // Filter characters
     filteredCharacters = characterDataProcessed.characters.filter(character => {
       const matchesRarity = !rarityFilter || character.rarity === rarityFilter;
       const matchesRole = !roleFilter || character.role === roleFilter;
+      const matchesClass = !classFilter || character.class === classFilter;
       const matchesElement = !elementFilter || character.element === elementFilter;
+      const matchesFaction = !factionFilter || character.faction === factionFilter;
 
-      return matchesRarity && matchesRole && matchesElement;
+      return matchesRarity && matchesRole && matchesClass && matchesElement && matchesFaction;
     });
 
     // Sort characters if a sort is active
@@ -453,8 +539,8 @@ const { selectedCharacters = [] } = Astro.props;
         case 'defense':
           comparison = (bStats.defense || 0) - (aStats.defense || 0);
           break;
-        case 'energyRecovery':
-          comparison = (bStats.energyRecovery || 0) - (aStats.energyRecovery || 0);
+        case 'critRate':
+          comparison = (bStats.critRate || 0) - (aStats.critRate || 0);
           break;
         default:
           comparison = 0;
@@ -468,7 +554,9 @@ const { selectedCharacters = [] } = Astro.props;
   function clearFilters() {
     document.getElementById('rarity-filter').value = '';
     document.getElementById('role-filter').value = '';
+    document.getElementById('class-filter').value = '';
     document.getElementById('element-filter').value = '';
+    document.getElementById('faction-filter').value = '';
 
     // Clear active sort button and reset sort state
     document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
@@ -482,10 +570,21 @@ const { selectedCharacters = [] } = Astro.props;
     const characterGrid = document.querySelector('.character-grid');
 
     characterGrid.innerHTML = filteredCharacters
-      .map(
-        character => `
+      .map(character => {
+        const stats = character.stats || {};
+        const critRateDisplay =
+          stats.critRate !== undefined
+            ? `
+            <div class="stat-item crit-rate">
+              <span class="stat-label">CRIT</span>
+              <span class="stat-value">${typeof stats.critRate === 'string' ? stats.critRate : `${stats.critRate}%`}</span>
+            </div>
+          `
+            : '';
+
+        return `
       <button 
-        class="character-card"
+        class="character-select-card"
         data-character-slug="${character.slug}"
         data-selected="${selectedCharacters.includes(character.slug)}"
       >
@@ -500,13 +599,27 @@ const { selectedCharacters = [] } = Astro.props;
           <h3>${character.name}</h3>
           <div class="character-badges">
             <span class="rarity-badge ${character.rarity.toLowerCase()}">${character.rarity}</span>
-            <span class="element-badge ${character.element.toLowerCase()}">${character.element}</span>
-            <span class="role-badge ${character.role.toLowerCase()}">${character.role}</span>
+            <span class="class-badge ${(character.class || 'unknown').toLowerCase().replace(' ', '-')}">${character.class || 'Unknown'}</span>
+          </div>
+          <div class="character-stats">
+            <div class="stat-item">
+              <span class="stat-label">HP</span>
+              <span class="stat-value">${stats.hp !== undefined ? (typeof stats.hp === 'string' ? stats.hp : stats.hp.toLocaleString()) : 'N/A'}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">ATK</span>
+              <span class="stat-value">${stats.attack !== undefined ? (typeof stats.attack === 'string' ? stats.attack : stats.attack.toLocaleString()) : 'N/A'}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">DEF</span>
+              <span class="stat-value">${stats.defense !== undefined ? (typeof stats.defense === 'string' ? stats.defense : stats.defense.toLocaleString()) : 'N/A'}</span>
+            </div>
+            ${critRateDisplay}
           </div>
         </div>
       </button>
-    `
-      )
+    `;
+      })
       .join('');
 
     // Re-initialize selection functionality
@@ -666,14 +779,7 @@ const { selectedCharacters = [] } = Astro.props;
       nameEl.textContent = character.name;
     }
 
-    const badgesEl = document.querySelector(`.premium-badges[data-badges="${columnIndex}"]`);
-    if (badgesEl) {
-      badgesEl.innerHTML = `
-        <span class="rarity-badge ${character.rarity.toLowerCase()}">${character.rarity}</span>
-        <span class="element-badge ${character.element.toLowerCase()}">${character.element}</span>
-        <span class="role-badge ${character.role.toLowerCase()}">${character.role}</span>
-      `;
-    }
+    // Remove badge display from header - info shown in Basic Information section
 
     // Populate stats
     const stats = character.stats || {};
@@ -691,15 +797,29 @@ const { selectedCharacters = [] } = Astro.props;
     const setBadgeValue = (statName, value, badgeType) => {
       const el = document.querySelector(`[data-stat="${statName}-${columnIndex}"]`);
       if (el) {
-        el.innerHTML = `<span class="${badgeType}-badge ${value.toLowerCase()}">${value}</span>`;
+        // Handle long faction names
+        let displayValue = value;
+        if (badgeType === 'faction' && value.length > 12) {
+          // Create abbreviations for long faction names
+          const abbreviations = {
+            'Monochrome Nation': 'Mono Nation',
+            'Pingjing City': 'Pingjing',
+            'Bicta Tower': 'Bicta',
+          };
+          displayValue = abbreviations[value] || value;
+        }
+
+        el.innerHTML = `<span class="${badgeType}-badge ${value.toLowerCase().replace(/\s+/g, '-')}">${displayValue}</span>`;
         el.classList.add('active');
         el.style.display = 'block';
       }
     };
 
-    setBadgeValue('role', character.role, 'role');
-    setBadgeValue('element', character.element, 'element');
     setBadgeValue('rarity', character.rarity, 'rarity');
+    setBadgeValue('class', character.class, 'class');
+    setBadgeValue('role', character.role, 'role');
+    setBadgeValue('faction', character.faction, 'faction');
+    setBadgeValue('element', character.element, 'element');
 
     // Combat stats
     setStatValue('hp', stats.hp !== undefined ? stats.hp.toLocaleString() : 'N/A');
@@ -709,18 +829,37 @@ const { selectedCharacters = [] } = Astro.props;
     setStatValue('crit', stats.critRate !== undefined ? stats.critRate + '%' : 'N/A');
     setStatValue('critdmg', stats.critDmg !== undefined ? stats.critDmg + '%' : 'N/A');
 
-    // Team skill
+    // Team skill name
+    const teamSkillName = character.teamSkill ? character.teamSkill.name : 'No team skill';
+    setStatValue('teamskillname', teamSkillName);
+
+    // Team skill description
     const teamSkillValue = character.teamSkill
       ? character.teamSkill.description
       : 'No team skill available';
     setStatValue('teamskill', teamSkillValue);
 
-    // Team skill conditions
-    const teamConditionsValue =
-      character.teamSkill && character.teamSkill.requirements
-        ? `${character.teamSkill.requirements.faction} faction + ${character.teamSkill.requirements.element} element`
-        : 'No conditions available';
-    setStatValue('teamconditions', teamConditionsValue);
+    // Team skill requirements with better formatting
+    let teamConditionsValue = 'No requirements';
+    if (character.teamSkill && character.teamSkill.requirements) {
+      const factionName = character.teamSkill.requirements.faction;
+      const elementName = character.teamSkill.requirements.element;
+
+      // Use line break for long faction names, otherwise use + format
+      if (factionName.length > 8) {
+        teamConditionsValue = `<div>${factionName}</div><div>${elementName}</div>`;
+      } else {
+        teamConditionsValue = `${factionName} + ${elementName}`;
+      }
+    }
+
+    // Set the value using innerHTML for line breaks
+    const el = document.querySelector(`[data-stat="teamconditions-${columnIndex}"]`);
+    if (el) {
+      el.innerHTML = teamConditionsValue;
+      el.classList.add('active');
+      el.style.display = 'block';
+    }
   }
 
   function hideCharacterColumn(columnIndex) {
@@ -743,7 +882,7 @@ const { selectedCharacters = [] } = Astro.props;
     selectedCharacters = [];
 
     // Clear all selected states
-    const characterCards = document.querySelectorAll('.character-card');
+    const characterCards = document.querySelectorAll('.character-select-card');
     characterCards.forEach(card => {
       card.dataset.selected = 'false';
     });

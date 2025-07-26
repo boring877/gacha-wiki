@@ -21,13 +21,6 @@ const { title, description } = Astro.props;
 {/* @ts-ignore */}
 <html lang="en" transition:animate="fade">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/tabicoin.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-
     <BaseHead title={title} description={description || ''} />
     <slot name="head" />
   </head>

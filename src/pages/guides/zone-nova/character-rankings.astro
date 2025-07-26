@@ -1,7 +1,11 @@
 ---
 import CharacterRankingsLayout from '../../../layouts/zone-nova/CharacterRankingsLayout.astro';
 import { ZONE_NOVA_CHARACTERS } from '../../../data/zone-nova/characters.js';
-import UpdateBackButton from '../../../components/zone-nova/UpdateBackButton.astro';
+
+// Helper function to parse stat values
+function parseStatValue(value: any): number {
+  return typeof value === 'string' ? parseFloat(value.replace(/[,%]/g, '')) || 0 : value || 0;
+}
 
 // Calculate rankings for key stats
 function calculateRankings() {
@@ -9,44 +13,21 @@ function calculateRankings() {
   const rankings = {};
 
   stats.forEach(statKey => {
-    // Sort characters by stat value (highest first)
-    // Handle missing stats gracefully
     const sorted = [...ZONE_NOVA_CHARACTERS]
       .filter(char => char.stats[statKey] !== undefined)
-      .sort((a, b) => {
-        const aVal =
-          typeof a.stats[statKey] === 'string'
-            ? parseFloat(a.stats[statKey].replace(/[,%]/g, '')) || 0
-            : a.stats[statKey];
-        const bVal =
-          typeof b.stats[statKey] === 'string'
-            ? parseFloat(b.stats[statKey].replace(/[,%]/g, '')) || 0
-            : b.stats[statKey];
-        return bVal - aVal;
-      });
+      .sort((a, b) => parseStatValue(b.stats[statKey]) - parseStatValue(a.stats[statKey]));
 
     rankings[statKey] = {};
     let currentRank = 1;
 
     sorted.forEach((char, index) => {
-      // Handle ties - characters with same value get same rank
-      const currentVal =
-        typeof char.stats[statKey] === 'string'
-          ? parseFloat(char.stats[statKey].replace(/[,%]/g, '')) || 0
-          : char.stats[statKey];
-      const prevVal =
-        index > 0
-          ? typeof sorted[index - 1].stats[statKey] === 'string'
-            ? parseFloat(sorted[index - 1].stats[statKey].replace(/[,%]/g, '')) || 0
-            : sorted[index - 1].stats[statKey]
-          : null;
+      const currentVal = parseStatValue(char.stats[statKey]);
+      const prevVal = index > 0 ? parseStatValue(sorted[index - 1].stats[statKey]) : null;
 
-      if (index > 0 && currentVal === prevVal) {
-        rankings[statKey][char.id] = rankings[statKey][sorted[index - 1].id];
-      } else {
-        rankings[statKey][char.id] = currentRank;
-      }
-      currentRank = index + 2; // Next unique rank
+      rankings[statKey][char.id] =
+        index > 0 && currentVal === prevVal ? rankings[statKey][sorted[index - 1].id] : currentRank;
+
+      currentRank = index + 2;
     });
   });
 
@@ -59,7 +40,6 @@ function calculateOverallAnalysis() {
   const rankings = calculateRankings();
   const analysis = {};
 
-  // First pass: calculate total rank scores
   ZONE_NOVA_CHARACTERS.forEach(char => {
     let totalRankScore = 0;
     let top3Count = 0;
@@ -69,8 +49,6 @@ function calculateOverallAnalysis() {
     coreStats.forEach(statKey => {
       const rank = rankings[statKey][char.id];
       statBreakdown[statKey] = rank;
-
-      // Lower rank = better (rank 1 is best)
       totalRankScore += rank;
 
       if (rank <= 3) top3Count++;
@@ -86,12 +64,10 @@ function calculateOverallAnalysis() {
     };
   });
 
-  // Second pass: rank characters by their total rank score (lower = better)
   const sortedCharacters = Object.values(analysis).sort(
     (a: any, b: any) => a.totalRankScore - b.totalRankScore
   );
 
-  // Assign overall ranks
   sortedCharacters.forEach((entry: any, index) => {
     analysis[entry.character.id].overallRank = index + 1;
   });
@@ -102,20 +78,6 @@ function calculateOverallAnalysis() {
 const rankings = calculateRankings();
 const overallAnalysis = calculateOverallAnalysis();
 const totalCharacters = ZONE_NOVA_CHARACTERS.length;
-
-// Helper function to get rank display
-function getRankDisplay(rank) {
-  if (rank <= 3) return `#${rank}`;
-  if (rank <= 10) return `#${rank}`;
-  return `#${rank}`;
-}
-
-// Helper function to get rank class for styling
-function getRankClass(rank) {
-  if (rank <= 3) return 'rank-top3';
-  if (rank <= 10) return 'rank-top10';
-  return 'rank-other';
-}
 
 // Stat display names
 const statNames = {
@@ -155,6 +117,16 @@ const statNames = {
             <option value="Debuffer">Debuffer</option>
             <option value="Healer">Healer</option>
           </select>
+          <select class="filter-select" id="class-filter">
+            <option value="">Class</option>
+            <option value="Guardian">Guardian</option>
+            <option value="Warrior">Warrior</option>
+            <option value="Rogue">Rogue</option>
+            <option value="Mage">Mage</option>
+            <option value="Buffer">Buffer</option>
+            <option value="Debuffer">Debuffer</option>
+            <option value="Healer">Healer</option>
+          </select>
           <select class="filter-select" id="rarity-filter">
             <option value="">Rarity</option>
             <option value="SSR">SSR</option>
@@ -182,8 +154,12 @@ const statNames = {
       <!-- Character Grid -->
       <div class="character-grid" id="character-grid">
         {
-          ZONE_NOVA_CHARACTERS.sort((a, b) => a.name.localeCompare(b.name)).map(char => (
+          ZONE_NOVA_CHARACTERS.sort(
+            (a: any, b: any) =>
+              overallAnalysis[a.id].overallRank - overallAnalysis[b.id].overallRank
+          ).map((char: any) => (
             <button class="character-select-card" data-character-id={char.id}>
+              <div class="character-rank-number">{overallAnalysis[char.id].overallRank}</div>
               <img
                 src={char.image}
                 alt={char.name}
@@ -196,9 +172,45 @@ const statNames = {
                 <h3>{char.name}</h3>
                 <div class="character-badges">
                   <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
-                  <span class={`role-badge ${char.role.toLowerCase().replace(' ', '-')}`}>
-                    {char.role}
+                  <span class={`class-badge ${char.class.toLowerCase().replace(' ', '-')}`}>
+                    {char.class}
                   </span>
+                </div>
+                <div class="character-stats">
+                  <div class="stat-item">
+                    <span class="stat-label">HP</span>
+                    <span class="stat-value">
+                      {typeof char.stats.hp === 'string'
+                        ? char.stats.hp
+                        : char.stats.hp?.toLocaleString() || 'N/A'}
+                    </span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">ATK</span>
+                    <span class="stat-value">
+                      {typeof char.stats.attack === 'string'
+                        ? char.stats.attack
+                        : char.stats.attack?.toLocaleString() || 'N/A'}
+                    </span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">DEF</span>
+                    <span class="stat-value">
+                      {typeof char.stats.defense === 'string'
+                        ? char.stats.defense
+                        : char.stats.defense?.toLocaleString() || 'N/A'}
+                    </span>
+                  </div>
+                  {char.stats.critRate !== undefined && (
+                    <div class="stat-item crit-rate">
+                      <span class="stat-label">CRIT</span>
+                      <span class="stat-value">
+                        {typeof char.stats.critRate === 'string'
+                          ? char.stats.critRate
+                          : `${char.stats.critRate}%`}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </button>
@@ -232,25 +244,16 @@ const statNames = {
               ))
           }
           <!-- Crit Rate card - conditionally shown -->
-          <div class="ranking-card" id="crit-rate-card" style="display: none;">
+          <div class="ranking-card crit-rate-card hidden" id="crit-rate-card">
             <h4 class="ranking-card-title">CRIT RATE</h4>
-            <div
-              class="crit-message"
-              style="text-align: center; color: #64b5f6; font-weight: 600; font-size: 1.1rem; margin: 1rem 0;"
-            >
-              Has Crit Rate
-            </div>
-            <div
-              class="stat-value stat-critRate"
-              style="text-align: center; font-size: 1.2rem; color: #e0e0e0; font-weight: 700;"
-            >
-            </div>
+            <div class="crit-message">Has Crit Rate</div>
+            <div class="stat-value stat-critRate"></div>
           </div>
         </div>
       </div>
 
       <!-- Character Performance Analysis -->
-      <div id="character-analysis" class="character-analysis" style="display: none;">
+      <div id="character-analysis" class="character-analysis hidden">
         <h4 class="character-analysis-title">Character Performance Breakdown</h4>
         <div class="performance-summary">
           <div class="summary-stats">
@@ -295,35 +298,65 @@ const statNames = {
     }}
   >
     document.addEventListener('DOMContentLoaded', () => {
-      const characterCards = document.querySelectorAll('.character-select-card');
-      const roleFilter = document.getElementById('role-filter');
-      const rarityFilter = document.getElementById('rarity-filter');
-      const elementFilter = document.getElementById('element-filter');
-      const resetBtn = document.getElementById('clear-filters');
-      const sortButtons = document.querySelectorAll('.sort-btn');
-      const rankingsDisplay = document.getElementById('rankings-display');
-      const characterImage = document.getElementById('character-image');
-      const characterName = document.getElementById('character-name');
-      const characterClass = document.getElementById('character-class');
+      // Helper function to parse stat values (client-side)
+      function parseStatValue(value) {
+        return typeof value === 'string' ? parseFloat(value.replace(/[,%]/g, '')) || 0 : value || 0;
+      }
+
+      // Cache DOM elements
+      const elements = {
+        characterCards: document.querySelectorAll('.character-select-card'),
+        roleFilter: document.getElementById('role-filter'),
+        classFilter: document.getElementById('class-filter'),
+        rarityFilter: document.getElementById('rarity-filter'),
+        elementFilter: document.getElementById('element-filter'),
+        resetBtn: document.getElementById('clear-filters'),
+        sortButtons: document.querySelectorAll('.sort-btn'),
+        rankingsDisplay: document.getElementById('rankings-display'),
+        characterImage: document.getElementById('character-image'),
+        characterName: document.getElementById('character-name'),
+        characterClass: document.getElementById('character-class'),
+        critCard: document.getElementById('crit-rate-card'),
+        characterAnalysis: document.getElementById('character-analysis'),
+      };
 
       // Filter functionality
       function filterCharacters() {
-        const roleValue = roleFilter?.value.toLowerCase() || '';
-        const rarityValue = rarityFilter?.value.toLowerCase() || '';
-        const elementValue = elementFilter?.value.toLowerCase() || '';
+        const filters = {
+          role: elements.roleFilter?.value.toLowerCase() || '',
+          class: elements.classFilter?.value.toLowerCase() || '',
+          rarity: elements.rarityFilter?.value.toLowerCase() || '',
+          element: elements.elementFilter?.value.toLowerCase() || '',
+        };
 
-        characterCards.forEach(card => {
+        console.log('Filters applied:', filters);
+        let visibleCount = 0;
+
+        elements.characterCards.forEach(card => {
           const character = characters.find(
             c => c.id === parseInt(card.dataset.characterId || '0')
           );
           if (!character) return;
 
-          const matchesRole = !roleValue || character.role.toLowerCase() === roleValue;
-          const matchesRarity = !rarityValue || character.rarity.toLowerCase() === rarityValue;
-          const matchesElement = !elementValue || character.element.toLowerCase() === elementValue;
+          const matches = Object.entries(filters).every(([key, value]) => {
+            if (!value) return true;
+            if (key === 'class') {
+              return character.class?.toLowerCase() === value;
+            }
+            return character[key]?.toLowerCase() === value;
+          });
 
-          card.style.display = matchesRole && matchesRarity && matchesElement ? 'flex' : 'none';
+          if (matches) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
         });
+
+        console.log(
+          `Filtered results: ${visibleCount}/${elements.characterCards.length} characters visible`
+        );
       }
 
       // Sort functionality
@@ -331,7 +364,7 @@ const statNames = {
 
       function sortCharacters(column) {
         const cardContainer = document.getElementById('character-grid');
-        const cards = Array.from(characterCards);
+        const cards = Array.from(elements.characterCards);
         const multiplier = sortState.asc ? 1 : -1;
 
         cards.sort((a, b) => {
@@ -340,23 +373,8 @@ const statNames = {
 
           if (!aChar || !bChar) return 0;
 
-          let aValue = 0,
-            bValue = 0;
-          if (
-            column === 'hp' ||
-            column === 'attack' ||
-            column === 'defense' ||
-            column === 'critRate'
-          ) {
-            aValue =
-              typeof aChar.stats[column] === 'string'
-                ? parseFloat(aChar.stats[column].replace(/[,%]/g, '')) || 0
-                : aChar.stats[column] || 0;
-            bValue =
-              typeof bChar.stats[column] === 'string'
-                ? parseFloat(bChar.stats[column].replace(/[,%]/g, '')) || 0
-                : bChar.stats[column] || 0;
-          }
+          const aValue = parseStatValue(aChar.stats[column]);
+          const bValue = parseStatValue(bChar.stats[column]);
 
           return (aValue - bValue) * multiplier;
         });
@@ -365,18 +383,40 @@ const statNames = {
       }
 
       // Event listeners for filters
-      if (roleFilter) roleFilter.addEventListener('change', filterCharacters);
-      if (rarityFilter) rarityFilter.addEventListener('change', filterCharacters);
-      if (elementFilter) elementFilter.addEventListener('change', filterCharacters);
+      console.log('Adding filter event listeners...');
+      if (elements.roleFilter) {
+        elements.roleFilter.addEventListener('change', () => {
+          console.log('Role filter changed to:', elements.roleFilter.value);
+          filterCharacters();
+        });
+      }
+      if (elements.classFilter) {
+        elements.classFilter.addEventListener('change', () => {
+          console.log('Class filter changed to:', elements.classFilter.value);
+          filterCharacters();
+        });
+      }
+      if (elements.rarityFilter) {
+        elements.rarityFilter.addEventListener('change', () => {
+          console.log('Rarity filter changed to:', elements.rarityFilter.value);
+          filterCharacters();
+        });
+      }
+      if (elements.elementFilter) {
+        elements.elementFilter.addEventListener('change', () => {
+          console.log('Element filter changed to:', elements.elementFilter.value);
+          filterCharacters();
+        });
+      }
 
       // Event listeners for sort buttons
-      sortButtons.forEach(btn => {
+      elements.sortButtons.forEach(btn => {
         btn.addEventListener('click', () => {
           const col = btn.dataset.sort || '';
           sortState.asc = sortState.column === col ? !sortState.asc : true;
           sortState.column = col;
 
-          sortButtons.forEach(b => b.classList.remove('active'));
+          elements.sortButtons.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
 
           sortCharacters(col);
@@ -384,30 +424,56 @@ const statNames = {
       });
 
       // Reset functionality
-      if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-          if (roleFilter) roleFilter.value = '';
-          if (rarityFilter) rarityFilter.value = '';
-          if (elementFilter) elementFilter.value = '';
+      elements.resetBtn?.addEventListener('click', () => {
+        console.log('Reset button clicked');
 
-          characterCards.forEach(card => (card.style.display = 'flex'));
-          sortButtons.forEach(b => b.classList.remove('active'));
-          sortState = { column: null, asc: false };
+        // Clear filter values
+        if (elements.roleFilter) elements.roleFilter.value = '';
+        if (elements.classFilter) elements.classFilter.value = '';
+        if (elements.rarityFilter) elements.rarityFilter.value = '';
+        if (elements.elementFilter) elements.elementFilter.value = '';
+
+        // Show all cards
+        elements.characterCards.forEach(card => (card.style.display = 'flex'));
+
+        // Remove active class from sort buttons
+        elements.sortButtons.forEach(b => b.classList.remove('active'));
+
+        // Reset sort state
+        sortState = { column: null, asc: false };
+
+        // Restore original overall ranking order (rank 1, rank 2, rank 3, etc.)
+        const cardContainer = document.getElementById('character-grid');
+        const cards = Array.from(elements.characterCards);
+
+        cards.sort((a, b) => {
+          const aId = parseInt(a.dataset.characterId || '0');
+          const bId = parseInt(b.dataset.characterId || '0');
+          const aRank = overallAnalysis[aId]?.overallRank || 999;
+          const bRank = overallAnalysis[bId]?.overallRank || 999;
+          return aRank - bRank;
         });
-      }
 
-      characterCards.forEach(card => {
-        card.addEventListener('click', e => {
+        // Re-append cards in sorted order
+        cards.forEach(card => cardContainer?.appendChild(card));
+
+        console.log(
+          'Reset complete - restored to overall ranking order (rank 1, rank 2, rank 3...)'
+        );
+      });
+
+      elements.characterCards.forEach(card => {
+        card.addEventListener('click', () => {
           const characterId = parseInt(card.dataset.characterId || '0');
 
           // Remove active class from all cards
-          characterCards.forEach(c => c.classList.remove('selected'));
+          elements.characterCards.forEach(c => c.classList.remove('selected'));
 
           // Add active class to clicked card
           card.classList.add('selected');
 
           if (!characterId) {
-            rankingsDisplay?.classList.remove('active');
+            elements.rankingsDisplay?.classList.remove('active');
             return;
           }
 
@@ -415,13 +481,13 @@ const statNames = {
           if (!character) return;
 
           // Update character info
-          if (characterImage) {
-            characterImage.src = character.image;
-            characterImage.alt = character.name;
+          if (elements.characterImage) {
+            elements.characterImage.src = character.image;
+            elements.characterImage.alt = character.name;
           }
-          if (characterName) characterName.textContent = character.name;
-          if (characterClass)
-            characterClass.textContent = `${character.rarity} ${character.role} • ${character.element}`;
+          if (elements.characterName) elements.characterName.textContent = character.name;
+          if (elements.characterClass)
+            elements.characterClass.textContent = `${character.rarity} • Role: ${character.role} • Class: ${character.class} • ${character.element}`;
 
           // Update rankings
           Object.keys(statNames).forEach(statKey => {
@@ -430,23 +496,19 @@ const statNames = {
 
             // Special handling for crit rate - only show if > 0%
             if (statKey === 'critRate') {
-              const critCard = document.getElementById('crit-rate-card');
-              const critVal =
-                typeof statValue === 'string'
-                  ? parseFloat(statValue.replace(/[,%]/g, '')) || 0
-                  : statValue || 0;
+              const critVal = parseStatValue(statValue);
 
               if (critVal > 0) {
-                if (critCard) critCard.style.display = 'block';
+                elements.critCard?.classList.remove('hidden');
                 const statValueDisplay = document.querySelector(`.stat-${statKey}`);
                 if (statValueDisplay) {
                   statValueDisplay.textContent =
                     typeof statValue === 'string' ? statValue : `${statValue}%`;
                 }
               } else {
-                if (critCard) critCard.style.display = 'none';
+                elements.critCard?.classList.add('hidden');
               }
-              return; // Skip normal ranking processing for crit rate
+              return;
             }
 
             const rankDisplay = document.querySelector(`.rank-${statKey}`);
@@ -465,85 +527,83 @@ const statNames = {
               rankDisplay.className = rankDisplay.className.replace(/rank-(top3|top10|other)/g, '');
               if (rank <= 3) {
                 rankDisplay.classList.add('rank-top3');
-                rankDisplay.style.color = '#ffd700'; // Gold
               } else if (rank <= 10) {
                 rankDisplay.classList.add('rank-top10');
-                rankDisplay.style.color = '#64b5f6'; // Zone Nova Blue
               } else {
                 rankDisplay.classList.add('rank-other');
-                rankDisplay.style.color = '#81c784'; // Green
               }
             }
           });
 
-          rankingsDisplay?.classList.add('active');
+          elements.rankingsDisplay?.classList.add('active');
 
           // Update character analysis
           updateCharacterAnalysis(characterId);
 
           // Smooth scroll to rankings display
           setTimeout(() => {
-            rankingsDisplay?.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start',
-            });
-          }, 100);
+            if (elements.rankingsDisplay) {
+              elements.rankingsDisplay.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }
+          }, 150);
         });
       });
+
+      // Move updateCharacterAnalysis function inside the scope
+      function updateCharacterAnalysis(characterId) {
+        const analysis = overallAnalysis[characterId];
+        if (!analysis) return;
+
+        const overallRankEl = document.getElementById('overall-rank');
+        const top3CountEl = document.getElementById('top3-count');
+        const top3StatsEl = document.getElementById('top3-stats');
+        const top10CountEl = document.getElementById('top10-count');
+        const top10StatsEl = document.getElementById('top10-stats');
+        // Get stat names for display
+        const coreStats = ['hp', 'attack', 'defense'];
+        const top3Stats = [];
+        const top10Stats = [];
+
+        coreStats.forEach(statKey => {
+          const rank = rankings[statKey][characterId];
+          if (rank <= 3) {
+            top3Stats.push(statNames[statKey]);
+          }
+          if (rank <= 10) {
+            top10Stats.push(statNames[statKey]);
+          }
+        });
+
+        // Update overall rank
+        if (overallRankEl) overallRankEl.textContent = `#${analysis.overallRank}`;
+
+        // Update top 3 stats
+        if (top3CountEl) top3CountEl.textContent = `${top3Stats.length}/3`;
+        if (top3Stats.length > 0) {
+          if (top3StatsEl)
+            top3StatsEl.innerHTML = top3Stats
+              .map(stat => `<span class="stat-badge top3-badge">${stat}</span>`)
+              .join('');
+        } else {
+          if (top3StatsEl) top3StatsEl.innerHTML = '<span class="no-stats">None</span>';
+        }
+
+        // Update top 10 stats
+        if (top10CountEl) top10CountEl.textContent = `${top10Stats.length}/3`;
+        if (top10Stats.length > 0) {
+          if (top10StatsEl)
+            top10StatsEl.innerHTML = top10Stats
+              .map(stat => `<span class="stat-badge top10-badge">${stat}</span>`)
+              .join('');
+        } else {
+          if (top10StatsEl) top10StatsEl.innerHTML = '<span class="no-stats">None</span>';
+        }
+
+        elements.characterAnalysis?.classList.remove('hidden');
+      }
     });
-
-    function updateCharacterAnalysis(characterId) {
-      const analysis = overallAnalysis[characterId];
-      if (!analysis) return;
-
-      const overallRankEl = document.getElementById('overall-rank');
-      const top3CountEl = document.getElementById('top3-count');
-      const top3StatsEl = document.getElementById('top3-stats');
-      const top10CountEl = document.getElementById('top10-count');
-      const top10StatsEl = document.getElementById('top10-stats');
-      const characterAnalysisEl = document.getElementById('character-analysis');
-
-      // Get stat names for display
-      const coreStats = ['hp', 'attack', 'defense'];
-      const top3Stats = [];
-      const top10Stats = [];
-
-      coreStats.forEach(statKey => {
-        const rank = rankings[statKey][characterId];
-        if (rank <= 3) {
-          top3Stats.push(statNames[statKey]);
-        }
-        if (rank <= 10) {
-          top10Stats.push(statNames[statKey]);
-        }
-      });
-
-      // Update overall rank
-      if (overallRankEl) overallRankEl.textContent = `#${analysis.overallRank}`;
-
-      // Update top 3 stats
-      if (top3CountEl) top3CountEl.textContent = `${top3Stats.length}/3`;
-      if (top3Stats.length > 0) {
-        if (top3StatsEl)
-          top3StatsEl.innerHTML = top3Stats
-            .map(stat => `<span class="stat-badge top3-badge">${stat}</span>`)
-            .join('');
-      } else {
-        if (top3StatsEl) top3StatsEl.innerHTML = '<span class="no-stats">None</span>';
-      }
-
-      // Update top 10 stats
-      if (top10CountEl) top10CountEl.textContent = `${top10Stats.length}/3`;
-      if (top10Stats.length > 0) {
-        if (top10StatsEl)
-          top10StatsEl.innerHTML = top10Stats
-            .map(stat => `<span class="stat-badge top10-badge">${stat}</span>`)
-            .join('');
-      } else {
-        if (top10StatsEl) top10StatsEl.innerHTML = '<span class="no-stats">None</span>';
-      }
-
-      if (characterAnalysisEl) characterAnalysisEl.style.display = 'block';
-    }
   </script>
 </CharacterRankingsLayout>

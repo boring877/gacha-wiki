@@ -228,46 +228,46 @@
   color: #fff !important;
 }
 
-/* Class Badge Colors - New Class System */
+/* Class Badge Colors - Match Character Database */
 .tag-class.guardian,
 .class-badge.guardian {
-  background: linear-gradient(135deg, #2196f3, #1565c0) !important;
+  background: #8e24aa !important;
   color: #fff !important;
 }
 
 .tag-class.warrior,
 .class-badge.warrior {
-  background: linear-gradient(135deg, #ff9800, #f57c00) !important;
+  background: #d32f2f !important;
   color: #fff !important;
 }
 
 .tag-class.rogue,
 .class-badge.rogue {
-  background: linear-gradient(135deg, #9c27b0, #7b1fa2) !important;
+  background: #388e3c !important;
   color: #fff !important;
 }
 
 .tag-class.mage,
 .class-badge.mage {
-  background: linear-gradient(135deg, #673ab7, #512da8) !important;
+  background: #1976d2 !important;
   color: #fff !important;
 }
 
 .tag-class.buffer,
 .class-badge.buffer {
-  background: linear-gradient(135deg, #4caf50, #388e3c) !important;
+  background: #f57c00 !important;
   color: #fff !important;
 }
 
 .tag-class.debuffer,
 .class-badge.debuffer {
-  background: linear-gradient(135deg, #f44336, #d32f2f) !important;
+  background: #5d4037 !important;
   color: #fff !important;
 }
 
 .tag-class.healer,
 .class-badge.healer {
-  background: linear-gradient(135deg, #00bcd4, #0097a7) !important;
+  background: #00796b !important;
   color: #fff !important;
 }
 
@@ -459,21 +459,72 @@
 }
 
 /* Class Badge Colors */
-.class-badge.tank {
-  background: linear-gradient(135deg, #607d8b, #455a64);
+.class-badge.guardian {
+  background: #8e24aa;
   color: #fff;
+  box-shadow: 0 4px 12px rgba(142, 36, 170, 0.3);
+}
+
+.class-badge.warrior {
+  background: #d32f2f;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+}
+
+.class-badge.rogue {
+  background: #388e3c;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(56, 142, 60, 0.3);
+}
+
+.class-badge.mage {
+  background: #1976d2;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+}
+
+/* Class Badge Colors - Zone Nova Themed */
+.class-badge.tank {
+  background: linear-gradient(135deg, var(--teal-crystal), #0097a7);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 172, 193, 0.3);
 }
 
 .class-badge.dps {
   background: linear-gradient(135deg, var(--amber-glow), #ff9800);
   color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3);
 }
 
-/* Role Badge Colors */
-.role-badge.tank {
-  background: linear-gradient(135deg, #607d8b, #455a64);
+.class-badge.support {
+  background: linear-gradient(135deg, var(--cosmic-purple), #7b1fa2);
   color: #fff;
-  box-shadow: 0 4px 12px rgba(96, 125, 139, 0.3);
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+}
+
+.class-badge.healer {
+  background: #00796b;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 121, 107, 0.3);
+}
+
+.class-badge.buffer {
+  background: #f57c00;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(245, 124, 0, 0.3);
+}
+
+.class-badge.debuffer {
+  background: #5d4037;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(93, 64, 55, 0.3);
+}
+
+/* Legacy role badge colors for compatibility */
+.role-badge.tank {
+  background: linear-gradient(135deg, var(--teal-crystal), #0097a7);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 172, 193, 0.3);
 }
 
 .role-badge.dps {
@@ -483,9 +534,9 @@
 }
 
 .role-badge.support {
-  background: linear-gradient(135deg, var(--teal-crystal), #0097a7);
+  background: linear-gradient(135deg, var(--cosmic-purple), #7b1fa2);
   color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 172, 193, 0.3);
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
 }
 
 .role-badge.healer {
@@ -495,15 +546,15 @@
 }
 
 .role-badge.buffer {
-  background: linear-gradient(135deg, var(--cosmic-purple), #7b1fa2);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+  background: #7ecfff;
+  color: #222;
+  box-shadow: 0 4px 12px rgba(126, 207, 255, 0.3);
 }
 
 .role-badge.debuffer {
-  background: linear-gradient(135deg, var(--rose-quartz), #c2185b);
+  background: #b266ff;
   color: #fff;
-  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+  box-shadow: 0 4px 12px rgba(178, 102, 255, 0.3);
 }
 
 /* Faction Badge Colors */
