@@ -85,18 +85,20 @@ const breadcrumbs = [
 
     <!-- Story Content Grid - From storyContent.cards -->
     <div class="story-grid">
-      {storyContent.cards.map(card => (
-        <div class={`story-card ${card.theme}`}>
-          <div class="story-icon">{card.icon}</div>
-          <h4 class="story-card-title">{card.title}</h4>
-          <p class="story-card-subtitle">{card.subtitle}</p>
-          <div class="story-content">
-            {card.content.map(paragraph => (
-              <p set:html={paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')} />
-            ))}
+      {
+        storyContent.cards.map(card => (
+          <div class={`story-card ${card.theme}`}>
+            <div class="story-icon">{card.icon}</div>
+            <h4 class="story-card-title">{card.title}</h4>
+            <p class="story-card-subtitle">{card.subtitle}</p>
+            <div class="story-content">
+              {card.content.map(paragraph => (
+                <p set:html={paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')} />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
     <!-- Epic Conclusion - From storyContent.conclusion -->
@@ -132,11 +134,9 @@ const breadcrumbs = [
           <a href={guide.url} class="guide-card-link">
             <div class="guide-card">
               <h3>
-                <!-- Guide emoji and title from guide object -->
                 <span class="guide-emoji">{guide.emoji}</span>
                 {guide.title}
               </h3>
-              <!-- Guide description from guide object -->
               <p>{guide.description}</p>
             </div>
           </a>
