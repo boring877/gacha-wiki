@@ -34,7 +34,7 @@ export const pennyData = {
       name: 'Shield of Aethyss',
       energyCost: '5', // e.g., '5'
       description:
-        'All allied characters gain a shield equal to 60% of defense, and take 24% less damage for 10 seconds.',
+        'All allied characters gain a shield equal to 60% of your defense(Penny), and take 24% less damage for 10 seconds.',
     },
     passive: {
       name: "Aethyss's Call for Help",
@@ -60,7 +60,7 @@ export const pennyData = {
     {
       level: 2,
       effect:
-        'When [Fortitude] reaches 30 stacks, all allies immediately gain special attack shield and damage reduction effect',
+        'When [Fortitude] reaches 30 stacks, all allies get the same shield & damage-reduction as your Ultimate (60 % DEF shield + 24 % damage reduction for 10 s) Can only happen once per battle.',
     },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4' },
     { level: 4, effect: 'Defense increased by 45%' },
@@ -86,6 +86,15 @@ export const pennyData = {
       'Shield amount applied by ultimate skills increased by 20%',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: [
+    'Scale with Defense When Dealing Damage',
+    'Team Shield',
+    'Team Damage Reduction',
+    'Self Damage Reduction',
+    'Buff',
+  ],
 };
 
 // SEO data for Penny

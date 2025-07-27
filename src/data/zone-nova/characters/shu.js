@@ -40,7 +40,7 @@ export const shuData = {
     passive: {
       name: 'Fierce Wind Burst',
       description:
-        'Can apply [Weathering] debuff to enemies. Weathering: Each stack causes 14.4% of Attack as wind damage per second (maximum 5 stacks). With Awakening 1: When dealing damage to targets with continuous damage effects, self attack power increases by 20%',
+        'Auto Skills can apply Weathering: every 2 s deal 14.4% ATK wind damage per stack, max 5 stacks',
     },
   },
 
@@ -63,7 +63,7 @@ export const shuData = {
     },
     { level: 2, effect: 'Continuous damage effects penetration rate increased by 10%' },
     { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
-    { level: 4, effect: 'Continuous damage effects damage increased by 25%' },
+    { level: 4, effect: 'Continuous damage increased by 25%' },
     { level: 5, effect: '[Ultimate Skill] and [Passive] level and level cap +4' },
     { level: 6, effect: 'Ultimate skill can also apply [Weathering] debuff' },
   ],

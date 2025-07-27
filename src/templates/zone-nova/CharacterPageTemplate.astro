@@ -8,6 +8,29 @@ interface Props {
 
 const { characterData } = Astro.props;
 const factionData = getFactionData(characterData.faction);
+
+// Helper function to categorize character tags for styling
+function getTagCategory(tag: string): string {
+  const lowerTag = tag.toLowerCase();
+
+  // Damage/Scaling tags
+  if (lowerTag.includes('scale') && lowerTag.includes('damage')) {
+    return 'damage-scaling';
+  }
+
+  // Team utility tags
+  if (lowerTag.includes('team')) {
+    return 'team-utility';
+  }
+
+  // Self utility tags
+  if (lowerTag.includes('self')) {
+    return 'self-utility';
+  }
+
+  // General mechanic tags
+  return 'general-mechanic';
+}
 ---
 
 <!-- Character Header & Overview -->
@@ -40,9 +63,7 @@ const factionData = getFactionData(characterData.faction);
         </p>
         {
           factionData?.description && (
-            <p class="character-faction-description">
-              {factionData.description}
-            </p>
+            <p class="character-faction-description">{factionData.description}</p>
           )
         }
       </div>
@@ -51,43 +72,33 @@ const factionData = getFactionData(characterData.faction);
       <div class="character-info-card">
         <div class="character-info-grid">
           <div class="character-info-item">
-            <div class="character-info-label">
-              Class
-            </div>
+            <div class="character-info-label">Class</div>
             <span
               class={`class-badge ${characterData.class ? characterData.class.toLowerCase() : 'unknown'}`}
               >{characterData.class || 'TBA'}</span
             >
           </div>
           <div class="character-info-item">
-            <div class="character-info-label">
-              Rarity
-            </div>
+            <div class="character-info-label">Rarity</div>
             <span class={`rarity-badge ${characterData.rarity.toLowerCase()}`}
               >{characterData.rarity}</span
             >
           </div>
           <div class="character-info-item">
-            <div class="character-info-label">
-              Element
-            </div>
+            <div class="character-info-label">Element</div>
             <span class={`element-badge ${characterData.element.toLowerCase()}`}
               >{characterData.element}</span
             >
           </div>
           <div class="character-info-item">
-            <div class="character-info-label">
-              Role
-            </div>
+            <div class="character-info-label">Role</div>
             <span
               class={`role-badge ${characterData.role ? characterData.role.toLowerCase() : 'unknown'}`}
               >{characterData.role || 'TBA'}</span
             >
           </div>
           <div class="faction-section">
-            <div class="character-info-label">
-              Faction
-            </div>
+            <div class="character-info-label">Faction</div>
             <span
               class={`faction-badge ${(factionData?.name || characterData.faction).toLowerCase().replace(/\s+/g, '-')}`}
               style={factionData?.color
@@ -97,9 +108,7 @@ const factionData = getFactionData(characterData.faction);
               {factionData?.name || characterData.faction}
               {
                 factionData?.chineseName && (
-                  <span class="faction-chinese-name">
-                    ({factionData.chineseName})
-                  </span>
+                  <span class="faction-chinese-name">({factionData.chineseName})</span>
                 )
               }
             </span>
@@ -112,35 +121,25 @@ const factionData = getFactionData(characterData.faction);
     <div class="character-stats-container">
       <div class="character-stats-box">
         <!-- Base Stats -->
-        <h3 class="character-stats-title">
-          Base Stats
-        </h3>
+        <h3 class="character-stats-title">Base Stats</h3>
 
         <!-- Core Combat Stats -->
-        <h4 class="character-stats-subtitle">
-          Core Combat Stats
-        </h4>
+        <h4 class="character-stats-subtitle">Core Combat Stats</h4>
         <div class="character-stats-grid">
           <div class="stat-item">
-            <div class="stat-label">
-              HP
-            </div>
+            <div class="stat-label">HP</div>
             <div class="stat-value">
               {characterData.stats.hp}
             </div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">
-              Attack
-            </div>
+            <div class="stat-label">Attack</div>
             <div class="stat-value">
               {characterData.stats.attack}
             </div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">
-              Defense
-            </div>
+            <div class="stat-label">Defense</div>
             <div class="stat-value">
               {characterData.stats.defense}
             </div>
@@ -148,40 +147,24 @@ const factionData = getFactionData(characterData.faction);
         </div>
 
         <!-- Additional Stats -->
-        <h4 class="character-stats-subtitle">
-          Additional Stats
-        </h4>
+        <h4 class="character-stats-subtitle">Additional Stats</h4>
         <div class="character-stats-grid additional-stats">
           <div class="stat-item">
-            <div class="stat-label small">
-              Energy Regen
-            </div>
-            <div class="stat-value small">
-              0.25/s
-            </div>
+            <div class="stat-label small">Energy Regen</div>
+            <div class="stat-value small">0.25/s</div>
           </div>
           <div class="stat-item">
-            <div class="stat-label small">
-              Crit Rate
-            </div>
-            <div class="stat-value small">
-              0%
-            </div>
+            <div class="stat-label small">Crit Rate</div>
+            <div class="stat-value small">0%</div>
           </div>
           <div class="stat-item">
-            <div class="stat-label small">
-              Crit Damage
-            </div>
-            <div class="stat-value small">
-              50%
-            </div>
+            <div class="stat-label small">Crit Damage</div>
+            <div class="stat-value small">50%</div>
           </div>
         </div>
 
         <!-- Class Section -->
-        <h4 class="character-class-section character-stats-subtitle">
-          Class
-        </h4>
+        <h4 class="character-class-section character-stats-subtitle">Class</h4>
         <div class="character-class-box">
           <img
             src={`/images/games/zone-nova/classes/1${characterData.class}.jpg`}
@@ -205,6 +188,20 @@ const factionData = getFactionData(characterData.faction);
             </p>
           </div>
         </div>
+
+        <!-- Character Tags Section -->
+        {
+          characterData.tags && characterData.tags.length > 0 && (
+            <div class="character-tags-container">
+              <div class="character-tags-label">Gameplay Tags</div>
+              <div class="character-tags-wrapper">
+                {characterData.tags.map((tag: string) => (
+                  <span class={`character-tag ${getTagCategory(tag)}`}>{tag}</span>
+                ))}
+              </div>
+            </div>
+          )
+        }
       </div>
     </div>
   </div>
@@ -312,21 +309,20 @@ const factionData = getFactionData(characterData.faction);
       </div>
       <div class="description-text">
         <p class="node-tree-intro">
-          This is the <strong>Node Tree</strong> - there are 3 main
-          components:
+          This is the <strong>Node Tree</strong> - there are 3 main components:
         </p>
         <ul class="node-components">
           <li>
-            <strong class="highlight-amber">Skills</strong> - Level up to 10 and unlock the
-            last 4 levels on Dupe 3 and 5
+            <strong class="highlight-amber">Skills</strong> - Level up to 10 and unlock the last 4 levels
+            on Dupe 3 and 5
           </li>
           <li>
-            <strong class="highlight-teal">3 Main Segments</strong> - Give the most boosts
-            (45% HP and ATK total), providing massive stat increases that are very important
+            <strong class="highlight-teal">3 Main Segments</strong> - Give the most boosts (45% HP and
+            ATK total), providing massive stat increases that are very important
           </li>
           <li>
-            <strong class="highlight-purple">Stat Nodes</strong> - 10 specialized nodes depending
-            on the character's main kit
+            <strong class="highlight-purple">Stat Nodes</strong> - 10 specialized nodes depending on
+            the character's main kit
           </li>
         </ul>
       </div>
@@ -334,9 +330,7 @@ const factionData = getFactionData(characterData.faction);
   </div>
 
   <!-- 1. Skill Level Up -->
-  <h3 class="node-section-title">
-    1. Skill Level Up
-  </h3>
+  <h3 class="node-section-title">1. Skill Level Up</h3>
   <p class="node-section-subtitle">
     4 types of skills that can be leveled up, Team skill don't need level up :
   </p>
@@ -353,34 +347,22 @@ const factionData = getFactionData(characterData.faction);
     </div>
     <div class="skill-content">
       <div class="skill-types-box">
-        <h4 class="skill-types-title">
-          Skill Types:
-        </h4>
+        <h4 class="skill-types-title">Skill Types:</h4>
         <div class="skill-grid">
           <div class="skill-type-item">
-            <div class="skill-type-name">
-              Normal Attack
-            </div>
+            <div class="skill-type-name">Normal Attack</div>
           </div>
           <div class="skill-type-item auto-skill">
-            <div class="skill-type-name">
-              Auto Skill
-            </div>
+            <div class="skill-type-name">Auto Skill</div>
           </div>
           <div class="skill-type-item">
-            <div class="skill-type-name">
-              Ultimate
-            </div>
+            <div class="skill-type-name">Ultimate</div>
           </div>
           <div class="skill-type-item passive">
-            <div class="skill-type-name">
-              Passive
-            </div>
+            <div class="skill-type-name">Passive</div>
           </div>
           <div class="skill-type-item team-skill">
-            <div class="skill-type-name">
-              Team Skill
-            </div>
+            <div class="skill-type-name">Team Skill</div>
           </div>
         </div>
       </div>
@@ -388,12 +370,8 @@ const factionData = getFactionData(characterData.faction);
   </div>
 
   <!-- 2. ATK & HP Increase -->
-  <h3 class="node-section-title">
-    2. ATK & HP Increase
-  </h3>
-  <p class="node-section-subtitle">
-    3 tiers of stat increases - prioritize these first!
-  </p>
+  <h3 class="node-section-title">2. ATK & HP Increase</h3>
+  <p class="node-section-subtitle">3 tiers of stat increases - prioritize these first!</p>
 
   <div class="atk-hp-nodes">
     <div class="node-tier tier-1">
@@ -405,9 +383,7 @@ const factionData = getFactionData(characterData.faction);
         loading="lazy"
       />
       <div class="node-tier-content">
-        <div class="node-tier-title">
-          10% ATK & HP
-        </div>
+        <div class="node-tier-title">10% ATK & HP</div>
         <div class="node-tier-requirement">Rank 2 Required</div>
       </div>
     </div>
@@ -433,9 +409,7 @@ const factionData = getFactionData(characterData.faction);
         loading="lazy"
       />
       <div class="node-tier-content">
-        <div class="node-tier-title">
-          20% ATK & HP
-        </div>
+        <div class="node-tier-title">20% ATK & HP</div>
         <div class="node-tier-requirement">Rank 6 Required</div>
       </div>
     </div>
@@ -449,17 +423,13 @@ const factionData = getFactionData(characterData.faction);
   </div>
 
   <!-- 3. Stat Increase Nodes -->
-  <h3 class="node-section-title">
-    3. Stat Increase Nodes
-  </h3>
+  <h3 class="node-section-title">3. Stat Increase Nodes</h3>
   <p class="node-section-subtitle">
     Each character has 10 unique stat nodes. Activate 8 by level 70!
   </p>
 
   <div class="stat-nodes-info">
-    <h4 class="stat-nodes-title">
-      Available Stat Types:
-    </h4>
+    <h4 class="stat-nodes-title">Available Stat Types:</h4>
     <div class="stat-grid">
       <div class="stat-grid-item">
         <span class="stat-grid-text">ATK Increase</span>
@@ -540,31 +510,23 @@ const factionData = getFactionData(characterData.faction);
     <!-- Memory Stats (Right) -->
     <div class="memory-card-stats-container">
       <div class="memory-card-stats-box">
-        <h3 class="memory-card-stats-title">
-          Memory Card Stats
-        </h3>
+        <h3 class="memory-card-stats-title">Memory Card Stats</h3>
 
         <div class="character-stats-grid">
           <div class="stat-item">
-            <div class="stat-label">
-              HP
-            </div>
+            <div class="stat-label">HP</div>
             <div class="stat-value">
               {characterData.memoryCard.stats.hp}
             </div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">
-              Attack
-            </div>
+            <div class="stat-label">Attack</div>
             <div class="stat-value">
               {characterData.memoryCard.stats.attack}
             </div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">
-              Defense
-            </div>
+            <div class="stat-label">Defense</div>
             <div class="stat-value">
               {characterData.memoryCard.stats.defense}
             </div>
@@ -572,9 +534,7 @@ const factionData = getFactionData(characterData.faction);
         </div>
 
         <!-- Memory Effects -->
-        <h4 class="memory-effects-title">
-          Memory Effects
-        </h4>
+        <h4 class="memory-effects-title">Memory Effects</h4>
         {
           characterData.memoryCard.effects.map(effect => (
             <div class="memory-effect-item">
@@ -591,9 +551,7 @@ const factionData = getFactionData(characterData.faction);
     <div class="equipment-limitation-content">
       <!-- Title -->
       <div class="equipment-limitation-title-container">
-        <h4 class="equipment-limitation-title">
-          ⚠️ Equipment Limitation
-        </h4>
+        <h4 class="equipment-limitation-title">⚠️ Equipment Limitation</h4>
       </div>
 
       <!-- Content Layout: Image Left, Text Right -->
@@ -613,12 +571,9 @@ const factionData = getFactionData(characterData.faction);
 
             {/* Content on Right */}
             <div class="equipment-limitation-text">
-              <h5 class="equipment-limitation-class">
-                {characterData.class} Class Only
-              </h5>
+              <h5 class="equipment-limitation-class">{characterData.class} Class Only</h5>
               <p class="equipment-limitation-description">
-                This memory card is restricted to{' '}
-                <strong>{characterData.class}</strong> class
+                This memory card is restricted to <strong>{characterData.class}</strong> class
                 characters only.
               </p>
             </div>
@@ -628,7 +583,6 @@ const factionData = getFactionData(characterData.faction);
     </div>
   </div>
 </section>
-
 
 <!-- Minimal JavaScript for progressive enhancement -->
 <script>
