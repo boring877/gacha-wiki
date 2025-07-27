@@ -88,13 +88,7 @@ export const pennyData = {
   },
 
   // Character Tags - Reusable across multiple characters
-  tags: [
-    'Scale with Defense When Dealing Damage',
-    'Team Shield',
-    'Team Damage Reduction',
-    'Self Damage Reduction',
-    'Buff',
-  ],
+  tags: ['Def-Scale', 'Shield', 'Damage Reduction', 'Buff'],
 };
 
 // SEO data for Penny

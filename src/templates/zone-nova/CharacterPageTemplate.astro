@@ -14,21 +14,21 @@ function getTagCategory(tag: string): string {
   const lowerTag = tag.toLowerCase();
 
   // Damage/Scaling tags
-  if (lowerTag.includes('scale') && lowerTag.includes('damage')) {
+  if (lowerTag.includes('def-scale') || lowerTag.includes('scale')) {
     return 'damage-scaling';
   }
 
   // Team utility tags
-  if (lowerTag.includes('team')) {
+  if (lowerTag.includes('shield')) {
     return 'team-utility';
   }
 
   // Self utility tags
-  if (lowerTag.includes('self')) {
+  if (lowerTag.includes('damage reduction')) {
     return 'self-utility';
   }
 
-  // General mechanic tags
+  // General mechanic tags (buff, etc.)
   return 'general-mechanic';
 }
 ---
