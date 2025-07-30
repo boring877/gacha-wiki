@@ -22,24 +22,24 @@ export const horusData = {
   skills: {
     normal: {
       name: 'Holy Radiance Arrow',
-      description: 'Deals holy damage equal to 120% of Attack to designated enemy',
+      description: 'Deals holy damage equal to 120% of Attack to enemy',
     },
     auto: {
       name: 'Arrow of Atum',
       cooldown: '5.0s',
       description:
-        'Shoots arrows at target. Deals 120% attack power holy damage to target and 2m radius. Adds 1 layer [Piercing] to all hit enemies',
+        'Shoots arrows at target. Deals 120% attack power holy damage to target and 2m radius. Adds 1 layer [Piercing] to all hit enemies. [Piercing] Effect: Each layer deals 19.2% attack power holy damage every 3 seconds. Maximum Stacks: 10 layers for continuous damage for 10 seconds',
     },
     ultimate: {
       name: 'Eye of Wadjet',
       energyCost: '3',
       description:
-        "Deals 480% attack power holy damage to target. Adds 1 layer [Seal] and 1 layer [Piercing]. Skill Breaking: This damage can interrupt and disable target's active skills",
+        'Deals 480% attack power holy damage to target. Adds 1 layer [Seal] and 1 layer [Piercing]. Skill Interrupt: This Ultimate can interrupt Skill casting (Good in PVE for Boss)',
     },
     passive: {
       name: 'Solar Divine Judgment',
       description:
-        'Seal Consumption & Area Control: When using skills on targets with [Seal], consumes 1 layer and triggers area explosion. Area Damage: 120% attack power holy damage to target and 4m radius. Debuff Application: Hit targets gain 1 layer [Piercing] and continuous damage for 10 seconds. [Piercing] Effect: Each layer deals 19.2% attack power holy damage every 3 seconds. Maximum Stacks: 10 layers for devastating sustained damage',
+        ' When using skills (Ultimate & Auto skill) on targets with [Seal], consumes 1 layer and triggers area explosion (4m radius) that cause 120% attack power holy damage to targets. Hit targets gain 1 layer [Piercing]. [Piercing] Effect: Each layer deals 19.2% attack power holy damage every 3 seconds. Maximum Stacks: 10 layers for continuous damage for 10 seconds ',
     },
   },
 
@@ -47,7 +47,7 @@ export const horusData = {
   teamSkill: {
     name: 'Combination Skill',
     description:
-      'Effect 1: Self attack power increases by 10%. Effect 2: At battle start, every 500 attack power adds 3% penetration, maximum 6 times (18% max)',
+      'Self attack power increases by 10%. At battle start, every 500 attack power adds 3% penetration, maximum 6 times (18% max)',
     requirements: {
       faction: 'Chemic',
       element: 'Holy',
@@ -60,19 +60,18 @@ export const horusData = {
     {
       level: 2,
       effect:
-        'When dealing continuous damage, targets receive +20% continuous damage amplification for 3 seconds. Effect can be refreshed with new applications',
+        'When dealing continuous damage, make the targets received continuous damage increase by 20%, lasts 3 seconds, repeated triggers can refresh the duration',
     },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4' },
     { level: 4, effect: '[Continuous Damage] effects deal +35% increased damage' },
     {
       level: 5,
-      effect:
-        '[Ultimate] and [Passive] level and level cap +4. Critical: Required for memory card access',
+      effect: '[Ultimate] and [Passive] level and level cap +4',
     },
     {
       level: 6,
       effect:
-        'When dealing damage to targets with [Continuous Damage] status, gain 20% holy elemental penetration',
+        'When dealing damage to targets that have [Continuous damage] status, gain 20% holy resistance penetration',
     },
   ],
 
@@ -86,12 +85,21 @@ export const horusData = {
       defense: '474',
     },
     effects: [
-      'Class Restriction: Only effective for Debuffer class',
-      '5th Stage Awakening Required',
-      'Effect 1: Attack power increases by 40%',
-      'Effect 2: When dealing continuous damage, targets take 24% increased damage for 3 seconds',
+      ' Attack power increases by 40%. When you have (DOT) continuous damage, Target take 24% increased damage, lasts 3 seconds',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: [
+    'Range',
+    'DOT',
+    'AOE',
+    'Interrupt',
+    'Debuff',
+    'DOT Intake Increases',
+    'Penetration',
+    'Damage Increases',
+  ],
 };
 
 // SEO data for Horus

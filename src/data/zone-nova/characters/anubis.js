@@ -37,7 +37,7 @@ export const anubisData = {
       level: '10+4',
       cooldown: '8.0s',
       description:
-        'Summons meteors to attack designated enemy unit, dealing 96% attack power Chaos damage to target and surrounding 2m range, adding 1 layer [Nightmare]. [Nightmare]: Deals 5.6% Chaos damage per second, max 10 layers.',
+        'Call a meteor on the target and all enemies within 2 m, 96 % ATK as Chaos damage on impact. adding 1 layer [Nightmare]. [Nightmare]: Every 3 s deals 5.6 % ATK as Chaos damage per stack, Caps at 10 stacks (total 56 % ATK per tick at max).',
     },
     ultimate: {
       name: 'Destined Reversal',
@@ -46,14 +46,14 @@ export const anubisData = {
       cooldown: '1.0s',
       energyCost: '4',
       description:
-        'Recovers self based on current HP ratio with lowest attack power +112.8%+668 HP. Enhancement: All team members recover self attack power +112.8%+668 HP, and take 10% less damage for 10 seconds.',
+        'Heal lowest-HP ally for 112.8 % ATK(HealerATK) + 668 HP. Enhancement: Heal all allies for 112.8 % ATK + 668 HP and give them 10 % damage reduction for 10 s.',
     },
     passive: {
       name: 'Soul Siphon',
       chineseName: '灵魂虹吸',
       level: '10+4',
       description:
-        'When using skills to attack targets with 15+ layers or sustained damage, heals entire team, recovers self attack power 97.2%+445 HP and can be used once every 8 seconds [Enhancement Required].',
+        'When using auto skill (only you) to attack targets with (20) with dupe 1 (15+) layers of DOT, heals entire team self attack power 97.2%+445 HP and Immediately gain one Empowered Ultimate charge, usable within 8 s.',
     },
   },
 
@@ -67,7 +67,7 @@ export const anubisData = {
     requirements: {
       faction: 'Chemic',
       element: 'Chaos',
-      condition: '2 [Kemi] colored or 2 [Chaos] colored characters',
+      condition: '2 [Chemic] colored or 2 [Chaos] colored characters',
     },
   },
 
@@ -76,12 +76,13 @@ export const anubisData = {
     { level: 1, effect: 'Passive skill conditions reduced from 20 layers to 15 layers' },
     {
       level: 2,
-      effect: 'All healing effects from Anubis receive 10% damage reduction for 5 seconds',
+      effect:
+        'Every heal cast by Anubis (even from passives or ultimates) now applies a 5-second buff to the healed ally Incoming damage –10 % , Each new heal refreshes the 5-second duration.',
     },
     { level: 3, effect: '[Skills] and [Normal Attack] level cap +4' },
     { level: 4, effect: 'Healing amount increased by 37.5%' },
     { level: 5, effect: '[Required Skills] and [Passive] level cap +4' },
-    { level: 6, effect: 'Skills will summon additional meteors for consecutive attacks' },
+    { level: 6, effect: 'Auto Skill will summon additional meteors for consecutive attacks' },
   ],
 
   // Memory Card
@@ -95,10 +96,11 @@ export const anubisData = {
       attack: '800',
       defense: '600',
     },
-    effects: [
-      'Midnight Work: Healing amount +50%, each healing within 3 seconds gives target +40% attack power for 3 seconds',
-    ],
+    effects: ['Healing amount +50%, each healing gives target +40% attack power for 3 seconds'],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Healing', 'Ranged', 'Damage Reduction', 'DOT'],
 };
 
 // SEO data for Anubis

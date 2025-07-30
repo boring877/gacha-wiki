@@ -1,0 +1,75 @@
+---
+/* Zone Nova Character Tag Selection Layout */
+
+import BaseHead from '../../components/BaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ZoneNovaQuickNav from '../../components/zone-nova/ZoneNovaQuickNav.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/zone-nova/zn-layout.css';
+import '../../styles/games/zone-nova/zn-badge-colour.css';
+import '../../styles/games/zone-nova/zn-character-tag-selection.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const { title, description, gameTitle, breadcrumbs } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={description || ''}
+      breadcrumbs={breadcrumbs}
+      shouldPreloadDefaultImage={false}
+    />
+    <GameSEO gameKey="zone-nova" title={title} description={description} />
+
+    <slot name="head" />
+  </head>
+
+  <body class="zone-nova-body dark-theme zn-layout-override">
+    <CustomScrollbar />
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="zone-nova-content">
+      <Header />
+      <MobileMenu />
+
+      <div class="zone-nova-container">
+        <main class="zone-nova-main">
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <div class="content-area">
+            <ZoneNovaQuickNav currentPath={Astro.url.pathname} />
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

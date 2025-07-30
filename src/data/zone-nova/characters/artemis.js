@@ -23,25 +23,24 @@ export const artemisData = {
   skills: {
     normal: {
       name: 'Moon Rising Fist',
-      description:
-        'Deals 120% attack power as wind damage to designated enemy unit. Standard attack scaling for consistent damage output.',
+      description: 'Deals 120% attack power as wind damage to designated enemy unit.',
     },
     auto: {
       name: 'Moon Ancient Boxing',
       cooldown: '5.0s', // e.g., '5.0s'
       description:
-        'Automatically deals 240% attack power as wind damage to designated enemy and nearby enemies. Each hit restores 10% max HP. AoE damage with built-in sustain mechanism that triggers automatically.',
+        'Automatically deals 240% attack power as wind damage to designated enemy and nearby enemies. Each hit restores 10% max HP.',
     },
     ultimate: {
       name: 'Silver Moon Judgment',
       energyCost: '3', // e.g., '5'
       description:
-        'Consumes 50% current HP. Teleports in front of designated enemy. Deals 264% attack power as wind damage to target and nearby enemies. High-risk, high-reward ability that activates low-HP bonuses.',
+        'Consumes 50% current HP. Teleports in front of designated enemy. Deals 264% attack power as wind damage to target and nearby enemies.',
     },
     passive: {
       name: 'Moon Shadow Hunt',
       description:
-        "When HP is below 50%: All attacks deal additional 60% attack power as wind damage. Core low-HP mechanic that significantly amplifies damage output. Synergizes with ultimate's HP consumption.",
+        'When HP is below 50%: All attacks deal additional 60% attack power as wind damage.',
     },
   },
 
@@ -77,6 +76,9 @@ export const artemisData = {
     },
     effects: ['Attack power increased by 40%', 'When HP is below 50%: All damage increased by 40%'],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Melee', 'Healing', 'HP Consume'],
 };
 
 // SEO data for Artemis

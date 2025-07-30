@@ -29,18 +29,18 @@ export const apolloData = {
       name: 'Divine Music Accompaniment',
       cooldown: '5.0s', // e.g., '5.0s'
       description:
-        'Allied units gain 24% damage increase. [Pursuit] damage additionally increases by 36%. Triggers Brilliant stacking through passive system.',
+        'Allied units gain 24% damage increase. [Type of Attack Called: Extra attacks] damage additionally increases by 36%.',
     },
     ultimate: {
       name: 'Day Brilliance Chanting',
       energyCost: '8', // e.g., '5'
       description:
-        'Enters [Day Brilliance] state for 10 seconds. During transformation: Allied attack power increases by 120%. Apollo gains enhanced abilities: When releasing ultimate, triggers [Pursuit] attacks. Critical rate boost: 100% critical rate increase during transformation. Pursuit mechanics: Can trigger up to 5 pursuit attacks within range.',
+        'Enters [Day Brilliance] state for 10 seconds. During transformation (State): Allied attack power increases by 120%, and Apollo launches an extra strike dealing 360 % ATK as fire damage when teammate use an ultimate, it will have 100% crit rate and going be counted as Extra damage type. (Rate limit: 1 Extra damage per ally every 5 s.)',
     },
     passive: {
       name: 'Brilliant Verdict',
       description:
-        'Each skill use: All allies gain 1 layer [Brilliant]. [Brilliant] Effect: +2.4% critical rate and +4.8% critical damage per layer. Maximum 10 layers (24% crit rate + 48% crit damage at full stacks). Pursuit Synergy: Allied pursuit attacks grant additional [Brilliant] layers. Radiance System: Apollo gains [Radiance] stacks that enhance his capabilities.',
+        'Each auto skill use (Self): All allies gain 1 layer [Brilliant]. [Brilliant] Effect: +2.4% critical rate and +4.8% critical damage per layer. Maximum 10 layers (24% crit rate + 48% crit damage at full stacks). Extra Damage Synergy: Allied Extra Damage attacks grant additional [Brilliant] layers and Apollo gains 1 stack of Radiance System: gains [Radiance] Every 4 stacks +1 Energy .',
     },
   },
 
@@ -60,7 +60,7 @@ export const apolloData = {
     {
       level: 1,
       effect:
-        'Allied characters dealing [Pursuit] damage can additionally gain 1 layer [Brilliant]. Each character can trigger once within 1 second maximum.',
+        'Allied characters dealing [Extra Attack] can additionally gain add [Brilliant] to Everyone. Each character can trigger once within 1 second maximum.',
     },
     { level: 2, effect: 'During [Day Brilliance] state, damage taken reduced by 50%.' },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4.' },
@@ -73,7 +73,7 @@ export const apolloData = {
     {
       level: 6,
       effect:
-        "During [Day Brilliance] state, Apollo's [Pursuit] additionally gains 50% critical damage.",
+        "During [Day Brilliance] state, Apollo's [Extra Attack] additionally gains 50% critical damage.",
     },
   ],
 
@@ -87,10 +87,13 @@ export const apolloData = {
       defense: '600', // e.g., '690'
     },
     effects: [
-      "Battle start: All allied characters' damage increases by 40%, pursuit damage additionally increases by 40%",
-      "When equipped character releases ultimate or energy >8: All allied characters' energy acquisition efficiency increases by 100% for 10 seconds",
+      "Battle start: All allied characters' damage increases by 40%, Extra Attack damage additionally increases by 40%",
+      "When equipped character releases ultimate That cost higher then 8: All allied characters' energy efficiency increases by 100% for 10 seconds",
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Ranged', 'Extra Attack', 'Buff', 'Energy Recovery'],
 };
 
 // SEO data for Apollo

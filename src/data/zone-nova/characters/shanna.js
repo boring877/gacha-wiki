@@ -23,23 +23,22 @@ export const shannaData = {
   skills: {
     normal: {
       name: 'Light Strike',
-      description:
-        'Deals fire damage equal to 120% of Attack to designated enemy unit. Builds Focus stacks when targeting the same enemy repeatedly.',
+      description: 'Deals fire damage equal to 120% of Attack to enemy unit.',
     },
     auto: {
       name: 'Big! Big! Big! Treasure Sword!',
       cooldown: '5.0s', // e.g., '5.0s'
-      description: 'Deals fire damage equal to 240% of Attack to designated enemy unit',
+      description: 'Deals fire damage equal to 240% of Attack to enemy unit',
     },
     ultimate: {
       name: 'Flawless Sword',
       energyCost: '3', // e.g., '5'
-      description: 'Rushes to designated enemy and deals fire damage equal to 480% of Attack',
+      description: 'Rushes to enemy and deals fire damage equal to 480% of Attack',
     },
     passive: {
       name: "Heroes Won't Retreat in Battle! (被动英雄不会临阵退缩！)",
       description:
-        'Level: 10+4. When attacking the same target consecutively, gain 2 stacks of "Focus." Each stack increases critical hit chance by 2.8%, with a maximum of 10 stacks.',
+        'When normal attacks hit the same target, gain 2 layers of [Focus], each layer increases critical rate by 2.8%, maximum 10 layers',
     },
   },
 
@@ -65,7 +64,7 @@ export const shannaData = {
       effect: 'Each normal attack targeting same enemy: Additionally adds one [Focus] stack',
     },
     { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
-    { level: 4, effect: 'Skill damage increased by 30%' },
+    { level: 4, effect: 'Auto Skill damage increased by 30%' },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
     {
       level: 6,
@@ -86,6 +85,9 @@ export const shannaData = {
       'When the number of enemies on field is less than 2: Increase critical hit damage by 72%',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Melee', 'Normal Attack', 'Crit Rate', 'Crit Dmg', 'Buff'],
 };
 
 // SEO data for Shanna

@@ -23,8 +23,7 @@ export const athenaData = {
   skills: {
     normal: {
       name: 'Shadowless Snipe (无影狙击)',
-      description:
-        'Deals 120% attack power wind damage to designated enemy unit. 1.0s cooldown. Core mechanism for building [Typical] stacks.',
+      description: 'Deals 120% attack power wind damage to designated enemy unit. 1.0s cooldown.',
     },
     auto: {
       name: 'Military Command (军神号令)',
@@ -36,7 +35,7 @@ export const athenaData = {
       name: "Athena's Aegis (雅典娜的埃癸斯)",
       energyCost: '3', // e.g., '5'
       description:
-        'Immediately gains 3 layers [Aegis]. When having [Aegis], normal attacks become full auto mode, can continuously fire strengthening bullets during the period. Each layer [Aegis] can fire 12 strengthening bullets. After interrupting normal attack, need to consume 1 layer [Aegis] again to reload. Each strengthening bullet deals 60% attack power wind damage. Every 5 strengthening bullet hits on targets, all friendly characters gain +2.4% crit rate and +4.6% normal attack damage, max 10 stacks, lasts 10 seconds',
+        'Immediately gains 3 layers [Aegis]. When having [Aegis], normal attacks become full auto mode, can continuously fire Enhanced bullets during the period. Each layer [Aegis] can fire 12 Enhanced bullets. After interrupting normal attack, need to consume 1 layer [Aegis] again to reload. Each Enhanced bullet deals 60% attack power wind damage. Every 5 Enhanced bullet hits on targets, all friendly characters gain +2.4% crit rate and +4.6% normal attack damage, max 10 stacks, lasts 10 seconds',
     },
 
     passive: {
@@ -50,7 +49,7 @@ export const athenaData = {
   teamSkill: {
     name: 'Combination Skill', // Usually 'Combination Skill'
     description:
-      'Team includes 2 [Odius] or 2 [Wind] characters to trigger. Battle start: All team defense +10%. For every 500 attack power, all team defense additionally +5% (max 6 times, total +40% defense).',
+      'Battle start: All team Damage increases by 10%. For every 500 attack power, all team Damage additionally +5% (max 6 times, total +40% Damage).',
     requirements: {
       faction: 'Odius', // Same as character faction
       element: 'Wind', // Same as character element
@@ -62,19 +61,19 @@ export const athenaData = {
     {
       level: 1,
       effect:
-        'When allies deal normal attack damage, Athena gets 1 additional layer [Typical] per normal attack (cannot stack, max once per character per second)',
+        'After any allied characters deal basic attack damage, Athena will additionally deal 50% attack power Wind damage to that target. This damage cannot critically hit, and each character can trigger this effect at most once per second.',
     },
     { level: 2, effect: 'Using ultimate skill gains 6 layers [Aegis] instead of 3' },
     { level: 3, effect: '[Normal Attack], [Skill], [Ultimate] and [Passive] level cap +4' },
     {
       level: 4,
       effect:
-        'When Athena has [Aegis], all allies receive 10% less damage, strikers receive additional 10% less damage (total 20% for strikers)',
+        'While Athena has [Aegis] active: All allies take 10% reduced damage, Warriors and Rogues gain an additional 10% damage reduction (total 20%).',
     },
     { level: 5, effect: '[Normal Attack], [Skill], [Ultimate] and [Passive] level cap +4' },
     {
       level: 6,
-      effect: "Athena's strengthening bullets deal double damage (120% attack power per bullet)",
+      effect: "Athena's Enhanced bullets deal double damage (120% attack power per bullet)",
     },
   ],
 
@@ -88,10 +87,13 @@ export const athenaData = {
       defense: '600', // e.g., '690'
     },
     effects: [
-      'After battle start: All allies defense +40%, normal attack damage +40%',
+      'After battle start: All allies damage +40%, normal attack damage +40%',
       'When equipped character deals 5 normal attack damage: All team attack power +40% for 5 seconds',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'Cooldown Reduction', 'Normal Attack', 'Crit Rate', 'Energy', 'Damage Reduction'],
 };
 
 // SEO data for Athena

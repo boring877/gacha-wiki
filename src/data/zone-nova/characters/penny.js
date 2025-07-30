@@ -88,7 +88,7 @@ export const pennyData = {
   },
 
   // Character Tags - Reusable across multiple characters
-  tags: ['Def-Scale', 'Shield', 'Damage Reduction', 'Buff'],
+  tags: ['Def-Scale', 'Shield', 'Damage Reduction', 'Buff', 'Melee'],
 };
 
 // SEO data for Penny

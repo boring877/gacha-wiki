@@ -46,14 +46,14 @@ export const jeanneDArcData = {
       cooldown: '1.0s',
       energyCost: '8',
       description:
-        "Recovers all friendly colored units' self attack power 90.8%+668 HP, and adds 3 layers [Sacred] to self, max 4 layers",
+        'Restore health to all friendly characters equal to self attack power 90.8% + 668, and add 3 layers of [Sacred Healing] to self, [Sacred Healing] can stack up to maximum 4 layers',
     },
     passive: {
       name: 'Sacred Blood Healing',
       chineseName: '圣血治疗',
       level: '10+4',
       description:
-        'When my colored units are attacked, consumes 1 layer [Sacred] and recovers self attack power 119.2%+445 to that colored unit, each colored unit has 1 second cooldown time. When friendly unit enters weakened state, recovers after 5 seconds and recovers self attack power 285.8%+2709 HP, can be revived once per battle at most',
+        'When friendly characters are attacked, consume 1 layer [Sacred Healing] and restore health to that character equal to self attack power 91.2% + 445, each character has 1 second cooldown time When friendly units enter near-death state, after 5 seconds revive them and restore health equal to self attack power 285.8% + 2709, can revive at most once per battle',
     },
   },
 
@@ -63,21 +63,24 @@ export const jeanneDArcData = {
     chineseName: '组合技',
     level: '1',
     description:
-      'Passive: Self attack power +10%. Battle Start: Every 500 attack power increases self healing by 5%, max 6 times.',
+      'Self attack power +10%. Every 500 attack power increases self healing by 5%, max 6 times.',
     requirements: {
       faction: 'Avalon',
-      element: 'Storm',
-      condition: '2 [Avalon] colored or 2 [Storm] colored characters',
+      element: 'Wind',
+      condition: '2 [Avalon] colored or 2 [Wind] colored characters',
     },
   },
 
   // Awakening Effects (6 levels)
   awakenings: [
-    { level: 1, effect: 'When casting required skills, additionally adds 1 layer [Sacred]' },
+    {
+      level: 1,
+      effect: 'After casting ultimate skill, additionally add 1 layer of [Sacred Healing]',
+    },
     {
       level: 2,
       effect:
-        'After consuming [Sacred] to heal targets, that target receives 10% less damage for 5 seconds, can be triggered multiple times with extended duration',
+        'After consuming [Sacred Healing] to heal target, that target takes 10% reduced damage for 5 seconds, repeated triggers can extend the duration',
     },
     { level: 3, effect: '[Skills] and [Normal Attack] level cap +4' },
     { level: 4, effect: 'Healing amount increased by 37.5%' },
@@ -97,10 +100,12 @@ export const jeanneDArcData = {
       defense: '600',
     },
     effects: [
-      'Only effective for healers, 5-price awakening',
-      'The Most Real Her: Healing amount +50%, when casting skills or required skills within 1/2/3 seconds, healing amount additionally +25/50/75%',
+      'Healing amount increases by 50% When casting skills or ultimate skills for 1/2/3 seconds, healing amount additionally increases by 25/50/75%',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'Healing', 'Revival', 'Reduced Damage', 'Continuously Heals'],
 };
 
 // SEO data for Jeanne d'Arc

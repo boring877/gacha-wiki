@@ -28,26 +28,25 @@ export const kelaData = {
       name: 'Sacred Healing',
       cooldown: '5.0s',
       description:
-        'Heals the ally with the lowest health percentage. Healing amount: 69% attack power + 335 HP. Intelligent targeting ensures optimal healing distribution',
+        'Heal the friendly unit with the lowest current health percentage once, restore health equal to self attack power 69% + 335',
     },
     ultimate: {
       name: 'Divine Intervention',
       energyCost: '3',
       description:
-        'Heals the ally with the lowest HP percentage. Healing amount: 128% attack power + 682 HP. Scales with attack buffs, making it potent when paired with attack-boosting allies',
+        'Heal the friendly unit with the lowest current health percentage once, restore health equal to self attack power 128% + 682',
     },
     passive: {
       name: 'Master of All (万事通之力)',
       description:
-        'When healing allies below 50% health, healing amount increases by 24%. This passive makes Kela the ultimate clutch healer for critical moments',
+        'When healing friendly units whose current health is below 50%, healing amount increases by 24%',
     },
   },
 
   // Team Skill
   teamSkill: {
     name: 'Divine Sanctuary',
-    description:
-      "Effect 1: All allies' healing received increases by 15%. Effect 2: When any ally drops below 30% HP, they gain damage reduction of 10% for 8 seconds",
+    description: 'Self attack power increases by 10%, healing amount increases by 12.5%',
     requirements: {
       faction: 'Sapphire',
       element: 'Holy',
@@ -59,20 +58,23 @@ export const kelaData = {
     {
       level: 1,
       effect:
-        'When healing allies below 50% health: Damage they take is reduced by 10% for 10 seconds. Stacks with memory card effect for enhanced damage reduction',
+        'After ultimate skill heals friendly units, additionally make the target take 5% reduced damage, lasts 5 seconds',
     },
-    { level: 2, effect: 'Healing amount increases by 15%' },
+    {
+      level: 2,
+      effect:
+        'When self health drops below 20% after taking damage, immediately restore health equal to self attack power 750%, can trigger at most once per battle',
+    },
     { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
     {
       level: 4,
-      effect:
-        'When using healing skills: Attack power increases by 20% for 10 seconds. Self-amplifying healing cycle - each heal makes the next one stronger',
+      effect: 'Healing amount increases by 20%',
     },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
     {
       level: 6,
       effect:
-        'When allies are below 30% health: Healing effectiveness increases by an additional 25%',
+        'Auto Skills healing friendly units can also trigger Awakening 1 effect. Awakening 1 effect is increased by 100% (It become 10%)',
     },
   ],
 
@@ -86,10 +88,12 @@ export const kelaData = {
       defense: '500',
     },
     effects: [
-      'Solitary Realm (一人之境): Healing amount increased by 30%',
-      'Protection Effect: When healing a target below 50% max HP, the target receives 8% damage reduction for 10 seconds',
+      'Healing amount increases by 30%. When healing targets below 50% maximum health, they get 8% reduced damage, lasts 10 seconds',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'Healing', 'Reduce Damage'],
 };
 
 // SEO data for Kela

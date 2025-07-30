@@ -81,6 +81,9 @@ export const shuData = {
       'When dealing continuous damage effects: Target takes 12% increased damage for 2 seconds',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'DOT', 'Vulnerability', 'Debuff', 'AOE'],
 };
 
 // SEO data for Shu

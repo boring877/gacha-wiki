@@ -23,73 +23,73 @@
 :root {
   /* === PRIMARY BRAND COLORS === */
   /* Core brand identity colors used throughout the application */
-  --rich-black: #1c1c1c;     /* Primary dark background - provides high contrast base */
-  --mocha-mousse: #a47864;    /* Warm secondary background - creates depth and warmth */
-  --amber-glow: #ffb74d;      /* Primary accent color - draws attention to key elements */
-  --teal-crystal: #00acc1;    /* Interactive element color - provides clear affordance */
-  --rose-quartz: #e91e63;     /* Special highlight color - used for promotions and events */
+  --rich-black: #1c1c1c; /* Primary dark background - provides high contrast base */
+  --mocha-mousse: #a47864; /* Warm secondary background - creates depth and warmth */
+  --amber-glow: #ffb74d; /* Primary accent color - draws attention to key elements */
+  --teal-crystal: #00acc1; /* Interactive element color - provides clear affordance */
+  --rose-quartz: #e91e63; /* Special highlight color - used for promotions and events */
 
   /* === PREMIUM EFFECT COLORS === */
   /* High-impact colors for special animations, effects, and premium content */
-  --cosmic-purple: #8a2be2;   /* Premium tier indicator - creates sense of exclusivity */
-  --deep-indigo: #4b0082;     /* Gradient foundation - provides rich depth in overlays */
-  --electric-cyan: #00ffff;   /* Flash highlights - used for rare item reveals */
-  --golden-amber: #ffbf00;    /* Premium gold accent - indicates high-value content */
-  --crimson-red: #dc143c;     /* Alert/critical accent - demands immediate attention */
+  --cosmic-purple: #8a2be2; /* Premium tier indicator - creates sense of exclusivity */
+  --deep-indigo: #4b0082; /* Gradient foundation - provides rich depth in overlays */
+  --electric-cyan: #00ffff; /* Flash highlights - used for rare item reveals */
+  --golden-amber: #ffbf00; /* Premium gold accent - indicates high-value content */
+  --crimson-red: #dc143c; /* Alert/critical accent - demands immediate attention */
 
   /* === SEMANTIC BACKGROUND COLORS === */
   /* Layered background system for content hierarchy and visual organization */
-  --bg-primary: #ffffff;      /* Pure white - main content backgrounds, highest priority */
-  --bg-secondary: #f8f4f0;    /* Warm off-white - section backgrounds, subtle distinction */
-  --bg-dark: #1c1c1c;         /* Rich black - main application background, creates depth */
-  --bg-card: #a47864;         /* Mocha mousse - card containers, warm container feeling */
+  --bg-primary: #ffffff; /* Pure white - main content backgrounds, highest priority */
+  --bg-secondary: #f8f4f0; /* Warm off-white - section backgrounds, subtle distinction */
+  --bg-dark: #1c1c1c; /* Rich black - main application background, creates depth */
+  --bg-card: #a47864; /* Mocha mousse - card containers, warm container feeling */
 
   /* === TYPOGRAPHY COLOR HIERARCHY === */
   /* Text color system ensuring proper contrast ratios (WCAG AA compliant) */
-  --text-primary: #1e293b;    /* High contrast body text - 4.5:1 ratio on white backgrounds */
-  --text-secondary: #64748b;  /* Medium contrast secondary text - used for descriptions */
-  --text-muted: #94a3b8;      /* Low contrast muted text - used for subtle information */
-  --text-inverse: #ffffff;    /* White text - used on dark backgrounds for contrast */
+  --text-primary: #1e293b; /* High contrast body text - 4.5:1 ratio on white backgrounds */
+  --text-secondary: #64748b; /* Medium contrast secondary text - used for descriptions */
+  --text-muted: #94a3b8; /* Low contrast muted text - used for subtle information */
+  --text-inverse: #ffffff; /* White text - used on dark backgrounds for contrast */
 
   /* === NEUTRAL GRAYSCALE SYSTEM === */
   /* Comprehensive grayscale palette for layouts, borders, and subtle backgrounds */
   /* Based on Tailwind CSS neutral scale for consistency and accessibility */
-  --neutral-50: #f8fafc;      /* Almost white - subtle background tints */
-  --neutral-100: #f1f5f9;     /* Very light gray - card hover states */
-  --neutral-200: #e2e8f0;     /* Light gray - borders and dividers */
-  --neutral-300: #cbd5e1;     /* Medium light gray - disabled states */
-  --neutral-400: #94a3b8;     /* Medium gray - placeholder text */
-  --neutral-500: #64748b;     /* True middle gray - secondary text */
-  --neutral-600: #475569;     /* Medium dark gray - primary text on light */
-  --neutral-700: #334155;     /* Dark gray - headings and emphasis */
-  --neutral-800: #1e293b;     /* Very dark gray - high contrast text */
-  --neutral-900: #0f172a;     /* Almost black - maximum contrast */
+  --neutral-50: #f8fafc; /* Almost white - subtle background tints */
+  --neutral-100: #f1f5f9; /* Very light gray - card hover states */
+  --neutral-200: #e2e8f0; /* Light gray - borders and dividers */
+  --neutral-300: #cbd5e1; /* Medium light gray - disabled states */
+  --neutral-400: #94a3b8; /* Medium gray - placeholder text */
+  --neutral-500: #64748b; /* True middle gray - secondary text */
+  --neutral-600: #475569; /* Medium dark gray - primary text on light */
+  --neutral-700: #334155; /* Dark gray - headings and emphasis */
+  --neutral-800: #1e293b; /* Very dark gray - high contrast text */
+  --neutral-900: #0f172a; /* Almost black - maximum contrast */
 
   /* === INTERACTIVE STATE COLORS === */
   /* Button and interactive element colors with proper hover/focus states */
-  --primary-button: #ffb74d;     /* Amber glow - main CTA buttons, warm and inviting */
-  --primary-hover: #ff9800;      /* Darker amber - 15% darker for clear hover feedback */
-  --secondary-button: #00acc1;   /* Teal crystal - secondary actions, cool contrast */
-  --secondary-hover: #0097a7;    /* Darker teal - maintains color relationship */
-  --accent-highlight: #e91e63;   /* Rose quartz - special actions and notifications */
-  --success-color: #4caf50;      /* Standard success green - positive feedback */
+  --primary-button: #ffb74d; /* Amber glow - main CTA buttons, warm and inviting */
+  --primary-hover: #ff9800; /* Darker amber - 15% darker for clear hover feedback */
+  --secondary-button: #00acc1; /* Teal crystal - secondary actions, cool contrast */
+  --secondary-hover: #0097a7; /* Darker teal - maintains color relationship */
+  --accent-highlight: #e91e63; /* Rose quartz - special actions and notifications */
+  --success-color: #4caf50; /* Standard success green - positive feedback */
 
   /* === SILVER AND BLOOD GAME THEME === */
   /* Sophisticated red and blue palette reflecting the game's aesthetic */
   /* Colors evoke metallic elements and blood themes while remaining approachable */
-  --sab-calm-red: #c26b6b;       /* Primary red - muted for readability, blood-inspired */
-  --sab-calm-blue: #5a7ba7;      /* Primary blue - steel/silver tone, metallic feeling */
-  --sab-blue-silver: #b8c5d1;    /* Metallic accent - silver-blue for premium elements */
-  --sab-dark-red: #a64d4d;       /* Dark red variant - for emphasis and depth */
-  --sab-dark-blue: #4a6b8a;      /* Dark blue variant - deeper metallic tone */
-  --sab-light-red: #d67e7e;      /* Light red variant - for backgrounds and subtle highlights */
-  --sab-light-blue: #7a95b8;     /* Light blue variant - softer metallic for large areas */
+  --sab-calm-red: #c26b6b; /* Primary red - muted for readability, blood-inspired */
+  --sab-calm-blue: #5a7ba7; /* Primary blue - steel/silver tone, metallic feeling */
+  --sab-blue-silver: #b8c5d1; /* Metallic accent - silver-blue for premium elements */
+  --sab-dark-red: #a64d4d; /* Dark red variant - for emphasis and depth */
+  --sab-dark-blue: #4a6b8a; /* Dark blue variant - deeper metallic tone */
+  --sab-light-red: #d67e7e; /* Light red variant - for backgrounds and subtle highlights */
+  --sab-light-blue: #7a95b8; /* Light blue variant - softer metallic for large areas */
 
   /* === SILVER AND BLOOD ACCENT COLORS === */
   /* Supporting colors for special elements and decorative accents */
-  --sab-muted-gold: #d4af37;     /* Treasure/reward gold - warm accent for valuable items */
-  --sab-silver-accent: #9fb3c4;  /* Pure silver tone - metallic highlights and borders */
-  --sab-blood-accent: #b85a5a;   /* Blood red accent - intense moments and critical elements */
+  --sab-muted-gold: #d4af37; /* Treasure/reward gold - warm accent for valuable items */
+  --sab-silver-accent: #9fb3c4; /* Pure silver tone - metallic highlights and borders */
+  --sab-blood-accent: #b85a5a; /* Blood red accent - intense moments and critical elements */
 
   /* === SILVER AND BLOOD GRADIENT SYSTEM === */
   /* Complex gradients combining theme colors for dynamic visual effects */
@@ -97,4 +97,55 @@
   --sab-primary-gradient: linear-gradient(135deg, var(--sab-calm-blue), var(--sab-calm-red));
   --sab-silver-gradient: linear-gradient(135deg, var(--sab-blue-silver), var(--sab-light-blue));
   --sab-blood-gradient: linear-gradient(135deg, var(--sab-calm-red), var(--sab-dark-red));
+
+  /* === ZONE NOVA GAME THEME === */
+  /* Sophisticated amber and teal palette with dark background support */
+  /* Colors evoke futuristic and technological themes while maintaining readability */
+  --zn-primary-amber: #ffb74d; /* Primary amber - main accent color, warm and inviting */
+  --zn-dark-amber: #ff9800; /* Dark amber variant - for hover states and emphasis */
+  --zn-light-amber: #ffcc80; /* Light amber variant - for backgrounds and subtle highlights */
+  --zn-primary-teal: #00acc1; /* Primary teal - secondary accent color, cool contrast */
+  --zn-dark-teal: #0097a7; /* Dark teal variant - deeper tone for emphasis */
+  --zn-light-teal: #4dd0e1; /* Light teal variant - softer tone for large areas */
+
+  /* === ZONE NOVA DARK THEME COLORS === */
+  /* Optimized colors for dark backgrounds and high contrast interfaces */
+  --zn-bg-primary: #1a1a1a; /* Primary dark background - main content areas */
+  --zn-bg-secondary: #2d2d2d; /* Secondary dark background - cards and containers */
+  --zn-bg-tertiary: #3a3a3a; /* Tertiary background - hover states and active elements */
+  --zn-text-primary: #ffffff; /* Primary white text - maximum contrast on dark */
+  --zn-text-secondary: #e0e0e0; /* Secondary light text - readable on dark backgrounds */
+  --zn-text-muted: #b0b0b0; /* Muted text - subtle information and placeholders */
+  --zn-border-primary: #4a4a4a; /* Primary border - subtle separation on dark backgrounds */
+  --zn-border-secondary: #606060; /* Secondary border - more visible separation */
+
+  /* === ZONE NOVA ACCENT COLORS === */
+  /* Supporting colors for special elements and interactive states */
+  --zn-success: #4caf50; /* Success green - positive feedback and confirmations */
+  --zn-warning: #ff9800; /* Warning amber - attention and caution states */
+  --zn-error: #f44336; /* Error red - critical issues and failures */
+  --zn-info: #2196f3; /* Info blue - informational content and tips */
+
+  /* === ZONE NOVA CARD COLORS === */
+  /* Specialized colors for character cards and interactive elements */
+  --zn-card-bg: #2a2a2a; /* Character card background - warm dark tone */
+  --zn-card-bg-hover: #343434; /* Card hover background - slightly lighter */
+  --zn-card-border: #4a4a4a; /* Card border - subtle separation */
+  --zn-card-border-hover: var(--zn-primary-amber); /* Card hover border - amber accent */
+  --zn-card-border-selected: var(--zn-primary-teal); /* Selected card border - teal accent */
+
+  /* === ZONE NOVA BADGE COLORS === */
+  /* Enhanced colors for rarity, class, and element badges */
+  --zn-badge-ssr: #ffd700; /* SSR rarity - gold color */
+  --zn-badge-sr: #c0c0c0; /* SR rarity - silver color */
+  --zn-badge-r: #cd7f32; /* R rarity - bronze color */
+  --zn-badge-class: var(--zn-primary-teal); /* Class badges - teal theme */
+  --zn-badge-element: var(--zn-light-amber); /* Element badges - light amber */
+
+  /* === ZONE NOVA GRADIENT SYSTEM === */
+  /* Dynamic gradients for headers, buttons, and decorative elements */
+  --zn-primary-gradient: linear-gradient(135deg, var(--zn-primary-amber), var(--zn-dark-amber));
+  --zn-secondary-gradient: linear-gradient(135deg, var(--zn-primary-teal), var(--zn-dark-teal));
+  --zn-accent-gradient: linear-gradient(135deg, var(--zn-primary-amber), var(--zn-primary-teal));
+  --zn-card-gradient: linear-gradient(135deg, var(--zn-card-bg), var(--zn-bg-primary));
 }

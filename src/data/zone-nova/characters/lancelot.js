@@ -22,32 +22,31 @@ export const lancelotData = {
   skills: {
     normal: {
       name: 'Lake Sword',
-      description: 'Deals holy damage to designated enemy unit equal to 12% of own maximum HP',
+      description: 'Deals holy damage to enemy unit equal to 12% of own maximum HP',
     },
     auto: {
       name: 'Lake Sacred Shield',
       cooldown: '4.0s',
       description:
-        'Adds a [Shield] equal to 5.1% of max HP to self. [Shield] can stack up to 30% of HP limit. Provides continuous defensive layering',
+        'Adds a [Shield] equal to 5.1% of max HP to self. [Shield] can stack up to 30% of HP limit.',
     },
     ultimate: {
       name: "Blooming Knight's Flower",
       energyCost: '3',
       description:
-        'Immediately moves in front of specified enemy unit. All team characters receive 24% less damage for 15 seconds. Provides crucial team-wide damage reduction',
+        'Immediately moves in front of specified enemy unit. All team characters receive 24% less damage for 15 seconds.',
     },
     passive: {
       name: "Lake Spirit's Blessing",
       description:
-        'When HP drops below 50% after taking damage: Recover 9.6% of maximum HP every 3 seconds. Effect lasts for 15 seconds. Provides excellent sustain in critical moments',
+        'When HP drops below 50% after taking damage: Recover 9.6% of maximum HP every 3 seconds. Effect lasts for 15 seconds.',
     },
   },
 
   // Team Skill
   teamSkill: {
     name: 'Combination Skill',
-    description:
-      'Own maximum HP increased by 10%. Defense increased by 10%. Enhances both survivability and damage output since abilities scale with HP',
+    description: 'Own maximum HP increased by 10%. Defense increased by 10%.',
     requirements: {
       faction: 'Avalon',
       element: 'Holy',
@@ -59,16 +58,14 @@ export const lancelotData = {
     { level: 1, effect: 'Defense increased by 45%' },
     {
       level: 2,
-      effect:
-        'When attacked, if [the character] has a shield, damage received is reduced by 10%. Synergizes perfectly with her auto-skill shield generation',
+      effect: 'When attacked, if having a shield, damage taken is reduced by 10%',
     },
     { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
     { level: 4, effect: 'HP increased by 30%' },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
     {
       level: 6,
-      effect:
-        "Recovery amount from passive effect increased by 100%. Doubles the healing from Lake Spirit's Blessing (9.6% → 19.2% HP recovery)",
+      effect: 'Recovery amount from passive effect increased by 100%.)',
     },
   ],
   // Memory Card
@@ -81,14 +78,12 @@ export const lancelotData = {
       defense: '575',
     },
     effects: [
-      'Only effective for Guardian class',
-      '5th Stage Awakening',
-      'Ability: Knight of the Tidal Lake (潮水的湖中骑士)',
-      'Passive: Defense increased by 36%',
-      'Team Buff: After entering battle, all allied characters take 8% less damage',
-      'Note: Same skill effects cannot stack',
+      'Defense increased by 36%, After entering battle, all our characters take 8% less damage, same skill effects cannot stack',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Melee', 'HP-Scale', 'Shield', 'Damage Reduction', 'Healing'],
 };
 
 // SEO data for Lancelot

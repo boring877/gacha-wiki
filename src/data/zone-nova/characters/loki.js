@@ -28,18 +28,18 @@ export const lokiData = {
       name: "Jormungandr's Poison",
       cooldown: '10.0s',
       description:
-        'Deals 120% attack power chaos damage to all enemies. Applies [Seal] debuff: Prevents skill usage for 5 seconds. AoE Control: Massive team disruption through skill lockdown',
+        'Deal 120% attack power chaos damage to all enemy units and apply [Seal], preventing use of ultimate skills, lasting 5 seconds',
     },
     ultimate: {
       name: 'Woeful Wrath',
       energyCost: '5',
       description:
-        "Tactical Teleport: Instantly teleports to enemy with highest base attack power. Deals 240% attack power chaos damage and applies [Chaos]. [Chaos] Effect: Target's damage reduced by 36% for 10 seconds. Auto-Return: Automatically returns to original position when completed",
+        'Rush to behind the enemy unit with the highest base attack power, deal 240% attack power chaos damage to target and apply [Weakness], reducing their damage dealt by 36%, lasting 10 seconds',
     },
     passive: {
       name: 'Art of Deception',
       description:
-        'Vulnerability Stacking & Damage Amplification: All attacks make targets take +36% increased damage for 5 seconds. Refreshable Duration: New applications refresh the timer. Maximum Stacks: 2 layers (72% increased damage at full stacks). Universal Application: Works with all damage sources from Loki',
+        ' auto skills apply 36% vulnerability debuff  for 5 seconds. Refreshable Duration: New applications refresh the timer. Maximum Stacks: 2 layers (72% increased damage at full stacks).',
     },
   },
 
@@ -47,7 +47,7 @@ export const lokiData = {
   teamSkill: {
     name: 'Combination Skill',
     description:
-      'Self damage increased by 20%. Enhances offensive capabilities for sustained debuff application',
+      'Own attack power increases by 10%, At battle start, every 500 attack power can increase own chaos damage by 5%, up to 6 times',
     requirements: {
       faction: 'Asa',
       element: 'Chaos',
@@ -58,25 +58,22 @@ export const lokiData = {
   awakenings: [
     {
       level: 1,
-      effect:
-        'Normal attacks and skills can additionally trigger passive skill effects. Increases passive vulnerability application opportunities',
+      effect: 'Normal attacks and Ultimate can additionally trigger passive skill effects.',
     },
     {
       level: 2,
       effect:
-        'When taking damage, attacker takes 10% less damage for 5 seconds. Can be refreshed with new applications. Provides defensive utility',
+        'When taking damage, make the attacker deal 10% less damage for 5 seconds, repeated triggering can refresh the duration',
     },
     { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
     {
       level: 4,
-      effect:
-        'When attacking enemies with debuff status, damage increases by 35%. Massive damage boost against debuffed targets',
+      effect: 'When attacking enemies with debuff status, damage increases by 35%.',
     },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
     {
       level: 6,
-      effect:
-        'Passive damage effects can stack up to 2 layers. Enables maximum vulnerability stacking potential for 72% increased damage',
+      effect: 'The passives vulnerability effect can stack 2 additional layers',
     },
   ],
 
@@ -90,10 +87,12 @@ export const lokiData = {
       defense: '600',
     },
     effects: [
-      'Attack Enhancement: Attack power increased by 40%',
-      'Vulnerability Mark: The last enemy hit by any attack takes 24% increased damage',
+      'Attack power increases by 40% The last target that took ultimate skill damage from the equipment wearer takes 24% increased damage',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'Debuff', 'Stop Ultimate', 'Reduce Damage', 'Damage Increase'],
 };
 
 // SEO data for Loki

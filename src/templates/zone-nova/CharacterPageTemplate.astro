@@ -13,22 +13,77 @@ const factionData = getFactionData(characterData.faction);
 function getTagCategory(tag: string): string {
   const lowerTag = tag.toLowerCase();
 
-  // Damage/Scaling tags
-  if (lowerTag.includes('def-scale') || lowerTag.includes('scale')) {
+  // Damage/Scaling tags - Orange
+  if (
+    lowerTag.includes('def-scale') ||
+    lowerTag.includes('hp scale') ||
+    lowerTag.includes('scale') ||
+    lowerTag.includes('crit rate') ||
+    lowerTag.includes('crit dmg') ||
+    lowerTag.includes('normal atk') ||
+    lowerTag.includes('normal attack') ||
+    lowerTag.includes('dot') ||
+    lowerTag.includes('extra attack') ||
+    lowerTag.includes('aoe') ||
+    lowerTag.includes('enhanced ultimate') ||
+    lowerTag.includes('penetration') ||
+    lowerTag.includes('damage increase') ||
+    lowerTag.includes('interrupt') ||
+    lowerTag.includes('dot intake increases') ||
+    lowerTag.includes('atk increase') ||
+    lowerTag.includes('crit rate increase') ||
+    lowerTag.includes('crit dmg increases') ||
+    lowerTag.includes('atk increases') ||
+    lowerTag.includes('hp-scale') ||
+    lowerTag.includes('increase attack')
+  ) {
     return 'damage-scaling';
   }
 
-  // Team utility tags
-  if (lowerTag.includes('shield')) {
+  // Team utility tags - Blue
+  if (
+    lowerTag.includes('shield') ||
+    lowerTag.includes('buff') ||
+    lowerTag.includes('healing') ||
+    lowerTag.includes('debuff') ||
+    lowerTag.includes('reduce') ||
+    lowerTag.includes('inc skill cooldown') ||
+    lowerTag.includes('revive') ||
+    lowerTag.includes('increase max hp') ||
+    lowerTag.includes('aoe healing') ||
+    lowerTag.includes('stop ultimate') ||
+    lowerTag.includes('revival') ||
+    lowerTag.includes('reduced damage') ||
+    lowerTag.includes('continuously heals') ||
+    lowerTag.includes('healing damage increase') ||
+    lowerTag.includes('vulnerability') ||
+    lowerTag.includes('debuffer') ||
+    lowerTag.includes('weakness')
+  ) {
     return 'team-utility';
   }
 
-  // Self utility tags
-  if (lowerTag.includes('damage reduction')) {
+  // Self utility tags - Green
+  if (
+    lowerTag.includes('damage reduction') ||
+    lowerTag.includes('atk speed') ||
+    lowerTag.includes('attack speed') ||
+    lowerTag.includes('energy recovery') ||
+    lowerTag.includes('hp consume') ||
+    lowerTag.includes('cooldown reduction') ||
+    lowerTag.includes('energy') ||
+    lowerTag.includes('block') ||
+    lowerTag.includes('speed attack')
+  ) {
     return 'self-utility';
   }
 
-  // General mechanic tags (buff, etc.)
+  // General mechanic tags - Purple
+  if (lowerTag.includes('melee') || lowerTag.includes('range')) {
+    return 'general-mechanic';
+  }
+
+  // Default fallback
   return 'general-mechanic';
 }
 ---

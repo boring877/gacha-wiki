@@ -22,24 +22,24 @@ export const lyraData = {
   skills: {
     normal: {
       name: 'End Blade Continuous Strike',
-      description: 'Deals fire damage equal to 120% of Attack to designated enemy',
+      description: 'Deals fire damage equal to 120% of Attack to enemy',
     },
     auto: {
       name: 'Two-Blade Flow - End Blade - Continuous Slash',
-      cooldown: '8.0s (4.8s with Awakening 2)',
+      cooldown: '8.0s',
       description:
-        'Deals fire damage equal to 480% of Attack to designated enemy. Applies [Fire Essence] debuff for 10 seconds. With Awakening 2: Cooldown reduced to 4.8 seconds',
+        'Deals fire damage equal to 480% of Attack to enemy. Applies [Fire Essence] for 10 seconds.',
     },
     ultimate: {
       name: 'Two-Blade Flow - End Blade - Ghost Blade Flow',
       energyCost: '5',
       description:
-        'Base: Deals fire damage equal to 360% of Attack to designated enemy. Enhanced (if target has Fire Essence): Consumes [Fire Essence] and deals fire damage equal to 360% of Attack to target and enemies behind. With Memory Card: Up to 80% damage amplification vs single targets',
+        'Deals fire damage equal to 360% of Attack to enemy. Enhanced (if target has Fire Essence): Consumes [Fire Essence] and deals fire damage equal to 360% of Attack to target and enemies behind.',
     },
     passive: {
       name: 'Black Armor Recommendation System',
       description:
-        'For each enemy unit on the field, increases attack by 19%. Maximum 4 stacks (76% total attack increase in 4+ enemy scenarios). Scales inversely with memory card bonus - fewer enemies = higher ultimate damage, more enemies = higher base attack',
+        'For every enemy unit on the field, increases attack power by 19%, can increase maximum 4 times',
     },
   },
 
@@ -47,7 +47,7 @@ export const lyraData = {
   teamSkill: {
     name: 'Combination Skill',
     description:
-      'Self critical rate increases by 7.5%. Combat start: Each 15% critical rate can additionally add 7.5% critical damage, maximum 6 times. Provides both crit rate and crit damage scaling',
+      'Self critical rate increases by 7.5%. Combat start: Each 15% critical rate can additionally add 7.5% critical damage, maximum 6 times.',
     requirements: {
       faction: 'Sapphire',
       element: 'Fire',
@@ -58,24 +58,21 @@ export const lyraData = {
   awakenings: [
     {
       level: 1,
-      effect:
-        'Critical rate increases by 15%. Combined with base 15% and team skill, reaches high critical rate thresholds',
+      effect: 'Critical rate increases by 15%.',
     },
     {
       level: 2,
-      effect:
-        'Skill cooldown time reduced by 40%. Continuous Slash cooldown: 8.0s → 4.8s (dramatically improves Fire Essence uptime)',
+      effect: 'Auto Skill cooldown time reduced by 40%.',
     },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4' },
     {
       level: 4,
-      effect: 'Fire damage increases by 35%. Massive damage amplification for all abilities',
+      effect: 'Fire damage increases by 35%.',
     },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
     {
       level: 6,
-      effect:
-        "Ultimate damage ignores target's 20% fire resistance. Ensures full damage against fire-resistant enemies",
+      effect: "Ultimate damage ignores target's 20% fire resistance.",
     },
   ],
 
@@ -89,11 +86,19 @@ export const lyraData = {
       defense: '474',
     },
     effects: [
-      'Ultimate Damage: Ultimate damage increased by 40%',
-      "Single Target Bonus: When there's one enemy on the field, ultimate damage additionally increases by 10%, maximum 4 times",
-      'Maximum Potential: Up to 80% ultimate damage boost vs single targets (40% + 40%)',
+      'Ultimate Damage: Ultimate damage increased by 40%. For every enemy on the field, ultimate skill damage additionally increases by 10%, maximum 4 times',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: [
+    'Melee',
+    'Crit Rate',
+    'Crit Dmg',
+    'Enhanced Ultimate',
+    'Cooldown Reduction',
+    'Increase Attack',
+  ],
 };
 
 // SEO data for Lyra

@@ -29,7 +29,7 @@ export const snowGirlData = {
       chineseName: '雪鬼撞击',
       level: '10+4',
       cooldown: '2.0s',
-      description: 'Deals 120% attack power ice damage to designated enemy unit',
+      description: 'Deals 120% attack power ice damage to enemy unit',
     },
     auto: {
       name: 'Ice Snow Healing',
@@ -65,8 +65,8 @@ export const snowGirlData = {
     description: 'Own attack increased by 10%, healing amount increased by 12.5%',
     requirements: {
       faction: 'Pingjing City',
-      element: 'Ice Frost',
-      condition: '2 [Pingjing City] colored or 2 [Ice Frost] colored characters',
+      element: 'Ice',
+      condition: '2 [Pingjing City] or 2 [Ice]',
     },
   },
 
@@ -87,7 +87,7 @@ export const snowGirlData = {
     {
       level: 6,
       effect:
-        'Skills that heal friendly units can also trigger the passives continuous recovery effect',
+        'auto Skill that heal friendly units can also trigger the passives continuous recovery effect',
     },
   ],
 
@@ -106,6 +106,9 @@ export const snowGirlData = {
       'When the healed targets HP is full, targets damage is increased by 24% for 10 seconds',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'Healing Damage Increase', 'Continuously Heals', 'AOE Healing'],
 };
 
 // SEO data for Snow Girl

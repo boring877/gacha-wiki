@@ -1,0 +1,25 @@
+---
+import CharacterTagSelectionLayout from '../../../layouts/zone-nova/CharacterTagSelectionLayout.astro';
+import CharacterTagSelectionComponent from '../../../components/zone-nova/CharacterTagSelection.astro';
+
+const title = 'Character Tag Selection - Zone Nova';
+const description =
+  'Filter and discover Zone Nova characters by their gameplay tags. Find characters with specific abilities like Crit Rate, Healing, AOE, DOT, Enhanced Ultimate, and more.';
+---
+
+<CharacterTagSelectionLayout
+  title={title}
+  description={description}
+  gameTitle="Character Tag Selection"
+>
+  <section class="content-section">
+    <div class="tag-selection-intro">
+      <h2 class="section-title">Filter by Gameplay Tags</h2>
+      <p class="intro-text">
+        Find characters with specific abilities like Crit Rate, Healing, AOE, DOT, and more.
+      </p>
+    </div>
+
+    <CharacterTagSelectionComponent />
+  </section>
+</CharacterTagSelectionLayout>

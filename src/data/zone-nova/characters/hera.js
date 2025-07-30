@@ -46,14 +46,14 @@ export const heraData = {
       cooldown: '1.0s',
       energyCost: '6',
       description:
-        'Summons giant flying sword to attack designated enemy unit, dealing 1440% attack power chaos damage. When attack body has 20+ layers of sustained damage targets, can cast [Enhanced Required Skill] within 5 seconds. [Enhanced Required Skill]: Summons more swords to attack designated enemy unit, dealing 1920% attack power chaos damage',
+        'Summons giant flying sword to attack designated enemy unit, dealing 1440% attack power chaos damage. When the enemy has 20+ layers of continuous damage targets, can cast [Enhanced Ultimate] within 5 seconds. [Enhanced Ultimate]: Summons more swords to attack designated enemy unit, dealing 1920% attack power chaos damage',
     },
     passive: {
       name: 'Strong Pressure',
       chineseName: '女神威压',
       level: '10+4',
       description:
-        'Every 4 sword attacks, next attack can add [Virtual] effect. [Virtual]: Deals 36% attack power chaos damage per second per layer, max 10 layers, lasts 10 seconds',
+        'Every 4 sword attacks (Basic Attack also count as 1 sword Attacks, same with Auto Skill 8 swords.), next attack can add [Void] effect. [Void]: Deals 36% attack power chaos damage per second per layer, max 10 layers, lasts 10 seconds',
     },
   },
 
@@ -63,7 +63,7 @@ export const heraData = {
     chineseName: '组合技',
     level: '1',
     description:
-      'Passive: Self attack power +10%. Battle Start: Every 500 attack power increases self penetration by 3%, max 6 times',
+      'Self attack power +10%. Battle Start: Every 500 attack power increases self penetration by 3%, max 6 times, total 18%.',
     requirements: {
       faction: 'Odius',
       element: 'Chaos',
@@ -74,11 +74,11 @@ export const heraData = {
   // Awakening Effects (6 levels)
   awakenings: [
     { level: 1, effect: 'Attack power +20%' },
-    { level: 2, effect: 'Add [Virtual] required attack count -1' },
+    { level: 2, effect: 'Add [Void] required attack count -1' },
     { level: 3, effect: '[Skills] and [Normal Attack] level cap +4' },
     { level: 4, effect: 'Chaos damage +30%' },
     { level: 5, effect: '[Required Skills] and [Passive] level cap +4' },
-    { level: 6, effect: "Required skills ignore target's 20% chaos resistance" },
+    { level: 6, effect: "Ultimate skill ignores target's 20% chaos resistance" },
   ],
 
   // Memory Card
@@ -93,10 +93,12 @@ export const heraData = {
       defense: '474',
     },
     effects: [
-      'Only effective for DPS, 5-price awakening',
-      'Hera Memory: Attack power +40%, when attack receives sustained damage effect impact targets, damage +40%',
+      'Attack power +40%, When attacking targets affected by continuous damage effects, damage increases by 40%',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'DOT', 'Enhanced Ultimate'],
 };
 
 // SEO data for Hera

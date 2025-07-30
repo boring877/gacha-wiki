@@ -1,0 +1,92 @@
+---
+export interface Props {
+  items: Array<{
+    name: string;
+    href?: string;
+  }>;
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list">
+    {
+      items.map((item, index) => (
+        <li class="breadcrumb-item">
+          {item.href ? (
+            <a href={item.href} class="breadcrumb-link">
+              {item.name}
+            </a>
+          ) : (
+            <span class="breadcrumb-current" aria-current="page">
+              {item.name}
+            </span>
+          )}
+          {index < items.length - 1 && (
+            <span class="breadcrumb-separator" aria-hidden="true">
+              ›
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .breadcrumb-link {
+    color: var(--amber-glow);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-link:hover {
+    color: #ff9800;
+    text-decoration: underline;
+  }
+
+  .breadcrumb-current {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .breadcrumb-separator {
+    color: var(--text-secondary);
+    user-select: none;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 480px) {
+    .breadcrumb-list {
+      font-size: 0.8rem;
+      gap: 0.3rem;
+    }
+
+    .breadcrumb-item {
+      gap: 0.3rem;
+    }
+  }
+</style>

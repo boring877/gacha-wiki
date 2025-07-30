@@ -58,13 +58,14 @@ export const bastetData = {
   awakenings: [
     {
       level: 1,
-      effect: "When target's HP is below 50%: All self-inflicted damage increases by 20%.",
+      effect:
+        "When the target's health is greater than 50%, all damage dealt by self increases by 20%.",
     },
     { level: 2, effect: 'Passive enhancement: Required normal attack count changes from 5 to 4.' },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4.' },
     { level: 4, effect: 'Ultimate damage increases by 20%.' },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4.' },
-    { level: 6, effect: 'After releasing ultimate: Attack increases by 20% for 5 seconds.' },
+    { level: 6, effect: 'After using ultimate: Attack increases by 20% for 5 seconds.' },
   ],
 
   // Memory Card
@@ -77,9 +78,12 @@ export const bastetData = {
       defense: '395', // e.g., '690'
     },
     effects: [
-      'When releasing ultimate skill: For each enemy on the field, ultimate skill damage increases by 12%, up to 5 stacks, lasting 5 seconds',
+      'When releasing ultimate skill: For each enemy on the field, ultimate skill damage increases by 12%, up to 5 stacks, lasting 5 seconds maximum bonus of 60% (12% × 5 stacks)',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'Normal Attack', 'AOE'],
 };
 
 // SEO data for Bastet

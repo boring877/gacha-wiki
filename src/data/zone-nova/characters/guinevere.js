@@ -22,19 +22,19 @@ export const guinevereData = {
   skills: {
     normal: {
       name: 'Inferno',
-      description: 'Deals fire damage equal to 120% of Defense to designated enemy unit',
+      description: 'Deals fire damage equal to 120% of Defense to enemy unit',
     },
     auto: {
       name: 'Supreme Power',
       cooldown: '5.0s',
       description:
-        'Automatically grants self 58% block rate for 10 seconds (triggers every 5 seconds). [Block]: Has a chance to reduce incoming damage by 30%. Continuous damage ignores block determination',
+        'Gain 58% block rate for 10 seconds. [Block]: Has a chance to reduce incoming damage by 30%. Continuous damage ignores block ',
     },
     ultimate: {
       name: 'Devastating Heavenly Fire',
       energyCost: '3',
       description:
-        'Normal Version: Launches [Pursuit] against designated enemy units. Deals fire damage equal to 240% of Defense. Gains 1 layer of [Domination Authority]. Reduces damage taken by 24% for 10 seconds. [Enhanced Ultimate] (Requires 10 Domination Authority stacks): Clears all [Domination Authority] to gain one passive life recovery count. Launches [Pursuit] against frontal targets. Deals fire damage equal to 240% of Defense. Reduces damage taken by 24% for 10 seconds',
+        'Launches [Extra Attack] against enemy unit. Deals fire damage equal to 240% of Defense. Gains 1 layer of [Domination Authority]. Reduces damage taken by 24% for 10 seconds. [Enhanced Ultimate] (Requires 10 Domination Authority stacks): Clears all [Domination Authority] to gain one passive life recovery count. Launches [Extra Attack] against enemy target. Deals fire damage equal to 240% of Defense. Reduces damage taken by 24% for 10 seconds',
     },
     passive: {
       name: 'Evil Star Explosion',
@@ -47,7 +47,7 @@ export const guinevereData = {
   teamSkill: {
     name: 'Combination Skill',
     description:
-      "Effect 1: Self defense increases by 15%. Effect 2: For every 500 defense in battle, reduces damage taken by the whole team by 1.5%. Maximum 6 stacks (3,000 defense). Maximum team damage reduction: 9%. Scales with Guinevere's total defense (base + equipment + buffs)",
+      'Effect 1: Self defense increases by 15%. Effect 2: For every 500 defense in battle, reduces damage taken by the whole team by 1.5%. Maximum 6 stacks (3,000 defense). Maximum team damage reduction: 9%.',
     requirements: {
       faction: 'Avalon',
       element: 'Fire',
@@ -59,7 +59,7 @@ export const guinevereData = {
     {
       level: 1,
       effect:
-        '[Block] After success: Increases own defense by 30% for 5 seconds. Passive life recovery count can be accumulated up to 2 times (allows Enhanced Ultimate to restore a second charge)',
+        'After [Block] is successful, additionally increase own defense by 30% for 5 seconds. Passive life recovery count can be accumulated up to 2 times (allows Enhanced Ultimate to restore a second charge)',
     },
     {
       level: 2,
@@ -87,10 +87,21 @@ export const guinevereData = {
     },
     effects: [
       'Defense increased by 64%',
-      'Block rate after success reduces damage by 10%, lasts 5 seconds',
+      'After successful block, damage taken decreases by 10%, lasting 5 seconds',
       'Immediately gains 30% maximum HP shield after battle starts',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: [
+    'Melee',
+    'Extra Attack',
+    'Block',
+    'Damage Reduction',
+    'Healing',
+    'Enhanced Ultimate',
+    'Shield',
+  ],
 };
 
 // SEO data for Guinevere

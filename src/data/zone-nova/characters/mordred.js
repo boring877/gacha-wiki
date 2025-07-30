@@ -22,33 +22,30 @@ export const mordredData = {
   skills: {
     normal: {
       name: 'Petty Sword',
-      description:
-        'Deals 120% attack power as burn damage to designated enemy unit. With Awakening 6: Additionally deals 5% max HP as burn damage',
+      description: 'Deals 120% attack power as Fire damage to enemy unit.',
     },
     auto: {
       name: 'Revenge Blade',
       cooldown: '5.0s',
-      description:
-        'Automatically deals burn damage to designated enemy unit equal to 36% of own maximum HP. Pure HP-scaling ability that triggers automatically',
+      description: 'Deals Fire damage to designated enemy unit equal to 36% of own maximum HP.',
     },
     ultimate: {
       name: 'Destructive Fury',
       energyCost: '5',
       description:
-        'Recovers 36% max HP to self. Deals burn damage to target equal to 144% of own max HP. Massive HP-scaling nuke with built-in healing',
+        'Recovers 36% max HP to self. Deals Fire damage to target equal to 144% of own max HP.',
     },
     passive: {
       name: 'Deep Hatred',
       description:
-        'Every normal attack recovers 5.8% max HP. When HP falls below 50%: All received healing increased by 60%. Provides excellent sustain mechanics',
+        'Every normal attack recovers 5.8% max HP. When HP falls below 50%: All received healing increased by 60%.',
     },
   },
 
   // Team Skill
   teamSkill: {
     name: 'Combination Skill',
-    description:
-      'Self attack increased by 10%. Healing amount increased by 12.5%. Enhances both damage potential and survivability',
+    description: 'Self attack increased by 10%. Healing amount increased by 12.5%.',
     requirements: {
       faction: 'Avalon',
       element: 'Fire',
@@ -59,12 +56,11 @@ export const mordredData = {
   awakenings: [
     {
       level: 1,
-      effect: 'Damage taken reduced by 10%. Basic survivability improvement, lowest priority',
+      effect: 'Damage taken reduced by 10%',
     },
     {
       level: 2,
-      effect:
-        'Each normal attack increases own defense by 5%, can stack up to a maximum of 10 layers. Provides scaling defensive capability',
+      effect: 'Each normal attack increases own defense by 5%, can stack up to maximum 10 times',
     },
     {
       level: 3,
@@ -73,8 +69,7 @@ export const mordredData = {
     },
     {
       level: 4,
-      effect:
-        'HP increased by 30%. Massive boost to all HP-scaling abilities and overall survivability - essential for her kit',
+      effect: 'HP increased by 30%.',
     },
     {
       level: 5,
@@ -83,8 +78,7 @@ export const mordredData = {
     },
     {
       level: 6,
-      effect:
-        'Normal attacks additionally deal burn damage equal to 5% of own max HP. Transforms her most frequent ability into HP-scaling damage - game-changing for DPS output',
+      effect: 'Normal attacks additionally deal Fire damage equal to 5% of own max HP.',
     },
   ],
 
@@ -99,6 +93,9 @@ export const mordredData = {
     },
     effects: ['HP increased by 24%', 'Self healing amount increased by 30%'],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Melee', 'Healing', 'HP-Scale', 'Damage Reduction'],
 };
 
 // SEO data for Mordred

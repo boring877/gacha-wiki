@@ -101,6 +101,9 @@ export const odinData = {
       'After each ultimate, gain 1 [Charge]. When dealing damage, consume [Charge] to apply 1 stack of [Final Flame]: deals 15 % ATK Fire damage every 2 s, stacks up to 5, lasts 10 s.',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'DOT', 'Damage Reduction', 'Penetration'],
 };
 
 // SEO data for Odin

@@ -83,7 +83,7 @@ export const gaiaData = {
     {
       level: 6,
       effect:
-        "Upon entering battle: Two lowest-DEF allies gain [Motherly Love]. [Motherly Love] holders gain +50% additional Max HP (stacks with base effect, but total increase still capped at 15% of Gaia's starting HP).",
+        'Upon entering battle: Two lowest-DEF allies gain [Motherly Love]. [Motherly Love] holders gain +50% additional Max HP.',
     },
   ],
 
@@ -102,6 +102,9 @@ export const gaiaData = {
       'If wearer healed within last 1 second, additional +40% healing output',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['HP Scale', 'Healing', 'Range', 'Revive', 'Increase MAX HP', 'AOE Healing'],
 };
 
 // SEO and Metadata

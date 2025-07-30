@@ -23,24 +23,24 @@ export const yuisData = {
   skills: {
     normal: {
       name: 'Thunder Strike',
-      description: 'Deals 120% attack power as Holy damage to designated enemy unit',
+      description: 'Deals 120% attack power as Holy damage to enemy unit',
     },
     auto: {
       name: 'Divine Thunder',
       cooldown: '5.0s', // e.g., '5.0s'
       description:
-        "Immediately grants 2 stacks of [Heaven's Punishment], launches 4 swords dealing 720% attack power as Holy damage to current target",
+        'Immediately gain 2 layers [Sky Extreme], and fire 4 flying swords, deal 720% attack power to current target holy damage',
     },
     ultimate: {
       name: "Absolute Heaven's Punishment",
       energyCost: '4', // e.g., '5'
       description:
-        "Basic Effect: Immediately grants 2 stacks of [Heaven's Punishment], launches 1 giant flying sword dealing 720% attack power as Holy damage to current target. Enhanced Ultimate: Consumes all [Heaven's Punishment] stacks, locks onto current target and launches flying swords equal to stack count, each dealing 1440% attack power as Holy damage with [Pursuit] properties",
+        'Immediately gain 2 layers [Sky Extreme], and fire 1 large flying sword, deal 720% attack power holy damage to current target. [Enhanced Ultimate Skill]: Consume all [Sky Extreme], lock onto current target and continuously drop flying swords, dealing a total of 1440% attack power holy damage, this damage is considered [Extra Attack] damage. Repeatedly using enhanced ultimate skill to attack target can refresh [Extra Attack] duration',
     },
     passive: {
       name: "Heaven's Judgment",
       description:
-        "When other allied units activate ultimate or [Pursuit], Yuis gains 2 stacks of [Heaven's Punishment]. Upon reaching 16 stacks, can release [Enhanced Ultimate]. After releasing [Enhanced Ultimate], crit rate increases by 24% and crit damage increases by 48% for 20 seconds",
+        'When other friendly units use ultimate skills, Yuis gains 2 layers [Sky Extreme] When other friendly units perform [Extra Attack], Yuis gains 2 layers [Sky Extreme] When having 16 layers [Sky Extreme], can cast [Enhanced Ultimate Skill] When able to cast [Enhanced Ultimate Skill], no longer gain [Sky Extreme] After casting [Enhanced Ultimate Skill], critical rate increases by 24% and critical damage increases by 48% for 20 seconds',
     },
   },
 
@@ -65,7 +65,7 @@ export const yuisData = {
     {
       level: 2,
       effect:
-        "After releasing Enhanced Ultimate: Immediately gain 4 stacks of [Heaven's Punishment] and increase pursuit damage by 30% for 20 seconds",
+        'After casting enhanced ultimate skill, immediately gain 4 layers [Sky Extreme], and critical damage increases by 30% for 20 seconds',
     },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4' },
     { level: 4, effect: 'Holy damage increased by 30%' },
@@ -73,7 +73,7 @@ export const yuisData = {
     {
       level: 6,
       effect:
-        "After Yuis deals pursuit damage to the same target 12 times: Additionally drops a giant sword dealing 150% attack power as Holy damage. Yuis's pursuit damage pierces 20% elemental resistance",
+        "After Yuis deals 12 extra attack damages to the same target, additionally drop one large sword, dealing 150% attack power holy damage, this damage is considered extra attack damage Yuis's extra attack damage penetrates 20% elemental resistance",
     },
   ],
 
@@ -87,10 +87,12 @@ export const yuisData = {
       defense: '474', // e.g., '690'
     },
     effects: [
-      'Crit rate increased by 34%',
-      "Equipment wearer's pursuit damage and crit damage increased by 68%",
+      'Crit rate increased by 34%. Equipment wearers extra attack damage, critical damage increases by 68% ',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'Crit Rate', 'Crit Dmg', 'Enhanced Ultimate', 'Extra Attack'],
 };
 
 // SEO data for Yuis

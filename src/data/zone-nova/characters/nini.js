@@ -22,32 +22,30 @@ export const niniData = {
   skills: {
     normal: {
       name: 'Suppressive Fire (压制射击)',
-      description: 'Deals 120% attack power as ice damage to designated enemy unit',
+      description: 'Deals 120% attack power as ice damage to enemy unit',
     },
     auto: {
       name: 'Steel Charge (钢铁冲锋)',
       cooldown: 'Auto-trigger: 5.0s',
       description:
-        'Deals 60% attack power as ice damage to designated enemy. Applies Weakness debuff: Reduces enemy damage by 5.8% per stack. Maximum 3 stacks, lasts 10 seconds',
+        'Deals 60% attack power as ice damage to all enemy in fronts. Applies Weakness debuff: Reduces enemy damage by 5.8% per stack. Maximum 3 stacks, lasts 10 seconds',
     },
     ultimate: {
       name: "Black Nation's Glory (黑色带国的荣耀)",
       energyCost: '3',
       description:
-        'Deals 84% attack power as ice damage to designated enemy. Increases damage taken by 38% for 10 seconds',
+        'Deals 84% attack power as ice damage to all enemy in front. Increases damage taken by 38% for 10 seconds',
     },
     passive: {
       name: 'Battle Fanatic (战斗狂热分子)',
-      description:
-        'When attacking enemies with negative status effects: Damage increased by 38%. Synergizes perfectly with her debuff application abilities',
+      description: 'When attacking enemies with negative status effects: Damage increased by 38%.',
     },
   },
 
   // Team Skill
   teamSkill: {
     name: 'Combination Skill (组合技)',
-    description:
-      'Self damage reduction increased by 20%. Provides defensive utility to complement her debuffer role',
+    description: 'Self damage dealt increases by 20%',
     requirements: {
       faction: 'Monochrome Nation',
       element: 'Ice',
@@ -59,24 +57,21 @@ export const niniData = {
     {
       level: 1,
       effect:
-        'When using skill to attack targets with negative effects: Skill rate increased by 30%. Enhances effectiveness against debuffed enemies',
+        'When using auto kill to attack targets with negative effects: Skill damage increased by 30%.',
     },
     {
       level: 2,
-      effect:
-        '[Weakness] can stack up to 5 layers. Increases maximum debuff potential from 3 to 5 stacks',
+      effect: '[Weakness] can stack up to 5 layers.',
     },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4' },
     {
       level: 4,
-      effect:
-        '[Weakness] additionally makes target receive 10% more ice damage. Adds elemental vulnerability to her debuff arsenal',
+      effect: 'Auto skill additionally makes target receive 10% more ice damage.',
     },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
     {
       level: 6,
-      effect:
-        'When skill hits target with HP below 50%: Immediately applies [Weakness]. Provides execute-range debuff application',
+      effect: 'When skill hits target with HP below 50%: Immediately applies [Weakness].',
     },
   ],
 
@@ -90,9 +85,12 @@ export const niniData = {
       defense: '500',
     },
     effects: [
-      'Battlefield Flower: For each negative effect on the target, damage dealt increases by 20%, maximum 3 stacks',
+      'For each negative effect on the attacked target, this character damage increases by 20%, maximum stacking 3 layers (60%)',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'Debuffer', 'Vulnerability', 'Weakness'],
 };
 
 // SEO data for Nini

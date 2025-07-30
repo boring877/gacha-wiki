@@ -29,13 +29,13 @@ export const arthurData = {
       name: "King's Sword",
       cooldown: '5.0s', // e.g., '5.0s'
       description:
-        'Deals holy damage equal to 240% of Attack to frontal enemy units. For each target hit: Holy damage increases by 12%, maximum 4 layers, lasts 5 seconds. Maximum Potential: 48% holy damage increase with 4+ targets.',
+        'Deal 240% attack power as holy damage to front enemy unit. For each target damaged, critical damage increases by 12%, maximum 4 stacks, lasts 5 seconds',
     },
     ultimate: {
       name: 'Imperial Sacred Judgment',
       energyCost: '6', // e.g., '5'
       description:
-        'Normal Mode: Deals holy damage equal to 600% of Attack to frontal enemy units. Enhanced Mode Access: In [Support Mode], can trigger [Enhanced Ultimate] within 5 seconds after normal ultimate. Enhanced Ultimate: Attack increases by 36% for 10 seconds, deals holy damage equal to 720% of Attack to frontal enemy units. With Awakening 2: Enhanced ultimate holy damage increases by 30%.',
+        'Deals holy damage equal to 600% of Attack to frontal enemy units. After a Support unit uses their Ultimate, you can trigger an Enhanced Ultimate within 5 s. Enhanced Ultimate: ATK +36 % for 10 s and deal 720 % ATK Holy damage to enemies in front. ',
     },
     passive: {
       name: 'Royal Dominance',
@@ -58,7 +58,10 @@ export const arthurData = {
   // Awakening Effects (6 levels)
   awakenings: [
     { level: 1, effect: 'Critical rate increases by 15%.' },
-    { level: 2, effect: 'When releasing [Enhanced Ultimate], holy damage increases by 30%.' },
+    {
+      level: 2,
+      effect: 'When activating [Enhanced Ultimate], critical hit damage increases by 30% .',
+    },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4.' },
     { level: 4, effect: 'Ultimate damage increases by 35%.' },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4.' },
@@ -76,10 +79,13 @@ export const arthurData = {
     },
     effects: [
       'Attack power increased by 40%',
-      "After an ally in [Support Position, like buffers] uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds",
+      "After an ally buffers uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds",
       'Total Potential: 40% base attack + 40% conditional ultimate damage boost',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Melee', 'Crit Rate', 'Crit Dmg', 'Buff'],
 };
 
 // SEO data for Arthur

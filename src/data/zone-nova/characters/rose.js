@@ -23,13 +23,13 @@ export const roseData = {
     normal: {
       name: 'Shatter! Shatter! Shatter! (碎！碎！碎！)',
       description:
-        'Base: Deals ice damage equal to 96% of Attack to designated enemy. Enhanced (during Frost Cannon): Deals ice damage equal to 96% of Attack to designated enemy and surrounding 2-meter range',
+        'Deals ice damage equal to 96% of Attack to designated enemy. Enhanced (during Frost Cannon): Deals ice damage equal to 96% of Attack to enemy and surrounding 2-meter range',
     },
     auto: {
       name: 'Bullet Hell Scatter (弹幕散射)',
       cooldown: '10.0s',
       description:
-        'Base: Deals ice damage equal to 180% of Attack to designated enemy. Enhanced (during Frost Cannon): Deals ice damage equal to 180% of Attack to designated enemy and surrounding 4-meter range',
+        'Base: Deals ice damage equal to 180% of Attack to enemy. Enhanced (during Frost Cannon): Deals ice damage equal to 180% of Attack to enemy and surrounding 4-meter range',
     },
     ultimate: {
       name: 'Frost Cannon Transformation',
@@ -40,15 +40,14 @@ export const roseData = {
     passive: {
       name: "Reckless Spirit's Foundation (冒失鬼的底蕴)",
       description:
-        'Each normal attack increases critical rate by 2.4%. Maximum 20 stacks (48% maximum critical rate increase). Stacks persist through combat and ultimate transformations',
+        'Each normal attack increases critical rate by 2.4%. Maximum 20 stacks (48% maximum critical rate increase).',
     },
   },
 
   // Team Skill
   teamSkill: {
     name: 'Combination Skill',
-    description:
-      'Self ice damage increases by 20%. Enhances overall damage output for sustained ice damage dealing',
+    description: 'Self ice damage increases by 20%.',
     requirements: {
       faction: 'Monochrome Nation',
       element: 'Ice',
@@ -59,13 +58,11 @@ export const roseData = {
   awakenings: [
     {
       level: 1,
-      effect:
-        'When in [Frost Cannon] state, critical rate increases by 15%. Combines with passive stacks for massive critical rate during ultimate',
+      effect: 'When in [Frost Cannon] state, critical rate increases by 15%.',
     },
     {
       level: 2,
-      effect:
-        'When in [Frost Cannon] state, damage taken reduced by 10%. Provides survivability during aggressive AoE phases',
+      effect: 'When in [Frost Cannon] state, damage taken reduced by 10%.',
     },
     {
       level: 3,
@@ -73,8 +70,7 @@ export const roseData = {
     },
     {
       level: 4,
-      effect:
-        'Normal attack damage increases by 20%. Significant DPS boost since normal attacks build critical stacks',
+      effect: 'Normal attack damage increases by 20%.',
     },
     {
       level: 5,
@@ -82,8 +78,7 @@ export const roseData = {
     },
     {
       level: 6,
-      effect:
-        '[Frost Cannon] state duration becomes 15 seconds. 50% longer transformation window for AoE dominance',
+      effect: '[Frost Cannon] state duration becomes 15 seconds.',
     },
   ],
 
@@ -97,9 +92,12 @@ export const roseData = {
       defense: '395',
     },
     effects: [
-      'After using ultimate skill, normal attack and skill damage increased by 60% for 10 seconds',
+      'After using ultimate skill, normal attack and Auto skill damage increased by 60% for 10 seconds',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'AOE', 'Crit Rate', 'Normal Attack', 'Speed Attack'],
 };
 
 // SEO data for Rose

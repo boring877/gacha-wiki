@@ -1,0 +1,296 @@
+---
+/**
+ * Zone Nova Character Tag Selection Component
+ * Created: 2025-07-30
+ * Updated: 2025-07-30 - Simplified to Gameplay Tags only
+ *
+ * This component provides an interactive character filtering system for Zone Nova.
+ * Users can filter characters by gameplay tags (character-specific mechanics).
+ *
+ * Features:
+ * - Gameplay tag filtering with OR logic (characters need ANY of the selected tags)
+ * - Real-time character count updates
+ * - Character cards with gameplay tags and badges
+ * - Clickable cards that navigate to individual character pages
+ * - Responsive design for all screen sizes
+ * - Fallback JavaScript implementation for reliability
+ */
+
+import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+
+// Sort characters alphabetically by name for display
+const sortedCharacters = [...ZONE_NOVA_CHARACTERS].sort((a, b) => a.name.localeCompare(b.name));
+
+// Extract all unique gameplay tags from characters and sort alphabetically
+const allGameplayTags = [...new Set(ZONE_NOVA_CHARACTERS.flatMap(char => char.tags || []))].sort();
+
+// Categorize tags for mobile accordion
+const tagCategories = {
+  'Damage & Combat': [
+    'AOE',
+    'Crit Rate',
+    'Crit Damage',
+    'DOT',
+    'DOT Damage Boost',
+    'Damage Boost',
+    'Attack Boost',
+    'Attack Speed',
+    'Penetration',
+    'Enhanced Ultimate',
+    'Extra Attack',
+  ],
+  'Support & Utility': [
+    'Healing',
+    'AOE Healing',
+    'Continuous Healing',
+    'Shield',
+    'Buff',
+    'Energy',
+    'Revive',
+    'Max HP Boost',
+    'Cooldown Reduction',
+    'Interrupt',
+  ],
+  'Tank & Defense': [
+    'Block',
+    'Damage Reduction',
+    'Defense Scaling',
+    'HP Scaling',
+    'HP Consume',
+    'Damage Taken Increase',
+  ],
+  'Control & Debuff': ['Debuff', 'Cooldown Increase', 'Ultimate Block'],
+  'Range & Position': ['Melee', 'Ranged', 'Normal Attack'],
+};
+---
+
+<!-- ═══════════════════════════════════════════════════════════════════════ --><!--                        CHARACTER TAG SELECTION UI                     --><!-- ═══════════════════════════════════════════════════════════════════════ --><!-- Main container for the character filtering interface -->
+<div class="character-selector">
+  <!-- Desktop Tags Layout -->
+  <div class="filter-bar desktop-tags">
+    <div class="filter-controls">
+      <div class="tag-category">
+        <div class="tags-header">
+          <button class="clear-tags-btn" id="clear-tags-desktop">✕ Clear All</button>
+        </div>
+        <div class="tag-buttons">
+          {
+            allGameplayTags.map(tag => (
+              <button
+                class="tag-btn gameplay-tag"
+                data-tag={tag}
+                data-category="gameplay"
+                type="button"
+              >
+                {tag}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Custom Dropdown Layout -->
+  <div class="filter-bar mobile-tags">
+    <div class="mobile-tags-header">
+      <button class="clear-tags-btn" id="clear-tags-mobile">✕ Clear All</button>
+    </div>
+    <div class="mobile-custom-dropdowns">
+      {
+        Object.entries(tagCategories).map(([categoryName, categoryTags]) => (
+          <div class="custom-dropdown" data-category={categoryName}>
+            <button class="dropdown-trigger" type="button">
+              <span class="dropdown-text">{categoryName}</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-options">
+                {categoryTags.map(tag => (
+                  <label class="dropdown-option">
+                    <input type="checkbox" value={tag} data-tag={tag} />
+                    <span class="option-text">{tag}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Selected Tags Display -->
+  <div class="selected-tags-container" id="selected-tags-display" style="display: none;">
+    <h4>Selected Tags:</h4>
+    <div class="selected-tags" id="selected-tags"></div>
+  </div>
+
+  <!-- Character Results -->
+  <div class="character-results">
+    <div class="results-header">
+      <span class="match-count" id="match-count">0 characters found</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════ -->
+    <!--                         CHARACTER RESULTS DISPLAY                     -->
+    <!-- ═══════════════════════════════════════════════════════════════════════ -->
+
+    <!-- Grid of filtered character cards - layout matches ZN rankings -->
+    <div class="character-grid" id="character-results">
+      {
+        sortedCharacters.map(character => (
+          <a
+            href={character.detailUrl}
+            class="character-select-card character-link"
+            data-character-id={character.id}
+            data-tags={JSON.stringify(character.tags || [])}
+            data-rarity={character.rarity}
+            data-element={character.element}
+            data-role={character.role}
+            data-class={character.class}
+            data-faction={character.faction}
+          >
+            <div class="character-info">
+              <img
+                src={character.image}
+                alt={character.name}
+                class="character-portrait"
+                width="80"
+                height="80"
+                loading="lazy"
+              />
+              <h3>{character.name}</h3>
+              <div class="character-badges">
+                <span class={`rarity-badge ${character.rarity.toLowerCase()}`}>
+                  {character.rarity}
+                </span>
+                <span class={`class-badge ${character.class.toLowerCase().replace(' ', '-')}`}>
+                  {character.class}
+                </span>
+              </div>
+              <div class="character-tags">
+                {character.tags?.map(tag => (
+                  <span class="character-tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ characters: sortedCharacters }}>
+  document.addEventListener('DOMContentLoaded', function () {
+    const tagButtons = document.querySelectorAll('.tag-btn');
+    const customDropdowns = document.querySelectorAll('.custom-dropdown');
+    const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+    const dropdownCheckboxes = document.querySelectorAll('.dropdown-option input[type="checkbox"]');
+    const characterCards = document.querySelectorAll('.character-select-card');
+    const matchCount = document.getElementById('match-count');
+    let selectedTags = new Set();
+
+    tagButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tag = button.dataset.tag;
+        const isActive = selectedTags.has(tag);
+
+        if (isActive) {
+          selectedTags.delete(tag);
+          button.classList.remove('active');
+          updateMobileCheckboxes(tag, false);
+        } else {
+          selectedTags.add(tag);
+          button.classList.add('active');
+          updateMobileCheckboxes(tag, true);
+        }
+        updateResults();
+      });
+    });
+
+    dropdownTriggers.forEach(trigger => {
+      trigger.addEventListener('click', e => {
+        e.stopPropagation();
+        const dropdown = trigger.parentElement;
+        const isActive = dropdown.classList.contains('active');
+
+        customDropdowns.forEach(dd => {
+          dd.classList.remove('active');
+          dd.querySelector('.dropdown-trigger').classList.remove('active');
+        });
+
+        if (!isActive) {
+          dropdown.classList.add('active');
+          trigger.classList.add('active');
+        }
+      });
+    });
+
+    dropdownCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const tag = checkbox.dataset.tag;
+        const desktopBtn = document.querySelector(`button[data-tag="${tag}"]`);
+
+        if (checkbox.checked) {
+          selectedTags.add(tag);
+          if (desktopBtn) desktopBtn.classList.add('active');
+        } else {
+          selectedTags.delete(tag);
+          if (desktopBtn) desktopBtn.classList.remove('active');
+        }
+        updateResults();
+      });
+    });
+
+    document.addEventListener('click', () => {
+      customDropdowns.forEach(dropdown => {
+        dropdown.classList.remove('active');
+        dropdown.querySelector('.dropdown-trigger').classList.remove('active');
+      });
+    });
+
+    customDropdowns.forEach(dropdown => {
+      dropdown.addEventListener('click', e => e.stopPropagation());
+    });
+
+    function updateMobileCheckboxes(tag, isChecked) {
+      const checkbox = document.querySelector(`input[data-tag="${tag}"]`);
+      if (checkbox) checkbox.checked = isChecked;
+    }
+
+    function clearAllTags() {
+      selectedTags.clear();
+      tagButtons.forEach(button => button.classList.remove('active'));
+      dropdownCheckboxes.forEach(checkbox => (checkbox.checked = false));
+      customDropdowns.forEach(dropdown => {
+        dropdown.classList.remove('active');
+        dropdown.querySelector('.dropdown-trigger').classList.remove('active');
+      });
+      updateResults();
+    }
+
+    document.getElementById('clear-tags-desktop')?.addEventListener('click', clearAllTags);
+    document.getElementById('clear-tags-mobile')?.addEventListener('click', clearAllTags);
+
+    function updateResults() {
+      let visibleCount = 0;
+
+      characterCards.forEach(card => {
+        const matches =
+          selectedTags.size === 0 ||
+          Array.from(selectedTags).some(tag => JSON.parse(card.dataset.tags || '[]').includes(tag));
+
+        card.style.display = matches ? 'block' : 'none';
+        if (matches) visibleCount++;
+      });
+
+      if (matchCount) {
+        matchCount.textContent = `${visibleCount} character${visibleCount === 1 ? '' : 's'} found`;
+      }
+    }
+
+    updateResults();
+  });
+</script>

@@ -23,7 +23,7 @@ export const zashikiWarashiData = {
   skills: {
     normal: {
       name: 'Housekeeper Guidance',
-      description: 'Deals fire damage equal to 120% of Attack to designated enemy',
+      description: 'Deals fire damage equal to 120% of Attack to enemy',
     },
     auto: {
       name: 'Five Grains Harvest',
@@ -34,13 +34,12 @@ export const zashikiWarashiData = {
     ultimate: {
       name: 'Share Fortune! Share Hardship!',
       energyCost: '3', // e.g., '5'
-      description:
-        'All allied units receive 36% damage increase for 15 seconds. Low Energy Cost: Only 3 energy allows frequent usage',
+      description: 'All friendly units damage dealt increases by 36%, lasts 15 seconds',
     },
     passive: {
       name: "Child's Blessing",
       description:
-        'After releasing skill: The allied unit with highest attack power gains one layer [Blessing]. [Blessing] Effect: Increases attack power by 60% for 15 seconds',
+        'After using auto skill: The allied unit with highest attack power gains one layer [Blessing]. [Blessing] Effect: Increases attack power by 60% for 15 seconds',
     },
   },
 
@@ -58,7 +57,8 @@ export const zashikiWarashiData = {
   awakenings: [
     {
       level: 1,
-      effect: 'Upon entering battle: All allied units gain 15% attack increase for 30 seconds',
+      effect:
+        'After entering battle, all friendly units attack power increases by 15%, lasts 30 seconds',
     },
     {
       level: 2,
@@ -68,7 +68,7 @@ export const zashikiWarashiData = {
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4' },
     {
       level: 4,
-      effect: 'After using skill: All allied units gain 10% critical rate for 5 seconds',
+      effect: 'After using Auto skill: All allied units gain 10% critical rate for 5 seconds',
     },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
     {
@@ -87,10 +87,12 @@ export const zashikiWarashiData = {
       defense: '500', // e.g., '690'
     },
     effects: [
-      'After releasing ultimate: Team damage increases by 24% for 10 seconds',
-      'Additionally: Has 50% chance to make team critical damage additionally increase by 20% for 10 seconds',
+      'After casting ultimate skill, make team damage increase by 24%, lasts 10 seconds; additionally has 50% chance to make team critical damage additionally increase by 20%, lasts 10 seconds',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'Buff', 'Atk Increase', 'Damage Increase', 'Crit Rate Increase'],
 };
 
 // SEO data for Zashiki-warashi

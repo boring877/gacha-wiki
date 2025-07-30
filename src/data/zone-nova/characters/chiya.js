@@ -28,18 +28,18 @@ export const chiyaData = {
     auto: {
       name: 'Cold Steel Combo',
       cooldown: '5.0s', // e.g., '5.0s'
-      description: 'Deals ice damage equal to 480% of Attack to designated enemy unit.',
+      description: 'Deals ice damage equal to 480% of Attack to enemy unit.',
     },
     ultimate: {
       name: "Society Master's Fist",
       energyCost: '3', // e.g., '5'
       description:
-        'Normal Version: Rushes to target and deals ice damage equal to 600% of Attack. [Strengthened Must Kill] Version: Gets 100% critical hit rate, rushes to target and deals ice damage equal to 840% of Attack with guaranteed critical strike.',
+        'Rush towards target, dealing 600% attack power ice damage [Enhanced Ultimate Skill]: Gain 100% critical rate, rush towards target dealing 840% attack power ice damage',
     },
     passive: {
       name: 'Beam Assist Framework',
       description:
-        'After using must kill, enters [Focus] state for 10 seconds. All attacks outside must kill deal an additional 36% attack power ice damage. Gains one [Strengthened Must Kill] charge.',
+        'After killing an enemy, enter [Focus] state for 10 seconds. All attacks additionally deal 36% attack power ice damage, and gain one [Enhanced Ultimate Skill]',
     },
   },
 
@@ -56,15 +56,15 @@ export const chiyaData = {
 
   // Awakening Effects (6 levels)
   awakenings: [
-    { level: 1, effect: 'At battle start, immediately gains one [Strengthened Must Kill].' },
+    { level: 1, effect: 'At battle start, immediately gains one [Enhanced Ultimate Skill].' },
     { level: 2, effect: 'During [Focus] state, attack speed increased by 50%.' },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4.' },
     { level: 4, effect: 'Ice damage increased by 30%.' },
-    { level: 5, effect: '[Must Kill] and [Passive] level and level cap +4.' },
+    { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4.' },
     {
       level: 6,
       effect:
-        'After using normal must kill, gains one [Strengthened Must Kill]. Must kill damage increased by 30%.',
+        'After using normal ultimate skill, gain one Enhanced Ultimate Skill, Ultimate skill damage increases by 30%',
     },
   ],
 
@@ -78,11 +78,12 @@ export const chiyaData = {
       defense: '474', // e.g., '690'
     },
     effects: [
-      'Critical Damage increased by 60%',
-      'Kill Stacking: After equipped character kills an enemy, increase attack power by 10% for this battle',
-      'Maximum 4 stacks (up to 40% attack power increase)',
+      'Critical damage increases by 60%. Attack power increases by 10% After the equipment wearer kills an enemy stacking up to 4 times,up to 40% attack power increase and stay until the end of the battle',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Melee', 'Crit Rate', 'Crit Dmg', 'Enhanced Ultimate', 'Attack Speed'],
 };
 
 // SEO data for Chiya

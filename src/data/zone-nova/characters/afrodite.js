@@ -23,25 +23,24 @@ export const afroditeData = {
   skills: {
     normal: {
       name: 'Love Fist (爱神之拳)',
-      description:
-        'Deals 120% attack power as holy damage to designated enemy unit. Builds toward enhanced ultimate - core mechanic for ultimate enhancement.',
+      description: 'Deals 120% attack power as holy damage to designated enemy unit.',
     },
     auto: {
       name: 'Charm Impact (魅惑冲拳)',
       cooldown: '8.0s', // e.g., '5.0s'
       description:
-        'Automatically deals 816% attack power as holy damage to designated enemy. Increases self attack by 58%. High damage auto skill with substantial self-buffing component.',
+        'Automatically deals 816% attack power as holy damage to designated enemy. Increases self attack speed by 58%.',
     },
     ultimate: {
       name: 'Love and Beauty Waltz (爱与美之圆舞曲)',
       energyCost: '8', // e.g., '5'
       description:
-        'Normal Ultimate: Deals 1800% attack power as holy damage to designated enemy. Enhanced Ultimate (after 10 normal attacks): Deals 2160% attack power as holy damage to designated enemy, recovers 2 energy at the end, damage converted to normal attack damage. Core mechanic: Build up through normal attacks for maximum damage.',
+        'Normal Ultimate: Deals 1800% attack power as holy damage to designated enemy. Enhanced Ultimate (after 10 normal attacks): Deals 2160% attack power as holy damage to designated enemy, recovers 2 energy at the end, Counts as a basic-attack hit for any on-hit or combo effects.',
     },
     passive: {
       name: 'Beautiful Kill (美丽杀意)',
       description:
-        'When HP > 50%: All attacks deal additional 48% attack power as violent damage. When HP < 50%: Damage taken reduced by 96%. Dual-phase passive that provides offensive power when healthy, defensive power when injured.',
+        'When HP is higher then 50%: +48 % Crit Rate on all outgoing damage. When HP is lower then 50%: +96 % Defense when taking damage.',
     },
   },
 
@@ -61,13 +60,13 @@ export const afroditeData = {
     {
       level: 1,
       effect:
-        'When using skill: Can accumulate 4 times to strengthen the required normal attack count for enhanced ultimate',
+        'When you using auto skill (Self) it counts as 4 extra basic-attack hits toward the Enhanced Ultimate counter.',
     },
-    { level: 2, effect: 'When using enhanced ultimate and skill: Damage taken reduced by 10%' },
+    { level: 2, effect: 'When using ultimate or auto skill: Damage taken reduced by 10%' },
     { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
     { level: 4, effect: 'Normal attack damage increased by 35%' },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
-    { level: 6, effect: '[Enhanced Ultimate] ignores 20% elemental resistance' },
+    { level: 6, effect: '[Enhanced Ultimate] ignores 20% Holy resistance' },
   ],
 
   // Memory Card
@@ -81,9 +80,12 @@ export const afroditeData = {
     },
     effects: [
       'Attack power increased by 40%',
-      'When equipped character releases enhanced ultimate or higher: Damage increased by 40% for 10 seconds',
+      'If the equipped units Ultimate costs higher then 8 Energy and used ultimate : Damage increased by 40% for 10 seconds',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Crit Rate', 'Atk Speed', 'Normal Atk', 'Melee'],
 };
 
 // SEO data for Afrodite

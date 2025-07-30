@@ -38,7 +38,7 @@ export const leviathanData = {
     passive: {
       name: 'Grudge Deep Chain (怨恨深链)',
       description:
-        'Trigger: When any allys skill hits an enemy, consume 1 Mark to perform an extra attack dealing 180 % ATK Wind damage.',
+        'When our allied units use auto skills and hit enemies, consume 1 Mark to perform an extra attack dealing 180 % ATK Wind damage.',
     },
   },
 
@@ -56,7 +56,7 @@ export const leviathanData = {
   awakenings: [
     {
       level: 1,
-      effect: 'Auto skill can also trigger the Passive effect.',
+      effect: 'When self activates [auto Skill], can also trigger passive effects',
     },
     {
       level: 2,
@@ -70,7 +70,8 @@ export const leviathanData = {
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
     {
       level: 6,
-      effect: 'When casting the Ultimate, the automatic extra attack increases from 1 to 2 hits.',
+      effect:
+        'When using ultimate skill, the number of follow-up attacks triggered changes from 1 time to 2 times.',
     },
   ],
 
@@ -85,6 +86,9 @@ export const leviathanData = {
     },
     effects: ['After landing an extra attack, gain +36 % Crit Rate for 10 s.'],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Melee', 'Crit Rate', 'Extra Attack'],
 };
 
 // SEO data for Leviathan

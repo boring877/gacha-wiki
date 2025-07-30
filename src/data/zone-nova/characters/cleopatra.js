@@ -28,18 +28,18 @@ export const cleopatraData = {
       name: 'Praise of Heretic Sect',
       cooldown: '5.0s',
       description:
-        'Deals chaos damage equal to 168% of Attack to target and surrounding 4-meter range. Adds one layer of [Deception] debuff. With Memory Card: Additionally adds one layer of [Infiltration]',
+        'Deal 168% attack power chaos damage to target and surrounding area within 4 meters, and apply one stack of [Shifting Sorrow]',
     },
     ultimate: {
       name: 'Cultural Authority - Supreme Rule',
       energyCost: '8',
       description:
-        '4-second channeling time. Deals chaos damage equal to 480% of Attack to all targets. If target has persistent damage layers: Additionally deals 48% Attack chaos damage up to 20 times. All ultimate damage is treated as persistent damage type',
+        'After channeling for 4 seconds, deal 480% attack power chaos damage to all targets If targets already have one stack of continuous damage, additionally deal 48% attack power chaos damage, up to 20 times Ultimate skill damage is considered continuous damage type',
     },
     passive: {
       name: 'Filthy Whispers',
       description:
-        'Each skill use grants one [Whisper] layer (maximum 5 layers). When team members use ultimates: Can consume [Whisper] to deal additional 120% Attack chaos damage + add one [Deception] layer. [Deception]: Every 3 seconds deals 19.2% Attack chaos damage, maximum 10 layers',
+        'Every time a auto skill is cast, gain 2 stacks of [Shifting], maximum can accumulate to 5 stacks When allies use ultimate skills and deal damage, can consume [Shifting] to additionally deal 120% attack power chaos damage to their target and apply one stack of [Shifting Sorrow] to hit targets. Area attacks can trigger multiple marks simultaneously. [Shifting Sorrow]: Every 3 seconds deal 19.2% attack power chaos damage, maximum can stack to 10 times',
     },
   },
 
@@ -60,12 +60,12 @@ export const cleopatraData = {
     {
       level: 2,
       effect:
-        'When releasing ultimate: Damage taken reduced by 20%. After releasing ultimate: Recover 2 energy',
+        'When casting ultimate skill, damage taken decreases by 20% After casting ultimate skill, recover 2 energy points',
     },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4' },
-    { level: 4, effect: '[Persistent Damage] damage increases by 35%' },
+    { level: 4, effect: '[Continuous damage] damage increases by 35%' },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
-    { level: 6, effect: "Persistent damage ignores target's 20% chaos resistance" },
+    { level: 6, effect: 'Continuous damage ignores 20% chaos resistance' },
   ],
 
   // Memory Card
@@ -78,11 +78,12 @@ export const cleopatraData = {
       defense: '474',
     },
     effects: [
-      'Attack increases by 40%',
-      'Infiltration Effect: When skill hits target, additionally adds one layer [Infiltration]',
-      '[Infiltration]: Every 2 seconds deals 15% Chaos damage, maximum 5 layers, lasts 10 seconds',
+      'Attack power increases by 40%. Apply one stack of [Erosion] After skills hit targets. [Erosion]: Every 1 second deal 15% chaos damage, maximum can stack to 5 times, lasting 10 seconds',
     ],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Range', 'DOT', 'AOE', 'Penetration', 'Energy'],
 };
 
 // SEO data for Cleopatra

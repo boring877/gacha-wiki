@@ -66,6 +66,15 @@ export const zoneNovaConfig = {
       category: 'guides',
     },
     {
+      id: 'character-tags',
+      title: 'Character Tag Selection',
+      emoji: '🏷️',
+      description:
+        'Filter and discover characters by gameplay tags, class, rarity, element, faction, and role.',
+      url: '/guides/zone-nova/character-tags/',
+      category: 'guides',
+    },
+    {
       id: 'memories',
       title: 'Memory Database',
       emoji: '🃏',

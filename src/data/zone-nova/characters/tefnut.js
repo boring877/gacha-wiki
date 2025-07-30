@@ -28,26 +28,25 @@ export const tefnutData = {
     auto: {
       name: 'Ruthless Hunt',
       cooldown: '5.0s', // e.g., '5.0s'
-      description:
-        'Deals holy damage equal to 240% of Attack to designated enemy unit. Automatically triggers every 5 seconds',
+      description: 'Deals holy damage equal to 240% of Attack to designated enemy unit.',
     },
     ultimate: {
       name: 'Bloodthirsty Killing',
       energyCost: '8', // e.g., '5'
       description:
-        'Jumps toward the enemy unit and causes 960% attack power holy damage to the target. Prerequisite: Target must have 5 stacks of [Holy Erosion]. When used on a target with 5 Holy Erosion stacks: Additionally applies [Light Erosion] debuff which deals 180% attack power holy damage every 3 seconds',
+        'Jump towards designated enemy unit and deal 960% attack power holy damage When attacking targets with [Sacred Hatred] at maximum stacks, additionally apply [Light Erosion] [Light Erosion]: Deals damage every 3 seconds, each layer deals 180% attack power holy damage, maximum 1 layer',
     },
     passive: {
       name: 'Bloodthirst',
       description:
-        'Auto skills apply [Holy Erosion] DOT debuff to targets. [Holy Erosion]: Passive DOT that activates when auto skills are used. Deals 24% attack power holy damage every 3 seconds, maximum 5 stacks. DOT Combo: Build 5 stacks of [Holy Erosion], then use Ultimate to apply [Light Erosion] for simultaneous DOT damage',
+        'Auto Skills can apply [Sacred Hatred][Sacred Hatred]: Deals damage every 2 seconds, each layer deals 24% attack power holy damage, maximum 5 layers',
     },
   },
 
   // Team Skill
   teamSkill: {
     name: 'Combo Skill', // Usually 'Combination Skill'
-    description: 'Self-caused damage increased by 20%',
+    description: 'Self damage dealt increases by 20%',
     requirements: {
       faction: 'Chemic', // Same as character faction
       element: 'Holy', // Same as character element
@@ -58,7 +57,8 @@ export const tefnutData = {
   awakenings: [
     {
       level: 1,
-      effect: 'When attacking targets with [Continuous Damage], critical rate increases by 10%',
+      effect:
+        'When attacking targets that have [Continuous damage], penetration rate increases by 10%',
     },
     { level: 2, effect: 'When self HP is 100%, attack power increases by 20%' },
     { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
@@ -67,7 +67,7 @@ export const tefnutData = {
     {
       level: 6,
       effect:
-        '[Ultimate] makes target receive [Continuous Damage] with 20% increased damage for 15 seconds',
+        '[Ultimate skill] additionally makes the target take 20% increased [Continuous damage] damage, lasts 15 seconds',
     },
   ],
 
@@ -82,6 +82,9 @@ export const tefnutData = {
     },
     effects: ['Continuous Damage Penetration Rate +36%'],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: ['Melee', 'DOT', 'Penetration', 'DOT Intake Increases'],
 };
 
 // SEO data for Tefnut

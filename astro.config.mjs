@@ -97,6 +97,10 @@ export default defineConfig({
         // Allow serving files from one level up
         allow: ['..'],
       },
+      // Disable caching in development
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+      },
     },
   },
 });

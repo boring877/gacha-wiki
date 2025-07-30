@@ -29,26 +29,25 @@ export const belphegarData = {
       name: 'Power of the Blanket',
       cooldown: '5.0s', // e.g., '5.0s'
       description:
-        "Attacks the enemy with highest attack, dealing 120% attack damage. Reduces target's critical rate and critical damage by 24% for 10 seconds.",
+        'Attack the enemy target with the highest attack power, dealing 120% attack power chaos damage and reducing their critical rate and critical damage by 24%, lasting 10 seconds.',
     },
     ultimate: {
       name: 'Drowsy Sleep',
       energyCost: '5', // e.g., '5'
       description:
-        'Deals chaos damage to all enemies and applies sleep effect, preventing them from taking actions for a duration.',
+        ' Deal 120% attack power chaos damage to all targets and increase targets auto skill cooldown time by 58%, lasting 10 seconds',
     },
     passive: {
       name: 'Sleepy Aura',
       description:
-        "Reduces enemy team's action speed and applies debuffs that weaken their combat effectiveness.",
+        "When dealing damage with skills or ultimate skills, additionally applies [Wrath], reducing target's attack speed by 58%, lasting 10 seconds.",
     },
   },
 
   // Team Skill
   teamSkill: {
     name: 'Combination Skill', // Usually 'Combination Skill'
-    description:
-      'Team debuff resistance increased. When team has multiple Bicta Tower or Chaos characters, enhances debuff application effectiveness.',
+    description: 'Own damage dealt increases by 20%.',
     requirements: {
       faction: 'Bicta Tower', // Same as character faction
       element: 'Chaos', // Same as character element
@@ -57,12 +56,20 @@ export const belphegarData = {
 
   // Awakening Effects (6 levels)
   awakenings: [
-    { level: 1, effect: 'Debuff duration increased by 20%.' },
-    { level: 2, effect: 'Critical rate reduction effects enhanced by 15%.' },
+    {
+      level: 1,
+      effect:
+        'When using auto skills to attack targets that have negative effects on them, skill damage increases by 30%',
+    },
+    { level: 2, effect: 'Basic attacks additionally deal 20% attack power chaos damage.' },
     { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4.' },
-    { level: 4, effect: 'Chaos damage increased by 25%.' },
+    { level: 4, effect: 'Attack power increases by 20%.' },
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4.' },
-    { level: 6, effect: 'All debuff effects ignore 20% resistance.' },
+    {
+      level: 6,
+      effect:
+        'Ultimate skill can additionally reduce the targets ultimate skill damage by 20%, lasting 5 seconds.',
+    },
   ],
 
   // Memory Card
@@ -74,12 +81,20 @@ export const belphegarData = {
       attack: '420', // e.g., '480'
       defense: '380', // e.g., '690'
     },
-    effects: [
-      'Debuff application rate increased by 30%',
-      'When equipped character applies debuff: Team gains 10% damage reduction for 5 seconds',
-      'Critical rate reduction effects are 50% more effective',
-    ],
+    effects: [' Ultimate skill can reduce targets energy regen by 18%'],
   },
+
+  // Character Tags - Reusable across multiple characters
+  tags: [
+    'Range',
+    'Reduce Crit Rate',
+    'Reduce Crit Dmg',
+    'Inc Skill Cooldown',
+    'Reduce Attack Speed',
+    'Reduce Ultimate Skill',
+    'Debuff',
+    'AOE',
+  ],
 };
 
 // SEO data for Belphegar
