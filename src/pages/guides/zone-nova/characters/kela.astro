@@ -1,13 +1,12 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { kelaData, kelaSEO } from '../../../../data/zone-nova/characters/kela.js';
 
 export const prerender = true;
 ---
 
 <CharacterIndividualLayout title={kelaSEO.title} description={kelaSEO.description} gameTitle={kelaData.name}>
-  <CharacterNavigation currentCharacter={kelaData} />
   <CharacterPageTemplate characterData={kelaData} />
 </CharacterIndividualLayout>

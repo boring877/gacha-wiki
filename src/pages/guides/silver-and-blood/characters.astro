@@ -327,6 +327,16 @@ import {
         originalOrder = [...tbody.querySelectorAll('tr')];
       }
 
+      // Save default sort state to sessionStorage (alphabetical by name)
+      try {
+        sessionStorage.setItem('sab-character-sort', JSON.stringify({
+          column: 'name',
+          asc: true
+        }));
+      } catch (error) {
+        console.log('Could not save default sort state to sessionStorage');
+      }
+
       if (resetBtn) {
         resetBtn.addEventListener('click', () => {
           if (classFilter) classFilter.value = '';

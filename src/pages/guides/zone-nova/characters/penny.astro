@@ -1,6 +1,5 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { pennyData, pennySEO } from '../../../../data/zone-nova/characters/penny.js';
 
@@ -12,6 +11,5 @@ export const prerender = true;
   description={pennySEO.description}
   gameTitle={pennyData.name}
 >
-  <CharacterNavigation currentCharacter={pennyData} />
   <CharacterPageTemplate characterData={pennyData} />
 </CharacterIndividualLayout>

@@ -1,7 +1,7 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { tefnutData, tefnutSEO } from '../../../../data/zone-nova/characters/tefnut.js';
 
 export const prerender = true;
@@ -12,6 +12,5 @@ export const prerender = true;
   description={tefnutSEO.description}
   gameTitle={tefnutData.name}
 >
-  <CharacterNavigation currentCharacter={tefnutData} />
   <CharacterPageTemplate characterData={tefnutData} />
 </CharacterIndividualLayout>

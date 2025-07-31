@@ -1,0 +1,127 @@
+---
+interface Props {
+  currentPath?: string;
+  gameKey?: 'silver-and-blood' | 'zone-nova';
+}
+
+const { currentPath = '', gameKey } = Astro.props;
+
+const games = {
+  'silver-and-blood': {
+    name: 'Silver and Blood',
+    links: [
+      { name: 'Overview', href: '/guides/silver-and-blood/' },
+      { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
+      { name: 'Rankings', href: '/guides/silver-and-blood/character-rankings/' },
+      { name: 'Comparison', href: '/guides/silver-and-blood/character-comparison/' },
+      { name: 'Tags', href: '/guides/silver-and-blood/character-tag-selection/' },
+      { name: 'Damage Guide', href: '/guides/silver-and-blood/damage-mechanics/' },
+      { name: 'Events', href: '/guides/silver-and-blood/events/' },
+      { name: 'Ancestral Vault', href: '/guides/silver-and-blood/ancestral-vault/' },
+      { name: 'Boss Database', href: '/guides/silver-and-blood/boss-database/' },
+      { name: 'Clan Hunt', href: '/guides/silver-and-blood/clan-hunt/' },
+      { name: 'Dutchman\'s Revenge', href: '/guides/silver-and-blood/dutchmans-revenge/' },
+      { name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
+      { name: 'Waifu Gallery', href: '/guides/silver-and-blood/waifu-gallery/' },
+      { name: 'Waifu Skins', href: '/guides/silver-and-blood/waifu-skins/' },
+    ]
+  },
+  'zone-nova': {
+    name: 'Zone Nova',
+    links: [
+      { name: 'Overview', href: '/guides/zone-nova/' },
+      { name: 'Characters', href: '/guides/zone-nova/characters/' },
+      { name: 'Rankings', href: '/guides/zone-nova/character-rankings/' },
+      { name: 'Comparison', href: '/guides/zone-nova/character-comparison/' },
+      { name: 'Damage Guide', href: '/guides/zone-nova/damage-mechanics/' },
+      { name: 'Memories', href: '/guides/zone-nova/memories/' },
+      { name: 'Rifts', href: '/guides/zone-nova/rifts/' },
+      { name: 'Runes', href: '/guides/zone-nova/runes/' },
+      { name: 'Crafting', href: '/guides/zone-nova/crafting/' },
+      { name: 'Redeem Codes', href: '/guides/zone-nova/redeem-codes/' },
+      { name: 'Summon FAQ', href: '/guides/zone-nova/summon-faq/' },
+      { name: 'Updates', href: '/guides/zone-nova/updates/' },
+      { name: 'Surveys', href: '/guides/zone-nova/surveys/' },
+      { name: 'Contributing', href: '/guides/zone-nova/contributing/' },
+    ]
+  }
+};
+
+const game = gameKey && games[gameKey];
+const isActive = (href: string) => {
+  // Exact match for overview pages to prevent always highlighting
+  if (href.endsWith('/zone-nova/') || href.endsWith('/silver-and-blood/')) {
+    return currentPath === href;
+  }
+  // For other pages, use startsWith but ensure it's not just the base path
+  return currentPath === href || (currentPath.startsWith(href) && currentPath !== href.replace(/\/$/, ''));
+};
+
+if (!game) return;
+---
+
+<style>
+  @import '../styles/components/game-navigation-header.css';
+</style>
+
+<nav class="game-nav" data-game={gameKey}>
+  <div class="container">
+    <h2>{game.name}</h2>
+    
+    <div class="links" id="navLinks">
+      {game.links.map(link => (
+        <a 
+          href={link.href}
+          class={isActive(link.href) ? 'link active' : 'link'}
+          aria-current={isActive(link.href) ? 'page' : undefined}
+        >
+          {link.name}
+        </a>
+      ))}
+    </div>
+    
+    <button class="toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  
+  if (toggle && links) {
+    const close = () => {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    
+    toggle.addEventListener('click', () => {
+      const isOpen = links.classList.contains('open');
+      if (isOpen) {
+        close();
+      } else {
+        links.classList.add('open');
+        toggle.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!toggle.contains(e.target as Node) && !links.contains(e.target as Node)) {
+        close();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && links.classList.contains('open')) {
+        close();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) close();
+    });
+  }
+</script>

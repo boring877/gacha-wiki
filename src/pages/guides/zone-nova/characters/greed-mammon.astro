@@ -1,7 +1,7 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import {
   greedMammonData,
   greedMammonSEO,
@@ -15,6 +15,5 @@ export const prerender = true;
   description={greedMammonSEO.description}
   gameTitle={greedMammonData.name}
 >
-  <CharacterNavigation currentCharacter={greedMammonData} />
   <CharacterPageTemplate characterData={greedMammonData} />
 </CharacterIndividualLayout>

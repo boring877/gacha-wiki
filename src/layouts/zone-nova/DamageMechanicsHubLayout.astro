@@ -2,7 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import ZoneNovaQuickNav from '../../components/zone-nova/ZoneNovaQuickNav.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
@@ -37,6 +37,7 @@ const { title, description, gameTitle = 'Zone Nova' } = Astro.props;
 
     <div class="zone-nova-content">
       <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />
 
       <div class="zone-nova-container">
@@ -52,7 +53,6 @@ const { title, description, gameTitle = 'Zone Nova' } = Astro.props;
 
           <!-- Content Area -->
           <div class="content-area">
-            <ZoneNovaQuickNav currentPath={Astro.url.pathname} />
             <slot />
           </div>
         </main>

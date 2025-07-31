@@ -3,8 +3,8 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import SilverAndBloodNavigation from '../../components/silver-and-blood/SilverAndBloodNavigation.astro';
 
 // Import CSS files
 import '../../styles/colors.css';
@@ -57,6 +57,7 @@ const { title, description, gameTitle } = Astro.props;
 
     <div class="sab-content">
       <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
       <MobileMenu />
 
       <div class="sab-container">
@@ -71,8 +72,6 @@ const { title, description, gameTitle } = Astro.props;
             )
           }
 
-          <!-- Silver and Blood Navigation -->
-          <SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
 
           <!-- Gallery Database Content Area -->
           <div class="gallery-database-content">

@@ -1,0 +1,188 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                    ZONE NOVA - CHARACTER NAVIGATION                     */
+/*                   Sticky navigation buttons for character pages         */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Base navigation panel styles */
+.zone-nova-body .nav-zone-single {
+  position: sticky;
+  top: 50vh;
+  transform: translateY(-50%);
+  width: 280px;
+  height: auto;
+  min-height: 120px;
+  z-index: 1000;
+  background: linear-gradient(135deg, var(--rich-black) 0%, rgba(28, 28, 28, 0.95) 100%);
+  border: 2px solid var(--amber-glow, #ffb74d);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0.9;
+  pointer-events: auto;
+  backdrop-filter: blur(8px);
+  padding: 16px;
+  margin-left: 20px;
+  float: left;
+  box-shadow: 
+    0 4px 20px rgba(255, 183, 77, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation controls (buttons) */
+.zone-nova-body .nav-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.zone-nova-body .nav-btn {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--amber-glow, #ffb74d);
+  border-radius: 6px;
+  color: var(--amber-glow, #ffb74d);
+  font-size: 18px;
+  font-weight: 900;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+
+/* Navigation info container */
+.zone-nova-body .nav-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Current character section */
+.zone-nova-body .nav-current-character {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zone-nova-body .nav-character-name {
+  color: var(--text-inverse, #ffffff);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.zone-nova-body .nav-character-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--amber-glow, #ffb74d);
+  font-weight: 500;
+}
+
+/* Navigation info section */
+.zone-nova-body .nav-navigation-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 183, 77, 0.3);
+}
+
+.zone-nova-body .nav-next-character,
+.zone-nova-body .nav-sort-info,
+.zone-nova-body .nav-filter-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: var(--text-secondary, #64748b);
+}
+
+.zone-nova-body .nav-label {
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.zone-nova-body .nav-next-name,
+.zone-nova-body .nav-sort,
+.zone-nova-body .nav-filter {
+  color: var(--amber-glow, #ffb74d);
+  font-weight: 600;
+}
+
+
+/* Mobile responsive - hide navigation panel, use invisible swipe zones */
+@media (max-width: 768px) {
+  .zone-nova-body .nav-zone-single {
+    display: none;
+  }
+
+  /* Mobile swipe zones - shared styles */
+  .zone-nova-body .mobile-swipe-left,
+  .zone-nova-body .mobile-swipe-right {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 50;
+    background: transparent;
+    pointer-events: auto;
+    touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .zone-nova-body .mobile-swipe-left {
+    left: 0;
+  }
+
+  .zone-nova-body .mobile-swipe-right {
+    right: 0;
+  }
+
+  /* Subtle hint arrows - shared styles */
+  .zone-nova-body .mobile-swipe-left::after,
+  .zone-nova-body .mobile-swipe-right::after {
+    content: '‹';
+    font-size: 24px;
+    color: rgba(255, 183, 77, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 183, 77, 0.2);
+    animation: mobileHintFade 4s ease-in-out infinite;
+  }
+
+  .zone-nova-body .mobile-swipe-left::after {
+    content: '‹';
+  }
+
+  .zone-nova-body .mobile-swipe-right::after {
+    content: '›';
+  }
+
+  @keyframes mobileHintFade {
+    0%, 70%, 100% {
+      opacity: 0;
+    }
+    15%, 55% {
+      opacity: 1;
+    }
+  }
+}
+
+

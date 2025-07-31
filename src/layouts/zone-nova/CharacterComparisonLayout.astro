@@ -2,10 +2,9 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import ZoneNovaQuickNav from '../../components/zone-nova/ZoneNovaQuickNav.astro';
-import ZnBackButton from '../../components/zone-nova/zn-backbutton.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
 // Import Zone Nova specific styles
@@ -54,6 +53,7 @@ const {
     <CustomScrollbar />
     <div class="zone-nova-content">
       <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />
 
       <div class="zone-nova-container">
@@ -69,8 +69,6 @@ const {
 
           <!-- Content Area -->
           <div class="content-area">
-            <ZoneNovaQuickNav currentPath={Astro.url.pathname} />
-            {showBackButton && <ZnBackButton href={backButtonHref} text={backButtonText} />}
             <slot />
           </div>
         </main>

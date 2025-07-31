@@ -1,7 +1,7 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { naiyaData, naiyaSEO } from '../../../../data/zone-nova/characters/naiya.js';
 
 export const prerender = true;
@@ -12,6 +12,5 @@ export const prerender = true;
   description={naiyaSEO.description}
   gameTitle={naiyaData.name}
 >
-  <CharacterNavigation currentCharacter={naiyaData} />
   <CharacterPageTemplate characterData={naiyaData} />
 </CharacterIndividualLayout>

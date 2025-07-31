@@ -1,7 +1,7 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { lokiData, lokiSEO } from '../../../../data/zone-nova/characters/loki.js';
 import { getFactionByCharacter, getFactionData } from '../../../../data/zone-nova/factions.js';
 
@@ -19,6 +19,5 @@ export const prerender = true;
 ---
 
 <CharacterIndividualLayout title={lokiSEO.title} description={lokiSEO.description} gameTitle={lokiData.name}>
-  <CharacterNavigation currentCharacter={lokiData} />
   <CharacterPageTemplate characterData={characterData} />
 </CharacterIndividualLayout>

@@ -1,7 +1,7 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import {
   zashikiWarashiData,
   zashikiWarashiSEO,
@@ -15,6 +15,5 @@ export const prerender = true;
   description={zashikiWarashiSEO.description}
   gameTitle={zashikiWarashiData.name}
 >
-  <CharacterNavigation currentCharacter={zashikiWarashiData} />
   <CharacterPageTemplate characterData={zashikiWarashiData} />
 </CharacterIndividualLayout>

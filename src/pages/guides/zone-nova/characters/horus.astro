@@ -1,7 +1,7 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { horusData, horusSEO } from '../../../../data/zone-nova/characters/horus.js';
 
 export const prerender = true;
@@ -12,6 +12,5 @@ export const prerender = true;
   description={horusSEO.description}
   gameTitle={horusData.name}
 >
-  <CharacterNavigation currentCharacter={horusData} />
   <CharacterPageTemplate characterData={horusData} />
 </CharacterIndividualLayout>

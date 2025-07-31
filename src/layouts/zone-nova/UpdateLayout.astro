@@ -2,9 +2,9 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import BackButton from '../../components/zone-nova/zn-backbutton.astro';
 
 // CSS Imports - Only what we need for update pages
 import '../../styles/colors.css';
@@ -45,6 +45,7 @@ const {
 
     <div class="update-content">
       <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />
 
       <main class="zone-nova-update-main">
@@ -60,7 +61,6 @@ const {
 
         <!-- Content Area -->
         <div class="update-content-area">
-          {showBackButton && <BackButton href={backButtonHref} text={backButtonText} />}
           <slot />
         </div>
       </main>

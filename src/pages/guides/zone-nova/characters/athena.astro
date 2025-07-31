@@ -1,6 +1,5 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { athenaData, athenaSEO } from '../../../../data/zone-nova/characters/athena.js';
 
@@ -12,6 +11,5 @@ export const prerender = true;
   description={athenaSEO.description}
   gameTitle={athenaData.name}
 >
-  <CharacterNavigation currentCharacter={athenaData} />
   <CharacterPageTemplate characterData={athenaData} />
 </CharacterIndividualLayout>

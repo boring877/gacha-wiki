@@ -3,8 +3,8 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import SilverAndBloodNavigation from '../../components/silver-and-blood/SilverAndBloodNavigation.astro';
 
 // Import only essential CSS files
 import '../../styles/colors.css';
@@ -79,6 +79,7 @@ const { meta, intro, gameplayMechanics, chapterGuides } = data;
 
     <div class="sab-content">
       <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
       <MobileMenu />
 
       <div class="sab-container">
@@ -93,8 +94,6 @@ const { meta, intro, gameplayMechanics, chapterGuides } = data;
             )
           }
 
-          <!-- Navigation -->
-          <SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
 
           <!-- Content -->
           <div class="content-area">

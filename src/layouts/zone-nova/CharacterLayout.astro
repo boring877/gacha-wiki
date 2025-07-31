@@ -2,9 +2,9 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import ZnBackButton from '../../components/zone-nova/zn-backbutton.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
@@ -60,7 +60,7 @@ const {
     <slot name="head" />
   </head>
   <body class="zone-nova-body">
-    <CustomScrollbar />
+    <!-- <CustomScrollbar /> Temporarily disabled to test floating sidebar -->
     <!-- Background layers for visual depth similar to landing page -->
     <div class="bg-layer bg-primary"></div>
     <div class="bg-layer bg-accent-1"></div>
@@ -69,6 +69,7 @@ const {
 
     <div class="zone-nova-content">
       <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />
 
       <div class="zone-nova-container">
@@ -109,7 +110,6 @@ const {
           }
           <!-- Content Area -->
           <div class="content-area">
-            {showBackButton && <ZnBackButton href={backButtonHref} text={backButtonText} />}
             <slot />
           </div>
         </main>

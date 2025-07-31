@@ -2,28 +2,28 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import ZnBackButton from '../../components/zone-nova/zn-backbutton.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import CharacterNavigation from '../../components/zone-nova/CharacterNavigation.astro';
 
 // Import CSS files for individual character pages only
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/components/zone-nova-character-navigation.css';
 import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/games/zone-nova/zn-badge-colour.css';
 import '../../styles/games/zone-nova/zn-character-individual.css';
+
 
 export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
   heroImage?: string;
-  showBackButton?: boolean;
-  backButtonHref?: string;
-  backButtonText?: string;
 }
 
 const {
@@ -31,10 +31,12 @@ const {
   description,
   gameTitle,
   heroImage,
-  showBackButton = true,
-  backButtonHref = '/guides/zone-nova/characters/',
-  backButtonText = 'Back to Characters',
 } = Astro.props;
+
+// Extract character slug from URL path for navigation
+// URL format: /guides/zone-nova/characters/character-name
+const urlParts = Astro.url.pathname.split('/');
+const characterSlug = urlParts[urlParts.length - 1] || '';
 ---
 
 <html lang="en">
@@ -65,10 +67,15 @@ const {
 
     <div class="zone-nova-content">
       <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />
 
-      <div class="zone-nova-container">
-        <main class="zone-nova-main">
+      <!-- Character Navigation -->
+      <CharacterNavigation currentCharacterSlug={characterSlug} />
+
+      <div class="zone-nova-container character-page-layout">
+        <!-- Main Content Area -->
+        <main class="zone-nova-main character-main-content">
           <!-- Zone Nova Hero Section -->
           {
             heroImage && gameTitle && (
@@ -105,7 +112,6 @@ const {
           }
           <!-- Content Area -->
           <div class="content-area">
-            {showBackButton && <ZnBackButton href={backButtonHref} text={backButtonText} />}
             <slot />
           </div>
         </main>

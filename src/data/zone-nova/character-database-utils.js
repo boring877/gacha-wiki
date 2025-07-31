@@ -102,6 +102,8 @@ export function initializeCharacterDatabase() {
 
       try {
         sessionStorage.setItem('zone-nova-character-filters', JSON.stringify(activeFilters));
+        // Dispatch custom event to notify navigation
+        document.dispatchEvent(new CustomEvent('character-database-updated'));
       } catch (error) {
         console.log('Could not save filter state to sessionStorage');
       }
@@ -110,7 +112,8 @@ export function initializeCharacterDatabase() {
       const visibleCards = [];
 
       // Filter table rows and mobile cards in parallel
-      Array.from(tableBody.children).forEach((row, index) => {
+      const tableRows = Array.from(tableBody.children);
+      tableRows.forEach((row, index) => {
         const card = mobileCardsContainer.children[index];
 
         const elementText = row.querySelector('.element-badge')?.textContent?.trim() || '';
@@ -148,9 +151,45 @@ export function initializeCharacterDatabase() {
         }
       });
 
-      // Sort visible items alphabetically
-      sortByName(visibleRows, true).forEach(row => tableBody.appendChild(row));
-      sortByName(visibleCards, false).forEach(card => mobileCardsContainer.appendChild(card));
+      // Apply current sorting to visible items
+      if (currentSortKey) {
+        // Use the current sort method instead of forcing alphabetical
+        const sortedRows = [...visibleRows].sort((a, b) => {
+          let valA, valB;
+          if (currentSortKey === 'name') {
+            valA = a.querySelector('td:nth-child(3)')?.textContent || '';
+            valB = b.querySelector('td:nth-child(3)')?.textContent || '';
+            return currentSortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+          } else {
+            valA = a.querySelector(`[data-sort-key="${currentSortKey}"]`)?.textContent || '';
+            valB = b.querySelector(`[data-sort-key="${currentSortKey}"]`)?.textContent || '';
+          }
+          valA = isNaN(Number(valA)) ? valA : Number(valA);
+          valB = isNaN(Number(valB)) ? valB : Number(valB);
+          if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
+          if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
+          return 0;
+        });
+        sortedRows.forEach(row => tableBody.appendChild(row));
+
+        const sortedCards = [...visibleCards].sort((a, b) => {
+          let valA = getMobileStatValue(a, currentSortKey);
+          let valB = getMobileStatValue(b, currentSortKey);
+          if (currentSortKey === 'name') {
+            return currentSortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+          }
+          valA = isNaN(Number(valA)) ? valA : Number(valA);
+          valB = isNaN(Number(valB)) ? valB : Number(valB);
+          if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
+          if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
+          return 0;
+        });
+        sortedCards.forEach(card => mobileCardsContainer.appendChild(card));
+      } else {
+        // Default to alphabetical sort when no sort key is set
+        sortByName(visibleRows, true).forEach(row => tableBody.appendChild(row));
+        sortByName(visibleCards, false).forEach(card => mobileCardsContainer.appendChild(card));
+      }
 
       renumberRows();
     }
@@ -161,7 +200,10 @@ export function initializeCharacterDatabase() {
         currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
       } else {
         currentSortKey = sortKey;
-        currentSortDirection = 'asc';
+        // For numeric columns (stats), default to descending (highest first)
+        // For text columns, default to ascending (A-Z)
+        const numericColumns = ['hp', 'attack', 'defense', 'critRate', 'critDmg', 'energyRecovery'];
+        currentSortDirection = numericColumns.includes(sortKey) ? 'desc' : 'asc';
       }
       
       sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));
@@ -204,6 +246,8 @@ export function initializeCharacterDatabase() {
             asc: currentSortDirection === 'asc',
           })
         );
+        // Dispatch custom event to notify navigation
+        document.dispatchEvent(new CustomEvent('character-database-updated'));
       } catch (error) {
         console.log('Could not save sort state to sessionStorage');
       }
@@ -301,11 +345,26 @@ export function initializeCharacterDatabase() {
     currentSortKey = 'name';
     currentSortDirection = 'asc';
 
+    // Save default sort state to sessionStorage
+    try {
+      sessionStorage.setItem(
+        'zone-nova-character-sort',
+        JSON.stringify({
+          column: 'name',
+          asc: true,
+        })
+      );
+    } catch (error) {
+      console.log('Could not save default sort state to sessionStorage');
+    }
+
     const allRows = Array.from(tableBody.children);
     const allCards = Array.from(mobileCardsContainer.children);
 
+    // Sort alphabetically by default
     sortByName(allRows, true).forEach(row => tableBody.appendChild(row));
     sortByName(allCards, false).forEach(card => mobileCardsContainer.appendChild(card));
+    
     renumberRows();
   });
 }

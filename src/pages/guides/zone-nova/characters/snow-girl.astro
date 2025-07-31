@@ -1,7 +1,7 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { snowGirlData, snowGirlSEO } from '../../../../data/zone-nova/characters/snow-girl.js';
 
 export const prerender = true;
@@ -12,6 +12,5 @@ export const prerender = true;
   description={snowGirlSEO.description}
   gameTitle={snowGirlData.name}
 >
-  <CharacterNavigation currentCharacter={snowGirlData} />
   <CharacterPageTemplate characterData={snowGirlData} />
 </CharacterIndividualLayout>

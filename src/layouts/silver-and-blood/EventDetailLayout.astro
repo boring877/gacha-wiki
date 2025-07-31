@@ -3,9 +3,8 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import SilverAndBloodNavigation from '../../components/silver-and-blood/SilverAndBloodNavigation.astro';
-import SabBackButton from '../../components/silver-and-blood/sab-backbutton.astro';
 
 // Import consolidated CSS file for events
 import '../../styles/games/silver-and-blood/sab-event-complete.css';
@@ -71,6 +70,7 @@ const { title, description, gameTitle, eventData } = Astro.props;
 		
 		<div class="sab-content">
 			<Header />
+			<GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
 			<MobileMenu />
 			
 			<div class="sab-container">
@@ -86,11 +86,7 @@ const { title, description, gameTitle, eventData } = Astro.props;
 						</section>
 					)}
 					
-					<!-- Silver and Blood Navigation -->
-					<SilverAndBloodNavigation currentPath={Astro.url.pathname} showWaifuGallery={true} />
 					
-					<!-- Back Button -->
-					<SabBackButton href="/guides/silver-and-blood/events" text="Back to Events" />
 					
 					<!-- Content Area -->
 					<div class="content-area">

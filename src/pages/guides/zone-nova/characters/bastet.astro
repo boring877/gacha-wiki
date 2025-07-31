@@ -1,7 +1,7 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { bastetData, bastetSEO } from '../../../../data/zone-nova/characters/bastet.js';
 
 export const prerender = true;
@@ -12,6 +12,5 @@ export const prerender = true;
   description={bastetSEO.description}
   gameTitle={bastetData.name}
 >
-  <CharacterNavigation currentCharacter={bastetData} />
   <CharacterPageTemplate characterData={bastetData} />
 </CharacterIndividualLayout>

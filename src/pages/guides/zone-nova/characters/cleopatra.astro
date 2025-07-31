@@ -1,6 +1,5 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { cleopatraData, cleopatraSEO } from '../../../../data/zone-nova/characters/cleopatra.js';
 
@@ -12,6 +11,5 @@ export const prerender = true;
   description={cleopatraSEO.description}
   gameTitle={cleopatraData.name}
 >
-  <CharacterNavigation currentCharacter={cleopatraData} />
   <CharacterPageTemplate characterData={cleopatraData} />
 </CharacterIndividualLayout>

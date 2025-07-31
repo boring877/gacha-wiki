@@ -3,7 +3,6 @@
 // Zone Nova Memory Page Template
 // This template creates individual memory pages with complete information
 import ZoneNovaLayout from '../../layouts/zone-nova/Layout.astro';
-import ZnBackButton from '../../components/zone-nova/zn-backbutton.astro';
 
 // Import the memory-specific CSS
 import '../../styles/games/zone-nova/zn-memory-pages.css';
@@ -75,8 +74,6 @@ function getClassMemorySubtitle(effects: string[]): string {
   </Fragment>
 
   <div class="memory-page">
-    <!-- Back Button -->
-    <ZnBackButton href="/guides/zone-nova/memories/" text="Back to Memories" />
 
     <!-- Premium Memory Overview Header -->
     <section class="memory-overview-premium">

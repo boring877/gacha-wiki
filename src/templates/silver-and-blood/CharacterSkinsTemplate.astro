@@ -1,6 +1,5 @@
 ---
 import WaifuSkinsLayout from '../../layouts/silver-and-blood/WaifuSkinsLayout.astro';
-import SabBackButton from '../../components/silver-and-blood/sab-backbutton.astro';
 
 // Get props from parent component
 const { characterSkinsData } = Astro.props;
@@ -14,8 +13,6 @@ import { getOptimizedVideoUrl, getVideoThumbnail } from '../../utils/cloudinary-
   description={`Explore all available skins for ${characterSkinsData.character} including images, videos, and GIFs from Silver and Blood`}
   gameTitle={`${characterSkinsData.character} Skins`}
 >
-  <!-- Back Button -->
-  <SabBackButton href="/guides/silver-and-blood/waifu-skins/" text="Back to Skins Gallery" />
 
   <!-- Character Skins Gallery -->
   <div class="character-skins-section">

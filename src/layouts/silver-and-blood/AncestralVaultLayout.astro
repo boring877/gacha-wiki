@@ -3,11 +3,11 @@ import BaseHead from '../../components/BaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
-import SilverAndBloodNavigation from '../../components/silver-and-blood/SilverAndBloodNavigation.astro';
 
 // Import CSS files properly
 import '../../styles/colors.css';
@@ -58,6 +58,7 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
 
     <div class="sab-content">
       <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
       <MobileMenu />
 
       <div class="sab-container">
@@ -99,12 +100,6 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
             )
           }
 
-          <!-- Silver and Blood Navigation -->
-          <SilverAndBloodNavigation
-            currentPath={Astro.url.pathname}
-            excludeOnLandingPage={true}
-            showWaifuGallery={true}
-          />
 
           <!-- Content Area -->
           <div class="content-area">

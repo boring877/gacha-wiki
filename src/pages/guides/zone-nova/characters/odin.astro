@@ -1,13 +1,12 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { odinData, odinSEO } from '../../../../data/zone-nova/characters/odin.js';
 
 export const prerender = true;
 ---
 
 <CharacterIndividualLayout title={odinSEO.title} description={odinSEO.description} gameTitle={odinData.name}>
-  <CharacterNavigation currentCharacter={odinData} />
   <CharacterPageTemplate characterData={odinData} />
 </CharacterIndividualLayout>

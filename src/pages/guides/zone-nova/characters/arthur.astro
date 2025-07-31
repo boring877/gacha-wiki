@@ -1,7 +1,7 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { arthurData, arthurSEO } from '../../../../data/zone-nova/characters/arthur.js';
 
 export const prerender = true;
@@ -12,6 +12,5 @@ export const prerender = true;
   description={arthurSEO.description}
   gameTitle={arthurData.name}
 >
-  <CharacterNavigation currentCharacter={arthurData} />
   <CharacterPageTemplate characterData={arthurData} />
 </CharacterIndividualLayout>

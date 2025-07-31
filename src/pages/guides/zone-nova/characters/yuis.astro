@@ -1,13 +1,12 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { yuisData, yuisSEO } from '../../../../data/zone-nova/characters/yuis.js';
 
 export const prerender = true;
 ---
 
 <CharacterIndividualLayout title={yuisSEO.title} description={yuisSEO.description} gameTitle={yuisData.name}>
-  <CharacterNavigation currentCharacter={yuisData} />
   <CharacterPageTemplate characterData={yuisData} />
 </CharacterIndividualLayout>

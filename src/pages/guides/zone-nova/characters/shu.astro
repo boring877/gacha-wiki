@@ -1,13 +1,12 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { shuData, shuSEO } from '../../../../data/zone-nova/characters/shu.js';
 
 export const prerender = true;
 ---
 
 <CharacterIndividualLayout title={shuSEO.title} description={shuSEO.description} gameTitle={shuData.name}>
-  <CharacterNavigation currentCharacter={shuData} />
   <CharacterPageTemplate characterData={shuData} />
 </CharacterIndividualLayout>

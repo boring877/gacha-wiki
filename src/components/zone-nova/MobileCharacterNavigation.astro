@@ -1,0 +1,104 @@
+---
+export interface Props {
+  prevCharacter: {
+    name: string;
+    detailUrl: string;
+  };
+  nextCharacter: {
+    name: string;
+    detailUrl: string;
+  };
+}
+
+const { prevCharacter, nextCharacter } = Astro.props;
+---
+
+<!-- Mobile Invisible Swipe Zones -->
+<div class="mobile-swipe-left" data-direction="prev" data-character-url={prevCharacter.detailUrl} title={`Previous: ${prevCharacter.name}`}></div>
+<div class="mobile-swipe-right" data-direction="next" data-character-url={nextCharacter.detailUrl} title={`Next: ${nextCharacter.name}`}></div>
+
+<script>
+  // Mobile navigation functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileSwipeLeft = document.querySelector('.mobile-swipe-left') as HTMLElement | null;
+    const mobileSwipeRight = document.querySelector('.mobile-swipe-right') as HTMLElement | null;
+
+    // Optimized navigation handler
+    function handleNavigation(url: string | null) {
+      if (!url || typeof url !== 'string') {
+        console.warn('Invalid navigation URL:', url);
+        return false;
+      }
+      
+      try {
+        window.location.href = url;
+        return true;
+      } catch (error: unknown) {
+        console.error('Navigation failed:', error);
+        return false;
+      }
+    }
+
+    // Mobile swipe zone handlers - improved touch handling
+    function handleMobileNavigation(element: HTMLElement | null, direction: string) {
+      if (!element) return;
+      
+      let touchStartTime = 0;
+      let touchMoved = false;
+      
+      // Handle touch start
+      element.addEventListener('touchstart', (e) => {
+        touchStartTime = Date.now();
+        touchMoved = false;
+        e.stopPropagation(); // Prevent interfering with other touch events
+      }, { passive: true });
+      
+      // Track if touch moved (to distinguish tap from swipe)
+      element.addEventListener('touchmove', (e) => {
+        touchMoved = true;
+      }, { passive: true });
+      
+      // Handle touch end (tap)
+      element.addEventListener('touchend', (e) => {
+        const touchDuration = Date.now() - touchStartTime;
+        
+        // Only navigate if it was a quick tap (not a long press or swipe)
+        if (!touchMoved && touchDuration < 500) {
+          e.preventDefault();
+          const url = element.getAttribute('data-character-url');
+          handleNavigation(url);
+        }
+      });
+      
+      // Fallback click handler for non-touch devices
+      element.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = element.getAttribute('data-character-url');
+        handleNavigation(url);
+      });
+    }
+    
+    // Initialize mobile navigation with error handling
+    try {
+      handleMobileNavigation(mobileSwipeLeft, 'prev');
+      handleMobileNavigation(mobileSwipeRight, 'next');
+    } catch (error: unknown) {
+      console.warn('Failed to initialize mobile navigation:', error);
+    }
+
+    // Update mobile navigation when character data changes
+    function updateMobileNavigation(prevChar: any, nextChar: any) {
+      if (mobileSwipeLeft) {
+        mobileSwipeLeft.setAttribute('data-character-url', prevChar.detailUrl);
+        mobileSwipeLeft.setAttribute('title', `Previous: ${prevChar.name}`);
+      }
+      if (mobileSwipeRight) {
+        mobileSwipeRight.setAttribute('data-character-url', nextChar.detailUrl);
+        mobileSwipeRight.setAttribute('title', `Next: ${nextChar.name}`);
+      }
+    }
+
+    // Expose update function for parent component
+    (window as any).updateMobileNavigation = updateMobileNavigation;
+  });
+</script>

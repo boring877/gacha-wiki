@@ -1,13 +1,12 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { roseData, roseSEO } from '../../../../data/zone-nova/characters/rose.js';
 
 export const prerender = true;
 ---
 
 <CharacterIndividualLayout title={roseSEO.title} description={roseSEO.description} gameTitle={roseData.name}>
-  <CharacterNavigation currentCharacter={roseData} />
   <CharacterPageTemplate characterData={roseData} />
 </CharacterIndividualLayout>

@@ -1,6 +1,5 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { heraData, heraSEO } from '../../../../data/zone-nova/characters/hera.js';
 
@@ -8,6 +7,5 @@ export const prerender = true;
 ---
 
 <CharacterIndividualLayout title={heraSEO.title} description={heraSEO.description} gameTitle={heraData.name}>
-  <CharacterNavigation currentCharacter={heraData} />
   <CharacterPageTemplate characterData={heraData} />
 </CharacterIndividualLayout>

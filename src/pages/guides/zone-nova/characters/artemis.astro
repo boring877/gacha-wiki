@@ -1,7 +1,7 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
-import CharacterNavigation from '../../../../components/zone-nova/CharacterNavigation.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
 import { artemisData, artemisSEO } from '../../../../data/zone-nova/characters/artemis.js';
 
 export const prerender = true;
@@ -12,6 +12,5 @@ export const prerender = true;
   description={artemisSEO.description}
   gameTitle={artemisData.name}
 >
-  <CharacterNavigation currentCharacter={artemisData} />
   <CharacterPageTemplate characterData={artemisData} />
 </CharacterIndividualLayout>
