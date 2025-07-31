@@ -297,6 +297,190 @@
 /*                     (Moved from zn-character.css)                       */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                         MOBILE BADGE LAYOUT                             */
+/*                    Mobile-specific badge styling                         */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Enhanced Badge Layout for Mobile */
+.mobile-card-badges {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.8rem 0;
+  padding: 0.6rem 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  border-top: 1px solid rgba(255, 183, 77, 0.15);
+  border-bottom: 1px solid rgba(255, 183, 77, 0.15);
+}
+
+/* Mobile Badge Animations */
+.mobile-card-badges .rarity-badge,
+.mobile-card-badges .element-badge,
+.mobile-card-badges .role-badge,
+.mobile-card-badges .class-badge,
+.mobile-card-badges .faction-badge {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.mobile-card-badges .rarity-badge {
+  animation-delay: 0.1s;
+}
+.mobile-card-badges .element-badge {
+  animation-delay: 0.15s;
+}
+.mobile-card-badges .role-badge {
+  animation-delay: 0.2s;
+}
+.mobile-card-badges .class-badge {
+  animation-delay: 0.25s;
+}
+.mobile-card-badges .faction-badge {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive Badge Styles */
+@media (max-width: 768px) {
+  /* Enhanced Mobile Badge Styles */
+  .mobile-character-card .rarity-badge,
+  .mobile-character-card .element-badge,
+  .mobile-character-card .role-badge,
+  .mobile-character-card .class-badge,
+  .mobile-character-card .faction-badge {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.65rem;
+    min-height: auto;
+    border-width: 1px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-block;
+    line-height: 1.2;
+  }
+
+  /* Improve badge spacing on mobile */
+  .mobile-card-badges {
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  /* Mobile badge interactions */
+  .mobile-card-badges .rarity-badge:active,
+  .mobile-card-badges .element-badge:active,
+  .mobile-card-badges .role-badge:active,
+  .mobile-card-badges .class-badge:active,
+  .mobile-card-badges .faction-badge:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+
+  /* Mobile Character Tags - same size as badges */
+  .mobile-card-tags .character-tag {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 500;
+    white-space: nowrap;
+    line-height: 1.2;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  .mobile-card-tags .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    line-height: 1.2;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .mobile-card-tags {
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(255, 183, 77, 0.1);
+  }
+
+  .mobile-card-tags .tags-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+}
+
+/* Ultra-compact badges for very small screens */
+@media (max-width: 480px) {
+  .mobile-character-card .rarity-badge,
+  .mobile-character-card .element-badge,
+  .mobile-character-card .role-badge,
+  .mobile-character-card .class-badge,
+  .mobile-character-card .faction-badge {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.45rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 65px;
+    flex-shrink: 1;
+    display: inline-block;
+  }
+
+  .mobile-card-badges {
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  /* Ultra compact tags for very small screens */
+  .mobile-card-tags .character-tag {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 6px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .mobile-card-tags .tags-container {
+    gap: 0.3rem;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .mobile-card-tags {
+    margin-top: 0.4rem;
+    padding-top: 0.4rem;
+  }
+
+  .mobile-card-tags .tags-label {
+    font-size: 0.65rem;
+    margin-bottom: 0.3rem;
+  }
+}
+
 /* Flat Badge Styles - Highlighter Style */
 .class-badge,
 .rarity-badge,

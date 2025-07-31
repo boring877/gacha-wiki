@@ -89,7 +89,9 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   /* Smooth transitions only for essential properties */
-  transition: color 0.3s ease, border-color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 /* Removed hover effects for cleaner interaction */
@@ -99,7 +101,7 @@
   font-weight: 700;
   background: linear-gradient(135deg, var(--amber-glow), #ffd700);
   border-color: var(--amber-glow);
-  box-shadow: 
+  box-shadow:
     0 6px 20px rgba(255, 183, 77, 0.3),
     0 2px 8px rgba(255, 183, 77, 0.2),
     0 0 0 1px rgba(255, 183, 77, 0.1) inset;
@@ -148,11 +150,15 @@
   transition: all 0.3s ease;
 }
 
-.game-nav .toggle span::before { top: -7px; }
-.game-nav .toggle span::after { top: 7px; }
+.game-nav .toggle span::before {
+  top: -7px;
+}
+.game-nav .toggle span::after {
+  top: 7px;
+}
 
 /* Game-Specific Styling */
-.game-nav[data-game="silver-and-blood"] h2 {
+.game-nav[data-game='silver-and-blood'] h2 {
   background: linear-gradient(135deg, var(--sab-dark-red), var(--sab-light-red), #e57373);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -160,14 +166,14 @@
   text-shadow: 0 0 20px rgba(166, 77, 77, 0.4);
 }
 
-.game-nav[data-game="silver-and-blood"] h2::after {
+.game-nav[data-game='silver-and-blood'] h2::after {
   background: linear-gradient(90deg, var(--sab-dark-red), transparent);
 }
 
-.game-nav[data-game="silver-and-blood"] .link.active {
+.game-nav[data-game='silver-and-blood'] .link.active {
   background: linear-gradient(135deg, var(--sab-dark-red), var(--sab-light-red));
   border-color: var(--sab-dark-red);
-  box-shadow: 
+  box-shadow:
     0 6px 20px rgba(166, 77, 77, 0.3),
     0 2px 8px rgba(166, 77, 77, 0.2),
     0 0 0 1px rgba(166, 77, 77, 0.1) inset;
@@ -176,7 +182,7 @@
 
 /* Silver and Blood hover effects removed for consistency */
 
-.game-nav[data-game="zone-nova"] h2 {
+.game-nav[data-game='zone-nova'] h2 {
   /* Zone Nova title uses the official theme gradient */
   background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
   -webkit-background-clip: text;
@@ -189,14 +195,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.game-nav[data-game="zone-nova"] h2::after {
+.game-nav[data-game='zone-nova'] h2::after {
   background: linear-gradient(90deg, var(--amber-glow), transparent);
 }
 
-.game-nav[data-game="zone-nova"] .link.active {
+.game-nav[data-game='zone-nova'] .link.active {
   background: var(--zn-primary-gradient);
   border-color: var(--amber-glow);
-  box-shadow: 
+  box-shadow:
     0 6px 20px rgba(255, 183, 77, 0.3),
     0 2px 8px rgba(255, 183, 77, 0.2),
     0 0 0 1px rgba(255, 183, 77, 0.1) inset;
@@ -211,7 +217,7 @@
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
     gap: 0.4rem;
   }
-  
+
   .game-nav .link {
     font-size: 0.78rem;
     padding: 0.55rem 0.8rem;
@@ -223,94 +229,10 @@
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 0.3rem;
   }
-  
+
   .game-nav .link {
     font-size: 0.75rem;
     padding: 0.5rem 0.7rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .game-nav .container {
-    grid-template-columns: 1fr auto;
-    padding: 0.75rem 1rem;
-    gap: 1rem;
-  }
-
-  .game-nav h2 {
-    font-size: 1.2rem;
-  }
-
-  .game-nav .toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .game-nav .links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 183, 77, 0.3);
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1.5rem;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  }
-
-  .game-nav .links.open {
-    max-height: 80vh;
-    opacity: 1;
-    transform: translateY(0);
-    overflow-y: auto;
-  }
-
-  .game-nav .link {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 1rem 1.25rem;
-    font-size: 0.9rem;
-    border-radius: 10px;
-  }
-
-  .game-nav .toggle.open span {
-    background: transparent;
-  }
-
-  .game-nav .toggle.open span::before {
-    top: 0;
-    transform: rotate(45deg);
-  }
-
-  .game-nav .toggle.open span::after {
-    top: 0;
-    transform: rotate(-45deg);
-  }
-}
-
-@media (max-width: 480px) {
-  .game-nav .container {
-    padding: 0.5rem 0.75rem;
-  }
-
-  .game-nav h2 {
-    font-size: 1.1rem;
-  }
-
-  .game-nav .link {
-    padding: 0.9rem 1rem;
-    font-size: 0.85rem;
   }
 }
 
@@ -329,11 +251,11 @@
     background: rgba(0, 0, 0, 0.95);
     border-bottom: 2px solid var(--amber-glow);
   }
-  
+
   .game-nav .link {
     border: 2px solid rgba(255, 255, 255, 0.2);
   }
-  
+
   .game-nav .link.active {
     border-color: var(--amber-glow);
   }

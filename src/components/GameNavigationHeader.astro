@@ -20,11 +20,11 @@ const games = {
       { name: 'Ancestral Vault', href: '/guides/silver-and-blood/ancestral-vault/' },
       { name: 'Boss Database', href: '/guides/silver-and-blood/boss-database/' },
       { name: 'Clan Hunt', href: '/guides/silver-and-blood/clan-hunt/' },
-      { name: 'Dutchman\'s Revenge', href: '/guides/silver-and-blood/dutchmans-revenge/' },
+      { name: "Dutchman's Revenge", href: '/guides/silver-and-blood/dutchmans-revenge/' },
       { name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
       { name: 'Waifu Gallery', href: '/guides/silver-and-blood/waifu-gallery/' },
       { name: 'Waifu Skins', href: '/guides/silver-and-blood/waifu-skins/' },
-    ]
+    ],
   },
   'zone-nova': {
     name: 'Zone Nova',
@@ -43,8 +43,8 @@ const games = {
       { name: 'Updates', href: '/guides/zone-nova/updates/' },
       { name: 'Surveys', href: '/guides/zone-nova/surveys/' },
       { name: 'Contributing', href: '/guides/zone-nova/contributing/' },
-    ]
-  }
+    ],
+  },
 };
 
 const game = gameKey && games[gameKey];
@@ -54,7 +54,10 @@ const isActive = (href: string) => {
     return currentPath === href;
   }
   // For other pages, use startsWith but ensure it's not just the base path
-  return currentPath === href || (currentPath.startsWith(href) && currentPath !== href.replace(/\/$/, ''));
+  return (
+    currentPath === href ||
+    (currentPath.startsWith(href) && currentPath !== href.replace(/\/$/, ''))
+  );
 };
 
 if (!game) return;
@@ -62,24 +65,49 @@ if (!game) return;
 
 <style>
   @import '../styles/components/game-navigation-header.css';
+  @import '../styles/mobile/game-navigation-mobile.css';
 </style>
 
 <nav class="game-nav" data-game={gameKey}>
   <div class="container">
     <h2>{game.name}</h2>
-    
+
+    <!-- Desktop Navigation Links -->
     <div class="links" id="navLinks">
-      {game.links.map(link => (
-        <a 
-          href={link.href}
-          class={isActive(link.href) ? 'link active' : 'link'}
-          aria-current={isActive(link.href) ? 'page' : undefined}
-        >
-          {link.name}
-        </a>
-      ))}
+      {
+        game.links.map(link => (
+          <a
+            href={link.href}
+            class={isActive(link.href) ? 'link active' : 'link'}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >
+            {link.name}
+          </a>
+        ))
+      }
     </div>
-    
+
+    <!-- Mobile Navigation Elements -->
+    <div class="mobile-overlay" id="navOverlay"></div>
+    <div class="mobile-links" id="mobileNavLinks">
+      <button class="close-btn" id="navClose" aria-label="Close navigation">✕</button>
+      {
+        game.links.map(link => (
+          <a
+            href={link.href}
+            class={isActive(link.href) ? 'link active' : 'link'}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >
+            {link.name}
+          </a>
+        ))
+      }
+      <div class="menu-divider"></div>
+      <div class="zone-nova-title">
+        {gameKey === 'zone-nova' ? 'Zone Nova' : 'Silver and Blood'}
+      </div>
+    </div>
+
     <button class="toggle" id="navToggle" aria-label="Toggle navigation">
       <span></span>
     </button>
@@ -87,34 +115,59 @@ if (!game) return;
 </nav>
 
 <script>
+  // Mobile Navigation JavaScript
   const toggle = document.getElementById('navToggle');
-  const links = document.getElementById('navLinks');
-  
+  const links = document.getElementById('mobileNavLinks');
+  const closeBtn = document.getElementById('navClose');
+  const overlay = document.getElementById('navOverlay');
+
   if (toggle && links) {
     const close = () => {
       links.classList.remove('open');
+      overlay?.classList.remove('open');
       toggle.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
+
+      // Restore scrolling and position like main header
+      const scrollY = document.body.style.top;
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     };
-    
+
     toggle.addEventListener('click', () => {
       const isOpen = links.classList.contains('open');
       if (isOpen) {
         close();
       } else {
+        // Prevent scrolling and fix position like main header
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${window.scrollY}px`;
+        document.body.style.width = '100%';
+
         links.classList.add('open');
+        overlay?.classList.add('open');
         toggle.classList.add('open');
         toggle.setAttribute('aria-expanded', 'true');
       }
     });
 
-    document.addEventListener('click', (e) => {
+    closeBtn?.addEventListener('click', close);
+    overlay?.addEventListener('click', close);
+
+    document.addEventListener('click', e => {
       if (!toggle.contains(e.target as Node) && !links.contains(e.target as Node)) {
         close();
       }
     });
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && links.classList.contains('open')) {
         close();
       }

@@ -1,6 +1,83 @@
 ---
 import SimpleOptimizedImage from '../SimpleOptimizedImage.astro';
 import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+
+// Helper function to categorize character tags for styling (same as CharacterPageTemplate)
+function getTagCategory(tag: string): string {
+  const lowerTag = tag.toLowerCase();
+  // Damage/Scaling tags - Orange
+  if (
+    lowerTag.includes('def-scale') ||
+    lowerTag.includes('hp scale') ||
+    lowerTag.includes('scale') ||
+    lowerTag.includes('crit rate') ||
+    lowerTag.includes('crit dmg') ||
+    lowerTag.includes('normal atk') ||
+    lowerTag.includes('normal attack') ||
+    lowerTag.includes('dot') ||
+    lowerTag.includes('extra attack') ||
+    lowerTag.includes('aoe') ||
+    lowerTag.includes('enhanced ultimate') ||
+    lowerTag.includes('penetration') ||
+    lowerTag.includes('damage increase') ||
+    lowerTag.includes('interrupt') ||
+    lowerTag.includes('dot intake increases') ||
+    lowerTag.includes('atk increase') ||
+    lowerTag.includes('crit rate increase') ||
+    lowerTag.includes('crit dmg increases') ||
+    lowerTag.includes('atk increases') ||
+    lowerTag.includes('hp-scale') ||
+    lowerTag.includes('increase attack')
+  ) {
+    return 'damage-scaling';
+  }
+
+  // Team utility tags - Blue
+  if (
+    lowerTag.includes('shield') ||
+    lowerTag.includes('buff') ||
+    lowerTag.includes('healing') ||
+    lowerTag.includes('debuff') ||
+    lowerTag.includes('reduce') ||
+    lowerTag.includes('inc skill cooldown') ||
+    lowerTag.includes('revive') ||
+    lowerTag.includes('increase max hp') ||
+    lowerTag.includes('aoe healing') ||
+    lowerTag.includes('stop ultimate') ||
+    lowerTag.includes('revival') ||
+    lowerTag.includes('reduced damage') ||
+    lowerTag.includes('continuously heals') ||
+    lowerTag.includes('healing damage increase') ||
+    lowerTag.includes('vulnerability') ||
+    lowerTag.includes('debuffer') ||
+    lowerTag.includes('weakness')
+  ) {
+    return 'team-utility';
+  }
+
+  // Self utility tags - Green
+  if (
+    lowerTag.includes('damage reduction') ||
+    lowerTag.includes('atk speed') ||
+    lowerTag.includes('attack speed') ||
+    lowerTag.includes('energy recovery') ||
+    lowerTag.includes('hp consume') ||
+    lowerTag.includes('cooldown reduction') ||
+    lowerTag.includes('energy') ||
+    lowerTag.includes('block') ||
+    lowerTag.includes('speed attack')
+  ) {
+    return 'self-utility';
+  }
+
+  // General mechanic tags - Purple
+  if (lowerTag.includes('melee') || lowerTag.includes('range')) {
+    return 'general-mechanic';
+  }
+
+  // Default fallback
+  return 'general-mechanic';
+}
 ---
 
 <!-- Mobile card view container -->
@@ -17,11 +94,7 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
         <div class="mobile-card-header">
           <div class="mobile-card-images">
             <div style="width: 64px; height: 64px; border-radius: 10px; border: 2px solid var(--amber-glow); overflow: hidden;">
-              <SimpleOptimizedImage
-                src={char.image}
-                alt={char.name}
-                class="character-img"
-              />
+              <SimpleOptimizedImage src={char.image} alt={char.name} class="character-img" />
             </div>
             <img
               src={`/images/games/zone-nova/classes/1${char.class}.jpg`}
@@ -33,21 +106,20 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
           </div>
           <div class="mobile-card-title-group">
             <h3>{char.name}</h3>
-            <div class="mobile-card-badges">
-              <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
-              <span class={`element-badge ${char.element.toLowerCase()}`}>
-                {char.element}
-              </span>
-              <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
-              <span class={`class-badge ${char.class.toLowerCase()}`}>{char.class}</span>
-              <span
-                class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-')}`}
-              >
-                {char.faction}
-              </span>
-            </div>
           </div>
         </div>
+
+        {/* Character Badges (moved up for better hierarchy) */}
+        <div class="mobile-card-badges">
+          <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+          <span class={`element-badge ${char.element.toLowerCase()}`}>{char.element}</span>
+          <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
+          <span class={`class-badge ${char.class.toLowerCase()}`}>{char.class}</span>
+          <span class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-')}`}>
+            {char.faction}
+          </span>
+        </div>
+
         <div class="mobile-card-stats">
           <div>
             <span class="stat-label">HP:</span> {char.stats.hp.toLocaleString()}
@@ -64,6 +136,18 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
             <span class="stat-label">Crit%:</span> {char.stats.critRate}
           </div>
         </div>
+
+        {/* Gameplay Tags (moved below badges) */}
+        {char.tags && char.tags.length > 0 && (
+          <div class="mobile-card-tags">
+            <div class="tags-label">Gameplay Tags:</div>
+            <div class="tags-container">
+              {char.tags.map(tag => (
+                <span class={`character-tag ${getTagCategory(tag)}`}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     ))
   }
