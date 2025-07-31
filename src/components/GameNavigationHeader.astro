@@ -9,41 +9,99 @@ const { currentPath = '', gameKey } = Astro.props;
 const games = {
   'silver-and-blood': {
     name: 'Silver and Blood',
-    links: [
-      { name: 'Overview', href: '/guides/silver-and-blood/' },
-      { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
-      { name: 'Rankings', href: '/guides/silver-and-blood/character-rankings/' },
-      { name: 'Comparison', href: '/guides/silver-and-blood/character-comparison/' },
-      { name: 'Tags', href: '/guides/silver-and-blood/character-tag-selection/' },
-      { name: 'Damage Guide', href: '/guides/silver-and-blood/damage-mechanics/' },
-      { name: 'Events', href: '/guides/silver-and-blood/events/' },
-      { name: 'Ancestral Vault', href: '/guides/silver-and-blood/ancestral-vault/' },
-      { name: 'Boss Database', href: '/guides/silver-and-blood/boss-database/' },
-      { name: 'Clan Hunt', href: '/guides/silver-and-blood/clan-hunt/' },
-      { name: "Dutchman's Revenge", href: '/guides/silver-and-blood/dutchmans-revenge/' },
-      { name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
-      { name: 'Waifu Gallery', href: '/guides/silver-and-blood/waifu-gallery/' },
-      { name: 'Waifu Skins', href: '/guides/silver-and-blood/waifu-skins/' },
+    image: '/images/games/silver-and-blood/main-images/silver-and-blood-main4.jpg',
+    sections: [
+      {
+        title: 'Characters',
+        icon: '👥',
+        links: [
+          { name: 'Database', href: '/guides/silver-and-blood/characters/' },
+          { name: 'Rankings', href: '/guides/silver-and-blood/character-rankings/' },
+          { name: 'Comparison', href: '/guides/silver-and-blood/character-comparison/' },
+          { name: 'Tags', href: '/guides/silver-and-blood/character-tag-selection/' },
+        ],
+      },
+      {
+        title: 'Combat',
+        icon: '⚔️',
+        links: [
+          { name: 'Damage Hub', href: '/guides/silver-and-blood/damage-mechanics/' },
+          { name: 'Boss Database', href: '/guides/silver-and-blood/boss-database/' },
+          { name: 'Clan Hunt', href: '/guides/silver-and-blood/clan-hunt/' },
+        ],
+      },
+      {
+        title: 'Events',
+        icon: '🎊',
+        links: [
+          { name: 'Events', href: '/guides/silver-and-blood/events/' },
+          { name: "Dutchman's Revenge", href: '/guides/silver-and-blood/dutchmans-revenge/' },
+          { name: 'Ancestral Vault', href: '/guides/silver-and-blood/ancestral-vault/' },
+        ],
+      },
+      {
+        title: 'Gallery',
+        icon: '🖼️',
+        links: [
+          { name: 'Waifu Gallery', href: '/guides/silver-and-blood/waifu-gallery/' },
+          { name: 'Waifu Skins', href: '/guides/silver-and-blood/waifu-skins/' },
+        ],
+      },
+      {
+        title: 'Resources',
+        icon: '📚',
+        links: [{ name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' }],
+      },
     ],
   },
   'zone-nova': {
     name: 'Zone Nova',
-    links: [
-      { name: 'Overview', href: '/guides/zone-nova/' },
-      { name: 'Characters', href: '/guides/zone-nova/characters/' },
-      { name: 'Tags', href: '/guides/zone-nova/character-tags/' },
-      { name: 'Rankings', href: '/guides/zone-nova/character-rankings/' },
-      { name: 'Comparison', href: '/guides/zone-nova/character-comparison/' },
-      { name: 'Damage Guide', href: '/guides/zone-nova/damage-mechanics/' },
-      { name: 'Memories', href: '/guides/zone-nova/memories/' },
-      { name: 'Rifts', href: '/guides/zone-nova/rifts/' },
-      { name: 'Runes', href: '/guides/zone-nova/runes/' },
-      { name: 'Crafting', href: '/guides/zone-nova/crafting/' },
-      { name: 'Redeem Codes', href: '/guides/zone-nova/redeem-codes/' },
-      { name: 'Summon FAQ', href: '/guides/zone-nova/summon-faq/' },
-      { name: 'Updates', href: '/guides/zone-nova/updates/' },
-      { name: 'Surveys', href: '/guides/zone-nova/surveys/' },
-      { name: 'Contributing', href: '/guides/zone-nova/contributing/' },
+    image: '/images/games/zone-nova/zonenova.jpg',
+    sections: [
+      {
+        title: 'Characters',
+        icon: '👥',
+        links: [
+          { name: 'Database', href: '/guides/zone-nova/characters/' },
+          { name: 'Rankings', href: '/guides/zone-nova/character-rankings/' },
+          { name: 'Comparison', href: '/guides/zone-nova/character-comparison/' },
+          { name: 'Tags', href: '/guides/zone-nova/character-tags/' },
+        ],
+      },
+      {
+        title: 'Combat',
+        icon: '⚔️',
+        links: [
+          { name: 'Damage Hub', href: '/guides/zone-nova/damage-mechanics/' },
+          { name: 'Rifts', href: '/guides/zone-nova/rifts/' },
+          { name: 'Memories', href: '/guides/zone-nova/memories/' },
+        ],
+      },
+      {
+        title: 'Progression',
+        icon: '⭐',
+        links: [
+          { name: 'Runes', href: '/guides/zone-nova/runes/' },
+          { name: 'Crafting', href: '/guides/zone-nova/crafting/' },
+        ],
+      },
+      {
+        title: 'Resources',
+        icon: '📚',
+        links: [
+          { name: 'Redeem Codes', href: '/guides/zone-nova/redeem-codes/' },
+          { name: 'Summon FAQ', href: '/guides/zone-nova/summon-faq/' },
+        ],
+      },
+      {
+        title: 'Community',
+        icon: '🌐',
+        links: [
+          { name: 'Updates', href: '/guides/zone-nova/updates/' },
+          { name: 'Surveys', href: '/guides/zone-nova/surveys/' },
+          { name: 'Contributing', href: '/guides/zone-nova/contributing/' },
+        ],
+      },
     ],
   },
 };
@@ -71,42 +129,74 @@ if (!game) return;
 
 <nav class="game-nav" data-game={gameKey}>
   <div class="container">
-    <h2>{game.name}</h2>
+    <!-- Game Header with Navigation Sections -->
+    <div class="game-header">
+      <div class="game-info">
+        <a
+          href={gameKey === 'zone-nova' ? '/guides/zone-nova/' : '/guides/silver-and-blood/'}
+          class="game-link"
+        >
+          <div class="game-image-container">
+            <img src={game.image} alt={game.name} class="game-image" loading="lazy" />
+            <div class="game-image-overlay"></div>
+          </div>
+          <h2 class="game-title">{game.name}</h2>
+        </a>
+      </div>
 
-    <!-- Desktop Navigation Links -->
-    <div class="links" id="navLinks">
-      {
-        game.links.map(link => (
-          <a
-            href={link.href}
-            class={isActive(link.href) ? 'link active' : 'link'}
-            aria-current={isActive(link.href) ? 'page' : undefined}
-          >
-            {link.name}
-          </a>
-        ))
-      }
+      <!-- Section Navigation -->
+      <div class="section-nav">
+        {
+          game.sections.map(section => (
+            <div class="section-item">
+              <div class="section-trigger">
+                <span class="section-icon">{section.icon}</span>
+                <span class="section-name">{section.title}</span>
+              </div>
+              <div class="section-dropdown">
+                {section.links.map(link => (
+                  <a
+                    href={link.href}
+                    class={isActive(link.href) ? 'dropdown-link active' : 'dropdown-link'}
+                    aria-current={isActive(link.href) ? 'page' : undefined}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
 
     <!-- Mobile Navigation Elements -->
     <div class="mobile-overlay" id="navOverlay"></div>
     <div class="mobile-links" id="mobileNavLinks">
       <button class="close-btn" id="navClose" aria-label="Close navigation">✕</button>
+      <div class="mobile-game-header">
+        <img src={game.image} alt={game.name} class="mobile-game-image" loading="lazy" />
+        <div class="mobile-game-title">{game.name}</div>
+      </div>
       {
-        game.links.map(link => (
-          <a
-            href={link.href}
-            class={isActive(link.href) ? 'link active' : 'link'}
-            aria-current={isActive(link.href) ? 'page' : undefined}
-          >
-            {link.name}
-          </a>
+        game.sections.map(section => (
+          <div class="mobile-section">
+            <div class="mobile-section-header">
+              <span class="mobile-section-icon">{section.icon}</span>
+              <span class="mobile-section-title">{section.title}</span>
+            </div>
+            {section.links.map(link => (
+              <a
+                href={link.href}
+                class={isActive(link.href) ? 'mobile-link active' : 'mobile-link'}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
         ))
       }
-      <div class="menu-divider"></div>
-      <div class="zone-nova-title">
-        {gameKey === 'zone-nova' ? 'Zone Nova' : 'Silver and Blood'}
-      </div>
     </div>
 
     <button class="toggle" id="navToggle" aria-label="Toggle navigation">
