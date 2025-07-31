@@ -1,6 +1,33 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'august-5-maintenance',
+    title: 'August 5 Maintenance Announcement',
+    date: 'August 5, 2025',
+    type: 'maintenance',
+    summary:
+      'Major maintenance bringing "Twilight of the Gods: Winter\'s Prelude" Part 2 event, Thor recruitment, Thousand Nights rerun, new memories, Space-Time Rift, gift packages, and 300 Light Stone compensation. Maintenance starts 14:00, estimated 2 hours.',
+    url: '/guides/zone-nova/updates/maintenance-august-5-2025/',
+  },
+  {
+    id: '100-days-celebration',
+    title: '《Zone Nova》100 Days Since Launch!',
+    date: 'August 5, 2025',
+    type: 'announcement',
+    summary:
+      'Zone Nova celebrates 100 days since launch! Generous celebration rewards for all Captains who log in before August 12, 2025: Energy Cube ×10, Prismatic Cube ×10, and Stamina Supplement ×30 distributed via in-game mail.',
+    url: '/guides/zone-nova/updates/announcement-100-days-celebration/',
+  },
+  {
+    id: 'thor-recruitment',
+    title: 'Limited Recruitment Character [Guardian, Holy] Thor',
+    date: 'August 5, 2025',
+    type: 'recruitment',
+    summary:
+      'New Legendary character Thor (Guardian, Holy) - guardian of the Aesir Clan with lightning transformation abilities. Converts attacks into flickering lightning and transforms into Thunder Goddess. Available through Limited Recruitment from August 5 - August 19, 2025, with exclusive memory "Night Raid Suspect".',
+    url: '/guides/zone-nova/updates/announcement-thor-recruitment/',
+  },
+  {
     id: 'odin-recruitment',
     title: 'Limited Recruitment Character [Fire DPS] Odin',
     date: 'July 22, 2025',

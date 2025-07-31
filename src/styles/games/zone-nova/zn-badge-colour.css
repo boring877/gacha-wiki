@@ -330,6 +330,46 @@
   transform: translateY(10px);
 }
 
+/* Fallback for production - ensure badges are always visible */
+@media (prefers-reduced-motion: reduce), (max-width: 768px) {
+  .mobile-card-badges .rarity-badge,
+  .mobile-card-badges .element-badge,
+  .mobile-card-badges .role-badge,
+  .mobile-card-badges .class-badge,
+  .mobile-card-badges .faction-badge {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation: none !important;
+  }
+}
+
+/* Additional fallback - force visibility after animation duration */
+.mobile-card-badges .rarity-badge,
+.mobile-card-badges .element-badge,
+.mobile-card-badges .role-badge,
+.mobile-card-badges .class-badge,
+.mobile-card-badges .faction-badge {
+  animation-fill-mode: both;
+}
+
+/* Ensure badges are visible after 1 second regardless of animation state */
+@media (max-width: 768px) {
+  .mobile-card-badges {
+    animation: ensureVisibility 0.1s 1s forwards;
+  }
+}
+
+@keyframes ensureVisibility {
+  to {
+    visibility: visible;
+  }
+}
+
+.mobile-card-badges > * {
+  visibility: visible;
+  opacity: 1;
+}
+
 .mobile-card-badges .rarity-badge {
   animation-delay: 0.1s;
 }
