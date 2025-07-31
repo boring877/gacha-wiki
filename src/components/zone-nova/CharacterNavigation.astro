@@ -1,7 +1,6 @@
 ---
 import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 import MobileCharacterNavigation from './MobileCharacterNavigation.astro';
-import '../../styles/components/zone-nova-character-navigation.css';
 
 export interface Props {
   currentCharacterSlug: string;
@@ -23,11 +22,18 @@ const nextIndex = currentIndex < charactersByDatabaseOrder.length - 1 ? currentI
 const prevCharacter = charactersByDatabaseOrder[prevIndex];
 const nextCharacter = charactersByDatabaseOrder[nextIndex];
 
-// Only render if we have valid navigation targets
+// Only render if we have valid navigation targets  
 const hasNavigation = currentIndex !== -1 && prevCharacter && nextCharacter;
+
+// Always render if we have characters, even if navigation logic fails
+const forceRender = charactersByDatabaseOrder.length > 0;
 ---
 
-{hasNavigation && (
+<style>
+  @import '../../styles/components/zone-nova-character-navigation.css';
+</style>
+
+{(hasNavigation || forceRender) && (
   <>
     <!-- Desktop Navigation Panel -->
     <div 
