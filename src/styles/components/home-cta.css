@@ -19,82 +19,99 @@
 /* === HERO CTA CONTAINER === */
 /* Container for centering the call-to-action button */
 .hero-cta {
-  display: flex;                               /* Flexbox for centering */
-  justify-content: center;                     /* Horizontally center button */
-  margin-bottom: 3rem;                        /* Space below CTA section */
-  animation: fadeInUp 1s ease-out 0.2s both;  /* Entrance animation with delay */
+  display: flex; /* Flexbox for centering */
+  justify-content: center; /* Horizontally center button */
+  margin-bottom: 3rem; /* Space below CTA section */
+  animation: fadeInUp 1s ease-out 0.2s both; /* Entrance animation with delay */
 }
 
 /* === PRIMARY CTA BUTTON === */
 /* Main call-to-action button with gradient background and hover effects */
 .cta-button {
-  display: inline-flex;                        /* Flexbox for content layout */
-  align-items: center;                         /* Vertically center content */
-  gap: 0.75rem;                                /* Space between text and icon */
-  padding: 1.25rem 2.5rem;                    /* Generous padding for click target */
-  background: linear-gradient(135deg, var(--amber-glow) 0%, #ffd54f 100%); /* Amber gradient background */
-  color: var(--text-primary);                  /* Dark text for contrast on light background */
-  text-decoration: none;                       /* Remove link underline */
-  border-radius: 50px;                        /* Pill-shaped button */
-  font-family: 'Space Grotesk', sans-serif;    /* Display font for prominence */
-  font-weight: 700;                           /* Bold weight for emphasis */
-  font-size: 1.1rem;                         /* Slightly larger for prominence */
+  display: inline-flex; /* Flexbox for content layout */
+  align-items: center; /* Vertically center content */
+  gap: 0.75rem; /* Space between text and icon */
+  padding: 1.25rem 2.5rem; /* Generous padding for click target */
+  background: linear-gradient(
+    135deg,
+    var(--amber-glow) 0%,
+    #ffd54f 100%
+  ); /* Amber gradient background */
+  color: var(--text-primary); /* Dark text for contrast on light background */
+  text-decoration: none; /* Remove link underline */
+  border-radius: 50px; /* Pill-shaped button */
+  font-family: 'Space Grotesk', sans-serif; /* Display font for prominence */
+  font-weight: 700; /* Bold weight for emphasis */
+  font-size: 1.1rem; /* Slightly larger for prominence */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth custom easing */
-  position: relative;                          /* Positioning context for pseudo-elements */
-  overflow: hidden;                            /* Hide pseudo-element overflow */
-  text-transform: uppercase;                   /* Uppercase for impact */
-  letter-spacing: 0.05em;                     /* Wide tracking for emphasis */
-  border: 2px solid transparent;              /* Transparent border for hover effect */
+  position: relative; /* Positioning context for pseudo-elements */
+  overflow: hidden; /* Hide pseudo-element overflow */
+  text-transform: uppercase; /* Uppercase for impact */
+  letter-spacing: 0.05em; /* Wide tracking for emphasis */
+  border: 2px solid transparent; /* Transparent border for hover effect */
 }
 
 /* Animated gradient border effect - revealed on hover */
 .cta-button::before {
-  content: '';                                 /* Empty pseudo-element */
-  position: absolute;                          /* Absolute positioning for overlay */
-  inset: -2px;                                 /* Extend beyond button borders */
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz)); /* Multi-color gradient */
-  border-radius: 52px;                        /* Slightly larger than button radius */
-  opacity: 0;                                  /* Hidden by default */
-  transition: opacity 0.6s ease;              /* Smooth fade-in animation */
-  z-index: -1;                                 /* Behind button content */
+  content: ''; /* Empty pseudo-element */
+  position: absolute; /* Absolute positioning for overlay */
+  inset: -2px; /* Extend beyond button borders */
+  background: linear-gradient(
+    135deg,
+    var(--amber-glow),
+    var(--teal-crystal),
+    var(--rose-quartz)
+  ); /* Multi-color gradient */
+  border-radius: 52px; /* Slightly larger than button radius */
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.6s ease; /* Smooth fade-in animation */
+  z-index: -1; /* Behind button content */
 }
 
 /* Glassmorphism overlay effect - adds shine on hover */
 .cta-button::after {
-  content: '';                                 /* Empty pseudo-element */
-  position: absolute;                          /* Absolute positioning for overlay */
-  inset: 0;                                    /* Cover entire button */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent); /* Subtle white gradient overlay */
-  border-radius: 50px;                        /* Match button border radius */
-  opacity: 0;                                  /* Hidden by default */
-  transition: opacity 0.4s ease;              /* Smooth fade-in animation */
-  z-index: -1;                                 /* Behind button content */
+  content: ''; /* Empty pseudo-element */
+  position: absolute; /* Absolute positioning for overlay */
+  inset: 0; /* Cover entire button */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  ); /* Subtle white gradient overlay */
+  border-radius: 50px; /* Match button border radius */
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.4s ease; /* Smooth fade-in animation */
+  z-index: -1; /* Behind button content */
 }
 
 /* === CTA BUTTON HOVER STATES === */
 /* Primary button hover state - reversed gradient and border */
 .cta-button:hover {
-  background: linear-gradient(135deg, #ffd54f 0%, var(--amber-glow) 100%); /* Reversed gradient direction */
-  border-color: rgba(255, 255, 255, 0.3);     /* Semi-transparent white border */
+  background: linear-gradient(
+    135deg,
+    #ffd54f 0%,
+    var(--amber-glow) 100%
+  ); /* Reversed gradient direction */
+  border-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white border */
 }
 
 /* Gradient border reveal on hover */
 .cta-button:hover::before {
-  opacity: 0.8;                                /* Fade in animated gradient border */
+  opacity: 0.8; /* Fade in animated gradient border */
 }
 
 /* Glassmorphism overlay reveal on hover */
 .cta-button:hover::after {
-  opacity: 1;                                  /* Fade in glassmorphism shine effect */
+  opacity: 1; /* Fade in glassmorphism shine effect */
 }
 
 /* === CTA BUTTON CONTENT === */
 /* Call-to-action text styling */
 .cta-text {
-  font-weight: 700;                           /* Bold weight for emphasis */
+  font-weight: 700; /* Bold weight for emphasis */
 }
 
 /* Call-to-action icon with hover animation */
 .cta-icon {
-  transition: transform 0.3s ease;            /* Smooth transform animation for hover effects */
+  transition: transform 0.3s ease; /* Smooth transform animation for hover effects */
 }

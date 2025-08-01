@@ -1,5 +1,6 @@
 ---
 import CharactersLayout from '../../../layouts/silver-and-blood/CharactersLayout.astro';
+import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
 import {
   characters as SILVER_AND_BLOOD_CHARACTERS,
   gameInfo,
@@ -11,6 +12,15 @@ import {
   description="Sortable and filterable character database for Silver and Blood"
   gameTitle="Character Database"
 >
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
+      { name: 'Characters' },
+    ]}
+  />
+
   <section class="page-flex">
     <div class="main-content-container">
       <div class="content-wrapper">
@@ -244,9 +254,9 @@ import {
           class: classValue || null,
           rarity: rarityValue || null,
           faction: factionValue || null,
-          moonPhase: moonphaseValue || null
+          moonPhase: moonphaseValue || null,
         };
-        
+
         // Only save non-empty filters
         const activeFilters = {};
         Object.keys(filterState).forEach(key => {
@@ -254,7 +264,7 @@ import {
             activeFilters[key] = filterState[key];
           }
         });
-        
+
         try {
           sessionStorage.setItem('sab-character-filters', JSON.stringify(activeFilters));
         } catch (error) {
@@ -273,11 +283,14 @@ import {
           const matchesClass =
             !classValue || classCell.textContent.toLowerCase().includes(classValue.toLowerCase());
           const matchesRarity =
-            !rarityValue || rarityCell.textContent.toLowerCase().trim() === rarityValue.toLowerCase();
+            !rarityValue ||
+            rarityCell.textContent.toLowerCase().trim() === rarityValue.toLowerCase();
           const matchesFaction =
-            !factionValue || factionCell.textContent.toLowerCase().includes(factionValue.toLowerCase());
+            !factionValue ||
+            factionCell.textContent.toLowerCase().includes(factionValue.toLowerCase());
           const matchesMoonphase =
-            !moonphaseValue || moonphaseCell.textContent.toLowerCase().includes(moonphaseValue.toLowerCase());
+            !moonphaseValue ||
+            moonphaseCell.textContent.toLowerCase().includes(moonphaseValue.toLowerCase());
 
           row.style.display =
             matchesClass && matchesRarity && matchesFaction && matchesMoonphase ? '' : 'none';
@@ -304,11 +317,14 @@ import {
           const matchesClass =
             !classValue || classBadge.textContent.toLowerCase().includes(classValue.toLowerCase());
           const matchesRarity =
-            !rarityValue || rarityBadge.textContent.toLowerCase().trim() === rarityValue.toLowerCase();
+            !rarityValue ||
+            rarityBadge.textContent.toLowerCase().trim() === rarityValue.toLowerCase();
           const matchesFaction =
-            !factionValue || factionBadge.textContent.toLowerCase().includes(factionValue.toLowerCase());
+            !factionValue ||
+            factionBadge.textContent.toLowerCase().includes(factionValue.toLowerCase());
           const matchesMoonphase =
-            !moonphaseValue || moonphaseBadge.textContent.toLowerCase().includes(moonphaseValue.toLowerCase());
+            !moonphaseValue ||
+            moonphaseBadge.textContent.toLowerCase().includes(moonphaseValue.toLowerCase());
 
           card.style.display =
             matchesClass && matchesRarity && matchesFaction && matchesMoonphase ? '' : 'none';
@@ -329,10 +345,13 @@ import {
 
       // Save default sort state to sessionStorage (alphabetical by name)
       try {
-        sessionStorage.setItem('sab-character-sort', JSON.stringify({
-          column: 'name',
-          asc: true
-        }));
+        sessionStorage.setItem(
+          'sab-character-sort',
+          JSON.stringify({
+            column: 'name',
+            asc: true,
+          })
+        );
       } catch (error) {
         console.log('Could not save default sort state to sessionStorage');
       }
@@ -396,10 +415,13 @@ import {
 
         // Save sort state to sessionStorage
         try {
-          sessionStorage.setItem('sab-character-sort', JSON.stringify({
-            column: column,
-            asc: sortState.asc
-          }));
+          sessionStorage.setItem(
+            'sab-character-sort',
+            JSON.stringify({
+              column: column,
+              asc: sortState.asc,
+            })
+          );
         } catch (error) {
           console.log('Could not save sort state to sessionStorage');
         }

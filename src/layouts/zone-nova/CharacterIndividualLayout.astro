@@ -18,7 +18,6 @@ import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/games/zone-nova/zn-badge-colour.css';
 import '../../styles/games/zone-nova/zn-character-individual.css';
 
-
 export interface Props {
   title: string;
   description?: string;
@@ -26,12 +25,7 @@ export interface Props {
   heroImage?: string;
 }
 
-const {
-  title,
-  description,
-  gameTitle,
-  heroImage,
-} = Astro.props;
+const { title, description, gameTitle, heroImage } = Astro.props;
 
 // Extract character slug from URL path for navigation
 // URL format: /guides/zone-nova/characters/character-name

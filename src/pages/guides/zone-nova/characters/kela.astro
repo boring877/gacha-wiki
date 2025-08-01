@@ -7,6 +7,10 @@ import { kelaData, kelaSEO } from '../../../../data/zone-nova/characters/kela.js
 export const prerender = true;
 ---
 
-<CharacterIndividualLayout title={kelaSEO.title} description={kelaSEO.description} gameTitle={kelaData.name}>
+<CharacterIndividualLayout
+  title={kelaSEO.title}
+  description={kelaSEO.description}
+  gameTitle={kelaData.name}
+>
   <CharacterPageTemplate characterData={kelaData} />
 </CharacterIndividualLayout>

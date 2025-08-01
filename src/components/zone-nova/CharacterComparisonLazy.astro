@@ -81,7 +81,7 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
     <div class="selected-characters" id="selected-characters">
       <!-- Selected characters will be added here dynamically -->
     </div>
-    
+
     <div class="comparison-controls">
       <button class="clear-all-btn" id="clear-all">Clear All</button>
       <button class="compare-btn" id="compare-btn" disabled>Compare Selected</button>
@@ -190,7 +190,8 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
     justify-content: center;
   }
 
-  .rarity-badge, .class-badge {
+  .rarity-badge,
+  .class-badge {
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     font-size: 0.7rem;
@@ -198,9 +199,18 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
     text-transform: uppercase;
   }
 
-  .rarity-badge.ssr { background: #ff6b35; color: white; }
-  .rarity-badge.sr { background: #9b5de5; color: white; }
-  .rarity-badge.r { background: #00bbf9; color: white; }
+  .rarity-badge.ssr {
+    background: #ff6b35;
+    color: white;
+  }
+  .rarity-badge.sr {
+    background: #9b5de5;
+    color: white;
+  }
+  .rarity-badge.r {
+    background: #00bbf9;
+    color: white;
+  }
 
   .comparison-display {
     margin-top: 2rem;
@@ -223,7 +233,8 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
     margin-bottom: 2rem;
   }
 
-  .clear-all-btn, .compare-btn {
+  .clear-all-btn,
+  .compare-btn {
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 8px;
@@ -258,8 +269,12 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
   }
 
   @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>
 
@@ -267,7 +282,7 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
   document.addEventListener('DOMContentLoaded', () => {
     let selectedCharacters = [];
     let characterDataCache = {}; // Cache loaded character data
-    
+
     const elements = {
       characterCards: document.querySelectorAll('.character-select-card'),
       selectedContainer: document.getElementById('selected-characters'),
@@ -293,14 +308,14 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
       try {
         // Show loading indicator
         console.log(`Loading character data for: ${characterSlug}`);
-        
+
         // Dynamic import - only load the specific character file when needed
         const module = await import(`../../data/zone-nova/characters/${characterSlug}.js`);
         const characterData = module[`${characterSlug.replace('-', '')}Data`] || module.default;
-        
+
         // Cache the data
         characterDataCache[characterSlug] = characterData;
-        
+
         return characterData;
       } catch (error) {
         console.error(`Failed to load character data for ${characterSlug}:`, error);
@@ -312,7 +327,7 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
     elements.characterCards.forEach(card => {
       card.addEventListener('click', async () => {
         const characterSlug = card.dataset.characterSlug;
-        
+
         if (selectedCharacters.includes(characterSlug)) {
           // Remove from selection
           selectedCharacters = selectedCharacters.filter(slug => slug !== characterSlug);
@@ -332,27 +347,29 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
     });
 
     function updateSelectedDisplay() {
-      elements.selectedContainer.innerHTML = selectedCharacters.map(slug => {
-        const char = characters.find(c => c.slug === slug);
-        return `
+      elements.selectedContainer.innerHTML = selectedCharacters
+        .map(slug => {
+          const char = characters.find(c => c.slug === slug);
+          return `
           <div class="selected-character">
             <img src="${char.image}" alt="${char.name}" width="40" height="40">
             <span>${char.name}</span>
             <button class="remove-btn" data-slug="${slug}">×</button>
           </div>
         `;
-      }).join('');
+        })
+        .join('');
 
       // Add remove button handlers
       document.querySelectorAll('.remove-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const slug = btn.dataset.slug;
           selectedCharacters = selectedCharacters.filter(s => s !== slug);
-          
+
           // Update UI
           const card = document.querySelector(`[data-character-slug="${slug}"]`);
           if (card) card.classList.remove('selected');
-          
+
           updateSelectedDisplay();
           updateCompareButton();
         });
@@ -375,7 +392,6 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 
         // Display comparison results
         displayComparisonResults(characterDataArray);
-        
       } catch (error) {
         console.error('Error during comparison:', error);
         elements.resultsContainer.innerHTML = '<p>Error loading character data</p>';
@@ -389,11 +405,13 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
       if (!characterDataArray.length) return;
 
       const validData = characterDataArray.filter(data => data !== null);
-      
+
       elements.resultsContainer.innerHTML = `
         <h3>Comparison Results</h3>
         <div class="comparison-table">
-          ${validData.map(data => `
+          ${validData
+            .map(
+              data => `
             <div class="character-column">
               <h4>${data.characterInfo.name}</h4>
               <p>HP: ${data.characterInfo.stats.hp}</p>
@@ -401,7 +419,9 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
               <p>DEF: ${data.characterInfo.stats.defense}</p>
               <!-- Add more detailed comparison data here -->
             </div>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
       `;
     }
@@ -427,7 +447,7 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
       elements.characterCards.forEach(card => {
         const characterSlug = card.dataset.characterSlug;
         const character = characters.find(c => c.slug === characterSlug);
-        
+
         if (!character) return;
 
         const matches = Object.entries(filters).every(([key, value]) => {
@@ -450,7 +470,7 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
       Object.values(elements.filters).forEach(filter => {
         if (filter) filter.value = '';
       });
-      elements.characterCards.forEach(card => card.style.display = 'flex');
+      elements.characterCards.forEach(card => (card.style.display = 'flex'));
     });
   });
 </script>

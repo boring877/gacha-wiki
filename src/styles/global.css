@@ -30,27 +30,27 @@
 
 /* === ROOT HTML ELEMENT CONFIGURATION === */
 html {
-  scroll-behavior: smooth;                /* Smooth scrolling for anchor links - enhances UX */
-  -webkit-text-size-adjust: 100%;        /* Prevent iOS zoom on orientation change */
-  overflow-x: hidden;                    /* Prevent horizontal scroll across entire app */
-  width: 100%;                           /* Ensure full viewport width utilization */
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links - enhances UX */
+  -webkit-text-size-adjust: 100%; /* Prevent iOS zoom on orientation change */
+  overflow-x: hidden; /* Prevent horizontal scroll across entire app */
+  width: 100%; /* Ensure full viewport width utilization */
 }
 
 /* === BODY ELEMENT FOUNDATION === */
 body {
-  margin: 0;                             /* Remove default browser margins */
-  padding: 0;                            /* Remove default browser padding */
+  margin: 0; /* Remove default browser margins */
+  padding: 0; /* Remove default browser padding */
   font-family:                           /* Modern system font stack for optimal performance */
-    system-ui,                           /* Use system UI font (fastest loading) */
-    -apple-system,                       /* Fallback for older macOS/iOS */
-    sans-serif;                          /* Generic sans-serif fallback */
-  line-height: 1.6;                     /* Optimal reading line height (WCAG recommended) */
-  background: var(--bg-primary);        /* Apply global background color from design system */
-  color: var(--text-primary);           /* Apply primary text color for contrast */
-  -webkit-font-smoothing: antialiased;  /* Smooth font rendering on Webkit browsers */
-  -moz-osx-font-smoothing: grayscale;   /* Smooth font rendering on Firefox macOS */
-  width: 100%;                          /* Ensure body takes full width */
-  max-width: 100vw;                     /* Prevent horizontal overflow issues */
+    system-ui,
+    /* Use system UI font (fastest loading) */ -apple-system,
+    /* Fallback for older macOS/iOS */ sans-serif; /* Generic sans-serif fallback */
+  line-height: 1.6; /* Optimal reading line height (WCAG recommended) */
+  background: var(--bg-primary); /* Apply global background color from design system */
+  color: var(--text-primary); /* Apply primary text color for contrast */
+  -webkit-font-smoothing: antialiased; /* Smooth font rendering on Webkit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smooth font rendering on Firefox macOS */
+  width: 100%; /* Ensure body takes full width */
+  max-width: 100vw; /* Prevent horizontal overflow issues */
 }
 
 /* === TYPOGRAPHY RESET === */
@@ -76,52 +76,52 @@ picture,
 video,
 canvas,
 svg {
-  display: block;      /* Remove inline spacing issues */
-  max-width: 100%;     /* Prevent media from exceeding container width */
-  height: auto;        /* Maintain aspect ratio when scaling */
+  display: block; /* Remove inline spacing issues */
+  max-width: 100%; /* Prevent media from exceeding container width */
+  height: auto; /* Maintain aspect ratio when scaling */
 }
 
 /* === BUTTON RESET === */
 /* Reset button elements to allow custom styling without browser defaults */
 button {
-  background: none;    /* Remove default button background */
-  border: none;        /* Remove default button border */
-  padding: 0;          /* Remove default button padding */
-  font: inherit;       /* Inherit typography from parent */
-  cursor: pointer;     /* Indicate interactive element */
+  background: none; /* Remove default button background */
+  border: none; /* Remove default button border */
+  padding: 0; /* Remove default button padding */
+  font: inherit; /* Inherit typography from parent */
+  cursor: pointer; /* Indicate interactive element */
 }
 
 /* === ACCESSIBILITY UTILITIES === */
 
 /* Screen reader only text - visually hidden but accessible to assistive technology */
 .sr-only {
-  position: absolute;           /* Remove from normal document flow */
-  width: 1px;                   /* Minimal dimensions */
+  position: absolute; /* Remove from normal document flow */
+  width: 1px; /* Minimal dimensions */
   height: 1px;
-  padding: 0;                   /* Remove all spacing */
-  margin: -1px;                 /* Pull outside viewport */
-  overflow: hidden;             /* Hide any overflow */
-  clip: rect(0, 0, 0, 0);      /* Legacy clipping for older browsers */
-  white-space: nowrap;          /* Prevent text wrapping */
-  border: 0;                    /* Remove any borders */
+  padding: 0; /* Remove all spacing */
+  margin: -1px; /* Pull outside viewport */
+  overflow: hidden; /* Hide any overflow */
+  clip: rect(0, 0, 0, 0); /* Legacy clipping for older browsers */
+  white-space: nowrap; /* Prevent text wrapping */
+  border: 0; /* Remove any borders */
 }
 
 /* === LAYOUT UTILITIES === */
 
 /* Main content container - provides consistent max-width and centering */
 .container {
-  max-width: 1200px;          /* Optimal reading width for large screens */
-  margin: 0 auto;             /* Center horizontally */
-  padding: 0 1rem;            /* Comfortable side margins on all devices */
+  max-width: 1200px; /* Optimal reading width for large screens */
+  margin: 0 auto; /* Center horizontally */
+  padding: 0 1rem; /* Comfortable side margins on all devices */
 }
 
 /* === TEXT UTILITIES === */
 
 /* Single-line text truncation with ellipsis */
 .truncate {
-  overflow: hidden;             /* Hide overflowing text */
-  text-overflow: ellipsis;      /* Show ellipsis (...) for cut-off text */
-  white-space: nowrap;          /* Prevent text from wrapping to new line */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Show ellipsis (...) for cut-off text */
+  white-space: nowrap; /* Prevent text from wrapping to new line */
 }
 
 /* === ANIMATION SYSTEM === */
@@ -129,10 +129,10 @@ button {
 /* Smooth fade-in animation for content reveals */
 @keyframes fadeIn {
   from {
-    opacity: 0;                /* Start invisible */
+    opacity: 0; /* Start invisible */
   }
   to {
-    opacity: 1;                /* End fully visible */
+    opacity: 1; /* End fully visible */
   }
 }
 
@@ -140,11 +140,11 @@ button {
 @keyframes slideIn {
   from {
     transform: translateY(20px); /* Start 20px below final position */
-    opacity: 0;                  /* Start invisible */
+    opacity: 0; /* Start invisible */
   }
   to {
-    transform: translateY(0);    /* End at natural position */
-    opacity: 1;                  /* End fully visible */
+    transform: translateY(0); /* End at natural position */
+    opacity: 1; /* End fully visible */
   }
 }
 
@@ -152,10 +152,10 @@ button {
 @keyframes pulse {
   0%,
   100% {
-    opacity: 1;                /* Full opacity at start and end */
+    opacity: 1; /* Full opacity at start and end */
   }
   50% {
-    opacity: 0.5;              /* Half opacity at midpoint */
+    opacity: 0.5; /* Half opacity at midpoint */
   }
 }
 
@@ -163,21 +163,21 @@ button {
 
 /* Mobile-first responsive visibility classes */
 .mobile-only {
-  display: block;              /* Show on mobile by default */
+  display: block; /* Show on mobile by default */
 }
 
 .desktop-only {
-  display: none;               /* Hide on mobile by default */
+  display: none; /* Hide on mobile by default */
 }
 
 /* Tablet and desktop breakpoint: 768px */
 @media (min-width: 768px) {
   .mobile-only {
-    display: none;             /* Hide mobile-only content on larger screens */
+    display: none; /* Hide mobile-only content on larger screens */
   }
 
   .desktop-only {
-    display: block;            /* Show desktop-only content on larger screens */
+    display: block; /* Show desktop-only content on larger screens */
   }
 }
 
@@ -185,7 +185,7 @@ button {
 /* Reduce container padding on small screens for better space utilization */
 @media (max-width: 768px) {
   .container {
-    padding: 0 0.5rem;         /* Smaller side margins on mobile devices */
+    padding: 0 0.5rem; /* Smaller side margins on mobile devices */
   }
 }
 
@@ -195,9 +195,9 @@ button {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;      /* Nearly instant animations */
-    animation-iteration-count: 1 !important;    /* Only run animations once */
-    transition-duration: 0.01ms !important;     /* Nearly instant transitions */
-    scroll-behavior: auto !important;           /* Disable smooth scrolling */
+    animation-duration: 0.01ms !important; /* Nearly instant animations */
+    animation-iteration-count: 1 !important; /* Only run animations once */
+    transition-duration: 0.01ms !important; /* Nearly instant transitions */
+    scroll-behavior: auto !important; /* Disable smooth scrolling */
   }
 }

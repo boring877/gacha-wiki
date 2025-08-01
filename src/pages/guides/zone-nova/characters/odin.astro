@@ -7,6 +7,10 @@ import { odinData, odinSEO } from '../../../../data/zone-nova/characters/odin.js
 export const prerender = true;
 ---
 
-<CharacterIndividualLayout title={odinSEO.title} description={odinSEO.description} gameTitle={odinData.name}>
+<CharacterIndividualLayout
+  title={odinSEO.title}
+  description={odinSEO.description}
+  gameTitle={odinData.name}
+>
   <CharacterPageTemplate characterData={odinData} />
 </CharacterIndividualLayout>

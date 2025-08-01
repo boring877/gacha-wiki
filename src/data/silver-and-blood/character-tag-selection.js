@@ -18,18 +18,18 @@ export class CharacterTagSelector {
       clearTagsBtn: document.getElementById('clear-tags'),
       characterResults: document.getElementById('character-results'),
       matchCount: document.getElementById('match-count'),
-      characterCards: document.querySelectorAll('.character-card')
+      characterCards: document.querySelectorAll('.character-card'),
     };
 
     console.log('Character Tag Selector initialized with:', {
       charactersCount: this.characters.length,
       tagButtons: this.elements.tagButtons.length,
-      characterCards: this.elements.characterCards.length
+      characterCards: this.elements.characterCards.length,
     });
 
     // Bind event listeners
     this.bindEvents();
-    
+
     // Initial update
     this.updateResults();
   }
@@ -73,7 +73,6 @@ export class CharacterTagSelector {
     console.log('Cleared all tags');
   }
 
-
   updateSelectedTagsDisplay() {
     if (!this.elements.selectedTagsDisplay || !this.elements.selectedTagsContainer) return;
 
@@ -84,7 +83,10 @@ export class CharacterTagSelector {
 
     this.elements.selectedTagsDisplay.style.display = 'block';
     this.elements.selectedTagsContainer.innerHTML = Array.from(this.selectedTags)
-      .map(tag => `<span class="selected-tag">${tag} <button class="remove-tag" data-tag="${tag}">×</button></span>`)
+      .map(
+        tag =>
+          `<span class="selected-tag">${tag} <button class="remove-tag" data-tag="${tag}">×</button></span>`
+      )
       .join('');
 
     // Add remove tag functionality
@@ -111,9 +113,10 @@ export class CharacterTagSelector {
       try {
         const characterTags = JSON.parse(card.dataset.tags || '[]');
         console.log('Character:', card.dataset.characterId, 'Tags:', characterTags);
-        
+
         // Check if character has ALL selected tags
-        const hasAllTags = this.selectedTags.size === 0 || 
+        const hasAllTags =
+          this.selectedTags.size === 0 ||
           Array.from(this.selectedTags).every(tag => characterTags.includes(tag));
 
         if (hasAllTags) {
@@ -166,12 +169,12 @@ export class CharacterTagSelector {
 export const tagSelectionConfig = {
   meta: {
     title: 'Character Tag Selection',
-    description: 'Filter Silver and Blood characters by their combat tags and abilities'
+    description: 'Filter Silver and Blood characters by their combat tags and abilities',
   },
   options: {
-    requireAllTags: true,  // Characters must have ALL selected tags
-    sortTagsAlphabetically: true
-  }
+    requireAllTags: true, // Characters must have ALL selected tags
+    sortTagsAlphabetically: true,
+  },
 };
 
 // Helper function to initialize the tag selector

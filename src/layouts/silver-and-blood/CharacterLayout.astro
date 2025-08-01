@@ -7,12 +7,13 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
- 
+import CharacterNavigation from '../../components/silver-and-blood/CharacterNavigation.astro';
 
 // Import Silver and Blood specific styles
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/components/silver-and-blood-character-navigation.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
 import '../../styles/games/silver-and-blood/sab-badge-colours.css';
 // -import '../../styles/games/silver-and-blood/sab-character-styles.css';
@@ -26,6 +27,11 @@ export interface Props {
 }
 
 const { title, description, characterName, characterImage, character } = Astro.props;
+
+// Extract character slug from URL path for navigation
+// URL format: /guides/silver-and-blood/characters/character-name
+const urlParts = Astro.url.pathname.split('/');
+const characterSlug = urlParts[urlParts.length - 1] || '';
 ---
 
 <html lang="en">
@@ -103,6 +109,9 @@ const { title, description, characterName, characterImage, character } = Astro.p
 			<Header />
 			<GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
 			<MobileMenu />
+
+			<!-- Character Navigation -->
+			<CharacterNavigation currentCharacterSlug={characterSlug} />
 			
 			<div class="sab-container">
 				<main class="sab-main">

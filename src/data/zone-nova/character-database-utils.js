@@ -13,13 +13,13 @@ export function initializeCharacterDatabase() {
     const factionFilter = document.getElementById('faction-filter');
     const sortButtons = document.querySelectorAll('.sort-btn');
     const resetButton = document.getElementById('reset-table');
-    
+
     // --- State ---
     let currentSortKey = 'name';
     let currentSortDirection = 'asc';
     const originalRows = Array.from(tableBody.children);
     const originalCards = Array.from(mobileCardsContainer.children);
-    
+
     if (
       !tableBody ||
       !mobileCardsContainer ||
@@ -32,7 +32,7 @@ export function initializeCharacterDatabase() {
     ) {
       return;
     }
-    
+
     // --- Helpers ---
     function renumberRows() {
       let visibleIndex = 1;
@@ -74,7 +74,7 @@ export function initializeCharacterDatabase() {
 
       return card.querySelector(`.${sortKey}-badge`)?.textContent || '';
     }
-    
+
     // --- Filtering ---
     function filterRows() {
       const element = elementFilter.value.trim();
@@ -131,7 +131,7 @@ export function initializeCharacterDatabase() {
             selectedFaction: faction,
             foundFactionText: factionText,
             factionMatches: factionText === faction,
-            allFilters: { element, rarity, role, charClass, faction }
+            allFilters: { element, rarity, role, charClass, faction },
           });
         }
 
@@ -159,7 +159,9 @@ export function initializeCharacterDatabase() {
           if (currentSortKey === 'name') {
             valA = a.querySelector('td:nth-child(3)')?.textContent || '';
             valB = b.querySelector('td:nth-child(3)')?.textContent || '';
-            return currentSortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            return currentSortDirection === 'asc'
+              ? valA.localeCompare(valB)
+              : valB.localeCompare(valA);
           } else {
             valA = a.querySelector(`[data-sort-key="${currentSortKey}"]`)?.textContent || '';
             valB = b.querySelector(`[data-sort-key="${currentSortKey}"]`)?.textContent || '';
@@ -176,7 +178,9 @@ export function initializeCharacterDatabase() {
           let valA = getMobileStatValue(a, currentSortKey);
           let valB = getMobileStatValue(b, currentSortKey);
           if (currentSortKey === 'name') {
-            return currentSortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            return currentSortDirection === 'asc'
+              ? valA.localeCompare(valB)
+              : valB.localeCompare(valA);
           }
           valA = isNaN(Number(valA)) ? valA : Number(valA);
           valB = isNaN(Number(valB)) ? valB : Number(valB);
@@ -193,7 +197,7 @@ export function initializeCharacterDatabase() {
 
       renumberRows();
     }
-    
+
     // --- Sorting ---
     function sortRows(sortKey) {
       if (currentSortKey === sortKey) {
@@ -205,13 +209,13 @@ export function initializeCharacterDatabase() {
         const numericColumns = ['hp', 'attack', 'defense', 'critRate', 'critDmg', 'energyRecovery'];
         currentSortDirection = numericColumns.includes(sortKey) ? 'desc' : 'asc';
       }
-      
+
       sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));
       const activeBtn = Array.from(sortButtons).find(btn => btn.dataset.sort === sortKey);
       if (activeBtn) {
         activeBtn.classList.add('active', currentSortDirection);
       }
-      
+
       // Table rows
       const rows = Array.from(tableBody.children).filter(row => row.style.display !== 'none');
       rows.sort((a, b) => {
@@ -275,20 +279,20 @@ export function initializeCharacterDatabase() {
       cards.forEach(card => mobileCardsContainer.appendChild(card));
       renumberRows();
     }
-    
+
     // --- Event listeners ---
     elementFilter.addEventListener('change', filterRows);
     rarityFilter.addEventListener('change', filterRows);
     roleFilter.addEventListener('change', filterRows);
     classFilter.addEventListener('change', filterRows);
     factionFilter.addEventListener('change', filterRows);
-    
+
     sortButtons.forEach(button => {
       button.addEventListener('click', () => {
         sortRows(button.dataset.sort);
       });
     });
-    
+
     resetButton.addEventListener('click', () => {
       elementFilter.value = '';
       rarityFilter.value = '';
@@ -325,7 +329,7 @@ export function initializeCharacterDatabase() {
         console.log('Could not clear sessionStorage');
       }
     });
-    
+
     // --- Click to detail ---
     Array.from(tableBody.children).forEach(row => {
       row.addEventListener('click', () => {
@@ -333,7 +337,7 @@ export function initializeCharacterDatabase() {
         if (url) window.location.href = url;
       });
     });
-    
+
     Array.from(mobileCardsContainer.children).forEach(card => {
       card.addEventListener('click', () => {
         const url = card.dataset.url;
@@ -364,7 +368,7 @@ export function initializeCharacterDatabase() {
     // Sort alphabetically by default
     sortByName(allRows, true).forEach(row => tableBody.appendChild(row));
     sortByName(allCards, false).forEach(card => mobileCardsContainer.appendChild(card));
-    
+
     renumberRows();
   });
 }

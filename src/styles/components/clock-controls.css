@@ -21,287 +21,292 @@
 /* === TIMER DESCRIPTION SECTION === */
 /* Main information panel displaying timer details with glassmorphism effect */
 .timer-description-section {
-  text-align: center;                           /* Center all text content */
-  margin-bottom: 1.5rem;                       /* Space below section */
-  padding: 1rem 1.5rem;                        /* Comfortable internal spacing */
-  background: rgba(255, 255, 255, 0.05);       /* Subtle white overlay for glassmorphism */
-  border-radius: 16px;                         /* Rounded corners for modern look */
-  border: 1px solid rgba(255, 255, 255, 0.1);  /* Subtle border for definition */
+  text-align: center; /* Center all text content */
+  margin-bottom: 1.5rem; /* Space below section */
+  padding: 1rem 1.5rem; /* Comfortable internal spacing */
+  background: rgba(255, 255, 255, 0.05); /* Subtle white overlay for glassmorphism */
+  border-radius: 16px; /* Rounded corners for modern look */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
 }
 
 /* Timer primary label - main heading for timer section */
 .timer-main-label {
-  font-family: 'Space Grotesk', sans-serif;     /* Display font for prominence */
-  font-size: 1.1rem;                           /* Slightly larger for hierarchy */
-  font-weight: 600;                            /* Semibold for emphasis */
-  color: var(--text-inverse);                  /* White text on dark background */
-  margin-bottom: 0.75rem;                      /* Space below heading */
-  text-transform: uppercase;                    /* Uppercase for label styling */
-  letter-spacing: 0.05em;                      /* Wide tracking for emphasis */
+  font-family: 'Space Grotesk', sans-serif; /* Display font for prominence */
+  font-size: 1.1rem; /* Slightly larger for hierarchy */
+  font-weight: 600; /* Semibold for emphasis */
+  color: var(--text-inverse); /* White text on dark background */
+  margin-bottom: 0.75rem; /* Space below heading */
+  text-transform: uppercase; /* Uppercase for label styling */
+  letter-spacing: 0.05em; /* Wide tracking for emphasis */
 }
 
 /* Timer details text - descriptive information about timer */
 .timer-details {
-  font-family: 'Space Grotesk', sans-serif;     /* Consistent font family */
-  font-size: 0.9rem;                           /* Slightly smaller for secondary info */
-  font-weight: 500;                            /* Medium weight for readability */
-  color: var(--amber-glow);                    /* Amber color for visual interest */
-  margin-bottom: 0.75rem;                      /* Space below details */
-  line-height: 1.5;                           /* Comfortable reading line height */
+  font-family: 'Space Grotesk', sans-serif; /* Consistent font family */
+  font-size: 0.9rem; /* Slightly smaller for secondary info */
+  font-weight: 500; /* Medium weight for readability */
+  color: var(--amber-glow); /* Amber color for visual interest */
+  margin-bottom: 0.75rem; /* Space below details */
+  line-height: 1.5; /* Comfortable reading line height */
 }
 
 /* Timer reset time display - technical time information */
 .timer-reset-time {
-  font-family: 'Courier New', monospace;        /* Monospace for technical/time data */
-  font-size: 0.85rem;                          /* Small size for metadata */
-  font-weight: 600;                            /* Semibold for clarity */
-  color: rgba(255, 255, 255, 0.7);             /* Semi-transparent white for subtlety */
+  font-family: 'Courier New', monospace; /* Monospace for technical/time data */
+  font-size: 0.85rem; /* Small size for metadata */
+  font-weight: 600; /* Semibold for clarity */
+  color: rgba(255, 255, 255, 0.7); /* Semi-transparent white for subtlety */
 }
 
 /* Reset time display value - highlighted time information */
 #resetTimeDisplay {
-  color: var(--teal-crystal);                   /* Teal accent for important time data */
-  font-weight: 700;                            /* Bold for emphasis and clarity */
+  color: var(--teal-crystal); /* Teal accent for important time data */
+  font-weight: 700; /* Bold for emphasis and clarity */
 }
 
 /* === CLOCK NAVIGATION === */
 /* Interactive navigation controls for clock manipulation */
 .clock-navigation {
-  display: flex;                               /* Flexbox for control layout */
-  align-items: center;                         /* Vertically center controls */
-  justify-content: center;                     /* Horizontally center controls */
-  gap: 1.5rem;                                /* Space between navigation elements */
-  margin-bottom: 1rem;                        /* Space below navigation */
+  display: flex; /* Flexbox for control layout */
+  align-items: center; /* Vertically center controls */
+  justify-content: center; /* Horizontally center controls */
+  gap: 1.5rem; /* Space between navigation elements */
+  margin-bottom: 1rem; /* Space below navigation */
 }
 
 /* Navigation buttons - circular controls for clock interaction */
 .nav-btn {
-  background: rgba(255, 255, 255, 0.1);        /* Subtle glassmorphism background */
-  border: 1px solid rgba(255, 255, 255, 0.2);  /* Subtle border for definition */
-  border-radius: 50%;                          /* Perfect circle shape */
-  width: 44px;                                 /* Fixed width for consistency */
-  height: 44px;                                /* Fixed height for perfect circle */
-  display: flex;                               /* Flexbox for icon centering */
-  align-items: center;                         /* Vertically center icon */
-  justify-content: center;                     /* Horizontally center icon */
-  color: var(--text-inverse);                  /* White icon color */
-  cursor: pointer;                             /* Pointer cursor for interaction */
-  transition: all 0.3s ease;                  /* Smooth animation for all properties */
+  background: rgba(255, 255, 255, 0.1); /* Subtle glassmorphism background */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for definition */
+  border-radius: 50%; /* Perfect circle shape */
+  width: 44px; /* Fixed width for consistency */
+  height: 44px; /* Fixed height for perfect circle */
+  display: flex; /* Flexbox for icon centering */
+  align-items: center; /* Vertically center icon */
+  justify-content: center; /* Horizontally center icon */
+  color: var(--text-inverse); /* White icon color */
+  cursor: pointer; /* Pointer cursor for interaction */
+  transition: all 0.3s ease; /* Smooth animation for all properties */
 }
 
 /* Navigation button hover state - enhanced visibility and feedback */
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.2);        /* Brighter background on hover */
-  border-color: var(--amber-glow);             /* Amber border for accent */
-  transform: scale(1.1);                       /* Slight scale increase for feedback */
+  background: rgba(255, 255, 255, 0.2); /* Brighter background on hover */
+  border-color: var(--amber-glow); /* Amber border for accent */
+  transform: scale(1.1); /* Slight scale increase for feedback */
 }
 
 /* Navigation button active state - pressed feedback */
 .nav-btn:active {
-  transform: scale(0.95);                       /* Slight scale decrease for pressed effect */
+  transform: scale(0.95); /* Slight scale decrease for pressed effect */
 }
 
 /* === GAME INDICATORS === */
 /* Indicator dots for multi-game timer navigation */
 .game-indicators {
-  display: flex;                               /* Flexbox for dot layout */
-  gap: 0.75rem;                                /* Space between indicator dots */
-  align-items: center;                         /* Vertically center dots */
+  display: flex; /* Flexbox for dot layout */
+  gap: 0.75rem; /* Space between indicator dots */
+  align-items: center; /* Vertically center dots */
 }
 
 /* Individual indicator dot - represents game state */
 .indicator-dot {
-  width: 10px;                                 /* Small dot size */
-  height: 10px;                                /* Perfect circle dimensions */
-  border-radius: 50%;                          /* Perfect circle shape */
-  background: rgba(255, 255, 255, 0.3);       /* Semi-transparent default state */
-  cursor: pointer;                             /* Pointer cursor for interaction */
-  transition: all 0.3s ease;                  /* Smooth state transitions */
+  width: 10px; /* Small dot size */
+  height: 10px; /* Perfect circle dimensions */
+  border-radius: 50%; /* Perfect circle shape */
+  background: rgba(255, 255, 255, 0.3); /* Semi-transparent default state */
+  cursor: pointer; /* Pointer cursor for interaction */
+  transition: all 0.3s ease; /* Smooth state transitions */
 }
 
 /* Active indicator dot - currently selected game */
 .indicator-dot.active {
-  background: var(--amber-glow);               /* Amber color for active state */
-  box-shadow: 0 0 12px var(--amber-glow);     /* Glowing effect for emphasis */
-  transform: scale(1.2);                       /* Larger size for active state */
+  background: var(--amber-glow); /* Amber color for active state */
+  box-shadow: 0 0 12px var(--amber-glow); /* Glowing effect for emphasis */
+  transform: scale(1.2); /* Larger size for active state */
 }
 
 /* Indicator dot hover state - preview interaction */
 .indicator-dot:hover {
-  background: rgba(255, 255, 255, 0.6);        /* Brighter background on hover */
-  transform: scale(1.1);                       /* Slight scale increase for feedback */
+  background: rgba(255, 255, 255, 0.6); /* Brighter background on hover */
+  transform: scale(1.1); /* Slight scale increase for feedback */
 }
 
 /* === CLOCK FOOTER CONTROLS === */
 /* Container for rotation toggle and external links */
 .clock-footer-controls {
-  display: flex;                               /* Flexbox layout for footer controls */
-  justify-content: space-between;              /* Distribute items to opposite ends */
-  align-items: center;                         /* Vertically center all controls */
-  margin-top: 1.5rem;                         /* Space above footer section */
-  gap: 1rem;                                   /* Minimum space between items */
+  display: flex; /* Flexbox layout for footer controls */
+  justify-content: space-between; /* Distribute items to opposite ends */
+  align-items: center; /* Vertically center all controls */
+  margin-top: 1.5rem; /* Space above footer section */
+  gap: 1rem; /* Minimum space between items */
 }
 
 /* Rotation toggle button - controls automatic clock updates */
 .rotation-toggle {
-  display: flex;                               /* Flexbox for content layout */
-  align-items: center;                         /* Vertically center content */
-  gap: 0.75rem;                                /* Space between icon and text */
-  background: rgba(255, 255, 255, 0.1);       /* Glassmorphism background */
+  display: flex; /* Flexbox for content layout */
+  align-items: center; /* Vertically center content */
+  gap: 0.75rem; /* Space between icon and text */
+  background: rgba(255, 255, 255, 0.1); /* Glassmorphism background */
   border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border definition */
-  border-radius: 20px;                        /* Rounded pill shape */
-  padding: 0.75rem 1.25rem;                   /* Comfortable internal spacing */
-  color: var(--text-inverse);                  /* White text color */
-  font-family: 'Space Grotesk', sans-serif;    /* Display font for consistency */
-  font-size: 0.85rem;                         /* Small size for secondary control */
-  font-weight: 500;                           /* Medium weight for readability */
-  cursor: pointer;                             /* Pointer cursor for interaction */
-  transition: all 0.3s ease;                  /* Smooth hover transitions */
+  border-radius: 20px; /* Rounded pill shape */
+  padding: 0.75rem 1.25rem; /* Comfortable internal spacing */
+  color: var(--text-inverse); /* White text color */
+  font-family: 'Space Grotesk', sans-serif; /* Display font for consistency */
+  font-size: 0.85rem; /* Small size for secondary control */
+  font-weight: 500; /* Medium weight for readability */
+  cursor: pointer; /* Pointer cursor for interaction */
+  transition: all 0.3s ease; /* Smooth hover transitions */
 }
 
 /* Rotation toggle hover state - enhanced feedback */
 .rotation-toggle:hover {
-  background: rgba(255, 255, 255, 0.15);       /* Brighter background on hover */
-  border-color: var(--amber-glow);             /* Amber border for accent */
-  transform: translateY(-2px);                 /* Subtle lift effect */
+  background: rgba(255, 255, 255, 0.15); /* Brighter background on hover */
+  border-color: var(--amber-glow); /* Amber border for accent */
+  transform: translateY(-2px); /* Subtle lift effect */
 }
 
 /* Rotation toggle active state - when auto-rotation is enabled */
 .rotation-toggle.active {
-  background: rgba(255, 183, 77, 0.2);         /* Amber-tinted background for active state */
-  border-color: var(--amber-glow);             /* Amber border for active indication */
-  color: var(--amber-glow);                    /* Amber text for active state */
+  background: rgba(255, 183, 77, 0.2); /* Amber-tinted background for active state */
+  border-color: var(--amber-glow); /* Amber border for active indication */
+  color: var(--amber-glow); /* Amber text for active state */
 }
 
 /* Rotation toggle text - prevent text selection */
 .rotation-text {
-  user-select: none;                           /* Prevent text selection on toggle */
+  user-select: none; /* Prevent text selection on toggle */
 }
 
 /* === OPEN SOURCE FOOTER LINK === */
 /* GitHub repository link with advanced hover effects */
 .clock-opensource-link {
-  display: inline-block;                       /* Block layout for transform effects */
-  text-decoration: none;                       /* Remove default link underline */
-  color: inherit;                              /* Inherit color from parent */
+  display: inline-block; /* Block layout for transform effects */
+  text-decoration: none; /* Remove default link underline */
+  color: inherit; /* Inherit color from parent */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth custom easing */
 }
 
 /* Open source link content container - glassmorphism design */
 .clock-opensource-content {
-  background: rgba(255, 255, 255, 0.05);       /* Subtle glassmorphism background */
-  backdrop-filter: blur(15px);                 /* Background blur effect */
+  background: rgba(255, 255, 255, 0.05); /* Subtle glassmorphism background */
+  backdrop-filter: blur(15px); /* Background blur effect */
   border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border definition */
-  border-radius: 30px;                        /* Highly rounded corners */
-  padding: 0.5rem 1rem;                       /* Compact internal spacing */
-  display: flex;                               /* Flexbox for content layout */
-  align-items: center;                         /* Vertically center content */
-  gap: 0.75rem;                                /* Space between elements */
+  border-radius: 30px; /* Highly rounded corners */
+  padding: 0.5rem 1rem; /* Compact internal spacing */
+  display: flex; /* Flexbox for content layout */
+  align-items: center; /* Vertically center content */
+  gap: 0.75rem; /* Space between elements */
   box-shadow:                                  /* Multi-layer shadow system */
-    0 4px 15px rgba(0, 0, 0, 0.2),            /* Main drop shadow */
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);   /* Inner highlight */
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    /* Main drop shadow */ inset 0 1px 0 rgba(255, 255, 255, 0.2); /* Inner highlight */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth custom easing */
-  position: relative;                          /* Positioning context for pseudo-element */
-  overflow: hidden;                            /* Hide overflow for animations */
+  position: relative; /* Positioning context for pseudo-element */
+  overflow: hidden; /* Hide overflow for animations */
 }
 
 /* Animated gradient border effect - appears on hover */
 .clock-opensource-content::before {
-  content: '';                                 /* Empty pseudo-element */
-  position: absolute;                          /* Absolute positioning for overlay */
-  inset: -1px;                                 /* Extend 1px beyond parent borders */
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz)); /* Multi-color gradient */
-  border-radius: 30px;                        /* Match parent border radius */
-  opacity: 0;                                  /* Hidden by default */
-  transition: opacity 0.6s ease;              /* Smooth fade-in animation */
-  z-index: -1;                                 /* Behind main content */
+  content: ''; /* Empty pseudo-element */
+  position: absolute; /* Absolute positioning for overlay */
+  inset: -1px; /* Extend 1px beyond parent borders */
+  background: linear-gradient(
+    135deg,
+    var(--amber-glow),
+    var(--teal-crystal),
+    var(--rose-quartz)
+  ); /* Multi-color gradient */
+  border-radius: 30px; /* Match parent border radius */
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.6s ease; /* Smooth fade-in animation */
+  z-index: -1; /* Behind main content */
 }
 
 /* Open source link hover state - enhanced glassmorphism effect */
 .clock-opensource-link:hover .clock-opensource-content {
-  background: rgba(255, 255, 255, 0.1);        /* Brighter background on hover */
-  border-color: rgba(255, 183, 77, 0.3);      /* Amber-tinted border */
+  background: rgba(255, 255, 255, 0.1); /* Brighter background on hover */
+  border-color: rgba(255, 183, 77, 0.3); /* Amber-tinted border */
   box-shadow:                                  /* Enhanced shadow system */
-    0 8px 25px rgba(0, 0, 0, 0.3),            /* Deeper drop shadow */
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);   /* Brighter inner highlight */
-  transform: translateY(-2px);                 /* Subtle lift effect */
+    0 8px 25px rgba(0, 0, 0, 0.3),
+    /* Deeper drop shadow */ inset 0 1px 0 rgba(255, 255, 255, 0.3); /* Brighter inner highlight */
+  transform: translateY(-2px); /* Subtle lift effect */
 }
 
 /* Gradient border reveal on hover */
 .clock-opensource-link:hover .clock-opensource-content::before {
-  opacity: 0.3;                                /* Fade in gradient border */
+  opacity: 0.3; /* Fade in gradient border */
 }
 
 /* GitHub icon styling - maintains size and animates color */
 .clock-github-icon {
-  color: var(--text-inverse);                  /* White icon color */
-  transition: all 0.3s ease;                  /* Smooth color and transform transitions */
-  flex-shrink: 0;                              /* Prevent icon from shrinking */
+  color: var(--text-inverse); /* White icon color */
+  transition: all 0.3s ease; /* Smooth color and transform transitions */
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 /* GitHub icon hover state - amber glow effect */
 .clock-opensource-link:hover .clock-github-icon {
-  color: var(--amber-glow);                    /* Change to amber on hover */
-  transform: scale(1.1);                       /* Slight scale increase */
+  color: var(--amber-glow); /* Change to amber on hover */
+  transform: scale(1.1); /* Slight scale increase */
   filter: drop-shadow(0 0 8px rgba(255, 183, 77, 0.5)); /* Glowing drop shadow */
 }
 
 /* Open source link text styling */
 .clock-opensource-text {
-  font-family: 'Space Grotesk', sans-serif;     /* Display font for consistency */
-  font-size: 0.75rem;                         /* Small size for compact footer */
-  font-weight: 600;                           /* Semibold for emphasis */
-  color: var(--text-inverse);                  /* White text color */
-  text-transform: uppercase;                   /* Uppercase for label styling */
-  letter-spacing: 0.05em;                     /* Wide tracking for emphasis */
-  transition: all 0.3s ease;                  /* Smooth color transitions */
-  white-space: nowrap;                        /* Prevent text wrapping */
+  font-family: 'Space Grotesk', sans-serif; /* Display font for consistency */
+  font-size: 0.75rem; /* Small size for compact footer */
+  font-weight: 600; /* Semibold for emphasis */
+  color: var(--text-inverse); /* White text color */
+  text-transform: uppercase; /* Uppercase for label styling */
+  letter-spacing: 0.05em; /* Wide tracking for emphasis */
+  transition: all 0.3s ease; /* Smooth color transitions */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 /* Open source text hover state - amber glow effect */
 .clock-opensource-link:hover .clock-opensource-text {
-  color: var(--amber-glow);                    /* Change to amber on hover */
+  color: var(--amber-glow); /* Change to amber on hover */
   text-shadow: 0 0 12px rgba(255, 183, 77, 0.4); /* Glowing text shadow */
 }
 
 /* GitHub star count container - pill-shaped badge */
 .clock-opensource-star {
-  display: flex;                               /* Flexbox for icon and count layout */
-  align-items: center;                         /* Vertically center content */
-  gap: 0.25rem;                                /* Small space between icon and count */
-  padding: 0.25rem 0.5rem;                    /* Compact internal spacing */
-  background: rgba(255, 183, 77, 0.1);        /* Amber-tinted background */
-  border-radius: 20px;                        /* Pill shape */
-  border: 1px solid rgba(255, 183, 77, 0.2);  /* Amber-tinted border */
-  transition: all 0.3s ease;                  /* Smooth hover transitions */
+  display: flex; /* Flexbox for icon and count layout */
+  align-items: center; /* Vertically center content */
+  gap: 0.25rem; /* Small space between icon and count */
+  padding: 0.25rem 0.5rem; /* Compact internal spacing */
+  background: rgba(255, 183, 77, 0.1); /* Amber-tinted background */
+  border-radius: 20px; /* Pill shape */
+  border: 1px solid rgba(255, 183, 77, 0.2); /* Amber-tinted border */
+  transition: all 0.3s ease; /* Smooth hover transitions */
 }
 
 /* GitHub star container hover state - enhanced amber effect */
 .clock-opensource-link:hover .clock-opensource-star {
-  background: rgba(255, 183, 77, 0.15);        /* Brighter amber background */
-  border-color: rgba(255, 183, 77, 0.4);      /* More prominent amber border */
-  transform: scale(1.05);                      /* Slight scale increase */
+  background: rgba(255, 183, 77, 0.15); /* Brighter amber background */
+  border-color: rgba(255, 183, 77, 0.4); /* More prominent amber border */
+  transform: scale(1.05); /* Slight scale increase */
   box-shadow: 0 0 15px rgba(255, 183, 77, 0.2); /* Amber glow shadow */
 }
 
 /* Star icon styling within badge */
 .clock-opensource-star svg {
-  color: var(--amber-glow);                    /* Amber star icon color */
-  transition: transform 0.3s ease;            /* Smooth transform transitions */
+  color: var(--amber-glow); /* Amber star icon color */
+  transition: transform 0.3s ease; /* Smooth transform transitions */
 }
 
 /* Star icon hover state - enhanced glow */
 .clock-opensource-link:hover .clock-opensource-star svg {
-  transform: scale(1.1);                       /* Slight scale increase */
+  transform: scale(1.1); /* Slight scale increase */
   filter: drop-shadow(0 0 6px rgba(255, 183, 77, 0.6)); /* Enhanced amber glow */
 }
 
 /* GitHub star count number styling */
 .clock-star-count {
-  font-family: 'Space Grotesk', sans-serif;     /* Display font for consistency */
-  font-size: 0.65rem;                         /* Very small size for compact badge */
-  font-weight: 600;                           /* Semibold for clarity */
-  color: var(--amber-glow);                    /* Amber color matching theme */
-  text-transform: uppercase;                   /* Uppercase for consistency */
-  letter-spacing: 0.02em;                     /* Slight tracking for readability */
+  font-family: 'Space Grotesk', sans-serif; /* Display font for consistency */
+  font-size: 0.65rem; /* Very small size for compact badge */
+  font-weight: 600; /* Semibold for clarity */
+  color: var(--amber-glow); /* Amber color matching theme */
+  text-transform: uppercase; /* Uppercase for consistency */
+  letter-spacing: 0.02em; /* Slight tracking for readability */
 }

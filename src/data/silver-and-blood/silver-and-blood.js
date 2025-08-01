@@ -33,7 +33,8 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
   storyContent: {
     intro: {
       title: 'A Tale of Blood and Destiny',
-      tagline: 'An epic struggle between immortal Bloodborn and the Tempus Church that will determine the fate of all existence.'
+      tagline:
+        'An epic struggle between immortal Bloodborn and the Tempus Church that will determine the fate of all existence.',
     },
     cards: [
       {
@@ -44,8 +45,8 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
         theme: 'blood-card',
         content: [
           'Long before the Continental Era, thirteen alchemists consumed the blood of Abel—the First Martyr. Through this forbidden sacrament, they discovered the secret to transferring memories through blood, seizing immortality itself.',
-          'Yet with each transference, their blood darkened and grew tainted. Thus the first **Bloodborn** came to be—immortal beings who defied death and became harbingers of calamity.'
-        ]
+          'Yet with each transference, their blood darkened and grew tainted. Thus the first **Bloodborn** came to be—immortal beings who defied death and became harbingers of calamity.',
+        ],
       },
       {
         id: 'destiny',
@@ -55,11 +56,12 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
         theme: 'destiny-card',
         content: [
           'In that distant age, a young girl deciphered a divine prophecy from a fallen star. She grasped the truth: only time remains impartial, and only cycles are eternal.',
-          'In the name of Aeon, God of Time, she raised the silver banner of the **Tempus Church**, vowing to return heretics to the natural cycle and steer history back to its destined course.'
-        ]
-      }
+          'In the name of Aeon, God of Time, she raised the silver banner of the **Tempus Church**, vowing to return heretics to the natural cycle and steer history back to its destined course.',
+        ],
+      },
     ],
-    conclusion: 'This is the age-old tale of Blood and Destiny—an unfinished epic whose ending is both foretold, yet still unwritten.'
+    conclusion:
+      'This is the age-old tale of Blood and Destiny—an unfinished epic whose ending is both foretold, yet still unwritten.',
   },
 
   sections: [
@@ -119,8 +121,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       id: 'damage-mechanics',
       title: 'Damage Mechanics Hub',
       emoji: '⚔️',
-      description:
-        "formulas and calculation for damage output .",
+      description: 'formulas and calculation for damage output .',
       url: '/guides/silver-and-blood/damage-mechanics/',
       category: 'guides',
       status: 'active',
@@ -156,8 +157,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       id: 'waifu-gallery',
       title: 'Waifu Gallery',
       emoji: '🖼️',
-      description:
-        'Videos and Images for characters .',
+      description: 'Videos and Images for characters .',
       url: '/guides/silver-and-blood/waifu-gallery/',
       category: 'guides',
       status: 'active',
@@ -166,8 +166,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       id: 'waifu-skins',
       title: 'Waifu Skins',
       emoji: '👗',
-      description:
-        'Showcasing skins Videos and Images.',
+      description: 'Showcasing skins Videos and Images.',
       url: '/guides/silver-and-blood/waifu-skins/',
       category: 'guides',
       status: 'active',

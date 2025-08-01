@@ -7,6 +7,10 @@ import { yuisData, yuisSEO } from '../../../../data/zone-nova/characters/yuis.js
 export const prerender = true;
 ---
 
-<CharacterIndividualLayout title={yuisSEO.title} description={yuisSEO.description} gameTitle={yuisData.name}>
+<CharacterIndividualLayout
+  title={yuisSEO.title}
+  description={yuisSEO.description}
+  gameTitle={yuisData.name}
+>
   <CharacterPageTemplate characterData={yuisData} />
 </CharacterIndividualLayout>

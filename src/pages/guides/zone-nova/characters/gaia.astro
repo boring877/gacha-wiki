@@ -6,6 +6,10 @@ import { gaiaData, gaiaSEO } from '../../../../data/zone-nova/characters/gaia.js
 export const prerender = true;
 ---
 
-<CharacterIndividualLayout title={gaiaSEO.title} description={gaiaSEO.description} gameTitle={gaiaData.name}>
+<CharacterIndividualLayout
+  title={gaiaSEO.title}
+  description={gaiaSEO.description}
+  gameTitle={gaiaData.name}
+>
   <CharacterPageTemplate characterData={gaiaData} />
 </CharacterIndividualLayout>

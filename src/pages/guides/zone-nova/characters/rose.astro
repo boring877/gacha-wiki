@@ -7,6 +7,10 @@ import { roseData, roseSEO } from '../../../../data/zone-nova/characters/rose.js
 export const prerender = true;
 ---
 
-<CharacterIndividualLayout title={roseSEO.title} description={roseSEO.description} gameTitle={roseData.name}>
+<CharacterIndividualLayout
+  title={roseSEO.title}
+  description={roseSEO.description}
+  gameTitle={roseData.name}
+>
   <CharacterPageTemplate characterData={roseData} />
 </CharacterIndividualLayout>

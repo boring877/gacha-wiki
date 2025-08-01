@@ -7,6 +7,10 @@ import { shuData, shuSEO } from '../../../../data/zone-nova/characters/shu.js';
 export const prerender = true;
 ---
 
-<CharacterIndividualLayout title={shuSEO.title} description={shuSEO.description} gameTitle={shuData.name}>
+<CharacterIndividualLayout
+  title={shuSEO.title}
+  description={shuSEO.description}
+  gameTitle={shuData.name}
+>
   <CharacterPageTemplate characterData={shuData} />
 </CharacterIndividualLayout>

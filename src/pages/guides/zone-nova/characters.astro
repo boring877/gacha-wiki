@@ -6,6 +6,7 @@ import CharacterLayout from '../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterDatabaseFilterBar from '../../../components/zone-nova/CharacterDatabaseFilterBar.astro';
 import CharacterDatabaseTable from '../../../components/zone-nova/CharacterDatabaseTable.astro';
 import CharacterDatabaseMobileCards from '../../../components/zone-nova/CharacterDatabaseMobileCards.astro';
+import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
 ---
 
 <CharacterLayout
@@ -14,6 +15,15 @@ import CharacterDatabaseMobileCards from '../../../components/zone-nova/Characte
   gameTitle="Character Database"
   showBackButton={false}
 >
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Zone Nova', href: '/guides/zone-nova/' },
+      { name: 'Characters' },
+    ]}
+  />
+
   <section class="page-flex">
     <div class="main-content-container">
       <div class="content-wrapper">

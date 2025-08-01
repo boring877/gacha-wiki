@@ -4,10 +4,15 @@ import CharacterTagSelectionComponent from '../../../components/silver-and-blood
 import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
 
 const title = 'Character Tag Selection - Silver and Blood';
-const description = 'Filter and discover Silver and Blood characters by their combat tags and abilities. Find characters with specific roles like Buff, Healing, AoE DMG, and more.';
+const description =
+  'Filter and discover Silver and Blood characters by their combat tags and abilities. Find characters with specific roles like Buff, Healing, AoE DMG, and more.';
 ---
 
-<CharacterTagSelectionLayout title={title} description={description} gameTitle="Character Tag Selection">
+<CharacterTagSelectionLayout
+  title={title}
+  description={description}
+  gameTitle="Character Tag Selection"
+>
   <!-- Breadcrumb Navigation -->
   <Breadcrumb
     items={[
@@ -22,7 +27,8 @@ const description = 'Filter and discover Silver and Blood characters by their co
     <div class="tag-selection-intro">
       <h2 class="section-title">Character Tag Selection</h2>
       <p class="intro-text">
-        Filter characters by their combat roles and special abilities. Select tags to discover characters that match your strategy.
+        Filter characters by their combat roles and special abilities. Select tags to discover
+        characters that match your strategy.
       </p>
 
       <div class="feature-tips">
@@ -31,7 +37,9 @@ const description = 'Filter and discover Silver and Blood characters by their co
           <li><strong>Select Tags:</strong> Click on tag buttons to filter characters</li>
           <li><strong>Multiple Tags:</strong> Characters must have ALL selected tags</li>
           <li><strong>Clear Selection:</strong> Use the "Clear All" button to reset filters</li>
-          <li><strong>Character Details:</strong> Click "View Details" to see full character information</li>
+          <li>
+            <strong>Character Details:</strong> Click "View Details" to see full character information
+          </li>
         </ul>
       </div>
     </div>

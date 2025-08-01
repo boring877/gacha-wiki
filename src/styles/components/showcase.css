@@ -21,56 +21,60 @@
 /* === SHOWCASE MAIN CONTAINER === */
 /* Outer showcase section with gradient background and animated overlays */
 .auto-showcase {
-  position: relative;                          /* Positioning context for pseudo-elements */
-  overflow: hidden;                            /* Hide animated background overflow */
-  background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%); /* Dark gradient base */
-  padding: 4rem 0;                            /* Vertical padding for section spacing */
+  position: relative; /* Positioning context for pseudo-elements */
+  overflow: hidden; /* Hide animated background overflow */
+  background: linear-gradient(
+    135deg,
+    rgba(28, 28, 28, 0.95) 0%,
+    rgba(42, 42, 42, 0.95) 100%
+  ); /* Dark gradient base */
+  padding: 4rem 0; /* Vertical padding for section spacing */
 }
 
 /* Animated background glow effects - multiple radial gradients */
 .auto-showcase::before {
-  content: '';                                 /* Empty pseudo-element */
-  position: absolute;                          /* Absolute positioning for overlay */
-  inset: 0;                                    /* Cover entire showcase area */
+  content: ''; /* Empty pseudo-element */
+  position: absolute; /* Absolute positioning for overlay */
+  inset: 0; /* Cover entire showcase area */
   background:                                  /* Multi-layer radial gradient system */
-    radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),    /* Amber glow - left */
-    radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),     /* Teal glow - right */
-    radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent);     /* Rose glow - bottom */
+    radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),
+    /* Amber glow - left */ radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),
+    /* Teal glow - right */ radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent); /* Rose glow - bottom */
   animation: heroGlow 20s ease-in-out infinite; /* Continuous glow animation */
-  z-index: 1;                                  /* Above background, below content */
+  z-index: 1; /* Above background, below content */
 }
 
 /* Showcase content container - centers and constrains width */
 .showcase-container {
-  position: relative;                          /* Positioning context */
-  height: 100%;                                /* Full height of parent */
-  max-width: 1400px;                          /* Maximum container width */
-  margin: 0 auto;                             /* Center horizontally */
-  padding: 0 2rem;                            /* Side padding for spacing */
-  z-index: 2;                                  /* Above background effects */
+  position: relative; /* Positioning context */
+  height: 100%; /* Full height of parent */
+  max-width: 1400px; /* Maximum container width */
+  margin: 0 auto; /* Center horizontally */
+  padding: 0 2rem; /* Side padding for spacing */
+  z-index: 2; /* Above background effects */
 }
 
 /* Main showcase content card with glassmorphism design */
 .showcase-content {
-  position: relative;                          /* Positioning context for pseudo-elements */
-  border-radius: 32px;                        /* Large rounded corners */
-  overflow: hidden;                            /* Hide child overflow */
-  margin: 0 auto;                             /* Center within container */
-  background: rgba(255, 255, 255, 0.03);      /* Subtle glassmorphism background */
-  backdrop-filter: blur(30px);                /* Strong background blur effect */
+  position: relative; /* Positioning context for pseudo-elements */
+  border-radius: 32px; /* Large rounded corners */
+  overflow: hidden; /* Hide child overflow */
+  margin: 0 auto; /* Center within container */
+  background: rgba(255, 255, 255, 0.03); /* Subtle glassmorphism background */
+  backdrop-filter: blur(30px); /* Strong background blur effect */
   border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border definition */
-  display: grid;                               /* CSS Grid for layout */
-  min-height: 400px;                          /* Minimum height for content */
-  grid-template-columns: 1fr 1fr;             /* Two equal columns */
-  align-items: center;                         /* Vertically center content */
-  gap: 0;                                      /* No gap between grid items */
-  max-width: 1200px;                          /* Maximum content width */
+  display: grid; /* CSS Grid for layout */
+  min-height: 400px; /* Minimum height for content */
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  align-items: center; /* Vertically center content */
+  gap: 0; /* No gap between grid items */
+  max-width: 1200px; /* Maximum content width */
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth hover transitions */
 }
 
 /* Showcase content hover state - enhanced border visibility */
 .showcase-content:hover {
-  border-color: rgba(255, 183, 77, 0.3);      /* Amber-tinted border on hover */
+  border-color: rgba(255, 183, 77, 0.3); /* Amber-tinted border on hover */
 }
 
 .showcase-content::after {
@@ -91,10 +95,14 @@
 /* === SHOWCASE IMAGE SECTION === */
 /* Left side image container with gradient background */
 .showcase-image-section {
-  position: relative;                          /* Positioning context for overlays */
-  height: 100%;                                /* Full height of parent grid */
-  overflow: hidden;                            /* Clip image overflow */
-  background: linear-gradient(135deg, rgba(255, 183, 77, 0.05), rgba(0, 172, 193, 0.05)); /* Subtle gradient tint */
+  position: relative; /* Positioning context for overlays */
+  height: 100%; /* Full height of parent grid */
+  overflow: hidden; /* Clip image overflow */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 183, 77, 0.05),
+    rgba(0, 172, 193, 0.05)
+  ); /* Subtle gradient tint */
   border-right: 1px solid rgba(255, 255, 255, 0.1); /* Separator from content section */
 }
 
@@ -140,15 +148,15 @@
 /* === SHOWCASE CONTENT SECTION === */
 /* Right side text content with glassmorphism background */
 .showcase-content-section {
-  padding: 3rem;                               /* Generous internal spacing */
-  background: rgba(255, 255, 255, 0.02);      /* Subtle glassmorphism background */
-  backdrop-filter: blur(20px);                /* Background blur effect */
-  height: 100%;                                /* Full height of parent grid */
-  display: flex;                               /* Flexbox for content layout */
-  flex-direction: column;                      /* Vertical content stacking */
-  justify-content: center;                     /* Vertically center content */
-  position: relative;                          /* Positioning context */
-  z-index: 10;                                 /* Above other elements */
+  padding: 3rem; /* Generous internal spacing */
+  background: rgba(255, 255, 255, 0.02); /* Subtle glassmorphism background */
+  backdrop-filter: blur(20px); /* Background blur effect */
+  height: 100%; /* Full height of parent grid */
+  display: flex; /* Flexbox for content layout */
+  flex-direction: column; /* Vertical content stacking */
+  justify-content: center; /* Vertically center content */
+  position: relative; /* Positioning context */
+  z-index: 10; /* Above other elements */
   border-left: 1px solid rgba(255, 255, 255, 0.05); /* Separator from image section */
 }
 
@@ -172,14 +180,14 @@
 
 /* Showcase title with responsive sizing and gradient effects */
 .showcase-title {
-  font-family: 'Space Grotesk', sans-serif;     /* Display font for prominence */
-  font-size: clamp(2.5rem, 5vw, 3.5rem);      /* Responsive fluid typography */
-  font-weight: 900;                           /* Maximum weight for impact */
-  margin-bottom: 1rem;                        /* Space below title */
-  color: var(--amber-glow);                    /* Amber accent color */
-  opacity: 1;                                  /* Full opacity base state */
-  transform: translateY(0);                    /* No transform base state */
-  position: relative;                          /* Positioning context for pseudo-element */
+  font-family: 'Space Grotesk', sans-serif; /* Display font for prominence */
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive fluid typography */
+  font-weight: 900; /* Maximum weight for impact */
+  margin-bottom: 1rem; /* Space below title */
+  color: var(--amber-glow); /* Amber accent color */
+  opacity: 1; /* Full opacity base state */
+  transform: translateY(0); /* No transform base state */
+  position: relative; /* Positioning context for pseudo-element */
 }
 
 .showcase-title::after {
@@ -226,20 +234,20 @@
 /* === FEATURE TAGS === */
 /* Individual feature pills with glassmorphism design */
 .showcase-feature-tag {
-  background: rgba(255, 255, 255, 0.08);       /* Glassmorphism background */
-  backdrop-filter: blur(15px);                 /* Background blur effect */
+  background: rgba(255, 255, 255, 0.08); /* Glassmorphism background */
+  backdrop-filter: blur(15px); /* Background blur effect */
   border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border definition */
-  padding: 0.75rem 1.5rem;                    /* Comfortable pill padding */
-  border-radius: 30px;                        /* Pill shape */
-  font-family: 'Space Grotesk', sans-serif;    /* Display font for consistency */
-  font-size: 0.85rem;                         /* Small size for tags */
-  font-weight: 600;                           /* Semibold for emphasis */
-  color: var(--text-inverse);                  /* White text color */
+  padding: 0.75rem 1.5rem; /* Comfortable pill padding */
+  border-radius: 30px; /* Pill shape */
+  font-family: 'Space Grotesk', sans-serif; /* Display font for consistency */
+  font-size: 0.85rem; /* Small size for tags */
+  font-weight: 600; /* Semibold for emphasis */
+  color: var(--text-inverse); /* White text color */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth hover transitions */
-  position: relative;                          /* Positioning context */
-  overflow: hidden;                            /* Hide pseudo-element overflow */
-  text-transform: uppercase;                   /* Uppercase for consistency */
-  letter-spacing: 0.05em;                     /* Wide tracking for emphasis */
+  position: relative; /* Positioning context */
+  overflow: hidden; /* Hide pseudo-element overflow */
+  text-transform: uppercase; /* Uppercase for consistency */
+  letter-spacing: 0.05em; /* Wide tracking for emphasis */
 }
 
 .showcase-feature-tag::before {
@@ -268,28 +276,28 @@
 /* === SHOWCASE ACTION BUTTON === */
 /* Primary call-to-action button for showcase items */
 .showcase-btn {
-  display: inline-flex;                        /* Flexbox for content layout */
-  align-items: center;                         /* Vertically center content */
-  gap: 0.75rem;                                /* Space between text and icon */
-  padding: 1rem 2rem;                         /* Comfortable button padding */
-  background: var(--amber-glow);               /* Amber background for prominence */
-  color: var(--text-primary);                  /* Dark text for contrast */
-  text-decoration: none;                       /* Remove link underline */
-  border-radius: 50px;                        /* Pill-shaped button */
-  font-family: 'Space Grotesk', sans-serif;    /* Display font for consistency */
-  font-weight: 600;                           /* Semibold for emphasis */
-  font-size: 1rem;                           /* Standard button text size */
+  display: inline-flex; /* Flexbox for content layout */
+  align-items: center; /* Vertically center content */
+  gap: 0.75rem; /* Space between text and icon */
+  padding: 1rem 2rem; /* Comfortable button padding */
+  background: var(--amber-glow); /* Amber background for prominence */
+  color: var(--text-primary); /* Dark text for contrast */
+  text-decoration: none; /* Remove link underline */
+  border-radius: 50px; /* Pill-shaped button */
+  font-family: 'Space Grotesk', sans-serif; /* Display font for consistency */
+  font-weight: 600; /* Semibold for emphasis */
+  font-size: 1rem; /* Standard button text size */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth hover transitions */
 }
 
 /* Showcase button hover state - darker amber background */
 .showcase-btn:hover {
-  background: var(--primary-hover);            /* Darker amber on hover */
+  background: var(--primary-hover); /* Darker amber on hover */
 }
 
 /* Showcase button icon with hover animation */
 .showcase-btn svg {
-  transition: transform 0.3s ease;            /* Smooth icon transform animation */
+  transition: transform 0.3s ease; /* Smooth icon transform animation */
 }
 
 /* Icon hover state - could add transform effects here */

@@ -137,7 +137,7 @@ import { lorelei } from './characters/lorelei.js';
 import { fleetingBella } from './characters/fleeting-bella.js';
 
 // Characters array - Add new characters here
-export const characters = [
+const baseCharacters = [
   transcendentHati,
   transcendentAmi,
   limine,
@@ -179,6 +179,13 @@ export const characters = [
   fleetingBella,
   // Add more characters as they are created
 ];
+
+// Add slug and detailUrl to characters
+export const characters = baseCharacters.map(character => ({
+  ...character,
+  slug: character.id,
+  detailUrl: `/guides/silver-and-blood/characters/${character.id}`,
+}));
 
 // Utility functions for character management
 export function getCharacterById(id) {

@@ -58,24 +58,27 @@ const { items } = Astro.props;
   }
 
   .breadcrumb-link {
-    color: var(--amber-glow);
+    color: #ffd54f;
     text-decoration: none;
     transition: color 0.2s ease;
+    opacity: 0.9;
   }
 
   .breadcrumb-link:hover {
-    color: #ff9800;
+    color: var(--amber-glow);
     text-decoration: underline;
+    opacity: 1;
   }
 
   .breadcrumb-current {
-    color: var(--text-primary);
-    font-weight: 500;
+    color: #ffffff;
+    font-weight: 600;
   }
 
   .breadcrumb-separator {
-    color: var(--text-secondary);
+    color: #b0b0b0;
     user-select: none;
+    opacity: 0.7;
   }
 
   /* Mobile responsiveness */

@@ -1,6 +1,7 @@
 ---
 import { getFactionData } from '../../data/zone-nova/factions.js';
 import SimpleOptimizedImage from '../../components/SimpleOptimizedImage.astro';
+import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 
 interface Props {
   characterData: any;
@@ -88,8 +89,18 @@ function getTagCategory(tag: string): string {
 }
 ---
 
-<!-- Swipeable indicator at top of main content -->
-<div class="swipeable-indicator">Swipeable</div>
+<!-- Breadcrumb Navigation -->
+<Breadcrumb
+  items={[
+    { name: 'Home', href: '/' },
+    { name: 'Zone Nova', href: '/guides/zone-nova/' },
+    { name: 'Characters', href: '/guides/zone-nova/characters/' },
+    { name: characterData.name },
+  ]}
+/>
+
+<!-- Mobile navigation instruction at top of main content -->
+<div class="swipeable-indicator">Touch the sides to move between characters</div>
 
 <!-- Character Header & Overview -->
 <section class="content-section character-overview-section">

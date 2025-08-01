@@ -18,6 +18,10 @@ const characterData = {
 export const prerender = true;
 ---
 
-<CharacterIndividualLayout title={lokiSEO.title} description={lokiSEO.description} gameTitle={lokiData.name}>
+<CharacterIndividualLayout
+  title={lokiSEO.title}
+  description={lokiSEO.description}
+  gameTitle={lokiData.name}
+>
   <CharacterPageTemplate characterData={characterData} />
 </CharacterIndividualLayout>

@@ -20,173 +20,182 @@
 /* === MASTER CLOCK LAYOUT === */
 /* Outer container for centering and constraining clock width */
 .master-clock-container {
-  display: flex;                               /* Flexbox for centering */
-  justify-content: center;                     /* Horizontally center clock */
-  max-width: 1400px;                          /* Maximum container width */
-  margin: 0 auto;                             /* Center container on page */
-  padding: 0 2rem;                            /* Side padding for spacing */
-  animation: fadeInUp 1s ease-out 0.3s both;  /* Entrance animation with delay */
+  display: flex; /* Flexbox for centering */
+  justify-content: center; /* Horizontally center clock */
+  max-width: 1400px; /* Maximum container width */
+  margin: 0 auto; /* Center container on page */
+  padding: 0 2rem; /* Side padding for spacing */
+  animation: fadeInUp 1s ease-out 0.3s both; /* Entrance animation with delay */
 }
 
 /* Main clock component with glassmorphism design */
 .master-clock {
-  background: rgba(255, 255, 255, 0.05);       /* Subtle glassmorphism background */
-  backdrop-filter: blur(30px);                 /* Strong background blur effect */
-  border: 2px solid rgba(255, 255, 255, 0.1);  /* Subtle border definition */
-  border-radius: 32px;                        /* Large rounded corners */
-  padding: 2rem 3rem;                         /* Generous internal spacing */
-  position: relative;                          /* Positioning context for pseudo-elements */
-  overflow: hidden;                            /* Hide pseudo-element overflow */
-  width: 100%;                                 /* Full width within container */
-  max-width: 1200px;                          /* Maximum clock width */
-  margin: 0 auto;                             /* Center within container */
+  background: rgba(255, 255, 255, 0.05); /* Subtle glassmorphism background */
+  backdrop-filter: blur(30px); /* Strong background blur effect */
+  border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border definition */
+  border-radius: 32px; /* Large rounded corners */
+  padding: 2rem 3rem; /* Generous internal spacing */
+  position: relative; /* Positioning context for pseudo-elements */
+  overflow: hidden; /* Hide pseudo-element overflow */
+  width: 100%; /* Full width within container */
+  max-width: 1200px; /* Maximum clock width */
+  margin: 0 auto; /* Center within container */
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth custom easing */
-  will-change: transform, opacity;             /* Optimize for animations */
-  transform: translateZ(0);                    /* Force hardware acceleration */
+  will-change: transform, opacity; /* Optimize for animations */
+  transform: translateZ(0); /* Force hardware acceleration */
 }
 
 /* Master clock hover state - enhanced border visibility */
 .master-clock:hover {
-  border-color: rgba(255, 255, 255, 0.2);     /* Brighter border on hover */
+  border-color: rgba(255, 255, 255, 0.2); /* Brighter border on hover */
 }
 
 /* Animated gradient background - hidden by default */
 .clock-bg-animation {
-  position: absolute;                          /* Absolute positioning for overlay */
-  inset: -2px;                                 /* Extend beyond clock borders */
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz)); /* Multi-color gradient */
-  border-radius: 32px;                        /* Match clock border radius */
-  opacity: 0;                                  /* Hidden by default */
-  transition: opacity 0.6s ease;              /* Smooth fade transitions */
-  z-index: -1;                                 /* Behind clock content */
+  position: absolute; /* Absolute positioning for overlay */
+  inset: -2px; /* Extend beyond clock borders */
+  background: linear-gradient(
+    135deg,
+    var(--amber-glow),
+    var(--teal-crystal),
+    var(--rose-quartz)
+  ); /* Multi-color gradient */
+  border-radius: 32px; /* Match clock border radius */
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.6s ease; /* Smooth fade transitions */
+  z-index: -1; /* Behind clock content */
 }
 
 /* Background animation hover state - keep hidden */
 .master-clock:hover .clock-bg-animation {
-  opacity: 0;                                  /* Keep gradient background hidden on hover */
+  opacity: 0; /* Keep gradient background hidden on hover */
 }
 
 /* === CLOCK HEADER SECTION === */
 /* Header containing game image and information */
 .clock-header {
-  display: flex;                               /* Flexbox for horizontal layout */
-  align-items: center;                         /* Vertically center content */
-  gap: 2rem;                                   /* Space between image and text */
-  margin-bottom: 2rem;                        /* Space below header */
-  text-align: left;                           /* Left-align text content */
-  justify-content: flex-start;                /* Align content to start */
+  display: flex; /* Flexbox for horizontal layout */
+  align-items: center; /* Vertically center content */
+  gap: 2rem; /* Space between image and text */
+  margin-bottom: 2rem; /* Space below header */
+  text-align: left; /* Left-align text content */
+  justify-content: flex-start; /* Align content to start */
 }
 
 /* Game image container with glassmorphism styling */
 .game-image-container {
-  position: relative;                          /* Positioning context for image */
-  width: 80px;                                 /* Fixed width for consistency */
-  height: 80px;                                /* Fixed height for square aspect */
-  border-radius: 20px;                        /* Rounded corners */
-  overflow: hidden;                            /* Clip image to container bounds */
+  position: relative; /* Positioning context for image */
+  width: 80px; /* Fixed width for consistency */
+  height: 80px; /* Fixed height for square aspect */
+  border-radius: 20px; /* Rounded corners */
+  overflow: hidden; /* Clip image to container bounds */
   border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border definition */
-  flex-shrink: 0;                              /* Prevent shrinking in flexbox */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent); /* Subtle gradient background */
+  flex-shrink: 0; /* Prevent shrinking in flexbox */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  ); /* Subtle gradient background */
 }
 
 /* Game image with smooth transition effects */
 .game-image {
-  width: 100%;                                 /* Fill container width */
-  height: 100%;                                /* Fill container height */
-  object-fit: cover;                          /* Maintain aspect ratio, crop if needed */
+  width: 100%; /* Fill container width */
+  height: 100%; /* Fill container height */
+  object-fit: cover; /* Maintain aspect ratio, crop if needed */
   transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth opacity transitions */
-  display: block;                              /* Block display for proper sizing */
-  will-change: opacity;                        /* Optimize for opacity animations */
-  transform: translateZ(0);                    /* Force hardware acceleration */
+  display: block; /* Block display for proper sizing */
+  will-change: opacity; /* Optimize for opacity animations */
+  transform: translateZ(0); /* Force hardware acceleration */
 }
 
 /* Game information text container */
 .game-info {
-  text-align: left;                           /* Left-align all game text */
+  text-align: left; /* Left-align all game text */
 }
 
 /* Game name title with amber accent color */
 .game-name {
-  font-family: 'Space Grotesk', sans-serif;     /* Display font for prominence */
-  font-size: 1.8rem;                          /* Large size for hierarchy */
-  font-weight: 700;                           /* Bold weight for emphasis */
-  color: var(--amber-glow);                    /* Amber accent color for branding */
-  margin: 0 0 0.5rem 0;                       /* Bottom margin only */
+  font-family: 'Space Grotesk', sans-serif; /* Display font for prominence */
+  font-size: 1.8rem; /* Large size for hierarchy */
+  font-weight: 700; /* Bold weight for emphasis */
+  color: var(--amber-glow); /* Amber accent color for branding */
+  margin: 0 0 0.5rem 0; /* Bottom margin only */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transitions */
 }
 
 /* Game status text with subtle styling */
 .game-status {
-  font-family: 'Space Grotesk', sans-serif;     /* Consistent font family */
-  font-size: 0.9rem;                          /* Smaller size for secondary info */
-  font-weight: 500;                           /* Medium weight for readability */
-  color: rgba(255, 255, 255, 0.7);            /* Semi-transparent white for subtlety */
-  text-transform: uppercase;                   /* Uppercase for label styling */
-  letter-spacing: 0.1em;                      /* Wide tracking for emphasis */
+  font-family: 'Space Grotesk', sans-serif; /* Consistent font family */
+  font-size: 0.9rem; /* Smaller size for secondary info */
+  font-weight: 500; /* Medium weight for readability */
+  color: rgba(255, 255, 255, 0.7); /* Semi-transparent white for subtlety */
+  text-transform: uppercase; /* Uppercase for label styling */
+  letter-spacing: 0.1em; /* Wide tracking for emphasis */
 }
 
 /* === CLOCK DISPLAY SECTION === */
 /* Main time display area with numerical countdown */
 .clock-display {
-  margin-bottom: 2rem;                        /* Space below time display */
+  margin-bottom: 2rem; /* Space below time display */
 }
 
 /* Time units container - horizontal layout for time components */
 .time-unit-group {
-  display: flex;                               /* Flexbox for horizontal layout */
-  justify-content: center;                     /* Center time units horizontally */
-  align-items: center;                         /* Vertically center all components */
-  gap: 1.5rem;                                /* Space between time units and separators */
+  display: flex; /* Flexbox for horizontal layout */
+  justify-content: center; /* Center time units horizontally */
+  align-items: center; /* Vertically center all components */
+  gap: 1.5rem; /* Space between time units and separators */
 }
 
 /* Individual time unit - contains value and label */
 .time-unit {
-  display: flex;                               /* Flexbox for vertical layout */
-  flex-direction: column;                      /* Stack value above label */
-  align-items: center;                         /* Center content horizontally */
-  gap: 0.75rem;                                /* Space between value and label */
+  display: flex; /* Flexbox for vertical layout */
+  flex-direction: column; /* Stack value above label */
+  align-items: center; /* Center content horizontally */
+  gap: 0.75rem; /* Space between value and label */
 }
 
 /* Time value numbers - large monospace display */
 .time-value {
-  font-family: 'Courier New', monospace;       /* Monospace for consistent number width */
-  font-size: 3.5rem;                          /* Large size for primary display */
-  font-weight: 700;                           /* Bold weight for prominence */
-  color: var(--text-inverse);                  /* White color for contrast */
+  font-family: 'Courier New', monospace; /* Monospace for consistent number width */
+  font-size: 3.5rem; /* Large size for primary display */
+  font-weight: 700; /* Bold weight for prominence */
+  color: var(--text-inverse); /* White color for contrast */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transitions */
-  line-height: 1;                             /* Tight line height for compact display */
-  min-width: 2.5ch;                           /* Minimum width to prevent layout shifts */
-  text-align: center;                         /* Center align numbers */
-  display: flex;                               /* Flexbox for centering */
-  align-items: center;                         /* Vertically center content */
-  justify-content: center;                     /* Horizontally center content */
-  width: 100%;                                 /* Full width of container */
-  height: 1.2em;                              /* Fixed height for alignment */
+  line-height: 1; /* Tight line height for compact display */
+  min-width: 2.5ch; /* Minimum width to prevent layout shifts */
+  text-align: center; /* Center align numbers */
+  display: flex; /* Flexbox for centering */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  width: 100%; /* Full width of container */
+  height: 1.2em; /* Fixed height for alignment */
 }
 
 /* Time unit labels - descriptive text below numbers */
 .time-label {
-  font-family: 'Space Grotesk', sans-serif;     /* Display font for consistency */
-  font-size: 0.8rem;                          /* Small size for secondary info */
-  font-weight: 500;                           /* Medium weight for readability */
-  color: rgba(255, 255, 255, 0.6);            /* Semi-transparent for subtlety */
-  text-transform: uppercase;                   /* Uppercase for label styling */
-  letter-spacing: 0.1em;                      /* Wide tracking for emphasis */
+  font-family: 'Space Grotesk', sans-serif; /* Display font for consistency */
+  font-size: 0.8rem; /* Small size for secondary info */
+  font-weight: 500; /* Medium weight for readability */
+  color: rgba(255, 255, 255, 0.6); /* Semi-transparent for subtlety */
+  text-transform: uppercase; /* Uppercase for label styling */
+  letter-spacing: 0.1em; /* Wide tracking for emphasis */
 }
 
 /* Time separator - animated colon between time units */
 .time-separator {
-  font-family: 'Courier New', monospace;       /* Monospace for consistent spacing */
-  font-size: 3rem;                            /* Large size to match time values */
-  font-weight: 700;                           /* Bold weight for visibility */
-  color: var(--text-inverse);                  /* White color for contrast */
-  animation: blink 2s ease-in-out infinite;    /* Continuous blinking animation */
-  opacity: 0.8;                               /* Slightly transparent base opacity */
-  display: flex;                               /* Flexbox for centering */
-  align-items: center;                         /* Vertically center separator */
-  justify-content: center;                     /* Horizontally center separator */
-  height: 1.2em;                              /* Match time value height */
-  line-height: 1;                             /* Tight line height */
+  font-family: 'Courier New', monospace; /* Monospace for consistent spacing */
+  font-size: 3rem; /* Large size to match time values */
+  font-weight: 700; /* Bold weight for visibility */
+  color: var(--text-inverse); /* White color for contrast */
+  animation: blink 2s ease-in-out infinite; /* Continuous blinking animation */
+  opacity: 0.8; /* Slightly transparent base opacity */
+  display: flex; /* Flexbox for centering */
+  align-items: center; /* Vertically center separator */
+  justify-content: center; /* Horizontally center separator */
+  height: 1.2em; /* Match time value height */
+  line-height: 1; /* Tight line height */
 }
 
 /* === BLINKING ANIMATION === */
@@ -194,9 +203,9 @@
 @keyframes blink {
   0%,
   100% {
-    opacity: 1;                                /* Full opacity at start and end */
+    opacity: 1; /* Full opacity at start and end */
   }
   50% {
-    opacity: 0.3;                              /* Low opacity at midpoint for blink effect */
+    opacity: 0.3; /* Low opacity at midpoint for blink effect */
   }
 }

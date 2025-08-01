@@ -7,6 +7,10 @@ import { niniData, niniSEO } from '../../../../data/zone-nova/characters/nini.js
 export const prerender = true;
 ---
 
-<CharacterIndividualLayout title={niniSEO.title} description={niniSEO.description} gameTitle={niniData.name}>
+<CharacterIndividualLayout
+  title={niniSEO.title}
+  description={niniSEO.description}
+  gameTitle={niniData.name}
+>
   <CharacterPageTemplate characterData={niniData} />
 </CharacterIndividualLayout>

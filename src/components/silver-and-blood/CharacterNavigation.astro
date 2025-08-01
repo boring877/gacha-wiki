@@ -1,176 +1,383 @@
 ---
 import { characters } from '../../data/silver-and-blood/characters.js';
+import MobileCharacterNavigation from './MobileCharacterNavigation.astro';
 
-interface Props {
-  currentCharacter: any;
+export interface Props {
+  currentCharacterSlug: string;
 }
 
-const { currentCharacter } = Astro.props;
+const { currentCharacterSlug } = Astro.props;
+
+// Note: Client-side navigation will handle filter/sort state from sessionStorage
+// This server-side rendering uses default database order as fallback
+const charactersByDatabaseOrder = [...characters].sort((a, b) => a.name.localeCompare(b.name));
+
+// Find current character index in database order
+const currentIndex = charactersByDatabaseOrder.findIndex(char => char.slug === currentCharacterSlug);
+
+// Get previous and next characters (with wraparound)
+const prevIndex = currentIndex > 0 ? currentIndex - 1 : charactersByDatabaseOrder.length - 1;
+const nextIndex = currentIndex < charactersByDatabaseOrder.length - 1 ? currentIndex + 1 : 0;
+
+const prevCharacter = charactersByDatabaseOrder[prevIndex];
+const nextCharacter = charactersByDatabaseOrder[nextIndex];
+
+// Only render if we have valid navigation targets  
+const hasNavigation = currentIndex !== -1 && prevCharacter && nextCharacter;
+
+// Always render if we have characters, even if navigation logic fails
+const forceRender = charactersByDatabaseOrder.length > 0;
 ---
-
-<div class="character-navigation">
-  <div class="nav-container">
-    <div class="nav-button-group">
-      <button id="prev-character" class="nav-btn prev-btn" disabled>
-        <span class="nav-icon">←</span>
-        <span class="nav-text">
-          <span class="nav-label">Previous</span>
-          <span class="nav-name" id="prev-name">Loading...</span>
-        </span>
-      </button>
-
-      <div class="nav-divider"></div>
-
-      <button id="next-character" class="nav-btn next-btn" disabled>
-        <span class="nav-text">
-          <span class="nav-label">Next</span>
-          <span class="nav-name" id="next-name">Loading...</span>
-        </span>
-        <span class="nav-icon">→</span>
-      </button>
-    </div>
-
-    <div class="nav-info">
-      <span class="current-position" id="nav-position">Loading position...</span>
-      <div class="nav-note">
-        <span class="nav-note-text">💡 Navigation follows database filters and sorting</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script is:inline define:vars={{ characters, currentCharacter }}>
-  document.addEventListener('DOMContentLoaded', function() {
-    const prevBtn = document.getElementById('prev-character');
-    const nextBtn = document.getElementById('next-character');
-    const prevName = document.getElementById('prev-name');
-    const nextName = document.getElementById('next-name');
-    const navPosition = document.getElementById('nav-position');
-    
-    if (!prevBtn || !nextBtn || !prevName || !nextName || !navPosition) return;
-
-    let filteredCharacters = characters;
-    let currentIndex = 0;
-
-    // Get stored filters/sorting from sessionStorage
-    function getStoredState() {
-      try {
-        const filters = JSON.parse(sessionStorage.getItem('sab-character-filters') || '{}');
-        const sort = JSON.parse(sessionStorage.getItem('sab-character-sort') || '{"column":null,"asc":true}');
-        return { filters, sort };
-      } catch (error) {
-        console.log('Error parsing stored state, using defaults');
-        return { filters: {}, sort: { column: null, asc: true } };
-      }
-    }
-
-    // Apply filters
-    function applyFilters(chars, filters) {
-      return chars.filter(char => {
-        if (filters.class && char.class !== filters.class) return false;
-        if (filters.rarity && char.rarity !== filters.rarity) return false;
-        if (filters.faction && char.faction !== filters.faction) return false;
-        if (filters.moonPhase && char.moonPhase !== filters.moonPhase) return false;
-        return true;
-      });
-    }
-
-    // Apply sorting
-    function applySorting(chars, sort) {
-      if (!sort.column) return chars;
-      
-      return chars.slice().sort((a, b) => {
-        if (sort.column === 'name') {
-          const aName = a.name || '';
-          const bName = b.name || '';
-          return sort.asc ? aName.localeCompare(bName) : bName.localeCompare(aName);
-        }
-        
-        let aValue, bValue;
-        
-        switch (sort.column) {
-          case 'hp': aValue = a.stats?.hp || 0; bValue = b.stats?.hp || 0; break;
-          case 'atk': aValue = a.stats?.atk || 0; bValue = b.stats?.atk || 0; break;
-          case 'pDef': aValue = a.stats?.pDef || 0; bValue = b.stats?.pDef || 0; break;
-          case 'mDef': aValue = a.stats?.mDef || 0; bValue = b.stats?.mDef || 0; break;
-          case 'bloodPower': aValue = a.stats?.bloodPower || 0; bValue = b.stats?.bloodPower || 0; break;
-          default: return 0;
-        }
-        
-        return sort.asc ? (aValue - bValue) : (bValue - aValue);
-      });
-    }
-
-    // Update navigation
-    function updateNavigation() {
-      const { filters, sort } = getStoredState();
-      
-      // Apply filters and sorting
-      let filtered = applyFilters(characters, filters);
-      filteredCharacters = applySorting(filtered, sort);
-
-      // Find current character position
-      currentIndex = filteredCharacters.findIndex(char => char.id === currentCharacter.id);
-      
-      if (currentIndex === -1) {
-        filteredCharacters = characters;
-        currentIndex = characters.findIndex(char => char.id === currentCharacter.id);
-      }
-
-      // Update buttons
-      const prevChar = currentIndex > 0 ? filteredCharacters[currentIndex - 1] : null;
-      const nextChar = currentIndex < filteredCharacters.length - 1 ? filteredCharacters[currentIndex + 1] : null;
-
-      prevBtn.disabled = !prevChar;
-      nextBtn.disabled = !nextChar;
-      prevName.textContent = prevChar?.name || 'None';
-      nextName.textContent = nextChar?.name || 'None';
-
-      if (prevChar) prevBtn.onclick = () => window.location.href = `/guides/silver-and-blood/characters/${prevChar.id}/`;
-      if (nextChar) nextBtn.onclick = () => window.location.href = `/guides/silver-and-blood/characters/${nextChar.id}/`;
-
-      // Update position display
-      navPosition.textContent = `${currentIndex + 1} of ${filteredCharacters.length}`;
-      
-      // Show active filters/sorting
-      const hasFilters = Object.keys(filters).length > 0 || sort.column;
-      if (hasFilters) {
-        const info = [];
-        if (filters.class) info.push(`Class: ${filters.class}`);
-        if (filters.rarity) info.push(`Rarity: ${filters.rarity}`);
-        if (filters.faction) info.push(`Faction: ${filters.faction}`);
-        if (filters.moonPhase) info.push(`Moon: ${filters.moonPhase}`);
-        if (sort.column) info.push(`Sort: ${sort.column.toUpperCase()} ${sort.asc ? '↑' : '↓'}`);
-        
-        if (info.length > 0) {
-          navPosition.textContent += ` (${info.join(', ')})`;
-        }
-      }
-    }
-
-    // Keyboard navigation
-    document.addEventListener('keydown', function(e) {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-      
-      if (e.key === 'ArrowLeft' && !prevBtn.disabled) {
-        e.preventDefault();
-        prevBtn.click();
-      } else if (e.key === 'ArrowRight' && !nextBtn.disabled) {
-        e.preventDefault();
-        nextBtn.click();
-      }
-    });
-
-    // Initialize and listen for changes
-    updateNavigation();
-    window.addEventListener('storage', function(e) {
-      if (e.key === 'sab-character-filters' || e.key === 'sab-character-sort') {
-        updateNavigation();
-      }
-    });
-  });
-</script>
 
 <style>
   @import '../../styles/components/silver-and-blood-character-navigation.css';
 </style>
+
+{hasNavigation || forceRender ? (
+  <div>
+    <!-- Desktop Navigation Panel -->
+    <div 
+      class="nav-zone nav-zone-single" 
+      data-character-url={nextCharacter.detailUrl}
+      data-character-name={nextCharacter.name}
+      title="Character Navigation"
+    >
+      <div class="nav-controls">
+        <button class="nav-btn nav-btn-prev" data-direction="prev" title={`Previous: ${prevCharacter.name}`}>‹</button>
+        <button class="nav-btn nav-btn-next" data-direction="next" title={`Next: ${nextCharacter.name}`}>›</button>
+      </div>
+      <div class="nav-info">
+        <div class="nav-current-character">
+          <div class="nav-character-name">Current Character</div>
+          <div class="nav-character-details">
+            <span class="nav-position">0/0</span>
+            <span class="nav-total-filtered">0 characters</span>
+          </div>
+        </div>
+        <div class="nav-navigation-info">
+          <div class="nav-next-character">
+            <span class="nav-label">Next:</span>
+            <span class="nav-next-name">{nextCharacter.name}</span>
+          </div>
+          <div class="nav-sort-info">
+            <span class="nav-label">Sort:</span>
+            <span class="nav-sort">Default</span>
+          </div>
+          <div class="nav-filter-info">
+            <span class="nav-label">Filter:</span>
+            <span class="nav-filter">None</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Component -->
+    <MobileCharacterNavigation 
+      prevCharacter={prevCharacter}
+      nextCharacter={nextCharacter}
+    />
+  </div>
+) : null}
+
+<script>
+  // Import character data and utilities
+  import { characters } from '../../data/silver-and-blood/characters.js';
+
+  // Character navigation functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    // Cache DOM elements for better performance
+    const elements = {
+      navPanel: document.querySelector('.nav-zone-single') as HTMLElement | null,
+      prevButton: document.querySelector('.nav-btn-prev') as HTMLButtonElement | null,
+      nextButton: document.querySelector('.nav-btn-next') as HTMLButtonElement | null,
+      // Cache navigation info elements
+      currentNameEl: null as HTMLElement | null,
+      positionEl: null as HTMLElement | null,
+      totalFilteredEl: null as HTMLElement | null,
+      nextNameEl: null as HTMLElement | null,
+      sortEl: null as HTMLElement | null,
+      filterEl: null as HTMLElement | null
+    };
+
+    // Initialize cached elements
+    if (elements.navPanel) {
+      elements.currentNameEl = elements.navPanel.querySelector('.nav-character-name') as HTMLElement | null;
+      elements.positionEl = elements.navPanel.querySelector('.nav-position') as HTMLElement | null;
+      elements.totalFilteredEl = elements.navPanel.querySelector('.nav-total-filtered') as HTMLElement | null;
+      elements.nextNameEl = elements.navPanel.querySelector('.nav-next-name') as HTMLElement | null;
+      elements.sortEl = elements.navPanel.querySelector('.nav-sort') as HTMLElement | null;
+      elements.filterEl = elements.navPanel.querySelector('.nav-filter') as HTMLElement | null;
+    }
+
+    // Get current character slug from the page URL (cached)
+    const currentCharacterSlug = (() => {
+      const urlParts = window.location.pathname.split('/');
+      return urlParts[urlParts.length - 1] || '';
+    })();
+
+    // Cache for session storage data to avoid repeated parsing
+    let cachedFilterState: any = null;
+    let cachedSortState: any = null;
+    let cacheTimestamp = 0;
+    const CACHE_DURATION = 1000; // 1 second cache
+
+    // Optimized session storage access with caching
+    function getCachedSessionData() {
+      const now = Date.now();
+      if (cachedFilterState && cachedSortState && (now - cacheTimestamp) < CACHE_DURATION) {
+        return { filters: cachedFilterState, sort: cachedSortState };
+      }
+
+      try {
+        const filterState = sessionStorage.getItem('sab-character-filters');
+        const sortState = sessionStorage.getItem('sab-character-sort');
+        
+        cachedFilterState = filterState ? JSON.parse(filterState) : {};
+        cachedSortState = sortState ? JSON.parse(sortState) : { column: 'name', asc: true };
+        cacheTimestamp = now;
+        
+        return { filters: cachedFilterState, sort: cachedSortState };
+      } catch (error: unknown) {
+        // console.warn('Error reading sessionStorage:', error);
+        cachedFilterState = {};
+        cachedSortState = { column: 'name', asc: true };
+        return { filters: cachedFilterState, sort: cachedSortState };
+      }
+    }
+
+    // Optimized character filtering
+    function applyFilters(characters: any[], filters: any) {
+      if (!filters || Object.keys(filters).length === 0) return characters;
+      
+      return characters.filter(character => {
+        return (!filters.class || character.class === filters.class) &&
+               (!filters.rarity || character.rarity === filters.rarity) &&
+               (!filters.faction || character.faction === filters.faction) &&
+               (!filters.moonPhase || character.moonPhase === filters.moonPhase) &&
+               (!filters.equipmentType || character.equipmentType === filters.equipmentType);
+      });
+    }
+
+    // Optimized character sorting
+    function applySorting(characters: any[], sort: any) {
+      if (sort.column === 'name') {
+        return characters.sort((a, b) => {
+          const result = a.name.localeCompare(b.name);
+          return sort.asc ? result : -result;
+        });
+      }
+      
+      if (sort.column === 'id') {
+        return characters.sort((a, b) => {
+          const result = a.name.localeCompare(b.name);
+          return sort.asc ? result : -result;
+        });
+      }
+      
+      // For stat columns
+      return characters.sort((a, b) => {
+        const valA = a.stats?.[sort.column] ?? a[sort.column] ?? 0;
+        const valB = b.stats?.[sort.column] ?? b[sort.column] ?? 0;
+        
+        const numA = Number(valA);
+        const numB = Number(valB);
+        
+        if (!isNaN(numA) && !isNaN(numB)) {
+          return sort.asc ? numA - numB : numB - numA;
+        }
+        
+        const strA = String(valA).toLowerCase();
+        const strB = String(valB).toLowerCase();
+        return sort.asc ? strA.localeCompare(strB) : strB.localeCompare(strA);
+      });
+    }
+
+    // Function to get the current filtered and sorted character list (optimized)
+    function getCurrentCharacterList() {
+      const { filters, sort } = getCachedSessionData();
+      
+      let characterList = [...characters];
+      characterList = applyFilters(characterList, filters);
+      characterList = applySorting(characterList, sort);
+      
+      return characterList;
+    }
+
+    // Function to get sort display name
+    function getSortDisplayName(sortColumn: string) {
+      const sortNames = {
+        'name': 'Name',
+        'id': 'Default',
+        'hp': 'HP',
+        'atk': 'ATK',
+        'pDef': 'P.DEF',
+        'mDef': 'M.DEF',
+        'critRate': 'Crit Rate',
+        'critDmgIncrease': 'Crit DMG',
+        'bloodsoulRecovery': 'Bloodsoul'
+      };
+      return sortNames[sortColumn] || sortColumn;
+    }
+
+    // Optimized function to get sort and filter display info
+    function getDisplayInfo() {
+      const { filters, sort } = getCachedSessionData();
+      
+      // Calculate sort info
+      let sortInfo = 'Default';
+      if (sort.column !== 'name' || !sort.asc) {
+        const numericColumns = ['hp', 'atk', 'pDef', 'mDef', 'critRate', 'critDmgIncrease', 'bloodsoulRecovery'];
+        const direction = numericColumns.includes(sort.column) 
+          ? (sort.asc ? '↓' : '↑') 
+          : (sort.asc ? '↑' : '↓');
+        sortInfo = `${getSortDisplayName(sort.column)} ${direction}`;
+      }
+      
+      // Calculate filter info
+      const activeFilters = Object.entries(filters)
+        .filter(([_key, value]) => value)
+        .map(([_key, value]) => value);
+      const filterInfo = activeFilters.length > 0 ? activeFilters.join(', ') : 'None';
+      
+      return { sortInfo, filterInfo };
+    }
+
+    // Optimized function to update navigation panel
+    function updateNavigationPanel() {
+      if (!elements.navPanel) return;
+      
+      const characterList = getCurrentCharacterList();
+      const currentIndex = characterList.findIndex(char => char.slug === currentCharacterSlug);
+      
+      if (currentIndex === -1) {
+        elements.navPanel.style.display = 'none';
+        return;
+      }
+
+      elements.navPanel.style.display = '';
+
+      // Calculate navigation indices with wraparound
+      const totalChars = characterList.length;
+      const prevIndex = currentIndex > 0 ? currentIndex - 1 : totalChars - 1;
+      const nextIndex = currentIndex < totalChars - 1 ? currentIndex + 1 : 0;
+
+      const currentCharacter = characterList[currentIndex];
+      const prevCharacter = characterList[prevIndex];
+      const nextCharacter = characterList[nextIndex];
+
+      const { sortInfo, filterInfo } = getDisplayInfo();
+
+      // Batch DOM updates for better performance
+      const updates: [HTMLElement | null, string][] = [
+        [elements.currentNameEl, currentCharacter.name],
+        [elements.positionEl, `${currentIndex + 1}/${totalChars}`],
+        [elements.totalFilteredEl, `${totalChars} character${totalChars !== 1 ? 's' : ''}`],
+        [elements.nextNameEl, nextCharacter.name],
+        [elements.sortEl, sortInfo],
+        [elements.filterEl, filterInfo]
+      ];
+
+      // Apply text updates
+      updates.forEach(([element, text]) => {
+        if (element && element.textContent !== text) {
+          element.textContent = text;
+        }
+      });
+
+      // Update navigation attributes for desktop buttons
+      const navigationUpdates: [HTMLElement | null, any][] = [
+        [elements.prevButton, prevCharacter],
+        [elements.nextButton, nextCharacter]
+      ];
+
+      navigationUpdates.forEach(([element, character]) => {
+        if (element) {
+          const currentUrl = element.getAttribute('data-character-url');
+          if (currentUrl !== character.detailUrl) {
+            element.setAttribute('data-character-url', character.detailUrl);
+            element.setAttribute('title', `${element === elements.nextButton ? 'Next' : 'Previous'}: ${character.name}`);
+          }
+        }
+      });
+
+      // Update mobile navigation via the mobile component
+      if (typeof (window as any).updateMobileNavigation === 'function') {
+        (window as any).updateMobileNavigation(prevCharacter, nextCharacter);
+      }
+    }
+
+    // Initialize navigation on page load
+    updateNavigationPanel();
+
+    // Update navigation when sessionStorage changes (for cross-tab synchronization)
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'sab-character-filters' || e.key === 'sab-character-sort') {
+        updateNavigationPanel();
+      }
+    });
+
+    // Also listen for custom events from the character database when sorting/filtering changes
+    document.addEventListener('character-database-updated', () => {
+      updateNavigationPanel();
+    });
+
+    // Optimized navigation handler
+    function handleNavigation(url: string | null) {
+      if (!url || typeof url !== 'string') {
+        // console.warn('Invalid navigation URL:', url);
+        return false;
+      }
+      
+      try {
+        window.location.href = url;
+        return true;
+      } catch (error: unknown) {
+        // console.error('Navigation failed:', error);
+        return false;
+      }
+    }
+
+    // Navigation button handlers with validation
+    if (elements.prevButton) {
+      elements.prevButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = elements.prevButton?.getAttribute('data-character-url') || null;
+        handleNavigation(url);
+      });
+    }
+
+    if (elements.nextButton) {
+      elements.nextButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = elements.nextButton?.getAttribute('data-character-url') || null;
+        handleNavigation(url);
+      });
+    }
+
+
+    // Keyboard navigation support with validation
+    document.addEventListener('keydown', (e) => {
+      // Don't interfere with form inputs or when modifier keys are pressed
+      const target = e.target as HTMLElement;
+      if (target?.tagName === 'INPUT' || 
+          target?.tagName === 'TEXTAREA' || 
+          e.ctrlKey || e.altKey || e.metaKey) {
+        return;
+      }
+
+      try {
+        if (e.key === 'ArrowLeft' && elements.prevButton) {
+          e.preventDefault();
+          const url = elements.prevButton?.getAttribute('data-character-url') || null;
+          handleNavigation(url);
+        } else if (e.key === 'ArrowRight' && elements.nextButton) {
+          e.preventDefault();
+          const url = elements.nextButton?.getAttribute('data-character-url') || null;
+          handleNavigation(url);
+        }
+      } catch (error: unknown) {
+        // console.error('Keyboard navigation error:', error);
+      }
+    });
+  });
+</script>

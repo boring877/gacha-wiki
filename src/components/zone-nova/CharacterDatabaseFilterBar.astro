@@ -7,11 +7,7 @@ import { CHARACTER_METADATA } from '../../data/zone-nova/characters.js';
   <div class="filter-controls">
     <select class="filter-select" id="element-filter">
       <option value="">Element</option>
-      {
-        CHARACTER_METADATA.elements.map(element => (
-          <option value={element}>{element}</option>
-        ))
-      }
+      {CHARACTER_METADATA.elements.map(element => <option value={element}>{element}</option>)}
     </select>
     <select class="filter-select" id="rarity-filter">
       <option value="">Rarity</option>
@@ -23,19 +19,11 @@ import { CHARACTER_METADATA } from '../../data/zone-nova/characters.js';
     </select>
     <select class="filter-select" id="class-filter">
       <option value="">Class</option>
-      {
-        CHARACTER_METADATA.classes.map(charClass => (
-          <option value={charClass}>{charClass}</option>
-        ))
-      }
+      {CHARACTER_METADATA.classes.map(charClass => <option value={charClass}>{charClass}</option>)}
     </select>
     <select class="filter-select" id="faction-filter">
       <option value="">Faction</option>
-      {
-        CHARACTER_METADATA.factions.map(faction => (
-          <option value={faction}>{faction}</option>
-        ))
-      }
+      {CHARACTER_METADATA.factions.map(faction => <option value={faction}>{faction}</option>)}
     </select>
   </div>
   <div class="sort-controls">

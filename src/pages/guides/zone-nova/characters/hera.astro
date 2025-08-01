@@ -6,6 +6,10 @@ import { heraData, heraSEO } from '../../../../data/zone-nova/characters/hera.js
 export const prerender = true;
 ---
 
-<CharacterIndividualLayout title={heraSEO.title} description={heraSEO.description} gameTitle={heraData.name}>
+<CharacterIndividualLayout
+  title={heraSEO.title}
+  description={heraSEO.description}
+  gameTitle={heraData.name}
+>
   <CharacterPageTemplate characterData={heraData} />
 </CharacterIndividualLayout>

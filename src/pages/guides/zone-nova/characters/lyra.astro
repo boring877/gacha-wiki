@@ -7,6 +7,10 @@ import { lyraData, lyraSEO } from '../../../../data/zone-nova/characters/lyra.js
 export const prerender = true;
 ---
 
-<CharacterIndividualLayout title={lyraSEO.title} description={lyraSEO.description} gameTitle={lyraData.name}>
+<CharacterIndividualLayout
+  title={lyraSEO.title}
+  description={lyraSEO.description}
+  gameTitle={lyraData.name}
+>
   <CharacterPageTemplate characterData={lyraData} />
 </CharacterIndividualLayout>

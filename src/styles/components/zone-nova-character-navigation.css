@@ -24,7 +24,7 @@
   padding: 16px;
   margin-left: 20px;
   float: left;
-  box-shadow: 
+  box-shadow:
     0 4px 20px rgba(255, 183, 77, 0.15),
     0 2px 8px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -52,7 +52,6 @@
   justify-content: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
 }
-
 
 /* Navigation info container */
 .zone-nova-body .nav-info {
@@ -116,7 +115,6 @@
   font-weight: 600;
 }
 
-
 /* Mobile responsive - hide navigation panel, use invisible swipe zones */
 @media (max-width: 768px) {
   .zone-nova-body .nav-zone-single {
@@ -176,13 +174,14 @@
   }
 
   @keyframes mobileHintFade {
-    0%, 70%, 100% {
+    0%,
+    70%,
+    100% {
       opacity: 0;
     }
-    15%, 55% {
+    15%,
+    55% {
       opacity: 1;
     }
   }
 }
-
-

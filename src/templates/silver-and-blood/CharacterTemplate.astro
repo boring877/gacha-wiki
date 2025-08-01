@@ -2,7 +2,6 @@
 import CharacterLayout from '../../layouts/silver-and-blood/CharacterLayout.astro';
 import { gameInfo } from '../../data/silver-and-blood/characters.js';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
-import CharacterNavigation from '../../components/silver-and-blood/CharacterNavigation.astro';
 
 export interface Props {
   character: any; // The full character data object
@@ -102,8 +101,8 @@ const relatedCharacters = [];
     ]}
   />
 
-  <!-- Character Navigation -->
-  <CharacterNavigation currentCharacter={character} />
+  <!-- Mobile navigation instruction at top of main content -->
+  <div class="swipeable-indicator">Touch the sides to move between characters</div>
 
   <!-- Character Header & Overview -->
   <section class="content-section">
