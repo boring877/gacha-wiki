@@ -16,8 +16,8 @@ export const clockGames = [
         name: 'Maintenance',
         description: 'Scheduled Server Maintenance',
         type: 'maintenance',
-        startDate: '2025-08-05T02:00:00Z',
-        endDate: '2025-08-05T06:00:00Z',
+        startDate: '2025-08-05T06:00:00Z',
+        endDate: '2025-08-05T08:00:00Z',
         priority: 0, // Highest priority
         icon: '🔧',
         enabled: false, // Enable when maintenance is scheduled
@@ -98,8 +98,8 @@ export const clockGames = [
         name: 'Maintenance',
         description: 'Scheduled Server Maintenance',
         type: 'maintenance',
-        startDate: '2025-08-05T02:00:00Z',
-        endDate: '2025-08-05T06:00:00Z',
+        startDate: '2025-08-05T06:00:00Z',
+        endDate: '2025-08-05T08:00:00Z',
         priority: 0, // Highest priority
         icon: '🔧',
         enabled: false, // Enable when maintenance is scheduled

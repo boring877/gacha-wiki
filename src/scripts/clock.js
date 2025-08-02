@@ -8,12 +8,12 @@ class ClockTimer {
     this.resetHour = resetHour;
     this.resetMinute = resetMinute;
     this.clockInterval = null;
-    
+
     // DOM elements
     this.clockHours = null;
     this.clockMinutes = null;
     this.clockSeconds = null;
-    
+
     this.init();
   }
 
@@ -33,7 +33,7 @@ class ClockTimer {
     this.clockSeconds = document.getElementById('clockSeconds');
     this.currentDate = document.getElementById('currentDate');
     this.currentUTC = document.getElementById('currentUTC');
-    
+
     // Timer Cards
     this.launchDays = document.getElementById('launchDays');
     this.rift1Name = document.getElementById('rift1Name');
@@ -90,7 +90,7 @@ class ClockTimer {
     return {
       hours: Math.max(0, hours),
       minutes: Math.max(0, minutes),
-      seconds: Math.max(0, seconds)
+      seconds: Math.max(0, seconds),
     };
   }
 
@@ -99,7 +99,7 @@ class ClockTimer {
    */
   updateClock() {
     const time = this.getTimeUntilReset();
-    
+
     // Update with flip animation
     this.updateTimeValue(this.clockHours, time.hours);
     this.updateTimeValue(this.clockMinutes, time.minutes);
@@ -111,7 +111,7 @@ class ClockTimer {
    */
   updateTimeValue(element, value) {
     if (!element) return;
-    
+
     const newValue = String(value).padStart(2, '0');
     element.textContent = newValue;
   }
@@ -121,15 +121,15 @@ class ClockTimer {
    */
   updateCurrentDateTime() {
     const now = new Date();
-    
+
     // Format current date
     if (this.currentDate) {
-      const options = { 
-        weekday: 'short', 
-        year: 'numeric', 
-        month: 'short', 
+      const options = {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
         day: 'numeric',
-        timeZone: 'UTC'
+        timeZone: 'UTC',
       };
       const dateStr = now.toLocaleDateString('en-US', options);
       this.currentDate.textContent = dateStr;
@@ -165,8 +165,9 @@ class ClockTimer {
     const launchDate = new Date('2025-04-29T00:00:00Z');
     const timeDiff = now.getTime() - launchDate.getTime();
     const daysSinceLaunch = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    
-    this.launchDays.textContent = daysSinceLaunch >= 0 ? daysSinceLaunch : Math.abs(daysSinceLaunch);
+
+    this.launchDays.textContent =
+      daysSinceLaunch >= 0 ? daysSinceLaunch : Math.abs(daysSinceLaunch);
   }
 
   /**
@@ -179,12 +180,12 @@ class ClockTimer {
     const rifts = [
       {
         name: 'Rift VII',
-        endDate: '2025-08-18T20:00:00Z'
+        endDate: '2025-08-18T20:00:00Z',
       },
       {
-        name: 'Rift VI', 
-        endDate: '2025-08-04T20:00:00Z'
-      }
+        name: 'Rift VI',
+        endDate: '2025-08-04T20:00:00Z',
+      },
     ];
 
     // Update Rift 1 (VII)
@@ -238,10 +239,10 @@ class ClockTimer {
 
     const now = new Date();
     const nextMonday = new Date();
-    
+
     // Get days until next Monday (0 = Sunday, 1 = Monday, etc.)
     const daysUntilMonday = (1 - now.getUTCDay() + 7) % 7 || 7;
-    
+
     nextMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
     nextMonday.setUTCHours(20, 0, 0, 0); // 20:00 UTC
 
@@ -269,8 +270,8 @@ class ClockTimer {
     if (!this.maintenanceStartTime || !this.maintenanceEndTime) return;
 
     const now = new Date();
-    const maintenanceStart = new Date('2025-08-05T14:00:00Z'); // August 5, 2025, 14:00 UTC
-    const maintenanceEnd = new Date('2025-08-05T16:00:00Z'); // 2 hours later
+    const maintenanceStart = new Date('2025-08-05T06:00:00Z'); // August 5, 2025, 06:00 UTC (14:00 UTC+8)
+    const maintenanceEnd = new Date('2025-08-05T08:00:00Z'); // 2 hours later
 
     const startTimeDiff = maintenanceStart.getTime() - now.getTime();
     const endTimeDiff = maintenanceEnd.getTime() - now.getTime();
