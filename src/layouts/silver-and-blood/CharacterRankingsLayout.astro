@@ -31,6 +31,11 @@ const { title, description, gameTitle, heroImage } = Astro.props;
     <BaseHead title={title} description={description || ""} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
     
+    <!-- Image Preloading for Performance -->
+    {heroImage && (
+      <link rel="preload" as="image" href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.webp')} type="image/webp" />
+    )}
+    
     <slot name="head" />
   </head>
   <body class="sab-body">
@@ -97,8 +102,3 @@ const { title, description, gameTitle, heroImage } = Astro.props;
     </div>
   </body>
 </html>
-
-<!-- Image Preloading for Performance -->
-    {heroImage && (
-      <link rel="preload" as="image" href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.webp')} type="image/webp" />
-    )}

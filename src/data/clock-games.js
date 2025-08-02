@@ -15,12 +15,12 @@ export const clockGames = [
         id: 'maintenance',
         name: 'Maintenance',
         description: 'Scheduled Server Maintenance',
-        type: 'maintenance', 
+        type: 'maintenance',
         startDate: '2025-08-05T02:00:00Z',
         endDate: '2025-08-05T06:00:00Z',
         priority: 0, // Highest priority
         icon: '🔧',
-        enabled: false // Enable when maintenance is scheduled
+        enabled: false, // Enable when maintenance is scheduled
       },
       {
         id: 'daily-reset',
@@ -30,18 +30,18 @@ export const clockGames = [
         resetHour: 20, // UTC
         resetMinute: 0,
         priority: 1,
-        icon: '🔄'
+        icon: '🔄',
       },
       {
         id: 'weekly-reset',
-        name: 'Weekly Reset', 
+        name: 'Weekly Reset',
         description: 'Weekly Missions • Arena Reset',
         type: 'weekly',
         resetDay: 1, // Monday = 1, Sunday = 0
         resetHour: 20,
         resetMinute: 0,
         priority: 2,
-        icon: '📅'
+        icon: '📅',
       },
       {
         id: 'rift-time',
@@ -51,7 +51,7 @@ export const clockGames = [
         resetHour: 12, // UTC (Different from daily reset)
         resetMinute: 0,
         priority: 3,
-        icon: '🌀'
+        icon: '🌀',
       },
       {
         id: 'pvp-timer',
@@ -60,7 +60,7 @@ export const clockGames = [
         type: 'season',
         endDate: '2025-08-30T20:00:00Z',
         priority: 4,
-        icon: '⚔️'
+        icon: '⚔️',
       },
       {
         id: 'event-timer',
@@ -70,9 +70,9 @@ export const clockGames = [
         endDate: '2025-08-15T20:00:00Z',
         priority: 5,
         icon: '🌟',
-        enabled: false // Enable when event is active
-      }
-    ]
+        enabled: false, // Enable when event is active
+      },
+    ],
   },
   {
     id: 'silver-blood',
@@ -91,7 +91,7 @@ export const clockGames = [
         resetHour: 12, // UTC (20:00 UTC+8)
         resetMinute: 0,
         priority: 1,
-        icon: '🔄'
+        icon: '🔄',
       },
       {
         id: 'maintenance',
@@ -102,7 +102,7 @@ export const clockGames = [
         endDate: '2025-08-05T06:00:00Z',
         priority: 0, // Highest priority
         icon: '🔧',
-        enabled: false // Enable when maintenance is scheduled  
+        enabled: false, // Enable when maintenance is scheduled
       },
       {
         id: 'pvp-season',
@@ -111,10 +111,10 @@ export const clockGames = [
         type: 'season',
         endDate: '2025-08-30T12:00:00Z',
         priority: 2,
-        icon: '⚔️'
-      }
-    ]
-  }
+        icon: '⚔️',
+      },
+    ],
+  },
 ];
 
 /**
@@ -133,7 +133,7 @@ export function getActiveClockGames() {
 export function getActiveTimers(gameId) {
   const game = clockGames.find(g => g.id === gameId);
   if (!game) return [];
-  
+
   return game.timers
     .filter(timer => timer.enabled !== false)
     .sort((a, b) => a.priority - b.priority);
@@ -141,7 +141,7 @@ export function getActiveTimers(gameId) {
 
 /**
  * Get the primary timer for a game (highest priority active timer)
- * @param {string} gameId - Game identifier  
+ * @param {string} gameId - Game identifier
  * @returns {Object|null} Primary timer or null
  */
 export function getPrimaryTimer(gameId) {
@@ -162,26 +162,27 @@ export function calculateTimeRemaining(timer) {
     case 'daily':
       targetTime = new Date();
       targetTime.setUTCHours(timer.resetHour, timer.resetMinute || 0, 0, 0);
-      
+
       // If reset time has passed today, set it for tomorrow
       if (targetTime <= now) {
         targetTime.setUTCDate(targetTime.getUTCDate() + 1);
       }
       break;
 
-    case 'weekly':
+    case 'weekly': {
       targetTime = new Date();
       const currentDay = targetTime.getUTCDay();
       const daysUntilReset = (timer.resetDay - currentDay + 7) % 7;
-      
+
       targetTime.setUTCDate(targetTime.getUTCDate() + daysUntilReset);
       targetTime.setUTCHours(timer.resetHour, timer.resetMinute || 0, 0, 0);
-      
+
       // If it's the same day but time has passed, set for next week
       if (daysUntilReset === 0 && targetTime <= now) {
         targetTime.setUTCDate(targetTime.getUTCDate() + 7);
       }
       break;
+    }
 
     case 'event':
     case 'maintenance':
@@ -198,7 +199,7 @@ export function calculateTimeRemaining(timer) {
   }
 
   const timeDiff = targetTime.getTime() - now.getTime();
-  
+
   if (timeDiff <= 0) {
     return { hours: 0, minutes: 0, seconds: 0, expired: true };
   }
@@ -209,8 +210,8 @@ export function calculateTimeRemaining(timer) {
 
   return {
     hours: Math.max(0, hours),
-    minutes: Math.max(0, minutes), 
+    minutes: Math.max(0, minutes),
     seconds: Math.max(0, seconds),
-    expired: false
+    expired: false,
   };
 }
