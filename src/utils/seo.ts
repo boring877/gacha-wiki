@@ -38,6 +38,8 @@ export interface StructuredDataGame {
   readonly publisher: {
     readonly '@type': 'Organization';
     readonly name: string;
+    readonly sameAs?: readonly string[];
+    readonly additionalType?: string;
   };
   readonly offers: {
     readonly '@type': 'Offer';
@@ -169,15 +171,14 @@ export function generateGameStructuredData(
     publisher: {
       '@type': 'Organization',
       name: GLOBAL_SEO.siteName,
-      description: 'Open source gacha game wiki and community project',
       sameAs: [
         GLOBAL_SEO.social.github,
         GLOBAL_SEO.social.youtube,
         GLOBAL_SEO.social.discord,
         GLOBAL_SEO.social.x,
-        GLOBAL_SEO.social.rumble
+        GLOBAL_SEO.social.rumble,
       ].filter(Boolean),
-      additionalType: 'https://schema.org/OpenSourceProject'
+      additionalType: 'https://schema.org/OpenSourceProject',
     },
     offers: {
       '@type': 'Offer',
@@ -216,7 +217,8 @@ export function generateCharacterStructuredData(
     '@context': 'https://schema.org',
     '@type': 'VideoGameCharacter',
     name: character.name,
-    description: character.description || `${character.name} character guide for ${gameConfig.gameName}`,
+    description:
+      character.description || `${character.name} character guide for ${gameConfig.gameName}`,
     image: character.image,
     isPartOf: {
       '@type': 'VideoGame',
@@ -327,7 +329,10 @@ export function getGameConfig(gameKey: string): GameSEOConfig | null {
  * @param config - Game configuration object
  * @note Currently unused but available for dynamic game addition in the future
  */
-export function addGameConfig(gameKey: string, config: Partial<GameSEOConfig> & { gameName: string }): void {
+export function addGameConfig(
+  gameKey: string,
+  config: Partial<GameSEOConfig> & { gameName: string }
+): void {
   if (GAME_SEO_CONFIG[gameKey]) {
     console.warn(`SEO: Game configuration already exists for key: ${gameKey}. Overwriting.`);
   }
@@ -353,15 +358,15 @@ export function validateSEOData(data: {
   keywords?: string[];
 }): { isValid: boolean; missingFields: string[] } {
   const missingFields: string[] = [];
-  
+
   if (!data.title || data.title.trim().length === 0) {
     missingFields.push('title');
   }
-  
+
   if (!data.description || data.description.trim().length === 0) {
     missingFields.push('description');
   }
-  
+
   if (!data.keywords || data.keywords.length === 0) {
     missingFields.push('keywords');
   }
