@@ -1,0 +1,789 @@
+/* Clock Design - Clean Start */
+
+/* Background Layers - Same as home page */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+}
+
+.bg-primary {
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+}
+
+.bg-accent-1 {
+  background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent);
+  pointer-events: none;
+}
+
+.bg-accent-2 {
+  background: radial-gradient(circle at 80% 20%, rgba(255, 183, 77, 0.08), transparent);
+  pointer-events: none;
+}
+
+.bg-accent-3 {
+  background: radial-gradient(circle at 50% 50%, rgba(0, 172, 193, 0.05), transparent);
+  pointer-events: none;
+}
+
+.clock-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Page Layout */
+.modern-clock-page {
+  min-height: calc(100vh - 140px);
+  padding: 2rem 0;
+}
+
+.clock-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Title Only Section - Same as other pages */
+.title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInUp 1s ease-out both;
+}
+
+.title-only-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-inverse);
+  margin: 0;
+  background: linear-gradient(135deg, var(--text-inverse) 0%, var(--amber-glow) 50%, var(--text-inverse) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(255, 183, 77, 0.3);
+}
+
+/* Responsive Title */
+@media (max-width: 768px) {
+  .title-only-heading {
+    font-size: 2.5rem;
+  }
+  
+  .title-only-section {
+    margin-bottom: 2rem;
+  }
+}
+
+/* UTC Note */
+.utc-note {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 2rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+/* Mobile optimization for UTC Note */
+@media (max-width: 768px) {
+  .utc-note {
+    display: none;
+  }
+}
+
+/* Master Clock Container - Same as home page */
+.master-clock-container {
+  display: flex;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Main Clock - Same as home page */
+.master-clock {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  padding: 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.master-clock:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Current Date & Time Info */
+.current-time-info {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  text-align: right;
+  z-index: 3;
+}
+
+.current-date {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--amber-glow);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.current-utc {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.02em;
+}
+
+/* Clock Background Animation */
+.clock-bg-animation {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    var(--amber-glow),
+    var(--teal-crystal),
+    var(--rose-quartz)
+  );
+  border-radius: 32px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+}
+
+/* Clock Header - Same as home page */
+.clock-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+/* Game Image Container */
+.game-image-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+.game-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+/* Game Info */
+.game-info {
+  text-align: left;
+}
+
+.game-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--amber-glow);
+  margin: 0 0 0.5rem 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.game-status {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Timer Description */
+.timer-description-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.timer-main-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--amber-glow);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Clock Display */
+.clock-display {
+  margin-bottom: 2rem;
+}
+
+.time-unit-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.time-value {
+  font-family: 'Courier New', monospace;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--text-inverse);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1;
+  min-width: 2.5ch;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 1.2em;
+}
+
+.time-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.time-separator {
+  font-family: 'Courier New', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-inverse);
+  animation: blink 2s ease-in-out infinite;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.2em;
+  line-height: 1;
+}
+
+/* Fancy Separator */
+.fancy-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  gap: 1rem;
+}
+
+.separator-line {
+  height: 2px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, var(--amber-glow), transparent);
+  opacity: 0.6;
+}
+
+.separator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--amber-glow);
+  box-shadow: 0 0 10px var(--amber-glow);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Timers Grid Layout */
+.timers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Timer Card Base */
+.timer-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.timer-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+
+/* Card Header */
+.timer-card-header {
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer-card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Server Status Indicator */
+.server-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.status-dot.maintenance {
+  background: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.6);
+}
+
+.status-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #22c55e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-text.maintenance {
+  color: #ef4444;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* Card Subtitle */
+.timer-card-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
+}
+
+/* Card Counter */
+.timer-card-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.timer-card-value {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.timer-card-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Card Value Color - Same for all */
+.timer-card-value {
+  color: var(--text-inverse);
+  text-shadow: none;
+}
+
+/* Rift Card Specific Styles */
+.timer-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rift-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rift-item:last-child {
+  border-bottom: none;
+}
+
+.rift-name {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.rift-time {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-inverse);
+}
+
+/* Maintenance Card Specific Styles */
+.maintenance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.maintenance-item:last-child {
+  border-bottom: none;
+}
+
+.maintenance-name {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.maintenance-time {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-inverse);
+}
+
+/* Red color for maintenance end timer during maintenance */
+#maintenanceEndTime {
+  color: #ef4444;
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+}
+
+/* Event Card Specific Styles */
+.event-status {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.event-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.event-date-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event-date-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.event-date-value {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.event-countdown {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Responsive Design - Mobile Optimizations */
+@media (max-width: 768px) {
+  /* UTC Note mobile optimization */
+  .utc-note {
+    font-size: 0.8rem;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: 0.03em;
+  }
+
+  /* Master Clock Mobile Layout */
+  .master-clock-container {
+    padding: 0 1rem;
+  }
+
+  .master-clock {
+    padding: 1.5rem 1.25rem;
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+  }
+
+  .clock-header {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-direction: row;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .game-image-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+  }
+
+  .game-name {
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+
+  .game-status {
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .clock-display {
+    margin-bottom: 1.5rem;
+  }
+
+  .time-unit-group {
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .time-unit {
+    flex: 1;
+    min-width: 70px;
+    max-width: 80px;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .time-value {
+    font-size: 2.2rem;
+    min-width: 2ch;
+    width: 100%;
+    height: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .time-separator {
+    font-size: 1.8rem;
+    flex: 0 0 auto;
+    width: 20px;
+    height: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -2rem;
+  }
+
+  .time-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+  }
+
+  .timer-description-section {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .timer-main-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+  }
+
+  /* Timers Grid Mobile */
+  .timers-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .timer-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  /* UTC Note small mobile */
+  .utc-note {
+    font-size: 0.75rem;
+    margin: 0 0 1rem 0;
+  }
+
+  /* Master Clock Small Mobile */
+  .master-clock-container {
+    padding: 0 0.5rem;
+  }
+
+  .master-clock {
+    padding: 1.25rem 1rem;
+  }
+
+  .timer-description-section {
+    min-height: 55px;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .timer-main-label {
+    font-size: 0.85rem;
+  }
+
+  .time-unit-group {
+    gap: 0.4rem;
+    max-width: 280px;
+  }
+
+  .time-unit {
+    min-width: 65px;
+    max-width: 75px;
+  }
+
+  .time-value {
+    font-size: 2rem;
+    height: 1em;
+  }
+
+  .time-separator {
+    font-size: 1.6rem;
+    width: 18px;
+    height: 1em;
+    margin-top: -1.8rem;
+  }
+
+  .time-label {
+    font-size: 0.6rem;
+  }
+
+  /* Timers Grid Small Mobile */
+  .timers-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .timer-card {
+    padding: 1rem;
+  }
+}
+
+/* Blinking Animation */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Fade In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

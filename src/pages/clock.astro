@@ -1,0 +1,46 @@
+---
+// Modern Clock Page - Enhanced timers with multiple timer types per game
+import ClockLayout from '../layouts/ClockLayout.astro';
+import { getActiveClockGames } from '../data/clock-games.js';
+
+// Get all active games for the modern clock page
+const clockGames = getActiveClockGames();
+
+// Page metadata
+const title = 'Server Reset Clocks | GachaWiki';
+const description = 'Track daily reset times for all your favorite gacha games. Never miss dailies, events, or farming sessions with our real-time server reset clocks.';
+---
+
+<ClockLayout
+  title={title}
+  description={description}
+  games={clockGames}
+>
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Server Reset Clocks",
+      "description": "Real-time server reset timers for popular gacha games including Zone Nova and Silver & Blood",
+      "url": "https://gachawiki.info/clock",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "Gacha Game Reset Clocks",
+        "description": "Track server reset times for multiple gacha games",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+</ClockLayout>

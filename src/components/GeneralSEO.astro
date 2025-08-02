@@ -1,0 +1,150 @@
+---
+/**
+ * GeneralSEO Component - Reusable SEO component for non-game specific pages
+ * Provides comprehensive SEO meta tags, structured data, and social media optimization
+ * for general site pages with proper error handling and validation.
+ */
+
+import { GLOBAL_SEO, OPEN_SOURCE_KEYWORDS, validateSEOData } from '../utils/seo';
+
+export interface Props {
+  /** Page title - will be used for title tag and social media */
+  title: string;
+  /** Page description - will be used for meta description and social media */
+  description: string;
+  /** Keywords for meta keywords tag - defaults to general site keywords */
+  keywords?: readonly string[];
+  /** Social media image - defaults to site default image */
+  image?: string;
+  /** Custom structured data - will override auto-generated structured data */
+  structuredData?: Record<string, unknown>;
+  /** Page type for Open Graph - affects how social media displays the page */
+  pageType?: 'website' | 'article' | 'webapp';
+  /** Whether to prevent search engine indexing (default: false) */
+  noIndex?: boolean;
+  /** Whether to include canonical URL (default: true) */
+  includeCanonical?: boolean;
+}
+
+const {
+  title,
+  description,
+  keywords = [],
+  image = '/images/about.jpg',
+  structuredData,
+  pageType = 'website',
+  noIndex = false,
+  includeCanonical = true,
+} = Astro.props;
+
+// Validate required props
+if (!title || typeof title !== 'string' || title.trim().length === 0) {
+  throw new Error(`GeneralSEO: title is required and must be a non-empty string. Received: ${title}`);
+}
+
+if (!description || typeof description !== 'string' || description.trim().length === 0) {
+  throw new Error(`GeneralSEO: description is required and must be a non-empty string. Received: ${description}`);
+}
+
+// Generate default keywords if none provided
+const defaultKeywords = [
+  'gacha wiki',
+  'gacha games',
+  'game guides',
+  'GachaWiki',
+  'gaming community'
+] as const;
+
+const finalKeywords = keywords.length > 0 ? keywords : defaultKeywords;
+const keywordsString = [...finalKeywords, ...OPEN_SOURCE_KEYWORDS].join(', ');
+
+// Generate robots content
+const robotsContent = noIndex 
+  ? 'noindex, nofollow' 
+  : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
+
+// Generate canonical URL
+const canonicalURL = includeCanonical ? new URL(Astro.url.pathname, Astro.site) : null;
+
+// Validate generated SEO data in development
+if (import.meta.env.DEV) {
+  const validation = validateSEOData({
+    title,
+    description,
+    keywords: Array.from(finalKeywords),
+  });
+
+  if (!validation.isValid) {
+    console.warn(`GeneralSEO Warning: Missing required fields:`, validation.missingFields);
+  }
+}
+---
+
+<!-- General SEO Meta Tags -->
+{keywordsString && <meta name="keywords" content={keywordsString} />}
+<meta name="author" content={GLOBAL_SEO.author} />
+<meta name="robots" content={robotsContent} />
+
+<!-- Open Source Project Meta Tags -->
+<meta name="project:type" content="open-source" />
+<meta name="project:license" content="MIT" />
+<meta name="project:repository" content={GLOBAL_SEO.social.github} />
+<meta name="project:status" content="active" />
+
+<!-- Canonical URL -->
+{canonicalURL && <link rel="canonical" href={canonicalURL} />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={pageType} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.site)} />
+<meta property="og:url" content={canonicalURL?.toString() || Astro.url.href} />
+<meta property="og:site_name" content={GLOBAL_SEO.siteName} />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, Astro.site)} />
+{GLOBAL_SEO.social.x && <meta name="twitter:site" content={GLOBAL_SEO.social.x} />}
+
+<!-- Additional Social Meta -->
+<meta property="article:author" content={GLOBAL_SEO.author} />
+{GLOBAL_SEO.social.github && <meta property="article:publisher" content={GLOBAL_SEO.social.github} />}
+
+<!-- Schema.org Structured Data -->
+{structuredData ? (
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData, null, 0)} />
+) : (
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": title,
+    "description": description,
+    "url": canonicalURL?.toString() || Astro.url.href,
+    "publisher": {
+      "@type": "Organization",
+      "name": GLOBAL_SEO.siteName,
+      "url": Astro.site?.toString(),
+      "description": "Open source gacha game wiki and community project",
+      "foundingDate": "2024",
+      "sameAs": [
+        GLOBAL_SEO.social.github,
+        GLOBAL_SEO.social.youtube,
+        GLOBAL_SEO.social.discord,
+        GLOBAL_SEO.social.x,
+        GLOBAL_SEO.social.rumble
+      ].filter(Boolean),
+      "additionalType": "https://schema.org/OpenSourceProject"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonicalURL?.toString() || Astro.url.href
+    }
+  }, null, 0)} />
+)}
+
+<!-- Performance hints -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//fonts.gstatic.com" />

@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import GameSEO from '../../components/GameSEO.astro';
 
 // Import Silver and Blood specific styles
 import '../../styles/colors.css';
@@ -28,65 +29,12 @@ const { title, description } = Astro.props;
       description={description || ''}
       shouldPreloadDefaultImage={false}
     />
+    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+    
     <!-- SAB comparison styles need to override global styles, so we load them last -->
     <style is:global>
       @import '../../styles/games/silver-and-blood/sab-character-comparison.css';
     </style>
-
-    <!-- SEO Meta Tags -->
-    <meta
-      name="keywords"
-      content="Silver and Blood, character comparison, character stats, team building, vampire game, character guide"
-    />
-    <meta name="author" content="GachaWiki" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content={title} />
-    <meta
-      property="og:description"
-      content={description ||
-        'Compare Silver and Blood characters side by side. Analyze stats, skills, and abilities to build the perfect team.'}
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta
-      name="twitter:description"
-      content={description ||
-        'Compare Silver and Blood characters side by side. Analyze stats, skills, and abilities to build the perfect team.'}
-    />
-
-    <!-- Mobile Optimization -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#5a7ba7" />
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-
-    <!-- Schema.org Structured Data -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'WebApplication',
-        name: title,
-        description: description || 'Compare Silver and Blood characters side by side',
-        about: {
-          '@type': 'VideoGame',
-          name: 'Silver and Blood',
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'GachaWiki',
-        },
-        applicationCategory: 'GameApplication',
-        operatingSystem: 'Web Browser',
-      })}
-    />
 
     <slot name="head" />
   </head>

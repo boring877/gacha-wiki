@@ -1,0 +1,236 @@
+---
+// Modern UI Clock Layout - Sleek contemporary interface
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import Footer from '../components/Footer.astro';
+import CustomScrollbar from '../components/CustomScrollbar.astro';
+import GeneralSEO from '../components/GeneralSEO.astro';
+import DecorativeLines from '../components/DecorativeLines.astro';
+
+// Import CSS files
+import '../styles/colors.css';
+import '../styles/global.css';
+import '../styles/typography.css';
+import '../styles/pages/clock.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  games: any[];
+}
+
+const { title, description, games } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    
+    <GeneralSEO 
+      title={title}
+      description={description}
+      keywords={['modern UI timers', 'clean clock interface', 'Zone Nova', 'Silver Blood', 'contemporary design']}
+      pageType="webapp"
+    />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    {games.slice(0, 2).map(game => 
+      <link rel="preload" href={game.image} as="image" type="image/jpeg" />
+    )}
+  </head>
+
+  <body>
+    <CustomScrollbar />
+    <!-- Same background layers as home page -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="clock-content">
+      <Header />
+      <MobileMenu />
+      
+      <main class="modern-clock-page">
+        <div class="clock-container">
+          <!-- Page Title -->
+          <section class="title-only-section">
+            <h1 class="title-only-heading">Gacha Clock</h1>
+            <DecorativeLines />
+          </section>
+
+          <!-- Master Clock - Same as home page -->
+          <div class="master-clock-container">
+            <div class="master-clock" id="masterClock">
+              <!-- UTC Note -->
+              <p class="utc-note">This is based on UTC</p>
+              <!-- Clock Background Animation -->
+              <div class="clock-bg-animation"></div>
+
+              <!-- Current Date & Time Info -->
+              <div class="current-time-info">
+                <div class="current-date" id="currentDate">Loading...</div>
+                <div class="current-utc" id="currentUTC">UTC --:--:--</div>
+              </div>
+
+              <!-- Game Info Header -->
+              <div class="clock-header">
+                <div class="game-image-container" id="clockGameImageContainer">
+                  <img
+                    class="game-image"
+                    id="clockGameImage"
+                    src="/images/games/zone-nova/zonenova.jpg"
+                    alt="Zone Nova"
+                    loading="eager"
+                  />
+                </div>
+                <div class="game-info">
+                  <h3 class="game-name" id="clockGameName">Zone Nova</h3>
+                  <div class="game-status">Daily reset timer<br>Resets at 20:00 UTC</div>
+                </div>
+              </div>
+
+              <!-- Timer Description Section -->
+              <div class="timer-description-section">
+                <div class="timer-main-label">Server Reset</div>
+              </div>
+
+              <!-- Main Clock Display -->
+              <div class="clock-display">
+                <div class="time-unit-group">
+                  <div class="time-unit">
+                    <span class="time-value" id="clockHours">--</span>
+                    <span class="time-label">Hours</span>
+                  </div>
+                  <div class="time-separator">:</div>
+                  <div class="time-unit">
+                    <span class="time-value" id="clockMinutes">--</span>
+                    <span class="time-label">Minutes</span>
+                  </div>
+                  <div class="time-separator">:</div>
+                  <div class="time-unit">
+                    <span class="time-value" id="clockSeconds">--</span>
+                    <span class="time-label">Seconds</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fancy Separator Line -->
+              <div class="fancy-separator">
+                <div class="separator-line"></div>
+                <div class="separator-dot"></div>
+                <div class="separator-line"></div>
+              </div>
+
+              <!-- Multiple Timers Grid -->
+              <div class="timers-grid">
+                <!-- Launch Timer Card -->
+                <div class="timer-card launch-card">
+                  <div class="timer-card-header">
+                    <div class="timer-card-title">Game Launch</div>
+                  </div>
+                  <div class="timer-card-subtitle">April 29, 2025</div>
+                  <div class="timer-card-counter">
+                    <span class="timer-card-value" id="launchDays">---</span>
+                    <span class="timer-card-label">Days</span>
+                  </div>
+                </div>
+
+                <!-- Rift Timer Card -->
+                <div class="timer-card rift-card">
+                  <div class="timer-card-header">
+                    <div class="timer-card-title">Active Rifts</div>
+                  </div>
+                  <div class="timer-card-content">
+                    <!-- Rift 1 -->
+                    <div class="rift-item">
+                      <div class="rift-name" id="rift1Name">Loading...</div>
+                      <div class="rift-time" id="rift1Time">--:--:--</div>
+                    </div>
+                    <!-- Rift 2 -->
+                    <div class="rift-item">
+                      <div class="rift-name" id="rift2Name">Loading...</div>
+                      <div class="rift-time" id="rift2Time">--:--:--</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Weekly Reset Timer Card -->
+                <div class="timer-card weekly-card">
+                  <div class="timer-card-header">
+                    <div class="timer-card-title">Weekly Reset</div>
+                  </div>
+                  <div class="timer-card-subtitle">Every Monday</div>
+                  <div class="timer-card-counter">
+                    <span class="timer-card-value" id="weeklyTime">--:--:--</span>
+                    <span class="timer-card-label">Remaining</span>
+                  </div>
+                </div>
+
+                <!-- Maintenance Timer Card -->
+                <div class="timer-card maintenance-card">
+                  <div class="timer-card-header">
+                    <div class="timer-card-title">Maintenance</div>
+                    <div class="server-status">
+                      <div class="status-dot" id="serverStatusDot"></div>
+                      <span class="status-text" id="serverStatusText">Online</span>
+                    </div>
+                  </div>
+                  <div class="timer-card-subtitle">August 5, 2025 - 14:00 (2h duration)</div>
+                  <div class="timer-card-content">
+                    <!-- Maintenance Start Timer -->
+                    <div class="maintenance-item">
+                      <div class="maintenance-name" id="maintenanceStartLabel">Until Start</div>
+                      <div class="maintenance-time" id="maintenanceStartTime">--:--:--</div>
+                    </div>
+                    <!-- Maintenance End Timer -->
+                    <div class="maintenance-item">
+                      <div class="maintenance-name" id="maintenanceEndLabel">Servers Back</div>
+                      <div class="maintenance-time" id="maintenanceEndTime">--:--:--</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Event Timer Card -->
+                <div class="timer-card event-card">
+                  <div class="timer-card-header">
+                    <div class="timer-card-title">Events</div>
+                  </div>
+                  <div class="timer-card-content">
+                    <!-- Event Status -->
+                    <div class="event-status" id="eventStatus">No Active Event</div>
+                    <!-- Event Dates -->
+                    <div class="event-dates">
+                      <div class="event-date-item">
+                        <span class="event-date-label">Started:</span>
+                        <span class="event-date-value" id="eventStartDate">--</span>
+                      </div>
+                      <div class="event-date-item">
+                        <span class="event-date-label">Ending:</span>
+                        <span class="event-date-value" id="eventEndDate">--</span>
+                      </div>
+                    </div>
+                    <!-- Event Countdown -->
+                    <div class="event-countdown">
+                      <span class="timer-card-value" id="eventTime">--:--:--</span>
+                      <span class="timer-card-label" id="eventTimeLabel">Event End</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <Footer />
+
+    <!-- Clock Timer Script -->
+    <script src="/src/scripts/clock.js"></script>
+  </body>
+</html>

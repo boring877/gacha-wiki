@@ -1,5 +1,10 @@
 ---
-// Reusable SEO component for character pages
+/**
+ * CharacterSEO Component - Reusable SEO component for character pages
+ * Provides comprehensive SEO meta tags, structured data, and social media optimization
+ * specifically optimized for character pages with rich character data.
+ */
+
 import {
   generateGameKeywords,
   generateCharacterStructuredData,
@@ -7,7 +12,8 @@ import {
   generateDescription,
   getGameConfig,
   GLOBAL_SEO,
-} from '../utils/seo.js';
+  OPEN_SOURCE_KEYWORDS,
+} from '../utils/seo';
 
 export interface Props {
   gameKey: string; // e.g., 'zone-nova', 'silver-and-blood'
@@ -25,9 +31,14 @@ if (!gameConfig) {
   throw new Error(`Game configuration not found for: ${gameKey}`);
 }
 
+// Validate character object
+if (!character) {
+  throw new Error(`CharacterSEO: character prop is required. Use GameSEO for non-character pages.`);
+}
+
 // Generate character-specific SEO data
 const characterKeywords = [
-  character.name,
+  character.name || '',
   character.rarity || '',
   character.class || character.role || '',
   character.faction || '',
@@ -37,7 +48,7 @@ const characterKeywords = [
   'stats',
 ].filter(Boolean);
 
-const keywords = generateGameKeywords(gameKey, [...characterKeywords, ...additionalKeywords]);
+const keywords = generateGameKeywords(gameKey, [...characterKeywords, ...OPEN_SOURCE_KEYWORDS, ...additionalKeywords]);
 const title = customTitle || generateTitle(gameKey, 'character', character);
 const description = customDescription || generateDescription(gameKey, 'character', character);
 const structuredData = generateCharacterStructuredData(gameKey, character);
@@ -47,6 +58,12 @@ const structuredData = generateCharacterStructuredData(gameKey, character);
 <meta name="keywords" content={keywords} />
 <meta name="author" content={GLOBAL_SEO.author} />
 <meta name="robots" content="index, follow" />
+
+<!-- Open Source Project Meta Tags -->
+<meta name="project:type" content="open-source" />
+<meta name="project:license" content="MIT" />
+<meta name="project:repository" content={GLOBAL_SEO.social.github} />
+<meta name="project:status" content="active" />
 
 <!-- Mobile Optimization -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -68,7 +85,7 @@ const structuredData = generateCharacterStructuredData(gameKey, character);
 
 <!-- Twitter Card tags -->
 <meta name="twitter:card" content="summary_large_image" />
-{GLOBAL_SEO.social.twitter && <meta name="twitter:site" content={GLOBAL_SEO.social.twitter} />}
+{GLOBAL_SEO.social.x && <meta name="twitter:site" content={GLOBAL_SEO.social.x} />}
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 {character.image && <meta name="twitter:image" content={new URL(character.image, Astro.site)} />}

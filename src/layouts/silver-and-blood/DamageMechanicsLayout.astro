@@ -6,6 +6,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
+import GameSEO from '../../components/GameSEO.astro';
 
 import '../../styles/colors.css';
 import '../../styles/global.css';
@@ -26,6 +27,8 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title} description={description || ''} />
+    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+    
     <slot name="head" />
   </head>
   <body class="sab-body sab-layout-override">

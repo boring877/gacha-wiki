@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import DecorativeLines from '../components/DecorativeLines.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
+import GameSEO from '../components/GameSEO.astro';
 
 // Import CSS files
 import '../styles/colors.css';
@@ -32,6 +33,13 @@ if (gameSlug && customStyles.length === 0) {
 <html lang="en">
   <head>
     <BaseHead title={title} description={description || ''} />
+    {gameSlug && (
+      <GameSEO 
+        gameKey={gameSlug}
+        title={title}
+        description={description}
+      />
+    )}
 
     <!-- Import custom styles for this game -->
     {customStyles.map(style => <style set:html={`@import '${style}';`} />)}

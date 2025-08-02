@@ -1,6 +1,7 @@
 ---
 // Home Page Layout - Dedicated layout for the homepage
 import HomeLayout from './HomeLayout.astro';
+import GeneralSEO from '../components/GeneralSEO.astro';
 
 export interface Props {
   title: string;
@@ -13,6 +14,14 @@ const { title, description, clockGames, showcaseGames } = Astro.props;
 ---
 
 <HomeLayout title={title} description={description}>
+  <GeneralSEO 
+    slot="head"
+    title={title}
+    description={description}
+    keywords={['gacha games', 'game wikis', 'gaming guides', 'zone nova', 'silver and blood']}
+    pageType="website"
+  />
+  
   <!-- Critical resource hints -->
   {
     clockGames

@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import GameSEO from '../../components/GameSEO.astro';
 
 // Import CSS files properly
 import '../../styles/colors.css';
@@ -35,6 +36,8 @@ const {
 <html lang="en">
   <head>
     <BaseHead title={title} description={description || ''} />
+    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+    
     <slot name="head" />
   </head>
   <body class="sab-body sab-layout-override">

@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import CustomScrollbar from '../components/CustomScrollbar.astro';
+import GeneralSEO from '../components/GeneralSEO.astro';
 
 // Import CSS files properly - wikis-specific styling
 import '../styles/colors.css';
@@ -23,6 +24,12 @@ const { title, description } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title} description={description || ''} />
+    <GeneralSEO 
+      title={title}
+      description={description || 'Browse our comprehensive collection of gacha game wikis and guides'}
+      keywords={['gacha games', 'game wikis', 'gaming guides', 'mobile games']}
+      pageType="website"
+    />
     <slot name="head" />
   </head>
   <body class="home-body">

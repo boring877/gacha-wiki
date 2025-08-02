@@ -1,19 +1,34 @@
 ---
-// Reusable SEO component for game pages
+/**
+ * GameSEO Component - Reusable SEO component for game pages
+ * Provides comprehensive SEO meta tags, structured data, and social media optimization
+ * for game-specific pages with proper error handling and validation.
+ */
+
 import {
   generateGameKeywords,
   generateGameStructuredData,
   getGameConfig,
   GLOBAL_SEO,
-} from '../utils/seo.js';
+  validateSEOData,
+  type StructuredDataGame,
+} from '../utils/seo';
 
 export interface Props {
-  gameKey: string; // e.g., 'zone-nova', 'silver-and-blood'
+  /** Game identifier (e.g., 'zone-nova', 'silver-and-blood') */
+  gameKey: string;
+  /** Page title - will be used for title tag and social media */
   title?: string;
+  /** Page description - will be used for meta description and social media */
   description?: string;
-  additionalKeywords?: string[];
-  structuredData?: object;
+  /** Additional keywords to include beyond game defaults */
+  additionalKeywords?: readonly string[];
+  /** Custom structured data - will override auto-generated game structured data */
+  structuredData?: StructuredDataGame;
+  /** Custom theme color - will override game default theme color */
   themeColor?: string;
+  /** Whether to include canonical URL (default: true) */
+  includeCanonical?: boolean;
 }
 
 const {
@@ -23,46 +38,84 @@ const {
   additionalKeywords = [],
   structuredData,
   themeColor,
+  includeCanonical = true,
 } = Astro.props;
 
-const gameConfig = getGameConfig(gameKey);
-
-if (!gameConfig) {
-  throw new Error(`Game configuration not found for: ${gameKey}`);
+// Validate required props
+if (!gameKey || typeof gameKey !== 'string') {
+  throw new Error(`GameSEO: gameKey is required and must be a string. Received: ${gameKey}`);
 }
 
+// Get game configuration with error handling
+const gameConfig = getGameConfig(gameKey);
+if (!gameConfig) {
+  throw new Error(`GameSEO: Game configuration not found for key: ${gameKey}. Available games: zone-nova, silver-and-blood`);
+}
+
+// Generate SEO data with validation
 const keywords = generateGameKeywords(gameKey, additionalKeywords);
 const finalThemeColor = themeColor || gameConfig.themeColor;
 const finalStructuredData = structuredData || generateGameStructuredData(gameKey, description);
+
+// Validate generated SEO data in development
+if (import.meta.env.DEV) {
+  const validation = validateSEOData({
+    title: title || gameConfig.gameName,
+    description: description || gameConfig.description,
+    keywords: keywords ? keywords.split(', ') : [],
+  });
+
+  if (!validation.isValid) {
+    console.warn(`GameSEO Warning for ${gameKey}: Missing required fields:`, validation.missingFields);
+  }
+}
+
+// Generate canonical URL
+const canonicalURL = includeCanonical ? new URL(Astro.url.pathname, Astro.site) : null;
 ---
 
 <!-- Game-Specific SEO Meta Tags -->
-<meta name="keywords" content={keywords} />
+{keywords && <meta name="keywords" content={keywords} />}
 <meta name="author" content={GLOBAL_SEO.author} />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+<!-- Open Source Project Meta Tags -->
+<meta name="project:type" content="open-source" />
+<meta name="project:license" content="MIT" />
+<meta name="project:repository" content={GLOBAL_SEO.social.github} />
+<meta name="project:status" content="active" />
 
 <!-- Mobile Optimization -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content={finalThemeColor} />
+{finalThemeColor && <meta name="theme-color" content={finalThemeColor} />}
 
 <!-- Canonical URL -->
-<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+{canonicalURL && <link rel="canonical" href={canonicalURL} />}
 
 <!-- Schema.org Structured Data -->
-{
-  finalStructuredData && (
-    <script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)} />
-  )
-}
+{finalStructuredData && (
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(finalStructuredData, null, 0)} />
+)}
 
-<!-- Game-specific Open Graph tags -->
+<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content={GLOBAL_SEO.siteName} />
+<meta property="og:url" content={canonicalURL?.toString() || Astro.url.href} />
 {title && <meta property="og:title" content={title} />}
 {description && <meta property="og:description" content={description} />}
+<meta property="og:image" content={new URL(GLOBAL_SEO.defaultImage, Astro.site)} />
 
-<!-- Twitter Card tags -->
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-{GLOBAL_SEO.social.twitter && <meta name="twitter:site" content={GLOBAL_SEO.social.twitter} />}
+{GLOBAL_SEO.social.x && <meta name="twitter:site" content={GLOBAL_SEO.social.x} />}
 {title && <meta name="twitter:title" content={title} />}
 {description && <meta name="twitter:description" content={description} />}
+<meta name="twitter:image" content={new URL(GLOBAL_SEO.defaultImage, Astro.site)} />
+
+<!-- Game-specific metadata -->
+<meta name="application-name" content={gameConfig.gameName} />
+<meta name="msapplication-TileColor" content={finalThemeColor} />
+
+<!-- Performance hints -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//fonts.gstatic.com" />

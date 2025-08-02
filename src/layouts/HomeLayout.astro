@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CustomScrollbar from '../components/CustomScrollbar.astro';
+import GeneralSEO from '../components/GeneralSEO.astro';
 // Import CSS files properly
 import '../styles/colors.css';
 import '../styles/global.css';
@@ -22,6 +23,10 @@ const { title, description } = Astro.props;
 <html lang="en" transition:animate="fade">
   <head>
     <BaseHead title={title} description={description || ''} />
+    <GeneralSEO 
+      title={title}
+      description={description || ''}
+    />
     <slot name="head" />
   </head>
   <body class="home-body">

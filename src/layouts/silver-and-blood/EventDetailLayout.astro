@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import GameSEO from '../../components/GameSEO.astro';
 
 // Import consolidated CSS file for events
 import '../../styles/games/silver-and-blood/sab-event-complete.css';
@@ -22,42 +23,7 @@ const { title, description, gameTitle, eventData } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description || ""} />
-		<meta name="keywords" content="Silver and Blood, events, character events, guides, vampire game, limited time events" />
-		<meta name="author" content="GachaWiki" />
-		<meta name="robots" content="index, follow" />
-		
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description || ""} />
-		<meta property="og:type" content="article" />
-		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
-		
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description || ""} />
-		
-		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-		<meta name="theme-color" content="#5a7ba7" />
-		
-		<script type="application/ld+json" set:html={JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "Event",
-			"name": title,
-			"description": description || `Event guide for ${title} in Silver and Blood`,
-			"about": {
-				"@type": "VideoGame",
-				"name": "Silver and Blood"
-			},
-			"publisher": {
-				"@type": "Organization",
-				"name": "GachaWiki"
-			},
-			"mainEntityOfPage": {
-				"@type": "WebPage",
-				"@id": new URL(Astro.url.pathname, Astro.site)
-			}
-		})}>
-		</script>
+		<GameSEO gameKey="silver-and-blood" title={title} description={description} />
 		
 		<slot name="head" />
 	</head>

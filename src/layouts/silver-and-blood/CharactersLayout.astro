@@ -1,5 +1,6 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
@@ -26,38 +27,12 @@ const { title, description, gameTitle } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description || ""} />
-		<meta name="keywords" content="Silver and Blood, characters, vampire game, character database, builds, skills" />
-		<meta name="author" content="GachaWiki" />
-		<meta name="robots" content="index, follow" />
-		
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description || ""} />
-		<meta property="og:type" content="article" />
-		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
-		
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description || ""} />
-		
-		<script type="application/ld+json" set:html={JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "CollectionPage",
-			"name": title,
-			"description": description || "Complete character database for Silver and Blood",
-			"about": {
-				"@type": "VideoGame",
-				"name": "Silver and Blood"
-			},
-			"publisher": {
-				"@type": "Organization",
-				"name": "GachaWiki"
-			},
-			"mainEntityOfPage": {
-				"@type": "WebPage",
-				"@id": new URL(Astro.url.pathname, Astro.site)
-			}
-		})}>
-		</script>
+		<GameSEO 
+			gameKey="silver-and-blood"
+			title={title}
+			description={description}
+			additionalKeywords={['characters', 'vampire game', 'character database', 'builds', 'skills']}
+		/>
 		
 		<slot name="head" />
 	</head>
