@@ -52,18 +52,11 @@
 .title-only-heading {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 3rem;
-  font-weight: 700;
-  color: var(--text-inverse);
+  font-weight: 900;
+  color: var(--amber-glow) !important;
   margin: 0;
-  background: linear-gradient(
-    135deg,
-    var(--text-inverse) 0%,
-    var(--amber-glow) 50%,
-    var(--text-inverse) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: none !important;
+  -webkit-text-fill-color: var(--amber-glow) !important;
   text-shadow: 0 0 30px rgba(255, 183, 77, 0.3);
 }
 
@@ -132,9 +125,7 @@
   transform: translateZ(0);
 }
 
-.master-clock:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-}
+/* Removed hover effect */
 
 /* Server Reset Card - Main timer card */
 .server-reset-card {
@@ -224,17 +215,31 @@
   gap: 1.5rem;
 }
 
-.timer-group-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--amber-glow);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin: 0;
-  padding-left: 0.5rem;
-  border-left: 3px solid var(--amber-glow);
+/* Timer Separator Line */
+.timer-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  gap: 1rem;
 }
+
+.timer-separator .separator-line {
+  height: 2px;
+  width: 80px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  opacity: 0.6;
+}
+
+.timer-separator .separator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Removed timer group titles */
 
 /* Timers Row */
 .timers-row {
@@ -249,16 +254,9 @@
   background: rgba(255, 183, 77, 0.03);
 }
 
-.priority-card:hover {
-  border-color: rgba(255, 183, 77, 0.3);
-  transform: translateY(-3px);
-}
+/* Removed hover effect */
 
-/* Priority Badge */
-.priority-badge {
-  font-size: 1.2rem;
-  opacity: 0.8;
-}
+/* Priority Badge - Removed */
 
 /* Current Date & Time Info */
 .current-time-info {
@@ -477,10 +475,7 @@
   overflow: hidden;
 }
 
-.timer-card:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
+/* Removed hover effect */
 
 /* Card Header */
 .timer-card-header {
@@ -647,6 +642,64 @@
 #maintenanceEndTime {
   color: #ef4444;
   text-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+}
+
+/* Launch Card Specific Styles */
+.launch-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.launch-header {
+  flex: 1;
+  text-align: left;
+}
+
+.launch-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--amber-glow);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.launch-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.launch-counter {
+  flex: 1;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.launch-days {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text-inverse);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.launch-date {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Event Card Specific Styles */
@@ -863,10 +916,13 @@
     gap: 1rem;
   }
 
-  .timer-group-title {
-    font-size: 1rem;
-    padding-left: 0.4rem;
-    border-left: 2px solid var(--amber-glow);
+  /* Timer separator mobile adjustments */
+  .timer-separator {
+    margin: 0.75rem 0;
+  }
+
+  .timer-separator .separator-line {
+    width: 60px;
   }
 
   .timers-row {
@@ -976,8 +1032,14 @@
     gap: 1.5rem;
   }
 
-  .timer-group-title {
-    font-size: 0.9rem;
+  /* Timer separator small mobile */
+  .timer-separator .separator-line {
+    width: 50px;
+  }
+
+  .timer-separator .separator-dot {
+    width: 5px;
+    height: 5px;
   }
 
   .timers-row {
@@ -1025,6 +1087,27 @@
   .maintenance-time,
   .rift-time {
     font-size: 0.9rem;
+  }
+
+  /* Launch card mobile adjustments */
+  .launch-card-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .launch-header,
+  .launch-counter {
+    flex: none;
+    text-align: center;
+  }
+
+  .launch-counter {
+    align-items: center;
+  }
+
+  .launch-days {
+    font-size: 1.8rem;
   }
 }
 

@@ -154,13 +154,11 @@ const { title, description, games } = Astro.props;
               <div class="timers-grid-wrapper">
                 <!-- Primary Timers Row (Most Important) -->
                 <div class="timer-section-group primary-timers">
-                  <h3 class="timer-group-title">Daily & Weekly</h3>
                   <div class="timers-row">
                     <!-- Weekly Reset Timer Card -->
                     <div class="timer-card weekly-card priority-card">
                       <div class="timer-card-header">
                         <div class="timer-card-title">Weekly Reset</div>
-                        <div class="priority-badge">📅</div>
                       </div>
                       <div class="timer-card-subtitle">Every Monday at 20:00 UTC</div>
                       <div class="timer-card-counter">
@@ -195,15 +193,20 @@ const { title, description, games } = Astro.props;
                   </div>
                 </div>
 
-                <!-- Secondary Timers Row (Game Content) -->
+                <!-- Visual Separator Line -->
+                <div class="timer-separator">
+                  <div class="separator-line"></div>
+                  <div class="separator-dot"></div>
+                  <div class="separator-line"></div>
+                </div>
+
+                <!-- Secondary Timers Row -->
                 <div class="timer-section-group secondary-timers">
-                  <h3 class="timer-group-title">Game Content</h3>
                   <div class="timers-row">
                     <!-- Rift Timer Card -->
                     <div class="timer-card rift-card">
                       <div class="timer-card-header">
                         <div class="timer-card-title">Active Rifts</div>
-                        <div class="priority-badge">🌀</div>
                       </div>
                       <div class="timer-card-content">
                         <!-- Rift 1 -->
@@ -223,7 +226,6 @@ const { title, description, games } = Astro.props;
                     <div class="timer-card event-card">
                       <div class="timer-card-header">
                         <div class="timer-card-title">Events</div>
-                        <div class="priority-badge">🌟</div>
                       </div>
                       <div class="timer-card-content">
                         <!-- Event Status -->
@@ -249,14 +251,15 @@ const { title, description, games } = Astro.props;
 
                     <!-- Launch Timer Card -->
                     <div class="timer-card launch-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Game Launch</div>
-                        <div class="priority-badge">🚀</div>
-                      </div>
-                      <div class="timer-card-subtitle">April 29, 2025</div>
-                      <div class="timer-card-counter">
-                        <span class="timer-card-value" id="launchDays">---</span>
-                        <span class="timer-card-label">Days</span>
+                      <div class="launch-card-content">
+                        <div class="launch-header">
+                          <div class="launch-title">Zone Nova</div>
+                          <div class="launch-subtitle">Days Since Launch</div>
+                        </div>
+                        <div class="launch-counter">
+                          <div class="launch-days" id="launchDays">---</div>
+                          <div class="launch-date">April 29, 2025</div>
+                        </div>
                       </div>
                     </div>
                   </div>
