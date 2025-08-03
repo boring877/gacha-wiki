@@ -395,16 +395,19 @@ class ZoneNovaClockTimer {
     if (now < eventStart) {
       // Event hasn't started yet
       this.eventStatus.textContent = 'Upcoming Odin Event';
+      this.eventStatus.classList.remove('inactive');
       this.eventTime.textContent = '--:--:--';
       this.eventTimeLabel.textContent = 'Event End';
     } else if (now >= eventStart && now <= eventEnd) {
       // Event is active
-      this.eventStatus.textContent = 'Active Odin Event';
+      this.eventStatus.textContent = 'Active';
+      this.eventStatus.classList.remove('inactive');
       this.formatRiftTime(endTimeDiff, this.eventTime);
       this.eventTimeLabel.textContent = 'Event End';
     } else {
       // Event has ended
       this.eventStatus.textContent = 'No Active Event';
+      this.eventStatus.classList.add('inactive');
       this.eventTime.textContent = '--:--:--';
       this.eventTimeLabel.textContent = 'Event End';
     }
@@ -434,16 +437,19 @@ class ZoneNovaClockTimer {
     if (now < eventStart) {
       // Event hasn't started yet
       this.doubleEventStatus.textContent = 'Upcoming Double Drop';
+      this.doubleEventStatus.classList.remove('inactive');
       this.doubleEventTime.textContent = '--:--:--';
       this.doubleEventTimeLabel.textContent = 'Double Drop End';
     } else if (now >= eventStart && now <= eventEnd) {
       // Event is active
-      this.doubleEventStatus.textContent = 'Active Double Drop 200%';
+      this.doubleEventStatus.textContent = 'Active';
+      this.doubleEventStatus.classList.remove('inactive');
       this.formatRiftTime(endTimeDiff, this.doubleEventTime);
       this.doubleEventTimeLabel.textContent = 'Double Drop End';
     } else {
       // Event has ended
       this.doubleEventStatus.textContent = 'No Active Double Drop';
+      this.doubleEventStatus.classList.add('inactive');
       this.doubleEventTime.textContent = '--:--:--';
       this.doubleEventTimeLabel.textContent = 'Double Drop End';
     }

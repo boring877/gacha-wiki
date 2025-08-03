@@ -103,7 +103,7 @@
 }
 
 .secondary-timers-card .timer-main-label {
-  color: var(--zn-clock-amber);
+  color: var(--zn-clock-title);
   font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 700;
@@ -133,7 +133,7 @@
 }
 
 .weekly-card .timer-card-title {
-  color: var(--zn-clock-title);
+  color: var(--zn-clock-amber);
 }
 
 /* Maintenance Timer Card */
@@ -143,7 +143,7 @@
 }
 
 .maintenance-card .timer-card-title {
-  color: var(--zn-clock-title);
+  color: var(--zn-clock-amber);
 }
 
 /* Rift Timer Card */
@@ -153,7 +153,7 @@
 }
 
 .rift-card .timer-card-title {
-  color: var(--zn-clock-title);
+  color: var(--zn-clock-amber);
 }
 
 /* Event Timer Card */
@@ -163,7 +163,7 @@
 }
 
 .event-card .timer-card-title {
-  color: var(--zn-clock-title);
+  color: var(--zn-clock-amber);
 }
 
 /* === ZONE NOVA STATUS INDICATORS === */
@@ -225,6 +225,7 @@
 
 .timer-card .timer-card-title {
   text-align: center;
+  color: var(--zn-clock-amber);
 }
 
 .timer-card .timer-card-content {
@@ -233,6 +234,7 @@
 
 .timer-card .timer-card-subtitle {
   text-align: center;
+  color: var(--zn-clock-muted);
 }
 
 /* === ZONE NOVA SERVER RESET TITLE === */
@@ -357,9 +359,14 @@
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 700;
-  color: var(--zn-clock-amber);
+  color: var(--zn-success);
   margin-bottom: 1rem;
   text-align: center;
+}
+
+/* Red color for inactive states */
+.event-status.inactive {
+  color: var(--zn-error);
 }
 
 .event-dates {

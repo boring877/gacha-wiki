@@ -24,7 +24,7 @@ export const clockLandingGames = [
     name: 'Silver & Blood',
     description: 'Dark fantasy gacha',
     image: '/images/games/silver-and-blood/main-images/silver-and-blood-main3.jpg',
-    url: '/clock/silver-blood',
+    url: '/clock/silver-and-blood',
     themeColor: 'var(--sab-calm-red)',
     active: true,
     primaryTimer: {

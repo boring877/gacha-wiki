@@ -676,6 +676,7 @@ class SilverAndBloodClockTimer {
       }
 
       this.signinEventStatus.textContent = `Active: ${activeEvent.name}`;
+      this.signinEventStatus.classList.remove('inactive');
       this.formatTimeDiff(endTimeDiff, this.signinEventTime);
       this.signinEventTimeLabel.textContent = 'Event End';
     } else {
@@ -697,10 +698,12 @@ class SilverAndBloodClockTimer {
           this.signinEventEndDate.textContent = upcomingEvent.endDisplay;
         }
         this.signinEventStatus.textContent = `Upcoming: ${upcomingEvent.name}`;
+        this.signinEventStatus.classList.remove('inactive');
         this.signinEventTime.textContent = '--:--:--';
         this.signinEventTimeLabel.textContent = 'Event End';
       } else {
         this.signinEventStatus.textContent = 'No Active Signin';
+        this.signinEventStatus.classList.add('inactive');
         this.signinEventTime.textContent = '--:--:--';
         this.signinEventTimeLabel.textContent = 'Event End';
         if (this.signinEventStartDate) this.signinEventStartDate.textContent = '--';
@@ -720,6 +723,7 @@ class SilverAndBloodClockTimer {
     
     if (outfits.length === 0) {
       this.outfitStatus.textContent = 'No Active Outfit';
+      this.outfitStatus.classList.add('inactive');
       this.outfitTime.textContent = '--:--:--';
       return;
     }
@@ -741,16 +745,19 @@ class SilverAndBloodClockTimer {
     if (now < outfitStart) {
       // Outfit hasn't started yet
       this.outfitStatus.textContent = `Upcoming: ${outfit.name}`;
+      this.outfitStatus.classList.remove('inactive');
       this.outfitTime.textContent = '--:--:--';
       this.outfitTimeLabel.textContent = 'Outfit End';
     } else if (now >= outfitStart && now <= outfitEnd) {
       // Outfit is active
       this.outfitStatus.textContent = `Active: ${outfit.name}`;
+      this.outfitStatus.classList.remove('inactive');
       this.formatTimeDiff(endTimeDiff, this.outfitTime);
       this.outfitTimeLabel.textContent = 'Outfit End';
     } else {
       // Outfit has ended
       this.outfitStatus.textContent = 'No Active Outfit';
+      this.outfitStatus.classList.add('inactive');
       this.outfitTime.textContent = '--:--:--';
       this.outfitTimeLabel.textContent = 'Outfit End';
     }
@@ -767,6 +774,7 @@ class SilverAndBloodClockTimer {
     
     if (specialEvents.length === 0) {
       this.specialEventStatus.textContent = 'No Active 2x Rewards';
+      this.specialEventStatus.classList.add('inactive');
       this.specialEventTime.textContent = '--:--:--';
       return;
     }
@@ -788,16 +796,19 @@ class SilverAndBloodClockTimer {
     if (now < eventStart) {
       // Event hasn't started yet
       this.specialEventStatus.textContent = 'Upcoming 2x Rewards';
+      this.specialEventStatus.classList.remove('inactive');
       this.specialEventTime.textContent = '--:--:--';
       this.specialEventTimeLabel.textContent = '2x Rewards End';
     } else if (now >= eventStart && now <= eventEnd) {
       // Event is active
       this.specialEventStatus.textContent = 'Active: Double Skill XP & Gear';
+      this.specialEventStatus.classList.remove('inactive');
       this.formatTimeDiff(endTimeDiff, this.specialEventTime);
       this.specialEventTimeLabel.textContent = '2x Rewards End';
     } else {
       // Event has ended
       this.specialEventStatus.textContent = 'No Active 2x Rewards';
+      this.specialEventStatus.classList.add('inactive');
       this.specialEventTime.textContent = '--:--:--';
       this.specialEventTimeLabel.textContent = '2x Rewards End';
     }

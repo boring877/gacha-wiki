@@ -433,9 +433,14 @@
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 700;
-  color: var(--sab-clock-blue);
+  color: var(--zn-success);
   margin-bottom: 1rem;
   text-align: center;
+}
+
+/* Red color for inactive states */
+.event-status.inactive {
+  color: var(--zn-error);
 }
 
 .event-dates {
