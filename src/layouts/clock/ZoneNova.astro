@@ -1,18 +1,19 @@
 ---
-// Modern UI Clock Layout - Sleek contemporary interface
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import MobileMenu from '../components/MobileMenu.astro';
-import Footer from '../components/Footer.astro';
-import CustomScrollbar from '../components/CustomScrollbar.astro';
-import GeneralSEO from '../components/GeneralSEO.astro';
-import DecorativeLines from '../components/DecorativeLines.astro';
+// Zone Nova Clock Layout - Dedicated layout for Zone Nova clock page
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import Footer from '../../components/Footer.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GeneralSEO from '../../components/GeneralSEO.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
 
 // Import CSS files
-import '../styles/colors.css';
-import '../styles/global.css';
-import '../styles/typography.css';
-import '../styles/pages/clock.css';
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/clock/layout.css';
+import '../../styles/clock/zone-nova.css';
 
 export interface Props {
   title: string;
@@ -21,6 +22,9 @@ export interface Props {
 }
 
 const { title, description, games } = Astro.props;
+const game = games[0]; // Zone Nova config
+const currentRegion = game.regions[game.currentRegion];
+const timers = game.timers[game.currentRegion];
 ---
 
 <!doctype html>
@@ -32,11 +36,11 @@ const { title, description, games } = Astro.props;
       title={title}
       description={description}
       keywords={[
-        'modern UI timers',
-        'clean clock interface',
-        'Zone Nova',
-        'Silver Blood',
-        'contemporary design',
+        'Zone Nova clock',
+        'Zone Nova timer',
+        'Zone Nova daily reset',
+        'Zone Nova server time',
+        'Zone Nova maintenance',
       ]}
       pageType="webapp"
     />
@@ -53,6 +57,7 @@ const { title, description, games } = Astro.props;
 
   <body>
     <CustomScrollbar />
+    
     <!-- Same background layers as home page -->
     <div class="bg-layer bg-primary"></div>
     <div class="bg-layer bg-accent-1"></div>
@@ -67,7 +72,7 @@ const { title, description, games } = Astro.props;
         <div class="clock-container">
           <!-- Page Title -->
           <section class="title-only-section">
-            <h1 class="title-only-heading">Gacha Clock</h1>
+            <h1 class="title-only-heading">Zone Nova Clock</h1>
             <DecorativeLines />
           </section>
 
@@ -80,11 +85,11 @@ const { title, description, games } = Astro.props;
               <!-- Top Section: UTC Note and Current Time -->
               <div class="hero-top-section">
                 <div class="utc-info">
-                  <p class="utc-note">This is based on UTC</p>
+                  <p class="utc-note">This is based on UTC+8</p>
                 </div>
                 <div class="current-time-info">
                   <div class="current-date" id="currentDate">Loading...</div>
-                  <div class="current-utc" id="currentUTC">UTC --:--:--</div>
+                  <div class="current-utc" id="currentUTC">UTC+8 --:--:--</div>
                 </div>
               </div>
 
@@ -92,25 +97,32 @@ const { title, description, games } = Astro.props;
               <div class="hero-main-content">
                 <!-- Left Side: Game Info -->
                 <div class="game-section">
-                  <div class="game-image-container" id="clockGameImageContainer">
-                    <img
-                      class="game-image"
-                      id="clockGameImage"
-                      src="/images/games/zone-nova/zonenova.jpg"
-                      alt="Zone Nova"
-                      loading="eager"
-                    />
-                  </div>
-                  <div class="game-info">
-                    <h3 class="game-name" id="clockGameName">Zone Nova</h3>
-                    <div class="game-status">Daily reset timer<br />Resets at 20:00 UTC</div>
+                  <div class="game-info-container">
+                    <div class="game-wrapper">
+                      <div class="game-image-container" id="clockGameImageContainer">
+                        <img
+                          class="game-image"
+                          id="clockGameImage"
+                          src={game.image}
+                          alt={game.name}
+                          loading="eager"
+                        />
+                      </div>
+                      <div class="game-info">
+                        <h3 class="game-name" id="clockGameName">{game.name}</h3>
+                        <div class="region-badge">
+                          <span class="region-name">{currentRegion.name}</span>
+                        </div>
+                        <div class="game-status" set:html={currentRegion.status}></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <!-- Right Side: Timer Display -->
                 <div class="timer-section">
                   <div class="timer-description-section">
-                    <div class="timer-main-label">Server Reset</div>
+                    <div class="timer-main-label">{game.timerDescription}</div>
                   </div>
 
                   <div class="clock-display">
@@ -145,8 +157,8 @@ const { title, description, games } = Astro.props;
               <!-- Game Timers Header -->
               <div class="game-timers-header">
                 <div class="timer-description-section">
-                  <div class="timer-main-label">Game Timers</div>
-                  <div class="timer-subtitle">Track all important game events and resets</div>
+                  <div class="timer-main-label">Zone Nova Timers</div>
+                  <div class="timer-subtitle">Track all important Zone Nova events and resets</div>
                 </div>
               </div>
 
@@ -155,15 +167,24 @@ const { title, description, games } = Astro.props;
                 <!-- Primary Timers Row (Most Important) -->
                 <div class="timer-section-group primary-timers">
                   <div class="timers-row">
-                    <!-- Weekly Reset Timer Card -->
+                    <!-- Weekly & Monthly Reset Timer Card -->
                     <div class="timer-card weekly-card priority-card">
                       <div class="timer-card-header">
-                        <div class="timer-card-title">Weekly Reset</div>
+                        <div class="timer-card-title">Weekly & Monthly Reset</div>
                       </div>
-                      <div class="timer-card-subtitle">Every Monday at 20:00 UTC</div>
-                      <div class="timer-card-counter">
-                        <span class="timer-card-value" id="weeklyTime">--:--:--</span>
-                        <span class="timer-card-label">Remaining</span>
+                      <div class="timer-card-content">
+                        <!-- Weekly Reset -->
+                        <div class="reset-item">
+                          <div class="reset-name">Weekly Reset</div>
+                          <div class="reset-subtitle">Every Monday at 4:00 UTC+8</div>
+                          <div class="reset-time" id="weeklyTime">--:--:--</div>
+                        </div>
+                        <!-- Monthly Reset -->
+                        <div class="reset-item">
+                          <div class="reset-name">Monthly Reset</div>
+                          <div class="reset-subtitle">1st of each month at 4:00 UTC+8</div>
+                          <div class="reset-time" id="monthlyTime">--:--:--</div>
+                        </div>
                       </div>
                     </div>
 
@@ -176,7 +197,7 @@ const { title, description, games } = Astro.props;
                           <span class="status-text" id="serverStatusText">Online</span>
                         </div>
                       </div>
-                      <div class="timer-card-subtitle">Aug 5, 2025 - 06:00 UTC (2h)</div>
+                      <div class="timer-card-subtitle">{timers.maintenance.subtitle}</div>
                       <div class="timer-card-content">
                         <!-- Maintenance Start Timer -->
                         <div class="maintenance-item">
@@ -193,12 +214,6 @@ const { title, description, games } = Astro.props;
                   </div>
                 </div>
 
-                <!-- Visual Separator Line -->
-                <div class="timer-separator">
-                  <div class="separator-line"></div>
-                  <div class="separator-dot"></div>
-                  <div class="separator-line"></div>
-                </div>
 
                 <!-- Secondary Timers Row -->
                 <div class="timer-section-group secondary-timers">
@@ -249,16 +264,42 @@ const { title, description, games } = Astro.props;
                       </div>
                     </div>
 
+                    <!-- Double Drop 200% Timer Card -->
+                    <div class="timer-card event-card">
+                      <div class="timer-card-header">
+                        <div class="timer-card-title">Double Drop 200%</div>
+                      </div>
+                      <div class="timer-card-content">
+                        <!-- Double Drop Event Status -->
+                        <div class="event-status" id="doubleEventStatus">No Active Double Drop</div>
+                        <!-- Double Drop Event Dates -->
+                        <div class="event-dates">
+                          <div class="event-date-item">
+                            <span class="event-date-label">Started:</span>
+                            <span class="event-date-value" id="doubleEventStartDate">--</span>
+                          </div>
+                          <div class="event-date-item">
+                            <span class="event-date-label">Ending:</span>
+                            <span class="event-date-value" id="doubleEventEndDate">--</span>
+                          </div>
+                        </div>
+                        <!-- Double Drop Event Countdown -->
+                        <div class="event-countdown">
+                          <span class="timer-card-value" id="doubleEventTime">--:--:--</span>
+                          <span class="timer-card-label" id="doubleEventTimeLabel">Double Drop End</span>
+                        </div>
+                      </div>
+                    </div>
+
                     <!-- Launch Timer Card -->
                     <div class="timer-card launch-card">
+                      <div class="timer-card-header">
+                        <div class="timer-card-title">Zone Nova - Days Since Launch</div>
+                      </div>
                       <div class="launch-card-content">
-                        <div class="launch-header">
-                          <div class="launch-title">Zone Nova</div>
-                          <div class="launch-subtitle">Days Since Launch</div>
-                        </div>
                         <div class="launch-counter">
                           <div class="launch-days" id="launchDays">---</div>
-                          <div class="launch-date">April 29, 2025</div>
+                          <div class="launch-date">{game.displayDate}</div>
                         </div>
                       </div>
                     </div>
@@ -273,7 +314,7 @@ const { title, description, games } = Astro.props;
 
     <Footer />
 
-    <!-- Clock Timer Script -->
-    <script src="/src/scripts/clock.js"></script>
+    <!-- Zone Nova Clock Timer Script -->
+    <script src="/src/scripts/clock/zone-nova.js"></script>
   </body>
 </html>

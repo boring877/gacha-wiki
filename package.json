@@ -1,6 +1,6 @@
 {
   "name": "gacha-wiki",
-  "version": "2.6.2",
+  "version": "2.7.0",
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/rss": "^4.0.11",
@@ -45,6 +45,11 @@
     "seo:monitor": "node scripts/seo-monitor.js",
     "seo:vitals": "node scripts/core-web-vitals.js",
     "seo:validate": "node scripts/seo-validator.js",
+    "changelog:generate": "node scripts/generate-changelog.js",
+    "changelog:manual": "node scripts/generate-changelog.js --manual",
+    "version:bump": "npm run changelog:generate && git add . && git commit -m \"chore: automated version bump\"",
+    "hooks:install": "git config core.hooksPath .githooks",
+    "setup:automation": "node scripts/setup-automation.js",
     "prepare": "husky || exit 0",
     "pre-commit": "lint-staged"
   },

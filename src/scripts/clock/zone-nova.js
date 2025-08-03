@@ -1,12 +1,10 @@
 /**
- * Clock Timer Functionality
- * Handles the countdown timer for game daily resets
+ * Zone Nova Clock Timer Functionality
+ * Handles the countdown timer for Zone Nova daily resets and events
  */
 
-class ClockTimer {
-  constructor(resetHour = 20, resetMinute = 0) {
-    this.resetHour = resetHour;
-    this.resetMinute = resetMinute;
+class ZoneNovaClockTimer {
+  constructor() {
     this.clockInterval = null;
 
     // DOM elements
@@ -41,6 +39,7 @@ class ClockTimer {
     this.rift2Name = document.getElementById('rift2Name');
     this.rift2Time = document.getElementById('rift2Time');
     this.weeklyTime = document.getElementById('weeklyTime');
+    this.monthlyTime = document.getElementById('monthlyTime');
     this.maintenanceStartTime = document.getElementById('maintenanceStartTime');
     this.maintenanceStartLabel = document.getElementById('maintenanceStartLabel');
     this.maintenanceEndTime = document.getElementById('maintenanceEndTime');
@@ -52,6 +51,11 @@ class ClockTimer {
     this.eventEndDate = document.getElementById('eventEndDate');
     this.eventTime = document.getElementById('eventTime');
     this.eventTimeLabel = document.getElementById('eventTimeLabel');
+    this.doubleEventStatus = document.getElementById('doubleEventStatus');
+    this.doubleEventStartDate = document.getElementById('doubleEventStartDate');
+    this.doubleEventEndDate = document.getElementById('doubleEventEndDate');
+    this.doubleEventTime = document.getElementById('doubleEventTime');
+    this.doubleEventTimeLabel = document.getElementById('doubleEventTimeLabel');
 
     // Start the clock
     this.updateClock();
@@ -68,13 +72,13 @@ class ClockTimer {
   }
 
   /**
-   * Calculate time remaining until next reset
+   * Calculate time remaining until next Zone Nova reset (20:00 UTC = 04:00 UTC+8)
    * @returns {Object} Object with hours, minutes, seconds
    */
   getTimeUntilReset() {
     const now = new Date();
     const resetTime = new Date();
-    resetTime.setUTCHours(this.resetHour, this.resetMinute, 0, 0);
+    resetTime.setUTCHours(20, 0, 0, 0); // 20:00 UTC = 04:00 UTC+8 next day
 
     // If reset time has passed today, set it for tomorrow
     if (resetTime <= now) {
@@ -135,12 +139,13 @@ class ClockTimer {
       this.currentDate.textContent = dateStr;
     }
 
-    // Format current UTC time
+    // Format current UTC+8 time
     if (this.currentUTC) {
-      const utcHours = String(now.getUTCHours()).padStart(2, '0');
-      const utcMinutes = String(now.getUTCMinutes()).padStart(2, '0');
-      const utcSeconds = String(now.getUTCSeconds()).padStart(2, '0');
-      this.currentUTC.textContent = `UTC ${utcHours}:${utcMinutes}:${utcSeconds}`;
+      const utc8Time = new Date(now.getTime() + (8 * 60 * 60 * 1000));
+      const utc8Hours = String(utc8Time.getUTCHours()).padStart(2, '0');
+      const utc8Minutes = String(utc8Time.getUTCMinutes()).padStart(2, '0');
+      const utc8Seconds = String(utc8Time.getUTCSeconds()).padStart(2, '0');
+      this.currentUTC.textContent = `UTC+8 ${utc8Hours}:${utc8Minutes}:${utc8Seconds}`;
     }
   }
 
@@ -151,8 +156,10 @@ class ClockTimer {
     this.updateLaunchTimer();
     this.updateRiftTimers();
     this.updateWeeklyTimer();
+    this.updateMonthlyTimer();
     this.updateMaintenanceTimer();
     this.updateEventTimer();
+    this.updateDoubleEventTimer();
   }
 
   /**
@@ -171,7 +178,7 @@ class ClockTimer {
   }
 
   /**
-   * Update rift timers - both rifts in one card
+   * Update Zone Nova rift timers
    */
   updateRiftTimers() {
     if (!this.rift1Name || !this.rift1Time || !this.rift2Name || !this.rift2Time) return;
@@ -179,16 +186,16 @@ class ClockTimer {
     const now = new Date();
     const rifts = [
       {
-        name: 'Rift VII',
+        name: 'Rift Surge VII',
         endDate: '2025-08-18T20:00:00Z',
       },
       {
-        name: 'Rift VI',
+        name: 'Rift Tide VI',
         endDate: '2025-08-04T20:00:00Z',
       },
     ];
 
-    // Update Rift 1 (VII)
+    // Update Rift 1 (Surge VII)
     const rift1EndDate = new Date(rifts[0].endDate);
     const rift1TimeDiff = rift1EndDate.getTime() - now.getTime();
 
@@ -200,7 +207,7 @@ class ClockTimer {
       this.formatRiftTime(rift1TimeDiff, this.rift1Time);
     }
 
-    // Update Rift 2 (VI)
+    // Update Rift 2 (Tide VI)
     const rift2EndDate = new Date(rifts[1].endDate);
     const rift2TimeDiff = rift2EndDate.getTime() - now.getTime();
 
@@ -232,7 +239,7 @@ class ClockTimer {
   }
 
   /**
-   * Update weekly reset timer - resets every Monday at 20:00 UTC
+   * Update weekly reset timer - resets every Monday at 4:00 UTC+8 (20:00 UTC)
    */
   updateWeeklyTimer() {
     if (!this.weeklyTime) return;
@@ -244,7 +251,7 @@ class ClockTimer {
     const daysUntilMonday = (1 - now.getUTCDay() + 7) % 7 || 7;
 
     nextMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
-    nextMonday.setUTCHours(20, 0, 0, 0); // 20:00 UTC
+    nextMonday.setUTCHours(20, 0, 0, 0); // 4:00 UTC+8 = 20:00 UTC
 
     // If it's Monday and before 20:00 UTC, use today
     if (now.getUTCDay() === 1 && now.getUTCHours() < 20) {
@@ -264,7 +271,47 @@ class ClockTimer {
   }
 
   /**
-   * Update maintenance timers - August 5, 2025, 14:00 game time (2h duration)
+   * Update monthly reset timer - resets 1st of each month at 4:00 UTC+8 (20:00 UTC)
+   */
+  updateMonthlyTimer() {
+    if (!this.monthlyTime) return;
+
+    const now = new Date();
+    const nextMonth = new Date();
+
+    // Set to first day of next month
+    nextMonth.setUTCMonth(now.getUTCMonth() + 1, 1);
+    nextMonth.setUTCHours(20, 0, 0, 0); // 4:00 UTC+8 = 20:00 UTC
+
+    // If we're already past the monthly reset time this month, use next month
+    const thisMonthReset = new Date();
+    thisMonthReset.setUTCDate(1);
+    thisMonthReset.setUTCHours(20, 0, 0, 0);
+
+    let targetDate;
+    if (now < thisMonthReset) {
+      // This month's reset hasn't happened yet
+      targetDate = thisMonthReset;
+    } else {
+      // Use next month's reset
+      targetDate = nextMonth;
+    }
+
+    const timeDiff = targetDate.getTime() - now.getTime();
+
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+
+    if (days > 0) {
+      this.monthlyTime.textContent = `${days}d ${hours}h`;
+    } else {
+      this.monthlyTime.textContent = `${hours}h ${minutes}m`;
+    }
+  }
+
+  /**
+   * Update Zone Nova maintenance timers - August 5, 2025, 14:00 UTC+8 (2h duration)
    */
   updateMaintenanceTimer() {
     if (!this.maintenanceStartTime || !this.maintenanceEndTime) return;
@@ -325,34 +372,34 @@ class ClockTimer {
   }
 
   /**
-   * Update special event timer
+   * Update Zone Nova special event timer - Odin Event
    */
   updateEventTimer() {
     if (!this.eventStatus || !this.eventTime) return;
 
     const now = new Date();
-    // UTC+8 times converted to UTC: 14:15 UTC+8 = 06:15 UTC, 03:59 UTC+8 = 19:59 UTC
+    // Zone Nova Odin Event times
     const eventStart = new Date('2025-07-22T06:15:00Z'); // July 22, 2025, 14:15 UTC+8
-    const eventEnd = new Date('2025-08-05T19:59:00Z'); // August 5, 2025, 03:59 UTC+8
+    const eventEnd = new Date('2025-08-04T19:59:00Z'); // August 5, 2025, 03:59 UTC+8
 
-    // Update static dates (no countdown) - showing UTC times
+    // Update static dates - showing UTC+8 times for Zone Nova
     if (this.eventStartDate) {
-      this.eventStartDate.textContent = 'July 22, 06:15 UTC';
+      this.eventStartDate.textContent = 'July 22, 14:15 UTC+8';
     }
     if (this.eventEndDate) {
-      this.eventEndDate.textContent = 'August 5, 19:59 UTC';
+      this.eventEndDate.textContent = 'August 5, 03:59 UTC+8';
     }
 
     const endTimeDiff = eventEnd.getTime() - now.getTime();
 
     if (now < eventStart) {
       // Event hasn't started yet
-      this.eventStatus.textContent = 'Upcoming Event';
+      this.eventStatus.textContent = 'Upcoming Odin Event';
       this.eventTime.textContent = '--:--:--';
       this.eventTimeLabel.textContent = 'Event End';
     } else if (now >= eventStart && now <= eventEnd) {
       // Event is active
-      this.eventStatus.textContent = 'Active Event';
+      this.eventStatus.textContent = 'Active Odin Event';
       this.formatRiftTime(endTimeDiff, this.eventTime);
       this.eventTimeLabel.textContent = 'Event End';
     } else {
@@ -360,6 +407,45 @@ class ClockTimer {
       this.eventStatus.textContent = 'No Active Event';
       this.eventTime.textContent = '--:--:--';
       this.eventTimeLabel.textContent = 'Event End';
+    }
+  }
+
+  /**
+   * Update Zone Nova Double Drop 200% event timer - Double Drop Materials Event
+   */
+  updateDoubleEventTimer() {
+    if (!this.doubleEventStatus || !this.doubleEventTime) return;
+
+    const now = new Date();
+    // Zone Nova Double Drop 200% Materials Event times
+    const eventStart = new Date('2025-07-28T20:00:00Z'); // July 29, 2025, 04:00 UTC+8
+    const eventEnd = new Date('2025-08-04T20:00:00Z'); // August 5, 2025, 04:00 UTC+8
+
+    // Update static dates - showing UTC+8 times for Zone Nova
+    if (this.doubleEventStartDate) {
+      this.doubleEventStartDate.textContent = 'July 29, 04:00 UTC+8';
+    }
+    if (this.doubleEventEndDate) {
+      this.doubleEventEndDate.textContent = 'August 5, 04:00 UTC+8';
+    }
+
+    const endTimeDiff = eventEnd.getTime() - now.getTime();
+
+    if (now < eventStart) {
+      // Event hasn't started yet
+      this.doubleEventStatus.textContent = 'Upcoming Double Drop';
+      this.doubleEventTime.textContent = '--:--:--';
+      this.doubleEventTimeLabel.textContent = 'Double Drop End';
+    } else if (now >= eventStart && now <= eventEnd) {
+      // Event is active
+      this.doubleEventStatus.textContent = 'Active Double Drop 200%';
+      this.formatRiftTime(endTimeDiff, this.doubleEventTime);
+      this.doubleEventTimeLabel.textContent = 'Double Drop End';
+    } else {
+      // Event has ended
+      this.doubleEventStatus.textContent = 'No Active Double Drop';
+      this.doubleEventTime.textContent = '--:--:--';
+      this.doubleEventTimeLabel.textContent = 'Double Drop End';
     }
   }
 
@@ -372,21 +458,11 @@ class ClockTimer {
       this.clockInterval = null;
     }
   }
-
-  /**
-   * Update reset time (useful for different games)
-   * @param {number} hour - Hour in UTC (0-23)
-   * @param {number} minute - Minute (0-59)
-   */
-  setResetTime(hour, minute = 0) {
-    this.resetHour = hour;
-    this.resetMinute = minute;
-  }
 }
 
-// Initialize clock when script loads
-const clockTimer = new ClockTimer(20, 0); // Zone Nova resets at 20:00 UTC
+// Initialize Zone Nova clock when script loads
+const zoneNovaClockTimer = new ZoneNovaClockTimer();
 
 // Export for potential use in other modules
-window.ClockTimer = ClockTimer;
-window.clockTimer = clockTimer;
+window.ZoneNovaClockTimer = ZoneNovaClockTimer;
+window.zoneNovaClockTimer = zoneNovaClockTimer;

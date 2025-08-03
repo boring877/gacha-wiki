@@ -1,0 +1,26 @@
+---
+// Redirect page for Silver and Blood clock
+// This redirects /clock/silver-blood to /clock/silver-and-blood
+
+// Server-side redirect
+if (Astro.request.method === 'GET') {
+  return Astro.redirect('/clock/silver-and-blood', 301);
+}
+---
+
+<script>
+  // Client-side redirect as fallback
+  window.location.replace('/clock/silver-and-blood');
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0; url=/clock/silver-and-blood">
+  <title>Redirecting to Silver and Blood Clock...</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/clock/silver-and-blood">Silver and Blood Clock</a>...</p>
+</body>
+</html>

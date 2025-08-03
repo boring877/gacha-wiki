@@ -79,6 +79,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
 
   guides: [
     {
+      id: 'clock',
+      title: 'Clock',
+      emoji: '⏰',
+      description:
+        'Track Silver and Blood server resets, maintenance, raids, signin events, outfit availability, and special events with real-time countdown timers for APAC and US regions.',
+      url: '/clock/silver-and-blood/',
+      category: 'tools',
+      status: 'active',
+    },
+    {
       id: 'character-comparison',
       title: 'Character Comparison',
       emoji: '📊',

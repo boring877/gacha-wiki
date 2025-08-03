@@ -31,6 +31,14 @@ export const zoneNovaConfig = {
 
   guides: [
     {
+      id: 'clock',
+      title: 'Clock',
+      emoji: '⏰',
+      description: 'Track Zone Nova daily reset times and server events. Never miss dailies, energy refills, or farming sessions with our real-time Zone Nova clock.',
+      url: '/clock/zone-nova/',
+      category: 'tools',
+    },
+    {
       id: 'updates',
       title: 'Updates',
       emoji: '🔧',

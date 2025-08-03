@@ -1,0 +1,46 @@
+---
+// Zone Nova Clock Page - Zone Nova specific timers and layout
+import ZoneNovaClockLayout from '../../layouts/clock/ZoneNova.astro';
+import { zoneNovaConfig } from '../../data/clock/zone-nova.js';
+
+// Get Zone Nova game data
+const zoneNovaGame = zoneNovaConfig;
+
+// Page metadata
+const title = 'Zone Nova Server Reset Clock | GachaWiki';
+const description = 'Track Zone Nova daily reset times and server events. Never miss dailies, energy refills, or farming sessions with our real-time Zone Nova clock.';
+---
+
+<ZoneNovaClockLayout
+  title={title}
+  description={description}
+  games={[zoneNovaGame]}
+>
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Zone Nova Server Reset Clock",
+      "description": "Real-time server reset timer for Zone Nova gacha game",
+      "url": "https://gachawiki.info/clock/zone-nova",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "Zone Nova Reset Clock",
+        "description": "Track Zone Nova server reset times and events",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+</ZoneNovaClockLayout>

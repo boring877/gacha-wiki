@@ -1,0 +1,616 @@
+/**
+ * ==========================================
+ * SHARED CLOCK LAYOUT - DESIGN SYSTEM
+ * ==========================================
+ * 
+ * Shared layout properties for all game clock components.
+ * This file contains the base structure, spacing, animations,
+ * and glass effects that are consistent across all game clocks.
+ * 
+ * Game-specific colors and themes should be defined in separate files.
+ * 
+ * Used by: Zone Nova Clock, Silver & Blood Clock, future game clocks
+ * 
+ * === WHAT LAYOUT.CSS SHOULD CONTAIN ===
+ * ✅ Structural layouts (grid systems, flexbox layouts, positioning)
+ * ✅ Base component shapes (card dimensions, spacing, basic borders)
+ * ✅ Shared animations (fadeIn, transitions)
+ * ✅ Typography scales (font sizes, weights - but NOT font families/colors)
+ * ✅ Responsive breakpoints (mobile, tablet, desktop layouts)
+ * ✅ Core functionality (scrollbars, z-index, basic states)
+ * ✅ Generic classes that work for ANY game clock
+ * 
+ * === WHAT LAYOUT.CSS SHOULD NOT CONTAIN ===
+ * ❌ Game-specific colors (amber, teal, etc.)
+ * ❌ Brand-specific themes or gradients
+ * ❌ Game-specific visual identity elements
+ * ❌ Hardcoded colors that tie to specific games
+ */
+
+/* === SHARED CLOCK CUSTOM PROPERTIES === */
+/* These properties are shared across all game clock layouts */
+:root {
+  /* Spacing Scale for Clock Components */
+  --clock-spacing-xs: 0.5rem;
+  --clock-spacing-sm: 1rem;
+  --clock-spacing-md: 1.5rem;
+  --clock-spacing-lg: 2rem;
+  --clock-spacing-xl: 3rem;
+  
+  /* Border Radius Scale for Clock Components */
+  --clock-radius-sm: 8px;
+  --clock-radius-md: 12px;
+  --clock-radius-lg: 16px;
+  --clock-radius-xl: 32px;
+  
+  /* Glass Effect Properties for Clock Cards */
+  --clock-glass-bg: rgba(255, 255, 255, 0.05);
+  --clock-glass-border: rgba(255, 255, 255, 0.1);
+  --clock-card-bg: rgba(255, 255, 255, 0.03);
+  --clock-card-border: rgba(255, 255, 255, 0.08);
+  
+  /* Animation Properties for Clock Components */
+  --clock-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --clock-animation-duration: 1s;
+  
+  /* Clock-specific Blur Effects */
+  --clock-blur-heavy: blur(15px);
+  --clock-blur-medium: blur(10px);
+  --clock-blur-light: blur(8px);
+}
+
+/* === SHARED BACKGROUND LAYERS === */
+/* Common background layers used by all clock pages */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+}
+
+.bg-primary {
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+}
+
+.clock-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* === SHARED PAGE LAYOUT === */
+/* Common page structure for all clock pages */
+.modern-clock-page {
+  min-height: calc(100vh - 140px);
+  padding: 2rem 0;
+}
+
+.clock-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* === SHARED TITLE SECTION === */
+/* Common title styling for all clock pages */
+.title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInUp 1s ease-out both;
+}
+
+.title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 900;
+  margin: 0;
+  background: none !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+}
+
+/* === SHARED MASTER CLOCK CONTAINER === */
+/* Main clock card container shared across all games */
+.master-clock-container {
+  display: flex;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.secondary-timers-container {
+  margin-top: 3rem;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+/* === SHARED MASTER CLOCK STYLES === */
+/* Base glass card styling for main clock */
+.master-clock {
+  background: var(--clock-glass-bg);
+  backdrop-filter: var(--clock-blur-heavy);
+  border: 2px solid var(--clock-glass-border);
+  border-radius: var(--clock-radius-xl);
+  /* Performance optimization: reduce blur amount and add containment */
+  contain: layout style;
+  padding: var(--clock-spacing-lg) var(--clock-spacing-xl);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  /* Force hardware acceleration for smooth animations */
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Background animation element */
+.clock-bg-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* === SHARED HERO LAYOUT === */
+/* Top section with UTC info and current time */
+.hero-top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--clock-spacing-lg);
+  padding-bottom: var(--clock-spacing-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.utc-info {
+  text-align: left;
+}
+
+.utc-note {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 2rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+}
+
+.current-time-info {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.current-date {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+.current-utc {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+}
+
+/* === SHARED MAIN CONTENT LAYOUT === */
+/* Game info and timer display layout */
+.hero-main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  min-height: 200px;
+}
+
+.game-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.timer-section {
+  flex: 1.5;
+  text-align: center;
+}
+
+/* === SHARED GAME INFO COMPONENTS === */
+/* Game image and info styling */
+.game-info-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.game-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 16px;
+  background: var(--clock-glass-bg);
+  border-radius: var(--clock-radius-md);
+  border: 1px solid var(--clock-glass-border);
+  backdrop-filter: var(--clock-blur-light);
+  /* Performance optimization for wrapper container */
+  contain: layout style;
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  flex: 1;
+}
+
+.game-image-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.game-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+.game-name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+  transition: var(--clock-transition);
+}
+
+.game-status {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+/* === SHARED TIMER DISPLAY === */
+/* Clock display components */
+.timer-description-section {
+  margin-bottom: 1.5rem;
+}
+
+.timer-main-label {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.clock-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.time-unit-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-value {
+  font-family: var(--font-primary);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.time-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.time-separator {
+  font-family: var(--font-primary);
+  font-size: 3rem;
+  font-weight: 700;
+  opacity: 0.5;
+  line-height: 1;
+}
+
+/* === SHARED TIMERS GRID === */
+/* Secondary timers layout */
+.game-timers-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.timers-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timer-section-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timers-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--clock-spacing-md);
+  margin: var(--clock-spacing-lg) 0;
+  align-items: stretch; /* Ensure all cards in a row have equal height */
+}
+
+/* === SHARED TIMER CARD STYLES === */
+/* Individual timer card styling */
+.timer-card {
+  background: var(--clock-card-bg);
+  backdrop-filter: var(--clock-blur-medium);
+  border: 1px solid var(--clock-card-border);
+  border-radius: var(--clock-radius-lg);
+  /* Performance optimization: reduce blur and add containment */
+  contain: layout style;
+  padding: var(--clock-spacing-md);
+  transition: var(--clock-transition);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute content evenly within cards */
+  min-height: 160px; /* Ensure consistent card heights */
+}
+
+/* Priority cards get enhanced border */
+.priority-card {
+  border-width: 2px;
+}
+
+.timer-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.timer-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timer-card-subtitle {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1rem;
+}
+
+.timer-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.timer-card-counter {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.timer-card-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.timer-card-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+/* === SHARED RESPONSIVE DESIGN === */
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .title-only-heading {
+    font-size: var(--text-2xl);
+  }
+
+  .title-only-section {
+    margin-bottom: 2rem;
+  }
+
+  .utc-note {
+    display: none;
+  }
+
+  .hero-top-section {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .utc-info .utc-note {
+    text-align: center;
+  }
+
+  .current-time-info {
+    text-align: center;
+  }
+
+  .hero-main-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .game-section {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .game-image-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+  }
+
+  .game-wrapper {
+    gap: 1rem;
+    padding: 12px;
+  }
+
+  .game-info {
+    gap: 6px;
+  }
+
+  .timer-section {
+    text-align: center;
+  }
+
+  .master-clock {
+    padding: 1.5rem 1.25rem;
+    border-radius: 24px;
+    backdrop-filter: var(--clock-blur-medium);
+  }
+
+  .time-value {
+    font-size: var(--text-2xl);
+    height: 1em;
+  }
+
+  .time-separator {
+    font-size: var(--text-2xl);
+  }
+
+  .timers-row {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .timer-card {
+    padding: 1.25rem;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .timer-card-value {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .title-only-heading {
+    font-size: var(--text-2xl);
+  }
+
+  .game-name {
+    font-size: 1.1rem;
+  }
+
+  .game-status {
+    font-size: 0.7rem;
+  }
+
+  .time-value {
+    font-size: 1.8rem;
+  }
+
+  .time-separator {
+    font-size: 1.8rem;
+  }
+
+  .master-clock-container {
+    padding: 0 1rem;
+  }
+
+  .clock-container {
+    padding: 0 1rem;
+  }
+
+  .timers-grid-wrapper {
+    gap: 1.5rem;
+  }
+
+  .timers-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .timer-card {
+    padding: 1rem;
+    min-height: 120px;
+    overflow: hidden;
+  }
+}
+
+/* === SHARED ANIMATIONS === */
+/* Common animations used across clock components */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility - Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .master-clock-container,
+  .secondary-timers-container,
+  .title-only-section {
+    animation: none;
+  }
+  
+  .timer-card {
+    transition: none;
+  }
+}

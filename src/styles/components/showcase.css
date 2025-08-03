@@ -23,11 +23,6 @@
 .auto-showcase {
   position: relative; /* Positioning context for pseudo-elements */
   overflow: hidden; /* Hide animated background overflow */
-  background: linear-gradient(
-    135deg,
-    rgba(28, 28, 28, 0.95) 0%,
-    rgba(42, 42, 42, 0.95) 100%
-  ); /* Dark gradient base */
   padding: 4rem 0; /* Vertical padding for section spacing */
 }
 
@@ -178,11 +173,11 @@
   color: var(--text-inverse);
 }
 
-/* Showcase title with responsive sizing and gradient effects */
+/* Showcase title with proper hierarchy sizing */
 .showcase-title {
   font-family: 'Space Grotesk', sans-serif; /* Display font for prominence */
-  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive fluid typography */
-  font-weight: 900; /* Maximum weight for impact */
+  font-size: clamp(1.5rem, 3vw, 2rem); /* Smaller than main title for proper hierarchy */
+  font-weight: 700; /* Reduced weight for secondary importance */
   margin-bottom: 1rem; /* Space below title */
   color: var(--amber-glow); /* Amber accent color */
   opacity: 1; /* Full opacity base state */

@@ -27,17 +27,20 @@
 }
 
 /* === HERO SECTION === */
-/* Main hero section with gradient background and animated overlays */
-.hero-section {
-  position: relative; /* Positioning context for absolute children */
-  padding: 6rem 2rem 4rem 2rem; /* Generous padding with more space at top */
-  overflow: hidden; /* Hide animated background overflow */
+/* Main home container with unified background */
+.home-main {
   background: linear-gradient(
     135deg,
     rgba(28, 28, 28, 0.95) 0%,
     rgba(42, 42, 42, 0.95) 100%
-  ); /* Dark gradient base */
-  border-bottom: 2px solid var(--amber-glow); /* Amber border accent at bottom */
+  ); /* Dark gradient base for entire page */
+}
+
+/* Main hero section with animated overlays */
+.hero-section {
+  position: relative; /* Positioning context for absolute children */
+  padding: 6rem 2rem 4rem 2rem; /* Generous padding with more space at top */
+  overflow: hidden; /* Hide animated background overflow */
 }
 
 /* Animated background gradient overlay - creates dynamic color effects */
@@ -84,17 +87,18 @@
 }
 
 /* === HERO TYPOGRAPHY === */
-/* Main hero title with responsive sizing and amber color override */
+/* Main hero title with standardized sizing and amber color override */
 .hero-section .hero-title .hero-text-gradient {
   display: block; /* Block display for proper spacing */
   font-family: 'Space Grotesk', sans-serif; /* Display font for maximum impact */
-  font-size: clamp(3rem, 8vw, 5rem); /* Responsive fluid typography */
+  font-size: var(--text-4xl); /* Standardized responsive typography */
   font-weight: 900; /* Maximum weight for prominence */
   line-height: 1.1; /* Tight line height for display text */
   color: var(--amber-glow) !important; /* Amber color override */
   background: none !important; /* Remove gradient background */
   -webkit-text-fill-color: var(--amber-glow) !important; /* Webkit text color override */
   margin-bottom: 0.5rem; /* Small space below main title */
+  text-align: center; /* Center alignment */
 }
 
 /* Hero subtitle with responsive sizing and subtle styling */
@@ -117,5 +121,76 @@
   to {
     opacity: 1; /* End fully visible */
     transform: translateY(0); /* End at natural position */
+  }
+}
+
+/* === OPEN SOURCE SECTION === */
+/* Section showcasing open source nature with GitHub link */
+.open-source-section {
+  position: relative;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.open-source-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-inverse);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--bg-dark);
+  border: 2px solid rgba(28, 28, 28, 0.2);
+  border-radius: 12px;
+  color: var(--text-inverse);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.github-link:hover {
+  background: var(--bg-dark);
+  border-color: var(--amber-glow);
+  transform: translateY(-2px);
+}
+
+.github-icon {
+  color: var(--text-inverse);
+  transition: color 0.3s ease;
+}
+
+.github-link:hover .github-icon {
+  color: var(--amber-glow);
+}
+
+.external-icon {
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.github-link:hover .external-icon {
+  opacity: 1;
+  transform: translateX(2px) translateY(-2px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .open-source-section {
+    padding: 2rem 0;
+  }
+  
+  .github-link {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
   }
 }

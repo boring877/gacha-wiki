@@ -1,0 +1,118 @@
+---
+// Clock Landing Layout - Dedicated layout for the clock landing page
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import Footer from '../../components/Footer.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GeneralSEO from '../../components/GeneralSEO.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+
+// Import CSS files
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/clock/landing.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  games: any[];
+}
+
+const { title, description, games } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+
+    <GeneralSEO
+      title={title}
+      description={description}
+      keywords={[
+        'Zone Nova daily reset',
+        'Zone Nova server restart',
+        'Zone Nova server time',
+        'Zone Nova maintenance time',
+        'Silver and Blood daily reset',
+        'Silver and Blood server restart',
+        'Silver and Blood server time',
+        'Silver and Blood maintenance time',
+        'Silver and Blood US server',
+        'gacha server time',
+        'Zone Nova launch date',
+        'Silver and Blood launch date',
+        'gacha launch date'
+      ]}
+      pageType="webapp"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    {
+      games
+        .slice(0, 4)
+        .map(game => <link rel="preload" href={game.image} as="image" type="image/jpeg" />)
+    }
+  </head>
+
+  <body>
+    <CustomScrollbar />
+    
+    <!-- Same background layers as other pages -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="clock-landing-content">
+      <Header />
+      <MobileMenu />
+
+      <main class="clock-landing-page">
+        <div class="clock-landing-container">
+          <!-- Page Title -->
+          <section class="title-section">
+            <h1 class="page-title">Gacha Clocks</h1>
+            <p class="page-subtitle">Server Reset & Related.</p>
+            <DecorativeLines />
+          </section>
+
+          <!-- Games Grid -->
+          <section class="games-grid-section">
+            <div class="games-grid" id="gamesGrid">
+              {
+                games.map(game => (
+                  <article class="game-card" data-game-id={game.id}>
+                    <a href={game.url} class="game-card-link">
+                      <div class="game-card-image-container">
+                        <img
+                          class="game-card-image"
+                          src={game.image}
+                          alt={game.name}
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="game-card-content">
+                        <h3 class="game-card-title">{game.name}</h3>
+                        <p class="game-card-description">{game.description}</p>
+                      </div>
+                    </a>
+                  </article>
+                ))
+              }
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <Footer />
+
+    <!-- Clock Landing Script -->
+    <script src="/src/scripts/clock/landing.js"></script>
+  </body>
+</html>

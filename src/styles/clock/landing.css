@@ -1,0 +1,242 @@
+/* Clock Landing Page - Simple and clean design */
+
+/* Background Layers - Same as other pages */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+}
+
+.bg-primary {
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+}
+
+.bg-accent-1 {
+  background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent);
+  pointer-events: none;
+}
+
+.bg-accent-2 {
+  background: radial-gradient(circle at 80% 20%, rgba(255, 183, 77, 0.08), transparent);
+  pointer-events: none;
+}
+
+.bg-accent-3 {
+  background: radial-gradient(circle at 50% 50%, rgba(0, 172, 193, 0.05), transparent);
+  pointer-events: none;
+}
+
+.clock-landing-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Page Layout */
+.clock-landing-page {
+  min-height: calc(100vh - 140px);
+  padding: 2rem 0;
+}
+
+.clock-landing-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Title Section */
+.title-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInUp 1s ease-out both;
+}
+
+.page-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--text-4xl); /* Standardized responsive typography */
+  font-weight: 900;
+  color: var(--amber-glow);
+  margin: 0 0 1rem 0;
+  text-align: center; /* Center alignment */
+  line-height: 1.1; /* Consistent line height */
+}
+
+.page-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 2rem 0;
+}
+
+/* Games Grid Section */
+.games-grid-section {
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Game Card */
+.game-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+
+.game-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Game Card Image */
+.game-card-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.game-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+
+/* Game Card Content */
+.game-card-content {
+  padding: 1.5rem;
+}
+
+.game-card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--amber-glow);
+  margin: 0 0 0.5rem 0;
+}
+
+.game-card-description {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+}
+
+/* Timer Section */
+.game-card-timer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timer-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.timer-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.timer-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timer-countdown {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--teal-crystal);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+
+  .page-subtitle {
+    font-size: 1rem;
+  }
+
+  .clock-landing-container {
+    padding: 0 1rem;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .game-card-content {
+    padding: 1.25rem;
+  }
+
+  .game-card-image-container {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .clock-landing-page {
+    padding: 1.5rem 0;
+  }
+
+  .title-section {
+    margin-bottom: 2rem;
+  }
+
+  .game-card-content {
+    padding: 1rem;
+  }
+
+  .game-card-timer {
+    padding: 0.75rem;
+  }
+
+  .game-card-image-container {
+    height: 160px;
+  }
+}
+
+/* Fade In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

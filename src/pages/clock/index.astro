@@ -1,0 +1,63 @@
+---
+// Clock Landing Page - Hub for all game clocks
+import ClockLandingLayout from '../../layouts/clock/Landing.astro';
+import { getActiveLandingGames } from '../../data/clock/landing.js';
+
+// Get all active games for the landing page
+const games = getActiveLandingGames();
+
+// Page metadata
+const title = 'Gacha Clocks | Game Reset Timers | GachaWiki';
+const description = 'Track daily reset times and important events for all your favorite gacha games. Never miss dailies, energy refills, or limited-time events with our real-time timers.';
+---
+
+<ClockLandingLayout
+  title={title}
+  description={description}
+  games={games}
+>
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Gacha Game Clocks",
+      "description": "Real-time reset timers and event trackers for popular gacha games",
+      "url": "https://gachawiki.info/clock",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "Gacha Clock Hub",
+        "description": "Track reset times for multiple gacha games in one place",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://gachawiki.info"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Clocks",
+            "item": "https://gachawiki.info/clock"
+          }
+        ]
+      }
+    }
+  </script>
+</ClockLandingLayout>

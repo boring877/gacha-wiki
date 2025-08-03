@@ -1,0 +1,476 @@
+/**
+ * ==========================================
+ * ZONE NOVA CLOCK THEME - GAME SPECIFIC STYLES
+ * ==========================================
+ * 
+ * Zone Nova specific colors, themes, and styling overrides for the clock.
+ * This file extends the shared clock layout with Zone Nova's amber/teal theme.
+ * 
+ * Inherits: All layout and structure from clock/layout.css
+ * Provides: Zone Nova colors, accent elements, and theme-specific styling
+ * 
+ * === WHAT ZONE-NOVA.CSS SHOULD CONTAIN ===
+ * ✅ Zone Nova colors (amber, teal, specific game colors)
+ * ✅ Zone Nova themes (gradients, color schemes)
+ * ✅ Game-specific styling (card colors, brand elements)
+ * ✅ Zone Nova overrides (changing colors from layout defaults)
+ * ✅ Visual identity specific to Zone Nova game
+ * ✅ Zone Nova background accents and effects
+ * ✅ Zone Nova specific component colors
+ * 
+ * === WHAT ZONE-NOVA.CSS SHOULD NOT CONTAIN ===
+ * ❌ Structural layouts (use layout.css instead)
+ * ❌ Base component dimensions or spacing
+ * ❌ Generic animations or transitions
+ * ❌ Responsive breakpoints (unless Zone Nova specific)
+ * ❌ Typography scales (font sizes, weights)
+ * 
+ * === ARCHITECTURE GOAL ===
+ * Future games (Silver & Blood, etc.) should use:
+ * layout.css + their-game.css (following this same pattern)
+ */
+
+/* === ZONE NOVA SPECIFIC BACKGROUND ACCENTS === */
+/* Zone Nova themed background gradients */
+.bg-accent-1 {
+  background: radial-gradient(circle at 20% 80%, color-mix(in srgb, var(--mocha-mousse) 10%, transparent), transparent);
+  pointer-events: none;
+}
+
+.bg-accent-2 {
+  background: radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--zn-primary-amber) 8%, transparent), transparent);
+  pointer-events: none;
+}
+
+.bg-accent-3 {
+  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--zn-primary-teal) 5%, transparent), transparent);
+  pointer-events: none;
+}
+
+/* === ZONE NOVA THEME COLORS === */
+/* Zone Nova specific color overrides */
+.title-only-heading {
+  color: var(--zn-clock-title) !important;
+  -webkit-text-fill-color: var(--zn-clock-title) !important;
+  font-size: var(--text-4xl) !important;
+  font-weight: 900 !important;
+}
+
+.game-name {
+  color: var(--zn-clock-amber);
+}
+
+.timer-main-label {
+  color: var(--zn-clock-amber);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.time-value {
+  color: var(--zn-clock-white);
+}
+
+/* === ZONE NOVA REGION BADGE === */
+/* Zone Nova specific region badge styling */
+.region-badge {
+  background: var(--zn-clock-muted);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  white-space: nowrap;
+  letter-spacing: 0.025em;
+  width: fit-content;
+}
+
+.region-label {
+  opacity: 0.8;
+  margin-right: 4px;
+}
+
+.region-name {
+  font-weight: 700;
+}
+
+/* === ZONE NOVA TIMER CARDS === */
+/* Zone Nova themed timer card styling */
+.secondary-timers-card .timer-description-section {
+  margin-bottom: 0.5rem;
+}
+
+.secondary-timers-card .timer-main-label {
+  color: var(--zn-clock-amber);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.secondary-timers-card .timer-subtitle {
+  color: var(--zn-clock-muted);
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+/* Server Reset Card - Main Clock */
+.server-reset-card {
+  border: 2px solid var(--zn-clock-border);
+  background: linear-gradient(135deg, var(--clock-glass-bg), color-mix(in srgb, var(--zn-clock-bg) 3%, transparent));
+}
+
+/* Weekly Reset Timer Card */
+.weekly-card {
+  border-left: 4px solid var(--zn-clock-border);
+  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--zn-clock-bg) 2%, transparent));
+}
+
+.weekly-card .timer-card-title {
+  color: var(--zn-clock-title);
+}
+
+/* Maintenance Timer Card */
+.maintenance-card {
+  border-left: 4px solid var(--zn-clock-border);
+  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--zn-clock-bg) 2%, transparent));
+}
+
+.maintenance-card .timer-card-title {
+  color: var(--zn-clock-title);
+}
+
+/* Rift Timer Card */
+.rift-card {
+  border-left: 4px solid var(--zn-clock-border);
+  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--zn-clock-bg) 2%, transparent));
+}
+
+.rift-card .timer-card-title {
+  color: var(--zn-clock-title);
+}
+
+/* Event Timer Card */
+.event-card {
+  border-left: 4px solid var(--zn-clock-border);
+  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--zn-clock-bg) 2%, transparent));
+}
+
+.event-card .timer-card-title {
+  color: var(--zn-clock-title);
+}
+
+/* === ZONE NOVA STATUS INDICATORS === */
+/* Zone Nova specific status styling */
+.server-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--zn-success);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--zn-success) 60%, transparent);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.status-dot.maintenance {
+  background: var(--zn-error);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--zn-error) 60%, transparent);
+}
+
+.status-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--zn-clock-white);
+}
+
+.status-text.maintenance {
+  color: var(--zn-clock-white);
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* === ZONE NOVA TIMER CARD BASE === */
+/* Remove white border on left side for all timer cards */
+.timer-card {
+  border-left: none;
+}
+
+/* === ZONE NOVA CARD ALIGNMENT === */
+/* Consistent alignment for all timer cards */
+.timer-card .timer-card-header {
+  text-align: center;
+}
+
+.timer-card .timer-card-title {
+  text-align: center;
+}
+
+.timer-card .timer-card-content {
+  text-align: center;
+}
+
+.timer-card .timer-card-subtitle {
+  text-align: center;
+}
+
+/* === ZONE NOVA SERVER RESET TITLE === */
+/* Make the main server reset timer title bigger */
+.server-reset-card .timer-main-label {
+  color: var(--zn-clock-title);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* === ZONE NOVA TIMER VALUES === */
+/* Zone Nova specific timer value styling */
+.timer-card-value {
+  color: var(--zn-clock-white);
+}
+
+.timer-card-label {
+  color: var(--zn-clock-muted);
+}
+
+.timer-card-subtitle {
+  color: var(--zn-clock-muted);
+}
+
+.time-label {
+  color: var(--zn-clock-muted);
+}
+
+.time-separator {
+  color: var(--zn-clock-muted);
+  animation: clockPulse 2s ease-in-out infinite;
+}
+
+/* === ZONE NOVA CLOCK ANIMATIONS === */
+/* Pulsing animation for clock separators */
+@keyframes clockPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* === ZONE NOVA TOP SECTION === */
+/* UTC info and current time styling */
+.utc-note {
+  color: var(--zn-clock-muted);
+}
+
+.current-date {
+  color: var(--zn-clock-white);
+}
+
+.current-utc {
+  color: var(--zn-clock-muted);
+}
+
+/* === ZONE NOVA GAME INFO === */
+/* Game status styling */
+.game-status {
+  color: var(--zn-clock-white);
+}
+
+/* === ZONE NOVA TIMER ITEMS === */
+/* Zone Nova specific timer item styling */
+.maintenance-item,
+.rift-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--zn-clock-border);
+}
+
+.reset-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--zn-clock-border);
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.maintenance-item:last-child,
+.rift-item:last-child,
+.reset-item:last-child {
+  border-bottom: none;
+}
+
+.maintenance-name,
+.rift-name,
+.reset-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--zn-clock-muted);
+}
+
+.maintenance-time,
+.rift-time,
+.reset-time {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--zn-clock-white);
+}
+
+.reset-subtitle {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--zn-clock-muted);
+  text-align: center;
+}
+
+/* === ZONE NOVA EVENT STYLING === */
+/* Zone Nova specific event card styling */
+.event-status {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--zn-clock-amber);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.event-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.event-date-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event-date-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--zn-clock-muted);
+  text-transform: uppercase;
+}
+
+.event-date-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--zn-clock-white);
+}
+
+.event-countdown {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* === ZONE NOVA LAUNCH CARD === */
+/* Zone Nova specific launch counter styling */
+.launch-card {
+  border-left: 4px solid var(--zn-clock-border);
+  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--zn-clock-bg) 2%, transparent));
+  padding: 1.5rem;
+}
+
+.launch-card .timer-card-title {
+  color: var(--zn-clock-title);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.launch-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  min-height: 140px;
+}
+
+.launch-counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  gap: 1rem;
+}
+
+.launch-days {
+  font-family: var(--font-primary);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--zn-clock-white);
+  line-height: 1;
+  text-align: center;
+  width: 100%;
+}
+
+.launch-date {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--zn-clock-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* === ZONE NOVA RESPONSIVE OVERRIDES === */
+/* Zone Nova specific mobile optimizations */
+@media (max-width: 768px) {
+  /* Region Badge Mobile */
+  .region-badge {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+    border-radius: 3px;
+  }
+
+  .launch-days {
+    font-size: var(--text-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .region-badge {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+  }
+
+  .launch-days {
+    font-size: var(--text-xl);
+  }
+}

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Pre-commit hook to automatically generate changelog
+# This runs before each commit to update the changelog with new changes
+
+echo "🔄 Running pre-commit changelog generation..."
+
+# Run the changelog generator
+node scripts/generate-changelog.js
+
+# Check if changelog was updated
+if git diff --cached --name-only | grep -q "src/data/changelog.js\|package.json"; then
+    echo "✅ Changelog updated automatically"
+    
+    # Add updated files to the commit
+    git add src/data/changelog.js package.json
+    
+    echo "📝 Added changelog.js and package.json to commit"
+else
+    echo "ℹ️  No changelog updates needed"
+fi
+
+echo "✅ Pre-commit hook completed"

@@ -5,25 +5,25 @@ export const homepageGames = [
   {
     id: 'zone-nova',
     name: 'Zone Nova',
-    description: 'Strategic RPG with stunning visuals and deep mechanics',
+    description: 'Strategic RPG with Waifu',
     image: '/images/games/zone-nova/zonenova1.jpg',
     url: '/guides/zone-nova/',
     resetHour: 20, // UTC time for daily reset
     resetMinute: 0, // UTC minute for daily reset
     timerDescription: 'Daily reset timer',
-    features: ['30+ Characters', 'Active Rifts', 'Memory System', 'Strategic Combat'],
+    features: ['30+ Characters', 'Active Rifts', 'Memory System'],
     active: true, // Show in clock and showcase
   },
   {
     id: 'silver-blood',
     name: 'Silver & Blood',
-    description: 'Dark fantasy gacha with rich storytelling and immersive lore',
+    description: 'Dark fantasy gacha.',
     image: '/images/games/silver-and-blood/main-images/silver-and-blood-main3.jpg',
     url: '/guides/silver-and-blood/',
     resetHour: 12, // UTC time for daily reset (20:00 UTC+8)
     resetMinute: 0, // UTC minute for daily reset
     timerDescription: 'Daily reset timer',
-    features: ['35+ Heroes', 'Rich Story', "Dutchman's Revenge", 'Dark Fantasy'],
+    features: ['35+ Heroes', 'Rich Story', "Dutchman's Revenge"],
     active: true, // Show in clock and showcase
   },
   // Add more games here as needed
