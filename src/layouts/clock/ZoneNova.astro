@@ -13,6 +13,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/clock/layout.css';
 import '../../styles/clock/zone-nova.css';
 
@@ -56,7 +57,7 @@ const timers = game.timers[game.currentRegion];
     }
   </head>
 
-  <body>
+  <body class="zone-nova-body zn-layout-override">
     <CustomScrollbar />
     
     <!-- Same background layers as home page -->
@@ -65,13 +66,14 @@ const timers = game.timers[game.currentRegion];
     <div class="bg-layer bg-accent-2"></div>
     <div class="bg-layer bg-accent-3"></div>
 
-    <div class="clock-content">
+    <div class="zone-nova-content">
       <Header />
       <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />
 
-      <main class="modern-clock-page">
-        <div class="clock-container">
+      <div class="zone-nova-container">
+        <main class="zone-nova-main modern-clock-page">
+          <div class="clock-container">
           <!-- Page Title -->
           <section class="title-only-section">
             <h1 class="title-only-heading">Zone Nova Clock</h1>
@@ -310,8 +312,9 @@ const timers = game.timers[game.currentRegion];
               </div>
             </div>
           </div>
-        </div>
-      </main>
+          </div>
+        </main>
+      </div>
     </div>
 
     <Footer />
