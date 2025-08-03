@@ -462,7 +462,14 @@
   }
 
   .utc-note {
-    display: none;
+    display: block !important;
+    text-align: center;
+    font-size: 0.75rem;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
   }
 
   .hero-top-section {
@@ -473,23 +480,32 @@
     padding-bottom: 1rem;
   }
 
-  .utc-info .utc-note {
+  .utc-info {
     text-align: center;
   }
 
   .current-time-info {
     text-align: center;
+    order: -1; /* Move current time above UTC note on mobile */
   }
 
   .hero-main-content {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     text-align: center;
+    min-height: auto;
   }
 
   .game-section {
     justify-content: center;
     gap: 1rem;
+    order: 2; /* Game info after timer on mobile */
+  }
+
+  .timer-section {
+    text-align: center;
+    order: 1; /* Timer first on mobile */
+    margin-bottom: 1rem;
   }
 
   .game-image-container {
@@ -501,33 +517,45 @@
   .game-wrapper {
     gap: 1rem;
     padding: 12px;
+    max-width: 300px;
+    margin: 0 auto;
   }
 
   .game-info {
     gap: 6px;
-  }
-
-  .timer-section {
-    text-align: center;
+    text-align: left;
   }
 
   .master-clock {
     padding: 1.5rem 1.25rem;
     border-radius: 24px;
     backdrop-filter: var(--clock-blur-medium);
+    margin: 0 0.5rem;
+  }
+
+  .master-clock-container {
+    padding: 0 1rem;
   }
 
   .time-value {
-    font-size: var(--text-2xl);
+    font-size: 2.5rem;
     height: 1em;
   }
 
   .time-separator {
-    font-size: var(--text-2xl);
+    font-size: 2.5rem;
+  }
+
+  .time-unit-group {
+    gap: 0.75rem;
+  }
+
+  .timer-main-label {
+    font-size: var(--text-lg);
   }
 
   .timers-row {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 
@@ -537,44 +565,83 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 16px;
   }
 
   .timer-card-value {
+    font-size: var(--text-lg);
+  }
+
+  .timer-card-title {
     font-size: var(--text-base);
+  }
+
+  /* Region switcher mobile optimization */
+  .region-switcher-container {
+    margin: 0 1rem 2rem 1rem;
+  }
+
+  .region-switcher {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .region-button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .title-only-heading {
-    font-size: var(--text-2xl);
+    font-size: var(--text-xl);
   }
 
   .game-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .game-status {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .time-value {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .time-separator {
-    font-size: 1.8rem;
+    font-size: 2rem;
+  }
+
+  .time-unit-group {
+    gap: 0.5rem;
   }
 
   .master-clock-container {
-    padding: 0 1rem;
+    padding: 0 0.5rem;
   }
 
   .clock-container {
-    padding: 0 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .master-clock {
+    padding: 1.25rem 1rem;
+    border-radius: 20px;
+    margin: 0;
+  }
+
+  .timer-main-label {
+    font-size: var(--text-base);
   }
 
   .timers-grid-wrapper {
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .timers-row {
@@ -586,6 +653,52 @@
     padding: 1rem;
     min-height: 120px;
     overflow: hidden;
+    border-radius: 14px;
+  }
+
+  .timer-card-header {
+    margin-bottom: 0.75rem;
+  }
+
+  .timer-card-title {
+    font-size: 0.9rem;
+  }
+
+  .timer-card-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .timer-card-value {
+    font-size: var(--text-base);
+  }
+
+  .timer-card-label {
+    font-size: 0.7rem;
+  }
+
+  /* Make region switcher stack on very small screens */
+  .region-switcher {
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 280px;
+  }
+
+  .region-button {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .current-date {
+    font-size: 0.8rem;
+  }
+
+  .current-utc {
+    font-size: 0.9rem;
+  }
+
+  .utc-note {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 

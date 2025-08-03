@@ -27,11 +27,13 @@ const {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<!-- Favicon - Optimized sizes for better performance -->
+<!-- Favicon - Comprehensive for all browsers and search engines -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="shortcut icon" href="/favicon-32x32.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="mask-icon" href="/android-chrome-192x192.png" color="#FFB74D" />
 <meta name="msapplication-TileImage" content="/android-chrome-192x192.png" />
 <meta name="msapplication-TileColor" content="#FFB74D" />
 
@@ -52,7 +54,7 @@ const {
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-<!-- <link rel="manifest" href="/manifest.json" /> -->
+<link rel="manifest" href="/manifest.json" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
   rel="alternate"
@@ -297,6 +299,9 @@ const {
 <meta property="og:image" content={new URL(image, Astro.url)} />
 <meta property="og:site_name" content="GachaWiki" />
 <meta property="og:logo" content={new URL('/android-chrome-192x192.png', Astro.url)} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="GachaWiki - Gacha Game Guides and Database" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -384,6 +389,47 @@ const {
     />
   )
 }
+
+<!-- Organization Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GachaWiki",
+  "url": "https://gachawiki.info",
+  "logo": "https://gachawiki.info/android-chrome-192x192.png",
+  "description": "Your ultimate destination for gacha game guides, character databases, and gaming strategies",
+  "sameAs": [
+    "https://github.com/boring877/gacha-wiki"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "support",
+    "url": "https://github.com/boring877/gacha-wiki/issues"
+  }
+}
+</script>
+
+<!-- Website Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GachaWiki",
+  "url": "https://gachawiki.info",
+  "description": "Your ultimate destination for gacha game guides, character databases, and gaming strategies",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://gachawiki.info/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GachaWiki",
+    "logo": "https://gachawiki.info/android-chrome-192x192.png"
+  }
+}
+</script>
 
 <!-- Speed Insights -->
 {/* @ts-ignore */}

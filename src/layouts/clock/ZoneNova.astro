@@ -2,6 +2,7 @@
 // Zone Nova Clock Layout - Dedicated layout for Zone Nova clock page
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import Footer from '../../components/Footer.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
@@ -66,6 +67,7 @@ const timers = game.timers[game.currentRegion];
 
     <div class="clock-content">
       <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />
 
       <main class="modern-clock-page">

@@ -4,6 +4,46 @@
 
 export const changelog = [
   {
+    version: "2.7.2",
+    date: "2025-08-03",
+    type: "patch",
+    title: "SEO & Mobile Optimization",
+    description: "Fixed site icon visibility in search engines and enhanced mobile experience for clock pages",
+    changes: [
+      {
+        type: "fixed",
+        category: "SEO",
+        description: "Fixed favicon not showing in search results by adding comprehensive icon configuration"
+      },
+      {
+        type: "added",
+        category: "SEO",
+        description: "Added structured data (Schema.org) for better search engine recognition"
+      },
+      {
+        type: "improved",
+        category: "Navigation",
+        description: "Added 2nd header navigation to Zone Nova and Silver & Blood clock pages"
+      },
+      {
+        type: "enhanced",
+        category: "Mobile",
+        description: "Optimized mobile layout for all clock pages with better responsive design"
+      },
+      {
+        type: "added",
+        category: "Web App",
+        description: "Enabled web app manifest with comprehensive icon sizes"
+      },
+      {
+        type: "improved",
+        category: "Social Media",
+        description: "Enhanced Open Graph and Twitter Card metadata for better social sharing"
+      }
+    ],
+    author: "Boring877"
+  },
+  {
     version: "2.7.0",
     date: "2025-08-02",
     type: "minor",
