@@ -4,6 +4,50 @@
 
 export const changelog = [
   {
+    version: '2.7.8',
+    date: '2025-08-04',
+    type: 'minor',
+    title: 'Mobile Optimization & UI Improvements',
+    description:
+      'Comprehensive mobile optimization for team synergy, version history fixes, and UI enhancements',
+    changes: [
+      {
+        type: 'improved',
+        category: 'mobile',
+        description:
+          'Optimized team synergy mobile layout with single-row character display and position indicators',
+      },
+      {
+        type: 'fixed',
+        category: 'version-history',
+        description:
+          'Fixed version history system by adding missing changelog entries (v2.7.3 through v2.7.7)',
+      },
+      {
+        type: 'improved',
+        category: 'ui',
+        description:
+          'Removed hover effects and shadows from Zone Nova landing page and about page for cleaner UI',
+      },
+      {
+        type: 'fixed',
+        category: 'clock',
+        description: 'Fixed weekly reset schedule from Monday to Sunday at 4:00 UTC+8',
+      },
+      {
+        type: 'improved',
+        category: 'mobile',
+        description:
+          'Enhanced mobile spacing and alignment for team synergy character cards and element badges',
+      },
+      {
+        type: 'improved',
+        category: 'code-quality',
+        description: 'Code quality improvements with ESLint fixes and Prettier formatting',
+      },
+    ],
+  },
+  {
     version: '2.7.7',
     date: '2025-08-04',
     type: 'minor',
