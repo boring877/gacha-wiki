@@ -58,7 +58,7 @@ const timers = game.timers[game.currentRegion];
 
   <body class="zone-nova-body zn-layout-override">
     <CustomScrollbar />
-    
+
     <!-- Same background layers as home page -->
     <div class="bg-layer bg-primary"></div>
     <div class="bg-layer bg-accent-1"></div>
@@ -73,236 +73,246 @@ const timers = game.timers[game.currentRegion];
       <div class="zone-nova-container">
         <main class="zone-nova-main modern-clock-page">
           <div class="clock-container">
-          <!-- Page Title -->
-          <section class="title-only-section">
-            <h1 class="title-only-heading">Zone Nova Clock</h1>
-            <DecorativeLines />
-          </section>
+            <!-- Page Title -->
+            <section class="title-only-section">
+              <h1 class="title-only-heading">Zone Nova Clock</h1>
+              <DecorativeLines />
+            </section>
 
-          <!-- First Hero Card - Server Reset Timer -->
-          <div class="master-clock-container">
-            <div class="master-clock server-reset-card" id="masterClock">
-              <!-- Clock Background Animation -->
-              <div class="clock-bg-animation"></div>
+            <!-- First Hero Card - Server Reset Timer -->
+            <div class="master-clock-container">
+              <div class="master-clock server-reset-card" id="masterClock">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
 
-              <!-- Top Section: UTC Note and Current Time -->
-              <div class="hero-top-section">
-                <div class="utc-info">
-                  <p class="utc-note">This is based on UTC+8</p>
+                <!-- Top Section: UTC Note and Current Time -->
+                <div class="hero-top-section">
+                  <div class="utc-info">
+                    <p class="utc-note">This is based on UTC+8</p>
+                  </div>
+                  <div class="current-time-info">
+                    <div class="current-date" id="currentDate">Loading...</div>
+                    <div class="current-utc" id="currentUTC">UTC+8 --:--:--</div>
+                  </div>
                 </div>
-                <div class="current-time-info">
-                  <div class="current-date" id="currentDate">Loading...</div>
-                  <div class="current-utc" id="currentUTC">UTC+8 --:--:--</div>
-                </div>
-              </div>
 
-              <!-- Main Content Section: Game Info and Timer -->
-              <div class="hero-main-content">
-                <!-- Left Side: Game Info -->
-                <div class="game-section">
-                  <div class="game-info-container">
-                    <div class="game-wrapper">
-                      <div class="game-image-container" id="clockGameImageContainer">
-                        <img
-                          class="game-image"
-                          id="clockGameImage"
-                          src={game.image}
-                          alt={game.name}
-                          loading="eager"
-                        />
-                      </div>
-                      <div class="game-info">
-                        <h3 class="game-name" id="clockGameName">{game.name}</h3>
-                        <div class="region-badge">
-                          <span class="region-name">{currentRegion.name}</span>
+                <!-- Main Content Section: Game Info and Timer -->
+                <div class="hero-main-content">
+                  <!-- Left Side: Game Info -->
+                  <div class="game-section">
+                    <div class="game-info-container">
+                      <div class="game-wrapper">
+                        <div class="game-image-container" id="clockGameImageContainer">
+                          <img
+                            class="game-image"
+                            id="clockGameImage"
+                            src={game.image}
+                            alt={game.name}
+                            loading="eager"
+                          />
                         </div>
-                        <div class="game-status" set:html={currentRegion.status}></div>
+                        <div class="game-info">
+                          <h3 class="game-name" id="clockGameName">{game.name}</h3>
+                          <div class="region-badge">
+                            <span class="region-name">{currentRegion.name}</span>
+                          </div>
+                          <div class="game-status" set:html={currentRegion.status} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right Side: Timer Display -->
+                  <div class="timer-section">
+                    <div class="timer-description-section">
+                      <div class="timer-main-label">{game.timerDescription}</div>
+                    </div>
+
+                    <div class="clock-display">
+                      <div class="time-unit-group">
+                        <div class="time-unit">
+                          <span class="time-value" id="clockHours">--</span>
+                          <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockMinutes">--</span>
+                          <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockSeconds">--</span>
+                          <span class="time-label">Seconds</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <!-- Right Side: Timer Display -->
-                <div class="timer-section">
+            <!-- Second Hero Card - All Other Timers -->
+            <div class="master-clock-container secondary-timers-container">
+              <div class="master-clock secondary-timers-card" id="secondaryTimers">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
+
+                <!-- Game Timers Header -->
+                <div class="game-timers-header">
                   <div class="timer-description-section">
-                    <div class="timer-main-label">{game.timerDescription}</div>
-                  </div>
-
-                  <div class="clock-display">
-                    <div class="time-unit-group">
-                      <div class="time-unit">
-                        <span class="time-value" id="clockHours">--</span>
-                        <span class="time-label">Hours</span>
-                      </div>
-                      <div class="time-separator">:</div>
-                      <div class="time-unit">
-                        <span class="time-value" id="clockMinutes">--</span>
-                        <span class="time-label">Minutes</span>
-                      </div>
-                      <div class="time-separator">:</div>
-                      <div class="time-unit">
-                        <span class="time-value" id="clockSeconds">--</span>
-                        <span class="time-label">Seconds</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Second Hero Card - All Other Timers -->
-          <div class="master-clock-container secondary-timers-container">
-            <div class="master-clock secondary-timers-card" id="secondaryTimers">
-              <!-- Clock Background Animation -->
-              <div class="clock-bg-animation"></div>
-
-              <!-- Game Timers Header -->
-              <div class="game-timers-header">
-                <div class="timer-description-section">
-                  <div class="timer-main-label">Zone Nova Timers</div>
-                  <div class="timer-subtitle">Track all important Zone Nova events and resets</div>
-                </div>
-              </div>
-
-              <!-- Timers Grid Container -->
-              <div class="timers-grid-wrapper">
-                <!-- Primary Timers Row (Most Important) -->
-                <div class="timer-section-group primary-timers">
-                  <div class="timers-row">
-                    <!-- Weekly & Monthly Reset Timer Card -->
-                    <div class="timer-card weekly-card priority-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Weekly & Monthly Reset</div>
-                      </div>
-                      <div class="timer-card-content">
-                        <!-- Weekly Reset -->
-                        <div class="reset-item">
-                          <div class="reset-name">Weekly Reset</div>
-                          <div class="reset-subtitle">Every Monday at 4:00 UTC+8</div>
-                          <div class="reset-time" id="weeklyTime">--:--:--</div>
-                        </div>
-                        <!-- Monthly Reset -->
-                        <div class="reset-item">
-                          <div class="reset-name">Monthly Reset</div>
-                          <div class="reset-subtitle">1st of each month at 4:00 UTC+8</div>
-                          <div class="reset-time" id="monthlyTime">--:--:--</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Maintenance Timer Card -->
-                    <div class="timer-card maintenance-card priority-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Maintenance</div>
-                        <div class="server-status">
-                          <div class="status-dot" id="serverStatusDot"></div>
-                          <span class="status-text" id="serverStatusText">Online</span>
-                        </div>
-                      </div>
-                      <div class="timer-card-subtitle">{timers.maintenance.subtitle}</div>
-                      <div class="timer-card-content">
-                        <!-- Maintenance Start Timer -->
-                        <div class="maintenance-item">
-                          <div class="maintenance-name" id="maintenanceStartLabel">Until Start</div>
-                          <div class="maintenance-time" id="maintenanceStartTime">--:--:--</div>
-                        </div>
-                        <!-- Maintenance End Timer -->
-                        <div class="maintenance-item">
-                          <div class="maintenance-name" id="maintenanceEndLabel">Servers Back</div>
-                          <div class="maintenance-time" id="maintenanceEndTime">--:--:--</div>
-                        </div>
-                      </div>
+                    <div class="timer-main-label">Zone Nova Timers</div>
+                    <div class="timer-subtitle">
+                      Track all important Zone Nova events and resets
                     </div>
                   </div>
                 </div>
 
-
-                <!-- Secondary Timers Row -->
-                <div class="timer-section-group secondary-timers">
-                  <div class="timers-row">
-                    <!-- Rift Timer Card -->
-                    <div class="timer-card rift-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Active Rifts</div>
-                      </div>
-                      <div class="timer-card-content">
-                        <!-- Rift 1 -->
-                        <div class="rift-item">
-                          <div class="rift-name" id="rift1Name">Loading...</div>
-                          <div class="rift-time" id="rift1Time">--:--:--</div>
+                <!-- Timers Grid Container -->
+                <div class="timers-grid-wrapper">
+                  <!-- Primary Timers Row (Most Important) -->
+                  <div class="timer-section-group primary-timers">
+                    <div class="timers-row">
+                      <!-- Weekly & Monthly Reset Timer Card -->
+                      <div class="timer-card weekly-card priority-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Weekly & Monthly Reset</div>
                         </div>
-                        <!-- Rift 2 -->
-                        <div class="rift-item">
-                          <div class="rift-name" id="rift2Name">Loading...</div>
-                          <div class="rift-time" id="rift2Time">--:--:--</div>
+                        <div class="timer-card-content">
+                          <!-- Weekly Reset -->
+                          <div class="reset-item">
+                            <div class="reset-name">Weekly Reset</div>
+                            <div class="reset-subtitle">Every Sunday at 4:00 UTC+8</div>
+                            <div class="reset-time" id="weeklyTime">--:--:--</div>
+                          </div>
+                          <!-- Monthly Reset -->
+                          <div class="reset-item">
+                            <div class="reset-name">Monthly Reset</div>
+                            <div class="reset-subtitle">1st of each month at 4:00 UTC+8</div>
+                            <div class="reset-time" id="monthlyTime">--:--:--</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Maintenance Timer Card -->
+                      <div class="timer-card maintenance-card priority-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Maintenance</div>
+                          <div class="server-status">
+                            <div class="status-dot" id="serverStatusDot"></div>
+                            <span class="status-text" id="serverStatusText">Online</span>
+                          </div>
+                        </div>
+                        <div class="timer-card-subtitle">{timers.maintenance.subtitle}</div>
+                        <div class="timer-card-content">
+                          <!-- Maintenance Start Timer -->
+                          <div class="maintenance-item">
+                            <div class="maintenance-name" id="maintenanceStartLabel">
+                              Until Start
+                            </div>
+                            <div class="maintenance-time" id="maintenanceStartTime">--:--:--</div>
+                          </div>
+                          <!-- Maintenance End Timer -->
+                          <div class="maintenance-item">
+                            <div class="maintenance-name" id="maintenanceEndLabel">
+                              Servers Back
+                            </div>
+                            <div class="maintenance-time" id="maintenanceEndTime">--:--:--</div>
+                          </div>
                         </div>
                       </div>
                     </div>
+                  </div>
 
-                    <!-- Event Timer Card -->
-                    <div class="timer-card event-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Events</div>
-                      </div>
-                      <div class="timer-card-content">
-                        <!-- Event Status -->
-                        <div class="event-status" id="eventStatus">No Active Event</div>
-                        <!-- Event Dates -->
-                        <div class="event-dates">
-                          <div class="event-date-item">
-                            <span class="event-date-label">Started:</span>
-                            <span class="event-date-value" id="eventStartDate">--</span>
+                  <!-- Secondary Timers Row -->
+                  <div class="timer-section-group secondary-timers">
+                    <div class="timers-row">
+                      <!-- Rift Timer Card -->
+                      <div class="timer-card rift-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Active Rifts</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Rift 1 -->
+                          <div class="rift-item">
+                            <div class="rift-name" id="rift1Name">Loading...</div>
+                            <div class="rift-time" id="rift1Time">--:--:--</div>
                           </div>
-                          <div class="event-date-item">
-                            <span class="event-date-label">Ending:</span>
-                            <span class="event-date-value" id="eventEndDate">--</span>
+                          <!-- Rift 2 -->
+                          <div class="rift-item">
+                            <div class="rift-name" id="rift2Name">Loading...</div>
+                            <div class="rift-time" id="rift2Time">--:--:--</div>
                           </div>
                         </div>
-                        <!-- Event Countdown -->
-                        <div class="event-countdown">
-                          <span class="timer-card-value" id="eventTime">--:--:--</span>
-                          <span class="timer-card-label" id="eventTimeLabel">Event End</span>
-                        </div>
                       </div>
-                    </div>
 
-                    <!-- Double Drop 200% Timer Card -->
-                    <div class="timer-card event-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Double Drop 200%</div>
-                      </div>
-                      <div class="timer-card-content">
-                        <!-- Double Drop Event Status -->
-                        <div class="event-status" id="doubleEventStatus">No Active Double Drop</div>
-                        <!-- Double Drop Event Dates -->
-                        <div class="event-dates">
-                          <div class="event-date-item">
-                            <span class="event-date-label">Started:</span>
-                            <span class="event-date-value" id="doubleEventStartDate">--</span>
+                      <!-- Event Timer Card -->
+                      <div class="timer-card event-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Events</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Event Status -->
+                          <div class="event-status" id="eventStatus">No Active Event</div>
+                          <!-- Event Dates -->
+                          <div class="event-dates">
+                            <div class="event-date-item">
+                              <span class="event-date-label">Started:</span>
+                              <span class="event-date-value" id="eventStartDate">--</span>
+                            </div>
+                            <div class="event-date-item">
+                              <span class="event-date-label">Ending:</span>
+                              <span class="event-date-value" id="eventEndDate">--</span>
+                            </div>
                           </div>
-                          <div class="event-date-item">
-                            <span class="event-date-label">Ending:</span>
-                            <span class="event-date-value" id="doubleEventEndDate">--</span>
+                          <!-- Event Countdown -->
+                          <div class="event-countdown">
+                            <span class="timer-card-value" id="eventTime">--:--:--</span>
+                            <span class="timer-card-label" id="eventTimeLabel">Event End</span>
                           </div>
                         </div>
-                        <!-- Double Drop Event Countdown -->
-                        <div class="event-countdown">
-                          <span class="timer-card-value" id="doubleEventTime">--:--:--</span>
-                          <span class="timer-card-label" id="doubleEventTimeLabel">Double Drop End</span>
-                        </div>
                       </div>
-                    </div>
 
-                    <!-- Launch Timer Card -->
-                    <div class="timer-card launch-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Zone Nova - Days Since Launch</div>
+                      <!-- Double Drop 200% Timer Card -->
+                      <div class="timer-card event-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Double Drop 200%</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Double Drop Event Status -->
+                          <div class="event-status" id="doubleEventStatus">
+                            No Active Double Drop
+                          </div>
+                          <!-- Double Drop Event Dates -->
+                          <div class="event-dates">
+                            <div class="event-date-item">
+                              <span class="event-date-label">Started:</span>
+                              <span class="event-date-value" id="doubleEventStartDate">--</span>
+                            </div>
+                            <div class="event-date-item">
+                              <span class="event-date-label">Ending:</span>
+                              <span class="event-date-value" id="doubleEventEndDate">--</span>
+                            </div>
+                          </div>
+                          <!-- Double Drop Event Countdown -->
+                          <div class="event-countdown">
+                            <span class="timer-card-value" id="doubleEventTime">--:--:--</span>
+                            <span class="timer-card-label" id="doubleEventTimeLabel"
+                              >Double Drop End</span
+                            >
+                          </div>
+                        </div>
                       </div>
-                      <div class="launch-card-content">
-                        <div class="launch-counter">
-                          <div class="launch-days" id="launchDays">---</div>
-                          <div class="launch-date">{game.displayDate}</div>
+
+                      <!-- Launch Timer Card -->
+                      <div class="timer-card launch-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Zone Nova - Days Since Launch</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="launchDays">---</div>
+                            <div class="launch-date">{game.displayDate}</div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -310,7 +320,6 @@ const timers = game.timers[game.currentRegion];
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </main>
       </div>

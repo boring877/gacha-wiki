@@ -4,330 +4,734 @@
 
 export const changelog = [
   {
-    version: "2.7.2",
-    date: "2025-08-03",
-    type: "patch",
-    title: "SEO & Mobile Optimization",
-    description: "Fixed site icon visibility in search engines and enhanced mobile experience for clock pages",
+    version: '2.7.7',
+    date: '2025-08-04',
+    type: 'minor',
+    title: 'Zone Nova Team Synergy System',
+    description:
+      'Added comprehensive team synergy database with 8 team compositions and filtering capabilities',
     changes: [
       {
-        type: "fixed",
-        category: "SEO",
-        description: "Fixed favicon not showing in search results by adding comprehensive icon configuration"
+        type: 'added',
+        category: 'Zone Nova',
+        description: 'Added team synergy database with 8 team compositions across all tiers',
       },
       {
-        type: "added",
-        category: "SEO",
-        description: "Added structured data (Schema.org) for better search engine recognition"
+        type: 'added',
+        category: 'Zone Nova',
+        description: 'Implemented filterable team synergy table with type and tier sorting',
       },
       {
-        type: "improved",
-        category: "Navigation",
-        description: "Added 2nd header navigation to Zone Nova and Silver & Blood clock pages"
+        type: 'added',
+        category: 'Zone Nova',
+        description: 'Created dedicated team synergy layout and styling system',
       },
       {
-        type: "enhanced",
-        category: "Mobile",
-        description: "Optimized mobile layout for all clock pages with better responsive design"
+        type: 'added',
+        category: 'Zone Nova',
+        description: 'Added DOT team type for damage-over-time focused strategies',
       },
       {
-        type: "added",
-        category: "Web App",
-        description: "Enabled web app manifest with comprehensive icon sizes"
+        type: 'added',
+        category: 'Zone Nova',
+        description: 'Integrated character element badges with team display',
       },
       {
-        type: "improved",
-        category: "Social Media",
-        description: "Enhanced Open Graph and Twitter Card metadata for better social sharing"
-      }
+        type: 'enhanced',
+        category: 'Navigation',
+        description: 'Added team synergy section to Zone Nova navigation and resources',
+      },
     ],
-    author: "Boring877"
+    author: 'Boring877',
   },
   {
-    version: "2.7.0",
-    date: "2025-08-02",
-    type: "minor",
-    title: "Automated Changelog System & Clock Improvements",
-    description: "Added automated changelog generation system and improved clock functionality across platforms",
+    version: '2.7.6',
+    date: '2025-08-04',
+    type: 'patch',
+    title: 'SEO Keyword Enhancement',
+    description: 'Enhanced SEO keywords for better gacha game search visibility',
     changes: [
       {
-        type: "added",
-        category: "Build System",
-        description: "Automated changelog generation script with git commit parsing"
+        type: 'enhanced',
+        category: 'SEO',
+        description: 'Enhanced SEO keywords for better gacha game search visibility',
       },
-      {
-        type: "added",
-        category: "Build System",
-        description: "Git hooks for automatic version bumping and changelog updates"
-      },
-      {
-        type: "added",
-        category: "Build System", 
-        description: "Smart commit message categorization and version detection"
-      },
-      {
-        type: "changed",
-        category: "Clock",
-        description: "Fixed quite a bit more on clock functionality"
-      },
-      {
-        type: "fixed",
-        category: "Mobile",
-        description: "Fixed clock display issues on mobile devices"
-      },
-      {
-        type: "added",
-        category: "Clock",
-        description: "Added comprehensive clock section"
-      },
-      {
-        type: "fixed",
-        category: "Silver and Blood",
-        description: "Resolved SAB navigation syntax errors and formatting issues"
-      },
-      {
-        type: "improved",
-        category: "Navigation",
-        description: "Made the 2nd header look much better"
-      },
-      {
-        type: "added",
-        category: "Zone Nova",
-        description: "Added new updates for Zone Nova content"
-      }
     ],
-    author: "Boring877"
+    author: 'Boring877',
   },
   {
-    version: "2.6.3",
-    date: "2025-08-02",
-    type: "patch",
-    title: "Multi-Platform Updates",
-    description: "Fixed 1 issues, Improved 7 components",
+    version: '2.7.5',
+    date: '2025-08-04',
+    type: 'patch',
+    title: 'Clock Pages Improvements',
+    description: 'Fixed clock pages alignment and event status colors',
     changes: [
       {
-        type: "changed",
-        category: "Clock",
-        description: "Fiex quite bit more on clock"
+        type: 'fixed',
+        category: 'Clock',
+        description: 'Improved clock pages alignment and event status colors',
       },
-      {
-        type: "changed",
-        category: "Mobile",
-        description: "Fixing the clock on mobile"
-      },
-      {
-        type: "changed",
-        category: "Clock",
-        description: "Added clock section"
-      },
-      {
-        type: "changed",
-        category: "Clock",
-        description: "Added clock section"
-      },
-      {
-        type: "changed",
-        category: "Clock",
-        description: "Clock section"
-      },
-      {
-        type: "fixed",
-        category: "Silver and Blood",
-        description: "Resolve SAB navigation syntax errors and formatting issues"
-      },
-      {
-        type: "changed",
-        category: "Navigation",
-        description: "Made the 2nd header looks much better !"
-      },
-      {
-        type: "changed",
-        category: "General",
-        description: "Added new updates zn"
-      }
     ],
-    author: "Boring877"
+    author: 'Boring877',
   },
   {
-    version: "2.6.2",
-    date: "2025-08-02",
-    type: "minor",
-    title: "Clock System Improvements & Mobile Fixes",
-    description: "Fixed clock functionality on mobile and improved clock section layout",
+    version: '2.7.4',
+    date: '2025-08-04',
+    type: 'patch',
+    title: 'Navigation Alignment Fix',
+    description: 'Fixed 2nd header navigation alignment with content on clock pages',
     changes: [
       {
-        type: "fixed",
-        category: "Clock",
-        description: "Fixed quite a bit more on clock functionality"
+        type: 'fixed',
+        category: 'Navigation',
+        description: 'Aligned 2nd header navigation items with content on clock pages',
       },
-      {
-        type: "fixed",
-        category: "Mobile",
-        description: "Fixed clock display issues on mobile devices"
-      },
-      {
-        type: "added",
-        category: "Clock",
-        description: "Added comprehensive clock section"
-      }
     ],
-    author: "Boring877"
+    author: 'Boring877',
   },
   {
-    version: "2.6.1",
-    date: "2025-07-31",
-    type: "patch",
-    title: "Navigation & Character Database Enhancements",
-    description: "Improved Zone Nova navigation, character database, and mobile experience",
+    version: '2.7.3',
+    date: '2025-08-04',
+    type: 'patch',
+    title: 'Clock Header Positioning',
+    description: 'Fixed 2nd header positioning on clock pages with other game pages',
     changes: [
       {
-        type: "fixed",
-        category: "Navigation",
-        description: "Resolved SAB navigation syntax errors and formatting issues"
+        type: 'fixed',
+        category: 'Navigation',
+        description: 'Aligned 2nd header positioning on clock pages with other game pages',
       },
-      {
-        type: "changed",
-        category: "Navigation",
-        description: "Made the 2nd header looks much better"
-      },
-      {
-        type: "added",
-        category: "Zone Nova",
-        description: "Added new updates for Zone Nova content"
-      },
-      {
-        type: "fixed",
-        category: "Mobile",
-        description: "Fixed character database mobile cards syntax and reorganized mobile navigation"
-      },
-      {
-        type: "fixed",
-        category: "Zone Nova",
-        description: "Ensured Zone Nova navigation shows in production"
-      },
-      {
-        type: "fixed",
-        category: "CSS",
-        description: "Added missing CSS import to Zone Nova CharacterNavigation component"
-      }
     ],
-    author: "Boring877"
+    author: 'Boring877',
   },
   {
-    version: "2.6.0",
-    date: "2025-07-31",
-    type: "minor",
-    title: "Zone Nova Navigation & Mobile Improvements",
-    description: "Enhanced Zone Nova navigation with mobile improvements and code quality fixes",
+    version: '2.7.2',
+    date: '2025-08-03',
+    type: 'patch',
+    title: 'SEO & Mobile Optimization',
+    description:
+      'Fixed site icon visibility in search engines and enhanced mobile experience for clock pages',
     changes: [
       {
-        type: "added",
-        category: "Characters",
-        description: "Fixed character related stuff and added tag section"
+        type: 'fixed',
+        category: 'SEO',
+        description:
+          'Fixed favicon not showing in search results by adding comprehensive icon configuration',
       },
       {
-        type: "changed",
-        category: "Character Tags",
-        description: "Simplified character tags: removed hover effects, shadows, and updated Penny with concise wording"
+        type: 'added',
+        category: 'SEO',
+        description: 'Added structured data (Schema.org) for better search engine recognition',
       },
       {
-        type: "added",
-        category: "Character System",
-        description: "Implemented reusable character tags system with Penny's gameplay tags"
+        type: 'improved',
+        category: 'Navigation',
+        description: 'Added 2nd header navigation to Zone Nova and Silver & Blood clock pages',
       },
       {
-        type: "enhanced",
-        category: "Character Database",
-        description: "Enhanced character database badge system with premium effects and animations"
+        type: 'enhanced',
+        category: 'Mobile',
+        description: 'Optimized mobile layout for all clock pages with better responsive design',
       },
       {
-        type: "fixed",
-        category: "Structure",
-        description: "Fixed quite a bit of Zone Nova structure and SAB organization"
-      }
+        type: 'added',
+        category: 'Web App',
+        description: 'Enabled web app manifest with comprehensive icon sizes',
+      },
+      {
+        type: 'improved',
+        category: 'Social Media',
+        description: 'Enhanced Open Graph and Twitter Card metadata for better social sharing',
+      },
     ],
-    author: "Boring877"
+    author: 'Boring877',
   },
   {
-    version: "2.5.0",
-    date: "2025-07-26",
-    type: "minor",
-    title: "Character Database & Mobile Optimization",
-    description: "Major updates to Zone Nova character comparisons and mobile optimization fixes",
+    version: '2.7.1',
+    date: '2025-08-02',
+    type: 'patch',
+    title: 'Automated Changelog System Release',
+    description: 'Released automated changelog generation system with improved documentation',
     changes: [
       {
-        type: "changed",
-        category: "Zone Nova",
-        description: "Updated Zone Nova: character comparison enhancements, new Rift Surge 7, and image fixes"
+        type: 'added',
+        category: 'Build System',
+        description: 'Released automated changelog generation system',
       },
       {
-        type: "fixed",
-        category: "Mobile",
-        description: "Fixed mobile optimization problems"
+        type: 'improved',
+        category: 'Documentation',
+        description: 'Enhanced version tracking and release documentation',
       },
-      {
-        type: "added",
-        category: "Zone Nova",
-        description: "Added node tree system"
-      },
-      {
-        type: "added",
-        category: "Characters",
-        description: "Added Belle Fleet character"
-      },
-      {
-        type: "fixed",
-        category: "Performance",
-        description: "Fixed optimization and mobile image problems"
-      },
-      {
-        type: "fixed",
-        category: "Mobile",
-        description: "Fixed mobile problems in character pages"
-      },
-      {
-        type: "added",
-        category: "Zone Nova",
-        description: "Added Faction and classes for Zone Nova"
-      }
     ],
-    author: "Boring877"
+    author: 'Boring877',
   },
   {
-    version: "2.4.0",
-    date: "2025-07-22",
-    type: "minor",
-    title: "Character Database Expansion",
-    description: "Added new characters and restructured character database templates",
+    version: '2.7.0',
+    date: '2025-08-02',
+    type: 'minor',
+    title: 'Automated Changelog System & Clock Improvements',
+    description:
+      'Added automated changelog generation system and improved clock functionality across platforms',
     changes: [
       {
-        type: "fixed",
-        category: "Characters",
-        description: "Fixed problems with character Mamon"
+        type: 'added',
+        category: 'Build System',
+        description: 'Automated changelog generation script with git commit parsing',
       },
       {
-        type: "added",
-        category: "Characters",
-        description: "Added Odin character and restructured character database templates"
+        type: 'added',
+        category: 'Build System',
+        description: 'Git hooks for automatic version bumping and changelog updates',
       },
       {
-        type: "changed",
-        category: "Maintenance",
-        description: "Editing and cleaning up codebase"
-      }
+        type: 'added',
+        category: 'Build System',
+        description: 'Smart commit message categorization and version detection',
+      },
+      {
+        type: 'changed',
+        category: 'Clock',
+        description: 'Fixed quite a bit more on clock functionality',
+      },
+      {
+        type: 'fixed',
+        category: 'Mobile',
+        description: 'Fixed clock display issues on mobile devices',
+      },
+      {
+        type: 'added',
+        category: 'Clock',
+        description: 'Added comprehensive clock section',
+      },
+      {
+        type: 'fixed',
+        category: 'Silver and Blood',
+        description: 'Resolved SAB navigation syntax errors and formatting issues',
+      },
+      {
+        type: 'improved',
+        category: 'Navigation',
+        description: 'Made the 2nd header look much better',
+      },
+      {
+        type: 'added',
+        category: 'Zone Nova',
+        description: 'Added new updates for Zone Nova content',
+      },
     ],
-    author: "Boring877"
-  }
+    author: 'Boring877',
+  },
+  {
+    version: '2.6.3',
+    date: '2025-08-02',
+    type: 'patch',
+    title: 'Multi-Platform Updates',
+    description: 'Fixed 1 issues, Improved 7 components',
+    changes: [
+      {
+        type: 'changed',
+        category: 'Clock',
+        description: 'Fiex quite bit more on clock',
+      },
+      {
+        type: 'changed',
+        category: 'Mobile',
+        description: 'Fixing the clock on mobile',
+      },
+      {
+        type: 'changed',
+        category: 'Clock',
+        description: 'Added clock section',
+      },
+      {
+        type: 'changed',
+        category: 'Clock',
+        description: 'Added clock section',
+      },
+      {
+        type: 'changed',
+        category: 'Clock',
+        description: 'Clock section',
+      },
+      {
+        type: 'fixed',
+        category: 'Silver and Blood',
+        description: 'Resolve SAB navigation syntax errors and formatting issues',
+      },
+      {
+        type: 'changed',
+        category: 'Navigation',
+        description: 'Made the 2nd header looks much better !',
+      },
+      {
+        type: 'changed',
+        category: 'General',
+        description: 'Added new updates zn',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.6.2',
+    date: '2025-08-02',
+    type: 'minor',
+    title: 'Clock System Improvements & Mobile Fixes',
+    description: 'Fixed clock functionality on mobile and improved clock section layout',
+    changes: [
+      {
+        type: 'fixed',
+        category: 'Clock',
+        description: 'Fixed quite a bit more on clock functionality',
+      },
+      {
+        type: 'fixed',
+        category: 'Mobile',
+        description: 'Fixed clock display issues on mobile devices',
+      },
+      {
+        type: 'added',
+        category: 'Clock',
+        description: 'Added comprehensive clock section',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.6.1',
+    date: '2025-07-31',
+    type: 'patch',
+    title: 'Navigation & Character Database Enhancements',
+    description: 'Improved Zone Nova navigation, character database, and mobile experience',
+    changes: [
+      {
+        type: 'fixed',
+        category: 'Navigation',
+        description: 'Resolved SAB navigation syntax errors and formatting issues',
+      },
+      {
+        type: 'changed',
+        category: 'Navigation',
+        description: 'Made the 2nd header looks much better',
+      },
+      {
+        type: 'added',
+        category: 'Zone Nova',
+        description: 'Added new updates for Zone Nova content',
+      },
+      {
+        type: 'fixed',
+        category: 'Mobile',
+        description:
+          'Fixed character database mobile cards syntax and reorganized mobile navigation',
+      },
+      {
+        type: 'fixed',
+        category: 'Zone Nova',
+        description: 'Ensured Zone Nova navigation shows in production',
+      },
+      {
+        type: 'fixed',
+        category: 'CSS',
+        description: 'Added missing CSS import to Zone Nova CharacterNavigation component',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.6.0',
+    date: '2025-07-31',
+    type: 'minor',
+    title: 'Zone Nova Navigation & Mobile Improvements',
+    description: 'Enhanced Zone Nova navigation with mobile improvements and code quality fixes',
+    changes: [
+      {
+        type: 'added',
+        category: 'Characters',
+        description: 'Fixed character related stuff and added tag section',
+      },
+      {
+        type: 'changed',
+        category: 'Character Tags',
+        description:
+          'Simplified character tags: removed hover effects, shadows, and updated Penny with concise wording',
+      },
+      {
+        type: 'added',
+        category: 'Character System',
+        description: "Implemented reusable character tags system with Penny's gameplay tags",
+      },
+      {
+        type: 'enhanced',
+        category: 'Character Database',
+        description: 'Enhanced character database badge system with premium effects and animations',
+      },
+      {
+        type: 'fixed',
+        category: 'Structure',
+        description: 'Fixed quite a bit of Zone Nova structure and SAB organization',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.5.0',
+    date: '2025-07-26',
+    type: 'minor',
+    title: 'Character Database & Mobile Optimization',
+    description: 'Major updates to Zone Nova character comparisons and mobile optimization fixes',
+    changes: [
+      {
+        type: 'changed',
+        category: 'Zone Nova',
+        description:
+          'Updated Zone Nova: character comparison enhancements, new Rift Surge 7, and image fixes',
+      },
+      {
+        type: 'fixed',
+        category: 'Mobile',
+        description: 'Fixed mobile optimization problems',
+      },
+      {
+        type: 'added',
+        category: 'Zone Nova',
+        description: 'Added node tree system',
+      },
+      {
+        type: 'added',
+        category: 'Characters',
+        description: 'Added Belle Fleet character',
+      },
+      {
+        type: 'fixed',
+        category: 'Performance',
+        description: 'Fixed optimization and mobile image problems',
+      },
+      {
+        type: 'fixed',
+        category: 'Mobile',
+        description: 'Fixed mobile problems in character pages',
+      },
+      {
+        type: 'added',
+        category: 'Zone Nova',
+        description: 'Added Faction and classes for Zone Nova',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.4.0',
+    date: '2025-07-22',
+    type: 'major',
+    title: 'Character Database Expansion',
+    description: 'Removed chatbot system and expanded character database with new templates',
+    changes: [
+      {
+        type: 'removed',
+        category: 'General',
+        description: 'Removed chatbot and Aria AI system for cleaner interface',
+      },
+      {
+        type: 'fixed',
+        category: 'Characters',
+        description: 'Fixed problems with character Mamon',
+      },
+      {
+        type: 'added',
+        category: 'Characters',
+        description: 'Added Odin character and restructured character database templates',
+      },
+      {
+        type: 'changed',
+        category: 'Maintenance',
+        description: 'Editing and cleaning up codebase',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.3.0',
+    date: '2025-07-20',
+    type: 'minor',
+    title: 'Silver and Blood Setup',
+    description: 'Fixed deployment issues and completed Silver and Blood game setup',
+    changes: [
+      {
+        type: 'fixed',
+        category: 'Deployment',
+        description: 'Fixed deployment issues and build problems',
+      },
+      {
+        type: 'added',
+        category: 'Silver and Blood',
+        description: 'Completed Silver and Blood initial setup and configuration',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.2.0',
+    date: '2025-07-18',
+    type: 'minor',
+    title: 'Template System & CSS Fixes',
+    description: 'Created template systems and fixed numerous CSS and package problems',
+    changes: [
+      {
+        type: 'added',
+        category: 'General',
+        description: 'Created comprehensive template system for consistent layouts',
+      },
+      {
+        type: 'fixed',
+        category: 'CSS',
+        description: 'Fixed numerous CSS problems and styling issues',
+      },
+      {
+        type: 'fixed',
+        category: 'Dependencies',
+        description: 'Resolved package problems and dependency conflicts',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.1.0',
+    date: '2025-07-18',
+    type: 'minor',
+    title: 'Development Environment Improvements',
+    description: 'Enhanced development workflow and fixed build configuration issues',
+    changes: [
+      {
+        type: 'improved',
+        category: 'Build System',
+        description: 'Enhanced template system and build configuration',
+      },
+      {
+        type: 'fixed',
+        category: 'CSS',
+        description: 'Resolved CSS compilation and styling problems',
+      },
+      {
+        type: 'fixed',
+        category: 'Dependencies',
+        description: 'Fixed package configuration and dependency issues',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.0.6',
+    date: '2025-07-15',
+    type: 'patch',
+    title: 'Critical CSS Syntax Fix',
+    description: 'Fixed critical CSS syntax error causing build failures',
+    changes: [
+      {
+        type: 'fixed',
+        category: 'CSS',
+        description: 'Fixed CSS syntax error in Header.astro that broke builds',
+      },
+      {
+        type: 'fixed',
+        category: 'CSS',
+        description: 'Removed HTML content accidentally placed inside CSS style block',
+      },
+      {
+        type: 'fixed',
+        category: 'CSS',
+        description: 'Fixed broken transition property in simple-title class',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.0.5',
+    date: '2025-07-14',
+    type: 'patch',
+    title: 'Deployment Trigger Fix',
+    description: 'Forced deployment trigger to resolve deployment issues',
+    changes: [
+      {
+        type: 'fixed',
+        category: 'Deployment',
+        description: 'Force deployment trigger to resolve build and deployment issues',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.0.4',
+    date: '2025-07-14',
+    type: 'patch',
+    title: 'Critical Error Fixes',
+    description: 'Fixed Astro config errors and cleaned development environment',
+    changes: [
+      {
+        type: 'fixed',
+        category: 'Build System',
+        description: 'Fixed Astro config errors and removed Vercel server mode conflicts',
+      },
+      {
+        type: 'enhanced',
+        category: 'Performance',
+        description: 'Optimized font loading and eliminated console errors',
+      },
+      {
+        type: 'changed',
+        category: 'Maintenance',
+        description: 'Cleaned cache directories and restored working analytics',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.0.3',
+    date: '2025-07-13',
+    type: 'minor',
+    title: 'Aggressive Performance Optimizations',
+    description:
+      'Ultra performance boost targeting 95+ PageSpeed Score with critical optimizations',
+    changes: [
+      {
+        type: 'enhanced',
+        category: 'Performance',
+        description: 'Critical font preloading and aggressive CLS prevention',
+      },
+      {
+        type: 'added',
+        category: 'Performance',
+        description: 'CSS containment and GPU acceleration for better rendering',
+      },
+      {
+        type: 'improved',
+        category: 'Mobile',
+        description: 'FOUC prevention and mobile-specific optimizations',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.0.2',
+    date: '2025-07-12',
+    type: 'minor',
+    title: 'Performance Optimization Overhaul',
+    description: 'Major optimization overhaul with CLS fixes and mobile performance boost',
+    changes: [
+      {
+        type: 'fixed',
+        category: 'Performance',
+        description: 'Fixed CLS (Cumulative Layout Shift) from 0.25 to target <0.1',
+      },
+      {
+        type: 'improved',
+        category: 'Performance',
+        description: 'Enhanced FID (First Input Delay) and mobile performance',
+      },
+      {
+        type: 'added',
+        category: 'Performance',
+        description: 'GPU acceleration, lazy loading, and preload hints',
+      },
+      {
+        type: 'enhanced',
+        category: 'Mobile',
+        description: 'Reduced animations on mobile and accessibility improvements',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.0.1',
+    date: '2025-07-11',
+    type: 'patch',
+    title: 'Critical Bug Fixes',
+    description: 'Fixed errors, removed MDX integration, and cleaned dependencies',
+    changes: [
+      {
+        type: 'fixed',
+        category: 'General',
+        description: 'Fixed various errors and removed problematic MDX integration',
+      },
+      {
+        type: 'fixed',
+        category: 'General',
+        description: 'Fixed favicon display and file permission issues',
+      },
+      {
+        type: 'changed',
+        category: 'Dependencies',
+        description: 'Cleaned dependencies and resolved conflicts',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '2.0.0',
+    date: '2025-07-10',
+    type: 'major',
+    title: 'Complete Site Redesign',
+    description:
+      'Major release with mobile responsiveness, modern design, and comprehensive cleanup',
+    changes: [
+      {
+        type: 'added',
+        category: 'Design',
+        description: 'Complete site redesign with modern, mobile-responsive interface',
+      },
+      {
+        type: 'added',
+        category: 'Zone Nova',
+        description: 'Comprehensive Zone Nova game coverage and content',
+      },
+      {
+        type: 'added',
+        category: 'Legal',
+        description: 'MIT license implementation for open-source distribution',
+      },
+      {
+        type: 'enhanced',
+        category: 'Mobile',
+        description: 'Full mobile responsiveness across all pages and components',
+      },
+      {
+        type: 'changed',
+        category: 'Maintenance',
+        description: 'Comprehensive codebase cleanup and restructuring',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
+    version: '1.0.0',
+    date: '2025-07-08',
+    type: 'major',
+    title: 'Initial Release',
+    description: 'First release of GachaWiki with basic functionality and speed optimizations',
+    changes: [
+      {
+        type: 'added',
+        category: 'General',
+        description: 'Initial release with core wiki functionality',
+      },
+      {
+        type: 'enhanced',
+        category: 'Performance',
+        description: 'Speed optimizations for better user experience',
+      },
+    ],
+    author: 'Boring877',
+  },
 ];
 
 // Helper functions for changelog data
 export const getLatestVersion = () => changelog[0];
 
-export const getVersionsByType = (type) => {
+export const getVersionsByType = type => {
   return changelog.filter(entry => entry.type === type);
 };
 
-export const getChangesByCategory = (category) => {
+export const getChangesByCategory = category => {
   const changes = [];
   changelog.forEach(version => {
     version.changes.forEach(change => {
@@ -335,7 +739,7 @@ export const getChangesByCategory = (category) => {
         changes.push({
           ...change,
           version: version.version,
-          date: version.date
+          date: version.date,
         });
       }
     });
@@ -343,7 +747,7 @@ export const getChangesByCategory = (category) => {
   return changes;
 };
 
-export const getChangesByType = (type) => {
+export const getChangesByType = type => {
   const changes = [];
   changelog.forEach(version => {
     version.changes.forEach(change => {
@@ -351,7 +755,7 @@ export const getChangesByType = (type) => {
         changes.push({
           ...change,
           version: version.version,
-          date: version.date
+          date: version.date,
         });
       }
     });
@@ -366,7 +770,7 @@ export const getBuildInfo = () => {
     version: latest.version,
     buildDate: latest.date,
     totalVersions: changelog.length,
-    lastUpdated: new Date().toISOString().split('T')[0]
+    lastUpdated: new Date().toISOString().split('T')[0],
   };
 };
 

@@ -141,7 +141,7 @@ class ZoneNovaClockTimer {
 
     // Format current UTC+8 time
     if (this.currentUTC) {
-      const utc8Time = new Date(now.getTime() + (8 * 60 * 60 * 1000));
+      const utc8Time = new Date(now.getTime() + 8 * 60 * 60 * 1000);
       const utc8Hours = String(utc8Time.getUTCHours()).padStart(2, '0');
       const utc8Minutes = String(utc8Time.getUTCMinutes()).padStart(2, '0');
       const utc8Seconds = String(utc8Time.getUTCSeconds()).padStart(2, '0');
@@ -239,26 +239,26 @@ class ZoneNovaClockTimer {
   }
 
   /**
-   * Update weekly reset timer - resets every Monday at 4:00 UTC+8 (20:00 UTC)
+   * Update weekly reset timer - resets every Sunday at 4:00 UTC+8 (20:00 UTC)
    */
   updateWeeklyTimer() {
     if (!this.weeklyTime) return;
 
     const now = new Date();
-    const nextMonday = new Date();
+    const nextSunday = new Date();
 
-    // Get days until next Monday (0 = Sunday, 1 = Monday, etc.)
-    const daysUntilMonday = (1 - now.getUTCDay() + 7) % 7 || 7;
+    // Get days until next Sunday (0 = Sunday, 1 = Monday, etc.)
+    const daysUntilSunday = (0 - now.getUTCDay() + 7) % 7 || 7;
 
-    nextMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
-    nextMonday.setUTCHours(20, 0, 0, 0); // 4:00 UTC+8 = 20:00 UTC
+    nextSunday.setUTCDate(now.getUTCDate() + daysUntilSunday);
+    nextSunday.setUTCHours(20, 0, 0, 0); // 4:00 UTC+8 = 20:00 UTC
 
-    // If it's Monday and before 20:00 UTC, use today
-    if (now.getUTCDay() === 1 && now.getUTCHours() < 20) {
-      nextMonday.setUTCDate(now.getUTCDate());
+    // If it's Sunday and before 20:00 UTC, use today
+    if (now.getUTCDay() === 0 && now.getUTCHours() < 20) {
+      nextSunday.setUTCDate(now.getUTCDate());
     }
 
-    const timeDiff = nextMonday.getTime() - now.getTime();
+    const timeDiff = nextSunday.getTime() - now.getTime();
     const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));

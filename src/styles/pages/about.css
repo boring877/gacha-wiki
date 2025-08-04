@@ -112,7 +112,6 @@
   border: 2px solid var(--text-secondary); /* Muted border */
   border-radius: 16px; /* Rounded corners */
   padding: 2rem; /* Generous internal spacing */
-  transition: all 0.3s ease; /* Smooth hover transitions */
 }
 
 /* Timeline dot for each version entry */
@@ -126,12 +125,6 @@
   background: var(--amber-glow); /* Amber dot color */
   border-radius: 50%; /* Circular shape */
   border: 2px solid var(--zn-card-bg); /* Border to separate from background */
-}
-
-/* Version entry hover state */
-.version-entry:hover {
-  transform: translateY(-2px); /* Subtle lift effect */
-  border-color: var(--amber-glow); /* Amber border on hover */
 }
 
 /* === VERSION HEADER === */
@@ -329,13 +322,6 @@
   border-radius: 12px; /* Rounded button shape */
   font-weight: 600; /* Semibold for emphasis */
   font-size: 1rem; /* Standard button text size */
-  transition: all 0.3s ease; /* Smooth hover transitions */
-}
-
-/* GitHub link hover state */
-.github-link:hover {
-  background: var(--primary-hover); /* Darker amber on hover */
-  transform: translateY(-2px); /* Subtle lift effect */
 }
 
 /* === ANIMATIONS === */

@@ -6,15 +6,7 @@
   border-radius: 20px;
   margin-bottom: 3rem;
   border: 1px solid var(--amber-glow);
-  box-shadow: 0 12px 30px rgba(164, 120, 100, 0.2);
-  transition: all 0.4s ease;
   animation: sectionFadeIn 0.8s ease-out;
-}
-
-.content-section:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(164, 120, 100, 0.3);
-  border-color: var(--teal-crystal);
 }
 
 .section-title {
@@ -60,7 +52,6 @@
   padding: 2.5rem;
   border-radius: 16px;
   border: 1px solid var(--mocha-mousse);
-  transition: all 0.4s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -68,42 +59,14 @@
   height: 100%;
 }
 
-.guide-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-  transition: left 0.6s ease;
-}
-
-.guide-card:hover::before {
-  left: 100%;
-}
-
-.guide-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 172, 193, 0.3);
-  border-color: var(--teal-crystal);
-  background: var(--bg-secondary);
-}
-
 .guide-card h3 {
   color: var(--text-primary);
   margin: 0 0 1rem 0;
   font-size: var(--text-xl);
   font-weight: 600;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-.guide-card:hover h3 {
-  color: var(--amber-glow);
-  transform: translateX(5px);
 }
 
 .guide-card p {
@@ -111,11 +74,6 @@
   line-height: 1.6;
   color: var(--text-secondary);
   font-size: 1.1rem;
-  transition: color 0.3s ease;
-}
-
-.guide-card:hover p {
-  color: var(--text-primary);
 }
 
 .guide-card-link {
@@ -126,11 +84,6 @@
 
 .guide-emoji {
   font-size: 2rem;
-  transition: transform 0.3s ease;
-}
-
-.guide-card:hover .guide-emoji {
-  transform: scale(1.2) rotate(5deg);
 }
 
 /* Play Button */
@@ -150,14 +103,6 @@
   font-size: var(--text-lg);
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 8px 20px rgba(255, 183, 77, 0.4);
-  transition: all 0.3s ease;
-  animation: playButtonGlow 2s ease-in-out infinite alternate;
-}
-
-.play-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 30px rgba(255, 183, 77, 0.6);
 }
 
 .play-emoji {
@@ -188,19 +133,6 @@
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes playButtonGlow {
-  0% {
-    box-shadow: 0 8px 20px rgba(255, 183, 77, 0.4);
-    filter: brightness(1);
-  }
-  100% {
-    box-shadow:
-      0 8px 20px rgba(255, 183, 77, 0.6),
-      0 0 20px rgba(0, 172, 193, 0.3);
-    filter: brightness(1.1);
   }
 }
 
@@ -295,18 +227,5 @@
 
   .guide-card {
     border-width: 2px;
-  }
-}
-
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-  .guide-card:hover {
-    transform: none;
-    box-shadow: 0 12px 30px rgba(0, 172, 193, 0.2);
-  }
-
-  .play-button:hover {
-    transform: none;
-    box-shadow: 0 8px 20px rgba(255, 183, 77, 0.4);
   }
 }

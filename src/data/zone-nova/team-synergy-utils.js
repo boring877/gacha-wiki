@@ -244,10 +244,11 @@ function renderMobileCards() {
       
       <div class="mobile-card-characters">
         ${team.characters
-          .map(char => {
+          .map((char, index) => {
             const element = getCharacterElement(char.name);
             return `
             <div class="mobile-character-item">
+              <div class="character-position">${index + 1}</div>
               <img src="${char.image}" alt="${char.name}" class="mobile-character-portrait" loading="lazy" />
               <span class="mobile-character-name">${char.name}</span>
               ${element ? `<span class="element-badge element-${element.toLowerCase()}">${element}</span>` : ''}
@@ -257,7 +258,7 @@ function renderMobileCards() {
           .join('')}
       </div>
       
-      ${team.notes ? `<div class="mobile-card-notes">${truncateText(team.notes, 100, 80)}</div>` : ''}
+      ${team.notes ? `<div class="mobile-card-notes">${team.notes}</div>` : ''}
     </div>
   `
     )

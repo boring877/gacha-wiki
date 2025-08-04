@@ -16,8 +16,8 @@ export const clockLandingGames = [
       type: 'daily',
       resetHour: 20, // UTC
       resetMinute: 0,
-      icon: ''
-    }
+      icon: '',
+    },
   },
   {
     id: 'silver-and-blood',
@@ -32,9 +32,9 @@ export const clockLandingGames = [
       type: 'daily',
       resetHour: 20, // UTC (APAC default)
       resetMinute: 0,
-      icon: ''
-    }
-  }
+      icon: '',
+    },
+  },
 ];
 
 /**
@@ -52,35 +52,35 @@ export function getActiveLandingGames() {
  */
 export function calculatePreviewTime(timer) {
   const now = new Date();
-  let targetTime = new Date();
-  
+  const targetTime = new Date();
+
   if (timer.type === 'daily') {
     targetTime.setUTCHours(timer.resetHour, timer.resetMinute || 0, 0, 0);
-    
+
     // If reset time has passed today, set it for tomorrow
     if (targetTime <= now) {
       targetTime.setUTCDate(targetTime.getUTCDate() + 1);
     }
   }
-  
+
   const timeDiff = targetTime.getTime() - now.getTime();
-  
+
   if (timeDiff <= 0) {
-    return { 
-      hours: 0, 
-      minutes: 0, 
+    return {
+      hours: 0,
+      minutes: 0,
       display: '0h 0m',
-      expired: true 
+      expired: true,
     };
   }
-  
+
   const hours = Math.floor(timeDiff / (1000 * 60 * 60));
   const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-  
+
   return {
     hours,
     minutes,
     display: `${hours}h ${minutes}m`,
-    expired: false
+    expired: false,
   };
 }
