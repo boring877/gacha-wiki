@@ -34,7 +34,8 @@ export const zoneNovaConfig = {
       id: 'clock',
       title: 'Clock',
       emoji: '⏰',
-      description: 'Track Zone Nova daily reset times and server events. Never miss dailies, energy refills, or farming sessions with our real-time Zone Nova clock.',
+      description:
+        'Track Zone Nova daily reset times and server events. Never miss dailies, energy refills, or farming sessions with our real-time Zone Nova clock.',
       url: '/clock/zone-nova/',
       category: 'tools',
     },
@@ -96,6 +97,15 @@ export const zoneNovaConfig = {
       emoji: '🌀',
       description: 'Rift Laws, mechanics, events, and rewards guide.',
       url: '/guides/zone-nova/rifts/',
+      category: 'guides',
+    },
+    {
+      id: 'team-synergy',
+      title: 'Team Synergy',
+      emoji: '🤝',
+      description:
+        'Effective team compositions for Rifts, Guild Raids, and character-specific synergies.',
+      url: '/guides/zone-nova/team-synergy/',
       category: 'guides',
     },
     {

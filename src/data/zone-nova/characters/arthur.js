@@ -35,7 +35,7 @@ export const arthurData = {
       name: 'Imperial Sacred Judgment',
       energyCost: '6', // e.g., '5'
       description:
-        'Deals holy damage equal to 600% of Attack to frontal enemy units. After a Support unit uses their Ultimate, you can trigger an Enhanced Ultimate within 5 s. Enhanced Ultimate: ATK +36 % for 10 s and deal 720 % ATK Holy damage to enemies in front. ',
+        'Deals holy damage equal to 600% of Attack to frontal enemy units. After a Buffer unit uses their Ultimate, you can trigger an Enhanced Ultimate within 5 s. Enhanced Ultimate: ATK +36 % for 10 s and deal 720 % ATK Holy damage to enemies in front. ',
     },
     passive: {
       name: 'Royal Dominance',

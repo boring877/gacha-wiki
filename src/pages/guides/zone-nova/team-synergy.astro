@@ -1,0 +1,136 @@
+---
+// Import the dedicated layout
+import TeamSynergyLayout from '../../../layouts/zone-nova/TeamSynergyLayout.astro';
+import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
+---
+
+<TeamSynergyLayout
+  title="Zone Nova Team Synergy Database - GachaWiki"
+  description="Sortable and filterable team composition database for Zone Nova - Rift teams, Guild Raid teams, and character-specific synergies"
+  gameTitle="Team Synergy Database"
+>
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Zone Nova', href: '/guides/zone-nova/' },
+      { name: 'Team Synergy' },
+    ]}
+  />
+
+  <section class="page-flex">
+    <div class="main-content-container">
+      <div class="content-wrapper">
+        <div
+          style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 12px; border: 1px solid var(--amber-glow);"
+        >
+          <p style="color: var(--amber-glow); margin: 0; font-size: 1rem; font-weight: 600;">
+            Team Synergy Database
+          </p>
+          <p
+            style="color: var(--text-secondary); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;"
+          >
+            Effective team compositions for different content types
+          </p>
+          <div
+            style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"
+          >
+            <a
+              href="/guides/zone-nova/characters/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--amber-glow), #FF9800); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3); transition: all 0.3s ease;"
+            >
+              🔍 View Character Database
+            </a>
+            <a
+              href="/guides/zone-nova/rifts/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #64b5f6, #42a5f5); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(100, 181, 246, 0.3); transition: all 0.3s ease;"
+            >
+              ⚡ Space-Time Rifts
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Database Components -->
+        <div class="team-database-filter-bar">
+          <div class="filter-controls">
+            <select class="filter-select" id="teamTypeFilter">
+              <option value="">All Team Types</option>
+              <option value="rift">Rift Teams</option>
+              <option value="guild-raid">Guild Raid Teams</option>
+              <option value="character">Character Teams</option>
+              <option value="general">General PvE</option>
+              <option value="extra-attack">Extra Attack</option>
+              <option value="dot">DOT</option>
+            </select>
+
+            <select class="filter-select" id="teamTierFilter">
+              <option value="">All Tiers</option>
+              <option value="ssr">SSR Teams</option>
+              <option value="sr">SR Teams</option>
+              <option value="s">S Teams</option>
+              <option value="r">R Teams</option>
+            </select>
+          </div>
+
+          <div class="sort-controls">
+            <button class="sort-btn" data-sort="name">Name</button>
+            <button class="sort-btn" data-sort="type">Type</button>
+            <button class="sort-btn" data-sort="tier">Tier</button>
+            <button class="reset-btn" id="resetFilters">Reset All</button>
+          </div>
+        </div>
+
+        <!-- Desktop Table -->
+        <div class="team-table-container">
+          <table class="team-table">
+            <thead>
+              <tr>
+                <th>Team Name</th>
+                <th>Type</th>
+                <th>Tier</th>
+                <th>Character 1</th>
+                <th>Character 2</th>
+                <th>Character 3</th>
+                <th>Character 4</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="teamTableBody">
+              <!-- Teams will be populated here by JavaScript -->
+              <tr class="no-teams-message">
+                <td
+                  colspan="8"
+                  style="text-align: center; padding: 2rem; color: var(--text-secondary); font-style: italic;"
+                >
+                  Team database is currently being populated. Check back soon for comprehensive team
+                  compositions!
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Cards -->
+        <div class="mobile-card-view" id="teamMobileCards">
+          <!-- Mobile cards will be populated here by JavaScript -->
+          <div
+            class="no-teams-message-mobile"
+            style="text-align: center; padding: 2rem; color: var(--text-secondary); font-style: italic;"
+          >
+            Team database is currently being populated. Check back soon for comprehensive team
+            compositions!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Import the database utilities -->
+  <script>
+    import { initializeTeamDatabase } from '../../../data/zone-nova/team-synergy-utils.js';
+
+    document.addEventListener('DOMContentLoaded', function () {
+      initializeTeamDatabase();
+    });
+  </script>
+</TeamSynergyLayout>
