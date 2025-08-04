@@ -1,9 +1,9 @@
 /**
  * Automated Changelog Generator
- * 
+ *
  * This script automatically generates changelog entries from git commits
  * and updates the changelog.js file with new version information.
- * 
+ *
  * Features:
  * - Parses git commits since last version tag
  * - Categorizes changes based on commit message patterns
@@ -19,13 +19,8 @@ import { join } from 'path';
 // Configuration for commit message parsing
 const COMMIT_PATTERNS = {
   // Breaking changes (major version bump)
-  major: [
-    /^BREAKING\s*CHANGE:/i,
-    /^feat!:/i,
-    /^fix!:/i,
-    /^refactor!:/i
-  ],
-  
+  major: [/^BREAKING\s*CHANGE:/i, /^feat!:/i, /^fix!:/i, /^refactor!:/i],
+
   // New features (minor version bump)
   minor: [
     /^feat:/i,
@@ -33,18 +28,12 @@ const COMMIT_PATTERNS = {
     /^add:/i,
     /^added:/i,
     /new\s+(feature|system|component)/i,
-    /implement/i
+    /implement/i,
   ],
-  
+
   // Bug fixes and patches (patch version bump)
-  patch: [
-    /^fix:/i,
-    /^bugfix:/i,
-    /^hotfix:/i,
-    /fix(ed|es)?\s+(bug|issue|problem)/i,
-    /resolve/i
-  ],
-  
+  patch: [/^fix:/i, /^bugfix:/i, /^hotfix:/i, /fix(ed|es)?\s+(bug|issue|problem)/i, /resolve/i],
+
   // Changes that don't bump version
   maintenance: [
     /^docs?:/i,
@@ -54,8 +43,8 @@ const COMMIT_PATTERNS = {
     /^chore:/i,
     /clean\s*up/i,
     /format/i,
-    /lint/i
-  ]
+    /lint/i,
+  ],
 };
 
 // Change type categorization
@@ -66,9 +55,9 @@ const CHANGE_CATEGORIES = {
     /^added:/i,
     /new\s+(feature|system|component|page|section)/i,
     /implement/i,
-    /create/i
+    /create/i,
   ],
-  
+
   changed: [
     /^refactor:/i,
     /^update:/i,
@@ -76,47 +65,37 @@ const CHANGE_CATEGORIES = {
     /enhance/i,
     /reorganize/i,
     /restructure/i,
-    /redesign/i
+    /redesign/i,
   ],
-  
+
   fixed: [
     /^fix:/i,
     /^bugfix:/i,
     /^hotfix:/i,
     /fix(ed|es)?\s+(bug|issue|problem)/i,
     /resolve/i,
-    /correct/i
+    /correct/i,
   ],
-  
-  removed: [
-    /^remove:/i,
-    /^delete:/i,
-    /^rm:/i,
-    /remov(e|ed|es)/i,
-    /delet(e|ed|es)/i
-  ],
-  
-  security: [
-    /^security:/i,
-    /security\s+(fix|update|patch)/i,
-    /vulnerabilit/i
-  ]
+
+  removed: [/^remove:/i, /^delete:/i, /^rm:/i, /remov(e|ed|es)/i, /delet(e|ed|es)/i],
+
+  security: [/^security:/i, /security\s+(fix|update|patch)/i, /vulnerabilit/i],
 };
 
 // Content categorization based on commit message
 const CONTENT_CATEGORIES = {
   'Zone Nova': [/zone.nova/i, /zn[^a-z]/i, /zonenova/i],
   'Silver and Blood': [/silver.and.blood/i, /sab[^a-z]/i, /silver/i, /blood/i],
-  'Characters': [/character/i, /char[^a-z]/i, /odin/i, /penny/i, /belle/i, /mamon/i],
-  'Navigation': [/nav/i, /header/i, /menu/i, /link/i],
-  'Mobile': [/mobile/i, /responsive/i, /tablet/i],
-  'CSS': [/css/i, /style/i, /styling/i],
-  'Clock': [/clock/i, /timer/i, /time/i],
-  'Performance': [/performance/i, /optimization/i, /optimize/i, /speed/i],
-  'Database': [/database/i, /data/i, /db[^a-z]/i],
+  Characters: [/character/i, /char[^a-z]/i, /odin/i, /penny/i, /belle/i, /mamon/i],
+  Navigation: [/nav/i, /header/i, /menu/i, /link/i],
+  Mobile: [/mobile/i, /responsive/i, /tablet/i],
+  CSS: [/css/i, /style/i, /styling/i],
+  Clock: [/clock/i, /timer/i, /time/i],
+  Performance: [/performance/i, /optimization/i, /optimize/i, /speed/i],
+  Database: [/database/i, /data/i, /db[^a-z]/i],
   'UI/UX': [/ui[^a-z]/i, /ux[^a-z]/i, /design/i, /layout/i],
-  'Build': [/build/i, /deploy/i, /production/i, /bundl/i],
-  'Dependencies': [/package/i, /dependency/i, /npm/i, /bun/i, /install/i]
+  Build: [/build/i, /deploy/i, /production/i, /bundl/i],
+  Dependencies: [/package/i, /dependency/i, /npm/i, /bun/i, /install/i],
 };
 
 class ChangelogGenerator {
@@ -158,7 +137,7 @@ class ChangelogGenerator {
   getCommitsSinceLastVersion() {
     const lastTag = this.getLastVersionTag();
     let gitCommand;
-    
+
     if (lastTag) {
       gitCommand = `git log ${lastTag}..HEAD --pretty=format:"%h|%ad|%s|%an" --date=short`;
     } else {
@@ -168,7 +147,7 @@ class ChangelogGenerator {
     try {
       const output = execSync(gitCommand, { encoding: 'utf8' }).trim();
       if (!output) return [];
-      
+
       return output.split('\n').map(line => {
         const [hash, date, message, author] = line.split('|');
         return { hash, date, message, author };
@@ -213,7 +192,7 @@ class ChangelogGenerator {
    */
   calculateNextVersion(currentVersion, bumpType) {
     const [major, minor, patch] = currentVersion.split('.').map(Number);
-    
+
     switch (bumpType) {
       case 'major':
         return `${major + 1}.0.0`;
@@ -260,20 +239,20 @@ class ChangelogGenerator {
     const latestCommit = commits[0];
     const changes = commits.map(commit => {
       const { type, category } = this.categorizeCommit(commit.message);
-      
+
       // Clean up commit message for description
       let description = commit.message
         .replace(/^(feat|fix|add|remove|update|refactor|docs?|style|test|chore):\s*/i, '')
         .replace(/^(added?|fixed?|removed?|updated?)?\s*/i, '')
         .trim();
-      
+
       // Capitalize first letter
       description = description.charAt(0).toUpperCase() + description.slice(1);
 
       return {
         type,
         category,
-        description
+        description,
       };
     });
 
@@ -288,7 +267,7 @@ class ChangelogGenerator {
       title,
       description: this.generateVersionDescription(changes),
       changes,
-      author: latestCommit.author
+      author: latestCommit.author,
     };
   }
 
@@ -330,7 +309,7 @@ class ChangelogGenerator {
   readExistingChangelog() {
     try {
       const content = readFileSync(this.changelogPath, 'utf8');
-      
+
       // Extract the changelog array from the file
       const arrayMatch = content.match(/export const changelog = (\[[\s\S]*?\]);/);
       if (arrayMatch) {
@@ -339,7 +318,7 @@ class ChangelogGenerator {
         const arrayStr = arrayMatch[1];
         return eval(`(${arrayStr})`);
       }
-      
+
       return [];
     } catch (error) {
       console.error('Error reading existing changelog:', error);
@@ -435,7 +414,7 @@ export default changelog;
 
     // Get commits since last version
     const commits = this.getCommitsSinceLastVersion();
-    
+
     if (!commits.length) {
       console.log('ℹ️  No new commits found since last version');
       return;
@@ -446,7 +425,7 @@ export default changelog;
     // Determine version bump
     const currentVersion = this.getCurrentVersion();
     const bumpType = this.determineVersionBump(commits);
-    
+
     if (!bumpType) {
       console.log('ℹ️  No version bump needed (maintenance commits only)');
       return;
@@ -457,7 +436,7 @@ export default changelog;
 
     // Generate changelog entry
     const newEntry = this.generateChangelogEntry(commits, newVersion, bumpType);
-    
+
     if (!newEntry) {
       console.log('❌ Failed to generate changelog entry');
       return;
@@ -466,7 +445,7 @@ export default changelog;
     // Update changelog
     const existingChangelog = this.readExistingChangelog();
     const updatedChangelog = [newEntry, ...existingChangelog];
-    
+
     this.writeChangelog(updatedChangelog);
     console.log('✅ Updated changelog.js');
 

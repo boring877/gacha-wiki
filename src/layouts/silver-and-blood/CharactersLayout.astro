@@ -16,60 +16,59 @@ import '../../styles/games/silver-and-blood/sab-badge-colours.css';
 import '../../styles/games/silver-and-blood/sab-character-styles.css';
 
 export interface Props {
-	title: string;
-	description?: string;
-	gameTitle?: string;
+  title: string;
+  description?: string;
+  gameTitle?: string;
 }
 
 const { title, description, gameTitle } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description || ""} />
-		<GameSEO 
-			gameKey="silver-and-blood"
-			title={title}
-			description={description}
-			additionalKeywords={['characters', 'vampire game', 'character database', 'builds', 'skills']}
-		/>
-		
-		<slot name="head" />
-	</head>
-	<body class="sab-body">
-		<!-- Background layers for visual depth -->
-		<div class="bg-layer bg-primary"></div>
-		<div class="bg-layer bg-accent-1"></div>
-		<div class="bg-layer bg-accent-2"></div>
-		<div class="bg-layer bg-accent-3"></div>
-		
-		<div class="sab-content">
-			<Header />
-			<GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
-			<MobileMenu />
-			
-			<div class="sab-container">
-				<main class="sab-main">
-					<!-- Title Section -->
-					{gameTitle && (
-						<section class="title-only-section">
-							<h1 class="title-only-heading">
-								{gameTitle}
-							</h1>
-							
-							<DecorativeLines />
-						</section>
-					)}
-					
-					
-					<!-- Content Area -->
-					<div class="content-area">
-						<slot />
-					</div>
-				</main>
-			</div>
-			
-			<Footer />
-		</div>
-	</body>
+  <head>
+    <BaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      additionalKeywords={['characters', 'vampire game', 'character database', 'builds', 'skills']}
+    />
+
+    <slot name="head" />
+  </head>
+  <body class="sab-body">
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="sab-main">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
 </html>

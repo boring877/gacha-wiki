@@ -24,9 +24,10 @@ const { title, description } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title} description={description || ''} />
-    <GeneralSEO 
+    <GeneralSEO
       title={title}
-      description={description || 'Browse our comprehensive collection of gacha game wikis and guides'}
+      description={description ||
+        'Browse our comprehensive collection of gacha game wikis and guides'}
       keywords={['gacha games', 'game wikis', 'gaming guides', 'mobile games']}
       pageType="website"
     />

@@ -116,7 +116,7 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'zonenova',
       'zone nova wiki',
       'ero-lab Wiki',
-      'ero-labs gacha'
+      'ero-labs gacha',
     ] as const,
     themeColor: GAMES.ZONE_NOVA.THEME_COLOR,
     description: `Complete guide and wiki for ${GAMES.ZONE_NOVA.NAME} gacha game with character guides, damage mechanics, and more`,

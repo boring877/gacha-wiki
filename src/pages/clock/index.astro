@@ -8,14 +8,11 @@ const games = getActiveLandingGames();
 
 // Page metadata
 const title = 'Gacha Clocks | Game Reset Timers | GachaWiki';
-const description = 'Track daily reset times and important events for all your favorite gacha games. Never miss dailies, energy refills, or limited-time events with our real-time timers.';
+const description =
+  'Track daily reset times and important events for all your favorite gacha games. Never miss dailies, energy refills, or limited-time events with our real-time timers.';
 ---
 
-<ClockLandingLayout
-  title={title}
-  description={description}
-  games={games}
->
+<ClockLandingLayout title={title} description={description} games={games}>
   <!-- Structured data for better SEO -->
   <script type="application/ld+json">
     {

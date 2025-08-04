@@ -30,7 +30,7 @@ const { title, description } = Astro.props;
       shouldPreloadDefaultImage={false}
     />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
-    
+
     <!-- SAB comparison styles need to override global styles, so we load them last -->
     <style is:global>
       @import '../../styles/games/silver-and-blood/sab-character-comparison.css';

@@ -46,17 +46,29 @@
 /* === SILVER AND BLOOD SPECIFIC BACKGROUND ACCENTS === */
 /* Silver and Blood themed background gradients */
 .bg-accent-1 {
-  background: radial-gradient(circle at 20% 80%, color-mix(in srgb, var(--sab-calm-red) 10%, transparent), transparent);
+  background: radial-gradient(
+    circle at 20% 80%,
+    color-mix(in srgb, var(--sab-calm-red) 10%, transparent),
+    transparent
+  );
   pointer-events: none;
 }
 
 .bg-accent-2 {
-  background: radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--sab-calm-blue) 8%, transparent), transparent);
+  background: radial-gradient(
+    circle at 80% 20%,
+    color-mix(in srgb, var(--sab-calm-blue) 8%, transparent),
+    transparent
+  );
   pointer-events: none;
 }
 
 .bg-accent-3 {
-  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--sab-blue-silver) 5%, transparent), transparent);
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--sab-blue-silver) 5%, transparent),
+    transparent
+  );
   pointer-events: none;
 }
 
@@ -179,13 +191,21 @@
 /* Server Reset Card - Main Clock */
 .server-reset-card {
   border: 2px solid var(--sab-clock-border);
-  background: linear-gradient(135deg, var(--clock-glass-bg), color-mix(in srgb, var(--sab-clock-bg) 3%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-glass-bg),
+    color-mix(in srgb, var(--sab-clock-bg) 3%, transparent)
+  );
 }
 
 /* Weekly Reset Timer Card */
 .weekly-card {
   border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--sab-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
+  );
 }
 
 .weekly-card .timer-card-title {
@@ -195,7 +215,11 @@
 /* Maintenance Timer Card */
 .maintenance-card {
   border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--sab-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
+  );
 }
 
 .maintenance-card .timer-card-title {
@@ -205,7 +229,11 @@
 /* Raid Timer Card */
 .raid-card {
   border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--sab-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
+  );
 }
 
 .raid-card .timer-card-title {
@@ -215,7 +243,11 @@
 /* Signin Events Timer Card */
 .signin-card {
   border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--sab-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
+  );
 }
 
 .signin-card .timer-card-title {
@@ -225,7 +257,11 @@
 /* Outfit Availability Timer Card */
 .outfit-card {
   border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--sab-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
+  );
 }
 
 .outfit-card .timer-card-title {
@@ -235,7 +271,11 @@
 /* Special Events Timer Card */
 .special-event-card {
   border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--sab-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
+  );
 }
 
 .special-event-card .timer-card-title {
@@ -346,7 +386,8 @@
 /* === SILVER AND BLOOD CLOCK ANIMATIONS === */
 /* Pulsing animation for clock separators */
 @keyframes clockPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -480,7 +521,11 @@
 /* Silver and Blood specific launch counter styling */
 .launch-card {
   border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--sab-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
+  );
   padding: 1.5rem;
 }
 

@@ -18,7 +18,7 @@ class SilverAndBloodClockTimer {
           status: 'Daily reset timer<br />Resets at 01:00 UTC (09:00 UTC+8)',
           description: 'APAC Server with reset at 09:00 UTC+8',
           utcOffset: 8,
-          utcLabel: 'UTC+8'
+          utcLabel: 'UTC+8',
         },
         us: {
           name: 'US & Other Regions',
@@ -27,15 +27,15 @@ class SilverAndBloodClockTimer {
           status: 'Daily reset timer<br />Resets at 12:00 UTC (05:00 UTC-8)',
           description: 'US & Other Regions with reset at 05:00 UTC-8',
           utcOffset: -8,
-          utcLabel: 'UTC-8'
-        }
+          utcLabel: 'UTC-8',
+        },
       },
       timers: {
         apac: {
           maintenance: {
             date: '2025-08-05T06:00:00Z',
             duration: 2,
-            subtitle: 'Waiting for game announcement'
+            subtitle: 'Waiting for game announcement',
           },
           raids: [
             {
@@ -43,8 +43,8 @@ class SilverAndBloodClockTimer {
               startDate: '2025-08-16T20:00:00Z',
               endDate: '2025-08-22T07:59:00Z',
               startDisplay: 'August 17, 04:00 UTC+8',
-              endDisplay: 'August 22, 15:59 UTC+8'
-            }
+              endDisplay: 'August 22, 15:59 UTC+8',
+            },
           ],
           events: [
             {
@@ -52,15 +52,15 @@ class SilverAndBloodClockTimer {
               startDate: '2025-07-17T02:00:00Z',
               endDate: '2025-08-06T19:00:00Z',
               startDisplay: 'July 17, 10:00 UTC+8',
-              endDisplay: 'August 7, 03:00 UTC+8'
+              endDisplay: 'August 7, 03:00 UTC+8',
             },
             {
               name: 'Daybreak Sonata',
               startDate: '2025-08-07T02:00:00Z',
               endDate: '2025-08-20T19:00:00Z',
               startDisplay: 'August 7, 10:00 UTC+8',
-              endDisplay: 'August 21, 03:00 UTC+8'
-            }
+              endDisplay: 'August 21, 03:00 UTC+8',
+            },
           ],
           signinEvents: [
             {
@@ -71,7 +71,7 @@ class SilverAndBloodClockTimer {
               endDisplay: 'August 21, 20:00 UTC+8',
               totalDays: 28,
               description: '28-Day Login Reward Event',
-              reward: 'Hati Outfit [Midnight Lotus]'
+              reward: 'Hati Outfit [Midnight Lotus]',
             },
             {
               name: "Selena's Agenda",
@@ -81,8 +81,8 @@ class SilverAndBloodClockTimer {
               endDisplay: 'August 7, 20:00 UTC+8',
               totalDays: 21,
               description: 'Limited Sign-in Event',
-              reward: "Selena's Special Rewards"
-            }
+              reward: "Selena's Special Rewards",
+            },
           ],
           outfits: [
             {
@@ -91,8 +91,8 @@ class SilverAndBloodClockTimer {
               startDate: '2025-07-17T13:00:00Z',
               endDate: '2025-08-07T12:00:00Z',
               startDisplay: 'July 17, 21:00 UTC+8',
-              endDisplay: 'August 7, 20:00 UTC+8'
-            }
+              endDisplay: 'August 7, 20:00 UTC+8',
+            },
           ],
           specialEvents: [
             {
@@ -103,15 +103,15 @@ class SilverAndBloodClockTimer {
               startDisplay: 'August 2, 21:00 UTC+8',
               endDisplay: 'August 9, 21:00 UTC+8',
               duration: 7,
-              reward: '2x Skill XP and Gear Rewards'
-            }
-          ]
+              reward: '2x Skill XP and Gear Rewards',
+            },
+          ],
         },
         us: {
           maintenance: {
             date: '2025-08-05T06:00:00Z',
             duration: 2,
-            subtitle: 'Waiting for game announcement'
+            subtitle: 'Waiting for game announcement',
           },
           raids: [
             {
@@ -119,8 +119,8 @@ class SilverAndBloodClockTimer {
               startDate: '2025-08-16T20:00:00Z',
               endDate: '2025-08-22T07:59:00Z',
               startDisplay: 'August 16, 12:00 UTC-8',
-              endDisplay: 'August 21, 23:59 UTC-8'
-            }
+              endDisplay: 'August 21, 23:59 UTC-8',
+            },
           ],
           events: [
             {
@@ -128,15 +128,15 @@ class SilverAndBloodClockTimer {
               startDate: '2025-07-17T12:00:00Z',
               endDate: '2025-08-07T11:00:00Z',
               startDisplay: 'July 17, 05:00 UTC-8',
-              endDisplay: 'August 7, 04:00 UTC-8'
+              endDisplay: 'August 7, 04:00 UTC-8',
             },
             {
               name: 'Daybreak Sonata',
               startDate: '2025-08-07T12:00:00Z',
               endDate: '2025-08-21T11:00:00Z',
               startDisplay: 'August 7, 05:00 UTC-8',
-              endDisplay: 'August 21, 04:00 UTC-8'
-            }
+              endDisplay: 'August 21, 04:00 UTC-8',
+            },
           ],
           signinEvents: [
             {
@@ -147,7 +147,7 @@ class SilverAndBloodClockTimer {
               endDisplay: 'August 21, 04:00 UTC-8',
               totalDays: 28,
               description: '28-Day Login Reward Event',
-              reward: 'Hati Outfit [Midnight Lotus]'
+              reward: 'Hati Outfit [Midnight Lotus]',
             },
             {
               name: "Selena's Agenda",
@@ -157,8 +157,8 @@ class SilverAndBloodClockTimer {
               endDisplay: 'August 7, 04:00 UTC-8',
               totalDays: 21,
               description: 'Limited Sign-in Event',
-              reward: "Selena's Special Rewards"
-            }
+              reward: "Selena's Special Rewards",
+            },
           ],
           outfits: [
             {
@@ -167,8 +167,8 @@ class SilverAndBloodClockTimer {
               startDate: '2025-07-17T12:00:00Z',
               endDate: '2025-08-07T11:00:00Z',
               startDisplay: 'July 17, 05:00 UTC-8',
-              endDisplay: 'August 7, 04:00 UTC-8'
-            }
+              endDisplay: 'August 7, 04:00 UTC-8',
+            },
           ],
           specialEvents: [
             {
@@ -179,13 +179,13 @@ class SilverAndBloodClockTimer {
               startDisplay: 'August 2, 05:00 UTC-8',
               endDisplay: 'August 9, 05:00 UTC-8',
               duration: 7,
-              reward: '2x Skill XP and Gear Rewards'
-            }
-          ]
-        }
+              reward: '2x Skill XP and Gear Rewards',
+            },
+          ],
+        },
       },
       launchDate: '2025-06-26T00:00:00Z',
-      displayDate: 'June 26, 2025'
+      displayDate: 'June 26, 2025',
     };
 
     // DOM elements
@@ -236,21 +236,21 @@ class SilverAndBloodClockTimer {
     this.maintenanceSubtitle = document.getElementById('maintenanceSubtitle');
     this.serverStatusDot = document.getElementById('serverStatusDot');
     this.serverStatusText = document.getElementById('serverStatusText');
-    
+
     // Signin Events
     this.signinEventStatus = document.getElementById('signinEventStatus');
     this.signinEventStartDate = document.getElementById('signinEventStartDate');
     this.signinEventEndDate = document.getElementById('signinEventEndDate');
     this.signinEventTime = document.getElementById('signinEventTime');
     this.signinEventTimeLabel = document.getElementById('signinEventTimeLabel');
-    
+
     // Outfit Availability
     this.outfitStatus = document.getElementById('outfitStatus');
     this.outfitStartDate = document.getElementById('outfitStartDate');
     this.outfitEndDate = document.getElementById('outfitEndDate');
     this.outfitTime = document.getElementById('outfitTime');
     this.outfitTimeLabel = document.getElementById('outfitTimeLabel');
-    
+
     // Special Events
     this.specialEventStatus = document.getElementById('specialEventStatus');
     this.specialEventStartDate = document.getElementById('specialEventStartDate');
@@ -260,7 +260,7 @@ class SilverAndBloodClockTimer {
 
     // Setup region switcher
     this.setupRegionSwitcher();
-    
+
     // Update UI with current region
     this.updateRegionDisplay();
 
@@ -281,7 +281,7 @@ class SilverAndBloodClockTimer {
   setupRegionSwitcher() {
     const regionButtons = document.querySelectorAll('.region-button');
     regionButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
+      button.addEventListener('click', e => {
         const newRegion = e.target.dataset.region;
         if (newRegion && newRegion !== this.currentRegion) {
           this.switchRegion(newRegion);
@@ -292,7 +292,7 @@ class SilverAndBloodClockTimer {
 
   switchRegion(newRegion) {
     this.currentRegion = newRegion;
-    
+
     // Update button states
     document.querySelectorAll('.region-button').forEach(btn => {
       btn.classList.remove('active');
@@ -300,39 +300,39 @@ class SilverAndBloodClockTimer {
         btn.classList.add('active');
       }
     });
-    
+
     // Update region display
     this.updateRegionDisplay();
   }
 
   updateRegionDisplay() {
     const regionConfig = this.config.regions[this.currentRegion];
-    
+
     if (this.regionName) {
       this.regionName.textContent = regionConfig.name;
     }
-    
+
     if (this.gameStatus) {
       this.gameStatus.innerHTML = regionConfig.status;
     }
-    
+
     if (this.utcNote) {
       this.utcNote.textContent = `This is based on ${regionConfig.utcLabel}`;
     }
-    
+
     // Update reset subtitles based on region
     const resetHourLocal = this.currentRegion === 'apac' ? '09:00' : '05:00';
     const resetLabel = `Every Monday at ${resetHourLocal} ${regionConfig.utcLabel}`;
     const monthlyLabel = `1st of each month at ${resetHourLocal} ${regionConfig.utcLabel}`;
-    
+
     if (this.weeklyResetSubtitle) {
       this.weeklyResetSubtitle.textContent = resetLabel;
     }
-    
+
     if (this.monthlyResetSubtitle) {
       this.monthlyResetSubtitle.textContent = monthlyLabel;
     }
-    
+
     // Update maintenance subtitle
     const maintenanceConfig = this.config.timers[this.currentRegion].maintenance;
     if (this.maintenanceSubtitle) {
@@ -412,7 +412,7 @@ class SilverAndBloodClockTimer {
 
     // Format current regional time
     if (this.currentUTC) {
-      const regionalTime = new Date(now.getTime() + (regionConfig.utcOffset * 60 * 60 * 1000));
+      const regionalTime = new Date(now.getTime() + regionConfig.utcOffset * 60 * 60 * 1000);
       const regionalHours = String(regionalTime.getUTCHours()).padStart(2, '0');
       const regionalMinutes = String(regionalTime.getUTCMinutes()).padStart(2, '0');
       const regionalSeconds = String(regionalTime.getUTCSeconds()).padStart(2, '0');
@@ -462,7 +462,7 @@ class SilverAndBloodClockTimer {
       // Update Raid 1
       const raid1StartDate = new Date(raids[0].startDate);
       const raid1EndDate = new Date(raids[0].endDate);
-      
+
       if (now < raid1StartDate) {
         // Raid hasn't started yet
         this.raid1Name.textContent = raids[0].name;
@@ -589,7 +589,9 @@ class SilverAndBloodClockTimer {
     const now = new Date();
     const maintenanceConfig = this.config.timers[this.currentRegion].maintenance;
     const maintenanceStart = new Date(maintenanceConfig.date);
-    const maintenanceEnd = new Date(maintenanceStart.getTime() + (maintenanceConfig.duration * 60 * 60 * 1000));
+    const maintenanceEnd = new Date(
+      maintenanceStart.getTime() + maintenanceConfig.duration * 60 * 60 * 1000
+    );
 
     const startTimeDiff = maintenanceStart.getTime() - now.getTime();
     const endTimeDiff = maintenanceEnd.getTime() - now.getTime();
@@ -650,13 +652,13 @@ class SilverAndBloodClockTimer {
 
     const now = new Date();
     const signinEvents = this.config.timers[this.currentRegion].signinEvents;
-    
+
     // Find the most relevant active signin event
     let activeEvent = null;
     for (const event of signinEvents) {
       const eventStart = new Date(event.startDate);
       const eventEnd = new Date(event.endDate);
-      
+
       if (now >= eventStart && now <= eventEnd) {
         activeEvent = event;
         break;
@@ -720,7 +722,7 @@ class SilverAndBloodClockTimer {
 
     const now = new Date();
     const outfits = this.config.timers[this.currentRegion].outfits;
-    
+
     if (outfits.length === 0) {
       this.outfitStatus.textContent = 'No Active Outfit';
       this.outfitStatus.classList.add('inactive');
@@ -771,7 +773,7 @@ class SilverAndBloodClockTimer {
 
     const now = new Date();
     const specialEvents = this.config.timers[this.currentRegion].specialEvents;
-    
+
     if (specialEvents.length === 0) {
       this.specialEventStatus.textContent = 'No Active 2x Rewards';
       this.specialEventStatus.classList.add('inactive');

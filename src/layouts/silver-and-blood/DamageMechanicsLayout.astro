@@ -28,7 +28,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
   <head>
     <BaseHead title={title} description={description || ''} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
-    
+
     <slot name="head" />
   </head>
   <body class="sab-body sab-layout-override">

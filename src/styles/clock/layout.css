@@ -36,23 +36,23 @@
   --clock-spacing-md: 1.5rem;
   --clock-spacing-lg: 2rem;
   --clock-spacing-xl: 3rem;
-  
+
   /* Border Radius Scale for Clock Components */
   --clock-radius-sm: 8px;
   --clock-radius-md: 12px;
   --clock-radius-lg: 16px;
   --clock-radius-xl: 32px;
-  
+
   /* Glass Effect Properties for Clock Cards */
   --clock-glass-bg: rgba(255, 255, 255, 0.05);
   --clock-glass-border: rgba(255, 255, 255, 0.1);
   --clock-card-bg: rgba(255, 255, 255, 0.03);
   --clock-card-border: rgba(255, 255, 255, 0.08);
-  
+
   /* Animation Properties for Clock Components */
   --clock-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --clock-animation-duration: 1s;
-  
+
   /* Clock-specific Blur Effects */
   --clock-blur-heavy: blur(15px);
   --clock-blur-medium: blur(10px);
@@ -87,8 +87,6 @@
   margin: 0 auto;
   padding: 0 1.5rem;
 }
-
-
 
 /* === SHARED TITLE SECTION === */
 /* Common title styling for all clock pages */
@@ -248,7 +246,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  text-align: left;  
+  text-align: left;
 }
 
 .game-image-container {
@@ -723,7 +721,7 @@
   .title-only-section {
     animation: none;
   }
-  
+
   .timer-card {
     transition: none;
   }

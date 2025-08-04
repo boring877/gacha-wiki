@@ -49,7 +49,9 @@ if (!gameKey || typeof gameKey !== 'string') {
 // Get game configuration with error handling
 const gameConfig = getGameConfig(gameKey);
 if (!gameConfig) {
-  throw new Error(`GameSEO: Game configuration not found for key: ${gameKey}. Available games: zone-nova, silver-and-blood`);
+  throw new Error(
+    `GameSEO: Game configuration not found for key: ${gameKey}. Available games: zone-nova, silver-and-blood`
+  );
 }
 
 // Generate SEO data with validation
@@ -66,7 +68,10 @@ if (import.meta.env.DEV) {
   });
 
   if (!validation.isValid) {
-    console.warn(`GameSEO Warning for ${gameKey}: Missing required fields:`, validation.missingFields);
+    console.warn(
+      `GameSEO Warning for ${gameKey}: Missing required fields:`,
+      validation.missingFields
+    );
   }
 }
 
@@ -74,10 +79,12 @@ if (import.meta.env.DEV) {
 const canonicalURL = includeCanonical ? new URL(Astro.url.pathname, Astro.site) : null;
 ---
 
-<!-- Game-Specific SEO Meta Tags -->
-{keywords && <meta name="keywords" content={keywords} />}
+<!-- Game-Specific SEO Meta Tags -->{keywords && <meta name="keywords" content={keywords} />}
 <meta name="author" content={GLOBAL_SEO.author} />
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<meta
+  name="robots"
+  content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+/>
 
 <!-- Open Source Project Meta Tags -->
 <meta name="project:type" content="open-source" />
@@ -93,9 +100,15 @@ const canonicalURL = includeCanonical ? new URL(Astro.url.pathname, Astro.site) 
 {canonicalURL && <link rel="canonical" href={canonicalURL} />}
 
 <!-- Schema.org Structured Data -->
-{finalStructuredData && (
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(finalStructuredData, null, 0)} />
-)}
+{
+  finalStructuredData && (
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(finalStructuredData, null, 0)}
+    />
+  )
+}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />

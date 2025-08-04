@@ -23,10 +23,7 @@ const { title, description } = Astro.props;
 <html lang="en" transition:animate="fade">
   <head>
     <BaseHead title={title} description={description || ''} />
-    <GeneralSEO 
-      title={title}
-      description={description || ''}
-    />
+    <GeneralSEO title={title} description={description || ''} />
     <slot name="head" />
   </head>
   <body class="home-body">

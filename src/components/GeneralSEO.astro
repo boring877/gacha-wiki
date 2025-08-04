@@ -39,11 +39,15 @@ const {
 
 // Validate required props
 if (!title || typeof title !== 'string' || title.trim().length === 0) {
-  throw new Error(`GeneralSEO: title is required and must be a non-empty string. Received: ${title}`);
+  throw new Error(
+    `GeneralSEO: title is required and must be a non-empty string. Received: ${title}`
+  );
 }
 
 if (!description || typeof description !== 'string' || description.trim().length === 0) {
-  throw new Error(`GeneralSEO: description is required and must be a non-empty string. Received: ${description}`);
+  throw new Error(
+    `GeneralSEO: description is required and must be a non-empty string. Received: ${description}`
+  );
 }
 
 // Generate default keywords if none provided
@@ -52,15 +56,15 @@ const defaultKeywords = [
   'gacha games',
   'game guides',
   'GachaWiki',
-  'gaming community'
+  'gaming community',
 ] as const;
 
 const finalKeywords = keywords.length > 0 ? keywords : defaultKeywords;
 const keywordsString = [...finalKeywords, ...OPEN_SOURCE_KEYWORDS].join(', ');
 
 // Generate robots content
-const robotsContent = noIndex 
-  ? 'noindex, nofollow' 
+const robotsContent = noIndex
+  ? 'noindex, nofollow'
   : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 
 // Generate canonical URL
@@ -80,8 +84,7 @@ if (import.meta.env.DEV) {
 }
 ---
 
-<!-- General SEO Meta Tags -->
-{keywordsString && <meta name="keywords" content={keywordsString} />}
+<!-- General SEO Meta Tags -->{keywordsString && <meta name="keywords" content={keywordsString} />}
 <meta name="author" content={GLOBAL_SEO.author} />
 <meta name="robots" content={robotsContent} />
 
@@ -111,39 +114,57 @@ if (import.meta.env.DEV) {
 
 <!-- Additional Social Meta -->
 <meta property="article:author" content={GLOBAL_SEO.author} />
-{GLOBAL_SEO.social.github && <meta property="article:publisher" content={GLOBAL_SEO.social.github} />}
+{
+  GLOBAL_SEO.social.github && (
+    <meta property="article:publisher" content={GLOBAL_SEO.social.github} />
+  )
+}
 
 <!-- Schema.org Structured Data -->
-{structuredData ? (
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData, null, 0)} />
-) : (
-  <script type="application/ld+json" is:inline set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": title,
-    "description": description,
-    "url": canonicalURL?.toString() || Astro.url.href,
-    "publisher": {
-      "@type": "Organization",
-      "name": GLOBAL_SEO.siteName,
-      "url": Astro.site?.toString(),
-      "description": "Open source gacha game wiki and community project",
-      "foundingDate": "2024",
-      "sameAs": [
-        GLOBAL_SEO.social.github,
-        GLOBAL_SEO.social.youtube,
-        GLOBAL_SEO.social.discord,
-        GLOBAL_SEO.social.x,
-        GLOBAL_SEO.social.rumble
-      ].filter(Boolean),
-      "additionalType": "https://schema.org/OpenSourceProject"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": canonicalURL?.toString() || Astro.url.href
-    }
-  }, null, 0)} />
-)}
+{
+  structuredData ? (
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(structuredData, null, 0)}
+    />
+  ) : (
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(
+        {
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: title,
+          description: description,
+          url: canonicalURL?.toString() || Astro.url.href,
+          publisher: {
+            '@type': 'Organization',
+            name: GLOBAL_SEO.siteName,
+            url: Astro.site?.toString(),
+            description: 'Open source gacha game wiki and community project',
+            foundingDate: '2024',
+            sameAs: [
+              GLOBAL_SEO.social.github,
+              GLOBAL_SEO.social.youtube,
+              GLOBAL_SEO.social.discord,
+              GLOBAL_SEO.social.x,
+              GLOBAL_SEO.social.rumble,
+            ].filter(Boolean),
+            additionalType: 'https://schema.org/OpenSourceProject',
+          },
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': canonicalURL?.toString() || Astro.url.href,
+          },
+        },
+        null,
+        0
+      )}
+    />
+  )
+}
 
 <!-- Performance hints -->
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />

@@ -58,7 +58,7 @@ const timers = game.timers[game.currentRegion];
 
   <body class="sab-body">
     <CustomScrollbar />
-    
+
     <!-- Same background layers as home page -->
     <div class="bg-layer bg-primary"></div>
     <div class="bg-layer bg-accent-1"></div>
@@ -73,270 +73,294 @@ const timers = game.timers[game.currentRegion];
       <div class="sab-container">
         <main class="sab-main modern-clock-page">
           <div class="clock-container">
-          <!-- Page Title -->
-          <section class="title-only-section">
-            <h1 class="title-only-heading">Silver and Blood Clock</h1>
-            <DecorativeLines />
-          </section>
+            <!-- Page Title -->
+            <section class="title-only-section">
+              <h1 class="title-only-heading">Silver and Blood Clock</h1>
+              <DecorativeLines />
+            </section>
 
-          <!-- Region Switcher -->
-          <div class="region-switcher-container">
-            <div class="region-switcher">
-              <button class="region-button" data-region="apac">APAC Server</button>
-              <button class="region-button active" data-region="us">US & Other Regions</button>
-            </div>
-          </div>
-
-          <!-- First Hero Card - Server Reset Timer -->
-          <div class="master-clock-container">
-            <div class="master-clock server-reset-card" id="masterClock">
-              <!-- Clock Background Animation -->
-              <div class="clock-bg-animation"></div>
-
-              <!-- Top Section: UTC Note and Current Time -->
-              <div class="hero-top-section">
-                <div class="utc-info">
-                  <p class="utc-note" id="utcNote">This is based on UTC+8</p>
-                </div>
-                <div class="current-time-info">
-                  <div class="current-date" id="currentDate">Loading...</div>
-                  <div class="current-utc" id="currentUTC">UTC+8 --:--:--</div>
-                </div>
+            <!-- Region Switcher -->
+            <div class="region-switcher-container">
+              <div class="region-switcher">
+                <button class="region-button" data-region="apac">APAC Server</button>
+                <button class="region-button active" data-region="us">US & Other Regions</button>
               </div>
+            </div>
 
-              <!-- Main Content Section: Game Info and Timer -->
-              <div class="hero-main-content">
-                <!-- Left Side: Game Info -->
-                <div class="game-section">
-                  <div class="game-info-container">
-                    <div class="game-wrapper">
-                      <div class="game-image-container" id="clockGameImageContainer">
-                        <img
-                          class="game-image"
-                          id="clockGameImage"
-                          src={game.image}
-                          alt={game.name}
-                          loading="eager"
-                        />
-                      </div>
-                      <div class="game-info">
-                        <h3 class="game-name" id="clockGameName">{game.name}</h3>
-                        <div class="region-badge">
-                          <span class="region-name" id="regionName">{currentRegion.name}</span>
+            <!-- First Hero Card - Server Reset Timer -->
+            <div class="master-clock-container">
+              <div class="master-clock server-reset-card" id="masterClock">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
+
+                <!-- Top Section: UTC Note and Current Time -->
+                <div class="hero-top-section">
+                  <div class="utc-info">
+                    <p class="utc-note" id="utcNote">This is based on UTC+8</p>
+                  </div>
+                  <div class="current-time-info">
+                    <div class="current-date" id="currentDate">Loading...</div>
+                    <div class="current-utc" id="currentUTC">UTC+8 --:--:--</div>
+                  </div>
+                </div>
+
+                <!-- Main Content Section: Game Info and Timer -->
+                <div class="hero-main-content">
+                  <!-- Left Side: Game Info -->
+                  <div class="game-section">
+                    <div class="game-info-container">
+                      <div class="game-wrapper">
+                        <div class="game-image-container" id="clockGameImageContainer">
+                          <img
+                            class="game-image"
+                            id="clockGameImage"
+                            src={game.image}
+                            alt={game.name}
+                            loading="eager"
+                          />
                         </div>
-                        <div class="game-status" id="gameStatus" set:html={currentRegion.status}></div>
+                        <div class="game-info">
+                          <h3 class="game-name" id="clockGameName">{game.name}</h3>
+                          <div class="region-badge">
+                            <span class="region-name" id="regionName">{currentRegion.name}</span>
+                          </div>
+                          <div
+                            class="game-status"
+                            id="gameStatus"
+                            set:html={currentRegion.status}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right Side: Timer Display -->
+                  <div class="timer-section">
+                    <div class="timer-description-section">
+                      <div class="timer-main-label" id="timerDescription">
+                        {game.timerDescription}
+                      </div>
+                    </div>
+
+                    <div class="clock-display">
+                      <div class="time-unit-group">
+                        <div class="time-unit">
+                          <span class="time-value" id="clockHours">--</span>
+                          <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockMinutes">--</span>
+                          <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockSeconds">--</span>
+                          <span class="time-label">Seconds</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <!-- Right Side: Timer Display -->
-                <div class="timer-section">
+            <!-- Second Hero Card - All Other Timers -->
+            <div class="master-clock-container secondary-timers-container">
+              <div class="master-clock secondary-timers-card" id="secondaryTimers">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
+
+                <!-- Game Timers Header -->
+                <div class="game-timers-header">
                   <div class="timer-description-section">
-                    <div class="timer-main-label" id="timerDescription">{game.timerDescription}</div>
-                  </div>
-
-                  <div class="clock-display">
-                    <div class="time-unit-group">
-                      <div class="time-unit">
-                        <span class="time-value" id="clockHours">--</span>
-                        <span class="time-label">Hours</span>
-                      </div>
-                      <div class="time-separator">:</div>
-                      <div class="time-unit">
-                        <span class="time-value" id="clockMinutes">--</span>
-                        <span class="time-label">Minutes</span>
-                      </div>
-                      <div class="time-separator">:</div>
-                      <div class="time-unit">
-                        <span class="time-value" id="clockSeconds">--</span>
-                        <span class="time-label">Seconds</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Second Hero Card - All Other Timers -->
-          <div class="master-clock-container secondary-timers-container">
-            <div class="master-clock secondary-timers-card" id="secondaryTimers">
-              <!-- Clock Background Animation -->
-              <div class="clock-bg-animation"></div>
-
-              <!-- Game Timers Header -->
-              <div class="game-timers-header">
-                <div class="timer-description-section">
-                  <div class="timer-main-label">Silver and Blood Timers</div>
-                  <div class="timer-subtitle">Track all important Silver and Blood events and resets</div>
-                </div>
-              </div>
-
-              <!-- Timers Grid Container -->
-              <div class="timers-grid-wrapper">
-                <!-- Primary Timers Row (Most Important) -->
-                <div class="timer-section-group primary-timers">
-                  <div class="timers-row">
-                    <!-- Weekly & Monthly Reset Timer Card -->
-                    <div class="timer-card weekly-card priority-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Weekly & Monthly Reset</div>
-                      </div>
-                      <div class="timer-card-content">
-                        <!-- Weekly Reset -->
-                        <div class="reset-item">
-                          <div class="reset-name">Weekly Reset</div>
-                          <div class="reset-subtitle" id="weeklyResetSubtitle">Every Monday at 4:00 UTC+8</div>
-                          <div class="reset-time" id="weeklyTime">--:--:--</div>
-                        </div>
-                        <!-- Monthly Reset -->
-                        <div class="reset-item">
-                          <div class="reset-name">Monthly Reset</div>
-                          <div class="reset-subtitle" id="monthlyResetSubtitle">1st of each month at 4:00 UTC+8</div>
-                          <div class="reset-time" id="monthlyTime">--:--:--</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Maintenance Timer Card -->
-                    <div class="timer-card maintenance-card priority-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Maintenance</div>
-                        <div class="server-status">
-                          <div class="status-dot" id="serverStatusDot"></div>
-                          <span class="status-text" id="serverStatusText">Online</span>
-                        </div>
-                      </div>
-                      <div class="timer-card-subtitle" id="maintenanceSubtitle">{timers.maintenance.subtitle}</div>
-                      <div class="timer-card-content">
-                        <!-- Maintenance Start Timer -->
-                        <div class="maintenance-item">
-                          <div class="maintenance-name" id="maintenanceStartLabel">Until Start</div>
-                          <div class="maintenance-time" id="maintenanceStartTime">--:--:--</div>
-                        </div>
-                        <!-- Maintenance End Timer -->
-                        <div class="maintenance-item">
-                          <div class="maintenance-name" id="maintenanceEndLabel">Servers Back</div>
-                          <div class="maintenance-time" id="maintenanceEndTime">--:--:--</div>
-                        </div>
-                      </div>
+                    <div class="timer-main-label">Silver and Blood Timers</div>
+                    <div class="timer-subtitle">
+                      Track all important Silver and Blood events and resets
                     </div>
                   </div>
                 </div>
 
-                <!-- Secondary Timers Row -->
-                <div class="timer-section-group secondary-timers">
-                  <div class="timers-row">
-                    <!-- Raid Timer Card -->
-                    <div class="timer-card raid-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Active Raids</div>
-                      </div>
-                      <div class="timer-card-content">
-                        <!-- Raid 1 -->
-                        <div class="raid-item">
-                          <div class="raid-name" id="raid1Name">Loading...</div>
-                          <div class="raid-time" id="raid1Time">--:--:--</div>
+                <!-- Timers Grid Container -->
+                <div class="timers-grid-wrapper">
+                  <!-- Primary Timers Row (Most Important) -->
+                  <div class="timer-section-group primary-timers">
+                    <div class="timers-row">
+                      <!-- Weekly & Monthly Reset Timer Card -->
+                      <div class="timer-card weekly-card priority-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Weekly & Monthly Reset</div>
                         </div>
-                        <!-- Raid 2 -->
-                        <div class="raid-item">
-                          <div class="raid-name" id="raid2Name">Loading...</div>
-                          <div class="raid-time" id="raid2Time">--:--:--</div>
+                        <div class="timer-card-content">
+                          <!-- Weekly Reset -->
+                          <div class="reset-item">
+                            <div class="reset-name">Weekly Reset</div>
+                            <div class="reset-subtitle" id="weeklyResetSubtitle">
+                              Every Monday at 4:00 UTC+8
+                            </div>
+                            <div class="reset-time" id="weeklyTime">--:--:--</div>
+                          </div>
+                          <!-- Monthly Reset -->
+                          <div class="reset-item">
+                            <div class="reset-name">Monthly Reset</div>
+                            <div class="reset-subtitle" id="monthlyResetSubtitle">
+                              1st of each month at 4:00 UTC+8
+                            </div>
+                            <div class="reset-time" id="monthlyTime">--:--:--</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Maintenance Timer Card -->
+                      <div class="timer-card maintenance-card priority-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Maintenance</div>
+                          <div class="server-status">
+                            <div class="status-dot" id="serverStatusDot"></div>
+                            <span class="status-text" id="serverStatusText">Online</span>
+                          </div>
+                        </div>
+                        <div class="timer-card-subtitle" id="maintenanceSubtitle">
+                          {timers.maintenance.subtitle}
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Maintenance Start Timer -->
+                          <div class="maintenance-item">
+                            <div class="maintenance-name" id="maintenanceStartLabel">
+                              Until Start
+                            </div>
+                            <div class="maintenance-time" id="maintenanceStartTime">--:--:--</div>
+                          </div>
+                          <!-- Maintenance End Timer -->
+                          <div class="maintenance-item">
+                            <div class="maintenance-name" id="maintenanceEndLabel">
+                              Servers Back
+                            </div>
+                            <div class="maintenance-time" id="maintenanceEndTime">--:--:--</div>
+                          </div>
                         </div>
                       </div>
                     </div>
+                  </div>
 
-                    <!-- Signin Events Timer Card -->
-                    <div class="timer-card signin-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Signin Events</div>
-                      </div>
-                      <div class="timer-card-content">
-                        <!-- Signin Event Status -->
-                        <div class="event-status" id="signinEventStatus">No Active Signin</div>
-                        <!-- Signin Event Dates -->
-                        <div class="event-dates">
-                          <div class="event-date-item">
-                            <span class="event-date-label">Started:</span>
-                            <span class="event-date-value" id="signinEventStartDate">--</span>
+                  <!-- Secondary Timers Row -->
+                  <div class="timer-section-group secondary-timers">
+                    <div class="timers-row">
+                      <!-- Raid Timer Card -->
+                      <div class="timer-card raid-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Active Raids</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Raid 1 -->
+                          <div class="raid-item">
+                            <div class="raid-name" id="raid1Name">Loading...</div>
+                            <div class="raid-time" id="raid1Time">--:--:--</div>
                           </div>
-                          <div class="event-date-item">
-                            <span class="event-date-label">Ending:</span>
-                            <span class="event-date-value" id="signinEventEndDate">--</span>
+                          <!-- Raid 2 -->
+                          <div class="raid-item">
+                            <div class="raid-name" id="raid2Name">Loading...</div>
+                            <div class="raid-time" id="raid2Time">--:--:--</div>
                           </div>
                         </div>
-                        <!-- Signin Event Countdown -->
-                        <div class="event-countdown">
-                          <span class="timer-card-value" id="signinEventTime">--:--:--</span>
-                          <span class="timer-card-label" id="signinEventTimeLabel">Event End</span>
-                        </div>
                       </div>
-                    </div>
 
-                    <!-- Outfit Availability Timer Card -->
-                    <div class="timer-card outfit-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Outfit Availability</div>
-                      </div>
-                      <div class="timer-card-content">
-                        <!-- Outfit Status -->
-                        <div class="event-status" id="outfitStatus">No Active Outfit</div>
-                        <!-- Outfit Dates -->
-                        <div class="event-dates">
-                          <div class="event-date-item">
-                            <span class="event-date-label">Started:</span>
-                            <span class="event-date-value" id="outfitStartDate">--</span>
+                      <!-- Signin Events Timer Card -->
+                      <div class="timer-card signin-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Signin Events</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Signin Event Status -->
+                          <div class="event-status" id="signinEventStatus">No Active Signin</div>
+                          <!-- Signin Event Dates -->
+                          <div class="event-dates">
+                            <div class="event-date-item">
+                              <span class="event-date-label">Started:</span>
+                              <span class="event-date-value" id="signinEventStartDate">--</span>
+                            </div>
+                            <div class="event-date-item">
+                              <span class="event-date-label">Ending:</span>
+                              <span class="event-date-value" id="signinEventEndDate">--</span>
+                            </div>
                           </div>
-                          <div class="event-date-item">
-                            <span class="event-date-label">Ending:</span>
-                            <span class="event-date-value" id="outfitEndDate">--</span>
+                          <!-- Signin Event Countdown -->
+                          <div class="event-countdown">
+                            <span class="timer-card-value" id="signinEventTime">--:--:--</span>
+                            <span class="timer-card-label" id="signinEventTimeLabel">Event End</span
+                            >
                           </div>
                         </div>
-                        <!-- Outfit Countdown -->
-                        <div class="event-countdown">
-                          <span class="timer-card-value" id="outfitTime">--:--:--</span>
-                          <span class="timer-card-label" id="outfitTimeLabel">Outfit End</span>
-                        </div>
                       </div>
-                    </div>
 
-                    <!-- Special Events (2x Rewards) Timer Card -->
-                    <div class="timer-card special-event-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">2x Rewards</div>
-                      </div>
-                      <div class="timer-card-content">
-                        <!-- Special Event Status -->
-                        <div class="event-status" id="specialEventStatus">No Active 2x Rewards</div>
-                        <!-- Special Event Dates -->
-                        <div class="event-dates">
-                          <div class="event-date-item">
-                            <span class="event-date-label">Started:</span>
-                            <span class="event-date-value" id="specialEventStartDate">--</span>
+                      <!-- Outfit Availability Timer Card -->
+                      <div class="timer-card outfit-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Outfit Availability</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Outfit Status -->
+                          <div class="event-status" id="outfitStatus">No Active Outfit</div>
+                          <!-- Outfit Dates -->
+                          <div class="event-dates">
+                            <div class="event-date-item">
+                              <span class="event-date-label">Started:</span>
+                              <span class="event-date-value" id="outfitStartDate">--</span>
+                            </div>
+                            <div class="event-date-item">
+                              <span class="event-date-label">Ending:</span>
+                              <span class="event-date-value" id="outfitEndDate">--</span>
+                            </div>
                           </div>
-                          <div class="event-date-item">
-                            <span class="event-date-label">Ending:</span>
-                            <span class="event-date-value" id="specialEventEndDate">--</span>
+                          <!-- Outfit Countdown -->
+                          <div class="event-countdown">
+                            <span class="timer-card-value" id="outfitTime">--:--:--</span>
+                            <span class="timer-card-label" id="outfitTimeLabel">Outfit End</span>
                           </div>
                         </div>
-                        <!-- Special Event Countdown -->
-                        <div class="event-countdown">
-                          <span class="timer-card-value" id="specialEventTime">--:--:--</span>
-                          <span class="timer-card-label" id="specialEventTimeLabel">2x Rewards End</span>
-                        </div>
                       </div>
-                    </div>
 
-                    <!-- Launch Timer Card -->
-                    <div class="timer-card launch-card">
-                      <div class="timer-card-header">
-                        <div class="timer-card-title">Silver and Blood - Days Since Launch</div>
+                      <!-- Special Events (2x Rewards) Timer Card -->
+                      <div class="timer-card special-event-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">2x Rewards</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Special Event Status -->
+                          <div class="event-status" id="specialEventStatus">
+                            No Active 2x Rewards
+                          </div>
+                          <!-- Special Event Dates -->
+                          <div class="event-dates">
+                            <div class="event-date-item">
+                              <span class="event-date-label">Started:</span>
+                              <span class="event-date-value" id="specialEventStartDate">--</span>
+                            </div>
+                            <div class="event-date-item">
+                              <span class="event-date-label">Ending:</span>
+                              <span class="event-date-value" id="specialEventEndDate">--</span>
+                            </div>
+                          </div>
+                          <!-- Special Event Countdown -->
+                          <div class="event-countdown">
+                            <span class="timer-card-value" id="specialEventTime">--:--:--</span>
+                            <span class="timer-card-label" id="specialEventTimeLabel"
+                              >2x Rewards End</span
+                            >
+                          </div>
+                        </div>
                       </div>
-                      <div class="launch-card-content">
-                        <div class="launch-counter">
-                          <div class="launch-days" id="launchDays">---</div>
-                          <div class="launch-date">{game.displayDate}</div>
+
+                      <!-- Launch Timer Card -->
+                      <div class="timer-card launch-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Silver and Blood - Days Since Launch</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="launchDays">---</div>
+                            <div class="launch-date">{game.displayDate}</div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -344,7 +368,6 @@ const timers = game.timers[game.currentRegion];
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </main>
       </div>

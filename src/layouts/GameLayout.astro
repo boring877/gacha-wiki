@@ -33,13 +33,7 @@ if (gameSlug && customStyles.length === 0) {
 <html lang="en">
   <head>
     <BaseHead title={title} description={description || ''} />
-    {gameSlug && (
-      <GameSEO 
-        gameKey={gameSlug}
-        title={title}
-        description={description}
-      />
-    )}
+    {gameSlug && <GameSEO gameKey={gameSlug} title={title} description={description} />}
 
     <!-- Import custom styles for this game -->
     {customStyles.map(style => <style set:html={`@import '${style}';`} />)}

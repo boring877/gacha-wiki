@@ -16,10 +16,10 @@ import '../../styles/games/silver-and-blood/sab-badge-colours.css';
 import '../../styles/games/silver-and-blood/sab-summon-faq.css';
 
 export interface Props {
-	title: string;
-	description?: string;
-	gameTitle?: string;
-	data: any;
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  data: any;
 }
 
 const { title, description, gameTitle, data } = Astro.props;
@@ -27,119 +27,136 @@ const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq }
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description || ""} />
-		<GameSEO gameKey="silver-and-blood" title={title} description={description} />
-	</head>
-	<body class="sab-body">
-		<!-- Background layers for visual depth similar to landing page -->
-		<div class="bg-layer bg-primary"></div>
-		<div class="bg-layer bg-accent-1"></div>
-		<div class="bg-layer bg-accent-2"></div>
-		<div class="bg-layer bg-accent-3"></div>
-		
-		<div class="sab-content">
-			<Header />
-			<GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
-			<MobileMenu />
-			
-			<div class="sab-container">
-				<main class="sab-main">
-				<!-- Title Section -->
-				{gameTitle && (
-					<section class="title-only-section">
-						<h1 class="title-only-heading">{gameTitle}</h1>
-						<DecorativeLines />
-					</section>
-				)}
-				
-				
-				<!-- Content Area -->
-				<div class="content-area">
-					<div class="intro-section">
-						<p>{intro.text}</p>
-					</div>
+  <head>
+    <BaseHead title={title} description={description || ''} />
+    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+  </head>
+  <body class="sab-body">
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
 
-						<div class="section">
-							<h2 class="section-title">💎 Summon Types</h2>
-							{summonTypes.map(type => (
-								<div class="card">
-									<h4>{type.title}</h4>
-									<p><strong>Cost:</strong> {type.cost}</p>
-									<p><strong>Total SSR Rate:</strong> {type.totalSSRRate}</p>
-									<ul>
-										{type.details.map(detail => (
-											<li>{detail}</li>
-										))}
-									</ul>
-								</div>
-							))}
-						</div>
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
 
-						<div class="section">
-							<h2 class="section-title">🎯 Pity System</h2>
-							<div class="pity-grid">
-								{pitySystem.map(pity => (
-									<div class="pity-card">
-										<h4>{pity.title}</h4>
-										<p><strong>{pity.pullCount}</strong> - Guaranteed SSR character</p>
-										<p>{pity.description}</p>
-										<p>{pity.note}</p>
-									</div>
-								))}
-							</div>
-						</div>
+      <div class="sab-container">
+        <main class="sab-main">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
 
-						<div class="section">
-							<h2 class="section-title">💰 Summon Currency & Rewards</h2>
-							<div class="currency-grid">
-								{currencies.map(currency => (
-									<div class="currency-card">
-										{currency.image ? (
-											<img 
-												src={currency.image} 
-												alt={currency.title}
-												class="currency-image"
-												loading="lazy"
-											/>
-										) : (
-											<div class="currency-icon">{currency.icon}</div>
-										)}
-										<h4>{currency.title}</h4>
-										<p>{currency.description}</p>
-										<p><strong>Use:</strong> {currency.use}</p>
-									</div>
-								))}
-							</div>
-						</div>
+          <!-- Content Area -->
+          <div class="content-area">
+            <div class="intro-section">
+              <p>{intro.text}</p>
+            </div>
 
-						<div class="section">
-							<h2 class="section-title">🎯 Selection System</h2>
-							<div class="card">
-								<h4>How It Works</h4>
-								<p><strong>Unlock Requirement:</strong> {selectionSystem.unlockRequirement}</p>
-								<p><strong>Selection Process:</strong> {selectionSystem.selectionProcess}</p>
-								<p><strong>Effect:</strong> {selectionSystem.effect}</p>
-								<p><strong>Important:</strong> {selectionSystem.note}</p>
-							</div>
-						</div>
+            <div class="section">
+              <h2 class="section-title">💎 Summon Types</h2>
+              {
+                summonTypes.map(type => (
+                  <div class="card">
+                    <h4>{type.title}</h4>
+                    <p>
+                      <strong>Cost:</strong> {type.cost}
+                    </p>
+                    <p>
+                      <strong>Total SSR Rate:</strong> {type.totalSSRRate}
+                    </p>
+                    <ul>
+                      {type.details.map(detail => (
+                        <li>{detail}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
+              }
+            </div>
 
-						<div class="section">
-							<h2 class="section-title">❓ Frequently Asked Questions</h2>
-							<div class="faq-grid">
-								{faq.map(item => (
-									<div class="faq-item">
-										<h4>Q: {item.question}</h4>
-										<p>A: {item.answer}</p>
-									</div>
-								))}
-							</div>
-						</div>
-				</div>
-				</main>
-			</div>
-			
-			<Footer />
-		</div>
-	</body>
+            <div class="section">
+              <h2 class="section-title">🎯 Pity System</h2>
+              <div class="pity-grid">
+                {
+                  pitySystem.map(pity => (
+                    <div class="pity-card">
+                      <h4>{pity.title}</h4>
+                      <p>
+                        <strong>{pity.pullCount}</strong> - Guaranteed SSR character
+                      </p>
+                      <p>{pity.description}</p>
+                      <p>{pity.note}</p>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+
+            <div class="section">
+              <h2 class="section-title">💰 Summon Currency & Rewards</h2>
+              <div class="currency-grid">
+                {
+                  currencies.map(currency => (
+                    <div class="currency-card">
+                      {currency.image ? (
+                        <img
+                          src={currency.image}
+                          alt={currency.title}
+                          class="currency-image"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div class="currency-icon">{currency.icon}</div>
+                      )}
+                      <h4>{currency.title}</h4>
+                      <p>{currency.description}</p>
+                      <p>
+                        <strong>Use:</strong> {currency.use}
+                      </p>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+
+            <div class="section">
+              <h2 class="section-title">🎯 Selection System</h2>
+              <div class="card">
+                <h4>How It Works</h4>
+                <p><strong>Unlock Requirement:</strong> {selectionSystem.unlockRequirement}</p>
+                <p><strong>Selection Process:</strong> {selectionSystem.selectionProcess}</p>
+                <p><strong>Effect:</strong> {selectionSystem.effect}</p>
+                <p><strong>Important:</strong> {selectionSystem.note}</p>
+              </div>
+            </div>
+
+            <div class="section">
+              <h2 class="section-title">❓ Frequently Asked Questions</h2>
+              <div class="faq-grid">
+                {
+                  faq.map(item => (
+                    <div class="faq-item">
+                      <h4>Q: {item.question}</h4>
+                      <p>A: {item.answer}</p>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
 </html>

@@ -10,33 +10,33 @@ import '../styles/pages/about.css';
 const buildInfo = getBuildInfo();
 
 // Format dates for display
-const formatDate = (dateString) => {
+const formatDate = dateString => {
   return new Date(dateString).toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'long', 
-    day: 'numeric'
+    month: 'long',
+    day: 'numeric',
   });
 };
 
 // Get change type emoji
-const getChangeTypeEmoji = (type) => {
+const getChangeTypeEmoji = type => {
   const emojis = {
-    'added': '✨',
-    'changed': '🔄', 
-    'fixed': '🐛',
-    'removed': '🗑️',
-    'security': '🔒'
+    added: '✨',
+    changed: '🔄',
+    fixed: '🐛',
+    removed: '🗑️',
+    security: '🔒',
   };
   return emojis[type] || '📝';
 };
 
 // Get version type badge color
-const getVersionTypeBadge = (type) => {
+const getVersionTypeBadge = type => {
   const badges = {
-    'major': 'version-badge-major',
-    'minor': 'version-badge-minor', 
-    'patch': 'version-badge-patch',
-    'hotfix': 'version-badge-hotfix'
+    major: 'version-badge-major',
+    minor: 'version-badge-minor',
+    patch: 'version-badge-patch',
+    hotfix: 'version-badge-hotfix',
   };
   return badges[type] || 'version-badge-minor';
 };
@@ -69,46 +69,56 @@ const getVersionTypeBadge = (type) => {
 
     <!-- Changelog Timeline -->
     <section class="changelog-timeline">
-      {changelog.map((version, index) => (
-        <article class="version-entry">
-          <div class="version-header">
-            <div class="version-info">
-              <h2 class="version-number">
-                v{version.version}
-                <span class={`version-badge ${getVersionTypeBadge(version.type)}`}>
-                  {version.type}
-                </span>
-              </h2>
-              <time class="version-date">{formatDate(version.date)}</time>
-            </div>
-            <h3 class="version-title">{version.title}</h3>
-            <p class="version-description">{version.description}</p>
-          </div>
-
-          <div class="changes-list">
-            {version.changes.map((change) => (
-              <div class="change-item">
-                <span class="change-emoji">{getChangeTypeEmoji(change.type)}</span>
-                <div class="change-content">
-                  <span class="change-type">{change.type}</span>
-                  <span class="change-category">{change.category}</span>
-                  <p class="change-description">{change.description}</p>
-                </div>
+      {
+        changelog.map((version, index) => (
+          <article class="version-entry">
+            <div class="version-header">
+              <div class="version-info">
+                <h2 class="version-number">
+                  v{version.version}
+                  <span class={`version-badge ${getVersionTypeBadge(version.type)}`}>
+                    {version.type}
+                  </span>
+                </h2>
+                <time class="version-date">{formatDate(version.date)}</time>
               </div>
-            ))}
-          </div>
-        </article>
-      ))}
+              <h3 class="version-title">{version.title}</h3>
+              <p class="version-description">{version.description}</p>
+            </div>
+
+            <div class="changes-list">
+              {version.changes.map(change => (
+                <div class="change-item">
+                  <span class="change-emoji">{getChangeTypeEmoji(change.type)}</span>
+                  <div class="change-content">
+                    <span class="change-type">{change.type}</span>
+                    <span class="change-category">{change.category}</span>
+                    <p class="change-description">{change.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))
+      }
     </section>
 
     <!-- Footer Info -->
     <footer class="about-footer">
       <div class="disclaimer">
         <strong>Note:</strong>
-        <span>This is a fan-made, open-source wiki. All content is based on community knowledge and personal experience.</span>
+        <span
+          >This is a fan-made, open-source wiki. All content is based on community knowledge and
+          personal experience.</span
+        >
       </div>
       <div class="links">
-        <a href="https://github.com/boring877/gacha-wiki" target="_blank" rel="noopener noreferrer" class="github-link">
+        <a
+          href="https://github.com/boring877/gacha-wiki"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="github-link"
+        >
           <span>📚</span> View Source Code
         </a>
       </div>

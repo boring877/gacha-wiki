@@ -48,7 +48,11 @@ const characterKeywords = [
   'stats',
 ].filter(Boolean);
 
-const keywords = generateGameKeywords(gameKey, [...characterKeywords, ...OPEN_SOURCE_KEYWORDS, ...additionalKeywords]);
+const keywords = generateGameKeywords(gameKey, [
+  ...characterKeywords,
+  ...OPEN_SOURCE_KEYWORDS,
+  ...additionalKeywords,
+]);
 const title = customTitle || generateTitle(gameKey, 'character', character);
 const description = customDescription || generateDescription(gameKey, 'character', character);
 const structuredData = generateCharacterStructuredData(gameKey, character);

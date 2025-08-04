@@ -5,12 +5,12 @@
  */
 function initializeCardAnimations() {
   const gameCards = document.querySelectorAll('.game-card');
-  
+
   gameCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
       card.style.transform = 'translateY(-5px)';
     });
-    
+
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'translateY(0)';
     });
@@ -23,8 +23,6 @@ function initializeCardAnimations() {
 function initClockLanding() {
   // Initialize card animations
   initializeCardAnimations();
-  
-  console.log('Clock Landing initialized');
 }
 
 // Initialize when DOM is ready

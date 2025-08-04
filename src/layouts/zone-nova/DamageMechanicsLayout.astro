@@ -27,11 +27,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title} description={description || ''} />
-    <GameSEO 
-      gameKey="zone-nova"
-      title={title}
-      description={description}
-    />
+    <GameSEO gameKey="zone-nova" title={title} description={description} />
 
     <!-- Image Preloading for Performance -->
     {

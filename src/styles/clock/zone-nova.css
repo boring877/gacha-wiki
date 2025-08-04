@@ -33,17 +33,29 @@
 /* === ZONE NOVA SPECIFIC BACKGROUND ACCENTS === */
 /* Zone Nova themed background gradients */
 .bg-accent-1 {
-  background: radial-gradient(circle at 20% 80%, color-mix(in srgb, var(--mocha-mousse) 10%, transparent), transparent);
+  background: radial-gradient(
+    circle at 20% 80%,
+    color-mix(in srgb, var(--mocha-mousse) 10%, transparent),
+    transparent
+  );
   pointer-events: none;
 }
 
 .bg-accent-2 {
-  background: radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--zn-primary-amber) 8%, transparent), transparent);
+  background: radial-gradient(
+    circle at 80% 20%,
+    color-mix(in srgb, var(--zn-primary-amber) 8%, transparent),
+    transparent
+  );
   pointer-events: none;
 }
 
 .bg-accent-3 {
-  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--zn-primary-teal) 5%, transparent), transparent);
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--zn-primary-teal) 5%, transparent),
+    transparent
+  );
   pointer-events: none;
 }
 
@@ -123,13 +135,21 @@
 /* Server Reset Card - Main Clock */
 .server-reset-card {
   border: 2px solid var(--zn-clock-border);
-  background: linear-gradient(135deg, var(--clock-glass-bg), color-mix(in srgb, var(--zn-clock-bg) 3%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-glass-bg),
+    color-mix(in srgb, var(--zn-clock-bg) 3%, transparent)
+  );
 }
 
 /* Weekly Reset Timer Card */
 .weekly-card {
   border-left: 4px solid var(--zn-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--zn-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--zn-clock-bg) 2%, transparent)
+  );
 }
 
 .weekly-card .timer-card-title {
@@ -139,7 +159,11 @@
 /* Maintenance Timer Card */
 .maintenance-card {
   border-left: 4px solid var(--zn-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--zn-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--zn-clock-bg) 2%, transparent)
+  );
 }
 
 .maintenance-card .timer-card-title {
@@ -149,7 +173,11 @@
 /* Rift Timer Card */
 .rift-card {
   border-left: 4px solid var(--zn-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--zn-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--zn-clock-bg) 2%, transparent)
+  );
 }
 
 .rift-card .timer-card-title {
@@ -159,7 +187,11 @@
 /* Event Timer Card */
 .event-card {
   border-left: 4px solid var(--zn-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--zn-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--zn-clock-bg) 2%, transparent)
+  );
 }
 
 .event-card .timer-card-title {
@@ -272,7 +304,8 @@
 /* === ZONE NOVA CLOCK ANIMATIONS === */
 /* Pulsing animation for clock separators */
 @keyframes clockPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -406,7 +439,11 @@
 /* Zone Nova specific launch counter styling */
 .launch-card {
   border-left: 4px solid var(--zn-clock-border);
-  background: linear-gradient(135deg, var(--clock-card-bg), color-mix(in srgb, var(--zn-clock-bg) 2%, transparent));
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--zn-clock-bg) 2%, transparent)
+  );
   padding: 1.5rem;
 }
 

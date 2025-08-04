@@ -55,7 +55,6 @@ const { meta, intro, gameplayMechanics, chapterGuides } = data;
             )
           }
 
-
           <!-- Content -->
           <div class="content-area">
             <div class="dutchmans-revenge-container">
@@ -69,22 +68,14 @@ const { meta, intro, gameplayMechanics, chapterGuides } = data;
                 <div class="mechanic-card">
                   <h4>{gameplayMechanics.infiltration.title}</h4>
                   <ul>
-                    {
-                      gameplayMechanics.infiltration.mechanics.map((mechanic) => (
-                        <li>{mechanic}</li>
-                      ))
-                    }
+                    {gameplayMechanics.infiltration.mechanics.map(mechanic => <li>{mechanic}</li>)}
                   </ul>
                 </div>
 
                 <div class="mechanic-card">
                   <h4>{gameplayMechanics.reset.title}</h4>
                   <ul>
-                    {
-                      gameplayMechanics.reset.mechanics.map((mechanic) => (
-                        <li>{mechanic}</li>
-                      ))
-                    }
+                    {gameplayMechanics.reset.mechanics.map(mechanic => <li>{mechanic}</li>)}
                   </ul>
                 </div>
 
@@ -110,7 +101,7 @@ const { meta, intro, gameplayMechanics, chapterGuides } = data;
                       </a>
                     </p>
                     <div class="chapter-guides">
-                      {chapterGuides.map((guide) => {
+                      {chapterGuides.map(guide => {
                         const isValidYouTubeUrl =
                           guide.url &&
                           (guide.url.startsWith('https://www.youtube.com/') ||
