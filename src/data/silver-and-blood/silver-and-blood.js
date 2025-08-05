@@ -3,8 +3,9 @@
 
 export const silverAndBloodConfig = {
   meta: {
-    title: 'Silver and Blood - GachaWiki',
-    description: 'Explore Silver and Blood gacha game guides and content',
+    title: 'Silver and Blood Wiki - Complete Gacha Game Guide | GachaWiki',
+    description:
+      'Complete Silver and Blood wiki with character guides, builds, tier lists, damage mechanics, clan hunt strategies, and vampire gacha game content. Free comprehensive database for all Silver and Blood players.',
     gameTitle: 'Silver and Blood',
     heroImage: '/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg',
   },

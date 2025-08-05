@@ -17,13 +17,13 @@ export const homepageGames = [
   {
     id: 'silver-blood',
     name: 'Silver & Blood',
-    description: 'Dark fantasy gacha.',
+    description: 'Dark fantasy vampire gacha wiki with comprehensive guides.',
     image: '/images/games/silver-and-blood/main-images/silver-and-blood-main3.jpg',
     url: '/guides/silver-and-blood/',
     resetHour: 12, // UTC time for daily reset (20:00 UTC+8)
     resetMinute: 0, // UTC minute for daily reset
     timerDescription: 'Daily reset timer',
-    features: ['35+ Heroes', 'Rich Story', "Dutchman's Revenge"],
+    features: ['40+ Characters', 'Vampire Lore', 'Clan Hunt', 'Boss Guides'],
     active: true, // Show in clock and showcase
   },
   // Add more games here as needed
