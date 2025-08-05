@@ -27,9 +27,9 @@ export const zoneNovaConfig = {
   timers: {
     'ero-labs': {
       maintenance: {
-        date: '2025-08-05T06:00:00Z', // August 5, 14:00 UTC+8 = August 5, 06:00 UTC
-        duration: 2, // hours
-        subtitle: 'Aug 5, 2025 - 14:00 UTC+8 (2h)',
+        date: null, // No maintenance scheduled
+        duration: null,
+        subtitle: 'Waiting for next announcement',
       },
       rifts: [
         { name: 'Rift Surge VII', endDate: '2025-08-18T20:00:00Z' }, // August 18, 20:00 UTC (from rifts data)
@@ -37,11 +37,11 @@ export const zoneNovaConfig = {
       ],
       events: [
         {
-          name: 'Odin Event',
-          startDate: '2025-07-22T06:15:00Z', // July 22, 14:15 UTC+8 = July 22, 06:15 UTC
-          endDate: '2025-08-04T19:59:00Z', // August 5, 03:59 UTC+8 = August 4, 19:59 UTC
-          startDisplay: 'July 22, 14:15 UTC+8',
-          endDisplay: 'August 5, 03:59 UTC+8',
+          name: 'Thor Event',
+          startDate: '2025-08-05T06:15:00Z', // August 5, 14:15 UTC+8 = August 5, 06:15 UTC
+          endDate: '2025-08-18T19:59:00Z', // August 19, 03:59 UTC+8 = August 18, 19:59 UTC
+          startDisplay: 'August 5, 14:15 UTC+8',
+          endDisplay: 'August 19, 03:59 UTC+8',
         },
       ],
       Doubledrop_2x: [

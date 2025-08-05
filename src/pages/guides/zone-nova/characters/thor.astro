@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
+import { thorData, thorSEO } from '../../../../data/zone-nova/characters/thor.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={thorSEO.title}
+  description={thorSEO.description}
+  gameTitle={thorData.name}
+>
+  <CharacterPageTemplate characterData={thorData} />
+</CharacterIndividualLayout>

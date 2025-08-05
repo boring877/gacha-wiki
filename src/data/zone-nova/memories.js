@@ -895,6 +895,26 @@ export const ZONE_NOVA_MEMORIES = [
       'Total Potential: Up to 80% healing output (40% base + 40% conditional)',
     ],
   },
+  {
+    id: 'night-assault-suspect',
+    slug: 'night-assault-suspect',
+    name: 'Night Assault Suspect',
+    image: '/images/games/zone-nova/memories/Thorcard.jpg',
+    rarity: 'SSR',
+    element: 'Holy',
+    character: 'Thor',
+    detailUrl: '/guides/zone-nova/memories/night-assault-suspect/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    },
+    effects: [
+      'Defense increased by 64%',
+      'When allied characters with shields take damage, Defense increased by 64%',
+      'When the equipper deals continuous damage to enemy targets, increase damage taken by the target by 15% for 5 seconds',
+    ],
+  },
 ];
 
 // Memory metadata for filters

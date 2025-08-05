@@ -8,6 +8,7 @@ import Footer from '../../components/Footer.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import GeneralSEO from '../../components/GeneralSEO.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import { getActiveRifts, getRiftsWithDynamicStatus } from '../../data/zone-nova/rifts.js';
 
 // Import CSS files
 import '../../styles/colors.css';
@@ -26,6 +27,9 @@ const { title, description, games } = Astro.props;
 const game = games[0]; // Zone Nova config
 const currentRegion = game.regions[game.currentRegion];
 const timers = game.timers[game.currentRegion];
+
+// Get active rifts dynamically
+const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === 'active');
 ---
 
 <!doctype html>
@@ -327,7 +331,11 @@ const timers = game.timers[game.currentRegion];
 
     <Footer />
 
-    <!-- Zone Nova Clock Timer Script -->
+    <!-- Zone Nova Clock Timer Script with Dynamic Rifts -->
+    <script define:vars={{ activeRifts }}>
+      // Pass rifts data to global scope for the clock script
+      window.zoneNovaActiveRifts = activeRifts;
+    </script>
     <script src="/src/scripts/clock/zone-nova.js"></script>
   </body>
 </html>

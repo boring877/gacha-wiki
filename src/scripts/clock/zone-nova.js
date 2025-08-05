@@ -178,45 +178,51 @@ class ZoneNovaClockTimer {
   }
 
   /**
-   * Update Zone Nova rift timers
+   * Update Zone Nova rift timers - Dynamic version using server-side data
    */
   updateRiftTimers() {
     if (!this.rift1Name || !this.rift1Time || !this.rift2Name || !this.rift2Time) return;
 
     const now = new Date();
-    const rifts = [
-      {
-        name: 'Rift Surge VII',
-        endDate: '2025-08-18T20:00:00Z',
-      },
-      {
-        name: 'Rift Tide VI',
-        endDate: '2025-08-04T20:00:00Z',
-      },
-    ];
 
-    // Update Rift 1 (Surge VII)
-    const rift1EndDate = new Date(rifts[0].endDate);
-    const rift1TimeDiff = rift1EndDate.getTime() - now.getTime();
+    // Get active rifts from server-side data (passed via window.zoneNovaActiveRifts)
+    const activeRifts = window.zoneNovaActiveRifts || [];
 
-    if (rift1TimeDiff <= 0) {
+    // Ensure we have at least 2 slots for rifts (pad with empty if needed)
+    const rifts = [activeRifts[0] || null, activeRifts[1] || null];
+
+    // Update Rift 1
+    if (rifts[0]) {
+      const rift1EndDate = new Date(rifts[0].endDate);
+      const rift1TimeDiff = rift1EndDate.getTime() - now.getTime();
+
+      if (rift1TimeDiff <= 0) {
+        this.rift1Name.textContent = 'No Active Rift';
+        this.rift1Time.textContent = '--:--:--';
+      } else {
+        this.rift1Name.textContent = rifts[0].name;
+        this.formatRiftTime(rift1TimeDiff, this.rift1Time);
+      }
+    } else {
       this.rift1Name.textContent = 'No Active Rift';
       this.rift1Time.textContent = '--:--:--';
-    } else {
-      this.rift1Name.textContent = rifts[0].name;
-      this.formatRiftTime(rift1TimeDiff, this.rift1Time);
     }
 
-    // Update Rift 2 (Tide VI)
-    const rift2EndDate = new Date(rifts[1].endDate);
-    const rift2TimeDiff = rift2EndDate.getTime() - now.getTime();
+    // Update Rift 2
+    if (rifts[1]) {
+      const rift2EndDate = new Date(rifts[1].endDate);
+      const rift2TimeDiff = rift2EndDate.getTime() - now.getTime();
 
-    if (rift2TimeDiff <= 0) {
+      if (rift2TimeDiff <= 0) {
+        this.rift2Name.textContent = 'No Active Rift';
+        this.rift2Time.textContent = '--:--:--';
+      } else {
+        this.rift2Name.textContent = rifts[1].name;
+        this.formatRiftTime(rift2TimeDiff, this.rift2Time);
+      }
+    } else {
       this.rift2Name.textContent = 'No Active Rift';
       this.rift2Time.textContent = '--:--:--';
-    } else {
-      this.rift2Name.textContent = rifts[1].name;
-      this.formatRiftTime(rift2TimeDiff, this.rift2Time);
     }
   }
 
@@ -311,17 +317,56 @@ class ZoneNovaClockTimer {
   }
 
   /**
-   * Update Zone Nova maintenance timers - August 5, 2025, 14:00 UTC+8 (2h duration)
+   * Update Zone Nova maintenance timers - Auto-remove expired maintenance
    */
   updateMaintenanceTimer() {
     if (!this.maintenanceStartTime || !this.maintenanceEndTime) return;
 
     const now = new Date();
-    const maintenanceStart = new Date('2025-08-05T06:00:00Z'); // August 5, 2025, 06:00 UTC (14:00 UTC+8)
-    const maintenanceEnd = new Date('2025-08-05T08:00:00Z'); // 2 hours later
+
+    // Check if there's a scheduled maintenance (null means no maintenance scheduled)
+    const maintenanceStart = null; // Set to null when no maintenance is scheduled
+    const maintenanceEnd = null; // Set to null when no maintenance is scheduled
+
+    // If no maintenance is scheduled, show waiting message
+    if (!maintenanceStart || !maintenanceEnd) {
+      // No maintenance scheduled - show waiting message
+      if (this.serverStatusDot) {
+        this.serverStatusDot.classList.remove('maintenance');
+      }
+      if (this.serverStatusText) {
+        this.serverStatusText.textContent = 'Online';
+        this.serverStatusText.classList.remove('maintenance');
+      }
+
+      this.maintenanceStartLabel.textContent = 'Next Maintenance';
+      this.maintenanceStartTime.textContent = 'Waiting for announcement';
+      this.maintenanceEndLabel.textContent = 'Server Status';
+      this.maintenanceEndTime.textContent = 'Online';
+      return;
+    }
 
     const startTimeDiff = maintenanceStart.getTime() - now.getTime();
     const endTimeDiff = maintenanceEnd.getTime() - now.getTime();
+
+    // Auto-remove maintenance if it has ended (more than 1 hour past end time)
+    if (endTimeDiff < -3600000) {
+      // 1 hour buffer after maintenance ends
+      // Maintenance ended over an hour ago, clear it
+      if (this.serverStatusDot) {
+        this.serverStatusDot.classList.remove('maintenance');
+      }
+      if (this.serverStatusText) {
+        this.serverStatusText.textContent = 'Online';
+        this.serverStatusText.classList.remove('maintenance');
+      }
+
+      this.maintenanceStartLabel.textContent = 'Next Maintenance';
+      this.maintenanceStartTime.textContent = 'Waiting for announcement';
+      this.maintenanceEndLabel.textContent = 'Server Status';
+      this.maintenanceEndTime.textContent = 'Online';
+      return;
+    }
 
     // Update Server Status
     if (now >= maintenanceStart && now <= maintenanceEnd) {
@@ -361,7 +406,7 @@ class ZoneNovaClockTimer {
       this.maintenanceEndLabel.textContent = 'Servers Back';
       this.maintenanceEndTime.textContent = '--:--:--';
     } else if (now >= maintenanceStart && now <= maintenanceEnd) {
-      // During maintenance - 2 hour countdown
+      // During maintenance - countdown to end
       this.maintenanceEndLabel.textContent = 'Servers Back';
       this.formatRiftTime(endTimeDiff, this.maintenanceEndTime);
     } else {
@@ -372,29 +417,29 @@ class ZoneNovaClockTimer {
   }
 
   /**
-   * Update Zone Nova special event timer - Odin Event
+   * Update Zone Nova special event timer - Thor Event
    */
   updateEventTimer() {
     if (!this.eventStatus || !this.eventTime) return;
 
     const now = new Date();
-    // Zone Nova Odin Event times
-    const eventStart = new Date('2025-07-22T06:15:00Z'); // July 22, 2025, 14:15 UTC+8
-    const eventEnd = new Date('2025-08-04T19:59:00Z'); // August 5, 2025, 03:59 UTC+8
+    // Zone Nova Thor Event times
+    const eventStart = new Date('2025-08-05T06:15:00Z'); // August 5, 2025, 14:15 UTC+8
+    const eventEnd = new Date('2025-08-18T19:59:00Z'); // August 19, 2025, 03:59 UTC+8
 
     // Update static dates - showing UTC+8 times for Zone Nova
     if (this.eventStartDate) {
-      this.eventStartDate.textContent = 'July 22, 14:15 UTC+8';
+      this.eventStartDate.textContent = 'August 5, 14:15 UTC+8';
     }
     if (this.eventEndDate) {
-      this.eventEndDate.textContent = 'August 5, 03:59 UTC+8';
+      this.eventEndDate.textContent = 'August 19, 03:59 UTC+8';
     }
 
     const endTimeDiff = eventEnd.getTime() - now.getTime();
 
     if (now < eventStart) {
       // Event hasn't started yet
-      this.eventStatus.textContent = 'Upcoming Odin Event';
+      this.eventStatus.textContent = 'Upcoming Thor Event';
       this.eventStatus.classList.remove('inactive');
       this.eventTime.textContent = '--:--:--';
       this.eventTimeLabel.textContent = 'Event End';
