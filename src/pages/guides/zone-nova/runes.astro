@@ -122,18 +122,26 @@ import '../../../styles/games/zone-nova/zn-runes.css';
         <div class="rune-image-container">
           <img
             src="/images/games/zone-nova/runes/Hert-Pursuit-Damage.jpg"
-            alt="Hert Pursuit Damage Rune"
+            alt="Hert Extra Attack Damage Rune"
             width={120}
             height={120}
             class="rune-image"
           />
         </div>
-        <h3>Hert Pursuit Damage (赫特追击伤害)</h3>
-        <p><strong>2-Piece:</strong> Pursuit damage increased by 20%</p>
+        <h3>Hert Extra Attack Damage (赫特追击伤害)</h3>
+        <p><strong>2-Piece:</strong> Extra Attack damage increased by 20%</p>
         <p>
-          <strong>4-Piece:</strong> After dealing pursuit damage, critical hit rate increases by 15%,
-          lasts 10 seconds
+          <strong>4-Piece:</strong> After dealing Extra Attack damage, critical hit rate increases by
+          15%, lasts 10 seconds
         </p>
+        <div
+          style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(0, 172, 193, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #00acc1; border-radius: 8px;"
+        >
+          <p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
+            <span style="color: #00acc1; font-weight: 600;">Extra Attack:</span>
+            A special type of attack that some characters can trigger under certain conditions
+          </p>
+        </div>
         <div
           style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 8px;"
         >
@@ -182,7 +190,7 @@ import '../../../styles/games/zone-nova/zn-runes.css';
     <div class="rune-grid">
       <!-- Position 1 -->
       <div class="rune-card">
-        <h3>🎯 Position 1 — Fixed Main Stat</h3>
+        <h3>Position 1 — Fixed Main Stat</h3>
         <div style="text-align: center; margin: 1.5rem 0;">
           <div
             style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;"
@@ -197,7 +205,7 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <!-- Position 2 -->
       <div class="rune-card">
-        <h3>🎯 Position 2 — Fixed Main Stat</h3>
+        <h3>Position 2 — Fixed Main Stat</h3>
         <div style="text-align: center; margin: 1.5rem 0;">
           <div
             style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;"
@@ -212,7 +220,7 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <!-- Position 3 -->
       <div class="rune-card">
-        <h3>🎯 Position 3 — Fixed Main Stat</h3>
+        <h3>Position 3 — Fixed Main Stat</h3>
         <div style="text-align: center; margin: 1.5rem 0;">
           <div
             style="background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal)); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;"
@@ -227,7 +235,7 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <!-- Position 4 -->
       <div class="rune-card">
-        <h3>🎯 Position 4 — Variable Main Stats</h3>
+        <h3>Position 4 — Variable Main Stats</h3>
         <div style="margin: 1rem 0;">
           <h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
           <ul class="stat-list">
@@ -248,7 +256,7 @@ import '../../../styles/games/zone-nova/zn-runes.css';
           style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #dc3545; border-radius: 8px;"
         >
           <p style="margin: 0; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
-            <span style="color: #dc3545; font-weight: 600;">🔥 Attack Penetration:</span>
+            <span style="color: #dc3545; font-weight: 600;">Attack Penetration:</span>
             Available as percentage (%) in main stats here, and as flat values in sub stats
           </p>
         </div>
@@ -256,15 +264,25 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <!-- Position 5 -->
       <div class="rune-card">
-        <h3>🎯 Position 5 — Variable Main Stats</h3>
+        <h3>Position 5 — Variable Main Stats</h3>
+        <div style="text-align: center; margin: 1.5rem 0;">
+          <img
+            src="/images/games/zone-nova/runes/element.jpg"
+            alt="Element System Guide"
+            style="max-width: 100%; height: auto; border-radius: 8px; border: 2px solid rgba(255, 183, 77, 0.3);"
+          />
+        </div>
         <div style="margin: 1rem 0;">
+          <h4 style="color: var(--teal-crystal); margin-bottom: 1rem; text-align: center;">
+            Element Order: Wind → Fire → Ice → Holy → Chaos
+          </h4>
           <h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
           <ul class="stat-list">
-            <li>🔥 Fire Element Damage (%)</li>
-            <li>❄️ Ice Element Damage (%)</li>
-            <li>💨 Wind Element Damage (%)</li>
-            <li>✨ Holy Damage (%)</li>
-            <li>🌑 Chaos Damage (%)</li>
+            <li>Wind Attribute Damage (%)</li>
+            <li>Fire Attribute Damage (%)</li>
+            <li>Ice Attribute Damage (%)</li>
+            <li>Holy Attribute Damage (%)</li>
+            <li>Chaos Attribute Damage (%)</li>
             <li>Attack (%)</li>
             <li>HP (%)</li>
             <li>Defense (%)</li>
@@ -277,7 +295,7 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <!-- Position 6 -->
       <div class="rune-card">
-        <h3>🎯 Position 6 — Variable Main Stats</h3>
+        <h3>Position 6 — Variable Main Stats</h3>
         <div style="margin: 1rem 0;">
           <h4 style="color: var(--amber-glow); margin-bottom: 1rem;">Available Main Stats:</h4>
           <ul class="stat-list">
@@ -309,7 +327,7 @@ import '../../../styles/games/zone-nova/zn-runes.css';
           style="margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 183, 77, 0.1)); border: 1px solid #ffc107; border-radius: 12px;"
         >
           <p style="margin: 0; color: var(--text-primary); font-weight: 500;">
-            <span style="color: #ffc107; font-weight: 600;">💡 Pro Tip:</span>
+            <span style="color: #ffc107; font-weight: 600;">Pro Tip:</span>
             Position 4 runes are highly valuable for their unique utility stats, especially Attack Penetration
             for DPS characters.
           </p>

@@ -8,21 +8,8 @@
   border-radius: 24px;
   margin-bottom: 3rem;
   border: 1px solid rgba(255, 183, 77, 0.1);
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.08),
-    0 8px 16px rgba(255, 183, 77, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
   position: relative;
-  transition: all 0.4s ease;
   backdrop-filter: blur(10px);
-}
-
-.content-section:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 25px 50px rgba(0, 0, 0, 0.12),
-    0 12px 24px rgba(255, 183, 77, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 /* Section Titles */
@@ -60,16 +47,8 @@
   border: 2px solid transparent;
   border-radius: 16px;
   padding: 2.5rem;
-  transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 172, 193, 0.08);
-}
-
-.rune-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 172, 193, 0.15);
-  border-color: var(--teal-crystal);
 }
 
 /* Rune Image Styling */
@@ -85,15 +64,8 @@
   height: 140px;
   margin-left: auto;
   margin-right: auto;
-  transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
-}
-
-.rune-card:hover .rune-image-container {
-  background: linear-gradient(135deg, rgba(0, 172, 193, 0.2), rgba(255, 183, 77, 0.2));
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3);
 }
 
 .rune-image {
@@ -101,14 +73,7 @@
   height: 100px !important;
   border-radius: 50%;
   object-fit: cover;
-  transition: all 0.4s ease;
   border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.rune-card:hover .rune-image {
-  transform: scale(1.1);
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .rune-card h3 {
@@ -117,12 +82,7 @@
   font-weight: var(--font-bold);
   color: var(--text-primary);
   margin: 0 0 1rem 0;
-  transition: all 0.3s ease;
   text-align: center;
-}
-
-.rune-card:hover h3 {
-  color: var(--amber-glow);
 }
 
 .rune-card p {
@@ -130,11 +90,6 @@
   line-height: var(--leading-relaxed);
   margin-bottom: 1rem;
   font-size: var(--text-base);
-  transition: color 0.3s ease;
-}
-
-.rune-card:hover p {
-  color: var(--text-primary);
 }
 
 /* Stat Lists */
@@ -148,16 +103,11 @@
   color: var(--text-secondary);
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--neutral-200);
-  transition: color 0.3s ease;
   font-size: var(--text-base);
 }
 
 .stat-list li:last-child {
   border-bottom: none;
-}
-
-.rune-card:hover .stat-list li {
-  color: var(--text-primary);
 }
 
 /* Tables */
