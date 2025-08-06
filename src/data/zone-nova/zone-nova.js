@@ -57,6 +57,15 @@ export const zoneNovaConfig = {
       category: 'guides',
     },
     {
+      id: 'tier-list',
+      title: 'Tier List',
+      emoji: '⚡',
+      description:
+        'Comprehensive tier lists for PvE, PvP, Rifts, and Guild Raids with meta analysis.',
+      url: '/guides/zone-nova/tier-list/',
+      category: 'guides',
+    },
+    {
       id: 'character-comparison',
       title: 'Character Comparison',
       emoji: '📊',
@@ -68,7 +77,7 @@ export const zoneNovaConfig = {
     {
       id: 'character-rankings',
       title: 'Character Rankings',
-      emoji: '🏆',
+      emoji: '📈',
       description:
         'View character stat rankings and overall performance analysis across HP, ATK, and DEF.',
       url: '/guides/zone-nova/character-rankings/',

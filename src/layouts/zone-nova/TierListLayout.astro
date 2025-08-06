@@ -1,0 +1,78 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+
+// Import CSS files properly
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/zone-nova/zn-layout.css';
+import '../../styles/games/zone-nova/zn-badge-colour.css';
+import '../../styles/games/zone-nova/zn-tier-list.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  gameTitle?: string;
+  showBackButton?: boolean;
+  backButtonHref?: string;
+  backButtonText?: string;
+}
+
+const {
+  title,
+  description,
+  gameTitle = 'Zone Nova Tier List',
+  showBackButton = true,
+  backButtonHref = '/guides/zone-nova/',
+  backButtonText = 'Back to Zone Nova',
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description || ''} />
+    <GameSEO gameKey="zone-nova" title={title} description={description} />
+    <slot name="head" />
+  </head>
+  <body class="zone-nova-body zn-layout-override tier-list-dark">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="zone-nova-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
+      <MobileMenu />
+
+      <div class="zone-nova-container">
+        <main class="zone-nova-main">
+          <!-- Title Only Section -->
+          <section class="title-only-section">
+            <h1 class="title-only-heading">
+              {gameTitle}
+            </h1>
+
+            <DecorativeLines />
+          </section>
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>
