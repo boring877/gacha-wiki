@@ -3,8 +3,8 @@
 
 export const zoneNovaConfig = {
   meta: {
-    title: 'Zone Nova - GachaWiki',
-    description: 'Explore Zone Nova gacha game guides and content',
+    title: 'Zone Nova Wiki - Complete Character Guide, Tier Lists & Game Database | GachaWiki',
+    description: 'Complete Zone Nova wiki with character tier lists, SSR rankings, memory cards, damage mechanics, and team building guides. Latest Zone Nova character database, rifts, runes, and meta strategies for 2025.',
     gameTitle: 'Zone Nova',
     heroImage: '/images/games/zone-nova/zonenova1.jpg',
   },
