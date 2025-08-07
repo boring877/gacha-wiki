@@ -461,8 +461,26 @@ export default changelog;
 
 // Run the generator if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
+  const isAutoMode = process.argv.includes('--auto');
+  const isManualMode = process.argv.includes('--manual');
+  
   const generator = new ChangelogGenerator();
-  generator.generate().catch(console.error);
+  
+  if (isAutoMode) {
+    // Auto mode: only generate if there are significant changes
+    console.log('🤖 Running in automatic mode...');
+    generator.generate().catch(error => {
+      console.error('❌ Auto changelog generation failed:', error);
+      process.exit(1);
+    });
+  } else if (isManualMode) {
+    // Manual mode: force generation with user input
+    console.log('👤 Running in manual mode...');
+    generator.generateManual().catch(console.error);
+  } else {
+    // Default mode: standard generation
+    generator.generate().catch(console.error);
+  }
 }
 
 export default ChangelogGenerator;
