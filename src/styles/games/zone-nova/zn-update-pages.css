@@ -75,7 +75,6 @@
 
 /* ===== CONTENT AREA ===== */
 .update-content-area {
-  animation: contentSlideUp 0.8s ease-out;
   background: transparent;
   font-family: var(--font-primary);
   font-size: var(--text-base);
@@ -104,7 +103,6 @@
   margin-bottom: 3rem;
   border: 1px solid var(--amber-glow);
   transition: all 0.4s ease;
-  animation: sectionFadeIn 0.8s ease-out;
 }
 
 .content-section:hover {
@@ -271,27 +269,7 @@
 }
 
 /* ===== ANIMATIONS ===== */
-@keyframes contentSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes sectionFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Animations removed for instant content display */
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {

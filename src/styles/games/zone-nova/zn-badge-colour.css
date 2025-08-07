@@ -319,15 +319,14 @@
   border-bottom: 1px solid rgba(255, 183, 77, 0.15);
 }
 
-/* Mobile Badge Animations */
+/* Mobile Badge Animations - Removed for instant display */
 .mobile-card-badges .rarity-badge,
 .mobile-card-badges .element-badge,
 .mobile-card-badges .role-badge,
 .mobile-card-badges .class-badge,
 .mobile-card-badges .faction-badge {
-  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  opacity: 0;
-  transform: translateY(10px);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Fallback for production - ensure badges are always visible */
@@ -352,46 +351,30 @@
   animation-fill-mode: both;
 }
 
-/* Ensure badges are visible after 1 second regardless of animation state */
+/* Badges are always visible - no animation needed */
 @media (max-width: 768px) {
   .mobile-card-badges {
-    animation: ensureVisibility 0.1s 1s forwards;
+    /* No animation - instant visibility */
   }
 }
 
-@keyframes ensureVisibility {
-  to {
-    visibility: visible;
-  }
-}
+/* ensureVisibility keyframe removed - not needed */
 
 .mobile-card-badges > * {
   visibility: visible;
   opacity: 1;
 }
 
-.mobile-card-badges .rarity-badge {
-  animation-delay: 0.1s;
-}
-.mobile-card-badges .element-badge {
-  animation-delay: 0.15s;
-}
-.mobile-card-badges .role-badge {
-  animation-delay: 0.2s;
-}
-.mobile-card-badges .class-badge {
-  animation-delay: 0.25s;
-}
+/* Animation delays removed for instant display */
+.mobile-card-badges .rarity-badge,
+.mobile-card-badges .element-badge,
+.mobile-card-badges .role-badge,
+.mobile-card-badges .class-badge,
 .mobile-card-badges .faction-badge {
-  animation-delay: 0.3s;
+  /* No animation delays - instant visibility */
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* fadeInUp keyframe removed - not needed */
 
 /* Mobile Responsive Badge Styles */
 @media (max-width: 768px) {
@@ -876,4 +859,3 @@
 }
 
 /* Special Badge States */
-

@@ -60,7 +60,6 @@
 
 /* Content Area */
 .content-area {
-  animation: contentSlideUp 1s ease-out 0.3s both;
 }
 
 /* Title Only Section */
@@ -97,7 +96,6 @@
 .hero-image-wrapper {
   position: relative;
   margin-bottom: 3rem;
-  animation: heroFadeIn 1s ease-out;
 }
 
 .hero-image-container {
@@ -143,27 +141,6 @@
 }
 
 /* Animation Keyframes */
-@keyframes heroFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes contentSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 @keyframes titleGlow {
   0% {

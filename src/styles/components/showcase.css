@@ -26,18 +26,7 @@
   padding: 4rem 0; /* Vertical padding for section spacing */
 }
 
-/* Animated background glow effects - multiple radial gradients */
-.auto-showcase::before {
-  content: ''; /* Empty pseudo-element */
-  position: absolute; /* Absolute positioning for overlay */
-  inset: 0; /* Cover entire showcase area */
-  background:                                  /* Multi-layer radial gradient system */
-    radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),
-    /* Amber glow - left */ radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),
-    /* Teal glow - right */ radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent); /* Rose glow - bottom */
-  animation: heroGlow 20s ease-in-out infinite; /* Continuous glow animation */
-  z-index: 1; /* Above background, below content */
-}
+/* Removed extra background - using unified 4-layer background system */
 
 /* Showcase content container - centers and constrains width */
 .showcase-container {

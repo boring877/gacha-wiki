@@ -10,7 +10,7 @@
  * - Animated hero section with multi-layer gradient effects
  * - Responsive fluid typography with clamp() functions
  * - CSS containment for performance optimization
- * - Smooth entrance animations with custom keyframes
+ * - Custom keyframes for animations
  * 
  * Design: Modern hero section with animated gradient overlays
  * Performance: CSS containment and optimized animations
@@ -27,48 +27,16 @@
 }
 
 /* === HERO SECTION === */
-/* Main home container with unified background */
-.home-main {
-  background: linear-gradient(
-    135deg,
-    rgba(28, 28, 28, 0.95) 0%,
-    rgba(42, 42, 42, 0.95) 100%
-  ); /* Dark gradient base for entire page */
-}
 
-/* Main hero section with animated overlays */
+/* Main hero section - clean and simple */
 .hero-section {
-  position: relative; /* Positioning context for absolute children */
+  position: relative; /* Positioning context for children */
   padding: 6rem 2rem 4rem 2rem; /* Generous padding with more space at top */
-  overflow: hidden; /* Hide animated background overflow */
-}
-
-/* Animated background gradient overlay - creates dynamic color effects */
-.hero-bg-animation {
-  position: absolute; /* Absolute positioning for overlay */
-  inset: 0; /* Cover entire hero section */
-  background:                                     /* Multi-layer radial gradient system */
-    radial-gradient(circle at 20% 50%, rgba(255, 183, 77, 0.15), transparent),
-    /* Amber glow - left side */
-      radial-gradient(circle at 80% 50%, rgba(0, 172, 193, 0.15), transparent),
-    /* Teal glow - right side */
-      radial-gradient(circle at 50% 100%, rgba(233, 30, 99, 0.1), transparent); /* Rose glow - bottom */
-  animation: heroGlow 20s ease-in-out infinite; /* Continuous glow animation */
+  /* Background handled by unified system - no separate layers needed */
 }
 
 /* === HERO ANIMATIONS === */
-/* Keyframe animation for background glow effect */
-@keyframes heroGlow {
-  0%,
-  100% {
-    opacity: 0.8; /* Base opacity at start and end */
-    transform: scale(1) rotate(0deg); /* Normal scale and rotation */
-  }
-  50% {
-    opacity: 1; /* Full opacity at midpoint */
-    transform: scale(1.1) rotate(2deg); /* Slight scale and rotation for movement */
-  }
-}
+/* Hero animations removed - using unified background system */
 
 /* === HERO CONTENT === */
 /* Container for hero text content positioned above animated background */
@@ -80,47 +48,68 @@
   margin: 0 auto; /* Center horizontally */
 }
 
-/* Hero title container with entrance animation */
-.hero-title {
-  margin-bottom: 3rem; /* Space below title */
-  animation: fadeInUp 1s ease-out; /* Fade-in from bottom animation */
-}
-
 /* === HERO TYPOGRAPHY === */
-/* Main hero title with standardized sizing and amber color override */
-.hero-section .hero-title .hero-text-gradient {
-  display: block; /* Block display for proper spacing */
-  font-family: 'Space Grotesk', sans-serif; /* Display font for maximum impact */
-  font-size: var(--text-4xl); /* Standardized responsive typography */
-  font-weight: 900; /* Maximum weight for prominence */
-  line-height: 1.1; /* Tight line height for display text */
-  color: var(--amber-glow) !important; /* Amber color override */
-  background: none !important; /* Remove gradient background */
-  -webkit-text-fill-color: var(--amber-glow) !important; /* Webkit text color override */
-  margin-bottom: 0.5rem; /* Small space below main title */
-  text-align: center; /* Center alignment */
+/* Hero title styling */
+.hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--amber-glow);
+  margin-bottom: 7.5rem;
+  text-align: center;
 }
 
-/* Hero subtitle with responsive sizing and subtle styling */
-.hero-subtitle {
-  display: block; /* Block display for proper spacing */
-  font-family: 'Space Grotesk', sans-serif; /* Consistent font family */
-  font-size: clamp(1rem, 3vw, 1.5rem); /* Responsive fluid typography */
-  font-weight: 400; /* Normal weight for subtitle */
-  color: var(--text-inverse); /* White text color */
-  opacity: 0.9; /* Slightly transparent for hierarchy */
-  letter-spacing: 0.05em; /* Wide tracking for emphasis */
+/* Hero divider line */
+.hero-divider {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--amber-glow), transparent);
+  margin: 2rem auto;
+  opacity: 0.6;
 }
 
-/* Fade-in animation from bottom with upward movement */
-@keyframes fadeInUp {
-  from {
-    opacity: 0; /* Start invisible */
-    transform: translateY(30px); /* Start 30px below final position */
+/* Secondary actions container */
+.hero-secondary-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Secondary buttons */
+.secondary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  background: rgba(28, 28, 28, 0.6);
+  border: 1px solid rgba(255, 183, 77, 0.3);
+  border-radius: 8px;
+  color: var(--text-inverse);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+.secondary-text {
+  color: var(--text-inverse);
+  opacity: 0.9;
+}
+
+/* Mobile responsiveness for secondary actions */
+@media (max-width: 768px) {
+  .hero-secondary-actions {
+    gap: 1rem;
   }
-  to {
-    opacity: 1; /* End fully visible */
-    transform: translateY(0); /* End at natural position */
+
+  .secondary-button {
+    padding: 0.625rem 1rem;
+    font-size: 0.8rem;
+    flex: 1;
+    max-width: 140px;
   }
 }
 
