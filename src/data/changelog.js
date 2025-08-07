@@ -4,6 +4,83 @@
 
 export const changelog = [
   {
+    version: '2.7.9',
+    date: '2025-08-07',
+    type: 'minor',
+    title: 'Zone Nova Tier List System Overhaul & SEO Enhancement',
+    description:
+      'Comprehensive redesign of Zone Nova tier list system with new SSS/SS/S/A/Situational tiers, enhanced mobile responsiveness, and improved search engine optimization',
+    changes: [
+      {
+        type: 'added',
+        category: 'Zone Nova',
+        description:
+          'Complete tier list system with 5 specialized lists: PvE, PvP, Rift, Guild Raid, and New Player/F2P',
+      },
+      {
+        type: 'changed',
+        category: 'Zone Nova',
+        description:
+          'Restructured tier system from S+/S/A/B to SSS/SS/S/A/Situational for better character differentiation',
+      },
+      {
+        type: 'improved',
+        category: 'UI/UX',
+        description:
+          'Enhanced character card readability with larger fonts (1.3rem desktop, 0.72rem mobile) and images (90px desktop, 60px mobile)',
+      },
+      {
+        type: 'improved',
+        category: 'UI/UX',
+        description:
+          'Moved badges below character names with proper centering and reduced font sizes to prevent stacking',
+      },
+      {
+        type: 'added',
+        category: 'Mobile',
+        description:
+          'Comprehensive mobile responsive design with proper element ordering and touch-friendly interactions',
+      },
+      {
+        type: 'removed',
+        category: 'Zone Nova',
+        description:
+          'Removed download functionality from tier lists for cleaner, simpler interface per user preference',
+      },
+      {
+        type: 'improved',
+        category: 'Code Quality',
+        description:
+          'Optimized CSS from 997 to 1001 lines with clean organization and removed all unused data properties',
+      },
+      {
+        type: 'fixed',
+        category: 'Zone Nova',
+        description:
+          'Fixed grammar, spelling, and descriptions across all tier list content for better readability',
+      },
+      {
+        type: 'improved',
+        category: 'SEO',
+        description:
+          'Enhanced Zone Nova main page with targeted keywords: "Character Guide, Tier Lists & Game Database" for better search visibility',
+      },
+      {
+        type: 'improved',
+        category: 'SEO',
+        description:
+          'Updated structured data with comprehensive game description, correct genre (JRPG/Idle RPG), and 2025 relevance keywords',
+      },
+      {
+        type: 'added',
+        category: 'Zone Nova',
+        description:
+          'New TierListLayout.astro, tier-list.astro page, zn-tier-list.css (1001 lines), and comprehensive tier-lists.js data structure',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
     version: '2.7.8',
     date: '2025-08-04',
     type: 'minor',
