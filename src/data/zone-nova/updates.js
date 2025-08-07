@@ -1,6 +1,15 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'developer-team-notes-1',
+    title: 'Developer Team Notes #1: Game Announcements Translation',
+    date: 'August 7, 2025',
+    type: 'announcement',
+    summary:
+      'Official translation of Zone Nova developer team notes featuring upcoming game features including character standing images, lookboard system, tuning mechanics, character interactions, trials, simulation battles, military trials adjustments, additional languages, and more benefits.',
+    url: '/guides/zone-nova/updates/developer-team-notes-1/',
+  },
+  {
     id: 'august-5-maintenance',
     title: 'August 5 Maintenance Announcement',
     date: 'August 5, 2025',
