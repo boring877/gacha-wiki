@@ -4,6 +4,75 @@
 
 export const changelog = [
   {
+    version: '2.8.0',
+    date: '2025-08-07',
+    type: 'minor',
+    title: 'Home Page Organization & Performance Optimization',
+    description:
+      'Comprehensive home page redesign with organized background system, simplified JavaScript, and complete removal of entrance animations across the entire site for instant loading',
+    changes: [
+      {
+        type: 'changed',
+        category: 'Home Page',
+        description:
+          'Organized 4-layer background system in HomeLayout.astro for better visual depth and maintainability',
+      },
+      {
+        type: 'improved',
+        category: 'Home Page',
+        description:
+          'Simplified rotation JavaScript from 185+ lines to ~20 lines of clean, optimized code',
+      },
+      {
+        type: 'changed',
+        category: 'Home Page',
+        description:
+          'Restructured hero section with focused hierarchy: title, main CTA, divider, and secondary buttons',
+      },
+      {
+        type: 'improved',
+        category: 'Mobile',
+        description:
+          'Enhanced mobile responsive design for secondary buttons with proper spacing and sizing',
+      },
+      {
+        type: 'removed',
+        category: 'Performance',
+        description:
+          'Removed ALL entrance animations site-wide for instant content visibility and better loading experience',
+      },
+      {
+        type: 'removed',
+        category: 'Zone Nova',
+        description:
+          'Eliminated sectionFadeIn, cardSlideUp, contentSlideUp, and heroFadeIn animations across all Zone Nova pages',
+      },
+      {
+        type: 'removed',
+        category: 'Silver & Blood',
+        description: 'Removed fadeIn and slideUp entrance animations from all Silver & Blood pages',
+      },
+      {
+        type: 'removed',
+        category: 'Home Page',
+        description:
+          'Cleaned up fadeInUp and heroGlow animations, removing duplicate CSS selectors and conflicts',
+      },
+      {
+        type: 'fixed',
+        category: 'CSS',
+        description: 'Fixed duplicate .home-main selectors and removed unused keyframe definitions',
+      },
+      {
+        type: 'improved',
+        category: 'Performance',
+        description:
+          'Enhanced page loading performance by making all content appear instantly without animation delays',
+      },
+    ],
+    author: 'Boring877',
+  },
+  {
     version: '2.7.9',
     date: '2025-08-07',
     type: 'minor',
