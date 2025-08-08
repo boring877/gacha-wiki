@@ -1,66 +1,48 @@
 ---
-import HomeLayout from '../layouts/HomeLayout.astro';
+import AboutLayout from '../layouts/AboutLayout.astro';
 import { SITE_TITLE } from '../consts';
-import { aboutData, getPageMetadata } from '../data/about.js';
-
-// Import dedicated CSS for about page
-import '../styles/pages/about.css';
-
-// Get page metadata
-const pageData = getPageMetadata();
+import { aboutData } from '../data/about.js';
 ---
 
-<HomeLayout
-  title={`${SITE_TITLE} - About`}
-  description={pageData.description}
->
+<AboutLayout title={`${SITE_TITLE} - About`} description={aboutData.description}>
   <!-- Main Content Area -->
-  <main class="main-content">
-    <!-- About Header -->
-    <header class="build-info">
-      <h1 class="page-title">{pageData.title}</h1>
-      <p class="page-subtitle">{pageData.subtitle}</p>
+  <div class="main-content">
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1 class="page-title">{aboutData.title}</h1>
     </header>
 
-    <!-- About Content -->
-    <section class="about-content">
-      {aboutData.sections.map(section => (
-        <div class="about-section">
-          <h2>{section.title}</h2>
-          
-          {section.type === 'list' ? (
-            <ul class="features-list">
-              {section.items.map(item => (
-                <li set:html={item}></li>
-              ))}
-            </ul>
-          ) : (
-            section.content.map(paragraph => (
-              <p set:html={paragraph}></p>
-            ))
-          )}
-        </div>
-      ))}
-    </section>
+    <!-- Hero Container -->
+    <div class="hero-container">
+      <div class="hero-content">
+        <p class="hero-text">
+          <strong>GachaWiki</strong> is an independent, non-profit educational wiki that is not affiliated
+          with any game developers or publishers. All game names, trademarks, and assets are the property
+          of their respective owners.
+        </p>
 
-    <!-- Footer Info -->
-    <footer class="about-footer">
-      <div class="disclaimer">
-        <strong>Note:</strong>
-        <span>{aboutData.disclaimer.text}</span>
+        <p class="hero-text">
+          This project operates as a <strong>free, open-source community resource</strong> under fair
+          use principles. We do not run advertisements or generate revenue from this wiki. All game-related
+          content, images, and data are used solely for informational and educational purposes. All wiki
+          content is licensed under <strong>MIT License</strong>.
+        </p>
+
+        <p class="hero-text">
+          As a community-driven project, <strong>content accuracy cannot be guaranteed</strong>. All
+          information is provided "as-is" without warranties of any kind. Users assume full
+          responsibility for any decisions made based on wiki content. Please verify information
+          independently before use.
+        </p>
+
+        <p class="hero-text">
+          If you believe your copyrighted material is being used improperly, please contact us with
+          a <strong>DMCA takedown notice</strong>. For general concerns about your game's coverage
+          or to report mistakes, please <strong>create an issue on our GitHub</strong> or <strong
+            >discuss it in our Discord community</strong
+          >.
+        </p>
       </div>
-      <div class="links">
-        {aboutData.links.map(link => (
-          <a
-            href={link.href}
-            target={link.target}
-            rel={link.rel}
-            class={link.className}
-          >
-            <span>{link.icon}</span> {link.text}
-          </a>
-        ))}
-      </div>
-    </footer>
-  </main>
-</HomeLayout>
+    </div>
+  </div>
+</AboutLayout>

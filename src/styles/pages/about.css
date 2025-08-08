@@ -3,242 +3,128 @@
  * ABOUT PAGE - SITE INFORMATION
  * ==========================================
  * 
- * Dedicated styles for the about page displaying site information,
- * features, and community details following GachaWiki design system.
- * 
- * Features:
- * - Clean section-based layout
- * - Responsive design with mobile optimizations
- * - Consistent with site color palette and typography
- * - Professional card design matching other pages
- * 
- * Design: Modern card-based interface using GachaWiki design tokens
- * Performance: Minimal CSS with efficient selectors
- * Browser Support: Modern browsers with CSS Grid and Flexbox
+ * Simple about page with standardized title and hero container
+ * following the same patterns as wikis page and other main pages.
  */
 
 /* === MAIN CONTENT LAYOUT === */
-/* Primary container for the about page */
 .main-content {
-  max-width: 1000px; /* Optimal reading width */
-  margin: 0 auto; /* Center horizontally */
-  padding: 4rem 1rem 2rem 1rem; /* Generous padding with extra top space */
-  min-height: 100vh; /* Full viewport height minimum */
-  background: var(--bg-dark); /* Dark background matching site theme */
-}
-
-/* === ABOUT HEADER === */
-/* Header section with site title and description */
-.build-info {
-  text-align: center; /* Center align header content */
-  margin-bottom: 4rem; /* Large space below header */
-  padding: 2rem; /* Internal spacing */
-  background: var(--zn-card-bg); /* Card background from design system */
-  border: 2px solid var(--zn-border-primary); /* Muted border */
-  border-radius: 16px; /* Rounded corners */
-}
-
-/* Main page title styling */
-.page-title {
-  font-family: var(--font-display); /* Display font for headings */
-  font-size: var(--text-4xl); /* Large, prominent title */
-  font-weight: 800; /* Extra bold weight */
-  margin: 0 0 1rem 0; /* Bottom margin only */
-  color: var(--text-inverse); /* White text on dark background */
-  letter-spacing: -0.02em; /* Slight letter tightening */
-}
-
-/* Subtitle beneath main title */
-.page-subtitle {
-  font-family: var(--font-primary); /* Primary font for readability */
-  font-size: var(--text-lg); /* Larger than body text */
-  color: var(--zn-text-secondary); /* Secondary text color from design system */
-  margin: 0; /* Remove margins */
-  font-weight: 300; /* Light weight for contrast */
-  letter-spacing: 0.01em; /* Slight letter spacing */
-}
-
-/* === ABOUT CONTENT SECTIONS === */
-.about-content {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 3rem 1.5rem;
+  position: relative;
 }
 
-.about-section {
-  background: var(--zn-card-bg); /* Card background from design system */
-  border: 2px solid var(--zn-border-primary); /* Consistent border */
+/* === PAGE HEADER === */
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 3rem;
+}
+
+/* Page title with standardized styling (matches wikis page) */
+.page-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--text-4xl);
+  font-weight: 900;
+  color: var(--amber-glow);
+  margin: 0 0 2rem 0;
+}
+
+/* === HERO CONTAINER === */
+.hero-container {
+  background: var(--zn-card-bg);
+  border: 2px solid var(--text-secondary);
   border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2rem;
+  padding: 3rem;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-inverse);
 }
 
-.about-section:last-child {
-  margin-bottom: 0;
+/* Hero content wrapper */
+.hero-content {
+  max-width: 700px;
+  width: 100%;
 }
 
-.about-section h2 {
-  font-family: var(--font-display); /* Display font for headings */
-  color: var(--text-inverse); /* White text */
-  font-size: var(--text-2xl); /* Medium heading size */
-  margin: 0 0 1.5rem 0;
-  font-weight: 700;
-}
-
-.about-section p {
-  font-family: var(--font-primary); /* Primary readable font */
-  color: var(--zn-text-secondary); /* Secondary text color */
+/* Hero text styling */
+.hero-text {
+  font-size: 1.2rem;
   line-height: 1.7;
-  margin: 0 0 1rem 0;
-  font-size: var(--text-base); /* Base font size */
+  color: var(--text-inverse);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
 }
 
-.about-section p:last-child {
+.hero-text:last-child {
   margin-bottom: 0;
 }
 
-.about-section strong {
-  color: var(--text-inverse); /* White for emphasis */
+.hero-text strong {
+  color: var(--amber-glow);
   font-weight: 600;
 }
 
-.features-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-family: var(--font-primary); /* Primary font for readability */
-}
-
-.features-list li {
-  color: var(--zn-text-secondary); /* Secondary text color */
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--zn-border-primary); /* Consistent border */
-  font-size: var(--text-base); /* Base font size */
-  line-height: 1.6;
-}
-
-.features-list li:last-child {
-  border-bottom: none;
-}
-
-/* === FOOTER SECTION === */
-/* Footer container for disclaimer and links */
-.about-footer {
-  margin-top: 4rem; /* Large space above footer */
-  padding: 2rem; /* Internal spacing */
-  background: var(--zn-card-bg); /* Card background */
-  border: 2px solid var(--zn-border-primary); /* Consistent border */
-  border-radius: 16px; /* Rounded corners */
-}
-
-/* Disclaimer box styling */
-.disclaimer {
-  color: var(--zn-text-secondary); /* Secondary text color */
-  font-family: var(--font-primary); /* Primary readable font */
-  font-size: var(--text-base); /* Standard body text size */
-  line-height: 1.6; /* Comfortable line height */
-  margin: 0 0 1.5rem 0; /* Margin below disclaimer */
-}
-
-/* Emphasis within disclaimer */
-.disclaimer strong {
-  color: var(--text-inverse); /* White for emphasis */
-  font-weight: 600; /* Semi-bold weight */
-}
-
-/* Links container */
-.links {
-  display: flex;
-  justify-content: center;
-}
-
-/* Link styling */
-.github-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--amber-glow); /* Primary brand amber */
-  color: var(--text-primary); /* Dark text on light background */
-  text-decoration: none;
-  border-radius: 8px;
-  font-family: var(--font-primary); /* Primary readable font */
-  font-weight: 500;
-  font-size: var(--text-base);
-  transition: background-color 0.2s ease;
-}
-
-.github-link:hover {
-  background: var(--primary-hover); /* Darker amber on hover */
-}
-
 /* === RESPONSIVE DESIGN === */
-/* Mobile and tablet optimizations */
 @media (max-width: 768px) {
-  /* Reduce main content padding on smaller screens */
   .main-content {
-    padding: 2rem 0.5rem; /* Reduced horizontal padding */
+    padding: 2rem 1rem;
   }
 
-  /* Scale down page title for mobile */
   .page-title {
-    font-size: var(--text-3xl); /* Smaller title size */
+    font-size: 2rem;
   }
 
-  /* Adjust subtitle for mobile readability */
-  .page-subtitle {
-    font-size: var(--text-base); /* Base size for mobile */
+  .hero-container {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    min-height: 300px;
   }
 
-  /* Reduce about section padding on mobile */
-  .about-section {
-    padding: 1.5rem;
-  }
-
-  /* Reduce about section title size on mobile */
-  .about-section h2 {
-    font-size: var(--text-xl); /* Smaller heading */
-  }
-
-  /* Reduce footer padding on mobile */
-  .about-footer {
-    margin-top: 2rem; /* Reduced top margin */
-    padding: 1.5rem; /* Reduced padding */
-  }
-
-  /* Stack disclaimer and links on mobile */
-  .disclaimer {
-    margin-bottom: 1rem;
-    text-align: center;
+  .hero-text {
+    font-size: 1.1rem;
   }
 }
 
-/* Extra small mobile devices */
+/* Mobile phone breakpoint optimizations */
 @media (max-width: 480px) {
-  /* Further reduce content padding */
   .main-content {
-    padding: 1.5rem 0.25rem; /* Minimal padding for very small screens */
+    padding: 1.5rem 0.5rem;
   }
 
-  /* Further scale down title */
+  .page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+  }
+
   .page-title {
-    font-size: var(--text-2xl); /* Even smaller title */
+    font-size: 1.8rem;
+    margin: 0 0 1rem 0;
   }
 
-  /* Further reduce about section padding */
-  .about-section {
-    padding: 1.25rem;
+  .hero-container {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    min-height: auto;
   }
 
-  /* Make feature list items more compact */
-  .features-list li {
-    padding: 0.5rem 0;
-    font-size: var(--text-sm); /* Smaller text on very small screens */
+  .hero-content {
+    max-width: 100%;
   }
 
-  /* Make link smaller on very small screens */
-  .github-link {
-    padding: 0.5rem 1rem;
-    font-size: var(--text-sm);
+  .hero-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 1.25rem 0;
+  }
+
+  .hero-text:last-child {
+    margin-bottom: 0;
   }
 }

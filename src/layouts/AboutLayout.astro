@@ -1,0 +1,55 @@
+---
+// Layout for About Page
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import CustomScrollbar from '../components/CustomScrollbar.astro';
+import GeneralSEO from '../components/GeneralSEO.astro';
+
+// Import CSS files properly - about-specific styling
+import '../styles/colors.css';
+import '../styles/global.css';
+import '../styles/typography.css';
+import '../styles/layouts/about-layout.css';
+import '../styles/pages/about.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description || ''} />
+    <GeneralSEO
+      title={title}
+      description={description || 'Learn about GachaWiki - your comprehensive guide to gacha games'}
+      keywords={['about gachawiki', 'gacha wiki info', 'gaming guides', 'about us']}
+      pageType="website"
+    />
+    <slot name="head" />
+  </head>
+  <body class="home-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="home-content">
+      <Header />
+      <MobileMenu />
+
+      <main>
+        <slot />
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>
