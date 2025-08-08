@@ -246,111 +246,6 @@ const timers = game.timers[game.currentRegion];
                   <!-- Secondary Timers Row -->
                   <div class="timer-section-group secondary-timers">
                     <div class="timers-row">
-                      <!-- Raid Timer Card -->
-                      <div class="timer-card raid-card">
-                        <div class="timer-card-header">
-                          <div class="timer-card-title">Active Raids</div>
-                        </div>
-                        <div class="timer-card-content">
-                          <!-- Raid 1 -->
-                          <div class="raid-item">
-                            <div class="raid-name" id="raid1Name">Loading...</div>
-                            <div class="raid-time" id="raid1Time">--:--:--</div>
-                          </div>
-                          <!-- Raid 2 -->
-                          <div class="raid-item">
-                            <div class="raid-name" id="raid2Name">Loading...</div>
-                            <div class="raid-time" id="raid2Time">--:--:--</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Signin Events Timer Card -->
-                      <div class="timer-card signin-card">
-                        <div class="timer-card-header">
-                          <div class="timer-card-title">Signin Events</div>
-                        </div>
-                        <div class="timer-card-content">
-                          <!-- Signin Event Status -->
-                          <div class="event-status" id="signinEventStatus">No Active Signin</div>
-                          <!-- Signin Event Dates -->
-                          <div class="event-dates">
-                            <div class="event-date-item">
-                              <span class="event-date-label">Started:</span>
-                              <span class="event-date-value" id="signinEventStartDate">--</span>
-                            </div>
-                            <div class="event-date-item">
-                              <span class="event-date-label">Ending:</span>
-                              <span class="event-date-value" id="signinEventEndDate">--</span>
-                            </div>
-                          </div>
-                          <!-- Signin Event Countdown -->
-                          <div class="event-countdown">
-                            <span class="timer-card-value" id="signinEventTime">--:--:--</span>
-                            <span class="timer-card-label" id="signinEventTimeLabel">Event End</span
-                            >
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Outfit Availability Timer Card -->
-                      <div class="timer-card outfit-card">
-                        <div class="timer-card-header">
-                          <div class="timer-card-title">Outfit Availability</div>
-                        </div>
-                        <div class="timer-card-content">
-                          <!-- Outfit Status -->
-                          <div class="event-status" id="outfitStatus">No Active Outfit</div>
-                          <!-- Outfit Dates -->
-                          <div class="event-dates">
-                            <div class="event-date-item">
-                              <span class="event-date-label">Started:</span>
-                              <span class="event-date-value" id="outfitStartDate">--</span>
-                            </div>
-                            <div class="event-date-item">
-                              <span class="event-date-label">Ending:</span>
-                              <span class="event-date-value" id="outfitEndDate">--</span>
-                            </div>
-                          </div>
-                          <!-- Outfit Countdown -->
-                          <div class="event-countdown">
-                            <span class="timer-card-value" id="outfitTime">--:--:--</span>
-                            <span class="timer-card-label" id="outfitTimeLabel">Outfit End</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Special Events (2x Rewards) Timer Card -->
-                      <div class="timer-card special-event-card">
-                        <div class="timer-card-header">
-                          <div class="timer-card-title">2x Rewards</div>
-                        </div>
-                        <div class="timer-card-content">
-                          <!-- Special Event Status -->
-                          <div class="event-status" id="specialEventStatus">
-                            No Active 2x Rewards
-                          </div>
-                          <!-- Special Event Dates -->
-                          <div class="event-dates">
-                            <div class="event-date-item">
-                              <span class="event-date-label">Started:</span>
-                              <span class="event-date-value" id="specialEventStartDate">--</span>
-                            </div>
-                            <div class="event-date-item">
-                              <span class="event-date-label">Ending:</span>
-                              <span class="event-date-value" id="specialEventEndDate">--</span>
-                            </div>
-                          </div>
-                          <!-- Special Event Countdown -->
-                          <div class="event-countdown">
-                            <span class="timer-card-value" id="specialEventTime">--:--:--</span>
-                            <span class="timer-card-label" id="specialEventTimeLabel"
-                              >2x Rewards End</span
-                            >
-                          </div>
-                        </div>
-                      </div>
-
                       <!-- Launch Timer Card -->
                       <div class="timer-card launch-card">
                         <div class="timer-card-header">
@@ -374,6 +269,11 @@ const timers = game.timers[game.currentRegion];
     </div>
 
     <Footer />
+
+    <!-- Pass config data to JavaScript -->
+    <script define:vars={{ config: game }}>
+      window.silverAndBloodConfig = config;
+    </script>
 
     <!-- Silver and Blood Clock Timer Script -->
     <script src="/src/scripts/clock/silver-and-blood.js"></script>

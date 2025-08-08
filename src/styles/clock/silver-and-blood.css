@@ -73,20 +73,34 @@
 }
 
 /* === SILVER AND BLOOD THEME COLORS === */
-/* Silver and Blood specific color overrides */
+/* Silver and Blood specific color overrides - matches main layout */
 .title-only-heading {
-  color: var(--sab-clock-title) !important;
-  -webkit-text-fill-color: var(--sab-clock-title) !important;
+  font-family: var(--font-display) !important;
   font-size: var(--text-4xl) !important;
-  font-weight: 900 !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, #c0c0c0, #c26b6b) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  position: relative !important;
 }
 
-.game-name {
+.title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.game-name,
+.timer-main-label,
+.server-reset-card .timer-main-label {
   color: var(--sab-clock-red);
 }
 
 .timer-main-label {
-  color: var(--sab-clock-red);
   font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 700;
@@ -94,12 +108,16 @@
   letter-spacing: 0.05em;
 }
 
+.server-reset-card .timer-main-label {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
 .time-value {
   color: var(--sab-clock-white);
 }
 
 /* === SILVER AND BLOOD REGION SWITCHER === */
-/* Silver and Blood specific region switcher styling */
 .region-switcher-container {
   display: flex;
   justify-content: center;
@@ -108,12 +126,12 @@
 
 .region-switcher {
   display: flex;
-  background: var(--clock-card-bg);
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   padding: 4px;
   gap: 4px;
-  backdrop-filter: blur(10px);
   border: 1px solid var(--sab-clock-border);
+  backdrop-filter: blur(5px);
 }
 
 .region-button {
@@ -126,19 +144,12 @@
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
   white-space: nowrap;
-}
-
-.region-button:hover {
-  background: color-mix(in srgb, var(--sab-clock-blue) 20%, transparent);
-  color: var(--sab-clock-white);
 }
 
 .region-button.active {
   background: var(--sab-clock-red);
   color: var(--sab-clock-white);
-  box-shadow: 0 2px 4px color-mix(in srgb, var(--sab-clock-red) 30%, transparent);
 }
 
 /* === SILVER AND BLOOD REGION BADGE === */
@@ -164,8 +175,7 @@
   font-weight: 700;
 }
 
-/* === SILVER AND BLOOD TIMER CARDS === */
-/* Silver and Blood themed timer card styling */
+/* === SILVER AND BLOOD COMPONENT COLORS === */
 .secondary-timers-card .timer-description-section {
   margin-bottom: 0.5rem;
 }
@@ -188,102 +198,43 @@
   line-height: 1.4;
 }
 
-/* Server Reset Card - Main Clock */
+/* === SILVER AND BLOOD TIMER CARDS === */
 .server-reset-card {
   border: 2px solid var(--sab-clock-border);
-  background: linear-gradient(
-    135deg,
-    var(--clock-glass-bg),
-    color-mix(in srgb, var(--sab-clock-bg) 3%, transparent)
-  );
+  background: var(--clock-glass-bg);
 }
 
-/* Weekly Reset Timer Card */
 .weekly-card {
   border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(
-    135deg,
-    var(--clock-card-bg),
-    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
-  );
+  background: var(--clock-card-bg);
 }
 
 .weekly-card .timer-card-title {
   color: var(--sab-clock-title);
 }
 
-/* Maintenance Timer Card */
 .maintenance-card {
   border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(
-    135deg,
-    var(--clock-card-bg),
-    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
-  );
+  background: var(--clock-card-bg);
 }
 
 .maintenance-card .timer-card-title {
   color: var(--sab-clock-title);
 }
 
-/* Raid Timer Card */
-.raid-card {
+.launch-card {
   border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(
-    135deg,
-    var(--clock-card-bg),
-    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
-  );
+  background: var(--clock-card-bg);
+  padding: 1.5rem;
 }
 
-.raid-card .timer-card-title {
+.launch-card .timer-card-title {
   color: var(--sab-clock-title);
-}
-
-/* Signin Events Timer Card */
-.signin-card {
-  border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(
-    135deg,
-    var(--clock-card-bg),
-    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
-  );
-}
-
-.signin-card .timer-card-title {
-  color: var(--sab-clock-title);
-}
-
-/* Outfit Availability Timer Card */
-.outfit-card {
-  border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(
-    135deg,
-    var(--clock-card-bg),
-    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
-  );
-}
-
-.outfit-card .timer-card-title {
-  color: var(--sab-clock-title);
-}
-
-/* Special Events Timer Card */
-.special-event-card {
-  border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(
-    135deg,
-    var(--clock-card-bg),
-    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
-  );
-}
-
-.special-event-card .timer-card-title {
-  color: var(--sab-clock-title);
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 /* === SILVER AND BLOOD STATUS INDICATORS === */
-/* Silver and Blood specific status styling */
 .server-status {
   display: flex;
   align-items: center;
@@ -295,13 +246,10 @@
   height: 8px;
   border-radius: 50%;
   background: var(--zn-success);
-  box-shadow: 0 0 6px color-mix(in srgb, var(--zn-success) 60%, transparent);
-  animation: statusPulse 2s ease-in-out infinite;
 }
 
 .status-dot.maintenance {
   background: var(--zn-error);
-  box-shadow: 0 0 6px color-mix(in srgb, var(--zn-error) 60%, transparent);
 }
 
 .status-text {
@@ -311,114 +259,46 @@
   color: var(--sab-clock-white);
 }
 
-.status-text.maintenance {
-  color: var(--sab-clock-white);
-}
-
-@keyframes statusPulse {
-  0%,
-  100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-}
-
-/* === SILVER AND BLOOD TIMER CARD BASE === */
-/* Remove white border on left side for all timer cards */
+/* === SILVER AND BLOOD CARD STYLING === */
 .timer-card {
   border-left: none;
 }
 
-/* === SILVER AND BLOOD CARD ALIGNMENT === */
-/* Consistent alignment for all timer cards */
-.timer-card .timer-card-header {
-  text-align: center;
-}
-
-.timer-card .timer-card-title {
-  text-align: center;
-}
-
-.timer-card .timer-card-content {
-  text-align: center;
-}
-
+.timer-card .timer-card-header,
+.timer-card .timer-card-title,
+.timer-card .timer-card-content,
 .timer-card .timer-card-subtitle {
   text-align: center;
 }
 
-/* === SILVER AND BLOOD SERVER RESET TITLE === */
-/* Make the main server reset timer title bigger */
-.server-reset-card .timer-main-label {
-  color: var(--sab-clock-title);
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-/* === SILVER AND BLOOD TIMER VALUES === */
-/* Silver and Blood specific timer value styling */
-.timer-card-value {
+/* === SILVER AND BLOOD TEXT COLORS === */
+.timer-card-value,
+.maintenance-time,
+.reset-time,
+.launch-days {
   color: var(--sab-clock-white);
 }
 
-.timer-card-label {
+.timer-card-label,
+.timer-card-subtitle,
+.time-label,
+.utc-note,
+.current-utc,
+.maintenance-name,
+.reset-name,
+.reset-subtitle,
+.launch-date {
   color: var(--sab-clock-muted);
 }
 
-.timer-card-subtitle {
-  color: var(--sab-clock-muted);
-}
-
-.time-label {
-  color: var(--sab-clock-muted);
-}
-
-.time-separator {
-  color: var(--sab-clock-muted);
-  animation: clockPulse 2s ease-in-out infinite;
-}
-
-/* === SILVER AND BLOOD CLOCK ANIMATIONS === */
-/* Pulsing animation for clock separators */
-@keyframes clockPulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
-/* === SILVER AND BLOOD TOP SECTION === */
-/* UTC info and current time styling */
-.utc-note {
-  color: var(--sab-clock-muted);
-}
-
-.current-date {
-  color: var(--sab-clock-white);
-}
-
-.current-utc {
-  color: var(--sab-clock-muted);
-}
-
-/* === SILVER AND BLOOD GAME INFO === */
-/* Game status styling */
+.time-separator,
+.current-date,
 .game-status {
   color: var(--sab-clock-white);
 }
 
 /* === SILVER AND BLOOD TIMER ITEMS === */
-/* Silver and Blood specific timer item styling */
-.maintenance-item,
-.raid-item {
+.maintenance-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -437,104 +317,36 @@
 }
 
 .maintenance-item:last-child,
-.raid-item:last-child,
 .reset-item:last-child {
   border-bottom: none;
 }
 
 .maintenance-name,
-.raid-name,
-.reset-name {
+.reset-name,
+.reset-subtitle {
   font-family: var(--font-primary);
-  font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--sab-clock-muted);
+}
+
+.maintenance-name,
+.reset-name {
+  font-size: var(--text-sm);
+}
+
+.reset-subtitle {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-align: center;
 }
 
 .maintenance-time,
-.raid-time,
 .reset-time {
   font-family: var(--font-primary);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--sab-clock-white);
 }
 
-.reset-subtitle {
-  font-family: var(--font-primary);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  color: var(--sab-clock-muted);
-  text-align: center;
-}
-
-/* === SILVER AND BLOOD EVENT STYLING === */
-/* Silver and Blood specific event card styling */
-.event-status {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  color: var(--zn-success);
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-/* Red color for inactive states */
-.event-status.inactive {
-  color: var(--zn-error);
-}
-
-.event-dates {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.event-date-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.event-date-label {
-  font-family: var(--font-primary);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  color: var(--sab-clock-muted);
-  text-transform: uppercase;
-}
-
-.event-date-value {
-  font-family: var(--font-primary);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  color: var(--sab-clock-white);
-}
-
-.event-countdown {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-/* === SILVER AND BLOOD LAUNCH CARD === */
-/* Silver and Blood specific launch counter styling */
-.launch-card {
-  border-left: 4px solid var(--sab-clock-border);
-  background: linear-gradient(
-    135deg,
-    var(--clock-card-bg),
-    color-mix(in srgb, var(--sab-clock-bg) 2%, transparent)
-  );
-  padding: 1.5rem;
-}
-
-.launch-card .timer-card-title {
-  color: var(--sab-clock-title);
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
+/* === SILVER AND BLOOD LAUNCH COUNTER === */
 .launch-card-content {
   display: flex;
   flex-direction: column;
@@ -558,7 +370,6 @@
   font-family: var(--font-primary);
   font-size: 4rem;
   font-weight: 700;
-  color: var(--sab-clock-white);
   line-height: 1;
   text-align: center;
   width: 100%;
@@ -568,47 +379,124 @@
   font-family: var(--font-primary);
   font-size: var(--text-xs);
   font-weight: 600;
-  color: var(--sab-clock-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-align: center;
   margin-top: auto;
 }
 
-/* === SILVER AND BLOOD RESPONSIVE OVERRIDES === */
-/* Silver and Blood specific mobile optimizations */
+/* === SILVER AND BLOOD MOBILE OPTIMIZATION === */
 @media (max-width: 768px) {
-  /* Region Badge Mobile */
+  /* Title and spacing adjustments */
+  .title-only-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+  }
+
+  /* Region switcher mobile */
+  .region-switcher-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .region-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Timer cards mobile */
+  .secondary-timers-card .timer-main-label {
+    font-size: 1.25rem;
+  }
+
+  .server-reset-card .timer-main-label {
+    font-size: 2rem;
+  }
+
+  /* Launch counter mobile */
+  .launch-days {
+    font-size: var(--text-2xl);
+  }
+
+  .launch-card-content {
+    min-height: 120px;
+    gap: 0.75rem;
+  }
+
+  /* Region badge mobile */
   .region-badge {
     font-size: 0.65rem;
     padding: 3px 6px;
     border-radius: 3px;
   }
 
-  .launch-days {
-    font-size: var(--text-2xl);
+  /* Timer items mobile */
+  .reset-item,
+  .maintenance-item {
+    padding: 0.5rem 0;
   }
 
-  /* Region Switcher Mobile */
-  .region-button {
-    padding: 6px 12px;
-    font-size: 0.8rem;
+  .maintenance-time,
+  .reset-time {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  /* Extra small mobile adjustments */
+  .title-only-section {
+    padding: 1rem 0;
+  }
+
+  /* Region switcher extra small */
+  .region-switcher {
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .region-button {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* Timer labels smaller */
+  .secondary-timers-card .timer-main-label {
+    font-size: 1.1rem;
+  }
+
+  .server-reset-card .timer-main-label {
+    font-size: 1.75rem;
+  }
+
+  /* Launch counter extra small */
+  .launch-days {
+    font-size: var(--text-xl);
+  }
+
+  .launch-card-content {
+    min-height: 100px;
+    gap: 0.5rem;
+  }
+
+  /* Region badge extra small */
   .region-badge {
     font-size: 0.6rem;
     padding: 2px 5px;
   }
 
-  .launch-days {
-    font-size: var(--text-xl);
+  /* Smaller timer text */
+  .maintenance-time,
+  .reset-time {
+    font-size: 0.95rem;
   }
 
-  /* Region Switcher Mobile */
-  .region-button {
-    padding: 5px 10px;
-    font-size: 0.75rem;
+  .reset-subtitle {
+    font-size: 0.7rem;
+  }
+
+  /* Timer items compact */
+  .reset-item,
+  .maintenance-item {
+    padding: 0.4rem 0;
+    gap: 0.4rem;
   }
 }
