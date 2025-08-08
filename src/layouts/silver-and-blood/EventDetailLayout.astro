@@ -6,6 +6,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameSEO from '../../components/GameSEO.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
 // Import consolidated CSS file for events
 import '../../styles/games/silver-and-blood/sab-event-complete.css';
@@ -28,6 +29,7 @@ const { title, description, gameTitle, eventData } = Astro.props;
 		<slot name="head" />
 	</head>
 	<body class="sab-body">
+		<CustomScrollbar />
 		<!-- Background layers for visual depth -->
 		<div class="bg-layer bg-primary"></div>
 		<div class="bg-layer bg-accent-1"></div>

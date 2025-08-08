@@ -6,6 +6,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameSEO from '../../components/GameSEO.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
 // Import only essential CSS files
 import '../../styles/colors.css';
@@ -32,6 +33,7 @@ const { meta, intro, gameplayMechanics, chapterGuides, events } = data;
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
   </head>
   <body class="sab-body">
+    <CustomScrollbar />
     <!-- Background layers for visual depth -->
     <div class="bg-layer bg-primary"></div>
     <div class="bg-layer bg-accent-1"></div>

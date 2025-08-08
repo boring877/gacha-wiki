@@ -6,6 +6,7 @@ import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
 // Import CSS files
 import '../../styles/colors.css';
@@ -37,6 +38,7 @@ const { title, description, gameTitle } = Astro.props;
     <slot name="head" />
   </head>
   <body class="sab-body">
+    <CustomScrollbar />
     <!-- Background layers for visual depth -->
     <div class="bg-layer bg-primary"></div>
     <div class="bg-layer bg-accent-1"></div>

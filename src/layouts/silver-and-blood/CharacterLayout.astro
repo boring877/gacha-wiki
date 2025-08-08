@@ -8,6 +8,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CharacterNavigation from '../../components/silver-and-blood/CharacterNavigation.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
 // Import Silver and Blood specific styles
 import '../../styles/colors.css';
@@ -99,6 +100,7 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 		<slot name="head" />
 	</head>
 	<body class="sab-body">
+		<CustomScrollbar />
 		<!-- Background layers for visual depth similar to landing page -->
 		<div class="bg-layer bg-primary"></div>
 		<div class="bg-layer bg-accent-1"></div>
