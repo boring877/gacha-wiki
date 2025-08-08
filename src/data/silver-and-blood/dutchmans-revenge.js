@@ -67,15 +67,15 @@ export const dutchmansRevengeData = {
       url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvODB2PLto_DfllXGv-97EfpA',
     },
     {
-      name: 'Salvation I - All Stages',
+      name: 'Salvation I Chapter - All Stages',
       url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOCjVbN6exdIzhwo_xfw_2Ni',
     },
     {
-      name: 'Salvation II - All Stages',
+      name: 'Salvation II Chapter - All Stages',
       url: 'https://www.youtube.com/watch?v=vkJ0nG7AtN8',
     },
     {
-      name: 'Merchant Ship I - All Stages',
+      name: 'Merchant Ship I Chapter - All Stages',
       url: 'https://www.youtube.com/watch?v=0O0wvH9H2RE',
     },
   ],
