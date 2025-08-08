@@ -1,6 +1,9 @@
-/* Dutchman's Revenge Styles for Silver and Blood */
+/**
+ * Dutchman's Revenge Styles for Silver and Blood
+ * Clean, mobile-optimized layout for game guides and mechanics
+ */
 
-/* Layout styles moved from inline */
+/* === MAIN CONTAINER === */
 .dutchmans-revenge-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -17,7 +20,7 @@
 }
 
 .intro-section p {
-  color: #f8f9fa;
+  color: var(--dutchman-text-primary);
   font-size: 1.1rem;
   line-height: 1.7;
   margin: 0;
@@ -29,7 +32,7 @@
 }
 
 .section-title {
-  color: #f8f9fa;
+  color: var(--dutchman-text-primary);
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 2rem;
@@ -39,27 +42,27 @@
 
 .mechanic-card {
   background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(40, 40, 40, 0.9));
-  border: 2px solid #6b7280;
+  border: 2px solid var(--dutchman-border-gray);
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
 }
 
 .mechanic-card h4 {
-  color: #f8f9fa;
+  color: var(--dutchman-text-primary);
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .mechanic-card p {
-  color: #e5e7eb;
+  color: var(--dutchman-text-secondary);
   line-height: 1.7;
   margin: 0.5rem 0;
 }
 
 .mechanic-card ul {
-  color: #e5e7eb;
+  color: var(--dutchman-text-secondary);
   padding-left: 1.5rem;
   margin: 1rem 0;
 }
@@ -103,16 +106,16 @@
 }
 
 .reward-highlight p {
-  color: #f8f9fa;
+  color: var(--dutchman-text-primary);
   font-size: 1.1rem;
   line-height: 1.7;
   margin: 0;
   font-weight: 500;
 }
 
-/* Chapter Guides Styles */
+/* === VIDEO GUIDES SECTION === */
 .credit-text {
-  color: #e5e7eb;
+  color: var(--dutchman-text-secondary);
   font-size: 1.2rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -127,20 +130,21 @@
 
 .chapter-guides {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
   gap: 1.5rem;
+  justify-content: start;
 }
 
 .chapter-guide-item {
   background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(40, 40, 40, 0.9));
-  border: 2px solid #6b7280;
+  border: 2px solid var(--dutchman-border-gray);
   border-radius: 16px;
   padding: 2rem;
   text-align: center;
 }
 
 .chapter-guide-item h4 {
-  color: #f8f9fa;
+  color: var(--dutchman-text-primary);
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -148,8 +152,8 @@
 
 .guide-link {
   display: inline-block;
-  background: linear-gradient(135deg, var(--sab-calm-red), #b91c1c);
-  color: white;
+  background: linear-gradient(135deg, var(--sab-calm-red), var(--dutchman-dark-red));
+  color: var(--text-inverse);
   padding: 0.75rem 1.5rem;
   text-decoration: none;
   border-radius: 8px;
@@ -158,15 +162,15 @@
 
 .guide-link-disabled {
   display: inline-block;
-  background: #6b7280;
-  color: #9ca3af;
+  background: var(--dutchman-border-gray);
+  color: var(--dutchman-text-muted);
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
   cursor: not-allowed;
 }
 
-/* Mobile responsive adjustments */
+/* === MOBILE OPTIMIZATION === */
 @media (max-width: 768px) {
   .dutchmans-revenge-container {
     padding: 0 0.75rem;

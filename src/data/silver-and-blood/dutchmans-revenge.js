@@ -3,13 +3,13 @@ export const dutchmansRevengeData = {
   meta: {
     title: "Dutchman's Revenge Guide - Silver and Blood Infiltration Mode | Future Artifacts",
     description:
-      "Master Dutchman's Revenge infiltration mode in Silver and Blood. Complete walkthrough of Future Artifacts system, Dalcarlo's missions, and Tarot character strategies.",
+      "Master Dutchman's Revenge infiltration mode in Silver and Blood. Complete walkthrough with video guides, Whispers of Yesterday event, Future Artifacts system, and Tarot character strategies.",
     gameTitle: "Dutchman's Revenge",
     keywords:
-      "Dutchman's Revenge, Silver and Blood, Future Artifacts, infiltration guide, Dalcarlo, Tarot characters, puzzle mode, enhancement materials",
-    ogTitle: "Dutchman's Revenge - Silver and Blood Infiltration Guide",
+      "Dutchman's Revenge, Silver and Blood, Future Artifacts, infiltration guide, Dalcarlo, Tarot characters, puzzle mode, enhancement materials, Whispers of Yesterday, Timeless Aiona Puzzle Event, P1-1 Crestfallen, Merchant Ship, Salvation, video guides, Neevee walkthrough",
+    ogTitle: "Dutchman's Revenge - Silver and Blood Complete Guide with Video Walkthroughs",
     ogDescription:
-      "Complete guide to Dutchman's Revenge mode featuring Future Artifacts, infiltration mechanics, and strategic gameplay in Silver and Blood.",
+      "Complete guide to Dutchman's Revenge featuring video walkthroughs, Whispers of Yesterday event, Future Artifacts, infiltration mechanics, and strategic gameplay in Silver and Blood.",
   },
 
   intro: {
@@ -74,7 +74,24 @@ export const dutchmansRevengeData = {
       name: 'Salvation II - All Stages',
       url: 'https://www.youtube.com/watch?v=vkJ0nG7AtN8',
     },
+    {
+      name: 'Merchant Ship I - All Stages',
+      url: 'https://www.youtube.com/watch?v=0O0wvH9H2RE',
+    },
   ],
+
+  events: {
+    whispersOfYesterday: {
+      title: 'Timeless Aiona Puzzle Event',
+      subtitle: 'Whispers of Yesterday',
+      guides: [
+        {
+          name: 'P1-1 Crestfallen',
+          url: 'https://www.youtube.com/watch?v=jlMp2uy-Ig8',
+        },
+      ],
+    },
+  },
 };
 
 export default dutchmansRevengeData;

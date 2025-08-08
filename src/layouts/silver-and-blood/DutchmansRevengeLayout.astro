@@ -23,7 +23,7 @@ export interface Props {
 }
 
 const { title, description, gameTitle, data } = Astro.props;
-const { meta, intro, gameplayMechanics, chapterGuides } = data;
+const { meta, intro, gameplayMechanics, chapterGuides, events } = data;
 ---
 
 <html lang="en">
@@ -89,6 +89,7 @@ const { meta, intro, gameplayMechanics, chapterGuides } = data;
                 chapterGuides && chapterGuides.length > 0 && (
                   <div class="section">
                     <h2 class="section-title">Video Guides</h2>
+                    <p class="credit-text">Dutchman's Revenge - Game Story</p>
                     <p class="credit-text">
                       Credit to{' '}
                       <a
@@ -102,11 +103,82 @@ const { meta, intro, gameplayMechanics, chapterGuides } = data;
                     </p>
                     <div class="chapter-guides">
                       {chapterGuides.map(guide => {
-                        const isValidYouTubeUrl =
-                          guide.url &&
-                          (guide.url.startsWith('https://www.youtube.com/') ||
-                            guide.url.startsWith('https://youtu.be/') ||
-                            guide.url.startsWith('https://m.youtube.com/'));
+                        // Enhanced URL validation for security
+                        const isValidYouTubeUrl = (() => {
+                          if (!guide.url || typeof guide.url !== 'string') return false;
+
+                          try {
+                            const url = new URL(guide.url);
+                            const allowedDomains = [
+                              'www.youtube.com',
+                              'youtube.com',
+                              'youtu.be',
+                              'm.youtube.com',
+                            ];
+
+                            return (
+                              url.protocol === 'https:' &&
+                              allowedDomains.includes(url.hostname) &&
+                              guide.url.length < 500
+                            ); // Prevent extremely long URLs
+                          } catch {
+                            return false;
+                          }
+                        })();
+
+                        return (
+                          <div class="chapter-guide-item">
+                            <h4>{guide.name}</h4>
+                            {isValidYouTubeUrl ? (
+                              <a
+                                href={guide.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="guide-link"
+                              >
+                                Watch on YouTube
+                              </a>
+                            ) : (
+                              <span class="guide-link-disabled">Invalid YouTube URL</span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                events && events.whispersOfYesterday && (
+                  <div class="section">
+                    <h2 class="section-title">{events.whispersOfYesterday.title}</h2>
+                    <p class="credit-text">{events.whispersOfYesterday.subtitle}</p>
+
+                    <div class="chapter-guides">
+                      {events.whispersOfYesterday.guides.map(guide => {
+                        // Enhanced URL validation for security - same as chapter guides
+                        const isValidYouTubeUrl = (() => {
+                          if (!guide.url || typeof guide.url !== 'string') return false;
+
+                          try {
+                            const url = new URL(guide.url);
+                            const allowedDomains = [
+                              'www.youtube.com',
+                              'youtube.com',
+                              'youtu.be',
+                              'm.youtube.com',
+                            ];
+
+                            return (
+                              url.protocol === 'https:' &&
+                              allowedDomains.includes(url.hostname) &&
+                              guide.url.length < 500
+                            ); // Prevent extremely long URLs
+                          } catch {
+                            return false;
+                          }
+                        })();
 
                         return (
                           <div class="chapter-guide-item">
