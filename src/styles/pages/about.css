@@ -1,295 +1,149 @@
 /**
  * ==========================================
- * ABOUT PAGE - VERSION HISTORY & CHANGELOG
+ * ABOUT PAGE - SITE INFORMATION
  * ==========================================
  * 
- * Dedicated styles for the about page which displays version history,
- * changelog entries, and build information in a timeline format.
+ * Dedicated styles for the about page displaying site information,
+ * features, and community details.
  * 
  * Features:
- * - Timeline-style changelog with visual indicators
- * - Version badges with color-coded release types
- * - Build information dashboard with statistics
+ * - Clean section-based layout
  * - Responsive design with mobile optimizations
- * - Change type categorization with emojis
+ * - Professional card design
+ * - Optimized typography for readability
  * 
- * Design: Modern changelog interface with timeline visualization
- * Performance: Optimized transitions and reduced motion support
+ * Design: Modern card-based interface
+ * Performance: Minimal CSS with efficient selectors
  * Browser Support: Modern browsers with CSS Grid and Flexbox
  */
 
 /* === MAIN CONTENT LAYOUT === */
 /* Primary container for the about page */
 .main-content {
-  max-width: 1000px; /* Optimal reading width for changelog */
+  max-width: 1000px; /* Optimal reading width */
   margin: 0 auto; /* Center horizontally */
   padding: 4rem 1rem 2rem 1rem; /* Generous padding with extra top space */
   min-height: 100vh; /* Full viewport height minimum */
 }
 
 /* === BUILD INFO HEADER === */
-/* Top section showing current version and statistics */
+/* Header section with site title and description */
 .build-info {
-  text-align: center; /* Center all header content */
+  text-align: center; /* Center align header content */
   margin-bottom: 4rem; /* Large space below header */
-  padding: 2rem; /* Comfortable internal spacing */
+  padding: 2rem; /* Internal spacing */
   background: var(--zn-card-bg); /* Dark card background */
   border: 2px solid var(--text-secondary); /* Muted border */
   border-radius: 16px; /* Rounded corners */
-  /* Entrance animation removed */
 }
 
-/* Main page title with standardized styling */
+/* Main page title styling */
 .page-title {
-  font-family: 'Space Grotesk', sans-serif; /* Display font for prominence */
-  font-size: var(--text-4xl); /* Standardized responsive typography */
-  font-weight: 900; /* Maximum weight for prominence */
-  color: var(--amber-glow); /* Amber color for consistency */
+  font-size: 3rem; /* Large, prominent title */
+  font-weight: 800; /* Extra bold weight */
+  margin: 0 0 1rem 0; /* Bottom margin only */
+  color: var(--text-primary); /* Primary text color */
+  letter-spacing: -0.02em; /* Slight letter tightening */
+}
+
+/* Subtitle beneath main title */
+.page-subtitle {
+  font-size: 1.3rem; /* Larger than body text */
+  color: var(--text-secondary); /* Secondary text color */
   margin: 0 0 2rem 0; /* Bottom margin for spacing */
-  text-align: center; /* Center alignment */
-  line-height: 1.1; /* Tight line height for display text */
+  font-weight: 300; /* Light weight for contrast */
+  letter-spacing: 0.01em; /* Slight letter spacing */
 }
 
-/* Build statistics grid layout */
+/* Build statistics container */
 .build-stats {
-  display: grid; /* CSS Grid for flexible layout */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
-  gap: 1.5rem; /* Space between stat items */
-  margin-top: 2rem; /* Space above stats grid */
+  display: flex; /* Horizontal layout */
+  justify-content: center; /* Center align stats */
+  gap: 3rem; /* Space between stat items */
+  margin-top: 1.5rem; /* Space above stats */
 }
 
-/* Individual statistic item container */
+/* Individual stat item styling */
 .stat-item {
-  background: var(--zn-bg-primary); /* Darker background for contrast */
-  padding: 1rem; /* Comfortable internal spacing */
-  border-radius: 12px; /* Rounded corners */
-  border: 1px solid var(--neutral-700); /* Subtle border definition */
+  text-align: center; /* Center align each stat */
 }
 
-/* Statistic label styling */
-.stat-label {
-  display: block; /* Block display for stacking */
-  font-size: 0.9rem; /* Smaller size for labels */
-  color: var(--neutral-400); /* Muted color for secondary text */
-  margin-bottom: 0.5rem; /* Space below label */
-  text-transform: uppercase; /* Uppercase for emphasis */
-  letter-spacing: 0.05em; /* Wide tracking for readability */
-}
-
-/* Statistic value styling */
+/* Stat value number styling */
 .stat-value {
+  font-size: 2rem; /* Large number display */
+  font-weight: 700; /* Bold weight */
+  color: var(--text-primary); /* Primary color for emphasis */
+  margin-bottom: 0.25rem; /* Small space below number */
   display: block; /* Block display for stacking */
-  font-size: 1.5rem; /* Large size for prominence */
-  font-weight: 700; /* Bold weight for emphasis */
-  color: var(--text-inverse); /* White text for contrast */
 }
 
-/* === CHANGELOG TIMELINE === */
-/* Main timeline container with visual connecting line */
-.changelog-timeline {
-  position: relative; /* Positioning context for pseudo-element */
-  margin: 2rem 0; /* Vertical margin for spacing */
-}
-
-/* Timeline connecting line - visual spine of the changelog */
-.changelog-timeline::before {
-  content: ''; /* Empty pseudo-element */
-  position: absolute; /* Absolute positioning for overlay */
-  left: 1rem; /* Positioned from left edge */
-  top: 0; /* Start at top */
-  bottom: 0; /* Extend to bottom */
-  width: 2px; /* Thin line width */
-  background: var(--neutral-700); /* Muted line color */
-}
-
-/* === VERSION ENTRIES === */
-/* Individual version/release entry container */
-.version-entry {
-  position: relative; /* Positioning context for timeline dot */
-  margin-bottom: 3rem; /* Large space between entries */
-  margin-left: 3rem; /* Space for timeline line and dot */
-  background: var(--zn-card-bg); /* Dark card background */
-  border: 2px solid var(--text-secondary); /* Muted border */
-  border-radius: 16px; /* Rounded corners */
-  padding: 2rem; /* Generous internal spacing */
-}
-
-/* Timeline dot for each version entry */
-.version-entry::before {
-  content: ''; /* Empty pseudo-element */
-  position: absolute; /* Absolute positioning */
-  left: -3.5rem; /* Position on timeline line */
-  top: 1.5rem; /* Vertical position */
-  width: 12px; /* Dot size */
-  height: 12px; /* Dot size */
-  background: var(--amber-glow); /* Amber dot color */
-  border-radius: 50%; /* Circular shape */
-  border: 2px solid var(--zn-card-bg); /* Border to separate from background */
-}
-
-/* === VERSION HEADER === */
-/* Header section of each version entry */
-.version-header {
-  margin-bottom: 2rem; /* Space below header */
-}
-
-/* Version information layout */
-.version-info {
-  display: flex; /* Flexbox for horizontal layout */
-  align-items: center; /* Vertically center content */
-  justify-content: space-between; /* Space between version and date */
-  margin-bottom: 1rem; /* Space below version info */
-  flex-wrap: wrap; /* Wrap on smaller screens */
-  gap: 1rem; /* Space between wrapped items */
-}
-
-/* Version number with badge layout */
-.version-number {
-  font-family: 'Space Grotesk', sans-serif; /* Display font for prominence */
-  font-size: 1.5rem; /* Large size for version numbers */
-  font-weight: 700; /* Bold weight for emphasis */
-  color: var(--text-inverse); /* White text for contrast */
-  margin: 0; /* No margin */
-  display: flex; /* Flexbox for badge layout */
-  align-items: center; /* Vertically center number and badge */
-  gap: 0.75rem; /* Space between number and badge */
-}
-
-/* === VERSION BADGES === */
-/* Base version badge styling */
-.version-badge {
-  font-size: 0.75rem; /* Small text for badges */
-  padding: 0.25rem 0.75rem; /* Comfortable pill padding */
-  border-radius: 20px; /* Pill shape */
-  font-weight: 600; /* Semibold for emphasis */
-  text-transform: uppercase; /* Uppercase for consistency */
-  letter-spacing: 0.05em; /* Wide tracking for readability */
-}
-
-/* Major version badge - red for breaking changes */
-.version-badge-major {
-  background: var(--crimson-red); /* Red background for major releases */
-  color: white; /* White text for contrast */
-}
-
-/* Minor version badge - amber for new features */
-.version-badge-minor {
-  background: var(--amber-glow); /* Amber background for minor releases */
-  color: var(--text-primary); /* Dark text for contrast */
-}
-
-/* Patch version badge - teal for bug fixes */
-.version-badge-patch {
-  background: var(--teal-crystal); /* Teal background for patches */
-  color: white; /* White text for contrast */
-}
-
-/* Hotfix version badge - pink for critical fixes */
-.version-badge-hotfix {
-  background: var(--rose-quartz); /* Pink background for hotfixes */
-  color: white; /* White text for contrast */
-}
-
-/* Version date styling */
-.version-date {
-  font-size: 0.9rem; /* Smaller size for dates */
-  color: var(--neutral-400); /* Muted color for secondary information */
-  font-style: italic; /* Italic for distinction */
-}
-
-/* Version title styling */
-.version-title {
-  font-family: 'Space Grotesk', sans-serif; /* Display font for consistency */
-  font-size: 1.25rem; /* Medium-large size for titles */
-  font-weight: 600; /* Semibold for hierarchy */
-  color: var(--text-inverse); /* White text for contrast */
-  margin: 0 0 0.5rem 0; /* Bottom margin only */
-}
-
-/* Version description styling */
-.version-description {
-  color: var(--neutral-300); /* Light gray for descriptions */
-  font-size: 1rem; /* Standard body text size */
-  line-height: 1.5; /* Comfortable line height for reading */
-  margin: 0; /* No margin */
-}
-
-/* === CHANGES LIST === */
-/* Container for all change items in a version */
-.changes-list {
-  margin-top: 1.5rem; /* Space above changes list */
-}
-
-/* Individual change item container */
-.change-item {
-  display: flex; /* Flexbox for emoji and content layout */
-  align-items: flex-start; /* Align to top for multi-line content */
-  gap: 1rem; /* Space between emoji and content */
-  margin-bottom: 1rem; /* Space between change items */
-  padding: 1rem; /* Internal spacing */
-  background: var(--zn-bg-primary); /* Darker background for contrast */
-  border-radius: 12px; /* Rounded corners */
-  border: 1px solid var(--neutral-700); /* Subtle border definition */
-}
-
-/* Change type emoji styling */
-.change-emoji {
-  font-size: 1.2rem; /* Larger emoji size */
-  flex-shrink: 0; /* Don't shrink emoji */
-  margin-top: 0.1rem; /* Slight adjustment for alignment */
-}
-
-/* Change content container */
-.change-content {
-  flex: 1; /* Take remaining space */
-}
-
-/* Change type badge styling */
-.change-type {
-  display: inline-block; /* Inline block for badge layout */
-  font-size: 0.75rem; /* Small text for badges */
-  padding: 0.2rem 0.6rem; /* Compact pill padding */
-  background: var(--neutral-700); /* Neutral background */
-  color: var(--text-inverse); /* White text for contrast */
-  border-radius: 12px; /* Rounded badge shape */
-  text-transform: uppercase; /* Uppercase for consistency */
-  font-weight: 600; /* Semibold for emphasis */
-  letter-spacing: 0.05em; /* Wide tracking for readability */
-  margin-right: 0.5rem; /* Space to the right */
-}
-
-/* Change category styling */
-.change-category {
-  font-size: 0.8rem; /* Smaller size for categories */
-  color: var(--amber-glow); /* Amber color for emphasis */
-  font-weight: 600; /* Semibold for prominence */
-  text-transform: uppercase; /* Uppercase for consistency */
-  letter-spacing: 0.05em; /* Wide tracking for readability */
-}
-
-/* Change description styling */
-.change-description {
-  margin: 0.5rem 0 0 0; /* Top margin only */
-  color: var(--neutral-300); /* Light gray for descriptions */
+/* Stat label text styling */
+.stat-label {
   font-size: 0.95rem; /* Slightly smaller than body text */
-  line-height: 1.4; /* Comfortable line height for reading */
+  color: var(--text-secondary); /* Secondary text color */
+  font-weight: 500; /* Medium weight */
+  text-transform: uppercase; /* Uppercase for consistency */
+  letter-spacing: 0.05em; /* Letter spacing for readability */
 }
 
-/* === VERSION MORE INDICATOR === */
-.version-more {
-  text-align: center;
-  margin-top: 2rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* === ABOUT CONTENT SECTIONS === */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
 }
 
-.version-more p {
+.about-section {
+  background: var(--zn-card-bg);
+  border: 2px solid var(--text-secondary);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.about-section:last-child {
+  margin-bottom: 0;
+}
+
+.about-section h2 {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  margin: 0 0 1.5rem 0;
+  font-weight: 700;
+}
+
+.about-section p {
   color: var(--text-secondary);
-  font-style: italic;
+  line-height: 1.7;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+}
+
+.about-section p:last-child {
+  margin-bottom: 0;
+}
+
+.about-section strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
   margin: 0;
-  font-size: 0.9rem;
+}
+
+.features-list li {
+  color: var(--text-secondary);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.features-list li:last-child {
+  border-bottom: none;
 }
 
 /* === FOOTER SECTION === */
@@ -304,114 +158,88 @@
 
 /* Disclaimer box styling */
 .disclaimer {
-  margin-bottom: 2rem; /* Space below disclaimer */
-  padding: 1.5rem; /* Internal spacing */
-  background: var(--zn-bg-primary); /* Darker background for contrast */
-  border-left: 4px solid var(--amber-glow); /* Amber accent border */
-  border-radius: 12px; /* Rounded corners */
-}
-
-/* Disclaimer text styling */
-.disclaimer strong {
-  color: var(--text-inverse); /* White text for emphasis */
-  font-size: 1.1rem; /* Slightly larger for strong text */
-}
-
-.disclaimer span {
-  color: var(--neutral-300); /* Light gray for body text */
+  color: var(--text-secondary); /* Secondary text color */
   font-size: 1rem; /* Standard body text size */
+  line-height: 1.6; /* Comfortable line height */
+  margin: 0; /* Remove default margins */
 }
 
-/* Links container */
-.links {
-  text-align: center; /* Center links */
-}
-
-/* GitHub link button styling */
-.github-link {
-  display: inline-flex; /* Inline flex for icon and text */
-  align-items: center; /* Vertically center content */
-  gap: 0.5rem; /* Space between icon and text */
-  padding: 1rem 2rem; /* Comfortable button padding */
-  background: var(--amber-glow); /* Amber background for prominence */
-  color: var(--text-primary); /* Dark text for contrast */
-  text-decoration: none; /* Remove link underline */
-  border-radius: 12px; /* Rounded button shape */
-  font-weight: 600; /* Semibold for emphasis */
-  font-size: 1rem; /* Standard button text size */
-}
-
-/* === ANIMATIONS === */
-/* Fade in from bottom animation for entrance effects */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0; /* Start invisible */
-    transform: translateY(30px); /* Start below final position */
-  }
-  100% {
-    opacity: 1; /* End fully visible */
-    transform: translateY(0); /* End at natural position */
-  }
+/* Emphasis within disclaimer */
+.disclaimer strong {
+  color: var(--text-primary); /* Primary color for emphasis */
+  font-weight: 600; /* Semi-bold weight */
 }
 
 /* === RESPONSIVE DESIGN === */
-/* Mobile tablet breakpoint optimizations */
+/* Mobile and tablet optimizations */
 @media (max-width: 768px) {
+  /* Reduce main content padding on smaller screens */
   .main-content {
-    padding: 2rem 1rem; /* Reduced padding for mobile */
+    padding: 2rem 0.5rem; /* Reduced horizontal padding */
   }
 
+  /* Scale down page title for mobile */
+  .page-title {
+    font-size: 2rem; /* Smaller title size */
+  }
+
+  /* Adjust subtitle for mobile readability */
+  .page-subtitle {
+    font-size: 1.1rem; /* Smaller subtitle */
+  }
+
+  /* Stack build stats vertically on mobile */
   .build-stats {
-    grid-template-columns: 1fr; /* Single column on mobile */
-    gap: 1rem; /* Reduced gap for mobile */
+    flex-direction: column; /* Vertical layout */
+    gap: 1.5rem; /* Reduced gap between items */
   }
 
-  .changelog-timeline::before {
-    left: 0.5rem; /* Adjust timeline position for mobile */
+  /* Reduce stat value size on mobile */
+  .stat-value {
+    font-size: 1.5rem; /* Smaller stat numbers */
   }
 
-  .version-entry {
-    margin-left: 2rem; /* Reduced margin for mobile */
+  /* Reduce about section padding on mobile */
+  .about-section {
+    padding: 1.5rem;
   }
 
-  .version-entry::before {
-    left: -2.5rem; /* Adjust dot position for mobile */
+  /* Reduce about section title size on mobile */
+  .about-section h2 {
+    font-size: 1.5rem;
   }
 
-  .version-info {
-    flex-direction: column; /* Stack version info vertically */
-    align-items: flex-start; /* Align to start */
-  }
-
-  .change-item {
-    flex-direction: column; /* Stack change items vertically */
-    gap: 0.5rem; /* Reduced gap for mobile */
-  }
-
-  .change-emoji {
-    align-self: flex-start; /* Align emoji to start */
-  }
-}
-
-/* === ACCESSIBILITY FEATURES === */
-/* Performance optimizations for users with motion sensitivity */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important; /* Near-instant animations */
-    animation-iteration-count: 1 !important; /* Run animations only once */
-    transition-duration: 0.01ms !important; /* Near-instant transitions */
-  }
-}
-
-/* High contrast mode support for better accessibility */
-@media (prefers-contrast: high) {
-  .version-entry,
-  .build-info,
+  /* Reduce footer padding on mobile */
   .about-footer {
-    border-width: 3px; /* Thicker borders for better definition */
+    margin-top: 2rem; /* Reduced top margin */
+    padding: 1.5rem; /* Reduced padding */
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  /* Further reduce content padding */
+  .main-content {
+    padding: 1.5rem 0.25rem; /* Minimal padding for very small screens */
   }
 
-  .disclaimer {
-    border-left-width: 6px; /* Thicker accent border */
+  /* Further scale down title */
+  .page-title {
+    font-size: 1.8rem; /* Even smaller title */
+  }
+
+  /* Adjust subtitle for very small screens */
+  .page-subtitle {
+    font-size: 1rem; /* Standard body text size */
+  }
+
+  /* Further reduce about section padding */
+  .about-section {
+    padding: 1.25rem;
+  }
+
+  /* Make feature list items more compact */
+  .features-list li {
+    padding: 0.5rem 0;
   }
 }

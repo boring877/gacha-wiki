@@ -1,50 +1,14 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
 import { SITE_TITLE } from '../consts';
-import { changelog, getBuildInfo } from '../data/changelog.js';
 
 // Import dedicated CSS for about page
 import '../styles/pages/about.css';
-
-// Get build and version information
-const buildInfo = getBuildInfo();
-
-// Format dates for display
-const formatDate = dateString => {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-};
-
-// Get change type emoji
-const getChangeTypeEmoji = type => {
-  const emojis = {
-    added: '✨',
-    changed: '🔄',
-    fixed: '🐛',
-    removed: '🗑️',
-    security: '🔒',
-  };
-  return emojis[type] || '📝';
-};
-
-// Get version type badge color
-const getVersionTypeBadge = type => {
-  const badges = {
-    major: 'version-badge-major',
-    minor: 'version-badge-minor',
-    patch: 'version-badge-patch',
-    hotfix: 'version-badge-hotfix',
-  };
-  return badges[type] || 'version-badge-minor';
-};
 ---
 
 <HomeLayout
-  title={`${SITE_TITLE} - Version History`}
-  description="Version history, changelog, and build information for GachaWiki"
+  title={`${SITE_TITLE} - About`}
+  description="Learn about GachaWiki - your comprehensive guide to gacha games"
 >
   <!-- Main Content Area -->
   <main class="main-content">
@@ -67,49 +31,39 @@ const getVersionTypeBadge = type => {
       </div>
     </header>
 
-    <!-- Changelog Timeline -->
-    <section class="changelog-timeline">
-      {
-        changelog.slice(0, 10).map((version, index) => (
-          <article class="version-entry">
-            <div class="version-header">
-              <div class="version-info">
-                <h2 class="version-number">
-                  v{version.version}
-                  <span class={`version-badge ${getVersionTypeBadge(version.type)}`}>
-                    {version.type}
-                  </span>
-                </h2>
-                <time class="version-date">{formatDate(version.date)}</time>
-              </div>
-              <h3 class="version-title">{version.title}</h3>
-              <p class="version-description">{version.description}</p>
-            </div>
+    <!-- About Content -->
+    <section class="about-content">
+      <div class="about-section">
+        <h2>About GachaWiki</h2>
+        <p>
+          GachaWiki is your comprehensive guide to gacha games, providing in-depth coverage,
+          character guides, tier lists, and strategic resources for popular mobile RPGs.
+        </p>
+        <p>
+          We cover multiple games including <strong>Zone Nova</strong> and <strong
+            >Silver & Blood</strong
+          >, offering detailed character databases, gameplay mechanics, and optimization guides.
+        </p>
+      </div>
 
-            <div class="changes-list">
-              {version.changes.map(change => (
-                <div class="change-item">
-                  <span class="change-emoji">{getChangeTypeEmoji(change.type)}</span>
-                  <div class="change-content">
-                    <span class="change-type">{change.type}</span>
-                    <span class="change-category">{change.category}</span>
-                    <p class="change-description">{change.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </article>
-        ))
-      }
+      <div class="about-section">
+        <h2>What We Offer</h2>
+        <ul class="features-list">
+          <li>📊 Comprehensive character databases and tier lists</li>
+          <li>⚔️ In-depth gameplay mechanics and damage calculations</li>
+          <li>🎯 Strategic guides and team composition recommendations</li>
+          <li>⏰ Event timers and game clocks</li>
+          <li>📱 Mobile-optimized experience</li>
+        </ul>
+      </div>
 
-      <!-- Show more versions indicator -->
-      {
-        changelog.length > 10 && (
-          <div class="version-more">
-            <p>Showing latest 10 versions out of {changelog.length} total releases</p>
-          </div>
-        )
-      }
+      <div class="about-section">
+        <h2>Community Driven</h2>
+        <p>
+          This is a fan-made, open-source project built with passion for the gacha gaming community.
+          All content is based on community knowledge, testing, and shared experiences.
+        </p>
+      </div>
     </section>
 
     <!-- Footer Info -->
