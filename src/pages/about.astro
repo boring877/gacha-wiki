@@ -1,76 +1,65 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
 import { SITE_TITLE } from '../consts';
+import { aboutData, getPageMetadata } from '../data/about.js';
 
 // Import dedicated CSS for about page
 import '../styles/pages/about.css';
+
+// Get page metadata
+const pageData = getPageMetadata();
 ---
 
 <HomeLayout
   title={`${SITE_TITLE} - About`}
-  description="Learn about GachaWiki - your comprehensive guide to gacha games"
+  description={pageData.description}
 >
   <!-- Main Content Area -->
   <main class="main-content">
     <!-- About Header -->
     <header class="build-info">
-      <h1 class="page-title">About GachaWiki</h1>
-      <p class="page-subtitle">Your comprehensive guide to gacha games</p>
+      <h1 class="page-title">{pageData.title}</h1>
+      <p class="page-subtitle">{pageData.subtitle}</p>
     </header>
 
     <!-- About Content -->
     <section class="about-content">
-      <div class="about-section">
-        <h2>About GachaWiki</h2>
-        <p>
-          GachaWiki is your comprehensive guide to gacha games, providing in-depth coverage,
-          character guides, tier lists, and strategic resources for popular mobile RPGs.
-        </p>
-        <p>
-          We cover multiple games including <strong>Zone Nova</strong> and <strong
-            >Silver & Blood</strong
-          >, offering detailed character databases, gameplay mechanics, and optimization guides.
-        </p>
-      </div>
-
-      <div class="about-section">
-        <h2>What We Offer</h2>
-        <ul class="features-list">
-          <li>📊 Comprehensive character databases and tier lists</li>
-          <li>⚔️ In-depth gameplay mechanics and damage calculations</li>
-          <li>🎯 Strategic guides and team composition recommendations</li>
-          <li>⏰ Event timers and game clocks</li>
-          <li>📱 Mobile-optimized experience</li>
-        </ul>
-      </div>
-
-      <div class="about-section">
-        <h2>Community Driven</h2>
-        <p>
-          This is a fan-made, open-source project built with passion for the gacha gaming community.
-          All content is based on community knowledge, testing, and shared experiences.
-        </p>
-      </div>
+      {aboutData.sections.map(section => (
+        <div class="about-section">
+          <h2>{section.title}</h2>
+          
+          {section.type === 'list' ? (
+            <ul class="features-list">
+              {section.items.map(item => (
+                <li set:html={item}></li>
+              ))}
+            </ul>
+          ) : (
+            section.content.map(paragraph => (
+              <p set:html={paragraph}></p>
+            ))
+          )}
+        </div>
+      ))}
     </section>
 
     <!-- Footer Info -->
     <footer class="about-footer">
       <div class="disclaimer">
         <strong>Note:</strong>
-        <span
-          >This is a fan-made, open-source wiki. All content is based on community knowledge and
-          personal experience.</span
-        >
+        <span>{aboutData.disclaimer.text}</span>
       </div>
       <div class="links">
-        <a
-          href="https://github.com/boring877/gacha-wiki"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="github-link"
-        >
-          <span>📚</span> View Source Code
-        </a>
+        {aboutData.links.map(link => (
+          <a
+            href={link.href}
+            target={link.target}
+            rel={link.rel}
+            class={link.className}
+          >
+            <span>{link.icon}</span> {link.text}
+          </a>
+        ))}
       </div>
     </footer>
   </main>
