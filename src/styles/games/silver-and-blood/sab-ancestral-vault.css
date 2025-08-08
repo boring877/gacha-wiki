@@ -69,12 +69,6 @@
   border-radius: 0.5rem;
   padding: 1rem;
   text-align: center;
-  transition: all 0.3s ease;
-}
-
-.vault-stat:hover {
-  border-color: var(--sab-calm-red);
-  transform: translateY(-2px);
 }
 
 .vault-stat-icon {
@@ -187,31 +181,8 @@
   border-radius: 12px;
   padding: 1.5rem;
   text-decoration: none;
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-}
-
-.vault-guide-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--sab-calm-red);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.vault-guide-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--sab-calm-red);
-  background: rgba(50, 50, 50, 0.9);
-}
-
-.vault-guide-card:hover::before {
-  opacity: 1;
 }
 
 .vault-guide-header {

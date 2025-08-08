@@ -33,8 +33,8 @@ const forceRender = charactersByDatabaseOrder.length > 0;
   @import '../../styles/components/silver-and-blood-character-navigation.css';
 </style>
 
-{hasNavigation || forceRender ? (
-  <div>
+{(hasNavigation || forceRender) && (
+  <>
     <!-- Desktop Navigation Panel -->
     <div 
       class="nav-zone nav-zone-single" 
@@ -76,8 +76,8 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       prevCharacter={prevCharacter}
       nextCharacter={nextCharacter}
     />
-  </div>
-) : null}
+  </>
+)}
 
 <script>
   // Import character data and utilities

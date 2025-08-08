@@ -162,7 +162,6 @@
     font-weight: 900;
     backdrop-filter: blur(4px);
     border: 1px solid rgba(194, 107, 107, 0.2);
-    animation: mobileHintFade 4s ease-in-out infinite;
   }
 
   .sab-body .mobile-swipe-left::after {
@@ -171,17 +170,5 @@
 
   .sab-body .mobile-swipe-right::after {
     content: '›';
-  }
-
-  @keyframes mobileHintFade {
-    0%,
-    70%,
-    100% {
-      opacity: 0;
-    }
-    15%,
-    55% {
-      opacity: 1;
-    }
   }
 }

@@ -28,13 +28,11 @@
   background: var(--bg-secondary);
   color: var(--text-color);
   font-size: 0.9rem;
-  transition: all 0.3s ease;
 }
 
 .search-input:focus {
   outline: none;
   border-color: var(--sab-blood-red);
-  box-shadow: 0 0 0 3px rgba(166, 77, 77, 0.1);
 }
 
 .search-suggestions {
@@ -55,11 +53,6 @@
 .suggestion-item {
   padding: 0.5rem 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.suggestion-item:hover {
-  background-color: var(--bg-hover);
 }
 
 .search-btn,
@@ -69,7 +62,6 @@
   border-radius: 0.5rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
   white-space: nowrap;
 }
 
@@ -78,20 +70,11 @@
   color: white;
 }
 
-.search-btn:hover {
-  background: var(--sab-dark-red);
-  transform: translateY(-1px);
-}
-
 .clear-search-btn {
   background: var(--bg-secondary);
   color: var(--text-color);
   border: 2px solid var(--border-color);
   display: none;
-}
-
-.clear-search-btn:hover {
-  background: var(--bg-hover);
 }
 
 .filter-container {
@@ -140,7 +123,6 @@
   border-radius: 0.75rem;
   padding: 1.5rem;
   text-decoration: none;
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -154,16 +136,6 @@
   height: 100%;
   background: var(--sab-blood-red);
   opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.event-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--sab-blood-red);
-}
-
-.event-card:hover::before {
-  opacity: 1;
 }
 
 /* Event type specific styles */
@@ -282,14 +254,7 @@
   background: var(--bg-secondary);
   color: var(--text-color);
   text-decoration: none;
-  transition: all 0.3s ease;
   cursor: pointer;
-}
-
-.pagination-btn:hover,
-.pagination-number:hover {
-  border-color: var(--sab-blood-red);
-  color: var(--sab-blood-red);
 }
 
 .pagination-number.active {
@@ -387,7 +352,6 @@
   border-radius: 12px;
   padding: 1.5rem;
   text-decoration: none;
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -401,16 +365,6 @@
   height: 100%;
   background: #c26b6b;
   opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.sab-event-card:hover {
-  transform: translateY(-2px);
-  border-color: #c26b6b;
-}
-
-.sab-event-card:hover::before {
-  opacity: 1;
 }
 
 .sab-event-header {

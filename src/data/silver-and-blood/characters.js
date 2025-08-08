@@ -135,6 +135,7 @@ import { sirene } from './characters/sirene.js';
 import { jinxedSelena } from './characters/jinxed-selena.js';
 import { lorelei } from './characters/lorelei.js';
 import { fleetingBella } from './characters/fleeting-bella.js';
+import { timelessAiona } from './characters/timeless-aiona.js';
 
 // Characters array - Add new characters here
 const baseCharacters = [
@@ -177,6 +178,7 @@ const baseCharacters = [
   jinxedSelena,
   lorelei,
   fleetingBella,
+  timelessAiona,
   // Add more characters as they are created
 ];
 

@@ -38,14 +38,6 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  border-color: var(--sab-calm-red);
 }
 
 .card h4 {
@@ -159,32 +151,8 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
   position: relative;
   overflow: hidden;
-}
-
-.pity-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--sab-calm-red), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.pity-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--sab-calm-red);
-}
-
-.pity-card:hover::before {
-  opacity: 1;
 }
 
 .pity-card h4 {
@@ -208,32 +176,8 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
   position: relative;
   overflow: hidden;
-}
-
-.faq-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--sab-calm-red), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.faq-item:hover {
-  transform: translateY(-4px);
-  border-color: var(--sab-calm-red);
-}
-
-.faq-item:hover::before {
-  opacity: 1;
 }
 
 .faq-item h4 {
@@ -264,14 +208,8 @@
   border-radius: 20px;
   padding: 2.5rem 2rem;
   text-align: center;
-  transition: transform 0.3s ease;
   position: relative;
   overflow: hidden;
-}
-
-.currency-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--sab-calm-red);
 }
 
 .currency-image {
@@ -398,11 +336,6 @@
 
 /* Touch and accessibility improvements */
 @media (hover: none) and (pointer: coarse) {
-  .faq-card:hover,
-  .currency-card:hover {
-    transform: none;
-  }
-
   .faq-card,
   .currency-card {
     transition: none;

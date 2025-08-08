@@ -345,7 +345,19 @@ const statNames = {
       sortButtons.forEach(btn => {
         btn.addEventListener('click', () => {
           const col = btn.dataset.sort;
-          sortState.asc = sortState.column === col ? !sortState.asc : true;
+          // For numerical columns, default to descending (highest first)
+          // For text columns, default to ascending
+          const numericColumns = [
+            'hp',
+            'atk',
+            'pDef',
+            'mDef',
+            'bloodPower',
+            'critRate',
+            'critDmgIncrease',
+          ];
+          const defaultAsc = !numericColumns.includes(col);
+          sortState.asc = sortState.column === col ? !sortState.asc : defaultAsc;
           sortState.column = col;
 
           sortButtons.forEach(b => b.classList.remove('active'));

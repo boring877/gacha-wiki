@@ -47,12 +47,6 @@
   max-height: none !important;
   opacity: 1 !important;
   visibility: visible !important;
-  transition: all 0.3s ease !important;
-}
-
-.sab-body .character-card:hover .character-portrait img {
-  border-color: #c26b6b !important;
-  transform: scale(1.05) !important;
 }
 
 /* ===== MAIN CONTENT SECTIONS ===== */
@@ -163,15 +157,7 @@
   font-size: 0.8rem;
   cursor: pointer;
   font-family: 'Space Grotesk', sans-serif;
-  transition: all 0.3s ease;
   white-space: nowrap;
-}
-
-.tag-btn:hover {
-  background: #3a3a3a;
-  color: #ffffff;
-  border-color: #c0c0c0;
-  transform: translateY(-2px);
 }
 
 .tag-btn:focus {
@@ -186,11 +172,6 @@
   color: #ffffff;
   border-color: #c26b6b;
   font-weight: 600;
-}
-
-.tag-btn.active:hover {
-  background: #d07777;
-  border-color: #d07777;
 }
 
 /* Selected Tags Display */
@@ -240,11 +221,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: background-color 0.2s ease;
-}
-
-.remove-tag:hover {
-  background: rgba(255, 255, 255, 0.2);
 }
 
 .clear-tags-btn {
@@ -256,13 +232,6 @@
   font-size: 0.8rem;
   cursor: pointer;
   font-family: 'Space Grotesk', sans-serif;
-  transition: all 0.3s ease;
-}
-
-.clear-tags-btn:hover {
-  background: #3a3a3a;
-  color: #ffffff;
-  border-color: #c0c0c0;
 }
 
 /* ===== CHARACTER RESULTS ===== */
@@ -311,15 +280,7 @@
   border: 1px solid rgba(192, 192, 192, 0.1);
   border-radius: 12px;
   padding: 1.5rem;
-  transition: all 0.3s ease;
   overflow: hidden;
-}
-
-.character-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(194, 107, 107, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .character-portrait {
@@ -341,7 +302,6 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .rarity-ssr {
@@ -430,16 +390,9 @@
   border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.3s ease;
   display: inline-block;
   border: none;
   cursor: pointer;
-}
-
-.view-character-btn:hover {
-  background: linear-gradient(135deg, #d07777 0%, #b56060 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(194, 107, 107, 0.4);
 }
 
 /* ===== BACK BUTTON ===== */
@@ -458,15 +411,7 @@
   font-size: 0.8rem;
   cursor: pointer;
   font-family: 'Space Grotesk', sans-serif;
-  transition: all 0.3s ease;
   text-decoration: none;
-}
-
-.back-button:hover {
-  background: #3a3a3a;
-  color: #ffffff !important;
-  border-color: #c0c0c0;
-  transform: translateY(-2px);
 }
 
 /* ===== RESPONSIVE DESIGN ===== */

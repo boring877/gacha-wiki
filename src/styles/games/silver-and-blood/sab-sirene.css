@@ -7,24 +7,12 @@
   border-radius: 1rem;
   overflow: hidden;
   border: 2px solid rgba(90, 123, 167, 0.3);
-  transition: all 0.3s ease;
-}
-
-.sirene-character-section:hover {
-  border-color: rgba(90, 123, 167, 0.5);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(90, 123, 167, 0.2);
 }
 
 .sirene-character-image {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-.sirene-character-section:hover .sirene-character-image {
-  transform: scale(1.02);
 }
 
 /* Background Layer for Sirene theme */
@@ -48,12 +36,6 @@
   background: rgba(40, 40, 40, 0.8);
   border-radius: 1rem;
   border: 1px solid rgba(90, 123, 167, 0.3);
-  transition: all 0.3s ease;
-}
-
-.content-section:hover {
-  transform: translateY(-2px);
-  border-color: rgba(90, 123, 167, 0.5);
 }
 
 .section-title {
@@ -109,7 +91,6 @@
 .calculator-input:focus {
   outline: none;
   border-color: var(--sab-calm-blue);
-  box-shadow: 0 0 0 3px rgba(90, 123, 167, 0.2);
 }
 
 .calculator-select option {
@@ -188,7 +169,6 @@
 .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--sab-calm-blue), var(--sab-blue-silver));
-  transition: width 0.3s ease;
   border-radius: 1rem;
 }
 
@@ -238,12 +218,6 @@
   border-radius: 0.5rem;
   padding: 1.5rem;
   text-align: center;
-  transition: all 0.3s ease;
-}
-
-.reference-item:hover {
-  transform: translateY(-2px);
-  border-color: var(--sab-calm-blue);
 }
 
 .reference-item h3 {
@@ -273,14 +247,7 @@
   padding: 1rem 2rem;
   border: 1px solid rgba(90, 123, 167, 0.3);
   border-radius: 0.5rem;
-  transition: all 0.3s ease;
   display: inline-block;
-}
-
-.back-link:hover {
-  background: rgba(90, 123, 167, 0.1);
-  transform: translateY(-2px);
-  border-color: var(--sab-calm-blue);
 }
 
 /* Responsive Design */

@@ -44,12 +44,6 @@
   color: var(--sab-calm-red);
   text-decoration: underline;
   font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.content-section a:hover {
-  color: var(--sab-light-red);
-  text-decoration: none;
 }
 
 .content-section hr {
@@ -86,14 +80,7 @@
   border-radius: 16px;
   padding: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
   margin-bottom: 2rem;
-}
-
-.mechanics-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(192, 107, 107, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .mechanics-card h3 {
@@ -282,18 +269,12 @@
   color: rgba(255, 255, 255, 0.9);
   font-size: 1rem;
   font-family: 'Courier New', monospace;
-  transition: all 0.3s ease;
 }
 
 .input-group input:focus {
   outline: none;
   border-color: var(--sab-calm-red);
-  box-shadow: 0 0 0 2px rgba(192, 107, 107, 0.2);
   background: rgba(255, 255, 255, 0.08);
-}
-
-.input-group input:hover {
-  border-color: rgba(192, 107, 107, 0.3);
 }
 
 .result {

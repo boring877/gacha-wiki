@@ -115,16 +115,9 @@
 .community-link a {
   color: var(--sab-primary-light);
   text-decoration: none;
-  transition: var(--sab-transition);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   background: rgba(166, 77, 77, 0.1);
-}
-
-.community-link a:hover {
-  color: var(--sab-text-light);
-  background: var(--sab-primary-light);
-  transform: translateY(-1px);
 }
 
 /* Event Banner */
@@ -154,11 +147,6 @@
   display: block;
   object-fit: cover;
   max-height: 400px;
-  transition: var(--sab-transition);
-}
-
-.event-banner:hover img {
-  transform: scale(1.02);
 }
 
 /* Introduction Section */
@@ -249,30 +237,8 @@
   border-radius: var(--sab-border-radius);
   padding: 1.5rem;
   text-decoration: none;
-  transition: var(--sab-transition);
   position: relative;
   overflow: hidden;
-}
-
-.synopsis-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--sab-accent);
-}
-
-.synopsis-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--sab-bg-gradient);
-  transform: scaleX(0);
-  transition: var(--sab-transition);
-}
-
-.synopsis-card:hover::before {
-  transform: scaleX(1);
 }
 
 .synopsis-title {
@@ -386,11 +352,6 @@
   display: block;
   object-fit: cover;
   max-height: 600px;
-  transition: var(--sab-transition);
-}
-
-.guide-image:hover img {
-  transform: scale(1.01);
 }
 
 .image-description {
@@ -455,11 +416,6 @@
   margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
-  transition: var(--sab-transition);
-}
-
-.guide-section:hover {
-  transform: translateY(-2px);
 }
 
 .guide-section::before {
@@ -522,12 +478,7 @@
   height: auto;
   border-radius: 8px;
   border: 1px solid var(--sab-primary);
-  transition: var(--sab-transition);
   cursor: pointer;
-}
-
-.inline-small-image img:hover {
-  transform: scale(1.05);
 }
 
 .coming-soon {
@@ -557,14 +508,7 @@
 .source-link {
   color: var(--sab-accent);
   text-decoration: none;
-  transition: var(--sab-transition);
   border-bottom: 1px solid transparent;
-}
-
-.source-link:hover {
-  color: var(--sab-primary-light);
-  border-bottom: 1px solid var(--sab-primary-light);
-  text-decoration: none;
 }
 
 .source-label {

@@ -38,14 +38,6 @@
   border: 2px solid var(--sab-border-color);
   border-radius: 12px;
   padding: 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.mechanic-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--sab-light-blue);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .mechanic-header {
@@ -104,7 +96,6 @@
   font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--text-base);
-  transition: all 0.3s ease;
   border: 1px solid rgba(166, 77, 77, 0.2);
   position: relative;
   overflow: hidden;
@@ -124,18 +115,6 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(166, 77, 77, 0.15), transparent);
-  transition: left 0.5s ease;
-}
-
-.simple-database-link:hover {
-  color: #ffffff;
-  background: var(--sab-light-blue);
-  border-color: var(--sab-light-blue);
-  transform: translateY(-2px);
-}
-
-.simple-database-link:hover::before {
-  left: 100%;
 }
 
 /* Calculator Styles */
@@ -146,7 +125,6 @@
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .calculator-inputs {
@@ -176,14 +154,12 @@
   padding: 0.75rem 1rem;
   color: var(--sab-text-primary);
   font-size: 1rem;
-  transition: all 0.3s ease;
 }
 
 .ranking-select:focus,
 .mead-input:focus {
   outline: none;
   border-color: var(--sab-light-blue);
-  box-shadow: 0 0 0 3px rgba(90, 123, 167, 0.2);
 }
 
 .ranking-select option {
@@ -216,12 +192,6 @@
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
-  transition: all 0.3s ease;
-}
-
-.result-card:hover {
-  background: rgba(166, 77, 77, 0.15);
-  transform: translateY(-2px);
 }
 
 .result-card.complete {
@@ -274,7 +244,6 @@
 .progress-fill {
   background: linear-gradient(90deg, var(--sab-calm-blue), var(--sab-light-blue));
   height: 100%;
-  transition: width 0.5s ease;
   border-radius: 6px;
 }
 
@@ -313,18 +282,12 @@
   padding: 1rem 1.5rem;
   color: var(--sab-text-secondary);
   cursor: pointer;
-  transition: all 0.3s ease;
   font-weight: 500;
   border-right: 1px solid var(--sab-border-color);
 }
 
 .chart-tab:last-child {
   border-right: none;
-}
-
-.chart-tab:hover {
-  background: rgba(166, 77, 77, 0.1);
-  color: var(--sab-text-primary);
 }
 
 .chart-tab.active {
@@ -338,7 +301,6 @@
   border: 2px solid var(--sab-border-color);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   margin-bottom: 2rem;
 }
 
@@ -389,7 +351,6 @@
   border: 2px solid var(--sab-border-color);
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .conclusions-header {
@@ -470,7 +431,6 @@
   border: 2px solid var(--sab-border-color);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .rewards-table-container h3 {

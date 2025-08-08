@@ -39,14 +39,6 @@
   border: 2px solid var(--sab-border-color);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.boss-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--sab-light-blue);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 .boss-header {
@@ -144,20 +136,8 @@
   font-weight: 500;
   white-space: nowrap;
   text-decoration: none;
-  transition: all 0.3s ease;
   display: inline-block;
   border: 1px solid transparent;
-}
-
-.character-tag:hover {
-  background: var(--sab-light-blue);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(90, 123, 167, 0.3);
-  border-color: var(--sab-primary-color);
-}
-
-.character-tag:active {
-  transform: translateY(0);
 }
 
 /* Responsive Design */
