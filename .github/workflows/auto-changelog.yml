@@ -40,9 +40,12 @@ jobs:
       - name: Generate changelog
         run: |
           # Run changelog generation
+          echo "Running changelog generation..."
           if bun run changelog:auto; then
+            echo "✅ Changelog generation completed successfully"
             echo "changelog_updated=true" >> $GITHUB_ENV
           else
+            echo "ℹ️ No changes detected or changelog generation skipped"
             echo "changelog_updated=false" >> $GITHUB_ENV
           fi
 

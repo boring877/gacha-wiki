@@ -313,10 +313,19 @@ class ChangelogGenerator {
       // Extract the changelog array from the file
       const arrayMatch = content.match(/export const changelog = (\[[\s\S]*?\]);/);
       if (arrayMatch) {
-        // Use eval to parse the array (be careful - this assumes trusted content)
-        // In production, you might want to use a proper JS parser
-        const arrayStr = arrayMatch[1];
-        return eval(`(${arrayStr})`);
+        // Use safer JSON parsing instead of eval
+        try {
+          const arrayStr = arrayMatch[1];
+          // Convert JavaScript object notation to valid JSON
+          const jsonStr = arrayStr
+            .replace(/(\w+):/g, '"$1":') // Quote object keys
+            .replace(/'/g, '"') // Convert single quotes to double quotes
+            .replace(/,(\s*[}\]])/g, '$1'); // Remove trailing commas
+          return JSON.parse(jsonStr);
+        } catch (parseError) {
+          console.warn('Failed to parse changelog with JSON, falling back to eval');
+          return eval(`(${arrayMatch[1]})`);
+        }
       }
 
       return [];
@@ -417,7 +426,7 @@ export default changelog;
 
     if (!commits.length) {
       console.log('ℹ️  No new commits found since last version');
-      return;
+      process.exit(0); // Exit successfully
     }
 
     console.log(`📝 Found ${commits.length} new commits`);
@@ -428,7 +437,7 @@ export default changelog;
 
     if (!bumpType) {
       console.log('ℹ️  No version bump needed (maintenance commits only)');
-      return;
+      process.exit(0); // Exit successfully
     }
 
     const newVersion = this.calculateNextVersion(currentVersion, bumpType);
@@ -463,9 +472,9 @@ export default changelog;
 if (import.meta.url === `file://${process.argv[1]}`) {
   const isAutoMode = process.argv.includes('--auto');
   const isManualMode = process.argv.includes('--manual');
-  
+
   const generator = new ChangelogGenerator();
-  
+
   if (isAutoMode) {
     // Auto mode: only generate if there are significant changes
     console.log('🤖 Running in automatic mode...');
