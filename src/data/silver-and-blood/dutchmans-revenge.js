@@ -70,6 +70,10 @@ export const dutchmansRevengeData = {
       name: 'Salvation I - All Stages',
       url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvOCjVbN6exdIzhwo_xfw_2Ni',
     },
+    {
+      name: 'Salvation II - All Stages',
+      url: 'https://www.youtube.com/watch?v=vkJ0nG7AtN8',
+    },
   ],
 };
 

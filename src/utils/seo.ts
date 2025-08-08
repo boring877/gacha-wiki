@@ -158,7 +158,6 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'silver and blood ancestral vault',
       'silver and blood clan hunt',
       'silver and blood boss guide',
-      'silver and blood waifu gallery',
       'silver and blood character comparison',
       'vampire rpg mobile',
       'gothic gacha game',

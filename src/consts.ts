@@ -63,7 +63,6 @@ export const URLS = {
     DAMAGE_MECHANICS: '/guides/silver-and-blood/damage-mechanics',
     EVENTS: '/guides/silver-and-blood/events',
     SUMMON_FAQ: '/guides/silver-and-blood/summon-faq',
-    WAIFU_GALLERY: '/guides/silver-and-blood/waifu-gallery',
     DUTCHMANS_REVENGE: '/guides/silver-and-blood/dutchmans-revenge',
   },
 } as const;

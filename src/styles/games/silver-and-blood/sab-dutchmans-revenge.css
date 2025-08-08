@@ -4,7 +4,7 @@
 .dutchmans-revenge-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 1rem;
 }
 
 .intro-section {
@@ -43,14 +43,6 @@
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.mechanic-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--sab-calm-red);
 }
 
 .mechanic-card h4 {
@@ -131,12 +123,6 @@
   color: var(--sab-calm-red);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.credit-link:hover {
-  color: #f87171;
-  text-decoration: underline;
 }
 
 .chapter-guides {
@@ -151,12 +137,6 @@
   border-radius: 16px;
   padding: 2rem;
   text-align: center;
-  transition: all 0.3s ease;
-}
-
-.chapter-guide-item:hover {
-  border-color: var(--sab-calm-red);
-  transform: translateY(-2px);
 }
 
 .chapter-guide-item h4 {
@@ -174,12 +154,6 @@
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.guide-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
 }
 
 .guide-link-disabled {
@@ -194,41 +168,115 @@
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
+  .dutchmans-revenge-container {
+    padding: 0 0.75rem;
+  }
+
   .intro-section,
-  .mechanic-card {
+  .mechanic-card,
+  .reward-highlight {
     padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+  }
+
+  .section {
+    margin-bottom: 2.5rem;
   }
 
   .section-title {
     font-size: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .chapter-guides {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .intro-section,
-  .mechanic-card,
-  .reward-highlight {
-    padding: 1rem;
+    gap: 1rem;
   }
 
   .chapter-guide-item {
     padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .chapter-guide-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .guide-link {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dutchmans-revenge-container {
+    padding: 0 0.5rem;
+  }
+
+  .intro-section,
+  .mechanic-card,
+  .reward-highlight {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .section {
+    margin-bottom: 2rem;
   }
 
   .section-title {
     font-size: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
-}
 
-/* Performance optimizations */
-@media (prefers-reduced-motion: reduce) {
-  .mechanic-card,
-  .chapter-guide-item,
+  .intro-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .mechanic-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .mechanic-card li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0.375rem;
+  }
+
+  .reward-highlight h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .reward-highlight p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .chapter-guide-item {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .chapter-guide-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
   .guide-link {
-    transition: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+  }
+
+  .credit-text {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
   }
 }
