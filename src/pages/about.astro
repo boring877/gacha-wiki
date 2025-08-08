@@ -70,7 +70,7 @@ const getVersionTypeBadge = type => {
     <!-- Changelog Timeline -->
     <section class="changelog-timeline">
       {
-        changelog.map((version, index) => (
+        changelog.slice(0, 10).map((version, index) => (
           <article class="version-entry">
             <div class="version-header">
               <div class="version-info">
@@ -100,6 +100,15 @@ const getVersionTypeBadge = type => {
             </div>
           </article>
         ))
+      }
+
+      <!-- Show more versions indicator -->
+      {
+        changelog.length > 10 && (
+          <div class="version-more">
+            <p>Showing latest 10 versions out of {changelog.length} total releases</p>
+          </div>
+        )
       }
     </section>
 
