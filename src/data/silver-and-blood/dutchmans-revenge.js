@@ -86,8 +86,8 @@ export const dutchmansRevengeData = {
       subtitle: 'Whispers of Yesterday',
       guides: [
         {
-          name: 'P1-1 Crestfallen',
-          url: 'https://www.youtube.com/watch?v=jlMp2uy-Ig8',
+          name: 'All Aiona Puzzle Stages',
+          url: 'https://www.youtube.com/playlist?list=PL7fr7OdbJvODDgSSwg5WnwuwBVxeSUIGM',
         },
       ],
     },
