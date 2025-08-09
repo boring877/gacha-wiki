@@ -1,22 +1,35 @@
 ---
 import CharacterComparisonLayout from '../../../layouts/zone-nova/CharacterComparisonLayout.astro';
 import CharacterComparisonComponent from '../../../components/zone-nova/CharacterComparison.astro';
+import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
+
+// Breadcrumb navigation items
+const breadcrumbItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Zone Nova', href: '/guides/zone-nova/' },
+  { name: 'Characters', href: '/guides/zone-nova/characters/' },
+  { name: 'Character Comparison' },
+];
 ---
 
 <CharacterComparisonLayout
   title="Zone Nova Character Comparison - GachaWiki"
   description="Compare up to 4 Zone Nova characters side by side to analyze their stats, elements, and roles for optimal team building."
   gameTitle="Character Comparison Tool"
-  showBackButton={true}
-  backButtonHref="/guides/zone-nova/characters/"
-  backButtonText="Back to Character Database"
 >
   <div class="comparison-page-content">
+    <!-- Breadcrumb Navigation -->
+    <Breadcrumb items={breadcrumbItems} />
+
     <!-- Page Introduction -->
     <div class="comparison-page-intro">
-      <p style="font-size: 1.3rem; font-weight: 600; line-height: 1.7;">
-        Select up to 4 characters to compare their stats, elements, and abilities side by side. This
-        tool helps you analyze character strengths and weaknesses to optimize your team composition.
+      <h3>Zone Nova Character Comparison</h3>
+      <p>
+        Select up to <strong>4 characters</strong> to compare their <strong>stats</strong>, <strong
+          >elements</strong
+        >, and <strong>team skills</strong> side by side. This tool helps you analyze <strong
+          >character strengths</strong
+        > and <strong>weaknesses</strong> to optimize your <strong>team composition</strong>.
       </p>
     </div>
 

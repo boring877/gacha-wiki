@@ -1,36 +1,34 @@
 ---
 import CharacterComparisonLayout from '../../../layouts/silver-and-blood/CharacterComparisonLayout.astro';
 import CharacterComparisonComponent from '../../../components/silver-and-blood/CharacterComparison.astro';
+import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
 
 const title = 'Character Comparison Tool - Silver and Blood';
 const description =
   'Compare multiple Silver and Blood characters side by side. Analyze stats, skills, and abilities to make informed decisions about your team composition.';
+
+// Breadcrumb navigation items
+const breadcrumbItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Silver & Blood', href: '/guides/silver-and-blood/' },
+  { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
+  { name: 'Character Comparison' },
+];
 ---
 
 <CharacterComparisonLayout title={title} description={description}>
-  <div class="comparison-page-intro">
-    <p>
-      Select up to 4 characters to compare their stats, skills, and abilities side by side. This
-      tool helps you analyze character strengths and weaknesses to optimize your team composition.
-    </p>
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb items={breadcrumbItems} />
 
-    <div class="comparison-tips">
-      <h3>Tips for Effective Comparison:</h3>
-      <ul>
-        <li>
-          <strong>Team Synergy:</strong> Look for characters with complementary Moon Phase effects
-        </li>
-        <li>
-          <strong>Role Balance:</strong> Consider mixing different classes (Warrior, Assassin, Defender,
-          etc.)
-        </li>
-        <li><strong>Equipment Types:</strong> Balance Light, Medium, and Heavy equipment users</li>
-        <li><strong>Damage Types:</strong> Mix Physical (P.DMG) and Magical (M.DMG) attackers</li>
-        <li>
-          <strong>Faction Bonuses:</strong> Some team compositions benefit from faction alignment
-        </li>
-      </ul>
-    </div>
+  <div class="comparison-page-intro">
+    <h3>Silver & Blood Character Comparison</h3>
+    <p>
+      Select up to <strong>4 characters</strong> to compare their <strong>stats</strong>, <strong
+        >moon phases</strong
+      >, and <strong>abilities</strong> side by side. This tool helps you analyze <strong
+        >character strengths</strong
+      > and <strong>weaknesses</strong> to optimize your <strong>team composition</strong>.
+    </p>
   </div>
 
   <CharacterComparisonComponent />

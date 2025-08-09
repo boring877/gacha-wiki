@@ -20,19 +20,9 @@ export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  showBackButton?: boolean;
-  backButtonHref?: string;
-  backButtonText?: string;
 }
 
-const {
-  title,
-  description,
-  gameTitle = 'Zone Nova',
-  showBackButton = true,
-  backButtonHref = '/guides/zone-nova/characters/',
-  backButtonText = 'Back to Character Database',
-} = Astro.props;
+const { title, description, gameTitle = 'Zone Nova' } = Astro.props;
 ---
 
 <html lang="en">
@@ -52,8 +42,8 @@ const {
     <div class="bg-layer bg-accent-2"></div>
     <div class="bg-layer bg-accent-3"></div>
 
-    <CustomScrollbar />
     <div class="zone-nova-content">
+      <CustomScrollbar />
       <Header />
       <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />

@@ -1,81 +1,5 @@
 ---
 import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
-
-// Import all individual character data files for complete team skill data
-import { afroditeData } from '../../data/zone-nova/characters/afrodite.js';
-import { anubisData } from '../../data/zone-nova/characters/anubis.js';
-import { apolloData } from '../../data/zone-nova/characters/apollo.js';
-import { artemisData } from '../../data/zone-nova/characters/artemis.js';
-import { arthurData } from '../../data/zone-nova/characters/arthur.js';
-import { athenaData } from '../../data/zone-nova/characters/athena.js';
-import { bastetData } from '../../data/zone-nova/characters/bastet.js';
-import { chiyaData } from '../../data/zone-nova/characters/chiya.js';
-import { cleopatraData } from '../../data/zone-nova/characters/cleopatra.js';
-import { gaiaData } from '../../data/zone-nova/characters/gaia.js';
-import { greedMammonData } from '../../data/zone-nova/characters/greed-mammon.js';
-import { guinevereData } from '../../data/zone-nova/characters/guinevere.js';
-import { heraData } from '../../data/zone-nova/characters/hera.js';
-import { horusData } from '../../data/zone-nova/characters/horus.js';
-import { jeanneDArcData } from '../../data/zone-nova/characters/jeanne-darc.js';
-import { kelaData } from '../../data/zone-nova/characters/kela.js';
-import { lancelotData } from '../../data/zone-nova/characters/lancelot.js';
-import { leviathanData } from '../../data/zone-nova/characters/leviathan.js';
-import { lokiData } from '../../data/zone-nova/characters/loki.js';
-import { lyraData } from '../../data/zone-nova/characters/lyra.js';
-import { merlinData } from '../../data/zone-nova/characters/merlin.js';
-import { mordredData } from '../../data/zone-nova/characters/mordred.js';
-import { naiyaData } from '../../data/zone-nova/characters/naiya.js';
-import { niniData } from '../../data/zone-nova/characters/nini.js';
-import { pennyData } from '../../data/zone-nova/characters/penny.js';
-import { roseData } from '../../data/zone-nova/characters/rose.js';
-import { shannaData } from '../../data/zone-nova/characters/shanna.js';
-import { shuData } from '../../data/zone-nova/characters/shu.js';
-import { snowGirlData } from '../../data/zone-nova/characters/snow-girl.js';
-import { tefnutData } from '../../data/zone-nova/characters/tefnut.js';
-import { yuisData } from '../../data/zone-nova/characters/yuis.js';
-import { zashikiWarashiData } from '../../data/zone-nova/characters/zashiki-warashi.js';
-
-// Create a mapping of character slugs to their full data
-const CHARACTER_DATA_MAP = {
-  afrodite: afroditeData,
-  anubis: anubisData,
-  apollo: apolloData,
-  artemis: artemisData,
-  arthur: arthurData,
-  athena: athenaData,
-  bastet: bastetData,
-  chiya: chiyaData,
-  cleopatra: cleopatraData,
-  gaia: gaiaData,
-  'greed-mammon': greedMammonData,
-  guinevere: guinevereData,
-  hera: heraData,
-  horus: horusData,
-  'jeanne-darc': jeanneDArcData,
-  kela: kelaData,
-  lancelot: lancelotData,
-  leviathan: leviathanData,
-  loki: lokiData,
-  lyra: lyraData,
-  merlin: merlinData,
-  mordred: mordredData,
-  naiya: naiyaData,
-  nini: niniData,
-  penny: pennyData,
-  rose: roseData,
-  shanna: shannaData,
-  shu: shuData,
-  'snow-girl': snowGirlData,
-  tefnut: tefnutData,
-  yuis: yuisData,
-  'zashiki-warashi': zashikiWarashiData,
-};
-
-interface Props {
-  selectedCharacters?: string[];
-}
-
-const { selectedCharacters = [] } = Astro.props;
 ---
 
 <div class="character-comparison-container">
@@ -88,11 +12,11 @@ const { selectedCharacters = [] } = Astro.props;
       <div class="filter-controls">
         <select class="filter-select" id="role-filter">
           <option value="">Role</option>
-          <option value="DPS">DPS</option>
           <option value="Tank">Tank</option>
-          <option value="Healer">Healer</option>
+          <option value="DPS">DPS</option>
           <option value="Buffer">Buffer</option>
           <option value="Debuffer">Debuffer</option>
+          <option value="Healer">Healer</option>
         </select>
         <select class="filter-select" id="class-filter">
           <option value="">Class</option>
@@ -120,88 +44,85 @@ const { selectedCharacters = [] } = Astro.props;
         </select>
         <select class="filter-select" id="faction-filter">
           <option value="">Faction</option>
+          <option value="Unaffiliated">Unaffiliated</option>
           <option value="Sapphire">Sapphire</option>
           <option value="Chemic">Chemic</option>
           <option value="Avalon">Avalon</option>
           <option value="Odius">Odius</option>
-          <option value="ASA">ASA</option>
+          <option value="A.S.A">A.S.A</option>
           <option value="Pingjing City">Pingjing City</option>
           <option value="Monochrome Nation">Monochrome Nation</option>
-          <option value="Bicta Tower">Bicta Tower</option>
-          <option value="Unaffiliated">Unaffiliated</option>
+          <option value="BICTA Tower">BICTA Tower</option>
         </select>
       </div>
-      <div class="sort-controls">
-        <button class="sort-btn" data-sort="hp">HP</button>
-        <button class="sort-btn" data-sort="attack">ATK</button>
-        <button class="sort-btn" data-sort="defense">DEF</button>
-        <button class="sort-btn" data-sort="critRate">CRIT</button>
+
+      <div class="controls-right">
+        <div class="sort-controls">
+          <button class="sort-btn" data-sort="hp">HP</button>
+          <button class="sort-btn" data-sort="attack">ATK</button>
+          <button class="sort-btn" data-sort="defense">DEF</button>
+        </div>
         <button class="reset-btn" id="clear-filters">Reset</button>
       </div>
     </div>
 
-    <div class="character-grid">
+    <!-- Character Grid -->
+    <div class="character-grid" id="character-grid">
       {
-        ZONE_NOVA_CHARACTERS.map(character => (
+        ZONE_NOVA_CHARACTERS.map((char: any) => (
           <button
             class="character-select-card"
-            data-character-slug={character.slug}
-            data-selected={selectedCharacters.includes(character.slug)}
+            data-character-slug={char.slug}
+            data-selected="false"
           >
             <img
-              src={character.image}
-              alt={character.name}
+              src={char.image}
+              alt={char.name}
               class="character-portrait"
               width="80"
               height="80"
+              loading="lazy"
             />
             <div class="character-info">
-              <h3>{character.name}</h3>
+              <h3>{char.name}</h3>
               <div class="character-badges">
-                <span class={`rarity-badge ${character.rarity.toLowerCase()}`}>
-                  {character.rarity}
+                <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+                <span class={`class-badge ${char.class.toLowerCase().replace(' ', '-')}`}>
+                  {char.class}
                 </span>
-                <span
-                  class={`class-badge ${character.class?.toLowerCase().replace(' ', '-') || 'unknown'}`}
-                >
-                  {character.class || 'Unknown'}
+                <span class={`element-badge ${char.element.toLowerCase()}`}>{char.element}</span>
+                <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
+                <span class={`faction-badge ${char.faction.toLowerCase().replace(' ', '-')}`}>
+                  {char.faction}
                 </span>
               </div>
+
+              {/* Character stats display from rankings */}
               <div class="character-stats">
                 <div class="stat-item">
                   <span class="stat-label">HP</span>
                   <span class="stat-value">
-                    {typeof character.stats.hp === 'string'
-                      ? character.stats.hp
-                      : character.stats.hp?.toLocaleString() || 'N/A'}
+                    {char.stats?.hp ? char.stats.hp.toLocaleString() : 'N/A'}
                   </span>
                 </div>
                 <div class="stat-item">
                   <span class="stat-label">ATK</span>
                   <span class="stat-value">
-                    {typeof character.stats.attack === 'string'
-                      ? character.stats.attack
-                      : character.stats.attack?.toLocaleString() || 'N/A'}
+                    {char.stats?.attack ? char.stats.attack.toLocaleString() : 'N/A'}
                   </span>
                 </div>
                 <div class="stat-item">
                   <span class="stat-label">DEF</span>
                   <span class="stat-value">
-                    {typeof character.stats.defense === 'string'
-                      ? character.stats.defense
-                      : character.stats.defense?.toLocaleString() || 'N/A'}
+                    {char.stats?.defense ? char.stats.defense.toLocaleString() : 'N/A'}
                   </span>
                 </div>
-                {character.stats.critRate !== undefined && (
-                  <div class="stat-item crit-rate">
-                    <span class="stat-label">CRIT</span>
-                    <span class="stat-value">
-                      {typeof character.stats.critRate === 'string'
-                        ? character.stats.critRate
-                        : `${character.stats.critRate}%`}
-                    </span>
-                  </div>
-                )}
+                <div class="stat-item crit-rate">
+                  <span class="stat-label">CRIT</span>
+                  <span class="stat-value">
+                    {char.stats?.critRate ? char.stats.critRate + '%' : 'N/A'}
+                  </span>
+                </div>
               </div>
             </div>
           </button>
@@ -210,19 +131,19 @@ const { selectedCharacters = [] } = Astro.props;
     </div>
   </div>
 
-  <!-- Comparison Table -->
+  <!-- Comparison Display -->
   <div class="comparison-container" id="comparison-table">
     <h2>Character Comparison</h2>
+
     <div class="comparison-controls">
-      <button id="clear-comparison" class="clear-btn">Clear All</button>
+      <button class="clear-btn" id="clear-comparison">Clear Comparison</button>
     </div>
 
-    <!-- Desktop Premium View -->
     <div class="comparison-table-wrapper">
+      <!-- Premium Style Character Comparison -->
       <div class="premium-comparison-container">
         <!-- Character Headers -->
         <div class="premium-character-headers">
-          <div class="premium-empty-cell"></div>
           <div class="premium-character-column" data-character="1">
             <div class="premium-character-card">
               <div class="character-portrait-container">
@@ -266,122 +187,147 @@ const { selectedCharacters = [] } = Astro.props;
           <!-- Basic Info Section -->
           <div class="premium-section">
             <div class="premium-section-header">
-              <span class="section-icon">⚔️</span>
               <h4>Basic Information</h4>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">Rarity</div>
-              <div class="stat-value-premium" data-stat="rarity-1"></div>
-              <div class="stat-value-premium" data-stat="rarity-2"></div>
-              <div class="stat-value-premium" data-stat="rarity-3"></div>
-              <div class="stat-value-premium" data-stat="rarity-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium" data-stat="rarity-1"></div>
+                <div class="stat-value-premium" data-stat="rarity-2"></div>
+                <div class="stat-value-premium" data-stat="rarity-3"></div>
+                <div class="stat-value-premium" data-stat="rarity-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">Class</div>
-              <div class="stat-value-premium" data-stat="class-1"></div>
-              <div class="stat-value-premium" data-stat="class-2"></div>
-              <div class="stat-value-premium" data-stat="class-3"></div>
-              <div class="stat-value-premium" data-stat="class-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium" data-stat="class-1"></div>
+                <div class="stat-value-premium" data-stat="class-2"></div>
+                <div class="stat-value-premium" data-stat="class-3"></div>
+                <div class="stat-value-premium" data-stat="class-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">Role</div>
-              <div class="stat-value-premium" data-stat="role-1"></div>
-              <div class="stat-value-premium" data-stat="role-2"></div>
-              <div class="stat-value-premium" data-stat="role-3"></div>
-              <div class="stat-value-premium" data-stat="role-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium" data-stat="role-1"></div>
+                <div class="stat-value-premium" data-stat="role-2"></div>
+                <div class="stat-value-premium" data-stat="role-3"></div>
+                <div class="stat-value-premium" data-stat="role-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">Faction</div>
-              <div class="stat-value-premium" data-stat="faction-1"></div>
-              <div class="stat-value-premium" data-stat="faction-2"></div>
-              <div class="stat-value-premium" data-stat="faction-3"></div>
-              <div class="stat-value-premium" data-stat="faction-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium" data-stat="faction-1"></div>
+                <div class="stat-value-premium" data-stat="faction-2"></div>
+                <div class="stat-value-premium" data-stat="faction-3"></div>
+                <div class="stat-value-premium" data-stat="faction-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">Element</div>
-              <div class="stat-value-premium" data-stat="element-1"></div>
-              <div class="stat-value-premium" data-stat="element-2"></div>
-              <div class="stat-value-premium" data-stat="element-3"></div>
-              <div class="stat-value-premium" data-stat="element-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium" data-stat="element-1"></div>
+                <div class="stat-value-premium" data-stat="element-2"></div>
+                <div class="stat-value-premium" data-stat="element-3"></div>
+                <div class="stat-value-premium" data-stat="element-4"></div>
+              </div>
             </div>
           </div>
 
           <!-- Combat Stats Section -->
           <div class="premium-section">
             <div class="premium-section-header">
-              <span class="section-icon">📊</span>
               <h4>Combat Stats</h4>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">HP</div>
-              <div class="stat-value-premium numeric" data-stat="hp-1"></div>
-              <div class="stat-value-premium numeric" data-stat="hp-2"></div>
-              <div class="stat-value-premium numeric" data-stat="hp-3"></div>
-              <div class="stat-value-premium numeric" data-stat="hp-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium numeric" data-stat="hp-1"></div>
+                <div class="stat-value-premium numeric" data-stat="hp-2"></div>
+                <div class="stat-value-premium numeric" data-stat="hp-3"></div>
+                <div class="stat-value-premium numeric" data-stat="hp-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">ATK</div>
-              <div class="stat-value-premium numeric" data-stat="attack-1"></div>
-              <div class="stat-value-premium numeric" data-stat="attack-2"></div>
-              <div class="stat-value-premium numeric" data-stat="attack-3"></div>
-              <div class="stat-value-premium numeric" data-stat="attack-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium numeric" data-stat="attack-1"></div>
+                <div class="stat-value-premium numeric" data-stat="attack-2"></div>
+                <div class="stat-value-premium numeric" data-stat="attack-3"></div>
+                <div class="stat-value-premium numeric" data-stat="attack-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">DEF</div>
-              <div class="stat-value-premium numeric" data-stat="defense-1"></div>
-              <div class="stat-value-premium numeric" data-stat="defense-2"></div>
-              <div class="stat-value-premium numeric" data-stat="defense-3"></div>
-              <div class="stat-value-premium numeric" data-stat="defense-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium numeric" data-stat="defense-1"></div>
+                <div class="stat-value-premium numeric" data-stat="defense-2"></div>
+                <div class="stat-value-premium numeric" data-stat="defense-3"></div>
+                <div class="stat-value-premium numeric" data-stat="defense-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">Energy Recovery</div>
-              <div class="stat-value-premium numeric" data-stat="energy-1"></div>
-              <div class="stat-value-premium numeric" data-stat="energy-2"></div>
-              <div class="stat-value-premium numeric" data-stat="energy-3"></div>
-              <div class="stat-value-premium numeric" data-stat="energy-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium numeric" data-stat="energy-1"></div>
+                <div class="stat-value-premium numeric" data-stat="energy-2"></div>
+                <div class="stat-value-premium numeric" data-stat="energy-3"></div>
+                <div class="stat-value-premium numeric" data-stat="energy-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">CRIT Rate</div>
-              <div class="stat-value-premium numeric" data-stat="crit-1"></div>
-              <div class="stat-value-premium numeric" data-stat="crit-2"></div>
-              <div class="stat-value-premium numeric" data-stat="crit-3"></div>
-              <div class="stat-value-premium numeric" data-stat="crit-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium numeric" data-stat="crit-1"></div>
+                <div class="stat-value-premium numeric" data-stat="crit-2"></div>
+                <div class="stat-value-premium numeric" data-stat="crit-3"></div>
+                <div class="stat-value-premium numeric" data-stat="crit-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">CRIT DMG</div>
-              <div class="stat-value-premium numeric" data-stat="critdmg-1"></div>
-              <div class="stat-value-premium numeric" data-stat="critdmg-2"></div>
-              <div class="stat-value-premium numeric" data-stat="critdmg-3"></div>
-              <div class="stat-value-premium numeric" data-stat="critdmg-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium numeric" data-stat="critdmg-1"></div>
+                <div class="stat-value-premium numeric" data-stat="critdmg-2"></div>
+                <div class="stat-value-premium numeric" data-stat="critdmg-3"></div>
+                <div class="stat-value-premium numeric" data-stat="critdmg-4"></div>
+              </div>
             </div>
           </div>
 
           <!-- Team Skill Section -->
           <div class="premium-section">
             <div class="premium-section-header">
-              <span class="section-icon">🤝</span>
               <h4>Team Skill</h4>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">Skill Name</div>
-              <div class="stat-value-premium team-skill-name" data-stat="teamskillname-1"></div>
-              <div class="stat-value-premium team-skill-name" data-stat="teamskillname-2"></div>
-              <div class="stat-value-premium team-skill-name" data-stat="teamskillname-3"></div>
-              <div class="stat-value-premium team-skill-name" data-stat="teamskillname-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium team-skill-name" data-stat="teamskillname-1"></div>
+                <div class="stat-value-premium team-skill-name" data-stat="teamskillname-2"></div>
+                <div class="stat-value-premium team-skill-name" data-stat="teamskillname-3"></div>
+                <div class="stat-value-premium team-skill-name" data-stat="teamskillname-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">Description</div>
-              <div class="stat-value-premium team-skill" data-stat="teamskill-1"></div>
-              <div class="stat-value-premium team-skill" data-stat="teamskill-2"></div>
-              <div class="stat-value-premium team-skill" data-stat="teamskill-3"></div>
-              <div class="stat-value-premium team-skill" data-stat="teamskill-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium team-skill" data-stat="teamskill-1"></div>
+                <div class="stat-value-premium team-skill" data-stat="teamskill-2"></div>
+                <div class="stat-value-premium team-skill" data-stat="teamskill-3"></div>
+                <div class="stat-value-premium team-skill" data-stat="teamskill-4"></div>
+              </div>
             </div>
             <div class="premium-stat-row">
               <div class="stat-label-premium">Requirements</div>
-              <div class="stat-value-premium team-conditions" data-stat="teamconditions-1"></div>
-              <div class="stat-value-premium team-conditions" data-stat="teamconditions-2"></div>
-              <div class="stat-value-premium team-conditions" data-stat="teamconditions-3"></div>
-              <div class="stat-value-premium team-conditions" data-stat="teamconditions-4"></div>
+              <div class="premium-stat-values">
+                <div class="stat-value-premium team-conditions" data-stat="teamconditions-1"></div>
+                <div class="stat-value-premium team-conditions" data-stat="teamconditions-2"></div>
+                <div class="stat-value-premium team-conditions" data-stat="teamconditions-3"></div>
+                <div class="stat-value-premium team-conditions" data-stat="teamconditions-4"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -396,498 +342,25 @@ const { selectedCharacters = [] } = Astro.props;
   </div>
 </div>
 
-<script define:vars={{ characterData: ZONE_NOVA_CHARACTERS, characterDataMap: CHARACTER_DATA_MAP }}>
-  // Merge summary data with detailed character data to get team skills
-  const characterDataProcessed = {
-    characters: characterData.map(char => {
-      const detailedData = characterDataMap[char.slug];
-      return {
+<!-- Set up data for external script -->
+<script define:vars={{ characterData: ZONE_NOVA_CHARACTERS }}>
+  // Set up global data for the external comparison script
+  window.zoneNovaComparisonData = {
+    characterData: {
+      characters: characterData.map(char => ({
         slug: char.slug,
         name: char.name,
         rarity: char.rarity,
         element: char.element,
         role: char.role,
-        class: char.class, // Add class field
-        faction: char.faction, // Add faction field
+        class: char.class,
+        faction: char.faction,
         image: char.image,
         stats: char.stats || {},
-        teamSkill: detailedData?.teamSkill || null,
-      };
-    }),
+      })),
+    },
   };
-
-  let selectedCharacters = [];
-  const maxCharacters = 4;
-  let filteredCharacters = [...characterDataProcessed.characters];
-  let sortState = { column: null, asc: false };
-
-  // Initialize comparison functionality
-  document.addEventListener('DOMContentLoaded', function () {
-    initializeCharacterSelection();
-    initializeComparisonControls();
-    initializeFilterControls();
-    renderCharacterGrid();
-  });
-
-  function initializeCharacterSelection() {
-    const characterCards = document.querySelectorAll('.character-select-card');
-
-    characterCards.forEach(card => {
-      card.addEventListener('click', function () {
-        const characterSlug = this.dataset.characterSlug;
-        const isSelected = this.dataset.selected === 'true';
-
-        if (isSelected) {
-          // Remove from selection
-          selectedCharacters = selectedCharacters.filter(slug => slug !== characterSlug);
-          this.dataset.selected = 'false';
-        } else {
-          // Add to selection if not at max
-          if (selectedCharacters.length < maxCharacters) {
-            selectedCharacters.push(characterSlug);
-            this.dataset.selected = 'true';
-          } else {
-            alert(`You can only compare up to ${maxCharacters} characters at once.`);
-            return;
-          }
-        }
-
-        updateComparisonTable();
-      });
-    });
-  }
-
-  function initializeComparisonControls() {
-    const clearBtn = document.getElementById('clear-comparison');
-
-    clearBtn?.addEventListener('click', clearComparison);
-  }
-
-  function initializeFilterControls() {
-    const rarityFilter = document.getElementById('rarity-filter');
-    const roleFilter = document.getElementById('role-filter');
-    const classFilter = document.getElementById('class-filter');
-    const elementFilter = document.getElementById('element-filter');
-    const factionFilter = document.getElementById('faction-filter');
-    const sortBtns = document.querySelectorAll('.sort-btn');
-    const clearFiltersBtn = document.getElementById('clear-filters');
-
-    rarityFilter?.addEventListener('change', applyFilters);
-    roleFilter?.addEventListener('change', applyFilters);
-    classFilter?.addEventListener('change', applyFilters);
-    elementFilter?.addEventListener('change', applyFilters);
-    factionFilter?.addEventListener('change', applyFilters);
-
-    sortBtns.forEach(btn => {
-      btn.addEventListener('click', function () {
-        const col = this.dataset.sort;
-        // Toggle sort direction if same column, otherwise start with ascending
-        sortState.asc = sortState.column === col ? !sortState.asc : true;
-        sortState.column = col;
-
-        // Update button states
-        sortBtns.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-
-        applyFilters();
-      });
-    });
-
-    clearFiltersBtn?.addEventListener('click', clearFilters);
-  }
-
-  function applyFilters() {
-    const rarityFilter = document.getElementById('rarity-filter').value;
-    const roleFilter = document.getElementById('role-filter').value;
-    const classFilter = document.getElementById('class-filter').value;
-    const elementFilter = document.getElementById('element-filter').value;
-    const factionFilter = document.getElementById('faction-filter').value;
-
-    // Filter characters
-    filteredCharacters = characterDataProcessed.characters.filter(character => {
-      const matchesRarity = !rarityFilter || character.rarity === rarityFilter;
-      const matchesRole = !roleFilter || character.role === roleFilter;
-      const matchesClass = !classFilter || character.class === classFilter;
-      const matchesElement = !elementFilter || character.element === elementFilter;
-      const matchesFaction = !factionFilter || character.faction === factionFilter;
-
-      return matchesRarity && matchesRole && matchesClass && matchesElement && matchesFaction;
-    });
-
-    // Sort characters if a sort is active
-    if (sortState.column) {
-      sortCharacters(sortState.column, sortState.asc);
-    }
-
-    // Re-render grid
-    renderCharacterGrid();
-  }
-
-  function sortCharacters(sortOption, ascending) {
-    filteredCharacters.sort((a, b) => {
-      const aStats = a.stats || {};
-      const bStats = b.stats || {};
-
-      let comparison = 0;
-      switch (sortOption) {
-        case 'hp':
-          comparison = (bStats.hp || 0) - (aStats.hp || 0);
-          break;
-        case 'attack':
-          comparison = (bStats.attack || 0) - (aStats.attack || 0);
-          break;
-        case 'defense':
-          comparison = (bStats.defense || 0) - (aStats.defense || 0);
-          break;
-        case 'critRate':
-          comparison = (bStats.critRate || 0) - (aStats.critRate || 0);
-          break;
-        default:
-          comparison = 0;
-      }
-
-      // Apply direction multiplier (ascending = true means highest first, false means lowest first)
-      return ascending ? comparison : -comparison;
-    });
-  }
-
-  function clearFilters() {
-    document.getElementById('rarity-filter').value = '';
-    document.getElementById('role-filter').value = '';
-    document.getElementById('class-filter').value = '';
-    document.getElementById('element-filter').value = '';
-    document.getElementById('faction-filter').value = '';
-
-    // Clear active sort button and reset sort state
-    document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
-    sortState = { column: null, asc: false };
-
-    filteredCharacters = [...characterDataProcessed.characters];
-    renderCharacterGrid();
-  }
-
-  function renderCharacterGrid() {
-    const characterGrid = document.querySelector('.character-grid');
-
-    characterGrid.innerHTML = filteredCharacters
-      .map(character => {
-        const stats = character.stats || {};
-        const critRateDisplay =
-          stats.critRate !== undefined
-            ? `
-            <div class="stat-item crit-rate">
-              <span class="stat-label">CRIT</span>
-              <span class="stat-value">${typeof stats.critRate === 'string' ? stats.critRate : `${stats.critRate}%`}</span>
-            </div>
-          `
-            : '';
-
-        return `
-      <button 
-        class="character-select-card"
-        data-character-slug="${character.slug}"
-        data-selected="${selectedCharacters.includes(character.slug)}"
-      >
-        <img 
-          src="${character.image}" 
-          alt="${character.name}"
-          class="character-portrait"
-          width="80"
-          height="80"
-        />
-        <div class="character-info">
-          <h3>${character.name}</h3>
-          <div class="character-badges">
-            <span class="rarity-badge ${character.rarity.toLowerCase()}">${character.rarity}</span>
-            <span class="class-badge ${(character.class || 'unknown').toLowerCase().replace(' ', '-')}">${character.class || 'Unknown'}</span>
-          </div>
-          <div class="character-stats">
-            <div class="stat-item">
-              <span class="stat-label">HP</span>
-              <span class="stat-value">${stats.hp !== undefined ? (typeof stats.hp === 'string' ? stats.hp : stats.hp.toLocaleString()) : 'N/A'}</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">ATK</span>
-              <span class="stat-value">${stats.attack !== undefined ? (typeof stats.attack === 'string' ? stats.attack : stats.attack.toLocaleString()) : 'N/A'}</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">DEF</span>
-              <span class="stat-value">${stats.defense !== undefined ? (typeof stats.defense === 'string' ? stats.defense : stats.defense.toLocaleString()) : 'N/A'}</span>
-            </div>
-            ${critRateDisplay}
-          </div>
-        </div>
-      </button>
-    `;
-      })
-      .join('');
-
-    // Re-initialize selection functionality
-    initializeCharacterSelection();
-  }
-
-  function updateComparisonTable() {
-    const comparisonTable = document.getElementById('comparison-table');
-
-    if (selectedCharacters.length === 0) {
-      comparisonTable.classList.remove('active');
-      return;
-    }
-
-    comparisonTable.classList.add('active');
-
-    // Clear existing data
-    clearTableCells();
-
-    // Populate table with selected characters
-    selectedCharacters.forEach((characterSlug, index) => {
-      const character = characterDataProcessed.characters.find(c => c.slug === characterSlug);
-      if (character) {
-        populateCharacterColumn(character, index + 1);
-      }
-    });
-
-    // Hide unused columns
-    for (let i = selectedCharacters.length + 1; i <= maxCharacters; i++) {
-      hideCharacterColumn(i);
-    }
-
-    // Update mobile view
-    updateMobileComparisonView();
-  }
-
-  function updateMobileComparisonView() {
-    const mobileCardsContainer = document.getElementById('character-cards-container');
-
-    if (selectedCharacters.length === 0) {
-      mobileCardsContainer.innerHTML = '';
-      return;
-    }
-
-    const mobileCards = selectedCharacters
-      .map(characterSlug => {
-        const character = characterDataProcessed.characters.find(c => c.slug === characterSlug);
-        if (!character) return '';
-
-        const stats = character.stats || {};
-
-        return `
-        <div class="character-comparison-card">
-          <div class="card-header">
-            <img src="${character.image}" alt="${character.name}" class="card-portrait">
-            <div class="card-info">
-              <h3>${character.name}</h3>
-              <div class="card-badges">
-                <span class="rarity-badge ${character.rarity.toLowerCase()}">${character.rarity}</span>
-                <span class="element-badge ${character.element.toLowerCase()}">${character.element}</span>
-                <span class="role-badge ${character.role.toLowerCase()}">${character.role}</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="card-section">
-            <h4>Base Stats</h4>
-            <div class="card-stats">
-              <div class="card-stat">
-                <span class="stat-label">HP:</span>
-                <span class="stat-value">${stats.hp !== undefined ? stats.hp.toLocaleString() : 'N/A'}</span>
-              </div>
-              <div class="card-stat">
-                <span class="stat-label">ATK:</span>
-                <span class="stat-value">${stats.attack !== undefined ? stats.attack.toLocaleString() : 'N/A'}</span>
-              </div>
-              <div class="card-stat">
-                <span class="stat-label">DEF:</span>
-                <span class="stat-value">${stats.defense !== undefined ? stats.defense.toLocaleString() : 'N/A'}</span>
-              </div>
-              <div class="card-stat">
-                <span class="stat-label">Energy Recovery:</span>
-                <span class="stat-value">${stats.energyRecovery !== undefined ? stats.energyRecovery : 'N/A'}</span>
-              </div>
-              <div class="card-stat">
-                <span class="stat-label">CRIT Rate:</span>
-                <span class="stat-value">${stats.critRate !== undefined ? stats.critRate + '%' : 'N/A'}</span>
-              </div>
-              <div class="card-stat">
-                <span class="stat-label">CRIT DMG:</span>
-                <span class="stat-value">${stats.critDmg !== undefined ? stats.critDmg + '%' : 'N/A'}</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="card-section">
-            <h4>Team Skill</h4>
-            <div class="card-team-skill">
-              <div class="team-skill-name">${character.teamSkill ? character.teamSkill.name : 'N/A'}</div>
-              <div class="team-skill-description">${character.teamSkill ? character.teamSkill.description : 'No team skill available'}</div>
-              ${
-                character.teamSkill && character.teamSkill.requirements
-                  ? `
-                <div class="team-skill-conditions">
-                  <strong>Conditions:</strong> ${character.teamSkill.requirements.faction} faction + ${character.teamSkill.requirements.element} element
-                </div>
-              `
-                  : ''
-              }
-            </div>
-          </div>
-        </div>
-      `;
-      })
-      .join('');
-
-    mobileCardsContainer.innerHTML = mobileCards;
-  }
-
-  function clearTableCells() {
-    // Clear premium design elements
-    for (let i = 1; i <= 4; i++) {
-      const column = document.querySelector(`.premium-character-column[data-character="${i}"]`);
-      if (column) {
-        column.classList.remove('active');
-        column.style.display = 'none';
-      }
-
-      // Clear all stat values for this column
-      document.querySelectorAll(`[data-stat$="-${i}"]`).forEach(el => {
-        el.textContent = '';
-        el.classList.remove('active');
-        el.style.display = 'none';
-      });
-    }
-  }
-
-  function populateCharacterColumn(character, columnIndex) {
-    // Show character column
-    const column = document.querySelector(
-      `.premium-character-column[data-character="${columnIndex}"]`
-    );
-    if (column) {
-      column.classList.add('active');
-      column.style.display = 'block';
-    }
-
-    // Populate character header
-    const portrait = document.querySelector(`.premium-portrait[data-portrait="${columnIndex}"]`);
-    if (portrait) {
-      portrait.src = character.image;
-      portrait.alt = character.name;
-    }
-
-    const nameEl = document.querySelector(`.character-name[data-name="${columnIndex}"]`);
-    if (nameEl) {
-      nameEl.textContent = character.name;
-    }
-
-    // Remove badge display from header - info shown in Basic Information section
-
-    // Populate stats
-    const stats = character.stats || {};
-
-    // Basic info with badges
-    const setStatValue = (statName, value) => {
-      const el = document.querySelector(`[data-stat="${statName}-${columnIndex}"]`);
-      if (el) {
-        el.textContent = value;
-        el.classList.add('active');
-        el.style.display = 'block';
-      }
-    };
-
-    const setBadgeValue = (statName, value, badgeType) => {
-      const el = document.querySelector(`[data-stat="${statName}-${columnIndex}"]`);
-      if (el) {
-        // Handle long faction names
-        let displayValue = value;
-        if (badgeType === 'faction' && value.length > 12) {
-          // Create abbreviations for long faction names
-          const abbreviations = {
-            'Monochrome Nation': 'Mono Nation',
-            'Pingjing City': 'Pingjing',
-            'Bicta Tower': 'Bicta',
-          };
-          displayValue = abbreviations[value] || value;
-        }
-
-        el.innerHTML = `<span class="${badgeType}-badge ${value.toLowerCase().replace(/\s+/g, '-')}">${displayValue}</span>`;
-        el.classList.add('active');
-        el.style.display = 'block';
-      }
-    };
-
-    setBadgeValue('rarity', character.rarity, 'rarity');
-    setBadgeValue('class', character.class, 'class');
-    setBadgeValue('role', character.role, 'role');
-    setBadgeValue('faction', character.faction, 'faction');
-    setBadgeValue('element', character.element, 'element');
-
-    // Combat stats
-    setStatValue('hp', stats.hp !== undefined ? stats.hp.toLocaleString() : 'N/A');
-    setStatValue('attack', stats.attack !== undefined ? stats.attack.toLocaleString() : 'N/A');
-    setStatValue('defense', stats.defense !== undefined ? stats.defense.toLocaleString() : 'N/A');
-    setStatValue('energy', stats.energyRecovery !== undefined ? stats.energyRecovery : 'N/A');
-    setStatValue('crit', stats.critRate !== undefined ? stats.critRate + '%' : 'N/A');
-    setStatValue('critdmg', stats.critDmg !== undefined ? stats.critDmg + '%' : 'N/A');
-
-    // Team skill name
-    const teamSkillName = character.teamSkill ? character.teamSkill.name : 'No team skill';
-    setStatValue('teamskillname', teamSkillName);
-
-    // Team skill description
-    const teamSkillValue = character.teamSkill
-      ? character.teamSkill.description
-      : 'No team skill available';
-    setStatValue('teamskill', teamSkillValue);
-
-    // Team skill requirements with better formatting
-    let teamConditionsValue = 'No requirements';
-    if (character.teamSkill && character.teamSkill.requirements) {
-      const factionName = character.teamSkill.requirements.faction;
-      const elementName = character.teamSkill.requirements.element;
-
-      // Use line break for long faction names, otherwise use + format
-      if (factionName.length > 8) {
-        teamConditionsValue = `<div>${factionName}</div><div>${elementName}</div>`;
-      } else {
-        teamConditionsValue = `${factionName} + ${elementName}`;
-      }
-    }
-
-    // Set the value using innerHTML for line breaks
-    const el = document.querySelector(`[data-stat="teamconditions-${columnIndex}"]`);
-    if (el) {
-      el.innerHTML = teamConditionsValue;
-      el.classList.add('active');
-      el.style.display = 'block';
-    }
-  }
-
-  function hideCharacterColumn(columnIndex) {
-    const column = document.querySelector(
-      `.premium-character-column[data-character="${columnIndex}"]`
-    );
-    if (column) {
-      column.classList.remove('active');
-      column.style.display = 'none';
-    }
-
-    // Hide all stat values for this column
-    document.querySelectorAll(`[data-stat$="-${columnIndex}"]`).forEach(el => {
-      el.classList.remove('active');
-      el.style.display = 'none';
-    });
-  }
-
-  function clearComparison() {
-    selectedCharacters = [];
-
-    // Clear all selected states
-    const characterCards = document.querySelectorAll('.character-select-card');
-    characterCards.forEach(card => {
-      card.dataset.selected = 'false';
-    });
-
-    // Hide comparison table
-    document.getElementById('comparison-table').classList.remove('active');
-  }
 </script>
+
+<!-- External comparison script -->
+<script src="/src/scripts/comparison/zone-nova-comparison.js"></script>
