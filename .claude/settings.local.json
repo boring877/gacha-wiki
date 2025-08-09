@@ -100,7 +100,9 @@
       "Bash(del \"C:\\Users\\pc\\Desktop\\gacha-wiki\\src\\pages\\clock\\silver-blood.astro\")",
       "Bash(del \"C:\\Users\\pc\\Desktop\\gacha-wiki\\src\\utils\\tier-list-download.js\")",
       "WebFetch(domain:minecraft.wiki)",
-      "Bash(del \"C:\\Users\\pc\\Desktop\\gacha-wiki\\src\\pages\\guides\\silver-and-blood\\waifu-gallery.astro\")"
+      "Bash(del \"C:\\Users\\pc\\Desktop\\gacha-wiki\\src\\pages\\guides\\silver-and-blood\\waifu-gallery.astro\")",
+      "Bash(timeout 30 bun run build)",
+      "Bash(timeout:*)"
     ],
     "deny": []
   }

@@ -347,6 +347,24 @@ class SilverAndBloodClockTimer {
     const maintenanceConfig = this.config.timers[this.currentRegion].maintenance;
     if (!maintenanceConfig) return;
 
+    // Check if maintenance date is null or invalid
+    if (!maintenanceConfig.date) {
+      // No maintenance scheduled
+      if (this.maintenanceStartTime) {
+        this.maintenanceStartTime.textContent = '--:--:--';
+        if (this.maintenanceStartLabel) {
+          this.maintenanceStartLabel.textContent = 'Until Start';
+        }
+      }
+      if (this.maintenanceEndTime) {
+        this.maintenanceEndTime.textContent = '--:--:--';
+        if (this.maintenanceEndLabel) {
+          this.maintenanceEndLabel.textContent = 'Servers Back';
+        }
+      }
+      return;
+    }
+
     const now = new Date();
     const maintenanceDate = new Date(maintenanceConfig.date);
     const maintenanceEndDate = new Date(

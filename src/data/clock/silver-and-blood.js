@@ -38,9 +38,9 @@ export const silverAndBloodConfig = {
   timers: {
     apac: {
       maintenance: {
-        date: '2025-08-05T06:00:00Z',
-        duration: 2,
-        subtitle: 'Waiting for game announcement',
+        date: null,
+        duration: 0,
+        subtitle: 'No maintenance scheduled',
       },
       events: [
         {
@@ -61,9 +61,9 @@ export const silverAndBloodConfig = {
     },
     us: {
       maintenance: {
-        date: '2025-08-05T06:00:00Z',
-        duration: 2,
-        subtitle: 'Waiting for game announcement',
+        date: null,
+        duration: 0,
+        subtitle: 'No maintenance scheduled',
       },
       events: [
         {
