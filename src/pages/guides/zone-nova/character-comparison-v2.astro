@@ -1,0 +1,45 @@
+---
+import CharacterComparisonV2Layout from '../../../layouts/zone-nova/CharacterComparisonV2Layout.astro';
+import CharacterComparisonV2 from '../../../components/zone-nova/CharacterComparisonV2.astro';
+import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
+---
+
+<CharacterComparisonV2Layout
+  title="Zone Nova Character Comparison Tool V2 - Compare Heroes Stats, Tier Rankings & Skills | GachaWiki"
+  description="Advanced Zone Nova character comparison tool. Compare 2 heroes side-by-side: combat stats (HP/ATK/DEF), PvE/PvP tier rankings, skills, team synergies. Filter by role, class, rarity, element, faction. Optimize team composition with data-driven insights for all game modes."
+  gameTitle="Character Comparison Tool V2"
+>
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Zone Nova', href: '/guides/zone-nova/' },
+      { name: 'Characters', href: '/guides/zone-nova/characters/' },
+      { name: 'Character Comparison V2' },
+    ]}
+  />
+
+  <div class="comparison-v2-page-content">
+    <!-- Page Header Section -->
+    <div class="page-header-section">
+      <h1 style="display: none;">Zone Nova Character Comparison Tool V2</h1>
+      <div class="seo-keywords" style="display: none;">
+        Zone Nova character comparison, hero stats comparison, tier list rankings, PvE PvP analysis,
+        team building guide, character skills breakdown, combat stats analysis, gacha game strategy
+      </div>
+
+      <!-- Usage Tips -->
+      <div class="usage-tips">
+        <h3>How to Use</h3>
+        <ul>
+          <li>Click character icons to select up to 2 heroes for comparison</li>
+          <li>Use filters to find specific characters by role, element, rarity, or faction</li>
+          <li>Compare stats, tier rankings, and skills in the arena below</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Character Comparison V2 Component -->
+    <CharacterComparisonV2 />
+  </div>
+</CharacterComparisonV2Layout>

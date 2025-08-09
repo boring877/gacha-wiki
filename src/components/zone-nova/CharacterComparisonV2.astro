@@ -1,0 +1,309 @@
+---
+import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+import {
+  PVE_TIER_LIST,
+  PVP_TIER_LIST,
+  RIFT_TIER_LIST,
+  GUILD_RAID_TIER_LIST,
+  NEW_PLAYER_TIER_LIST,
+} from '../../data/zone-nova/tier-lists.js';
+import { rankings } from '../../data/zone-nova/character-rankings.js';
+
+interface Props {
+  selectedCharacters?: string[];
+}
+
+const { selectedCharacters = [] } = Astro.props;
+
+// Security: Sanitize character data to prevent XSS
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+// Security: Validate image URLs
+function isValidImageUrl(url: string): boolean {
+  return (
+    /^https?:\/\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url) ||
+    /^\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url)
+  );
+}
+
+// Security: Sanitize and validate character data
+// Keep original names for data lookups, only escape for display
+const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
+  ...char,
+  originalName: char.name || '', // Keep original for tier lookups
+  displayName: escapeHtml(char.name || ''), // Escaped version for display
+  slug: char.slug?.replace(/[^a-zA-Z0-9-_]/g, '') || '',
+  role: escapeHtml(char.role || ''),
+  class: escapeHtml(char.class || ''),
+  rarity: escapeHtml(char.rarity || ''),
+  element: escapeHtml(char.element || ''),
+  faction: escapeHtml(char.faction || ''),
+  image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
+}));
+---
+
+<!-- Character Selection Header - Icon Bar -->
+<div class="character-deck-header">
+  <div class="deck-header-container">
+    <!-- Header with Character Icons -->
+    <div class="deck-header-main">
+      <!-- Top Row with Title and Controls -->
+      <div class="deck-header-top-row">
+        <div class="deck-header-info">
+          <h2 class="deck-title">Character Comparison V2</h2>
+          <span class="selected-count" id="v2-selected-count">0/2 selected</span>
+        </div>
+
+        <div class="deck-header-controls">
+          <!-- Filters -->
+          <div class="deck-filters-compact">
+            <select class="filter-select-compact" id="v2-role-filter">
+              <option value="">All Roles</option>
+              <option value="DPS">DPS</option>
+              <option value="Tank">Tank</option>
+              <option value="Healer">Healer</option>
+              <option value="Buffer">Buffer</option>
+              <option value="Debuffer">Debuffer</option>
+            </select>
+            <select class="filter-select-compact" id="v2-class-filter">
+              <option value="">All Classes</option>
+              <option value="Guardian">Guardian</option>
+              <option value="Warrior">Warrior</option>
+              <option value="Rogue">Rogue</option>
+              <option value="Mage">Mage</option>
+              <option value="Buffer">Buffer</option>
+              <option value="Debuffer">Debuffer</option>
+              <option value="Healer">Healer</option>
+            </select>
+            <select class="filter-select-compact" id="v2-rarity-filter">
+              <option value="">All Rarities</option>
+              <option value="SSR">SSR</option>
+              <option value="SR">SR</option>
+              <option value="R">R</option>
+            </select>
+            <select class="filter-select-compact" id="v2-element-filter">
+              <option value="">All Elements</option>
+              <option value="Fire">Fire</option>
+              <option value="Ice">Ice</option>
+              <option value="Wind">Wind</option>
+              <option value="Holy">Holy</option>
+              <option value="Chaos">Chaos</option>
+            </select>
+            <select class="filter-select-compact" id="v2-faction-filter">
+              <option value="">All Factions</option>
+              <option value="Odius">Odius</option>
+              <option value="Sapphire">Sapphire</option>
+              <option value="Chemic">Chemic</option>
+              <option value="Bicta Tower">Bicta Tower</option>
+              <option value="Avalon">Avalon</option>
+              <option value="Asa">Asa</option>
+              <option value="Monochrome Nation">Monochrome Nation</option>
+              <option value="Pingjing City">Pingjing City</option>
+            </select>
+            <button class="reset-filters-btn" id="v2-reset-filters">Reset</button>
+          </div>
+          <button class="clear-all-btn" id="v2-clear-all">Clear All</button>
+        </div>
+      </div>
+
+      <!-- Character Selection - Icons for Desktop, Dropdown for Mobile -->
+      <div class="character-selection-area">
+        <!-- Character Icons Strip (Desktop) -->
+        <div class="character-icons-strip desktop-only">
+          <div class="character-icons-container" id="v2-character-icons">
+            {
+              sanitizedCharacters.map(character => (
+                <div
+                  class="character-icon"
+                  data-character-slug={character.slug}
+                  data-role={character.role}
+                  data-class={character.class}
+                  data-rarity={character.rarity}
+                  data-element={character.element}
+                  data-faction={character.faction}
+                  title={`${character.originalName} (${character.rarity} ${character.element} ${character.class})`}
+                  role="button"
+                  tabindex="0"
+                  aria-label={`Select ${character.originalName}, ${character.rarity} ${character.element} ${character.class}`}
+                >
+                  <img
+                    src={character.image}
+                    alt={character.originalName}
+                    class="character-icon-img"
+                    width="36"
+                    height="36"
+                    loading="lazy"
+                    onerror="this.src='/images/placeholder.png'"
+                  />
+                  <span class="character-icon-name" set:html={character.displayName} />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Character Dropdown (Mobile) -->
+        <div class="character-dropdown-area mobile-only">
+          <div class="character-dropdown-row">
+            <div class="character-slot">
+              <label class="character-slot-label">Character 1:</label>
+              <div class="custom-dropdown" id="v2-mobile-dropdown-1">
+                <div class="custom-dropdown-selected" id="v2-mobile-selected-1">
+                  <div class="dropdown-placeholder">
+                    <span class="placeholder-text">Select Character 1...</span>
+                  </div>
+                </div>
+                <div class="custom-dropdown-options" id="v2-mobile-options-1">
+                  <div class="dropdown-option" data-value="">
+                    <span class="option-text">Select Character 1...</span>
+                  </div>
+                  {
+                    sanitizedCharacters.map(character => (
+                      <div
+                        class="dropdown-option"
+                        data-value={character.slug}
+                        data-role={character.role}
+                        data-class={character.class}
+                        data-rarity={character.rarity}
+                        data-element={character.element}
+                        data-faction={character.faction}
+                        role="option"
+                        tabindex="-1"
+                        aria-label={`${character.originalName}, ${character.rarity} ${character.element}`}
+                      >
+                        <img
+                          src={character.image}
+                          alt={character.originalName}
+                          class="option-image"
+                          width="32"
+                          height="32"
+                          loading="lazy"
+                          onerror="this.src='/images/placeholder.png'"
+                        />
+                        <div class="option-details">
+                          <span class="option-name" set:html={character.displayName} />
+                          <span
+                            class="option-info"
+                            set:html={`${character.rarity} ${character.element}`}
+                          />
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+            <div class="character-slot">
+              <label class="character-slot-label">Character 2:</label>
+              <div class="custom-dropdown" id="v2-mobile-dropdown-2">
+                <div class="custom-dropdown-selected" id="v2-mobile-selected-2">
+                  <div class="dropdown-placeholder">
+                    <span class="placeholder-text">Select Character 2...</span>
+                  </div>
+                </div>
+                <div class="custom-dropdown-options" id="v2-mobile-options-2">
+                  <div class="dropdown-option" data-value="">
+                    <span class="option-text">Select Character 2...</span>
+                  </div>
+                  {
+                    sanitizedCharacters.map(character => (
+                      <div
+                        class="dropdown-option"
+                        data-value={character.slug}
+                        data-role={character.role}
+                        data-class={character.class}
+                        data-rarity={character.rarity}
+                        data-element={character.element}
+                        data-faction={character.faction}
+                        role="option"
+                        tabindex="-1"
+                        aria-label={`${character.originalName}, ${character.rarity} ${character.element}`}
+                      >
+                        <img
+                          src={character.image}
+                          alt={character.originalName}
+                          class="option-image"
+                          width="32"
+                          height="32"
+                          loading="lazy"
+                          onerror="this.src='/images/placeholder.png'"
+                        />
+                        <div class="option-details">
+                          <span class="option-name" set:html={character.displayName} />
+                          <span
+                            class="option-info"
+                            set:html={`${character.rarity} ${character.element}`}
+                          />
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Comparison Container - Full Width -->
+<div class="comparison-arena-external">
+  <div class="comparison-arena">
+    <div class="arena-header">
+      <h2 class="arena-title">Comparison Arena</h2>
+    </div>
+
+    <!-- Selected Characters Display -->
+    <div class="selected-characters-area" id="v2-selected-area">
+      <div class="empty-arena-message" id="v2-empty-message">
+        <p>Select characters from the deck to start comparing</p>
+        <small>You can compare up to 2 characters at once</small>
+      </div>
+    </div>
+
+    <!-- Comparison Cards Container -->
+    <div class="comparison-cards-container" id="v2-comparison-container" style="display: none;">
+      <div class="comparison-cards-grid" id="v2-cards-grid">
+        <!-- Character cards will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- External JS -->
+<script src="/src/scripts/comparison-v2/zone-nova-comparison-v2.js"></script>
+
+<script
+  define:vars={{
+    characterData: sanitizedCharacters,
+    pveTier: PVE_TIER_LIST,
+    pvpTier: PVP_TIER_LIST,
+    riftTier: RIFT_TIER_LIST,
+    guildTier: GUILD_RAID_TIER_LIST,
+    newPlayerTier: NEW_PLAYER_TIER_LIST,
+    rankingsData: rankings,
+  }}
+>
+  // Security: Freeze objects to prevent prototype pollution
+  // Make character data available to external JS file
+  window.ZN_COMPARISON_V2_DATA = Object.freeze({
+    characters: Object.freeze([...characterData]),
+    tierLists: Object.freeze({
+      pve: Object.freeze(pveTier),
+      pvp: Object.freeze(pvpTier),
+      rift: Object.freeze(riftTier),
+      guild: Object.freeze(guildTier),
+      newPlayer: Object.freeze(newPlayerTier),
+    }),
+    rankings: Object.freeze(rankingsData),
+  });
+</script>

@@ -4,7 +4,8 @@
 export const zoneNovaConfig = {
   meta: {
     title: 'Zone Nova Wiki - Complete Character Guide, Tier Lists & Game Database | GachaWiki',
-    description: 'Complete Zone Nova wiki with character tier lists, SSR rankings, memory cards, damage mechanics, and team building guides. Latest Zone Nova character database, rifts, runes, and meta strategies for 2025.',
+    description:
+      'Complete Zone Nova wiki with character tier lists, SSR rankings, memory cards, damage mechanics, and team building guides. Latest Zone Nova character database, rifts, runes, and meta strategies for 2025.',
     gameTitle: 'Zone Nova',
     heroImage: '/images/games/zone-nova/zonenova1.jpg',
   },
@@ -72,6 +73,15 @@ export const zoneNovaConfig = {
       description:
         'Compare up to 4 characters side by side to analyze their stats and roles for optimal team building.',
       url: '/guides/zone-nova/character-comparison/',
+      category: 'guides',
+    },
+    {
+      id: 'character-comparison-v2',
+      title: 'Character Comparison V2',
+      emoji: '🃏',
+      description:
+        'Enhanced card-based comparison tool! Compare 2 characters with detailed stats, skills, team abilities, and streamlined design.',
+      url: '/guides/zone-nova/character-comparison-v2/',
       category: 'guides',
     },
     {

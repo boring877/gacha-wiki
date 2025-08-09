@@ -1,0 +1,555 @@
+/* ==========================================
+   Zone Nova Character Comparison V2 - SIMPLE
+   Clean, focused approach - No over-engineering
+   ========================================== */
+
+/* ===== BASE LAYOUT ===== */
+.page-header-section {
+  background: var(--zn-bg-secondary);
+  border: 2px solid var(--zn-border-primary);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.usage-tips {
+  background: var(--zn-bg-primary);
+  border: 2px solid var(--zn-primary-teal);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.usage-tips h3 {
+  color: var(--zn-primary-teal);
+  margin: 0 0 1rem 0;
+}
+
+.usage-tips ul {
+  color: var(--zn-text-primary);
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+/* ===== CHARACTER SELECTION HEADER ===== */
+.character-deck-header {
+  background: var(--zn-bg-secondary);
+  border-bottom: 2px solid var(--zn-border-primary);
+  padding: 1rem 0;
+}
+
+.deck-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.deck-header-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.deck-header-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.deck-title {
+  color: var(--zn-primary-amber);
+  margin: 0;
+}
+
+.selected-count {
+  color: var(--zn-text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ===== SIMPLE FILTERS ===== */
+.deck-filters-compact {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-select-compact {
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border-primary);
+  border-radius: 4px;
+  color: var(--zn-text-primary);
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.filter-select-compact:focus {
+  outline: 2px solid var(--zn-primary-amber);
+  outline-offset: 1px;
+}
+
+.reset-filters-btn,
+.clear-all-btn {
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-primary-teal);
+  color: var(--zn-primary-teal);
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* ===== CHARACTER SELECTION ===== */
+.character-selection-area {
+  margin-top: 1rem;
+}
+
+/* Desktop: Character Icons */
+.character-icons-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.character-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: var(--zn-card-bg);
+  cursor: pointer;
+  min-width: 50px;
+}
+
+.character-icon:focus {
+  outline: 2px solid var(--zn-primary-amber);
+  outline-offset: 2px;
+}
+
+.character-icon.selected {
+  border-color: var(--zn-primary-amber);
+  background: var(--zn-bg-tertiary);
+}
+
+.character-icon.filtered-out {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.character-icon-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+}
+
+.character-icon-name {
+  font-size: 0.7rem;
+  color: var(--zn-text-primary);
+  text-align: center;
+  line-height: 1.2;
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Mobile: Simple Dropdowns */
+.character-dropdown-area {
+  display: none;
+}
+
+.character-dropdown-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.character-slot-label {
+  color: var(--zn-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.custom-dropdown {
+  position: relative;
+}
+
+.custom-dropdown-selected {
+  background: var(--zn-bg-primary);
+  border: 2px solid var(--zn-border-primary);
+  border-radius: 6px;
+  padding: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 48px;
+}
+
+.custom-dropdown-selected:focus {
+  outline: 2px solid var(--zn-primary-amber);
+  border-color: var(--zn-primary-amber);
+}
+
+.custom-dropdown-selected:after {
+  content: '▼';
+  position: absolute;
+  right: 0.8rem;
+  color: var(--zn-text-secondary);
+}
+
+.custom-dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--zn-bg-primary);
+  border: 2px solid var(--zn-primary-amber);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+.custom-dropdown.open .custom-dropdown-options {
+  display: block;
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--zn-border-primary);
+}
+
+.dropdown-option:focus {
+  outline: 2px solid var(--zn-primary-amber);
+  background: var(--zn-bg-tertiary);
+}
+
+.dropdown-option.filtered-out {
+  display: none;
+}
+
+.option-image {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.option-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-name {
+  color: var(--zn-text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.option-info {
+  color: var(--zn-text-secondary);
+  font-size: 0.7rem;
+}
+
+.placeholder-text {
+  color: var(--zn-text-secondary);
+}
+
+/* ===== COMPARISON ARENA ===== */
+.comparison-arena {
+  background: var(--zn-bg-secondary);
+  border: 2px solid var(--zn-border-primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.arena-title {
+  color: var(--zn-primary-amber);
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.empty-arena-message {
+  text-align: center;
+  color: var(--zn-text-secondary);
+  padding: 2rem;
+}
+
+/* ===== COMPARISON CARDS ===== */
+.comparison-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.comparison-character-card {
+  background: var(--zn-bg-primary);
+  border: 2px solid var(--zn-border-primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.comparison-card-remove {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: var(--zn-error);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+/* ===== CARD HEADER ===== */
+.comparison-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.comparison-card-portrait {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+}
+
+.comparison-card-info h3 {
+  color: var(--zn-text-primary);
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.comparison-card-badges {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+/* ===== CARD STATS ===== */
+.comparison-card-stats {
+  display: grid;
+  gap: 1rem;
+}
+
+.comparison-stat-section {
+  background: var(--zn-bg-secondary);
+  border: 1px solid var(--zn-border-primary);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.comparison-stat-section h4 {
+  color: var(--zn-primary-amber);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.8rem 0;
+  text-transform: uppercase;
+}
+
+.comparison-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.comparison-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comparison-stat-label {
+  color: var(--zn-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.comparison-stat-value {
+  color: var(--zn-text-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Simple tier colors */
+.comparison-stat-value.tier-sss {
+  color: #ff6b6b;
+  font-weight: 700;
+}
+.comparison-stat-value.tier-ss {
+  color: #ffd93d;
+  font-weight: 700;
+}
+.comparison-stat-value.tier-s {
+  color: #6bcf7f;
+  font-weight: 600;
+}
+.comparison-stat-value.tier-a {
+  color: #4ecdc4;
+  font-weight: 600;
+}
+.comparison-stat-value.tier-situational {
+  color: var(--zn-text-muted);
+  font-style: italic;
+}
+.comparison-stat-value.tier-unranked {
+  color: var(--zn-text-muted);
+  opacity: 0.7;
+}
+
+/* ===== SKILLS SECTION ===== */
+.comparison-skills-section {
+  background: var(--zn-bg-secondary);
+  border: 1px solid var(--zn-border-primary);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.comparison-skill-item {
+  margin-bottom: 1rem;
+}
+
+.comparison-skill-item:last-child {
+  margin-bottom: 0;
+}
+
+.comparison-skill-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.comparison-skill-name {
+  color: var(--zn-text-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.comparison-skill-desc {
+  color: var(--zn-text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.comparison-skill-cooldown,
+.comparison-skill-energy {
+  color: var(--zn-text-muted);
+  font-size: 0.7rem;
+  margin-top: 0.3rem;
+  font-style: italic;
+}
+
+/* ===== TEAM SKILLS ===== */
+.comparison-team-skill {
+  background: var(--zn-bg-secondary);
+  border: 1px solid var(--zn-border-primary);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.comparison-team-skill-name {
+  color: var(--zn-primary-teal);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.comparison-team-skill-desc {
+  color: var(--zn-text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.comparison-team-skill-req {
+  color: var(--zn-text-muted);
+  font-size: 0.7rem;
+  font-style: italic;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  /* Show mobile dropdowns, hide desktop icons */
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
+
+  /* Simplify header layout */
+  .deck-header-top-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Stack filters vertically */
+  .deck-filters-compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  /* Single column cards */
+  .comparison-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Smaller character icons */
+  .character-icon-img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .character-icon-name {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Tighter spacing */
+  .deck-header-container,
+  .comparison-arena {
+    padding: 1rem;
+  }
+
+  /* Smaller text */
+  .deck-title {
+    font-size: 1.2rem;
+  }
+
+  /* Stack stat grids */
+  .comparison-stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== FOCUS STATES FOR ACCESSIBILITY ===== */
+:focus {
+  outline: 2px solid var(--zn-primary-amber);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
