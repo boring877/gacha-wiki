@@ -4,10 +4,72 @@
 /* Zone Nova Badge CSS Variables */
 :root {
   /* === ZONE NOVA BADGE COLORS === */
-  /* Badge color system for consistent theming across components */
+  /* Complete badge color system for Zone Nova - centralized management */
   --zn-badge-ssr: #ffa500; /* SSR rarity badge - orange background */
   --zn-badge-sr: #7ecfff; /* SR rarity badge - light blue background */
   --zn-badge-r: #a0a0a0; /* R rarity badge - gray background */
+
+  /* Element Badge Colors */
+  --zn-badge-fire: #ff6b6b; /* Fire element badge - red background */
+  --zn-badge-ice: #4dbfff; /* Ice element badge - blue background */
+  --zn-badge-wind: #4dffb8; /* Wind element badge - green background */
+  --zn-badge-holy: #ffa500; /* Holy element badge - orange background */
+  --zn-badge-chaos: #b266ff; /* Chaos element badge - purple background */
+
+  /* Class Badge Colors */
+  --zn-badge-guardian: #8e24aa; /* Guardian class - purple */
+  --zn-badge-warrior: #d32f2f; /* Warrior class - red */
+  --zn-badge-rogue: #388e3c; /* Rogue class - green */
+  --zn-badge-mage: #1976d2; /* Mage class - blue */
+  --zn-badge-healer: #00796b; /* Healer class - teal */
+  --zn-badge-buffer: #f57c00; /* Buffer class - orange */
+  --zn-badge-debuffer: #5d4037; /* Debuffer class - brown */
+  --zn-badge-unknown: #757575; /* Unknown class - gray */
+
+  /* Additional Badge Colors for all elements */
+  --zn-badge-blue: #2196f3; /* Blue for various elements */
+  --zn-badge-orange: #ff9800; /* Orange for various elements */
+  --zn-badge-purple: #9c27b0; /* Purple for various elements */
+  --zn-badge-indigo: #673ab7; /* Indigo for various elements */
+  --zn-badge-green: #4caf50; /* Green for various elements */
+  --zn-badge-red: #f44336; /* Red for various elements */
+  --zn-badge-teal: #00bcd4; /* Teal for various elements */
+  --zn-badge-brown: #795548; /* Brown for various elements */
+  --zn-badge-gray: #9e9e9e; /* Gray for various elements */
+  --zn-badge-white: #fff; /* White text */
+  --zn-badge-black: #000; /* Black text */
+  --zn-badge-dark-gray: #222; /* Dark gray text */
+
+  /* Gameplay Tag Colors */
+  --zn-badge-dot: #ff4757; /* DOT tag */
+  --zn-badge-crit: #ffa502; /* Crit tag */
+  --zn-badge-crit-dmg: #ff6348; /* Crit damage tag */
+  --zn-badge-heal: #2ed573; /* Heal tag */
+  --zn-badge-shield: #3742fa; /* Shield tag */
+  --zn-badge-buff: #2f3542; /* Buff tag */
+  --zn-badge-debuff: #a4b0be; /* Debuff tag */
+
+  /* Role Badge Colors */
+  --zn-badge-tank: #00acc1; /* Tank role */
+  --zn-badge-dps: #ff9800; /* DPS role */
+  --zn-badge-support: #9c27b0; /* Support role */
+
+  /* Faction Badge Colors */
+  --zn-badge-sapphire: #2196f3; /* Sapphire faction */
+  --zn-badge-chemic: #ff9800; /* Chemic faction */
+  --zn-badge-avalon: #4caf50; /* Avalon faction */
+  --zn-badge-odius: #9c27b0; /* Odius faction */
+  --zn-badge-asa: #f44336; /* ASA faction */
+  --zn-badge-pingjing-city: #00bcd4; /* Pingjing City faction */
+  --zn-badge-monochrome-nation: #607d8b; /* Monochrome Nation faction */
+  --zn-badge-bicta-tower: #673ab7; /* Bicta Tower faction */
+
+  /* Skill Badge Colors */
+  --zn-badge-normal-attack: #ff9800; /* Normal attack */
+  --zn-badge-auto-skill: #00acc1; /* Auto skill */
+  --zn-badge-ultimate: #3f51b5; /* Ultimate skill */
+  --zn-badge-passive: #c2185b; /* Passive skill */
+  --zn-badge-team-skill: #9c27b0; /* Team skill */
 }
 
 /* Class Showcase Container */
@@ -17,25 +79,25 @@
 
 /* Class Name Styling */
 .class-name.guardian {
-  color: #2196f3;
+  color: var(--zn-badge-blue);
 }
 .class-name.warrior {
-  color: #ff9800;
+  color: var(--zn-badge-orange);
 }
 .class-name.rogue {
-  color: #9c27b0;
+  color: var(--zn-badge-purple);
 }
 .class-name.mage {
-  color: #673ab7;
+  color: var(--zn-badge-indigo);
 }
 .class-name.buffer {
-  color: #4caf50;
+  color: var(--zn-badge-green);
 }
 .class-name.debuffer {
-  color: #f44336;
+  color: var(--zn-badge-red);
 }
 .class-name.healer {
-  color: #00bcd4;
+  color: var(--zn-badge-teal);
 }
 .class-name.unknown {
   color: var(--text-secondary);
@@ -58,38 +120,38 @@
 }
 
 .gameplay-tag.dot {
-  background: #ff4757 !important;
-  color: #fff !important;
+  background: var(--zn-badge-dot) !important;
+  color: var(--zn-badge-white) !important;
 }
 
 .gameplay-tag.crit {
-  background: #ffa502 !important;
-  color: #fff !important;
+  background: var(--zn-badge-crit) !important;
+  color: var(--zn-badge-white) !important;
 }
 
 .gameplay-tag.crit-dmg {
-  background: #ff6348 !important;
-  color: #fff !important;
+  background: var(--zn-badge-crit-dmg) !important;
+  color: var(--zn-badge-white) !important;
 }
 
 .gameplay-tag.heal {
-  background: #2ed573 !important;
-  color: #fff !important;
+  background: var(--zn-badge-heal) !important;
+  color: var(--zn-badge-white) !important;
 }
 
 .gameplay-tag.shield {
-  background: #3742fa !important;
-  color: #fff !important;
+  background: var(--zn-badge-shield) !important;
+  color: var(--zn-badge-white) !important;
 }
 
 .gameplay-tag.buff {
-  background: #2f3542 !important;
-  color: #fff !important;
+  background: var(--zn-badge-buff) !important;
+  color: var(--zn-badge-white) !important;
 }
 
 .gameplay-tag.debuff {
-  background: #a4b0be !important;
-  color: #222 !important;
+  background: var(--zn-badge-debuff) !important;
+  color: var(--zn-badge-dark-gray) !important;
 }
 
 /* Responsive design for unified card */
@@ -164,141 +226,93 @@
   border-radius: 4px;
 }
 
-/* Enhanced Rarity Badge Colors */
-.tag-rarity.ssr,
-.rarity-badge.ssr {
-  background: #ffa500;
-  color: #000;
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           LEGACY TAG STYLES                             */
+/*                       (Kept for backwards compatibility)                */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Legacy Tag Rarity Colors */
+.tag-rarity.ssr {
+  background: var(--zn-badge-ssr);
+  color: var(--zn-badge-black);
+}
+.tag-rarity.sr {
+  background: var(--zn-badge-sr);
+  color: var(--zn-badge-black);
+}
+.tag-rarity.r {
+  background: var(--zn-badge-r);
+  color: var(--zn-badge-black);
 }
 
-.tag-rarity.sr,
-.rarity-badge.sr {
-  background: #29b6f6;
-  color: #000;
+/* Legacy Tag Element Colors */
+.tag-element.fire {
+  background: var(--zn-badge-fire);
+  color: var(--zn-badge-white);
+}
+.tag-element.ice {
+  background: var(--zn-badge-ice);
+  color: var(--zn-badge-white);
+}
+.tag-element.wind {
+  background: var(--zn-badge-wind);
+  color: var(--zn-badge-black);
+}
+.tag-element.holy {
+  background: var(--zn-badge-holy);
+  color: var(--zn-badge-black);
+}
+.tag-element.chaos {
+  background: var(--zn-badge-chaos);
+  color: var(--zn-badge-white);
 }
 
-.tag-rarity.r,
-.rarity-badge.r {
-  background: #9e9e9e;
-  color: #000;
+/* Legacy Tag Class Colors */
+.tag-class.guardian {
+  background: var(--zn-badge-guardian);
+  color: var(--zn-badge-white);
+}
+.tag-class.warrior {
+  background: var(--zn-badge-warrior);
+  color: var(--zn-badge-white);
+}
+.tag-class.rogue {
+  background: var(--zn-badge-rogue);
+  color: var(--zn-badge-white);
+}
+.tag-class.mage {
+  background: var(--zn-badge-mage);
+  color: var(--zn-badge-white);
+}
+.tag-class.buffer {
+  background: var(--zn-badge-buffer);
+  color: var(--zn-badge-black);
+}
+.tag-class.debuffer {
+  background: var(--zn-badge-debuffer);
+  color: var(--zn-badge-white);
+}
+.tag-class.healer {
+  background: var(--zn-badge-healer);
+  color: var(--zn-badge-white);
+}
+.tag-class.unknown {
+  background: var(--zn-badge-unknown);
+  color: var(--zn-badge-white);
+}
+.tag-class.tank {
+  background: var(--zn-badge-tank);
+  color: var(--zn-badge-white);
+}
+.tag-class.dps {
+  background: var(--zn-badge-dps);
+  color: var(--zn-badge-black);
 }
 
-/* Enhanced Element Badge Colors */
-.tag-element.fire,
-.element-badge.fire {
-  background: #f44336;
-  color: #fff;
-}
-
-.tag-element.ice,
-.element-badge.ice {
-  background: #2196f3;
-  color: #fff;
-}
-
-.tag-element.wind,
-.element-badge.wind {
-  background: #4caf50;
-  color: #fff;
-}
-
-.tag-element.holy,
-.element-badge.holy {
-  background: #ffc107;
-  color: #000;
-}
-
-.tag-element.chaos,
-.element-badge.chaos {
-  background: #9c27b0;
-  color: #fff;
-}
-
-/* Simplified Class Badge Colors */
-.tag-class.guardian,
-.class-badge.guardian {
-  background: #9c27b0;
-  color: #fff;
-}
-
-.tag-class.warrior,
-.class-badge.warrior {
-  background: #f44336;
-  color: #fff;
-}
-
-.tag-class.rogue,
-.class-badge.rogue {
-  background: #4caf50;
-  color: #fff;
-}
-
-.tag-class.mage,
-.class-badge.mage {
-  background: #2196f3;
-  color: #fff;
-}
-
-.tag-class.buffer,
-.class-badge.buffer {
-  background: #ff9800;
-  color: #000;
-}
-
-.tag-class.debuffer,
-.class-badge.debuffer {
-  background: #795548;
-  color: #fff;
-}
-
-.tag-class.healer,
-.class-badge.healer {
-  background: #009688;
-  color: #fff;
-}
-
-.tag-class.unknown,
-.class-badge.unknown {
-  background: #9e9e9e;
-  color: #fff;
-}
-
-/* Role Badge Colors */
-.tag-class.tank,
-.role-badge.tank {
-  background: #b0b0b0;
-  color: #000;
-}
-
-.tag-class.dps,
-.role-badge.dps {
-  background: #ffb347;
-  color: #000;
-}
-
-.tag-class.buffer,
-.role-badge.buffer {
-  background: #7ecfff;
-  color: #000;
-}
-
-.tag-class.debuffer,
-.role-badge.debuffer {
-  background: #b266ff;
-  color: #fff;
-}
-
-.tag-class.healer,
-.role-badge.healer {
-  background: #a3ffb7;
-  color: #000;
-}
-
-/* Faction Badge */
-.tag-faction,
-.faction-badge {
-  background: #c2185b;
-  color: #fff;
+/* Legacy Tag Faction */
+.tag-faction {
+  background: var(--zn-badge-purple);
+  color: var(--zn-badge-white);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -311,79 +325,17 @@
 /*                    Mobile-specific badge styling                         */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
-/* Enhanced Badge Layout for Mobile */
-.mobile-card-badges {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0.8rem 0;
-  padding: 0.6rem 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 100%;
-  overflow: visible;
-  border-top: 1px solid rgba(255, 183, 77, 0.15);
-  border-bottom: 1px solid rgba(255, 183, 77, 0.15);
-}
+/* Enhanced Badge Layout for Mobile - moved to media query for better organization */
 
-/* Mobile Badge Animations - Removed for instant display */
+/* Mobile badges are always visible - no animations */
 .mobile-card-badges .rarity-badge,
 .mobile-card-badges .element-badge,
 .mobile-card-badges .role-badge,
 .mobile-card-badges .class-badge,
 .mobile-card-badges .faction-badge {
   opacity: 1;
-  transform: translateY(0);
-}
-
-/* Fallback for production - ensure badges are always visible */
-@media (prefers-reduced-motion: reduce), (max-width: 768px) {
-  .mobile-card-badges .rarity-badge,
-  .mobile-card-badges .element-badge,
-  .mobile-card-badges .role-badge,
-  .mobile-card-badges .class-badge,
-  .mobile-card-badges .faction-badge {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    animation: none !important;
-  }
-}
-
-/* Additional fallback - force visibility after animation duration */
-.mobile-card-badges .rarity-badge,
-.mobile-card-badges .element-badge,
-.mobile-card-badges .role-badge,
-.mobile-card-badges .class-badge,
-.mobile-card-badges .faction-badge {
-  animation-fill-mode: both;
-}
-
-/* Badges are always visible - no animation needed */
-@media (max-width: 768px) {
-  .mobile-card-badges {
-    /* No animation - instant visibility */
-  }
-}
-
-/* ensureVisibility keyframe removed - not needed */
-
-.mobile-card-badges > * {
   visibility: visible;
-  opacity: 1;
 }
-
-/* Animation delays removed for instant display */
-.mobile-card-badges .rarity-badge,
-.mobile-card-badges .element-badge,
-.mobile-card-badges .role-badge,
-.mobile-card-badges .class-badge,
-.mobile-card-badges .faction-badge {
-  /* No animation delays - instant visibility */
-}
-
-/* fadeInUp keyframe removed - not needed */
 
 /* Mobile Responsive Badge Styles */
 @media (max-width: 768px) {
@@ -403,16 +355,21 @@
     line-height: 1.2;
   }
 
-  /* Improve badge spacing on mobile */
+  /* Consolidated mobile badge spacing */
   .mobile-card-badges {
     gap: 0.4rem;
-    margin-top: 0.6rem;
+    margin: 0.6rem 0;
+    padding: 0.6rem 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    border-top: 1px solid rgba(255, 183, 77, 0.15);
+    border-bottom: 1px solid rgba(255, 183, 77, 0.15);
   }
 
   /* Mobile badge interactions */
@@ -536,212 +493,194 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
-/*                           BADGE COLORS                                  */
+/*                           CONSOLIDATED BADGE COLORS                     */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Rarity Badge Colors */
 .rarity-badge.ssr {
-  background: #ffa500;
-  color: #000;
+  background: var(--zn-badge-ssr);
+  color: var(--zn-badge-black);
 }
-
 .rarity-badge.sr {
-  background: #7ecfff;
-  color: #000;
+  background: var(--zn-badge-sr);
+  color: var(--zn-badge-black);
 }
-
 .rarity-badge.r {
-  background: #a0a0a0;
-  color: #000;
+  background: var(--zn-badge-r);
+  color: var(--zn-badge-black);
 }
 
 /* Element Badge Colors */
 .element-badge.fire {
-  background: #ff6b6b;
-  color: #fff;
+  background: var(--zn-badge-fire);
+  color: var(--zn-badge-white);
 }
-
 .element-badge.ice {
-  background: #4dbfff;
-  color: #fff;
+  background: var(--zn-badge-ice);
+  color: var(--zn-badge-white);
 }
-
 .element-badge.wind {
-  background: #4dffb8;
-  color: #000;
+  background: var(--zn-badge-wind);
+  color: var(--zn-badge-black);
 }
-
 .element-badge.holy {
-  background: #ffa500;
-  color: #000;
+  background: var(--zn-badge-holy);
+  color: var(--zn-badge-black);
 }
-
 .element-badge.chaos {
-  background: #b266ff;
-  color: #fff;
+  background: var(--zn-badge-chaos);
+  color: var(--zn-badge-white);
 }
 
-/* Class Badge Colors - Zone Nova Character Database */
+/* Class Badge Colors */
 .class-badge.guardian {
-  background: #8e24aa;
-  color: #fff;
+  background: var(--zn-badge-guardian);
+  color: var(--zn-badge-white);
 }
-
 .class-badge.warrior {
-  background: #d32f2f;
-  color: #fff;
+  background: var(--zn-badge-warrior);
+  color: var(--zn-badge-white);
 }
-
 .class-badge.rogue {
-  background: #388e3c;
-  color: #fff;
+  background: var(--zn-badge-rogue);
+  color: var(--zn-badge-white);
 }
-
 .class-badge.mage {
-  background: #1976d2;
-  color: #fff;
+  background: var(--zn-badge-mage);
+  color: var(--zn-badge-white);
 }
-
 .class-badge.healer {
-  background: #00796b;
-  color: #fff;
+  background: var(--zn-badge-healer);
+  color: var(--zn-badge-white);
 }
-
 .class-badge.buffer {
-  background: #f57c00;
-  color: #fff;
+  background: var(--zn-badge-buffer);
+  color: var(--zn-badge-black);
 }
-
 .class-badge.debuffer {
-  background: #5d4037;
-  color: #fff;
+  background: var(--zn-badge-debuffer);
+  color: var(--zn-badge-white);
 }
-
 .class-badge.unknown {
-  background: #757575;
-  color: #fff;
+  background: var(--zn-badge-unknown);
+  color: var(--zn-badge-white);
 }
 
-/* Role Badge Colors - Updated for Zone Nova Character Database */
+/* Role Badge Colors */
 .role-badge.tank {
-  background: #00acc1;
-  color: #fff;
+  background: var(--zn-badge-tank);
+  color: var(--zn-badge-white);
 }
-
 .role-badge.dps {
-  background: #ff9800;
-  color: #000;
+  background: var(--zn-badge-dps);
+  color: var(--zn-badge-black);
 }
-
 .role-badge.support {
-  background: #9c27b0;
-  color: #fff;
+  background: var(--zn-badge-support);
+  color: var(--zn-badge-white);
 }
-
 .role-badge.healer {
-  background: #4caf50;
-  color: #fff;
+  background: var(--zn-badge-green);
+  color: var(--zn-badge-white);
 }
-
 .role-badge.buffer {
-  background: #2196f3;
-  color: #fff;
+  background: var(--zn-badge-blue);
+  color: var(--zn-badge-white);
 }
-
 .role-badge.debuffer {
-  background: #9c27b0;
-  color: #fff;
+  background: var(--zn-badge-support);
+  color: var(--zn-badge-white);
 }
 
 /* Faction Badge Colors */
 .faction-badge.unaffiliated {
-  background: #757575;
-  color: #fff;
+  background: var(--zn-badge-gray);
+  color: var(--zn-badge-white);
 }
 
 .faction-badge.sapphire {
-  background: #2196f3;
-  color: #fff;
+  background: var(--zn-badge-sapphire);
+  color: var(--zn-badge-white);
 }
 
 .faction-badge.chemic {
-  background: #ff9800;
-  color: #000;
+  background: var(--zn-badge-chemic);
+  color: var(--zn-badge-black);
 }
 
 .faction-badge.avalon {
-  background: #4caf50;
-  color: #fff;
+  background: var(--zn-badge-avalon);
+  color: var(--zn-badge-white);
 }
 
 .faction-badge.odius {
-  background: #9c27b0;
-  color: #fff;
+  background: var(--zn-badge-odius);
+  color: var(--zn-badge-white);
 }
 
 .faction-badge.asa {
-  background: #f44336;
-  color: #fff;
+  background: var(--zn-badge-asa);
+  color: var(--zn-badge-white);
 }
 
 .faction-badge.pingjing-city {
-  background: #00bcd4;
-  color: #fff;
+  background: var(--zn-badge-pingjing-city);
+  color: var(--zn-badge-white);
 }
 
 .faction-badge.monochrome-nation {
-  background: #607d8b;
-  color: #fff;
+  background: var(--zn-badge-monochrome-nation);
+  color: var(--zn-badge-white);
 }
 
 .faction-badge.bicta-tower {
-  background: #673ab7;
-  color: #fff;
+  background: var(--zn-badge-bicta-tower);
+  color: var(--zn-badge-white);
 }
 
 /* Skill Badge Colors */
 .skill-badge.normal-attack {
-  background: #ff9800;
-  color: #000;
+  background: var(--zn-badge-normal-attack);
+  color: var(--zn-badge-black);
 }
 
 .skill-badge.auto-skill {
-  background: #00acc1;
-  color: #fff;
+  background: var(--zn-badge-auto-skill);
+  color: var(--zn-badge-white);
 }
 
 .skill-badge.ultimate {
-  background: #3f51b5;
-  color: #fff;
+  background: var(--zn-badge-ultimate);
+  color: var(--zn-badge-white);
 }
 
 .skill-badge.passive {
-  background: #c2185b;
-  color: #fff;
+  background: var(--zn-badge-passive);
+  color: var(--zn-badge-white);
 }
 
 .skill-badge.team-skill {
-  background: #9c27b0;
-  color: #fff;
+  background: var(--zn-badge-team-skill);
+  color: var(--zn-badge-white);
 }
 
 /* Awakening Badge Colors */
 .awakening-badge.dupe-3,
 .awakening-badge.dupe-5 {
-  background: #ff9800;
-  color: #000;
+  background: var(--zn-badge-orange);
+  color: var(--zn-badge-black);
 }
 
 .awakening-badge.dupe-1,
 .awakening-badge.dupe-2,
 .awakening-badge.dupe-6 {
-  background: #00acc1;
-  color: #fff;
+  background: var(--zn-badge-teal);
+  color: var(--zn-badge-white);
 }
 
 .awakening-badge.dupe-4 {
-  background: #e91e63;
-  color: #fff;
+  background: var(--zn-badge-purple);
+  color: var(--zn-badge-white);
 }
 
 /* Faction Section Styling */
@@ -768,13 +707,13 @@
   font-weight: 600;
   text-transform: none;
   letter-spacing: normal;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--zn-badge-white);
 }
 
 /* Chinese Name Styling - General */
 .chinese-name,
 [class*='chinese'] {
-  color: rgba(255, 255, 255, 0.95) !important;
+  color: var(--zn-badge-white) !important;
   font-weight: 600 !important;
   opacity: 1 !important;
 }
@@ -805,26 +744,26 @@
 
 /* Damage/Scaling Tags - Orange Tones */
 .character-tag.damage-scaling {
-  background: #ff7043;
-  color: #fff;
+  background: var(--zn-badge-red);
+  color: var(--zn-badge-white);
 }
 
 /* Team Utility Tags - Blue/Teal Tones */
 .character-tag.team-utility {
-  background: #2196f3;
-  color: #fff;
+  background: var(--zn-badge-blue);
+  color: var(--zn-badge-white);
 }
 
 /* Self Utility Tags - Green Tones */
 .character-tag.self-utility {
-  background: #4caf50;
-  color: #fff;
+  background: var(--zn-badge-green);
+  color: var(--zn-badge-white);
 }
 
 /* General Mechanic Tags - Purple/Neutral Tones */
 .character-tag.general-mechanic {
-  background: #9c27b0;
-  color: #fff;
+  background: var(--zn-badge-purple);
+  color: var(--zn-badge-white);
 }
 
 /* Character Tags Container */

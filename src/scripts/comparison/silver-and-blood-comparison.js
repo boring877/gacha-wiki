@@ -289,10 +289,21 @@ class SilverBloodCharacterComparison {
 
     const badgesEl = document.querySelector(`.premium-badges[data-badges="${columnIndex}"]`);
     if (badgesEl) {
-      badgesEl.innerHTML = `
-        <span class="rarity-badge ${character.rarity.toLowerCase()}">${character.rarity}</span>
-        <span class="class-badge ${character.class.toLowerCase().replace(' ', '-')}">${character.class}</span>
-      `;
+      // Clear existing content safely
+      badgesEl.innerHTML = '';
+
+      // Create rarity badge securely
+      const rarityBadge = document.createElement('span');
+      rarityBadge.className = `rarity-badge ${character.rarity.toLowerCase()}`;
+      rarityBadge.textContent = character.rarity;
+
+      // Create class badge securely
+      const classBadge = document.createElement('span');
+      classBadge.className = `class-badge ${character.class.toLowerCase().replace(' ', '-')}`;
+      classBadge.textContent = character.class;
+
+      badgesEl.appendChild(rarityBadge);
+      badgesEl.appendChild(classBadge);
     }
 
     // Populate stats

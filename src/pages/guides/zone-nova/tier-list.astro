@@ -2,11 +2,7 @@
 import TierListLayout from '../../../layouts/zone-nova/TierListLayout.astro';
 import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
 import { ZONE_NOVA_CHARACTERS } from '../../../data/zone-nova/characters.js';
-import { 
-  ALL_TIER_LISTS, 
-  TIER_DEFINITIONS, 
-  TIER_LIST_CHANGELOG 
-} from '../../../data/zone-nova/tier-lists.js';
+import { ALL_TIER_LISTS, TIER_DEFINITIONS } from '../../../data/zone-nova/tier-lists.js';
 
 // Create a map of character data for quick lookup
 const characterMap = {};
@@ -36,33 +32,19 @@ function getTierClassName(tier: string): string {
   <div class="tier-list-container">
     <!-- Mode Toggle -->
     <div class="mode-toggle">
-      <button class="mode-btn active" id="view-mode-btn">
-        View Tier Lists
-      </button>
-      <button class="mode-btn" id="maker-mode-btn">
-        Create Your Own
-      </button>
+      <button class="mode-btn active" id="view-mode-btn"> View Tier Lists </button>
+      <button class="mode-btn" id="maker-mode-btn"> Create Your Own </button>
     </div>
 
     <!-- View Mode Content -->
     <div id="view-mode-content">
       <!-- Tier List Type Selector -->
       <div class="tier-list-selector">
-        <button class="tier-type-btn active" data-list-type="pve">
-          Overall PvE
-        </button>
-        <button class="tier-type-btn" data-list-type="pvp">
-          PvP Arena
-        </button>
-        <button class="tier-type-btn" data-list-type="rift">
-          Space-Time Rifts
-        </button>
-        <button class="tier-type-btn" data-list-type="guild-raid">
-          Guild Raid
-        </button>
-        <button class="tier-type-btn" data-list-type="new-player">
-          New Player / F2P
-        </button>
+        <button class="tier-type-btn active" data-list-type="pve"> Overall PvE </button>
+        <button class="tier-type-btn" data-list-type="pvp"> PvP Arena </button>
+        <button class="tier-type-btn" data-list-type="rift"> Space-Time Rifts </button>
+        <button class="tier-type-btn" data-list-type="guild-raid"> Guild Raid </button>
+        <button class="tier-type-btn" data-list-type="new-player"> New Player / F2P </button>
       </div>
     </div>
 
@@ -79,9 +61,7 @@ function getTierClassName(tier: string): string {
       <p class="tier-list-description" id="list-description">
         Character rankings for general PvE content including story, events, and exploration.
       </p>
-      <p class="tier-list-updated" id="list-updated">
-        Last updated: 2025-01-05
-      </p>
+      <p class="tier-list-updated" id="list-updated">Last updated: 2025-01-05</p>
     </div>
 
     <!-- Maker Mode Layout -->
@@ -90,73 +70,74 @@ function getTierClassName(tier: string): string {
       <div class="side-pool" id="side-pool">
         <h3>Character Pool</h3>
         <div class="pool-characters" id="character-pool">
-          <!-- Characters will be populated here -->
+          {/* Characters will be populated here */}
         </div>
       </div>
-      
+
       <!-- Tier List -->
       <div class="maker-tier-list">
         <div class="tier-list-display" id="maker-tier-display">
-          {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
-            <div class="tier-row">
-              <div class={`tier-label tier-${getTierClassName(tier)}`}>
-                {definition.label}
+          {
+            Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
+              <div class="tier-row">
+                <div class={`tier-label tier-${getTierClassName(tier)}`}>{definition.label}</div>
+                <div class="tier-characters droppable" data-tier={tier}>
+                  {/* Characters will be populated by JavaScript */}
+                </div>
               </div>
-              <div class="tier-characters droppable" data-tier={tier}>
-                <!-- Characters will be populated by JavaScript -->
-              </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </div>
 
     <!-- Regular Tier List Display -->
     <div class="tier-list-display" id="tier-list-display">
-      {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
-        <div class="tier-row">
-          <div class={`tier-label tier-${getTierClassName(tier)}`}>
-            {definition.label}
+      {
+        Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
+          <div class="tier-row">
+            <div class={`tier-label tier-${getTierClassName(tier)}`}>{definition.label}</div>
+            <div class="tier-characters" data-tier={tier}>
+              {/* Characters will be populated by JavaScript */}
+            </div>
           </div>
-          <div class="tier-characters" data-tier={tier}>
-            <!-- Characters will be populated by JavaScript -->
-          </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
     <!-- Tier Legend -->
     <div class="tier-legend" id="tier-legend">
-      {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
-        <div class="legend-item">
-          <div class={`legend-tier tier-${getTierClassName(tier)}`}>
-            {definition.label}
+      {
+        Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
+          <div class="legend-item">
+            <div class={`legend-tier tier-${getTierClassName(tier)}`}>{definition.label}</div>
+            <div class="legend-description">
+              <span class="legend-label">{definition.label} Tier</span>
+              <span class="legend-text">{definition.description}</span>
+            </div>
           </div>
-          <div class="legend-description">
-            <span class="legend-label">{definition.label} Tier</span>
-            <span class="legend-text">{definition.description}</span>
-          </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
-
     <!-- Quick Links -->
-    <div style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap;">
-      <a 
-        href="/guides/zone-nova/characters/" 
+    <div
+      style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap;"
+    >
+      <a
+        href="/guides/zone-nova/characters/"
         style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--amber-glow), #FF9800); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.3s ease;"
       >
         Character Database
       </a>
-      <a 
-        href="/guides/zone-nova/team-synergy" 
+      <a
+        href="/guides/zone-nova/team-synergy"
         style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #64b5f6, #42a5f5); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.3s ease;"
       >
         Team Synergy
       </a>
-      <a 
-        href="/guides/zone-nova/character-rankings" 
+      <a
+        href="/guides/zone-nova/character-rankings"
         style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #66bb6a, #4caf50); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.3s ease;"
       >
         Stat Rankings
@@ -219,22 +200,26 @@ function getTierClassName(tier: string): string {
             const charData = characterMap[charInfo.name];
             if (!charData) return;
 
-            // Create character card
+            // Create character card (data is from static files, safe to use template)
             const card = document.createElement('div');
             card.className = 'tier-character-card';
             const elementClass = charData.element ? charData.element.toLowerCase() : '';
-            const elementName = charData.element ? charData.element.charAt(0).toUpperCase() + charData.element.slice(1).toLowerCase() : '';
+            const elementName = charData.element
+              ? charData.element.charAt(0).toUpperCase() + charData.element.slice(1).toLowerCase()
+              : '';
+
+            // Use template for faster creation (data is from static files, already sanitized)
             card.innerHTML = `
               <div class="character-image-wrapper">
-                <img src="${charData.image}" alt="${charData.name}" loading="lazy">
+                <img src="${charData.image.replace(/"/g, '&quot;')}" alt="${charData.name.replace(/"/g, '&quot;')}" loading="lazy">
               </div>
-              <div class="character-name">${charData.name}</div>
+              <div class="character-name">${charData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
               <div class="character-badges">
-                <span class="mini-badge rarity-${charData.rarity.toLowerCase()}">${charData.rarity}</span>
-                ${charData.element ? `<span class="mini-badge element-${elementClass}">${elementName}</span>` : ''}
+                <span class="mini-badge rarity-${charData.rarity.toLowerCase()}">${charData.rarity.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>
+                ${charData.element ? `<span class="mini-badge element-${elementClass}">${elementName.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>` : ''}
               </div>
             `;
-            
+
             // Add click event to navigate to character page
             card.addEventListener('click', () => {
               window.location.href = charData.detailUrl;
@@ -289,7 +274,7 @@ function getTierClassName(tier: string): string {
         tierDisplay.style.display = 'none';
         if (tierLegend) tierLegend.style.display = 'none';
         if (makerLayout) makerLayout.style.display = 'flex';
-        
+
         initializeMakerMode();
       });
 
@@ -301,14 +286,14 @@ function getTierClassName(tier: string): string {
         }
         if (listDescription) {
           const isMobile = window.innerWidth <= 768;
-          listDescription.textContent = isMobile 
+          listDescription.textContent = isMobile
             ? 'Tap a character, then tap a tier to place it'
             : 'Drag characters from the pool to create your custom tier list';
         }
         if (listUpdated) {
           listUpdated.textContent = '';
         }
-        
+
         // Clear and setup tier rows for maker mode
         const makerTierDisplay = document.querySelector('#maker-tier-display');
         if (makerTierDisplay) {
@@ -325,7 +310,7 @@ function getTierClassName(tier: string): string {
 
         // Populate character pool
         populateCharacterPool();
-        
+
         // Setup pool as drop zone (desktop only)
         if (window.innerWidth > 768) {
           setupPoolDropZone();
@@ -336,16 +321,16 @@ function getTierClassName(tier: string): string {
       function populateCharacterPool() {
         if (!characterPool) return;
         characterPool.innerHTML = '';
-        
+
         // Get all unique characters
         const allCharacters = Object.values(characterMap);
-        
+
         allCharacters.forEach(charData => {
           const card = createPoolCard(charData);
           characterPool.appendChild(card);
         });
       }
-      
+
       // Setup pool tab filtering
       function setupPoolTabs() {
         const tabs = document.querySelectorAll('.pool-tab');
@@ -354,7 +339,7 @@ function getTierClassName(tier: string): string {
             // Update active tab
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            
+
             // Filter characters
             const rarity = tab.dataset.rarity;
             populateCharacterPool(rarity);
@@ -368,21 +353,24 @@ function getTierClassName(tier: string): string {
         card.className = 'pool-character-card draggable';
         card.draggable = true;
         card.dataset.character = charData.name;
-        
+
         const elementClass = charData.element ? charData.element.toLowerCase() : '';
-        const elementName = charData.element ? charData.element.charAt(0).toUpperCase() + charData.element.slice(1).toLowerCase() : '';
-        
+        const elementName = charData.element
+          ? charData.element.charAt(0).toUpperCase() + charData.element.slice(1).toLowerCase()
+          : '';
+
+        // Use template for pool card (data is from static files, safe with escaping)
         card.innerHTML = `
-          <img src="${charData.image}" alt="${charData.name}" loading="lazy">
-          <div class="pool-character-name">${charData.name}</div>
+          <img src="${charData.image.replace(/"/g, '&quot;')}" alt="${charData.name.replace(/"/g, '&quot;')}" loading="lazy">
+          <div class="pool-character-name">${charData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
           <div class="pool-character-badges">
-            <span class="pool-mini-badge rarity-${charData.rarity.toLowerCase()}">${charData.rarity}</span>
-            ${charData.element ? `<span class="pool-mini-badge element-${elementClass}">${elementName}</span>` : ''}
+            <span class="pool-mini-badge rarity-${charData.rarity.toLowerCase()}">${charData.rarity.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>
+            ${charData.element ? `<span class="pool-mini-badge element-${elementClass}">${elementName.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>` : ''}
           </div>
         `;
 
         const isMobile = window.innerWidth <= 768;
-        
+
         if (isMobile) {
           // Mobile: Tap to select
           card.addEventListener('click', () => {
@@ -390,11 +378,11 @@ function getTierClassName(tier: string): string {
             document.querySelectorAll('.pool-character-card').forEach(c => {
               c.classList.remove('selected');
             });
-            
+
             // Select this card
             card.classList.add('selected');
             selectedCharacter = charData;
-            
+
             // Highlight tier zones
             document.querySelectorAll('.tier-characters').forEach(zone => {
               zone.classList.add('awaiting-placement');
@@ -402,7 +390,7 @@ function getTierClassName(tier: string): string {
           });
         } else {
           // Desktop: Drag and drop
-          card.addEventListener('dragstart', (e) => {
+          card.addEventListener('dragstart', e => {
             e.dataTransfer.effectAllowed = 'move';
             e.dataTransfer.setData('character', charData.name);
             e.dataTransfer.setData('source', 'pool');
@@ -416,7 +404,7 @@ function getTierClassName(tier: string): string {
 
         return card;
       }
-      
+
       // Setup mobile tier zone (tap to place)
       function setupMobileTierZone(zone) {
         zone.addEventListener('click', () => {
@@ -424,17 +412,19 @@ function getTierClassName(tier: string): string {
             // Remove hint if present
             const hint = zone.querySelector('.drop-zone-hint');
             if (hint) hint.remove();
-            
+
             // Check if character already exists and remove it
-            const existingCard = document.querySelector(`[data-character="${selectedCharacter.name}"]`);
+            const existingCard = document.querySelector(
+              `[data-character="${selectedCharacter.name}"]`
+            );
             if (existingCard) {
               existingCard.remove();
             }
-            
+
             // Add character to tier
             const card = createDraggableCard(selectedCharacter);
             zone.appendChild(card);
-            
+
             // Clear selection
             document.querySelectorAll('.pool-character-card').forEach(c => {
               c.classList.remove('selected');
@@ -453,25 +443,28 @@ function getTierClassName(tier: string): string {
         card.className = 'tier-character-card draggable';
         card.draggable = true;
         card.dataset.character = charData.name;
-        
+
         const elementClass = charData.element ? charData.element.toLowerCase() : '';
-        const elementName = charData.element ? charData.element.charAt(0).toUpperCase() + charData.element.slice(1).toLowerCase() : '';
-        
+        const elementName = charData.element
+          ? charData.element.charAt(0).toUpperCase() + charData.element.slice(1).toLowerCase()
+          : '';
+
+        // Use template for draggable card (data is from static files, safe with escaping)
         card.innerHTML = `
           <div class="character-image-wrapper">
-            <img src="${charData.image}" alt="${charData.name}" loading="lazy">
+            <img src="${charData.image.replace(/"/g, '&quot;')}" alt="${charData.name.replace(/"/g, '&quot;')}" loading="lazy">
           </div>
-          <div class="character-name">${charData.name}</div>
+          <div class="character-name">${charData.name.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
           <div class="character-badges">
-            <span class="mini-badge rarity-${charData.rarity.toLowerCase()}">${charData.rarity}</span>
-            ${charData.element ? `<span class="mini-badge element-${elementClass}">${elementName}</span>` : ''}
+            <span class="mini-badge rarity-${charData.rarity.toLowerCase()}">${charData.rarity.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>
+            ${charData.element ? `<span class="mini-badge element-${elementClass}">${elementName.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>` : ''}
           </div>
           <button class="remove-btn" title="Remove from tier">×</button>
         `;
 
         // Remove button handler
         const removeBtn = card.querySelector('.remove-btn');
-        removeBtn.addEventListener('click', (e) => {
+        removeBtn.addEventListener('click', e => {
           e.stopPropagation();
           // Move back to pool as SMALL card
           const charData = characterMap[card.dataset.character];
@@ -483,7 +476,7 @@ function getTierClassName(tier: string): string {
         });
 
         // Drag events
-        card.addEventListener('dragstart', (e) => {
+        card.addEventListener('dragstart', e => {
           e.dataTransfer.effectAllowed = 'move';
           e.dataTransfer.setData('character', charData.name);
           e.dataTransfer.setData('source', card.parentElement.id || 'pool');
@@ -499,7 +492,7 @@ function getTierClassName(tier: string): string {
 
       // Setup drop zone
       function setupDropZone(zone) {
-        zone.addEventListener('dragover', (e) => {
+        zone.addEventListener('dragover', e => {
           e.preventDefault();
           e.dataTransfer.dropEffect = 'move';
           zone.classList.add('drag-over');
@@ -509,25 +502,25 @@ function getTierClassName(tier: string): string {
           zone.classList.remove('drag-over');
         });
 
-        zone.addEventListener('drop', (e) => {
+        zone.addEventListener('drop', e => {
           e.preventDefault();
           zone.classList.remove('drag-over');
-          
+
           const characterName = e.dataTransfer.getData('character');
           const sourceId = e.dataTransfer.getData('source');
           const charData = characterMap[characterName];
-          
+
           if (charData) {
             // Check if character already exists anywhere and remove it
             const existingCard = document.querySelector(`[data-character="${characterName}"]`);
             if (existingCard) {
               existingCard.remove();
             }
-            
+
             // Remove hint if present
             const hint = zone.querySelector('.drop-zone-hint');
             if (hint) hint.remove();
-            
+
             // Add character to tier
             const card = createDraggableCard(charData);
             zone.appendChild(card);
@@ -538,8 +531,8 @@ function getTierClassName(tier: string): string {
       // Setup pool drop zone
       function setupPoolDropZone() {
         if (!characterPool) return;
-        
-        characterPool.addEventListener('dragover', (e) => {
+
+        characterPool.addEventListener('dragover', e => {
           e.preventDefault();
           e.dataTransfer.dropEffect = 'move';
           characterPool.classList.add('drag-over');
@@ -549,20 +542,20 @@ function getTierClassName(tier: string): string {
           characterPool.classList.remove('drag-over');
         });
 
-        characterPool.addEventListener('drop', (e) => {
+        characterPool.addEventListener('drop', e => {
           e.preventDefault();
           characterPool.classList.remove('drag-over');
-          
+
           const characterName = e.dataTransfer.getData('character');
           const charData = characterMap[characterName];
-          
+
           if (charData) {
             // Check if character already exists and remove it
             const existingCard = document.querySelector(`[data-character="${characterName}"]`);
             if (existingCard) {
               existingCard.remove();
             }
-            
+
             // Add SMALL card back to pool
             const card = createPoolCard(charData);
             characterPool.appendChild(card);
@@ -576,8 +569,6 @@ function getTierClassName(tier: string): string {
           initializeMakerMode();
         }
       });
-
-
 
       // Initial population
       populateTierList('pve');

@@ -264,32 +264,32 @@
 /* Element badges - consolidated colors */
 .pool-character-card .pool-mini-badge.element-fire,
 .tier-character-card .mini-badge.element-fire {
-  background: #f44336;
-  color: #fff;
+  background: var(--zn-badge-fire);
+  color: var(--zn-badge-white);
 }
 
 .pool-character-card .pool-mini-badge.element-ice,
 .tier-character-card .mini-badge.element-ice {
-  background: #2196f3;
-  color: #fff;
+  background: var(--zn-badge-ice);
+  color: var(--zn-badge-white);
 }
 
 .pool-character-card .pool-mini-badge.element-wind,
 .tier-character-card .mini-badge.element-wind {
-  background: #4caf50;
-  color: #fff;
+  background: var(--zn-badge-wind);
+  color: var(--zn-badge-black);
 }
 
 .pool-character-card .pool-mini-badge.element-holy,
 .tier-character-card .mini-badge.element-holy {
-  background: #ffc107;
-  color: #000;
+  background: var(--zn-badge-holy);
+  color: var(--zn-badge-black);
 }
 
 .pool-character-card .pool-mini-badge.element-chaos,
 .tier-character-card .mini-badge.element-chaos {
-  background: #9c27b0;
-  color: #fff;
+  background: var(--zn-badge-chaos);
+  color: var(--zn-badge-white);
 }
 
 /* ============================================ */
@@ -317,10 +317,10 @@
   right: -5px;
   width: 20px;
   height: 20px;
-  background: #ff4757;
+  background: var(--zn-badge-red);
   border: none;
   border-radius: 50%;
-  color: white;
+  color: var(--zn-badge-white);
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
@@ -336,7 +336,8 @@
 }
 
 .remove-btn:hover {
-  background: #ff6b7a;
+  background: var(--zn-badge-red);
+  opacity: 0.8;
   transform: scale(1.1);
 }
 
@@ -745,11 +746,12 @@
 /* ============================================ */
 
 @keyframes pulse {
-  0%, 100% { 
-    opacity: 1; 
+  0%,
+  100% {
+    opacity: 1;
   }
-  50% { 
-    opacity: 0.7; 
+  50% {
+    opacity: 0.7;
   }
 }
 
@@ -884,7 +886,6 @@
     font-size: 0.8rem;
   }
 
-
   .tier-characters {
     padding: 0.75rem;
     justify-content: center;
@@ -899,12 +900,12 @@
     padding: 0.25rem;
     gap: 0.2rem;
   }
-  
+
   .tier-character-card .character-image-wrapper {
     width: 60px;
     height: 60px;
   }
-  
+
   .tier-character-card .character-name {
     font-size: 0.72rem;
     font-weight: 700;
@@ -915,14 +916,14 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .tier-character-card .character-badges {
     gap: 0.2rem;
     max-width: 70px;
     min-height: 20px;
     flex-direction: row;
   }
-  
+
   .tier-character-card .mini-badge {
     padding: 0.08rem 0.2rem;
     font-size: 0.45rem;
