@@ -966,8 +966,8 @@ async function loadCharacterData(characterSlug) {
       throw new Error('Invalid character slug format');
     }
 
-    // Dynamic import of individual character file - absolute path from src root
-    const module = await import(`/src/data/zone-nova/characters/${sanitizedSlug}.js`);
+    // Dynamic import of individual character file - use relative path for production compatibility
+    const module = await import(`../../data/zone-nova/characters/${sanitizedSlug}.js`);
 
     // Extract character data using expected export name pattern (characterSlug + 'Data')
     const exportName = `${sanitizedSlug}Data`;
