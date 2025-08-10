@@ -1,5 +1,110 @@
 /* Silver and Blood Badge Color System */
-/* This file defines consistent badge colors across the entire Silver and Blood wiki */
+/* Consistent badge colors across the entire Silver and Blood wiki */
+
+/* Silver & Blood Badge CSS Variables */
+:root {
+  /* === SILVER & BLOOD BADGE COLORS === */
+  /* Complete badge color system for Silver & Blood - centralized management */
+
+  /* Rarity Badge Colors */
+  --sab-badge-ssr: #ffe066; /* SSR rarity badge - gold background */
+  --sab-badge-sr: #7ecfff; /* SR rarity badge - light blue background */
+  --sab-badge-r: #b0b0b0; /* R rarity badge - gray background */
+
+  /* Class Badge Colors */
+  --sab-badge-warrior: var(--sab-calm-red); /* Warrior class - red */
+  --sab-badge-assassin: #4d4d4d; /* Assassin class - dark gray */
+  --sab-badge-defender: var(--sab-calm-blue); /* Defender class - blue */
+  --sab-badge-marksman: #228b22; /* Marksman class - green */
+  --sab-badge-sorcerer: var(--sab-light-blue); /* Sorcerer class - light blue */
+  --sab-badge-enchanter: var(--sab-muted-gold); /* Enchanter class - gold */
+
+  /* Faction Badge Colors */
+  --sab-badge-kingdom: var(--sab-calm-blue); /* Kingdom faction - blue */
+  --sab-badge-ancestors: #8b4513; /* Ancestors faction - brown */
+  --sab-badge-church: var(--sab-muted-gold); /* Church faction - gold */
+  --sab-badge-bloodborn: var(--sab-dark-red); /* Bloodborn faction - dark red */
+
+  /* Equipment Type Badge Colors */
+  --sab-badge-light: #87ceeb; /* Light equipment - sky blue */
+  --sab-badge-medium: #daa520; /* Medium equipment - goldenrod */
+  --sab-badge-heavy: #696969; /* Heavy equipment - dim gray */
+
+  /* Moon Phase Badge Colors */
+  --sab-badge-new-moon: #2f2f2f; /* New moon - dark gray */
+  --sab-badge-crescent-moon: #708090; /* Crescent moon - slate gray */
+  --sab-badge-full-moon: #f5f5dc; /* Full moon - beige */
+
+  /* Attack Type Badge Colors */
+  --sab-badge-pdmg: #cd853f; /* Physical damage - peru */
+  --sab-badge-mdmg: #4169e1; /* Magical damage - royal blue */
+
+  /* Skill Type Badge Colors */
+  --sab-badge-normal-attack: #808080; /* Normal attack - gray */
+  --sab-badge-special: #ff8c00; /* Special skill - dark orange */
+  --sab-badge-passive: #32cd32; /* Passive skill - lime green */
+  --sab-badge-ultimate: var(--sab-dark-red); /* Ultimate skill - dark red */
+
+  /* Gameplay Tag Badge Colors */
+  --sab-badge-melee: #ff6b6b; /* Melee tag - coral */
+  --sab-badge-aoe-dmg: #ff8c00; /* AOE damage - dark orange */
+  --sab-badge-continuous-dmg: var(--sab-light-blue); /* Continuous damage - light blue */
+  --sab-badge-control: #4169e1; /* Control tag - royal blue */
+  --sab-badge-mid-range: #228b22; /* Mid range - forest green */
+  --sab-badge-single-target-dmg: var(--sab-calm-red); /* Single target damage - calm red */
+  --sab-badge-rush: #ff8c00; /* Rush tag - dark orange */
+  --sab-badge-ranged: #228b22; /* Ranged tag - forest green */
+  --sab-badge-summon: var(--sab-light-blue); /* Summon tag - light blue */
+  --sab-badge-healing: #32cd32; /* Healing tag - lime green */
+  --sab-badge-purify: #ffd700; /* Purify tag - gold */
+  --sab-badge-buff: #4169e1; /* Buff tag - royal blue */
+  --sab-badge-debuff: var(--sab-calm-red); /* Debuff tag - calm red */
+  --sab-badge-bounce-dmg: #e91e63; /* Bounce damage - pink */
+  --sab-badge-gather: #795548; /* Gather tag - brown */
+  --sab-badge-teleport: #673ab7; /* Teleport tag - deep purple */
+  --sab-badge-move: #607d8b; /* Move tag - blue gray */
+  --sab-badge-range: #8bc34a; /* Range tag - light green */
+
+  /* Border Colors */
+  --sab-badge-ssr-border: #ffd700; /* SSR border - gold */
+  --sab-badge-sr-border: #4dbfff; /* SR border - light blue */
+  --sab-badge-r-border: #999999; /* R border - gray */
+  --sab-badge-assassin-border: #333333; /* Assassin border - dark gray */
+  --sab-badge-marksman-border: #32cd32; /* Marksman border - lime green */
+  --sab-badge-ancestors-border: #a0522d; /* Ancestors border - saddle brown */
+  --sab-badge-light-border: #4fc3f7; /* Light equipment border - light blue */
+  --sab-badge-medium-border: #ffb74d; /* Medium equipment border - orange */
+  --sab-badge-heavy-border: #9e9e9e; /* Heavy equipment border - gray */
+  --sab-badge-new-moon-border: #424242; /* New moon border - dark gray */
+  --sab-badge-crescent-moon-border: #90a4ae; /* Crescent moon border - blue gray */
+  --sab-badge-full-moon-border: #fff8dc; /* Full moon border - cornsilk */
+  --sab-badge-pdmg-border: #deb887; /* Physical damage border - burlywood */
+  --sab-badge-mdmg-border: #6495ed; /* Magical damage border - cornflower blue */
+  --sab-badge-normal-attack-border: #a0a0a0; /* Normal attack border - dark gray */
+  --sab-badge-special-border: #ffa500; /* Special skill border - orange */
+  --sab-badge-passive-border: #7cfc00; /* Passive skill border - lawn green */
+
+  /* Tag Badge Borders */
+  --sab-badge-melee-border: #ff5252; /* Melee border - red */
+  --sab-badge-aoe-dmg-border: #ffa500; /* AOE damage border - orange */
+  --sab-badge-control-border: #6495ed; /* Control border - cornflower blue */
+  --sab-badge-mid-range-border: #32cd32; /* Mid range border - lime green */
+  --sab-badge-rush-border: #ffa500; /* Rush border - orange */
+  --sab-badge-ranged-border: #32cd32; /* Ranged border - lime green */
+  --sab-badge-healing-border: #7cfc00; /* Healing border - lawn green */
+  --sab-badge-purify-border: #ffed4a; /* Purify border - gold */
+  --sab-badge-buff-border: #6495ed; /* Buff border - cornflower blue */
+  --sab-badge-bounce-dmg-border: #f06292; /* Bounce damage border - pink */
+  --sab-badge-gather-border: #a1887f; /* Gather border - light brown */
+  --sab-badge-teleport-border: #9575cd; /* Teleport border - medium purple */
+  --sab-badge-move-border: #90a4ae; /* Move border - blue gray */
+  --sab-badge-range-border: #aed581; /* Range border - light green */
+
+  /* Text Colors */
+  --sab-badge-white: #fff; /* White text */
+  --sab-badge-black: #000; /* Black text */
+  --sab-badge-dark: #222; /* Dark text */
+}
 
 /* Base badge styling */
 .badge,
@@ -18,189 +123,227 @@
   font-family: 'Space Grotesk', sans-serif;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           RARITY BADGES                               */
+/*                     SSR, SR, R rarity classifications                  */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
 /* Rarity Badge Colors */
 .rarity-badge.ssr,
 .badge.ssr {
-  background: #ffe066;
-  color: #222;
-  border: 1px solid #ffd700;
+  background: var(--sab-badge-ssr);
+  color: var(--sab-badge-dark);
+  border: 1px solid var(--sab-badge-ssr-border);
 }
 
 .rarity-badge.sr,
 .badge.sr {
-  background: #7ecfff;
-  color: #222;
-  border: 1px solid #4dbfff;
+  background: var(--sab-badge-sr);
+  color: var(--sab-badge-dark);
+  border: 1px solid var(--sab-badge-sr-border);
 }
 
 .rarity-badge.r,
 .badge.r {
-  background: #b0b0b0;
-  color: #222;
-  border: 1px solid #999999;
+  background: var(--sab-badge-r);
+  color: var(--sab-badge-dark);
+  border: 1px solid var(--sab-badge-r-border);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                            CLASS BADGES                                */
+/*            Warrior, Assassin, Defender, Marksman, Sorcerer, Enchanter */
+/* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Class Badge Colors */
 .class-badge.warrior,
 .badge.warrior {
-  background: var(--sab-calm-red);
-  color: #fff;
+  background: var(--sab-badge-warrior);
+  color: var(--sab-badge-white);
   border: 1px solid var(--sab-dark-red);
 }
 
 .class-badge.assassin,
 .badge.assassin {
-  background: #4d4d4d;
-  color: #fff;
-  border: 1px solid #333333;
+  background: var(--sab-badge-assassin);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-assassin-border);
 }
 
 .class-badge.defender,
 .badge.defender {
-  background: var(--sab-calm-blue);
-  color: #fff;
+  background: var(--sab-badge-defender);
+  color: var(--sab-badge-white);
   border: 1px solid var(--sab-dark-blue);
 }
 
 .class-badge.marksman,
 .badge.marksman {
-  background: #228b22;
-  color: #fff;
-  border: 1px solid #32cd32;
+  background: var(--sab-badge-marksman);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-marksman-border);
 }
 
 .class-badge.sorcerer,
 .badge.sorcerer {
-  background: var(--sab-light-blue);
-  color: #fff;
+  background: var(--sab-badge-sorcerer);
+  color: var(--sab-badge-white);
   border: 1px solid var(--sab-dark-blue);
 }
 
 .class-badge.enchanter,
 .badge.enchanter {
-  background: var(--sab-muted-gold);
-  color: #222;
+  background: var(--sab-badge-enchanter);
+  color: var(--sab-badge-dark);
   border: 1px solid var(--sab-blood-accent);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           FACTION BADGES                               */
+/*                Kingdom, Ancestors, Church, Bloodborn                  */
+/* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Faction Badge Colors */
 .faction-badge.kingdom,
 .badge.kingdom {
-  background: var(--sab-calm-blue);
-  color: #fff;
+  background: var(--sab-badge-kingdom);
+  color: var(--sab-badge-white);
   border: 1px solid var(--sab-light-blue);
 }
 
 .faction-badge.ancestors,
 .badge.ancestors {
-  background: #8b4513;
-  color: #fff;
-  border: 1px solid #a0522d;
+  background: var(--sab-badge-ancestors);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-ancestors-border);
 }
 
 .faction-badge.church,
 .badge.church {
-  background: var(--sab-muted-gold);
-  color: #222;
+  background: var(--sab-badge-church);
+  color: var(--sab-badge-dark);
   border: 1px solid var(--sab-silver-accent);
 }
 
 .faction-badge.bloodborn,
 .badge.bloodborn {
-  background: var(--sab-dark-red);
-  color: #fff;
+  background: var(--sab-badge-bloodborn);
+  color: var(--sab-badge-white);
   border: 1px solid var(--sab-calm-red);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                        EQUIPMENT TYPE BADGES                           */
+/*                      Light, Medium, Heavy equipment                    */
+/* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Equipment Type Badge Colors */
 .equipment-badge.light,
 .badge.light {
-  background: #87ceeb;
-  color: #222;
-  border: 1px solid #4fc3f7;
+  background: var(--sab-badge-light);
+  color: var(--sab-badge-dark);
+  border: 1px solid var(--sab-badge-light-border);
 }
 
 .equipment-badge.medium,
 .badge.medium {
-  background: #daa520;
-  color: #222;
-  border: 1px solid #ffb74d;
+  background: var(--sab-badge-medium);
+  color: var(--sab-badge-dark);
+  border: 1px solid var(--sab-badge-medium-border);
 }
 
 .equipment-badge.heavy,
 .badge.heavy {
-  background: #696969;
-  color: #fff;
-  border: 1px solid #9e9e9e;
+  background: var(--sab-badge-heavy);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-heavy-border);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                         MOON PHASE BADGES                              */
+/*                   New Moon, Crescent Moon, Full Moon                   */
+/* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Moon Phase Badge Colors */
 .moon-badge.new-moon,
 .badge.new-moon {
-  background: #2f2f2f;
-  color: #fff;
-  border: 1px solid #424242;
+  background: var(--sab-badge-new-moon);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-new-moon-border);
 }
 
 .moon-badge.crescent-moon,
 .badge.crescent-moon {
-  background: #708090;
-  color: #fff;
-  border: 1px solid #90a4ae;
+  background: var(--sab-badge-crescent-moon);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-crescent-moon-border);
 }
 
 .moon-badge.full-moon,
 .badge.full-moon {
-  background: #f5f5dc;
-  color: #222;
-  border: 1px solid #fff8dc;
+  background: var(--sab-badge-full-moon);
+  color: var(--sab-badge-dark);
+  border: 1px solid var(--sab-badge-full-moon-border);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                         ATTACK TYPE BADGES                             */
+/*                   Physical Damage (pDMG), Magical Damage (mDMG)        */
+/* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Attack Type Badge Colors */
 .attack-badge.pdmg,
 .badge.pdmg {
-  background: #cd853f;
-  color: #fff;
-  border: 1px solid #deb887;
+  background: var(--sab-badge-pdmg);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-pdmg-border);
 }
 
 .attack-badge.mdmg,
 .badge.mdmg {
-  background: #4169e1;
-  color: #fff;
-  border: 1px solid #6495ed;
+  background: var(--sab-badge-mdmg);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-mdmg-border);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                          SKILL TYPE BADGES                             */
+/*               Normal Attack, Special, Passive, Ultimate                */
+/* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Skill Type Badge Colors */
 .skill-badge.normal-attack,
 .badge.normal-attack {
-  background: #808080;
-  color: #fff;
-  border: 1px solid #a0a0a0;
+  background: var(--sab-badge-normal-attack);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-normal-attack-border);
 }
 
 .skill-badge.special,
 .badge.special {
-  background: #ff8c00;
-  color: #fff;
-  border: 1px solid #ffa500;
+  background: var(--sab-badge-special);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-special-border);
 }
 
 .skill-badge.passive,
 .badge.passive {
-  background: #32cd32;
-  color: #fff;
-  border: 1px solid #7cfc00;
+  background: var(--sab-badge-passive);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-passive-border);
 }
 
 .skill-badge.ultimate,
 .badge.ultimate {
-  background: var(--sab-dark-red);
-  color: #fff;
+  background: var(--sab-badge-ultimate);
+  color: var(--sab-badge-white);
   border: 1px solid var(--sab-calm-red);
 }
 
-/* ================= TAG BADGES (Gameplay Tags) ================ */
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                        GAMEPLAY TAG BADGES                            */
+/*                     Consistent gameplay tag styling                    */
+/* ═══════════════════════════════════════════════════════════════════════ */
 .tag-badge {
   padding: 0.2rem 0.6rem;
   border-radius: 10px;
@@ -213,114 +356,119 @@
 }
 
 .tag-badge.melee {
-  background: #ff6b6b;
-  color: #fff;
-  border-color: #ff5252;
+  background: var(--sab-badge-melee);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-melee-border);
 }
 
 .tag-badge.aoe-dmg {
-  background: #ff8c00;
-  color: #fff;
-  border-color: #ffa500;
+  background: var(--sab-badge-aoe-dmg);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-aoe-dmg-border);
 }
 
 .tag-badge.continuous-dmg {
-  background: var(--sab-light-blue);
-  color: #fff;
-  border-color: var(--sab-calm-blue);
+  background: var(--sab-badge-continuous-dmg);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-calm-blue);
 }
 
 .tag-badge.control {
-  background: #4169e1;
-  color: #fff;
-  border-color: #6495ed;
+  background: var(--sab-badge-control);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-control-border);
 }
 
 .tag-badge.mid-range {
-  background: #228b22;
-  color: #fff;
-  border-color: #32cd32;
+  background: var(--sab-badge-mid-range);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-mid-range-border);
 }
 
 .tag-badge.single-target-dmg {
-  background: var(--sab-calm-red);
-  color: #fff;
-  border-color: var(--sab-dark-red);
+  background: var(--sab-badge-single-target-dmg);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-dark-red);
 }
 
 .tag-badge.rush {
-  background: #ff8c00;
-  color: #fff;
-  border-color: #ffa500;
+  background: var(--sab-badge-rush);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-rush-border);
 }
 
 .tag-badge.ranged {
-  background: #228b22;
-  color: #fff;
-  border-color: #32cd32;
+  background: var(--sab-badge-ranged);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-ranged-border);
 }
 
 .tag-badge.summon {
-  background: var(--sab-light-blue);
-  color: #fff;
-  border-color: var(--sab-calm-blue);
+  background: var(--sab-badge-summon);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-calm-blue);
 }
 
 .tag-badge.healing {
-  background: #32cd32;
-  color: #fff;
-  border-color: #7cfc00;
+  background: var(--sab-badge-healing);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-healing-border);
 }
 
 .tag-badge.purify {
-  background: #ffd700;
-  color: #222;
-  border-color: #ffed4a;
+  background: var(--sab-badge-purify);
+  color: var(--sab-badge-dark);
+  border: 1px solid var(--sab-badge-purify-border);
 }
 
 .tag-badge.buff {
-  background: #4169e1;
-  color: #fff;
-  border-color: #6495ed;
+  background: var(--sab-badge-buff);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-buff-border);
 }
 
 .tag-badge.debuff {
-  background: var(--sab-calm-red);
-  color: #fff;
-  border-color: var(--sab-dark-red);
+  background: var(--sab-badge-debuff);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-dark-red);
 }
 
 .tag-badge.bounce-dmg {
-  background: #e91e63;
-  color: #fff;
-  border-color: #f06292;
+  background: var(--sab-badge-bounce-dmg);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-bounce-dmg-border);
 }
 
 .tag-badge.gather {
-  background: #795548;
-  color: #fff;
-  border-color: #a1887f;
+  background: var(--sab-badge-gather);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-gather-border);
 }
 
 .tag-badge.teleport {
-  background: #673ab7;
-  color: #fff;
-  border-color: #9575cd;
+  background: var(--sab-badge-teleport);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-teleport-border);
 }
 
 .tag-badge.move {
-  background: #607d8b;
-  color: #fff;
-  border-color: #90a4ae;
+  background: var(--sab-badge-move);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-move-border);
 }
 
 .tag-badge.range {
-  background: #8bc34a;
-  color: #fff;
-  border-color: #aed581;
+  background: var(--sab-badge-range);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-range-border);
 }
 
-/* Badge styling - no hover effects */
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                         BADGE VARIANTS                                 */
+/*                    Size variants for different contexts                 */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Badge styling - no hover effects for better performance */
 
 /* Small badge variant */
 .badge.small,
@@ -330,7 +478,8 @@
 .equipment-badge.small,
 .moon-badge.small,
 .attack-badge.small,
-.skill-badge.small {
+.skill-badge.small,
+.tag-badge.small {
   padding: 0.15rem 0.4rem;
   font-size: 0.75rem;
 }
@@ -343,7 +492,8 @@
 .equipment-badge.large,
 .moon-badge.large,
 .attack-badge.large,
-.skill-badge.large {
+.skill-badge.large,
+.tag-badge.large {
   padding: 0.3rem 0.8rem;
   font-size: 1rem;
 }
