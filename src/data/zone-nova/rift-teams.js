@@ -41,7 +41,7 @@ export const ZONE_NOVA_RIFT_TEAMS = [
     id: 2,
     name: 'Fire/Wind Rift Team VII',
     type: RIFT_TEAM_TYPES.RIFT_VII,
-    tier: RIFT_TEAM_TIERS.SSS,
+    tier: RIFT_TEAM_TIERS.SS,
     characters: [
       { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
       { name: 'Apollo', image: '/images/games/zone-nova/characters/Apollo.jpg' },
@@ -56,7 +56,7 @@ export const ZONE_NOVA_RIFT_TEAMS = [
     id: 3,
     name: 'Athena Team VII',
     type: RIFT_TEAM_TYPES.RIFT_VII,
-    tier: RIFT_TEAM_TIERS.SSS,
+    tier: RIFT_TEAM_TIERS.SS,
     characters: [
       { name: 'Penny', image: '/images/games/zone-nova/characters/penny.jpg' },
       { name: 'Athena', image: '/images/games/zone-nova/characters/Athena.jpg' },
@@ -71,7 +71,7 @@ export const ZONE_NOVA_RIFT_TEAMS = [
     id: 4,
     name: 'Cheap SR Team VII',
     type: RIFT_TEAM_TYPES.RIFT_VII,
-    tier: RIFT_TEAM_TIERS.SS,
+    tier: RIFT_TEAM_TIERS.S,
     characters: [
       { name: 'Penny', image: '/images/games/zone-nova/characters/penny.jpg' },
       { name: 'Kela', image: '/images/games/zone-nova/characters/kela.jpg' },
