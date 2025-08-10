@@ -1,0 +1,163 @@
+---
+// Import the dedicated rift teams layout
+import RiftTeamsLayout from '../../../layouts/zone-nova/RiftTeamsLayout.astro';
+import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
+---
+
+<RiftTeamsLayout
+  title="Zone Nova Rift Teams Database - GachaWiki"
+  description="Specialized rift team compositions for Space-Time Rifts in Zone Nova - optimized teams for different rift levels and difficulties"
+  gameTitle="Rift Teams Database"
+>
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Zone Nova', href: '/guides/zone-nova/' },
+      { name: 'Rift Teams' },
+    ]}
+  />
+
+  <section class="page-flex">
+    <div class="main-content-container">
+      <div class="content-wrapper">
+        <!-- Community Contribution Notice -->
+        <div
+          style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: linear-gradient(135deg, #e3f2fd 60%, #bbdefb 100%); border-radius: 12px; border: 1px solid #2196f3;"
+        >
+          <p style="color: #1565c0; margin: 0; font-size: 1rem; font-weight: 600;">
+            📢 Help Us Expand the Database!
+          </p>
+          <p style="color: #1976d2; margin: 0.5rem 0 0 0; font-size: 0.9rem; line-height: 1.4;">
+            Please help us add more teams by joining our Discord and sending a message, or reach out
+            via YouTube - either is fine! Your team compositions help other players succeed in
+            rifts.
+          </p>
+        </div>
+
+        <div
+          style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 12px; border: 1px solid var(--amber-glow);"
+        >
+          <p style="color: var(--amber-glow); margin: 0; font-size: 1rem; font-weight: 600;">
+            Space-Time Rift Teams Database
+          </p>
+          <p
+            style="color: var(--text-secondary); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;"
+          >
+            Specialized team compositions optimized for different rift levels and challenges
+          </p>
+          <div
+            style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"
+          >
+            <a
+              href="/guides/zone-nova/team-synergy/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--amber-glow); color: white; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.95rem;"
+            >
+              General Team Synergy
+            </a>
+            <a
+              href="/guides/zone-nova/rifts/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: #64b5f6; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.95rem;"
+            >
+              Rift Guides
+            </a>
+            <a
+              href="/guides/zone-nova/characters/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: #9c27b0; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.95rem;"
+            >
+              Character Database
+            </a>
+          </div>
+        </div>
+
+        <!-- Rift Team Database Components -->
+        <div class="rift-team-database-filter-bar">
+          <div class="rift-filter-controls">
+            <select class="rift-filter-select" id="riftTypeFilter">
+              <option value="">All Rift Types</option>
+              <option value="rift-vii">Rift VII</option>
+              <option value="rift-viii">Rift VIII</option>
+              <option value="rift-ix">Rift IX</option>
+              <option value="rift-x">Rift X</option>
+              <option value="rift-general">General Rift</option>
+              <option value="rift-speedrun">Speedrun</option>
+            </select>
+
+            <select class="rift-filter-select" id="riftTierFilter">
+              <option value="">All Tiers</option>
+              <option value="sss">SSS Teams</option>
+              <option value="ss">SS Teams</option>
+              <option value="s">S Teams</option>
+              <option value="a">A Teams</option>
+              <option value="situational">Situational Teams</option>
+            </select>
+          </div>
+
+          <div class="rift-sort-controls">
+            <button class="rift-sort-btn" data-sort="name">Name</button>
+            <button class="rift-sort-btn" data-sort="type">Type</button>
+            <button class="rift-sort-btn" data-sort="tier">Tier</button>
+            <button class="rift-reset-btn" id="resetRiftFilters">Reset All</button>
+          </div>
+        </div>
+
+        <!-- Desktop Table -->
+        <div class="rift-team-table-container">
+          <table class="rift-team-table">
+            <thead>
+              <tr>
+                <th>Team Name</th>
+                <th>Type</th>
+                <th>Tier</th>
+                <th>Map Weakness</th>
+                <th>Character 1</th>
+                <th>Character 2</th>
+                <th>Character 3</th>
+                <th>Character 4</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="riftTeamTableBody">
+              <!-- Rift teams will be populated here by JavaScript -->
+              <tr class="no-rift-teams-message">
+                <td
+                  colspan="9"
+                  style="text-align: center; padding: 2rem; color: var(--text-secondary); font-style: italic;"
+                >
+                  Rift team database is currently being populated. Check back soon for specialized
+                  rift compositions!
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Cards -->
+        <div class="mobile-rift-card-view" id="riftTeamMobileCards">
+          <!-- Mobile cards will be populated here by JavaScript -->
+          <div
+            class="no-rift-teams-message-mobile"
+            style="text-align: center; padding: 2rem; color: var(--text-secondary); font-style: italic;"
+          >
+            Rift team database is currently being populated. Check back soon for specialized rift
+            compositions!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Import the rift team database utilities -->
+  <script>
+    import { initializeRiftTeamDatabase } from '../../../scripts/rift-teams/zone-nova-rift-teams.js';
+
+    document.addEventListener('DOMContentLoaded', function () {
+      initializeRiftTeamDatabase();
+    });
+  </script>
+
+  <!-- Import the rift teams CSS -->
+  <style>
+    @import '../../../styles/games/zone-nova/zn-rift-teams.css';
+  </style>
+</RiftTeamsLayout>

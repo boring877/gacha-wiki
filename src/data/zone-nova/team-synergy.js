@@ -13,10 +13,11 @@ export const TEAM_TYPES = {
 
 // Team tier constants
 export const TEAM_TIERS = {
-  SSR: 'ssr',
-  SR: 'sr',
+  SSS: 'sss',
+  SS: 'ss',
   S: 's',
-  R: 'r',
+  A: 'a',
+  SITUATIONAL: 'situational',
 };
 
 // Main teams data array - currently empty, ready for population
@@ -25,7 +26,7 @@ export const ZONE_NOVA_TEAMS = [
     id: 1,
     name: 'Levi/Single target',
     type: TEAM_TYPES.EXTRA_ATTACK,
-    tier: TEAM_TIERS.SR,
+    tier: TEAM_TIERS.S,
     characters: [
       { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
       { name: 'Apollo', image: '/images/games/zone-nova/characters/Apollo.jpg' },
@@ -39,7 +40,7 @@ export const ZONE_NOVA_TEAMS = [
     id: 2,
     name: 'Yuis Best Holy Team',
     type: TEAM_TYPES.EXTRA_ATTACK,
-    tier: TEAM_TIERS.SSR,
+    tier: TEAM_TIERS.SS,
     characters: [
       { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
       { name: 'Apollo', image: '/images/games/zone-nova/characters/Apollo.jpg' },
@@ -53,7 +54,7 @@ export const ZONE_NOVA_TEAMS = [
     id: 3,
     name: 'DOT Interrupt',
     type: TEAM_TYPES.DOT,
-    tier: TEAM_TIERS.SSR,
+    tier: TEAM_TIERS.SS,
     characters: [
       { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
       { name: 'Horus', image: '/images/games/zone-nova/characters/Horus.jpg' },
@@ -67,7 +68,7 @@ export const ZONE_NOVA_TEAMS = [
     id: 4,
     name: 'Ice/Mobs Slayer',
     type: TEAM_TYPES.GENERAL,
-    tier: TEAM_TIERS.SR,
+    tier: TEAM_TIERS.S,
     characters: [
       { name: 'Penny', image: '/images/games/zone-nova/characters/penny.jpg' },
       { name: 'Snow Girl', image: '/images/games/zone-nova/characters/Snow.jpg' },
@@ -81,7 +82,7 @@ export const ZONE_NOVA_TEAMS = [
     id: 5,
     name: 'Hera Nuker',
     type: TEAM_TYPES.GENERAL,
-    tier: TEAM_TIERS.SR,
+    tier: TEAM_TIERS.S,
     characters: [
       { name: 'Penny', image: '/images/games/zone-nova/characters/penny.jpg' },
       { name: 'Naiya', image: '/images/games/zone-nova/characters/Naiya.jpg' },
@@ -95,7 +96,7 @@ export const ZONE_NOVA_TEAMS = [
     id: 6,
     name: 'Hera Nuker V2',
     type: TEAM_TYPES.GENERAL,
-    tier: TEAM_TIERS.SR,
+    tier: TEAM_TIERS.S,
     characters: [
       { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
       { name: 'Zashiki-warashi', image: '/images/games/zone-nova/characters/Zashiki-warashi.jpg' },
@@ -180,9 +181,9 @@ export function sortTeams(teams, sortKey, direction = 'asc') {
     if (typeof valA === 'string') valA = valA.toLowerCase();
     if (typeof valB === 'string') valB = valB.toLowerCase();
 
-    // Special handling for tier (SSR > SR > S > R)
+    // Special handling for tier (SSS > SS > S > A > Situational)
     if (sortKey === 'tier') {
-      const tierOrder = { ssr: 4, sr: 3, s: 2, r: 1 };
+      const tierOrder = { sss: 5, ss: 4, s: 3, a: 2, situational: 1 };
       valA = tierOrder[valA] || 0;
       valB = tierOrder[valB] || 0;
     }
@@ -221,10 +222,11 @@ export function getTeamTypeText(type) {
 // Get team tier display text
 export function getTeamTierText(tier) {
   const tierTexts = {
-    [TEAM_TIERS.SSR]: 'SSR',
-    [TEAM_TIERS.SR]: 'SR',
+    [TEAM_TIERS.SSS]: 'SSS',
+    [TEAM_TIERS.SS]: 'SS',
     [TEAM_TIERS.S]: 'S',
-    [TEAM_TIERS.R]: 'R',
+    [TEAM_TIERS.A]: 'A',
+    [TEAM_TIERS.SITUATIONAL]: 'Situational',
   };
   return tierTexts[tier] || 'Unknown';
 }

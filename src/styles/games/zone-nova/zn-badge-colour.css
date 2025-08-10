@@ -5,6 +5,17 @@
 :root {
   /* === ZONE NOVA BADGE COLORS === */
   /* Complete badge color system for Zone Nova - centralized management */
+  --zn-badge-sss: linear-gradient(135deg, #ff4757, #ff6b7a); /* SSS tier badge - red gradient */
+  --zn-badge-ss: linear-gradient(135deg, #ffa502, #ffb822); /* SS tier badge - orange gradient */
+  --zn-badge-s: linear-gradient(135deg, #3742fa, #5f66ff); /* S tier badge - blue gradient */
+  --zn-badge-a: linear-gradient(135deg, #2ed573, #4ed88e); /* A tier badge - green gradient */
+  --zn-badge-situational: linear-gradient(
+    135deg,
+    #9e9e9e,
+    #bdbdbd
+  ); /* Situational tier badge - gray gradient */
+
+  /* Legacy rarity badges - keeping for backwards compatibility */
   --zn-badge-ssr: #ffa500; /* SSR rarity badge - orange background */
   --zn-badge-sr: #7ecfff; /* SR rarity badge - light blue background */
   --zn-badge-r: #a0a0a0; /* R rarity badge - gray background */
@@ -496,7 +507,44 @@
 /*                           CONSOLIDATED BADGE COLORS                     */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
-/* Rarity Badge Colors */
+/* Tier Badge Colors - New System */
+.rarity-badge.sss,
+.tier-badge.sss {
+  background: var(--zn-badge-sss);
+  color: var(--zn-badge-white);
+  font-weight: 700;
+}
+
+.rarity-badge.ss,
+.tier-badge.ss {
+  background: var(--zn-badge-ss);
+  color: var(--zn-badge-black);
+  font-weight: 700;
+}
+
+.rarity-badge.s,
+.tier-badge.s {
+  background: var(--zn-badge-s);
+  color: var(--zn-badge-white);
+  font-weight: 700;
+}
+
+.rarity-badge.a,
+.tier-badge.a {
+  background: var(--zn-badge-a);
+  color: var(--zn-badge-black);
+  font-weight: 700;
+}
+
+.rarity-badge.situational,
+.tier-badge.situational {
+  background: var(--zn-badge-situational);
+  color: var(--zn-badge-black);
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+/* Legacy Rarity Badge Colors - keeping for backwards compatibility */
 .rarity-badge.ssr {
   background: var(--zn-badge-ssr);
   color: var(--zn-badge-black);

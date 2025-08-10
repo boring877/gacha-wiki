@@ -119,11 +119,20 @@ export const zoneNovaConfig = {
       category: 'guides',
     },
     {
+      id: 'rift-teams',
+      title: 'Rift Teams',
+      emoji: '',
+      description:
+        'Specialized team compositions optimized for different Space-Time Rift levels and challenges.',
+      url: '/guides/zone-nova/rift-teams/',
+      category: 'guides',
+    },
+    {
       id: 'team-synergy',
       title: 'Team Synergy',
       emoji: '🤝',
       description:
-        'Effective team compositions for Rifts, Guild Raids, and character-specific synergies.',
+        'General team compositions for Guild Raids, PvE content, and character-specific synergies.',
       url: '/guides/zone-nova/team-synergy/',
       category: 'guides',
     },
