@@ -12,10 +12,7 @@ export const riftSurge7Data = {
     'The seventh wave of Rift Surge brings unprecedented temporal instability. Global modifiers are amplified across all battle encounters, creating dynamic combat scenarios where strategic adaptation is essential for survival within the chaotic Rift of Time.',
   focus: 'Amplified Global Modifiers',
   lawEffects: [
-    'Temporal Amplification: All global modifiers in battles are increased by 100%. This includes damage bonuses, healing effects, and status effect durations',
-    'Surge Resonance: When any character uses an Ultimate ability, all allies gain a random beneficial global modifier for 10 seconds (Effects stack up to 3 times)',
-    'Rift Instability: Every 30 seconds in battle, a random global modifier is applied to all units (50% chance beneficial, 50% chance detrimental). Duration: 15 seconds',
-    'Continuous Damage Amplification: Continuous damage dealt by allied characters is increased by 100%. When an allied character deals damage to an enemy, if the target has 10 or more stacks of continuous damage effects, the damage it receives is increased by 50%',
-    "Power of Faith: Whenever an allied character causes healing, gain 1 stack of [Power of Faith]. When an allied character has 30 stacks of [Power of Faith] and casts an ultimate skill, [Surge of Conviction] is summoned, dealing Holy damage equal to 30% of that character's maximum HP to all enemies and increasing the party's energy recovery rate by 50% for the next 5 seconds. [Surge of Conviction] can trigger at most once every 2 seconds",
+    "Our party's continuous damage is increased by 100%. Additionally, when our party deals damage to enemies, if the target has 10 or more stacks of continuous damage effects, the target takes 50% increased damage.",
+    'After our party performs healing, gain 1 stack of [Power of Devotion]. When our party has 30 stacks of [Power of Devotion] and casts an ultimate ability, summon [Tide of Fury] to deal holy damage equal to 30% of maximum health to all enemies and increase our energy recovery rate by 50% for the next 5 seconds. [Tide of Fury] can be triggered at most once every 8 seconds.',
   ],
 };
