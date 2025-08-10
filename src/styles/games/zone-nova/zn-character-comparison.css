@@ -834,13 +834,54 @@
 @media (max-width: 768px) {
   .filter-bar {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
+    padding: 1rem;
   }
 
-  .filter-controls,
+  .filter-controls {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .filter-select {
+    flex: 1;
+    min-width: 0;
+    max-width: 120px;
+    font-size: 0.75rem;
+    padding: 0.4rem;
+    text-align: center;
+  }
+
+  .controls-right {
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
   .sort-controls {
     width: 100%;
     justify-content: center;
+    gap: 0.5rem;
+    order: 1;
+  }
+
+  .sort-btn {
+    flex: 1;
+    max-width: 80px;
+    font-size: 0.75rem;
+    padding: 0.4rem;
+    text-align: center;
+  }
+
+  .reset-btn {
+    order: 2;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 0.6rem;
+    font-size: 0.8rem;
   }
 
   .character-grid {
@@ -944,6 +985,51 @@
     padding: 1rem;
   }
 
+  /* Enhanced mobile filter bar organization */
+  .filter-bar {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .filter-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .filter-select {
+    font-size: 0.7rem;
+    padding: 0.4rem;
+    max-width: none;
+    text-align: center;
+  }
+
+  .controls-right {
+    gap: 0.8rem;
+  }
+
+  .sort-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  .sort-btn {
+    font-size: 0.7rem;
+    padding: 0.4rem;
+    max-width: none;
+    text-align: center;
+  }
+
+  .reset-btn {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    max-width: 150px;
+  }
+
   .premium-section {
     padding: 1rem;
     margin-bottom: 1.5rem;
@@ -984,10 +1070,6 @@
     line-height: 1.3;
   }
 
-  .premium-section {
-    padding: 0.8rem;
-  }
-
   .stat-label-premium {
     font-size: 0.85rem;
     padding: 0.4rem 0.6rem;
@@ -995,21 +1077,5 @@
 
   .character-info h3 {
     font-size: 1rem;
-  }
-
-  /* Ultra-compact filter bar */
-  .filter-bar {
-    padding: 0.8rem;
-  }
-
-  .filter-select {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.5rem;
-  }
-
-  .sort-btn,
-  .reset-btn {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.6rem;
   }
 }

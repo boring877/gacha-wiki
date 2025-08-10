@@ -307,12 +307,17 @@ class SilverBloodCharacterComparison {
       }
     };
 
-    // Basic info
-    setStatValue('class', character.class);
-    setStatValue('faction', character.faction);
-    setStatValue('equipment', character.equipmentType);
-    setStatValue('moon', character.moonPhase);
-    setStatValue('attack', character.attackType);
+    // Basic info - create badges for these fields
+    this.setStatValueWithBadge('class', character.class, 'class-badge', columnIndex);
+    this.setStatValueWithBadge('faction', character.faction, 'faction-badge', columnIndex);
+    this.setStatValueWithBadge(
+      'equipment',
+      character.equipmentType,
+      'equipment-badge',
+      columnIndex
+    );
+    this.setStatValueWithBadge('moon', character.moonPhase, 'moon-badge', columnIndex);
+    this.setStatValueWithBadge('attack', character.attackType, 'attack-badge', columnIndex);
 
     // Combat stats
     setStatValue('hp', stats.hp !== undefined ? stats.hp.toLocaleString() : 'N/A');
@@ -325,6 +330,22 @@ class SilverBloodCharacterComparison {
       'critdmg',
       stats.critDmgIncrease !== undefined ? stats.critDmgIncrease + '%' : 'N/A'
     );
+  }
+
+  setStatValueWithBadge(statName, value, badgeClass, columnIndex) {
+    const el = document.querySelector(`[data-stat="${statName}-${columnIndex}"]`);
+    if (el && value) {
+      // Create badge element with SAB badge styling
+      const badge = document.createElement('span');
+      badge.className = `${badgeClass} ${value.toLowerCase().replace(/\s+/g, '-')}`;
+      badge.textContent = value;
+
+      // Clear existing content and add badge
+      el.innerHTML = '';
+      el.appendChild(badge);
+      el.classList.add('active');
+      el.style.display = 'block';
+    }
   }
 
   clearTableCells() {
