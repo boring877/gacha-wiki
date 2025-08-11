@@ -35,16 +35,16 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-// Global state for the rift team database
-let currentRiftTeams = [...ZONE_NOVA_RIFT_TEAMS];
+// Global state for the rift team database - apply default sort on initial load
+let currentRiftTeams = sortRiftTeams([...ZONE_NOVA_RIFT_TEAMS], '', 'desc');
 let currentRiftFilters = {
   type: '',
   tier: '',
   searchTerm: '',
 };
 let currentRiftSort = {
-  key: 'name',
-  direction: 'asc',
+  key: '',
+  direction: 'desc',
 };
 
 // Store event listeners for cleanup
@@ -129,17 +129,17 @@ function setupRiftResetListener() {
         searchTerm: '',
       };
 
-      // Reset sort
+      // Reset sort to default order (no active sort button)
       currentRiftSort = {
-        key: 'name',
-        direction: 'asc',
+        key: '',
+        direction: 'desc',
       };
 
       // Reset form elements
       resetRiftFilterElements();
       updateRiftSortButtonStates();
 
-      // Re-render
+      // Re-render with reset state
       applyRiftFiltersAndSort();
     };
     resetButton.addEventListener('click', resetHandler);

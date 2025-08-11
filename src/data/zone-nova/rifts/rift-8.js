@@ -12,8 +12,8 @@ export const rift8Data = {
     'The eighth wave introduces tactical advantages for Guardian-led teams. Enhanced energy recovery from Guardian ultimates creates sustained combat capabilities, while shield-based damage amplification and continuous damage mastery reward defensive positioning and status effect management.',
   focus: 'Guardian Synergy & Shield Combat',
   lawEffects: [
-    'Guardian Energy Mastery: When our Guardian class characters use ultimate skills, entire team gains 10% energy recovery speed increase, maximum 5 stacks, lasts 10 seconds. Multiple Guardian ultimates can rapidly build energy generation for sustained combat.',
-    'Shield Combat Enhancement: When our characters have shields, damage dealt increased by 30%. This bonus applies to all damage types and encourages defensive positioning and shield maintenance strategies.',
-    "Continuous Damage Mastery: Our characters' continuous damage increased by 100%. Additionally, when our characters deal damage to enemies, if the target has 10 or more stacks of continuous damage effects, target takes 50% increased damage. Rewards DoT-focused compositions and status effect stacking.",
+    "When our party's guardian uses their ultimate ability, our entire party's energy recovery speed increases by 10%, maximum 5 stacks, lasting 10 seconds.",
+    'When our party characters have shields, damage dealt increases by 30%.',
+    "Our party's continuous damage is increased by 100%. Additionally, when our party deals damage to enemies, if the target has 10 or more stacks of continuous damage effects, the target takes 50% increased damage.",
   ],
 };

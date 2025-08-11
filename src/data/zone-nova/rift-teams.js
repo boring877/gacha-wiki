@@ -109,6 +109,49 @@ export const ZONE_NOVA_RIFT_TEAMS = [
     notes: 'Leviathan need to carry this team !.',
     elementWeakness: ['Fire', 'Wind'],
   },
+  {
+    id: 7,
+    name: 'Mordred Team VII',
+    type: RIFT_TEAM_TYPES.RIFT_VII,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Mordred', image: '/images/games/zone-nova/characters/Mordred.jpg' },
+      { name: 'Zashiki-warashi', image: '/images/games/zone-nova/characters/Zashiki-warashi.jpg' },
+      { name: 'Snow Girl', image: '/images/games/zone-nova/characters/Snow.jpg' },
+    ],
+    notes:
+      'Mordred hard to kill and the team going to do well, just bit slow. also its quite cheap !!.',
+    elementWeakness: ['Fire', 'Wind'],
+  },
+  {
+    id: 8,
+    name: 'DOT V2 Team VII',
+    type: RIFT_TEAM_TYPES.RIFT_VII,
+    tier: RIFT_TEAM_TIERS.SSS,
+    characters: [
+      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
+      { name: 'Anubis', image: '/images/games/zone-nova/characters/Anubis.jpg' },
+      { name: 'Horus', image: '/images/games/zone-nova/characters/Horus.jpg' },
+      { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
+    ],
+    notes: 'Alot of DOT DMG and AOE. really strong over all.',
+    elementWeakness: ['Fire', 'Wind'],
+  },
+  {
+    id: 9,
+    name: 'AOE DOT Team VII',
+    type: RIFT_TEAM_TYPES.RIFT_VII,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Penny', image: '/images/games/zone-nova/characters/penny.jpg' },
+      { name: 'Shu', image: '/images/games/zone-nova/characters/Shu.jpg' },
+      { name: 'Horus', image: '/images/games/zone-nova/characters/Horus.jpg' },
+      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+    ],
+    notes: 'Alot OF AOE and DOT.',
+    elementWeakness: ['Fire', 'Wind'],
+  },
 ];
 
 // Metadata for filters
@@ -149,6 +192,32 @@ export function filterRiftTeams(teams, { type, tier, searchTerm }) {
 // Sort rift teams based on different criteria
 export function sortRiftTeams(teams, sortKey, direction = 'asc') {
   return [...teams].sort((a, b) => {
+    // Default sort: by type (newest rift first), then by tier, then by name
+    if (!sortKey || sortKey === '') {
+      // First sort by rift type (VIII > VII > VI, etc.)
+      const typeOrder = {
+        'rift-viii': 8,
+        'rift-vii': 7,
+        'rift-vi': 6,
+        'rift-general': 0,
+        'rift-speedrun': 0,
+      };
+      const typeA = typeOrder[a.type] || 0;
+      const typeB = typeOrder[b.type] || 0;
+
+      if (typeA !== typeB) return typeB - typeA; // Descending (newest first)
+
+      // Then by tier (SSS > SS > S > A > Situational)
+      const tierOrder = { sss: 5, ss: 4, s: 3, a: 2, situational: 1 };
+      const tierA = tierOrder[a.tier] || 0;
+      const tierB = tierOrder[b.tier] || 0;
+
+      if (tierA !== tierB) return tierB - tierA; // Descending (best tier first)
+
+      // Finally by name alphabetically
+      return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+    }
+
     let valA = a[sortKey];
     let valB = b[sortKey];
 
