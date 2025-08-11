@@ -152,6 +152,62 @@ export const ZONE_NOVA_RIFT_TEAMS = [
     notes: 'Alot OF AOE and DOT.',
     elementWeakness: ['Fire', 'Wind'],
   },
+  {
+    id: 10,
+    name: 'Yuis crit dmg Team VIII',
+    type: RIFT_TEAM_TYPES.RIFT_VIII,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Zashiki-warashi', image: '/images/games/zone-nova/characters/Zashiki-warashi.jpg' },
+      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+      { name: 'Yuis', image: '/images/games/zone-nova/characters/Yuis.jpg' },
+    ],
+    notes: 'This team good at lv 10, also Yuis doing good DMG.',
+    elementWeakness: ['Holy', 'Ice'],
+  },
+  {
+    id: 11,
+    name: 'DOT/Shield Team VIII',
+    type: RIFT_TEAM_TYPES.RIFT_VIII,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
+      { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
+      { name: 'Naiya', image: '/images/games/zone-nova/characters/Naiya.jpg' },
+      { name: 'Snow Girl', image: '/images/games/zone-nova/characters/Snow.jpg' },
+    ],
+    notes: ' DOT/Shield team quite strong but not broken.',
+    elementWeakness: ['Holy', 'Ice'],
+  },
+  {
+    id: 12,
+    name: 'Guinevere Apollo Team VIII',
+    type: RIFT_TEAM_TYPES.RIFT_VIII,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Apollo', image: '/images/games/zone-nova/characters/Apollo.jpg' },
+      { name: 'Yuis', image: '/images/games/zone-nova/characters/Yuis.jpg' },
+      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+    ],
+    notes: 'Yuis and Apollo synergy for extra dmg type. better version for zashiki.',
+    elementWeakness: ['Holy', 'Ice'],
+  },
+  {
+    id: 13,
+    name: 'Horus DOT Team VIII',
+    type: RIFT_TEAM_TYPES.RIFT_VIII,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
+      { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
+      { name: 'Horus', image: '/images/games/zone-nova/characters/Horus.jpg' },
+      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+    ],
+    notes: 'DOT-focused team with Thor, Odin and Horus.',
+    elementWeakness: ['Holy', 'Ice'],
+  },
 ];
 
 // Metadata for filters
