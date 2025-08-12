@@ -3,6 +3,38 @@
 
 export const ZONE_NOVA_SURVEYS = [
   {
+    id: 'popularity-voting-1',
+    title: 'ZoneNova 1st Best Popularity Award Voting',
+    slug: 'popularity-voting-1',
+    url: '/guides/zone-nova/surveys/popularity-voting-1/',
+    description:
+      'The first ZoneNova popularity voting event where players vote for their favorite characters. Includes reward information and voting guidelines.',
+    meta: '1 Question • Character Popularity Voting',
+    icon: '',
+    status: 'active',
+    totalQuestions: 1,
+    externalLink: 'https://www.surveycake.com/s/lGYe1',
+    image: 'survey3.jpg',
+    endDate: '2025/08/26 23:59 (UTC+8)',
+    reward: 'Energy Cube x1',
+    sections: [
+      {
+        id: 'voting-info',
+        title: 'Popularity Voting Information',
+        questionCount: 1,
+        questions: [
+          {
+            id: 1,
+            title: 'Please select your favorite character to vote for',
+            type: 'external',
+            externalLink: 'https://www.surveycake.com/s/lGYe1',
+            note: 'Click the link above to access the official voting form',
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: 'player-survey-1',
     title: 'General Player Survey #1',
     slug: 'player-survey-1',
@@ -10,7 +42,7 @@ export const ZONE_NOVA_SURVEYS = [
     description:
       'Comprehensive survey covering player demographics, character preferences, content preferences, gameplay experience, and improvement suggestions. Includes adult content preferences section.',
     meta: '23 Questions • Demographics, Preferences, Gameplay',
-    icon: '📋',
+    icon: '',
     status: 'active',
     totalQuestions: 23,
     sections: [
@@ -359,7 +391,7 @@ export const ZONE_NOVA_SURVEYS = [
     description:
       'Survey focused on Guild Raids, Arena, Events, and player preferences for different game modes and future update directions.',
     meta: '31 Questions • Guild Activities, Arena, Events, Preferences',
-    icon: '📋',
+    icon: '',
     status: 'active',
     totalQuestions: 31,
     sections: [

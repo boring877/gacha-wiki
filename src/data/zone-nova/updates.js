@@ -1,6 +1,15 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'first-popularity-voting',
+    title: 'First Popularity Voting Event Now Launching!!!',
+    date: 'August 12, 2025',
+    type: 'announcement',
+    summary:
+      'The first ZoneNova popularity voting event begins! Vote for your favorite characters and receive Energy Cube x1 as reward. Event runs until August 26, 2025.',
+    url: '/guides/zone-nova/updates/announcement-first-popularity-voting/',
+  },
+  {
     id: 'developer-team-notes-1',
     title: 'Developer Team Notes #1: Game Announcements Translation',
     date: 'August 7, 2025',
@@ -205,12 +214,12 @@ export function getTagText(type) {
 // Helper function to get tag emoji
 export function getTagEmoji(type) {
   const emojis = {
-    maintenance: '🔧',
-    event: '🎉',
-    recruitment: '⭐',
-    announcement: '📢',
+    maintenance: '',
+    event: '',
+    recruitment: '',
+    announcement: '',
   };
-  return emojis[type] || '📄';
+  return emojis[type] || '';
 }
 
 // Helper function to get CSS class for update type

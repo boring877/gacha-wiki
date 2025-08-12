@@ -102,11 +102,6 @@
   border-radius: 20px;
   margin-bottom: 3rem;
   border: 1px solid var(--amber-glow);
-  transition: all 0.4s ease;
-}
-
-.content-section:hover {
-  border-color: var(--teal-crystal);
 }
 
 .section-title {
@@ -172,11 +167,6 @@
   padding: 2rem;
   border-radius: 12px;
   border: 1px solid var(--neutral-200);
-  transition: all 0.3s ease;
-}
-
-.info-card:hover {
-  border-color: var(--teal-crystal);
 }
 
 /* ===== RESPONSIVE VISIBILITY ===== */
@@ -210,15 +200,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s ease;
-}
-
-.collapsible-header:hover {
-  background: var(--neutral-200);
 }
 
 .collapsible-toggle {
-  transition: transform 0.3s ease;
 }
 
 .collapsible-section.expanded .collapsible-toggle {
@@ -228,7 +212,6 @@
 .collapsible-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
 }
 
 .collapsible-inner {
@@ -267,9 +250,6 @@
   font-weight: var(--font-medium);
   color: var(--amber-glow);
 }
-
-/* ===== ANIMATIONS ===== */
-/* Animations removed for instant content display */
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
@@ -342,14 +322,6 @@
 
   .section-title {
     font-size: var(--text-xl);
-  }
-}
-
-/* ===== ACCESSIBILITY & PERFORMANCE ===== */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
   }
 }
 

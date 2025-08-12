@@ -7,8 +7,6 @@
   border-radius: 20px;
   margin-bottom: 3rem;
   border: 1px solid var(--amber-glow);
-  box-shadow: 0 12px 30px rgba(255, 183, 77, 0.2);
-  transition: all 0.4s ease;
 }
 
 .section-title {
@@ -46,16 +44,14 @@
 
 /* ===== SURVEY CARDS ===== */
 .survey-card {
-  background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(255, 183, 77, 0.05) 100%);
+  background: var(--bg-primary);
   border: 1px solid var(--amber-glow);
   border-radius: 16px;
   padding: 2rem;
   text-decoration: none;
   color: var(--text-primary);
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(255, 183, 77, 0.1);
 }
 
 .survey-card-header {
@@ -82,7 +78,6 @@
 .survey-icon {
   font-size: 2rem;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
 }
 
 .survey-info {
@@ -96,7 +91,6 @@
   color: var(--amber-glow);
   margin: 0 0 0.5rem 0;
   line-height: var(--leading-tight);
-  transition: color 0.3s ease;
 }
 
 .survey-meta {

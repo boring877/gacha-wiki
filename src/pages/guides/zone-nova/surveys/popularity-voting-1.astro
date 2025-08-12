@@ -1,0 +1,150 @@
+---
+import SurveyPageLayout from '../../../../layouts/zone-nova/SurveyPageLayout.astro';
+import { getSurveyBySlug } from '../../../../data/zone-nova/surveys.js';
+
+const survey = getSurveyBySlug('popularity-voting-1');
+if (!survey) {
+  throw new Error('Survey not found: popularity-voting-1');
+}
+---
+
+<SurveyPageLayout
+  title={`Zone Nova ${survey.title} - GachaWiki`}
+  description={`${survey.description}`}
+  gameTitle={survey.title}
+  surveyTitle={survey.title}
+  surveyMeta={survey.meta}
+>
+  <!-- Survey Introduction -->
+  <section class="content-section">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <img
+        src="/images/games/zone-nova/surveys/survey3.jpg"
+        alt="ZoneNova 1st Best Popularity Award Voting"
+        style="max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--neutral-200);"
+      />
+    </div>
+
+    <div class="warning-box">
+      <div class="warning-title">Popularity Voting Event</div>
+      <div class="warning-content">
+        <p>
+          Dear Captain! The first "ZoneNova" popularity voting event sincerely invites you to cast
+          an important vote!
+        </p>
+        <p>
+          Please "Captain" select a favorite member! At the same time, we have also prepared a gift <strong
+            >Energy Cube x1</strong
+          > to be given to the captain who completed this vote!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voting Section -->
+  <section class="content-section">
+    <h2 class="section-title">Cast Your Vote</h2>
+    <div
+      style="text-align: center; padding: 2rem; background: var(--bg-primary); border-radius: 12px; border: 1px solid var(--neutral-200);"
+    >
+      <p>Click the button below to access the official voting form:</p>
+      <a
+        href="https://www.surveycake.com/s/lGYe1"
+        target="_blank"
+        style="display: inline-block; background: var(--amber-glow); color: var(--text-inverse); padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-family: var(--font-primary); font-size: var(--text-base); font-weight: var(--font-bold); margin: 1rem 0;"
+      >
+        Vote for Your Favorite Character
+      </a>
+      <p
+        style="font-size: var(--text-sm); color: var(--text-secondary); font-style: italic; margin-top: 0.5rem;"
+      >
+        This will open the official ZoneNova voting website in a new tab.
+      </p>
+    </div>
+  </section>
+
+  <!-- Event Details -->
+  <section class="content-section">
+    <h2 class="section-title">Event Details</h2>
+    <div style="display: grid; gap: 1rem; margin-top: 1rem;">
+      <div
+        style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; border: 1px solid var(--neutral-200); display: flex; justify-content: space-between; align-items: center;"
+      >
+        <div
+          style="font-family: var(--font-primary); font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--text-secondary);"
+        >
+          End Date
+        </div>
+        <div
+          style="font-family: var(--font-primary); font-size: var(--text-base); font-weight: var(--font-medium); color: var(--amber-glow); text-align: right;"
+        >
+          August 26, 2025 at 23:59 (UTC+8)
+        </div>
+      </div>
+      <div
+        style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; border: 1px solid var(--neutral-200); display: flex; justify-content: space-between; align-items: center;"
+      >
+        <div
+          style="font-family: var(--font-primary); font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--text-secondary);"
+        >
+          Reward
+        </div>
+        <div
+          style="font-family: var(--font-primary); font-size: var(--text-base); font-weight: var(--font-medium); color: var(--amber-glow); text-align: right;"
+        >
+          Energy Cube x1
+        </div>
+      </div>
+      <div
+        style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; border: 1px solid var(--neutral-200); display: flex; justify-content: space-between; align-items: center;"
+      >
+        <div
+          style="font-family: var(--font-primary); font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--text-secondary);"
+        >
+          Reward Distribution
+        </div>
+        <div
+          style="font-family: var(--font-primary); font-size: var(--text-base); font-weight: var(--font-medium); color: var(--text-primary); text-align: right;"
+        >
+          Sent to game mailbox after statistics completion
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Important Notes -->
+  <section class="content-section">
+    <h2 class="section-title">Important Notes</h2>
+    <div class="warning-box" style="border-color: var(--teal-crystal);">
+      <div class="warning-title" style="color: var(--teal-crystal);">Please Read Carefully</div>
+      <div class="warning-content">
+        <ol>
+          <li>
+            Because the reward will be automatically sent to the captain's game mailbox, if the
+            information is filled in incorrectly and the team cannot successfully deliver the
+            reward, the right to win will be automatically waived.
+          </li>
+
+          <li>
+            The popularity voting results will be announced in the game announcement after the team
+            completes the statistics. Please ask the captain to track the announcement content to
+            receive the latest information as soon as possible.
+          </li>
+
+          <li>
+            The same ID vote will only be counted once, and the same ID will only be awarded once.
+          </li>
+
+          <li>
+            The team reserves the right to change or terminate the time and content of this event.
+          </li>
+        </ol>
+        <p>
+          <strong>Note:</strong> If there is no filling in or the information is filled in incorrectly
+          and the team cannot successfully send the reward, the reward will not be obtained. Please pay
+          attention to check again before sending it out.
+        </p>
+      </div>
+    </div>
+  </section>
+</SurveyPageLayout>
