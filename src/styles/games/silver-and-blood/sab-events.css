@@ -268,8 +268,8 @@
   gap: 0.25rem;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+/* Touch devices and mobile responsive design */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .events-controls {
     gap: 1rem;
   }
@@ -286,11 +286,30 @@
   .search-btn,
   .clear-search-btn {
     width: 100%;
+    padding: 0.8rem 1.5rem; /* Larger touch targets */
+    min-height: 44px; /* Minimum touch target size */
+    font-size: 0.95rem;
+  }
+
+  .search-input {
+    padding: 0.8rem 1rem; /* Larger touch target */
+    min-height: 44px;
+    font-size: 0.95rem;
+  }
+
+  .filter-select {
+    padding: 0.8rem 1rem; /* Larger touch targets */
+    min-height: 44px;
+    font-size: 0.95rem;
   }
 
   .event-header-top {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .event-card {
+    padding: 1.8rem; /* Enhanced touch-friendly padding */
   }
 
   .event-card h2 {
@@ -299,6 +318,13 @@
 
   .pagination {
     flex-wrap: wrap;
+  }
+
+  .pagination-btn,
+  .pagination-number {
+    padding: 0.8rem 1.2rem; /* Larger touch targets */
+    min-height: 44px;
+    font-size: 0.9rem;
   }
 
   .pagination-numbers {
@@ -402,8 +428,8 @@
   font-size: 1rem;
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
+/* Touch devices and mobile responsive design */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .sab-content-section {
     padding: 1rem 0.5rem;
   }
@@ -413,11 +439,30 @@
   }
 
   .sab-event-card {
-    padding: 1.25rem;
+    padding: 1.5rem; /* Enhanced touch-friendly padding */
+    min-height: 44px; /* Minimum touch target size */
   }
 
   .sab-event-title {
     font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sab-content-section {
+    padding: 0.75rem 0.25rem;
+  }
+
+  .sab-section-title {
+    font-size: 1.5rem;
+  }
+
+  .sab-event-card {
+    padding: 1.25rem;
+  }
+
+  .sab-event-title {
+    font-size: 1.1rem;
   }
 }
 
