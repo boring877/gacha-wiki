@@ -831,7 +831,8 @@
 }
 
 /* ===== MOBILE OPTIMIZATION ===== */
-@media (max-width: 768px) {
+/* Touch devices and mobile responsive design */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .filter-bar {
     flex-direction: column;
     gap: 1rem;
@@ -848,8 +849,9 @@
     flex: 1;
     min-width: 0;
     max-width: 120px;
-    font-size: 0.75rem;
-    padding: 0.4rem;
+    font-size: 0.85rem; /* Larger for touch */
+    padding: 0.8rem; /* Larger touch targets */
+    min-height: 44px; /* Minimum touch target size */
     text-align: center;
   }
 
@@ -870,8 +872,9 @@
   .sort-btn {
     flex: 1;
     max-width: 80px;
-    font-size: 0.75rem;
-    padding: 0.4rem;
+    font-size: 0.85rem; /* Larger for touch */
+    padding: 0.8rem; /* Larger touch targets */
+    min-height: 44px; /* Minimum touch target size */
     text-align: center;
   }
 
@@ -880,7 +883,8 @@
     width: 100%;
     max-width: 200px;
     margin: 0 auto;
-    padding: 0.6rem;
+    padding: 0.8rem; /* Larger touch target */
+    min-height: 44px;
     font-size: 0.8rem;
   }
 
@@ -973,6 +977,35 @@
 
   .clear-btn {
     width: 100%;
+    min-height: 44px; /* Touch target size */
+  }
+}
+
+/* Mobile landscape specific adjustments */
+@media (max-height: 768px) and (orientation: landscape) and (hover: none) {
+  .filter-bar {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .filter-controls,
+  .sort-controls {
+    width: auto;
+    gap: 0.5rem;
+  }
+
+  .character-grid {
+    grid-template-columns: 1fr 1fr; /* Two columns in landscape */
+    gap: 1rem;
+  }
+
+  .comparison-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .premium-stats-container {
+    padding: 0.5rem 1rem;
   }
 }
 

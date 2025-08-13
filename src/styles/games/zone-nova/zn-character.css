@@ -298,7 +298,8 @@ table.character-table tr:hover {
 /*                         RESPONSIVE DESIGN                               */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
-@media (max-width: 768px) {
+/* Touch devices and mobile responsive design */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   /* Individual character page mobile styles */
   .overview-flex {
     gap: 1.5rem;
@@ -311,7 +312,8 @@ table.character-table tr:hover {
   }
 
   .stat-item {
-    padding: 0.6rem;
+    padding: 0.8rem; /* Increased for better touch targets */
+    min-height: 44px; /* Minimum touch target size */
   }
 
   .stat-label {
@@ -383,6 +385,19 @@ table.character-table tr:hover {
     justify-content: center;
   }
 
+  /* Enhanced touch-friendly controls */
+  .filter-select,
+  .sort-btn {
+    padding: 0.8rem 1rem; /* Larger touch targets */
+    min-height: 44px; /* Minimum touch target size */
+    font-size: 0.9rem; /* Slightly larger text */
+  }
+
+  .reset-btn {
+    padding: 0.8rem 1.2rem; /* Larger touch target */
+    min-height: 44px;
+  }
+
   .main-content-container {
     padding: 0 1rem;
   }
@@ -421,6 +436,36 @@ table.character-table tr:hover {
     text-overflow: ellipsis;
     line-height: 1.2;
     min-height: auto;
+  }
+}
+
+/* Mobile landscape specific adjustments */
+@media (max-height: 768px) and (orientation: landscape) and (hover: none) {
+  .filter-bar {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .filter-controls,
+  .sort-controls {
+    width: auto;
+    gap: 0.5rem;
+  }
+
+  .main-content-container {
+    padding: 0 1rem;
+  }
+
+  /* Optimize mobile cards for landscape */
+  .mobile-card-view {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .mobile-character-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
   }
 }
 

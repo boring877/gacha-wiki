@@ -49,7 +49,8 @@
 }
 
 /* Responsive Design for Header */
-@media (max-width: 768px) {
+/* Touch devices and mobile responsive design */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .page-header-section {
     padding: 1.5rem;
   }
@@ -692,8 +693,8 @@
 
 /* ===== RESPONSIVE DESIGN ===== */
 
-/* Tablets */
-@media (max-width: 768px) {
+/* Touch devices and tablets */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .desktop-only {
     display: none;
   }

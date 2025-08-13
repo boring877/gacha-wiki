@@ -561,7 +561,8 @@ table.team-table td:nth-child(8) {
 /* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Mobile (768px and below) */
-@media (max-width: 768px) {
+/* Touch devices and mobile responsive design */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .team-table-container {
     display: none;
   }
@@ -585,15 +586,18 @@ table.team-table td:nth-child(8) {
 
   .filter-select,
   .sort-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
-    min-width: 80px;
+    padding: 0.8rem 1.2rem; /* Larger touch targets */
+    font-size: 0.9rem; /* Larger text for readability */
+    min-width: 88px; /* Larger minimum width */
+    min-height: 44px; /* Minimum touch target size */
     text-align: center;
   }
 
   .reset-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
+    padding: 0.8rem 1.2rem; /* Larger touch target */
+    font-size: 0.9rem; /* Larger text */
+    min-height: 44px; /* Minimum touch target size */
+    text-align: center;
   }
 
   .main-content-container {
@@ -769,6 +773,35 @@ table.team-table td:nth-child(8) {
   .mobile-team-card:hover,
   .reset-btn:hover {
     transform: none;
+  }
+}
+
+/* Mobile landscape specific adjustments */
+@media (max-height: 768px) and (orientation: landscape) and (hover: none) {
+  .team-database-filter-bar {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .filter-controls,
+  .sort-controls {
+    width: auto;
+    gap: 0.5rem;
+  }
+
+  .mobile-card-view {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .mobile-team-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .main-content-container {
+    padding: 0 0.5rem;
   }
 }
 
