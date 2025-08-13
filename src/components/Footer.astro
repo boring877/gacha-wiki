@@ -144,8 +144,8 @@ const version = packageInfo.version;
     color: rgba(255, 183, 77, 0.8);
   }
 
-  /* Touch Device & Mobile Responsive */
-  @media (max-width: 1024px) and (hover: none), (max-width: 768px) {
+  /* Touch Device & Mobile Responsive - Always mobile layout on touch devices or small screens */
+  @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
     .footer-container {
       padding: 0.75rem;
     }
