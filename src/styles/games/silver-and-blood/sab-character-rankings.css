@@ -501,7 +501,8 @@
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 768px) {
+/* Touch devices and mobile responsive design */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .rankings-intro .section-title {
     font-size: 1.6rem;
   }

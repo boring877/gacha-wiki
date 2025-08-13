@@ -137,7 +137,8 @@ h3 {
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 768px) {
+/* Touch devices and mobile responsive design */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .content-section {
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -154,9 +155,10 @@ h3 {
     gap: 0.8rem !important;
   }
 
-  /* Mobile skill cards */
+  /* Mobile skill cards with better touch targets */
   .skill-card {
-    padding: 1.2rem !important;
+    padding: 1.4rem !important; /* Larger touch-friendly padding */
+    min-height: 44px; /* Minimum touch target size */
   }
 
   .overview-flex {
@@ -222,7 +224,8 @@ h3 {
   flex-wrap: wrap;
 }
 
-@media (max-width: 768px) {
+/* Additional touch device adjustments */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .overview-flex {
     flex-direction: column;
     align-items: center;
@@ -435,8 +438,8 @@ table.character-table th {
   display: none !important;
 }
 
-/* Mobile: show cards, hide table */
-@media (max-width: 768px) {
+/* Touch devices: show cards, hide table */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .character-table-container {
     display: none !important;
   }
@@ -454,6 +457,19 @@ table.character-table th {
   .sort-controls {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Enhanced touch-friendly controls */
+  .filter-select,
+  .sort-btn {
+    padding: 0.8rem 1rem; /* Larger touch targets */
+    min-height: 44px; /* Minimum touch target size */
+    font-size: 0.9rem; /* Larger text for readability */
+  }
+
+  .reset-btn {
+    padding: 0.8rem 1.2rem; /* Larger touch target */
+    min-height: 44px;
   }
 }
 
@@ -479,8 +495,28 @@ table.character-table th {
   margin-bottom: 1rem;
 }
 
-/* Show only on mobile devices */
-@media (max-width: 768px) {
+/* Mobile landscape specific adjustments */
+@media (max-height: 768px) and (orientation: landscape) and (hover: none) {
+  .filter-bar {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .filter-controls,
+  .sort-controls {
+    width: auto;
+    gap: 0.5rem;
+  }
+
+  .mobile-card-view {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+}
+
+/* Show only on touch devices */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .swipeable-indicator {
     display: block;
   }
