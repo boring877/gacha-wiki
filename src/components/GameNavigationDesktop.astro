@@ -1,0 +1,215 @@
+---
+import { getGameData, isValidGameKey, type GameKey } from '../data/game-navigation';
+
+interface Props {
+  currentPath?: string;
+  gameKey?: GameKey;
+}
+
+const { currentPath = '', gameKey } = Astro.props;
+
+// Validate and sanitize gameKey
+const validatedGameKey = isValidGameKey(gameKey) ? gameKey : null;
+const game = getGameData(validatedGameKey);
+
+const isActive = (href: string) => {
+  if (href.endsWith('/zone-nova/') || href.endsWith('/silver-and-blood/')) {
+    return currentPath === href;
+  }
+  return (
+    currentPath === href ||
+    (currentPath.startsWith(href) && currentPath !== href.replace(/\/$/, ''))
+  );
+};
+
+if (!game) return;
+---
+
+<style>
+  @import '../styles/components/game-navigation-desktop.css';
+
+  /* Hide desktop on mobile/tablet devices */
+  @media (max-width: 1024px) {
+    .game-nav-desktop {
+      display: none;
+    }
+  }
+
+  /* Additional hide for touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .game-nav-desktop {
+      display: none;
+    }
+  }
+</style>
+
+<nav class="game-nav-desktop" data-game={gameKey}>
+  <div class="container">
+    <div class="game-nav-header">
+      <div class="game-info">
+        <a
+          href={gameKey === 'zone-nova' ? '/guides/zone-nova/' : '/guides/silver-and-blood/'}
+          class="game-link"
+        >
+          <div class="game-image-container">
+            <img src={game.image} alt={game.name} class="game-image" loading="lazy" />
+            <div class="game-image-overlay"></div>
+          </div>
+          <h2 class="game-title">{game.name}</h2>
+        </a>
+      </div>
+
+      <!-- Desktop Section Navigation -->
+      <div class="section-nav">
+        {
+          game.sections.map(section => (
+            <div class="section-item">
+              <div class="section-trigger">
+                <span class="section-name">{section.title}</span>
+              </div>
+              <div class="section-dropdown">
+                {section.links.map(link => (
+                  <a
+                    href={link.href}
+                    class={isActive(link.href) ? 'dropdown-link active' : 'dropdown-link'}
+                    aria-current={isActive(link.href) ? 'page' : undefined}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Desktop dropdown functionality with proper cleanup and performance optimizations
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('.game-nav-desktop');
+    if (!nav) return;
+
+    const sectionItems = nav.querySelectorAll('.section-item');
+    const dropdowns = nav.querySelectorAll('.section-dropdown');
+
+    // Store timeout references for cleanup
+    const hoverTimeouts = new Map();
+
+    // Close all dropdowns efficiently
+    const closeAllDropdowns = () => {
+      dropdowns.forEach(dropdown => {
+        dropdown.style.opacity = '0';
+        dropdown.style.visibility = 'hidden';
+      });
+    };
+
+    // Optimized dropdown toggle with event delegation
+    nav.addEventListener('click', e => {
+      const trigger = e.target.closest('.section-trigger');
+      if (!trigger) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const item = trigger.closest('.section-item');
+      const dropdown = item?.querySelector('.section-dropdown');
+
+      if (!dropdown) return;
+
+      // Close other dropdowns first
+      dropdowns.forEach(otherDropdown => {
+        if (otherDropdown !== dropdown) {
+          otherDropdown.style.opacity = '0';
+          otherDropdown.style.visibility = 'hidden';
+        }
+      });
+
+      // Toggle current dropdown
+      const isVisible = dropdown.style.visibility === 'visible';
+      dropdown.style.opacity = isVisible ? '0' : '1';
+      dropdown.style.visibility = isVisible ? 'hidden' : 'visible';
+    });
+
+    // Close dropdowns when clicking outside
+    const handleOutsideClick = e => {
+      if (!nav.contains(e.target)) {
+        closeAllDropdowns();
+      }
+    };
+
+    // Close dropdowns on ESC key
+    const handleEscKey = e => {
+      if (e.key === 'Escape') {
+        closeAllDropdowns();
+      }
+    };
+
+    // Enhanced hover behavior with proper timeout management
+    sectionItems.forEach(item => {
+      const dropdown = item.querySelector('.section-dropdown');
+      if (!dropdown) return;
+
+      const handleMouseEnter = () => {
+        // Clear any existing timeout for this item
+        const existingTimeout = hoverTimeouts.get(item);
+        if (existingTimeout) {
+          clearTimeout(existingTimeout);
+          hoverTimeouts.delete(item);
+        }
+
+        // Close other dropdowns
+        dropdowns.forEach(otherDropdown => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.style.opacity = '0';
+            otherDropdown.style.visibility = 'hidden';
+          }
+        });
+
+        // Show current dropdown
+        dropdown.style.opacity = '1';
+        dropdown.style.visibility = 'visible';
+      };
+
+      const handleMouseLeave = () => {
+        // Clear existing timeout
+        const existingTimeout = hoverTimeouts.get(item);
+        if (existingTimeout) {
+          clearTimeout(existingTimeout);
+        }
+
+        // Set new timeout and store reference
+        const timeoutId = window.setTimeout(() => {
+          if (!item.matches(':hover')) {
+            dropdown.style.opacity = '0';
+            dropdown.style.visibility = 'hidden';
+          }
+          hoverTimeouts.delete(item);
+        }, 100);
+
+        hoverTimeouts.set(item, timeoutId);
+      };
+
+      item.addEventListener('mouseenter', handleMouseEnter);
+      item.addEventListener('mouseleave', handleMouseLeave);
+    });
+
+    // Add global event listeners
+    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener('keydown', handleEscKey);
+
+    // Cleanup function (though not called in this context, good practice)
+    const cleanup = () => {
+      hoverTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
+      hoverTimeouts.clear();
+      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener('keydown', handleEscKey);
+    };
+
+    // Store cleanup function for potential future use
+    nav.dataset.cleanupFn = 'desktopNavCleanup';
+    (window as any).desktopNavCleanup = cleanup;
+  });
+</script>

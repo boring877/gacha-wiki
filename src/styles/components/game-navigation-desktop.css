@@ -1,0 +1,357 @@
+/* ==================================================
+   GAME NAVIGATION DESKTOP - CLEAN & MAINTAINABLE
+   ================================================== */
+
+/* Import required design system variables */
+@import '../colors.css';
+@import '../typography.css';
+
+/* === NAVIGATION-SPECIFIC DESIGN TOKENS === */
+:root {
+  /* Layout Constants */
+  --nav-header-height: 72px;
+  --nav-container-max-width: 1400px;
+  --nav-z-index: 999;
+  --nav-dropdown-z-index: 1002;
+
+  /* Navigation-specific spacing (using standard rem scale) */
+  --nav-spacing-xs: 0.5rem; /* 8px */
+  --nav-spacing-sm: 0.75rem; /* 12px */
+  --nav-spacing-md: 1rem; /* 16px */
+  --nav-spacing-lg: 1.5rem; /* 24px */
+  --nav-spacing-xl: 3rem; /* 48px */
+
+  /* Component sizes */
+  --nav-image-size: 45px;
+  --nav-dropdown-min-width: 200px;
+  --nav-dropdown-arrow-size: 12px;
+
+  /* Animation system */
+  --nav-transition-fast: 0.2s ease;
+  --nav-transition-smooth: 0.3s ease;
+
+  /* Border radius (consistent with design system) */
+  --nav-radius-sm: 8px;
+  --nav-radius-md: 10px;
+  --nav-radius-lg: 12px;
+
+  /* Navigation-specific font sizes (compact, fitting design) */
+  --nav-font-title: 1.2rem; /* Game title - compact yet prominent */
+  --nav-font-icon: 1rem; /* Section icons - standard size */
+  --nav-font-section: 0.85rem; /* Section names - compact labels */
+  --nav-font-dropdown: 0.9rem; /* Dropdown links - readable but compact */
+
+  /* Additional spacing and sizing values */
+  --nav-section-gap: 0.4rem; /* Gap between section elements */
+  --nav-section-padding: 0.6rem 0.8rem; /* Section trigger padding */
+  --nav-dropdown-padding: 0.7rem; /* Dropdown link padding */
+  --nav-margin-bottom: 0.3rem; /* Standard bottom margin */
+  --nav-hover-transform: translateY(-1px); /* Hover lift effect */
+  --nav-blur-effect: blur(12px); /* Backdrop blur amount */
+
+  /* Responsive breakpoints */
+  --nav-breakpoint-lg: 1200px; /* Large desktop breakpoint */
+  --nav-breakpoint-md: 1024px; /* Medium desktop breakpoint */
+}
+
+/* === MAIN NAVIGATION CONTAINER === */
+.game-nav-desktop {
+  position: sticky;
+  top: 72px; /* Must match main header height exactly */
+  z-index: 999; /* Below main header (1000) but above content */
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+  backdrop-filter: var(--nav-blur-effect);
+  margin-bottom: var(--nav-spacing-lg);
+}
+
+.game-nav-desktop .container {
+  max-width: var(--nav-container-max-width);
+  margin: 0 auto;
+  padding: var(--nav-spacing-sm) var(--nav-spacing-lg);
+}
+
+/* === GAME HEADER LAYOUT === */
+.game-nav-desktop .game-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nav-spacing-xl);
+  padding: var(--nav-spacing-xs) 0;
+}
+
+.game-nav-desktop .game-info {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-spacing-md);
+}
+
+.game-nav-desktop .game-link {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-spacing-md);
+  text-decoration: none;
+  border-radius: var(--nav-radius-lg);
+  padding: var(--nav-spacing-xs);
+  margin: calc(var(--nav-spacing-xs) * -1);
+  transition:
+    transform var(--nav-transition-fast),
+    background-color var(--nav-transition-fast);
+}
+
+.game-nav-desktop .game-link:hover {
+  transform: var(--nav-hover-transform);
+  background: rgba(255, 183, 77, 0.05);
+}
+
+/* === GAME IMAGE STYLING === */
+.game-nav-desktop .game-image-container {
+  position: relative;
+  width: var(--nav-image-size);
+  height: var(--nav-image-size);
+  border-radius: var(--nav-radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.game-nav-desktop .game-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-nav-desktop .game-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(0, 0, 0, 0.2));
+  pointer-events: none;
+}
+
+/* === GAME TITLE === */
+.game-nav-desktop .game-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--nav-font-title);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-normal);
+  background: linear-gradient(135deg, var(--amber-glow), #ffd700, #ffeb3b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === SECTION NAVIGATION === */
+.game-nav-desktop .section-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-spacing-xs);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game-nav-desktop .section-item {
+  position: relative;
+}
+
+.game-nav-desktop .section-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-section-gap);
+  padding: var(--nav-section-padding);
+  color: var(--text-inverse);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--nav-radius-md);
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--font-primary);
+  font-weight: var(--font-medium);
+  font-size: var(--text-sm);
+  min-width: fit-content;
+  transition: all var(--nav-transition-fast);
+}
+
+.game-nav-desktop .section-trigger:hover {
+  background: rgba(255, 183, 77, 0.08);
+  border-color: rgba(255, 183, 77, 0.2);
+  transform: var(--nav-hover-transform);
+  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.1);
+}
+
+.game-nav-desktop .section-name {
+  font-size: var(--nav-font-section);
+  font-weight: var(--font-medium);
+}
+
+/* === DROPDOWN MENUS === */
+.game-nav-desktop .section-dropdown {
+  position: absolute;
+  top: calc(100% + var(--nav-spacing-xs));
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  min-width: var(--nav-dropdown-min-width);
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 183, 77, 0.2);
+  border-radius: var(--nav-radius-lg);
+  padding: var(--nav-spacing-md);
+  opacity: 0;
+  visibility: hidden;
+  z-index: var(--nav-dropdown-z-index);
+  transition:
+    opacity var(--nav-transition-smooth),
+    visibility var(--nav-transition-smooth),
+    transform var(--nav-transition-smooth);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.game-nav-desktop .section-dropdown::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--nav-dropdown-arrow-size) / -2);
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: var(--nav-dropdown-arrow-size);
+  height: var(--nav-dropdown-arrow-size);
+  background: var(--bg-dark);
+  border: 1px solid rgba(255, 183, 77, 0.2);
+  border-bottom: none;
+  border-right: none;
+}
+
+.game-nav-desktop .section-item:hover .section-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* === DROPDOWN LINKS === */
+.game-nav-desktop .dropdown-link {
+  display: block;
+  padding: var(--nav-dropdown-padding) var(--nav-spacing-md);
+  color: var(--text-inverse);
+  text-decoration: none;
+  border-radius: var(--nav-radius-sm);
+  font-family: var(--font-primary);
+  font-size: var(--nav-font-dropdown);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--nav-margin-bottom);
+  position: relative;
+  transition: all var(--nav-transition-fast);
+}
+
+.game-nav-desktop .dropdown-link:hover {
+  background: rgba(255, 183, 77, 0.1);
+  color: var(--amber-glow);
+  transform: translateX(4px);
+}
+
+.game-nav-desktop .dropdown-link.active {
+  background: linear-gradient(135deg, var(--amber-glow), #ffd700);
+  color: var(--neutral-900);
+  font-weight: var(--font-semibold);
+}
+
+.game-nav-desktop .dropdown-link:last-child {
+  margin-bottom: 0;
+}
+
+/* === GAME-SPECIFIC STYLING === */
+.game-nav-desktop[data-game='silver-and-blood'] .game-title {
+  background: linear-gradient(135deg, var(--sab-dark-red), var(--sab-light-red), #e57373);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.game-nav-desktop[data-game='silver-and-blood'] .section-trigger:hover {
+  background: rgba(220, 38, 127, 0.08);
+  border-color: rgba(220, 38, 127, 0.2);
+  box-shadow: 0 4px 12px rgba(220, 38, 127, 0.1);
+}
+
+.game-nav-desktop[data-game='silver-and-blood'] .dropdown-link.active {
+  background: linear-gradient(135deg, var(--sab-dark-red), var(--sab-light-red));
+  color: white;
+}
+
+.game-nav-desktop[data-game='silver-and-blood'] .dropdown-link:hover {
+  background: rgba(220, 38, 127, 0.1);
+  color: var(--sab-light-red);
+}
+
+.game-nav-desktop[data-game='zone-nova'] .game-title {
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1200px) {
+  .game-nav-desktop .game-nav-header {
+    gap: var(--nav-spacing-lg);
+  }
+
+  .game-nav-desktop .section-nav {
+    gap: 0.4rem;
+  }
+
+  .game-nav-desktop .section-trigger {
+    padding: var(--nav-spacing-xs) 0.7rem;
+  }
+
+  .game-nav-desktop .section-name {
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 1024px) {
+  .game-nav-desktop .game-nav-header {
+    gap: var(--nav-spacing-md);
+  }
+
+  .game-nav-desktop .section-nav {
+    gap: 0.3rem;
+  }
+
+  .game-nav-desktop .section-trigger {
+    padding: 0.45rem 0.6rem;
+  }
+
+  .game-nav-desktop .section-name {
+    font-size: var(--text-xs);
+  }
+}
+
+/* === ACCESSIBILITY & PERFORMANCE === */
+@media (prefers-reduced-motion: reduce) {
+  .game-nav-desktop .section-trigger,
+  .game-nav-desktop .section-dropdown,
+  .game-nav-desktop .dropdown-link,
+  .game-nav-desktop .game-link {
+    animation: none;
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .game-nav-desktop {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 2px solid var(--amber-glow);
+  }
+
+  .game-nav-desktop .section-trigger {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .game-nav-desktop .dropdown-link {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .game-nav-desktop .dropdown-link.active {
+    border-color: var(--amber-glow);
+  }
+}

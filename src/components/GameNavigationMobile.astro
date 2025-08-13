@@ -1,0 +1,208 @@
+---
+import { getGameData, isValidGameKey, type GameKey } from '../data/game-navigation';
+
+interface Props {
+  currentPath?: string;
+  gameKey?: GameKey;
+}
+
+const { currentPath = '', gameKey } = Astro.props;
+
+// Validate and sanitize gameKey
+const validatedGameKey = isValidGameKey(gameKey) ? gameKey : undefined;
+const game = getGameData(validatedGameKey);
+
+const isActive = (href: string) => {
+  if (href.endsWith('/zone-nova/') || href.endsWith('/silver-and-blood/')) {
+    return currentPath === href;
+  }
+  return (
+    currentPath === href ||
+    (currentPath.startsWith(href) && currentPath !== href.replace(/\/$/, ''))
+  );
+};
+
+if (!game) return;
+---
+
+<style>
+  @import '../styles/components/game-navigation-mobile.css';
+</style>
+
+<nav class="game-nav-mobile" data-game={gameKey}>
+  <div class="container">
+    <div class="game-nav-header">
+      <div class="game-info">
+        <a
+          href={gameKey === 'zone-nova' ? '/guides/zone-nova/' : '/guides/silver-and-blood/'}
+          class="game-link"
+        >
+          <div class="game-image-container">
+            <img src={game.image} alt={game.name} class="game-image" loading="lazy" />
+            <div class="game-image-overlay"></div>
+          </div>
+          <h2 class="game-title">{game.name}</h2>
+        </a>
+      </div>
+
+      <!-- Mobile Sections Button -->
+      <div class="right-elements">
+        <button
+          class="sections-btn"
+          id="navToggle"
+          aria-label="Open Sections"
+          aria-expanded="false"
+        >
+          <span class="sections-text">Sections</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Overlay - Now OUTSIDE nav container for proper full-screen behavior -->
+<div class="mobile-overlay" id="navOverlay"></div>
+<div class="mobile-links" id="mobileNavLinks" data-game={gameKey}>
+  <div class="mobile-game-header">
+    <div class="game-header-content">
+      <img src={game.image} alt={game.name} class="mobile-game-image" loading="lazy" />
+      <div class="mobile-game-title">{game.name}</div>
+    </div>
+    <button class="close-btn" id="navClose" aria-label="Close navigation">✕</button>
+  </div>
+
+  <div class="mobile-sections-grid">
+    {
+      game.sections.map(section => (
+        <div class="mobile-section">
+          <div class="mobile-section-header">
+            <span class="mobile-section-title">{section.title}</span>
+          </div>
+          {section.links.map(link => (
+            <a
+              href={link.href}
+              class={isActive(link.href) ? 'mobile-link active' : 'mobile-link'}
+              aria-current={isActive(link.href) ? 'page' : undefined}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  // Mobile Navigation JavaScript with security and performance improvements
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('mobileNavLinks');
+    const closeBtn = document.getElementById('navClose');
+    const overlay = document.getElementById('navOverlay');
+
+    // Early return if essential elements are missing
+    if (!toggle || !links) return;
+
+    let savedScrollY = 0;
+
+    const close = () => {
+      links.classList.remove('open');
+      overlay?.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+
+      // Restore scrolling and position safely
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+
+      // Restore scroll position safely
+      if (savedScrollY > 0) {
+        window.scrollTo(0, savedScrollY);
+        savedScrollY = 0;
+      }
+    };
+
+    const open = () => {
+      // Save current scroll position
+      savedScrollY = window.scrollY;
+
+      // Prevent scrolling and fix position
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollY}px`;
+      document.body.style.width = '100%';
+
+      links.classList.add('open');
+      overlay?.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    };
+
+    // Toggle function with proper state management
+    const toggleMenu = () => {
+      const isOpen = links.classList.contains('open');
+      if (isOpen) {
+        close();
+      } else {
+        open();
+      }
+    };
+
+    // Optimized click handler with proper event target validation
+    const handleOutsideClick = (e: Event) => {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+
+      if (!toggle.contains(target) && !links.contains(target)) {
+        close();
+      }
+    };
+
+    // Keyboard event handler with validation
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && links.classList.contains('open')) {
+        close();
+        // Return focus to toggle button for accessibility
+        toggle.focus();
+      }
+    };
+
+    // Resize handler with debouncing
+    let resizeTimeout: number | undefined;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(() => {
+        if (window.innerWidth > 768) {
+          close();
+        }
+      }, 100);
+    };
+
+    // Attach event listeners
+    toggle.addEventListener('click', toggleMenu);
+    closeBtn?.addEventListener('click', close);
+    overlay?.addEventListener('click', close);
+    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener('keydown', handleKeydown);
+    window.addEventListener('resize', handleResize);
+
+    // Store cleanup function for potential future use
+    const cleanup = () => {
+      clearTimeout(resizeTimeout);
+      toggle.removeEventListener('click', toggleMenu);
+      closeBtn?.removeEventListener('click', close);
+      overlay?.removeEventListener('click', close);
+      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener('resize', handleResize);
+    };
+
+    // Store cleanup reference
+    if (toggle) {
+      toggle.dataset.cleanupFn = 'mobileNavCleanup';
+      // Type assertion for global window property
+      (window as any).mobileNavCleanup = cleanup;
+    }
+  });
+</script>
