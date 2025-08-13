@@ -460,8 +460,14 @@
   }
 }
 
-/* Touch devices and mobile breakpoint - Show hamburger menu */
+/* Touch devices and mobile breakpoint - Remove sticky for smoother scrolling */
 @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+  .game-nav {
+    position: relative;
+    top: auto;
+    margin-top: 0;
+  }
+
   .game-nav .container {
     padding: 0.75rem 1.5rem;
   }
@@ -492,7 +498,7 @@
 /* Mobile landscape specific adjustments */
 @media (max-height: 768px) and (orientation: landscape) and (hover: none) {
   .game-nav {
-    top: 60px; /* Adjust for smaller header in landscape */
+    margin-top: 0; /* Remove any spacing in landscape mode */
   }
 
   .game-nav .container {

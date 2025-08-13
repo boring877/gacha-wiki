@@ -121,9 +121,10 @@ import MobileHeader from './MobileHeader.astro';
   }
 
   /* Touch Device & Mobile Responsive Design */
-  @media (max-width: 1024px) and (hover: none), (max-width: 768px) {
-    /* Maintain fixed header height on mobile and touch devices */
+  @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+    /* Remove sticky positioning on touch devices for smoother scrolling */
     .header-container {
+      position: relative;
       height: 72px;
     }
 
