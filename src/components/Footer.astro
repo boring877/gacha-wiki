@@ -144,67 +144,14 @@ const version = packageInfo.version;
     color: rgba(255, 183, 77, 0.8);
   }
 
-  /* Touch Device & Mobile Responsive - Always mobile layout on touch devices or small screens */
+  /* Hide footer completely on touch devices and small screens for cleaner mobile experience */
   @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
-    .footer-container {
-      padding: 0.75rem;
-    }
-
-    .footer-content {
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-      text-align: center;
-      padding: 0.75rem 0;
-    }
-
-    /* Hide social links and version info on mobile/touch devices - they're in hamburger menu */
-    .footer-right,
-    .footer-left {
+    .footer {
       display: none;
     }
-
-    /* Center copyright only */
-    .footer-center {
-      justify-content: center;
-      grid-column: 1;
-    }
-
-    .footer-center p {
-      font-size: 0.8rem;
-    }
   }
 
-  /* Mobile landscape specific adjustments */
-  @media (max-height: 768px) and (orientation: landscape) and (hover: none) {
-    .footer-container {
-      padding: 0.5rem;
-    }
-
-    .footer-content {
-      padding: 0.5rem 0;
-      min-height: 48px;
-    }
-
-    .footer-center p {
-      font-size: 0.75rem;
-    }
-  }
-
-  /* Mobile Responsive */
-  @media (max-width: 480px) {
-    .footer-container {
-      padding: 0.5rem;
-    }
-
-    .footer-content {
-      gap: 0.4rem;
-      padding: 0.5rem 0;
-    }
-
-    .footer-center p {
-      font-size: 0.75rem;
-    }
-  }
+  /* Note: Mobile responsive styles removed since footer is hidden on touch devices */
 
   /* Touch Device Optimizations */
   @media (hover: none) and (pointer: coarse) {
