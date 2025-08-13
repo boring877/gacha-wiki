@@ -120,9 +120,9 @@ import MobileHeader from './MobileHeader.astro';
     height: fit-content;
   }
 
-  /* Mobile Responsive Design */
-  @media (max-width: 768px) {
-    /* Maintain fixed header height on mobile */
+  /* Touch Device & Mobile Responsive Design */
+  @media (max-width: 1024px) and (hover: none), (max-width: 768px) {
+    /* Maintain fixed header height on mobile and touch devices */
     .header-container {
       height: 72px;
     }
@@ -147,6 +147,17 @@ import MobileHeader from './MobileHeader.astro';
     .logo-title {
       transition: none;
       will-change: auto;
+    }
+  }
+
+  /* Mobile landscape specific adjustments */
+  @media (max-height: 768px) and (orientation: landscape) and (hover: none) {
+    .header-container {
+      height: 60px;
+    }
+
+    .logo-title {
+      font-size: 1.1rem !important;
     }
   }
 

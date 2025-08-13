@@ -3,16 +3,18 @@
 /*                    Extracted for Better Management                     */
 /* ====================================================================== */
 
-/* Hide mobile elements on desktop */
-.game-nav .close-btn,
-.mobile-overlay,
-.mobile-links,
-.game-nav .toggle {
-  display: none;
+/* Hide mobile elements on desktop only (true desktop devices) */
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+  .game-nav .close-btn,
+  .mobile-overlay,
+  .mobile-links,
+  .game-nav .toggle {
+    display: none;
+  }
 }
 
 /* Mobile-specific styles */
-@media (max-width: 768px) {
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .game-nav .container {
     grid-template-columns: 1fr auto;
     padding: 0.75rem 1rem;

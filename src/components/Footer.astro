@@ -144,8 +144,8 @@ const version = packageInfo.version;
     color: rgba(255, 183, 77, 0.8);
   }
 
-  /* Tablet Responsive */
-  @media (max-width: 768px) {
+  /* Touch Device & Mobile Responsive */
+  @media (max-width: 1024px) and (hover: none), (max-width: 768px) {
     .footer-container {
       padding: 0.75rem;
     }
@@ -157,7 +157,7 @@ const version = packageInfo.version;
       padding: 0.75rem 0;
     }
 
-    /* Hide social links and version info on mobile - they're in hamburger menu */
+    /* Hide social links and version info on mobile/touch devices - they're in hamburger menu */
     .footer-right,
     .footer-left {
       display: none;
@@ -171,6 +171,22 @@ const version = packageInfo.version;
 
     .footer-center p {
       font-size: 0.8rem;
+    }
+  }
+
+  /* Mobile landscape specific adjustments */
+  @media (max-height: 768px) and (orientation: landscape) and (hover: none) {
+    .footer-container {
+      padding: 0.5rem;
+    }
+
+    .footer-content {
+      padding: 0.5rem 0;
+      min-height: 48px;
+    }
+
+    .footer-center p {
+      font-size: 0.75rem;
     }
   }
 

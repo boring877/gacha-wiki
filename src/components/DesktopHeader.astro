@@ -16,7 +16,8 @@ import { SITE_TITLE } from '../consts';
     display: none;
   }
 
-  @media (min-width: 768px) {
+  /* Show desktop nav only on true desktop devices (non-touch, larger screens) */
+  @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
     .desktop-nav {
       display: flex;
       align-items: center;

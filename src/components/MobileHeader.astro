@@ -30,7 +30,8 @@
     position: relative;
   }
 
-  @media (min-width: 768px) {
+  /* Hide mobile nav only on true desktop devices (non-touch, larger screens) */
+  @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
     .mobile-nav {
       display: none;
     }

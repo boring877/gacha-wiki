@@ -460,7 +460,8 @@
   }
 }
 
-@media (max-width: 768px) {
+/* Touch devices and mobile breakpoint - Show hamburger menu */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .game-nav .container {
     padding: 0.75rem 1.5rem;
   }
@@ -485,6 +486,30 @@
 
   .game-title {
     font-size: 1.1rem;
+  }
+}
+
+/* Mobile landscape specific adjustments */
+@media (max-height: 768px) and (orientation: landscape) and (hover: none) {
+  .game-nav {
+    top: 60px; /* Adjust for smaller header in landscape */
+  }
+
+  .game-nav .container {
+    padding: 0.5rem 1.5rem;
+  }
+
+  .game-header {
+    padding: 0.25rem 0;
+  }
+
+  .game-image-container {
+    width: 36px;
+    height: 36px;
+  }
+
+  .game-title {
+    font-size: 1rem;
   }
 }
 
