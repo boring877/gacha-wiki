@@ -227,7 +227,8 @@
 }
 
 /* Zone Nova Layout, Background, and Hero Section Styles */
-.zn-layout-override h2,
+/* Exclude .drawer-title to prevent mobile menu color conflicts */
+.zn-layout-override h2:not(.drawer-title),
 .zn-layout-override .section-title {
   background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
   -webkit-background-clip: text;

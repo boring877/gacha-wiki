@@ -78,6 +78,10 @@ export const dutchmansRevengeData = {
       name: 'Merchant Ship I Chapter - All Stages',
       url: 'https://www.youtube.com/watch?v=0O0wvH9H2RE',
     },
+    {
+      name: 'Merchant Ship 2',
+      url: 'https://www.youtube.com/watch?v=q8LaSLOeFgw',
+    },
   ],
 
   events: {
