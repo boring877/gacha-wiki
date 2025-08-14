@@ -146,7 +146,7 @@
   border-color: rgba(255, 183, 77, 0.5);
 }
 
-/* Mobile Navigation - Full Screen Overlay */
+/* Mobile Navigation - Overlay System */
 .mobile-overlay {
   position: fixed;
   top: 0;
@@ -164,7 +164,7 @@
   cursor: pointer;
 }
 
-.mobile-overlay.open {
+.mobile-overlay.active {
   opacity: 1;
   visibility: visible;
 }
@@ -186,7 +186,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 3.5rem 2.25rem 2.25rem 2.25rem;
+  padding: 0;
   opacity: 0;
   visibility: hidden;
   /* Ensure proper layering */
@@ -211,7 +211,7 @@
   display: none;
 }
 
-.mobile-links.open {
+.mobile-links.active {
   opacity: 1;
   visibility: visible;
 }
@@ -257,8 +257,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
-  margin-bottom: 2.25rem;
-  padding: 2.25rem 2.25rem 1.75rem 2.25rem;
+  padding: 2rem 2rem 1.5rem 2rem;
   border-bottom: 1px solid rgba(255, 183, 77, 0.1);
   min-height: 90px;
 }
@@ -342,6 +341,54 @@
   border-color: #ffb74d;
 }
 
+/* Enhanced Focus Indicators for Modal Behavior */
+.mobile-link:focus,
+.mobile-link:focus-visible {
+  outline: 3px solid #ffb74d;
+  outline-offset: 2px;
+  background: rgba(255, 183, 77, 0.15);
+  border-color: rgba(255, 183, 77, 0.4);
+  transform: translateY(-1px);
+}
+
+.close-btn:focus,
+.close-btn:focus-visible {
+  outline: 3px solid #ffb74d;
+  outline-offset: 2px;
+  background: rgba(255, 183, 77, 0.2);
+  transform: scale(1.1);
+}
+
+.game-nav-mobile .sections-btn:focus,
+.game-nav-mobile .sections-btn:focus-visible {
+  outline: 3px solid #ffb74d;
+  outline-offset: 2px;
+  background: rgba(255, 183, 77, 0.2);
+  border-color: rgba(255, 183, 77, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Game-specific focus indicators */
+.mobile-links[data-game='silver-and-blood'] .mobile-link:focus,
+.mobile-links[data-game='silver-and-blood'] .mobile-link:focus-visible {
+  outline-color: #e57373;
+  background: rgba(229, 115, 115, 0.15);
+  border-color: rgba(229, 115, 115, 0.4);
+}
+
+.mobile-links[data-game='silver-and-blood'] .close-btn:focus,
+.mobile-links[data-game='silver-and-blood'] .close-btn:focus-visible {
+  outline-color: #e57373;
+  background: rgba(229, 115, 115, 0.2);
+}
+
+.game-nav-mobile[data-game='silver-and-blood'] .sections-btn:focus,
+.game-nav-mobile[data-game='silver-and-blood'] .sections-btn:focus-visible {
+  outline-color: #e57373;
+  background: rgba(229, 115, 115, 0.2);
+  border-color: rgba(229, 115, 115, 0.4);
+}
+
 /* Game-Specific Styling */
 .game-nav-mobile[data-game='silver-and-blood'] .game-title {
   background: linear-gradient(135deg, #b71c1c, #e57373, #e57373);
@@ -367,17 +414,24 @@
 /* ============================================== */
 
 /* Default Mobile Portrait: 1 column for narrow screens */
+/* Content wrapper - like drawer-content */
+.mobile-sections-wrapper {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .mobile-sections-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
-  margin-bottom: 3.5rem;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  padding: 0 1.25rem;
-  flex: 1;
+  padding: 0 1rem;
 }
 
 /* Small Mobile Portrait (320px-480px): Single column, optimized for touch */

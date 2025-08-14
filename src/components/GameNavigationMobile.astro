@@ -60,7 +60,7 @@ if (!game) return;
   </div>
 </nav>
 
-<!-- Mobile Navigation Overlay - Now OUTSIDE nav container for proper full-screen behavior -->
+<!-- Mobile Navigation - Overlay System -->
 <div class="mobile-overlay" id="navOverlay"></div>
 <div class="mobile-links" id="mobileNavLinks" data-game={gameKey}>
   <div class="mobile-game-header">
@@ -68,141 +68,120 @@ if (!game) return;
       <img src={game.image} alt={game.name} class="mobile-game-image" loading="lazy" />
       <div class="mobile-game-title">{game.name}</div>
     </div>
-    <button class="close-btn" id="navClose" aria-label="Close navigation">✕</button>
+    <button class="close-btn" id="navClose">✕</button>
   </div>
 
-  <div class="mobile-sections-grid">
-    {
-      game.sections.map(section => (
-        <div class="mobile-section">
-          <div class="mobile-section-header">
-            <span class="mobile-section-title">{section.title}</span>
+  <div class="mobile-sections-wrapper">
+    <div class="mobile-sections-grid">
+      {
+        game.sections.map(section => (
+          <div class="mobile-section">
+            <div class="mobile-section-header">
+              <span class="mobile-section-title">{section.title}</span>
+            </div>
+            {section.links.map(link => (
+              <a
+                href={link.href}
+                class={isActive(link.href) ? 'mobile-link active' : 'mobile-link'}
+              >
+                {link.name}
+              </a>
+            ))}
           </div>
-          {section.links.map(link => (
-            <a
-              href={link.href}
-              class={isActive(link.href) ? 'mobile-link active' : 'mobile-link'}
-              aria-current={isActive(link.href) ? 'page' : undefined}
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
-      ))
-    }
+        ))
+      }
+    </div>
   </div>
 </div>
 
 <script>
-  // Mobile Navigation JavaScript with security and performance improvements
-  document.addEventListener('DOMContentLoaded', () => {
+  // Mobile Navigation - Copy of working Header.astro pattern
+  document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.getElementById('navToggle');
-    const links = document.getElementById('mobileNavLinks');
+    const mobileMenu = document.getElementById('mobileNavLinks');
     const closeBtn = document.getElementById('navClose');
     const overlay = document.getElementById('navOverlay');
+    let isMenuOpen = false;
 
-    // Early return if essential elements are missing
-    if (!toggle || !links) return;
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
 
-    let savedScrollY = 0;
-
-    const close = () => {
-      links.classList.remove('open');
-      overlay?.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-
-      // Restore scrolling and position safely
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-
-      // Restore scroll position safely
-      if (savedScrollY > 0) {
-        window.scrollTo(0, savedScrollY);
-        savedScrollY = 0;
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', isMenuOpen.toString());
       }
-    };
 
-    const open = () => {
-      // Save current scroll position
-      savedScrollY = window.scrollY;
+      if (mobileMenu) {
+        if (isMenuOpen) {
+          // Prevent scrolling and ensure menu is visible
+          document.body.style.overflow = 'hidden';
+          document.body.style.position = 'fixed';
+          document.body.style.top = `-${window.scrollY}px`;
+          document.body.style.width = '100%';
 
-      // Prevent scrolling and fix position
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${savedScrollY}px`;
-      document.body.style.width = '100%';
+          mobileMenu.classList.add('active');
+          overlay?.classList.add('active');
 
-      links.classList.add('open');
-      overlay?.classList.add('open');
-      toggle.setAttribute('aria-expanded', 'true');
-    };
+          // Ensure the menu drawer is visible by scrolling to top
+          const drawer = mobileMenu.querySelector('.mobile-sections-wrapper');
+          if (drawer) {
+            mobileMenu.scrollTop = 0;
+          }
+        } else {
+          // Restore scrolling and position
+          const scrollY = document.body.style.top;
+          document.body.style.overflow = '';
+          document.body.style.position = '';
+          document.body.style.top = '';
+          document.body.style.width = '';
 
-    // Toggle function with proper state management
-    const toggleMenu = () => {
-      const isOpen = links.classList.contains('open');
-      if (isOpen) {
-        close();
-      } else {
-        open();
+          if (scrollY) {
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+          }
+
+          mobileMenu.classList.remove('active');
+          overlay?.classList.remove('active');
+        }
       }
-    };
+    }
 
-    // Optimized click handler with proper event target validation
-    const handleOutsideClick = (e: Event) => {
-      const target = e.target;
-      if (!(target instanceof Element)) return;
-
-      if (!toggle.contains(target) && !links.contains(target)) {
-        close();
+    function closeMenu() {
+      if (isMenuOpen) {
+        toggleMenu();
       }
-    };
+    }
 
-    // Keyboard event handler with validation
-    const handleKeydown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && links.classList.contains('open')) {
-        close();
-        // Return focus to toggle button for accessibility
-        toggle.focus();
+    // Event listeners
+    toggle?.addEventListener('click', toggleMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+    // Close menu when clicking on overlay or links
+    mobileMenu?.addEventListener('click', e => {
+      const target = e.target as HTMLElement;
+      if (
+        target === mobileMenu ||
+        target === overlay ||
+        (target && target.classList?.contains('mobile-link'))
+      ) {
+        closeMenu();
       }
-    };
+    });
+    overlay?.addEventListener('click', closeMenu);
 
-    // Resize handler with debouncing
-    let resizeTimeout: number | undefined;
-    const handleResize = () => {
+    // Close menu on escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        closeMenu();
+      }
+    });
+
+    // Close menu on window resize (desktop breakpoint)
+    let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
+    window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = window.setTimeout(() => {
-        if (window.innerWidth > 768) {
-          close();
+      resizeTimeout = setTimeout(() => {
+        if (window.innerWidth > 768 && isMenuOpen) {
+          closeMenu();
         }
       }, 100);
-    };
-
-    // Attach event listeners
-    toggle.addEventListener('click', toggleMenu);
-    closeBtn?.addEventListener('click', close);
-    overlay?.addEventListener('click', close);
-    document.addEventListener('click', handleOutsideClick);
-    document.addEventListener('keydown', handleKeydown);
-    window.addEventListener('resize', handleResize);
-
-    // Store cleanup function for potential future use
-    const cleanup = () => {
-      clearTimeout(resizeTimeout);
-      toggle.removeEventListener('click', toggleMenu);
-      closeBtn?.removeEventListener('click', close);
-      overlay?.removeEventListener('click', close);
-      document.removeEventListener('click', handleOutsideClick);
-      document.removeEventListener('keydown', handleKeydown);
-      window.removeEventListener('resize', handleResize);
-    };
-
-    // Store cleanup reference
-    if (toggle) {
-      toggle.dataset.cleanupFn = 'mobileNavCleanup';
-      // Type assertion for global window property
-      (window as any).mobileNavCleanup = cleanup;
-    }
+    });
   });
 </script>
