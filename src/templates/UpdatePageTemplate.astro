@@ -74,6 +74,29 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
         display: block;
       }
 
+      /* CSS-only collapsible sections for performance */
+      .collapsible-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        contain: layout style;
+      }
+
+      .collapsible-section.expanded .collapsible-content {
+        max-height: 100vh;
+        transition: max-height 0.5s ease-in;
+      }
+
+      .collapsible-toggle {
+        transition: transform 0.3s ease;
+        transform-origin: center;
+        contain: layout;
+      }
+
+      .collapsible-section.expanded .collapsible-toggle {
+        transform: rotate(180deg);
+      }
+
       @media (max-width: 767px) {
         .mobile-only {
           display: block;
@@ -88,33 +111,22 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
     <script is:inline>
       function toggleCollapsible(button) {
         const section = button.parentElement;
-        const content = section?.querySelector('.collapsible-content');
-
-        if (section && content) {
-          if (section.classList.contains('expanded')) {
-            section.classList.remove('expanded');
-            content.style.maxHeight = '0';
-          } else {
-            section.classList.add('expanded');
-            content.style.maxHeight = content.scrollHeight + 'px';
-          }
+        if (section) {
+          section.classList.toggle('expanded');
         }
       }
 
-      // Auto-expand on desktop or if content is short
+      // Auto-expand on desktop - CSS-only solution to eliminate forced reflows
       document.addEventListener('DOMContentLoaded', function () {
-        const collapsibleSections = document.querySelectorAll('.collapsible-section');
+        const isMobile = window.innerWidth <= 767;
 
-        collapsibleSections.forEach(section => {
-          const content = section.querySelector('.collapsible-content');
-          const isMobile = window.innerWidth <= 767;
-
-          // Auto-expand if not mobile or if content is short
-          if (content && (!isMobile || content.scrollHeight < 400)) {
+        // Auto-expand on desktop for better UX
+        if (!isMobile) {
+          const collapsibleSections = document.querySelectorAll('.collapsible-section');
+          collapsibleSections.forEach(section => {
             section.classList.add('expanded');
-            content.style.maxHeight = content.scrollHeight + 'px';
-          }
-        });
+          });
+        }
       });
     </script>
   </Fragment>
@@ -129,16 +141,16 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
             <div class="data-grid">
               <div class="data-item">
                 <div class="data-label">Date</div>
-                <div class="data-value" set:text={updateData.date}></div>
+                <div class="data-value" set:text={updateData.date} />
               </div>
               <div class="data-item">
                 <div class="data-label">Type</div>
-                <div class="data-value" set:text={updateData.type}></div>
+                <div class="data-value" set:text={updateData.type} />
               </div>
               {Object.entries(updateData.data).map(([key, value]) => (
                 <div class="data-item">
-                  <div class="data-label" set:text={key}></div>
-                  <div class="data-value" set:html={value}></div>
+                  <div class="data-label" set:text={key} />
+                  <div class="data-value" set:html={value} />
                 </div>
               ))}
             </div>
@@ -153,7 +165,7 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
             <h2 class="section-title">TL;DR</h2>
             <ul>
               {updateData.tldr.map(point => (
-                <li set:html={point}></li>
+                <li set:html={point} />
               ))}
             </ul>
           </section>
@@ -175,7 +187,7 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
               {
                 updateData.officialUpdate.greeting && (
                   <p>
-                    <strong set:html={updateData.officialUpdate.greeting}></strong>
+                    <strong set:html={updateData.officialUpdate.greeting} />
                   </p>
                 )
               }
@@ -193,7 +205,7 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
                         isHeader ? 'content-section-header' : isEventItem ? 'event-item-header' : ''
                       }
                     >
-                      <span set:html={paragraph}></span>
+                      <span set:html={paragraph} />
                     </p>
                   );
                 })
@@ -207,7 +219,7 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
           {
             updateData.officialUpdate.greeting && (
               <p>
-                <strong set:html={updateData.officialUpdate.greeting}></strong>
+                <strong set:html={updateData.officialUpdate.greeting} />
               </p>
             )
           }
@@ -225,7 +237,7 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
                     isHeader ? 'content-section-header' : isEventItem ? 'event-item-header' : ''
                   }
                 >
-                  <span set:html={paragraph}></span>
+                  <span set:html={paragraph} />
                 </p>
               );
             })
@@ -239,7 +251,7 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
           <section class="content-section">
             <h2 class="section-title">Closing</h2>
             <div class="info-card">
-              <p set:html={updateData.officialUpdate.closing}></p>
+              <p set:html={updateData.officialUpdate.closing} />
             </div>
           </section>
         )
@@ -258,14 +270,14 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
             >
               <div class="info-card source-info-card">
                 <p class="source-text">
-                  Source: <span class="source-name" set:text={updateData.sourceInfo.source}></span>
+                  Source: <span class="source-name" set:text={updateData.sourceInfo.source} />
                 </p>
               </div>
             </a>
           ) : (
             <div class="info-card">
               <p class="source-text">
-                Source: <span class="source-name" set:text={updateData.sourceInfo.source}></span>
+                Source: <span class="source-name" set:text={updateData.sourceInfo.source} />
               </p>
             </div>
           )

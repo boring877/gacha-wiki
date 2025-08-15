@@ -88,30 +88,133 @@ const {
   :root {
     --bg-primary: #1a1a1a;
     --bg-secondary: #2a2a2a;
+    --bg-dark: #1c1c1c;
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
+    --text-inverse: #ffffff;
     --amber-glow: #ffb74d;
     --teal-crystal: #00acc1;
     --rose-quartz: #f48fb1;
     --mocha-mousse: #a4785c;
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
   }
 
   /* Critical layout styles */
   body {
     margin: 0;
     padding: 0;
-    font-family:
-      'Inter',
-      -apple-system,
-      BlinkMacSystemFont,
-      sans-serif;
+    font-family: var(--font-primary);
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
-    /* Force hardware acceleration */
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
+    /* Force hardware acceleration only where needed */
+    contain: layout style;
+  }
+
+  /* Home body specific styles */
+  .home-body {
+    background: var(--bg-dark);
+  }
+
+  /* Critical hero section styles for LCP optimization */
+  .hero-section {
+    position: relative;
+    padding: 6rem 2rem 8rem 2rem;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    contain: layout style paint;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    contain: layout;
+  }
+
+  /* Critical hero title - this is your LCP element */
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--amber-glow);
+    margin: 0 0 7.5rem 0;
+    text-align: center;
+    contain: layout style paint;
+    /* Optimize for LCP */
+    will-change: auto;
+  }
+
+  /* Critical CTA button styles */
+  .hero-cta {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    contain: layout;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2.5rem;
+    background: rgba(255, 183, 77, 0.9);
+    border: 2px solid rgba(255, 183, 77, 1);
+    border-radius: 12px;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+    backdrop-filter: blur(12px);
+    contain: layout style;
+    transition: transform 0.2s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Background layers - simplified for performance */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    contain: layout style paint;
+  }
+
+  .bg-primary {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+  }
+
+  .bg-accent-1 {
+    background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent);
+    pointer-events: none;
+  }
+
+  /* Home content wrapper */
+  .home-content {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    contain: layout;
+  }
+
+  .home-content main {
+    flex: 1;
+  }
+
+  .home-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+    contain: layout style;
   }
 
   /* Header fixed height to prevent CLS */
@@ -237,7 +340,32 @@ const {
       min-height: auto;
     }
 
-    /* Disable animations on mobile */
+    /* Critical mobile hero optimizations */
+    .hero-section {
+      padding: 3rem 1rem 2rem 1rem;
+      min-height: auto;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 8vw, 2.8rem);
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      margin-bottom: 2rem;
+    }
+
+    /* Reduce complexity on mobile for performance */
+    .bg-accent-2,
+    .bg-accent-3 {
+      display: none;
+    }
+
+    .bg-accent-1 {
+      opacity: 0.5;
+    }
+
+    /* Disable heavy animations on mobile */
     *,
     *::before,
     *::after {
@@ -310,11 +438,27 @@ const {
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- Google Fonts with optimized loading -->
+<!-- Critical Font Preloads for LCP Optimization -->
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/spacegrotesk/v15/V8mQoQDjQSkFtoMM3T6r8E7mPbF4C9yUW4YqKjhc.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<!-- Google Fonts with optimized loading and fallback display -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;700;900&family=Orbitron:wght@400;700;900&display=swap"
   rel="stylesheet"
   media="print"
   onload="this.media='all'"
@@ -323,7 +467,7 @@ const {
 <!-- Fallback for font loading -->
 <noscript>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;700;900&family=Orbitron:wght@400;700;900&display=swap"
     rel="stylesheet"
   />
 </noscript>

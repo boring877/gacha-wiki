@@ -23,7 +23,7 @@ export default defineConfig({
   output: 'static',
   // Build optimizations
   build: {
-    // Inline stylesheets smaller than 4kb
+    // Inline critical CSS smaller than 8kb for better LCP
     inlineStylesheets: 'auto',
     // Assets folder for better organization
     assets: 'assets/',
@@ -37,10 +37,12 @@ export default defineConfig({
   },
   vite: {
     build: {
-      // Enable CSS code splitting
+      // Enable CSS code splitting for better caching
       cssCodeSplit: true,
       // Minify for smaller bundles
       minify: 'esbuild',
+      // Target modern browsers for better optimization
+      target: 'es2022',
       // Tree shaking
       rollupOptions: {
         output: {
@@ -85,6 +87,10 @@ export default defineConfig({
     // Optimize dependencies
     optimizeDeps: {
       include: ['gsap', 'chart.js'],
+    },
+    // CSS optimization
+    css: {
+      devSourcemap: true,
     },
     // Enable esbuild for faster builds with Bun
     esbuild: {
