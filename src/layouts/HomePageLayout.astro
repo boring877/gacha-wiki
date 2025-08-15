@@ -33,29 +33,12 @@ const { title, description } = Astro.props;
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <!-- Deferred Home Page Styles for Performance -->
-  <link rel="stylesheet" href="../styles/pages/home.css" media="print" onload="this.media='all'" />
-  <link
-    rel="stylesheet"
-    href="../styles/components/home-cta.css"
-    media="print"
-    onload="this.media='all'"
-  />
-  <link
-    rel="stylesheet"
-    href="../styles/pages/home-mobile.css"
-    media="print"
-    onload="this.media='all'"
-  />
-
-  <!-- Fallback for users with JavaScript disabled -->
-  <noscript>
-    <style>
-      @import '../styles/pages/home.css';
-      @import '../styles/components/home-cta.css';
-      @import '../styles/pages/home-mobile.css';
-    </style>
-  </noscript>
+  <!-- Home Page Styles -->
+  <style>
+    @import '../styles/pages/home.css';
+    @import '../styles/components/home-cta.css';
+    @import '../styles/pages/home-mobile.css';
+  </style>
 
   <!-- Main Content Area -->
   <main class="home-main">
@@ -99,5 +82,7 @@ const { title, description } = Astro.props;
         </div>
       </div>
     </section>
+
   </main>
+
 </HomeLayout>
