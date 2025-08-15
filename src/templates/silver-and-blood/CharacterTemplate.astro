@@ -115,7 +115,7 @@ const relatedCharacters = [];
         style="flex: 1.2; min-width: 340px; max-width: 420px; display: flex; flex-direction: column; align-items: center;"
       >
         <div
-          style="background: linear-gradient(135deg, #2a2a2a 60%, #1a1a1a 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.15); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid #c0c0c0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;"
+          style="background: var(--sab-character-info-bg); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.15); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--sab-text-light); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;"
         >
           <img
             src={image}
@@ -124,32 +124,32 @@ const relatedCharacters = [];
             height={300}
             loading="eager"
             class="character-portrait"
-            style="margin-bottom: 1.5rem; margin-top: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.20); max-width: 100%; border: 2px solid #c0c0c0;"
+            style="margin-bottom: 1.5rem; margin-top: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.20); max-width: 100%; border: 2px solid var(--sab-text-light);"
           />
           <h1
             class="character-name"
-            style="margin: 0; text-align:center; background: linear-gradient(135deg, #c0c0c0, #dc3545); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.2rem; font-weight: 700;"
+            style="margin: 0; text-align:center; background: linear-gradient(135deg, var(--sab-light-red), var(--sab-calm-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.2rem; font-weight: 700;"
           >
             {name}
           </h1>
-          <p style="color: #c0c0c0; margin: 0.5rem 0 0 0; font-size: 1.1rem; text-align: center;">
+          <p style="color: var(--sab-text-light); margin: 0.5rem 0 0 0; font-size: 1.1rem; text-align: center;">
             {title}
           </p>
-          <p style="color: #a0a0a0; margin: 0.2rem 0 0 0; font-style: italic; text-align: center;">
+          <p style="color: var(--sab-text-medium); margin: 0.2rem 0 0 0; font-style: italic; text-align: center;">
             {subtitle}
           </p>
         </div>
 
         <!-- Character Info -->
         <div
-          style="margin-top: 1.8rem; background: linear-gradient(135deg, #2a2a2a 60%, #1a1a1a 100%); border-radius: 14px; box-shadow: 0 3px 15px rgba(0,0,0,0.15); padding: 1.5rem; border: 1px solid #3a3a3a; width: 100%;"
+          style="margin-top: 1.8rem; background: var(--sab-character-info-bg); border-radius: 14px; box-shadow: 0 3px 15px rgba(0,0,0,0.15); padding: 1.5rem; border: 1px solid var(--sab-border-light); width: 100%;"
         >
           <div
             style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;"
           >
             <div style="text-align: center;">
               <div
-                style="color: #c0c0c0; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
               >
                 Class
               </div>
@@ -157,7 +157,7 @@ const relatedCharacters = [];
             </div>
             <div style="text-align: center;">
               <div
-                style="color: #c0c0c0; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
               >
                 Rarity
               </div>
@@ -165,7 +165,7 @@ const relatedCharacters = [];
             </div>
             <div style="text-align: center;">
               <div
-                style="color: #c0c0c0; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
               >
                 Faction
               </div>
@@ -173,7 +173,7 @@ const relatedCharacters = [];
             </div>
             <div style="text-align: center;">
               <div
-                style="color: #c0c0c0; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
               >
                 Equipment
               </div>
@@ -183,7 +183,7 @@ const relatedCharacters = [];
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <div style="text-align: center;">
               <div
-                style="color: #c0c0c0; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
               >
                 Moon Phase
               </div>
@@ -193,7 +193,7 @@ const relatedCharacters = [];
             </div>
             <div style="text-align: center;">
               <div
-                style="color: #c0c0c0; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
               >
                 Attack Type
               </div>
@@ -208,7 +208,7 @@ const relatedCharacters = [];
             Array.isArray(tags) && tags.length > 0 && (
               <div
                 class="badges-container"
-                style="margin-top: 1.5rem; background: linear-gradient(135deg, #2a2a2a 60%, #1a1a1a 100%); border-radius: 14px; box-shadow: 0 3px 15px rgba(0,0,0,0.15); padding: 1rem 1.5rem; border: 1px solid #3a3a3a; transition: all 0.3s ease;"
+                style="margin-top: 1.5rem; background: var(--sab-character-info-bg); border-radius: 14px; box-shadow: 0 3px 15px rgba(0,0,0,0.15); padding: 1rem 1.5rem; border: 1px solid var(--sab-border-light); transition: all 0.3s ease;"
               >
                 <div style="display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap;">
                   {tags.map(tag => (
@@ -226,253 +226,253 @@ const relatedCharacters = [];
       </div>
 
       <!-- Complete Stats Box (Right) -->
-      <div style="flex: 1.8; min-width: 500px;">
+      <div style="flex: 1.8;">
         <div
-          style="background: linear-gradient(135deg, #1a1a1a 60%, #2a2a2a 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.15); padding: 2rem; border: 1px solid #3a3a3a; width: 100%;"
+          style="background: var(--sab-rankings-bg); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.15); padding: 2rem; border: 1px solid var(--sab-border-light); width: 100%;"
         >
           <!-- All Base Stats -->
           <h3
-            style="color: #c0c0c0; margin: 0 0 1rem 0; text-align: center; font-size: 1.4rem; border-bottom: 2px solid #dc3545; padding-bottom: 0.5rem;"
+            style="color: var(--sab-text-light); margin: 0 0 1rem 0; text-align: center; font-size: 1.4rem; border-bottom: 2px solid var(--sab-calm-red); padding-bottom: 0.5rem;"
           >
             Complete Base Stats
           </h3>
           <p
-            style="color: #a0a0a0; margin: 0 0 1.5rem 0; text-align: center; font-size: 0.9rem; font-style: italic;"
+            style="color: var(--sab-text-medium); margin: 0 0 1.5rem 0; text-align: center; font-size: 0.9rem; font-style: italic;"
           >
             Stats shown at Level 200 (current max level)
           </p>
 
           <!-- Core Combat Stats -->
-          <h4 style="color: #c0c0c0; margin: 0 0 1rem 0; font-size: 1.1rem;">Core Combat Stats</h4>
+          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">Core Combat Stats</h4>
           <div
             class="stats-grid"
             style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
           >
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
               >
                 HP
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 1rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
                 {stats.hp.toLocaleString()}
               </div>
             </div>
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
               >
                 ATK
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 1rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
                 {stats.atk.toLocaleString()}
               </div>
             </div>
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
               >
                 P.DEF
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 1rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
                 {stats.pDef.toLocaleString()}
               </div>
             </div>
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
               >
                 M.DEF
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 1rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
                 {stats.mDef.toLocaleString()}
               </div>
             </div>
           </div>
 
           <!-- Speed and Recovery Stats -->
-          <h4 style="color: #c0c0c0; margin: 0 0 1rem 0; font-size: 1.1rem;">Speed & Recovery</h4>
+          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">Speed & Recovery</h4>
           <div
             class="stats-grid"
             style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
           >
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
               >
                 ATK SPD
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 1rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
                 {stats.atkSpd}
               </div>
             </div>
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
               >
                 Bloodsoul Recovery
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 1rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
                 {stats.bloodsoulRecovery}
               </div>
             </div>
           </div>
 
           <!-- Critical Stats -->
-          <h4 style="color: #c0c0c0; margin: 0 0 1rem 0; font-size: 1.1rem;">Critical Stats</h4>
+          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">Critical Stats</h4>
           <div
             class="stats-grid"
             style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
           >
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
               >
                 CRIT Rate
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 1rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
                 {stats.critRate}%
               </div>
             </div>
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
               >
                 CRIT DMG Increase
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 1rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
                 {stats.critDmgIncrease}%
               </div>
             </div>
           </div>
 
           <!-- Damage Bonuses -->
-          <h4 style="color: #c0c0c0; margin: 0 0 1rem 0; font-size: 1.1rem;">Damage Bonuses</h4>
+          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">Damage Bonuses</h4>
           <div
             class="stats-grid"
             style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
           >
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
               >
                 All DMG Bonus
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 0.95rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
                 {stats.allDmgBonus}%
               </div>
             </div>
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
               >
                 P.DMG Bonus
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 0.95rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
                 {stats.pDmgBonus}%
               </div>
             </div>
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
               >
                 M.DMG Bonus
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 0.95rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
                 {stats.mDmgBonus}%
               </div>
             </div>
           </div>
 
           <!-- Special Stats -->
-          <h4 style="color: #c0c0c0; margin: 0 0 1rem 0; font-size: 1.1rem;">Special Stats</h4>
+          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">Special Stats</h4>
           <div
             class="stats-grid"
             style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem;"
           >
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
               >
                 All DMG Reduction
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 0.95rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
                 {stats.allDmgReduction}%
               </div>
             </div>
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
               >
                 Healing Bonus
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 0.95rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
                 {stats.receivedHealingBonus}%
               </div>
             </div>
             <div
               class="stat-item"
-              style="text-align:center; background: #2a2a2a; padding: 0.8rem; border-radius: 8px; border: 1px solid #3a3a3a;"
+              style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
             >
               <div
                 class="stat-label"
-                style="color: #c0c0c0; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
+                style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.8rem;"
               >
                 Blood Power
               </div>
-              <div class="stat-value" style="color: #dc3545; font-weight: 700; font-size: 0.95rem;">
+              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
                 {stats.bloodPower.toLocaleString()}
               </div>
             </div>

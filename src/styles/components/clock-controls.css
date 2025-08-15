@@ -86,14 +86,6 @@
   justify-content: center; /* Horizontally center icon */
   color: var(--text-inverse); /* White icon color */
   cursor: pointer; /* Pointer cursor for interaction */
-  transition: all 0.3s ease; /* Smooth animation for all properties */
-}
-
-/* Navigation button hover state - enhanced visibility and feedback */
-.nav-btn:hover {
-  background: rgba(255, 255, 255, 0.2); /* Brighter background on hover */
-  border-color: var(--amber-glow); /* Amber border for accent */
-  transform: scale(1.1); /* Slight scale increase for feedback */
 }
 
 /* Navigation button active state - pressed feedback */
@@ -116,20 +108,12 @@
   border-radius: 50%; /* Perfect circle shape */
   background: rgba(255, 255, 255, 0.3); /* Semi-transparent default state */
   cursor: pointer; /* Pointer cursor for interaction */
-  transition: all 0.3s ease; /* Smooth state transitions */
 }
 
 /* Active indicator dot - currently selected game */
 .indicator-dot.active {
   background: var(--amber-glow); /* Amber color for active state */
-  box-shadow: 0 0 12px var(--amber-glow); /* Glowing effect for emphasis */
   transform: scale(1.2); /* Larger size for active state */
-}
-
-/* Indicator dot hover state - preview interaction */
-.indicator-dot:hover {
-  background: rgba(255, 255, 255, 0.6); /* Brighter background on hover */
-  transform: scale(1.1); /* Slight scale increase for feedback */
 }
 
 /* === CLOCK FOOTER CONTROLS === */
@@ -156,14 +140,6 @@
   font-size: 0.85rem; /* Small size for secondary control */
   font-weight: 500; /* Medium weight for readability */
   cursor: pointer; /* Pointer cursor for interaction */
-  transition: all 0.3s ease; /* Smooth hover transitions */
-}
-
-/* Rotation toggle hover state - enhanced feedback */
-.rotation-toggle:hover {
-  background: rgba(255, 255, 255, 0.15); /* Brighter background on hover */
-  border-color: var(--amber-glow); /* Amber border for accent */
-  transform: translateY(-2px); /* Subtle lift effect */
 }
 
 /* Rotation toggle active state - when auto-rotation is enabled */
@@ -184,7 +160,6 @@
   display: inline-block; /* Block layout for transform effects */
   text-decoration: none; /* Remove default link underline */
   color: inherit; /* Inherit color from parent */
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth custom easing */
 }
 
 /* Open source link content container - glassmorphism design */
@@ -197,58 +172,15 @@
   display: flex; /* Flexbox for content layout */
   align-items: center; /* Vertically center content */
   gap: 0.75rem; /* Space between elements */
-  box-shadow:                                  /* Multi-layer shadow system */
-    0 4px 15px rgba(0, 0, 0, 0.2),
-    /* Main drop shadow */ inset 0 1px 0 rgba(255, 255, 255, 0.2); /* Inner highlight */
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth custom easing */
   position: relative; /* Positioning context for pseudo-element */
   overflow: hidden; /* Hide overflow for animations */
 }
 
-/* Animated gradient border effect - appears on hover */
-.clock-opensource-content::before {
-  content: ''; /* Empty pseudo-element */
-  position: absolute; /* Absolute positioning for overlay */
-  inset: -1px; /* Extend 1px beyond parent borders */
-  background: linear-gradient(
-    135deg,
-    var(--amber-glow),
-    var(--teal-crystal),
-    var(--rose-quartz)
-  ); /* Multi-color gradient */
-  border-radius: 30px; /* Match parent border radius */
-  opacity: 0; /* Hidden by default */
-  transition: opacity 0.6s ease; /* Smooth fade-in animation */
-  z-index: -1; /* Behind main content */
-}
-
-/* Open source link hover state - enhanced glassmorphism effect */
-.clock-opensource-link:hover .clock-opensource-content {
-  background: rgba(255, 255, 255, 0.1); /* Brighter background on hover */
-  border-color: rgba(255, 183, 77, 0.3); /* Amber-tinted border */
-  box-shadow:                                  /* Enhanced shadow system */
-    0 8px 25px rgba(0, 0, 0, 0.3),
-    /* Deeper drop shadow */ inset 0 1px 0 rgba(255, 255, 255, 0.3); /* Brighter inner highlight */
-  transform: translateY(-2px); /* Subtle lift effect */
-}
-
-/* Gradient border reveal on hover */
-.clock-opensource-link:hover .clock-opensource-content::before {
-  opacity: 0.3; /* Fade in gradient border */
-}
 
 /* GitHub icon styling - maintains size and animates color */
 .clock-github-icon {
   color: var(--text-inverse); /* White icon color */
-  transition: all 0.3s ease; /* Smooth color and transform transitions */
   flex-shrink: 0; /* Prevent icon from shrinking */
-}
-
-/* GitHub icon hover state - amber glow effect */
-.clock-opensource-link:hover .clock-github-icon {
-  color: var(--amber-glow); /* Change to amber on hover */
-  transform: scale(1.1); /* Slight scale increase */
-  filter: drop-shadow(0 0 8px rgba(255, 183, 77, 0.5)); /* Glowing drop shadow */
 }
 
 /* Open source link text styling */
@@ -259,14 +191,7 @@
   color: var(--text-inverse); /* White text color */
   text-transform: uppercase; /* Uppercase for label styling */
   letter-spacing: 0.05em; /* Wide tracking for emphasis */
-  transition: all 0.3s ease; /* Smooth color transitions */
   white-space: nowrap; /* Prevent text wrapping */
-}
-
-/* Open source text hover state - amber glow effect */
-.clock-opensource-link:hover .clock-opensource-text {
-  color: var(--amber-glow); /* Change to amber on hover */
-  text-shadow: 0 0 12px rgba(255, 183, 77, 0.4); /* Glowing text shadow */
 }
 
 /* GitHub star count container - pill-shaped badge */
@@ -278,27 +203,11 @@
   background: rgba(255, 183, 77, 0.1); /* Amber-tinted background */
   border-radius: 20px; /* Pill shape */
   border: 1px solid rgba(255, 183, 77, 0.2); /* Amber-tinted border */
-  transition: all 0.3s ease; /* Smooth hover transitions */
-}
-
-/* GitHub star container hover state - enhanced amber effect */
-.clock-opensource-link:hover .clock-opensource-star {
-  background: rgba(255, 183, 77, 0.15); /* Brighter amber background */
-  border-color: rgba(255, 183, 77, 0.4); /* More prominent amber border */
-  transform: scale(1.05); /* Slight scale increase */
-  box-shadow: 0 0 15px rgba(255, 183, 77, 0.2); /* Amber glow shadow */
 }
 
 /* Star icon styling within badge */
 .clock-opensource-star svg {
   color: var(--amber-glow); /* Amber star icon color */
-  transition: transform 0.3s ease; /* Smooth transform transitions */
-}
-
-/* Star icon hover state - enhanced glow */
-.clock-opensource-link:hover .clock-opensource-star svg {
-  transform: scale(1.1); /* Slight scale increase */
-  filter: drop-shadow(0 0 6px rgba(255, 183, 77, 0.6)); /* Enhanced amber glow */
 }
 
 /* GitHub star count number styling */

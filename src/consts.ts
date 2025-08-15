@@ -12,7 +12,7 @@ export const SITE = {
     GITHUB: 'https://github.com/boring877/gacha-wiki',
     YOUTUBE: 'https://www.youtube.com/@GachaJunkie888',
     DISCORD: 'https://discord.gg/JKCNtkSGNE',
-    X: 'https://x.com/EcchiPen',
+    X: 'https://x.com/GachaJunkie888',
     RUMBLE: 'https://rumble.com/user/EcchiPen',
   },
   // Webhooks are handled server-side only for security

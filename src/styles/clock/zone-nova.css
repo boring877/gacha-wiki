@@ -61,11 +61,25 @@
 
 /* === ZONE NOVA THEME COLORS === */
 /* Zone Nova specific color overrides */
+.title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
 .title-only-heading {
-  color: var(--zn-clock-title) !important;
-  -webkit-text-fill-color: var(--zn-clock-title) !important;
-  font-size: var(--text-4xl) !important;
-  font-weight: 900 !important;
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--zn-primary-amber);
+  background: var(--zn-accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: relative;
 }
 
 .game-name {
@@ -117,9 +131,9 @@
 .secondary-timers-card .timer-main-label {
   color: var(--zn-clock-title);
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   letter-spacing: 0.05em;
 }
 
@@ -211,13 +225,10 @@
   height: 8px;
   border-radius: 50%;
   background: var(--zn-success);
-  box-shadow: 0 0 6px color-mix(in srgb, var(--zn-success) 60%, transparent);
-  animation: statusPulse 2s ease-in-out infinite;
 }
 
 .status-dot.maintenance {
   background: var(--zn-error);
-  box-shadow: 0 0 6px color-mix(in srgb, var(--zn-error) 60%, transparent);
 }
 
 .status-text {
@@ -231,17 +242,6 @@
   color: var(--zn-clock-white);
 }
 
-@keyframes statusPulse {
-  0%,
-  100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-}
 
 /* === ZONE NOVA TIMER CARD BASE === */
 /* Remove white border on left side for all timer cards */
@@ -298,20 +298,8 @@
 
 .time-separator {
   color: var(--zn-clock-muted);
-  animation: clockPulse 2s ease-in-out infinite;
 }
 
-/* === ZONE NOVA CLOCK ANIMATIONS === */
-/* Pulsing animation for clock separators */
-@keyframes clockPulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
 
 /* === ZONE NOVA TOP SECTION === */
 /* UTC info and current time styling */
@@ -493,28 +481,101 @@
   margin-top: auto;
 }
 
-/* === ZONE NOVA RESPONSIVE OVERRIDES === */
-/* Zone Nova specific mobile optimizations */
+/* === ZONE NOVA MOBILE OPTIMIZATION === */
 @media (max-width: 768px) {
-  /* Region Badge Mobile */
+  /* Title and spacing adjustments */
+  .title-only-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+  }
+
+  /* Timer cards mobile */
+  .secondary-timers-card .timer-main-label {
+    font-size: 1.25rem;
+  }
+
+  .server-reset-card .timer-main-label {
+    font-size: 2rem;
+  }
+
+  /* Launch counter mobile */
+  .launch-days {
+    font-size: var(--text-2xl);
+  }
+
+  .launch-card-content {
+    min-height: 120px;
+    gap: 0.75rem;
+  }
+
+  /* Region badge mobile */
   .region-badge {
     font-size: 0.65rem;
     padding: 3px 6px;
     border-radius: 3px;
   }
 
-  .launch-days {
-    font-size: var(--text-2xl);
+  /* Timer items mobile */
+  .reset-item,
+  .maintenance-item,
+  .rift-item {
+    padding: 0.5rem 0;
+  }
+
+  .maintenance-time,
+  .rift-time,
+  .reset-time {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  /* Extra small mobile adjustments */
+  .title-only-section {
+    padding: 1rem 0;
+  }
+
+  /* Timer labels smaller */
+  .secondary-timers-card .timer-main-label {
+    font-size: 1.1rem;
+  }
+
+  .server-reset-card .timer-main-label {
+    font-size: 1.75rem;
+  }
+
+  /* Launch counter extra small */
+  .launch-days {
+    font-size: var(--text-xl);
+  }
+
+  .launch-card-content {
+    min-height: 100px;
+    gap: 0.5rem;
+  }
+
+  /* Region badge extra small */
   .region-badge {
     font-size: 0.6rem;
     padding: 2px 5px;
   }
 
-  .launch-days {
-    font-size: var(--text-xl);
+  /* Smaller timer text */
+  .maintenance-time,
+  .rift-time,
+  .reset-time {
+    font-size: 0.95rem;
+  }
+
+  .reset-subtitle {
+    font-size: 0.7rem;
+  }
+
+  /* Timer items compact */
+  .reset-item,
+  .maintenance-item,
+  .rift-item {
+    padding: 0.4rem 0;
+    gap: 0.4rem;
   }
 }

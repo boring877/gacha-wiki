@@ -201,12 +201,12 @@ const pagination = paginateUpdates(filteredUpdates, currentPage, 10);
 
       function getTagEmoji(type) {
         const emojis = {
-          maintenance: '🔧',
-          event: '🎉',
-          recruitment: '⭐',
-          announcement: '📢',
+          maintenance: '',
+          event: '',
+          recruitment: '',
+          announcement: '',
         };
-        return emojis[type] || '📄';
+        return emojis[type] || '';
       }
 
       function showSuggestions(query) {

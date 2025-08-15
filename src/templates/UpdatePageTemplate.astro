@@ -29,6 +29,22 @@ export interface Props {
 
 const { updateData, seoData } = Astro.props;
 
+// Security: URL validation function
+function isValidUrl(url: string): boolean {
+  try {
+    const urlObj = new URL(url);
+    // Only allow http and https protocols
+    return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
+
+// Security: Validate gameUrl if present
+if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl)) {
+  updateData.sourceInfo.gameUrl = undefined; // Remove invalid URL
+}
+
 // You can also get updateType from the filename
 // const updateType = getUpdateType(Astro.url.pathname);
 ---
@@ -113,16 +129,16 @@ const { updateData, seoData } = Astro.props;
             <div class="data-grid">
               <div class="data-item">
                 <div class="data-label">Date</div>
-                <div class="data-value">{updateData.date}</div>
+                <div class="data-value" set:text={updateData.date}></div>
               </div>
               <div class="data-item">
                 <div class="data-label">Type</div>
-                <div class="data-value">{updateData.type}</div>
+                <div class="data-value" set:text={updateData.type}></div>
               </div>
               {Object.entries(updateData.data).map(([key, value]) => (
                 <div class="data-item">
-                  <div class="data-label">{key}</div>
-                  <div class="data-value">{value}</div>
+                  <div class="data-label" set:text={key}></div>
+                  <div class="data-value" set:html={value}></div>
                 </div>
               ))}
             </div>
@@ -137,7 +153,7 @@ const { updateData, seoData } = Astro.props;
             <h2 class="section-title">TL;DR</h2>
             <ul>
               {updateData.tldr.map(point => (
-                <li>{point}</li>
+                <li set:html={point}></li>
               ))}
             </ul>
           </section>
@@ -159,7 +175,7 @@ const { updateData, seoData } = Astro.props;
               {
                 updateData.officialUpdate.greeting && (
                   <p>
-                    <strong>{updateData.officialUpdate.greeting}</strong>
+                    <strong set:html={updateData.officialUpdate.greeting}></strong>
                   </p>
                 )
               }
@@ -177,7 +193,7 @@ const { updateData, seoData } = Astro.props;
                         isHeader ? 'content-section-header' : isEventItem ? 'event-item-header' : ''
                       }
                     >
-                      {paragraph}
+                      <span set:html={paragraph}></span>
                     </p>
                   );
                 })
@@ -191,7 +207,7 @@ const { updateData, seoData } = Astro.props;
           {
             updateData.officialUpdate.greeting && (
               <p>
-                <strong>{updateData.officialUpdate.greeting}</strong>
+                <strong set:html={updateData.officialUpdate.greeting}></strong>
               </p>
             )
           }
@@ -209,7 +225,7 @@ const { updateData, seoData } = Astro.props;
                     isHeader ? 'content-section-header' : isEventItem ? 'event-item-header' : ''
                   }
                 >
-                  {paragraph}
+                  <span set:html={paragraph}></span>
                 </p>
               );
             })
@@ -223,7 +239,7 @@ const { updateData, seoData } = Astro.props;
           <section class="content-section">
             <h2 class="section-title">Closing</h2>
             <div class="info-card">
-              <p>{updateData.officialUpdate.closing}</p>
+              <p set:html={updateData.officialUpdate.closing}></p>
             </div>
           </section>
         )
@@ -237,21 +253,19 @@ const { updateData, seoData } = Astro.props;
             <a
               href={updateData.sourceInfo.gameUrl}
               target="_blank"
-              style="text-decoration: none; color: inherit;"
+              rel="noopener noreferrer"
+              class="source-link"
             >
-              <div class="info-card" style="cursor: pointer; transition: all 0.3s ease;">
-                <p style="text-align: center; color: white; font-style: italic;">
-                  Source:{' '}
-                  <span style="color: var(--amber-glow);">{updateData.sourceInfo.source}</span>
-                  {updateData.sourceInfo.verified && ' ✓'}
+              <div class="info-card source-info-card">
+                <p class="source-text">
+                  Source: <span class="source-name" set:text={updateData.sourceInfo.source}></span>
                 </p>
               </div>
             </a>
           ) : (
             <div class="info-card">
-              <p style="text-align: center; color: white; font-style: italic;">
-                Source: {updateData.sourceInfo.source}
-                {updateData.sourceInfo.verified && ' ✓'}
+              <p class="source-text">
+                Source: <span class="source-name" set:text={updateData.sourceInfo.source}></span>
               </p>
             </div>
           )

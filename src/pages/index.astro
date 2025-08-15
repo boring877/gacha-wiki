@@ -2,18 +2,11 @@
 // Homepage - Now modular and clean
 import HomePageLayout from '../layouts/HomePageLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getClockGames, getShowcaseGames } from '../data/homepage-games.js';
-
-// Get games configuration for use in client-side scripts
-const clockGames = getClockGames();
-const showcaseGames = getShowcaseGames();
 ---
 
 <HomePageLayout
   title={SITE_TITLE}
   description={SITE_DESCRIPTION}
-  clockGames={clockGames}
-  showcaseGames={showcaseGames}
 >
   <!-- Main Site Structured Data -->
   <script type="application/ld+json">

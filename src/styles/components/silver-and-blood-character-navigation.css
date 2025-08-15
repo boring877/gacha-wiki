@@ -20,14 +20,9 @@
   gap: 12px;
   opacity: 0.9;
   pointer-events: auto;
-  backdrop-filter: blur(8px);
   padding: 16px;
   margin-left: 20px;
   float: left;
-  box-shadow:
-    0 4px 20px rgba(194, 107, 107, 0.15),
-    0 2px 8px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Navigation controls (buttons) */
@@ -39,18 +34,29 @@
 
 .sab-body .nav-btn {
   background: rgba(0, 0, 0, 0.6);
-  border: 1px solid var(--sab-calm-red, #c26b6b);
-  border-radius: 6px;
+  border: 2px solid var(--sab-calm-red, #c26b6b);
+  border-radius: 8px;
   color: var(--sab-calm-red, #c26b6b);
   font-size: 18px;
   font-weight: 900;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.2s ease;
+}
+
+.sab-body .nav-btn:hover {
+  background: rgba(194, 107, 107, 0.2);
+  border-color: var(--text-inverse, #ffffff);
+  color: var(--text-inverse, #ffffff);
+  transform: translateY(-1px);
+}
+
+.sab-body .nav-btn:active {
+  transform: translateY(0);
 }
 
 /* Navigation info container */
@@ -72,7 +78,6 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 1.2;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .sab-body .nav-character-details {
@@ -115,20 +120,44 @@
   font-weight: 600;
 }
 
-/* Mobile responsive - hide navigation panel, use invisible swipe zones */
+/* Hide desktop nav on mobile and all tablets for better touch experience */
 @media (max-width: 768px) {
   .sab-body .nav-zone-single {
-    display: none;
+    display: none !important;
   }
+}
 
-  /* Mobile swipe zones - shared styles */
+/* Hide desktop nav on tablet portrait for touch optimization */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+  .sab-body .nav-zone-single {
+    display: none !important;
+  }
+}
+
+/* Hide desktop nav on tablet landscape for touch optimization */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .sab-body .nav-zone-single {
+    display: none !important;
+  }
+}
+
+/* Hide desktop nav on large tablet landscape with touch */
+@media (min-width: 1025px) and (max-width: 1366px) and (orientation: landscape) and (hover: none) {
+  .sab-body .nav-zone-single {
+    display: none !important;
+  }
+}
+
+/* Mobile swipe zones for phones */
+@media (max-width: 768px) {
+  /* Enhanced mobile swipe zones for better touch targets */
   .sab-body .mobile-swipe-left,
   .sab-body .mobile-swipe-right {
     position: absolute;
-    top: 0;
-    width: 60px;
-    height: 100%;
-    z-index: 50;
+    top: 550px;
+    bottom: 0;
+    width: 40px;
+    z-index: 5;
     background: transparent;
     pointer-events: auto;
     touch-action: manipulation;
@@ -136,6 +165,13 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    /* Enhanced touch feedback */
+    transition: background-color 0.2s ease;
+  }
+
+  .sab-body .mobile-swipe-left:active,
+  .sab-body .mobile-swipe-right:active {
+    background: rgba(194, 107, 107, 0.1);
   }
 
   .sab-body .mobile-swipe-left {
@@ -146,22 +182,23 @@
     right: 0;
   }
 
-  /* Subtle hint arrows - shared styles */
+  /* Enhanced hint arrows with better visibility */
   .sab-body .mobile-swipe-left::after,
   .sab-body .mobile-swipe-right::after {
     content: '‹';
-    font-size: 24px;
-    color: rgba(194, 107, 107, 0.3);
-    background: rgba(0, 0, 0, 0.2);
-    width: 32px;
-    height: 32px;
+    font-size: 28px;
+    color: rgba(194, 107, 107, 0.4);
+    background: rgba(0, 0, 0, 0.3);
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 900;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(194, 107, 107, 0.2);
+    border: 2px solid rgba(194, 107, 107, 0.3);
+    /* Better touch target alignment */
+    margin: auto;
   }
 
   .sab-body .mobile-swipe-left::after {
@@ -170,5 +207,151 @@
 
   .sab-body .mobile-swipe-right::after {
     content: '›';
+  }
+
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                         TABLET SWIPE ZONE OPTIMIZATIONS                */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Tablet swipe zones - portrait and landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sab-body .mobile-swipe-left,
+  .sab-body .mobile-swipe-right {
+    position: absolute;
+    top: 600px;
+    bottom: 0;
+    width: 50px;
+    z-index: 5;
+    background: transparent;
+    pointer-events: auto;
+    touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .sab-body .mobile-swipe-left:active,
+  .sab-body .mobile-swipe-right:active {
+    background: rgba(194, 107, 107, 0.15);
+  }
+
+  .sab-body .mobile-swipe-left {
+    left: 0;
+  }
+
+  .sab-body .mobile-swipe-right {
+    right: 0;
+  }
+
+  /* Enhanced hint arrows for tablets */
+  .sab-body .mobile-swipe-left::after,
+  .sab-body .mobile-swipe-right::after {
+    content: '‹';
+    font-size: 30px;
+    color: rgba(194, 107, 107, 0.5);
+    background: rgba(0, 0, 0, 0.35);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    border: 3px solid rgba(194, 107, 107, 0.4);
+    margin: auto;
+  }
+
+  .sab-body .mobile-swipe-left::after {
+    content: '‹';
+  }
+
+  .sab-body .mobile-swipe-right::after {
+    content: '›';
+  }
+}
+
+/* Large tablet swipe zones */
+@media (min-width: 1025px) and (max-width: 1366px) and (orientation: landscape) and (hover: none) {
+  .sab-body .mobile-swipe-left,
+  .sab-body .mobile-swipe-right {
+    position: absolute;
+    top: 650px;
+    bottom: 0;
+    width: 60px;
+    z-index: 5;
+    background: transparent;
+    pointer-events: auto;
+    touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .sab-body .mobile-swipe-left:active,
+  .sab-body .mobile-swipe-right:active {
+    background: rgba(194, 107, 107, 0.2);
+  }
+
+  .sab-body .mobile-swipe-left {
+    left: 0;
+  }
+
+  .sab-body .mobile-swipe-right {
+    right: 0;
+  }
+
+  /* Enhanced hint arrows for large tablets */
+  .sab-body .mobile-swipe-left::after,
+  .sab-body .mobile-swipe-right::after {
+    content: '‹';
+    font-size: 36px;
+    color: rgba(194, 107, 107, 0.6);
+    background: rgba(0, 0, 0, 0.4);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    border: 4px solid rgba(194, 107, 107, 0.5);
+    margin: auto;
+  }
+
+  .sab-body .mobile-swipe-left::after {
+    content: '‹';
+  }
+
+  .sab-body .mobile-swipe-right::after {
+    content: '›';
+  }
+}
+
+/* Touch-specific enhancements for tablet swipe zones */
+@media (min-width: 768px) and (max-width: 1024px) and (hover: none) and (pointer: coarse) {
+  /* Enhanced swipe feedback for tablets */
+  .sab-body .mobile-swipe-left:active::after,
+  .sab-body .mobile-swipe-right:active::after {
+    background: rgba(194, 107, 107, 0.4);
+    border-color: var(--sab-calm-red);
+    color: var(--text-inverse);
+    transform: scale(1.1);
+  }
+}
+
+/* Enhanced swipe feedback for large tablets */
+@media (min-width: 1025px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  .sab-body .mobile-swipe-left:active::after,
+  .sab-body .mobile-swipe-right:active::after {
+    background: rgba(194, 107, 107, 0.5);
+    border-color: var(--sab-calm-red);
+    color: var(--text-inverse);
+    transform: scale(1.15);
   }
 }

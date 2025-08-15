@@ -30,67 +30,71 @@ const { prevCharacter, nextCharacter } = Astro.props;
 </div>
 
 <script>
-  // Mobile navigation functionality
+  // High-performance mobile navigation functionality (Zone Nova)
   document.addEventListener('DOMContentLoaded', () => {
     const mobileSwipeLeft = document.querySelector('.mobile-swipe-left') as HTMLElement | null;
     const mobileSwipeRight = document.querySelector('.mobile-swipe-right') as HTMLElement | null;
 
-    // Optimized navigation handler
+    // Performance manager for Zone Nova mobile navigation
+    const znMobilePerfManager = {
+      touchStartTime: 0,
+      touchMoved: false,
+      lastNavigation: 0,
+      navigationThrottle: 300
+    };
+
+    // Instant Zone Nova navigation
     function handleNavigation(url: string | null) {
       if (!url || typeof url !== 'string') {
-        console.warn('Invalid navigation URL:', url);
         return false;
       }
 
+      const now = Date.now();
+      if (now - znMobilePerfManager.lastNavigation < znMobilePerfManager.navigationThrottle) {
+        return false;
+      }
+      znMobilePerfManager.lastNavigation = now;
+
       try {
-        window.location.href = url;
+        // Instant visual feedback
+        document.body.style.opacity = '0.9';
+        document.body.style.transition = 'opacity 0.08s ease';
+        
+        // Use replace for instant feel
+        window.location.replace(url);
         return true;
       } catch (error: unknown) {
-        console.error('Navigation failed:', error);
+        document.body.style.opacity = '1';
         return false;
       }
     }
 
-    // Mobile swipe zone handlers - improved touch handling
+    // Optimized touch handling
     function handleMobileNavigation(element: HTMLElement | null, direction: string) {
       if (!element) return;
 
-      let touchStartTime = 0;
-      let touchMoved = false;
+      element.addEventListener('touchstart', e => {
+        znMobilePerfManager.touchStartTime = Date.now();
+        znMobilePerfManager.touchMoved = false;
+        e.stopPropagation();
+      }, { passive: true });
 
-      // Handle touch start
-      element.addEventListener(
-        'touchstart',
-        e => {
-          touchStartTime = Date.now();
-          touchMoved = false;
-          e.stopPropagation(); // Prevent interfering with other touch events
-        },
-        { passive: true }
-      );
+      element.addEventListener('touchmove', e => {
+        znMobilePerfManager.touchMoved = true;
+      }, { passive: true });
 
-      // Track if touch moved (to distinguish tap from swipe)
-      element.addEventListener(
-        'touchmove',
-        e => {
-          touchMoved = true;
-        },
-        { passive: true }
-      );
-
-      // Handle touch end (tap)
       element.addEventListener('touchend', e => {
-        const touchDuration = Date.now() - touchStartTime;
+        const touchDuration = Date.now() - znMobilePerfManager.touchStartTime;
 
-        // Only navigate if it was a quick tap (not a long press or swipe)
-        if (!touchMoved && touchDuration < 500) {
+        if (!znMobilePerfManager.touchMoved && 
+            touchDuration < 400 && 
+            touchDuration > 50) {
           e.preventDefault();
           const url = element.getAttribute('data-character-url');
           handleNavigation(url);
         }
       });
 
-      // Fallback click handler for non-touch devices
       element.addEventListener('click', e => {
         e.preventDefault();
         const url = element.getAttribute('data-character-url');
@@ -98,15 +102,15 @@ const { prevCharacter, nextCharacter } = Astro.props;
       });
     }
 
-    // Initialize mobile navigation with error handling
+    // Initialize with error handling
     try {
       handleMobileNavigation(mobileSwipeLeft, 'prev');
       handleMobileNavigation(mobileSwipeRight, 'next');
     } catch (error: unknown) {
-      console.warn('Failed to initialize mobile navigation:', error);
+      console.warn('Failed to initialize Zone Nova mobile navigation:', error);
     }
 
-    // Update mobile navigation when character data changes
+    // Optimized update function
     function updateMobileNavigation(prevChar: any, nextChar: any) {
       if (mobileSwipeLeft) {
         mobileSwipeLeft.setAttribute('data-character-url', prevChar.detailUrl);
@@ -118,7 +122,19 @@ const { prevCharacter, nextCharacter } = Astro.props;
       }
     }
 
-    // Expose update function for parent component
-    (window as any).updateMobileNavigation = updateMobileNavigation;
+    // Expose update function
+    (window as any).updateZnMobileNavigation = updateMobileNavigation;
+
+    // Cleanup
+    function cleanup() {
+      delete (window as any).updateZnMobileNavigation;
+    }
+
+    window.addEventListener('beforeunload', cleanup);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        znMobilePerfManager.lastNavigation = 0;
+      }
+    });
   });
 </script>

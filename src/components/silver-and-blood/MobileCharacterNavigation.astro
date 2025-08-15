@@ -30,67 +30,77 @@ const { prevCharacter, nextCharacter } = Astro.props;
 </div>
 
 <script>
-  // Mobile navigation functionality
+  // High-performance mobile navigation functionality
   document.addEventListener('DOMContentLoaded', () => {
     const mobileSwipeLeft = document.querySelector('.mobile-swipe-left') as HTMLElement | null;
     const mobileSwipeRight = document.querySelector('.mobile-swipe-right') as HTMLElement | null;
 
-    // Optimized navigation handler
+    // Performance manager for mobile navigation
+    const mobilePerfManager = {
+      touchStartTime: 0,
+      touchMoved: false,
+      lastNavigation: 0,
+      navigationThrottle: 300 // Prevent rapid navigation
+    };
+
+    // Instant mobile navigation with immediate feedback
     function handleNavigation(url: string | null) {
       if (!url || typeof url !== 'string') {
-        console.warn('Invalid navigation URL:', url);
         return false;
       }
 
+      // Throttle navigation to prevent rapid clicks
+      const now = Date.now();
+      if (now - mobilePerfManager.lastNavigation < mobilePerfManager.navigationThrottle) {
+        return false;
+      }
+      mobilePerfManager.lastNavigation = now;
+
       try {
-        window.location.href = url;
+        // Instant visual feedback
+        document.body.style.opacity = '0.9';
+        document.body.style.transition = 'opacity 0.08s ease';
+        
+        // Use replace for instant feel
+        window.location.replace(url);
         return true;
       } catch (error: unknown) {
-        console.error('Navigation failed:', error);
+        document.body.style.opacity = '1';
         return false;
       }
     }
 
-    // Mobile swipe zone handlers - improved touch handling
+    // High-performance mobile touch handling
     function handleMobileNavigation(element: HTMLElement | null, direction: string) {
       if (!element) return;
 
-      let touchStartTime = 0;
-      let touchMoved = false;
+      // Handle touch start - optimized
+      element.addEventListener('touchstart', e => {
+        mobilePerfManager.touchStartTime = Date.now();
+        mobilePerfManager.touchMoved = false;
+        e.stopPropagation();
+      }, { passive: true });
 
-      // Handle touch start
-      element.addEventListener(
-        'touchstart',
-        e => {
-          touchStartTime = Date.now();
-          touchMoved = false;
-          e.stopPropagation(); // Prevent interfering with other touch events
-        },
-        { passive: true }
-      );
+      // Track touch movement - optimized
+      element.addEventListener('touchmove', e => {
+        mobilePerfManager.touchMoved = true;
+      }, { passive: true });
 
-      // Track if touch moved (to distinguish tap from swipe)
-      element.addEventListener(
-        'touchmove',
-        e => {
-          touchMoved = true;
-        },
-        { passive: true }
-      );
-
-      // Handle touch end (tap)
+      // Handle touch end with performance checks
       element.addEventListener('touchend', e => {
-        const touchDuration = Date.now() - touchStartTime;
+        const touchDuration = Date.now() - mobilePerfManager.touchStartTime;
 
-        // Only navigate if it was a quick tap (not a long press or swipe)
-        if (!touchMoved && touchDuration < 500) {
+        // Enhanced touch validation
+        if (!mobilePerfManager.touchMoved && 
+            touchDuration < 400 && 
+            touchDuration > 50) { // Prevent accidental touches
           e.preventDefault();
           const url = element.getAttribute('data-character-url');
           handleNavigation(url);
         }
       });
 
-      // Fallback click handler for non-touch devices
+      // Optimized click handler with throttling
       element.addEventListener('click', e => {
         e.preventDefault();
         const url = element.getAttribute('data-character-url');
@@ -120,5 +130,20 @@ const { prevCharacter, nextCharacter } = Astro.props;
 
     // Expose update function for parent component
     (window as any).updateMobileNavigation = updateMobileNavigation;
+
+    // Cleanup function for memory leak prevention
+    function cleanup() {
+      // Remove the global function reference
+      delete (window as any).updateMobileNavigation;
+    }
+
+    // Register cleanup
+    window.addEventListener('beforeunload', cleanup);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        // Reset navigation throttle when page is hidden
+        mobilePerfManager.lastNavigation = 0;
+      }
+    });
   });
 </script>

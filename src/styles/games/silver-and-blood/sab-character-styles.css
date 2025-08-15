@@ -5,7 +5,7 @@
 /* Force title colors to override global typography styles */
 .sab-body h2.section-title,
 .sab-body .section-title {
-  background: linear-gradient(135deg, #c0c0c0, #c26b6b) !important;
+  background: linear-gradient(135deg, var(--sab-light-red), var(--sab-calm-red)) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -14,7 +14,7 @@
 
 .sab-body h3,
 .sab-body h4 {
-  color: #c0c0c0 !important;
+  color: var(--sab-text-light) !important;
 }
 /* ===== END GLOBAL OVERRIDES ===== */
 
@@ -22,13 +22,13 @@
 .content-section {
   margin-bottom: 2.5rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  background: var(--sab-character-info-bg);
   border-radius: 16px;
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--sab-border-light);
 }
 
 .section-title {
-  background: var(--sab-silver-gradient);
+  background: linear-gradient(135deg, var(--sab-light-red), var(--sab-calm-red));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -41,18 +41,12 @@
 }
 
 h3 {
-  color: #c0c0c0 !important;
+  color: var(--sab-text-light) !important;
 }
 
 /* ===== CHARACTER OVERVIEW SECTION ===== */
 .character-portrait {
   filter: brightness(1.1) contrast(1.05);
-}
-
-.character-name {
-}
-
-.badges-container {
 }
 
 /* ===== STATS GRID ===== */
@@ -78,27 +72,27 @@ h3 {
 }
 
 .skill-badge.normal-attack {
-  background: linear-gradient(135deg, #6c757d, #495057);
-  color: white;
-  border: 1px solid #6c757d;
+  background: var(--sab-badge-normal-attack);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-normal-attack-border);
 }
 
 .skill-badge.special {
-  background: linear-gradient(135deg, #fd7e14, #e65100);
-  color: white;
-  border: 1px solid #fd7e14;
+  background: var(--sab-badge-special);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-special-border);
 }
 
 .skill-badge.passive {
-  background: linear-gradient(135deg, #28a745, #1e7e34);
-  color: white;
-  border: 1px solid #28a745;
+  background: var(--sab-badge-passive);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-passive-border);
 }
 
 .skill-badge.ultimate {
-  background: linear-gradient(135deg, #c26b6b, #c82333);
-  color: white;
-  border: 1px solid #c26b6b;
+  background: var(--sab-badge-ultimate);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-calm-red);
 }
 
 /* ===== TAG BADGES (new) ===== */
@@ -113,23 +107,7 @@ h3 {
   border: 1px solid transparent;
 }
 
-.tag-badge.melee {
-  background: #ff6b6b;
-  color: #fff;
-  border-color: #ff5252;
-}
-
-.tag-badge.aoe-dmg {
-  background: #ff8c00;
-  color: #fff;
-  border-color: #ffa500;
-}
-
-.tag-badge.continuous-dmg {
-  background: #9932cc;
-  color: #fff;
-  border-color: #8a2be2;
-}
+/* Tag badge styles are now centralized in sab-badge-colours.css */
 
 /* Disable zoom for tag badges */
 .badges-container:hover > div > .tag-badge {
@@ -137,8 +115,8 @@ h3 {
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
-/* Touch devices and mobile responsive design */
-@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+/* Mobile responsive design */
+@media (max-width: 768px) {
   .content-section {
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -224,8 +202,8 @@ h3 {
   flex-wrap: wrap;
 }
 
-/* Additional touch device adjustments */
-@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+/* Additional touch device adjustments - only on smaller screens */
+@media (max-width: 768px) {
   .overview-flex {
     flex-direction: column;
     align-items: center;
@@ -273,10 +251,10 @@ h3 {
 .filter-select,
 .sort-btn {
   padding: 0.4rem 0.7rem;
-  background: #2c2c2c;
-  color: #e0e0e0;
+  background: var(--sab-input-bg);
+  color: var(--sab-input-text);
   border-radius: 8px;
-  border: 1px solid #4f4f4f;
+  border: 1px solid var(--sab-border-gray);
   font-size: 0.8rem;
   cursor: pointer;
   font-family: 'Space Grotesk', sans-serif;
@@ -291,10 +269,10 @@ h3 {
 /* Reset button unique styling */
 .reset-btn {
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, #c0c0c0, #a9a9a9);
-  color: #1a1a1a;
+  background: var(--sab-silver-gradient-alt);
+  color: var(--sab-text-dark);
   border-radius: 10px;
-  border: 2px solid #c0c0c0;
+  border: 2px solid var(--sab-text-light);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -314,7 +292,7 @@ table.character-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  background: #2a2a2a;
+  background: var(--sab-bg-dark);
   border-radius: 12px;
 
   font-family: 'Space Grotesk', sans-serif;
@@ -324,12 +302,12 @@ table.character-table th,
 table.character-table td {
   padding: 0.8rem 0.4rem;
   text-align: center;
-  border-bottom: 1px solid #3a3a3a;
-  color: #e0e0e0;
+  border-bottom: 1px solid var(--sab-border-light);
+  color: var(--sab-input-text);
 }
 
 table.character-table th {
-  background: linear-gradient(135deg, #c26b6b, #b22222);
+  background: var(--sab-error-gradient);
   color: white;
   font-weight: 700;
   font-size: 0.9rem;
@@ -343,12 +321,12 @@ table.character-table th {
   height: 40px;
   border-radius: 8px;
   object-fit: cover;
-  border: 1px solid #c0c0c0;
+  border: 1px solid var(--sab-text-light);
 }
 
 /* Mobile card styles */
 .mobile-character-card {
-  background: #2c2c2c;
+  background: var(--sab-input-bg);
   border-radius: 14px;
 
   padding: 1.2rem 1rem 1rem 1rem;
@@ -356,7 +334,7 @@ table.character-table th {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
-  border: 1px solid #c0c0c0;
+  border: 1px solid var(--sab-text-light);
 }
 
 .mobile-card-header {
@@ -369,7 +347,7 @@ table.character-table th {
   width: 64px;
   height: 64px;
   border-radius: 10px;
-  border: 2px solid #c0c0c0;
+  border: 2px solid var(--sab-text-light);
   background: #fff;
   margin-bottom: 0;
 }
@@ -383,7 +361,7 @@ table.character-table th {
 .mobile-character-card h3 {
   margin: 0 0 0.1rem 0;
   font-size: 1.25rem;
-  color: #c0c0c0;
+  color: var(--sab-text-light);
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -412,7 +390,7 @@ table.character-table th {
   gap: 1.2rem;
   margin-top: 0.5rem;
   font-size: 1.05em;
-  color: #e0e0e0;
+  color: var(--sab-input-text);
   font-weight: 500;
   flex-wrap: wrap;
 }
@@ -424,7 +402,7 @@ table.character-table th {
 
 .mobile-card-stats .stat-label,
 .mobile-card-stats-secondary .stat-label {
-  color: #c0c0c0;
+  color: var(--sab-text-light);
   font-weight: 700;
   margin-right: 0.2em;
 }

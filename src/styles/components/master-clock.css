@@ -40,14 +40,7 @@
   width: 100%; /* Full width within container */
   max-width: 1200px; /* Maximum clock width */
   margin: 0 auto; /* Center within container */
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth custom easing */
-  will-change: transform, opacity; /* Optimize for animations */
   transform: translateZ(0); /* Force hardware acceleration */
-}
-
-/* Master clock hover state - enhanced border visibility */
-.master-clock:hover {
-  border-color: rgba(255, 255, 255, 0.2); /* Brighter border on hover */
 }
 
 /* Animated gradient background - hidden by default */
@@ -62,13 +55,7 @@
   ); /* Multi-color gradient */
   border-radius: 32px; /* Match clock border radius */
   opacity: 0; /* Hidden by default */
-  transition: opacity 0.6s ease; /* Smooth fade transitions */
   z-index: -1; /* Behind clock content */
-}
-
-/* Background animation hover state - keep hidden */
-.master-clock:hover .clock-bg-animation {
-  opacity: 0; /* Keep gradient background hidden on hover */
 }
 
 /* === CLOCK HEADER SECTION === */
@@ -103,9 +90,7 @@
   width: 100%; /* Fill container width */
   height: 100%; /* Fill container height */
   object-fit: cover; /* Maintain aspect ratio, crop if needed */
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth opacity transitions */
   display: block; /* Block display for proper sizing */
-  will-change: opacity; /* Optimize for opacity animations */
   transform: translateZ(0); /* Force hardware acceleration */
 }
 
@@ -121,7 +106,6 @@
   font-weight: 700; /* Bold weight for emphasis */
   color: var(--amber-glow); /* Amber accent color for branding */
   margin: 0 0 0.5rem 0; /* Bottom margin only */
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transitions */
 }
 
 /* Game status text with subtle styling */
@@ -162,7 +146,6 @@
   font-size: 3.5rem; /* Large size for primary display */
   font-weight: 700; /* Bold weight for prominence */
   color: var(--text-inverse); /* White color for contrast */
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transitions */
   line-height: 1; /* Tight line height for compact display */
   min-width: 2.5ch; /* Minimum width to prevent layout shifts */
   text-align: center; /* Center align numbers */

@@ -75,7 +75,6 @@
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -84,13 +83,11 @@
 .reset-btn:hover {
   background: linear-gradient(135deg, #d81b60, var(--rose-quartz));
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
   border-color: #d81b60;
 }
 
 .reset-btn:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(233, 30, 99, 0.3);
 }
 
 /* Desktop table */
@@ -107,7 +104,6 @@ table.character-table {
   border-spacing: 0;
   background: var(--bg-primary);
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   font-family: 'Space Grotesk', sans-serif;
 }
 
@@ -154,7 +150,6 @@ table.character-table tr:hover {
 .mobile-character-card {
   background: var(--bg-primary);
   border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   padding: 1.2rem 1rem;
   margin-bottom: 1.5rem;
   display: flex;
@@ -162,13 +157,11 @@ table.character-table tr:hover {
   gap: 0.7rem;
   border: 1px solid var(--amber-glow);
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transform 0.2s ease;
 }
 
 .mobile-character-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .mobile-card-header {
@@ -544,7 +537,6 @@ table.character-table tr:hover {
 @media (hover: none) {
   .mobile-character-card:hover {
     transform: none;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   }
 
   table.character-table tr:hover {

@@ -34,7 +34,7 @@ export const zoneNovaConfig = {
     {
       id: 'clock',
       title: 'Clock',
-      emoji: '⏰',
+      emoji: '',
       description:
         'Track Zone Nova daily reset times and server events. Never miss dailies, energy refills, or farming sessions with our real-time Zone Nova clock.',
       url: '/clock/zone-nova/',
@@ -43,7 +43,7 @@ export const zoneNovaConfig = {
     {
       id: 'updates',
       title: 'Updates',
-      emoji: '🔧',
+      emoji: '',
       description: 'Patch notes, maintenance, and announcements.',
       url: '/guides/zone-nova/updates/',
       category: 'info',
@@ -52,7 +52,7 @@ export const zoneNovaConfig = {
     {
       id: 'characters',
       title: 'Characters',
-      emoji: '⚔️',
+      emoji: '',
       description: 'Character guides, skills Information, and more !.',
       url: '/guides/zone-nova/characters/',
       category: 'guides',
@@ -60,7 +60,7 @@ export const zoneNovaConfig = {
     {
       id: 'tier-list',
       title: 'Tier List',
-      emoji: '⚡',
+      emoji: '',
       description:
         'Comprehensive tier lists for PvE, PvP, Rifts, and Guild Raids with meta analysis.',
       url: '/guides/zone-nova/tier-list/',
@@ -69,7 +69,7 @@ export const zoneNovaConfig = {
     {
       id: 'character-comparison',
       title: 'Character Comparison',
-      emoji: '📊',
+      emoji: '',
       description:
         'Compare up to 4 characters side by side to analyze their stats and roles for optimal team building.',
       url: '/guides/zone-nova/character-comparison/',
@@ -78,7 +78,7 @@ export const zoneNovaConfig = {
     {
       id: 'character-comparison-v2',
       title: 'Character Comparison V2',
-      emoji: '🃏',
+      emoji: '',
       description:
         'Enhanced card-based comparison tool! Compare 2 characters with detailed stats, skills, team abilities, and streamlined design.',
       url: '/guides/zone-nova/character-comparison-v2/',
@@ -87,7 +87,7 @@ export const zoneNovaConfig = {
     {
       id: 'character-rankings',
       title: 'Character Rankings',
-      emoji: '📈',
+      emoji: '',
       description:
         'View character stat rankings and overall performance analysis across HP, ATK, and DEF.',
       url: '/guides/zone-nova/character-rankings/',
@@ -96,7 +96,7 @@ export const zoneNovaConfig = {
     {
       id: 'character-tags',
       title: 'Character Tag Selection',
-      emoji: '🏷️',
+      emoji: '',
       description:
         'Filter and discover characters by gameplay tags, class, rarity, element, faction, and role.',
       url: '/guides/zone-nova/character-tags/',
@@ -105,7 +105,7 @@ export const zoneNovaConfig = {
     {
       id: 'memories',
       title: 'Memory Database',
-      emoji: '🃏',
+      emoji: '',
       description: 'Sortable memory cards database with stats, effects, and characters.',
       url: '/guides/zone-nova/memories/',
       category: 'guides',
@@ -113,7 +113,7 @@ export const zoneNovaConfig = {
     {
       id: 'rifts',
       title: 'Space-Time Rifts',
-      emoji: '🌀',
+      emoji: '',
       description: 'Rift Laws, mechanics, events, and rewards guide.',
       url: '/guides/zone-nova/rifts/',
       category: 'guides',
@@ -130,7 +130,7 @@ export const zoneNovaConfig = {
     {
       id: 'team-synergy',
       title: 'Team Synergy',
-      emoji: '🤝',
+      emoji: '',
       description:
         'General team compositions for Guild Raids, PvE content, and character-specific synergies.',
       url: '/guides/zone-nova/team-synergy/',
@@ -139,7 +139,7 @@ export const zoneNovaConfig = {
     {
       id: 'runes',
       title: 'Runes',
-      emoji: '🔮',
+      emoji: '',
       description: 'All runes stats and sub stats, and items set stats.',
       url: '/guides/zone-nova/runes/',
       category: 'guides',
@@ -147,7 +147,7 @@ export const zoneNovaConfig = {
     {
       id: 'crafting',
       title: 'Crafting',
-      emoji: '🔨',
+      emoji: '',
       description: 'Where to craft items and how to craft them.',
       url: '/guides/zone-nova/crafting/',
       category: 'guides',
@@ -155,7 +155,7 @@ export const zoneNovaConfig = {
     {
       id: 'damage-mechanics',
       title: 'Damage Mechanics',
-      emoji: '⚔️',
+      emoji: '',
       description: "Complete guide to Zone Nova's damage calculation system and defense mechanics.",
       url: '/guides/zone-nova/damage-mechanics/',
       category: 'guides',
@@ -163,7 +163,7 @@ export const zoneNovaConfig = {
     {
       id: 'summon-faq',
       title: 'Summon FAQ',
-      emoji: '💎',
+      emoji: '',
       description: 'Complete guide to summoning, rates, pity system, and strategies.',
       url: '/guides/zone-nova/summon-faq/',
       category: 'guides',
@@ -171,7 +171,7 @@ export const zoneNovaConfig = {
     {
       id: 'redeem-codes',
       title: 'Redeem Codes',
-      emoji: '🎁',
+      emoji: '',
       description: 'Active redeem codes for free gems, energy, characters and rewards.',
       url: '/guides/zone-nova/redeem-codes/',
       category: 'rewards',
@@ -179,7 +179,7 @@ export const zoneNovaConfig = {
     {
       id: 'surveys',
       title: 'Player Surveys',
-      emoji: '📋',
+      emoji: '',
       description: 'Official Zone Nova player surveys and translations.',
       url: '/guides/zone-nova/surveys/',
       category: 'community',
@@ -187,7 +187,7 @@ export const zoneNovaConfig = {
     {
       id: 'contributing',
       title: 'Contributing',
-      emoji: '📝',
+      emoji: '',
       description: 'Learn how to contribute to the Zone Nova guides.',
       url: '/guides/zone-nova/contributing/',
       category: 'community',

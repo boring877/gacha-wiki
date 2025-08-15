@@ -14,7 +14,7 @@
   background: linear-gradient(135deg, #1c1c1c 0%, #2a2a2a 50%, #1c1c1c 100%);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 183, 77, 0.3);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1rem;
 }
 
 /* Show mobile navigation only on mobile/tablet devices */
@@ -27,40 +27,97 @@
 .game-nav-mobile .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
-/* Mobile/Tablet Game Header Layout */
+/* Mobile/Tablet Game Header Layout - Center-focused for touch devices */
 .game-nav-mobile .game-nav-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0.75rem 0;
+  padding: 0.5rem 0;
   width: 100%;
+  gap: 1.5rem;
 }
 
-.game-nav-mobile .game-info {
-  flex: 0 0 auto;
+/* Center the main content area for better touch experience */
+.game-nav-mobile .game-nav-header-content {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  justify-content: center;
+  flex: 1;
+  max-width: 400px;
+  gap: 0.875rem;
 }
 
-.game-nav-mobile .game-link {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
+/* Game Image Link */
+.game-nav-mobile .game-image-link {
+  display: block;
   text-decoration: none;
+  /* Touch-optimized */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+  /* Better touch target */
+  padding: 6px;
+  margin: -6px;
+  border-radius: 16px;
+}
+
+.game-nav-mobile .game-image-link:active .game-image-container {
+  transform: scale(0.95);
+}
+
+.game-nav-mobile .game-image-link:focus,
+.game-nav-mobile .game-image-link:focus-visible {
+  outline: 3px solid #ffb74d;
+  outline-offset: 2px;
+  background: rgba(255, 183, 77, 0.1);
+}
+
+/* Game Resources Button */
+.game-nav-mobile .game-resources-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 183, 77, 0.08);
+  border: 1px solid rgba(255, 183, 77, 0.2);
   border-radius: 14px;
-  padding: 0.75rem;
-  margin: -0.75rem;
+  padding: 0.75rem 1.125rem;
+  cursor: pointer;
+  /* Touch-optimized interactions */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  /* Ensure proper button sizing */
+  min-height: 48px;
+  flex: 1;
+  max-width: 350px;
+}
+
+.game-nav-mobile .game-resources-btn:active {
+  background: rgba(255, 183, 77, 0.18);
+  border-color: rgba(255, 183, 77, 0.35);
+}
+
+.game-nav-mobile .game-resources-btn:focus,
+.game-nav-mobile .game-resources-btn:focus-visible {
+  outline: 3px solid #ffb74d;
+  outline-offset: 2px;
+  background: rgba(255, 183, 77, 0.15);
+  border-color: rgba(255, 183, 77, 0.4);
 }
 
 .game-nav-mobile .game-image-container {
   position: relative;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -84,66 +141,28 @@
 .game-nav-mobile .game-title {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.1px;
   background: linear-gradient(135deg, #ffb74d, #ffd700, #ffeb3b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-/* Right Elements - Sections Button */
-.game-nav-mobile .right-elements {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.game-nav-mobile .sections-btn {
-  background: rgba(255, 183, 77, 0.1);
-  border: 1px solid rgba(255, 183, 77, 0.2);
-  color: #ffb74d;
-  cursor: pointer;
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  min-height: 48px;
-  backdrop-filter: blur(10px);
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
+  /* Better text rendering for centered layout */
+  text-align: center;
   white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Remove blue highlights */
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  outline: none;
-  /* Better touch feedback */
-  transition: all 0.2s ease;
-}
-
-.game-nav-mobile .sections-btn:hover {
-  background: rgba(255, 183, 77, 0.15);
-  border-color: rgba(255, 183, 77, 0.3);
-  transform: translateY(-1px);
-}
-
-.game-nav-mobile .sections-btn .sections-text {
-  display: block;
+  /* Ensure proper contrast fallback */
+  color: #ffb74d;
+  /* Handle longer text gracefully */
+  max-width: 310px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Visual feedback when menu is open */
-.game-nav-mobile .sections-btn[aria-expanded='true'] {
-  background: #ffb74d;
-  color: white;
-  border-color: rgba(255, 183, 77, 0.5);
+.game-nav-mobile .game-resources-btn[aria-expanded='true'] {
+  background: rgba(255, 183, 77, 0.22);
+  border-color: rgba(255, 183, 77, 0.45);
 }
 
 /* Mobile Navigation - Overlay System */
@@ -217,7 +236,7 @@
 }
 
 .close-btn {
-  background: rgba(255, 183, 77, 0.1);
+  background: rgba(255, 183, 77, 0.12);
   border: 1px solid rgba(255, 183, 77, 0.3);
   border-radius: 10px;
   color: #ffb74d;
@@ -237,13 +256,12 @@
   -ms-user-select: none;
   user-select: none;
   outline: none;
-  /* Better touch feedback */
-  transition: all 0.2s ease;
+  /* Touch-optimized */
+  touch-action: manipulation;
 }
 
-.close-btn:hover {
-  background: rgba(255, 183, 77, 0.15);
-  transform: scale(1.05);
+.close-btn:active {
+  background: rgba(255, 183, 77, 0.2);
 }
 
 .game-header-content {
@@ -271,19 +289,27 @@
 
 .mobile-game-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #ffb74d;
+  /* Handle longer text in overlay */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
 }
 
-/* Enhanced Mobile Sections */
+/* Enhanced Mobile Sections - Updated for centered layout */
 .mobile-section {
   margin-bottom: 0;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.25rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1.375rem;
   min-height: 180px;
+  /* Ensure consistent width and centering */
+  width: 100%;
+  max-width: 460px;
 }
 
 .mobile-section-header {
@@ -313,8 +339,8 @@
   margin-bottom: 0.875rem;
   font-size: 0.95rem;
   font-weight: 500;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   min-height: 48px;
   /* Remove blue highlights */
   -webkit-tap-highlight-color: transparent;
@@ -324,21 +350,20 @@
   -ms-user-select: none;
   user-select: none;
   outline: none;
-  /* Better touch feedback */
-  transition: all 0.2s ease;
+  /* Touch-optimized */
+  touch-action: manipulation;
 }
 
-.mobile-link:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 183, 77, 0.2);
-  transform: translateY(-1px);
+.mobile-link:active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 183, 77, 0.25);
 }
 
 .mobile-link.active {
-  background: linear-gradient(135deg, #ffb74d, #ffd700);
-  color: #0a0a0a;
+  background: rgba(255, 183, 77, 0.2);
+  color: #ffb74d;
   font-weight: 600;
-  border-color: #ffb74d;
+  border-color: rgba(255, 183, 77, 0.4);
 }
 
 /* Enhanced Focus Indicators for Modal Behavior */
@@ -346,47 +371,57 @@
 .mobile-link:focus-visible {
   outline: 3px solid #ffb74d;
   outline-offset: 2px;
-  background: rgba(255, 183, 77, 0.15);
+  background: rgba(255, 183, 77, 0.18);
   border-color: rgba(255, 183, 77, 0.4);
-  transform: translateY(-1px);
 }
 
 .close-btn:focus,
 .close-btn:focus-visible {
   outline: 3px solid #ffb74d;
   outline-offset: 2px;
-  background: rgba(255, 183, 77, 0.2);
-  transform: scale(1.1);
+  background: rgba(255, 183, 77, 0.25);
 }
 
-.game-nav-mobile .sections-btn:focus,
-.game-nav-mobile .sections-btn:focus-visible {
-  outline: 3px solid #ffb74d;
-  outline-offset: 2px;
-  background: rgba(255, 183, 77, 0.2);
-  border-color: rgba(255, 183, 77, 0.4);
-  transform: translateY(-1px);
+/* Game-specific styling for Silver & Blood */
+.game-nav-mobile[data-game='silver-and-blood'] .game-resources-btn {
+  background: rgba(229, 115, 115, 0.08);
+  border-color: rgba(229, 115, 115, 0.2);
 }
 
-/* Game-specific focus indicators */
+.game-nav-mobile[data-game='silver-and-blood'] .game-resources-btn:active {
+  background: rgba(229, 115, 115, 0.18);
+  border-color: rgba(229, 115, 115, 0.35);
+}
+
+.game-nav-mobile[data-game='silver-and-blood'] .game-resources-btn:focus,
+.game-nav-mobile[data-game='silver-and-blood'] .game-resources-btn:focus-visible {
+  outline-color: #e57373;
+  background: rgba(229, 115, 115, 0.15);
+  border-color: rgba(229, 115, 115, 0.4);
+}
+
+.game-nav-mobile[data-game='silver-and-blood'] .game-resources-btn[aria-expanded='true'] {
+  background: rgba(229, 115, 115, 0.22);
+  border-color: rgba(229, 115, 115, 0.45);
+}
+
+.game-nav-mobile[data-game='silver-and-blood'] .game-image-link:focus,
+.game-nav-mobile[data-game='silver-and-blood'] .game-image-link:focus-visible {
+  outline-color: #e57373;
+}
+
+/* Game-specific focus indicators for mobile links */
 .mobile-links[data-game='silver-and-blood'] .mobile-link:focus,
 .mobile-links[data-game='silver-and-blood'] .mobile-link:focus-visible {
   outline-color: #e57373;
-  background: rgba(229, 115, 115, 0.15);
+  background: rgba(229, 115, 115, 0.18);
   border-color: rgba(229, 115, 115, 0.4);
 }
 
 .mobile-links[data-game='silver-and-blood'] .close-btn:focus,
 .mobile-links[data-game='silver-and-blood'] .close-btn:focus-visible {
   outline-color: #e57373;
-  background: rgba(229, 115, 115, 0.2);
-}
-
-.game-nav-mobile[data-game='silver-and-blood'] .sections-btn:focus,
-.game-nav-mobile[data-game='silver-and-blood'] .sections-btn:focus-visible {
-  outline-color: #e57373;
-  background: rgba(229, 115, 115, 0.2);
-  border-color: rgba(229, 115, 115, 0.4);
+  background: rgba(229, 115, 115, 0.25);
 }
 
 /* Game-Specific Styling */
@@ -398,8 +433,9 @@
 }
 
 .mobile-links[data-game='silver-and-blood'] .mobile-link.active {
-  background: linear-gradient(135deg, #b71c1c, #e57373);
-  color: white;
+  background: rgba(229, 115, 115, 0.2);
+  color: #e57373;
+  border-color: rgba(229, 115, 115, 0.4);
 }
 
 .game-nav-mobile[data-game='zone-nova'] .game-title {
@@ -414,13 +450,14 @@
 /* ============================================== */
 
 /* Default Mobile Portrait: 1 column for narrow screens */
-/* Content wrapper - like drawer-content */
+/* Content wrapper - centered layout for better touch experience */
 .mobile-sections-wrapper {
   flex: 1;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .mobile-sections-grid {
@@ -428,14 +465,45 @@
   grid-template-columns: 1fr;
   gap: 1.25rem;
   max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   width: 100%;
   padding: 0 1rem;
+  /* Center align for better balance */
+  place-items: center;
 }
+
 
 /* Small Mobile Portrait (320px-480px): Single column, optimized for touch */
 @media screen and (max-width: 480px) {
+  .game-nav-mobile .container {
+    padding: 0.375rem 0.875rem;
+  }
+
+  .game-nav-mobile .game-nav-header {
+    padding: 0.375rem 0;
+    gap: 1rem;
+  }
+
+  .game-nav-mobile .game-nav-header-content {
+    gap: 0.75rem;
+  }
+
+  .game-nav-mobile .game-resources-btn {
+    padding: 0.625rem 1rem;
+    min-height: 44px;
+    max-width: 260px;
+  }
+
+  .game-nav-mobile .game-image-container {
+    width: 28px;
+    height: 28px;
+  }
+
+  .game-nav-mobile .game-title {
+    font-size: 0.875rem;
+    max-width: 220px;
+  }
+
   .mobile-sections-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -449,24 +517,10 @@
   }
 
   .mobile-link {
-    padding: 1.375rem 1.625rem;
-    font-size: 1rem;
-    min-height: 52px;
-    margin-bottom: 1rem;
-  }
-
-  .game-nav-mobile .game-image-container {
-    width: 38px;
-    height: 38px;
-  }
-
-  .game-nav-mobile .game-title {
-    font-size: 1.05rem;
-  }
-
-  .game-nav-mobile .sections-btn {
-    padding: 0.875rem 1.125rem;
-    min-height: 50px;
+    padding: 1.125rem 1.375rem;
+    font-size: 0.95rem;
+    min-height: 48px;
+    margin-bottom: 0.875rem;
   }
 }
 
@@ -494,14 +548,34 @@
 
 /* Mobile Landscape (up to 768px height): Better horizontal spacing and layout */
 @media screen and (max-height: 768px) and (orientation: landscape) {
-  /* Increase container padding for landscape phones */
+  /* Compact container padding for landscape phones */
   .game-nav-mobile .container {
-    padding: 0.75rem 1.5rem;
+    padding: 0.375rem 1.25rem;
   }
 
-  /* Adjust header spacing for landscape */
+  /* Minimal header spacing for landscape */
   .game-nav-mobile .game-nav-header {
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
+  }
+
+  .game-nav-mobile .game-nav-header-content {
+    gap: 0.625rem;
+  }
+
+  .game-nav-mobile .game-resources-btn {
+    min-height: 42px;
+    padding: 0.5rem 1rem;
+    max-width: 240px;
+  }
+
+  .game-nav-mobile .game-image-container {
+    width: 30px;
+    height: 30px;
+  }
+
+  .game-nav-mobile .game-title {
+    font-size: 0.85rem;
+    max-width: 200px;
   }
 
   /* Grid layout adjustments */
@@ -593,29 +667,52 @@
   }
 }
 
-/* Large Tablet/Small Desktop Touch (1025px+): 3 columns when still in touch mode */
+/* Large Tablet/Small Desktop Touch (1025px+): Optimized for large touch screens */
 @media screen and (min-width: 1025px) and (hover: none) and (pointer: coarse) {
   /* Extra generous padding for large touch screens */
   .game-nav-mobile .container {
-    padding: 0.75rem 2.5rem;
+    padding: 1rem 3rem;
+  }
+
+  /* Enhanced header for larger screens */
+  .game-nav-mobile .game-nav-header {
+    padding: 1rem 0;
+    gap: 3rem;
+  }
+  
+  .game-nav-mobile .game-nav-header-content {
+    gap: 3rem;
+    max-width: 700px;
+  }
+
+  .game-nav-mobile .sections-btn {
+    min-height: 58px;
+    min-width: 140px;
+    padding: 1.125rem 1.75rem;
+    font-size: 1rem;
   }
 
   .mobile-sections-grid {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 2.25rem;
-    max-width: 900px;
-    padding: 0 3.5rem;
+    gap: 2.5rem;
+    max-width: 1000px;
+    padding: 0 2rem;
   }
 
   .mobile-section {
-    padding: 1.25rem;
-    min-height: 195px;
+    padding: 1.5rem;
+    min-height: 200px;
+    max-width: 320px;
   }
 
   .mobile-link {
-    padding: 1rem 1.25rem;
-    font-size: 0.875rem;
-    min-height: 44px;
-    margin-bottom: 0.75rem;
+    padding: 1.125rem 1.375rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+    margin-bottom: 0.875rem;
+  }
+
+  .mobile-sections-wrapper {
+    padding: 3rem;
   }
 }

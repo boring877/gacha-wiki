@@ -32,28 +32,20 @@ if (!game) return;
 <nav class="game-nav-mobile" data-game={gameKey}>
   <div class="container">
     <div class="game-nav-header">
-      <div class="game-info">
-        <a
-          href={gameKey === 'zone-nova' ? '/guides/zone-nova/' : '/guides/silver-and-blood/'}
-          class="game-link"
-        >
+      <div class="game-nav-header-content">
+        <a href={`/guides/${gameKey}/`} class="game-image-link" title={`${game.name} Overview`}>
           <div class="game-image-container">
             <img src={game.image} alt={game.name} class="game-image" loading="lazy" />
             <div class="game-image-overlay"></div>
           </div>
-          <h2 class="game-title">{game.name}</h2>
         </a>
-      </div>
-
-      <!-- Mobile Sections Button -->
-      <div class="right-elements">
         <button
-          class="sections-btn"
+          class="game-resources-btn"
           id="navToggle"
-          aria-label="Open Sections"
+          aria-label={`Browse ${game.name} Resources`}
           aria-expanded="false"
         >
-          <span class="sections-text">Sections</span>
+          <h2 class="game-title">{game.name} Resources</h2>
         </button>
       </div>
     </div>
@@ -66,7 +58,7 @@ if (!game) return;
   <div class="mobile-game-header">
     <div class="game-header-content">
       <img src={game.image} alt={game.name} class="mobile-game-image" loading="lazy" />
-      <div class="mobile-game-title">{game.name}</div>
+      <div class="mobile-game-title">Resources</div>
     </div>
     <button class="close-btn" id="navClose">✕</button>
   </div>

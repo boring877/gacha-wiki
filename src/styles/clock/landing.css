@@ -85,7 +85,6 @@
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 
@@ -107,7 +106,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
 /* Game Card Content */
@@ -117,10 +115,25 @@
 
 .game-card-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--amber-glow);
   margin: 0 0 0.5rem 0;
+}
+
+/* Game-specific title colors */
+.game-card[data-game-id="zone-nova"] .game-card-title {
+  background: var(--zn-accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.game-card[data-game-id="silver-and-blood"] .game-card-title {
+  background: var(--sab-blood-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .game-card-description {

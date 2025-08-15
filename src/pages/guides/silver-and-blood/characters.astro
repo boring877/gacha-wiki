@@ -35,24 +35,25 @@ import {
           </p>
           <div
             style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"
+            class="character-nav-buttons"
           >
             <a
               href="/guides/silver-and-blood/character-comparison/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #dc3545, #b22222); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3); transition: all 0.3s ease;"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #dc3545, #b22222); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
             >
-              🔍 Compare Character Stats
+              Compare Character Stats
             </a>
             <a
               href="/guides/silver-and-blood/character-rankings/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #28a745, #1e7e34); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3); transition: all 0.3s ease;"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #28a745, #1e7e34); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
             >
-              📊 Character Rankings
+              Character Rankings
             </a>
             <a
               href="/guides/silver-and-blood/character-tag-selection/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #6f42c1, #563d7c); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3); transition: all 0.3s ease;"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #6f42c1, #563d7c); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
             >
-              🏷️ Character Tag Selection
+              Character Tag Selection
             </a>
           </div>
         </div>
@@ -227,6 +228,15 @@ import {
       </div>
     </div>
   </section>
+
+  <!-- Hide navigation buttons on touch devices to save space -->
+  <style>
+    @media (hover: none) and (pointer: coarse) {
+      .character-nav-buttons {
+        display: none !important;
+      }
+    }
+  </style>
 
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {

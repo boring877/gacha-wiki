@@ -40,36 +40,37 @@ import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
           </p>
           <div
             style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"
+            class="character-nav-buttons"
           >
             <a
               href="/guides/zone-nova/character-comparison/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--amber-glow), #FF9800); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3); transition: all 0.3s ease;"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--amber-glow), #FF9800); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
             >
-              🔍 Compare Stats (V1)
+              Compare Stats (V1)
             </a>
             <a
               href="/guides/zone-nova/character-comparison-v2/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--teal-crystal), #00BCD4); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(0, 172, 193, 0.3); transition: all 0.3s ease;"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--teal-crystal), #00BCD4); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
             >
-              🃏 Card Comparison (V2)
+              Card Comparison (V2)
             </a>
             <a
               href="/guides/zone-nova/tier-list/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #e91e63, #f06292); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3); transition: all 0.3s ease;"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #e91e63, #f06292); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
             >
-              🏆 Tier List
+              Tier List
             </a>
             <a
               href="/guides/zone-nova/character-rankings/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #64b5f6, #42a5f5); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(100, 181, 246, 0.3); transition: all 0.3s ease;"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #64b5f6, #42a5f5); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
             >
-              🏆 Character Rankings
+              Character Rankings
             </a>
             <a
               href="/guides/zone-nova/character-tags/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #9c27b0, #7b1fa2); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3); transition: all 0.3s ease;"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #9c27b0, #7b1fa2); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
             >
-              🏷️ Character Tag Selection
+              Character Tag Selection
             </a>
           </div>
         </div>
@@ -81,6 +82,15 @@ import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
       </div>
     </div>
   </section>
+
+  <!-- Hide navigation buttons on touch devices to save space -->
+  <style>
+    @media (hover: none) and (pointer: coarse) {
+      .character-nav-buttons {
+        display: none !important;
+      }
+    }
+  </style>
 
   <!-- Import the database utilities -->
   <script>

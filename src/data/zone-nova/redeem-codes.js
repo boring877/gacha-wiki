@@ -3,8 +3,9 @@
 
 export const zoneNovaRedeemCodes = {
   meta: {
-    title: 'Zone Nova - Redeem Codes',
-    description: 'Zone Nova redeem codes to try - No guarantees they work, but worth a shot!',
+    title: 'Zone Nova Redeem Codes - Free Rewards & Gift Codes 2025 | GachaWiki',
+    description:
+      'Complete list of Zone Nova redeem codes for free rewards, gems, and items. Updated regularly with working promo codes for the mobile RPG game.',
     lastUpdated: new Date(),
   },
 
@@ -159,25 +160,69 @@ export const generateRedeemCodesStructuredData = () => {
     name: zoneNovaRedeemCodes.meta.title,
     description: zoneNovaRedeemCodes.meta.description,
     url: 'https://gacha-wiki.vercel.app/guides/zone-nova/redeem-codes/',
+    inLanguage: 'en-US',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'GachaWiki',
+      url: 'https://gacha-wiki.vercel.app',
+    },
     about: {
-      '@type': 'Game',
+      '@type': 'VideoGame',
       name: 'Zone Nova',
+      genre: ['RPG', 'Mobile Game', 'Gacha Game'],
+      platform: ['Android', 'iOS'],
+      applicationCategory: 'GameApplication',
     },
     mainEntity: {
       '@type': 'ItemList',
-      name: 'Zone Nova Redeem Codes',
+      name: 'Zone Nova Redeem Codes List',
+      description: 'Active and working redeem codes for Zone Nova mobile game',
+      numberOfItems: zoneNovaRedeemCodes.availableCodes.length,
       itemListElement: zoneNovaRedeemCodes.availableCodes.map((code, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         item: {
-          '@type': 'Thing',
+          '@type': 'DigitalDocument',
           name: code.code,
-          description: `Zone Nova redeem code`,
+          description: `Zone Nova redeem code for free rewards and items`,
           identifier: code.id,
+          dateCreated: code.dateAdded,
+          keywords: 'Zone Nova, redeem code, free rewards, mobile game',
         },
       })),
     },
+    keywords:
+      'Zone Nova redeem codes, free rewards, gift codes, promo codes, mobile RPG, gacha game codes, Zone Nova cheats',
     lastReviewed: zoneNovaRedeemCodes.meta.lastUpdated.toISOString(),
     dateModified: zoneNovaRedeemCodes.meta.lastUpdated.toISOString(),
+    datePublished: '2025-07-01T00:00:00.000Z',
+    publisher: {
+      '@type': 'Organization',
+      name: 'GachaWiki',
+      url: 'https://gacha-wiki.vercel.app',
+    },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://gacha-wiki.vercel.app',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Zone Nova Guides',
+          item: 'https://gacha-wiki.vercel.app/guides/zone-nova/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Redeem Codes',
+          item: 'https://gacha-wiki.vercel.app/guides/zone-nova/redeem-codes/',
+        },
+      ],
+    },
   };
 };

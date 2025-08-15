@@ -5,7 +5,20 @@
 
 <style>
   /* Premium Custom Scrollbar Design - MAXIMUM SPECIFICITY TO OVERRIDE ALL CSS */
-  /* Ultra-high specificity selectors with multiple classes and !important */
+  /* Ultra-high specificity selectors with multiple classes and */
+
+  /* Universal scrollbar reset - most important */
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+    height: 0px;
+    background: transparent;
+  }
 
   /* Webkit browsers (Chrome, Safari, Edge) - HIDDEN SCROLLBAR */
   html.no-js ::-webkit-scrollbar,
@@ -20,9 +33,9 @@
   html ::-webkit-scrollbar,
   body ::-webkit-scrollbar,
   ::-webkit-scrollbar {
-    width: 0px !important;
-    height: 0px !important;
-    background: transparent !important;
+    width: 0px;
+    height: 0px;
+    background: transparent;
   }
 
   html.no-js ::-webkit-scrollbar-track,
@@ -37,8 +50,8 @@
   html ::-webkit-scrollbar-track,
   body ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-track {
-    display: none !important;
-    background: transparent !important;
+    display: none;
+    background: transparent;
   }
 
   html.no-js ::-webkit-scrollbar-thumb,
@@ -53,8 +66,8 @@
   html ::-webkit-scrollbar-thumb,
   body ::-webkit-scrollbar-thumb,
   ::-webkit-scrollbar-thumb {
-    display: none !important;
-    background: transparent !important;
+    display: none;
+    background: transparent;
   }
 
   html.no-js ::-webkit-scrollbar-thumb:hover,
@@ -69,8 +82,8 @@
   html ::-webkit-scrollbar-thumb:hover,
   body ::-webkit-scrollbar-thumb:hover,
   ::-webkit-scrollbar-thumb:hover {
-    display: none !important;
-    background: transparent !important;
+    display: none;
+    background: transparent;
   }
 
   html.no-js ::-webkit-scrollbar-corner,
@@ -85,8 +98,8 @@
   html ::-webkit-scrollbar-corner,
   body ::-webkit-scrollbar-corner,
   ::-webkit-scrollbar-corner {
-    display: none !important;
-    background: transparent !important;
+    display: none;
+    background: transparent;
   }
 
   /* Firefox scrollbar styling - HIDDEN */
@@ -100,8 +113,8 @@
   *,
   html,
   body {
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   /* Hide scrollbars on mobile devices */
@@ -112,15 +125,15 @@
     html ::-webkit-scrollbar,
     body ::-webkit-scrollbar,
     ::-webkit-scrollbar {
-      width: 0px !important;
-      background: transparent !important;
+      width: 0px;
+      background: transparent;
     }
 
     /* For Firefox mobile */
     *,
     html,
     body {
-      scrollbar-width: none !important;
+      scrollbar-width: none;
     }
   }
 
@@ -131,7 +144,7 @@
     html ::-webkit-scrollbar-thumb,
     body ::-webkit-scrollbar-thumb,
     ::-webkit-scrollbar-thumb {
-      transition: none !important;
+      transition: none;
     }
   }
 </style>

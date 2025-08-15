@@ -725,13 +725,11 @@
 .pool-character-card.selected {
   border: 2px solid var(--zn-primary-amber);
   transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(255, 183, 77, 0.5);
 }
 
 .tier-characters.awaiting-placement {
   background: rgba(255, 183, 77, 0.1);
   border: 2px dashed var(--zn-primary-amber);
-  animation: pulse 1s infinite;
 }
 
 .empty-tier {
@@ -745,15 +743,6 @@
 /* 15. ANIMATIONS */
 /* ============================================ */
 
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
 
 /* ============================================ */
 /* 16. MOBILE RESPONSIVE DESIGN */

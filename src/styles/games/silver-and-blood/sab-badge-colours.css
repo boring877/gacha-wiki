@@ -39,11 +39,11 @@
   --sab-badge-pdmg: #cd853f; /* Physical damage - peru */
   --sab-badge-mdmg: #4169e1; /* Magical damage - royal blue */
 
-  /* Skill Type Badge Colors */
-  --sab-badge-normal-attack: #808080; /* Normal attack - gray */
-  --sab-badge-special: #ff8c00; /* Special skill - dark orange */
-  --sab-badge-passive: #32cd32; /* Passive skill - lime green */
-  --sab-badge-ultimate: var(--sab-dark-red); /* Ultimate skill - dark red */
+  /* Skill Type Badge Colors - Updated for Silver and Blood theme */
+  --sab-badge-normal-attack: #b8c5d1; /* Normal attack - silver blue (metallic theme) */
+  --sab-badge-special: #d4af37; /* Special skill - muted gold (precious theme) */
+  --sab-badge-passive: #5a7ba7; /* Passive skill - steel blue (calm theme) */
+  --sab-badge-ultimate: #a64d4d; /* Ultimate skill - dark blood red */
 
   /* Gameplay Tag Badge Colors */
   --sab-badge-melee: #ff6b6b; /* Melee tag - coral */
@@ -64,6 +64,7 @@
   --sab-badge-teleport: #673ab7; /* Teleport tag - deep purple */
   --sab-badge-move: #607d8b; /* Move tag - blue gray */
   --sab-badge-range: #8bc34a; /* Range tag - light green */
+  --sab-badge-shield: #87ceeb; /* Shield tag - sky blue */
 
   /* Border Colors */
   --sab-badge-ssr-border: #ffd700; /* SSR border - gold */
@@ -80,9 +81,9 @@
   --sab-badge-full-moon-border: #fff8dc; /* Full moon border - cornsilk */
   --sab-badge-pdmg-border: #deb887; /* Physical damage border - burlywood */
   --sab-badge-mdmg-border: #6495ed; /* Magical damage border - cornflower blue */
-  --sab-badge-normal-attack-border: #a0a0a0; /* Normal attack border - dark gray */
-  --sab-badge-special-border: #ffa500; /* Special skill border - orange */
-  --sab-badge-passive-border: #7cfc00; /* Passive skill border - lawn green */
+  --sab-badge-normal-attack-border: #9fb3c4; /* Normal attack border - silver accent */
+  --sab-badge-special-border: #ffbf00; /* Special skill border - golden amber */
+  --sab-badge-passive-border: #7a95b8; /* Passive skill border - light steel blue */
 
   /* Tag Badge Borders */
   --sab-badge-melee-border: #ff5252; /* Melee border - red */
@@ -99,6 +100,7 @@
   --sab-badge-teleport-border: #9575cd; /* Teleport border - medium purple */
   --sab-badge-move-border: #90a4ae; /* Move border - blue gray */
   --sab-badge-range-border: #aed581; /* Range border - light green */
+  --sab-badge-shield-border: #4fc3f7; /* Shield border - light blue */
 
   /* Text Colors */
   --sab-badge-white: #fff; /* White text */
@@ -133,21 +135,21 @@
 .badge.ssr {
   background: var(--sab-badge-ssr);
   color: var(--sab-badge-dark);
-  border: 1px solid var(--sab-badge-ssr-border);
+  border: none;
 }
 
 .rarity-badge.sr,
 .badge.sr {
   background: var(--sab-badge-sr);
   color: var(--sab-badge-dark);
-  border: 1px solid var(--sab-badge-sr-border);
+  border: none;
 }
 
 .rarity-badge.r,
 .badge.r {
   background: var(--sab-badge-r);
   color: var(--sab-badge-dark);
-  border: 1px solid var(--sab-badge-r-border);
+  border: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -160,42 +162,42 @@
 .badge.warrior {
   background: var(--sab-badge-warrior);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-dark-red);
+  border: none;
 }
 
 .class-badge.assassin,
 .badge.assassin {
   background: var(--sab-badge-assassin);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-assassin-border);
+  border: none;
 }
 
 .class-badge.defender,
 .badge.defender {
   background: var(--sab-badge-defender);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-dark-blue);
+  border: none;
 }
 
 .class-badge.marksman,
 .badge.marksman {
   background: var(--sab-badge-marksman);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-marksman-border);
+  border: none;
 }
 
 .class-badge.sorcerer,
 .badge.sorcerer {
   background: var(--sab-badge-sorcerer);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-dark-blue);
+  border: none;
 }
 
 .class-badge.enchanter,
 .badge.enchanter {
   background: var(--sab-badge-enchanter);
   color: var(--sab-badge-dark);
-  border: 1px solid var(--sab-blood-accent);
+  border: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -208,28 +210,28 @@
 .badge.kingdom {
   background: var(--sab-badge-kingdom);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-light-blue);
+  border: none;
 }
 
 .faction-badge.ancestors,
 .badge.ancestors {
   background: var(--sab-badge-ancestors);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-ancestors-border);
+  border: none;
 }
 
 .faction-badge.church,
 .badge.church {
   background: var(--sab-badge-church);
   color: var(--sab-badge-dark);
-  border: 1px solid var(--sab-silver-accent);
+  border: none;
 }
 
 .faction-badge.bloodborn,
 .badge.bloodborn {
   background: var(--sab-badge-bloodborn);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-calm-red);
+  border: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -242,21 +244,21 @@
 .badge.light {
   background: var(--sab-badge-light);
   color: var(--sab-badge-dark);
-  border: 1px solid var(--sab-badge-light-border);
+  border: none;
 }
 
 .equipment-badge.medium,
 .badge.medium {
   background: var(--sab-badge-medium);
   color: var(--sab-badge-dark);
-  border: 1px solid var(--sab-badge-medium-border);
+  border: none;
 }
 
 .equipment-badge.heavy,
 .badge.heavy {
   background: var(--sab-badge-heavy);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-heavy-border);
+  border: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -269,21 +271,21 @@
 .badge.new-moon {
   background: var(--sab-badge-new-moon);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-new-moon-border);
+  border: none;
 }
 
 .moon-badge.crescent-moon,
 .badge.crescent-moon {
   background: var(--sab-badge-crescent-moon);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-crescent-moon-border);
+  border: none;
 }
 
 .moon-badge.full-moon,
 .badge.full-moon {
   background: var(--sab-badge-full-moon);
   color: var(--sab-badge-dark);
-  border: 1px solid var(--sab-badge-full-moon-border);
+  border: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -296,14 +298,14 @@
 .badge.pdmg {
   background: var(--sab-badge-pdmg);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-pdmg-border);
+  border: none;
 }
 
 .attack-badge.mdmg,
 .badge.mdmg {
   background: var(--sab-badge-mdmg);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-mdmg-border);
+  border: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -316,28 +318,28 @@
 .badge.normal-attack {
   background: var(--sab-badge-normal-attack);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-normal-attack-border);
+  border: none;
 }
 
 .skill-badge.special,
 .badge.special {
   background: var(--sab-badge-special);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-special-border);
+  border: none;
 }
 
 .skill-badge.passive,
 .badge.passive {
   background: var(--sab-badge-passive);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-passive-border);
+  border: none;
 }
 
 .skill-badge.ultimate,
 .badge.ultimate {
   background: var(--sab-badge-ultimate);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-calm-red);
+  border: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -352,115 +354,121 @@
   display: inline-block;
   text-align: center;
   font-family: 'Space Grotesk', sans-serif;
-  border: 1px solid transparent;
+  border: none;
 }
 
 .tag-badge.melee {
   background: var(--sab-badge-melee);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-melee-border);
+  border: none;
 }
 
 .tag-badge.aoe-dmg {
   background: var(--sab-badge-aoe-dmg);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-aoe-dmg-border);
+  border: none;
 }
 
 .tag-badge.continuous-dmg {
   background: var(--sab-badge-continuous-dmg);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-calm-blue);
+  border: none;
 }
 
 .tag-badge.control {
   background: var(--sab-badge-control);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-control-border);
+  border: none;
 }
 
 .tag-badge.mid-range {
   background: var(--sab-badge-mid-range);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-mid-range-border);
+  border: none;
 }
 
 .tag-badge.single-target-dmg {
   background: var(--sab-badge-single-target-dmg);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-dark-red);
+  border: none;
 }
 
 .tag-badge.rush {
   background: var(--sab-badge-rush);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-rush-border);
+  border: none;
 }
 
 .tag-badge.ranged {
   background: var(--sab-badge-ranged);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-ranged-border);
+  border: none;
 }
 
 .tag-badge.summon {
   background: var(--sab-badge-summon);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-calm-blue);
+  border: none;
 }
 
 .tag-badge.healing {
   background: var(--sab-badge-healing);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-healing-border);
+  border: none;
 }
 
 .tag-badge.purify {
   background: var(--sab-badge-purify);
   color: var(--sab-badge-dark);
-  border: 1px solid var(--sab-badge-purify-border);
+  border: none;
 }
 
 .tag-badge.buff {
   background: var(--sab-badge-buff);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-buff-border);
+  border: none;
 }
 
 .tag-badge.debuff {
   background: var(--sab-badge-debuff);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-dark-red);
+  border: none;
 }
 
 .tag-badge.bounce-dmg {
   background: var(--sab-badge-bounce-dmg);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-bounce-dmg-border);
+  border: none;
 }
 
 .tag-badge.gather {
   background: var(--sab-badge-gather);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-gather-border);
+  border: none;
 }
 
 .tag-badge.teleport {
   background: var(--sab-badge-teleport);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-teleport-border);
+  border: none;
 }
 
 .tag-badge.move {
   background: var(--sab-badge-move);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-move-border);
+  border: none;
 }
 
 .tag-badge.range {
   background: var(--sab-badge-range);
   color: var(--sab-badge-white);
-  border: 1px solid var(--sab-badge-range-border);
+  border: none;
+}
+
+.tag-badge.shield {
+  background: var(--sab-badge-shield);
+  color: var(--sab-badge-white);
+  border: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */

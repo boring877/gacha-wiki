@@ -33,7 +33,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
   @import '../../styles/components/zone-nova-character-navigation.css';
 </style>
 
-{(hasNavigation || forceRender) && (
+{(hasNavigation || forceRender) && prevCharacter && nextCharacter && (
   <>
     <!-- Desktop Navigation Panel -->
     <div 
@@ -83,7 +83,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
   // Import character data and utilities
   import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 
-  // Character navigation functionality
+  // High-performance Zone Nova character navigation
   document.addEventListener('DOMContentLoaded', () => {
     // Cache DOM elements for better performance
     const elements = {
@@ -109,44 +109,58 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       elements.filterEl = elements.navPanel.querySelector('.nav-filter') as HTMLElement | null;
     }
 
-    // Get current character slug from the page URL (cached)
-    const currentCharacterSlug = (() => {
-      const urlParts = window.location.pathname.split('/');
-      return urlParts[urlParts.length - 1] || '';
-    })();
+    // Get current character slug from the page URL
+    const currentCharacterSlug = window.location.pathname.split('/').pop() || '';
 
-    // Cache for session storage data to avoid repeated parsing
-    let cachedFilterState: any = null;
-    let cachedSortState: any = null;
-    let cacheTimestamp = 0;
-    const CACHE_DURATION = 1000; // 1 second cache
+    // Type definitions for Zone Nova
+    type ZNCharacter = typeof ZONE_NOVA_CHARACTERS[0];
+    type ZNFilterState = Record<string, string | undefined>;
+    type ZNSortState = { column: string; asc: boolean };
 
-    // Optimized session storage access with caching
+    // Performance optimization manager for Zone Nova
+    const znPerfManager: {
+      sessionCache: { filters: ZNFilterState; sort: ZNSortState } | null;
+      sessionCacheTime: number;
+      characterListCache: ZNCharacter[] | null;
+      characterListCacheKey: string;
+      CACHE_DURATION: number;
+    } = {
+      sessionCache: null,
+      sessionCacheTime: 0,
+      characterListCache: null,
+      characterListCacheKey: '',
+      CACHE_DURATION: 5000 // 5 second cache for better performance
+    };
+
+    // High-performance session storage access
     function getCachedSessionData() {
       const now = Date.now();
-      if (cachedFilterState && cachedSortState && (now - cacheTimestamp) < CACHE_DURATION) {
-        return { filters: cachedFilterState, sort: cachedSortState };
+      if (znPerfManager.sessionCache && (now - znPerfManager.sessionCacheTime) < znPerfManager.CACHE_DURATION) {
+        return znPerfManager.sessionCache;
       }
 
       try {
         const filterState = sessionStorage.getItem('zone-nova-character-filters');
         const sortState = sessionStorage.getItem('zone-nova-character-sort');
         
-        cachedFilterState = filterState ? JSON.parse(filterState) : {};
-        cachedSortState = sortState ? JSON.parse(sortState) : { column: 'name', asc: true };
-        cacheTimestamp = now;
+        znPerfManager.sessionCache = {
+          filters: filterState ? JSON.parse(filterState) : {},
+          sort: sortState ? JSON.parse(sortState) : { column: 'name', asc: true }
+        };
+        znPerfManager.sessionCacheTime = now;
         
-        return { filters: cachedFilterState, sort: cachedSortState };
+        return znPerfManager.sessionCache;
       } catch (error: unknown) {
-        console.warn('Error reading sessionStorage:', error);
-        cachedFilterState = {};
-        cachedSortState = { column: 'name', asc: true };
-        return { filters: cachedFilterState, sort: cachedSortState };
+        znPerfManager.sessionCache = {
+          filters: {},
+          sort: { column: 'name', asc: true }
+        };
+        return znPerfManager.sessionCache;
       }
     }
 
-    // Optimized character filtering
-    function applyFilters(characters: any[], filters: any) {
+    // Optimized Zone Nova character filtering
+    function applyFilters(characters: ZNCharacter[], filters: ZNFilterState) {
       if (!filters || Object.keys(filters).length === 0) return characters;
       
       return characters.filter(character => {
@@ -158,8 +172,8 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       });
     }
 
-    // Optimized character sorting
-    function applySorting(characters: any[], sort: any) {
+    // Optimized Zone Nova character sorting
+    function applySorting(characters: ZNCharacter[], sort: ZNSortState) {
       if (sort.column === 'name') {
         return characters.sort((a, b) => {
           const result = a.name.localeCompare(b.name);
@@ -192,50 +206,60 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       });
     }
 
-    // Function to get the current filtered and sorted character list (optimized)
+    // High-performance Zone Nova character list with caching
     function getCurrentCharacterList() {
       const { filters, sort } = getCachedSessionData();
+      const cacheKey = `${JSON.stringify(filters)}_${JSON.stringify(sort)}`;
       
-      let characters = [...ZONE_NOVA_CHARACTERS];
-      characters = applyFilters(characters, filters);
-      characters = applySorting(characters, sort);
+      // Return cached result if available
+      if (znPerfManager.characterListCacheKey === cacheKey && znPerfManager.characterListCache) {
+        return znPerfManager.characterListCache;
+      }
       
-      return characters;
+      // Process and cache characters
+      const filtered = applyFilters(ZONE_NOVA_CHARACTERS, filters);
+      const sorted = applySorting(filtered, sort);
+      
+      znPerfManager.characterListCache = sorted;
+      znPerfManager.characterListCacheKey = cacheKey;
+      
+      return sorted;
     }
 
-    // Function to get sort display name
+    // Zone Nova sort display names lookup
+    const ZN_SORT_NAMES = {
+      'name': 'Name',
+      'id': 'Default',
+      'hp': 'HP',
+      'attack': 'Attack',
+      'defense': 'Defense',
+      'critRate': 'Crit Rate',
+      'critDmg': 'Crit Dmg',
+      'energyRecovery': 'Energy'
+    } as const;
+
     function getSortDisplayName(sortColumn: string) {
-      const sortNames = {
-        'name': 'Name',
-        'id': 'Default',
-        'hp': 'HP',
-        'attack': 'Attack',
-        'defense': 'Defense',
-        'critRate': 'Crit Rate',
-        'critDmg': 'Crit Dmg',
-        'energyRecovery': 'Energy'
-      };
-      return sortNames[sortColumn] || sortColumn;
+      return ZN_SORT_NAMES[sortColumn] || sortColumn;
     }
 
-    // Optimized function to get sort and filter display info
+    // Zone Nova numeric columns for sort direction
+    const ZN_NUMERIC_COLUMNS = ['hp', 'attack', 'defense', 'critRate', 'critDmg', 'energyRecovery'];
+
+    // Optimized Zone Nova display info generation
     function getDisplayInfo() {
       const { filters, sort } = getCachedSessionData();
       
       // Calculate sort info
       let sortInfo = 'Default';
       if (sort.column !== 'name' || !sort.asc) {
-        const numericColumns = ['hp', 'attack', 'defense', 'critRate', 'critDmg', 'energyRecovery'];
-        const direction = numericColumns.includes(sort.column) 
+        const direction = ZN_NUMERIC_COLUMNS.includes(sort.column) 
           ? (sort.asc ? '↓' : '↑') 
           : (sort.asc ? '↑' : '↓');
         sortInfo = `${getSortDisplayName(sort.column)} ${direction}`;
       }
       
       // Calculate filter info
-      const activeFilters = Object.entries(filters)
-        .filter(([key, value]) => value)
-        .map(([key, value]) => value);
+      const activeFilters = Object.values(filters).filter(Boolean);
       const filterInfo = activeFilters.length > 0 ? activeFilters.join(', ') : 'None';
       
       return { sortInfo, filterInfo };
@@ -267,77 +291,117 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       const { sortInfo, filterInfo } = getDisplayInfo();
 
       // Batch DOM updates for better performance
-      const updates: [HTMLElement | null, string][] = [
+      const updates = [
         [elements.currentNameEl, currentCharacter.name],
         [elements.positionEl, `${currentIndex + 1}/${totalChars}`],
         [elements.totalFilteredEl, `${totalChars} character${totalChars !== 1 ? 's' : ''}`],
         [elements.nextNameEl, nextCharacter.name],
         [elements.sortEl, sortInfo],
         [elements.filterEl, filterInfo]
-      ];
+      ] as const;
 
-      // Apply text updates
-      updates.forEach(([element, text]) => {
+      // Apply text updates efficiently
+      for (const [element, text] of updates) {
         if (element && element.textContent !== text) {
           element.textContent = text;
         }
-      });
+      }
 
-      // Update navigation attributes for desktop buttons
-      const navigationUpdates: [HTMLElement | null, any][] = [
-        [elements.prevButton, prevCharacter],
-        [elements.nextButton, nextCharacter]
-      ];
-
-      navigationUpdates.forEach(([element, character]) => {
-        if (element) {
-          const currentUrl = element.getAttribute('data-character-url');
-          if (currentUrl !== character.detailUrl) {
-            element.setAttribute('data-character-url', character.detailUrl);
-            element.setAttribute('title', `${element === elements.nextButton ? 'Next' : 'Previous'}: ${character.name}`);
-          }
+      // Update navigation attributes efficiently
+      if (elements.prevButton) {
+        const currentUrl = elements.prevButton.getAttribute('data-character-url');
+        if (currentUrl !== prevCharacter.detailUrl) {
+          elements.prevButton.setAttribute('data-character-url', prevCharacter.detailUrl);
+          elements.prevButton.setAttribute('title', `Previous: ${prevCharacter.name}`);
         }
-      });
+      }
+      
+      if (elements.nextButton) {
+        const currentUrl = elements.nextButton.getAttribute('data-character-url');
+        if (currentUrl !== nextCharacter.detailUrl) {
+          elements.nextButton.setAttribute('data-character-url', nextCharacter.detailUrl);
+          elements.nextButton.setAttribute('title', `Next: ${nextCharacter.name}`);
+        }
+      }
 
-      // Update mobile navigation via the mobile component
-      if (typeof (window as any).updateMobileNavigation === 'function') {
-        (window as any).updateMobileNavigation(prevCharacter, nextCharacter);
+      // Update Zone Nova mobile navigation via the mobile component
+      if (typeof (window as any).updateZnMobileNavigation === 'function') {
+        (window as any).updateZnMobileNavigation(prevCharacter, nextCharacter);
       }
     }
 
     // Initialize navigation on page load
     updateNavigationPanel();
 
+    // Debounced update function for better performance
+    let updateTimeout: ReturnType<typeof setTimeout> | null = null;
+    function debouncedUpdate() {
+      if (updateTimeout) {
+        clearTimeout(updateTimeout);
+      }
+      updateTimeout = setTimeout(() => {
+        // Clear caches when data changes
+        znPerfManager.sessionCache = null;
+        znPerfManager.characterListCache = null;
+        znPerfManager.characterListCacheKey = '';
+        updateNavigationPanel();
+      }, 100); // 100ms debounce
+    }
+
     // Update navigation when sessionStorage changes (for cross-tab synchronization)
     window.addEventListener('storage', (e) => {
       if (e.key === 'zone-nova-character-filters' || e.key === 'zone-nova-character-sort') {
-        updateNavigationPanel();
+        debouncedUpdate();
       }
     });
 
     // Also listen for custom events from the character database when sorting/filtering changes
     document.addEventListener('character-database-updated', () => {
-      updateNavigationPanel();
+      debouncedUpdate();
     });
 
-    // Optimized navigation handler
+    // Instant Zone Nova navigation with preloading and fade effect
     function handleNavigation(url: string | null) {
       if (!url || typeof url !== 'string') {
-        console.warn('Invalid navigation URL:', url);
         return false;
       }
       
       try {
-        window.location.href = url;
+        // Add loading state immediately for instant feedback
+        document.body.style.opacity = '0.8';
+        document.body.style.transition = 'opacity 0.1s ease';
+        
+        // For faster perception, use location.replace to avoid back button issues
+        window.location.replace(url);
         return true;
       } catch (error: unknown) {
-        console.error('Navigation failed:', error);
+        // Reset opacity on error
+        document.body.style.opacity = '1';
         return false;
       }
     }
 
-    // Navigation button handlers with validation
+    // Prefetch function for instant loading
+    function prefetchPage(url: string | null) {
+      if (!url) return;
+      
+      const existing = document.querySelector(`link[href="${url}"]`);
+      if (existing) return;
+      
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = url;
+      document.head.appendChild(link);
+    }
+
+    // Navigation button handlers with instant prefetching
     if (elements.prevButton) {
+      // Prefetch on hover for instant loading
+      elements.prevButton.addEventListener('mouseenter', () => {
+        const url = elements.prevButton?.getAttribute('data-character-url');
+        prefetchPage(url);
+      });
+      
       elements.prevButton.addEventListener('click', (e) => {
         e.preventDefault();
         const url = elements.prevButton?.getAttribute('data-character-url') || null;
@@ -346,6 +410,12 @@ const forceRender = charactersByDatabaseOrder.length > 0;
     }
 
     if (elements.nextButton) {
+      // Prefetch on hover for instant loading
+      elements.nextButton.addEventListener('mouseenter', () => {
+        const url = elements.nextButton?.getAttribute('data-character-url');
+        prefetchPage(url);
+      });
+      
       elements.nextButton.addEventListener('click', (e) => {
         e.preventDefault();
         const url = elements.nextButton?.getAttribute('data-character-url') || null;
@@ -367,15 +437,43 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       try {
         if (e.key === 'ArrowLeft' && elements.prevButton) {
           e.preventDefault();
+          // Prefetch immediately on keydown for instant loading
           const url = elements.prevButton?.getAttribute('data-character-url') || null;
+          prefetchPage(url);
           handleNavigation(url);
         } else if (e.key === 'ArrowRight' && elements.nextButton) {
           e.preventDefault();
+          // Prefetch immediately on keydown for instant loading
           const url = elements.nextButton?.getAttribute('data-character-url') || null;
+          prefetchPage(url);
           handleNavigation(url);
         }
       } catch (error: unknown) {
-        console.error('Keyboard navigation error:', error);
+        // console.error('Keyboard navigation error:', error);
+      }
+    });
+
+    // Cleanup function to prevent memory leaks
+    function cleanup() {
+      // Clear all caches
+      znPerfManager.sessionCache = null;
+      znPerfManager.characterListCache = null;
+      znPerfManager.characterListCacheKey = '';
+      
+      // Clear timeout
+      if (updateTimeout) {
+        clearTimeout(updateTimeout);
+        updateTimeout = null;
+      }
+    }
+
+    // Register cleanup on page unload
+    window.addEventListener('beforeunload', cleanup);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        // Page is being hidden, clean up caches to free memory
+        znPerfManager.characterListCache = null;
+        znPerfManager.characterListCacheKey = '';
       }
     });
   });

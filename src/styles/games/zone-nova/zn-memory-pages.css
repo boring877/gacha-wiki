@@ -108,20 +108,9 @@
   );
   border-radius: 24px;
   opacity: 0.7;
-  animation: cardGlow 3s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
-@keyframes cardGlow {
-  0% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
 
 /* ===== MEMORY RARITY OVERLAY ===== */
 .memory-rarity-overlay {
@@ -206,7 +195,6 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin: 0 0 1rem 0;
-  text-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
@@ -255,7 +243,6 @@
   color: #00e5ff;
   margin: 0 0 1.5rem 0;
   text-align: center;
-  text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
 }
 
 .memory-stats-grid-premium {
@@ -299,7 +286,6 @@
 
 .stat-icon {
   font-size: 1.5rem;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
 }
 
 .stat-info {
@@ -320,7 +306,6 @@
   font-weight: 800;
   color: #ffd700;
   font-family: var(--font-display);
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 /* ===== PREMIUM MEMORY EFFECTS SECTION ===== */
@@ -412,7 +397,6 @@
   position: absolute;
   left: 0;
   top: -0.1rem;
-  text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
 }
 
 .effect-item-premium:first-child {
@@ -487,7 +471,6 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: #ffd700;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
 
 .exclusive-badge {
@@ -571,7 +554,6 @@
   font-weight: 800;
   color: #ffd700;
   font-family: var(--font-display);
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
   letter-spacing: 0.05em;
 }
 

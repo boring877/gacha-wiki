@@ -31,7 +31,10 @@
 /* Main hero section - clean and simple */
 .hero-section {
   position: relative; /* Positioning context for children */
-  padding: 6rem 2rem 4rem 2rem; /* Generous padding with more space at top */
+  padding: 6rem 2rem 8rem 2rem; /* Increased bottom padding for more content height */
+  min-height: 70vh; /* Ensure hero takes up sufficient height */
+  display: flex;
+  align-items: center;
   /* Background handled by unified system - no separate layers needed */
 }
 

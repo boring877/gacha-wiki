@@ -1,59 +1,5 @@
 /* Zone Nova Redeem Codes - Premium Design with Zone Nova Colors */
 
-/* Core Animations */
-@keyframes znGlow {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05) rotate(180deg);
-  }
-}
-
-@keyframes znShimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
-@keyframes znFloat {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes znPulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 20px rgba(255, 183, 77, 0.3),
-      0 0 40px rgba(0, 172, 193, 0.2);
-  }
-  50% {
-    box-shadow:
-      0 0 30px rgba(255, 183, 77, 0.5),
-      0 0 60px rgba(0, 172, 193, 0.4);
-  }
-}
-
-@keyframes borderGlow {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 /* Page Header - Zone Nova Style */
 .redeem-codes-header {
@@ -71,7 +17,6 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: var(--leading-tight);
-  animation: znShimmer 3s ease-in-out infinite;
 }
 
 .redeem-codes-description {
@@ -92,7 +37,6 @@
   max-width: 60rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 12px 30px rgba(255, 183, 77, 0.2);
 }
 
 .redeem-codes-warning::before {
@@ -103,7 +47,6 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
-  animation: znShimmer 3s ease-in-out infinite;
 }
 
 .redeem-codes-warning h3 {
@@ -172,7 +115,6 @@
   height: 2px;
   background: linear-gradient(90deg, var(--amber-glow), var(--teal-crystal), var(--amber-glow));
   background-size: 200% auto;
-  animation: znShimmer 3s ease-in-out infinite;
 }
 
 /* Codes Table Design */
@@ -181,7 +123,6 @@
   background: var(--bg-primary);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--neutral-200);
 }
 
@@ -221,10 +162,6 @@
   border-bottom: none;
 }
 
-.redeem-code-row:hover {
-  background: var(--bg-secondary);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
 
 .redeem-code-row::before {
   content: '';
@@ -238,9 +175,6 @@
   transition: transform 0.3s ease;
 }
 
-.redeem-code-row:hover::before {
-  transform: scaleY(1);
-}
 
 /* Code Cell Styles */
 .code-cell {
@@ -264,17 +198,15 @@
   transition: all 0.3s ease;
 }
 
-.code-display:hover {
-  border-color: var(--amber-glow);
-  box-shadow: 0 0 20px rgba(255, 183, 77, 0.2);
-}
 
 .code-text {
   font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
   font-size: var(--text-base);
   font-weight: var(--font-bold);
   color: var(--text-inverse);
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .copy-icon-btn {
@@ -290,10 +222,6 @@
   justify-content: center;
 }
 
-.copy-icon-btn:hover {
-  background: rgba(255, 183, 77, 0.1);
-  transform: scale(1.1);
-}
 
 .copy-icon-btn svg {
   width: 20px;
@@ -335,7 +263,6 @@
   height: 8px;
   border-radius: 50%;
   background: currentColor;
-  animation: znPulse 2s ease-in-out infinite;
 }
 
 .date-cell {
@@ -366,11 +293,6 @@
   align-items: center;
 }
 
-.redeem-code-card:hover {
-  transform: translateX(5px);
-  box-shadow: 0 10px 30px rgba(0, 172, 193, 0.2);
-  border-color: var(--teal-crystal);
-}
 
 .redeem-code-card::before {
   content: '';
@@ -384,9 +306,6 @@
   transition: transform 0.3s ease;
 }
 
-.redeem-code-card:hover::before {
-  transform: scaleY(1);
-}
 
 .code-info {
   display: flex;
@@ -411,7 +330,9 @@
   font-size: var(--text-lg);
   font-weight: var(--font-bold);
   color: var(--text-primary);
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .code-meta {
@@ -462,11 +383,6 @@
   gap: 0.5rem;
 }
 
-.copy-button:hover {
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 183, 77, 0.3);
-}
 
 .copy-button:active {
   transform: translateY(0);
@@ -482,7 +398,6 @@
   border: 1px solid var(--amber-glow);
   border-radius: 20px;
   padding: 3rem;
-  box-shadow: 0 12px 30px rgba(255, 183, 77, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -495,7 +410,6 @@
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--amber-glow), var(--teal-crystal), var(--rose-quartz));
-  animation: znShimmer 3s ease-in-out infinite;
 }
 
 .redeem-instructions-card h3 {
@@ -555,13 +469,9 @@
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
 
-.redeem-instruction-image img:hover {
-  transform: scale(1.02);
-}
 
 /* Empty Section */
 .redeem-empty-section {
@@ -589,7 +499,6 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 172, 193, 0.2);
 }
 
 .redeem-community-card::before {
@@ -597,7 +506,6 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center, rgba(0, 172, 193, 0.05), transparent);
-  animation: znGlow 4s ease-in-out infinite;
 }
 
 .redeem-community-buttons {
@@ -640,22 +548,8 @@
   border: 2px solid var(--teal-crystal);
 }
 
-.redeem-discord-btn:hover,
-.redeem-contribute-btn:hover,
-.redeem-github-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
 
-.redeem-discord-btn:hover {
-  background: #4752c4;
-  border-color: #4752c4;
-}
 
-.redeem-github-btn:hover {
-  background: var(--teal-crystal);
-  color: white;
-}
 
 /* Copy Success Animation */
 .copy-success {
@@ -665,7 +559,6 @@
 
 .code-copied {
   border-color: var(--success-color) !important;
-  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3) !important;
 }
 
 /* Responsive Design */
@@ -709,9 +602,6 @@
     padding: 0.75rem;
   }
 
-  .redeem-instruction-image img:hover {
-    transform: none;
-  }
 
   .redeem-community-buttons {
     flex-direction: column;

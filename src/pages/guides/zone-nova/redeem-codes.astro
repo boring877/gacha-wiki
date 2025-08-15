@@ -16,15 +16,14 @@ const { meta, availableCodes, expiredCodes, redeemInstructions, communitySection
 // Page metadata
 const title = meta.title;
 const description = meta.description;
-const gameTitle = 'Zone Nova';
-const heroImage = '/images/games/zone-nova/zonenova1.jpg';
+const gameTitle = 'Redeem Codes';
 const lastUpdated = meta.lastUpdated;
 
 // Generate structured data for SEO
 const structuredData = generateRedeemCodesStructuredData();
 ---
 
-<ZoneNovaLayout title={title} description={description} gameTitle={gameTitle} heroImage={heroImage}>
+<ZoneNovaLayout title={title} description={description} gameTitle={gameTitle}>
   <!-- Page Header -->
   <section class="content-section">
     <div class="redeem-codes-header">
@@ -153,27 +152,6 @@ const structuredData = generateRedeemCodesStructuredData();
         </div>
       )
     }
-  </section>
-
-  <!-- Community Section -->
-  <section class="content-section">
-    <div class="redeem-community-card">
-      <h2 class="section-title">{communitySection.title}</h2>
-      <p>{communitySection.description}</p>
-      <div class="redeem-community-buttons">
-        {
-          communitySection.buttons.map(button => (
-            <a
-              href={button.url}
-              class={`redeem-${button.type}-btn`}
-              {...(button.external && { target: '_blank', rel: 'noopener noreferrer' })}
-            >
-              {button.text}
-            </a>
-          ))
-        }
-      </div>
-    </div>
   </section>
 
   <!-- Structured Data for SEO -->

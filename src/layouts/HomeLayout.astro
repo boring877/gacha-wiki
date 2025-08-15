@@ -79,6 +79,13 @@ const { title, description } = Astro.props;
   .home-content {
     position: relative;
     z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-content main {
+    flex: 1;
   }
 
   /* Mobile Optimizations */

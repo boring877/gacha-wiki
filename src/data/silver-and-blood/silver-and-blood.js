@@ -42,7 +42,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
         id: 'blood',
         title: 'Blood',
         subtitle: 'The Essence of Life',
-        icon: '🩸',
+        icon: '',
         theme: 'blood-card',
         content: [
           'Long before the Continental Era, thirteen alchemists consumed the blood of Abel—the First Martyr. Through this forbidden sacrament, they discovered the secret to transferring memories through blood, seizing immortality itself.',
@@ -53,7 +53,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
         id: 'destiny',
         title: 'Destiny',
         subtitle: 'The Immutable Cycle',
-        icon: '⏳',
+        icon: '',
         theme: 'destiny-card',
         content: [
           'In that distant age, a young girl deciphered a divine prophecy from a fallen star. She grasped the truth: only time remains impartial, and only cycles are eternal.',
@@ -82,7 +82,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'clock',
       title: 'Clock',
-      emoji: '⏰',
+      emoji: '',
       description:
         'Track Silver and Blood server resets, maintenance, raids, signin events, outfit availability, and special events with real-time countdown timers for APAC and US regions.',
       url: '/clock/silver-and-blood/',
@@ -92,7 +92,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'character-comparison',
       title: 'Character Comparison',
-      emoji: '📊',
+      emoji: '',
       description:
         'Compare up to 4 characters side by side to analyze their stats and abilities for optimal team building.',
       url: '/guides/silver-and-blood/character-comparison/',
@@ -102,7 +102,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'character-rankings',
       title: 'Character Rankings',
-      emoji: '🏆',
+      emoji: '',
       description:
         'View character stat rankings and overall performance analysis across HP, ATK, P.DEF, and M.DEF.',
       url: '/guides/silver-and-blood/character-rankings/',
@@ -112,7 +112,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'character-tag-selection',
       title: 'Character Tag Selection',
-      emoji: '🏷️',
+      emoji: '',
       description:
         'Filter and discover characters by their combat tags and abilities. Find characters with specific roles like Buff, Healing, AoE DMG, and more.',
       url: '/guides/silver-and-blood/character-tag-selection/',
@@ -122,7 +122,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'characters',
       title: 'Characters',
-      emoji: '⚔️',
+      emoji: '',
       description: 'Character information.',
       url: '/guides/silver-and-blood/characters/',
       category: 'guides',
@@ -131,7 +131,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'damage-mechanics',
       title: 'Damage Mechanics Hub',
-      emoji: '⚔️',
+      emoji: '',
       description: 'formulas and calculation for damage output .',
       url: '/guides/silver-and-blood/damage-mechanics/',
       category: 'guides',
@@ -140,7 +140,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'dutchmans-revenge',
       title: "Dutchman's Revenge",
-      emoji: '🧩',
+      emoji: '',
       description: 'Helping with little puzzle thingy :D',
       url: '/guides/silver-and-blood/dutchmans-revenge/',
       category: 'guides',
@@ -149,7 +149,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'events',
       title: 'Events',
-      emoji: '🌙',
+      emoji: '',
       description: 'Events and Related things to Events !',
       url: '/guides/silver-and-blood/events/',
       category: 'guides',
@@ -158,7 +158,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'summon-faq',
       title: 'Summon FAQ',
-      emoji: '💎',
+      emoji: '',
       description: 'General knowledge about summoning and FAQ.',
       url: '/guides/silver-and-blood/summon-faq/',
       category: 'guides',
@@ -167,7 +167,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'ancestral-vault',
       title: 'Ancestral Vault',
-      emoji: '🏛️',
+      emoji: '',
       description:
         'Summon Ancient Vassals with Mead of Rebirth. Calculate progression requirements for Sirene and other Ancient Vassals.',
       url: '/guides/silver-and-blood/ancestral-vault/',
@@ -177,7 +177,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'clan-hunt',
       title: 'Clan Hunt',
-      emoji: '⚔️',
+      emoji: '',
       description: 'General knowledge and calculator .',
       url: '/guides/silver-and-blood/clan-hunt/',
       category: 'guides',
@@ -186,7 +186,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'boss-database',
       title: 'Clan Hunt Boss Database',
-      emoji: '👹',
+      emoji: '',
       description:
         'Complete database of all Clan Hunt bosses with mechanics, strategies, and optimal team compositions.',
       url: '/guides/silver-and-blood/boss-database/',

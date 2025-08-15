@@ -6,10 +6,9 @@ import GeneralSEO from '../components/GeneralSEO.astro';
 export interface Props {
   title: string;
   description: string;
-  showcaseGames: any[];
 }
 
-const { title, description, showcaseGames } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <HomeLayout title={title} description={description}>
@@ -21,12 +20,6 @@ const { title, description, showcaseGames } = Astro.props;
     pageType="website"
   />
 
-  <!-- Critical resource hints -->
-  {
-    showcaseGames
-      .slice(0, 2)
-      .map(game => <link rel="preload" href={game.image} as="image" type="image/jpeg" />)
-  }
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -44,7 +37,6 @@ const { title, description, showcaseGames } = Astro.props;
   <style>
     @import '../styles/pages/home.css';
     @import '../styles/components/home-cta.css';
-    @import '../styles/components/showcase.css';
     @import '../styles/pages/home-mobile.css';
   </style>
 
@@ -91,118 +83,6 @@ const { title, description, showcaseGames } = Astro.props;
       </div>
     </section>
 
-    <!-- Auto-Rotating Games Showcase -->
-    <section class="auto-showcase">
-      <div class="showcase-container">
-        <div class="showcase-content" id="showcaseContent">
-          <!-- Image Section -->
-          <div class="showcase-image-section">
-            <img
-              class="showcase-game-image"
-              id="showcaseGameImage"
-              src={showcaseGames[0]?.image}
-              alt={showcaseGames[0]?.name}
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="showcase-image-overlay"></div>
-          </div>
-
-          <!-- Content Section -->
-          <div class="showcase-content-section">
-            <div class="showcase-game-info">
-              <h2 class="showcase-title" id="showcaseTitle">{showcaseGames[0]?.name}</h2>
-              <p class="showcase-description" id="showcaseDescription">
-                {showcaseGames[0]?.description}
-              </p>
-
-              <div class="showcase-features" id="showcaseFeatures">
-                {
-                  showcaseGames[0]?.features.map(feature => (
-                    <div class="showcase-feature-tag">{feature}</div>
-                  ))
-                }
-              </div>
-
-              <div class="showcase-actions">
-                <a href={showcaseGames[0]?.url} class="showcase-btn primary" id="showcaseLink">
-                  <span>Explore Wiki</span>
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path
-                      d="M4 10h12m-6-6l6 6-6 6"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <!-- Unified Homepage JavaScript - Simplified rotation system -->
-  <script define:vars={{ showcaseGames }}>
-    // Simplified showcase rotation - main logic consolidated
-    document.addEventListener('DOMContentLoaded', function () {
-      let currentShowcaseIndex = 0;
-      let autoRotateInterval = null;
-
-      // DOM elements
-      const showcaseGameImage = document.getElementById('showcaseGameImage');
-      const showcaseTitle = document.getElementById('showcaseTitle');
-      const showcaseDescription = document.getElementById('showcaseDescription');
-      const showcaseFeatures = document.getElementById('showcaseFeatures');
-      const showcaseLink = document.getElementById('showcaseLink');
-
-      // Simplified showcase update
-      function updateShowcase(index) {
-        if (!showcaseGames || index < 0 || index >= showcaseGames.length) return;
-
-        currentShowcaseIndex = index;
-        const game = showcaseGames[currentShowcaseIndex];
-
-        // Update content directly
-        if (showcaseGameImage) {
-          showcaseGameImage.src = game.image;
-          showcaseGameImage.alt = game.name;
-        }
-        if (showcaseTitle) showcaseTitle.textContent = game.name;
-        if (showcaseDescription) showcaseDescription.textContent = game.description;
-        if (showcaseLink) showcaseLink.href = game.url;
-
-        if (showcaseFeatures) {
-          showcaseFeatures.innerHTML = '';
-          game.features?.forEach(feature => {
-            const tag = document.createElement('div');
-            tag.className = 'showcase-feature-tag';
-            tag.textContent = feature;
-            showcaseFeatures.appendChild(tag);
-          });
-        }
-      }
-
-      // Unified auto-rotation
-      function startRotation() {
-        if (autoRotateInterval) clearInterval(autoRotateInterval);
-
-        autoRotateInterval = setInterval(() => {
-          currentShowcaseIndex = (currentShowcaseIndex + 1) % showcaseGames.length;
-          updateShowcase(currentShowcaseIndex);
-        }, 6000);
-      }
-
-      // Initialize showcase
-      updateShowcase(0);
-      startRotation();
-
-      // Cleanup on page unload
-      window.addEventListener('beforeunload', () => {
-        if (autoRotateInterval) clearInterval(autoRotateInterval);
-      });
-    });
-  </script>
 </HomeLayout>

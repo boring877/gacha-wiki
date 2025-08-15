@@ -23,16 +23,6 @@ import MobileHeader from './MobileHeader.astro';
 <style>
   /* Colors are available via layout's index.css import */
 
-  /* Optimized animations for mobile performance */
-  @keyframes subtleGlow {
-    0%,
-    100% {
-      text-shadow: 0 0 10px rgba(255, 183, 77, 0.3);
-    }
-    50% {
-      text-shadow: 0 0 15px rgba(255, 183, 77, 0.6);
-    }
-  }
 
   .simple-title {
     color: var(--amber-glow);
@@ -48,7 +38,6 @@ import MobileHeader from './MobileHeader.astro';
     background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 183, 77, 0.3);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     padding: 0;
     position: sticky;
     top: 0;

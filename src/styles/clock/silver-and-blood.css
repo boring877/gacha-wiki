@@ -44,48 +44,37 @@
 }
 
 /* === SILVER AND BLOOD SPECIFIC BACKGROUND ACCENTS === */
-/* Silver and Blood themed background gradients */
+/* Silver and Blood themed background gradients - Match main SAB layout */
+.bg-primary {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+}
+
 .bg-accent-1 {
-  background: radial-gradient(
-    circle at 20% 80%,
-    color-mix(in srgb, var(--sab-calm-red) 10%, transparent),
-    transparent
-  );
+  background: radial-gradient(circle at 15% 85%, rgba(184, 197, 209, 0.08), transparent 70%);
   pointer-events: none;
 }
 
 .bg-accent-2 {
-  background: radial-gradient(
-    circle at 80% 20%,
-    color-mix(in srgb, var(--sab-calm-blue) 8%, transparent),
-    transparent
-  );
+  background: radial-gradient(circle at 85% 15%, rgba(90, 123, 167, 0.08), transparent 70%);
   pointer-events: none;
 }
 
 .bg-accent-3 {
-  background: radial-gradient(
-    circle at 50% 50%,
-    color-mix(in srgb, var(--sab-blue-silver) 5%, transparent),
-    transparent
-  );
+  background: radial-gradient(circle at 50% 50%, rgba(166, 77, 77, 0.06), transparent 70%);
   pointer-events: none;
 }
 
 /* === SILVER AND BLOOD THEME COLORS === */
 /* Silver and Blood specific color overrides - matches main layout */
 .title-only-heading {
-  font-family: var(--font-display) !important;
-  font-size: var(--text-4xl) !important;
-  font-weight: 700 !important;
-  background: linear-gradient(135deg, #c0c0c0, #c26b6b) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: block !important;
-  position: relative !important;
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--sab-calm-red);
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: relative;
 }
 
 .title-only-section {

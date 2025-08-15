@@ -1,99 +1,51 @@
 /* Zone Nova Update Pages Styles */
-/* This file contains layout and component styles for individual update pages */
+/* This file contains component styles for individual update pages */
+/* Layout structure is now handled by zn-layout.css */
 
-/* ===== UPDATE PAGE BODY ===== */
-.zone-nova-update-body {
-  background: var(--bg-dark);
-  color: var(--text-inverse);
-  min-height: 100vh;
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ===== LINK STYLES ===== */
+/* Override global amber link colors with ZN branding */
+.zone-nova-main .content-section a,
+.zone-nova-main .official-section a,
+.zone-nova-main .tldr-section a,
+.zone-nova-main .info-card a,
+.zone-nova-main .collapsible-inner a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--teal-crystal);
 }
 
-/* ===== BACKGROUND LAYERS ===== */
-.bg-layer {
-  position: fixed;
-  inset: 0;
+.zone-nova-main .content-section a:hover,
+.zone-nova-main .official-section a:hover,
+.zone-nova-main .tldr-section a:hover,
+.zone-nova-main .info-card a:hover,
+.zone-nova-main .collapsible-inner a:hover {
+  color: var(--teal-crystal);
+  border-bottom-color: transparent;
 }
 
-.bg-primary {
-  background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+/* ===== SOURCE INFORMATION STYLES ===== */
+.source-link {
+  text-decoration: none;
+  color: inherit;
 }
 
-.bg-accent-1 {
-  background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent);
-  pointer-events: none;
+.source-info-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.bg-accent-2 {
-  background: radial-gradient(circle at 80% 20%, rgba(255, 183, 77, 0.08), transparent);
-  pointer-events: none;
-}
-
-.bg-accent-3 {
-  background: radial-gradient(circle at 50% 50%, rgba(0, 172, 193, 0.05), transparent);
-  pointer-events: none;
-}
-
-/* ===== CONTENT STRUCTURE ===== */
-.update-content {
-  position: relative;
-  z-index: 10;
-}
-
-.zone-nova-update-main {
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 2rem;
-  min-height: 100vh;
-  background: transparent;
-}
-
-/* ===== TITLE SECTION ===== */
-.update-title-section {
+.source-text {
   text-align: center;
-  margin-bottom: 4rem;
-  padding: 2rem 1rem;
+  color: var(--text-primary);
+  font-style: italic;
+  margin: 0;
 }
 
-.update-page-title {
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: var(--font-bold);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0 0 1.5rem 0;
+.source-name {
+  color: var(--teal-crystal);
+  font-weight: var(--font-medium);
 }
 
-/* ===== CONTENT AREA ===== */
-.update-content-area {
-  background: transparent;
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-  letter-spacing: var(--tracking-normal);
-}
-
-/* ===== UPDATE PAGE LAYOUT ===== */
-.update-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  min-height: 100vh;
-  background: transparent;
-}
-
-.update-container {
-  width: 100%;
-}
 
 /* ===== CONTENT SECTIONS ===== */
 .content-section {
@@ -101,7 +53,7 @@
   padding: 3rem;
   border-radius: 20px;
   margin-bottom: 3rem;
-  border: 1px solid var(--amber-glow);
+  border: 1px solid var(--neutral-200);
 }
 
 .section-title {
@@ -111,10 +63,6 @@
   color: var(--text-inverse);
   margin: 0 0 2rem 0;
   text-align: center;
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   line-height: var(--leading-tight);
 }
 
@@ -130,7 +78,7 @@
   padding: 1.5rem;
   margin-bottom: 1rem;
   border-radius: 12px;
-  border-left: 4px solid var(--amber-glow);
+  border-left: 4px solid var(--teal-crystal);
   font-family: var(--font-primary);
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
@@ -200,6 +148,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* Touch optimizations */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px;
 }
 
 .collapsible-toggle {
@@ -248,37 +200,52 @@
   font-family: var(--font-primary);
   font-size: var(--text-base);
   font-weight: var(--font-medium);
-  color: var(--amber-glow);
+  color: var(--teal-crystal);
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .zone-nova-update-main {
-    padding: 1rem;
-    max-width: 100%;
-  }
-
-  .update-page-title {
-    font-size: var(--text-3xl);
-    margin-bottom: 1rem;
-  }
-
-  .update-title-section {
-    margin-bottom: 2rem;
-    padding: 1rem;
-  }
-
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+  /* Content sections touch-friendly */
   .content-section {
-    padding: 2rem;
-    margin-bottom: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 16px;
+    /* Touch targets */
+    min-height: 44px;
   }
 
   .section-title {
     font-size: var(--text-2xl);
+    margin-bottom: 1rem;
+    line-height: 1.3;
   }
 
   .data-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Touch-friendly buttons and interactive elements */
+  .collapsible-header {
+    min-height: 48px;
+    padding: 1rem;
+    font-size: var(--text-base);
+    line-height: 1.4;
+  }
+
+  .data-item {
+    padding: 1rem;
+    min-height: 44px;
+    border-radius: 12px;
+  }
+
+  .data-label {
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+  }
+
+  .data-value {
+    line-height: 1.2;
   }
 
   /* Responsive visibility */
@@ -290,7 +257,7 @@
     display: none;
   }
 
-  /* Reduce background complexity on mobile for better performance */
+  /* Reduce background complexity on touch devices for better performance */
   .bg-accent-2,
   .bg-accent-3 {
     display: none;
@@ -299,40 +266,73 @@
   .bg-accent-1 {
     opacity: 0.5;
   }
+
+  /* Disable transitions on touch for better performance */
+  .collapsible-section,
+  .collapsible-header,
+  .data-item {
+    transition: none;
+    animation: none;
+  }
 }
 
+/* ===== SMALL MOBILE DEVICES ===== */
 @media (max-width: 480px) {
-  .zone-nova-update-main {
-    padding: 0.75rem;
-  }
-
-  .update-page-title {
-    font-size: var(--text-2xl);
-    margin-bottom: 0.75rem;
-  }
-
-  .update-title-section {
-    margin-bottom: 1.5rem;
-    padding: 0.75rem;
-  }
-
+  /* Extra touch-friendly spacing */
   .content-section {
-    padding: 1.5rem;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
   }
 
   .section-title {
     font-size: var(--text-xl);
+    margin-bottom: 1rem;
+  }
+
+  /* Larger touch targets */
+  .collapsible-header {
+    min-height: 52px;
+    padding: 1.25rem 1rem;
+    font-size: var(--text-lg);
+  }
+
+  .data-item {
+    padding: 1.25rem;
+    min-height: 48px;
+  }
+
+  /* Better text spacing and readability */
+  .tldr-section li {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    line-height: 1.5;
+  }
+
+  .official-section .info-card,
+  .info-card {
+    padding: 1.25rem;
+    border-radius: 8px;
+  }
+
+  .official-section p {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .collapsible-inner {
+    padding: 1rem;
+    line-height: 1.5;
   }
 }
 
 @media (prefers-contrast: high) {
-  .update-page-title,
-  .update-title,
   .section-title {
-    background: none !important;
-    -webkit-background-clip: unset !important;
-    background-clip: unset !important;
-    -webkit-text-fill-color: var(--amber-glow) !important;
-    color: var(--amber-glow) !important;
+    color: var(--text-inverse) !important;
+  }
+  
+  .data-value {
+    color: var(--text-inverse) !important;
   }
 }
