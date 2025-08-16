@@ -46,16 +46,6 @@ class ZoneNovaClockTimer {
     this.maintenanceEndLabel = document.getElementById('maintenanceEndLabel');
     this.serverStatusDot = document.getElementById('serverStatusDot');
     this.serverStatusText = document.getElementById('serverStatusText');
-    this.eventStatus = document.getElementById('eventStatus');
-    this.eventStartDate = document.getElementById('eventStartDate');
-    this.eventEndDate = document.getElementById('eventEndDate');
-    this.eventTime = document.getElementById('eventTime');
-    this.eventTimeLabel = document.getElementById('eventTimeLabel');
-    this.doubleEventStatus = document.getElementById('doubleEventStatus');
-    this.doubleEventStartDate = document.getElementById('doubleEventStartDate');
-    this.doubleEventEndDate = document.getElementById('doubleEventEndDate');
-    this.doubleEventTime = document.getElementById('doubleEventTime');
-    this.doubleEventTimeLabel = document.getElementById('doubleEventTimeLabel');
 
     // Start the clock
     this.updateClock();
@@ -158,8 +148,6 @@ class ZoneNovaClockTimer {
     this.updateWeeklyTimer();
     this.updateMonthlyTimer();
     this.updateMaintenanceTimer();
-    this.updateEventTimer();
-    this.updateDoubleEventTimer();
   }
 
   /**
@@ -324,9 +312,12 @@ class ZoneNovaClockTimer {
 
     const now = new Date();
 
-    // Check if there's a scheduled maintenance (null means no maintenance scheduled)
-    const maintenanceStart = null; // Set to null when no maintenance is scheduled
-    const maintenanceEnd = null; // Set to null when no maintenance is scheduled
+    // Check if there's a scheduled maintenance from server-side data
+    const maintenanceData = window.zoneNovaMaintenance || null;
+    const maintenanceStart = maintenanceData?.startDate
+      ? new Date(maintenanceData.startDate)
+      : null;
+    const maintenanceEnd = maintenanceData?.endDate ? new Date(maintenanceData.endDate) : null;
 
     // If no maintenance is scheduled, show waiting message
     if (!maintenanceStart || !maintenanceEnd) {
@@ -413,90 +404,6 @@ class ZoneNovaClockTimer {
       // Maintenance has ended
       this.maintenanceEndLabel.textContent = 'Online';
       this.maintenanceEndTime.textContent = '--:--:--';
-    }
-  }
-
-  /**
-   * Update Zone Nova special event timer - Thor Event
-   */
-  updateEventTimer() {
-    if (!this.eventStatus || !this.eventTime) return;
-
-    const now = new Date();
-    // Zone Nova Thor Event times
-    const eventStart = new Date('2025-08-05T06:15:00Z'); // August 5, 2025, 14:15 UTC+8
-    const eventEnd = new Date('2025-08-18T19:59:00Z'); // August 19, 2025, 03:59 UTC+8
-
-    // Update static dates - showing UTC+8 times for Zone Nova
-    if (this.eventStartDate) {
-      this.eventStartDate.textContent = 'August 5, 14:15 UTC+8';
-    }
-    if (this.eventEndDate) {
-      this.eventEndDate.textContent = 'August 19, 03:59 UTC+8';
-    }
-
-    const endTimeDiff = eventEnd.getTime() - now.getTime();
-
-    if (now < eventStart) {
-      // Event hasn't started yet
-      this.eventStatus.textContent = 'Upcoming Thor Event';
-      this.eventStatus.classList.remove('inactive');
-      this.eventTime.textContent = '--:--:--';
-      this.eventTimeLabel.textContent = 'Event End';
-    } else if (now >= eventStart && now <= eventEnd) {
-      // Event is active
-      this.eventStatus.textContent = 'Active';
-      this.eventStatus.classList.remove('inactive');
-      this.formatRiftTime(endTimeDiff, this.eventTime);
-      this.eventTimeLabel.textContent = 'Event End';
-    } else {
-      // Event has ended
-      this.eventStatus.textContent = 'No Active Event';
-      this.eventStatus.classList.add('inactive');
-      this.eventTime.textContent = '--:--:--';
-      this.eventTimeLabel.textContent = 'Event End';
-    }
-  }
-
-  /**
-   * Update Zone Nova Double Drop 200% event timer - Double Drop Materials Event
-   */
-  updateDoubleEventTimer() {
-    if (!this.doubleEventStatus || !this.doubleEventTime) return;
-
-    const now = new Date();
-    // Zone Nova Double Drop 200% Materials Event times
-    const eventStart = new Date('2025-07-28T20:00:00Z'); // July 29, 2025, 04:00 UTC+8
-    const eventEnd = new Date('2025-08-04T20:00:00Z'); // August 5, 2025, 04:00 UTC+8
-
-    // Update static dates - showing UTC+8 times for Zone Nova
-    if (this.doubleEventStartDate) {
-      this.doubleEventStartDate.textContent = 'July 29, 04:00 UTC+8';
-    }
-    if (this.doubleEventEndDate) {
-      this.doubleEventEndDate.textContent = 'August 5, 04:00 UTC+8';
-    }
-
-    const endTimeDiff = eventEnd.getTime() - now.getTime();
-
-    if (now < eventStart) {
-      // Event hasn't started yet
-      this.doubleEventStatus.textContent = 'Upcoming Double Drop';
-      this.doubleEventStatus.classList.remove('inactive');
-      this.doubleEventTime.textContent = '--:--:--';
-      this.doubleEventTimeLabel.textContent = 'Double Drop End';
-    } else if (now >= eventStart && now <= eventEnd) {
-      // Event is active
-      this.doubleEventStatus.textContent = 'Active';
-      this.doubleEventStatus.classList.remove('inactive');
-      this.formatRiftTime(endTimeDiff, this.doubleEventTime);
-      this.doubleEventTimeLabel.textContent = 'Double Drop End';
-    } else {
-      // Event has ended
-      this.doubleEventStatus.textContent = 'No Active Double Drop';
-      this.doubleEventStatus.classList.add('inactive');
-      this.doubleEventTime.textContent = '--:--:--';
-      this.doubleEventTimeLabel.textContent = 'Double Drop End';
     }
   }
 

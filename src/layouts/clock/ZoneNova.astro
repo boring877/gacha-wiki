@@ -249,64 +249,6 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
                         </div>
                       </div>
 
-                      <!-- Event Timer Card -->
-                      <div class="timer-card event-card">
-                        <div class="timer-card-header">
-                          <div class="timer-card-title">Events</div>
-                        </div>
-                        <div class="timer-card-content">
-                          <!-- Event Status -->
-                          <div class="event-status" id="eventStatus">No Active Event</div>
-                          <!-- Event Dates -->
-                          <div class="event-dates">
-                            <div class="event-date-item">
-                              <span class="event-date-label">Started:</span>
-                              <span class="event-date-value" id="eventStartDate">--</span>
-                            </div>
-                            <div class="event-date-item">
-                              <span class="event-date-label">Ending:</span>
-                              <span class="event-date-value" id="eventEndDate">--</span>
-                            </div>
-                          </div>
-                          <!-- Event Countdown -->
-                          <div class="event-countdown">
-                            <span class="timer-card-value" id="eventTime">--:--:--</span>
-                            <span class="timer-card-label" id="eventTimeLabel">Event End</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Double Drop 200% Timer Card -->
-                      <div class="timer-card event-card">
-                        <div class="timer-card-header">
-                          <div class="timer-card-title">Double Drop 200%</div>
-                        </div>
-                        <div class="timer-card-content">
-                          <!-- Double Drop Event Status -->
-                          <div class="event-status" id="doubleEventStatus">
-                            No Active Double Drop
-                          </div>
-                          <!-- Double Drop Event Dates -->
-                          <div class="event-dates">
-                            <div class="event-date-item">
-                              <span class="event-date-label">Started:</span>
-                              <span class="event-date-value" id="doubleEventStartDate">--</span>
-                            </div>
-                            <div class="event-date-item">
-                              <span class="event-date-label">Ending:</span>
-                              <span class="event-date-value" id="doubleEventEndDate">--</span>
-                            </div>
-                          </div>
-                          <!-- Double Drop Event Countdown -->
-                          <div class="event-countdown">
-                            <span class="timer-card-value" id="doubleEventTime">--:--:--</span>
-                            <span class="timer-card-label" id="doubleEventTimeLabel"
-                              >Double Drop End</span
-                            >
-                          </div>
-                        </div>
-                      </div>
-
                       <!-- Launch Timer Card -->
                       <div class="timer-card launch-card">
                         <div class="timer-card-header">
@@ -332,9 +274,11 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
     <Footer />
 
     <!-- Zone Nova Clock Timer Script with Dynamic Rifts -->
-    <script define:vars={{ activeRifts }}>
+    <script define:vars={{ activeRifts, maintenance: timers.maintenance }}>
       // Pass rifts data to global scope for the clock script
       window.zoneNovaActiveRifts = activeRifts;
+      // Pass maintenance data to global scope for the clock script
+      window.zoneNovaMaintenance = maintenance;
     </script>
     <script src="/src/scripts/clock/zone-nova.js"></script>
   </body>

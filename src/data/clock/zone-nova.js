@@ -27,34 +27,14 @@ export const zoneNovaConfig = {
   timers: {
     'ero-labs': {
       maintenance: {
-        date: null, // No maintenance scheduled
-        duration: null,
-        subtitle: 'Waiting for next announcement',
+        startDate: '2025-08-19T06:00:00Z', // August 19, 14:00 UTC+8
+        endDate: '2025-08-19T10:00:00Z', // August 19, 18:00 UTC+8
+        duration: 4,
+        subtitle: 'Scheduled August 19, 14:00-18:00 UTC+8',
       },
       rifts: [
         { name: 'Rift Surge VII', endDate: '2025-08-18T20:00:00Z' }, // August 18, 20:00 UTC (from rifts data)
         { name: 'Rift Tide VI', endDate: '2025-08-04T20:00:00Z' }, // August 4, 20:00 UTC (from rifts data)
-      ],
-      events: [
-        {
-          name: 'Thor Event',
-          startDate: '2025-08-05T06:15:00Z', // August 5, 14:15 UTC+8 = August 5, 06:15 UTC
-          endDate: '2025-08-18T19:59:00Z', // August 19, 03:59 UTC+8 = August 18, 19:59 UTC
-          startDisplay: 'August 5, 14:15 UTC+8',
-          endDisplay: 'August 19, 03:59 UTC+8',
-        },
-      ],
-      Doubledrop_2x: [
-        {
-          name: '2x Materials Event',
-          description: '2x Material Rewards',
-          startDate: '2025-07-28T20:00:00Z', // July 29, 04:00 UTC+8 (server reset) = July 28, 20:00 UTC
-          endDate: '2025-08-04T20:00:00Z', // August 5, 04:00 UTC+8 (server reset) = August 4, 20:00 UTC
-          startDisplay: 'July 29, 04:00 UTC+8',
-          endDisplay: 'August 5, 04:00 UTC+8',
-          duration: 7,
-          reward: '2x Material Drop Rewards',
-        },
       ],
     },
   },

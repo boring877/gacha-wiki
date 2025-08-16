@@ -1,6 +1,24 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'august-19-maintenance',
+    title: 'August 19 Maintenance Update',
+    date: 'August 19, 2025',
+    type: 'maintenance',
+    summary:
+      'Major maintenance bringing "Twilight of the Operate: Ice Sealed Finale Part 1" event, Freya (Destroyer, Chaos) recruitment, Guinevere rerun, Space-Time Rift Tide IX, Battle Pass update, new rune systems, arena optimizations, Live2D improvements, and 600 Photoliths compensation.',
+    url: '/guides/zone-nova/updates/maintenance-august-19-2025/',
+  },
+  {
+    id: 'freya-recruitment',
+    title: 'Limited Recruitment Character [Destroyer, Chaos] Freya',
+    date: 'August 19, 2025',
+    type: 'recruitment',
+    summary:
+      'New 5★ character Freya (Destroyer, Chaos) - chaos attribute destroyer who can add weak points to enemies and reduce enemy energy recovery efficiency. Available through Limited Recruitment from August 19 - September 2, 2025, with exclusive memory "Reading by Lamplight at Night".',
+    url: '/guides/zone-nova/updates/announcement-freya-recruitment/',
+  },
+  {
     id: 'first-popularity-voting',
     title: 'First Popularity Voting Event Now Launching!!!',
     date: 'August 12, 2025',
