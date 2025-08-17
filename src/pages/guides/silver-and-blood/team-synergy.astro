@@ -1,0 +1,142 @@
+---
+// Import the dedicated layout
+import TeamSynergyLayout from '../../../layouts/silver-and-blood/TeamSynergyLayout.astro';
+import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
+---
+
+<TeamSynergyLayout
+  title="Silver and Blood Team Synergy Database - GachaWiki"
+  description="Sortable and filterable team composition database for Silver and Blood - Clan Hunt teams, Boss teams, and faction synergies"
+  gameTitle="Team Synergy Database"
+>
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
+      { name: 'Team Synergy' },
+    ]}
+  />
+
+  <section class="page-flex">
+    <div class="main-content-container">
+      <div class="content-wrapper">
+        <div
+          style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: var(--sab-input-bg); border-radius: 12px; border: 1px solid var(--sab-border-light);"
+        >
+          <p style="color: var(--sab-muted-gold); margin: 0; font-size: 1rem; font-weight: 600;">
+            Team Synergy Database
+          </p>
+          <p
+            style="color: var(--sab-text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;"
+          >
+            Effective team compositions for different content types and faction synergies
+          </p>
+          <div
+            style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"
+          >
+            <a
+              href="/guides/silver-and-blood/characters/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--sab-muted-gold); color: #000; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
+            >
+              View Character Database
+            </a>
+            <a
+              href="/guides/silver-and-blood/clan-hunt/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--sab-calm-red); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
+            >
+              Clan Hunt Guide
+            </a>
+            <a
+              href="/guides/silver-and-blood/boss-database/"
+              style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--sab-calm-blue); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
+            >
+              Boss Database
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Database Components -->
+        <div class="team-database-filter-bar">
+          <div class="filter-controls">
+            <select class="filter-select" id="teamTypeFilter">
+              <option value="">All Team Types</option>
+              <option value="clan-hunt">Clan Hunt</option>
+              <option value="boss">Boss Fight</option>
+              <option value="moon-phase">Moon Phase</option>
+              <option value="general">General</option>
+              <option value="pvp">PvP</option>
+            </select>
+
+            <select class="filter-select" id="teamTierFilter">
+              <option value="">All Tiers</option>
+              <option value="sss">SSS</option>
+              <option value="ss">SS</option>
+              <option value="s">S</option>
+              <option value="a">A</option>
+              <option value="situational">Situational</option>
+            </select>
+          </div>
+
+          <div class="sort-controls">
+            <button class="sort-btn" data-sort="type">Type</button>
+            <button class="sort-btn" data-sort="tier">Tier</button>
+            <button class="reset-btn" id="resetFilters">Reset All</button>
+          </div>
+        </div>
+
+        <!-- Desktop Table -->
+        <div class="team-table-container">
+          <table class="team-table">
+            <thead>
+              <tr>
+                <th>Team Name</th>
+                <th>Type</th>
+                <th>Tier</th>
+                <th>Character 1</th>
+                <th>Character 2</th>
+                <th>Character 3</th>
+                <th>Character 4</th>
+                <th>Character 5</th>
+                <th>Notes/Rotation</th>
+              </tr>
+            </thead>
+            <tbody id="teamTableBody">
+              <!-- Teams will be populated here by JavaScript -->
+              <tr class="no-teams-message">
+                <td
+                  colspan="9"
+                  style="text-align: center; padding: 2rem; color: var(--text-secondary); font-style: italic;"
+                >
+                  Team database is currently being populated. Check back soon for comprehensive team
+                  compositions!
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Cards -->
+        <div class="mobile-card-view" id="teamMobileCards">
+          <!-- Mobile cards will be populated here by JavaScript -->
+          <div
+            class="no-teams-message-mobile"
+            style="text-align: center; padding: 2rem; color: var(--text-secondary); font-style: italic;"
+          >
+            Team database is currently being populated. Check back soon for comprehensive team
+            compositions!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Import the database utilities -->
+  <script>
+    import { initializeTeamDatabase } from '../../../data/silver-and-blood/team-synergy-utils.js';
+
+    document.addEventListener('DOMContentLoaded', function () {
+      initializeTeamDatabase();
+    });
+  </script>
+</TeamSynergyLayout>

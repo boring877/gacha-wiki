@@ -417,7 +417,7 @@ table.character-table th {
 }
 
 /* Touch devices: show cards, hide table */
-@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+@media (any-pointer: coarse), (hover: none), (max-width: 1024px) {
   .character-table-container {
     display: none !important;
   }
@@ -493,8 +493,20 @@ table.character-table th {
   }
 }
 
+/* Hybrid devices (Surface Pro, touch laptops, etc.) */
+/* Force mobile cards for any device with touch capability */
+@media (any-pointer: coarse) and (any-hover: hover) {
+  .character-table-container {
+    display: none !important;
+  }
+
+  .mobile-card-view {
+    display: block !important;
+  }
+}
+
 /* Show only on touch devices */
-@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+@media (any-pointer: coarse), (hover: none), (max-width: 1024px) {
   .swipeable-indicator {
     display: block;
   }

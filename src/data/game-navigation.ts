@@ -36,6 +36,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Damage Hub', href: '/guides/silver-and-blood/damage-mechanics/' },
           { name: 'Boss Database', href: '/guides/silver-and-blood/boss-database/' },
           { name: 'Clan Hunt', href: '/guides/silver-and-blood/clan-hunt/' },
+          { name: 'Team Synergy', href: '/guides/silver-and-blood/team-synergy/' },
         ],
       },
       {

@@ -1,5 +1,5 @@
 // Service Worker for caching and performance optimization
-const CACHE_NAME = 'gacha-wiki-v2.0.6';
+const CACHE_NAME = 'gacha-wiki-v2.0.7';
 const OFFLINE_URL = '/offline.html';
 
 // Cache strategy: Cache first for assets, Network first for pages

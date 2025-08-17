@@ -193,6 +193,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       category: 'guides',
       status: 'active',
     },
+    {
+      id: 'team-synergy',
+      title: 'Team Synergy Database',
+      emoji: '',
+      description:
+        'Sortable and filterable team composition database with effective team builds, skill rotations, and synergy strategies for different content types.',
+      url: '/guides/silver-and-blood/team-synergy/',
+      category: 'guides',
+      status: 'active',
+    },
   ],
 };
 
