@@ -9,18 +9,17 @@ import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
   description="Sortable and filterable team composition database for Silver and Blood - Clan Hunt teams, Boss teams, and faction synergies"
   gameTitle="Team Synergy Database"
 >
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb
-    items={[
-      { name: 'Home', href: '/' },
-      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
-      { name: 'Team Synergy' },
-    ]}
-  />
-
   <section class="page-flex">
     <div class="main-content-container">
       <div class="content-wrapper">
+        <!-- Breadcrumb Navigation -->
+        <Breadcrumb
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
+            { name: 'Team Synergy' },
+          ]}
+        />
         <div
           style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: var(--sab-input-bg); border-radius: 12px; border: 1px solid var(--sab-border-light);"
         >
@@ -31,6 +30,10 @@ import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
             style="color: var(--sab-text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;"
           >
             Effective team compositions for different content types and faction synergies
+          </p>
+          <p style="color: var(--sab-text-muted); margin: 0.5rem 0 0 0; font-size: 0.85rem;">
+            <strong>Tip:</strong> You can order the skills that show up first on your left side when
+            you select the character for better rotation execution.
           </p>
           <div
             style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"

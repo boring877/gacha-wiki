@@ -140,7 +140,7 @@ export const SILVER_AND_BLOOD_TEAMS = [
       { name: 'Ottavia', position: 5 },
     ],
     notes:
-      'Otta & J-Sel has DMG Taken Inc. R: Acapp - Wait blood 10 - F.Bella - Ottavia - J-sel & T.aiona - acapp.',
+      'Otta & J-Sel has DMG Taken Inc. R: Acapp - Wait blood 10 - F.Bella - T.aiona then wait 2 sec then - Ottavia & J-sel together ! - acapp.',
   },
   {
     id: '9',
