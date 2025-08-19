@@ -47,7 +47,7 @@ class SilverAndBloodClockTimer {
     // Get configuration from window object (set by layout)
     this.config = window.silverAndBloodConfig;
     if (!this.config) {
-      console.error('Silver and Blood config not found');
+      // Silver and Blood config not found
       return;
     }
 
@@ -154,7 +154,7 @@ class SilverAndBloodClockTimer {
     }
 
     if (this.gameStatus) {
-      this.gameStatus.innerHTML = regionConfig.status;
+      this.gameStatus.textContent = regionConfig.status;
     }
 
     if (this.utcNote) {
@@ -271,7 +271,7 @@ class SilverAndBloodClockTimer {
       this.updateMonthlyTimer();
       this.updateMaintenanceTimer();
     } catch (error) {
-      console.warn('Error updating timer cards:', error);
+      // Error updating timer cards
     }
   }
 

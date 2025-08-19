@@ -98,11 +98,6 @@
     background-color var(--nav-transition-fast);
 }
 
-.game-nav-desktop .game-link:hover {
-  transform: var(--nav-hover-transform);
-  background: rgba(255, 183, 77, 0.05);
-}
-
 /* === GAME IMAGE STYLING === */
 .game-nav-desktop .game-image-container {
   position: relative;
@@ -173,12 +168,6 @@
   transition: all var(--nav-transition-fast);
 }
 
-.game-nav-desktop .section-trigger:hover {
-  background: rgba(255, 183, 77, 0.08);
-  border-color: rgba(255, 183, 77, 0.2);
-  transform: var(--nav-hover-transform);
-}
-
 .game-nav-desktop .section-name {
   font-size: var(--nav-font-section);
   font-weight: var(--font-medium);
@@ -219,12 +208,6 @@
   border-right: none;
 }
 
-.game-nav-desktop .section-item:hover .section-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
 /* === DROPDOWN LINKS === */
 .game-nav-desktop .dropdown-link {
   display: block;
@@ -238,12 +221,6 @@
   margin-bottom: var(--nav-margin-bottom);
   position: relative;
   transition: all var(--nav-transition-fast);
-}
-
-.game-nav-desktop .dropdown-link:hover {
-  background: rgba(255, 183, 77, 0.1);
-  color: var(--amber-glow);
-  transform: translateX(4px);
 }
 
 .game-nav-desktop .dropdown-link.active {
@@ -264,19 +241,9 @@
   background-clip: text;
 }
 
-.game-nav-desktop[data-game='silver-and-blood'] .section-trigger:hover {
-  background: rgba(220, 38, 127, 0.08);
-  border-color: rgba(220, 38, 127, 0.2);
-}
-
 .game-nav-desktop[data-game='silver-and-blood'] .dropdown-link.active {
   background: linear-gradient(135deg, var(--sab-dark-red), var(--sab-light-red));
   color: white;
-}
-
-.game-nav-desktop[data-game='silver-and-blood'] .dropdown-link:hover {
-  background: rgba(220, 38, 127, 0.1);
-  color: var(--sab-light-red);
 }
 
 .game-nav-desktop[data-game='zone-nova'] .game-title {

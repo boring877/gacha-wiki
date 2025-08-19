@@ -131,22 +131,29 @@
 /* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Rarity Badge Colors */
+/* Support both single-class (.rarity-badge.ssr) and multi-class (.rarity-badge.ssr) formats */
 .rarity-badge.ssr,
-.badge.ssr {
+.badge.ssr,
+.mini-badge.rarity-ssr,
+.pool-mini-badge.rarity-ssr {
   background: var(--sab-badge-ssr);
   color: var(--sab-badge-dark);
   border: none;
 }
 
 .rarity-badge.sr,
-.badge.sr {
+.badge.sr,
+.mini-badge.rarity-sr,
+.pool-mini-badge.rarity-sr {
   background: var(--sab-badge-sr);
   color: var(--sab-badge-dark);
   border: none;
 }
 
 .rarity-badge.r,
-.badge.r {
+.badge.r,
+.mini-badge.rarity-r,
+.pool-mini-badge.rarity-r {
   background: var(--sab-badge-r);
   color: var(--sab-badge-dark);
   border: none;

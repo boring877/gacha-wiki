@@ -150,29 +150,14 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.github-link:hover {
-  background: var(--bg-dark);
-  border-color: var(--amber-glow);
-  transform: translateY(-2px);
-}
-
 .github-icon {
   color: var(--text-inverse);
   transition: color 0.3s ease;
 }
 
-.github-link:hover .github-icon {
-  color: var(--amber-glow);
-}
-
 .external-icon {
   opacity: 0.7;
   transition: all 0.3s ease;
-}
-
-.github-link:hover .external-icon {
-  opacity: 1;
-  transform: translateX(2px) translateY(-2px);
 }
 
 /* Mobile responsiveness */

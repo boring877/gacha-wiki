@@ -14,10 +14,6 @@
   color: #ffd700 !important;
 }
 
-.memory-page .zn-back-button:hover {
-  color: #ffd700 !important;
-}
-
 /* ===== PREMIUM MEMORY OVERVIEW SECTION ===== */
 .memory-overview-premium {
   margin-bottom: 3rem;
@@ -80,10 +76,6 @@
   transition: all 0.4s ease;
 }
 
-.memory-card-frame:hover {
-  transform: translateY(-8px) scale(1.02);
-}
-
 .memory-card-image-premium {
   width: 200px;
   height: 300px;
@@ -110,7 +102,6 @@
   opacity: 0.7;
   pointer-events: none;
 }
-
 
 /* ===== MEMORY RARITY OVERLAY ===== */
 .memory-rarity-overlay {
@@ -145,31 +136,6 @@
 .memory-rarity-badge-premium.r {
   background: #a0a0a0 !important;
   color: #fff !important;
-}
-
-/* Completely disable hover effects on premium rarity badges */
-.memory-rarity-badge-premium:hover {
-  transform: none !important;
-  background: inherit !important;
-  color: inherit !important;
-}
-
-.memory-rarity-badge-premium.ssr:hover {
-  background: #ffe066 !important;
-  color: #222 !important;
-  transform: none !important;
-}
-
-.memory-rarity-badge-premium.sr:hover {
-  background: #7ecfff !important;
-  color: #222 !important;
-  transform: none !important;
-}
-
-.memory-rarity-badge-premium.r:hover {
-  background: #a0a0a0 !important;
-  color: #fff !important;
-  transform: none !important;
 }
 
 /* ===== MEMORY INFO PANEL ===== */
@@ -273,15 +239,6 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
   transition: left 0.5s ease;
-}
-
-.memory-stat-premium:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 215, 0, 0.3);
-}
-
-.memory-stat-premium:hover::before {
-  left: 100%;
 }
 
 .stat-icon {
@@ -529,15 +486,6 @@
   transition: left 0.5s ease;
 }
 
-.character-guide-link-premium:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 215, 0, 0.5);
-}
-
-.character-guide-link-premium:hover::before {
-  left: 100%;
-}
-
 .link-icon {
   width: 3rem;
   height: 3rem;
@@ -574,10 +522,6 @@
   color: #ffd700;
   font-weight: 700;
   transition: transform 0.3s ease;
-}
-
-.character-guide-link-premium:hover .link-arrow {
-  transform: translateX(4px);
 }
 
 .memory-title {
@@ -621,11 +565,6 @@
   transition: all 0.3s ease;
 }
 
-.memory-content-section:hover {
-  transform: translateY(-2px);
-  border-color: var(--amber-glow);
-}
-
 .memory-section-title {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
@@ -662,9 +601,6 @@
   filter: contrast(1.1) saturate(1.1);
 }
 
-.memory-card-image:hover {
-}
-
 /* ===== MEMORY STATS GRID ===== */
 .memory-stats-grid {
   display: grid;
@@ -697,16 +633,6 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.1), transparent);
   transition: left 0.5s ease;
-}
-
-.memory-stat-item:hover {
-  transform: translateY(-2px);
-  border-color: var(--amber-glow);
-  background: linear-gradient(135deg, var(--neutral-50) 0%, var(--bg-primary) 100%);
-}
-
-.memory-stat-item:hover::before {
-  left: 100%;
 }
 
 .memory-stat-label {
@@ -750,12 +676,6 @@
   line-height: var(--leading-relaxed);
 }
 
-.memory-effect-item:hover {
-  transform: translateY(-2px);
-  border-left-color: var(--amber-glow);
-  border-color: var(--amber-glow);
-}
-
 .memory-effect-item::before {
   content: '▶';
   color: var(--teal-crystal);
@@ -763,10 +683,6 @@
   margin-right: 0.75rem;
   font-size: var(--text-lg);
   transition: color 0.3s ease;
-}
-
-.memory-effect-item:hover::before {
-  color: var(--amber-glow);
 }
 
 /* ===== CHARACTER LINK SECTION ===== */
@@ -782,10 +698,6 @@
   font-weight: var(--font-semibold);
   transition: all 0.2s ease;
   margin-top: 1rem;
-}
-
-.memory-character-link:hover {
-  opacity: 0.8;
 }
 
 .memory-character-link:active {
@@ -1049,14 +961,5 @@ strong {
   * {
     animation: none !important;
     transition: none !important;
-  }
-
-  .memory-content-section:hover,
-  .memory-stat-item:hover,
-  .memory-effect-item:hover,
-  .memory-character-link:hover,
-  .memory-image-container:hover,
-  .memory-card-image:hover {
-    transform: none !important;
   }
 }

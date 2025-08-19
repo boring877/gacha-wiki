@@ -5,8 +5,8 @@ import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
 ---
 
 <TeamSynergyLayout
-  title="Zone Nova Team Synergy Database - GachaWiki"
-  description="Sortable and filterable team composition database for Zone Nova - Rift teams, Guild Raid teams, and character-specific synergies"
+  title="Zone Nova Team Synergy Database - Best Team Compositions | GachaWiki"
+  description="Complete Zone Nova team synergy database with optimal team compositions, character synergies, Guild Raid teams, Rift strategies, and meta team builds for all content types"
   gameTitle="Team Synergy Database"
 >
   <!-- Breadcrumb Navigation -->
@@ -24,13 +24,14 @@ import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
         <div
           style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: linear-gradient(135deg, var(--bg-primary) 60%, var(--neutral-50) 100%); border-radius: 12px; border: 1px solid var(--amber-glow);"
         >
-          <p style="color: var(--amber-glow); margin: 0; font-size: 1rem; font-weight: 600;">
+          <h1 style="color: var(--amber-glow); margin: 0; font-size: 1rem; font-weight: 600;">
             Team Synergy Database
-          </p>
+          </h1>
           <p
             style="color: var(--text-secondary); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;"
           >
-            Effective team compositions for different content types
+            Discover optimal team compositions, character synergies, and meta strategies for Guild
+            Raids, Rifts, PvP, and PvE content
           </p>
           <div
             style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"
@@ -55,12 +56,11 @@ import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
           <div class="filter-controls">
             <select class="filter-select" id="teamTypeFilter">
               <option value="">All Team Types</option>
-              <option value="rift">Rift Teams</option>
               <option value="guild-raid">Guild Raid Teams</option>
-              <option value="character">Character Teams</option>
               <option value="general">General PvE</option>
               <option value="extra-attack">Extra Attack</option>
               <option value="dot">DOT</option>
+              <option value="pvp">PVP Teams</option>
             </select>
 
             <select class="filter-select" id="teamTierFilter">

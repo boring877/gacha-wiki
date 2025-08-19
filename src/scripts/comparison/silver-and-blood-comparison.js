@@ -34,7 +34,7 @@ class SilverBloodCharacterComparison {
       this.characterDataProcessed.characters.sort((a, b) => a.name.localeCompare(b.name));
       this.filteredCharacters = [...this.characterDataProcessed.characters];
     } else {
-      console.error('Silver & Blood comparison data not found');
+      // Silver & Blood comparison data not found
       return;
     }
 

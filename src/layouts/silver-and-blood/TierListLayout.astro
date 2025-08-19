@@ -1,21 +1,21 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
-import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
-import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
 // Import CSS files properly
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
-import '../../styles/games/zone-nova/zn-layout.css';
-import '../../styles/games/zone-nova/zn-badge-colour.css';
-import '../../styles/games/zone-nova/zn-team-synergy.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-tier-list.css';
 
 export interface Props {
   title: string;
@@ -30,65 +30,77 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
 
 <html lang="en">
   <head>
-    <BaseHead
-      title={title}
-      description={description || ''}
-      breadcrumbs={breadcrumbs}
-      shouldPreloadDefaultImage={false}
-    />
+    <BaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
     <GameSEO
-      gameKey="zone-nova"
+      gameKey="silver-and-blood"
       title={title}
       description={description}
       additionalKeywords={[
-        'team synergy',
-        'team compositions',
-        'team builder',
-        'character synergies',
-        'meta teams',
-        'guild raid teams',
-        'rift teams',
-        'team strategy',
-        'optimal teams',
-        'team database',
-        'team guide',
-        'formation guide',
-        'squad builder',
-        'party composition',
-        'team tier list',
-        'best teams',
-        'team combinations',
-        'character combinations',
-        'synergy guide',
-        'team optimization',
-        'team building tips',
-        'effective teams',
-        'competitive teams',
-        'pve teams',
-        'pvp teams',
-        'dps teams',
-        'support teams',
-        'tank teams',
-        'healing teams',
-        'team comp',
-        'team comps',
-        'party comp',
-        'party comps',
-        'zone nova',
-        'zone nova teams',
-        'zone nova synergy',
-        'zone nova team guide',
-        'best team comp',
-        'optimal team comp',
-        'meta team builds',
-        'team formations',
-        'squad formations',
+        'tier list',
+        'character rankings',
+        'best characters',
+        'SSS tier characters',
+        'SS tier ranking',
+        'S tier list',
+        'A tier guide',
+        'situational characters',
+        'timeless aiona tier',
+        'van helsing ranking',
+        'acappella tier list',
+        'fleeting bella guide',
+        'transcendent hati',
+        'transcendent ami',
+        'meta characters',
+        'pvp tier list',
+        'pvp arena rankings',
+        'pve tier list',
+        'pve character guide',
+        'clan hunt tier list',
+        'clan hunt rankings',
+        'boss raid tier list',
+        'boss raids guide',
+        'new player guide',
+        'f2p tier list',
+        'f2p friendly characters',
+        'vampire tier list',
+        'vampire characters',
+        'character comparison',
+        'ranking guide',
+        'tier maker',
+        'custom tier list',
+        'interactive tier list',
+        'drag and drop tier list',
+        'character ratings',
+        'meta ranking',
+        'tier list maker',
+        'character evaluation',
+        'tier guide',
+        'ranking system',
+        'character power ranking',
+        'best vampire characters',
+        'strongest characters',
+        'sab tier list',
+        'silver blood tier list',
+        'vampire gacha tier list',
+        'dark fantasy tier list',
+        'gothic rpg tier list',
+        'mobile rpg tier list',
+        'character strength ranking',
+        'tier list 2025',
+        'updated tier list',
+        'current meta',
+        'tier list guide',
+        'ranking criteria',
+        'character tier placement',
+        'vampire game rankings',
+        'gacha tier list',
+        'mobile game tier list',
       ]}
     />
 
-    <!-- Image Preloading for Performance -->
+    <!-- Image Preloading for Performance - Only when hero image will be displayed -->
     {
-      heroImage && (
+      heroImage && gameTitle && (
         <link
           rel="preload"
           as="image"
@@ -100,22 +112,22 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
 
     <slot name="head" />
   </head>
-  <body class="zone-nova-body zn-layout-override">
+  <body class="sab-body">
     <CustomScrollbar />
-    <!-- Background layers for visual depth similar to landing page -->
+    <!-- Background layers for visual depth -->
     <div class="bg-layer bg-primary"></div>
     <div class="bg-layer bg-accent-1"></div>
     <div class="bg-layer bg-accent-2"></div>
     <div class="bg-layer bg-accent-3"></div>
 
-    <div class="zone-nova-content">
+    <div class="sab-content">
       <Header />
-      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
       <MobileMenu />
 
-      <div class="zone-nova-container">
-        <main class="zone-nova-main">
-          <!-- Zone Nova Hero Section -->
+      <div class="sab-container">
+        <main class="sab-main">
+          <!-- Silver and Blood Hero Section -->
           {
             heroImage && gameTitle && (
               <section class="hero-section">

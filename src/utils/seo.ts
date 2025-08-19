@@ -113,8 +113,11 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'zone nova tier list',
       'zone nova characters',
       'zone nova builds',
+      'zone nova',
       'zonenova',
       'zone nova wiki',
+      'zone nova guide',
+      'zone nova database',
       'ero-lab Wiki',
       'ero-labs gacha',
     ] as const,
@@ -127,6 +130,9 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
     gameName: GAMES.SILVER_AND_BLOOD.NAME,
     keywords: [
       GAMES.SILVER_AND_BLOOD.NAME,
+      'silver and blood',
+      'sab',
+      'silver blood',
       'silver and blood wiki',
       'silver and blood characters',
       'silver and blood guide',
@@ -191,7 +197,7 @@ export function generateGameKeywords(
 ): string {
   const gameConfig = GAME_SEO_CONFIG[gameKey];
   if (!gameConfig) {
-    console.warn(`SEO: Game configuration not found for key: ${gameKey}`);
+    // Game configuration not found
     return '';
   }
 
@@ -210,7 +216,7 @@ export function generateGameStructuredData(
 ): StructuredDataGame | null {
   const gameConfig = GAME_SEO_CONFIG[gameKey];
   if (!gameConfig) {
-    console.warn(`SEO: Game configuration not found for key: ${gameKey}`);
+    // Game configuration not found
     return null;
   }
 
@@ -262,7 +268,7 @@ export function generateCharacterStructuredData(
 ): StructuredDataCharacter | null {
   const gameConfig = GAME_SEO_CONFIG[gameKey];
   if (!gameConfig) {
-    console.warn(`SEO: Game configuration not found for key: ${gameKey}`);
+    // Game configuration not found
     return null;
   }
 
@@ -311,7 +317,7 @@ export function generateTitle(
 ): string {
   const gameConfig = GAME_SEO_CONFIG[gameKey];
   if (!gameConfig) {
-    console.warn(`SEO: Game configuration not found for key: ${gameKey}`);
+    // Game configuration not found
     return GLOBAL_SEO.siteName;
   }
 
@@ -347,7 +353,7 @@ export function generateDescription(
 ): string {
   const gameConfig = GAME_SEO_CONFIG[gameKey];
   if (!gameConfig) {
-    console.warn(`SEO: Game configuration not found for key: ${gameKey}`);
+    // Game configuration not found
     return 'Game guide and wiki';
   }
 
@@ -371,7 +377,7 @@ export function generateDescription(
 export function getGameConfig(gameKey: string): GameSEOConfig | null {
   const config = GAME_SEO_CONFIG[gameKey];
   if (!config) {
-    console.warn(`SEO: Game configuration not found for key: ${gameKey}`);
+    // Game configuration not found
   }
   return config || null;
 }
@@ -387,7 +393,7 @@ export function addGameConfig(
   config: Partial<GameSEOConfig> & { gameName: string }
 ): void {
   if (GAME_SEO_CONFIG[gameKey]) {
-    console.warn(`SEO: Game configuration already exists for key: ${gameKey}. Overwriting.`);
+    // Game configuration already exists - overwriting
   }
 
   (GAME_SEO_CONFIG as Record<string, GameSEOConfig>)[gameKey] = {

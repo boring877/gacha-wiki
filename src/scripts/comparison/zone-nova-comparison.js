@@ -41,7 +41,7 @@ class ZoneNovaCharacterComparison {
           import(`../../data/zone-nova/characters/${char.slug}.js`);
       });
     } else {
-      console.error('Zone Nova comparison data not found');
+      // Zone Nova comparison data not found
       return;
     }
 
@@ -77,7 +77,7 @@ class ZoneNovaCharacterComparison {
       this.characterDataCache.set(slug, data);
       return data;
     } catch (error) {
-      console.error(`Failed to load character data for ${slug}:`, error);
+      // Failed to load character data
       this.characterDataCache.set(slug, null);
       return null;
     }
@@ -249,52 +249,118 @@ class ZoneNovaCharacterComparison {
 
     const characterCards = this.filteredCharacters.map(character => {
       const stats = character.stats || {};
-      const critRateDisplay =
-        stats.critRate !== undefined
-          ? `
-          <div class="stat-item crit-rate">
-            <span class="stat-label">CRIT</span>
-            <span class="stat-value">${typeof stats.critRate === 'string' ? stats.critRate : `${stats.critRate}%`}</span>
-          </div>
-        `
-          : '';
 
       const cardElement = document.createElement('button');
       cardElement.className = 'character-select-card';
       cardElement.dataset.characterSlug = character.slug;
       cardElement.dataset.selected = this.selectedCharacters.includes(character.slug);
 
-      cardElement.innerHTML = `
-        <img 
-          src="${character.image}" 
-          alt="${character.name}"
-          class="character-portrait"
-          width="80"
-          height="80"
-        />
-        <div class="character-info">
-          <h3>${character.name}</h3>
-          <div class="character-badges">
-            <span class="rarity-badge ${character.rarity.toLowerCase()}">${character.rarity}</span>
-            <span class="class-badge ${(character.class || 'unknown').toLowerCase().replace(' ', '-')}">${character.class || 'Unknown'}</span>
-          </div>
-          <div class="character-stats">
-            <div class="stat-item">
-              <span class="stat-label">HP</span>
-              <span class="stat-value">${stats.hp !== undefined ? (typeof stats.hp === 'string' ? stats.hp : stats.hp.toLocaleString()) : 'N/A'}</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">ATK</span>
-              <span class="stat-value">${stats.attack !== undefined ? (typeof stats.attack === 'string' ? stats.attack : stats.attack.toLocaleString()) : 'N/A'}</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">DEF</span>
-              <span class="stat-value">${stats.defense !== undefined ? (typeof stats.defense === 'string' ? stats.defense : stats.defense.toLocaleString()) : 'N/A'}</span>
-            </div>
-            ${critRateDisplay}
-          </div>
-        </div>
-      `;
+      // Create elements safely without innerHTML to prevent XSS
+      const img = document.createElement('img');
+      img.src = character.image;
+      img.alt = character.name;
+      img.className = 'character-portrait';
+      img.width = 80;
+      img.height = 80;
+
+      const characterInfo = document.createElement('div');
+      characterInfo.className = 'character-info';
+
+      const h3 = document.createElement('h3');
+      h3.textContent = character.name;
+
+      const badgesDiv = document.createElement('div');
+      badgesDiv.className = 'character-badges';
+
+      const rarityBadge = document.createElement('span');
+      rarityBadge.className = `rarity-badge ${character.rarity.toLowerCase()}`;
+      rarityBadge.textContent = character.rarity;
+
+      const classBadge = document.createElement('span');
+      classBadge.className = `class-badge ${(character.class || 'unknown').toLowerCase().replace(' ', '-')}`;
+      classBadge.textContent = character.class || 'Unknown';
+
+      const statsDiv = document.createElement('div');
+      statsDiv.className = 'character-stats';
+
+      // HP stat
+      const hpDiv = document.createElement('div');
+      hpDiv.className = 'stat-item';
+      const hpLabel = document.createElement('span');
+      hpLabel.className = 'stat-label';
+      hpLabel.textContent = 'HP';
+      const hpValue = document.createElement('span');
+      hpValue.className = 'stat-value';
+      hpValue.textContent =
+        stats.hp !== undefined
+          ? typeof stats.hp === 'string'
+            ? stats.hp
+            : stats.hp.toLocaleString()
+          : 'N/A';
+      hpDiv.appendChild(hpLabel);
+      hpDiv.appendChild(hpValue);
+
+      // ATK stat
+      const atkDiv = document.createElement('div');
+      atkDiv.className = 'stat-item';
+      const atkLabel = document.createElement('span');
+      atkLabel.className = 'stat-label';
+      atkLabel.textContent = 'ATK';
+      const atkValue = document.createElement('span');
+      atkValue.className = 'stat-value';
+      atkValue.textContent =
+        stats.attack !== undefined
+          ? typeof stats.attack === 'string'
+            ? stats.attack
+            : stats.attack.toLocaleString()
+          : 'N/A';
+      atkDiv.appendChild(atkLabel);
+      atkDiv.appendChild(atkValue);
+
+      // DEF stat
+      const defDiv = document.createElement('div');
+      defDiv.className = 'stat-item';
+      const defLabel = document.createElement('span');
+      defLabel.className = 'stat-label';
+      defLabel.textContent = 'DEF';
+      const defValue = document.createElement('span');
+      defValue.className = 'stat-value';
+      defValue.textContent =
+        stats.defense !== undefined
+          ? typeof stats.defense === 'string'
+            ? stats.defense
+            : stats.defense.toLocaleString()
+          : 'N/A';
+      defDiv.appendChild(defLabel);
+      defDiv.appendChild(defValue);
+
+      // CRIT stat if available
+      if (stats.critRate !== undefined) {
+        const critDiv = document.createElement('div');
+        critDiv.className = 'stat-item crit-rate';
+        const critLabel = document.createElement('span');
+        critLabel.className = 'stat-label';
+        critLabel.textContent = 'CRIT';
+        const critValue = document.createElement('span');
+        critValue.className = 'stat-value';
+        critValue.textContent =
+          typeof stats.critRate === 'string' ? stats.critRate : `${stats.critRate}%`;
+        critDiv.appendChild(critLabel);
+        critDiv.appendChild(critValue);
+        statsDiv.appendChild(critDiv);
+      }
+
+      // Assemble elements
+      badgesDiv.appendChild(rarityBadge);
+      badgesDiv.appendChild(classBadge);
+      statsDiv.appendChild(hpDiv);
+      statsDiv.appendChild(atkDiv);
+      statsDiv.appendChild(defDiv);
+      characterInfo.appendChild(h3);
+      characterInfo.appendChild(badgesDiv);
+      characterInfo.appendChild(statsDiv);
+      cardElement.appendChild(img);
+      cardElement.appendChild(characterInfo);
 
       return cardElement;
     });
@@ -530,80 +596,155 @@ class ZoneNovaCharacterComparison {
       return;
     }
 
+    // Clear container first
+    mobileCardsContainer.innerHTML = '';
+
     const mobileCardsPromises = this.selectedCharacters.map(async characterSlug => {
       const character = this.characterDataProcessed.characters.find(c => c.slug === characterSlug);
-      if (!character) return '';
+      if (!character) return null;
 
       const characterData = await this.loadCharacterData(character.slug);
       const teamSkill = characterData?.teamSkill;
       const stats = character.stats || {};
 
-      return `
-        <div class="character-comparison-card">
-          <div class="card-header">
-            <img src="${character.image}" alt="${character.name}" class="card-portrait">
-            <div class="card-info">
-              <h3>${character.name}</h3>
-              <div class="card-badges">
-                <span class="rarity-badge ${character.rarity.toLowerCase()}">${character.rarity}</span>
-                <span class="element-badge ${character.element.toLowerCase()}">${character.element}</span>
-                <span class="role-badge ${character.role.toLowerCase()}">${character.role}</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="card-section">
-            <h4>Base Stats</h4>
-            <div class="card-stats">
-              <div class="card-stat">
-                <span class="stat-label">HP:</span>
-                <span class="stat-value">${stats.hp !== undefined ? stats.hp.toLocaleString() : 'N/A'}</span>
-              </div>
-              <div class="card-stat">
-                <span class="stat-label">ATK:</span>
-                <span class="stat-value">${stats.attack !== undefined ? stats.attack.toLocaleString() : 'N/A'}</span>
-              </div>
-              <div class="card-stat">
-                <span class="stat-label">DEF:</span>
-                <span class="stat-value">${stats.defense !== undefined ? stats.defense.toLocaleString() : 'N/A'}</span>
-              </div>
-              <div class="card-stat">
-                <span class="stat-label">Energy Recovery:</span>
-                <span class="stat-value">${stats.energyRecovery !== undefined ? stats.energyRecovery : 'N/A'}</span>
-              </div>
-              <div class="card-stat">
-                <span class="stat-label">CRIT Rate:</span>
-                <span class="stat-value">${stats.critRate !== undefined ? stats.critRate + '%' : 'N/A'}</span>
-              </div>
-              <div class="card-stat">
-                <span class="stat-label">CRIT DMG:</span>
-                <span class="stat-value">${stats.critDmg !== undefined ? stats.critDmg + '%' : 'N/A'}</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="card-section">
-            <h4>Team Skill</h4>
-            <div class="card-team-skill">
-              <div class="team-skill-name">${teamSkill?.name || 'N/A'}</div>
-              <div class="team-skill-description">${teamSkill?.description || 'No team skill available'}</div>
-              ${
-                teamSkill?.requirements
-                  ? `
-                <div class="team-skill-conditions">
-                  <strong>Conditions:</strong> ${teamSkill.requirements.faction} faction + ${teamSkill.requirements.element} element
-                </div>
-              `
-                  : ''
-              }
-            </div>
-          </div>
-        </div>
-      `;
+      // Create mobile card securely without innerHTML
+      const card = document.createElement('div');
+      card.className = 'character-comparison-card';
+
+      // Card header
+      const cardHeader = document.createElement('div');
+      cardHeader.className = 'card-header';
+
+      const img = document.createElement('img');
+      img.src = character.image;
+      img.alt = character.name;
+      img.className = 'card-portrait';
+
+      const cardInfo = document.createElement('div');
+      cardInfo.className = 'card-info';
+
+      const h3 = document.createElement('h3');
+      h3.textContent = character.name;
+
+      const badges = document.createElement('div');
+      badges.className = 'card-badges';
+
+      const rarityBadge = document.createElement('span');
+      rarityBadge.className = `rarity-badge ${character.rarity.toLowerCase()}`;
+      rarityBadge.textContent = character.rarity;
+
+      const elementBadge = document.createElement('span');
+      elementBadge.className = `element-badge ${character.element.toLowerCase()}`;
+      elementBadge.textContent = character.element;
+
+      const roleBadge = document.createElement('span');
+      roleBadge.className = `role-badge ${character.role.toLowerCase()}`;
+      roleBadge.textContent = character.role;
+
+      badges.appendChild(rarityBadge);
+      badges.appendChild(elementBadge);
+      badges.appendChild(roleBadge);
+      cardInfo.appendChild(h3);
+      cardInfo.appendChild(badges);
+      cardHeader.appendChild(img);
+      cardHeader.appendChild(cardInfo);
+      card.appendChild(cardHeader);
+
+      // Base stats section
+      const statsSection = this.createStatSection('Base Stats', [
+        { label: 'HP', value: stats.hp !== undefined ? stats.hp.toLocaleString() : 'N/A' },
+        { label: 'ATK', value: stats.attack !== undefined ? stats.attack.toLocaleString() : 'N/A' },
+        {
+          label: 'DEF',
+          value: stats.defense !== undefined ? stats.defense.toLocaleString() : 'N/A',
+        },
+        {
+          label: 'Energy Recovery',
+          value: stats.energyRecovery !== undefined ? stats.energyRecovery : 'N/A',
+        },
+        { label: 'CRIT Rate', value: stats.critRate !== undefined ? stats.critRate + '%' : 'N/A' },
+        { label: 'CRIT DMG', value: stats.critDmg !== undefined ? stats.critDmg + '%' : 'N/A' },
+      ]);
+      card.appendChild(statsSection);
+
+      // Team skill section
+      const teamSkillSection = document.createElement('div');
+      teamSkillSection.className = 'card-section';
+
+      const h4 = document.createElement('h4');
+      h4.textContent = 'Team Skill';
+      teamSkillSection.appendChild(h4);
+
+      const teamSkillDiv = document.createElement('div');
+      teamSkillDiv.className = 'card-team-skill';
+
+      const skillName = document.createElement('div');
+      skillName.className = 'team-skill-name';
+      skillName.textContent = teamSkill?.name || 'N/A';
+
+      const skillDesc = document.createElement('div');
+      skillDesc.className = 'team-skill-description';
+      skillDesc.textContent = teamSkill?.description || 'No team skill available';
+
+      teamSkillDiv.appendChild(skillName);
+      teamSkillDiv.appendChild(skillDesc);
+
+      if (teamSkill?.requirements) {
+        const conditions = document.createElement('div');
+        conditions.className = 'team-skill-conditions';
+        const strong = document.createElement('strong');
+        strong.textContent = 'Conditions: ';
+        conditions.appendChild(strong);
+        conditions.appendChild(
+          document.createTextNode(
+            `${teamSkill.requirements.faction} faction + ${teamSkill.requirements.element} element`
+          )
+        );
+        teamSkillDiv.appendChild(conditions);
+      }
+
+      teamSkillSection.appendChild(teamSkillDiv);
+      card.appendChild(teamSkillSection);
+
+      return card;
     });
 
     const mobileCards = await Promise.all(mobileCardsPromises);
-    mobileCardsContainer.innerHTML = mobileCards.join('');
+    mobileCards.forEach(card => {
+      if (card) mobileCardsContainer.appendChild(card);
+    });
+  }
+
+  createStatSection(title, stats) {
+    const section = document.createElement('div');
+    section.className = 'card-section';
+
+    const h4 = document.createElement('h4');
+    h4.textContent = title;
+    section.appendChild(h4);
+
+    const statsDiv = document.createElement('div');
+    statsDiv.className = 'card-stats';
+
+    stats.forEach(stat => {
+      const statDiv = document.createElement('div');
+      statDiv.className = 'card-stat';
+
+      const label = document.createElement('span');
+      label.className = 'stat-label';
+      label.textContent = stat.label + ':';
+
+      const value = document.createElement('span');
+      value.className = 'stat-value';
+      value.textContent = stat.value;
+
+      statDiv.appendChild(label);
+      statDiv.appendChild(value);
+      statsDiv.appendChild(statDiv);
+    });
+
+    section.appendChild(statsDiv);
+    return section;
   }
 
   navigateToComparison() {

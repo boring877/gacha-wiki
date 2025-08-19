@@ -9,6 +9,7 @@ export const TEAM_TYPES = {
   GENERAL: 'general',
   EXTRA_ATTACK: 'extra-attack',
   DOT: 'dot',
+  PVP: 'pvp',
 };
 
 // Team tier constants
@@ -134,6 +135,34 @@ export const ZONE_NOVA_TEAMS = [
     notes:
       'Fire/Holy team for beginners. Lancelot tanks, Kela heals, Zashiki buffs DMG & crit rate, Mordred HP scaling DPS, Build Crit on her she can do 80k DMG.',
   },
+  {
+    id: 9,
+    name: 'Odia survive ',
+    type: TEAM_TYPES.PVP,
+    tier: TEAM_TIERS.S,
+    characters: [
+      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+      { name: 'Athena', image: '/images/games/zone-nova/characters/Athena.jpg' },
+      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
+      { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
+    ],
+    notes:
+      'Using Thor ultimate to casue DOT damage and Finishisng with Odin, Gaia buff that inc def for lowest in team at dupe 6 that increase to 2.',
+  },
+  {
+    id: 10,
+    name: 'Blance',
+    type: TEAM_TYPES.PVP,
+    tier: TEAM_TIERS.S,
+    characters: [
+      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
+      { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
+      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+    ],
+    notes:
+      'Aggressive PVP team with high burst potential. Guinevere buffs the team, Thor and Odin provide heavy damage output, while Gaia ensures team sustainability.',
+  },
 ];
 
 // Metadata for filters (will be populated as teams are added)
@@ -215,6 +244,7 @@ export function getTeamTypeText(type) {
     [TEAM_TYPES.GENERAL]: 'General PvE',
     [TEAM_TYPES.EXTRA_ATTACK]: 'Extra Attack',
     [TEAM_TYPES.DOT]: 'DOT',
+    [TEAM_TYPES.PVP]: 'PVP',
   };
   return typeTexts[type] || 'Unknown';
 }

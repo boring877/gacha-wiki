@@ -43,11 +43,6 @@
 }
 
 /* Hover state for control buttons */
-.control-btn:hover:not(:disabled) {
-  background: var(--zn-primary-amber);
-  border-color: var(--zn-primary-amber);
-  color: var(--zn-text-primary);
-}
 
 /* Disabled state */
 .control-btn:disabled {
@@ -154,11 +149,6 @@
   transition: transform 0.2s ease;
 }
 
-.pool-character-card:hover {
-  transform: scale(1.1);
-  z-index: 10;
-}
-
 .pool-character-card img {
   width: 75px;
   height: 75px;
@@ -232,10 +222,6 @@
 .pool-characters::-webkit-scrollbar-thumb {
   background: var(--zn-primary-amber);
   border-radius: 3px;
-}
-
-.pool-characters::-webkit-scrollbar-thumb:hover {
-  background: var(--zn-dark-amber);
 }
 
 /* ============================================ */
@@ -329,16 +315,6 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-}
-
-.tier-character-card.draggable:hover .remove-btn {
-  display: flex;
-}
-
-.remove-btn:hover {
-  background: var(--zn-badge-red);
-  opacity: 0.8;
-  transform: scale(1.1);
 }
 
 /* Drop zones */
@@ -742,7 +718,6 @@
 /* ============================================ */
 /* 15. ANIMATIONS */
 /* ============================================ */
-
 
 /* ============================================ */
 /* 16. MOBILE RESPONSIVE DESIGN */

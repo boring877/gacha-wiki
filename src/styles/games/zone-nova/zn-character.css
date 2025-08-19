@@ -53,13 +53,6 @@
   transition: all 0.2s ease;
 }
 
-.filter-select:hover,
-.sort-btn:hover {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  border-color: var(--amber-glow);
-}
-
 .sort-btn.active {
   background: var(--amber-glow);
   color: white;
@@ -78,12 +71,6 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.reset-btn:hover {
-  background: linear-gradient(135deg, #d81b60, var(--rose-quartz));
-  transform: translateY(-1px);
-  border-color: #d81b60;
 }
 
 .reset-btn:active {
@@ -129,10 +116,6 @@ table.character-table tr {
   transition: background-color 0.2s ease;
 }
 
-table.character-table tr:hover {
-  background: rgba(255, 183, 77, 0.05);
-}
-
 /* Enhanced Mobile cards - hidden by default */
 .mobile-card-view {
   display: none;
@@ -156,12 +139,7 @@ table.character-table tr:hover {
   flex-direction: column;
   gap: 0.7rem;
   border: 1px solid var(--amber-glow);
-  transition:
-    transform 0.2s ease;
-}
-
-.mobile-character-card:hover {
-  transform: translateY(-2px);
+  transition: transform 0.2s ease;
 }
 
 .mobile-card-header {
@@ -535,13 +513,6 @@ table.character-table tr:hover {
 
 /* Disable hover effects on touch devices for better performance */
 @media (hover: none) {
-  .mobile-character-card:hover {
-    transform: none;
-  }
-
-  table.character-table tr:hover {
-    background: transparent;
-  }
 }
 
 /* Reduced motion preferences */
@@ -553,14 +524,6 @@ table.character-table tr:hover {
   table.character-table tr {
     transition: none;
     animation: none;
-  }
-
-  .mobile-character-card:hover {
-    transform: none;
-  }
-
-  .reset-btn:hover {
-    transform: none;
   }
 }
 

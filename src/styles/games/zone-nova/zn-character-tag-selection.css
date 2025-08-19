@@ -10,9 +10,6 @@
   font-size: 0.8rem;
   cursor: pointer;
 }
-.zone-nova-body .tag-btn:hover {
-  border-color: var(--zn-primary-amber);
-}
 .zone-nova-body .tag-btn.active {
   background: var(--zn-primary-amber);
   color: #000;
@@ -29,11 +26,6 @@
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.85rem;
-}
-.zone-nova-body .clear-tags-btn:hover {
-  background: transparent;
-  color: var(--zn-error);
-  transform: translateY(-1px);
 }
 .zone-nova-body .match-count {
   background: rgba(255, 183, 77, 0.1);
@@ -106,10 +98,6 @@
   align-items: center;
   transition: all 0.2s ease;
 }
-.dropdown-trigger:hover {
-  border-color: var(--zn-primary-amber);
-  transform: translateY(-1px);
-}
 .dropdown-trigger.active {
   border-color: var(--zn-primary-amber);
   background: linear-gradient(135deg, var(--zn-bg-secondary) 0%, rgba(255, 183, 77, 0.15) 100%);
@@ -164,9 +152,6 @@
   background: var(--zn-primary-amber);
   border-radius: 3px;
 }
-.dropdown-menu::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 183, 77, 0.8);
-}
 .dropdown-option {
   display: flex;
   align-items: center;
@@ -175,9 +160,6 @@
   transition: background-color 0.2s ease;
   gap: 0.75rem;
   min-height: 44px;
-}
-.dropdown-option:hover {
-  background: rgba(255, 183, 77, 0.1);
 }
 .dropdown-option input[type='checkbox'] {
   accent-color: var(--zn-primary-amber);
@@ -238,9 +220,6 @@
   color: inherit;
 }
 
-.character-select-card:hover {
-  border-color: var(--zn-primary-amber);
-}
 .character-portrait {
   width: 80px;
   height: 80px;

@@ -1,0 +1,837 @@
+/* Silver and Blood Tier List Styles */
+/* Following Silver and Blood color guidelines */
+
+/* ============================================ */
+/* 1. LAYOUT & CONTAINERS */
+/* ============================================ */
+
+.tier-list-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ============================================ */
+/* 2. BUTTON COMPONENTS (consolidated) */
+/* ============================================ */
+
+/* Base button styles - shared by all buttons */
+.mode-btn,
+.control-btn,
+.tier-type-btn {
+  padding: 0.75rem 1.5rem;
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-border-gray);
+  border-radius: 6px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Mode toggle specific sizing */
+.mode-btn {
+  padding: 0.75rem 2rem;
+}
+
+/* Active state - shared by all toggle buttons */
+.mode-btn.active,
+.tier-type-btn.active {
+  background: linear-gradient(135deg, var(--sab-calm-red), var(--sab-dark-red));
+  border-color: var(--sab-calm-red);
+  color: #ffffff;
+}
+
+/* Hover state for control buttons */
+.control-btn:hover:not(:disabled) {
+  background: var(--sab-calm-red);
+  border-color: var(--sab-calm-red);
+  color: #ffffff;
+}
+
+/* Disabled state */
+.control-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ============================================ */
+/* 3. CONTROL SECTIONS */
+/* ============================================ */
+
+/* Mode toggle */
+.mode-toggle {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--sab-bg-dark);
+  border-radius: 8px;
+  border: 1px solid var(--sab-border-gray);
+}
+
+/* Maker controls */
+.maker-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================ */
+/* 4. MAKER MODE LAYOUT */
+/* ============================================ */
+
+.maker-layout {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.maker-tier-list {
+  flex: 1;
+}
+
+/* Desktop Side Pool */
+.side-pool {
+  width: 250px;
+  background: var(--sab-bg-dark);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 2rem;
+}
+
+.side-pool h3 {
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+  font-size: 1.1rem;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--sab-border-gray);
+}
+
+.pool-characters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+/* ============================================ */
+/* 5. TIER LIST SELECTOR */
+/* ============================================ */
+
+.tier-list-selector {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--sab-bg-dark);
+  border-radius: 8px;
+  border: 1px solid var(--sab-border-gray);
+}
+
+/* ============================================ */
+/* 6. TIER LIST INFO */
+/* ============================================ */
+
+.tier-list-info {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--sab-bg-dark);
+  border-radius: 8px;
+  border: 1px solid var(--sab-border-gray);
+}
+
+.tier-list-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.tier-list-description {
+  font-size: 1rem;
+  color: var(--sab-text-white);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.tier-list-updated {
+  font-size: 0.875rem;
+  color: var(--sab-text-muted);
+  font-style: italic;
+}
+
+/* ============================================ */
+/* 7. TIER LIST DISPLAY */
+/* ============================================ */
+
+.tier-list-display {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tier-row {
+  display: flex;
+  background: var(--sab-bg-dark);
+  border-radius: 8px;
+  border: 1px solid var(--sab-border-gray);
+  min-height: 120px;
+  overflow: hidden;
+}
+
+.tier-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  width: 100px;
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.tier-characters {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  align-content: flex-start;
+  min-height: 120px;
+}
+
+/* Drop zone for maker mode */
+.tier-characters.droppable {
+  border: 2px dashed transparent;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.tier-characters.drag-over {
+  border-color: var(--sab-calm-red);
+  background: rgba(194, 107, 107, 0.05);
+}
+
+.tier-characters.awaiting-placement {
+  border-color: var(--sab-muted-gold);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.drop-zone-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--sab-text-muted);
+  font-style: italic;
+  pointer-events: none;
+}
+
+.empty-tier {
+  color: var(--sab-text-muted);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+/* ============================================ */
+/* 8. TIER COLORS */
+/* ============================================ */
+
+.tier-sss {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+.tier-ss {
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+}
+
+.tier-s {
+  background: linear-gradient(135deg, #d97706, #b45309);
+}
+
+.tier-a {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.tier-situational {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ============================================ */
+/* 9. CHARACTER CARDS */
+/* ============================================ */
+
+.tier-character-card {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  min-height: 160px;
+  height: auto;
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-border-light);
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    all 0.2s ease,
+    transform 0.2s ease;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.tier-character-card:hover {
+  border-color: var(--sab-calm-red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(194, 107, 107, 0.2);
+}
+
+.tier-character-card.draggable {
+  cursor: grab;
+  position: relative;
+}
+
+.tier-character-card.draggable:active {
+  cursor: grabbing;
+}
+
+.tier-character-card.dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+}
+
+.character-image-wrapper {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 0.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--sab-border-light);
+  position: relative;
+  background: var(--sab-card-bg);
+  flex-shrink: 0;
+}
+
+.character-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  line-height: 1.1;
+  min-height: 2.2rem;
+  max-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.character-badges {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 120px;
+  margin-top: 0.3rem;
+}
+
+.mini-badge {
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  /* Color and text-shadow removed to allow SAB badge system to control colors */
+}
+
+.remove-btn {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--sab-calm-red);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: bold;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================ */
+/* 10. POOL CHARACTER CARDS */
+/* ============================================ */
+
+.pool-character-card {
+  width: 85px;
+  height: 130px;
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-border-light);
+  border-radius: 6px;
+  padding: 0.3rem;
+  text-align: center;
+  cursor: grab;
+  transition:
+    all 0.2s ease,
+    transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.2rem;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.pool-character-card:hover {
+  border-color: var(--sab-calm-red);
+  transform: scale(1.05);
+}
+
+.pool-character-card.selected {
+  border-color: var(--sab-muted-gold);
+  background: rgba(212, 175, 55, 0.1);
+  transform: scale(1.1);
+}
+
+.pool-character-card.dragging {
+  opacity: 0.5;
+}
+
+.pool-character-card:active {
+  transform: scale(0.95);
+}
+
+.pool-character-card img {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid var(--sab-border-light);
+}
+
+.pool-character-name {
+  width: 100%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.05;
+  text-align: center;
+  margin: 4px 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.pool-character-badges {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 85px;
+  margin-top: 2px;
+}
+
+.pool-mini-badge {
+  font-size: 0.45rem;
+  font-weight: 800;
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  /* Color and text-shadow removed to allow SAB badge system to control colors */
+}
+
+/* ============================================ */
+/* BADGE COLOR SYSTEM */
+/* ============================================ */
+
+/* Rarity badge colors are now handled by the centralized SAB badge system 
+   in sab-badge-colours.css - no need for duplicate styles here */
+
+/* Custom scrollbar for pool - matches Zone Nova but with SAB colors */
+.pool-characters::-webkit-scrollbar,
+.side-pool::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.pool-characters::-webkit-scrollbar-track,
+.side-pool::-webkit-scrollbar-track {
+  background: var(--sab-bg-dark);
+  border-radius: 3px;
+}
+
+.pool-characters::-webkit-scrollbar-thumb,
+.side-pool::-webkit-scrollbar-thumb {
+  background: var(--sab-calm-red);
+  border-radius: 3px;
+}
+
+.pool-characters::-webkit-scrollbar-thumb:hover,
+.side-pool::-webkit-scrollbar-thumb:hover {
+  background: var(--sab-dark-red);
+}
+
+/* ============================================ */
+/* 11. TIER LEGEND */
+/* ============================================ */
+
+.tier-legend {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--sab-bg-dark);
+  border-radius: 8px;
+  border: 1px solid var(--sab-border-gray);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.legend-tier {
+  width: 60px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.legend-tier.tier-situational {
+  font-size: 0.7rem;
+}
+
+.legend-description {
+  flex: 1;
+}
+
+.legend-label {
+  font-weight: 600;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.legend-text {
+  color: var(--sab-text-white);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* ============================================ */
+/* 12. RESPONSIVE DESIGN */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  /* Container and layout adjustments */
+  .tier-list-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+  }
+
+  /* Button adjustments */
+  .mode-toggle {
+    padding: 0.75rem;
+  }
+
+  .mode-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .maker-controls {
+    padding: 0.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .control-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  .tier-list-selector {
+    padding: 1rem;
+  }
+
+  .tier-type-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Mobile maker layout */
+  .maker-layout {
+    flex-direction: column;
+  }
+
+  .side-pool {
+    width: 100%;
+    max-height: 250px;
+    order: -1;
+    margin-bottom: 1rem;
+    position: static;
+  }
+
+  .pool-characters {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mobile pool character cards */
+  .pool-character-card {
+    width: 75px;
+    height: 110px;
+    padding: 0.25rem;
+    gap: 0.15rem;
+    cursor: grab;
+    transition:
+      all 0.2s ease,
+      transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .pool-character-card img {
+    width: 65px;
+    height: 65px;
+    border: 1px solid var(--sab-border-light);
+    border-radius: 4px;
+  }
+
+  .pool-character-name {
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 3px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+
+  .pool-character-badges {
+    max-width: 75px;
+    min-height: 14px;
+    flex-direction: row;
+  }
+
+  .pool-character-card .pool-mini-badge {
+    padding: 0.08rem 0.15rem;
+    font-size: 0.38rem;
+    min-height: 8px;
+    max-height: 8px;
+  }
+
+  /* Mobile tier list adjustments */
+  .maker-tier-list {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .maker-tier-list .tier-list-display {
+    min-width: 100%;
+  }
+
+  .tier-type-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .tier-row {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .tier-label {
+    width: 100%;
+    min-width: 100%;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .tier-label.tier-situational {
+    font-size: 0.8rem;
+  }
+
+  .tier-characters {
+    padding: 0.75rem;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  /* Mobile tier character cards */
+  .tier-character-card {
+    width: 70px;
+    min-width: 70px;
+    max-width: 70px;
+    min-height: 120px;
+    padding: 0.25rem;
+    gap: 0.2rem;
+  }
+
+  .tier-character-card .character-image-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tier-character-card .character-name {
+    font-size: 0.72rem;
+    font-weight: 700;
+    max-width: 70px;
+    height: 28px;
+    line-height: 1.05;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+
+  .tier-character-card .character-badges {
+    gap: 0.2rem;
+    max-width: 70px;
+    min-height: 20px;
+    flex-direction: row;
+  }
+
+  .tier-character-card .mini-badge {
+    padding: 0.08rem 0.2rem;
+    font-size: 0.45rem;
+    min-height: 12px;
+    max-height: 12px;
+  }
+
+  .legend-item {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .legend-tier {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tier-character-card {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    min-height: 100px;
+  }
+
+  .tier-character-card .character-image-wrapper {
+    width: 45px;
+    height: 45px;
+  }
+
+  .tier-character-card .character-name {
+    font-size: 0.65rem;
+    max-width: 60px;
+    height: 24px;
+    min-height: 1.6rem;
+    color: #ffffff;
+  }
+
+  .pool-characters {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .pool-character-card {
+    width: 60px;
+    height: 90px;
+  }
+
+  .pool-character-card img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .pool-character-name {
+    font-size: 0.6rem;
+    height: 20px;
+    color: #ffffff;
+  }
+
+  .pool-character-card .pool-mini-badge {
+    font-size: 0.35rem;
+    padding: 0.05rem 0.1rem;
+  }
+
+  .tier-list-selector {
+    grid-template-columns: 1fr;
+  }
+}

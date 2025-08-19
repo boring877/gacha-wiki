@@ -203,6 +203,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       category: 'guides',
       status: 'active',
     },
+    {
+      id: 'tier-list',
+      title: 'Tier List',
+      emoji: '',
+      description:
+        'Comprehensive character tier lists for PvP Arena, PvE, Clan Hunt, Boss Raids, and F2P players. Interactive tier list maker with drag-and-drop functionality.',
+      url: '/guides/silver-and-blood/tier-list/',
+      category: 'guides',
+      status: 'active',
+    },
   ],
 };
 

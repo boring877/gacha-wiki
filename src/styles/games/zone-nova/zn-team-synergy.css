@@ -59,13 +59,6 @@
   transition: all 0.2s ease;
 }
 
-.filter-select:hover,
-.sort-btn:hover {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  border-color: var(--amber-glow);
-}
-
 .sort-btn.active {
   background: var(--amber-glow);
   color: white;
@@ -84,12 +77,6 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.reset-btn:hover {
-  background: linear-gradient(135deg, #d81b60, var(--rose-quartz));
-  transform: translateY(-1px);
-  border-color: #d81b60;
 }
 
 .reset-btn:active {
@@ -136,10 +123,6 @@ table.team-table th {
 
 table.team-table tr {
   transition: background-color 0.2s ease;
-}
-
-table.team-table tr:hover {
-  background: rgba(255, 183, 77, 0.05);
 }
 
 /* Column Layouts */
@@ -254,6 +237,11 @@ table.team-table td:nth-child(8) {
 .team-type-badge.dot {
   background: #e91e63;
   color: #fff;
+}
+
+.team-type-badge.pvp {
+  background: var(--zn-badge-indigo);
+  color: var(--zn-badge-white);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -427,10 +415,6 @@ table.team-table td:nth-child(8) {
   gap: 0.7rem;
   border: 1px solid var(--amber-glow);
   transition: transform 0.2s ease;
-}
-
-.mobile-team-card:hover {
-  transform: translateY(-2px);
 }
 
 .mobile-card-header {
@@ -761,11 +745,6 @@ table.team-table td:nth-child(8) {
     transition: none;
     animation: none;
   }
-
-  .mobile-team-card:hover,
-  .reset-btn:hover {
-    transform: none;
-  }
 }
 
 /* Mobile landscape specific adjustments */
@@ -799,11 +778,4 @@ table.team-table td:nth-child(8) {
 
 /* Touch devices - disable hover effects */
 @media (hover: none) {
-  .mobile-team-card:hover {
-    transform: none;
-  }
-
-  table.team-table tr:hover {
-    background: transparent;
-  }
 }

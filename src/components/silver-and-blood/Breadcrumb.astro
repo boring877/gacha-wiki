@@ -37,6 +37,12 @@ const { items } = Astro.props;
 <style>
   .breadcrumb {
     margin-bottom: 2rem;
+    /* Align with parent container */
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .breadcrumb-list {
@@ -75,9 +81,31 @@ const { items } = Astro.props;
     opacity: 0.7;
   }
 
+  /* Mobile responsiveness - match Silver and Blood layout breakpoints */
   @media (max-width: 768px) {
+    .breadcrumb {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
     .breadcrumb-list {
       font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .breadcrumb {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+
+    .breadcrumb-list {
+      font-size: 0.8rem;
+      gap: 0.3rem;
+    }
+
+    .breadcrumb-item {
+      gap: 0.3rem;
     }
   }
 </style>

@@ -344,11 +344,6 @@ table.team-table td:nth-child(9) {
   width: 100%;
 }
 
-.character-name-link:hover .character-name {
-  color: var(--sab-muted-gold);
-  text-decoration: underline;
-}
-
 /* Character badges - removed as they're not used in team synergy display */
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -467,11 +462,6 @@ table.team-table td:nth-child(9) {
   color: inherit;
   display: block;
   width: 100%;
-}
-
-.mobile-character-name-link:hover .mobile-character-name {
-  color: var(--sab-muted-gold);
-  text-decoration: underline;
 }
 
 /* Mobile character badges - removed as they're not used in team synergy display */
@@ -746,11 +736,6 @@ table.team-table td:nth-child(9) {
     transition: none;
     animation: none;
   }
-
-  .mobile-team-card:hover,
-  .reset-btn:hover {
-    transform: none;
-  }
 }
 
 /* Mobile landscape specific adjustments */
@@ -789,11 +774,4 @@ table.team-table td:nth-child(9) {
 
 /* Touch devices - disable hover effects */
 @media (hover: none) {
-  .mobile-team-card:hover {
-    transform: none;
-  }
-
-  table.team-table tr:hover {
-    background: transparent;
-  }
 }
