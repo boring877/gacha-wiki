@@ -35,12 +35,12 @@ export const freyeData = {
       name: 'Dark Fate',
       energyCost: '3', // e.g., '5'
       description:
-        'Summons a small black hole that deals damage to designated enemy units and surrounding enemies within a 3-meter range, hitting up to 12 times. Total damage is 60% chaos damage. If the enemy takes damage within 10 seconds, damage is increased by 36%. Next ultimate skill is enhanced. Enhanced Ultimate: Summons a large black hole that deals damage to designated enemy units and surrounding enemies within a 5-meter range, hitting up to 12 times. Total damage is 180% chaos damage. Additionally, within 10 seconds, enemy damage taken is increased by 60%. This effect cannot stack with regular ultimate skill effects.',
+        'Summons a small black hole that deals damage to designated enemy units and surrounding enemies within a 3-meter range, hitting up to 12 times. Total damage is 60% chaos damage. If the enemy takes damage within 10 seconds, damage taken is increased by 36%. Next ultimate skill is enhanced. Enhanced Ultimate: Summons a large black hole that deals damage to designated enemy units and surrounding enemies within a 5-meter range, hitting up to 12 times. Total damage is 180% chaos damage. Additionally, within 10 seconds, enemy damage taken is increased by 60%. This effect cannot stack with regular ultimate skill effects.',
     },
     passive: {
       name: 'Meteor Storm',
       description:
-        'When using basic attacks or skills to deal damage, applies one stack of 【Divine Meteor】. When using ultimate skill to deal damage to the same target 4 times, applies one stack of 【Divine Meteor】. 【Divine Meteor】: Every 3 seconds deals 19.2% attack power as chaos damage, can stack up to 10 times, lasts 10 seconds. Passive Effect: When a large black hole exists, all enemy units have their energy gain reduced by 50% and total defense reduced by 10%.',
+        'When using basic attacks or skills to deal damage, applies one stack of 【Divine Meteor】. When using ultimate skill to deal damage to the same target 4 times, applies one stack of 【Divine Meteor】. 【Divine Meteor】: Every 3 seconds deals 19.2% attack power as chaos damage, can stack up to 10 times, lasts 10 seconds. Passive Effect: When a large black hole exists (Enhanced Ultimate), all enemy units have their energy gain reduced by 50% and total defense reduced by 10%.',
     },
   },
 
@@ -98,7 +98,7 @@ export const freyeData = {
   tags: [
     'DOT',
     'Enhanced Ultimate',
-    'Damage Taken increase',
+    'Damage Taken Increase',
     'element weaknesses',
     'energy gain reduced',
     'debuff',

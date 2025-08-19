@@ -169,7 +169,7 @@ export const ZONE_NOVA_CHARACTERS = [
     tags: [
       'DOT',
       'Enhanced Ultimate',
-      'Damage Taken increase',
+      'Damage Taken Increase',
       'element weaknesses',
       'energy gain reduced',
       'debuff',
