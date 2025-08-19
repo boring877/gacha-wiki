@@ -460,16 +460,8 @@ class SilverAndBloodClockTimer {
 
     const timeDiff = halloween.getTime() - now.getTime();
     const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
 
-    if (days > 7) {
-      this.halloweenTime.textContent = `${days}d ${hours}h`;
-    } else if (days > 0) {
-      this.halloweenTime.textContent = `${days}d ${hours}h ${minutes}m`;
-    } else {
-      this.halloweenTime.textContent = `${hours}h ${minutes}m`;
-    }
+    this.halloweenTime.textContent = days.toString();
   }
 
   /**
@@ -486,16 +478,8 @@ class SilverAndBloodClockTimer {
 
     const timeDiff = newYear.getTime() - now.getTime();
     const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
 
-    if (days > 7) {
-      this.newyearTime.textContent = `${days}d ${hours}h`;
-    } else if (days > 0) {
-      this.newyearTime.textContent = `${days}d ${hours}h ${minutes}m`;
-    } else {
-      this.newyearTime.textContent = `${hours}h ${minutes}m`;
-    }
+    this.newyearTime.textContent = days.toString();
   }
 
   cleanup() {
