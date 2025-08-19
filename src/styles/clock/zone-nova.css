@@ -242,7 +242,6 @@
   color: var(--zn-clock-white);
 }
 
-
 /* === ZONE NOVA TIMER CARD BASE === */
 /* Remove white border on left side for all timer cards */
 .timer-card {
@@ -299,7 +298,6 @@
 .time-separator {
   color: var(--zn-clock-muted);
 }
-
 
 /* === ZONE NOVA TOP SECTION === */
 /* UTC info and current time styling */
@@ -439,6 +437,34 @@
   color: var(--zn-clock-title);
   text-align: center;
   margin-bottom: 1rem;
+}
+
+/* === ZONE NOVA SPECIAL EVENT CARDS === */
+/* Halloween and New Year timers - simplified to match other cards */
+.halloween-card {
+  border-left: 4px solid var(--zn-clock-border);
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--zn-clock-bg) 2%, transparent)
+  );
+}
+
+.halloween-card .timer-card-title {
+  color: var(--zn-clock-amber);
+}
+
+.newyear-card {
+  border-left: 4px solid var(--zn-clock-border);
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--zn-clock-bg) 2%, transparent)
+  );
+}
+
+.newyear-card .timer-card-title {
+  color: var(--zn-clock-amber);
 }
 
 .launch-card-content {

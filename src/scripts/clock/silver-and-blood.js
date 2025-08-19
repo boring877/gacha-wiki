@@ -100,6 +100,10 @@ class SilverAndBloodClockTimer {
     // Server status elements
     this.serverStatusDot = document.getElementById('serverStatusDot');
     this.serverStatusText = document.getElementById('serverStatusText');
+
+    // Special event timers
+    this.halloweenTime = document.getElementById('halloweenTime');
+    this.newyearTime = document.getElementById('newyearTime');
   }
 
   startClockInterval() {
@@ -270,6 +274,7 @@ class SilverAndBloodClockTimer {
       this.updateWeeklyTimer();
       this.updateMonthlyTimer();
       this.updateMaintenanceTimer();
+      this.updateSpecialEventTimers();
     } catch (error) {
       // Error updating timer cards
     }
@@ -425,6 +430,71 @@ class SilverAndBloodClockTimer {
       element.textContent = `${hours}h ${minutes}m`;
     } else {
       element.textContent = `${minutes}:${String(seconds).padStart(2, '0')}`;
+    }
+  }
+
+  /**
+   * Update special event timers - Halloween and New Year
+   */
+  updateSpecialEventTimers() {
+    this.updateHalloweenTimer();
+    this.updateNewYearTimer();
+  }
+
+  /**
+   * Update Halloween timer - October 31st
+   */
+  updateHalloweenTimer() {
+    if (!this.halloweenTime) return;
+
+    const now = new Date();
+    const currentYear = now.getFullYear();
+
+    // Set Halloween date for this year
+    let halloween = new Date(currentYear, 9, 31, 23, 59, 59, 999); // October 31st, end of day
+
+    // If Halloween has passed this year, show next year's Halloween
+    if (now > halloween) {
+      halloween = new Date(currentYear + 1, 9, 31, 23, 59, 59, 999);
+    }
+
+    const timeDiff = halloween.getTime() - now.getTime();
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+
+    if (days > 7) {
+      this.halloweenTime.textContent = `${days}d ${hours}h`;
+    } else if (days > 0) {
+      this.halloweenTime.textContent = `${days}d ${hours}h ${minutes}m`;
+    } else {
+      this.halloweenTime.textContent = `${hours}h ${minutes}m`;
+    }
+  }
+
+  /**
+   * Update New Year timer - January 1st
+   */
+  updateNewYearTimer() {
+    if (!this.newyearTime) return;
+
+    const now = new Date();
+    const nextYear = now.getFullYear() + 1;
+
+    // New Year's Day of next year at midnight
+    const newYear = new Date(nextYear, 0, 1, 0, 0, 0, 0);
+
+    const timeDiff = newYear.getTime() - now.getTime();
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+
+    if (days > 7) {
+      this.newyearTime.textContent = `${days}d ${hours}h`;
+    } else if (days > 0) {
+      this.newyearTime.textContent = `${days}d ${hours}h ${minutes}m`;
+    } else {
+      this.newyearTime.textContent = `${hours}h ${minutes}m`;
     }
   }
 
