@@ -3,25 +3,27 @@
 // Based on current meta and character performance
 
 export const TIER_DEFINITIONS = {
-  'SSS': {
+  SSS: {
     label: 'SSS',
-    description: 'They are a team by themselves. They work everywhere and do not need any help. Just broken!',
+    description:
+      'They are a team by themselves. They work everywhere and do not need any help. Just broken!',
   },
-  'SS': {
+  SS: {
     label: 'SS',
     description: 'They do well alone but need a team to help them become broken.',
   },
-  'S': {
+  S: {
     label: 'S',
     description: 'Good enough alone, even better with a team.',
   },
-  'A': {
+  A: {
     label: 'A',
     description: 'Useless alone but good enough with a team.',
   },
-  'Situational': {
+  Situational: {
     label: 'Situational',
-    description: 'Some characters can have insane debuffs or potential, but everything else about them is bad.',
+    description:
+      'Some characters can have insane debuffs or potential, but everything else about them is bad.',
   },
 };
 
@@ -31,14 +33,12 @@ export const PVE_TIER_LIST = {
   lastUpdated: '2025-08-05',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
-    'SSS': [
-      { name: 'Guinevere' },
-      { name: 'Athena' },
-    ],
-    'SS': [
+    SSS: [{ name: 'Guinevere' }, { name: 'Athena' }],
+    SS: [
       { name: 'Yuis' },
       { name: 'Thor' },
       { name: 'Odin' },
+      { name: 'Freye' },
       { name: 'Chiya' },
       { name: 'Apollo' },
       { name: 'Gaia' },
@@ -50,7 +50,7 @@ export const PVE_TIER_LIST = {
       { name: 'Afrodite' },
       { name: "Jeanne d'Arc" },
     ],
-    'S': [
+    S: [
       { name: 'Shu' },
       { name: 'Zashiki-warashi' },
       { name: 'Kela' },
@@ -62,7 +62,7 @@ export const PVE_TIER_LIST = {
       { name: 'Lyra' },
       { name: 'Horus' },
     ],
-    'A': [
+    A: [
       { name: 'Tefnut' },
       { name: 'Greed Mammon' },
       { name: 'Anubis' },
@@ -71,11 +71,7 @@ export const PVE_TIER_LIST = {
       { name: 'Bastet' },
       { name: 'Rose' },
     ],
-    'Situational': [
-      { name: 'Nini' },
-      { name: 'Loki' },
-      { name: 'Belphegar' },
-    ],
+    Situational: [{ name: 'Nini' }, { name: 'Loki' }, { name: 'Belphegar' }],
   },
 };
 
@@ -85,11 +81,10 @@ export const PVP_TIER_LIST = {
   lastUpdated: '2025-08-05',
   description: 'PvP character rankings.',
   tiers: {
-    'SSS': [
-      { name: 'Guinevere' },
-    ],
-    'SS': [
+    SSS: [{ name: 'Guinevere' }],
+    SS: [
       { name: 'Odin' },
+      { name: 'Freye' },
       { name: 'Gaia' },
       { name: 'Athena' },
       { name: "Jeanne d'Arc" },
@@ -104,7 +99,7 @@ export const PVP_TIER_LIST = {
       { name: 'Chiya' },
       { name: 'Lyra' },
     ],
-    'S': [
+    S: [
       { name: 'Arthur' },
       { name: 'Merlin' },
       { name: 'Lancelot' },
@@ -119,17 +114,8 @@ export const PVP_TIER_LIST = {
       { name: 'Shanna' },
       { name: 'Zashiki-warashi' },
     ],
-    'A': [
-      { name: 'Tefnut' },
-      { name: 'Rose' },
-      { name: 'Mordred' },
-      { name: 'Leviathan' },
-    ],
-    'Situational': [
-      { name: 'Loki' },
-      { name: 'Belphegar' },
-      { name: 'Nini' },
-    ],
+    A: [{ name: 'Tefnut' }, { name: 'Rose' }, { name: 'Mordred' }, { name: 'Leviathan' }],
+    Situational: [{ name: 'Loki' }, { name: 'Belphegar' }, { name: 'Nini' }],
   },
 };
 
@@ -137,9 +123,10 @@ export const PVP_TIER_LIST = {
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
   lastUpdated: '2025-08-05',
-  description: 'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
+  description:
+    'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
-    'SSS': [
+    SSS: [
       { name: 'Guinevere' },
       { name: 'Athena' },
       { name: 'Apollo' },
@@ -147,7 +134,8 @@ export const RIFT_TIER_LIST = {
       { name: 'Odin' },
       { name: 'Thor' },
     ],
-    'SS': [
+    SS: [
+      { name: 'Freye' },
       { name: 'Gaia' },
       { name: "Jeanne d'Arc" },
       { name: 'Penny' },
@@ -162,7 +150,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Naiya' },
       { name: 'Anubis' },
     ],
-    'S': [
+    S: [
       { name: 'Shu' },
       { name: 'Shanna' },
       { name: 'Zashiki-warashi' },
@@ -171,7 +159,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Arthur' },
       { name: 'Cleopatra' },
     ],
-    'A': [
+    A: [
       { name: 'Tefnut' },
       { name: 'Rose' },
       { name: 'Greed Mammon' },
@@ -179,11 +167,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Artemis' },
       { name: 'Snow Girl' },
     ],
-    'Situational': [
-      { name: 'Loki' },
-      { name: 'Belphegar' },
-      { name: 'Nini' },
-    ],
+    Situational: [{ name: 'Loki' }, { name: 'Belphegar' }, { name: 'Nini' }],
   },
 };
 
@@ -191,9 +175,10 @@ export const RIFT_TIER_LIST = {
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
   lastUpdated: '2025-08-05',
-  description: 'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
+  description:
+    'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
-    'SSS': [
+    SSS: [
       { name: 'Guinevere' },
       { name: 'Athena' },
       { name: 'Apollo' },
@@ -201,7 +186,8 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Odin' },
       { name: 'Afrodite' },
     ],
-    'SS': [
+    SS: [
+      { name: 'Freye' },
       { name: 'Hera' },
       { name: 'Gaia' },
       { name: "Jeanne d'Arc" },
@@ -217,7 +203,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Merlin' },
       { name: 'Shanna' },
     ],
-    'S': [
+    S: [
       { name: 'Tefnut' },
       { name: 'Chiya' },
       { name: 'Lyra' },
@@ -226,18 +212,14 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Kela' },
       { name: 'Anubis' },
     ],
-    'A': [
+    A: [
       { name: 'Rose' },
       { name: 'Greed Mammon' },
       { name: 'Bastet' },
       { name: 'Artemis' },
       { name: 'Snow Girl' },
     ],
-    'Situational': [
-      { name: 'Loki' },
-      { name: 'Belphegar' },
-      { name: 'Nini' },
-    ],
+    Situational: [{ name: 'Loki' }, { name: 'Belphegar' }, { name: 'Nini' }],
   },
 };
 
@@ -245,9 +227,10 @@ export const GUILD_RAID_TIER_LIST = {
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
   lastUpdated: '2025-08-05',
-  description: 'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
+  description:
+    'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {
-    'SSS': [
+    SSS: [
       { name: 'Naiya' },
       { name: 'Apollo' },
       { name: 'Afrodite' },
@@ -255,7 +238,7 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Mordred' },
       { name: 'Penny' },
     ],
-    'SS': [
+    SS: [
       { name: "Jeanne d'Arc" },
       { name: 'Kela' },
       { name: 'Shu' },
@@ -265,13 +248,8 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Horus' },
       { name: 'Hera' },
     ],
-    'S': [
-      { name: 'Snow Girl' },
-      { name: 'Merlin' },
-      { name: 'Arthur' },
-      { name: 'Greed Mammon' },
-    ],
-    'A': [
+    S: [{ name: 'Snow Girl' }, { name: 'Merlin' }, { name: 'Arthur' }, { name: 'Greed Mammon' }],
+    A: [
       { name: 'Tefnut' },
       { name: 'Bastet' },
       { name: 'Artemis' },
@@ -279,11 +257,7 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Anubis' },
       { name: 'Rose' },
     ],
-    'Situational': [
-      { name: 'Loki' },
-      { name: 'Belphegar' },
-      { name: 'Nini' },
-    ],
+    Situational: [{ name: 'Loki' }, { name: 'Belphegar' }, { name: 'Nini' }],
   },
 };
 
@@ -299,7 +273,7 @@ export const ALL_TIER_LISTS = {
 // Get character tier across all lists
 export function getCharacterTiers(characterName) {
   const tiers = {};
-  
+
   Object.entries(ALL_TIER_LISTS).forEach(([listType, tierList]) => {
     Object.entries(tierList.tiers).forEach(([tier, characters]) => {
       const found = characters.find(c => c.name === characterName);
@@ -311,7 +285,7 @@ export function getCharacterTiers(characterName) {
       }
     });
   });
-  
+
   return tiers;
 }
 
@@ -319,7 +293,7 @@ export function getCharacterTiers(characterName) {
 export function getCharactersByTier(tierLevel, listType = 'pve') {
   const tierList = ALL_TIER_LISTS[listType];
   if (!tierList || !tierList.tiers[tierLevel]) return [];
-  
+
   return tierList.tiers[tierLevel];
 }
 

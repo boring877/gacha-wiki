@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
+import { freyeData, freyeSEO } from '../../../../data/zone-nova/characters/freye.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={freyeSEO.title}
+  description={freyeSEO.description}
+  gameTitle={freyeData.name}
+>
+  <CharacterPageTemplate characterData={freyeData} />
+</CharacterIndividualLayout>
