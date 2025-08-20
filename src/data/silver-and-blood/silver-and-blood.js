@@ -100,6 +100,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: 'active',
     },
     {
+      id: 'character-comparison-v2',
+      title: 'Character Comparison V2',
+      emoji: '',
+      description:
+        'Advanced character comparison tool with modern card-based interface. Compare 2 heroes with detailed tier rankings, stat analysis, and skills breakdown.',
+      url: '/guides/silver-and-blood/character-comparison-v2/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
       id: 'character-rankings',
       title: 'Character Rankings',
       emoji: '',

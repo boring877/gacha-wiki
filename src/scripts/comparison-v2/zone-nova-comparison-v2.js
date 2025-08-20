@@ -149,7 +149,7 @@ function initializeComparisonV2() {
     // Initialize event listeners
     initializeFilters();
     initializeDeckInteractions();
-    initializeMobileDropdowns();
+    initializeMobileModal();
     initializeArenaControls();
     initializeKeyboardNavigation();
 
@@ -197,7 +197,7 @@ function showErrorMessage(message) {
   `;
   errorDiv.textContent = message;
 
-  const container = document.querySelector('.comparison-arena') || document.body;
+  const container = document.querySelector('.comparison-container') || document.body;
   container.insertBefore(errorDiv, container.firstChild);
 }
 
@@ -235,82 +235,80 @@ function initializeDeckInteractions() {
 }
 
 /**
- * Initialize mobile dropdown interactions with proper cleanup
+ * Initialize mobile modal interactions for character selection
  */
-function initializeMobileDropdowns() {
-  const dropdown1 = document.getElementById('v2-mobile-dropdown-1');
-  const dropdown2 = document.getElementById('v2-mobile-dropdown-2');
+function initializeMobileModal() {
+  const modal = document.getElementById('v2-mobile-modal');
+  const selectButton1 = document.getElementById('v2-mobile-select-1');
+  const selectButton2 = document.getElementById('v2-mobile-select-2');
 
-  if (dropdown1) {
-    initializeCustomDropdown(dropdown1, 1);
+  // Track current slot being selected
+  let currentSelectionSlot = null;
+
+  // Initialize selection buttons
+  if (selectButton1) {
+    selectButton1.addEventListener('click', () => openMobileModal(1));
+  }
+  if (selectButton2) {
+    selectButton2.addEventListener('click', () => openMobileModal(2));
   }
 
-  if (dropdown2) {
-    initializeCustomDropdown(dropdown2, 2);
+  // Initialize modal controls once
+  initializeModalControls(modal);
+  initializeModalSearch();
+  initializeModalFilters();
+  initializeModalCharacterGrid();
+
+  // Store current slot getter for other functions
+  window.getCurrentMobileSlot = () => currentSelectionSlot;
+
+  function openMobileModal(slotNumber) {
+    if (!modal) return;
+
+    currentSelectionSlot = slotNumber;
+    const modalTitle = document.getElementById('v2-modal-title');
+
+    if (modalTitle) {
+      modalTitle.textContent = `Select Character ${slotNumber}`;
+    }
+
+    // Reset search to show all characters
+    const searchInput = document.getElementById('v2-modal-search');
+    if (searchInput) {
+      searchInput.value = '';
+    }
+
+    // Update character grid - show all characters and update selection states
+    updateModalCharacterGrid('');
+    updateModalCharacterStates();
+
+    // Open modal
+    modal.classList.add('open');
+    document.body.classList.add('modal-open'); // Prevent background scroll
+
+    // Focus search input for better UX
+    if (searchInput) {
+      setTimeout(() => searchInput.focus(), 100);
+    }
   }
 
-  // Close dropdowns when clicking outside
-  const outsideClickHandler = function (event) {
-    const dropdowns = document.querySelectorAll('.custom-dropdown');
-    dropdowns.forEach(dropdown => {
-      if (!dropdown.contains(event.target)) {
-        dropdown.classList.remove('open');
-      }
-    });
-  };
+  function closeModal() {
+    if (!modal) return;
 
-  document.addEventListener('click', outsideClickHandler);
-  eventListeners.set('outside-click', () => {
-    document.removeEventListener('click', outsideClickHandler);
-  });
-}
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open'); // Restore background scroll
+    currentSelectionSlot = null;
 
-/**
- * Initialize a single custom dropdown with proper cleanup tracking
- */
-function initializeCustomDropdown(dropdown, slotNumber) {
-  const selected = dropdown.querySelector('.custom-dropdown-selected');
-  const options = dropdown.querySelector('.custom-dropdown-options');
-  const optionElements = options.querySelectorAll('.dropdown-option');
+    // Clear search when closing
+    const searchInput = document.getElementById('v2-modal-search');
+    if (searchInput) {
+      searchInput.value = '';
+    }
+    updateModalCharacterGrid();
+  }
 
-  // Create event handlers with proper cleanup
-  const selectedClickHandler = function (event) {
-    event.stopPropagation();
-    // Close other dropdowns
-    document.querySelectorAll('.custom-dropdown').forEach(d => {
-      if (d !== dropdown) d.classList.remove('open');
-    });
-    // Toggle this dropdown
-    dropdown.classList.toggle('open');
-  };
-
-  const optionClickHandlers = [];
-
-  // Handle selected area click
-  selected.addEventListener('click', selectedClickHandler);
-
-  // Handle option selection
-  optionElements.forEach(option => {
-    const optionClickHandler = function (event) {
-      event.stopPropagation();
-      const characterSlug = option.dataset.value;
-      handleCustomDropdownSelection(characterSlug, slotNumber, option);
-      dropdown.classList.remove('open');
-    };
-
-    option.addEventListener('click', optionClickHandler);
-    optionClickHandlers.push({ element: option, handler: optionClickHandler });
-  });
-
-  // Store cleanup function
-  const cleanup = () => {
-    selected.removeEventListener('click', selectedClickHandler);
-    optionClickHandlers.forEach(({ element, handler }) => {
-      element.removeEventListener('click', handler);
-    });
-  };
-
-  eventListeners.set(`dropdown-${slotNumber}`, cleanup);
+  // Store close function globally for other functions
+  window.closeMobileModal = closeModal;
 }
 
 /**
@@ -372,8 +370,8 @@ function addCharacter(characterSlug) {
   // Batch DOM updates for performance
   requestAnimationFrame(() => {
     updateIconStates();
-    updateMobileDropdowns();
-    updateComparisonArena();
+    updateMobileSelectionButtons();
+    updateComparisonContainer();
     updateSelectedCount();
   });
 
@@ -437,8 +435,8 @@ function removeCharacter(characterSlug) {
     // Batch DOM updates for performance
     requestAnimationFrame(() => {
       updateIconStates();
-      updateMobileDropdowns();
-      updateComparisonArena();
+      updateMobileSelectionButtons();
+      updateComparisonContainer();
       updateSelectedCount();
     });
 
@@ -460,8 +458,8 @@ function clearAllCharacters() {
   // Batch DOM updates for performance
   requestAnimationFrame(() => {
     updateIconStates();
-    updateMobileDropdowns();
-    updateComparisonArena();
+    updateMobileSelectionButtons();
+    updateComparisonContainer();
     updateSelectedCount();
   });
 }
@@ -499,7 +497,6 @@ function applyFilters() {
     });
 
     updateIconStates();
-    updateMobileDropdownOptions();
   } catch (error) {
     // Error applying filters
   }
@@ -527,34 +524,10 @@ function resetFilters() {
     if (window.ZN_COMPARISON_V2_DATA?.characters) {
       filteredCharacters = [...window.ZN_COMPARISON_V2_DATA.characters];
       updateIconStates();
-      updateMobileDropdownOptions();
     }
   } catch (error) {
     // Error resetting filters
   }
-}
-
-/**
- * Update mobile dropdown options based on current filters
- */
-function updateMobileDropdownOptions() {
-  const dropdown1 = document.getElementById('v2-mobile-dropdown-1');
-  const dropdown2 = document.getElementById('v2-mobile-dropdown-2');
-  const filteredSlugs = new Set(filteredCharacters.map(char => char.slug));
-
-  [dropdown1, dropdown2].forEach(dropdown => {
-    if (!dropdown) return;
-
-    const options = dropdown.querySelectorAll('.dropdown-option[data-value]:not([data-value=""])');
-    options.forEach(option => {
-      const characterSlug = option.dataset.value;
-      if (filteredSlugs.has(characterSlug)) {
-        option.classList.remove('filtered-out');
-      } else {
-        option.classList.add('filtered-out');
-      }
-    });
-  });
 }
 
 /**
@@ -578,10 +551,10 @@ function updateIconStates() {
 }
 
 /**
- * Update the comparison arena
+ * Update the comparison container
  * @returns {void}
  */
-function updateComparisonArena() {
+function updateComparisonContainer() {
   const emptyMessage = domCache.emptyMessage || document.getElementById('v2-empty-message');
   const comparisonContainer =
     domCache.comparisonContainer || document.getElementById('v2-comparison-container');
@@ -593,10 +566,10 @@ function updateComparisonArena() {
 
   if (selectedCharacters.length === 0) {
     emptyMessage.style.display = 'block';
-    comparisonContainer.style.display = 'none';
+    comparisonContainer.classList.add('hidden');
   } else {
     emptyMessage.style.display = 'none';
-    comparisonContainer.style.display = 'block';
+    comparisonContainer.classList.remove('hidden');
     renderComparisonCards();
   }
 }
@@ -1004,107 +977,6 @@ function updateSelectedCount() {
 }
 
 /**
- * Handle custom dropdown selection
- */
-function handleCustomDropdownSelection(characterSlug, slotNumber, _optionElement) {
-  const dropdownIndex = slotNumber - 1;
-
-  if (characterSlug) {
-    // Find character data
-    const character = window.ZN_COMPARISON_V2_DATA.characters.find(c => c.slug === characterSlug);
-    if (!character) return;
-
-    // Replace character at this position or add if empty
-    if (selectedCharacters[dropdownIndex]) {
-      selectedCharacters[dropdownIndex] = characterSlug;
-    } else {
-      selectedCharacters[dropdownIndex] = characterSlug;
-    }
-
-    // Update the selected display
-    updateCustomDropdownDisplay(slotNumber, character);
-
-    // Load character data
-    loadCharacterData(characterSlug);
-  } else {
-    // Remove character from this position
-    selectedCharacters.splice(dropdownIndex, 1);
-    updateCustomDropdownDisplay(slotNumber, null);
-  }
-
-  updateIconStates();
-  updateComparisonArena();
-  updateSelectedCount();
-}
-
-/**
- * Update the display of a custom dropdown using safe DOM methods
- */
-function updateCustomDropdownDisplay(slotNumber, character) {
-  const selected = document.getElementById(`v2-mobile-selected-${slotNumber}`);
-  if (!selected) return;
-
-  // Clear existing content
-  selected.textContent = '';
-
-  if (character) {
-    const container = document.createElement('div');
-    container.className = 'selected-character';
-
-    const img = document.createElement('img');
-    img.src = character.image || '/images/placeholder.png';
-    img.alt = character.originalName || character.name || '';
-    img.className = 'selected-image';
-    img.width = 32;
-    img.height = 32;
-    img.onerror = function () {
-      this.src = '/images/placeholder.png';
-    };
-
-    const details = document.createElement('div');
-    details.className = 'selected-details';
-
-    const name = document.createElement('span');
-    name.className = 'selected-name';
-    name.textContent = character.originalName || character.name || '';
-
-    const info = document.createElement('span');
-    info.className = 'selected-info';
-    info.textContent = `${character.rarity || ''} ${character.element || ''}`;
-
-    details.appendChild(name);
-    details.appendChild(info);
-    container.appendChild(img);
-    container.appendChild(details);
-    selected.appendChild(container);
-  } else {
-    const placeholder = document.createElement('div');
-    placeholder.className = 'dropdown-placeholder';
-
-    const text = document.createElement('span');
-    text.className = 'placeholder-text';
-    text.textContent = `Select Character ${slotNumber}...`;
-
-    placeholder.appendChild(text);
-    selected.appendChild(placeholder);
-  }
-}
-
-/**
- * Update mobile dropdown selections to match current state
- */
-function updateMobileDropdowns() {
-  // Update custom dropdown displays
-  [1, 2].forEach(slotNumber => {
-    const characterSlug = selectedCharacters[slotNumber - 1];
-    const character = characterSlug
-      ? window.ZN_COMPARISON_V2_DATA.characters.find(c => c.slug === characterSlug)
-      : null;
-    updateCustomDropdownDisplay(slotNumber, character);
-  });
-}
-
-/**
  * Cleanup function to prevent memory leaks - call before page unload
  * @returns {void}
  */
@@ -1154,20 +1026,12 @@ function initializeKeyboardNavigation() {
       event.target.click();
     }
 
-    // Handle Escape to close dropdowns
+    // Handle Escape to close modal
     if (event.key === 'Escape') {
-      const openDropdowns = document.querySelectorAll('.custom-dropdown.open');
-      openDropdowns.forEach(dropdown => {
-        dropdown.classList.remove('open');
-      });
-    }
-
-    // Handle Arrow keys for dropdown navigation
-    if (
-      event.target.matches('.custom-dropdown-selected') ||
-      event.target.matches('.dropdown-option')
-    ) {
-      handleDropdownKeyNavigation(event);
+      const modal = document.getElementById('v2-mobile-modal');
+      if (modal && modal.classList.contains('open')) {
+        window.closeMobileModal();
+      }
     }
   };
 
@@ -1175,53 +1039,6 @@ function initializeKeyboardNavigation() {
   eventListeners.set('keyboard-navigation', () => {
     document.removeEventListener('keydown', keydownHandler);
   });
-}
-
-/**
- * Handle keyboard navigation within dropdowns
- * @param {KeyboardEvent} event - Keyboard event
- * @returns {void}
- */
-function handleDropdownKeyNavigation(event) {
-  const dropdown = event.target.closest('.custom-dropdown');
-  if (!dropdown) return;
-
-  const options = dropdown.querySelectorAll('.dropdown-option:not(.filtered-out)');
-  const currentIndex = Array.from(options).indexOf(event.target);
-
-  switch (event.key) {
-    case 'ArrowDown':
-      event.preventDefault();
-      if (dropdown.classList.contains('open')) {
-        const nextIndex = Math.min(currentIndex + 1, options.length - 1);
-        options[nextIndex]?.focus();
-      } else {
-        dropdown.classList.add('open');
-        options[0]?.focus();
-      }
-      break;
-
-    case 'ArrowUp':
-      event.preventDefault();
-      if (dropdown.classList.contains('open')) {
-        const prevIndex = Math.max(currentIndex - 1, 0);
-        options[prevIndex]?.focus();
-      }
-      break;
-
-    case 'Enter':
-    case ' ':
-      event.preventDefault();
-      if (event.target.matches('.dropdown-option')) {
-        event.target.click();
-      } else {
-        dropdown.classList.toggle('open');
-        if (dropdown.classList.contains('open')) {
-          options[0]?.focus();
-        }
-      }
-      break;
-  }
 }
 
 // Add cleanup on page unload to prevent memory leaks
@@ -1236,6 +1053,255 @@ eventListeners.set('page-unload', () => {
   window.removeEventListener('beforeunload', beforeUnloadHandler);
   window.removeEventListener('pagehide', pageHideHandler);
 });
+
+/**
+ * Initialize modal control buttons (close only - simplified approach matching SAB)
+ */
+function initializeModalControls(modal) {
+  const closeBtn = document.getElementById('v2-modal-close');
+  const backdrop = document.getElementById('v2-modal-backdrop');
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => window.closeMobileModal());
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', () => window.closeMobileModal());
+  }
+
+  // Handle escape key
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && modal && modal.classList.contains('open')) {
+      window.closeMobileModal();
+    }
+  });
+}
+
+// Store search handler for cleanup
+let searchHandler = null;
+
+/**
+ * Initialize modal search functionality
+ */
+function initializeModalSearch() {
+  const searchInput = document.getElementById('v2-modal-search');
+  if (!searchInput) return;
+
+  // Remove existing handler if it exists
+  if (searchHandler) {
+    searchInput.removeEventListener('input', searchHandler);
+  }
+
+  let searchTimeout;
+  searchHandler = e => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      updateModalCharacterGrid(e.target.value);
+    }, 150);
+  };
+
+  // Add the handler
+  searchInput.addEventListener('input', searchHandler);
+}
+
+/**
+ * Initialize modal filter functionality (placeholder for consistency with SAB)
+ */
+function initializeModalFilters() {
+  // Modal filters removed for mobile optimization - placeholder for consistency
+}
+
+// Store character grid handler for cleanup
+let characterGridHandler = null;
+
+/**
+ * Initialize modal character grid interactions
+ */
+function initializeModalCharacterGrid() {
+  const characterGrid = document.getElementById('v2-modal-character-grid');
+
+  if (characterGrid) {
+    // Remove existing handler if it exists
+    if (characterGridHandler) {
+      characterGrid.removeEventListener('click', characterGridHandler);
+    }
+
+    // Create new handler
+    characterGridHandler = event => {
+      const characterCard = event.target.closest('.modal-character-card');
+      if (!characterCard) return;
+
+      const characterSlug = characterCard.dataset.characterSlug;
+      const currentSlot = window.getCurrentMobileSlot();
+
+      if (characterSlug && currentSlot) {
+        // Set character for the current slot
+        if (currentSlot === 1) {
+          selectedCharacters[0] = characterSlug;
+        } else if (currentSlot === 2) {
+          selectedCharacters[1] = characterSlug;
+        }
+
+        // Update displays
+        updateMobileSelectionButtons();
+        updateIconStates();
+        updateSelectedCount();
+        updateComparisonContainer();
+        renderComparisonCards();
+
+        // Load character data
+        loadCharacterData(characterSlug);
+
+        // Close modal
+        window.closeMobileModal();
+      }
+    };
+
+    // Add the handler
+    characterGrid.addEventListener('click', characterGridHandler);
+  }
+}
+
+/**
+ * Update modal character grid based on search and filters
+ */
+function updateModalCharacterGrid(searchTerm = '') {
+  const characterGrid = document.getElementById('v2-modal-character-grid');
+  if (!characterGrid) return;
+
+  const cards = characterGrid.querySelectorAll('.modal-character-card');
+  const searchTermLower = searchTerm.toLowerCase();
+
+  cards.forEach(card => {
+    const characterName = card.querySelector('.modal-character-name').textContent.toLowerCase();
+    const characterSlug = card.dataset.characterSlug || '';
+
+    const matchesSearch =
+      !searchTerm ||
+      characterName.includes(searchTermLower) ||
+      characterSlug.toLowerCase().includes(searchTermLower);
+
+    if (matchesSearch) {
+      card.classList.remove('filtered-out');
+    } else {
+      card.classList.add('filtered-out');
+    }
+  });
+}
+
+/**
+ * Update modal character selection states
+ */
+function updateModalCharacterStates() {
+  const characterGrid = document.getElementById('v2-modal-character-grid');
+  if (!characterGrid) return;
+
+  const cards = characterGrid.querySelectorAll('.modal-character-card');
+
+  cards.forEach(card => {
+    const characterSlug = card.dataset.characterSlug;
+    const isSelected = selectedCharacters.includes(characterSlug);
+
+    if (isSelected) {
+      card.classList.add('selected');
+    } else {
+      card.classList.remove('selected');
+    }
+  });
+}
+
+/**
+ * Update mobile selection buttons to show current character selections
+ */
+function updateMobileSelectionButtons() {
+  [1, 2].forEach(slotNumber => {
+    const characterSlug = selectedCharacters[slotNumber - 1];
+    const character = characterSlug
+      ? window.ZN_COMPARISON_V2_DATA.characters.find(c => c.slug === characterSlug)
+      : null;
+    updateSelectionButtonDisplay(slotNumber, character);
+  });
+}
+
+/**
+ * Update the display of a selection button using safe DOM methods
+ */
+function updateSelectionButtonDisplay(slotNumber, character) {
+  const buttonContent = document.getElementById(`v2-mobile-display-${slotNumber}`);
+  if (!buttonContent) return;
+
+  // Clear existing content
+  buttonContent.textContent = '';
+
+  if (character) {
+    // Create selected character display
+    const selectedDisplay = document.createElement('div');
+    selectedDisplay.className = 'selected-character-display';
+
+    const img = document.createElement('img');
+    img.src = character.image || '/images/placeholder.png';
+    img.alt = character.originalName || character.name || '';
+    img.className = 'selected-character-image';
+    img.onerror = function () {
+      this.src = '/images/placeholder.png';
+    };
+
+    const info = document.createElement('div');
+    info.className = 'selected-character-info';
+
+    const name = document.createElement('span');
+    name.className = 'selected-character-name';
+    name.textContent = character.originalName || character.name || '';
+
+    const details = document.createElement('span');
+    details.className = 'selected-character-details';
+    details.textContent = `${character.rarity || ''} ${character.element || ''}`;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'selection-remove-btn';
+    removeBtn.textContent = '×';
+    removeBtn.title = 'Remove character';
+    removeBtn.addEventListener('click', event => {
+      event.stopPropagation();
+      // Clear this slot
+      selectedCharacters[slotNumber - 1] = null;
+      // Clean up array
+      selectedCharacters.splice(
+        0,
+        selectedCharacters.length,
+        ...selectedCharacters.filter(Boolean)
+      );
+      // Update displays
+      updateMobileSelectionButtons();
+      updateIconStates();
+      updateSelectedCount();
+      updateComparisonContainer();
+    });
+
+    info.appendChild(name);
+    info.appendChild(details);
+    selectedDisplay.appendChild(img);
+    selectedDisplay.appendChild(info);
+    selectedDisplay.appendChild(removeBtn);
+    buttonContent.appendChild(selectedDisplay);
+  } else {
+    // Create placeholder display
+    const placeholder = document.createElement('div');
+    placeholder.className = 'selection-placeholder';
+
+    const icon = document.createElement('span');
+    icon.className = 'selection-icon';
+    icon.textContent = '+';
+
+    const text = document.createElement('span');
+    text.className = 'selection-text';
+    text.textContent = `Select Character ${slotNumber}`;
+
+    placeholder.appendChild(icon);
+    placeholder.appendChild(text);
+    buttonContent.appendChild(placeholder);
+  }
+}
 
 // Make functions globally available
 window.removeCharacter = removeCharacter;

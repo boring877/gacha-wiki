@@ -1,0 +1,108 @@
+---
+export interface Props {
+  category?: string;
+  categoryId?: string;
+  mapping?: 'url' | 'pathname' | 'title';
+  theme?:
+    | 'light'
+    | 'dark'
+    | 'preferred_color_scheme'
+    | 'transparent_dark'
+    | 'noborder_light'
+    | 'noborder_dark';
+  lang?: string;
+  loading?: 'lazy' | 'eager';
+  reactionsEnabled?: boolean;
+  emitMetadata?: boolean;
+}
+
+const {
+  category = 'General',
+  categoryId = 'DIC_kwDOOx85584CuX53',
+  mapping = 'pathname',
+  theme = 'preferred_color_scheme',
+  lang = 'en',
+  loading = 'lazy',
+  reactionsEnabled = true,
+  emitMetadata = false,
+} = Astro.props;
+
+const repo = 'boring877/gacha-wiki';
+const repoId = 'R_kgDOOx855w';
+---
+
+<section class="comments-section">
+  <div class="comments-container">
+    <h2 class="comments-title">Community Discussion</h2>
+    <p class="comments-subtitle">
+      Share your thoughts, strategies, and ask questions below. Sign in with GitHub to join the
+      conversation.
+    </p>
+
+    <div class="giscus-wrapper">
+      <script
+        src="https://giscus.app/client.js"
+        data-repo={repo}
+        data-repo-id={repoId}
+        data-category={category}
+        data-category-id={categoryId}
+        data-mapping={mapping}
+        data-strict="0"
+        data-reactions-enabled={reactionsEnabled ? '1' : '0'}
+        data-emit-metadata={emitMetadata ? '1' : '0'}
+        data-input-position="top"
+        data-theme={theme}
+        data-lang={lang}
+        data-loading={loading}
+        crossorigin="anonymous"
+        async
+      ></script>
+    </div>
+  </div>
+</section>
+
+<style>
+  .comments-section {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border, #e2e8f0);
+  }
+
+  .comments-container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .comments-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-primary, #1a202c);
+    margin-bottom: 0.5rem;
+  }
+
+  .comments-subtitle {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary, #4a5568);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .giscus-wrapper {
+    min-height: 200px;
+  }
+
+  @media (max-width: 768px) {
+    .comments-section {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+    }
+
+    .comments-title {
+      font-size: 1.25rem;
+    }
+
+    .comments-subtitle {
+      font-size: 0.8125rem;
+    }
+  }
+</style>

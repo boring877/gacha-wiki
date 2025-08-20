@@ -6,7 +6,7 @@ export const dutchmansRevengeData = {
       "Master Dutchman's Revenge infiltration mode in Silver and Blood. Complete walkthrough with video guides, Whispers of Yesterday event, Future Artifacts system, and Tarot character strategies.",
     gameTitle: "Dutchman's Revenge",
     keywords:
-      "Dutchman's Revenge, Silver and Blood, Future Artifacts, infiltration guide, Dalcarlo, Tarot characters, puzzle mode, enhancement materials, Whispers of Yesterday, Timeless Aiona Puzzle Event, P1-1 Crestfallen, Merchant Ship, Salvation, video guides, Neevee walkthrough",
+      "Dutchman's Revenge, Silver and Blood, The Psalm I, Future Artifacts, infiltration guide, Dalcarlo, Tarot characters, puzzle mode, enhancement materials, Whispers of Yesterday, Timeless Aiona Puzzle Event, P1-1 Crestfallen, Merchant Ship, Salvation, video guides, Neevee walkthrough",
     ogTitle: "Dutchman's Revenge - Silver and Blood Complete Guide with Video Walkthroughs",
     ogDescription:
       "Complete guide to Dutchman's Revenge featuring video walkthroughs, Whispers of Yesterday event, Future Artifacts, infiltration mechanics, and strategic gameplay in Silver and Blood.",
@@ -81,6 +81,10 @@ export const dutchmansRevengeData = {
     {
       name: 'Merchant Ship 2',
       url: 'https://www.youtube.com/watch?v=q8LaSLOeFgw',
+    },
+    {
+      name: "The Psalm I - Dutchman's Revenge - All Stages",
+      url: 'https://www.youtube.com/watch?v=4r26vLlFKRg&list=PL7fr7OdbJvOCIhi0JB4M8HrDLnka0vmhe',
     },
   ],
 

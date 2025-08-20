@@ -52,13 +52,13 @@ const { items } = Astro.props;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
   .breadcrumb-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
   .breadcrumb-link {
@@ -66,6 +66,27 @@ const { items } = Astro.props;
     text-decoration: none;
     font-size: 0.9rem;
     opacity: 0.9;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+  }
+
+  .breadcrumb-link:hover {
+    background: rgba(212, 181, 181, 0.15);
+    opacity: 1;
+  }
+
+  .breadcrumb-link:focus {
+    outline: 2px solid #d4b5b5;
+    outline-offset: 2px;
+    opacity: 1;
+  }
+
+  .breadcrumb-link:active {
+    background: rgba(212, 181, 181, 0.25);
   }
 
   .breadcrumb-current {
@@ -76,9 +97,11 @@ const { items } = Astro.props;
 
   .breadcrumb-separator {
     color: #9a9a9a;
-    font-size: 0.9rem;
+    font-size: 1rem;
     user-select: none;
-    opacity: 0.7;
+    opacity: 0.8;
+    font-weight: 600;
+    padding: 0 0.25rem;
   }
 
   /* Mobile responsiveness - match Silver and Blood layout breakpoints */
@@ -88,8 +111,17 @@ const { items } = Astro.props;
       padding-right: 1rem;
     }
 
-    .breadcrumb-list {
-      font-size: 0.8rem;
+    .breadcrumb-link {
+      font-size: 0.85rem;
+      padding: 0.6rem 0.75rem;
+    }
+
+    .breadcrumb-current {
+      font-size: 0.85rem;
+    }
+
+    .breadcrumb-separator {
+      font-size: 0.9rem;
     }
   }
 
@@ -100,12 +132,25 @@ const { items } = Astro.props;
     }
 
     .breadcrumb-list {
-      font-size: 0.8rem;
-      gap: 0.3rem;
+      gap: 0.5rem;
     }
 
     .breadcrumb-item {
-      gap: 0.3rem;
+      gap: 0.5rem;
+    }
+
+    .breadcrumb-link {
+      font-size: 0.8rem;
+      padding: 0.75rem 0.75rem;
+    }
+
+    .breadcrumb-current {
+      font-size: 0.8rem;
+    }
+
+    .breadcrumb-separator {
+      font-size: 0.85rem;
+      padding: 0 0.2rem;
     }
   }
 </style>

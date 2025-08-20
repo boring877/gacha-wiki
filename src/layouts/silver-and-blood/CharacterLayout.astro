@@ -9,12 +9,14 @@ import OptimizedImage from '../../components/OptimizedImage.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CharacterNavigation from '../../components/silver-and-blood/CharacterNavigation.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Comments from '../../components/Comments.astro';
 
 // Import Silver and Blood specific styles
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/components/silver-and-blood-character-navigation.css';
+import '../../styles/components/comments.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
 import '../../styles/games/silver-and-blood/sab-badge-colours.css';
 // -import '../../styles/games/silver-and-blood/sab-character-styles.css';
@@ -134,6 +136,14 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 						<!-- Main content slot -->
 						<slot />
 					</div>
+
+					<!-- Comments Section -->
+					<Comments 
+						category="Silver & Blood Characters"
+						categoryId="DIC_kwDOOx85584CuX6z"
+						theme="dark"
+						reactionsEnabled={true}
+					/>
 				</main>
 			</div>
 			

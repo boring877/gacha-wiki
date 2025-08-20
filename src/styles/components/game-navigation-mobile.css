@@ -168,19 +168,15 @@
 /* Mobile Navigation - Overlay System */
 .mobile-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+  inset: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
-  z-index: 10001;
+  z-index: 999997;
   opacity: 0;
   visibility: hidden;
   cursor: pointer;
+  /* Ensure overlay is also viewport-isolated */
+  contain: layout style paint;
 }
 
 .mobile-overlay.active {
@@ -190,25 +186,18 @@
 
 .mobile-links {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  background: rgba(28, 28, 28, 0.98);
+  inset: 0;
+  background: rgb(28, 28, 28);
   backdrop-filter: blur(30px);
-  border: none;
   overflow-y: auto;
-  z-index: 10002;
+  z-index: 999998;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   padding: 0;
   opacity: 0;
   visibility: hidden;
-  /* Ensure proper layering */
+  /* True viewport positioning - completely isolated */
+  contain: layout style paint;
   overscroll-behavior: contain;
   /* Remove blue highlights and selections */
   -webkit-tap-highlight-color: transparent;
@@ -233,6 +222,13 @@
 .mobile-links.active {
   opacity: 1;
   visibility: visible;
+  /* Complete screen takeover - only this exists */
+  transform: translateZ(0);
+  will-change: transform;
+  /* Force to front of all content */
+  z-index: 999999;
+  /* Ensure complete isolation */
+  isolation: isolate;
 }
 
 .close-btn {
@@ -278,6 +274,8 @@
   padding: 2rem 2rem 1.5rem 2rem;
   border-bottom: 1px solid rgba(255, 183, 77, 0.1);
   min-height: 90px;
+  /* Simplified positioning without conflicts */
+  flex-shrink: 0;
 }
 
 .mobile-game-image {
@@ -471,7 +469,6 @@
   /* Center align for better balance */
   place-items: center;
 }
-
 
 /* Small Mobile Portrait (320px-480px): Single column, optimized for touch */
 @media screen and (max-width: 480px) {
@@ -679,7 +676,7 @@
     padding: 1rem 0;
     gap: 3rem;
   }
-  
+
   .game-nav-mobile .game-nav-header-content {
     gap: 3rem;
     max-width: 700px;
@@ -694,15 +691,23 @@
 
   .mobile-sections-grid {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 2.5rem;
-    max-width: 1000px;
+    gap: 2rem;
+    max-width: 1100px;
     padding: 0 2rem;
+    /* Override the place-items: center for proper 3-column alignment */
+    place-items: stretch;
+    justify-items: center;
+    align-items: start;
   }
 
   .mobile-section {
     padding: 1.5rem;
     min-height: 200px;
-    max-width: 320px;
+    /* Remove max-width for better grid alignment */
+    width: 100%;
+    max-width: none;
+    /* Ensure consistent sizing across grid */
+    min-width: 280px;
   }
 
   .mobile-link {
@@ -713,6 +718,9 @@
   }
 
   .mobile-sections-wrapper {
-    padding: 3rem;
+    padding: 2.5rem 2rem;
+    /* Better alignment for large touch screens */
+    justify-content: flex-start;
+    align-items: center;
   }
 }

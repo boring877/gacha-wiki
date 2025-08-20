@@ -1,13 +1,13 @@
 ---
-import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+import { characters } from '../../data/silver-and-blood/characters.js';
 import {
   PVE_TIER_LIST,
   PVP_TIER_LIST,
-  RIFT_TIER_LIST,
-  GUILD_RAID_TIER_LIST,
+  CLAN_HUNT_TIER_LIST,
+  BOSS_RAIDS_TIER_LIST,
   NEW_PLAYER_TIER_LIST,
-} from '../../data/zone-nova/tier-lists.js';
-import { rankings } from '../../data/zone-nova/character-rankings.js';
+} from '../../data/silver-and-blood/tier-lists.js';
+import { rankings } from '../../data/silver-and-blood/character-rankings.js';
 
 interface Props {
   selectedCharacters?: string[];
@@ -35,18 +35,27 @@ function isValidImageUrl(url: string): boolean {
 
 // Security: Sanitize and validate character data
 // Keep original names for data lookups, only escape for display
-const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
+const sanitizedCharacters = characters.map(char => ({
   ...char,
   originalName: char.name || '', // Keep original for tier lookups
   displayName: escapeHtml(char.name || ''), // Escaped version for display
-  slug: char.slug?.replace(/[^a-zA-Z0-9-_]/g, '') || '',
-  role: escapeHtml(char.role || ''),
+  slug: char.id?.replace(/[^a-zA-Z0-9-_]/g, '') || '', // Use id as slug
   class: escapeHtml(char.class || ''),
   rarity: escapeHtml(char.rarity || ''),
-  element: escapeHtml(char.element || ''),
   faction: escapeHtml(char.faction || ''),
+  equipmentType: escapeHtml(char.equipmentType || ''),
+  moonPhase: escapeHtml(char.moonPhase || ''),
+  attackType: escapeHtml(char.attackType || ''),
   image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
 }));
+
+// Get unique values for filters
+const classes = [...new Set(characters.map(c => c.class).filter(Boolean))].sort();
+const factions = [...new Set(characters.map(c => c.faction).filter(Boolean))].sort();
+const equipmentTypes = [...new Set(characters.map(c => c.equipmentType).filter(Boolean))].sort();
+const moonPhases = [...new Set(characters.map(c => c.moonPhase).filter(Boolean))].sort();
+const attackTypes = [...new Set(characters.map(c => c.attackType).filter(Boolean))].sort();
+const rarities = ['SSR', 'SR', 'R'];
 ---
 
 <!-- Character Selection Header - Icon Bar -->
@@ -65,52 +74,34 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
         <div class="deck-header-controls">
           <!-- Filters -->
           <div class="deck-filters-compact">
-            <select class="filter-select-compact" id="v2-role-filter">
-              <option value="">All Roles</option>
-              <option value="DPS">DPS</option>
-              <option value="Tank">Tank</option>
-              <option value="Healer">Healer</option>
-              <option value="Buffer">Buffer</option>
-              <option value="Debuffer">Debuffer</option>
-            </select>
-
             <select class="filter-select-compact" id="v2-class-filter">
               <option value="">All Classes</option>
-              <option value="Guardian">Guardian</option>
-              <option value="Warrior">Warrior</option>
-              <option value="Rogue">Rogue</option>
-              <option value="Mage">Mage</option>
-              <option value="Buffer">Buffer</option>
-              <option value="Debuffer">Debuffer</option>
-              <option value="Healer">Healer</option>
-            </select>
-
-            <select class="filter-select-compact" id="v2-rarity-filter">
-              <option value="">All Rarities</option>
-              <option value="SSR">SSR</option>
-              <option value="SR">SR</option>
-              <option value="R">R</option>
-            </select>
-
-            <select class="filter-select-compact" id="v2-element-filter">
-              <option value="">All Elements</option>
-              <option value="Fire">Fire</option>
-              <option value="Ice">Ice</option>
-              <option value="Wind">Wind</option>
-              <option value="Holy">Holy</option>
-              <option value="Chaos">Chaos</option>
+              {classes.map(classOption => <option value={classOption}>{classOption}</option>)}
             </select>
 
             <select class="filter-select-compact" id="v2-faction-filter">
               <option value="">All Factions</option>
-              <option value="Odius">Odius</option>
-              <option value="Sapphire">Sapphire</option>
-              <option value="Chemic">Chemic</option>
-              <option value="Bicta Tower">Bicta Tower</option>
-              <option value="Avalon">Avalon</option>
-              <option value="Asa">Asa</option>
-              <option value="Monochrome Nation">Monochrome Nation</option>
-              <option value="Pingjing City">Pingjing City</option>
+              {factions.map(faction => <option value={faction}>{faction}</option>)}
+            </select>
+
+            <select class="filter-select-compact" id="v2-rarity-filter">
+              <option value="">All Rarities</option>
+              {rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
+            </select>
+
+            <select class="filter-select-compact" id="v2-equipment-filter">
+              <option value="">All Equipment</option>
+              {equipmentTypes.map(equipType => <option value={equipType}>{equipType}</option>)}
+            </select>
+
+            <select class="filter-select-compact" id="v2-moon-filter">
+              <option value="">All Phases</option>
+              {moonPhases.map(phase => <option value={phase}>{phase}</option>)}
+            </select>
+
+            <select class="filter-select-compact" id="v2-attack-filter">
+              <option value="">All Types</option>
+              {attackTypes.map(attackType => <option value={attackType}>{attackType}</option>)}
             </select>
           </div>
           <div class="button-group">
@@ -132,22 +123,23 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
                 <div
                   class="character-icon"
                   data-character-slug={character.slug}
-                  data-role={character.role}
                   data-class={character.class}
                   data-rarity={character.rarity}
-                  data-element={character.element}
                   data-faction={character.faction}
-                  title={`${character.originalName} (${character.rarity} ${character.element} ${character.class})`}
+                  data-equipment={character.equipmentType}
+                  data-moon={character.moonPhase}
+                  data-attack={character.attackType}
+                  title={`${character.originalName} (${character.rarity} ${character.faction} ${character.class})`}
                   role="button"
                   tabindex="0"
-                  aria-label={`Select ${character.originalName}, ${character.rarity} ${character.element} ${character.class}`}
+                  aria-label={`Select ${character.originalName}, ${character.rarity} ${character.faction} ${character.class}`}
                 >
                   <img
                     src={character.image}
                     alt={character.originalName}
                     class="character-icon-img"
-                    width="60"
-                    height="80"
+                    width="36"
+                    height="36"
                     loading="lazy"
                     onerror="this.src='/images/placeholder.png'"
                   />
@@ -241,14 +233,15 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
           <div
             class="modal-character-card"
             data-character-slug={character.slug}
-            data-role={character.role}
             data-class={character.class}
             data-rarity={character.rarity}
-            data-element={character.element}
             data-faction={character.faction}
+            data-equipment={character.equipmentType}
+            data-moon={character.moonPhase}
+            data-attack={character.attackType}
             role="button"
             tabindex="0"
-            aria-label={`Select ${character.originalName}, ${character.rarity} ${character.element} ${character.class}`}
+            aria-label={`Select ${character.originalName}, ${character.rarity} ${character.faction} ${character.class}`}
           >
             <img
               src={character.image}
@@ -270,28 +263,28 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
 </div>
 
 <!-- External JS -->
-<script src="/src/scripts/comparison-v2/zone-nova-comparison-v2.js"></script>
+<script src="/src/scripts/comparison-v2/silver-and-blood-comparison-v2.js"></script>
 
 <script
   define:vars={{
     characterData: sanitizedCharacters,
     pveTier: PVE_TIER_LIST,
     pvpTier: PVP_TIER_LIST,
-    riftTier: RIFT_TIER_LIST,
-    guildTier: GUILD_RAID_TIER_LIST,
+    clanHuntTier: CLAN_HUNT_TIER_LIST,
+    bossRaidsTier: BOSS_RAIDS_TIER_LIST,
     newPlayerTier: NEW_PLAYER_TIER_LIST,
     rankingsData: rankings,
   }}
 >
   // Security: Freeze objects to prevent prototype pollution
   // Make character data available to external JS file
-  window.ZN_COMPARISON_V2_DATA = Object.freeze({
+  window.SAB_COMPARISON_V2_DATA = Object.freeze({
     characters: Object.freeze([...characterData]),
     tierLists: Object.freeze({
       pve: Object.freeze(pveTier),
       pvp: Object.freeze(pvpTier),
-      rift: Object.freeze(riftTier),
-      guild: Object.freeze(guildTier),
+      clanHunt: Object.freeze(clanHuntTier),
+      bossRaids: Object.freeze(bossRaidsTier),
       newPlayer: Object.freeze(newPlayerTier),
     }),
     rankings: Object.freeze(rankingsData),

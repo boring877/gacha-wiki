@@ -9,12 +9,14 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import CharacterNavigation from '../../components/zone-nova/CharacterNavigation.astro';
+import Comments from '../../components/Comments.astro';
 
 // Import CSS files for individual character pages only
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/components/zone-nova-character-navigation.css';
+import '../../styles/components/comments.css';
 import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/games/zone-nova/zn-badge-colour.css';
 import '../../styles/games/zone-nova/zn-character-individual.css';
@@ -110,6 +112,14 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
           <div class="content-area">
             <slot />
           </div>
+
+          <!-- Comments Section -->
+          <Comments
+            category="Zone Nova Characters"
+            categoryId="DIC_kwDOOx85584CuX60"
+            theme="dark"
+            reactionsEnabled={true}
+          />
         </main>
       </div>
 

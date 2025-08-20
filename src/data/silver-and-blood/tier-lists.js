@@ -152,6 +152,7 @@ export const CLAN_HUNT_TIER_LIST = {
   tiers: {
     SSS: [{ name: 'Timeless Aiona' }],
     SS: [
+      { name: 'Acappella' },
       { name: 'Transcendent Ami' },
       { name: 'Joan' },
       { name: 'Lorelei' },

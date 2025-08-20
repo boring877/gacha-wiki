@@ -8,11 +8,13 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
+import Comments from '../../components/Comments.astro';
 
 // Import CSS files properly
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/components/comments.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
 import '../../styles/games/silver-and-blood/sab-badge-colours.css';
 import '../../styles/games/silver-and-blood/sab-team-synergy.css';
@@ -108,6 +110,14 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
           <div class="content-area">
             <slot />
           </div>
+
+          <!-- Comments Section -->
+          <Comments
+            category="Silver & Blood Team Strategy"
+            categoryId="DIC_kwDOOx85584CuX61"
+            theme="dark"
+            reactionsEnabled={true}
+          />
         </main>
       </div>
 

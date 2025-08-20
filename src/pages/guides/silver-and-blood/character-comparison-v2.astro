@@ -1,0 +1,53 @@
+---
+import CharacterComparisonV2Layout from '../../../layouts/silver-and-blood/CharacterComparisonV2Layout.astro';
+import CharacterComparisonV2Component from '../../../components/silver-and-blood/CharacterComparisonV2.astro';
+import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
+
+const title = 'Character Comparison Tool V2 - Silver and Blood';
+const description =
+  'Advanced Silver and Blood character comparison tool. Compare 2 heroes side-by-side: combat stats (HP/ATK/P.DEF/M.DEF), tier rankings, skills, team synergies. Filter by class, faction, moon phase, equipment type. Optimize team composition with data-driven insights for all game modes.';
+
+// Breadcrumb navigation items
+const breadcrumbItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Silver & Blood', href: '/guides/silver-and-blood/' },
+  { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
+  { name: 'Character Comparison V2' },
+];
+---
+
+<CharacterComparisonV2Layout title={title} description={description}>
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb items={breadcrumbItems} />
+
+  <div class="comparison-v2-page-content">
+    <!-- Page Header Section -->
+    <div class="page-header-section">
+      <h1 style="display: none;">Silver & Blood Character Comparison Tool V2</h1>
+      <div class="seo-keywords" style="display: none;">
+        Silver and Blood character comparison, hero stats comparison, tier list rankings, PvE PvP
+        analysis, team building guide, character skills breakdown, combat stats analysis, gacha game
+        strategy
+      </div>
+
+      <!-- Usage Tips -->
+      <div class="usage-tips">
+        <h3>How to Use</h3>
+        <ul>
+          <li>
+            <strong>Desktop:</strong> Click character icons to select up to 2 heroes for comparison
+          </li>
+          <li><strong>Mobile:</strong> Tap character selection buttons to open modal picker</li>
+          <li>
+            Use filters to find specific characters by class, faction, rarity, equipment, moon
+            phase, or attack type
+          </li>
+          <li>Compare stats, tier rankings, and skills in the comparison cards below</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Character Comparison V2 Component -->
+    <CharacterComparisonV2Component />
+  </div>
+</CharacterComparisonV2Layout>

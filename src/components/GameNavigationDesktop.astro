@@ -43,12 +43,14 @@ if (!game) return;
   }
 </style>
 
-<nav class="game-nav-desktop" data-game={gameKey}>
+<nav class="game-nav-desktop" data-game={validatedGameKey}>
   <div class="container">
     <div class="game-nav-header">
       <div class="game-info">
         <a
-          href={gameKey === 'zone-nova' ? '/guides/zone-nova/' : '/guides/silver-and-blood/'}
+          href={validatedGameKey === 'zone-nova'
+            ? '/guides/zone-nova/'
+            : '/guides/silver-and-blood/'}
           class="game-link"
         >
           <div class="game-image-container">

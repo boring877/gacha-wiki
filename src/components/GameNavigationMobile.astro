@@ -29,11 +29,15 @@ if (!game) return;
   @import '../styles/components/game-navigation-mobile.css';
 </style>
 
-<nav class="game-nav-mobile" data-game={gameKey}>
+<nav class="game-nav-mobile" data-game={validatedGameKey}>
   <div class="container">
     <div class="game-nav-header">
       <div class="game-nav-header-content">
-        <a href={`/guides/${gameKey}/`} class="game-image-link" title={`${game.name} Overview`}>
+        <a
+          href={`/guides/${validatedGameKey}/`}
+          class="game-image-link"
+          title={`${game.name} Overview`}
+        >
           <div class="game-image-container">
             <img src={game.image} alt={game.name} class="game-image" loading="lazy" />
             <div class="game-image-overlay"></div>
@@ -54,7 +58,7 @@ if (!game) return;
 
 <!-- Mobile Navigation - Overlay System -->
 <div class="mobile-overlay" id="navOverlay"></div>
-<div class="mobile-links" id="mobileNavLinks" data-game={gameKey}>
+<div class="mobile-links" id="mobileNavLinks" data-game={validatedGameKey}>
   <div class="mobile-game-header">
     <div class="game-header-content">
       <img src={game.image} alt={game.name} class="mobile-game-image" loading="lazy" />
@@ -87,7 +91,7 @@ if (!game) return;
 </div>
 
 <script>
-  // Mobile Navigation - Copy of working Header.astro pattern
+  // Mobile Navigation - Full-screen popup with viewport isolation
   document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileNavLinks');
@@ -104,30 +108,34 @@ if (!game) return;
 
       if (mobileMenu) {
         if (isMenuOpen) {
-          // Prevent scrolling and ensure menu is visible
+          // Store current scroll position for restoration
+          window.gameNavScrollY = window.scrollY;
+
+          // Complete page isolation - hide everything except popup
           document.body.style.overflow = 'hidden';
+          document.body.style.touchAction = 'none';
           document.body.style.position = 'fixed';
-          document.body.style.top = `-${window.scrollY}px`;
           document.body.style.width = '100%';
+          document.body.style.height = '100%';
+          document.documentElement.style.overflow = 'hidden';
 
           mobileMenu.classList.add('active');
           overlay?.classList.add('active');
 
-          // Ensure the menu drawer is visible by scrolling to top
-          const drawer = mobileMenu.querySelector('.mobile-sections-wrapper');
-          if (drawer) {
-            mobileMenu.scrollTop = 0;
-          }
+          // Menu will appear at current viewport - no scrolling needed
         } else {
-          // Restore scrolling and position
-          const scrollY = document.body.style.top;
+          // Restore complete page state
           document.body.style.overflow = '';
+          document.body.style.touchAction = '';
           document.body.style.position = '';
-          document.body.style.top = '';
           document.body.style.width = '';
+          document.body.style.height = '';
+          document.documentElement.style.overflow = '';
 
-          if (scrollY) {
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+          // Restore scroll position
+          if (window.gameNavScrollY !== undefined) {
+            window.scrollTo(0, window.gameNavScrollY);
+            window.gameNavScrollY = undefined;
           }
 
           mobileMenu.classList.remove('active');
