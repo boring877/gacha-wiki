@@ -43,7 +43,10 @@ html {
 body {
   margin: 0; /* Remove default browser margins */
   padding: 0; /* Remove default browser padding */
-  font-family: system-ui, -apple-system, sans-serif; /* Modern system font stack */
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif; /* Modern system font stack */
   line-height: 1.6; /* Optimal reading line height (WCAG recommended) */
   background: var(--bg-primary); /* Apply global background color from design system */
   color: var(--text-primary); /* Apply primary text color for contrast */
@@ -108,7 +111,7 @@ button {
 /* === TOUCH OPTIMIZATION === */
 /* Improve touch responsiveness and eliminate 300ms click delays on mobile devices */
 button,
-[role="button"],
+[role='button'],
 .btn,
 .nav-btn,
 .skill-card,
@@ -121,9 +124,9 @@ button,
 .node-tier,
 .clickable,
 select,
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
+input[type='button'],
+input[type='submit'],
+input[type='reset'] {
   touch-action: manipulation; /* Enable fast taps, disable double-tap zoom */
 }
 

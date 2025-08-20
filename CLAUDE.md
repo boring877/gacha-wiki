@@ -25,4 +25,3 @@ Instead use these for testing:
 - This is a Gacha Wiki project built with Astro
 - Uses Bun as package manager
 - Has automated linting with husky pre-commit hooks
-- Comments system uses Giscus (GitHub Discussions integration)

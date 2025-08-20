@@ -132,10 +132,14 @@ const relatedCharacters = [];
           >
             {name}
           </h1>
-          <p style="color: var(--sab-text-light); margin: 0.5rem 0 0 0; font-size: 1.1rem; text-align: center;">
+          <p
+            style="color: var(--sab-text-light); margin: 0.5rem 0 0 0; font-size: 1.1rem; text-align: center;"
+          >
             {title}
           </p>
-          <p style="color: var(--sab-text-medium); margin: 0.2rem 0 0 0; font-style: italic; text-align: center;">
+          <p
+            style="color: var(--sab-text-medium); margin: 0.2rem 0 0 0; font-style: italic; text-align: center;"
+          >
             {subtitle}
           </p>
         </div>
@@ -243,7 +247,9 @@ const relatedCharacters = [];
           </p>
 
           <!-- Core Combat Stats -->
-          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">Core Combat Stats</h4>
+          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">
+            Core Combat Stats
+          </h4>
           <div
             class="stats-grid"
             style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
@@ -258,7 +264,10 @@ const relatedCharacters = [];
               >
                 HP
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+              >
                 {stats.hp.toLocaleString()}
               </div>
             </div>
@@ -272,7 +281,10 @@ const relatedCharacters = [];
               >
                 ATK
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+              >
                 {stats.atk.toLocaleString()}
               </div>
             </div>
@@ -286,7 +298,10 @@ const relatedCharacters = [];
               >
                 P.DEF
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+              >
                 {stats.pDef.toLocaleString()}
               </div>
             </div>
@@ -300,14 +315,19 @@ const relatedCharacters = [];
               >
                 M.DEF
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+              >
                 {stats.mDef.toLocaleString()}
               </div>
             </div>
           </div>
 
           <!-- Speed and Recovery Stats -->
-          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">Speed & Recovery</h4>
+          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">
+            Speed & Recovery
+          </h4>
           <div
             class="stats-grid"
             style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
@@ -322,7 +342,10 @@ const relatedCharacters = [];
               >
                 ATK SPD
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+              >
                 {stats.atkSpd}
               </div>
             </div>
@@ -336,14 +359,19 @@ const relatedCharacters = [];
               >
                 Bloodsoul Recovery
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+              >
                 {stats.bloodsoulRecovery}
               </div>
             </div>
           </div>
 
           <!-- Critical Stats -->
-          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">Critical Stats</h4>
+          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">
+            Critical Stats
+          </h4>
           <div
             class="stats-grid"
             style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
@@ -358,7 +386,10 @@ const relatedCharacters = [];
               >
                 CRIT Rate
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+              >
                 {stats.critRate}%
               </div>
             </div>
@@ -372,14 +403,19 @@ const relatedCharacters = [];
               >
                 CRIT DMG Increase
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+              >
                 {stats.critDmgIncrease}%
               </div>
             </div>
           </div>
 
           <!-- Damage Bonuses -->
-          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">Damage Bonuses</h4>
+          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">
+            Damage Bonuses
+          </h4>
           <div
             class="stats-grid"
             style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
@@ -394,7 +430,10 @@ const relatedCharacters = [];
               >
                 All DMG Bonus
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;"
+              >
                 {stats.allDmgBonus}%
               </div>
             </div>
@@ -408,7 +447,10 @@ const relatedCharacters = [];
               >
                 P.DMG Bonus
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;"
+              >
                 {stats.pDmgBonus}%
               </div>
             </div>
@@ -422,14 +464,19 @@ const relatedCharacters = [];
               >
                 M.DMG Bonus
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;"
+              >
                 {stats.mDmgBonus}%
               </div>
             </div>
           </div>
 
           <!-- Special Stats -->
-          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">Special Stats</h4>
+          <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">
+            Special Stats
+          </h4>
           <div
             class="stats-grid"
             style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem;"
@@ -444,7 +491,10 @@ const relatedCharacters = [];
               >
                 All DMG Reduction
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;"
+              >
                 {stats.allDmgReduction}%
               </div>
             </div>
@@ -458,7 +508,10 @@ const relatedCharacters = [];
               >
                 Healing Bonus
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;"
+              >
                 {stats.receivedHealingBonus}%
               </div>
             </div>
@@ -472,7 +525,10 @@ const relatedCharacters = [];
               >
                 Blood Power
               </div>
-              <div class="stat-value" style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;">
+              <div
+                class="stat-value"
+                style="color: var(--sab-calm-red); font-weight: 700; font-size: 0.95rem;"
+              >
                 {stats.bloodPower.toLocaleString()}
               </div>
             </div>

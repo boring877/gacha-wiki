@@ -40,7 +40,7 @@ const { prevCharacter, nextCharacter } = Astro.props;
       touchStartTime: 0,
       touchMoved: false,
       lastNavigation: 0,
-      navigationThrottle: 300 // Prevent rapid navigation
+      navigationThrottle: 300, // Prevent rapid navigation
     };
 
     // Instant mobile navigation with immediate feedback
@@ -60,7 +60,7 @@ const { prevCharacter, nextCharacter } = Astro.props;
         // Instant visual feedback
         document.body.style.opacity = '0.9';
         document.body.style.transition = 'opacity 0.08s ease';
-        
+
         // Use replace for instant feel
         window.location.replace(url);
         return true;
@@ -75,25 +75,32 @@ const { prevCharacter, nextCharacter } = Astro.props;
       if (!element) return;
 
       // Handle touch start - optimized
-      element.addEventListener('touchstart', e => {
-        mobilePerfManager.touchStartTime = Date.now();
-        mobilePerfManager.touchMoved = false;
-        e.stopPropagation();
-      }, { passive: true });
+      element.addEventListener(
+        'touchstart',
+        e => {
+          mobilePerfManager.touchStartTime = Date.now();
+          mobilePerfManager.touchMoved = false;
+          e.stopPropagation();
+        },
+        { passive: true }
+      );
 
       // Track touch movement - optimized
-      element.addEventListener('touchmove', e => {
-        mobilePerfManager.touchMoved = true;
-      }, { passive: true });
+      element.addEventListener(
+        'touchmove',
+        e => {
+          mobilePerfManager.touchMoved = true;
+        },
+        { passive: true }
+      );
 
       // Handle touch end with performance checks
       element.addEventListener('touchend', e => {
         const touchDuration = Date.now() - mobilePerfManager.touchStartTime;
 
         // Enhanced touch validation
-        if (!mobilePerfManager.touchMoved && 
-            touchDuration < 400 && 
-            touchDuration > 50) { // Prevent accidental touches
+        if (!mobilePerfManager.touchMoved && touchDuration < 400 && touchDuration > 50) {
+          // Prevent accidental touches
           e.preventDefault();
           const url = element.getAttribute('data-character-url');
           handleNavigation(url);

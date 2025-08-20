@@ -249,6 +249,35 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
                         </div>
                       </div>
 
+                      <!-- Guild War Timer Card -->
+                      <div class="timer-card guild-war-card">
+                        <div class="timer-card-header">
+                          <div class="timer-card-title">Guild War Schedule</div>
+                          <div class="server-status">
+                            <div class="status-dot" id="guildWarStatusDot"></div>
+                            <span class="status-text" id="guildWarStatusText">Loading...</span>
+                          </div>
+                        </div>
+                        <div class="timer-card-subtitle">2-week cycles • 12 battles per season</div>
+                        <div class="timer-card-content">
+                          <!-- Current Phase -->
+                          <div class="guild-war-item">
+                            <div class="guild-war-name" id="guildWarCurrentPhase">
+                              Loading Phase...
+                            </div>
+                            <div class="guild-war-time" id="guildWarPhaseTime">--:--:--</div>
+                          </div>
+                          <!-- Next Phase -->
+                          <div class="guild-war-item">
+                            <div class="guild-war-name" id="guildWarNextPhase">Next Phase</div>
+                            <div class="guild-war-time" id="guildWarNextTime">--:--:--</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Third Row -->
+                    <div class="timers-row">
                       <!-- Launch Timer Card -->
                       <div class="timer-card launch-card">
                         <div class="timer-card-header">
@@ -302,12 +331,16 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
 
     <Footer />
 
-    <!-- Zone Nova Clock Timer Script with Dynamic Rifts -->
-    <script define:vars={{ activeRifts, maintenance: timers.maintenance }}>
+    <!-- Zone Nova Clock Timer Script with Dynamic Rifts and Guild War -->
+    <script
+      define:vars={{ activeRifts, maintenance: timers.maintenance, guildWar: timers.guildWar }}
+    >
       // Pass rifts data to global scope for the clock script
       window.zoneNovaActiveRifts = activeRifts;
       // Pass maintenance data to global scope for the clock script
       window.zoneNovaMaintenance = maintenance;
+      // Pass guild war data to global scope for the clock script
+      window.zoneNovaGuildWar = guildWar;
     </script>
     <script src="/src/scripts/clock/zone-nova.js"></script>
   </body>

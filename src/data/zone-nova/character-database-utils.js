@@ -105,7 +105,7 @@ export function initializeCharacterDatabase() {
         // Dispatch custom event to notify navigation
         document.dispatchEvent(new CustomEvent('character-database-updated'));
       } catch (error) {
-        console.log('Could not save filter state to sessionStorage');
+        // Filter state save failed
       }
 
       const visibleRows = [];
@@ -124,15 +124,7 @@ export function initializeCharacterDatabase() {
 
         // Debug logging for class and faction filters
         if ((charClass || faction) && index === 0) {
-          console.log('Filter debug:', {
-            selectedClass: charClass,
-            foundClassText: classText,
-            classMatches: classText === charClass,
-            selectedFaction: faction,
-            foundFactionText: factionText,
-            factionMatches: factionText === faction,
-            allFilters: { element, rarity, role, charClass, faction },
-          });
+          // Filter debug info available for debugging
         }
 
         const matches =
@@ -253,7 +245,7 @@ export function initializeCharacterDatabase() {
         // Dispatch custom event to notify navigation
         document.dispatchEvent(new CustomEvent('character-database-updated'));
       } catch (error) {
-        console.log('Could not save sort state to sessionStorage');
+        // Sort state save failed
       }
 
       // Mobile cards
@@ -326,7 +318,7 @@ export function initializeCharacterDatabase() {
         sessionStorage.removeItem('zone-nova-character-filters');
         sessionStorage.removeItem('zone-nova-character-sort');
       } catch (error) {
-        console.log('Could not clear sessionStorage');
+        // SessionStorage clear failed
       }
     });
 
@@ -359,7 +351,7 @@ export function initializeCharacterDatabase() {
         })
       );
     } catch (error) {
-      console.log('Could not save default sort state to sessionStorage');
+      // Default sort state save failed
     }
 
     const allRows = Array.from(tableBody.children);

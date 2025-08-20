@@ -280,7 +280,7 @@ import {
         try {
           sessionStorage.setItem('sab-character-filters', JSON.stringify(activeFilters));
         } catch (error) {
-          console.log('Could not save filter state to sessionStorage');
+          // Could not save filter state to sessionStorage
         }
 
         const rows = document.querySelectorAll('#character-table-body tr');
@@ -365,7 +365,7 @@ import {
           })
         );
       } catch (error) {
-        console.log('Could not save default sort state to sessionStorage');
+        // Could not save default sort state to sessionStorage
       }
 
       if (resetBtn) {
@@ -396,7 +396,7 @@ import {
             sessionStorage.removeItem('sab-character-filters');
             sessionStorage.removeItem('sab-character-sort');
           } catch (error) {
-            console.log('Could not clear sessionStorage');
+            // Could not clear sessionStorage
           }
         });
       }
@@ -435,7 +435,7 @@ import {
             })
           );
         } catch (error) {
-          console.log('Could not save sort state to sessionStorage');
+          // Could not save sort state to sessionStorage
         }
       }
       let sortState = { column: null, asc: false };

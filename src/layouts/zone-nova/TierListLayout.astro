@@ -7,13 +7,11 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
-import Comments from '../../components/Comments.astro';
 
 // Import CSS files properly
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
-import '../../styles/components/comments.css';
 import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/games/zone-nova/zn-badge-colour.css';
 import '../../styles/games/zone-nova/zn-tier-list.css';
@@ -71,14 +69,6 @@ const {
           <div class="content-area">
             <slot />
           </div>
-
-          <!-- Comments Section -->
-          <Comments
-            category="Zone Nova Tier Lists"
-            categoryId="DIC_kwDOOx85584CuX6-"
-            theme="dark"
-            reactionsEnabled={true}
-          />
         </main>
       </div>
 

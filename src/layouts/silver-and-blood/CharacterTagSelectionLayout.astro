@@ -56,10 +56,10 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       <div class="sab-container">
         <main class="sab-main">
         
-        <!-- Silver and Blood Hero Section -->
+        {/* Silver and Blood Hero Section */}
         {heroImage && gameTitle && (
           <section class="hero-section">
-            <!-- Hero Image Container -->
+            {/* Hero Image Container */}
             <div class="hero-image-wrapper">
               <div class="hero-image-container">
                 <OptimizedImage 
@@ -69,7 +69,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
                   loading="eager"
                   decoding="async"
                 />
-                <!-- Overlay Gradient -->
+{/* Overlay Gradient */}
                 <div class="hero-overlay"></div>
               </div>
             </div>

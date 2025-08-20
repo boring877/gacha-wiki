@@ -21,11 +21,7 @@ export class CharacterTagSelector {
       characterCards: document.querySelectorAll('.character-card'),
     };
 
-    console.log('Character Tag Selector initialized with:', {
-      charactersCount: this.characters.length,
-      tagButtons: this.elements.tagButtons.length,
-      characterCards: this.elements.characterCards.length,
-    });
+    // Character Tag Selector initialized successfully
 
     // Bind event listeners
     this.bindEvents();
@@ -48,19 +44,19 @@ export class CharacterTagSelector {
 
   handleTagClick(button) {
     const tag = button.dataset.tag;
-    console.log('Tag clicked:', tag);
+    // Tag clicked
 
     if (this.selectedTags.has(tag)) {
       this.selectedTags.delete(tag);
       button.classList.remove('active');
-      console.log('Removed tag:', tag);
+      // Tag removed
     } else {
       this.selectedTags.add(tag);
       button.classList.add('active');
-      console.log('Added tag:', tag);
+      // Tag added
     }
 
-    console.log('Selected tags:', Array.from(this.selectedTags));
+    // Tags updated
     this.updateSelectedTagsDisplay();
     this.updateResults();
   }
@@ -70,7 +66,7 @@ export class CharacterTagSelector {
     this.elements.tagButtons.forEach(btn => btn.classList.remove('active'));
     this.updateSelectedTagsDisplay();
     this.updateResults();
-    console.log('Cleared all tags');
+    // All tags cleared
   }
 
   updateSelectedTagsDisplay() {
@@ -106,13 +102,13 @@ export class CharacterTagSelector {
   }
 
   updateResults() {
-    console.log('Updating results with selected tags:', Array.from(this.selectedTags));
+    // Updating results
     let visibleCount = 0;
 
     this.elements.characterCards.forEach(card => {
       try {
         const characterTags = JSON.parse(card.dataset.tags || '[]');
-        console.log('Character:', card.dataset.characterId, 'Tags:', characterTags);
+        // Checking character tags
 
         // Check if character has ALL selected tags
         const hasAllTags =
@@ -132,7 +128,7 @@ export class CharacterTagSelector {
       }
     });
 
-    console.log('Visible count:', visibleCount);
+    // Results updated
 
     // Update match count
     const countText = visibleCount === 1 ? '1 character found' : `${visibleCount} characters found`;
@@ -179,6 +175,6 @@ export const tagSelectionConfig = {
 
 // Helper function to initialize the tag selector
 export function initializeCharacterTagSelector(characters = []) {
-  console.log('Initializing Character Tag Selector...');
+  // Initializing Character Tag Selector
   return new CharacterTagSelector(characters);
 }

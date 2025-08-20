@@ -139,7 +139,7 @@ export const ZONE_NOVA_TEAMS = [
     id: 9,
     name: 'Odia survive ',
     type: TEAM_TYPES.PVP,
-    tier: TEAM_TIERS.S,
+    tier: TEAM_TIERS.SSS,
     characters: [
       { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
       { name: 'Athena', image: '/images/games/zone-nova/characters/Athena.jpg' },
@@ -153,7 +153,7 @@ export const ZONE_NOVA_TEAMS = [
     id: 10,
     name: 'Blance',
     type: TEAM_TYPES.PVP,
-    tier: TEAM_TIERS.S,
+    tier: TEAM_TIERS.SSS,
     characters: [
       { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
       { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
@@ -161,7 +161,7 @@ export const ZONE_NOVA_TEAMS = [
       { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
     ],
     notes:
-      'Aggressive PVP team with high burst potential. Guinevere buffs the team, Thor and Odin provide heavy damage output, while Gaia ensures team sustainability.',
+      'You need to Start with Thor with an enhanced ultimate, need dupe 1. so you can deal Dot Dmg and burst with Odin. very strong PVP Team Overall',
   },
 ];
 

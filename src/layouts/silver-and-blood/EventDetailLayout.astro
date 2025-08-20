@@ -70,7 +70,7 @@ const { title, description, gameTitle, eventData } = Astro.props;
 								</div>
 
 
-								<!-- Introduction Section with Embedded Images -->
+{/* Introduction Section with Embedded Images */}
 								<div class="introduction-section">
 									<h2>{eventData.introduction?.title}</h2>
 									{eventData.introduction?.content.map((paragraph, index) => (
@@ -101,7 +101,7 @@ const { title, description, gameTitle, eventData } = Astro.props;
 									))}
 								</div>
 
-								<!-- Guide Synopsis Navigation -->
+{/* Guide Synopsis Navigation */}
 								{eventData.guideSynopsis && (
 									<div class="guide-synopsis">
 										<h2>{eventData.guideSynopsis.title}</h2>

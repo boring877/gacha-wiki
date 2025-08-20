@@ -35,7 +35,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
 
 {(hasNavigation || forceRender) && prevCharacter && nextCharacter && (
   <>
-    <!-- Desktop Navigation Panel -->
+{/* Desktop Navigation Panel */}
     <div 
       class="nav-zone nav-zone-single" 
       data-character-url={nextCharacter.detailUrl}
@@ -71,7 +71,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       </div>
     </div>
 
-    <!-- Mobile Navigation Component -->
+{/* Mobile Navigation Component */}
     <MobileCharacterNavigation 
       prevCharacter={prevCharacter}
       nextCharacter={nextCharacter}

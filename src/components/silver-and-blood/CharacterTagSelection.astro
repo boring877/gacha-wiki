@@ -88,17 +88,17 @@ const allTags = [...new Set(characters.flatMap(char => char.tags || []))].sort()
 <script is:inline define:vars={{ characters }}>
   // Character Tag Selection JavaScript
   document.addEventListener('DOMContentLoaded', function () {
-    console.log('Character Tag Selection loaded with characters:', characters.length);
+    // Character Tag Selection loaded
 
     // Import the external module and initialize
     import('../../data/silver-and-blood/character-tag-selection.js')
       .then(module => {
-        console.log('Module loaded successfully');
+        // Module loaded successfully
         const { initializeCharacterTagSelector } = module;
 
         // Initialize the tag selector with character data
         const tagSelector = initializeCharacterTagSelector(characters);
-        console.log('Tag selector initialized:', tagSelector);
+        // Tag selector initialized
 
         // Make it globally available for debugging
         window.tagSelector = tagSelector;
@@ -107,7 +107,7 @@ const allTags = [...new Set(characters.flatMap(char => char.tags || []))].sort()
         console.error('Failed to load tag selection module:', error);
 
         // Fallback: simple inline implementation
-        console.log('Using fallback implementation');
+        // Using fallback implementation
         initializeFallback();
       });
 

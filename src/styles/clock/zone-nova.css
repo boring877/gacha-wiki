@@ -198,6 +198,20 @@
   color: var(--zn-clock-amber);
 }
 
+/* Guild War Timer Card */
+.guild-war-card {
+  border-left: 4px solid var(--zn-clock-border);
+  background: linear-gradient(
+    135deg,
+    var(--clock-card-bg),
+    color-mix(in srgb, var(--zn-clock-bg) 2%, transparent)
+  );
+}
+
+.guild-war-card .timer-card-title {
+  color: var(--zn-clock-amber);
+}
+
 /* Event Timer Card */
 .event-card {
   border-left: 4px solid var(--zn-clock-border);
@@ -229,6 +243,18 @@
 
 .status-dot.maintenance {
   background: var(--zn-error);
+}
+
+.status-dot.active {
+  background: var(--zn-success);
+}
+
+.status-dot.offline {
+  background: var(--zn-error);
+}
+
+.status-dot.online {
+  background: var(--zn-primary-amber);
 }
 
 .status-text {
@@ -322,7 +348,8 @@
 /* === ZONE NOVA TIMER ITEMS === */
 /* Zone Nova specific timer item styling */
 .maintenance-item,
-.rift-item {
+.rift-item,
+.guild-war-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -342,12 +369,14 @@
 
 .maintenance-item:last-child,
 .rift-item:last-child,
+.guild-war-item:last-child,
 .reset-item:last-child {
   border-bottom: none;
 }
 
 .maintenance-name,
 .rift-name,
+.guild-war-name,
 .reset-name {
   font-family: var(--font-primary);
   font-size: var(--text-sm);
@@ -357,6 +386,7 @@
 
 .maintenance-time,
 .rift-time,
+.guild-war-time,
 .reset-time {
   font-family: var(--font-primary);
   font-size: 1.1rem;

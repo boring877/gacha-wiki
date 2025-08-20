@@ -122,7 +122,7 @@ function bumpVersion(bumpType) {
 🤖 Generated with [Claude Code](https://claude.ai/code)
 
 Co-Authored-By: Claude <noreply@anthropic.com>`;
-    
+
     execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
     console.log(`✅ Committed version bump to ${newVersion}`);
   } catch (error) {
@@ -145,7 +145,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
 function tagCurrentVersion() {
   const currentVersion = getCurrentVersion();
   console.log(`🏷️  Creating tag for current version: ${currentVersion}`);
-  
+
   if (createGitTag(currentVersion)) {
     console.log(`✅ Successfully tagged version ${currentVersion}`);
   } else {
@@ -158,7 +158,7 @@ function tagCurrentVersion() {
  */
 function main() {
   const args = process.argv.slice(2);
-  
+
   if (args.length === 0) {
     console.log('Usage: node scripts/version-manager.js [patch|minor|major|--tag-only]');
     process.exit(1);

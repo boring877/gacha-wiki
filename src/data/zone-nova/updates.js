@@ -1,6 +1,15 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'legion-war-launch',
+    title: 'Guild Raid Adjustments and Guild War Related Content',
+    date: 'August 20, 2025',
+    type: 'announcement',
+    summary:
+      'Guild Raid will undergo boss adjustments on August 25, 2025, with increased rewards and reduced difficulty. New Guild War mode launches September 8, 2025 - a strategic battle system where 2 legions compete across 12 battles per season with alternating phases.',
+    url: '/guides/zone-nova/updates/announcement-legion-war-launch/',
+  },
+  {
     id: 'august-19-maintenance',
     title: 'August 19 Maintenance Update',
     date: 'August 19, 2025',
