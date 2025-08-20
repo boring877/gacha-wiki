@@ -103,49 +103,6 @@ function getCharacterRankings(characterId) {
   return result;
 }
 
-/**
- * Calculate overall rank from individual stat rankings (excluding bloodPower)
- * @param {Object} rankings - Rankings object with hp, atk, pDef, mDef
- * @returns {string} Calculated overall rank or 'N/A'
- */
-// eslint-disable-next-line no-unused-vars
-function calculateOverallRank(rankings) {
-  const { hp, atk, pDef, mDef } = rankings; // Exclude bloodPower from overall calculation
-
-  // Check if all rankings are valid numbers
-  const hpRank = parseFloat(hp);
-  const atkRank = parseFloat(atk);
-  const pDefRank = parseFloat(pDef);
-  const mDefRank = parseFloat(mDef);
-
-  if (isNaN(hpRank) || isNaN(atkRank) || isNaN(pDefRank) || isNaN(mDefRank)) {
-    return 'N/A';
-  }
-
-  // Calculate average rank and round to nearest integer
-  const averageRank = Math.round((hpRank + atkRank + pDefRank + mDefRank) / 4);
-  return String(averageRank);
-}
-
-/**
- * Format rank value for display
- * @param {any} rankValue - The rank value to format
- * @returns {string} Formatted rank value
- */
-// eslint-disable-next-line no-unused-vars
-function formatRankValue(rankValue) {
-  if (rankValue === undefined || rankValue === null || rankValue === 'N/A') {
-    return 'N/A';
-  }
-
-  const numericRank = parseFloat(rankValue);
-  if (isNaN(numericRank)) {
-    return 'N/A';
-  }
-
-  return String(Math.round(numericRank));
-}
-
 // Initialize when DOM is loaded - using arrow function for consistency
 document.addEventListener('DOMContentLoaded', () => {
   initializeComparisonV2();
@@ -931,12 +888,6 @@ function createCharacterCard(character, detailedData, characterSlug) {
  * Render character stats section
  */
 // DEPRECATED: Replaced with createCharacterStatsElement for security
-// eslint-disable-next-line no-unused-vars
-function renderCharacterStats_DEPRECATED() {
-  throw new Error(
-    'SECURITY: This function has been disabled due to XSS vulnerability. Use createCharacterStatsElement instead.'
-  );
-}
 
 /**
  * SECURITY: Create character stats section using safe DOM manipulation
