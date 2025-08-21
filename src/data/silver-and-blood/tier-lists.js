@@ -55,6 +55,7 @@ export const PVE_TIER_LIST = {
       { name: 'Incendiary Agares' },
       { name: 'Transcendent Noah' },
       { name: 'Seth' },
+      { name: 'Quinn' },
     ],
     A: [
       { name: 'Tris' },
@@ -101,6 +102,7 @@ export const PVP_TIER_LIST = {
       { name: 'Starry-Eyed Aiona' },
       { name: 'Augustine' },
       { name: 'Acappella' },
+      { name: 'Quinn' },
     ],
     S: [
       { name: 'Hati' },
@@ -167,6 +169,7 @@ export const CLAN_HUNT_TIER_LIST = {
       { name: 'Fleeting Bella' },
       { name: 'Van Helsing' },
       { name: 'Sirene' },
+      { name: 'Quinn' },
     ],
     S: [
       { name: 'Lamia' },
@@ -231,6 +234,7 @@ export const BOSS_RAIDS_TIER_LIST = {
       { name: 'Spectral Gilrain' },
       { name: 'Friedrich' },
       { name: 'Gilrain' },
+      { name: 'Quinn' },
     ],
     A: [
       { name: 'Cain' },
@@ -283,6 +287,7 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Darcias' },
       { name: 'Lamia' },
       { name: 'Yggdrasill' },
+      { name: 'Quinn' },
     ],
     A: [
       { name: 'Ressa' },
