@@ -7,7 +7,7 @@ import { zoneNovaConfig } from '../../data/zone-nova/zone-nova.js';
 import '../../styles/games/zone-nova/zn-landing-page.css';
 
 // Extract data for easier use in template
-const { meta, gameInfo, guides } = zoneNovaConfig;
+const { meta, gameInfo, guides, categoryGroups } = zoneNovaConfig;
 
 // Breadcrumb data for SEO
 const breadcrumbs = [
@@ -94,16 +94,25 @@ const breadcrumbs = [
 
     <div class="guides-grid">
       {
-        guides.map(guide => (
-          <a href={guide.url} class="guide-card-link">
-            <div class="guide-card">
-              <h3>
-                <span class="guide-emoji">{guide.emoji}</span>
-                {guide.title}
-              </h3>
-              <p>{guide.description}</p>
+        categoryGroups.map(category => (
+          <div class={`category-card ${category.size}`}>
+            <div class="category-header">
+              <span class="category-emoji">{category.emoji}</span>
+              <h3>{category.title}</h3>
+              <p class="category-description">{category.description}</p>
             </div>
-          </a>
+            <div class="nested-guides-grid">
+              {category.guides.map(guide => (
+                <a
+                  href={guide.url}
+                  class="nested-guide-card"
+                  aria-label={`Navigate to ${guide.title}`}
+                >
+                  {guide.title}
+                </a>
+              ))}
+            </div>
+          </div>
         ))
       }
     </div>

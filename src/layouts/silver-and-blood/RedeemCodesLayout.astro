@@ -1,0 +1,354 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+// Import only essential CSS files
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-redeem-codes.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  data: any;
+}
+
+const { title, description, gameTitle, data } = Astro.props;
+const { meta, availableCodes, expiredCodes, redeemInstructions, communitySection, warnings } = data;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description || ''} />
+    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="sab-main">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <!-- Page Header -->
+            <div class="intro-section">
+              <p class="redeem-codes-description">
+                {warnings.important}
+              </p>
+              <div class="redeem-codes-warning">
+                <h3>{warnings.noGuarantees.title}</h3>
+                <p>{warnings.noGuarantees.message}</p>
+              </div>
+              <p class="last-updated">
+                Last Updated: <FormattedDate date={meta.lastUpdated} />
+              </p>
+            </div>
+
+            <!-- Available Codes Section -->
+            <div class="section">
+              <h2 class="section-title">Available Codes</h2>
+              <p class="section-description">
+                It's hard to keep track of what's working and what's not. The game does a poor job
+                of telling us the data for expiration or server usage, and sometimes they're all
+                over the place. Trying to do my best - sorry for any inconsistencies!
+              </p>
+
+              <!-- Codes Grid -->
+              <div class="redeem-codes-grid">
+                {
+                  availableCodes.map(codeData => (
+                    <div class="redeem-code-card">
+                      <div class="code-info">
+                        <div class="code-main">
+                          <div class="code-label">Redeem Code</div>
+                          <div class="code-value-display">{codeData.code}</div>
+                          {codeData.rewards && (
+                            <div class="code-rewards">
+                              <strong>Rewards:</strong> {codeData.rewards}
+                            </div>
+                          )}
+                          {codeData.serverRestriction && (
+                            <div class="code-server-restriction">
+                              <strong>Server:</strong> {codeData.serverRestriction}
+                            </div>
+                          )}
+                          {codeData.validUntil && (
+                            <div class="code-valid-until">
+                              <strong>Valid until:</strong> {codeData.validUntil}
+                            </div>
+                          )}
+                          <div class="code-meta">
+                            <span class="code-date">Last checked: {codeData.lastChecked}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="code-action">
+                        <button class="copy-button" data-code={codeData.code}>
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                          </svg>
+                          Copy
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- Expired Codes Section -->
+            <div class="section">
+              <h2 class="section-title">Expired Codes</h2>
+              {
+                expiredCodes.length > 0 ? (
+                  <>
+                    <p class="section-description">
+                      These codes are no longer active but kept for reference.
+                    </p>
+                    <div class="redeem-codes-grid expired-section">
+                      {expiredCodes.map(codeData => (
+                        <div class="redeem-code-card expired">
+                          <div class="code-info">
+                            <div class="code-main">
+                              <div class="code-label">Expired Code</div>
+                              <div class="code-value-display expired">{codeData.code}</div>
+                              {codeData.rewards && (
+                                <div class="code-rewards">
+                                  <strong>Rewards:</strong> {codeData.rewards}
+                                </div>
+                              )}
+                              <div class="code-meta">
+                                <span class="code-status expired">Expired</span>
+                                <span class="code-date">Expired: {codeData.expiryDate}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div class="redeem-empty-section">
+                    <div class="card">
+                      <p class="redeem-empty-message">
+                        No expired codes yet! All available codes are still worth trying.
+                      </p>
+                    </div>
+                  </div>
+                )
+              }
+            </div>
+
+            <!-- How to Redeem Section -->
+            <div class="section">
+              <h2 class="section-title">{redeemInstructions.title}</h2>
+              <p class="section-description">{redeemInstructions.description}</p>
+
+              <div class="redeem-instructions-container">
+                <div class="card">
+                  <h4>Step-by-Step Guide:</h4>
+
+                  {
+                    redeemInstructions.steps.map(step => (
+                      <div class="redeem-instruction-step">
+                        <h5>{step.title}</h5>
+                        <p>{step.description}</p>
+                        {step.substeps && (
+                          <ol class="redeem-step-list">
+                            {step.substeps.map(substep => (
+                              <li set:html={substep} />
+                            ))}
+                          </ol>
+                        )}
+                        {step.image && (
+                          <div class="redeem-instruction-image">
+                            <img src={step.image} alt={step.imageAlt} loading="lazy" />
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+    <script>
+      // Secure mobile-optimized copy functionality
+      (function () {
+        'use strict';
+
+        let timers = new Map(); // Track timers for cleanup
+
+        function cleanupTimer(button) {
+          const timerId = timers.get(button);
+          if (timerId) {
+            clearTimeout(timerId);
+            timers.delete(button);
+          }
+        }
+
+        function safeRemoveElement(element) {
+          try {
+            if (element && element.parentNode) {
+              element.parentNode.removeChild(element);
+            }
+          } catch (e) {
+            // Element already removed or invalid
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+          const copyButtons = document.querySelectorAll('.copy-button');
+
+          copyButtons.forEach(button => {
+            // Prevent duplicate listeners
+            if (button.dataset.copyHandlerAttached) return;
+            button.dataset.copyHandlerAttached = 'true';
+
+            function handleCopy() {
+              const code = this.getAttribute('data-code');
+              const originalText = this.textContent;
+
+              // Clean up any existing timer
+              cleanupTimer(this);
+
+              if (navigator.userAgent.match(/ipad|iphone|android/i)) {
+                // Mobile approach with better cleanup
+                let input = null;
+
+                try {
+                  input = document.createElement('input');
+                  input.value = code;
+                  input.style.cssText = `
+                  position: absolute;
+                  left: 50%;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: 9999;
+                  padding: 10px;
+                  font-size: 16px;
+                  border: 2px solid var(--sab-calm-red);
+                  border-radius: 8px;
+                  background-color: var(--bg-primary);
+                  color: var(--text-inverse);
+                `;
+
+                  document.body.appendChild(input);
+                  input.focus();
+                  input.select();
+                  input.setSelectionRange(0, 99999);
+
+                  this.textContent = 'Now tap Copy!';
+
+                  // Store timer reference for cleanup
+                  const timerId = setTimeout(() => {
+                    safeRemoveElement(input);
+                    this.textContent = originalText;
+                    timers.delete(this);
+                  }, 3000);
+
+                  timers.set(this, timerId);
+                } catch (e) {
+                  // Fallback on error
+                  safeRemoveElement(input);
+                  this.textContent = 'Manual copy: ' + code;
+                  const timerId = setTimeout(() => {
+                    this.textContent = originalText;
+                    timers.delete(this);
+                  }, 2000);
+                  timers.set(this, timerId);
+                }
+              } else {
+                // Desktop approach with better error handling
+                let input = null;
+
+                try {
+                  input = document.createElement('input');
+                  input.value = code;
+                  input.style.cssText = 'position:absolute;left:-9999px;top:-9999px;';
+                  document.body.appendChild(input);
+                  input.select();
+                  input.setSelectionRange(0, 99999);
+
+                  const success = document.execCommand('copy');
+                  this.textContent = success ? 'Copied!' : 'Manual: ' + code;
+
+                  const timerId = setTimeout(() => {
+                    this.textContent = originalText;
+                    timers.delete(this);
+                  }, 1500);
+
+                  timers.set(this, timerId);
+                } catch (e) {
+                  this.textContent = 'Manual: ' + code;
+                  const timerId = setTimeout(() => {
+                    this.textContent = originalText;
+                    timers.delete(this);
+                  }, 2000);
+                  timers.set(this, timerId);
+                } finally {
+                  safeRemoveElement(input);
+                }
+              }
+            }
+
+            button.addEventListener('click', handleCopy);
+            button.addEventListener('touchend', function (e) {
+              e.preventDefault();
+              handleCopy.call(this);
+            });
+          });
+
+          // Cleanup on page unload to prevent memory leaks
+          window.addEventListener('beforeunload', function () {
+            timers.forEach(clearTimeout);
+            timers.clear();
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

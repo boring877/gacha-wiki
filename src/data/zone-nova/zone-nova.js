@@ -30,6 +30,151 @@ export const zoneNovaConfig = {
     },
   ],
 
+  // Main Category Groups
+  categoryGroups: [
+    {
+      id: 'characters',
+      title: 'Characters',
+      emoji: '',
+      description: 'Character database, rankings, comparisons, and tier lists',
+      size: 'large',
+      guides: [
+        {
+          id: 'characters',
+          title: 'Database',
+          url: '/guides/zone-nova/characters/',
+        },
+        {
+          id: 'tier-list',
+          title: 'Tier List',
+          url: '/guides/zone-nova/tier-list/',
+        },
+        {
+          id: 'character-rankings',
+          title: 'Rankings',
+          url: '/guides/zone-nova/character-rankings/',
+        },
+        {
+          id: 'character-comparison',
+          title: 'Comparison',
+          url: '/guides/zone-nova/character-comparison/',
+        },
+        {
+          id: 'character-comparison-v2',
+          title: 'Comparison V2',
+          url: '/guides/zone-nova/character-comparison-v2/',
+        },
+        {
+          id: 'character-tags',
+          title: 'Tags',
+          url: '/guides/zone-nova/character-tags/',
+        },
+      ],
+    },
+    {
+      id: 'combat',
+      title: 'Combat',
+      emoji: '',
+      description: 'Damage mechanics, rifts, memories, and team strategies',
+      size: 'large',
+      guides: [
+        {
+          id: 'damage-mechanics',
+          title: 'Damage Hub',
+          url: '/guides/zone-nova/damage-mechanics/',
+        },
+        {
+          id: 'rifts',
+          title: 'Rifts',
+          url: '/guides/zone-nova/rifts/',
+        },
+        {
+          id: 'rift-teams',
+          title: 'Rift Teams',
+          url: '/guides/zone-nova/rift-teams/',
+        },
+        {
+          id: 'memories',
+          title: 'Memories',
+          url: '/guides/zone-nova/memories/',
+        },
+        {
+          id: 'team-synergy',
+          title: 'Team Synergy',
+          url: '/guides/zone-nova/team-synergy/',
+        },
+      ],
+    },
+    {
+      id: 'progression',
+      title: 'Progression',
+      emoji: '',
+      description: 'Runes, crafting, and character progression systems',
+      size: 'medium',
+      guides: [
+        {
+          id: 'runes',
+          title: 'Runes',
+          url: '/guides/zone-nova/runes/',
+        },
+        {
+          id: 'crafting',
+          title: 'Crafting',
+          url: '/guides/zone-nova/crafting/',
+        },
+      ],
+    },
+    {
+      id: 'resources',
+      title: 'Resources',
+      emoji: '',
+      description: 'Utility tools, codes, and game information',
+      size: 'medium',
+      guides: [
+        {
+          id: 'clock',
+          title: 'Clock',
+          url: '/clock/zone-nova/',
+        },
+        {
+          id: 'redeem-codes',
+          title: 'Redeem Codes',
+          url: '/guides/zone-nova/redeem-codes/',
+        },
+        {
+          id: 'summon-faq',
+          title: 'Summon FAQ',
+          url: '/guides/zone-nova/summon-faq/',
+        },
+      ],
+    },
+    {
+      id: 'community',
+      title: 'Community',
+      emoji: '',
+      description: 'Updates, surveys, and community contributions',
+      size: 'medium',
+      guides: [
+        {
+          id: 'updates',
+          title: 'Updates',
+          url: '/guides/zone-nova/updates/',
+        },
+        {
+          id: 'surveys',
+          title: 'Surveys',
+          url: '/guides/zone-nova/surveys/',
+        },
+        {
+          id: 'contributing',
+          title: 'Contributing',
+          url: '/guides/zone-nova/contributing/',
+        },
+      ],
+    },
+  ],
+
+  // Original guides array (kept for backward compatibility)
   guides: [
     {
       id: 'clock',
@@ -39,6 +184,7 @@ export const zoneNovaConfig = {
         'Track Zone Nova daily reset times and server events. Never miss dailies, energy refills, or farming sessions with our real-time Zone Nova clock.',
       url: '/clock/zone-nova/',
       category: 'tools',
+      size: 'small',
     },
     {
       id: 'updates',
@@ -47,6 +193,7 @@ export const zoneNovaConfig = {
       description: 'Patch notes, maintenance, and announcements.',
       url: '/guides/zone-nova/updates/',
       category: 'info',
+      size: 'small',
     },
 
     {
@@ -56,6 +203,7 @@ export const zoneNovaConfig = {
       description: 'Character guides, skills Information, and more !.',
       url: '/guides/zone-nova/characters/',
       category: 'guides',
+      size: 'large',
     },
     {
       id: 'tier-list',
@@ -65,6 +213,7 @@ export const zoneNovaConfig = {
         'Comprehensive tier lists for PvE, PvP, Rifts, and Guild Raids with meta analysis.',
       url: '/guides/zone-nova/tier-list/',
       category: 'guides',
+      size: 'large',
     },
     {
       id: 'character-comparison',
@@ -74,6 +223,7 @@ export const zoneNovaConfig = {
         'Compare up to 4 characters side by side to analyze their stats and roles for optimal team building.',
       url: '/guides/zone-nova/character-comparison/',
       category: 'guides',
+      size: 'medium',
     },
     {
       id: 'character-comparison-v2',
@@ -83,6 +233,7 @@ export const zoneNovaConfig = {
         'Enhanced card-based comparison tool! Compare 2 characters with detailed stats, skills, team abilities, and streamlined design.',
       url: '/guides/zone-nova/character-comparison-v2/',
       category: 'guides',
+      size: 'medium',
     },
     {
       id: 'character-rankings',
@@ -92,6 +243,7 @@ export const zoneNovaConfig = {
         'View character stat rankings and overall performance analysis across HP, ATK, and DEF.',
       url: '/guides/zone-nova/character-rankings/',
       category: 'guides',
+      size: 'medium',
     },
     {
       id: 'character-tags',
@@ -101,6 +253,7 @@ export const zoneNovaConfig = {
         'Filter and discover characters by gameplay tags, class, rarity, element, faction, and role.',
       url: '/guides/zone-nova/character-tags/',
       category: 'guides',
+      size: 'small',
     },
     {
       id: 'memories',
@@ -109,6 +262,7 @@ export const zoneNovaConfig = {
       description: 'Sortable memory cards database with stats, effects, and characters.',
       url: '/guides/zone-nova/memories/',
       category: 'guides',
+      size: 'large',
     },
     {
       id: 'rifts',
@@ -117,6 +271,7 @@ export const zoneNovaConfig = {
       description: 'Rift Laws, mechanics, events, and rewards guide.',
       url: '/guides/zone-nova/rifts/',
       category: 'guides',
+      size: 'medium',
     },
     {
       id: 'rift-teams',
@@ -126,6 +281,7 @@ export const zoneNovaConfig = {
         'Specialized team compositions optimized for different Space-Time Rift levels and challenges.',
       url: '/guides/zone-nova/rift-teams/',
       category: 'guides',
+      size: 'medium',
     },
     {
       id: 'team-synergy',
@@ -135,6 +291,7 @@ export const zoneNovaConfig = {
         'General team compositions for Guild Raids, PvE content, and character-specific synergies.',
       url: '/guides/zone-nova/team-synergy/',
       category: 'guides',
+      size: 'medium',
     },
     {
       id: 'runes',
@@ -143,6 +300,7 @@ export const zoneNovaConfig = {
       description: 'All runes stats and sub stats, and items set stats.',
       url: '/guides/zone-nova/runes/',
       category: 'guides',
+      size: 'small',
     },
     {
       id: 'crafting',
@@ -151,6 +309,7 @@ export const zoneNovaConfig = {
       description: 'Where to craft items and how to craft them.',
       url: '/guides/zone-nova/crafting/',
       category: 'guides',
+      size: 'small',
     },
     {
       id: 'damage-mechanics',
@@ -159,6 +318,7 @@ export const zoneNovaConfig = {
       description: "Complete guide to Zone Nova's damage calculation system and defense mechanics.",
       url: '/guides/zone-nova/damage-mechanics/',
       category: 'guides',
+      size: 'medium',
     },
     {
       id: 'summon-faq',
@@ -167,6 +327,7 @@ export const zoneNovaConfig = {
       description: 'Complete guide to summoning, rates, pity system, and strategies.',
       url: '/guides/zone-nova/summon-faq/',
       category: 'guides',
+      size: 'small',
     },
     {
       id: 'redeem-codes',
@@ -175,6 +336,7 @@ export const zoneNovaConfig = {
       description: 'Active redeem codes for free gems, energy, characters and rewards.',
       url: '/guides/zone-nova/redeem-codes/',
       category: 'rewards',
+      size: 'small',
     },
     {
       id: 'surveys',
@@ -183,6 +345,7 @@ export const zoneNovaConfig = {
       description: 'Official Zone Nova player surveys and translations.',
       url: '/guides/zone-nova/surveys/',
       category: 'community',
+      size: 'small',
     },
     {
       id: 'contributing',
@@ -191,6 +354,7 @@ export const zoneNovaConfig = {
       description: 'Learn how to contribute to the Zone Nova guides.',
       url: '/guides/zone-nova/contributing/',
       category: 'community',
+      size: 'small',
     },
   ],
 };

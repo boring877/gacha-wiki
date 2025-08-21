@@ -7,7 +7,7 @@ import { silverAndBloodConfig } from '../../data/silver-and-blood/silver-and-blo
 import '../../styles/games/silver-and-blood/sab-landing-page.css';
 
 // Extract data for easier use in template
-const { meta, gameInfo, guides, storyContent } = silverAndBloodConfig;
+const { meta, gameInfo, guides, storyContent, categoryGroups } = silverAndBloodConfig;
 
 // Breadcrumb data for SEO
 const breadcrumbs = [
@@ -122,23 +122,31 @@ const breadcrumbs = [
     </p>
   </section>
 
-  <!-- Resources: Guide cards from guides array -->
+  <!-- Resources: Bento Grid Layout -->
   <section class="content-section">
     <h2 class="section-title">Resources</h2>
 
-    <!-- Guide cards grid - maps through guides array from silver-and-blood.js -->
     <div class="guides-grid">
       {
-        guides.map(guide => (
-          <a href={guide.url} class="guide-card-link">
-            <div class="guide-card">
-              <h3>
-                <span class="guide-emoji">{guide.emoji}</span>
-                {guide.title}
-              </h3>
-              <p>{guide.description}</p>
+        categoryGroups.map(category => (
+          <div class={`category-card ${category.size}`}>
+            <div class="category-header">
+              <span class="category-emoji">{category.emoji}</span>
+              <h3>{category.title}</h3>
+              <p class="category-description">{category.description}</p>
             </div>
-          </a>
+            <div class="nested-guides-grid">
+              {category.guides.map(guide => (
+                <a
+                  href={guide.url}
+                  class="nested-guide-card"
+                  aria-label={`Navigate to ${guide.title}`}
+                >
+                  {guide.title}
+                </a>
+              ))}
+            </div>
+          </div>
         ))
       }
     </div>

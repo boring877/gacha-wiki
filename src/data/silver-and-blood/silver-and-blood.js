@@ -78,6 +78,126 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     },
   ],
 
+  // Main Category Groups for Bento Grid Layout
+  categoryGroups: [
+    {
+      id: 'characters',
+      title: 'Characters',
+      emoji: '',
+      description: 'Character database, rankings, comparisons, and tier lists',
+      size: 'large',
+      guides: [
+        {
+          id: 'characters',
+          title: 'Database',
+          url: '/guides/silver-and-blood/characters/',
+        },
+        {
+          id: 'tier-list',
+          title: 'Tier List',
+          url: '/guides/silver-and-blood/tier-list/',
+        },
+        {
+          id: 'character-rankings',
+          title: 'Rankings',
+          url: '/guides/silver-and-blood/character-rankings/',
+        },
+        {
+          id: 'character-comparison',
+          title: 'Comparison',
+          url: '/guides/silver-and-blood/character-comparison/',
+        },
+        {
+          id: 'character-comparison-v2',
+          title: 'Comparison V2',
+          url: '/guides/silver-and-blood/character-comparison-v2/',
+        },
+        {
+          id: 'character-tag-selection',
+          title: 'Tags',
+          url: '/guides/silver-and-blood/character-tag-selection/',
+        },
+      ],
+    },
+    {
+      id: 'combat',
+      title: 'Combat',
+      emoji: '',
+      description: 'Damage mechanics, boss battles, clan hunts, and team strategies',
+      size: 'large',
+      guides: [
+        {
+          id: 'damage-mechanics',
+          title: 'Damage Hub',
+          url: '/guides/silver-and-blood/damage-mechanics/',
+        },
+        {
+          id: 'boss-database',
+          title: 'Boss Database',
+          url: '/guides/silver-and-blood/boss-database/',
+        },
+        {
+          id: 'clan-hunt',
+          title: 'Clan Hunt',
+          url: '/guides/silver-and-blood/clan-hunt/',
+        },
+        {
+          id: 'team-synergy',
+          title: 'Team Synergy',
+          url: '/guides/silver-and-blood/team-synergy/',
+        },
+      ],
+    },
+    {
+      id: 'events',
+      title: 'Events',
+      emoji: '',
+      description: 'Special events, puzzles, and limited content',
+      size: 'medium',
+      guides: [
+        {
+          id: 'events',
+          title: 'Events',
+          url: '/guides/silver-and-blood/events/',
+        },
+        {
+          id: 'dutchmans-revenge',
+          title: "Dutchman's Revenge",
+          url: '/guides/silver-and-blood/dutchmans-revenge/',
+        },
+        {
+          id: 'ancestral-vault',
+          title: 'Ancestral Vault',
+          url: '/guides/silver-and-blood/ancestral-vault/',
+        },
+      ],
+    },
+    {
+      id: 'resources',
+      title: 'Resources',
+      emoji: '',
+      description: 'Utility tools, codes, and game information',
+      size: 'medium',
+      guides: [
+        {
+          id: 'clock',
+          title: 'Clock',
+          url: '/clock/silver-and-blood/',
+        },
+        {
+          id: 'redeem-codes',
+          title: 'Redeem Codes',
+          url: '/guides/silver-and-blood/redeem-codes/',
+        },
+        {
+          id: 'summon-faq',
+          title: 'Summon FAQ',
+          url: '/guides/silver-and-blood/summon-faq/',
+        },
+      ],
+    },
+  ],
+
   guides: [
     {
       id: 'clock',
@@ -86,6 +206,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       description:
         'Track Silver and Blood server resets, maintenance, raids, signin events, outfit availability, and special events with real-time countdown timers for APAC and US regions.',
       url: '/clock/silver-and-blood/',
+      category: 'tools',
+      status: 'active',
+    },
+    {
+      id: 'redeem-codes',
+      title: 'Redeem Codes',
+      emoji: '',
+      description:
+        'Free Silver and Blood redeem codes for in-game rewards, gems, and items. Updated regularly with working promo codes and step-by-step redemption instructions.',
+      url: '/guides/silver-and-blood/redeem-codes/',
       category: 'tools',
       status: 'active',
     },

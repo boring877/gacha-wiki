@@ -179,7 +179,34 @@
   font-size: 1.2rem;
 }
 
-/* Mobile Optimizations */
+/* Tablet Landscape Responsive (1024px and below) */
+@media (max-width: 1024px) {
+  .guides-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .category-card.large,
+  .category-card.medium,
+  .category-card.small {
+    grid-column: span 1;
+    grid-row: span 1;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    padding: 2rem;
+  }
+
+  .nested-guides-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .nested-guide-card {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile & Small Tablet Responsive */
 @media (max-width: 768px) {
   .story-intro {
     padding: 1.5rem 0.5rem;
@@ -231,27 +258,45 @@
     font-size: 1rem;
   }
 
-  /* Guides Grid Mobile */
+  /* Bento Grid Mobile */
   .guides-grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
     gap: 1.5rem;
     margin-top: 2rem;
   }
 
-  .guide-card {
+  .category-card.large,
+  .category-card.medium,
+  .category-card.small {
+    grid-column: span 1;
+    grid-row: span 1;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
     padding: 1.5rem;
   }
 
-  .guide-card h3 {
+  .category-header {
+    margin-bottom: 1rem;
+  }
+
+  .category-header h3 {
     font-size: 1.2rem;
   }
 
-  .guide-card p {
-    font-size: 0.95rem;
+  .category-description {
+    font-size: 0.85rem;
   }
 
-  .guide-emoji {
-    font-size: 1.6rem;
+  .nested-guides-grid {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    grid-auto-rows: 70px;
+    gap: 0.5rem;
+  }
+
+  .nested-guide-card {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+    min-height: 44px;
   }
 
   .content-section {
@@ -299,7 +344,47 @@
     font-size: 0.95rem;
   }
 
-  /* Extra Small Mobile - Guides */
+  /* Small Mobile Bento Grid */
+  .guides-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .category-card.large,
+  .category-card.medium,
+  .category-card.small {
+    grid-column: span 1;
+    grid-row: span 1;
+    padding: 1.5rem;
+  }
+
+  .category-header {
+    margin-bottom: 1rem;
+  }
+
+  .category-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .category-description {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .nested-guides-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-auto-rows: 65px;
+    gap: 0.5rem;
+  }
+
+  .nested-guide-card {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    min-height: 48px;
+    border-radius: 8px;
+  }
+
+  /* Extra Small Mobile - Content Section */
   .content-section {
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -308,25 +393,9 @@
   .section-title {
     font-size: 1.8rem;
   }
-
-  .guide-card {
-    padding: 1.25rem;
-  }
-
-  .guide-card h3 {
-    font-size: 1.1rem;
-    gap: 0.5rem;
-  }
-
-  .guide-card p {
-    font-size: 0.9rem;
-  }
-
-  .guide-emoji {
-    font-size: 1.4rem;
-  }
 }
 
+/* Default Content Section Styles */
 .content-section {
   padding: 2.5rem;
   margin-bottom: 2rem;
@@ -359,42 +428,95 @@
   font-weight: 500;
 }
 
-/* Guides Grid */
+/* Bento Grid Layout */
 .guides-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 1.2rem;
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 100%;
 }
 
-.guide-card-link {
-  text-decoration: none;
-}
-
-.guide-card {
+/* Category Cards */
+.category-card {
   background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
   padding: 2rem;
   border-radius: 16px;
   border: 1px solid #3a3a3a;
+  position: relative;
+  overflow: hidden;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.guide-card h3 {
-  margin-top: 0;
+/* Category Card Size Variants */
+.category-card.large {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(135deg, #2a2a2a 0%, rgba(194, 107, 107, 0.05) 100%);
+}
+
+.category-card.medium {
+  grid-column: span 2;
+  grid-row: span 1;
+  background: linear-gradient(135deg, #2a2a2a 0%, rgba(192, 192, 192, 0.05) 100%);
+}
+
+.category-card.small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* Category Header */
+.category-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.category-header h3 {
   color: #f0f0f0;
+  margin: 0 0 0.5rem 0;
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.category-description {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Nested Guides Bento Grid */
+.nested-guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-auto-rows: 80px;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.nested-guide-card {
+  color: #f0f0f0;
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #3a3a3a;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  height: 100%;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
 }
 
-.guide-card p {
-  color: #b0b0b0;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.guide-emoji {
-  font-size: 1.8rem;
+.guide-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }

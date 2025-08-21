@@ -1,0 +1,465 @@
+/* Silver and Blood Redeem Codes Styles */
+/* This file contains styles specifically for the Redeem Codes section */
+/* Follows SAB layout patterns and color system */
+
+/* ===== MAIN LAYOUT SECTIONS ===== */
+
+.intro-section {
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid var(--sab-calm-red);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.intro-section .redeem-codes-description {
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0 0 2rem 0;
+}
+
+.redeem-codes-warning {
+  background: linear-gradient(135deg, rgba(166, 77, 77, 0.1), rgba(166, 77, 77, 0.05));
+  border: 2px solid var(--sab-calm-red);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 60rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.redeem-codes-warning::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(166, 77, 77, 0.1), transparent);
+}
+
+.redeem-codes-warning h3 {
+  color: var(--sab-calm-red);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.redeem-codes-warning p {
+  color: #f8f9fa;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.last-updated {
+  color: var(--sab-blue-silver);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  color: #f8f9fa;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid var(--sab-calm-red);
+  padding-bottom: 0.75rem;
+}
+
+.section-description {
+  text-align: center;
+  color: #d1d5db;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ===== CODES GRID AND CARDS ===== */
+
+.redeem-codes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.redeem-code-card {
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+  border: 2px solid #374151;
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.redeem-code-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--sab-calm-red), var(--sab-blue-silver));
+}
+
+.code-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.code-main {
+  flex: 1;
+}
+
+.code-label {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+}
+
+.code-value-display {
+  font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f8f9fa;
+  letter-spacing: 1px;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.code-value-display.expired {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.code-rewards {
+  color: var(--sab-blue-silver);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.code-rewards strong {
+  color: #f8f9fa;
+}
+
+.code-server-restriction {
+  color: var(--sab-muted-gold);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.code-server-restriction strong {
+  color: var(--sab-calm-red);
+  font-style: normal;
+}
+
+.code-valid-until {
+  color: var(--sab-muted-gold);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.code-valid-until strong {
+  color: var(--sab-calm-red);
+}
+
+.code-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.code-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.code-status.unknown {
+  background: rgba(184, 197, 209, 0.2);
+  color: var(--sab-blue-silver);
+  border: 1px solid var(--sab-blue-silver);
+}
+
+.code-status.expired {
+  background: rgba(156, 163, 175, 0.2);
+  color: #9ca3af;
+  border: 1px solid #6b7280;
+}
+
+.code-date {
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+.code-action {
+  display: flex;
+  align-items: center;
+}
+
+.copy-button {
+  background: linear-gradient(135deg, var(--sab-calm-red), var(--sab-dark-red));
+  color: #f8f9fa;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-button:active {
+  transform: translateY(0);
+}
+
+.copy-button.copy-success {
+  background: linear-gradient(135deg, var(--sab-blue-silver), var(--sab-dark-blue)) !important;
+}
+
+.code-copied {
+  border-color: var(--sab-blue-silver) !important;
+}
+
+/* ===== EXPIRED CODES SECTION ===== */
+
+.expired-section .redeem-code-card {
+  opacity: 0.7;
+}
+
+.expired-section .redeem-code-card .copy-button {
+  display: none;
+}
+
+/* ===== INSTRUCTIONS SECTION ===== */
+
+.redeem-instructions-container {
+  margin-bottom: 3rem;
+}
+
+.card {
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+  border: 2px solid #374151;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.card h4,
+.card h5 {
+  color: #f8f9fa;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.card h5 {
+  font-size: 1.3rem;
+  color: var(--sab-blue-silver);
+  font-weight: 600;
+}
+
+.card p {
+  color: #d1d5db;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.redeem-instruction-step {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #374151;
+}
+
+.redeem-instruction-step:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.redeem-step-list {
+  color: #d1d5db;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.redeem-step-list li {
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.redeem-instruction-image {
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(35, 35, 35, 0.9));
+  border: 2px solid var(--sab-calm-red);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.redeem-instruction-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* ===== EMPTY SECTION ===== */
+
+.redeem-empty-section .card {
+  text-align: center;
+  border: 2px solid var(--sab-blue-silver);
+}
+
+.redeem-empty-message {
+  color: #d1d5db;
+  font-size: 1.1rem;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
+
+/* Touch-friendly button sizing */
+.copy-button {
+  min-height: 44px; /* iOS recommended minimum touch target */
+  min-width: 44px;
+}
+
+/* Prevent text selection on touch devices */
+.copy-button {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Improve touch responsiveness */
+.redeem-code-card {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+  .intro-section {
+    padding: 1.5rem;
+  }
+
+  .redeem-codes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem; /* Increased for better touch spacing */
+  }
+
+  .redeem-code-card {
+    padding: 1.5rem; /* Increased for better touch targets */
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .code-info {
+    gap: 1rem;
+  }
+
+  .code-value-display {
+    font-size: 1.2rem; /* Larger for better readability */
+    letter-spacing: 1px;
+    line-height: 1.4;
+  }
+
+  .copy-button {
+    padding: 0.75rem 1.5rem; /* Larger touch targets */
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+    min-height: 48px; /* Larger for mobile */
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card h4 {
+    font-size: 1.3rem;
+  }
+
+  .card h5 {
+    font-size: 1.1rem;
+  }
+
+  .redeem-instruction-image {
+    padding: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .redeem-codes-warning {
+    padding: 1.25rem;
+    margin: 1rem 0;
+  }
+}
+
+/* ===== SMALL MOBILE DEVICES ===== */
+
+@media (max-width: 480px) {
+  .intro-section {
+    padding: 1rem;
+  }
+
+  .redeem-code-card {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .code-value-display {
+    font-size: 1rem;
+  }
+
+  .copy-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+}

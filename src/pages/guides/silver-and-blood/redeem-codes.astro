@@ -1,0 +1,30 @@
+---
+import RedeemCodesLayout from '../../../layouts/silver-and-blood/RedeemCodesLayout.astro';
+
+// Import redeem codes data
+import {
+  silverAndBloodRedeemCodes,
+  generateRedeemCodesStructuredData,
+} from '../../../data/silver-and-blood/redeem-codes.js';
+
+// Extract data from the data file
+const redeemCodesData = silverAndBloodRedeemCodes;
+
+// Page metadata
+const title = redeemCodesData.meta.title;
+const description = redeemCodesData.meta.description;
+const gameTitle = 'Redeem Codes';
+
+// Generate structured data for SEO
+const structuredData = generateRedeemCodesStructuredData();
+---
+
+<RedeemCodesLayout
+  title={title}
+  description={description}
+  gameTitle={gameTitle}
+  data={redeemCodesData}
+>
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+</RedeemCodesLayout>
