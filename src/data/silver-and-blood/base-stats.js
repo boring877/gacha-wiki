@@ -713,7 +713,7 @@ export const baseStats = {
   // Timeless Aiona
   'timeless-aiona': {
     hp: 155000, // 155K
-    atk: 155000, // 155K - exceptionally high ATK
+    atk: 11402,
     pDef: 3293,
     mDef: 3991,
     atkSpd: 0, // 0%
@@ -726,6 +726,24 @@ export const baseStats = {
     mDmgBonus: 0,
     receivedHealingBonus: 0,
     bloodPower: 22531, // Highest in the database
+  },
+
+  // Quinn
+  quinn: {
+    hp: 211000, // 211K
+    atk: 7306,
+    pDef: 4173,
+    mDef: 5434,
+    atkSpd: 0, // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5, // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20863,
   },
 
   // --- add more characters below ---
