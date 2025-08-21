@@ -51,7 +51,6 @@ export default defineConfig({
           manualChunks: {
             // Vendor libraries
             vendor: ['gsap'],
-            charts: ['chart.js'],
 
             // Game-specific data chunks
             'zone-nova-data': [
