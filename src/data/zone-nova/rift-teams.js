@@ -208,6 +208,121 @@ export const ZONE_NOVA_RIFT_TEAMS = [
     notes: 'DOT-focused team with Thor, Odin and Horus.',
     elementWeakness: ['Holy', 'Ice'],
   },
+  {
+    id: 14,
+    name: 'Thor Horus DOT Team IX',
+    type: RIFT_TEAM_TYPES.RIFT_IX,
+    tier: RIFT_TEAM_TIERS.SSS,
+    characters: [
+      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
+      { name: 'Horus', image: '/images/games/zone-nova/characters/Horus.jpg' },
+      { name: 'Afrodite', image: '/images/games/zone-nova/characters/Afrodite.jpg' },
+      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+    ],
+    notes: 'Afrodite can deal alot of single dmg, good against last boss lv 10',
+    elementWeakness: ['Holy', 'Chaos'],
+  },
+  {
+    id: 15,
+    name: 'Full Holy team',
+    type: RIFT_TEAM_TYPES.RIFT_IX,
+    tier: RIFT_TEAM_TIERS.SSS,
+    characters: [
+      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
+      { name: 'Horus', image: '/images/games/zone-nova/characters/Horus.jpg' },
+      { name: 'Yuis', image: '/images/games/zone-nova/characters/Yuis.jpg' },
+      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+    ],
+    notes: 'Very good team overall, alot of break and holy dmg. should melt things up !',
+    elementWeakness: ['Holy', 'Chaos'],
+  },
+  {
+    id: 16,
+    name: 'Freye and Hera',
+    type: RIFT_TEAM_TYPES.RIFT_IX,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
+      { name: "Jeanne d'Arc", image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
+      { name: 'Hera', image: '/images/games/zone-nova/characters/Hera.jpg' },
+      { name: 'Freye', image: '/images/games/zone-nova/characters/Freye.jpg' },
+    ],
+    notes: 'Freye and hera they work really good, alot of dmg and DOT dmg !!.',
+    elementWeakness: ['Holy', 'Chaos'],
+  },
+  {
+    id: 17,
+    name: 'no element weakness',
+    type: RIFT_TEAM_TYPES.RIFT_IX,
+    tier: RIFT_TEAM_TIERS.S,
+    characters: [
+      { name: 'Penny', image: '/images/games/zone-nova/characters/penny.jpg' },
+      { name: "Jeanne d'Arc", image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
+      { name: 'Shu', image: '/images/games/zone-nova/characters/Shu.jpg' },
+      { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
+    ],
+    notes: 'This is werid team can get you to lv 10, just no break which going be painful',
+    elementWeakness: ['Holy', 'Chaos'],
+  },
+  {
+    id: 18,
+    name: 'Guinevere Yuis Team IX',
+    type: RIFT_TEAM_TYPES.RIFT_IX,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Yuis', image: '/images/games/zone-nova/characters/Yuis.jpg' },
+      { name: 'Shu', image: '/images/games/zone-nova/characters/Shu.jpg' },
+      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+    ],
+    notes: 'I used this team to pass lv 10, it works fine. I just go 2 star T_T',
+    elementWeakness: ['Holy', 'Chaos'],
+  },
+  {
+    id: 19,
+    name: 'Thor Loki Team ',
+    type: RIFT_TEAM_TYPES.RIFT_IX,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
+      { name: 'Hera', image: '/images/games/zone-nova/characters/Hera.jpg' },
+      { name: 'Loki', image: '/images/games/zone-nova/characters/Loki.jpg' },
+      { name: 'Kela', image: '/images/games/zone-nova/characters/kela.jpg' },
+    ],
+    notes:
+      'Thor very Strong in this rfit, she will help you deal dmg and tank your teammates, loki help break and hera dealing good dmg.',
+    elementWeakness: ['Holy', 'Chaos'],
+  },
+  {
+    id: 20,
+    name: 'Nini Team',
+    type: RIFT_TEAM_TYPES.RIFT_IX,
+    tier: RIFT_TEAM_TIERS.S,
+    characters: [
+      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Nini', image: '/images/games/zone-nova/characters/Nini.jpg' },
+      { name: 'Kela', image: '/images/games/zone-nova/characters/kela.jpg' },
+      { name: 'Hera', image: '/images/games/zone-nova/characters/Hera.jpg' },
+    ],
+    notes:
+      'Nini can be strong and hit all target with hear ultimate, tho this build still weak but can pass to lv 10',
+    elementWeakness: ['Holy', 'Chaos'],
+  },
+  {
+    id: 21,
+    name: 'Stander team',
+    type: RIFT_TEAM_TYPES.RIFT_IX,
+    tier: RIFT_TEAM_TIERS.S,
+    characters: [
+      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Kela', image: '/images/games/zone-nova/characters/kela.jpg' },
+      { name: 'Shu', image: '/images/games/zone-nova/characters/Shu.jpg' },
+      { name: 'Hera', image: '/images/games/zone-nova/characters/Hera.jpg' },
+    ],
+    notes:
+      'Kela only good dor single healer, you need to keep spamming Guinevere ultimate to get the map buff, shu do nice dmg too .',
+    elementWeakness: ['Holy', 'Chaos'],
+  },
 ];
 
 // Metadata for filters
@@ -250,8 +365,9 @@ export function sortRiftTeams(teams, sortKey, direction = 'asc') {
   return [...teams].sort((a, b) => {
     // Default sort: by type (newest rift first), then by tier, then by name
     if (!sortKey || sortKey === '') {
-      // First sort by rift type (VIII > VII > VI, etc.)
+      // First sort by rift type (IX > VIII > VII > VI, etc.)
       const typeOrder = {
+        'rift-ix': 9,
         'rift-viii': 8,
         'rift-vii': 7,
         'rift-vi': 6,

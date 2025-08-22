@@ -231,7 +231,7 @@ function renderRiftDesktopTable() {
       <td><strong>${escapeHtml(team.name)}</strong></td>
       <td><span class="rift-type-badge ${team.type}">${escapeHtml(getRiftTeamTypeText(team.type))}</span></td>
       <td><span class="rift-tier-badge ${team.tier}">${escapeHtml(getRiftTeamTierText(team.tier))}</span></td>
-      <td>${team.elementWeakness ? team.elementWeakness.map(element => `<span class="element-weakness-badge element-weakness-${element.toLowerCase()}">${escapeHtml(element)}</span>`).join(' ') : '<span class="element-weakness-badge no-weakness">-</span>'}</td>
+      <td><div class="element-weakness-container">${team.elementWeakness ? team.elementWeakness.map(element => `<span class="element-weakness-badge element-weakness-${element.toLowerCase()}">${escapeHtml(element)}</span>`).join('') : '<span class="element-weakness-badge no-weakness">-</span>'}</div></td>
       ${team.characters
         .map(char => {
           const element = getCharacterElement(char.name);
