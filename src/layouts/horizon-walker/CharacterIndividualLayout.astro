@@ -22,20 +22,10 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: string;
-  showBackButton?: boolean;
-  backButtonHref?: string;
   breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
-const { 
-  title, 
-  description, 
-  gameTitle, 
-  heroImage, 
-  showBackButton = true, 
-  backButtonHref = '/guides/horizon-walker/characters/',
-  breadcrumbs 
-} = Astro.props;
+const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
 ---
 
 <html lang="en">
@@ -46,13 +36,19 @@ const {
       breadcrumbs={breadcrumbs}
       shouldPreloadDefaultImage={false}
     />
-    <GameSEO 
-      gameKey="horizon-walker" 
-      title={title} 
+    <GameSEO
+      gameKey="horizon-walker"
+      title={title}
       description={description}
-      additionalKeywords={['horizon walker', gameTitle?.toLowerCase() || '', 'waifu guide', 'character build', 'stats guide 2025']}
+      additionalKeywords={[
+        'horizon walker',
+        gameTitle?.toLowerCase() || '',
+        'waifu guide',
+        'character build',
+        'stats guide 2025',
+      ]}
     />
-    
+
     <!-- Enhanced Open Graph for Individual Characters -->
     <meta property="og:type" content="article" />
     <meta property="article:section" content="Gaming" />
@@ -61,7 +57,7 @@ const {
     <meta property="article:tag" content="Character Guide" />
     <meta property="article:tag" content="Waifu" />
     {heroImage && <meta property="og:image" content={new URL(heroImage, Astro.site)} />}
-    
+
     <!-- Twitter Card Enhancement -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@GachaWiki" />
@@ -69,7 +65,7 @@ const {
   </head>
   <body class="horizon-walker-body hw-layout-override">
     <CustomScrollbar />
-    
+
     <!-- Background layers for visual depth -->
     <div class="bg-layer hw-bg-primary"></div>
     <div class="bg-layer hw-bg-accent-1"></div>
@@ -83,7 +79,6 @@ const {
 
       <div class="horizon-walker-container">
         <main class="horizon-walker-main">
-          
           <!-- Hero Section (when hero image is provided) -->
           {
             heroImage && gameTitle && (
