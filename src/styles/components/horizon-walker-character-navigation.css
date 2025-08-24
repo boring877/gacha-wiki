@@ -1,0 +1,182 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                  HORIZON WALKER - CHARACTER NAVIGATION                  */
+/*                   Character navigation components with green theme       */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Desktop Character Navigation */
+.hw-character-navigation {
+  position: sticky;
+  top: 2rem;
+  z-index: 100;
+  margin: 2rem 0;
+  padding: 0 2rem;
+}
+
+.hw-character-navigation .nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 75rem;
+  margin: 0 auto;
+  background: var(--hw-card-bg);
+  border: 1px solid var(--hw-border-gray);
+  border-radius: var(--hw-radius-lg);
+  padding: 1rem 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.hw-character-navigation .nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--hw-radius-md);
+  text-decoration: none;
+  color: var(--hw-text-light);
+  background: var(--hw-bg-light);
+  border: 1px solid var(--hw-border-light);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.hw-character-navigation .nav-button:hover {
+  background: var(--neutral-700);
+  border-color: var(--neutral-600);
+  color: var(--hw-white);
+}
+
+.hw-character-navigation .nav-arrow {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.hw-character-navigation .nav-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hw-character-navigation .next-button .nav-text {
+  align-items: flex-end;
+}
+
+.hw-character-navigation .center-button .nav-text {
+  align-items: center;
+}
+
+.hw-character-navigation .nav-label {
+  font-size: 0.75rem;
+  color: var(--hw-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hw-character-navigation .nav-character {
+  font-size: 0.9rem;
+  color: var(--hw-text-light);
+  font-weight: 600;
+}
+
+/* Center button styling */
+.hw-character-navigation .center-button {
+  font-weight: 600;
+  background: var(--neutral-700);
+  border-color: var(--neutral-600);
+  color: var(--hw-white);
+}
+
+.hw-character-navigation .center-button:hover {
+  background: var(--neutral-600);
+}
+
+/* Mobile Character Navigation */
+.mobile-character-nav {
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: var(--hw-card-bg);
+  border: 1px solid var(--hw-border-gray);
+  border-radius: var(--hw-radius-lg);
+  padding: 0.75rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-character-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mobile-nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--hw-radius-sm);
+  text-decoration: none;
+  color: var(--hw-text-light);
+  background: var(--hw-bg-light);
+  border: 1px solid var(--hw-border-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.mobile-nav-button:hover {
+  background: var(--neutral-700);
+  color: var(--hw-white);
+}
+
+.mobile-nav-button.center {
+  background: var(--neutral-700);
+  color: var(--hw-white);
+}
+
+/* Mobile Swipe Zones */
+.mobile-swipe-left,
+.mobile-swipe-right {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  z-index: 10;
+  pointer-events: auto;
+  background: transparent;
+}
+
+.mobile-swipe-left {
+  left: 0;
+}
+
+.mobile-swipe-right {
+  right: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hw-character-navigation {
+    display: none;
+  }
+  
+  .mobile-character-nav {
+    display: flex;
+  }
+}
+
+/* Desktop only class */
+.desktop-only {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+/* Ensure proper spacing in character pages */
+.horizon-walker-main .hw-character-navigation:first-child {
+  margin-top: 0;
+}

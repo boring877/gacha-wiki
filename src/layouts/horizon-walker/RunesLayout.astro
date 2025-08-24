@@ -1,0 +1,284 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import { Image } from 'astro:assets';
+
+// Import CSS files properly
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-layout.css';
+import '../../styles/games/horizon-walker/hw-runes.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={description || ''}
+      breadcrumbs={breadcrumbs}
+      shouldPreloadDefaultImage={false}
+    />
+    <GameSEO gameKey="horizon-walker" title={title} description={description} />
+
+    <!-- Runes-specific structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Horizon Walker Mystical Runes Guide",
+        "description": "Complete guide to Mystical Runes in Horizon Walker. Learn about Forsaken, Transcendent, and Ethereal runes for your Chosen Human arsenal.",
+        "url": "https://gachawiki.info/guides/horizon-walker/runes/",
+        "mainEntity": {
+          "@type": "VideoGameSeries",
+          "name": "Horizon Walker",
+          "genre": "Fantasy RPG"
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Guides",
+              "item": "https://gachawiki.info/guides/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Horizon Walker",
+              "item": "https://gachawiki.info/guides/horizon-walker/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Mystical Runes",
+              "item": "https://gachawiki.info/guides/horizon-walker/runes/"
+            }
+          ]
+        }
+      }
+    </script>
+  </head>
+  <body class="horizon-walker-body hw-layout-override">
+    <CustomScrollbar />
+    
+    <!-- Background layers for visual depth similar to other HW pages -->
+    <div class="bg-layer hw-bg-primary"></div>
+    <div class="bg-layer hw-bg-accent-1"></div>
+    <div class="bg-layer hw-bg-accent-2"></div>
+    <div class="bg-layer hw-bg-accent-3"></div>
+
+    <div class="horizon-walker-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="horizon-walker" />
+      <MobileMenu />
+
+      <div class="horizon-walker-container">
+        <main class="horizon-walker-main">
+          <!-- Horizon Walker Runes Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                {/* Hero Image Container */}
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <Image
+                      src={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      width={1200}
+                      height={400}
+                      loading="eager"
+                      decoding="async"
+                    />
+                    {/* Overlay Gradient */}
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+
+                {/* Game Title */}
+                <h1 class="hero-title">{gameTitle}</h1>
+                {/* Decorative Elements */}
+                <DecorativeLines />
+              </section>
+            )
+          }
+          
+          <!-- Title Only Section (when no hero image) -->
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Content Area for Runes -->
+          <div class="content-area">
+            <!-- Mystical Introduction -->
+            <section class="content-section">
+              <div class="runes-intro">
+                <p class="intro-text">
+                  Mystical Runes are fragments of otherworldly power seized from the Forsaken Entities and 
+                  enhanced through the supernatural authority of Chosen Humans. These ancient artifacts 
+                  allow transcended warriors to push beyond mortal limitations and harness the very forces 
+                  that once threatened to destroy humanity.
+                </p>
+                <div class="intro-highlight">
+                  <p>
+                    <strong>Remember:</strong> Only those who have transcended mortality can safely wield 
+                    the power contained within these mystical artifacts. Use them wisely, Chosen Human.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Main Content Slot -->
+            <slot />
+
+            <!-- Footer Information -->
+            <section class="content-section">
+              <div class="runes-footer">
+                <h3 class="footer-title">Path of Transcendence</h3>
+                <p class="footer-text">
+                  Your journey as a Chosen Human has only just begun. Master these Mystical Runes, 
+                  transcend your mortal limitations, and stand ready to face whatever emerges from 
+                  the dimensional rifts. The fate of humanity rests in your otherworldly hands.
+                </p>
+                <div class="footer-quote">
+                  <em>"Power seized from our enemies becomes the key to our salvation."</em>
+                  <br>
+                  <small>— First Chosen Human Archives</small>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <!-- Runes interaction scripts -->
+    <script>
+      // Rune card hover effects and tooltips
+      document.addEventListener('DOMContentLoaded', () => {
+        const runeCards = document.querySelectorAll('.rune-card');
+        
+        runeCards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            // Add mystical glow effect
+            card.style.filter = 'brightness(1.1) drop-shadow(0 0 20px rgba(232, 165, 71, 0.4))';
+          });
+          
+          card.addEventListener('mouseleave', () => {
+            // Remove glow effect
+            card.style.filter = '';
+          });
+        });
+
+        // Smooth scroll for navigation links
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
+      });
+    </script>
+
+    <style>
+      /* Additional layout-specific styles */
+      .runes-intro {
+        text-align: center;
+        max-width: 60rem;
+        margin: 0 auto;
+      }
+
+      .intro-text {
+        color: #e0e0e0;
+        font-size: var(--text-lg);
+        line-height: var(--leading-relaxed);
+        margin-bottom: 2rem;
+      }
+
+      .intro-highlight {
+        background: linear-gradient(135deg, rgba(232, 165, 71, 0.1), rgba(255, 123, 123, 0.1));
+        border: 1px solid rgba(232, 165, 71, 0.3);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .intro-highlight p {
+        color: #ffffff;
+        margin: 0;
+        font-weight: 500;
+      }
+
+      .intro-highlight strong {
+        color: var(--hw-primary-warm);
+      }
+
+      .runes-footer {
+        text-align: center;
+        max-width: 50rem;
+        margin: 0 auto;
+      }
+
+      .footer-title {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: 600;
+        background: linear-gradient(135deg, #e8a547, #ff7b7b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0 0 1.5rem 0;
+      }
+
+      .footer-text {
+        color: #e0e0e0;
+        font-size: var(--text-base);
+        line-height: var(--leading-relaxed);
+        margin-bottom: 2rem;
+      }
+
+      .footer-quote {
+        background: rgba(232, 165, 71, 0.1);
+        border-left: 4px solid #e8a547;
+        border-radius: 8px;
+        padding: 1.5rem;
+        color: #c0c0c0;
+        font-style: italic;
+      }
+
+      .footer-quote small {
+        color: #a0a0a0;
+        font-size: var(--text-sm);
+      }
+    </style>
+  </body>
+</html>

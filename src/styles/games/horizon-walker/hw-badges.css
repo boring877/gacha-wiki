@@ -1,0 +1,63 @@
+/* Horizon Walker Badge System - Simple, No Shadows/Glows */
+
+/* Base Badge Styling */
+.hw-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  border: none;
+}
+
+/* Rarity Badges */
+.hw-badge[data-rarity="EX"] {
+  background: #ffd700;
+  color: #1a1a1a;
+}
+
+.hw-badge[data-rarity="SS"] {
+  background: #9c27b0;
+  color: #ffffff;
+}
+
+.hw-badge[data-rarity="S"] {
+  background: #673ab7;
+  color: #ffffff;
+}
+
+.hw-badge[data-rarity="A"] {
+  background: #4caf50;
+  color: #ffffff;
+}
+
+.hw-badge[data-rarity="B"] {
+  background: #607d8b;
+  color: #ffffff;
+}
+
+/* Type Badges */
+.hw-badge[data-type="Skill"] {
+  background: var(--hw-primary-warm);
+  color: #1a1a1a;
+}
+
+.hw-badge[data-type="Passive"] {
+  background: #9333ea;
+  color: #ffffff;
+}
+
+.hw-badge[data-type="Unique"] {
+  background: #9c27b0;
+  color: #ffffff;
+}
+
+.hw-badge[data-type="Signature"],
+.hw-badge[data-type*="Signature"] {
+  background: #dc2626;
+  color: #ffffff;
+  font-weight: 700;
+}
+

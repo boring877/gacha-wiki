@@ -1,0 +1,363 @@
+/* Horizon Walker Character Database Filter Bar Styles */
+
+/* Controls Section */
+.filter-controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Reset Row */
+.filter-reset-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Bottom Row: Filters Left, Sorting Right */
+.filter-controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-left-section {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.sort-right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.sort-buttons-single-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  min-width: 120px;
+}
+
+
+.sort-btn--compact {
+  padding: 0.75rem 0.8rem;
+  min-width: 60px;
+  min-height: 48px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.sort-btn {
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(232, 165, 71, 0.3);
+  color: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sort-btn:focus {
+  outline: none;
+}
+
+
+.sort-btn.active {
+  background: rgba(232, 165, 71, 0.2);
+  border-color: var(--hw-primary-warm);
+  color: var(--hw-primary-warm);
+}
+
+.sort-indicator {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  margin-left: auto;
+  padding-left: 0.5rem;
+}
+
+.sort-btn.active .sort-indicator {
+  opacity: 1;
+}
+
+/* Sort Direction States for Three-State System */
+.sort-btn.state-asc .sort-indicator::after {
+  content: "↑";
+  color: var(--hw-primary-warm);
+}
+
+.sort-btn.state-desc .sort-indicator::after {
+  content: "↓";
+  color: var(--hw-primary-warm);
+}
+
+.sort-btn.state-normal .sort-indicator::after {
+  content: "⇅";
+  color: #666;
+}
+
+/* Filter Group Styling */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 100px;
+}
+
+.filter-label {
+  color: #b0b0b0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-select {
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(232, 165, 71, 0.3);
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 0.75rem;
+  min-height: 48px;
+  font-size: 0.9rem;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8a547' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.filter-select:focus {
+  outline: none;
+}
+
+/* Three-state sort button system */
+.sort-btn.state-asc {
+  background: rgba(232, 165, 71, 0.3);
+  border-color: var(--hw-primary-warm);
+  color: var(--hw-primary-warm);
+  font-weight: 700;
+  box-shadow: 0 0 0 1px rgba(232, 165, 71, 0.2);
+}
+
+.sort-btn.state-desc {
+  background: rgba(232, 165, 71, 0.25);
+  border-color: rgba(232, 165, 71, 0.6);
+  color: var(--hw-primary-warm);
+  font-weight: 600;
+  opacity: 1;
+}
+
+.sort-btn.state-normal {
+  background: rgba(26, 26, 26, 0.8);
+  border-color: rgba(232, 165, 71, 0.3);
+  color: #ffffff;
+  opacity: 1;
+}
+
+.search-input {
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(232, 165, 71, 0.3);
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #888;
+}
+
+.reset-button {
+  background: rgba(232, 165, 71, 0.1);
+  border: 1px solid rgba(232, 165, 71, 0.3);
+  color: var(--hw-primary-warm);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .search-container {
+    max-width: none;
+  }
+  
+  .filter-controls-row {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .filter-left-section,
+  .sort-right-section {
+    align-items: center;
+    width: 100%;
+  }
+  
+  .sort-right-section {
+    max-width: 100%;
+  }
+  
+  .sort-buttons-single-row {
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .sort-btn--compact {
+    padding: 0.8rem 1rem;
+    min-width: 65px;
+    min-height: 52px;
+    font-size: 0.8rem;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    flex: 1;
+    max-width: 80px;
+  }
+  
+  .filter-section {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .filter-select {
+    width: 100%;
+    padding: 1rem;
+    min-height: 52px;
+    font-size: 1rem;
+  }
+}
+
+/* Landscape Touch Devices (phones in landscape) */
+@media (hover: none) and (pointer: coarse) and (max-height: 500px) and (orientation: landscape) {
+  .filter-search-row {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .filter-controls-section {
+    gap: 0.5rem;
+  }
+  
+  .filter-controls-row {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .filter-left-section {
+    flex-direction: row;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  
+  .filter-section {
+    min-width: 100px;
+  }
+  
+  .sort-right-section {
+    align-items: flex-end;
+  }
+  
+  .sort-buttons-single-row {
+    gap: 0.2rem;
+    flex-wrap: nowrap;
+  }
+  
+  .sort-btn--compact {
+    padding: 0.4rem 0.5rem;
+    min-width: 40px;
+    font-size: 0.7rem;
+  }
+  
+  .search-container {
+    max-width: 300px;
+  }
+  
+  .filter-label {
+    font-size: 0.7rem;
+  }
+  
+  .filter-select,
+  .search-input {
+    padding: 0.4rem;
+    font-size: 0.8rem;
+  }
+  
+  .reset-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Small Touch Devices (phones in portrait) */
+@media (hover: none) and (pointer: coarse) and (max-width: 480px) {
+  .filter-search-row {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .filter-controls-row {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .filter-section,
+  .sort-section,
+  .reset-section {
+    width: 100%;
+    max-width: 200px;
+  }
+}

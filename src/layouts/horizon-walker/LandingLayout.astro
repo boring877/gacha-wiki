@@ -1,0 +1,106 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import { Image } from 'astro:assets';
+
+// Import CSS files properly
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-layout.css';
+import '../../styles/games/horizon-walker/hw-landing-page.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={description || ''}
+      breadcrumbs={breadcrumbs}
+      shouldPreloadDefaultImage={false}
+    />
+    <GameSEO gameKey="horizon-walker" title={title} description={description} />
+
+    <!-- Astro handles image optimization automatically -->
+  </head>
+  <body class="horizon-walker-body hw-layout-override">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth similar to other games -->
+    <div class="bg-layer hw-bg-primary"></div>
+    <div class="bg-layer hw-bg-accent-1"></div>
+    <div class="bg-layer hw-bg-accent-2"></div>
+    <div class="bg-layer hw-bg-accent-3"></div>
+
+    <div class="horizon-walker-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="horizon-walker" />
+      <MobileMenu />
+
+      <div class="horizon-walker-container">
+        <main class="horizon-walker-main">
+          <!-- Horizon Walker Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                {/* Hero Image Container */}
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <Image
+                      src={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      width={1200}
+                      height={400}
+                      loading="eager"
+                      decoding="async"
+                    />
+                    {/* Overlay Gradient */}
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+
+                {/* Game Title */}
+                <h1 class="hero-title">{gameTitle}</h1>
+                {/* Decorative Elements */}
+                <DecorativeLines />
+              </section>
+            )
+          }
+          <!-- Title Only Section (when no hero image) -->
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

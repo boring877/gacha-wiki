@@ -1,0 +1,186 @@
+---
+import HorizonWalkerLayout from '../../layouts/horizon-walker/LandingLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { horizonWalkerConfig } from '../../data/horizon-walker/horizon-walker.js';
+
+// Import the landing page CSS
+import '../../styles/games/horizon-walker/hw-landing-page.css';
+
+// Extract data for easier use in template
+const { meta, gameInfo, categoryGroups } = horizonWalkerConfig;
+
+// Breadcrumb data for SEO
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides' },
+  { name: 'Horizon Walker', url: '/guides/horizon-walker' },
+];
+
+// Helper function to check if platforms exist
+const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
+---
+
+<HorizonWalkerLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  heroImage={meta.heroImage}
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Structured Data for Horizon Walker -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Horizon Walker Wiki - Character Tier Lists, Rankings & Game Database",
+      "url": "https://gachawiki.info/guides/horizon-walker/",
+      "description": "Ultimate Horizon Walker wiki featuring character tier lists, rankings, meta team builds, equipment database, damage mechanics, dungeons guide, and complete character database. Best Horizon Walker strategies and guides for 2025.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gachawiki.info/guides/horizon-walker/characters/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+
+  <!-- Game-specific structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Horizon Walker",
+      "genre": ["Fantasy RPG", "Action Adventure", "Character Collection", "Open World"],
+      "description": "Epic fantasy RPG featuring mystical realms, elemental combat, legendary heroes, and immersive adventure gameplay. Build your team and master the art of magic.",
+      "keywords": "Horizon Walker, fantasy RPG, tier list, characters, equipment, dungeons, team building, meta",
+      "applicationCategory": "Game",
+      "operatingSystem": "Android, iOS, PC",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.6",
+        "ratingCount": "2500"
+      }
+    }
+  </script>
+
+  <!-- Game Overview Section -->
+  <section class="content-section">
+    <h2 class="section-title">About</h2>
+    <div class="game-description">
+      {gameInfo.description}
+    </div>
+
+    <!-- Play Game Platforms -->
+    {hasPlatforms && (
+      <div class="platforms-container">
+        <h3>Play on:</h3>
+        <div class="platform-notes">
+          <ul>
+            <li>• Google Play: Censored version</li>
+            <li>• One Store: Uncensored (will migrate to Steam)</li>
+            <li>• Ero-Labs: Uncensored (will not migrate to Steam)</li>
+            <li>• Steam: Uncensored version</li>
+          </ul>
+        </div>
+        <div class="platforms-grid">
+          {gameInfo.platforms.map(platform => (
+            <a 
+              href={platform.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="platform-button"
+              aria-label={`Play ${meta.gameTitle} on ${platform.name}`}
+            >
+              {platform.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Social Links -->
+    {gameInfo.socialLinks && (
+      <div class="social-links-container">
+        <h4>Game Social:</h4>
+        <div class="social-links">
+          {gameInfo.socialLinks.twitter && (
+            <a 
+              href={gameInfo.socialLinks.twitter} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label={`Follow ${meta.gameTitle} on X/Twitter`}
+            >
+              X/Twitter
+            </a>
+          )}
+          {gameInfo.socialLinks.discord && (
+            <a 
+              href={gameInfo.socialLinks.discord} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label={`Join ${meta.gameTitle} Discord server`}
+            >
+              Discord
+            </a>
+          )}
+          {gameInfo.socialLinks.youtube && (
+            <a 
+              href={gameInfo.socialLinks.youtube} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label={`Watch ${meta.gameTitle} on YouTube`}
+            >
+              YouTube
+            </a>
+          )}
+        </div>
+      </div>
+    )}
+
+    <p class="last-updated">
+      Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+    </p>
+  </section>
+
+  <!-- Resources Section -->
+  <section class="content-section">
+    <h2 class="section-title">Resources</h2>
+
+    <div class="guides-grid">
+      {
+        categoryGroups.map(category => (
+          <div class={`category-card ${category.size}`}>
+            <div class="category-header">
+              <span class="category-emoji">{category.emoji}</span>
+              <h3>{category.title}</h3>
+              <p class="category-description">{category.description}</p>
+            </div>
+            <div class="nested-guides-grid">
+              {category.guides.map(guide => (
+                <a
+                  href={guide.url}
+                  class="nested-guide-card"
+                  aria-label={`Navigate to ${guide.title}`}
+                >
+                  {guide.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</HorizonWalkerLayout>

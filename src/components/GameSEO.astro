@@ -15,7 +15,7 @@ import {
 } from '../utils/seo';
 
 export interface Props {
-  /** Game identifier (e.g., 'zone-nova', 'silver-and-blood') */
+  /** Game identifier (e.g., 'zone-nova', 'silver-and-blood', 'horizon-walker') */
   gameKey: string;
   /** Page title - will be used for title tag and social media */
   title?: string;
@@ -50,7 +50,7 @@ if (!gameKey || typeof gameKey !== 'string') {
 const gameConfig = getGameConfig(gameKey);
 if (!gameConfig) {
   throw new Error(
-    `GameSEO: Game configuration not found for key: ${gameKey}. Available games: zone-nova, silver-and-blood`
+    `GameSEO: Game configuration not found for key: ${gameKey}. Available games: zone-nova, silver-and-blood, horizon-walker`
   );
 }
 

@@ -1,5 +1,5 @@
 ---
-import SimpleOptimizedImage from '../SimpleOptimizedImage.astro';
+import { Image } from 'astro:assets';
 import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 
 // Helper function to categorize character tags for styling (same as CharacterPageTemplate)
@@ -94,7 +94,7 @@ function getTagCategory(tag: string): string {
         <div class="mobile-card-header">
           <div class="mobile-card-images">
             <div style="width: 64px; height: 64px; border-radius: 10px; border: 2px solid var(--amber-glow); overflow: hidden;">
-              <SimpleOptimizedImage src={char.image} alt={char.name} class="character-img" />
+              <Image src={char.image} alt={char.name} class="character-img" width={64} height={64} />
             </div>
             <img
               src={`/images/games/zone-nova/classes/1${char.class}.jpg`}

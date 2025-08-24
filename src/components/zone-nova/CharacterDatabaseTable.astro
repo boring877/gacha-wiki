@@ -1,5 +1,5 @@
 ---
-import SimpleOptimizedImage from '../SimpleOptimizedImage.astro';
+import { Image } from 'astro:assets';
 import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 ---
 
@@ -35,10 +35,12 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
             <td>{idx + 1}</td>
             <td>
               <div style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--amber-glow); overflow: hidden;">
-                <SimpleOptimizedImage
+                <Image
                   src={char.image}
                   alt={char.name}
                   class="character-img"
+                  width={40}
+                  height={40}
                   loading="lazy"
                 />
               </div>

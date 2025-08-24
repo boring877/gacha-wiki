@@ -31,10 +31,7 @@
 /* === ROOT HTML ELEMENT CONFIGURATION === */
 html {
   scroll-behavior: smooth; /* Smooth scrolling for anchor links - enhances UX */
-  /* Enable GPU acceleration for smoother transitions */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  /* Optimize font rendering during transitions */
+  /* Optimize font rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -52,10 +49,6 @@ body {
   color: var(--text-primary); /* Apply primary text color for contrast */
   width: 100%; /* Ensure body takes full width */
   max-width: 100vw; /* Prevent horizontal overflow issues */
-  /* Prepare for instant opacity transitions */
-  transition: opacity 0.1s ease;
-  /* Enable hardware acceleration */
-  will-change: opacity;
 }
 
 /* Preload critical styles to prevent FOUC during navigation */
@@ -163,40 +156,6 @@ input[type='reset'] {
   white-space: nowrap; /* Prevent text from wrapping to new line */
 }
 
-/* === ANIMATION SYSTEM === */
-
-/* Smooth fade-in animation for content reveals */
-@keyframes fadeIn {
-  from {
-    opacity: 0; /* Start invisible */
-  }
-  to {
-    opacity: 1; /* End fully visible */
-  }
-}
-
-/* Slide-in animation with fade for dynamic content loading */
-@keyframes slideIn {
-  from {
-    transform: translateY(20px); /* Start 20px below final position */
-    opacity: 0; /* Start invisible */
-  }
-  to {
-    transform: translateY(0); /* End at natural position */
-    opacity: 1; /* End fully visible */
-  }
-}
-
-/* Pulse animation for loading states and attention-grabbing elements */
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1; /* Full opacity at start and end */
-  }
-  50% {
-    opacity: 0.5; /* Half opacity at midpoint */
-  }
-}
 
 /* === RESPONSIVE DISPLAY UTILITIES === */
 

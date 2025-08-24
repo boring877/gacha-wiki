@@ -7,7 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import OptimizedImage from '../../components/OptimizedImage.astro';
+import { Image } from 'astro:assets';
 
 // Import CSS files properly
 import '../../styles/colors.css';
@@ -34,17 +34,6 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
     <BaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
 
-    <!-- Image Preloading for Performance -->
-    {
-      heroImage && (
-        <link
-          rel="preload"
-          as="image"
-          href={heroImage.replace('/images/', '/images/optimized/').replace('.jpg', '-large.webp')}
-          type="image/webp"
-        />
-      )
-    }
 
     <slot name="head" />
   </head>
@@ -70,12 +59,14 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
                 {/* Hero Media Container */}
                 <div class="hero-image-wrapper">
                   <div class="hero-image-container">
-                    <OptimizedImage
+                    <Image
                       src={heroImage}
                       alt={gameTitle}
                       class="hero-image"
                       loading="eager"
                       decoding="async"
+                      width={1200}
+                      height={400}
                     />
                     {/* Overlay Gradient */}
                     <div class="hero-overlay" />

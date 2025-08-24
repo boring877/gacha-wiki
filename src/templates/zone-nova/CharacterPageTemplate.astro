@@ -1,6 +1,6 @@
 ---
 import { getFactionData } from '../../data/zone-nova/factions.js';
-import SimpleOptimizedImage from '../../components/SimpleOptimizedImage.astro';
+import { Image } from 'astro:assets';
 import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 
 interface Props {
@@ -110,7 +110,7 @@ function getTagCategory(tag: string): string {
     <div class="character-hero-card">
       <div class="character-hero-container">
         <div class="character-portrait-container">
-          <SimpleOptimizedImage
+          <Image
             src={`/images/games/zone-nova/characters/${characterData.image}.jpg`}
             alt={`${characterData.name} - ${characterData.rarity} ${characterData.class} character from Zone Nova gacha game`}
             width={300}
@@ -565,7 +565,7 @@ function getTagCategory(tag: string): string {
     <div class="memory-card-image-container">
       <div class="memory-card-image-box">
         <div class="memory-card-image-wrapper">
-          <SimpleOptimizedImage
+          <Image
             src={`/images/games/zone-nova/memories/${characterData.memoryCard.image}.jpg`}
             alt={characterData.memoryCard.name}
             width={200}

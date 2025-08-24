@@ -1,0 +1,158 @@
+---
+import CharacterLayout from '../../../layouts/horizon-walker/CharacterLayout.astro';
+import Breadcrumb from '../../../components/horizon-walker/Breadcrumb.astro';
+import CharacterDatabaseFilterBar from '../../../components/horizon-walker/CharacterDatabaseFilterBar.astro';
+import CharacterDatabaseTable from '../../../components/horizon-walker/CharacterDatabaseTable.astro';
+import CharacterDatabaseMobileCards from '../../../components/horizon-walker/CharacterDatabaseMobileCards.astro';
+import { HORIZON_WALKER_CHARACTERS, gameInfo } from '../../../data/horizon-walker/characters.js';
+
+// Breadcrumb data for SEO
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
+  { name: 'Characters' },
+];
+
+// Calculate enhanced stats for display
+const totalCharacters = HORIZON_WALKER_CHARACTERS.length;
+const exCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'EX').length;
+const ssCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'SS').length;
+const sCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'S').length;
+const aCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'A').length;
+const bCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'B').length;
+
+// SEO metadata
+const title = 'Horizon Walker Characters Database - All Heroes & Waifus List 2025 | GachaWiki';
+const description = `Explore all ${totalCharacters} Horizon Walker characters including ${exCount} EX, ${ssCount} SS, ${sCount} S, ${aCount} A, ${bCount} B rarity heroes. Complete database with stats, costs, classes, elements, and factions. Advanced filtering and mobile-optimized interface.`;
+---
+
+<CharacterLayout
+  title={title}
+  description={description}
+  gameTitle="Character Database"
+  breadcrumbs={breadcrumbs}
+  showBackButton={false}
+>
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="page-flex">
+    <div class="main-content-container">
+      <div class="content-wrapper">
+        <!-- Enhanced header with character stats -->
+        <div class="character-database-header">
+          <p class="database-main-title">
+            Character Database
+          </p>
+          <p class="database-level-info">
+            All stats shown at max level (Level {gameInfo.maxLevel})
+          </p>
+          
+          <!-- Character rarity stats -->
+          <div class="character-stats-summary">
+            <span class="hw-badge" data-rarity="EX">{exCount} EX</span>
+            <span class="hw-badge" data-rarity="SS">{ssCount} SS</span>
+            <span class="hw-badge" data-rarity="S">{sCount} S</span>
+            <span class="hw-badge" data-rarity="A">{aCount} A</span>
+            <span class="hw-badge" data-rarity="B">{bCount} B</span>
+          </div>
+          
+        </div>
+
+        <!-- Enhanced Database Components -->
+        <CharacterDatabaseFilterBar />
+        <CharacterDatabaseTable characters={HORIZON_WALKER_CHARACTERS} />
+        <CharacterDatabaseMobileCards characters={HORIZON_WALKER_CHARACTERS} />
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Character Database Header Styling */
+    .character-database-header {
+      text-align: center;
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: var(--hw-database-gradient-bg);
+      border-radius: 12px;
+      border: 1px solid var(--hw-primary-warm);
+    }
+
+    .database-main-title {
+      color: var(--hw-primary-warm);
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .database-level-info {
+      color: var(--hw-text-muted, #b0b0b0);
+      margin: 0.5rem 0 0 0;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    /* Enhanced Character Stats Summary */
+    .character-stats-summary {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Clean EX and SS badges - no effects */
+    .character-stats-summary .hw-badge[data-rarity="EX"] {
+      font-weight: 700;
+    }
+
+    .character-stats-summary .hw-badge[data-rarity="SS"] {
+      font-weight: 700;
+    }
+
+    .character-stats-summary .hw-badge[data-rarity="S"] {
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .character-database-header {
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      .character-stats-summary {
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+
+      .database-main-title {
+        font-size: 1.1rem;
+      }
+
+      .database-level-info {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .character-stats-summary {
+        gap: 0.5rem;
+      }
+
+      .character-stats-summary .hw-badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+      }
+    }
+  </style>
+
+  <!-- Initialize enhanced database utilities -->
+  <script>
+    // Import and initialize database utilities
+    import('../../../data/horizon-walker/character-database-utils.js').then(module => {
+      module.initializeCharacterDatabase();
+    });
+  </script>
+</CharacterLayout>

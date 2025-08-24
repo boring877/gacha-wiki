@@ -1,4 +1,4 @@
-export type GameKey = 'silver-and-blood' | 'zone-nova';
+export type GameKey = 'silver-and-blood' | 'zone-nova' | 'horizon-walker';
 
 export interface NavigationLink {
   name: string;
@@ -105,6 +105,18 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Updates', href: '/guides/zone-nova/updates/' },
           { name: 'Surveys', href: '/guides/zone-nova/surveys/' },
           { name: 'Contributing', href: '/guides/zone-nova/contributing/' },
+        ],
+      },
+    ],
+  },
+  'horizon-walker': {
+    name: 'Horizon Walker',
+    image: '/images/games/horizon-walker/gameimg/gameicon.jpg',
+    sections: [
+      {
+        title: 'Characters',
+        links: [
+          { name: 'Database', href: '/guides/horizon-walker/characters/' },
         ],
       },
     ],

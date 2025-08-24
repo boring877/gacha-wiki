@@ -443,6 +443,59 @@
   background-clip: text;
 }
 
+.game-nav-mobile[data-game='horizon-walker'] .game-resources-btn {
+  background: rgba(232, 165, 71, 0.08);
+  border-color: rgba(232, 165, 71, 0.2);
+}
+
+.game-nav-mobile[data-game='horizon-walker'] .game-resources-btn:active {
+  background: rgba(232, 165, 71, 0.18);
+  border-color: rgba(232, 165, 71, 0.35);
+}
+
+.game-nav-mobile[data-game='horizon-walker'] .game-resources-btn:focus,
+.game-nav-mobile[data-game='horizon-walker'] .game-resources-btn:focus-visible {
+  outline-color: #e8a547;
+  background: rgba(232, 165, 71, 0.15);
+  border-color: rgba(232, 165, 71, 0.4);
+}
+
+.game-nav-mobile[data-game='horizon-walker'] .game-resources-btn[aria-expanded='true'] {
+  background: rgba(232, 165, 71, 0.22);
+  border-color: rgba(232, 165, 71, 0.45);
+}
+
+.game-nav-mobile[data-game='horizon-walker'] .game-image-link:focus,
+.game-nav-mobile[data-game='horizon-walker'] .game-image-link:focus-visible {
+  outline-color: #e8a547;
+}
+
+.mobile-links[data-game='horizon-walker'] .mobile-link:focus,
+.mobile-links[data-game='horizon-walker'] .mobile-link:focus-visible {
+  outline-color: #e8a547;
+  background: rgba(232, 165, 71, 0.18);
+  border-color: rgba(232, 165, 71, 0.4);
+}
+
+.mobile-links[data-game='horizon-walker'] .close-btn:focus,
+.mobile-links[data-game='horizon-walker'] .close-btn:focus-visible {
+  outline-color: #e8a547;
+  background: rgba(232, 165, 71, 0.25);
+}
+
+.game-nav-mobile[data-game='horizon-walker'] .game-title {
+  background: linear-gradient(135deg, #e8a547, #ff7b7b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mobile-links[data-game='horizon-walker'] .mobile-link.active {
+  background: rgba(232, 165, 71, 0.2);
+  color: #e8a547;
+  border-color: rgba(232, 165, 71, 0.4);
+}
+
 /* ============================================== */
 /*     ENHANCED RESPONSIVE GRID LAYOUTS          */
 /* ============================================== */

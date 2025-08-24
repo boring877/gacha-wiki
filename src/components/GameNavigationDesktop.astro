@@ -9,11 +9,11 @@ interface Props {
 const { currentPath = '', gameKey } = Astro.props;
 
 // Validate and sanitize gameKey
-const validatedGameKey = isValidGameKey(gameKey) ? gameKey : null;
+const validatedGameKey = isValidGameKey(gameKey) ? gameKey : undefined;
 const game = getGameData(validatedGameKey);
 
 const isActive = (href: string) => {
-  if (href.endsWith('/zone-nova/') || href.endsWith('/silver-and-blood/')) {
+  if (href.endsWith('/zone-nova/') || href.endsWith('/silver-and-blood/') || href.endsWith('/horizon-walker/')) {
     return currentPath === href;
   }
   return (
@@ -50,6 +50,8 @@ if (!game) return;
         <a
           href={validatedGameKey === 'zone-nova'
             ? '/guides/zone-nova/'
+            : validatedGameKey === 'horizon-walker'
+            ? '/guides/horizon-walker/'
             : '/guides/silver-and-blood/'}
           class="game-link"
         >
@@ -103,14 +105,17 @@ if (!game) return;
     // Close all dropdowns efficiently
     const closeAllDropdowns = () => {
       dropdowns.forEach(dropdown => {
-        dropdown.style.opacity = '0';
-        dropdown.style.visibility = 'hidden';
+        (dropdown as HTMLElement).style.opacity = '0';
+        (dropdown as HTMLElement).style.visibility = 'hidden';
       });
     };
 
     // Optimized dropdown toggle with event delegation
-    nav.addEventListener('click', e => {
-      const trigger = e.target.closest('.section-trigger');
+    nav.addEventListener('click', (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (!target) return;
+      
+      const trigger = target.closest('.section-trigger');
       if (!trigger) return;
 
       e.preventDefault();
@@ -124,26 +129,28 @@ if (!game) return;
       // Close other dropdowns first
       dropdowns.forEach(otherDropdown => {
         if (otherDropdown !== dropdown) {
-          otherDropdown.style.opacity = '0';
-          otherDropdown.style.visibility = 'hidden';
+          (otherDropdown as HTMLElement).style.opacity = '0';
+          (otherDropdown as HTMLElement).style.visibility = 'hidden';
         }
       });
 
       // Toggle current dropdown
-      const isVisible = dropdown.style.visibility === 'visible';
-      dropdown.style.opacity = isVisible ? '0' : '1';
-      dropdown.style.visibility = isVisible ? 'hidden' : 'visible';
+      const dropdownElement = dropdown as HTMLElement;
+      const isVisible = dropdownElement.style.visibility === 'visible';
+      dropdownElement.style.opacity = isVisible ? '0' : '1';
+      dropdownElement.style.visibility = isVisible ? 'hidden' : 'visible';
     });
 
     // Close dropdowns when clicking outside
-    const handleOutsideClick = e => {
-      if (!nav.contains(e.target)) {
+    const handleOutsideClick = (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (!target || !nav.contains(target)) {
         closeAllDropdowns();
       }
     };
 
     // Close dropdowns on ESC key
-    const handleEscKey = e => {
+    const handleEscKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeAllDropdowns();
       }
@@ -165,14 +172,15 @@ if (!game) return;
         // Close other dropdowns
         dropdowns.forEach(otherDropdown => {
           if (otherDropdown !== dropdown) {
-            otherDropdown.style.opacity = '0';
-            otherDropdown.style.visibility = 'hidden';
+            (otherDropdown as HTMLElement).style.opacity = '0';
+            (otherDropdown as HTMLElement).style.visibility = 'hidden';
           }
         });
 
         // Show current dropdown
-        dropdown.style.opacity = '1';
-        dropdown.style.visibility = 'visible';
+        const dropdownElement = dropdown as HTMLElement;
+        dropdownElement.style.opacity = '1';
+        dropdownElement.style.visibility = 'visible';
       };
 
       const handleMouseLeave = () => {
@@ -185,8 +193,9 @@ if (!game) return;
         // Set new timeout and store reference
         const timeoutId = window.setTimeout(() => {
           if (!item.matches(':hover')) {
-            dropdown.style.opacity = '0';
-            dropdown.style.visibility = 'hidden';
+            const dropdownElement = dropdown as HTMLElement;
+            dropdownElement.style.opacity = '0';
+            dropdownElement.style.visibility = 'hidden';
           }
           hoverTimeouts.delete(item);
         }, 100);
@@ -211,7 +220,7 @@ if (!game) return;
     };
 
     // Store cleanup function for potential future use
-    nav.dataset.cleanupFn = 'desktopNavCleanup';
+    (nav as HTMLElement).dataset.cleanupFn = 'desktopNavCleanup';
     (window as any).desktopNavCleanup = cleanup;
   });
 </script>

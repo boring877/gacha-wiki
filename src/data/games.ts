@@ -36,6 +36,17 @@ export const GAMES: Game[] = [
     sections: ['Characters', 'Equipment', 'Stories'],
     lastUpdated: new Date(),
   },
+  {
+    id: 'horizon-walker',
+    name: 'Horizon Walker',
+    slug: 'horizon-walker',
+    description: 'Post-apocalyptic RPG: Transcend mortality as a Chosen Human and battle Forsaken Entities through dimensional rifts',
+    image: '/images/games/horizon-walker/gameimg/gameicon.jpg',
+    url: '/guides/horizon-walker/',
+    status: 'active',
+    sections: ['Chosen Humans', 'Rift Combat', 'Transcendence', 'Survivor Resources'],
+    lastUpdated: new Date(),
+  },
 ];
 
 export function getGameById(id: string): Game | undefined {

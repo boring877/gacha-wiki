@@ -1,0 +1,329 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*           HORIZON WALKER ENHANCED MOBILE CHARACTER CARDS STYLES         */
+/*         Touch-First Design with Rich Information Display                 */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Mobile card view - hidden by default, shown on mobile */
+.mobile-card-view {
+  display: none;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Enhanced mobile character cards with touch optimizations */
+.mobile-character-card {
+  background: var(--hw-bg-dark);
+  border-radius: 14px;
+  padding: 1.2rem 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  border: 1px solid var(--hw-border-gray);
+  /* Touch optimizations */
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px; /* Minimum touch target */
+}
+
+.mobile-character-card:hover {
+  border-color: var(--hw-primary-warm);
+  background: var(--hw-bg-light);
+}
+
+.mobile-character-card:active {
+  background: var(--hw-bg-medium);
+}
+
+/* Enhanced clickable feedback */
+.mobile-character-card:focus-visible {
+  outline: 2px solid var(--hw-primary-warm);
+  outline-offset: 2px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  /* Touch devices - simple feedback */
+  .mobile-character-card:hover {
+    background: var(--hw-bg-light);
+  }
+  
+  .mobile-character-card:active {
+    background: var(--hw-bg-medium);
+  }
+}
+
+/* Mobile card header - centered layout */
+.mobile-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.mobile-card-image {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-card-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-card-info h3.character-name {
+  color: var(--hw-text-light);
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Badge in header - centered under name */
+.mobile-card-info .hw-badge {
+  align-self: center;
+}
+
+/* Clean stats grid */
+.mobile-card-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--hw-bg-medium);
+  border-radius: 8px;
+  border: 1px solid var(--hw-border-light);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-item.cost-stat {
+  grid-column: span 3;
+  background: var(--hw-bg-darker);
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--hw-primary-warm);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--hw-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--hw-text-light);
+}
+
+.cost-stat .stat-label {
+  color: var(--hw-primary-warm);
+}
+
+.cost-stat .stat-value {
+  color: var(--hw-text-light);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.character-img {
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid var(--hw-accent-primary);
+}
+
+/* Note: mobile-card-title-group styles removed - now using mobile-card-info */
+
+/* Enhanced badge system */
+.mobile-card-badges {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+
+/* Note: Badge styles removed - now using HW badge system (hw-badges.css) */
+
+/* Stats display */
+.mobile-card-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.mobile-card-stats-secondary {
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.5rem;
+}
+
+.mobile-card-stats div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.mobile-card-stats span:last-child {
+  color: var(--hw-accent-primary);
+  font-weight: 600;
+}
+
+/* Gameplay Tags with categorization */
+.mobile-card-tags {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tags-label {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tags-container {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* Tag categorization with colors (matching Zone Nova system) */
+.character-tag {
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border: 1px solid;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  /* Touch optimization */
+  touch-action: manipulation;
+}
+
+/* Damage/Scaling tags - Orange */
+.character-tag.damage-scaling {
+  background: rgba(249, 115, 22, 0.2);
+  color: #F97316;
+  border-color: #F97316;
+}
+
+/* Team utility tags - Blue */
+.character-tag.team-utility {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3B82F6;
+  border-color: #3B82F6;
+}
+
+/* Self utility tags - Green */
+.character-tag.self-utility {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22C55E;
+  border-color: #22C55E;
+}
+
+/* Control tags - Purple */
+.character-tag.control {
+  background: rgba(168, 85, 247, 0.2);
+  color: #A855F7;
+  border-color: #A855F7;
+}
+
+/* General mechanic tags - Gray */
+.character-tag.general-mechanic {
+  background: rgba(156, 163, 175, 0.2);
+  color: #9CA3AF;
+  border-color: #9CA3AF;
+}
+
+/* Responsive Design - Touch Device First */
+@media (hover: none) and (pointer: coarse) {
+  .mobile-card-view {
+    display: block;
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  
+  .mobile-character-card {
+    margin-bottom: 1rem;
+    padding: 1rem 0.8rem;
+  }
+  
+  .mobile-card-header {
+    gap: 0.8rem;
+  }
+  
+  .character-img {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .mobile-card-badges {
+    gap: 0.3rem;
+  }
+  
+  .mobile-card-stats {
+    font-size: 0.8rem;
+    gap: 0.3rem;
+  }
+}
+
+/* Small Touch Devices (phones) */
+@media (hover: none) and (pointer: coarse) and (max-width: 480px) {
+  .mobile-card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .mobile-card-badges {
+    justify-content: center;
+  }
+  
+  .mobile-card-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .mobile-card-stats-secondary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Fallback for narrow desktop windows */
+@media (hover: hover) and (pointer: fine) and (max-width: 1024px) {
+  .mobile-card-view {
+    display: block;
+  }
+}
+
+/* Performance optimizations for touch devices - no animations */
+@media (hover: none) and (pointer: coarse) {
+  .mobile-character-card:active {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}

@@ -5,7 +5,7 @@
 export const SITE = {
   TITLE: 'GachaWiki',
   DESCRIPTION:
-    'Comprehensive guides, character builds, and game strategies for popular gacha games like Zone Nova and Silver and Blood. Complete wiki with character database, damage mechanics, and game strategies.',
+    'Comprehensive guides, character builds, and game strategies for popular gacha games like Zone Nova, Silver and Blood, and Horizon Walker. Complete wiki with character database, damage mechanics, and game strategies.',
   AUTHOR: 'GachaWiki',
   DEFAULT_IMAGE: '/images/about.jpg',
   SOCIAL: {
@@ -34,6 +34,13 @@ export const GAMES = {
     THEME_COLOR: '#5a7ba7',
     DAMAGE_K_VALUE: 1300,
     BASE_URL: '/guides/silver-and-blood',
+  },
+  HORIZON_WALKER: {
+    KEY: 'horizon-walker',
+    NAME: 'Horizon Walker',
+    THEME_COLOR: '#e8a547',
+    DAMAGE_K_VALUE: 1000,
+    BASE_URL: '/guides/horizon-walker',
   },
 } as const;
 
@@ -64,6 +71,22 @@ export const URLS = {
     EVENTS: '/guides/silver-and-blood/events',
     SUMMON_FAQ: '/guides/silver-and-blood/summon-faq',
     DUTCHMANS_REVENGE: '/guides/silver-and-blood/dutchmans-revenge',
+  },
+  HORIZON_WALKER: {
+    BASE: '/guides/horizon-walker',
+    CHARACTERS: '/guides/horizon-walker/characters',
+    CHARACTER_COMPARISON: '/guides/horizon-walker/character-comparison',
+    CHARACTER_RANKINGS: '/guides/horizon-walker/character-rankings',
+    DAMAGE_MECHANICS: '/guides/horizon-walker/damage-mechanics',
+    DUNGEONS: '/guides/horizon-walker/dungeons',
+    ARTIFACTS: '/guides/horizon-walker/artifacts',
+    EQUIPMENT: '/guides/horizon-walker/equipment',
+    CRAFTING: '/guides/horizon-walker/crafting',
+    ASCENSION: '/guides/horizon-walker/ascension',
+    EVENTS: '/guides/horizon-walker/events',
+    SUMMON_FAQ: '/guides/horizon-walker/summon-faq',
+    REDEEM_CODES: '/guides/horizon-walker/redeem-codes',
+    BEGINNER_GUIDE: '/guides/horizon-walker/beginner-guide',
   },
 } as const;
 

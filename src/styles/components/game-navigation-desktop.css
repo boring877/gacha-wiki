@@ -256,6 +256,18 @@
   background-clip: text;
 }
 
+.game-nav-desktop[data-game='horizon-walker'] .game-title {
+  background: linear-gradient(135deg, #e8a547, #ff7b7b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.game-nav-desktop[data-game='horizon-walker'] .dropdown-link.active {
+  background: linear-gradient(135deg, #e8a547, #ff7b7b);
+  color: white;
+}
+
 /* === RESPONSIVE DESIGN === */
 @media (max-width: 1200px) {
   .game-nav-desktop .game-nav-header {

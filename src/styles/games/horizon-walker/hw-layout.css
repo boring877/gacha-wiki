@@ -1,0 +1,196 @@
+
+/* Horizon Walker Layout Styles */
+/* Base layout, hero sections, and shared animations */
+
+/* Body Styles */
+.horizon-walker-body {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* Horizon Walker Theme Variants */
+.horizon-walker-body.dark-theme {
+  background: var(--hw-bg-darker);
+  color: var(--hw-text-light);
+}
+
+.horizon-walker-body.light-theme {
+  color: var(--text-primary);
+}
+
+/* Optimized Background Layers with will-change for performance */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.hw-bg-primary {
+  background: linear-gradient(135deg, #1a1e1a 0%, #2a2e2a 50%, #1a1e1a 100%);
+}
+
+.hw-bg-accent-1 {
+  background: radial-gradient(circle at 15% 85%, rgba(232, 165, 71, 0.08), transparent 60%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.hw-bg-accent-2 {
+  background: radial-gradient(circle at 85% 15%, rgba(255, 123, 123, 0.06), transparent 60%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.hw-bg-accent-3 {
+  background: radial-gradient(circle at 50% 50%, rgba(123, 179, 255, 0.05), transparent 60%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.hw-bg-accent-5 {
+  background: radial-gradient(circle at 75% 75%, rgba(255, 179, 123, 0.06), transparent 70%);
+  pointer-events: none;
+}
+
+.horizon-walker-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 3rem 1rem;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-image-container {
+  width: 100%;
+  max-width: 60rem;
+  height: 25rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(transparent, rgba(26, 26, 26, 0.9));
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--text-inverse);
+  margin: 0;
+  background: linear-gradient(135deg, #e8a547, #ff7b7b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: var(--leading-tight);
+}
+
+/* Title Only Section */
+.title-only-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+}
+
+.title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  background: linear-gradient(135deg, #e8a547, #ff7b7b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  line-height: var(--leading-tight);
+}
+
+/* Container Styles */
+.horizon-walker-container {
+  position: relative;
+}
+
+.horizon-walker-main {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .horizon-walker-main {
+    padding: 1rem;
+  }
+
+  .hero-section {
+    padding: 2rem 1rem 3rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-image-container {
+    height: 15rem;
+    border-radius: 12px;
+    margin: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-3xl);
+  }
+
+  .title-only-section {
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+  }
+
+  .title-only-heading {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .horizon-walker-main {
+    padding: 0.5rem;
+  }
+
+  .hero-image-container {
+    height: 12rem;
+    border-radius: 8px;
+    margin: 0 0.5rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-2xl);
+  }
+
+  .hero-section {
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .title-only-heading {
+    font-size: var(--text-2xl);
+  }
+}

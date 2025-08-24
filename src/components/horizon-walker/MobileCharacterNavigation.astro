@@ -1,0 +1,95 @@
+---
+export interface Props {
+  currentCharacterSlug: string;
+  prevCharacter: {
+    slug: string;
+    name: string;
+  };
+  nextCharacter: {
+    slug: string;
+    name: string;
+  };
+}
+
+const { currentCharacterSlug, prevCharacter, nextCharacter } = Astro.props;
+
+const prevUrl = `/guides/horizon-walker/characters/${prevCharacter.slug}`;
+const nextUrl = `/guides/horizon-walker/characters/${nextCharacter.slug}`;
+---
+
+<!-- Mobile Invisible Swipe Zones -->
+<div
+  class="mobile-swipe-left"
+  data-direction="prev"
+  data-character-url={prevUrl}
+  title={`Previous: ${prevCharacter.name}`}
+>
+</div>
+<div
+  class="mobile-swipe-right"
+  data-direction="next"
+  data-character-url={nextUrl}
+  title={`Next: ${nextCharacter.name}`}
+>
+</div>
+
+<!-- Mobile Navigation Buttons -->
+<div class="mobile-character-nav">
+  <a href={prevUrl} class="mobile-nav-button prev" aria-label={`Previous: ${prevCharacter.name}`}>
+    <span class="nav-arrow">←</span>
+    <span class="nav-label">Prev</span>
+  </a>
+  
+  <a href="/guides/horizon-walker/characters/" class="mobile-nav-button center">
+    <span class="nav-label">All</span>
+  </a>
+  
+  <a href={nextUrl} class="mobile-nav-button next" aria-label={`Next: ${nextCharacter.name}`}>
+    <span class="nav-label">Next</span>
+    <span class="nav-arrow">→</span>
+  </a>
+</div>
+
+<script>
+  // Basic mobile navigation for Horizon Walker
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileSwipeLeft = document.querySelector('.mobile-swipe-left') as HTMLElement | null;
+    const mobileSwipeRight = document.querySelector('.mobile-swipe-right') as HTMLElement | null;
+
+    // Simple touch navigation
+    const hwMobileNav = {
+      touchStartX: 0,
+      touchStartY: 0,
+      
+      handleTouchStart: function(e: TouchEvent) {
+        this.touchStartX = e.touches[0].clientX;
+        this.touchStartY = e.touches[0].clientY;
+      },
+      
+      handleTouchEnd: function(e: TouchEvent) {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        
+        const deltaX = touchEndX - this.touchStartX;
+        const deltaY = touchEndY - this.touchStartY;
+        
+        // Only trigger if horizontal swipe is more significant than vertical
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+          if (deltaX > 0 && mobileSwipeLeft) {
+            // Swipe right = go to previous character
+            const url = mobileSwipeLeft.getAttribute('data-character-url');
+            if (url) window.location.href = url;
+          } else if (deltaX < 0 && mobileSwipeRight) {
+            // Swipe left = go to next character
+            const url = mobileSwipeRight.getAttribute('data-character-url');
+            if (url) window.location.href = url;
+          }
+        }
+      }
+    };
+
+    // Add touch listeners
+    document.addEventListener('touchstart', hwMobileNav.handleTouchStart.bind(hwMobileNav));
+    document.addEventListener('touchend', hwMobileNav.handleTouchEnd.bind(hwMobileNav));
+  });
+</script>

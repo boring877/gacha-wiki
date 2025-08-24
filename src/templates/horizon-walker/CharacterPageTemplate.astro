@@ -1,0 +1,507 @@
+---
+import { Image } from 'astro:assets';
+import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+import { 
+  highlightAllSkills, 
+  highlightUniqueTraits, 
+  highlightWeaponSkills, 
+  defaultHWHighlightPatterns 
+} from '../../utils/horizon-walker/skill-highlighting.js';
+
+interface CharacterStats {
+  strength: string;
+  technic: string;
+  intelligence: string;
+  vitality: string;
+  agility: string;
+  maxHp: string;
+  meleeAtk: string;
+  rangedAtk: string;
+  magicAtk: string;
+  spd: string;
+  startingAp: string;
+  apRecovery: string;
+  accuracy: string;
+  evade: string;
+  critRate: string;
+  critDmg: string;
+  slashBoost: string;
+  pierceBoost: string;
+  crushBoost: string;
+  heatBoost: string;
+  coldBoost: string;
+  electricBoost: string;
+  immaterialBoost: string;
+  poisonBoost: string;
+  slashDef: string;
+  pierceDef: string;
+  crushDef: string;
+  heatDef: string;
+  coldDef: string;
+  electricDef: string;
+  immaterialDef: string;
+  poisonDef: string;
+  blockRate: string;
+}
+
+interface CharacterProfile {
+  age: string;
+  racial: string;
+  homeland: string;
+  height: string;
+  birthday: string;
+  bwhRatio: string;
+}
+
+interface Skill {
+  name: string;
+  level?: string;
+  type: string;
+  apCost: number;
+  cooldown: number;
+  damage?: {
+    type: string;
+    value: string;
+  };
+  description: string;
+}
+
+interface WeaponSkill {
+  name: string;
+  type: string;
+  description: string;
+  note?: string;
+}
+
+interface Trait {
+  name: string;
+  description: string;
+}
+
+interface WeaponStats {
+  weaponMagicAtk?: string;
+  maxHpBonus?: string;
+}
+
+interface Weapon {
+  name: string;
+  image: string;
+  rarity: string;
+  type: string;
+  stats?: WeaponStats;
+  uniqueSkills?: Record<string, WeaponSkill>;
+}
+
+interface CharacterData {
+  name: string;
+  image: string;
+  rarity: string;
+  cost: number;
+  tags?: string[];
+  profile?: CharacterProfile;
+  story?: string;
+  description?: string;
+  stats: CharacterStats;
+  skills?: Record<string, Skill>;
+  uniqueTraits?: Record<string, Trait>;
+  weapon?: Weapon;
+}
+
+interface Props {
+  characterData: CharacterData;
+}
+
+const { characterData } = Astro.props;
+
+// Apply keyword highlighting to skills and traits (using trusted content option)
+const highlightPatterns = (characterData as any).highlightPatterns || defaultHWHighlightPatterns;
+const highlightOptions = { isTrustedContent: true };
+const highlightedSkills = characterData.skills ? highlightAllSkills(characterData.skills, highlightPatterns, highlightOptions) : null;
+const highlightedTraits = characterData.uniqueTraits ? highlightUniqueTraits(characterData.uniqueTraits, highlightPatterns, highlightOptions) : null;
+const highlightedWeaponSkills = characterData.weapon?.uniqueSkills ? highlightWeaponSkills(characterData.weapon.uniqueSkills, highlightPatterns, highlightOptions) : null;
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
+  { name: 'Characters', href: '/guides/horizon-walker/characters/' },
+  { name: characterData.name },
+];
+
+// Helper function to create character description from story
+function getCharacterSummary(story: string | undefined): string {
+  if (!story) return 'A skilled character ready to join the battle.';
+  
+  // Take first sentence or up to 150 characters, whichever comes first
+  const firstSentence = story.split('.')[0];
+  if (firstSentence.length <= 150) {
+    return firstSentence + '.';
+  }
+  
+  // If first sentence is too long, truncate to 150 chars at word boundary
+  const truncated = story.substring(0, 150);
+  const lastSpace = truncated.lastIndexOf(' ');
+  return truncated.substring(0, lastSpace) + '...';
+}
+
+// Helper function to categorize character tags for styling
+function getTagCategory(tag: string): string {
+  const lowerTag = tag.toLowerCase();
+
+  // Damage/Combat tags - Orange
+  if (
+    lowerTag.includes('damage') ||
+    lowerTag.includes('debuffer') ||
+    lowerTag.includes('ap manipulation') ||
+    lowerTag.includes('immaterial damage')
+  ) {
+    return 'damage-scaling';
+  }
+
+  // Support/Utility tags - Blue
+  if (
+    lowerTag.includes('support') ||
+    lowerTag.includes('shield provider') ||
+    lowerTag.includes('healer') ||
+    lowerTag.includes('buffer')
+  ) {
+    return 'team-utility';
+  }
+
+  // Magic/Ability tags - Green
+  if (
+    lowerTag.includes('magic user') ||
+    lowerTag.includes('caster')
+  ) {
+    return 'self-utility';
+  }
+
+  // Default fallback
+  return 'general-mechanic';
+}
+---
+
+<!-- Breadcrumb Navigation -->
+<Breadcrumb items={breadcrumbs} />
+
+<!-- Character Header & Overview -->
+<section class="content-section character-overview-section">
+  <h2 class="section-title character-overview-title">Character Overview</h2>
+  <div class="character-overview-flex">
+    <!-- Hero Card (Left) -->
+    <div class="character-hero-card">
+      <div class="character-hero-container">
+        <div class="character-portrait-container">
+          <Image
+            src={`/images/games/horizon-walker/characters/${characterData.image}.jpg`}
+            alt={`${characterData.name} - ${characterData.rarity} rarity character from Horizon Walker gacha game`}
+            width={300}
+            height={300}
+            loading="eager"
+            class="character-portrait"
+          />
+        </div>
+        <h1 class="character-name">
+          {characterData.name}
+        </h1>
+        <p class="character-description">
+          {getCharacterSummary(characterData.story || characterData.description)}
+        </p>
+      </div>
+
+      <!-- Character Info -->
+      <div class="character-info-card">
+        <div class="character-info-grid">
+          <div class="character-info-item">
+            <div class="character-info-label">Rarity</div>
+            <span class="hw-badge" data-rarity={characterData.rarity}>
+              {characterData.rarity}
+            </span>
+          </div>
+          <div class="character-info-item">
+            <div class="character-info-label">Deployment Cost</div>
+            <span class="hw-badge" data-type="Cost">{characterData.cost}</span>
+          </div>
+        </div>
+
+        <!-- Character Profile -->
+        {characterData.profile && (
+          <div class="character-profile-section">
+            <div class="character-info-label">Profile</div>
+            <div class="character-profile-grid">
+              <div class="profile-item">
+                <span class="profile-label">Age:</span>
+                <span class="profile-value">{characterData.profile.age}</span>
+              </div>
+              <div class="profile-item">
+                <span class="profile-label">Race:</span>
+                <span class="profile-value">{characterData.profile.racial}</span>
+              </div>
+              <div class="profile-item">
+                <span class="profile-label">Homeland:</span>
+                <span class="profile-value">{characterData.profile.homeland}</span>
+              </div>
+              <div class="profile-item">
+                <span class="profile-label">Height:</span>
+                <span class="profile-value">{characterData.profile.height}</span>
+              </div>
+              <div class="profile-item">
+                <span class="profile-label">Birthday:</span>
+                <span class="profile-value">{characterData.profile.birthday}</span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- Complete Stats Box (Right) -->
+    <div class="character-stats-container">
+      <div class="character-stats-box">
+        <!-- Base Stats -->
+        <h3 class="character-stats-title">Base Stats</h3>
+        <p class="character-stats-explanation">Stats shown at Level 60 and full EX</p>
+
+        <!-- Core Stats -->
+        <h4 class="character-stats-subtitle">Core Stats</h4>
+        
+        <!-- Core Stats Explanation -->
+        <div class="core-stats-explanation">
+          <div class="stat-explanation-grid">
+            <span><strong>Strength:</strong> Increases Melee ATK</span>
+            <span><strong>Technic:</strong> Increases Ranged ATK</span>
+            <span><strong>Intelligence:</strong> Increases Magic ATK</span>
+            <span><strong>Vitality:</strong> Increases Max HP</span>
+            <span><strong>Agility:</strong> Increases evasion and AP Recovery</span>
+          </div>
+        </div>
+        
+        <div class="character-stats-grid core-stats">
+          <div class="stat-item">
+            <div class="stat-label">Strength</div>
+            <div class="stat-value">{characterData.stats.strength}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Technic</div>
+            <div class="stat-value">{characterData.stats.technic}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Intelligence</div>
+            <div class="stat-value">{characterData.stats.intelligence}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Vitality</div>
+            <div class="stat-value">{characterData.stats.vitality}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Agility</div>
+            <div class="stat-value">{characterData.stats.agility}</div>
+          </div>
+        </div>
+
+        <!-- Core Combat Stats -->
+        <h4 class="character-stats-subtitle">Core Combat Stats</h4>
+        <div class="character-stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">Max HP</div>
+            <div class="stat-value">{characterData.stats.maxHp}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Magic ATK</div>
+            <div class="stat-value">{characterData.stats.magicAtk}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Ranged ATK</div>
+            <div class="stat-value">{characterData.stats.rangedAtk}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Melee ATK</div>
+            <div class="stat-value">{characterData.stats.meleeAtk}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Speed</div>
+            <div class="stat-value">{characterData.stats.spd}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Starting AP</div>
+            <div class="stat-value">{characterData.stats.startingAp}</div>
+          </div>
+        </div>
+
+        <!-- Additional Stats -->
+        <h4 class="character-stats-subtitle">Additional Stats</h4>
+        <div class="character-stats-grid additional-stats">
+          <div class="stat-item">
+            <div class="stat-label small">AP Recovery</div>
+            <div class="stat-value small">{characterData.stats.apRecovery}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Accuracy</div>
+            <div class="stat-value small">{characterData.stats.accuracy}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Evade</div>
+            <div class="stat-value small">{characterData.stats.evade}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Crit Rate</div>
+            <div class="stat-value small">{characterData.stats.critRate}%</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Crit DMG</div>
+            <div class="stat-value small">{characterData.stats.critDmg}%</div>
+          </div>
+        </div>
+
+        <!-- Character Tags Section -->
+        {characterData.tags && characterData.tags.length > 0 && (
+          <div class="character-tags-container">
+            <div class="character-tags-label">Gameplay Tags</div>
+            <div class="character-tags-wrapper">
+              {characterData.tags.map((tag: string) => (
+                <span class={`character-tag ${getTagCategory(tag)}`}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Character Story Section -->
+{characterData.story && (
+  <section class="content-section character-story-section">
+    <h2 class="section-title">Character Story</h2>
+    <div class="character-story-content">
+      <p class="character-story-text">{characterData.story}</p>
+    </div>
+  </section>
+)}
+
+<!-- Skills Section -->
+<section class="content-section skills-section">
+  <h2 class="section-title">Skills</h2>
+  <p class="skills-explanation">All skills shown at maximum level</p>
+
+  {highlightedSkills && Object.entries(highlightedSkills).map(([key, skill]: [string, any]) => (
+    <div class={`skill-card ${skill.type === 'Passive' ? 'passive-skill' : ''} ${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`}>
+      <div class="skill-header">
+        <h3 class="skill-title">{skill.name}</h3>
+        <div class="skill-meta">
+          <span class="hw-badge" data-type={skill.type === 'Passive' ? 'Passive' : 'Skill'}>
+            {skill.type === 'Passive' ? 'Passive' : 'Skill'}
+          </span>
+          {skill.apCost && skill.apCost > 0 && (
+            <span class="skill-cost">AP Cost: {skill.apCost}</span>
+          )}
+          {skill.cooldown !== undefined && skill.cooldown >= 0 && (
+            <span class="skill-cooldown">
+              Cooldown: {skill.cooldown}
+            </span>
+          )}
+        </div>
+      </div>
+      <p class="skill-description" set:html={skill.description}></p>
+      {skill.damage && (
+        <div class="skill-damage">
+          <strong>Damage:</strong> {skill.damage.value} of {skill.damage.type}
+        </div>
+      )}
+    </div>
+  ))}
+</section>
+
+<!-- Unique Traits Section -->
+{highlightedTraits && (
+  <section class="content-section traits-section">
+    <h2 class="section-title">Unique Traits</h2>
+    
+    {Object.entries(highlightedTraits).map(([key, trait]: [string, any]) => (
+      <div class={`trait-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`}>
+        <div class="trait-header">
+          <h3 class="trait-title">{trait.name}</h3>
+          <span class="hw-badge" data-type="Trait">Unique Trait</span>
+        </div>
+        <p class="trait-description" set:html={trait.description}></p>
+      </div>
+    ))}
+  </section>
+)}
+
+<!-- Weapon Section -->
+{characterData.weapon && (
+  <section class="content-section weapon-section">
+    <h2 class="section-title">
+      Weapon: {characterData.weapon.name}
+    </h2>
+    <p class="character-stats-explanation">Stats and skills shown at Level 60 and full EX</p>
+
+    <div class="weapon-flex">
+      {/* Weapon Image & Stats (Left) */}
+      <div class="weapon-image-container">
+        <div class="weapon-image-box">
+          <div class="weapon-image-wrapper">
+            <Image
+              src={characterData.weapon.image}
+              alt={characterData.weapon.name}
+              width={200}
+              height={300}
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="weapon-info-card">
+          <h3 class="weapon-info-title">Weapon Info</h3>
+          
+          <div class="weapon-info-grid">
+            <div class="weapon-info-item">
+              <div class="weapon-info-label">Type</div>
+              <span class="hw-badge" data-type="WeaponType">{characterData.weapon.type}</span>
+            </div>
+            <div class="weapon-info-item">
+              <div class="weapon-info-label">Rarity</div>
+              <span class="hw-badge" data-rarity={characterData.weapon.rarity}>
+                {characterData.weapon.rarity}
+              </span>
+            </div>
+          </div>
+
+          <h4 class="weapon-stats-title">Weapon Stats</h4>
+          <div class="weapon-stats-grid">
+            {characterData.weapon.stats && Object.entries(characterData.weapon.stats).map(([key, value]) => (
+              <div class="stat-item">
+                <div class="stat-label">{key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</div>
+                <div class="stat-value">{value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Weapon Skills (Right) */}
+      <div class="weapon-skills-container">
+        <div class="weapon-skills-box">
+          <h3 class="weapon-skills-title">Weapon Skills</h3>
+          
+          {highlightedWeaponSkills && Object.entries(highlightedWeaponSkills).map(([key, skill]: [string, any]) => (
+            <div class={`weapon-skill-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`}>
+              <div class="weapon-skill-header">
+                <h4 class="weapon-skill-title">{skill.name}</h4>
+                <span class="hw-badge" data-type={skill.type || 'Unique'}>
+                  {skill.type || 'Unique'}
+                </span>
+              </div>
+              <p class="weapon-skill-description" set:html={skill.description}></p>
+              {skill.note && (
+                <div class="weapon-skill-note">
+                  <strong>Note:</strong> {skill.note}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
