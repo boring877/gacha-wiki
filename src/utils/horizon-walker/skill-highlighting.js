@@ -51,7 +51,6 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
 
   // Security: Limit text length to prevent DoS
   if (text.length > 10000) {
-    console.warn('Text too long for highlighting, truncating to prevent DoS');
     text = text.substring(0, 10000) + '...';
   }
 
@@ -61,8 +60,8 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
   // Performance: Check cache first (include options in cache key)
   const cacheKey = createCacheKey(text, highlightPatterns) + `_trusted:${isTrustedContent}`;
   const cached = highlightCache.get(cacheKey);
-  
-  if (cached && (Date.now() - cached.timestamp) < CACHE_TTL) {
+
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
     return cached.result;
   }
 
@@ -75,11 +74,8 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
   let sanitizedText;
   if (isTrustedContent) {
     // For trusted content (character data), only escape potential HTML tags but preserve quotes
-    sanitizedText = text
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-      // Note: Preserving quotes and apostrophes for trusted character data
+    sanitizedText = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    // Note: Preserving quotes and apostrophes for trusted character data
   } else {
     // For untrusted content, apply full HTML entity encoding
     sanitizedText = text
@@ -95,11 +91,11 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
   // Apply highlights in a specific order to avoid conflicts
   const highlightOrder = [
     { key: 'effects', className: 'hw-highlight-effects' },
-    { key: 'damage', className: 'hw-highlight-damage' }, 
+    { key: 'damage', className: 'hw-highlight-damage' },
     { key: 'buffsDebuffs', className: 'hw-highlight-buffs' },
     { key: 'attributes', className: 'hw-highlight-attributes' },
     { key: 'keywords', className: 'hw-highlight-keywords' },
-    { key: 'numbers', className: 'hw-highlight-numbers' }
+    { key: 'numbers', className: 'hw-highlight-numbers' },
   ];
 
   // Track already highlighted positions to avoid nested highlights
@@ -113,89 +109,82 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
     highlightOrder.forEach(({ key, className }) => {
       // Security: Check for timeout before each operation
       if (Date.now() - startTime > TIMEOUT_MS) {
-        console.warn('Highlighting timeout reached, returning partially processed text');
         return;
       }
 
       if (highlightPatterns[key]) {
         const pattern = highlightPatterns[key];
-        
+
         // Security: Validate regex pattern exists and is safe
         if (!pattern || !pattern.source) {
-          console.warn(`Invalid pattern for key: ${key}`);
           return;
         }
-        
+
         // Create a new regex to ensure global matching
         const regex = new RegExp(pattern.source, pattern.flags || 'gi');
-        
+
         // Find all matches first with iteration limit
         const matches = [];
         let match;
         let iterationCount = 0;
         const MAX_ITERATIONS = 1000;
-        
+
         while ((match = regex.exec(highlightedText)) !== null && iterationCount < MAX_ITERATIONS) {
           iterationCount++;
-          
+
           // Security: Check for infinite loops by detecting if regex isn't advancing
           if (match.index === regex.lastIndex) {
-            console.warn('Regex infinite loop detected, breaking');
             break;
           }
-          
+
           // Check if this match overlaps with existing highlights
           const start = match.index;
           const end = match.index + match[0].length;
-          
-          const overlaps = highlightedRanges.some(range => 
-            (start >= range.start && start < range.end) || 
-            (end > range.start && end <= range.end) ||
-            (start <= range.start && end >= range.end)
+
+          const overlaps = highlightedRanges.some(
+            range =>
+              (start >= range.start && start < range.end) ||
+              (end > range.start && end <= range.end) ||
+              (start <= range.start && end >= range.end)
           );
-          
+
           if (!overlaps) {
             matches.push({
               match: match[0],
               start: start,
               end: end,
-              fullMatch: match
+              fullMatch: match,
             });
           }
         }
-        
-        if (iterationCount >= MAX_ITERATIONS) {
-          console.warn(`Maximum iterations reached for pattern: ${key}`);
-        }
-      
-      // Apply highlights in reverse order to maintain string positions
-      matches.reverse().forEach(matchObj => {
-        const before = highlightedText.substring(0, matchObj.start);
-        const highlighted = `<span class="${className}">${matchObj.match}</span>`;
-        const after = highlightedText.substring(matchObj.end);
-        
-        highlightedText = before + highlighted + after;
-        
-        // Update highlighted ranges accounting for added HTML
-        const htmlLength = highlighted.length - matchObj.match.length;
-        highlightedRanges.forEach(range => {
-          if (range.start > matchObj.start) {
-            range.start += htmlLength;
-            range.end += htmlLength;
-          }
+
+        // Apply highlights in reverse order to maintain string positions
+        matches.reverse().forEach(matchObj => {
+          const before = highlightedText.substring(0, matchObj.start);
+          const highlighted = `<span class="${className}">${matchObj.match}</span>`;
+          const after = highlightedText.substring(matchObj.end);
+
+          highlightedText = before + highlighted + after;
+
+          // Update highlighted ranges accounting for added HTML
+          const htmlLength = highlighted.length - matchObj.match.length;
+          highlightedRanges.forEach(range => {
+            if (range.start > matchObj.start) {
+              range.start += htmlLength;
+              range.end += htmlLength;
+            }
+          });
+
+          // Add this new highlighted range
+          highlightedRanges.push({
+            start: matchObj.start,
+            end: matchObj.start + highlighted.length,
+          });
         });
-        
-        // Add this new highlighted range
-        highlightedRanges.push({
-          start: matchObj.start,
-          end: matchObj.start + highlighted.length
-        });
-      });
       }
     });
   } catch (error) {
     // Security: Handle any regex errors gracefully
-    console.error('Error during text highlighting:', error);
     return sanitizedText; // Return sanitized but unhighlighted text as fallback
   } finally {
     // Memory cleanup: Clear the highlighted ranges array
@@ -206,7 +195,7 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
   if (highlightCache.size < CACHE_MAX_SIZE) {
     highlightCache.set(cacheKey, {
       result: highlightedText,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
   }
 
@@ -220,11 +209,14 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
  */
 export const defaultHWHighlightPatterns = {
   damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\w{3,15}\s+DMG|damage)\b/gi,
-  effects: /\[([^\[\]]{1,100})\]/g,
-  buffsDebuffs: /\b(?:shield|critical\s+hit|unavoidable|unblockable|counterattack|taunt|weakness\s+attack|buff|debuff|heal|recover)\b/gi,
+  effects: /\[([^[\]]{1,100})\]/g,
+  buffsDebuffs:
+    /\b(?:shield|critical\s+hit|unavoidable|unblockable|counterattack|taunt|weakness\s+attack|buff|debuff|heal|recover)\b/gi,
   numbers: /(?:\d{1,4}%|\d{1,3}\s+rounds?|\d{1,3}R)\b/gi,
-  keywords: /\b(?:reduces?|deals?|inflicts?|additional|equal\s+to|applies?|gains?|lasting|impossible|successful|activates?|increases?|decreases?|deployed|battle|allies|recovers?|defeated|duration|turn|start|end|rounds?|for\s+\d{1,3}\s+rounds?|for\s+\d{1,3}R)\b/gi,
-  attributes: /\b(?:AP|Magic\s+ATK|Immaterial|Physical|Slash|Pierce|Crush|Heat|Cold|Electric|Poison|Evasion|ATK|AP\s+recovery|all\s+ATK|DEF|max\s+HP|HP|Speed|Accuracy|Crit\s+Rate|Crit\s+DMG)\b/gi
+  keywords:
+    /\b(?:reduces?|deals?|inflicts?|additional|equal\s+to|applies?|gains?|lasting|impossible|successful|activates?|increases?|decreases?|deployed|battle|allies|recovers?|defeated|duration|turn|start|end|rounds?|for\s+\d{1,3}\s+rounds?|for\s+\d{1,3}R)\b/gi,
+  attributes:
+    /\b(?:AP|Magic\s+ATK|Immaterial|Physical|Slash|Pierce|Crush|Heat|Cold|Electric|Poison|Evasion|ATK|AP\s+recovery|all\s+ATK|DEF|max\s+HP|HP|Speed|Accuracy|Crit\s+Rate|Crit\s+DMG)\b/gi,
 };
 
 /**
@@ -247,7 +239,7 @@ export function highlightAllSkills(skills, highlightPatterns, options = {}) {
     if (skill && skill.description) {
       highlightedSkills[skillKey] = {
         ...skill,
-        description: highlightSkillText(skill.description, patterns, options)
+        description: highlightSkillText(skill.description, patterns, options),
       };
     } else {
       highlightedSkills[skillKey] = skill;
@@ -259,7 +251,7 @@ export function highlightAllSkills(skills, highlightPatterns, options = {}) {
 
 /**
  * Applies highlighting to unique traits
- * @param {Object} traits - Character unique traits object  
+ * @param {Object} traits - Character unique traits object
  * @param {Object} highlightPatterns - Highlighting patterns to use
  * @param {Object} options - Options for highlighting (passed to highlightSkillText)
  * @returns {Object} Traits object with highlighted descriptions
@@ -277,7 +269,7 @@ export function highlightUniqueTraits(traits, highlightPatterns, options = {}) {
     if (trait && trait.description) {
       highlightedTraits[traitKey] = {
         ...trait,
-        description: highlightSkillText(trait.description, patterns, options)
+        description: highlightSkillText(trait.description, patterns, options),
       };
     } else {
       highlightedTraits[traitKey] = trait;
@@ -290,7 +282,7 @@ export function highlightUniqueTraits(traits, highlightPatterns, options = {}) {
 /**
  * Applies highlighting to weapon skills
  * @param {Object} weaponSkills - Weapon unique skills object
- * @param {Object} highlightPatterns - Highlighting patterns to use  
+ * @param {Object} highlightPatterns - Highlighting patterns to use
  * @param {Object} options - Options for highlighting (passed to highlightSkillText)
  * @returns {Object} Weapon skills object with highlighted descriptions
  */
@@ -307,7 +299,7 @@ export function highlightWeaponSkills(weaponSkills, highlightPatterns, options =
     if (skill && skill.description) {
       highlightedWeaponSkills[skillKey] = {
         ...skill,
-        description: highlightSkillText(skill.description, patterns, options)
+        description: highlightSkillText(skill.description, patterns, options),
       };
     } else {
       highlightedWeaponSkills[skillKey] = skill;

@@ -11,12 +11,11 @@ export function initializeCharacterDatabase() {
     const rarityFilter = document.getElementById('rarity-filter');
     const sortButtons = document.querySelectorAll('.sort-btn');
     const resetButton = document.getElementById('reset-table');
-    const filterSelects = document.querySelectorAll('.filter-select');
 
     // --- State ---
     let currentSortKey = 'name';
     let currentSortDirection = 'asc';
-    
+
     // Sort button states: normal -> asc -> desc -> normal (3-state cycle)
     const filterStates = new Map();
 
@@ -38,11 +37,10 @@ export function initializeCharacterDatabase() {
       });
     }
 
-
     function sortByNumeric(items, columnIndex, isDesktop = true) {
       return items.sort((a, b) => {
         let valueA, valueB;
-        
+
         if (isDesktop) {
           const cellA = a.querySelector(`td:nth-child(${columnIndex})`);
           const cellB = b.querySelector(`td:nth-child(${columnIndex})`);
@@ -74,10 +72,11 @@ export function initializeCharacterDatabase() {
         } else {
           // Find column index for numeric sorting
           const headerRow = tableBody.parentElement.querySelector('thead tr');
-          const columnIndex = Array.from(headerRow?.children || []).findIndex(th => 
-            th.textContent.toLowerCase().includes(sortKey.toLowerCase())
-          ) + 1;
-          
+          const columnIndex =
+            Array.from(headerRow?.children || []).findIndex(th =>
+              th.textContent.toLowerCase().includes(sortKey.toLowerCase())
+            ) + 1;
+
           if (columnIndex > 0) {
             sortedRows = sortByNumeric(rows, columnIndex, true);
           } else {
@@ -96,7 +95,14 @@ export function initializeCharacterDatabase() {
         let sortedCards;
 
         if (sortKey === 'name') {
-          sortedCards = sortByName(cards, false);
+          // Name sorting for mobile cards - simple alphabetical
+          sortedCards = cards.sort((a, b) => {
+            const nameA = a.querySelector('.character-name')?.textContent || '';
+            const nameB = b.querySelector('.character-name')?.textContent || '';
+            return currentSortDirection === 'desc'
+              ? nameB.localeCompare(nameA)
+              : nameA.localeCompare(nameB);
+          });
         } else {
           sortedCards = sortByNumeric(cards, null, false);
         }
@@ -107,10 +113,13 @@ export function initializeCharacterDatabase() {
 
       // Save sort state to sessionStorage
       try {
-        sessionStorage.setItem('hw-character-sort', JSON.stringify({
-          key: currentSortKey,
-          direction: currentSortDirection
-        }));
+        sessionStorage.setItem(
+          'hw-character-sort',
+          JSON.stringify({
+            key: currentSortKey,
+            direction: currentSortDirection,
+          })
+        );
       } catch (error) {
         // Ignore storage errors
       }
@@ -124,8 +133,7 @@ export function initializeCharacterDatabase() {
         Array.from(tableBody.children).forEach(row => {
           const rarityCell = row.querySelector('.hw-badge[data-rarity]');
 
-          const matchesRarity = !rarityValue || 
-            rarityCell?.textContent.trim() === rarityValue;
+          const matchesRarity = !rarityValue || rarityCell?.textContent.trim() === rarityValue;
 
           const isVisible = matchesRarity;
           row.style.display = isVisible ? '' : 'none';
@@ -139,8 +147,7 @@ export function initializeCharacterDatabase() {
         Array.from(mobileCardsContainer.children).forEach(card => {
           const rarityBadge = card.querySelector('.hw-badge[data-rarity]');
 
-          const matchesRarity = !rarityValue || 
-            rarityBadge?.textContent.trim() === rarityValue;
+          const matchesRarity = !rarityValue || rarityBadge?.textContent.trim() === rarityValue;
 
           const isVisible = matchesRarity;
           card.style.display = isVisible ? '' : 'none';
@@ -149,7 +156,7 @@ export function initializeCharacterDatabase() {
 
       // Save filter state to sessionStorage
       const filterState = {
-        rarity: rarityValue || null
+        rarity: rarityValue || null,
       };
 
       const activeFilters = {};
@@ -223,7 +230,7 @@ export function initializeCharacterDatabase() {
           const sortState = JSON.parse(savedSort);
           currentSortKey = sortState.key || 'name';
           currentSortDirection = sortState.direction || 'asc';
-          
+
           const activeButton = document.querySelector(`[data-sort="${currentSortKey}"]`);
           if (activeButton) {
             activeButton.classList.add('active');
@@ -242,11 +249,11 @@ export function initializeCharacterDatabase() {
         btn.classList.add('state-normal');
       });
     }
-    
+
     function cycleSortState(sortButton) {
       const currentState = filterStates.get(sortButton);
       let nextState;
-      
+
       switch (currentState) {
         case 'normal':
           nextState = 'asc';
@@ -260,7 +267,7 @@ export function initializeCharacterDatabase() {
         default:
           nextState = 'normal';
       }
-      
+
       // Reset all other sort buttons to normal
       sortButtons.forEach(btn => {
         if (btn !== sortButton) {
@@ -269,12 +276,12 @@ export function initializeCharacterDatabase() {
           filterStates.set(btn, 'normal');
         }
       });
-      
+
       // Update clicked button state
       sortButton.classList.remove('state-normal', 'state-asc', 'state-desc', 'active');
       sortButton.classList.add(`state-${nextState}`);
       filterStates.set(sortButton, nextState);
-      
+
       // Apply sorting based on new state
       if (nextState !== 'normal') {
         const sortKey = sortButton.dataset.sort;
@@ -287,10 +294,10 @@ export function initializeCharacterDatabase() {
     }
 
     // --- Event Listeners ---
-    
+
     // Initialize sort button states
     initializeSortStates();
-    
+
     // Filter event listeners (keep existing for compatibility)
     if (rarityFilter) {
       rarityFilter.addEventListener('change', applyFilters);
@@ -310,7 +317,7 @@ export function initializeCharacterDatabase() {
 
     // Character card/row click navigation with touch optimization
     // Use event delegation to handle both existing and future elements
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', e => {
       const clickableElement = e.target.closest('[data-url]');
       if (clickableElement) {
         e.preventDefault();
