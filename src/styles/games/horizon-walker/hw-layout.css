@@ -1,4 +1,3 @@
-
 /* Horizon Walker Layout Styles */
 /* Base layout, hero sections, and shared animations */
 
@@ -7,6 +6,8 @@
   background: var(--bg-dark);
   color: var(--text-primary);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Horizon Walker Theme Variants */
@@ -57,6 +58,7 @@
 .horizon-walker-content {
   position: relative;
   z-index: 10;
+  flex: 1;
 }
 
 /* Hero Section Styles */

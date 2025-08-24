@@ -1,31 +1,30 @@
 /* Horizon Walker Landing Page Styles */
 
+/* Content Section - Main container for landing page sections */
 .content-section {
+  background: var(--hw-bg-dark);
   padding: 2.5rem;
-  margin-bottom: 2rem;
-  background: linear-gradient(135deg, rgba(42, 42, 42, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
   border-radius: 16px;
-  border: 1px solid rgba(232, 165, 71, 0.3);
+  margin-bottom: 2rem;
+  border: 1px solid var(--hw-border-muted);
 }
 
+/* Section Title - Main headings for each section */
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
   text-align: center;
-  /* Fallback color for browsers that don't support gradient text */
-  color: #ffffff;
-  /* Gradient background for text effect */
+  color: var(--hw-text-light);
   background: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
-  /* Clip background to text - WebKit browsers */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* Standard property for modern browsers */
   background-clip: text;
 }
 
+/* Game Description */
 .game-description {
-  color: #e0e0e0;
+  color: var(--hw-text-medium);
   font-size: 1.2rem;
   line-height: 1.7;
   margin-bottom: 2rem;
@@ -35,6 +34,7 @@
   margin-right: auto;
 }
 
+/* Last Updated */
 .last-updated {
   margin-top: 1.5rem;
   color: var(--hw-primary-warm);
@@ -50,7 +50,7 @@
 }
 
 .platforms-container h3 {
-  color: #ffffff;
+  color: var(--hw-text-light);
   font-size: 1.4rem;
   font-weight: 600;
   text-align: center;
@@ -64,7 +64,7 @@
 .platform-notes {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #b0b0b0;
+  color: var(--hw-text-muted);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -105,7 +105,6 @@
   min-height: 50px;
 }
 
-
 /* Social Links */
 .social-links-container {
   margin: 2rem 0 1rem 0;
@@ -119,22 +118,42 @@
   margin-bottom: 1rem;
 }
 
-.social-links {
+/* HW Social Links */
+.hw-social-links-container {
+  margin: 2rem 0 1rem 0;
+  text-align: center;
+}
+
+.hw-social-links-container h4 {
+  color: var(--hw-text-light);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hw-social-links {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.social-link {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+.hw-social-link {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-accent);
+  color: var(--hw-text-light);
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.hw-social-link:hover {
+  background: var(--hw-primary-warm);
+  color: var(--hw-bg-darker);
+  border-color: var(--hw-primary-warm);
 }
 
 /* Bento Grid Layout */
@@ -166,20 +185,13 @@
 
 /* Category Cards */
 .category-card {
-  background: linear-gradient(135deg, rgba(42, 42, 42, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
-  border: 1px solid rgba(232, 165, 71, 0.3);
+  background: var(--hw-card-bg-gradient);
+  border: 1px solid var(--hw-border-muted);
   border-radius: 16px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(232, 165, 71, 0.15);
-  border-color: rgba(232, 165, 71, 0.5);
 }
 
 /* Category Header */
@@ -195,20 +207,20 @@
 }
 
 .category-header h3 {
-  color: #ffffff;
+  color: var(--hw-text-light);
   font-size: 1.4rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
 }
 
 .category-description {
-  color: #b0b0b0;
+  color: var(--hw-text-muted);
   font-size: 0.9rem;
   line-height: 1.4;
   margin: 0;
 }
 
-/* Nested Guides Bento Grid */
+/* Nested Guides Grid */
 .nested-guides-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -218,12 +230,12 @@
 }
 
 .nested-guide-card {
-  color: #f0f0f0;
+  color: var(--hw-text-light);
   text-decoration: none;
   padding: 1rem;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid #3a3a3a;
+  background: var(--hw-stat-bg);
+  border: 1px solid var(--hw-border-light);
   font-size: 0.9rem;
   font-weight: 500;
   text-align: center;
@@ -231,26 +243,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
 
-.nested-guide-card:hover {
-  background: var(--hw-primary-warm);
-  color: white;
-  border-color: var(--hw-primary-warm);
-  transform: translateY(-1px);
-}
-
-/* Tablet Landscape Responsive (1024px and below) */
+/* Responsive Design */
+/* Tablet Landscape */
 @media (max-width: 1024px) {
   .guides-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  
+
   .nested-guides-grid {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 0.5rem;
@@ -262,30 +267,30 @@
   }
 }
 
-/* Responsive Design */
+/* Mobile */
 @media (max-width: 768px) {
   .content-section {
     padding: 2rem;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .platforms-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
   }
-  
+
   .platform-button {
     padding: 1rem;
     font-size: 0.9rem;
   }
-  
+
   .platform-notes {
     font-size: 0.8rem;
   }
-  
+
   /* Bento Grid Mobile */
   .guides-grid {
     grid-template-columns: 1fr;
@@ -314,33 +319,34 @@
   }
 }
 
+/* Small Mobile */
 @media (max-width: 480px) {
   .content-section {
     padding: 1.5rem;
   }
-  
+
   .section-title {
     font-size: 1.8rem;
   }
-  
+
   .platforms-grid {
     grid-template-columns: 1fr;
     gap: 0.8rem;
   }
-  
+
   .platform-button {
     padding: 1rem;
     font-size: 0.9rem;
   }
-  
+
   .platforms-container h3 {
     font-size: 1.2rem;
   }
-  
+
   .platform-notes {
     font-size: 0.75rem;
   }
-  
+
   /* Small Mobile Bento Grid */
   .guides-grid {
     grid-template-columns: 1fr;

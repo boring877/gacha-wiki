@@ -80,74 +80,78 @@ const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
     </div>
 
     <!-- Play Game Platforms -->
-    {hasPlatforms && (
-      <div class="platforms-container">
-        <h3>Play on:</h3>
-        <div class="platform-notes">
-          <ul>
-            <li>• Google Play: Censored version</li>
-            <li>• One Store: Uncensored (will migrate to Steam)</li>
-            <li>• Ero-Labs: Uncensored (will not migrate to Steam)</li>
-            <li>• Steam: Uncensored version</li>
-          </ul>
+    {
+      hasPlatforms && (
+        <div class="platforms-container">
+          <h3>Play on:</h3>
+          <div class="platform-notes">
+            <ul>
+              <li>• Google Play: Censored version</li>
+              <li>• One Store: Uncensored (will migrate to Steam)</li>
+              <li>• Ero-Labs: Uncensored (will not migrate to Steam)</li>
+              <li>• Steam: Uncensored version</li>
+            </ul>
+          </div>
+          <div class="platforms-grid">
+            {gameInfo.platforms.map(platform => (
+              <a
+                href={platform.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="platform-button"
+                aria-label={`Play ${meta.gameTitle} on ${platform.name}`}
+              >
+                {platform.name}
+              </a>
+            ))}
+          </div>
         </div>
-        <div class="platforms-grid">
-          {gameInfo.platforms.map(platform => (
-            <a 
-              href={platform.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="platform-button"
-              aria-label={`Play ${meta.gameTitle} on ${platform.name}`}
-            >
-              {platform.name}
-            </a>
-          ))}
-        </div>
-      </div>
-    )}
+      )
+    }
 
     <!-- Social Links -->
-    {gameInfo.socialLinks && (
-      <div class="social-links-container">
-        <h4>Game Social:</h4>
-        <div class="social-links">
-          {gameInfo.socialLinks.twitter && (
-            <a 
-              href={gameInfo.socialLinks.twitter} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="social-link"
-              aria-label={`Follow ${meta.gameTitle} on X/Twitter`}
-            >
-              X/Twitter
-            </a>
-          )}
-          {gameInfo.socialLinks.discord && (
-            <a 
-              href={gameInfo.socialLinks.discord} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="social-link"
-              aria-label={`Join ${meta.gameTitle} Discord server`}
-            >
-              Discord
-            </a>
-          )}
-          {gameInfo.socialLinks.youtube && (
-            <a 
-              href={gameInfo.socialLinks.youtube} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="social-link"
-              aria-label={`Watch ${meta.gameTitle} on YouTube`}
-            >
-              YouTube
-            </a>
-          )}
+    {
+      gameInfo.socialLinks && (
+        <div class="hw-social-links-container">
+          <h4>Game Social:</h4>
+          <div class="hw-social-links">
+            {gameInfo.socialLinks.twitter && (
+              <a
+                href={gameInfo.socialLinks.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hw-social-link"
+                aria-label={`Follow ${meta.gameTitle} on X/Twitter`}
+              >
+                X/Twitter
+              </a>
+            )}
+            {gameInfo.socialLinks.discord && (
+              <a
+                href={gameInfo.socialLinks.discord}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hw-social-link"
+                aria-label={`Join ${meta.gameTitle} Discord server`}
+              >
+                Discord
+              </a>
+            )}
+            {gameInfo.socialLinks.youtube && (
+              <a
+                href={gameInfo.socialLinks.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hw-social-link"
+                aria-label={`Watch ${meta.gameTitle} on YouTube`}
+              >
+                YouTube
+              </a>
+            )}
+          </div>
         </div>
-      </div>
-    )}
+      )
+    }
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />

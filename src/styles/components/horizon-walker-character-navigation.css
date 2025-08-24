@@ -39,12 +39,6 @@
   transition: all 0.2s ease;
 }
 
-.hw-character-navigation .nav-button:hover {
-  background: var(--neutral-700);
-  border-color: var(--neutral-600);
-  color: var(--hw-white);
-}
-
 .hw-character-navigation .nav-arrow {
   font-size: 1.2rem;
   font-weight: bold;
@@ -85,10 +79,6 @@
   color: var(--hw-white);
 }
 
-.hw-character-navigation .center-button:hover {
-  background: var(--neutral-600);
-}
-
 /* Mobile Character Navigation */
 .mobile-character-nav {
   display: none;
@@ -124,11 +114,6 @@
   font-weight: 500;
 }
 
-.mobile-nav-button:hover {
-  background: var(--neutral-700);
-  color: var(--hw-white);
-}
-
 .mobile-nav-button.center {
   background: var(--neutral-700);
   color: var(--hw-white);
@@ -159,7 +144,7 @@
   .hw-character-navigation {
     display: none;
   }
-  
+
   .mobile-character-nav {
     display: flex;
   }

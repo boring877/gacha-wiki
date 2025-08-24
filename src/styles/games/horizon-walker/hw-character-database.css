@@ -2,7 +2,11 @@
 
 /* Performance-optimized CSS Custom Properties */
 :root {
-  --hw-database-gradient-bg: linear-gradient(135deg, rgba(42, 42, 42, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
+  --hw-database-gradient-bg: linear-gradient(
+    135deg,
+    rgba(42, 42, 42, 0.8) 0%,
+    rgba(26, 26, 26, 0.9) 100%
+  );
   --hw-text-gradient: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
 }
 
@@ -192,10 +196,6 @@
   white-space: nowrap;
 }
 
-.character-table tbody tr:hover {
-  background: rgba(232, 165, 71, 0.05);
-}
-
 /* Image Column (First) */
 .character-table th:first-child,
 .character-table .image-cell {
@@ -223,7 +223,6 @@
   flex-shrink: 0;
 }
 
-
 .character-name-link {
   color: #ffffff;
   text-decoration: none;
@@ -232,17 +231,11 @@
   line-height: 1.2;
 }
 
-.character-name-link:hover {
-  color: var(--hw-primary-warm);
-}
-
 .cost-value {
   color: var(--hw-primary-warm);
   font-weight: 600;
   font-size: 1rem;
 }
-
-
 
 /* Mobile Character Cards */
 .character-cards-container {
@@ -256,10 +249,6 @@
   border: 1px solid rgba(232, 165, 71, 0.3);
   border-radius: 12px;
   padding: 1.5rem;
-}
-
-.character-card:hover {
-  border-color: rgba(232, 165, 71, 0.5);
 }
 
 .character-card-header {
@@ -323,15 +312,15 @@
   .character-table-container {
     display: block;
   }
-  
+
   .character-cards-container {
     display: none;
   }
-  
+
   .filter-row {
     flex-wrap: nowrap;
   }
-  
+
   .search-input {
     min-width: 300px;
   }
@@ -342,23 +331,23 @@
   .character-content-area {
     padding: 0 1rem;
   }
-  
+
   .filter-bar {
     padding: 1rem;
   }
-  
+
   .character-hero-title {
     font-size: 2rem;
   }
-  
+
   .character-card {
     padding: 1rem;
   }
-  
+
   .filter-group {
     min-width: 120px;
   }
-  
+
   .search-input {
     min-width: 200px;
   }
@@ -369,15 +358,15 @@
   .character-hero-title {
     font-size: 1.8rem;
   }
-  
+
   .character-card-stats {
     grid-template-columns: 1fr;
   }
-  
+
   .filter-group {
     min-width: 100px;
   }
-  
+
   .search-input {
     min-width: 150px;
   }
