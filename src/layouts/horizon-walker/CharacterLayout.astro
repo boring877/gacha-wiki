@@ -86,12 +86,12 @@ const {
       <div class="horizon-walker-container">
         <main class="horizon-walker-main">
           <!-- Character Database Hero Section -->
-          <section class="character-hero-section">
+          <section class="hw-char-db-hero-section">
             <!-- Back Button -->
             {
               showBackButton && (
-                <div class="back-button-container">
-                  <a href={backButtonHref} class="back-button">
+                <div class="hw-char-db-back-button-container">
+                  <a href={backButtonHref} class="hw-char-db-back-button">
                     ← Back to Horizon Walker
                   </a>
                 </div>
@@ -99,16 +99,16 @@ const {
             }
 
             <!-- Page Title -->
-            <h1 class="character-hero-title">{gameTitle || 'Character Database'}</h1>
+            <h1 class="hw-char-db-hero-title">{gameTitle || 'Character Database'}</h1>
 
             <!-- Subtitle -->
-            <p class="character-hero-subtitle">Database that has all Characters, and waifu</p>
+            <p class="hw-char-db-hero-subtitle">Database that has all Characters, and waifu</p>
 
             <DecorativeLines />
           </section>
 
           <!-- Content Area -->
-          <div class="character-content-area">
+          <div class="hw-char-db-content-area">
             <slot />
           </div>
         </main>

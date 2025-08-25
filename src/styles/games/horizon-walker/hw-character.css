@@ -17,89 +17,121 @@
 /*                           DATABASE STYLES                              */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
-/* Character Hero Section */
-.character-hero-section {
+/* Page Layout Styles */
+.hw-char-db-page-flex {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.hw-char-db-main-content {
+  flex: 1;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+.hw-char-db-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Hero Section Styles */
+.hw-char-db-hero-section {
   text-align: center;
-  padding: 2rem 0 3rem;
-  margin-bottom: 2rem;
-  position: relative;
+  margin-bottom: 3rem;
+  padding: 2rem 1rem;
 }
 
-.back-button-container {
-  text-align: left;
+.hw-char-db-hero-title {
+  font-family:
+    'Space Grotesk',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    system-ui,
+    sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.hw-char-db-hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--hw-text-muted);
+  margin: 0;
+  font-family:
+    'Space Grotesk',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    system-ui,
+    sans-serif;
+}
+
+.hw-char-db-back-button-container {
   margin-bottom: 1.5rem;
+  text-align: left;
 }
 
-.back-button {
+.hw-char-db-back-button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   color: var(--hw-primary-warm);
   text-decoration: none;
-  font-size: 0.9rem;
   font-weight: 500;
-}
-
-.back-button:hover {
-  color: var(--hw-secondary-coral);
-}
-
-.character-hero-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0 0 1rem 0;
-  color: #ffffff;
-  background: var(--hw-text-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-.character-hero-subtitle {
-  font-size: 1.1rem;
-  color: #b0b0b0;
-  margin: 0 0 2rem 0;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.5;
-}
-
-/* Character Content Area */
-.character-content-area {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* Database Header */
-.database-header {
-  background: var(--hw-database-gradient-bg);
-  border: 1px solid rgba(232, 165, 71, 0.3);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.database-title {
-  color: var(--hw-primary-warm);
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-}
-
-.database-subtitle {
-  color: #b0b0b0;
   font-size: 0.9rem;
-  font-style: italic;
-  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(232, 165, 71, 0.3);
+  border-radius: 6px;
+  background: rgba(26, 26, 26, 0.8);
+  transition: all 0.2s ease;
 }
 
-/* Character Table (Desktop) - Show by default */
+.hw-char-db-back-button:hover {
+  background: rgba(232, 165, 71, 0.1);
+  border-color: var(--hw-primary-warm);
+  transform: translateX(-2px);
+}
+
+/* Database Stats Styles (now integrated into filter bar) */
+.hw-char-db-subtitle {
+  font-size: 1rem;
+  color: var(--hw-text-muted);
+  margin: 0;
+  font-family:
+    'Space Grotesk',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    system-ui,
+    sans-serif;
+}
+
+.hw-char-db-stats-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Content Area Styles */
+.hw-char-db-content-area {
+  flex: 1;
+}
+
+/* Character Table (Desktop) */
 .character-table-container {
-  display: block;
+  display: none;
   background: rgba(42, 42, 42, 0.85);
   border: 1px solid rgba(232, 165, 71, 0.2);
   border-radius: 12px;
@@ -302,18 +334,25 @@
   gap: 1rem;
 }
 
+/* Stats Info Row */
+.filter-stats-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.stats-info-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
 /* Reset Row */
 .filter-reset-row {
   display: flex;
   justify-content: flex-end;
-}
-
-.search-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-  max-width: 400px;
 }
 
 /* Bottom Row: Filters Left, Sorting Right */
@@ -519,27 +558,6 @@
   opacity: 1;
 }
 
-.search-input {
-  background: rgba(26, 26, 26, 0.8);
-  border: 1px solid rgba(232, 165, 71, 0.3);
-  border-radius: 6px;
-  color: #ffffff;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  width: 100%;
-  min-width: 200px;
-  flex: 1;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--hw-primary-warm);
-}
-
-.search-input::placeholder {
-  color: #888;
-}
-
 .reset-button {
   background: rgba(232, 165, 71, 0.1);
   border: 1px solid rgba(232, 165, 71, 0.3);
@@ -555,9 +573,6 @@
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                        MOBILE CHARACTER CARDS                          */
 /* ═══════════════════════════════════════════════════════════════════════ */
-
-/* Mobile Character Cards */
-/* Character Cards removed - using mobile-card-view instead */
 
 /* Mobile card view - hidden by default, shown on mobile */
 .mobile-card-view {
@@ -703,140 +718,23 @@
   border: 2px solid var(--hw-accent-primary);
 }
 
-/* Enhanced badge system */
-.mobile-card-badges {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-  margin-bottom: 0.7rem;
-}
-
-/* Stats display */
-.mobile-card-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.85rem;
-}
-
-.mobile-card-stats-secondary {
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 0.5rem;
-}
-
-.mobile-card-stats div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.25rem 0;
-}
-
-.mobile-card-stats span:last-child {
-  color: var(--hw-accent-primary);
-  font-weight: 600;
-}
-
-/* Gameplay Tags with categorization */
-.mobile-card-tags {
-  margin-top: 0.7rem;
-  padding-top: 0.7rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.tags-label {
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.tags-container {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-/* Tag categorization with colors (matching Zone Nova system) */
-.character-tag {
-  padding: 0.25rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  border: 1px solid;
-  min-height: 20px;
-  display: flex;
-  align-items: center;
-  /* Touch optimization */
-  touch-action: manipulation;
-}
-
-/* Damage/Scaling tags - Orange */
-.character-tag.damage-scaling {
-  background: rgba(249, 115, 22, 0.2);
-  color: #f97316;
-  border-color: #f97316;
-}
-
-/* Team utility tags - Blue */
-.character-tag.team-utility {
-  background: rgba(59, 130, 246, 0.2);
-  color: #3b82f6;
-  border-color: #3b82f6;
-}
-
-/* Self utility tags - Green */
-.character-tag.self-utility {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-  border-color: #22c55e;
-}
-
-/* Control tags - Purple */
-.character-tag.control {
-  background: rgba(168, 85, 247, 0.2);
-  color: #a855f7;
-  border-color: #a855f7;
-}
-
-/* General mechanic tags - Gray */
-.character-tag.general-mechanic {
-  background: rgba(156, 163, 175, 0.2);
-  color: #9ca3af;
-  border-color: #9ca3af;
-}
-
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                           RESPONSIVE DESIGN                            */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
-/* Desktop Layout - Ensure mobile cards stay hidden */
+/* Desktop Layout - Show table */
 @media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
-  .mobile-card-view {
-    display: none !important;
+  .character-table-container {
+    display: block;
   }
 
   .filter-row {
     flex-wrap: nowrap;
   }
-
-  .search-input {
-    min-width: 300px;
-  }
 }
 
-/* Mobile Device - Hide table, show mobile cards */
+/* Responsive Design - Touch Device First */
 @media (hover: none) and (pointer: coarse) {
-  .character-table-container {
-    display: none;
-  }
-
   .mobile-card-view {
     display: block;
     padding: 0.5rem;
@@ -869,28 +767,16 @@
 
 /* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
-  .character-content-area {
-    padding: 0 1rem;
-  }
-
   .filter-bar {
     padding: 1rem;
   }
 
-  .character-hero-title {
-    font-size: 2rem;
+  .stats-info-section {
+    gap: 0.75rem;
   }
 
   .filter-group {
     min-width: 120px;
-  }
-
-  .search-input {
-    min-width: 200px;
-  }
-
-  .search-container {
-    max-width: none;
   }
 
   .filter-controls-row {
@@ -970,15 +856,6 @@
     min-width: 100px;
   }
 
-  .search-input {
-    min-width: 150px;
-  }
-
-  .filter-search-row {
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-  }
-
   .filter-controls-row {
     flex-direction: column;
     gap: 1.5rem;
@@ -995,11 +872,6 @@
 
 /* Landscape Touch Devices (phones in landscape) */
 @media (hover: none) and (pointer: coarse) and (max-height: 500px) and (orientation: landscape) {
-  .filter-search-row {
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.75rem;
-  }
-
   .filter-controls-section {
     gap: 0.5rem;
   }
@@ -1036,16 +908,11 @@
     font-size: 0.7rem;
   }
 
-  .search-container {
-    max-width: 300px;
-  }
-
   .filter-label {
     font-size: 0.7rem;
   }
 
-  .filter-select,
-  .search-input {
+  .filter-select {
     padding: 0.4rem;
     font-size: 0.8rem;
   }
@@ -1067,5 +934,69 @@
 @media (hover: none) and (pointer: coarse) {
   .mobile-character-card:active {
     background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                      RESPONSIVE STYLES FOR DB LAYOUT                   */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Mobile Responsive Styles for Database Layout */
+@media (max-width: 768px) {
+  .hw-char-db-main-content {
+    padding: 1rem;
+  }
+
+  .hw-char-db-hero-section {
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .hw-char-db-hero-title {
+    font-size: 2rem;
+  }
+
+  .hw-char-db-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hw-char-db-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hw-char-db-stats-summary {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hw-char-db-main-content {
+    padding: 0.5rem;
+  }
+
+  .hw-char-db-hero-section {
+    padding: 1rem 0.5rem 1.5rem 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hw-char-db-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hw-char-db-hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hw-char-db-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .hw-char-db-back-button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .hw-char-db-stats-summary {
+    gap: 0.5rem;
   }
 }
