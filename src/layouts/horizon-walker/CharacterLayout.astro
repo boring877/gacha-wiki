@@ -13,11 +13,8 @@ import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/horizon-walker/hw-layout.css';
-import '../../styles/games/horizon-walker/hw-character-database.css';
 import '../../styles/games/horizon-walker/hw-badges.css';
-import '../../styles/games/horizon-walker/hw-character-filter-bar.css';
-import '../../styles/games/horizon-walker/hw-character-table.css';
-import '../../styles/games/horizon-walker/hw-character-mobile-cards.css';
+import '../../styles/games/horizon-walker/hw-character.css';
 
 export interface Props {
   title: string;
@@ -29,14 +26,14 @@ export interface Props {
   breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
-const { 
-  title, 
-  description, 
-  gameTitle, 
-  heroImage, 
-  showBackButton = true, 
+const {
+  title,
+  description,
+  gameTitle,
+  heroImage,
+  showBackButton = true,
   backButtonHref = '/guides/horizon-walker/',
-  breadcrumbs 
+  breadcrumbs,
 } = Astro.props;
 ---
 
@@ -48,13 +45,19 @@ const {
       breadcrumbs={breadcrumbs}
       shouldPreloadDefaultImage={false}
     />
-    <GameSEO 
-      gameKey="horizon-walker" 
-      title={title} 
+    <GameSEO
+      gameKey="horizon-walker"
+      title={title}
       description={description}
-      additionalKeywords={['horizon walker characters', 'horizon walker waifu', 'horizon walker database', 'horizon walker tier list', 'horizon walker guide 2025']}
+      additionalKeywords={[
+        'horizon walker characters',
+        'horizon walker waifu',
+        'horizon walker database',
+        'horizon walker tier list',
+        'horizon walker guide 2025',
+      ]}
     />
-    
+
     <!-- Enhanced Open Graph for Characters -->
     <meta property="og:type" content="article" />
     <meta property="article:section" content="Gaming" />
@@ -62,14 +65,14 @@ const {
     <meta property="article:tag" content="Character Database" />
     <meta property="article:tag" content="Mobile Game" />
     <meta property="article:tag" content="Waifu" />
-    
+
     <!-- Twitter Card Enhancement -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@GachaWiki" />
   </head>
   <body class="horizon-walker-body hw-layout-override">
     <CustomScrollbar />
-    
+
     <!-- Optimized Background layers for better scroll performance -->
     <div class="bg-layer hw-bg-primary"></div>
     <div class="bg-layer hw-bg-accent-1"></div>
@@ -82,26 +85,25 @@ const {
 
       <div class="horizon-walker-container">
         <main class="horizon-walker-main">
-          
           <!-- Character Database Hero Section -->
           <section class="character-hero-section">
             <!-- Back Button -->
-            {showBackButton && (
-              <div class="back-button-container">
-                <a href={backButtonHref} class="back-button">
-                  ← Back to Horizon Walker
-                </a>
-              </div>
-            )}
+            {
+              showBackButton && (
+                <div class="back-button-container">
+                  <a href={backButtonHref} class="back-button">
+                    ← Back to Horizon Walker
+                  </a>
+                </div>
+              )
+            }
 
             <!-- Page Title -->
             <h1 class="character-hero-title">{gameTitle || 'Character Database'}</h1>
-            
+
             <!-- Subtitle -->
-            <p class="character-hero-subtitle">
-              Database that has all Characters, and waifu
-            </p>
-            
+            <p class="character-hero-subtitle">Database that has all Characters, and waifu</p>
+
             <DecorativeLines />
           </section>
 
