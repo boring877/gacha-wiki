@@ -58,7 +58,6 @@
   min-width: 120px;
 }
 
-
 .sort-btn--compact {
   padding: 0.75rem 0.8rem;
   min-width: 60px;
@@ -69,7 +68,6 @@
   align-items: center;
   justify-content: center;
 }
-
 
 .sort-btn {
   background: rgba(26, 26, 26, 0.8);
@@ -88,12 +86,12 @@
   align-items: center;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  font-family: var(--font-display);
 }
 
 .sort-btn:focus {
   outline: none;
 }
-
 
 .sort-btn.active {
   background: rgba(232, 165, 71, 0.2);
@@ -114,17 +112,17 @@
 
 /* Sort Direction States for Three-State System */
 .sort-btn.state-asc .sort-indicator::after {
-  content: "↑";
+  content: '↑';
   color: var(--hw-primary-warm);
 }
 
 .sort-btn.state-desc .sort-indicator::after {
-  content: "↓";
+  content: '↓';
   color: var(--hw-primary-warm);
 }
 
 .sort-btn.state-normal .sort-indicator::after {
-  content: "⇅";
+  content: '⇅';
   color: #666;
 }
 
@@ -142,6 +140,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-family: var(--font-display);
 }
 
 .filter-select {
@@ -162,6 +161,7 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  font-family: var(--font-display);
 }
 
 .filter-select:focus {
@@ -222,30 +222,29 @@
   white-space: nowrap;
 }
 
-
 /* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
   .search-container {
     max-width: none;
   }
-  
+
   .filter-controls-row {
     flex-direction: column;
     gap: 2rem;
     align-items: center;
     width: 100%;
   }
-  
+
   .filter-left-section,
   .sort-right-section {
     align-items: center;
     width: 100%;
   }
-  
+
   .sort-right-section {
     max-width: 100%;
   }
-  
+
   .sort-buttons-single-row {
     gap: 0.75rem;
     justify-content: center;
@@ -253,7 +252,7 @@
     width: 100%;
     max-width: 100%;
   }
-  
+
   .sort-btn--compact {
     padding: 0.8rem 1rem;
     min-width: 65px;
@@ -264,12 +263,12 @@
     flex: 1;
     max-width: 80px;
   }
-  
+
   .filter-section {
     width: 100%;
     max-width: 280px;
   }
-  
+
   .filter-select {
     width: 100%;
     padding: 1rem;
@@ -284,57 +283,57 @@
     margin-bottom: 0.75rem;
     padding-bottom: 0.75rem;
   }
-  
+
   .filter-controls-section {
     gap: 0.5rem;
   }
-  
+
   .filter-controls-row {
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
     gap: 1rem;
   }
-  
+
   .filter-left-section {
     flex-direction: row;
     gap: 0.75rem;
     align-items: center;
   }
-  
+
   .filter-section {
     min-width: 100px;
   }
-  
+
   .sort-right-section {
     align-items: flex-end;
   }
-  
+
   .sort-buttons-single-row {
     gap: 0.2rem;
     flex-wrap: nowrap;
   }
-  
+
   .sort-btn--compact {
     padding: 0.4rem 0.5rem;
     min-width: 40px;
     font-size: 0.7rem;
   }
-  
+
   .search-container {
     max-width: 300px;
   }
-  
+
   .filter-label {
     font-size: 0.7rem;
   }
-  
+
   .filter-select,
   .search-input {
     padding: 0.4rem;
     font-size: 0.8rem;
   }
-  
+
   .reset-button {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
@@ -347,13 +346,13 @@
     margin-bottom: 1rem;
     padding-bottom: 1rem;
   }
-  
+
   .filter-controls-row {
     flex-direction: column;
     gap: 1.5rem;
     align-items: center;
   }
-  
+
   .filter-section,
   .sort-section,
   .reset-section {
