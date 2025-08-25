@@ -97,9 +97,9 @@
   margin: 0;
 }
 
-/* Character Table (Desktop) */
+/* Character Table (Desktop) - Show by default */
 .character-table-container {
-  display: none;
+  display: block;
   background: rgba(42, 42, 42, 0.85);
   border: 1px solid rgba(232, 165, 71, 0.2);
   border-radius: 12px;
@@ -557,66 +557,7 @@
 /* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Mobile Character Cards */
-.character-cards-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
-.character-card {
-  background: var(--hw-database-gradient-bg);
-  border: 1px solid rgba(232, 165, 71, 0.3);
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
-.character-card-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.character-card-image {
-  width: 72px;
-  height: 72px;
-  border-radius: 8px;
-  object-fit: cover;
-  border: 2px solid transparent;
-}
-
-.character-card-info h3 {
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-}
-
-.character-card-badges {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.character-card-stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.stat-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #b0b0b0;
-  font-size: 0.85rem;
-}
-
-.stat-item .stat-value {
-  color: var(--hw-primary-warm);
-  font-weight: 600;
-}
+/* Character Cards removed - using mobile-card-view instead */
 
 /* Mobile card view - hidden by default, shown on mobile */
 .mobile-card-view {
@@ -875,21 +816,10 @@
 /*                           RESPONSIVE DESIGN                            */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
-/* Progressive Layout Enhancement - Desktop First */
-@media (min-width: 768px) {
-  .character-cards-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Desktop Layout - Show table, hide cards */
+/* Desktop Layout - Ensure mobile cards stay hidden */
 @media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
-  .character-table-container {
-    display: block;
-  }
-
-  .character-cards-container {
-    display: none;
+  .mobile-card-view {
+    display: none !important;
   }
 
   .filter-row {
@@ -901,8 +831,12 @@
   }
 }
 
-/* Responsive Design - Touch Device First */
+/* Mobile Device - Hide table, show mobile cards */
 @media (hover: none) and (pointer: coarse) {
+  .character-table-container {
+    display: none;
+  }
+
   .mobile-card-view {
     display: block;
     padding: 0.5rem;
@@ -945,10 +879,6 @@
 
   .character-hero-title {
     font-size: 2rem;
-  }
-
-  .character-card {
-    padding: 1rem;
   }
 
   .filter-group {
@@ -1034,10 +964,6 @@
 
   .character-hero-title {
     font-size: 1.8rem;
-  }
-
-  .character-card-stats {
-    grid-template-columns: 1fr;
   }
 
   .filter-group {

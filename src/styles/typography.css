@@ -89,7 +89,13 @@ body {
 h1,
 .character-name,
 .display-title {
-  font-family: var(--font-display); /* Space Grotesk for modern, clean display */
+  font-family:
+    'Space Grotesk',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    system-ui,
+    sans-serif; /* Hardcoded to prevent FOUC */
   font-size: var(--text-4xl); /* 40-64px - maximum visual impact */
   font-weight: 700; /* Bold weight for strong hierarchy */
   line-height: var(--leading-tight); /* Tight leading for display text */
@@ -179,7 +185,13 @@ small {
 
 /* Statistical values and important numbers - for game stats and metrics */
 .stat-value {
-  font-family: var(--font-display); /* Display font for prominence */
+  font-family:
+    'Space Grotesk',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    system-ui,
+    sans-serif; /* Hardcoded to prevent FOUC */
   font-size: var(--text-lg); /* 18-20px for clear number visibility */
   font-weight: 700; /* Bold for emphasis and hierarchy */
   line-height: var(--leading-tight); /* Tight leading for compact presentation */
