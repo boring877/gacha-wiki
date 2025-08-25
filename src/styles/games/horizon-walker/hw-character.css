@@ -3,16 +3,6 @@
 /*              Consolidated Database, Table, Filter & Mobile             */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
-/* Performance-optimized CSS Custom Properties */
-:root {
-  --hw-database-gradient-bg: linear-gradient(
-    135deg,
-    rgba(42, 42, 42, 0.8) 0%,
-    rgba(26, 26, 26, 0.9) 100%
-  );
-  --hw-text-gradient: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
-}
-
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                           DATABASE STYLES                              */
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -46,13 +36,7 @@
 }
 
 .hw-char-db-hero-title {
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 700;
   background: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
@@ -67,13 +51,7 @@
   font-size: 1.1rem;
   color: var(--hw-text-muted);
   margin: 0;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
 .hw-char-db-back-button-container {
@@ -90,16 +68,9 @@
   font-weight: 500;
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
-  border: 1px solid rgba(232, 165, 71, 0.3);
+  border: 1px solid var(--hw-border-strong);
   border-radius: 6px;
-  background: rgba(26, 26, 26, 0.8);
-  transition: all 0.2s ease;
-}
-
-.hw-char-db-back-button:hover {
-  background: rgba(232, 165, 71, 0.1);
-  border-color: var(--hw-primary-warm);
-  transform: translateX(-2px);
+  background: var(--hw-bg-darker);
 }
 
 /* Database Stats Styles (now integrated into filter bar) */
@@ -107,13 +78,7 @@
   font-size: 1rem;
   color: var(--hw-text-muted);
   margin: 0;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
 .hw-char-db-stats-summary {
@@ -132,8 +97,8 @@
 /* Character Table (Desktop) */
 .character-table-container {
   display: none;
-  background: rgba(42, 42, 42, 0.85);
-  border: 1px solid rgba(232, 165, 71, 0.2);
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-accent);
   border-radius: 12px;
   overflow-x: auto;
 }
@@ -143,13 +108,7 @@
   width: max-content;
   min-width: 100%;
   border-collapse: collapse;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
 .character-table th:nth-child(1) {
@@ -184,7 +143,7 @@
 } /* TEC */
 
 .character-table th {
-  background: rgba(26, 26, 26, 0.8);
+  background: var(--hw-bg-darker);
   color: var(--hw-primary-warm);
   font-size: 0.85rem;
   font-weight: 600;
@@ -192,13 +151,7 @@
   padding: 0.75rem 0.5rem;
   border-bottom: 1px solid rgba(232, 165, 71, 0.2);
   white-space: nowrap;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
 .character-table td {
@@ -210,22 +163,16 @@
   text-overflow: ellipsis;
   font-size: 0.85rem;
   font-weight: 400;
-  border-bottom: 1px solid rgba(60, 60, 60, 0.3);
-  color: #ffffff;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  border-bottom: 1px solid var(--hw-border-light);
+  color: var(--hw-text-light);
+  font-family: var(--font-primary);
 }
 
 .character-table td:nth-child(1) {
   /* Row number */
   font-size: 0.8rem;
   font-weight: 400;
-  color: #888;
+  color: var(--hw-text-very-muted);
 }
 
 .character-table td:nth-child(3) {
@@ -265,13 +212,7 @@
 .character-name {
   font-size: 1.1rem;
   font-weight: 600;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
 .cost-value {
@@ -284,10 +225,6 @@
   cursor: pointer;
 }
 
-.character-row.clickable:hover {
-  background-color: transparent !important;
-}
-
 .character-name-link {
   color: var(--hw-primary-warm);
   text-decoration: none;
@@ -296,32 +233,14 @@
   line-height: 1.2;
 }
 
-.character-name-link:hover {
-  color: var(--hw-primary-warm) !important;
-}
-
-/* Remove all hover effects */
-.character-table tr:hover {
-  background-color: transparent !important;
-}
-
-.character-table td:hover {
-  background-color: transparent !important;
-}
-
-.character-table a:hover {
-  color: var(--hw-primary-warm) !important;
-  text-decoration: none !important;
-}
-
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                          FILTER BAR STYLES                             */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Filter Bar */
 .filter-bar {
-  background: rgba(42, 42, 42, 0.85);
-  border: 1px solid rgba(232, 165, 71, 0.2);
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-accent);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 2rem;
@@ -404,9 +323,9 @@
 }
 
 .sort-btn {
-  background: rgba(26, 26, 26, 0.8);
-  border: 1px solid rgba(232, 165, 71, 0.3);
-  color: #ffffff;
+  background: var(--hw-bg-darker);
+  border: 1px solid var(--hw-border-strong);
+  color: var(--hw-text-light);
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
   font-size: 0.8rem;
@@ -420,13 +339,7 @@
   align-items: center;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
 .sort-btn:focus {
@@ -434,7 +347,7 @@
 }
 
 .sort-btn.active {
-  background: rgba(232, 165, 71, 0.2);
+  background: var(--hw-border-accent);
   border-color: var(--hw-primary-warm);
   color: var(--hw-primary-warm);
 }
@@ -463,7 +376,7 @@
 
 .sort-btn.state-normal .sort-indicator::after {
   content: '⇅';
-  color: #666;
+  color: var(--hw-text-very-muted);
 }
 
 /* Filter Group Styling */
@@ -487,25 +400,19 @@
 }
 
 .filter-label {
-  color: #b0b0b0;
+  color: var(--hw-text-muted);
   font-size: 0.8rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
 .filter-select {
-  background: rgba(26, 26, 26, 0.8);
-  border: 1px solid rgba(232, 165, 71, 0.3);
+  background: var(--hw-bg-darker);
+  border: 1px solid var(--hw-border-strong);
   border-radius: 6px;
-  color: #ffffff;
+  color: var(--hw-text-light);
   padding: 0.75rem;
   min-height: 48px;
   font-size: 0.9rem;
@@ -520,13 +427,7 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
 .filter-select:focus {
@@ -536,31 +437,30 @@
 
 /* Three-state sort button system */
 .sort-btn.state-asc {
-  background: rgba(232, 165, 71, 0.3);
+  background: var(--hw-border-strong);
   border-color: var(--hw-primary-warm);
   color: var(--hw-primary-warm);
   font-weight: 700;
-  box-shadow: 0 0 0 1px rgba(232, 165, 71, 0.2);
 }
 
 .sort-btn.state-desc {
-  background: rgba(232, 165, 71, 0.25);
-  border-color: rgba(232, 165, 71, 0.6);
+  background: var(--hw-border-accent);
+  border-color: var(--hw-primary-warm);
   color: var(--hw-primary-warm);
   font-weight: 600;
   opacity: 1;
 }
 
 .sort-btn.state-normal {
-  background: rgba(26, 26, 26, 0.8);
-  border-color: rgba(232, 165, 71, 0.3);
-  color: #ffffff;
+  background: var(--hw-bg-darker);
+  border-color: var(--hw-border-strong);
+  color: var(--hw-text-light);
   opacity: 1;
 }
 
 .reset-button {
-  background: rgba(232, 165, 71, 0.1);
-  border: 1px solid rgba(232, 165, 71, 0.3);
+  background: var(--hw-border-muted);
+  border: 1px solid var(--hw-border-strong);
   color: var(--hw-primary-warm);
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -577,7 +477,6 @@
 /* Mobile card view - hidden by default, shown on mobile */
 .mobile-card-view {
   display: none;
-  gap: 1.5rem;
   padding: 1rem;
 }
 
@@ -589,8 +488,8 @@
   margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
-  border: 1px solid var(--hw-border-gray);
+  gap: 0.8rem;
+  border: 1px solid var(--hw-border-accent);
   /* Touch optimizations */
   cursor: pointer;
   touch-action: manipulation;
@@ -599,7 +498,8 @@
 }
 
 .mobile-character-card:active {
-  background: var(--hw-bg-medium);
+  background: var(--hw-border-muted);
+  border-color: var(--hw-primary-warm);
 }
 
 /* Enhanced clickable feedback */
@@ -608,10 +508,11 @@
   outline-offset: 2px;
 }
 
+/* Touch device specific optimizations */
 @media (hover: none) and (pointer: coarse) {
-  /* Touch devices - simple feedback */
   .mobile-character-card:active {
-    background: var(--hw-bg-medium);
+    background: var(--hw-border-muted);
+    border-color: var(--hw-primary-warm);
   }
 }
 
@@ -641,24 +542,28 @@
   font-size: 1.1rem;
   font-weight: 600;
   text-align: center;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
-/* Badge in header - centered under name */
-.mobile-card-info .hw-badge {
+/* Header badges container */
+.header-badges {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Badge styling in header */
+.mobile-card-info .hw-badge,
+.mobile-card-info .cost-badge {
   align-self: center;
 }
 
-/* Clean stats grid */
+/* Clean stats grid - now 5 stats in balanced layout */
 .mobile-card-stats-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 0.75rem;
   padding: 0.75rem;
   background: var(--hw-bg-medium);
@@ -666,12 +571,27 @@
   border: 1px solid var(--hw-border-light);
 }
 
-.stat-item.cost-stat {
-  grid-column: span 3;
-  background: var(--hw-bg-darker);
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid var(--hw-primary-warm);
+/* Consolidated Mobile Optimizations */
+@media (max-width: 480px) {
+  /* Page padding optimization */
+  .hw-char-db-main-content {
+    padding: 0.5rem;
+  }
+
+  /* Stats grid - stack in 2 rows for small screens */
+  .mobile-card-stats-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .mobile-card-stats-grid .stat-item:nth-child(4),
+  .mobile-card-stats-grid .stat-item:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .mobile-card-stats-grid .stat-item:nth-child(5) {
+    grid-column: 2;
+  }
 }
 
 .stat-label {
@@ -680,36 +600,14 @@
   color: var(--hw-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
 .stat-value {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--hw-text-light);
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif;
-}
-
-.cost-stat .stat-label {
-  color: var(--hw-primary-warm);
-}
-
-.cost-stat .stat-value {
-  color: var(--hw-text-light);
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-primary);
 }
 
 .character-img {
@@ -718,50 +616,103 @@
   border: 2px solid var(--hw-accent-primary);
 }
 
+/* Mobile Card Gameplay Tags Layout */
+.mobile-card-tags {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--hw-border-accent);
+}
+
+.tags-label {
+  font-size: 0.8rem;
+  color: var(--hw-text-muted);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                           RESPONSIVE DESIGN                            */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
-/* Desktop Layout - Show table */
-@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+/* Desktop/Mouse Devices - Show table, hide mobile cards */
+@media (hover: hover) and (pointer: fine) {
   .character-table-container {
     display: block;
   }
 
-  .filter-row {
-    flex-wrap: nowrap;
+  .mobile-card-view {
+    display: none;
+  }
+
+  /* Cost badge styling for desktop table - consistent with HW badges */
+  .cost-value {
+    background: var(--hw-primary-warm);
+    color: var(--hw-text-dark);
+    font-weight: 700;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 }
 
-/* Responsive Design - Touch Device First */
+/* Touch Devices - Show cards, hide table */
 @media (hover: none) and (pointer: coarse) {
+  .character-table-container {
+    display: none;
+  }
+
   .mobile-card-view {
     display: block;
-    padding: 0.5rem;
-    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+/* Touch-optimized UI elements */
+.touch-optimized {
+  touch-action: manipulation;
+  min-height: 44px;
+}
+
+.clickable-row {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.desktop-character-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  border: 1px solid var(--hw-accent-primary);
+  overflow: hidden;
+}
+
+.mobile-character-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  border: 2px solid var(--hw-accent-primary);
+  overflow: hidden;
+}
+
+/* Large touch devices (tablets) - optimize spacing */
+@media (hover: none) and (pointer: coarse) and (min-width: 768px) {
+  .mobile-card-view {
+    padding: 1.5rem;
   }
 
   .mobile-character-card {
-    margin-bottom: 1rem;
-    padding: 1rem 0.8rem;
-  }
-
-  .mobile-card-header {
-    gap: 0.8rem;
-  }
-
-  .character-img {
-    width: 56px;
-    height: 56px;
-  }
-
-  .mobile-card-badges {
-    gap: 0.3rem;
-  }
-
-  .mobile-card-stats {
-    font-size: 0.8rem;
-    gap: 0.3rem;
+    padding: 1.5rem;
   }
 }
 
@@ -828,112 +779,25 @@
   }
 }
 
-/* Small Touch Devices (phones) */
+/* Touch + Small Screen Combined Optimization */
 @media (hover: none) and (pointer: coarse) and (max-width: 480px) {
+  .mobile-card-view {
+    padding: 0.5rem;
+  }
+
+  .mobile-character-card {
+    margin-bottom: 1rem;
+    padding: 1rem 0.8rem;
+  }
+
   .mobile-card-header {
     flex-direction: column;
     text-align: center;
     gap: 0.75rem;
   }
 
-  .mobile-card-badges {
-    justify-content: center;
-  }
-
-  .mobile-card-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .mobile-card-stats-secondary {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .character-hero-title {
-    font-size: 1.8rem;
-  }
-
-  .filter-group {
-    min-width: 100px;
-  }
-
-  .filter-controls-row {
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .filter-section,
-  .sort-section,
-  .reset-section {
-    width: 100%;
-    max-width: 200px;
-  }
-}
-
-/* Landscape Touch Devices (phones in landscape) */
-@media (hover: none) and (pointer: coarse) and (max-height: 500px) and (orientation: landscape) {
-  .filter-controls-section {
-    gap: 0.5rem;
-  }
-
-  .filter-controls-row {
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    gap: 1rem;
-  }
-
-  .filter-left-section {
-    flex-direction: row;
-    gap: 0.75rem;
-    align-items: center;
-  }
-
-  .filter-section {
-    min-width: 100px;
-  }
-
-  .sort-right-section {
-    align-items: flex-end;
-  }
-
-  .sort-buttons-single-row {
-    gap: 0.2rem;
-    flex-wrap: nowrap;
-  }
-
-  .sort-btn--compact {
-    padding: 0.4rem 0.5rem;
-    min-width: 40px;
-    font-size: 0.7rem;
-  }
-
-  .filter-label {
-    font-size: 0.7rem;
-  }
-
-  .filter-select {
-    padding: 0.4rem;
-    font-size: 0.8rem;
-  }
-
-  .reset-button {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
-}
-
-/* Fallback for narrow desktop windows */
-@media (hover: hover) and (pointer: fine) and (max-width: 1024px) {
-  .mobile-card-view {
-    display: block;
-  }
-}
-
-/* Performance optimizations for touch devices - no animations */
-@media (hover: none) and (pointer: coarse) {
-  .mobile-character-card:active {
-    background: rgba(255, 255, 255, 0.05);
+  .tags-label {
+    font-size: 0.75rem;
   }
 }
 
@@ -970,10 +834,6 @@
 }
 
 @media (max-width: 480px) {
-  .hw-char-db-main-content {
-    padding: 0.5rem;
-  }
-
   .hw-char-db-hero-section {
     padding: 1rem 0.5rem 1.5rem 0.5rem;
     margin-bottom: 1.5rem;

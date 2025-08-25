@@ -79,7 +79,7 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                     id="rarity-filter"
                     class="filter-select"
                     data-filter="rarity"
-                    style="touch-action: manipulation; min-height: 44px;"
+                    class="touch-optimized"
                   >
                     <option value="">All Rarities</option>
                     {rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
@@ -93,42 +93,42 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                   <button
                     class="sort-btn sort-btn--compact"
                     data-sort="cost"
-                    style="touch-action: manipulation;"
+                    class="touch-optimized"
                   >
                     Cost <span class="sort-indicator"></span>
                   </button>
                   <button
                     class="sort-btn sort-btn--compact"
                     data-sort="strength"
-                    style="touch-action: manipulation;"
+                    class="touch-optimized"
                   >
                     STR <span class="sort-indicator"></span>
                   </button>
                   <button
                     class="sort-btn sort-btn--compact"
                     data-sort="intelligence"
-                    style="touch-action: manipulation;"
+                    class="touch-optimized"
                   >
                     INT <span class="sort-indicator"></span>
                   </button>
                   <button
                     class="sort-btn sort-btn--compact"
                     data-sort="vitality"
-                    style="touch-action: manipulation;"
+                    class="touch-optimized"
                   >
                     VIT <span class="sort-indicator"></span>
                   </button>
                   <button
                     class="sort-btn sort-btn--compact"
                     data-sort="agility"
-                    style="touch-action: manipulation;"
+                    class="touch-optimized"
                   >
                     AGI <span class="sort-indicator"></span>
                   </button>
                   <button
                     class="sort-btn sort-btn--compact"
                     data-sort="technic"
-                    style="touch-action: manipulation;"
+                    class="touch-optimized"
                   >
                     TEC <span class="sort-indicator"></span>
                   </button>
@@ -167,11 +167,11 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                     data-element={character.element}
                     data-faction={character.faction}
                     data-tags={character.tags ? character.tags.join(', ') : ''}
-                    style="cursor:pointer; touch-action: manipulation;"
+                    class="clickable-row"
                   >
                     <td>{idx + 1}</td>
                     <td>
-                      <div style="width: 80px; height: 80px; border-radius: 8px; border: 1px solid var(--hw-accent-primary); overflow: hidden;">
+                      <div class="desktop-character-image">
                         <Image
                           src={character.image}
                           alt={character.name}
@@ -235,7 +235,7 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                 {/* Clean header section - image, name, rarity all together */}
                 <div class="mobile-card-header">
                   <div class="mobile-card-image">
-                    <div style="width: 64px; height: 64px; border-radius: 10px; border: 2px solid var(--hw-accent-primary); overflow: hidden;">
+                    <div class="mobile-character-image">
                       <img
                         src={char.image}
                         alt={char.name}
@@ -248,20 +248,19 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                   </div>
                   <div class="mobile-card-info">
                     <h3 class="character-name">{char.name}</h3>
-                    <span class="hw-badge" data-rarity={char.rarity}>
-                      {char.rarity}
-                    </span>
+                    <div class="header-badges">
+                      <span class="hw-badge" data-rarity={char.rarity}>
+                        {char.rarity}
+                      </span>
+                      <span class="cost-badge" data-type="Cost">
+                        Cost: {char.cost}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Clean stats grid - cost + 5 basic stats */}
+                {/* Clean stats grid - 5 basic stats */}
                 <div class="mobile-card-stats-grid">
-                  <div class="stat-item cost-stat">
-                    <span class="stat-label">Cost</span>
-                    <span class="stat-value" data-stat="cost">
-                      {char.cost}
-                    </span>
-                  </div>
                   <div class="stat-item">
                     <span class="stat-label">STR</span>
                     <span class="stat-value" data-stat="strength">
@@ -318,6 +317,51 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
     // Consolidated Horizon Walker Character Database JavaScript
     // Handles filtering, sorting, and interaction logic for the character database
 
+    // TypeScript interfaces for better type safety
+    interface CharacterStats {
+      meleeAtk: number;
+      rangedAtk: number;
+      magicAtk: number;
+      maxHp: number;
+      spd: number;
+      startingAp: number;
+      apRecovery: number;
+      accuracy: number;
+      evade: number;
+      critRate: number;
+      critDmg: number;
+      technic: number;
+      strength: number;
+      intelligence: number;
+      vitality: number;
+      agility: number;
+    }
+
+    interface Character {
+      id: number;
+      name: string;
+      rarity: 'EX' | 'SS' | 'S' | 'A' | 'B';
+      cost: number;
+      class: string;
+      element: string;
+      faction: string;
+      role: string;
+      tags: string[];
+      stats: CharacterStats;
+      image: string;
+      slug: string;
+      detailUrl: string;
+    }
+
+    interface SortState {
+      key: string;
+      direction: 'asc' | 'desc';
+    }
+
+    interface FilterState {
+      rarity: string | null;
+    }
+
     // Function to initialize - run immediately or when DOM is ready
     const initialize = (): void => {
       // --- DOM references ---
@@ -340,6 +384,11 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
       }
 
       // --- Helper Functions ---
+
+      /**
+       * Renumbers visible table rows sequentially
+       * Used after filtering to maintain proper row numbering
+       */
       function renumberRows(): void {
         let visibleIndex = 1;
         Array.from(tableBody!.children).forEach((row: Element) => {
@@ -352,6 +401,13 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
         });
       }
 
+      /**
+       * Sorts elements numerically by specified criteria
+       * @param items - Array of DOM elements to sort
+       * @param columnIndex - Table column index for desktop sorting
+       * @param isDesktop - Whether sorting desktop table or mobile cards
+       * @returns Sorted array of elements
+       */
       function sortByNumeric(
         items: Element[],
         columnIndex: number,
@@ -377,6 +433,10 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
         });
       }
 
+      /**
+       * Applies sorting to both desktop table and mobile cards
+       * @param sortKey - The data attribute key to sort by
+       */
       function applySort(sortKey: string): void {
         currentSortKey = sortKey;
 
@@ -444,6 +504,10 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
         }
       }
 
+      /**
+       * Applies current filter settings to both desktop and mobile views
+       * Filters by rarity and saves state to sessionStorage
+       */
       function applyFilters(): void {
         const rarityValue = (rarityFilter as HTMLSelectElement)?.value || '';
 
@@ -496,6 +560,10 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
         }
       }
 
+      /**
+       * Resets all filters and sorting to default state
+       * Clears sessionStorage and shows all characters
+       */
       function resetDatabase(): void {
         // Clear all filters
         if (rarityFilter) (rarityFilter as HTMLSelectElement).value = '';
