@@ -257,9 +257,14 @@
   color: var(--hw-text-muted);
 }
 
-.stat-explanation-grid strong {
-  color: color-mix(in srgb, var(--hw-primary-warm) 80%, transparent);
+.stat-explanation-grid .stat-name {
   font-weight: 600;
+  color: color-mix(in srgb, var(--hw-primary-warm) 80%, transparent);
+}
+
+.stat-explanation-grid .stat-description {
+  font-weight: 500;
+  color: var(--hw-text-muted);
 }
 
 

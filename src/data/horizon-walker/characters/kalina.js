@@ -118,7 +118,7 @@ const rawKalinaData = {
     obedience: {
       name: 'Obedience',
       description:
-        'Activates the Level 1 passive skill [Obedience]. [Obedience]: If deployed with the Human God, increases own Melee ATK by 10%. Increases the Melee ATK of all Swamp Rangers by 5%.',
+        'Activates the Level 1 passive skill [Obedience]. [Obedience]: If deployed with the Chosen Human, increases own Melee ATK by 10%. Increases the Melee ATK of all Swamp Rangers by 5%.',
     },
     doubleDown: {
       name: 'Double Down',
@@ -131,7 +131,7 @@ const rawKalinaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Human God.',
+      description: 'Interested in the Chosen Human.',
     },
   },
 
@@ -214,7 +214,7 @@ const rawHighlightPatterns = {
     /\b(?:Obedience|Double\s+Down|Full\s+Extent|Hunter\s+on\s+the\s+Vine|Survival\s+Expert|Edge\s+Runner|Persistence|Swamp\s+Elf|Slash\s+Boost|lifesteal|counterattack|evasion)\b/gi,
   percentages: /\b(\d{1,3}%)\b/g,
   statChanges: /\b(?:reduces?|increases?|decreases?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
-  keywords: /\b(?:survives?|ignores?\s+counterattacks?|Human\s+God|Swamp\s+Rangers|Bureau\s+of\s+Rift\s+Management|Webwoods|Maximilia|lifesteal|stacking)\b/gi,
+  keywords: /\b(?:survives?|ignores?\s+counterattacks?|Chosen\s+Human|Swamp\s+Rangers|Bureau\s+of\s+Rift\s+Management|Webwoods|Maximilia|lifesteal|stacking)\b/gi,
   attributes:
     /\b(?:AP|Melee\s+ATK|Slash|Physical|Pierce|Crush|Heat|Cold|Electric|Immaterial|Poison|Evasion|All\s+ATK|DEF|SPD|Mobility|CRIT\s+DMG|HP|Accuracy)\b/gi,
 };

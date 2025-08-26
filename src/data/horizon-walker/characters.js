@@ -56,6 +56,26 @@ export const gameInfo = {
 export const HORIZON_WALKER_CHARACTERS = [
   {
     id: 1,
+    name: 'Canisk',
+    rarity: 'S',
+    cost: 5,
+    class: 'Warrior',
+    element: 'Physical',
+    faction: 'Independent',
+    role: 'Tank',
+    tags: ['Warrior', 'Tank', 'Melee Damage', 'Slash Damage', 'Physical Damage', 'Counterattack', 'Taunt', 'Self-Healing', 'Berserker', 'High Defense', 'Area Damage'],
+    stats: { 
+      meleeAtk: 298, rangedAtk: 122, magicAtk: 76, maxHp: 972,
+      spd: 92, startingAp: 128, apRecovery: 102, accuracy: 102,
+      evade: 115, critRate: 10, critDmg: 156,
+      strength: 17, technic: 7, intelligence: 6, vitality: 16, agility: 9
+    },
+    image: '/images/games/horizon-walker/characters/Canisk.jpg',
+    slug: 'canisk',
+    detailUrl: '/guides/horizon-walker/characters/canisk',
+  },
+  {
+    id: 2,
     name: 'Everette',
     rarity: 'EX',
     cost: 8,
@@ -75,7 +95,27 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/everette',
   },
   {
-    id: 2,
+    id: 3,
+    name: 'Gridelda',
+    rarity: 'EX',
+    cost: 8,
+    class: 'Mage',
+    element: 'Magic',
+    faction: 'Independent',
+    role: 'Mage',
+    tags: ['Mage', 'Magic User', 'Area Damage', 'Support', 'Team Buffer', 'Arcane Magic', 'Immaterial Damage', 'Space Manipulation', 'High Evasion', 'AP Support', 'Healing', 'Elemental'],
+    stats: { 
+      meleeAtk: 76, rangedAtk: 89, magicAtk: 464, maxHp: 576,
+      spd: 83, startingAp: 134, apRecovery: 142, accuracy: 102,
+      evade: 320, critRate: 10, critDmg: 150,
+      strength: 6, technic: 7, intelligence: 27, vitality: 9, agility: 24
+    },
+    image: '/images/games/horizon-walker/characters/Gridelda.jpg',
+    slug: 'gridelda',
+    detailUrl: '/guides/horizon-walker/characters/gridelda',
+  },
+  {
+    id: 4,
     name: 'Kalina',
     rarity: 'SS',
     cost: 4,
@@ -95,7 +135,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/kalina',
   },
   {
-    id: 3,
+    id: 5,
     name: 'Min Eun-sol',
     rarity: 'A',
     cost: 6,
@@ -113,6 +153,46 @@ export const HORIZON_WALKER_CHARACTERS = [
     image: '/images/games/horizon-walker/characters/Min_Eun_sol.jpg',
     slug: 'min-eun-sol',
     detailUrl: '/guides/horizon-walker/characters/min-eun-sol',
+  },
+  {
+    id: 6,
+    name: 'Olivia',
+    rarity: 'EX',
+    cost: 8,
+    class: 'Warrior',
+    element: 'Physical',
+    faction: 'Independent',
+    role: 'Warrior',
+    tags: ['Warrior', 'Melee Damage', 'Slash Damage', 'High ATK', 'Counterattack', 'Physical Damage', 'Front-line Fighter', 'Block', 'No Crit', 'AP Generation'],
+    stats: { 
+      meleeAtk: 312, rangedAtk: 217, magicAtk: 143, maxHp: 1240,
+      spd: 115, startingAp: 123, apRecovery: 120, accuracy: 102,
+      evade: 204, critRate: 10, critDmg: 150,
+      strength: 18, technic: 11, intelligence: 10, vitality: 17, agility: 14
+    },
+    image: '/images/games/horizon-walker/characters/Olivia.jpg',
+    slug: 'olivia',
+    detailUrl: '/guides/horizon-walker/characters/olivia',
+  },
+  {
+    id: 7,
+    name: 'Yeon Chae-Young',
+    rarity: 'S',
+    cost: 4,
+    class: 'Assassin',
+    element: 'Physical',
+    faction: 'Government',
+    role: 'Assassin',
+    tags: ['Assassin', 'Ranged Damage', 'Pierce Damage', 'Stealth', 'Accuracy Support', 'Critical Damage', 'Weakness Hunter', 'Team Buffer', 'Elite Agent', 'Dual Pistols', 'Unblockable Attack'],
+    stats: { 
+      meleeAtk: 89, rangedAtk: 204, magicAtk: 115, maxHp: 790,
+      spd: 88, startingAp: 123, apRecovery: 110, accuracy: 105,
+      evade: 102, critRate: 10, critDmg: 150,
+      strength: 7, technic: 16, intelligence: 9, vitality: 13, agility: 8
+    },
+    image: '/images/games/horizon-walker/characters/Yeon_Chae-Young.jpg',
+    slug: 'yeon-chae-young',
+    detailUrl: '/guides/horizon-walker/characters/yeon-chae-young',
   },
 ];
 

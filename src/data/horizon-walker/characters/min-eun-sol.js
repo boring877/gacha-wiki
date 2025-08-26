@@ -108,14 +108,14 @@ const rawMinEunSolData = {
 
   // Character Story
   story:
-    'Now forgotten by everyone, Eun-sol was one of the victims aboard the ship where the Choosen Human first awakened. She was targeted by the Forsaken God, and the Choosen Human gambled with his life to protect her. Eun-sol remembers that sacrifice, and after pondering how she might help the Choosen Human, she made a selfless but dangerous choice.',
+    'Now forgotten by everyone, Eun-sol was one of the victims aboard the ship where the Chosen Human first awakened. She was targeted by the Dark Entity, and the Chosen Human gambled with his life to protect her. Eun-sol remembers that sacrifice, and after pondering how she might help the Chosen Human, she made a selfless but dangerous choice.',
 
   // Unique Traits
   uniqueTraits: {
     wholehearted: {
       name: 'Wholehearted',
       description:
-        'Activates the Level 1 passive skill [Wholehearted]. [Wholehearted]: Looks solely towards the Choosen Human with blind devotion. If deployed with the Choosen Human, decreases Evasion by 10% but increases Magic ATK by 15%.',
+        'Activates the Level 1 passive skill [Wholehearted]. [Wholehearted]: Looks solely towards the Chosen Human with blind devotion. If deployed with the Chosen Human, decreases Evasion by 10% but increases Magic ATK by 15%.',
     },
     mentalBulwark: {
       name: 'Mental Bulwark',
@@ -128,7 +128,7 @@ const rawMinEunSolData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the choosen Human.',
+      description: 'Interested in the Chosen Human.',
     },
   },
 
