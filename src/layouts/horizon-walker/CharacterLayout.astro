@@ -20,57 +20,22 @@ export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  heroImage?: string;
-  showBackButton?: boolean;
-  backButtonHref?: string;
-  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
-const {
-  title,
-  description,
-  gameTitle,
-  heroImage,
-  showBackButton = true,
-  backButtonHref = '/guides/horizon-walker/',
-  breadcrumbs,
-} = Astro.props;
+const { title, description, gameTitle } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead
-      title={title}
-      description={description || ''}
-      breadcrumbs={breadcrumbs}
-      shouldPreloadDefaultImage={false}
-    />
+    <BaseHead title={title} description={description || ''} shouldPreloadDefaultImage={false} />
     <GameSEO
       gameKey="horizon-walker"
       title={title}
       description={description}
-      additionalKeywords={[
-        'horizon walker characters',
-        'horizon walker waifu',
-        'horizon walker database',
-        'horizon walker tier list',
-        'horizon walker guide 2025',
-      ]}
+      additionalKeywords={['horizon walker waifu', 'horizon walker guide 2025']}
     />
-
-    <!-- Enhanced Open Graph for Characters -->
-    <meta property="og:type" content="article" />
-    <meta property="article:section" content="Gaming" />
-    <meta property="article:tag" content="Horizon Walker" />
-    <meta property="article:tag" content="Character Database" />
-    <meta property="article:tag" content="Mobile Game" />
-    <meta property="article:tag" content="Waifu" />
-
-    <!-- Twitter Card Enhancement -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@GachaWiki" />
   </head>
-  <body class="horizon-walker-body hw-layout-override">
+  <body class="horizon-walker-body">
     <CustomScrollbar />
 
     <!-- Optimized Background layers for better scroll performance -->
@@ -87,17 +52,6 @@ const {
         <main class="horizon-walker-main">
           <!-- Character Database Hero Section -->
           <section class="hw-char-db-hero-section">
-            <!-- Back Button -->
-            {
-              showBackButton && (
-                <div class="hw-char-db-back-button-container">
-                  <a href={backButtonHref} class="hw-char-db-back-button">
-                    ← Back to Horizon Walker
-                  </a>
-                </div>
-              )
-            }
-
             <!-- Page Title -->
             <h1 class="hw-char-db-hero-title">{gameTitle || 'Character Database'}</h1>
 

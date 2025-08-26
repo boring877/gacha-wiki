@@ -22,55 +22,33 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: string;
-  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
-const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
+const { title, description, gameTitle, heroImage } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead
-      title={title}
-      description={description || ''}
-      breadcrumbs={breadcrumbs}
-      shouldPreloadDefaultImage={false}
-    />
+    <BaseHead title={title} description={description || ''} shouldPreloadDefaultImage={false} />
     <GameSEO
       gameKey="horizon-walker"
       title={title}
       description={description}
       additionalKeywords={[
-        'horizon walker',
         gameTitle?.toLowerCase() || '',
         'waifu guide',
         'character build',
         'stats guide 2025',
-      ]}
+      ].filter(Boolean)}
     />
-
-    <!-- Enhanced Open Graph for Individual Characters -->
-    <meta property="og:type" content="article" />
-    <meta property="article:section" content="Gaming" />
-    <meta property="article:tag" content="Horizon Walker" />
-    {gameTitle && <meta property="article:tag" content={gameTitle} />}
-    <meta property="article:tag" content="Character Guide" />
-    <meta property="article:tag" content="Waifu" />
-    {heroImage && <meta property="og:image" content={new URL(heroImage, Astro.site)} />}
-
-    <!-- Twitter Card Enhancement -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@GachaWiki" />
-    {heroImage && <meta name="twitter:image" content={new URL(heroImage, Astro.site)} />}
   </head>
-  <body class="horizon-walker-body hw-layout-override">
+  <body class="horizon-walker-body">
     <CustomScrollbar />
 
-    <!-- Background layers for visual depth -->
+    <!-- Optimized Background layers for better scroll performance -->
     <div class="bg-layer hw-bg-primary"></div>
     <div class="bg-layer hw-bg-accent-1"></div>
     <div class="bg-layer hw-bg-accent-2"></div>
-    <div class="bg-layer hw-bg-accent-3"></div>
 
     <div class="horizon-walker-content">
       <Header />
