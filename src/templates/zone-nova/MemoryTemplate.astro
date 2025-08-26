@@ -3,6 +3,7 @@
 // Zone Nova Memory Page Template
 // This template creates individual memory pages with complete information
 import ZoneNovaLayout from '../../layouts/zone-nova/Layout.astro';
+import { Image } from 'astro:assets';
 
 // Import the memory-specific CSS
 import '../../styles/games/zone-nova/zn-memory-pages.css';
@@ -70,7 +71,7 @@ function getClassMemorySubtitle(effects: string[]): string {
   gameTitle={`${memoryData.name} - Memory Card`}
 >
   <Fragment slot="head">
-    <link rel="preload" as="image" href={memoryData.image} />
+    {/* Removed memory image preload to reduce memory usage */}
   </Fragment>
 
   <div class="memory-page">
@@ -80,7 +81,7 @@ function getClassMemorySubtitle(effects: string[]): string {
         <!-- Memory Card Display -->
         <div class="memory-card-showcase">
           <div class="memory-card-frame">
-            <img
+            <Image
               src={memoryData.image}
               alt={memoryData.name}
               width={200}

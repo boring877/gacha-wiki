@@ -2,6 +2,7 @@
 import CharacterLayout from '../../layouts/silver-and-blood/CharacterLayout.astro';
 import { gameInfo } from '../../data/silver-and-blood/characters.js';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+import { Image } from 'astro:assets';
 
 export interface Props {
   character: any; // The full character data object
@@ -117,12 +118,12 @@ const relatedCharacters = [];
         <div
           style="background: var(--sab-character-info-bg); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.15); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--sab-text-light); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;"
         >
-          <img
+          <Image
             src={image}
             alt={`${name} - ${rarity} ${charClass} character from Silver and Blood gacha game`}
             width={300}
             height={300}
-            loading="eager"
+            loading="lazy"
             class="character-portrait"
             style="margin-bottom: 1.5rem; margin-top: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.20); max-width: 100%; border: 2px solid var(--sab-text-light);"
           />

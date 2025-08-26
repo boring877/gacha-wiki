@@ -1,6 +1,7 @@
 ---
 // Import your layout
 import ZoneNovaLayout from '../../../layouts/zone-nova/Layout.astro';
+import { Image } from 'astro:assets';
 
 // Import memory data and utilities
 import {
@@ -17,7 +18,7 @@ import {
 >
   <Fragment slot="head">
     {/* Import styles and add mobile card improvements */}
-    <link rel="preload" as="image" href="/images/games/zone-nova/memories/Athenacard.jpg" />
+    {/* Removed memory image preload to reduce memory usage */}
     <style>
       /* Layout and filter bar */
       .page-flex {
@@ -455,7 +456,7 @@ import {
                   >
                     <td>{idx + 1}</td>
                     <td>
-                      <img src={memory.image} alt={memory.name} class="memory-img" loading="lazy" />
+                      <Image src={memory.image} alt={memory.name} class="memory-img" loading="lazy" width={60} height={60} />
                     </td>
                     <td>{memory.name}</td>
                     <td>
@@ -488,7 +489,7 @@ import {
                 style="cursor:pointer;"
               >
                 <div class="mobile-card-header">
-                  <img src={memory.image} alt={memory.name} class="memory-img" />
+                  <Image src={memory.image} alt={memory.name} class="memory-img" width={80} height={80} />
                   <div class="mobile-card-title-group">
                     <h3>{memory.name}</h3>
                     <div class="mobile-card-badges">

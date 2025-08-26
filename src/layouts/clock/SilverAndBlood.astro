@@ -15,6 +15,7 @@ import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/clock/layout.css';
 import '../../styles/clock/silver-and-blood.css';
+import { Image } from 'astro:assets';
 
 export interface Props {
   title: string;
@@ -49,11 +50,7 @@ const timers = game.timers[game.currentRegion];
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    {
-      games
-        .slice(0, 2)
-        .map(game => <link rel="preload" href={game.image} as="image" type="image/jpeg" />)
-    }
+    {/* Removed preloading of all game images to reduce memory usage */}
   </head>
 
   <body class="sab-body">
@@ -111,12 +108,14 @@ const timers = game.timers[game.currentRegion];
                     <div class="game-info-container">
                       <div class="game-wrapper">
                         <div class="game-image-container" id="clockGameImageContainer">
-                          <img
+                          <Image
                             class="game-image"
                             id="clockGameImage"
                             src={game.image}
                             alt={game.name}
                             loading="eager"
+                            width={160}
+                            height={160}
                           />
                         </div>
                         <div class="game-info">

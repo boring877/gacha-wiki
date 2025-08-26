@@ -146,7 +146,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       sessionCacheTime: 0,
       characterListCache: null,
       characterListCacheKey: '',
-      CACHE_DURATION: 5000, // 5 second cache for better performance
+      CACHE_DURATION: 2000, // Reduced to 2 seconds to minimize memory usage
     };
 
     // High-performance session storage access
@@ -371,7 +371,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
         znPerfManager.characterListCache = null;
         znPerfManager.characterListCacheKey = '';
         updateNavigationPanel();
-      }, 100); // 100ms debounce
+      }, 50); // Reduced debounce for faster cleanup
     }
 
     // Update navigation when sessionStorage changes (for cross-tab synchronization)
@@ -407,9 +407,10 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       }
     }
 
-    // Prefetch function for instant loading
+    // Smart prefetch function with automatic cleanup for memory optimization
+    const znPrefetchedLinks = new Set<string>();
     function prefetchPage(url: string | null) {
-      if (!url) return;
+      if (!url || znPrefetchedLinks.has(url)) return;
 
       const existing = document.querySelector(`link[href="${url}"]`);
       if (existing) return;
@@ -417,7 +418,17 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       const link = document.createElement('link');
       link.rel = 'prefetch';
       link.href = url;
+      link.dataset.timestamp = Date.now().toString();
       document.head.appendChild(link);
+      znPrefetchedLinks.add(url);
+
+      // Clean up prefetch links after 10 seconds to reduce memory usage
+      setTimeout(() => {
+        if (document.head.contains(link)) {
+          document.head.removeChild(link);
+          znPrefetchedLinks.delete(url);
+        }
+      }, 10000);
     }
 
     // Navigation button handlers with instant prefetching
@@ -482,7 +493,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       }
     });
 
-    // Cleanup function to prevent memory leaks
+    // Enhanced cleanup function to prevent memory leaks
     function cleanup() {
       // Clear all caches
       znPerfManager.sessionCache = null;
@@ -494,6 +505,14 @@ const forceRender = charactersByDatabaseOrder.length > 0;
         clearTimeout(updateTimeout);
         updateTimeout = null;
       }
+
+      // Clean up all prefetch links
+      document.querySelectorAll('link[rel="prefetch"]').forEach(link => {
+        if (link.dataset.timestamp) {
+          document.head.removeChild(link);
+        }
+      });
+      znPrefetchedLinks.clear();
     }
 
     // Register cleanup on page unload
