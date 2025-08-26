@@ -27,6 +27,34 @@
 /*                           DATABASE STYLES                              */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
+/* Hero Section Styles for Character Database */
+.hw-char-db-hero-section {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+}
+
+.hw-char-db-hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--hw-text-light);
+  margin: 0 0 1rem 0;
+  background: linear-gradient(135deg, var(--hw-primary-warm), #ff7b7b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: var(--leading-tight);
+}
+
+.hw-char-db-hero-subtitle {
+  font-size: var(--hw-font-xl);
+  color: var(--hw-text-muted);
+  margin: 0 0 1.5rem 0;
+  font-family: var(--font-primary);
+  font-style: italic;
+}
+
 /* Page Layout Styles */
 .hw-char-db-page-flex {
   display: flex;
@@ -691,6 +719,20 @@
   .hw-char-db-stats-summary {
     gap: var(--hw-spacing-sm);
   }
+
+  /* Hero section responsive styles */
+  .hw-char-db-hero-section {
+    padding: 1.5rem 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hw-char-db-hero-title {
+    font-size: var(--text-3xl);
+  }
+
+  .hw-char-db-hero-subtitle {
+    font-size: var(--hw-font-lg);
+  }
 }
 
 /* Consolidated Small Screen Optimizations (max-width: 480px) */
@@ -742,6 +784,20 @@
 
   .hw-char-db-stats-summary {
     gap: var(--hw-spacing-xs);
+  }
+
+  /* Hero section small screen responsive styles */
+  .hw-char-db-hero-section {
+    padding: 1rem 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hw-char-db-hero-title {
+    font-size: var(--text-2xl);
+  }
+
+  .hw-char-db-hero-subtitle {
+    font-size: var(--hw-font-md);
   }
 }
 
