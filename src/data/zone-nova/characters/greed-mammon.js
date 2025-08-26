@@ -4,7 +4,7 @@
 export const greedMammonData = {
   // Basic Character Information
   name: 'Greed Mammon',
-  image: 'Greed Mammon', // Character image identifier
+  image: 'GreedMammon', // Character image identifier
   rarity: 'SR',
   element: 'Chaos',
   class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
