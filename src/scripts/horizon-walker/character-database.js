@@ -1,5 +1,5 @@
 /**
- * Horizon Walker Character Database JavaScript
+ * Horizon Walker Character Database JavaScript.
  * Handles filtering, sorting, and interaction logic for the character database
  * Extracted from characters.astro for better separation of concerns
  */
