@@ -23,88 +23,26 @@ const { className = '' } = Astro.props;
     gap: 1rem;
     margin-top: 2rem;
     position: relative;
-    /* Performance: Apply perspective to parent container */
-    perspective: 1000px;
-
-    /* CSS Custom Properties for easy maintenance */
-    --animation-duration: 8s;
-    --animation-delay-1: 0s;
-    --animation-delay-2: 2.5s;
-    --animation-delay-3: 5s;
-    --animation-easing: cubic-bezier(0.4, 0, 0.6, 1);
   }
 
   .hero-line {
     height: 2px;
     border-radius: 1px;
-    position: relative;
-    /* Force hardware acceleration for smooth animations */
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    /* Performance: Only enable will-change during animation */
-    will-change: auto;
-  }
-
-  /* Enable will-change only when animations are running */
-  .hero-line:not(.reduced-motion) {
-    will-change: opacity, transform;
   }
 
   .hero-line-1 {
     width: 3rem;
     background: var(--amber-glow);
-    animation: gentleBreath var(--animation-duration) var(--animation-easing) infinite
-      var(--animation-delay-1);
-    -webkit-animation: gentleBreath var(--animation-duration) var(--animation-easing) infinite
-      var(--animation-delay-1);
   }
 
   .hero-line-2 {
     width: 2rem;
     background: var(--teal-crystal);
-    animation: gentleBreath var(--animation-duration) var(--animation-easing) infinite
-      var(--animation-delay-2);
-    -webkit-animation: gentleBreath var(--animation-duration) var(--animation-easing) infinite
-      var(--animation-delay-2);
   }
 
   .hero-line-3 {
     width: 1rem;
     background: var(--rose-quartz);
-    animation: gentleBreath var(--animation-duration) var(--animation-easing) infinite
-      var(--animation-delay-3);
-    -webkit-animation: gentleBreath var(--animation-duration) var(--animation-easing) infinite
-      var(--animation-delay-3);
-  }
-
-  /* Ultra-smooth, calming breathing animation */
-  @keyframes gentleBreath {
-    0%,
-    100% {
-      opacity: 0.9;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.5;
-      transform: scale(1.05);
-    }
-  }
-
-  /* Webkit keyframes for iOS Safari */
-  @-webkit-keyframes gentleBreath {
-    0%,
-    100% {
-      opacity: 0.9;
-      -webkit-transform: scale(1);
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.5;
-      -webkit-transform: scale(1.05);
-      transform: scale(1.05);
-    }
   }
 
   /* Mobile optimizations */
@@ -112,8 +50,6 @@ const { className = '' } = Astro.props;
     .hero-decorative {
       gap: 0.75rem;
       margin-top: 1.5rem;
-      /* Override timing for mobile */
-      --animation-duration: 10s;
     }
 
     .hero-line {
@@ -150,22 +86,6 @@ const { className = '' } = Astro.props;
 
     .hero-line-3 {
       width: 0.75rem;
-    }
-  }
-
-  /* Accessibility - Reduce motion only if user specifically requests it */
-  @media (prefers-reduced-motion: reduce) {
-    .hero-line-1,
-    .hero-line-2,
-    .hero-line-3 {
-      animation: none;
-      -webkit-animation: none;
-      transform: none;
-      will-change: auto; /* Clean up performance hints */
-    }
-
-    .hero-line {
-      will-change: auto;
     }
   }
 </style>
