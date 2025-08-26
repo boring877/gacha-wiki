@@ -12,7 +12,7 @@
   border: 1px solid var(--hw-border-muted);
   border-radius: 18px;
   padding: 2.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 4rem;
   width: 100%;
   max-width: none;
 }
@@ -67,10 +67,6 @@
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                            CHARACTER OVERVIEW                           */
 /* ═══════════════════════════════════════════════════════════════════════ */
-
-.character-overview-section {
-  margin-bottom: 2.5rem;
-}
 
 .character-overview-title {
   margin-bottom: 3.5rem;
@@ -398,10 +394,6 @@
 /*                            CHARACTER STORY                              */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
-.character-story-section {
-  margin-bottom: 2.5rem;
-}
-
 .character-story-content {
   background: color-mix(in srgb, black 20%, transparent);
   border: 1px solid var(--hw-border-muted);
@@ -419,10 +411,6 @@
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                               SKILLS SECTION                            */
 /* ═══════════════════════════════════════════════════════════════════════ */
-
-.skills-section {
-  margin-bottom: 2.5rem;
-}
 
 .skill-card {
   background: linear-gradient(135deg, color-mix(in srgb, black 40%, transparent), color-mix(in srgb, black 20%, transparent));
@@ -490,13 +478,18 @@
   color: color-mix(in srgb, var(--hw-secondary-coral) 90%, transparent);
 }
 
+.skill-damage .damage-label {
+  font-weight: 600;
+}
+
+.skill-damage .damage-value {
+  font-weight: 700;
+  color: color-mix(in srgb, var(--hw-secondary-coral) 95%, transparent);
+}
+
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                            UNIQUE TRAITS SECTION                        */
 /* ═══════════════════════════════════════════════════════════════════════ */
-
-.traits-section {
-  margin-bottom: 2.5rem;
-}
 
 .trait-card {
   background: linear-gradient(135deg, color-mix(in srgb, black 40%, transparent), color-mix(in srgb, black 20%, transparent));
@@ -534,10 +527,6 @@
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                              WEAPON SECTION                             */
 /* ═══════════════════════════════════════════════════════════════════════ */
-
-.weapon-section {
-  margin-bottom: 2.5rem;
-}
 
 .weapon-flex {
   display: flex;
@@ -709,7 +698,7 @@
   
   .content-section {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0 auto 4rem auto;
     padding: 3rem;
   }
   
@@ -821,7 +810,7 @@
 @media (max-width: 480px) {
   .content-section {
     padding: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
   }
   
   .section-title {

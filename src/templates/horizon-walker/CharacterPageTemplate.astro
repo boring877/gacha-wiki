@@ -404,7 +404,7 @@ function getTagCategory(tag: string): string {
       <p class="skill-description" set:html={skill.description}></p>
       {skill.damage && (
         <div class="skill-damage">
-          <strong>Damage:</strong> {skill.damage.value} of {skill.damage.type}
+          <span class="damage-label">Damage:</span> <span class="damage-value">{skill.damage.value} of {skill.damage.type}</span>
         </div>
       )}
     </div>

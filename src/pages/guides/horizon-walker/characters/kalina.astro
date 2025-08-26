@@ -1,0 +1,15 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import { kalinaData, kalinaSEO, kalinaHighlighting } from '../../../../data/horizon-walker/characters/kalina.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={kalinaSEO.title}
+  description={kalinaSEO.description}
+  gameTitle={kalinaData.name}
+>
+  <CharacterPageTemplate characterData={{...kalinaData, highlightPatterns: kalinaHighlighting}} />
+</CharacterIndividualLayout>

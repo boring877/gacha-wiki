@@ -56,6 +56,46 @@ export const gameInfo = {
 export const HORIZON_WALKER_CHARACTERS = [
   {
     id: 1,
+    name: 'Everette',
+    rarity: 'EX',
+    cost: 8,
+    class: 'Mage',
+    element: 'Magic',
+    faction: 'Independent',
+    role: 'Mage',
+    tags: ['Mage', 'Magic User', 'Area Damage', 'Support', 'Teleportation', 'Crowd Control', 'Team Buffer', 'Heat Damage', 'Immaterial Damage'],
+    stats: { 
+      meleeAtk: 64, rangedAtk: 89, magicAtk: 496, maxHp: 832,
+      spd: 83, startingAp: 117, apRecovery: 112, accuracy: 102,
+      evade: 171, critRate: 10, critDmg: 150,
+      strength: 5, technic: 7, intelligence: 30, vitality: 13, agility: 13
+    },
+    image: '/images/games/horizon-walker/characters/Everette.jpg',
+    slug: 'everette',
+    detailUrl: '/guides/horizon-walker/characters/everette',
+  },
+  {
+    id: 2,
+    name: 'Kalina',
+    rarity: 'SS',
+    cost: 4,
+    class: 'Assassin',
+    element: 'Physical',
+    faction: 'Independent',
+    role: 'Assassin',
+    tags: ['Assassin', 'Melee Damage', 'High Mobility', 'Evasion Tank', 'Slash Damage', 'Counterattack', 'Lifesteal', 'Movement Scaling', 'Self-Sustain'],
+    stats: { 
+      meleeAtk: 179, rangedAtk: 102, magicAtk: 64, maxHp: 640,
+      spd: 157, startingAp: 124, apRecovery: 127, accuracy: 102,
+      evade: 228, critRate: 10, critDmg: 150,
+      strength: 14, technic: 8, intelligence: 5, vitality: 10, agility: 17
+    },
+    image: '/images/games/horizon-walker/characters/Kalina.jpg',
+    slug: 'kalina',
+    detailUrl: '/guides/horizon-walker/characters/kalina',
+  },
+  {
+    id: 3,
     name: 'Min Eun-sol',
     rarity: 'A',
     cost: 6,

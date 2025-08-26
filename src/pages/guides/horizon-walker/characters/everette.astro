@@ -1,0 +1,15 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import { everetteData, everetteSEO, everetteHighlighting } from '../../../../data/horizon-walker/characters/everette.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={everetteSEO.title}
+  description={everetteSEO.description}
+  gameTitle={everetteData.name}
+>
+  <CharacterPageTemplate characterData={{...everetteData, highlightPatterns: everetteHighlighting}} />
+</CharacterIndividualLayout>
