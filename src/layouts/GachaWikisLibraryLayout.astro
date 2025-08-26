@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import CustomScrollbar from '../components/CustomScrollbar.astro';
 import GeneralSEO from '../components/GeneralSEO.astro';
+import DecorativeLines from '../components/DecorativeLines.astro';
 
 // Import CSS files properly - wikis-specific styling
 import '../styles/colors.css';
@@ -46,7 +47,17 @@ const { title, description } = Astro.props;
       <MobileMenu />
 
       <main>
-        <slot />
+        <!-- Main Content Area -->
+        <div class="main-content">
+          <!-- Page Header -->
+          <header class="page-header">
+            <h1 class="page-title">Gacha Wikis Library</h1>
+            <!-- Decorative Lines -->
+            <DecorativeLines />
+          </header>
+
+          <slot />
+        </div>
       </main>
 
       <Footer />

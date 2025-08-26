@@ -2,51 +2,39 @@
 import GachaWikisLibraryLayout from '../layouts/GachaWikisLibraryLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getAllGames } from '../data/games';
-import DecorativeLines from '../components/DecorativeLines.astro';
 
 // Get all games from the centralized configuration
 const games = getAllGames();
 ---
 
 <GachaWikisLibraryLayout title={`${SITE_TITLE} - Wikis`} description={SITE_DESCRIPTION}>
-  <!-- Main Content Area -->
-  <div class="main-content">
-    <!-- Page Header -->
-    <header class="page-header">
-      <h1 class="page-title">Gacha Wikis Library</h1>
-
-      <!-- Decorative Lines -->
-      <DecorativeLines />
-    </header>
-
-    <!-- Games Section - Dynamic Layout -->
-    <div class="games-section">
-      {
-        games.map(game => (
-          <a href={game.url} class="game-link">
-            <article
-              class={`game-card game-${game.slug} ${game.status === 'coming-soon' ? 'coming-soon' : ''}`}
-            >
-              <div class="game-header">
-                <div class="game-icon">
-                  <img src={game.image} alt={game.name} width="75" height="75" loading="lazy" />
-                </div>
-                <div class="game-info">
-                  <h3 class="game-title">{game.name}</h3>
-                  <p class="game-description">{game.description}</p>
-                  {game.sections && (
-                    <div class="game-sections">
-                      {game.sections.slice(0, 3).join(' • ')}
-                      {game.sections.length > 3 && ` • +${game.sections.length - 3} more`}
-                    </div>
-                  )}
-                </div>
-                <div class="game-arrow">→</div>
+  <!-- Games Section - Dynamic Layout -->
+  <div class="games-section">
+    {
+      games.map(game => (
+        <a href={game.url} class="game-link">
+          <article
+            class={`game-card game-${game.slug} ${game.status === 'coming-soon' ? 'coming-soon' : ''}`}
+          >
+            <div class="game-header">
+              <div class="game-icon">
+                <img src={game.image} alt={game.name} width="75" height="75" loading="lazy" />
               </div>
-            </article>
-          </a>
-        ))
-      }
-    </div>
+              <div class="game-info">
+                <h3 class="game-title">{game.name}</h3>
+                <p class="game-description">{game.description}</p>
+                {game.sections && (
+                  <div class="game-sections">
+                    {game.sections.slice(0, 3).join(' • ')}
+                    {game.sections.length > 3 && ` • +${game.sections.length - 3} more`}
+                  </div>
+                )}
+              </div>
+              <div class="game-arrow">→</div>
+            </div>
+          </article>
+        </a>
+      ))
+    }
   </div>
 </GachaWikisLibraryLayout>
