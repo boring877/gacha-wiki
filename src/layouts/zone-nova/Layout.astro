@@ -8,11 +8,13 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
 
 // Import CSS files properly
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/view-transitions.css';
 import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/games/zone-nova/zn-character.css';
 import '../../styles/games/zone-nova/zn-badge-colour.css';
@@ -38,6 +40,7 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
       shouldPreloadDefaultImage={false}
     />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
+    <ClientRouter />
 
     <!-- Astro handles image optimization automatically -->
 
@@ -52,8 +55,8 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
     <div class="bg-layer bg-accent-3"></div>
 
     <div class="zone-nova-content">
-      <Header />
-      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
+      <Header transition:name="main-header" />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" transition:name="game-navigation" />
       <MobileMenu />
 
       <div class="zone-nova-container">
@@ -73,6 +76,7 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
                       height={400}
                       loading="eager"
                       decoding="async"
+                      transition:name="hero-image"
                     />
                     {/* Overlay Gradient */}
                     <div class="hero-overlay" />
@@ -80,7 +84,7 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
                 </div>
 
                 {/* Game Title */}
-                <h1 class="hero-title">{gameTitle}</h1>
+                <h1 class="hero-title" transition:name="hero-title">{gameTitle}</h1>
                 {/* Decorative Elements */}
                 <DecorativeLines />
               </section>
@@ -90,7 +94,7 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
           {
             !heroImage && gameTitle && (
               <section class="title-only-section">
-                <h1 class="title-only-heading">{gameTitle}</h1>
+                <h1 class="title-only-heading" transition:name="hero-title">{gameTitle}</h1>
 
                 <DecorativeLines />
               </section>
