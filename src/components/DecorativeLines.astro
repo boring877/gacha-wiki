@@ -8,15 +8,15 @@ export interface Props {
 const { className = '' } = Astro.props;
 ---
 
-<div class={`hero-decorative ${className}`}>
-  <div class="hero-line hero-line-1"></div>
-  <div class="hero-line hero-line-2"></div>
-  <div class="hero-line hero-line-3"></div>
+<div class={`decorative-lines ${className}`}>
+  <div class="decorative-lines__line decorative-lines__line--amber"></div>
+  <div class="decorative-lines__line decorative-lines__line--teal"></div>
+  <div class="decorative-lines__line decorative-lines__line--rose"></div>
 </div>
 
 <style>
-  /* Hero Decorative Elements - Reusable Component */
-  .hero-decorative {
+  /* Decorative Lines Component - Unique Scoped Styles */
+  .decorative-lines {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,66 +25,66 @@ const { className = '' } = Astro.props;
     position: relative;
   }
 
-  .hero-line {
+  .decorative-lines__line {
     height: 2px;
     border-radius: 1px;
   }
 
-  .hero-line-1 {
+  .decorative-lines__line--amber {
     width: 3rem;
     background: var(--amber-glow);
   }
 
-  .hero-line-2 {
+  .decorative-lines__line--teal {
     width: 2rem;
     background: var(--teal-crystal);
   }
 
-  .hero-line-3 {
+  .decorative-lines__line--rose {
     width: 1rem;
     background: var(--rose-quartz);
   }
 
   /* Mobile optimizations */
   @media (max-width: 768px) {
-    .hero-decorative {
+    .decorative-lines {
       gap: 0.75rem;
       margin-top: 1.5rem;
     }
 
-    .hero-line {
+    .decorative-lines__line {
       height: 3px; /* Slightly thicker on mobile for better visibility */
     }
 
-    .hero-line-1 {
+    .decorative-lines__line--amber {
       width: 2.5rem;
     }
 
-    .hero-line-2 {
+    .decorative-lines__line--teal {
       width: 1.75rem;
     }
 
-    .hero-line-3 {
+    .decorative-lines__line--rose {
       width: 1rem;
     }
   }
 
   /* Extra small mobile */
   @media (max-width: 480px) {
-    .hero-decorative {
+    .decorative-lines {
       gap: 0.5rem;
       margin-top: 1rem;
     }
 
-    .hero-line-1 {
+    .decorative-lines__line--amber {
       width: 2rem;
     }
 
-    .hero-line-2 {
+    .decorative-lines__line--teal {
       width: 1.5rem;
     }
 
-    .hero-line-3 {
+    .decorative-lines__line--rose {
       width: 0.75rem;
     }
   }
