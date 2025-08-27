@@ -1,0 +1,15 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import { oslaData, oslaSEO, oslaHighlighting } from '../../../../data/horizon-walker/characters/osla.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={oslaSEO.title}
+  description={oslaSEO.description}
+  gameTitle={oslaData.name}
+>
+  <CharacterPageTemplate characterData={{...oslaData, highlightPatterns: oslaHighlighting}} />
+</CharacterIndividualLayout>

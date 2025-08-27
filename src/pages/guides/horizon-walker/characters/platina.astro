@@ -1,0 +1,15 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import { platinaData, platinaSEO, platinaHighlighting } from '../../../../data/horizon-walker/characters/platina.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={platinaSEO.title}
+  description={platinaSEO.description}
+  gameTitle={platinaData.name}
+>
+  <CharacterPageTemplate characterData={{...platinaData, highlightPatterns: platinaHighlighting}} />
+</CharacterIndividualLayout>

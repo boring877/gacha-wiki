@@ -1,0 +1,15 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import { kilonData, kilonSEO, kilonHighlighting } from '../../../../data/horizon-walker/characters/kilon.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={kilonSEO.title}
+  description={kilonSEO.description}
+  gameTitle={kilonData.name}
+>
+  <CharacterPageTemplate characterData={{...kilonData, highlightPatterns: kilonHighlighting}} />
+</CharacterIndividualLayout>
