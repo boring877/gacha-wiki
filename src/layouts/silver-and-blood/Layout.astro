@@ -8,11 +8,13 @@ import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import { ClientRouter } from 'astro:transitions';
 
 // Import CSS files properly
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/view-transitions.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
 import '../../styles/games/silver-and-blood/sab-badge-colours.css';
 
@@ -32,7 +34,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
   <head>
     <BaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
-
+    <ClientRouter />
 
     <slot name="head" />
   </head>
@@ -45,8 +47,8 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
     <div class="bg-layer bg-accent-3"></div>
 
     <div class="sab-content">
-      <Header />
-      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <Header transition:name="main-header" />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" transition:name="game-navigation" />
       <MobileMenu />
 
       <div class="sab-container">
@@ -67,6 +69,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
                         height={400}
                         loading="eager"
                         decoding="async"
+                        transition:name="hero-image"
                       />
                     )}
                     {/* Overlay Gradient */}
@@ -75,7 +78,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
                 </div>
 
                 {/* Game Title */}
-                <h1 class="hero-title">{gameTitle}</h1>
+                <h1 class="hero-title" transition:name="hero-title">{gameTitle}</h1>
                 {/* Decorative Elements */}
                 <DecorativeLines />
               </section>
@@ -85,7 +88,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
           {
             !heroVideo && !heroImage && gameTitle && (
               <section class="title-only-section">
-                <h1 class="title-only-heading">{gameTitle}</h1>
+                <h1 class="title-only-heading" transition:name="hero-title">{gameTitle}</h1>
 
                 <DecorativeLines />
               </section>

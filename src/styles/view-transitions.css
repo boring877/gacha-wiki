@@ -1,0 +1,230 @@
+/**
+ * View Transitions API Optimizations
+ * Enhanced page transitions for smooth navigation
+ */
+
+/* Main page transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: slide-out;
+}
+
+::view-transition-new(root) {
+  animation-name: slide-in;
+}
+
+/* Hero image transitions */
+::view-transition-old(hero-image),
+::view-transition-new(hero-image) {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+::view-transition-old(hero-image) {
+  animation-name: fade-scale-out;
+}
+
+::view-transition-new(hero-image) {
+  animation-name: fade-scale-in;
+}
+
+/* Hero title transitions */
+::view-transition-old(hero-title),
+::view-transition-new(hero-title) {
+  animation-duration: 0.4s;
+  animation-timing-function: ease-out;
+}
+
+::view-transition-old(hero-title) {
+  animation-name: slide-out;
+}
+
+::view-transition-new(hero-title) {
+  animation-name: slide-in;
+}
+
+/* Character page transitions (legacy support) */
+::view-transition-old(character-portrait),
+::view-transition-new(character-portrait) {
+  animation-duration: 0.4s;
+  animation-timing-function: ease-out;
+}
+
+::view-transition-old(character-portrait) {
+  animation-name: fade-scale-out;
+}
+
+::view-transition-new(character-portrait) {
+  animation-name: fade-scale-in;
+}
+
+/* Navigation transitions */
+::view-transition-old(navigation),
+::view-transition-new(navigation),
+::view-transition-old(main-header),
+::view-transition-new(main-header),
+::view-transition-old(game-navigation),
+::view-transition-new(game-navigation) {
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+}
+
+/* Memory card transitions */
+::view-transition-old(memory-card),
+::view-transition-new(memory-card) {
+  animation-duration: 0.35s;
+  animation-timing-function: ease-out;
+}
+
+/* Breadcrumb transitions */
+::view-transition-old(breadcrumb),
+::view-transition-new(breadcrumb) {
+  animation-duration: 0.25s;
+  animation-timing-function: ease-in-out;
+}
+
+/* Loading state integration with View Transitions */
+.page-loading {
+  opacity: 0.8;
+  pointer-events: none;
+  transition: opacity 0.15s ease-out;
+}
+
+.page-transition {
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+/* Custom transition animations */
+@keyframes slide-out {
+  from { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+  to { 
+    opacity: 0; 
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slide-in {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-scale-out {
+  from { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+  to { 
+    opacity: 0; 
+    transform: scale(0.95);
+  }
+}
+
+@keyframes fade-scale-in {
+  from { 
+    opacity: 0; 
+    transform: scale(1.05);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.1s !important;
+    animation-timing-function: ease !important;
+  }
+  
+  .page-loading,
+  .page-transition {
+    transition-duration: 0.1s !important;
+  }
+  
+  @keyframes slide-out {
+    from, to {
+      transform: none !important;
+    }
+  }
+  @keyframes slide-in {
+    from, to {
+      transform: none !important;
+    }
+  }
+  @keyframes fade-scale-out {
+    from, to {
+      transform: none !important;
+    }
+  }
+  @keyframes fade-scale-in {
+    from, to {
+      transform: none !important;
+    }
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.25s;
+  }
+  
+  ::view-transition-old(character-portrait),
+  ::view-transition-new(character-portrait) {
+    animation-duration: 0.3s;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .page-loading {
+    opacity: 0.6 !important;
+    background-color: var(--text-primary) !important;
+    color: var(--bg-primary) !important;
+  }
+}
+
+/* Focus management during transitions */
+@media (prefers-reduced-motion: no-preference) {
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Loading spinner animation refinements */
+.loading-spinner .spinner-circle {
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Performance optimizations */
+.character-portrait,
+.memory-card,
+.navigation,
+.breadcrumb {
+  contain: layout style paint;
+  will-change: transform, opacity;
+}
+
+/* Cleanup will-change after transitions */
+.character-portrait:not(:hover),
+.memory-card:not(:hover) {
+  will-change: auto;
+}
