@@ -771,7 +771,7 @@
   padding: 1rem !important;
   border-radius: 6px !important;
   max-width: 300px !important;
-  z-index: 10000 !important;
+  z-index: var(--z-notification) !important;
   font-weight: 500 !important;
   border: 2px solid currentColor;
 }
@@ -1057,7 +1057,7 @@
   inset: 0;
   width: 100vw;
   height: 100dvh;
-  z-index: 9999;
+  z-index: var(--z-modal);
   display: none;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.8);

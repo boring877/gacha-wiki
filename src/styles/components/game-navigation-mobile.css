@@ -171,7 +171,7 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
-  z-index: 999997;
+  z-index: var(--z-modal-backdrop);
   opacity: 0;
   visibility: hidden;
   cursor: pointer;
@@ -190,7 +190,7 @@
   background: rgb(28, 28, 28);
   backdrop-filter: blur(30px);
   overflow-y: auto;
-  z-index: 999998;
+  z-index: var(--z-modal);
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -226,7 +226,7 @@
   transform: translateZ(0);
   will-change: transform;
   /* Force to front of all content */
-  z-index: 999999;
+  z-index: var(--z-modal);
   /* Ensure complete isolation */
   isolation: isolate;
 }

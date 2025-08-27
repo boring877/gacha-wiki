@@ -395,23 +395,56 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       debouncedUpdate();
     });
 
-    // Instant navigation with pre-loading and fade effect
+    // Instant navigation with local loading indicator
     function handleNavigation(url: string | null) {
       if (!url || typeof url !== 'string') {
         return false;
       }
 
       try {
-        // Add loading state immediately for instant feedback
-        document.body.style.opacity = '0.8';
-        document.body.style.transition = 'opacity 0.1s ease';
+        // Add loading state to navigation panel only (safer than body manipulation)
+        const navPanel = elements.navPanel;
+        if (navPanel) {
+          navPanel.style.opacity = '0.7';
+          navPanel.style.transition = 'opacity 0.1s ease';
+          navPanel.style.pointerEvents = 'none';
+
+          // Add loading indicator
+          const loadingIndicator = document.createElement('div');
+          loadingIndicator.style.cssText = `
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(194, 107, 107, 0.9);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: var(--z-notification);
+            pointer-events: none;
+          `;
+          loadingIndicator.textContent = 'Loading...';
+          loadingIndicator.id = 'sab-nav-loading';
+          navPanel.style.position = 'relative';
+          navPanel.appendChild(loadingIndicator);
+        }
 
         // For faster perception, use location.replace to avoid back button issues
         window.location.replace(url);
         return true;
       } catch (error: unknown) {
-        // Reset opacity on error
-        document.body.style.opacity = '1';
+        // Reset navigation panel state on error
+        const navPanel = elements.navPanel;
+        if (navPanel) {
+          navPanel.style.opacity = '1';
+          navPanel.style.pointerEvents = '';
+          const loadingIndicator = document.getElementById('sab-nav-loading');
+          if (loadingIndicator) {
+            loadingIndicator.remove();
+          }
+        }
         return false;
       }
     }

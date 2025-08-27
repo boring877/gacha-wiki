@@ -1,0 +1,196 @@
+/**
+ * Z-Index Management System
+ * Centralized z-index values to prevent layering conflicts
+ */
+
+:root {
+  /* Base content layers */
+  --z-content: 1;
+  --z-content-elevated: 10;
+
+  /* Navigation layers */
+  --z-navigation: 100;
+  --z-navigation-dropdown: 200;
+  --z-navigation-mobile: 300;
+
+  /* Interactive elements */
+  --z-tooltip: 400;
+  --z-popover: 500;
+
+  /* Overlays */
+  --z-overlay: 1000;
+  --z-overlay-backdrop: 1001;
+
+  /* Modals */
+  --z-modal: 2000;
+  --z-modal-backdrop: 1999;
+
+  /* Critical system elements */
+  --z-notification: 3000;
+  --z-system-critical: 9000;
+
+  /* Debug/development (highest) */
+  --z-debug: 9999;
+}
+
+/* Apply z-index system to existing components */
+
+/* Navigation layers */
+.main-header {
+  z-index: var(--z-navigation);
+}
+
+.game-navigation-desktop {
+  z-index: var(--z-navigation);
+}
+
+.game-navigation-desktop .dropdown-menu {
+  z-index: var(--z-navigation-dropdown);
+}
+
+.game-nav-mobile {
+  z-index: var(--z-navigation-mobile);
+}
+
+/* Character navigation */
+.character-navigation {
+  z-index: var(--z-navigation);
+}
+
+/* Mobile menus and overlays */
+.mobile-menu {
+  z-index: var(--z-modal);
+}
+
+.mobile-menu-overlay {
+  z-index: var(--z-modal-backdrop);
+}
+
+.mobile-menu-drawer {
+  z-index: var(--z-modal);
+}
+
+/* Game navigation mobile components */
+.mobile-overlay {
+  z-index: var(--z-modal-backdrop);
+}
+
+.mobile-links {
+  z-index: var(--z-modal);
+}
+
+/* Comparison modals */
+.character-selection-modal {
+  z-index: var(--z-modal) !important;
+}
+
+.modal-backdrop {
+  z-index: var(--z-modal-backdrop) !important;
+}
+
+.modal-content {
+  z-index: var(--z-modal) !important;
+}
+
+/* Tooltips and popovers */
+.tooltip {
+  z-index: var(--z-tooltip);
+}
+
+.popover {
+  z-index: var(--z-popover);
+}
+
+/* System notifications */
+.notification,
+.toast {
+  z-index: var(--z-notification);
+}
+
+/* Loading states */
+.loading-overlay {
+  z-index: var(--z-overlay);
+}
+
+/* Critical system elements */
+.error-boundary,
+.system-alert {
+  z-index: var(--z-system-critical);
+}
+
+/* Debug elements (development only) */
+.debug-panel,
+.development-tools {
+  z-index: var(--z-debug);
+}
+
+/**
+ * Utility classes for dynamic z-index management
+ */
+.z-content {
+  z-index: var(--z-content);
+}
+.z-content-elevated {
+  z-index: var(--z-content-elevated);
+}
+.z-navigation {
+  z-index: var(--z-navigation);
+}
+.z-navigation-dropdown {
+  z-index: var(--z-navigation-dropdown);
+}
+.z-navigation-mobile {
+  z-index: var(--z-navigation-mobile);
+}
+.z-tooltip {
+  z-index: var(--z-tooltip);
+}
+.z-popover {
+  z-index: var(--z-popover);
+}
+.z-overlay {
+  z-index: var(--z-overlay);
+}
+.z-overlay-backdrop {
+  z-index: var(--z-overlay-backdrop);
+}
+.z-modal {
+  z-index: var(--z-modal);
+}
+.z-modal-backdrop {
+  z-index: var(--z-modal-backdrop);
+}
+.z-notification {
+  z-index: var(--z-notification);
+}
+.z-system-critical {
+  z-index: var(--z-system-critical);
+}
+.z-debug {
+  z-index: var(--z-debug);
+}
+
+/**
+ * Z-Index debugging (development only)
+ * Shows z-index values when debug mode is enabled
+ */
+@media screen and (min-width: 1px) {
+  body.debug-z-index *[class*='z-'],
+  body.debug-z-index [style*='z-index'] {
+    position: relative;
+  }
+
+  body.debug-z-index *[class*='z-']:before,
+  body.debug-z-index [style*='z-index']:before {
+    content: 'z:' attr(style);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+    color: white;
+    font-size: 10px;
+    padding: 2px 4px;
+    z-index: 10000;
+    pointer-events: none;
+  }
+}

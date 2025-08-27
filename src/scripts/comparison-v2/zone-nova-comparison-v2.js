@@ -8,6 +8,9 @@
 
 'use strict';
 
+// Import ScrollManager for centralized scroll control
+import { scrollManager } from '../../utils/scroll-manager.js';
+
 // Global state - using const where possible for immutability
 const selectedCharacters = [];
 let filteredCharacters = [];
@@ -284,7 +287,19 @@ function initializeMobileModal() {
 
     // Open modal
     modal.classList.add('open');
-    document.body.classList.add('modal-open'); // Prevent background scroll
+
+    try {
+      // Use ScrollManager for centralized scroll locking
+      scrollManager.lockScroll('zone-nova-comparison-modal', {
+        preservePosition: true,
+        touchAction: 'auto', // Allow scrolling within modal
+        preventOverscroll: true,
+      });
+    } catch (error) {
+      console.error('Zone Nova Comparison: Error locking scroll:', error);
+      // Fallback to old method if ScrollManager fails
+      document.body.classList.add('modal-open');
+    }
 
     // Focus search input for better UX
     if (searchInput) {
@@ -296,7 +311,16 @@ function initializeMobileModal() {
     if (!modal) return;
 
     modal.classList.remove('open');
-    document.body.classList.remove('modal-open'); // Restore background scroll
+
+    try {
+      // Use ScrollManager to restore scrolling
+      scrollManager.unlockScroll('zone-nova-comparison-modal');
+    } catch (error) {
+      console.error('Zone Nova Comparison: Error unlocking scroll:', error);
+      // Fallback to old method if ScrollManager fails
+      document.body.classList.remove('modal-open');
+    }
+
     currentSelectionSlot = null;
 
     // Clear search when closing
@@ -398,7 +422,7 @@ function showNotification(message, type = 'info') {
     padding: 1rem;
     border-radius: 6px;
     max-width: 300px;
-    z-index: 10000;
+    z-index: var(--z-notification);
     font-weight: 500;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     animation: slideIn 0.3s ease-out;

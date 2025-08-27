@@ -11,8 +11,8 @@
   /* Layout Constants */
   --nav-header-height: 72px;
   --nav-container-max-width: 1400px;
-  --nav-z-index: 999;
-  --nav-dropdown-z-index: 1002;
+  --nav-z-index: var(--z-navigation);
+  --nav-dropdown-z-index: var(--z-navigation-dropdown);
 
   /* Navigation-specific spacing (using standard rem scale) */
   --nav-spacing-xs: 0.5rem; /* 8px */
@@ -58,7 +58,7 @@
 .game-nav-desktop {
   position: sticky;
   top: 72px; /* Must match main header height exactly */
-  z-index: 999; /* Below main header (1000) but above content */
+  z-index: var(--nav-z-index); /* Below main header but above content */
   background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
   backdrop-filter: var(--nav-blur-effect);
   margin-bottom: var(--nav-spacing-lg);

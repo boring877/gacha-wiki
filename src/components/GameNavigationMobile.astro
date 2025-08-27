@@ -95,6 +95,9 @@ if (!game) return;
 </div>
 
 <script>
+  // Import ScrollManager for centralized scroll control
+  import { scrollManager } from '../utils/scroll-manager.js';
+
   // Mobile Navigation - Full-screen popup with viewport isolation
   document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.getElementById('navToggle');
@@ -102,6 +105,8 @@ if (!game) return;
     const closeBtn = document.getElementById('navClose');
     const overlay = document.getElementById('navOverlay');
     let isMenuOpen = false;
+
+    const COMPONENT_ID = 'game-navigation-mobile';
 
     function toggleMenu() {
       isMenuOpen = !isMenuOpen;
@@ -112,38 +117,39 @@ if (!game) return;
 
       if (mobileMenu) {
         if (isMenuOpen) {
-          // Store current scroll position for restoration
-          window.gameNavScrollY = window.scrollY;
+          try {
+            // Use ScrollManager for centralized scroll locking
+            scrollManager.lockScroll(COMPONENT_ID, {
+              preservePosition: true,
+              touchAction: 'none',
+              preventOverscroll: true,
+            });
 
-          // Complete page isolation - hide everything except popup
-          document.body.style.overflow = 'hidden';
-          document.body.style.touchAction = 'none';
-          document.body.style.position = 'fixed';
-          document.body.style.width = '100%';
-          document.body.style.height = '100%';
-          document.documentElement.style.overflow = 'hidden';
+            mobileMenu.classList.add('active');
+            overlay?.classList.add('active');
 
-          mobileMenu.classList.add('active');
-          overlay?.classList.add('active');
-
-          // Menu will appear at current viewport - no scrolling needed
-        } else {
-          // Restore complete page state
-          document.body.style.overflow = '';
-          document.body.style.touchAction = '';
-          document.body.style.position = '';
-          document.body.style.width = '';
-          document.body.style.height = '';
-          document.documentElement.style.overflow = '';
-
-          // Restore scroll position
-          if (window.gameNavScrollY !== undefined) {
-            window.scrollTo(0, window.gameNavScrollY);
-            window.gameNavScrollY = undefined;
+            // Menu will appear at current viewport - no scrolling needed
+          } catch (error) {
+            console.error('GameNavigationMobile: Error opening menu:', error);
+            isMenuOpen = false;
+            if (toggle) {
+              toggle.setAttribute('aria-expanded', 'false');
+            }
           }
+        } else {
+          try {
+            // Use ScrollManager to restore scrolling
+            scrollManager.unlockScroll(COMPONENT_ID);
 
-          mobileMenu.classList.remove('active');
-          overlay?.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay?.classList.remove('active');
+          } catch (error) {
+            console.error('GameNavigationMobile: Error closing menu:', error);
+            // Force cleanup on error
+            scrollManager.forceUnlockAll();
+            mobileMenu.classList.remove('active');
+            overlay?.classList.remove('active');
+          }
         }
       }
     }
@@ -186,6 +192,20 @@ if (!game) return;
           closeMenu();
         }
       }, 100);
+    });
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+      if (isMenuOpen) {
+        scrollManager.unlockScroll(COMPONENT_ID);
+      }
+    });
+
+    // Cleanup on visibility change (mobile browser switching)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && isMenuOpen) {
+        closeMenu();
+      }
     });
   });
 </script>

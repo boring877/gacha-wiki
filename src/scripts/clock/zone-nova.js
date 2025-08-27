@@ -6,6 +6,7 @@
 class ZoneNovaClockTimer {
   constructor() {
     this.clockInterval = null;
+    this.animationFrame = null;
 
     // DOM elements
     this.clockHours = null;
@@ -59,15 +60,11 @@ class ZoneNovaClockTimer {
     this.guildWarNextPhase = document.getElementById('guildWarNextPhase');
     this.guildWarNextTime = document.getElementById('guildWarNextTime');
 
-    // Start the clock
+    // Start the clock with optimized updates
     this.updateClock();
     this.updateCurrentDateTime();
     this.updateAllTimerCards();
-    this.clockInterval = setInterval(() => {
-      this.updateClock();
-      this.updateCurrentDateTime();
-      this.updateAllTimerCards();
-    }, 1000);
+    this.startClockLoop();
 
     // Cleanup on page unload
     window.addEventListener('beforeunload', () => this.cleanup());
@@ -670,12 +667,40 @@ class ZoneNovaClockTimer {
   }
 
   /**
+   * Start optimized clock loop using requestAnimationFrame
+   */
+  startClockLoop() {
+    let lastSecond = Math.floor(Date.now() / 1000);
+
+    const loop = () => {
+      const currentSecond = Math.floor(Date.now() / 1000);
+
+      // Only update when the second actually changes
+      if (currentSecond !== lastSecond) {
+        this.updateClock();
+        this.updateCurrentDateTime();
+        this.updateAllTimerCards();
+        lastSecond = currentSecond;
+      }
+
+      this.animationFrame = requestAnimationFrame(loop);
+    };
+
+    this.animationFrame = requestAnimationFrame(loop);
+  }
+
+  /**
    * Clean up intervals and event listeners
    */
   cleanup() {
     if (this.clockInterval) {
       clearInterval(this.clockInterval);
       this.clockInterval = null;
+    }
+
+    if (this.animationFrame) {
+      cancelAnimationFrame(this.animationFrame);
+      this.animationFrame = null;
     }
   }
 }

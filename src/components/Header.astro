@@ -40,7 +40,7 @@ import MobileHeader from './MobileHeader.astro';
     padding: 0;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: var(--z-navigation);
     /* Fixed height to prevent layout shift and ensure consistent positioning */
     height: 72px;
     contain: layout style paint;
@@ -177,12 +177,17 @@ import MobileHeader from './MobileHeader.astro';
 </style>
 
 <script>
+  // Import ScrollManager for centralized scroll control
+  import { scrollManager } from '../utils/scroll-manager.js';
+
   // Mobile menu functionality
   document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeMenuBtn = document.getElementById('closeMenu');
     let isMenuOpen = false;
+
+    const COMPONENT_ID = 'header-mobile-menu';
 
     function toggleMenu() {
       isMenuOpen = !isMenuOpen;
@@ -193,32 +198,40 @@ import MobileHeader from './MobileHeader.astro';
 
       if (mobileMenu) {
         if (isMenuOpen) {
-          // Prevent scrolling and ensure menu is visible
-          document.body.style.overflow = 'hidden';
-          document.body.style.position = 'fixed';
-          document.body.style.top = `-${window.scrollY}px`;
-          document.body.style.width = '100%';
+          try {
+            // Use ScrollManager for centralized scroll locking
+            scrollManager.lockScroll(COMPONENT_ID, {
+              preservePosition: true,
+              touchAction: 'auto', // Allow scrolling within menu
+              preventOverscroll: true,
+            });
 
-          mobileMenu.classList.add('active');
+            mobileMenu.classList.add('active');
 
-          // Ensure the menu drawer is visible by scrolling to top
-          const drawer = mobileMenu.querySelector('.mobile-menu-drawer');
-          if (drawer) {
-            drawer.scrollTop = 0;
+            // Ensure the menu drawer is visible by scrolling to top
+            const drawer = mobileMenu.querySelector('.mobile-menu-drawer');
+            if (drawer) {
+              drawer.scrollTop = 0;
+            }
+          } catch (error) {
+            console.error('Header: Error opening mobile menu:', error);
+            isMenuOpen = false;
+            if (hamburger) {
+              hamburger.setAttribute('aria-expanded', 'false');
+            }
           }
         } else {
-          // Restore scrolling and position
-          const scrollY = document.body.style.top;
-          document.body.style.overflow = '';
-          document.body.style.position = '';
-          document.body.style.top = '';
-          document.body.style.width = '';
+          try {
+            // Use ScrollManager to restore scrolling
+            scrollManager.unlockScroll(COMPONENT_ID);
 
-          if (scrollY) {
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            mobileMenu.classList.remove('active');
+          } catch (error) {
+            console.error('Header: Error closing mobile menu:', error);
+            // Force cleanup on error
+            scrollManager.forceUnlockAll();
+            mobileMenu.classList.remove('active');
           }
-
-          mobileMenu.classList.remove('active');
         }
       }
     }
@@ -262,6 +275,20 @@ import MobileHeader from './MobileHeader.astro';
           closeMenu();
         }
       }, 100);
+    });
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+      if (isMenuOpen) {
+        scrollManager.unlockScroll(COMPONENT_ID);
+      }
+    });
+
+    // Cleanup on visibility change (mobile browser switching)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && isMenuOpen) {
+        closeMenu();
+      }
     });
   });
 </script>

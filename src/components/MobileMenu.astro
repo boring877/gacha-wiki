@@ -125,7 +125,7 @@ const version = packageInfo.version;
     width: 100vw;
     height: 100vh;
     height: 100dvh;
-    z-index: 9999;
+    z-index: var(--z-modal);
     opacity: 0;
     visibility: hidden;
     overscroll-behavior: contain;
@@ -155,7 +155,7 @@ const version = packageInfo.version;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(8px);
     cursor: pointer;
-    z-index: 9999;
+    z-index: var(--z-modal);
   }
 
   .mobile-menu-drawer {
@@ -173,7 +173,7 @@ const version = packageInfo.version;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    z-index: 10000;
+    z-index: var(--z-modal);
     /* Hide scrollbar */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */

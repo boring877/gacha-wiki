@@ -52,10 +52,10 @@
   /* Animation Properties for Clock Components */
   --clock-animation-duration: 1s;
 
-  /* Clock-specific Blur Effects */
-  --clock-blur-heavy: blur(15px);
-  --clock-blur-medium: blur(10px);
-  --clock-blur-light: blur(8px);
+  /* Clock-specific Blur Effects - Optimized for performance */
+  --clock-blur-heavy: blur(8px);
+  --clock-blur-medium: blur(6px);
+  --clock-blur-light: blur(4px);
 }
 
 /* === SHARED BACKGROUND LAYERS === */
@@ -130,9 +130,13 @@
   overflow: hidden;
   width: 100%;
   max-width: 1200px;
-  /* Force hardware acceleration for smooth animations */
+  /* Optimized hardware acceleration - only when animating */
   transform: translateZ(0);
-  will-change: transform, opacity;
+  /* Clock-specific scroll optimizations */
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+  /* Improve scrolling performance */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Background animation element */
@@ -383,6 +387,9 @@
   flex-direction: column;
   justify-content: space-between; /* Distribute content evenly within cards */
   min-height: 160px; /* Ensure consistent card heights */
+  /* Timer card scroll optimizations */
+  touch-action: pan-y;
+  overscroll-behavior: contain;
 }
 
 /* Priority cards get enhanced border */
@@ -459,7 +466,7 @@
     padding: 0.5rem 1rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
   }
 
   .hero-top-section {

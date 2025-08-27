@@ -56,15 +56,26 @@ const { prevCharacter, nextCharacter } = Astro.props;
       znMobilePerfManager.lastNavigation = now;
 
       try {
-        // Instant visual feedback
-        document.body.style.opacity = '0.9';
-        document.body.style.transition = 'opacity 0.08s ease';
+        // Add visual feedback to navigation element only (safer approach)
+        const targetButton = document.querySelector(`[data-character-url="${url}"]`) as HTMLElement;
+        if (targetButton) {
+          targetButton.style.opacity = '0.6';
+          targetButton.style.transform = 'scale(0.95)';
+          targetButton.style.transition = 'all 0.08s ease';
+          targetButton.style.pointerEvents = 'none';
+        }
 
         // Use replace for instant feel
         window.location.replace(url);
         return true;
       } catch (error: unknown) {
-        document.body.style.opacity = '1';
+        // Reset element state on error
+        const targetButton = document.querySelector(`[data-character-url="${url}"]`) as HTMLElement;
+        if (targetButton) {
+          targetButton.style.opacity = '1';
+          targetButton.style.transform = 'scale(1)';
+          targetButton.style.pointerEvents = '';
+        }
         return false;
       }
     }

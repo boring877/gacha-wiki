@@ -630,7 +630,7 @@
   padding: 1rem;
   border-radius: 6px;
   max-width: 300px;
-  z-index: 10000;
+  z-index: var(--z-notification);
   font-weight: 500;
 }
 
@@ -1018,7 +1018,7 @@
   padding: 1rem;
   border-radius: 6px;
   max-width: 300px;
-  z-index: 10000;
+  z-index: var(--z-notification);
   font-weight: 500;
   border: 2px solid currentColor;
 }
@@ -1458,7 +1458,7 @@
   inset: 0;
   width: 100vw;
   height: 100dvh; /* Use dynamic viewport height consistently */
-  z-index: 9999;
+  z-index: var(--z-modal);
   display: none;
   overflow: hidden;
   background: #1c1c1c; /* Solid fallback */

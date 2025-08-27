@@ -14,11 +14,15 @@
  * - Performance optimizations for fonts and rendering
  * - Common utility classes for layout and interaction
  * - Animation system with reduced motion support
+ * - Z-index management system
  * 
  * Browser Compatibility: Modern browsers (ES6+ support)
  * Mobile Support: iOS 12+, Android 8+
  * Responsive Breakpoints: 768px (tablet), 1200px (desktop)
  */
+
+/* === CORE SYSTEMS === */
+@import './core/z-index-system.css';
 
 /* === MODERN CSS RESET === */
 /* Universal box-sizing ensures predictable sizing behavior */
@@ -155,7 +159,6 @@ input[type='reset'] {
   text-overflow: ellipsis; /* Show ellipsis (...) for cut-off text */
   white-space: nowrap; /* Prevent text from wrapping to new line */
 }
-
 
 /* === RESPONSIVE DISPLAY UTILITIES === */
 
