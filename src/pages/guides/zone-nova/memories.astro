@@ -456,7 +456,14 @@ import {
                   >
                     <td>{idx + 1}</td>
                     <td>
-                      <Image src={memory.image} alt={memory.name} class="memory-img" loading="lazy" width={60} height={60} />
+                      <Image
+                        src={memory.image}
+                        alt={memory.name}
+                        class="memory-img"
+                        loading="lazy"
+                        width={60}
+                        height={60}
+                      />
                     </td>
                     <td>{memory.name}</td>
                     <td>
@@ -489,7 +496,13 @@ import {
                 style="cursor:pointer;"
               >
                 <div class="mobile-card-header">
-                  <Image src={memory.image} alt={memory.name} class="memory-img" width={80} height={80} />
+                  <Image
+                    src={memory.image}
+                    alt={memory.name}
+                    class="memory-img"
+                    width={80}
+                    height={80}
+                  />
                   <div class="mobile-card-title-group">
                     <h3>{memory.name}</h3>
                     <div class="mobile-card-badges">
@@ -608,8 +621,8 @@ import {
 
         // Sort the memories
         const sortedMemories = [...allMemories].sort((a, b) => {
-          let aVal = a.data[sortKey];
-          let bVal = b.data[sortKey];
+          const aVal = a.data[sortKey];
+          const bVal = b.data[sortKey];
 
           if (typeof aVal === 'string') {
             return isAscending ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);

@@ -275,7 +275,7 @@ class SilverAndBloodClockTimer {
       this.updateMonthlyTimer();
       this.updateMaintenanceTimer();
       this.updateSpecialEventTimers();
-    } catch (error) {
+    } catch (_error) {
       // Error updating timer cards
     }
   }

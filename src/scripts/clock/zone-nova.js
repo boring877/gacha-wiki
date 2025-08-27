@@ -584,7 +584,7 @@ class ZoneNovaClockTimer {
   /**
    * Get next Guild War phase info
    */
-  getNextGuildWarPhase(now, currentPhase) {
+  getNextGuildWarPhase(_now, currentPhase) {
     // Simple logic - next phase rotates through Prep -> Battle -> Settlement
     let nextPhaseName;
     if (currentPhase.name === 'Preparation Phase') {

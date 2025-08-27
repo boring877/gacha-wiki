@@ -128,9 +128,9 @@ const rawPlatinaData = {
         'Activates the Level 1 passive skill [Vigilant Knight]. [Vigilant Knight]: The Platinum Knight uses a shield to guard in all directions, protecting her back. Platina does not receive a Weakness Attack even when attacked from behind.',
     },
     guardiansStance: {
-      name: 'Guardian\'s Stance',
+      name: "Guardian's Stance",
       description:
-        'Activates the Level 1 passive skill [Spacial Distortion]. [Guardian\'s Stance]: Takes an unwavering stance as the Platinum Guardian. Increases Knockback Resistance by 1000.',
+        "Activates the Level 1 passive skill [Spacial Distortion]. [Guardian's Stance]: Takes an unwavering stance as the Platinum Guardian. Increases Knockback Resistance by 1000.",
     },
     rakhtan: {
       name: 'Rakhtan',
@@ -151,7 +151,7 @@ const rawPlatinaData = {
         value: '114%',
       },
       description:
-        'Designates a target, attacking with a sword and striking with a shield. Deals Slash DMG equal to 114% of melee ATK to the hit enemy and has a 38% chance to inflict [Stun]. This skill transitions to the \'Sword Strike\' skill while in [Shield Deployment] state. [Sword Strike]: While in [Shield Deployment] state, designates a target and attacks with a sword. Deals Slash DMG equal to 114% of melee ATK to the hit enemy.',
+        "Designates a target, attacking with a sword and striking with a shield. Deals Slash DMG equal to 114% of melee ATK to the hit enemy and has a 38% chance to inflict [Stun]. This skill transitions to the 'Sword Strike' skill while in [Shield Deployment] state. [Sword Strike]: While in [Shield Deployment] state, designates a target and attacks with a sword. Deals Slash DMG equal to 114% of melee ATK to the hit enemy.",
     },
     songOfTheSword: {
       name: 'Song of the Sword',
@@ -164,7 +164,7 @@ const rawPlatinaData = {
         value: '171%',
       },
       description:
-        'Rotates in place, swinging the sword to attack. Deals Slash DMG equal to 171% of melee ATK to all enemies within a 2.5m circular range, enters [Shield Deployment] state and gains [Gravity Focus] effect. [Shield Deployment]: Increases Block Rate by 15%, increases Aggro Adjustment, and increases Physical DEF by 150. This skill changes to \'Song of the Shield\' while in [Shield Deployment] state. [Song of the Shield]: While in [Shield Deployment] state, rotates in place, swinging the sword to deal Slash DMG equal to 171% of melee ATK to all targets within 2.5m and cancels the [Shield Deployment] state.',
+        "Rotates in place, swinging the sword to attack. Deals Slash DMG equal to 171% of melee ATK to all enemies within a 2.5m circular range, enters [Shield Deployment] state and gains [Gravity Focus] effect. [Shield Deployment]: Increases Block Rate by 15%, increases Aggro Adjustment, and increases Physical DEF by 150. This skill changes to 'Song of the Shield' while in [Shield Deployment] state. [Song of the Shield]: While in [Shield Deployment] state, rotates in place, swinging the sword to deal Slash DMG equal to 171% of melee ATK to all targets within 2.5m and cancels the [Shield Deployment] state.",
     },
     gravityFall: {
       name: 'Gravity Fall',
@@ -207,8 +207,10 @@ const rawHighlightPatterns = {
   buffsDebuffs:
     /\b(?:Vigilant\s+Knight|Guardian's\s+Stance|Spacial\s+Distortion|Symbol\s+of\s+Immortality|The\s+Platinum\s+Knight|Shield\s+Deployment|Gravity\s+Focus|Platinum\s+Heart|Platinum\s+Aura|Sword\s+Strike|Song\s+of\s+the\s+Shield|Stun|Slow|weakness\s+attack|knockback\s+resistance|aggro\s+adjustment|block\s+rate)\b/gi,
   percentages: /\b(\d{1,3}%)(?:\s*of\s+(?:melee\s+ATK|Max\s+HP))?/g,
-  statChanges: /\b(?:reduces?|increases?|decreases?|gains?|grants?|applies?|cancels?|consumes?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+)\b/gi,
-  keywords: /\b(?:dimension\s+guardian|metallic\s+lifeform|platinum\s+armor|interdimensional\s+fissures|dimensional\s+breaches|Human\s+God|perilous\s+relic|noble\s+color|special\s+purpose|gaps\s+between\s+dimensions|circular\s+range|target\s+point|weakness\s+attacks)\b/gi,
+  statChanges:
+    /\b(?:reduces?|increases?|decreases?|gains?|grants?|applies?|cancels?|consumes?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+)\b/gi,
+  keywords:
+    /\b(?:dimension\s+guardian|metallic\s+lifeform|platinum\s+armor|interdimensional\s+fissures|dimensional\s+breaches|Human\s+God|perilous\s+relic|noble\s+color|special\s+purpose|gaps\s+between\s+dimensions|circular\s+range|target\s+point|weakness\s+attacks)\b/gi,
   attributes:
     /\b(?:AP|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|Slash|Pierce|Crush|Heat|Cold|Electric|Immaterial|Poison|Max\s+HP|HP|Physical\s+DEF|SPD|Block\s+Rate|AP\s+Recovery|Knockback\s+Resistance|Aggro\s+Adjustment)\b/gi,
 };

@@ -76,7 +76,7 @@ class ZoneNovaCharacterComparison {
 
       this.characterDataCache.set(slug, data);
       return data;
-    } catch (error) {
+    } catch (_error) {
       // Failed to load character data
       this.characterDataCache.set(slug, null);
       return null;

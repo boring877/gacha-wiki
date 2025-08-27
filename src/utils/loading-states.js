@@ -26,7 +26,7 @@ const skeletonTemplates = {
       <td><div class="skeleton-text"></div></td>
       <td><div class="skeleton-text short"></div></td>
     </tr>
-  `
+  `,
 };
 
 // CSS for loading states (injected once)
@@ -111,7 +111,7 @@ const loadingCSS = `
  */
 export function initLoadingStyles() {
   if (document.getElementById('loading-styles')) return; // Already injected
-  
+
   const style = document.createElement('style');
   style.id = 'loading-styles';
   style.textContent = loadingCSS;
@@ -123,16 +123,16 @@ export function initLoadingStyles() {
  */
 export function showLoadingSpinner(element) {
   if (!element) return null;
-  
+
   // Remove existing spinner if any
   const existingSpinner = element.querySelector('.loading-spinner');
   if (existingSpinner) return existingSpinner;
-  
+
   // Add spinner
   const spinnerContainer = document.createElement('span');
   spinnerContainer.innerHTML = spinnerHTML;
   element.appendChild(spinnerContainer.firstElementChild);
-  
+
   return spinnerContainer.firstElementChild;
 }
 
@@ -141,7 +141,7 @@ export function showLoadingSpinner(element) {
  */
 export function hideLoadingSpinner(element) {
   if (!element) return;
-  
+
   const spinner = element.querySelector('.loading-spinner');
   if (spinner) {
     spinner.remove();
@@ -160,7 +160,7 @@ export function startPageLoading() {
  */
 export function endPageLoading() {
   document.body.classList.remove('page-loading');
-  
+
   // Remove transition class after animation
   setTimeout(() => {
     document.body.classList.remove('page-transition');
@@ -172,10 +172,10 @@ export function endPageLoading() {
  */
 export function showSkeletonLoading(container, type = 'characterCard', count = 6) {
   if (!container || !skeletonTemplates[type]) return;
-  
+
   container.innerHTML = '';
   container.setAttribute('aria-busy', 'true');
-  
+
   for (let i = 0; i < count; i++) {
     const skeleton = document.createElement('div');
     skeleton.innerHTML = skeletonTemplates[type];
@@ -188,11 +188,11 @@ export function showSkeletonLoading(container, type = 'characterCard', count = 6
  */
 export function hideSkeletonLoading(container, content) {
   if (!container) return;
-  
+
   container.setAttribute('aria-busy', 'false');
   container.innerHTML = content || '';
   container.classList.add('fade-in');
-  
+
   // Remove fade-in class after animation
   setTimeout(() => {
     container.classList.remove('fade-in');
@@ -204,14 +204,14 @@ export function hideSkeletonLoading(container, content) {
  */
 export function navigateWithLoading(url, sourceElement = null) {
   if (!url) return false;
-  
+
   try {
     // Show loading feedback
     if (sourceElement) {
       showLoadingSpinner(sourceElement);
     }
     startPageLoading();
-    
+
     // Navigate with View Transitions support
     if (document.startViewTransition) {
       document.startViewTransition(() => {
@@ -220,15 +220,15 @@ export function navigateWithLoading(url, sourceElement = null) {
     } else {
       window.location.href = url;
     }
-    
+
     return true;
-  } catch (error) {
+  } catch (_error) {
     // Cleanup on error
     if (sourceElement) {
       hideLoadingSpinner(sourceElement);
     }
     endPageLoading();
-    console.error('Navigation error:', error);
+    console.error('Error:', _error);
     return false;
   }
 }

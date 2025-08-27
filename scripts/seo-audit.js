@@ -46,9 +46,9 @@ class SEOAuditor {
         const results = JSON.parse(readFileSync(outputFile, 'utf8'));
         return this.parseLighthouseResults(results);
       }
-    } catch (error) {
-      console.error('❌ Lighthouse audit failed:', error.message);
-      return { error: error.message };
+    } catch (_error) {
+      console.error('❌ Lighthouse audit failed:', _error.message);
+      return { error: _error.message };
     }
   }
 
@@ -119,9 +119,9 @@ class SEOAuditor {
         loadingExperience: data.loadingExperience,
         originLoadingExperience: data.originLoadingExperience,
       };
-    } catch (error) {
-      console.error('❌ PageSpeed Insights failed:', error.message);
-      return { error: error.message };
+    } catch (_error) {
+      console.error('❌ PageSpeed Insights failed:', _error.message);
+      return { error: _error.message };
     }
   }
 
@@ -160,10 +160,10 @@ class SEOAuditor {
               statusText: linkResponse.statusText,
             });
           }
-        } catch (error) {
+        } catch (_error) {
           brokenLinks.push({
             url: link,
-            error: error.message,
+            error: _error.message,
           });
         }
       }
@@ -173,9 +173,9 @@ class SEOAuditor {
         brokenLinks: brokenLinks.length,
         brokenLinksList: brokenLinks,
       };
-    } catch (error) {
-      console.error('❌ Broken link check failed:', error.message);
-      return { error: error.message };
+    } catch (_error) {
+      console.error('❌ Broken link check failed:', _error.message);
+      return { error: _error.message };
     }
   }
 

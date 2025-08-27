@@ -214,8 +214,10 @@ const rawHighlightPatterns = {
   buffsDebuffs:
     /\b(?:Ascendant|Blade\s+Resonance|Grand\s+Echo|Transcendence|Bladebreaker|Limitless\s+Form|The\s+Brave\s+Duchess|Thousand\s+Execution|Nova\s+Strike|Phenomenon|counterattack|block)\b/gi,
   percentages: /\b(\d{1,3}%)\b/g,
-  statChanges: /\b(?:reduces?|increases?|decreases?|removes?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
-  keywords: /\b(?:ignores?|stacking|entirely|phenomenon|force\s+of\s+nature|Valiant\s+Duke|Grand\s+Duchy\s+of\s+Magnal|Roland|Rift\s+Crisis|Chosen\s+Human|seclusion)\b/gi,
+  statChanges:
+    /\b(?:reduces?|increases?|decreases?|removes?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
+  keywords:
+    /\b(?:ignores?|stacking|entirely|phenomenon|force\s+of\s+nature|Valiant\s+Duke|Grand\s+Duchy\s+of\s+Magnal|Roland|Rift\s+Crisis|Chosen\s+Human|seclusion)\b/gi,
   attributes:
     /\b(?:AP|Melee\s+ATK|Slash|Physical|Pierce|Crush|Heat|Cold|Electric|Immaterial|Poison|Block\s+Rate|CRIT|Critical\s+Chance|DEF|Formation\s+Cost|Weak\s+Spot\s+Hit\s+Multiplier)\b/gi,
 };

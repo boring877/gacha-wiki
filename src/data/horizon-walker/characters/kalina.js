@@ -191,8 +191,7 @@ const rawKalinaData = {
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
-      description:
-        'Once per battle, survives with 1 HP and immediately gains 150 AP.',
+      description: 'Once per battle, survives with 1 HP and immediately gains 150 AP.',
     },
   },
 };
@@ -214,7 +213,8 @@ const rawHighlightPatterns = {
     /\b(?:Obedience|Double\s+Down|Full\s+Extent|Hunter\s+on\s+the\s+Vine|Survival\s+Expert|Edge\s+Runner|Persistence|Swamp\s+Elf|Slash\s+Boost|lifesteal|counterattack|evasion)\b/gi,
   percentages: /\b(\d{1,3}%)\b/g,
   statChanges: /\b(?:reduces?|increases?|decreases?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
-  keywords: /\b(?:survives?|ignores?\s+counterattacks?|Chosen\s+Human|Swamp\s+Rangers|Bureau\s+of\s+Rift\s+Management|Webwoods|Maximilia|lifesteal|stacking)\b/gi,
+  keywords:
+    /\b(?:survives?|ignores?\s+counterattacks?|Chosen\s+Human|Swamp\s+Rangers|Bureau\s+of\s+Rift\s+Management|Webwoods|Maximilia|lifesteal|stacking)\b/gi,
   attributes:
     /\b(?:AP|Melee\s+ATK|Slash|Physical|Pierce|Crush|Heat|Cold|Electric|Immaterial|Poison|Evasion|All\s+ATK|DEF|SPD|Mobility|CRIT\s+DMG|HP|Accuracy)\b/gi,
 };

@@ -50,8 +50,8 @@ Object.entries(importFixes).forEach(([fileName, { data, seo }]) => {
     console.log(`✅ Fixed: ${fileName}.astro`);
     console.log(`   ${incorrectDataName} → ${data}`);
     console.log(`   ${incorrectSeoName} → ${seo}\n`);
-  } catch (error) {
-    console.log(`❌ Error fixing ${fileName}.astro:`, error.message);
+  } catch (_error) {
+    console.log(`❌ Error fixing ${fileName}.astro:`, _error.message);
   }
 });
 

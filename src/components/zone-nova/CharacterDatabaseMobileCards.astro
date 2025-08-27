@@ -94,7 +94,13 @@ function getTagCategory(tag: string): string {
         <div class="mobile-card-header">
           <div class="mobile-card-images">
             <div style="width: 64px; height: 64px; border-radius: 10px; border: 2px solid var(--amber-glow); overflow: hidden;">
-              <Image src={char.image} alt={char.name} class="character-img" width={64} height={64} />
+              <Image
+                src={char.image}
+                alt={char.name}
+                class="character-img"
+                width={64}
+                height={64}
+              />
             </div>
             <img
               src={`/images/games/zone-nova/classes/1${char.class}.jpg`}

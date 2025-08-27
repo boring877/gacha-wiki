@@ -90,7 +90,7 @@ const rawGrideldaData = {
         name: 'The River of Stars',
         type: 'Unique',
         description:
-          'During battle, Magic ATK increases by 80% and Crush Boost increases by 40%. Each ally\'s combat skill damage increases by 32% during the first turn after the start of the round, and when an ally other than self uses a skill, recovers HP equal to 24% of own Magic ATK. Using a skill targeting an ally grants the [Purification] effect.',
+          "During battle, Magic ATK increases by 80% and Crush Boost increases by 40%. Each ally's combat skill damage increases by 32% during the first turn after the start of the round, and when an ally other than self uses a skill, recovers HP equal to 24% of own Magic ATK. Using a skill targeting an ally grants the [Purification] effect.",
       },
       theRendezvous: {
         name: 'The Rendezvous',
@@ -120,8 +120,7 @@ const rawGrideldaData = {
   uniqueTraits: {
     limitlessWillpower: {
       name: 'Limitless Willpower',
-      description:
-        'Formation Cost +2, Intelligence 2, Agility 1, Vitality 1',
+      description: 'Formation Cost +2, Intelligence 2, Agility 1, Vitality 1',
     },
     entangledThreads: {
       name: 'Entangled Threads',
@@ -169,7 +168,7 @@ const rawGrideldaData = {
       apCost: 47,
       cooldown: 2,
       description:
-        'Bends space with overwhelming arcane power. Increases the SPD of all allies (excluding self) by 190% of the Arcane Elemental\'s base AP recovery until the end of their turn, and creates an [Undefined Space] zone at the target location for 3 rounds. Allies within the [Uncertain Space] zone recover a portion of AP spent on movement. Enemies within the zone are periodically pulled toward its center.',
+        "Bends space with overwhelming arcane power. Increases the SPD of all allies (excluding self) by 190% of the Arcane Elemental's base AP recovery until the end of their turn, and creates an [Undefined Space] zone at the target location for 3 rounds. Allies within the [Uncertain Space] zone recover a portion of AP spent on movement. Enemies within the zone are periodically pulled toward its center.",
     },
     certainFortune: {
       name: 'Certain Fortune',
@@ -178,7 +177,7 @@ const rawGrideldaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'On hit, grants all allies a [Banish Misfortune] shield for 1 round (does not stack), and restores HP to allies within [Undefined Space] equal to 38% of the Arcane Elemental\'s Max HP. The lower the target\'s current HP, the more HP is restored—up to an additional 40%.',
+        "On hit, grants all allies a [Banish Misfortune] shield for 1 round (does not stack), and restores HP to allies within [Undefined Space] equal to 38% of the Arcane Elemental's Max HP. The lower the target's current HP, the more HP is restored—up to an additional 40%.",
     },
     quantumSingularity: {
       name: 'Quantum Singularity',
@@ -191,7 +190,7 @@ const rawGrideldaData = {
         value: '190%',
       },
       description:
-        'Can be activated by consuming 3 stacks of [Pure Energy]. Unleashes overwhelming arcane force to collapse space. After use, reduces the caster\'s AP Recovery by 20 for 1R. Deals Immaterial DMG equal to Magic ATK × 190% and Additional Crush DMG equal to 190% of Magic ATK to enemies within a 6m radius at the target location. This Additional Crush DMG increases based on the target\'s missing HP, up to 10×. While using this skill, ACC is temporarily increased by 300%.',
+        "Can be activated by consuming 3 stacks of [Pure Energy]. Unleashes overwhelming arcane force to collapse space. After use, reduces the caster's AP Recovery by 20 for 1R. Deals Immaterial DMG equal to Magic ATK × 190% and Additional Crush DMG equal to 190% of Magic ATK to enemies within a 6m radius at the target location. This Additional Crush DMG increases based on the target's missing HP, up to 10×. While using this skill, ACC is temporarily increased by 300%.",
     },
     reversalOfCausality: {
       name: 'Reversal of Causality',
@@ -200,7 +199,7 @@ const rawGrideldaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'If an ally with the [Arcane Purge] effect attacks and at least one target is struck with a Weak Point hit, their Melee and Ranged ATK increase by 190% of the Queen of Arcane Elemental\'s Magic ATK for the rest of that turn. At the end of that turn, the [Arcane Purge] effect is removed.',
+        "If an ally with the [Arcane Purge] effect attacks and at least one target is struck with a Weak Point hit, their Melee and Ranged ATK increase by 190% of the Queen of Arcane Elemental's Magic ATK for the rest of that turn. At the end of that turn, the [Arcane Purge] effect is removed.",
     },
   },
 };
@@ -221,8 +220,10 @@ const rawHighlightPatterns = {
   buffsDebuffs:
     /\b(?:Limitless\s+Willpower|Entangled\s+Threads|Dual\s+Entanglement|Elemental\s+of\s+Magic|Arcane\s+Purge|Pure\s+Energy|Undefined\s+Space|Uncertain\s+Space|Banish\s+Misfortune|Purification|The\s+River\s+of\s+Stars|The\s+Rendezvous|shield|massive\s+explosion|space\s+manipulation|periodically\s+pulled)\b/gi,
   percentages: /\b(\d{1,3}%)(?:\s*×\s*\d+)?/g,
-  statChanges: /\b(?:reduces?|increases?|decreases?|grants?|recovers?|restores?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+×?)\b/gi,
-  keywords: /\b(?:temporarily|overwhelming|arcane\s+power|elemental|spiritual\s+being|grand\s+elementals|Noctis\s+Nebula|Abominations|introspective|contemplating|chosen\s+human|weak\s+point\s+hit|missing\s+HP|combat\s+skill|basic\s+attack|formation\s+cost)\b/gi,
+  statChanges:
+    /\b(?:reduces?|increases?|decreases?|grants?|recovers?|restores?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+×?)\b/gi,
+  keywords:
+    /\b(?:temporarily|overwhelming|arcane\s+power|elemental|spiritual\s+being|grand\s+elementals|Noctis\s+Nebula|Abominations|introspective|contemplating|chosen\s+human|weak\s+point\s+hit|missing\s+HP|combat\s+skill|basic\s+attack|formation\s+cost)\b/gi,
   attributes:
     /\b(?:AP|Magic\s+ATK|Melee\s+ATK|Ranged\s+ATK|Immaterial|Crush|Physical|Slash|Pierce|Heat|Cold|Electric|Poison|SPD|ACC|Max\s+HP|HP|Intelligence|Agility|Vitality|AP\s+Recovery|Crush\s+Boost)\b/gi,
 };

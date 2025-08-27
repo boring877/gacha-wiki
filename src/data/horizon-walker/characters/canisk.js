@@ -176,7 +176,8 @@ const rawHighlightPatterns = {
     /\b(?:The\s+Rabid\s+Dog|Mad\s+Dog|Grrik's\s+Sincerity|Counterattack\s+Posture|Taunt|brotherhood|rabid\s+dog|counterattack|missing\s+HP|HP\s+Recovery|Aggro\s+Adjustment)\b/gi,
   percentages: /\b(\d{1,3}%)\b/g,
   statChanges: /\b(?:reduces?|increases?|decreases?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
-  keywords: /\b(?:incapacitated|vengeance|aggressively|proportionally|temporarily|defeated|commanded|chosen\s+humans|Kingdom\s+of\s+Fangs|Grrik\s+code\s+of\s+honor|brotherhood|mercenary)\b/gi,
+  keywords:
+    /\b(?:incapacitated|vengeance|aggressively|proportionally|temporarily|defeated|commanded|chosen\s+humans|Kingdom\s+of\s+Fangs|Grrik\s+code\s+of\s+honor|brotherhood|mercenary)\b/gi,
   attributes:
     /\b(?:AP|Melee\s+ATK|Magic\s+ATK|Slash|Pierce|Crush|Physical|Heat|Cold|Electric|Immaterial|Poison|SPD|CRIT\s+rate|Accuracy|HP|Max\s+HP|all\s+ATK|DEF|Boost)\b/gi,
 };

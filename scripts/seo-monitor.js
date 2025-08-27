@@ -21,8 +21,8 @@ class SEOMonitor {
       if (existsSync(this.historyFile)) {
         return JSON.parse(readFileSync(this.historyFile, 'utf8'));
       }
-    } catch (error) {
-      console.warn('Could not load SEO history:', error.message);
+    } catch (_error) {
+      console.warn('Could not load SEO history:', _error.message);
     }
     return { entries: [] };
   }
@@ -33,8 +33,8 @@ class SEOMonitor {
   saveHistory() {
     try {
       writeFileSync(this.historyFile, JSON.stringify(this.history, null, 2));
-    } catch (error) {
-      console.error('Could not save SEO history:', error.message);
+    } catch (_error) {
+      console.error('Could not save SEO history:', _error.message);
     }
   }
 
@@ -114,8 +114,8 @@ class SEOMonitor {
       const { default: QuickSEOScore } = await import('./seo-score.js');
       const scorer = new QuickSEOScore();
       return scorer.calculateScore();
-    } catch (error) {
-      console.error('Could not get current SEO score:', error.message);
+    } catch (_error) {
+      console.error('Could not get current SEO score:', _error.message);
       return null;
     }
   }

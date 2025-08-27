@@ -158,7 +158,7 @@ function initializeComparisonV2() {
     updateSelectedCount();
 
     // Zone Nova Comparison V2: Initialized successfully
-  } catch (error) {
+  } catch (_error) {
     // Failed to initialize comparison V2
     // Show user-friendly error message
     showErrorMessage('Failed to load character comparison. Please refresh the page.');
@@ -497,7 +497,7 @@ function applyFilters() {
     });
 
     updateIconStates();
-  } catch (error) {
+  } catch (_error) {
     // Error applying filters
   }
 }
@@ -525,7 +525,7 @@ function resetFilters() {
       filteredCharacters = [...window.ZN_COMPARISON_V2_DATA.characters];
       updateIconStates();
     }
-  } catch (error) {
+  } catch (_error) {
     // Error resetting filters
   }
 }
@@ -957,7 +957,7 @@ async function loadCharacterData(characterSlug) {
 
     // Re-render the comparison cards to show loaded data
     renderComparisonCards();
-  } catch (error) {
+  } catch (_error) {
     // Could not load detailed data for character
     // Set empty data to stop loading state
     characterDataMap.set(characterSlug, {});

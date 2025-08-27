@@ -438,7 +438,7 @@ import {
           // Could not save sort state to sessionStorage
         }
       }
-      let sortState = { column: null, asc: false };
+      const sortState = { column: null, asc: false };
       sortButtons.forEach(btn => {
         btn.addEventListener('click', () => {
           const col = btn.dataset.sort;

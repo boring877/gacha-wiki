@@ -63,12 +63,36 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Physical',
     faction: 'Independent',
     role: 'Tank',
-    tags: ['Warrior', 'Tank', 'Melee Damage', 'Slash Damage', 'Physical Damage', 'Counterattack', 'Taunt', 'Self-Healing', 'Berserker', 'High Defense', 'Area Damage'],
-    stats: { 
-      meleeAtk: 298, rangedAtk: 122, magicAtk: 76, maxHp: 972,
-      spd: 92, startingAp: 128, apRecovery: 102, accuracy: 102,
-      evade: 115, critRate: 10, critDmg: 156,
-      strength: 17, technic: 7, intelligence: 6, vitality: 16, agility: 9
+    tags: [
+      'Warrior',
+      'Tank',
+      'Melee Damage',
+      'Slash Damage',
+      'Physical Damage',
+      'Counterattack',
+      'Taunt',
+      'Self-Healing',
+      'Berserker',
+      'High Defense',
+      'Area Damage',
+    ],
+    stats: {
+      meleeAtk: 298,
+      rangedAtk: 122,
+      magicAtk: 76,
+      maxHp: 972,
+      spd: 92,
+      startingAp: 128,
+      apRecovery: 102,
+      accuracy: 102,
+      evade: 115,
+      critRate: 10,
+      critDmg: 156,
+      strength: 17,
+      technic: 7,
+      intelligence: 6,
+      vitality: 16,
+      agility: 9,
     },
     image: '/images/games/horizon-walker/characters/Canisk.jpg',
     slug: 'canisk',
@@ -83,12 +107,42 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Physical',
     faction: 'Government',
     role: 'Support',
-    tags: ['Warrior', 'Support', 'Team Buffer', 'Melee Damage', 'Slash Damage', 'Physical Damage', 'Area Damage', 'Block', 'Counterattack', 'Tactical Commander', 'Formation Breaker', 'Half-swording', 'Knockback', 'Morale Boost', 'Speed Enhancement', 'Attack Boost', 'Mercenary Commander'],
-    stats: { 
-      meleeAtk: 192, rangedAtk: 140, magicAtk: 128, maxHp: 832,
-      spd: 92, startingAp: 135, apRecovery: 113, accuracy: 102,
-      evade: 161, critRate: 10, critDmg: 150,
-      strength: 14, technic: 10, intelligence: 9, vitality: 13, agility: 12
+    tags: [
+      'Warrior',
+      'Support',
+      'Team Buffer',
+      'Melee Damage',
+      'Slash Damage',
+      'Physical Damage',
+      'Area Damage',
+      'Block',
+      'Counterattack',
+      'Tactical Commander',
+      'Formation Breaker',
+      'Half-swording',
+      'Knockback',
+      'Morale Boost',
+      'Speed Enhancement',
+      'Attack Boost',
+      'Mercenary Commander',
+    ],
+    stats: {
+      meleeAtk: 192,
+      rangedAtk: 140,
+      magicAtk: 128,
+      maxHp: 832,
+      spd: 92,
+      startingAp: 135,
+      apRecovery: 113,
+      accuracy: 102,
+      evade: 161,
+      critRate: 10,
+      critDmg: 150,
+      strength: 14,
+      technic: 10,
+      intelligence: 9,
+      vitality: 13,
+      agility: 12,
     },
     image: '/images/games/horizon-walker/characters/Erneste.jpg',
     slug: 'erneste',
@@ -103,12 +157,34 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Magic',
     faction: 'Independent',
     role: 'Mage',
-    tags: ['Mage', 'Magic User', 'Area Damage', 'Support', 'Teleportation', 'Crowd Control', 'Team Buffer', 'Heat Damage', 'Immaterial Damage'],
-    stats: { 
-      meleeAtk: 64, rangedAtk: 89, magicAtk: 496, maxHp: 832,
-      spd: 83, startingAp: 117, apRecovery: 112, accuracy: 102,
-      evade: 171, critRate: 10, critDmg: 150,
-      strength: 5, technic: 7, intelligence: 30, vitality: 13, agility: 13
+    tags: [
+      'Mage',
+      'Magic User',
+      'Area Damage',
+      'Support',
+      'Teleportation',
+      'Crowd Control',
+      'Team Buffer',
+      'Heat Damage',
+      'Immaterial Damage',
+    ],
+    stats: {
+      meleeAtk: 64,
+      rangedAtk: 89,
+      magicAtk: 496,
+      maxHp: 832,
+      spd: 83,
+      startingAp: 117,
+      apRecovery: 112,
+      accuracy: 102,
+      evade: 171,
+      critRate: 10,
+      critDmg: 150,
+      strength: 5,
+      technic: 7,
+      intelligence: 30,
+      vitality: 13,
+      agility: 13,
     },
     image: '/images/games/horizon-walker/characters/Everette.jpg',
     slug: 'everette',
@@ -123,12 +199,37 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Magic',
     faction: 'Independent',
     role: 'Mage',
-    tags: ['Mage', 'Magic User', 'Area Damage', 'Support', 'Team Buffer', 'Arcane Magic', 'Immaterial Damage', 'Space Manipulation', 'High Evasion', 'AP Support', 'Healing', 'Elemental'],
-    stats: { 
-      meleeAtk: 76, rangedAtk: 89, magicAtk: 464, maxHp: 576,
-      spd: 83, startingAp: 134, apRecovery: 142, accuracy: 102,
-      evade: 320, critRate: 10, critDmg: 150,
-      strength: 6, technic: 7, intelligence: 27, vitality: 9, agility: 24
+    tags: [
+      'Mage',
+      'Magic User',
+      'Area Damage',
+      'Support',
+      'Team Buffer',
+      'Arcane Magic',
+      'Immaterial Damage',
+      'Space Manipulation',
+      'High Evasion',
+      'AP Support',
+      'Healing',
+      'Elemental',
+    ],
+    stats: {
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 464,
+      maxHp: 576,
+      spd: 83,
+      startingAp: 134,
+      apRecovery: 142,
+      accuracy: 102,
+      evade: 320,
+      critRate: 10,
+      critDmg: 150,
+      strength: 6,
+      technic: 7,
+      intelligence: 27,
+      vitality: 9,
+      agility: 24,
     },
     image: '/images/games/horizon-walker/characters/Gridelda.jpg',
     slug: 'gridelda',
@@ -143,12 +244,34 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Physical',
     faction: 'Independent',
     role: 'Assassin',
-    tags: ['Assassin', 'Melee Damage', 'High Mobility', 'Evasion Tank', 'Slash Damage', 'Counterattack', 'Lifesteal', 'Movement Scaling', 'Self-Sustain'],
-    stats: { 
-      meleeAtk: 179, rangedAtk: 102, magicAtk: 64, maxHp: 640,
-      spd: 157, startingAp: 124, apRecovery: 127, accuracy: 102,
-      evade: 228, critRate: 10, critDmg: 150,
-      strength: 14, technic: 8, intelligence: 5, vitality: 10, agility: 17
+    tags: [
+      'Assassin',
+      'Melee Damage',
+      'High Mobility',
+      'Evasion Tank',
+      'Slash Damage',
+      'Counterattack',
+      'Lifesteal',
+      'Movement Scaling',
+      'Self-Sustain',
+    ],
+    stats: {
+      meleeAtk: 179,
+      rangedAtk: 102,
+      magicAtk: 64,
+      maxHp: 640,
+      spd: 157,
+      startingAp: 124,
+      apRecovery: 127,
+      accuracy: 102,
+      evade: 228,
+      critRate: 10,
+      critDmg: 150,
+      strength: 14,
+      technic: 8,
+      intelligence: 5,
+      vitality: 10,
+      agility: 17,
     },
     image: '/images/games/horizon-walker/characters/Kalina.jpg',
     slug: 'kalina',
@@ -163,12 +286,37 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Physical',
     faction: 'Government',
     role: 'Tank',
-    tags: ['Warrior', 'Tank', 'Melee Damage', 'Slash Damage', 'Physical Damage', 'Counterattack', 'Team Buffer', 'Self-Healing', 'High Defense', 'Lifesteal', 'Taunt', 'HP Scaling'],
-    stats: { 
-      meleeAtk: 226, rangedAtk: 93, magicAtk: 76, maxHp: 1024,
-      spd: 92, startingAp: 132, apRecovery: 106, accuracy: 102,
-      evade: 115, critRate: 10, critDmg: 150,
-      strength: 17, technic: 7, intelligence: 6, vitality: 16, agility: 9
+    tags: [
+      'Warrior',
+      'Tank',
+      'Melee Damage',
+      'Slash Damage',
+      'Physical Damage',
+      'Counterattack',
+      'Team Buffer',
+      'Self-Healing',
+      'High Defense',
+      'Lifesteal',
+      'Taunt',
+      'HP Scaling',
+    ],
+    stats: {
+      meleeAtk: 226,
+      rangedAtk: 93,
+      magicAtk: 76,
+      maxHp: 1024,
+      spd: 92,
+      startingAp: 132,
+      apRecovery: 106,
+      accuracy: 102,
+      evade: 115,
+      critRate: 10,
+      critDmg: 150,
+      strength: 17,
+      technic: 7,
+      intelligence: 6,
+      vitality: 16,
+      agility: 9,
     },
     image: '/images/games/horizon-walker/characters/Kilon.jpg',
     slug: 'kilon',
@@ -183,12 +331,31 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Magic',
     faction: 'Horizon Academy',
     role: 'Support',
-    tags: ['Support', 'Magic User', 'Debuffer', 'Shield Provider', 'AP Manipulation', 'Immaterial Damage'],
-    stats: { 
-      meleeAtk: 180, rangedAtk: 220, magicAtk: 380, maxHp: 1800,
-      spd: 95, startingAp: 2, apRecovery: 12, accuracy: 80,
-      evade: 15, critRate: 18, critDmg: 150,
-      strength: 5, technic: 6, intelligence: 23, vitality: 15, agility: 7
+    tags: [
+      'Support',
+      'Magic User',
+      'Debuffer',
+      'Shield Provider',
+      'AP Manipulation',
+      'Immaterial Damage',
+    ],
+    stats: {
+      meleeAtk: 180,
+      rangedAtk: 220,
+      magicAtk: 380,
+      maxHp: 1800,
+      spd: 95,
+      startingAp: 2,
+      apRecovery: 12,
+      accuracy: 80,
+      evade: 15,
+      critRate: 18,
+      critDmg: 150,
+      strength: 5,
+      technic: 6,
+      intelligence: 23,
+      vitality: 15,
+      agility: 7,
     },
     image: '/images/games/horizon-walker/characters/Min_Eun_sol.jpg',
     slug: 'min-eun-sol',
@@ -203,12 +370,37 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Physical',
     faction: 'Independent',
     role: 'Tank',
-    tags: ['Warrior', 'Tank', 'Melee Damage', 'Slash Damage', 'Physical Damage', 'Counterattack', 'Taunt', 'Self-Healing', 'Damage Reflection', 'High Aggro', 'Chain Weapon', 'HP Scaling'],
-    stats: { 
-      meleeAtk: 268, rangedAtk: 107, magicAtk: 79, maxHp: 960,
-      spd: 92, startingAp: 118, apRecovery: 102, accuracy: 102,
-      evade: 112, critRate: 10, critDmg: 150,
-      strength: 20, technic: 8, intelligence: 6, vitality: 14, agility: 9
+    tags: [
+      'Warrior',
+      'Tank',
+      'Melee Damage',
+      'Slash Damage',
+      'Physical Damage',
+      'Counterattack',
+      'Taunt',
+      'Self-Healing',
+      'Damage Reflection',
+      'High Aggro',
+      'Chain Weapon',
+      'HP Scaling',
+    ],
+    stats: {
+      meleeAtk: 268,
+      rangedAtk: 107,
+      magicAtk: 79,
+      maxHp: 960,
+      spd: 92,
+      startingAp: 118,
+      apRecovery: 102,
+      accuracy: 102,
+      evade: 112,
+      critRate: 10,
+      critDmg: 150,
+      strength: 20,
+      technic: 8,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
     },
     image: '/images/games/horizon-walker/characters/Osla.jpg',
     slug: 'osla',
@@ -223,12 +415,35 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Physical',
     faction: 'Independent',
     role: 'Warrior',
-    tags: ['Warrior', 'Melee Damage', 'Slash Damage', 'High ATK', 'Counterattack', 'Physical Damage', 'Front-line Fighter', 'Block', 'No Crit', 'AP Generation'],
-    stats: { 
-      meleeAtk: 312, rangedAtk: 217, magicAtk: 143, maxHp: 1240,
-      spd: 115, startingAp: 123, apRecovery: 120, accuracy: 102,
-      evade: 204, critRate: 10, critDmg: 150,
-      strength: 18, technic: 11, intelligence: 10, vitality: 17, agility: 14
+    tags: [
+      'Warrior',
+      'Melee Damage',
+      'Slash Damage',
+      'High ATK',
+      'Counterattack',
+      'Physical Damage',
+      'Front-line Fighter',
+      'Block',
+      'No Crit',
+      'AP Generation',
+    ],
+    stats: {
+      meleeAtk: 312,
+      rangedAtk: 217,
+      magicAtk: 143,
+      maxHp: 1240,
+      spd: 115,
+      startingAp: 123,
+      apRecovery: 120,
+      accuracy: 102,
+      evade: 204,
+      critRate: 10,
+      critDmg: 150,
+      strength: 18,
+      technic: 11,
+      intelligence: 10,
+      vitality: 17,
+      agility: 14,
     },
     image: '/images/games/horizon-walker/characters/Olivia.jpg',
     slug: 'olivia',
@@ -243,12 +458,42 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Physical',
     faction: 'Independent',
     role: 'Tank',
-    tags: ['Tank', 'Warrior', 'Guardian', 'Shield User', 'Melee Damage', 'Slash Damage', 'Area Damage', 'Crowd Control', 'High Defense', 'Dimension Guardian', 'Metallic Lifeform', 'Shield Deployment', 'Gravity Control', 'Stun', 'Slow', 'Knockback Resistance', 'AP Recovery'],
-    stats: { 
-      meleeAtk: 195, rangedAtk: 130, magicAtk: 130, maxHp: 1893,
-      spd: 92, startingAp: 128, apRecovery: 112, accuracy: 102,
-      evade: 166, critRate: 10, critDmg: 150,
-      strength: 14, technic: 9, intelligence: 9, vitality: 28, agility: 13
+    tags: [
+      'Tank',
+      'Warrior',
+      'Guardian',
+      'Shield User',
+      'Melee Damage',
+      'Slash Damage',
+      'Area Damage',
+      'Crowd Control',
+      'High Defense',
+      'Dimension Guardian',
+      'Metallic Lifeform',
+      'Shield Deployment',
+      'Gravity Control',
+      'Stun',
+      'Slow',
+      'Knockback Resistance',
+      'AP Recovery',
+    ],
+    stats: {
+      meleeAtk: 195,
+      rangedAtk: 130,
+      magicAtk: 130,
+      maxHp: 1893,
+      spd: 92,
+      startingAp: 128,
+      apRecovery: 112,
+      accuracy: 102,
+      evade: 166,
+      critRate: 10,
+      critDmg: 150,
+      strength: 14,
+      technic: 9,
+      intelligence: 9,
+      vitality: 28,
+      agility: 13,
     },
     image: '/images/games/horizon-walker/characters/Platina.jpg',
     slug: 'platina',
@@ -263,12 +508,36 @@ export const HORIZON_WALKER_CHARACTERS = [
     element: 'Physical',
     faction: 'Government',
     role: 'Assassin',
-    tags: ['Assassin', 'Ranged Damage', 'Pierce Damage', 'Stealth', 'Accuracy Support', 'Critical Damage', 'Weakness Hunter', 'Team Buffer', 'Elite Agent', 'Dual Pistols', 'Unblockable Attack'],
-    stats: { 
-      meleeAtk: 89, rangedAtk: 204, magicAtk: 115, maxHp: 790,
-      spd: 88, startingAp: 123, apRecovery: 110, accuracy: 105,
-      evade: 102, critRate: 10, critDmg: 150,
-      strength: 7, technic: 16, intelligence: 9, vitality: 13, agility: 8
+    tags: [
+      'Assassin',
+      'Ranged Damage',
+      'Pierce Damage',
+      'Stealth',
+      'Accuracy Support',
+      'Critical Damage',
+      'Weakness Hunter',
+      'Team Buffer',
+      'Elite Agent',
+      'Dual Pistols',
+      'Unblockable Attack',
+    ],
+    stats: {
+      meleeAtk: 89,
+      rangedAtk: 204,
+      magicAtk: 115,
+      maxHp: 790,
+      spd: 88,
+      startingAp: 123,
+      apRecovery: 110,
+      accuracy: 105,
+      evade: 102,
+      critRate: 10,
+      critDmg: 150,
+      strength: 7,
+      technic: 16,
+      intelligence: 9,
+      vitality: 13,
+      agility: 8,
     },
     image: '/images/games/horizon-walker/characters/Yeon_Chae-Young.jpg',
     slug: 'yeon-chae-young',
@@ -276,28 +545,28 @@ export const HORIZON_WALKER_CHARACTERS = [
   },
 ];
 
-
 // Utility functions
-export const getCharacterBySlug = (slug) => {
+export const getCharacterBySlug = slug => {
   return HORIZON_WALKER_CHARACTERS.find(character => character.slug === slug);
 };
 
-export const getCharactersByRarity = (rarity) => {
+export const getCharactersByRarity = rarity => {
   return HORIZON_WALKER_CHARACTERS.filter(character => character.rarity === rarity);
 };
 
-export const getCharactersByTag = (tag) => {
-  return HORIZON_WALKER_CHARACTERS.filter(character => 
+export const getCharactersByTag = tag => {
+  return HORIZON_WALKER_CHARACTERS.filter(character =>
     character.tags.some(t => t.toLowerCase().includes(tag.toLowerCase()))
   );
 };
 
 // Search function
-export const searchCharacters = (query) => {
+export const searchCharacters = query => {
   const lowercaseQuery = query.toLowerCase();
-  return HORIZON_WALKER_CHARACTERS.filter(character =>
-    character.name.toLowerCase().includes(lowercaseQuery) ||
-    character.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
+  return HORIZON_WALKER_CHARACTERS.filter(
+    character =>
+      character.name.toLowerCase().includes(lowercaseQuery) ||
+      character.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
   );
 };
 
@@ -305,7 +574,7 @@ export const searchCharacters = (query) => {
 export const sortCharacters = (characters, sortBy, order = 'asc') => {
   return [...characters].sort((a, b) => {
     let aValue, bValue;
-    
+
     if (sortBy.startsWith('stats.')) {
       const statKey = sortBy.split('.')[1];
       aValue = a.stats[statKey];
@@ -314,27 +583,25 @@ export const sortCharacters = (characters, sortBy, order = 'asc') => {
       aValue = a[sortBy];
       bValue = b[sortBy];
     }
-    
+
     if (typeof aValue === 'string') {
-      return order === 'asc' 
-        ? aValue.localeCompare(bValue)
-        : bValue.localeCompare(aValue);
+      return order === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
     }
-    
+
     return order === 'asc' ? aValue - bValue : bValue - aValue;
   });
 };
 
 // Get stat display name
-export const getStatDisplayName = (statKey) => {
+export const getStatDisplayName = statKey => {
   const stat = gameInfo.statNames.find(s => s.key === statKey);
   return stat ? stat.name : statKey;
 };
 
 // Advanced tag categorization for styling (similar to Zone Nova system)
-export const getTagCategory = (tag) => {
+export const getTagCategory = tag => {
   const lowerTag = tag.toLowerCase();
-  
+
   // Damage/Scaling tags - Orange
   if (
     lowerTag.includes('damage') ||

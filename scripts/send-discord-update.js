@@ -120,8 +120,8 @@ async function sendUpdateFromFile(filePath, webhookUrl) {
       console.log(`❌ Failed to send notification for: ${updateData.title}`);
       return false;
     }
-  } catch (error) {
-    console.error(`❌ Error processing ${filePath}:`, error.message);
+  } catch (_error) {
+    console.error(`❌ Error processing ${filePath}:`, _error.message);
     return false;
   }
 }
@@ -138,8 +138,8 @@ function getAllUpdateFiles() {
       .map(file => join('src/data/zone-nova/updates', file));
 
     return files;
-  } catch (error) {
-    console.error('❌ Error reading updates directory:', error.message);
+  } catch (_error) {
+    console.error('❌ Error reading updates directory:', _error.message);
     return [];
   }
 }
@@ -183,8 +183,8 @@ async function sendTestNotification(webhookUrl) {
       console.log('❌ Failed to send test notification');
       return false;
     }
-  } catch (error) {
-    console.error('❌ Error sending test notification:', error.message);
+  } catch (_error) {
+    console.error('❌ Error sending test notification:', _error.message);
     return false;
   }
 }

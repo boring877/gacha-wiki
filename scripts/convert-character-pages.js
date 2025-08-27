@@ -99,8 +99,8 @@ const convertCharacterFile = filename => {
     // Write the new content
     fs.writeFileSync(filePath, newContent, 'utf8');
     console.log(`✅ Converted: ${filename}`);
-  } catch (error) {
-    console.log(`❌ Error converting ${filename}:`, error.message);
+  } catch (_error) {
+    console.log(`❌ Error converting ${filename}:`, _error.message);
   }
 };
 

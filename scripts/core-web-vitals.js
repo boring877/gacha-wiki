@@ -187,8 +187,8 @@ window.webVitals = vitalsTracker;
           : null,
         performance: Math.round((data.lighthouseResult.categories.performance?.score || 0) * 100),
       };
-    } catch (error) {
-      console.error('❌ PageSpeed analysis failed:', error.message);
+    } catch (_error) {
+      console.error('❌ PageSpeed analysis failed:', _error.message);
       return await this.analyzeLighthouseVitals(url);
     }
   }
@@ -224,8 +224,8 @@ window.webVitals = vitalsTracker;
         field: null,
         performance: Math.round((results.categories.performance?.score || 0) * 100),
       };
-    } catch (error) {
-      console.error('❌ Lighthouse analysis failed:', error.message);
+    } catch (_error) {
+      console.error('❌ Lighthouse analysis failed:', _error.message);
       return null;
     }
   }

@@ -69,8 +69,8 @@ class QuickSEOScore {
           if (content.includes('application/ld+json') || content.includes('schema.org')) {
             pagesWithStructuredData++;
           }
-        } catch (error) {
-          console.warn(`Could not analyze ${file}: ${error.message}`);
+        } catch (_error) {
+          console.warn(`Could not analyze ${file}: ${_error.message}`);
         }
       }
 
@@ -85,8 +85,8 @@ class QuickSEOScore {
         h1Coverage: totalPages > 0 ? (pagesWithH1 / totalPages) * 100 : 0,
         structuredDataCoverage: totalPages > 0 ? (pagesWithStructuredData / totalPages) * 100 : 0,
       };
-    } catch (error) {
-      console.error('Error analyzing Astro pages:', error.message);
+    } catch (_error) {
+      console.error('Error analyzing Astro pages:', _error.message);
       return null;
     }
   }
@@ -102,8 +102,8 @@ class QuickSEOScore {
       try {
         const matches = glob.sync(pattern);
         files = files.concat(matches);
-      } catch (error) {
-        console.warn(`Pattern ${pattern} failed:`, error.message);
+      } catch (_error) {
+        console.warn(`Pattern ${pattern} failed:`, _error.message);
       }
     }
 
@@ -141,7 +141,7 @@ class QuickSEOScore {
         vercelAnalytics: '@vercel/speed-insights' in deps,
         astroRSS: '@astrojs/rss' in deps,
       };
-    } catch (error) {
+    } catch (_error) {
       return {};
     }
   }

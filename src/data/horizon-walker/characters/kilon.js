@@ -204,8 +204,10 @@ const rawHighlightPatterns = {
   buffsDebuffs:
     /\b(?:Alpha\s+Dog|Grrik\s+Chivalry|Iron\s+Wall|Unbreakable\s+Wrath|Wastelands'\s+Enforcer|Composure|Fortitude|Unyielding\s+Bulwark|Counterattack\s+Posture|Taunt|brotherhood|counterattack|lifesteal|HP\s+Recovery|Aggro\s+Adjustment|follow-up\s+attack)\b/gi,
   percentages: /\b(\d{1,3}%)(?:\s*of\s+(?:Max\s+)?HP)?/g,
-  statChanges: /\b(?:reduces?|increases?|decreases?|gains?|grants?|restores?|consumes?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+)\b/gi,
-  keywords: /\b(?:exile|ruler|Grrik\s+Federation|Rift\s+Crisis|Great\s+Wilderness|Karr\s+Menka|proportionally|missing\s+HP|stacking|marginalized|brotherhood|genuine\s+loyalty|borderland|commitment|safeguarding|Whale's\s+Month)\b/gi,
+  statChanges:
+    /\b(?:reduces?|increases?|decreases?|gains?|grants?|restores?|consumes?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+)\b/gi,
+  keywords:
+    /\b(?:exile|ruler|Grrik\s+Federation|Rift\s+Crisis|Great\s+Wilderness|Karr\s+Menka|proportionally|missing\s+HP|stacking|marginalized|brotherhood|genuine\s+loyalty|borderland|commitment|safeguarding|Whale's\s+Month)\b/gi,
   attributes:
     /\b(?:AP|Melee\s+ATK|Magic\s+ATK|Slash|Pierce|Crush|Physical|Heat|Cold|Electric|Immaterial|Poison|Max\s+HP|HP|All\s+DEF|DEF|CRIT\s+rate|Accuracy|Lifesteal|cooldown)\b/gi,
 };

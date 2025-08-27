@@ -35,8 +35,8 @@ characterFiles.forEach(filename => {
     } else {
       console.log(`⏭️  Skipped: ${filename} (import not found or already updated)`);
     }
-  } catch (error) {
-    console.log(`❌ Error updating ${filename}:`, error.message);
+  } catch (_error) {
+    console.log(`❌ Error updating ${filename}:`, _error.message);
   }
 });
 

@@ -25,8 +25,8 @@ class SilverBloodRankingsManager {
     try {
       this.cacheElements();
       this.setupEventListeners();
-    } catch (error) {
-      console.error('Failed to initialize rankings manager:', error);
+    } catch (_error) {
+      console.error('Error:', _error);
     }
   }
 
@@ -86,8 +86,8 @@ class SilverBloodRankingsManager {
         filter.addEventListener('change', () => {
           try {
             this.filterCharacters();
-          } catch (error) {
-            console.error('Filter error:', error);
+          } catch (_error) {
+            console.error('Error:', _error);
           }
         });
       }
@@ -99,8 +99,8 @@ class SilverBloodRankingsManager {
         try {
           const col = btn.dataset.sort;
           this.handleSort(col, btn);
-        } catch (error) {
-          console.error('Sort error:', error);
+        } catch (_error) {
+          console.error('Error:', _error);
         }
       });
     });
@@ -110,8 +110,8 @@ class SilverBloodRankingsManager {
       this.elements.resetBtn.addEventListener('click', () => {
         try {
           this.resetFilters();
-        } catch (error) {
-          console.error('Reset error:', error);
+        } catch (_error) {
+          console.error('Error:', _error);
         }
       });
     }
@@ -122,8 +122,8 @@ class SilverBloodRankingsManager {
       card.addEventListener('click', () => {
         try {
           this.handleCharacterSelection(card);
-        } catch (error) {
-          console.error('Character selection error:', error);
+        } catch (_error) {
+          console.error('Error:', _error);
         }
       });
 
@@ -134,8 +134,8 @@ class SilverBloodRankingsManager {
             e.preventDefault();
             this.handleCharacterSelection(card);
           }
-        } catch (error) {
-          console.error('Keyboard navigation error:', error);
+        } catch (_error) {
+          console.error('Error:', _error);
         }
       });
     });
@@ -486,8 +486,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Store reference globally for debugging if needed
     window.rankingsManager = rankingsManager;
-  } catch (error) {
-    console.error('Failed to initialize Silver Blood rankings:', error);
+  } catch (_error) {
+    console.error('Error:', _error);
 
     // Show user-friendly error message
     const errorContainer = document.getElementById('character-grid');

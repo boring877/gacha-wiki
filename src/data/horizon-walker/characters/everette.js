@@ -92,8 +92,7 @@ const rawEveretteData = {
       eternalQueen: {
         name: 'The Eternal Queen',
         type: 'Everette Signature',
-        description:
-          'AP Recovery increases by 12%.',
+        description: 'AP Recovery increases by 12%.',
         note: 'This signature skill only activates when Everette equips this weapon.',
       },
     },
@@ -245,7 +244,8 @@ const rawHighlightPatterns = {
     /\b(?:Starlight\s+Gaze|Aurora|Delayed\s+Aurora|Time\s+Acceleration|Time\s+Deceleration|Temporal\s+Manipulation|Starlight|Ancient\s+Archmage|World\s+Contract|Highland\s+Elf|Weakness\s+Attack|Aggro\s+Adjustment)\b/gi,
   percentages: /\b(\d{1,3}%)\b/g,
   statChanges: /\b(?:reduces?|increases?|decreases?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
-  keywords: /\b(?:teleports?|casting|grand\s+spell|chosen\s+Human|Eternal\s+Queen|Highland\s+Elves|Sorceress\s+Queen|Kingdom\s+of\s+Platinum\s+Bough)\b/gi,
+  keywords:
+    /\b(?:teleports?|casting|grand\s+spell|chosen\s+Human|Eternal\s+Queen|Highland\s+Elves|Sorceress\s+Queen|Kingdom\s+of\s+Platinum\s+Bough)\b/gi,
   attributes:
     /\b(?:AP|Magic\s+ATK|Heat|Immaterial|Physical|Slash|Pierce|Crush|Cold|Electric|Poison|Evasion|All\s+ATK|DEF|SPD|Intelligence|CRIT\s+rate|ACC|HP)\b/gi,
 };

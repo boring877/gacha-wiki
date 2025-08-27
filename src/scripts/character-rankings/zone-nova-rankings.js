@@ -25,8 +25,8 @@ class ZoneNovaRankingsManager {
     try {
       this.cacheElements();
       this.setupEventListeners();
-    } catch (error) {
-      console.error('Failed to initialize Zone Nova rankings manager:', error);
+    } catch (_error) {
+      console.error('Error:', _error);
     }
   }
 
@@ -87,8 +87,8 @@ class ZoneNovaRankingsManager {
         filter.addEventListener('change', () => {
           try {
             this.filterCharacters();
-          } catch (error) {
-            console.error('Filter error:', error);
+          } catch (_error) {
+            console.error('Error:', _error);
           }
         });
       }
@@ -100,8 +100,8 @@ class ZoneNovaRankingsManager {
         try {
           const col = btn.dataset.sort;
           this.handleSort(col, btn);
-        } catch (error) {
-          console.error('Sort error:', error);
+        } catch (_error) {
+          console.error('Error:', _error);
         }
       });
     });
@@ -111,8 +111,8 @@ class ZoneNovaRankingsManager {
       this.elements.resetBtn.addEventListener('click', () => {
         try {
           this.resetFilters();
-        } catch (error) {
-          console.error('Reset error:', error);
+        } catch (_error) {
+          console.error('Error:', _error);
         }
       });
     }
@@ -123,8 +123,8 @@ class ZoneNovaRankingsManager {
       card.addEventListener('click', () => {
         try {
           this.handleCharacterSelection(card);
-        } catch (error) {
-          console.error('Character selection error:', error);
+        } catch (_error) {
+          console.error('Error:', _error);
         }
       });
 
@@ -135,8 +135,8 @@ class ZoneNovaRankingsManager {
             e.preventDefault();
             this.handleCharacterSelection(card);
           }
-        } catch (error) {
-          console.error('Keyboard navigation error:', error);
+        } catch (_error) {
+          console.error('Error:', _error);
         }
       });
     });
@@ -502,8 +502,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Store reference globally for debugging if needed
     window.rankingsManager = rankingsManager;
-  } catch (error) {
-    console.error('Failed to initialize Zone Nova rankings:', error);
+  } catch (_error) {
+    console.error('Error:', _error);
 
     // Show user-friendly error message
     const errorContainer = document.getElementById('character-grid');

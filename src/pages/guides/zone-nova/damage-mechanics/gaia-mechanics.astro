@@ -232,7 +232,7 @@ export const prerender = true;
     // Calculate HP effects for allies
     let totalIncrease = 0;
     const cap = gaiaBaseHP * 0.15; // 15% of Gaia's BASE HP cap (each skill has separate cap)
-    let calculations = [];
+    const calculations = [];
 
     // Gaia gets ultimate HP boost too (capped at 15% of base HP)
     let gaiaFinalHP = gaiaCurrentHP;

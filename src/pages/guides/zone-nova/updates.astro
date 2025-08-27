@@ -137,7 +137,7 @@ const pagination = paginateUpdates(filteredUpdates, currentPage, 10);
       const resultsInfo = document.querySelector('.results-info');
       const pagination = document.querySelector('.pagination');
 
-      let allUpdates = [...updatesData];
+      const allUpdates = [...updatesData];
       let filteredUpdates = [...allUpdates];
       let currentSearchTerm = '';
       let currentTypeFilter = 'all';

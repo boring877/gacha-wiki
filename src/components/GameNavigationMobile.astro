@@ -13,7 +13,11 @@ const validatedGameKey = isValidGameKey(gameKey) ? gameKey : undefined;
 const game = getGameData(validatedGameKey);
 
 const isActive = (href: string) => {
-  if (href.endsWith('/zone-nova/') || href.endsWith('/silver-and-blood/') || href.endsWith('/horizon-walker/')) {
+  if (
+    href.endsWith('/zone-nova/') ||
+    href.endsWith('/silver-and-blood/') ||
+    href.endsWith('/horizon-walker/')
+  ) {
     return currentPath === href;
   }
   return (

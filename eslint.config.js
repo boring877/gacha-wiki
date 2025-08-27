@@ -35,6 +35,13 @@ export default [
         fetch: 'readonly',
         URL: 'readonly',
         URLSearchParams: 'readonly',
+        requestAnimationFrame: 'readonly',
+        cancelAnimationFrame: 'readonly',
+        performance: 'readonly',
+        Image: 'readonly',
+        IntersectionObserver: 'readonly',
+        ResizeObserver: 'readonly',
+        MutationObserver: 'readonly',
 
         // Node globals
         process: 'readonly',
@@ -93,6 +100,24 @@ export default [
     },
   },
 
+  // Utils directory - allow console for debug logging
+  {
+    files: ['src/utils/**/*.js', 'src/utils/**/*.ts'],
+    rules: {
+      'no-console': 'warn',
+    },
+  },
+
+  // Add browser global for scripts that need location
+  {
+    files: ['scripts/**/*.js'],
+    languageOptions: {
+      globals: {
+        location: 'readonly',
+      },
+    },
+  },
+
   // Astro files - disable undef rule (handled by Astro)
   {
     files: ['*.astro', '**/*.astro'],
@@ -119,6 +144,10 @@ export default [
       'public/**',
       'src/templates/**',
       'src/env.d.ts',
+      '.vercel/**',
+      '.husky/**',
+      'bun.lockb',
+      '**/*.sample',
     ],
   },
 ];

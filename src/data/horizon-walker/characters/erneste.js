@@ -78,7 +78,7 @@ const rawErnesteData = {
 
   // Character Description
   description:
-    'Daughter of the Imperial Mercenary Commander who took over the company at a young age, cursed with compulsive vile speech that led to abandonment by her subordinates before finding redemption through Yeon Chae-young\'s offer to serve the Federation.',
+    "Daughter of the Imperial Mercenary Commander who took over the company at a young age, cursed with compulsive vile speech that led to abandonment by her subordinates before finding redemption through Yeon Chae-young's offer to serve the Federation.",
 
   // Character Profile
   profile: {
@@ -92,7 +92,7 @@ const rawErnesteData = {
 
   // Character Story
   story:
-    'Erneste, born the daughter of the Imperial Mercenary Commander, took over the mercenary company at a young age when her father could no longer lead. Unfortunately, during one of her missions, she was cursed by a sorcerer, compelled to utter vile words regardless of the situation. Not long after, this curse caused a breakdown in her relationship with her subordinates—the mercenaries lost trust in her as Erneste\'s words turned increasingly spiteful. Eventually, she was abandoned by her own men. Fortunately, thanks to the kindness of Maximilia, she managed to escape safely to Earth during the Great Escape. However, her notorious reputation made it hard for anyone to accept her. That was when Yeon Chae-young, who had heard of her talent, approached her, offering a chance to put her skills to use for the Federation. Erneste accepted the offer.',
+    "Erneste, born the daughter of the Imperial Mercenary Commander, took over the mercenary company at a young age when her father could no longer lead. Unfortunately, during one of her missions, she was cursed by a sorcerer, compelled to utter vile words regardless of the situation. Not long after, this curse caused a breakdown in her relationship with her subordinates—the mercenaries lost trust in her as Erneste's words turned increasingly spiteful. Eventually, she was abandoned by her own men. Fortunately, thanks to the kindness of Maximilia, she managed to escape safely to Earth during the Great Escape. However, her notorious reputation made it hard for anyone to accept her. That was when Yeon Chae-young, who had heard of her talent, approached her, offering a chance to put her skills to use for the Federation. Erneste accepted the offer.",
 
   // Unique Traits
   uniqueTraits: {
@@ -168,7 +168,7 @@ const rawErnesteData = {
       apCost: 45,
       cooldown: 3,
       description:
-        'Raises the sword high and declares victory, boosting the morale of allies. Grants the [Declaration of Victory] effect to self and allies within a 5m radius for 2R. [Declaration of Victory]: Increases each target\'s melee ATK by 76% of the caster\'s melee ATK, and increases SPD by 95.',
+        "Raises the sword high and declares victory, boosting the morale of allies. Grants the [Declaration of Victory] effect to self and allies within a 5m radius for 2R. [Declaration of Victory]: Increases each target's melee ATK by 76% of the caster's melee ATK, and increases SPD by 95.",
     },
   },
 };
@@ -189,8 +189,10 @@ const rawHighlightPatterns = {
   buffsDebuffs:
     /\b(?:Snake-tongue|Tactical\s+Commander|Command|Declaration\s+of\s+Victory|block\s+chance|counterattack|morale|half-swording|knockback|fan-shaped\s+area|encouraging\s+word|Great\s+Escape)\b/gi,
   percentages: /\b(\d{1,3}%)(?:\s*of\s+(?:the\s+caster's\s+)?(?:melee\s+ATK|Max\s+HP))?/g,
-  statChanges: /\b(?:reduces?|increases?|decreases?|gains?|grants?|boosts?|knocks?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+(?:\.\d+)?m?)\b/gi,
-  keywords: /\b(?:Imperial\s+Mercenary\s+Commander|mercenary\s+company|sorcerer|cursed|vile\s+words|subordinates|notorious\s+reputation|Maximilia|Federation|Yeon\s+Chae-young|half-swording\s+technique|fan-shaped\s+area|Noctis\s+Nebula|The\s+Empire|Lamivia|Chosen\s+Human)\b/gi,
+  statChanges:
+    /\b(?:reduces?|increases?|decreases?|gains?|grants?|boosts?|knocks?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+(?:\.\d+)?m?)\b/gi,
+  keywords:
+    /\b(?:Imperial\s+Mercenary\s+Commander|mercenary\s+company|sorcerer|cursed|vile\s+words|subordinates|notorious\s+reputation|Maximilia|Federation|Yeon\s+Chae-young|half-swording\s+technique|fan-shaped\s+area|Noctis\s+Nebula|The\s+Empire|Lamivia|Chosen\s+Human)\b/gi,
   attributes:
     /\b(?:AP|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|Slash|Pierce|Crush|Heat|Cold|Electric|Immaterial|Poison|Max\s+HP|HP|SPD|ACC|Evasion|block\s+chance|counterattack)\b/gi,
 };

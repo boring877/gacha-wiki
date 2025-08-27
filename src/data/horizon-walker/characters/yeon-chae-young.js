@@ -86,7 +86,7 @@ const rawYeonChaeYoungData = {
 
   // Character Story
   story:
-    'During her adolescence, Yeon Chae-young lost her parents to an Abomination. That experience led her to deeply question the role of the state, which ultimately had a profound influence on her decision to apply to the Bureau of Rift Management. Passing the administrative examination for Rift management—widely considered one of the highest elite paths in the Federation—Yeon Chae-young qualified as a fifth-grade officer and chose to volunteer for field duty, becoming an active field agent. And then she met him. Within the Rift\'s barrier, sacrificing himself for countless people only to rise again and obliterate the Blood Maker in an instant—she met the chosen human. In that moment, she knew it was destiny.',
+    "During her adolescence, Yeon Chae-young lost her parents to an Abomination. That experience led her to deeply question the role of the state, which ultimately had a profound influence on her decision to apply to the Bureau of Rift Management. Passing the administrative examination for Rift management—widely considered one of the highest elite paths in the Federation—Yeon Chae-young qualified as a fifth-grade officer and chose to volunteer for field duty, becoming an active field agent. And then she met him. Within the Rift's barrier, sacrificing himself for countless people only to rise again and obliterate the Blood Maker in an instant—she met the chosen human. In that moment, she knew it was destiny.",
 
   // Unique Traits
   uniqueTraits: {
@@ -132,7 +132,7 @@ const rawYeonChaeYoungData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'When attacking an enemy\'s weak point, uses optical camouflage to hide. Once per round, has a 38% chance to gain [Conceal: Stealth] upon a weakness attack. The activation chance increases by 1% for every 1% of current lost HP. [Conceal: Stealth]: Becomes hidden and cannot be targeted by enemy skills. SPD decreases by 10%, and ACC increases by 50% for the first attack while hidden.',
+        "When attacking an enemy's weak point, uses optical camouflage to hide. Once per round, has a 38% chance to gain [Conceal: Stealth] upon a weakness attack. The activation chance increases by 1% for every 1% of current lost HP. [Conceal: Stealth]: Becomes hidden and cannot be targeted by enemy skills. SPD decreases by 10%, and ACC increases by 50% for the first attack while hidden.",
     },
     assassination: {
       name: 'Assassination',
@@ -167,7 +167,7 @@ const rawYeonChaeYoungData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Identifies the enemy\'s weak point and guides allies. Increases ACC of all allies by 57%.',
+        "Identifies the enemy's weak point and guides allies. Increases ACC of all allies by 57%.",
     },
   },
 };
@@ -188,8 +188,10 @@ const rawHighlightPatterns = {
   buffsDebuffs:
     /\b(?:Efficient\s+Operation|Bold\s+Move|Conceal:\s+Stealth|First\s+Blood|Efficient\s+Tactics|optical\s+camouflage|weakness\s+attack|point-blank\s+shot|distributed\s+attack|counterattack|unblockable|stealth|hidden)\b/gi,
   percentages: /\b(\d{1,3}%)\b/g,
-  statChanges: /\b(?:reduces?|increases?|decreases?|gains?|grants?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
-  keywords: /\b(?:weak\s+point|behind\s+the\s+enemy|proximity|temporarily|chosen\s+human|Bureau\s+of\s+Rift\s+Management|Abomination|Blood\s+Maker|fifth-grade\s+officer|field\s+agent|dual\s+pistols|submachine\s+gun|Discover\s+agents|optical\s+camouflage|destiny)\b/gi,
+  statChanges:
+    /\b(?:reduces?|increases?|decreases?|gains?|grants?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
+  keywords:
+    /\b(?:weak\s+point|behind\s+the\s+enemy|proximity|temporarily|chosen\s+human|Bureau\s+of\s+Rift\s+Management|Abomination|Blood\s+Maker|fifth-grade\s+officer|field\s+agent|dual\s+pistols|submachine\s+gun|Discover\s+agents|optical\s+camouflage|destiny)\b/gi,
   attributes:
     /\b(?:AP|Ranged\s+ATK|Pierce|Physical|Slash|Crush|Heat|Cold|Electric|Immaterial|Poison|ACC|SPD|CRIT\s+rate|CRIT\s+DMG|HP|Technic|lost\s+HP|current\s+lost\s+HP)\b/gi,
 };

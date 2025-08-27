@@ -39,11 +39,11 @@ const nextUrl = `/guides/horizon-walker/characters/${nextCharacter.slug}`;
     <span class="nav-arrow">←</span>
     <span class="nav-label">Prev</span>
   </a>
-  
+
   <a href="/guides/horizon-walker/characters/" class="mobile-nav-button center">
     <span class="nav-label">All</span>
   </a>
-  
+
   <a href={nextUrl} class="mobile-nav-button next" aria-label={`Next: ${nextCharacter.name}`}>
     <span class="nav-label">Next</span>
     <span class="nav-arrow">→</span>
@@ -60,19 +60,19 @@ const nextUrl = `/guides/horizon-walker/characters/${nextCharacter.slug}`;
     const hwMobileNav = {
       touchStartX: 0,
       touchStartY: 0,
-      
-      handleTouchStart: function(e: TouchEvent) {
+
+      handleTouchStart: function (e: TouchEvent) {
         this.touchStartX = e.touches[0].clientX;
         this.touchStartY = e.touches[0].clientY;
       },
-      
-      handleTouchEnd: function(e: TouchEvent) {
+
+      handleTouchEnd: function (e: TouchEvent) {
         const touchEndX = e.changedTouches[0].clientX;
         const touchEndY = e.changedTouches[0].clientY;
-        
+
         const deltaX = touchEndX - this.touchStartX;
         const deltaY = touchEndY - this.touchStartY;
-        
+
         // Only trigger if horizontal swipe is more significant than vertical
         if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
           if (deltaX > 0 && mobileSwipeLeft) {
@@ -85,7 +85,7 @@ const nextUrl = `/guides/horizon-walker/characters/${nextCharacter.slug}`;
             if (url) window.location.href = url;
           }
         }
-      }
+      },
     };
 
     // Add touch listeners

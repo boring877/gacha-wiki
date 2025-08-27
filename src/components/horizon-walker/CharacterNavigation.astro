@@ -22,53 +22,55 @@ const nextCharacter = HORIZON_WALKER_CHARACTERS[nextIndex];
 const hasNavigation = currentIndex !== -1 && prevCharacter && nextCharacter;
 ---
 
-{hasNavigation && (
-  <>
-    {/* Desktop Character Navigation */}
-    <nav class="hw-character-navigation desktop-only" aria-label="Character navigation">
-      <div class="nav-container">
-        <a 
-          href={`/guides/horizon-walker/characters/${prevCharacter.slug}`}
-          class="nav-button prev-button"
-          aria-label={`Previous character: ${prevCharacter.name}`}
-        >
-          <span class="nav-arrow">←</span>
-          <span class="nav-text">
-            <span class="nav-label">Previous</span>
-            <span class="nav-character">{prevCharacter.name}</span>
-          </span>
-        </a>
+{
+  hasNavigation && (
+    <>
+      {/* Desktop Character Navigation */}
+      <nav class="hw-character-navigation desktop-only" aria-label="Character navigation">
+        <div class="nav-container">
+          <a
+            href={`/guides/horizon-walker/characters/${prevCharacter.slug}`}
+            class="nav-button prev-button"
+            aria-label={`Previous character: ${prevCharacter.name}`}
+          >
+            <span class="nav-arrow">←</span>
+            <span class="nav-text">
+              <span class="nav-label">Previous</span>
+              <span class="nav-character">{prevCharacter.name}</span>
+            </span>
+          </a>
 
-        <a 
-          href="/guides/horizon-walker/characters/"
-          class="nav-button center-button"
-          aria-label="Back to character database"
-        >
-          <span class="nav-text">All Characters</span>
-        </a>
+          <a
+            href="/guides/horizon-walker/characters/"
+            class="nav-button center-button"
+            aria-label="Back to character database"
+          >
+            <span class="nav-text">All Characters</span>
+          </a>
 
-        <a 
-          href={`/guides/horizon-walker/characters/${nextCharacter.slug}`}
-          class="nav-button next-button"
-          aria-label={`Next character: ${nextCharacter.name}`}
-        >
-          <span class="nav-text">
-            <span class="nav-label">Next</span>
-            <span class="nav-character">{nextCharacter.name}</span>
-          </span>
-          <span class="nav-arrow">→</span>
-        </a>
-      </div>
-    </nav>
+          <a
+            href={`/guides/horizon-walker/characters/${nextCharacter.slug}`}
+            class="nav-button next-button"
+            aria-label={`Next character: ${nextCharacter.name}`}
+          >
+            <span class="nav-text">
+              <span class="nav-label">Next</span>
+              <span class="nav-character">{nextCharacter.name}</span>
+            </span>
+            <span class="nav-arrow">→</span>
+          </a>
+        </div>
+      </nav>
 
-    {/* Mobile Character Navigation Component */}
-    <MobileCharacterNavigation 
-      currentCharacterSlug={currentCharacterSlug}
-      prevCharacter={prevCharacter}
-      nextCharacter={nextCharacter}
-    />
-  </>
-)}
+      {/* Mobile Character Navigation Component */}
+      <MobileCharacterNavigation
+        currentCharacterSlug={currentCharacterSlug}
+        prevCharacter={prevCharacter}
+        nextCharacter={nextCharacter}
+      />
+    </>
+  )
+}
 
 <style>
   @import '../../styles/components/horizon-walker-character-navigation.css';

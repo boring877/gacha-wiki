@@ -137,7 +137,7 @@ function initializeComparisonV2() {
     updateSelectedCount();
 
     // Silver & Blood Comparison V2: Initialized successfully
-  } catch (error) {
+  } catch (_error) {
     // Failed to initialize comparison V2
     // Show user-friendly error message
     showErrorMessage('Failed to load character comparison. Please refresh the page.');
@@ -640,7 +640,7 @@ function applyFilters() {
 
     updateIconStates();
     // Mobile dropdowns no longer used - modal system handles filtering
-  } catch (error) {
+  } catch (_error) {
     // Error applying filters
   }
 }
@@ -690,7 +690,7 @@ function resetFilters() {
       updateIconStates();
       // Mobile dropdowns no longer used - modal system handles filtering
     }
-  } catch (error) {
+  } catch (_error) {
     // Error resetting filters
   }
 }
@@ -1081,7 +1081,7 @@ async function loadCharacterData(characterSlug) {
     const module = await import(`../../data/silver-and-blood/characters/${sanitizedSlug}.js`);
 
     // Extract character data using expected export name pattern (camelCase)
-    const exportName = sanitizedSlug.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+    const exportName = sanitizedSlug.replace(/-([a-z])/g, (_match, letter) => letter.toUpperCase());
     const characterData = module[exportName];
 
     if (characterData && typeof characterData === 'object') {
@@ -1095,7 +1095,7 @@ async function loadCharacterData(characterSlug) {
 
     // Re-render the comparison cards to show loaded data
     renderComparisonCards();
-  } catch (error) {
+  } catch (_error) {
     // Could not load detailed data for character
     // Set empty data to stop loading state
     characterDataMap.set(characterSlug, {});

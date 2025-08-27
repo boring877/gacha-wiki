@@ -18,32 +18,32 @@ export const horizonWalkerConfig = {
         name: 'Google Play',
         url: 'https://play.google.com/store/apps/details?id=com.GentleManiac.HorizonWalkerGoogle&hl=en_US',
         type: 'censored',
-        description: 'Censored version'
+        description: 'Censored version',
       },
       {
         name: 'One Store',
         url: 'https://m.onestore.net/en-sg/apps/appsDetail?prodId=0000776102',
         type: 'uncensored',
-        description: 'Uncensored version (will migrate to Steam)'
+        description: 'Uncensored version (will migrate to Steam)',
       },
       {
         name: 'Ero-Labs',
         url: 'https://game.erolabsshare.net/app/f302f717/Horizon_Walker',
         type: 'uncensored',
-        description: 'Uncensored version (will not migrate to Steam)'
+        description: 'Uncensored version (will not migrate to Steam)',
       },
       {
         name: 'Steam',
         url: 'https://store.steampowered.com/app/3279780/Horizon_Walker/',
         type: 'uncensored',
-        description: 'Uncensored version'
-      }
+        description: 'Uncensored version',
+      },
     ],
     playUrl: 'https://store.steampowered.com/app/3279780/Horizon_Walker/',
     socialLinks: {
       twitter: 'https://x.com/_horizonwalker',
       discord: 'https://discord.com/invite/k3x8K8ZUdp',
-      youtube: 'https://www.youtube.com/@official.horizonwalker'
+      youtube: 'https://www.youtube.com/@official.horizonwalker',
     },
     lastUpdated: new Date(),
   },
@@ -60,7 +60,7 @@ export const horizonWalkerConfig = {
       {
         title: 'The Forsaken Invasion',
         content:
-          'From these dimensional gates emerged the Forsaken Entities, leading monstrous creatures—twisted remnants of humans warped by the rift\'s influence. They descended in an unrelenting assault, and civilizations crumbled to ashes. The end of mankind loomed near.',
+          "From these dimensional gates emerged the Forsaken Entities, leading monstrous creatures—twisted remnants of humans warped by the rift's influence. They descended in an unrelenting assault, and civilizations crumbled to ashes. The end of mankind loomed near.",
       },
       {
         title: "Humanity's Desperation",

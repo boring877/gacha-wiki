@@ -72,8 +72,8 @@ function createGitTag(version) {
     execSync(`git tag "${tagName}" -m "Version ${version}"`, { stdio: 'inherit' });
     console.log(`🏷️  Created git tag: ${tagName}`);
     return true;
-  } catch (error) {
-    console.error(`❌ Failed to create git tag: ${error.message}`);
+  } catch (_error) {
+    console.error(`❌ Failed to create git tag: ${_error.message}`);
     return false;
   }
 }
@@ -85,7 +85,7 @@ function checkWorkingDirectory() {
   try {
     const status = execSync('git status --porcelain', { encoding: 'utf8' });
     return status.trim() === '';
-  } catch (error) {
+  } catch (_error) {
     console.error('❌ Failed to check git status');
     return false;
   }
@@ -125,7 +125,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
 
     execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
     console.log(`✅ Committed version bump to ${newVersion}`);
-  } catch (error) {
+  } catch (_error) {
     console.error('❌ Failed to commit version changes');
     process.exit(1);
   }

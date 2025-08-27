@@ -115,7 +115,7 @@ const allTags = [...new Set(characters.flatMap(char => char.tags || []))].sort()
       const tagButtons = document.querySelectorAll('.tag-btn');
       const characterCards = document.querySelectorAll('.character-card');
       const matchCount = document.getElementById('match-count');
-      let selectedTags = new Set();
+      const selectedTags = new Set();
 
       tagButtons.forEach(button => {
         button.addEventListener('click', () => {

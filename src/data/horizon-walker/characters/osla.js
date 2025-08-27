@@ -91,7 +91,7 @@ const rawOslaData = {
         name: 'Verdict of the History',
         type: 'Unique',
         description:
-          'During battle, movement speed increases by 32% and Aggro Adjustment increases by 40. For any enemy that initiates an attack on the unit, all support counterattacks, counterattacks, or additional attacks directed at that enemy during the same turn are treated as Weak Point Attacks (provided the skill used is eligible for Weak Point Attacks). When attacked, allied units—except the unit under attack—receive the [Primordial Spirit\'s Descent] effect. This effect can stack up to 5 times. [Primordial Spirit\'s Descent]: On a successful attack, inflict additional Slash DMG and remove 1 stack from the effect. Additional DMG equals 320% of the Melee ATK power of the effect provider, with damage increased proportionally to CRIT rate (damage doubles at 100% CRIT rate). This effect activates only via a single weapon during battle; if the weapon-bearer becomes incapacitated, the effect ceases.',
+          "During battle, movement speed increases by 32% and Aggro Adjustment increases by 40. For any enemy that initiates an attack on the unit, all support counterattacks, counterattacks, or additional attacks directed at that enemy during the same turn are treated as Weak Point Attacks (provided the skill used is eligible for Weak Point Attacks). When attacked, allied units—except the unit under attack—receive the [Primordial Spirit's Descent] effect. This effect can stack up to 5 times. [Primordial Spirit's Descent]: On a successful attack, inflict additional Slash DMG and remove 1 stack from the effect. Additional DMG equals 320% of the Melee ATK power of the effect provider, with damage increased proportionally to CRIT rate (damage doubles at 100% CRIT rate). This effect activates only via a single weapon during battle; if the weapon-bearer becomes incapacitated, the effect ceases.",
       },
       ancientSpiritsCore: {
         name: "Ancient Spirit's Core",
@@ -115,7 +115,7 @@ const rawOslaData = {
 
   // Character Story
   story:
-    'Champion of Torta, and daughter of the Grand Warrior Magna. Osla Magnatira was strong from birth. She vowed to the god of Torta that she would never be with a man unless he was stronger than herself. In her 26 years of life, she had yet to meet a single man stronger than her, other than her father. Though she held no belief in the god of Torta, she felt that breaking her vow as a Magnatira would be a stain upon the name of her father. So, even in her moments of regret, she waited for a groom stronger than her to appear. After escaping the Rift under Maximilia\'s command, she began a new life on Earth. She hoped that here she would find her match, and upon hearing her story, the Bureau of Rift Management told her about the power of the Human Gods. Hearing this, she decided to wait within the bureau as a reserve Vanguard, hoping for a Human God worthy of taking her hand.',
+    "Champion of Torta, and daughter of the Grand Warrior Magna. Osla Magnatira was strong from birth. She vowed to the god of Torta that she would never be with a man unless he was stronger than herself. In her 26 years of life, she had yet to meet a single man stronger than her, other than her father. Though she held no belief in the god of Torta, she felt that breaking her vow as a Magnatira would be a stain upon the name of her father. So, even in her moments of regret, she waited for a groom stronger than her to appear. After escaping the Rift under Maximilia's command, she began a new life on Earth. She hoped that here she would find her match, and upon hearing her story, the Bureau of Rift Management told her about the power of the Human Gods. Hearing this, she decided to wait within the bureau as a reserve Vanguard, hoping for a Human God worthy of taking her hand.",
 
   // Unique Traits
   uniqueTraits: {
@@ -217,8 +217,10 @@ const rawHighlightPatterns = {
   buffsDebuffs:
     /\b(?:Oath\s+of\s+Magnatira|Savage\s+Regeneration|Physical\s+Regeneration|Verdict\s+of\s+the\s+History|Ancient\s+Spirit's\s+Core|Primordial\s+Spirit's\s+Descent|Primal\s+Regeneration|Taunt|counterattack|damage\s+reflection|fixed\s+damage|weak\s+point\s+attacks|aggro\s+adjustment)\b/gi,
   percentages: /\b(\d{1,3}%)(?:\s*of\s+(?:max\s+)?HP|\s*of\s+\w+\s+ATK|\s*CRIT\s+rate)?/g,
-  statChanges: /\b(?:reduces?|increases?|decreases?|gains?|loses?|recovers?|reflects?|inflicts?|removes?|stacks?)\s+(?:\w{1,15}\s+){0,5}(?:by\s+(\d{1,3}%?|\d+)|up\s+to\s+(\d+)\s+times)\b/gi,
-  keywords: /\b(?:champion|vow|groom|stronger|Magnatira|Grand\s+Warrior\s+Magna|Tortaria|Fjord\s+of\s+Blades|Bureau\s+of\s+Rift\s+Management|reserve\s+Vanguard|Chosen\s+Human|chained\s+Torturas|large\s+enemy|intense\s+determination|current\s+HP\s+ratio|weapon-bearer|incapacitated)\b/gi,
+  statChanges:
+    /\b(?:reduces?|increases?|decreases?|gains?|loses?|recovers?|reflects?|inflicts?|removes?|stacks?)\s+(?:\w{1,15}\s+){0,5}(?:by\s+(\d{1,3}%?|\d+)|up\s+to\s+(\d+)\s+times)\b/gi,
+  keywords:
+    /\b(?:champion|vow|groom|stronger|Magnatira|Grand\s+Warrior\s+Magna|Tortaria|Fjord\s+of\s+Blades|Bureau\s+of\s+Rift\s+Management|reserve\s+Vanguard|Chosen\s+Human|chained\s+Torturas|large\s+enemy|intense\s+determination|current\s+HP\s+ratio|weapon-bearer|incapacitated)\b/gi,
   attributes:
     /\b(?:AP|Melee\s+ATK|Magic\s+ATK|Slash|Physical|Pierce|Crush|Heat|Cold|Electric|Immaterial|Poison|Max\s+HP|HP|movement\s+speed|Aggro\s+Adjustment|CRIT\s+rate|counterattack\s+count|Vitality|Evade|Fixed\s+DMG)\b/gi,
 };

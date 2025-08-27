@@ -220,7 +220,7 @@ const { meta, availableCodes, expiredCodes, redeemInstructions, communitySection
       (function () {
         'use strict';
 
-        let timers = new Map(); // Track timers for cleanup
+        const timers = new Map(); // Track timers for cleanup
 
         function cleanupTimer(button) {
           const timerId = timers.get(button);

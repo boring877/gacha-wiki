@@ -48,8 +48,8 @@ class SEOValidator {
       try {
         const matches = glob.sync(pattern);
         files = files.concat(matches);
-      } catch (error) {
-        console.warn(`Pattern ${pattern} failed:`, error.message);
+      } catch (_error) {
+        console.warn(`Pattern ${pattern} failed:`, _error.message);
       }
     }
 
@@ -92,9 +92,9 @@ class SEOValidator {
       }
 
       console.log('');
-    } catch (error) {
-      this.issues.push(`Error validating ${filePath}: ${error.message}`);
-      console.error(`❌ Error validating ${filePath}:`, error.message);
+    } catch (_error) {
+      this.issues.push(`Error validating ${filePath}: ${_error.message}`);
+      console.error(`❌ Error validating ${filePath}:`, _error.message);
     }
   }
 
@@ -333,7 +333,7 @@ class SEOValidator {
             issues.push('Structured data missing description');
           }
         }
-      } catch (error) {
+      } catch (_error) {
         issues.push('Invalid JSON-LD structured data');
       }
     });
