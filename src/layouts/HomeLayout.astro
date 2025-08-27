@@ -19,8 +19,7 @@ export interface Props {
 const { title, description } = Astro.props;
 ---
 
-{/* @ts-ignore */}
-<html lang="en" transition:animate="fade">
+<html lang="en">
   <head>
     <BaseHead title={title} description={description || ''} />
     <GeneralSEO title={title} description={description || ''} />

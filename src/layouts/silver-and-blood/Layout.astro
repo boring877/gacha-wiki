@@ -8,13 +8,11 @@ import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
-import { ClientRouter } from 'astro:transitions';
 
 // Import CSS files properly
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
-import '../../styles/view-transitions.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
 import '../../styles/games/silver-and-blood/sab-badge-colours.css';
 
@@ -34,7 +32,113 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
   <head>
     <BaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
-    <ClientRouter />
+
+    <!-- Preload all Silver and Blood character images for instant navigation -->
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Acappella.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Agares.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Ami.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Augustine.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Bella.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Cain.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Cecia.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Dalcarlo.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Darcias.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Edina.jpg" as="image" />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/Fleeting_Bella.jpg"
+      as="image"
+    />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Friedrich.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Gilrain.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Hati.jpg" as="image" />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/Incendiary_Agares.jpg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/JinxedSelena.jpg"
+      as="image"
+    />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Joan.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Lamia.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Limine.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Lorelei.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Mass.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Nicole.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Ottavia.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Pavana.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Piera.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Quinn.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Ressa.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Selena.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Seth.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Sirene.jpg" as="image" />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/Spectral_Gilrain.jpg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/Starry_Eyed_Aiona.jpg"
+      as="image"
+    />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Theophane.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Thibault.jpg" as="image" />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/Timeless_Aiona.jpg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/Transcendent_Ami.jpg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/Transcendent_Hati.jpg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/Transcendent_Noah.jpg"
+      as="image"
+    />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Tris.jpg" as="image" />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/Van_Helsing.jpg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/characters/Yggdrasill.jpg"
+      as="image"
+    />
+
+    <!-- Preload key Silver and Blood assets -->
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg"
+      as="image"
+    />
+
+    <!-- Preload critical CSS files for instant page transitions -->
+    <link
+      rel="preload"
+      href="/src/styles/games/silver-and-blood/sab-character-comparison-v2.css"
+      as="style"
+    />
+    <link
+      rel="preload"
+      href="/src/styles/games/silver-and-blood/sab-character-rankings.css"
+      as="style"
+    />
+    <link rel="preload" href="/src/styles/games/silver-and-blood/sab-tier-list.css" as="style" />
 
     <slot name="head" />
   </head>
@@ -47,8 +151,8 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
     <div class="bg-layer bg-accent-3"></div>
 
     <div class="sab-content">
-      <Header transition:name="main-header" />
-      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" transition:name="game-navigation" />
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
       <MobileMenu />
 
       <div class="sab-container">
@@ -69,7 +173,6 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
                         height={400}
                         loading="eager"
                         decoding="async"
-                        transition:name="hero-image"
                       />
                     )}
                     {/* Overlay Gradient */}
@@ -78,7 +181,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
                 </div>
 
                 {/* Game Title */}
-                <h1 class="hero-title" transition:name="hero-title">{gameTitle}</h1>
+                <h1 class="hero-title">{gameTitle}</h1>
                 {/* Decorative Elements */}
                 <DecorativeLines />
               </section>
@@ -88,7 +191,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
           {
             !heroVideo && !heroImage && gameTitle && (
               <section class="title-only-section">
-                <h1 class="title-only-heading" transition:name="hero-title">{gameTitle}</h1>
+                <h1 class="title-only-heading">{gameTitle}</h1>
 
                 <DecorativeLines />
               </section>

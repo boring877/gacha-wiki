@@ -226,5 +226,58 @@ if (!game) return;
     // Store cleanup function for potential future use
     (nav as HTMLElement).dataset.cleanupFn = 'desktopNavCleanup';
     (window as any).desktopNavCleanup = cleanup;
+
+    // Enhanced prefetching system for instant navigation
+    const prefetchedLinks = new Set<string>();
+
+    function prefetchPage(url: string | null) {
+      if (!url || prefetchedLinks.has(url)) return;
+
+      const existing = document.querySelector(`link[href="${url}"]`);
+      if (existing) return;
+
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = url;
+      link.dataset.timestamp = Date.now().toString();
+      document.head.appendChild(link);
+      prefetchedLinks.add(url);
+
+      // Clean up prefetch links after 30 seconds to manage memory
+      setTimeout(() => {
+        if (document.head.contains(link)) {
+          document.head.removeChild(link);
+          prefetchedLinks.delete(url);
+        }
+      }, 30000);
+    }
+
+    // Prefetch on dropdown link hover for instant navigation
+    nav.addEventListener('mouseover', (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (target && target.classList.contains('dropdown-link')) {
+        const href = (target as HTMLAnchorElement).href;
+        if (href) {
+          prefetchPage(href);
+        }
+      }
+    });
+
+    // Prefetch main game pages on section hover
+    sectionItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        const dropdown = item.querySelector('.section-dropdown');
+        if (dropdown) {
+          const links = dropdown.querySelectorAll('.dropdown-link');
+          // Prefetch the first 3 links in each section for faster navigation
+          Array.from(links)
+            .slice(0, 3)
+            .forEach(link => {
+              const href = (link as HTMLAnchorElement).href;
+              prefetchPage(href);
+            });
+        }
+      });
+    });
   });
 </script>

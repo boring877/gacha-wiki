@@ -1,6 +1,7 @@
 ---
 import ZoneNovaLayout from '../../../layouts/zone-nova/Layout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
 import '../../../styles/games/zone-nova/zn-runes.css';
 ---
 
@@ -19,12 +20,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
     <div class="rune-grid">
       <div class="rune-card">
         <div class="rune-image-container">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Alpha.jpg"
             alt="Alpha Rune"
             width={120}
             height={120}
             class="rune-image"
+            loading="lazy"
           />
         </div>
         <h3>Alpha (阿尔法符)</h3>
@@ -34,12 +36,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <div class="rune-card">
         <div class="rune-image-container">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Shattered-Foundation.jpg"
             alt="Shattered Foundation Rune"
             width={120}
             height={120}
             class="rune-image"
+            loading="lazy"
           />
         </div>
         <h3>Shattered Foundation (碎基)</h3>
@@ -49,12 +52,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <div class="rune-card">
         <div class="rune-image-container">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Beth.jpg"
             alt="Beth Rune"
             width={120}
             height={120}
             class="rune-image"
+            loading="lazy"
           />
         </div>
         <h3>Beth (贝丝)</h3>
@@ -64,12 +68,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <div class="rune-card">
         <div class="rune-image-container">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Zahn.jpg"
             alt="Zahn Rune"
             width={120}
             height={120}
             class="rune-image"
+            loading="lazy"
           />
         </div>
         <h3>Zahn (札恩)</h3>
@@ -79,12 +84,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <div class="rune-card">
         <div class="rune-image-container">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Daleth.jpg"
             alt="Daleth Rune"
             width={120}
             height={120}
             class="rune-image"
+            loading="lazy"
           />
         </div>
         <h3>Daleth (达莱特)</h3>
@@ -94,12 +100,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <div class="rune-card">
         <div class="rune-image-container">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Epsilon.jpg"
             alt="Epsilon Rune"
             width={120}
             height={120}
             class="rune-image"
+            loading="lazy"
           />
         </div>
         <h3>Epsilon (埃普西隆)</h3>
@@ -120,12 +127,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <div class="rune-card">
         <div class="rune-image-container">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Hert-Pursuit-Damage.jpg"
             alt="Hert Extra Attack Damage Rune"
             width={120}
             height={120}
             class="rune-image"
+            loading="lazy"
           />
         </div>
         <h3>Hert Extra Attack Damage (赫特追击伤害)</h3>
@@ -154,12 +162,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <div class="rune-card">
         <div class="rune-image-container">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Gimel-Continuous-Damage.jpg"
             alt="Gimel Continuous Damage Rune"
             width={120}
             height={120}
             class="rune-image"
+            loading="lazy"
           />
         </div>
         <h3>Gimel Continuous Damage (吉梅尔持续伤害)</h3>
@@ -180,12 +189,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <div class="rune-card">
         <div class="rune-image-container">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Giants.jpg"
             alt="Giants Vulnerability Rune"
             width={120}
             height={120}
             class="rune-image"
+            loading="lazy"
           />
         </div>
         <h3>Giants [Vulnerability] (巨人 [脆弱])</h3>
@@ -201,11 +211,11 @@ import '../../../styles/games/zone-nova/zn-runes.css';
             <span style="color: #9c27b0; font-weight: 600;">Class Restriction:</span>
             4-piece effect only works with Debuffer class characters
           </p>
-          <img
+          <Image
             src="/images/games/zone-nova/classes/1Debuffer.jpg"
             alt="Debuffer class icon"
-            width="24"
-            height="24"
+            width={24}
+            height={24}
             loading="lazy"
             style="border-radius: 4px;"
           />
@@ -222,12 +232,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
 
       <div class="rune-card">
         <div class="rune-image-container">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Tide.jpg"
             alt="Tide Energy Rune"
             width={120}
             height={120}
             class="rune-image"
+            loading="lazy"
           />
         </div>
         <h3>Tide [Energy] (潮汐 [能量])</h3>
@@ -243,11 +254,11 @@ import '../../../styles/games/zone-nova/zn-runes.css';
             <span style="color: #00acc1; font-weight: 600;">Team Effect:</span>
             Daleth 4-piece set effects in the team will be disabled
           </p>
-          <img
+          <Image
             src="/images/games/zone-nova/runes/Daleth.jpg"
             alt="Daleth rune icon"
-            width="24"
-            height="24"
+            width={24}
+            height={24}
             loading="lazy"
             style="border-radius: 4px;"
           />
@@ -350,10 +361,13 @@ import '../../../styles/games/zone-nova/zn-runes.css';
       <div class="rune-card">
         <h3>Position 5 — Variable Main Stats</h3>
         <div style="text-align: center; margin: 1.5rem 0;">
-          <img
+          <Image
             src="/images/games/zone-nova/runes/element.jpg"
             alt="Element System Guide"
+            width={400}
+            height={300}
             style="max-width: 100%; height: auto; border-radius: 8px; border: 2px solid rgba(255, 183, 77, 0.3);"
+            loading="eager"
           />
         </div>
         <div style="margin: 1rem 0;">

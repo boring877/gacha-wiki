@@ -71,7 +71,16 @@ function getClassMemorySubtitle(effects: string[]): string {
   gameTitle={`${memoryData.name} - Memory Card`}
 >
   <Fragment slot="head">
-    {/* Removed memory image preload to reduce memory usage */}
+    <!-- Preload critical memory images for instant viewing -->
+    <link rel="preload" href={memoryData.image} as="image" fetchpriority="high" />
+    
+    <!-- Preload related character images if available -->
+    {memoryData.relatedCharacter && (
+      <link rel="preload" href={`/images/games/zone-nova/characters/${memoryData.relatedCharacter}.jpg`} as="image" />
+    )}
+    
+    <!-- Preload memory-specific CSS -->
+    <link rel="preload" href="/src/styles/games/zone-nova/zn-memory-pages.css" as="style" />
   </Fragment>
 
   <div class="memory-page">

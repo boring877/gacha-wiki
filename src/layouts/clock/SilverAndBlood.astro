@@ -50,7 +50,26 @@ const timers = game.timers[game.currentRegion];
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    {/* Removed preloading of all game images to reduce memory usage */}
+    <!-- Critical game asset preloading for instant loading -->
+    <link rel="preload" href={game.image} as="image" fetchpriority="high" />
+
+    <!-- Preload key Silver and Blood character images for navigation -->
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Acappella.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Agares.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Ami.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Augustine.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Bella.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Cain.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Cecia.jpg" as="image" />
+    <link rel="preload" href="/images/games/silver-and-blood/characters/Dalcarlo.jpg" as="image" />
+
+    <!-- Preload critical CSS for instant navigation -->
+    <link rel="preload" href="/src/styles/games/silver-and-blood/sab-character.css" as="style" />
+    <link
+      rel="preload"
+      href="/src/styles/games/silver-and-blood/sab-character-comparison-v2.css"
+      as="style"
+    />
   </head>
 
   <body class="sab-body">

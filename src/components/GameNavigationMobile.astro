@@ -207,5 +207,56 @@ if (!game) return;
         closeMenu();
       }
     });
+
+    // Enhanced prefetching for mobile navigation
+    const prefetchedLinks = new Set<string>();
+
+    function prefetchPage(url: string | null) {
+      if (!url || prefetchedLinks.has(url)) return;
+
+      const existing = document.querySelector(`link[href="${url}"]`);
+      if (existing) return;
+
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = url;
+      link.dataset.timestamp = Date.now().toString();
+      document.head.appendChild(link);
+      prefetchedLinks.add(url);
+
+      // Clean up prefetch links after 20 seconds (shorter for mobile)
+      setTimeout(() => {
+        if (document.head.contains(link)) {
+          document.head.removeChild(link);
+          prefetchedLinks.delete(url);
+        }
+      }, 20000);
+    }
+
+    // Prefetch links when mobile menu opens
+    toggle?.addEventListener('click', () => {
+      // Small delay to ensure menu is visible first
+      setTimeout(() => {
+        const navLinks = mobileMenu?.querySelectorAll('a[href]');
+        if (navLinks) {
+          // Prefetch first 5 links for mobile performance
+          Array.from(navLinks)
+            .slice(0, 5)
+            .forEach(link => {
+              const href = (link as HTMLAnchorElement).href;
+              prefetchPage(href);
+            });
+        }
+      }, 100);
+    });
+
+    // Prefetch on touch start (faster than click on mobile)
+    mobileMenu?.addEventListener('touchstart', (e: TouchEvent) => {
+      const target = e.target as HTMLElement;
+      if (target && target.tagName === 'A') {
+        const href = (target as HTMLAnchorElement).href;
+        prefetchPage(href);
+      }
+    });
   });
 </script>

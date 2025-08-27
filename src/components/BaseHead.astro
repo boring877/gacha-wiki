@@ -310,49 +310,360 @@ const {
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- Google Fonts with optimized loading -->
+<!-- AGGRESSIVE FONT PRELOADING - ALL WEIGHTS AND STYLES FOR INSTANT LOADING -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Preload all critical font files for instant rendering -->
 <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap"
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiA.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuOKfAZ9hiA.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFyYAZ9hiA.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuBWYAZ9hiA.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyYAZ9hiA.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuA6YAZ9hiA.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLKfAZ9hiA.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<!-- Space Grotesk font weights preloading -->
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mPbF4C_11.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mPbF2C_11.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mPbF5C_11.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mPbFzC_11.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<!-- Orbitron font weights preloading -->
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/orbitron/v31/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy4J.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/orbitron/v31/yMJMMIlzdpvBhQQL_SC3X9yhF25iT1nyGy4J.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/orbitron/v31/yMJMMIlzdpvBhQQL_SC3X9yhF25NT1nyGy4J.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<!-- Font CSS with all weights loaded -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=block"
   rel="stylesheet"
-  media="print"
-  onload="this.media='all'"
+  media="all"
+/>
+
+<!-- Additional font preloading for icons and special characters -->
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPbF4C_11Ogvh.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/orbitron/v31/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy4J.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
 />
 
 <!-- Fallback for font loading -->
 <noscript>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=block"
     rel="stylesheet"
   />
 </noscript>
 
-<!-- Enhanced Performance Hints -->
+<!-- MAXIMUM AGGRESSIVE PERFORMANCE HINTS -->
 <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 <link rel="dns-prefetch" href="https://vitals.vercel-analytics.com" />
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+<link rel="dns-prefetch" href="https://vercel.live" />
+<link rel="dns-prefetch" href="https://cdn.vercel-insights.com" />
+<link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
 
-<!-- Prefetch key pages for instant navigation -->
-<!-- Removed global prefetching to reduce memory usage -->
+<!-- EXTREME DATA PREFETCHING - ALL GAME DATA FOR INSTANT ACCESS -->
+<!-- Zone Nova Data Prefetching -->
+<link rel="prefetch" href="/src/data/zone-nova/characters.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/memories.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/updates.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/rifts.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/character-rankings.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/tier-lists.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/damage-mechanics.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/team-synergy.js" as="script" crossorigin />
+<link
+  rel="prefetch"
+  href="/src/data/zone-nova/character-database-utils.js"
+  as="script"
+  crossorigin
+/>
 
-<!-- Service Worker Registration -->
+<!-- Silver & Blood Data Prefetching -->
+<link rel="prefetch" href="/src/data/silver-and-blood/characters.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/silver-and-blood/events.js" as="script" crossorigin />
+<link
+  rel="prefetch"
+  href="/src/data/silver-and-blood/damage-mechanics.js"
+  as="script"
+  crossorigin
+/>
+<link
+  rel="prefetch"
+  href="/src/data/silver-and-blood/character-rankings.js"
+  as="script"
+  crossorigin
+/>
+<link rel="prefetch" href="/src/data/silver-and-blood/tier-lists.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/silver-and-blood/team-synergy.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/silver-and-blood/ancestral-vault.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/silver-and-blood/boss-database.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/silver-and-blood/clan-hunt.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/silver-and-blood/summon-faq.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/silver-and-blood/redeem-codes.js" as="script" crossorigin />
+<link
+  rel="prefetch"
+  href="/src/data/silver-and-blood/damage-mechanics-index.js"
+  as="script"
+  crossorigin
+/>
+<link
+  rel="prefetch"
+  href="/src/data/silver-and-blood/team-synergy-utils.js"
+  as="script"
+  crossorigin
+/>
+
+<!-- Clock Data Prefetching -->
+<link rel="prefetch" href="/src/data/clock/zone-nova.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/clock/silver-and-blood.js" as="script" crossorigin />
+
+<!-- Individual Character Data Prefetching (Most Popular Characters) -->
+<link rel="prefetch" href="/src/data/zone-nova/characters/afrodite.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/characters/athena.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/characters/odin.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/characters/loki.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/zone-nova/characters/thor.js" as="script" crossorigin />
+<link rel="prefetch" href="/src/data/silver-and-blood/characters/hati.js" as="script" crossorigin />
+<link
+  rel="prefetch"
+  href="/src/data/silver-and-blood/characters/transcendent-hati.js"
+  as="script"
+  crossorigin
+/>
+<link
+  rel="prefetch"
+  href="/src/data/silver-and-blood/characters/transcendent-ami.js"
+  as="script"
+  crossorigin
+/>
+<link
+  rel="prefetch"
+  href="/src/data/silver-and-blood/characters/yggdrasill.js"
+  as="script"
+  crossorigin
+/>
+
+<!-- CSS Prefetching for Instant Styling (corrected paths) -->
+<link rel="prefetch" href="/src/styles/global.css" as="style" crossorigin />
+<link rel="prefetch" href="/src/styles/view-transitions.css" as="style" crossorigin />
+<link rel="prefetch" href="/src/styles/games/zone-nova/zn-character.css" as="style" crossorigin />
+<link
+  rel="prefetch"
+  href="/src/styles/games/zone-nova/zn-character-comparison-v2.css"
+  as="style"
+  crossorigin
+/>
+<link rel="prefetch" href="/src/styles/games/zone-nova/zn-tier-list.css" as="style" crossorigin />
+<link rel="prefetch" href="/src/styles/games/zone-nova/zn-runes.css" as="style" crossorigin />
+<link
+  rel="prefetch"
+  href="/src/styles/games/silver-and-blood/sab-character-styles.css"
+  as="style"
+  crossorigin
+/>
+<link
+  rel="prefetch"
+  href="/src/styles/games/silver-and-blood/sab-character-comparison-v2.css"
+  as="style"
+  crossorigin
+/>
+<link
+  rel="prefetch"
+  href="/src/styles/games/silver-and-blood/sab-character-comparison.css"
+  as="style"
+  crossorigin
+/>
+<link
+  rel="prefetch"
+  href="/src/styles/games/silver-and-blood/sab-tier-list.css"
+  as="style"
+  crossorigin
+/>
+
+<!-- Service Worker Registration with AGGRESSIVE caching -->
 <script>
   if ('serviceWorker' in navigator) {
+    // Register immediately for faster caching
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then(registration => {
+        // Force immediate update check for latest cache
+        registration.update();
+        console.log('🚀 Extreme caching service worker registered');
+      })
+      .catch(registrationError => {
+        console.error('Service worker registration failed:', registrationError);
+      });
+
+    // Prefetch critical pages in background
     window.addEventListener('load', () => {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .then(registration => {
-          // Service worker registered successfully
-        })
-        .catch(registrationError => {
-          // Service worker registration failed
-        });
+      const criticalPages = [
+        '/guides/zone-nova/',
+        '/guides/silver-and-blood/',
+        '/clock/zone-nova/',
+        '/clock/silver-and-blood/',
+        '/guides/zone-nova/character-comparison/',
+        '/guides/silver-and-blood/character-comparison/',
+      ];
+
+      // Prefetch all critical pages for instant navigation
+      criticalPages.forEach(page => {
+        fetch(page, { mode: 'no-cors' }).catch(() => {});
+      });
     });
   }
 </script>
 
-<!-- Module preload for critical JavaScript -->
+<!-- Memory intensive image preloading for most visited character pages -->
+<script>
+  // Preload top character images in background for instant loading
+  window.addEventListener('load', () => {
+    const topCharacterImages = [
+      '/images/games/zone-nova/characters/Afrodite.jpg',
+      '/images/games/zone-nova/characters/Athena.jpg',
+      '/images/games/zone-nova/characters/Odin.jpg',
+      '/images/games/zone-nova/characters/Thor.jpg',
+      '/images/games/silver-and-blood/characters/Transcendent_Hati.jpg',
+      '/images/games/silver-and-blood/characters/Yggdrasill.jpg',
+    ];
+
+    topCharacterImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  });
+</script>
+
+<!-- EXTREME MODULE PRELOADING FOR INSTANT SCRIPT EXECUTION -->
+<link rel="modulepreload" href="/src/utils/seo.js" />
+<link rel="modulepreload" href="/src/utils/timing-constants.ts" />
+<link rel="modulepreload" href="/src/utils/ancestral-vault-calculator.js" />
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" as="script" />
+<link
+  rel="preload"
+  href="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"
+  as="script"
+/>
+<link rel="preload" href="https://vercel.live/api/script.js" as="script" />
+<link rel="preload" href="https://va.vercel-scripts.com/v1/script.debug.js" as="script" />
 
 <!-- Cache control and security -->
 <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable" />

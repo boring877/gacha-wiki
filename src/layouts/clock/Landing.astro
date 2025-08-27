@@ -53,7 +53,17 @@ const { title, description, games } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    {/* Removed preloading of all game images to reduce memory usage */}
+    <!-- Preload all game images for instant navigation -->
+    {games.map(game => <link rel="preload" href={game.image} as="image" fetchpriority="high" />)}
+
+    <!-- Preload key game assets -->
+    <link rel="preload" href="/images/games/zone-nova/zonenova.jpg" as="image" />
+    <link
+      rel="preload"
+      href="/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg"
+      as="image"
+    />
+    <link rel="preload" href="/images/games/horizon-walker/gameimg/gameicon.jpg" as="image" />
   </head>
 
   <body>

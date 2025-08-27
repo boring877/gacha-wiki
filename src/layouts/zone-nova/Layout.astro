@@ -8,13 +8,11 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
-import { ClientRouter } from 'astro:transitions';
 
 // Import CSS files properly
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
-import '../../styles/view-transitions.css';
 import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/games/zone-nova/zn-character.css';
 import '../../styles/games/zone-nova/zn-badge-colour.css';
@@ -40,9 +38,66 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
       shouldPreloadDefaultImage={false}
     />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
-    <ClientRouter />
 
-    <!-- Astro handles image optimization automatically -->
+    <!-- Preload all Zone Nova character images for instant navigation -->
+    <link rel="preload" href="/images/games/zone-nova/characters/Afrodite.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Anubis.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Apollo.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Artemis.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Arthur.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Athena.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Bastet.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Chiya.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Cleopatra.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Freye.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Gaia.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/GreedMammon.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Guinevere.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Hera.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Horus.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/JoanofArc.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/kela.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Lancelot.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Leviathan.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Loki.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Lyra.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Merlin.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Mordred.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Naiya.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Nini.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Odin.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/penny.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Rose.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Shanna.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Shu.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Snow.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Tefnut.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Thor.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Yuis.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/Zashiki-warashi.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/characters/belphegar.jpg" as="image" />
+
+    <!-- Preload key Zone Nova assets -->
+    <link rel="preload" href="/images/games/zone-nova/zonenova.jpg" as="image" />
+
+    <!-- Preload key rune images for instant loading -->
+    <link rel="preload" href="/images/games/zone-nova/runes/Alpha.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/runes/Beth.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/runes/Daleth.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/runes/Epsilon.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/runes/Zahn.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/runes/Shattered-Foundation.jpg" as="image" />
+    <link rel="preload" href="/images/games/zone-nova/runes/element.jpg" as="image" />
+
+    <!-- Preload critical CSS files for instant page transitions -->
+    <link
+      rel="preload"
+      href="/src/styles/games/zone-nova/zn-character-comparison-v2.css"
+      as="style"
+    />
+    <link rel="preload" href="/src/styles/games/zone-nova/zn-character-rankings.css" as="style" />
+    <link rel="preload" href="/src/styles/games/zone-nova/zn-tier-list.css" as="style" />
+    <link rel="preload" href="/src/styles/games/zone-nova/zn-runes.css" as="style" />
 
     <slot name="head" />
   </head>
@@ -55,8 +110,8 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
     <div class="bg-layer bg-accent-3"></div>
 
     <div class="zone-nova-content">
-      <Header transition:name="main-header" />
-      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" transition:name="game-navigation" />
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />
 
       <div class="zone-nova-container">
@@ -76,7 +131,6 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
                       height={400}
                       loading="eager"
                       decoding="async"
-                      transition:name="hero-image"
                     />
                     {/* Overlay Gradient */}
                     <div class="hero-overlay" />
@@ -84,7 +138,7 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
                 </div>
 
                 {/* Game Title */}
-                <h1 class="hero-title" transition:name="hero-title">{gameTitle}</h1>
+                <h1 class="hero-title">{gameTitle}</h1>
                 {/* Decorative Elements */}
                 <DecorativeLines />
               </section>
@@ -94,7 +148,7 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
           {
             !heroImage && gameTitle && (
               <section class="title-only-section">
-                <h1 class="title-only-heading" transition:name="hero-title">{gameTitle}</h1>
+                <h1 class="title-only-heading">{gameTitle}</h1>
 
                 <DecorativeLines />
               </section>
