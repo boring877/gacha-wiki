@@ -1,0 +1,42 @@
+---
+import HorizonWalkerClockLayout from '../../layouts/clock/HorizonWalker.astro';
+import { horizonWalkerConfig } from '../../data/clock/horizon-walker.js';
+
+// Page metadata
+const title = 'Horizon Walker Clock - Server Reset Timer | GachaWiki';
+const description =
+  'Track Horizon Walker server resets and maintenance with real-time countdown timers. Never miss daily resets, weekly events, or farming sessions with our precise KST server time clock.';
+
+// Pass game data to layout
+const games = [horizonWalkerConfig];
+---
+
+<HorizonWalkerClockLayout title={title} description={description} games={games}>
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Horizon Walker Server Reset Clock",
+      "description": "Real-time server reset timer for Horizon Walker gacha game",
+      "url": "https://gachawiki.info/clock/horizon-walker",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "Horizon Walker Reset Clock",
+        "description": "Track Horizon Walker server reset times and events",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+</HorizonWalkerClockLayout>

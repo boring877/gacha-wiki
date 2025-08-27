@@ -22,7 +22,7 @@ export const mordredData = {
   skills: {
     normal: {
       name: 'Petty Sword',
-      description: 'Deals 120% attack power as Fire damage to enemy unit.',
+      description: 'Deals 120% of own maximum HP as Fire damage to enemy unit.',
     },
     auto: {
       name: 'Revenge Blade',

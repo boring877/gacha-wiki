@@ -1,0 +1,462 @@
+/**
+ * ==========================================
+ * HORIZON WALKER CLOCK THEME - GAME SPECIFIC STYLES
+ * ==========================================
+ * 
+ * Horizon Walker specific colors, themes, and styling overrides for the clock.
+ * This file extends the shared clock layout with Horizon Walker's warm golden orange theme.
+ * 
+ * Inherits: All layout and structure from clock/layout.css
+ * Provides: Horizon Walker colors, accent elements, and theme-specific styling
+ * 
+ * === WHAT HORIZON-WALKER.CSS SHOULD CONTAIN ===
+ * ✅ Horizon Walker colors (warm golden orange, coral pink, sky blue)
+ * ✅ Horizon Walker themes (gradients, color schemes)
+ * ✅ Game-specific styling (card colors, brand elements)
+ * ✅ Horizon Walker overrides (changing colors from layout defaults)
+ * ✅ Visual identity specific to Horizon Walker game
+ * ✅ Horizon Walker background accents and effects
+ * ✅ Horizon Walker specific component colors
+ * 
+ * === WHAT HORIZON-WALKER.CSS SHOULD NOT CONTAIN ===
+ * ❌ Structural layouts (use layout.css instead)
+ * ❌ Base component dimensions or spacing
+ * ❌ Generic animations or transitions
+ * ❌ Responsive breakpoints (unless Horizon Walker specific)
+ * ❌ Typography scales (font sizes, weights)
+ * 
+ * === ARCHITECTURE GOAL ===
+ * Future games should use:
+ * layout.css + their-game.css (following this same pattern)
+ */
+
+/* === HORIZON WALKER CLOCK COLORS === */
+/* Use existing HW color variables from colors.css - no new variables needed */
+
+/* === HORIZON WALKER BACKGROUND === */
+/* Background layers are handled by the main HW layout CSS (hw-layout.css) */
+/* No background definitions needed here - layout uses hw-bg-primary, hw-bg-accent-1, hw-bg-accent-2 */
+
+/* === HORIZON WALKER THEME COLORS === */
+/* Horizon Walker specific color overrides */
+.title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.hw-title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  background: linear-gradient(135deg, #e8a547, #ff7b7b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: relative;
+}
+
+.hw-game-name,
+.hw-timer-main-label,
+.server-reset-card .hw-timer-main-label {
+  color: var(--hw-primary-warm);
+}
+
+.hw-timer-main-label {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.server-reset-card .hw-timer-main-label {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.time-value {
+  color: var(--hw-text-white);
+}
+
+/* === HORIZON WALKER REGION BADGE === */
+/* Horizon Walker specific region badge styling */
+.region-badge {
+  background: var(--hw-text-muted);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--hw-text-dark);
+  white-space: nowrap;
+  letter-spacing: 0.025em;
+  width: fit-content;
+}
+
+.region-label {
+  opacity: 0.8;
+  margin-right: 4px;
+}
+
+.region-name {
+  font-weight: 700;
+}
+
+/* === HORIZON WALKER COMPONENT COLORS === */
+.secondary-timers-card .timer-description-section {
+  margin-bottom: 0.5rem;
+}
+
+.secondary-timers-card .hw-timer-main-label {
+  color: var(--hw-primary-warm);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.secondary-timers-card .timer-subtitle {
+  color: var(--hw-text-muted);
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+/* === HORIZON WALKER TIMER CARDS === */
+.server-reset-card {
+  border: 2px solid var(--hw-border-gray);
+  background: var(--clock-glass-bg);
+}
+
+.weekly-card {
+  border-left: 4px solid var(--hw-border-gray);
+  background: var(--clock-card-bg);
+}
+
+.weekly-card .hw-timer-card-title {
+  color: var(--hw-primary-warm);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.maintenance-card {
+  border-left: 4px solid var(--hw-border-gray);
+  background: var(--clock-card-bg);
+}
+
+.maintenance-card .hw-timer-card-title {
+  color: var(--hw-primary-warm);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.launch-card {
+  border-left: 4px solid var(--hw-border-gray);
+  background: var(--clock-card-bg);
+  padding: 1.5rem;
+}
+
+.launch-card .hw-timer-card-title {
+  color: var(--hw-primary-warm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Steam Launch Card - matches other timer cards */
+.steam-launch-card {
+  border-left: 4px solid var(--hw-border-gray);
+  background: var(--clock-card-bg);
+  padding: 1.5rem;
+}
+
+.steam-launch-card .hw-timer-card-title {
+  color: var(--hw-primary-warm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* === HORIZON WALKER SPECIAL EVENT CARDS === */
+/* Halloween and New Year timers - simplified to match other cards */
+.halloween-card {
+  border-left: 4px solid var(--hw-border-gray);
+  background: var(--clock-card-bg);
+  padding: 1.5rem;
+}
+
+.halloween-card .hw-timer-card-title {
+  color: var(--hw-primary-warm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.newyear-card {
+  border-left: 4px solid var(--hw-border-gray);
+  background: var(--clock-card-bg);
+  padding: 1.5rem;
+}
+
+.newyear-card .hw-timer-card-title {
+  color: var(--hw-primary-warm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* === HORIZON WALKER STATUS INDICATORS === */
+.server-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hw-accent-mint);
+}
+
+.status-dot.maintenance {
+  background: var(--hw-secondary-coral);
+}
+
+.status-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--hw-text-white);
+}
+
+/* === HORIZON WALKER CARD STYLING === */
+.timer-card {
+  border-left: none;
+}
+
+.timer-card .timer-card-header,
+.timer-card .timer-card-title,
+.timer-card .timer-card-content,
+.timer-card .timer-card-subtitle {
+  text-align: center;
+}
+
+/* === HORIZON WALKER TEXT COLORS === */
+.timer-card-value,
+.maintenance-time,
+.reset-time,
+.launch-days {
+  color: var(--hw-text-white);
+}
+
+.timer-card-label,
+.timer-card-subtitle,
+.time-label,
+.utc-note,
+.current-utc,
+.maintenance-name,
+.reset-name,
+.reset-subtitle,
+.launch-date {
+  color: var(--hw-text-muted);
+}
+
+.time-separator,
+.current-date,
+.game-status {
+  color: var(--hw-text-white);
+}
+
+/* === HORIZON WALKER TIMER ITEMS === */
+.maintenance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--hw-border-gray);
+}
+
+.reset-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--hw-border-gray);
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.maintenance-item:last-child,
+.reset-item:last-child {
+  border-bottom: none;
+}
+
+.maintenance-name,
+.reset-name,
+.reset-subtitle {
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+.maintenance-name,
+.reset-name {
+  font-size: var(--text-sm);
+}
+
+.reset-subtitle {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-align: center;
+}
+
+.maintenance-time,
+.reset-time {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* === HORIZON WALKER LAUNCH COUNTER === */
+.launch-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  min-height: 140px;
+}
+
+.launch-counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  gap: 1rem;
+}
+
+.launch-days {
+  font-family: var(--font-primary);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
+}
+
+.launch-date {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* === HORIZON WALKER MOBILE OPTIMIZATION === */
+@media (max-width: 768px) {
+  /* Title and spacing adjustments */
+  .title-only-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+  }
+
+  /* Timer cards mobile */
+  .secondary-timers-card .hw-timer-main-label {
+    font-size: 1.25rem;
+  }
+
+  .server-reset-card .hw-timer-main-label {
+    font-size: 2rem;
+  }
+
+  /* Launch counter mobile */
+  .launch-days {
+    font-size: var(--text-2xl);
+  }
+
+  .launch-card-content {
+    min-height: 120px;
+    gap: 0.75rem;
+  }
+
+  /* Region badge mobile */
+  .region-badge {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+    border-radius: 3px;
+  }
+
+  /* Timer items mobile */
+  .reset-item,
+  .maintenance-item {
+    padding: 0.5rem 0;
+  }
+
+  .maintenance-time,
+  .reset-time {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small mobile adjustments */
+  .title-only-section {
+    padding: 1rem 0;
+  }
+
+  /* Timer labels smaller */
+  .secondary-timers-card .hw-timer-main-label {
+    font-size: 1.1rem;
+  }
+
+  .server-reset-card .hw-timer-main-label {
+    font-size: 1.75rem;
+  }
+
+  /* Launch counter extra small */
+  .launch-days {
+    font-size: var(--text-xl);
+  }
+
+  .launch-card-content {
+    min-height: 100px;
+    gap: 0.5rem;
+  }
+
+  /* Region badge extra small */
+  .region-badge {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+  }
+
+  /* Smaller timer text */
+  .maintenance-time,
+  .reset-time {
+    font-size: 0.95rem;
+  }
+
+  .reset-subtitle {
+    font-size: 0.7rem;
+  }
+
+  /* Timer items compact */
+  .reset-item,
+  .maintenance-item {
+    padding: 0.4rem 0;
+    gap: 0.4rem;
+  }
+}

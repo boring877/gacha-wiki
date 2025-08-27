@@ -1,0 +1,299 @@
+---
+// Horizon Walker Clock Layout - Dedicated layout for Horizon Walker clock page
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import Footer from '../../components/Footer.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GeneralSEO from '../../components/GeneralSEO.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+
+// Import CSS files
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-layout.css';
+import '../../styles/clock/layout.css';
+import '../../styles/clock/horizon-walker.css';
+import { Image } from 'astro:assets';
+
+export interface Props {
+  title: string;
+  description: string;
+  games: any[];
+}
+
+const { title, description, games } = Astro.props;
+const game = games[0]; // Horizon Walker config
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+
+    <GeneralSEO
+      title={title}
+      description={description}
+      keywords={[
+        'Horizon Walker clock',
+        'Horizon Walker timer',
+        'Horizon Walker daily reset',
+        'Horizon Walker server time',
+        'Horizon Walker maintenance',
+      ]}
+      pageType="webapp"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+
+  <body class="horizon-walker-body">
+    <CustomScrollbar />
+
+    <!-- Optimized Background layers for better scroll performance -->
+    <div class="bg-layer hw-bg-primary"></div>
+    <div class="bg-layer hw-bg-accent-1"></div>
+    <div class="bg-layer hw-bg-accent-2"></div>
+
+    <div class="horizon-walker-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="horizon-walker" />
+      <MobileMenu />
+
+      <div class="horizon-walker-container">
+        <main class="horizon-walker-main modern-clock-page">
+          <div class="clock-container">
+            <!-- Page Title -->
+            <section class="title-only-section">
+              <h1 class="hw-title-only-heading">Horizon Walker Clock</h1>
+              <DecorativeLines />
+            </section>
+
+            <!-- First Hero Card - Server Reset Timer -->
+            <div class="master-clock-container">
+              <div class="master-clock server-reset-card" id="masterClock">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
+
+                <!-- Top Section: UTC Note and Current Time -->
+                <div class="hero-top-section">
+                  <div class="utc-info">
+                    <p class="utc-note" id="utcNote">This is based on UTC+9</p>
+                  </div>
+                  <div class="current-time-info">
+                    <div class="current-date" id="currentDate">Loading...</div>
+                    <div class="current-utc" id="currentUTC">UTC+9 --:--:--</div>
+                  </div>
+                </div>
+
+                <!-- Main Content Section: Game Info and Timer -->
+                <div class="hero-main-content">
+                  <!-- Left Side: Game Info -->
+                  <div class="game-section">
+                    <div class="game-info-container">
+                      <div class="game-wrapper">
+                        <div class="game-image-container" id="clockGameImageContainer">
+                          <Image
+                            class="game-image"
+                            id="clockGameImage"
+                            src={game.image}
+                            alt={game.name}
+                            loading="eager"
+                            width={160}
+                            height={160}
+                          />
+                        </div>
+                        <div class="game-info">
+                          <h3 class="hw-game-name" id="clockGameName">{game.name}</h3>
+                          <div class="region-badge">
+                            <span class="region-name">{game.server.name}</span>
+                          </div>
+                          <div class="game-status" set:html={game.server.status} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right Side: Timer Display -->
+                  <div class="timer-section">
+                    <div class="timer-description-section">
+                      <div class="hw-timer-main-label" id="timerDescription">
+                        {game.timerDescription}
+                      </div>
+                    </div>
+
+                    <div class="clock-display">
+                      <div class="time-unit-group">
+                        <div class="time-unit">
+                          <span class="time-value" id="clockHours">--</span>
+                          <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockMinutes">--</span>
+                          <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockSeconds">--</span>
+                          <span class="time-label">Seconds</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Second Hero Card - All Other Timers -->
+            <div class="master-clock-container secondary-timers-container">
+              <div class="master-clock secondary-timers-card" id="secondaryTimers">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
+
+                <!-- Game Timers Header -->
+                <div class="game-timers-header">
+                  <div class="timer-description-section">
+                    <div class="hw-timer-main-label">Horizon Walker Timers</div>
+                    <div class="timer-subtitle">
+                      Track all important Horizon Walker events and resets
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Timers Grid Container -->
+                <div class="timers-grid-wrapper">
+                  <!-- Primary Timers Row (Most Important) -->
+                  <div class="timer-section-group primary-timers">
+                    <div class="timers-row">
+                      <!-- Weekly & Monthly Reset Timer Card -->
+                      <div class="timer-card weekly-card priority-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">Weekly & Monthly Reset</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Weekly Reset -->
+                          <div class="reset-item">
+                            <div class="reset-name">Weekly Reset</div>
+                            <div class="reset-subtitle">Every Thursday at 10:00 KST</div>
+                            <div class="reset-time" id="weeklyTime">--:--:--</div>
+                          </div>
+                          <!-- Monthly Reset -->
+                          <div class="reset-item">
+                            <div class="reset-name">Monthly Reset</div>
+                            <div class="reset-subtitle">1st of each month at 00:00 UTC+9</div>
+                            <div class="reset-time" id="monthlyTime">--:--:--</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Maintenance Timer Card -->
+                      <div class="timer-card maintenance-card priority-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">Maintenance</div>
+                          <div class="server-status">
+                            <div class="status-dot" id="serverStatusDot"></div>
+                            <span class="status-text" id="serverStatusText">Online</span>
+                          </div>
+                        </div>
+                        <div class="timer-card-subtitle">
+                          {game.maintenance.subtitle}
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Maintenance Start Timer -->
+                          <div class="maintenance-item">
+                            <div class="maintenance-name" id="maintenanceStartLabel">
+                              Until Start
+                            </div>
+                            <div class="maintenance-time" id="maintenanceStartTime">--:--:--</div>
+                          </div>
+                          <!-- Maintenance End Timer -->
+                          <div class="maintenance-item">
+                            <div class="maintenance-name" id="maintenanceEndLabel">
+                              Servers Back
+                            </div>
+                            <div class="maintenance-time" id="maintenanceEndTime">--:--:--</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Secondary Timers Row -->
+                  <div class="timer-section-group secondary-timers">
+                    <div class="timers-row">
+                      <!-- Launch Timer Card -->
+                      <div class="timer-card launch-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">Korean Launch - Days Since</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="launchDays">---</div>
+                            <div class="launch-date">{game.displayDate}</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Steam Launch Timer Card -->
+                      <div class="timer-card steam-launch-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">Steam Launch - Days Since</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="steamLaunchDays">---</div>
+                            <div class="launch-date">{game.steamDisplayDate}</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Halloween Timer Card -->
+                      <div class="timer-card halloween-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">Halloween - Days Until</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="halloweenTime">---</div>
+                            <div class="launch-date">October 31st</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- New Year Timer Card -->
+                      <div class="timer-card newyear-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">New Year - Days Until</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="newyearTime">---</div>
+                            <div class="launch-date">January 1st</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <Footer />
+
+    <!-- Pass config data to JavaScript -->
+    <script define:vars={{ config: game }}>
+      window.horizonWalkerConfig = config;
+    </script>
+
+    <!-- Horizon Walker Clock Timer Script -->
+    <script src="/src/scripts/clock/horizon-walker.js"></script>
+  </body>
+</html>

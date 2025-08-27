@@ -35,6 +35,22 @@ export const clockLandingGames = [
       icon: '',
     },
   },
+  {
+    id: 'horizon-walker',
+    name: 'Horizon Walker',
+    description: 'Post-apocalyptic RPG',
+    image: '/images/games/horizon-walker/gameimg/gameicon.jpg',
+    url: '/clock/horizon-walker',
+    themeColor: 'var(--hw-primary-warm)',
+    active: true,
+    primaryTimer: {
+      name: 'Daily Reset',
+      type: 'daily',
+      resetHour: 15, // UTC (00:00 UTC+9)
+      resetMinute: 0,
+      icon: '',
+    },
+  },
 ];
 
 /**

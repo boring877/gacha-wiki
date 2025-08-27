@@ -119,6 +119,20 @@ export const horizonWalkerConfig = {
         },
       ],
     },
+    {
+      id: 'resources',
+      title: 'Resources',
+      emoji: '',
+      description: 'Tools and utilities for the game',
+      size: 'large',
+      guides: [
+        {
+          id: 'clock',
+          title: 'Clock',
+          url: '/clock/horizon-walker/',
+        },
+      ],
+    },
   ],
 };
 
