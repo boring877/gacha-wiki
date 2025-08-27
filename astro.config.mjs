@@ -19,8 +19,8 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  // Static site with Vercel API routes
-  output: 'static',
+  // Server-side rendering with Vercel for client-side navigation
+  output: 'server',
   // Build optimizations
   build: {
     // Inline stylesheets smaller than 4kb
