@@ -1,5 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
+import ZNBaseHead from '../../components/zone-nova/ZNBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -10,7 +10,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 
 // Import CSS files properly
-import '../../styles/colors.css';
+import '../../styles/games/zone-nova/zn-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/zone-nova/zn-layout.css';
@@ -31,73 +31,8 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
 
 <html lang="en">
   <head>
-    <BaseHead
-      title={title}
-      description={description || ''}
-      breadcrumbs={breadcrumbs}
-      shouldPreloadDefaultImage={false}
-    />
+    <ZNBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
-
-    <!-- Preload all Zone Nova character images for instant navigation -->
-    <link rel="preload" href="/images/games/zone-nova/characters/Afrodite.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Anubis.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Apollo.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Artemis.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Arthur.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Athena.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Bastet.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Chiya.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Cleopatra.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Freye.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Gaia.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/GreedMammon.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Guinevere.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Hera.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Horus.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/JoanofArc.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/kela.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Lancelot.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Leviathan.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Loki.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Lyra.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Merlin.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Mordred.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Naiya.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Nini.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Odin.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/penny.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Rose.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Shanna.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Shu.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Snow.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Tefnut.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Thor.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Yuis.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Zashiki-warashi.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/belphegar.jpg" as="image" />
-
-    <!-- Preload key Zone Nova assets -->
-    <link rel="preload" href="/images/games/zone-nova/zonenova.jpg" as="image" />
-
-    <!-- Preload key rune images for instant loading -->
-    <link rel="preload" href="/images/games/zone-nova/runes/Alpha.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/runes/Beth.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/runes/Daleth.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/runes/Epsilon.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/runes/Zahn.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/runes/Shattered-Foundation.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/runes/element.jpg" as="image" />
-
-    <!-- Preload critical CSS files for instant page transitions -->
-    <link
-      rel="preload"
-      href="/src/styles/games/zone-nova/zn-character-comparison-v2.css"
-      as="style"
-    />
-    <link rel="preload" href="/src/styles/games/zone-nova/zn-character-rankings.css" as="style" />
-    <link rel="preload" href="/src/styles/games/zone-nova/zn-tier-list.css" as="style" />
-    <link rel="preload" href="/src/styles/games/zone-nova/zn-runes.css" as="style" />
 
     <slot name="head" />
   </head>

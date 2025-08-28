@@ -1,5 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
+import ZNBaseHead from '../../components/zone-nova/ZNBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -10,7 +10,7 @@ import { Image } from 'astro:assets';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
 // Import CSS files properly
-import '../../styles/colors.css';
+import '../../styles/games/zone-nova/zn-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/zone-nova/zn-layout.css';
@@ -44,9 +44,8 @@ const {
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description || ''} />
+    <ZNBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
-
 
     <slot name="head" />
   </head>

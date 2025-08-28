@@ -1,0 +1,147 @@
+/* Zone Nova Color System - Consistent theming across all ZN components */
+
+:root {
+  /* Primary Zone Nova brand colors */
+  --zn-primary: #8a4fff;
+  --zn-primary-hover: #7c45e8;
+  --zn-primary-light: #a855f7;
+  --zn-primary-dark: #6b46c1;
+
+  /* Secondary colors */
+  --zn-secondary: #6b46c1;
+  --zn-secondary-hover: #5b21b6;
+  --zn-secondary-light: #8b5cf6;
+
+  /* Accent colors */
+  --zn-accent: #a855f7;
+  --zn-accent-hover: #9333ea;
+  --zn-accent-light: #c084fc;
+
+  /* Background colors */
+  --zn-bg-primary: #1a1a1a;
+  --zn-bg-secondary: #2a2a2a;
+  --zn-bg-tertiary: #3a3a3a;
+  --zn-bg-card: #2d2d30;
+  --zn-bg-hover: #404046;
+
+  /* Text colors */
+  --zn-text-primary: #ffffff;
+  --zn-text-secondary: #b3b3b3;
+  --zn-text-tertiary: #999999;
+  --zn-text-muted: #666666;
+
+  /* Border colors */
+  --zn-border: #404040;
+  --zn-border-light: #555555;
+  --zn-border-dark: #2a2a2a;
+
+  /* Status colors */
+  --zn-success: #10b981;
+  --zn-warning: #f59e0b;
+  --zn-error: #ef4444;
+  --zn-info: #3b82f6;
+
+  /* Rarity colors for Zone Nova characters */
+  --zn-legendary: #ff6b35;
+  --zn-epic: #8a4fff;
+  --zn-rare: #06d6a0;
+  --zn-common: #9ca3af;
+
+  /* Gradients */
+  --zn-gradient-primary: linear-gradient(135deg, var(--zn-primary) 0%, var(--zn-accent) 100%);
+  --zn-gradient-secondary: linear-gradient(135deg, var(--zn-secondary) 0%, var(--zn-primary) 100%);
+  --zn-gradient-card: linear-gradient(135deg, var(--zn-bg-card) 0%, var(--zn-bg-secondary) 100%);
+
+  /* Shadows */
+  --zn-shadow-sm: 0 1px 2px 0 rgba(138, 79, 255, 0.1);
+  --zn-shadow-md: 0 4px 6px -1px rgba(138, 79, 255, 0.1), 0 2px 4px -1px rgba(138, 79, 255, 0.06);
+  --zn-shadow-lg: 0 10px 15px -3px rgba(138, 79, 255, 0.1), 0 4px 6px -2px rgba(138, 79, 255, 0.05);
+  --zn-shadow-glow: 0 0 20px rgba(138, 79, 255, 0.3);
+
+  /* Transitions */
+  --zn-transition: all 0.2s ease-in-out;
+  --zn-transition-slow: all 0.3s ease-in-out;
+}
+
+/* Zone Nova specific component classes */
+.zn-card {
+  background: var(--zn-gradient-card);
+  border: 1px solid var(--zn-border);
+  border-radius: 12px;
+  box-shadow: var(--zn-shadow-md);
+  transition: var(--zn-transition);
+}
+
+.zn-card:hover {
+  border-color: var(--zn-primary);
+  box-shadow: var(--zn-shadow-glow);
+  transform: translateY(-2px);
+}
+
+.zn-button {
+  background: var(--zn-gradient-primary);
+  color: var(--zn-text-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--zn-transition);
+  box-shadow: var(--zn-shadow-sm);
+}
+
+.zn-button:hover {
+  background: var(--zn-gradient-secondary);
+  box-shadow: var(--zn-shadow-md);
+  transform: translateY(-1px);
+}
+
+.zn-text-gradient {
+  background: var(--zn-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Character rarity indicators */
+.zn-rarity-legendary {
+  color: var(--zn-legendary);
+}
+.zn-rarity-epic {
+  color: var(--zn-epic);
+}
+.zn-rarity-rare {
+  color: var(--zn-rare);
+}
+.zn-rarity-common {
+  color: var(--zn-common);
+}
+
+/* Utility classes */
+.zn-bg-primary {
+  background-color: var(--zn-bg-primary);
+}
+.zn-bg-secondary {
+  background-color: var(--zn-bg-secondary);
+}
+.zn-bg-tertiary {
+  background-color: var(--zn-bg-tertiary);
+}
+
+.zn-text-primary {
+  color: var(--zn-text-primary);
+}
+.zn-text-secondary {
+  color: var(--zn-text-secondary);
+}
+.zn-text-muted {
+  color: var(--zn-text-muted);
+}
+
+.zn-border {
+  border-color: var(--zn-border);
+}
+.zn-border-light {
+  border-color: var(--zn-border-light);
+}

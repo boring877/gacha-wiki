@@ -1,5 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -10,7 +10,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 
 // Import CSS files properly
-import '../../styles/colors.css';
+import '../../styles/games/silver-and-blood/sab-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
@@ -31,19 +31,18 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
+    <SABBaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
-
 
     <slot name="head" />
   </head>
   <body class="sab-body sirene-body">
     <CustomScrollbar />
     <!-- Background layers for visual depth -->
-    <div class="bg-layer bg-primary"></div>
-    <div class="bg-layer bg-accent-1"></div>
-    <div class="bg-layer bg-accent-2"></div>
-    <div class="bg-layer bg-accent-3"></div>
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
     <div class="bg-layer ancestral-vault-bg"></div>
     <div class="bg-layer sirene-bg"></div>
 
@@ -53,7 +52,7 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
       <MobileMenu />
 
       <div class="sab-container">
-        <main class="sab-main">
+        <main class="silver-and-blood-main" id="main-content">
           <!-- Sirene Hero Section -->
           {
             heroImage && gameTitle && (

@@ -1,0 +1,137 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                      HORIZON WALKER COLORS & BACKGROUNDS               */
+/*                    Global styles for HW theming system                 */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* HW CSS Variables - Global scope for client-side navigation */
+:root {
+  /* === HW PRIMARY COLOR PALETTE === */
+  --hw-primary-warm: #e8a547; /* Warm golden orange - main accent, sunshine-inspired */
+  --hw-secondary-coral: #ff7b7b; /* Soft coral pink - cheerful, warm contrast */
+  --hw-tertiary-sky: #7bb3ff; /* Bright sky blue - uplifting, peaceful */
+  --hw-accent-mint: #7bffb3; /* Fresh mint green - energizing, positive */
+  --hw-accent-lavender: #b37bff; /* Soft lavender purple - calming, magical */
+  --hw-accent-peach: #ffb37b; /* Warm peach - cozy, friendly */
+
+  /* === HW SPECIAL COLORS === */
+  --hw-sunshine-gold: #ffd700; /* Bright sunshine gold - treasure, rewards */
+  --hw-happy-pink: #ff69b4; /* Happy pink - special highlights */
+  --hw-ocean-blue: #4fc3f7; /* Ocean blue - cool, refreshing accent */
+
+  /* === HW TEXT COLORS === */
+  --hw-text-light: #ffffff; /* Pure white text for headings and titles */
+  --hw-text-medium: #ffffff; /* Pure white text for descriptions */
+  --hw-text-muted: #cccccc; /* Light gray muted text for subtle information */
+  --hw-text-white: #ffffff; /* Pure white for high contrast */
+  --hw-text-dark: #1a1a1a; /* Dark text for light backgrounds */
+  --hw-text-very-muted: #888888; /* Very muted text for subtle info */
+
+  /* === HW BACKGROUND COLORS === */
+  --hw-bg-dark: #2a2a2a; /* Clean dark background for cards and containers */
+  --hw-bg-darker: #1a1a1a; /* Darker background for main areas */
+  --hw-bg-medium: #2c2c2c; /* Medium dark background for inputs */
+  --hw-bg-light: #3a3a3a; /* Lighter background for hover states */
+
+  /* === HW BORDER COLORS === */
+  --hw-border-gray: #4a4a4a; /* Clean gray borders for inputs and cards */
+  --hw-border-light: #3a3a3a; /* Light borders for subtle separation */
+  --hw-border-muted: rgba(232, 165, 71, 0.15); /* Very subtle warm border for containers */
+  --hw-border-accent: rgba(232, 165, 71, 0.25); /* Slightly visible warm border for emphasis */
+  --hw-border-strong: rgba(232, 165, 71, 0.3); /* More visible warm border for section headers */
+
+  /* === HW INPUT COLORS === */
+  --hw-input-bg: #2c2c2c; /* Clean input background for filters and controls */
+  --hw-input-text: #ffffff; /* White input text for good contrast */
+  --hw-input-focus-bg: #3a3a3a; /* Input background on focus/hover */
+  --hw-input-focus-border: var(--hw-primary-warm); /* Input border color on focus - warm orange */
+
+  /* === HW CARD COLORS === */
+  --hw-card-bg: #2a2a2a; /* Clean card background color */
+  --hw-card-bg-gradient: linear-gradient(135deg, var(--hw-bg-dark) 0%, var(--hw-bg-darker) 100%);
+  --hw-card-border: #3a3a3a; /* Clean card border color */
+
+  /* === HW RANKING COLORS === */
+  --hw-rankings-bg: linear-gradient(135deg, var(--hw-bg-darker) 0%, var(--hw-bg-dark) 100%);
+  --hw-rank-gold: #ffd700; /* Bright gold rank color */
+  --hw-rank-silver: #c0c0c0; /* Silver rank color */
+  --hw-rank-bronze: #cd7f32; /* Bronze rank color */
+  --hw-error-red: #dc3545; /* Error/danger red color */
+  --hw-muted-text: #999999; /* Clean muted text color */
+
+  /* === HW GRADIENTS === */
+  --hw-gold-gradient: linear-gradient(
+    135deg,
+    #ffd700,
+    #ffeb3b
+  ); /* Bright sunshine gold badge gradient */
+  --hw-silver-gradient-alt: linear-gradient(135deg, #c0c4c0, #a9ada9); /* Silver badge gradient */
+  --hw-error-gradient: linear-gradient(135deg, #dc3545, #b22222); /* Error button gradient */
+  --hw-character-info-bg: linear-gradient(135deg, var(--hw-bg-darker) 0%, var(--hw-bg-dark) 100%);
+  --hw-white: #ffffff; /* Pure white text */
+
+  /* === HW UI ELEMENTS === */
+  --hw-stat-bg: rgba(255, 255, 255, 0.1); /* Clean stat item background */
+  --hw-stat-border: rgba(255, 255, 255, 0.2); /* Clean stat item border */
+  --hw-rank-number-border: rgba(255, 255, 255, 0.2); /* Clean rank number border */
+  --hw-analysis-bg: rgba(60, 60, 60, 0.3); /* Clean character analysis background */
+
+  /* === HW DIMENSIONS === */
+  --hw-radius-sm: 4px; /* Small border radius */
+  --hw-radius-md: 8px; /* Medium border radius */
+  --hw-radius-lg: 12px; /* Large border radius */
+  --hw-spacing-xs: 0.25rem; /* Extra small spacing */
+  --hw-spacing-sm: 0.5rem; /* Small spacing */
+  --hw-spacing-md: 1rem; /* Medium spacing */
+  --hw-spacing-lg: 1.5rem; /* Large spacing */
+  --hw-spacing-xl: 2rem; /* Extra large spacing */
+
+  /* === HW COMPLEX GRADIENTS === */
+  --hw-primary-gradient: linear-gradient(
+    135deg,
+    var(--hw-primary-green),
+    var(--hw-secondary-brown)
+  );
+  --hw-nature-gradient: linear-gradient(135deg, var(--hw-primary-green), var(--hw-dark-green));
+  --hw-earth-gradient: linear-gradient(135deg, var(--hw-secondary-brown), var(--hw-dark-brown));
+  --hw-card-gradient: linear-gradient(135deg, var(--hw-card-bg), var(--hw-bg-darker));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                            BACKGROUND LAYERS                            */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Base background layer styling - Global for all HW pages */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* HW Background Layers - Global for client-side navigation */
+.hw-bg-primary {
+  background: linear-gradient(135deg, #1a1e1a 0%, #2a2e2a 50%, #1a1e1a 100%);
+}
+
+.hw-bg-accent-1 {
+  background: radial-gradient(circle at 15% 85%, rgba(232, 165, 71, 0.08), transparent 60%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.hw-bg-accent-2 {
+  background: radial-gradient(circle at 85% 15%, rgba(255, 123, 123, 0.06), transparent 60%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.hw-bg-accent-3 {
+  background: radial-gradient(circle at 50% 50%, rgba(123, 179, 255, 0.05), transparent 60%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.hw-bg-accent-5 {
+  background: radial-gradient(circle at 75% 75%, rgba(255, 179, 123, 0.06), transparent 70%);
+  pointer-events: none;
+}

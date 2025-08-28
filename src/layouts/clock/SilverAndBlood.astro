@@ -1,6 +1,6 @@
 ---
 // Silver and Blood Clock Layout - Dedicated layout for Silver and Blood clock page
-import BaseHead from '../../components/BaseHead.astro';
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
 import Header from '../../components/Header.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
@@ -10,7 +10,7 @@ import GeneralSEO from '../../components/GeneralSEO.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 
 // Import CSS files
-import '../../styles/colors.css';
+import '../../styles/games/silver-and-blood/sab-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/clock/layout.css';
@@ -32,7 +32,7 @@ const timers = game.timers[game.currentRegion];
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <SABBaseHead title={title} description={description} />
 
     <GeneralSEO
       title={title}

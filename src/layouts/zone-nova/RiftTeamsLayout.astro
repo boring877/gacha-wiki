@@ -2,7 +2,7 @@
 // Zone Nova Rift Teams Layout
 // Specialized layout for rift team database pages following ZN structure
 
-import BaseHead from '../../components/BaseHead.astro';
+import ZNBaseHead from '../../components/zone-nova/ZNBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -13,7 +13,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 
 // Import CSS files properly
-import '../../styles/colors.css';
+import '../../styles/games/zone-nova/zn-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/zone-nova/zn-layout.css';
@@ -45,14 +45,13 @@ const riftMeta = riftSpecificMeta || {
 
 <html lang="en">
   <head>
-    <BaseHead
+    <ZNBaseHead
       title={title}
       description={description || ''}
       breadcrumbs={breadcrumbs}
       shouldPreloadDefaultImage={false}
     />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
-
 
     <slot name="head" />
   </head>

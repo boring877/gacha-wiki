@@ -9,9 +9,9 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
 // Import CSS files properly
-import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-colors.css';
 import '../../styles/games/horizon-walker/hw-layout.css';
 import '../../styles/games/horizon-walker/hw-badges.css';
 import '../../styles/games/horizon-walker/hw-character.css';
@@ -49,7 +49,7 @@ const { title, description, gameTitle } = Astro.props;
       <MobileMenu />
 
       <div class="horizon-walker-container">
-        <main class="horizon-walker-main">
+        <main class="horizon-walker-main" id="main-content">
           <!-- Character Database Hero Section -->
           <section class="hw-char-db-hero-section">
             <!-- Page Title -->

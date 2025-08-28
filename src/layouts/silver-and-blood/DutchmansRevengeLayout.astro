@@ -1,5 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
@@ -9,7 +9,7 @@ import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
 // Import only essential CSS files
-import '../../styles/colors.css';
+import '../../styles/games/silver-and-blood/sab-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
@@ -29,16 +29,16 @@ const { meta, intro, gameplayMechanics, chapterGuides, events } = data;
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description || ''} />
+    <SABBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
   </head>
   <body class="sab-body">
     <CustomScrollbar />
     <!-- Background layers for visual depth -->
-    <div class="bg-layer bg-primary"></div>
-    <div class="bg-layer bg-accent-1"></div>
-    <div class="bg-layer bg-accent-2"></div>
-    <div class="bg-layer bg-accent-3"></div>
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
 
     <div class="sab-content">
       <Header />
@@ -46,7 +46,7 @@ const { meta, intro, gameplayMechanics, chapterGuides, events } = data;
       <MobileMenu />
 
       <div class="sab-container">
-        <main class="sab-main">
+        <main class="silver-and-blood-main" id="main-content">
           <!-- Title Section -->
           {
             gameTitle && (

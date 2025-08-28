@@ -1,6 +1,6 @@
 ---
 // Zone Nova Clock Layout - Dedicated layout for Zone Nova clock page
-import BaseHead from '../../components/BaseHead.astro';
+import ZNBaseHead from '../../components/zone-nova/ZNBaseHead.astro';
 import Header from '../../components/Header.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
@@ -11,7 +11,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import { getActiveRifts, getRiftsWithDynamicStatus } from '../../data/zone-nova/rifts.js';
 
 // Import CSS files
-import '../../styles/colors.css';
+import '../../styles/games/zone-nova/zn-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/clock/layout.css';
@@ -36,7 +36,7 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <ZNBaseHead title={title} description={description} />
 
     <GeneralSEO
       title={title}

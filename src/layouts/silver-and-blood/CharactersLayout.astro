@@ -1,5 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -9,9 +9,9 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 
 // Import CSS files
-import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-colors.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
 import '../../styles/games/silver-and-blood/sab-badge-colours.css';
 import '../../styles/games/silver-and-blood/sab-character-styles.css';
@@ -27,7 +27,7 @@ const { title, description, gameTitle } = Astro.props;
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description || ''} />
+    <SABBaseHead title={title} description={description || ''} />
     <GameSEO
       gameKey="silver-and-blood"
       title={title}
@@ -40,10 +40,10 @@ const { title, description, gameTitle } = Astro.props;
   <body class="sab-body">
     <CustomScrollbar />
     <!-- Background layers for visual depth -->
-    <div class="bg-layer bg-primary"></div>
-    <div class="bg-layer bg-accent-1"></div>
-    <div class="bg-layer bg-accent-2"></div>
-    <div class="bg-layer bg-accent-3"></div>
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
 
     <div class="sab-content">
       <Header />

@@ -1,0 +1,130 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                    SILVER AND BLOOD COLORS & BACKGROUNDS               */
+/*                    Global styles for SAB theming system                */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* SAB CSS Variables - Global scope for consistent theming */
+:root {
+  /* === SAB PRIMARY COLOR PALETTE === */
+  --sab-calm-red: #c26b6b; /* Primary red - muted for readability, blood-inspired */
+  --sab-calm-blue: #5a7ba7; /* Primary blue - steel/silver tone, metallic feeling */
+  --sab-blue-silver: #b8c5d1; /* Metallic accent - silver-blue for premium elements */
+  --sab-dark-red: #a64d4d; /* Dark red variant - for emphasis and depth */
+  --sab-dark-blue: #4a6b8a; /* Dark blue variant - deeper metallic tone */
+  --sab-light-red: #d67e7e; /* Light red variant - for backgrounds and subtle highlights */
+  --sab-light-blue: #7a95b8; /* Light blue variant - softer metallic for large areas */
+
+  /* === SAB SPECIAL COLORS === */
+  --sab-muted-gold: #d4af37; /* Treasure/reward gold - warm accent for valuable items */
+  --sab-silver-accent: #9fb3c4; /* Pure silver tone - metallic highlights and borders */
+  --sab-blood-accent: #b85a5a; /* Blood red accent - intense moments and critical elements */
+
+  /* === SAB TEXT COLORS === */
+  --sab-text-light: #c0c0c0; /* Light gray text for headings and titles */
+  --sab-text-medium: #a0a0a0; /* Medium gray text for descriptions */
+  --sab-text-muted: #888888; /* Muted gray text for subtle information */
+  --sab-text-white: #e0e0e0; /* Off-white text for high contrast */
+  --sab-text-dark: #1a1a1a; /* Dark text for light backgrounds */
+  --sab-text-very-muted: #888888; /* Very muted text for subtle info */
+
+  /* === SAB BACKGROUND COLORS === */
+  --sab-bg-dark: #2a2a2a; /* Dark background for cards and containers */
+  --sab-bg-darker: #1a1a1a; /* Darker background for main areas */
+  --sab-bg-medium: #2c2c2c; /* Medium dark background for inputs */
+  --sab-bg-light: #3a3a3a; /* Lighter background for hover states */
+
+  /* === SAB BORDER COLORS === */
+  --sab-border-gray: #4f4f4f; /* Gray borders for inputs and cards */
+  --sab-border-light: #3a3a3a; /* Light borders for subtle separation */
+
+  /* === SAB INPUT COLORS === */
+  --sab-input-bg: #2c2c2c; /* Input background for filters and controls */
+  --sab-input-text: #e0e0e0; /* Input text color for good contrast */
+  --sab-input-focus-bg: #3a3a3a; /* Input background on focus/hover */
+  --sab-input-focus-border: #c0c0c0; /* Input border color on focus */
+
+  /* === SAB CARD COLORS === */
+  --sab-card-bg: #2a2a2a; /* Card background color */
+  --sab-card-bg-gradient: linear-gradient(135deg, var(--sab-bg-dark) 0%, var(--sab-bg-darker) 100%);
+  --sab-card-border: #3a3a3a; /* Card border color */
+
+  /* === SAB RANKING COLORS === */
+  --sab-rankings-bg: linear-gradient(135deg, var(--sab-bg-darker) 0%, var(--sab-bg-dark) 100%);
+  --sab-rank-gold: #ffd700; /* Gold rank color */
+  --sab-rank-silver: #c0c0c0; /* Silver rank color */
+  --sab-rank-bronze: #cd7f32; /* Bronze rank color */
+  --sab-error-red: #dc3545; /* Error/danger red color */
+  --sab-muted-text: #666666; /* Very muted text color */
+
+  /* === SAB GRADIENTS === */
+  --sab-gold-gradient: linear-gradient(135deg, #ffd700, #ffed4a); /* Gold badge gradient */
+  --sab-silver-gradient-alt: linear-gradient(135deg, #c0c0c0, #a9a9a9); /* Silver badge gradient */
+  --sab-error-gradient: linear-gradient(135deg, #dc3545, #b22222); /* Error button gradient */
+  --sab-character-info-bg: linear-gradient(
+    135deg,
+    var(--sab-bg-darker) 0%,
+    var(--sab-bg-dark) 100%
+  );
+  --sab-white: #ffffff; /* Pure white text */
+
+  /* === SAB UI ELEMENTS === */
+  --sab-stat-bg: rgba(192, 192, 192, 0.1); /* Stat item background */
+  --sab-stat-border: rgba(192, 192, 192, 0.2); /* Stat item border */
+  --sab-rank-number-border: rgba(255, 255, 255, 0.2); /* Rank number border */
+  --sab-analysis-bg: rgba(60, 60, 60, 0.3); /* Character analysis background */
+
+  /* === SAB DIMENSIONS === */
+  --sab-radius-sm: 4px; /* Small border radius */
+  --sab-radius-md: 8px; /* Medium border radius */
+  --sab-radius-lg: 12px; /* Large border radius */
+  --sab-spacing-xs: 0.25rem; /* Extra small spacing */
+  --sab-spacing-sm: 0.5rem; /* Small spacing */
+  --sab-spacing-md: 1rem; /* Medium spacing */
+  --sab-spacing-lg: 1.5rem; /* Large spacing */
+  --sab-spacing-xl: 2rem; /* Extra large spacing */
+
+  /* === SAB COMPLEX GRADIENTS === */
+  --sab-primary-gradient: linear-gradient(135deg, var(--sab-calm-blue), var(--sab-calm-red));
+  --sab-silver-gradient: linear-gradient(135deg, var(--sab-blue-silver), var(--sab-light-blue));
+  --sab-blood-gradient: linear-gradient(135deg, var(--sab-calm-red), var(--sab-dark-red));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                            BACKGROUND LAYERS                            */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Base background layer styling - Global for all SAB pages */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* SAB Background Layers - Global for consistent theming */
+.sab-bg-primary {
+  background: linear-gradient(135deg, #2a1e1e 0%, #1a1a1a 50%, #2a1e1e 100%);
+}
+
+.sab-bg-accent-1 {
+  background: radial-gradient(circle at 20% 80%, rgba(194, 107, 107, 0.08), transparent 60%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.sab-bg-accent-2 {
+  background: radial-gradient(circle at 80% 20%, rgba(90, 123, 167, 0.06), transparent 60%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.sab-bg-accent-3 {
+  background: radial-gradient(circle at 50% 50%, rgba(184, 197, 209, 0.05), transparent 60%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.sab-bg-accent-4 {
+  background: radial-gradient(circle at 70% 30%, rgba(180, 90, 90, 0.06), transparent 70%);
+  pointer-events: none;
+}

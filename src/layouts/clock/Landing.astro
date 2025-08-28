@@ -1,6 +1,6 @@
 ---
 // Clock Landing Layout - Dedicated layout for the clock landing page
-import BaseHead from '../../components/BaseHead.astro';
+import GeneralBaseHead from '../../components/GeneralBaseHead.astro';
 import Header from '../../components/Header.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import Footer from '../../components/Footer.astro';
@@ -27,7 +27,7 @@ const { title, description, games } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <GeneralBaseHead title={title} description={description} />
 
     <GeneralSEO
       title={title}

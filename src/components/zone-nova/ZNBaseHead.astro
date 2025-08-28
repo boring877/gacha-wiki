@@ -1,5 +1,5 @@
 ---
-// Lightweight BaseHead for Horizon Walker - Optimized for instant loading
+// Lightweight BaseHead for Zone Nova - Optimized for instant loading
 export interface Props {
   title: string;
   description: string;
@@ -8,11 +8,7 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {
-  title,
-  description,
-  image = '/images/games/horizon-walker/gameimg/gameicon.jpg',
-} = Astro.props;
+const { title, description, image = '/images/games/zone-nova/gameimg/gameicon.jpg' } = Astro.props;
 ---
 
 <!-- Essential Metadata Only -->
@@ -65,8 +61,9 @@ const {
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
     --amber-glow: #ffb74d;
-    --hw-primary: #4caf50;
-    --hw-accent: #81c784;
+    --zn-primary: #8a4fff;
+    --zn-secondary: #6b46c1;
+    --zn-accent: #a855f7;
   }
 
   body {
@@ -87,7 +84,7 @@ const {
     min-height: 72px;
   }
 
-  .horizon-walker-main {
+  .zone-nova-main {
     min-height: 60vh;
   }
 
@@ -101,5 +98,3 @@ const {
     }
   }
 </style>
-
-<!-- Client-side navigation removed - causing layout issues -->

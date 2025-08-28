@@ -10,9 +10,9 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 
 // Import CSS files properly
-import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-colors.css';
 import '../../styles/games/horizon-walker/hw-layout.css';
 import '../../styles/games/horizon-walker/hw-landing-page.css';
 
@@ -46,7 +46,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       <MobileMenu />
 
       <div class="horizon-walker-container">
-        <main class="horizon-walker-main">
+        <main class="horizon-walker-main" id="main-content">
           <!-- Horizon Walker Hero Section -->
           {
             heroImage && gameTitle && (

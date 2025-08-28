@@ -1,6 +1,6 @@
 ---
 // Layout for Gacha Wikis Library
-import BaseHead from '../components/BaseHead.astro';
+import GeneralBaseHead from '../components/GeneralBaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileMenu from '../components/MobileMenu.astro';
@@ -24,7 +24,7 @@ const { title, description } = Astro.props;
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description || ''} />
+    <GeneralBaseHead title={title} description={description || ''} />
     <GeneralSEO
       title={title}
       description={description ||

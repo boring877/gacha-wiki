@@ -1,5 +1,5 @@
 ---
-// Lightweight BaseHead for Horizon Walker - Optimized for instant loading
+// Lightweight BaseHead for general site pages - Optimized for instant loading
 export interface Props {
   title: string;
   description: string;
@@ -8,11 +8,7 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {
-  title,
-  description,
-  image = '/images/games/horizon-walker/gameimg/gameicon.jpg',
-} = Astro.props;
+const { title, description, image = '/images/gachawiki-og-image.jpg' } = Astro.props;
 ---
 
 <!-- Essential Metadata Only -->
@@ -62,11 +58,14 @@ const {
   :root {
     --bg-primary: #1a1a1a;
     --bg-secondary: #2a2a2a;
+    --bg-tertiary: #3a3a3a;
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
+    --text-tertiary: #999999;
     --amber-glow: #ffb74d;
-    --hw-primary: #4caf50;
-    --hw-accent: #81c784;
+    --border-color: #404040;
+    --accent-primary: #6366f1;
+    --accent-hover: #4f46e5;
   }
 
   body {
@@ -87,7 +86,7 @@ const {
     min-height: 72px;
   }
 
-  .horizon-walker-main {
+  .main-content {
     min-height: 60vh;
   }
 
@@ -101,5 +100,3 @@ const {
     }
   }
 </style>
-
-<!-- Client-side navigation removed - causing layout issues -->

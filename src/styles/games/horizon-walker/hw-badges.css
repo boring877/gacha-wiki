@@ -1,142 +1,145 @@
 /* Horizon Walker Badge System - Simple, No Shadows/Glows */
 
-/* Base Badge Styling */
-.hw-badge {
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: inline-block;
-  border: none;
-}
-
-/* Rarity Badges */
-.hw-badge[data-rarity='EX'] {
-  background: #ffd700;
-  color: #1a1a1a;
-}
-
-.hw-badge[data-rarity='SS'] {
-  background: #9c27b0;
-  color: #ffffff;
-}
-
-.hw-badge[data-rarity='S'] {
-  background: #673ab7;
-  color: #ffffff;
-}
-
-.hw-badge[data-rarity='A'] {
-  background: #4caf50;
-  color: #ffffff;
-}
-
-.hw-badge[data-rarity='B'] {
-  background: #607d8b;
-  color: #ffffff;
-}
-
-/* Type Badges */
-.hw-badge[data-type='Skill'] {
-  background: var(--hw-primary-warm);
-  color: #1a1a1a;
-}
-
-.hw-badge[data-type='Passive'] {
-  background: #9333ea;
-  color: #ffffff;
-}
-
-.hw-badge[data-type='Unique'] {
-  background: #9c27b0;
-  color: #ffffff;
-}
-
-.hw-badge[data-type='Trait'] {
-  background: #9c27b0;
-  color: #ffffff;
-}
-
-.hw-badge[data-type='Signature'],
-.hw-badge[data-type*='Signature'] {
-  background: #dc2626;
-  color: #ffffff;
-  font-weight: 700;
-}
-
-/* Cost Badge */
-.hw-badge[data-type='Cost'],
-.cost-badge {
-  background: var(--hw-primary-warm);
-  color: #1a1a1a;
-  font-weight: 700;
-  font-size: 0.8rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Weapon Type Badge */
-.hw-badge[data-type='WeaponType'] {
-  background: #ff6f61;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-/* Cost badge in mobile header - smaller, complementary to rarity badge */
-.header-badges .cost-badge {
-  font-size: 0.75rem;
-  padding: 0.35rem 0.7rem;
-}
-
-/* Character Tag Categories for Mobile Cards */
-.character-tag {
-  padding: 0.25rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: capitalize;
-  border: 1px solid;
-  display: inline-block;
-}
-
-.character-tag.damage-scaling {
-  background: color-mix(in srgb, var(--hw-secondary-coral) 20%, transparent);
-  border-color: color-mix(in srgb, var(--hw-secondary-coral) 50%, transparent);
-  color: color-mix(in srgb, var(--hw-secondary-coral) 90%, transparent);
-}
-
-.character-tag.team-utility {
-  background: color-mix(in srgb, var(--hw-tertiary-sky) 20%, transparent);
-  border-color: color-mix(in srgb, var(--hw-tertiary-sky) 50%, transparent);
-  color: color-mix(in srgb, var(--hw-tertiary-sky) 90%, transparent);
-}
-
-.character-tag.self-utility {
-  background: color-mix(in srgb, var(--hw-accent-mint) 20%, transparent);
-  border-color: color-mix(in srgb, var(--hw-accent-mint) 50%, transparent);
-  color: color-mix(in srgb, var(--hw-accent-mint) 90%, transparent);
-}
-
-.character-tag.control {
-  background: color-mix(in srgb, #9c27b0 20%, transparent);
-  border-color: color-mix(in srgb, #9c27b0 50%, transparent);
-  color: color-mix(in srgb, #9c27b0 90%, transparent);
-}
-
-.character-tag.general-mechanic {
-  background: rgba(232, 165, 71, 0.2);
-  border-color: var(--hw-primary-warm);
-  color: var(--hw-primary-warm);
-}
-
-/* Mobile responsive character tags */
-@media (max-width: 480px) {
-  .character-tag {
-    font-size: 0.65rem;
-    padding: 0.2rem 0.5rem;
+/* Scope all HW badge styles to the main content area */
+@scope (.horizon-walker-main) {
+  /* Base Badge Styling */
+  .hw-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    border: none;
   }
-}
+
+  /* Rarity Badges */
+  .hw-badge[data-rarity='EX'] {
+    background: #ffd700;
+    color: #1a1a1a;
+  }
+
+  .hw-badge[data-rarity='SS'] {
+    background: #9c27b0;
+    color: #ffffff;
+  }
+
+  .hw-badge[data-rarity='S'] {
+    background: #673ab7;
+    color: #ffffff;
+  }
+
+  .hw-badge[data-rarity='A'] {
+    background: #4caf50;
+    color: #ffffff;
+  }
+
+  .hw-badge[data-rarity='B'] {
+    background: #607d8b;
+    color: #ffffff;
+  }
+
+  /* Type Badges */
+  .hw-badge[data-type='Skill'] {
+    background: var(--hw-primary-warm);
+    color: #1a1a1a;
+  }
+
+  .hw-badge[data-type='Passive'] {
+    background: #9333ea;
+    color: #ffffff;
+  }
+
+  .hw-badge[data-type='Unique'] {
+    background: #9c27b0;
+    color: #ffffff;
+  }
+
+  .hw-badge[data-type='Trait'] {
+    background: #9c27b0;
+    color: #ffffff;
+  }
+
+  .hw-badge[data-type='Signature'],
+  .hw-badge[data-type*='Signature'] {
+    background: #dc2626;
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  /* Cost Badge */
+  .hw-badge[data-type='Cost'],
+  .cost-badge {
+    background: var(--hw-primary-warm);
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Weapon Type Badge */
+  .hw-badge[data-type='WeaponType'] {
+    background: #ff6f61;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  /* Cost badge in mobile header - smaller, complementary to rarity badge */
+  .header-badges .cost-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.7rem;
+  }
+
+  /* Character Tag Categories for Mobile Cards */
+  .character-tag {
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    border: 1px solid;
+    display: inline-block;
+  }
+
+  .character-tag.damage-scaling {
+    background: color-mix(in srgb, var(--hw-secondary-coral) 20%, transparent);
+    border-color: color-mix(in srgb, var(--hw-secondary-coral) 50%, transparent);
+    color: color-mix(in srgb, var(--hw-secondary-coral) 90%, transparent);
+  }
+
+  .character-tag.team-utility {
+    background: color-mix(in srgb, var(--hw-tertiary-sky) 20%, transparent);
+    border-color: color-mix(in srgb, var(--hw-tertiary-sky) 50%, transparent);
+    color: color-mix(in srgb, var(--hw-tertiary-sky) 90%, transparent);
+  }
+
+  .character-tag.self-utility {
+    background: color-mix(in srgb, var(--hw-accent-mint) 20%, transparent);
+    border-color: color-mix(in srgb, var(--hw-accent-mint) 50%, transparent);
+    color: color-mix(in srgb, var(--hw-accent-mint) 90%, transparent);
+  }
+
+  .character-tag.control {
+    background: color-mix(in srgb, #9c27b0 20%, transparent);
+    border-color: color-mix(in srgb, #9c27b0 50%, transparent);
+    color: color-mix(in srgb, #9c27b0 90%, transparent);
+  }
+
+  .character-tag.general-mechanic {
+    background: rgba(232, 165, 71, 0.2);
+    border-color: var(--hw-primary-warm);
+    color: var(--hw-primary-warm);
+  }
+
+  /* Mobile responsive character tags */
+  @media (max-width: 480px) {
+    .character-tag {
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+    }
+  }
+} /* End @scope (.horizon-walker-main) */
