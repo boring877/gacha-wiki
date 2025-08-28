@@ -14,9 +14,9 @@ export const freyeData = {
 
   // Base Stats (Level 80)
   stats: {
-    hp: '9,180', // e.g., '10,520'
-    attack: '1,184', // e.g., '794'
-    defense: '729', // e.g., '1,232'
+    hp: 9180, // e.g., '10,520'
+    attack: 1184, // e.g., '794'
+    defense: 729, // e.g., '1,232'
   },
 
   // Skills
@@ -84,9 +84,9 @@ export const freyeData = {
     name: 'Lamplight Study',
     image: 'Freyecard', // Using the specified image name
     stats: {
-      hp: '6,000', // e.g., '8,600'
-      attack: '600', // e.g., '480'
-      defense: '600', // e.g., '690'
+      hp: 6000, // e.g., '8,600'
+      attack: 600, // e.g., '480'
+      defense: 600, // e.g., '690'
     },
     effects: [
       'Attack power increased by 40%',

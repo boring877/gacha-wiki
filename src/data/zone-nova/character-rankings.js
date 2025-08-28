@@ -29,21 +29,22 @@ function calculateRankings() {
       .sort((a, b) => parseStatValue(b.stats[statKey]) - parseStatValue(a.stats[statKey]));
 
     rankings[statKey] = {};
-    let currentRank = 1;
 
+    // Handle ties properly - characters with same stat value get same rank
+    let currentRank = 1;
     sorted.forEach((char, index) => {
-      // Handle ties - characters with same value get same rank
-      if (
-        index > 0 &&
-        parseStatValue(char.stats[statKey]) === parseStatValue(sorted[index - 1].stats[statKey])
-      ) {
-        rankings[statKey][char.id] = rankings[statKey][sorted[index - 1].id];
-      } else {
-        rankings[statKey][char.id] = currentRank;
+      if (index > 0) {
+        const prevValue = parseStatValue(sorted[index - 1].stats[statKey]);
+        const currValue = parseStatValue(char.stats[statKey]);
+
+        // If current value is different from previous, update rank to index + 1
+        if (currValue !== prevValue) {
+          currentRank = index + 1;
+        }
+        // If values are the same, keep the same rank
       }
-      // For ties: skip to next available rank position
-      // This ensures proper ranking like: 1, 2, 2, 4 (not 1, 2, 2, 5)
-      currentRank = index + 2; // Next available rank position
+
+      rankings[statKey][char.id] = currentRank;
     });
   });
 
@@ -92,16 +93,20 @@ function calculateOverallAnalysis() {
   );
 
   // Assign overall ranks with proper tie handling
-  let currentRank = 1;
+  let currentOverallRank = 1;
   sortedCharacters.forEach((entry, index) => {
-    // Handle ties - characters with same totalRankScore get same rank
-    if (index > 0 && entry.totalRankScore === sortedCharacters[index - 1].totalRankScore) {
-      analysis[entry.character.id].overallRank =
-        analysis[sortedCharacters[index - 1].character.id].overallRank;
-    } else {
-      analysis[entry.character.id].overallRank = currentRank;
+    if (index > 0) {
+      const prevScore = sortedCharacters[index - 1].totalRankScore;
+      const currScore = entry.totalRankScore;
+
+      // If current score is different from previous, update rank to index + 1
+      if (currScore !== prevScore) {
+        currentOverallRank = index + 1;
+      }
+      // If scores are the same, keep the same rank
     }
-    currentRank = index + 2; // Next available rank position (handles gaps properly)
+
+    analysis[entry.character.id].overallRank = currentOverallRank;
   });
 
   return analysis;

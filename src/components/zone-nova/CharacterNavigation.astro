@@ -295,12 +295,19 @@ const forceRender = charactersByDatabaseOrder.length > 0;
     function updateNavigationPanel() {
       if (!elements.navPanel) return;
 
-      const characters = getCurrentCharacterList();
-      const currentIndex = characters.findIndex(char => char.slug === currentCharacterSlug);
+      let characters = getCurrentCharacterList();
+      let currentIndex = characters.findIndex(char => char.slug === currentCharacterSlug);
 
       if (currentIndex === -1) {
-        elements.navPanel.style.display = 'none';
-        return;
+        // Character is filtered out - use full unfiltered list as fallback
+        characters = [...ZONE_NOVA_CHARACTERS].sort((a, b) => a.name.localeCompare(b.name));
+        currentIndex = characters.findIndex(char => char.slug === currentCharacterSlug);
+
+        if (currentIndex === -1) {
+          // Only hide if character truly doesn't exist
+          elements.navPanel.style.display = 'none';
+          return;
+        }
       }
 
       elements.navPanel.style.display = '';
@@ -395,35 +402,8 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       try {
         // Add loading state to navigation panel only (safer than body manipulation)
         const navPanel = elements.navPanel;
-        if (navPanel) {
-          navPanel.style.opacity = '0.7';
-          navPanel.style.transition = 'opacity 0.1s ease';
-          navPanel.style.pointerEvents = 'none';
-
-          // Add loading indicator
-          const loadingIndicator = document.createElement('div');
-          loadingIndicator.style.cssText = `
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 183, 77, 0.9);
-            color: #000;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-            z-index: var(--z-notification);
-            pointer-events: none;
-          `;
-          loadingIndicator.textContent = 'Loading...';
-          loadingIndicator.id = 'zn-nav-loading';
-          navPanel.style.position = 'relative';
-          navPanel.appendChild(loadingIndicator);
-        }
-
-        // For faster perception, use location.replace to avoid back button issues
-        window.location.replace(url);
+        // Navigate instantly without any loading indicator
+        window.location.assign(url);
         return true;
       } catch (error: unknown) {
         // Reset navigation panel state on error
@@ -557,5 +537,32 @@ const forceRender = charactersByDatabaseOrder.length > 0;
         znPerfManager.characterListCacheKey = '';
       }
     });
+  });
+</script>
+
+<script>
+  // Prefetch adjacent pages for SSG
+  document.addEventListener('DOMContentLoaded', () => {
+    const prevBtn = document.querySelector('.nav-btn-prev');
+    const nextBtn = document.querySelector('.nav-btn-next');
+
+    // Get URLs from the buttons
+    const prevUrl = prevBtn?.getAttribute('data-url');
+    const nextUrl = nextBtn?.getAttribute('data-url');
+
+    // Create prefetch links in head for faster loading
+    if (prevUrl) {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = prevUrl;
+      document.head.appendChild(link);
+    }
+
+    if (nextUrl) {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = nextUrl;
+      document.head.appendChild(link);
+    }
   });
 </script>

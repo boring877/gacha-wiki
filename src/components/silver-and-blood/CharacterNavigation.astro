@@ -35,6 +35,29 @@ const forceRender = charactersByDatabaseOrder.length > 0;
   @import '../../styles/components/silver-and-blood-character-navigation.css';
 </style>
 
+<script>
+  // Prefetch adjacent pages for SSG
+  document.addEventListener('DOMContentLoaded', () => {
+    const prevLink = document.querySelector('.nav-button.prev-button') as HTMLAnchorElement | null;
+    const nextLink = document.querySelector('.nav-button.next-button') as HTMLAnchorElement | null;
+
+    // Create prefetch links in head for faster loading
+    if (prevLink?.href) {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = prevLink.href;
+      document.head.appendChild(link);
+    }
+
+    if (nextLink?.href) {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = nextLink.href;
+      document.head.appendChild(link);
+    }
+  });
+</script>
+
 {
   (hasNavigation || forceRender) && prevCharacter && nextCharacter && (
     <>
@@ -304,12 +327,19 @@ const forceRender = charactersByDatabaseOrder.length > 0;
     function updateNavigationPanel() {
       if (!elements.navPanel) return;
 
-      const characterList = getCurrentCharacterList();
-      const currentIndex = characterList.findIndex(char => char.slug === currentCharacterSlug);
+      let characterList = getCurrentCharacterList();
+      let currentIndex = characterList.findIndex(char => char.slug === currentCharacterSlug);
 
       if (currentIndex === -1) {
-        elements.navPanel.style.display = 'none';
-        return;
+        // Character is filtered out - use full unfiltered list as fallback
+        characterList = [...characters].sort((a, b) => a.name.localeCompare(b.name));
+        currentIndex = characterList.findIndex(char => char.slug === currentCharacterSlug);
+
+        if (currentIndex === -1) {
+          // Only hide if character truly doesn't exist
+          elements.navPanel.style.display = 'none';
+          return;
+        }
       }
 
       elements.navPanel.style.display = '';
@@ -402,37 +432,8 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       }
 
       try {
-        // Add loading state to navigation panel only (safer than body manipulation)
-        const navPanel = elements.navPanel;
-        if (navPanel) {
-          navPanel.style.opacity = '0.7';
-          navPanel.style.transition = 'opacity 0.1s ease';
-          navPanel.style.pointerEvents = 'none';
-
-          // Add loading indicator
-          const loadingIndicator = document.createElement('div');
-          loadingIndicator.style.cssText = `
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(194, 107, 107, 0.9);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-            z-index: var(--z-notification);
-            pointer-events: none;
-          `;
-          loadingIndicator.textContent = 'Loading...';
-          loadingIndicator.id = 'sab-nav-loading';
-          navPanel.style.position = 'relative';
-          navPanel.appendChild(loadingIndicator);
-        }
-
-        // For faster perception, use location.replace to avoid back button issues
-        window.location.replace(url);
+        // Navigate instantly without any loading indicator
+        window.location.assign(url);
         return true;
       } catch (error: unknown) {
         // Reset navigation panel state on error
@@ -550,7 +551,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
 
       // Clean up all prefetch links
       document.querySelectorAll('link[rel="prefetch"]').forEach(link => {
-        if (link.dataset.timestamp) {
+        if (link instanceof HTMLElement && link.dataset.timestamp) {
           document.head.removeChild(link);
         }
       });

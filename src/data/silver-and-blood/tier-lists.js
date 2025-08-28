@@ -58,6 +58,7 @@ export const PVE_TIER_LIST = {
       { name: 'Quinn' },
     ],
     A: [
+      { name: 'Agnes' },
       { name: 'Tris' },
       { name: 'Selena' },
       { name: 'Joan' },
@@ -123,6 +124,7 @@ export const PVP_TIER_LIST = {
       { name: 'Gilrain' },
     ],
     A: [
+      { name: 'Agnes' },
       { name: 'Thibault' },
       { name: 'Cain' },
       { name: 'Selena' },
@@ -154,6 +156,7 @@ export const CLAN_HUNT_TIER_LIST = {
   tiers: {
     SSS: [{ name: 'Timeless Aiona' }],
     SS: [
+      { name: 'Agnes' },
       { name: 'Acappella' },
       { name: 'Transcendent Ami' },
       { name: 'Joan' },
@@ -237,6 +240,7 @@ export const BOSS_RAIDS_TIER_LIST = {
       { name: 'Quinn' },
     ],
     A: [
+      { name: 'Agnes' },
       { name: 'Cain' },
       { name: 'Selena' },
       { name: 'Piera' },

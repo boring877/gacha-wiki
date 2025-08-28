@@ -8,18 +8,41 @@ export interface Props {
 
 const { currentCharacterSlug } = Astro.props;
 
-// Use actual character data
+// Validate input
+if (!currentCharacterSlug) {
+  throw new Error('currentCharacterSlug is required');
+}
+
+// Find current character with error handling
 const currentIndex = HORIZON_WALKER_CHARACTERS.findIndex(
-  char => char.slug === currentCharacterSlug
+  char => char?.slug === currentCharacterSlug
 );
 
-const prevIndex = currentIndex > 0 ? currentIndex - 1 : HORIZON_WALKER_CHARACTERS.length - 1;
-const nextIndex = currentIndex < HORIZON_WALKER_CHARACTERS.length - 1 ? currentIndex + 1 : 0;
+// Handle character not found
+if (currentIndex === -1) {
+  console.warn(`Character with slug '${currentCharacterSlug}' not found`);
+}
 
+// Calculate indices with proper bounds checking
+const characterCount = HORIZON_WALKER_CHARACTERS.length;
+
+// If character not found, still show navigation using first and last
+let prevIndex, nextIndex;
+if (currentIndex === -1) {
+  // Default to showing first and last if current not found
+  prevIndex = characterCount - 1; // Last character
+  nextIndex = 1; // Second character
+} else {
+  prevIndex = currentIndex > 0 ? currentIndex - 1 : characterCount - 1;
+  nextIndex = currentIndex < characterCount - 1 ? currentIndex + 1 : 0;
+}
+
+// Get characters - should always have values if we have any characters
 const prevCharacter = HORIZON_WALKER_CHARACTERS[prevIndex];
 const nextCharacter = HORIZON_WALKER_CHARACTERS[nextIndex];
 
-const hasNavigation = currentIndex !== -1 && prevCharacter && nextCharacter;
+// Show navigation if we have any characters
+const hasNavigation = characterCount > 0 && prevCharacter && nextCharacter;
 ---
 
 {
@@ -75,3 +98,26 @@ const hasNavigation = currentIndex !== -1 && prevCharacter && nextCharacter;
 <style>
   @import '../../styles/components/horizon-walker-character-navigation.css';
 </style>
+
+<script>
+  // Prefetch adjacent pages for SSG
+  document.addEventListener('DOMContentLoaded', () => {
+    const prevLink = document.querySelector('.nav-button.prev-button') as HTMLAnchorElement | null;
+    const nextLink = document.querySelector('.nav-button.next-button') as HTMLAnchorElement | null;
+
+    // Create prefetch links in head for faster loading
+    if (prevLink?.href) {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = prevLink.href;
+      document.head.appendChild(link);
+    }
+
+    if (nextLink?.href) {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = nextLink.href;
+      document.head.appendChild(link);
+    }
+  });
+</script>

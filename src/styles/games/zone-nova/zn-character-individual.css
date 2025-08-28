@@ -1335,3 +1335,28 @@
     display: block;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                     SKILL HIGHLIGHTING STYLES                           */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Skill text highlighting for improved readability - 2-color system using ZN theme */
+.zn-highlight-damage,
+.zn-highlight-effects,
+.zn-highlight-buffs,
+.zn-highlight-attributes,
+.zn-highlight-keywords {
+  color: var(--amber-glow);
+  font-weight: 600;
+  background: rgba(255, 191, 0, 0.1);
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+}
+
+.zn-highlight-numbers {
+  color: var(--teal-crystal);
+  font-weight: 600;
+  background: rgba(64, 224, 208, 0.1);
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+}

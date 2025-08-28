@@ -17,6 +17,19 @@ let filteredCharacters = [];
 const characterDataMap = new Map(); // Use Map for better performance
 const MAX_CHARACTERS = 2;
 
+// Constants for magic numbers
+const SEARCH_DEBOUNCE_MS = 150;
+const NOTIFICATION_DURATION_MS = 3000;
+const FOCUS_DELAY_MS = 100;
+
+// Store global functions in a namespace to avoid pollution
+const ZNComparisonV2 = {
+  getCurrentMobileSlot: null,
+  closeMobileModal: null,
+  searchTimeout: null,
+  activeAbortControllers: new Set(),
+};
+
 // Cache DOM elements and event listeners to avoid repeated queries and memory leaks
 const domCache = {
   iconsContainer: null,
@@ -110,6 +123,30 @@ function calculateOverallRank(rankings) {
 }
 
 /**
+ * Get competitive overall rank from overallAnalysis data with fallback
+ * @param {number} characterId - The character ID to look up
+ * @param {Object} rankings - Rankings data for fallback calculation
+ * @returns {string} Competitive overall rank or calculated rank
+ */
+function getCompetitiveOverallRank(characterId, rankings = {}) {
+  // First, try to get competitive rank from overallAnalysis
+  if (window.ZN_COMPARISON_V2_DATA?.overallAnalysis && characterId) {
+    const overallRank = window.ZN_COMPARISON_V2_DATA.overallAnalysis[characterId]?.overallRank;
+
+    if (overallRank !== undefined && overallRank !== null) {
+      return String(overallRank);
+    }
+  }
+
+  // Fallback: use the old calculation method if overallAnalysis is missing
+  if (rankings && Object.keys(rankings).length > 0) {
+    return calculateOverallRank(rankings);
+  }
+
+  return 'N/A';
+}
+
+/**
  * Format rank value for display
  * @param {any} rankValue - The rank value to format
  * @returns {string} Formatted rank value
@@ -143,6 +180,15 @@ function initializeComparisonV2() {
       throw new Error('Character data not available');
     }
 
+    // Validate additional data structures
+    if (!window.ZN_COMPARISON_V2_DATA?.rankings) {
+      console.warn('Rankings data not available - some features may not work');
+    }
+
+    if (!window.ZN_COMPARISON_V2_DATA?.overallAnalysis) {
+      console.warn('Overall analysis data not available - falling back to calculated rankings');
+    }
+
     // Initialize DOM cache
     initializeDOMCache();
 
@@ -160,10 +206,9 @@ function initializeComparisonV2() {
     updateIconStates();
     updateSelectedCount();
 
-    // Zone Nova Comparison V2: Initialized successfully
-  } catch (_error) {
-    // Failed to initialize comparison V2
-    // Show user-friendly error message
+    console.log('Zone Nova Comparison V2: Initialized successfully');
+  } catch (error) {
+    console.error('Failed to initialize comparison V2:', error);
     showErrorMessage('Failed to load character comparison. Please refresh the page.');
   }
 }
@@ -189,19 +234,19 @@ function initializeDOMCache() {
 function showErrorMessage(message) {
   const errorDiv = document.createElement('div');
   errorDiv.className = 'error-message';
-  errorDiv.style.cssText = `
-    background: var(--zn-error, #ff6b6b);
-    color: white;
-    padding: 1rem;
-    border-radius: 6px;
-    margin: 1rem;
-    text-align: center;
-    font-weight: 600;
-  `;
   errorDiv.textContent = message;
+  errorDiv.setAttribute('role', 'alert');
+  errorDiv.setAttribute('aria-live', 'assertive');
 
   const container = document.querySelector('.comparison-container') || document.body;
   container.insertBefore(errorDiv, container.firstChild);
+
+  // Auto-remove after duration
+  setTimeout(() => {
+    if (errorDiv.parentNode) {
+      errorDiv.remove();
+    }
+  }, NOTIFICATION_DURATION_MS * 2);
 }
 
 /**
@@ -262,8 +307,8 @@ function initializeMobileModal() {
   initializeModalFilters();
   initializeModalCharacterGrid();
 
-  // Store current slot getter for other functions
-  window.getCurrentMobileSlot = () => currentSelectionSlot;
+  // Store current slot getter in namespace
+  ZNComparisonV2.getCurrentMobileSlot = () => currentSelectionSlot;
 
   function openMobileModal(slotNumber) {
     if (!modal) return;
@@ -303,7 +348,7 @@ function initializeMobileModal() {
 
     // Focus search input for better UX
     if (searchInput) {
-      setTimeout(() => searchInput.focus(), 100);
+      setTimeout(() => searchInput.focus(), FOCUS_DELAY_MS);
     }
   }
 
@@ -331,8 +376,8 @@ function initializeMobileModal() {
     updateModalCharacterGrid();
   }
 
-  // Store close function globally for other functions
-  window.closeMobileModal = closeModal;
+  // Store close function in namespace
+  ZNComparisonV2.closeMobileModal = closeModal;
 }
 
 /**
@@ -391,16 +436,26 @@ function addCharacter(characterSlug) {
 
   selectedCharacters.push(characterSlug);
 
-  // Batch DOM updates for performance
-  requestAnimationFrame(() => {
-    updateIconStates();
-    updateMobileSelectionButtons();
-    updateComparisonContainer();
-    updateSelectedCount();
-  });
+  // Single batch update
+  updateAllDisplays();
 
   // Load character data lazily
   loadCharacterData(characterSlug);
+
+  // Auto-scroll to comparison section when 2 characters are selected (desktop only)
+  if (selectedCharacters.length === MAX_CHARACTERS && window.innerWidth > 768) {
+    setTimeout(() => {
+      const comparisonContainer = document.getElementById('v2-comparison-container');
+      if (comparisonContainer && !comparisonContainer.classList.contains('hidden')) {
+        comparisonContainer.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+    }, 100); // Small delay to ensure DOM is updated
+  }
+
   return true;
 }
 
@@ -413,30 +468,18 @@ function addCharacter(characterSlug) {
 function showNotification(message, type = 'info') {
   const notification = document.createElement('div');
   notification.className = `notification notification-${type}`;
-  notification.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--zn-${type === 'warning' ? 'warning' : 'primary-amber'}, #ffd93d);
-    color: var(--zn-text-primary, #333);
-    padding: 1rem;
-    border-radius: 6px;
-    max-width: 300px;
-    z-index: var(--z-notification);
-    font-weight: 500;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    animation: slideIn 0.3s ease-out;
-  `;
   notification.textContent = message;
+  notification.setAttribute('role', 'status');
+  notification.setAttribute('aria-live', 'polite');
 
   document.body.appendChild(notification);
 
-  // Auto-remove after 3 seconds
+  // Auto-remove after duration
   setTimeout(() => {
     if (notification.parentNode) {
       notification.remove();
     }
-  }, 3000);
+  }, NOTIFICATION_DURATION_MS);
 }
 
 /**
@@ -456,13 +499,8 @@ function removeCharacter(characterSlug) {
   if (index > -1) {
     selectedCharacters.splice(index, 1);
 
-    // Batch DOM updates for performance
-    requestAnimationFrame(() => {
-      updateIconStates();
-      updateMobileSelectionButtons();
-      updateComparisonContainer();
-      updateSelectedCount();
-    });
+    // Single batch update
+    updateAllDisplays();
 
     return true;
   }
@@ -479,13 +517,8 @@ function clearAllCharacters() {
 
   selectedCharacters.length = 0; // More efficient than reassignment
 
-  // Batch DOM updates for performance
-  requestAnimationFrame(() => {
-    updateIconStates();
-    updateMobileSelectionButtons();
-    updateComparisonContainer();
-    updateSelectedCount();
-  });
+  // Single batch update
+  updateAllDisplays();
 }
 
 /**
@@ -521,8 +554,8 @@ function applyFilters() {
     });
 
     updateIconStates();
-  } catch (_error) {
-    // Error applying filters
+  } catch (error) {
+    console.error('Error applying filters:', error);
   }
 }
 
@@ -549,8 +582,8 @@ function resetFilters() {
       filteredCharacters = [...window.ZN_COMPARISON_V2_DATA.characters];
       updateIconStates();
     }
-  } catch (_error) {
-    // Error resetting filters
+  } catch (error) {
+    console.error('Error resetting filters:', error);
   }
 }
 
@@ -558,7 +591,11 @@ function resetFilters() {
  * Update character icon states (selection and filtering)
  */
 function updateIconStates() {
-  const icons = document.querySelectorAll('.character-icon');
+  // Use cached container if available
+  const container = domCache.iconsContainer || document.getElementById('v2-character-icons');
+  if (!container) return;
+
+  const icons = container.querySelectorAll('.character-icon');
   const filteredSlugs = new Set(filteredCharacters.map(char => char.slug));
 
   icons.forEach(icon => {
@@ -659,6 +696,7 @@ function createCharacterCard(character, detailedData, characterSlug) {
   portrait.src = character.image || '/images/placeholder.png';
   portrait.alt = character.originalName || character.name || '';
   portrait.className = 'comparison-card-portrait';
+  portrait.loading = 'lazy';
   portrait.onerror = function () {
     this.src = '/images/placeholder.png';
   };
@@ -684,7 +722,7 @@ function createCharacterCard(character, detailedData, characterSlug) {
   badgeData.forEach(badge => {
     if (badge.value) {
       const span = document.createElement('span');
-      span.className = `${badge.class} ${badge.value.toLowerCase().replace(' ', '-')}`;
+      span.className = `${badge.class} ${badge.value.toLowerCase().replace(/\s+/g, '-')}`;
       span.textContent = badge.value;
       badges.appendChild(span);
     }
@@ -696,14 +734,8 @@ function createCharacterCard(character, detailedData, characterSlug) {
   header.appendChild(portrait);
   header.appendChild(info);
 
-  // Create stats section using safe method
-  const statsDiv = document.createElement('div');
-  // Use originalName for tier lookups but displayName for display
-  const characterForStats = {
-    ...character,
-    name: character.originalName || character.name, // Ensure we use original name for tier lookups
-  };
-  statsDiv.innerHTML = renderCharacterStats(characterForStats, detailedData); // This function needs to be safe
+  // Create stats section using SAFE DOM methods - FIX XSS VULNERABILITY
+  const statsDiv = createCharacterStatsDOM(character, detailedData);
 
   // Assemble card
   cardDiv.appendChild(removeBtn);
@@ -723,224 +755,237 @@ function createCharacterCard(character, detailedData, characterSlug) {
 }
 
 /**
- * Escape HTML to prevent XSS attacks
- * @param {string} unsafe - Unsafe string
- * @returns {string} Safe HTML string
+ * Create character stats DOM safely to prevent XSS
+ * @param {Object} character - Character data
+ * @param {Object} detailedData - Detailed character data
+ * @returns {HTMLElement} Stats container element
  */
+function createCharacterStatsDOM(character, detailedData) {
+  const container = document.createElement('div');
+  container.className = 'comparison-card-stats';
 
-/**
- * Render character stats section
- */
-function renderCharacterStats(character, detailedData) {
   const stats = character.stats || {};
-  // Use the original name (not escaped) for tier lookups
   const lookupName = character.originalName || character.name;
   const tiers = getCharacterTiers(lookupName);
-  // Ensure character ID is properly passed for rankings lookup
   const characterId = character.id;
   const rankings = getCharacterRankings(characterId);
 
-  // Debug logging for troubleshooting
-  if (!rankings || Object.keys(rankings).length === 0) {
-    // No rankings found for character
+  // Tier Rankings Section
+  const tierSection = createStatSection('Tier Rankings', [
+    {
+      label: 'PvE',
+      value: tiers.pve || 'Unranked',
+      class: `tier-${(tiers.pve || '').toLowerCase()}`,
+    },
+    {
+      label: 'PvP',
+      value: tiers.pvp || 'Unranked',
+      class: `tier-${(tiers.pvp || '').toLowerCase()}`,
+    },
+    {
+      label: 'Rifts',
+      value: tiers.rift || 'Unranked',
+      class: `tier-${(tiers.rift || '').toLowerCase()}`,
+    },
+    {
+      label: 'Guild Raids',
+      value: tiers.guild || 'Unranked',
+      class: `tier-${(tiers.guild || '').toLowerCase()}`,
+    },
+    {
+      label: 'New Player',
+      value: tiers.newPlayer || 'Unranked',
+      class: `tier-${(tiers.newPlayer || '').toLowerCase()}`,
+    },
+  ]);
+
+  // Stat Rankings Section
+  const rankSection = createStatSection('Stat Rankings', [
+    { label: 'Overall Rank', value: `#${getCompetitiveOverallRank(characterId, rankings)}` },
+    { label: 'HP Rank', value: `#${formatRankValue(rankings.hp)}` },
+    { label: 'ATK Rank', value: `#${formatRankValue(rankings.attack)}` },
+    { label: 'DEF Rank', value: `#${formatRankValue(rankings.defense)}` },
+  ]);
+
+  // Combat Stats Section
+  const combatSection = createStatSection('Combat Stats', [
+    { label: 'HP', value: stats.hp ? stats.hp.toLocaleString() : 'N/A' },
+    { label: 'ATK', value: stats.attack ? stats.attack.toLocaleString() : 'N/A' },
+    { label: 'DEF', value: stats.defense ? stats.defense.toLocaleString() : 'N/A' },
+    { label: 'Energy', value: stats.energyRecovery || '0' },
+    { label: 'CRIT Rate', value: stats.critRate ? stats.critRate + '%' : '0%' },
+    { label: 'CRIT DMG', value: stats.critDmg ? stats.critDmg + '%' : '0%' },
+  ]);
+
+  container.appendChild(tierSection);
+  container.appendChild(rankSection);
+  container.appendChild(combatSection);
+
+  // Skills section
+  if (detailedData) {
+    const skillsSection = createSkillsSection(detailedData);
+    container.appendChild(skillsSection);
+
+    if (detailedData.teamSkill) {
+      const teamSkillSection = createTeamSkillSection(detailedData.teamSkill);
+      container.appendChild(teamSkillSection);
+    }
+  } else {
+    const loadingSection = document.createElement('div');
+    loadingSection.className = 'comparison-skills-section';
+    const title = document.createElement('h4');
+    title.textContent = 'Character Skills';
+    const desc = document.createElement('div');
+    desc.className = 'comparison-skill-desc';
+    desc.textContent = 'Loading...';
+    loadingSection.appendChild(title);
+    loadingSection.appendChild(desc);
+    container.appendChild(loadingSection);
   }
 
-  return `
-    <div class="comparison-card-stats">
-      <!-- Tier Lists Section -->
-      <div class="comparison-stat-section">
-        <h4>Tier Rankings</h4>
-        <div class="comparison-stat-grid">
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">PvE</span>
-            <span class="comparison-stat-value tier-${tiers.pve?.toLowerCase()}">${tiers.pve || 'Unranked'}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">PvP</span>
-            <span class="comparison-stat-value tier-${tiers.pvp?.toLowerCase()}">${tiers.pvp || 'Unranked'}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">Rifts</span>
-            <span class="comparison-stat-value tier-${tiers.rift?.toLowerCase()}">${tiers.rift || 'Unranked'}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">Guild Raids</span>
-            <span class="comparison-stat-value tier-${tiers.guild?.toLowerCase()}">${tiers.guild || 'Unranked'}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">New Player</span>
-            <span class="comparison-stat-value tier-${tiers.newPlayer?.toLowerCase()}">${tiers.newPlayer || 'Unranked'}</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Stat Rankings Section -->
-      <div class="comparison-stat-section">
-        <h4>Stat Rankings</h4>
-        <div class="comparison-stat-grid">
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">Overall Rank</span>
-            <span class="comparison-stat-value">#${calculateOverallRank(rankings)}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">HP Rank</span>
-            <span class="comparison-stat-value">#${formatRankValue(rankings.hp)}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">ATK Rank</span>
-            <span class="comparison-stat-value">#${formatRankValue(rankings.attack)}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">DEF Rank</span>
-            <span class="comparison-stat-value">#${formatRankValue(rankings.defense)}</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Basic Stats Section -->
-      <div class="comparison-stat-section">
-        <h4>Combat Stats</h4>
-        <div class="comparison-stat-grid">
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">HP</span>
-            <span class="comparison-stat-value">${stats.hp ? stats.hp.toLocaleString() : 'N/A'}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">ATK</span>
-            <span class="comparison-stat-value">${stats.attack ? stats.attack.toLocaleString() : 'N/A'}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">DEF</span>
-            <span class="comparison-stat-value">${stats.defense ? stats.defense.toLocaleString() : 'N/A'}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">Energy</span>
-            <span class="comparison-stat-value">${stats.energyRecovery || '0'}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">CRIT Rate</span>
-            <span class="comparison-stat-value">${stats.critRate ? stats.critRate + '%' : '0%'}</span>
-          </div>
-          <div class="comparison-stat-item">
-            <span class="comparison-stat-label">CRIT DMG</span>
-            <span class="comparison-stat-value">${stats.critDmg ? stats.critDmg + '%' : '0%'}</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Character Skills Section -->
-      ${
-        detailedData && detailedData.skills
-          ? `
-        <div class="comparison-skills-section">
-          <h4>Character Skills</h4>
-          ${
-            detailedData.skills.normal
-              ? `
-            <div class="comparison-skill-item">
-              <div class="comparison-skill-header">
-                <span class="comparison-skill-name">${detailedData.skills.normal.name}</span>
-                <span class="skill-badge normal-attack">Normal Attack</span>
-              </div>
-              <div class="comparison-skill-desc">${detailedData.skills.normal.description}</div>
-            </div>
-          `
-              : ''
-          }
-          ${
-            detailedData.skills.auto
-              ? `
-            <div class="comparison-skill-item">
-              <div class="comparison-skill-header">
-                <span class="comparison-skill-name">${detailedData.skills.auto.name}</span>
-                <span class="skill-badge auto-skill">Auto Skill</span>
-              </div>
-              <div class="comparison-skill-desc">${detailedData.skills.auto.description}</div>
-              ${detailedData.skills.auto.cooldown ? `<div class="comparison-skill-cooldown">Cooldown: ${detailedData.skills.auto.cooldown}</div>` : ''}
-            </div>
-          `
-              : ''
-          }
-          ${
-            detailedData.skills.ultimate
-              ? `
-            <div class="comparison-skill-item">
-              <div class="comparison-skill-header">
-                <span class="comparison-skill-name">${detailedData.skills.ultimate.name}</span>
-                <span class="skill-badge ultimate">Ultimate</span>
-              </div>
-              <div class="comparison-skill-desc">${detailedData.skills.ultimate.description}</div>
-              ${detailedData.skills.ultimate.energyCost ? `<div class="comparison-skill-energy">Energy Cost: ${detailedData.skills.ultimate.energyCost}</div>` : ''}
-            </div>
-          `
-              : ''
-          }
-          ${
-            detailedData.skills.passive
-              ? `
-            <div class="comparison-skill-item">
-              <div class="comparison-skill-header">
-                <span class="comparison-skill-name">${detailedData.skills.passive.name}</span>
-                <span class="skill-badge passive">Passive</span>
-              </div>
-              <div class="comparison-skill-desc">${detailedData.skills.passive.description}</div>
-            </div>
-          `
-              : ''
-          }
-        </div>
-      `
-          : detailedData
-            ? `
-        <div class="comparison-skills-section">
-          <h4>Character Skills</h4>
-          <div class="comparison-skill-desc">No detailed skill data available</div>
-        </div>
-      `
-            : `
-        <div class="comparison-skills-section">
-          <h4>Character Skills</h4>
-          <div class="comparison-skill-desc">Loading...</div>
-        </div>
-      `
-      }
-
-      <!-- Team Skill Section -->
-      ${
-        detailedData && detailedData.teamSkill
-          ? `
-        <div class="comparison-team-skill">
-          <h4>Team Skill</h4>
-          <div class="comparison-team-skill-name">${detailedData.teamSkill.name}</div>
-          <div class="comparison-team-skill-desc">${detailedData.teamSkill.description}</div>
-          ${
-            detailedData.teamSkill.requirements
-              ? `
-            <div class="comparison-team-skill-req">
-              Requires: ${detailedData.teamSkill.requirements.faction} + ${detailedData.teamSkill.requirements.element}
-            </div>
-          `
-              : ''
-          }
-        </div>
-      `
-          : detailedData
-            ? `
-        <div class="comparison-team-skill">
-          <h4>Team Skill</h4>
-          <div class="comparison-team-skill-desc">No team skill available</div>
-        </div>
-      `
-            : `
-        <div class="comparison-team-skill">
-          <h4>Team Skill</h4>
-          <div class="comparison-team-skill-desc">Loading...</div>
-        </div>
-      `
-      }
-    </div>
-  `;
+  return container;
 }
+
+/**
+ * Create a stat section with safe DOM methods
+ */
+function createStatSection(title, items) {
+  const section = document.createElement('div');
+  section.className = 'comparison-stat-section';
+
+  const heading = document.createElement('h4');
+  heading.textContent = title;
+  section.appendChild(heading);
+
+  const grid = document.createElement('div');
+  grid.className = 'comparison-stat-grid';
+
+  items.forEach(item => {
+    const statItem = document.createElement('div');
+    statItem.className = 'comparison-stat-item';
+
+    const label = document.createElement('span');
+    label.className = 'comparison-stat-label';
+    label.textContent = item.label;
+
+    const value = document.createElement('span');
+    value.className = `comparison-stat-value ${item.class || ''}`;
+    value.textContent = item.value;
+
+    statItem.appendChild(label);
+    statItem.appendChild(value);
+    grid.appendChild(statItem);
+  });
+
+  section.appendChild(grid);
+  return section;
+}
+
+/**
+ * Create skills section with safe DOM methods
+ */
+function createSkillsSection(detailedData) {
+  const section = document.createElement('div');
+  section.className = 'comparison-skills-section';
+
+  const heading = document.createElement('h4');
+  heading.textContent = 'Character Skills';
+  section.appendChild(heading);
+
+  const skills = ['normal', 'auto', 'ultimate', 'passive'];
+  const skillTypes = {
+    normal: 'Normal Attack',
+    auto: 'Auto Skill',
+    ultimate: 'Ultimate',
+    passive: 'Passive',
+  };
+
+  skills.forEach(skillType => {
+    const skill = detailedData.skills?.[skillType];
+    if (!skill) return;
+
+    const skillItem = document.createElement('div');
+    skillItem.className = 'comparison-skill-item';
+
+    const header = document.createElement('div');
+    header.className = 'comparison-skill-header';
+
+    const name = document.createElement('span');
+    name.className = 'comparison-skill-name';
+    name.textContent = skill.name || '';
+
+    const badge = document.createElement('span');
+    badge.className = `skill-badge ${skillType === 'normal' ? 'normal-attack' : skillType === 'auto' ? 'auto-skill' : skillType}`;
+    badge.textContent = skillTypes[skillType];
+
+    header.appendChild(name);
+    header.appendChild(badge);
+    skillItem.appendChild(header);
+
+    const desc = document.createElement('div');
+    desc.className = 'comparison-skill-desc';
+    desc.textContent = skill.description || '';
+    skillItem.appendChild(desc);
+
+    if (skill.cooldown) {
+      const cooldown = document.createElement('div');
+      cooldown.className = 'comparison-skill-cooldown';
+      cooldown.textContent = `Cooldown: ${skill.cooldown}`;
+      skillItem.appendChild(cooldown);
+    }
+
+    if (skill.energyCost) {
+      const energy = document.createElement('div');
+      energy.className = 'comparison-skill-energy';
+      energy.textContent = `Energy Cost: ${skill.energyCost}`;
+      skillItem.appendChild(energy);
+    }
+
+    section.appendChild(skillItem);
+  });
+
+  if (section.children.length === 1) {
+    const noData = document.createElement('div');
+    noData.className = 'comparison-skill-desc';
+    noData.textContent = 'No detailed skill data available';
+    section.appendChild(noData);
+  }
+
+  return section;
+}
+
+/**
+ * Create team skill section with safe DOM methods
+ */
+function createTeamSkillSection(teamSkill) {
+  const section = document.createElement('div');
+  section.className = 'comparison-team-skill';
+
+  const heading = document.createElement('h4');
+  heading.textContent = 'Team Skill';
+  section.appendChild(heading);
+
+  const name = document.createElement('div');
+  name.className = 'comparison-team-skill-name';
+  name.textContent = teamSkill.name || '';
+  section.appendChild(name);
+
+  const desc = document.createElement('div');
+  desc.className = 'comparison-team-skill-desc';
+  desc.textContent = teamSkill.description || 'No team skill available';
+  section.appendChild(desc);
+
+  if (teamSkill.requirements) {
+    const req = document.createElement('div');
+    req.className = 'comparison-team-skill-req';
+    req.textContent = `Requires: ${teamSkill.requirements.faction || ''} + ${teamSkill.requirements.element || ''}`;
+    section.appendChild(req);
+  }
+
+  return section;
+}
+
+// Deprecated renderCharacterStats function removed - using createCharacterStatsDOM instead
 
 /**
  * Load character data lazily using dynamic import
@@ -981,8 +1026,8 @@ async function loadCharacterData(characterSlug) {
 
     // Re-render the comparison cards to show loaded data
     renderComparisonCards();
-  } catch (_error) {
-    // Could not load detailed data for character
+  } catch (error) {
+    console.error(`Could not load detailed data for character ${characterSlug}:`, error);
     // Set empty data to stop loading state
     characterDataMap.set(characterSlug, {});
     renderComparisonCards();
@@ -1005,6 +1050,15 @@ function updateSelectedCount() {
  * @returns {void}
  */
 function cleanup() {
+  // Clear search timeout
+  clearTimeout(ZNComparisonV2.searchTimeout);
+
+  // Abort any pending fetch operations
+  ZNComparisonV2.activeAbortControllers.forEach(controller => {
+    controller.abort();
+  });
+  ZNComparisonV2.activeAbortControllers.clear();
+
   // Clean up all tracked event listeners
   eventListeners.forEach(cleanupFn => {
     if (typeof cleanupFn === 'function') {
@@ -1054,7 +1108,7 @@ function initializeKeyboardNavigation() {
     if (event.key === 'Escape') {
       const modal = document.getElementById('v2-mobile-modal');
       if (modal && modal.classList.contains('open')) {
-        window.closeMobileModal();
+        ZNComparisonV2.closeMobileModal?.();
       }
     }
   };
@@ -1081,7 +1135,7 @@ eventListeners.set('page-unload', () => {
 /**
  * Initialize modal control buttons (close only - simplified approach matching SAB)
  */
-function initializeModalControls(modal) {
+function initializeModalControls(_modal) {
   const closeBtn = document.getElementById('v2-modal-close');
   const backdrop = document.getElementById('v2-modal-backdrop');
 
@@ -1093,16 +1147,8 @@ function initializeModalControls(modal) {
     backdrop.addEventListener('click', () => window.closeMobileModal());
   }
 
-  // Handle escape key
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && modal && modal.classList.contains('open')) {
-      window.closeMobileModal();
-    }
-  });
+  // Escape key handling is already done in initializeKeyboardNavigation
 }
-
-// Store search handler for cleanup
-let searchHandler = null;
 
 /**
  * Initialize modal search functionality
@@ -1111,21 +1157,18 @@ function initializeModalSearch() {
   const searchInput = document.getElementById('v2-modal-search');
   if (!searchInput) return;
 
-  // Remove existing handler if it exists
-  if (searchHandler) {
-    searchInput.removeEventListener('input', searchHandler);
-  }
-
-  let searchTimeout;
-  searchHandler = e => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => {
+  const searchHandler = e => {
+    clearTimeout(ZNComparisonV2.searchTimeout);
+    ZNComparisonV2.searchTimeout = setTimeout(() => {
       updateModalCharacterGrid(e.target.value);
-    }, 150);
+    }, SEARCH_DEBOUNCE_MS);
   };
 
-  // Add the handler
+  // Track for cleanup
   searchInput.addEventListener('input', searchHandler);
+  eventListeners.set('modal-search', () => {
+    searchInput.removeEventListener('input', searchHandler);
+  });
 }
 
 /**
@@ -1135,55 +1178,57 @@ function initializeModalFilters() {
   // Modal filters removed for mobile optimization - placeholder for consistency
 }
 
-// Store character grid handler for cleanup
-let characterGridHandler = null;
-
 /**
  * Initialize modal character grid interactions
  */
 function initializeModalCharacterGrid() {
   const characterGrid = document.getElementById('v2-modal-character-grid');
+  if (!characterGrid) return;
 
-  if (characterGrid) {
-    // Remove existing handler if it exists
-    if (characterGridHandler) {
-      characterGrid.removeEventListener('click', characterGridHandler);
-    }
+  const characterGridHandler = event => {
+    const characterCard = event.target.closest('.modal-character-card');
+    if (!characterCard) return;
 
-    // Create new handler
-    characterGridHandler = event => {
-      const characterCard = event.target.closest('.modal-character-card');
-      if (!characterCard) return;
+    const characterSlug = characterCard.dataset.characterSlug;
+    const currentSlot = ZNComparisonV2.getCurrentMobileSlot?.();
 
-      const characterSlug = characterCard.dataset.characterSlug;
-      const currentSlot = window.getCurrentMobileSlot();
-
-      if (characterSlug && currentSlot) {
-        // Set character for the current slot
-        if (currentSlot === 1) {
-          selectedCharacters[0] = characterSlug;
-        } else if (currentSlot === 2) {
-          selectedCharacters[1] = characterSlug;
-        }
-
-        // Update displays
-        updateMobileSelectionButtons();
-        updateIconStates();
-        updateSelectedCount();
-        updateComparisonContainer();
-        renderComparisonCards();
-
-        // Load character data
-        loadCharacterData(characterSlug);
-
-        // Close modal
-        window.closeMobileModal();
+    if (characterSlug && currentSlot) {
+      // Set character for the current slot
+      if (currentSlot === 1) {
+        selectedCharacters[0] = characterSlug;
+      } else if (currentSlot === 2) {
+        selectedCharacters[1] = characterSlug;
       }
-    };
 
-    // Add the handler
-    characterGrid.addEventListener('click', characterGridHandler);
-  }
+      // Update displays
+      updateAllDisplays();
+      // Load character data
+      loadCharacterData(characterSlug);
+
+      // Close modal
+      ZNComparisonV2.closeMobileModal?.();
+
+      // Auto-scroll to comparison section when 2 characters are selected (mobile/tablet)
+      if (selectedCharacters.filter(Boolean).length === MAX_CHARACTERS) {
+        setTimeout(() => {
+          const comparisonContainer = document.getElementById('v2-comparison-container');
+          if (comparisonContainer && !comparisonContainer.classList.contains('hidden')) {
+            comparisonContainer.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+              inline: 'nearest',
+            });
+          }
+        }, 300); // Slightly longer delay for mobile to ensure modal is closed
+      }
+    }
+  };
+
+  // Add the handler with proper cleanup tracking
+  characterGrid.addEventListener('click', characterGridHandler);
+  eventListeners.set('modal-grid', () => {
+    characterGrid.removeEventListener('click', characterGridHandler);
+  });
 }
 
 /**
@@ -1287,19 +1332,16 @@ function updateSelectionButtonDisplay(slotNumber, character) {
     removeBtn.title = 'Remove character';
     removeBtn.addEventListener('click', event => {
       event.stopPropagation();
-      // Clear this slot
-      selectedCharacters[slotNumber - 1] = null;
-      // Clean up array
-      selectedCharacters.splice(
-        0,
-        selectedCharacters.length,
-        ...selectedCharacters.filter(Boolean)
-      );
+      // Remove character properly
+      const characterSlug = selectedCharacters[slotNumber - 1];
+      if (characterSlug) {
+        const index = selectedCharacters.indexOf(characterSlug);
+        if (index > -1) {
+          selectedCharacters.splice(index, 1);
+        }
+      }
       // Update displays
-      updateMobileSelectionButtons();
-      updateIconStates();
-      updateSelectedCount();
-      updateComparisonContainer();
+      updateAllDisplays();
     });
 
     info.appendChild(name);
@@ -1327,8 +1369,17 @@ function updateSelectionButtonDisplay(slotNumber, character) {
   }
 }
 
-// Make functions globally available
-window.removeCharacter = removeCharacter;
-window.addCharacter = addCharacter;
-window.clearAllCharacters = clearAllCharacters;
+/**
+ * Centralized update function to batch DOM updates
+ */
+function updateAllDisplays() {
+  requestAnimationFrame(() => {
+    updateIconStates();
+    updateMobileSelectionButtons();
+    updateComparisonContainer();
+    updateSelectedCount();
+  });
+}
+
+// Export only essential functions to global scope
 window.ZN_COMPARISON_V2_CLEANUP = cleanup; // Export cleanup for manual cleanup

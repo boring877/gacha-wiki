@@ -3,6 +3,11 @@ import CharacterLayout from '../../layouts/silver-and-blood/CharacterLayout.astr
 import { gameInfo } from '../../data/silver-and-blood/characters.js';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 import { Image } from 'astro:assets';
+import { 
+  highlightAllSkills, 
+  highlightMechanics, 
+  defaultSABHighlightPatterns 
+} from '../../utils/silver-and-blood/skill-highlighting.js';
 
 export interface Props {
   character: any; // The full character data object
@@ -25,6 +30,9 @@ const {
   skills,
   tags,
 } = character;
+
+// Apply skill highlighting for better readability
+const highlightedSkills = highlightAllSkills(skills, defaultSABHighlightPatterns);
 
 // Pull authoritative text from the central gameInfo tables
 const moonData = gameInfo.moonPhases.find(p => p.name === moonPhase);
@@ -544,7 +552,7 @@ const relatedCharacters = [];
     <h2 class="section-title">Skills</h2>
 
     {
-      skills.map((skill, index) => (
+      highlightedSkills.map((skill, index) => (
         <div
           class="skill-card"
           style={`background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid ${skill.type === 'Ultimate' ? '#dc3545' : skill.type === 'Passive' ? '#32cd32' : skill.type === 'Special' ? '#ff8c00' : '#808080'}; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border: 1px solid #3a3a3a;`}
@@ -564,8 +572,7 @@ const relatedCharacters = [];
               )}
             </div>
           </div>
-          <p style="color: #e0e0e0; line-height: 1.6; margin: 0; font-size: 1rem;">
-            {skill.description}
+          <p style="color: #e0e0e0; line-height: 1.6; margin: 0; font-size: 1rem;" set:html={skill.description}>
           </p>
         </div>
       ))

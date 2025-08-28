@@ -7,7 +7,7 @@ import {
   GUILD_RAID_TIER_LIST,
   NEW_PLAYER_TIER_LIST,
 } from '../../data/zone-nova/tier-lists.js';
-import { rankings } from '../../data/zone-nova/character-rankings.js';
+import { rankings, overallAnalysis } from '../../data/zone-nova/character-rankings.js';
 
 interface Props {
   selectedCharacters?: string[];
@@ -40,11 +40,11 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
   originalName: char.name || '', // Keep original for tier lookups
   displayName: escapeHtml(char.name || ''), // Escaped version for display
   slug: char.slug?.replace(/[^a-zA-Z0-9-_]/g, '') || '',
-  role: escapeHtml(char.role || ''),
-  class: escapeHtml(char.class || ''),
-  rarity: escapeHtml(char.rarity || ''),
-  element: escapeHtml(char.element || ''),
-  faction: escapeHtml(char.faction || ''),
+  role: char.role || '', // These are from controlled sources, no need to escape
+  class: char.class || '',
+  rarity: char.rarity || '',
+  element: char.element || '',
+  faction: char.faction || '', // Don't escape faction to preserve spaces for filtering
   image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
 }));
 ---
@@ -111,6 +111,7 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
               <option value="Asa">Asa</option>
               <option value="Monochrome Nation">Monochrome Nation</option>
               <option value="Pingjing City">Pingjing City</option>
+              <option value="Unaffiliated">Unaffiliated</option>
             </select>
           </div>
           <div class="button-group">
@@ -269,9 +270,7 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
   </div>
 </div>
 
-<!-- External JS -->
-<script src="/src/scripts/comparison-v2/zone-nova-comparison-v2.js"></script>
-
+<!-- Setup data BEFORE loading the script -->
 <script
   define:vars={{
     characterData: sanitizedCharacters,
@@ -281,6 +280,7 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
     guildTier: GUILD_RAID_TIER_LIST,
     newPlayerTier: NEW_PLAYER_TIER_LIST,
     rankingsData: rankings,
+    overallAnalysisData: overallAnalysis,
   }}
 >
   // Security: Freeze objects to prevent prototype pollution
@@ -295,5 +295,11 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
       newPlayer: Object.freeze(newPlayerTier),
     }),
     rankings: Object.freeze(rankingsData),
+    overallAnalysis: Object.freeze(overallAnalysisData),
   });
+</script>
+
+<!-- Load external JS AFTER data is set up -->
+<script type="module">
+  import '/src/scripts/comparison-v2/zone-nova-comparison-v2.js';
 </script>

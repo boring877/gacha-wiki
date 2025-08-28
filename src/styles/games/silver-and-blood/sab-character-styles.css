@@ -508,3 +508,28 @@ table.character-table th {
     display: block;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                     SKILL HIGHLIGHTING STYLES                           */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Skill text highlighting for improved readability - Simple 2-color system */
+.sab-highlight-damage,
+.sab-highlight-effects,
+.sab-highlight-buffs,
+.sab-highlight-attributes,
+.sab-highlight-keywords {
+  color: var(--sab-calm-red);
+  font-weight: 600;
+  background: rgba(220, 53, 69, 0.1);
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+}
+
+.sab-highlight-numbers {
+  color: #ffd700;
+  font-weight: 600;
+  background: rgba(255, 215, 0, 0.1);
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+}

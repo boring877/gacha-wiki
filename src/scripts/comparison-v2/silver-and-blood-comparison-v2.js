@@ -464,17 +464,27 @@ function initializeModalCharacterGrid() {
         }
 
         // Update displays
-        updateMobileSelectionButtons();
-        updateIconStates();
-        updateSelectedCount();
-        updateComparisonContainer();
-        renderComparisonCards();
+        updateAllDisplays();
 
         // Load character data
         loadCharacterData(characterSlug);
 
         // Close modal
         window.closeMobileModal();
+
+        // Auto-scroll to comparison section when 2 characters are selected (mobile/tablet)
+        if (selectedCharacters.filter(Boolean).length === MAX_CHARACTERS) {
+          setTimeout(() => {
+            const comparisonContainer = document.getElementById('v2-comparison-container');
+            if (comparisonContainer && !comparisonContainer.classList.contains('hidden')) {
+              comparisonContainer.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+                inline: 'nearest',
+              });
+            }
+          }, 300); // Slightly longer delay for mobile to ensure modal is closed
+        }
       }
     });
   }
@@ -536,16 +546,26 @@ function addCharacter(characterSlug) {
 
   selectedCharacters.push(characterSlug);
 
-  // Batch DOM updates for performance
-  requestAnimationFrame(() => {
-    updateIconStates();
-    updateMobileSelectionButtons();
-    updateComparisonContainer();
-    updateSelectedCount();
-  });
+  // Single batch update
+  updateAllDisplays();
 
   // Load character data lazily
   loadCharacterData(characterSlug);
+
+  // Auto-scroll to comparison section when 2 characters are selected (desktop only)
+  if (selectedCharacters.length === MAX_CHARACTERS && window.innerWidth > 768) {
+    setTimeout(() => {
+      const comparisonContainer = document.getElementById('v2-comparison-container');
+      if (comparisonContainer && !comparisonContainer.classList.contains('hidden')) {
+        comparisonContainer.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+    }, 100); // Small delay to ensure DOM is updated
+  }
+
   return true;
 }
 
@@ -587,13 +607,8 @@ function removeCharacter(characterSlug) {
   if (index > -1) {
     selectedCharacters.splice(index, 1);
 
-    // Batch DOM updates for performance
-    requestAnimationFrame(() => {
-      updateIconStates();
-      updateMobileSelectionButtons();
-      updateComparisonContainer();
-      updateSelectedCount();
-    });
+    // Single batch update
+    updateAllDisplays();
 
     return true;
   }
@@ -610,13 +625,8 @@ function clearAllCharacters() {
 
   selectedCharacters.length = 0; // More efficient than reassignment
 
-  // Batch DOM updates for performance
-  requestAnimationFrame(() => {
-    updateIconStates();
-    updateMobileSelectionButtons();
-    updateComparisonContainer();
-    updateSelectedCount();
-  });
+  // Single batch update
+  updateAllDisplays();
 }
 
 /**
@@ -1426,8 +1436,17 @@ eventListeners.set('page-unload', () => {
   window.removeEventListener('pagehide', pageHideHandler);
 });
 
-// Make functions globally available
-window.removeCharacter = removeCharacter;
-window.addCharacter = addCharacter;
-window.clearAllCharacters = clearAllCharacters;
+/**
+ * Centralized update function to batch DOM updates
+ */
+function updateAllDisplays() {
+  requestAnimationFrame(() => {
+    updateIconStates();
+    updateMobileSelectionButtons();
+    updateComparisonContainer();
+    updateSelectedCount();
+  });
+}
+
+// Export only essential functions to global scope
 window.SAB_COMPARISON_V2_CLEANUP = cleanup; // Export cleanup for manual cleanup

@@ -746,5 +746,23 @@ export const baseStats = {
     bloodPower: 20863,
   },
 
+  // Agnes
+  agnes: {
+    hp: 166000, // 166K
+    atk: 9371,
+    pDef: 4111,
+    mDef: 3767,
+    atkSpd: 0, // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5, // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20864,
+  },
+
   // --- add more characters below ---
 };

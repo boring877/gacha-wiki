@@ -7,15 +7,16 @@
 - **Languages**: TypeScript, Astro, CSS
 - **Site**: https://gachawiki.info
 - **Focus**: Game guides and information for gacha games
-- **Version**: 2.9.6
+- **Version**: 2.9.9
 
 ## Technology Stack
 
-- **Framework**: Astro 5.13.2
+- **Framework**: Astro 5.13.2 (SSG - Static Site Generation)
 - **Build Tool**: Bun
 - **Deployment**: Vercel with static output
+- **Rendering**: SSG (Static Site Generation) - All pages pre-built at build
+  time
 - **Styling**: CSS (organized by game/component)
-- **Libraries**: GSAP (animations), Chart.js (charts)
 - **Linting**: ESLint v9 (flat config), Prettier
 
 ## Development Commands
@@ -67,10 +68,11 @@ src/
 - 2-space indentation
 - Component-based architecture
 - Optimize images and assets
-- Static site generation preferred
+- Static site generation (SSG) only - no SSR
 - ESLint v9 flat config for linting
 - Prettier for code formatting
 - Lint-staged for pre-commit hooks
+- Client-side state managed via sessionStorage for filters/sorting
 
 ## Common File Patterns
 
@@ -95,6 +97,9 @@ src/
 - Asset compression scripts
 - Image optimization pipeline
 - Prefetch links for better navigation
+- SSG pre-builds all pages at build time
+- Client-side navigation with prefetching
+- Lazy loading for images and heavy components
 
 ## Content Management
 

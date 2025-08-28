@@ -137,6 +137,7 @@ import { lorelei } from './characters/lorelei.js';
 import { fleetingBella } from './characters/fleeting-bella.js';
 import { timelessAiona } from './characters/timeless-aiona.js';
 import { quinn } from './characters/quinn.js';
+import { agnes } from './characters/agnes.js';
 
 // Characters array - Add new characters here
 const baseCharacters = [
@@ -181,6 +182,7 @@ const baseCharacters = [
   fleetingBella,
   timelessAiona,
   quinn,
+  agnes,
   // Add more characters as they are created
 ];
 
