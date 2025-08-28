@@ -67,7 +67,7 @@ export default defineConfig({
 
             // Utility chunks
             utils: [
-              '../src/utils/seo.js',
+              '../src/utils/seo.ts',
               '../src/utils/timing-constants.ts',
               '../src/utils/ancestral-vault-calculator.js',
             ],

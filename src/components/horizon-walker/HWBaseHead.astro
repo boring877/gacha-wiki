@@ -102,4 +102,14 @@ const {
   }
 </style>
 
-<!-- Client-side navigation removed - causing layout issues -->
+<!-- Horizon Walker Service Worker Registration -->
+<script>
+  // Register HW-specific service worker for instant navigation
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-horizon-walker.js').catch(error => {
+        // Service worker registration failed - silent fallback
+      });
+    });
+  }
+</script>
