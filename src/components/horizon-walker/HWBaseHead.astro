@@ -1,0 +1,103 @@
+---
+// Lightweight BaseHead for Horizon Walker - Optimized for instant loading
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const {
+  title,
+  description,
+  image = '/images/games/horizon-walker/gameimg/gameicon.jpg',
+} = Astro.props;
+---
+
+<!-- Essential Metadata Only -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Essential Performance Hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Critical Font Loading -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap"
+  rel="stylesheet"
+  media="all"
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Critical Inline CSS for CLS Prevention -->
+<style>
+  :root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --amber-glow: #ffb74d;
+    --hw-primary: #4caf50;
+    --hw-accent: #81c784;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family:
+      'Inter',
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  /* Prevent layout shifts */
+  .header-container {
+    min-height: 72px;
+  }
+
+  .horizon-walker-main {
+    min-height: 60vh;
+  }
+
+  /* Disable animations on mobile for performance */
+  @media (max-width: 768px) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

@@ -319,6 +319,43 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
     </div>
   </section>
 
-  <!-- Initialize character database functionality -->
-  <script src="/src/scripts/horizon-walker/character-database.js"></script>
+  <!-- Lightweight character interaction -->
+  <script>
+    // Simple click navigation without heavy processing
+    document.addEventListener('DOMContentLoaded', () => {
+      const clickableRows = document.querySelectorAll('.clickable-row');
+      const mobileCards = document.querySelectorAll('.mobile-character-card');
+
+      clickableRows.forEach(row => {
+        row.addEventListener('click', () => {
+          const url = row.dataset.url;
+          if (url) window.location.href = url;
+        });
+      });
+
+      mobileCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const url = card.dataset.url;
+          if (url) window.location.href = url;
+        });
+      });
+
+      // Simple filter functionality
+      const rarityFilter = document.getElementById('rarity-filter');
+      if (rarityFilter) {
+        rarityFilter.addEventListener('change', () => {
+          const filterValue = rarityFilter.value.toLowerCase();
+          const allRows = document.querySelectorAll('tbody tr');
+          const allCards = document.querySelectorAll('.mobile-character-card');
+
+          [allRows, allCards].forEach(elements => {
+            elements.forEach(element => {
+              const rarity = element.dataset.rarity?.toLowerCase();
+              element.style.display = !filterValue || rarity === filterValue ? '' : 'none';
+            });
+          });
+        });
+      }
+    });
+  </script>
 </CharacterLayout>

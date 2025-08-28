@@ -1,5 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
+import HWBaseHead from '../../components/horizon-walker/HWBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -27,7 +27,7 @@ const { title, description, gameTitle } = Astro.props;
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description || ''} shouldPreloadDefaultImage={false} />
+    <HWBaseHead title={title} description={description || ''} />
     <GameSEO
       gameKey="horizon-walker"
       title={title}
