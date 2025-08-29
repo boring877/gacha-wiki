@@ -1,6 +1,24 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'september-2-maintenance',
+    title: 'September 2nd Maintenance Update',
+    date: 'September 2, 2025',
+    type: 'maintenance',
+    summary:
+      'September 2, 2025 maintenance (14:00, ~2 hours) brings new limited activity "Divine Twilight: Ice Sealed Mist" Part 2, Freyja character recruitment, Slave\'s Desire memory recruitment, Athena rerun, and multiple other activities. Light Stone x300 compensation for players who logged in before September 9.',
+    url: '/guides/zone-nova/updates/maintenance-september-2-2025/',
+  },
+  {
+    id: 'freyja-recruitment',
+    title: 'Freyja Limited-Time Character Recruitment',
+    date: 'September 2, 2025',
+    type: 'recruitment',
+    summary:
+      'New SSR character 芙蕾雅 (Freyja) (Destroyer, Ice Element) available through Limited-Time Character Recruitment from September 2 - September 16, 2025. Ice attribute destroyer-type character with long-range attacks and large-scale killing damage. Exclusive memory "奴介的风愿" (Slave\'s Desire) also available.',
+    url: '/guides/zone-nova/updates/announcement-freyja-recruitment/',
+  },
+  {
     id: 'legion-war-launch',
     title: 'Guild Raid Adjustments and Guild War Related Content',
     date: 'August 20, 2025',
