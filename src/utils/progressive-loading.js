@@ -20,46 +20,46 @@ export class ProgressiveTableLoader {
 
   async loadBatch() {
     if (this.isLoading || this.currentIndex >= this.data.length) return false;
-    
+
     this.isLoading = true;
     const endIndex = Math.min(this.currentIndex + this.batchSize, this.data.length);
     const batch = this.data.slice(this.currentIndex, endIndex);
-    
+
     // Create document fragment for performance
     const fragment = document.createDocumentFragment();
-    
+
     batch.forEach((item, index) => {
       const element = this.renderFunction(item, this.currentIndex + index);
       if (element) {
         fragment.appendChild(element);
       }
     });
-    
+
     // Append batch to DOM
     this.tableBody.appendChild(fragment);
-    
+
     this.currentIndex = endIndex;
     this.isLoading = false;
-    
+
     // Update progress indicator
     this.updateProgress();
-    
+
     return this.currentIndex < this.data.length; // Return true if more to load
   }
 
   async loadAll() {
     // Show progress indicator
     this.showProgress();
-    
+
     while (this.currentIndex < this.data.length) {
       await this.loadBatch();
-      
+
       // Small delay to keep UI responsive
       if (this.currentIndex < this.data.length) {
         await new Promise(resolve => setTimeout(resolve, this.delay));
       }
     }
-    
+
     // Hide progress indicator
     this.hideProgress();
   }
@@ -96,7 +96,7 @@ export class ProgressiveTableLoader {
     if (this.loadingIndicator) {
       const progressSpan = this.loadingIndicator.querySelector('.loading-progress');
       const progressText = this.loadingIndicator.querySelector('.loading-text');
-      
+
       if (progressSpan && progressText) {
         const percentage = Math.round((this.currentIndex / this.data.length) * 100);
         progressSpan.textContent = `${percentage}%`;
@@ -134,27 +134,30 @@ export class ProgressiveGridLoader {
     this.loadingTrigger = document.createElement('div');
     this.loadingTrigger.className = 'loading-trigger';
     this.loadingTrigger.style.height = '1px';
-    
+
     // Setup intersection observer for infinite scroll
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.isLoading) {
-          this.loadBatch();
-        }
-      });
-    }, { threshold: 0.1 });
+    this.observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !this.isLoading) {
+            this.loadBatch();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
   }
 
   async loadBatch() {
     if (this.isLoading || this.currentIndex >= this.data.length) return false;
-    
+
     this.isLoading = true;
     const endIndex = Math.min(this.currentIndex + this.batchSize, this.data.length);
     const batch = this.data.slice(this.currentIndex, endIndex);
-    
+
     // Create document fragment for performance
     const fragment = document.createDocumentFragment();
-    
+
     batch.forEach((item, index) => {
       const element = this.renderFunction(item, this.currentIndex + index);
       if (element) {
@@ -162,7 +165,7 @@ export class ProgressiveGridLoader {
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
         fragment.appendChild(element);
-        
+
         // Trigger animation after a short delay
         setTimeout(() => {
           element.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
@@ -171,23 +174,23 @@ export class ProgressiveGridLoader {
         }, index * 50); // Stagger animations
       }
     });
-    
+
     // Remove loading trigger temporarily
     if (this.loadingTrigger.parentNode) {
       this.loadingTrigger.parentNode.removeChild(this.loadingTrigger);
     }
-    
+
     // Append batch to DOM
     this.container.appendChild(fragment);
-    
+
     this.currentIndex = endIndex;
-    
+
     // Re-add loading trigger if more content to load
     if (this.currentIndex < this.data.length) {
       this.container.appendChild(this.loadingTrigger);
       this.observer.observe(this.loadingTrigger);
     }
-    
+
     this.isLoading = false;
     return this.currentIndex < this.data.length;
   }
@@ -222,34 +225,42 @@ export class ProgressiveGridLoader {
  */
 export function setupLazyImages(selector = 'img[loading="lazy"]') {
   const images = document.querySelectorAll(selector);
-  
-  const imageObserver = new IntersectionObserver((entries) => {
+
+  const imageObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target;
-        
+
         // Add loading class
         img.classList.add('lazy-loading');
-        
+
         // Handle load completion
-        img.addEventListener('load', () => {
-          img.classList.remove('lazy-loading');
-          img.classList.add('lazy-loaded');
-        }, { once: true });
-        
+        img.addEventListener(
+          'load',
+          () => {
+            img.classList.remove('lazy-loading');
+            img.classList.add('lazy-loaded');
+          },
+          { once: true }
+        );
+
         // Handle load error
-        img.addEventListener('error', () => {
-          img.classList.remove('lazy-loading');
-          img.classList.add('lazy-error');
-        }, { once: true });
-        
+        img.addEventListener(
+          'error',
+          () => {
+            img.classList.remove('lazy-loading');
+            img.classList.add('lazy-error');
+          },
+          { once: true }
+        );
+
         imageObserver.unobserve(img);
       }
     });
   });
-  
+
   images.forEach(img => imageObserver.observe(img));
-  
+
   return imageObserver;
 }
 
@@ -260,10 +271,10 @@ export function measureLoadingPerformance(startTime, itemsLoaded) {
   const endTime = performance.now();
   const duration = endTime - startTime;
   const itemsPerSecond = (itemsLoaded / duration) * 1000;
-  
+
   return {
     duration: Math.round(duration),
     itemsPerSecond: Math.round(itemsPerSecond),
-    averageTimePerItem: Math.round(duration / itemsLoaded)
+    averageTimePerItem: Math.round(duration / itemsLoaded),
   };
 }

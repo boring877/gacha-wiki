@@ -1,7 +1,11 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
 import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
-import { ernesteData, ernesteSEO, ernesteHighlighting } from '../../../../data/horizon-walker/characters/erneste.js';
+import {
+  ernesteData,
+  ernesteSEO,
+  ernesteHighlighting,
+} from '../../../../data/horizon-walker/characters/erneste.js';
 
 export const prerender = true;
 ---
@@ -11,5 +15,7 @@ export const prerender = true;
   description={ernesteSEO.description}
   gameTitle={ernesteData.name}
 >
-  <CharacterPageTemplate characterData={{...ernesteData, highlightPatterns: ernesteHighlighting}} />
+  <CharacterPageTemplate
+    characterData={{ ...ernesteData, highlightPatterns: ernesteHighlighting }}
+  />
 </CharacterIndividualLayout>

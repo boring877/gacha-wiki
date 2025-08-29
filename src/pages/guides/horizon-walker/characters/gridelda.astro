@@ -1,7 +1,11 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
 import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
-import { grideldaData, grideldaSEO, grideldaHighlighting } from '../../../../data/horizon-walker/characters/gridelda.js';
+import {
+  grideldaData,
+  grideldaSEO,
+  grideldaHighlighting,
+} from '../../../../data/horizon-walker/characters/gridelda.js';
 
 export const prerender = true;
 ---
@@ -11,5 +15,7 @@ export const prerender = true;
   description={grideldaSEO.description}
   gameTitle={grideldaData.name}
 >
-  <CharacterPageTemplate characterData={{...grideldaData, highlightPatterns: grideldaHighlighting}} />
+  <CharacterPageTemplate
+    characterData={{ ...grideldaData, highlightPatterns: grideldaHighlighting }}
+  />
 </CharacterIndividualLayout>

@@ -3,10 +3,10 @@ import CharacterLayout from '../../layouts/silver-and-blood/CharacterLayout.astr
 import { gameInfo } from '../../data/silver-and-blood/characters.js';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 import { Image } from 'astro:assets';
-import { 
-  highlightAllSkills, 
-  highlightMechanics, 
-  defaultSABHighlightPatterns 
+import {
+  highlightAllSkills,
+  highlightMechanics,
+  defaultSABHighlightPatterns,
 } from '../../utils/silver-and-blood/skill-highlighting.js';
 
 export interface Props {
@@ -572,8 +572,10 @@ const relatedCharacters = [];
               )}
             </div>
           </div>
-          <p style="color: #e0e0e0; line-height: 1.6; margin: 0; font-size: 1rem;" set:html={skill.description}>
-          </p>
+          <p
+            style="color: #e0e0e0; line-height: 1.6; margin: 0; font-size: 1rem;"
+            set:html={skill.description}
+          ></p>
         </div>
       ))
     }

@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
-import { 
-  highlightAllSkills, 
-  highlightUniqueTraits, 
-  highlightWeaponSkills, 
-  defaultHWHighlightPatterns 
+import {
+  highlightAllSkills,
+  highlightUniqueTraits,
+  highlightWeaponSkills,
+  defaultHWHighlightPatterns,
 } from '../../utils/horizon-walker/skill-highlighting.js';
 
 interface CharacterStats {
@@ -116,9 +116,15 @@ const { characterData } = Astro.props;
 // Apply keyword highlighting to skills and traits (using trusted content option)
 const highlightPatterns = (characterData as any).highlightPatterns || defaultHWHighlightPatterns;
 const highlightOptions = { isTrustedContent: true };
-const highlightedSkills = characterData.skills ? highlightAllSkills(characterData.skills, highlightPatterns, highlightOptions) : null;
-const highlightedTraits = characterData.uniqueTraits ? highlightUniqueTraits(characterData.uniqueTraits, highlightPatterns, highlightOptions) : null;
-const highlightedWeaponSkills = characterData.weapon?.uniqueSkills ? highlightWeaponSkills(characterData.weapon.uniqueSkills, highlightPatterns, highlightOptions) : null;
+const highlightedSkills = characterData.skills
+  ? highlightAllSkills(characterData.skills, highlightPatterns, highlightOptions)
+  : null;
+const highlightedTraits = characterData.uniqueTraits
+  ? highlightUniqueTraits(characterData.uniqueTraits, highlightPatterns, highlightOptions)
+  : null;
+const highlightedWeaponSkills = characterData.weapon?.uniqueSkills
+  ? highlightWeaponSkills(characterData.weapon.uniqueSkills, highlightPatterns, highlightOptions)
+  : null;
 
 const breadcrumbs = [
   { name: 'Home', href: '/' },
@@ -130,13 +136,13 @@ const breadcrumbs = [
 // Helper function to create character description from story
 function getCharacterSummary(story: string | undefined): string {
   if (!story) return 'A skilled character ready to join the battle.';
-  
+
   // Take first sentence or up to 150 characters, whichever comes first
   const firstSentence = story.split('.')[0];
   if (firstSentence.length <= 150) {
     return firstSentence + '.';
   }
-  
+
   // If first sentence is too long, truncate to 150 chars at word boundary
   const truncated = story.substring(0, 150);
   const lastSpace = truncated.lastIndexOf(' ');
@@ -168,10 +174,7 @@ function getTagCategory(tag: string): string {
   }
 
   // Magic/Ability tags - Green
-  if (
-    lowerTag.includes('magic user') ||
-    lowerTag.includes('caster')
-  ) {
+  if (lowerTag.includes('magic user') || lowerTag.includes('caster')) {
     return 'self-utility';
   }
 
@@ -224,33 +227,35 @@ function getTagCategory(tag: string): string {
         </div>
 
         <!-- Character Profile -->
-        {characterData.profile && (
-          <div class="character-profile-section">
-            <div class="character-info-label">Profile</div>
-            <div class="character-profile-grid">
-              <div class="profile-item">
-                <span class="profile-label">Age:</span>
-                <span class="profile-value">{characterData.profile.age}</span>
-              </div>
-              <div class="profile-item">
-                <span class="profile-label">Race:</span>
-                <span class="profile-value">{characterData.profile.racial}</span>
-              </div>
-              <div class="profile-item">
-                <span class="profile-label">Homeland:</span>
-                <span class="profile-value">{characterData.profile.homeland}</span>
-              </div>
-              <div class="profile-item">
-                <span class="profile-label">Height:</span>
-                <span class="profile-value">{characterData.profile.height}</span>
-              </div>
-              <div class="profile-item">
-                <span class="profile-label">Birthday:</span>
-                <span class="profile-value">{characterData.profile.birthday}</span>
+        {
+          characterData.profile && (
+            <div class="character-profile-section">
+              <div class="character-info-label">Profile</div>
+              <div class="character-profile-grid">
+                <div class="profile-item">
+                  <span class="profile-label">Age:</span>
+                  <span class="profile-value">{characterData.profile.age}</span>
+                </div>
+                <div class="profile-item">
+                  <span class="profile-label">Race:</span>
+                  <span class="profile-value">{characterData.profile.racial}</span>
+                </div>
+                <div class="profile-item">
+                  <span class="profile-label">Homeland:</span>
+                  <span class="profile-value">{characterData.profile.homeland}</span>
+                </div>
+                <div class="profile-item">
+                  <span class="profile-label">Height:</span>
+                  <span class="profile-value">{characterData.profile.height}</span>
+                </div>
+                <div class="profile-item">
+                  <span class="profile-label">Birthday:</span>
+                  <span class="profile-value">{characterData.profile.birthday}</span>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )
+        }
       </div>
     </div>
 
@@ -263,18 +268,33 @@ function getTagCategory(tag: string): string {
 
         <!-- Core Stats -->
         <h4 class="character-stats-subtitle">Core Stats</h4>
-        
+
         <!-- Core Stats Explanation -->
         <div class="core-stats-explanation">
           <div class="stat-explanation-grid">
-            <span><span class="stat-name">Strength:</span> <span class="stat-description">Increases Melee ATK</span></span>
-            <span><span class="stat-name">Technic:</span> <span class="stat-description">Increases Ranged ATK</span></span>
-            <span><span class="stat-name">Intelligence:</span> <span class="stat-description">Increases Magic ATK</span></span>
-            <span><span class="stat-name">Vitality:</span> <span class="stat-description">Increases Max HP</span></span>
-            <span><span class="stat-name">Agility:</span> <span class="stat-description">Increases evasion and AP Recovery</span></span>
+            <span
+              ><span class="stat-name">Strength:</span>
+              <span class="stat-description">Increases Melee ATK</span></span
+            >
+            <span
+              ><span class="stat-name">Technic:</span>
+              <span class="stat-description">Increases Ranged ATK</span></span
+            >
+            <span
+              ><span class="stat-name">Intelligence:</span>
+              <span class="stat-description">Increases Magic ATK</span></span
+            >
+            <span
+              ><span class="stat-name">Vitality:</span>
+              <span class="stat-description">Increases Max HP</span></span
+            >
+            <span
+              ><span class="stat-name">Agility:</span>
+              <span class="stat-description">Increases evasion and AP Recovery</span></span
+            >
           </div>
         </div>
-        
+
         <div class="character-stats-grid core-stats">
           <div class="stat-item">
             <div class="stat-label">Strength</div>
@@ -353,155 +373,175 @@ function getTagCategory(tag: string): string {
         </div>
 
         <!-- Character Tags Section -->
-        {characterData.tags && characterData.tags.length > 0 && (
-          <div class="character-tags-container">
-            <div class="character-tags-label">Gameplay Tags</div>
-            <div class="character-tags-wrapper">
-              {characterData.tags.map((tag: string) => (
-                <span class={`character-tag ${getTagCategory(tag)}`}>{tag}</span>
-              ))}
+        {
+          characterData.tags && characterData.tags.length > 0 && (
+            <div class="character-tags-container">
+              <div class="character-tags-label">Gameplay Tags</div>
+              <div class="character-tags-wrapper">
+                {characterData.tags.map((tag: string) => (
+                  <span class={`character-tag ${getTagCategory(tag)}`}>{tag}</span>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        }
       </div>
     </div>
   </div>
 </section>
 
 <!-- Character Story Section -->
-{characterData.story && (
-  <section class="content-section character-story-section">
-    <h2 class="section-title">Character Story</h2>
-    <div class="character-story-content">
-      <p class="character-story-text">{characterData.story}</p>
-    </div>
-  </section>
-)}
+{
+  characterData.story && (
+    <section class="content-section character-story-section">
+      <h2 class="section-title">Character Story</h2>
+      <div class="character-story-content">
+        <p class="character-story-text">{characterData.story}</p>
+      </div>
+    </section>
+  )
+}
 
 <!-- Skills Section -->
 <section class="content-section skills-section">
   <h2 class="section-title">Skills</h2>
   <p class="skills-explanation">All skills shown at maximum level</p>
 
-  {highlightedSkills && Object.entries(highlightedSkills).map(([key, skill]: [string, any]) => (
-    <div class={`skill-card ${skill.type === 'Passive' ? 'passive-skill' : ''} ${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`}>
-      <div class="skill-header">
-        <h3 class="skill-title">{skill.name}</h3>
-        <div class="skill-meta">
-          <span class="hw-badge" data-type={skill.type === 'Passive' ? 'Passive' : 'Skill'}>
-            {skill.type === 'Passive' ? 'Passive' : 'Skill'}
-          </span>
-          {skill.apCost && skill.apCost > 0 && (
-            <span class="skill-cost">AP Cost: {skill.apCost}</span>
-          )}
-          {skill.cooldown !== undefined && skill.cooldown >= 0 && (
-            <span class="skill-cooldown">
-              Cooldown: {skill.cooldown}
-            </span>
+  {
+    highlightedSkills &&
+      Object.entries(highlightedSkills).map(([key, skill]: [string, any]) => (
+        <div
+          class={`skill-card ${skill.type === 'Passive' ? 'passive-skill' : ''} ${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`}
+        >
+          <div class="skill-header">
+            <h3 class="skill-title">{skill.name}</h3>
+            <div class="skill-meta">
+              <span class="hw-badge" data-type={skill.type === 'Passive' ? 'Passive' : 'Skill'}>
+                {skill.type === 'Passive' ? 'Passive' : 'Skill'}
+              </span>
+              {skill.apCost && skill.apCost > 0 && (
+                <span class="skill-cost">AP Cost: {skill.apCost}</span>
+              )}
+              {skill.cooldown !== undefined && skill.cooldown >= 0 && (
+                <span class="skill-cooldown">Cooldown: {skill.cooldown}</span>
+              )}
+            </div>
+          </div>
+          <p class="skill-description" set:html={skill.description} />
+          {skill.damage && (
+            <div class="skill-damage">
+              <span class="damage-label">Damage:</span>{' '}
+              <span class="damage-value">
+                {skill.damage.value} of {skill.damage.type}
+              </span>
+            </div>
           )}
         </div>
-      </div>
-      <p class="skill-description" set:html={skill.description}></p>
-      {skill.damage && (
-        <div class="skill-damage">
-          <span class="damage-label">Damage:</span> <span class="damage-value">{skill.damage.value} of {skill.damage.type}</span>
-        </div>
-      )}
-    </div>
-  ))}
+      ))
+  }
 </section>
 
 <!-- Unique Traits Section -->
-{highlightedTraits && (
-  <section class="content-section traits-section">
-    <h2 class="section-title">Unique Traits</h2>
-    
-    {Object.entries(highlightedTraits).map(([key, trait]: [string, any]) => (
-      <div class={`trait-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`}>
-        <div class="trait-header">
-          <h3 class="trait-title">{trait.name}</h3>
-          <span class="hw-badge" data-type="Trait">Unique Trait</span>
+{
+  highlightedTraits && (
+    <section class="content-section traits-section">
+      <h2 class="section-title">Unique Traits</h2>
+
+      {Object.entries(highlightedTraits).map(([key, trait]: [string, any]) => (
+        <div class={`trait-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`}>
+          <div class="trait-header">
+            <h3 class="trait-title">{trait.name}</h3>
+            <span class="hw-badge" data-type="Trait">
+              Unique Trait
+            </span>
+          </div>
+          <p class="trait-description" set:html={trait.description} />
         </div>
-        <p class="trait-description" set:html={trait.description}></p>
-      </div>
-    ))}
-  </section>
-)}
+      ))}
+    </section>
+  )
+}
 
 <!-- Weapon Section -->
-{characterData.weapon && (
-  <section class="content-section weapon-section">
-    <h2 class="section-title">
-      Weapon: {characterData.weapon.name}
-    </h2>
-    <p class="character-stats-explanation">Stats and skills shown at Level 60 and full EX</p>
+{
+  characterData.weapon && (
+    <section class="content-section weapon-section">
+      <h2 class="section-title">Weapon: {characterData.weapon.name}</h2>
+      <p class="character-stats-explanation">Stats and skills shown at Level 60 and full EX</p>
 
-    <div class="weapon-flex">
-      {/* Weapon Image & Stats (Left) */}
-      <div class="weapon-image-container">
-        <div class="weapon-image-box">
-          <div class="weapon-image-wrapper">
-            <Image
-              src={characterData.weapon.image}
-              alt={characterData.weapon.name}
-              width={200}
-              height={300}
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        <div class="weapon-info-card">
-          <h3 class="weapon-info-title">Weapon Info</h3>
-          
-          <div class="weapon-info-grid">
-            <div class="weapon-info-item">
-              <div class="weapon-info-label">Type</div>
-              <span class="hw-badge" data-type="WeaponType">{characterData.weapon.type}</span>
-            </div>
-            <div class="weapon-info-item">
-              <div class="weapon-info-label">Rarity</div>
-              <span class="hw-badge" data-rarity={characterData.weapon.rarity}>
-                {characterData.weapon.rarity}
-              </span>
+      <div class="weapon-flex">
+        {/* Weapon Image & Stats (Left) */}
+        <div class="weapon-image-container">
+          <div class="weapon-image-box">
+            <div class="weapon-image-wrapper">
+              <Image
+                src={characterData.weapon.image}
+                alt={characterData.weapon.name}
+                width={200}
+                height={300}
+                loading="lazy"
+              />
             </div>
           </div>
 
-          <h4 class="weapon-stats-title">Weapon Stats</h4>
-          <div class="weapon-stats-grid">
-            {characterData.weapon.stats && Object.entries(characterData.weapon.stats).map(([key, value]) => (
-              <div class="stat-item">
-                <div class="stat-label">{key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</div>
-                <div class="stat-value">{value}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+          <div class="weapon-info-card">
+            <h3 class="weapon-info-title">Weapon Info</h3>
 
-      {/* Weapon Skills (Right) */}
-      <div class="weapon-skills-container">
-        <div class="weapon-skills-box">
-          <h3 class="weapon-skills-title">Weapon Skills</h3>
-          
-          {highlightedWeaponSkills && Object.entries(highlightedWeaponSkills).map(([key, skill]: [string, any]) => (
-            <div class={`weapon-skill-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`}>
-              <div class="weapon-skill-header">
-                <h4 class="weapon-skill-title">{skill.name}</h4>
-                <span class="hw-badge" data-type={skill.type || 'Unique'}>
-                  {skill.type || 'Unique'}
+            <div class="weapon-info-grid">
+              <div class="weapon-info-item">
+                <div class="weapon-info-label">Type</div>
+                <span class="hw-badge" data-type="WeaponType">
+                  {characterData.weapon.type}
                 </span>
               </div>
-              <p class="weapon-skill-description" set:html={skill.description}></p>
-              {skill.note && (
-                <div class="weapon-skill-note">
-                  <strong>Note:</strong> {skill.note}
-                </div>
-              )}
+              <div class="weapon-info-item">
+                <div class="weapon-info-label">Rarity</div>
+                <span class="hw-badge" data-rarity={characterData.weapon.rarity}>
+                  {characterData.weapon.rarity}
+                </span>
+              </div>
             </div>
-          ))}
+
+            <h4 class="weapon-stats-title">Weapon Stats</h4>
+            <div class="weapon-stats-grid">
+              {characterData.weapon.stats &&
+                Object.entries(characterData.weapon.stats).map(([key, value]) => (
+                  <div class="stat-item">
+                    <div class="stat-label">
+                      {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+                    </div>
+                    <div class="stat-value">{value}</div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Weapon Skills (Right) */}
+        <div class="weapon-skills-container">
+          <div class="weapon-skills-box">
+            <h3 class="weapon-skills-title">Weapon Skills</h3>
+
+            {highlightedWeaponSkills &&
+              Object.entries(highlightedWeaponSkills).map(([key, skill]: [string, any]) => (
+                <div class={`weapon-skill-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`}>
+                  <div class="weapon-skill-header">
+                    <h4 class="weapon-skill-title">{skill.name}</h4>
+                    <span class="hw-badge" data-type={skill.type || 'Unique'}>
+                      {skill.type || 'Unique'}
+                    </span>
+                  </div>
+                  <p class="weapon-skill-description" set:html={skill.description} />
+                  {skill.note && (
+                    <div class="weapon-skill-note">
+                      <strong>Note:</strong> {skill.note}
+                    </div>
+                  )}
+                </div>
+              ))}
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-)}
+    </section>
+  )
+}

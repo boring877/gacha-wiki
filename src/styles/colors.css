@@ -271,7 +271,11 @@
   --hw-muted-text: #999999; /* Clean muted text color */
   --hw-text-dark: #1a1a1a; /* Dark text for light backgrounds */
   --hw-text-very-muted: #888888; /* Very muted text for subtle info */
-  --hw-gold-gradient: linear-gradient(135deg, #ffd700, #ffeb3b); /* Bright sunshine gold badge gradient */
+  --hw-gold-gradient: linear-gradient(
+    135deg,
+    #ffd700,
+    #ffeb3b
+  ); /* Bright sunshine gold badge gradient */
   --hw-silver-gradient-alt: linear-gradient(135deg, #c0c4c0, #a9ada9); /* Silver badge gradient */
   --hw-error-gradient: linear-gradient(135deg, #dc3545, #b22222); /* Error button gradient */
   --hw-character-info-bg: linear-gradient(
@@ -299,7 +303,11 @@
   /* === HORIZON WALKER GRADIENT SYSTEM === */
   /* Complex gradients combining theme colors for dynamic visual effects */
   /* 135deg angle provides diagonal flow that feels natural and dynamic */
-  --hw-primary-gradient: linear-gradient(135deg, var(--hw-primary-green), var(--hw-secondary-brown));
+  --hw-primary-gradient: linear-gradient(
+    135deg,
+    var(--hw-primary-green),
+    var(--hw-secondary-brown)
+  );
   --hw-nature-gradient: linear-gradient(135deg, var(--hw-primary-green), var(--hw-dark-green));
   --hw-earth-gradient: linear-gradient(135deg, var(--hw-secondary-brown), var(--hw-dark-brown));
   --hw-card-gradient: linear-gradient(135deg, var(--hw-card-bg), var(--hw-bg-darker));

@@ -18,7 +18,7 @@ export const getStatValue = (stats, statKey) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted strength value or 'N/A'
  */
-export const getStrengthValue = (stats) => {
+export const getStrengthValue = stats => {
   return getStatValue(stats, 'strength');
 };
 
@@ -27,7 +27,7 @@ export const getStrengthValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted technic value or 'N/A'
  */
-export const getTechnicValue = (stats) => {
+export const getTechnicValue = stats => {
   return getStatValue(stats, 'technic');
 };
 
@@ -36,7 +36,7 @@ export const getTechnicValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted intelligence value or 'N/A'
  */
-export const getIntelligenceValue = (stats) => {
+export const getIntelligenceValue = stats => {
   return getStatValue(stats, 'intelligence');
 };
 
@@ -45,7 +45,7 @@ export const getIntelligenceValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted vitality value or 'N/A'
  */
-export const getVitalityValue = (stats) => {
+export const getVitalityValue = stats => {
   return getStatValue(stats, 'vitality');
 };
 
@@ -54,7 +54,7 @@ export const getVitalityValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted agility value or 'N/A'
  */
-export const getAgilityValue = (stats) => {
+export const getAgilityValue = stats => {
   return getStatValue(stats, 'agility');
 };
 
@@ -64,7 +64,7 @@ export const getAgilityValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted melee attack value or 'N/A'
  */
-export const getMeleeAtkValue = (stats) => {
+export const getMeleeAtkValue = stats => {
   return getStatValue(stats, 'meleeAtk');
 };
 
@@ -73,7 +73,7 @@ export const getMeleeAtkValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted ranged attack value or 'N/A'
  */
-export const getRangedAtkValue = (stats) => {
+export const getRangedAtkValue = stats => {
   return getStatValue(stats, 'rangedAtk');
 };
 
@@ -82,7 +82,7 @@ export const getRangedAtkValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted magic attack value or 'N/A'
  */
-export const getMagicAtkValue = (stats) => {
+export const getMagicAtkValue = stats => {
   return getStatValue(stats, 'magicAtk');
 };
 
@@ -91,7 +91,7 @@ export const getMagicAtkValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted max HP value or 'N/A'
  */
-export const getMaxHpValue = (stats) => {
+export const getMaxHpValue = stats => {
   return getStatValue(stats, 'maxHp');
 };
 
@@ -100,7 +100,7 @@ export const getMaxHpValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted speed value or 'N/A'
  */
-export const getSpeedValue = (stats) => {
+export const getSpeedValue = stats => {
   return getStatValue(stats, 'spd');
 };
 
@@ -109,7 +109,7 @@ export const getSpeedValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted starting AP value or 'N/A'
  */
-export const getStartingApValue = (stats) => {
+export const getStartingApValue = stats => {
   return getStatValue(stats, 'startingAp');
 };
 
@@ -118,7 +118,7 @@ export const getStartingApValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted AP recovery value or 'N/A'
  */
-export const getApRecoveryValue = (stats) => {
+export const getApRecoveryValue = stats => {
   return getStatValue(stats, 'apRecovery');
 };
 
@@ -127,7 +127,7 @@ export const getApRecoveryValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted accuracy value or 'N/A'
  */
-export const getAccuracyValue = (stats) => {
+export const getAccuracyValue = stats => {
   return getStatValue(stats, 'accuracy');
 };
 
@@ -136,7 +136,7 @@ export const getAccuracyValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted evade value or 'N/A'
  */
-export const getEvadeValue = (stats) => {
+export const getEvadeValue = stats => {
   return getStatValue(stats, 'evade');
 };
 
@@ -145,7 +145,7 @@ export const getEvadeValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted critical rate value or 'N/A'
  */
-export const getCritRateValue = (stats) => {
+export const getCritRateValue = stats => {
   return getStatValue(stats, 'critRate');
 };
 
@@ -154,7 +154,7 @@ export const getCritRateValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted critical damage value or 'N/A'
  */
-export const getCritDmgValue = (stats) => {
+export const getCritDmgValue = stats => {
   return getStatValue(stats, 'critDmg');
 };
 
@@ -164,15 +164,15 @@ export const getCritDmgValue = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Formatted highest attack value or 'N/A'
  */
-export const getHighestAttack = (stats) => {
+export const getHighestAttack = stats => {
   if (!stats) return 'N/A';
-  
+
   const meleeAtk = parseInt(stats.meleeAtk?.replace(/,/g, '')) || 0;
   const rangedAtk = parseInt(stats.rangedAtk?.replace(/,/g, '')) || 0;
   const magicAtk = parseInt(stats.magicAtk?.replace(/,/g, '')) || 0;
-  
+
   const highestAtk = Math.max(meleeAtk, rangedAtk, magicAtk);
-  
+
   return highestAtk > 0 ? highestAtk.toLocaleString() : 'N/A';
 };
 
@@ -181,20 +181,20 @@ export const getHighestAttack = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {string} Attack type name or 'N/A'
  */
-export const getHighestAttackType = (stats) => {
+export const getHighestAttackType = stats => {
   if (!stats) return 'N/A';
-  
+
   const meleeAtk = parseInt(stats.meleeAtk?.replace(/,/g, '')) || 0;
   const rangedAtk = parseInt(stats.rangedAtk?.replace(/,/g, '')) || 0;
   const magicAtk = parseInt(stats.magicAtk?.replace(/,/g, '')) || 0;
-  
+
   const highest = Math.max(meleeAtk, rangedAtk, magicAtk);
-  
+
   if (highest === 0) return 'N/A';
   if (highest === meleeAtk) return 'Melee';
   if (highest === rangedAtk) return 'Ranged';
   if (highest === magicAtk) return 'Magic';
-  
+
   return 'N/A';
 };
 
@@ -203,13 +203,13 @@ export const getHighestAttackType = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {Object} Object with all basic attributes
  */
-export const getBasicAttributes = (stats) => {
+export const getBasicAttributes = stats => {
   return {
     strength: getStrengthValue(stats),
     technic: getTechnicValue(stats),
     intelligence: getIntelligenceValue(stats),
     vitality: getVitalityValue(stats),
-    agility: getAgilityValue(stats)
+    agility: getAgilityValue(stats),
   };
 };
 
@@ -218,7 +218,7 @@ export const getBasicAttributes = (stats) => {
  * @param {Object} stats - Character stats object
  * @returns {Object} Object with all combat stats
  */
-export const getCombatStats = (stats) => {
+export const getCombatStats = stats => {
   return {
     meleeAtk: getMeleeAtkValue(stats),
     rangedAtk: getRangedAtkValue(stats),
@@ -230,6 +230,6 @@ export const getCombatStats = (stats) => {
     accuracy: getAccuracyValue(stats),
     evade: getEvadeValue(stats),
     critRate: getCritRateValue(stats),
-    critDmg: getCritDmgValue(stats)
+    critDmg: getCritDmgValue(stats),
   };
 };

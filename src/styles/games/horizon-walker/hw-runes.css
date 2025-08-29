@@ -12,12 +12,20 @@
   --hw-runes-secondary: #ff7b7b;
   --hw-runes-ethereal: #7b9eff;
   --hw-runes-dimensional: #ff7bff;
-  
+
   /* Dark theme backgrounds */
-  --hw-runes-bg-primary: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(42, 42, 42, 0.9) 100%);
+  --hw-runes-bg-primary: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.95) 0%,
+    rgba(42, 42, 42, 0.9) 100%
+  );
   --hw-runes-bg-card: linear-gradient(135deg, rgba(42, 42, 42, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
-  --hw-runes-bg-accent: linear-gradient(135deg, rgba(232, 165, 71, 0.1) 0%, rgba(255, 123, 123, 0.1) 100%);
-  
+  --hw-runes-bg-accent: linear-gradient(
+    135deg,
+    rgba(232, 165, 71, 0.1) 0%,
+    rgba(255, 123, 123, 0.1) 100%
+  );
+
   /* Mystical glows and effects */
   --hw-runes-glow-primary: 0 4px 20px rgba(232, 165, 71, 0.3);
   --hw-runes-glow-secondary: 0 4px 20px rgba(255, 123, 123, 0.3);
@@ -43,7 +51,9 @@
   border-radius: 20px;
   padding: 1px;
   background: linear-gradient(135deg, rgba(232, 165, 71, 0.3), rgba(255, 123, 123, 0.2));
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   mask-composite: subtract;
   pointer-events: none;
 }
@@ -155,7 +165,9 @@
   border-radius: 18px;
   padding: 2px;
   background: linear-gradient(135deg, rgba(232, 165, 71, 0.4), rgba(255, 123, 123, 0.3));
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   mask-composite: subtract;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -397,20 +409,20 @@
   .content-section {
     padding: 2rem;
   }
-  
+
   .section-title {
     font-size: var(--text-3xl);
   }
-  
+
   .runes-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .rune-card {
     padding: 2rem;
   }
-  
+
   .enhancement-grid,
   .tips-grid {
     grid-template-columns: 1fr;
@@ -421,20 +433,20 @@
   .content-section {
     padding: 1.5rem;
   }
-  
+
   .section-title {
     font-size: var(--text-2xl);
   }
-  
+
   .rune-card {
     padding: 1.5rem;
   }
-  
+
   .rune-image-container {
     width: 100px;
     height: 100px;
   }
-  
+
   .category-title {
     font-size: var(--text-2xl);
   }

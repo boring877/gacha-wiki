@@ -2,10 +2,10 @@
 import { getFactionData } from '../../data/zone-nova/factions.js';
 import { Image } from 'astro:assets';
 import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
-import { 
-  highlightAllSkills, 
+import {
+  highlightAllSkills,
   highlightSkillText,
-  defaultZNHighlightPatterns 
+  defaultZNHighlightPatterns,
 } from '../../utils/zone-nova/skill-highlighting.js';
 
 interface Props {
@@ -17,10 +17,15 @@ const factionData = getFactionData(characterData.faction);
 
 // Apply skill highlighting for better readability
 const highlightedSkills = highlightAllSkills(characterData.skills, defaultZNHighlightPatterns);
-const highlightedTeamSkill = characterData.teamSkill ? {
-  ...characterData.teamSkill,
-  description: highlightSkillText(characterData.teamSkill.description, defaultZNHighlightPatterns)
-} : characterData.teamSkill;
+const highlightedTeamSkill = characterData.teamSkill
+  ? {
+      ...characterData.teamSkill,
+      description: highlightSkillText(
+        characterData.teamSkill.description,
+        defaultZNHighlightPatterns
+      ),
+    }
+  : characterData.teamSkill;
 
 // Helper function to categorize character tags for styling
 function getTagCategory(tag: string): string {
@@ -299,8 +304,7 @@ function getTagCategory(tag: string): string {
       </h3>
       <span class="skill-badge normal-attack"> Normal Attack </span>
     </div>
-    <p class="skill-description" set:html={highlightedSkills.normal.description}>
-    </p>
+    <p class="skill-description" set:html={highlightedSkills.normal.description} />
   </div>
 
   <div class="skill-card auto-skill">
@@ -315,8 +319,7 @@ function getTagCategory(tag: string): string {
         </span>
       </div>
     </div>
-    <p class="skill-description" set:html={highlightedSkills.auto.description}>
-    </p>
+    <p class="skill-description" set:html={highlightedSkills.auto.description} />
   </div>
 
   <div class="skill-card ultimate">
@@ -331,8 +334,7 @@ function getTagCategory(tag: string): string {
         </span>
       </div>
     </div>
-    <p class="skill-description" set:html={highlightedSkills.ultimate.description}>
-    </p>
+    <p class="skill-description" set:html={highlightedSkills.ultimate.description} />
   </div>
 
   <div class="skill-card passive">
@@ -342,8 +344,7 @@ function getTagCategory(tag: string): string {
       </h3>
       <span class="skill-badge passive"> Passive </span>
     </div>
-    <p class="skill-description" set:html={highlightedSkills.passive.description}>
-    </p>
+    <p class="skill-description" set:html={highlightedSkills.passive.description} />
   </div>
 
   <!-- Team Skill -->
@@ -354,8 +355,7 @@ function getTagCategory(tag: string): string {
       </h3>
       <span class="skill-badge team-skill"> Team Skill </span>
     </div>
-    <p class="skill-description" set:html={highlightedTeamSkill.description}>
-    </p>
+    <p class="skill-description" set:html={highlightedTeamSkill.description} />
     <div class="team-skill-requirements">
       <strong>Requires:</strong>
       <span>

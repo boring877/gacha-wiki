@@ -1,7 +1,11 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
 import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
-import { oliviaData, oliviaSEO, oliviaHighlighting } from '../../../../data/horizon-walker/characters/olivia.js';
+import {
+  oliviaData,
+  oliviaSEO,
+  oliviaHighlighting,
+} from '../../../../data/horizon-walker/characters/olivia.js';
 
 export const prerender = true;
 ---
@@ -11,5 +15,5 @@ export const prerender = true;
   description={oliviaSEO.description}
   gameTitle={oliviaData.name}
 >
-  <CharacterPageTemplate characterData={{...oliviaData, highlightPatterns: oliviaHighlighting}} />
+  <CharacterPageTemplate characterData={{ ...oliviaData, highlightPatterns: oliviaHighlighting }} />
 </CharacterIndividualLayout>

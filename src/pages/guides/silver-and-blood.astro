@@ -1,13 +1,10 @@
 ---
-import SilverAndBloodLayout from '../../layouts/silver-and-blood/Layout.astro';
+import SilverAndBloodLandingLayout from '../../layouts/silver-and-blood/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { silverAndBloodConfig } from '../../data/silver-and-blood/silver-and-blood.js';
 
-// Import the landing page CSS
-import '../../styles/games/silver-and-blood/sab-landing-page.css';
-
 // Extract data for easier use in template
-const { meta, gameInfo, guides, storyContent, categoryGroups } = silverAndBloodConfig;
+const { meta, gameInfo, storyContent, categoryGroups } = silverAndBloodConfig;
 
 // Breadcrumb data for SEO
 const breadcrumbs = [
@@ -16,7 +13,7 @@ const breadcrumbs = [
 ];
 ---
 
-<SilverAndBloodLayout
+<SilverAndBloodLandingLayout
   title={meta.title}
   description={meta.description}
   gameTitle={meta.gameTitle}
@@ -123,23 +120,23 @@ const breadcrumbs = [
   </section>
 
   <!-- Resources: Bento Grid Layout -->
-  <section class="content-section">
-    <h2 class="section-title">Resources</h2>
+  <section class="sab-resources-section">
+    <h2 class="sab-resources-title">Resources</h2>
 
-    <div class="guides-grid">
+    <div class="sab-resources-grid">
       {
         categoryGroups.map(category => (
-          <div class={`category-card ${category.size}`}>
-            <div class="category-header">
-              <span class="category-emoji">{category.emoji}</span>
+          <div class={`sab-resource-category sab-category-${category.size}`}>
+            <div class="sab-category-header">
+              <span class="sab-category-emoji">{category.emoji}</span>
               <h3>{category.title}</h3>
-              <p class="category-description">{category.description}</p>
+              <p class="sab-category-description">{category.description}</p>
             </div>
-            <div class="nested-guides-grid">
+            <div class="sab-buttons-grid">
               {category.guides.map(guide => (
                 <a
                   href={guide.url}
-                  class="nested-guide-card"
+                  class="sab-resource-button"
                   aria-label={`Navigate to ${guide.title}`}
                 >
                   {guide.title}
@@ -151,4 +148,4 @@ const breadcrumbs = [
       }
     </div>
   </section>
-</SilverAndBloodLayout>
+</SilverAndBloodLandingLayout>

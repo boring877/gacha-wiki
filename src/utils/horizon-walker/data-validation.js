@@ -15,14 +15,11 @@ export function sanitizeHTML(input, isTrustedContent = false) {
   }
 
   let sanitized;
-  
+
   if (isTrustedContent) {
     // For trusted content (like character data), only sanitize actual threats
-    sanitized = input
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-      // Preserve quotes and apostrophes in trusted content
+    sanitized = input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    // Preserve quotes and apostrophes in trusted content
   } else {
     // For untrusted content, apply full HTML entity encoding
     sanitized = input
@@ -51,7 +48,7 @@ export function sanitizeHTML(input, isTrustedContent = false) {
  */
 export function validateCharacterData(characterData) {
   const errors = [];
-  
+
   if (!characterData || typeof characterData !== 'object') {
     return { isValid: false, errors: ['Character data must be an object'] };
   }
@@ -68,7 +65,11 @@ export function validateCharacterData(characterData) {
 
   // Validate numeric fields
   if (characterData.cost !== undefined) {
-    if (typeof characterData.cost !== 'number' || characterData.cost < 0 || characterData.cost > 20) {
+    if (
+      typeof characterData.cost !== 'number' ||
+      characterData.cost < 0 ||
+      characterData.cost > 20
+    ) {
       errors.push('Cost must be a number between 0 and 20');
     }
   }
@@ -93,17 +94,17 @@ export function validateCharacterData(characterData) {
         errors.push(`Skill ${skillKey} must be an object`);
         return;
       }
-      
+
       if (!skill.name || typeof skill.name !== 'string') {
         errors.push(`Skill ${skillKey} must have a name`);
       }
-      
+
       if (!skill.description || typeof skill.description !== 'string') {
         errors.push(`Skill ${skillKey} must have a description`);
       } else if (skill.description.length > 2000) {
         errors.push(`Skill ${skillKey} description exceeds maximum length`);
       }
-      
+
       // Validate AP cost
       if (skill.apCost !== undefined) {
         if (typeof skill.apCost !== 'number' || skill.apCost < 0 || skill.apCost > 200) {
@@ -131,7 +132,7 @@ export function validateCharacterData(characterData) {
 
   return {
     isValid: errors.length === 0,
-    errors: errors
+    errors: errors,
   };
 }
 
@@ -163,8 +164,8 @@ export function sanitizeCharacterData(characterData, isTrustedContent = true) {
         {
           ...skill,
           name: sanitizeHTML(skill.name || '', isTrustedContent),
-          description: sanitizeHTML(skill.description || '', isTrustedContent)
-        }
+          description: sanitizeHTML(skill.description || '', isTrustedContent),
+        },
       ])
     );
   }
@@ -177,8 +178,8 @@ export function sanitizeCharacterData(characterData, isTrustedContent = true) {
         {
           ...trait,
           name: sanitizeHTML(trait.name || '', isTrustedContent),
-          description: sanitizeHTML(trait.description || '', isTrustedContent)
-        }
+          description: sanitizeHTML(trait.description || '', isTrustedContent),
+        },
       ])
     );
   }
@@ -191,8 +192,8 @@ export function sanitizeCharacterData(characterData, isTrustedContent = true) {
         {
           ...skill,
           name: sanitizeHTML(skill.name || '', isTrustedContent),
-          description: sanitizeHTML(skill.description || '', isTrustedContent)
-        }
+          description: sanitizeHTML(skill.description || '', isTrustedContent),
+        },
       ])
     );
   }
@@ -211,8 +212,14 @@ export function sanitizeHighlightPatterns(patterns) {
   }
 
   const safePatternsKeys = [
-    'damage', 'effects', 'buffsDebuffs', 'percentages', 
-    'statChanges', 'keywords', 'attributes', 'numbers'
+    'damage',
+    'effects',
+    'buffsDebuffs',
+    'percentages',
+    'statChanges',
+    'keywords',
+    'attributes',
+    'numbers',
   ];
 
   const sanitizedPatterns = {};

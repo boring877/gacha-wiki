@@ -40,7 +40,8 @@ export const GAMES: Game[] = [
     id: 'horizon-walker',
     name: 'Horizon Walker',
     slug: 'horizon-walker',
-    description: 'Post-apocalyptic RPG: Transcend mortality as a Chosen Human and battle Forsaken Entities through dimensional rifts',
+    description:
+      'Post-apocalyptic RPG: Transcend mortality as a Chosen Human and battle Forsaken Entities through dimensional rifts',
     image: '/images/games/horizon-walker/gameimg/gameicon.jpg',
     url: '/guides/horizon-walker/',
     status: 'active',

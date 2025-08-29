@@ -160,22 +160,22 @@ const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
 
   <!-- Resources Section -->
   <section class="content-section">
-    <h2 class="section-title">Resources</h2>
+    <h2 class="hw-resources-title">Resources</h2>
 
-    <div class="guides-grid">
+    <div class="hw-resources-grid">
       {
         categoryGroups.map(category => (
-          <div class={`category-card ${category.size}`}>
-            <div class="category-header">
-              <span class="category-emoji">{category.emoji}</span>
+          <div class={`hw-resource-category hw-category-${category.size}`}>
+            <div class="hw-category-header">
+              <span class="hw-category-emoji">{category.emoji}</span>
               <h3>{category.title}</h3>
-              <p class="category-description">{category.description}</p>
+              <p class="hw-category-description">{category.description}</p>
             </div>
-            <div class="nested-guides-grid">
+            <div class="hw-buttons-grid">
               {category.guides.map(guide => (
                 <a
                   href={guide.url}
-                  class="nested-guide-card"
+                  class="hw-resource-button"
                   aria-label={`Navigate to ${guide.title}`}
                 >
                   {guide.title}

@@ -19,52 +19,52 @@
 }
 
 /* Game body styling */
-.game-silver-and-blood {
+.sab-body {
   background: linear-gradient(135deg, rgba(192, 192, 192, 0.1) 0%, rgba(139, 0, 0, 0.1) 100%);
 }
 
 /* Hero section customization */
-.game-silver-and-blood .hero-title {
+.sab-body .hero-title {
   background: var(--sab-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Content sections */
-.game-silver-and-blood .content-section {
-  border-left: 3px solid var(--sab-silver);
+/* Content sections - exclude landing page */
+.sab-body .content-section {
+  /* Removed border-left as it breaks landing page layout */
 }
 
-.game-silver-and-blood .section-title {
+.sab-body .section-title {
   color: var(--sab-blood);
 }
 
 /* Guide cards for Silver and Blood */
-.game-silver-and-blood .guide-card {
+.sab-body .guide-card {
   border-color: var(--sab-silver);
   background: linear-gradient(135deg, rgba(192, 192, 192, 0.05) 0%, rgba(139, 0, 0, 0.05) 100%);
 }
 
 /* Status badges */
-.game-silver-and-blood .status-badge {
+.sab-body .status-badge {
   background: var(--sab-blood);
   color: white;
 }
 
 /* Coming soon styling */
-.game-silver-and-blood .coming-soon-notice {
+.sab-body .coming-soon-notice {
   background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(139, 0, 0, 0.1));
   border-color: var(--sab-silver);
 }
 
-.game-silver-and-blood .coming-soon-notice h3 {
+.sab-body .coming-soon-notice h3 {
   color: var(--sab-blood);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .game-silver-and-blood .content-section {
+  .sab-body .content-section {
     border-left-width: 2px;
   }
 }

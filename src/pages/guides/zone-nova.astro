@@ -1,13 +1,10 @@
 ---
-import ZoneNovaLayout from '../../layouts/zone-nova/Layout.astro';
+import ZoneNovaLandingLayout from '../../layouts/zone-nova/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { zoneNovaConfig } from '../../data/zone-nova/zone-nova.js';
 
-// Import the landing page CSS
-import '../../styles/games/zone-nova/zn-landing-page.css';
-
 // Extract data for easier use in template
-const { meta, gameInfo, guides, categoryGroups } = zoneNovaConfig;
+const { meta, gameInfo, categoryGroups } = zoneNovaConfig;
 
 // Breadcrumb data for SEO
 const breadcrumbs = [
@@ -16,7 +13,7 @@ const breadcrumbs = [
 ];
 ---
 
-<ZoneNovaLayout
+<ZoneNovaLandingLayout
   title={meta.title}
   description={meta.description}
   gameTitle={meta.gameTitle}
@@ -90,22 +87,22 @@ const breadcrumbs = [
 
   <!-- Guides Section -->
   <section class="content-section">
-    <h2 class="section-title">Resources</h2>
+    <h2 class="zn-resources-title">Resources</h2>
 
-    <div class="guides-grid">
+    <div class="zn-resources-grid">
       {
         categoryGroups.map(category => (
-          <div class={`category-card ${category.size}`}>
-            <div class="category-header">
-              <span class="category-emoji">{category.emoji}</span>
+          <div class={`zn-resource-category zn-category-${category.size}`}>
+            <div class="zn-category-header">
+              <span class="zn-category-emoji">{category.emoji}</span>
               <h3>{category.title}</h3>
-              <p class="category-description">{category.description}</p>
+              <p class="zn-category-description">{category.description}</p>
             </div>
-            <div class="nested-guides-grid">
+            <div class="zn-buttons-grid">
               {category.guides.map(guide => (
                 <a
                   href={guide.url}
-                  class="nested-guide-card"
+                  class="zn-resource-button"
                   aria-label={`Navigate to ${guide.title}`}
                 >
                   {guide.title}
@@ -117,4 +114,4 @@ const breadcrumbs = [
       }
     </div>
   </section>
-</ZoneNovaLayout>
+</ZoneNovaLandingLayout>

@@ -1,7 +1,11 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
 import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
-import { caniskData, caniskSEO, caniskHighlighting } from '../../../../data/horizon-walker/characters/canisk.js';
+import {
+  caniskData,
+  caniskSEO,
+  caniskHighlighting,
+} from '../../../../data/horizon-walker/characters/canisk.js';
 
 export const prerender = true;
 ---
@@ -11,5 +15,5 @@ export const prerender = true;
   description={caniskSEO.description}
   gameTitle={caniskData.name}
 >
-  <CharacterPageTemplate characterData={{...caniskData, highlightPatterns: caniskHighlighting}} />
+  <CharacterPageTemplate characterData={{ ...caniskData, highlightPatterns: caniskHighlighting }} />
 </CharacterIndividualLayout>

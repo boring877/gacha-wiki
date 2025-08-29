@@ -1,7 +1,11 @@
 ---
 import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
 import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
-import { minEunSolData, minEunSolSEO, minEunSolHighlighting } from '../../../../data/horizon-walker/characters/min-eun-sol.js';
+import {
+  minEunSolData,
+  minEunSolSEO,
+  minEunSolHighlighting,
+} from '../../../../data/horizon-walker/characters/min-eun-sol.js';
 
 export const prerender = true;
 ---
@@ -11,5 +15,7 @@ export const prerender = true;
   description={minEunSolSEO.description}
   gameTitle={minEunSolData.name}
 >
-  <CharacterPageTemplate characterData={{...minEunSolData, highlightPatterns: minEunSolHighlighting}} />
+  <CharacterPageTemplate
+    characterData={{ ...minEunSolData, highlightPatterns: minEunSolHighlighting }}
+  />
 </CharacterIndividualLayout>
