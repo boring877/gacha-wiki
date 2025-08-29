@@ -142,6 +142,27 @@ const initialize = () => {
             ? nameB.localeCompare(nameA)
             : nameA.localeCompare(nameB);
         });
+      } else if (sortKey === 'rarity') {
+        // Sort by rarity (special ordering: EX > SS > S > A > B)
+        const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+        sortedCards = cards.sort((a, b) => {
+          const rarityA = a.querySelector('.hw-badge[data-rarity]')?.textContent?.trim() || '';
+          const rarityB = b.querySelector('.hw-badge[data-rarity]')?.textContent?.trim() || '';
+          const valueA = rarityOrder[rarityA] || 0;
+          const valueB = rarityOrder[rarityB] || 0;
+          return currentSortDirection === 'desc' ? valueB - valueA : valueA - valueB;
+        });
+      } else if (sortKey === 'cost') {
+        // Sort by cost for mobile cards
+        sortedCards = cards.sort((a, b) => {
+          const costA = parseInt(
+            a.querySelector('.cost-badge')?.textContent?.replace(/[^0-9]/g, '') || '0'
+          );
+          const costB = parseInt(
+            b.querySelector('.cost-badge')?.textContent?.replace(/[^0-9]/g, '') || '0'
+          );
+          return currentSortDirection === 'desc' ? costB - costA : costA - costB;
+        });
       } else {
         sortedCards = sortByNumeric(cards, 0, false);
       }
@@ -246,6 +267,12 @@ const initialize = () => {
       btn.classList.remove('active', 'state-asc', 'state-desc');
       btn.classList.add('state-normal');
       filterStates.set(btn, 'normal');
+
+      // Clear sort indicators
+      const indicator = btn.querySelector('.sort-indicator');
+      if (indicator) {
+        indicator.textContent = '';
+      }
     });
 
     // Clear sessionStorage
@@ -262,6 +289,9 @@ const initialize = () => {
 
     // Apply default sort
     applySort('name');
+
+    // Renumber both table rows and reset display order
+    renumberRows();
   }
 
   function restoreState() {
@@ -287,7 +317,21 @@ const initialize = () => {
 
         const activeButton = document.querySelector(`[data-sort="${currentSortKey}"]`);
         if (activeButton) {
-          activeButton.classList.add('active');
+          // Update button visual state
+          activeButton.classList.remove('state-normal', 'state-asc', 'state-desc');
+          activeButton.classList.add(`state-${currentSortDirection}`, 'active');
+          filterStates.set(activeButton, currentSortDirection);
+
+          // Update visual indicator
+          const indicator = activeButton.querySelector('.sort-indicator');
+          if (indicator) {
+            if (currentSortDirection === 'asc') {
+              indicator.textContent = ' ↑';
+            } else if (currentSortDirection === 'desc') {
+              indicator.textContent = ' ↓';
+            }
+          }
+
           applySort(currentSortKey);
         }
       }
@@ -335,6 +379,18 @@ const initialize = () => {
     sortButton.classList.remove('state-normal', 'state-asc', 'state-desc', 'active');
     sortButton.classList.add(`state-${nextState}`);
     filterStates.set(sortButton, nextState);
+
+    // Update visual indicator
+    const indicator = sortButton.querySelector('.sort-indicator');
+    if (indicator) {
+      if (nextState === 'asc') {
+        indicator.textContent = ' ↑';
+      } else if (nextState === 'desc') {
+        indicator.textContent = ' ↓';
+      } else {
+        indicator.textContent = '';
+      }
+    }
 
     // Apply sorting based on new state
     if (nextState !== 'normal') {

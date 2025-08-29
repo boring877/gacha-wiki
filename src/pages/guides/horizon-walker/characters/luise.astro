@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  luiseData,
+  luiseSEO,
+  luiseHighlighting,
+} from '../../../../data/horizon-walker/characters/luise.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={luiseSEO.title}
+  description={luiseSEO.description}
+  gameTitle={luiseData.name}
+>
+  <CharacterPageTemplate characterData={{ ...luiseData, highlightPatterns: luiseHighlighting }} />
+</CharacterIndividualLayout>

@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  arahaData,
+  arahaSEO,
+  arahaHighlighting,
+} from '../../../../data/horizon-walker/characters/araha.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={arahaSEO.title}
+  description={arahaSEO.description}
+  gameTitle={arahaData.name}
+>
+  <CharacterPageTemplate characterData={{ ...arahaData, highlightPatterns: arahaHighlighting }} />
+</CharacterIndividualLayout>

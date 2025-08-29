@@ -97,46 +97,28 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
               <div class="sort-right-section">
                 <label class="filter-label">Sort by</label>
                 <div class="sort-buttons-single-row">
-                  <button
-                    class="sort-btn sort-btn--compact"
-                    data-sort="cost"
-                    class="touch-optimized"
-                  >
+                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="rarity">
+                    Rarity <span class="sort-indicator"></span>
+                  </button>
+                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="cost">
                     Cost <span class="sort-indicator"></span>
                   </button>
-                  <button
-                    class="sort-btn sort-btn--compact"
-                    data-sort="strength"
-                    class="touch-optimized"
-                  >
+                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="strength">
                     STR <span class="sort-indicator"></span>
                   </button>
                   <button
-                    class="sort-btn sort-btn--compact"
+                    class="sort-btn sort-btn--compact touch-optimized"
                     data-sort="intelligence"
-                    class="touch-optimized"
                   >
                     INT <span class="sort-indicator"></span>
                   </button>
-                  <button
-                    class="sort-btn sort-btn--compact"
-                    data-sort="vitality"
-                    class="touch-optimized"
-                  >
+                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="vitality">
                     VIT <span class="sort-indicator"></span>
                   </button>
-                  <button
-                    class="sort-btn sort-btn--compact"
-                    data-sort="agility"
-                    class="touch-optimized"
-                  >
+                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="agility">
                     AGI <span class="sort-indicator"></span>
                   </button>
-                  <button
-                    class="sort-btn sort-btn--compact"
-                    data-sort="technic"
-                    class="touch-optimized"
-                  >
+                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="technic">
                     TEC <span class="sort-indicator"></span>
                   </button>
                 </div>
@@ -319,43 +301,6 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
     </div>
   </section>
 
-  <!-- Lightweight character interaction -->
-  <script>
-    // Simple click navigation without heavy processing
-    document.addEventListener('DOMContentLoaded', () => {
-      const clickableRows = document.querySelectorAll('.clickable-row');
-      const mobileCards = document.querySelectorAll('.mobile-character-card');
-
-      clickableRows.forEach(row => {
-        row.addEventListener('click', () => {
-          const url = row.dataset.url;
-          if (url) window.location.href = url;
-        });
-      });
-
-      mobileCards.forEach(card => {
-        card.addEventListener('click', () => {
-          const url = card.dataset.url;
-          if (url) window.location.href = url;
-        });
-      });
-
-      // Simple filter functionality
-      const rarityFilter = document.getElementById('rarity-filter');
-      if (rarityFilter) {
-        rarityFilter.addEventListener('change', () => {
-          const filterValue = rarityFilter.value.toLowerCase();
-          const allRows = document.querySelectorAll('tbody tr');
-          const allCards = document.querySelectorAll('.mobile-character-card');
-
-          [allRows, allCards].forEach(elements => {
-            elements.forEach(element => {
-              const rarity = element.dataset.rarity?.toLowerCase();
-              element.style.display = !filterValue || rarity === filterValue ? '' : 'none';
-            });
-          });
-        });
-      }
-    });
-  </script>
+  <!-- Load the character database script with sorting and filtering functionality -->
+  <script src="/scripts/horizon-walker/character-database.js" defer></script>
 </CharacterLayout>

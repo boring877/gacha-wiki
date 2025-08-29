@@ -110,6 +110,32 @@ const rawYeonChaeYoungData = {
     },
   },
 
+  // Weapon Information
+  weapon: {
+    name: 'EX Dual Pistols - DMP-9 Prototype',
+    type: 'EX Dual Pistols',
+    rarity: 'EX',
+    image: '/images/games/horizon-walker/weapons/Yeon_Chae-Young_WP.jpg',
+    stats: {
+      weaponRangedAtk: '91.0',
+      rangedAtkBonus: '+35.0%',
+    },
+    uniqueSkills: {
+      eliteAgentsDignity: {
+        name: "An Elite Agent's Dignity",
+        type: 'Unique',
+        description:
+          'During combat Crit DMG +44% and SPD +36%. When allies other than yourself take their turn and land a Weak Point Attack, gain [Briefing] (stacks up to 2 times). At the start of your turn, if [Briefing] is at max stacks, gain [Keen Insight]. [Keen Insight]: Increases Pierce Boost by 56%.',
+      },
+      commenceOperation: {
+        name: 'Yeon Chae-young Signature: Commence Operation',
+        type: 'Signature',
+        description:
+          'Increases Ranged ATK +10% during combat. When Crit Rate exceeds 100%, half of the excess value is temporarily converted into Crit DMG. At the start of your turn, if you have [Keen Insight], gain [Extra Action] once, and the AP cost of "Assassination" and "Mass Execution" is reduced by 18 for that turn. During combat, "Conceal" is enhanced. Conceal: During combat, Crit DMG +10%. At the start of combat and after landing a Weak Point Attack, enter Stealth until the end of your turn.',
+      },
+    },
+  },
+
   // Skills and Passive
   skills: {
     pistolFire: {
@@ -186,14 +212,14 @@ const rawHighlightPatterns = {
   damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
   effects: /\[([^[\]]{1,150})]/g,
   buffsDebuffs:
-    /\b(?:Efficient\s+Operation|Bold\s+Move|Conceal:\s+Stealth|First\s+Blood|Efficient\s+Tactics|optical\s+camouflage|weakness\s+attack|point-blank\s+shot|distributed\s+attack|counterattack|unblockable|stealth|hidden)\b/gi,
+    /\b(?:Efficient\s+Operation|Bold\s+Move|Conceal:\s+Stealth|First\s+Blood|Efficient\s+Tactics|optical\s+camouflage|weakness\s+attack|point-blank\s+shot|distributed\s+attack|counterattack|unblockable|stealth|hidden|Briefing|Keen\s+Insight|Extra\s+Action|enhanced|Commence\s+Operation)\b/gi,
   percentages: /\b(\d{1,3}%)\b/g,
   statChanges:
     /\b(?:reduces?|increases?|decreases?|gains?|grants?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
   keywords:
-    /\b(?:weak\s+point|behind\s+the\s+enemy|proximity|temporarily|chosen\s+human|Bureau\s+of\s+Rift\s+Management|Abomination|Blood\s+Maker|fifth-grade\s+officer|field\s+agent|dual\s+pistols|submachine\s+gun|Discover\s+agents|optical\s+camouflage|destiny)\b/gi,
+    /\b(?:weak\s+point|behind\s+the\s+enemy|proximity|temporarily|chosen\s+human|Bureau\s+of\s+Rift\s+Management|Abomination|Blood\s+Maker|fifth-grade\s+officer|field\s+agent|dual\s+pistols|submachine\s+gun|Discover\s+agents|optical\s+camouflage|destiny|EX\s+weapon|DMP-9\s+Prototype|Elite\s+Agent|Weak\s+Point\s+Attack|max\s+stacks|exceeds\s+100%|excess\s+value|converted)\b/gi,
   attributes:
-    /\b(?:AP|Ranged\s+ATK|Pierce|Physical|Slash|Crush|Heat|Cold|Electric|Immaterial|Poison|ACC|SPD|CRIT\s+rate|CRIT\s+DMG|HP|Technic|lost\s+HP|current\s+lost\s+HP)\b/gi,
+    /\b(?:AP|Ranged\s+ATK|Pierce|Physical|Slash|Crush|Heat|Cold|Electric|Immaterial|Poison|ACC|SPD|CRIT\s+rate|CRIT\s+DMG|HP|Technic|lost\s+HP|current\s+lost\s+HP|Pierce\s+Boost|Weapon\s+Ranged\s+ATK)\b/gi,
 };
 
 // Export sanitized highlighting patterns
@@ -217,6 +243,9 @@ export const yeonChaeYoungSEO = {
     'accuracy support',
     'bureau of rift management',
     'field agent',
+    'EX weapon',
+    'DMP-9 Prototype',
+    'signature weapon',
     'guide',
     'stats',
     'build',
