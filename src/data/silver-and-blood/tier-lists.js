@@ -104,6 +104,7 @@ export const PVP_TIER_LIST = {
       { name: 'Augustine' },
       { name: 'Acappella' },
       { name: 'Quinn' },
+      { name: 'Agnes' },
     ],
     S: [
       { name: 'Hati' },
@@ -124,7 +125,6 @@ export const PVP_TIER_LIST = {
       { name: 'Gilrain' },
     ],
     A: [
-      { name: 'Agnes' },
       { name: 'Thibault' },
       { name: 'Cain' },
       { name: 'Selena' },
