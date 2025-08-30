@@ -2,18 +2,18 @@
 import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
 import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
 import {
-  samarika,
-  samarikaSEO,
-  samarikaHighlighting,
-} from '../../../../data/horizon-walker/characters/samarika.js';
+  mahariData,
+  mahariSEO,
+  mahariHighlighting,
+} from '../../../../data/horizon-walker/characters/mahari.js';
 
 export const prerender = true;
 ---
 
 <CharacterIndividualLayout
-  title={samarikaSEO.title}
-  description={samarikaSEO.description}
-  gameTitle={samarika.name}
+  title={mahariSEO.title}
+  description={mahariSEO.description}
+  gameTitle={mahariData.name}
 >
-  <CharacterPageTemplate characterData={{ ...samarika, highlightPatterns: samarikaHighlighting }} />
+  <CharacterPageTemplate characterData={{ ...mahariData, highlightPatterns: mahariHighlighting }} />
 </CharacterIndividualLayout>

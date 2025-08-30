@@ -1,0 +1,21 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  kimGaYoungData,
+  kimGaYoungSEO,
+  kimGaYoungHighlighting,
+} from '../../../../data/horizon-walker/characters/kim-ga-young.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={kimGaYoungSEO.title}
+  description={kimGaYoungSEO.description}
+  gameTitle={kimGaYoungData.name}
+>
+  <CharacterPageTemplate
+    characterData={{ ...kimGaYoungData, highlightPatterns: kimGaYoungHighlighting }}
+  />
+</CharacterIndividualLayout>

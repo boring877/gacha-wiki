@@ -1,0 +1,21 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  soJooHeeData,
+  soJooHeeSEO,
+  soJooHeeHighlighting,
+} from '../../../../data/horizon-walker/characters/so-joo-hee.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={soJooHeeSEO.title}
+  description={soJooHeeSEO.description}
+  gameTitle={soJooHeeData.name}
+>
+  <CharacterPageTemplate
+    characterData={{ ...soJooHeeData, highlightPatterns: soJooHeeHighlighting }}
+  />
+</CharacterIndividualLayout>

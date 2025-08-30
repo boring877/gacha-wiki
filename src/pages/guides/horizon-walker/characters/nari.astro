@@ -1,34 +1,19 @@
 ---
-import CharacterLayout from '../../../../layouts/horizon-walker/CharacterLayout.astro';
-import CharacterOverview from '../../../../components/horizon-walker/CharacterOverview.astro';
-import CharacterSkills from '../../../../components/horizon-walker/CharacterSkills.astro';
-import CharacterTraits from '../../../../components/horizon-walker/CharacterTraits.astro';
-import CharacterWeapon from '../../../../components/horizon-walker/CharacterWeapon.astro';
-import Breadcrumb from '../../../../components/horizon-walker/Breadcrumb.astro';
-import { nari } from '../../../../data/horizon-walker/characters/nari.js';
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  nari,
+  nariSEO,
+  nariHighlighting,
+} from '../../../../data/horizon-walker/characters/nari.js';
 
-const character = nari;
-
-const breadcrumbs = [
-  { name: 'Home', href: '/' },
-  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
-  { name: 'Characters', href: '/guides/horizon-walker/characters/' },
-  { name: character.name },
-];
+export const prerender = true;
 ---
 
-<CharacterLayout
-  title={`${character.name} - Horizon Walker Character Guide | GachaWiki`}
-  description={`Complete guide for ${character.name}, an ${character.rarity}-rarity ${character.profile?.racial || 'character'} from Horizon Walker. Includes stats, skills, traits, and signature weapon details.`}
-  gameTitle={character.name}
+<CharacterIndividualLayout
+  title={nariSEO.title}
+  description={nariSEO.description}
+  gameTitle={nari.name}
 >
-  <Breadcrumb items={breadcrumbs} />
-
-  <CharacterOverview character={character} />
-
-  <CharacterSkills character={character} />
-
-  <CharacterTraits character={character} />
-
-  <CharacterWeapon character={character} />
-</CharacterLayout>
+  <CharacterPageTemplate characterData={{ ...nari, highlightPatterns: nariHighlighting }} />
+</CharacterIndividualLayout>
