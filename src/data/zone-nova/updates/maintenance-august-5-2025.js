@@ -9,7 +9,7 @@ export const august5MaintenanceData = {
 
   // TL;DR Summary
   tldr: [
-    'Major maintenance on August 5, 2025 bringing "Twilight of the Gods: Winter\'s Prelude" Part 2 event, Thor & Thousand Nights recruitments, new memories, Space-Time Rift, gift packages, and 300 Light Stone compensation. Maintenance starts 14:00, estimated 2 hours.',
+    'Major maintenance on August 5, 2025 bringing "Twilight of the Divine: Winter\'s Prelude" Part 2 event, Thor & Thousand Nights recruitments, new memories, Space-Time Rift, gift packages, and 300 Light Stone compensation. Maintenance starts 14:00, estimated 2 hours.',
   ],
 
   // Official Update
@@ -24,7 +24,7 @@ export const august5MaintenanceData = {
       '',
       '🎮 Activity Information',
       '',
-      '1. Launch【"Twilight of the Gods: Winter\'s Prelude" Part 2】Limited Event',
+      '1. Launch【"Twilight of the Divine: Winter\'s Prelude" Part 2】Limited Event',
       'Launch Time: August 5, 2025 after maintenance ~ August 19, 2025 03:59',
       '• Captains can enter through the activity entrance on the main interface after completing Chapter 6 of the main storyline.',
       '• In the activity story levels, a certain number of "Activity Coins" will be dropped. Collect "Activity Coins" to exchange for light cones in the activity shop. Strengthen materials, enhancement materials, and other generous rewards await.',
@@ -86,7 +86,7 @@ export const august5MaintenanceData = {
 // SEO data for August 5 Maintenance
 export const august5MaintenanceSEO = {
   title: `${august5MaintenanceData.title} - Zone Nova - GachaWiki`,
-  description: `Major maintenance bringing Twilight of the Gods Part 2 event, Thor recruitment, Thousand Nights rerun, new memories, Space-Time Rift, and 300 Light Stone compensation.`,
+  description: `Major maintenance bringing Twilight of the Divine Part 2 event, Thor recruitment, Thousand Nights rerun, new memories, Space-Time Rift, and 300 Light Stone compensation.`,
 };
 
 // Export default for easy importing

@@ -678,14 +678,14 @@ export const ZONE_NOVA_MEMORIES = [
     ],
   },
   {
-    id: 'swimsuit-goddess-who-makes-hearts-flutter',
-    slug: 'swimsuit-goddess-who-makes-hearts-flutter',
-    name: 'Swimsuit Goddess Who Makes Hearts Flutter',
+    id: 'swimsuit-sovereign-who-makes-hearts-flutter',
+    slug: 'swimsuit-sovereign-who-makes-hearts-flutter',
+    name: 'Swimsuit Sovereign Who Makes Hearts Flutter',
     image: '/images/games/zone-nova/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg',
     rarity: 'SR',
     element: null, // No specific element
     character: null, // No specific character
-    detailUrl: '/guides/zone-nova/memories/swimsuit-goddess-who-makes-hearts-flutter/',
+    detailUrl: '/guides/zone-nova/memories/swimsuit-sovereign-who-makes-hearts-flutter/',
     stats: {
       hp: 5000,
       attack: 500,

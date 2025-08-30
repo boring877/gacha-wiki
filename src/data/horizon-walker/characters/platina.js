@@ -118,7 +118,7 @@ const rawPlatinaData = {
 
   // Character Story
   story:
-    'Born from the gaps between dimensions, Platina is one of the "Dimension Guardians," a metallic lifeform created within these interdimensional fissures. Among these guardians, Platina stands out, adorned in unique platinum armor, and she is convinced that her birth with such a noble color is for a special purpose. She vowed to protect the most dangerous dimensional breaches, and, after meeting the first Human God, she now guards the most perilous relic within the dimension.',
+    'Born from the gaps between dimensions, Platina is one of the "Dimension Guardians," a metallic lifeform created within these interdimensional fissures. Among these guardians, Platina stands out, adorned in unique platinum armor, and she is convinced that her birth with such a noble color is for a special purpose. She vowed to protect the most dangerous dimensional breaches, and, after meeting the first Human Sovereign, she now guards the most perilous relic within the dimension.',
 
   // Unique Traits
   uniqueTraits: {

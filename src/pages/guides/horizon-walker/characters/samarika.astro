@@ -1,0 +1,34 @@
+---
+import CharacterLayout from '../../../../layouts/horizon-walker/CharacterLayout.astro';
+import CharacterOverview from '../../../../components/horizon-walker/CharacterOverview.astro';
+import CharacterSkills from '../../../../components/horizon-walker/CharacterSkills.astro';
+import CharacterTraits from '../../../../components/horizon-walker/CharacterTraits.astro';
+import CharacterWeapon from '../../../../components/horizon-walker/CharacterWeapon.astro';
+import Breadcrumb from '../../../../components/horizon-walker/Breadcrumb.astro';
+import { samarika } from '../../../../data/horizon-walker/characters/samarika.js';
+
+const character = samarika;
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
+  { name: 'Characters', href: '/guides/horizon-walker/characters/' },
+  { name: character.name },
+];
+---
+
+<CharacterLayout
+  title={`${character.name} - Horizon Walker Character Guide | GachaWiki`}
+  description={`Complete guide for ${character.name}, a ${character.rarity}-rarity ${character.profile?.racial || 'character'} from Horizon Walker. Includes stats, skills, traits, and signature weapon details.`}
+  gameTitle={character.name}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <CharacterOverview character={character} />
+
+  <CharacterSkills character={character} />
+
+  <CharacterTraits character={character} />
+
+  <CharacterWeapon character={character} />
+</CharacterLayout>

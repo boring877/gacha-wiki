@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  gulsniData,
+  gulsniSEO,
+  gulsniHighlighting,
+} from '../../../../data/horizon-walker/characters/gulsni.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={gulsniSEO.title}
+  description={gulsniSEO.description}
+  gameTitle={gulsniData.name}
+>
+  <CharacterPageTemplate characterData={{ ...gulsniData, highlightPatterns: gulsniHighlighting }} />
+</CharacterIndividualLayout>

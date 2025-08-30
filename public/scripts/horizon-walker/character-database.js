@@ -264,15 +264,12 @@ const initialize = () => {
 
     // Reset sort button states
     sortButtons.forEach(btn => {
-      btn.classList.remove('active', 'state-asc', 'state-desc');
-      btn.classList.add('state-normal');
+      btn.classList.remove('active');
       filterStates.set(btn, 'normal');
 
-      // Clear sort indicators
-      const indicator = btn.querySelector('.sort-indicator');
-      if (indicator) {
-        indicator.textContent = '';
-      }
+      // Clear sort indicators from button text
+      const baseText = btn.textContent.replace(/ [↑↓]$/, '');
+      btn.textContent = baseText;
     });
 
     // Clear sessionStorage
@@ -318,18 +315,15 @@ const initialize = () => {
         const activeButton = document.querySelector(`[data-sort="${currentSortKey}"]`);
         if (activeButton) {
           // Update button visual state
-          activeButton.classList.remove('state-normal', 'state-asc', 'state-desc');
-          activeButton.classList.add(`state-${currentSortDirection}`, 'active');
+          activeButton.classList.add('active');
           filterStates.set(activeButton, currentSortDirection);
 
-          // Update visual indicator
-          const indicator = activeButton.querySelector('.sort-indicator');
-          if (indicator) {
-            if (currentSortDirection === 'asc') {
-              indicator.textContent = ' ↑';
-            } else if (currentSortDirection === 'desc') {
-              indicator.textContent = ' ↓';
-            }
+          // Update visual indicator in button text
+          const baseText = activeButton.textContent.replace(/ [↑↓]$/, '');
+          if (currentSortDirection === 'desc') {
+            activeButton.textContent = baseText + ' ↓'; // Highest first
+          } else if (currentSortDirection === 'asc') {
+            activeButton.textContent = baseText + ' ↑'; // Lowest first
           }
 
           applySort(currentSortKey);
@@ -344,7 +338,6 @@ const initialize = () => {
   function initializeSortStates() {
     sortButtons.forEach(btn => {
       filterStates.set(btn, 'normal');
-      btn.classList.add('state-normal');
     });
   }
 
@@ -354,13 +347,13 @@ const initialize = () => {
 
     switch (currentState) {
       case 'normal':
-        nextState = 'asc';
-        break;
-      case 'asc':
-        nextState = 'desc';
+        nextState = 'desc'; // First click = highest values (↓ arrow)
         break;
       case 'desc':
-        nextState = 'normal';
+        nextState = 'asc'; // Second click = lowest values (↑ arrow)
+        break;
+      case 'asc':
+        nextState = 'normal'; // Third click = back to normal
         break;
       default:
         nextState = 'normal';
@@ -369,28 +362,30 @@ const initialize = () => {
     // Reset all other sort buttons to normal
     sortButtons.forEach(btn => {
       if (btn !== sortButton) {
-        btn.classList.remove('state-normal', 'state-asc', 'state-desc', 'active');
-        btn.classList.add('state-normal');
+        btn.classList.remove('active');
         filterStates.set(btn, 'normal');
       }
     });
 
     // Update clicked button state
-    sortButton.classList.remove('state-normal', 'state-asc', 'state-desc', 'active');
-    sortButton.classList.add(`state-${nextState}`);
-    filterStates.set(sortButton, nextState);
-
-    // Update visual indicator
-    const indicator = sortButton.querySelector('.sort-indicator');
-    if (indicator) {
-      if (nextState === 'asc') {
-        indicator.textContent = ' ↑';
-      } else if (nextState === 'desc') {
-        indicator.textContent = ' ↓';
-      } else {
-        indicator.textContent = '';
+    if (nextState !== 'normal') {
+      sortButton.classList.add('active');
+      // Add visual indicator text to button
+      const existingIndicator = sortButton.textContent.match(/ [↑↓]$/);
+      const baseText = sortButton.textContent.replace(/ [↑↓]$/, '');
+      if (nextState === 'desc') {
+        sortButton.textContent = baseText + ' ↓'; // Highest first
+      } else if (nextState === 'asc') {
+        sortButton.textContent = baseText + ' ↑'; // Lowest first
       }
+    } else {
+      sortButton.classList.remove('active');
+      // Remove visual indicator
+      const baseText = sortButton.textContent.replace(/ [↑↓]$/, '');
+      sortButton.textContent = baseText;
     }
+
+    filterStates.set(sortButton, nextState);
 
     // Apply sorting based on new state
     if (nextState !== 'normal') {

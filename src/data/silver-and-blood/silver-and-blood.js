@@ -21,7 +21,7 @@ Thus the first "Bloodborn" came to be: Immortal beings who defied the natural cy
 "Destiny" is the confluence of cause and effect, the immutable cycle which governs existence.
 Back in that distant age, a young girl deciphered a divine prophecy inscribed upon a fallen star.
 From this, she grasped the truth of the world: Only time remains impartial, and only cycles are eternal.
-In the name of Aeon, the God of Time, she raised the silver banner of the "Tempus Church," vowing to return "heretics" to the natural cycle of life and death, and steer "history" back upon its destined course.
+In the name of Aeon, the Temporal Sovereign, she raised the silver banner of the "Tempus Church," vowing to return "heretics" to the natural cycle of life and death, and steer "history" back upon its destined course.
 
 This is the age-old tale of Blood and Destiny.
 This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet still unwritten.`,
@@ -57,7 +57,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
         theme: 'destiny-card',
         content: [
           'In that distant age, a young girl deciphered a divine prophecy from a fallen star. She grasped the truth: only time remains impartial, and only cycles are eternal.',
-          'In the name of Aeon, God of Time, she raised the silver banner of the **Tempus Church**, vowing to return heretics to the natural cycle and steer history back to its destined course.',
+          'In the name of Aeon, Temporal Sovereign, she raised the silver banner of the **Tempus Church**, vowing to return heretics to the natural cycle and steer history back to its destined course.',
         ],
       },
     ],

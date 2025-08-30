@@ -9,7 +9,7 @@ export const thorRecruitmentData = {
 
   // TL;DR Summary
   tldr: [
-    'New Legendary character Thor (Guardian, Holy) available through Limited Recruitment from August 5 - August 19, 2025. Holy-attribute Guardian who converts attacks into lightning, transforms into Thunder Goddess for massive damage, plus exclusive memory "Night Raid Suspect".',
+    'New Legendary character Thor (Guardian, Holy) available through Limited Recruitment from August 5 - August 19, 2025. Holy-attribute Guardian who converts attacks into lightning, transforms into Thunder Sovereign for massive damage, plus exclusive memory "Night Raid Suspect".',
   ],
 
   // Official Update
@@ -23,7 +23,7 @@ export const thorRecruitmentData = {
       'Attribute: Holy',
       'Role: Guardian',
       'Combat Style: Establishes connections with teammates, converting attacks into flickering lightning',
-      'Ultimate Form: Transforms into destructive Thunder Goddess, dealing continuous heavy damage while protecting the team',
+      'Ultimate Form: Transforms into destructive Thunder Sovereign, dealing continuous heavy damage while protecting the team',
       'Special Ability: Lightning accumulation system that triggers powerful area attacks',
       '',
       '📖 Character Introduction',

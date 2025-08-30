@@ -112,7 +112,7 @@ export const july22MaintenanceData = {
 // SEO data for July 22 Maintenance
 export const july22MaintenanceSEO = {
   title: `${july22MaintenanceData.title} - Zone Nova - GachaWiki`,
-  description: `Major maintenance bringing Twilight of the Gods event, Odin recruitment, Cleopatra rerun, Temporal Rift, Battle Pass update, and double drop events.`,
+  description: `Major maintenance bringing Twilight of the Divine event, Odin recruitment, Cleopatra rerun, Temporal Rift, Battle Pass update, and double drop events.`,
 };
 
 // Export default for easy importing

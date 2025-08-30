@@ -293,36 +293,9 @@ const game = games[0]; // Horizon Walker config
       window.horizonWalkerConfig = config;
     </script>
 
-    <!-- Lightweight clock timer -->
+    <!-- Load Horizon Walker clock timer script -->
     <script>
-      const config = window.horizonWalkerConfig;
-      if (config) {
-        const updateClock = () => {
-          const now = new Date();
-          const resetTime = new Date();
-          resetTime.setUTCHours(config.server.resetHour, config.server.resetMinute, 0, 0);
-
-          if (resetTime <= now) {
-            resetTime.setUTCDate(resetTime.getUTCDate() + 1);
-          }
-
-          const timeDiff = resetTime.getTime() - now.getTime();
-          const hours = Math.max(0, Math.floor(timeDiff / (1000 * 60 * 60)));
-          const minutes = Math.max(0, Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)));
-          const seconds = Math.max(0, Math.floor((timeDiff % (1000 * 60)) / 1000));
-
-          const hoursEl = document.getElementById('clockHours');
-          const minutesEl = document.getElementById('clockMinutes');
-          const secondsEl = document.getElementById('clockSeconds');
-
-          if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-          if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
-          if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
-        };
-
-        updateClock();
-        setInterval(updateClock, 1000);
-      }
+      import('../../scripts/clock/horizon-walker.js');
     </script>
   </body>
 </html>

@@ -75,7 +75,7 @@ const rawBellaData = {
 
   // Character Description
   description:
-    "An outstanding healer of the Church of the Life Branch who played a crucial role in Princess Maximilia's journey to Earth. Now serves as a Vanguard while spreading the influence of her goddess.",
+    "An outstanding healer of the Church of the Life Branch who played a crucial role in Princess Maximilia's journey to Earth. Now serves as a Vanguard while spreading the influence of her divine patron.",
 
   // Character Profile
   profile: {
@@ -89,14 +89,14 @@ const rawBellaData = {
 
   // Character Story
   story:
-    "Bella, who was an outstanding healer of the Church of the Life Branch, played a crucial role in paving the way for Princess Maximilia's journey to Earth. Even after arriving on Earth, Bella did not stop healing people. She obtained a nursing assistant license and used the power of the Life Branch to heal people at the hospital, earning respect far beyond her formal rank. Currently, she has enlisted as a Vanguard at the recommendation of Yeon Chae-young. Although her abilities are still needed in the hospital, she aims to spread the influence of the goddess she serves to more people, and to connect her goddess, who has lost her foundation, with the Human God of this new world.",
+    "Bella, who was an outstanding healer of the Church of the Life Branch, played a crucial role in paving the way for Princess Maximilia's journey to Earth. Even after arriving on Earth, Bella did not stop healing people. She obtained a nursing assistant license and used the power of the Life Branch to heal people at the hospital, earning respect far beyond her formal rank. Currently, she has enlisted as a Vanguard at the recommendation of Yeon Chae-young. Although her abilities are still needed in the hospital, she aims to spread the influence of the divine being she serves to more people, and to connect her divine patron, who has lost her foundation, with the Human Sovereign of this new world.",
 
   // Unique Traits
   uniqueTraits: {
-    godsBeloved: {
-      name: "God's Beloved",
+    divinesBeloved: {
+      name: "Divine's Beloved",
       description:
-        "Activates the Level 1 passive skill [God's Beloved]. [God's Beloved]: Each time an ally recovers HP, self has a 30% chance to gain 20 AP.",
+        "Activates the Level 1 passive skill [Divine's Beloved]. [Divine's Beloved]: Each time an ally recovers HP, self has a 30% chance to gain 20 AP.",
     },
     revivingBough: {
       name: 'Reviving Bough',
@@ -131,11 +131,11 @@ const rawBellaData = {
         description:
           'During combat increases Magic ATK by 40%, All DEF by 220, and reduces Aggro Adjustment by 24. At the start of battle, grants all allies the [Merciful Touch] effect. [Merciful Touch]: Increases Max HP by 55%. Does not restore current HP. This effect does not stack.',
       },
-      devotionOfTheGoddess: {
-        name: 'Bella Signature: Devotion of the Goddess',
+      devotionOfTheDivine: {
+        name: 'Bella Signature: Devotion of the Divine',
         type: 'Signature',
         description:
-          "During combat, increases SPD by 43% and Crush Boost by 86%. At the start of each round, gain 3 stacks of [Devoted Servant]. Gain 1 stack of [Guidance of the Goddess] when using an active healing skill. [Devoted Servant]: When an ally takes damage and their HP falls below 68.7%, consumes 1 stack to follow up with 'Grace of Healing' on the in-range ally with the lowest HP%. [Guidance of the Goddess]: Increases Melee ATK by 100% of base Magic ATK, and boosts Crit Rate by 25% and Crit DMG by 50%. Stacks up to 5 times. All stacks are removed upon a successful Basic ATK.",
+          "During combat, increases SPD by 43% and Crush Boost by 86%. At the start of each round, gain 3 stacks of [Devoted Servant]. Gain 1 stack of [Guidance of the Divine] when using an active healing skill. [Devoted Servant]: When an ally takes damage and their HP falls below 68.7%, consumes 1 stack to follow up with 'Grace of Healing' on the in-range ally with the lowest HP%. [Guidance of the Divine]: Increases Melee ATK by 100% of base Magic ATK, and boosts Crit Rate by 25% and Crit DMG by 50%. Stacks up to 5 times. All stacks are removed upon a successful Basic ATK.",
       },
     },
   },
@@ -162,7 +162,7 @@ const rawBellaData = {
       apCost: 45,
       cooldown: 0,
       description:
-        'Prays to the Goddess of the Split Twigs with a devout heart for the healing of an ally. Recovers the HP of a designated ally by 190% of magic ATK.',
+        'Prays to the Divine of the Split Twigs with a devout heart for the healing of an ally. Recovers the HP of a designated ally by 190% of magic ATK.',
     },
     lifeRegeneration: {
       name: 'Life Regeneration',
@@ -171,7 +171,7 @@ const rawBellaData = {
       apCost: 60,
       cooldown: 2,
       description:
-        'Offers a solemn prayer for the mercy of the Goddess of Split Twigs. Recovers the HP of allies within a 2.5m circular range by 285% of magic ATK.',
+        'Offers a solemn prayer for the mercy of the Divine of Split Twigs. Recovers the HP of allies within a 2.5m circular range by 285% of magic ATK.',
     },
     revivingBoughSkill: {
       name: 'Reviving Bough',
@@ -180,7 +180,7 @@ const rawBellaData = {
       apCost: 90,
       cooldown: 0,
       description:
-        "Opens the path of the branches to invoke the goddess's miracle. Restores consciousness to one incapacitated ally and recovers HP by 380% of magic ATK. The target resumes battle with AP set to 95.",
+        "Opens the path of the branches to invoke the divine's miracle. Restores consciousness to one incapacitated ally and recovers HP by 380% of magic ATK. The target resumes battle with AP set to 95.",
     },
   },
 };
@@ -199,12 +199,12 @@ const rawHighlightPatterns = {
   damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
   effects: /\[([^[\]]{1,150})]/g,
   buffsDebuffs:
-    /\b(?:God's\s+Beloved|Sacred\s+Healing|Merciful\s+Touch|Devoted\s+Servant|Guidance\s+of\s+the\s+Goddess|Prayer\s+for\s+Grace|Devotion\s+of\s+the\s+Goddess|incapacitated|consciousness|solemn\s+prayer|devout\s+heart|miracle|goddess's\s+miracle)\b/gi,
+    /\b(?:Divine's\s+Beloved|Sacred\s+Healing|Merciful\s+Touch|Devoted\s+Servant|Guidance\s+of\s+the\s+Divine|Prayer\s+for\s+Grace|Devotion\s+of\s+the\s+Divine|incapacitated|consciousness|solemn\s+prayer|devout\s+heart|miracle|divine's\s+miracle)\b/gi,
   percentages: /\b(\d{1,3}%)\b/g,
   statChanges:
     /\b(?:reduces?|increases?|decreases?|gains?|grants?|recovers?|restores?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
   keywords:
-    /\b(?:Church\s+of\s+the\s+Life\s+Branch|Goddess\s+of\s+the\s+Split\s+Twigs|Princess\s+Maximilia|nursing\s+assistant\s+license|Vanguard|Human\s+God|Life\s+Branch|2\.5m\s+circular\s+range|in-range\s+ally|lowest\s+HP%|base\s+Magic\s+ATK|successful\s+Basic\s+ATK|Sacrament\s+of\s+Mercy|Noctis\s+Nebula|Kaisersberg)\b/gi,
+    /\b(?:Church\s+of\s+the\s+Life\s+Branch|Divine\s+of\s+the\s+Split\s+Twigs|Princess\s+Maximilia|nursing\s+assistant\s+license|Vanguard|Human\s+Sovereign|Life\s+Branch|2\.5m\s+circular\s+range|in-range\s+ally|lowest\s+HP%|base\s+Magic\s+ATK|successful\s+Basic\s+ATK|Sacrament\s+of\s+Mercy|Noctis\s+Nebula|Kaisersberg)\b/gi,
   attributes:
     /\b(?:AP|Melee\s+ATK|Magic\s+ATK|Crush|Physical|Slash|Pierce|Heat|Cold|Electric|Immaterial|Poison|ACC|SPD|CRIT\s+rate|CRIT\s+Rate|CRIT\s+DMG|HP|Max\s+HP|All\s+DEF|Aggro\s+Adjustment|Weapon\s+Melee\s+ATK|Weapon\s+Magic\s+ATK|Crush\s+Boost)\b/gi,
 };

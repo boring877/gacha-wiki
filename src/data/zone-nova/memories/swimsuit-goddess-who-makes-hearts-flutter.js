@@ -1,9 +1,9 @@
-// Swimsuit Goddess Who Makes Hearts Flutter Memory Data - Zone Nova
+// Swimsuit Sovereign Who Makes Hearts Flutter Memory Data - Zone Nova
 // Enhancer Memory Card (No specific character)
 
-export const swimsuitGoddessWhoMakesHeartsFlutterData = {
+export const swimsuitSovereignWhoMakesHeartsFlutterData = {
   // Basic Memory Information
-  name: 'Swimsuit Goddess Who Makes Hearts Flutter',
+  name: 'Swimsuit Sovereign Who Makes Hearts Flutter',
   chineseName: '心动不已的泳装爱神',
   image: '/images/games/zone-nova/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg',
   rarity: 'SR',
@@ -26,8 +26,8 @@ export const swimsuitGoddessWhoMakesHeartsFlutterData = {
 };
 
 // SEO Data
-export const swimsuitGoddessWhoMakesHeartsFlutterSEO = {
-  title: 'Swimsuit Goddess Who Makes Hearts Flutter - Enhancer Memory Card | Zone Nova',
+export const swimsuitSovereignWhoMakesHeartsFlutterSEO = {
+  title: 'Swimsuit Sovereign Who Makes Hearts Flutter - Enhancer Memory Card | Zone Nova',
   description:
-    'Complete guide for Swimsuit Goddess Who Makes Hearts Flutter memory card in Zone Nova. Learn about its enhancer-specific effects and balanced stat bonuses.',
+    'Complete guide for Swimsuit Sovereign Who Makes Hearts Flutter memory card in Zone Nova. Learn about its enhancer-specific effects and balanced stat bonuses.',
 };

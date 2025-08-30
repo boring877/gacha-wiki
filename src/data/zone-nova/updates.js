@@ -69,7 +69,7 @@ export const zoneNovaUpdates = [
     date: 'August 5, 2025',
     type: 'maintenance',
     summary:
-      'Major maintenance bringing "Twilight of the Gods: Winter\'s Prelude" Part 2 event, Thor recruitment, Thousand Nights rerun, new memories, Space-Time Rift, gift packages, and 300 Light Stone compensation. Maintenance starts 14:00, estimated 2 hours.',
+      'Major maintenance bringing "Twilight of the Divine: Winter\'s Prelude" Part 2 event, Thor recruitment, Thousand Nights rerun, new memories, Space-Time Rift, gift packages, and 300 Light Stone compensation. Maintenance starts 14:00, estimated 2 hours.',
     url: '/guides/zone-nova/updates/maintenance-august-5-2025/',
   },
   {
@@ -87,7 +87,7 @@ export const zoneNovaUpdates = [
     date: 'August 5, 2025',
     type: 'recruitment',
     summary:
-      'New Legendary character Thor (Guardian, Holy) - guardian of the Aesir Clan with lightning transformation abilities. Converts attacks into flickering lightning and transforms into Thunder Goddess. Available through Limited Recruitment from August 5 - August 19, 2025, with exclusive memory "Night Raid Suspect".',
+      'New Legendary character Thor (Guardian, Holy) - guardian of the Aesir Clan with lightning transformation abilities. Converts attacks into flickering lightning and transforms into Thunder Sovereign. Available through Limited Recruitment from August 5 - August 19, 2025, with exclusive memory "Night Raid Suspect".',
     url: '/guides/zone-nova/updates/announcement-thor-recruitment/',
   },
   {

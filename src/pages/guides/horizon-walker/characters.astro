@@ -50,80 +50,47 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
   <section class="hw-char-db-page-flex">
     <div class="hw-char-db-main-content">
       <div class="hw-char-db-content-wrapper">
-        <!-- Enhanced filter bar with integrated stats -->
+        <!-- Header with stats info -->
+        <div
+          style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: var(--hw-bg-dark); border-radius: 12px; border: 1px solid var(--hw-border-accent);"
+        >
+          <p style="color: var(--hw-primary-warm); margin: 0; font-size: 1rem; font-weight: 600;">
+            Character Database
+          </p>
+          <p
+            style="color: var(--hw-text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;"
+          >
+            All stats shown at max level (Level {gameInfo.maxLevel})
+          </p>
+          <div
+            style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"
+            class="hw-char-db-stats-summary"
+          >
+            <span class="hw-badge" data-rarity="EX">{exCount} EX</span>
+            <span class="hw-badge" data-rarity="SS">{ssCount} SS</span>
+            <span class="hw-badge" data-rarity="S">{sCount} S</span>
+            <span class="hw-badge" data-rarity="A">{aCount} A</span>
+            <span class="hw-badge" data-rarity="B">{bCount} B</span>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
         <div class="filter-bar">
-          <!-- Controls Section -->
-          <div class="filter-controls-section">
-            <!-- Stats Info Row -->
-            <div class="filter-stats-row">
-              <div class="stats-info-section">
-                <p class="hw-char-db-subtitle">
-                  All stats shown at max level (Level {gameInfo.maxLevel})
-                </p>
-
-                <!-- Character rarity stats -->
-                <div class="hw-char-db-stats-summary">
-                  <span class="hw-badge" data-rarity="EX">{exCount} EX</span>
-                  <span class="hw-badge" data-rarity="SS">{ssCount} SS</span>
-                  <span class="hw-badge" data-rarity="S">{sCount} S</span>
-                  <span class="hw-badge" data-rarity="A">{aCount} A</span>
-                  <span class="hw-badge" data-rarity="B">{bCount} B</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Reset Row -->
-            <div class="filter-reset-row">
-              <button type="button" id="reset-table" class="reset-button"> Reset All </button>
-            </div>
-
-            <!-- Filters Left, Sorting Right -->
-            <div class="filter-controls-row">
-              <div class="filter-left-section">
-                <div class="filter-section">
-                  <label class="filter-label" for="rarity-filter">Filter by Rarity</label>
-                  <select
-                    id="rarity-filter"
-                    class="filter-select"
-                    data-filter="rarity"
-                    class="touch-optimized"
-                  >
-                    <option value="">All Rarities</option>
-                    {rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
-                  </select>
-                </div>
-              </div>
-
-              <div class="sort-right-section">
-                <label class="filter-label">Sort by</label>
-                <div class="sort-buttons-single-row">
-                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="rarity">
-                    Rarity <span class="sort-indicator"></span>
-                  </button>
-                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="cost">
-                    Cost <span class="sort-indicator"></span>
-                  </button>
-                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="strength">
-                    STR <span class="sort-indicator"></span>
-                  </button>
-                  <button
-                    class="sort-btn sort-btn--compact touch-optimized"
-                    data-sort="intelligence"
-                  >
-                    INT <span class="sort-indicator"></span>
-                  </button>
-                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="vitality">
-                    VIT <span class="sort-indicator"></span>
-                  </button>
-                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="agility">
-                    AGI <span class="sort-indicator"></span>
-                  </button>
-                  <button class="sort-btn sort-btn--compact touch-optimized" data-sort="technic">
-                    TEC <span class="sort-indicator"></span>
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div class="filter-controls">
+            <select class="filter-select" id="rarity-filter">
+              <option value="">Rarity</option>
+              {rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
+            </select>
+          </div>
+          <div class="sort-controls">
+            <button class="sort-btn" data-sort="rarity">Rarity</button>
+            <button class="sort-btn" data-sort="cost">Cost</button>
+            <button class="sort-btn" data-sort="strength">STR</button>
+            <button class="sort-btn" data-sort="intelligence">INT</button>
+            <button class="sort-btn" data-sort="vitality">VIT</button>
+            <button class="sort-btn" data-sort="agility">AGI</button>
+            <button class="sort-btn" data-sort="technic">TEC</button>
+            <button class="reset-btn" id="reset-table">Reset</button>
           </div>
         </div>
 
