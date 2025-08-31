@@ -1,0 +1,21 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  fammeneData,
+  fammeneSEO,
+  fammeneHighlighting,
+} from '../../../../data/horizon-walker/characters/fammene.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={fammeneSEO.title}
+  description={fammeneSEO.description}
+  gameTitle={fammeneData.name}
+>
+  <CharacterPageTemplate
+    characterData={{ ...fammeneData, highlightPatterns: fammeneHighlighting }}
+  />
+</CharacterIndividualLayout>

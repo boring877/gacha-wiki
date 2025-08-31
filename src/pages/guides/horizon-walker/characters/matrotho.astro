@@ -1,0 +1,21 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  matrothoData,
+  matrothoSEO,
+  matrothoHighlighting,
+} from '../../../../data/horizon-walker/characters/matrotho.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={matrothoSEO.title}
+  description={matrothoSEO.description}
+  gameTitle={matrothoData.name}
+>
+  <CharacterPageTemplate
+    characterData={{ ...matrothoData, highlightPatterns: matrothoHighlighting }}
+  />
+</CharacterIndividualLayout>

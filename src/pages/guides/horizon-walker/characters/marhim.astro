@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  marhimData,
+  marhimSEO,
+  marhimHighlighting,
+} from '../../../../data/horizon-walker/characters/marhim.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={marhimSEO.title}
+  description={marhimSEO.description}
+  gameTitle={marhimData.name}
+>
+  <CharacterPageTemplate characterData={{ ...marhimData, highlightPatterns: marhimHighlighting }} />
+</CharacterIndividualLayout>

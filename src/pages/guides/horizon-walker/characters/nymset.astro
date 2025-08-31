@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  nymsetData,
+  nymsetSEO,
+  nymsetHighlighting,
+} from '../../../../data/horizon-walker/characters/nymset.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={nymsetSEO.title}
+  description={nymsetSEO.description}
+  gameTitle={nymsetData.name}
+>
+  <CharacterPageTemplate characterData={{ ...nymsetData, highlightPatterns: nymsetHighlighting }} />
+</CharacterIndividualLayout>

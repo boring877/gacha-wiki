@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  inesData,
+  inesSEO,
+  inesHighlighting,
+} from '../../../../data/horizon-walker/characters/ines.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={inesSEO.title}
+  description={inesSEO.description}
+  gameTitle={inesData.name}
+>
+  <CharacterPageTemplate characterData={{ ...inesData, highlightPatterns: inesHighlighting }} />
+</CharacterIndividualLayout>

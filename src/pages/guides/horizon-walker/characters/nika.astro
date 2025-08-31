@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  nikaData,
+  nikaSEO,
+  nikaHighlighting,
+} from '../../../../data/horizon-walker/characters/nika.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={nikaSEO.title}
+  description={nikaSEO.description}
+  gameTitle={nikaData.name}
+>
+  <CharacterPageTemplate characterData={{ ...nikaData, highlightPatterns: nikaHighlighting }} />
+</CharacterIndividualLayout>

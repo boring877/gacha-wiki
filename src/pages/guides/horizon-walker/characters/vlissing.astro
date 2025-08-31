@@ -1,0 +1,21 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  vlissingData,
+  vlissingSEO,
+  vlissingHighlighting,
+} from '../../../../data/horizon-walker/characters/vlissing.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={vlissingSEO.title}
+  description={vlissingSEO.description}
+  gameTitle={vlissingData.name}
+>
+  <CharacterPageTemplate
+    characterData={{ ...vlissingData, highlightPatterns: vlissingHighlighting }}
+  />
+</CharacterIndividualLayout>

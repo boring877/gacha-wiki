@@ -5,10 +5,38 @@ import { silverAndBloodConfig } from '../../data/clock/silver-and-blood.js';
 // Page metadata
 const title = 'Silver and Blood Clock - Server Reset Timer | GachaWiki';
 const description =
-  'Track Silver and Blood server resets and maintenance with real-time countdown timers for APAC and US regions.';
+  'Silver and Blood server reset timer - Track Silver and Blood server resets and maintenance with real-time countdown timers for APAC and US regions. APAC server resets at 09:00 UTC+8, US server resets at 05:00 UTC-8 daily.';
 
 // Pass game data to layout
 const games = [silverAndBloodConfig];
 ---
 
-<SilverAndBloodClockLayout title={title} description={description} games={games} />
+<SilverAndBloodClockLayout title={title} description={description} games={games}>
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Silver and Blood Server Reset Clock",
+      "description": "Real-time server reset timer for Silver and Blood gacha game. APAC server resets at 09:00 UTC+8, US server resets at 05:00 UTC-8 daily.",
+      "url": "https://gachawiki.info/clock/silver-and-blood",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "Silver and Blood Reset Clock",
+        "description": "Track Silver and Blood server reset times and events for APAC and US regions. Daily server resets for Silver and Blood dailies, energy refills, and farming cycles.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+</SilverAndBloodClockLayout>

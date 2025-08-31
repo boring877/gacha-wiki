@@ -245,6 +245,17 @@
     border-color: var(--hw-primary-warm);
   }
 
+  /* Sort button arrow indicators */
+  .sort-btn.state-asc::after {
+    content: ' ↑';
+    font-size: 0.9em;
+  }
+
+  .sort-btn.state-desc::after {
+    content: ' ↓';
+    font-size: 0.9em;
+  }
+
   .reset-btn {
     padding: 0.5rem 1rem;
     background: linear-gradient(135deg, var(--hw-border-muted), var(--hw-border-strong));

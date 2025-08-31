@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  valetaData,
+  valetaSEO,
+  valetaHighlighting,
+} from '../../../../data/horizon-walker/characters/valeta.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={valetaSEO.title}
+  description={valetaSEO.description}
+  gameTitle={valetaData.name}
+>
+  <CharacterPageTemplate characterData={{ ...valetaData, highlightPatterns: valetaHighlighting }} />
+</CharacterIndividualLayout>

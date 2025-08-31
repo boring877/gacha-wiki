@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  bergaData,
+  bergaSEO,
+  bergaHighlighting,
+} from '../../../../data/horizon-walker/characters/berga.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={bergaSEO.title}
+  description={bergaSEO.description}
+  gameTitle={bergaData.name}
+>
+  <CharacterPageTemplate characterData={{ ...bergaData, highlightPatterns: bergaHighlighting }} />
+</CharacterIndividualLayout>

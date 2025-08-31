@@ -1,0 +1,21 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  headlessKnightData,
+  headlessKnightSEO,
+  headlessKnightHighlighting,
+} from '../../../../data/horizon-walker/characters/headless-knight.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={headlessKnightSEO.title}
+  description={headlessKnightSEO.description}
+  gameTitle={headlessKnightData.name}
+>
+  <CharacterPageTemplate
+    characterData={{ ...headlessKnightData, highlightPatterns: headlessKnightHighlighting }}
+  />
+</CharacterIndividualLayout>

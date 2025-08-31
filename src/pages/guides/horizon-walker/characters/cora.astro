@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  coraData,
+  coraSEO,
+  coraHighlighting,
+} from '../../../../data/horizon-walker/characters/cora.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={coraSEO.title}
+  description={coraSEO.description}
+  gameTitle={coraData.name}
+>
+  <CharacterPageTemplate characterData={{ ...coraData, highlightPatterns: coraHighlighting }} />
+</CharacterIndividualLayout>
