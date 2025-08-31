@@ -543,6 +543,55 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════════ */
+  /*                            EFFECTS SECTION                              */
+  /* ═══════════════════════════════════════════════════════════════════════ */
+
+  .effects-section {
+    background: var(--hw-bg-dark);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border: 1px solid var(--hw-border-accent);
+  }
+
+  .effects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .effect-item {
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, black 40%, transparent),
+      color-mix(in srgb, black 20%, transparent)
+    );
+    border: 1px solid color-mix(in srgb, var(--hw-tertiary-sky) 30%, transparent);
+    border-radius: 15px;
+    padding: 1.2rem;
+  }
+
+  .effect-header {
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--hw-tertiary-sky) 20%, transparent);
+  }
+
+  .effect-name {
+    color: var(--hw-tertiary-sky);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .effect-description {
+    color: var(--hw-text-light);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════ */
   /*                              WEAPON SECTION                             */
   /* ═══════════════════════════════════════════════════════════════════════ */
 

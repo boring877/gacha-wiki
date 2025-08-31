@@ -1,0 +1,21 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  txManticoreData,
+  txManticoreSEO,
+  txManticoreHighlighting,
+} from '../../../../data/horizon-walker/characters/tx-manticore.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={txManticoreSEO.title}
+  description={txManticoreSEO.description}
+  gameTitle={txManticoreData.name}
+>
+  <CharacterPageTemplate
+    characterData={{ ...txManticoreData, highlightPatterns: txManticoreHighlighting }}
+  />
+</CharacterIndividualLayout>

@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  yuiData,
+  yuiSEO,
+  yuiHighlighting,
+} from '../../../../data/horizon-walker/characters/yui.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={yuiSEO.title}
+  description={yuiSEO.description}
+  gameTitle={yuiData.name}
+>
+  <CharacterPageTemplate characterData={{ ...yuiData, highlightPatterns: yuiHighlighting }} />
+</CharacterIndividualLayout>

@@ -462,6 +462,25 @@ function getTagCategory(tag: string): string {
   )
 }
 
+<!-- Effects Section (for buff/debuff explanations) -->
+{
+  characterData.effects && Object.keys(characterData.effects).length > 0 && (
+    <section class="content-section effects-section">
+      <h2 class="section-title">Effect Descriptions</h2>
+      <div class="effects-grid">
+        {Object.entries(characterData.effects).map(([key, effect]: [string, any]) => (
+          <div class="effect-item">
+            <div class="effect-header">
+              <span class="effect-name">{effect.name}</span>
+            </div>
+            <p class="effect-description">{effect.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 <!-- Weapon Section -->
 {
   characterData.weapon && (

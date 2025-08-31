@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  kalmaData,
+  kalmaSEO,
+  kalmaHighlighting,
+} from '../../../../data/horizon-walker/characters/kalma.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={kalmaSEO.title}
+  description={kalmaSEO.description}
+  gameTitle={kalmaData.name}
+>
+  <CharacterPageTemplate characterData={{ ...kalmaData, highlightPatterns: kalmaHighlighting }} />
+</CharacterIndividualLayout>

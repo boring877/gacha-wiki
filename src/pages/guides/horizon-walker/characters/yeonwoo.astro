@@ -1,0 +1,21 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  yeonwooData,
+  yeonwooSEO,
+  yeonwooHighlighting,
+} from '../../../../data/horizon-walker/characters/yeonwoo.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={yeonwooSEO.title}
+  description={yeonwooSEO.description}
+  gameTitle={yeonwooData.name}
+>
+  <CharacterPageTemplate
+    characterData={{ ...yeonwooData, highlightPatterns: yeonwooHighlighting }}
+  />
+</CharacterIndividualLayout>

@@ -310,12 +310,12 @@ const initialize = () => {
 
     switch (currentState) {
       case 'normal':
-        nextState = 'asc';
-        break;
-      case 'asc':
         nextState = 'desc';
         break;
       case 'desc':
+        nextState = 'asc';
+        break;
+      case 'asc':
         nextState = 'normal';
         break;
       default:
