@@ -170,6 +170,9 @@ const rawCoraData = {
         "Explodes the lava, setting the entire battlefield ablaze and unleashing the force of the subterranean depths. Deals Heat DMG equal to 57% of magic ATK to all enemies. This attack increases the damage of the 'Forbidden Land' skill by 8 times. This skill cannot trigger Weakness Attack.",
     },
   },
+
+  // Weapon - Not yet released in game
+  weapon: null,
 };
 
 // Validate and sanitize the character data

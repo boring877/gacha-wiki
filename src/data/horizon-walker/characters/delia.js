@@ -158,30 +158,8 @@ const rawDeliaData = {
     },
   },
 
-  // Weapon
-  weapon: {
-    name: 'EX Arcane Orb - The Anguished Rose',
-    type: 'Arcane Orb',
-    rarity: 'EX',
-    stats: {
-      weaponMagicAtk: '77.0',
-      magicAtkBonus: '+49.0%',
-    },
-    uniqueSkills: {
-      sadEnding: {
-        name: 'Sad Ending',
-        type: 'Unique',
-        description:
-          "When using a skill (excluding standby) during the turn, restores all allies' HP by 32% of the caster's Magic ATK. Also grants all allies (excluding the caster) the [Sad Ending] effect for 1 round. [Sad Ending]: Increases Melee ATK by 20% based on the caster's Magic ATK. Increases Ranged ATK by 40% based on the caster's Magic ATK.",
-      },
-      stardustVortex: {
-        name: 'Delia Signature: Stardust Vortex',
-        type: 'Character Signature',
-        description:
-          "Increases casting speed for 'Cast: Starlight Shower' by 25%. When 'Starlight Shower' is activated, creates additional starlight areas that persist for 2 rounds.",
-      },
-    },
-  },
+  // Weapon - Not yet released in game
+  weapon: null,
 };
 
 // Validate and sanitize the character data

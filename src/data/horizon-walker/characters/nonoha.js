@@ -153,6 +153,9 @@ const rawNonohaData = {
         'Bestows the blessing of the Great Wind. Can only be activated when possessing 3 or more stacks of the [Whirling Wind] effect. Consumes 3 stacks of [Whirling Wind] to grant all allies AP equal to 39% of own AP Recovery, and increases AP Recovery by the same amount granted until the start of the next round.',
     },
   },
+
+  // Weapon - Not yet released in game
+  weapon: null,
 };
 
 // Validate and sanitize the character data

@@ -154,6 +154,9 @@ const rawRhasadinaData = {
         'With fairy magic, brings about a powerful effect on the battlefield. One of the following five effects is activated at random: ① recovers all allies by 180% of own magic ATK. ② Deals additional Immaterial DMG equal to 300% of own magic ATK to all enemies. ③ Grants all allies an increase in All ATK by 45% for 2 rounds. ④ Grants all allies 45 AP. ⑤ nothing happens.',
     },
   },
+
+  // Weapon - Not yet released in game
+  weapon: null,
 };
 
 // Validate and sanitize the character data
