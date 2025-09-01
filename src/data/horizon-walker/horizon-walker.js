@@ -120,6 +120,20 @@ export const horizonWalkerConfig = {
       ],
     },
     {
+      id: 'mechanics',
+      title: 'Game Mechanics',
+      emoji: '',
+      description: 'Learn how game systems work',
+      size: 'large',
+      guides: [
+        {
+          id: 'ap-guide',
+          title: 'AP Guide',
+          url: '/guides/horizon-walker/ap-guide',
+        },
+      ],
+    },
+    {
       id: 'resources',
       title: 'Resources',
       emoji: '',

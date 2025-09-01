@@ -1,0 +1,82 @@
+---
+import GuideLayout from '../../../layouts/horizon-walker/GuideLayout.astro';
+import { apGuideData } from '../../../data/horizon-walker/ap-guide.js';
+import { Image } from 'astro:assets';
+
+const breadcrumbs = [{ name: 'AP Guide' }];
+---
+
+<GuideLayout
+  title={apGuideData.seoData.title}
+  description={apGuideData.seoData.description}
+  pageTitle={apGuideData.title}
+  subtitle={apGuideData.subtitle}
+  breadcrumbs={breadcrumbs}
+>
+  {
+    apGuideData.sections.map(section => (
+      <section class="hw-guide-section" id={section.id}>
+        <h2 class="hw-section-title">{section.title}</h2>
+
+        {/* Section Content */}
+        {section.content && section.content.length > 0 && (
+          <div class="hw-section-content">
+            {section.content.map(paragraph => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        )}
+
+        {/* List */}
+        {section.list && (
+          <ul class="hw-guide-list">
+            {section.list.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        )}
+
+        {/* Divider */}
+        {section.divider && <hr class="hw-guide-divider" />}
+
+        {/* Warning Box */}
+        {section.warningBox && (
+          <div class="hw-warning-box">
+            <div class="hw-warning-content">{section.warningBox.content}</div>
+          </div>
+        )}
+
+        {/* Image */}
+        {section.image && (
+          <div class="hw-guide-image-container">
+            <img
+              src={section.image.path}
+              alt={section.image.caption}
+              class="hw-guide-image"
+              loading="lazy"
+            />
+            {section.image.caption && <p class="hw-guide-image-caption">{section.image.caption}</p>}
+          </div>
+        )}
+
+        {/* Example Box */}
+        {section.example && (
+          <div class="hw-example-box">
+            <div class="hw-example-title">{section.example.title}</div>
+            <div class="hw-example-content">{section.example.content}</div>
+          </div>
+        )}
+
+        {/* Info Box */}
+        {section.infoBox && (
+          <div class="hw-info-box">
+            <div class="hw-info-box-title">{section.infoBox.title}</div>
+            <div class="hw-info-box-content" style="white-space: pre-line;">
+              {section.infoBox.content}
+            </div>
+          </div>
+        )}
+      </section>
+    ))
+  }
+</GuideLayout>
