@@ -12,6 +12,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'SR',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Healer', // Healer class
     detailUrl: '/guides/zone-nova/memories/ancient-method-to-eliminate-fatigue/',
     stats: {
       hp: 5000,
@@ -33,6 +34,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'R',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Mage', // Mage class
     detailUrl: '/guides/zone-nova/memories/annihilation-users-reminiscence/',
     stats: {
       hp: 3360,
@@ -87,6 +89,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'SR',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Rogue', // Rogue class
     detailUrl: '/guides/zone-nova/memories/great-mages-role-playing/',
     stats: {
       hp: 4200,
@@ -127,6 +130,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'R',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Rogue', // Rogue class
     detailUrl: '/guides/zone-nova/memories/guerrilla-users-reminiscence/',
     stats: {
       hp: 3360,
@@ -143,6 +147,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'R',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Guardian', // Guardian class
     detailUrl: '/guides/zone-nova/memories/guardian-users-reminiscence/',
     stats: {
       hp: 4400,
@@ -159,6 +164,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'R',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Healer', // Healer class
     detailUrl: '/guides/zone-nova/memories/healers-memory/',
     stats: {
       hp: 4000,
@@ -302,6 +308,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'SR',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Guardian', // Guardian class
     detailUrl: '/guides/zone-nova/memories/sister-penny-trying-on-new-clothes/',
     stats: {
       hp: 5500,
@@ -342,6 +349,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'SR',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Debuffer', // Debuffer class
     detailUrl: '/guides/zone-nova/memories/deceptive-ultimate-temptation/',
     stats: {
       hp: 5000,
@@ -547,6 +555,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'R',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Debuffer', // Debuffer class
     detailUrl: '/guides/zone-nova/memories/qianjues-reminiscence/',
     stats: {
       hp: 4000,
@@ -672,6 +681,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'R',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Buffer', // Buffer class
     detailUrl: '/guides/zone-nova/memories/support-users-reminiscence/',
     stats: {
       hp: 4000,
@@ -688,6 +698,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'R',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Warrior', // Warrior class
     detailUrl: '/guides/zone-nova/memories/strong-attack-users-reminiscence/',
     stats: {
       hp: 4000,
@@ -704,6 +715,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'SR',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Mage', // Mage class
     detailUrl: '/guides/zone-nova/memories/summer-afternoon-nap-time/',
     stats: {
       hp: 4200,
@@ -725,6 +737,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'SR',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Warrior', // Warrior class
     detailUrl: '/guides/zone-nova/memories/swimsuit-sovereign-who-makes-hearts-flutter/',
     stats: {
       hp: 5000,
@@ -843,6 +856,7 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'SR',
     element: null, // No specific element
     character: null, // No specific character
+    class: 'Buffer', // Buffer class
     detailUrl: '/guides/zone-nova/memories/morning-sunlight/',
     stats: {
       hp: 5000,
@@ -1031,8 +1045,14 @@ export function getMemoriesByClass(className) {
 }
 
 export function getMemoryClass(memory) {
-  if (!memory.character) return null; // No class for non-character memories
-  return getCharacterClass(memory.character);
+  // First check if memory has a direct class field
+  if (memory.class) return memory.class;
+
+  // If no direct class, try to get it from character
+  if (memory.character) return getCharacterClass(memory.character);
+
+  // No class information available
+  return null;
 }
 
 // Sort memories by different criteria

@@ -1,0 +1,38 @@
+---
+import MemoryTemplate from '../../../../templates/zone-nova/MemoryTemplate.astro';
+import { ZONE_NOVA_MEMORIES } from '../../../../data/zone-nova/memories.js';
+
+export async function getStaticPaths() {
+  return ZONE_NOVA_MEMORIES.map(memory => {
+    return {
+      params: { slug: memory.slug },
+      props: { memory },
+    };
+  });
+}
+
+const { memory } = Astro.props;
+
+// Convert memory database format to template format
+const memoryData = {
+  name: memory.name,
+  image: memory.image,
+  rarity: memory.rarity,
+  character: memory.character,
+  element: memory.element,
+  stats: {
+    hp: memory.stats.hp,
+    attack: memory.stats.attack,
+    defense: memory.stats.defense,
+  },
+  effects: memory.effects,
+};
+
+// SEO data for the memory page
+const memorySEO = {
+  title: `${memory.name} - Zone Nova Memory Card | GachaWiki`,
+  description: `Complete guide for ${memory.name} memory card in Zone Nova. View stats, effects, and compatibility information.`,
+};
+---
+
+<MemoryTemplate memoryData={memoryData} memorySEO={memorySEO} />

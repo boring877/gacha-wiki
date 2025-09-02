@@ -2,6 +2,8 @@
 // Import your layout
 import ZoneNovaLayout from '../../../layouts/zone-nova/LandingLayout.astro';
 import { Image } from 'astro:assets';
+import '../../../styles/games/zone-nova/zn-badge-colour.css';
+import '../../../styles/games/zone-nova/zn-character.css';
 
 // Import memory data and utilities
 import {
@@ -605,6 +607,8 @@ import {
                 <th>Image</th>
                 <th>Name</th>
                 <th>Rarity</th>
+                <th>Class Icon</th>
+                <th>Class</th>
                 <th>HP</th>
                 <th>Attack</th>
                 <th>Defense</th>
@@ -638,6 +642,29 @@ import {
                         data-sort-key="rarity"
                       >
                         {memory.rarity}
+                      </span>
+                    </td>
+                    <td style="text-align: center; vertical-align: middle;">
+                      {(() => {
+                        const memoryClass = getMemoryClass(memory);
+                        return memoryClass ? (
+                          <img
+                            src={`/images/games/zone-nova/classes/1${memoryClass}.jpg`}
+                            alt={memoryClass}
+                            class="class-icon-standalone"
+                            loading="lazy"
+                            title={memoryClass}
+                          />
+                        ) : (
+                          <span style="color: var(--text-secondary); font-size: 0.8rem;">-</span>
+                        );
+                      })()}
+                    </td>
+                    <td>
+                      <span
+                        class={`class-badge ${(getMemoryClass(memory) || 'universal').toLowerCase()}`}
+                      >
+                        {getMemoryClass(memory) || 'Universal'}
                       </span>
                     </td>
                     <td data-sort-key="hp">{memory.stats.hp.toLocaleString()}</td>

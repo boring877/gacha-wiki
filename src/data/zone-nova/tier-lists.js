@@ -33,7 +33,7 @@ export const PVE_TIER_LIST = {
   lastUpdated: '2025-08-05',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
-    SSS: [{ name: 'Guinevere' }, { name: 'Athena' }],
+    SSS: [{ name: 'Guinevere' }, { name: 'Athena' }, { name: 'Freya' }],
     SS: [
       { name: 'Yuis' },
       { name: 'Thor' },
@@ -85,6 +85,7 @@ export const PVP_TIER_LIST = {
     SS: [
       { name: 'Odin' },
       { name: 'Freye' },
+      { name: 'Freya' },
       { name: 'Gaia' },
       { name: 'Athena' },
       { name: "Jeanne d'Arc" },
@@ -133,6 +134,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Yuis' },
       { name: 'Odin' },
       { name: 'Thor' },
+      { name: 'Freya' },
     ],
     SS: [
       { name: 'Freye' },
@@ -185,6 +187,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Yuis' },
       { name: 'Odin' },
       { name: 'Afrodite' },
+      { name: 'Freya' },
     ],
     SS: [
       { name: 'Freye' },
