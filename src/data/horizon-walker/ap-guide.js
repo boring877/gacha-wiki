@@ -89,6 +89,17 @@ export const apGuideData = {
           '• AP determines turn order\n• Starting AP only affects Turn 1\n• AP Recovery adds to your AP every turn\n• 100 AP minimum to act (unless special effects)\n• Agility increases base AP Recovery\n• Extra Turn effects bypass the 100 AP rule',
       },
     },
+    {
+      id: 'video-explanation',
+      title: 'Video Explanation',
+      content: [
+        'For a more detailed visual explanation of the AP system, check out this helpful video:',
+      ],
+      videoLink: {
+        url: 'https://www.youtube.com/watch?v=AUh3Fhjag24',
+        text: 'Watch AP System Explanation on YouTube',
+      },
+    },
   ],
 
   images: {

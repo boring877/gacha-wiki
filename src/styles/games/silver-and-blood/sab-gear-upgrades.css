@@ -1,0 +1,875 @@
+/* Silver and Blood - End Game Gear Upgrades - Simple Clean Styles */
+
+/* ========================================
+   SLOT MACHINE SIMULATORS
+   ======================================== */
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+/* Slot Machine Container */
+.slot-machine-container,
+.refinement-container {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(40, 20, 20, 0.95) 100%);
+  border: 3px solid var(--sab-calm-red);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.slot-machine-container h2,
+.refinement-container h2 {
+  color: var(--sab-calm-red);
+  margin: 0 0 2rem 0;
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* Slot Machine Display */
+.slot-machine {
+  background: #111;
+  border: 2px solid #444;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* Slot Windows */
+.slot-windows,
+.tier-windows {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.slot-window,
+.tier-window {
+  background: linear-gradient(180deg, #000 0%, #111 50%, #000 100%);
+  border: 3px solid #666;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slot-window {
+  width: 180px;
+  height: 120px;
+}
+
+/* Refinement Specific */
+.tier-slot {
+  display: none;
+  width: 220px;
+  position: relative;
+}
+
+.tier-window {
+  height: 140px;
+}
+
+.tier-label {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.tier-label div {
+  color: var(--sab-calm-red);
+  font-weight: bold;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0 5px;
+}
+
+/* Slot/Tier Items */
+.slot-item,
+.tier-item {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #222;
+}
+
+.tier-item {
+  height: 140px;
+  flex-direction: column;
+}
+
+.tier-reel {
+  position: absolute;
+  width: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tier-value {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.tier-value-max {
+  color: #ffd700 !important;
+}
+
+.tier-stat {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.tier-placeholder {
+  color: #666;
+}
+
+.tier-placeholder-value {
+  color: #888;
+}
+
+/* Slot Item Content */
+.slot-item-content {
+  text-align: center;
+}
+
+.blessing-name {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.blessing-rate {
+  color: #666;
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+}
+
+.info-text {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.lock-button-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.lock-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.lock-info-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.lock-counter {
+  color: var(--sab-calm-red);
+  font-weight: 600;
+}
+
+.keep-original-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.keep-original-text {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 0.5rem 0;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.stat-box {
+  flex: 1;
+}
+
+.stat-box-label {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.stat-box-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#refinement-hammers,
+#current-slots,
+#hammers-used {
+  color: var(--sab-calm-red);
+}
+
+#t15-count,
+#best-result {
+  color: #4caf50;
+}
+
+#avg-tier {
+  color: #ffa500;
+}
+
+.current-tier span {
+  color: var(--sab-calm-red);
+}
+
+.blessing-slot-wrapper {
+  flex: 1;
+  min-width: 200px;
+}
+
+.blessing-slot-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+#setup-section h3 {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1rem 0;
+}
+
+#setup-section p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Control Panel */
+.control-panel {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Lock Controls */
+.lock-controls,
+#lock-controls {
+  margin-bottom: 1.5rem;
+}
+
+.slot-lock-btn,
+.refinement-lock-btn {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.slot-lock-btn:hover,
+.refinement-lock-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.slot-lock-btn.locked,
+.refinement-lock-btn.locked {
+  background: var(--sab-calm-red);
+  border-color: var(--sab-calm-red);
+  color: white;
+}
+
+/* Lock Indicators */
+.lock-indicator {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: var(--sab-calm-red);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  z-index: 10;
+}
+
+.lock-indicator:not(.hidden) {
+  display: block;
+}
+
+/* Spin/Refine Buttons */
+#spin-btn,
+#refine-btn {
+  width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--sab-calm-red) 0%, #ff6666 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Removed hover effects */
+
+#spin-btn:disabled,
+#refine-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Stats Display */
+.stats-display {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.stat-item {
+  flex: 1;
+}
+
+.stat-label {
+  color: #888;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Current Tier Display */
+.current-tier {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+}
+
+/* Keep/Discard Options */
+#keep-original {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+#keep-new-btn,
+#keep-original-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+#keep-new-btn {
+  background: #4caf50;
+  color: white;
+}
+
+#keep-original-btn {
+  background: #f44336;
+  color: white;
+}
+
+/* Reset/Back Buttons */
+#reset-btn,
+#back-btn,
+#setup-btn {
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#setup-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--sab-calm-red);
+  color: white;
+  border: none;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* History/Info Sections */
+.history-section,
+.probability-section,
+.refinement-info {
+  margin-top: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid #444;
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.refinement-info h3 {
+  color: var(--sab-calm-red);
+  margin: 0 0 1rem 0;
+}
+
+.refinement-info div {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.refinement-info p {
+  margin-bottom: 0.75rem;
+}
+
+.refinement-info em {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes spin {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-2400px);
+  }
+}
+
+@keyframes tierSpin {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-2100px);
+  }
+}
+
+/* Removed glow animation */
+
+/* Removed unused spinning classes */
+
+/* Removed winning slot animation */
+
+.tier-max {
+  border-color: #ffd700 !important;
+  /* Removed shadow */
+}
+
+/* Setup Section */
+#setup-section {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+#blessing-slots {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.blessing-select {
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+/* ========================================
+   END SLOT MACHINE SIMULATORS
+   ======================================== */
+
+/* Main Container */
+.gear-upgrades-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+/* Responsive Table Views */
+.blessing-tiers-mobile {
+  display: none !important;
+}
+
+.blessing-tiers-desktop {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .blessing-tiers-mobile {
+    display: block !important;
+  }
+
+  .blessing-tiers-desktop {
+    display: none;
+  }
+}
+
+/* Title */
+.gear-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--sab-calm-red);
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+/* Basic Text */
+.gear-description,
+.section-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  margin: 1rem 0;
+}
+
+/* Section Headers */
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--sab-calm-red);
+  margin: 2.5rem 0 1rem 0;
+  border-bottom: 1px solid rgba(192, 107, 107, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+/* Requirements List */
+.requirements-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--sab-calm-red);
+  padding: 1rem 1.5rem;
+}
+
+.requirement-item {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.requirement-item::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--sab-calm-red);
+}
+
+/* Simple Table */
+.rates-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.rates-table th {
+  padding: 1rem;
+  text-align: left;
+  color: var(--sab-calm-red);
+  font-weight: 600;
+  border-bottom: 2px solid rgba(192, 107, 107, 0.3);
+  background: rgba(192, 107, 107, 0.05);
+}
+
+.rates-table td {
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rate-value {
+  font-family: monospace;
+  color: var(--sab-calm-red);
+  font-weight: 600;
+}
+
+.slot-number {
+  color: var(--sab-calm-red);
+  font-weight: 600;
+}
+
+/* Mechanics Cards - Simple */
+.mechanic-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--sab-calm-red);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.mechanic-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--sab-calm-red);
+  margin: 0 0 1rem 0;
+}
+
+.mechanic-description {
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+.mechanic-formula {
+  background: rgba(192, 107, 107, 0.1);
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: monospace;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.mechanic-tip {
+  background: rgba(192, 107, 107, 0.08);
+  border-left: 3px solid var(--sab-calm-red);
+  padding: 1rem;
+  margin: 1rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* Blessing Tiers Table */
+.blessing-tiers-container {
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.tiers-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+}
+
+.tiers-table thead {
+  background: rgba(192, 107, 107, 0.05);
+}
+
+.tiers-table th {
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  color: var(--sab-calm-red);
+  font-weight: 600;
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  font-size: 0.85rem;
+}
+
+.tiers-table th.blessing-header {
+  text-align: left;
+  padding-left: 1rem;
+  min-width: 160px;
+}
+
+.tiers-table td {
+  padding: 0.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+}
+
+.tiers-table .blessing-cell {
+  text-align: left;
+  padding-left: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.tier-value {
+  font-family: monospace;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tier-max {
+  color: var(--sab-calm-red);
+  font-weight: 600;
+}
+
+/* References - Simple */
+.references-section {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 2px solid rgba(192, 107, 107, 0.3);
+}
+
+.references-title {
+  font-size: 1.2rem;
+  color: var(--sab-calm-red);
+  margin-bottom: 1rem;
+}
+
+.reference-credit {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.5rem;
+}
+
+.reference-link {
+  color: var(--sab-calm-red);
+  text-decoration: underline;
+}
+
+.reference-link:hover {
+  color: var(--sab-light-red);
+}
+
+/* Hammer Section Layout */
+.hammer-section {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.hammer-image-container {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.hammer-image {
+  width: 140px;
+  height: auto;
+  border-radius: 8px;
+  /* Removed shadow */
+  border: 2px solid rgba(192, 107, 107, 0.2);
+}
+
+.hammer-caption {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.hammer-text {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+/* Important Note Box */
+.important-note-box {
+  background: rgba(192, 107, 107, 0.1);
+  border-left: 4px solid var(--sab-calm-red);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.important-note-header {
+  color: var(--sab-calm-red);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.important-note-text {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Sections */
+.upgrade-section {
+  margin: 2rem 0;
+}
+
+.section-header {
+  margin-bottom: 1rem;
+}
+
+/* Remove complex styling */
+.gear-hero-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .gear-upgrades-content {
+    padding: 1rem;
+  }
+
+  .gear-title {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  /* Hammer section mobile layout */
+  .hammer-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .hammer-image {
+    width: 120px;
+  }
+
+  .hammer-text {
+    text-align: center;
+  }
+
+  .tiers-table {
+    font-size: 0.75rem;
+  }
+
+  .tiers-table th,
+  .tiers-table td {
+    padding: 0.4rem 0.3rem;
+  }
+
+  .blessing-tiers-container {
+    margin: 0 -1rem;
+    padding: 0 1rem;
+  }
+}

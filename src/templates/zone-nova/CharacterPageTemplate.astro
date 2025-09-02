@@ -27,6 +27,14 @@ const highlightedTeamSkill = characterData.teamSkill
     }
   : characterData.teamSkill;
 
+// Apply highlighting to awakening effects
+const highlightedAwakenings = characterData.awakenings
+  ? characterData.awakenings.map(awakening => ({
+      ...awakening,
+      effect: highlightSkillText(awakening.effect, defaultZNHighlightPatterns),
+    }))
+  : characterData.awakenings;
+
 // Helper function to categorize character tags for styling
 function getTagCategory(tag: string): string {
   const lowerTag = tag.toLowerCase();
@@ -546,7 +554,7 @@ function getTagCategory(tag: string): string {
 <section class="content-section awakening-section">
   <h2 class="section-title">Awakening Effects</h2>
   {
-    characterData.awakenings.map((awakening, index) => (
+    highlightedAwakenings.map((awakening, index) => (
       <div class={`awakening-card dupe-${awakening.level}`}>
         <div class="awakening-header">
           <h3 class="awakening-title">
@@ -554,7 +562,7 @@ function getTagCategory(tag: string): string {
           </h3>
         </div>
         <p class="awakening-description">
-          <strong>Effect:</strong> {awakening.effect}
+          <strong>Effect:</strong> <span set:html={awakening.effect} />
         </p>
       </div>
     ))

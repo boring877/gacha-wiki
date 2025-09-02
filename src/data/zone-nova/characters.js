@@ -601,6 +601,27 @@ export const ZONE_NOVA_CHARACTERS = [
     slug: 'zashiki-warashi',
     detailUrl: '/guides/zone-nova/characters/zashiki-warashi',
   },
+  {
+    id: 37,
+    name: 'Freya',
+    rarity: 'SSR',
+    element: 'Ice',
+    role: 'DPS',
+    class: 'Mage',
+    faction: getFactionByCharacter('Freya'),
+    tags: ['Ranged', 'Crit Damage', 'Crit Rate', 'Normal Attack', 'Attack Speed', 'AOE'],
+    stats: {
+      hp: 7308,
+      attack: 1193,
+      defense: 474,
+      energyRecovery: 0.25,
+      critRate: 16.8,
+      critDmg: 50,
+    },
+    image: '/images/games/zone-nova/characters/Freya.jpg',
+    slug: 'freya',
+    detailUrl: '/guides/zone-nova/characters/freya',
+  },
 ];
 
 // Metadata (unique, sorted)

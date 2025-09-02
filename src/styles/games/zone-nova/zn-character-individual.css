@@ -822,6 +822,27 @@
   font-weight: 700;
 }
 
+/* Awakening highlighting - same as skill highlighting */
+.awakening-description .zn-highlight-damage,
+.awakening-description .zn-highlight-effects,
+.awakening-description .zn-highlight-buffs,
+.awakening-description .zn-highlight-attributes,
+.awakening-description .zn-highlight-keywords {
+  color: #d32f2f;
+  font-weight: 600;
+  background: rgba(211, 47, 47, 0.1);
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+}
+
+.awakening-description .zn-highlight-numbers {
+  color: #1976d2;
+  font-weight: 600;
+  background: rgba(25, 118, 210, 0.1);
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                           MEMORY CARD SECTION                           */
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -1346,17 +1367,17 @@
 .zn-highlight-buffs,
 .zn-highlight-attributes,
 .zn-highlight-keywords {
-  color: var(--amber-glow);
+  color: #d32f2f;
   font-weight: 600;
-  background: rgba(255, 191, 0, 0.1);
+  background: rgba(211, 47, 47, 0.1);
   padding: 0.1rem 0.2rem;
   border-radius: 3px;
 }
 
 .zn-highlight-numbers {
-  color: var(--teal-crystal);
+  color: #1976d2;
   font-weight: 600;
-  background: rgba(64, 224, 208, 0.1);
+  background: rgba(25, 118, 210, 0.1);
   padding: 0.1rem 0.2rem;
   border-radius: 3px;
 }

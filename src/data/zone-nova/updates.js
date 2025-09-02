@@ -1,6 +1,15 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'first-character-popularity-vote-results',
+    title: 'First Character Popularity Vote Results!',
+    date: 'September 2, 2025',
+    type: 'announcement',
+    summary:
+      "Results of ZoneNova's first character popularity vote are in! Gaia (Main Mother) takes 1st place, followed by Yuis in 2nd and Odin in 3rd. Bonus rewards including Heavy Plastic Dice ×2, Carving Ritual Cards ×2, and Original Energy Magic Cubes ×1 distributed to team leaders who logged in before September 9, 2025.",
+    url: '/guides/zone-nova/updates/announcement-first-character-popularity-vote-results/',
+  },
+  {
     id: 'september-2-maintenance',
     title: 'September 2nd Maintenance Update',
     date: 'September 2, 2025',

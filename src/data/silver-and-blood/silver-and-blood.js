@@ -146,6 +146,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           title: 'Team Synergy',
           url: '/guides/silver-and-blood/team-synergy/',
         },
+        {
+          id: 'gear-upgrades',
+          title: 'Gear Upgrades',
+          url: '/guides/silver-and-blood/gear-upgrades/',
+        },
       ],
     },
     {
@@ -350,6 +355,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       description:
         'Comprehensive character tier lists for PvP Arena, PvE, Clan Hunt, Boss Raids, and F2P players. Interactive tier list maker with drag-and-drop functionality.',
       url: '/guides/silver-and-blood/tier-list/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'gear-upgrades',
+      title: 'End Game Gear Upgrades',
+      emoji: '',
+      description:
+        'Complete guide to Tier 9 gear upgrades, Echo blessings, sub-stats, and SoulsStrike hammer mechanics. Learn about blessing priorities, recast strategies, and refinement optimization.',
+      url: '/guides/silver-and-blood/gear-upgrades/',
       category: 'guides',
       status: 'active',
     },

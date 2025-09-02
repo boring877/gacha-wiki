@@ -40,7 +40,7 @@ export const ZONE_NOVA_FACTIONS = {
   Asa: {
     name: 'Asa',
     chineseName: '亚萨',
-    characters: ['Freye', 'Loki', 'Odin', 'Thor'],
+    characters: ['Freye', 'Freya', 'Loki', 'Odin', 'Thor'],
     color: '#f44336',
     description: 'The Asa faction with Norse mythology influences',
   },

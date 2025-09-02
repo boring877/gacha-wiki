@@ -1,0 +1,302 @@
+---
+// Refinement Slot Machine Component
+import { gearUpgradesData } from '../../data/silver-and-blood/gear-upgrades.js';
+
+const blessingOptions = [
+  { value: 'Blood R.', name: 'Bloodsoul Recovery' },
+  { value: 'All DMG', name: 'All DMG Bonus' },
+  { value: 'All DMG Red.', name: 'All DMG Reduction' },
+  { value: 'ATK SPD', name: 'ATK SPD' },
+  { value: 'P. DMG', name: 'P. DMG Bonus' },
+  { value: 'M. DMG', name: 'M. DMG Bonus' },
+  { value: 'CRIT DMG', name: 'CRIT DMG' },
+  { value: 'Healing', name: 'Received Healing Bonus' },
+  { value: 'CRIT Rate', name: 'CRIT Rate' },
+];
+---
+
+<div class="refinement-container">
+  <h2>REFINEMENT SLOT MACHINE</h2>
+
+  <!-- Setup Section -->
+  <div id="setup-section">
+    <h3>Setup Your Gear</h3>
+    <p>Select blessings to refine (up to 3 slots)</p>
+
+    <div id="blessing-slots">
+      <!-- Slot 1 -->
+      <div class="blessing-slot-wrapper">
+        <label class="blessing-slot-label">Slot 1:</label>
+        <select id="blessing-select-1" class="blessing-select">
+          <option value="">-- Empty --</option>
+          {blessingOptions.map(opt => <option value={opt.value}>{opt.name}</option>)}
+        </select>
+      </div>
+
+      <!-- Slot 2 -->
+      <div class="blessing-slot-wrapper">
+        <label class="blessing-slot-label">Slot 2:</label>
+        <select id="blessing-select-2" class="blessing-select">
+          <option value="">-- Empty --</option>
+          {blessingOptions.map(opt => <option value={opt.value}>{opt.name}</option>)}
+        </select>
+      </div>
+
+      <!-- Slot 3 -->
+      <div class="blessing-slot-wrapper">
+        <label class="blessing-slot-label">Slot 3:</label>
+        <select id="blessing-select-3" class="blessing-select">
+          <option value="">-- Empty --</option>
+          {blessingOptions.map(opt => <option value={opt.value}>{opt.name}</option>)}
+        </select>
+      </div>
+    </div>
+
+    <button id="setup-btn">Start Refinement</button>
+  </div>
+
+  <!-- Refinement Display -->
+  <div id="refinement-display" class="hidden">
+    <!-- Slot Machine Display -->
+    <div class="slot-machine">
+      <!-- Tier Slot Windows -->
+      <div class="tier-windows">
+        <!-- Slot 1 -->
+        <div class="tier-slot" id="tier-slot-1">
+          <div class="tier-window">
+            <div class="tier-label">
+              <div id="blessing-name-1"></div>
+            </div>
+            <div class="tier-reel" id="tier-reel-1">
+              <div class="tier-item">
+                <div class="tier-value tier-placeholder">T?</div>
+                <div class="tier-stat tier-placeholder-value">-</div>
+              </div>
+            </div>
+          </div>
+          <div class="current-tier">
+            Current: <span id="current-tier-1">T?</span>
+          </div>
+          <div id="lock-indicator-ref-1" class="lock-indicator">LOCKED</div>
+        </div>
+
+        <!-- Slot 2 -->
+        <div class="tier-slot" id="tier-slot-2">
+          <div class="tier-window">
+            <div class="tier-label">
+              <div id="blessing-name-2"></div>
+            </div>
+            <div class="tier-reel" id="tier-reel-2">
+              <div class="tier-item">
+                <div class="tier-value tier-placeholder">T?</div>
+                <div class="tier-stat tier-placeholder-value">-</div>
+              </div>
+            </div>
+          </div>
+          <div class="current-tier">
+            Current: <span id="current-tier-2">T?</span>
+          </div>
+          <div id="lock-indicator-ref-2" class="lock-indicator">LOCKED</div>
+        </div>
+
+        <!-- Slot 3 -->
+        <div class="tier-slot" id="tier-slot-3">
+          <div class="tier-window">
+            <div class="tier-label">
+              <div id="blessing-name-3"></div>
+            </div>
+            <div class="tier-reel" id="tier-reel-3">
+              <div class="tier-item">
+                <div class="tier-value tier-placeholder">T?</div>
+                <div class="tier-stat tier-placeholder-value">-</div>
+              </div>
+            </div>
+          </div>
+          <div class="current-tier">
+            Current: <span id="current-tier-3">T?</span>
+          </div>
+          <div id="lock-indicator-ref-3" class="lock-indicator">LOCKED</div>
+        </div>
+      </div>
+
+      <!-- Info Text -->
+      <div class="info-text">
+        Each refinement randomly changes tier levels (T1-T15). Higher tiers = better stats!
+      </div>
+    </div>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+      <!-- Lock Controls -->
+      <div class="lock-controls">
+        <div class="lock-info">
+          <span class="lock-info-text">Click slots to lock/unlock (Max: 2)</span>
+          <span id="refinement-lock-counter" class="lock-counter">Locked: 0/2</span>
+        </div>
+        <div id="refinement-lock-buttons" class="lock-button-container">
+          <!-- Lock buttons will be dynamically added -->
+        </div>
+      </div>
+
+      <!-- Refine Button -->
+      <button id="refine-btn">
+        REFINE (Cost: <span id="refinement-hammer-cost">1</span> Hammer<span
+          id="hammer-plural"
+          class="hidden">s</span
+        >)
+      </button>
+
+      <!-- Keep Original Option -->
+      <div id="keep-original" class="hidden">
+        <p class="keep-original-text">New results rolled! Choose:</p>
+        <div class="keep-original-container">
+          <button id="keep-new-btn">Keep New</button>
+          <button id="keep-original-btn">Keep Original</button>
+        </div>
+      </div>
+
+      <!-- Stats Display -->
+      <div class="stats-container">
+        <div class="stat-box">
+          <div class="stat-box-label">Hammers Used</div>
+          <div id="refinement-hammers" class="stat-box-value">0</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">T15 Count</div>
+          <div id="t15-count" class="stat-box-value">0</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">Avg Tier</div>
+          <div id="avg-tier" class="stat-box-value">-</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <button id="back-btn">← Back to Setup</button>
+  </div>
+</div>
+
+<!-- Probability Breakdown -->
+<div class="probability-section">
+  <h3>Tier Roll Probabilities</h3>
+  <div class="probability-details">
+    <div class="prob-row">
+      <strong class="prob-guaranteed">T1-T5:</strong> 12% each (60% total - Common)
+    </div>
+    <div class="prob-row">
+      <strong class="prob-medium">T6-T10:</strong> 7% each (35% total - Uncommon)
+    </div>
+    <div class="prob-row">
+      <strong class="prob-low">T11-T15:</strong> 1% each (5% total - Rare)
+    </div>
+    <div class="prob-note">
+      <strong>Hammer Costs:</strong> 1 hammer (no locks), 2 hammers (1 lock), 4 hammers (2 locks)
+    </div>
+  </div>
+</div>
+
+<!-- History Section -->
+<div class="history-section">
+  <h3>Refinement History</h3>
+  <div id="refinement-history-log" class="history-log">
+    <div class="history-empty">No refinements yet...</div>
+  </div>
+</div>
+
+<style>
+  /* Probability Section Styles */
+  .probability-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .probability-section h3 {
+    color: var(--sab-calm-red);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .probability-details {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+  }
+
+  .prob-row {
+    margin-bottom: 0.75rem;
+  }
+
+  .prob-note {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .prob-guaranteed {
+    color: #4caf50;
+  }
+
+  .prob-medium {
+    color: #ffa500;
+  }
+
+  .prob-low {
+    color: #ff6b6b;
+  }
+
+  /* History Section Styles */
+  .history-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .history-section h3 {
+    color: var(--sab-calm-red);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .history-log {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .history-empty {
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+  }
+
+  .history-entry {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #666;
+  }
+
+  .history-entry.tier-up {
+    border-left-color: #4caf50;
+  }
+
+  .history-entry.tier-down {
+    border-left-color: #ff6b6b;
+  }
+
+  .history-entry.tier-max {
+    border-left-color: #ffd700;
+  }
+</style>
+
+<script>
+  import '/src/scripts/sab-refinement-machine.js';
+</script>

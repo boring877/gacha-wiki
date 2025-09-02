@@ -76,7 +76,58 @@ const breadcrumbs = [{ name: 'AP Guide' }];
             </div>
           </div>
         )}
+
+        {/* Video Link */}
+        {section.videoLink && (
+          <div class="hw-video-link-container">
+            <a
+              href={section.videoLink.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hw-video-link"
+            >
+              {section.videoLink.text} →
+            </a>
+          </div>
+        )}
       </section>
     ))
   }
 </GuideLayout>
+
+<style>
+  .hw-video-link-container {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .hw-video-link {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
+    color: var(--hw-text-white);
+    text-decoration: none;
+    border-radius: var(--hw-radius-md);
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .hw-video-link {
+      padding: 0.875rem 1.5rem;
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hw-video-link-container {
+      margin: 1.5rem 0;
+    }
+
+    .hw-video-link {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95rem;
+    }
+  }
+</style>
