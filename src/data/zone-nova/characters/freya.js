@@ -97,8 +97,7 @@ export const freyaData = {
     },
     effects: [
       'Critical Damage increased by 72%',
-      'For each enemy on the battlefield: Normal attack damage increases by 12%',
-      'Maximum stacks: 4 (up to 48% bonus normal attack damage)',
+      'For each enemy on the battlefield: Normal attack damage increases by 12% Maximum stacks: 4 (up to 48% bonus normal attack damage)',
     ],
   },
 

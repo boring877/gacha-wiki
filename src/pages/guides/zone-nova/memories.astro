@@ -8,6 +8,7 @@ import {
   ZONE_NOVA_MEMORIES,
   MEMORY_METADATA,
   getMemoriesByCharacter,
+  getMemoryClass,
 } from '../../../data/zone-nova/memories.js';
 ---
 
@@ -38,19 +39,40 @@ import {
       }
       .filter-bar {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
         gap: 1.5rem;
         margin: 2rem auto 1.5rem auto;
-        flex-wrap: wrap;
         padding: 0 1rem;
+        max-width: 1200px;
       }
-      .filter-controls,
+      .filter-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 183, 77, 0.2);
+      }
+      .filter-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
       .sort-controls {
         display: flex;
-        gap: 0.5rem;
+        gap: 0.8rem;
         align-items: center;
         flex-wrap: wrap;
+        justify-content: center;
+        padding: 1.2rem 1.5rem;
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 183, 77, 0.15);
+        margin-bottom: 1rem;
       }
 
       /* Rarity Filter Buttons */
@@ -80,17 +102,30 @@ import {
         letter-spacing: 0.5px;
         position: relative;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
       }
       .rarity-filter-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
       .rarity-filter-btn.active {
-        border-color: #fff !important;
-        color: #fff !important;
+        border-color: #ffe066 !important;
         transform: translateY(-2px);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      /* All Rarity Button */
+      .rarity-filter-btn.all {
+        background: linear-gradient(135deg, #66bb6a, #4caf50);
+        color: #000;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+      }
+      .rarity-filter-btn.all:hover {
+        background: linear-gradient(135deg, #81c784, #66bb6a);
+      }
+      .rarity-filter-btn.all.active {
+        color: #000 !important;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
       }
 
       /* SSR Rarity Button */
@@ -103,28 +138,90 @@ import {
         background: linear-gradient(135deg, #e6ac00, #cc9900);
       }
       .rarity-filter-btn.ssr.active {
+        color: #000 !important;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+      }
+      .rarity-filter-btn.ssr.active {
         background: linear-gradient(135deg, #cc9900, #b88600) !important;
       }
 
       /* SR Rarity Button */
       .rarity-filter-btn.sr {
-        background: linear-gradient(135deg, #2196f3, #1976d2);
+        background: linear-gradient(135deg, #ab47bc, #8e24aa);
         color: #fff;
       }
       .rarity-filter-btn.sr:hover {
-        background: linear-gradient(135deg, #1976d2, #1565c0);
+        background: linear-gradient(135deg, #8e24aa, #7b1fa2);
       }
       .rarity-filter-btn.sr.active {
-        background: linear-gradient(135deg, #1565c0, #0d47a1) !important;
+        color: #fff !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
       }
 
       /* R Rarity Button */
       .rarity-filter-btn.r {
-        background: linear-gradient(135deg, #757575, #616161);
+        background: linear-gradient(135deg, #8d6e63, #6d4c41);
         color: #fff;
       }
       .rarity-filter-btn.r:hover {
-        background: linear-gradient(135deg, #616161, #424242);
+        background: linear-gradient(135deg, #6d4c41, #5d4037);
+      }
+      .rarity-filter-btn.r.active {
+        color: #fff !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Class Filter Buttons */
+      .class-filter-group {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .class-filter-label {
+        font-size: 1rem;
+        color: #ffffff;
+        font-weight: 700;
+        margin-right: 0.75rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        display: inline-block;
+      }
+      .class-filter-btn {
+        padding: 0.4rem 0.7rem;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(135deg, #78909c, #607d8b);
+        color: #fff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      .class-filter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(135deg, #90a4ae, #78909c);
+      }
+      .class-filter-btn.active {
+        border-color: #ffe066 !important;
+        background: linear-gradient(135deg, #ffb74d, #ff9800) !important;
+        color: #000 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(255, 152, 0, 0.3);
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+      }
+      .class-filter-btn.all {
+        background: linear-gradient(135deg, #66bb6a, #4caf50);
+      }
+      .class-filter-btn.all.active {
+        background: linear-gradient(135deg, #81c784, #66bb6a) !important;
+        color: #000 !important;
+        border-color: #ffe066 !important;
       }
       .rarity-filter-btn.r.active {
         background: linear-gradient(135deg, #424242, #212121) !important;
@@ -144,38 +241,52 @@ import {
 
       /* Sort buttons */
       .sort-btn {
-        padding: 0.4rem 0.7rem;
+        padding: 0.8rem 1rem;
         background: var(--bg-primary);
         color: var(--text-secondary);
-        border-radius: 8px;
-        border: 1px solid var(--mocha-mousse);
-        font-size: 0.8rem;
+        border-radius: 12px;
+        border: 2px solid var(--mocha-mousse);
+        font-size: 0.9rem;
         cursor: pointer;
+        min-height: 44px;
+        min-width: 64px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        transition: all 0.2s ease;
       }
       .sort-btn:hover {
         background: var(--bg-secondary);
         color: var(--text-primary);
         border-color: var(--amber-glow);
       }
+      .sort-btn:focus {
+        outline: 2px solid var(--amber-glow);
+        outline-offset: 2px;
+      }
       .sort-btn.active {
         background: var(--amber-glow);
         color: white;
+        border-color: var(--amber-glow);
       }
 
       /* Reset button unique styling */
       .reset-btn {
-        padding: 0.5rem 1rem;
+        padding: 0.8rem 1.2rem;
         background: linear-gradient(135deg, var(--rose-quartz), #e91e63);
         color: white;
-        border-radius: 10px;
+        border-radius: 12px;
         border: 2px solid var(--rose-quartz);
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         font-weight: 600;
         cursor: pointer;
         box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
         transition: all 0.3s ease;
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        min-height: 44px;
+        min-width: 80px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
       .reset-btn:hover {
         background: linear-gradient(135deg, #d81b60, var(--rose-quartz));
@@ -285,14 +396,18 @@ import {
       /* Mobile card styles */
       .mobile-memory-card {
         background: var(--bg-primary, #232323);
-        border-radius: 14px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-        padding: 1.2rem 1rem 1rem 1rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        padding: 1.5rem 1.2rem;
         margin-bottom: 1.5rem;
         display: flex;
         flex-direction: column;
-        gap: 0.7rem;
-        border: 1px solid var(--amber-glow, #ffe066);
+        gap: 1rem;
+        border: 2px solid var(--amber-glow, #ffe066);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
       .mobile-card-header {
         display: flex;
@@ -300,12 +415,13 @@ import {
         gap: 1rem;
       }
       .mobile-memory-card img {
-        width: 80px;
-        height: 80px;
-        border-radius: 14px;
+        width: 90px;
+        height: 90px;
+        border-radius: 16px;
         border: 3px solid var(--amber-glow, #ffe066);
         background: #fff;
         margin-bottom: 0;
+        touch-action: manipulation;
       }
       .mobile-card-title-group {
         display: flex;
@@ -313,17 +429,19 @@ import {
         gap: 0.2rem;
       }
       .mobile-memory-card h3 {
-        margin: 0 0 0.1rem 0;
-        font-size: 1.25rem;
+        margin: 0 0 0.2rem 0;
+        font-size: 1.35rem;
         color: var(--amber-glow, #ffe066);
         font-weight: 700;
         letter-spacing: 0.5px;
+        line-height: 1.2;
       }
       .mobile-card-badges {
         display: flex;
-        gap: 0.4rem;
-        margin-top: 0.1rem;
+        gap: 0.5rem;
+        margin-top: 0.2rem;
         flex-wrap: wrap;
+        align-items: center;
       }
       .mobile-memory-card .rarity-badge,
       .mobile-memory-card .element-badge,
@@ -337,11 +455,13 @@ import {
       }
       .mobile-card-stats {
         display: flex;
-        gap: 1.2rem;
-        margin-top: 0.5rem;
-        font-size: 1.05em;
+        gap: 1.5rem;
+        margin-top: 0.7rem;
+        font-size: 1.1em;
         color: var(--text-secondary, #e0e0e0);
         font-weight: 500;
+        flex-wrap: wrap;
+        justify-content: space-between;
       }
       .mobile-card-stats .stat-label {
         color: var(--amber-glow, #ffe066);
@@ -383,27 +503,55 @@ import {
           display: block !important;
         }
         .filter-bar {
+          gap: 1.2rem;
+          padding: 0 0.5rem;
+        }
+        .filter-controls {
+          gap: 1rem;
+          padding: 1.2rem;
+        }
+        .filter-row {
+          justify-content: center;
           flex-direction: column;
-          gap: 0.8rem;
+          align-items: center;
+          gap: 1rem;
         }
-        .filter-controls,
         .sort-controls {
+          padding: 1rem;
+          gap: 1rem;
+          flex-direction: column;
+          margin-bottom: 1.5rem;
+        }
+        .sort-controls span {
+          margin-bottom: 0.5rem;
+          font-size: 1rem;
+        }
+        .rarity-filter-group,
+        .class-filter-group {
+          justify-content: center;
+          gap: 0.8rem;
           width: 100%;
-          justify-content: center;
+          flex-wrap: wrap;
         }
-        .rarity-filter-group {
-          justify-content: center;
-          gap: 0.5rem;
-        }
-        .rarity-filter-label {
-          margin-right: 0.5rem;
-          font-size: 0.9rem;
+        .rarity-filter-label,
+        .class-filter-label {
+          width: 100%;
+          text-align: center;
+          margin-right: 0;
+          margin-bottom: 0.5rem;
+          font-size: 1rem;
           color: #ffffff !important;
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
         }
-        .rarity-filter-btn {
-          padding: 0.4rem 0.7rem;
-          font-size: 0.8rem;
+        .rarity-filter-btn,
+        .class-filter-btn {
+          padding: 0.8rem 1.2rem;
+          font-size: 0.9rem;
+          min-height: 44px;
+          min-width: 64px;
+          border-radius: 12px;
+          touch-action: manipulation;
+          -webkit-tap-highlight-color: transparent;
           letter-spacing: 0.5px;
         }
       }
@@ -416,18 +564,35 @@ import {
         {/* <!-- Filter Bar --> */}
         <div class="filter-bar">
           <div class="filter-controls">
-            <div class="rarity-filter-group">
-              <button class="rarity-filter-btn all active" data-rarity="">All</button>
-              <button class="rarity-filter-btn ssr" data-rarity="SSR">SSR</button>
-              <button class="rarity-filter-btn sr" data-rarity="SR">SR</button>
-              <button class="rarity-filter-btn r" data-rarity="R">R</button>
+            <div class="filter-row">
+              <div class="rarity-filter-group">
+                <span class="rarity-filter-label">Rarity:</span>
+                <button class="rarity-filter-btn all active" data-rarity="">All</button>
+                <button class="rarity-filter-btn ssr" data-rarity="SSR">SSR</button>
+                <button class="rarity-filter-btn sr" data-rarity="SR">SR</button>
+                <button class="rarity-filter-btn r" data-rarity="R">R</button>
+              </div>
+            </div>
+            <div class="filter-row">
+              <div class="class-filter-group">
+                <span class="class-filter-label">Class:</span>
+                <button class="class-filter-btn all active" data-class="">All</button>
+                {
+                  MEMORY_METADATA.classes.map(className => (
+                    <button class="class-filter-btn" data-class={className}>
+                      {className}
+                    </button>
+                  ))
+                }
+              </div>
             </div>
           </div>
           <div class="sort-controls">
+            <span style="color: #fff; font-weight: 600; margin-right: 0.5rem;">Sort by:</span>
             <button class="sort-btn" data-sort="hp">HP</button>
             <button class="sort-btn" data-sort="attack">ATK</button>
             <button class="sort-btn" data-sort="defense">DEF</button>
-            <button class="reset-btn" id="reset-table">Reset</button>
+            <button class="reset-btn" id="reset-table">Reset All</button>
           </div>
         </div>
 
@@ -452,6 +617,7 @@ import {
                     data-memory-id={memory.id}
                     data-slug={memory.slug}
                     data-url={memory.detailUrl}
+                    data-class={getMemoryClass(memory) || ''}
                     style="cursor:pointer;"
                   >
                     <td>{idx + 1}</td>
@@ -493,6 +659,7 @@ import {
                 data-memory-id={memory.id}
                 data-slug={memory.slug}
                 data-url={memory.detailUrl}
+                data-class={getMemoryClass(memory) || ''}
                 style="cursor:pointer;"
               >
                 <div class="mobile-card-header">
@@ -537,6 +704,7 @@ import {
       const memoryTableBody = document.getElementById('memory-table-body');
       const mobileCardsContainer = document.getElementById('mobile-cards-container');
       const rarityFilterButtons = document.querySelectorAll('.rarity-filter-btn');
+      const classFilterButtons = document.querySelectorAll('.class-filter-btn');
       const resetButton = document.getElementById('reset-table');
       const sortButtons = document.querySelectorAll('.sort-btn');
 
@@ -557,6 +725,7 @@ import {
             mobileElement: mobileCard,
             data: {
               rarity: row.querySelector('[data-sort-key="rarity"]')?.textContent?.trim() || '',
+              class: (row as HTMLElement).dataset.class || '',
               name: tableRow.cells[2]?.textContent?.toLowerCase() || '',
               hp: parseInt(
                 row.querySelector('[data-sort-key="hp"]')?.textContent?.replace(/,/g, '') || '0'
@@ -591,13 +760,16 @@ import {
         const activeRarityButton = document.querySelector(
           '.rarity-filter-btn.active'
         ) as HTMLElement;
+        const activeClassButton = document.querySelector('.class-filter-btn.active') as HTMLElement;
         const rarityValue = activeRarityButton?.dataset.rarity || '';
+        const classValue = activeClassButton?.dataset.class || '';
 
         allMemories.forEach(memory => {
           const matchesRarity =
             !rarityValue || memory.data.rarity.toUpperCase() === rarityValue.toUpperCase();
+          const matchesClass = !classValue || memory.data.class === classValue;
 
-          const isVisible = matchesRarity;
+          const isVisible = matchesRarity && matchesClass;
           memory.element.style.display = isVisible ? '' : 'none';
           memory.mobileElement.style.display = isVisible ? '' : 'none';
         });
@@ -664,6 +836,10 @@ import {
         rarityFilterButtons.forEach(btn => btn.classList.remove('active'));
         document.querySelector('.rarity-filter-btn.all')?.classList.add('active');
 
+        // Reset class filter to "All"
+        classFilterButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelector('.class-filter-btn.all')?.classList.add('active');
+
         // Clear sorting - show alphabetical order
         currentSortKey = '';
         isAscending = false;
@@ -705,6 +881,18 @@ import {
         button.addEventListener('click', function () {
           // Remove active class from all rarity buttons
           rarityFilterButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+          // Filter memories
+          filterMemories();
+        });
+      });
+
+      // Add event listeners to class filter buttons
+      classFilterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          // Remove active class from all class buttons
+          classFilterButtons.forEach(btn => btn.classList.remove('active'));
           // Add active class to clicked button
           this.classList.add('active');
           // Filter memories

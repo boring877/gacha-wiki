@@ -1,6 +1,8 @@
 // Zone Nova Memory Database
 // Centralized memory data for sorting, filtering, and display
 
+import { getCharacterClass } from './characters.js';
+
 export const ZONE_NOVA_MEMORIES = [
   {
     id: 'ancient-method-to-eliminate-fatigue',
@@ -96,6 +98,25 @@ export const ZONE_NOVA_MEMORIES = [
       'Cost: 5-price awakening',
       'Attack power increased by 20%',
       'When enemies on field are fewer than 2, increases crit damage by 36%',
+    ],
+  },
+  {
+    id: 'lamplight-study',
+    slug: 'lamplight-study',
+    name: 'Lamplight Study',
+    image: '/images/games/zone-nova/memories/Freyecard.jpg',
+    rarity: 'SSR',
+    element: 'Chaos',
+    character: 'Freye',
+    detailUrl: '/guides/zone-nova/memories/lamplight-study/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    },
+    effects: [
+      'Attack power increased by 40%',
+      'Ultimate skill damage can apply [Fate Bind]. Each stack of [Fate Bind] increases damage taken by 3.6%, lasts 10 seconds, maximum 10 stacks',
     ],
   },
   {
@@ -554,6 +575,25 @@ export const ZONE_NOVA_MEMORIES = [
     ],
   },
   {
+    id: 'slaves-original-wish',
+    slug: 'slaves-original-wish',
+    name: "Slave's Original Wish (奴仆的原愿)",
+    image: '/images/games/zone-nova/memories/Freyacard.jpg',
+    rarity: 'SSR',
+    element: 'Ice',
+    character: 'Freya',
+    detailUrl: '/guides/zone-nova/memories/slaves-original-wish/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    },
+    effects: [
+      'Critical Damage increased by 72%',
+      'For each enemy on the battlefield: Normal attack damage increases by 12% Maximum stacks: 4 (up to 48% bonus normal attack damage)',
+    ],
+  },
+  {
     id: 'self-release',
     slug: 'self-release',
     name: 'Self-Release (自我放纵)',
@@ -921,6 +961,7 @@ export const ZONE_NOVA_MEMORIES = [
 export const MEMORY_METADATA = {
   rarities: ['SSR', 'SR', 'R'],
   elements: ['Fire', 'Ice', 'Wind', 'Holy', 'Chaos'],
+  classes: ['Guardian', 'Warrior', 'Rogue', 'Mage', 'Buffer', 'Debuffer', 'Healer'],
   characters: [
     'Anubis',
     'Apollo',
@@ -931,6 +972,8 @@ export const MEMORY_METADATA = {
     'Belphegar',
     'Chiya',
     'Cleopatra',
+    'Freya',
+    'Freye',
     'Gaia',
     'Greed Mammon',
     'Guinevere',
@@ -953,6 +996,7 @@ export const MEMORY_METADATA = {
     'Shu',
     'Snow Girl',
     'Tefnut',
+    'Thor',
     'Yuis',
     'Zashiki-warashi',
   ],
@@ -977,6 +1021,18 @@ export function getMemoryById(id) {
 
 export function getMemoryBySlug(slug) {
   return ZONE_NOVA_MEMORIES.find(memory => memory.slug === slug);
+}
+
+export function getMemoriesByClass(className) {
+  return ZONE_NOVA_MEMORIES.filter(memory => {
+    if (!memory.character) return false; // Skip non-character specific memories
+    return getCharacterClass(memory.character) === className;
+  });
+}
+
+export function getMemoryClass(memory) {
+  if (!memory.character) return null; // No class for non-character memories
+  return getCharacterClass(memory.character);
 }
 
 // Sort memories by different criteria
