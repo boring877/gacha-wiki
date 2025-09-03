@@ -83,8 +83,12 @@ export const dutchmansRevengeData = {
       url: 'https://www.youtube.com/watch?v=q8LaSLOeFgw',
     },
     {
-      name: "The Psalm I - Dutchman's Revenge - All Stages",
+      name: 'The Psalm I',
       url: 'https://www.youtube.com/watch?v=4r26vLlFKRg&list=PL7fr7OdbJvOCIhi0JB4M8HrDLnka0vmhe',
+    },
+    {
+      name: 'The Psalm II',
+      url: 'https://www.youtube.com/watch?v=ZoCKClf-e0I&list=PL7fr7OdbJvOAM9iPZektGdV-hYxHscfkn',
     },
   ],
 
