@@ -1,523 +1,20 @@
 /* Silver and Blood - End Game Gear Upgrades - Simple Clean Styles */
 
 /* ========================================
-   SLOT MACHINE SIMULATORS
+   PAGE LAYOUT & ORGANIZATION
    ======================================== */
 
-/* Utility Classes */
-.hidden {
-  display: none !important;
-}
-
-/* Slot Machine Container */
-.slot-machine-container,
-.refinement-container {
-  background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(40, 20, 20, 0.95) 100%);
-  border: 3px solid var(--sab-calm-red);
-  border-radius: 20px;
-  padding: 2rem;
-}
-
-.slot-machine-container h2,
-.refinement-container h2 {
-  color: var(--sab-calm-red);
-  margin: 0 0 2rem 0;
-  text-align: center;
-  font-size: 2rem;
-}
-
-/* Slot Machine Display */
-.slot-machine {
-  background: #111;
-  border: 2px solid #444;
-  border-radius: 15px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  position: relative;
-}
-
-/* Slot Windows */
-.slot-windows,
-.tier-windows {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.slot-window,
-.tier-window {
-  background: linear-gradient(180deg, #000 0%, #111 50%, #000 100%);
-  border: 3px solid #666;
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-}
-
-.slot-window {
-  width: 180px;
-  height: 120px;
-}
-
-/* Refinement Specific */
-.tier-slot {
-  display: none;
-  width: 220px;
-  position: relative;
-}
-
-.tier-window {
-  height: 140px;
-}
-
-.tier-label {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  text-align: center;
-  z-index: 10;
-}
-
-.tier-label div {
-  color: var(--sab-calm-red);
-  font-weight: bold;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  padding: 0 5px;
-}
-
-/* Slot/Tier Items */
-.slot-item,
-.tier-item {
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  border-bottom: 1px solid #222;
-}
-
-.tier-item {
-  height: 140px;
-  flex-direction: column;
-}
-
-.tier-reel {
-  position: absolute;
-  width: 100%;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.tier-value {
-  font-size: 1.2rem;
-  color: #fff;
-  font-weight: bold;
-}
-
-.tier-value-max {
-  color: #ffd700 !important;
-}
-
-.tier-stat {
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
-  font-weight: bold;
-}
-
-.tier-placeholder {
-  color: #666;
-}
-
-.tier-placeholder-value {
-  color: #888;
-}
-
-/* Slot Item Content */
-.slot-item-content {
-  text-align: center;
-}
-
-.blessing-name {
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-
-.blessing-rate {
-  color: #666;
-  font-size: 0.7rem;
-  margin-top: 0.25rem;
-}
-
-.info-text {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-}
-
-.lock-button-container {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.lock-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.lock-info-text {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.lock-counter {
-  color: var(--sab-calm-red);
-  font-weight: 600;
-}
-
-.keep-original-container {
-  display: flex;
-  gap: 1rem;
-}
-
-.keep-original-text {
-  color: rgba(255, 255, 255, 0.8);
-  margin: 0 0 0.5rem 0;
-}
-
-.stats-container {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-.stat-box {
-  flex: 1;
-}
-
-.stat-box-label {
-  color: #888;
-  font-size: 0.8rem;
-}
-
-.stat-box-value {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-#refinement-hammers,
-#current-slots,
-#hammers-used {
-  color: var(--sab-calm-red);
-}
-
-#t15-count,
-#best-result {
-  color: #4caf50;
-}
-
-#avg-tier {
-  color: #ffa500;
-}
-
-.current-tier span {
-  color: var(--sab-calm-red);
-}
-
-.blessing-slot-wrapper {
-  flex: 1;
-  min-width: 200px;
-}
-
-.blessing-slot-label {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.85rem;
-}
-
-#setup-section h3 {
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 1rem 0;
-}
-
-#setup-section p {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-/* Control Panel */
-.control-panel {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-/* Lock Controls */
-.lock-controls,
-#lock-controls {
-  margin-bottom: 1.5rem;
-}
-
-.slot-lock-btn,
-.refinement-lock-btn {
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.8);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.slot-lock-btn:hover,
-.refinement-lock-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.slot-lock-btn.locked,
-.refinement-lock-btn.locked {
-  background: var(--sab-calm-red);
-  border-color: var(--sab-calm-red);
-  color: white;
-}
-
-/* Lock Indicators */
-.lock-indicator {
-  display: none;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: var(--sab-calm-red);
-  color: white;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  z-index: 10;
-}
-
-.lock-indicator:not(.hidden) {
-  display: block;
-}
-
-/* Spin/Refine Buttons */
-#spin-btn,
-#refine-btn {
-  width: 100%;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, var(--sab-calm-red) 0%, #ff6666 100%);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* Removed hover effects */
-
-#spin-btn:disabled,
-#refine-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Stats Display */
-.stats-display {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-.stat-item {
-  flex: 1;
-}
-
-.stat-label {
-  color: #888;
-  font-size: 0.8rem;
-  margin-bottom: 0.25rem;
-}
-
-.stat-value {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* Current Tier Display */
-.current-tier {
-  margin-top: 0.5rem;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.85rem;
-}
-
-/* Keep/Discard Options */
-#keep-original {
-  display: none;
-  margin-top: 1rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 6px;
-}
-
-#keep-new-btn,
-#keep-original-btn {
-  flex: 1;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s;
-}
-
-#keep-new-btn {
-  background: #4caf50;
-  color: white;
-}
-
-#keep-original-btn {
-  background: #f44336;
-  color: white;
-}
-
-/* Reset/Back Buttons */
-#reset-btn,
-#back-btn,
-#setup-btn {
-  padding: 0.75rem 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-#setup-btn {
-  width: 100%;
-  padding: 1rem;
-  background: var(--sab-calm-red);
-  color: white;
-  border: none;
-  font-weight: bold;
-  margin-top: 1rem;
-}
-
-/* History/Info Sections */
-.history-section,
-.probability-section,
-.refinement-info {
-  margin-top: 2rem;
-  background: rgba(0, 0, 0, 0.3);
-  border: 2px solid #444;
-  border-radius: 10px;
-  padding: 1.5rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.refinement-info h3 {
-  color: var(--sab-calm-red);
-  margin: 0 0 1rem 0;
-}
-
-.refinement-info div {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-}
-
-.refinement-info p {
-  margin-bottom: 0.75rem;
-}
-
-.refinement-info em {
-  color: rgba(255, 255, 255, 0.6);
-  font-style: italic;
-}
-
-/* Animations */
-@keyframes spin {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-2400px);
-  }
-}
-
-@keyframes tierSpin {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-2100px);
-  }
-}
-
-/* Removed glow animation */
-
-/* Removed unused spinning classes */
-
-/* Removed winning slot animation */
-
-.tier-max {
-  border-color: #ffd700 !important;
-  /* Removed shadow */
-}
-
-/* Setup Section */
-#setup-section {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-#blessing-slots {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-.blessing-select {
-  width: 100%;
-  padding: 0.5rem;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  margin-top: 0.25rem;
-}
-
-/* ========================================
-   END SLOT MACHINE SIMULATORS
-   ======================================== */
-
-/* Main Container */
 .gear-upgrades-content {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
 }
 
 /* Responsive Table Views */
@@ -535,7 +32,107 @@
   }
 
   .blessing-tiers-desktop {
-    display: none;
+    display: none !important;
+  }
+
+  /* Force hide desktop tables on mobile */
+  .blessing-tiers-desktop table,
+  .blessing-tiers-desktop .tiers-table-responsive {
+    display: none !important;
+  }
+
+  /* Remove container constraints on mobile - let tables scroll naturally */
+  .blessing-tiers-container {
+    margin: 1rem -1rem !important;
+    border: none !important;
+    border-radius: 0 !important;
+    overflow-x: visible !important;
+  }
+
+  /* Allow tables to use their natural width and scroll */
+  table.tiers-table-responsive {
+    min-width: 800px !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Mobile Card Styles for Blessing Tiers */
+.blessing-tier-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.blessing-tier-card h4 {
+  color: var(--sab-calm-red);
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.blessing-tier-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.blessing-tier-values {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.blessing-tier-value {
+  text-align: center;
+  padding: 0.3rem 0.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.blessing-tier-value.max-tier {
+  background: rgba(192, 107, 107, 0.2);
+  color: var(--sab-calm-red);
+  font-weight: 600;
+}
+
+/* Mobile grid fixes for blessing tier values */
+@media (max-width: 768px) {
+  /* Target the inline grid style in mobile cards */
+  .blessing-tiers-mobile div[style*='grid-template-columns: repeat(5, 1fr)'] {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.4rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .blessing-tiers-mobile div[style*='text-align: center; padding: 0.25rem'] {
+    font-size: 0.7rem !important;
+    padding: 0.3rem 0.1rem !important;
+    word-break: break-all !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .blessing-tier-values {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.3rem;
+  }
+
+  .blessing-tier-value {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.1rem;
+  }
+
+  /* Even smaller grid for very small screens */
+  .blessing-tiers-mobile div[style*='grid-template-columns: repeat(5, 1fr)'] {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.3rem !important;
+    font-size: 0.65rem !important;
   }
 }
 
@@ -557,6 +154,21 @@
   margin: 1rem 0;
 }
 
+/* Base wrapper styling for all content sections */
+.sab-gear-intro-content-wrapper,
+.sab-hammer-mechanics-content-wrapper,
+.sab-enhance-content-wrapper,
+.sab-recast-content-wrapper,
+.sab-refinement-content-wrapper,
+.sab-recast-slot-machine-wrapper,
+.sab-refinement-slot-machine-wrapper {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(192, 107, 107, 0.15);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0 2rem 0;
+}
+
 /* Section Headers */
 .section-title {
   font-size: 1.8rem;
@@ -565,6 +177,123 @@
   margin: 2.5rem 0 1rem 0;
   border-bottom: 1px solid rgba(192, 107, 107, 0.3);
   padding-bottom: 0.5rem;
+}
+
+/* Override gradient text from sab-character-styles.css for gear upgrades */
+.sab-body .gear-upgrades-content .section-title {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+  color: var(--sab-calm-red) !important;
+}
+
+/* Tame heavy slot machine component styling when inside wrappers */
+.sab-recast-slot-machine-wrapper .slot-machine-container,
+.sab-refinement-slot-machine-wrapper .refinement-container {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(192, 107, 107, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+/* Hide component titles since section already has titles */
+.sab-recast-slot-machine-wrapper .slot-machine-container h2,
+.sab-refinement-slot-machine-wrapper .refinement-container h2 {
+  display: none;
+}
+
+/* Ensure slot machine components respect wrapper width constraints */
+.sab-recast-slot-machine-wrapper .slot-machine,
+.sab-refinement-slot-machine-wrapper .slot-machine,
+.sab-recast-slot-machine-wrapper .control-panel,
+.sab-refinement-slot-machine-wrapper .control-panel,
+.sab-recast-slot-machine-wrapper .recast-probability-section,
+.sab-refinement-slot-machine-wrapper .probability-section {
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Slot Machines Link Section */
+.slot-machines-link-wrapper {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(192, 107, 107, 0.15);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.link-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.simulator-links {
+  display: flex;
+  justify-content: center;
+}
+
+.simulator-link {
+  background: linear-gradient(135deg, rgba(192, 107, 107, 0.1), rgba(192, 107, 107, 0.05));
+  border: 2px solid rgba(192, 107, 107, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  max-width: 400px;
+  width: 100%;
+}
+
+.link-content {
+  flex: 1;
+}
+
+.link-title {
+  color: var(--sab-calm-red);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.link-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .gear-upgrades-content {
+    padding: 1rem;
+  }
+
+  .sab-body .gear-upgrades-content .section-title {
+    font-size: 1.4rem;
+  }
+
+  .hammer-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .hammer-image {
+    width: 120px;
+  }
+
+  .simulator-link {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
 }
 
 /* Requirements List */
@@ -620,9 +349,46 @@
   font-weight: 600;
 }
 
+/* Simple Slot Rate Styling */
+.slot-rates-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.slot-rate-box {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(192, 107, 107, 0.3);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  min-width: 120px;
+  text-align: center;
+}
+
 .slot-number {
-  color: var(--sab-calm-red);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .slot-rates-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .slot-rate-box {
+    min-width: 100px;
+    padding: 0.8rem 1rem;
+  }
+
+  .slot-number {
+    font-size: 0.9rem;
+  }
 }
 
 /* Mechanics Cards - Simple */
@@ -664,62 +430,139 @@
   font-weight: 500;
 }
 
-/* Blessing Tiers Table */
+/* Blessing Tiers Table - Improved Layout */
 .blessing-tiers-container {
   overflow-x: auto;
   margin: 2rem 0;
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  border-radius: 8px;
 }
 
-.tiers-table {
+/* Responsive table wrapper */
+.tiers-table-responsive {
   width: 100%;
-  min-width: 600px;
+  min-width: 800px;
   border-collapse: collapse;
   background: rgba(0, 0, 0, 0.2);
-  font-size: 0.9rem;
+  table-layout: auto;
 }
 
-.tiers-table thead {
-  background: rgba(192, 107, 107, 0.05);
+/* Table headers */
+.tiers-table-responsive thead {
+  background: rgba(192, 107, 107, 0.1);
 }
 
-.tiers-table th {
-  padding: 0.75rem 0.5rem;
+.tiers-table-responsive th {
+  padding: 0.6rem 0.4rem;
   text-align: center;
   color: var(--sab-calm-red);
   font-weight: 600;
-  border: 1px solid rgba(192, 107, 107, 0.2);
-  font-size: 0.85rem;
+  border-bottom: 2px solid rgba(192, 107, 107, 0.3);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
-.tiers-table th.blessing-header {
+.tiers-table-responsive th:first-child {
   text-align: left;
-  padding-left: 1rem;
+  padding-left: 0.8rem;
+  width: 160px;
   min-width: 160px;
 }
 
-.tiers-table td {
-  padding: 0.5rem;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 0.85rem;
+.tiers-table-responsive th:nth-child(2) {
+  width: 60px;
+  min-width: 60px;
 }
 
-.tiers-table .blessing-cell {
+.tiers-table-responsive th:nth-child(3) {
+  width: 80px;
+  min-width: 80px;
+}
+
+/* Tier columns - equal width distribution */
+.tiers-table-responsive th:nth-child(n + 4) {
+  width: calc((100% - 300px) / 8); /* Distribute remaining space evenly */
+  min-width: 50px;
+}
+
+/* Table cells */
+.tiers-table-responsive td {
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.tiers-table-responsive td:first-child {
   text-align: left;
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
+  width: 160px;
 }
 
+/* Tier value styling */
 .tier-value {
-  font-family: monospace;
-  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Courier New', Courier, monospace;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .tier-max {
   color: var(--sab-calm-red);
+  font-weight: 700;
+}
+
+/* Legacy table classes - maintain compatibility */
+.tiers-table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+  background: rgba(0, 0, 0, 0.2);
+  table-layout: auto;
+}
+
+.tiers-table thead {
+  background: rgba(192, 107, 107, 0.1);
+}
+
+.tiers-table th {
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+  color: var(--sab-calm-red);
   font-weight: 600;
+  border-bottom: 2px solid rgba(192, 107, 107, 0.3);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.tiers-table th.blessing-header {
+  text-align: left;
+  padding-left: 0.8rem;
+  min-width: 160px;
+  width: 160px;
+}
+
+.tiers-table td {
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.tiers-table .blessing-cell {
+  text-align: left;
+  padding-left: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  width: 160px;
 }
 
 /* References - Simple */
@@ -744,10 +587,6 @@
 .reference-link {
   color: var(--sab-calm-red);
   text-decoration: underline;
-}
-
-.reference-link:hover {
-  color: var(--sab-light-red);
 }
 
 /* Hammer Section Layout */
@@ -859,17 +698,12 @@
     text-align: center;
   }
 
-  .tiers-table {
-    font-size: 0.75rem;
-  }
+  /* Desktop tables remain hidden on mobile - using card layout instead */
 
-  .tiers-table th,
-  .tiers-table td {
-    padding: 0.4rem 0.3rem;
-  }
-
-  .blessing-tiers-container {
-    margin: 0 -1rem;
-    padding: 0 1rem;
+  /* Simulator link mobile */
+  .simulator-link {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
   }
 }

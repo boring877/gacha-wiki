@@ -35,13 +35,13 @@ export const gearUpgradesData = {
 
   slotRates: {
     title: "Each Slot's Blessing or Sub-stat Rate",
-    description: 'First:',
+    description: 'Each slot rolls independently:',
     rates: [
-      { slot: 1, rate: 100.0, description: '' },
-      { slot: 2, rate: 50.0, description: '' },
-      { slot: 3, rate: 30.0, description: '' },
+      { slot: 1, rate: 100.0, description: 'Always guaranteed' },
+      { slot: 2, rate: 50.0, description: 'Independent 50% chance' },
+      { slot: 3, rate: 30.0, description: 'Independent 30% chance' },
     ],
-    note: "So we always have 100% chance to get at least 1 sub-stat. However, it's not guaranteed to get 2 or 3 slots. When you recast, sometimes you get 1 slot, sometimes 2 slots, and sometimes 3 slots!",
+    note: 'Each slot has its own independent probability. You can get any combination - for example, slots 1+3 without slot 2, or just slot 1, or all three slots together!',
   },
 
   blessings: {

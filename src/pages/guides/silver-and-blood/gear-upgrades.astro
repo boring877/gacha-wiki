@@ -1,717 +1,668 @@
 ---
-import DamageMechanicsHubLayout from '../../../layouts/silver-and-blood/DamageMechanicsHubLayout.astro';
+import GearUpgradesLayout from '../../../layouts/silver-and-blood/GearUpgradesLayout.astro';
 import { gearUpgradesData } from '../../../data/silver-and-blood/gear-upgrades.js';
-import RecastSlotMachine from '../../../components/silver-and-blood/RecastSlotMachine.astro';
-import RefinementSlotMachine from '../../../components/silver-and-blood/RefinementSlotMachine.astro';
-import '../../../styles/games/silver-and-blood/sab-gear-upgrades.css';
 
 export const prerender = true;
 
-const {
-  meta,
-  introduction,
-  hammerMechanics,
-  slotRates,
-  blessings,
-  blessingTiers,
-  mechanics,
-  tips,
-} = gearUpgradesData;
+const { meta, introduction, hammerMechanics, slotRates, blessings, blessingTiers } =
+  gearUpgradesData;
 ---
 
-<DamageMechanicsHubLayout
+<GearUpgradesLayout
   title={meta.title}
   description={meta.description}
   gameTitle="End Game Gear Upgrades"
 >
   <div class="gear-upgrades-content">
-    <!-- Hero Section -->
+    <!-- Requirements Section -->
     <section class="gear-hero-section">
-      <h1 class="gear-title">{introduction.title}</h1>
-      <p class="gear-description">{introduction.description}</p>
+      <h2 class="section-title">Requirements</h2>
+      <div class="sab-gear-intro-content-wrapper">
+        <p class="gear-description">{introduction.description}</p>
 
-      <ul class="requirements-list">
-        {introduction.requirements.map(req => <li class="requirement-item">{req}</li>)}
-      </ul>
+        <ul class="requirements-list">
+          {introduction.requirements.map(req => <li class="requirement-item">{req}</li>)}
+        </ul>
 
-      <div class="hammer-section">
-        <div class="hammer-image-container">
-          <img
-            src="/images/games/silver-and-blood/gears/Hammer.jpg"
-            alt="SoulsStrike Hammer"
-            class="hammer-image"
-          />
-          <p class="hammer-caption">SoulsStrike Hammer</p>
+        <div class="hammer-section">
+          <div class="hammer-image-container">
+            <img
+              src="/images/games/silver-and-blood/gears/Hammer.jpg"
+              alt="SoulsStrike Hammer"
+              class="hammer-image"
+            />
+            <p class="hammer-caption">SoulsStrike Hammer</p>
+          </div>
+          <p class="hammer-text">
+            {introduction.afterRequirements}
+          </p>
         </div>
-        <p class="hammer-text">
-          {introduction.afterRequirements}
-        </p>
       </div>
     </section>
 
     <!-- Hammer Mechanics Section -->
     <section class="upgrade-section">
-      <div class="section-header">
-        <p class="section-description">{hammerMechanics.description}</p>
-      </div>
+      <h2 class="section-title">Hammer Mechanics</h2>
+      <div class="sab-hammer-mechanics-content-wrapper">
+        <p class="hammer-overview">{hammerMechanics.description}</p>
 
-      <div style="margin: 2rem 0;">
-        <p class="section-description" style="margin: 1rem 0;">{hammerMechanics.details[0]}</p>
+        <p class="hammer-detail">{hammerMechanics.details[0]}</p>
 
-        <!-- Item Color Change Image -->
-        <div
-          style="display: flex; flex-direction: column; align-items: center; margin: 2rem auto; max-width: 900px;"
-        >
+        <div class="hammer-image-container">
           <img
             src="/images/games/silver-and-blood/gears/Item_color_changes.jpg"
             alt="Item background color changes after hammer"
-            style="max-width: 500px; width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(192, 107, 107, 0.2);"
+            class="hammer-img"
           />
-          <p
-            style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;"
-          >
-            Background color changes after first hammer
-          </p>
+          <p class="hammer-caption">Background color changes after first hammer</p>
         </div>
 
-        <p class="section-description" style="margin: 1rem 0;">{hammerMechanics.details[1]}</p>
+        <p class="hammer-detail">{hammerMechanics.details[1]}</p>
 
-        <!-- Item Options Image -->
-        <div
-          style="display: flex; flex-direction: column; align-items: center; margin: 2rem auto; max-width: 900px;"
-        >
+        <div class="hammer-image-container">
           <img
             src="/images/games/silver-and-blood/gears/item_options.jpg"
             alt="Item shows more options after hammer"
-            style="max-width: 500px; width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(192, 107, 107, 0.2);"
+            class="hammer-img"
           />
-          <p
-            style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;"
-          >
-            Additional options appear after hammering
-          </p>
+          <p class="hammer-caption">Additional options appear after hammering</p>
         </div>
 
-        {
-          hammerMechanics.details.slice(2).map(detail => (
-            <p class="section-description" style="margin: 1rem 0;">
-              {detail}
+        <div class="hammer-result-container">
+          <p class="hammer-result">{hammerMechanics.details[2]}</p>
+          <p class="hammer-note">You can't take the item after it been hammered.</p>
+        </div>
+      </div>
+
+      <!-- Enhance Section -->
+      <section class="upgrade-section">
+        <h2 class="section-title">1- Enhance</h2>
+        <div class="sab-enhance-content-wrapper">
+          <p class="enhance-description">Just increasing the LV, maximum is 5!</p>
+          <p class="enhance-details">
+            This give you alot of raw stats and increase so much stats its really imporant, just
+            cost so much gold!
+          </p>
+        </div>
+      </section>
+
+      <!-- Recast Section -->
+      <section class="upgrade-section">
+        <h2 class="section-title">2- Recast</h2>
+        <div class="sab-recast-content-wrapper">
+          <p class="recast-description">Rerolling the echo blessing basically the sub stats!</p>
+
+          <!-- In-depth Recasting -->
+          <div class="recast-details">
+            <p class="recast-intro">
+              Let's go in-depth about the recasting or the rerolling of the sub stats!
             </p>
-          ))
-        }
 
-        <div style="margin: 1.5rem 0; padding-left: 1.5rem;">
-          {
-            hammerMechanics.buttons.map(button => (
-              <p class="section-description" style="margin: 0.75rem 0; font-weight: 500;">
-                {button}
-              </p>
-            ))
-          }
-        </div>
-
-        <p class="section-description" style="margin: 2rem 0 1rem 0; font-weight: 600;">
-          Let's go in-depth about the recasting or the rerolling of the sub stats!
-        </p>
-
-        <!-- Recasting Image -->
-        <div
-          style="display: flex; flex-direction: column; align-items: center; margin: 2rem auto; max-width: 900px;"
-        >
-          <img
-            src="/images/games/silver-and-blood/gears/Recasting.jpg"
-            alt="Recasting interface"
-            style="max-width: 500px; width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(192, 107, 107, 0.2);"
-          />
-          <p
-            style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;"
-          >
-            Recasting interface for rerolling sub-stats
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Slot Rates Section -->
-    <section class="upgrade-section">
-      <div class="section-header">
-        <p class="section-description">{slotRates.description}</p>
-        <p class="section-description" style="font-weight: 600; margin-top: 1rem;">
-          {slotRates.title} are:
-        </p>
-      </div>
-
-      <div style="display: flex; gap: 2rem; justify-content: center; margin: 2rem 0;">
-        {
-          slotRates.rates.map(rate => (
-            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem 2rem; border-radius: 8px; border: 1px solid rgba(192, 107, 107, 0.2);">
-              <span class="slot-number">
-                Slot {rate.slot}: {rate.rate}%
-              </span>
+            <div class="recast-image-container">
+              <img
+                src="/images/games/silver-and-blood/gears/Recasting.jpg"
+                alt="Recasting interface"
+                class="recast-img"
+              />
+              <p class="recast-caption">Recasting interface for rerolling sub-stats</p>
             </div>
-          ))
-        }
-      </div>
-
-      <p class="section-description">{slotRates.note}</p>
-    </section>
-
-    <!-- Blessings Section -->
-    <section class="upgrade-section">
-      <div class="section-header">
-        <!-- Lock Feature -->
-        <p class="section-description" style="margin: 2rem 0 1rem 0;">
-          If you get the sub stats or the blessing you want, you can always lock it.
-        </p>
-
-        <!-- Lock Image -->
-        <div
-          style="display: flex; flex-direction: column; align-items: center; margin: 2rem auto; max-width: 900px;"
-        >
-          <img
-            src="/images/games/silver-and-blood/gears/Lock.jpg"
-            alt="Lock blessing feature"
-            style="max-width: 500px; width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(192, 107, 107, 0.2);"
-          />
-          <p
-            style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;"
-          >
-            Lock your desired blessings
-          </p>
-        </div>
-
-        <!-- Lock Cost Image -->
-        <div
-          style="display: flex; flex-direction: column; align-items: center; margin: 2rem auto; max-width: 900px;"
-        >
-          <img
-            src="/images/games/silver-and-blood/gears/Lockcost.jpg"
-            alt="Lock cost increase"
-            style="max-width: 500px; width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(192, 107, 107, 0.2);"
-          />
-          <p
-            style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;"
-          >
-            Cost increases with each locked blessing
-          </p>
-        </div>
-
-        <p class="section-description" style="margin: 2rem 0;">
-          The cost increases with each lock. If you lock only 1 stat or blessing, it costs 2
-          hammers. With 2 locks, it costs 4 hammers.
-        </p>
-
-        <!-- After Locking Image -->
-        <div
-          style="display: flex; flex-direction: column; align-items: center; margin: 2rem auto; max-width: 900px;"
-        >
-          <img
-            src="/images/games/silver-and-blood/gears/Afterlocking.jpg"
-            alt="After locking example"
-            style="max-width: 500px; width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(192, 107, 107, 0.2);"
-          />
-          <p
-            style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;"
-          >
-            Example: 2 locked stats = 2 hammer cost
-          </p>
-        </div>
-
-        <div style="margin: 2rem 0; padding: 0 1rem;">
-          <p class="section-description" style="margin: 1rem 0;">
-            After I locked the Bloodsoul Recovery, you can see the cost increased 2 hammers!!
-          </p>
-
-          <p class="section-description" style="margin: 1rem 0;">
-            Before was only 1 hammer to recast, once you recast or reroll you always have your
-            bloodsoul recovery, and might have chance to get 3 slot!!
-          </p>
-
-          <div
-            style="background: rgba(192, 107, 107, 0.1); border-left: 3px solid var(--sab-calm-red); padding: 1rem; margin: 1.5rem 0; border-radius: 4px;"
-          >
-            <p
-              class="section-description"
-              style="margin: 0; font-weight: 600; color: var(--sab-calm-red);"
-            >
-              Important Note:
-            </p>
-            <p class="section-description" style="margin: 0.5rem 0 0 0;">
-              It's highly recommended to have only 1 slot locked and the rest you get it by
-              recasting, otherwise the cost of hammer going be too high to recast!
-            </p>
           </div>
 
-          <p class="section-description" style="margin: 1rem 0;">
-            It's bit hard to get these hammers so make sure you use them carefully!!
-          </p>
+          <!-- Slot Rates Section -->
+          <section class="upgrade-section">
+            <div class="section-header">
+              <p class="section-description">{slotRates.description}</p>
+              <p class="section-description" style="font-weight: 600; margin-top: 1rem;">
+                {slotRates.title} are:
+              </p>
+            </div>
 
-          <p class="section-description" style="margin: 1rem 0;">
-            Different Blessing or sub stats types have different drop rates (listed below).
-          </p>
-
-          <p class="section-description" style="margin: 1rem 0;">
-            Each Blessing type has multiple levels (usually 15), each featuring different drop
-            rates, we can focus on this later on. It's not very important right now. Maxing the lv
-            of the substats is end game gear. Let's first get the right substats first.
-          </p>
-        </div>
-
-        <!-- Very Important Note - Highlighted -->
-        <div class="important-note-box">
-          <div class="important-note-header">Very Important Note</div>
-          <p class="important-note-text">{blessings.veryImportant}</p>
-        </div>
-
-        <p class="section-description" style="margin-bottom: 1rem;">{blessings.formula}</p>
-        <p class="section-description" style="margin-bottom: 2rem;">{blessings.additional}</p>
-
-        <h3 class="section-title" style="margin-top: 2rem;">{blessings.description}</h3>
-      </div>
-
-      <div class="slot-rates-table">
-        <table class="rates-table">
-          <thead>
-            <tr>
-              <th>Blessing</th>
-              <th>Drop Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              blessings.list.map(blessing => (
-                <tr>
-                  <td>{blessing.name}</td>
-                  <td>
-                    <span class="rate-value">{blessing.rate.toFixed(4)}%</span>
-                  </td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
-
-      <div style="margin-top: 2rem;">
-        <p class="section-description">{blessings.priority.tier1[0]}</p>
-        <p class="section-description" style="margin-top: 1rem;">{blessings.priority.tier2[0]}</p>
-        <p class="section-description" style="margin-top: 1rem;">{blessings.priority.tier3[0]}</p>
-        <p class="section-description" style="margin-top: 1rem;">{blessings.priority.note}</p>
-      </div>
-
-      <hr style="border: 1px solid rgba(255, 255, 255, 0.1); margin: 2rem 0;" />
-    </section>
-
-    <!-- Refinement Section (Button 3) -->
-    <section class="upgrade-section">
-      <div class="section-header">
-        <h2
-          class="section-title"
-          style="color: var(--sab-calm-red); font-size: 1.8rem; font-weight: 600; margin-bottom: 1.5rem;"
-        >
-          3- Refinement
-        </h2>
-        <p class="section-description" style="font-size: 1.1rem; line-height: 1.7;">
-          Lastly, Refinement. It's basically changing the level of the sub stat or blessing. We have
-          15 levels, and once you do refinement, you change it either higher or lower. This is
-          really for full maxing and should only be done in the end game once you're done upgrading
-          your gear to 3 slots!
-        </p>
-
-        <!-- Refinement Image -->
-        <div
-          style="display: flex; flex-direction: column; align-items: center; margin: 2rem auto; max-width: 900px;"
-        >
-          <img
-            src="/images/games/silver-and-blood/gears/Refinement.jpg"
-            alt="Refinement interface"
-            style="max-width: 500px; width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(192, 107, 107, 0.2);"
-          />
-          <p
-            style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;"
-          >
-            Refinement interface for changing blessing levels
-          </p>
-        </div>
-
-        <p class="section-description" style="margin: 2rem 0 1rem 0;">
-          The good thing we can do keep original if we rolled low lv!
-        </p>
-
-        <p class="section-description" style="margin: 1rem 0;">
-          Notice the hammer cost is 2 because of we have locked stats!
-        </p>
-
-        <!-- Lock Cost 1 Image Again -->
-        <div
-          style="display: flex; flex-direction: column; align-items: center; margin: 2rem auto; max-width: 900px;"
-        >
-          <img
-            src="/images/games/silver-and-blood/gears/Lockcost1.jpg"
-            alt="Lock cost with refinement"
-            style="max-width: 500px; width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(192, 107, 107, 0.2);"
-          />
-          <p
-            style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;"
-          >
-            Refinement cost increases with locked stats
-          </p>
-        </div>
-
-        <p class="section-description" style="margin: 2rem 0;">
-          You can unlock it after you get 3 slots. The lock in refinement helps you not to roll
-          level, but having locks in general is a bad idea in refinement!
-        </p>
-
-        <!-- Blessing Tiers Table - Moved here and enhanced -->
-        <div style="margin-top: 3rem;">
-          <h3 style="color: var(--sab-calm-red); font-size: 1.5rem; margin-bottom: 1rem;">
-            {blessingTiers.title}
-          </h3>
-          <p class="section-description" style="margin-bottom: 2rem;">
-            Each blessing type has multiple levels (usually 15), each featuring different values.
-          </p>
-
-          <!-- Mobile View - Card Layout -->
-          <div class="blessing-tiers-mobile" style="display: none;">
-            {
-              blessingTiers.tiers.map(tier => (
-                <div
-                  class="blessing-tier-card"
-                  style="background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(192, 107, 107, 0.2); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;"
-                >
-                  <h4 style="color: var(--sab-calm-red); margin: 0 0 0.5rem 0;">{tier.blessing}</h4>
-                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
-                    <div>
-                      <span style="color: rgba(255, 255, 255, 0.6);">Drop Rate:</span>{' '}
-                      <strong>{tier.dropRate}</strong>
-                    </div>
-                    <div>
-                      <span style="color: rgba(255, 255, 255, 0.6);">Range:</span>{' '}
-                      <strong>{tier.range}</strong>
-                    </div>
+            <div class="slot-rates-container">
+              {
+                slotRates.rates.map(rate => (
+                  <div class="slot-rate-box">
+                    <span class="slot-number">
+                      Slot {rate.slot}: {rate.rate}%
+                    </span>
                   </div>
-                  <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; font-size: 0.85rem;">
-                    {tier.values.map((value, index) => (
-                      <div
-                        style={`text-align: center; padding: 0.25rem; background: ${index === 14 ? 'rgba(192, 107, 107, 0.2)' : 'rgba(255, 255, 255, 0.05)'}; border-radius: 4px;`}
-                      >
-                        <div style="color: rgba(255, 255, 255, 0.6); font-size: 0.7rem;">
-                          T{index + 1}
+                ))
+              }
+            </div>
+
+            <p class="section-description">{slotRates.note}</p>
+          </section>
+
+          <!-- Blessings Section -->
+          <section class="upgrade-section">
+            <div class="section-header">
+              <!-- Lock Feature -->
+              <p class="section-description" style="margin: 2rem 0 1rem 0;">
+                If you get the sub stats or the blessing you want, you can always lock it.
+              </p>
+
+              <!-- Lock Image -->
+              <div class="image-container-center">
+                <img
+                  src="/images/games/silver-and-blood/gears/Lock.jpg"
+                  alt="Lock blessing feature"
+                  class="gear-image"
+                />
+                <p class="image-caption">Lock your desired blessings</p>
+              </div>
+
+              <!-- Lock Cost Image -->
+              <div class="image-container-center">
+                <img
+                  src="/images/games/silver-and-blood/gears/Lockcost.jpg"
+                  alt="Lock cost increase"
+                  class="gear-image"
+                />
+                <p class="image-caption">Cost increases with each locked blessing</p>
+              </div>
+
+              <p class="section-description" style="margin: 2rem 0;">
+                The cost increases with each lock. If you lock only 1 stat or blessing, it costs 2
+                hammers. With 2 locks, it costs 4 hammers.
+              </p>
+
+              <!-- After Locking Image -->
+              <div class="image-container-center">
+                <img
+                  src="/images/games/silver-and-blood/gears/Afterlocking.jpg"
+                  alt="After locking example"
+                  class="gear-image"
+                />
+                <p class="image-caption">Example: 2 locked stats = 2 hammer cost</p>
+              </div>
+
+              <div style="margin: 2rem 0; padding: 0 1rem;">
+                <p class="section-description" style="margin: 1rem 0;">
+                  After I locked the Bloodsoul Recovery, you can see the cost increased 2 hammers!!
+                </p>
+
+                <p class="section-description" style="margin: 1rem 0;">
+                  Before was only 1 hammer to recast, once you recast or reroll you always have your
+                  bloodsoul recovery, and might have chance to get 3 slot!!
+                </p>
+
+                <div
+                  style="background: rgba(192, 107, 107, 0.1); border-left: 3px solid var(--sab-calm-red); padding: 1rem; margin: 1.5rem 0; border-radius: 4px;"
+                >
+                  <p
+                    class="section-description"
+                    style="margin: 0; font-weight: 600; color: var(--sab-calm-red);"
+                  >
+                    Important Note:
+                  </p>
+                  <p class="section-description" style="margin: 0.5rem 0 0 0;">
+                    It's highly recommended to have only 1 slot locked and the rest you get it by
+                    recasting, otherwise the cost of hammer going be too high to recast!
+                  </p>
+                </div>
+
+                <p class="section-description" style="margin: 1rem 0;">
+                  It's bit hard to get these hammers so make sure you use them carefully!!
+                </p>
+
+                <p class="section-description" style="margin: 1rem 0;">
+                  Different Blessing or sub stats types have different drop rates (listed below).
+                </p>
+
+                <p class="section-description" style="margin: 1rem 0;">
+                  Each Blessing type has multiple levels (usually 15), each featuring different drop
+                  rates, we can focus on this later on. It's not very important right now. Maxing
+                  the lv of the substats is end game gear. Let's first get the right substats first.
+                </p>
+              </div>
+
+              <!-- Very Important Note - Highlighted -->
+              <div class="important-note-box">
+                <div class="important-note-header">Very Important Note</div>
+                <p class="important-note-text">{blessings.veryImportant}</p>
+              </div>
+
+              <p class="section-description" style="margin-bottom: 1rem;">{blessings.formula}</p>
+              <p class="section-description" style="margin-bottom: 2rem;">{blessings.additional}</p>
+
+              <h3 class="section-title" style="margin-top: 2rem;">{blessings.description}</h3>
+            </div>
+
+            <div class="slot-rates-table">
+              <table class="rates-table">
+                <thead>
+                  <tr>
+                    <th>Blessing</th>
+                    <th>Drop Rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    blessings.list.map(blessing => (
+                      <tr>
+                        <td>{blessing.name}</td>
+                        <td>
+                          <span class="rate-value">{blessing.rate.toFixed(4)}%</span>
+                        </td>
+                      </tr>
+                    ))
+                  }
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top: 2rem;">
+              <p class="section-description">{blessings.priority.tier1[0]}</p>
+              <p class="section-description" style="margin-top: 1rem;">
+                {blessings.priority.tier2[0]}
+              </p>
+              <p class="section-description" style="margin-top: 1rem;">
+                {blessings.priority.tier3[0]}
+              </p>
+              <p class="section-description" style="margin-top: 1rem;">{blessings.priority.note}</p>
+            </div>
+
+            <hr class="section-divider" />
+          </section>
+        </div>
+
+        <!-- Refinement Section (Button 3) -->
+        <section class="upgrade-section">
+          <h2 class="section-title">3- Refinement</h2>
+          <div class="sab-refinement-content-wrapper">
+            <p class="refinement-description">
+              Lastly, Refinement. It's basically changing the level of the sub stat or blessing. We
+              have 15 levels, and once you do refinement, you change it either higher or lower. This
+              is really for full maxing and should only be done in the end game once you're done
+              upgrading your gear to 3 slots!
+            </p>
+
+            <!-- Refinement Image -->
+            <div class="refinement-image-container">
+              <img
+                src="/images/games/silver-and-blood/gears/Refinement.jpg"
+                alt="Refinement interface"
+                class="refinement-img"
+              />
+              <p class="refinement-caption">Refinement interface for changing blessing levels</p>
+            </div>
+
+            <p class="section-description" style="margin: 2rem 0 1rem 0;">
+              The good thing we can do keep original if we rolled low lv!
+            </p>
+
+            <p class="section-description" style="margin: 1rem 0;">
+              Notice the hammer cost is 2 because of we have locked stats!
+            </p>
+
+            <!-- Lock Cost 1 Image Again -->
+            <div class="image-container-center">
+              <img
+                src="/images/games/silver-and-blood/gears/Lockcost1.jpg"
+                alt="Lock cost with refinement"
+                class="gear-image"
+              />
+              <p class="image-caption">Refinement cost increases with locked stats</p>
+            </div>
+
+            <p class="section-description" style="margin: 2rem 0;">
+              You can unlock it after you get 3 slots. The lock in refinement helps you not to roll
+              level, but having locks in general is a bad idea in refinement!
+            </p>
+
+            <!-- Blessing Tiers Table - Moved here and enhanced -->
+            <div style="margin-top: 3rem;">
+              <h3 style="color: var(--sab-calm-red); font-size: 1.5rem; margin-bottom: 1rem;">
+                {blessingTiers.title}
+              </h3>
+              <p class="section-description" style="margin-bottom: 2rem;">
+                Each blessing type has multiple levels (usually 15), each featuring different
+                values.
+              </p>
+
+              <!-- Mobile View - Card Layout -->
+              <div class="blessing-tiers-mobile" style="display: none;">
+                {
+                  blessingTiers.tiers.map(tier => (
+                    <div
+                      class="blessing-tier-card"
+                      style="background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(192, 107, 107, 0.2); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;"
+                    >
+                      <h4 style="color: var(--sab-calm-red); margin: 0 0 0.5rem 0;">
+                        {tier.blessing}
+                      </h4>
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
+                        <div>
+                          <span style="color: rgba(255, 255, 255, 0.6);">Drop Rate:</span>{' '}
+                          <strong>{tier.dropRate}</strong>
                         </div>
-                        <div
-                          style={`color: ${index === 14 ? 'var(--sab-calm-red)' : 'rgba(255, 255, 255, 0.9)'}; font-weight: ${index === 14 ? '600' : '400'};`}
-                        >
-                          {tier.blessing === 'Bloodsoul Recovery' ? value : `${value}%`}
+                        <div>
+                          <span style="color: rgba(255, 255, 255, 0.6);">Range:</span>{' '}
+                          <strong>{tier.range}</strong>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-
-          <!-- Desktop View - Split Tables -->
-          <div class="blessing-tiers-desktop">
-            <!-- First Table: T1-T8 -->
-            <div style="margin-bottom: 2rem;">
-              <h4 style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; margin-bottom: 1rem;">
-                Tier Levels 1-8
-              </h4>
-              <table
-                class="tiers-table-responsive"
-                style="width: 100%; border-collapse: collapse; background: rgba(0, 0, 0, 0.2); table-layout: fixed;"
-              >
-                <thead>
-                  <tr style="background: rgba(192, 107, 107, 0.1);">
-                    <th
-                      style="padding: 0.75rem; text-align: left; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); width: 150px;"
-                      >Blessing</th
-                    >
-                    <th
-                      style="padding: 0.75rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); width: 60px;"
-                      >Drop%</th
-                    >
-                    <th
-                      style="padding: 0.75rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); width: 80px;"
-                      >Range</th
-                    >
-                    {
-                      [...Array(8)].map((_, i) => (
-                        <th style="padding: 0.75rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3);">
-                          T{i + 1}
-                        </th>
-                      ))
-                    }
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    blessingTiers.tiers.map(tier => (
-                      <tr>
-                        <td style="padding: 0.75rem; color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-weight: 600;">
-                          {tier.blessing}
-                        </td>
-                        <td style="padding: 0.75rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                          {tier.dropRate}
-                        </td>
-                        <td style="padding: 0.75rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                          {tier.range}
-                        </td>
-                        {tier.values.slice(0, 8).map(value => (
-                          <td style="padding: 0.75rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                            <span class="tier-value">
-                              {tier.blessing === 'Bloodsoul Recovery' ? value : `${value}%`}
-                            </span>
-                          </td>
-                        ))}
-                      </tr>
-                    ))
-                  }
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Second Table: T9-T15 -->
-            <div>
-              <h4 style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; margin-bottom: 1rem;">
-                Tier Levels 9-15
-              </h4>
-              <table
-                class="tiers-table-responsive"
-                style="width: 100%; border-collapse: collapse; background: rgba(0, 0, 0, 0.2); table-layout: fixed;"
-              >
-                <thead>
-                  <tr style="background: rgba(192, 107, 107, 0.1);">
-                    <th
-                      style="padding: 0.75rem; text-align: left; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); width: 150px;"
-                      >Blessing</th
-                    >
-                    {
-                      [...Array(7)].map((_, i) => (
-                        <th
-                          style={`padding: 0.75rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); ${i === 6 ? 'background: rgba(192, 107, 107, 0.15);' : ''}`}
-                        >
-                          T{i + 9} {i === 6 ? '(Max)' : ''}
-                        </th>
-                      ))
-                    }
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    blessingTiers.tiers.map(tier => (
-                      <tr>
-                        <td style="padding: 0.75rem; color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-weight: 600;">
-                          {tier.blessing}
-                        </td>
-                        {tier.values.slice(8, 15).map((value, index) => (
-                          <td
-                            style={`padding: 0.75rem; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); ${index === 6 ? 'background: rgba(192, 107, 107, 0.1); color: var(--sab-calm-red); font-weight: 600;' : 'color: rgba(255, 255, 255, 0.85);'}`}
+                      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; font-size: 0.85rem;">
+                        {tier.values.map((value, index) => (
+                          <div
+                            style={`text-align: center; padding: 0.25rem; background: ${index === 14 ? 'rgba(192, 107, 107, 0.2)' : 'rgba(255, 255, 255, 0.05)'}; border-radius: 4px;`}
                           >
-                            <span class="tier-value">
+                            <div style="color: rgba(255, 255, 255, 0.6); font-size: 0.7rem;">
+                              T{index + 1}
+                            </div>
+                            <div
+                              style={`color: ${index === 14 ? 'var(--sab-calm-red)' : 'rgba(255, 255, 255, 0.9)'}; font-weight: ${index === 14 ? '600' : '400'};`}
+                            >
                               {tier.blessing === 'Bloodsoul Recovery' ? value : `${value}%`}
-                            </span>
-                          </td>
+                            </div>
+                          </div>
                         ))}
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+
+              <!-- Desktop View - Split Tables -->
+              <div class="blessing-tiers-desktop">
+                <!-- First Table: T1-T8 -->
+                <div style="margin-bottom: 2rem;">
+                  <h4
+                    style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; margin-bottom: 1rem;"
+                  >
+                    Tier Levels 1-8
+                  </h4>
+                  <table
+                    class="tiers-table-responsive"
+                    style="width: 100%; border-collapse: collapse; background: rgba(0, 0, 0, 0.2);"
+                  >
+                    <thead>
+                      <tr style="background: rgba(192, 107, 107, 0.1);">
+                        <th
+                          style="padding: 0.6rem 0.4rem; text-align: left; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); width: 160px; min-width: 160px;"
+                          >Blessing</th
+                        >
+                        <th
+                          style="padding: 0.6rem 0.4rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); width: 60px; min-width: 60px;"
+                          >Drop%</th
+                        >
+                        <th
+                          style="padding: 0.6rem 0.4rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); width: 80px; min-width: 80px;"
+                          >Range</th
+                        >
+                        {
+                          [...Array(8)].map((_, i) => (
+                            <th style="padding: 0.6rem 0.4rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); white-space: nowrap; min-width: 50px;">
+                              T{i + 1}
+                            </th>
+                          ))
+                        }
                       </tr>
-                    ))
-                  }
-                </tbody>
-              </table>
+                    </thead>
+                    <tbody>
+                      {
+                        blessingTiers.tiers.map(tier => (
+                          <tr>
+                            <td style="padding: 0.6rem 0.4rem; color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-weight: 600; text-align: left; width: 160px;">
+                              {tier.blessing}
+                            </td>
+                            <td style="padding: 0.6rem 0.4rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05); width: 60px;">
+                              {tier.dropRate}
+                            </td>
+                            <td style="padding: 0.6rem 0.4rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05); width: 80px;">
+                              {tier.range}
+                            </td>
+                            {tier.values.slice(0, 8).map(value => (
+                              <td style="padding: 0.6rem 0.4rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05); white-space: nowrap;">
+                                <span class="tier-value">
+                                  {tier.blessing === 'Bloodsoul Recovery' ? value : `${value}%`}
+                                </span>
+                              </td>
+                            ))}
+                          </tr>
+                        ))
+                      }
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Second Table: T9-T15 -->
+                <div>
+                  <h4
+                    style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; margin-bottom: 1rem;"
+                  >
+                    Tier Levels 9-15
+                  </h4>
+                  <table
+                    class="tiers-table-responsive"
+                    style="width: 100%; border-collapse: collapse; background: rgba(0, 0, 0, 0.2);"
+                  >
+                    <thead>
+                      <tr style="background: rgba(192, 107, 107, 0.1);">
+                        <th
+                          style="padding: 0.6rem 0.4rem; text-align: left; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); width: 160px; min-width: 160px;"
+                          >Blessing</th
+                        >
+                        {
+                          [...Array(7)].map((_, i) => (
+                            <th
+                              style={`padding: 0.6rem 0.4rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3); white-space: nowrap; min-width: 60px; ${i === 6 ? 'background: rgba(192, 107, 107, 0.15);' : ''}`}
+                            >
+                              T{i + 9} {i === 6 ? '(Max)' : ''}
+                            </th>
+                          ))
+                        }
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        blessingTiers.tiers.map(tier => (
+                          <tr>
+                            <td style="padding: 0.6rem 0.4rem; color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-weight: 600; text-align: left; width: 160px;">
+                              {tier.blessing}
+                            </td>
+                            {tier.values.slice(8, 15).map((value, index) => (
+                              <td
+                                style={`padding: 0.6rem 0.4rem; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); white-space: nowrap; ${index === 6 ? 'background: rgba(192, 107, 107, 0.1); color: var(--sab-calm-red); font-weight: 600;' : 'color: rgba(255, 255, 255, 0.85);'}`}
+                              >
+                                <span class="tier-value">
+                                  {tier.blessing === 'Bloodsoul Recovery' ? value : `${value}%`}
+                                </span>
+                              </td>
+                            ))}
+                          </tr>
+                        ))
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Tier Probability Table -->
+              <div style="margin-top: 3rem;">
+                <h3 style="color: var(--sab-calm-red); font-size: 1.5rem; margin-bottom: 1rem;">
+                  Tier Roll Probabilities
+                </h3>
+                <p class="section-description" style="margin-bottom: 2rem;">
+                  When rolling for blessing tiers, the probabilities are weighted towards lower
+                  tiers:
+                </p>
+                <div style="display: flex; justify-content: center;">
+                  <table
+                    style="background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(192, 107, 107, 0.2); border-radius: 8px; overflow: hidden; max-width: 500px; width: 100%;"
+                  >
+                    <thead>
+                      <tr style="background: rgba(192, 107, 107, 0.15);">
+                        <th
+                          style="padding: 0.75rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3);"
+                          >Tier Level</th
+                        >
+                        <th
+                          style="padding: 0.75rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3);"
+                          >Roll Chance</th
+                        >
+                        <th
+                          style="padding: 0.75rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3);"
+                          >Category</th
+                        >
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="background: rgba(76, 175, 80, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #4caf50; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T1</td
+                        >
+                        <td
+                          rowspan="5"
+                          style="padding: 0.5rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >12% each</td
+                        >
+                        <td
+                          rowspan="5"
+                          style="padding: 0.5rem; text-align: center; font-weight: bold; background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >60% (Common)</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(76, 175, 80, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #4caf50; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T2</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(76, 175, 80, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #4caf50; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T3</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(76, 175, 80, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #4caf50; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T4</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(76, 175, 80, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #4caf50; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T5</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(255, 165, 0, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #ffa500; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T6</td
+                        >
+                        <td
+                          rowspan="5"
+                          style="padding: 0.5rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >7% each</td
+                        >
+                        <td
+                          rowspan="5"
+                          style="padding: 0.5rem; text-align: center; font-weight: bold; background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >35% (Uncommon)</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(255, 165, 0, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #ffa500; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T7</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(255, 165, 0, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #ffa500; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T8</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(255, 165, 0, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #ffa500; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T9</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(255, 165, 0, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #ffa500; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T10</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(255, 107, 107, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #ff6b6b; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T11</td
+                        >
+                        <td
+                          rowspan="5"
+                          style="padding: 0.5rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >1% each</td
+                        >
+                        <td
+                          rowspan="5"
+                          style="padding: 0.5rem; text-align: center; font-weight: bold; background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >5% (Rare)</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(255, 107, 107, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #ff6b6b; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T12</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(255, 107, 107, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #ff6b6b; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T13</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(255, 107, 107, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #ff6b6b; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+                          >T14</td
+                        >
+                      </tr>
+                      <tr style="background: rgba(255, 107, 107, 0.05);">
+                        <td
+                          style="padding: 0.5rem; text-align: center; color: #ff6b6b; font-weight: bold;"
+                          >T15</td
+                        >
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p
+                  class="section-description"
+                  style="margin-top: 1rem; text-align: center; font-style: italic; color: rgba(255, 255, 255, 0.6);"
+                >
+                  Higher tiers provide significantly better stat bonuses but are much harder to
+                  roll!
+                </p>
+              </div>
             </div>
           </div>
 
-          <!-- Tier Probability Table -->
-          <div style="margin-top: 3rem;">
-            <h3 style="color: var(--sab-calm-red); font-size: 1.5rem; margin-bottom: 1rem;">
-              Tier Roll Probabilities
-            </h3>
-            <p class="section-description" style="margin-bottom: 2rem;">
-              When rolling for blessing tiers, the probabilities are weighted towards lower tiers:
-            </p>
-            <div style="display: flex; justify-content: center;">
-              <table
-                style="background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(192, 107, 107, 0.2); border-radius: 8px; overflow: hidden; max-width: 500px; width: 100%;"
-              >
-                <thead>
-                  <tr style="background: rgba(192, 107, 107, 0.15);">
-                    <th
-                      style="padding: 0.75rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3);"
-                      >Tier Level</th
-                    >
-                    <th
-                      style="padding: 0.75rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3);"
-                      >Roll Chance</th
-                    >
-                    <th
-                      style="padding: 0.75rem; text-align: center; color: var(--sab-calm-red); border-bottom: 2px solid rgba(192, 107, 107, 0.3);"
-                      >Category</th
-                    >
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style="background: rgba(76, 175, 80, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #4caf50; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T1</td
-                    >
-                    <td
-                      rowspan="5"
-                      style="padding: 0.5rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >12% each</td
-                    >
-                    <td
-                      rowspan="5"
-                      style="padding: 0.5rem; text-align: center; font-weight: bold; background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >60% (Common)</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(76, 175, 80, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #4caf50; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T2</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(76, 175, 80, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #4caf50; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T3</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(76, 175, 80, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #4caf50; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T4</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(76, 175, 80, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #4caf50; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T5</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(255, 165, 0, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #ffa500; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T6</td
-                    >
-                    <td
-                      rowspan="5"
-                      style="padding: 0.5rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >7% each</td
-                    >
-                    <td
-                      rowspan="5"
-                      style="padding: 0.5rem; text-align: center; font-weight: bold; background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >35% (Uncommon)</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(255, 165, 0, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #ffa500; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T7</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(255, 165, 0, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #ffa500; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T8</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(255, 165, 0, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #ffa500; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T9</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(255, 165, 0, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #ffa500; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T10</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(255, 107, 107, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #ff6b6b; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T11</td
-                    >
-                    <td
-                      rowspan="5"
-                      style="padding: 0.5rem; text-align: center; color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >1% each</td
-                    >
-                    <td
-                      rowspan="5"
-                      style="padding: 0.5rem; text-align: center; font-weight: bold; background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >5% (Rare)</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(255, 107, 107, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #ff6b6b; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T12</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(255, 107, 107, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #ff6b6b; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T13</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(255, 107, 107, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #ff6b6b; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
-                      >T14</td
-                    >
-                  </tr>
-                  <tr style="background: rgba(255, 107, 107, 0.05);">
-                    <td
-                      style="padding: 0.5rem; text-align: center; color: #ff6b6b; font-weight: bold;"
-                      >T15</td
-                    >
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p
-              class="section-description"
-              style="margin-top: 1rem; text-align: center; font-style: italic; color: rgba(255, 255, 255, 0.6);"
-            >
-              Higher tiers provide significantly better stat bonuses but are much harder to roll!
-            </p>
+          <hr style="border: 1px solid rgba(255, 255, 255, 0.1); margin: 2rem 0;" />
+        </section>
+      </section>
+
+      <!-- Link to Slot Machines -->
+      <section class="upgrade-section">
+        <div class="slot-machines-link-wrapper">
+          <h2 class="section-title">Slot Machine Simulators</h2>
+          <p class="link-description">
+            This is a mock or demo of what the probabilities should be. I have not looked into the
+            game code, but from playing and understanding the mechanics, this should be similar. If
+            there are any mistakes, please let me know. Have fun!
+          </p>
+          <div class="simulator-links">
+            <a href="/guides/silver-and-blood/slot-machines" class="simulator-link">
+              <div class="link-content">
+                <h3 class="link-title">Slot Machine Simulators</h3>
+                <p class="link-desc">Interactive Recast & Refinement probability simulators</p>
+              </div>
+            </a>
           </div>
         </div>
-      </div>
-
-      <hr style="border: 1px solid rgba(255, 255, 255, 0.1); margin: 2rem 0;" />
-    </section>
-
-    <!-- Interactive Slot Machine -->
-    <section class="upgrade-section">
-      <div class="section-header">
-        <h2 class="section-title">Recast Slot Machine</h2>
-        <p class="section-description">
-          This is a mock or demo of what the probabilities should be. I have not looked into the
-          game code, but from playing and understanding the mechanics, this should be similar. If
-          there are any mistakes, please let me know. Have fun!
-        </p>
-      </div>
-      <RecastSlotMachine />
-    </section>
-
-    <!-- Refinement Slot Machine -->
-    <section class="upgrade-section">
-      <div class="section-header">
-        <h2 class="section-title">Refinement Slot Machine</h2>
-        <p class="section-description">
-          You need to pick your slot stats or blessings in order to spin. This is a mock or demo - I
-          personally have not looked into the game code, but thought I would make this since it's
-          cool!
-        </p>
-      </div>
-      <RefinementSlotMachine />
+      </section>
     </section>
   </div>
-</DamageMechanicsHubLayout>
+</GearUpgradesLayout>

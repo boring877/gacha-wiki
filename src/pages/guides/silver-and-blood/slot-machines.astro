@@ -1,0 +1,52 @@
+---
+// Silver and Blood - Slot Machines Page
+import SlotMachinesLayout from '../../../layouts/silver-and-blood/SlotMachinesLayout.astro';
+import RecastSlotMachine from '../../../components/silver-and-blood/RecastSlotMachine.astro';
+import RefinementSlotMachine from '../../../components/silver-and-blood/RefinementSlotMachine.astro';
+
+export const prerender = true;
+
+const meta = {
+  title: 'Silver and Blood - Slot Machines',
+  description:
+    'Interactive slot machine simulators for Recast and Refinement mechanics in Silver and Blood. Test your luck with realistic probability simulations!',
+};
+---
+
+<SlotMachinesLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle="Slot Machine Simulators"
+>
+  <div class="slot-machines-content">
+    <!-- Recast Slot Machine Section -->
+    <section class="slot-section">
+      <div class="slot-section-header">
+        <h2 class="section-title">Recast Slot Machine</h2>
+        <p class="section-description">
+          This is a mock or demo of what the probabilities should be. I have not looked into the
+          game code, but from playing and understanding the mechanics, this should be similar. If
+          there are any mistakes, please let me know. Have fun!
+        </p>
+      </div>
+      <div class="slot-wrapper">
+        <RecastSlotMachine />
+      </div>
+    </section>
+
+    <!-- Refinement Slot Machine Section -->
+    <section class="slot-section">
+      <div class="slot-section-header">
+        <h2 class="section-title">Refinement Slot Machine</h2>
+        <p class="section-description">
+          You need to pick your slot stats or blessings in order to spin. This is a mock or demo - I
+          personally have not looked into the game code, but thought I would make this since it's
+          cool!
+        </p>
+      </div>
+      <div class="slot-wrapper">
+        <RefinementSlotMachine />
+      </div>
+    </section>
+  </div>
+</SlotMachinesLayout>

@@ -1,0 +1,1446 @@
+/* Silver and Blood - Slot Machines Page - Dedicated CSS */
+
+/* ========================================
+   PAGE LAYOUT & ORGANIZATION - SINGLE WRAPPER
+   ======================================== */
+
+.slot-machines-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(192, 107, 107, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+}
+
+/* ========================================
+   SECTION STRUCTURE
+   ======================================== */
+
+.slot-section {
+  margin: 2rem 0;
+}
+
+.slot-wrapper {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.slot-section-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+.slot-section .section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--sab-calm-red);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(192, 107, 107, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.slot-section .section-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+}
+
+/* ========================================
+   RECAST SLOT MACHINE STYLES
+   ======================================== */
+
+.slot-machine-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.slot-machine {
+  width: 100%;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Slot Windows Grid - no wrapper constraints */
+.slot-windows {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  margin: 0 0 1rem 0;
+  width: 100%;
+  padding: 0;
+}
+
+/* Individual Slot Window */
+.slot-window {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
+  border: 2px solid rgba(192, 107, 107, 0.3);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 180px;
+  height: 160px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.slot-window.locked {
+  border-color: #ff4444;
+  border-width: 3px;
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.3);
+}
+
+/* Slot Labels */
+.recast-slot-label {
+  background: rgba(192, 107, 107, 0.15);
+  color: var(--sab-calm-red);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.6rem;
+  border-bottom: 1px solid rgba(192, 107, 107, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2; /* Keep label above reel */
+  flex-shrink: 0; /* Don't let it shrink */
+}
+
+/* Slot Reel Area - Simple container for text content */
+.recast-slot-reel {
+  flex: 1;
+  position: relative;
+  height: 110px; /* Height for one slot item */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The reel now just contains one item */
+#reel-1,
+#reel-2,
+#reel-3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* All slot items - simplified for text display */
+.slot-item,
+.recast-slot-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+/* Empty slot state */
+.slot-item.empty,
+.recast-slot-item.recast-empty {
+  opacity: 0.5;
+}
+
+/* Placeholder for empty slots */
+
+.slot-item-content {
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.blessing-name {
+  color: white !important;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+  padding: 0 0.2rem;
+}
+
+.blessing-rate {
+  color: var(--sab-calm-red);
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* Lock Indicators */
+.recast-lock-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 68, 68, 0.9);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transform: translateY(100%);
+  border-top: 2px solid #ff4444;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.slot-window.locked .recast-lock-indicator {
+  transform: translateY(0);
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+.recast-probability-display {
+  padding: 1rem 0;
+  margin: 1rem 0;
+  text-align: center;
+  width: 100%;
+}
+
+.recast-probability-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.recast-prob-item {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  padding: 0.8rem 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.recast-prob-guaranteed {
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.recast-prob-medium {
+  color: #ff9800;
+  border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.recast-prob-low {
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.recast-probability-note {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+.recast-probability-note em {
+  font-style: italic;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Spin Button - immediately below slots */
+.recast-spin-button-container {
+  text-align: center;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+#spin-btn {
+  background: linear-gradient(135deg, var(--sab-calm-red), var(--sab-dark-red, #8b4545));
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  width: auto;
+  min-width: 150px;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+#spin-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(192, 107, 107, 0.4);
+}
+
+#spin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.control-panel {
+  padding: 1rem 0;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+/* Lock Controls */
+.recast-lock-controls {
+  margin-bottom: 1.5rem;
+}
+
+.recast-lock-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.recast-lock-info-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.recast-lock-counter {
+  color: var(--sab-calm-red);
+  font-weight: 600;
+}
+
+.recast-lock-button-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.recast-slot-lock-btn {
+  background: rgba(192, 107, 107, 0.2);
+  border: 1px solid rgba(192, 107, 107, 0.5);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.recast-slot-lock-btn:hover {
+  background: rgba(192, 107, 107, 0.3);
+  border-color: rgba(192, 107, 107, 0.7);
+}
+
+.recast-slot-lock-btn.locked {
+  background: var(--sab-calm-red);
+  border-color: var(--sab-calm-red);
+  color: white;
+}
+
+/* Stats Display */
+.recast-stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.recast-stat-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.recast-stat-box-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.recast-stat-box-value {
+  color: var(--sab-calm-red);
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+/* Reset Button */
+.recast-reset-btn {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: block;
+  margin: 1.5rem auto 0;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.recast-reset-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.recast-probability-section {
+  padding: 1.5rem;
+  margin: 2rem 0;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  border-radius: 8px;
+}
+
+.recast-probability-section h3 {
+  color: var(--sab-calm-red);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+/* Simple table layout */
+.probability-table {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.prob-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  border-left: 3px solid;
+}
+
+.prob-row.prob-guaranteed {
+  border-left-color: #4caf50;
+}
+
+.prob-row.prob-medium {
+  border-left-color: #ff9800;
+}
+
+.prob-row.prob-low {
+  border-left-color: #f44336;
+}
+
+.prob-slot {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.prob-chance {
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  font-family: monospace;
+  text-align: center;
+}
+
+.prob-row.prob-guaranteed .prob-chance {
+  color: #4caf50;
+}
+
+.prob-row.prob-medium .prob-chance {
+  color: #ff9800;
+}
+
+.prob-row.prob-low .prob-chance {
+  color: #f44336;
+}
+
+.prob-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Notes section */
+.probability-notes {
+  border-top: 1px solid rgba(192, 107, 107, 0.2);
+  padding-top: 1rem;
+}
+
+.prob-note {
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--sab-calm-red);
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 0 4px 4px 0;
+}
+
+.prob-disclaimer {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   REFINEMENT SLOT MACHINE STYLES
+   ======================================== */
+
+.refinement-container {
+  padding: 1rem 0;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+/* Setup Section */
+#setup-section {
+  text-align: center;
+}
+
+#setup-section h3 {
+  color: var(--sab-calm-red);
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.setup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.setup-slot {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+}
+
+.slot-header {
+  color: var(--sab-calm-red);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.blessing-select,
+.tier-select {
+  width: 100%;
+  padding: 0.6rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.blessing-select:focus,
+.tier-select:focus {
+  outline: none;
+  border-color: var(--sab-calm-red);
+}
+
+.tier-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.setup-button {
+  background: linear-gradient(135deg, var(--sab-calm-red), var(--sab-dark-red, #8b4545));
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 1.5rem;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+.setup-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(192, 107, 107, 0.4);
+}
+
+.setup-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Refinement Display */
+#refinement-display {
+  text-align: center;
+}
+
+/* Main refinement area - no wrapper constraints */
+.main-refinement-area {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+
+.main-refinement-area h3 {
+  color: var(--sab-calm-red);
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+
+/* Gear Slots Grid - no wrapper constraints */
+.gear-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  margin: 0 0 1rem 0;
+}
+
+.refinement-gear-slot {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
+  border: 2px solid rgba(192, 107, 107, 0.3);
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  max-width: 180px;
+}
+
+.refinement-gear-slot.locked {
+  border-color: #ff4444;
+  border-width: 3px;
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.3);
+}
+
+/* Gear Slot Header */
+.refinement-gear-slot-header {
+  background: rgba(192, 107, 107, 0.15);
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(192, 107, 107, 0.2);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.refinement-blessing-name {
+  color: var(--sab-calm-red);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.refinement-lock-indicator {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid #ff4444;
+  border-radius: 3px;
+  padding: 0.2rem 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.refinement-gear-slot.locked .refinement-lock-indicator {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Tier Display */
+.refinement-tier-display {
+  padding: 1.5rem 1rem;
+}
+
+.refinement-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.refinement-current-side,
+.refinement-new-side {
+  text-align: center;
+}
+
+.refinement-tier-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.refinement-tier-value {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: monospace;
+}
+
+.refinement-new-side .refinement-tier-value {
+  color: var(--sab-calm-red);
+}
+
+.refinement-new-side .refinement-tier-value.spinning {
+  animation: tierSpin 1s ease-in-out;
+}
+
+@keyframes tierSpin {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.refinement-tier-stat {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Refine Button - immediately below gear slots */
+.refine-button {
+  background: linear-gradient(135deg, var(--sab-calm-red), var(--sab-dark-red, #8b4545));
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin: 0.5rem auto;
+  display: block;
+  width: auto;
+  min-width: 150px;
+  text-align: center;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+.refine-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(192, 107, 107, 0.4);
+}
+
+.refine-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hammer-cost {
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  opacity: 0.9;
+}
+
+/* Choice Section */
+.refinement-choice-section {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.refinement-choice-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.refinement-choice-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.refinement-choice-btn {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#keep-original-btn {
+  background: #f44336;
+  color: white;
+}
+
+#keep-original-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lock-controls-area {
+  padding: 1rem 0;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.lock-section {
+  text-align: center;
+}
+
+.lock-info {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.lock-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.refinement-lock-btn {
+  background: rgba(192, 107, 107, 0.2);
+  border: 1px solid rgba(192, 107, 107, 0.5);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.refinement-lock-btn:hover {
+  background: rgba(192, 107, 107, 0.3);
+  border-color: rgba(192, 107, 107, 0.7);
+}
+
+.refinement-lock-btn.locked {
+  background: var(--sab-calm-red);
+  border-color: var(--sab-calm-red);
+  color: white;
+}
+
+.lock-counter {
+  color: var(--sab-calm-red);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Stats Row */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(192, 107, 107, 0.2);
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+}
+
+.stat-value {
+  color: var(--sab-calm-red);
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+/* Back Button */
+.back-button {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: block;
+  margin: 2rem auto 0;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.back-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.probability-section {
+  padding: 1rem 0;
+  margin: 1.5rem 0;
+}
+
+.probability-section h3 {
+  color: var(--sab-calm-red);
+  font-size: 1.3rem;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+/* Remove wrapper constraints */
+.probability-details {
+  width: 100%;
+  margin: 0;
+}
+
+.prob-row {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prob-row-common {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.prob-row-uncommon {
+  background: rgba(255, 152, 0, 0.1);
+  border: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+.prob-row-rare {
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+.prob-tier-info {
+  flex: 1;
+}
+
+.prob-tier-info strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.prob-guaranteed {
+  color: #4caf50;
+}
+
+.prob-medium {
+  color: #ff9800;
+}
+
+.prob-low {
+  color: #f44336;
+}
+
+.prob-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+.prob-stats {
+  text-align: right;
+}
+
+.prob-individual,
+.prob-total {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.prob-total {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.prob-note {
+  background: rgba(192, 107, 107, 0.05);
+  border-left: 3px solid var(--sab-calm-red);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.prob-note-header {
+  margin-bottom: 0.75rem;
+}
+
+.hammer-cost-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.hammer-cost-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+
+.cost-locks {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cost-hammers {
+  color: var(--sab-calm-red);
+  font-weight: 600;
+}
+
+/* ========================================
+   ANIMATIONS & EFFECTS
+   ======================================== */
+
+/* Winning slot effect */
+.slot-window.winning-slot {
+  animation: winGlow 0.6s ease-in-out;
+  border-color: #4caf50 !important;
+}
+
+/* Smooth reel spinning animations */
+.slot-window.spinning {
+  border-color: rgba(192, 107, 107, 0.8);
+}
+
+/* Blur effect on spinning items for speed effect */
+.slot-window.spinning .recast-slot-item:not(.final) {
+  filter: blur(1.5px);
+  opacity: 0.7;
+  transition:
+    filter 0.1s ease,
+    opacity 0.1s ease;
+}
+
+/* Remove blur from items when not spinning */
+.slot-window:not(.spinning) .recast-slot-item {
+  filter: none;
+  opacity: 1;
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* Simple spinning visual effects */
+.slot-window.spinning .blessing-name {
+  animation: textSpin 0.15s ease-in-out infinite;
+}
+
+.slot-window.spinning .blessing-rate {
+  animation: textSpin 0.15s ease-in-out infinite;
+  animation-delay: 0.05s;
+}
+
+@keyframes textSpin {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes winGlow {
+  0% {
+    border-color: rgba(76, 175, 80, 0.5);
+  }
+  50% {
+    border-color: rgba(76, 175, 80, 1);
+  }
+  100% {
+    border-color: rgba(76, 175, 80, 0.8);
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.hidden {
+  display: none !important;
+}
+
+/* Missing CSS classes used in JavaScript */
+.tier-success {
+  border-color: #4caf50 !important;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+}
+
+.tier-max-result {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+.tier-value-max {
+  color: #ffd700 !important;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+}
+
+/* Override hidden class for locked indicators */
+.slot-window.locked .recast-lock-indicator.hidden,
+.refinement-gear-slot.locked .refinement-lock-indicator.hidden {
+  display: block !important;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  .slot-section {
+    margin: 1rem 0;
+  }
+
+  .slot-machines-content {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  /* Mobile layout: Unified single wrapper */
+  .slot-machine {
+    width: 100%;
+    margin: 0 0 1rem 0;
+  }
+
+  /* Mobile slots - single column within main wrapper */
+  .slot-windows {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .slot-window {
+    width: 100%;
+    height: 120px;
+    max-width: 100%;
+  }
+
+  .recast-slot-reel {
+    height: 75px;
+  }
+
+  .blessing-name {
+    font-size: 0.85rem;
+    line-height: 1.1;
+  }
+
+  .blessing-rate {
+    font-size: 0.75rem;
+  }
+
+  .recast-slot-label {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+  }
+
+  .recast-spin-button-container {
+    margin: 0.5rem 0 1rem 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .recast-spin-button-container button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 4px;
+    min-width: auto;
+  }
+
+  .recast-probability-display {
+    margin: 0.5rem 0 1rem 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  .control-panel {
+    margin: 0.5rem 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  .recast-probability-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .recast-prob-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .recast-stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .recast-lock-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Refinement Mobile - Unified wrapper */
+  .refinement-container {
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .gear-slots {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    width: 100%;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .refinement-gear-slot {
+    height: 120px;
+  }
+
+  .refine-button {
+    margin: 0.5rem auto 1rem auto;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    width: auto;
+    min-width: 200px;
+  }
+
+  .lock-controls-area {
+    margin: 0.5rem 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .setup-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .refinement-comparison-grid {
+    gap: 0.75rem;
+  }
+
+  .lock-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stats-row {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    margin: 1.5rem 0;
+  }
+
+  .stat-item {
+    width: 100%;
+  }
+
+  .hammer-cost-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  #spin-btn,
+  .refine-button,
+  .setup-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .probability-section,
+  .recast-probability-section {
+    margin: 2rem 0;
+    padding: 1rem;
+  }
+
+  .prob-row {
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .prob-chance {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slot-machines-content {
+    max-width: 100%;
+    padding: 0.75rem;
+  }
+
+  .slot-section .section-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .slot-windows {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 0.25rem auto;
+  }
+
+  .slot-window {
+    height: 80px;
+  }
+
+  .recast-slot-reel {
+    height: 45px;
+  }
+
+  .blessing-name {
+    font-size: 0.7rem;
+  }
+
+  .blessing-rate {
+    font-size: 0.6rem;
+  }
+
+  .recast-spin-button-container {
+    margin: 0.2rem auto 0.8rem auto;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .recast-spin-button-container button {
+    padding: 0.45rem 1rem;
+    font-size: 0.75rem;
+    width: 100%;
+  }
+
+  .recast-probability-display {
+    width: 100%;
+    padding: 0;
+  }
+
+  .refinement-tier-value {
+    font-size: 1rem;
+  }
+
+  .refinement-blessing-name {
+    font-size: 0.7rem;
+  }
+
+  .gear-slots,
+  .setup-grid,
+  .lock-controls-area,
+  .stats-row {
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gear-slots {
+    margin: 0 auto 0.25rem auto;
+  }
+
+  .refine-button {
+    margin: 0.2rem auto 0.8rem auto;
+    width: 100%;
+    max-width: 200px;
+    min-width: auto;
+    padding: 0.45rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .refinement-gear-slot {
+    height: 80px;
+  }
+}

@@ -199,6 +199,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           title: 'Summon FAQ',
           url: '/guides/silver-and-blood/summon-faq/',
         },
+        {
+          id: 'slot-machines',
+          title: 'Slot Machines',
+          url: '/guides/silver-and-blood/slot-machines/',
+        },
       ],
     },
   ],
@@ -366,6 +371,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
         'Complete guide to Tier 9 gear upgrades, Echo blessings, sub-stats, and SoulsStrike hammer mechanics. Learn about blessing priorities, recast strategies, and refinement optimization.',
       url: '/guides/silver-and-blood/gear-upgrades/',
       category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'slot-machines',
+      title: 'Slot Machine Simulators',
+      emoji: '🎰',
+      description:
+        'Interactive slot machine simulators for Recast and Refinement mechanics. Test your luck with realistic probability simulations based on gameplay observation!',
+      url: '/guides/silver-and-blood/slot-machines/',
+      category: 'tools',
       status: 'active',
     },
   ],

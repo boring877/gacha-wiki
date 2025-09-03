@@ -3,55 +3,73 @@
 ---
 
 <div class="slot-machine-container">
-  <h2>RECAST SLOT MACHINE</h2>
-
   <!-- Slot Machine Display -->
   <div class="slot-machine">
     <!-- Slot Windows -->
     <div class="slot-windows">
       <!-- Slot 1 -->
       <div class="slot-window" id="slot-1">
-        <div class="slot-label">SLOT 1</div>
-        <div class="slot-reel" id="reel-1">
-          <div class="slot-item empty">
-            <div class="tier-placeholder">-</div>
+        <div class="recast-slot-label">SLOT 1</div>
+        <div class="recast-slot-reel" id="reel-1">
+          <div class="recast-slot-item recast-empty">
+            <div class="slot-item-content">
+              <div class="blessing-name">-</div>
+              <div class="blessing-rate"></div>
+            </div>
           </div>
         </div>
-        <div class="lock-indicator" id="lock-1">LOCKED</div>
+        <div class="recast-lock-indicator" id="lock-1">LOCKED</div>
       </div>
 
       <!-- Slot 2 -->
       <div class="slot-window" id="slot-2">
-        <div class="slot-label">SLOT 2</div>
-        <div class="slot-reel" id="reel-2">
-          <div class="slot-item empty">
-            <div class="tier-placeholder">-</div>
+        <div class="recast-slot-label">SLOT 2</div>
+        <div class="recast-slot-reel" id="reel-2">
+          <div class="recast-slot-item recast-empty">
+            <div class="slot-item-content">
+              <div class="blessing-name">-</div>
+              <div class="blessing-rate"></div>
+            </div>
           </div>
         </div>
-        <div class="lock-indicator" id="lock-2">LOCKED</div>
+        <div class="recast-lock-indicator" id="lock-2">LOCKED</div>
       </div>
 
       <!-- Slot 3 -->
       <div class="slot-window" id="slot-3">
-        <div class="slot-label">SLOT 3</div>
-        <div class="slot-reel" id="reel-3">
-          <div class="slot-item empty">
-            <div class="tier-placeholder">-</div>
+        <div class="recast-slot-label">SLOT 3</div>
+        <div class="recast-slot-reel" id="reel-3">
+          <div class="recast-slot-item recast-empty">
+            <div class="slot-item-content">
+              <div class="blessing-name">-</div>
+              <div class="blessing-rate"></div>
+            </div>
           </div>
         </div>
-        <div class="lock-indicator" id="lock-3">LOCKED</div>
+        <div class="recast-lock-indicator" id="lock-3">LOCKED</div>
       </div>
     </div>
 
+    <!-- Spin Button - Immediately below slots -->
+    <div class="recast-spin-button-container">
+      <button id="spin-btn">
+        SPIN (Cost: <span id="hammer-cost">1</span> Hammer<span id="hammer-plural" class="hidden"
+          >s</span
+        >)
+      </button>
+    </div>
+
     <!-- Slot Probabilities Display -->
-    <div class="probability-display">
-      <div class="probability-row">
-        <div class="prob-item prob-guaranteed">Slot 1: 100%</div>
-        <div class="prob-item prob-medium">Slot 2: 50%</div>
-        <div class="prob-item prob-low">Slot 3: 15%</div>
+    <div class="recast-probability-display">
+      <div class="recast-probability-row">
+        <div class="recast-prob-item recast-prob-guaranteed">Slot 1: 100%</div>
+        <div class="recast-prob-item recast-prob-medium">Slot 2: 50%</div>
+        <div class="recast-prob-item recast-prob-low">Slot 3: 30%</div>
       </div>
-      <div class="probability-note">
-        <em>Note: Slot 3 has a 30% chance ONLY if Slot 2 succeeds (50% × 30% = 15% total chance)</em
+      <div class="recast-probability-note">
+        <em>Note: Each slot rolls independently - you can get Slot 1 + 3 without Slot 2</em><br />
+        <em style="font-size: 0.75rem; opacity: 0.7;"
+          >Thanks to ElDoubleYoouu for double checking this logic</em
         >
       </div>
     </div>
@@ -60,154 +78,79 @@
   <!-- Control Panel -->
   <div class="control-panel">
     <!-- Lock Controls -->
-    <div id="lock-controls" class="hidden">
-      <div class="lock-info">
-        <span class="lock-info-text">Click slots to lock/unlock (Max: 2)</span>
-        <span id="lock-counter" class="lock-counter">Locked: 0/2</span>
+    <div id="lock-controls" class="recast-lock-controls hidden">
+      <div class="recast-lock-info">
+        <span class="recast-lock-info-text">Click slots to lock/unlock (Max: 3)</span>
+        <span id="lock-counter" class="recast-lock-counter">Locked: 0/3</span>
       </div>
-      <div class="lock-button-container">
-        <button class="slot-lock-btn" data-slot="1">Lock Slot 1</button>
-        <button class="slot-lock-btn" data-slot="2">Lock Slot 2</button>
-        <button class="slot-lock-btn" data-slot="3">Lock Slot 3</button>
+      <div class="recast-lock-button-container">
+        <button class="recast-slot-lock-btn" data-slot="1">Lock Slot 1</button>
+        <button class="recast-slot-lock-btn" data-slot="2">Lock Slot 2</button>
+        <button class="recast-slot-lock-btn" data-slot="3">Lock Slot 3</button>
       </div>
     </div>
 
-    <!-- Spin Button -->
-    <button id="spin-btn">
-      PULL LEVER (Cost: <span id="hammer-cost">1</span> Hammer<span
-        id="hammer-plural"
-        class="hidden">s</span
-      >)
-    </button>
-
     <!-- Stats Display -->
-    <div class="stats-container">
-      <div class="stat-box">
-        <div class="stat-box-label">Hammers Used</div>
-        <div id="hammers-used" class="stat-box-value">0</div>
+    <div class="recast-stats-container">
+      <div class="recast-stat-box">
+        <div class="recast-stat-box-label">Hammers Used</div>
+        <div id="hammers-used" class="recast-stat-box-value">0</div>
       </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Current Slots</div>
-        <div id="current-slots" class="stat-box-value">0</div>
+      <div class="recast-stat-box">
+        <div class="recast-stat-box-label">Current Slots</div>
+        <div id="current-slots" class="recast-stat-box-value">0</div>
       </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Best Result</div>
-        <div id="best-result" class="stat-box-value">-</div>
+      <div class="recast-stat-box">
+        <div class="recast-stat-box-label">Best Result</div>
+        <div id="best-result" class="recast-stat-box-value">-</div>
       </div>
     </div>
   </div>
 
   <!-- Reset Button -->
-  <button id="reset-btn">Reset Machine</button>
+  <button id="reset-btn" class="recast-reset-btn">Reset Machine</button>
 </div>
 
 <!-- Probability Breakdown -->
-<div class="probability-section">
+<div class="recast-probability-section">
   <h3>Slot Probability Breakdown</h3>
-  <div class="probability-details">
-    <div class="prob-row">
-      <strong class="prob-guaranteed">1 Slot:</strong> 100% chance (guaranteed)
+
+  <div class="probability-table">
+    <div class="prob-row prob-guaranteed">
+      <div class="prob-slot">1 Slot</div>
+      <div class="prob-chance">100%</div>
+      <div class="prob-description">Guaranteed</div>
     </div>
-    <div class="prob-row">
-      <strong class="prob-medium">2 Slots:</strong> 50% chance
+
+    <div class="prob-row prob-medium">
+      <div class="prob-slot">2 Slots</div>
+      <div class="prob-chance">50%</div>
+      <div class="prob-description">Independent roll</div>
     </div>
-    <div class="prob-row">
-      <strong class="prob-low">3 Slots:</strong> 15% chance (requires hitting both: 50% for slot 2, then
-      30% for slot 3)
+
+    <div class="prob-row prob-low">
+      <div class="prob-slot">3 Slots</div>
+      <div class="prob-chance">30%</div>
+      <div class="prob-description">Independent roll</div>
     </div>
+  </div>
+
+  <div class="probability-notes">
     <div class="prob-note">
-      <strong>With Locked Slots:</strong> Locked blessings guarantee their slots will appear (100% chance
-      for locked slots)
+      <strong>Independent Rolls:</strong> Each slot rolls separately - you can get combinations like
+      1+3, 2+3, or all three
+    </div>
+
+    <div class="prob-note">
+      <strong>Locked Slots:</strong> Locked blessings guarantee their slots appear (100% chance for locked
+      slots)
+    </div>
+
+    <div class="prob-disclaimer">
+      Note: This is a simulation based on gameplay observation. Actual game mechanics may vary.
     </div>
   </div>
 </div>
-
-<!-- History Section -->
-<div class="history-section">
-  <h3>Spin History</h3>
-  <div id="history-log" class="history-log">
-    <div class="history-empty">No spins yet...</div>
-  </div>
-</div>
-
-<style>
-  .slot-label {
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #888;
-    font-size: 0.9rem;
-  }
-
-  .probability-display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  .probability-row {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    font-size: 0.9rem;
-  }
-
-  .probability-note {
-    margin-top: 0.5rem;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.6);
-    text-align: center;
-    max-width: 500px;
-  }
-
-  .prob-guaranteed {
-    color: #4caf50;
-  }
-
-  .prob-medium {
-    color: #ffa500;
-  }
-
-  .prob-low {
-    color: #ff6b6b;
-  }
-
-  .probability-details {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.6;
-  }
-
-  .prob-row {
-    margin-bottom: 0.75rem;
-  }
-
-  .prob-note {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  .history-log {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-    max-height: 200px;
-    overflow-y: auto;
-  }
-
-  .history-empty {
-    color: rgba(255, 255, 255, 0.4);
-  }
-
-  .slot-item.empty {
-    color: #444;
-    font-size: 2rem;
-  }
-</style>
 
 <script>
   import '/src/scripts/sab-slot-machine.js';

@@ -14,10 +14,11 @@ function initializeRefinementMachine() {
   const gameState = {
     hammersUsed: 0,
     currentBlessings: [],
-    currentTiers: [],
+    currentTiers: [], // The actual current tiers (after applying results)
+    displayedCurrentTiers: [], // What shows in the "Current" column (before refinement)
+    displayedNewTiers: [], // What shows in the "New" column (after refinement)
     lockedSlots: [], // Track which slots are locked
     isSpinning: false,
-    history: [],
     stats: {
       totalHammers: 0,
       timesGotT15: 0,
@@ -25,6 +26,65 @@ function initializeRefinementMachine() {
       bestTier: 0,
     },
   };
+
+  // Performance optimizations - cache frequently used elements
+  const elementCache = {
+    setupSection: null,
+    refinementDisplay: null,
+    lockButtonsContainer: null,
+    lockCounter: null,
+    hammerCostEl: null,
+    hammerPluralEl: null,
+    refineBtn: null,
+    keepOriginal: null,
+    hammersUsedEl: null,
+    t15CountEl: null,
+    avgTierEl: null,
+  };
+
+  // Animation cleanup tracking
+  const activeTimers = new Set();
+  const activeAnimations = new Map();
+
+  function addTimer(callback, delay) {
+    const timerId = setTimeout(() => {
+      activeTimers.delete(timerId);
+      callback();
+    }, delay);
+    activeTimers.add(timerId);
+    return timerId;
+  }
+
+  function clearAllTimers() {
+    activeTimers.forEach(timerId => clearTimeout(timerId));
+    activeTimers.clear();
+  }
+
+  function clearAllAnimations() {
+    activeAnimations.forEach((_animation, element) => {
+      if (element && element.style) {
+        element.style.transition = '';
+        element.style.transform = '';
+        element.classList.remove('tier-success', 'tier-max');
+      }
+    });
+    activeAnimations.clear();
+  }
+
+  // Initialize element cache
+  function initializeElementCache() {
+    elementCache.setupSection = document.getElementById('setup-section');
+    elementCache.refinementDisplay = document.getElementById('refinement-display');
+    elementCache.lockButtonsContainer = document.getElementById('refinement-lock-buttons');
+    elementCache.lockCounter = document.getElementById('refinement-lock-counter');
+    elementCache.hammerCostEl = document.getElementById('refinement-hammer-cost');
+    elementCache.hammerPluralEl = document.getElementById('hammer-plural');
+    elementCache.refineBtn = document.getElementById('refine-btn');
+    elementCache.keepOriginal = document.getElementById('keep-original');
+    elementCache.hammersUsedEl = document.getElementById('refinement-hammers');
+    elementCache.t15CountEl = document.getElementById('t15-count');
+    elementCache.avgTierEl = document.getElementById('avg-tier');
+  }
 
   // Blessing tier data - correct values from game data
   const blessingTierData = {
@@ -112,319 +172,479 @@ function initializeRefinementMachine() {
 
   // Functions
   function setupRefinement() {
-    const blessings = [];
-    const tiers = [];
+    const blessings = [null, null, null]; // Initialize with nulls to maintain slot positions
+    const tiers = [null, null, null];
+    let hasAnyBlessing = false;
 
     for (let i = 1; i <= 3; i++) {
-      const select = document.getElementById(`blessing-select-${i}`);
-      if (select && select.value) {
-        blessings.push(select.value);
-        // Start with random tier using weighted probabilities
-        tiers.push(rollSingleTier());
+      const blessingSelect = document.getElementById(`blessing-select-${i}`);
+      const tierSelect = document.getElementById(`tier-select-${i}`);
+
+      if (blessingSelect && blessingSelect.value && tierSelect && tierSelect.value) {
+        blessings[i - 1] = blessingSelect.value; // Store at correct index
+        tiers[i - 1] = parseInt(tierSelect.value);
+        hasAnyBlessing = true;
       }
     }
 
-    if (blessings.length === 0) {
-      // Could show an error message in the UI instead of alert
-      console.warn('Please select at least one blessing to refine!');
+    if (!hasAnyBlessing) {
+      console.warn('Please select at least one blessing and tier to refine!');
       return;
     }
 
+    console.log('Setup refinement with:', { blessings, tiers });
     gameState.currentBlessings = blessings;
     gameState.currentTiers = tiers;
 
-    // Hide setup, show refinement
-    document.getElementById('setup-section').classList.add('hidden');
-    document.getElementById('refinement-display').classList.remove('hidden');
+    // Hide setup, show refinement using cached elements
+    if (elementCache.setupSection) {
+      elementCache.setupSection.classList.add('hidden');
+    }
+    if (elementCache.refinementDisplay) {
+      elementCache.refinementDisplay.classList.remove('hidden');
+    }
+
+    // Update element cache now that refinement display is visible
+    elementCache.refineBtn = document.getElementById('refine-btn');
+    elementCache.keepOriginal = document.getElementById('keep-original');
+    elementCache.hammersUsedEl = document.getElementById('refinement-hammers');
+    elementCache.t15CountEl = document.getElementById('t15-count');
+    elementCache.avgTierEl = document.getElementById('avg-tier');
+
+    // Setup refine button event listener now that it's visible
+    if (elementCache.refineBtn) {
+      elementCache.refineBtn.addEventListener('click', animateRefinement);
+      console.log('Refine button event listener added');
+    } else {
+      console.error('Refine button not found after showing refinement display!');
+    }
+
+    console.log('Updated element cache:', {
+      refineBtn: !!elementCache.refineBtn,
+      keepOriginal: !!elementCache.keepOriginal,
+      hammersUsedEl: !!elementCache.hammersUsedEl,
+    });
 
     // Setup displays
     updateRefinementDisplay();
   }
 
   function updateRefinementDisplay() {
-    // Update lock buttons
-    const lockButtonsContainer = document.getElementById('refinement-lock-buttons');
-    if (lockButtonsContainer) {
+    // Update lock buttons using cached element and document fragment
+    if (elementCache.lockButtonsContainer) {
       // Clear existing buttons
-      while (lockButtonsContainer.firstChild) {
-        lockButtonsContainer.removeChild(lockButtonsContainer.firstChild);
-      }
+      elementCache.lockButtonsContainer.innerHTML = '';
 
-      gameState.currentBlessings.forEach((_, index) => {
-        const slotNum = index + 1;
-        const lockBtn = document.createElement('button');
-        lockBtn.className = 'refinement-lock-btn';
-        lockBtn.dataset.slot = slotNum;
-        lockBtn.textContent = `Lock Slot ${slotNum}`;
-        lockBtn.onclick = () => toggleRefinementLock(slotNum);
-        lockButtonsContainer.appendChild(lockBtn);
+      // Use document fragment for efficient DOM operations
+      const fragment = document.createDocumentFragment();
+
+      gameState.currentBlessings.forEach((blessing, index) => {
+        if (blessing !== null) {
+          // Only create buttons for slots with blessings
+          const slotNum = index + 1;
+          const lockBtn = document.createElement('button');
+          lockBtn.className = 'refinement-lock-btn';
+          lockBtn.dataset.slot = slotNum;
+          lockBtn.textContent = `Lock Slot ${slotNum}`;
+          lockBtn.onclick = () => toggleRefinementLock(slotNum);
+          fragment.appendChild(lockBtn);
+        }
       });
+
+      elementCache.lockButtonsContainer.appendChild(fragment);
     }
 
     updateLockDisplay();
 
-    gameState.currentBlessings.forEach((blessing, index) => {
-      const slotNum = index + 1;
-      const slot = document.getElementById(`tier-slot-${slotNum}`);
+    // Update all 3 gear slots, showing only those with blessings
+    for (let slotIndex = 0; slotIndex < 3; slotIndex++) {
+      const slotNum = slotIndex + 1;
+      const blessing = gameState.currentBlessings[slotIndex];
+      const gearSlot = document.getElementById(`gear-slot-${slotNum}`);
       const nameEl = document.getElementById(`blessing-name-${slotNum}`);
-      const currentTierEl = document.getElementById(`current-tier-${slotNum}`);
-      const reel = document.getElementById(`tier-reel-${slotNum}`);
 
-      if (slot && blessing) {
-        slot.style.display = 'block'; // Override tier-slot default display: none
-        nameEl.textContent = blessingTierData[blessing].fullName; // Show full name
-        currentTierEl.textContent = `T${gameState.currentTiers[index]}`;
+      if (gearSlot) {
+        if (blessing !== null) {
+          // Show and populate this gear slot
+          gearSlot.style.display = 'block';
+          if (nameEl) {
+            nameEl.textContent = blessingTierData[blessing].fullName;
+          }
 
-        const data = blessingTierData[blessing];
-        if (!data) {
-          console.error('No data found for blessing:', blessing);
-          return;
-        }
-        const tierLevel = gameState.currentTiers[index];
-        const value = data.values[tierLevel - 1];
+          const data = blessingTierData[blessing];
+          if (!data) {
+            console.error('No data found for blessing:', blessing);
+            continue;
+          }
 
-        // Clear and create tier item
-        reel.innerHTML = '';
-        const tierItem = document.createElement('div');
-        tierItem.className = 'tier-item';
+          if (!data.values || !Array.isArray(data.values)) {
+            console.error('Invalid blessing data structure for:', blessing);
+            continue;
+          }
+          const tierLevel = gameState.currentTiers[slotIndex];
+          if (tierLevel < 1 || tierLevel > 15 || tierLevel > data.values.length) {
+            console.error('Invalid tier level:', tierLevel, 'for blessing:', blessing);
+            continue;
+          }
 
-        const tierValue = document.createElement('div');
-        tierValue.className = tierLevel === 15 ? 'tier-value tier-value-max' : 'tier-value';
-        tierValue.textContent = `T${tierLevel}`;
+          // Update both current and new tier displays
+          const currentTierValue = document.getElementById(`current-tier-${slotNum}`);
+          const currentTierStat = document.getElementById(`current-stat-${slotNum}`);
+          const newTierValue = document.getElementById(`new-tier-${slotNum}`);
+          const newTierStat = document.getElementById(`new-stat-${slotNum}`);
 
-        const tierStat = document.createElement('div');
-        tierStat.className = 'tier-stat';
-        tierStat.style.color = data.color;
-        tierStat.textContent = `${value}${data.unit}`;
+          // Set current values (what was there before refinement)
+          const displayedCurrentTier = gameState.displayedCurrentTiers[slotIndex] || tierLevel;
+          if (displayedCurrentTier < 1 || displayedCurrentTier > data.values.length) {
+            console.error('Invalid displayed current tier:', displayedCurrentTier);
+            continue;
+          }
+          const currentValue = data.values[displayedCurrentTier - 1];
 
-        tierItem.appendChild(tierValue);
-        tierItem.appendChild(tierStat);
-        reel.appendChild(tierItem);
+          if (currentTierValue) {
+            currentTierValue.textContent = `T${displayedCurrentTier}`;
+            currentTierValue.className =
+              displayedCurrentTier === 15
+                ? 'refinement-tier-value tier-value-max'
+                : 'refinement-tier-value';
+          }
 
-        // Add max tier effect
-        const window = slot.querySelector('.tier-window');
-        if (tierLevel === 15) {
-          window.classList.add('tier-max');
+          if (currentTierStat) {
+            currentTierStat.textContent = `${currentValue}${data.unit}`;
+            currentTierStat.style.color = data.color;
+          }
+
+          // Set new values (current results)
+          const displayedNewTier = gameState.displayedNewTiers[slotIndex] || tierLevel;
+          if (displayedNewTier < 1 || displayedNewTier > data.values.length) {
+            console.error('Invalid displayed new tier:', displayedNewTier);
+            continue;
+          }
+          const newValue = data.values[displayedNewTier - 1];
+
+          if (newTierValue) {
+            newTierValue.textContent = `T${displayedNewTier}`;
+            newTierValue.className =
+              displayedNewTier === 15
+                ? 'refinement-tier-value tier-value-max'
+                : 'refinement-tier-value';
+          }
+
+          if (newTierStat) {
+            newTierStat.textContent = `${newValue}${data.unit}`;
+            newTierStat.style.color = data.color;
+          }
+
+          // Add/remove max tier styling for gear slot
+          gearSlot.classList.toggle('tier-max', tierLevel === 15);
         } else {
-          window.classList.remove('tier-max');
+          // Hide empty gear slot
+          gearSlot.style.display = 'none';
         }
       }
-    });
+    }
 
-    // Update stats
-    document.getElementById('refinement-hammers').textContent = gameState.hammersUsed;
-    const t15Count = gameState.currentTiers.filter(t => t === 15).length;
-    document.getElementById('t15-count').textContent = t15Count;
+    // Update stats using cached elements
+    if (elementCache.hammersUsedEl) {
+      elementCache.hammersUsedEl.textContent = gameState.hammersUsed;
+    }
 
-    if (gameState.currentTiers.length > 0) {
-      const avgTier = (
-        gameState.currentTiers.reduce((a, b) => a + b, 0) / gameState.currentTiers.length
-      ).toFixed(1);
-      document.getElementById('avg-tier').textContent = avgTier;
+    const validTiers = gameState.currentTiers.filter(t => t !== null);
+    const t15Count = validTiers.filter(t => t === 15).length;
+    if (elementCache.t15CountEl) {
+      elementCache.t15CountEl.textContent = t15Count;
+    }
+
+    if (validTiers.length > 0 && elementCache.avgTierEl) {
+      const avgTier = (validTiers.reduce((a, b) => a + b, 0) / validTiers.length).toFixed(1);
+      elementCache.avgTierEl.textContent = avgTier;
     }
   }
 
   function rollNewTiers() {
     const newTiers = [];
     for (let i = 0; i < gameState.currentBlessings.length; i++) {
-      // Use the helper function to roll with weighted probabilities
-      newTiers.push(rollSingleTier());
+      if (gameState.currentBlessings[i] !== null) {
+        // Use the helper function to roll with weighted probabilities
+        newTiers.push(rollSingleTier());
+      } else {
+        // Keep null for empty slots
+        newTiers.push(null);
+      }
     }
     return newTiers;
   }
 
   function animateRefinement() {
-    if (gameState.isSpinning) return;
+    if (gameState.isSpinning) {
+      console.log('Already spinning, ignoring refinement request');
+      return;
+    }
+
+    console.log('Starting refinement animation');
     gameState.isSpinning = true;
 
-    const refineBtn = document.getElementById('refine-btn');
-    refineBtn.disabled = true;
+    // Clear any existing animations and stale timers
+    clearAllAnimations();
+    // Only clear timers if this is a fresh start (not from a previous incomplete animation)
+    if (activeTimers.size > 0) {
+      console.log('Clearing', activeTimers.size, 'stale timers');
+      clearAllTimers();
+    }
 
-    // Calculate hammer cost
-    const hammerCost =
-      gameState.lockedSlots.length === 0 ? 1 : gameState.lockedSlots.length === 1 ? 2 : 4;
+    const refineBtn = elementCache.refineBtn;
+    if (refineBtn) {
+      refineBtn.disabled = true;
+    }
 
-    // Store originals
+    // Calculate hammer cost: 1/2/3/4 for 0/1/2/3 locks
+    const hammerCost = gameState.lockedSlots.length + 1;
+
+    // Store originals and set display states
     const originalTiers = [...gameState.currentTiers];
     const newTiers = rollNewTiers();
 
+    // Set the "Current" display to show what we had before this refinement
+    gameState.displayedCurrentTiers = [...gameState.currentTiers];
+    // The "New" display will be set during animation and results
+
     // Animate each slot
     let completedAnimations = 0;
+    // Count slots that have blessings AND are not locked (only these need animation)
+    const unlockedSlotsWithBlessings = gameState.currentBlessings.filter((blessing, index) => {
+      const slotNum = index + 1;
+      return blessing !== null && !gameState.lockedSlots.includes(slotNum);
+    }).length;
+
+    // Count locked slots with blessings (these complete immediately)
+    const lockedSlotsWithBlessings = gameState.currentBlessings.filter((blessing, index) => {
+      const slotNum = index + 1;
+      return blessing !== null && gameState.lockedSlots.includes(slotNum);
+    }).length;
+
+    const totalSlotsToComplete = unlockedSlotsWithBlessings + lockedSlotsWithBlessings;
+
+    console.log('Animation setup:', {
+      totalBlessings: gameState.currentBlessings.length,
+      unlockedSlotsWithBlessings,
+      lockedSlotsWithBlessings,
+      totalSlotsToComplete,
+      lockedSlots: gameState.lockedSlots,
+      blessings: gameState.currentBlessings,
+    });
 
     gameState.currentBlessings.forEach((blessing, index) => {
       const slotNum = index + 1;
       const isLocked = gameState.lockedSlots.includes(slotNum);
 
-      // Skip animation for locked slots
+      // Skip animation for null/empty slots or locked slots
+      if (blessing === null) {
+        return; // Just skip null slots, don't count them
+      }
+
       if (isLocked) {
+        // Locked slots with blessings complete immediately
         completedAnimations++;
-        if (completedAnimations === gameState.currentBlessings.length) {
-          setTimeout(() => {
+        console.log(`Locked slot ${slotNum} completed immediately:`, {
+          completedAnimations,
+          totalSlotsToComplete,
+        });
+        if (completedAnimations === totalSlotsToComplete) {
+          addTimer(() => {
             showRefinementResults(originalTiers, newTiers, hammerCost);
-          }, 500);
+          }, 100);
         }
         return;
       }
 
       const reel = document.getElementById(`tier-reel-${slotNum}`);
-      const window = document.getElementById(`tier-slot-${slotNum}`).querySelector('.tier-window');
       const data = blessingTierData[blessing];
 
       if (!data) {
-        console.error('No data found for blessing in animation:', blessing);
+        console.error('No data found for blessing:', blessing);
         completedAnimations++;
-        if (completedAnimations === gameState.currentBlessings.length) {
-          setTimeout(() => {
+        if (completedAnimations === totalSlotsToComplete) {
+          addTimer(() => {
             showRefinementResults(originalTiers, newTiers, hammerCost);
-          }, 500);
+          }, 100);
         }
         return;
       }
 
-      // Clear reel and build spinning items
-      reel.innerHTML = '';
+      // Animate only the "new" side
+      const newTierValue = document.getElementById(`new-tier-${slotNum}`);
+      const newTierStat = document.getElementById(`new-stat-${slotNum}`);
 
-      // Add random tiers for spinning effect
-      for (let i = 0; i < 15; i++) {
-        const randomTier = Math.floor(Math.random() * 15) + 1;
-        const randomValue = data.values[randomTier - 1];
-
-        const tierItem = document.createElement('div');
-        tierItem.className = 'tier-item';
-
-        const tierValue = document.createElement('div');
-        tierValue.className = randomTier === 15 ? 'tier-value tier-value-max' : 'tier-value';
-        tierValue.textContent = `T${randomTier}`;
-
-        const tierStat = document.createElement('div');
-        tierStat.className = 'tier-stat';
-        tierStat.style.color = data.color;
-        tierStat.textContent = `${randomValue}${data.unit}`;
-
-        tierItem.appendChild(tierValue);
-        tierItem.appendChild(tierStat);
-        reel.appendChild(tierItem);
+      if (!newTierValue || !newTierStat) {
+        console.error('Missing new tier display elements for slot', slotNum);
+        completedAnimations++;
+        if (completedAnimations === totalSlotsToComplete) {
+          addTimer(() => {
+            showRefinementResults(originalTiers, newTiers, hammerCost);
+          }, 100);
+        }
+        return;
       }
 
-      // Add final result
-      const finalTier = newTiers[index];
-      const finalValue = data.values[finalTier - 1];
+      // Track this animation
+      if (reel) {
+        activeAnimations.set(reel, { newTierValue, newTierStat, finalTier: newTiers[index] });
+      }
 
-      const finalItem = document.createElement('div');
-      finalItem.className = 'tier-item final';
+      // Simplified animation approach using setTimeout
+      const animationDelay = 100 + index * 100;
+      const animationDuration = 1500 + index * 200;
 
-      const finalTierValue = document.createElement('div');
-      finalTierValue.className = finalTier === 15 ? 'tier-value tier-value-max' : 'tier-value';
-      finalTierValue.textContent = `T${finalTier}`;
+      // Add spinning class for visual feedback
+      if (reel) {
+        reel.classList.add('spinning');
+      }
 
-      const finalTierStat = document.createElement('div');
-      finalTierStat.className = 'tier-stat';
-      finalTierStat.style.color = data.color;
-      finalTierStat.textContent = `${finalValue}${data.unit}`;
+      // Use a more reliable timeout-based approach
+      addTimer(() => {
+        // Simulate spinning by quickly changing values a few times
+        let spinStep = 0;
+        const totalSpinSteps = 10;
 
-      finalItem.appendChild(finalTierValue);
-      finalItem.appendChild(finalTierStat);
-      reel.appendChild(finalItem);
-      reel.style.transform = 'translateY(0)';
+        const doSpin = () => {
+          if (spinStep < totalSpinSteps) {
+            const randomTier = Math.floor(Math.random() * 15) + 1;
+            const randomValue = data.values[randomTier - 1];
 
-      // Start animation
-      setTimeout(
-        () => {
-          reel.style.transition = `transform ${1.5 + index * 0.2}s cubic-bezier(0.17, 0.67, 0.12, 0.99)`;
-          reel.style.transform = 'translateY(-2100px)';
+            newTierValue.textContent = `T${randomTier}`;
+            newTierValue.className =
+              randomTier === 15 ? 'refinement-tier-value tier-value-max' : 'refinement-tier-value';
+            newTierStat.textContent = `${randomValue}${data.unit}`;
+            newTierStat.style.color = data.color;
 
-          setTimeout(
-            () => {
-              window.classList.add('tier-success');
+            spinStep++;
+            addTimer(doSpin, animationDuration / totalSpinSteps);
+          } else {
+            // Show final result
+            const finalTier = newTiers[index];
+            const finalValue = data.values[finalTier - 1];
+
+            newTierValue.textContent = `T${finalTier}`;
+            newTierValue.className =
+              finalTier === 15 ? 'refinement-tier-value tier-value-max' : 'refinement-tier-value';
+            newTierStat.textContent = `${finalValue}${data.unit}`;
+            newTierStat.style.color = data.color;
+
+            if (reel) {
+              reel.classList.remove('spinning');
               if (finalTier === 15) {
-                window.classList.add('tier-max');
+                reel.classList.add('tier-max-result');
               }
+            }
 
-              completedAnimations++;
-              if (completedAnimations === gameState.currentBlessings.length) {
-                setTimeout(() => {
-                  showRefinementResults(originalTiers, newTiers, hammerCost);
-                }, 500);
-              }
-            },
-            1500 + index * 200
-          );
-        },
-        100 + index * 100
-      );
+            completedAnimations++;
+            console.log(`Animation completed for slot ${slotNum}:`, {
+              completedAnimations,
+              totalSlotsToComplete,
+              shouldShowResults: completedAnimations === totalSlotsToComplete,
+            });
+            if (completedAnimations === totalSlotsToComplete) {
+              addTimer(() => {
+                showRefinementResults(originalTiers, newTiers, hammerCost);
+              }, 200);
+            }
+          }
+        };
+
+        doSpin(); // Start the spinning
+      }, animationDelay);
     });
+
+    // Safeguard: ensure button gets re-enabled even if something goes wrong
+    addTimer(() => {
+      if (gameState.isSpinning) {
+        console.warn('Animation timeout - force enabling refine button');
+        showRefinementResults(originalTiers, newTiers, hammerCost);
+      }
+    }, 5000); // 5 second timeout
   }
 
   function showRefinementResults(originalTiers, newTiers, hammerCost) {
+    console.log('showRefinementResults called - Auto-applying new results', {
+      originalTiers,
+      newTiers,
+      hammerCost,
+    });
+
     gameState.hammersUsed += hammerCost;
     gameState.stats.totalHammers += hammerCost;
-    document.getElementById('refinement-hammers').textContent = gameState.hammersUsed;
 
-    const keepOriginal = document.getElementById('keep-original');
-    const refineBtn = document.getElementById('refine-btn');
+    if (elementCache.hammersUsedEl) {
+      elementCache.hammersUsedEl.textContent = gameState.hammersUsed;
+    }
 
-    // Only show keep/discard if any slots were actually refined (not locked)
-    const hasUnlockedSlots = gameState.currentBlessings.some(
-      (_, i) => !gameState.lockedSlots.includes(i + 1)
-    );
+    // Set the "New" display to show the refinement results
+    gameState.displayedNewTiers = [...newTiers];
 
-    if (hasUnlockedSlots) {
-      keepOriginal.classList.remove('hidden');
+    // Automatically apply new tiers to unlocked slots with blessings
+    gameState.currentBlessings.forEach((blessing, index) => {
+      const slotNum = index + 1;
+      if (blessing !== null && !gameState.lockedSlots.includes(slotNum)) {
+        gameState.currentTiers[index] = newTiers[index];
+      }
+    });
 
-      // Clear any existing handlers and setup new ones
-      const keepNewBtn = document.getElementById('keep-new-btn');
-      const keepOriginalBtn = document.getElementById('keep-original-btn');
+    // Update stats
+    const validNewTiers = newTiers.filter(t => t !== null);
+    if (validNewTiers.includes(15)) {
+      gameState.stats.timesGotT15++;
+    }
 
-      // Clone buttons to remove all event listeners
-      const newKeepNewBtn = keepNewBtn.cloneNode(true);
-      const newKeepOriginalBtn = keepOriginalBtn.cloneNode(true);
-      keepNewBtn.parentNode.replaceChild(newKeepNewBtn, keepNewBtn);
-      keepOriginalBtn.parentNode.replaceChild(newKeepOriginalBtn, keepOriginalBtn);
+    // Update display with new results
+    updateRefinementDisplay();
 
-      // Setup keep/discard handlers
-      document.getElementById('keep-new-btn').onclick = () => {
-        // Apply new tiers only to unlocked slots
-        gameState.currentBlessings.forEach((_, index) => {
+    // Reset spinning state and re-enable refine button immediately
+    gameState.isSpinning = false;
+    const refineBtn = elementCache.refineBtn || document.getElementById('refine-btn');
+    if (refineBtn) {
+      console.log('Re-enabling refine button - ready for next refinement');
+      refineBtn.disabled = false;
+      refineBtn.style.opacity = '';
+      refineBtn.style.backgroundColor = '';
+    }
+
+    // Setup optional "Keep Original" button for users who want to undo
+    const keepOriginalBtn = document.getElementById('keep-original-btn');
+    if (keepOriginalBtn) {
+      // Enable the optional revert button
+      keepOriginalBtn.disabled = false;
+      keepOriginalBtn.textContent = 'Undo (Keep Original)';
+
+      // Remove existing event listener properly
+      keepOriginalBtn.onclick = null;
+
+      // Setup undo handler
+      document.getElementById('keep-original-btn').onclick = () => {
+        console.log('Undo clicked - reverting to original tiers');
+
+        // Revert to original tiers
+        gameState.currentBlessings.forEach((blessing, index) => {
           const slotNum = index + 1;
-          if (!gameState.lockedSlots.includes(slotNum)) {
-            gameState.currentTiers[index] = newTiers[index];
+          if (blessing !== null && !gameState.lockedSlots.includes(slotNum)) {
+            gameState.currentTiers[index] = originalTiers[index];
           }
         });
 
-        // Add to history
-        addToRefinementHistory(originalTiers, gameState.currentTiers, hammerCost, 'kept');
+        // Update the "New" display to show the reverted (original) tiers
+        gameState.displayedNewTiers = [...originalTiers];
 
         updateRefinementDisplay();
-        keepOriginal.classList.add('hidden');
-        gameState.isSpinning = false;
-        refineBtn.disabled = false;
-        refineBtn.style.opacity = '';
 
-        // Update stats
-        if (newTiers.includes(15)) {
-          gameState.stats.timesGotT15++;
-        }
+        // Disable the undo button after use
+        document.getElementById('keep-original-btn').disabled = true;
+        document.getElementById('keep-original-btn').textContent = 'Keep Original';
       };
+    }
 
-      document.getElementById('keep-original-btn').onclick = () => {
-        // Keep original tiers
-        // Add to history
-        addToRefinementHistory(originalTiers, originalTiers, hammerCost, 'discarded');
-
-        updateRefinementDisplay();
-        keepOriginal.classList.add('hidden');
-        gameState.isSpinning = false;
-        refineBtn.disabled = false;
-        refineBtn.style.opacity = '';
-      };
-    } else {
-      // All slots were locked, nothing to choose
-      // Add to history even if all locked
-      addToRefinementHistory(originalTiers, originalTiers, hammerCost, 'all-locked');
-
-      gameState.isSpinning = false;
-      refineBtn.disabled = false;
-      refineBtn.style.opacity = '';
+    // Hide the "Keep New" button since results are auto-applied
+    const keepNewBtn = document.getElementById('keep-new-btn');
+    if (keepNewBtn) {
+      keepNewBtn.style.display = 'none';
     }
   }
 
@@ -433,8 +653,8 @@ function initializeRefinementMachine() {
 
     if (lockIndex === -1) {
       // Try to lock
-      if (gameState.lockedSlots.length >= 2) {
-        return; // Can't lock more than 2
+      if (gameState.lockedSlots.length >= 3) {
+        return; // Can't lock more than 3
       }
       gameState.lockedSlots.push(slotNum);
     } else {
@@ -446,134 +666,162 @@ function initializeRefinementMachine() {
   }
 
   function updateLockDisplay() {
-    // Update hammer cost: 1 base, 2 for 1 lock, 4 for 2 locks
-    const hammerCost =
-      gameState.lockedSlots.length === 0 ? 1 : gameState.lockedSlots.length === 1 ? 2 : 4;
-    document.getElementById('refinement-hammer-cost').textContent = hammerCost;
-    const hammerPlural = document.getElementById('hammer-plural');
-    if (hammerCost === 1) {
-      hammerPlural.classList.add('hidden');
-    } else {
-      hammerPlural.classList.remove('hidden');
+    // Update hammer cost: 1/2/3/4 for 0/1/2/3 locks
+    const hammerCost = gameState.lockedSlots.length + 1;
+    if (elementCache.hammerCostEl) {
+      elementCache.hammerCostEl.textContent = hammerCost;
+    }
+
+    if (elementCache.hammerPluralEl) {
+      elementCache.hammerPluralEl.classList.toggle('hidden', hammerCost === 1);
     }
 
     // Update lock counter
-    document.getElementById('refinement-lock-counter').textContent =
-      `Locked: ${gameState.lockedSlots.length}/2`;
+    if (elementCache.lockCounter) {
+      elementCache.lockCounter.textContent = `Locked: ${gameState.lockedSlots.length}/3`;
+    }
 
     // Update lock buttons and indicators
-    gameState.currentBlessings.forEach((_, index) => {
-      const slotNum = index + 1;
-      const btn = document.querySelector(`.refinement-lock-btn[data-slot="${slotNum}"]`);
-      const indicator = document.getElementById(`lock-indicator-ref-${slotNum}`);
-      const isLocked = gameState.lockedSlots.includes(slotNum);
+    gameState.currentBlessings.forEach((blessing, index) => {
+      if (blessing !== null) {
+        // Only update slots with blessings
+        const slotNum = index + 1;
+        const btn = document.querySelector(`.refinement-lock-btn[data-slot="${slotNum}"]`);
+        const indicator = document.getElementById(`lock-indicator-ref-${slotNum}`);
+        const gearSlot = document.getElementById(`gear-slot-${slotNum}`);
+        const isLocked = gameState.lockedSlots.includes(slotNum);
 
-      if (btn) {
-        btn.textContent = isLocked ? `Unlock Slot ${slotNum}` : `Lock Slot ${slotNum}`;
-        if (isLocked) {
-          btn.classList.add('locked');
-        } else {
-          btn.classList.remove('locked');
+        // Update gear slot locked state
+        if (gearSlot) {
+          gearSlot.classList.toggle('locked', isLocked);
         }
-      }
 
-      if (indicator) {
-        if (isLocked) {
-          indicator.classList.remove('hidden');
-        } else {
-          indicator.classList.add('hidden');
+        if (btn) {
+          btn.textContent = isLocked ? `Unlock Slot ${slotNum}` : `Lock Slot ${slotNum}`;
+          btn.classList.toggle('locked', isLocked);
         }
-      }
-    });
-  }
 
-  function addToRefinementHistory(oldTiers, newTiers, hammerCost, action) {
-    const historyLog = document.getElementById('refinement-history-log');
-    if (!historyLog) return;
-
-    // Clear initial message if present
-    const emptyMsg = historyLog.querySelector('.history-empty');
-    if (emptyMsg) {
-      emptyMsg.remove();
-    }
-
-    const entry = document.createElement('div');
-    entry.className = 'history-entry';
-
-    // Calculate tier changes
-    const tierChanges = [];
-    gameState.currentBlessings.forEach((_, index) => {
-      const slotNum = index + 1;
-      if (!gameState.lockedSlots.includes(slotNum)) {
-        const oldTier = oldTiers[index];
-        const newTier = newTiers[index];
-        if (oldTier !== newTier) {
-          const change = newTier - oldTier;
-          const changeStr = change > 0 ? `+${change}` : `${change}`;
-          tierChanges.push(`Slot ${slotNum}: T${oldTier}→T${newTier} (${changeStr})`);
-
-          // Add color based on change
-          if (newTier === 15) {
-            entry.classList.add('tier-max');
-          } else if (newTier > oldTier) {
-            entry.classList.add('tier-up');
-          } else if (newTier < oldTier) {
-            entry.classList.add('tier-down');
-          }
+        if (indicator) {
+          indicator.classList.toggle('hidden', !isLocked);
+          indicator.style.display = isLocked ? 'block' : 'none';
         }
       }
     });
-
-    let text = `Refinement #${gameState.hammersUsed}: `;
-    if (action === 'discarded') {
-      text += `Used ${hammerCost} hammer${hammerCost > 1 ? 's' : ''} - Kept original`;
-    } else if (action === 'all-locked') {
-      text += `Used ${hammerCost} hammer${hammerCost > 1 ? 's' : ''} - All slots locked`;
-    } else if (tierChanges.length > 0) {
-      text += tierChanges.join(', ');
-    } else {
-      text += `No changes`;
-    }
-
-    entry.textContent = text;
-    entry.style.color = 'rgba(255, 255, 255, 0.8)';
-
-    historyLog.insertBefore(entry, historyLog.firstChild);
-
-    // Keep only last 20 entries
-    while (historyLog.children.length > 20) {
-      historyLog.removeChild(historyLog.lastChild);
-    }
   }
 
   function backToSetup() {
-    document.getElementById('setup-section').classList.remove('hidden');
-    document.getElementById('refinement-display').classList.add('hidden');
-    document.getElementById('keep-original').classList.add('hidden');
+    // Clear all active timers and animations when going back to setup
+    clearAllTimers();
+    clearAllAnimations();
 
-    // Clear history
-    const historyLog = document.getElementById('refinement-history-log');
-    if (historyLog) {
-      historyLog.innerHTML = '<div class="history-empty">No refinements yet...</div>';
+    // IMPORTANT: Reset spinning state first to prevent stuck state
+    gameState.isSpinning = false;
+
+    // Re-enable refine button if it was disabled
+    const refineBtn = elementCache.refineBtn || document.getElementById('refine-btn');
+    if (refineBtn) {
+      refineBtn.disabled = false;
+      refineBtn.style.opacity = '';
+      refineBtn.style.backgroundColor = '';
     }
 
-    // Reset state
+    // Reset choice buttons to disabled state and restore original labels
+    const keepNewBtn = document.getElementById('keep-new-btn');
+    const keepOriginalBtn = document.getElementById('keep-original-btn');
+    if (keepNewBtn) {
+      keepNewBtn.disabled = true;
+      keepNewBtn.style.display = 'none';
+    }
+    if (keepOriginalBtn) {
+      keepOriginalBtn.disabled = true;
+      keepOriginalBtn.textContent = 'Keep Original';
+    }
+
+    // Use cached elements for UI changes
+    if (elementCache.setupSection) {
+      elementCache.setupSection.classList.remove('hidden');
+    }
+    if (elementCache.refinementDisplay) {
+      elementCache.refinementDisplay.classList.add('hidden');
+    }
+    if (elementCache.keepOriginal) {
+      elementCache.keepOriginal.classList.add('hidden');
+    }
+
+    // Reset all gear slots to hidden state
+    for (let i = 1; i <= 3; i++) {
+      const gearSlot = document.getElementById(`gear-slot-${i}`);
+      if (gearSlot) {
+        gearSlot.style.display = 'none';
+        gearSlot.classList.remove('tier-max', 'tier-max-result');
+      }
+
+      // Reset tier displays
+      const tierReel = document.getElementById(`tier-reel-${i}`);
+      if (tierReel) {
+        tierReel.classList.remove('spinning', 'tier-max-result');
+        tierReel.style.transform = '';
+        tierReel.style.transition = '';
+      }
+    }
+
+    // Clear all select values
+    for (let i = 1; i <= 3; i++) {
+      const blessingSelect = document.getElementById(`blessing-select-${i}`);
+      const tierSelect = document.getElementById(`tier-select-${i}`);
+      if (blessingSelect) blessingSelect.value = '';
+      if (tierSelect) {
+        tierSelect.value = '';
+        tierSelect.disabled = true;
+      }
+    }
+
+    // Reset state completely
     gameState.currentBlessings = [];
     gameState.currentTiers = [];
+    gameState.displayedCurrentTiers = [];
+    gameState.displayedNewTiers = [];
     gameState.lockedSlots = [];
     gameState.hammersUsed = 0;
-    gameState.isSpinning = false;
+    gameState.stats = {
+      totalHammers: 0,
+      timesGotT15: 0,
+      averageTier: 0,
+      bestTier: 0,
+    };
+
+    // Update select options to reset duplicate prevention
+    updateSelectOptions();
+
+    console.log('State fully reset, back to setup');
   }
 
-  // Prevent duplicate selections
+  // Enable/disable tier selects and prevent duplicate blessing selections
   function updateSelectOptions() {
-    const selects = document.querySelectorAll('.blessing-select');
-    const selected = Array.from(selects)
+    const blessingSelects = document.querySelectorAll('.blessing-select');
+    const selected = Array.from(blessingSelects)
       .map(s => s.value)
       .filter(v => v);
 
-    selects.forEach(select => {
+    blessingSelects.forEach((select, index) => {
+      const slotNum = index + 1;
+      const tierSelect = document.getElementById(`tier-select-${slotNum}`);
       const currentValue = select.value;
+
+      // Enable/disable tier select based on blessing selection
+      if (tierSelect) {
+        if (currentValue) {
+          tierSelect.disabled = false;
+          if (!tierSelect.value) {
+            tierSelect.value = '1'; // Default to T1
+          }
+        } else {
+          tierSelect.disabled = true;
+          tierSelect.value = '';
+        }
+      }
+
+      // Prevent duplicate blessing selections
       Array.from(select.options).forEach(option => {
         if (option.value && option.value !== currentValue) {
           option.disabled = selected.includes(option.value);
@@ -582,23 +830,46 @@ function initializeRefinementMachine() {
     });
   }
 
+  // Initialize everything
+  initializeElementCache();
+
   // Event listeners
   const setupBtn = document.getElementById('setup-btn');
   if (setupBtn) {
     setupBtn.addEventListener('click', setupRefinement);
+    console.log('Setup button event listener added');
+  } else {
+    console.error('Setup button not found!');
   }
 
-  const refineBtn = document.getElementById('refine-btn');
-  if (refineBtn) {
-    refineBtn.addEventListener('click', animateRefinement);
-  }
+  // Note: Refine button listener is now added in setupRefinement() when the section becomes visible
 
   const backBtn = document.getElementById('back-btn');
   if (backBtn) {
     backBtn.addEventListener('click', backToSetup);
+  } else {
+    console.warn('Back button not found during initialization');
   }
 
-  document.querySelectorAll('.blessing-select').forEach(select => {
+  // Add event listeners for both blessing and tier selects
+  const blessingSelects = document.querySelectorAll('.blessing-select');
+  const tierSelects = document.querySelectorAll('.tier-select');
+
+  if (blessingSelects.length === 0) {
+    console.error('No blessing select elements found!');
+  }
+  if (tierSelects.length === 0) {
+    console.error('No tier select elements found!');
+  }
+
+  blessingSelects.forEach(select => {
     select.addEventListener('change', updateSelectOptions);
   });
+
+  tierSelects.forEach(select => {
+    select.addEventListener('change', updateSelectOptions);
+  });
+
+  // Initialize select states
+  updateSelectOptions();
 }
