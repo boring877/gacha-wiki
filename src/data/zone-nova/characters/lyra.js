@@ -16,6 +16,7 @@ export const lyraData = {
     hp: '8,033',
     attack: '1,305',
     defense: '530',
+    critRate: 15,
   },
 
   // Skills

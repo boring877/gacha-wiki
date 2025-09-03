@@ -17,6 +17,7 @@ export const arthurData = {
     hp: '8,033', // e.g., '10,520'
     attack: '1,305', // e.g., '794'
     defense: '530', // e.g., '1,232'
+    critRate: 15,
   },
 
   // Skills

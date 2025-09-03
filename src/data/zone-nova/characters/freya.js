@@ -16,6 +16,7 @@ export const freyaData = {
     hp: '7,308',
     attack: '1,193',
     defense: '474',
+    critRate: 16.8,
   },
 
   // Character Skills
