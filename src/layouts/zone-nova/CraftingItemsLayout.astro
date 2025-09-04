@@ -1,0 +1,101 @@
+---
+import ZNBaseHead from '../../components/zone-nova/ZNBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import { Image } from 'astro:assets';
+
+// Import CSS files properly
+import '../../styles/games/zone-nova/zn-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/zone-nova/zn-layout.css';
+import '../../styles/games/zone-nova/zn-crafting-items.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <ZNBaseHead title={title} description={description || ''} />
+    <GameSEO gameKey="zone-nova" title={title} description={description} />
+
+    <slot name="head" />
+  </head>
+  <body class="zone-nova-body zn-layout-override">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="zone-nova-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
+      <MobileMenu />
+
+      <div class="zone-nova-container">
+        <main class="zone-nova-main">
+          <!-- Zone Nova Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                {/* Hero Image Container */}
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <Image
+                      src={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      width={1200}
+                      height={400}
+                      loading="eager"
+                      decoding="async"
+                    />
+                    {/* Overlay Gradient */}
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+
+                {/* Game Title */}
+                <h1 class="hero-title">{gameTitle}</h1>
+                {/* Decorative Elements */}
+                <DecorativeLines />
+              </section>
+            )
+          }
+          <!-- Title Only Section (when no hero image) -->
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

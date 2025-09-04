@@ -122,6 +122,11 @@ export const zoneNovaConfig = {
           title: 'Crafting',
           url: '/guides/zone-nova/crafting/',
         },
+        {
+          id: 'crafting-items',
+          title: 'Crafting Items',
+          url: '/guides/zone-nova/crafting-items/',
+        },
       ],
     },
     {
@@ -308,6 +313,15 @@ export const zoneNovaConfig = {
       emoji: '',
       description: 'Where to craft items and how to craft them.',
       url: '/guides/zone-nova/crafting/',
+      category: 'guides',
+      size: 'small',
+    },
+    {
+      id: 'crafting-items',
+      title: 'Crafting Items',
+      emoji: '',
+      description: 'Complete database of crafting materials, tools, and resources.',
+      url: '/guides/zone-nova/crafting-items/',
       category: 'guides',
       size: 'small',
     },

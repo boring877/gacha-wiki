@@ -1,0 +1,743 @@
+/* Zone Nova Crafting Items Styles */
+/* Following the established design system from colors.css and typography.css */
+
+/* Content Sections */
+.content-section {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.95));
+  padding: 3rem;
+  border-radius: 24px;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(255, 183, 77, 0.1);
+  position: relative;
+}
+
+/* Section Titles */
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+.section-description {
+  color: var(--text-secondary);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Items Grid */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Item Cards */
+.item-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 183, 77, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.item-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin: 0.5rem 0 0 0;
+}
+
+/* Item Image */
+.item-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 auto 0.5rem auto;
+  border: 1px solid rgba(255, 183, 77, 0.3);
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.full-size-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Dice Section Layout */
+.dice-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.dice-title-container .section-title {
+  margin: 0;
+}
+
+.dice-icon {
+  flex-shrink: 0;
+}
+
+.dice-icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 183, 77, 0.3);
+}
+
+.dice-showcase {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.dice-showcase .full-size-image {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+/* Main Dice Section Organization */
+.dice-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dice-overview-container {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+  border-radius: 16px;
+  border: 1px solid rgba(255, 183, 77, 0.1);
+  margin-bottom: 2rem;
+}
+
+.dice-parts-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Dice Part Containers */
+.dice-part-container {
+  margin: 3rem 0;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+  border-radius: 20px;
+  border: 1px solid rgba(255, 183, 77, 0.1);
+}
+
+.dice-part-container:first-of-type {
+  margin-top: 2rem;
+}
+
+/* Part Title Container */
+.part-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(255, 183, 77, 0.2);
+}
+
+.part-title {
+  margin: 0;
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: var(--font-bold);
+  font-size: var(--text-2xl);
+  text-align: center;
+}
+
+.part-icon {
+  flex-shrink: 0;
+}
+
+.part-icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 183, 77, 0.3);
+}
+
+/* Part Content */
+.part-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Requirements */
+.requirements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.requirements-item {
+  margin: 1.5rem 0;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: var(--text-lg);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 183, 77, 0.1);
+}
+
+.requirements-number {
+  color: var(--amber-glow);
+  font-weight: var(--font-bold);
+  font-size: var(--text-base);
+  margin-right: 0.75rem;
+  background: rgba(255, 183, 77, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 50%;
+  min-width: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 183, 77, 0.3);
+}
+
+.part-showcase {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.showcase-image {
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Sub Stats Table */
+.sub-stats-container .table-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+
+.sub-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.sub-stats-table thead tr {
+  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  color: white;
+}
+
+.sub-stats-table th {
+  padding: 1rem;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+}
+
+.sub-stats-table tbody tr:nth-child(odd) {
+  background: rgba(255, 183, 77, 0.05);
+}
+
+.sub-stats-table tbody tr:nth-child(even) {
+  background: rgba(0, 172, 193, 0.05);
+}
+
+.sub-stats-table td {
+  padding: 1rem;
+  border: 1px solid var(--neutral-200);
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: var(--text-base);
+}
+
+.sub-stats-table td.value-cell {
+  color: var(--text-secondary);
+  font-style: italic;
+  background: rgba(255, 193, 7, 0.1);
+}
+
+.table-note {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid #ffc107;
+  border-radius: 12px;
+}
+
+.table-note p {
+  margin: 0 0 1rem 0;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.table-note p:last-child {
+  margin-bottom: 0;
+}
+
+.note-label {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.important-label {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+/* Usage Info */
+.usage-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.usage-info-item {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+  border-radius: 12px;
+  border: 1px solid rgba(255, 183, 77, 0.1);
+}
+
+.usage-info-item span {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: var(--text-lg);
+}
+
+.usage-info-item p {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: var(--leading-relaxed);
+}
+
+.usage-label-red {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.usage-label-green {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.usage-label-orange {
+  color: #ff6b35;
+  font-weight: 600;
+}
+
+/* Card & Laser Section Layout */
+.card-laser-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.card-laser-title-container .section-title {
+  margin: 0;
+}
+
+.card-laser-icons {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.card-icon,
+.laser-icon {
+  flex-shrink: 0;
+}
+
+.card-icon img,
+.laser-icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 183, 77, 0.3);
+}
+
+.card-laser-showcase {
+  margin-top: 2rem;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.showcase-item {
+  text-align: center;
+}
+
+.showcase-item h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+}
+
+.showcase-item .full-size-image {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+/* Card & Laser Section Organization */
+.card-laser-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.card-laser-overview-container {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+  border-radius: 16px;
+  border: 1px solid rgba(255, 183, 77, 0.1);
+  margin-bottom: 2rem;
+}
+
+.card-laser-parts-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Card and Laser Specific Content */
+.card-info,
+.laser-info {
+  margin-bottom: 2rem;
+}
+
+.card-info p,
+.laser-info p {
+  margin: 1rem 0;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: var(--leading-relaxed);
+}
+
+.card-location-info {
+  margin-top: 2rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+  border-radius: 12px;
+  border: 1px solid rgba(255, 183, 77, 0.1);
+}
+
+.card-location-info p {
+  margin: 0 0 1.5rem 0;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: var(--leading-relaxed);
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-location-info .part-showcase {
+  margin: 2rem auto 3rem auto;
+  text-align: center;
+}
+
+.card-location-info .part-showcase:last-child {
+  margin-bottom: 0;
+}
+
+.rune-positions-info {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+  border-radius: 12px;
+  border: 1px solid rgba(255, 183, 77, 0.1);
+}
+
+.rune-positions-info h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.position-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.position-list li {
+  margin: 0.75rem 0;
+  color: var(--text-primary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.position-number {
+  color: var(--amber-glow);
+  font-weight: var(--font-bold);
+  background: rgba(255, 183, 77, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: var(--text-sm);
+  min-width: 3rem;
+  text-align: center;
+}
+
+.laser-note {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(220, 53, 69, 0.1);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+  border-radius: 8px;
+}
+
+.laser-note p {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .content-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: var(--text-2xl);
+  }
+
+  .section-description {
+    font-size: var(--text-base);
+  }
+
+  .items-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .item-card {
+    padding: 1.5rem;
+  }
+
+  .item-card h3 {
+    font-size: var(--text-base);
+  }
+
+  /* Mobile Dice Section */
+  .dice-title-container,
+  .card-laser-title-container {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .dice-overview-container,
+  .card-laser-overview-container {
+    padding: 1.5rem;
+  }
+
+  .dice-part-container {
+    margin: 2rem 0;
+    padding: 1.5rem;
+  }
+
+  /* Mobile Part Titles */
+  .part-title-container {
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .part-title {
+    font-size: var(--text-xl);
+  }
+
+  /* Mobile Images */
+  .showcase-image,
+  .full-size-image {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .dice-showcase .full-size-image {
+    max-width: 100%;
+  }
+
+  /* Mobile Card & Laser Icons */
+  .card-laser-icons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Mobile Showcase Grid */
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Mobile Card Location Info */
+  .card-location-info {
+    padding: 1.5rem;
+  }
+
+  .card-location-info p {
+    font-size: var(--text-base);
+  }
+
+  /* Mobile Position List */
+  .position-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    text-align: left;
+  }
+
+  .position-number {
+    align-self: flex-start;
+  }
+
+  /* Mobile Usage Grid */
+  .usage-info-grid {
+    gap: 1rem;
+  }
+
+  .usage-info-item {
+    padding: 1rem;
+  }
+
+  /* Mobile Tables */
+  .sub-stats-table {
+    font-size: var(--text-sm);
+  }
+
+  .sub-stats-table th,
+  .sub-stats-table td {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-section {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: var(--text-xl);
+  }
+
+  .item-card {
+    padding: 1rem;
+  }
+
+  .item-card h3 {
+    font-size: var(--text-base);
+  }
+
+  .item-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Small Mobile Containers */
+  .dice-overview-container,
+  .card-laser-overview-container,
+  .dice-part-container {
+    padding: 1rem;
+  }
+
+  .part-title {
+    font-size: var(--text-lg);
+  }
+
+  /* Small Mobile Icons */
+  .dice-icon img,
+  .card-icon img,
+  .laser-icon img,
+  .part-icon img {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Small Mobile Card Location */
+  .card-location-info {
+    padding: 1rem;
+  }
+
+  /* Small Mobile Tables */
+  .sub-stats-table th,
+  .sub-stats-table td {
+    padding: 0.5rem;
+    font-size: var(--text-xs);
+  }
+
+  /* Small Mobile Usage */
+  .usage-info-item span {
+    font-size: var(--text-base);
+  }
+
+  /* Small Mobile Requirements */
+  .requirements-item {
+    font-size: var(--text-base);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .requirements-number {
+    font-size: var(--text-sm);
+    align-self: flex-start;
+    min-width: 1.25rem;
+    padding: 0.2rem 0.4rem;
+  }
+}

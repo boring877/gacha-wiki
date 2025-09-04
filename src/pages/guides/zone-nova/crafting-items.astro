@@ -1,0 +1,403 @@
+---
+import CraftingItemsLayout from '../../../layouts/zone-nova/CraftingItemsLayout.astro';
+---
+
+<CraftingItemsLayout
+  title="Zone Nova Crafting Items Guide - Dice, Card & Laser Machine | GachaWiki"
+  description="Complete guide to Zone Nova crafting items including Dice for rerolling sub stats, Cards for selecting substats, and Laser Machine for choosing main stats on rainbow runes."
+  gameTitle="Crafting Items"
+>
+  <!-- Crafting Items & Runes Section -->
+  <section class="content-section">
+    <h2 class="section-title">Crafting Items & Runes</h2>
+    <div class="section-description">
+      Crafting Items are mainly for Runes. There are 3 important items as of now.
+    </div>
+
+    <div class="items-grid">
+      <!-- Dice -->
+      <div class="item-card">
+        <div class="item-image">
+          <img
+            src="/images/games/zone-nova/crafting/dice.jpg"
+            alt="Zone Nova Dice crafting item for rerolling rune substats"
+            loading="lazy"
+          />
+        </div>
+        <h3>Dice</h3>
+      </div>
+
+      <!-- Card -->
+      <div class="item-card">
+        <div class="item-image">
+          <img
+            src="/images/games/zone-nova/crafting/Card.jpg"
+            alt="Zone Nova Card crafting item for selecting rune substats"
+            loading="lazy"
+          />
+        </div>
+        <h3>Card</h3>
+      </div>
+
+      <!-- Laser Machine -->
+      <div class="item-card">
+        <div class="item-image">
+          <img
+            src="/images/games/zone-nova/crafting/laser.jpg"
+            alt="Zone Nova Laser Machine for choosing rune main stats"
+            loading="lazy"
+          />
+        </div>
+        <h3>Laser Machine</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dice Section -->
+  <section class="content-section">
+    <!-- Main Dice Section -->
+    <div class="dice-section-container">
+      <!-- Dice Overview Container -->
+      <div class="dice-overview-container">
+        <!-- Title with Dice Image -->
+        <div class="dice-title-container">
+          <h2 class="section-title">Dice</h2>
+          <div class="dice-icon">
+            <img src="/images/games/zone-nova/crafting/dice.jpg" alt="Dice" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="section-description">
+          Dice basically change the values you have in sub stats without changing the sub stat type.
+          It reorganizes the improvements.
+        </div>
+
+        <!-- Dice1 Image Below -->
+        <div class="dice-showcase">
+          <img
+            src="/images/games/zone-nova/crafting/dice1.jpg"
+            alt="Zone Nova Dice interface showing rune substat reroll system"
+            loading="lazy"
+            class="full-size-image"
+          />
+        </div>
+      </div>
+
+      <!-- Dice Parts Container -->
+      <div class="dice-parts-wrapper">
+        <!-- Part 1: Requirements -->
+        <div class="dice-part-container requirements-container">
+          <!-- Title with Requirements Icon -->
+          <div class="part-title-container">
+            <h3 class="part-title">Requirements</h3>
+            <div class="part-icon">
+              <img
+                src="/images/games/zone-nova/crafting/dice.jpg"
+                alt="Requirements"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Requirements Content -->
+          <div class="part-content">
+            <ul class="requirements-list">
+              <li class="requirements-item">
+                <span class="requirements-number">1</span>
+                Fully maxed out rune +15
+              </li>
+              <li class="requirements-item">
+                <span class="requirements-number">2</span>
+                Rainbow runes
+              </li>
+            </ul>
+
+            <div class="part-showcase">
+              <img
+                src="/images/games/zone-nova/crafting/dice2.jpg"
+                alt="Zone Nova Dice requirements showing +15 rainbow rune needed"
+                loading="lazy"
+                class="showcase-image"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Part 2: Sub Stats Possibility -->
+        <div class="dice-part-container sub-stats-container">
+          <!-- Title with Sub Stats Icon -->
+          <div class="part-title-container">
+            <h3 class="part-title">Sub Stats Possibility</h3>
+            <div class="part-icon">
+              <img src="/images/games/zone-nova/crafting/dice.jpg" alt="Sub Stats" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Sub Stats Content -->
+          <div class="part-content">
+            <div class="table-container">
+              <table class="sub-stats-table">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Value (Example)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Attack (%)</td>
+                    <td class="value-cell">10%</td>
+                  </tr>
+                  <tr>
+                    <td>Attack (Flat)</td>
+                    <td class="value-cell">250</td>
+                  </tr>
+                  <tr>
+                    <td>HP (%)</td>
+                    <td class="value-cell">12%</td>
+                  </tr>
+                  <tr>
+                    <td>HP (Flat)</td>
+                    <td class="value-cell">1500</td>
+                  </tr>
+                  <tr>
+                    <td>Defense (%)</td>
+                    <td class="value-cell">8%</td>
+                  </tr>
+                  <tr>
+                    <td>Defense (Flat)</td>
+                    <td class="value-cell">180</td>
+                  </tr>
+                  <tr>
+                    <td>Critical Rate (%)</td>
+                    <td class="value-cell">6%</td>
+                  </tr>
+                  <tr>
+                    <td>Critical Damage (%)</td>
+                    <td class="value-cell">15%</td>
+                  </tr>
+                  <tr>
+                    <td>Penetration (Flat)</td>
+                    <td class="value-cell">85</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-note">
+              <p>
+                <span class="note-label">Note:</span>
+                All runes can roll any combination of these sub stats. The actual values and number of
+                substats depend on rune rarity and upgrade level.
+              </p>
+              <p>
+                <span class="important-label">Important:</span>
+                You can NOT have Main Stats and Sub stats be the same. E.g. Attack % main stat cannot
+                also get Attack % on sub stats.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Part 3: Dice Usage -->
+        <div class="dice-part-container usage-container">
+          <!-- Title with Dice Usage Icon -->
+          <div class="part-title-container">
+            <h3 class="part-title">Dice Usage</h3>
+            <div class="part-icon">
+              <img
+                src="/images/games/zone-nova/crafting/dice.jpg"
+                alt="Dice Usage"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Usage Content -->
+          <div class="part-content">
+            <div class="usage-info-grid">
+              <div class="usage-info-item">
+                <span class="usage-label-red">Attack & Defense:</span>
+                <p>
+                  Both Attack and Defense have coefficient numbers (K), meaning their value get less
+                  after you increase them after certain number.
+                </p>
+              </div>
+              <div class="usage-info-item">
+                <span class="usage-label-green">HP, Crit Rate & Crit Damage:</span>
+                <p>
+                  HP, Crit damage and Crit rate are the ones should be aiming for dice to hit. You
+                  want maximum Crit damage, then Crit rate or HP both flat and %.
+                </p>
+              </div>
+              <div class="usage-info-item">
+                <span class="usage-label-orange">Penetration:</span>
+                <p>
+                  Penetration seems has the same problem with attack and defense coefficients,
+                  however it needs more testing!!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Card & Laser Section -->
+  <section class="content-section">
+    <!-- Main Card & Laser Section -->
+    <div class="card-laser-section-container">
+      <!-- Card & Laser Overview Container -->
+      <div class="card-laser-overview-container">
+        <!-- Title with Both Images -->
+        <div class="card-laser-title-container">
+          <h2 class="section-title">Card & Laser Machine</h2>
+          <div class="card-laser-icons">
+            <div class="card-icon">
+              <img src="/images/games/zone-nova/crafting/Card.jpg" alt="Card" loading="lazy" />
+            </div>
+            <div class="laser-icon">
+              <img
+                src="/images/games/zone-nova/crafting/laser.jpg"
+                alt="Zone Nova Laser Machine for choosing rune main stats"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="section-description">
+          Card and Laser Machine are both used in rune crafting to give you more control over your
+          rainbow runes.
+        </div>
+      </div>
+
+      <!-- Card & Laser Parts Container -->
+      <div class="card-laser-parts-wrapper">
+        <!-- Part 1: Card -->
+        <div class="dice-part-container card-container">
+          <!-- Title with Card Icon -->
+          <div class="part-title-container">
+            <h3 class="part-title">Card</h3>
+            <div class="part-icon">
+              <img src="/images/games/zone-nova/crafting/Card.jpg" alt="Card" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Card Content -->
+          <div class="part-content">
+            <div class="card-info">
+              <p>
+                Card lets you choose the sub stats you want from rainbow runes instead of getting
+                random ones.
+              </p>
+              <p><strong>Cost:</strong> Each sub stat you choose costs you one card.</p>
+              <p><strong>Limit:</strong> You can maximum select two sub stats and use 2 cards.</p>
+            </div>
+
+            <div class="part-showcase">
+              <img
+                src="/images/games/zone-nova/crafting/card7.jpg"
+                alt="Card Usage Example"
+                loading="lazy"
+                class="showcase-image"
+              />
+            </div>
+
+            <div class="card-location-info">
+              <p>
+                You can find this menu in crafting page for runes rainbow. You have to first select
+                the type of runes.
+              </p>
+              <div class="part-showcase">
+                <img
+                  src="/images/games/zone-nova/crafting/card6.jpg"
+                  alt="Rune Type Selection"
+                  loading="lazy"
+                  class="showcase-image"
+                />
+              </div>
+
+              <p>
+                <strong>Important:</strong> One mistake people make - they do not click on type of runes.
+              </p>
+              <div class="part-showcase">
+                <img
+                  src="/images/games/zone-nova/crafting/card3.jpg"
+                  alt="Click Rune Type Warning"
+                  loading="lazy"
+                  class="showcase-image"
+                />
+              </div>
+
+              <p>You can find crafting page in your bag.</p>
+              <div class="part-showcase">
+                <img
+                  src="/images/games/zone-nova/crafting/card1.jpg"
+                  alt="Bag Crafting Access"
+                  loading="lazy"
+                  class="showcase-image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Part 2: Laser Machine -->
+        <div class="dice-part-container laser-container">
+          <!-- Title with Laser Icon -->
+          <div class="part-title-container">
+            <h3 class="part-title">Laser Machine</h3>
+            <div class="part-icon">
+              <img
+                src="/images/games/zone-nova/crafting/laser.jpg"
+                alt="Zone Nova Laser Machine for choosing rune main stats"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Laser Content -->
+          <div class="part-content">
+            <div class="laser-info">
+              <p>Laser Machine lets you choose the main stats when crafting rainbow runes.</p>
+              <p>
+                <strong>Important:</strong> The main stat only changes in rune positions 4, 5, and 6.
+                Positions 1, 2, and 3 have fixed main stats.
+              </p>
+            </div>
+
+            <div class="rune-positions-info">
+              <h4>Rune Position Main Stats</h4>
+              <ul class="position-list">
+                <li>
+                  <span class="position-number">1, 2, 3</span> Fixed main stats (cannot be changed)
+                </li>
+                <li>
+                  <span class="position-number">4, 5, 6</span> Variable main stats (can be chosen with
+                  Laser Machine)
+                </li>
+              </ul>
+
+              <div class="laser-note">
+                <p><strong>Note:</strong> You cannot have the same stats in main and sub stats.</p>
+              </div>
+            </div>
+
+            <div class="part-showcase">
+              <img
+                src="/images/games/zone-nova/crafting/card7.jpg"
+                alt="Laser Machine Interface"
+                loading="lazy"
+                class="showcase-image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</CraftingItemsLayout>

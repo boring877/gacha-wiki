@@ -91,6 +91,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [
           { name: 'Runes', href: '/guides/zone-nova/runes/' },
           { name: 'Crafting', href: '/guides/zone-nova/crafting/' },
+          { name: 'Crafting Items', href: '/guides/zone-nova/crafting-items/' },
         ],
       },
       {
