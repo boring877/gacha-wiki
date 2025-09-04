@@ -2,9 +2,10 @@
 
 export const gearUpgradesData = {
   meta: {
-    title: 'End Game Gear Upgrades - Silver and Blood - GachaWiki',
+    title:
+      'Silver and Blood Gear Upgrades Guide - SoulsStrike Hammer, Recast & Refinement | GachaWiki',
     description:
-      'Complete guide to Tier 9 gear upgrades, Echo blessings, sub-stats, and SoulsStrike mechanics in Silver and Blood',
+      'Complete Silver and Blood Tier 9 gear upgrades guide covering SoulsStrike hammer mechanics, Echo blessing recast rates, refinement strategies, and tier roll probabilities.',
     lastUpdated: new Date('2025-01-02'),
   },
 
