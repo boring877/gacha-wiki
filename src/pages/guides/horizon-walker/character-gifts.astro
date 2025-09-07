@@ -1,0 +1,516 @@
+---
+import CharacterGiftLayout from '../../../layouts/horizon-walker/CharacterGiftLayout.astro';
+import { CHARACTER_GIFT_PREFERENCES } from '../../../data/horizon-walker/character-gifts.js';
+import { GIFT_BOXES } from '../../../data/horizon-walker/gifts.js';
+import { Image } from 'astro:assets';
+
+// Create a mapping of gift ID to gift boxes that contain it
+const giftToBoxMapping = {};
+const giftNameToBoxMapping = {};
+
+GIFT_BOXES.forEach(box => {
+  box.gifts?.forEach(gift => {
+    // Map by ID (original logic)
+    if (!giftToBoxMapping[gift.id]) {
+      giftToBoxMapping[gift.id] = [];
+    }
+    giftToBoxMapping[gift.id].push({
+      id: box.id,
+      name: box.name,
+      image: box.image,
+    });
+
+    // Also map by gift name to handle duplicates
+    if (!giftNameToBoxMapping[gift.name]) {
+      giftNameToBoxMapping[gift.name] = [];
+    }
+    // Avoid duplicate boxes for the same gift name
+    const existingBox = giftNameToBoxMapping[gift.name].find(b => b.id === box.id);
+    if (!existingBox) {
+      giftNameToBoxMapping[gift.name].push({
+        id: box.id,
+        name: box.name,
+        image: box.image,
+      });
+    }
+  });
+});
+
+// Function to check if character has released gift info
+function hasReleasedInfo(character) {
+  return (
+    (character.favorites && character.favorites.length > 0) ||
+    (character.likes && character.likes.length > 0)
+  );
+}
+
+// Sort characters: released info first, then unreleased
+const sortedCharacters = [...CHARACTER_GIFT_PREFERENCES].sort((a, b) => {
+  const aHasInfo = hasReleasedInfo(a);
+  const bHasInfo = hasReleasedInfo(b);
+
+  // If one has info and the other doesn't, prioritize the one with info
+  if (aHasInfo && !bHasInfo) return -1;
+  if (!aHasInfo && bHasInfo) return 1;
+
+  // If both have the same status, sort alphabetically by name
+  return a.name.localeCompare(b.name);
+});
+
+// Function to calculate gifts needed for level 5 (2000 points)
+function calculateGiftsNeeded(gift) {
+  const targetPoints = 2000;
+  const giftsNeeded = Math.ceil(targetPoints / gift.totalPoints);
+  return giftsNeeded;
+}
+
+// Function to check if character has Queen's Tiara in their preferences
+function hasQueensTiara(character) {
+  const hasInFavorites = character.favorites?.some(gift => gift.id === 'queens-tiara');
+  const hasInLikes = character.likes?.some(gift => gift.id === 'queens-tiara');
+  return hasInFavorites || hasInLikes;
+}
+
+// Queen's Tiara gift object for great value recommendation
+const queensTiaraGift = {
+  id: 'queens-tiara',
+  name: "Queen's Tiara",
+  rarity: 'EX',
+  image: '/images/games/horizon-walker/Gifts/Queen_tiara.jpg',
+  basePoints: 100,
+  bonusPoints: 0,
+  totalPoints: 100,
+};
+---
+
+<CharacterGiftLayout
+  title="Horizon Walker Gifts Guide - Character Affection & Gift Preferences 2025 | GachaWiki"
+  description="Complete Horizon Walker gifts guide for all characters. Learn which gifts to give for maximum affection points, Level 5 bonuses, Queen's Tiara locations, and character favorites/likes. Gift guide for Berga, Everette, Fammene, and more."
+  pageTitle="Character Gift Preferences"
+  breadcrumbs={[{ name: 'Character Gifts' }]}
+>
+  <!-- Character Gift Guide Section -->
+  <section class="hw-gift-section" id="character-gifts">
+    <h2 class="hw-section-title">Gift Preference Guide</h2>
+
+    <div class="hw-section-content">
+      <p>
+        Each character has specific gift preferences that affect affection point bonuses. Use this
+        guide to find the best gifts for your favorite characters.
+      </p>
+
+      <div class="hw-how-to-gift">
+        <p>
+          <span class="hw-how-to-label">How to Gift:</span> You can gift characters by going to <span
+            class="hw-highlight-action">Call</span
+          > in the phone and calling a character, then you should see <span
+            class="hw-highlight-action">Gift</span
+          > in the 4 options.
+        </p>
+      </div>
+
+      <div class="hw-tip-box">
+        <h3>Recommendation: Brilliant Gift Box</h3>
+        <p>
+          Queen's Tiara has the highest point value (100-120) regardless of character. Since it's
+          available in the Brilliant Gift Box, you should always pick that gift for maximum points.
+        </p>
+      </div>
+
+      <div class="hw-info-section">
+        <div class="hw-info-item">
+          <h4>Gift Preferences</h4>
+          <p>
+            <span class="hw-label">Favorites:</span> Base points + <span class="hw-highlight"
+              >+20 bonus</span
+            >
+          </p>
+          <p>
+            <span class="hw-label">Likes:</span> Base points + <span class="hw-highlight"
+              >+10 bonus</span
+            >
+          </p>
+          <p><span class="hw-label">No Preference:</span> Base points only</p>
+        </div>
+
+        <div class="hw-info-item">
+          <h4>Affection Target</h4>
+          <p>There are <span class="hw-highlight">5 levels</span> for affection a character.</p>
+          <p>
+            <span class="hw-label">Total Required:</span>
+            <span class="hw-highlight">2000 points</span> to max out any character
+          </p>
+        </div>
+
+        <div class="hw-info-item">
+          <h4>Rewards</h4>
+          <div class="hw-rewards-content">
+            <div class="hw-reward-item">
+              <span class="hw-label">Level Up Rewards:</span>
+              <div class="hw-reward-icons">
+                <div class="hw-reward-icon-item">
+                  <Image
+                    src="/images/games/horizon-walker/Gifts/Gold.jpg"
+                    alt="Gold"
+                    class="hw-reward-icon"
+                    width={32}
+                    height={32}
+                    loading="lazy"
+                  />
+                  <span class="hw-reward-name">Gold</span>
+                </div>
+                <div class="hw-reward-icon-item">
+                  <Image
+                    src="/images/games/horizon-walker/Gifts/Extercium.jpg"
+                    alt="Extercium"
+                    class="hw-reward-icon"
+                    width={32}
+                    height={32}
+                    loading="lazy"
+                  />
+                  <span class="hw-reward-name">Extercium</span>
+                </div>
+              </div>
+            </div>
+            <p>
+              <span class="hw-label">Special Unlocks:</span>
+              <span class="hw-highlight">Message Room</span>, <span class="hw-highlight"
+                >Jacuzzi Bathroom</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Character Search -->
+    <div class="hw-search-section">
+      <h3 class="hw-search-title">Search Characters</h3>
+      <div class="hw-character-search">
+        <input
+          type="text"
+          id="character-search"
+          class="hw-search-input"
+          placeholder="Type character name..."
+          autocomplete="off"
+        />
+      </div>
+    </div>
+
+    <!-- Rarity Filter -->
+    <div class="hw-rarity-filter">
+      <h3 class="hw-filter-title">Filter by Rarity</h3>
+      <div class="hw-rarity-buttons">
+        <button class="hw-rarity-btn active" data-rarity="all">All</button>
+        <button class="hw-rarity-btn" data-rarity="EX">EX</button>
+        <button class="hw-rarity-btn" data-rarity="SS">SS</button>
+        <button class="hw-rarity-btn" data-rarity="S">S</button>
+        <button class="hw-rarity-btn" data-rarity="A">A</button>
+        <button class="hw-rarity-btn" data-rarity="B">B</button>
+      </div>
+    </div>
+
+    <!-- Character Grid -->
+    <div class="hw-character-grid" id="character-grid">
+      {
+        sortedCharacters.map(character => (
+          <div
+            class="hw-character-card"
+            data-character={character.id}
+            data-rarity={character.rarity}
+          >
+            <div class="hw-character-header">
+              <div class="hw-character-image">
+                <Image
+                  src={character.image}
+                  alt={character.name}
+                  class="character-img"
+                  width={100}
+                  height={100}
+                  loading="lazy"
+                />
+              </div>
+              <div class="hw-character-info">
+                <h3 class="hw-character-name">{character.name}</h3>
+                <div class="hw-character-rarity">
+                  <span class="hw-badge" data-rarity={character.rarity}>
+                    {character.rarity}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hw-gift-preferences">
+              {character.level5Bonus && (
+                <div class="hw-level5-bonus-section">
+                  <h4 class="hw-level5-bonus-title">Level 5 Combat Bonus</h4>
+                  <div class="hw-level5-bonus-content">
+                    <div class="hw-level5-bonus-item">
+                      <span class="hw-bonus-type">{character.level5Bonus.type}</span>
+                      <span class="hw-bonus-value">{character.level5Bonus.value}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {character.favorites && character.favorites.length > 0 && (
+                <div class="hw-preference-section hw-favorites-section">
+                  <h4 class="hw-preference-title hw-favorites-title">
+                    Favorite Gifts (+20 Points)
+                  </h4>
+                  {character.favorites.map(gift => (
+                    <div class="hw-favorite-item">
+                      <div class="hw-favorite-gift-image">
+                        <Image
+                          src={gift.image}
+                          alt={gift.name}
+                          class="gift-favorite-img"
+                          width={70}
+                          height={70}
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="hw-favorite-details">
+                        <div class="hw-favorite-header">
+                          <div class="hw-favorite-title-group">
+                            <h5 class="hw-favorite-name">{gift.name}</h5>
+                            <div class="hw-favorite-badges">
+                              <span class="hw-badge" data-rarity={gift.rarity}>
+                                {gift.rarity}
+                              </span>
+                              <span class="hw-badge hw-badge-favorites">Favorite</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="hw-favorite-stats">
+                          <div class="hw-favorite-stat">
+                            <span class="hw-stat-label">Total Points:</span>
+                            <span class="hw-stat-value hw-stat-points">{gift.totalPoints}</span>
+                          </div>
+                          <div class="hw-favorite-stat">
+                            <span class="hw-stat-label">Needed for Level 5:</span>
+                            <span class="hw-stat-value">{calculateGiftsNeeded(gift)} gifts</span>
+                          </div>
+                        </div>
+                        {(() => {
+                          // Try to find gift boxes by ID first, then by name
+                          let giftBoxes = giftToBoxMapping[gift.id] || [];
+                          const nameBoxes = giftNameToBoxMapping[gift.name] || [];
+
+                          // Combine and deduplicate boxes
+                          const allBoxes = [...giftBoxes];
+                          nameBoxes.forEach(nameBox => {
+                            if (!allBoxes.find(box => box.id === nameBox.id)) {
+                              allBoxes.push(nameBox);
+                            }
+                          });
+
+                          return (
+                            allBoxes &&
+                            allBoxes.length > 0 && (
+                              <div class="hw-gift-sources">
+                                <h6 class="hw-sources-title">Available From</h6>
+                                {allBoxes.map(box => (
+                                  <div class="hw-source-box">
+                                    <Image
+                                      src={box.image}
+                                      alt={box.name}
+                                      class="hw-source-icon"
+                                      width={40}
+                                      height={40}
+                                      loading="lazy"
+                                    />
+                                    <span class="hw-source-name">{box.name}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            )
+                          );
+                        })()}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {character.likes && character.likes.length > 0 && (
+                <div class="hw-preference-section hw-likes-section" style="margin-top: 1rem;">
+                  <h4 class="hw-preference-title hw-likes-title">Liked Gifts (+10 Points)</h4>
+                  {character.likes.map(gift => (
+                    <div class="hw-like-item">
+                      <div class="hw-like-gift-image">
+                        <Image
+                          src={gift.image}
+                          alt={gift.name}
+                          class="gift-like-img"
+                          width={70}
+                          height={70}
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="hw-like-details">
+                        <div class="hw-like-header">
+                          <div class="hw-like-title-group">
+                            <h5 class="hw-like-name">{gift.name}</h5>
+                            <div class="hw-like-badges">
+                              <span class="hw-badge" data-rarity={gift.rarity}>
+                                {gift.rarity}
+                              </span>
+                              <span class="hw-badge hw-badge-likes">Like</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="hw-like-stats">
+                          <div class="hw-like-stat">
+                            <span class="hw-stat-label">Total Points:</span>
+                            <span class="hw-stat-value hw-stat-points">{gift.totalPoints}</span>
+                          </div>
+                          <div class="hw-like-stat">
+                            <span class="hw-stat-label">Needed for Level 5:</span>
+                            <span class="hw-stat-value">{calculateGiftsNeeded(gift)} gifts</span>
+                          </div>
+                        </div>
+                        {(() => {
+                          // Try to find gift boxes by ID first, then by name
+                          let giftBoxes = giftToBoxMapping[gift.id] || [];
+                          const nameBoxes = giftNameToBoxMapping[gift.name] || [];
+
+                          // Combine and deduplicate boxes
+                          const allBoxes = [...giftBoxes];
+                          nameBoxes.forEach(nameBox => {
+                            if (!allBoxes.find(box => box.id === nameBox.id)) {
+                              allBoxes.push(nameBox);
+                            }
+                          });
+
+                          return (
+                            allBoxes &&
+                            allBoxes.length > 0 && (
+                              <div class="hw-gift-sources">
+                                <h6 class="hw-sources-title">Available From</h6>
+                                {allBoxes.map(box => (
+                                  <div class="hw-source-box">
+                                    <Image
+                                      src={box.image}
+                                      alt={box.name}
+                                      class="hw-source-icon"
+                                      width={40}
+                                      height={40}
+                                      loading="lazy"
+                                    />
+                                    <span class="hw-source-name">{box.name}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            )
+                          );
+                        })()}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {!hasQueensTiara(character) &&
+                (character.favorites?.length > 0 || character.likes?.length > 0) && (
+                  <div
+                    class="hw-preference-section hw-alternative-section"
+                    style="margin-top: 1.5rem;"
+                  >
+                    <h4 class="hw-preference-title hw-alternative-title">
+                      Alternative High-Value Option
+                    </h4>
+                    <div class="hw-alternative-content">
+                      <div class="hw-alternative-item">
+                        <div class="hw-alternative-gift-image">
+                          <Image
+                            src={queensTiaraGift.image}
+                            alt={queensTiaraGift.name}
+                            class="gift-alternative-img"
+                            width={70}
+                            height={70}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="hw-alternative-details">
+                          <div class="hw-alternative-header">
+                            <div class="hw-alternative-title-group">
+                              <h5 class="hw-alternative-name">{queensTiaraGift.name}</h5>
+                              <div class="hw-alternative-badges">
+                                <span class="hw-badge" data-rarity={queensTiaraGift.rarity}>
+                                  {queensTiaraGift.rarity}
+                                </span>
+                                <span class="hw-badge hw-badge-value">High Value</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hw-alternative-stats">
+                            <div class="hw-alternative-stat">
+                              <span class="hw-stat-label">Total Points:</span>
+                              <span class="hw-stat-value hw-stat-points">
+                                {queensTiaraGift.totalPoints}
+                              </span>
+                            </div>
+                            <div class="hw-alternative-stat">
+                              <span class="hw-stat-label">Needed for Level 5:</span>
+                              <span class="hw-stat-value">
+                                {calculateGiftsNeeded(queensTiaraGift)} gifts
+                              </span>
+                            </div>
+                          </div>
+                          {(() => {
+                            // Try to find gift boxes by ID first, then by name for Queen's Tiara
+                            let giftBoxes = giftToBoxMapping[queensTiaraGift.id] || [];
+                            const nameBoxes = giftNameToBoxMapping[queensTiaraGift.name] || [];
+
+                            // Combine and deduplicate boxes
+                            const allBoxes = [...giftBoxes];
+                            nameBoxes.forEach(nameBox => {
+                              if (!allBoxes.find(box => box.id === nameBox.id)) {
+                                allBoxes.push(nameBox);
+                              }
+                            });
+
+                            return (
+                              allBoxes &&
+                              allBoxes.length > 0 && (
+                                <div class="hw-gift-sources">
+                                  <h6 class="hw-sources-title">Available From</h6>
+                                  {allBoxes.map(box => (
+                                    <div class="hw-source-box">
+                                      <Image
+                                        src={box.image}
+                                        alt={box.name}
+                                        class="hw-source-icon"
+                                        width={40}
+                                        height={40}
+                                        loading="lazy"
+                                      />
+                                      <span class="hw-source-name">{box.name}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              )
+                            );
+                          })()}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+              {(!character.favorites || character.favorites.length === 0) &&
+                (!character.likes || character.likes.length === 0) && (
+                  <div class="hw-no-preferences">
+                    <strong>Not released</strong> - Gift preferences not available yet
+                  </div>
+                )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</CharacterGiftLayout>
+
+<script src="/scripts/horizon-walker/character-gifts.js" defer></script>

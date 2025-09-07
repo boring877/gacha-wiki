@@ -141,6 +141,16 @@ export const horizonWalkerConfig = {
       size: 'large',
       guides: [
         {
+          id: 'gifts',
+          title: 'Gifts',
+          url: '/guides/horizon-walker/gifts/',
+        },
+        {
+          id: 'character-gifts',
+          title: 'Character Gifts',
+          url: '/guides/horizon-walker/character-gifts/',
+        },
+        {
           id: 'clock',
           title: 'Clock',
           url: '/clock/horizon-walker/',

@@ -102,7 +102,7 @@ export const HORIZON_WALKER_CHARACTERS = [
   {
     id: 2,
     name: 'Bella',
-    rarity: 'SS',
+    rarity: 'S',
     cost: 4,
     class: 'Support',
     element: 'Magic',
@@ -795,7 +795,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/juha',
   },
   {
-    id: 16,
+    id: 17,
     name: 'Kalina',
     rarity: 'SS',
     cost: 4,
@@ -837,7 +837,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/kalina',
   },
   {
-    id: 17,
+    id: 18,
     name: 'Kilon',
     rarity: 'SS',
     cost: 5,
@@ -882,7 +882,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/kilon',
   },
   {
-    id: 18,
+    id: 19,
     name: 'Kim Ga-young',
     rarity: 'S',
     cost: 3,
@@ -930,7 +930,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/kim-ga-young',
   },
   {
-    id: 19,
+    id: 20,
     name: 'Luise',
     rarity: 'SS',
     cost: 6,
@@ -978,7 +978,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/luise',
   },
   {
-    id: 20,
+    id: 21,
     name: 'Mahari',
     rarity: 'EX',
     cost: 3,
@@ -1027,9 +1027,9 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/mahari',
   },
   {
-    id: 21,
+    id: 22,
     name: 'Lisandria',
-    rarity: 'EX',
+    rarity: 'SS',
     cost: 4,
     class: 'Warrior',
     element: 'Physical',
@@ -1075,7 +1075,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/lisandria',
   },
   {
-    id: 22,
+    id: 23,
     name: 'Marhim',
     rarity: 'EX',
     cost: 4,
@@ -1120,7 +1120,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/marhim',
   },
   {
-    id: 23,
+    id: 24,
     name: 'Matrotho',
     rarity: 'EX',
     cost: 4,
@@ -1165,7 +1165,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/matrotho',
   },
   {
-    id: 24,
+    id: 25,
     name: 'Min Eun-sol',
     rarity: 'A',
     cost: 6,
@@ -1204,7 +1204,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/min-eun-sol',
   },
   {
-    id: 24,
+    id: 26,
     name: 'Osla',
     rarity: 'SS',
     cost: 5,
@@ -1249,7 +1249,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/osla',
   },
   {
-    id: 25,
+    id: 27,
     name: 'Nari',
     rarity: 'EX',
     cost: 6,
@@ -1298,7 +1298,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/nari',
   },
   {
-    id: 26,
+    id: 28,
     name: 'Nika',
     rarity: 'EX',
     cost: 4,
@@ -1343,7 +1343,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/nika',
   },
   {
-    id: 27,
+    id: 29,
     name: 'Nymset',
     rarity: 'S',
     cost: 4,
@@ -1391,7 +1391,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/nymset',
   },
   {
-    id: 28,
+    id: 30,
     name: 'Nonoha',
     rarity: 'A',
     cost: 4,
@@ -1436,7 +1436,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/nonoha',
   },
   {
-    id: 29,
+    id: 31,
     name: 'Olivia',
     rarity: 'EX',
     cost: 8,
@@ -1479,9 +1479,9 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/olivia',
   },
   {
-    id: 30,
+    id: 32,
     name: 'Pantheri',
-    rarity: 'SS',
+    rarity: 'S',
     cost: 4,
     class: 'Warrior',
     element: 'Physical',
@@ -1527,7 +1527,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/pantheri',
   },
   {
-    id: 31,
+    id: 33,
     name: 'Platina',
     rarity: 'EX',
     cost: 7,
@@ -1577,7 +1577,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/platina',
   },
   {
-    id: 32,
+    id: 34,
     name: 'Re_De_Da',
     rarity: 'A',
     cost: 2,
@@ -1624,7 +1624,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/re-de-da',
   },
   {
-    id: 33,
+    id: 35,
     name: 'Rhasadina',
     rarity: 'A',
     cost: 3,
@@ -1669,7 +1669,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/rhasadina',
   },
   {
-    id: 34,
+    id: 36,
     name: 'Samarika',
     rarity: 'S',
     cost: 4,
@@ -1718,9 +1718,9 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/samarika',
   },
   {
-    id: 35,
+    id: 37,
     name: 'So Joo-hee',
-    rarity: 'SS',
+    rarity: 'A',
     cost: 3,
     class: 'Assassin',
     element: 'Physical',
@@ -1765,7 +1765,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/so-joo-hee',
   },
   {
-    id: 36,
+    id: 38,
     name: 'Yeon Chae-Young',
     rarity: 'S',
     cost: 4,
@@ -1809,7 +1809,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/yeon-chae-young',
   },
   {
-    id: 37,
+    id: 39,
     name: 'Yvonna',
     rarity: 'EX',
     cost: 5,
@@ -1858,7 +1858,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/yvonna',
   },
   {
-    id: 38,
+    id: 40,
     name: 'Valeta',
     rarity: 'EX',
     cost: 6,
@@ -1907,7 +1907,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/valeta',
   },
   {
-    id: 39,
+    id: 41,
     name: 'Vlissing',
     rarity: 'EX',
     cost: 6,
@@ -1956,7 +1956,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/vlissing',
   },
   {
-    id: 43,
+    id: 42,
     name: 'TX - Manticore',
     rarity: 'EX',
     cost: 8,
@@ -2005,7 +2005,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/tx-manticore',
   },
   {
-    id: 44,
+    id: 43,
     name: 'Yui',
     rarity: 'EX',
     cost: 7,
@@ -2051,7 +2051,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/yui',
   },
   {
-    id: 45,
+    id: 44,
     name: 'Yeonwoo',
     rarity: 'EX',
     cost: 6,
@@ -2097,7 +2097,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/yeonwoo',
   },
   {
-    id: 46,
+    id: 45,
     name: 'Kalma',
     rarity: 'EX',
     cost: 5,

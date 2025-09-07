@@ -95,6 +95,120 @@ h3 {
   border: 1px solid var(--sab-calm-red);
 }
 
+/* ===== CHARACTER DATABASE HEADER ===== */
+.character-database-header {
+  text-align: center;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, #2a2a2a 60%, #1a1a1a 100%);
+  border-radius: 12px;
+  border: 1px solid #3a3a3a;
+}
+
+.character-database-title {
+  color: var(--sab-muted-gold);
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.character-database-subtitle {
+  color: var(--sab-text-muted);
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.character-nav-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.character-nav-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.character-nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.character-nav-button.comparison {
+  background: linear-gradient(135deg, #dc3545, #b22222);
+}
+
+.character-nav-button.rankings {
+  background: linear-gradient(135deg, #28a745, #1e7e34);
+}
+
+.character-nav-button.tags {
+  background: linear-gradient(135deg, #6f42c1, #563d7c);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .character-database-header {
+    padding: 0.75rem;
+    margin: 1rem 0;
+  }
+
+  .character-database-title {
+    font-size: 0.9rem;
+  }
+
+  .character-database-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .character-nav-button {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .character-nav-buttons {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .character-database-title {
+    font-size: 0.85rem;
+  }
+
+  .character-database-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .character-nav-button {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .character-nav-buttons {
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .character-nav-button {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+}
+
 /* ===== TAG BADGES (new) ===== */
 .tag-badge {
   padding: 0.3rem 0.8rem;

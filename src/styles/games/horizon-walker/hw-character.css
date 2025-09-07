@@ -49,6 +49,38 @@
     line-height: var(--leading-tight);
   }
 
+  /* Character Database Header */
+  .hw-character-database-header {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--hw-bg-dark);
+    border-radius: 12px;
+    border: 1px solid var(--hw-border-accent);
+  }
+
+  .hw-character-database-title {
+    color: var(--hw-primary-warm);
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .hw-character-database-subtitle {
+    color: var(--hw-text-muted);
+    margin: 0.5rem 0 0 0;
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  .hw-char-db-stats-summary {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
   .hw-char-db-hero-subtitle {
     font-size: var(--hw-font-xl);
     color: var(--hw-text-muted);
@@ -534,6 +566,20 @@
       gap: var(--hw-spacing-sm);
     }
 
+    /* Character Database Header Mobile */
+    .hw-character-database-header {
+      padding: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .hw-character-database-title {
+      font-size: 0.9rem;
+    }
+
+    .hw-character-database-subtitle {
+      font-size: 0.8rem;
+    }
+
     /* Hero section responsive styles */
     .hw-char-db-hero-section {
       padding: 1.5rem 0.5rem;
@@ -554,6 +600,15 @@
     /* Page padding optimization */
     .hw-char-db-main-content {
       padding: 0.5rem;
+    }
+
+    /* Character Database Header Small Mobile */
+    .hw-character-database-title {
+      font-size: 0.85rem;
+    }
+
+    .hw-character-database-subtitle {
+      font-size: 0.75rem;
     }
 
     /* Mobile card optimizations */

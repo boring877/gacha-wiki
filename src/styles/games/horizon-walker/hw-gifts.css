@@ -1,0 +1,544 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                      HORIZON WALKER GIFTS PAGE STYLES                  */
+/*                    Styles for the gifts and rewards page                */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Gift Main Container */
+.hw-gift-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Gift Hero Section */
+.hw-gift-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.hw-gift-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+}
+
+.hw-gift-subtitle {
+  font-size: 1.25rem;
+  color: var(--hw-text-medium);
+  margin: 0 0 2rem 0;
+  opacity: 0.9;
+}
+
+/* Gift Content Container */
+.hw-gift-content {
+  background: var(--hw-bg-dark);
+  border-radius: var(--hw-radius-lg);
+  border: 1px solid var(--hw-border-accent);
+  padding: 2.5rem;
+}
+
+/* Content Sections */
+.hw-gift-section {
+  margin-bottom: 3rem;
+}
+
+.hw-gift-section:last-child {
+  margin-bottom: 0;
+}
+
+.hw-section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--hw-primary-warm);
+  margin: 0 0 2rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(232, 165, 71, 0.3);
+}
+
+.hw-section-content {
+  color: var(--hw-text-medium);
+  line-height: 1.8;
+}
+
+.hw-section-content p {
+  margin: 0 0 1.25rem 0;
+}
+
+.hw-section-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Highlighted Info Boxes */
+.hw-info-box {
+  background: rgba(232, 165, 71, 0.1);
+  border: 1px solid rgba(232, 165, 71, 0.3);
+  border-radius: var(--hw-radius-md);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.hw-info-box-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--hw-primary-warm);
+  margin: 0 0 0.75rem 0;
+}
+
+.hw-info-box-content {
+  color: var(--hw-text-medium);
+  line-height: 1.7;
+}
+
+/* Link styling */
+.hw-link {
+  color: var(--hw-primary-warm);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.hw-link:hover {
+  color: var(--hw-secondary-coral);
+}
+
+/* Unique badge */
+.hw-badge-unique {
+  background: #ff6f61;
+  color: #ffffff;
+  font-size: 0.65rem;
+}
+
+/* Unique gifts grid spacing */
+.hw-unique-gifts-grid {
+  margin-top: 2rem;
+}
+
+/* Affection System Info */
+.hw-affection-system-info {
+  background: rgba(232, 165, 71, 0.1);
+  border: 1px solid rgba(232, 165, 71, 0.3);
+  border-radius: var(--hw-radius-md);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.system-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.system-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--hw-primary-warm);
+  margin: 0;
+}
+
+.system-content {
+  text-align: center;
+}
+
+.system-description p {
+  color: var(--hw-text-medium);
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+}
+
+.system-levels {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.level-item {
+  text-align: center;
+}
+
+.level-name {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--hw-primary-warm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.level-desc {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--hw-text-muted);
+}
+
+.system-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: var(--hw-radius-sm);
+  font-size: 0.85rem;
+  color: var(--hw-text-medium);
+  line-height: 1.5;
+}
+
+.system-note strong {
+  color: var(--hw-primary-warm);
+  font-weight: 600;
+}
+
+/* Gift Box Styles */
+.hw-gift-box-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.hw-gift-box-card {
+  background: var(--hw-bg-dark);
+  border-radius: var(--hw-radius-lg);
+  border: 1px solid var(--hw-border-accent);
+  padding: 1.5rem;
+}
+
+/* Gift Box Header */
+.hw-gift-box-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(232, 165, 71, 0.2);
+}
+
+.hw-gift-box-image {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--hw-radius-md);
+  overflow: hidden;
+  background: var(--hw-bg-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gift-box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hw-gift-box-info {
+  flex: 1;
+}
+
+.hw-gift-box-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--hw-primary-warm);
+  margin: 0 0 0.5rem 0;
+}
+
+.hw-gift-box-tier {
+  margin-bottom: 0.75rem;
+}
+
+.hw-gift-box-tier .hw-badge {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.hw-gift-box-description {
+  color: var(--hw-text-medium);
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+.hw-gift-box-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.gift-count {
+  background: rgba(232, 165, 71, 0.2);
+  color: var(--hw-primary-warm);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--hw-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Gift Items Grid */
+.hw-gift-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.hw-gift-item {
+  background: var(--hw-bg-darker);
+  border-radius: var(--hw-radius-md);
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+}
+
+/* Touch-friendly hover states */
+@media (hover: hover) {
+  .hw-gift-item:hover {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(232, 165, 71, 0.3);
+  }
+
+  .hw-gift-box-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Touch feedback for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .hw-gift-item:active {
+    transform: scale(0.98);
+  }
+
+  .hw-gift-box-card:active {
+    transform: scale(0.99);
+  }
+}
+
+.hw-gift-item-image {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 0.5rem auto;
+  border-radius: var(--hw-radius-sm);
+  overflow: hidden;
+  background: var(--hw-bg-darker);
+}
+
+.gift-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hw-gift-item-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--hw-text-light);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.2;
+}
+
+.hw-gift-item-info .hw-badge {
+  margin: 0.25rem 0;
+  display: inline-block;
+  font-size: 0.7rem;
+}
+
+.hw-gift-points {
+  margin: 0.5rem 0 0 0;
+}
+
+.points-levels {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.points-item {
+  text-align: center;
+  flex: 1;
+}
+
+.points-label {
+  font-size: 0.65rem;
+  color: var(--hw-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.points-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--hw-primary-warm);
+  display: block;
+}
+
+/* Unique Gifts Styling */
+.hw-unique-gift {
+  background: linear-gradient(135deg, var(--hw-bg-darker) 0%, rgba(255, 111, 97, 0.1) 100%);
+  border: 1px solid rgba(255, 111, 97, 0.3);
+}
+
+.hw-unique-description {
+  font-size: 0.8rem;
+  color: var(--hw-text-medium);
+  margin: 0.5rem 0;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.hw-gift-badges {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0.25rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hw-gift-main {
+    padding: 1.5rem 1rem;
+  }
+
+  .hw-gift-content {
+    padding: 2rem;
+  }
+
+  .hw-gift-items-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hw-gift-main {
+    padding: 1rem 0.75rem;
+  }
+
+  .hw-gift-hero {
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .hw-gift-content {
+    padding: 1.5rem;
+    border-radius: var(--hw-radius-md);
+  }
+
+  .hw-gift-box-card {
+    padding: 1.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hw-gift-box-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .hw-gift-items-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .hw-gift-item {
+    min-height: 44px; /* Touch target size */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .system-levels {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Improve readability on mobile */
+  .hw-section-title {
+    font-size: 1.5rem;
+  }
+
+  .hw-info-box-title {
+    font-size: 1.1rem;
+  }
+
+  /* Better spacing for touch */
+  .hw-link {
+    padding: 0.25rem 0;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 480px) {
+  .hw-gift-main {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .hw-gift-content {
+    padding: 1rem;
+    border-radius: var(--hw-radius-sm);
+  }
+
+  .hw-gift-box-card {
+    padding: 1rem;
+  }
+
+  .hw-gift-box-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .hw-gift-item {
+    padding: 0.75rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hw-gift-item-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hw-gift-item-info {
+    width: 100%;
+  }
+
+  .hw-info-box {
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  /* Stack points horizontally with scroll */
+  .points-levels {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem 0;
+  }
+
+  .points-item {
+    flex-shrink: 0;
+    min-width: 60px;
+  }
+
+  /* Affection system responsive */
+  .hw-affection-system-info {
+    padding: 1rem;
+  }
+
+  .system-title {
+    font-size: 1.1rem;
+  }
+
+  .level-item {
+    padding: 0.5rem;
+  }
+
+  /* Gift box name responsive */
+  .hw-gift-box-name {
+    font-size: 1.2rem;
+  }
+
+  /* Title adjustments */
+  .hw-gift-title {
+    font-size: 2rem;
+  }
+}

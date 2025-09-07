@@ -1,0 +1,209 @@
+---
+import GiftLayout from '../../../layouts/horizon-walker/GiftLayout.astro';
+import { GIFT_BOXES, GIFT_RARITIES, UNIQUE_GIFTS } from '../../../data/horizon-walker/gifts.js';
+import { Image } from 'astro:assets';
+---
+
+<GiftLayout
+  title="Horizon Walker Gifts Guide - All Gift Boxes & Rewards Database 2025 | GachaWiki"
+  description="Complete Horizon Walker gifts database. All gift boxes (Brilliant, Luxurious, Ordinary), Queen's Tiara location, gift points system, and unique skins. Full list of all gifts with affection bonuses."
+  pageTitle="Gifts & Rewards"
+  breadcrumbs={[{ name: 'Gifts' }]}
+>
+  <!-- Gift Boxes Section -->
+  <section class="hw-gift-section" id="gift-boxes">
+    <h2 class="hw-section-title">Gift Boxes</h2>
+
+    <div class="hw-section-content">
+      <p>
+        Discover various gift boxes and their valuable contents. Each box contains different
+        rarities and types of rewards.
+      </p>
+
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">Character Gift Preferences</div>
+        <div class="hw-info-box-content">
+          Want to know which gifts each character prefers? Check out our <a
+            href="/guides/horizon-walker/character-gifts/"
+            class="hw-link">Character Gift Preferences guide</a
+          > to maximize your affection points!
+        </div>
+      </div>
+    </div>
+
+    <!-- Affection System Explanation -->
+    <div class="hw-affection-system-info">
+      <div class="system-header">
+        <h3 class="system-title">Affection Point System</h3>
+      </div>
+      <div class="system-content">
+        <div class="system-description">
+          <p>Gift points increase based on character affection levels:</p>
+        </div>
+        <div class="system-levels">
+          <div class="level-item">
+            <span class="level-name">Base</span>
+            <span class="level-desc">No affection bonus</span>
+          </div>
+          <div class="level-item">
+            <span class="level-name">Likes</span>
+            <span class="level-desc">+10 points</span>
+          </div>
+          <div class="level-item">
+            <span class="level-name">Favorites</span>
+            <span class="level-desc">+20 points</span>
+          </div>
+        </div>
+        <div class="system-note">
+          <strong>Note:</strong> Queen's Tiara has the highest point value (100-120) regardless of character,
+          as of today. Since it's available in the Brilliant Gift Box, you should always pick that gift
+          for maximum points.
+        </div>
+      </div>
+    </div>
+
+    <!-- Gift Box Grid -->
+    <div class="hw-gift-box-grid">
+      {
+        GIFT_BOXES.map(box => (
+          <div class="hw-gift-box-card" id={box.id} data-box={box.id}>
+            <div class="hw-gift-box-header">
+              <div class="hw-gift-box-image">
+                <img src={box.image} alt={box.name} class="gift-box-img" loading="lazy" />
+              </div>
+              <div class="hw-gift-box-info">
+                <h3 class="hw-gift-box-name">{box.name}</h3>
+                <div class="hw-gift-box-tier">
+                  {box.id === 'brilliant-gift-box' && (
+                    <span class="hw-badge" data-rarity="SS">
+                      SS
+                    </span>
+                  )}
+                  {box.id === 'luxurious-gift-box' && (
+                    <span class="hw-badge" data-rarity="S">
+                      S
+                    </span>
+                  )}
+                  {box.id === 'ordinary-gift-box' && (
+                    <span class="hw-badge" data-rarity="A">
+                      A
+                    </span>
+                  )}
+                </div>
+                <p class="hw-gift-box-description">{box.description}</p>
+                <div class="hw-gift-box-stats">
+                  <span class="gift-count">{box.gifts.length} Items</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hw-gift-items-grid">
+              {box.gifts.map(gift => (
+                <div class="hw-gift-item" data-rarity={gift.rarity}>
+                  <div class="hw-gift-item-image">
+                    <Image
+                      src={gift.image}
+                      alt={gift.name}
+                      class="gift-item-img"
+                      width={60}
+                      height={60}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="hw-gift-item-info">
+                    <h4 class="hw-gift-item-name">{gift.name}</h4>
+                    <span class="hw-badge" data-rarity={gift.rarity}>
+                      {gift.rarity}
+                    </span>
+                    <div class="hw-gift-points">
+                      <div class="points-levels">
+                        <div class="points-item">
+                          <span class="points-label">Base</span>
+                          <span class="points-value">{gift.points.min}</span>
+                        </div>
+                        <div class="points-item">
+                          <span class="points-label">Likes</span>
+                          <span class="points-value">{gift.points.min + 10}</span>
+                        </div>
+                        <div class="points-item">
+                          <span class="points-label">Favorites</span>
+                          <span class="points-value">{gift.points.max}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Unique/Skin Gifts Section -->
+  <section class="hw-gift-section" id="unique-gifts">
+    <h2 class="hw-section-title">Unique & Special Gifts</h2>
+
+    <div class="hw-section-content">
+      <p>
+        Special commemorative and unique gifts that are only available during limited events or
+        celebrations.
+      </p>
+
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">Important Note</div>
+        <div class="hw-info-box-content">
+          <strong>Skins also give 100 points</strong> (same as EX-tier gifts) with the standard affection
+          bonuses.
+        </div>
+      </div>
+    </div>
+
+    <!-- Unique Gifts Grid -->
+    <div class="hw-gift-items-grid hw-unique-gifts-grid">
+      {
+        UNIQUE_GIFTS.map(gift => (
+          <div class="hw-gift-item hw-unique-gift" data-rarity={gift.rarity}>
+            <div class="hw-gift-item-image">
+              <Image
+                src={gift.image}
+                alt={gift.name}
+                class="gift-item-img"
+                width={60}
+                height={60}
+                loading="lazy"
+              />
+            </div>
+            <div class="hw-gift-item-info">
+              <h4 class="hw-gift-item-name">{gift.name}</h4>
+              <div class="hw-gift-badges">
+                <span class="hw-badge" data-rarity={gift.rarity}>
+                  {gift.rarity}
+                </span>
+                <span class="hw-badge hw-badge-unique">{gift.type}</span>
+              </div>
+              {gift.description && <p class="hw-unique-description">{gift.description}</p>}
+              <div class="hw-gift-points">
+                <div class="points-levels">
+                  <div class="points-item">
+                    <span class="points-label">Base</span>
+                    <span class="points-value">{gift.points.min}</span>
+                  </div>
+                  <div class="points-item">
+                    <span class="points-label">Likes</span>
+                    <span class="points-value">{gift.points.min + 10}</span>
+                  </div>
+                  <div class="points-item">
+                    <span class="points-label">Favorites</span>
+                    <span class="points-value">{gift.points.max}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</GiftLayout>

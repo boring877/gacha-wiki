@@ -1,0 +1,97 @@
+---
+import HWBaseHead from '../../components/horizon-walker/HWBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+
+// Import CSS files
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-colors.css';
+import '../../styles/games/horizon-walker/hw-layout.css';
+import '../../styles/games/horizon-walker/hw-badges.css';
+import '../../styles/games/horizon-walker/hw-gifts.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  pageTitle: string;
+  subtitle?: string;
+  breadcrumbs?: Array<{ name: string; href?: string }>;
+}
+
+const { title, description, pageTitle, subtitle, breadcrumbs = [] } = Astro.props;
+
+// Default breadcrumbs if not provided
+const defaultBreadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
+  ...breadcrumbs,
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <HWBaseHead title={title} description={description} />
+    <GameSEO
+      gameKey="horizon-walker"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'horizon walker gifts',
+        'horizon walker gift boxes',
+        'hw rewards',
+        'brilliant gift box',
+        'luxurious gift box',
+        'ordinary gift box',
+        'queens tiara',
+        'horizon walker skins',
+        'unique gifts horizon walker',
+        'gift points system',
+        'hw affection points',
+        'horizon walker items database',
+      ]}
+    />
+  </head>
+  <body class="horizon-walker-body">
+    <CustomScrollbar />
+
+    <!-- Horizon Walker Background Layers -->
+    <div class="bg-layer hw-bg-primary"></div>
+    <div class="bg-layer hw-bg-accent-1"></div>
+    <div class="bg-layer hw-bg-accent-2"></div>
+    <div class="bg-layer hw-bg-accent-3"></div>
+
+    <div class="horizon-walker-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="horizon-walker" />
+      <MobileMenu />
+
+      <div class="horizon-walker-container">
+        <main class="horizon-walker-main hw-gift-main" id="main-content">
+          <!-- Gift Hero Section -->
+          <section class="hw-gift-hero">
+            <h1 class="hw-gift-title">{pageTitle}</h1>
+            <DecorativeLines />
+          </section>
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb items={defaultBreadcrumbs} />
+
+          <!-- Gift Content Area -->
+          <div class="hw-gift-content">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

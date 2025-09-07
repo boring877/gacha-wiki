@@ -51,21 +51,12 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
     <div class="hw-char-db-main-content">
       <div class="hw-char-db-content-wrapper">
         <!-- Header with stats info -->
-        <div
-          style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: var(--hw-bg-dark); border-radius: 12px; border: 1px solid var(--hw-border-accent);"
-        >
-          <p style="color: var(--hw-primary-warm); margin: 0; font-size: 1rem; font-weight: 600;">
-            Character Database
-          </p>
-          <p
-            style="color: var(--hw-text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;"
-          >
+        <div class="hw-character-database-header">
+          <p class="hw-character-database-title">Character Database</p>
+          <p class="hw-character-database-subtitle">
             All stats shown at max level (Level {gameInfo.maxLevel})
           </p>
-          <div
-            style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"
-            class="hw-char-db-stats-summary"
-          >
+          <div class="hw-char-db-stats-summary">
             <span class="hw-badge" data-rarity="EX">{exCount} EX</span>
             <span class="hw-badge" data-rarity="SS">{ssCount} SS</span>
             <span class="hw-badge" data-rarity="S">{sCount} S</span>

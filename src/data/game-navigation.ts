@@ -126,7 +126,11 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       },
       {
         title: 'Resources',
-        links: [{ name: 'Clock', href: '/clock/horizon-walker/' }],
+        links: [
+          { name: 'Gifts', href: '/guides/horizon-walker/gifts/' },
+          { name: 'Character Gifts', href: '/guides/horizon-walker/character-gifts/' },
+          { name: 'Clock', href: '/clock/horizon-walker/' },
+        ],
       },
     ],
   },
