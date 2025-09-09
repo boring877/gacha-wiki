@@ -542,6 +542,65 @@
     margin: 0;
   }
 
+  /* Interested Trait Special Styling */
+  .trait-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .interested-trait-info {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid color-mix(in srgb, var(--hw-primary-warm) 20%, transparent);
+  }
+
+  .gift-affection-note {
+    color: var(--hw-text-light);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+    background: color-mix(in srgb, var(--hw-primary-warm) 10%, transparent);
+    padding: 0.8rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--hw-primary-warm);
+  }
+
+  .gift-affection-note strong {
+    color: var(--hw-primary-warm);
+  }
+
+  /* Trait Bonuses */
+  .trait-bonuses {
+    margin-top: 1rem;
+  }
+
+  .trait-bonuses strong {
+    color: var(--hw-primary-warm);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .bonus-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .bonus-list li {
+    background: color-mix(in srgb, var(--hw-accent-mint) 15%, transparent);
+    color: var(--hw-text-light);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid color-mix(in srgb, var(--hw-accent-mint) 30%, transparent);
+  }
+
   /* ═══════════════════════════════════════════════════════════════════════ */
   /*                            EFFECTS SECTION                              */
   /* ═══════════════════════════════════════════════════════════════════════ */
@@ -859,6 +918,25 @@
       gap: 0.8rem;
     }
 
+    .trait-badges {
+      gap: 0.4rem;
+    }
+
+    .gift-affection-note {
+      font-size: 0.8rem;
+      padding: 0.7rem;
+    }
+
+    .bonus-list {
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .bonus-list li {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.6rem;
+    }
+
     /* Reset min-widths for all containers */
     .character-hero-card,
     .weapon-image-container {
@@ -949,5 +1027,334 @@
     color: var(--hw-primary-warm);
     font-weight: 500;
     font-style: italic;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════ */
+  /*                           GIFT SECTION STYLES                           */
+  /* ═══════════════════════════════════════════════════════════════════════ */
+
+  .gift-explanation {
+    font-size: 0.9rem;
+    color: var(--hw-text-very-muted);
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .gift-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Level 5 Bonus Card - matches skill-card style */
+  .level5-bonus-card {
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, black 40%, transparent),
+      color-mix(in srgb, black 20%, transparent)
+    );
+    border: 1px solid color-mix(in srgb, var(--hw-primary-warm) 30%, transparent);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .level5-bonus-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .level5-bonus-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .level5-bonus-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .bonus-type {
+    color: var(--hw-text-light);
+    font-weight: 600;
+  }
+
+  .bonus-value {
+    color: color-mix(in srgb, var(--hw-primary-warm) 90%, transparent);
+    font-weight: 700;
+  }
+
+  /* Gift Categories */
+  .gift-category {
+    margin-bottom: 1.5rem;
+  }
+
+  .gift-category-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--hw-text-light);
+    margin: 0 0 0.8rem 0;
+    padding-left: 0.8rem;
+    border-left: 2px solid var(--hw-border-muted);
+  }
+
+  .gift-category-description {
+    color: var(--hw-text-medium);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  /* Gift Grid */
+  .gifts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  /* Gift Cards - matches existing card style */
+  .gift-card {
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, black 40%, transparent),
+      color-mix(in srgb, black 20%, transparent)
+    );
+    border: 1px solid var(--hw-border-muted);
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .gift-card.favorite-gift {
+    border-color: color-mix(in srgb, var(--hw-primary-warm) 40%, transparent);
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--hw-primary-warm) 10%, transparent),
+      color-mix(in srgb, black 20%, transparent)
+    );
+  }
+
+  .gift-card.liked-gift {
+    border-color: var(--hw-border-muted);
+  }
+
+  .gift-card.high-value-gift {
+    border-color: color-mix(in srgb, var(--hw-secondary-coral) 40%, transparent);
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--hw-secondary-coral) 10%, transparent),
+      color-mix(in srgb, black 20%, transparent)
+    );
+  }
+
+  /* Gift Image Container */
+  .gift-image-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .gift-image {
+    border-radius: 8px;
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border: 1px solid var(--hw-border-muted);
+  }
+
+  .gift-rarity-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.65rem;
+  }
+
+  /* Gift Info */
+  .gift-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .gift-name {
+    color: var(--hw-text-light);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .gift-points {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .points-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--hw-text-muted);
+  }
+
+  .points-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+  }
+
+  .points-value.bonus-points {
+    color: var(--hw-primary-warm);
+  }
+
+  .points-total {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--hw-secondary-coral);
+  }
+
+  .gift-max-affection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--hw-border-muted) 50%, transparent);
+  }
+
+  .gift-max-affection .points-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+  }
+
+  /* Gift Source Information */
+  .gift-sources {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--hw-border-muted);
+  }
+
+  .sources-label {
+    color: var(--hw-text-medium);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+
+  .gift-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .gift-box-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    background: color-mix(in srgb, black 30%, transparent);
+    border-radius: 6px;
+    border: 1px solid var(--hw-border-muted);
+  }
+
+  .gift-box-image {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid var(--hw-border-muted);
+    flex-shrink: 0;
+  }
+
+  .gift-box-name {
+    color: color-mix(in srgb, var(--hw-tertiary-sky) 90%, transparent);
+    font-weight: 600;
+    font-size: 0.7rem;
+    line-height: 1.3;
+  }
+
+  /* No Gifts Card - matches existing card style */
+  .no-gifts-card {
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, black 40%, transparent),
+      color-mix(in srgb, black 20%, transparent)
+    );
+    border: 2px dashed var(--hw-border-muted);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .no-gifts-content {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .no-gifts-title {
+    color: var(--hw-text-light);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.8rem 0;
+  }
+
+  .no-gifts-description {
+    color: var(--hw-text-medium);
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .gifts-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .gift-card {
+      padding: 1.25rem;
+    }
+
+    .level5-bonus-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .level5-bonus-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.3rem;
+    }
+
+    .gift-points {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
   }
 } /* End @scope (.horizon-walker-main) */

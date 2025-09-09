@@ -185,7 +185,7 @@ const rawTxManticoreData = {
     name: 'EX Ancient Core - The Aegaeon Core',
     type: 'Ancient Core',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/TX_Manticore_WP.jpg',
+    image: '/images/games/horizon-walker/weapons/TX_Manticore.jpg',
     stats: {
       weaponRangedAtk: '91.0',
       critDmgBonus: '+70.0%',
