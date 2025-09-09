@@ -25,9 +25,9 @@ function calculateRankings() {
         const prevValue = sorted[index - 1].stats[statKey];
         const currValue = char.stats[statKey];
 
-        // If current value is different from previous, update rank to index + 1
+        // If current value is different from previous, increment rank by 1 (dense ranking)
         if (currValue !== prevValue) {
-          currentRank = index + 1;
+          currentRank++;
         }
         // If values are the same, keep the same rank
       }
@@ -80,16 +80,16 @@ function calculateOverallAnalysis() {
     (a, b) => a.totalRankScore - b.totalRankScore
   );
 
-  // Assign overall ranks with proper tie handling
+  // Assign overall ranks with dense ranking (characters with same score get same rank)
   let currentOverallRank = 1;
   sortedCharacters.forEach((entry, index) => {
     if (index > 0) {
       const prevScore = sortedCharacters[index - 1].totalRankScore;
       const currScore = entry.totalRankScore;
 
-      // If current score is different from previous, update rank to index + 1
+      // If current score is different from previous, increment rank by 1
       if (currScore !== prevScore) {
-        currentOverallRank = index + 1;
+        currentOverallRank++;
       }
       // If scores are the same, keep the same rank
     }

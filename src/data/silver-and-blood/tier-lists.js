@@ -40,6 +40,7 @@ export const PVE_TIER_LIST = {
       { name: 'Van Helsing' },
       { name: 'Sirene' },
       { name: 'Fleeting Bella' },
+      { name: 'Valora' },
     ],
     S: [
       { name: 'Lamia' },
@@ -76,6 +77,7 @@ export const PVE_TIER_LIST = {
       { name: 'Cecia' },
       { name: 'Cain' },
       { name: 'Yggdrasill' },
+      { name: 'Julius' },
     ],
     Situational: [
       { name: 'Jinxed Selena' },
@@ -105,6 +107,7 @@ export const PVP_TIER_LIST = {
       { name: 'Acappella' },
       { name: 'Quinn' },
       { name: 'Agnes' },
+      { name: 'Valora' },
     ],
     S: [
       { name: 'Hati' },
@@ -123,6 +126,7 @@ export const PVP_TIER_LIST = {
       { name: 'Yggdrasill' },
       { name: 'Ami' },
       { name: 'Gilrain' },
+      { name: 'Julius' },
     ],
     A: [
       { name: 'Thibault' },
@@ -173,6 +177,7 @@ export const CLAN_HUNT_TIER_LIST = {
       { name: 'Van Helsing' },
       { name: 'Sirene' },
       { name: 'Quinn' },
+      { name: 'Valora' },
     ],
     S: [
       { name: 'Lamia' },
@@ -187,6 +192,7 @@ export const CLAN_HUNT_TIER_LIST = {
       { name: 'Tris' },
       { name: 'Selena' },
       { name: 'Nicole' },
+      { name: 'Julius' },
     ],
     A: [
       { name: 'Bella' },
@@ -238,6 +244,8 @@ export const BOSS_RAIDS_TIER_LIST = {
       { name: 'Friedrich' },
       { name: 'Gilrain' },
       { name: 'Quinn' },
+      { name: 'Julius' },
+      { name: 'Valora' },
     ],
     A: [
       { name: 'Agnes' },
@@ -284,6 +292,8 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Seth' },
       { name: 'Transcendent Hati' },
       { name: 'Transcendent Ami' },
+      { name: 'Quinn' },
+      { name: 'Valora' },
     ],
     S: [
       { name: 'Dalcarlo' },
@@ -291,10 +301,11 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Darcias' },
       { name: 'Lamia' },
       { name: 'Yggdrasill' },
-      { name: 'Quinn' },
+      { name: 'Julius' },
+      { name: 'Agnes' },
+      { name: 'Ressa' },
     ],
     A: [
-      { name: 'Ressa' },
       { name: 'Theophane' },
       { name: 'Thibault' },
       { name: 'Friedrich' },

@@ -138,6 +138,8 @@ import { fleetingBella } from './characters/fleeting-bella.js';
 import { timelessAiona } from './characters/timeless-aiona.js';
 import { quinn } from './characters/quinn.js';
 import { agnes } from './characters/agnes.js';
+import { valora } from './characters/valora.js';
+import { julius } from './characters/julius.js';
 
 // Characters array - Add new characters here
 const baseCharacters = [
@@ -183,6 +185,8 @@ const baseCharacters = [
   timelessAiona,
   quinn,
   agnes,
+  valora,
+  julius,
   // Add more characters as they are created
 ];
 

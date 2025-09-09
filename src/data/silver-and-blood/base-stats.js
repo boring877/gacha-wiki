@@ -764,5 +764,41 @@ export const baseStats = {
     bloodPower: 20864,
   },
 
+  // Valora
+  valora: {
+    hp: 168000, // 168K
+    atk: 10063,
+    pDef: 3927,
+    mDef: 3385,
+    atkSpd: 0, // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5, // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 21528,
+  },
+
+  // Julius
+  julius: {
+    hp: 158000, // 158K
+    atk: 9544,
+    pDef: 4384,
+    mDef: 3959,
+    atkSpd: 0, // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5, // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20871,
+  },
+
   // --- add more characters below ---
 };
