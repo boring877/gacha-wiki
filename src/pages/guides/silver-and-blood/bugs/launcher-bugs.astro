@@ -1,0 +1,60 @@
+---
+import BugFixesLayout from '../../../../layouts/silver-and-blood/BugFixesLayout.astro';
+
+// Import bug fixes data
+import {
+  silverAndBloodBugFixes,
+  generateBugFixesStructuredData,
+} from '../../../../data/silver-and-blood/bug-fixes.js';
+
+// Extract data from the data file
+const bugFixesData = silverAndBloodBugFixes;
+
+// Page metadata
+const title = 'Silver and Blood Launcher Bug Fixes - Startup & Installation Issues | GachaWiki';
+const description =
+  'Fix Silver and Blood launcher problems with step-by-step solutions. Resolve startup issues, installation errors, and launcher crashes.';
+const gameTitle = 'Launcher Bug Fixes';
+
+// Generate structured data for SEO
+const structuredData = generateBugFixesStructuredData();
+
+// Breadcrumb data
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Guides', url: '/guides/' },
+  { name: 'Silver and Blood', url: '/guides/silver-and-blood/' },
+  { name: 'Bug Fixes', url: '/guides/silver-and-blood/bugs/' },
+  { name: 'Launcher Fix Guide', url: '/guides/silver-and-blood/bugs/launcher-bugs/' },
+];
+---
+
+<BugFixesLayout
+  title={title}
+  description={description}
+  gameTitle={gameTitle}
+  data={bugFixesData}
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Structured Data for SEO -->
+  {
+    structuredData.map((schema, index) => (
+      <script key={index} type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))
+  }
+
+  <!-- Breadcrumb Structured Data -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((crumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.name,
+        item: `https://gachawiki.info${crumb.url}`,
+      })),
+    })}
+  />
+</BugFixesLayout>

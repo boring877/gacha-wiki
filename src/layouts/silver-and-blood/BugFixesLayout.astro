@@ -1,0 +1,258 @@
+---
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+
+// Import bug fix images
+import Bug1 from '../../../public/images/games/silver-and-blood/bugs/Bug1.png';
+import Bug2 from '../../../public/images/games/silver-and-blood/bugs/Bug2.png';
+import Bug3 from '../../../public/images/games/silver-and-blood/bugs/Bug3.png';
+import Bug4 from '../../../public/images/games/silver-and-blood/bugs/Bug4.png';
+import Bug5 from '../../../public/images/games/silver-and-blood/bugs/Bug5.png';
+import Bug6 from '../../../public/images/games/silver-and-blood/bugs/Bug6.png';
+import Bug7 from '../../../public/images/games/silver-and-blood/bugs/Bug7.png';
+
+// Import essential CSS files
+import '../../styles/games/silver-and-blood/sab-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-bug-fixes.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  data: any;
+  breadcrumbs?: { name: string; url: string }[];
+}
+
+const { title, description, gameTitle, data, breadcrumbs } = Astro.props;
+const { meta } = data;
+---
+
+<html lang="en">
+  <head>
+    <SABBaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      additionalKeywords={data?.meta?.keywords || []}
+    />
+
+    <!-- Bug-specific SEO meta tags -->
+    <meta name="keywords" content={data?.meta?.keywords ? data.meta.keywords.join(', ') : ''} />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <!-- HowTo Article meta tags -->
+    <meta property="article:author" content="GachaWiki" />
+    <meta property="article:published_time" content={data?.meta?.lastUpdated?.toISOString()} />
+    <meta property="article:modified_time" content={data?.meta?.lastUpdated?.toISOString()} />
+    <meta property="article:section" content="Technical Support" />
+    <meta property="article:tag" content="launcher fix" />
+    <meta property="article:tag" content="step-by-step guide" />
+    <meta property="article:tag" content="troubleshooting" />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers -->
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="silver-and-blood-main" id="main-content">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          {
+            breadcrumbs && (
+              <Breadcrumb
+                items={breadcrumbs.map((crumb, index) => ({
+                  name: crumb.name,
+                  href: index === breadcrumbs.length - 1 ? undefined : crumb.url,
+                }))}
+              />
+            )
+          }
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <div class="intro-section">
+              <p class="bug-fixes-description">
+                Bugs 99% or launcher bug fixes. This aims to help with bug launch problems. I
+                personally faced these problems and took me time to fix it, so hopefully this would
+                save someone time!
+              </p>
+              <p class="last-updated">
+                Last Updated: <FormattedDate date={meta.lastUpdated} />
+              </p>
+            </div>
+
+            <!-- Bug Fixes Content with Astro Images -->
+            <div class="bug-fixes-content">
+              <h2>Launcher Bug Fix Solution</h2>
+              <div class="bug-fix-steps">
+                <div class="step">
+                  <h4>Step 1: Access Game Folder</h4>
+                  <p>
+                    We need to navigate to the game folder. We can do this by right-clicking on the
+                    game icon, then selecting "Open folder location".
+                  </p>
+                  <div class="step-image">
+                    <Image
+                      src={Bug1}
+                      alt="Step 1: Right click Silver and Blood game icon and select open folder location to access game directory"
+                      loading="lazy"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
+                </div>
+
+                <div class="step">
+                  <h4>Step 2: Clean Up Game Directory</h4>
+                  <p>
+                    You should see something like this. Remove all files except the SilverAndBlood
+                    folder. The SilverAndBlood folder size should be around 2.88GB (this may be
+                    larger in future updates).
+                  </p>
+                  <div class="step-image">
+                    <Image
+                      src={Bug2}
+                      alt="Step 2: Silver and Blood game directory showing multiple files that need to be deleted except SilverAndBlood folder"
+                      loading="lazy"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
+                </div>
+
+                <div class="step">
+                  <h4>Step 3: Confirm File Deletion</h4>
+                  <p>
+                    It will ask for permission. Click "Continue" and check the box "Do this for all
+                    current items".
+                  </p>
+                  <div class="step-image">
+                    <Image
+                      src={Bug3}
+                      alt="Step 3: Windows file deletion permission dialog asking to continue with Silver and Blood file removal"
+                      loading="lazy"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
+                </div>
+
+                <div class="step">
+                  <h4>Step 4: Verify Clean Directory</h4>
+                  <p>You should end up like this - only one folder left!</p>
+                  <div class="step-image">
+                    <Image
+                      src={Bug4}
+                      alt="Step 4: Clean Silver and Blood directory with only SilverAndBlood folder remaining after deletion"
+                      loading="lazy"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
+                </div>
+
+                <div class="step">
+                  <h4>Step 5: Download Fresh Launcher</h4>
+                  <p>
+                    Next step: go to the official website <a
+                      href="https://silverandblood.moonton.com/"
+                      target="_blank"
+                      rel="noopener nofollow">https://silverandblood.moonton.com/</a
+                    >, and download the launcher again!
+                  </p>
+                  <div class="step-image">
+                    <Image
+                      src={Bug5}
+                      alt="Step 5: Silver and Blood official Moonton website download page for getting fresh launcher"
+                      loading="lazy"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
+                </div>
+
+                <div class="step">
+                  <h4>Step 6: Install the Launcher</h4>
+                  <p>
+                    Once the download finishes, open it and it should look like this. Click "Install
+                    Now" - it should take a little time, then the normal game UI should open.
+                  </p>
+                  <div class="step-image">
+                    <Image
+                      src={Bug6}
+                      alt="Step 6: Silver and Blood launcher installation dialog showing Install Now button"
+                      loading="lazy"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
+                </div>
+
+                <div class="step">
+                  <h4>Step 7: Launch the Game</h4>
+                  <p>
+                    Click "Start" - the game should start normally, but sometimes it may close
+                    unexpectedly. If this happens, reopen the launcher and try again. You may need
+                    to repeat this process up to 3 times, but it should work after that!
+                  </p>
+                  <div class="step-image">
+                    <Image
+                      src={Bug7}
+                      alt="Step 7: Silver and Blood launcher start screen with Start button to launch game"
+                      loading="lazy"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="bug-conclusion">
+                <h3>Important Note</h3>
+                <p><strong>The problem is the launcher, not the game!</strong></p>
+                <p>I hope that was helpful!</p>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

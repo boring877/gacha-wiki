@@ -1,0 +1,146 @@
+/* Silver and Blood Bugs Index Styles - Simple UI */
+
+.intro-section {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border: 1px solid #666;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.intro-section h2 {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+}
+
+.bugs-description {
+  color: #f8f9fa;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.last-updated {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Bugs Section */
+.bugs-section {
+  margin-bottom: 2rem;
+}
+
+.bugs-section h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+}
+
+.bugs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bug-card {
+  background: #2a2a2a;
+  border: 1px solid #666;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: background-color 0.2s ease;
+  min-height: 44px;
+  position: relative;
+  touch-action: manipulation;
+}
+
+.bug-card:hover {
+  background: #333;
+}
+
+/* Touch device optimization */
+@media (hover: none) and (pointer: coarse) {
+  .bug-card:hover {
+    background: #2a2a2a;
+  }
+
+  .bug-card:active {
+    background: #333;
+    transform: scale(0.98);
+    transition: all 0.1s ease;
+  }
+}
+
+.bug-card .bug-info h4 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+}
+
+.bug-card .bug-info p {
+  color: #ddd;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .intro-section,
+  .bug-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-section,
+  .bug-card {
+    padding: 0.75rem;
+  }
+
+  .intro-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .bugs-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .bugs-section h3 {
+    font-size: 1.1rem;
+  }
+
+  .bug-card .bug-info h4 {
+    font-size: 1rem;
+  }
+
+  .bug-card .bug-info p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 320px) {
+  .intro-section,
+  .bug-card {
+    padding: 0.5rem;
+  }
+
+  .intro-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .bugs-description {
+    font-size: 0.85rem;
+  }
+
+  .bugs-section h3 {
+    font-size: 1rem;
+  }
+}

@@ -55,6 +55,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [
           { name: 'Clock', href: '/clock/silver-and-blood/' },
           { name: 'Redeem Codes', href: '/guides/silver-and-blood/redeem-codes/' },
+          { name: 'Bug Fixes', href: '/guides/silver-and-blood/bugs/' },
           { name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
           { name: 'Slot Machines', href: '/guides/silver-and-blood/slot-machines/' },
         ],

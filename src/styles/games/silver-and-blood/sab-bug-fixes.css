@@ -1,0 +1,186 @@
+/* Silver and Blood Bug Fixes Styles - Simple UI */
+
+.intro-section {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border: 1px solid #666;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.bug-fixes-description {
+  color: #f8f9fa;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.last-updated {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.bug-fixes-content {
+  color: #f8f9fa;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.bug-fix-steps {
+  margin-bottom: 2rem;
+}
+
+.step {
+  background: #2a2a2a;
+  border: 1px solid #666;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.step h4 {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+}
+
+.step p {
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.step p:last-child {
+  margin-bottom: 0;
+}
+
+.step a {
+  color: #4a9eff;
+  text-decoration: underline;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0;
+  touch-action: manipulation;
+}
+
+/* Touch device optimization for links */
+@media (hover: none) and (pointer: coarse) {
+  .step a:active {
+    background: rgba(74, 158, 255, 0.1);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+.step-image {
+  background: #1a1a1a;
+  border: 1px solid #666;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.step-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Astro Image component styling */
+.step-image :global(img) {
+  max-width: 100%;
+  height: auto;
+}
+
+.bug-conclusion {
+  background: #2a2a2a;
+  border: 1px solid #666;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.bug-conclusion h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+}
+
+.bug-conclusion p {
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 0.5rem 0;
+}
+
+.bug-conclusion p:last-child {
+  margin-bottom: 0;
+}
+
+.bug-conclusion strong {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Simple Responsive Design */
+@media (max-width: 768px) {
+  .intro-section,
+  .step,
+  .bug-conclusion {
+    padding: 1rem;
+  }
+
+  .step h4,
+  .bug-conclusion h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-section,
+  .step,
+  .bug-conclusion {
+    padding: 0.75rem;
+  }
+
+  .step h4,
+  .bug-conclusion h3 {
+    font-size: 1rem;
+  }
+
+  .step p,
+  .bug-conclusion p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .step-image {
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .intro-section,
+  .step,
+  .bug-conclusion {
+    padding: 0.5rem;
+  }
+
+  .step h4,
+  .bug-conclusion h3 {
+    font-size: 0.95rem;
+  }
+
+  .step p,
+  .bug-conclusion p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .step-image {
+    padding: 0.5rem;
+  }
+}

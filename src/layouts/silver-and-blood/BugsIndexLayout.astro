@@ -1,0 +1,130 @@
+---
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+
+// Import essential CSS files
+import '../../styles/games/silver-and-blood/sab-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-bugs-index.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  data: any;
+  breadcrumbs?: { name: string; url: string }[];
+}
+
+const { title, description, gameTitle, data, breadcrumbs } = Astro.props;
+const { meta, bugs, generalInfo } = data;
+---
+
+<html lang="en">
+  <head>
+    <SABBaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      additionalKeywords={data?.meta?.keywords || []}
+    />
+
+    <!-- Bug-specific SEO meta tags -->
+    <meta name="keywords" content={data?.meta?.keywords ? data.meta.keywords.join(', ') : ''} />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <!-- Article-specific meta tags -->
+    <meta property="article:author" content="GachaWiki" />
+    <meta property="article:published_time" content={data?.meta?.lastUpdated?.toISOString()} />
+    <meta property="article:modified_time" content={data?.meta?.lastUpdated?.toISOString()} />
+    <meta property="article:section" content="Game Support" />
+    <meta property="article:tag" content="bug fixes" />
+    <meta property="article:tag" content="technical support" />
+    <meta property="article:tag" content="troubleshooting" />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers -->
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="silver-and-blood-main" id="main-content">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          {
+            breadcrumbs && (
+              <Breadcrumb
+                items={breadcrumbs.map((crumb, index) => ({
+                  name: crumb.name,
+                  href: index === breadcrumbs.length - 1 ? undefined : crumb.url,
+                }))}
+              />
+            )
+          }
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <!-- Page Header -->
+            <div class="intro-section">
+              <h2>{generalInfo.title}</h2>
+              <p class="bugs-description">{generalInfo.description}</p>
+              <p class="last-updated">
+                Last Updated: <FormattedDate date={meta.lastUpdated} />
+              </p>
+            </div>
+
+            <!-- Bugs List -->
+            <div class="bugs-section">
+              <h3>Available Solutions</h3>
+              <div class="bugs-list">
+                {
+                  bugs.map(bug => (
+                    <a href={bug.url} class="bug-card">
+                      <div class="bug-info">
+                        <h4>{bug.title}</h4>
+                        <p>{bug.description}</p>
+                      </div>
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

@@ -195,6 +195,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           url: '/guides/silver-and-blood/redeem-codes/',
         },
         {
+          id: 'bug-fixes',
+          title: 'Bug Fixes',
+          url: '/guides/silver-and-blood/bugs/',
+        },
+        {
           id: 'summon-faq',
           title: 'Summon FAQ',
           url: '/guides/silver-and-blood/summon-faq/',
@@ -226,6 +231,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       description:
         'Free Silver and Blood redeem codes for in-game rewards, gems, and items. Updated regularly with working promo codes and step-by-step redemption instructions.',
       url: '/guides/silver-and-blood/redeem-codes/',
+      category: 'tools',
+      status: 'active',
+    },
+    {
+      id: 'bug-fixes',
+      title: 'Bug Fixes',
+      emoji: '',
+      description:
+        'Known bugs and their solutions for Silver and Blood. Track resolved issues, current problems, and community-reported workarounds with screenshots and solutions.',
+      url: '/guides/silver-and-blood/bugs/',
       category: 'tools',
       status: 'active',
     },

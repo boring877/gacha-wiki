@@ -1,0 +1,58 @@
+---
+import BugsIndexLayout from '../../../../layouts/silver-and-blood/BugsIndexLayout.astro';
+
+// Import bugs index data
+import {
+  silverAndBloodBugsIndex,
+  generateBugsIndexStructuredData,
+} from '../../../../data/silver-and-blood/bugs-index.js';
+
+// Extract data from the data file
+const bugsIndexData = silverAndBloodBugsIndex;
+
+// Page metadata
+const title = bugsIndexData.meta.title;
+const description = bugsIndexData.meta.description;
+const gameTitle = 'Bug Fixes & Solutions';
+
+// Generate structured data for SEO
+const structuredData = generateBugsIndexStructuredData();
+
+// Breadcrumb data
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Guides', url: '/guides/' },
+  { name: 'Silver and Blood', url: '/guides/silver-and-blood/' },
+  { name: 'Bug Fixes & Solutions', url: '/guides/silver-and-blood/bugs/' },
+];
+---
+
+<BugsIndexLayout
+  title={title}
+  description={description}
+  gameTitle={gameTitle}
+  data={bugsIndexData}
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Structured Data for SEO -->
+  {
+    structuredData.map((schema, index) => (
+      <script key={index} type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))
+  }
+
+  <!-- Breadcrumb Structured Data -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((crumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.name,
+        item: `https://gachawiki.info${crumb.url}`,
+      })),
+    })}
+  />
+</BugsIndexLayout>
