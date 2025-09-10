@@ -1,0 +1,7 @@
+---
+// Vercel Speed Insights Component for Astro
+// This component is automatically imported and used by Vercel's Astro adapter
+import SpeedInsights from '@vercel/speed-insights/astro';
+---
+
+<!-- Only load in production for accurate metrics -->{import.meta.env.PROD && <SpeedInsights />}

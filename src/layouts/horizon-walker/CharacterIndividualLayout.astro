@@ -1,6 +1,7 @@
 ---
 import HWBaseHead from '../../components/horizon-walker/HWBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
+import CharacterSEO from '../../components/CharacterSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
@@ -22,25 +23,37 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: string;
+  character?: any; // For CharacterSEO component
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle, heroImage, character } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <HWBaseHead title={title} description={description || ''} />
-    <GameSEO
-      gameKey="horizon-walker"
-      title={title}
-      description={description}
-      additionalKeywords={[
-        gameTitle?.toLowerCase() || '',
-        'waifu guide',
-        'character build',
-        'stats guide 2025',
-      ].filter(Boolean)}
-    />
+    {
+      character ? (
+        <CharacterSEO
+          gameKey="horizon-walker"
+          character={character}
+          customTitle={title}
+          customDescription={description}
+        />
+      ) : (
+        <GameSEO
+          gameKey="horizon-walker"
+          title={title}
+          description={description}
+          additionalKeywords={[
+            gameTitle?.toLowerCase() || '',
+            'waifu guide',
+            'character build',
+            'stats guide 2025',
+          ].filter(Boolean)}
+        />
+      )
+    }
   </head>
   <body class="horizon-walker-body">
     <CustomScrollbar />

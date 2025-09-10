@@ -14,6 +14,7 @@ export const prerender = true;
   title={valetaSEO.title}
   description={valetaSEO.description}
   gameTitle={valetaData.name}
+  character={valetaData}
 >
   <CharacterPageTemplate characterData={{ ...valetaData, highlightPatterns: valetaHighlighting }} />
 </CharacterIndividualLayout>

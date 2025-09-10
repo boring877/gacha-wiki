@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import CustomScrollbar from '../components/CustomScrollbar.astro';
 import GeneralSEO from '../components/GeneralSEO.astro';
+import SpeedInsights from '../components/SpeedInsights.astro';
 
 // Import CSS files properly - about-specific styling
 import '../styles/colors.css';
@@ -31,6 +32,7 @@ const { title, description } = Astro.props;
       keywords={['about gachawiki', 'gacha wiki info', 'gaming guides', 'about us']}
       pageType="website"
     />
+    <SpeedInsights />
     <slot name="head" />
   </head>
   <body class="home-body">

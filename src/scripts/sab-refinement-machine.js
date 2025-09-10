@@ -192,7 +192,6 @@ function initializeRefinementMachine() {
       return;
     }
 
-    console.log('Setup refinement with:', { blessings, tiers });
     gameState.currentBlessings = blessings;
     gameState.currentTiers = tiers;
 
@@ -214,16 +213,9 @@ function initializeRefinementMachine() {
     // Setup refine button event listener now that it's visible
     if (elementCache.refineBtn) {
       elementCache.refineBtn.addEventListener('click', animateRefinement);
-      console.log('Refine button event listener added');
     } else {
       console.error('Refine button not found after showing refinement display!');
     }
-
-    console.log('Updated element cache:', {
-      refineBtn: !!elementCache.refineBtn,
-      keepOriginal: !!elementCache.keepOriginal,
-      hammersUsedEl: !!elementCache.hammersUsedEl,
-    });
 
     // Setup displays
     updateRefinementDisplay();
@@ -377,18 +369,15 @@ function initializeRefinementMachine() {
 
   function animateRefinement() {
     if (gameState.isSpinning) {
-      console.log('Already spinning, ignoring refinement request');
       return;
     }
 
-    console.log('Starting refinement animation');
     gameState.isSpinning = true;
 
     // Clear any existing animations and stale timers
     clearAllAnimations();
     // Only clear timers if this is a fresh start (not from a previous incomplete animation)
     if (activeTimers.size > 0) {
-      console.log('Clearing', activeTimers.size, 'stale timers');
       clearAllTimers();
     }
 
@@ -424,15 +413,6 @@ function initializeRefinementMachine() {
 
     const totalSlotsToComplete = unlockedSlotsWithBlessings + lockedSlotsWithBlessings;
 
-    console.log('Animation setup:', {
-      totalBlessings: gameState.currentBlessings.length,
-      unlockedSlotsWithBlessings,
-      lockedSlotsWithBlessings,
-      totalSlotsToComplete,
-      lockedSlots: gameState.lockedSlots,
-      blessings: gameState.currentBlessings,
-    });
-
     gameState.currentBlessings.forEach((blessing, index) => {
       const slotNum = index + 1;
       const isLocked = gameState.lockedSlots.includes(slotNum);
@@ -445,10 +425,6 @@ function initializeRefinementMachine() {
       if (isLocked) {
         // Locked slots with blessings complete immediately
         completedAnimations++;
-        console.log(`Locked slot ${slotNum} completed immediately:`, {
-          completedAnimations,
-          totalSlotsToComplete,
-        });
         if (completedAnimations === totalSlotsToComplete) {
           addTimer(() => {
             showRefinementResults(originalTiers, newTiers, hammerCost);
@@ -538,11 +514,6 @@ function initializeRefinementMachine() {
             }
 
             completedAnimations++;
-            console.log(`Animation completed for slot ${slotNum}:`, {
-              completedAnimations,
-              totalSlotsToComplete,
-              shouldShowResults: completedAnimations === totalSlotsToComplete,
-            });
             if (completedAnimations === totalSlotsToComplete) {
               addTimer(() => {
                 showRefinementResults(originalTiers, newTiers, hammerCost);
@@ -565,12 +536,6 @@ function initializeRefinementMachine() {
   }
 
   function showRefinementResults(originalTiers, newTiers, hammerCost) {
-    console.log('showRefinementResults called - Auto-applying new results', {
-      originalTiers,
-      newTiers,
-      hammerCost,
-    });
-
     gameState.hammersUsed += hammerCost;
     gameState.stats.totalHammers += hammerCost;
 
@@ -602,7 +567,6 @@ function initializeRefinementMachine() {
     gameState.isSpinning = false;
     const refineBtn = elementCache.refineBtn || document.getElementById('refine-btn');
     if (refineBtn) {
-      console.log('Re-enabling refine button - ready for next refinement');
       refineBtn.disabled = false;
       refineBtn.style.opacity = '';
       refineBtn.style.backgroundColor = '';
@@ -620,8 +584,6 @@ function initializeRefinementMachine() {
 
       // Setup undo handler
       document.getElementById('keep-original-btn').onclick = () => {
-        console.log('Undo clicked - reverting to original tiers');
-
         // Revert to original tiers
         gameState.currentBlessings.forEach((blessing, index) => {
           const slotNum = index + 1;
@@ -792,8 +754,6 @@ function initializeRefinementMachine() {
 
     // Update select options to reset duplicate prevention
     updateSelectOptions();
-
-    console.log('State fully reset, back to setup');
   }
 
   // Enable/disable tier selects and prevent duplicate blessing selections
@@ -837,7 +797,6 @@ function initializeRefinementMachine() {
   const setupBtn = document.getElementById('setup-btn');
   if (setupBtn) {
     setupBtn.addEventListener('click', setupRefinement);
-    console.log('Setup button event listener added');
   } else {
     console.error('Setup button not found!');
   }

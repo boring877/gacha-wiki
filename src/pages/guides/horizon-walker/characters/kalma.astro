@@ -14,6 +14,7 @@ export const prerender = true;
   title={kalmaSEO.title}
   description={kalmaSEO.description}
   gameTitle={kalmaData.name}
+  character={kalmaData}
 >
   <CharacterPageTemplate characterData={{ ...kalmaData, highlightPatterns: kalmaHighlighting }} />
 </CharacterIndividualLayout>

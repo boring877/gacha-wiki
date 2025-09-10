@@ -8,6 +8,7 @@ import Footer from '../../components/Footer.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import GeneralSEO from '../../components/GeneralSEO.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import SpeedInsights from '../../components/SpeedInsights.astro';
 import { getActiveRifts, getRiftsWithDynamicStatus } from '../../data/zone-nova/rifts.js';
 
 // Import CSS files
@@ -50,6 +51,7 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
       ]}
       pageType="webapp"
     />
+    <SpeedInsights />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

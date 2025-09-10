@@ -14,6 +14,7 @@ export const prerender = true;
   title={yuiSEO.title}
   description={yuiSEO.description}
   gameTitle={yuiData.name}
+  character={yuiData}
 >
   <CharacterPageTemplate characterData={{ ...yuiData, highlightPatterns: yuiHighlighting }} />
 </CharacterIndividualLayout>

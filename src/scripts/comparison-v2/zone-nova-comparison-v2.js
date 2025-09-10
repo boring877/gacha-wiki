@@ -205,8 +205,6 @@ function initializeComparisonV2() {
     // Render initial state
     updateIconStates();
     updateSelectedCount();
-
-    console.log('Zone Nova Comparison V2: Initialized successfully');
   } catch (error) {
     console.error('Failed to initialize comparison V2:', error);
     showErrorMessage('Failed to load character comparison. Please refresh the page.');

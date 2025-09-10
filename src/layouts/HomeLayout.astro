@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CustomScrollbar from '../components/CustomScrollbar.astro';
 import GeneralSEO from '../components/GeneralSEO.astro';
+import SpeedInsights from '../components/SpeedInsights.astro';
 // Import CSS files properly
 import '../styles/colors.css';
 import '../styles/global.css';
@@ -23,6 +24,7 @@ const { title, description } = Astro.props;
   <head>
     <GeneralBaseHead title={title} description={description || ''} />
     <GeneralSEO title={title} description={description || ''} />
+    <SpeedInsights />
     <slot name="head" />
   </head>
   <body class="home-body">

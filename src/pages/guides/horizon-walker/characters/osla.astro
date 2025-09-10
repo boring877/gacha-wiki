@@ -14,6 +14,7 @@ export const prerender = true;
   title={oslaSEO.title}
   description={oslaSEO.description}
   gameTitle={oslaData.name}
+  character={oslaData}
 >
   <CharacterPageTemplate characterData={{ ...oslaData, highlightPatterns: oslaHighlighting }} />
 </CharacterIndividualLayout>

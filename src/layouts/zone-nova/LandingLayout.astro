@@ -8,6 +8,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
+import SpeedInsights from '../../components/SpeedInsights.astro';
 
 // Import CSS files properly
 import '../../styles/games/zone-nova/zn-colors.css';
@@ -34,6 +35,7 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
   <head>
     <ZNBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
+    <SpeedInsights />
 
     <slot name="head" />
   </head>

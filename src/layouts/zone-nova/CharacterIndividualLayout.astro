@@ -1,6 +1,7 @@
 ---
 import ZNBaseHead from '../../components/zone-nova/ZNBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
+import CharacterSEO from '../../components/CharacterSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
@@ -24,9 +25,10 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: string;
+  character?: any; // For CharacterSEO component
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle, heroImage, character } = Astro.props;
 
 // Extract character slug from URL path for navigation
 // URL format: /guides/zone-nova/characters/character-name
@@ -37,7 +39,18 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 <html lang="en">
   <head>
     <ZNBaseHead title={title} description={description || ''} />
-    <GameSEO gameKey="zone-nova" title={title} description={description} />
+    {
+      character ? (
+        <CharacterSEO
+          gameKey="zone-nova"
+          character={character}
+          customTitle={title}
+          customDescription={description}
+        />
+      ) : (
+        <GameSEO gameKey="zone-nova" title={title} description={description} />
+      )
+    }
 
     <slot name="head" />
   </head>

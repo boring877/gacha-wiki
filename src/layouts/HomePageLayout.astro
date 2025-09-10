@@ -2,6 +2,7 @@
 // Home Page Layout - Dedicated layout for the homepage
 import HomeLayout from './HomeLayout.astro';
 import GeneralSEO from '../components/GeneralSEO.astro';
+import SpeedInsights from '../components/SpeedInsights.astro';
 
 export interface Props {
   title: string;
@@ -26,6 +27,8 @@ const { title, description } = Astro.props;
     ]}
     pageType="website"
   />
+
+  <SpeedInsights slot="head" />
 
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

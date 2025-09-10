@@ -8,6 +8,7 @@ import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import SpeedInsights from '../../components/SpeedInsights.astro';
 
 // Import CSS files properly
 import '../../styles/global.css';
@@ -33,6 +34,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
   <head>
     <SABBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+    <SpeedInsights />
 
     <slot name="head" />
   </head>

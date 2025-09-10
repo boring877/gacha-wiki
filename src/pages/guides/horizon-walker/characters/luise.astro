@@ -14,6 +14,7 @@ export const prerender = true;
   title={luiseSEO.title}
   description={luiseSEO.description}
   gameTitle={luiseData.name}
+  character={luiseData}
 >
   <CharacterPageTemplate characterData={{ ...luiseData, highlightPatterns: luiseHighlighting }} />
 </CharacterIndividualLayout>

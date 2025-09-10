@@ -14,6 +14,7 @@ export const prerender = true;
   title={inesSEO.title}
   description={inesSEO.description}
   gameTitle={inesData.name}
+  character={inesData}
 >
   <CharacterPageTemplate characterData={{ ...inesData, highlightPatterns: inesHighlighting }} />
 </CharacterIndividualLayout>
