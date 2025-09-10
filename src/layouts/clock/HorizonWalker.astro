@@ -14,7 +14,6 @@ import SpeedInsights from '../../components/SpeedInsights.astro';
 import '../../styles/games/horizon-walker/hw-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
-import '../../styles/games/horizon-walker/hw-layout.css';
 import '../../styles/clock/layout.css';
 import '../../styles/clock/horizon-walker.css';
 import { Image } from 'astro:assets';
@@ -27,6 +26,17 @@ export interface Props {
 
 const { title, description, games } = Astro.props;
 const game = games[0]; // Horizon Walker config
+
+// Generate initial date server-side to avoid "Loading..."
+const now = new Date();
+const dateOptions: Intl.DateTimeFormatOptions = {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+};
+const currentDateString = now.toLocaleDateString('en-US', dateOptions);
 ---
 
 <!doctype html>
@@ -65,8 +75,8 @@ const game = games[0]; // Horizon Walker config
       <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="horizon-walker" />
       <MobileMenu />
 
-      <div class="horizon-walker-container">
-        <main class="horizon-walker-main modern-clock-page">
+      <div class="clock-page-container">
+        <main class="modern-clock-page">
           <div class="clock-container">
             <!-- Page Title -->
             <section class="title-only-section">
@@ -86,7 +96,7 @@ const game = games[0]; // Horizon Walker config
                     <p class="utc-note" id="utcNote">This is based on KST</p>
                   </div>
                   <div class="current-time-info">
-                    <div class="current-date" id="currentDate">Loading...</div>
+                    <div class="current-date" id="currentDate">{currentDateString}</div>
                     <div class="current-utc" id="currentUTC">KST --:--:--</div>
                   </div>
                 </div>
@@ -294,8 +304,6 @@ const game = games[0]; // Horizon Walker config
     </script>
 
     <!-- Load Horizon Walker clock timer script -->
-    <script>
-      import('../../scripts/clock/horizon-walker.js');
-    </script>
+    <script src="/src/scripts/clock/horizon-walker.js"></script>
   </body>
 </html>

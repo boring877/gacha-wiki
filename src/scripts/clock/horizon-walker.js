@@ -16,32 +16,16 @@ class HorizonWalkerClockTimer {
     this.clockInterval = null;
     this.holidayInterval = null;
     this.config = null;
-
-    // Only essential DOM elements for single-server setup
-    this.clockHours = null;
-    this.clockMinutes = null;
-    this.clockSeconds = null;
-    this.currentDate = null;
-    this.currentUTC = null;
-    this.launchDays = null;
-    this.steamLaunchDays = null;
-    this.weeklyTime = null;
-    this.monthlyTime = null;
-    this.maintenanceStartTime = null;
-    this.maintenanceStartLabel = null;
-    this.maintenanceEndTime = null;
-    this.maintenanceEndLabel = null;
-    this.serverStatusDot = null;
-    this.serverStatusText = null;
-    this.halloweenTime = null;
-    this.newyearTime = null;
+    this.elements = {}; // Store all DOM elements in one object
+    this.cleanupHandler = null; // Store cleanup handler reference
 
     this.init();
   }
 
   init() {
+    // Initialize immediately for faster load
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.setupClock());
+      document.addEventListener('DOMContentLoaded', () => this.setupClock(), { once: true });
     } else {
       this.setupClock();
     }
@@ -56,8 +40,14 @@ class HorizonWalkerClockTimer {
         return;
       }
 
-      // Initialize only used DOM elements
+      // Initialize DOM elements efficiently
       this.initializeDOMElements();
+
+      // Check if elements exist before proceeding
+      if (!this.elements.clockHours) {
+        console.warn('Clock elements not found');
+        return;
+      }
 
       // Initial updates
       this.updateAllDisplays();
@@ -66,40 +56,58 @@ class HorizonWalkerClockTimer {
       // Start intervals
       this.startIntervals();
 
-      // Cleanup on page unload
-      window.addEventListener('beforeunload', () => this.cleanup());
+      // Setup cleanup handler
+      this.cleanupHandler = () => this.cleanup();
+      window.addEventListener('beforeunload', this.cleanupHandler);
+
+      // Also cleanup on page visibility change
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          this.pauseIntervals();
+        } else {
+          this.resumeIntervals();
+        }
+      });
     } catch (error) {
       console.error('Failed to setup Horizon Walker clock:', error);
+      this.cleanup();
     }
   }
 
   initializeDOMElements() {
-    // Main clock display
-    this.clockHours = document.getElementById('clockHours');
-    this.clockMinutes = document.getElementById('clockMinutes');
-    this.clockSeconds = document.getElementById('clockSeconds');
-    this.currentDate = document.getElementById('currentDate');
-    this.currentUTC = document.getElementById('currentUTC');
+    // Batch DOM queries for better performance
+    const elementIds = [
+      'clockHours',
+      'clockMinutes',
+      'clockSeconds',
+      'currentDate',
+      'currentUTC',
+      'launchDays',
+      'steamLaunchDays',
+      'weeklyTime',
+      'monthlyTime',
+      'maintenanceStartTime',
+      'maintenanceStartLabel',
+      'maintenanceEndTime',
+      'maintenanceEndLabel',
+      'serverStatusDot',
+      'serverStatusText',
+      'halloweenTime',
+      'newyearTime',
+    ];
 
-    // Timer cards - only essential ones
-    this.launchDays = document.getElementById('launchDays');
-    this.steamLaunchDays = document.getElementById('steamLaunchDays');
-    this.weeklyTime = document.getElementById('weeklyTime');
-    this.monthlyTime = document.getElementById('monthlyTime');
+    // Query all elements at once
+    elementIds.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        this.elements[id] = element;
+      }
+    });
 
-    // Maintenance elements
-    this.maintenanceStartTime = document.getElementById('maintenanceStartTime');
-    this.maintenanceStartLabel = document.getElementById('maintenanceStartLabel');
-    this.maintenanceEndTime = document.getElementById('maintenanceEndTime');
-    this.maintenanceEndLabel = document.getElementById('maintenanceEndLabel');
-
-    // Server status
-    this.serverStatusDot = document.getElementById('serverStatusDot');
-    this.serverStatusText = document.getElementById('serverStatusText');
-
-    // Holiday timers (updated less frequently)
-    this.halloweenTime = document.getElementById('halloweenTime');
-    this.newyearTime = document.getElementById('newyearTime');
+    // Create shortcuts for frequently accessed elements
+    this.clockHours = this.elements.clockHours;
+    this.clockMinutes = this.elements.clockMinutes;
+    this.clockSeconds = this.elements.clockSeconds;
   }
 
   startIntervals() {
@@ -112,6 +120,21 @@ class HorizonWalkerClockTimer {
     this.holidayInterval = setInterval(() => {
       this.updateHolidayTimers();
     }, HOLIDAY_UPDATE_INTERVAL);
+  }
+
+  pauseIntervals() {
+    if (this.clockInterval) {
+      clearInterval(this.clockInterval);
+      this.clockInterval = null;
+    }
+  }
+
+  resumeIntervals() {
+    if (!this.clockInterval) {
+      this.clockInterval = setInterval(() => {
+        this.updateAllDisplays();
+      }, UPDATE_INTERVAL);
+    }
   }
 
   updateAllDisplays() {
@@ -167,9 +190,11 @@ class HorizonWalkerClockTimer {
    */
   updateCurrentDateTime() {
     const now = new Date();
+    const currentDate = this.elements.currentDate;
+    const currentUTC = this.elements.currentUTC;
 
     // Update current date (only if element exists and every 60 seconds)
-    if (this.currentDate && now.getSeconds() === 0) {
+    if (currentDate && now.getSeconds() === 0) {
       const dateOptions = {
         weekday: 'short',
         year: 'numeric',
@@ -178,20 +203,20 @@ class HorizonWalkerClockTimer {
         timeZone: 'UTC',
       };
       const newDate = now.toLocaleDateString('en-US', dateOptions);
-      if (this.currentDate.textContent !== newDate) {
-        this.currentDate.textContent = newDate;
+      if (currentDate.textContent !== newDate) {
+        currentDate.textContent = newDate;
       }
     }
 
     // Update KST time
-    if (this.currentUTC) {
+    if (currentUTC) {
       const kstTime = new Date(now.getTime() + HW_TIMEZONE_OFFSET);
       const hours = String(kstTime.getUTCHours()).padStart(2, '0');
       const minutes = String(kstTime.getUTCMinutes()).padStart(2, '0');
       const seconds = String(kstTime.getUTCSeconds()).padStart(2, '0');
       const newTime = `KST ${hours}:${minutes}:${seconds}`;
-      if (this.currentUTC.textContent !== newTime) {
-        this.currentUTC.textContent = newTime;
+      if (currentUTC.textContent !== newTime) {
+        currentUTC.textContent = newTime;
       }
     }
   }
@@ -208,29 +233,32 @@ class HorizonWalkerClockTimer {
   }
 
   updateLaunchTimer() {
-    if (!this.launchDays || !this.config.launchDate) return;
+    const launchDays = this.elements.launchDays;
+    if (!launchDays || !this.config.launchDate) return;
 
     const now = new Date();
     const launchDate = new Date(this.config.launchDate);
     const timeDiff = now.getTime() - launchDate.getTime();
     const daysSinceLaunch = Math.floor(timeDiff / MS_PER_DAY);
 
-    this.launchDays.textContent = Math.abs(daysSinceLaunch);
+    launchDays.textContent = Math.abs(daysSinceLaunch);
   }
 
   updateSteamLaunchTimer() {
-    if (!this.steamLaunchDays || !this.config.steamLaunchDate) return;
+    const steamLaunchDays = this.elements.steamLaunchDays;
+    if (!steamLaunchDays || !this.config.steamLaunchDate) return;
 
     const now = new Date();
     const steamLaunchDate = new Date(this.config.steamLaunchDate);
     const timeDiff = now.getTime() - steamLaunchDate.getTime();
     const daysSinceSteamLaunch = Math.floor(timeDiff / MS_PER_DAY);
 
-    this.steamLaunchDays.textContent = Math.abs(daysSinceSteamLaunch);
+    steamLaunchDays.textContent = Math.abs(daysSinceSteamLaunch);
   }
 
   updateWeeklyTimer() {
-    if (!this.weeklyTime) return;
+    const weeklyTime = this.elements.weeklyTime;
+    if (!weeklyTime) return;
 
     try {
       const now = new Date();
@@ -249,15 +277,16 @@ class HorizonWalkerClockTimer {
       }
 
       const timeDiff = nextThursday.getTime() - now.getTime();
-      this.formatTimeDiff(timeDiff, this.weeklyTime);
+      this.formatTimeDiff(timeDiff, weeklyTime);
     } catch (error) {
       console.error('Error updating weekly timer:', error);
-      this.setElementText(this.weeklyTime, '--:--:--');
+      this.setElementText(weeklyTime, '--:--:--');
     }
   }
 
   updateMonthlyTimer() {
-    if (!this.monthlyTime) return;
+    const monthlyTime = this.elements.monthlyTime;
+    if (!monthlyTime) return;
 
     try {
       const now = new Date();
@@ -277,10 +306,10 @@ class HorizonWalkerClockTimer {
       const targetDate = now < thisMonthReset ? thisMonthReset : nextMonth;
       const timeDiff = targetDate.getTime() - now.getTime();
 
-      this.formatTimeDiff(timeDiff, this.monthlyTime);
+      this.formatTimeDiff(timeDiff, monthlyTime);
     } catch (error) {
       console.error('Error updating monthly timer:', error);
-      this.setElementText(this.monthlyTime, '--:--:--');
+      this.setElementText(monthlyTime, '--:--:--');
     }
   }
 
@@ -311,44 +340,52 @@ class HorizonWalkerClockTimer {
     const startTimeDiff = maintenanceStart.getTime() - now.getTime();
     const endTimeDiff = maintenanceEnd.getTime() - now.getTime();
 
+    const maintenanceStartTime = this.elements.maintenanceStartTime;
+    const maintenanceStartLabel = this.elements.maintenanceStartLabel;
+    const maintenanceEndTime = this.elements.maintenanceEndTime;
+    const maintenanceEndLabel = this.elements.maintenanceEndLabel;
+
     if (startTimeDiff > 0) {
-      this.formatTimeDiff(startTimeDiff, this.maintenanceStartTime);
-      this.setElementText(this.maintenanceStartLabel, 'Maintenance Countdown');
+      this.formatTimeDiff(startTimeDiff, maintenanceStartTime);
+      this.setElementText(maintenanceStartLabel, 'Maintenance Countdown');
     } else {
-      this.setElementText(this.maintenanceStartTime, 'In Progress');
-      this.setElementText(this.maintenanceStartLabel, 'Maintenance Status');
+      this.setElementText(maintenanceStartTime, 'In Progress');
+      this.setElementText(maintenanceStartLabel, 'Maintenance Status');
     }
 
     if (isInMaintenance) {
       // During maintenance - show when servers will be back
-      this.formatTimeDiff(endTimeDiff, this.maintenanceEndTime);
-      this.setElementText(this.maintenanceEndLabel, 'Servers Back');
+      this.formatTimeDiff(endTimeDiff, maintenanceEndTime);
+      this.setElementText(maintenanceEndLabel, 'Servers Back');
     } else if (startTimeDiff > 0) {
       // Before maintenance - servers are online
-      this.setElementText(this.maintenanceEndTime, 'Online');
-      this.setElementText(this.maintenanceEndLabel, 'Server Status');
+      this.setElementText(maintenanceEndTime, 'Online');
+      this.setElementText(maintenanceEndLabel, 'Server Status');
     } else {
       // After maintenance - servers are back online
-      this.setElementText(this.maintenanceEndTime, 'Online');
-      this.setElementText(this.maintenanceEndLabel, 'Server Status');
+      this.setElementText(maintenanceEndTime, 'Online');
+      this.setElementText(maintenanceEndLabel, 'Server Status');
     }
   }
 
   updateServerStatus(inMaintenance) {
-    if (this.serverStatusDot) {
-      this.serverStatusDot.classList.toggle('maintenance', inMaintenance);
+    const serverStatusDot = this.elements.serverStatusDot;
+    const serverStatusText = this.elements.serverStatusText;
+
+    if (serverStatusDot) {
+      serverStatusDot.classList.toggle('maintenance', inMaintenance);
     }
-    if (this.serverStatusText) {
-      this.serverStatusText.textContent = inMaintenance ? 'Maintenance' : 'Online';
-      this.serverStatusText.classList.toggle('maintenance', inMaintenance);
+    if (serverStatusText) {
+      serverStatusText.textContent = inMaintenance ? 'Maintenance' : 'Online';
+      serverStatusText.classList.toggle('maintenance', inMaintenance);
     }
   }
 
   updateMaintenanceDisplay(startTime, startLabel, endTime, endLabel) {
-    this.setElementText(this.maintenanceStartTime, startTime);
-    this.setElementText(this.maintenanceStartLabel, startLabel);
-    this.setElementText(this.maintenanceEndTime, endTime);
-    this.setElementText(this.maintenanceEndLabel, endLabel);
+    this.setElementText(this.elements.maintenanceStartTime, startTime);
+    this.setElementText(this.elements.maintenanceStartLabel, startLabel);
+    this.setElementText(this.elements.maintenanceEndTime, endTime);
+    this.setElementText(this.elements.maintenanceEndLabel, endLabel);
   }
 
   /**
@@ -360,7 +397,8 @@ class HorizonWalkerClockTimer {
   }
 
   updateHalloweenTimer() {
-    if (!this.halloweenTime) return;
+    const halloweenTime = this.elements.halloweenTime;
+    if (!halloweenTime) return;
 
     const now = new Date();
     const currentYear = now.getFullYear();
@@ -371,18 +409,19 @@ class HorizonWalkerClockTimer {
     }
 
     const days = Math.floor((halloween.getTime() - now.getTime()) / MS_PER_DAY);
-    this.halloweenTime.textContent = days.toString();
+    halloweenTime.textContent = days.toString();
   }
 
   updateNewYearTimer() {
-    if (!this.newyearTime) return;
+    const newyearTime = this.elements.newyearTime;
+    if (!newyearTime) return;
 
     const now = new Date();
     const nextYear = now.getFullYear() + 1;
     const newYear = new Date(nextYear, 0, 1, 0, 0, 0, 0);
 
     const days = Math.floor((newYear.getTime() - now.getTime()) / MS_PER_DAY);
-    this.newyearTime.textContent = days.toString();
+    newyearTime.textContent = days.toString();
   }
 
   /**
@@ -426,6 +465,7 @@ class HorizonWalkerClockTimer {
    * Cleanup intervals and event listeners
    */
   cleanup() {
+    // Clear intervals
     if (this.clockInterval) {
       clearInterval(this.clockInterval);
       this.clockInterval = null;
@@ -435,8 +475,18 @@ class HorizonWalkerClockTimer {
       this.holidayInterval = null;
     }
 
-    // Remove event listener
-    window.removeEventListener('beforeunload', () => this.cleanup());
+    // Remove event listener properly
+    if (this.cleanupHandler) {
+      window.removeEventListener('beforeunload', this.cleanupHandler);
+      this.cleanupHandler = null;
+    }
+
+    // Clear DOM references to prevent memory leaks
+    this.elements = {};
+    this.clockHours = null;
+    this.clockMinutes = null;
+    this.clockSeconds = null;
+    this.config = null;
   }
 }
 
