@@ -96,11 +96,6 @@
   width: fit-content;
 }
 
-.region-label {
-  opacity: 0.8;
-  margin-right: 4px;
-}
-
 .region-name {
   font-weight: 700;
 }
@@ -240,6 +235,10 @@
   color: var(--hw-text-white);
 }
 
+.status-text.maintenance {
+  color: var(--hw-secondary-coral);
+}
+
 /* === HORIZON WALKER CARD STYLING === */
 .timer-card {
   border-left: none;
@@ -253,14 +252,12 @@
 }
 
 /* === HORIZON WALKER TEXT COLORS === */
-.timer-card-value,
 .maintenance-time,
 .reset-time,
 .launch-days {
   color: var(--hw-text-white);
 }
 
-.timer-card-label,
 .timer-card-subtitle,
 .time-label,
 .utc-note,

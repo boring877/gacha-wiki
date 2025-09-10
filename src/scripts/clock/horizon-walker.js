@@ -7,6 +7,9 @@
 const UPDATE_INTERVAL = 1000; // 1 second for main timers
 const HOLIDAY_UPDATE_INTERVAL = 3600000; // 1 hour for holiday timers
 const HW_TIMEZONE_OFFSET = 9 * 60 * 60 * 1000; // KST in milliseconds
+const MS_PER_DAY = 1000 * 60 * 60 * 24;
+const MS_PER_HOUR = 1000 * 60 * 60;
+const MS_PER_MINUTE = 1000 * 60;
 
 class HorizonWalkerClockTimer {
   constructor() {
@@ -118,12 +121,14 @@ class HorizonWalkerClockTimer {
   }
 
   /**
-   * Calculate time until next reset (01:00 UTC = 10:00 KST)
+   * Calculate time until next daily reset (01:00 UTC = 10:00 KST)
    */
   getTimeUntilReset() {
     const now = new Date();
     const resetTime = new Date();
-    resetTime.setUTCHours(this.config.server.resetHour, this.config.server.resetMinute, 0, 0);
+    const resetHour = this.config?.server?.resetHour || 1; // Default 01:00 UTC
+    const resetMinute = this.config?.server?.resetMinute || 0;
+    resetTime.setUTCHours(resetHour, resetMinute, 0, 0);
 
     // If reset time has passed today, set for tomorrow
     if (resetTime <= now) {
@@ -132,9 +137,9 @@ class HorizonWalkerClockTimer {
 
     const timeDiff = resetTime.getTime() - now.getTime();
     return {
-      hours: Math.max(0, Math.floor(timeDiff / (1000 * 60 * 60))),
-      minutes: Math.max(0, Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))),
-      seconds: Math.max(0, Math.floor((timeDiff % (1000 * 60)) / 1000)),
+      hours: Math.max(0, Math.floor(timeDiff / MS_PER_HOUR)),
+      minutes: Math.max(0, Math.floor((timeDiff % MS_PER_HOUR) / MS_PER_MINUTE)),
+      seconds: Math.max(0, Math.floor((timeDiff % MS_PER_MINUTE) / 1000)),
     };
   }
 
@@ -163,8 +168,8 @@ class HorizonWalkerClockTimer {
   updateCurrentDateTime() {
     const now = new Date();
 
-    // Update current date (less frequent updates needed)
-    if (this.currentDate) {
+    // Update current date (only if element exists and every 60 seconds)
+    if (this.currentDate && now.getSeconds() === 0) {
       const dateOptions = {
         weekday: 'short',
         year: 'numeric',
@@ -172,16 +177,22 @@ class HorizonWalkerClockTimer {
         day: 'numeric',
         timeZone: 'UTC',
       };
-      this.currentDate.textContent = now.toLocaleDateString('en-US', dateOptions);
+      const newDate = now.toLocaleDateString('en-US', dateOptions);
+      if (this.currentDate.textContent !== newDate) {
+        this.currentDate.textContent = newDate;
+      }
     }
 
     // Update KST time
     if (this.currentUTC) {
-      const utc9Time = new Date(now.getTime() + HW_TIMEZONE_OFFSET);
-      const hours = String(utc9Time.getUTCHours()).padStart(2, '0');
-      const minutes = String(utc9Time.getUTCMinutes()).padStart(2, '0');
-      const seconds = String(utc9Time.getUTCSeconds()).padStart(2, '0');
-      this.currentUTC.textContent = `KST ${hours}:${minutes}:${seconds}`;
+      const kstTime = new Date(now.getTime() + HW_TIMEZONE_OFFSET);
+      const hours = String(kstTime.getUTCHours()).padStart(2, '0');
+      const minutes = String(kstTime.getUTCMinutes()).padStart(2, '0');
+      const seconds = String(kstTime.getUTCSeconds()).padStart(2, '0');
+      const newTime = `KST ${hours}:${minutes}:${seconds}`;
+      if (this.currentUTC.textContent !== newTime) {
+        this.currentUTC.textContent = newTime;
+      }
     }
   }
 
@@ -202,7 +213,7 @@ class HorizonWalkerClockTimer {
     const now = new Date();
     const launchDate = new Date(this.config.launchDate);
     const timeDiff = now.getTime() - launchDate.getTime();
-    const daysSinceLaunch = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const daysSinceLaunch = Math.floor(timeDiff / MS_PER_DAY);
 
     this.launchDays.textContent = Math.abs(daysSinceLaunch);
   }
@@ -213,7 +224,7 @@ class HorizonWalkerClockTimer {
     const now = new Date();
     const steamLaunchDate = new Date(this.config.steamLaunchDate);
     const timeDiff = now.getTime() - steamLaunchDate.getTime();
-    const daysSinceSteamLaunch = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const daysSinceSteamLaunch = Math.floor(timeDiff / MS_PER_DAY);
 
     this.steamLaunchDays.textContent = Math.abs(daysSinceSteamLaunch);
   }
@@ -221,66 +232,76 @@ class HorizonWalkerClockTimer {
   updateWeeklyTimer() {
     if (!this.weeklyTime) return;
 
-    const now = new Date();
-    const nextThursday = new Date();
+    try {
+      const now = new Date();
+      const nextThursday = new Date();
 
-    // Calculate days until next Thursday (4 = Thursday)
-    const weeklyResetDay = this.config.weeklyResetDay || 4; // Thursday
-    const daysUntilThursday = (weeklyResetDay - now.getUTCDay() + 7) % 7 || 7;
+      // Calculate days until next Thursday (4 = Thursday)
+      const weeklyResetDay = this.config?.weeklyResetDay || 4; // Thursday
+      const daysUntilThursday = (weeklyResetDay - now.getUTCDay() + 7) % 7 || 7;
 
-    nextThursday.setUTCDate(now.getUTCDate() + daysUntilThursday);
-    nextThursday.setUTCHours(this.config.server.resetHour, this.config.server.resetMinute, 0, 0);
+      nextThursday.setUTCDate(now.getUTCDate() + daysUntilThursday);
+      nextThursday.setUTCHours(this.config.server.resetHour, this.config.server.resetMinute, 0, 0);
 
-    // If it's Thursday and before reset time, use today
-    if (now.getUTCDay() === weeklyResetDay && now.getUTCHours() < this.config.server.resetHour) {
-      nextThursday.setUTCDate(now.getUTCDate());
+      // If it's Thursday and before reset time, use today
+      if (now.getUTCDay() === weeklyResetDay && now.getUTCHours() < this.config.server.resetHour) {
+        nextThursday.setUTCDate(now.getUTCDate());
+      }
+
+      const timeDiff = nextThursday.getTime() - now.getTime();
+      this.formatTimeDiff(timeDiff, this.weeklyTime);
+    } catch (error) {
+      console.error('Error updating weekly timer:', error);
+      this.setElementText(this.weeklyTime, '--:--:--');
     }
-
-    const timeDiff = nextThursday.getTime() - now.getTime();
-    this.formatTimeDiff(timeDiff, this.weeklyTime);
   }
 
   updateMonthlyTimer() {
     if (!this.monthlyTime) return;
 
-    const now = new Date();
-    const nextMonth = new Date();
+    try {
+      const now = new Date();
+      const nextMonth = new Date();
 
-    // Set to first day of next month
-    nextMonth.setUTCMonth(now.getUTCMonth() + 1, 1);
-    nextMonth.setUTCHours(this.config.server.resetHour, this.config.server.resetMinute, 0, 0);
+      // Set to first day of next month
+      nextMonth.setUTCMonth(now.getUTCMonth() + 1, 1);
+      // Monthly reset is at 00:00 KST, not at the daily reset hour
+      nextMonth.setUTCHours(0, 0, 0, 0);
 
-    // Check if this month's reset hasn't happened yet
-    const thisMonthReset = new Date();
-    thisMonthReset.setUTCDate(1);
-    thisMonthReset.setUTCHours(this.config.server.resetHour, this.config.server.resetMinute, 0, 0);
+      // Check if this month's reset hasn't happened yet
+      const thisMonthReset = new Date();
+      thisMonthReset.setUTCDate(1);
+      // Monthly reset is at 00:00 KST
+      thisMonthReset.setUTCHours(0, 0, 0, 0);
 
-    const targetDate = now < thisMonthReset ? thisMonthReset : nextMonth;
-    const timeDiff = targetDate.getTime() - now.getTime();
+      const targetDate = now < thisMonthReset ? thisMonthReset : nextMonth;
+      const timeDiff = targetDate.getTime() - now.getTime();
 
-    this.formatTimeDiff(timeDiff, this.monthlyTime);
+      this.formatTimeDiff(timeDiff, this.monthlyTime);
+    } catch (error) {
+      console.error('Error updating monthly timer:', error);
+      this.setElementText(this.monthlyTime, '--:--:--');
+    }
   }
 
   updateMaintenanceTimer() {
-    const maintenance = this.config.maintenance;
-    if (!maintenance) return;
+    const maintenance = this.config?.maintenance;
+    if (!maintenance) {
+      console.warn('No maintenance config found');
+      return;
+    }
 
     // No maintenance scheduled
     if (!maintenance.date) {
       this.updateServerStatus(false);
-      this.updateMaintenanceDisplay(
-        '--:--:--',
-        'Next Maintenance',
-        'Waiting for announcement',
-        'Server Status'
-      );
+      this.updateMaintenanceDisplay('--:--:--', 'No Maintenance', 'Online', 'Server Status');
       return;
     }
 
     const now = new Date();
     const maintenanceStart = new Date(maintenance.date);
     const maintenanceEnd = new Date(
-      maintenanceStart.getTime() + maintenance.duration * 60 * 60 * 1000
+      maintenanceStart.getTime() + (maintenance.duration || 0) * MS_PER_HOUR
     );
 
     const isInMaintenance = now >= maintenanceStart && now <= maintenanceEnd;
@@ -292,18 +313,24 @@ class HorizonWalkerClockTimer {
 
     if (startTimeDiff > 0) {
       this.formatTimeDiff(startTimeDiff, this.maintenanceStartTime);
-      this.setElementText(this.maintenanceStartLabel, 'Until Start');
+      this.setElementText(this.maintenanceStartLabel, 'Maintenance Countdown');
     } else {
-      this.setElementText(this.maintenanceStartTime, 'Started');
-      this.setElementText(this.maintenanceStartLabel, 'Status');
+      this.setElementText(this.maintenanceStartTime, 'In Progress');
+      this.setElementText(this.maintenanceStartLabel, 'Maintenance Status');
     }
 
-    if (endTimeDiff > 0 && isInMaintenance) {
+    if (isInMaintenance) {
+      // During maintenance - show when servers will be back
       this.formatTimeDiff(endTimeDiff, this.maintenanceEndTime);
       this.setElementText(this.maintenanceEndLabel, 'Servers Back');
+    } else if (startTimeDiff > 0) {
+      // Before maintenance - servers are online
+      this.setElementText(this.maintenanceEndTime, 'Online');
+      this.setElementText(this.maintenanceEndLabel, 'Server Status');
     } else {
-      this.setElementText(this.maintenanceEndTime, '--:--:--');
-      this.setElementText(this.maintenanceEndLabel, isInMaintenance ? 'Complete' : 'Server Status');
+      // After maintenance - servers are back online
+      this.setElementText(this.maintenanceEndTime, 'Online');
+      this.setElementText(this.maintenanceEndLabel, 'Server Status');
     }
   }
 
@@ -343,7 +370,7 @@ class HorizonWalkerClockTimer {
       halloween = new Date(currentYear + 1, 9, 31, 23, 59, 59, 999);
     }
 
-    const days = Math.floor((halloween.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+    const days = Math.floor((halloween.getTime() - now.getTime()) / MS_PER_DAY);
     this.halloweenTime.textContent = days.toString();
   }
 
@@ -354,7 +381,7 @@ class HorizonWalkerClockTimer {
     const nextYear = now.getFullYear() + 1;
     const newYear = new Date(nextYear, 0, 1, 0, 0, 0, 0);
 
-    const days = Math.floor((newYear.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+    const days = Math.floor((newYear.getTime() - now.getTime()) / MS_PER_DAY);
     this.newyearTime.textContent = days.toString();
   }
 
@@ -362,12 +389,18 @@ class HorizonWalkerClockTimer {
    * Helper methods
    */
   formatTimeDiff(timeDiff, element) {
-    if (!element || timeDiff < 0) return;
+    if (!element) return;
 
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    // Handle negative time (past events)
+    if (timeDiff < 0) {
+      element.textContent = 'Expired';
+      return;
+    }
+
+    const days = Math.floor(timeDiff / MS_PER_DAY);
+    const hours = Math.floor((timeDiff % MS_PER_DAY) / MS_PER_HOUR);
+    const minutes = Math.floor((timeDiff % MS_PER_HOUR) / MS_PER_MINUTE);
+    const seconds = Math.floor((timeDiff % MS_PER_MINUTE) / 1000);
 
     let display;
     if (days > 0) {
@@ -401,6 +434,9 @@ class HorizonWalkerClockTimer {
       clearInterval(this.holidayInterval);
       this.holidayInterval = null;
     }
+
+    // Remove event listener
+    window.removeEventListener('beforeunload', () => this.cleanup());
   }
 }
 

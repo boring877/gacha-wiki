@@ -4,7 +4,7 @@
  */
 
 // Constants for Horizon Walker server
-const HW_SERVER_TIMEZONE = 9; // KST (UTC+9)
+const HW_SERVER_TIMEZONE = 9; // KST (Korea Standard Time)
 const HW_RESET_HOUR_UTC = 1; // 01:00 UTC = 10:00 KST
 
 export const horizonWalkerConfig = {
@@ -29,8 +29,8 @@ export const horizonWalkerConfig = {
 
   // Maintenance information
   maintenance: {
-    date: null,
-    duration: 0,
-    subtitle: 'No maintenance scheduled',
+    date: '2025-09-11T00:00:00Z', // September 11, 2025, 09:00 KST (converted to UTC)
+    duration: 4, // 4 hours (09:00 ~ 13:00)
+    subtitle: 'September 11, 09:00 ~ 13:00 KST (4 hours)',
   },
 };

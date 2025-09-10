@@ -81,11 +81,11 @@ const game = games[0]; // Horizon Walker config
                 <!-- Top Section: UTC Note and Current Time -->
                 <div class="hero-top-section">
                   <div class="utc-info">
-                    <p class="utc-note" id="utcNote">This is based on UTC+9</p>
+                    <p class="utc-note" id="utcNote">This is based on KST</p>
                   </div>
                   <div class="current-time-info">
                     <div class="current-date" id="currentDate">Loading...</div>
-                    <div class="current-utc" id="currentUTC">UTC+9 --:--:--</div>
+                    <div class="current-utc" id="currentUTC">KST --:--:--</div>
                   </div>
                 </div>
 
@@ -184,7 +184,7 @@ const game = games[0]; // Horizon Walker config
                           <!-- Monthly Reset -->
                           <div class="reset-item">
                             <div class="reset-name">Monthly Reset</div>
-                            <div class="reset-subtitle">1st of each month at 00:00 UTC+9</div>
+                            <div class="reset-subtitle">1st of each month at 00:00 KST</div>
                             <div class="reset-time" id="monthlyTime">--:--:--</div>
                           </div>
                         </div>
@@ -206,15 +206,13 @@ const game = games[0]; // Horizon Walker config
                           <!-- Maintenance Start Timer -->
                           <div class="maintenance-item">
                             <div class="maintenance-name" id="maintenanceStartLabel">
-                              Until Start
+                              Maintenance Countdown
                             </div>
                             <div class="maintenance-time" id="maintenanceStartTime">--:--:--</div>
                           </div>
                           <!-- Maintenance End Timer -->
                           <div class="maintenance-item">
-                            <div class="maintenance-name" id="maintenanceEndLabel">
-                              Servers Back
-                            </div>
+                            <div class="maintenance-name" id="maintenanceEndLabel">Until End</div>
                             <div class="maintenance-time" id="maintenanceEndTime">--:--:--</div>
                           </div>
                         </div>
