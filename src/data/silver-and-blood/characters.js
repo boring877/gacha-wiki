@@ -70,6 +70,11 @@ export const gameInfo = {
       description:
         'DMG dealt throught magical means like blood formulas and alchemical formulas.Increasing M.DEF reduces DMG taken from this type.',
     },
+    {
+      name: 'Piercing DMG',
+      description:
+        'A special type of DMG. When inflicted, it ignores a certain amount of P. DEF and M. DEF and deals 200% DMG to Shields. This DMG type is not affected by P. DMG and M. DMG related effects.',
+    },
   ],
   skillTypes: [
     { name: 'Normal Attack', description: 'Basic attack skill that generates Bloodsoul' },
@@ -140,6 +145,8 @@ import { quinn } from './characters/quinn.js';
 import { agnes } from './characters/agnes.js';
 import { valora } from './characters/valora.js';
 import { julius } from './characters/julius.js';
+import { stella } from './characters/stella.js';
+import { regina } from './characters/regina.js';
 
 // Characters array - Add new characters here
 const baseCharacters = [
@@ -187,6 +194,8 @@ const baseCharacters = [
   agnes,
   valora,
   julius,
+  stella,
+  regina,
   // Add more characters as they are created
 ];
 

@@ -800,5 +800,41 @@ export const baseStats = {
     bloodPower: 20871,
   },
 
+  // Stella
+  stella: {
+    hp: 146000, // 146K
+    atk: 10358,
+    pDef: 3636,
+    mDef: 3262,
+    atkSpd: 0, // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5, // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20856,
+  },
+
+  // Regina
+  regina: {
+    hp: 77814, // 77.8K
+    atk: 4631,
+    pDef: 2169,
+    mDef: 1964,
+    atkSpd: 0, // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5, // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 10473,
+  },
+
   // --- add more characters below ---
 };

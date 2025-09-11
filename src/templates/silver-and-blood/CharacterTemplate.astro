@@ -6,6 +6,7 @@ import { Image } from 'astro:assets';
 import {
   highlightAllSkills,
   highlightMechanics,
+  highlightSkillText,
   defaultSABHighlightPatterns,
 } from '../../utils/silver-and-blood/skill-highlighting.js';
 
@@ -46,6 +47,12 @@ const equipmentNote = equipData ? `${equipmentType} Equipment: ${equipData.descr
 
 const classData = gameInfo.classes.find(c => c.name === charClass);
 const classInfo = classData ? `${charClass}: ${classData.description}` : null;
+
+// Apply highlighting to Game Mechanics text
+const highlightedMoonPhaseEffect = moonPhaseEffect ? highlightSkillText(moonPhaseEffect, defaultSABHighlightPatterns) : null;
+const highlightedAttackTypeInfo = attackTypeInfo ? highlightSkillText(attackTypeInfo, defaultSABHighlightPatterns) : null;
+const highlightedEquipmentNote = equipmentNote ? highlightSkillText(equipmentNote, defaultSABHighlightPatterns) : null;
+const highlightedClassInfo = classInfo ? highlightSkillText(classInfo, defaultSABHighlightPatterns) : null;
 
 // Find related characters (same class or faction)
 const relatedCharacters = [];
@@ -595,7 +602,7 @@ const relatedCharacters = [];
             <h4 style="color: #c0c0c0; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.5rem 0;">
               Moon Phase Effect
             </h4>
-            <p style="color: #e0e0e0; margin: 0; line-height: 1.5;">{moonPhaseEffect}</p>
+            <p style="color: #e0e0e0; margin: 0; line-height: 1.5;" set:html={highlightedMoonPhaseEffect}></p>
           </div>
         )}
 
@@ -607,7 +614,7 @@ const relatedCharacters = [];
             <h4 style="color: #c0c0c0; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.5rem 0;">
               Attack Type
             </h4>
-            <p style="color: #e0e0e0; margin: 0; line-height: 1.5;">{attackTypeInfo}</p>
+            <p style="color: #e0e0e0; margin: 0; line-height: 1.5;" set:html={highlightedAttackTypeInfo}></p>
           </div>
         )}
 
@@ -619,7 +626,7 @@ const relatedCharacters = [];
             <h4 style="color: #c0c0c0; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.5rem 0;">
               Equipment
             </h4>
-            <p style="color: #e0e0e0; margin: 0; line-height: 1.5;">{equipmentNote}</p>
+            <p style="color: #e0e0e0; margin: 0; line-height: 1.5;" set:html={highlightedEquipmentNote}></p>
           </div>
         )}
 
@@ -631,7 +638,7 @@ const relatedCharacters = [];
             <h4 style="color: #c0c0c0; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.5rem 0;">
               Class
             </h4>
-            <p style="color: #e0e0e0; margin: 0; line-height: 1.5;">{classInfo}</p>
+            <p style="color: #e0e0e0; margin: 0; line-height: 1.5;" set:html={highlightedClassInfo}></p>
           </div>
         )}
       </section>

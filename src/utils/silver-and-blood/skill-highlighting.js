@@ -209,15 +209,16 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
  * Note: Patterns optimized to prevent ReDoS attacks using atomic groups and specific quantifiers
  */
 export const defaultSABHighlightPatterns = {
-  damage: /\b(?:\d{1,4}\.?\d?%\s+(?:ATK|Max\s+HP)|P\.?\s?DMG|M\.?\s?DMG|damage|DMG)\b/gi,
+  damage:
+    /\b(?:\d{1,4}\.?\d?%\s+(?:ATK|Max\s+HP)|P\.?\s?DMG|M\.?\s?DMG|Piercing\s+DMG|damage|DMG)\b/gi,
   effects:
     /(?:Moon\s+Phase:\s+[^.]+\.|Pull\s+Control:[^.]+\.|Movement\s+Speed\s+Down:[^.]+\.|P\.\s?DEF\s+Down\s+\([^)]+\):[^.]+\.)/gi,
   buffsDebuffs:
-    /\b(?:shield|bloodsoul|moon\s+phase|planar\s+regression|projected\s+plane|buff|debuff|heal|healing|recovery|mark\s+effect|dispel|undispellable|cannot\s+be\s+dispelled|taunt|weakness|counterattack|pull|displacement|movement\s+speed\s+down|def\s+down|dmg\s+taken\s+down)\b/gi,
+    /\b(?:shield|bloodsoul|moon\s+phase|planar\s+regression|projected\s+plane|buff|debuff|heal|healing|recovery|mark\s+effect|dispel|undispellable|cannot\s+be\s+dispelled|taunt|weakness|counterattack|pull|displacement|movement\s+speed\s+down|def\s+down|dmg\s+taken\s+down|survivability|protection\s+skills?|DPS|reliable|strong|versatile|distinctive\s+abilities|benefits)\b/gi,
   numbers:
     /\b(?:\d{1,4}\.?\d?%|\d{1,3}\s+sec|\d{1,3}\s+stack(?:s)?|\d{1,3}\s+(?:round|turn)s?|\d{1,2}\s+enemies?|Cost:\s+\d)\b/gi,
   keywords:
-    /\b(?:deals?|inflicts?|grants?|restores?|applies?|removes?|blocks?|gains?|loses?|activates?|channels?|constructs?|transforms?|hurls?|modifies?|consumes?|lasting|duration|while|when|after|until|once|every|maximum|equal\s+to|up\s+to)\b/gi,
+    /\b(?:deals?|inflicts?|grants?|restores?|applies?|removes?|blocks?|gains?|loses?|activates?|channels?|constructs?|transforms?|hurls?|modifies?|consumes?|lasting|duration|while|when|after|until|once|every|maximum|equal\s+to|up\s+to|attack-focused|offensive\s+stats?|defensive\s+stats?|balanced\s+attributes?|breaking\s+through|avoiding|directly\s+striking|front\s+line|backline|middle|enemies|single\s+target|targets|attack\s+style|destroy|various\s+methods)\b/gi,
   attributes:
     /\b(?:HP|ATK|P\.?\s?DEF|M\.?\s?DEF|ATK\s+SPD|Bloodsoul\s+Recovery|CRIT\s+Rate|CRIT\s+DMG|All\s+DMG|P\.?\s?DMG\s+Bonus|M\.?\s?DMG\s+Bonus|Blood\s+Power|Max\s+HP|Shield\s+Strength|True\s+DMG)\b/gi,
 };

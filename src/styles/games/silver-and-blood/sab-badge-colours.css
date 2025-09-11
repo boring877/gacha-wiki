@@ -38,6 +38,7 @@
   /* Attack Type Badge Colors */
   --sab-badge-pdmg: #cd853f; /* Physical damage - peru */
   --sab-badge-mdmg: #4169e1; /* Magical damage - royal blue */
+  --sab-badge-piercing-dmg: #9932cc; /* Piercing damage - dark orchid */
 
   /* Skill Type Badge Colors - Updated for Silver and Blood theme */
   --sab-badge-normal-attack: #b8c5d1; /* Normal attack - silver blue (metallic theme) */
@@ -81,6 +82,7 @@
   --sab-badge-full-moon-border: #fff8dc; /* Full moon border - cornsilk */
   --sab-badge-pdmg-border: #deb887; /* Physical damage border - burlywood */
   --sab-badge-mdmg-border: #6495ed; /* Magical damage border - cornflower blue */
+  --sab-badge-piercing-dmg-border: #ba55d3; /* Piercing damage border - medium orchid */
   --sab-badge-normal-attack-border: #9fb3c4; /* Normal attack border - silver accent */
   --sab-badge-special-border: #ffbf00; /* Special skill border - golden amber */
   --sab-badge-passive-border: #7a95b8; /* Passive skill border - light steel blue */
@@ -311,6 +313,13 @@
 .attack-badge.mdmg,
 .badge.mdmg {
   background: var(--sab-badge-mdmg);
+  color: var(--sab-badge-white);
+  border: none;
+}
+
+.attack-badge.piercing-dmg,
+.badge.piercing-dmg {
+  background: var(--sab-badge-piercing-dmg);
   color: var(--sab-badge-white);
   border: none;
 }
