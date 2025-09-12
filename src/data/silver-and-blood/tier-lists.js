@@ -57,6 +57,7 @@ export const PVE_TIER_LIST = {
       { name: 'Transcendent Noah' },
       { name: 'Seth' },
       { name: 'Quinn' },
+      { name: 'Regina' },
     ],
     A: [
       { name: 'Agnes' },
@@ -78,6 +79,7 @@ export const PVE_TIER_LIST = {
       { name: 'Cain' },
       { name: 'Yggdrasill' },
       { name: 'Julius' },
+      { name: 'Stella' },
     ],
     Situational: [
       { name: 'Jinxed Selena' },
@@ -108,6 +110,7 @@ export const PVP_TIER_LIST = {
       { name: 'Quinn' },
       { name: 'Agnes' },
       { name: 'Valora' },
+      { name: 'Stella' },
     ],
     S: [
       { name: 'Hati' },
@@ -141,6 +144,7 @@ export const PVP_TIER_LIST = {
       { name: 'Joan' },
       { name: 'Darcias' },
       { name: 'Cecia' },
+      { name: 'Regina' },
     ],
     Situational: [
       { name: 'Jinxed Selena' },
@@ -193,6 +197,7 @@ export const CLAN_HUNT_TIER_LIST = {
       { name: 'Selena' },
       { name: 'Nicole' },
       { name: 'Julius' },
+      { name: 'Stella' },
     ],
     A: [
       { name: 'Bella' },
@@ -204,6 +209,7 @@ export const CLAN_HUNT_TIER_LIST = {
       { name: 'Incendiary Agares' },
       { name: 'Friedrich' },
       { name: 'Ressa' },
+      { name: 'Regina' },
     ],
     Situational: [{ name: 'Jinxed Selena' }, { name: 'Ottavia' }, { name: 'Mass' }],
   },
@@ -246,6 +252,7 @@ export const BOSS_RAIDS_TIER_LIST = {
       { name: 'Quinn' },
       { name: 'Julius' },
       { name: 'Valora' },
+      { name: 'Regina' },
     ],
     A: [
       { name: 'Agnes' },
@@ -260,6 +267,7 @@ export const BOSS_RAIDS_TIER_LIST = {
       { name: 'Edina' },
       { name: 'Cecia' },
       { name: 'Joan' },
+      { name: 'Stella' },
     ],
     Situational: [
       { name: 'Jinxed Selena' },
