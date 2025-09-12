@@ -217,7 +217,7 @@ const relatedCharacters = [];
               >
                 Attack Type
               </div>
-              <span class={`attack-badge ${attackType.toLowerCase().replace('.', '')}`}
+              <span class={`attack-badge ${attackType.toLowerCase().replace(/[\s.]/g, '-')}`}
                 >{attackType}</span
               >
             </div>
