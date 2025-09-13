@@ -28,7 +28,25 @@ const { title, description, gameTitle = 'Character Comparison Tool V2' } = Astro
 <html lang="en">
   <head>
     <ZNBaseHead title={title} description={description || ''} />
-    <GameSEO gameKey="zone-nova" title={title} description={description} />
+    <GameSEO
+      gameKey="zone-nova"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'zone nova character comparison',
+        'zone nova character compare',
+        'zone nova vs character',
+        'zone nova character stats',
+        'character comparison tool',
+        'zone nova character analysis',
+        'compare zone nova characters',
+        'zone nova character differences',
+        'character comparison guide',
+        'zone nova character picker',
+        'best zone nova characters',
+        'zone nova character tier compare',
+      ]}
+    />
     <slot name="head" />
   </head>
   <body class="zone-nova-body zn-layout-override comparison-v2-dark">

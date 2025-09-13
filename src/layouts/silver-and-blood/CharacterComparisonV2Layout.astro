@@ -31,7 +31,25 @@ const { title, description } = Astro.props;
       description={description || ''}
       shouldPreloadDefaultImage={false}
     />
-    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'silver and blood character comparison',
+        'silver and blood character compare',
+        'silver and blood vs character',
+        'sab character comparison',
+        'silver and blood character stats',
+        'character comparison tool',
+        'silver and blood character analysis',
+        'compare silver and blood characters',
+        'silver and blood character differences',
+        'character comparison guide',
+        'silver and blood character picker',
+        'best silver and blood characters',
+      ]}
+    />
 
     <slot name="head" />
   </head>

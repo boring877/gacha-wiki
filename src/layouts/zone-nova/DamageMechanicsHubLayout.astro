@@ -26,7 +26,25 @@ const { title, description, gameTitle = 'Zone Nova' } = Astro.props;
 <html lang="en">
   <head>
     <ZNBaseHead title={title} description={description || ''} />
-    <GameSEO gameKey="zone-nova" title={title} description={description} />
+    <GameSEO
+      gameKey="zone-nova"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'zone nova damage mechanics',
+        'zone nova damage calculation',
+        'zone nova damage guide',
+        'zone nova damage formula',
+        'damage mechanics calculator',
+        'zone nova damage system',
+        'zone nova combat mechanics',
+        'zone nova damage types',
+        'zone nova stat calculations',
+        'zone nova battle mechanics',
+        'zone nova damage optimization',
+        'zone nova damage analysis',
+      ]}
+    />
     <slot name="head" />
   </head>
   <body class="zone-nova-body zn-layout-override">

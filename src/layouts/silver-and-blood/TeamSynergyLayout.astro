@@ -36,7 +36,25 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
       breadcrumbs={breadcrumbs}
       shouldPreloadDefaultImage={false}
     />
-    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'silver and blood team synergy',
+        'silver and blood team building',
+        'silver and blood team composition',
+        'silver and blood team builder',
+        'sab team synergy',
+        'silver and blood best teams',
+        'silver and blood team guide',
+        'silver and blood party composition',
+        'team synergy calculator',
+        'silver and blood team formations',
+        'silver and blood squad building',
+        'silver and blood optimal teams',
+      ]}
+    />
 
     <slot name="head" />
   </head>

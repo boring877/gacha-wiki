@@ -190,6 +190,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           url: '/clock/silver-and-blood/',
         },
         {
+          id: 'rerolling-guide',
+          title: 'Rerolling Guide',
+          url: '/guides/silver-and-blood/rerolling-guide/',
+        },
+        {
           id: 'redeem-codes',
           title: 'Redeem Codes',
           url: '/guides/silver-and-blood/redeem-codes/',
@@ -222,6 +227,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
         'Track Silver and Blood server resets, maintenance, raids, signin events, outfit availability, and special events with real-time countdown timers for APAC and US regions.',
       url: '/clock/silver-and-blood/',
       category: 'tools',
+      status: 'active',
+    },
+    {
+      id: 'rerolling-guide',
+      title: 'Rerolling Guide',
+      emoji: '',
+      description:
+        'Complete rerolling guide focused on getting Timeless Aiona. Step-by-step process with redeem codes, optimal strategy, and fast rerolling tips for new players.',
+      url: '/guides/silver-and-blood/rerolling-guide/',
+      category: 'guides',
       status: 'active',
     },
     {
@@ -391,7 +406,7 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     {
       id: 'slot-machines',
       title: 'Slot Machine Simulators',
-      emoji: '🎰',
+      emoji: '',
       description:
         'Interactive slot machine simulators for Recast and Refinement mechanics. Test your luck with realistic probability simulations based on gameplay observation!',
       url: '/guides/silver-and-blood/slot-machines/',

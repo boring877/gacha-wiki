@@ -27,7 +27,25 @@ const { title, description, gameTitle } = Astro.props;
 <html lang="en">
   <head>
     <SABBaseHead title={title} description={description || ''} />
-    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'silver and blood damage mechanics',
+        'silver and blood damage calculation',
+        'silver and blood damage guide',
+        'sab damage mechanics',
+        'silver and blood damage formula',
+        'damage mechanics calculator',
+        'silver and blood damage system',
+        'silver and blood combat mechanics',
+        'silver and blood damage types',
+        'silver and blood stat calculations',
+        'silver and blood battle mechanics',
+        'silver and blood damage optimization',
+      ]}
+    />
 
     <slot name="head" />
   </head>

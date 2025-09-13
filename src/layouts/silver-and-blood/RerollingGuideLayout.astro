@@ -1,0 +1,224 @@
+---
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+
+// Import only essential CSS files
+import '../../styles/games/silver-and-blood/sab-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-rerolling-guide.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  data: any;
+}
+
+const { title, description, gameTitle, data } = Astro.props;
+const { intro, steps, expectedResources, redeemCodes, timelessAiona } = data;
+---
+
+<html lang="en">
+  <head>
+    <SABBaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'silver and blood reroll',
+        'silver and blood rerolling',
+        'silver and blood rerolling guide',
+        'silver and blood reroll tutorial',
+        'silver and blood reroll strategy',
+        'how to reroll silver and blood',
+        'silver and blood reroll tips',
+        'silver and blood beginner reroll',
+        'silver and blood fast reroll',
+        'silver and blood reroll method',
+        'silver and blood reroll 2025',
+        'sab rerolling guide',
+        'sab reroll tutorial',
+        'get Timeless Aiona',
+        'Timeless Aiona reroll',
+        'normal banner reroll',
+        'silver and blood SSR reroll',
+        'best SSR character reroll',
+        'Timeless Aiona guide',
+        'reroll for Timeless Aiona',
+        'silver and blood redeem codes reroll',
+        'fastest reroll Timeless Aiona',
+        'silver and blood starter guide',
+      ]}
+    />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="silver-and-blood-main" id="main-content">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <!-- Introduction Section -->
+            <div class="intro-section">
+              <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                {
+                  timelessAiona && timelessAiona.image && (
+                    <div style="flex-shrink: 0;">
+                      <img
+                        src={timelessAiona.image}
+                        alt="Timeless Aiona"
+                        style="width: 150px; height: auto; border-radius: 8px; display: block;"
+                      />
+                    </div>
+                  )
+                }
+
+                <div style="flex: 1;">
+                  <p style="font-size: 1.1rem; line-height: 1.6; margin: 0 0 1.5rem 0;">
+                    We are looking to get <a
+                      href="/guides/silver-and-blood/characters/timeless-aiona"
+                      style="color: var(--sab-calm-red); text-decoration: underline; font-weight: 600;"
+                      >Timeless Aiona</a
+                    >. She is really powerful and really going to make the game very simple! She
+                    needs <a
+                      href="/guides/silver-and-blood/characters/acappella"
+                      style="color: var(--sab-blue-silver); text-decoration: underline; font-weight: 500;"
+                      >Acappella</a
+                    > and <a
+                      href="/guides/silver-and-blood/characters/fleeting-bella"
+                      style="color: var(--sab-blue-silver); text-decoration: underline; font-weight: 500;"
+                      >Fleeting Bella</a
+                    > but that can be easily obtained later on!
+                  </p>
+
+                  <div
+                    style="background: rgba(220, 38, 38, 0.15); padding: 1rem; border-radius: 6px; border: 1px solid #dc2626; margin-bottom: 1rem;"
+                  >
+                    <p
+                      style="margin: 0 0 0.5rem 0; font-weight: 700; color: #fca5a5; font-size: 1rem;"
+                    >
+                      IMPORTANT:
+                    </p>
+                    <p style="margin: 0; color: #f8f9fa; font-size: 0.95rem; line-height: 1.5;">
+                      We only going to summon on normal banner to get Timeless Aiona - she is only
+                      there!
+                    </p>
+                  </div>
+
+                  <div
+                    style="background: rgba(15, 15, 15, 0.6); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--sab-calm-red);"
+                  >
+                    <p
+                      style="margin: 0; font-weight: 600; color: var(--sab-calm-red); font-size: 1rem;"
+                    >
+                      {expectedResources}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Section -->
+            <div class="section">
+              <div class="step-card" style="text-align: center;">
+                <h3
+                  style="color: #f8f9fa; font-size: 1.2rem; font-weight: 700; margin: 0 0 1rem 0;"
+                >
+                  Video Guide
+                </h3>
+
+                <p style="margin: 0 0 1rem 0; font-size: 1rem; line-height: 1.6;">
+                  {intro.videoCredit.text}
+                </p>
+
+                <a
+                  href={intro.videoCredit.videoUrl}
+                  target="_blank"
+                  rel="noopener"
+                  class="video-button"
+                  style="display: inline-block; background: var(--sab-calm-red); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 0 0 1rem 0; font-size: 1rem;"
+                  >Watch Video Guide</a
+                >
+
+                <p style="margin: 0; font-size: 0.95rem;">
+                  <strong
+                    ><a
+                      href={intro.videoCredit.channel}
+                      target="_blank"
+                      rel="noopener"
+                      class="video-link">Credit to Tim</a
+                    ></strong>
+                </p>
+              </div>
+            </div>
+
+            <!-- Steps Section -->
+            {
+              steps?.map((step, index) => (
+                <div class="section">
+                  <div class="step-card">
+                    <h4 style="color: #f8f9fa; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.75rem 0; line-height: 1.4;">
+                      {typeof step === 'object' ? step.main : step}
+                    </h4>
+                    {typeof step === 'object' && step.detail && (
+                      <p style="margin: 0; color: #d1d5db; font-size: 0.95rem; line-height: 1.5;">
+                        {step.detail}
+                      </p>
+                    )}
+                    {/* Show codes after step 4 (add redeem code) */}
+                    {index === 3 && redeemCodes && redeemCodes.length > 0 && (
+                      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #374151;">
+                        <h5 style="color: #f8f9fa; font-size: 1rem; font-weight: 600; margin: 0 0 0.75rem 0;">
+                          Redeem Codes:
+                        </h5>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem;">
+                          {redeemCodes.map(code => (
+                            <code style="background: rgba(0, 0, 0, 0.4); color: var(--sab-blue-silver); padding: 0.5rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem; text-align: center; border: 1px solid #374151;">
+                              {code.code}
+                            </code>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

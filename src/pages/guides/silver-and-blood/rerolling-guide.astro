@@ -1,0 +1,13 @@
+---
+import RerollingGuideLayout from '../../../layouts/silver-and-blood/RerollingGuideLayout.astro';
+import { rerollingGuideData } from '../../../data/silver-and-blood/rerolling-guide.js';
+
+const { meta } = rerollingGuideData;
+---
+
+<RerollingGuideLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  data={rerollingGuideData}
+/>
