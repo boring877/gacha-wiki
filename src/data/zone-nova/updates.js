@@ -1,6 +1,24 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'september-16-maintenance',
+    title: 'September 16 Maintenance Update',
+    date: 'September 16, 2025',
+    type: 'maintenance',
+    summary:
+      'Major maintenance update starting 14:00 (4 hours). Multiple new activities including BETA Squad Divine Spirit Trial, Ravinia recruitment, Space-Time Rift Tide XI, Battle Pass update, and various limited-time events. Maintenance compensation: 300 Photon Stones.',
+    url: '/guides/zone-nova/updates/announcement-september-16-maintenance/',
+  },
+  {
+    id: 'ravinia-recruitment',
+    title: 'Limited Recruitment Character [Legendary Character] Ravinia',
+    date: 'September 16, 2025',
+    type: 'recruitment',
+    summary:
+      'New Legendary character Ravinia (Healer, Furnace Attribute) available through Limited Recruitment from September 16-30, 2025. Close-combat support healer who deals moderate damage while healing teammates when taking hits. Former BETA squad captain and Xia Gai Technology Company secretary.',
+    url: '/guides/zone-nova/updates/announcement-ravinia-recruitment/',
+  },
+  {
     id: 'first-character-popularity-vote-results',
     title: 'First Character Popularity Vote Results!',
     date: 'September 2, 2025',

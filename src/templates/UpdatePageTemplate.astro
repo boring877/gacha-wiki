@@ -2,6 +2,11 @@
 // @ts-nocheck
 import ZoneNovaUpdateLayout from '../layouts/zone-nova/UpdateLayout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import {
+  highlightUpdateText,
+  highlightUpdateContentArray,
+  highlightTldrArray,
+} from '../utils/zone-nova/update-highlighting.js';
 
 export interface Props {
   updateData: {
@@ -28,6 +33,18 @@ export interface Props {
 }
 
 const { updateData, seoData } = Astro.props;
+
+// Apply highlighting to update content for better readability
+const highlightedTldr = updateData.tldr ? highlightTldrArray(updateData.tldr) : updateData.tldr;
+const highlightedContent = updateData.officialUpdate.content
+  ? highlightUpdateContentArray(updateData.officialUpdate.content)
+  : updateData.officialUpdate.content;
+const highlightedGreeting = updateData.officialUpdate.greeting
+  ? highlightUpdateText(updateData.officialUpdate.greeting)
+  : updateData.officialUpdate.greeting;
+const highlightedClosing = updateData.officialUpdate.closing
+  ? highlightUpdateText(updateData.officialUpdate.closing)
+  : updateData.officialUpdate.closing;
 
 // Security: URL validation function
 function isValidUrl(url: string): boolean {
@@ -123,11 +140,11 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
     <div class="update-container">
       <!-- TLDR Section -->
       {
-        updateData.tldr && updateData.tldr.length > 0 && (
+        highlightedTldr && highlightedTldr.length > 0 && (
           <section class="content-section tldr-section">
             <h2 class="section-title">TL;DR</h2>
             <ul>
-              {updateData.tldr.map(point => (
+              {highlightedTldr.map(point => (
                 <li set:html={point} />
               ))}
             </ul>
@@ -148,14 +165,14 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
           <div class="collapsible-content">
             <div class="collapsible-inner">
               {
-                updateData.officialUpdate.greeting && (
+                highlightedGreeting && (
                   <p>
-                    <strong set:html={updateData.officialUpdate.greeting} />
+                    <strong set:html={highlightedGreeting} />
                   </p>
                 )
               }
               {
-                updateData.officialUpdate.content.map((paragraph, index) => {
+                highlightedContent.map((paragraph, index) => {
                   // Check if paragraph looks like a section header
                   const isHeader =
                     paragraph.match(/^[A-Z][^:]*:?\s*$/) || paragraph.match(/^[0-9]+\.\s/);
@@ -180,14 +197,14 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
         <!-- Desktop Version -->
         <div class="info-card desktop-only">
           {
-            updateData.officialUpdate.greeting && (
+            highlightedGreeting && (
               <p>
-                <strong set:html={updateData.officialUpdate.greeting} />
+                <strong set:html={highlightedGreeting} />
               </p>
             )
           }
           {
-            updateData.officialUpdate.content.map((paragraph, index) => {
+            highlightedContent.map((paragraph, index) => {
               // Check if paragraph looks like a section header
               const isHeader =
                 paragraph.match(/^[A-Z][^:]*:?\s*$/) || paragraph.match(/^[0-9]+\.\s/);
@@ -210,11 +227,11 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
 
       <!-- Closing -->
       {
-        updateData.officialUpdate.closing && (
+        highlightedClosing && (
           <section class="content-section">
             <h2 class="section-title">Closing</h2>
             <div class="info-card">
-              <p set:html={updateData.officialUpdate.closing} />
+              <p set:html={highlightedClosing} />
             </div>
           </section>
         )

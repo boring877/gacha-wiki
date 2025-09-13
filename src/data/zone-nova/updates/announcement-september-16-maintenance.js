@@ -1,0 +1,128 @@
+// September 16 Maintenance Update Announcement - Zone Nova
+// Maintenance Update Data Structure
+
+export const september16MaintenanceData = {
+  // Basic Information
+  title: 'September 16 Maintenance Update',
+  date: 'September 16, 2025',
+  type: 'maintenance', // recruitment, event, maintenance, etc.
+
+  // TL;DR Summary
+  tldr: [
+    'Major maintenance update on September 16, 2025 starting 14:00 (4 hours). Multiple new activities including BETA Squad Divine Spirit Trial, Ravinia recruitment, Space-Time Rift Tide XI, and various limited-time events. Maintenance compensation: 300 Photon Stones.',
+  ],
+
+  // Official Update
+  officialUpdate: {
+    greeting: 'Dear Captains:',
+    content: [
+      'Thank you all for your continued support of "ZONE NOVA"! We will conduct game updates and maintenance on September 16, 2025, to bring you a better gaming experience. Below are the details of this announcement:',
+      '',
+      'Maintenance Information',
+      '',
+      '• Maintenance time: Starting from 2025/09/16 14:00, estimated to take 4 hours.',
+      '• Maintenance content: System optimization, activity updates and new content online. During maintenance, captains will be unable to log into the game, please prepare in advance.',
+      '',
+      'Activity Information',
+      '',
+      'Opening [BETA Squad: Divine Spirit Trial (Part 1)] Limited Activity',
+      '',
+      '• Opening time: 2025/09/16 14:15 ~ 2025/09/30 03:59:59',
+      '• Captains can enter through the activity entrance on the main interface after completing main story Chapter 6.',
+      '• During the activity story, a certain amount of "Activity Coins" will be dropped. Collecting "Activity Coins" can exchange for Photon Stones, Enhancement Materials, Affection Materials and other major rewards at the activity shop.',
+      '',
+      'Opening [Limited Character Recruitment] Ravinia',
+      '',
+      '• Opening time: 2025/09/16 14:15 ~ 2025/09/30 03:59:59',
+      '• Class: Healer',
+      '• Attribute: Furnace',
+      "• Introduction: Former captain of the Tester Special Forces BETA squad, served as the highest secretary of Xia Gai Technology Company. Currently working as a freelance consultant for Xia Gai Technology Company in collaboration with Saffron's military forces, leading her team to participate in various field operations. Born into a wealthy family, she naturally developed a strong personality and exceptional efficiency at work. She adheres strictly to principles and has the profit-maximizing mentality of a merchant. She is quite calculative about her own gains and losses - this is her uncompromising life philosophy.",
+      '',
+      'Opening [Limited Pursuit Recruitment] Are Glasses the Main Body?',
+      '',
+      '• Opening time: 2025/09/16 14:15 ~ 2025/09/30 03:59:59',
+      '• Matching class: Healer',
+      '• Introduction: For Ravinia, facing major crises or dangerous situations never amounts to anything difficult. She often only needs to lightly push her glasses and problems are easily solved. However, losing her glasses is a completely different disaster - as a severe myopia sufferer, losing her glasses is like becoming instantly blind. Not only is it difficult for her to find her own glasses, but even daily life becomes impossible. A collision and fall wore down her usual composure, making her completely become another person.',
+      '',
+      'Therefore, people around her often joke: "Are those glasses the real Ravinia?" For her, glasses are not just visual aids, but also a symbol of professional excellence. Even in the most dangerous work situations, she has never lost her glasses. Many friends are very effective at hiding modern technology from "that point," pulling Ravinia to the beginning of maintaining that old lens, continuing to challenge every task in her unique way.',
+      '',
+      'Rerun [Character Recruitment] - Yuis',
+      '',
+      '• Opening time: 2025/09/23 14:15 ~ 2025/09/30 03:59:59',
+      '• Introduction: Legendary Character Yuis (Rogue, Divine Saint) is a Divine Saint attribute rogue character, also a pursuit-type character who strengthens herself by coordinating with other teammates\' "tracking" to cause lethal damage to enemies.',
+      '',
+      'Rerun [Limited Pursuit Recruitment] - Frozen Heart',
+      '',
+      '• Opening time: 2025/09/23 14:15 ~ 2025/09/30 03:59:59',
+      '• Matching class: Rogue',
+      "• Introduction: This is the deepest secret place in Yuis' heart. The frozen heart contains her determination and perseverance as the God of Judgment. Captains will have the opportunity to glimpse the purity and emotions deep within this heart.",
+      '',
+      'Space-Time Rift: Rift Tide XI',
+      '',
+      '• Opening time: 2025/09/16 14:15 ~ 2025/10/14 03:59:59',
+      '• Gameplay description: Space-time rifts are torn open by powerful enemies. Captains need to cooperate with [Rift Rules] to defeat enemies and protect the world.',
+      '',
+      'Apocalypse Battle [Finale] Gui Ni Weir',
+      '',
+      '• Opening time: 2025/09/16 14:15 ~ 2025/10/14 03:59:59',
+      '• Introduction: In the endless void of space, there are more Star Markets waiting for captains to explore. The Star Market shop can exchange various rewards and can also receive leadership special pursuit.',
+      '',
+      'Battle Pass Update',
+      '',
+      '• Opening time: 2025/09/16 14:15 ~ 2025/10/14 03:59',
+      '• Introduction: Captains can obtain rich rewards by leveling up in [Battle Pass]. After unlocking [Advanced Battle Pass], you can immediately obtain Photon Stone x 680. Upgrading Battle Pass level can additionally obtain "Gold," "Phantom Magic," "Photon Carving Device," "Legend Runestone," "Energy Supplement," and "Improvement Materials." Captains who purchase [Supreme Battle Pass] can directly receive an additional level 10 Battle Pass upgrade reward outside of the original reward.',
+      '',
+      'Enjoy the "Body Blade Supplement" reward!',
+      '',
+      'Limited-Time Activity Packages',
+      '',
+      '• Opening time: 2025/09/16 14:15 ~ 2025/09/30 03:59:59',
+      '• Obtain phantom magic x 10 at super cost-effective prices!',
+      '• Obtain phantom magic x 30 at super cost-effective prices!',
+      '• Obtain body blade supplement x 10 at super cost-effective prices!',
+      '• Obtain original ancestor x 5 at super cost-effective prices!',
+      '• Obtain automatic love machine x 80 and tuning frequency x 30 at super cost-effective prices, one step to unlock character tuning segments!',
+      '',
+      '[Dungeon] Limited Double Rewards',
+      '',
+      '• Opening time: 2025/09/23 14:15 ~ 2025/09/30 03:59',
+      '• Activity description: During the activity period, challenging the "Resource Dungeon," "Character Promotion Dungeon," "Character Awakening Dungeon," and "Pursuit Promotion Dungeon" will give double rewards. During the activity period, the number of double rewards is limited, and the available remaining times and maximum limits are displayed on the interface.',
+      '',
+      'Limited-Time Activity Login Rewards',
+      '',
+      '• Opening time: 2025/09/17 04:00 ~ 2025/10/14 03:59',
+      '• Activity description: Login daily to obtain "Phantom Magic," maximum obtainable phantom magic x 10.',
+      '',
+      'Limited-Time Military Supply Login Rewards',
+      '',
+      '• Opening time: 2025/09/23 04:00 ~ 2025/10/14 03:59',
+      '• Activity description: Login daily to obtain "Body Blade Supplement," maximum obtainable body blade supplement x 20.',
+      '',
+      'Other',
+      '',
+      'Fixed the issue of abnormal visual effects after character Alomiya awakening level 1 energy recovery.',
+      '',
+      'Maintenance Update Compensation',
+      '',
+      '• Compensation content: Photon Stone x 300',
+      '• Compensation target: Captains who logged into the game before 2025/09/23 23:59',
+      '• Distribution method: Compensation will be sent to the in-game mailbox after maintenance is completed.',
+    ],
+  },
+
+  // Source Information
+  sourceInfo: {
+    source: 'Official ZONE NOVA announcement',
+    verified: true,
+    gameUrl: 'https://game.erolabsshare.net/app/f302f717/Zone_Nova',
+  },
+};
+
+// SEO data for September 16 Maintenance announcement
+export const september16MaintenanceSEO = {
+  title: `${september16MaintenanceData.title} - Zone Nova - GachaWiki`,
+  description: `Major maintenance update with new activities: BETA Squad Divine Spirit Trial, Ravinia recruitment, Space-Time Rift Tide XI, and various limited-time events. Maintenance compensation included.`,
+};
+
+// Export default for easy importing
+export default september16MaintenanceData;

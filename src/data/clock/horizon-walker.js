@@ -29,8 +29,8 @@ export const horizonWalkerConfig = {
 
   // Maintenance information
   maintenance: {
-    date: '2025-09-11T00:00:00Z', // September 11, 2025, 09:00 KST (converted to UTC)
-    duration: 4, // 4 hours (09:00 ~ 13:00)
-    subtitle: 'September 11, 09:00 ~ 13:00 KST (4 hours)',
+    date: null, // No maintenance scheduled
+    duration: 0,
+    subtitle: 'No maintenance scheduled',
   },
 };

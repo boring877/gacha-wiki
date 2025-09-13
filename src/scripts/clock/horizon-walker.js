@@ -323,7 +323,7 @@ class HorizonWalkerClockTimer {
     // No maintenance scheduled
     if (!maintenance.date) {
       this.updateServerStatus(false);
-      this.updateMaintenanceDisplay('--:--:--', 'No Maintenance', 'Online', 'Server Status');
+      this.updateMaintenanceDisplay('--:--:--', 'Until Start', '--:--:--', 'Online');
       return;
     }
 
@@ -336,7 +336,7 @@ class HorizonWalkerClockTimer {
     const isInMaintenance = now >= maintenanceStart && now <= maintenanceEnd;
     this.updateServerStatus(isInMaintenance);
 
-    // Update timers
+    // Update Start Timer
     const startTimeDiff = maintenanceStart.getTime() - now.getTime();
     const endTimeDiff = maintenanceEnd.getTime() - now.getTime();
 
@@ -346,25 +346,28 @@ class HorizonWalkerClockTimer {
     const maintenanceEndLabel = this.elements.maintenanceEndLabel;
 
     if (startTimeDiff > 0) {
+      // Before maintenance - countdown to start
+      this.setElementText(maintenanceStartLabel, 'Until Start');
       this.formatTimeDiff(startTimeDiff, maintenanceStartTime);
-      this.setElementText(maintenanceStartLabel, 'Maintenance Countdown');
     } else {
-      this.setElementText(maintenanceStartTime, 'In Progress');
-      this.setElementText(maintenanceStartLabel, 'Maintenance Status');
+      // Maintenance has started or ended
+      this.setElementText(maintenanceStartLabel, 'Started');
+      this.setElementText(maintenanceStartTime, '--:--:--');
     }
 
-    if (isInMaintenance) {
-      // During maintenance - show when servers will be back
-      this.formatTimeDiff(endTimeDiff, maintenanceEndTime);
+    // Update End Timer (only counts during maintenance)
+    if (now < maintenanceStart) {
+      // Before maintenance starts - no countdown yet
       this.setElementText(maintenanceEndLabel, 'Servers Back');
-    } else if (startTimeDiff > 0) {
-      // Before maintenance - servers are online
-      this.setElementText(maintenanceEndTime, 'Online');
-      this.setElementText(maintenanceEndLabel, 'Server Status');
+      this.setElementText(maintenanceEndTime, '--:--:--');
+    } else if (now >= maintenanceStart && now <= maintenanceEnd) {
+      // During maintenance - countdown to end
+      this.setElementText(maintenanceEndLabel, 'Servers Back');
+      this.formatTimeDiff(endTimeDiff, maintenanceEndTime);
     } else {
-      // After maintenance - servers are back online
-      this.setElementText(maintenanceEndTime, 'Online');
-      this.setElementText(maintenanceEndLabel, 'Server Status');
+      // Maintenance has ended
+      this.setElementText(maintenanceEndLabel, 'Online');
+      this.setElementText(maintenanceEndTime, '--:--:--');
     }
   }
 

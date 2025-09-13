@@ -326,3 +326,126 @@
     color: var(--text-inverse) !important;
   }
 }
+
+/* ===== UPDATE CONTENT HIGHLIGHTING STYLES ===== */
+/* Simplified two-color highlighting system matching skill highlighting */
+
+/* Primary highlighting - Red theme (characters, events, rewards, mechanics, announcements) */
+.zn-update-highlight-primary {
+  color: #d32f2f;
+  font-weight: 600;
+  background: rgba(211, 47, 47, 0.1);
+  padding: 0.125rem 0.25rem;
+  border-radius: 4px;
+}
+
+/* Secondary highlighting - Blue theme (dates, numbers) */
+.zn-update-highlight-secondary {
+  color: #1976d2;
+  font-weight: 600;
+  background: rgba(25, 118, 210, 0.1);
+  padding: 0.125rem 0.25rem;
+  border-radius: 4px;
+}
+
+/* Hover effects for better interactivity */
+.zn-update-highlight-primary:hover,
+.zn-update-highlight-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  .zn-update-highlight-primary {
+    background: rgba(211, 47, 47, 0.15);
+  }
+
+  .zn-update-highlight-secondary {
+    background: rgba(25, 118, 210, 0.15);
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .zn-update-highlight-primary:hover,
+  .zn-update-highlight-secondary:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Mobile responsiveness - reduce padding on small screens */
+@media (max-width: 767px) {
+  .zn-update-highlight-primary,
+  .zn-update-highlight-secondary {
+    padding: 0.1rem 0.2rem;
+    font-size: 0.95em;
+  }
+}
+
+/* ===== CONTENT HIERARCHY AND TYPOGRAPHY ===== */
+/* Section headers styling */
+.content-section-header {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  border-bottom: 2px solid var(--teal-crystal);
+  padding-bottom: 0.5rem;
+  font-family: var(--font-display);
+}
+
+/* Event item headers */
+.event-item-header {
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--amber-glow);
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  font-family: var(--font-display);
+}
+
+/* Improve paragraph spacing in update content */
+.official-section .info-card p,
+.official-section .collapsible-inner p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Empty paragraphs for spacing */
+.official-section .info-card p:empty,
+.official-section .collapsible-inner p:empty {
+  margin-bottom: 0.75rem;
+  height: 0;
+}
+
+/* First paragraph in sections shouldn't have extra top margin */
+.official-section .info-card p:first-child,
+.official-section .collapsible-inner p:first-child {
+  margin-top: 0;
+}
+
+/* Mobile typography adjustments */
+@media (max-width: 767px) {
+  .content-section-header {
+    font-size: var(--text-base);
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.25rem;
+  }
+
+  .event-item-header {
+    font-size: var(--text-sm);
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .official-section .info-card p,
+  .official-section .collapsible-inner p {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+}
