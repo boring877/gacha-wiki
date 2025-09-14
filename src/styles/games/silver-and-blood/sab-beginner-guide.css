@@ -1,0 +1,212 @@
+/* Silver and Blood Beginner Guide Styles */
+/* Simple, clean styles for beginner guide content */
+
+/* ===== MAIN LAYOUT SECTIONS ===== */
+
+.beginner-intro-section {
+  background: rgba(25, 25, 25, 0.95);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--sab-dark-red);
+  margin-bottom: 2rem;
+}
+
+.beginner-intro-section p {
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+.beginner-section {
+  margin-bottom: 2rem;
+}
+
+.beginner-card {
+  background: rgba(25, 25, 25, 0.95);
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+
+.beginner-card h2 {
+  color: var(--sab-calm-red);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+
+.beginner-card h3 {
+  color: #f8f9fa;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+.beginner-card h4 {
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.beginner-card p {
+  color: #e5e7eb;
+  line-height: 1.6;
+  margin: 0.75rem 0;
+  font-size: 1rem;
+}
+
+.beginner-card ul {
+  color: #e5e7eb;
+  line-height: 1.6;
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.beginner-card li {
+  margin: 0.5rem 0;
+}
+
+.beginner-card strong {
+  color: #f8f9fa;
+  font-weight: 600;
+}
+
+/* ===== VIDEO BUTTONS ===== */
+
+.video-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sab-calm-red);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-height: 44px;
+  min-width: 44px;
+  transition: background-color 0.2s ease;
+}
+
+.video-button:hover {
+  background: var(--sab-dark-red);
+}
+
+.video-button:active {
+  background: var(--sab-dark-red);
+  transform: scale(0.98);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+  .beginner-intro-section,
+  .beginner-card {
+    padding: 1.5rem;
+  }
+
+  .beginner-intro-section p,
+  .beginner-card p {
+    font-size: 1rem;
+  }
+
+  .beginner-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .beginner-card h3 {
+    font-size: 1.1rem;
+  }
+
+  /* Larger video buttons on tablet */
+  .video-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .beginner-intro-section,
+  .beginner-card {
+    padding: 1rem;
+  }
+
+  .beginner-intro-section p,
+  .beginner-card p {
+    font-size: 0.95rem;
+  }
+
+  .beginner-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .beginner-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .beginner-card h4 {
+    font-size: 1rem;
+  }
+
+  /* Mobile-friendly video buttons */
+  .video-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    max-width: 200px;
+  }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Touch device specific styles */
+  .video-button {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Remove hover effects that don't work on touch */
+  .video-button:hover {
+    background: var(--sab-calm-red);
+    transform: none;
+  }
+
+  /* Enhanced touch feedback */
+  .video-button:active {
+    background: var(--sab-dark-red);
+    transform: scale(0.95);
+  }
+
+  /* Larger touch targets for all interactive elements */
+  .beginner-card h2,
+  .beginner-card p {
+    line-height: 1.5;
+  }
+
+  /* Better spacing for touch interaction */
+  .beginner-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .beginner-card {
+    padding: 1.5rem;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .video-button {
+    transition: none;
+  }
+
+  .video-button:active {
+    transform: none;
+  }
+}

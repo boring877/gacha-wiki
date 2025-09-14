@@ -53,6 +53,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Resources',
         links: [
+          { name: 'Beginner Guide', href: '/guides/silver-and-blood/beginner-guide/' },
           { name: 'Rerolling Guide', href: '/guides/silver-and-blood/rerolling-guide/' },
           { name: 'Clock', href: '/clock/silver-and-blood/' },
           { name: 'Redeem Codes', href: '/guides/silver-and-blood/redeem-codes/' },

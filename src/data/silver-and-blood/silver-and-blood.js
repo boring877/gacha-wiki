@@ -190,6 +190,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           url: '/clock/silver-and-blood/',
         },
         {
+          id: 'beginner-guide',
+          title: 'Beginner Guide',
+          url: '/guides/silver-and-blood/beginner-guide/',
+        },
+        {
           id: 'rerolling-guide',
           title: 'Rerolling Guide',
           url: '/guides/silver-and-blood/rerolling-guide/',
@@ -227,6 +232,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
         'Track Silver and Blood server resets, maintenance, raids, signin events, outfit availability, and special events with real-time countdown timers for APAC and US regions.',
       url: '/clock/silver-and-blood/',
       category: 'tools',
+      status: 'active',
+    },
+    {
+      id: 'beginner-guide',
+      title: 'Beginner Guide',
+      emoji: '',
+      description:
+        'Complete beginner guide for Silver and Blood. Learn the basics, character progression, team building, and essential tips for new players starting their adventure.',
+      url: '/guides/silver-and-blood/beginner-guide/',
+      category: 'guides',
       status: 'active',
     },
     {

@@ -1,0 +1,160 @@
+---
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+
+// Import only essential CSS files
+import '../../styles/games/silver-and-blood/sab-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-beginner-guide.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  data: any;
+}
+
+const { title, description, gameTitle, data } = Astro.props;
+const { videoGuide, sections } = data;
+---
+
+<html lang="en">
+  <head>
+    <SABBaseHead title={title} description={description || ''} />
+    <!-- Security headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'silver and blood beginner guide',
+        'silver and blood new player guide',
+        'silver and blood tutorial',
+        'silver and blood tips',
+        'silver and blood basics',
+        'silver and blood starter guide',
+        'how to play silver and blood',
+        'silver and blood progression guide',
+        'silver and blood character guide',
+        'silver and blood team building',
+        'sab beginner tutorial',
+        'sab new player tips',
+        'silver and blood getting started',
+        'silver and blood walkthrough',
+        'silver and blood guide 2025',
+      ]}
+    />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="silver-and-blood-main" id="main-content">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <!-- Video Guide Section -->
+            {
+              videoGuide && (
+                <div class="beginner-section">
+                  <div class="beginner-card">
+                    <h2>{videoGuide.title}</h2>
+                    <p style="margin: 0 0 1.5rem 0; font-size: 1.1rem; line-height: 1.6;">
+                      {videoGuide.description}
+                    </p>
+
+                    <div style="text-align: center; margin: 2rem 0;">
+                      <a
+                        href={videoGuide.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style="display: inline-block; background: var(--sab-calm-red); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem;"
+                      >
+                        Watch Complete Guide Video
+                      </a>
+
+                      <p style="margin: 0; font-size: 1rem; color: #d1d5db;">
+                        <strong>
+                          <a
+                            href={videoGuide.channelUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="color: var(--sab-blue-silver); text-decoration: none; font-weight: 600;"
+                          >
+                            Credit: {videoGuide.creator}
+                          </a>
+                        </strong>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+
+            <!-- Main Content Sections -->
+            {
+              sections?.map(section => (
+                <div class="beginner-section">
+                  <div class="beginner-card">
+                    <h2>{section.title}</h2>
+                    <p style="margin: 0 0 1rem 0; font-size: 1rem; color: #d1d5db;">
+                      {section.description}
+                    </p>
+                    {section.videoLink && (
+                      <div style="text-align: center; margin-top: 1rem;">
+                        <a
+                          href={section.videoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="video-button"
+                        >
+                          Watch in Video
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))
+            }
+
+            <!-- Additional Content Slot -->
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

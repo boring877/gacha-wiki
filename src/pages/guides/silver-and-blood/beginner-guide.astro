@@ -1,0 +1,13 @@
+---
+import BeginnerGuideLayout from '../../../layouts/silver-and-blood/BeginnerGuideLayout.astro';
+import { beginnerGuideData } from '../../../data/silver-and-blood/beginner-guide.js';
+
+const { meta } = beginnerGuideData;
+---
+
+<BeginnerGuideLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  data={beginnerGuideData}
+/>
