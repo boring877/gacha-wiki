@@ -1,0 +1,148 @@
+---
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
+import CharacterSEO from '../../components/CharacterSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+
+// Import Silver and Blood specific styles
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-colors.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  bossName?: string;
+  bossImage?: string;
+  boss?: any; // For SEO optimization
+}
+
+const { title, description, bossName, bossImage, boss } = Astro.props;
+
+// Extract boss slug from URL path for navigation
+// URL format: /guides/silver-and-blood/bosses/boss-name
+const urlParts = Astro.url.pathname.split('/');
+const bossSlug = urlParts[urlParts.length - 1] || '';
+---
+
+<html lang="en">
+  <head>
+    <SABBaseHead title={title || ''} description={description || ''} />
+    <!-- SAB boss-page styles need to override global headings, so we load them last -->
+    <style is:global>
+      @import '../../styles/games/silver-and-blood/sab-boss-styles.css';
+      @import '../../styles/games/silver-and-blood/sab-boss-highlighting.css';
+    </style>
+
+    {
+      boss ? (
+        <CharacterSEO
+          gameKey="silver-and-blood"
+          character={boss}
+          customTitle={title}
+          customDescription={description}
+        />
+      ) : (
+        <>
+          {/* Fallback SEO for pages without boss data */}
+          <meta
+            name="keywords"
+            content={`Silver and Blood, ${bossName}, boss guide, prophecy unbound, boss battle, strategy`}
+          />
+          <meta name="author" content="GachaWiki" />
+          <meta name="robots" content="index, follow" />
+        </>
+      )
+    }
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content={description ||
+        `Complete boss guide for ${bossName} in Silver and Blood`}
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content={new URL(Astro.url.pathname, Astro.site)}
+    />
+    {bossImage && <meta property="og:image" content={bossImage} />}
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content={description ||
+        `Complete boss guide for ${bossName} in Silver and Blood`}
+    />
+    {bossImage && <meta name="twitter:image" content={bossImage} />}
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: bossName,
+        description:
+          description || `Boss guide for ${bossName} in Silver and Blood`,
+        about: {
+          '@type': 'VideoGame',
+          name: 'Silver and Blood'
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'GachaWiki'
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': new URL(Astro.url.pathname, Astro.site)
+        }
+      })}
+    >
+    </script>
+
+    <slot name="head" />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader
+        currentPath={Astro.url.pathname}
+        gameKey="silver-and-blood"
+      />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="silver-and-blood-main" id="main-content">
+          <!-- Title Section with Breadcrumb space -->
+          <section class="title-only-section">
+            <h1 class="title-only-heading">{bossName}</h1>
+            <DecorativeLines />
+          </section>
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>
