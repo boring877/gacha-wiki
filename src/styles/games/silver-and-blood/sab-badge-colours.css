@@ -66,6 +66,11 @@
   --sab-badge-move: #607d8b; /* Move tag - blue gray */
   --sab-badge-range: #8bc34a; /* Range tag - light green */
   --sab-badge-shield: #87ceeb; /* Shield tag - sky blue */
+  --sab-badge-physical-defense: #696969; /* Physical defense tag - dim gray */
+  --sab-badge-stun: #ff6347; /* Stun tag - tomato */
+  --sab-badge-energy-drain: #9932cc; /* Energy drain tag - dark orchid */
+  --sab-badge-paralysis: #ffd700; /* Paralysis tag - gold */
+  --sab-badge-summons: #4169e1; /* Summons tag - royal blue */
 
   /* Border Colors */
   --sab-badge-ssr-border: #ffd700; /* SSR border - gold */
@@ -103,6 +108,11 @@
   --sab-badge-move-border: #90a4ae; /* Move border - blue gray */
   --sab-badge-range-border: #aed581; /* Range border - light green */
   --sab-badge-shield-border: #4fc3f7; /* Shield border - light blue */
+  --sab-badge-physical-defense-border: #9e9e9e; /* Physical defense border - gray */
+  --sab-badge-stun-border: #ff7f7f; /* Stun border - light red */
+  --sab-badge-energy-drain-border: #ba55d3; /* Energy drain border - medium orchid */
+  --sab-badge-paralysis-border: #ffed4a; /* Paralysis border - gold */
+  --sab-badge-summons-border: #6495ed; /* Summons border - cornflower blue */
 
   /* Text Colors */
   --sab-badge-white: #fff; /* White text */
@@ -487,6 +497,36 @@
 
 .tag-badge.shield {
   background: var(--sab-badge-shield);
+  color: var(--sab-badge-white);
+  border: none;
+}
+
+.tag-badge.physical-defense {
+  background: var(--sab-badge-physical-defense);
+  color: var(--sab-badge-white);
+  border: none;
+}
+
+.tag-badge.stun {
+  background: var(--sab-badge-stun);
+  color: var(--sab-badge-white);
+  border: none;
+}
+
+.tag-badge.energy-drain {
+  background: var(--sab-badge-energy-drain);
+  color: var(--sab-badge-white);
+  border: none;
+}
+
+.tag-badge.paralysis {
+  background: var(--sab-badge-paralysis);
+  color: var(--sab-badge-dark);
+  border: none;
+}
+
+.tag-badge.summons {
+  background: var(--sab-badge-summons);
   color: var(--sab-badge-white);
   border: none;
 }

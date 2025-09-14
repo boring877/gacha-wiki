@@ -1,0 +1,32 @@
+/* Boss Text Highlighting Styles for Silver and Blood */
+/* Simple two-color highlighting system */
+
+/* Primary highlight - for important game mechanics */
+.highlight-damage,
+.highlight-status,
+.highlight-energy,
+.highlight-mode,
+.highlight-core,
+.highlight-control,
+.highlight-summon {
+  color: var(--sab-calm-red);
+  font-weight: 700;
+  background: rgba(220, 53, 69, 0.1);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+/* Secondary highlight - for numbers and values */
+.highlight-percentage,
+.highlight-duration,
+.highlight-stacks,
+.highlight-distance,
+.highlight-skill-type {
+  color: var(--sab-calm-blue);
+  font-weight: 600;
+  background: rgba(52, 152, 219, 0.1);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  border: 1px solid rgba(52, 152, 219, 0.2);
+}

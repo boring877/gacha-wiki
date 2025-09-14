@@ -1,0 +1,467 @@
+/* Silver and Blood Boss Page Styles */
+/* This file contains layout and component styles for boss pages */
+
+/* ===== GLOBAL STYLE OVERRIDES (FOR SAB SECTION) ===== */
+/* Specific selectors to override global typography styles */
+.sab-body h2.section-title,
+.sab-body .section-title {
+  background: linear-gradient(135deg, var(--sab-light-red), var(--sab-calm-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback */
+}
+
+.sab-body h3,
+.sab-body h4 {
+  color: var(--sab-text-light);
+}
+/* ===== END GLOBAL OVERRIDES ===== */
+
+/* ===== MAIN CONTENT SECTIONS ===== */
+.content-section {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: var(--sab-character-info-bg);
+  border-radius: 16px;
+  border: 1px solid var(--sab-border-light);
+}
+
+/* Typography base styles */
+.content-section p {
+  color: var(--sab-text-light);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.content-section .stat-label {
+  color: var(--sab-text-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+
+.content-section .stat-value {
+  color: var(--sab-calm-red);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.section-title {
+  background: linear-gradient(135deg, var(--sab-light-red), var(--sab-calm-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 2rem 0;
+  border-bottom: 3px solid var(--sab-calm-red);
+  padding-bottom: 0.8rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.content-section h3 {
+  color: var(--sab-text-light);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.3;
+}
+
+.content-section h4 {
+  color: var(--sab-text-light);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+/* ===== BOSS OVERVIEW SECTION ===== */
+
+/* ===== STATS GRID ===== */
+.stats-grid .stat-item {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== SKILL CARDS ===== */
+.skill-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== SKILL BADGES ===== */
+.skill-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skill-badge.basic-attack {
+  background: var(--sab-badge-normal-attack);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-normal-attack-border);
+}
+
+.skill-badge.talent {
+  background: var(--sab-badge-passive);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-passive-border);
+}
+
+.skill-badge.special {
+  background: var(--sab-badge-special);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-badge-special-border);
+}
+
+.skill-badge.ultimate {
+  background: var(--sab-badge-ultimate);
+  color: var(--sab-badge-white);
+  border: 1px solid var(--sab-calm-red);
+}
+
+/* ===== CLASS BADGES ===== */
+.class-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.class-badge.defender {
+  background: var(--sab-calm-blue);
+  color: var(--sab-white);
+  border: 1px solid var(--sab-dark-blue);
+}
+
+/* ===== RARITY BADGES ===== */
+.rarity-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rarity-badge.boss {
+  background: var(--sab-dark-red);
+  color: var(--sab-white);
+  border: 1px solid var(--sab-calm-red);
+}
+
+/* ===== FACTION BADGES ===== */
+.faction-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.faction-badge.shattered-world {
+  background: var(--sab-muted-gold);
+  color: var(--sab-text-dark);
+  border: 1px solid var(--sab-muted-gold);
+}
+
+/* ===== ATTACK TYPE BADGES ===== */
+.attack-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.attack-badge.p-dmg {
+  background: var(--sab-light-red);
+  color: var(--sab-white);
+  border: 1px solid var(--sab-dark-red);
+}
+
+/* ===== TAG BADGES ===== */
+.tag-badge {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.tag-badge.defender {
+  background: var(--sab-calm-blue);
+  color: var(--sab-white);
+  border: 1px solid var(--sab-dark-blue);
+}
+
+.tag-badge.construct {
+  background: var(--sab-silver-accent);
+  color: var(--sab-text-dark);
+  border: 1px solid var(--sab-silver-accent);
+}
+
+/* ===== OVERVIEW FLEX ===== */
+.overview-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+/* ===== STAGE TABS ===== */
+.stage-tabs {
+  margin-bottom: 1.5rem;
+}
+
+.tab-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.stage-tab {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 2px solid var(--sab-border-light);
+  background: var(--sab-bg-dark);
+  color: var(--sab-text-light);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  /* Touch device optimizations */
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.stage-tab.active {
+  background: var(--sab-calm-red);
+  border-color: var(--sab-light-red);
+  color: var(--sab-white);
+}
+
+.stage-tab.normal {
+  border-color: var(--sab-calm-blue);
+}
+
+.stage-tab.normal.active {
+  background: var(--sab-calm-blue);
+  border-color: var(--sab-light-blue);
+}
+
+.stage-tab.nightmare {
+  border-color: var(--sab-dark-red);
+}
+
+.stage-tab.nightmare.active {
+  background: var(--sab-dark-red);
+  border-color: var(--sab-light-red);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .overview-flex {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .overview-flex > div {
+    max-width: none;
+    min-width: 0;
+    flex: none;
+  }
+
+  .content-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .content-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .content-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Enhanced touch targets for stage tabs */
+  .stage-tab {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+    min-height: 44px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Better touch spacing */
+  .tab-buttons {
+    gap: 0.8rem;
+    padding: 0.5rem 0;
+    justify-content: center;
+  }
+
+  /* Larger boss info cards on mobile */
+  .stats-grid .stat-item {
+    padding: 1rem;
+    min-height: 60px;
+  }
+
+  /* Better text hierarchy on mobile */
+  .stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-section {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .content-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-section h4 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Single column layout for stats */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  /* Maintain good touch targets even on small screens */
+  .stage-tab {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+    min-height: 44px;
+    flex: 1;
+    letter-spacing: 0.2px;
+  }
+
+  /* Better tab layout on small screens */
+  .tab-buttons {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  /* Optimize boss image for small screens */
+  .character-portrait {
+    width: 220px;
+    height: 220px;
+    max-width: 85vw;
+  }
+
+  /* Better skill card spacing */
+  .skill-card {
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+  }
+
+  /* Better text hierarchy */
+  .stat-label {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .content-section {
+    padding: 0.8rem;
+  }
+
+  .stage-tab {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .character-portrait {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
+@media (hover: none) and (pointer: coarse) {
+  /* Ensure good touch targets */
+  .stage-tab {
+    min-height: 48px;
+    padding: 0.8rem 1.2rem;
+  }
+
+  /* Better touch targets for stat cards */
+  .stat-item {
+    padding: 1.2rem;
+    min-height: 70px;
+  }
+
+  /* Improve text size for touch devices */
+  .stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+}

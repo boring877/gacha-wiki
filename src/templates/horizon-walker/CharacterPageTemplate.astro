@@ -130,35 +130,39 @@ const highlightedWeaponSkills = characterData.weapon?.uniqueSkills
 
 // Get character gift data
 // Convert character name to gift data ID format (handle spaces and special chars)
-const characterId = characterData.name.toLowerCase()
-  .replace(/\s+/g, '-')           // Replace spaces with hyphens
-  .replace(/[^a-z0-9-]/g, '')     // Remove special characters except hyphens
-  .replace(/-+/g, '-')            // Replace multiple hyphens with single hyphen
-  .replace(/^-|-$/g, '');         // Remove leading/trailing hyphens
+const characterId = characterData.name
+  .toLowerCase()
+  .replace(/\s+/g, '-') // Replace spaces with hyphens
+  .replace(/[^a-z0-9-]/g, '') // Remove special characters except hyphens
+  .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+  .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
 
 const giftData = getCharacterById(characterId);
 
 // Helper function to find ALL gift boxes that contain a specific gift
 function findAllGiftBoxes(giftId: string, giftName?: string) {
-  const foundBoxes: Array<{ box: typeof GIFT_BOXES[0], gift: typeof GIFT_BOXES[0]['gifts'][0] }> = [];
-  
+  const foundBoxes: Array<{
+    box: (typeof GIFT_BOXES)[0];
+    gift: (typeof GIFT_BOXES)[0]['gifts'][0];
+  }> = [];
+
   for (const box of GIFT_BOXES) {
     // First try to match by ID
     let foundGift = box.gifts.find(g => g.id === giftId);
-    
+
     // If not found by ID and we have a name, try to match by name
     if (!foundGift && giftName) {
       foundGift = box.gifts.find(g => g.name === giftName);
     }
-    
+
     if (foundGift) {
       foundBoxes.push({
         box: box,
-        gift: foundGift
+        gift: foundGift,
       });
     }
   }
-  
+
   return foundBoxes.length > 0 ? foundBoxes : null;
 }
 
@@ -515,13 +519,19 @@ function getTagCategory(tag: string): string {
       <h2 class="section-title">Unique Traits</h2>
 
       {Object.entries(highlightedTraits).map(([key, trait]: [string, any]) => (
-        <div class={`trait-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()} ${trait.name === 'Interested' ? 'interested-trait-card' : ''}`}>
+        <div
+          class={`trait-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()} ${trait.name === 'Interested' ? 'interested-trait-card' : ''}`}
+        >
           <div class="trait-header">
             <h3 class="trait-title">{trait.name}</h3>
             {trait.name === 'Interested' ? (
               <div class="trait-badges">
-                <span class="hw-badge" data-type="Special">Gift Level 5</span>
-                <span class="hw-badge" data-type="Trait">Unique Trait</span>
+                <span class="hw-badge" data-type="Special">
+                  Gift Level 5
+                </span>
+                <span class="hw-badge" data-type="Trait">
+                  Unique Trait
+                </span>
               </div>
             ) : (
               <span class="hw-badge" data-type="Trait">
@@ -533,14 +543,17 @@ function getTagCategory(tag: string): string {
           {trait.name === 'Interested' && (
             <div class="interested-trait-info">
               <p class="gift-affection-note">
-                <strong>Unlocks at Gift Affection Level 5:</strong> This trait becomes active after reaching 2000 affection points through gift-giving.
+                <strong>Unlocks at Gift Affection Level 5:</strong> This trait becomes active after
+                reaching 2000 affection points through gift-giving.
               </p>
               {/* Display gift affection bonuses */}
               {giftData?.level5Bonus && (
                 <div class="trait-bonuses">
                   <strong>Gift Affection Level 5 Bonus:</strong>
                   <ul class="bonus-list">
-                    <li>{giftData.level5Bonus.type} +{giftData.level5Bonus.value}</li>
+                    <li>
+                      {giftData.level5Bonus.type} +{giftData.level5Bonus.value}
+                    </li>
                   </ul>
                 </div>
               )}
@@ -659,307 +672,318 @@ function getTagCategory(tag: string): string {
 <section class="content-section gift-section">
   <h2 class="section-title">Gift Preferences</h2>
   <p class="gift-explanation">
-    Need 2000 points of affection to reach Level 5 to unlock trait bonus and also get gold and game currency too
+    Need 2000 points of affection to reach Level 5 to unlock trait bonus and also get gold and game
+    currency too
   </p>
 
-  {giftData ? (
-    <div class="gift-container">
-      {/* Level 5 Bonus */}
-      {giftData.level5Bonus && (
-        <div class="level5-bonus-card">
-          <div class="level5-bonus-header">
-            <h3 class="level5-bonus-title">Level 5 Affection Bonus</h3>
-            <span class="hw-badge" data-type="Bonus">Affection Bonus</span>
+  {
+    giftData ? (
+      <div class="gift-container">
+        {/* Level 5 Bonus */}
+        {giftData.level5Bonus && (
+          <div class="level5-bonus-card">
+            <div class="level5-bonus-header">
+              <h3 class="level5-bonus-title">Level 5 Affection Bonus</h3>
+              <span class="hw-badge" data-type="Bonus">
+                Affection Bonus
+              </span>
+            </div>
+            <div class="level5-bonus-content">
+              <span class="bonus-type">{giftData.level5Bonus.type}:</span>
+              <span class="bonus-value">+{giftData.level5Bonus.value}</span>
+            </div>
           </div>
-          <div class="level5-bonus-content">
-            <span class="bonus-type">{giftData.level5Bonus.type}:</span>
-            <span class="bonus-value">+{giftData.level5Bonus.value}</span>
-          </div>
-        </div>
-      )}
+        )}
 
-      {/* High-Value Gifts */}
-      {highValueGifts.length > 0 && (
-        <div class="gift-category">
-          <h3 class="gift-category-title">High-Value Gifts</h3>
-          <p class="gift-category-description">
-            These rare gifts provide exceptional affection points (80+ total) and are extremely valuable
-          </p>
-          <div class="gifts-grid">
-            {highValueGifts.map((gift: any) => {
-              const giftBoxes = findAllGiftBoxes(gift.id, gift.name);
-              return (
+        {/* High-Value Gifts */}
+        {highValueGifts.length > 0 && (
+          <div class="gift-category">
+            <h3 class="gift-category-title">High-Value Gifts</h3>
+            <p class="gift-category-description">
+              These rare gifts provide exceptional affection points (80+ total) and are extremely
+              valuable
+            </p>
+            <div class="gifts-grid">
+              {highValueGifts.map((gift: any) => {
+                const giftBoxes = findAllGiftBoxes(gift.id, gift.name);
+                return (
+                  <div class="gift-card high-value-gift">
+                    <div class="gift-image-container">
+                      <Image
+                        src={gift.image}
+                        alt={gift.name}
+                        width={80}
+                        height={80}
+                        loading="lazy"
+                        class="gift-image"
+                      />
+                      <span class="hw-badge gift-rarity-badge" data-rarity={gift.rarity}>
+                        {gift.rarity}
+                      </span>
+                    </div>
+                    <div class="gift-info">
+                      <h4 class="gift-name">{gift.name}</h4>
+                      <div class="gift-points">
+                        <span class="points-label">Base:</span>
+                        <span class="points-value">{gift.basePoints}</span>
+                        <span class="points-label">+ Bonus:</span>
+                        <span class="points-value bonus-points">+{gift.bonusPoints}</span>
+                        <span class="points-label">= Total:</span>
+                        <span class="points-total">{gift.totalPoints}</span>
+                      </div>
+                      <div class="gift-max-affection">
+                        <span class="points-label">For Max Affection:</span>
+                        <span class="points-value">{calculateGiftsNeeded(gift)} gifts</span>
+                      </div>
+                      {giftBoxes && (
+                        <div class="gift-sources">
+                          <span class="sources-label">Found in:</span>
+                          <div class="gift-boxes">
+                            {giftBoxes.map((boxInfo: any) => (
+                              <div class="gift-box-item">
+                                <Image
+                                  src={boxInfo.box.image}
+                                  alt={boxInfo.box.name}
+                                  width={32}
+                                  height={32}
+                                  loading="lazy"
+                                  class="gift-box-image"
+                                />
+                                <span class="gift-box-name">{boxInfo.box.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Favorite Gifts */}
+        {regularFavoriteGifts.length > 0 && (
+          <div class="gift-category">
+            <h3 class="gift-category-title">Favorite Gifts</h3>
+            <p class="gift-category-description">
+              These gifts give bonus points (20+ more) and are highly valued by this character
+            </p>
+            <div class="gifts-grid">
+              {regularFavoriteGifts.map((gift: any) => {
+                const giftBoxes = findAllGiftBoxes(gift.id, gift.name);
+                return (
+                  <div class="gift-card favorite-gift">
+                    <div class="gift-image-container">
+                      <Image
+                        src={gift.image}
+                        alt={gift.name}
+                        width={80}
+                        height={80}
+                        loading="lazy"
+                        class="gift-image"
+                      />
+                      <span class="hw-badge gift-rarity-badge" data-rarity={gift.rarity}>
+                        {gift.rarity}
+                      </span>
+                    </div>
+                    <div class="gift-info">
+                      <h4 class="gift-name">{gift.name}</h4>
+                      <div class="gift-points">
+                        <span class="points-label">Base:</span>
+                        <span class="points-value">{gift.basePoints}</span>
+                        <span class="points-label">+ Bonus:</span>
+                        <span class="points-value bonus-points">+{gift.bonusPoints}</span>
+                        <span class="points-label">= Total:</span>
+                        <span class="points-total">{gift.totalPoints}</span>
+                      </div>
+                      <div class="gift-max-affection">
+                        <span class="points-label">For Max Affection:</span>
+                        <span class="points-value">{calculateGiftsNeeded(gift)} gifts</span>
+                      </div>
+                      {giftBoxes && (
+                        <div class="gift-sources">
+                          <span class="sources-label">Found in:</span>
+                          <div class="gift-boxes">
+                            {giftBoxes.map((boxInfo: any) => (
+                              <div class="gift-box-item">
+                                <Image
+                                  src={boxInfo.box.image}
+                                  alt={boxInfo.box.name}
+                                  width={32}
+                                  height={32}
+                                  loading="lazy"
+                                  class="gift-box-image"
+                                />
+                                <span class="gift-box-name">{boxInfo.box.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Liked Gifts */}
+        {regularLikedGifts.length > 0 && (
+          <div class="gift-category">
+            <h3 class="gift-category-title">Liked Gifts</h3>
+            <p class="gift-category-description">
+              These gifts give 10 points more and are appreciated by this character
+            </p>
+            <div class="gifts-grid">
+              {regularLikedGifts.map((gift: any) => {
+                const giftBoxes = findAllGiftBoxes(gift.id, gift.name);
+                return (
+                  <div class="gift-card liked-gift">
+                    <div class="gift-image-container">
+                      <Image
+                        src={gift.image}
+                        alt={gift.name}
+                        width={80}
+                        height={80}
+                        loading="lazy"
+                        class="gift-image"
+                      />
+                      <span class="hw-badge gift-rarity-badge" data-rarity={gift.rarity}>
+                        {gift.rarity}
+                      </span>
+                    </div>
+                    <div class="gift-info">
+                      <h4 class="gift-name">{gift.name}</h4>
+                      <div class="gift-points">
+                        <span class="points-label">Base:</span>
+                        <span class="points-value">{gift.basePoints}</span>
+                        <span class="points-label">+ Bonus:</span>
+                        <span class="points-value bonus-points">+{gift.bonusPoints}</span>
+                        <span class="points-label">= Total:</span>
+                        <span class="points-total">{gift.totalPoints}</span>
+                      </div>
+                      <div class="gift-max-affection">
+                        <span class="points-label">For Max Affection:</span>
+                        <span class="points-value">{calculateGiftsNeeded(gift)} gifts</span>
+                      </div>
+                      {giftBoxes && (
+                        <div class="gift-sources">
+                          <span class="sources-label">Found in:</span>
+                          <div class="gift-boxes">
+                            {giftBoxes.map((boxInfo: any) => (
+                              <div class="gift-box-item">
+                                <Image
+                                  src={boxInfo.box.image}
+                                  alt={boxInfo.box.name}
+                                  width={32}
+                                  height={32}
+                                  loading="lazy"
+                                  class="gift-box-image"
+                                />
+                                <span class="gift-box-name">{boxInfo.box.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Alternative High-Value Option */}
+        {!hasQueensTiara(giftData) &&
+          giftData &&
+          (regularFavoriteGifts.length > 0 || regularLikedGifts.length > 0) && (
+            <div class="gift-category">
+              <h3 class="gift-category-title">Alternative High-Value Option</h3>
+              <p class="gift-category-description">
+                Queen's Tiara provides the highest affection points (100) for any character,
+                regardless of preferences
+              </p>
+              <div class="gifts-grid">
                 <div class="gift-card high-value-gift">
                   <div class="gift-image-container">
                     <Image
-                      src={gift.image}
-                      alt={gift.name}
+                      src={queensTiaraGift.image}
+                      alt={queensTiaraGift.name}
                       width={80}
                       height={80}
                       loading="lazy"
                       class="gift-image"
                     />
-                    <span class="hw-badge gift-rarity-badge" data-rarity={gift.rarity}>
-                      {gift.rarity}
+                    <span class="hw-badge gift-rarity-badge" data-rarity={queensTiaraGift.rarity}>
+                      {queensTiaraGift.rarity}
                     </span>
                   </div>
                   <div class="gift-info">
-                    <h4 class="gift-name">{gift.name}</h4>
+                    <h4 class="gift-name">{queensTiaraGift.name}</h4>
                     <div class="gift-points">
                       <span class="points-label">Base:</span>
-                      <span class="points-value">{gift.basePoints}</span>
+                      <span class="points-value">{queensTiaraGift.basePoints}</span>
                       <span class="points-label">+ Bonus:</span>
-                      <span class="points-value bonus-points">+{gift.bonusPoints}</span>
+                      <span class="points-value bonus-points">+{queensTiaraGift.bonusPoints}</span>
                       <span class="points-label">= Total:</span>
-                      <span class="points-total">{gift.totalPoints}</span>
+                      <span class="points-total">{queensTiaraGift.totalPoints}</span>
                     </div>
                     <div class="gift-max-affection">
                       <span class="points-label">For Max Affection:</span>
-                      <span class="points-value">{calculateGiftsNeeded(gift)} gifts</span>
+                      <span class="points-value">
+                        {calculateGiftsNeeded(queensTiaraGift)} gifts
+                      </span>
                     </div>
-                    {giftBoxes && (
-                      <div class="gift-sources">
-                        <span class="sources-label">Found in:</span>
-                        <div class="gift-boxes">
-                          {giftBoxes.map((boxInfo: any) => (
-                            <div class="gift-box-item">
-                              <Image
-                                src={boxInfo.box.image}
-                                alt={boxInfo.box.name}
-                                width={32}
-                                height={32}
-                                loading="lazy"
-                                class="gift-box-image"
-                              />
-                              <span class="gift-box-name">{boxInfo.box.name}</span>
-                            </div>
-                          ))}
+                    <div class="gift-sources">
+                      <span class="sources-label">Found in:</span>
+                      <div class="gift-boxes">
+                        <div class="gift-box-item">
+                          <Image
+                            src="/images/games/horizon-walker/Gifts/Brilliant_Gift_Box.jpg"
+                            alt="Brilliant Gift Box"
+                            width={32}
+                            height={32}
+                            loading="lazy"
+                            class="gift-box-image"
+                          />
+                          <span class="gift-box-name">Brilliant Gift Box</span>
                         </div>
                       </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Favorite Gifts */}
-      {regularFavoriteGifts.length > 0 && (
-        <div class="gift-category">
-          <h3 class="gift-category-title">Favorite Gifts</h3>
-          <p class="gift-category-description">
-            These gifts give bonus points (20+ more) and are highly valued by this character
-          </p>
-          <div class="gifts-grid">
-            {regularFavoriteGifts.map((gift: any) => {
-              const giftBoxes = findAllGiftBoxes(gift.id, gift.name);
-              return (
-                <div class="gift-card favorite-gift">
-                  <div class="gift-image-container">
-                    <Image
-                      src={gift.image}
-                      alt={gift.name}
-                      width={80}
-                      height={80}
-                      loading="lazy"
-                      class="gift-image"
-                    />
-                    <span class="hw-badge gift-rarity-badge" data-rarity={gift.rarity}>
-                      {gift.rarity}
-                    </span>
-                  </div>
-                  <div class="gift-info">
-                    <h4 class="gift-name">{gift.name}</h4>
-                    <div class="gift-points">
-                      <span class="points-label">Base:</span>
-                      <span class="points-value">{gift.basePoints}</span>
-                      <span class="points-label">+ Bonus:</span>
-                      <span class="points-value bonus-points">+{gift.bonusPoints}</span>
-                      <span class="points-label">= Total:</span>
-                      <span class="points-total">{gift.totalPoints}</span>
-                    </div>
-                    <div class="gift-max-affection">
-                      <span class="points-label">For Max Affection:</span>
-                      <span class="points-value">{calculateGiftsNeeded(gift)} gifts</span>
-                    </div>
-                    {giftBoxes && (
-                      <div class="gift-sources">
-                        <span class="sources-label">Found in:</span>
-                        <div class="gift-boxes">
-                          {giftBoxes.map((boxInfo: any) => (
-                            <div class="gift-box-item">
-                              <Image
-                                src={boxInfo.box.image}
-                                alt={boxInfo.box.name}
-                                width={32}
-                                height={32}
-                                loading="lazy"
-                                class="gift-box-image"
-                              />
-                              <span class="gift-box-name">{boxInfo.box.name}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Liked Gifts */}
-      {regularLikedGifts.length > 0 && (
-        <div class="gift-category">
-          <h3 class="gift-category-title">Liked Gifts</h3>
-          <p class="gift-category-description">
-            These gifts give 10 points more and are appreciated by this character
-          </p>
-          <div class="gifts-grid">
-            {regularLikedGifts.map((gift: any) => {
-              const giftBoxes = findAllGiftBoxes(gift.id, gift.name);
-              return (
-                <div class="gift-card liked-gift">
-                  <div class="gift-image-container">
-                    <Image
-                      src={gift.image}
-                      alt={gift.name}
-                      width={80}
-                      height={80}
-                      loading="lazy"
-                      class="gift-image"
-                    />
-                    <span class="hw-badge gift-rarity-badge" data-rarity={gift.rarity}>
-                      {gift.rarity}
-                    </span>
-                  </div>
-                  <div class="gift-info">
-                    <h4 class="gift-name">{gift.name}</h4>
-                    <div class="gift-points">
-                      <span class="points-label">Base:</span>
-                      <span class="points-value">{gift.basePoints}</span>
-                      <span class="points-label">+ Bonus:</span>
-                      <span class="points-value bonus-points">+{gift.bonusPoints}</span>
-                      <span class="points-label">= Total:</span>
-                      <span class="points-total">{gift.totalPoints}</span>
-                    </div>
-                    <div class="gift-max-affection">
-                      <span class="points-label">For Max Affection:</span>
-                      <span class="points-value">{calculateGiftsNeeded(gift)} gifts</span>
-                    </div>
-                    {giftBoxes && (
-                      <div class="gift-sources">
-                        <span class="sources-label">Found in:</span>
-                        <div class="gift-boxes">
-                          {giftBoxes.map((boxInfo: any) => (
-                            <div class="gift-box-item">
-                              <Image
-                                src={boxInfo.box.image}
-                                alt={boxInfo.box.name}
-                                width={32}
-                                height={32}
-                                loading="lazy"
-                                class="gift-box-image"
-                              />
-                              <span class="gift-box-name">{boxInfo.box.name}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Alternative High-Value Option */}
-      {!hasQueensTiara(giftData) && giftData && (regularFavoriteGifts.length > 0 || regularLikedGifts.length > 0) && (
-        <div class="gift-category">
-          <h3 class="gift-category-title">Alternative High-Value Option</h3>
-          <p class="gift-category-description">
-            Queen's Tiara provides the highest affection points (100) for any character, regardless of preferences
-          </p>
-          <div class="gifts-grid">
-            <div class="gift-card high-value-gift">
-              <div class="gift-image-container">
-                <Image
-                  src={queensTiaraGift.image}
-                  alt={queensTiaraGift.name}
-                  width={80}
-                  height={80}
-                  loading="lazy"
-                  class="gift-image"
-                />
-                <span class="hw-badge gift-rarity-badge" data-rarity={queensTiaraGift.rarity}>
-                  {queensTiaraGift.rarity}
-                </span>
-              </div>
-              <div class="gift-info">
-                <h4 class="gift-name">{queensTiaraGift.name}</h4>
-                <div class="gift-points">
-                  <span class="points-label">Base:</span>
-                  <span class="points-value">{queensTiaraGift.basePoints}</span>
-                  <span class="points-label">+ Bonus:</span>
-                  <span class="points-value bonus-points">+{queensTiaraGift.bonusPoints}</span>
-                  <span class="points-label">= Total:</span>
-                  <span class="points-total">{queensTiaraGift.totalPoints}</span>
-                </div>
-                <div class="gift-max-affection">
-                  <span class="points-label">For Max Affection:</span>
-                  <span class="points-value">{calculateGiftsNeeded(queensTiaraGift)} gifts</span>
-                </div>
-                <div class="gift-sources">
-                  <span class="sources-label">Found in:</span>
-                  <div class="gift-boxes">
-                    <div class="gift-box-item">
-                      <Image
-                        src="/images/games/horizon-walker/Gifts/Brilliant_Gift_Box.jpg"
-                        alt="Brilliant Gift Box"
-                        width={32}
-                        height={32}
-                        loading="lazy"
-                        class="gift-box-image"
-                      />
-                      <span class="gift-box-name">Brilliant Gift Box</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          )}
 
-      {/* No Gifts Available */}
-      {(!giftData.favorites || giftData.favorites.length === 0) && 
-       (!giftData.likes || giftData.likes.length === 0) && (
-        <div class="no-gifts-card">
-          <div class="no-gifts-content">
-            <h3 class="no-gifts-title">Gift Preferences Coming Soon</h3>
-            <p class="no-gifts-description">
-              Gift preferences for {characterData.name} have not been released yet. 
-              Check back later for updates on their favorite gifts!
-            </p>
-          </div>
-        </div>
-      )}
-    </div>
-  ) : (
-    <div class="no-gifts-card">
-      <div class="no-gifts-content">
-        <h3 class="no-gifts-title">Gift Preferences Coming Soon</h3>
-        <p class="no-gifts-description">
-          Gift preferences for {characterData.name} have not been released yet. 
-          Check back later for updates on their favorite gifts!
-        </p>
+        {/* No Gifts Available */}
+        {(!giftData.favorites || giftData.favorites.length === 0) &&
+          (!giftData.likes || giftData.likes.length === 0) && (
+            <div class="no-gifts-card">
+              <div class="no-gifts-content">
+                <h3 class="no-gifts-title">Gift Preferences Coming Soon</h3>
+                <p class="no-gifts-description">
+                  Gift preferences for {characterData.name} have not been released yet. Check back
+                  later for updates on their favorite gifts!
+                </p>
+              </div>
+            </div>
+          )}
       </div>
-    </div>
-  )}
+    ) : (
+      <div class="no-gifts-card">
+        <div class="no-gifts-content">
+          <h3 class="no-gifts-title">Gift Preferences Coming Soon</h3>
+          <p class="no-gifts-description">
+            Gift preferences for {characterData.name} have not been released yet. Check back later
+            for updates on their favorite gifts!
+          </p>
+        </div>
+      </div>
+    )
+  }
 </section>

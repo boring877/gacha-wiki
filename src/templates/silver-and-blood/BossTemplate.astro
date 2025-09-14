@@ -1,0 +1,568 @@
+---
+import BossLayout from '../../layouts/silver-and-blood/BossLayout.astro';
+import { gameInfo } from '../../data/silver-and-blood/characters.js';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+import {
+  highlightBossSkills,
+} from '../../utils/silver-and-blood/boss-highlighting.js';
+
+export interface Props {
+  boss: any; // The full boss data object
+}
+
+const { boss } = Astro.props;
+const {
+  name,
+  title,
+  subtitle,
+  description,
+  image,
+  rarity,
+  class: bossClass,
+  equipmentType,
+  moonPhase,
+  attackType,
+  stages,
+  skills,
+  tags,
+} = boss;
+
+// Use first stage stats as default
+const defaultStats = stages && stages.length > 0 ? stages[0].stats : {};
+
+// Apply boss-specific skill highlighting for better readability
+const highlightedSkills = highlightBossSkills(skills);
+
+// Pull authoritative text from the central gameInfo tables
+const moonData = gameInfo.moonPhases.find(p => p.name === moonPhase);
+const moonPhaseEffect = moonData ? `${moonData.name}: ${moonData.effect}` : null;
+
+const attackData = gameInfo.attackTypes.find(a => a.name === attackType);
+const attackTypeInfo = attackData ? `${attackData.name}: ${attackData.description}` : null;
+
+const equipData = gameInfo.equipmentTypes.find(e => e.name === equipmentType);
+const equipmentNote = equipData ? `${equipmentType} Equipment: ${equipData.description}` : null;
+
+const classData = gameInfo.classes.find(c => c.name === bossClass);
+const classInfo = classData ? `${bossClass}: ${classData.description}` : null;
+
+// Game mechanics info (no highlighting needed for boss mechanics)
+const bossClassInfo = classInfo;
+const bossAttackTypeInfo = attackTypeInfo;
+---
+
+<BossLayout
+  title={`${name} - Silver and Blood Boss Guide`}
+  description={`Complete ${name} boss guide for Silver and Blood. ${rarity} ${bossClass} with ${attackType} attacks. Stats, abilities, and strategy for ${name}.`}
+  bossName={name}
+  bossImage={image}
+  boss={boss}
+>
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGameCharacter",
+      "name": "${name}",
+      "description": "${description}",
+      "image": "${image}",
+      "isPartOf": {
+        "@type": "VideoGame",
+        "name": "Silver and Blood"
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Class",
+          "value": "${bossClass}"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Type",
+          "value": "${rarity}"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Attack Type",
+          "value": "${attackType}"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
+      { name: 'Prophecy', href: '/guides/silver-and-blood/prophecy/' },
+      { name: name },
+    ]}
+  />
+
+  <!-- Boss Header & Overview -->
+  <section class="content-section">
+    <h2 class="section-title" style="margin-bottom:2.5rem; text-align:center;">
+      Boss Overview
+    </h2>
+    <div class="overview-flex" style="gap: 2.5rem;">
+      <!-- Boss Card (Left) -->
+      <div
+        style="flex: 1.2; min-width: 340px; max-width: 420px; display: flex; flex-direction: column; align-items: center;"
+      >
+        <div
+          style="background: var(--sab-character-info-bg); border-radius: 18px; padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid var(--sab-text-light); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;"
+        >
+          <Image
+            src={image}
+            alt={`${name} - ${rarity} ${bossClass} boss from Silver and Blood`}
+            width={300}
+            height={300}
+            loading="lazy"
+            class="character-portrait"
+            style="margin-bottom: 1.5rem; margin-top: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 16px; max-width: 100%; border: 2px solid var(--sab-text-light);"
+          />
+          <h1
+            class="character-name"
+            style="margin: 0; text-align:center; background: linear-gradient(135deg, var(--sab-light-red), var(--sab-calm-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.2rem; font-weight: 700;"
+          >
+            {name}
+          </h1>
+          <p
+            style="color: var(--sab-text-light); margin: 1rem 0 0 0; font-size: 0.95rem; text-align: center; line-height: 1.5; max-width: 300px;"
+          >
+            {description}
+          </p>
+        </div>
+
+        <!-- Boss Info -->
+        <div
+          style="margin-top: 1.8rem; background: var(--sab-character-info-bg); border-radius: 14px; padding: 1.5rem; border: 1px solid var(--sab-border-light); width: 100%;"
+        >
+          <div
+            style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem;"
+          >
+            <div style="text-align: center;">
+              <div
+                style="color: var(--sab-text-light); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
+              >
+                Class
+              </div>
+              <span class={`class-badge ${bossClass.toLowerCase()}`}>{bossClass}</span>
+            </div>
+            <div style="text-align: center;">
+              <div
+                style="color: var(--sab-text-light); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
+              >
+                Type
+              </div>
+              <span class={`rarity-badge ${rarity.toLowerCase()}`}>{rarity}</span>
+            </div>
+            <div style="text-align: center;">
+              <div
+                style="color: var(--sab-text-light); margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;"
+              >
+                Attack Type
+              </div>
+              <span class={`attack-badge ${attackType.toLowerCase().replace(/[\s.]/g, '-')}`}
+                >{attackType}</span
+              >
+            </div>
+          </div>
+
+          <!-- Tags Badge Box -->
+          {
+            Array.isArray(tags) && tags.length > 0 && (
+              <div
+                class="badges-container"
+                style="margin-top: 1.5rem; background: var(--sab-character-info-bg); border-radius: 14px; padding: 1rem 1.5rem; border: 1px solid var(--sab-border-light);"
+              >
+                <div style="display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap;">
+                  {tags.map(tag => (
+                    <span
+                      class={`tag-badge ${tag.toLowerCase().replaceAll(' ', '-').replaceAll('.', '').replaceAll('%', '')}`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+        </div>
+      </div>
+
+      <!-- Complete Stats Box (Right) -->
+      <div style="flex: 1.8;">
+        <div
+          style="background: var(--sab-rankings-bg); border-radius: 18px; padding: 2rem; border: 1px solid var(--sab-border-light); width: 100%;"
+        >
+          <!-- Boss Stats Header -->
+          <h3
+            style="color: var(--sab-text-light); margin: 0 0 1.5rem 0; text-align: center; font-size: 1.4rem; border-bottom: 2px solid var(--sab-calm-red); padding-bottom: 0.5rem;"
+          >
+            Boss Stats
+          </h3>
+
+          <!-- Stage Tabs -->
+          {
+            stages && stages.length > 0 && (
+              <div class="stage-tabs" style="margin-bottom: 1.5rem;">
+                <div class="tab-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
+                  {stages.map((stage, index) => (
+                    <button
+                      class={`stage-tab ${index === 0 ? 'active' : ''} ${stage.type.toLowerCase()}`}
+                      data-stage={stage.id}
+                      style="padding: 0.5rem 1rem; border-radius: 8px; border: 2px solid var(--sab-border-light); background: var(--sab-bg-dark); color: var(--sab-text-light); cursor: pointer; font-weight: 600; font-size: 0.9rem;"
+                    >
+                      {stage.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+
+          <!-- Stage Stats Display -->
+          <div id="stage-stats">
+            <!-- Core Combat Stats -->
+            <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">
+              Core Combat Stats
+            </h4>
+            <div
+              class="stats-grid"
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
+            >
+              <div
+                class="stat-item"
+                style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
+              >
+                <div
+                  class="stat-label"
+                  style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                >
+                  HP
+                </div>
+                <div
+                  class="stat-value"
+                  id="hp-value"
+                  style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+                >
+                  {defaultStats.hp?.toLocaleString() || 0}
+                </div>
+              </div>
+              <div
+                class="stat-item"
+                style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
+              >
+                <div
+                  class="stat-label"
+                  style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                >
+                  ATK
+                </div>
+                <div
+                  class="stat-value"
+                  id="atk-value"
+                  style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+                >
+                  {defaultStats.atk?.toLocaleString() || 0}
+                </div>
+              </div>
+              <div
+                class="stat-item"
+                style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
+              >
+                <div
+                  class="stat-label"
+                  style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                >
+                  P.DEF
+                </div>
+                <div
+                  class="stat-value"
+                  id="pdef-value"
+                  style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+                >
+                  {defaultStats.pDef?.toLocaleString() || 0}
+                </div>
+              </div>
+              <div
+                class="stat-item"
+                style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
+              >
+                <div
+                  class="stat-label"
+                  style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                >
+                  M.DEF
+                </div>
+                <div
+                  class="stat-value"
+                  id="mdef-value"
+                  style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+                >
+                  {defaultStats.mDef?.toLocaleString() || 0}
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Combat Stats -->
+            <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">
+              Additional Stats
+            </h4>
+            <div
+              class="stats-grid"
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;"
+            >
+              <div
+                class="stat-item"
+                style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
+              >
+                <div
+                  class="stat-label"
+                  style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                >
+                  ATK SPD
+                </div>
+                <div
+                  class="stat-value"
+                  id="atk-spd-value"
+                  style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+                >
+                  {defaultStats.atkSpd || 0}%
+                </div>
+              </div>
+              <div
+                class="stat-item"
+                style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
+              >
+                <div
+                  class="stat-label"
+                  style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                >
+                  Bloodsoul Recovery
+                </div>
+                <div
+                  class="stat-value"
+                  id="bloodsoul-recovery-value"
+                  style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+                >
+                  {defaultStats.bloodsoulRecovery || 0}
+                </div>
+              </div>
+            </div>
+
+            <!-- Critical Stats -->
+            <h4 style="color: var(--sab-text-light); margin: 0 0 1rem 0; font-size: 1.1rem;">
+              Critical Stats
+            </h4>
+            <div
+              class="stats-grid"
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;"
+            >
+              <div
+                class="stat-item"
+                style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
+              >
+                <div
+                  class="stat-label"
+                  style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                >
+                  CRIT Rate
+                </div>
+                <div
+                  class="stat-value"
+                  id="crit-rate-value"
+                  style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+                >
+                  {defaultStats.critRate || 0}%
+                </div>
+              </div>
+              <div
+                class="stat-item"
+                style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
+              >
+                <div
+                  class="stat-label"
+                  style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                >
+                  CRIT Resist Rate
+                </div>
+                <div
+                  class="stat-value"
+                  id="crit-resist-value"
+                  style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+                >
+                  {defaultStats.critResistRate || 0}%
+                </div>
+              </div>
+              <div
+                class="stat-item"
+                style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
+              >
+                <div
+                  class="stat-label"
+                  style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                >
+                  CRIT DMG Increase
+                </div>
+                <div
+                  class="stat-value"
+                  id="crit-dmg-value"
+                  style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+                >
+                  {defaultStats.critDmgIncrease || 0}%
+                </div>
+              </div>
+              <div
+                class="stat-item"
+                style="text-align:center; background: var(--sab-bg-dark); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--sab-border-light);"
+              >
+                <div
+                  class="stat-label"
+                  style="color: var(--sab-text-light); margin-bottom: 0.3rem; font-weight: 600; font-size: 0.85rem;"
+                >
+                  CRIT DMG Mitigation
+                </div>
+                <div
+                  class="stat-value"
+                  id="crit-mitigation-value"
+                  style="color: var(--sab-calm-red); font-weight: 700; font-size: 1rem;"
+                >
+                  {defaultStats.critDmgMitigation || 0}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="content-section">
+    <h2 class="section-title">Abilities</h2>
+
+    {
+      highlightedSkills.map((skill, index) => (
+        <div
+          class="skill-card"
+          style={`background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid ${skill.type === 'Ultimate' ? '#dc3545' : skill.type === 'Talent' ? '#32cd32' : skill.type === 'Special' ? '#ff8c00' : '#808080'}; border: 1px solid #3a3a3a;`}
+        >
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3 style="color: #c0c0c0; font-size: 1.3rem; font-weight: 700; margin: 0;">
+              {skill.name}
+            </h3>
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+              <span class={`skill-badge ${skill.type.toLowerCase().replace(' ', '-')}`}>
+                {skill.type}
+              </span>
+            </div>
+          </div>
+          <p
+            style="color: #e0e0e0; line-height: 1.6; margin: 0; font-size: 1rem;"
+            set:html={skill.description}
+          ></p>
+        </div>
+      ))
+    }
+  </section>
+
+  <!-- Game Mechanics (canonical descriptions) -->
+  {
+    (bossClassInfo || bossAttackTypeInfo) && (
+      <section class="content-section">
+        <h2 class="section-title">Game Mechanics</h2>
+
+        {bossClassInfo && (
+          <div
+            class="skill-card"
+            style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid #c0c0c0; border: 1px solid #3a3a3a;"
+          >
+            <h4 style="color: #c0c0c0; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.5rem 0;">
+              Class
+            </h4>
+            <p style="color: #e0e0e0; margin: 0; line-height: 1.5;">{bossClassInfo}</p>
+          </div>
+        )}
+
+        {bossAttackTypeInfo && (
+          <div
+            class="skill-card"
+            style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid #c0c0c0; border: 1px solid #3a3a3a;"
+          >
+            <h4 style="color: #c0c0c0; font-size: 1.1rem; font-weight: 600; margin: 0 0 0.5rem 0;">
+              Attack Type
+            </h4>
+            <p style="color: #e0e0e0; margin: 0; line-height: 1.5;">{bossAttackTypeInfo}</p>
+          </div>
+        )}
+      </section>
+    )
+  }
+
+  <!-- Stage Tab JavaScript -->
+  {
+    stages && stages.length > 0 && (
+      <script define:vars={{ stages }}>
+        document.addEventListener('DOMContentLoaded', function() {
+          const stageButtons = document.querySelectorAll('.stage-tab');
+          const stageData = stages;
+
+          function updateStats(stage) {
+            const stats = stage.stats;
+
+            // Core Combat Stats
+            const hpValue = document.getElementById('hp-value');
+            const atkValue = document.getElementById('atk-value');
+            const pdefValue = document.getElementById('pdef-value');
+            const mdefValue = document.getElementById('mdef-value');
+
+            // Additional Stats
+            const atkSpdValue = document.getElementById('atk-spd-value');
+            const bloodsoulRecoveryValue = document.getElementById('bloodsoul-recovery-value');
+
+            // Critical Stats
+            const critRateValue = document.getElementById('crit-rate-value');
+            const critResistValue = document.getElementById('crit-resist-value');
+            const critDmgValue = document.getElementById('crit-dmg-value');
+            const critMitigationValue = document.getElementById('crit-mitigation-value');
+
+            // Update stat values
+            if (hpValue) hpValue.textContent = stats.hp.toLocaleString();
+            if (atkValue) atkValue.textContent = stats.atk.toLocaleString();
+            if (pdefValue) pdefValue.textContent = stats.pDef.toLocaleString();
+            if (mdefValue) mdefValue.textContent = stats.mDef.toLocaleString();
+
+            if (atkSpdValue) atkSpdValue.textContent = stats.atkSpd + '%';
+            if (bloodsoulRecoveryValue) bloodsoulRecoveryValue.textContent = stats.bloodsoulRecovery.toLocaleString();
+
+            if (critRateValue) critRateValue.textContent = stats.critRate + '%';
+            if (critResistValue) critResistValue.textContent = stats.critResistRate + '%';
+            if (critDmgValue) critDmgValue.textContent = stats.critDmgIncrease + '%';
+            if (critMitigationValue) critMitigationValue.textContent = stats.critDmgMitigation + '%';
+          }
+
+          stageButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+              // Remove active class from all buttons
+              stageButtons.forEach(btn => btn.classList.remove('active'));
+
+              // Add active class to clicked button
+              this.classList.add('active');
+
+              // Find the corresponding stage data
+              const stageId = this.dataset.stage;
+              const stage = stageData.find(s => s.id === stageId);
+
+              if (stage) {
+                updateStats(stage);
+              }
+            });
+          });
+        });
+      </script>
+    )
+  }
+</BossLayout>

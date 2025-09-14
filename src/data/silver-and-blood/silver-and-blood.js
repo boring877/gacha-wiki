@@ -137,6 +137,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           url: '/guides/silver-and-blood/boss-database/',
         },
         {
+          id: 'prophecy',
+          title: 'Prophecy',
+          url: '/guides/silver-and-blood/prophecy/',
+        },
+        {
           id: 'clan-hunt',
           title: 'Clan Hunt',
           url: '/guides/silver-and-blood/clan-hunt/',
@@ -385,6 +390,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       description:
         'Complete database of all Clan Hunt bosses with mechanics, strategies, and optimal team compositions.',
       url: '/guides/silver-and-blood/boss-database/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'prophecy',
+      title: 'Prophecy Unbound',
+      emoji: '',
+      description:
+        'Complete guide to Prophecy Unbound boss battles, including Normal Mode, Nightmare Mode, ranking system, and rewards.',
+      url: '/guides/silver-and-blood/prophecy/',
       category: 'guides',
       status: 'active',
     },

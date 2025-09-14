@@ -1,0 +1,101 @@
+---
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+
+// Import CSS files properly
+import '../../styles/games/silver-and-blood/sab-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-prophecy.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const { title, description, gameTitle, breadcrumbs } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <SABBaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'silver and blood prophecy unbound',
+        'silver and blood prophecy guide',
+        'silver and blood boss battles',
+        'silver and blood normal mode',
+        'silver and blood nightmare mode',
+        'silver and blood prophecy bosses',
+        'silver and blood assault guide',
+        'silver and blood ranking system',
+        'silver and blood prophecy rewards',
+        'sab prophecy unbound',
+        'sab boss guide',
+        'sab prophecy mode',
+        'silver and blood boss strategy',
+        'silver and blood prophecy tips',
+        'silver and blood boss ranking',
+        'silver and blood prophecy mechanics',
+        'silver and blood trial assault',
+        'silver and blood quick assault',
+        'silver and blood prophecy 2025',
+        'silver and blood end game content',
+      ]}
+    />
+
+    <slot name="head" />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="silver-and-blood-main" id="main-content">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          {breadcrumbs && <Breadcrumb items={breadcrumbs} />}
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

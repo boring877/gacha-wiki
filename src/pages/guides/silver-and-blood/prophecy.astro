@@ -1,0 +1,138 @@
+---
+import ProphecyLayout from '../../../layouts/silver-and-blood/ProphecyLayout.astro';
+import { prophecyData } from '../../../data/silver-and-blood/prophecy.js';
+import { Image } from 'astro:assets';
+
+const title = 'Prophecy Unbound - Silver and Blood';
+const description =
+  'Complete guide to Prophecy Unbound boss battles, including Normal Mode, Nightmare Mode, ranking system, and rewards.';
+const gameTitle = 'Prophecy Unbound';
+
+// Breadcrumb data for SEO and navigation
+const breadcrumbs = [
+  { name: 'Guides', href: '/guides' },
+  { name: 'Silver and Blood', href: '/guides/silver-and-blood' },
+  { name: 'Prophecy Unbound' }, // Current page, no href
+];
+---
+
+<ProphecyLayout
+  title={title}
+  description={description}
+  gameTitle={gameTitle}
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Prophecy Container -->
+  <div class="prophecy-container">
+    <!-- TLDR Section -->
+    <section class="tldr-section">
+      <h3>TL;DR</h3>
+      <div class="tldr-content">
+        <p>
+          Challenge bosses in Normal Mode (2 daily assaults, 3 attempts each) or Nightmare Mode
+          (ranked by highest damage). Trial Assault for practice, Quick Assault after clearing
+          Normal Mode. Rankings based on total damage dealt.
+        </p>
+      </div>
+    </section>
+
+    <!-- Bosses Section -->
+    <section class="info-card">
+      <h3>{prophecyData.bosses.title}</h3>
+      <p>{prophecyData.bosses.description}</p>
+      <div class="boss-links-grid">
+        {
+          prophecyData.bosses.list.map(boss => (
+            <a href={boss.url} class="boss-link-card">
+              <div class="boss-image-container">
+                <Image
+                  src={boss.image}
+                  alt={`${boss.name} - ${boss.class} boss from Silver and Blood`}
+                  width={120}
+                  height={120}
+                  loading="lazy"
+                  class="boss-thumbnail"
+                />
+              </div>
+              <div class="boss-info">
+                <h4>{boss.name}</h4>
+                <div class="boss-meta">
+                  <span class={`class-badge ${boss.class.toLowerCase()}`}>{boss.class}</span>
+                  <span
+                    class={`attack-badge ${boss.attackType.toLowerCase().replace(/[\s.]/g, '-')}`}
+                  >
+                    {boss.attackType}
+                  </span>
+                </div>
+                <div class="boss-tags">
+                  {boss.tags.map(tag => (
+                    <span class={`tag-badge ${tag.toLowerCase().replace(/[\s]/g, '-')}`}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+    <!-- Gameplay Breakdown Section -->
+    <section class="gameplay-breakdown">
+      <h3>Gameplay Breakdown</h3>
+      <ul class="feature-list">
+        {prophecyData.overview.features.map(feature => <li>{feature}</li>)}
+      </ul>
+    </section>
+
+    <!-- Game Modes Section -->
+    {
+      prophecyData.modes.map(mode => (
+        <div class="mode-card">
+          <h3 class="mode-name">{mode.name}</h3>
+          <p class="mode-description">{mode.description}</p>
+          <ul class="mechanics-list">
+            {mode.mechanics.map(mechanic => (
+              <li>{mechanic}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+
+    <!-- Assault Types Section -->
+    <section class="assault-types">
+      {
+        prophecyData.assaultTypes.map(assaultType => (
+          <div class="assault-card">
+            <h4>{assaultType.name}</h4>
+            <p>{assaultType.description}</p>
+            <ul class="feature-list">
+              {assaultType.features.map(feature => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </section>
+
+    <!-- Ranking Section -->
+    <section class="info-card">
+      <h3>{prophecyData.ranking.title}</h3>
+      <p>{prophecyData.ranking.description}</p>
+      <ul class="info-list">
+        {prophecyData.ranking.mechanics.map(mechanic => <li>{mechanic}</li>)}
+      </ul>
+    </section>
+
+    <!-- Rewards Section -->
+    <section class="info-card">
+      <h3>{prophecyData.rewards.title}</h3>
+      <p>{prophecyData.rewards.description}</p>
+      <ul class="info-list">
+        {prophecyData.rewards.mechanics.map(mechanic => <li>{mechanic}</li>)}
+      </ul>
+    </section>
+  </div>
+</ProphecyLayout>
