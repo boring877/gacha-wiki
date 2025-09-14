@@ -3,6 +3,13 @@ import RerollingGuideLayout from '../../../layouts/silver-and-blood/RerollingGui
 import { rerollingGuideData } from '../../../data/silver-and-blood/rerolling-guide.js';
 
 const { meta } = rerollingGuideData;
+
+// Breadcrumb data for SEO and navigation
+const breadcrumbs = [
+  { name: 'Guides', href: '/guides' },
+  { name: 'Silver and Blood', href: '/guides/silver-and-blood' },
+  { name: 'Rerolling Guide' }, // Current page, no href
+];
 ---
 
 <RerollingGuideLayout
@@ -10,4 +17,5 @@ const { meta } = rerollingGuideData;
   description={meta.description}
   gameTitle={meta.gameTitle}
   data={rerollingGuideData}
+  breadcrumbs={breadcrumbs}
 />

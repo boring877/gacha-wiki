@@ -7,6 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import only essential CSS files
 import '../../styles/games/silver-and-blood/sab-colors.css';
@@ -21,9 +22,10 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   data: any;
+  breadcrumbs?: Array<{ name: string; href?: string }>;
 }
 
-const { title, description, gameTitle, data } = Astro.props;
+const { title, description, gameTitle, data, breadcrumbs } = Astro.props;
 const { videoGuide, sections } = data;
 ---
 
@@ -54,8 +56,113 @@ const { videoGuide, sections } = data;
         'silver and blood getting started',
         'silver and blood walkthrough',
         'silver and blood guide 2025',
+        'silver and blood story guide',
+        'silver and blood leveling guide',
+        'silver and blood equipment guide',
+        'silver and blood skills guide',
+        'silver and blood artifacts guide',
+        'silver and blood timeworn mausoleum',
+        'silver and blood tomb of the fallen',
+        'silver and blood infinite abyss',
+        'silver and blood blood arena',
+        'silver and blood dutchman revenge',
+        'silver and blood embrace summons',
+        'silver and blood shop guide',
+        'silver and blood boutique guide',
+        'swiss cheesy mobile beginner guide',
+        'vampire rpg beginner guide',
+        'gacha game tutorial',
+        'bloodborn character progression',
+        'tempus church guide',
       ]}
     />
+
+    <!-- Additional structured data for beginner guide -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "Silver and Blood Beginner Guide - Complete New Player Tutorial",
+        "description": "Complete step-by-step beginner guide for Silver and Blood with video tutorials covering story, leveling, equipment, skills, and more.",
+        "image": "https://gachawiki.info/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg",
+        "totalTime": "PT18M9S",
+        "estimatedCost": {
+          "@type": "MonetaryAmount",
+          "currency": "USD",
+          "value": "0"
+        },
+        "supply": [
+          {
+            "@type": "HowToSupply",
+            "name": "Mobile device or PC"
+          },
+          {
+            "@type": "HowToSupply",
+            "name": "Silver and Blood game installed"
+          }
+        ],
+        "tool": [
+          {
+            "@type": "HowToTool",
+            "name": "YouTube video guide"
+          }
+        ],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Story System",
+            "text": "Learn about the story progression system, rewards from each chapter, and difficulty scaling.",
+            "url": "https://www.youtube.com/watch?v=QHRz8ZzFCGE&t=3s"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Character Leveling",
+            "text": "Understand character progression mechanics and blood transfusion system.",
+            "url": "https://www.youtube.com/watch?v=QHRz8ZzFCGE&t=49s"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Equipment System",
+            "text": "Master equipment upgrades and end-game gear strategies.",
+            "url": "https://www.youtube.com/watch?v=QHRz8ZzFCGE&t=106s"
+          }
+        ],
+        "video": {
+          "@type": "VideoObject",
+          "name": "Silver and Blood Complete Beginner Guide",
+          "description": "Complete video tutorial covering all aspects of Silver and Blood for new players",
+          "thumbnailUrl": "https://i.ytimg.com/vi/QHRz8ZzFCGE/maxresdefault.jpg",
+          "duration": "PT18M9S",
+          "contentUrl": "https://www.youtube.com/watch?v=QHRz8ZzFCGE",
+          "embedUrl": "https://www.youtube.com/embed/QHRz8ZzFCGE"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "GachaWiki",
+          "url": "https://gachawiki.info"
+        }
+      }
+    </script>
+
+    <!-- Breadcrumb structured data -->
+    {
+      breadcrumbs && (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: breadcrumbs.map((crumb, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: crumb.name,
+              ...(crumb.href && { item: new URL(crumb.href, Astro.site).toString() }),
+            })),
+          })}
+        />
+      )
+    }
   </head>
   <body class="sab-body">
     <CustomScrollbar />
@@ -81,6 +188,9 @@ const { videoGuide, sections } = data;
               </section>
             )
           }
+
+          <!-- Breadcrumb Navigation -->
+          {breadcrumbs && <Breadcrumb items={breadcrumbs} />}
 
           <!-- Content Area -->
           <div class="content-area">

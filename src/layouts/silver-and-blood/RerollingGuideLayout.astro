@@ -7,6 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import only essential CSS files
 import '../../styles/games/silver-and-blood/sab-colors.css';
@@ -21,9 +22,10 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   data: any;
+  breadcrumbs?: Array<{ name: string; href?: string }>;
 }
 
-const { title, description, gameTitle, data } = Astro.props;
+const { title, description, gameTitle, data, breadcrumbs } = Astro.props;
 const { intro, steps, expectedResources, redeemCodes, timelessAiona } = data;
 ---
 
@@ -60,6 +62,26 @@ const { intro, steps, expectedResources, redeemCodes, timelessAiona } = data;
         'silver and blood starter guide',
       ]}
     />
+
+    <!-- Breadcrumb structured data -->
+    {
+      breadcrumbs && (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: breadcrumbs.map((crumb, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: crumb.name,
+              ...(crumb.href && { item: new URL(crumb.href, Astro.site).toString() }),
+            })),
+          })}
+        />
+      )
+    }
   </head>
   <body class="sab-body">
     <CustomScrollbar />
@@ -85,6 +107,9 @@ const { intro, steps, expectedResources, redeemCodes, timelessAiona } = data;
               </section>
             )
           }
+
+          <!-- Breadcrumb Navigation -->
+          {breadcrumbs && <Breadcrumb items={breadcrumbs} />}
 
           <!-- Content Area -->
           <div class="content-area">
@@ -177,7 +202,8 @@ const { intro, steps, expectedResources, redeemCodes, timelessAiona } = data;
                       target="_blank"
                       rel="noopener"
                       class="video-link">Credit to Tim</a
-                    ></strong>
+                    ></strong
+                  >
                 </p>
               </div>
             </div>

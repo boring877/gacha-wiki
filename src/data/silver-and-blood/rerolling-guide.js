@@ -23,7 +23,7 @@ export const rerollingGuideData = {
       'Silver and Blood Rerolling Guide 2025 - How to Get Timeless Aiona Fast | Best SSR Strategy',
     description:
       'Complete Silver and Blood rerolling guide to get Timeless Aiona SSR character. Step-by-step tutorial with working redeem codes, normal banner strategy, and fastest reroll methods for beginners.',
-    gameTitle: 'Rerolling Guide - Get Timeless Aiona',
+    gameTitle: 'Rerolling Guide',
     keywords:
       'Silver and Blood rerolling guide 2025, how to get Timeless Aiona, Silver and Blood reroll tutorial, best SSR character reroll, Silver and Blood redeem codes, normal banner reroll, fastest reroll method, Silver and Blood beginner guide, Timeless Aiona reroll strategy, Silver and Blood SSR guide, mobile RPG rerolling, gacha reroll guide',
     ogTitle: 'Silver and Blood Rerolling Guide 2025 - Get Timeless Aiona SSR Fast',
