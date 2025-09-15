@@ -604,6 +604,47 @@ export const CHARACTER_GIFT_PREFERENCES = [
     ],
   },
   {
+    id: 'korabi',
+    name: 'Korabi',
+    rarity: 'EX',
+    image: '/images/games/horizon-walker/characters/Korabi.jpg',
+    level5Bonus: {
+      type: 'Crit DMG',
+      value: '16%',
+    },
+    favorites: [
+      {
+        id: 'a-single-rose',
+        name: 'A Single Rose',
+        rarity: 'B',
+        image: '/images/games/horizon-walker/Gifts/A_Single_Rose.jpg',
+        basePoints: 10,
+        bonusPoints: 20,
+        totalPoints: 30,
+      },
+    ],
+    likes: [
+      {
+        id: 'snow-globe',
+        name: 'Snow Globe',
+        rarity: 'A',
+        image: '/images/games/horizon-walker/Gifts/Snow_Globe.jpg',
+        basePoints: 20,
+        bonusPoints: 10,
+        totalPoints: 30,
+      },
+      {
+        id: 'antique-music-box',
+        name: 'Antique Music Box',
+        rarity: 'S',
+        image: '/images/games/horizon-walker/Gifts/Antique_Music_Box.jpg',
+        basePoints: 30,
+        bonusPoints: 10,
+        totalPoints: 40,
+      },
+    ],
+  },
+  {
     id: 'lisandria',
     name: 'Lisandria',
     rarity: 'SS',
