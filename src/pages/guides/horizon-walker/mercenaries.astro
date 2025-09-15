@@ -1,0 +1,251 @@
+---
+import { Image } from 'astro:assets';
+import MercenaryLayout from '../../../layouts/horizon-walker/MercenaryLayout.astro';
+import Breadcrumb from '../../../components/horizon-walker/Breadcrumb.astro';
+import {
+  HORIZON_WALKER_MERCENARIES,
+  mercenaryGameInfo,
+} from '../../../data/horizon-walker/mercenaries.js';
+
+// Extract filter options from enhanced data structure
+const { rarities } = mercenaryGameInfo;
+
+// Breadcrumb data for SEO
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
+  { name: 'Mercenaries' },
+];
+
+// Calculate enhanced stats for display
+const totalMercenaries = HORIZON_WALKER_MERCENARIES.length;
+const exCount = HORIZON_WALKER_MERCENARIES.filter(merc => merc.rarity === 'EX').length;
+const ssCount = HORIZON_WALKER_MERCENARIES.filter(merc => merc.rarity === 'SS').length;
+const sCount = HORIZON_WALKER_MERCENARIES.filter(merc => merc.rarity === 'S').length;
+const aCount = HORIZON_WALKER_MERCENARIES.filter(merc => merc.rarity === 'A').length;
+const bCount = HORIZON_WALKER_MERCENARIES.filter(merc => merc.rarity === 'B').length;
+
+// SEO metadata
+const title = 'Horizon Walker Mercenaries Database - All General Trait Units List 2025 | GachaWiki';
+const description = `Explore all ${totalMercenaries} Horizon Walker mercenaries including ${exCount} EX, ${ssCount} SS, ${sCount} S, ${aCount} A, ${bCount} B rarity units. Complete database with stats and deployment costs. Advanced filtering and mobile-optimized interface.`;
+
+export const prerender = true;
+---
+
+<MercenaryLayout title={title} description={description} gameTitle="Mercenaries Database">
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="hw-char-db-page-flex">
+    <div class="hw-char-db-main-content">
+      <div class="hw-char-db-content-wrapper">
+        <!-- Header with stats info -->
+        <div class="hw-character-database-header">
+          <p class="hw-character-database-title">Mercenaries Database</p>
+          <p class="hw-character-database-subtitle">
+            All stats shown at max level (Level 60) - General trait units
+          </p>
+          <p class="hw-character-database-note">
+            Mercenaries are good sources of general traits since you can transform them to other
+            characters.
+          </p>
+          <div class="hw-char-db-stats-summary">
+            <span class="hw-badge" data-rarity="EX">{exCount} EX</span>
+            <span class="hw-badge" data-rarity="SS">{ssCount} SS</span>
+            <span class="hw-badge" data-rarity="S">{sCount} S</span>
+            <span class="hw-badge" data-rarity="A">{aCount} A</span>
+            <span class="hw-badge" data-rarity="B">{bCount} B</span>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-controls">
+            <select class="filter-select" id="rarity-filter">
+              <option value="">Rarity</option>
+              {rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
+            </select>
+          </div>
+          <div class="sort-controls">
+            <button class="sort-btn" data-sort="rarity">Rarity</button>
+            <button class="sort-btn" data-sort="cost">Cost</button>
+            <button class="sort-btn" data-sort="strength">STR</button>
+            <button class="sort-btn" data-sort="intelligence">INT</button>
+            <button class="sort-btn" data-sort="vitality">VIT</button>
+            <button class="sort-btn" data-sort="agility">AGI</button>
+            <button class="sort-btn" data-sort="technic">TEC</button>
+            <button class="reset-btn" id="reset-table">Reset</button>
+          </div>
+        </div>
+
+        <!-- Desktop table container with touch optimizations -->
+        <div class="character-table-container">
+          <table class="character-table" id="character-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Rarity</th>
+                <th>Cost</th>
+                <th>STR</th>
+                <th>INT</th>
+                <th>VIT</th>
+                <th>AGI</th>
+                <th>TEC</th>
+              </tr>
+            </thead>
+            <tbody id="character-table-body">
+              {
+                HORIZON_WALKER_MERCENARIES.map((mercenary, idx) => (
+                  <tr
+                    data-character-id={mercenary.id}
+                    data-url={mercenary.detailUrl}
+                    data-name={mercenary.name}
+                    data-rarity={mercenary.rarity}
+                    data-tags={mercenary.tags ? mercenary.tags.join(', ') : ''}
+                    class="clickable-row"
+                  >
+                    <td>{idx + 1}</td>
+                    <td>
+                      <div class="desktop-character-image">
+                        <Image
+                          src={mercenary.image}
+                          alt={mercenary.name}
+                          class="character-img"
+                          width={80}
+                          height={80}
+                          loading="lazy"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <span class="character-name">{mercenary.name}</span>
+                    </td>
+                    <td>
+                      <span class="hw-badge" data-rarity={mercenary.rarity} data-sort-key="rarity">
+                        {mercenary.rarity}
+                      </span>
+                    </td>
+                    <td data-sort-key="cost">
+                      <span class="cost-value">{mercenary.cost}</span>
+                    </td>
+                    <td data-sort-key="strength">
+                      <span class="stat-value">{mercenary.stats.strength}</span>
+                    </td>
+                    <td data-sort-key="intelligence">
+                      <span class="stat-value">{mercenary.stats.intelligence}</span>
+                    </td>
+                    <td data-sort-key="vitality">
+                      <span class="stat-value">{mercenary.stats.vitality}</span>
+                    </td>
+                    <td data-sort-key="agility">
+                      <span class="stat-value">{mercenary.stats.agility}</span>
+                    </td>
+                    <td data-sort-key="technic">
+                      <span class="stat-value">{mercenary.stats.technic}</span>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile card view container with touch optimization -->
+        <div class="mobile-card-view" id="mobile-cards-container">
+          {
+            HORIZON_WALKER_MERCENARIES.map(mercenary => (
+              <div
+                class="mobile-character-card"
+                data-character-id={mercenary.id}
+                data-slug={mercenary.slug}
+                data-url={mercenary.detailUrl}
+                data-name={mercenary.name}
+                data-rarity={mercenary.rarity}
+                data-tags={mercenary.tags ? mercenary.tags.join(', ') : ''}
+                style="cursor:pointer; touch-action: manipulation;"
+              >
+                {/* Clean header section - image, name, rarity all together */}
+                <div class="mobile-card-header">
+                  <div class="mobile-card-image">
+                    <div class="mobile-character-image">
+                      <img
+                        src={mercenary.image}
+                        alt={mercenary.name}
+                        class="character-img"
+                        width="64"
+                        height="64"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <div class="mobile-card-info">
+                    <h3 class="character-name">{mercenary.name}</h3>
+                    <div class="header-badges">
+                      <span class="hw-badge" data-rarity={mercenary.rarity}>
+                        {mercenary.rarity}
+                      </span>
+                      <span class="cost-badge" data-type="Cost">
+                        Cost: {mercenary.cost}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Clean stats grid - combat stats */}
+                <div class="mobile-card-stats-grid">
+                  <div class="stat-item">
+                    <span class="stat-label">STR</span>
+                    <span class="stat-value" data-stat="strength">
+                      {mercenary.stats.strength}
+                    </span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">INT</span>
+                    <span class="stat-value" data-stat="intelligence">
+                      {mercenary.stats.intelligence}
+                    </span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">VIT</span>
+                    <span class="stat-value" data-stat="vitality">
+                      {mercenary.stats.vitality}
+                    </span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">AGI</span>
+                    <span class="stat-value" data-stat="agility">
+                      {mercenary.stats.agility}
+                    </span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">TEC</span>
+                    <span class="stat-value" data-stat="technic">
+                      {mercenary.stats.technic}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Gameplay Tags */}
+                {mercenary.tags && mercenary.tags.length > 0 && (
+                  <div class="mobile-card-tags">
+                    <div class="tags-label">Tags:</div>
+                    <div class="tags-container">
+                      {mercenary.tags.map(tag => (
+                        <span class="character-tag general">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Load the character database script with sorting and filtering functionality -->
+  <script src="/scripts/horizon-walker/mercenary-database.js" defer></script>
+</MercenaryLayout>

@@ -1,0 +1,439 @@
+---
+import { Image } from 'astro:assets';
+import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+
+interface MercenaryStats {
+  strength: number;
+  technic: number;
+  intelligence: number;
+  vitality: number;
+  agility: number;
+  meleeAtk: number;
+  rangedAtk: number;
+  magicAtk: number;
+  maxHp: number;
+  spd: number;
+  startingAp: number;
+  apRecovery: number;
+  accuracy: number;
+  evade: number;
+  critRate: number;
+  critDmg: number;
+  slashBoost: number;
+  slashDef: number;
+  pierceBoost: number;
+  pierceDef: number;
+  crushBoost: number;
+  crushDef: number;
+  heatBoost: number;
+  heatDef: number;
+  coldBoost: number;
+  coldDef: number;
+  electricBoost: number;
+  electricDef: number;
+  immaterialBoost: number;
+  immaterialDef: number;
+  poisonBoost: number;
+  poisonDef: number;
+  blockRate: number;
+}
+
+export interface Props {
+  mercenaryData: any;
+}
+
+const { mercenaryData } = Astro.props;
+
+// Breadcrumb data
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
+  { name: 'Mercenaries', href: '/guides/horizon-walker/mercenaries/' },
+  { name: mercenaryData.name },
+];
+
+// Helper function to format stats
+const formatStat = (value) => {
+  if (value === null || value === undefined) {
+    return '0';
+  }
+  if (typeof value === 'number') {
+    return value.toString();
+  }
+  return value.toString() || '0';
+};
+
+// Helper function to create mercenary description
+function getMercenaryDescription(usage: any): string {
+  if (!usage || !usage.primaryRole || typeof usage.primaryRole !== 'string') {
+    return 'A skilled mercenary ready to support the team.';
+  }
+
+  // Take first 150 characters at word boundary
+  const description = usage.primaryRole;
+  if (description.length <= 150) {
+    return description;
+  }
+
+  const truncated = description.substring(0, 150);
+  const lastSpace = truncated.lastIndexOf(' ');
+  return lastSpace > 0 ? truncated.substring(0, lastSpace) + '...' : truncated + '...';
+}
+
+// Helper function to get tag class based on tag content
+function getTagClass(tag: string): string {
+  const lowerTag = tag.toLowerCase();
+
+  // Team utility tags (support, buffs, team benefits)
+  if (lowerTag.includes('support') || lowerTag.includes('team') || lowerTag.includes('buff') ||
+      lowerTag.includes('ap recovery') || lowerTag.includes('hp recovery') ||
+      lowerTag.includes('trait') || lowerTag.includes('general')) {
+    return 'team-utility';
+  }
+
+  // Damage/offensive tags
+  if (lowerTag.includes('damage') || lowerTag.includes('charge') || lowerTag.includes('attack') ||
+      lowerTag.includes('offensive')) {
+    return 'damage-scaling';
+  }
+
+  // Self utility tags (defense, self-sustain, personal benefits)
+  if (lowerTag.includes('defense') || lowerTag.includes('self') || lowerTag.includes('machine') ||
+      lowerTag.includes('sustain') || lowerTag.includes('survival')) {
+    return 'self-utility';
+  }
+
+  // Default to team-utility
+  return 'team-utility';
+}
+---
+
+<Breadcrumb items={breadcrumbs} />
+
+<!-- Mercenary Header & Overview -->
+<section class="content-section character-overview-section">
+  <h2 class="section-title character-overview-title">Mercenary Overview</h2>
+  <div class="character-overview-flex">
+    <!-- Hero Card (Left) -->
+    <div class="character-hero-card">
+      <div class="character-hero-container">
+        <div class="character-portrait-container">
+          <Image
+            src={mercenaryData.image}
+            alt={`${mercenaryData.name} - ${mercenaryData.rarity} rarity mercenary from Horizon Walker`}
+            width={300}
+            height={300}
+            loading="eager"
+            class="character-portrait"
+          />
+        </div>
+        <h1 class="character-name">
+          {mercenaryData.name}
+        </h1>
+        <p class="character-description">
+          {getMercenaryDescription(mercenaryData.usage)}
+        </p>
+      </div>
+
+      <!-- Mercenary Info -->
+      <div class="character-info-card">
+        <div class="character-info-grid">
+          <div class="character-info-item">
+            <div class="character-info-label">Rarity</div>
+            <span class="hw-badge" data-rarity={mercenaryData.rarity}>
+              {mercenaryData.rarity}
+            </span>
+          </div>
+          <div class="character-info-item">
+            <div class="character-info-label">Deployment Cost</div>
+            <span class="hw-badge" data-type="Cost">{mercenaryData.cost}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Complete Stats Box (Right) -->
+    <div class="character-stats-container">
+      <div class="character-stats-box">
+        <!-- Base Stats -->
+        <h3 class="character-stats-title">Base Stats</h3>
+        <p class="character-stats-explanation">Stats shown at max level</p>
+
+        <!-- Core Stats -->
+        <h4 class="character-stats-subtitle">Core Stats</h4>
+
+        <!-- Core Stats Explanation -->
+        <div class="core-stats-explanation">
+          <div class="stat-explanation-grid">
+            <span><span class="stat-name">Strength:</span> <span class="stat-description">Increases Melee ATK</span></span>
+            <span><span class="stat-name">Technic:</span> <span class="stat-description">Increases Ranged ATK</span></span>
+            <span><span class="stat-name">Intelligence:</span> <span class="stat-description">Increases Magic ATK</span></span>
+            <span><span class="stat-name">Vitality:</span> <span class="stat-description">Increases Max HP</span></span>
+            <span><span class="stat-name">Agility:</span> <span class="stat-description">Increases evasion and AP Recovery</span></span>
+          </div>
+        </div>
+
+        <div class="character-stats-grid core-stats">
+          <div class="stat-item">
+            <div class="stat-label">Strength</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.strength)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Technic</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.technic)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Intelligence</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.intelligence)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Vitality</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.vitality)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Agility</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.agility)}</div>
+          </div>
+        </div>
+
+        <!-- Core Combat Stats -->
+        <h4 class="character-stats-subtitle">Core Combat Stats</h4>
+        <div class="character-stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">Max HP</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.maxHp)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Magic ATK</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.magicAtk)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Ranged ATK</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.rangedAtk)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Melee ATK</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.meleeAtk)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Speed</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.spd)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Starting AP</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.startingAp)}</div>
+          </div>
+        </div>
+
+        <!-- Key Stats -->
+        <h4 class="character-stats-subtitle">Key Stats</h4>
+        <div class="character-stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">Melee ATK</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.meleeAtk)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Ranged ATK</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.rangedAtk)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Magic ATK</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.magicAtk)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Max HP</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.maxHp)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">SPD</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.spd)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Starting AP</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.startingAp)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">AP Recovery</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.apRecovery)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Accuracy</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.accuracy)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Evade</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.evade)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Crit Rate</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.critRate)}%</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Crit DMG</div>
+            <div class="stat-value">{formatStat(mercenaryData.stats.critDmg)}%</div>
+          </div>
+        </div>
+
+        <!-- Attribute Stats -->
+        <h4 class="character-stats-subtitle">Attribute Stats</h4>
+        <div class="character-stats-grid additional-stats">
+          <div class="stat-item">
+            <div class="stat-label small">Slash Boost</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.slashBoost)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Slash DEF</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.slashDef)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Pierce Boost</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.pierceBoost)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Pierce DEF</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.pierceDef)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Crush Boost</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.crushBoost)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Crush DEF</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.crushDef)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Heat Boost</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.heatBoost)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Heat DEF</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.heatDef)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Cold Boost</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.coldBoost)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Cold DEF</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.coldDef)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Electric Boost</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.electricBoost)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Electric DEF</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.electricDef)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Immaterial Boost</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.immaterialBoost)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Immaterial DEF</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.immaterialDef)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Poison Boost</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.poisonBoost)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Poison DEF</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.poisonDef)}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label small">Block Rate</div>
+            <div class="stat-value small">{formatStat(mercenaryData.stats.blockRate)}</div>
+          </div>
+        </div>
+
+        <!-- Mercenary Tags Section -->
+        {mercenaryData.tags && mercenaryData.tags.length > 0 && (
+          <div class="character-tags-container">
+            <div class="character-tags-label">Mercenary Tags</div>
+            <div class="character-tags-wrapper">
+              {mercenaryData.tags.map((tag) => (
+                <span class={`character-tag ${getTagClass(tag)}`}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section class="content-section skills-section">
+  <h2 class="section-title">Skills</h2>
+  <p class="skills-explanation">All skills shown at maximum level</p>
+
+  {mercenaryData.skills && mercenaryData.skills.map((skill) => (
+    <div class={`skill-card ${skill.type === 'Passive' ? 'passive-skill' : ''}`}>
+      <div class="skill-header">
+        <h3 class="skill-title">{skill.name}</h3>
+        <div class="skill-meta">
+          <span class="hw-badge" data-type={skill.type === 'Passive' ? 'Passive' : 'Skill'}>
+            {skill.type === 'Passive' ? 'Passive' : 'Skill'}
+          </span>
+          {skill.level && (
+            <span class="skill-level">Level: {skill.level}</span>
+          )}
+          {skill.apCost && skill.apCost > 0 && (
+            <span class="skill-cost">AP Cost: {skill.apCost}</span>
+          )}
+          {skill.cooldown && skill.cooldown !== '0R' && (
+            <span class="skill-cooldown">Cooldown: {skill.cooldown}</span>
+          )}
+        </div>
+      </div>
+      <p class="skill-description">{skill.description}</p>
+      {skill.damage && (
+        <div class="skill-damage">
+          <span class="damage-label">Damage:</span>
+          <span class="damage-value">{skill.damage}</span>
+        </div>
+      )}
+      {skill.tags && skill.tags.length > 0 && (
+        <div class="skill-tags">
+          {skill.tags.map((tag) => (
+            <span class="skill-tag">{tag}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  ))}
+</section>
+
+<!-- Unique Traits Section -->
+{mercenaryData.traits && (
+  <section class="content-section traits-section">
+    <h2 class="section-title">Unique Traits</h2>
+    <div class="trait-system-note">
+      <strong>Trait System:</strong> Unique and general traits can be obtained randomly in mercenaries. General traits only can be moved or removed. You want to get good unique traits for your mercenaries! Some mercenaries have 1 or more fixed unique traits.
+    </div>
+
+    {mercenaryData.traits.map((trait) => (
+      <div class="trait-card">
+        <div class="trait-header">
+          <h3 class="trait-title">{trait.name}</h3>
+          <span class="hw-badge" data-type="Trait">
+            {trait.type}
+          </span>
+        </div>
+        <p class="trait-description">{trait.description}</p>
+        {trait.characteristics && (
+          <div class="trait-characteristics">
+            <strong>Characteristics:</strong> {trait.characteristics}
+          </div>
+        )}
+        {trait.notes && (
+          <div class="trait-notes">
+            <em>Note: {trait.notes}</em>
+          </div>
+        )}
+      </div>
+    ))}
+  </section>
+)}
+

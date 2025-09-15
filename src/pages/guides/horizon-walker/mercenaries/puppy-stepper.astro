@@ -1,0 +1,16 @@
+---
+import MercenaryIndividualLayout from '../../../../layouts/horizon-walker/MercenaryIndividualLayout.astro';
+import MercenaryPageTemplate from '../../../../templates/horizon-walker/MercenaryPageTemplate.astro';
+import { puppyStepperMercenary } from '../../../../data/horizon-walker/mercenaries/puppy-stepper.js';
+
+export const prerender = true;
+---
+
+<MercenaryIndividualLayout
+  title={puppyStepperMercenary.seo.title}
+  description={puppyStepperMercenary.seo.description}
+  gameTitle={puppyStepperMercenary.name}
+  mercenary={puppyStepperMercenary}
+>
+  <MercenaryPageTemplate mercenaryData={puppyStepperMercenary} />
+</MercenaryIndividualLayout>

@@ -117,6 +117,11 @@ export const horizonWalkerConfig = {
           title: 'Database',
           url: '/guides/horizon-walker/characters/',
         },
+        {
+          id: 'mercenaries',
+          title: 'Mercenaries',
+          url: '/guides/horizon-walker/mercenaries/',
+        },
       ],
     },
     {

@@ -122,7 +122,10 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     sections: [
       {
         title: 'Characters',
-        links: [{ name: 'Database', href: '/guides/horizon-walker/characters/' }],
+        links: [
+          { name: 'Database', href: '/guides/horizon-walker/characters/' },
+          { name: 'Mercenaries', href: '/guides/horizon-walker/mercenaries/' },
+        ],
       },
       {
         title: 'Game Mechanics',
