@@ -18,6 +18,18 @@
 }
 /* ===== END GLOBAL OVERRIDES ===== */
 
+/* ===== STAGE TAB HIGHLIGHTING ===== */
+.stage-tab.active {
+  border-color: var(--sab-calm-red) !important;
+  background: rgba(220, 53, 69, 0.1) !important;
+  color: var(--sab-calm-red) !important;
+}
+
+.stage-tab:hover {
+  border-color: var(--sab-text-light);
+}
+/* ===== END STAGE TAB HIGHLIGHTING ===== */
+
 /* ===== MAIN CONTENT SECTIONS ===== */
 .content-section {
   margin-bottom: 2.5rem;
