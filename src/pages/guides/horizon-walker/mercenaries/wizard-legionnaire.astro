@@ -1,0 +1,16 @@
+---
+import MercenaryIndividualLayout from '../../../../layouts/horizon-walker/MercenaryIndividualLayout.astro';
+import MercenaryPageTemplate from '../../../../templates/horizon-walker/MercenaryPageTemplate.astro';
+import { wizardLegionnaireMercenary } from '../../../../data/horizon-walker/mercenaries/wizard-legionnaire.js';
+
+export const prerender = true;
+---
+
+<MercenaryIndividualLayout
+  title={wizardLegionnaireMercenary.seo.title}
+  description={wizardLegionnaireMercenary.seo.description}
+  gameTitle={wizardLegionnaireMercenary.name}
+  mercenary={wizardLegionnaireMercenary}
+>
+  <MercenaryPageTemplate mercenaryData={wizardLegionnaireMercenary} />
+</MercenaryIndividualLayout>

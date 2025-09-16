@@ -347,9 +347,9 @@ const initialize = () => {
           // Update visual indicator in button text
           const baseText = activeButton.textContent.replace(/ [↑↓]$/, '');
           if (currentSortDirection === 'desc') {
-            activeButton.textContent = baseText + ' ↓'; // Highest first
+            activeButton.textContent = baseText + ' ↑'; // Highest first
           } else if (currentSortDirection === 'asc') {
-            activeButton.textContent = baseText + ' ↑'; // Lowest first
+            activeButton.textContent = baseText + ' ↓'; // Lowest first
           }
 
           applySort(currentSortKey);
@@ -400,9 +400,9 @@ const initialize = () => {
       const existingIndicator = sortButton.textContent.match(/ [↑↓]$/);
       const baseText = sortButton.textContent.replace(/ [↑↓]$/, '');
       if (nextState === 'desc') {
-        sortButton.textContent = baseText + ' ↓'; // Highest first
+        sortButton.textContent = baseText + ' ↑'; // Highest first
       } else if (nextState === 'asc') {
-        sortButton.textContent = baseText + ' ↑'; // Lowest first
+        sortButton.textContent = baseText + ' ↓'; // Lowest first
       }
     } else {
       sortButton.classList.remove('active');

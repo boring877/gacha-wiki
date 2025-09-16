@@ -642,4 +642,71 @@
       padding: 1rem;
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════════════════ */
+  /*                        DUAL CLASS SKILL HIGHLIGHTING                     */
+  /* ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Highlight class-specific skills with red background */
+  .skill-description:has-text('[SWAMP TYRANT CLASS]'),
+  .skill-description:has-text('[SWAMP PREDATOR CLASS]') {
+    background: rgba(255, 59, 59, 0.1);
+    border-left: 4px solid #ff3b3b;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+
+  /* Alternative approach using contains for better browser support */
+  .skill-description {
+    &:is(:contains('[SWAMP TYRANT CLASS]'), :contains('[SWAMP PREDATOR CLASS]')) {
+      background: linear-gradient(135deg, rgba(255, 59, 59, 0.08) 0%, rgba(255, 59, 59, 0.12) 100%);
+      border-left: 4px solid #ff3b3b;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      position: relative;
+    }
+
+    &:is(:contains('[SWAMP TYRANT CLASS]'), :contains('[SWAMP PREDATOR CLASS]'))::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #ff3b3b 0%, rgba(255, 59, 59, 0.3) 100%);
+      border-radius: 8px 8px 0 0;
+    }
+  }
+
+  /* Fallback using JavaScript-detectable classes */
+  .skill-card.class-skill .skill-description {
+    background: linear-gradient(135deg, rgba(255, 59, 59, 0.08) 0%, rgba(255, 59, 59, 0.12) 100%);
+    border-left: 4px solid #ff3b3b;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    position: relative;
+  }
+
+  .skill-card.class-skill .skill-description::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff3b3b 0%, rgba(255, 59, 59, 0.3) 100%);
+    border-radius: 8px 8px 0 0;
+  }
+
+  /* Base skill highlighting with subtle blue */
+  .skill-card.base-skill .skill-description {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.08) 100%);
+    border-left: 4px solid rgba(59, 130, 246, 0.4);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
 }

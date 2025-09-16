@@ -7,9 +7,31 @@
 
 // Import mercenary data
 import { puppyStepperMercenary } from './mercenaries/puppy-stepper.js';
+import { puppyShooterMercenary } from './mercenaries/puppy-shooter.js';
+import { imperialShieldbearerMercenary } from './mercenaries/imperial-shieldbearer.js';
+import { grrikMercenary } from './mercenaries/grrik.js';
+import { koboldMercenary } from './mercenaries/koblod.js';
+import { goliathMercenary } from './mercenaries/goliath.js';
+import { swampElfVigilanteMercenary } from './mercenaries/swamp-elf-vigilante.js';
+import { warMercenaryMercenary } from './mercenaries/war-mercenary.js';
+import { tortaWarriorMercenary } from './mercenaries/torta-warrior.js';
+import { splitTwigsPriestMercenary } from './mercenaries/split-twigs-priest.js';
+import { wizardLegionnaireMercenary } from './mercenaries/wizard-legionnaire.js';
 
 // Main mercenaries database array
-export const HORIZON_WALKER_MERCENARIES = [puppyStepperMercenary];
+export const HORIZON_WALKER_MERCENARIES = [
+  puppyStepperMercenary,
+  puppyShooterMercenary,
+  imperialShieldbearerMercenary,
+  grrikMercenary,
+  koboldMercenary,
+  goliathMercenary,
+  swampElfVigilanteMercenary,
+  warMercenaryMercenary,
+  tortaWarriorMercenary,
+  splitTwigsPriestMercenary,
+  wizardLegionnaireMercenary,
+];
 
 // Utility functions
 export const getMercenaryBySlug = slug => {
@@ -27,7 +49,7 @@ export const getMercenariesByRarity = rarity => {
 // Game information for mercenaries
 export const mercenaryGameInfo = {
   name: 'Horizon Walker Mercenaries',
-  description: 'Mercenaries with general traits or limited useability',
+  description: 'Mercenaries with general traits for trait farming and support',
   maxLevel: 50,
   rarities: ['EX', 'SS', 'S', 'A', 'B'],
 };

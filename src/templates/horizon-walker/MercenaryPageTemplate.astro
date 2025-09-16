@@ -369,7 +369,7 @@ function getTagClass(tag: string): string {
   <p class="skills-explanation">All skills shown at maximum level</p>
 
   {mercenaryData.skills && mercenaryData.skills.map((skill) => (
-    <div class={`skill-card ${skill.type === 'Passive' ? 'passive-skill' : ''}`}>
+    <div class={`skill-card ${skill.type === 'Passive' ? 'passive-skill' : ''} ${skill.skillClass || ''}`}>
       <div class="skill-header">
         <h3 class="skill-title">{skill.name}</h3>
         <div class="skill-meta">

@@ -1,0 +1,16 @@
+---
+import MercenaryIndividualLayout from '../../../../layouts/horizon-walker/MercenaryIndividualLayout.astro';
+import MercenaryPageTemplate from '../../../../templates/horizon-walker/MercenaryPageTemplate.astro';
+import { imperialShieldbearerMercenary } from '../../../../data/horizon-walker/mercenaries/imperial-shieldbearer.js';
+
+export const prerender = true;
+---
+
+<MercenaryIndividualLayout
+  title={imperialShieldbearerMercenary.seo.title}
+  description={imperialShieldbearerMercenary.seo.description}
+  gameTitle={imperialShieldbearerMercenary.name}
+  mercenary={imperialShieldbearerMercenary}
+>
+  <MercenaryPageTemplate mercenaryData={imperialShieldbearerMercenary} />
+</MercenaryIndividualLayout>

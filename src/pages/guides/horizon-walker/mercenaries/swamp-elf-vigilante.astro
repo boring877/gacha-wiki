@@ -1,0 +1,16 @@
+---
+import MercenaryIndividualLayout from '../../../../layouts/horizon-walker/MercenaryIndividualLayout.astro';
+import MercenaryPageTemplate from '../../../../templates/horizon-walker/MercenaryPageTemplate.astro';
+import { swampElfVigilanteMercenary } from '../../../../data/horizon-walker/mercenaries/swamp-elf-vigilante.js';
+
+export const prerender = true;
+---
+
+<MercenaryIndividualLayout
+  title={swampElfVigilanteMercenary.seo.title}
+  description={swampElfVigilanteMercenary.seo.description}
+  gameTitle={swampElfVigilanteMercenary.name}
+  mercenary={swampElfVigilanteMercenary}
+>
+  <MercenaryPageTemplate mercenaryData={swampElfVigilanteMercenary} />
+</MercenaryIndividualLayout>

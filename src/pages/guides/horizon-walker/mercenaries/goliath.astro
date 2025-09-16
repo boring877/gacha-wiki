@@ -1,0 +1,16 @@
+---
+import MercenaryIndividualLayout from '../../../../layouts/horizon-walker/MercenaryIndividualLayout.astro';
+import MercenaryPageTemplate from '../../../../templates/horizon-walker/MercenaryPageTemplate.astro';
+import { goliathMercenary } from '../../../../data/horizon-walker/mercenaries/goliath.js';
+
+export const prerender = true;
+---
+
+<MercenaryIndividualLayout
+  title={goliathMercenary.seo.title}
+  description={goliathMercenary.seo.description}
+  gameTitle={goliathMercenary.name}
+  mercenary={goliathMercenary}
+>
+  <MercenaryPageTemplate mercenaryData={goliathMercenary} />
+</MercenaryIndividualLayout>

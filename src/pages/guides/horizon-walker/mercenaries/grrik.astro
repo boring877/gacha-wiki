@@ -1,0 +1,16 @@
+---
+import MercenaryIndividualLayout from '../../../../layouts/horizon-walker/MercenaryIndividualLayout.astro';
+import MercenaryPageTemplate from '../../../../templates/horizon-walker/MercenaryPageTemplate.astro';
+import { grrikMercenary } from '../../../../data/horizon-walker/mercenaries/grrik.js';
+
+export const prerender = true;
+---
+
+<MercenaryIndividualLayout
+  title={grrikMercenary.seo.title}
+  description={grrikMercenary.seo.description}
+  gameTitle={grrikMercenary.name}
+  mercenary={grrikMercenary}
+>
+  <MercenaryPageTemplate mercenaryData={grrikMercenary} />
+</MercenaryIndividualLayout>
