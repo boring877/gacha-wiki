@@ -413,12 +413,12 @@ function getTagClass(tag: string): string {
       <strong>Trait System:</strong> Unique and general traits can be obtained randomly in mercenaries. General traits only can be moved or removed. You want to get good unique traits for your mercenaries! Some mercenaries have 1 or more fixed unique traits.
     </div>
 
-    {mercenaryData.traits.map((trait) => (
+    {Object.values(mercenaryData.traits || {}).map((trait) => (
       <div class="trait-card">
         <div class="trait-header">
           <h3 class="trait-title">{trait.name}</h3>
           <span class="hw-badge" data-type="Trait">
-            {trait.type}
+            Trait
           </span>
         </div>
         <p class="trait-description">{trait.description}</p>
