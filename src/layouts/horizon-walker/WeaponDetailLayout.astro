@@ -1,0 +1,303 @@
+---
+import { Image } from 'astro:assets';
+import HWBaseHead from '../../components/horizon-walker/HWBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+
+// Import CSS files properly
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-colors.css';
+import '../../styles/games/horizon-walker/hw-layout.css';
+import '../../styles/games/horizon-walker/hw-badges.css';
+import '../../styles/games/horizon-walker/hw-weapon-detail.css';
+
+export interface Props {
+  weapon: any; // The weapon object
+  navigation: {
+    prev: { name: string; url: string } | null;
+    next: { name: string; url: string } | null;
+  };
+}
+
+const { weapon, navigation } = Astro.props;
+
+// Generate metadata
+const title = `${weapon.name} - ${weapon.character.name}'s Weapon | Horizon Walker Wiki`;
+const description = `Complete guide for ${weapon.name}, the exclusive ${weapon.rarity} weapon for ${weapon.character.name} in Horizon Walker. View stats, unique skills, and weapon details.`;
+
+// Breadcrumb navigation
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
+  { name: 'Weapons', href: '/guides/horizon-walker/weapons/' },
+  { name: weapon.name },
+];
+---
+
+<html lang="en">
+  <head>
+    <HWBaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="horizon-walker"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'horizon walker weapon',
+        'horizon walker ex weapon',
+        `horizon walker ${weapon.name}`,
+        'horizon walker weapon guide',
+        'horizon walker weapon stats',
+        'horizon walker weapon skills',
+      ]}
+    />
+  </head>
+  <body class="horizon-walker-body">
+    <CustomScrollbar />
+
+    <!-- Optimized Background layers for better scroll performance -->
+    <div class="bg-layer hw-bg-primary"></div>
+    <div class="bg-layer hw-bg-accent-1"></div>
+    <div class="bg-layer hw-bg-accent-2"></div>
+
+    <div class="horizon-walker-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="horizon-walker" />
+      <MobileMenu />
+
+      <div class="horizon-walker-container">
+        <main class="horizon-walker-main" id="main-content">
+          <!-- Weapon Detail Hero Section -->
+          <section class="hw-char-db-hero-section">
+            <!-- Page Title -->
+            <h1 class="hw-char-db-hero-title">Weapon Details</h1>
+
+            <!-- Subtitle -->
+            <p class="hw-char-db-hero-subtitle">EX Weapon Information</p>
+
+            <DecorativeLines />
+          </section>
+
+          <!-- Content Area -->
+          <div class="hw-char-db-content-area">
+            <Breadcrumb items={breadcrumbs} />
+
+            <div class="weapon-detail-container">
+              <section class="weapon-hero">
+                <div class="weapon-hero-content">
+                  <div class="weapon-hero-image">
+                    <Image src={weapon.image} alt={weapon.name} width={200} height={200} />
+                  </div>
+
+                  <div class="weapon-hero-info">
+                    <h1 class="weapon-detail-name">{weapon.name}</h1>
+                    <p class="weapon-detail-type">
+                      {weapon.type} • <span class="hw-badge" data-rarity={weapon.rarity}
+                        >{weapon.rarity}</span
+                      >
+                    </p>
+
+                    <div class="weapon-detail-character">
+                      <span class="weapon-detail-character-label">Weapon For</span>
+                      <span class="weapon-detail-character-name">{weapon.character.name}</span>
+                      <a
+                        href={`/guides/horizon-walker/characters/${weapon.character.slug}/`}
+                        class="weapon-detail-character-link"
+                      >
+                        View Character →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <div class="weapon-content-grid">
+                <section class="weapon-stats-card">
+                  <h2 class="weapon-stats-title">Weapon Stats</h2>
+
+                  {
+                    Object.keys(weapon.stats).length > 0 ? (
+                      <div class="weapon-stats-list">
+                        {weapon.stats.weaponMeleeAtk && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Melee Attack</span>
+                            <span class="weapon-stat-value">{weapon.stats.weaponMeleeAtk}</span>
+                          </div>
+                        )}
+                        {weapon.stats.weaponRangedAtk && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Ranged Attack</span>
+                            <span class="weapon-stat-value">{weapon.stats.weaponRangedAtk}</span>
+                          </div>
+                        )}
+                        {weapon.stats.weaponMagicAtk && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Magic Attack</span>
+                            <span class="weapon-stat-value">{weapon.stats.weaponMagicAtk}</span>
+                          </div>
+                        )}
+                        {weapon.stats.meleeAtkBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Melee ATK Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.meleeAtkBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.rangedAtkBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Ranged ATK Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.rangedAtkBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.magicAtkBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Magic ATK Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.magicAtkBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.critRateBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Critical Rate Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.critRateBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.critDmgBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Critical DMG Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.critDmgBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.maxHpBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Max HP Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.maxHpBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.accuracyBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Accuracy Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.accuracyBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.evadeBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Evasion Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.evadeBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.spdBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Speed Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.spdBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.apRecoveryBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">AP Recovery Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.apRecoveryBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.startingApBonus && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Starting AP Bonus</span>
+                            <span class="weapon-stat-value">{weapon.stats.startingApBonus}</span>
+                          </div>
+                        )}
+                        {weapon.stats.slashBoost && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Slash Boost</span>
+                            <span class="weapon-stat-value">{weapon.stats.slashBoost}</span>
+                          </div>
+                        )}
+                        {weapon.stats.heatBoost && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Heat Boost</span>
+                            <span class="weapon-stat-value">{weapon.stats.heatBoost}</span>
+                          </div>
+                        )}
+                        {weapon.stats.coldBoost && (
+                          <div class="weapon-stat-row">
+                            <span class="weapon-stat-name">Cold Boost</span>
+                            <span class="weapon-stat-value">{weapon.stats.coldBoost}</span>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <p style="color: var(--hw-text-muted); font-style: italic;">
+                        No stat data available yet
+                      </p>
+                    )
+                  }
+                </section>
+
+                <section class="weapon-skills-card">
+                  <div class="weapon-skills-header">
+                    <h2 class="weapon-skills-title">Weapon Skills</h2>
+                  </div>
+
+                  {
+                    weapon.uniqueSkill && (
+                      <div class="weapon-skill-block">
+                        <div class="weapon-skill-header">
+                          <h3 class="weapon-skill-name">{weapon.uniqueSkill.name}</h3>
+                          <span class="weapon-skill-type weapon-skill-unique">Unique</span>
+                        </div>
+                        <p class="weapon-skill-description">{weapon.uniqueSkill.description}</p>
+                      </div>
+                    )
+                  }
+                  {
+                    weapon.signatureSkill && (
+                      <div class="weapon-skill-block">
+                        <div class="weapon-skill-header">
+                          <h3 class="weapon-skill-name">{weapon.signatureSkill.name}</h3>
+                          <span class="weapon-skill-type weapon-skill-signature">Signature</span>
+                        </div>
+                        <p class="weapon-skill-description">{weapon.signatureSkill.description}</p>
+                      </div>
+                    )
+                  }
+
+                  {
+                    !weapon.uniqueSkill && !weapon.signatureSkill && (
+                      <p style="color: var(--hw-text-muted); font-style: italic;">
+                        Skill information coming soon
+                      </p>
+                    )
+                  }
+                </section>
+              </div>
+
+              <nav class="weapon-nav">
+                {
+                  navigation.prev && (
+                    <a href={navigation.prev.url} class="weapon-nav-btn">
+                      ← Previous
+                    </a>
+                  )
+                }
+
+                <a href="/guides/horizon-walker/weapons/" class="weapon-nav-all"> All Weapons </a>
+
+                {
+                  navigation.next && (
+                    <a href={navigation.next.url} class="weapon-nav-btn">
+                      Next →
+                    </a>
+                  )
+                }
+              </nav>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

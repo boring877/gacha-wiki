@@ -1,0 +1,481 @@
+/* Horizon Walker Weapon Detail Page Styles */
+
+/* Hero Section Styles */
+.hw-char-db-hero-section {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+}
+
+.hw-char-db-hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--hw-text-light);
+  margin: 0 0 1rem 0;
+  background: linear-gradient(135deg, var(--hw-primary-warm), #ff7b7b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: var(--leading-tight);
+}
+
+.hw-char-db-hero-subtitle {
+  font-size: 1rem;
+  color: var(--hw-text-muted);
+  margin: 0 0 1.5rem 0;
+  font-family: var(--font-primary);
+  font-style: italic;
+}
+
+.hw-char-db-content-area {
+  width: 100%;
+}
+
+.weapon-detail-container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Weapon Hero Section */
+.weapon-hero {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-accent);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.weapon-hero-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.weapon-hero-image {
+  width: 200px;
+  height: 200px;
+  background: var(--hw-bg-darker);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--hw-border-accent);
+  flex-shrink: 0;
+}
+
+.weapon-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.weapon-hero-info {
+  flex: 1;
+}
+
+.weapon-detail-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--hw-primary-warm);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.weapon-detail-type {
+  font-size: 1.1rem;
+  color: var(--hw-text-muted);
+  margin: 0 0 1rem 0;
+}
+
+.weapon-detail-character {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--hw-bg-darker);
+  border-radius: 6px;
+  border: 1px solid var(--hw-border-muted);
+  margin-bottom: 1rem;
+}
+
+.weapon-detail-character-label {
+  font-size: 0.9rem;
+  color: var(--hw-text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.weapon-detail-character-name {
+  font-size: 1.1rem;
+  color: var(--hw-text-light);
+  font-weight: 500;
+}
+
+.weapon-detail-character-link {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background: var(--hw-primary-warm);
+  color: var(--hw-bg-dark);
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Weapon Content Grid */
+.weapon-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+/* Weapon Stats Section */
+.weapon-stats-card {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-accent);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.weapon-stats-title {
+  font-size: 1.25rem;
+  color: var(--hw-primary-warm);
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.weapon-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--hw-border-muted);
+}
+
+.weapon-stat-row:last-child {
+  border-bottom: none;
+}
+
+.weapon-stat-name {
+  font-size: 1rem;
+  color: var(--hw-text-light);
+}
+
+.weapon-stat-value {
+  font-size: 1.1rem;
+  color: var(--hw-primary-warm);
+  font-weight: 600;
+}
+
+/* Weapon Skills Section */
+.weapon-skills-card {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-accent);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.weapon-skills-header {
+  margin-bottom: 1.5rem;
+}
+
+.weapon-skills-title {
+  font-size: 1.25rem;
+  color: var(--hw-primary-warm);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.weapon-skill-block {
+  background: var(--hw-bg-darker);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: 6px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.weapon-skill-block:last-child {
+  margin-bottom: 0;
+}
+
+.weapon-skill-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.weapon-skill-name {
+  font-size: 1.15rem;
+  color: var(--hw-primary-warm);
+  font-weight: 600;
+  margin: 0;
+}
+
+.weapon-skill-type {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.weapon-skill-unique {
+  background: var(--hw-primary-warm);
+  color: var(--hw-bg-dark);
+}
+
+.weapon-skill-signature {
+  background: linear-gradient(135deg, #ff6b6b, var(--hw-primary-warm));
+  color: var(--hw-bg-dark);
+}
+
+.weapon-skill-description {
+  font-size: 1rem;
+  color: var(--hw-text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Navigation */
+.weapon-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: var(--hw-bg-dark);
+  border-radius: 8px;
+  border: 1px solid var(--hw-border-accent);
+}
+
+.weapon-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--hw-bg-darker);
+  color: var(--hw-text-light);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.weapon-nav-all {
+  padding: 0.5rem 1rem;
+  background: var(--hw-primary-warm);
+  color: var(--hw-bg-dark);
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Tablet Responsive (768px and below) */
+@media (max-width: 768px) {
+  .weapon-detail-container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .weapon-hero {
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .weapon-hero-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .weapon-hero-image {
+    width: 160px;
+    height: 160px;
+  }
+
+  .weapon-detail-name {
+    font-size: 1.75rem;
+  }
+
+  .weapon-detail-type {
+    font-size: 1rem;
+  }
+
+  .weapon-content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .weapon-detail-character {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .weapon-detail-character-link {
+    margin: 0.5rem 0 0 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    min-height: 48px; /* Touch target */
+  }
+
+  .weapon-stats-card,
+  .weapon-skills-card {
+    padding: 1.25rem;
+  }
+
+  .weapon-stat-row {
+    padding: 0.875rem 0;
+  }
+
+  .weapon-skill-block {
+    padding: 1rem;
+  }
+
+  .weapon-nav {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .weapon-nav-btn,
+  .weapon-nav-all {
+    min-height: 48px; /* Touch target */
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .weapon-nav-all {
+    order: -1;
+    width: 100%;
+  }
+
+  .weapon-nav-btn {
+    flex: 1;
+  }
+}
+
+/* Mobile Phone (480px and below) */
+@media (max-width: 480px) {
+  .hw-char-db-hero-section {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .hw-char-db-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hw-char-db-hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .weapon-detail-container {
+    padding: 0.75rem;
+  }
+
+  .weapon-hero {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .weapon-hero-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .weapon-detail-name {
+    font-size: 1.5rem;
+    word-break: break-word;
+  }
+
+  .weapon-detail-type {
+    font-size: 0.95rem;
+  }
+
+  .weapon-detail-character {
+    padding: 1rem;
+  }
+
+  .weapon-detail-character-label {
+    font-size: 0.8rem;
+  }
+
+  .weapon-detail-character-name {
+    font-size: 1rem;
+  }
+
+  .weapon-stats-card,
+  .weapon-skills-card {
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .weapon-stats-title,
+  .weapon-skills-title {
+    font-size: 1.1rem;
+  }
+
+  .weapon-stat-name {
+    font-size: 0.9rem;
+  }
+
+  .weapon-stat-value {
+    font-size: 1rem;
+  }
+
+  .weapon-skill-block {
+    padding: 0.875rem;
+  }
+
+  .weapon-skill-name {
+    font-size: 1rem;
+  }
+
+  .weapon-skill-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .weapon-nav {
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .weapon-nav-btn {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small Mobile (320px - 375px) */
+@media (max-width: 375px) {
+  .weapon-hero-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .weapon-detail-name {
+    font-size: 1.35rem;
+  }
+
+  .weapon-detail-character {
+    padding: 0.875rem;
+    font-size: 0.9rem;
+  }
+
+  .weapon-stat-row {
+    padding: 0.75rem 0;
+  }
+
+  .weapon-skill-type {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+}

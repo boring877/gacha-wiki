@@ -1,0 +1,369 @@
+---
+import { Image } from 'astro:assets';
+import WeaponLayout from '../../../layouts/horizon-walker/WeaponLayout.astro';
+import Breadcrumb from '../../../components/horizon-walker/Breadcrumb.astro';
+
+// Import weapon data
+import {
+  HORIZON_WALKER_WEAPONS,
+  WEAPON_METADATA,
+  WEAPON_RARITIES,
+} from '../../../data/horizon-walker/weapons.js';
+
+// Breadcrumb data for SEO
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
+  { name: 'Weapons' },
+];
+
+// SEO metadata
+const title = 'Horizon Walker Weapons Database - All EX Weapons List 2025 | GachaWiki';
+const description = `Database for all ${WEAPON_METADATA.total} Horizon Walker weapons. Browse EX weapons with stats, unique skills, and character associations.`;
+
+export const prerender = true;
+---
+
+<WeaponLayout title={title} description={description} gameTitle="Weapons Database">
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb items={breadcrumbs} />
+
+  <section class="hw-char-db-page-flex hw-weapons-page">
+    <div class="hw-char-db-main-content">
+      <div class="hw-char-db-content-wrapper">
+        <!-- Filter Bar with Weapons Count -->
+        <div class="hw-weapons-filter-bar">
+          <!-- Header with Weapons Count and Sort Controls -->
+          <div class="hw-weapons-header">
+            <div class="hw-weapons-count">
+              <span class="hw-badge" data-rarity="EX">{WEAPON_METADATA.total} Weapons</span>
+            </div>
+
+            <!-- Sort Controls -->
+            <div class="hw-weapons-sort">
+              <span class="hw-sort-label">Sort by:</span>
+              <button class="hw-sort-btn" data-sort="name">Name</button>
+              <button class="hw-sort-btn" data-sort="weaponMeleeAtk">Melee ATK</button>
+              <button class="hw-sort-btn" data-sort="weaponMagicAtk">Magic ATK</button>
+              <button class="hw-sort-btn" data-sort="weaponRangedAtk">Ranged ATK</button>
+            </div>
+          </div>
+
+          <div class="hw-weapons-filters">
+            <!-- Rarity Filter -->
+            <div class="hw-filter-row">
+              <span class="hw-filter-label">Rarity:</span>
+              <button class="hw-filter-btn active" data-filter-type="rarity" data-filter-value="">
+                All ({WEAPON_METADATA.total})
+              </button>
+              {
+                WEAPON_RARITIES.map(rarity => (
+                  <button
+                    class="hw-filter-btn"
+                    data-filter-type="rarity"
+                    data-filter-value={rarity}
+                  >
+                    {rarity} ({WEAPON_METADATA.byRarity[rarity] || 0})
+                  </button>
+                ))
+              }
+            </div>
+
+            <!-- Type Filter -->
+            <div class="hw-filter-row">
+              <span class="hw-filter-label">Type:</span>
+              <button class="hw-filter-btn active" data-filter-type="type" data-filter-value="">
+                All
+              </button>
+              {
+                WEAPON_METADATA.types.map(type => (
+                  <button class="hw-filter-btn" data-filter-type="type" data-filter-value={type}>
+                    {type}
+                  </button>
+                ))
+              }
+            </div>
+
+            <!-- Search Bar -->
+            <div class="hw-search-container">
+              <span class="hw-filter-label">Search:</span>
+              <input
+                type="text"
+                class="hw-search-input"
+                id="weapon-search"
+                placeholder="Search by weapon or character name..."
+              />
+              <button class="hw-reset-btn" id="reset-filters">Reset All</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weapons Grid -->
+        <div class="weapons-grid" id="weapons-grid">
+          {
+            HORIZON_WALKER_WEAPONS.map(weapon => (
+              <a
+                href={weapon.detailUrl}
+                class="weapon-card"
+                data-rarity={weapon.rarity}
+                data-type={weapon.type}
+                data-name={weapon.searchName}
+                data-character={weapon.searchCharacter}
+                data-melee-atk={weapon.stats.weaponMeleeAtk || 0}
+                data-magic-atk={weapon.stats.weaponMagicAtk || 0}
+                data-ranged-atk={weapon.stats.weaponRangedAtk || 0}
+              >
+                <div class="weapon-image-container">
+                  <Image
+                    src={weapon.image}
+                    alt={weapon.name}
+                    class="weapon-image"
+                    loading="lazy"
+                    width={60}
+                    height={60}
+                    decoding="async"
+                  />
+                </div>
+
+                <div class="weapon-info">
+                  <div class="weapon-name-row">
+                    <h3 class="weapon-name">{weapon.name}</h3>
+                    <span class="weapon-rarity hw-badge" data-rarity={weapon.rarity}>
+                      {weapon.rarity}
+                    </span>
+                  </div>
+                  <p class="weapon-type">{weapon.type}</p>
+                  <div class="weapon-character">
+                    <span class="weapon-character-label">For:</span>
+                    <span class="weapon-character-name">{weapon.character.name}</span>
+                  </div>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="no-results" style="display: none;">
+          <h3 class="no-results-title">No weapons found</h3>
+          <p class="no-results-text">Try adjusting your filters or search terms</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</WeaponLayout>
+
+<script>
+  // Weapon Filter and Sort Functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const weaponsGrid = document.getElementById('weapons-grid');
+    const weaponCards = Array.from(weaponsGrid?.querySelectorAll('.weapon-card') || []);
+    const noResults = document.getElementById('no-results');
+
+    // Filter state
+    let currentFilters = {
+      rarity: '',
+      type: '',
+      search: '',
+    };
+
+    let currentSort = {
+      field: '',
+      ascending: true,
+    };
+
+    // Filter buttons
+    const filterButtons = document.querySelectorAll('.hw-filter-btn');
+    const searchInput = document.getElementById('weapon-search');
+    const sortButtons = document.querySelectorAll('.hw-sort-btn');
+    const resetButton = document.getElementById('reset-filters');
+
+    // Apply filters - optimized version
+    function applyFilters() {
+      let visibleCount = 0;
+      const searchTerm = currentFilters.search.toLowerCase();
+
+      weaponCards.forEach(card => {
+        const { rarity, type, name, character } = card.dataset;
+
+        // Check all filter conditions with short-circuit evaluation
+        const isVisible =
+          (!currentFilters.rarity || rarity === currentFilters.rarity) &&
+          (!currentFilters.type || type === currentFilters.type) &&
+          (!searchTerm || name.includes(searchTerm) || character.includes(searchTerm));
+
+        card.style.display = isVisible ? '' : 'none';
+        if (isVisible) visibleCount++;
+      });
+
+      // Show/hide no results message
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    // Sort weapons
+    function sortWeapons(field) {
+      if (currentSort.field === field) {
+        currentSort.ascending = !currentSort.ascending;
+      } else {
+        currentSort.field = field;
+        currentSort.ascending = true;
+      }
+
+      const sortedCards = [...weaponCards].sort((a, b) => {
+        let aValue, bValue;
+
+        switch (field) {
+          case 'name':
+            aValue = a.dataset.name || '';
+            bValue = b.dataset.name || '';
+            return currentSort.ascending
+              ? aValue.localeCompare(bValue)
+              : bValue.localeCompare(aValue);
+          case 'weaponMeleeAtk':
+            aValue = parseFloat(a.dataset.meleeAtk) || 0;
+            bValue = parseFloat(b.dataset.meleeAtk) || 0;
+            break;
+          case 'weaponMagicAtk':
+            aValue = parseFloat(a.dataset.magicAtk) || 0;
+            bValue = parseFloat(b.dataset.magicAtk) || 0;
+            break;
+          case 'weaponRangedAtk':
+            aValue = parseFloat(a.dataset.rangedAtk) || 0;
+            bValue = parseFloat(b.dataset.rangedAtk) || 0;
+            break;
+          default:
+            return 0;
+        }
+
+        if (field !== 'name') {
+          return currentSort.ascending ? aValue - bValue : bValue - aValue;
+        }
+      });
+
+      // Re-append sorted cards to grid
+      if (weaponsGrid) {
+        sortedCards.forEach(card => weaponsGrid.appendChild(card));
+      }
+
+      // Update sort button states
+      sortButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.sort === field) {
+          btn.classList.add('active');
+        }
+      });
+    }
+
+    // Filter button click handler
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filterType = button.dataset.filterType;
+        const filterValue = button.dataset.filterValue;
+
+        // Update filter state
+        if (filterType === 'rarity') {
+          currentFilters.rarity = filterValue;
+          // Update active state for rarity buttons
+          document.querySelectorAll('[data-filter-type="rarity"]').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filterValue === filterValue);
+          });
+        } else if (filterType === 'type') {
+          currentFilters.type = filterValue;
+          // Update active state for type buttons
+          document.querySelectorAll('[data-filter-type="type"]').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filterValue === filterValue);
+          });
+        }
+
+        // Save to session storage
+        sessionStorage.setItem('hw-weapon-filters', JSON.stringify(currentFilters));
+
+        applyFilters();
+      });
+    });
+
+    // Debounced search input handler
+    let searchTimeout;
+    searchInput?.addEventListener('input', e => {
+      currentFilters.search = e.target.value;
+
+      // Clear previous timeout
+      clearTimeout(searchTimeout);
+
+      // Debounce search by 200ms
+      searchTimeout = setTimeout(() => {
+        sessionStorage.setItem('hw-weapon-filters', JSON.stringify(currentFilters));
+        applyFilters();
+      }, 200);
+    });
+
+    // Sort button handler
+    sortButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        sortWeapons(button.dataset.sort);
+      });
+    });
+
+    // Reset button handler
+    resetButton?.addEventListener('click', () => {
+      // Reset filters
+      currentFilters = {
+        rarity: '',
+        type: '',
+        search: '',
+      };
+
+      // Reset UI
+      filterButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filterValue === '');
+      });
+
+      if (searchInput) searchInput.value = '';
+
+      // Reset sort
+      currentSort = { field: '', ascending: true };
+      sortButtons.forEach(btn => btn.classList.remove('active'));
+
+      // Clear session storage
+      sessionStorage.removeItem('hw-weapon-filters');
+
+      // Show all cards
+      weaponCards.forEach(card => {
+        card.style.display = '';
+      });
+
+      applyFilters();
+    });
+
+    // Load saved filters from session storage
+    const savedFilters = sessionStorage.getItem('hw-weapon-filters');
+    if (savedFilters) {
+      try {
+        currentFilters = JSON.parse(savedFilters);
+
+        // Restore UI state
+        if (currentFilters.rarity) {
+          document.querySelectorAll('[data-filter-type="rarity"]').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filterValue === currentFilters.rarity);
+          });
+        }
+
+        if (currentFilters.type) {
+          document.querySelectorAll('[data-filter-type="type"]').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filterValue === currentFilters.type);
+          });
+        }
+
+        if (currentFilters.search && searchInput) {
+          searchInput.value = currentFilters.search;
+        }
+
+        applyFilters();
+      } catch (e) {
+        console.error('Error loading saved filters:', e);
+      }
+    }
+  });
+</script>

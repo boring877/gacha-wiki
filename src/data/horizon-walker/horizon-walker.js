@@ -122,6 +122,11 @@ export const horizonWalkerConfig = {
           title: 'Mercenaries',
           url: '/guides/horizon-walker/mercenaries/',
         },
+        {
+          id: 'weapons',
+          title: 'Weapons',
+          url: '/guides/horizon-walker/weapons/',
+        },
       ],
     },
     {

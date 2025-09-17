@@ -1,0 +1,502 @@
+/* Horizon Walker Weapons Database Styles - Clean and Simple */
+
+/* Scope all weapons styles to avoid conflicts with other game styles */
+.hw-weapons-page {
+  /* Main Container */
+  .hw-weapons-filter-bar {
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-accent);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Header Section with Count and Sort */
+  .hw-weapons-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--hw-border-muted);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Weapons Count Badge */
+  .hw-weapons-count {
+    display: flex;
+    align-items: center;
+  }
+
+  .hw-weapons-count .hw-badge {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    font-weight: 700;
+    background: var(--hw-primary-warm);
+    color: var(--hw-bg-dark);
+    border-radius: 6px;
+  }
+
+  /* Sort Controls Section */
+  .hw-weapons-sort {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hw-sort-label {
+    color: var(--hw-text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 0.25rem;
+  }
+
+  .hw-sort-btn {
+    padding: 0.5rem 0.9rem;
+    background: var(--hw-bg-darker);
+    border: 1px solid var(--hw-border-muted);
+    color: var(--hw-text-light);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .hw-sort-btn.active {
+    background: var(--hw-primary-warm);
+    color: var(--hw-bg-dark);
+    border-color: var(--hw-primary-warm);
+    font-weight: 600;
+  }
+
+  /* Filter Controls Section */
+  .hw-weapons-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  /* Filter Row */
+  .hw-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .hw-filter-label {
+    color: var(--hw-primary-warm);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    min-width: 5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .hw-filter-btn {
+    padding: 0.5rem 0.9rem;
+    background: var(--hw-bg-darker);
+    border: 1px solid var(--hw-border-muted);
+    color: var(--hw-text-light);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .hw-filter-btn.active {
+    background: var(--hw-primary-warm);
+    color: var(--hw-bg-dark);
+    border-color: var(--hw-primary-warm);
+    font-weight: 700;
+  }
+
+  /* Search Container */
+  .hw-search-container {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .hw-search-input {
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+    padding: 0.6rem 1rem;
+    background: var(--hw-bg-darker);
+    border: 1px solid var(--hw-border-muted);
+    border-radius: 6px;
+    color: var(--hw-text-light);
+    font-size: 0.9rem;
+  }
+
+  .hw-search-input::placeholder {
+    color: var(--hw-text-muted);
+    opacity: 0.7;
+  }
+
+  .hw-search-input:focus {
+    outline: none;
+    border-color: var(--hw-primary-warm);
+  }
+
+  .hw-reset-btn {
+    padding: 0.5rem 1rem;
+    background: var(--hw-bg-darker);
+    border: 1px solid #ff6b6b;
+    color: #ff6b6b;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+}
+
+/* Weapons Grid */
+.weapons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+/* Weapon Card */
+.weapon-card {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-accent);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-decoration: none;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.weapon-image-container {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  background: var(--hw-bg-darker);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid var(--hw-border-muted);
+}
+
+.weapon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Weapon Info */
+.weapon-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.weapon-name-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.weapon-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--hw-primary-warm);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.weapon-rarity {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.weapon-type {
+  font-size: 0.95rem;
+  color: var(--hw-text-muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+.weapon-character {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.weapon-character-label {
+  font-size: 0.85rem;
+  color: var(--hw-text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.weapon-character-name {
+  font-size: 0.95rem;
+  color: var(--hw-text-light);
+  font-weight: 600;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--hw-text-muted);
+}
+
+.no-results-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--hw-text-light);
+}
+
+.no-results-text {
+  font-size: 1rem;
+  color: var(--hw-text-muted);
+}
+
+/* Tablet Responsive (768px and below) */
+@media (max-width: 768px) {
+  .hw-weapons-page {
+    .hw-weapons-filter-bar {
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hw-weapons-header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.25rem;
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hw-weapons-count {
+      text-align: center;
+      justify-content: center;
+    }
+
+    .hw-weapons-count .hw-badge {
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+    }
+
+    .hw-weapons-sort {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: 100%;
+      gap: 0.75rem;
+    }
+
+    .hw-sort-label {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
+    }
+
+    .hw-sort-btn {
+      min-height: 48px; /* Touch target minimum */
+      padding: 0.75rem 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .hw-weapons-filters {
+      gap: 1.25rem;
+    }
+
+    .hw-filter-row {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      gap: 0.75rem;
+    }
+
+    .hw-filter-label {
+      min-width: auto;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .hw-filter-btn {
+      min-height: 48px; /* Touch target minimum */
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .hw-search-container {
+      flex-direction: column;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    .hw-search-input {
+      max-width: 100%;
+      width: 100%;
+      min-height: 48px; /* Touch target minimum */
+      padding: 0.75rem 1rem;
+      font-size: 1rem; /* Prevent zoom on iOS */
+    }
+
+    .hw-reset-btn {
+      width: 100%;
+      min-height: 48px; /* Touch target minimum */
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .weapons-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .weapon-card {
+    padding: 1.25rem;
+    min-height: 100px; /* Easier to tap */
+  }
+
+  .weapon-image-container {
+    width: 68px;
+    height: 68px;
+  }
+
+  .weapon-name {
+    font-size: 1.15rem;
+  }
+
+  .weapon-type {
+    font-size: 0.95rem;
+  }
+
+  .weapon-character-name {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile Phone (480px and below) */
+@media (max-width: 480px) {
+  .hw-weapons-page {
+    .hw-weapons-filter-bar {
+      padding: 0.875rem;
+      border-radius: 6px;
+    }
+
+    .hw-weapons-header {
+      gap: 1rem;
+    }
+
+    .hw-sort-btn {
+      font-size: 0.8rem;
+      padding: 0.75rem 0.25rem;
+    }
+
+    .hw-filter-btn {
+      font-size: 0.85rem;
+    }
+
+    .hw-search-input {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+  }
+
+  .weapons-grid {
+    gap: 0.75rem;
+  }
+
+  .weapon-card {
+    padding: 1rem;
+    gap: 0.875rem;
+  }
+
+  .weapon-image-container {
+    width: 60px;
+    height: 60px;
+  }
+
+  .weapon-name {
+    font-size: 1.05rem;
+  }
+
+  .weapon-type {
+    font-size: 0.875rem;
+  }
+
+  .weapon-character-label {
+    font-size: 0.75rem;
+  }
+
+  .weapon-character-name {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small Mobile (320px - 375px) */
+@media (max-width: 375px) {
+  .hw-weapons-page {
+    .hw-weapons-filter-bar {
+      padding: 0.75rem;
+    }
+
+    .hw-weapons-count .hw-badge {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .hw-sort-btn {
+      font-size: 0.75rem;
+    }
+
+    .hw-filter-label {
+      font-size: 0.85rem;
+    }
+
+    .hw-filter-btn {
+      padding: 0.75rem 0.75rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  .weapon-card {
+    padding: 0.875rem;
+  }
+
+  .weapon-image-container {
+    width: 56px;
+    height: 56px;
+  }
+
+  .weapon-name {
+    font-size: 1rem;
+    word-break: break-word;
+  }
+
+  .weapon-rarity {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .weapon-type {
+    font-size: 0.8rem;
+  }
+
+  .weapon-character-label,
+  .weapon-character-name {
+    font-size: 0.75rem;
+  }
+}

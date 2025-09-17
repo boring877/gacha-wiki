@@ -145,7 +145,11 @@
       "Bash(del \"C:\\Users\\pc\\Desktop\\gacha-wiki\\src\\layouts\\silver-and-blood\\BossLayout.astro\")",
       "Bash(del \"C:\\Users\\pc\\Desktop\\gacha-wiki\\src\\data\\horizon-walker\\mercenaries\\iron-guardian.js\")",
       "Bash(del \"C:\\Users\\pc\\Desktop\\gacha-wiki\\src\\data\\horizon-walker\\mercenaries\\storm-striker.js\")",
-      "Bash(del \"C:\\Users\\pc\\Desktop\\gacha-wiki\\src\\data\\horizon-walker\\mercenaries\\mystic-oracle.js\")"
+      "Bash(del \"C:\\Users\\pc\\Desktop\\gacha-wiki\\src\\data\\horizon-walker\\mercenaries\\mystic-oracle.js\")",
+      "Bash(for file in *.js)",
+      "Bash(do if grep -q \"weapon:\" \"$file\")",
+      "Bash(then echo \"$file\")",
+      "Bash(fi)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",
