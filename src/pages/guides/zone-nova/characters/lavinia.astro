@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { laviniaData, laviniaSEO } from '../../../../data/zone-nova/characters/lavinia.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={laviniaSEO.title}
+  description={laviniaSEO.description}
+  gameTitle={laviniaData.name}
+  character={laviniaData}
+>
+  <CharacterPageTemplate characterData={laviniaData} />
+</CharacterIndividualLayout>
