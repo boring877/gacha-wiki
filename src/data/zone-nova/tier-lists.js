@@ -61,6 +61,7 @@ export const PVE_TIER_LIST = {
       { name: 'Arthur' },
       { name: 'Lyra' },
       { name: 'Horus' },
+      { name: 'Lavinia' },
     ],
     A: [
       { name: 'Tefnut' },
@@ -114,6 +115,7 @@ export const PVP_TIER_LIST = {
       { name: 'Kela' },
       { name: 'Shanna' },
       { name: 'Zashiki-warashi' },
+      { name: 'Lavinia' },
     ],
     A: [{ name: 'Tefnut' }, { name: 'Rose' }, { name: 'Mordred' }, { name: 'Leviathan' }],
     Situational: [{ name: 'Loki' }, { name: 'Belphegar' }, { name: 'Nini' }],
@@ -160,6 +162,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Lyra' },
       { name: 'Arthur' },
       { name: 'Cleopatra' },
+      { name: 'Lavinia' },
     ],
     A: [
       { name: 'Tefnut' },
@@ -205,6 +208,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Cleopatra' },
       { name: 'Merlin' },
       { name: 'Shanna' },
+      { name: 'Lavinia' },
     ],
     S: [
       { name: 'Tefnut' },
