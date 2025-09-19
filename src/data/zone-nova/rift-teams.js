@@ -7,6 +7,7 @@ export const RIFT_TEAM_TYPES = {
   RIFT_VIII: 'rift-viii',
   RIFT_IX: 'rift-ix',
   RIFT_X: 'rift-x',
+  RIFT_XI: 'rift-xi',
   RIFT_GENERAL: 'rift-general',
   RIFT_SPEEDRUN: 'rift-speedrun',
 };
@@ -323,6 +324,36 @@ export const ZONE_NOVA_RIFT_TEAMS = [
       'Kela only good dor single healer, you need to keep spamming Guinevere ultimate to get the map buff, shu do nice dmg too .',
     elementWeakness: ['Holy', 'Chaos'],
   },
+  {
+    id: 22,
+    name: 'Extra Attack Type',
+    type: RIFT_TEAM_TYPES.RIFT_XI,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Apollo', image: '/images/games/zone-nova/characters/Apollo.jpg' },
+      { name: 'Yuis', image: '/images/games/zone-nova/characters/Yuis.jpg' },
+      { name: 'Lavinia', image: '/images/games/zone-nova/characters/Lavinia.jpg' },
+    ],
+    notes:
+      'High extra attack team with excellent healing from Lavinia. Element weakness exploits Fire and Ice vulnerabilities. Problem: Lavinia vulnerable to melee characters - position carefully.',
+    elementWeakness: ['Fire', 'Ice'],
+  },
+  {
+    id: 23,
+    name: 'DoT Energy Team',
+    type: RIFT_TEAM_TYPES.RIFT_XI,
+    tier: RIFT_TEAM_TIERS.SS,
+    characters: [
+      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
+      { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
+      { name: 'Naiya', image: '/images/games/zone-nova/characters/Naiya.jpg' },
+      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+    ],
+    notes:
+      'DoT damage team with good damage and energy recovery synergy. Balanced team composition with strong DoT focus.',
+    elementWeakness: ['Fire', 'Ice'],
+  },
 ];
 
 // Metadata for filters
@@ -365,8 +396,10 @@ export function sortRiftTeams(teams, sortKey, direction = 'asc') {
   return [...teams].sort((a, b) => {
     // Default sort: by type (newest rift first), then by tier, then by name
     if (!sortKey || sortKey === '') {
-      // First sort by rift type (IX > VIII > VII > VI, etc.)
+      // First sort by rift type (XI > X > IX > VIII > VII > VI, etc.)
       const typeOrder = {
+        'rift-xi': 11,
+        'rift-x': 10,
         'rift-ix': 9,
         'rift-viii': 8,
         'rift-vii': 7,
@@ -429,6 +462,7 @@ export function getRiftTeamTypeText(type) {
     [RIFT_TEAM_TYPES.RIFT_VIII]: 'Rift VIII',
     [RIFT_TEAM_TYPES.RIFT_IX]: 'Rift IX',
     [RIFT_TEAM_TYPES.RIFT_X]: 'Rift X',
+    [RIFT_TEAM_TYPES.RIFT_XI]: 'Rift XI',
     [RIFT_TEAM_TYPES.RIFT_GENERAL]: 'General Rift',
     [RIFT_TEAM_TYPES.RIFT_SPEEDRUN]: 'Speedrun',
   };
