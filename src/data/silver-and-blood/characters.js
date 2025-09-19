@@ -147,6 +147,7 @@ import { valora } from './characters/valora.js';
 import { julius } from './characters/julius.js';
 import { stella } from './characters/stella.js';
 import { regina } from './characters/regina.js';
+import { albrecht } from './characters/albrecht.js';
 
 // Characters array - Add new characters here
 const baseCharacters = [
@@ -196,6 +197,7 @@ const baseCharacters = [
   julius,
   stella,
   regina,
+  albrecht,
   // Add more characters as they are created
 ];
 

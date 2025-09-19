@@ -587,10 +587,26 @@ const relatedCharacters = [];
               )}
             </div>
           </div>
-          <p
-            style="color: #e0e0e0; line-height: 1.6; margin: 0; font-size: 1rem;"
+          <!-- Main Skill Description -->
+          <div
+            style="color: #e0e0e0; line-height: 1.8; margin: 0; font-size: 1.05rem; letter-spacing: 0.3px;"
             set:html={skill.description}
           />
+
+          <!-- Effects Section (if present) -->
+          {skill.effects && skill.effects.length > 0 && (
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #3a3a3a;">
+              <h4 style="color: #c0c0c0; font-size: 1rem; font-weight: 600; margin: 0 0 0.8rem 0;">
+                Effects:
+              </h4>
+              {skill.effects.map((effect) => (
+                <div style="margin: 0.6rem 0; padding-left: 0.5rem; line-height: 1.7;">
+                  <span style="color: #e0e0e0; font-weight: 600;">• {effect.name}:</span>
+                  <span style="color: #d0d0d0; margin-left: 0.3rem;">{effect.description}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       ))
     }

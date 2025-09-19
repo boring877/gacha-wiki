@@ -32,20 +32,45 @@ export const friedrich = {
       name: 'Eye for an Eye',
       type: 'Special',
       description:
-        'Activates once every 4 Basic ATK(s). Deals 225.0% ATK (P. DMG) to the target and grants a Shield equal to 20.0% of Max HP, lasting for 10 sec. Shield: When taking DMG, loses Shield Strength instead of HP. When taking True DMG, loses Shield Strength equal to 200% of DMG taken.',
+        'Activates once every 4 Basic ATK(s). Deals 225.0% ATK (P. DMG) to the target and grants a Shield equal to 20.0% of Max HP, lasting for 10 sec.',
+      effects: [
+        {
+          name: 'Shield',
+          description:
+            'When taking DMG, loses Shield Strength instead of HP. When taking True DMG, loses Shield Strength equal to 200% of DMG taken.',
+        },
+      ],
     },
     {
       name: 'Regal Pride',
       type: 'Passive',
-      description:
-        'When Shielded, gains M. DMG Taken Down (Minor). Cannot be dispelled. Shield: When taking DMG, loses Shield Strength instead of HP. When taking True DMG, loses Shield Strength equal to 200% of DMG taken. M. DMG Taken Down (Minor): M. DMG Taken -15.0%. Does not stack with effects of the same type. Cannot be dispelled.',
+      description: 'When Shielded, gains M. DMG Taken Down (Minor). Cannot be dispelled.',
+      effects: [
+        {
+          name: 'Shield',
+          description:
+            'When taking DMG, loses Shield Strength instead of HP. When taking True DMG, loses Shield Strength equal to 200% of DMG taken.',
+        },
+        {
+          name: 'M. DMG Taken Down (Minor)',
+          description:
+            'M. DMG Taken -15.0%. Does not stack with effects of the same type. Cannot be dispelled.',
+        },
+      ],
     },
     {
       name: 'Death Trap',
       type: 'Ultimate',
       cost: 3,
       description:
-        "Creates a Shield equal to 65.0% of Friedrich's Max HP that lasts for 12 sec, and deals 450.0% ATK (P. DMG) to all enemies in a circle around him. Shield: When taking DMG, loses Shield Strength instead of HP. When taking True DMG, loses Shield Strength equal to 200% of DMG taken.",
+        "Creates a Shield equal to 65.0% of Friedrich's Max HP that lasts for 12 sec, and deals 450.0% ATK (P. DMG) to all enemies in a circle around him.",
+      effects: [
+        {
+          name: 'Shield',
+          description:
+            'When taking DMG, loses Shield Strength instead of HP. When taking True DMG, loses Shield Strength equal to 200% of DMG taken.',
+        },
+      ],
     },
   ],
 

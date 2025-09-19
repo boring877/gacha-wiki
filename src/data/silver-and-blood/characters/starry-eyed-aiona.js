@@ -32,20 +32,45 @@ export const starryEyedAiona = {
       name: "Seer's Waymark",
       type: 'Special',
       description:
-        "When the battle begins and every 10 sec after, applies a Shield equal to 15.0% of Starry-Eyed Aiona's Max HP to the ally one tile in front, lasting for 8 sec. Shield: When taking DMG, loses Shield Strength instead of HP. When taking True DMG, loses Shield Strength equal to 200% of DMG taken.",
+        "When the battle begins and every 10 sec after, applies a Shield equal to 15.0% of Starry-Eyed Aiona's Max HP to the ally one tile in front, lasting for 8 sec.",
+      effects: [
+        {
+          name: 'Shield',
+          description:
+            'When taking DMG, loses Shield Strength instead of HP. When taking True DMG, loses Shield Strength equal to 200% of DMG taken.',
+        },
+      ],
     },
     {
       name: 'Cosmic Ripples',
       type: 'Passive',
       description:
-        'Units previously shielded by Starry-Eyed Aiona gain permanent Shield Received UP (Minor) and recover HP for 50.0% ATK every sec until their Shield breaks. Shield Received UP (Minor): Shield Strength Received +25.0%. Does not stack with effects of the same type.',
+        'Units previously shielded by Starry-Eyed Aiona gain permanent Shield Received UP (Minor) and recover HP for 50.0% ATK every sec until their Shield breaks.',
+      effects: [
+        {
+          name: 'Shield Received UP (Minor)',
+          description:
+            'Shield Strength Received +25.0%. Does not stack with effects of the same type.',
+        },
+      ],
     },
     {
       name: 'Ode to Time',
       type: 'Ultimate',
       cost: 3,
       description:
-        "Moves nearby allies in a circle to a select location, applying a Shield equal to 45.0% of Starry-Eyed Aiona's Max HP and P. DMG Taken Down (Minor), lasting for 12 sec. Shield: When taking DMG, loses Shield Strength instead of HP. When taking True DMG, loses Shield Strength equal to 200% of DMG taken. P. DMG Taken Down (Minor): P. DMG Taken -15.0%. Does not stack with effects of the same type.",
+        "Moves nearby allies in a circle to a select location, applying a Shield equal to 45.0% of Starry-Eyed Aiona's Max HP and P. DMG Taken Down (Minor), lasting for 12 sec.",
+      effects: [
+        {
+          name: 'Shield',
+          description:
+            'When taking DMG, loses Shield Strength instead of HP. When taking True DMG, loses Shield Strength equal to 200% of DMG taken.',
+        },
+        {
+          name: 'P. DMG Taken Down (Minor)',
+          description: 'P. DMG Taken -15.0%. Does not stack with effects of the same type.',
+        },
+      ],
     },
   ],
 

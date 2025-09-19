@@ -33,20 +33,45 @@ export const timelessAiona = {
       name: "Fate's Design",
       type: 'Special',
       description:
-        'When the battle begins, Timeless Aiona consumes 40.0% of her Current HP and gains a Shield equal to 250.0% of the consumed HP. Shield: When receiving DMG, loses Shield Strength instead of HP. When receiving True DMG, loses Shield Strength equal to 200% of DMG taken. Shield cannot exceed 200% of Max HP.',
+        'When the battle begins, Timeless Aiona consumes 40.0% of her Current HP and gains a Shield equal to 250.0% of the consumed HP.',
+      effects: [
+        {
+          name: 'Shield',
+          description:
+            'When receiving DMG, loses Shield Strength instead of HP. When receiving True DMG, loses Shield Strength equal to 200% of DMG taken. Shield cannot exceed 200% of Max HP.',
+        },
+      ],
     },
     {
       name: 'Entropy',
       type: 'Passive',
       description:
-        'Talent: Effective Range. When Timeless Aiona receives any form of HP recovery, the recovered HP is converted into a Shield equal to 100.0% of the recovery amount. When Timeless Aiona deals DMG, she gains a Shield equal to 35.0% of the HP loss. Shield: When receiving DMG, loses Shield Strength instead of HP. When receiving True DMG, loses Shield Strength equal to 200% of DMG taken. Shield cannot exceed 200% of Max HP. Effective Range: DMG dealt by this Vassal varies with range. It increases by up to 50% at the farthest target while decreasing by up to 50% at the target nearby.',
+        'Talent: Effective Range. When Timeless Aiona receives any form of HP recovery, the recovered HP is converted into a Shield equal to 100.0% of the recovery amount. When Timeless Aiona deals DMG, she gains a Shield equal to 35.0% of the HP loss.',
+      effects: [
+        {
+          name: 'Shield',
+          description:
+            'When receiving DMG, loses Shield Strength instead of HP. When receiving True DMG, loses Shield Strength equal to 200% of DMG taken. Shield cannot exceed 200% of Max HP.',
+        },
+        {
+          name: 'Effective Range',
+          description:
+            'DMG dealt by this Vassal varies with range. It increases by up to 50% at the farthest target while decreasing by up to 50% at the target nearby.',
+        },
+      ],
     },
     {
       name: 'Lucid State',
       type: 'Ultimate',
       cost: 4,
       description:
-        "Deals 300.0% ATK (M. DMG) to all enemies in a large area in front of Timeless Aiona in a select direction, inflicting ATK SPD Down (Major) for 8 sec. For 12 sec after casting Ultimate, Timeless Aiona's Basic ATK speed increases and each Basic ATK performs 4 additional strikes, prioritizing different units in the direction of her target. When targets are hit repeatedly, deals 25.0% DMG. ATK SPD Down (Major): ATK SPD -50.0%. Does not stack with effects of the same type.",
+        "Deals 300.0% ATK (M. DMG) to all enemies in a large area in front of Timeless Aiona in a select direction, inflicting ATK SPD Down (Major) for 8 sec. For 12 sec after casting Ultimate, Timeless Aiona's Basic ATK speed increases and each Basic ATK performs 4 additional strikes, prioritizing different units in the direction of her target. When targets are hit repeatedly, deals 25.0% DMG.",
+      effects: [
+        {
+          name: 'ATK SPD Down (Major)',
+          description: 'ATK SPD -50.0%. Does not stack with effects of the same type.',
+        },
+      ],
     },
   ],
 

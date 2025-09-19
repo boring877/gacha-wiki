@@ -38,14 +38,37 @@ export const valora = {
       name: 'Soul Immolation',
       type: 'Passive',
       description:
-        "Valora increases her ATK and CRIT Rate based on the range of Hellfire, by up to 40.0%. All enemies within range of Hellfire gain Soul Burn. When casting her Ultimate, Valora gains a Shield equal to 30.0% Max HP that lasts until her Ultimate ends. During this period, when any of Valora's Shields are broken, Valora becomes Untargetable for 2 sec. Soul Burn: CRIT DMG Taken +20.0%, increasing by 5.0% every 3 sec, up to 40.0%. Shield: When receiving DMG, loses Shield Strength instead of HP. When receiving True DMG or Piercing DMG, loses Shield Strength equal to 200% of DMG taken. Shield cannot exceed 200% of Max HP.",
+        "Valora increases her ATK and CRIT Rate based on the range of Hellfire, by up to 40.0%. All enemies within range of Hellfire gain Soul Burn. When casting her Ultimate, Valora gains a Shield equal to 30.0% Max HP that lasts until her Ultimate ends. During this period, when any of Valora's Shields are broken, Valora becomes Untargetable for 2 sec.",
+      effects: [
+        {
+          name: 'Soul Burn',
+          description: 'CRIT DMG Taken +20.0%, increasing by 5.0% every 3 sec, up to 40.0%.',
+        },
+        {
+          name: 'Shield',
+          description:
+            'When receiving DMG, loses Shield Strength instead of HP. When receiving True DMG or Piercing DMG, loses Shield Strength equal to 200% of DMG taken. Shield cannot exceed 200% of Max HP.',
+        },
+      ],
     },
     {
       name: 'Spiritual Anguish',
       type: 'Ultimate',
       cost: 6,
       description:
-        'This Ultimate has Overdrive. Valora gains immunity to all control effects and rushes toward the farthest or selected enemy on Ludgard, dealing 200.0% ATK (P. DMG) to enemies along the path and applying Stun for 1 sec, then dealing 225.0% ATK (P. DMG) to the target and nearby enemies. After her first rush, Valora Channels for 15 sec, during which she rushes toward the farthest enemy every 8 sec, dealing 200.0% ATK (P. DMG) to enemies along her path as well as the target. In this phase, enemies not yet affected by rush are prioritized. After each rush, deals 225.0% ATK (P. DMG) to enemies in a cone around the nearest target. Each rush during her Ultimate leaves Hellfire on the ground for 15 sec, dealing 150.0% ATK (P. DMG) to enemies within range once every 1.5 sec. Stun: Control: Strong. The carrier stops and remains unable to cast Ultimate, Special (Active), Basic ATKs, or move during the effect. Overdrive: When above 50% Bloodsoul, can be cast even with insufficient Bloodsoul. If there is extra Bloodsoul when casting, enters Overdrive, during which any Ultimates costing over 0 cannot be cast, however Bloodsoul recovery rate is increased by 20%. Overload ends when Bloodsoul recovers to 0.',
+        'This Ultimate has Overdrive. Valora gains immunity to all control effects and rushes toward the farthest or selected enemy on Ludgard, dealing 200.0% ATK (P. DMG) to enemies along the path and applying Stun for 1 sec, then dealing 225.0% ATK (P. DMG) to the target and nearby enemies. After her first rush, Valora Channels for 15 sec, during which she rushes toward the farthest enemy every 8 sec, dealing 200.0% ATK (P. DMG) to enemies along her path as well as the target. In this phase, enemies not yet affected by rush are prioritized. After each rush, deals 225.0% ATK (P. DMG) to enemies in a cone around the nearest target. Each rush during her Ultimate leaves Hellfire on the ground for 15 sec, dealing 150.0% ATK (P. DMG) to enemies within range once every 1.5 sec.',
+      effects: [
+        {
+          name: 'Stun',
+          description:
+            'Control: Strong. The carrier stops and remains unable to cast Ultimate, Special (Active), Basic ATKs, or move during the effect.',
+        },
+        {
+          name: 'Overdrive',
+          description:
+            'When above 50% Bloodsoul, can be cast even with insufficient Bloodsoul. If there is extra Bloodsoul when casting, enters Overdrive, during which any Ultimates costing over 0 cannot be cast, however Bloodsoul recovery rate is increased by 20%. Overload ends when Bloodsoul recovers to 0.',
+        },
+      ],
     },
   ],
 

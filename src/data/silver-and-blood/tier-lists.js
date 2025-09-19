@@ -1,6 +1,10 @@
 // Silver and Blood Tier List Data
-// Last Updated: August 2025
+// Last Updated: September 2025
 // Based on current meta and character performance
+//
+// ⚠️  REMINDER: When adding/moving characters in tier lists below,
+//     remember to update ALL "lastUpdated" fields to today's date (YYYY-MM-DD)
+//     Search for "lastUpdated:" and update each one manually
 
 export const TIER_DEFINITIONS = {
   SSS: {
@@ -30,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-08-18',
+  lastUpdated: '2025-09-19',
   description:
     'Things can changes fast, with new character. but as today I feel this what stand out.',
   tiers: {
@@ -43,6 +47,7 @@ export const PVE_TIER_LIST = {
       { name: 'Valora' },
     ],
     S: [
+      { name: 'Albrecht' },
       { name: 'Lamia' },
       { name: 'Starry-Eyed Aiona' },
       { name: 'Friedrich' },
@@ -94,12 +99,13 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2025-08-18',
+  lastUpdated: '2025-09-19',
   description:
     'it was quite hard to pick between S & A. choosing PVP unit quite hard because things change fast !.',
   tiers: {
     SSS: [{ name: 'Timeless Aiona' }],
     SS: [
+      { name: 'Albrecht' },
       { name: 'Lorelei' },
       { name: 'Bella' },
       { name: 'Transcendent Ami' },
@@ -158,12 +164,13 @@ export const PVP_TIER_LIST = {
 // Clan Hunt Tier List
 export const CLAN_HUNT_TIER_LIST = {
   name: 'Clan Hunt Tier List',
-  lastUpdated: '2025-08-18',
+  lastUpdated: '2025-09-19',
   description:
     'Its really hard to build this tier list, the clan hunt only we had 1 time and there is quite bit of opinions. I did my best !!!.',
   tiers: {
     SSS: [{ name: 'Timeless Aiona' }],
     SS: [
+      { name: 'Albrecht' },
       { name: 'Agnes' },
       { name: 'Acappella' },
       { name: 'Transcendent Ami' },
@@ -218,12 +225,13 @@ export const CLAN_HUNT_TIER_LIST = {
 // Boss Raids Tier List
 export const BOSS_RAIDS_TIER_LIST = {
   name: 'Boss Raids Tier List',
-  lastUpdated: '2025-08-18',
+  lastUpdated: '2025-09-19',
   description:
     'Some Boss has different machines, but overall this tier list should cover the majority of them.',
   tiers: {
     SSS: [{ name: 'Timeless Aiona' }],
     SS: [
+      { name: 'Albrecht' },
       { name: 'Starry-Eyed Aiona' },
       { name: 'Acappella' },
       { name: 'Fleeting Bella' },
@@ -282,7 +290,7 @@ export const BOSS_RAIDS_TIER_LIST = {
 // New Player Tier List (F2P Friendly)
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
-  lastUpdated: '2025-08-18',
+  lastUpdated: '2025-09-19',
   description:
     'try to get Timeless Aiona and pair her with fleeting bella!, These what you should aim at .',
   tiers: {

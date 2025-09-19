@@ -1,6 +1,10 @@
 // Zone Nova Tier List Data
-// Last Updated: January 2025
+// Last Updated: September 2025
 // Based on current meta and character performance
+//
+// ⚠️  REMINDER: When adding/moving characters in tier lists below,
+//     remember to update ALL "lastUpdated" fields to today's date (YYYY-MM-DD)
+//     Search for "lastUpdated:" and update each one manually
 
 export const TIER_DEFINITIONS = {
   SSS: {
@@ -30,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-08-05',
+  lastUpdated: '2025-09-19',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
     SSS: [{ name: 'Guinevere' }, { name: 'Athena' }, { name: 'Freya' }],
@@ -79,7 +83,7 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2025-08-05',
+  lastUpdated: '2025-09-19',
   description: 'PvP character rankings.',
   tiers: {
     SSS: [{ name: 'Guinevere' }],
@@ -125,7 +129,7 @@ export const PVP_TIER_LIST = {
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2025-08-05',
+  lastUpdated: '2025-09-19',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -179,7 +183,7 @@ export const RIFT_TIER_LIST = {
 // Guild Raid Tier List
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
-  lastUpdated: '2025-08-05',
+  lastUpdated: '2025-09-19',
   description:
     'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
@@ -233,7 +237,7 @@ export const GUILD_RAID_TIER_LIST = {
 // New Player Tier List (F2P Friendly)
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
-  lastUpdated: '2025-08-05',
+  lastUpdated: '2025-09-19',
   description:
     'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {
