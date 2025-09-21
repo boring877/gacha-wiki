@@ -35,6 +35,8 @@
 /* === ROOT HTML ELEMENT CONFIGURATION === */
 html {
   scroll-behavior: smooth; /* Smooth scrolling for anchor links - enhances UX */
+  /* Enable native pull-to-refresh on mobile */
+  overscroll-behavior-y: auto;
   /* Optimize font rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -52,6 +54,8 @@ body {
   color: var(--text-primary); /* Apply primary text color for contrast */
   width: 100%; /* Ensure body takes full width */
   max-width: 100vw; /* Prevent horizontal overflow issues */
+  /* Enable pull-to-refresh on mobile browsers */
+  overscroll-behavior-y: auto;
 }
 
 /* Preload critical styles to prevent FOUC during navigation */
