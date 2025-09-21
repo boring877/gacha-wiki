@@ -39,6 +39,10 @@
   body {
     scrollbar-width: none;
     -ms-overflow-style: none;
+    overscroll-behavior: none; /* Prevent Android overscroll glow effect */
+    -webkit-overflow-scrolling: touch; /* Enable iOS momentum scrolling */
+    transform: translateZ(0); /* Force hardware acceleration */
+    will-change: scroll-position; /* Optimize for scrolling */
   }
 
   html::-webkit-scrollbar,
@@ -60,6 +64,8 @@
   iframe {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
+    -webkit-overflow-scrolling: touch !important; /* Enable momentum scrolling */
+    transform: translateZ(0); /* Hardware acceleration for scroll containers */
   }
 
   .scrollable::-webkit-scrollbar,
@@ -80,6 +86,14 @@
   .custom-scrollbar-container {
     contain: style layout;
   }
+
+  /**
+   * Mobile Scrolling Performance Optimizations
+   * - webkit-overflow-scrolling: touch enables iOS momentum scrolling
+   * - transform: translateZ(0) forces hardware acceleration
+   * - will-change: scroll-position optimizes for scroll animations
+   * - overscroll-behavior: none prevents Android glow effect
+   */
 
   /**
    * Accessibility: Respect user preferences
