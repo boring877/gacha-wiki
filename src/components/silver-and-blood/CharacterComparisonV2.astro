@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { characters } from '../../data/silver-and-blood/characters.js';
 import {
   PVE_TIER_LIST,
@@ -8,12 +9,6 @@ import {
   NEW_PLAYER_TIER_LIST,
 } from '../../data/silver-and-blood/tier-lists.js';
 import { rankings } from '../../data/silver-and-blood/character-rankings.js';
-
-interface Props {
-  selectedCharacters?: string[];
-}
-
-const { selectedCharacters = [] } = Astro.props;
 
 // Security: Sanitize character data to prevent XSS
 function escapeHtml(unsafe: string): string {
@@ -134,14 +129,15 @@ const rarities = ['SSR', 'SR', 'R'];
                   tabindex="0"
                   aria-label={`Select ${character.originalName}, ${character.rarity} ${character.faction} ${character.class}`}
                 >
-                  <img
+                  <Image
                     src={character.image}
                     alt={character.originalName}
                     class="character-icon-img"
-                    width="36"
-                    height="36"
+                    width={36}
+                    height={36}
                     loading="lazy"
-                    onerror="this.src='/images/placeholder.png'"
+                    format="webp"
+                    quality={90}
                   />
                   <span class="character-icon-name" set:html={character.displayName} />
                 </div>
@@ -243,14 +239,15 @@ const rarities = ['SSR', 'SR', 'R'];
             tabindex="0"
             aria-label={`Select ${character.originalName}, ${character.rarity} ${character.faction} ${character.class}`}
           >
-            <img
+            <Image
               src={character.image}
               alt={character.originalName}
               class="modal-character-image"
-              width="80"
-              height="80"
+              width={80}
+              height={80}
               loading="lazy"
-              onerror="this.src='/images/placeholder.png'"
+              format="webp"
+              quality={85}
             />
             <div class="modal-character-info">
               <span class="modal-character-name" set:html={character.displayName} />

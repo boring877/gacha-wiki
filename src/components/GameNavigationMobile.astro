@@ -1,5 +1,6 @@
 ---
 import { getGameData, isValidGameKey, type GameKey } from '../data/game-navigation';
+import { Image } from 'astro:assets';
 
 interface Props {
   currentPath?: string;
@@ -43,7 +44,16 @@ if (!game) return;
           title={`${game.name} Overview`}
         >
           <div class="game-image-container">
-            <img src={game.image} alt={game.name} class="game-image" loading="lazy" />
+            <Image
+              src={game.image}
+              alt={game.name}
+              class="game-image"
+              loading="lazy"
+              width={64}
+              height={64}
+              format="webp"
+              quality={90}
+            />
             <div class="game-image-overlay"></div>
           </div>
         </a>
@@ -65,7 +75,16 @@ if (!game) return;
 <div class="mobile-links" id="mobileNavLinks" data-game={validatedGameKey}>
   <div class="mobile-game-header">
     <div class="game-header-content">
-      <img src={game.image} alt={game.name} class="mobile-game-image" loading="lazy" />
+      <Image
+        src={game.image}
+        alt={game.name}
+        class="mobile-game-image"
+        loading="lazy"
+        width={48}
+        height={48}
+        format="webp"
+        quality={90}
+      />
       <div class="mobile-game-title">Resources</div>
     </div>
     <button class="close-btn" id="navClose">✕</button>

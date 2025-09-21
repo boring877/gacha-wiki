@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -78,11 +79,7 @@ const { meta, availableCodes, expiredCodes, redeemInstructions, communitySection
           }
 
           <!-- Breadcrumb Navigation -->
-          <Breadcrumb
-            autoGenerate={true}
-            gameKey="silver-and-blood"
-            showBackButton={true}
-          />
+          <Breadcrumb autoGenerate={true} gameKey="silver-and-blood" showBackButton={true} />
 
           <!-- Content Area -->
           <div class="content-area">
@@ -226,7 +223,15 @@ const { meta, availableCodes, expiredCodes, redeemInstructions, communitySection
                         )}
                         {step.image && (
                           <div class="redeem-instruction-image">
-                            <img src={step.image} alt={step.imageAlt} loading="lazy" />
+                            <Image
+                              src={step.image}
+                              alt={step.imageAlt}
+                              loading="lazy"
+                              width={400}
+                              height={300}
+                              format="webp"
+                              quality={85}
+                            />
                           </div>
                         )}
                       </div>

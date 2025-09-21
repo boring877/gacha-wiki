@@ -49,11 +49,15 @@ const breadcrumbs = [{ name: 'AP Guide' }];
         {/* Image */}
         {section.image && (
           <div class="hw-guide-image-container">
-            <img
+            <Image
               src={section.image.path}
               alt={section.image.caption}
               class="hw-guide-image"
+              width={600}
+              height={400}
               loading="lazy"
+              format="webp"
+              quality={85}
             />
             {section.image.caption && <p class="hw-guide-image-caption">{section.image.caption}</p>}
           </div>

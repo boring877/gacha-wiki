@@ -1,5 +1,6 @@
 ---
 import CharactersLayout from '../../../layouts/silver-and-blood/CharactersLayout.astro';
+import { Image } from 'astro:assets';
 import {
   characters as SILVER_AND_BLOOD_CHARACTERS,
   gameInfo,
@@ -11,7 +12,6 @@ import {
   description="Sortable and filterable character database for Silver and Blood"
   gameTitle="Character Database"
 >
-
   <section class="page-flex">
     <div class="main-content-container">
       <div class="content-wrapper">
@@ -103,10 +103,14 @@ import {
                     >
                       <td>{idx + 1}</td>
                       <td>
-                        <img
+                        <Image
                           src={char.image}
                           alt={char.name}
                           class="character-img"
+                          width={60}
+                          height={60}
+                          format="webp"
+                          quality={85}
                           loading="lazy"
                         />
                       </td>
@@ -166,7 +170,15 @@ import {
                 style="cursor:pointer;"
               >
                 <div class="mobile-card-header">
-                  <img src={char.image} alt={char.name} class="character-img" />
+                  <Image
+                    src={char.image}
+                    alt={char.name}
+                    class="character-img"
+                    width={80}
+                    height={80}
+                    format="webp"
+                    quality={85}
+                  />
                   <div class="mobile-card-title-group">
                     <h3>{char.name}</h3>
                     <div class="mobile-card-badges">

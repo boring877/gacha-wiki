@@ -108,10 +108,14 @@ import {
                       {(() => {
                         const memoryClass = getMemoryClass(memory);
                         return memoryClass ? (
-                          <img
+                          <Image
                             src={`/images/games/zone-nova/classes/1${memoryClass}.jpg`}
                             alt={memoryClass}
                             class="class-icon-standalone"
+                            width={32}
+                            height={32}
+                            format="webp"
+                            quality={85}
                             loading="lazy"
                             title={memoryClass}
                           />

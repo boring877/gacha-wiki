@@ -1,5 +1,6 @@
 ---
 import GachaWikisLibraryLayout from '../layouts/GachaWikisLibraryLayout.astro';
+import { Image } from 'astro:assets';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getAllGames } from '../data/games';
 
@@ -18,7 +19,15 @@ const games = getAllGames();
           >
             <div class="game-header">
               <div class="game-icon">
-                <img src={game.image} alt={game.name} width="75" height="75" loading="lazy" />
+                <Image
+                  src={game.image}
+                  alt={game.name}
+                  width={75}
+                  height={75}
+                  format="webp"
+                  quality={85}
+                  loading="lazy"
+                />
               </div>
               <div class="game-info">
                 <h3 class="game-title">{game.name}</h3>

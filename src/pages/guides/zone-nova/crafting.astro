@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import ZoneNovaLayout from '../../../layouts/zone-nova/LandingLayout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
 import '../../../styles/games/zone-nova/zn-crafting.css';
@@ -142,12 +143,14 @@ import '../../../styles/games/zone-nova/zn-crafting.css';
     <!-- Item Showcase -->
     <div class="item-showcase">
       <div class="item-image">
-        <img
+        <Image
           src="/images/games/zone-nova/laser-engraving-tool.jpg"
           alt="Laser Engraving Tool (激光雕刻仪)"
-          width="400"
-          height="300"
+          width={400}
+          height={300}
           loading="lazy"
+          format="webp"
+          quality={85}
         />
       </div>
       <div class="item-info">

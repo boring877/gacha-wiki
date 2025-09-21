@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BossDatabaseLayout from '../../../layouts/silver-and-blood/BossDatabaseLayout.astro';
 import { bossDatabase } from '../../../data/silver-and-blood/boss-database.js';
 
@@ -31,7 +32,16 @@ const gameTitle = 'Clan Hunt Boss Database';
 
             <div class="boss-content">
               <div class="boss-image-container">
-                <img src={boss.image} alt={boss.name} class="boss-image" />
+                <Image
+                  src={boss.image}
+                  alt={boss.name}
+                  class="boss-image"
+                  loading="lazy"
+                  width={200}
+                  height={200}
+                  format="webp"
+                  quality={90}
+                />
               </div>
 
               <div class="boss-details">

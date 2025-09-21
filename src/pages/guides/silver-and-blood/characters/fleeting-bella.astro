@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import CharacterLayout from '../../../../layouts/silver-and-blood/CharacterLayout.astro';
 import { gameInfo } from '../../../../data/silver-and-blood/characters.js';
 import { fleetingBella } from '../../../../data/silver-and-blood/characters/fleeting-bella.js';
@@ -96,7 +97,7 @@ const classInfo = classData ? `${charClass}: ${classData.description}` : null;
         <div
           style="background: linear-gradient(135deg, #2a2a2a 60%, #1a1a1a 100%); border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.15); padding: 2.5rem 1.5rem 1.5rem 1.5rem; border: 1.5px solid #c0c0c0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; width: 100%;"
         >
-          <img
+          <Image
             src={image}
             alt={`${name} - ${rarity} ${charClass} character from Silver and Blood gacha game`}
             width={300}
@@ -104,6 +105,8 @@ const classInfo = classData ? `${charClass}: ${classData.description}` : null;
             loading="eager"
             class="character-portrait"
             style="margin-bottom: 1.5rem; margin-top: 0; width: 300px; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.20); max-width: 100%; border: 2px solid #c0c0c0;"
+            format="webp"
+            quality={90}
           />
           <h1
             class="character-name"

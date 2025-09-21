@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import ZoneNovaLayout from '../../../layouts/zone-nova/LandingLayout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
 
@@ -110,7 +111,15 @@ const structuredData = generateRedeemCodesStructuredData();
               )}
               {step.image && (
                 <div class="redeem-instruction-image">
-                  <img src={step.image} alt={step.imageAlt} />
+                  <Image
+                    src={step.image}
+                    alt={step.imageAlt}
+                    loading="lazy"
+                    width={400}
+                    height={300}
+                    format="webp"
+                    quality={85}
+                  />
                 </div>
               )}
             </div>

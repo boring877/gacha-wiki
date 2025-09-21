@@ -8,11 +8,30 @@
 
 'use strict';
 
+// Performance constants - replace magic numbers
+const PERFORMANCE_CONFIG = {
+  MAX_CHARACTERS: 2,
+  SCROLL_DELAY_DESKTOP: 100,
+  SCROLL_DELAY_MOBILE: 300,
+  NOTIFICATION_TIMEOUT: 3000,
+  SEARCH_INPUT_FOCUS_DELAY: 100,
+  PRELOAD_POPULAR_COUNT: 10,
+};
+
+// Popular characters for preloading (most commonly compared)
+const POPULAR_CHARACTERS = [
+  'fleeting-bella',
+  'timeless-aiona',
+  'eternal-lanaith',
+  'forsaken-norn',
+  'shadow-luna',
+];
+
 // Global state - using const where possible for immutability
 const selectedCharacters = [];
 let filteredCharacters = [];
 const characterDataMap = new Map(); // Use Map for better performance
-const MAX_CHARACTERS = 2;
+const MAX_CHARACTERS = PERFORMANCE_CONFIG.MAX_CHARACTERS;
 
 // Cache DOM elements and event listeners to avoid repeated queries and memory leaks
 const domCache = {
@@ -27,6 +46,36 @@ const domCache = {
 // Track event listeners for cleanup
 const eventListeners = new Map();
 const cardEventListeners = new WeakMap();
+
+// Error handling and logging system
+const ErrorLogger = {
+  log(context, error, details = {}) {
+    const timestamp = new Date().toISOString();
+    const errorInfo = {
+      timestamp,
+      context,
+      message: error?.message || String(error),
+      stack: error?.stack,
+      details,
+      userAgent: navigator.userAgent,
+      url: window.location.href,
+    };
+
+    // Log to console in development
+    if (process.env.NODE_ENV === 'development' || window.location.hostname === 'localhost') {
+      console.error(`[${context}]`, errorInfo);
+    }
+
+    // In production, you could send to analytics service
+    // analytics.track('comparison_v2_error', errorInfo);
+
+    return errorInfo;
+  },
+
+  showUserError(message, type = 'error') {
+    showNotification(message, type);
+  },
+};
 
 // SECURITY: HTML escaping function to prevent XSS attacks
 function escapeHtml(unsafe) {
@@ -110,9 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /**
  * Initialize the V2 comparison system
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function initializeComparisonV2() {
+async function initializeComparisonV2() {
   try {
     // Validate required data
     if (!window.SAB_COMPARISON_V2_DATA?.characters) {
@@ -136,12 +185,45 @@ function initializeComparisonV2() {
     updateIconStates();
     updateSelectedCount();
 
-    // Silver & Blood Comparison V2: Initialized successfully
-  } catch (_error) {
-    // Failed to initialize comparison V2
-    // Show user-friendly error message
+    // Preload popular character data for better performance
+    await preloadPopularCharacters();
+
+    console.log('Silver & Blood Comparison V2: Initialized successfully');
+  } catch (error) {
+    ErrorLogger.log('initialization', error, {
+      hasCharacterData: !!window.SAB_COMPARISON_V2_DATA?.characters,
+      characterCount: window.SAB_COMPARISON_V2_DATA?.characters?.length,
+    });
+
     showErrorMessage('Failed to load character comparison. Please refresh the page.');
   }
+}
+
+/**
+ * Preload popular character data for better performance
+ * @returns {Promise<void>}
+ */
+async function preloadPopularCharacters() {
+  if (!window.SAB_COMPARISON_V2_DATA?.characters) return;
+
+  const availableCharacters = window.SAB_COMPARISON_V2_DATA.characters
+    .map(char => char.slug)
+    .filter(slug => POPULAR_CHARACTERS.includes(slug))
+    .slice(0, PERFORMANCE_CONFIG.PRELOAD_POPULAR_COUNT);
+
+  const preloadPromises = availableCharacters.map(async slug => {
+    try {
+      if (!characterDataMap.has(slug)) {
+        await loadCharacterData(slug);
+      }
+    } catch (error) {
+      ErrorLogger.log('preload', error, { characterSlug: slug });
+      // Don't fail entire preload if one character fails
+    }
+  });
+
+  await Promise.allSettled(preloadPromises);
+  console.log(`Preloaded ${availableCharacters.length} popular characters`);
 }
 
 /**
@@ -172,17 +254,6 @@ function showErrorMessage(message) {
 }
 
 /**
- * Detect if device has touch capabilities
- * Used to determine if touch filters should be used
- */
-// function isTouchDevice() {
-//   return ('ontouchstart' in window) ||
-//          (navigator.maxTouchPoints > 0) ||
-//          (navigator.msMaxTouchPoints > 0) ||
-//          (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches);
-// }
-
-/**
  * Initialize filter event listeners - Simple ZN approach
  */
 function initializeFilters() {
@@ -210,65 +281,6 @@ function initializeFilters() {
     resetBtn.addEventListener('click', resetFilters);
   }
 }
-
-/**
- * Initialize a single touch filter dropdown - Simple ZN approach
- */
-// function initializeSingleTouchFilter(filterDropdown, _filterId) {
-//   const selectedElement = filterDropdown.querySelector('.custom-dropdown-selected');
-//   const optionsElement = filterDropdown.querySelector('.custom-dropdown-options');
-//   const closeBtn = filterDropdown.querySelector('.dropdown-close-btn');
-
-//   // Open dropdown on click
-//   if (selectedElement) {
-//     selectedElement.addEventListener('click', (e) => {
-//       e.stopPropagation();
-//       // Close other dropdowns first
-//       closeAllFilterDropdowns();
-//       // Toggle this dropdown
-//       filterDropdown.classList.add('open');
-//     });
-//   }
-
-//   // Handle option selection
-//   if (optionsElement) {
-//     optionsElement.addEventListener('click', (e) => {
-//       if (e.target.closest('.dropdown-option')) {
-//         const option = e.target.closest('.dropdown-option');
-//         const value = option.dataset.value;
-//         const text = option.querySelector('.option-text').textContent;
-
-//         // Update selected display
-//         const placeholderText = selectedElement.querySelector('.placeholder-text');
-//         if (placeholderText) {
-//           placeholderText.textContent = text;
-//         }
-
-//         // Store current value on the dropdown element
-//         filterDropdown.dataset.currentValue = value;
-
-//         // Close dropdown and apply filters
-//         filterDropdown.classList.remove('open');
-//         applyFilters();
-//       }
-//     });
-//   }
-
-//   // Close dropdown with close button
-//   if (closeBtn) {
-//     closeBtn.addEventListener('click', (e) => {
-//       e.stopPropagation();
-//       filterDropdown.classList.remove('open');
-//     });
-//   }
-
-//   // Close dropdown on outside click
-//   document.addEventListener('click', (e) => {
-//     if (!filterDropdown.contains(e.target)) {
-//       filterDropdown.classList.remove('open');
-//     }
-//   });
-// }
 
 /**
  * Close all filter dropdowns - Simple ZN approach
@@ -347,7 +359,7 @@ function initializeMobileModal() {
 
     // Focus search input for better UX (reuse existing searchInput variable)
     if (searchInput) {
-      setTimeout(() => searchInput.focus(), 100);
+      setTimeout(() => searchInput.focus(), PERFORMANCE_CONFIG.SEARCH_INPUT_FOCUS_DELAY);
     }
   }
 
@@ -462,7 +474,7 @@ function initializeModalCharacterGrid() {
                 inline: 'nearest',
               });
             }
-          }, 300); // Slightly longer delay for mobile to ensure modal is closed
+          }, PERFORMANCE_CONFIG.SCROLL_DELAY_MOBILE); // Slightly longer delay for mobile to ensure modal is closed
         }
       }
     });
@@ -542,7 +554,7 @@ function addCharacter(characterSlug) {
           inline: 'nearest',
         });
       }
-    }, 100); // Small delay to ensure DOM is updated
+    }, PERFORMANCE_CONFIG.SCROLL_DELAY_DESKTOP); // Small delay to ensure DOM is updated
   }
 
   return true;
@@ -561,12 +573,12 @@ function showNotification(message, type = 'info') {
 
   document.body.appendChild(notification);
 
-  // Auto-remove after 3 seconds
+  // Auto-remove after configured timeout
   setTimeout(() => {
     if (notification.parentNode) {
       notification.remove();
     }
-  }, 3000);
+  }, PERFORMANCE_CONFIG.NOTIFICATION_TIMEOUT);
 }
 
 /**
@@ -634,7 +646,7 @@ function applyFilters() {
     };
 
     if (!window.SAB_COMPARISON_V2_DATA?.characters) {
-      // Character data not available for filtering
+      ErrorLogger.log('applyFilters', new Error('Character data not available'));
       return;
     }
 
@@ -653,8 +665,11 @@ function applyFilters() {
 
     updateIconStates();
     // Mobile dropdowns no longer used - modal system handles filtering
-  } catch (_error) {
-    // Error applying filters
+  } catch (error) {
+    ErrorLogger.log('applyFilters', error, {
+      hasCharacterData: !!window.SAB_COMPARISON_V2_DATA?.characters,
+      characterCount: window.SAB_COMPARISON_V2_DATA?.characters?.length,
+    });
   }
 }
 
@@ -673,23 +688,8 @@ function resetFilters() {
       'v2-attack-filter',
     ];
 
-    // const defaultTexts = {
-    //   'v2-class-filter': 'All Classes',
-    //   'v2-faction-filter': 'All Factions',
-    //   'v2-rarity-filter': 'All Rarities',
-    //   'v2-equipment-filter': 'All Equipment',
-    //   'v2-moon-filter': 'All Phases',
-    //   'v2-attack-filter': 'All Types'
-    // };
-
     filterIds.forEach(id => {
-      // Reset desktop select
-      const desktopSelect = document.getElementById(id);
-      if (desktopSelect && desktopSelect.tagName === 'SELECT') {
-        desktopSelect.value = '';
-      }
-
-      // Reset select element
+      // Reset select element (simplified - removed duplicate code)
       const selectElement = document.getElementById(id);
       if (selectElement && selectElement.tagName === 'SELECT') {
         selectElement.value = '';
@@ -701,10 +701,21 @@ function resetFilters() {
     if (window.SAB_COMPARISON_V2_DATA?.characters) {
       filteredCharacters = [...window.SAB_COMPARISON_V2_DATA.characters];
       updateIconStates();
-      // Mobile dropdowns no longer used - modal system handles filtering
+    } else {
+      ErrorLogger.log('resetFilters', new Error('Character data not available after reset'));
     }
-  } catch (_error) {
-    // Error resetting filters
+  } catch (error) {
+    ErrorLogger.log('resetFilters', error, {
+      filterIds: [
+        'v2-class-filter',
+        'v2-faction-filter',
+        'v2-rarity-filter',
+        'v2-equipment-filter',
+        'v2-moon-filter',
+        'v2-attack-filter',
+      ],
+      hasCharacterData: !!window.SAB_COMPARISON_V2_DATA?.characters,
+    });
   }
 }
 
@@ -714,16 +725,14 @@ function resetFilters() {
 function updateIconStates() {
   const icons = document.querySelectorAll('.character-icon');
   const filteredSlugs = new Set(filteredCharacters.map(char => char.slug));
+  const selectedSet = new Set(selectedCharacters);
 
   icons.forEach(icon => {
     const characterSlug = icon.dataset.characterSlug;
-    const isSelected = selectedCharacters.includes(characterSlug);
+    const isSelected = selectedSet.has(characterSlug);
     const isFiltered = filteredSlugs.has(characterSlug);
 
-    // Update selection state
     icon.classList.toggle('selected', isSelected);
-
-    // Update filter state
     icon.classList.toggle('filtered-out', !isFiltered);
   });
 }
@@ -1077,24 +1086,24 @@ function createCharacterStatsElement(character, detailedData) {
 async function loadCharacterData(characterSlug) {
   // Input validation
   if (!characterSlug || typeof characterSlug !== 'string') {
-    // Invalid character slug provided to loadCharacterData
+    ErrorLogger.log('loadCharacterData', new Error('Invalid character slug'), { characterSlug });
     return;
   }
 
   if (characterDataMap.has(characterSlug)) return;
 
   try {
-    // Sanitize input to prevent path traversal attacks
-    const sanitizedSlug = characterSlug.replace(/[^a-zA-Z0-9-_]/g, '');
-    if (sanitizedSlug !== characterSlug) {
-      throw new Error('Invalid character slug format');
+    // Security: Validate against known character slugs to prevent path traversal
+    const validSlugs = window.SAB_COMPARISON_V2_DATA?.characters?.map(char => char.slug) || [];
+    if (!validSlugs.includes(characterSlug)) {
+      throw new Error(`Invalid character slug: ${characterSlug}`);
     }
 
-    // Dynamic import of individual character file - use relative path for production compatibility
-    const module = await import(`../../data/silver-and-blood/characters/${sanitizedSlug}.js`);
+    // Dynamic import of individual character file
+    const module = await import(`../../data/silver-and-blood/characters/${characterSlug}.js`);
 
     // Extract character data using expected export name pattern (camelCase)
-    const exportName = sanitizedSlug.replace(/-([a-z])/g, (_match, letter) => letter.toUpperCase());
+    const exportName = characterSlug.replace(/-([a-z])/g, (_match, letter) => letter.toUpperCase());
     const characterData = module[exportName];
 
     if (characterData && typeof characterData === 'object') {
@@ -1103,13 +1112,21 @@ async function loadCharacterData(characterSlug) {
       // Fallback: try to get first valid export
       const exports = Object.values(module);
       const firstValidExport = exports.find(exp => exp && typeof exp === 'object');
-      characterDataMap.set(characterSlug, firstValidExport || {});
+
+      if (firstValidExport) {
+        characterDataMap.set(characterSlug, firstValidExport);
+      } else {
+        throw new Error(`No valid character data found in module for ${characterSlug}`);
+      }
     }
 
     // Re-render the comparison cards to show loaded data
     renderComparisonCards();
-  } catch (_error) {
-    // Could not load detailed data for character
+  } catch (error) {
+    ErrorLogger.log('loadCharacterData', error, {
+      characterSlug,
+    });
+
     // Set empty data to stop loading state
     characterDataMap.set(characterSlug, {});
     renderComparisonCards();

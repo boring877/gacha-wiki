@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { characters } from '../../data/silver-and-blood/characters.js';
 
 interface Props {
@@ -65,12 +66,15 @@ const { selectedCharacters = [] } = Astro.props;
             data-character-id={character.id}
             data-selected={selectedCharacters.includes(character.id)}
           >
-            <img
+            <Image
               src={character.image}
               alt={character.name}
               class="character-portrait"
-              width="80"
-              height="80"
+              width={80}
+              height={80}
+              format="webp"
+              quality={90}
+              loading="lazy"
             />
             <div class="character-info">
               <h3>{character.name}</h3>

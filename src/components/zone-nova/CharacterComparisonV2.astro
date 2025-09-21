@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 import {
   PVE_TIER_LIST,
@@ -8,12 +9,6 @@ import {
   NEW_PLAYER_TIER_LIST,
 } from '../../data/zone-nova/tier-lists.js';
 import { rankings, overallAnalysis } from '../../data/zone-nova/character-rankings.js';
-
-interface Props {
-  selectedCharacters?: string[];
-}
-
-const { selectedCharacters = [] } = Astro.props;
 
 // Security: Sanitize character data to prevent XSS
 function escapeHtml(unsafe: string): string {
@@ -143,14 +138,15 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
                   tabindex="0"
                   aria-label={`Select ${character.originalName}, ${character.rarity} ${character.element} ${character.class}`}
                 >
-                  <img
+                  <Image
                     src={character.image}
                     alt={character.originalName}
                     class="character-icon-img"
-                    width="60"
-                    height="80"
+                    width={60}
+                    height={80}
                     loading="lazy"
-                    onerror="this.src='/images/placeholder.png'"
+                    format="webp"
+                    quality={85}
                   />
                   <span class="character-icon-name" set:html={character.displayName} />
                 </div>
@@ -251,14 +247,15 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
             tabindex="0"
             aria-label={`Select ${character.originalName}, ${character.rarity} ${character.element} ${character.class}`}
           >
-            <img
+            <Image
               src={character.image}
               alt={character.originalName}
               class="modal-character-image"
-              width="80"
-              height="80"
+              width={80}
+              height={80}
               loading="lazy"
-              onerror="this.src='/images/placeholder.png'"
+              format="webp"
+              quality={85}
             />
             <div class="modal-character-info">
               <span class="modal-character-name" set:html={character.displayName} />

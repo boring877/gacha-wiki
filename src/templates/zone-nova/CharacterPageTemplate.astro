@@ -129,6 +129,8 @@ function getTagCategory(tag: string): string {
             alt={`${characterData.name} - ${characterData.rarity} ${characterData.class} character from Zone Nova gacha game`}
             width={300}
             height={300}
+            format="webp"
+            quality={85}
             loading="lazy"
             class="character-portrait"
           />
@@ -251,13 +253,15 @@ function getTagCategory(tag: string): string {
         <!-- Class Section -->
         <h4 class="character-class-section character-stats-subtitle">Class</h4>
         <div class="character-class-box">
-          <img
+          <Image
             src={`/images/games/zone-nova/classes/1${characterData.class}.jpg`}
             alt={`${characterData.class} class icon`}
-            width="48"
-            height="48"
+            width={48}
+            height={48}
             loading="lazy"
             class="character-class-icon"
+            format="webp"
+            quality={85}
           />
           <div class="character-class-content">
             <div class="character-class-badges">
@@ -374,12 +378,14 @@ function getTagCategory(tag: string): string {
   <div class="node-tree-description">
     <div class="description-content">
       <div class="description-image">
-        <img
+        <Image
           src="/images/games/zone-nova/nodetree/FullTree.jpg"
           alt="Complete Node Tree"
-          width="120"
-          height="120"
+          width={120}
+          height={120}
           loading="lazy"
+          format="webp"
+          quality={85}
         />
       </div>
       <div class="description-text">
@@ -412,12 +418,14 @@ function getTagCategory(tag: string): string {
 
   <div class="skill-levelup-section">
     <div class="skill-image">
-      <img
+      <Image
         src="/images/games/zone-nova/nodetree/skills.jpg"
         alt="Skill Node Tree"
-        width="100"
-        height="100"
+        width={100}
+        height={100}
         loading="lazy"
+        format="webp"
+        quality={85}
       />
     </div>
     <div class="skill-content">
@@ -450,12 +458,14 @@ function getTagCategory(tag: string): string {
 
   <div class="atk-hp-nodes">
     <div class="node-tier tier-1">
-      <img
+      <Image
         src="/images/games/zone-nova/nodetree/1.jpg"
         alt="10% ATK & HP Node"
-        width="45"
-        height="45"
+        width={45}
+        height={45}
         loading="lazy"
+        format="webp"
+        quality={85}
       />
       <div class="node-tier-content">
         <div class="node-tier-title">10% ATK & HP</div>
@@ -463,12 +473,14 @@ function getTagCategory(tag: string): string {
       </div>
     </div>
     <div class="node-tier tier-2">
-      <img
+      <Image
         src="/images/games/zone-nova/nodetree/2.jpg"
         alt="15% ATK & HP Node"
-        width="45"
-        height="45"
+        width={45}
+        height={45}
         loading="lazy"
+        format="webp"
+        quality={85}
       />
       <div class="node-tier-content">
         <div class="node-tier-title">15% ATK & HP</div>
@@ -476,12 +488,14 @@ function getTagCategory(tag: string): string {
       </div>
     </div>
     <div class="node-tier tier-3">
-      <img
+      <Image
         src="/images/games/zone-nova/nodetree/3.jpg"
         alt="20% ATK & HP Node"
-        width="45"
-        height="45"
+        width={45}
+        height={45}
         loading="lazy"
+        format="webp"
+        quality={85}
       />
       <div class="node-tier-content">
         <div class="node-tier-title">20% ATK & HP</div>
@@ -576,6 +590,8 @@ function getTagCategory(tag: string): string {
             alt={characterData.memoryCard.name}
             width={200}
             height={300}
+            format="webp"
+            quality={85}
             loading="lazy"
           />
         </div>
@@ -635,12 +651,14 @@ function getTagCategory(tag: string): string {
           <div class="equipment-limitation-layout">
             {/* Image on Left */}
             <div class="equipment-limitation-image">
-              <img
+              <Image
                 src={`/images/games/zone-nova/classes/1${characterData.class}.jpg`}
                 alt={characterData.class}
-                width="80"
-                height="80"
+                width={80}
+                height={80}
                 loading="lazy"
+                format="webp"
+                quality={85}
               />
             </div>
 

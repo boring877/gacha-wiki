@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import CharacterRankingsLayout from '../../../layouts/zone-nova/CharacterRankingsLayout.astro';
 import { ZONE_NOVA_CHARACTERS } from '../../../data/zone-nova/characters.js';
 import {
@@ -81,13 +82,15 @@ import {
           ).map((char: any) => (
             <button class="character-select-card" data-character-id={char.id}>
               <div class="character-rank-number">{overallAnalysis[char.id].overallRank}</div>
-              <img
+              <Image
                 src={char.image}
                 alt={char.name}
                 class="character-portrait"
-                width="80"
-                height="80"
+                width={80}
+                height={80}
                 loading="lazy"
+                format="webp"
+                quality={85}
               />
               <div class="character-info">
                 <h3>{char.name}</h3>

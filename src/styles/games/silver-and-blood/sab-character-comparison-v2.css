@@ -1,7 +1,8 @@
 /* ==========================================
    Silver & Blood Character Comparison V2 Styles
    Card-based comparison system with SAB color scheme
-   Simple design - No hover effects, animations, or shadows
+   Simple design - No hover, animations, shadows or fancy effects
+   Clean hierarchy with proper visual order
    ========================================== */
 
 /* ===== CHARACTER DECK HEADER - ICON BAR ===== */
@@ -654,18 +655,7 @@
   display: none !important;
 }
 
-/* Legacy dropdown styles removed - now using touch-friendly modal system */
-
 /* ===== RESPONSIVE DESIGN ===== */
-
-/* Desktop/Mobile Visibility - Follow ZN pattern */
-.desktop-only {
-  display: block;
-}
-
-.mobile-only {
-  display: none;
-}
 
 /* Touch devices and mobile responsive design - Hide main filters for ALL touch devices */
 @media (max-width: 1024px),
@@ -825,8 +815,6 @@
   .selected-count {
     font-size: 0.85rem;
   }
-
-  /* Old dropdown styles removed */
 
   .comparison-container-external {
     padding: 0.5rem;
@@ -1064,15 +1052,8 @@
   overflow: hidden;
 }
 
-.character-selection-button:hover {
-  border-color: var(--sab-calm-red);
-  background: rgba(166, 77, 77, 0.1); /* Fallback for older browsers */
-  background: color-mix(in srgb, var(--sab-input-bg) 90%, var(--sab-calm-red) 10%);
-}
-
 .character-selection-button:active {
-  background: rgba(166, 77, 77, 0.15); /* Fallback for older browsers */
-  background: color-mix(in srgb, var(--sab-input-bg) 85%, var(--sab-calm-red) 15%);
+  background: rgba(166, 77, 77, 0.15);
 }
 
 .character-selection-button:focus {
@@ -1217,11 +1198,6 @@
   line-height: 1; /* Ensures proper centering */
 }
 
-.modal-close-btn:hover {
-  background: #a64d4d; /* Fallback for older browsers */
-  background: color-mix(in srgb, var(--sab-dark-red) 80%, black 20%);
-}
-
 .modal-search-bar {
   padding: 1rem;
   background: var(--sab-card-bg-gradient);
@@ -1284,20 +1260,13 @@
   justify-content: flex-start;
 }
 
-.modal-character-card:hover {
-  border-color: var(--sab-calm-red);
-  background: rgba(166, 77, 77, 0.1); /* Fallback for older browsers */
-  background: color-mix(in srgb, var(--sab-card-bg) 90%, var(--sab-calm-red) 10%);
-}
-
 .modal-character-card.filtered-out {
   display: none;
 }
 
 .modal-character-card.selected {
   border-color: var(--sab-muted-gold);
-  background: rgba(202, 158, 70, 0.15); /* Fallback for older browsers */
-  background: color-mix(in srgb, var(--sab-card-bg) 85%, var(--sab-muted-gold) 15%);
+  background: rgba(202, 158, 70, 0.15);
 }
 
 .modal-character-card.selected::after {
@@ -1448,6 +1417,50 @@
     -webkit-line-clamp: 2;
     line-clamp: 2; /* Standard property for compatibility */
   }
+}
+
+/* ===== PAGE HEADER SECTION ===== */
+.page-header-section {
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-card-border);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Usage Tips */
+.usage-tips {
+  background: var(--sab-input-bg);
+  border: 2px solid var(--sab-calm-red);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.usage-tips h3 {
+  color: var(--sab-calm-red);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.usage-tips ul {
+  color: var(--sab-text-light);
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.usage-tips li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.usage-tips li:last-child {
+  margin-bottom: 0;
+}
+
+.usage-tips strong {
+  color: var(--sab-blue-silver);
 }
 
 /* ===== MOBILE MODAL RESPONSIVE FIXES ===== */

@@ -69,7 +69,16 @@ import { Image } from 'astro:assets';
           <div class="hw-gift-box-card" id={box.id} data-box={box.id}>
             <div class="hw-gift-box-header">
               <div class="hw-gift-box-image">
-                <img src={box.image} alt={box.name} class="gift-box-img" loading="lazy" />
+                <Image
+                  src={box.image}
+                  alt={box.name}
+                  class="gift-box-img"
+                  width={80}
+                  height={80}
+                  format="webp"
+                  quality={85}
+                  loading="lazy"
+                />
               </div>
               <div class="hw-gift-box-info">
                 <h3 class="hw-gift-box-name">{box.name}</h3>

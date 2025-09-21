@@ -979,17 +979,17 @@ async function loadCharacterData(characterSlug) {
   if (characterDataMap.has(characterSlug)) return;
 
   try {
-    // Sanitize input to prevent path traversal attacks
-    const sanitizedSlug = characterSlug.replace(/[^a-zA-Z0-9-_]/g, '');
-    if (sanitizedSlug !== characterSlug) {
-      throw new Error('Invalid character slug format');
+    // Security: Validate against known character slugs to prevent path traversal
+    const validSlugs = window.ZN_COMPARISON_V2_DATA?.characters?.map(char => char.slug) || [];
+    if (!validSlugs.includes(characterSlug)) {
+      throw new Error(`Invalid character slug: ${characterSlug}`);
     }
 
-    // Dynamic import of individual character file - use relative path for production compatibility
-    const module = await import(`../../data/zone-nova/characters/${sanitizedSlug}.js`);
+    // Dynamic import of individual character file
+    const module = await import(`../../data/zone-nova/characters/${characterSlug}.js`);
 
     // Extract character data using expected export name pattern (characterSlug + 'Data')
-    const exportName = `${sanitizedSlug}Data`;
+    const exportName = `${characterSlug}Data`;
     const characterData = module[exportName];
 
     if (characterData && typeof characterData === 'object') {

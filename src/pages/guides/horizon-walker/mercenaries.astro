@@ -9,7 +9,6 @@ import {
 // Extract filter options from enhanced data structure
 const { rarities } = mercenaryGameInfo;
 
-
 // Calculate enhanced stats for display
 const totalMercenaries = HORIZON_WALKER_MERCENARIES.length;
 const exCount = HORIZON_WALKER_MERCENARIES.filter(merc => merc.rarity === 'EX').length;
@@ -26,7 +25,6 @@ export const prerender = true;
 ---
 
 <MercenaryLayout title={title} description={description} gameTitle="Mercenaries Database">
-
   <section class="hw-char-db-page-flex">
     <div class="hw-char-db-main-content">
       <div class="hw-char-db-content-wrapper">
@@ -161,12 +159,14 @@ export const prerender = true;
                 <div class="mobile-card-header">
                   <div class="mobile-card-image">
                     <div class="mobile-character-image">
-                      <img
+                      <Image
                         src={mercenary.image}
                         alt={mercenary.name}
                         class="character-img"
-                        width="64"
-                        height="64"
+                        width={64}
+                        height={64}
+                        format="webp"
+                        quality={85}
                         loading="lazy"
                       />
                     </div>

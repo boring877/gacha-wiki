@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 ---
 
@@ -75,13 +76,15 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
             data-character-slug={char.slug}
             data-selected="false"
           >
-            <img
+            <Image
               src={char.image}
               alt={char.name}
               class="character-portrait"
-              width="80"
-              height="80"
+              width={80}
+              height={80}
               loading="lazy"
+              format="webp"
+              quality={85}
             />
             <div class="character-info">
               <h3>{char.name}</h3>

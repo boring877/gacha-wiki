@@ -17,7 +17,6 @@ import {
 // Extract filter options from enhanced data structure
 const { rarities } = gameInfo;
 
-
 // Calculate enhanced stats for display
 const totalCharacters = HORIZON_WALKER_CHARACTERS.length;
 const exCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'EX').length;
@@ -37,7 +36,6 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
   gameTitle="Character Database"
   showBackButton={false}
 >
-
   <section class="hw-char-db-page-flex">
     <div class="hw-char-db-main-content">
       <div class="hw-char-db-content-wrapper">
@@ -174,12 +172,14 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                 <div class="mobile-card-header">
                   <div class="mobile-card-image">
                     <div class="mobile-character-image">
-                      <img
+                      <Image
                         src={char.image}
                         alt={char.name}
                         class="character-img"
-                        width="64"
-                        height="64"
+                        width={64}
+                        height={64}
+                        format="webp"
+                        quality={85}
                         loading="lazy"
                       />
                     </div>

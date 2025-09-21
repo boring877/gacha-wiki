@@ -100,14 +100,20 @@ function getTagCategory(tag: string): string {
                 class="character-img"
                 width={64}
                 height={64}
+                format="webp"
+                quality={85}
               />
             </div>
-            <img
+            <Image
               src={`/images/games/zone-nova/classes/1${char.class}.jpg`}
               alt={char.class}
               class="mobile-class-icon-standalone"
+              width={24}
+              height={24}
               loading="lazy"
               title={char.class}
+              format="webp"
+              quality={85}
             />
           </div>
           <div class="mobile-card-title-group">

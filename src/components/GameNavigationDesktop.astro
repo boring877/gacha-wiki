@@ -1,5 +1,6 @@
 ---
 import { getGameData, isValidGameKey, type GameKey } from '../data/game-navigation';
+import { Image } from 'astro:assets';
 
 interface Props {
   currentPath?: string;
@@ -60,7 +61,16 @@ if (!game) return;
           class="game-link"
         >
           <div class="game-image-container">
-            <img src={game.image} alt={game.name} class="game-image" loading="lazy" />
+            <Image
+              src={game.image}
+              alt={game.name}
+              class="game-image"
+              loading="lazy"
+              width={80}
+              height={80}
+              format="webp"
+              quality={90}
+            />
             <div class="game-image-overlay"></div>
           </div>
           <h2 class="game-title">{game.name}</h2>

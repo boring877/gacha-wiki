@@ -16,6 +16,7 @@
  * - Fallback JavaScript implementation for reliability
  */
 
+import { Image } from 'astro:assets';
 import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 
 // Sort characters alphabetically by name for display
@@ -152,13 +153,15 @@ const tagCategories = {
             data-faction={character.faction}
           >
             <div class="character-info">
-              <img
+              <Image
                 src={character.image}
                 alt={character.name}
                 class="character-portrait"
-                width="80"
-                height="80"
+                width={80}
+                height={80}
                 loading="lazy"
+                format="webp"
+                quality={90}
               />
               <h3>{character.name}</h3>
               <div class="character-badges">

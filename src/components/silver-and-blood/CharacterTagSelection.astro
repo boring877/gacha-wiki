@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { characters } from '../../data/silver-and-blood/characters.js';
 
 // Extract all unique tags from characters and sort alphabetically
@@ -53,7 +54,15 @@ const allTags = [...new Set(characters.flatMap(char => char.tags || []))].sort()
           data-faction={character.faction}
         >
           <div class="character-portrait">
-            <img src={character.image} alt={character.name} loading="lazy" />
+            <Image
+              src={character.image}
+              alt={character.name}
+              loading="lazy"
+              width={120}
+              height={120}
+              format="webp"
+              quality={90}
+            />
             <div class="character-rarity rarity-{character.rarity?.toLowerCase()}">
               {character.rarity}
             </div>

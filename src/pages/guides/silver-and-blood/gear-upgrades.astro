@@ -1,5 +1,6 @@
 ---
 import GearUpgradesLayout from '../../../layouts/silver-and-blood/GearUpgradesLayout.astro';
+import { Image } from 'astro:assets';
 import { gearUpgradesData } from '../../../data/silver-and-blood/gear-upgrades.js';
 
 export const prerender = true;
@@ -26,10 +27,14 @@ const { meta, introduction, hammerMechanics, slotRates, blessings, blessingTiers
 
         <div class="hammer-section">
           <div class="hammer-image-container">
-            <img
+            <Image
               src="/images/games/silver-and-blood/gears/Hammer.jpg"
               alt="Silver and Blood SoulsStrike Hammer for Tier 9 gear upgrades"
               class="hammer-image"
+              width={400}
+              height={300}
+              format="webp"
+              quality={85}
             />
             <p class="hammer-caption">SoulsStrike Hammer</p>
           </div>
@@ -49,10 +54,14 @@ const { meta, introduction, hammerMechanics, slotRates, blessings, blessingTiers
         <p class="hammer-detail">{hammerMechanics.details[0]}</p>
 
         <div class="hammer-image-container">
-          <img
+          <Image
             src="/images/games/silver-and-blood/gears/Item_color_changes.jpg"
             alt="Silver and Blood gear showing background color change after SoulsStrike hammer"
             class="hammer-img"
+            width={400}
+            height={300}
+            format="webp"
+            quality={85}
           />
           <p class="hammer-caption">Background color changes after first hammer</p>
         </div>
@@ -60,10 +69,14 @@ const { meta, introduction, hammerMechanics, slotRates, blessings, blessingTiers
         <p class="hammer-detail">{hammerMechanics.details[1]}</p>
 
         <div class="hammer-image-container">
-          <img
+          <Image
             src="/images/games/silver-and-blood/gears/item_options.jpg"
             alt="Silver and Blood gear interface showing Enhance and Recast options after hammer"
             class="hammer-img"
+            width={400}
+            height={300}
+            format="webp"
+            quality={85}
           />
           <p class="hammer-caption">Additional options appear after hammering</p>
         </div>
@@ -99,10 +112,14 @@ const { meta, introduction, hammerMechanics, slotRates, blessings, blessingTiers
             </p>
 
             <div class="recast-image-container">
-              <img
+              <Image
                 src="/images/games/silver-and-blood/gears/Recasting.jpg"
                 alt="Silver and Blood gear recasting interface for rerolling Echo blessings"
                 class="recast-img"
+                width={400}
+                height={300}
+                format="webp"
+                quality={85}
               />
               <p class="recast-caption">Recasting interface for rerolling sub-stats</p>
             </div>
@@ -142,20 +159,28 @@ const { meta, introduction, hammerMechanics, slotRates, blessings, blessingTiers
 
               <!-- Lock Image -->
               <div class="image-container-center">
-                <img
+                <Image
                   src="/images/games/silver-and-blood/gears/Lock.jpg"
                   alt="Silver and Blood gear lock blessing feature to preserve desired stats"
                   class="gear-image"
+                  width={400}
+                  height={300}
+                  format="webp"
+                  quality={85}
                 />
                 <p class="image-caption">Lock your desired blessings</p>
               </div>
 
               <!-- Lock Cost Image -->
               <div class="image-container-center">
-                <img
+                <Image
                   src="/images/games/silver-and-blood/gears/Lockcost.jpg"
                   alt="Lock cost increase"
                   class="gear-image"
+                  width={400}
+                  height={300}
+                  format="webp"
+                  quality={85}
                 />
                 <p class="image-caption">Cost increases with each locked blessing</p>
               </div>
@@ -167,10 +192,14 @@ const { meta, introduction, hammerMechanics, slotRates, blessings, blessingTiers
 
               <!-- After Locking Image -->
               <div class="image-container-center">
-                <img
+                <Image
                   src="/images/games/silver-and-blood/gears/Afterlocking.jpg"
                   alt="After locking example"
                   class="gear-image"
+                  width={400}
+                  height={300}
+                  format="webp"
+                  quality={85}
                 />
                 <p class="image-caption">Example: 2 locked stats = 2 hammer cost</p>
               </div>
@@ -278,10 +307,14 @@ const { meta, introduction, hammerMechanics, slotRates, blessings, blessingTiers
 
             <!-- Refinement Image -->
             <div class="refinement-image-container">
-              <img
+              <Image
                 src="/images/games/silver-and-blood/gears/Refinement.jpg"
                 alt="Refinement interface"
                 class="refinement-img"
+                width={400}
+                height={300}
+                format="webp"
+                quality={85}
               />
               <p class="refinement-caption">Refinement interface for changing blessing levels</p>
             </div>
@@ -296,10 +329,14 @@ const { meta, introduction, hammerMechanics, slotRates, blessings, blessingTiers
 
             <!-- Lock Cost 1 Image Again -->
             <div class="image-container-center">
-              <img
+              <Image
                 src="/images/games/silver-and-blood/gears/Lockcost1.jpg"
                 alt="Lock cost with refinement"
                 class="gear-image"
+                width={400}
+                height={300}
+                format="webp"
+                quality={85}
               />
               <p class="image-caption">Refinement cost increases with locked stats</p>
             </div>

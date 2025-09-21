@@ -41,6 +41,8 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
                   class="character-img"
                   width={40}
                   height={40}
+                  format="webp"
+                  quality={85}
                   loading="lazy"
                 />
               </div>
@@ -62,12 +64,16 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
               </span>
             </td>
             <td style="text-align: center; vertical-align: middle;">
-              <img
+              <Image
                 src={`/images/games/zone-nova/classes/1${char.class}.jpg`}
                 alt={char.class}
                 class="class-icon-standalone"
+                width={24}
+                height={24}
                 loading="lazy"
                 title={char.class}
+                format="webp"
+                quality={85}
               />
             </td>
             <td>
