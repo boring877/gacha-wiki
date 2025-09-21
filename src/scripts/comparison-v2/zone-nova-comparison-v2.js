@@ -8,9 +8,6 @@
 
 'use strict';
 
-// Import ScrollManager for centralized scroll control
-import { scrollManager } from '../../utils/scroll-manager.js';
-
 // Global state - using const where possible for immutability
 const selectedCharacters = [];
 let filteredCharacters = [];
@@ -331,18 +328,7 @@ function initializeMobileModal() {
     // Open modal
     modal.classList.add('open');
 
-    try {
-      // Use ScrollManager for centralized scroll locking
-      scrollManager.lockScroll('zone-nova-comparison-modal', {
-        preservePosition: true,
-        touchAction: 'auto', // Allow scrolling within modal
-        preventOverscroll: true,
-      });
-    } catch (error) {
-      console.error('Zone Nova Comparison: Error locking scroll:', error);
-      // Fallback to old method if ScrollManager fails
-      document.body.classList.add('modal-open');
-    }
+    document.body.style.overflow = 'hidden';
 
     // Focus search input for better UX
     if (searchInput) {
@@ -355,14 +341,7 @@ function initializeMobileModal() {
 
     modal.classList.remove('open');
 
-    try {
-      // Use ScrollManager to restore scrolling
-      scrollManager.unlockScroll('zone-nova-comparison-modal');
-    } catch (error) {
-      console.error('Zone Nova Comparison: Error unlocking scroll:', error);
-      // Fallback to old method if ScrollManager fails
-      document.body.classList.remove('modal-open');
-    }
+    document.body.style.overflow = '';
 
     currentSelectionSlot = null;
 

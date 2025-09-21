@@ -177,9 +177,6 @@ import MobileHeader from './MobileHeader.astro';
 </style>
 
 <script>
-  // Import ScrollManager for centralized scroll control
-  import { scrollManager } from '../utils/scroll-manager.js';
-
   // Mobile menu functionality
   document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.getElementById('hamburger');
@@ -198,40 +195,19 @@ import MobileHeader from './MobileHeader.astro';
 
       if (mobileMenu) {
         if (isMenuOpen) {
-          try {
-            // Use ScrollManager for centralized scroll locking
-            scrollManager.lockScroll(COMPONENT_ID, {
-              preservePosition: true,
-              touchAction: 'auto', // Allow scrolling within menu
-              preventOverscroll: true,
-            });
+          // Simple menu opening without scroll manager
+          mobileMenu.classList.add('active');
+          document.body.style.overflow = 'hidden';
 
-            mobileMenu.classList.add('active');
-
-            // Ensure the menu drawer is visible by scrolling to top
-            const drawer = mobileMenu.querySelector('.mobile-menu-drawer');
-            if (drawer) {
-              drawer.scrollTop = 0;
-            }
-          } catch (error) {
-            console.error('Header: Error opening mobile menu:', error);
-            isMenuOpen = false;
-            if (hamburger) {
-              hamburger.setAttribute('aria-expanded', 'false');
-            }
+          // Ensure the menu drawer is visible by scrolling to top
+          const drawer = mobileMenu.querySelector('.mobile-menu-drawer');
+          if (drawer) {
+            drawer.scrollTop = 0;
           }
         } else {
-          try {
-            // Use ScrollManager to restore scrolling
-            scrollManager.unlockScroll(COMPONENT_ID);
-
-            mobileMenu.classList.remove('active');
-          } catch (error) {
-            console.error('Header: Error closing mobile menu:', error);
-            // Force cleanup on error
-            scrollManager.forceUnlockAll();
-            mobileMenu.classList.remove('active');
-          }
+          // Simple menu closing without scroll manager
+          mobileMenu.classList.remove('active');
+          document.body.style.overflow = '';
         }
       }
     }
@@ -280,14 +256,7 @@ import MobileHeader from './MobileHeader.astro';
     // Cleanup on page unload
     window.addEventListener('beforeunload', () => {
       if (isMenuOpen) {
-        scrollManager.unlockScroll(COMPONENT_ID);
-      }
-    });
-
-    // Cleanup on visibility change (mobile browser switching)
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden && isMenuOpen) {
-        closeMenu();
+        document.body.style.overflow = '';
       }
     });
   });

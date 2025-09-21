@@ -8,9 +8,6 @@
 
 'use strict';
 
-// Import ScrollManager for centralized scroll control
-import { scrollManager } from '../../utils/scroll-manager.js';
-
 // Global state - using const where possible for immutability
 const selectedCharacters = [];
 let filteredCharacters = [];
@@ -346,18 +343,7 @@ function initializeMobileModal() {
     // Open modal with animation
     modal.classList.add('open');
 
-    try {
-      // Use ScrollManager for centralized scroll locking
-      scrollManager.lockScroll('silver-and-blood-comparison-modal', {
-        preservePosition: true,
-        touchAction: 'auto', // Allow scrolling within modal
-        preventOverscroll: true,
-      });
-    } catch (error) {
-      console.error('Silver & Blood Comparison: Error locking scroll:', error);
-      // Fallback to old method if ScrollManager fails
-      document.body.classList.add('modal-open');
-    }
+    document.body.style.overflow = 'hidden';
 
     // Focus search input for better UX (reuse existing searchInput variable)
     if (searchInput) {
@@ -370,14 +356,7 @@ function initializeMobileModal() {
 
     modal.classList.remove('open');
 
-    try {
-      // Use ScrollManager to restore scrolling
-      scrollManager.unlockScroll('silver-and-blood-comparison-modal');
-    } catch (error) {
-      console.error('Silver & Blood Comparison: Error unlocking scroll:', error);
-      // Fallback to old method if ScrollManager fails
-      document.body.classList.remove('modal-open');
-    }
+    document.body.style.overflow = '';
 
     currentSelectionSlot = null;
 

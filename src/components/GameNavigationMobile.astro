@@ -95,9 +95,6 @@ if (!game) return;
 </div>
 
 <script>
-  // Import ScrollManager for centralized scroll control
-  import { scrollManager } from '../utils/scroll-manager.js';
-
   // Mobile Navigation - Full-screen popup with viewport isolation
   document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.getElementById('navToggle');
@@ -117,39 +114,15 @@ if (!game) return;
 
       if (mobileMenu) {
         if (isMenuOpen) {
-          try {
-            // Use ScrollManager for centralized scroll locking
-            scrollManager.lockScroll(COMPONENT_ID, {
-              preservePosition: true,
-              touchAction: 'none',
-              preventOverscroll: true,
-            });
-
-            mobileMenu.classList.add('active');
-            overlay?.classList.add('active');
-
-            // Menu will appear at current viewport - no scrolling needed
-          } catch (error) {
-            console.error('GameNavigationMobile: Error opening menu:', error);
-            isMenuOpen = false;
-            if (toggle) {
-              toggle.setAttribute('aria-expanded', 'false');
-            }
-          }
+          // Simple menu opening
+          mobileMenu.classList.add('active');
+          overlay?.classList.add('active');
+          document.body.style.overflow = 'hidden';
         } else {
-          try {
-            // Use ScrollManager to restore scrolling
-            scrollManager.unlockScroll(COMPONENT_ID);
-
-            mobileMenu.classList.remove('active');
-            overlay?.classList.remove('active');
-          } catch (error) {
-            console.error('GameNavigationMobile: Error closing menu:', error);
-            // Force cleanup on error
-            scrollManager.forceUnlockAll();
-            mobileMenu.classList.remove('active');
-            overlay?.classList.remove('active');
-          }
+          // Simple menu closing
+          mobileMenu.classList.remove('active');
+          overlay?.classList.remove('active');
+          document.body.style.overflow = '';
         }
       }
     }
@@ -197,14 +170,7 @@ if (!game) return;
     // Cleanup on page unload
     window.addEventListener('beforeunload', () => {
       if (isMenuOpen) {
-        scrollManager.unlockScroll(COMPONENT_ID);
-      }
-    });
-
-    // Cleanup on visibility change (mobile browser switching)
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden && isMenuOpen) {
-        closeMenu();
+        document.body.style.overflow = '';
       }
     });
 
