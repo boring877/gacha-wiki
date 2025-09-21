@@ -12,12 +12,19 @@ const MS_PER_MINUTE = 1000 * 60;
 
 class HorizonWalkerClockTimer {
   constructor() {
-    this.clockInterval = null;
     this.animationFrame = null;
     this.holidayInterval = null;
     this.config = null;
     this.elements = {}; // Store all DOM elements in one object
     this.cleanupHandler = null; // Store cleanup handler reference
+
+    // Performance monitoring
+    this.performanceStats = {
+      updateCount: 0,
+      lastFPS: 0,
+      frameCount: 0,
+      lastFrameTime: performance.now(),
+    };
 
     this.init();
   }
@@ -117,12 +124,22 @@ class HorizonWalkerClockTimer {
     let lastSecond = Math.floor(Date.now() / 1000);
 
     const loop = () => {
+      const currentTime = performance.now();
       const currentSecond = Math.floor(Date.now() / 1000);
 
       // Only update when second actually changes for better performance
       if (currentSecond !== lastSecond) {
         this.updateAllDisplays();
+        this.performanceStats.updateCount++;
         lastSecond = currentSecond;
+      }
+
+      // Update performance stats
+      this.performanceStats.frameCount++;
+      if (currentTime - this.performanceStats.lastFrameTime >= 1000) {
+        this.performanceStats.lastFPS = this.performanceStats.frameCount;
+        this.performanceStats.frameCount = 0;
+        this.performanceStats.lastFrameTime = currentTime;
       }
 
       this.animationFrame = requestAnimationFrame(loop);
@@ -477,17 +494,24 @@ class HorizonWalkerClockTimer {
   }
 
   /**
-   * Cleanup intervals and event listeners
+   * Get performance statistics for monitoring
+   */
+  getPerformanceStats() {
+    return {
+      ...this.performanceStats,
+      elementsCount: Object.keys(this.elements).length,
+      timezone: 'KST',
+    };
+  }
+
+  /**
+   * Cleanup intervals and event listeners - comprehensive memory management
    */
   cleanup() {
     // Clear animation frame and intervals
     if (this.animationFrame) {
       cancelAnimationFrame(this.animationFrame);
       this.animationFrame = null;
-    }
-    if (this.clockInterval) {
-      clearInterval(this.clockInterval);
-      this.clockInterval = null;
     }
     if (this.holidayInterval) {
       clearInterval(this.holidayInterval);
@@ -506,6 +530,7 @@ class HorizonWalkerClockTimer {
     this.clockMinutes = null;
     this.clockSeconds = null;
     this.config = null;
+    this.performanceStats = null;
   }
 }
 

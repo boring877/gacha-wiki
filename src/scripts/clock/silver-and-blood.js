@@ -1,131 +1,181 @@
 /**
  * Silver and Blood Clock Timer Functionality
+ * Optimized clock with performance improvements matching Horizon Walker
  * Handles countdown timers for Silver and Blood daily resets, events, and region switching
  */
 
+// Constants for performance optimization
+const SAB_HOLIDAY_UPDATE_INTERVAL = 3600000; // 1 hour for holiday timers
+const MS_PER_DAY = 1000 * 60 * 60 * 24;
+const MS_PER_HOUR = 1000 * 60 * 60;
+const MS_PER_MINUTE = 1000 * 60;
+
 class SilverAndBloodClockTimer {
   constructor() {
-    this.clockInterval = null;
     this.animationFrame = null;
+    this.holidayInterval = null;
     this.currentRegion = 'us'; // default region
     this.config = null;
+    this.elements = {}; // Store all DOM elements in one object for better performance
+    this.cleanupHandler = null; // Store cleanup handler reference
 
-    // DOM elements - will be set in setupClock
-    this.clockHours = null;
-    this.clockMinutes = null;
-    this.clockSeconds = null;
-    this.currentDate = null;
-    this.currentUTC = null;
-    this.utcNote = null;
-    this.regionName = null;
-    this.gameStatus = null;
-    this.timerDescription = null;
-    this.launchDays = null;
-    this.weeklyTime = null;
-    this.monthlyTime = null;
-    this.weeklyResetSubtitle = null;
-    this.monthlyResetSubtitle = null;
-    this.maintenanceStartTime = null;
-    this.maintenanceStartLabel = null;
-    this.maintenanceEndTime = null;
-    this.maintenanceEndLabel = null;
-    this.maintenanceSubtitle = null;
-    this.serverStatusDot = null;
-    this.serverStatusText = null;
+    // Performance monitoring
+    this.performanceStats = {
+      updateCount: 0,
+      lastFPS: 0,
+      frameCount: 0,
+      lastFrameTime: performance.now(),
+    };
 
     this.init();
   }
 
   init() {
+    // Initialize immediately for faster load
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.setupClock());
+      document.addEventListener('DOMContentLoaded', () => this.setupClock(), { once: true });
     } else {
       this.setupClock();
     }
   }
 
   setupClock() {
-    // Get configuration from window object (set by layout)
-    this.config = window.silverAndBloodConfig;
-    if (!this.config) {
-      // Silver and Blood config not found
-      return;
+    try {
+      // Get configuration from window object (set by layout)
+      this.config = window.silverAndBloodConfig;
+      if (!this.config) {
+        console.warn('Silver and Blood config not found');
+        return;
+      }
+
+      this.currentRegion = this.config.currentRegion || 'us';
+
+      // Initialize DOM elements efficiently
+      this.initializeDOMElements();
+
+      // Check if critical elements exist before proceeding
+      if (!this.elements.clockHours) {
+        console.warn('Clock elements not found');
+        return;
+      }
+
+      // Setup region switcher
+      this.setupRegionSwitcher();
+
+      // Initial updates
+      this.updateAllDisplays();
+      this.updateHolidayTimers();
+
+      // Start optimized clock loop
+      this.startClockLoop();
+
+      // Setup cleanup handler
+      this.cleanupHandler = () => this.cleanup();
+      window.addEventListener('beforeunload', this.cleanupHandler);
+
+      // Also cleanup on page visibility change for better performance
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          this.pauseClockLoop();
+        } else {
+          this.resumeClockLoop();
+        }
+      });
+    } catch (error) {
+      console.error('Failed to setup Silver and Blood clock:', error);
+      this.cleanup();
     }
-
-    this.currentRegion = this.config.currentRegion || 'us';
-
-    // Initialize DOM elements
-    this.initializeDOMElements();
-
-    // Setup region switcher
-    this.setupRegionSwitcher();
-
-    // Initial UI update
-    this.updateAllDisplays();
-
-    // Start optimized clock loop
-    this.startClockLoop();
-
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', () => this.cleanup());
   }
 
   initializeDOMElements() {
-    // Main clock elements
-    this.clockHours = document.getElementById('clockHours');
-    this.clockMinutes = document.getElementById('clockMinutes');
-    this.clockSeconds = document.getElementById('clockSeconds');
-    this.currentDate = document.getElementById('currentDate');
-    this.currentUTC = document.getElementById('currentUTC');
-    this.utcNote = document.getElementById('utcNote');
+    // Batch DOM queries for better performance
+    const elementIds = [
+      'clockHours',
+      'clockMinutes',
+      'clockSeconds',
+      'currentDate',
+      'currentUTC',
+      'utcNote',
+      'regionName',
+      'gameStatus',
+      'timerDescription',
+      'launchDays',
+      'weeklyTime',
+      'monthlyTime',
+      'weeklyResetSubtitle',
+      'monthlyResetSubtitle',
+      'maintenanceStartTime',
+      'maintenanceStartLabel',
+      'maintenanceEndTime',
+      'maintenanceEndLabel',
+      'maintenanceSubtitle',
+      'serverStatusDot',
+      'serverStatusText',
+      'halloweenTime',
+      'newyearTime',
+    ];
 
-    // Region and status elements
-    this.regionName = document.getElementById('regionName');
-    this.gameStatus = document.getElementById('gameStatus');
-    this.timerDescription = document.getElementById('timerDescription');
+    // Query all elements at once and validate existence
+    elementIds.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        this.elements[id] = element;
+      }
+    });
 
-    // Timer cards
-    this.launchDays = document.getElementById('launchDays');
-    this.weeklyTime = document.getElementById('weeklyTime');
-    this.monthlyTime = document.getElementById('monthlyTime');
-    this.weeklyResetSubtitle = document.getElementById('weeklyResetSubtitle');
-    this.monthlyResetSubtitle = document.getElementById('monthlyResetSubtitle');
-
-    // Maintenance elements
-    this.maintenanceStartTime = document.getElementById('maintenanceStartTime');
-    this.maintenanceStartLabel = document.getElementById('maintenanceStartLabel');
-    this.maintenanceEndTime = document.getElementById('maintenanceEndTime');
-    this.maintenanceEndLabel = document.getElementById('maintenanceEndLabel');
-    this.maintenanceSubtitle = document.getElementById('maintenanceSubtitle');
-
-    // Server status elements
-    this.serverStatusDot = document.getElementById('serverStatusDot');
-    this.serverStatusText = document.getElementById('serverStatusText');
-
-    // Special event timers
-    this.halloweenTime = document.getElementById('halloweenTime');
-    this.newyearTime = document.getElementById('newyearTime');
+    // Create shortcuts for frequently accessed elements
+    this.clockHours = this.elements.clockHours;
+    this.clockMinutes = this.elements.clockMinutes;
+    this.clockSeconds = this.elements.clockSeconds;
   }
 
   /**
-   * Start optimized clock loop using requestAnimationFrame
+   * Start optimized clock loop using requestAnimationFrame with performance monitoring
    */
   startClockLoop() {
     let lastSecond = Math.floor(Date.now() / 1000);
 
     const loop = () => {
+      const currentTime = performance.now();
       const currentSecond = Math.floor(Date.now() / 1000);
 
       // Only update when second actually changes for better performance
       if (currentSecond !== lastSecond) {
         this.updateAllDisplays();
+        this.performanceStats.updateCount++;
         lastSecond = currentSecond;
+      }
+
+      // Update performance stats
+      this.performanceStats.frameCount++;
+      if (currentTime - this.performanceStats.lastFrameTime >= 1000) {
+        this.performanceStats.lastFPS = this.performanceStats.frameCount;
+        this.performanceStats.frameCount = 0;
+        this.performanceStats.lastFrameTime = currentTime;
       }
 
       this.animationFrame = requestAnimationFrame(loop);
     };
 
     this.animationFrame = requestAnimationFrame(loop);
+
+    // Holiday timers update every hour (performance optimization)
+    this.holidayInterval = setInterval(() => {
+      this.updateHolidayTimers();
+    }, SAB_HOLIDAY_UPDATE_INTERVAL);
+  }
+
+  pauseClockLoop() {
+    if (this.animationFrame) {
+      cancelAnimationFrame(this.animationFrame);
+      this.animationFrame = null;
+    }
+  }
+
+  resumeClockLoop() {
+    if (!this.animationFrame) {
+      this.startClockLoop();
+    }
   }
 
   updateAllDisplays() {
@@ -169,36 +219,22 @@ class SilverAndBloodClockTimer {
     const regionConfig = this.config.regions[this.currentRegion];
     if (!regionConfig) return;
 
-    if (this.regionName) {
-      this.regionName.textContent = regionConfig.name;
-    }
-
-    if (this.gameStatus) {
-      this.gameStatus.textContent = regionConfig.status;
-    }
-
-    if (this.utcNote) {
-      this.utcNote.textContent = `This is based on ${regionConfig.utcLabel}`;
-    }
+    // Use elements object and value comparison for better performance
+    this.setElementText(this.elements.regionName, regionConfig.name);
+    this.setElementText(this.elements.gameStatus, regionConfig.status);
+    this.setElementText(this.elements.utcNote, `This is based on ${regionConfig.utcLabel}`);
 
     // Update reset subtitles based on region
     const resetHourLocal = this.currentRegion === 'apac' ? '09:00' : '05:00';
     const resetLabel = `Every Sunday at ${resetHourLocal} ${regionConfig.utcLabel}`;
     const monthlyLabel = `Last day of each month at ${resetHourLocal} ${regionConfig.utcLabel}`;
 
-    if (this.weeklyResetSubtitle) {
-      this.weeklyResetSubtitle.textContent = resetLabel;
-    }
-
-    if (this.monthlyResetSubtitle) {
-      this.monthlyResetSubtitle.textContent = monthlyLabel;
-    }
+    this.setElementText(this.elements.weeklyResetSubtitle, resetLabel);
+    this.setElementText(this.elements.monthlyResetSubtitle, monthlyLabel);
 
     // Update maintenance subtitle
     const maintenanceConfig = this.config.timers[this.currentRegion].maintenance;
-    if (this.maintenanceSubtitle) {
-      this.maintenanceSubtitle.textContent = maintenanceConfig.subtitle;
-    }
+    this.setElementText(this.elements.maintenanceSubtitle, maintenanceConfig.subtitle);
   }
 
   /**
@@ -217,9 +253,9 @@ class SilverAndBloodClockTimer {
 
     // Calculate time difference
     const timeDiff = resetTime.getTime() - now.getTime();
-    const hours = Math.floor(timeDiff / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    const hours = Math.floor(timeDiff / MS_PER_HOUR);
+    const minutes = Math.floor((timeDiff % MS_PER_HOUR) / MS_PER_MINUTE);
+    const seconds = Math.floor((timeDiff % MS_PER_MINUTE) / 1000);
 
     return {
       hours: Math.max(0, hours),
@@ -241,29 +277,35 @@ class SilverAndBloodClockTimer {
   }
 
   /**
-   * Update the clock display with current countdown
+   * Update the clock display with current countdown - optimized with value comparison
    */
   updateTimeValue(element, value) {
     if (!element) return;
     const newValue = String(value).padStart(2, '0');
-    element.textContent = newValue;
+    // Only update DOM if value actually changed
+    if (element.textContent !== newValue) {
+      element.textContent = newValue;
+    }
   }
 
   /**
-   * Update current date and UTC time display
+   * Update current date and UTC time display - optimized with value comparison
    */
   updateCurrentDateTime() {
     const now = new Date();
     const regionConfig = this.config.regions[this.currentRegion];
+    const currentDate = this.elements.currentDate;
+    const currentUTC = this.elements.currentUTC;
 
-    // Update current date
-    if (this.currentDate) {
+    // Update current date (only if element exists and every 60 seconds for performance)
+    if (currentDate && now.getSeconds() === 0) {
       const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-      this.currentDate.textContent = now.toLocaleDateString('en-US', dateOptions);
+      const newDate = now.toLocaleDateString('en-US', dateOptions);
+      this.setElementText(currentDate, newDate);
     }
 
     // Update UTC time for selected region
-    if (this.currentUTC) {
+    if (currentUTC) {
       const utcHours = now.getUTCHours();
       const utcMinutes = now.getUTCMinutes();
       const utcSeconds = now.getUTCSeconds();
@@ -277,7 +319,8 @@ class SilverAndBloodClockTimer {
       const regionalSeconds = String(utcSeconds).padStart(2, '0');
       regionalHours = String(regionalHours).padStart(2, '0');
 
-      this.currentUTC.textContent = `${regionConfig.utcLabel} ${regionalHours}:${regionalMinutes}:${regionalSeconds}`;
+      const newTime = `${regionConfig.utcLabel} ${regionalHours}:${regionalMinutes}:${regionalSeconds}`;
+      this.setElementText(currentUTC, newTime);
     }
   }
 
@@ -291,8 +334,8 @@ class SilverAndBloodClockTimer {
       this.updateMonthlyTimer();
       this.updateMaintenanceTimer();
       this.updateSpecialEventTimers();
-    } catch (_error) {
-      // Error updating timer cards
+    } catch (error) {
+      console.error('Error updating timer cards:', error);
     }
   }
 
@@ -300,21 +343,23 @@ class SilverAndBloodClockTimer {
    * Update launch timer - days since launch
    */
   updateLaunchTimer() {
-    if (!this.launchDays || !this.config.launchDate) return;
+    const launchDays = this.elements.launchDays;
+    if (!launchDays || !this.config.launchDate) return;
 
     const now = new Date();
     const launchDate = new Date(this.config.launchDate);
     const timeDiff = now.getTime() - launchDate.getTime();
-    const daysSinceLaunch = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const daysSinceLaunch = Math.floor(timeDiff / MS_PER_DAY);
 
-    this.launchDays.textContent = Math.abs(daysSinceLaunch);
+    this.setElementText(launchDays, Math.abs(daysSinceLaunch).toString());
   }
 
   /**
    * Update weekly reset timer
    */
   updateWeeklyTimer() {
-    if (!this.weeklyTime) return;
+    const weeklyTime = this.elements.weeklyTime;
+    if (!weeklyTime) return;
 
     const now = new Date();
     const regionConfig = this.config.regions[this.currentRegion];
@@ -331,14 +376,15 @@ class SilverAndBloodClockTimer {
     }
 
     const timeDiff = nextSunday.getTime() - now.getTime();
-    this.formatTimeDiff(timeDiff, this.weeklyTime);
+    this.formatTimeDiff(timeDiff, weeklyTime);
   }
 
   /**
    * Update monthly reset timer
    */
   updateMonthlyTimer() {
-    if (!this.monthlyTime) return;
+    const monthlyTime = this.elements.monthlyTime;
+    if (!monthlyTime) return;
 
     const now = new Date();
     const regionConfig = this.config.regions[this.currentRegion];
@@ -358,7 +404,7 @@ class SilverAndBloodClockTimer {
     }
 
     const timeDiff = targetDate.getTime() - now.getTime();
-    this.formatTimeDiff(timeDiff, this.monthlyTime);
+    this.formatTimeDiff(timeDiff, monthlyTime);
   }
 
   /**
@@ -368,100 +414,98 @@ class SilverAndBloodClockTimer {
     const maintenanceConfig = this.config.timers[this.currentRegion].maintenance;
     if (!maintenanceConfig) return;
 
+    const maintenanceStartTime = this.elements.maintenanceStartTime;
+    const maintenanceStartLabel = this.elements.maintenanceStartLabel;
+    const maintenanceEndTime = this.elements.maintenanceEndTime;
+    const maintenanceEndLabel = this.elements.maintenanceEndLabel;
+
     // Check if maintenance date is null or invalid
     if (!maintenanceConfig.date) {
       // No maintenance scheduled
-      if (this.maintenanceStartTime) {
-        this.maintenanceStartTime.textContent = '--:--:--';
-        if (this.maintenanceStartLabel) {
-          this.maintenanceStartLabel.textContent = 'Until Start';
-        }
-      }
-      if (this.maintenanceEndTime) {
-        this.maintenanceEndTime.textContent = '--:--:--';
-        if (this.maintenanceEndLabel) {
-          this.maintenanceEndLabel.textContent = 'Servers Back';
-        }
-      }
+      this.setElementText(maintenanceStartTime, '--:--:--');
+      this.setElementText(maintenanceStartLabel, 'Until Start');
+      this.setElementText(maintenanceEndTime, '--:--:--');
+      this.setElementText(maintenanceEndLabel, 'Servers Back');
       return;
     }
 
     const now = new Date();
     const maintenanceDate = new Date(maintenanceConfig.date);
     const maintenanceEndDate = new Date(
-      maintenanceDate.getTime() + maintenanceConfig.duration * 60 * 60 * 1000
+      maintenanceDate.getTime() + maintenanceConfig.duration * MS_PER_HOUR
     );
 
     // Update maintenance start time
-    if (this.maintenanceStartTime) {
-      const startTimeDiff = maintenanceDate.getTime() - now.getTime();
-      if (startTimeDiff > 0) {
-        this.formatTimeDiff(startTimeDiff, this.maintenanceStartTime);
-        if (this.maintenanceStartLabel) {
-          this.maintenanceStartLabel.textContent = 'Maintenance Start';
-        }
-      } else {
-        this.maintenanceStartTime.textContent = 'Started';
-        if (this.maintenanceStartLabel) {
-          this.maintenanceStartLabel.textContent = 'Maintenance Status';
-        }
-      }
+    const startTimeDiff = maintenanceDate.getTime() - now.getTime();
+    if (startTimeDiff > 0) {
+      this.formatTimeDiff(startTimeDiff, maintenanceStartTime);
+      this.setElementText(maintenanceStartLabel, 'Maintenance Start');
+    } else {
+      this.setElementText(maintenanceStartTime, 'Started');
+      this.setElementText(maintenanceStartLabel, 'Maintenance Status');
     }
 
     // Update maintenance end time
-    if (this.maintenanceEndTime) {
-      const endTimeDiff = maintenanceEndDate.getTime() - now.getTime();
-      if (endTimeDiff > 0) {
-        this.formatTimeDiff(endTimeDiff, this.maintenanceEndTime);
-        if (this.maintenanceEndLabel) {
-          this.maintenanceEndLabel.textContent = 'Maintenance End';
-        }
-      } else {
-        this.maintenanceEndTime.textContent = 'Complete';
-        if (this.maintenanceEndLabel) {
-          this.maintenanceEndLabel.textContent = 'Maintenance Status';
-        }
-      }
+    const endTimeDiff = maintenanceEndDate.getTime() - now.getTime();
+    if (endTimeDiff > 0) {
+      this.formatTimeDiff(endTimeDiff, maintenanceEndTime);
+      this.setElementText(maintenanceEndLabel, 'Maintenance End');
+    } else {
+      this.setElementText(maintenanceEndTime, 'Complete');
+      this.setElementText(maintenanceEndLabel, 'Maintenance Status');
     }
   }
 
   /**
-   * Format time difference display
+   * Format time difference display - optimized with value comparison
    */
   formatTimeDiff(timeDiff, element) {
-    if (!element || timeDiff < 0) return;
+    if (!element) return;
 
-    const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
-    const MILLISECONDS_IN_HOUR = 1000 * 60 * 60;
-    const MILLISECONDS_IN_MINUTE = 1000 * 60;
-
-    const days = Math.floor(timeDiff / MILLISECONDS_IN_DAY);
-    const hours = Math.floor((timeDiff % MILLISECONDS_IN_DAY) / MILLISECONDS_IN_HOUR);
-    const minutes = Math.floor((timeDiff % MILLISECONDS_IN_HOUR) / MILLISECONDS_IN_MINUTE);
-    const seconds = Math.floor((timeDiff % MILLISECONDS_IN_MINUTE) / 1000);
-
-    if (days > 0) {
-      element.textContent = `${days}d ${hours}h`;
-    } else if (hours > 0) {
-      element.textContent = `${hours}h ${minutes}m`;
-    } else {
-      element.textContent = `${minutes}:${String(seconds).padStart(2, '0')}`;
+    // Handle negative time (past events)
+    if (timeDiff < 0) {
+      this.setElementText(element, 'Expired');
+      return;
     }
+
+    const days = Math.floor(timeDiff / MS_PER_DAY);
+    const hours = Math.floor((timeDiff % MS_PER_DAY) / MS_PER_HOUR);
+    const minutes = Math.floor((timeDiff % MS_PER_HOUR) / MS_PER_MINUTE);
+    const seconds = Math.floor((timeDiff % MS_PER_MINUTE) / 1000);
+
+    let display;
+    if (days > 0) {
+      display = `${days}d ${hours}h`;
+    } else if (hours > 0) {
+      display = `${hours}h ${minutes}m`;
+    } else {
+      display = `${minutes}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    this.setElementText(element, display);
   }
 
   /**
-   * Update special event timers - Halloween and New Year
+   * Update holiday timers (called less frequently for performance)
    */
-  updateSpecialEventTimers() {
+  updateHolidayTimers() {
     this.updateHalloweenTimer();
     this.updateNewYearTimer();
+  }
+
+  /**
+   * Update special event timers - Halloween and New Year (alias for compatibility)
+   */
+  updateSpecialEventTimers() {
+    this.updateHolidayTimers();
   }
 
   /**
    * Update Halloween timer - October 31st
    */
   updateHalloweenTimer() {
-    if (!this.halloweenTime) return;
+    const halloweenTime = this.elements.halloweenTime;
+    if (!halloweenTime) return;
 
     const now = new Date();
     const currentYear = now.getFullYear();
@@ -475,16 +519,17 @@ class SilverAndBloodClockTimer {
     }
 
     const timeDiff = halloween.getTime() - now.getTime();
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const days = Math.floor(timeDiff / MS_PER_DAY);
 
-    this.halloweenTime.textContent = days.toString();
+    this.setElementText(halloweenTime, days.toString());
   }
 
   /**
    * Update New Year timer - January 1st
    */
   updateNewYearTimer() {
-    if (!this.newyearTime) return;
+    const newyearTime = this.elements.newyearTime;
+    if (!newyearTime) return;
 
     const now = new Date();
     const nextYear = now.getFullYear() + 1;
@@ -493,20 +538,58 @@ class SilverAndBloodClockTimer {
     const newYear = new Date(nextYear, 0, 1, 0, 0, 0, 0);
 
     const timeDiff = newYear.getTime() - now.getTime();
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const days = Math.floor(timeDiff / MS_PER_DAY);
 
-    this.newyearTime.textContent = days.toString();
+    this.setElementText(newyearTime, days.toString());
   }
 
+  /**
+   * Helper method to set element text with value comparison
+   */
+  setElementText(element, text) {
+    if (element && element.textContent !== text) {
+      element.textContent = text;
+    }
+  }
+
+  /**
+   * Get performance statistics for monitoring
+   */
+  getPerformanceStats() {
+    return {
+      ...this.performanceStats,
+      currentRegion: this.currentRegion,
+      elementsCount: Object.keys(this.elements).length,
+    };
+  }
+
+  /**
+   * Cleanup intervals and event listeners - comprehensive memory management
+   */
   cleanup() {
+    // Clear animation frame and intervals
     if (this.animationFrame) {
       cancelAnimationFrame(this.animationFrame);
       this.animationFrame = null;
     }
-    if (this.clockInterval) {
-      clearInterval(this.clockInterval);
-      this.clockInterval = null;
+    if (this.holidayInterval) {
+      clearInterval(this.holidayInterval);
+      this.holidayInterval = null;
     }
+
+    // Remove event listener properly
+    if (this.cleanupHandler) {
+      window.removeEventListener('beforeunload', this.cleanupHandler);
+      this.cleanupHandler = null;
+    }
+
+    // Clear DOM references to prevent memory leaks
+    this.elements = {};
+    this.clockHours = null;
+    this.clockMinutes = null;
+    this.clockSeconds = null;
+    this.config = null;
+    this.performanceStats = null;
   }
 }
 
