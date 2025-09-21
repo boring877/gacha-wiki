@@ -4,7 +4,6 @@
  */
 
 // Constants
-const UPDATE_INTERVAL = 1000; // 1 second for main timers
 const HOLIDAY_UPDATE_INTERVAL = 3600000; // 1 hour for holiday timers
 const HW_TIMEZONE_OFFSET = 9 * 60 * 60 * 1000; // KST in milliseconds
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -14,6 +13,7 @@ const MS_PER_MINUTE = 1000 * 60;
 class HorizonWalkerClockTimer {
   constructor() {
     this.clockInterval = null;
+    this.animationFrame = null;
     this.holidayInterval = null;
     this.config = null;
     this.elements = {}; // Store all DOM elements in one object
@@ -53,8 +53,8 @@ class HorizonWalkerClockTimer {
       this.updateAllDisplays();
       this.updateHolidayTimers();
 
-      // Start intervals
-      this.startIntervals();
+      // Start optimized clock loop
+      this.startClockLoop();
 
       // Setup cleanup handler
       this.cleanupHandler = () => this.cleanup();
@@ -63,9 +63,9 @@ class HorizonWalkerClockTimer {
       // Also cleanup on page visibility change
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-          this.pauseIntervals();
+          this.pauseClockLoop();
         } else {
-          this.resumeIntervals();
+          this.resumeClockLoop();
         }
       });
     } catch (error) {
@@ -110,11 +110,25 @@ class HorizonWalkerClockTimer {
     this.clockSeconds = this.elements.clockSeconds;
   }
 
-  startIntervals() {
-    // Main clock updates every second
-    this.clockInterval = setInterval(() => {
-      this.updateAllDisplays();
-    }, UPDATE_INTERVAL);
+  /**
+   * Start optimized clock loop using requestAnimationFrame
+   */
+  startClockLoop() {
+    let lastSecond = Math.floor(Date.now() / 1000);
+
+    const loop = () => {
+      const currentSecond = Math.floor(Date.now() / 1000);
+
+      // Only update when second actually changes for better performance
+      if (currentSecond !== lastSecond) {
+        this.updateAllDisplays();
+        lastSecond = currentSecond;
+      }
+
+      this.animationFrame = requestAnimationFrame(loop);
+    };
+
+    this.animationFrame = requestAnimationFrame(loop);
 
     // Holiday timers update every hour (performance optimization)
     this.holidayInterval = setInterval(() => {
@@ -122,18 +136,16 @@ class HorizonWalkerClockTimer {
     }, HOLIDAY_UPDATE_INTERVAL);
   }
 
-  pauseIntervals() {
-    if (this.clockInterval) {
-      clearInterval(this.clockInterval);
-      this.clockInterval = null;
+  pauseClockLoop() {
+    if (this.animationFrame) {
+      cancelAnimationFrame(this.animationFrame);
+      this.animationFrame = null;
     }
   }
 
-  resumeIntervals() {
-    if (!this.clockInterval) {
-      this.clockInterval = setInterval(() => {
-        this.updateAllDisplays();
-      }, UPDATE_INTERVAL);
+  resumeClockLoop() {
+    if (!this.animationFrame) {
+      this.startClockLoop();
     }
   }
 
@@ -468,7 +480,11 @@ class HorizonWalkerClockTimer {
    * Cleanup intervals and event listeners
    */
   cleanup() {
-    // Clear intervals
+    // Clear animation frame and intervals
+    if (this.animationFrame) {
+      cancelAnimationFrame(this.animationFrame);
+      this.animationFrame = null;
+    }
     if (this.clockInterval) {
       clearInterval(this.clockInterval);
       this.clockInterval = null;

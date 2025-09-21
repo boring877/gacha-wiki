@@ -6,6 +6,7 @@
 class SilverAndBloodClockTimer {
   constructor() {
     this.clockInterval = null;
+    this.animationFrame = null;
     this.currentRegion = 'us'; // default region
     this.config = null;
 
@@ -62,8 +63,8 @@ class SilverAndBloodClockTimer {
     // Initial UI update
     this.updateAllDisplays();
 
-    // Start the clock interval
-    this.startClockInterval();
+    // Start optimized clock loop
+    this.startClockLoop();
 
     // Cleanup on page unload
     window.addEventListener('beforeunload', () => this.cleanup());
@@ -106,10 +107,25 @@ class SilverAndBloodClockTimer {
     this.newyearTime = document.getElementById('newyearTime');
   }
 
-  startClockInterval() {
-    this.clockInterval = setInterval(() => {
-      this.updateAllDisplays();
-    }, 1000);
+  /**
+   * Start optimized clock loop using requestAnimationFrame
+   */
+  startClockLoop() {
+    let lastSecond = Math.floor(Date.now() / 1000);
+
+    const loop = () => {
+      const currentSecond = Math.floor(Date.now() / 1000);
+
+      // Only update when second actually changes for better performance
+      if (currentSecond !== lastSecond) {
+        this.updateAllDisplays();
+        lastSecond = currentSecond;
+      }
+
+      this.animationFrame = requestAnimationFrame(loop);
+    };
+
+    this.animationFrame = requestAnimationFrame(loop);
   }
 
   updateAllDisplays() {
@@ -483,6 +499,10 @@ class SilverAndBloodClockTimer {
   }
 
   cleanup() {
+    if (this.animationFrame) {
+      cancelAnimationFrame(this.animationFrame);
+      this.animationFrame = null;
+    }
     if (this.clockInterval) {
       clearInterval(this.clockInterval);
       this.clockInterval = null;
