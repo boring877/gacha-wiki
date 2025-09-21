@@ -1,6 +1,5 @@
 ---
 import CharactersLayout from '../../../layouts/silver-and-blood/CharactersLayout.astro';
-import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
 import {
   characters as SILVER_AND_BLOOD_CHARACTERS,
   gameInfo,
@@ -12,14 +11,6 @@ import {
   description="Sortable and filterable character database for Silver and Blood"
   gameTitle="Character Database"
 >
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb
-    items={[
-      { name: 'Home', href: '/' },
-      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
-      { name: 'Characters' },
-    ]}
-  />
 
   <section class="page-flex">
     <div class="main-content-container">

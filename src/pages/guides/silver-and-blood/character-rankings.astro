@@ -7,7 +7,6 @@ import {
   totalCharacters,
   statNames,
 } from '../../../data/silver-and-blood/character-rankings.js';
-import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
 ---
 
 <CharacterRankingsLayout
@@ -15,15 +14,6 @@ import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
   description="View character stat rankings for HP, ATK, P.DEF, M.DEF, and Blood Power in Silver and Blood"
   gameTitle="Character Rankings"
 >
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb
-    items={[
-      { name: 'Home', href: '/' },
-      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
-      { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
-      { name: 'Character Rankings' },
-    ]}
-  />
 
   <section class="content-section">
     <div class="rankings-intro">

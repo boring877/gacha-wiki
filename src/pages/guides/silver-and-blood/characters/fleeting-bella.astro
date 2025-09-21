@@ -2,7 +2,6 @@
 import CharacterLayout from '../../../../layouts/silver-and-blood/CharacterLayout.astro';
 import { gameInfo } from '../../../../data/silver-and-blood/characters.js';
 import { fleetingBella } from '../../../../data/silver-and-blood/characters/fleeting-bella.js';
-import Breadcrumb from '../../../../components/silver-and-blood/Breadcrumb.astro';
 
 const character = fleetingBella;
 const {
@@ -83,16 +82,6 @@ const classInfo = classData ? `${charClass}: ${classData.description}` : null;
       ]
     }
   </script>
-
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb
-    items={[
-      { name: 'Home', href: '/' },
-      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
-      { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
-      { name: name },
-    ]}
-  />
 
   <!-- Character Header & Overview -->
   <section class="content-section">

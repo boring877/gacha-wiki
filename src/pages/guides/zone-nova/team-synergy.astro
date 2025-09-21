@@ -1,7 +1,6 @@
 ---
 // Import the dedicated layout
 import TeamSynergyLayout from '../../../layouts/zone-nova/TeamSynergyLayout.astro';
-import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
 ---
 
 <TeamSynergyLayout
@@ -9,15 +8,6 @@ import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
   description="Complete Zone Nova team synergy database with optimal team compositions, character synergies, Guild Raid teams, Rift strategies, and meta team builds for all content types"
   gameTitle="Team Synergy Database"
 >
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb
-    items={[
-      { name: 'Home', href: '/' },
-      { name: 'Zone Nova', href: '/guides/zone-nova/' },
-      { name: 'Team Synergy' },
-    ]}
-  />
-
   <section class="page-flex">
     <div class="main-content-container">
       <div class="content-wrapper">

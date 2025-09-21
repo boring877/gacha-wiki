@@ -1,7 +1,6 @@
 ---
 import CharacterLayout from '../../layouts/silver-and-blood/CharacterLayout.astro';
 import { gameInfo } from '../../data/silver-and-blood/characters.js';
-import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 import { Image } from 'astro:assets';
 import {
   highlightAllSkills,
@@ -115,15 +114,6 @@ const relatedCharacters = [];
     }
   </script>
 
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb
-    items={[
-      { name: 'Home', href: '/' },
-      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
-      { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
-      { name: name },
-    ]}
-  />
 
   <!-- Mobile navigation instruction at top of main content -->
   <div class="swipeable-indicator">Touch the sides to move between characters</div>

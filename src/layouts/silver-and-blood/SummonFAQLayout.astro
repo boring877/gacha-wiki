@@ -7,6 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import only essential CSS files
 import '../../styles/games/silver-and-blood/sab-colors.css';
@@ -56,6 +57,13 @@ const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq }
               </section>
             )
           }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb
+            autoGenerate={true}
+            gameKey="silver-and-blood"
+            showBackButton={true}
+          />
 
           <!-- Content Area -->
           <div class="content-area">

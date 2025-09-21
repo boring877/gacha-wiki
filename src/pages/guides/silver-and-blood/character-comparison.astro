@@ -1,25 +1,13 @@
 ---
 import CharacterComparisonLayout from '../../../layouts/silver-and-blood/CharacterComparisonLayout.astro';
 import CharacterComparisonComponent from '../../../components/silver-and-blood/CharacterComparison.astro';
-import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
 
 const title = 'Character Comparison Tool - Silver and Blood';
 const description =
   'Compare multiple Silver and Blood characters side by side. Analyze stats, skills, and abilities to make informed decisions about your team composition.';
-
-// Breadcrumb navigation items
-const breadcrumbItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Silver & Blood', href: '/guides/silver-and-blood/' },
-  { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
-  { name: 'Character Comparison' },
-];
 ---
 
 <CharacterComparisonLayout title={title} description={description}>
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb items={breadcrumbItems} />
-
   <div class="comparison-page-intro">
     <h3>Silver & Blood Character Comparison</h3>
     <p>

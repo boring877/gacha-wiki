@@ -16,13 +16,6 @@ if (!weapon) {
   return Astro.redirect('/guides/horizon-walker/weapons/');
 }
 
-// Breadcrumb data
-const breadcrumbs = [
-  { name: 'Home', href: '/' },
-  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
-  { name: 'Weapons', href: '/guides/horizon-walker/weapons/' },
-  { name: weapon.name },
-];
 
 // Find previous and next weapons for navigation
 const currentIndex = HORIZON_WALKER_WEAPONS.findIndex(w => w.id === weaponSlug);
@@ -42,7 +35,12 @@ export const prerender = true;
   weaponName={weapon.name}
 >
   <!-- Breadcrumb Navigation -->
-  <Breadcrumb items={breadcrumbs} />
+  <Breadcrumb
+    autoGenerate={true}
+    gameKey="horizon-walker"
+    currentPageName={weapon.name}
+    showBackButton={true}
+  />
 
   <div class="weapon-detail-container">
     <!-- Hero Section -->

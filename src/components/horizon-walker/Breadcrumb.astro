@@ -1,38 +1,103 @@
 ---
+import { generateBreadcrumbs, getParentBreadcrumb, generateBackNavigation } from '../../utils/breadcrumb-generator.js';
+import type { BreadcrumbItem, BackNavigation } from '../../utils/breadcrumb-generator.js';
+
 export interface Props {
-  items: Array<{ name: string; href?: string }>;
+  // Manual breadcrumb items (legacy support)
+  items?: Array<{
+    name: string;
+    href?: string;
+  }>;
+  // Auto-generation options
+  autoGenerate?: boolean;
+  gameKey?: string;
+  currentPageName?: string;
+  includeHome?: boolean;
+  showBackButton?: boolean;
 }
 
-const { items } = Astro.props;
+const {
+  items,
+  autoGenerate = false,
+  gameKey,
+  currentPageName,
+  includeHome = true,
+  showBackButton = true
+} = Astro.props;
+
+// Generate breadcrumbs automatically if requested, otherwise use provided items
+let breadcrumbItems: BreadcrumbItem[] = items || [];
+let backNavigation: BackNavigation | null = null;
+
+if (autoGenerate) {
+  breadcrumbItems = generateBreadcrumbs(Astro.url.pathname, {
+    includeHome,
+    currentPageName,
+    gameKey
+  });
+
+  if (showBackButton) {
+    backNavigation = generateBackNavigation(Astro.url.pathname, { gameKey });
+  }
+} else if (showBackButton && items) {
+  // Generate back navigation from provided items
+  const parent = getParentBreadcrumb(items);
+  if (parent) {
+    backNavigation = {
+      href: parent.href || '/',
+      text: `Back to ${parent.name}`,
+      parentName: parent.name
+    };
+  }
+}
 ---
 
-<nav class="breadcrumb" aria-label="Breadcrumb navigation">
-  <ol class="breadcrumb-list">
-    {
-      items.map((item, index) => (
-        <li class="breadcrumb-item">
-          {item.href ? (
-            <a href={item.href} class="breadcrumb-link">
-              {item.name}
-            </a>
-          ) : (
-            <span class="breadcrumb-current" aria-current="page">
-              {item.name}
-            </span>
-          )}
-          {index < items.length - 1 && (
-            <span class="breadcrumb-separator" aria-hidden="true">
-              →
-            </span>
-          )}
-        </li>
-      ))
-    }
-  </ol>
+<nav class="hw-breadcrumb" aria-label="Breadcrumb navigation">
+  <div class="hw-breadcrumb-container">
+    {/* Back Button */}
+    {backNavigation && (
+      <button
+        type="button"
+        class="hw-back-button"
+        onclick={`window.location.href='${backNavigation.href}'`}
+        aria-label={backNavigation.text}
+        title={backNavigation.text}
+      >
+        <svg class="hw-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6" />
+        </svg>
+        <span class="hw-back-text">Back</span>
+      </button>
+    )}
+
+    {/* Breadcrumb Trail */}
+    <ol class="hw-breadcrumb-list">
+      {
+        breadcrumbItems.map((item, index) => (
+          <li class="hw-breadcrumb-item">
+            {item.href ? (
+              <a href={item.href} class="hw-breadcrumb-link">
+                {item.name}
+              </a>
+            ) : (
+              <span class="hw-breadcrumb-current" aria-current="page">
+                {item.name}
+              </span>
+            )}
+            {index < breadcrumbItems.length - 1 && (
+              <span class="hw-breadcrumb-separator" aria-hidden="true">
+                →
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
 </nav>
 
 <style>
-  .breadcrumb {
+  .hw-breadcrumb {
     margin-bottom: 2rem;
     /* Align with parent container */
     max-width: 75rem;
@@ -40,129 +105,179 @@ const { items } = Astro.props;
     margin-right: auto;
     padding-left: 2rem;
     padding-right: 2rem;
+    /* Ensure breadcrumb appears above other elements */
+    position: relative;
+    z-index: 20;
   }
 
-  .breadcrumb-list {
+  .hw-breadcrumb-container {
     display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Back Button Styles - Horizon Walker Theme */
+  .hw-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(232, 165, 71, 0.1);
+    border: 1px solid rgba(232, 165, 71, 0.3);
+    border-radius: 0.5rem;
+    color: var(--hw-primary-warm, #e8a547);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    /* Touch-friendly sizing - WCAG AA compliant */
+    min-height: 44px;
+    min-width: 88px;
+    /* Touch optimization */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(232, 165, 71, 0.2);
+  }
+
+  .hw-back-button:focus-visible {
+    outline: 2px solid var(--hw-primary-warm, #e8a547);
+    outline-offset: 2px;
+  }
+
+  .hw-back-arrow {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  .hw-back-text {
+    font-size: 0.9rem;
+  }
+
+  /* Breadcrumb Trail Styles */
+  .hw-breadcrumb-list {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
     flex-wrap: wrap;
     align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 0.75rem;
+    flex: 1;
   }
 
-  .breadcrumb-item {
+  .hw-breadcrumb-item {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 
-  .breadcrumb-link {
-    color: var(--hw-primary-warm);
+  .hw-breadcrumb-link {
+    color: var(--hw-primary-warm, #e8a547);
     text-decoration: none;
-    font-size: 0.9rem;
     opacity: 0.9;
     padding: 0.5rem 0.75rem;
-    border-radius: 6px;
+    border-radius: 0.25rem;
+    /* Touch-friendly link area */
     min-height: 44px;
     display: flex;
     align-items: center;
-    transition: all 0.2s ease;
-    font-family:
-      'Space Grotesk',
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      system-ui,
-      sans-serif;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(232, 165, 71, 0.2);
   }
 
-  .breadcrumb-link:hover {
-    background: rgba(232, 165, 71, 0.15);
-    opacity: 1;
-    color: var(--hw-primary-warm);
-  }
-
-  .breadcrumb-link:focus {
-    outline: 2px solid var(--hw-primary-warm);
-    outline-offset: 2px;
-    opacity: 1;
-  }
-
-  .breadcrumb-link:active {
-    background: rgba(232, 165, 71, 0.25);
-  }
-
-  .breadcrumb-current {
+  .hw-breadcrumb-current {
     color: #ffffff;
-    font-size: 0.9rem;
     font-weight: 600;
-    font-family:
-      'Space Grotesk',
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      system-ui,
-      sans-serif;
+    padding: 0.25rem 0.5rem;
   }
 
-  .breadcrumb-separator {
-    color: #9a9a9a;
-    font-size: 1rem;
+  .hw-breadcrumb-separator {
+    color: #b0b0b0;
     user-select: none;
-    opacity: 0.8;
-    font-weight: 600;
-    padding: 0 0.25rem;
+    opacity: 0.7;
+    font-size: 1rem;
   }
 
-  /* Mobile responsiveness - match HW layout breakpoints */
+  /* Mobile responsiveness - match Zone Nova layout breakpoints */
   @media (max-width: 768px) {
-    .breadcrumb {
+    .hw-breadcrumb {
       padding-left: 1rem;
       padding-right: 1rem;
     }
 
-    .breadcrumb-link {
-      font-size: 0.85rem;
-      padding: 0.6rem 0.75rem;
+    .hw-breadcrumb-container {
+      gap: 0.75rem;
     }
 
-    .breadcrumb-current {
+    .hw-back-button {
+      padding: 0.5rem 0.9rem;
+      font-size: 0.85rem;
+      min-height: 44px;
+      min-width: 80px;
+    }
+
+    .hw-back-text {
       font-size: 0.85rem;
     }
 
-    .breadcrumb-separator {
-      font-size: 0.9rem;
+    .hw-breadcrumb-list {
+      font-size: 0.85rem;
     }
   }
 
   @media (max-width: 480px) {
-    .breadcrumb {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
+    .hw-breadcrumb {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
     }
 
-    .breadcrumb-list {
+    .hw-breadcrumb-container {
       gap: 0.5rem;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    .breadcrumb-item {
-      gap: 0.5rem;
-    }
-
-    .breadcrumb-link {
+    .hw-back-button {
+      padding: 0.5rem 0.8rem;
       font-size: 0.8rem;
-      padding: 0.75rem 0.75rem;
+      min-height: 44px;
+      min-width: 72px;
+      align-self: flex-start;
     }
 
-    .breadcrumb-current {
+    .hw-back-text {
       font-size: 0.8rem;
     }
 
-    .breadcrumb-separator {
-      font-size: 0.85rem;
-      padding: 0 0.2rem;
+    .hw-breadcrumb-list {
+      font-size: 0.8rem;
+      gap: 0.3rem;
+      width: 100%;
+    }
+
+    .hw-breadcrumb-item {
+      gap: 0.3rem;
+    }
+
+    .hw-breadcrumb-link,
+    .hw-breadcrumb-current {
+      padding: 0.5rem 0.6rem;
+      min-height: 44px;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .hw-back-button {
+      border-color: currentColor;
+    }
+
+    .hw-breadcrumb-link {
+      text-decoration: underline;
     }
   }
 </style>

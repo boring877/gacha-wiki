@@ -8,6 +8,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import CSS files properly
 import '../../styles/games/silver-and-blood/sab-colors.css';
@@ -153,6 +154,13 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
               </section>
             )
           }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb
+            autoGenerate={true}
+            gameKey="silver-and-blood"
+            showBackButton={true}
+          />
 
           <!-- Content Area -->
           <div class="content-area">

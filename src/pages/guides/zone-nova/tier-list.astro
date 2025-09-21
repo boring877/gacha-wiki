@@ -1,6 +1,5 @@
 ---
 import TierListLayout from '../../../layouts/zone-nova/TierListLayout.astro';
-import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
 import { ZONE_NOVA_CHARACTERS } from '../../../data/zone-nova/characters.js';
 import { ALL_TIER_LISTS, TIER_DEFINITIONS } from '../../../data/zone-nova/tier-lists.js';
 
@@ -20,15 +19,6 @@ function getTierClassName(tier: string): string {
   title="Zone Nova Tier List - Character Rankings & Meta Guide"
   description="Comprehensive Zone Nova tier lists for PvE, PvP, Rifts, and Guild Raids. Find the best characters and team compositions for every game mode."
 >
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb
-    items={[
-      { name: 'Home', href: '/' },
-      { name: 'Zone Nova', href: '/guides/zone-nova/' },
-      { name: 'Tier List' },
-    ]}
-  />
-
   <div class="tier-list-container">
     <!-- Mode Toggle -->
     <div class="mode-toggle">

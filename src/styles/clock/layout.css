@@ -132,7 +132,12 @@
   max-width: 1200px;
   /* Optimized hardware acceleration - only when animating */
   transform: translateZ(0);
-  /* Clock-specific scroll optimizations */
+}
+
+/* Clock-specific scroll optimizations only for clock content areas */
+.master-clock .clock-display,
+.master-clock .game-section,
+.master-clock .timer-section {
   touch-action: pan-y;
   overscroll-behavior: contain;
   /* Improve scrolling performance */
@@ -387,7 +392,10 @@
   flex-direction: column;
   justify-content: space-between; /* Distribute content evenly within cards */
   min-height: 160px; /* Ensure consistent card heights */
-  /* Timer card scroll optimizations */
+}
+
+/* Timer card scroll optimizations - only for card content areas */
+.timer-card .timer-card-content {
   touch-action: pan-y;
   overscroll-behavior: contain;
 }

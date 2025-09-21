@@ -44,13 +44,6 @@ export interface Props {
 
 const { mercenaryData } = Astro.props;
 
-// Breadcrumb data
-const breadcrumbs = [
-  { name: 'Home', href: '/' },
-  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
-  { name: 'Mercenaries', href: '/guides/horizon-walker/mercenaries/' },
-  { name: mercenaryData.name },
-];
 
 // Helper function to format stats
 const formatStat = (value) => {
@@ -108,7 +101,12 @@ function getTagClass(tag: string): string {
 }
 ---
 
-<Breadcrumb items={breadcrumbs} />
+<Breadcrumb
+  autoGenerate={true}
+  gameKey="horizon-walker"
+  currentPageName={mercenaryData.name}
+  showBackButton={true}
+/>
 
 <!-- Mercenary Header & Overview -->
 <section class="content-section character-overview-section">

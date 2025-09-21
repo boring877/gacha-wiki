@@ -7,6 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
 import { Image } from 'astro:assets';
 
 // Import CSS files properly
@@ -100,6 +101,14 @@ const { title, description, gameTitle, heroImage, mercenary } = Astro.props;
               </section>
             )
           }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb
+            autoGenerate={true}
+            gameKey="horizon-walker"
+            currentPageName={mercenary?.name || gameTitle}
+            showBackButton={true}
+          />
 
           <!-- Content Area -->
           <div class="content-area">

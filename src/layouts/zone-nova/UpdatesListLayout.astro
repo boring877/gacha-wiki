@@ -5,17 +5,17 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
-import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
+import SpeedInsights from '../../components/SpeedInsights.astro';
 
-// Import Zone Nova specific styles
+// Import CSS files for updates list page
 import '../../styles/games/zone-nova/zn-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/zone-nova/zn-layout.css';
-import '../../styles/games/zone-nova/zn-badge-colour.css';
-import '../../styles/games/zone-nova/zn-character-comparison.css';
+import '../../styles/games/zone-nova/zn-updates.css';
 
 export interface Props {
   title: string;
@@ -23,42 +23,40 @@ export interface Props {
   gameTitle?: string;
 }
 
-const { title, description, gameTitle = 'Zone Nova' } = Astro.props;
+const { title, description, gameTitle } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <ZNBaseHead
-      title={title || ''}
-      description={description || ''}
-      shouldPreloadDefaultImage={false}
-    />
+    <ZNBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
+    <SpeedInsights />
     <slot name="head" />
   </head>
   <body class="zone-nova-body zn-layout-override">
-    <!-- Background layers for visual depth similar to landing page -->
+    <CustomScrollbar />
+    <!-- Background layers for visual depth -->
     <div class="bg-layer bg-primary"></div>
     <div class="bg-layer bg-accent-1"></div>
     <div class="bg-layer bg-accent-2"></div>
     <div class="bg-layer bg-accent-3"></div>
 
     <div class="zone-nova-content">
-      <CustomScrollbar />
       <Header />
       <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />
 
       <div class="zone-nova-container">
         <main class="zone-nova-main">
-          <!-- Title Only Section -->
-          <section class="title-only-section">
-            <h1 class="title-only-heading">
-              {gameTitle}
-            </h1>
-
-            <DecorativeLines />
-          </section>
+          <!-- Title Section for Updates -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
 
           <!-- Breadcrumb Navigation -->
           <Breadcrumb

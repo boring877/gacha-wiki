@@ -7,6 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 import { Image } from 'astro:assets';
 
 // Import CSS files properly
@@ -87,6 +88,13 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
               </section>
             )
           }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb
+            autoGenerate={true}
+            gameKey="zone-nova"
+            showBackButton={true}
+          />
 
           <!-- Content Area -->
           <div class="content-area">

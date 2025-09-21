@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import CharacterLayout from '../../../layouts/horizon-walker/CharacterLayout.astro';
-import Breadcrumb from '../../../components/horizon-walker/Breadcrumb.astro';
 import {
   HORIZON_WALKER_CHARACTERS,
   gameInfo,
@@ -18,12 +17,6 @@ import {
 // Extract filter options from enhanced data structure
 const { rarities } = gameInfo;
 
-// Breadcrumb data for SEO
-const breadcrumbs = [
-  { name: 'Home', href: '/' },
-  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
-  { name: 'Characters' },
-];
 
 // Calculate enhanced stats for display
 const totalCharacters = HORIZON_WALKER_CHARACTERS.length;
@@ -44,8 +37,6 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
   gameTitle="Character Database"
   showBackButton={false}
 >
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb items={breadcrumbs} />
 
   <section class="hw-char-db-page-flex">
     <div class="hw-char-db-main-content">

@@ -1,6 +1,7 @@
 ---
 // @ts-nocheck
 import ZoneNovaUpdateLayout from '../layouts/zone-nova/UpdateLayout.astro';
+import Breadcrumb from '../components/zone-nova/Breadcrumb.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import {
   highlightUpdateText,
@@ -135,6 +136,14 @@ if (updateData.sourceInfo.gameUrl && !isValidUrl(updateData.sourceInfo.gameUrl))
       });
     </script>
   </Fragment>
+
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb
+    autoGenerate={true}
+    gameKey="zone-nova"
+    currentPageName={updateData.title}
+    showBackButton={true}
+  />
 
   <div class="update-page">
     <div class="update-container">

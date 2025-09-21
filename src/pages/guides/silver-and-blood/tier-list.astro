@@ -1,6 +1,5 @@
 ---
 import TierListLayout from '../../../layouts/silver-and-blood/TierListLayout.astro';
-import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
 import { characters } from '../../../data/silver-and-blood/characters.js';
 import { ALL_TIER_LISTS, TIER_DEFINITIONS } from '../../../data/silver-and-blood/tier-lists.js';
 
@@ -21,15 +20,6 @@ function getTierClassName(tier: string): string {
   description="Comprehensive Silver and Blood tier list featuring PvE, PvP Arena, Clan Hunt, Boss Raids, and F2P character rankings. Updated 2025 meta with Timeless Aiona, Van Helsing, Acappella, and all vampire characters rated SSS to Situational tiers. Interactive tier list maker with drag-and-drop functionality."
   gameTitle="Silver and Blood Tier List"
 >
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb
-    items={[
-      { name: 'Home', href: '/' },
-      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
-      { name: 'Tier List' },
-    ]}
-  />
-
   <div class="tier-list-container">
     <!-- Mode Toggle -->
     <div class="mode-toggle">

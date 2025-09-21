@@ -9,6 +9,7 @@ import { Image } from 'astro:assets';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CharacterNavigation from '../../components/silver-and-blood/CharacterNavigation.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import Silver and Blood specific styles
 import '../../styles/global.css';
@@ -124,7 +125,14 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 						</section>
 					)}
 
-					
+					<!-- Breadcrumb Navigation -->
+					<Breadcrumb
+						autoGenerate={true}
+						gameKey="silver-and-blood"
+						currentPageName={character?.name || characterName}
+						showBackButton={true}
+					/>
+
 					<!-- Content Area -->
 					<div class="content-area">
 						<!-- Main content slot -->

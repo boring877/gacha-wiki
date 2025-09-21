@@ -8,6 +8,7 @@ import Footer from '../../components/Footer.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import GeneralSEO from '../../components/GeneralSEO.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 import SpeedInsights from '../../components/SpeedInsights.astro';
 import { getActiveRifts, getRiftsWithDynamicStatus } from '../../data/zone-nova/rifts.js';
 
@@ -56,26 +57,8 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Critical game asset preloading for instant loading -->
+    <!-- Critical game asset preloading for clock page only -->
     <link rel="preload" href={game.image} as="image" fetchpriority="high" />
-
-    <!-- Preload key Zone Nova character images for navigation -->
-    <link rel="preload" href="/images/games/zone-nova/characters/Afrodite.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Anubis.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Apollo.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Artemis.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Arthur.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Athena.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Bastet.jpg" as="image" />
-    <link rel="preload" href="/images/games/zone-nova/characters/Chiya.jpg" as="image" />
-
-    <!-- Preload critical CSS for instant navigation -->
-    <link rel="preload" href="/src/styles/games/zone-nova/zn-character.css" as="style" />
-    <link
-      rel="preload"
-      href="/src/styles/games/zone-nova/zn-character-comparison-v2.css"
-      as="style"
-    />
   </head>
 
   <body class="zone-nova-body zn-layout-override">
@@ -100,6 +83,16 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
               <h1 class="title-only-heading">Zone Nova Clock</h1>
               <DecorativeLines />
             </section>
+
+            <!-- Breadcrumb Navigation -->
+            <Breadcrumb
+              items={[
+                { name: 'Home', href: '/' },
+                { name: 'Clocks', href: '/clock/' },
+                { name: 'Zone Nova Clock' }
+              ]}
+              showBackButton={true}
+            />
 
             <!-- First Hero Card - Server Reset Timer -->
             <div class="master-clock-container">

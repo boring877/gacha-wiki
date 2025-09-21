@@ -8,6 +8,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import only essential CSS files
 import '../../styles/games/silver-and-blood/sab-colors.css';
@@ -75,6 +76,13 @@ const { meta, availableCodes, expiredCodes, redeemInstructions, communitySection
               </section>
             )
           }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb
+            autoGenerate={true}
+            gameKey="silver-and-blood"
+            showBackButton={true}
+          />
 
           <!-- Content Area -->
           <div class="content-area">

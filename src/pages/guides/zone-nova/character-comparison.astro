@@ -1,15 +1,6 @@
 ---
 import CharacterComparisonLayout from '../../../layouts/zone-nova/CharacterComparisonLayout.astro';
 import CharacterComparisonComponent from '../../../components/zone-nova/CharacterComparison.astro';
-import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
-
-// Breadcrumb navigation items
-const breadcrumbItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Zone Nova', href: '/guides/zone-nova/' },
-  { name: 'Characters', href: '/guides/zone-nova/characters/' },
-  { name: 'Character Comparison' },
-];
 ---
 
 <CharacterComparisonLayout
@@ -18,9 +9,6 @@ const breadcrumbItems = [
   gameTitle="Character Comparison Tool"
 >
   <div class="comparison-page-content">
-    <!-- Breadcrumb Navigation -->
-    <Breadcrumb items={breadcrumbItems} />
-
     <!-- Page Introduction -->
     <div class="comparison-page-intro">
       <h3>Zone Nova Character Comparison</h3>

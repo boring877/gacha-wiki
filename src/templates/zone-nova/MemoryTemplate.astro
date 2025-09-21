@@ -3,6 +3,7 @@
 // Zone Nova Memory Page Template
 // This template creates individual memory pages with complete information
 import ZoneNovaLayout from '../../layouts/zone-nova/LandingLayout.astro';
+import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 import { Image } from 'astro:assets';
 
 // Import the memory-specific CSS
@@ -88,6 +89,14 @@ function getClassMemorySubtitle(effects: string[]): string {
     <!-- Preload memory-specific CSS -->
     <link rel="preload" href="/src/styles/games/zone-nova/zn-memory-pages.css" as="style" />
   </Fragment>
+
+  <!-- Breadcrumb Navigation -->
+  <Breadcrumb
+    autoGenerate={true}
+    gameKey="zone-nova"
+    currentPageName={memoryData.name}
+    showBackButton={true}
+  />
 
   <div class="memory-page">
     <!-- Premium Memory Overview Header -->

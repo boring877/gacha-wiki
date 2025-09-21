@@ -9,6 +9,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 
 import '../../styles/games/zone-nova/zn-colors.css';
 import '../../styles/global.css';
@@ -62,6 +63,13 @@ const { title, description, gameTitle, breadcrumbs } = Astro.props;
               </section>
             )
           }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb
+            autoGenerate={true}
+            gameKey="zone-nova"
+            showBackButton={true}
+          />
 
           <div class="content-area">
             <slot />

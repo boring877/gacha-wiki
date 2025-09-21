@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import WeaponLayout from '../../../layouts/horizon-walker/WeaponLayout.astro';
-import Breadcrumb from '../../../components/horizon-walker/Breadcrumb.astro';
 
 // Import weapon data
 import {
@@ -9,13 +8,6 @@ import {
   WEAPON_METADATA,
   WEAPON_RARITIES,
 } from '../../../data/horizon-walker/weapons.js';
-
-// Breadcrumb data for SEO
-const breadcrumbs = [
-  { name: 'Home', href: '/' },
-  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
-  { name: 'Weapons' },
-];
 
 // SEO metadata
 const title = 'Horizon Walker Weapons Database - All EX Weapons List 2025 | GachaWiki';
@@ -25,9 +17,6 @@ export const prerender = true;
 ---
 
 <WeaponLayout title={title} description={description} gameTitle="Weapons Database">
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb items={breadcrumbs} />
-
   <section class="hw-char-db-page-flex hw-weapons-page">
     <div class="hw-char-db-main-content">
       <div class="hw-char-db-content-wrapper">

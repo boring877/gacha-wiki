@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
 import {
   highlightAllSkills,
   highlightUniqueTraits,
@@ -197,12 +196,6 @@ function calculateGiftsNeeded(gift: { totalPoints: number }) {
   return Math.ceil(targetPoints / gift.totalPoints);
 }
 
-const breadcrumbs = [
-  { name: 'Home', href: '/' },
-  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
-  { name: 'Characters', href: '/guides/horizon-walker/characters/' },
-  { name: characterData.name },
-];
 
 // Helper function to create character description from story
 function getCharacterSummary(story: string | undefined): string {
@@ -253,9 +246,6 @@ function getTagCategory(tag: string): string {
   return 'general-mechanic';
 }
 ---
-
-<!-- Breadcrumb Navigation -->
-<Breadcrumb items={breadcrumbs} />
 
 <!-- Character Header & Overview -->
 <section class="content-section character-overview-section">

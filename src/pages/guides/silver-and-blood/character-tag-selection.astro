@@ -1,7 +1,6 @@
 ---
 import CharacterTagSelectionLayout from '../../../layouts/silver-and-blood/CharacterTagSelectionLayout.astro';
 import CharacterTagSelectionComponent from '../../../components/silver-and-blood/CharacterTagSelection.astro';
-import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
 
 const title = 'Character Tag Selection - Silver and Blood';
 const description =
@@ -13,15 +12,6 @@ const description =
   description={description}
   gameTitle="Character Tag Selection"
 >
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb
-    items={[
-      { name: 'Home', href: '/' },
-      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
-      { name: 'Characters', href: '/guides/silver-and-blood/characters/' },
-      { name: 'Character Tag Selection' },
-    ]}
-  />
 
   <section class="content-section">
     <div class="tag-selection-intro">

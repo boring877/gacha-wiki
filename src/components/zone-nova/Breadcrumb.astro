@@ -1,41 +1,103 @@
 ---
+import { generateBreadcrumbs, getParentBreadcrumb, generateBackNavigation } from '../../utils/breadcrumb-generator.js';
+import type { BreadcrumbItem, BackNavigation } from '../../utils/breadcrumb-generator.js';
+
 export interface Props {
-  items: Array<{
+  // Manual breadcrumb items (legacy support)
+  items?: Array<{
     name: string;
     href?: string;
   }>;
+  // Auto-generation options
+  autoGenerate?: boolean;
+  gameKey?: string;
+  currentPageName?: string;
+  includeHome?: boolean;
+  showBackButton?: boolean;
 }
 
-const { items } = Astro.props;
+const {
+  items,
+  autoGenerate = false,
+  gameKey,
+  currentPageName,
+  includeHome = true,
+  showBackButton = true
+} = Astro.props;
+
+// Generate breadcrumbs automatically if requested, otherwise use provided items
+let breadcrumbItems: BreadcrumbItem[] = items || [];
+let backNavigation: BackNavigation | null = null;
+
+if (autoGenerate) {
+  breadcrumbItems = generateBreadcrumbs(Astro.url.pathname, {
+    includeHome,
+    currentPageName,
+    gameKey
+  });
+
+  if (showBackButton) {
+    backNavigation = generateBackNavigation(Astro.url.pathname, { gameKey });
+  }
+} else if (showBackButton && items) {
+  // Generate back navigation from provided items
+  const parent = getParentBreadcrumb(items);
+  if (parent) {
+    backNavigation = {
+      href: parent.href || '/',
+      text: `Back to ${parent.name}`,
+      parentName: parent.name
+    };
+  }
+}
 ---
 
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol class="breadcrumb-list">
-    {
-      items.map((item, index) => (
-        <li class="breadcrumb-item">
-          {item.href ? (
-            <a href={item.href} class="breadcrumb-link">
-              {item.name}
-            </a>
-          ) : (
-            <span class="breadcrumb-current" aria-current="page">
-              {item.name}
-            </span>
-          )}
-          {index < items.length - 1 && (
-            <span class="breadcrumb-separator" aria-hidden="true">
-              ›
-            </span>
-          )}
-        </li>
-      ))
-    }
-  </ol>
+<nav class="zn-breadcrumb" aria-label="Breadcrumb">
+  <div class="zn-breadcrumb-container">
+    {/* Back Button */}
+    {backNavigation && (
+      <button
+        type="button"
+        class="zn-back-button"
+        onclick={`window.location.href='${backNavigation.href}'`}
+        aria-label={backNavigation.text}
+        title={backNavigation.text}
+      >
+        <svg class="zn-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6" />
+        </svg>
+        <span class="zn-back-text">Back</span>
+      </button>
+    )}
+
+    {/* Breadcrumb Trail */}
+    <ol class="zn-breadcrumb-list">
+      {
+        breadcrumbItems.map((item, index) => (
+          <li class="zn-breadcrumb-item">
+            {item.href ? (
+              <a href={item.href} class="zn-breadcrumb-link">
+                {item.name}
+              </a>
+            ) : (
+              <span class="zn-breadcrumb-current" aria-current="page">
+                {item.name}
+              </span>
+            )}
+            {index < breadcrumbItems.length - 1 && (
+              <span class="zn-breadcrumb-separator" aria-hidden="true">
+                ›
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
 </nav>
 
 <style>
-  .breadcrumb {
+  .zn-breadcrumb {
     margin-bottom: 2rem;
     /* Align with parent container */
     max-width: 75rem;
@@ -43,9 +105,58 @@ const { items } = Astro.props;
     margin-right: auto;
     padding-left: 2rem;
     padding-right: 2rem;
+    /* Ensure breadcrumb appears above other elements */
+    position: relative;
+    z-index: 20;
   }
 
-  .breadcrumb-list {
+  .zn-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Back Button Styles */
+  .zn-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 213, 79, 0.1);
+    border: 1px solid rgba(255, 213, 79, 0.3);
+    border-radius: 0.5rem;
+    color: #ffd54f;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    /* Touch-friendly sizing - WCAG AA compliant */
+    min-height: 44px;
+    min-width: 88px;
+    /* Touch optimization */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(255, 213, 79, 0.2);
+  }
+
+  .zn-back-button:focus-visible {
+    outline: 2px solid #ffd54f;
+    outline-offset: 2px;
+  }
+
+  .zn-back-arrow {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  .zn-back-text {
+    font-size: 0.9rem;
+  }
+
+  /* Breadcrumb Trail Styles */
+  .zn-breadcrumb-list {
     display: flex;
     gap: 0.5rem;
     list-style: none;
@@ -55,52 +166,118 @@ const { items } = Astro.props;
     font-size: 0.9rem;
     flex-wrap: wrap;
     align-items: center;
+    flex: 1;
   }
 
-  .breadcrumb-item {
+  .zn-breadcrumb-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
 
-  .breadcrumb-link {
+  .zn-breadcrumb-link {
     color: #ffd54f;
     text-decoration: none;
     opacity: 0.9;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    /* Touch-friendly link area */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(255, 213, 79, 0.2);
   }
 
-  .breadcrumb-current {
+  .zn-breadcrumb-current {
     color: #ffffff;
     font-weight: 600;
+    padding: 0.25rem 0.5rem;
   }
 
-  .breadcrumb-separator {
+  .zn-breadcrumb-separator {
     color: #b0b0b0;
     user-select: none;
     opacity: 0.7;
+    font-size: 1rem;
   }
 
   /* Mobile responsiveness - match Zone Nova layout breakpoints */
   @media (max-width: 768px) {
-    .breadcrumb {
+    .zn-breadcrumb {
       padding-left: 1rem;
       padding-right: 1rem;
+    }
+
+    .zn-breadcrumb-container {
+      gap: 0.75rem;
+    }
+
+    .zn-back-button {
+      padding: 0.5rem 0.9rem;
+      font-size: 0.85rem;
+      min-height: 44px;
+      min-width: 80px;
+    }
+
+    .zn-back-text {
+      font-size: 0.85rem;
+    }
+
+    .zn-breadcrumb-list {
+      font-size: 0.85rem;
     }
   }
 
   @media (max-width: 480px) {
-    .breadcrumb {
+    .zn-breadcrumb {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
     }
 
-    .breadcrumb-list {
+    .zn-breadcrumb-container {
+      gap: 0.5rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .zn-back-button {
+      padding: 0.5rem 0.8rem;
       font-size: 0.8rem;
+      min-height: 44px;
+      min-width: 72px;
+      align-self: flex-start;
+    }
+
+    .zn-back-text {
+      font-size: 0.8rem;
+    }
+
+    .zn-breadcrumb-list {
+      font-size: 0.8rem;
+      gap: 0.3rem;
+      width: 100%;
+    }
+
+    .zn-breadcrumb-item {
       gap: 0.3rem;
     }
 
-    .breadcrumb-item {
-      gap: 0.3rem;
+    .zn-breadcrumb-link,
+    .zn-breadcrumb-current {
+      padding: 0.5rem 0.6rem;
+      min-height: 44px;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .zn-back-button {
+      border-color: currentColor;
+    }
+
+    .zn-breadcrumb-link {
+      text-decoration: underline;
     }
   }
 </style>

@@ -1,7 +1,6 @@
 ---
 // Import the dedicated layout
 import TeamSynergyLayout from '../../../layouts/silver-and-blood/TeamSynergyLayout.astro';
-import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
 ---
 
 <TeamSynergyLayout
@@ -12,14 +11,6 @@ import Breadcrumb from '../../../components/silver-and-blood/Breadcrumb.astro';
   <section class="page-flex">
     <div class="main-content-container">
       <div class="content-wrapper">
-        <!-- Breadcrumb Navigation -->
-        <Breadcrumb
-          items={[
-            { name: 'Home', href: '/' },
-            { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
-            { name: 'Team Synergy' },
-          ]}
-        />
         <div
           style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: var(--sab-input-bg); border-radius: 12px; border: 1px solid var(--sab-border-light);"
         >

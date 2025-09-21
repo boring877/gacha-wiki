@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import MercenaryLayout from '../../../layouts/horizon-walker/MercenaryLayout.astro';
-import Breadcrumb from '../../../components/horizon-walker/Breadcrumb.astro';
 import {
   HORIZON_WALKER_MERCENARIES,
   mercenaryGameInfo,
@@ -10,12 +9,6 @@ import {
 // Extract filter options from enhanced data structure
 const { rarities } = mercenaryGameInfo;
 
-// Breadcrumb data for SEO
-const breadcrumbs = [
-  { name: 'Home', href: '/' },
-  { name: 'Horizon Walker', href: '/guides/horizon-walker/' },
-  { name: 'Mercenaries' },
-];
 
 // Calculate enhanced stats for display
 const totalMercenaries = HORIZON_WALKER_MERCENARIES.length;
@@ -33,8 +26,6 @@ export const prerender = true;
 ---
 
 <MercenaryLayout title={title} description={description} gameTitle="Mercenaries Database">
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb items={breadcrumbs} />
 
   <section class="hw-char-db-page-flex">
     <div class="hw-char-db-main-content">

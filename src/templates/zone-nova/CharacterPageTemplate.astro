@@ -1,7 +1,6 @@
 ---
 import { getFactionData } from '../../data/zone-nova/factions.js';
 import { Image } from 'astro:assets';
-import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 import {
   highlightAllSkills,
   highlightSkillText,
@@ -113,16 +112,6 @@ function getTagCategory(tag: string): string {
   return 'general-mechanic';
 }
 ---
-
-<!-- Breadcrumb Navigation -->
-<Breadcrumb
-  items={[
-    { name: 'Home', href: '/' },
-    { name: 'Zone Nova', href: '/guides/zone-nova/' },
-    { name: 'Characters', href: '/guides/zone-nova/characters/' },
-    { name: characterData.name },
-  ]}
-/>
 
 <!-- Mobile navigation instruction at top of main content -->
 <div class="swipeable-indicator">Touch the sides to move between characters</div>

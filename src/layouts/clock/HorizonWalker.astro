@@ -8,6 +8,7 @@ import Footer from '../../components/Footer.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import GeneralSEO from '../../components/GeneralSEO.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
 import SpeedInsights from '../../components/SpeedInsights.astro';
 
 // Import CSS files
@@ -83,6 +84,16 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
               <h1 class="hw-title-only-heading">Horizon Walker Clock</h1>
               <DecorativeLines />
             </section>
+
+            <!-- Breadcrumb Navigation -->
+            <Breadcrumb
+              items={[
+                { name: 'Home', href: '/' },
+                { name: 'Clocks', href: '/clock/' },
+                { name: 'Horizon Walker Clock' }
+              ]}
+              showBackButton={true}
+            />
 
             <!-- First Hero Card - Server Reset Timer -->
             <div class="master-clock-container">

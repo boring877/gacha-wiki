@@ -8,6 +8,7 @@ import Footer from '../../components/Footer.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import GeneralSEO from '../../components/GeneralSEO.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 import SpeedInsights from '../../components/SpeedInsights.astro';
 
 // Import CSS files
@@ -55,27 +56,6 @@ const timers = game.timers[game.currentRegion];
     <!-- Critical game asset preloading for instant loading -->
     <link rel="preload" href={game.image} as="image" fetchpriority="high" />
 
-    <!-- Preload key Silver and Blood character images for navigation -->
-    <link rel="preload" href="/images/games/silver-and-blood/characters/Acappella.jpg" as="image" />
-    <link rel="preload" href="/images/games/silver-and-blood/characters/Agares.jpg" as="image" />
-    <link rel="preload" href="/images/games/silver-and-blood/characters/Ami.jpg" as="image" />
-    <link rel="preload" href="/images/games/silver-and-blood/characters/Augustine.jpg" as="image" />
-    <link rel="preload" href="/images/games/silver-and-blood/characters/Bella.jpg" as="image" />
-    <link rel="preload" href="/images/games/silver-and-blood/characters/Cain.jpg" as="image" />
-    <link rel="preload" href="/images/games/silver-and-blood/characters/Cecia.jpg" as="image" />
-    <link rel="preload" href="/images/games/silver-and-blood/characters/Dalcarlo.jpg" as="image" />
-
-    <!-- Preload critical CSS for instant navigation -->
-    <link
-      rel="preload"
-      href="/src/styles/games/silver-and-blood/sab-character-styles.css"
-      as="style"
-    />
-    <link
-      rel="preload"
-      href="/src/styles/games/silver-and-blood/sab-character-comparison-v2.css"
-      as="style"
-    />
   </head>
 
   <body class="sab-body">
@@ -100,6 +80,16 @@ const timers = game.timers[game.currentRegion];
               <h1 class="title-only-heading">Silver and Blood Clock</h1>
               <DecorativeLines />
             </section>
+
+            <!-- Breadcrumb Navigation -->
+            <Breadcrumb
+              items={[
+                { name: 'Home', href: '/' },
+                { name: 'Clocks', href: '/clock/' },
+                { name: 'Silver and Blood Clock' }
+              ]}
+              showBackButton={true}
+            />
 
             <!-- Region Switcher -->
             <div class="region-switcher-container">

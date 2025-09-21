@@ -10,6 +10,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import CharacterNavigation from '../../components/zone-nova/CharacterNavigation.astro';
+import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 
 // Import CSS files for individual character pages only
 import '../../styles/games/zone-nova/zn-colors.css';
@@ -109,6 +110,15 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
               </section>
             )
           }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb
+            autoGenerate={true}
+            gameKey="zone-nova"
+            currentPageName={character?.name || gameTitle}
+            showBackButton={true}
+          />
+
           <!-- Content Area -->
           <div class="content-area">
             <slot />

@@ -9,6 +9,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import SpeedInsights from '../../components/SpeedInsights.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import CSS files properly
 import '../../styles/global.css';
@@ -93,6 +94,13 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
               </section>
             )
           }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb
+            autoGenerate={true}
+            gameKey="silver-and-blood"
+            showBackButton={true}
+          />
 
           <!-- Content Area -->
           <div class="content-area">

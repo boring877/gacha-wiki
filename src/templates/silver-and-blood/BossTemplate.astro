@@ -92,12 +92,10 @@ const bossAttackTypeInfo = attackTypeInfo;
 
   <!-- Breadcrumb Navigation -->
   <Breadcrumb
-    items={[
-      { name: 'Home', href: '/' },
-      { name: 'Silver and Blood', href: '/guides/silver-and-blood/' },
-      { name: 'Prophecy', href: '/guides/silver-and-blood/prophecy/' },
-      { name: name },
-    ]}
+    autoGenerate={true}
+    gameKey="silver-and-blood"
+    currentPageName={name}
+    showBackButton={true}
   />
 
   <!-- Boss Header & Overview -->
