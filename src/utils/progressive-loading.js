@@ -3,6 +3,8 @@
  * Improves perceived performance by loading content in chunks
  */
 
+import { createManagedObserver } from './memory-cleanup.js';
+
 /**
  * Progressive table loader - loads table rows in batches
  */
@@ -136,7 +138,7 @@ export class ProgressiveGridLoader {
     this.loadingTrigger.style.height = '1px';
 
     // Setup intersection observer for infinite scroll
-    this.observer = new IntersectionObserver(
+    this.observer = createManagedObserver(
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting && !this.isLoading) {
@@ -226,7 +228,7 @@ export class ProgressiveGridLoader {
 export function setupLazyImages(selector = 'img[loading="lazy"]') {
   const images = document.querySelectorAll(selector);
 
-  const imageObserver = new IntersectionObserver(entries => {
+  const imageObserver = createManagedObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target;

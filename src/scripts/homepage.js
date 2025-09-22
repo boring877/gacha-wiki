@@ -1,4 +1,6 @@
 // Homepage Clock and Showcase Logic
+import { createManagedTimeout, createManagedInterval } from '../utils/memory-cleanup.js';
+
 export function initializeHomepage(clockGames, showcaseGames) {
   // State management
   let currentGameIndex = 0;
@@ -95,7 +97,7 @@ export function initializeHomepage(clockGames, showcaseGames) {
       clockGameName.style.transform = 'translateY(10px)';
     }
 
-    setTimeout(() => {
+    createManagedTimeout(() => {
       // Update content
       if (clockGameImage && game.image) {
         clockGameImage.src = game.image;
@@ -220,7 +222,7 @@ export function initializeHomepage(clockGames, showcaseGames) {
   function startAutoRotation() {
     if (autoRotateInterval) clearInterval(autoRotateInterval);
 
-    autoRotateInterval = setInterval(() => {
+    autoRotateInterval = createManagedInterval(() => {
       const nextIndex = (currentGameIndex + 1) % clockGames.length;
       switchToGame(nextIndex, 'auto');
       // Sync showcase with clock
@@ -352,7 +354,7 @@ export function initializeHomepage(clockGames, showcaseGames) {
 
     // Start clock updates
     updateClock();
-    clockUpdateInterval = setInterval(updateClock, 1000); // TODO: import from timing-constants.ts
+    clockUpdateInterval = createManagedInterval(updateClock, 1000); // TODO: import from timing-constants.ts
 
     // Start auto-rotation
     if (isAutoRotating) {

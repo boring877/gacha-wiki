@@ -228,7 +228,7 @@ export function navigateWithLoading(url, sourceElement = null) {
       hideLoadingSpinner(sourceElement);
     }
     endPageLoading();
-    console.error('Error:', _error);
+    // Navigation error handled silently
     return false;
   }
 }

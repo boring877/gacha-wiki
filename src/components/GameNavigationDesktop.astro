@@ -105,6 +105,8 @@ if (!game) return;
 </nav>
 
 <script>
+  import { addManagedEventListener, createManagedPrefetchLink } from '../utils/memory-cleanup.js';
+
   // Desktop dropdown functionality with proper cleanup and performance optimizations
   document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.game-nav-desktop');
@@ -221,9 +223,9 @@ if (!game) return;
       item.addEventListener('mouseleave', handleMouseLeave);
     });
 
-    // Add global event listeners
-    document.addEventListener('click', handleOutsideClick);
-    document.addEventListener('keydown', handleEscKey);
+    // Add global event listeners using managed system
+    addManagedEventListener(document, 'click', handleOutsideClick);
+    addManagedEventListener(document, 'keydown', handleEscKey);
 
     // Cleanup function (though not called in this context, good practice)
     const cleanup = () => {
@@ -238,28 +240,10 @@ if (!game) return;
     (window as any).desktopNavCleanup = cleanup;
 
     // Enhanced prefetching system for instant navigation
-    const prefetchedLinks = new Set<string>();
-
     function prefetchPage(url: string | null) {
-      if (!url || prefetchedLinks.has(url)) return;
+      if (!url) return;
 
-      const existing = document.querySelector(`link[href="${url}"]`);
-      if (existing) return;
-
-      const link = document.createElement('link');
-      link.rel = 'prefetch';
-      link.href = url;
-      link.dataset.timestamp = Date.now().toString();
-      document.head.appendChild(link);
-      prefetchedLinks.add(url);
-
-      // Clean up prefetch links after 30 seconds to manage memory
-      setTimeout(() => {
-        if (document.head.contains(link)) {
-          document.head.removeChild(link);
-          prefetchedLinks.delete(url);
-        }
-      }, 30000);
+      createManagedPrefetchLink(url);
     }
 
     // Prefetch on dropdown link hover for instant navigation

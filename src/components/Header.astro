@@ -177,6 +177,8 @@ import MobileHeader from './MobileHeader.astro';
 </style>
 
 <script>
+  import { addManagedEventListener, createManagedTimeout } from '../utils/memory-cleanup.js';
+
   // Mobile menu functionality
   document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.getElementById('hamburger');
@@ -236,7 +238,7 @@ import MobileHeader from './MobileHeader.astro';
     });
 
     // Close menu on escape key
-    document.addEventListener('keydown', e => {
+    addManagedEventListener(document, 'keydown', e => {
       if (e.key === 'Escape' && isMenuOpen) {
         closeMenu();
       }
@@ -244,9 +246,9 @@ import MobileHeader from './MobileHeader.astro';
 
     // Close menu on window resize (desktop breakpoint)
     let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
-    window.addEventListener('resize', () => {
+    addManagedEventListener(window, 'resize', () => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
+      resizeTimeout = createManagedTimeout(() => {
         if (window.innerWidth > 768 && isMenuOpen) {
           closeMenu();
         }
