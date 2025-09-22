@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
 
 interface MercenaryStats {
   strength: number;
@@ -100,13 +99,6 @@ function getTagClass(tag: string): string {
   return 'team-utility';
 }
 ---
-
-<Breadcrumb
-  autoGenerate={true}
-  gameKey="horizon-walker"
-  currentPageName={mercenaryData.name}
-  showBackButton={true}
-/>
 
 <!-- Mercenary Header & Overview -->
 <section class="content-section character-overview-section">
