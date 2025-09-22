@@ -1,143 +1,82 @@
 /**
- * Memory Cleanup Utility - Prevents memory leaks on page navigation
- * Centralizes cleanup of observers, listeners, and DOM references
+ * Lightweight Memory Cleanup Utility
+ * Simple approach to prevent memory leaks without holding references
  */
 
-class MemoryManager {
-  constructor() {
-    this.observers = new Set();
-    this.eventListeners = new Map();
-    this.timeouts = new Set();
-    this.intervals = new Set();
-    this.prefetchLinks = new Set();
-    this.cleanup = this.cleanup.bind(this);
+// WeakMap to track cleanup functions without preventing GC
+const elementCleanupMap = new WeakMap();
+const observerSet = new WeakSet();
 
-    // Auto-cleanup on page unload
-    window.addEventListener('beforeunload', this.cleanup);
-    window.addEventListener('pagehide', this.cleanup);
-  }
-
-  // Register IntersectionObserver for cleanup
-  registerObserver(observer) {
-    this.observers.add(observer);
-    return observer;
-  }
-
-  // Register event listener for cleanup
-  registerEventListener(element, event, handler, options) {
-    const key = `${element.constructor.name}-${event}`;
-    if (!this.eventListeners.has(key)) {
-      this.eventListeners.set(key, new Set());
-    }
-    this.eventListeners.get(key).add({ element, event, handler });
-    element.addEventListener(event, handler, options);
-  }
-
-  // Register timeout for cleanup
-  registerTimeout(timeoutId) {
-    this.timeouts.add(timeoutId);
-    return timeoutId;
-  }
-
-  // Register interval for cleanup
-  registerInterval(intervalId) {
-    this.intervals.add(intervalId);
-    return intervalId;
-  }
-
-  // Register prefetch link for cleanup
-  registerPrefetchLink(url, element) {
-    this.prefetchLinks.add({ url, element });
-  }
-
-  // Clean up all registered resources
-  cleanup() {
-    // Disconnect observers
-    this.observers.forEach(observer => {
-      try {
-        observer.disconnect();
-      } catch (_e) {
-        // Observer cleanup failed silently
-      }
-    });
-    this.observers.clear();
-
-    // Remove event listeners
-    this.eventListeners.forEach(listeners => {
-      listeners.forEach(({ element, event, handler }) => {
-        try {
-          element.removeEventListener(event, handler);
-        } catch (_e) {
-          // Event listener cleanup failed silently
-        }
-      });
-    });
-    this.eventListeners.clear();
-
-    // Clear timeouts
-    this.timeouts.forEach(timeoutId => {
-      try {
-        clearTimeout(timeoutId);
-      } catch (_e) {
-        // Timeout cleanup failed silently
-      }
-    });
-    this.timeouts.clear();
-
-    // Clear intervals
-    this.intervals.forEach(intervalId => {
-      try {
-        clearInterval(intervalId);
-      } catch (_e) {
-        // Interval cleanup failed silently
-      }
-    });
-    this.intervals.clear();
-
-    // Remove prefetch links
-    this.prefetchLinks.forEach(({ element }) => {
-      try {
-        if (element && element.parentNode) {
-          element.parentNode.removeChild(element);
-        }
-      } catch (_e) {
-        // Prefetch link cleanup failed silently
-      }
-    });
-    this.prefetchLinks.clear();
-  }
-
-  // Force cleanup and recreate instance
-  reset() {
-    this.cleanup();
-    window.removeEventListener('beforeunload', this.cleanup);
-    window.removeEventListener('pagehide', this.cleanup);
-  }
-}
-
-// Global memory manager instance
-export const memoryManager = new MemoryManager();
-
-// Utility functions for common patterns
+/**
+ * Create IntersectionObserver with automatic cleanup
+ */
 export function createManagedObserver(callback, options) {
   const observer = new IntersectionObserver(callback, options);
-  return memoryManager.registerObserver(observer);
+  observerSet.add(observer);
+
+  // Auto-disconnect after 5 minutes of inactivity
+  const timeoutId = setTimeout(() => {
+    if (observerSet.has(observer)) {
+      observer.disconnect();
+    }
+  }, 300000);
+
+  // Store cleanup function on the observer itself
+  observer._cleanup = () => {
+    clearTimeout(timeoutId);
+    observer.disconnect();
+  };
+
+  return observer;
 }
 
+/**
+ * Add event listener with cleanup stored on element
+ */
 export function addManagedEventListener(element, event, handler, options) {
-  memoryManager.registerEventListener(element, event, handler, options);
+  element.addEventListener(event, handler, options);
+
+  // Store cleanup function on the element itself
+  if (!elementCleanupMap.has(element)) {
+    elementCleanupMap.set(element, new Set());
+  }
+
+  const cleanupFn = () => element.removeEventListener(event, handler);
+  elementCleanupMap.get(element).add(cleanupFn);
 }
 
+/**
+ * Create timeout that auto-cleans after execution
+ */
 export function createManagedTimeout(callback, delay) {
-  const timeoutId = setTimeout(callback, delay);
-  return memoryManager.registerTimeout(timeoutId);
+  return setTimeout(() => {
+    callback();
+    // Timeout automatically cleans itself after execution
+  }, delay);
 }
 
-export function createManagedInterval(callback, delay) {
-  const intervalId = setInterval(callback, delay);
-  return memoryManager.registerInterval(intervalId);
+/**
+ * Create interval with auto-cleanup after max executions
+ */
+export function createManagedInterval(callback, delay, maxExecutions = 1000) {
+  let executions = 0;
+
+  const intervalId = setInterval(() => {
+    callback();
+    executions++;
+
+    // Auto-cleanup after max executions to prevent infinite accumulation
+    if (executions >= maxExecutions) {
+      clearInterval(intervalId);
+    }
+  }, delay);
+
+  return intervalId;
 }
 
+/**
+ * Create prefetch link with automatic cleanup
+ */
 export function createManagedPrefetchLink(url) {
   const existing = document.querySelector(`link[href="${url}"]`);
   if (existing) return existing;
@@ -148,10 +87,8 @@ export function createManagedPrefetchLink(url) {
   link.dataset.timestamp = Date.now().toString();
   document.head.appendChild(link);
 
-  memoryManager.registerPrefetchLink(url, link);
-
-  // Auto-cleanup after 30 seconds
-  createManagedTimeout(() => {
+  // Auto-cleanup after 30 seconds - using regular setTimeout
+  setTimeout(() => {
     if (document.head.contains(link)) {
       document.head.removeChild(link);
     }
@@ -159,3 +96,41 @@ export function createManagedPrefetchLink(url) {
 
   return link;
 }
+
+/**
+ * Manual cleanup for when elements are removed
+ */
+export function cleanupElement(element) {
+  if (elementCleanupMap.has(element)) {
+    const cleanupFunctions = elementCleanupMap.get(element);
+    cleanupFunctions.forEach(fn => {
+      try {
+        fn();
+      } catch (_e) {
+        // Cleanup failed silently
+      }
+    });
+    elementCleanupMap.delete(element);
+  }
+}
+
+/**
+ * Cleanup old prefetch links
+ */
+export function cleanupOldPrefetchLinks() {
+  const links = document.querySelectorAll('link[rel="prefetch"][data-timestamp]');
+  const now = Date.now();
+  const maxAge = 60000; // 1 minute
+
+  links.forEach(link => {
+    const timestamp = parseInt(link.dataset.timestamp || '0');
+    if (now - timestamp > maxAge) {
+      if (link.parentNode) {
+        link.parentNode.removeChild(link);
+      }
+    }
+  });
+}
+
+// Cleanup old prefetch links every 30 seconds
+setInterval(cleanupOldPrefetchLinks, 30000);
