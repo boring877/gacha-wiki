@@ -30,10 +30,10 @@ export default defineConfig({
   },
   // Compression and performance
   compressHTML: true,
-  // Prefetch links for better navigation
+  // Prefetch links for better navigation - reduced to prevent memory leaks
   prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport',
+    prefetchAll: false,
+    defaultStrategy: 'hover',
   },
   vite: {
     build: {
