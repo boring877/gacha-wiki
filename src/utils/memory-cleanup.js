@@ -8,22 +8,14 @@ const elementCleanupMap = new WeakMap();
 const observerSet = new WeakSet();
 
 /**
- * Create IntersectionObserver with automatic cleanup
+ * Create IntersectionObserver - manual cleanup only
  */
 export function createManagedObserver(callback, options) {
   const observer = new IntersectionObserver(callback, options);
   observerSet.add(observer);
 
-  // Auto-disconnect after 5 minutes of inactivity
-  const timeoutId = setTimeout(() => {
-    if (observerSet.has(observer)) {
-      observer.disconnect();
-    }
-  }, 300000);
-
   // Store cleanup function on the observer itself
   observer._cleanup = () => {
-    clearTimeout(timeoutId);
     observer.disconnect();
   };
 
@@ -56,22 +48,10 @@ export function createManagedTimeout(callback, delay) {
 }
 
 /**
- * Create interval with auto-cleanup after max executions
+ * Create interval - returns standard interval ID
  */
-export function createManagedInterval(callback, delay, maxExecutions = 1000) {
-  let executions = 0;
-
-  const intervalId = setInterval(() => {
-    callback();
-    executions++;
-
-    // Auto-cleanup after max executions to prevent infinite accumulation
-    if (executions >= maxExecutions) {
-      clearInterval(intervalId);
-    }
-  }, delay);
-
-  return intervalId;
+export function createManagedInterval(callback, delay) {
+  return setInterval(callback, delay);
 }
 
 /**
@@ -132,5 +112,4 @@ export function cleanupOldPrefetchLinks() {
   });
 }
 
-// Cleanup old prefetch links every 30 seconds
-setInterval(cleanupOldPrefetchLinks, 30000);
+// Manual cleanup only - no automatic intervals to prevent file descriptor leaks

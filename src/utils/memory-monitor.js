@@ -108,8 +108,5 @@ export function startMemoryMonitoring(intervalMs = 10000) {
   return intervalId;
 }
 
-// Auto-start monitoring in development
-if (typeof window !== 'undefined' && window.location.hostname.includes('localhost')) {
-  // Start monitoring after a short delay to let page load
-  setTimeout(() => startMemoryMonitoring(), 2000);
-}
+// Manual start only - no auto-monitoring to prevent resource leaks
+// Call startMemoryMonitoring() manually if needed
