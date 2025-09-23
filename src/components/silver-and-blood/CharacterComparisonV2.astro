@@ -259,8 +259,10 @@ const rarities = ['SSR', 'SR', 'R'];
   </div>
 </div>
 
-<!-- External JS -->
-<script src="/src/scripts/comparison-v2/silver-and-blood-comparison-v2.js"></script>
+<!-- Load external JS AFTER data is set up -->
+<script type="module">
+  import '/src/scripts/comparison-v2/silver-and-blood-comparison-v2.js';
+</script>
 
 <script
   define:vars={{

@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * Initialize the V2 comparison system
  * @returns {Promise<void>}
  */
-async function initializeComparisonV2() {
+function initializeComparisonV2() {
   try {
     // Validate required data
     if (!window.SAB_COMPARISON_V2_DATA?.characters) {
@@ -186,7 +186,7 @@ async function initializeComparisonV2() {
     updateSelectedCount();
 
     // Preload popular character data for better performance
-    await preloadPopularCharacters();
+    preloadPopularCharacters();
 
     console.log('Silver & Blood Comparison V2: Initialized successfully');
   } catch (error) {
@@ -504,7 +504,6 @@ function handleIconClick(event) {
 
   const characterSlug = icon.dataset.characterSlug;
   if (!characterSlug) {
-    // Character slug not found on icon element
     return;
   }
 

@@ -167,10 +167,10 @@ export const prerender = true;
 </DamageMechanicsPageLayout>
 
 <script>
-  // Import Chart.js from CDN for browser compatibility
-  const chartScript = document.createElement('script');
-  chartScript.src = 'https://cdn.jsdelivr.net/npm/chart.js';
-  document.head.appendChild(chartScript);
+  // Import Chart.js from local dependency (already installed)
+  import('chart.js').then(module => {
+    window.Chart = module.Chart;
+  });
 
   // Gaia Mechanics Calculator
   window.calculateGaiaEffects = function () {

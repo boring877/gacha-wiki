@@ -89,7 +89,7 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
               items={[
                 { name: 'Home', href: '/' },
                 { name: 'Clocks', href: '/clock/' },
-                { name: 'Zone Nova Clock' }
+                { name: 'Zone Nova Clock' },
               ]}
               showBackButton={true}
             />
@@ -124,8 +124,11 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
                             src={game.image}
                             alt={game.name}
                             loading="eager"
-                            width={160}
-                            height={160}
+                            fetchpriority="high"
+                            width={50}
+                            height={52}
+                            format="webp"
+                            quality={75}
                           />
                         </div>
                         <div class="game-info">
@@ -355,6 +358,6 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
       // Pass guild war data to global scope for the clock script
       window.zoneNovaGuildWar = guildWar;
     </script>
-    <script src="/src/scripts/clock/zone-nova.js"></script>
+    <script src="/src/scripts/clock/zone-nova.js" defer></script>
   </body>
 </html>

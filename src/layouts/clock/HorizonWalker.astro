@@ -90,7 +90,7 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
               items={[
                 { name: 'Home', href: '/' },
                 { name: 'Clocks', href: '/clock/' },
-                { name: 'Horizon Walker Clock' }
+                { name: 'Horizon Walker Clock' },
               ]}
               showBackButton={true}
             />
@@ -125,8 +125,11 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                             src={game.image}
                             alt={game.name}
                             loading="eager"
-                            width={160}
-                            height={160}
+                            fetchpriority="high"
+                            width={50}
+                            height={52}
+                            format="webp"
+                            quality={75}
                           />
                         </div>
                         <div class="game-info">
@@ -317,6 +320,6 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
     </script>
 
     <!-- Load Horizon Walker clock timer script -->
-    <script src="/src/scripts/clock/horizon-walker.js"></script>
+    <script src="/src/scripts/clock/horizon-walker.js" defer></script>
   </body>
 </html>

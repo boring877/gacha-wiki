@@ -55,7 +55,6 @@ const timers = game.timers[game.currentRegion];
 
     <!-- Critical game asset preloading for instant loading -->
     <link rel="preload" href={game.image} as="image" fetchpriority="high" />
-
   </head>
 
   <body class="sab-body">
@@ -86,7 +85,7 @@ const timers = game.timers[game.currentRegion];
               items={[
                 { name: 'Home', href: '/' },
                 { name: 'Clocks', href: '/clock/' },
-                { name: 'Silver and Blood Clock' }
+                { name: 'Silver and Blood Clock' },
               ]}
               showBackButton={true}
             />
@@ -129,8 +128,11 @@ const timers = game.timers[game.currentRegion];
                             src={game.image}
                             alt={game.name}
                             loading="eager"
-                            width={160}
-                            height={160}
+                            fetchpriority="high"
+                            width={50}
+                            height={52}
+                            format="webp"
+                            quality={75}
                           />
                         </div>
                         <div class="game-info">
@@ -316,6 +318,6 @@ const timers = game.timers[game.currentRegion];
     </script>
 
     <!-- Silver and Blood Clock Timer Script -->
-    <script src="/src/scripts/clock/silver-and-blood.js"></script>
+    <script src="/src/scripts/clock/silver-and-blood.js" defer></script>
   </body>
 </html>
