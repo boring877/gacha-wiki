@@ -1,0 +1,190 @@
+---
+// Wallpapers Landing Layout - Dedicated layout for the wallpapers landing page
+import GeneralBaseHead from '../../components/GeneralBaseHead.astro';
+import Header from '../../components/Header.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import Footer from '../../components/Footer.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GeneralSEO from '../../components/GeneralSEO.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SpeedInsights from '../../components/SpeedInsights.astro';
+
+// Import CSS files
+import '../../styles/colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/wallpapers/landing.css';
+
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <GeneralBaseHead title={title} description={description} />
+
+    <GeneralSEO
+      title={title}
+      description={description}
+      keywords={[
+        'waifu wallpapers',
+        'gacha game wallpapers',
+        'anime wallpapers',
+        'character wallpapers',
+        'Zone Nova wallpapers',
+        'Silver and Blood wallpapers',
+        'Horizon Walker wallpapers',
+        'game character art',
+        'anime character art',
+        'gacha character wallpapers',
+      ]}
+      pageType="webpage"
+    />
+    <SpeedInsights />
+
+    <!-- Mobile App Optimization -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  </head>
+
+  <body>
+    <CustomScrollbar />
+
+    <!-- Same background layers as other pages -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="wallpapers-landing-content">
+      <Header />
+      <MobileMenu />
+
+      <main class="wallpapers-landing-page">
+        <div class="wallpapers-landing-container">
+          <!-- Page Title -->
+          <section class="title-section">
+            <h1 class="page-title">Waifu Wallpapers</h1>
+            <p class="page-subtitle">Collection & Downloads.</p>
+            <DecorativeLines />
+          </section>
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb
+            items={[{ name: 'Home', href: '/' }, { name: 'Wallpapers' }]}
+            showBackButton={true}
+          />
+
+          <!-- Wallpapers Section -->
+          <section class="wallpapers-section">
+            <div class="wallpapers-container">
+              <article class="wallpaper-card">
+                <div class="wallpaper-card-content">
+                  <h3 class="wallpaper-card-title">Waifu Wallpapers Collection</h3>
+                  <div class="download-links">
+                    <a
+                      href="https://mega.nz/folder/lywBTCYJ#Pac3Xh7JIO0KZBY36l50Eg"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="download-button"
+                    >
+                      <span class="download-text">Download via MEGA</span>
+                      <svg
+                        class="download-icon"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M10 3v10m-4-4l4 4 4-4M3 17h14"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                    <a
+                      href="https://nyaa.si/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="download-button coming-soon"
+                    >
+                      <span class="download-text">Nyaa Torrent (Coming Soon)</span>
+                      <svg
+                        class="download-icon"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M10 3v10m-4-4l4 4 4-4M3 17h14"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Games List Card -->
+              <article class="games-list-card">
+                <div class="games-list-content">
+                  <h3 class="games-list-title">Gacha Games</h3>
+                  <div class="games-grid">
+                    <span class="game-name">Ark ReCode</span>
+                    <span class="game-name">Azur Lane</span>
+                    <span class="game-name">Blue Archive</span>
+                    <span class="game-name">Brown Dust 2</span>
+                    <span class="game-name">Cherry Tale</span>
+                    <span class="game-name">Cross Core</span>
+                    <span class="game-name">Echocalypse</span>
+                    <span class="game-name">Girl Wars</span>
+                    <span class="game-name">Haze Reverb</span>
+                    <span class="game-name">Kaisen of Girls</span>
+                    <span class="game-name">King of Kinks</span>
+                    <span class="game-name">Last Origin</span>
+                    <span class="game-name">My Work</span>
+                    <span class="game-name">Nikke</span>
+                    <span class="game-name">Project QT</span>
+                    <span class="game-name">Shoujo Kaisen</span>
+                    <span class="game-name">Alchemy Stars</span>
+                    <span class="game-name">Artery Gear Fusion</span>
+                    <span class="game-name">Battle Valkyries</span>
+                    <span class="game-name">Girl Cafe Gun</span>
+                    <span class="game-name">Girls' Frontline</span>
+                    <span class="game-name">Idle Angels</span>
+                    <span class="game-name">Illusion Connect</span>
+                    <span class="game-name">Last Claudia</span>
+                    <span class="game-name">Maidens Fantasy</span>
+                    <span class="game-name">Senran Kagura New Link</span>
+                    <span class="game-name">Stellar Blade</span>
+                  </div>
+                  <p class="games-list-note">
+                    Notes: This collection has some of the materials, not all of the games.
+                  </p>
+                  <p class="collection-info">
+                    Collection by: Waifu Wallpapers | More collections from other people coming
+                    soon!
+                  </p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <Footer />
+  </body>
+</html>

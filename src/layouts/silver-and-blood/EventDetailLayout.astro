@@ -224,26 +224,57 @@ const { title, description, gameTitle, eventData } = Astro.props;
 		</div>
 
 		<script is:inline>
-			// Simple image click handler - opens in new tab
-			function initImageClick() {
-				// Add click handlers to all images
-				const images = document.querySelectorAll('.inline-small-image img, .guide-image img');
-				
-				images.forEach(img => {
-					img.style.cursor = 'pointer';
-					img.addEventListener('click', function() {
-						// Open image in new tab/window
-						window.open(this.src, '_blank');
+			// Memory-leak safe image click handler using native APIs
+			(function() {
+				let isInitialized = false;
+				let clickHandlers = new WeakMap();
+
+				function handleImageClick(event) {
+					// Use native window.open with security features
+					const url = event.target.src;
+					if (url) {
+						window.open(url, '_blank', 'noopener,noreferrer');
+					}
+				}
+
+				function initImageClick() {
+					if (isInitialized) return;
+
+					// Use event delegation to avoid memory leaks
+					const container = document.querySelector('.event-details-section');
+					if (!container) return;
+
+					// Single event listener on container instead of individual images
+					container.addEventListener('click', function(event) {
+						const target = event.target;
+						// Check if clicked element is an image we want to handle
+						if (target.tagName === 'IMG' &&
+							(target.closest('.inline-small-image') || target.closest('.guide-image'))) {
+							event.preventDefault();
+							target.style.cursor = 'pointer';
+							handleImageClick(event);
+						}
 					});
-				});
-			}
-			
-			// Initialize when page loads
-			if (document.readyState === 'loading') {
-				document.addEventListener('DOMContentLoaded', initImageClick);
-			} else {
-				initImageClick();
-			}
+
+					isInitialized = true;
+				}
+
+				// Cleanup function for page unload
+				function cleanup() {
+					clickHandlers = new WeakMap();
+					isInitialized = false;
+				}
+
+				// Initialize when DOM is ready
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', initImageClick, { once: true });
+				} else {
+					initImageClick();
+				}
+
+				// Cleanup on page unload to prevent memory leaks
+				window.addEventListener('beforeunload', cleanup, { once: true });
+			})();
 		</script>
 	</body>
 </html>

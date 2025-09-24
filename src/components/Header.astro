@@ -244,20 +244,32 @@ import MobileHeader from './MobileHeader.astro';
 
     // Close menu on window resize (desktop breakpoint)
     let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
-    window.addEventListener('resize', () => {
+    const resizeHandler = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         if (window.innerWidth > 768 && isMenuOpen) {
           closeMenu();
         }
       }, 100);
-    });
+    };
+    window.addEventListener('resize', resizeHandler);
 
     // Cleanup on page unload
-    window.addEventListener('beforeunload', () => {
+    const beforeUnloadHandler = () => {
+      // Clear timeout to prevent memory leak
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = undefined;
+      }
+
+      // Remove event listeners
+      window.removeEventListener('resize', resizeHandler);
+
+      // Reset body overflow
       if (isMenuOpen) {
         document.body.style.overflow = '';
       }
-    });
+    };
+    window.addEventListener('beforeunload', beforeUnloadHandler);
   });
 </script>

@@ -1,0 +1,23 @@
+---
+import EventDetailLayout from '../../../../layouts/silver-and-blood/EventDetailLayout.astro';
+import { eventData, eventSeoData } from '../../../../data/silver-and-blood/events/dev-notes-2.js';
+---
+
+<EventDetailLayout
+  title={eventSeoData.title}
+  description={eventSeoData.description}
+  gameTitle={eventData.title}
+  eventData={eventData}
+>
+  <!-- Closing message section -->
+  {
+    eventData.closing && (
+      <section class="closing-section">
+        <h2>{eventData.closing.title}</h2>
+        {eventData.closing.content.map(paragraph => (
+          <p>{paragraph}</p>
+        ))}
+      </section>
+    )
+  }
+</EventDetailLayout>

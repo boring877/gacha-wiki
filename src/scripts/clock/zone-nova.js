@@ -66,8 +66,9 @@ class ZoneNovaClockTimer {
     this.updateAllTimerCards();
     this.startClockLoop();
 
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', () => this.cleanup());
+    // Cleanup on page unload - bind this properly for removal
+    this.boundCleanup = this.cleanup.bind(this);
+    window.addEventListener('beforeunload', this.boundCleanup);
   }
 
   /**
@@ -693,6 +694,7 @@ class ZoneNovaClockTimer {
    * Clean up intervals and event listeners
    */
   cleanup() {
+    // Clear intervals and animation frames
     if (this.clockInterval) {
       clearInterval(this.clockInterval);
       this.clockInterval = null;
@@ -701,6 +703,48 @@ class ZoneNovaClockTimer {
     if (this.animationFrame) {
       cancelAnimationFrame(this.animationFrame);
       this.animationFrame = null;
+    }
+
+    // Remove event listeners
+    if (this.boundCleanup) {
+      window.removeEventListener('beforeunload', this.boundCleanup);
+      this.boundCleanup = null;
+    }
+
+    // Clear all DOM references to prevent memory leaks
+    this.clockHours = null;
+    this.clockMinutes = null;
+    this.clockSeconds = null;
+    this.currentDate = null;
+    this.currentUTC = null;
+    this.launchDays = null;
+    this.rift1Name = null;
+    this.rift1Time = null;
+    this.rift2Name = null;
+    this.rift2Time = null;
+    this.weeklyTime = null;
+    this.monthlyTime = null;
+    this.maintenanceStartTime = null;
+    this.maintenanceStartLabel = null;
+    this.maintenanceEndTime = null;
+    this.maintenanceEndLabel = null;
+    this.serverStatusDot = null;
+    this.serverStatusText = null;
+    this.halloweenTime = null;
+    this.newyearTime = null;
+    this.guildWarStatusDot = null;
+    this.guildWarStatusText = null;
+    this.guildWarCurrentPhase = null;
+    this.guildWarPhaseTime = null;
+    this.guildWarNextPhase = null;
+    this.guildWarNextTime = null;
+
+    // Clear global references
+    if (window.ZoneNovaClockTimer) {
+      delete window.ZoneNovaClockTimer;
+    }
+    if (window.zoneNovaClockTimer) {
+      delete window.zoneNovaClockTimer;
     }
   }
 }

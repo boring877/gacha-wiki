@@ -303,12 +303,8 @@
   /* === HORIZON WALKER GRADIENT SYSTEM === */
   /* Complex gradients combining theme colors for dynamic visual effects */
   /* 135deg angle provides diagonal flow that feels natural and dynamic */
-  --hw-primary-gradient: linear-gradient(
-    135deg,
-    var(--hw-primary-green),
-    var(--hw-secondary-brown)
-  );
-  --hw-nature-gradient: linear-gradient(135deg, var(--hw-primary-green), var(--hw-dark-green));
-  --hw-earth-gradient: linear-gradient(135deg, var(--hw-secondary-brown), var(--hw-dark-brown));
+  --hw-primary-gradient: linear-gradient(135deg, var(--hw-accent-mint), var(--hw-primary-warm));
+  --hw-nature-gradient: linear-gradient(135deg, var(--hw-accent-mint), var(--hw-tertiary-sky));
+  --hw-earth-gradient: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
   --hw-card-gradient: linear-gradient(135deg, var(--hw-card-bg), var(--hw-bg-darker));
 }

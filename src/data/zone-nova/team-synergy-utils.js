@@ -272,28 +272,6 @@ function updateTeamCount() {
   // Displaying ${currentTeams.length} of ${ZONE_NOVA_TEAMS.length} teams
 }
 
-// Utility function to get current filter state (for debugging)
-export function getCurrentState() {
-  return {
-    teams: currentTeams,
-    filters: currentFilters,
-    sort: currentSort,
-  };
-}
-
-// Utility function to manually set filters (for programmatic use)
-export function setFilters(filters) {
-  currentFilters = { ...currentFilters, ...filters };
-  applyFiltersAndSort();
-}
-
-// Utility function to manually set sort (for programmatic use)
-export function setSort(key, direction = 'asc') {
-  currentSort = { key, direction };
-  updateSortButtonStates();
-  applyFiltersAndSort();
-}
-
 // Function to handle responsive table/card switching
 function handleResponsiveDisplay() {
   const tableContainer = document.querySelector('.team-table-container');

@@ -1,5 +1,13 @@
 export const silverAndBloodEvents = [
   {
+    id: 'dev-notes-2',
+    title: 'Dev Notes #2 - Letter from the Silver and Blood Team',
+    date: 'October 2025',
+    summary:
+      'Official development update covering gameplay optimization, new Satin Boudoir system, event calendar launch, and upcoming strategic gameplay mechanics',
+    url: '/guides/silver-and-blood/events/dev-notes-2/',
+  },
+  {
     id: 'summertime-ensemble',
     title: 'Summertime Ensemble Event',
     date: 'July 17, 2025',
