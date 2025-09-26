@@ -165,6 +165,200 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* File Security Information */
+.file-security-info {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.file-metadata {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-family: 'Nunito', sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.file-size,
+.file-date {
+  font-weight: 600;
+}
+
+.hash-section {
+  margin-bottom: 0.75rem;
+}
+
+.hash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.hash-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  color: rgba(255, 183, 77, 0.9);
+}
+
+.hash-toggle {
+  background: rgba(255, 183, 77, 0.1);
+  border: 1px solid rgba(255, 183, 77, 0.2);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--amber-glow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hash-toggle:hover {
+  background: rgba(255, 183, 77, 0.15);
+  border-color: rgba(255, 183, 77, 0.3);
+}
+
+.hash-value {
+  margin-top: 0.5rem;
+}
+
+.hash-value code {
+  display: block;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  word-break: break-all;
+  line-height: 1.2;
+}
+
+.verification-note {
+  font-family: 'Nunito', sans-serif;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  text-align: center;
+}
+
+.verification-note small {
+  font-size: 0.75rem;
+}
+
+/* Seeding Community Note */
+.seeding-note {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(0, 172, 193, 0.08);
+  border: 1px solid rgba(0, 172, 193, 0.15);
+  border-radius: 6px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.seeding-note p {
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  color: rgba(0, 172, 193, 0.9);
+}
+
+.seeding-note ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style-type: disc;
+}
+
+.seeding-note li {
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+/* File Verification Instructions */
+.verification-instructions-card {
+  background: rgba(255, 183, 77, 0.05);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 183, 77, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.verification-content {
+  padding: 2rem;
+}
+
+.verification-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--amber-glow);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.verification-steps {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.verification-step {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.verification-step h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 183, 77, 0.9);
+  margin: 0 0 0.5rem 0;
+}
+
+.verification-step p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0.5rem 0 0 0;
+  line-height: 1.4;
+}
+
+.verification-step code {
+  display: block;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0.5rem 0;
+  word-break: break-all;
+}
+
+.verification-warning {
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+.verification-warning strong {
+  color: #ff6b6b;
+}
+
 /* Games List Card */
 .games-list-card {
   background: rgba(255, 255, 255, 0.05);
