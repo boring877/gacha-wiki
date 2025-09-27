@@ -1,6 +1,24 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'september-30-maintenance',
+    title: 'September 30 Maintenance Update',
+    date: 'September 30, 2025',
+    type: 'maintenance',
+    summary:
+      'September 30, 2025 maintenance (14:00, ~2 hours) brings 8 major activities: BETA Squad Divine Trial Part 2, [Nether Lord] Hella recruitment, Pursuit-Filled Sleepy Eyes memory, [Mother] Gaia rerun, Night Fortress memory rerun, Rift Tide XII, limited packages, and Symbol Vice double drops. Light Cube x300 compensation.',
+    url: '/guides/zone-nova/updates/maintenance-september-30-2025/',
+  },
+  {
+    id: 'nether-lord-hella-recruitment',
+    title: '[Nether Lord] Hella Limited Character Recruitment',
+    date: 'September 30, 2025',
+    type: 'recruitment',
+    summary:
+      'New Legendary character [Nether Lord] Hella (Wandering Messenger, Blended Pool) available through Limited Character Recruitment from September 30 - October 14, 2025. Supreme ruler of Death God Realm with dual forms and powerful output capabilities. Exclusive Limited Pursuit Memory equipment also available.',
+    url: '/guides/zone-nova/updates/announcement-nether-lord-hella-recruitment/',
+  },
+  {
     id: 'september-16-maintenance',
     title: 'September 16 Maintenance Update',
     date: 'September 16, 2025',

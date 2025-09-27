@@ -1,5 +1,9 @@
 ---
-import { generateBreadcrumbs, getParentBreadcrumb, generateBackNavigation } from '../utils/breadcrumb-generator.js';
+import {
+  generateBreadcrumbs,
+  getParentBreadcrumb,
+  generateBackNavigation,
+} from '../utils/breadcrumb-generator.js';
 import type { BreadcrumbItem, BackNavigation } from '../utils/breadcrumb-generator.js';
 
 export interface Props {
@@ -22,7 +26,7 @@ const {
   gameKey,
   currentPageName,
   includeHome = true,
-  showBackButton = true
+  showBackButton = true,
 } = Astro.props;
 
 // Generate breadcrumbs automatically if requested, otherwise use provided items
@@ -33,7 +37,7 @@ if (autoGenerate) {
   breadcrumbItems = generateBreadcrumbs(Astro.url.pathname, {
     includeHome,
     currentPageName,
-    gameKey
+    gameKey,
   });
 
   if (showBackButton) {
@@ -46,7 +50,7 @@ if (autoGenerate) {
     backNavigation = {
       href: parent.href || '/',
       text: `Back to ${parent.name}`,
-      parentName: parent.name
+      parentName: parent.name,
     };
   }
 }
@@ -55,20 +59,33 @@ if (autoGenerate) {
 <nav class="general-breadcrumb" aria-label="Breadcrumb">
   <div class="general-breadcrumb-container">
     {/* Back Button */}
-    {backNavigation && (
-      <button
-        type="button"
-        class="general-back-button"
-        onclick={`window.location.href='${backNavigation.href}'`}
-        aria-label={backNavigation.text}
-        title={backNavigation.text}
-      >
-        <svg class="general-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6" />
-        </svg>
-        <span class="general-back-text">Back</span>
-      </button>
-    )}
+    {
+      backNavigation && (
+        <button
+          type="button"
+          class="general-back-button"
+          onclick={`window.location.href='${backNavigation.href}'`}
+          aria-label={backNavigation.text}
+          title={backNavigation.text}
+        >
+          <svg
+            class="general-back-arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 18l-6-6 6-6"
+            />
+          </svg>
+          <span class="general-back-text">Back</span>
+        </button>
+      )
+    }
 
     {/* Breadcrumb Trail */}
     <ol class="general-breadcrumb-list">
@@ -237,8 +254,8 @@ if (autoGenerate) {
 
     .general-breadcrumb-container {
       gap: 0.5rem;
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: row;
+      align-items: center;
     }
 
     .general-back-button {
@@ -246,7 +263,6 @@ if (autoGenerate) {
       font-size: 0.8rem;
       min-height: 44px;
       min-width: 72px;
-      align-self: flex-start;
     }
 
     .general-back-text {
@@ -256,7 +272,6 @@ if (autoGenerate) {
     .general-breadcrumb-list {
       font-size: 0.8rem;
       gap: 0.3rem;
-      width: 100%;
     }
 
     .general-breadcrumb-item {

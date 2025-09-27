@@ -27,10 +27,10 @@ export const zoneNovaConfig = {
   timers: {
     'ero-labs': {
       maintenance: {
-        startDate: '2025-09-16T06:00:00Z', // September 16, 14:00 UTC+8
-        endDate: '2025-09-16T10:00:00Z', // September 16, 18:00 UTC+8
-        duration: 4,
-        subtitle: 'Scheduled September 16, 14:00-18:00 UTC+8',
+        startDate: '2025-09-30T06:00:00Z', // September 30, 14:00 UTC+8
+        endDate: '2025-09-30T08:00:00Z', // September 30, 16:00 UTC+8
+        duration: 2,
+        subtitle: 'Scheduled September 30, 14:00-16:00 UTC+8',
       },
       rifts: [
         { name: 'Rift Surge VII', endDate: '2025-08-18T20:00:00Z' }, // August 18, 20:00 UTC (from rifts data)
