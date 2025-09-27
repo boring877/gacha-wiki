@@ -11,7 +11,7 @@ const rawCoraData = {
   name: 'Cora',
   image: 'Cora', // Character image filename without extension
   rarity: 'S', // EX, SS, S, A, B
-  cost: 5, // Deployment cost
+  cost: 8, // Deployment cost
   tags: [
     'Mage',
     'Summoner',
@@ -171,8 +171,31 @@ const rawCoraData = {
     },
   },
 
-  // Weapon - Not yet released in game
-  weapon: null,
+  // Weapon Information
+  weapon: {
+    name: 'Staff Orbina',
+    type: 'Staff',
+    rarity: 'EX',
+    image: '/images/games/horizon-walker/weapons/Cora_WP.jpg',
+    stats: {
+      weaponMagicAtk: '91.0',
+      magicAtkBonus: '+35.0%',
+    },
+    uniqueSkills: {
+      blessingOfEarth: {
+        name: 'Blessing of Earth',
+        type: 'Unique',
+        description:
+          'During combat, Magic ATK increases by 40%. When using a skill other than Standby on your turn, gain the [Blessing of the Architect] effect for 2R. [Blessing of the Architect]: Increases Heat Boost by 45%. Stacks up to 3 times.',
+      },
+      harmonyOfTheArchitect: {
+        name: 'Harmony of the Architect',
+        type: 'Cora Signature',
+        description:
+          'At the start of combat, for 3 uses only, the AP cost of "Summon Lava" becomes 0 and its cooldown is reduced by 1R. At the start of combat, gain a shield equal to 100% of base Magic ATK for 1R. The shield is removed at the end of the turn if damaged. During combat, Magic ATK and Heat Boost increase by 30%. The attack radius of "Summon Lava" and the radius of the [Lava] zone each increase by 1m. During combat, the AP cost of "Volcanic Eruption" decreases by 30, and the damage of "Forbidden Land" increases by 100%. If HP is at 100%, the AP cost of "Summon Energy" decreases by 40%.',
+      },
+    },
+  },
 };
 
 // Validate and sanitize the character data
@@ -189,13 +212,13 @@ const rawHighlightPatterns = {
   damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
   effects: /\[([^[\]]{1,150})]/g,
   buffsDebuffs:
-    /\b(?:Prisoner|Primal\s+Core|Heat\s+of\s+the\s+Earth|Lava|Heatflow|Forbidden\s+Land|Volcanic\s+Eruption|summoner|arcane\s+engineer|magical\s+edifices|battlefield\s+ablaze|subterranean\s+depths)\b/gi,
+    /\b(?:Prisoner|Primal\s+Core|Heat\s+of\s+the\s+Earth|Lava|Heatflow|Forbidden\s+Land|Volcanic\s+Eruption|Blessing\s+of\s+the\s+Architect|Blessing\s+of\s+Earth|Harmony\s+of\s+the\s+Architect|summoner|arcane\s+engineer|magical\s+edifices|battlefield\s+ablaze|subterranean\s+depths|shield)\b/gi,
   percentages: /\b(\d{1,3}%)\b/g,
   statChanges: /\b(?:reduces?|increases?|decreases?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
   keywords:
-    /\b(?:Four\s+Brothers\s+of\s+Mages|The\s+Dwarf|Noctis\s+Nebula|The\s+Empire|Luandra|First\s+Human\s+God|summoner|arcane\s+engineer|magical\s+edifices|heat\s+ray|space-time|teleports|circular\s+range|explode|explosion|battlefield|subterranean\s+depths|volcanic|lava)\b/gi,
+    /\b(?:Four\s+Brothers\s+of\s+Mages|The\s+Dwarf|Noctis\s+Nebula|The\s+Empire|Luandra|First\s+Human\s+God|Staff\s+Orbina|summoner|arcane\s+engineer|magical\s+edifices|heat\s+ray|space-time|teleports|circular\s+range|explode|explosion|battlefield|subterranean\s+depths|volcanic|lava|cooldown|attack\s+radius)\b/gi,
   attributes:
-    /\b(?:AP|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|Heat|Cold|Electric|Immaterial|Poison|SPD|CRIT\s+rate|CRIT\s+DMG|Accuracy|Evade|HP|Max\s+HP|AP\s+Recovery|Intelligence|Strength|Technic|Vitality|Agility|Heat\s+DEF|Starting\s+Ap|Additional\s+Heat\s+DMG)\b/gi,
+    /\b(?:AP|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|Heat\s+Boost|Heat|Cold|Electric|Immaterial|Poison|SPD|CRIT\s+rate|CRIT\s+DMG|Accuracy|Evade|HP|Max\s+HP|AP\s+Recovery|Intelligence|Strength|Technic|Vitality|Agility|Heat\s+DEF|Starting\s+Ap|Additional\s+Heat\s+DMG|Weapon\s+Magic\s+ATK)\b/gi,
 };
 
 // Export sanitized highlighting patterns
@@ -205,7 +228,7 @@ export const coraHighlighting = sanitizeHighlightPatterns(rawHighlightPatterns);
 export const coraSEO = {
   title: 'Cora - Horizon Walker Character Guide',
   description:
-    'Complete guide for Cora, an S rarity Mage character in Horizon Walker. Youngest of the Four Brothers of Mages with volcanic summoning and lava zone control abilities.',
+    'Complete guide for Cora, an S rarity Mage character in Horizon Walker. Youngest of the Four Brothers of Mages with volcanic summoning, lava zone control abilities, and Staff Orbina weapon.',
   keywords: [
     'Cora',
     'Horizon Walker',
@@ -219,6 +242,11 @@ export const coraSEO = {
     'lava zones',
     'volcanic magic',
     'area control',
+    'Staff Orbina',
+    'weapon',
+    'equipment',
+    'Blessing of Earth',
+    'Harmony of the Architect',
     'guide',
     'stats',
     'build',

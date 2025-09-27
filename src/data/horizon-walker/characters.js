@@ -239,7 +239,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     id: 5,
     name: 'Cora',
     rarity: 'S',
-    cost: 5,
+    cost: 8,
     class: 'Mage',
     element: 'Magic',
     faction: 'Independent',
