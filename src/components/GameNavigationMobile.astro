@@ -85,7 +85,10 @@ if (!game) return;
         format="webp"
         quality={90}
       />
-      <div class="mobile-game-title">Resources</div>
+      <div class="mobile-title-section">
+        <div class="mobile-game-name">{game.name}</div>
+        <div class="mobile-game-subtitle">Resources</div>
+      </div>
     </div>
     <button class="close-btn" id="navClose">✕</button>
   </div>
@@ -114,35 +117,58 @@ if (!game) return;
 </div>
 
 <script>
-  // Mobile Navigation - Full-screen popup with viewport isolation
-  document.addEventListener('DOMContentLoaded', function () {
+  // Mobile Navigation - Touch-optimized with proper error handling
+  function initializeMobileNavigation() {
+    // Use native DOM APIs with proper error checking
     const toggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileNavLinks');
     const closeBtn = document.getElementById('navClose');
     const overlay = document.getElementById('navOverlay');
-    let isMenuOpen = false;
 
-    const COMPONENT_ID = 'game-navigation-mobile';
+    // Early return if critical elements are missing
+    if (!toggle || !mobileMenu) {
+      console.error('Critical mobile navigation elements not found');
+      return;
+    }
+
+    let isMenuOpen = false;
 
     function toggleMenu() {
       isMenuOpen = !isMenuOpen;
 
-      if (toggle) {
-        toggle.setAttribute('aria-expanded', isMenuOpen.toString());
-      }
+      // Update aria-expanded
+      toggle.setAttribute('aria-expanded', isMenuOpen.toString());
 
-      if (mobileMenu) {
-        if (isMenuOpen) {
-          // Simple menu opening
-          mobileMenu.classList.add('active');
-          overlay?.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        } else {
-          // Simple menu closing
-          mobileMenu.classList.remove('active');
-          overlay?.classList.remove('active');
-          document.body.style.overflow = '';
+      if (isMenuOpen) {
+        // Open menu with proper height calculation
+        mobileMenu.classList.add('active');
+        if (overlay) {
+          overlay.classList.add('active');
         }
+
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = 'hidden';
+
+        // Set proper height to prevent infinite scroll
+        const viewportHeight = window.innerHeight;
+        mobileMenu.style.maxHeight = `${viewportHeight}px`;
+
+        // Focus management for accessibility
+        if (closeBtn) {
+          closeBtn.focus();
+        }
+      } else {
+        // Close menu
+        mobileMenu.classList.remove('active');
+        if (overlay) {
+          overlay.classList.remove('active');
+        }
+
+        // Restore body scroll
+        document.body.style.overflow = '';
+
+        // Return focus to toggle button
+        toggle.focus();
       }
     }
 
@@ -153,50 +179,58 @@ if (!game) return;
     }
 
     // Event listeners
-    toggle?.addEventListener('click', toggleMenu);
-    closeBtn?.addEventListener('click', closeMenu);
-    // Close menu when clicking on overlay or links
-    mobileMenu?.addEventListener('click', e => {
-      const target = e.target as HTMLElement;
+    toggle.addEventListener('click', toggleMenu);
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeMenu);
+    }
+
+    // Handle clicks on overlay and links
+    mobileMenu.addEventListener('click', function (event) {
+      const target = event.target;
       if (
         target === mobileMenu ||
         target === overlay ||
-        (target && target.classList?.contains('mobile-link'))
+        (target && target.classList && target.classList.contains('mobile-link'))
       ) {
         closeMenu();
       }
     });
-    overlay?.addEventListener('click', closeMenu);
 
-    // Close menu on escape key
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && isMenuOpen) {
+    if (overlay) {
+      overlay.addEventListener('click', closeMenu);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && isMenuOpen) {
         closeMenu();
+        event.preventDefault();
       }
     });
 
-    // Close menu on window resize (desktop breakpoint)
-    let resizeTimeout: ReturnType<typeof setTimeout> | undefined;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        if (window.innerWidth > 768 && isMenuOpen) {
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', function () {
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+      resizeTimeout = setTimeout(function () {
+        if (window.innerWidth > 1024 && isMenuOpen) {
           closeMenu();
+        }
+        // Update height on resize if menu is open
+        if (isMenuOpen) {
+          const viewportHeight = window.innerHeight;
+          mobileMenu.style.maxHeight = `${viewportHeight}px`;
         }
       }, 100);
     });
 
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', () => {
-      if (isMenuOpen) {
-        document.body.style.overflow = '';
-      }
-    });
-
     // Enhanced prefetching for mobile navigation
-    const prefetchedLinks = new Set<string>();
+    const prefetchedLinks = new Set();
 
-    function prefetchPage(url: string | null) {
+    function prefetchPage(url) {
       if (!url || prefetchedLinks.has(url)) return;
 
       const existing = document.querySelector(`link[href="${url}"]`);
@@ -205,12 +239,11 @@ if (!game) return;
       const link = document.createElement('link');
       link.rel = 'prefetch';
       link.href = url;
-      link.dataset.timestamp = Date.now().toString();
       document.head.appendChild(link);
       prefetchedLinks.add(url);
 
-      // Clean up prefetch links after 20 seconds (shorter for mobile)
-      setTimeout(() => {
+      // Clean up prefetch links after 20 seconds
+      setTimeout(function () {
         if (document.head.contains(link)) {
           document.head.removeChild(link);
           prefetchedLinks.delete(url);
@@ -218,30 +251,37 @@ if (!game) return;
       }, 20000);
     }
 
-    // Prefetch links when mobile menu opens
-    toggle?.addEventListener('click', () => {
-      // Small delay to ensure menu is visible first
-      setTimeout(() => {
-        const navLinks = mobileMenu?.querySelectorAll('a[href]');
-        if (navLinks) {
-          // Prefetch first 5 links for mobile performance
-          Array.from(navLinks)
-            .slice(0, 5)
-            .forEach(link => {
-              const href = (link as HTMLAnchorElement).href;
-              prefetchPage(href);
-            });
+    // Prefetch on touch start for better performance
+    mobileMenu.addEventListener(
+      'touchstart',
+      function (event) {
+        const target = event.target;
+        if (target && target.tagName === 'A') {
+          const href = target.href;
+          prefetchPage(href);
         }
-      }, 100);
-    });
+      },
+      { passive: true }
+    );
+  }
 
-    // Prefetch on touch start (faster than click on mobile)
-    mobileMenu?.addEventListener('touchstart', (e: TouchEvent) => {
-      const target = e.target as HTMLElement;
-      if (target && target.tagName === 'A') {
-        const href = (target as HTMLAnchorElement).href;
-        prefetchPage(href);
-      }
-    });
-  });
+  // Initialize once DOM is ready
+  let isInitialized = false;
+
+  function safeInitialize() {
+    if (isInitialized) return;
+
+    const toggle = document.getElementById('navToggle');
+    if (toggle && !toggle.hasAttribute('data-initialized')) {
+      toggle.setAttribute('data-initialized', 'true');
+      isInitialized = true;
+      initializeMobileNavigation();
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', safeInitialize);
+  } else {
+    safeInitialize();
+  }
 </script>

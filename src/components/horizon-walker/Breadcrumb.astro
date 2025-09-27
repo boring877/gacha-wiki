@@ -1,5 +1,9 @@
 ---
-import { generateBreadcrumbs, getParentBreadcrumb, generateBackNavigation } from '../../utils/breadcrumb-generator.js';
+import {
+  generateBreadcrumbs,
+  getParentBreadcrumb,
+  generateBackNavigation,
+} from '../../utils/breadcrumb-generator.js';
 import type { BreadcrumbItem, BackNavigation } from '../../utils/breadcrumb-generator.js';
 
 export interface Props {
@@ -22,7 +26,7 @@ const {
   gameKey,
   currentPageName,
   includeHome = true,
-  showBackButton = true
+  showBackButton = true,
 } = Astro.props;
 
 // Generate breadcrumbs automatically if requested, otherwise use provided items
@@ -33,7 +37,7 @@ if (autoGenerate) {
   breadcrumbItems = generateBreadcrumbs(Astro.url.pathname, {
     includeHome,
     currentPageName,
-    gameKey
+    gameKey,
   });
 
   if (showBackButton) {
@@ -46,7 +50,7 @@ if (autoGenerate) {
     backNavigation = {
       href: parent.href || '/',
       text: `Back to ${parent.name}`,
-      parentName: parent.name
+      parentName: parent.name,
     };
   }
 }
@@ -55,20 +59,33 @@ if (autoGenerate) {
 <nav class="hw-breadcrumb" aria-label="Breadcrumb navigation">
   <div class="hw-breadcrumb-container">
     {/* Back Button */}
-    {backNavigation && (
-      <button
-        type="button"
-        class="hw-back-button"
-        onclick={`window.location.href='${backNavigation.href}'`}
-        aria-label={backNavigation.text}
-        title={backNavigation.text}
-      >
-        <svg class="hw-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6" />
-        </svg>
-        <span class="hw-back-text">Back</span>
-      </button>
-    )}
+    {
+      backNavigation && (
+        <button
+          type="button"
+          class="hw-back-button"
+          onclick={`window.location.href='${backNavigation.href}'`}
+          aria-label={backNavigation.text}
+          title={backNavigation.text}
+        >
+          <svg
+            class="hw-back-arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 18l-6-6 6-6"
+            />
+          </svg>
+          <span class="hw-back-text">Back</span>
+        </button>
+      )
+    }
 
     {/* Breadcrumb Trail */}
     <ol class="hw-breadcrumb-list">
@@ -117,27 +134,26 @@ if (autoGenerate) {
     flex-wrap: wrap;
   }
 
-  /* Back Button Styles - Horizon Walker Theme */
+  /* Back Button Styles - Horizon Walker */
   .hw-back-button {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: rgba(232, 165, 71, 0.1);
-    border: 1px solid rgba(232, 165, 71, 0.3);
-    border-radius: 0.5rem;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: #2a2a2a;
+    border: none;
+    border-radius: 6px;
     color: var(--hw-primary-warm, #e8a547);
     font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
     white-space: nowrap;
-    /* Touch-friendly sizing - WCAG AA compliant */
-    min-height: 44px;
-    min-width: 88px;
+    /* Touch-friendly sizing */
+    min-height: 48px;
     /* Touch optimization */
     touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(232, 165, 71, 0.2);
+    -webkit-tap-highlight-color: transparent;
   }
 
   .hw-back-button:focus-visible {
@@ -178,95 +194,86 @@ if (autoGenerate) {
   .hw-breadcrumb-link {
     color: var(--hw-primary-warm, #e8a547);
     text-decoration: none;
-    opacity: 0.9;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.25rem;
+    padding: 0.75rem;
+    border-radius: 6px;
     /* Touch-friendly link area */
-    min-height: 44px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(232, 165, 71, 0.2);
+    -webkit-tap-highlight-color: transparent;
   }
 
   .hw-breadcrumb-current {
     color: #ffffff;
     font-weight: 600;
-    padding: 0.25rem 0.5rem;
+    padding: 0.75rem;
   }
 
   .hw-breadcrumb-separator {
-    color: #b0b0b0;
+    color: rgba(255, 255, 255, 0.5);
     user-select: none;
-    opacity: 0.7;
     font-size: 1rem;
   }
 
-  /* Mobile responsiveness - match Zone Nova layout breakpoints */
+  /* Mobile optimization */
   @media (max-width: 768px) {
     .hw-breadcrumb {
       padding-left: 1rem;
       padding-right: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .hw-breadcrumb-container {
-      gap: 0.75rem;
+      gap: 1rem;
     }
 
     .hw-back-button {
-      padding: 0.5rem 0.9rem;
-      font-size: 0.85rem;
-      min-height: 44px;
-      min-width: 80px;
-    }
-
-    .hw-back-text {
-      font-size: 0.85rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      min-height: 48px;
     }
 
     .hw-breadcrumb-list {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
   }
 
   @media (max-width: 480px) {
     .hw-breadcrumb {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .hw-breadcrumb-container {
-      gap: 0.5rem;
+      gap: 0.75rem;
       flex-direction: column;
       align-items: flex-start;
     }
 
     .hw-back-button {
-      padding: 0.5rem 0.8rem;
-      font-size: 0.8rem;
-      min-height: 44px;
-      min-width: 72px;
-      align-self: flex-start;
-    }
-
-    .hw-back-text {
-      font-size: 0.8rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      min-height: 48px;
+      width: 100%;
+      justify-content: center;
     }
 
     .hw-breadcrumb-list {
-      font-size: 0.8rem;
-      gap: 0.3rem;
+      font-size: 0.85rem;
+      gap: 0.5rem;
       width: 100%;
     }
 
     .hw-breadcrumb-item {
-      gap: 0.3rem;
+      gap: 0.5rem;
     }
 
     .hw-breadcrumb-link,
     .hw-breadcrumb-current {
-      padding: 0.5rem 0.6rem;
-      min-height: 44px;
+      padding: 0.75rem;
+      min-height: 48px;
     }
   }
 

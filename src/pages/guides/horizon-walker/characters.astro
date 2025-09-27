@@ -119,7 +119,12 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                       </div>
                     </td>
                     <td>
-                      <span class="character-name">{character.name}</span>
+                      <span
+                        class="character-name"
+                        data-long={character.name.length > 12 ? 'true' : 'false'}
+                      >
+                        {character.name}
+                      </span>
                     </td>
                     <td>
                       <span class="hw-badge" data-rarity={character.rarity} data-sort-key="rarity">
@@ -185,7 +190,9 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                     </div>
                   </div>
                   <div class="mobile-card-info">
-                    <h3 class="character-name">{char.name}</h3>
+                    <h3 class="character-name" data-long={char.name.length > 12 ? 'true' : 'false'}>
+                      {char.name}
+                    </h3>
                     <div class="header-badges">
                       <span class="hw-badge" data-rarity={char.rarity}>
                         {char.rarity}

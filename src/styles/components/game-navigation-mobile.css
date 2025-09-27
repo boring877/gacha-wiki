@@ -64,53 +64,26 @@
   border-radius: 16px;
 }
 
-.game-nav-mobile .game-image-link:active .game-image-container {
-  transform: scale(0.95);
-}
-
-.game-nav-mobile .game-image-link:focus,
-.game-nav-mobile .game-image-link:focus-visible {
-  outline: 3px solid #ffb74d;
-  outline-offset: 2px;
-  background: rgba(255, 183, 77, 0.1);
-}
-
 /* Game Resources Button */
 .game-nav-mobile .game-resources-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 183, 77, 0.08);
-  border: 1px solid rgba(255, 183, 77, 0.2);
-  border-radius: 14px;
-  padding: 0.75rem 1.125rem;
+  background: #2a2a2a;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
   cursor: pointer;
-  /* Touch-optimized interactions */
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   outline: none;
-  /* Ensure proper button sizing */
-  min-height: 48px;
+  min-height: 44px;
   flex: 1;
   max-width: 350px;
 }
 
 .game-nav-mobile .game-resources-btn:active {
-  background: rgba(255, 183, 77, 0.18);
-  border-color: rgba(255, 183, 77, 0.35);
-}
-
-.game-nav-mobile .game-resources-btn:focus,
-.game-nav-mobile .game-resources-btn:focus-visible {
-  outline: 3px solid #ffb74d;
-  outline-offset: 2px;
-  background: rgba(255, 183, 77, 0.15);
-  border-color: rgba(255, 183, 77, 0.4);
+  background: #333;
 }
 
 .game-nav-mobile .game-image-container {
@@ -141,28 +114,61 @@
 .game-nav-mobile .game-title {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.1px;
-  background: linear-gradient(135deg, #ffb74d, #ffd700, #ffeb3b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  /* Better text rendering for centered layout */
+  color: #ffffff;
   text-align: center;
   white-space: nowrap;
-  /* Ensure proper contrast fallback */
-  color: #ffb74d;
-  /* Handle longer text gracefully */
-  max-width: 310px;
+  max-width: 320px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 /* Visual feedback when menu is open */
 .game-nav-mobile .game-resources-btn[aria-expanded='true'] {
-  background: rgba(255, 183, 77, 0.22);
-  border-color: rgba(255, 183, 77, 0.45);
+  background: #333;
+}
+
+/* Game-specific title colors */
+.game-nav-mobile[data-game='zone-nova'] .game-title {
+  color: var(--zn-primary-amber, #ffb74d);
+}
+
+.game-nav-mobile[data-game='silver-and-blood'] .game-title {
+  color: var(--sab-calm-red, #c26b6b);
+}
+
+.game-nav-mobile[data-game='horizon-walker'] .game-title {
+  color: var(--hw-primary-warm, #e8a547);
+}
+
+/* Game-specific mobile menu colors */
+
+/* Zone Nova - Inside Menu */
+.mobile-links[data-game='zone-nova'] .mobile-game-name {
+  color: var(--zn-primary-amber, #ffb74d);
+}
+
+.mobile-links[data-game='zone-nova'] .mobile-section-title {
+  color: var(--zn-primary-amber, #ffb74d);
+}
+
+/* Silver and Blood - Inside Menu */
+.mobile-links[data-game='silver-and-blood'] .mobile-game-name {
+  color: var(--sab-calm-red, #c26b6b);
+}
+
+.mobile-links[data-game='silver-and-blood'] .mobile-section-title {
+  color: var(--sab-calm-red, #c26b6b);
+}
+
+/* Horizon Walker - Inside Menu */
+.mobile-links[data-game='horizon-walker'] .mobile-game-name {
+  color: var(--hw-primary-warm, #e8a547);
+}
+
+.mobile-links[data-game='horizon-walker'] .mobile-section-title {
+  color: var(--hw-primary-warm, #e8a547);
 }
 
 /* Mobile Navigation - Overlay System */
@@ -172,33 +178,26 @@
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
   z-index: var(--z-modal-backdrop);
-  opacity: 0;
-  visibility: hidden;
   cursor: pointer;
-  /* Ensure overlay is also viewport-isolated */
-  contain: layout style paint;
+  /* Simple visibility - hidden by default */
+  display: none;
 }
 
 .mobile-overlay.active {
-  opacity: 1;
-  visibility: visible;
+  display: block;
 }
 
 .mobile-links {
   position: fixed;
   inset: 0;
-  background: rgb(28, 28, 28);
+  background: var(--rich-black);
   backdrop-filter: blur(30px);
   overflow-y: auto;
   z-index: var(--z-modal);
-  display: flex;
   flex-direction: column;
   padding: 0;
-  opacity: 0;
-  visibility: hidden;
-  /* True viewport positioning - completely isolated */
-  contain: layout style paint;
-  overscroll-behavior: contain;
+  /* Simple visibility - hidden by default */
+  display: none;
   /* Remove blue highlights and selections */
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -219,45 +218,32 @@
   display: none;
 }
 
+/* Simple active state - just show the menu */
 .mobile-links.active {
-  opacity: 1;
-  visibility: visible;
-  /* Complete screen takeover - only this exists */
-  transform: translateZ(0);
-  will-change: transform;
-  /* Force to front of all content */
-  z-index: var(--z-modal);
-  /* Ensure complete isolation */
-  isolation: isolate;
+  display: flex;
 }
 
+/* Additional specificity selectors removed - simple display approach is sufficient */
+
 .close-btn {
-  background: rgba(255, 183, 77, 0.12);
-  border: 1px solid rgba(255, 183, 77, 0.3);
-  border-radius: 10px;
-  color: #ffb74d;
-  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 1rem;
   cursor: pointer;
-  padding: 0.75rem;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Remove blue highlights */
   -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   outline: none;
-  /* Touch-optimized */
   touch-action: manipulation;
 }
 
 .close-btn:active {
-  background: rgba(255, 183, 77, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .game-header-content {
@@ -271,11 +257,16 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
-  padding: 2rem 2rem 1.5rem 2rem;
+  padding: 1.5rem 1.5rem 1.25rem 1.5rem;
   border-bottom: 1px solid rgba(255, 183, 77, 0.1);
-  min-height: 90px;
+  min-height: 80px;
   /* Simplified positioning without conflicts */
   flex-shrink: 0;
+  background: var(--rich-black);
+  /* Sticky header for better UX */
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .mobile-game-image {
@@ -285,29 +276,45 @@
   object-fit: cover;
 }
 
-.mobile-game-title {
+.mobile-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobile-game-name {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: #ffb74d;
-  /* Handle longer text in overlay */
+  color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 240px;
+  line-height: 1.2;
 }
 
-/* Enhanced Mobile Sections - Updated for centered layout */
-.mobile-section {
-  margin-bottom: 0;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 1.375rem;
-  min-height: 180px;
-  /* Ensure consistent width and centering */
-  width: 100%;
-  max-width: 460px;
+.mobile-game-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* MOBILE ONLY: Match menu button colors exactly */
+@media (max-width: 1024px) {
+  .mobile-section {
+    display: block;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 0.75rem;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: auto;
+    margin-bottom: 1.25rem;
+  }
 }
 
 .mobile-section-header {
@@ -320,37 +327,54 @@
 }
 
 .mobile-section-title {
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 600;
-  color: #ffb74d;
-  font-size: 1.05rem;
-  letter-spacing: 0.5px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  letter-spacing: 0.3px;
+  margin-bottom: 1rem;
 }
 
-/* Enhanced Mobile Links with Better Touch Targets */
-.mobile-link {
-  display: flex;
-  align-items: center;
-  padding: 1.125rem 1.375rem;
-  color: #e8e8e8;
-  text-decoration: none;
-  border-radius: 12px;
-  margin-bottom: 0.875rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  min-height: 48px;
-  /* Remove blue highlights */
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  outline: none;
-  /* Touch-optimized */
-  touch-action: manipulation;
+/* MOBILE ONLY: Match menu button colors exactly */
+@media (max-width: 1024px) {
+  .mobile-link {
+    display: flex;
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    margin: 0.75rem 0;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 15px;
+    font-weight: 500;
+    min-height: 48px;
+    align-items: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-link:active {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .mobile-sections-wrapper {
+    padding: 0.5rem;
+    height: calc(100vh - 90px); /* Account for header height */
+    overflow-y: auto;
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    /* Momentum scrolling for smooth mobile experience */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-sections-wrapper::-webkit-scrollbar {
+    display: none;
+  }
 }
+
+/* Mobile links inherit visibility from container - no additional rules needed */
 
 .mobile-link:active {
   background: rgba(255, 255, 255, 0.12);
@@ -358,143 +382,13 @@
 }
 
 .mobile-link.active {
-  background: rgba(255, 183, 77, 0.2);
-  color: #ffb74d;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   font-weight: 600;
-  border-color: rgba(255, 183, 77, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Enhanced Focus Indicators for Modal Behavior */
-.mobile-link:focus,
-.mobile-link:focus-visible {
-  outline: 3px solid #ffb74d;
-  outline-offset: 2px;
-  background: rgba(255, 183, 77, 0.18);
-  border-color: rgba(255, 183, 77, 0.4);
-}
-
-.close-btn:focus,
-.close-btn:focus-visible {
-  outline: 3px solid #ffb74d;
-  outline-offset: 2px;
-  background: rgba(255, 183, 77, 0.25);
-}
-
-/* Game-specific styling for Silver & Blood */
-.game-nav-mobile[data-game='silver-and-blood'] .game-resources-btn {
-  background: rgba(229, 115, 115, 0.08);
-  border-color: rgba(229, 115, 115, 0.2);
-}
-
-.game-nav-mobile[data-game='silver-and-blood'] .game-resources-btn:active {
-  background: rgba(229, 115, 115, 0.18);
-  border-color: rgba(229, 115, 115, 0.35);
-}
-
-.game-nav-mobile[data-game='silver-and-blood'] .game-resources-btn:focus,
-.game-nav-mobile[data-game='silver-and-blood'] .game-resources-btn:focus-visible {
-  outline-color: #e57373;
-  background: rgba(229, 115, 115, 0.15);
-  border-color: rgba(229, 115, 115, 0.4);
-}
-
-.game-nav-mobile[data-game='silver-and-blood'] .game-resources-btn[aria-expanded='true'] {
-  background: rgba(229, 115, 115, 0.22);
-  border-color: rgba(229, 115, 115, 0.45);
-}
-
-.game-nav-mobile[data-game='silver-and-blood'] .game-image-link:focus,
-.game-nav-mobile[data-game='silver-and-blood'] .game-image-link:focus-visible {
-  outline-color: #e57373;
-}
-
-/* Game-specific focus indicators for mobile links */
-.mobile-links[data-game='silver-and-blood'] .mobile-link:focus,
-.mobile-links[data-game='silver-and-blood'] .mobile-link:focus-visible {
-  outline-color: #e57373;
-  background: rgba(229, 115, 115, 0.18);
-  border-color: rgba(229, 115, 115, 0.4);
-}
-
-.mobile-links[data-game='silver-and-blood'] .close-btn:focus,
-.mobile-links[data-game='silver-and-blood'] .close-btn:focus-visible {
-  outline-color: #e57373;
-  background: rgba(229, 115, 115, 0.25);
-}
-
-/* Game-Specific Styling */
-.game-nav-mobile[data-game='silver-and-blood'] .game-title {
-  background: linear-gradient(135deg, #b71c1c, #e57373, #e57373);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.mobile-links[data-game='silver-and-blood'] .mobile-link.active {
-  background: rgba(229, 115, 115, 0.2);
-  color: #e57373;
-  border-color: rgba(229, 115, 115, 0.4);
-}
-
-.game-nav-mobile[data-game='zone-nova'] .game-title {
-  background: linear-gradient(135deg, #ffb74d, #00acc1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.game-nav-mobile[data-game='horizon-walker'] .game-resources-btn {
-  background: rgba(232, 165, 71, 0.08);
-  border-color: rgba(232, 165, 71, 0.2);
-}
-
-.game-nav-mobile[data-game='horizon-walker'] .game-resources-btn:active {
-  background: rgba(232, 165, 71, 0.18);
-  border-color: rgba(232, 165, 71, 0.35);
-}
-
-.game-nav-mobile[data-game='horizon-walker'] .game-resources-btn:focus,
-.game-nav-mobile[data-game='horizon-walker'] .game-resources-btn:focus-visible {
-  outline-color: #e8a547;
-  background: rgba(232, 165, 71, 0.15);
-  border-color: rgba(232, 165, 71, 0.4);
-}
-
-.game-nav-mobile[data-game='horizon-walker'] .game-resources-btn[aria-expanded='true'] {
-  background: rgba(232, 165, 71, 0.22);
-  border-color: rgba(232, 165, 71, 0.45);
-}
-
-.game-nav-mobile[data-game='horizon-walker'] .game-image-link:focus,
-.game-nav-mobile[data-game='horizon-walker'] .game-image-link:focus-visible {
-  outline-color: #e8a547;
-}
-
-.mobile-links[data-game='horizon-walker'] .mobile-link:focus,
-.mobile-links[data-game='horizon-walker'] .mobile-link:focus-visible {
-  outline-color: #e8a547;
-  background: rgba(232, 165, 71, 0.18);
-  border-color: rgba(232, 165, 71, 0.4);
-}
-
-.mobile-links[data-game='horizon-walker'] .close-btn:focus,
-.mobile-links[data-game='horizon-walker'] .close-btn:focus-visible {
-  outline-color: #e8a547;
-  background: rgba(232, 165, 71, 0.25);
-}
-
-.game-nav-mobile[data-game='horizon-walker'] .game-title {
-  background: linear-gradient(135deg, #e8a547, #ff7b7b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.mobile-links[data-game='horizon-walker'] .mobile-link.active {
-  background: rgba(232, 165, 71, 0.2);
-  color: #e8a547;
-  border-color: rgba(232, 165, 71, 0.4);
-}
 
 /* ============================================== */
 /*     ENHANCED RESPONSIVE GRID LAYOUTS          */
@@ -502,278 +396,75 @@
 
 /* Default Mobile Portrait: 1 column for narrow screens */
 /* Content wrapper - centered layout for better touch experience */
-.mobile-sections-wrapper {
-  flex: 1;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.mobile-sections-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  max-width: 900px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 1rem;
-  /* Center align for better balance */
-  place-items: center;
-}
-
-/* Small Mobile Portrait (320px-480px): Single column, optimized for touch */
-@media screen and (max-width: 480px) {
-  .game-nav-mobile .container {
-    padding: 0.375rem 0.875rem;
+/* MOBILE ONLY: Compact layout to reduce scrolling */
+@media (max-width: 1024px) {
+  .mobile-sections-wrapper {
+    padding: 0.5rem;
+    height: calc(100vh - 90px); /* Account for header height */
+    overflow-y: auto;
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    /* Momentum scrolling for smooth mobile experience */
+    -webkit-overflow-scrolling: touch;
   }
 
-  .game-nav-mobile .game-nav-header {
-    padding: 0.375rem 0;
-    gap: 1rem;
-  }
-
-  .game-nav-mobile .game-nav-header-content {
-    gap: 0.75rem;
-  }
-
-  .game-nav-mobile .game-resources-btn {
-    padding: 0.625rem 1rem;
-    min-height: 44px;
-    max-width: 260px;
-  }
-
-  .game-nav-mobile .game-image-container {
-    width: 28px;
-    height: 28px;
-  }
-
-  .game-nav-mobile .game-title {
-    font-size: 0.875rem;
-    max-width: 220px;
+  .mobile-sections-wrapper::-webkit-scrollbar {
+    display: none;
   }
 
   .mobile-sections-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    max-width: 420px;
-    padding: 0 1.25rem;
-  }
-
-  .mobile-section {
-    padding: 1.125rem;
-    min-height: 170px;
-  }
-
-  .mobile-link {
-    padding: 1.125rem 1.375rem;
-    font-size: 0.95rem;
-    min-height: 48px;
-    margin-bottom: 0.875rem;
-  }
-}
-
-/* Large Mobile Portrait (481px-767px): Single column, better spacing */
-@media screen and (min-width: 481px) and (max-width: 767px) and (orientation: portrait) {
-  .mobile-sections-grid {
-    grid-template-columns: 1fr;
-    gap: 1.375rem;
-    max-width: 520px;
-    padding: 0 1.75rem;
-  }
-
-  .mobile-section {
-    padding: 1.25rem;
-    min-height: 185px;
-  }
-
-  .mobile-link {
-    padding: 1.25rem 1.5rem;
-    font-size: 0.975rem;
-    min-height: 50px;
-    margin-bottom: 0.9375rem;
-  }
-}
-
-/* Mobile Landscape (up to 768px height): Better horizontal spacing and layout */
-@media screen and (max-height: 768px) and (orientation: landscape) {
-  /* Compact container padding for landscape phones */
-  .game-nav-mobile .container {
-    padding: 0.375rem 1.25rem;
-  }
-
-  /* Minimal header spacing for landscape */
-  .game-nav-mobile .game-nav-header {
-    padding: 0.25rem 0;
-  }
-
-  .game-nav-mobile .game-nav-header-content {
-    gap: 0.625rem;
-  }
-
-  .game-nav-mobile .game-resources-btn {
-    min-height: 42px;
-    padding: 0.5rem 1rem;
-    max-width: 240px;
-  }
-
-  .game-nav-mobile .game-image-container {
-    width: 30px;
-    height: 30px;
-  }
-
-  .game-nav-mobile .game-title {
-    font-size: 0.85rem;
-    max-width: 200px;
-  }
-
-  /* Grid layout adjustments */
-  .mobile-sections-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-    max-width: 800px;
-    padding: 0 1.75rem;
-  }
-
-  .mobile-section {
-    padding: 1.125rem;
-    min-height: 160px;
-  }
-
-  .mobile-link {
-    padding: 1rem 1.25rem;
-    font-size: 0.9rem;
-    min-height: 46px;
-    margin-bottom: 0.75rem;
-  }
-
-  .mobile-links {
-    padding: 2.25rem 1.75rem;
-  }
-}
-
-/* Tablet Portrait (768px-1024px): 2 columns with generous spacing */
-@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  .mobile-sections-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.25rem;
-    max-width: 650px;
-    padding: 0 2.25rem;
-  }
-
-  .mobile-section {
-    padding: 1.375rem;
-    min-height: 210px;
-  }
-
-  .mobile-link {
-    padding: 1.125rem 1.375rem;
-    font-size: 0.9rem;
-    min-height: 48px;
-    margin-bottom: 0.875rem;
-  }
-
-  .game-nav-mobile .sections-btn {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
-  }
-}
-
-/* Tablet Landscape (768px-1024px): Optimal horizontal spacing and touch targets */
-@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  /* Generous container padding for tablet landscape */
-  .game-nav-mobile .container {
-    padding: 0.75rem 2rem;
-  }
-
-  /* Maintain comfortable header spacing */
-  .game-nav-mobile .game-nav-header {
-    padding: 0.75rem 0;
-  }
-
-  /* Grid layout adjustments */
-  .mobile-sections-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.25rem;
-    max-width: 800px;
-    padding: 0 3.5rem;
-  }
-
-  .mobile-section {
-    padding: 1.25rem;
-    min-height: 180px;
-  }
-
-  .mobile-link {
-    padding: 1rem 1.25rem;
-    font-size: 0.875rem;
-    min-height: 44px;
-    margin-bottom: 0.75rem;
-  }
-
-  .mobile-links {
-    padding: 2.25rem 2.25rem;
-  }
-}
-
-/* Large Tablet/Small Desktop Touch (1025px+): Optimized for large touch screens */
-@media screen and (min-width: 1025px) and (hover: none) and (pointer: coarse) {
-  /* Extra generous padding for large touch screens */
-  .game-nav-mobile .container {
-    padding: 1rem 3rem;
-  }
-
-  /* Enhanced header for larger screens */
-  .game-nav-mobile .game-nav-header {
-    padding: 1rem 0;
-    gap: 3rem;
-  }
-
-  .game-nav-mobile .game-nav-header-content {
-    gap: 3rem;
-    max-width: 700px;
-  }
-
-  .game-nav-mobile .sections-btn {
-    min-height: 58px;
-    min-width: 140px;
-    padding: 1.125rem 1.75rem;
-    font-size: 1rem;
-  }
-
-  .mobile-sections-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
-    max-width: 1100px;
-    padding: 0 2rem;
-    /* Override the place-items: center for proper 3-column alignment */
-    place-items: stretch;
-    justify-items: center;
-    align-items: start;
-  }
-
-  .mobile-section {
-    padding: 1.5rem;
-    min-height: 200px;
-    /* Remove max-width for better grid alignment */
+    display: block;
     width: 100%;
     max-width: none;
-    /* Ensure consistent sizing across grid */
-    min-width: 280px;
   }
 
-  .mobile-link {
-    padding: 1.125rem 1.375rem;
-    font-size: 0.9rem;
-    min-height: 48px;
-    margin-bottom: 0.875rem;
+  .mobile-game-header {
+    padding: 1rem;
+    min-height: 60px;
+  }
+}
+
+/* Removed complex responsive CSS - using simple mobile-only approach above */
+
+/* All complex responsive CSS removed - using ultra simple mobile-only approach */
+
+/* Better mobile spacing for very small screens */
+@media (max-width: 1024px) {
+  @media (max-height: 600px) {
+    .mobile-game-header {
+      min-height: 60px;
+      padding: 1rem 1rem 0.75rem 1rem;
+    }
+
+    .mobile-sections-wrapper {
+      height: calc(100vh - 70px);
+      padding: 0.25rem;
+    }
+
+    .mobile-section {
+      margin: 0.5rem;
+      padding: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .mobile-link {
+      padding: 0.875rem;
+      margin: 0.5rem 0;
+      font-size: 15px;
+      min-height: 44px;
+    }
   }
 
-  .mobile-sections-wrapper {
-    padding: 2.5rem 2rem;
-    /* Better alignment for large touch screens */
-    justify-content: flex-start;
-    align-items: center;
+  /* Landscape mobile optimization */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .mobile-game-header {
+      min-height: 50px;
+      padding: 0.75rem;
+    }
+
+    .mobile-sections-wrapper {
+      height: calc(100vh - 60px);
+    }
   }
 }

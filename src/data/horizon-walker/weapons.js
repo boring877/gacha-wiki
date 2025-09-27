@@ -4,6 +4,7 @@
 import { arahaData } from './characters/araha.js';
 import { bellaData } from './characters/bella.js';
 import { bergaData } from './characters/berga.js';
+import { coraData } from './characters/cora.js';
 import { efretiData } from './characters/efreeti.js';
 import { everetteData } from './characters/everette.js';
 import { fammeneData } from './characters/fammene.js';
@@ -68,6 +69,7 @@ const CHARACTER_DATA = {
   araha: arahaData,
   bella: bellaData,
   berga: bergaData,
+  cora: coraData,
   efreeti: efretiData,
   everette: everetteData,
   fammene: fammeneData,

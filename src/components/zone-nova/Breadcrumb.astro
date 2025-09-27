@@ -1,5 +1,9 @@
 ---
-import { generateBreadcrumbs, getParentBreadcrumb, generateBackNavigation } from '../../utils/breadcrumb-generator.js';
+import {
+  generateBreadcrumbs,
+  getParentBreadcrumb,
+  generateBackNavigation,
+} from '../../utils/breadcrumb-generator.js';
 import type { BreadcrumbItem, BackNavigation } from '../../utils/breadcrumb-generator.js';
 
 export interface Props {
@@ -22,7 +26,7 @@ const {
   gameKey,
   currentPageName,
   includeHome = true,
-  showBackButton = true
+  showBackButton = true,
 } = Astro.props;
 
 // Generate breadcrumbs automatically if requested, otherwise use provided items
@@ -33,7 +37,7 @@ if (autoGenerate) {
   breadcrumbItems = generateBreadcrumbs(Astro.url.pathname, {
     includeHome,
     currentPageName,
-    gameKey
+    gameKey,
   });
 
   if (showBackButton) {
@@ -46,7 +50,7 @@ if (autoGenerate) {
     backNavigation = {
       href: parent.href || '/',
       text: `Back to ${parent.name}`,
-      parentName: parent.name
+      parentName: parent.name,
     };
   }
 }
@@ -55,20 +59,33 @@ if (autoGenerate) {
 <nav class="zn-breadcrumb" aria-label="Breadcrumb">
   <div class="zn-breadcrumb-container">
     {/* Back Button */}
-    {backNavigation && (
-      <button
-        type="button"
-        class="zn-back-button"
-        onclick={`window.location.href='${backNavigation.href}'`}
-        aria-label={backNavigation.text}
-        title={backNavigation.text}
-      >
-        <svg class="zn-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6" />
-        </svg>
-        <span class="zn-back-text">Back</span>
-      </button>
-    )}
+    {
+      backNavigation && (
+        <button
+          type="button"
+          class="zn-back-button"
+          onclick={`window.location.href='${backNavigation.href}'`}
+          aria-label={backNavigation.text}
+          title={backNavigation.text}
+        >
+          <svg
+            class="zn-back-arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 18l-6-6 6-6"
+            />
+          </svg>
+          <span class="zn-back-text">Back</span>
+        </button>
+      )
+    }
 
     {/* Breadcrumb Trail */}
     <ol class="zn-breadcrumb-list">
@@ -117,27 +134,26 @@ if (autoGenerate) {
     flex-wrap: wrap;
   }
 
-  /* Back Button Styles */
+  /* Back Button Styles - Zone Nova */
   .zn-back-button {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: rgba(255, 213, 79, 0.1);
-    border: 1px solid rgba(255, 213, 79, 0.3);
-    border-radius: 0.5rem;
-    color: #ffd54f;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: #2a2a2a;
+    border: none;
+    border-radius: 6px;
+    color: var(--zn-primary-amber, #ffb74d);
     font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
     white-space: nowrap;
-    /* Touch-friendly sizing - WCAG AA compliant */
-    min-height: 44px;
-    min-width: 88px;
+    /* Touch-friendly sizing */
+    min-height: 48px;
     /* Touch optimization */
     touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(255, 213, 79, 0.2);
+    -webkit-tap-highlight-color: transparent;
   }
 
   .zn-back-button:focus-visible {
@@ -176,97 +192,88 @@ if (autoGenerate) {
   }
 
   .zn-breadcrumb-link {
-    color: #ffd54f;
+    color: var(--zn-primary-amber, #ffb74d);
     text-decoration: none;
-    opacity: 0.9;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.25rem;
+    padding: 0.75rem;
+    border-radius: 6px;
     /* Touch-friendly link area */
-    min-height: 44px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(255, 213, 79, 0.2);
+    -webkit-tap-highlight-color: transparent;
   }
 
   .zn-breadcrumb-current {
     color: #ffffff;
     font-weight: 600;
-    padding: 0.25rem 0.5rem;
+    padding: 0.75rem;
   }
 
   .zn-breadcrumb-separator {
-    color: #b0b0b0;
+    color: rgba(255, 255, 255, 0.5);
     user-select: none;
-    opacity: 0.7;
     font-size: 1rem;
   }
 
-  /* Mobile responsiveness - match Zone Nova layout breakpoints */
+  /* Mobile optimization */
   @media (max-width: 768px) {
     .zn-breadcrumb {
       padding-left: 1rem;
       padding-right: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .zn-breadcrumb-container {
-      gap: 0.75rem;
+      gap: 1rem;
     }
 
     .zn-back-button {
-      padding: 0.5rem 0.9rem;
-      font-size: 0.85rem;
-      min-height: 44px;
-      min-width: 80px;
-    }
-
-    .zn-back-text {
-      font-size: 0.85rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      min-height: 48px;
     }
 
     .zn-breadcrumb-list {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
   }
 
   @media (max-width: 480px) {
     .zn-breadcrumb {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .zn-breadcrumb-container {
-      gap: 0.5rem;
+      gap: 0.75rem;
       flex-direction: column;
       align-items: flex-start;
     }
 
     .zn-back-button {
-      padding: 0.5rem 0.8rem;
-      font-size: 0.8rem;
-      min-height: 44px;
-      min-width: 72px;
-      align-self: flex-start;
-    }
-
-    .zn-back-text {
-      font-size: 0.8rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      min-height: 48px;
+      width: 100%;
+      justify-content: center;
     }
 
     .zn-breadcrumb-list {
-      font-size: 0.8rem;
-      gap: 0.3rem;
+      font-size: 0.85rem;
+      gap: 0.5rem;
       width: 100%;
     }
 
     .zn-breadcrumb-item {
-      gap: 0.3rem;
+      gap: 0.5rem;
     }
 
     .zn-breadcrumb-link,
     .zn-breadcrumb-current {
-      padding: 0.5rem 0.6rem;
-      min-height: 44px;
+      padding: 0.75rem;
+      min-height: 48px;
     }
   }
 

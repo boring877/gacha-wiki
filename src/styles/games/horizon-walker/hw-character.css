@@ -158,28 +158,28 @@
     width: 5%;
   } /* # */
   .character-table th:nth-child(2) {
-    width: 15%;
-  } /* Image - bigger for 80px */
+    width: 12%;
+  } /* Image - optimized */
   .character-table th:nth-child(3) {
-    width: 22%;
-  } /* Name - more prominent */
+    width: 28%;
+  } /* Name - increased for long names */
   .character-table th:nth-child(4) {
-    width: 10%;
+    width: 9%;
   } /* Rarity */
   .character-table th:nth-child(5) {
-    width: 8%;
+    width: 7%;
   } /* Cost */
   .character-table th:nth-child(6) {
-    width: 8%;
+    width: 8.8%;
   } /* STR */
   .character-table th:nth-child(7) {
-    width: 8%;
+    width: 8.8%;
   } /* INT */
   .character-table th:nth-child(8) {
-    width: 8%;
+    width: 8.8%;
   } /* VIT */
   .character-table th:nth-child(9) {
-    width: 8%;
+    width: 8.8%;
   } /* AGI */
   .character-table th:nth-child(10) {
     width: 8%;
@@ -223,6 +223,10 @@
     text-align: left;
     white-space: normal;
     overflow: visible;
+    word-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.3;
+    padding: 1rem 0.5rem;
   }
 
   .character-image {
@@ -238,6 +242,41 @@
     font-size: 1.2rem;
     font-weight: 700;
     font-family: var(--font-primary);
+    line-height: 1.3;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Responsive font sizing for long character names */
+  .character-name {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+
+  /* Desktop table character name specific styling */
+  .character-table .character-name {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Special handling for extra-long character names */
+  .character-name[data-long='true'] {
+    font-size: 0.95rem !important;
+    line-height: 1.2;
+  }
+
+  .mobile-card-info .character-name[data-long='true'] {
+    font-size: 1rem !important;
+  }
+
+  @media (max-width: 480px) {
+    .character-name[data-long='true'] {
+      font-size: 0.85rem !important;
+    }
+
+    .mobile-card-info .character-name[data-long='true'] {
+      font-size: 0.9rem !important;
+    }
   }
 
   .cost-value {
@@ -359,6 +398,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--hw-spacing-md);
+    min-height: 80px; /* Ensure consistent height */
   }
 
   .mobile-card-image {
@@ -371,15 +411,23 @@
     flex-direction: column;
     align-items: center;
     gap: var(--hw-spacing-xs);
+    flex: 1;
+    max-width: calc(100% - 80px); /* Account for image width */
+    overflow: hidden;
   }
 
   .mobile-card-info h3.character-name {
     color: var(--hw-text-light);
     margin: 0;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     font-weight: 700;
     text-align: center;
     font-family: var(--font-primary);
+    word-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.3;
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
 
   /* Header badges container */
@@ -636,6 +684,18 @@
       flex-direction: column;
       text-align: center;
       gap: var(--hw-spacing-sm);
+      min-height: auto; /* Allow height to adjust */
+    }
+
+    /* Better mobile card info layout for small screens */
+    .mobile-card-info {
+      max-width: 100%; /* Full width on small screens */
+    }
+
+    /* Smaller font size for very long names on small screens */
+    .mobile-card-info h3.character-name {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      line-height: 1.2;
     }
 
     /* Stats grid - stack in 2 rows for small screens */

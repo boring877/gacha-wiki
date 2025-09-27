@@ -108,22 +108,6 @@ src/
 - Consistent naming conventions
 - SEO optimization built-in
 
-## Chrome DevTools MCP Commands
-
-Available with the Chrome DevTools MCP for browser debugging and performance
-analysis:
-
-- **Performance Analysis**: "Analyze the loading performance of
-  http://localhost:4322/"
-- **Console Debugging**: "Check for console errors on http://localhost:4322/"
-- **SEO Analysis**: "Run Lighthouse audit on the homepage"
-- **Network Monitoring**: "Monitor network requests when filtering characters"
-- **Performance Profiling**: "Profile JavaScript performance on the Zone Nova
-  character page"
-- **Memory Analysis**: "Check for memory leaks on http://localhost:4322/"
-- **Mobile Performance**: "Test mobile performance of the character guide pages"
-- **Bundle Analysis**: "Analyze bundle sizes and loading performance"
-
 ## Common Tasks
 
 - Adding new characters: Use templates in `src/templates/`
