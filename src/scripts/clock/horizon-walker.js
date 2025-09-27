@@ -118,34 +118,23 @@ class HorizonWalkerClockTimer {
   }
 
   /**
-   * Start optimized clock loop using requestAnimationFrame
+   * Start simple clock loop using native setInterval (Brave-compatible)
    */
   startClockLoop() {
-    let lastSecond = Math.floor(Date.now() / 1000);
+    // Use native setInterval - cannot be blocked by Brave
+    this.clockInterval = setInterval(() => {
+      this.updateAllDisplays();
+      this.performanceStats.updateCount++;
 
-    const loop = () => {
-      const currentTime = performance.now();
-      const currentSecond = Math.floor(Date.now() / 1000);
-
-      // Only update when second actually changes for better performance
-      if (currentSecond !== lastSecond) {
-        this.updateAllDisplays();
-        this.performanceStats.updateCount++;
-        lastSecond = currentSecond;
-      }
-
-      // Update performance stats
+      // Update performance stats every second
       this.performanceStats.frameCount++;
+      const currentTime = Date.now();
       if (currentTime - this.performanceStats.lastFrameTime >= 1000) {
         this.performanceStats.lastFPS = this.performanceStats.frameCount;
         this.performanceStats.frameCount = 0;
         this.performanceStats.lastFrameTime = currentTime;
       }
-
-      this.animationFrame = requestAnimationFrame(loop);
-    };
-
-    this.animationFrame = requestAnimationFrame(loop);
+    }, 1000); // Update every second using native API
 
     // Holiday timers update every hour (performance optimization)
     this.holidayInterval = setInterval(() => {
@@ -154,14 +143,14 @@ class HorizonWalkerClockTimer {
   }
 
   pauseClockLoop() {
-    if (this.animationFrame) {
-      cancelAnimationFrame(this.animationFrame);
-      this.animationFrame = null;
+    if (this.clockInterval) {
+      clearInterval(this.clockInterval);
+      this.clockInterval = null;
     }
   }
 
   resumeClockLoop() {
-    if (!this.animationFrame) {
+    if (!this.clockInterval) {
       this.startClockLoop();
     }
   }

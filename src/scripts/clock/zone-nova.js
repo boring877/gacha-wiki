@@ -6,7 +6,6 @@
 class ZoneNovaClockTimer {
   constructor() {
     this.clockInterval = null;
-    this.animationFrame = null;
 
     // DOM elements
     this.clockHours = null;
@@ -668,41 +667,25 @@ class ZoneNovaClockTimer {
   }
 
   /**
-   * Start optimized clock loop using requestAnimationFrame
+   * Start simple clock loop using native setInterval (Brave-compatible)
    */
   startClockLoop() {
-    let lastSecond = Math.floor(Date.now() / 1000);
-
-    const loop = () => {
-      const currentSecond = Math.floor(Date.now() / 1000);
-
-      // Only update when the second actually changes
-      if (currentSecond !== lastSecond) {
-        this.updateClock();
-        this.updateCurrentDateTime();
-        this.updateAllTimerCards();
-        lastSecond = currentSecond;
-      }
-
-      this.animationFrame = requestAnimationFrame(loop);
-    };
-
-    this.animationFrame = requestAnimationFrame(loop);
+    // Use native setInterval - cannot be blocked by Brave
+    this.clockInterval = setInterval(() => {
+      this.updateClock();
+      this.updateCurrentDateTime();
+      this.updateAllTimerCards();
+    }, 1000); // Update every second using native API
   }
 
   /**
    * Clean up intervals and event listeners
    */
   cleanup() {
-    // Clear intervals and animation frames
+    // Clear native interval timer
     if (this.clockInterval) {
       clearInterval(this.clockInterval);
       this.clockInterval = null;
-    }
-
-    if (this.animationFrame) {
-      cancelAnimationFrame(this.animationFrame);
-      this.animationFrame = null;
     }
 
     // Remove event listeners
@@ -738,14 +721,6 @@ class ZoneNovaClockTimer {
     this.guildWarPhaseTime = null;
     this.guildWarNextPhase = null;
     this.guildWarNextTime = null;
-
-    // Clear global references
-    if (window.ZoneNovaClockTimer) {
-      delete window.ZoneNovaClockTimer;
-    }
-    if (window.zoneNovaClockTimer) {
-      delete window.zoneNovaClockTimer;
-    }
   }
 }
 
