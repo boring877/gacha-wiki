@@ -6,6 +6,7 @@
 class ZoneNovaClockTimer {
   constructor() {
     this.clockInterval = null;
+    this.slowUpdateInterval = null;
 
     // DOM elements
     this.clockHours = null;
@@ -419,183 +420,29 @@ class ZoneNovaClockTimer {
   }
 
   /**
-   * Update Guild War timer - phases and schedule
+   * Update Guild War timer - simplified version
    */
   updateGuildWarTimer() {
     if (!this.guildWarStatusDot || !this.guildWarStatusText || !this.guildWarCurrentPhase) return;
 
-    const now = new Date();
     const guildWarConfig = window.zoneNovaGuildWar;
 
     if (!guildWarConfig) {
-      this.guildWarStatusText.textContent = 'Config Error';
-      this.guildWarCurrentPhase.textContent = 'Unable to load';
+      this.guildWarStatusText.textContent = 'Check Game';
+      this.guildWarCurrentPhase.textContent = 'See in-game schedule';
+      this.guildWarPhaseTime.textContent = '--:--:--';
+      this.guildWarNextPhase.textContent = 'Next Event';
+      this.guildWarNextTime.textContent = 'TBD';
       return;
     }
 
-    const firstGuildWarStart = new Date(guildWarConfig.firstGuildWarStart);
-    const daysSinceFirst = Math.floor(
-      (now.getTime() - firstGuildWarStart.getTime()) / (1000 * 60 * 60 * 24)
-    );
-
-    // Determine if we're in a Guild War week or Guild Raid week
-    const weeksSinceFirst = Math.floor(daysSinceFirst / 7);
-    const isGuildWarWeek = Math.floor(weeksSinceFirst / 2) % 2 === 0;
-
-    if (now < firstGuildWarStart) {
-      // Before first Guild War
-      this.guildWarStatusText.textContent = 'Coming Soon';
-      this.guildWarStatusDot.className = 'status-dot offline';
-      this.guildWarCurrentPhase.textContent = 'Guild War starts Sept 8';
-      this.guildWarPhaseTime.textContent = this.formatTimeUntil(firstGuildWarStart - now.getTime());
-      this.guildWarNextPhase.textContent = 'First Guild War';
-      this.guildWarNextTime.textContent = '--:--:--';
-      return;
-    }
-
-    if (!isGuildWarWeek) {
-      // Guild Raid week
-      this.guildWarStatusText.textContent = 'Guild Raid Active';
-      this.guildWarStatusDot.className = 'status-dot online';
-      this.guildWarCurrentPhase.textContent = 'Guild Raid Period';
-
-      // Calculate next Guild War start
-      const nextGuildWarWeek = Math.ceil(weeksSinceFirst / 2) * 2;
-      const nextGuildWarStart = new Date(
-        firstGuildWarStart.getTime() + nextGuildWarWeek * 7 * 24 * 60 * 60 * 1000
-      );
-      const timeUntilNextGuildWar = nextGuildWarStart.getTime() - now.getTime();
-
-      this.guildWarPhaseTime.textContent = this.formatTimeUntil(timeUntilNextGuildWar);
-      this.guildWarNextPhase.textContent = 'Next Guild War';
-      this.guildWarNextTime.textContent = 'Sept ' + nextGuildWarStart.getUTCDate();
-      return;
-    }
-
-    // Guild War week - determine current phase
-    this.guildWarStatusText.textContent = 'Guild War Active';
-    this.guildWarStatusDot.className = 'status-dot active';
-
-    const currentPhase = this.getCurrentGuildWarPhase(now);
-    const nextPhase = this.getNextGuildWarPhase(now, currentPhase);
-
-    this.guildWarCurrentPhase.textContent = currentPhase.name;
-    this.guildWarPhaseTime.textContent = this.formatTimeUntil(currentPhase.timeRemaining);
-    this.guildWarNextPhase.textContent = nextPhase.name;
-    this.guildWarNextTime.textContent = this.formatTimeUntil(nextPhase.timeUntil);
-  }
-
-  /**
-   * Get current Guild War phase based on day and time
-   */
-  getCurrentGuildWarPhase(now) {
-    const utcDay = now.getUTCDay(); // 0 = Sunday, 1 = Monday, etc.
-    const utcHour = now.getUTCHours();
-    const utcMinute = now.getUTCMinutes();
-    const currentMinutes = utcHour * 60 + utcMinute;
-
-    // Convert UTC+8 schedule to UTC for comparison
-    // Preparation: Monday & Friday (05:00-03:59 next day UTC+8) = Sunday & Thursday (21:00-19:59 next day UTC)
-    // Battle: Tuesday & Saturday (04:00-23:59 UTC+8) = Monday & Friday (20:00-15:59 next day UTC)
-    // Settlement: Thursday & Monday (00:00-03:59 UTC+8) = Wednesday & Sunday (16:00-19:59 UTC)
-
-    // Check Settlement phases first (shorter periods)
-    if (
-      (utcDay === 3 && currentMinutes >= 16 * 60) || // Wednesday 16:00+ UTC
-      (utcDay === 4 && currentMinutes < 20 * 60) || // Thursday before 20:00 UTC
-      (utcDay === 0 && currentMinutes >= 16 * 60) || // Sunday 16:00+ UTC
-      (utcDay === 1 && currentMinutes < 20 * 60)
-    ) {
-      // Monday before 20:00 UTC
-
-      let nextPhaseTime;
-      if (utcDay === 3 || (utcDay === 4 && currentMinutes < 20 * 60)) {
-        // Wednesday settlement -> Thursday 20:00 UTC (Friday 04:00 UTC+8)
-        nextPhaseTime = new Date(now);
-        nextPhaseTime.setUTCDate(nextPhaseTime.getUTCDate() + (utcDay === 3 ? 1 : 0));
-        nextPhaseTime.setUTCHours(20, 0, 0, 0);
-      } else {
-        // Sunday settlement -> Monday 20:00 UTC (Tuesday 04:00 UTC+8)
-        nextPhaseTime = new Date(now);
-        nextPhaseTime.setUTCDate(nextPhaseTime.getUTCDate() + (utcDay === 0 ? 1 : 0));
-        nextPhaseTime.setUTCHours(20, 0, 0, 0);
-      }
-
-      return {
-        name: 'Settlement Phase',
-        timeRemaining: nextPhaseTime.getTime() - now.getTime(),
-      };
-    }
-
-    // Check Battle phases
-    if (
-      (utcDay === 1 && currentMinutes >= 20 * 60) || // Monday 20:00+ UTC
-      (utcDay === 2 && currentMinutes < 16 * 60) || // Tuesday before 16:00 UTC
-      (utcDay === 5 && currentMinutes >= 20 * 60) || // Friday 20:00+ UTC
-      (utcDay === 6 && currentMinutes < 16 * 60)
-    ) {
-      // Saturday before 16:00 UTC
-
-      let nextPhaseTime;
-      if (utcDay === 1 || (utcDay === 2 && currentMinutes < 16 * 60)) {
-        // Monday/Tuesday battle -> Wednesday 16:00 UTC (Thursday 00:00 UTC+8)
-        nextPhaseTime = new Date(now);
-        nextPhaseTime.setUTCDate(nextPhaseTime.getUTCDate() + (utcDay === 1 ? 2 : 1));
-        nextPhaseTime.setUTCHours(16, 0, 0, 0);
-      } else {
-        // Friday/Saturday battle -> Sunday 16:00 UTC (Monday 00:00 UTC+8)
-        nextPhaseTime = new Date(now);
-        nextPhaseTime.setUTCDate(nextPhaseTime.getUTCDate() + (utcDay === 5 ? 2 : 1));
-        nextPhaseTime.setUTCHours(16, 0, 0, 0);
-      }
-
-      return {
-        name: 'Battle Phase',
-        timeRemaining: nextPhaseTime.getTime() - now.getTime(),
-      };
-    }
-
-    // Default to Preparation phase
-    let nextPhaseTime;
-    if (utcDay === 0 && currentMinutes >= 21 * 60) {
-      // Sunday preparation -> Monday 20:00 UTC (Tuesday 04:00 UTC+8)
-      nextPhaseTime = new Date(now);
-      nextPhaseTime.setUTCDate(nextPhaseTime.getUTCDate() + 1);
-      nextPhaseTime.setUTCHours(20, 0, 0, 0);
-    } else if (utcDay === 4 && currentMinutes >= 21 * 60) {
-      // Thursday preparation -> Friday 20:00 UTC (Saturday 04:00 UTC+8)
-      nextPhaseTime = new Date(now);
-      nextPhaseTime.setUTCDate(nextPhaseTime.getUTCDate() + 1);
-      nextPhaseTime.setUTCHours(20, 0, 0, 0);
-    } else {
-      // Default next phase
-      nextPhaseTime = new Date(now.getTime() + 24 * 60 * 60 * 1000);
-    }
-
-    return {
-      name: 'Preparation Phase',
-      timeRemaining: nextPhaseTime.getTime() - now.getTime(),
-    };
-  }
-
-  /**
-   * Get next Guild War phase info
-   */
-  getNextGuildWarPhase(_now, currentPhase) {
-    // Simple logic - next phase rotates through Prep -> Battle -> Settlement
-    let nextPhaseName;
-    if (currentPhase.name === 'Preparation Phase') {
-      nextPhaseName = 'Battle Phase';
-    } else if (currentPhase.name === 'Battle Phase') {
-      nextPhaseName = 'Settlement Phase';
-    } else {
-      nextPhaseName = 'Preparation Phase';
-    }
-
-    return {
-      name: nextPhaseName,
-      timeUntil: currentPhase.timeRemaining,
-    };
+    // Simplified: just show basic status
+    this.guildWarStatusText.textContent = 'Active';
+    this.guildWarStatusDot.className = 'status-dot online';
+    this.guildWarCurrentPhase.textContent = 'Check In-Game';
+    this.guildWarPhaseTime.textContent = '--:--:--';
+    this.guildWarNextPhase.textContent = 'See Schedule';
+    this.guildWarNextTime.textContent = '--:--:--';
   }
 
   /**
@@ -667,25 +514,37 @@ class ZoneNovaClockTimer {
   }
 
   /**
-   * Start simple clock loop using native setInterval (Brave-compatible)
+   * Start optimized clock loop with split intervals (Brave-compatible)
    */
   startClockLoop() {
-    // Use native setInterval - cannot be blocked by Brave
+    // Fast updates (every second) - critical countdown only
     this.clockInterval = setInterval(() => {
       this.updateClock();
       this.updateCurrentDateTime();
+    }, 1000);
+
+    // Slow updates (every 30 seconds) - secondary timers
+    this.slowUpdateInterval = setInterval(() => {
       this.updateAllTimerCards();
-    }, 1000); // Update every second using native API
+    }, 30000);
+
+    // Run secondary timers once immediately
+    this.updateAllTimerCards();
   }
 
   /**
    * Clean up intervals and event listeners
    */
   cleanup() {
-    // Clear native interval timer
+    // Clear both interval timers
     if (this.clockInterval) {
       clearInterval(this.clockInterval);
       this.clockInterval = null;
+    }
+
+    if (this.slowUpdateInterval) {
+      clearInterval(this.slowUpdateInterval);
+      this.slowUpdateInterval = null;
     }
 
     // Remove event listeners
