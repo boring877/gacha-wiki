@@ -20,15 +20,8 @@
   }
 
   .section-title {
-    color: var(--text-primary);
-    background: linear-gradient(
-      135deg,
-      var(--hw-primary-warm),
-      color-mix(in srgb, var(--hw-tertiary-sky) 80%, transparent)
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /* Simplified - gradient text effect consolidated */
+    color: var(--hw-primary-warm);
     font-size: 2.2rem;
     font-weight: 800;
     margin: 0 0 3.5rem 0;
@@ -843,17 +836,7 @@
     }
   }
 
-  /* Disable hover effects on touch devices */
-  @media (hover: none) and (pointer: coarse) {
-    .skill-card,
-    .trait-card,
-    .weapon-skill-card,
-    .hw-badge,
-    .character-tag {
-      transform: none !important;
-      transition: none !important;
-    }
-  }
+  /* Performance optimized - no hover effects */
 
   /* ═══════════════════════════════════════════════════════════════════════ */
   /*                            RESPONSIVE DESIGN                            */

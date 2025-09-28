@@ -104,8 +104,6 @@
 .bg-layer {
   position: fixed;
   inset: 0;
-  will-change: transform;
-  transform: translateZ(0);
 }
 
 /* HW Background Layers - Global for client-side navigation */
@@ -134,4 +132,37 @@
 .hw-bg-accent-5 {
   background: radial-gradient(circle at 75% 75%, rgba(255, 179, 123, 0.06), transparent 70%);
   pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                              UTILITY CLASSES                            */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Gradient Text Utilities - Consolidates repeated webkit patterns */
+.hw-gradient-text-primary {
+  background: linear-gradient(
+    135deg,
+    var(--hw-primary-warm),
+    color-mix(in srgb, var(--hw-tertiary-sky) 80%, transparent)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hw-gradient-text-warm {
+  background: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hw-gradient-text-nature {
+  background: linear-gradient(135deg, var(--hw-accent-mint), var(--hw-tertiary-sky));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }

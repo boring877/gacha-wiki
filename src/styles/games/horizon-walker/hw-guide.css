@@ -199,9 +199,7 @@
   border-bottom: none;
 }
 
-.hw-guide-table tr:hover {
-  background: rgba(232, 165, 71, 0.05);
-}
+/* Hover effects disabled for performance */
 
 /* Tip Boxes */
 .hw-tip-box {
@@ -416,21 +414,8 @@
   }
 }
 
-/* Animation Effects */
-@keyframes hw-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hw-guide-section {
-  animation: hw-fade-in 0.6s ease-out;
-}
+/* Animation Effects - DISABLED FOR PERFORMANCE */
+/* All animations removed for maximum performance */
 
 /* Code Blocks */
 .hw-code-block {

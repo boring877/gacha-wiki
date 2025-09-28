@@ -21,26 +21,6 @@ const {
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-<!-- Preload critical CSS files for faster loading -->
-<link
-  rel="preload"
-  href="/_astro/global.css"
-  as="style"
-  onload="this.onload=null;this.rel='stylesheet'"
-/>
-<link
-  rel="preload"
-  href="/_astro/hw-colors.css"
-  as="style"
-  onload="this.onload=null;this.rel='stylesheet'"
-/>
-<link
-  rel="preload"
-  href="/_astro/hw-layout.css"
-  as="style"
-  onload="this.onload=null;this.rel='stylesheet'"
-/>
-
 <!-- Self-hosted Font Loading - Optimized for Performance -->
 <style>
   /* Inter Font Family - Essential weights only */
@@ -117,15 +97,5 @@ const {
 
   .horizon-walker-main {
     min-height: 60vh;
-  }
-
-  /* Disable animations on mobile for performance */
-  @media (max-width: 768px) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
-    }
   }
 </style>

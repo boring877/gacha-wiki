@@ -21,10 +21,8 @@
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
-  background: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* Simplified gradient effect */
+  color: var(--hw-primary-warm);
   margin: 0 0 1.5rem 0;
   line-height: 1.2;
 }
@@ -100,7 +98,6 @@
 .hw-link {
   color: var(--hw-primary-warm);
   text-decoration: underline;
-  transition: color 0.2s ease;
 }
 
 .hw-link:hover {
@@ -286,7 +283,6 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   -webkit-tap-highlight-color: transparent;
-  transition: all 0.2s ease;
 }
 
 /* Touch-friendly hover states */
@@ -295,21 +291,10 @@
     background: rgba(0, 0, 0, 0.4);
     border-color: rgba(232, 165, 71, 0.3);
   }
-
-  .hw-gift-box-card:hover {
-    transform: translateY(-2px);
-  }
 }
 
 /* Touch feedback for mobile */
 @media (hover: none) and (pointer: coarse) {
-  .hw-gift-item:active {
-    transform: scale(0.98);
-  }
-
-  .hw-gift-box-card:active {
-    transform: scale(0.99);
-  }
 }
 
 .hw-gift-item-image {

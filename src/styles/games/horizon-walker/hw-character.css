@@ -317,7 +317,6 @@
     border: 1px solid var(--hw-border-strong);
     font-size: 0.8rem;
     cursor: pointer;
-    transition: all 0.2s ease;
     font-family: var(--font-primary);
   }
 
@@ -344,19 +343,63 @@
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-family: var(--font-primary);
   }
 
-  .reset-btn:active {
-    transform: translateY(0);
-  }
-
   /* ═══════════════════════════════════════════════════════════════════════ */
   /*                        MOBILE CHARACTER CARDS                          */
   /* ═══════════════════════════════════════════════════════════════════════ */
+
+  /* GPU acceleration for table and mobile containers */
+  #character-table-body {
+    /* GPU acceleration for table performance */
+    transform: translate3d(0, 0, 0);
+    will-change: contents;
+    contain: layout style paint;
+  }
+
+  #mobile-cards-container {
+    /* GPU acceleration for mobile cards */
+    transform: translate3d(0, 0, 0);
+    will-change: contents;
+    contain: layout style paint;
+  }
+
+  /* GPU acceleration for character images */
+  .character-img,
+  .desktop-character-image img,
+  .mobile-character-image img {
+    /* GPU acceleration for image rendering */
+    transform: translate3d(0, 0, 0);
+    will-change: auto;
+    backface-visibility: hidden;
+    contain: layout style paint;
+  }
+
+  /* GPU acceleration for filter controls */
+  .filter-bar {
+    /* GPU acceleration for filter bar */
+    transform: translate3d(0, 0, 0);
+    will-change: contents;
+    contain: layout style;
+  }
+
+  .filter-controls,
+  .sort-controls {
+    /* GPU acceleration for filter sections */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  }
+
+  .filter-select,
+  .sort-btn {
+    /* GPU acceleration for interactive elements */
+    transform: translate3d(0, 0, 0);
+    will-change: auto;
+    backface-visibility: hidden;
+  }
 
   /* Mobile card view - shown by default (mobile-first approach) */
   .mobile-card-view {
@@ -379,6 +422,10 @@
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
     min-height: 44px; /* Minimum touch target */
+    /* GPU acceleration for smooth scrolling */
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   .mobile-character-card:active {

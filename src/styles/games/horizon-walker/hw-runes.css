@@ -41,7 +41,6 @@
   margin-bottom: 3rem;
   border: 1px solid rgba(232, 165, 71, 0.2);
   position: relative;
-  backdrop-filter: blur(12px);
 }
 
 .content-section::before {
@@ -154,7 +153,6 @@
   border-radius: 16px;
   padding: 2.5rem;
   position: relative;
-  transition: all 0.3s ease;
   overflow: hidden;
 }
 
@@ -170,28 +168,22 @@
     linear-gradient(#fff 0 0);
   mask-composite: subtract;
   opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 .rune-card:hover::before {
-  opacity: 1;
-}
-
-.rune-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--hw-runes-glow-primary);
+  /* Opacity effect removed for performance */
 }
 
 .rune-card.forsaken:hover {
-  box-shadow: var(--hw-runes-glow-secondary);
+  /* Box-shadow removed for performance */
 }
 
 .rune-card.ethereal:hover {
-  box-shadow: var(--hw-runes-glow-ethereal);
+  /* Box-shadow removed for performance */
 }
 
 .rune-card.dimensional:hover {
-  box-shadow: var(--hw-runes-glow-dimensional);
+  /* Box-shadow removed for performance */
 }
 
 /* Rune Image Container */
@@ -210,11 +202,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.rune-card:hover .rune-image {
-  transform: scale(1.1);
 }
 
 /* Rune Titles */

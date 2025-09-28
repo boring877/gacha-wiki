@@ -21,10 +21,8 @@
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
-  background: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* Simplified gradient effect */
+  color: var(--hw-primary-warm);
   margin: 0 0 1.5rem 0;
   line-height: 1.2;
 }
@@ -299,7 +297,6 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
   min-width: 60px;
 }
 
@@ -323,7 +320,6 @@
   border-radius: var(--hw-radius-lg);
   color: var(--hw-text-light);
   font-size: 1.1rem;
-  transition: all 0.3s ease;
 }
 
 .hw-search-input::placeholder {
@@ -370,7 +366,6 @@
   border-radius: var(--hw-radius-lg);
   overflow: hidden;
   background: var(--hw-bg-dark);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .character-img {
@@ -548,7 +543,6 @@
   background: rgba(232, 165, 71, 0.15);
   border: 1px solid rgba(232, 165, 71, 0.3);
   border-radius: var(--hw-radius-sm);
-  transition: all 0.2s ease;
 }
 
 .hw-source-item:hover {
@@ -726,7 +720,6 @@
   background: rgba(0, 0, 0, 0.25);
   border-radius: var(--hw-radius-md);
   border: 1px solid rgba(220, 38, 38, 0.3);
-  transition: all 0.2s ease;
 }
 
 .hw-favorite-stat:hover {
@@ -840,7 +833,6 @@
   background: rgba(0, 0, 0, 0.25);
   border-radius: var(--hw-radius-md);
   border: 1px solid rgba(34, 197, 94, 0.3);
-  transition: all 0.2s ease;
 }
 
 .hw-like-stat:hover {
@@ -966,7 +958,6 @@
   background: rgba(0, 0, 0, 0.25);
   border-radius: var(--hw-radius-md);
   border: 1px solid rgba(251, 146, 60, 0.3);
-  transition: all 0.2s ease;
 }
 
 .hw-alternative-stat:hover {
@@ -1018,7 +1009,6 @@
   background: rgba(251, 146, 60, 0.15);
   border: 2px solid rgba(251, 146, 60, 0.4);
   border-radius: var(--hw-radius-md);
-  transition: all 0.2s ease;
 }
 
 .hw-source-box:hover {

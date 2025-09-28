@@ -24,10 +24,29 @@
 
   /* Background layers moved to hw-colors.css for global access */
 
+  /* Main container GPU acceleration */
+  .horizon-walker-container {
+    /* GPU acceleration for scroll performance */
+    transform: translate3d(0, 0, 0);
+    will-change: scroll-position;
+    contain: layout style;
+  }
+
+  .horizon-walker-main {
+    /* GPU acceleration for main content */
+    transform: translate3d(0, 0, 0);
+    will-change: contents;
+    backface-visibility: hidden;
+  }
+
   .horizon-walker-content {
     position: relative;
     z-index: 10;
     flex: 1;
+    /* GPU acceleration for smooth scrolling */
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   /* Hero Section Styles */
