@@ -21,6 +21,22 @@ export default defineConfig({
   },
   // Static site with Vercel API routes
   output: 'static',
+  // Image optimization
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: 268402689, // Allow large images (16384x16384)
+      },
+    },
+    domains: ['gachawiki.info'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'gachawiki.info',
+      },
+    ],
+  },
   // Build optimizations
   build: {
     // Inline stylesheets smaller than 4kb
@@ -30,10 +46,10 @@ export default defineConfig({
   },
   // Compression and performance
   compressHTML: true,
-  // Prefetch links for better navigation - reduced to prevent memory leaks
+  // Smart prefetch with 'load' strategy - prefetches after page loads
   prefetch: {
     prefetchAll: false,
-    defaultStrategy: 'hover',
+    defaultStrategy: 'load',
   },
   vite: {
     build: {

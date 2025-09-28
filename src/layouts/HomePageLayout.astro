@@ -29,9 +29,7 @@ const { title, description } = Astro.props;
   />
 
   <SpeedInsights slot="head" />
-
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts now self-hosted, no external prefetch needed -->
 
   <!-- Performance hints -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />

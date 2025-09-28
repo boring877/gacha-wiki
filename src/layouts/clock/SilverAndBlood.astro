@@ -49,9 +49,7 @@ const timers = game.timers[game.currentRegion];
       pageType="webapp"
     />
     <SpeedInsights />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts now self-hosted, no preconnect needed -->
 
     <!-- Critical game asset preloading for instant loading -->
     <link rel="preload" href={game.image} as="image" fetchpriority="high" />

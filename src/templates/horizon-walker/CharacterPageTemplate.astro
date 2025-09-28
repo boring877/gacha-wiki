@@ -9,6 +9,54 @@ import {
 import { getCharacterById } from '../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../data/horizon-walker/gifts.js';
 
+// Import all character images for optimization
+import ArahaImg from '../../assets/images/games/horizon-walker/characters/Araha.jpg';
+import BellaImg from '../../assets/images/games/horizon-walker/characters/Bella.jpg';
+import BergaImg from '../../assets/images/games/horizon-walker/characters/Berga.jpg';
+import CaniskImg from '../../assets/images/games/horizon-walker/characters/Canisk.jpg';
+import CoraImg from '../../assets/images/games/horizon-walker/characters/Cora.jpg';
+import DeliaImg from '../../assets/images/games/horizon-walker/characters/Delia.jpg';
+import EfreetiImg from '../../assets/images/games/horizon-walker/characters/Efreeti.jpg';
+import ErnesteImg from '../../assets/images/games/horizon-walker/characters/Erneste.jpg';
+import EveretteImg from '../../assets/images/games/horizon-walker/characters/Everette.jpg';
+import FammeneImg from '../../assets/images/games/horizon-walker/characters/Fammene.jpg';
+import GrideldaImg from '../../assets/images/games/horizon-walker/characters/Gridelda.jpg';
+import GulamImg from '../../assets/images/games/horizon-walker/characters/Gulam.jpg';
+import GulsniImg from '../../assets/images/games/horizon-walker/characters/Gulsni.jpg';
+import HeadlessKnightImg from '../../assets/images/games/horizon-walker/characters/Headless_Knight.jpg';
+import InesImg from '../../assets/images/games/horizon-walker/characters/Ines.jpg';
+import JuhaImg from '../../assets/images/games/horizon-walker/characters/Juha.jpg';
+import KalinaImg from '../../assets/images/games/horizon-walker/characters/Kalina.jpg';
+import KalmaImg from '../../assets/images/games/horizon-walker/characters/Kalma.jpg';
+import KilonImg from '../../assets/images/games/horizon-walker/characters/Kilon.jpg';
+import KimGaYoungImg from '../../assets/images/games/horizon-walker/characters/kim_Ga_young.jpg';
+import KorabiImg from '../../assets/images/games/horizon-walker/characters/Korabi.jpg';
+import LisandriaImg from '../../assets/images/games/horizon-walker/characters/Lisandria.jpg';
+import LuiseImg from '../../assets/images/games/horizon-walker/characters/Luise.jpg';
+import MahariImg from '../../assets/images/games/horizon-walker/characters/Mahari.jpg';
+import MarhimImg from '../../assets/images/games/horizon-walker/characters/Marhim.jpg';
+import MatrothoImg from '../../assets/images/games/horizon-walker/characters/Matrotho.jpg';
+import MinEunSolImg from '../../assets/images/games/horizon-walker/characters/Min_Eun_sol.jpg';
+import NariImg from '../../assets/images/games/horizon-walker/characters/Nari.jpg';
+import NikaImg from '../../assets/images/games/horizon-walker/characters/Nika.jpg';
+import NonohaImg from '../../assets/images/games/horizon-walker/characters/Nonoha.jpg';
+import NymsetImg from '../../assets/images/games/horizon-walker/characters/Nymset.jpg';
+import OliviaImg from '../../assets/images/games/horizon-walker/characters/Olivia.jpg';
+import OslaImg from '../../assets/images/games/horizon-walker/characters/Osla.jpg';
+import PantheriImg from '../../assets/images/games/horizon-walker/characters/Pantheri.jpg';
+import PlatinaImg from '../../assets/images/games/horizon-walker/characters/Platina.jpg';
+import ReDeDaImg from '../../assets/images/games/horizon-walker/characters/Re_De_Da.jpg';
+import RhasadinaImg from '../../assets/images/games/horizon-walker/characters/Rhasadina.jpg';
+import SamarikaImg from '../../assets/images/games/horizon-walker/characters/Samarika.jpg';
+import SoJooHeeImg from '../../assets/images/games/horizon-walker/characters/So_Joo_hee.jpg';
+import TxManticoreImg from '../../assets/images/games/horizon-walker/characters/TX_Manticore.jpg';
+import ValetaImg from '../../assets/images/games/horizon-walker/characters/Valeta.jpg';
+import VlissingImg from '../../assets/images/games/horizon-walker/characters/Vlissing.jpg';
+import YeonChaeYoungImg from '../../assets/images/games/horizon-walker/characters/Yeon_Chae-Young.jpg';
+import YeonwooImg from '../../assets/images/games/horizon-walker/characters/Yeonwoo.jpg';
+import YuiImg from '../../assets/images/games/horizon-walker/characters/Yui.jpg';
+import YvonnaImg from '../../assets/images/games/horizon-walker/characters/Yvonna.jpg';
+
 interface CharacterStats {
   strength: string;
   technic: string;
@@ -79,6 +127,11 @@ interface Trait {
   description: string;
 }
 
+interface Effect {
+  name: string;
+  description: string;
+}
+
 interface WeaponStats {
   weaponMagicAtk?: string;
   maxHpBonus?: string;
@@ -106,11 +159,119 @@ interface CharacterData {
   skills?: Record<string, Skill>;
   uniqueTraits?: Record<string, Trait>;
   weapon?: Weapon;
+  effects?: Record<string, Effect>;
 }
 
 interface Props {
   characterData: CharacterData;
 }
+
+// Character image mapping for optimization
+const characterImageMap = {
+  'Araha': ArahaImg,
+  'Bella': BellaImg,
+  'Berga': BergaImg,
+  'Canisk': CaniskImg,
+  'Cora': CoraImg,
+  'Delia': DeliaImg,
+  'Efreeti': EfreetiImg,
+  'Erneste': ErnesteImg,
+  'Everette': EveretteImg,
+  'Fammene': FammeneImg,
+  'Gridelda': GrideldaImg,
+  'Gulam': GulamImg,
+  'Gulsni': GulsniImg,
+  'Headless Knight': HeadlessKnightImg,
+  'Ines': InesImg,
+  'Juha': JuhaImg,
+  'Kalina': KalinaImg,
+  'Kalma': KalmaImg,
+  'Kilon': KilonImg,
+  'Kim Ga-young': KimGaYoungImg,
+  'Korabi': KorabiImg,
+  'Lisandria': LisandriaImg,
+  'Luise': LuiseImg,
+  'Mahari': MahariImg,
+  'Marhim': MarhimImg,
+  'Matrotho': MatrothoImg,
+  'Min Eun-sol': MinEunSolImg,
+  'Nari': NariImg,
+  'Nika': NikaImg,
+  'Nonoha': NonohaImg,
+  'Nymset': NymsetImg,
+  'Olivia': OliviaImg,
+  'Osla': OslaImg,
+  'Pantheri': PantheriImg,
+  'Platina': PlatinaImg,
+  'Re_De_Da': ReDeDaImg,
+  'Rhasadina': RhasadinaImg,
+  'Samarika': SamarikaImg,
+  'So Joo-hee': SoJooHeeImg,
+  'TX - Manticore': TxManticoreImg,
+  'Valeta': ValetaImg,
+  'Vlissing': VlissingImg,
+  'Yeon Chae-Young': YeonChaeYoungImg,
+  'Yeonwoo': YeonwooImg,
+  'Yui': YuiImg,
+  'Yvonna': YvonnaImg,
+};
+
+// Helper function to get optimized character image by filename
+const getOptimizedImageByFilename = (filename) => {
+  // For individual character data, we get filenames like 'Bella', 'Araha', etc.
+  // We need to map these to the character names used in our mapping
+  const filenameToNameMap = {
+    'Araha': 'Araha',
+    'Bella': 'Bella',
+    'Berga': 'Berga',
+    'Canisk': 'Canisk',
+    'Cora': 'Cora',
+    'Delia': 'Delia',
+    'Efreeti': 'Efreeti',
+    'Erneste': 'Erneste',
+    'Everette': 'Everette',
+    'Fammene': 'Fammene',
+    'Gridelda': 'Gridelda',
+    'Gulam': 'Gulam',
+    'Gulsni': 'Gulsni',
+    'Headless_Knight': 'Headless Knight',
+    'Ines': 'Ines',
+    'Juha': 'Juha',
+    'Kalina': 'Kalina',
+    'Kalma': 'Kalma',
+    'Kilon': 'Kilon',
+    'kim_Ga_young': 'Kim Ga-young',
+    'Korabi': 'Korabi',
+    'Lisandria': 'Lisandria',
+    'Luise': 'Luise',
+    'Mahari': 'Mahari',
+    'Marhim': 'Marhim',
+    'Matrotho': 'Matrotho',
+    'Min_Eun_sol': 'Min Eun-sol',
+    'Nari': 'Nari',
+    'Nika': 'Nika',
+    'Nonoha': 'Nonoha',
+    'Nymset': 'Nymset',
+    'Olivia': 'Olivia',
+    'Osla': 'Osla',
+    'Pantheri': 'Pantheri',
+    'Platina': 'Platina',
+    'Re_De_Da': 'Re_De_Da',
+    'Rhasadina': 'Rhasadina',
+    'Samarika': 'Samarika',
+    'So_Joo_hee': 'So Joo-hee',
+    'TX_Manticore': 'TX - Manticore',
+    'Valeta': 'Valeta',
+    'Vlissing': 'Vlissing',
+    'Yeon_Chae-Young': 'Yeon Chae-Young',
+    'Yeonwoo': 'Yeonwoo',
+    'Yui': 'Yui',
+    'Yvonna': 'Yvonna',
+  };
+
+  const characterName = filenameToNameMap[filename] || filename;
+  return characterImageMap[characterName] || `/images/games/horizon-walker/characters/${filename}.jpg`;
+};
 
 const { characterData } = Astro.props;
 
@@ -256,13 +417,13 @@ function getTagCategory(tag: string): string {
       <div class="character-hero-container">
         <div class="character-portrait-container">
           <Image
-            src={`/images/games/horizon-walker/characters/${characterData.image}.jpg`}
+            src={getOptimizedImageByFilename(characterData.image)}
             alt={`${characterData.name} - ${characterData.rarity} rarity character from Horizon Walker gacha game`}
             width={300}
             height={300}
             format="webp"
-            quality={85}
-            loading="lazy"
+            quality={90}
+            loading="eager"
             class="character-portrait"
           />
         </div>
@@ -636,7 +797,7 @@ function getTagCategory(tag: string): string {
     <section class="content-section effects-section">
       <h2 class="section-title">Effect Descriptions</h2>
       <div class="effects-grid">
-        {Object.entries(characterData.effects).map(([key, effect]: [string, any]) => (
+        {Object.entries(characterData.effects).map(([, effect]: [string, Effect]) => (
           <div class="effect-item">
             <div class="effect-header">
               <span class="effect-name">{effect.name}</span>

@@ -14,6 +14,11 @@ import {
   getTechnicValue,
 } from '../../../utils/horizon-walker/character-table-utils.js';
 
+// Dynamic image imports for performance optimization
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../assets/images/games/horizon-walker/characters/*.{jpg,jpeg,png}'
+);
+
 // Extract filter options from enhanced data structure
 const { rarities } = gameInfo;
 
@@ -25,17 +30,42 @@ const sCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'S').len
 const aCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'A').length;
 const bCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'B').length;
 
+// Resolve images at build time for better performance
+const resolvedImages = {};
+for (const path in images) {
+  const imageName = path.split('/').pop()?.replace('.jpg', '');
+  if (imageName) {
+    resolvedImages[imageName] = await images[path]();
+  }
+}
+
+// Character name to filename mapping
+const getImageKey = characterName => {
+  let filename = characterName
+    .replace(/ /g, '_') // Replace spaces with underscores
+    .replace(/-/g, '_') // Replace hyphens with underscores
+    .replace(/\./g, '_'); // Replace periods with underscores
+
+  // Handle special character naming cases
+  if (characterName === 'TX - Manticore') filename = 'TX_Manticore';
+  if (characterName === 'Re_De_Da') filename = 'Re_De_Da';
+  if (characterName === 'Headless Knight') filename = 'Headless_Knight';
+
+  return filename;
+};
+
+// Helper function to get optimized character image
+const getOptimizedImage = characterName => {
+  const imageKey = getImageKey(characterName);
+  return resolvedImages[imageKey]?.default || '/images/games/horizon-walker/characters/default.jpg';
+};
+
 // SEO metadata
 const title = 'Horizon Walker Characters Database - All Heroes & Waifus List 2025 | GachaWiki';
 const description = `Explore all ${totalCharacters} Horizon Walker characters including ${exCount} EX, ${ssCount} SS, ${sCount} S, ${aCount} A, ${bCount} B rarity heroes. Complete database with stats, costs, classes, elements, and factions. Advanced filtering and mobile-optimized interface.`;
 ---
 
-<CharacterLayout
-  title={title}
-  description={description}
-  gameTitle="Character Database"
-  showBackButton={false}
->
+<CharacterLayout title={title} description={description} gameTitle="Character Database">
   <section class="hw-char-db-page-flex">
     <div class="hw-char-db-main-content">
       <div class="hw-char-db-content-wrapper">
@@ -109,12 +139,16 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                     <td>
                       <div class="desktop-character-image">
                         <Image
-                          src={character.image}
+                          src={getOptimizedImage(character.name)}
                           alt={character.name}
                           class="character-img"
                           width={80}
                           height={80}
-                          loading="lazy"
+                          format="webp"
+                          quality={85}
+                          loading={idx < 10 ? 'eager' : 'lazy'}
+                          fetchpriority={idx < 5 ? 'high' : 'auto'}
+                          decoding="async"
                         />
                       </div>
                     </td>
@@ -159,7 +193,7 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
         <!-- Mobile card view container with touch optimization -->
         <div class="mobile-card-view" id="mobile-cards-container">
           {
-            HORIZON_WALKER_CHARACTERS.map(char => (
+            HORIZON_WALKER_CHARACTERS.map((char, idx) => (
               <div
                 class="mobile-character-card"
                 data-character-id={char.id}
@@ -178,14 +212,16 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                   <div class="mobile-card-image">
                     <div class="mobile-character-image">
                       <Image
-                        src={char.image}
+                        src={getOptimizedImage(char.name)}
                         alt={char.name}
                         class="character-img"
                         width={64}
                         height={64}
                         format="webp"
                         quality={85}
-                        loading="lazy"
+                        loading={idx < 6 ? 'eager' : 'lazy'}
+                        fetchpriority={idx < 3 ? 'high' : 'auto'}
+                        decoding="async"
                       />
                     </div>
                   </div>
