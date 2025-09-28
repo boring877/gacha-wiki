@@ -21,7 +21,7 @@
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
-  background: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
+  background: var(--hw-gradient-warm-to-coral);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -38,11 +38,11 @@
 
 /* Guide Content Container */
 .hw-guide-content {
-  background: linear-gradient(135deg, var(--hw-bg-dark), var(--hw-bg-darker));
+  background: var(--hw-gradient-dark-to-darker);
   border-radius: var(--hw-radius-lg);
   border: 1px solid var(--hw-border-accent);
   padding: 2.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* Box shadow removed for simple styling */
 }
 
 /* Content Sections */
@@ -78,7 +78,7 @@
 
 /* Highlighted Info Boxes */
 .hw-info-box {
-  background: linear-gradient(135deg, rgba(232, 165, 71, 0.1), rgba(232, 165, 71, 0.05));
+  background: var(--hw-gradient-warm-coral-light);
   border: 1px solid rgba(232, 165, 71, 0.3);
   border-radius: var(--hw-radius-md);
   padding: 1.5rem;
@@ -134,9 +134,9 @@
   height: auto;
   border-radius: var(--hw-radius-md);
   border: 2px solid var(--hw-border-accent);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   display: block;
   margin: 0 auto;
+  /* Box shadow removed for simple styling */
 }
 
 .hw-guide-image-caption {
@@ -181,7 +181,7 @@
 }
 
 .hw-guide-table th {
-  background: linear-gradient(135deg, rgba(232, 165, 71, 0.2), rgba(232, 165, 71, 0.1));
+  background: var(--hw-gradient-warm-coral-medium);
   color: var(--hw-primary-warm);
   font-weight: 600;
   text-align: left;
@@ -203,7 +203,7 @@
 
 /* Tip Boxes */
 .hw-tip-box {
-  background: linear-gradient(135deg, rgba(123, 255, 179, 0.1), rgba(123, 255, 179, 0.05));
+  background: var(--hw-gradient-mint-light);
   border-left: 4px solid var(--hw-accent-mint);
   border-radius: var(--hw-radius-sm);
   padding: 1.25rem;
@@ -227,7 +227,7 @@
 
 /* Warning Boxes */
 .hw-warning-box {
-  background: linear-gradient(135deg, rgba(255, 123, 123, 0.1), rgba(255, 123, 123, 0.05));
+  background: var(--hw-gradient-coral-light);
   border-left: 4px solid var(--hw-secondary-coral);
   border-radius: var(--hw-radius-sm);
   padding: 1.25rem;

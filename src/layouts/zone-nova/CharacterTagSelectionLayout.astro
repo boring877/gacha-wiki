@@ -65,11 +65,7 @@ const { title, description, gameTitle, breadcrumbs } = Astro.props;
           }
 
           <!-- Breadcrumb Navigation -->
-          <Breadcrumb
-            autoGenerate={true}
-            gameKey="zone-nova"
-            showBackButton={true}
-          />
+          <Breadcrumb autoGenerate={true} gameKey="zone-nova" showBackButton={true} />
 
           <div class="content-area">
             <slot />

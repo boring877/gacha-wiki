@@ -9,7 +9,7 @@ import {
 const rawYeonChaeYoungData = {
   // Basic Character Information
   name: 'Yeon Chae-Young',
-  image: 'Yeon_Chae-Young', // Character image filename without extension
+  image: 'Yeon_Chae_Young', // Character image filename without extension
   rarity: 'S', // EX, SS, S, A, B
   cost: 4, // Deployment cost
   tags: [

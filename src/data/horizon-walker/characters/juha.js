@@ -1,4 +1,4 @@
-// Jua Character Data - Horizon Walker
+// Juha Character Data - Horizon Walker
 // Based on the Zone Nova character data structure
 import {
   validateCharacterData,
@@ -6,7 +6,7 @@ import {
   sanitizeHighlightPatterns,
 } from '../../../utils/horizon-walker/data-validation.js';
 
-const rawJuaData = {
+const rawJuhaData = {
   // Basic Character Information
   name: 'Juha',
   image: 'Juha', // Character image filename without extension
@@ -91,14 +91,14 @@ const rawJuaData = {
 
   // Character Story
   story:
-    'The Orke, a race of mercenaries across the universe, are particularly fond of firearms, but some of them, those who awaken their mental abilities, replace bullets and grenades with their own mental energy. These individuals are called "shamans," and Jua of the prestigious Daeyeon family is one of the most talented among them. Born into the renowned Daeyeon family, Jua joined her clan\'s mercenary business as soon as she turned twenty. During battle, she awakened as a shaman, gaining the ability to channel her mental energy through her gun. However, this wasn\'t entirely a good thing for Jua. Her mental energy was so powerful that she began to lose control, and her thoughts started to become audible to those around her. Fortunately, those in her vicinity kept this fact from her, considering her high status, and, taking the political ramifications into account, they decided to send her off-world for training until she could master her abilities and suppress her thoughts. Not knowing the real reason, Jua was resentful about being suddenly dispatched to Earth, almost like an exile, but she is determined to prove her worth as a capable mercenary. She hopes to find the Human Gods, the combat leaders of Earth, and offer the combat prowess of herself and her subordinates.',
+    'The Orke, a race of mercenaries across the universe, are particularly fond of firearms, but some of them, those who awaken their mental abilities, replace bullets and grenades with their own mental energy. These individuals are called "shamans," and Juha of the prestigious Daeyeon family is one of the most talented among them. Born into the renowned Daeyeon family, Juha joined her clan\'s mercenary business as soon as she turned twenty. During battle, she awakened as a shaman, gaining the ability to channel her mental energy through her gun. However, this wasn\'t entirely a good thing for Juha. Her mental energy was so powerful that she began to lose control, and her thoughts started to become audible to those around her. Fortunately, those in her vicinity kept this fact from her, considering her high status, and, taking the political ramifications into account, they decided to send her off-world for training until she could master her abilities and suppress her thoughts. Not knowing the real reason, Juha was resentful about being suddenly dispatched to Earth, almost like an exile, but she is determined to prove her worth as a capable mercenary. She hopes to find the Human Gods, the combat leaders of Earth, and offer the combat prowess of herself and her subordinates.',
 
   // Unique Traits
   uniqueTraits: {
     ferventSoul: {
       name: 'Fervent Soul',
       description:
-        'Activates the level 1 passive skill [Fervent Soul]. [Fervent Soul]: Jua has inherited the mental strength of the Orke race in an exceptionally potent way. At the start of the round, gains the [Fervent Soul] effect for 1R. [Fervent Soul]: Immune to [Taunt] and [Stun] effects, and Immaterial DEF increases by 150.',
+        'Activates the level 1 passive skill [Fervent Soul]. [Fervent Soul]: Juha has inherited the mental strength of the Orke race in an exceptionally potent way. At the start of the round, gains the [Fervent Soul] effect for 1R. [Fervent Soul]: Immune to [Taunt] and [Stun] effects, and Immaterial DEF increases by 150.',
     },
     whisperOfTheGun: {
       name: 'Whisper of the Gun',
@@ -192,8 +192,8 @@ const rawJuaData = {
         description:
           'Increases personal AP Recovery by 40%, and raises Pierce boost for all allies by 24%. When allies other than the user utilize any skill aside from Standby, they gain the [Glory] effect, stacking up to a maximum of 30 times. At the start of each round, all [Glory] effects are consumed, distributing AP to each ally (other than the user) equal to 4% of the user\'s base AP Recovery for each stack. All effects granted to allies by "Unique: May the Honor Be in the Bullet" will not stack if they share the same name.',
       },
-      juaSignature: {
-        name: 'Jua Signature: The One Who Judges',
+      juhaSignature: {
+        name: 'Juha Signature: The One Who Judges',
         type: 'Signature',
         description:
           'On Basic Attack, there is a 50% chance to reduce the cooldown of the skills [Combat Roll], [Mental Corrosion], and [The Executioner] by 1 round.',
@@ -203,13 +203,13 @@ const rawJuaData = {
 };
 
 // Validate and sanitize the character data
-const validation = validateCharacterData(rawJuaData);
+const validation = validateCharacterData(rawJuhaData);
 if (!validation.isValid) {
   throw new Error(`Character data validation failed: ${validation.errors.join(', ')}`);
 }
 
 // Export sanitized character data
-export const juhaData = sanitizeCharacterData(rawJuaData);
+export const juhaData = sanitizeCharacterData(rawJuhaData);
 
 // Highlighting terms for this character - optimized to prevent ReDoS attacks
 const rawHighlightPatterns = {

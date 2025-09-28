@@ -51,6 +51,12 @@ const getImageKey = characterName => {
   if (characterName === 'Re_De_Da') filename = 'Re_De_Da';
   if (characterName === 'Headless Knight') filename = 'Headless_Knight';
 
+  // Handle Korean character name mappings
+  if (characterName === 'Kim Ga-young') filename = 'kim_Ga_young';
+  if (characterName === 'Yeon Chae-Young') filename = 'Yeon_Chae-Young';
+  if (characterName === 'Min Eun-sol') filename = 'Min_Eun_sol';
+  if (characterName === 'So Joo-hee') filename = 'So_Joo_hee';
+
   return filename;
 };
 
@@ -71,7 +77,7 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
       <div class="hw-char-db-content-wrapper">
         <!-- Header with stats info -->
         <div class="hw-character-database-header">
-          <p class="hw-character-database-title">Character Database</p>
+          <h1 class="hw-character-database-title">Character Database</h1>
           <p class="hw-character-database-subtitle">
             All stats shown at max level (Level {gameInfo.maxLevel})
           </p>
@@ -153,12 +159,12 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                       </div>
                     </td>
                     <td>
-                      <span
+                      <strong
                         class="character-name"
                         data-long={character.name.length > 12 ? 'true' : 'false'}
                       >
                         {character.name}
-                      </span>
+                      </strong>
                     </td>
                     <td>
                       <span class="hw-badge" data-rarity={character.rarity} data-sort-key="rarity">
@@ -166,22 +172,22 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                       </span>
                     </td>
                     <td data-sort-key="cost">
-                      <span class="cost-value">{character.cost}</span>
+                      <strong class="cost-value">{character.cost}</strong>
                     </td>
                     <td data-sort-key="strength">
-                      <span class="stat-value">{getStrengthValue(character.stats)}</span>
+                      <strong class="stat-value">{getStrengthValue(character.stats)}</strong>
                     </td>
                     <td data-sort-key="intelligence">
-                      <span class="stat-value">{getIntelligenceValue(character.stats)}</span>
+                      <strong class="stat-value">{getIntelligenceValue(character.stats)}</strong>
                     </td>
                     <td data-sort-key="vitality">
-                      <span class="stat-value">{getVitalityValue(character.stats)}</span>
+                      <strong class="stat-value">{getVitalityValue(character.stats)}</strong>
                     </td>
                     <td data-sort-key="agility">
-                      <span class="stat-value">{getAgilityValue(character.stats)}</span>
+                      <strong class="stat-value">{getAgilityValue(character.stats)}</strong>
                     </td>
                     <td data-sort-key="technic">
-                      <span class="stat-value">{getTechnicValue(character.stats)}</span>
+                      <strong class="stat-value">{getTechnicValue(character.stats)}</strong>
                     </td>
                   </tr>
                 ))
@@ -244,41 +250,41 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                 <div class="mobile-card-stats-grid">
                   <div class="stat-item">
                     <span class="stat-label">STR</span>
-                    <span class="stat-value" data-stat="strength">
+                    <strong class="stat-value" data-stat="strength">
                       {getStrengthValue(char.stats)}
-                    </span>
+                    </strong>
                   </div>
                   <div class="stat-item">
                     <span class="stat-label">INT</span>
-                    <span class="stat-value" data-stat="intelligence">
+                    <strong class="stat-value" data-stat="intelligence">
                       {getIntelligenceValue(char.stats)}
-                    </span>
+                    </strong>
                   </div>
                   <div class="stat-item">
                     <span class="stat-label">VIT</span>
-                    <span class="stat-value" data-stat="vitality">
+                    <strong class="stat-value" data-stat="vitality">
                       {getVitalityValue(char.stats)}
-                    </span>
+                    </strong>
                   </div>
                   <div class="stat-item">
                     <span class="stat-label">AGI</span>
-                    <span class="stat-value" data-stat="agility">
+                    <strong class="stat-value" data-stat="agility">
                       {getAgilityValue(char.stats)}
-                    </span>
+                    </strong>
                   </div>
                   <div class="stat-item">
                     <span class="stat-label">TEC</span>
-                    <span class="stat-value" data-stat="technic">
+                    <strong class="stat-value" data-stat="technic">
                       {getTechnicValue(char.stats)}
-                    </span>
+                    </strong>
                   </div>
                 </div>
 
                 {/* Gameplay Tags with categorization */}
                 {char.tags && char.tags.length > 0 && (
-                  <div class="mobile-card-tags">
-                    <div class="tags-label">Gameplay Tags:</div>
-                    <div class="tags-container">
+                  <div class="mobile-card-tags character-tags-container">
+                    <strong class="tags-label character-tags-label">Gameplay Tags</strong>
+                    <div class="tags-container character-tags-wrapper">
                       {char.tags.map(tag => (
                         <span class={`character-tag ${getTagCategory(tag)}`}>{tag}</span>
                       ))}

@@ -9,7 +9,7 @@ import {
 const rawKimGaYoungData = {
   // Basic Character Information
   name: 'Kim Ga-young',
-  image: 'kim_Ga_young', // Character image filename without extension
+  image: 'Kim_Ga_Young', // Character image filename without extension
   rarity: 'S', // EX, SS, S, A, B
   cost: 3, // Deployment cost
   tags: [

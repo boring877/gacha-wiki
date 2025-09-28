@@ -1,0 +1,96 @@
+{
+  "characterNames": {
+    "araha": {
+      "displayName": "Araha",
+      "imageName": "Araha",
+      "dataExport": "arahaData",
+      "pageSlug": "araha",
+      "notes": "Simple name, no issues"
+    },
+    "bella": {
+      "displayName": "Bella",
+      "imageName": "Bella",
+      "dataExport": "bellaData",
+      "pageSlug": "bella",
+      "notes": "Simple name, no issues"
+    },
+    "berga": {
+      "displayName": "Berga",
+      "imageName": "Berga",
+      "dataExport": "bergaData",
+      "pageSlug": "berga",
+      "notes": "Simple name, no issues"
+    },
+    "cora": {
+      "displayName": "Cora",
+      "imageName": "Cora",
+      "dataExport": "coraData",
+      "pageSlug": "cora",
+      "notes": "Simple name, no issues"
+    },
+    "juha": {
+      "displayName": "Juha",
+      "imageName": "Juha",
+      "dataExport": "juhaData",
+      "pageSlug": "juha",
+      "notes": "IMPORTANT: Character name is 'Juha', not 'Jua'. Story text uses 'Juha'. File is jua.js due to naming limitations."
+    },
+    "kim-ga-young": {
+      "displayName": "Kim Ga-young",
+      "imageName": "Kim_Ga_Young",
+      "dataExport": "kimGaYoungData",
+      "pageSlug": "kim-ga-young",
+      "notes": "Korean name with spaces, use underscores in filename"
+    },
+    "yeon-chae-young": {
+      "displayName": "Yeon Chae-Young",
+      "imageName": "Yeon_Chae_Young",
+      "dataExport": "yeonChaeYoungData",
+      "pageSlug": "yeon-chae-young",
+      "notes": "Korean name with hyphen, use underscores in filename"
+    },
+    "min-eun-sol": {
+      "displayName": "Min Eun-sol",
+      "imageName": "Min_Eun_sol",
+      "dataExport": "minEunSolData",
+      "pageSlug": "min-eun-sol",
+      "notes": "Korean name with hyphen, use underscores in filename"
+    },
+    "so-joo-hee": {
+      "displayName": "So Joo-hee",
+      "imageName": "So_Joo_hee",
+      "dataExport": "soJooHeeData",
+      "pageSlug": "so-joo-hee",
+      "notes": "Korean name with hyphen, use underscores in filename"
+    },
+    "headless-knight": {
+      "displayName": "Headless Knight",
+      "imageName": "Headless_Knight",
+      "dataExport": "headlessKnightData",
+      "pageSlug": "headless-knight",
+      "notes": "Multi-word name, use underscore"
+    },
+    "tx-manticore": {
+      "displayName": "TX-Manticore",
+      "imageName": "TX-Manticore",
+      "dataExport": "txManticoreData",
+      "pageSlug": "tx-manticore",
+      "notes": "Hyphenated name, keep hyphen in filename"
+    }
+  },
+  "namingRules": {
+    "displayName": "Use proper capitalization, spaces, and hyphens as needed",
+    "imageName": "Use TitleCase, replace spaces with underscores, maintain hyphens",
+    "dataExport": "camelCase for JavaScript exports, maintain name structure",
+    "pageSlug": "lowercase with hyphens for URLs",
+    "fileName": "lowercase with hyphens for .js and .astro files",
+    "weaponPattern": "{CharacterName}_WP.jpg"
+  },
+  "validation": {
+    "checkImageExists": true,
+    "checkDataExport": true,
+    "checkPageExists": true,
+    "checkWeaponExists": true
+  },
+  "lastUpdated": "2025-09-28"
+}

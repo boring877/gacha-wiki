@@ -31,25 +31,23 @@ export interface GameConfig {
 }
 
 export declare function generateBreadcrumbs(
-  pathname: string,
-  options?: BreadcrumbOptions
+  _pathname: string,
+  _options?: BreadcrumbOptions
 ): BreadcrumbItem[];
 
-export declare function getParentBreadcrumb(
-  breadcrumbs: BreadcrumbItem[]
-): BreadcrumbItem | null;
+export declare function getParentBreadcrumb(_breadcrumbs: BreadcrumbItem[]): BreadcrumbItem | null;
 
 export declare function generateBackNavigation(
-  pathname: string,
-  options?: BackNavigationOptions
+  _pathname: string,
+  _options?: BackNavigationOptions
 ): BackNavigation;
 
 export declare function generateCharacterBreadcrumbs(
-  pathname: string,
-  characterName: string,
-  gameKey: string
+  _pathname: string,
+  _characterName: string,
+  _gameKey: string
 ): BreadcrumbItem[];
 
-export declare function detectGameKey(pathname: string): string | null;
+export declare function detectGameKey(_pathname: string): string | null;
 
-export declare function getGameConfig(gameKey: string): GameConfig | null;
+export declare function getGameConfig(_gameKey: string): GameConfig | null;

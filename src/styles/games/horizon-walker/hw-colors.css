@@ -11,6 +11,7 @@
   --hw-tertiary-sky: #7bb3ff; /* Bright sky blue - uplifting, peaceful */
   --hw-accent-mint: #7bffb3; /* Fresh mint green - energizing, positive */
   --hw-accent-lavender: #b37bff; /* Soft lavender purple - calming, magical */
+  --hw-purple: #b37bff; /* Alias for accent-lavender - for backward compatibility */
   --hw-accent-peach: #ffb37b; /* Warm peach - cozy, friendly */
 
   /* === HW SPECIAL COLORS === */
@@ -50,6 +51,68 @@
   --hw-card-bg-gradient: linear-gradient(135deg, var(--hw-bg-dark) 0%, var(--hw-bg-darker) 100%);
   --hw-card-border: #3a3a3a; /* Clean card border color */
 
+  /* === COLOR-MIX FALLBACK VARIABLES === */
+  /* Primary Warm (#e8a547) */
+  --hw-primary-warm-05: rgba(232, 165, 71, 0.05);
+  --hw-primary-warm-10: rgba(232, 165, 71, 0.1);
+  --hw-primary-warm-15: rgba(232, 165, 71, 0.15);
+  --hw-primary-warm-20: rgba(232, 165, 71, 0.2);
+  --hw-primary-warm-30: rgba(232, 165, 71, 0.3);
+  --hw-primary-warm-40: rgba(232, 165, 71, 0.4);
+  --hw-primary-warm-80: rgba(232, 165, 71, 0.8);
+  --hw-primary-warm-90: rgba(232, 165, 71, 0.9);
+  --hw-primary-warm-95: rgba(232, 165, 71, 0.95);
+
+  /* Secondary Coral (#ff7b7b) */
+  --hw-secondary-coral-05: rgba(255, 123, 123, 0.05);
+  --hw-secondary-coral-10: rgba(255, 123, 123, 0.1);
+  --hw-secondary-coral-20: rgba(255, 123, 123, 0.2);
+  --hw-secondary-coral-30: rgba(255, 123, 123, 0.3);
+  --hw-secondary-coral-40: rgba(255, 123, 123, 0.4);
+  --hw-secondary-coral-50: rgba(255, 123, 123, 0.5);
+  --hw-secondary-coral-90: rgba(255, 123, 123, 0.9);
+  --hw-secondary-coral-95: rgba(255, 123, 123, 0.95);
+
+  /* Tertiary Sky (#7bb3ff) */
+  --hw-tertiary-sky-05: rgba(123, 179, 255, 0.05);
+  --hw-tertiary-sky-10: rgba(123, 179, 255, 0.1);
+  --hw-tertiary-sky-20: rgba(123, 179, 255, 0.2);
+  --hw-tertiary-sky-30: rgba(123, 179, 255, 0.3);
+  --hw-tertiary-sky-50: rgba(123, 179, 255, 0.5);
+  --hw-tertiary-sky-80: rgba(123, 179, 255, 0.8);
+  --hw-tertiary-sky-80-mix: color-mix(in srgb, var(--hw-tertiary-sky) 80%, transparent);
+  --hw-tertiary-sky-90: rgba(123, 179, 255, 0.9);
+
+  /* Accent Mint (#7bffb3) */
+  --hw-accent-mint-05: rgba(123, 255, 179, 0.05);
+  --hw-accent-mint-10: rgba(123, 255, 179, 0.1);
+  --hw-accent-mint-15: rgba(123, 255, 179, 0.15);
+  --hw-accent-mint-20: rgba(123, 255, 179, 0.2);
+  --hw-accent-mint-30: rgba(123, 255, 179, 0.3);
+  --hw-accent-mint-40: rgba(123, 255, 179, 0.4);
+  --hw-accent-mint-50: rgba(123, 255, 179, 0.5);
+  --hw-accent-mint-90: rgba(123, 255, 179, 0.9);
+
+  /* Black opacity */
+  --hw-black-05: rgba(0, 0, 0, 0.05);
+  --hw-black-10: rgba(0, 0, 0, 0.1);
+  --hw-black-20: rgba(0, 0, 0, 0.2);
+  --hw-black-30: rgba(0, 0, 0, 0.3);
+  --hw-black-40: rgba(0, 0, 0, 0.4);
+
+  /* White opacity */
+  --hw-white-05: rgba(255, 255, 255, 0.05);
+  --hw-white-10: rgba(255, 255, 255, 0.1);
+
+  /* Border Muted (existing rgba) */
+  --hw-border-muted-50: rgba(232, 165, 71, 0.075);
+
+  /* Purple (#9c27b0) for specific cases */
+  --hw-purple-20: rgba(156, 39, 176, 0.2);
+  --hw-purple-30: rgba(156, 39, 176, 0.3);
+  --hw-purple-50: rgba(156, 39, 176, 0.5);
+  --hw-purple-90: rgba(156, 39, 176, 0.9);
+
   /* === HW RANKING COLORS === */
   --hw-rankings-bg: linear-gradient(135deg, var(--hw-bg-darker) 0%, var(--hw-bg-dark) 100%);
   --hw-rank-gold: #ffd700; /* Bright gold rank color */
@@ -86,14 +149,130 @@
   --hw-spacing-xl: 2rem; /* Extra large spacing */
 
   /* === HW COMPLEX GRADIENTS === */
-  --hw-primary-gradient: linear-gradient(
-    135deg,
-    var(--hw-primary-green),
-    var(--hw-secondary-brown)
-  );
-  --hw-nature-gradient: linear-gradient(135deg, var(--hw-primary-green), var(--hw-dark-green));
-  --hw-earth-gradient: linear-gradient(135deg, var(--hw-secondary-brown), var(--hw-dark-brown));
   --hw-card-gradient: linear-gradient(135deg, var(--hw-card-bg), var(--hw-bg-darker));
+
+  /* === RGBA UTILITY VARIABLES === */
+  /* Common opacity levels for consistent styling */
+  --hw-opacity-02: 0.02;
+  --hw-opacity-04: 0.04;
+  --hw-opacity-05: 0.05;
+  --hw-opacity-08: 0.08;
+  --hw-opacity-10: 0.1;
+  --hw-opacity-15: 0.15;
+  --hw-opacity-20: 0.2;
+  --hw-opacity-25: 0.25;
+  --hw-opacity-30: 0.3;
+  --hw-opacity-35: 0.35;
+  --hw-opacity-40: 0.4;
+  --hw-opacity-50: 0.5;
+  --hw-opacity-60: 0.6;
+
+  /* Text shadows removed for simple, clean styling */
+
+  /* Common black/white overlays */
+  --hw-black-overlay-02: rgba(0, 0, 0, 0.02);
+  --hw-black-overlay-10: rgba(0, 0, 0, 0.1);
+  --hw-black-overlay-20: rgba(0, 0, 0, 0.2);
+  --hw-black-overlay-25: rgba(0, 0, 0, 0.25);
+  --hw-black-overlay-35: rgba(0, 0, 0, 0.35);
+  --hw-white-overlay-02: rgba(255, 255, 255, 0.02);
+  --hw-white-overlay-10: rgba(255, 255, 255, 0.1);
+
+  /* === CONSOLIDATED GRADIENT PATTERNS === */
+  /* Most commonly used gradients across components */
+  --hw-gradient-dark-to-darker: linear-gradient(
+    135deg,
+    var(--hw-bg-darker) 0%,
+    var(--hw-bg-dark) 100%
+  );
+  --hw-gradient-dark-darker-60-40: linear-gradient(
+    135deg,
+    var(--hw-bg-darker) 60%,
+    var(--hw-bg-dark) 100%
+  );
+  --hw-gradient-black-30-10: linear-gradient(135deg, var(--hw-black-30), var(--hw-black-10));
+  --hw-gradient-black-30-10-mix: linear-gradient(
+    135deg,
+    var(--hw-black-30-mix),
+    var(--hw-black-10-mix)
+  );
+  --hw-gradient-black-40-20: linear-gradient(135deg, var(--hw-black-40), var(--hw-black-20));
+  --hw-gradient-warm-to-coral: linear-gradient(
+    135deg,
+    var(--hw-primary-warm),
+    var(--hw-secondary-coral)
+  );
+  --hw-gradient-warm-to-sky: linear-gradient(
+    135deg,
+    var(--hw-primary-warm),
+    var(--hw-tertiary-sky-80)
+  );
+  --hw-gradient-warm-to-sky-mix: linear-gradient(
+    135deg,
+    var(--hw-primary-warm),
+    var(--hw-tertiary-sky-80-mix)
+  );
+  --hw-gradient-mint-to-sky: linear-gradient(135deg, var(--hw-accent-mint), var(--hw-tertiary-sky));
+  --hw-gradient-border-muted-strong: linear-gradient(
+    135deg,
+    var(--hw-border-muted),
+    var(--hw-border-strong)
+  );
+
+  /* Component-specific gradients */
+  --hw-gradient-content-section: var(--hw-gradient-dark-to-darker);
+  --hw-gradient-character-stats: var(--hw-gradient-dark-darker-60-40);
+  --hw-gradient-character-info: var(--hw-gradient-black-30-10);
+  --hw-gradient-skill-card: var(--hw-gradient-black-40-20);
+  --hw-gradient-trait-card: var(--hw-gradient-black-40-20);
+  --hw-gradient-section-title: var(--hw-gradient-warm-to-sky-mix);
+  --hw-gradient-header-primary: var(--hw-gradient-warm-to-coral);
+  --hw-gradient-button-primary: var(--hw-gradient-warm-to-coral);
+  --hw-gradient-warm-coral-light: linear-gradient(
+    135deg,
+    rgba(232, 165, 71, 0.1),
+    rgba(255, 123, 123, 0.05)
+  );
+  --hw-gradient-warm-coral-medium: linear-gradient(
+    135deg,
+    rgba(232, 165, 71, 0.2),
+    rgba(232, 165, 71, 0.1)
+  );
+  --hw-gradient-mint-light: linear-gradient(
+    135deg,
+    rgba(123, 255, 179, 0.1),
+    rgba(123, 255, 179, 0.05)
+  );
+  --hw-gradient-coral-light: linear-gradient(
+    135deg,
+    rgba(255, 123, 123, 0.1),
+    rgba(255, 123, 123, 0.05)
+  );
+  --hw-gradient-error-light: linear-gradient(
+    135deg,
+    rgba(255, 59, 59, 0.08),
+    rgba(255, 59, 59, 0.12)
+  );
+  --hw-gradient-info-light: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.05),
+    rgba(59, 130, 246, 0.08)
+  );
+  --hw-gradient-rune-glow: linear-gradient(
+    135deg,
+    rgba(232, 165, 71, 0.4),
+    rgba(255, 123, 123, 0.3)
+  );
+  --hw-gradient-rune-border: linear-gradient(
+    135deg,
+    rgba(232, 165, 71, 0.3),
+    rgba(255, 123, 123, 0.2)
+  );
+  --hw-gradient-rune-light: linear-gradient(
+    135deg,
+    rgba(232, 165, 71, 0.1),
+    rgba(255, 123, 123, 0.1)
+  );
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -140,11 +319,8 @@
 
 /* Gradient Text Utilities - Consolidates repeated webkit patterns */
 .hw-gradient-text-primary {
-  background: linear-gradient(
-    135deg,
-    var(--hw-primary-warm),
-    color-mix(in srgb, var(--hw-tertiary-sky) 80%, transparent)
-  );
+  background: var(--hw-gradient-warm-to-sky);
+  background: var(--hw-gradient-warm-to-sky-mix);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -152,7 +328,7 @@
 }
 
 .hw-gradient-text-warm {
-  background: linear-gradient(135deg, var(--hw-primary-warm), var(--hw-secondary-coral));
+  background: var(--hw-gradient-warm-to-coral);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -160,7 +336,7 @@
 }
 
 .hw-gradient-text-nature {
-  background: linear-gradient(135deg, var(--hw-accent-mint), var(--hw-tertiary-sky));
+  background: var(--hw-gradient-mint-to-sky);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

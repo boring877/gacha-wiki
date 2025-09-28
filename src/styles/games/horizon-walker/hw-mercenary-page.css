@@ -10,7 +10,7 @@
   /* ═══════════════════════════════════════════════════════════════════════ */
 
   .content-section {
-    background: linear-gradient(135deg, var(--hw-bg-darker) 0%, var(--hw-bg-dark) 100%);
+    background: var(--hw-gradient-content-section);
     border: 1px solid var(--hw-border-muted);
     border-radius: 18px;
     padding: 2.5rem;
@@ -21,11 +21,7 @@
 
   .section-title {
     color: var(--text-primary);
-    background: linear-gradient(
-      135deg,
-      var(--hw-primary-warm),
-      color-mix(in srgb, var(--hw-tertiary-sky) 80%, transparent)
-    );
+    background: var(--hw-gradient-warm-to-sky);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -75,7 +71,7 @@
   /* ═══════════════════════════════════════════════════════════════════════ */
 
   .character-overview-section {
-    background: linear-gradient(135deg, var(--hw-bg-darker) 0%, var(--hw-bg-dark) 100%);
+    background: var(--hw-gradient-content-section);
     border: 1px solid var(--hw-border-muted);
     border-radius: 18px;
     padding: 2.5rem;
@@ -105,7 +101,7 @@
   }
 
   .character-hero-container {
-    background: linear-gradient(135deg, var(--hw-bg-darker) 60%, var(--hw-bg-dark) 100%);
+    background: var(--hw-gradient-character-stats);
     border-radius: 18px;
     border: 1px solid var(--hw-border-muted);
     padding: 2rem;
@@ -153,11 +149,7 @@
 
   /* Character Info Card */
   .character-info-card {
-    background: linear-gradient(
-      135deg,
-      color-mix(in srgb, black 30%, transparent),
-      color-mix(in srgb, black 10%, transparent)
-    );
+    background: var(--hw-gradient-character-info);
     border: 1px solid var(--hw-border-muted);
     border-radius: 15px;
     padding: 1.5rem;
@@ -194,7 +186,7 @@
   }
 
   .character-stats-box {
-    background: linear-gradient(135deg, var(--hw-bg-darker) 60%, var(--hw-bg-dark) 100%);
+    background: var(--hw-gradient-character-stats);
     border: 1px solid var(--hw-border-muted);
     border-radius: 18px;
     padding: 2rem;
@@ -227,7 +219,7 @@
   }
 
   .core-stats-explanation {
-    background: color-mix(in srgb, black 20%, transparent);
+    background: var(--hw-black-20);
     border: 1px solid var(--hw-border-muted);
     border-radius: 10px;
     padding: 1rem;
@@ -244,7 +236,7 @@
 
   .stat-explanation-grid .stat-name {
     font-weight: 600;
-    color: color-mix(in srgb, var(--hw-primary-warm) 80%, transparent);
+    color: var(--hw-primary-warm-80);
   }
 
   .stat-explanation-grid .stat-description {
@@ -265,7 +257,7 @@
   }
 
   .stat-item {
-    background: color-mix(in srgb, black 30%, transparent);
+    background: var(--hw-black-30);
     border: 1px solid var(--hw-border-muted);
     border-radius: 10px;
     padding: 0.8rem;
@@ -294,7 +286,7 @@
     font-size: 0.9rem;
   }
 
-  /* Character Tags */
+  /* Character Tags Container - Layout Only */
   .character-tags-container {
     margin-top: 2rem;
     padding-top: 2rem;
@@ -316,34 +308,12 @@
     gap: 0.75rem;
   }
 
-  .character-tag {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8125rem;
-    font-weight: 500;
-  }
-
-  .character-tag.team-utility {
-    background: var(--hw-tertiary-sky);
-    color: var(--hw-text-white);
-  }
-
-  .character-tag.damage-scaling {
-    background: var(--hw-primary-warm);
-    color: var(--hw-text-white);
-  }
-
-  .character-tag.self-utility {
-    background: var(--hw-accent-mint);
-    color: var(--hw-text-white);
-  }
-
   /* ═══════════════════════════════════════════════════════════════════════ */
   /*                             SKILLS SECTION                              */
   /* ═══════════════════════════════════════════════════════════════════════ */
 
   .skills-section {
-    background: linear-gradient(135deg, var(--hw-bg-darker) 0%, var(--hw-bg-dark) 100%);
+    background: var(--hw-gradient-content-section);
     border: 1px solid var(--hw-border-muted);
     border-radius: 18px;
     padding: 2.5rem;
@@ -451,7 +421,7 @@
   /* ═══════════════════════════════════════════════════════════════════════ */
 
   .traits-section {
-    background: linear-gradient(135deg, var(--hw-bg-darker) 0%, var(--hw-bg-dark) 100%);
+    background: var(--hw-gradient-content-section);
     border: 1px solid var(--hw-border-muted);
     border-radius: 18px;
     padding: 2.5rem;
@@ -629,11 +599,6 @@
       gap: 0.5rem;
     }
 
-    .character-tag {
-      padding: 0.375rem 0.75rem;
-      font-size: 0.75rem;
-    }
-
     .usage-description {
       padding: 1.5rem;
     }
@@ -647,42 +612,12 @@
   /*                        DUAL CLASS SKILL HIGHLIGHTING                     */
   /* ═══════════════════════════════════════════════════════════════════════ */
 
-  /* Highlight class-specific skills with red background */
-  .skill-description:has-text('[SWAMP TYRANT CLASS]'),
-  .skill-description:has-text('[SWAMP PREDATOR CLASS]') {
-    background: rgba(255, 59, 59, 0.1);
-    border-left: 4px solid #ff3b3b;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    margin: 1rem 0;
-  }
-
-  /* Alternative approach using contains for better browser support */
-  .skill-description {
-    &:is(:contains('[SWAMP TYRANT CLASS]'), :contains('[SWAMP PREDATOR CLASS]')) {
-      background: linear-gradient(135deg, rgba(255, 59, 59, 0.08) 0%, rgba(255, 59, 59, 0.12) 100%);
-      border-left: 4px solid #ff3b3b;
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-      position: relative;
-    }
-
-    &:is(:contains('[SWAMP TYRANT CLASS]'), :contains('[SWAMP PREDATOR CLASS]'))::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #ff3b3b 0%, rgba(255, 59, 59, 0.3) 100%);
-      border-radius: 8px 8px 0 0;
-    }
-  }
+  /* Class-specific skill highlighting with red background */
+  /* Note: Uses JavaScript-detected classes for browser compatibility */
 
   /* Fallback using JavaScript-detectable classes */
   .skill-card.class-skill .skill-description {
-    background: linear-gradient(135deg, rgba(255, 59, 59, 0.08) 0%, rgba(255, 59, 59, 0.12) 100%);
+    background: var(--hw-gradient-error-light);
     border-left: 4px solid #ff3b3b;
     padding: 1rem 1.5rem;
     border-radius: 8px;
@@ -703,7 +638,7 @@
 
   /* Base skill highlighting with subtle blue */
   .skill-card.base-skill .skill-description {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.08) 100%);
+    background: var(--hw-gradient-info-light);
     border-left: 4px solid rgba(59, 130, 246, 0.4);
     padding: 1rem 1.5rem;
     border-radius: 8px;

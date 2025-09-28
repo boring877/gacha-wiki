@@ -21,8 +21,8 @@ const GAME_CONFIG = {
       'tier-list': 'Tier List',
       'rift-teams': 'Rift Teams',
       updates: 'Updates',
-      memories: 'Memories'
-    }
+      memories: 'Memories',
+    },
   },
   'silver-and-blood': {
     name: 'Silver & Blood',
@@ -40,8 +40,8 @@ const GAME_CONFIG = {
       'ancestral-vault': 'Ancestral Vault',
       events: 'Events',
       bosses: 'Bosses',
-      bugs: 'Bug Reports'
-    }
+      bugs: 'Bug Reports',
+    },
   },
   'horizon-walker': {
     name: 'Horizon Walker',
@@ -52,9 +52,9 @@ const GAME_CONFIG = {
       weapons: 'Weapons',
       gifts: 'Gifts',
       'character-gifts': 'Character Gifts',
-      'ap-guide': 'AP Guide'
-    }
-  }
+      'ap-guide': 'AP Guide',
+    },
+  },
 };
 
 /**
@@ -64,11 +64,7 @@ const GAME_CONFIG = {
  * @returns {Array} Array of breadcrumb items with name and href
  */
 export function generateBreadcrumbs(pathname, options = {}) {
-  const {
-    includeHome = true,
-    currentPageName = null,
-    gameKey = null
-  } = options;
+  const { includeHome = true, currentPageName = null, gameKey = null } = options;
 
   const breadcrumbs = [];
 
@@ -76,7 +72,7 @@ export function generateBreadcrumbs(pathname, options = {}) {
   if (includeHome) {
     breadcrumbs.push({
       name: 'Home',
-      href: '/'
+      href: '/',
     });
   }
 
@@ -97,7 +93,7 @@ export function generateBreadcrumbs(pathname, options = {}) {
       // Add game landing page
       breadcrumbs.push({
         name: config.name,
-        href: config.basePath
+        href: config.basePath,
       });
 
       // Process remaining segments
@@ -111,7 +107,7 @@ export function generateBreadcrumbs(pathname, options = {}) {
 
         breadcrumbs.push({
           name: sectionName,
-          href: href
+          href: href,
         });
 
         // Handle deeper paths (like individual character pages)
@@ -124,7 +120,7 @@ export function generateBreadcrumbs(pathname, options = {}) {
 
             breadcrumbs.push({
               name: formatSegmentName(segment),
-              href: href
+              href: href,
             });
           }
         }
@@ -138,7 +134,7 @@ export function generateBreadcrumbs(pathname, options = {}) {
       currentPath += '/' + segments[i];
       breadcrumbs.push({
         name: formatSegmentName(segments[i]),
-        href: currentPath
+        href: currentPath,
       });
     }
   }
@@ -146,7 +142,7 @@ export function generateBreadcrumbs(pathname, options = {}) {
   // Add current page name if provided (without href for current page)
   if (currentPageName) {
     breadcrumbs.push({
-      name: currentPageName
+      name: currentPageName,
       // No href for current page
     });
   }
@@ -230,12 +226,12 @@ export function getGameConfig(gameKey) {
 export function generateCharacterBreadcrumbs(pathname, characterName, gameKey) {
   const breadcrumbs = generateBreadcrumbs(pathname, {
     includeHome: true,
-    gameKey: gameKey
+    gameKey: gameKey,
   });
 
   // Add character name as current page
   breadcrumbs.push({
-    name: characterName
+    name: characterName,
   });
 
   return breadcrumbs;
@@ -256,6 +252,6 @@ export function generateBackNavigation(pathname, options = {}) {
   return {
     href: parent?.href || fallbackHref,
     text: parent ? `Back to ${parent.name}` : 'Back to Home',
-    parentName: parent?.name || 'Home'
+    parentName: parent?.name || 'Home',
   };
 }

@@ -5,6 +5,7 @@ import {
   HORIZON_WALKER_MERCENARIES,
   mercenaryGameInfo,
 } from '../../../data/horizon-walker/mercenaries.js';
+import { getTagCategory } from '../../../data/horizon-walker/characters.js';
 
 // Extract filter options from enhanced data structure
 const { rarities } = mercenaryGameInfo;
@@ -220,11 +221,11 @@ export const prerender = true;
 
                 {/* Gameplay Tags */}
                 {mercenary.tags && mercenary.tags.length > 0 && (
-                  <div class="mobile-card-tags">
-                    <div class="tags-label">Tags:</div>
-                    <div class="tags-container">
+                  <div class="mobile-card-tags character-tags-container">
+                    <strong class="tags-label character-tags-label">Gameplay Tags</strong>
+                    <div class="tags-container character-tags-wrapper">
                       {mercenary.tags.map(tag => (
-                        <span class="character-tag general">{tag}</span>
+                        <span class={`character-tag ${getTagCategory(tag)}`}>{tag}</span>
                       ))}
                     </div>
                   </div>

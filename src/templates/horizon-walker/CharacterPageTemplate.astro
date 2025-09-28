@@ -8,6 +8,7 @@ import {
 } from '../../utils/horizon-walker/skill-highlighting.js';
 import { getCharacterById } from '../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../data/horizon-walker/gifts.js';
+import { getTagCategory } from '../../data/horizon-walker/characters.js';
 
 // Import all character images for optimization
 import ArahaImg from '../../assets/images/games/horizon-walker/characters/Araha.jpg';
@@ -168,109 +169,111 @@ interface Props {
 
 // Character image mapping for optimization
 const characterImageMap = {
-  'Araha': ArahaImg,
-  'Bella': BellaImg,
-  'Berga': BergaImg,
-  'Canisk': CaniskImg,
-  'Cora': CoraImg,
-  'Delia': DeliaImg,
-  'Efreeti': EfreetiImg,
-  'Erneste': ErnesteImg,
-  'Everette': EveretteImg,
-  'Fammene': FammeneImg,
-  'Gridelda': GrideldaImg,
-  'Gulam': GulamImg,
-  'Gulsni': GulsniImg,
+  Araha: ArahaImg,
+  Bella: BellaImg,
+  Berga: BergaImg,
+  Canisk: CaniskImg,
+  Cora: CoraImg,
+  Delia: DeliaImg,
+  Efreeti: EfreetiImg,
+  Erneste: ErnesteImg,
+  Everette: EveretteImg,
+  Fammene: FammeneImg,
+  Gridelda: GrideldaImg,
+  Gulam: GulamImg,
+  Gulsni: GulsniImg,
   'Headless Knight': HeadlessKnightImg,
-  'Ines': InesImg,
-  'Juha': JuhaImg,
-  'Kalina': KalinaImg,
-  'Kalma': KalmaImg,
-  'Kilon': KilonImg,
+  Ines: InesImg,
+  Juha: JuhaImg,
+  Kalina: KalinaImg,
+  Kalma: KalmaImg,
+  Kilon: KilonImg,
   'Kim Ga-young': KimGaYoungImg,
-  'Korabi': KorabiImg,
-  'Lisandria': LisandriaImg,
-  'Luise': LuiseImg,
-  'Mahari': MahariImg,
-  'Marhim': MarhimImg,
-  'Matrotho': MatrothoImg,
+  Korabi: KorabiImg,
+  Lisandria: LisandriaImg,
+  Luise: LuiseImg,
+  Mahari: MahariImg,
+  Marhim: MarhimImg,
+  Matrotho: MatrothoImg,
   'Min Eun-sol': MinEunSolImg,
-  'Nari': NariImg,
-  'Nika': NikaImg,
-  'Nonoha': NonohaImg,
-  'Nymset': NymsetImg,
-  'Olivia': OliviaImg,
-  'Osla': OslaImg,
-  'Pantheri': PantheriImg,
-  'Platina': PlatinaImg,
-  'Re_De_Da': ReDeDaImg,
-  'Rhasadina': RhasadinaImg,
-  'Samarika': SamarikaImg,
+  Nari: NariImg,
+  Nika: NikaImg,
+  Nonoha: NonohaImg,
+  Nymset: NymsetImg,
+  Olivia: OliviaImg,
+  Osla: OslaImg,
+  Pantheri: PantheriImg,
+  Platina: PlatinaImg,
+  Re_De_Da: ReDeDaImg,
+  Rhasadina: RhasadinaImg,
+  Samarika: SamarikaImg,
   'So Joo-hee': SoJooHeeImg,
   'TX - Manticore': TxManticoreImg,
-  'Valeta': ValetaImg,
-  'Vlissing': VlissingImg,
+  Valeta: ValetaImg,
+  Vlissing: VlissingImg,
   'Yeon Chae-Young': YeonChaeYoungImg,
-  'Yeonwoo': YeonwooImg,
-  'Yui': YuiImg,
-  'Yvonna': YvonnaImg,
+  Yeonwoo: YeonwooImg,
+  Yui: YuiImg,
+  Yvonna: YvonnaImg,
 };
 
 // Helper function to get optimized character image by filename
-const getOptimizedImageByFilename = (filename) => {
+const getOptimizedImageByFilename = filename => {
   // For individual character data, we get filenames like 'Bella', 'Araha', etc.
   // We need to map these to the character names used in our mapping
   const filenameToNameMap = {
-    'Araha': 'Araha',
-    'Bella': 'Bella',
-    'Berga': 'Berga',
-    'Canisk': 'Canisk',
-    'Cora': 'Cora',
-    'Delia': 'Delia',
-    'Efreeti': 'Efreeti',
-    'Erneste': 'Erneste',
-    'Everette': 'Everette',
-    'Fammene': 'Fammene',
-    'Gridelda': 'Gridelda',
-    'Gulam': 'Gulam',
-    'Gulsni': 'Gulsni',
-    'Headless_Knight': 'Headless Knight',
-    'Ines': 'Ines',
-    'Juha': 'Juha',
-    'Kalina': 'Kalina',
-    'Kalma': 'Kalma',
-    'Kilon': 'Kilon',
-    'kim_Ga_young': 'Kim Ga-young',
-    'Korabi': 'Korabi',
-    'Lisandria': 'Lisandria',
-    'Luise': 'Luise',
-    'Mahari': 'Mahari',
-    'Marhim': 'Marhim',
-    'Matrotho': 'Matrotho',
-    'Min_Eun_sol': 'Min Eun-sol',
-    'Nari': 'Nari',
-    'Nika': 'Nika',
-    'Nonoha': 'Nonoha',
-    'Nymset': 'Nymset',
-    'Olivia': 'Olivia',
-    'Osla': 'Osla',
-    'Pantheri': 'Pantheri',
-    'Platina': 'Platina',
-    'Re_De_Da': 'Re_De_Da',
-    'Rhasadina': 'Rhasadina',
-    'Samarika': 'Samarika',
-    'So_Joo_hee': 'So Joo-hee',
-    'TX_Manticore': 'TX - Manticore',
-    'Valeta': 'Valeta',
-    'Vlissing': 'Vlissing',
+    Araha: 'Araha',
+    Bella: 'Bella',
+    Berga: 'Berga',
+    Canisk: 'Canisk',
+    Cora: 'Cora',
+    Delia: 'Delia',
+    Efreeti: 'Efreeti',
+    Erneste: 'Erneste',
+    Everette: 'Everette',
+    Fammene: 'Fammene',
+    Gridelda: 'Gridelda',
+    Gulam: 'Gulam',
+    Gulsni: 'Gulsni',
+    Headless_Knight: 'Headless Knight',
+    Ines: 'Ines',
+    Juha: 'Juha',
+    Kalina: 'Kalina',
+    Kalma: 'Kalma',
+    Kilon: 'Kilon',
+    kim_Ga_young: 'Kim Ga-young',
+    Korabi: 'Korabi',
+    Lisandria: 'Lisandria',
+    Luise: 'Luise',
+    Mahari: 'Mahari',
+    Marhim: 'Marhim',
+    Matrotho: 'Matrotho',
+    Min_Eun_sol: 'Min Eun-sol',
+    Nari: 'Nari',
+    Nika: 'Nika',
+    Nonoha: 'Nonoha',
+    Nymset: 'Nymset',
+    Olivia: 'Olivia',
+    Osla: 'Osla',
+    Pantheri: 'Pantheri',
+    Platina: 'Platina',
+    Re_De_Da: 'Re_De_Da',
+    Rhasadina: 'Rhasadina',
+    Samarika: 'Samarika',
+    So_Joo_hee: 'So Joo-hee',
+    TX_Manticore: 'TX - Manticore',
+    Valeta: 'Valeta',
+    Vlissing: 'Vlissing',
     'Yeon_Chae-Young': 'Yeon Chae-Young',
-    'Yeonwoo': 'Yeonwoo',
-    'Yui': 'Yui',
-    'Yvonna': 'Yvonna',
+    Yeonwoo: 'Yeonwoo',
+    Yui: 'Yui',
+    Yvonna: 'Yvonna',
   };
 
   const characterName = filenameToNameMap[filename] || filename;
-  return characterImageMap[characterName] || `/images/games/horizon-walker/characters/${filename}.jpg`;
+  return (
+    characterImageMap[characterName] || `/images/games/horizon-walker/characters/${filename}.jpg`
+  );
 };
 
 const { characterData } = Astro.props;
@@ -357,7 +360,6 @@ function calculateGiftsNeeded(gift: { totalPoints: number }) {
   return Math.ceil(targetPoints / gift.totalPoints);
 }
 
-
 // Helper function to create character description from story
 function getCharacterSummary(story: string | undefined): string {
   if (!story) return 'A skilled character ready to join the battle.';
@@ -372,39 +374,6 @@ function getCharacterSummary(story: string | undefined): string {
   const truncated = story.substring(0, 150);
   const lastSpace = truncated.lastIndexOf(' ');
   return truncated.substring(0, lastSpace) + '...';
-}
-
-// Helper function to categorize character tags for styling
-function getTagCategory(tag: string): string {
-  const lowerTag = tag.toLowerCase();
-
-  // Damage/Combat tags - Orange
-  if (
-    lowerTag.includes('damage') ||
-    lowerTag.includes('debuffer') ||
-    lowerTag.includes('ap manipulation') ||
-    lowerTag.includes('immaterial damage')
-  ) {
-    return 'damage-scaling';
-  }
-
-  // Support/Utility tags - Blue
-  if (
-    lowerTag.includes('support') ||
-    lowerTag.includes('shield provider') ||
-    lowerTag.includes('healer') ||
-    lowerTag.includes('buffer')
-  ) {
-    return 'team-utility';
-  }
-
-  // Magic/Ability tags - Green
-  if (lowerTag.includes('magic user') || lowerTag.includes('caster')) {
-    return 'self-utility';
-  }
-
-  // Default fallback
-  return 'general-mechanic';
 }
 ---
 

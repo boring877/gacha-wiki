@@ -21,8 +21,12 @@
   border-radius: 4px;
   border: 1px solid rgba(var(--hw-accent-rgb), 0.2);
   text-align: center;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 80px;
+  min-height: 32px;
+  line-height: 1.2;
 }
 
 /* Mercenary-specific mobile card adjustments */
@@ -35,6 +39,51 @@
   grid-column: span 2;
   justify-self: center;
   max-width: 200px;
+}
+
+/* Enhanced mercenary badge mobile optimization */
+@media (max-width: 768px) {
+  .mobile-character-card[data-useability] .header-badges {
+    gap: 0.3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .mobile-character-card[data-useability] .character-tag {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    min-height: 28px;
+    min-width: 40px;
+  }
+
+  .mobile-character-card[data-useability] .useability-value {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+    min-height: 32px;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-character-card[data-useability] .header-badges {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .mobile-character-card[data-useability] .character-tag {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+    min-height: 26px;
+    min-width: 36px;
+  }
+
+  .mobile-character-card[data-useability] .useability-value {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.4rem;
+    min-height: 28px;
+    min-width: 40px;
+  }
 }
 
 /* Useability filter styling */
@@ -61,19 +110,6 @@
 
 .character-table th:nth-child(9) {
   min-width: 120px;
-}
-
-/* Mercenary tags in mobile view use general styling */
-.mobile-character-card .character-tag.general {
-  background: rgba(107, 114, 128, 0.1);
-  color: #4b5563;
-  border: 1px solid rgba(107, 114, 128, 0.2);
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 /* Responsive adjustments for mercenary table */
@@ -120,12 +156,6 @@
     background: rgba(var(--hw-accent-rgb), 0.15);
     border-color: rgba(var(--hw-accent-rgb), 0.3);
     color: var(--hw-text-primary);
-  }
-
-  .mobile-character-card .character-tag.general {
-    background: rgba(107, 114, 128, 0.2);
-    color: #9ca3af;
-    border-color: rgba(107, 114, 128, 0.3);
   }
 }
 

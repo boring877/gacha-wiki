@@ -18,7 +18,7 @@ import '../../styles/games/silver-and-blood/sab-colors.css';
 import '../../styles/components/silver-and-blood-character-navigation.css';
 import '../../styles/games/silver-and-blood/sab-layout.css';
 import '../../styles/games/silver-and-blood/sab-badge-colours.css';
-// -import '../../styles/games/silver-and-blood/sab-character-styles.css';
+// import '../../styles/games/silver-and-blood/sab-character-styles.css';
 
 export interface Props {
 	title: string;
@@ -43,9 +43,9 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
         <style is:global>
             @import '../../styles/games/silver-and-blood/sab-character-styles.css';
         </style>
-		
+
 		{character ? (
-			<CharacterSEO 
+			<CharacterSEO
 				gameKey="silver-and-blood"
 				character={character}
 				customTitle={title}
@@ -59,21 +59,21 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 				<meta name="robots" content="index, follow" />
 			</>
 		)}
-		
+
 		<!-- Open Graph Meta Tags -->
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description || `Complete character guide for ${characterName} in Silver and Blood`} />
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
 		{characterImage && <meta property="og:image" content={characterImage} />}
-		
+
 		<!-- Twitter Card Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description || `Complete character guide for ${characterName} in Silver and Blood`} />
 		{characterImage && <meta name="twitter:image" content={characterImage} />}
-		
-		
+
+
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "Person",
@@ -93,7 +93,7 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 			}
 		})}>
 		</script>
-		
+
 		<slot name="head" />
 	</head>
 	<body class="sab-body">
@@ -103,7 +103,7 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 		<div class="bg-layer sab-bg-accent-1"></div>
 		<div class="bg-layer sab-bg-accent-2"></div>
 		<div class="bg-layer sab-bg-accent-3"></div>
-		
+
 		<div class="sab-content">
 			<Header />
 			<GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
@@ -111,7 +111,7 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 
 			<!-- Character Navigation -->
 			<CharacterNavigation currentCharacterSlug={characterSlug} />
-			
+
 			<div class="sab-container">
 				<main class="silver-and-blood-main" id="main-content">
 					<!-- Character Title Section -->
@@ -120,7 +120,7 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 							<h1 class="title-only-heading">
 								{characterName}
 							</h1>
-							
+
 							<DecorativeLines />
 						</section>
 					)}
@@ -141,8 +141,8 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 
 				</main>
 			</div>
-			
+
 			<Footer />
 		</div>
 	</body>
-</html> 
+</html>

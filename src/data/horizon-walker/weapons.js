@@ -11,7 +11,7 @@ import { fammeneData } from './characters/fammene.js';
 import { grideldaData } from './characters/gridelda.js';
 import { headlessKnightData } from './characters/headless-knight.js';
 import { inesData } from './characters/ines.js';
-import { juhaData } from './characters/jua.js';
+import { juhaData } from './characters/juha.js';
 import { kalinaData } from './characters/kalina.js';
 import { kalmaData } from './characters/kalma.js';
 import { kilonData } from './characters/kilon.js';

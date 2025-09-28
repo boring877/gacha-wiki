@@ -62,8 +62,10 @@
   .hw-character-database-title {
     color: var(--hw-primary-warm);
     margin: 0;
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.2;
   }
 
   .hw-character-database-subtitle {
@@ -71,13 +73,14 @@
     margin: 0.5rem 0 0 0;
     font-size: 0.9rem;
     font-style: italic;
+    font-weight: 500;
   }
 
   .hw-character-database-note {
     color: var(--hw-text-light);
     margin: 1rem 0 1.5rem 0;
     font-size: 0.95rem;
-    background: linear-gradient(135deg, var(--hw-bg-darker) 60%, var(--hw-bg-dark) 100%);
+    background: var(--hw-gradient-dark-darker-60-40);
     border: 1px solid var(--hw-border-muted);
     border-radius: 8px;
     padding: 0.75rem 1rem;
@@ -446,6 +449,7 @@
     justify-content: center;
     gap: var(--hw-spacing-md);
     min-height: 80px; /* Ensure consistent height */
+    flex-wrap: wrap;
   }
 
   .mobile-card-image {
@@ -484,12 +488,15 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    max-width: 100%;
   }
 
   /* Badge styling in header */
   .mobile-card-info .hw-badge,
   .mobile-card-info .cost-badge {
     align-self: center;
+    flex-shrink: 0;
+    min-width: fit-content;
   }
 
   /* Clean stats grid - now 5 stats in balanced layout */
@@ -523,7 +530,7 @@
 
   .stat-value {
     font-size: var(--hw-font-lg);
-    font-weight: 500;
+    font-weight: 600;
     color: var(--hw-text-light);
     font-family: var(--font-primary);
   }
@@ -534,26 +541,21 @@
     border: 2px solid var(--hw-accent-primary);
   }
 
-  /* Mobile Card Gameplay Tags Layout */
+  /* Mobile Card Gameplay Tags Layout - now matches individual character pages */
   .mobile-card-tags {
     margin-top: 1rem;
     padding-top: 0.75rem;
     border-top: 1px solid var(--hw-border-accent);
   }
 
-  .tags-label {
-    font-size: var(--hw-font-sm);
-    color: var(--hw-text-muted);
-    font-weight: 600;
-    margin-bottom: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .tags-container {
+  /* Tags container now uses individual character page styling */
+  .mobile-card-tags .tags-container {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
+    justify-content: flex-start; /* Changed from center to match individual pages */
+    align-items: center;
+    max-width: 100%;
   }
 
   /* ═══════════════════════════════════════════════════════════════════════ */
@@ -739,6 +741,20 @@
       max-width: 100%; /* Full width on small screens */
     }
 
+    /* Enhanced header badges for small mobile */
+    .header-badges {
+      gap: 0.25rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Badge touch optimization for small mobile */
+    .mobile-card-info .hw-badge,
+    .mobile-card-info .cost-badge {
+      flex-shrink: 1;
+      min-width: auto;
+    }
+
     /* Smaller font size for very long names on small screens */
     .mobile-card-info h3.character-name {
       font-size: clamp(0.9rem, 2.5vw, 1.1rem);
@@ -763,6 +779,18 @@
     /* Typography optimizations */
     .tags-label {
       font-size: var(--hw-font-xs);
+    }
+
+    /* Enhanced tags container for small mobile */
+    .mobile-card-tags .tags-container {
+      gap: 0.25rem;
+      justify-content: flex-start; /* Changed from center to match individual pages */
+    }
+
+    /* Mobile card tags spacing optimization */
+    .mobile-card-tags {
+      margin-top: 0.75rem;
+      padding-top: 0.5rem;
     }
 
     .hw-char-db-subtitle {

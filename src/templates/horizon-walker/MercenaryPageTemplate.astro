@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { getTagCategory } from '../../data/horizon-walker/characters.js';
 
 interface MercenaryStats {
   strength: number;
@@ -43,9 +44,8 @@ export interface Props {
 
 const { mercenaryData } = Astro.props;
 
-
 // Helper function to format stats
-const formatStat = (value) => {
+const formatStat = value => {
   if (value === null || value === undefined) {
     return '0';
   }
@@ -70,33 +70,6 @@ function getMercenaryDescription(usage: any): string {
   const truncated = description.substring(0, 150);
   const lastSpace = truncated.lastIndexOf(' ');
   return lastSpace > 0 ? truncated.substring(0, lastSpace) + '...' : truncated + '...';
-}
-
-// Helper function to get tag class based on tag content
-function getTagClass(tag: string): string {
-  const lowerTag = tag.toLowerCase();
-
-  // Team utility tags (support, buffs, team benefits)
-  if (lowerTag.includes('support') || lowerTag.includes('team') || lowerTag.includes('buff') ||
-      lowerTag.includes('ap recovery') || lowerTag.includes('hp recovery') ||
-      lowerTag.includes('trait') || lowerTag.includes('general')) {
-    return 'team-utility';
-  }
-
-  // Damage/offensive tags
-  if (lowerTag.includes('damage') || lowerTag.includes('charge') || lowerTag.includes('attack') ||
-      lowerTag.includes('offensive')) {
-    return 'damage-scaling';
-  }
-
-  // Self utility tags (defense, self-sustain, personal benefits)
-  if (lowerTag.includes('defense') || lowerTag.includes('self') || lowerTag.includes('machine') ||
-      lowerTag.includes('sustain') || lowerTag.includes('survival')) {
-    return 'self-utility';
-  }
-
-  // Default to team-utility
-  return 'team-utility';
 }
 ---
 
@@ -155,11 +128,26 @@ function getTagClass(tag: string): string {
         <!-- Core Stats Explanation -->
         <div class="core-stats-explanation">
           <div class="stat-explanation-grid">
-            <span><span class="stat-name">Strength:</span> <span class="stat-description">Increases Melee ATK</span></span>
-            <span><span class="stat-name">Technic:</span> <span class="stat-description">Increases Ranged ATK</span></span>
-            <span><span class="stat-name">Intelligence:</span> <span class="stat-description">Increases Magic ATK</span></span>
-            <span><span class="stat-name">Vitality:</span> <span class="stat-description">Increases Max HP</span></span>
-            <span><span class="stat-name">Agility:</span> <span class="stat-description">Increases evasion and AP Recovery</span></span>
+            <span
+              ><span class="stat-name">Strength:</span>
+              <span class="stat-description">Increases Melee ATK</span></span
+            >
+            <span
+              ><span class="stat-name">Technic:</span>
+              <span class="stat-description">Increases Ranged ATK</span></span
+            >
+            <span
+              ><span class="stat-name">Intelligence:</span>
+              <span class="stat-description">Increases Magic ATK</span></span
+            >
+            <span
+              ><span class="stat-name">Vitality:</span>
+              <span class="stat-description">Increases Max HP</span></span
+            >
+            <span
+              ><span class="stat-name">Agility:</span>
+              <span class="stat-description">Increases evasion and AP Recovery</span></span
+            >
           </div>
         </div>
 
@@ -338,16 +326,18 @@ function getTagClass(tag: string): string {
         </div>
 
         <!-- Mercenary Tags Section -->
-        {mercenaryData.tags && mercenaryData.tags.length > 0 && (
-          <div class="character-tags-container">
-            <div class="character-tags-label">Mercenary Tags</div>
-            <div class="character-tags-wrapper">
-              {mercenaryData.tags.map((tag) => (
-                <span class={`character-tag ${getTagClass(tag)}`}>{tag}</span>
-              ))}
+        {
+          mercenaryData.tags && mercenaryData.tags.length > 0 && (
+            <div class="character-tags-container">
+              <strong class="character-tags-label">Gameplay Tags</strong>
+              <div class="character-tags-wrapper">
+                {mercenaryData.tags.map(tag => (
+                  <span class={`character-tag ${getTagCategory(tag)}`}>{tag}</span>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        }
       </div>
     </div>
   </div>
@@ -358,72 +348,78 @@ function getTagClass(tag: string): string {
   <h2 class="section-title">Skills</h2>
   <p class="skills-explanation">All skills shown at maximum level</p>
 
-  {mercenaryData.skills && mercenaryData.skills.map((skill) => (
-    <div class={`skill-card ${skill.type === 'Passive' ? 'passive-skill' : ''} ${skill.skillClass || ''}`}>
-      <div class="skill-header">
-        <h3 class="skill-title">{skill.name}</h3>
-        <div class="skill-meta">
-          <span class="hw-badge" data-type={skill.type === 'Passive' ? 'Passive' : 'Skill'}>
-            {skill.type === 'Passive' ? 'Passive' : 'Skill'}
-          </span>
-          {skill.level && (
-            <span class="skill-level">Level: {skill.level}</span>
+  {
+    mercenaryData.skills &&
+      mercenaryData.skills.map(skill => (
+        <div
+          class={`skill-card ${skill.type === 'Passive' ? 'passive-skill' : ''} ${skill.skillClass || ''}`}
+        >
+          <div class="skill-header">
+            <h3 class="skill-title">{skill.name}</h3>
+            <div class="skill-meta">
+              <span class="hw-badge" data-type={skill.type === 'Passive' ? 'Passive' : 'Skill'}>
+                {skill.type === 'Passive' ? 'Passive' : 'Skill'}
+              </span>
+              {skill.level && <span class="skill-level">Level: {skill.level}</span>}
+              {skill.apCost && skill.apCost > 0 && (
+                <span class="skill-cost">AP Cost: {skill.apCost}</span>
+              )}
+              {skill.cooldown && skill.cooldown !== '0R' && (
+                <span class="skill-cooldown">Cooldown: {skill.cooldown}</span>
+              )}
+            </div>
+          </div>
+          <p class="skill-description">{skill.description}</p>
+          {skill.damage && (
+            <div class="skill-damage">
+              <span class="damage-label">Damage:</span>
+              <span class="damage-value">{skill.damage}</span>
+            </div>
           )}
-          {skill.apCost && skill.apCost > 0 && (
-            <span class="skill-cost">AP Cost: {skill.apCost}</span>
-          )}
-          {skill.cooldown && skill.cooldown !== '0R' && (
-            <span class="skill-cooldown">Cooldown: {skill.cooldown}</span>
+          {skill.tags && skill.tags.length > 0 && (
+            <div class="skill-tags">
+              {skill.tags.map(tag => (
+                <span class="skill-tag">{tag}</span>
+              ))}
+            </div>
           )}
         </div>
-      </div>
-      <p class="skill-description">{skill.description}</p>
-      {skill.damage && (
-        <div class="skill-damage">
-          <span class="damage-label">Damage:</span>
-          <span class="damage-value">{skill.damage}</span>
-        </div>
-      )}
-      {skill.tags && skill.tags.length > 0 && (
-        <div class="skill-tags">
-          {skill.tags.map((tag) => (
-            <span class="skill-tag">{tag}</span>
-          ))}
-        </div>
-      )}
-    </div>
-  ))}
+      ))
+  }
 </section>
 
 <!-- Unique Traits Section -->
-{mercenaryData.traits && (
-  <section class="content-section traits-section">
-    <h2 class="section-title">Unique Traits</h2>
-    <div class="trait-system-note">
-      <strong>Trait System:</strong> Unique and general traits can be obtained randomly in mercenaries. General traits only can be moved or removed. You want to get good unique traits for your mercenaries! Some mercenaries have 1 or more fixed unique traits.
-    </div>
-
-    {Object.values(mercenaryData.traits || {}).map((trait) => (
-      <div class="trait-card">
-        <div class="trait-header">
-          <h3 class="trait-title">{trait.name}</h3>
-          <span class="hw-badge" data-type="Trait">
-            Trait
-          </span>
-        </div>
-        <p class="trait-description">{trait.description}</p>
-        {trait.characteristics && (
-          <div class="trait-characteristics">
-            <strong>Characteristics:</strong> {trait.characteristics}
-          </div>
-        )}
-        {trait.notes && (
-          <div class="trait-notes">
-            <em>Note: {trait.notes}</em>
-          </div>
-        )}
+{
+  mercenaryData.traits && (
+    <section class="content-section traits-section">
+      <h2 class="section-title">Unique Traits</h2>
+      <div class="trait-system-note">
+        <strong>Trait System:</strong> Unique and general traits can be obtained randomly in
+        mercenaries. General traits only can be moved or removed. You want to get good unique traits
+        for your mercenaries! Some mercenaries have 1 or more fixed unique traits.
       </div>
-    ))}
-  </section>
-)}
 
+      {Object.values(mercenaryData.traits || {}).map(trait => (
+        <div class="trait-card">
+          <div class="trait-header">
+            <h3 class="trait-title">{trait.name}</h3>
+            <span class="hw-badge" data-type="Trait">
+              Trait
+            </span>
+          </div>
+          <p class="trait-description">{trait.description}</p>
+          {trait.characteristics && (
+            <div class="trait-characteristics">
+              <strong>Characteristics:</strong> {trait.characteristics}
+            </div>
+          )}
+          {trait.notes && (
+            <div class="trait-notes">
+              <em>Note: {trait.notes}</em>
+            </div>
+          )}
+        </div>
+      ))}
+    </section>
+  )
+}
