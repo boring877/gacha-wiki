@@ -17,6 +17,8 @@
     margin-bottom: 4rem;
     width: 100%;
     max-width: none;
+    contain: paint;
+    overflow-anchor: none;
   }
 
   .section-title {
@@ -78,6 +80,7 @@
     align-items: stretch;
     flex-wrap: wrap;
     justify-content: center;
+    contain: layout;
   }
 
   /* Character Hero Card */
@@ -204,6 +207,7 @@
   .character-stats-container {
     flex: 3;
     min-width: 400px;
+    contain: layout style;
   }
 
   .character-stats-box {
@@ -270,6 +274,7 @@
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1rem;
     margin-bottom: 1.5rem;
+    contain: layout style;
   }
 
   .character-stats-grid.core-stats {
@@ -387,6 +392,7 @@
     border-radius: 15px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
+    contain: layout style paint;
   }
 
   .skill-card.passive-skill {
@@ -463,6 +469,7 @@
     border-radius: 15px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
+    contain: layout style paint;
   }
 
   .trait-header {
@@ -602,6 +609,7 @@
     align-items: stretch;
     flex-wrap: wrap;
     justify-content: center;
+    contain: layout;
   }
 
   /* Weapon Image & Stats */
@@ -793,18 +801,22 @@
 
   /* Tablet breakpoint OR any touch device (covers iPads, Android tablets) */
   @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+    /* Mobile-specific touch optimizations */
     .character-overview-flex,
     .weapon-flex {
       flex-direction: column;
+      touch-action: manipulation;
     }
 
     .character-stats-container,
     .weapon-skills-container {
       min-width: unset;
+      touch-action: manipulation;
     }
 
     .content-section {
       padding: 2rem;
+      touch-action: pan-y;
     }
 
     .section-title {
@@ -826,6 +838,7 @@
   @media (max-width: 768px), ((hover: none) and (pointer: coarse) and (max-width: 900px)) {
     .content-section {
       padding: 1.5rem;
+      touch-action: pan-y;
     }
 
     .section-title {
@@ -836,6 +849,7 @@
     .character-overview-flex,
     .weapon-flex {
       gap: 1.5rem;
+      touch-action: manipulation;
     }
 
     .character-stats-grid {
@@ -991,6 +1005,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    contain: layout style;
   }
 
   /* Level 5 Bonus Card - matches skill-card style */
@@ -1062,6 +1077,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
+    contain: layout style;
   }
 
   /* Gift Cards - matches existing card style */
