@@ -21,6 +21,26 @@ const {
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
+<!-- Preload critical CSS files for faster loading -->
+<link
+  rel="preload"
+  href="/_astro/global.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+<link
+  rel="preload"
+  href="/_astro/hw-colors.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+<link
+  rel="preload"
+  href="/_astro/hw-layout.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+
 <!-- Self-hosted Font Loading - Optimized for Performance -->
 <style>
   /* Inter Font Family - Essential weights only */
@@ -85,7 +105,7 @@ const {
       -apple-system,
       BlinkMacSystemFont,
       sans-serif;
-    background-color: var(--bg-primary);
+    background: linear-gradient(135deg, #1a1e1a 0%, #2a2e2a 50%, #1a1e1a 100%);
     color: var(--text-primary);
     line-height: 1.6;
   }
