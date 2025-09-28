@@ -137,11 +137,11 @@ if (!game) return;
       isMenuOpen = !isMenuOpen;
 
       // Update aria-expanded
-      toggle.setAttribute('aria-expanded', isMenuOpen.toString());
+      toggle?.setAttribute('aria-expanded', isMenuOpen.toString());
 
       if (isMenuOpen) {
         // Open menu with proper height calculation
-        mobileMenu.classList.add('active');
+        mobileMenu?.classList.add('active');
         if (overlay) {
           overlay.classList.add('active');
         }
@@ -151,15 +151,15 @@ if (!game) return;
 
         // Set proper height to prevent infinite scroll
         const viewportHeight = window.innerHeight;
-        mobileMenu.style.maxHeight = `${viewportHeight}px`;
+        if (mobileMenu) {
+          mobileMenu.style.maxHeight = `${viewportHeight}px`;
+        }
 
         // Focus management for accessibility
-        if (closeBtn) {
-          closeBtn.focus();
-        }
+        closeBtn?.focus();
       } else {
         // Close menu
-        mobileMenu.classList.remove('active');
+        mobileMenu?.classList.remove('active');
         if (overlay) {
           overlay.classList.remove('active');
         }
@@ -168,7 +168,7 @@ if (!game) return;
         document.body.style.overflow = '';
 
         // Return focus to toggle button
-        toggle.focus();
+        toggle?.focus();
       }
     }
 
@@ -191,7 +191,7 @@ if (!game) return;
       if (
         target === mobileMenu ||
         target === overlay ||
-        (target && target.classList && target.classList.contains('mobile-link'))
+        (target instanceof HTMLElement && target.classList.contains('mobile-link'))
       ) {
         closeMenu();
       }
@@ -210,7 +210,7 @@ if (!game) return;
     });
 
     // Handle window resize
-    let resizeTimeout;
+    let resizeTimeout: NodeJS.Timeout | undefined;
     window.addEventListener('resize', function () {
       if (resizeTimeout) {
         clearTimeout(resizeTimeout);
@@ -220,7 +220,7 @@ if (!game) return;
           closeMenu();
         }
         // Update height on resize if menu is open
-        if (isMenuOpen) {
+        if (isMenuOpen && mobileMenu) {
           const viewportHeight = window.innerHeight;
           mobileMenu.style.maxHeight = `${viewportHeight}px`;
         }
@@ -230,7 +230,7 @@ if (!game) return;
     // Enhanced prefetching for mobile navigation
     const prefetchedLinks = new Set();
 
-    function prefetchPage(url) {
+    function prefetchPage(url: string) {
       if (!url || prefetchedLinks.has(url)) return;
 
       const existing = document.querySelector(`link[href="${url}"]`);
@@ -256,7 +256,7 @@ if (!game) return;
       'touchstart',
       function (event) {
         const target = event.target;
-        if (target && target.tagName === 'A') {
+        if (target instanceof HTMLAnchorElement) {
           const href = target.href;
           prefetchPage(href);
         }
