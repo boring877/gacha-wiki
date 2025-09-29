@@ -74,7 +74,7 @@ const rawMinEunSolData = {
     name: 'The Black Idol',
     type: 'Mana Shard',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Min_Eun_sol_WP.jpg',
+    image: 'Min_Eun_sol_WP.jpg',
     stats: {
       weaponMagicAtk: '77.0',
       maxHpBonus: '+49.0%',

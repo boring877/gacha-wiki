@@ -20,13 +20,13 @@
 
 /* Page title with standardized styling */
 .page-title {
-  font-family: 'Space Grotesk', sans-serif; /* Standardized display font */
+  font-family: var(--font-display); /* Use display font from typography system */
   font-size: var(--text-4xl); /* Standardized responsive typography */
-  font-weight: 900; /* Standardized maximum weight */
+  font-weight: var(--font-bold); /* Use bold weight from typography system */
   color: var(--amber-glow); /* Amber color for title */
   margin: 0 0 2rem 0; /* Bottom margin for spacing */
   text-align: center; /* Center alignment */
-  line-height: 1.1; /* Consistent line height */
+  line-height: var(--leading-tight); /* Use leading from typography system */
 }
 
 /* === GAMES SECTION === */
@@ -120,9 +120,9 @@
 
 /* Game title with status badge layout */
 .game-title {
-  font-family: 'Space Grotesk', sans-serif; /* Display font for prominence */
-  font-size: 1.25rem; /* Large size for hierarchy */
-  font-weight: 700; /* Bold weight for emphasis */
+  font-family: var(--font-display); /* Use display font from typography system */
+  font-size: var(--text-xl); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: var(--text-inverse); /* White text for dark theme */
   margin: 0 0 0.5rem 0; /* Bottom margin only */
   display: flex; /* Flexbox for badge layout */
@@ -135,26 +135,29 @@
   color: white;
   padding: 2px 8px;
   border-radius: 8px;
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: var(--text-xs); /* Use size from typography system */
+  font-weight: var(--font-medium); /* Use medium weight from typography system */
 }
 
 .game-description {
   color: var(--neutral-300); /* Light gray for description */
-  font-size: 0.9rem;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
   margin: 0 0 0.5rem 0;
-  line-height: 1.4;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .game-sections {
   color: var(--neutral-400); /* Muted text for sections */
-  font-size: 0.8rem;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-xs); /* Use size from typography system */
   font-style: italic;
   margin: 0;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .game-arrow {
-  font-size: 1.5rem;
+  font-size: var(--text-2xl); /* Use size from typography system */
   color: var(--amber-glow);
   flex-shrink: 0;
 }
@@ -167,11 +170,11 @@
   }
 
   .page-title {
-    font-size: 2rem;
+    font-size: var(--text-3xl); /* Use size from typography system */
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: var(--text-3xl); /* Use size from typography system */
   }
 
   .game-card {
@@ -188,26 +191,26 @@
   }
 
   .game-title {
-    font-size: 1.2rem;
+    font-size: var(--text-lg); /* Use size from typography system */
   }
 
   .game-description {
-    font-size: 0.8rem;
+    font-size: var(--text-xs); /* Use size from typography system */
   }
 
   .game-arrow {
-    font-size: 1.4rem;
+    font-size: var(--text-xl); /* Use size from typography system */
   }
 }
 
 /* Mobile phone breakpoint optimizations */
 @media (max-width: 480px) {
   .page-title {
-    font-size: 1.8rem;
+    font-size: var(--text-2xl); /* Use size from typography system */
   }
 
   .hero-title {
-    font-size: 1.5rem;
+    font-size: var(--text-xl); /* Use size from typography system */
   }
 
   .main-content {
@@ -228,15 +231,15 @@
   }
 
   .game-title {
-    font-size: 1.1rem;
+    font-size: var(--text-base); /* Use size from typography system */
   }
 
   .game-description {
-    font-size: 0.75rem;
+    font-size: var(--text-xs); /* Use size from typography system */
   }
 
   .game-arrow {
-    font-size: 1.3rem;
+    font-size: var(--text-lg); /* Use size from typography system */
   }
 }
 

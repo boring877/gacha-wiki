@@ -77,7 +77,7 @@ const rawKalinaData = {
     name: 'Tyrant Edge',
     type: 'EX Twin Swords',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Kalina_WP.jpg',
+    image: 'Kalina_WP.jpg',
     stats: {
       weaponMeleeAtk: '91.0',
       critRateBonus: '+35.0%',

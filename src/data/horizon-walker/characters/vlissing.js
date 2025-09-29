@@ -163,7 +163,7 @@ const rawVlissingData = {
     name: 'EX Staff - Atra-hasis',
     type: 'Staff',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Vlissing_WP.jpg',
+    image: 'Vlissing_WP.jpg',
     stats: {
       weaponMagicAtk: '91.0',
       magicAtkBonus: '+35.0%',

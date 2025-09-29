@@ -11,9 +11,6 @@ export const goliathMercenary = {
   rarity: 'B',
   cost: 7,
 
-  // Images
-  image: '/images/games/horizon-walker/characters/Goliath.jpg',
-
   // Basic Stats (at max level)
   stats: {
     // Basic Stats

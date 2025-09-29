@@ -177,7 +177,7 @@ const rawBergaData = {
     name: 'EX Torturas - Crimson Veil Torturas',
     type: 'Torturas',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Berga_WP.jpg',
+    image: 'Berga_WP.jpg',
     stats: {
       weaponMeleeAtk: '77.0',
       maxHpBonus: '+49.0%',

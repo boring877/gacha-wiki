@@ -37,15 +37,15 @@
   color: #1a1a1a; /* Dark text for contrast on bright background */
   text-decoration: none; /* Remove link underline */
   font-family: var(--font-primary); /* Same font family */
-  font-weight: 700; /* Bold for emphasis */
-  font-size: 1.2rem; /* Larger for prominence */
+  font-weight: var(--font-bold); /* Bold for emphasis */
+  font-size: var(--text-lg); /* Larger for prominence */
   backdrop-filter: blur(12px); /* Glass effect */
 }
 
 /* === CTA BUTTON CONTENT === */
 /* Call-to-action text styling */
 .cta-text {
-  font-weight: 700; /* Bold weight for emphasis */
+  font-weight: var(--font-bold); /* Bold weight for emphasis */
 }
 
 /* Call-to-action icon */

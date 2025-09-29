@@ -11,9 +11,6 @@ export const imperialShieldbearerMercenary = {
   rarity: 'B',
   cost: 4,
 
-  // Images
-  image: '/images/games/horizon-walker/characters/Imperial_Shieldbearer_Mercenary.jpg',
-
   // Basic Stats (at max level)
   stats: {
     // Basic Stats

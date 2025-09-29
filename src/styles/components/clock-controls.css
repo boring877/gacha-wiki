@@ -31,37 +31,40 @@
 
 /* Timer primary label - main heading for timer section */
 .timer-main-label {
-  font-family: 'Space Grotesk', sans-serif; /* Display font for prominence */
-  font-size: 1.1rem; /* Slightly larger for hierarchy */
-  font-weight: 600; /* Semibold for emphasis */
+  font-family: var(--font-display); /* Display font for prominence */
+  font-size: var(--text-lg); /* Slightly larger for hierarchy */
+  font-weight: var(--font-semibold); /* Semibold for emphasis */
   color: var(--text-inverse); /* White text on dark background */
   margin-bottom: 0.75rem; /* Space below heading */
   text-transform: uppercase; /* Uppercase for label styling */
-  letter-spacing: 0.05em; /* Wide tracking for emphasis */
+  letter-spacing: var(--tracking-normal); /* Wide tracking for emphasis */
+  line-height: var(--leading-normal);
 }
 
 /* Timer details text - descriptive information about timer */
 .timer-details {
-  font-family: 'Space Grotesk', sans-serif; /* Consistent font family */
-  font-size: 0.9rem; /* Slightly smaller for secondary info */
-  font-weight: 500; /* Medium weight for readability */
+  font-family: var(--font-primary); /* Consistent font family */
+  font-size: var(--text-base); /* Slightly smaller for secondary info */
+  font-weight: var(--font-medium); /* Medium weight for readability */
   color: var(--amber-glow); /* Amber color for visual interest */
   margin-bottom: 0.75rem; /* Space below details */
-  line-height: 1.5; /* Comfortable reading line height */
+  line-height: var(--leading-relaxed); /* Comfortable reading line height */
 }
 
 /* Timer reset time display - technical time information */
 .timer-reset-time {
-  font-family: 'Courier New', monospace; /* Monospace for technical/time data */
-  font-size: 0.85rem; /* Small size for metadata */
-  font-weight: 600; /* Semibold for clarity */
+  font-family: var(--font-mono); /* Monospace for technical/time data */
+  font-size: var(--text-sm); /* Small size for metadata */
+  font-weight: var(--font-semibold); /* Semibold for clarity */
   color: rgba(255, 255, 255, 0.7); /* Semi-transparent white for subtlety */
+  line-height: var(--leading-normal);
 }
 
 /* Reset time display value - highlighted time information */
 #resetTimeDisplay {
   color: var(--teal-crystal); /* Teal accent for important time data */
-  font-weight: 700; /* Bold for emphasis and clarity */
+  font-weight: var(--font-bold); /* Bold for emphasis and clarity */
+  line-height: var(--leading-normal);
 }
 
 /* === CLOCK NAVIGATION === */
@@ -136,10 +139,11 @@
   border-radius: 20px; /* Rounded pill shape */
   padding: 0.75rem 1.25rem; /* Comfortable internal spacing */
   color: var(--text-inverse); /* White text color */
-  font-family: 'Space Grotesk', sans-serif; /* Display font for consistency */
-  font-size: 0.85rem; /* Small size for secondary control */
-  font-weight: 500; /* Medium weight for readability */
+  font-family: var(--font-primary); /* Display font for consistency */
+  font-size: var(--text-sm); /* Small size for secondary control */
+  font-weight: var(--font-medium); /* Medium weight for readability */
   cursor: pointer; /* Pointer cursor for interaction */
+  line-height: var(--leading-normal);
 }
 
 /* Rotation toggle active state - when auto-rotation is enabled */
@@ -184,13 +188,14 @@
 
 /* Open source link text styling */
 .clock-opensource-text {
-  font-family: 'Space Grotesk', sans-serif; /* Display font for consistency */
-  font-size: 0.75rem; /* Small size for compact footer */
-  font-weight: 600; /* Semibold for emphasis */
+  font-family: var(--font-primary); /* Display font for consistency */
+  font-size: var(--text-xs); /* Small size for compact footer */
+  font-weight: var(--font-semibold); /* Semibold for emphasis */
   color: var(--text-inverse); /* White text color */
   text-transform: uppercase; /* Uppercase for label styling */
-  letter-spacing: 0.05em; /* Wide tracking for emphasis */
+  letter-spacing: var(--tracking-normal); /* Wide tracking for emphasis */
   white-space: nowrap; /* Prevent text wrapping */
+  line-height: var(--leading-normal);
 }
 
 /* GitHub star count container - pill-shaped badge */
@@ -211,10 +216,11 @@
 
 /* GitHub star count number styling */
 .clock-star-count {
-  font-family: 'Space Grotesk', sans-serif; /* Display font for consistency */
-  font-size: 0.65rem; /* Very small size for compact badge */
-  font-weight: 600; /* Semibold for clarity */
+  font-family: var(--font-primary); /* Display font for consistency */
+  font-size: var(--text-2xs); /* Very small size for compact badge */
+  font-weight: var(--font-semibold); /* Semibold for clarity */
   color: var(--amber-glow); /* Amber color matching theme */
   text-transform: uppercase; /* Uppercase for consistency */
-  letter-spacing: 0.02em; /* Slight tracking for readability */
+  letter-spacing: var(--tracking-tight); /* Slight tracking for readability */
+  line-height: var(--leading-normal);
 }

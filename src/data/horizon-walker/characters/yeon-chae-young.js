@@ -115,7 +115,7 @@ const rawYeonChaeYoungData = {
     name: 'EX Dual Pistols - DMP-9 Prototype',
     type: 'EX Dual Pistols',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Yeon_Chae-Young_WP.jpg',
+    image: 'Yeon_Chae-Young_WP.jpg',
     stats: {
       weaponRangedAtk: '91.0',
       rangedAtkBonus: '+35.0%',

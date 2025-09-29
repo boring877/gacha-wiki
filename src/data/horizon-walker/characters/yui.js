@@ -180,7 +180,7 @@ const rawYuiData = {
     name: 'EX Dual Pistols - Phantom Stiletto',
     type: 'Dual Pistols',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Yui_WP.jpg',
+    image: 'Yui_WP.jpg',
     stats: {
       weaponRangedAtk: '77.0',
       critRateBonus: '+49.0%',

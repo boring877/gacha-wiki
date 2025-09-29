@@ -19,8 +19,8 @@ const nameMap = JSON.parse(fs.readFileSync(nameMapPath, 'utf8'));
 const baseDir = path.join(__dirname, '..');
 const charDataDir = path.join(baseDir, 'data/horizon-walker/characters');
 const charPagesDir = path.join(baseDir, 'pages/guides/horizon-walker/characters');
-const imagesDir = path.join(baseDir, 'public/images/games/horizon-walker/characters');
-const weaponsDir = path.join(baseDir, 'public/images/games/horizon-walker/weapons');
+const imagesDir = path.join(baseDir, 'src/assets/images/games/horizon-walker/characters');
+const weaponsDir = path.join(baseDir, 'src/assets/images/games/horizon-walker/weapons');
 
 // Validation results
 const results = {

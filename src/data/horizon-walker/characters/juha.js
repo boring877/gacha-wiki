@@ -178,7 +178,7 @@ const rawJuhaData = {
   // Weapon
   weapon: {
     name: 'EX Rifle - The Wings of Glory',
-    image: '/images/games/horizon-walker/weapons/Juha_WP.jpg',
+    image: 'Juha_WP.jpg',
     rarity: 'EX',
     type: 'Rifle',
     stats: {

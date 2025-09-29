@@ -163,7 +163,7 @@ const nariData = {
   // Character Weapon
   weapon: {
     name: 'EX Rifle - Zamiel',
-    image: '/images/games/horizon-walker/weapons/Nari_WP.jpg',
+    image: 'Nari_WP.jpg',
     rarity: 'EX',
     type: 'Rifle',
     stats: {

@@ -1,0 +1,142 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all character images once
+import ArahaImg from '../../assets/images/games/horizon-walker/characters/Araha.jpg';
+import BellaImg from '../../assets/images/games/horizon-walker/characters/Bella.jpg';
+import BergaImg from '../../assets/images/games/horizon-walker/characters/Berga.jpg';
+import CaniskImg from '../../assets/images/games/horizon-walker/characters/Canisk.jpg';
+import CoraImg from '../../assets/images/games/horizon-walker/characters/Cora.jpg';
+import DeliaImg from '../../assets/images/games/horizon-walker/characters/Delia.jpg';
+import EfreetiImg from '../../assets/images/games/horizon-walker/characters/Efreeti.jpg';
+import ErnesteImg from '../../assets/images/games/horizon-walker/characters/Erneste.jpg';
+import EveretteImg from '../../assets/images/games/horizon-walker/characters/Everette.jpg';
+import FammeneImg from '../../assets/images/games/horizon-walker/characters/Fammene.jpg';
+import GrideldaImg from '../../assets/images/games/horizon-walker/characters/Gridelda.jpg';
+import GulamImg from '../../assets/images/games/horizon-walker/characters/Gulam.jpg';
+import GulsniImg from '../../assets/images/games/horizon-walker/characters/Gulsni.jpg';
+import HeadlessKnightImg from '../../assets/images/games/horizon-walker/characters/Headless_Knight.jpg';
+import InesImg from '../../assets/images/games/horizon-walker/characters/Ines.jpg';
+import JuhaImg from '../../assets/images/games/horizon-walker/characters/Juha.jpg';
+import KalinaImg from '../../assets/images/games/horizon-walker/characters/Kalina.jpg';
+import KalmaImg from '../../assets/images/games/horizon-walker/characters/Kalma.jpg';
+import KilonImg from '../../assets/images/games/horizon-walker/characters/Kilon.jpg';
+import KimGaYoungImg from '../../assets/images/games/horizon-walker/characters/kim_Ga_young.jpg';
+import KorabiImg from '../../assets/images/games/horizon-walker/characters/Korabi.jpg';
+import LisandriaImg from '../../assets/images/games/horizon-walker/characters/Lisandria.jpg';
+import LuiseImg from '../../assets/images/games/horizon-walker/characters/Luise.jpg';
+import MahariImg from '../../assets/images/games/horizon-walker/characters/Mahari.jpg';
+import MarhimImg from '../../assets/images/games/horizon-walker/characters/Marhim.jpg';
+import MatrothoImg from '../../assets/images/games/horizon-walker/characters/Matrotho.jpg';
+import MinEunSolImg from '../../assets/images/games/horizon-walker/characters/Min_Eun_sol.jpg';
+import NariImg from '../../assets/images/games/horizon-walker/characters/Nari.jpg';
+import NikaImg from '../../assets/images/games/horizon-walker/characters/Nika.jpg';
+import NonohaImg from '../../assets/images/games/horizon-walker/characters/Nonoha.jpg';
+import NymsetImg from '../../assets/images/games/horizon-walker/characters/Nymset.jpg';
+import OliviaImg from '../../assets/images/games/horizon-walker/characters/Olivia.jpg';
+import OslaImg from '../../assets/images/games/horizon-walker/characters/Osla.jpg';
+import PantheriImg from '../../assets/images/games/horizon-walker/characters/Pantheri.jpg';
+import PlatinaImg from '../../assets/images/games/horizon-walker/characters/Platina.jpg';
+import ReDeDaImg from '../../assets/images/games/horizon-walker/characters/Re_De_Da.jpg';
+import RhasadinaImg from '../../assets/images/games/horizon-walker/characters/Rhasadina.jpg';
+import SamarikaImg from '../../assets/images/games/horizon-walker/characters/Samarika.jpg';
+import SoJooHeeImg from '../../assets/images/games/horizon-walker/characters/So_Joo_hee.jpg';
+import TxManticoreImg from '../../assets/images/games/horizon-walker/characters/TX_Manticore.jpg';
+import ValetaImg from '../../assets/images/games/horizon-walker/characters/Valeta.jpg';
+import VlissingImg from '../../assets/images/games/horizon-walker/characters/Vlissing.jpg';
+import YeonChaeYoungImg from '../../assets/images/games/horizon-walker/characters/Yeon_Chae-Young.jpg';
+import YeonwooImg from '../../assets/images/games/horizon-walker/characters/Yeonwoo.jpg';
+import YuiImg from '../../assets/images/games/horizon-walker/characters/Yui.jpg';
+import YvonnaImg from '../../assets/images/games/horizon-walker/characters/Yvonna.jpg';
+
+// Centralized character image mapping
+const characterImageMap = {
+  'Araha.jpg': ArahaImg,
+  'Bella.jpg': BellaImg,
+  'Berga.jpg': BergaImg,
+  'Canisk.jpg': CaniskImg,
+  'Cora.jpg': CoraImg,
+  'Delia.jpg': DeliaImg,
+  'Efreeti.jpg': EfreetiImg,
+  'Erneste.jpg': ErnesteImg,
+  'Everette.jpg': EveretteImg,
+  'Fammene.jpg': FammeneImg,
+  'Gridelda.jpg': GrideldaImg,
+  'Gulam.jpg': GulamImg,
+  'Gulsni.jpg': GulsniImg,
+  'Headless_Knight.jpg': HeadlessKnightImg,
+  'Ines.jpg': InesImg,
+  'Juha.jpg': JuhaImg,
+  'Kalina.jpg': KalinaImg,
+  'Kalma.jpg': KalmaImg,
+  'Kilon.jpg': KilonImg,
+  'kim_Ga_young.jpg': KimGaYoungImg,
+  'Korabi.jpg': KorabiImg,
+  'Lisandria.jpg': LisandriaImg,
+  'Luise.jpg': LuiseImg,
+  'Mahari.jpg': MahariImg,
+  'Marhim.jpg': MarhimImg,
+  'Matrotho.jpg': MatrothoImg,
+  'Min_Eun_sol.jpg': MinEunSolImg,
+  'Nari.jpg': NariImg,
+  'Nika.jpg': NikaImg,
+  'Nonoha.jpg': NonohaImg,
+  'Nymset.jpg': NymsetImg,
+  'Olivia.jpg': OliviaImg,
+  'Osla.jpg': OslaImg,
+  'Pantheri.jpg': PantheriImg,
+  'Platina.jpg': PlatinaImg,
+  'Re_De_Da.jpg': ReDeDaImg,
+  'Rhasadina.jpg': RhasadinaImg,
+  'Samarika.jpg': SamarikaImg,
+  'So_Joo_hee.jpg': SoJooHeeImg,
+  'TX_Manticore.jpg': TxManticoreImg,
+  'Valeta.jpg': ValetaImg,
+  'Vlissing.jpg': VlissingImg,
+  'Yeon_Chae-Young.jpg': YeonChaeYoungImg,
+  'Yeonwoo.jpg': YeonwooImg,
+  'Yui.jpg': YuiImg,
+  'Yvonna.jpg': YvonnaImg,
+};
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 100,
+  height = 100,
+  class: className,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Get the imported image object from the map
+// Handle both with and without extension
+let imageKey = imageName;
+if (!imageKey.includes('.')) {
+  imageKey = `${imageKey}.jpg`;
+}
+const imageSrc = characterImageMap[imageKey];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

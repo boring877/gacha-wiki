@@ -49,21 +49,22 @@
 }
 
 .page-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--text-4xl);
-  font-weight: 900;
+  font-family: var(--font-display); /* Use display font from typography system */
+  font-size: var(--text-4xl); /* Use size from typography system */
+  font-weight: var(--font-bold); /* Use bold weight from typography system */
   color: var(--amber-glow);
   margin: 0 0 1rem 0;
   text-align: center;
-  line-height: 1.1;
+  line-height: var(--leading-tight); /* Use leading from typography system */
 }
 
 .page-subtitle {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-lg); /* Use size from typography system */
+  font-weight: var(--font-medium); /* Use medium weight from typography system */
   color: rgba(255, 255, 255, 0.7);
   margin: 0 0 2rem 0;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 /* Wallpapers Section */
@@ -98,24 +99,25 @@
 }
 
 .wallpaper-card-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-family: var(--font-display); /* Use display font from typography system */
+  font-size: var(--text-2xl); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: var(--amber-glow);
   margin: 0;
   background: linear-gradient(135deg, #e8a547, #ff7b7b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: var(--leading-tight); /* Use leading from typography system */
 }
 
 .wallpaper-card-description {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-base); /* Use size from typography system */
+  font-weight: var(--font-normal); /* Use normal weight from typography system */
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
-  line-height: 1.5;
+  line-height: var(--leading-normal); /* Use leading from typography system */
   max-width: 400px;
 }
 
@@ -147,10 +149,11 @@
 }
 
 .download-text {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-base); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: var(--amber-glow);
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .coming-soon .download-text {
@@ -172,20 +175,23 @@
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: var(--text-sm); /* Use size from typography system */
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .file-metadata {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.75rem;
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-primary); /* Use primary font from typography system */
   color: rgba(255, 255, 255, 0.7);
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .file-size,
 .file-date {
-  font-weight: 600;
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
 }
 
 .hash-section {
@@ -200,9 +206,10 @@
 }
 
 .hash-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: rgba(255, 183, 77, 0.9);
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .hash-toggle {
@@ -210,11 +217,12 @@
   border: 1px solid rgba(255, 183, 77, 0.2);
   border-radius: 4px;
   padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--text-xs); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: var(--amber-glow);
   cursor: pointer;
   transition: all 0.2s ease;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .hash-toggle:hover {
@@ -233,21 +241,23 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   font-family: 'Courier New', monospace;
-  font-size: 0.75rem;
+  font-size: var(--text-xs); /* Use size from typography system */
   color: rgba(255, 255, 255, 0.9);
   word-break: break-all;
-  line-height: 1.2;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .verification-note {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-primary); /* Use primary font from typography system */
   color: rgba(255, 255, 255, 0.6);
   font-style: italic;
   text-align: center;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .verification-note small {
-  font-size: 0.75rem;
+  font-size: var(--text-xs); /* Use size from typography system */
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 /* Seeding Community Note */
@@ -257,15 +267,17 @@
   background: rgba(0, 172, 193, 0.08);
   border: 1px solid rgba(0, 172, 193, 0.15);
   border-radius: 6px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.8rem;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
   color: rgba(255, 255, 255, 0.8);
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .seeding-note p {
   margin: 0 0 0.5rem 0;
-  font-weight: 600;
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: rgba(0, 172, 193, 0.9);
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .seeding-note ul {
@@ -276,7 +288,7 @@
 
 .seeding-note li {
   margin-bottom: 0.25rem;
-  line-height: 1.4;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 /* File Verification Instructions */
@@ -295,12 +307,13 @@
 }
 
 .verification-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-family: var(--font-display); /* Use display font from typography system */
+  font-size: var(--text-xl); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: var(--amber-glow);
   margin: 0 0 1.5rem 0;
   text-align: center;
+  line-height: var(--leading-tight); /* Use leading from typography system */
 }
 
 .verification-steps {
@@ -316,19 +329,20 @@
 }
 
 .verification-step h4 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: rgba(255, 183, 77, 0.9);
   margin: 0 0 0.5rem 0;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .verification-step p {
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.85rem;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
   color: rgba(255, 255, 255, 0.8);
   margin: 0.5rem 0 0 0;
-  line-height: 1.4;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .verification-step code {
@@ -338,10 +352,11 @@
   border-radius: 4px;
   padding: 0.5rem;
   font-family: 'Courier New', monospace;
-  font-size: 0.8rem;
+  font-size: var(--text-sm); /* Use size from typography system */
   color: rgba(255, 255, 255, 0.9);
   margin: 0.5rem 0;
   word-break: break-all;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .verification-warning {
@@ -349,14 +364,16 @@
   border: 1px solid rgba(255, 107, 107, 0.2);
   border-radius: 6px;
   padding: 0.75rem;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.85rem;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .verification-warning strong {
   color: #ff6b6b;
+  font-weight: var(--font-bold); /* Use bold weight from typography system */
 }
 
 /* Games List Card */
@@ -376,15 +393,16 @@
 }
 
 .games-list-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: var(--font-display); /* Use display font from typography system */
+  font-size: var(--text-2xl); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: var(--amber-glow);
   margin: 0 0 1.5rem 0;
   background: linear-gradient(135deg, #e8a547, #ff7b7b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: var(--leading-tight); /* Use leading from typography system */
 }
 
 .games-grid {
@@ -395,46 +413,49 @@
 }
 
 .game-name {
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  font-weight: var(--font-medium); /* Use medium weight from typography system */
   color: rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.05);
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .games-list-note {
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  font-weight: var(--font-normal); /* Use normal weight from typography system */
   color: rgba(255, 255, 255, 0.6);
   margin: 0 0 1rem 0;
   font-style: italic;
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 .collection-info {
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: rgba(255, 183, 77, 0.9);
   margin: 0;
   padding: 0.5rem;
   background: rgba(255, 183, 77, 0.08);
   border-radius: 8px;
   border: 1px solid rgba(255, 183, 77, 0.15);
+  line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .page-title {
-    font-size: 2.5rem;
+    font-size: var(--text-3xl); /* Use size from typography system */
   }
 
   .page-subtitle {
-    font-size: 1rem;
+    font-size: var(--text-base); /* Use size from typography system */
   }
 
   .wallpapers-landing-container {
@@ -451,11 +472,11 @@
   }
 
   .wallpaper-card-title {
-    font-size: 1.5rem;
+    font-size: var(--text-xl); /* Use size from typography system */
   }
 
   .wallpaper-card-description {
-    font-size: 0.9rem;
+    font-size: var(--text-sm); /* Use size from typography system */
   }
 
   .download-button {
@@ -471,7 +492,7 @@
   }
 
   .games-list-title {
-    font-size: 1.3rem;
+    font-size: var(--text-xl); /* Use size from typography system */
   }
 
   .games-grid {
@@ -480,14 +501,14 @@
   }
 
   .game-name {
-    font-size: 0.8rem;
+    font-size: var(--text-xs); /* Use size from typography system */
     padding: 0.4rem 0.6rem;
   }
 }
 
 @media (max-width: 480px) {
   .page-title {
-    font-size: 2rem;
+    font-size: var(--text-2xl); /* Use size from typography system */
   }
 
   .wallpapers-landing-page {
@@ -503,12 +524,12 @@
   }
 
   .wallpaper-card-title {
-    font-size: 1.3rem;
+    font-size: var(--text-lg); /* Use size from typography system */
   }
 
   .wallpaper-card-description {
-    font-size: 0.85rem;
-    line-height: 1.6;
+    font-size: var(--text-xs); /* Use size from typography system */
+    line-height: var(--leading-relaxed); /* Use leading from typography system */
   }
 
   .download-button {
@@ -517,7 +538,7 @@
   }
 
   .download-text {
-    font-size: 0.9rem;
+    font-size: var(--text-sm); /* Use size from typography system */
   }
 
   .download-links {
@@ -529,7 +550,7 @@
   }
 
   .games-list-title {
-    font-size: 1.2rem;
+    font-size: var(--text-lg); /* Use size from typography system */
   }
 
   .games-grid {
@@ -538,11 +559,11 @@
   }
 
   .game-name {
-    font-size: 0.75rem;
+    font-size: var(--text-xs); /* Use size from typography system */
     padding: 0.35rem 0.5rem;
   }
 
   .games-list-note {
-    font-size: 0.8rem;
+    font-size: var(--text-xs); /* Use size from typography system */
   }
 }

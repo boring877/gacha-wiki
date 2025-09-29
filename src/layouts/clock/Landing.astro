@@ -9,13 +9,13 @@ import GeneralSEO from '../../components/GeneralSEO.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import SpeedInsights from '../../components/SpeedInsights.astro';
+import { Image } from 'astro:assets';
 
 // Import CSS files
 import '../../styles/colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/clock/landing.css';
-import { Image } from 'astro:assets';
 
 export interface Props {
   title: string;
@@ -90,18 +90,30 @@ const { title, description, games } = Astro.props;
                   <article class="game-card" data-game-id={game.id}>
                     <a href={game.url} class="game-card-link">
                       <div class="game-card-image-container">
-                        <Image
-                          class="game-card-image"
-                          src={game.image}
-                          alt={game.name}
-                          loading={index === 0 ? 'eager' : 'lazy'}
-                          fetchpriority={index === 0 ? 'high' : 'auto'}
-                          width={400}
-                          height={225}
-                          sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
-                          format="webp"
-                          quality={75}
-                        />
+                        {
+                          // Check if the image is an imported Astro Image object or a string path
+                          typeof game.image === 'object' ? (
+                            <Image
+                              class="game-card-image"
+                              src={game.image}
+                              alt={game.name}
+                              loading={index === 0 ? 'eager' : 'lazy'}
+                              fetchpriority={index === 0 ? 'high' : 'auto'}
+                              width="600"
+                              height="338"
+                            />
+                          ) : (
+                            <img
+                              class="game-card-image"
+                              src={game.image}
+                              alt={game.name}
+                              loading={index === 0 ? 'eager' : 'lazy'}
+                              fetchpriority={index === 0 ? 'high' : 'auto'}
+                              width="600"
+                              height="338"
+                            />
+                          )
+                        }
                       </div>
                       <div class="game-card-content">
                         <h3 class="game-card-title">{game.name}</h3>

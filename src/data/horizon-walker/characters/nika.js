@@ -177,7 +177,7 @@ const rawNikaData = {
     name: 'EX Twin Swords - The Ninth Bite',
     type: 'Twin Swords',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Nika_WP.jpg',
+    image: 'Nika_WP.jpg',
     stats: {
       weaponMeleeAtk: '77.0',
       accuracyBonus: '+98.0%',

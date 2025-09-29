@@ -201,7 +201,7 @@ const rawHeadlessKnightData = {
     name: 'EX Arcane Orb - The Cranium of the Defeated',
     type: 'Arcane Orb',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Headless_Knight_WP.jpg',
+    image: 'Headless_Knight_WP.jpg',
     stats: {
       weaponMeleeAtk: '70.0',
       weaponMagicAtk: '70.0',

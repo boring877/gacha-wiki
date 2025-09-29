@@ -167,7 +167,7 @@ const rawInesData = {
     name: 'EX Two-handed Sword - The Severer of Fate',
     type: 'Two-handed Sword',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Ines_WP.jpg',
+    image: 'Ines_WP.jpg',
     stats: {
       weaponMeleeAtk: '91.0',
       critDmgBonus: '+70.0%',

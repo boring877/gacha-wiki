@@ -1,14 +1,20 @@
 ---
 import HorizonWalkerClockLayout from '../../layouts/clock/HorizonWalker.astro';
 import { horizonWalkerConfig } from '../../data/clock/horizon-walker.js';
+import GameIcon from '../../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 
 // Page metadata
 const title = 'Horizon Walker Clock - Server Reset Timer | GachaWiki';
 const description =
   'Horizon Walker server reset timer - Track Horizon Walker server resets and maintenance with real-time countdown timers. Never miss daily resets, weekly events, or farming sessions with our precise KST server time clock. Server resets at 10:00 KST daily.';
 
-// Pass game data to layout
-const games = [horizonWalkerConfig];
+// Create a new config object with the imported image
+const games = [
+  {
+    ...horizonWalkerConfig,
+    image: GameIcon,
+  },
+];
 ---
 
 <HorizonWalkerClockLayout title={title} description={description} games={games}>

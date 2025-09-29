@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import WeaponImage from '../../components/horizon-walker/WeaponImage.astro';
 import HWBaseHead from '../../components/horizon-walker/HWBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
@@ -92,7 +92,12 @@ const breadcrumbs = [
               <section class="weapon-hero">
                 <div class="weapon-hero-content">
                   <div class="weapon-hero-image">
-                    <Image src={weapon.image} alt={weapon.name} width={200} height={200} />
+                    <WeaponImage
+                      imageName={weapon.image}
+                      alt={weapon.name}
+                      width={200}
+                      height={200}
+                    />
                   </div>
 
                   <div class="weapon-hero-info">

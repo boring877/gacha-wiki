@@ -175,7 +175,7 @@ const rawNymsetData = {
     name: 'EX Club & Shield - The Silver Bough',
     type: 'Club & Shield',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Nymset_WP.jpg',
+    image: 'Nymset_WP.jpg',
     stats: {
       weaponMeleeAtk: '70.0',
       weaponMagicAtk: '70.0',

@@ -10,7 +10,8 @@ const HW_RESET_HOUR_UTC = 1; // 01:00 UTC = 10:00 KST
 export const horizonWalkerConfig = {
   id: 'horizon-walker',
   name: 'Horizon Walker',
-  image: '/images/games/horizon-walker/gameimg/gameicon.jpg',
+  // The image will be provided by the page component
+  image: null,
   launchDate: '2024-08-29T00:00:00Z',
   displayDate: 'August 29, 2024 (Korean Launch)',
   steamLaunchDate: '2025-08-27T00:00:00Z',

@@ -118,7 +118,7 @@ const rawBellaData = {
     name: 'EX Club & Shield - Sacrament of Mercy',
     type: 'EX Club & Shield',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Bella_WP.jpg',
+    image: 'Bella_WP.jpg',
     stats: {
       weaponMeleeAtk: '84.0',
       weaponMagicAtk: '84.0',

@@ -119,7 +119,7 @@ const rawPantheriData = {
     name: 'EX One-handed sword - Tideblossom',
     type: 'EX One-handed Sword',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Pantheri_WP.jpg',
+    image: 'Pantheri_WP.jpg',
     stats: {
       weaponMeleeAtk: '77.0',
       evadeBonus: '+98.0%',

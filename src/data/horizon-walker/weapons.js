@@ -129,19 +129,22 @@ Object.entries(CHARACTER_DATA).forEach(([slug, characterData]) => {
   // Extract weapon type - remove 'EX ' prefix if present
   const weaponType = weapon.type.replace(/^EX /, '');
 
+  // Extract just the filename from the image path
+  const imageFilename = weapon.image.split('/').pop();
+
   const weaponEntry = {
     id: weaponKey,
     name: weapon.name,
     type: weaponType,
     rarity: weapon.rarity,
-    image: weapon.image,
+    image: imageFilename,
     character: {
       name: characterData.name,
       slug: slug,
       rarity: characterData.rarity,
     },
     stats: weapon.stats,
-    detailUrl: `/guides/horizon-walker/weapons/${slug}/`,
+    detailUrl: `/guides/horizon-walker/weapons/${slug.replace('-weapon', '')}/`,
     uniqueSkill: WEAPON_SKILLS[weaponKey]?.unique || null,
     signatureSkill: WEAPON_SKILLS[weaponKey]?.signature || null,
     // Pre-calculated lowercase values for faster client-side filtering

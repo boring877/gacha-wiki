@@ -80,7 +80,7 @@ const rawOslaData = {
     name: "The Grand Ancestor's Spirit",
     type: 'EX Torturas',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Osla_WP.jpg',
+    image: 'Osla_WP.jpg',
     stats: {
       weaponMeleeAtk: '70.0',
       weaponMagicAtk: '70.0',

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import WeaponImage from '../../../components/horizon-walker/WeaponImage.astro';
 import WeaponLayout from '../../../layouts/horizon-walker/WeaponLayout.astro';
 
 // Import weapon data
@@ -103,14 +103,13 @@ export const prerender = true;
                 data-ranged-atk={weapon.stats.weaponRangedAtk || 0}
               >
                 <div class="weapon-image-container">
-                  <Image
-                    src={weapon.image}
+                  <WeaponImage
+                    imageName={weapon.image}
                     alt={weapon.name}
                     class="weapon-image"
                     loading="lazy"
                     width={60}
                     height={60}
-                    decoding="async"
                   />
                 </div>
 
@@ -142,7 +141,7 @@ export const prerender = true;
   </section>
 </WeaponLayout>
 
-<script>
+<script is:inline>
   // Weapon Filter and Sort Functionality
   document.addEventListener('DOMContentLoaded', () => {
     const weaponsGrid = document.getElementById('weapons-grid');
@@ -173,13 +172,16 @@ export const prerender = true;
       const searchTerm = currentFilters.search.toLowerCase();
 
       weaponCards.forEach(card => {
-        const { rarity, type, name, character } = card.dataset;
+        const dataset = card.dataset || {};
+        const { rarity, type, name, character } = dataset;
 
         // Check all filter conditions with short-circuit evaluation
         const isVisible =
           (!currentFilters.rarity || rarity === currentFilters.rarity) &&
           (!currentFilters.type || type === currentFilters.type) &&
-          (!searchTerm || name.includes(searchTerm) || character.includes(searchTerm));
+          (!searchTerm ||
+            (name && name.includes(searchTerm)) ||
+            (character && character.includes(searchTerm)));
 
         card.style.display = isVisible ? '' : 'none';
         if (isVisible) visibleCount++;
@@ -205,22 +207,22 @@ export const prerender = true;
 
         switch (field) {
           case 'name':
-            aValue = a.dataset.name || '';
-            bValue = b.dataset.name || '';
+            aValue = (a.dataset || {}).name || '';
+            bValue = (b.dataset || {}).name || '';
             return currentSort.ascending
               ? aValue.localeCompare(bValue)
               : bValue.localeCompare(aValue);
           case 'weaponMeleeAtk':
-            aValue = parseFloat(a.dataset.meleeAtk) || 0;
-            bValue = parseFloat(b.dataset.meleeAtk) || 0;
+            aValue = parseFloat((a.dataset || {}).meleeAtk || '0') || 0;
+            bValue = parseFloat((b.dataset || {}).meleeAtk || '0') || 0;
             break;
           case 'weaponMagicAtk':
-            aValue = parseFloat(a.dataset.magicAtk) || 0;
-            bValue = parseFloat(b.dataset.magicAtk) || 0;
+            aValue = parseFloat((a.dataset || {}).magicAtk || '0') || 0;
+            bValue = parseFloat((b.dataset || {}).magicAtk || '0') || 0;
             break;
           case 'weaponRangedAtk':
-            aValue = parseFloat(a.dataset.rangedAtk) || 0;
-            bValue = parseFloat(b.dataset.rangedAtk) || 0;
+            aValue = parseFloat((a.dataset || {}).rangedAtk || '0') || 0;
+            bValue = parseFloat((b.dataset || {}).rangedAtk || '0') || 0;
             break;
           default:
             return 0;
@@ -239,7 +241,7 @@ export const prerender = true;
       // Update sort button states
       sortButtons.forEach(btn => {
         btn.classList.remove('active');
-        if (btn.dataset.sort === field) {
+        if ((btn.dataset || {}).sort === field) {
           btn.classList.add('active');
         }
       });
@@ -248,21 +250,24 @@ export const prerender = true;
     // Filter button click handler
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
-        const filterType = button.dataset.filterType;
-        const filterValue = button.dataset.filterValue;
+        const dataset = button.dataset || {};
+        const filterType = dataset.filterType;
+        const filterValue = dataset.filterValue;
 
         // Update filter state
         if (filterType === 'rarity') {
-          currentFilters.rarity = filterValue;
+          currentFilters.rarity = filterValue || '';
           // Update active state for rarity buttons
           document.querySelectorAll('[data-filter-type="rarity"]').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.filterValue === filterValue);
+            const btnDataset = btn.dataset || {};
+            btn.classList.toggle('active', btnDataset.filterValue === filterValue);
           });
         } else if (filterType === 'type') {
-          currentFilters.type = filterValue;
+          currentFilters.type = filterValue || '';
           // Update active state for type buttons
           document.querySelectorAll('[data-filter-type="type"]').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.filterValue === filterValue);
+            const btnDataset = btn.dataset || {};
+            btn.classList.toggle('active', btnDataset.filterValue === filterValue);
           });
         }
 
@@ -276,22 +281,26 @@ export const prerender = true;
     // Debounced search input handler
     let searchTimeout;
     searchInput?.addEventListener('input', e => {
-      currentFilters.search = e.target.value;
+      const target = e.target;
+      if (target) {
+        currentFilters.search = target.value;
 
-      // Clear previous timeout
-      clearTimeout(searchTimeout);
+        // Clear previous timeout
+        clearTimeout(searchTimeout);
 
-      // Debounce search by 200ms
-      searchTimeout = setTimeout(() => {
-        sessionStorage.setItem('hw-weapon-filters', JSON.stringify(currentFilters));
-        applyFilters();
-      }, 200);
+        // Debounce search by 200ms
+        searchTimeout = setTimeout(() => {
+          sessionStorage.setItem('hw-weapon-filters', JSON.stringify(currentFilters));
+          applyFilters();
+        }, 200);
+      }
     });
 
     // Sort button handler
     sortButtons.forEach(button => {
       button.addEventListener('click', () => {
-        sortWeapons(button.dataset.sort);
+        const dataset = button.dataset || {};
+        sortWeapons(dataset.sort || '');
       });
     });
 
@@ -306,7 +315,8 @@ export const prerender = true;
 
       // Reset UI
       filterButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.filterValue === '');
+        const btnDataset = btn.dataset || {};
+        btn.classList.toggle('active', btnDataset.filterValue === '');
       });
 
       if (searchInput) searchInput.value = '';
@@ -335,13 +345,15 @@ export const prerender = true;
         // Restore UI state
         if (currentFilters.rarity) {
           document.querySelectorAll('[data-filter-type="rarity"]').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.filterValue === currentFilters.rarity);
+            const btnDataset = btn.dataset || {};
+            btn.classList.toggle('active', btnDataset.filterValue === currentFilters.rarity);
           });
         }
 
         if (currentFilters.type) {
           document.querySelectorAll('[data-filter-type="type"]').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.filterValue === currentFilters.type);
+            const btnDataset = btn.dataset || {};
+            btn.classList.toggle('active', btnDataset.filterValue === currentFilters.type);
           });
         }
 

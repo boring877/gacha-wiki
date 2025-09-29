@@ -1,0 +1,136 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all gift images once
+import GoldImg from '../../assets/images/games/horizon-walker/Gifts/Gold.jpg';
+import ExterciumImg from '../../assets/images/games/horizon-walker/Gifts/Extercium.jpg';
+import Human_HairImg from '../../assets/images/games/horizon-walker/Gifts/Human_Hair.jpg';
+import Grey_Goose_VodkaImg from '../../assets/images/games/horizon-walker/Gifts/Grey_Goose_Vodka.jpg';
+import Finest_Black_TeaImg from '../../assets/images/games/horizon-walker/Gifts/Finest_Black_Tea.jpg';
+import Antique_Music_BoxImg from '../../assets/images/games/horizon-walker/Gifts/Antique_Music_Box.jpg';
+import TerrariumImg from '../../assets/images/games/horizon-walker/Gifts/Terrarium.jpg';
+import Worn_Banner_of_the_Magnal_DuchyImg from '../../assets/images/games/horizon-walker/Gifts/Worn_Banner_of_the_Magnal_Duchy.jpg';
+import Strategy_Simulation_BoardImg from '../../assets/images/games/horizon-walker/Gifts/Strategy_Simulation_Board.jpg';
+import Luxury_BagImg from '../../assets/images/games/horizon-walker/Gifts/Luxury_Bag.jpg';
+import Queen_tiaraImg from '../../assets/images/games/horizon-walker/Gifts/Queen_tiara.jpg';
+import Hotel_Restaurant_Meal_VoucherImg from '../../assets/images/games/horizon-walker/Gifts/Hotel_Restaurant_Meal_Voucher.jpg';
+import KG_DumbbellImg from '../../assets/images/games/horizon-walker/Gifts/300_KG_Dumbbell_A.jpg';
+import Scripture_of_the_Human_of_the_split_TwigsImg from '../../assets/images/games/horizon-walker/Gifts/Scripture_of_the_Human_of_the_split_Twigs.jpg';
+import Magical_Fairy_Tale_BookImg from '../../assets/images/games/horizon-walker/Gifts/Magical_Fairy_Tale_Book.jpg';
+import Snow_GlobeImg from '../../assets/images/games/horizon-walker/Gifts/Snow_Globe.jpg';
+import Anti_aging_Skincare_productImg from '../../assets/images/games/horizon-walker/Gifts/Anti_aging_Skincare_product.jpg';
+import Lamora_Military_RationImg from '../../assets/images/games/horizon-walker/Gifts/Lamora_Millitary_Ration.jpg';
+import Americano_VoucherImg from '../../assets/images/games/horizon-walker/Gifts/Americano_Voucher.jpg';
+import Fire_Octopus_NoodlesImg from '../../assets/images/games/horizon-walker/Gifts/Fire_Octopus_Noodles.jpg';
+import Mangrove_LeafImg from '../../assets/images/games/horizon-walker/Gifts/Mangrove_Leaf.jpg';
+import Setflix_Membership_VoucherImg from '../../assets/images/games/horizon-walker/Gifts/Setflix_Membership_Voucher.jpg';
+import Forbidden_RomanceImg from '../../assets/images/games/horizon-walker/Gifts/Forbidden_Romance.jpg';
+import Gun_Maintenance_KitImg from '../../assets/images/games/horizon-walker/Gifts/Gun_Maintenance_Kit.jpg';
+import Frog_PlushImg from '../../assets/images/games/horizon-walker/Gifts/Frog_Plush.jpg';
+import Gloomy_Chromi_KeyringImg from '../../assets/images/games/horizon-walker/Gifts/Gloomy_Chromi_Keyring.jpg';
+import Catnip_PouchImg from '../../assets/images/games/horizon-walker/Gifts/Catnip_Pouch.jpg';
+import Sports_SneakersImg from '../../assets/images/games/horizon-walker/Gifts/Sports_Sneakers.jpg';
+import Hamburg_SteakImg from '../../assets/images/games/horizon-walker/Gifts/Hamburg_Steak.jpg';
+import A_Single_RoseImg from '../../assets/images/games/horizon-walker/Gifts/A_Single_Rose.jpg';
+import CharcoalImg from '../../assets/images/games/horizon-walker/Gifts/Charcoal.jpg';
+import DArtagnan_RomanceImg from '../../assets/images/games/horizon-walker/Gifts/DArtagnan_Romance.jpg';
+import SojuImg from '../../assets/images/games/horizon-walker/Gifts/Soju.jpg';
+import Glazed_Fruit_StickImg from '../../assets/images/games/horizon-walker/Gifts/Glazed_Fruit_Stick.jpg';
+import Orca_DocumentaryImg from '../../assets/images/games/horizon-walker/Gifts/Orca_Documentary.jpg';
+import Kalma_Election_Campaign_BrochureImg from '../../assets/images/games/horizon-walker/Gifts/Kalma_Election_Campaign_Brochure.jpg';
+import Training_Equipment_SetImg from '../../assets/images/games/horizon-walker/Gifts/Training_Equipment_Set.jpg';
+import Strawberry_Chubby_MacaronImg from '../../assets/images/games/horizon-walker/Gifts/Strawberry_Chubby_Macaron.jpg';
+import Brilliant_Gift_BoxImg from '../../assets/images/games/horizon-walker/Gifts/Brilliant_Gift_Box.jpg';
+import Luxurious_Gift_BoxImg from '../../assets/images/games/horizon-walker/Gifts/Luxurious_Gift_Box.jpg';
+import Ordinary_Gift_BoxImg from '../../assets/images/games/horizon-walker/Gifts/Ordinary_Gift_Box.jpg';
+import st_Anniversary_giftImg from '../../assets/images/games/horizon-walker/Gifts/1st_Anniversary_gift.jpg';
+
+// Centralized gift image mapping
+const giftImageMap = {
+  'Gold.jpg': GoldImg,
+  'Extercium.jpg': ExterciumImg,
+  'Human_Hair.jpg': Human_HairImg,
+  'Grey_Goose_Vodka.jpg': Grey_Goose_VodkaImg,
+  'Finest_Black_Tea.jpg': Finest_Black_TeaImg,
+  'Antique_Music_Box.jpg': Antique_Music_BoxImg,
+  'Terrarium.jpg': TerrariumImg,
+  'Worn_Banner_of_the_Magnal_Duchy.jpg': Worn_Banner_of_the_Magnal_DuchyImg,
+  'Strategy_Simulation_Board.jpg': Strategy_Simulation_BoardImg,
+  'Luxury_Bag.jpg': Luxury_BagImg,
+  'Queen_tiara.jpg': Queen_tiaraImg,
+  'Hotel_Restaurant_Meal_Voucher.jpg': Hotel_Restaurant_Meal_VoucherImg,
+  '300_KG_Dumbbell_A.jpg': KG_DumbbellImg,
+  'Scripture_of_the_Human_of_the_split_Twigs.jpg': Scripture_of_the_Human_of_the_split_TwigsImg,
+  'Magical_Fairy_Tale_Book.jpg': Magical_Fairy_Tale_BookImg,
+  'Snow_Globe.jpg': Snow_GlobeImg,
+  'Anti_aging_Skincare_product.jpg': Anti_aging_Skincare_productImg,
+  'Lamora_Millitary_Ration.jpg': Lamora_Military_RationImg,
+  'Americano_Voucher.jpg': Americano_VoucherImg,
+  'Fire_Octopus_Noodles.jpg': Fire_Octopus_NoodlesImg,
+  'Mangrove_Leaf.jpg': Mangrove_LeafImg,
+  'Setflix_Membership_Voucher.jpg': Setflix_Membership_VoucherImg,
+  'Forbidden_Romance.jpg': Forbidden_RomanceImg,
+  'Gun_Maintenance_Kit.jpg': Gun_Maintenance_KitImg,
+  'Frog_Plush.jpg': Frog_PlushImg,
+  'Gloomy_Chromi_Keyring.jpg': Gloomy_Chromi_KeyringImg,
+  'Catnip_Pouch.jpg': Catnip_PouchImg,
+  'Sports_Sneakers.jpg': Sports_SneakersImg,
+  'Hamburg_Steak.jpg': Hamburg_SteakImg,
+  'A_Single_Rose.jpg': A_Single_RoseImg,
+  'Charcoal.jpg': CharcoalImg,
+  'DArtagnan_Romance.jpg': DArtagnan_RomanceImg,
+  'Soju.jpg': SojuImg,
+  'Glazed_Fruit_Stick.jpg': Glazed_Fruit_StickImg,
+  'Orca_Documentary.jpg': Orca_DocumentaryImg,
+  'Kalma_Election_Campaign_Brochure.jpg': Kalma_Election_Campaign_BrochureImg,
+  'Training_Equipment_Set.jpg': Training_Equipment_SetImg,
+  'Strawberry_Chubby_Macaron.jpg': Strawberry_Chubby_MacaronImg,
+  'Brilliant_Gift_Box.jpg': Brilliant_Gift_BoxImg,
+  'Luxurious_Gift_Box.jpg': Luxurious_Gift_BoxImg,
+  'Ordinary_Gift_Box.jpg': Ordinary_Gift_BoxImg,
+  '1st_Anniversary_gift.jpg': st_Anniversary_giftImg,
+};
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 64,
+  height = 64,
+  class: className,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Extract filename from path if needed
+let imageKey = imageName;
+if (imageName.includes('/')) {
+  // Extract just the filename from the path
+  imageKey = imageName.split('/').pop() || imageName;
+}
+
+// Get the imported image object from the map, fallback to Brilliant Gift Box if not found
+const imageSrc = giftImageMap[imageKey] || giftImageMap['Brilliant_Gift_Box.jpg'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

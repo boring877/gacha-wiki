@@ -1,41 +1,12 @@
 ---
-import { Image } from 'astro:assets';
+import MercenaryImage from '../../components/horizon-walker/MercenaryImage.astro';
 import { getTagCategory } from '../../data/horizon-walker/characters.js';
 
-interface MercenaryStats {
-  strength: number;
-  technic: number;
-  intelligence: number;
-  vitality: number;
-  agility: number;
-  meleeAtk: number;
-  rangedAtk: number;
-  magicAtk: number;
-  maxHp: number;
-  spd: number;
-  startingAp: number;
-  apRecovery: number;
-  accuracy: number;
-  evade: number;
-  critRate: number;
-  critDmg: number;
-  slashBoost: number;
-  slashDef: number;
-  pierceBoost: number;
-  pierceDef: number;
-  crushBoost: number;
-  crushDef: number;
-  heatBoost: number;
-  heatDef: number;
-  coldBoost: number;
-  coldDef: number;
-  electricBoost: number;
-  electricDef: number;
-  immaterialBoost: number;
-  immaterialDef: number;
-  poisonBoost: number;
-  poisonDef: number;
-  blockRate: number;
+interface Trait {
+  name: string;
+  description: string;
+  characteristics?: string;
+  notes?: string;
 }
 
 export interface Props {
@@ -81,8 +52,8 @@ function getMercenaryDescription(usage: any): string {
     <div class="character-hero-card">
       <div class="character-hero-container">
         <div class="character-portrait-container">
-          <Image
-            src={mercenaryData.image}
+          <MercenaryImage
+            imageName={mercenaryData.name}
             alt={`${mercenaryData.name} - ${mercenaryData.rarity} rarity mercenary from Horizon Walker`}
             width={300}
             height={300}
@@ -399,27 +370,35 @@ function getMercenaryDescription(usage: any): string {
         for your mercenaries! Some mercenaries have 1 or more fixed unique traits.
       </div>
 
-      {Object.values(mercenaryData.traits || {}).map(trait => (
-        <div class="trait-card">
-          <div class="trait-header">
-            <h3 class="trait-title">{trait.name}</h3>
-            <span class="hw-badge" data-type="Trait">
-              Trait
-            </span>
-          </div>
-          <p class="trait-description">{trait.description}</p>
-          {trait.characteristics && (
-            <div class="trait-characteristics">
-              <strong>Characteristics:</strong> {trait.characteristics}
-            </div>
-          )}
-          {trait.notes && (
-            <div class="trait-notes">
-              <em>Note: {trait.notes}</em>
-            </div>
-          )}
-        </div>
-      ))}
+      {
+        (() => {
+          const traits = mercenaryData.traits || {};
+          return Object.keys(traits).map(key => {
+            const trait = traits[key] as Trait;
+            return (
+              <div class="trait-card">
+                <div class="trait-header">
+                  <h3 class="trait-title">{trait.name}</h3>
+                  <span class="hw-badge" data-type="Trait">
+                    Trait
+                  </span>
+                </div>
+                <p class="trait-description">{trait.description}</p>
+                {trait.characteristics && (
+                  <div class="trait-characteristics">
+                    <strong>Characteristics:</strong> {trait.characteristics}
+                  </div>
+                )}
+                {trait.notes && (
+                  <div class="trait-notes">
+                    <em>Note: {trait.notes}</em>
+                  </div>
+                )}
+              </div>
+            );
+          });
+        })()
+      }
     </section>
   )
 }

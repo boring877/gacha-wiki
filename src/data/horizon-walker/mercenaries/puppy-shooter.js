@@ -11,9 +11,6 @@ export const puppyShooterMercenary = {
   rarity: 'B',
   cost: 3,
 
-  // Images
-  image: '/images/games/horizon-walker/characters/Puppy_Shooter.jpg',
-
   // Basic Stats (at max level)
   stats: {
     // Basic Stats

@@ -1,7 +1,7 @@
 ---
 import GiftLayout from '../../../layouts/horizon-walker/GiftLayout.astro';
 import { GIFT_BOXES, GIFT_RARITIES, UNIQUE_GIFTS } from '../../../data/horizon-walker/gifts.js';
-import { Image } from 'astro:assets';
+import GiftImage from '../../../components/horizon-walker/GiftImage.astro';
 ---
 
 <GiftLayout
@@ -69,14 +69,12 @@ import { Image } from 'astro:assets';
           <div class="hw-gift-box-card" id={box.id} data-box={box.id}>
             <div class="hw-gift-box-header">
               <div class="hw-gift-box-image">
-                <Image
-                  src={box.image}
+                <GiftImage
+                  imageName={box.image}
                   alt={box.name}
                   class="gift-box-img"
                   width={80}
                   height={80}
-                  format="webp"
-                  quality={85}
                   loading="lazy"
                 />
               </div>
@@ -110,8 +108,8 @@ import { Image } from 'astro:assets';
               {box.gifts.map(gift => (
                 <div class="hw-gift-item" data-rarity={gift.rarity}>
                   <div class="hw-gift-item-image">
-                    <Image
-                      src={gift.image}
+                    <GiftImage
+                      imageName={gift.image}
                       alt={gift.name}
                       class="gift-item-img"
                       width={60}
@@ -175,8 +173,8 @@ import { Image } from 'astro:assets';
         UNIQUE_GIFTS.map(gift => (
           <div class="hw-gift-item hw-unique-gift" data-rarity={gift.rarity}>
             <div class="hw-gift-item-image">
-              <Image
-                src={gift.image}
+              <GiftImage
+                imageName={gift.image}
                 alt={gift.name}
                 class="gift-item-img"
                 width={60}

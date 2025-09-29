@@ -1,12 +1,13 @@
 // Central games configuration
 // This file manages all games in the gacha wiki
+import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 
 export interface Game {
   id: string;
   name: string;
   slug: string;
   description: string;
-  image: string;
+  image: string | any;
   url: string;
   status: 'active' | 'coming-soon' | 'archived';
   sections: string[];
@@ -42,7 +43,7 @@ export const GAMES: Game[] = [
     slug: 'horizon-walker',
     description:
       'Post-apocalyptic RPG: Transcend mortality as a Chosen Human and battle Forsaken Entities through dimensional rifts',
-    image: '/images/games/horizon-walker/gameimg/gameicon.jpg',
+    image: GameIcon,
     url: '/guides/horizon-walker/',
     status: 'active',
     sections: ['Chosen Humans', 'Rift Combat', 'Transcendence', 'Survivor Resources'],

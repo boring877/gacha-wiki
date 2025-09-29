@@ -172,7 +172,7 @@ const rawMatrothoData = {
     name: 'EX One-handed sword - The Lamoran Wind',
     type: 'One-handed Sword',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Matrotho_WP.jpg',
+    image: 'Matrotho_WP.jpg',
     stats: {
       weaponMeleeAtk: '77.0',
       critDmgBonus: '+98.0%',

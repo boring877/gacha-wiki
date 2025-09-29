@@ -11,9 +11,6 @@ export const grrikMercenary = {
   rarity: 'B',
   cost: 5,
 
-  // Images
-  image: '/images/games/horizon-walker/characters/Grrik_Mercenary.jpg',
-
   // Basic Stats (at max level)
   stats: {
     // Basic Stats

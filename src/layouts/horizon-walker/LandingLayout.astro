@@ -8,7 +8,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
-import { Image } from 'astro:assets';
+import GameImage from '../../components/horizon-walker/GameImage.astro';
 import SpeedInsights from '../../components/SpeedInsights.astro';
 
 // Import CSS files properly
@@ -57,14 +57,13 @@ const { title, description, gameTitle, heroImage } = Astro.props;
                 {/* Hero Image Container */}
                 <div class="hero-image-wrapper">
                   <div class="hero-image-container">
-                    <Image
-                      src={heroImage}
+                    <GameImage
+                      imageName={heroImage}
                       alt={gameTitle}
                       class="hero-image"
                       width={1200}
                       height={400}
                       loading="eager"
-                      decoding="async"
                     />
                     {/* Overlay Gradient */}
                     <div class="hero-overlay" />

@@ -38,15 +38,16 @@
 
   /* === FLUID TYPOGRAPHY SCALE === */
   /* Responsive font sizes using clamp() for optimal readability across all devices */
-  /* Scale follows modern type scale principles (1.125 major second ratio) */
-  --text-xs: clamp(0.75rem, 1vw, 0.875rem); /* 12-14px - Fine print, captions */
-  --text-sm: clamp(0.875rem, 1.2vw, 1rem); /* 14-16px - Small labels, metadata */
-  --text-base: clamp(1rem, 1.5vw, 1.125rem); /* 16-18px - Body text, baseline */
-  --text-lg: clamp(1.125rem, 2vw, 1.25rem); /* 18-20px - Large body, subheadings */
-  --text-xl: clamp(1.25rem, 2.5vw, 1.5rem); /* 20-24px - Small headings */
-  --text-2xl: clamp(1.5rem, 3vw, 2rem); /* 24-32px - Medium headings */
-  --text-3xl: clamp(2rem, 4vw, 3rem); /* 32-48px - Large headings */
-  --text-4xl: clamp(2.5rem, 5vw, 4rem); /* 40-64px - Display headings */
+  /* Scale follows modern type scale principles (1.25 major third ratio) */
+  --text-xs: clamp(0.75rem, 0.8vw, 0.875rem); /* 12-14px - Fine print, captions */
+  --text-sm: clamp(0.875rem, 1vw, 1rem); /* 14-16px - Small labels, metadata */
+  --text-base: clamp(1rem, 1.2vw, 1.125rem); /* 16-18px - Body text, baseline */
+  --text-lg: clamp(1.125rem, 1.5vw, 1.25rem); /* 18-20px - Large body, subheadings */
+  --text-xl: clamp(1.25rem, 1.8vw, 1.5rem); /* 20-24px - Small headings */
+  --text-2xl: clamp(1.5rem, 2.2vw, 1.875rem); /* 24-30px - Medium headings */
+  --text-3xl: clamp(1.875rem, 2.8vw, 2.25rem); /* 30-36px - Large headings */
+  --text-4xl: clamp(2.25rem, 3.5vw, 3rem); /* 36-48px - Display headings */
+  --text-5xl: clamp(3rem, 4.5vw, 4rem); /* 48-64px - Hero headings */
 
   /* === LINE HEIGHT SYSTEM === */
   /* Optimized line heights for different content types and reading experiences */
@@ -95,8 +96,8 @@ h1,
     'Segoe UI',
     system-ui,
     sans-serif; /* Hardcoded to prevent FOUC */
-  font-size: var(--text-4xl); /* 40-64px - maximum visual impact */
-  font-weight: 700; /* Bold weight for strong hierarchy */
+  font-size: var(--text-5xl); /* 48-64px - maximum visual impact */
+  font-weight: 700; /* Bold weight for primary hierarchy */
   line-height: var(--leading-tight); /* Tight leading for display text */
   letter-spacing: var(--tracking-tight); /* Slightly tighter for better fit */
   margin-bottom: 1.5rem; /* Generous spacing below for separation */
@@ -106,8 +107,8 @@ h1,
 h2,
 .section-title {
   font-family: var(--font-display); /* Consistent display font for hierarchy */
-  font-size: var(--text-3xl); /* 32-48px - strong but secondary presence */
-  font-weight: 700; /* Bold weight maintains hierarchy */
+  font-size: var(--text-4xl); /* 36-48px - strong but secondary presence */
+  font-weight: 600; /* Semibold weight for secondary hierarchy */
   line-height: var(--leading-tight); /* Tight leading for display text */
   letter-spacing: var(--tracking-normal); /* Normal tracking for medium sizes */
   margin-bottom: 1.25rem; /* Good separation from content */
@@ -119,8 +120,8 @@ h3,
 .awakening-title,
 .subsection-title {
   font-family: var(--font-display); /* Display font for consistent hierarchy */
-  font-size: var(--text-xl); /* 20-24px - moderate emphasis */
-  font-weight: 600; /* Semibold for clear distinction */
+  font-size: var(--text-3xl); /* 30-36px - moderate emphasis */
+  font-weight: 600; /* Semibold weight for tertiary hierarchy */
   line-height: var(--leading-normal); /* Normal leading for readability */
   letter-spacing: var(--tracking-wide); /* Wider tracking for smaller display text */
   margin-bottom: 1rem; /* Standard spacing below */
@@ -129,8 +130,8 @@ h3,
 /* Quaternary heading - for minor sections and content groupings */
 h4 {
   font-family: var(--font-display); /* Consistent display font */
-  font-size: var(--text-lg); /* 18-20px - subtle emphasis */
-  font-weight: 600; /* Semibold weight */
+  font-size: var(--text-2xl); /* 24-30px - subtle emphasis */
+  font-weight: 500; /* Medium weight for quaternary hierarchy */
   line-height: var(--leading-normal); /* Normal leading */
   letter-spacing: var(--tracking-normal); /* Normal tracking */
   margin-bottom: 0.75rem; /* Reduced spacing for hierarchy */
@@ -139,8 +140,8 @@ h4 {
 /* Fifth level heading - for labels and minor categorization */
 h5 {
   font-family: var(--font-display); /* Display font for consistency */
-  font-size: var(--text-base); /* Base size - same as body */
-  font-weight: var(--font-medium); /* Medium weight for subtle emphasis */
+  font-size: var(--text-lg); /* 18-20px - slightly larger than body */
+  font-weight: 500; /* Medium weight for fifth level hierarchy */
   line-height: var(--leading-normal); /* Normal leading */
   letter-spacing: var(--tracking-wide); /* Wide tracking for uppercase */
   margin-bottom: 0.5rem; /* Minimal spacing */
@@ -150,8 +151,8 @@ h5 {
 /* Sixth level heading - for micro-labels and smallest categorization */
 h6 {
   font-family: var(--font-primary); /* Primary font for smaller text */
-  font-size: var(--text-sm); /* Small size for subtle hierarchy */
-  font-weight: var(--font-semibold); /* Semibold for emphasis */
+  font-size: var(--text-base); /* 16-18px - same as body but with emphasis */
+  font-weight: 500; /* Medium weight for sixth level hierarchy */
   line-height: var(--leading-normal); /* Normal leading */
   letter-spacing: var(--tracking-wide); /* Wide tracking for readability */
   margin-bottom: 0.5rem; /* Minimal spacing */
@@ -176,7 +177,7 @@ p {
 small {
   font-family: var(--font-primary); /* Primary font for consistency */
   font-size: var(--text-sm); /* 14-16px for small but readable text */
-  font-weight: 600; /* Semibold for emphasis and clarity */
+  font-weight: 500; /* Medium weight for label emphasis */
   line-height: var(--leading-normal); /* Normal leading for compact text */
   letter-spacing: var(--tracking-wide); /* Wide tracking for uppercase readability */
   text-transform: uppercase; /* Uppercase for label-like appearance */
@@ -192,7 +193,7 @@ small {
     system-ui,
     sans-serif; /* Hardcoded to prevent FOUC */
   font-size: var(--text-lg); /* 18-20px for clear number visibility */
-  font-weight: 700; /* Bold for emphasis and hierarchy */
+  font-weight: 600; /* Semibold weight for stat emphasis */
   line-height: var(--leading-tight); /* Tight leading for compact presentation */
   letter-spacing: var(--tracking-normal); /* Normal tracking for numbers */
 }
@@ -200,8 +201,8 @@ small {
 /* Game title styling - for section headers and branding */
 .game-title {
   font-family: var(--font-display); /* Display font for brand consistency */
-  font-size: var(--text-2xl); /* 24-32px for strong presence */
-  font-weight: 700; /* Bold for brand emphasis */
+  font-size: var(--text-2xl); /* 24-30px for strong presence */
+  font-weight: 600; /* Semibold weight for game title emphasis */
   line-height: var(--leading-tight); /* Tight leading for impact */
   letter-spacing: var(--tracking-wide); /* Wide tracking for brand aesthetics */
 }
@@ -209,10 +210,9 @@ small {
 /* Strong emphasis text - for important highlighted content */
 strong {
   font-family: var(--font-primary); /* Primary font for consistency */
-  font-size: var(--text-sm); /* Slightly smaller for emphasis */
-  font-weight: 700; /* Bold for strong emphasis */
-  letter-spacing: var(--tracking-wide); /* Wide tracking for emphasis */
-  text-transform: uppercase; /* Uppercase for strong visual impact */
+  font-size: var(--text-base); /* Same size as body for emphasis */
+  font-weight: 600; /* Semibold weight for strong emphasis */
+  letter-spacing: var(--tracking-normal); /* Normal tracking for emphasis */
 }
 
 /* === GAME-SPECIFIC SEMANTIC CLASSES === */
@@ -221,7 +221,7 @@ strong {
 .skill-stat-label {
   font-family: var(--font-primary); /* Primary font for consistency */
   font-size: var(--text-sm); /* Small size for compact display */
-  font-weight: 600; /* Semibold for clear labeling */
+  font-weight: 500; /* Medium weight for label emphasis */
   line-height: var(--leading-normal); /* Normal leading for readability */
   letter-spacing: var(--tracking-wide); /* Wide tracking for uppercase */
   text-transform: uppercase; /* Uppercase for label consistency */
@@ -231,7 +231,7 @@ strong {
 .skill-stat-value {
   font-family: var(--font-display); /* Display font for prominence */
   font-size: var(--text-lg); /* Large size for easy scanning */
-  font-weight: 700; /* Bold for numerical emphasis */
+  font-weight: 600; /* Semibold weight for stat emphasis */
   line-height: var(--leading-tight); /* Tight leading for compact display */
   letter-spacing: var(--tracking-normal); /* Normal tracking for numbers */
 }
@@ -240,7 +240,7 @@ strong {
 .skill-label {
   font-family: var(--font-display); /* Display font for prominence */
   font-size: var(--text-lg); /* Large size for clear hierarchy */
-  font-weight: 700; /* Bold for strong emphasis */
+  font-weight: 600; /* Semibold weight for skill emphasis */
   line-height: var(--leading-normal); /* Normal leading for readability */
   letter-spacing: var(--tracking-wide); /* Wide tracking for impact */
   text-transform: uppercase; /* Uppercase for label consistency */
@@ -258,8 +258,8 @@ strong {
 /* Requirements text - for game conditions and prerequisites */
 .requirements-text {
   font-family: var(--font-primary); /* Primary font for consistency */
-  font-size: var(--text-lg); /* Slightly larger for importance */
-  font-weight: 600; /* Semibold for emphasis */
+  font-size: var(--text-base); /* Same as body for consistency */
+  font-weight: 500; /* Medium weight for requirement emphasis */
   font-style: italic; /* Italic for distinctive styling */
   line-height: var(--leading-relaxed); /* Relaxed leading for clarity */
   letter-spacing: var(--tracking-wide); /* Wide tracking for emphasis */
@@ -268,8 +268,8 @@ strong {
 /* Memory card titles - for game item and card names */
 .memory-card-title {
   font-family: var(--font-display); /* Display font for visual hierarchy */
-  font-size: var(--text-xl); /* Extra large for card prominence */
-  font-weight: 600; /* Semibold for clear distinction */
+  font-size: var(--text-xl); /* 20-24px for card prominence */
+  font-weight: 600; /* Semibold weight for card title emphasis */
   line-height: var(--leading-tight); /* Tight leading for compact cards */
   letter-spacing: var(--tracking-normal); /* Normal tracking for readability */
 }
@@ -278,7 +278,7 @@ strong {
 .memory-effect-text {
   font-family: var(--font-primary); /* Primary font for readability */
   font-size: var(--text-base); /* Base size for detailed descriptions */
-  font-weight: 500; /* Medium weight for subtle emphasis */
+  font-weight: 400; /* Normal weight for descriptions */
   line-height: var(--leading-relaxed); /* Relaxed leading for easy reading */
   letter-spacing: var(--tracking-normal); /* Normal tracking for descriptions */
 }
@@ -287,7 +287,7 @@ strong {
 .warning-title {
   font-family: var(--font-display); /* Display font for attention-grabbing */
   font-size: var(--text-lg); /* Large size for clear visibility */
-  font-weight: 600; /* Semibold for emphasis */
+  font-weight: 600; /* Semibold weight for warning emphasis */
   line-height: var(--leading-normal); /* Normal leading for readability */
   letter-spacing: var(--tracking-normal); /* Normal tracking for clarity */
 }
@@ -299,12 +299,20 @@ strong {
   h1,
   .character-name,
   .display-title {
-    font-size: var(--text-3xl); /* Reduce from 4xl to 3xl for mobile */
+    font-size: var(--text-4xl); /* Reduce from 5xl to 4xl for mobile */
   }
 
   /* Reduce secondary heading sizes for mobile layout */
   h2,
   .section-title {
+    font-size: var(--text-3xl); /* Reduce from 4xl to 3xl for mobile */
+  }
+
+  /* Reduce tertiary heading sizes for mobile layout */
+  h3,
+  .skill-title,
+  .awakening-title,
+  .subsection-title {
     font-size: var(--text-2xl); /* Reduce from 3xl to 2xl for mobile */
   }
 }
@@ -334,20 +342,5 @@ strong {
 /* Local font-face declarations for performance optimization */
 /* font-display: swap prevents invisible text during font swap period */
 
-@font-face {
-  font-family: 'Inter';
-  font-display: swap; /* Show fallback font immediately, swap when loaded */
-  src: local('Inter'); /* Use local version if available */
-}
-
-@font-face {
-  font-family: 'Space Grotesk';
-  font-display: swap; /* Show fallback font immediately, swap when loaded */
-  src: local('Space Grotesk'); /* Use local version if available */
-}
-
-@font-face {
-  font-family: 'Orbitron';
-  font-display: swap; /* Show fallback font immediately, swap when loaded */
-  src: local('Orbitron'); /* Use local version if available */
-}
+/* Font declarations are now handled in GeneralBaseHead.astro */
+/* This prevents duplication and ensures consistent font loading */

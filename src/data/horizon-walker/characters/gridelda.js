@@ -80,7 +80,7 @@ const rawGrideldaData = {
     name: 'The Eye of Cosmos',
     type: 'EX Arcane Orb',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Gridelda_WP.jpg',
+    image: 'Gridelda_WP.jpg',
     stats: {
       weaponMagicAtk: '91.0',
       maxHpBonus: '+35.0%',

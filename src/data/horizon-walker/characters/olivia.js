@@ -78,7 +78,7 @@ const rawOliviaData = {
     name: 'Star Splicer',
     type: 'EX Two-handed Sword',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Olivia_WP.jpg',
+    image: 'Olivia_WP.jpg',
     stats: {
       weaponMeleeAtk: '105.0',
       apRecoveryBonus: '+7.0%',

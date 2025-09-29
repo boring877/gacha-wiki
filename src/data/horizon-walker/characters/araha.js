@@ -116,7 +116,7 @@ const rawArahaData = {
     name: 'EX Rifle - JK220 Artemis',
     type: 'EX Rifle',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Araha_WP.jpg',
+    image: 'Araha_WP.jpg',
     stats: {
       weaponRangedAtk: '91.0',
       critDmgBonus: '+70.0%',

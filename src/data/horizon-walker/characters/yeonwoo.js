@@ -240,7 +240,7 @@ const rawYeonwooData = {
     name: 'EX Mana Shard - Endless Burger',
     type: 'Mana Shard',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Yeonwoo_WP.jpg',
+    image: 'Yeonwoo_WP.jpg',
     stats: {
       weaponMagicAtk: '77.0',
       critRateBonus: '+49.0%',

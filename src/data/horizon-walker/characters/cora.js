@@ -176,7 +176,7 @@ const rawCoraData = {
     name: 'Staff Orbina',
     type: 'Staff',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Cora_WP.jpg',
+    image: 'Cora_WP.jpg',
     stats: {
       weaponMagicAtk: '91.0',
       magicAtkBonus: '+35.0%',

@@ -113,15 +113,16 @@
 
 .game-nav-mobile .game-title {
   margin: 0;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
   color: #ffffff;
   text-align: center;
   white-space: nowrap;
   max-width: 320px;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: var(--leading-normal);
 }
 
 /* Visual feedback when menu is open */
@@ -230,7 +231,7 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 6px;
   color: #ffffff;
-  font-size: 1rem;
+  font-size: var(--text-base);
   cursor: pointer;
   width: 44px;
   height: 44px;
@@ -240,6 +241,7 @@
   -webkit-tap-highlight-color: transparent;
   outline: none;
   touch-action: manipulation;
+  line-height: var(--leading-normal);
 }
 
 .close-btn:active {
@@ -283,24 +285,24 @@
 }
 
 .mobile-game-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
   color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 240px;
-  line-height: 1.2;
+  line-height: var(--leading-normal);
 }
 
 .mobile-game-subtitle {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
   color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
-  line-height: 1.2;
+  line-height: var(--leading-normal);
 }
 
 /* MOBILE ONLY: Match menu button colors exactly */
@@ -327,12 +329,13 @@
 }
 
 .mobile-section-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
+  font-family: var(--font-primary);
+  font-weight: var(--font-semibold);
   color: #ffffff;
-  font-size: 1.1rem;
-  letter-spacing: 0.3px;
+  font-size: var(--text-lg);
+  letter-spacing: var(--tracking-tight);
   margin-bottom: 1rem;
+  line-height: var(--leading-normal);
 }
 
 /* MOBILE ONLY: Match menu button colors exactly */
@@ -346,8 +349,8 @@
     background: rgba(255, 255, 255, 0.08);
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 15px;
-    font-weight: 500;
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
     min-height: 48px;
     align-items: center;
     touch-action: manipulation;
@@ -384,8 +387,9 @@
 .mobile-link.active {
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  font-weight: 600;
+  font-weight: var(--font-semibold);
   border-color: rgba(255, 255, 255, 0.4);
+  line-height: var(--leading-normal);
 }
 
 /* Enhanced Focus Indicators for Modal Behavior */
@@ -451,7 +455,7 @@
     .mobile-link {
       padding: 0.875rem;
       margin: 0.5rem 0;
-      font-size: 15px;
+      font-size: var(--text-base);
       min-height: 44px;
     }
   }

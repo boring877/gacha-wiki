@@ -1,7 +1,7 @@
 ---
 import GuideLayout from '../../../layouts/horizon-walker/GuideLayout.astro';
 import { apGuideData } from '../../../data/horizon-walker/ap-guide.js';
-import { Image } from 'astro:assets';
+import APImage from '../../../components/horizon-walker/APImage.astro';
 
 const breadcrumbs = [{ name: 'AP Guide' }];
 ---
@@ -49,8 +49,8 @@ const breadcrumbs = [{ name: 'AP Guide' }];
         {/* Image */}
         {section.image && (
           <div class="hw-guide-image-container">
-            <Image
-              src={section.image.path}
+            <APImage
+              imageName={section.image.path}
               alt={section.image.caption}
               class="hw-guide-image"
               width={600}

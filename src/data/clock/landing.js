@@ -39,7 +39,7 @@ export const clockLandingGames = [
     id: 'horizon-walker',
     name: 'Horizon Walker',
     description: 'Post-apocalyptic RPG',
-    image: '/images/games/horizon-walker/gameimg/gameicon.jpg',
+    image: '', // Image will be imported directly in the Astro page
     url: '/clock/horizon-walker',
     themeColor: 'var(--hw-primary-warm)',
     active: true,

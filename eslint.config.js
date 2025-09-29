@@ -10,8 +10,9 @@ export default [
   // Astro configuration
   ...astroeslint.configs.recommended,
 
-  // Global configuration for all files
+  // Global configuration for JS/TS files
   {
+    files: ['**/*.{js,ts}'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -118,9 +119,17 @@ export default [
     },
   },
 
-  // Astro files - disable undef rule (handled by Astro)
+  // Astro files - use special parser and disable undef rule
   {
     files: ['*.astro', '**/*.astro'],
+    languageOptions: {
+      parser: astroeslint.parser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        extraFileExtensions: ['.astro'],
+      },
+    },
     rules: {
       'no-undef': 'off',
     },

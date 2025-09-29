@@ -25,11 +25,12 @@
 
 /* Page title with standardized styling (matches wikis page) */
 .page-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--text-4xl);
-  font-weight: 900;
+  font-family: var(--font-display); /* Use display font from typography system */
+  font-size: var(--text-4xl); /* Use size from typography system */
+  font-weight: var(--font-bold); /* Use bold weight from typography system */
   color: var(--amber-glow);
   margin: 0 0 2rem 0;
+  line-height: var(--leading-tight); /* Use leading from typography system */
 }
 
 /* === HERO CONTAINER === */
@@ -55,11 +56,13 @@
 
 /* Hero text styling */
 .hero-text {
-  font-size: 1.2rem;
-  line-height: 1.7;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-base); /* Use size from typography system */
+  line-height: var(--leading-relaxed); /* Use leading from typography system */
   color: var(--text-inverse);
   margin: 0 0 1.5rem 0;
   text-align: center;
+  font-weight: var(--font-normal); /* Use normal weight from typography system */
 }
 
 .hero-text:last-child {
@@ -68,12 +71,13 @@
 
 .hero-text strong {
   color: var(--amber-glow);
-  font-weight: 600;
+  font-weight: var(--font-bold); /* Use bold weight from typography system for emphasis */
 }
 
 .hero-text a {
   color: var(--amber-glow);
   text-decoration: underline;
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system for emphasis */
 }
 
 /* === RESPONSIVE DESIGN === */
@@ -83,7 +87,7 @@
   }
 
   .page-title {
-    font-size: 2rem;
+    font-size: var(--text-3xl); /* Use size from typography system */
   }
 
   .hero-container {
@@ -93,7 +97,7 @@
   }
 
   .hero-text {
-    font-size: 1.1rem;
+    font-size: var(--text-sm); /* Use size from typography system */
   }
 }
 
@@ -109,7 +113,7 @@
   }
 
   .page-title {
-    font-size: 1.8rem;
+    font-size: var(--text-2xl); /* Use size from typography system */
     margin: 0 0 1rem 0;
   }
 
@@ -124,8 +128,8 @@
   }
 
   .hero-text {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: var(--text-sm); /* Use size from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
     margin: 0 0 1.25rem 0;
   }
 

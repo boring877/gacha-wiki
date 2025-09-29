@@ -214,7 +214,7 @@ const rawKalmaData = {
     name: "EX Arcane Orb - Storm's Eye",
     type: 'Arcane Orb',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Kalma_WP.jpg',
+    image: 'Kalma_WP.jpg',
     stats: {
       weaponMagicAtk: '105.0',
       critDmgBonus: '+42.0%',

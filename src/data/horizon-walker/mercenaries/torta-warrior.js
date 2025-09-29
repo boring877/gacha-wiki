@@ -11,9 +11,6 @@ export const tortaWarriorMercenary = {
   rarity: 'B',
   cost: 5,
 
-  // Images
-  image: '/images/games/horizon-walker/characters/Torta_warrior.jpg',
-
   // Basic Stats (at max level)
   stats: {
     // Basic Stats

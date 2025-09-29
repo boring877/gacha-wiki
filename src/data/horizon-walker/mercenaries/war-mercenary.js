@@ -11,9 +11,6 @@ export const warMercenaryMercenary = {
   rarity: 'B',
   cost: 4,
 
-  // Images
-  image: '/images/games/horizon-walker/characters/War_Mercenary.jpg',
-
   // Basic Stats (at max level)
   stats: {
     // Basic Stats

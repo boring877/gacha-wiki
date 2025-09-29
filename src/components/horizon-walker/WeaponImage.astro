@@ -1,0 +1,133 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all weapon images once
+import Araha_WPImg from '../../assets/images/games/horizon-walker/weapons/Araha_WP.jpg';
+import Bella_WPImg from '../../assets/images/games/horizon-walker/weapons/Bella_WP.jpg';
+import Berga_WPImg from '../../assets/images/games/horizon-walker/weapons/Berga_WP.jpg';
+import Cora_WPImg from '../../assets/images/games/horizon-walker/weapons/Cora_WP.jpg';
+import Efreeti_WPImg from '../../assets/images/games/horizon-walker/weapons/Efreeti_WP.jpg';
+import Everette_WPImg from '../../assets/images/games/horizon-walker/weapons/Everette_WP.jpg';
+import Fammene_WPImg from '../../assets/images/games/horizon-walker/weapons/Fammene_WP.jpg';
+import Gridelda_WPImg from '../../assets/images/games/horizon-walker/weapons/Gridelda_WP.jpg';
+import Headless_Knight_WPImg from '../../assets/images/games/horizon-walker/weapons/Headless_Knight_WP.jpg';
+import Ines_WPImg from '../../assets/images/games/horizon-walker/weapons/Ines_WP.jpg';
+import Juha_WPImg from '../../assets/images/games/horizon-walker/weapons/Juha_WP.jpg';
+import Kalina_WPImg from '../../assets/images/games/horizon-walker/weapons/Kalina_WP.jpg';
+import Kalma_WPImg from '../../assets/images/games/horizon-walker/weapons/Kalma_WP.jpg';
+import Kilon_WPImg from '../../assets/images/games/horizon-walker/weapons/Kilon_WP.jpg';
+import Korabi_WPImg from '../../assets/images/games/horizon-walker/weapons/Korabi_WP.jpg';
+import Lisandria_WPImg from '../../assets/images/games/horizon-walker/weapons/Lisandria_WP.jpg';
+import Luise_WPImg from '../../assets/images/games/horizon-walker/weapons/Luise_WP.jpg';
+import Mahari_WPImg from '../../assets/images/games/horizon-walker/weapons/Mahari_WP.jpg';
+import Marhim_WPImg from '../../assets/images/games/horizon-walker/weapons/Marhim_WP.jpg';
+import Matrotho_WPImg from '../../assets/images/games/horizon-walker/weapons/Matrotho_WP.jpg';
+import Min_Eun_sol_WPImg from '../../assets/images/games/horizon-walker/weapons/Min_Eun_sol_WP.jpg';
+import Nari_WPImg from '../../assets/images/games/horizon-walker/weapons/Nari_WP.jpg';
+import Nika_WPImg from '../../assets/images/games/horizon-walker/weapons/Nika_WP.jpg';
+import Nymset_WPImg from '../../assets/images/games/horizon-walker/weapons/Nymset_WP.jpg';
+import Olivia_WPImg from '../../assets/images/games/horizon-walker/weapons/Olivia_WP.jpg';
+import Osla_WPImg from '../../assets/images/games/horizon-walker/weapons/Osla_WP.jpg';
+import Pantheri_WPImg from '../../assets/images/games/horizon-walker/weapons/Pantheri_WP.jpg';
+import Platina_WPImg from '../../assets/images/games/horizon-walker/weapons/Platina_WP.jpg';
+import Samarika_WPImg from '../../assets/images/games/horizon-walker/weapons/Samarika_WP.jpg';
+import So_Joo_hee_WPImg from '../../assets/images/games/horizon-walker/weapons/So_Joo_hee_WP.jpg';
+import TX_Manticore_WPImg from '../../assets/images/games/horizon-walker/weapons/TX_Manticore.jpg';
+import Valeta_WPImg from '../../assets/images/games/horizon-walker/weapons/Valeta_WP.jpg';
+import Vlissing_WPImg from '../../assets/images/games/horizon-walker/weapons/Vlissing_WP.jpg';
+import Yeon_Chae_Young_WPImg from '../../assets/images/games/horizon-walker/weapons/Yeon_Chae-Young_WP.jpg';
+import Yeonwoo_WPImg from '../../assets/images/games/horizon-walker/weapons/Yeonwoo_WP.jpg';
+import Yui_WPImg from '../../assets/images/games/horizon-walker/weapons/Yui_WP.jpg';
+import Yvonna_WPImg from '../../assets/images/games/horizon-walker/weapons/Yvonna_WP.jpg';
+
+// Centralized weapon image mapping
+const weaponImageMap = {
+  'Araha_WP.jpg': Araha_WPImg,
+  'Bella_WP.jpg': Bella_WPImg,
+  'Berga_WP.jpg': Berga_WPImg,
+  'Cora_WP.jpg': Cora_WPImg,
+  'Efreeti_WP.jpg': Efreeti_WPImg,
+  'Everette_WP.jpg': Everette_WPImg,
+  'Fammene_WP.jpg': Fammene_WPImg,
+  'Gridelda_WP.jpg': Gridelda_WPImg,
+  'Headless_Knight_WP.jpg': Headless_Knight_WPImg,
+  'Ines_WP.jpg': Ines_WPImg,
+  'Juha_WP.jpg': Juha_WPImg,
+  'Kalina_WP.jpg': Kalina_WPImg,
+  'Kalma_WP.jpg': Kalma_WPImg,
+  'Kilon_WP.jpg': Kilon_WPImg,
+  'Korabi_WP.jpg': Korabi_WPImg,
+  'Lisandria_WP.jpg': Lisandria_WPImg,
+  'Luise_WP.jpg': Luise_WPImg,
+  'Mahari_WP.jpg': Mahari_WPImg,
+  'Marhim_WP.jpg': Marhim_WPImg,
+  'Matrotho_WP.jpg': Matrotho_WPImg,
+  'Min_Eun_sol_WP.jpg': Min_Eun_sol_WPImg,
+  'Nari_WP.jpg': Nari_WPImg,
+  'Nika_WP.jpg': Nika_WPImg,
+  'Nymset_WP.jpg': Nymset_WPImg,
+  'Olivia_WP.jpg': Olivia_WPImg,
+  'Osla_WP.jpg': Osla_WPImg,
+  'Pantheri_WP.jpg': Pantheri_WPImg,
+  'Platina_WP.jpg': Platina_WPImg,
+  'Samarika_WP.jpg': Samarika_WPImg,
+  'So_Joo_hee_WP.jpg': So_Joo_hee_WPImg,
+  'TX_Manticore.jpg': TX_Manticore_WPImg,
+  'Valeta_WP.jpg': Valeta_WPImg,
+  'Vlissing_WP.jpg': Vlissing_WPImg,
+  'Yeon_Chae-Young_WP.jpg': Yeon_Chae_Young_WPImg,
+  'Yeonwoo_WP.jpg': Yeonwoo_WPImg,
+  'Yui_WP.jpg': Yui_WPImg,
+  'Yvonna_WP.jpg': Yvonna_WPImg,
+};
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 200,
+  height = 300,
+  class: className,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Get the imported image object from the map
+// Handle both full paths and filenames with/without extension
+let imageKey = imageName;
+
+// If it's a full path, extract just the filename
+if (imageKey.includes('/')) {
+  imageKey = imageKey.split('/').pop() || imageKey;
+}
+
+// If no extension, add .jpg
+if (!imageKey.includes('.')) {
+  imageKey = `${imageKey}.jpg`;
+}
+
+// Get the imported image object from the map, fallback to Araha weapon if not found
+const imageSrc = weaponImageMap[imageKey] || weaponImageMap['Araha_WP.jpg'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

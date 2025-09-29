@@ -34,11 +34,11 @@
   }
 
   .hero-text-gradient {
-    font-size: clamp(2rem, 8vw, 2.8rem);
+    font-size: clamp(var(--text-2xl), 8vw, var(--text-3xl)); /* Use size from typography system */
   }
 
   .hero-subtitle {
-    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    font-size: clamp(var(--text-sm), 3vw, var(--text-base)); /* Use size from typography system */
   }
 
   /* === HERO CTA MOBILE OPTIMIZATIONS === */
@@ -77,13 +77,13 @@
   }
 
   .game-name {
-    font-size: 1.3rem;
-    line-height: 1.2;
+    font-size: var(--text-lg); /* Use size from typography system */
+    line-height: var(--leading-tight); /* Use leading from typography system */
   }
 
   .game-status {
-    font-size: 0.75rem;
-    line-height: 1.3;
+    font-size: var(--text-xs); /* Use size from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   .clock-display {
@@ -111,7 +111,7 @@
   }
 
   .time-value {
-    font-size: 2.2rem;
+    font-size: var(--text-3xl); /* Use size from typography system */
     min-width: 2ch;
     width: 100%;
     height: 1.1em;
@@ -119,10 +119,11 @@
     align-items: center;
     justify-content: center;
     font-variant-numeric: tabular-nums;
+    line-height: var(--leading-tight); /* Use leading from typography system */
   }
 
   .time-separator {
-    font-size: 1.8rem;
+    font-size: var(--text-2xl); /* Use size from typography system */
     flex: 0 0 auto;
     width: 20px;
     height: 1.1em;
@@ -130,11 +131,13 @@
     align-items: center;
     justify-content: center;
     margin-top: -2rem;
+    line-height: var(--leading-tight); /* Use leading from typography system */
   }
 
   .time-label {
-    font-size: 0.65rem;
-    font-weight: 600;
+    font-size: var(--text-xs); /* Use size from typography system */
+    font-weight: var(--font-semibold); /* Use semibold weight from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   .timer-description-section {
@@ -149,23 +152,24 @@
   }
 
   .timer-main-label {
-    font-size: 0.9rem;
+    font-size: var(--text-sm); /* Use size from typography system */
     margin-bottom: 0.25rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.2;
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   .timer-details {
-    font-size: 0.8rem;
+    font-size: var(--text-xs); /* Use size from typography system */
     margin-bottom: 0.25rem;
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   .timer-reset-time {
-    font-size: 0.75rem;
+    font-size: var(--text-xs); /* Use size from typography system */
     white-space: nowrap;
-    line-height: 1.2;
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   .clock-navigation {
@@ -190,9 +194,10 @@
 
   .rotation-toggle {
     padding: 0.5rem 0.875rem;
-    font-size: 0.75rem;
+    font-size: var(--text-xs); /* Use size from typography system */
     gap: 0.4rem;
     border-radius: 16px;
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   /* === CLOCK FOOTER CONTROLS MOBILE === */
@@ -212,8 +217,9 @@
   }
 
   .clock-opensource-text {
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: var(--text-xs); /* Use size from typography system */
+    font-weight: var(--font-semibold); /* Use semibold weight from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   .clock-opensource-star {
@@ -234,8 +240,9 @@
   }
 
   .clock-star-count {
-    font-size: 0.65rem;
-    font-weight: 700;
+    font-size: var(--text-xs); /* Use size from typography system */
+    font-weight: var(--font-bold); /* Use bold weight from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 }
 
@@ -262,11 +269,13 @@
   }
 
   .timer-main-label {
-    font-size: 0.85rem;
+    font-size: var(--text-sm); /* Use size from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   .timer-reset-time {
-    font-size: 0.7rem;
+    font-size: var(--text-xs); /* Use size from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   .time-unit-group {
@@ -280,19 +289,22 @@
   }
 
   .time-value {
-    font-size: 2rem;
+    font-size: var(--text-2xl); /* Use size from typography system */
     height: 1em;
+    line-height: var(--leading-tight); /* Use leading from typography system */
   }
 
   .time-separator {
-    font-size: 1.6rem;
+    font-size: var(--text-xl); /* Use size from typography system */
     width: 18px;
     height: 1em;
     margin-top: -1.8rem;
+    line-height: var(--leading-tight); /* Use leading from typography system */
   }
 
   .time-label {
-    font-size: 0.6rem;
+    font-size: var(--text-xs); /* Use size from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   /* === CLOCK FOOTER CONTROLS SMALL MOBILE === */
@@ -312,8 +324,9 @@
   }
 
   .clock-opensource-text {
-    font-size: 0.65rem;
-    font-weight: 600;
+    font-size: var(--text-xs); /* Use size from typography system */
+    font-weight: var(--font-semibold); /* Use semibold weight from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   .clock-opensource-star {
@@ -334,8 +347,9 @@
   }
 
   .clock-star-count {
-    font-size: 0.6rem;
-    font-weight: 700;
+    font-size: var(--text-xs); /* Use size from typography system */
+    font-weight: var(--font-bold); /* Use bold weight from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 }
 
@@ -358,8 +372,9 @@
   }
 
   .clock-opensource-text {
-    font-size: 0.6rem;
-    font-weight: 600;
+    font-size: var(--text-xs); /* Use size from typography system */
+    font-weight: var(--font-semibold); /* Use semibold weight from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 
   .clock-opensource-star {
@@ -380,8 +395,9 @@
   }
 
   .clock-star-count {
-    font-size: 0.55rem;
-    font-weight: 700;
+    font-size: var(--text-xs); /* Use size from typography system */
+    font-weight: var(--font-bold); /* Use bold weight from typography system */
+    line-height: var(--leading-normal); /* Use leading from typography system */
   }
 }
 

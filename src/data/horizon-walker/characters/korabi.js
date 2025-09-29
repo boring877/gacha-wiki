@@ -85,7 +85,7 @@ const rawKorabiData = {
     name: 'Red Pudding',
     type: 'EX Staff',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Korabi_WP.jpg',
+    image: 'Korabi_WP.jpg',
     stats: {
       weaponMagicAtk: '84.0',
       slashBoost: '42.0',

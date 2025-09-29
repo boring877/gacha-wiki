@@ -10,6 +10,7 @@ import GeneralSEO from '../../components/GeneralSEO.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
 import SpeedInsights from '../../components/SpeedInsights.astro';
+import { Image } from 'astro:assets';
 
 // Import CSS files
 import '../../styles/games/horizon-walker/hw-colors.css';
@@ -17,7 +18,6 @@ import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/clock/layout.css';
 import '../../styles/clock/horizon-walker.css';
-import { Image } from 'astro:assets';
 
 export interface Props {
   title: string;
@@ -123,10 +123,10 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                             alt={game.name}
                             loading="eager"
                             fetchpriority="high"
-                            width={50}
-                            height={52}
+                            width={200}
+                            height={208}
                             format="webp"
-                            quality={75}
+                            quality={90}
                           />
                         </div>
                         <div class="game-info">

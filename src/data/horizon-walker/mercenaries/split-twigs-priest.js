@@ -11,9 +11,6 @@ export const splitTwigsPriestMercenary = {
   rarity: 'B',
   cost: 4,
 
-  // Images
-  image: '/images/games/horizon-walker/characters/Split_Twigs_Priest.jpg',
-
   // Basic Stats (at max level)
   stats: {
     // Basic Stats

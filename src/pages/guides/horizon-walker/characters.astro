@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import CharacterLayout from '../../../layouts/horizon-walker/CharacterLayout.astro';
 import {
   HORIZON_WALKER_CHARACTERS,
@@ -13,11 +12,7 @@ import {
   getAgilityValue,
   getTechnicValue,
 } from '../../../utils/horizon-walker/character-table-utils.js';
-
-// Dynamic image imports for performance optimization
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '../../../assets/images/games/horizon-walker/characters/*.{jpg,jpeg,png}'
-);
+import CharacterImage from '../../../components/horizon-walker/CharacterImage.astro';
 
 // Extract filter options from enhanced data structure
 const { rarities } = gameInfo;
@@ -29,15 +24,6 @@ const ssCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'SS').l
 const sCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'S').length;
 const aCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'A').length;
 const bCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'B').length;
-
-// Resolve images at build time for better performance
-const resolvedImages = {};
-for (const path in images) {
-  const imageName = path.split('/').pop()?.replace('.jpg', '');
-  if (imageName) {
-    resolvedImages[imageName] = await images[path]();
-  }
-}
 
 // Character name to filename mapping
 const getImageKey = characterName => {
@@ -58,12 +44,6 @@ const getImageKey = characterName => {
   if (characterName === 'So Joo-hee') filename = 'So_Joo_hee';
 
   return filename;
-};
-
-// Helper function to get optimized character image
-const getOptimizedImage = characterName => {
-  const imageKey = getImageKey(characterName);
-  return resolvedImages[imageKey]?.default || '/images/games/horizon-walker/gameimg/gameicon.jpg';
 };
 
 // SEO metadata
@@ -144,17 +124,13 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                     <td>{idx + 1}</td>
                     <td>
                       <div class="desktop-character-image">
-                        <Image
-                          src={getOptimizedImage(character.name)}
+                        <CharacterImage
+                          imageName={getImageKey(character.name)}
                           alt={character.name}
                           class="character-img"
                           width={80}
                           height={80}
-                          format="webp"
-                          quality={85}
                           loading={idx < 10 ? 'eager' : 'lazy'}
-                          fetchpriority={idx < 5 ? 'high' : 'auto'}
-                          decoding="async"
                         />
                       </div>
                     </td>
@@ -217,17 +193,13 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                 <div class="mobile-card-header">
                   <div class="mobile-card-image">
                     <div class="mobile-character-image">
-                      <Image
-                        src={getOptimizedImage(char.name)}
+                      <CharacterImage
+                        imageName={getImageKey(char.name)}
                         alt={char.name}
                         class="character-img"
                         width={64}
                         height={64}
-                        format="webp"
-                        quality={85}
                         loading={idx < 6 ? 'eager' : 'lazy'}
-                        fetchpriority={idx < 3 ? 'high' : 'auto'}
-                        decoding="async"
                       />
                     </div>
                   </div>

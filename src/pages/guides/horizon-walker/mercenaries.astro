@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import MercenaryImage from '../../../components/horizon-walker/MercenaryImage.astro';
 import MercenaryLayout from '../../../layouts/horizon-walker/MercenaryLayout.astro';
 import {
   HORIZON_WALKER_MERCENARIES,
@@ -99,8 +99,8 @@ export const prerender = true;
                     <td>{idx + 1}</td>
                     <td>
                       <div class="desktop-character-image">
-                        <Image
-                          src={mercenary.image}
+                        <MercenaryImage
+                          imageName={mercenary.name}
                           alt={mercenary.name}
                           class="character-img"
                           width={80}
@@ -160,14 +160,12 @@ export const prerender = true;
                 <div class="mobile-card-header">
                   <div class="mobile-card-image">
                     <div class="mobile-character-image">
-                      <Image
-                        src={mercenary.image}
+                      <MercenaryImage
+                        imageName={mercenary.name}
                         alt={mercenary.name}
                         class="character-img"
                         width={64}
                         height={64}
-                        format="webp"
-                        quality={85}
                         loading="lazy"
                       />
                     </div>

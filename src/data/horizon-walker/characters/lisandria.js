@@ -119,7 +119,7 @@ const rawLisandriaData = {
     name: 'EX One-handed sword - Vengeful Thornblade',
     type: 'EX One-handed Sword',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Lisandria_WP.jpg',
+    image: 'Lisandria_WP.jpg',
     stats: {
       weaponMeleeAtk: '70.0',
       weaponMagicAtk: '70.0',

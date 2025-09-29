@@ -11,9 +11,6 @@ export const swampElfVigilanteMercenary = {
   rarity: 'B',
   cost: 4,
 
-  // Images
-  image: '/images/games/horizon-walker/characters/Swamp_Elf_Vigilante_member.jpg',
-
   // Basic Stats (at max level)
   stats: {
     // Basic Stats

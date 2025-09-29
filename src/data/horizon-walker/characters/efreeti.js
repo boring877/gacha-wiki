@@ -188,7 +188,7 @@ const rawEfreetiData = {
   // Weapon
   weapon: {
     name: 'EX Arcane Orb - Vulkanus',
-    image: '/images/games/horizon-walker/weapons/Efreeti_WP.jpg',
+    image: 'Efreeti_WP.jpg',
     rarity: 'EX',
     type: 'Arcane Orb',
     stats: {

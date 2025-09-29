@@ -119,7 +119,7 @@ const rawLuiseData = {
     name: 'EX Staff - Sol',
     type: 'EX Staff',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Luise_WP.jpg',
+    image: 'Luise_WP.jpg',
     stats: {
       weaponMagicAtk: '91.0',
       heatBoost: '35.0',

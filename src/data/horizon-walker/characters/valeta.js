@@ -185,7 +185,7 @@ const rawValetaData = {
     name: 'EX One-handed sword - The Bloody Acacia',
     type: 'One-handed sword',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Valeta_WP.jpg',
+    image: 'Valeta_WP.jpg',
     stats: {
       weaponMeleeAtk: '84.0',
       weaponMagicAtk: '84.0',

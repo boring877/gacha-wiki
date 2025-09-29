@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import gameimg1 from '../../assets/images/games/horizon-walker/gameimg/1.png';
+import gameimg2 from '../../assets/images/games/horizon-walker/gameimg/2.png';
+import gameimg3 from '../../assets/images/games/horizon-walker/gameimg/3.png';
+import gameimg4 from '../../assets/images/games/horizon-walker/gameimg/4.png';
+import gameicon from '../../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 1200,
+  height = 400,
+  class: className,
+  loading = 'eager',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Map image names to imported image modules
+const imageMap = {
+  '/images/games/horizon-walker/gameimg/1.png': gameimg1,
+  '/images/games/horizon-walker/gameimg/2.png': gameimg2,
+  '/images/games/horizon-walker/gameimg/3.png': gameimg3,
+  '/images/games/horizon-walker/gameimg/4.png': gameimg4,
+  '/images/games/horizon-walker/gameimg/gameicon.jpg': gameicon,
+  '1.png': gameimg1,
+  '2.png': gameimg2,
+  '3.png': gameimg3,
+  '4.png': gameimg4,
+  'gameicon.jpg': gameicon,
+};
+
+// Get the image module based on the imageName
+const filename = imageName.split('/').pop() || '1.png';
+const imageModule = imageMap[imageName] || imageMap[filename] || gameimg1;
+---
+
+<!-- Use Astro's Image component for optimization -->
+<Image
+  src={imageModule}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

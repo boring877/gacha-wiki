@@ -30,7 +30,7 @@ export const apGuideData = {
           'Note: The Agility stat increases the Base AP Recovery. Characters that have high agility benefit more from AP Recovery increases, because the % of increase will be much higher!',
       },
       image: {
-        path: '/images/games/horizon-walker/AP_recovery/img1.jpg',
+        path: '../../assets/images/games/horizon-walker/AP_recovery/img1.jpg',
         caption: 'AP Stats Display - Agility affects AP Recovery',
       },
     },
@@ -42,7 +42,7 @@ export const apGuideData = {
         "Let's take Yeonwoo as an example:",
       ],
       image: {
-        path: '/images/games/horizon-walker/AP_recovery/img2.jpg',
+        path: '../../assets/images/games/horizon-walker/AP_recovery/img2.jpg',
         caption: "Yeonwoo's AP Stats - 56 Starting AP, 109 AP Recovery",
       },
       example: {
@@ -56,7 +56,7 @@ export const apGuideData = {
       title: 'The 100 AP Threshold Rule',
       content: ['Turn one she has 165 AP, and her basic skill costs 30 AP.'],
       image: {
-        path: '/images/games/horizon-walker/AP_recovery/img3.JPG',
+        path: '../../assets/images/games/horizon-walker/AP_recovery/img3.jpg',
         caption: 'Turn 1 - Yeonwoo has 165 AP, basic skill costs 30 AP',
       },
       warningBox: {

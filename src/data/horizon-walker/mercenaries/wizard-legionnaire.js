@@ -11,9 +11,6 @@ export const wizardLegionnaireMercenary = {
   rarity: 'B',
   cost: 5,
 
-  // Images
-  image: '/images/games/horizon-walker/characters/Wizard_Legionnaire.jpg',
-
   // Basic Stats (at max level)
   stats: {
     // Basic Stats

@@ -97,9 +97,10 @@
 .title-only-heading {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
-  font-weight: 900;
+  font-weight: var(--font-black);
   margin: 0;
   color: var(--text-inverse);
+  line-height: var(--leading-tight);
 }
 
 /* === SHARED MASTER CLOCK CONTAINER === */
@@ -174,12 +175,13 @@
 .utc-note {
   font-family: var(--font-display);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: var(--font-medium);
   color: rgba(255, 255, 255, 0.7);
   margin: 0 0 2rem 0;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-normal);
   position: relative;
+  line-height: var(--leading-normal);
 }
 
 .current-time-info {
@@ -193,14 +195,16 @@
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   color: rgba(255, 255, 255, 0.6);
-  font-weight: 500;
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
 }
 
 .current-utc {
   font-family: var(--font-primary);
   font-size: var(--text-base);
   color: rgba(255, 255, 255, 0.9);
-  font-weight: 700;
+  font-weight: var(--font-bold);
+  line-height: var(--leading-normal);
 }
 
 /* === SHARED MAIN CONTENT LAYOUT === */
@@ -274,19 +278,19 @@
 .game-name {
   font-family: var(--font-display);
   font-size: var(--text-xl);
-  font-weight: 700;
+  font-weight: var(--font-bold);
   margin: 0;
-  line-height: 1.1;
+  line-height: var(--leading-tight);
 }
 
 .game-status {
   font-family: var(--font-display);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: var(--font-medium);
   color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.3;
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--leading-normal);
 }
 
 /* === SHARED TIMER DISPLAY === */
@@ -298,10 +302,11 @@
 .timer-main-label {
   font-family: var(--font-display);
   font-size: var(--text-xl);
-  font-weight: 700;
+  font-weight: var(--font-bold);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-normal);
 }
 
 .clock-display {
@@ -325,9 +330,9 @@
 
 .time-value {
   font-family: var(--font-primary);
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 1;
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
   min-width: 2ch;
   text-align: center;
 }
@@ -335,18 +340,19 @@
 .time-label {
   font-family: var(--font-primary);
   font-size: var(--text-xs);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--tracking-wide);
   opacity: 0.7;
+  line-height: var(--leading-normal);
 }
 
 .time-separator {
   font-family: var(--font-primary);
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
   opacity: 0.5;
-  line-height: 1;
+  line-height: var(--leading-tight);
 }
 
 /* === SHARED TIMERS GRID === */
@@ -415,9 +421,10 @@
 .timer-card-title {
   font-family: var(--font-display);
   font-size: var(--text-lg);
-  font-weight: 700;
+  font-weight: var(--font-bold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--leading-normal);
 }
 
 .timer-card-subtitle {
@@ -441,18 +448,20 @@
 .timer-card-value {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
-  font-weight: 700;
+  font-weight: var(--font-bold);
   display: block;
   margin-bottom: 0.25rem;
+  line-height: var(--leading-normal);
 }
 
 .timer-card-label {
   font-family: var(--font-primary);
   font-size: var(--text-xs);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-normal);
   opacity: 0.7;
+  line-height: var(--leading-normal);
 }
 
 /* === SHARED RESPONSIVE DESIGN === */

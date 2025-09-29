@@ -173,7 +173,7 @@ const rawMarhimData = {
     name: 'EX Twin Swords - The Crimson Executioner',
     type: 'Twin Swords',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Marhim_WP.jpg',
+    image: 'Marhim_WP.jpg',
     stats: {
       weaponMeleeAtk: '77.0',
       critRateBonus: '+49.0%',

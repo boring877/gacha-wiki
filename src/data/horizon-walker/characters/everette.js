@@ -77,7 +77,7 @@ const rawEveretteData = {
     name: "The Queen's Platinum Staff",
     type: 'EX Staff',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Everette_WP.jpg',
+    image: 'Everette_WP.jpg',
     stats: {
       weaponMagicAtk: '77.0',
       startingApBonus: '+49.0',

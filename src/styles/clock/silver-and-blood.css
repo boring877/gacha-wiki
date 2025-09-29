@@ -69,12 +69,13 @@
 .title-only-heading {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
-  font-weight: 700;
+  font-weight: var(--font-bold);
   color: var(--sab-calm-red);
   margin: 0;
   padding: 0;
   display: block;
   position: relative;
+  line-height: var(--leading-tight);
 }
 
 .title-only-section {
@@ -91,10 +92,11 @@
 
 .timer-main-label {
   font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
   margin-bottom: 0.5rem;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-normal);
 }
 
 .server-reset-card .timer-main-label {
@@ -147,12 +149,13 @@
   background: var(--sab-clock-muted);
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
   color: var(--text-dark);
   white-space: nowrap;
-  letter-spacing: 0.025em;
+  letter-spacing: var(--tracking-normal);
   width: fit-content;
+  line-height: var(--leading-normal);
 }
 
 .region-label {
@@ -172,19 +175,20 @@
 .secondary-timers-card .timer-main-label {
   color: var(--sab-clock-red);
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
   margin-bottom: 0.75rem;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-normal);
 }
 
 .secondary-timers-card .timer-subtitle {
   color: var(--sab-clock-muted);
   font-family: var(--font-primary);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
   margin-bottom: 1.5rem;
-  line-height: 1.4;
+  line-height: var(--leading-normal);
 }
 
 /* === SILVER AND BLOOD TIMER CARDS === */
@@ -270,8 +274,9 @@
 .status-text {
   font-family: var(--font-primary);
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
   color: var(--sab-clock-white);
+  line-height: var(--leading-normal);
 }
 
 /* === SILVER AND BLOOD CARD STYLING === */
@@ -340,7 +345,8 @@
 .reset-name,
 .reset-subtitle {
   font-family: var(--font-primary);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-normal);
 }
 
 .maintenance-name,
@@ -357,8 +363,9 @@
 .maintenance-time,
 .reset-time {
   font-family: var(--font-primary);
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-normal);
 }
 
 /* === SILVER AND BLOOD LAUNCH COUNTER === */
@@ -383,9 +390,9 @@
 
 .launch-days {
   font-family: var(--font-primary);
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 1;
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
   text-align: center;
   width: 100%;
 }
@@ -393,11 +400,12 @@
 .launch-date {
   font-family: var(--font-primary);
   font-size: var(--text-xs);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-wide);
   text-align: center;
   margin-top: auto;
+  line-height: var(--leading-normal);
 }
 
 /* === SILVER AND BLOOD MOBILE OPTIMIZATION === */

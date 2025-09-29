@@ -191,7 +191,7 @@ const rawYvonnaData = {
 
   // Weapon
   weapon: {
-    image: '/images/games/horizon-walker/weapons/Yvonna_WP.jpg',
+    image: 'Yvonna_WP.jpg',
     name: 'EX Staff - Skadia',
     type: 'Staff',
     rarity: 'EX',

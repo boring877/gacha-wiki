@@ -12,9 +12,11 @@ export interface NavigationSection {
 
 export interface GameData {
   name: string;
-  image: string;
+  image: string | any;
   sections: NavigationSection[];
 }
+
+import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 
 export const GAMES_DATA: Record<GameKey, GameData> = {
   'silver-and-blood': {
@@ -118,7 +120,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
   },
   'horizon-walker': {
     name: 'Horizon Walker',
-    image: '/images/games/horizon-walker/gameimg/gameicon.jpg',
+    image: GameIcon,
     sections: [
       {
         title: 'Characters',

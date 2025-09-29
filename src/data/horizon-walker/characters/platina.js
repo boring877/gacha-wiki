@@ -85,7 +85,7 @@ const rawPlatinaData = {
     name: 'The First Heart',
     type: 'EX Ancient Core',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Platina_WP.jpg',
+    image: 'Platina_WP.jpg',
     stats: {
       weaponMeleeAtk: '77.0',
       maxHpBonus: '+49.0%',

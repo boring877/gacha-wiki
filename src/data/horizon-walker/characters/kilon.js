@@ -80,7 +80,7 @@ const rawKilonData = {
     name: 'Aronbite',
     type: 'EX Two-handed Sword',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Kilon_WP.jpg',
+    image: 'Kilon_WP.jpg',
     stats: {
       weaponMeleeAtk: '91.0',
       meleeAtkBonus: '+35.0%',

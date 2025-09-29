@@ -28,8 +28,8 @@
     "astro": "astro",
     "check": "astro check",
     "sync": "astro sync",
-    "lint": "eslint . --ext .js,.ts",
-    "lint:fix": "eslint . --ext .js,.ts --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write . --ignore-path .gitignore",
     "format:check": "prettier --check . --ignore-path .gitignore",
     "validate": "bun run scripts/validate-data.ts",
@@ -45,7 +45,6 @@
   "type": "module",
   "lint-staged": {
     "*.{js,ts}": [
-      "eslint --fix",
       "prettier --write"
     ],
     "*.{json,md,css,astro}": [

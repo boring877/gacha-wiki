@@ -160,7 +160,7 @@ const rawFammeneData = {
     name: 'EX Arcane Orb - The Anguished Rose',
     type: 'Arcane Orb',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/weapons/Fammene_WP.jpg',
+    image: 'Fammene_WP.jpg',
     stats: {
       weaponMagicAtk: '77.0',
       magicAtkBonus: '+49.0%',

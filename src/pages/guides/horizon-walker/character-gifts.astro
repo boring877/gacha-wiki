@@ -2,7 +2,8 @@
 import CharacterGiftLayout from '../../../layouts/horizon-walker/CharacterGiftLayout.astro';
 import { CHARACTER_GIFT_PREFERENCES } from '../../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../../data/horizon-walker/gifts.js';
-import { Image } from 'astro:assets';
+import GiftImage from '../../../components/horizon-walker/GiftImage.astro';
+import CharacterImage from '../../../components/horizon-walker/CharacterImage.astro';
 
 // Create a mapping of gift ID to gift boxes that contain it
 const giftToBoxMapping = {};
@@ -76,7 +77,7 @@ const queensTiaraGift = {
   id: 'queens-tiara',
   name: "Queen's Tiara",
   rarity: 'EX',
-  image: '/images/games/horizon-walker/Gifts/Queen_tiara.jpg',
+  image: '../../assets/images/games/horizon-walker/Gifts/Queen_tiara.jpg',
   basePoints: 100,
   bonusPoints: 0,
   totalPoints: 100,
@@ -158,8 +159,8 @@ const queensTiaraGift = {
               <span class="hw-label">Level Up Rewards:</span>
               <div class="hw-reward-icons">
                 <div class="hw-reward-icon-item">
-                  <Image
-                    src="/images/games/horizon-walker/Gifts/Gold.jpg"
+                  <GiftImage
+                    imageName="Gold.jpg"
                     alt="Gold"
                     class="hw-reward-icon"
                     width={32}
@@ -169,8 +170,8 @@ const queensTiaraGift = {
                   <span class="hw-reward-name">Gold</span>
                 </div>
                 <div class="hw-reward-icon-item">
-                  <Image
-                    src="/images/games/horizon-walker/Gifts/Extercium.jpg"
+                  <GiftImage
+                    imageName="Extercium.jpg"
                     alt="Extercium"
                     class="hw-reward-icon"
                     width={32}
@@ -230,8 +231,8 @@ const queensTiaraGift = {
           >
             <div class="hw-character-header">
               <div class="hw-character-image">
-                <Image
-                  src={character.image}
+                <CharacterImage
+                  imageName={character.image.split('/').pop()}
                   alt={character.name}
                   class="character-img"
                   width={100}
@@ -270,8 +271,8 @@ const queensTiaraGift = {
                   {character.favorites.map(gift => (
                     <div class="hw-favorite-item">
                       <div class="hw-favorite-gift-image">
-                        <Image
-                          src={gift.image}
+                        <GiftImage
+                          imageName={gift.image.split('/').pop()}
                           alt={gift.name}
                           class="gift-favorite-img"
                           width={70}
@@ -321,8 +322,8 @@ const queensTiaraGift = {
                                 <h6 class="hw-sources-title">Available From</h6>
                                 {allBoxes.map(box => (
                                   <div class="hw-source-box">
-                                    <Image
-                                      src={box.image}
+                                    <GiftImage
+                                      imageName={box.image.split('/').pop()}
                                       alt={box.name}
                                       class="hw-source-icon"
                                       width={40}
@@ -348,8 +349,8 @@ const queensTiaraGift = {
                   {character.likes.map(gift => (
                     <div class="hw-like-item">
                       <div class="hw-like-gift-image">
-                        <Image
-                          src={gift.image}
+                        <GiftImage
+                          imageName={gift.image.split('/').pop()}
                           alt={gift.name}
                           class="gift-like-img"
                           width={70}
@@ -399,8 +400,8 @@ const queensTiaraGift = {
                                 <h6 class="hw-sources-title">Available From</h6>
                                 {allBoxes.map(box => (
                                   <div class="hw-source-box">
-                                    <Image
-                                      src={box.image}
+                                    <GiftImage
+                                      imageName={box.image.split('/').pop()}
                                       alt={box.name}
                                       class="hw-source-icon"
                                       width={40}
@@ -432,8 +433,8 @@ const queensTiaraGift = {
                     <div class="hw-alternative-content">
                       <div class="hw-alternative-item">
                         <div class="hw-alternative-gift-image">
-                          <Image
-                            src={queensTiaraGift.image}
+                          <GiftImage
+                            imageName={queensTiaraGift.image.split('/').pop()}
                             alt={queensTiaraGift.name}
                             class="gift-alternative-img"
                             width={70}
@@ -487,8 +488,8 @@ const queensTiaraGift = {
                                   <h6 class="hw-sources-title">Available From</h6>
                                   {allBoxes.map(box => (
                                     <div class="hw-source-box">
-                                      <Image
-                                        src={box.image}
+                                      <GiftImage
+                                        imageName={box.image.split('/').pop()}
                                         alt={box.name}
                                         class="hw-source-icon"
                                         width={40}

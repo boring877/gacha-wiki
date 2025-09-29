@@ -80,8 +80,8 @@
 
 /* Navigation Arrow */
 .nav-arrow {
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
   transition: transform 0.05s ease; /* Ultra fast arrow animation */
 }
 
@@ -110,16 +110,16 @@
 }
 
 .nav-label {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--hw-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: var(--tracking-wide);
 }
 
 .nav-character {
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   color: var(--hw-text-light);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
   max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -128,7 +128,7 @@
 
 /* Center button special styling */
 .center-button {
-  font-weight: 600;
+  font-weight: var(--font-semibold);
   background: var(--neutral-700);
   border-color: var(--neutral-600);
   color: var(--hw-white);
@@ -168,8 +168,8 @@
   color: var(--hw-text-light);
   background: var(--hw-bg-light);
   border: 1px solid var(--hw-border-light);
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
   transition: var(--hw-nav-transition);
   /* Add touch feedback */
   -webkit-tap-highlight-color: rgba(34, 197, 94, 0.2);

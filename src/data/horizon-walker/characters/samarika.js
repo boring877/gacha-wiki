@@ -149,7 +149,7 @@ const samarikaData = {
   // Character Weapon
   weapon: {
     name: 'EX Twin Swords - Nocturnal Watcher',
-    image: '/images/games/horizon-walker/weapons/Samarika_WP.jpg',
+    image: 'Samarika_WP.jpg',
     rarity: 'EX',
     type: 'Twin Swords',
     stats: {

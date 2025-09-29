@@ -11,9 +11,6 @@ export const koboldMercenary = {
   rarity: 'B',
   cost: 2,
 
-  // Images
-  image: '/images/games/horizon-walker/characters/Koblod_Mercenary.jpg',
-
   // Basic Stats (at max level)
   stats: {
     // Basic Stats

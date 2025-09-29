@@ -176,7 +176,7 @@ const rawSoJooHeeData = {
   // Weapon
   weapon: {
     name: 'EX Dual Pistols - Fleure de Vanite 92',
-    image: '/images/games/horizon-walker/weapons/So_Joo_hee_WP.jpg',
+    image: 'So_Joo_hee_WP.jpg',
     rarity: 'EX',
     type: 'Dual Pistols',
     stats: {

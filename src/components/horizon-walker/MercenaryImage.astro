@@ -1,0 +1,123 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all mercenary images once
+import GrrikMercenaryImg from '../../assets/images/games/horizon-walker/characters/Grrik_Mercenary.jpg';
+import GoliathImg from '../../assets/images/games/horizon-walker/characters/Goliath.jpg';
+import ImperialShieldbearerMercenaryImg from '../../assets/images/games/horizon-walker/characters/Imperial_Shieldbearer_Mercenary.jpg';
+import KoblodMercenaryImg from '../../assets/images/games/horizon-walker/characters/Koblod_Mercenary.jpg';
+import PuppyShooterImg from '../../assets/images/games/horizon-walker/characters/Puppy_Shooter.jpg';
+import PuppyStepperImg from '../../assets/images/games/horizon-walker/characters/Puppy_Stepper.jpg';
+import SplitTwigsPriestImg from '../../assets/images/games/horizon-walker/characters/Split_Twigs_Priest.jpg';
+import SwampElfVigilanteMemberImg from '../../assets/images/games/horizon-walker/characters/Swamp_Elf_Vigilante_member.jpg';
+import TortaWarriorImg from '../../assets/images/games/horizon-walker/characters/Torta_warrior.jpg';
+import WarMercenaryImg from '../../assets/images/games/horizon-walker/characters/War_Mercenary.jpg';
+import WizardLegionnaireImg from '../../assets/images/games/horizon-walker/characters/Wizard_Legionnaire.jpg';
+
+// Default fallback image
+import defaultMercenaryImg from '../../assets/images/games/horizon-walker/characters/War_Mercenary.jpg';
+
+// Centralized mercenary image mapping
+const mercenaryImageMap = {
+  'Grrik_Mercenary.jpg': GrrikMercenaryImg,
+  'Goliath.jpg': GoliathImg,
+  'Imperial_Shieldbearer_Mercenary.jpg': ImperialShieldbearerMercenaryImg,
+  'Koblod_Mercenary.jpg': KoblodMercenaryImg,
+  'Puppy_Shooter.jpg': PuppyShooterImg,
+  'Puppy_Stepper.jpg': PuppyStepperImg,
+  'Split_Twigs_Priest.jpg': SplitTwigsPriestImg,
+  'Swamp_Elf_Vigilante_member.jpg': SwampElfVigilanteMemberImg,
+  'Torta_warrior.jpg': TortaWarriorImg,
+  'War_Mercenary.jpg': WarMercenaryImg,
+  'Wizard_Legionnaire.jpg': WizardLegionnaireImg,
+};
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 100,
+  height = 100,
+  class: className,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Get the imported image object from the map
+// Handle both full paths and filenames with/without extension
+let imageKey = imageName;
+
+// Check if imageName is undefined or null
+if (!imageKey) {
+  // Use the default image as a fallback
+  imageKey = 'War_Mercenary.jpg';
+}
+
+// If it's a full path, extract just the filename
+if (imageKey.includes('/')) {
+  imageKey = imageKey.split('/').pop() || imageKey;
+}
+
+// Convert mercenary name to image filename
+// This handles the case where we're passing mercenary names instead of image filenames
+if (!imageKey.includes('.')) {
+  // Special case mappings for mercenary names to filenames
+  const nameToFilenameMap = {
+    'Swamp Elf Vigilante': 'Swamp_Elf_Vigilante_member.jpg',
+    'Imperial Shieldbearer': 'Imperial_Shieldbearer_Mercenary.jpg',
+    'War Mercenary': 'War_Mercenary.jpg',
+    'Torta Warrior': 'Torta_warrior.jpg',
+    'Wizard Legionnaire': 'Wizard_Legionnaire.jpg',
+    'Puppy Shooter': 'Puppy_Shooter.jpg',
+    'Puppy Stepper': 'Puppy_Stepper.jpg',
+    'Split Twigs Priest': 'Split_Twigs_Priest.jpg',
+    Grrik: 'Grrik_Mercenary.jpg',
+    Koblod: 'Koblod_Mercenary.jpg',
+    Kobold: 'Koblod_Mercenary.jpg', // Handle both capitalizations
+    Goliath: 'Goliath.jpg',
+  };
+
+  // Use the mapping if available, otherwise default to converting name to filename
+  imageKey = nameToFilenameMap[imageKey] || `${imageKey.replace(/ /g, '_')}.jpg`;
+}
+
+const imageSrc = mercenaryImageMap[imageKey];
+
+// Fallback to a default image if the specific image is not found
+let finalImageSrc = imageSrc;
+if (!finalImageSrc) {
+  // Try to find a partial match
+  const partialMatchKey = Object.keys(mercenaryImageMap).find(key =>
+    key.toLowerCase().includes(imageKey.toLowerCase().replace('.jpg', ''))
+  );
+
+  if (partialMatchKey) {
+    finalImageSrc = mercenaryImageMap[partialMatchKey];
+  } else {
+    // Use the default image as a last resort
+    finalImageSrc = defaultMercenaryImg;
+  }
+}
+---
+
+<Image
+  src={finalImageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

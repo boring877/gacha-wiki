@@ -19,14 +19,14 @@ export const GIFT_BOXES = [
   {
     id: 'brilliant-gift-box',
     name: 'Brilliant Gift Box',
-    image: '/images/games/horizon-walker/Gifts/Brilliant_Gift_Box.jpg',
+    image: 'Brilliant_Gift_Box.jpg',
     description: 'A luxurious gift box containing premium rewards',
     gifts: [
       {
         id: 'human-hair',
         name: 'Human Hair',
         rarity: 'SS',
-        image: '/images/games/horizon-walker/Gifts/Human_Hair.jpg',
+        image: 'Human_Hair.jpg',
         points: {
           min: 50,
           max: 70,
@@ -36,7 +36,7 @@ export const GIFT_BOXES = [
         id: 'grey-goose-vodka',
         name: 'Grey Goose Vodka',
         rarity: 'SS',
-        image: '/images/games/horizon-walker/Gifts/Grey_Goose_Vodka.jpg',
+        image: 'Grey_Goose_Vodka.jpg',
         points: {
           min: 50,
           max: 70,
@@ -46,7 +46,7 @@ export const GIFT_BOXES = [
         id: 'finest-black-tea',
         name: 'Finest Black Tea',
         rarity: 'S',
-        image: '/images/games/horizon-walker/Gifts/Finest_Black_Tea.jpg',
+        image: 'Finest_Black_Tea.jpg',
         points: {
           min: 30,
           max: 50,
@@ -56,7 +56,7 @@ export const GIFT_BOXES = [
         id: 'antique-music-box',
         name: 'Antique Music Box',
         rarity: 'S',
-        image: '/images/games/horizon-walker/Gifts/Antique_Music_Box.jpg',
+        image: 'Antique_Music_Box.jpg',
         points: {
           min: 30,
           max: 50,
@@ -66,7 +66,7 @@ export const GIFT_BOXES = [
         id: 'terrarium',
         name: 'Terrarium',
         rarity: 'S',
-        image: '/images/games/horizon-walker/Gifts/Terrarium.jpg',
+        image: 'Terrarium.jpg',
         points: {
           min: 30,
           max: 50,
@@ -76,7 +76,7 @@ export const GIFT_BOXES = [
         id: 'worn-banner-magnal-duchy',
         name: 'Worn Banner of the Magnal Duchy',
         rarity: 'S',
-        image: '/images/games/horizon-walker/Gifts/Worn_Banner_of_the_Magnal_Duchy.jpg',
+        image: 'Worn_Banner_of_the_Magnal_Duchy.jpg',
         points: {
           min: 30,
           max: 50,
@@ -86,7 +86,7 @@ export const GIFT_BOXES = [
         id: 'strategy-simulation-board-game',
         name: 'Strategy Simulation Board Game',
         rarity: 'S',
-        image: '/images/games/horizon-walker/Gifts/Strategy_Simulation_Board.jpg',
+        image: 'Strategy_Simulation_Board.jpg',
         points: {
           min: 30,
           max: 50,
@@ -96,7 +96,7 @@ export const GIFT_BOXES = [
         id: 'luxury-bag',
         name: 'Luxury Bag',
         rarity: 'SS',
-        image: '/images/games/horizon-walker/Gifts/Luxury_Bag.jpg',
+        image: 'Luxury_Bag.jpg',
         points: {
           min: 50,
           max: 70,
@@ -106,7 +106,7 @@ export const GIFT_BOXES = [
         id: 'queens-tiara',
         name: "Queen's Tiara",
         rarity: 'EX',
-        image: '/images/games/horizon-walker/Gifts/Queen_tiara.jpg',
+        image: 'Queen_tiara.jpg',
         points: {
           min: 100,
           max: 120,
@@ -117,14 +117,14 @@ export const GIFT_BOXES = [
   {
     id: 'luxurious-gift-box',
     name: 'Luxurious Gift Box',
-    image: '/images/games/horizon-walker/Gifts/Luxurious_Gift_Box.jpg',
+    image: 'Luxurious_Gift_Box.jpg',
     description: 'A luxurious collection of premium gifts and rare items',
     gifts: [
       {
         id: 'hotel-restaurant-meal-voucher',
         name: 'Hotel Restaurant Meal Voucher',
         rarity: 'A',
-        image: '/images/games/horizon-walker/Gifts/Hotel_Restaurant_Meal_Voucher.jpg',
+        image: 'Hotel_Restaurant_Meal_Voucher.jpg',
         points: {
           min: 20,
           max: 40,
@@ -134,7 +134,7 @@ export const GIFT_BOXES = [
         id: '300-kg-dumbbell',
         name: '300 KG Dumbbell',
         rarity: 'A',
-        image: '/images/games/horizon-walker/Gifts/300_KG_Dumbbell_A.jpg',
+        image: '300_KG_Dumbbell_A.jpg',
         points: {
           min: 20,
           max: 40,
@@ -144,7 +144,7 @@ export const GIFT_BOXES = [
         id: 'scripture-human-split-twigs',
         name: 'Scripture of the Human of the Split Twigs',
         rarity: 'A',
-        image: '/images/games/horizon-walker/Gifts/Scripture_of_the_Human_of_the_split_Twigs.jpg',
+        image: 'Scripture_of_the_Human_of_the_split_Twigs.jpg',
         points: {
           min: 20,
           max: 40,
@@ -154,7 +154,7 @@ export const GIFT_BOXES = [
         id: 'magical-fairy-tale-book',
         name: 'Magical Fairy Tale Book',
         rarity: 'A',
-        image: '/images/games/horizon-walker/Gifts/Magical_Fairy_Tale_Book.jpg',
+        image: 'Magical_Fairy_Tale_Book.jpg',
         points: {
           min: 20,
           max: 40,
@@ -164,7 +164,7 @@ export const GIFT_BOXES = [
         id: 'snow-globe',
         name: 'Snow Globe',
         rarity: 'A',
-        image: '/images/games/horizon-walker/Gifts/Snow_Globe.jpg',
+        image: 'Snow_Globe.jpg',
         points: {
           min: 20,
           max: 40,
@@ -174,7 +174,7 @@ export const GIFT_BOXES = [
         id: 'anti-aging-skincare-product',
         name: 'Anti-Aging Skincare Product',
         rarity: 'A',
-        image: '/images/games/horizon-walker/Gifts/Anti_aging_Skincare_product.jpg',
+        image: 'Anti_aging_Skincare_product.jpg',
         points: {
           min: 20,
           max: 40,
@@ -184,7 +184,7 @@ export const GIFT_BOXES = [
         id: 'lamora-military-ration',
         name: 'Lamora Military Ration',
         rarity: 'A',
-        image: '/images/games/horizon-walker/Gifts/Lamora_Millitary_Ration.jpg',
+        image: 'Lamora_Millitary_Ration.jpg',
         points: {
           min: 20,
           max: 40,
@@ -194,7 +194,7 @@ export const GIFT_BOXES = [
         id: 'finest-black-tea-lux',
         name: 'Finest Black Tea',
         rarity: 'S',
-        image: '/images/games/horizon-walker/Gifts/Finest_Black_Tea.jpg',
+        image: 'Finest_Black_Tea.jpg',
         points: {
           min: 30,
           max: 50,
@@ -204,7 +204,7 @@ export const GIFT_BOXES = [
         id: 'antique-music-box-lux',
         name: 'Antique Music Box',
         rarity: 'S',
-        image: '/images/games/horizon-walker/Gifts/Antique_Music_Box.jpg',
+        image: 'Antique_Music_Box.jpg',
         points: {
           min: 30,
           max: 50,
@@ -214,7 +214,7 @@ export const GIFT_BOXES = [
         id: 'terrarium-lux',
         name: 'Terrarium',
         rarity: 'S',
-        image: '/images/games/horizon-walker/Gifts/Terrarium.jpg',
+        image: 'Terrarium.jpg',
         points: {
           min: 30,
           max: 50,
@@ -224,7 +224,7 @@ export const GIFT_BOXES = [
         id: 'worn-banner-magnal-duchy-lux',
         name: 'Worn Banner of the Magnal Duchy',
         rarity: 'S',
-        image: '/images/games/horizon-walker/Gifts/Worn_Banner_of_the_Magnal_Duchy.jpg',
+        image: 'Worn_Banner_of_the_Magnal_Duchy.jpg',
         points: {
           min: 30,
           max: 50,
@@ -234,7 +234,7 @@ export const GIFT_BOXES = [
         id: 'strategy-simulation-board-game-lux',
         name: 'Strategy Simulation Board Game',
         rarity: 'S',
-        image: '/images/games/horizon-walker/Gifts/Strategy_Simulation_Board.jpg',
+        image: 'Strategy_Simulation_Board.jpg',
         points: {
           min: 30,
           max: 50,
@@ -245,14 +245,14 @@ export const GIFT_BOXES = [
   {
     id: 'ordinary-gift-box',
     name: 'Ordinary Gift Box',
-    image: '/images/games/horizon-walker/Gifts/Ordinary_Gift_Box.jpg',
+    image: 'Ordinary_Gift_Box.jpg',
     description: 'A standard gift box containing common everyday items',
     gifts: [
       {
         id: 'americano-voucher',
         name: 'Americano Voucher',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Americano_Voucher.jpg',
+        image: 'Americano_Voucher.jpg',
         points: {
           min: 10,
           max: 30,
@@ -262,7 +262,7 @@ export const GIFT_BOXES = [
         id: 'fire-octopus-noodles',
         name: 'Fire Octopus Noodles',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Fire_Octopus_Noodles.jpg',
+        image: 'Fire_Octopus_Noodles.jpg',
         points: {
           min: 10,
           max: 30,
@@ -272,7 +272,7 @@ export const GIFT_BOXES = [
         id: 'mangrove-leaf',
         name: 'Mangrove Leaf',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Mangrove_Leaf.jpg',
+        image: 'Mangrove_Leaf.jpg',
         points: {
           min: 10,
           max: 30,
@@ -282,7 +282,7 @@ export const GIFT_BOXES = [
         id: 'setflix-membership-voucher',
         name: 'Setflix Membership Voucher',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Setflix_Membership_Voucher.jpg',
+        image: 'Setflix_Membership_Voucher.jpg',
         points: {
           min: 10,
           max: 30,
@@ -292,7 +292,7 @@ export const GIFT_BOXES = [
         id: 'forbidden-romance',
         name: 'Forbidden Romance',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Forbidden_Romance.jpg',
+        image: 'Forbidden_Romance.jpg',
         points: {
           min: 10,
           max: 30,
@@ -302,7 +302,7 @@ export const GIFT_BOXES = [
         id: 'gun-maintenance-kit',
         name: 'Gun Maintenance Kit',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Gun_Maintenance_Kit.jpg',
+        image: 'Gun_Maintenance_Kit.jpg',
         points: {
           min: 10,
           max: 30,
@@ -312,7 +312,7 @@ export const GIFT_BOXES = [
         id: 'frog-plush',
         name: 'Frog Plush',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Frog_Plush.jpg',
+        image: 'Frog_Plush.jpg',
         points: {
           min: 10,
           max: 30,
@@ -322,7 +322,7 @@ export const GIFT_BOXES = [
         id: 'gloomy-chromi-keyring',
         name: 'Gloomy Chromi Keyring',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Gloomy_Chromi_Keyring.jpg',
+        image: 'Gloomy_Chromi_Keyring.jpg',
         points: {
           min: 10,
           max: 30,
@@ -332,7 +332,7 @@ export const GIFT_BOXES = [
         id: 'catnip-pouch',
         name: 'Catnip Pouch',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Catnip_Pouch.jpg',
+        image: 'Catnip_Pouch.jpg',
         points: {
           min: 10,
           max: 30,
@@ -342,7 +342,7 @@ export const GIFT_BOXES = [
         id: 'sports-sneakers',
         name: 'Sports Sneakers',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Sports_Sneakers.jpg',
+        image: 'Sports_Sneakers.jpg',
         points: {
           min: 10,
           max: 30,
@@ -352,7 +352,7 @@ export const GIFT_BOXES = [
         id: 'hamburg-steak',
         name: 'Hamburg Steak',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Hamburg_Steak.jpg',
+        image: 'Hamburg_Steak.jpg',
         points: {
           min: 10,
           max: 30,
@@ -362,7 +362,7 @@ export const GIFT_BOXES = [
         id: 'a-single-rose',
         name: 'A Single Rose',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/A_Single_Rose.jpg',
+        image: 'A_Single_Rose.jpg',
         points: {
           min: 10,
           max: 30,
@@ -372,7 +372,7 @@ export const GIFT_BOXES = [
         id: 'charcoal',
         name: 'Charcoal',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Charcoal.jpg',
+        image: 'Charcoal.jpg',
         points: {
           min: 10,
           max: 30,
@@ -382,7 +382,7 @@ export const GIFT_BOXES = [
         id: 'dartagnan-romance',
         name: "D'Artagnan Romance",
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/DArtagnan_Romance.jpg',
+        image: 'DArtagnan_Romance.jpg',
         points: {
           min: 10,
           max: 30,
@@ -392,7 +392,7 @@ export const GIFT_BOXES = [
         id: 'soju',
         name: 'Soju',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Soju.jpg',
+        image: 'Soju.jpg',
         points: {
           min: 10,
           max: 30,
@@ -402,7 +402,7 @@ export const GIFT_BOXES = [
         id: 'glazed-fruit-stick',
         name: 'Glazed Fruit Stick',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Glazed_Fruit_Stick.jpg',
+        image: 'Glazed_Fruit_Stick.jpg',
         points: {
           min: 10,
           max: 30,
@@ -412,7 +412,7 @@ export const GIFT_BOXES = [
         id: 'orca-documentary',
         name: 'Orca Documentary',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Orca_Documentary.jpg',
+        image: 'Orca_Documentary.jpg',
         points: {
           min: 10,
           max: 30,
@@ -422,7 +422,7 @@ export const GIFT_BOXES = [
         id: 'kalma-election-campaign-brochure',
         name: 'Kalma Election Campaign Brochure',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Kalma_Election_Campaign_Brochure.jpg',
+        image: 'Kalma_Election_Campaign_Brochure.jpg',
         points: {
           min: 10,
           max: 30,
@@ -432,7 +432,7 @@ export const GIFT_BOXES = [
         id: 'training-equipment-set',
         name: 'Training Equipment Set',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Training_Equipment_Set.jpg',
+        image: 'Training_Equipment_Set.jpg',
         points: {
           min: 10,
           max: 30,
@@ -442,7 +442,7 @@ export const GIFT_BOXES = [
         id: 'strawberry-chubby-macaron',
         name: 'Strawberry Chubby Macaron',
         rarity: 'B',
-        image: '/images/games/horizon-walker/Gifts/Strawberry_Chubby_Macaron.jpg',
+        image: 'Strawberry_Chubby_Macaron.jpg',
         points: {
           min: 10,
           max: 30,
@@ -459,7 +459,7 @@ export const UNIQUE_GIFTS = [
     name: '1st Anniversary Gift',
     rarity: 'EX',
     type: 'Anniversary',
-    image: '/images/games/horizon-walker/Gifts/1st_Anniversary_gift.jpg',
+    image: '1st_Anniversary_gift.jpg',
     points: {
       min: 100,
       max: 120,

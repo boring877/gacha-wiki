@@ -1,16 +1,15 @@
 ---
 // Lightweight BaseHead for Horizon Walker - Optimized for instant loading
+import { Image } from 'astro:assets';
+import GameIcon from '../../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
+
 export interface Props {
   title: string;
   description: string;
   image?: string;
 }
 
-const {
-  title,
-  description,
-  image = '/images/games/horizon-walker/gameimg/gameicon.jpg',
-} = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <!-- Essential Metadata Only -->
@@ -46,7 +45,18 @@ const {
       U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
-  /* Space Grotesk Font Family - Essential weight only */
+  /* Space Grotesk Font Family - Essential weights only */
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/space-grotesk-400.woff2') format('woff2');
+    unicode-range:
+      U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074,
+      U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
   @font-face {
     font-family: 'Space Grotesk';
     font-style: normal;
@@ -64,6 +74,20 @@ const {
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <meta name="generator" content={Astro.generator} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image || GameIcon.src} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image || GameIcon.src} />
 
 <!-- Critical Inline CSS for CLS Prevention -->
 <style>

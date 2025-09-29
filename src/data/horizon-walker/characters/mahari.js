@@ -177,7 +177,7 @@ const rawMahariData = {
   // Weapon
   weapon: {
     name: 'EX One-handed Sword & Shield - The Arms of Laphnesis',
-    image: '/images/games/horizon-walker/weapons/Mahari_WP.jpg',
+    image: 'Mahari_WP.jpg',
     rarity: 'EX',
     type: 'One-handed Sword & Shield',
     stats: {
