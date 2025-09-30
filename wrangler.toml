@@ -14,7 +14,17 @@ to = "/"
 status = 301
 
 [[headers]]
-for = "/assets/*"
+for = "/assets/*.js"
+[headers.values]
+Cache-Control = "public, max-age=86400"
+
+[[headers]]
+for = "/assets/*.css"
+[headers.values]
+Cache-Control = "public, max-age=86400"
+
+[[headers]]
+for = "/assets/*.{woff2,woff,png,jpg,jpeg,gif,svg,webp,avif,ico}"
 [headers.values]
 Cache-Control = "public, max-age=31536000, immutable"
 
