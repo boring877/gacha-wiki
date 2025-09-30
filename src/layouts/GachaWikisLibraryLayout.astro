@@ -7,7 +7,6 @@ import MobileMenu from '../components/MobileMenu.astro';
 import CustomScrollbar from '../components/CustomScrollbar.astro';
 import GeneralSEO from '../components/GeneralSEO.astro';
 import DecorativeLines from '../components/DecorativeLines.astro';
-import SpeedInsights from '../components/SpeedInsights.astro';
 
 // Import CSS files properly - wikis-specific styling
 import '../styles/colors.css';
@@ -33,7 +32,6 @@ const { title, description } = Astro.props;
       keywords={['gacha games', 'game wikis', 'gaming guides', 'mobile games']}
       pageType="website"
     />
-    <SpeedInsights />
     <slot name="head" />
   </head>
   <body class="home-body">

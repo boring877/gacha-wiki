@@ -20,7 +20,7 @@
     "dev:setup": "bun run scripts/dev-setup.js && bun run dev",
     "build": "astro check && astro build",
     "build:prod": "bun run scripts/prod-setup.js && astro check && astro build && bun run scripts/compress.ts",
-    "build:replit": "bun run scripts/prod-setup.js && astro build",
+    "build:cloudflare": "bun run scripts/prod-setup.js && astro build",
     "compress": "bun run scripts/compress.ts",
     "preview": "astro preview",
     "start": "astro preview",

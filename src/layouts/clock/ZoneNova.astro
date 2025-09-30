@@ -9,7 +9,6 @@ import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import GeneralSEO from '../../components/GeneralSEO.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
-import SpeedInsights from '../../components/SpeedInsights.astro';
 import { getActiveRifts, getRiftsWithDynamicStatus } from '../../data/zone-nova/rifts.js';
 
 // Import CSS files
@@ -52,7 +51,6 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
       ]}
       pageType="webapp"
     />
-    <SpeedInsights />
     <!-- Fonts now self-hosted, no preconnect needed -->
 
     <!-- Critical game asset preloading for clock page only -->
