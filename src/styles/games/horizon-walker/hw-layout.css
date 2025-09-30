@@ -1,28 +1,59 @@
 /* Horizon Walker Layout Styles */
 /* Base layout, hero sections, and shared animations */
 
+/* Global Body Styles - Applied to actual body element, not scoped */
+.horizon-walker-body {
+  background: linear-gradient(135deg, #1a1e1a 0%, #2a2e2a 50%, #1a1e1a 100%);
+  color: var(--hw-text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  line-height: var(--leading-relaxed);
+}
+
+/* Horizon Walker Theme Variants */
+.horizon-walker-body.dark-theme {
+  background: var(--hw-bg-darker);
+  color: var(--hw-text-light);
+}
+
+.horizon-walker-body.light-theme {
+  color: var(--text-primary);
+}
+
 /* Scope all HW layout styles to the horizon walker content area */
 @scope (.horizon-walker-content) {
-  /* Body Styles */
-  .horizon-walker-body {
+  /* Background layers - for client-side navigation */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hw-bg-primary {
     background: linear-gradient(135deg, #1a1e1a 0%, #2a2e2a 50%, #1a1e1a 100%);
-    color: var(--text-primary);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
   }
 
-  /* Horizon Walker Theme Variants */
-  .horizon-walker-body.dark-theme {
-    background: var(--hw-bg-darker);
-    color: var(--hw-text-light);
+  .hw-bg-accent-1 {
+    background: radial-gradient(circle at 15% 85%, rgba(232, 165, 71, 0.08), transparent 60%);
+    pointer-events: none;
+    opacity: 0.5;
   }
 
-  .horizon-walker-body.light-theme {
-    color: var(--text-primary);
+  .hw-bg-accent-2 {
+    background: radial-gradient(circle at 85% 15%, rgba(255, 123, 123, 0.06), transparent 60%);
+    pointer-events: none;
+    opacity: 0.5;
   }
 
-  /* Background layers moved to hw-colors.css for global access */
+  .hw-bg-accent-3 {
+    background: radial-gradient(circle at 50% 50%, rgba(123, 179, 255, 0.05), transparent 60%);
+    pointer-events: none;
+    opacity: 0.5;
+  }
 
   /* Main container - optimized for scroll performance */
   .horizon-walker-container {
@@ -82,7 +113,7 @@
   .hero-title {
     font-family: var(--font-display);
     font-size: var(--text-4xl);
-    font-weight: 700;
+    font-weight: var(--font-bold);
     color: var(--text-inverse);
     margin: 0;
     background: linear-gradient(135deg, #e8a547, #ff7b7b);
@@ -102,7 +133,7 @@
   .title-only-heading {
     font-family: var(--font-display);
     font-size: var(--text-4xl);
-    font-weight: 700;
+    font-weight: var(--font-bold);
     background: linear-gradient(135deg, #e8a547, #ff7b7b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -177,3 +208,212 @@
     }
   }
 } /* End @scope (.horizon-walker-content) */
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                    HORIZON WALKER BACKGROUND UTILITIES                   */
+/*                  Centralized background styling patterns                */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* === CARD BACKGROUND UTILITIES === */
+.hw-card-basic {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-accent);
+  border-radius: var(--hw-radius-lg);
+}
+
+.hw-card-dark {
+  background: var(--hw-bg-darker);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+}
+
+.hw-card-gradient {
+  background: var(--hw-gradient-dark-to-darker);
+  border: 1px solid var(--hw-border-accent);
+  border-radius: var(--hw-radius-lg);
+}
+
+.hw-card-content {
+  background: var(--hw-gradient-content-section);
+  border: 1px solid var(--hw-border-accent);
+  border-radius: var(--hw-radius-lg);
+}
+
+.hw-card-stats {
+  background: var(--hw-gradient-character-stats);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+}
+
+/* === BUTTON BACKGROUND UTILITIES === */
+.hw-btn-primary {
+  background: var(--hw-gradient-warm-to-coral);
+  color: var(--hw-text-white);
+  border: none;
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  font-weight: var(--font-semibold);
+  padding: 0.5rem 1rem;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hw-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(232, 165, 71, 0.3);
+}
+
+.hw-btn-secondary {
+  background: var(--hw-gradient-border-muted-strong);
+  color: var(--hw-text-light);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  font-weight: var(--font-semibold);
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.hw-btn-secondary:hover {
+  border-color: var(--hw-border-accent);
+  background: var(--hw-gradient-dark-to-darker);
+}
+
+/* === ACCENT BACKGROUND UTILITIES === */
+.hw-accent-warm {
+  background: var(--hw-primary-warm-10);
+  border: 1px solid var(--hw-primary-warm-30);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  padding: 0.5rem 1rem;
+}
+
+.hw-accent-coral {
+  background: var(--hw-secondary-coral-10);
+  border: 1px solid var(--hw-secondary-coral-30);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  padding: 0.5rem 1rem;
+}
+
+.hw-accent-mint {
+  background: var(--hw-accent-mint-10);
+  border: 1px solid var(--hw-accent-mint-30);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  padding: 0.5rem 1rem;
+}
+
+.hw-accent-sky {
+  background: var(--hw-tertiary-sky-10);
+  border: 1px solid var(--hw-tertiary-sky-30);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  padding: 0.5rem 1rem;
+}
+
+/* === SOLID COLOR BACKGROUND UTILITIES === */
+.hw-bg-solid-gold {
+  background: var(--hw-bg-solid-gold);
+  color: var(--hw-text-dark);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  padding: 0.25rem 0.75rem;
+}
+
+.hw-bg-solid-purple {
+  background: var(--hw-bg-solid-purple);
+  color: var(--hw-text-white);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  padding: 0.25rem 0.75rem;
+}
+
+.hw-bg-solid-blue {
+  background: var(--hw-bg-solid-blue);
+  color: var(--hw-text-white);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  padding: 0.25rem 0.75rem;
+}
+
+.hw-bg-solid-green {
+  background: var(--hw-bg-solid-green);
+  color: var(--hw-text-white);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  padding: 0.25rem 0.75rem;
+}
+
+/* === LIGHT GRADIENT BACKGROUND UTILITIES === */
+.hw-bg-light-warm {
+  background: var(--hw-gradient-warm-coral-light);
+  border: 1px solid var(--hw-primary-warm-20);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+}
+
+.hw-bg-light-mint {
+  background: var(--hw-gradient-mint-light);
+  border: 1px solid var(--hw-accent-mint-20);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+}
+
+.hw-bg-light-coral {
+  background: var(--hw-gradient-coral-light);
+  border: 1px solid var(--hw-secondary-coral-20);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+}
+
+/* === COMPONENT SPECIFIC BACKGROUNDS === */
+.hw-skill-card {
+  background: var(--hw-gradient-skill-card);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  font-family: var(--font-primary);
+}
+
+.hw-trait-card {
+  background: var(--hw-gradient-trait-card);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  font-family: var(--font-primary);
+}
+
+.hw-character-info {
+  background: var(--hw-gradient-character-info);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  font-family: var(--font-primary);
+}
+
+.hw-unique-gift-bg {
+  background: var(--hw-gradient-coral-light);
+  border: 1px solid var(--hw-secondary-coral-30);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+}
+
+.hw-info-box-bg {
+  background: var(--hw-primary-warm-10);
+  border: 1px solid var(--hw-primary-warm-30);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+}
+
+.hw-weapon-skill-unique-bg {
+  background: var(--hw-primary-warm);
+  color: var(--hw-bg-dark);
+  border-radius: var(--hw-radius-sm);
+  font-family: var(--font-primary);
+}
+
+.hw-weapon-skill-signature-bg {
+  background: var(--hw-gradient-warm-to-coral);
+  color: var(--hw-bg-dark);
+  border-radius: var(--hw-radius-sm);
+  font-family: var(--font-primary);
+}

@@ -6,8 +6,9 @@
   .hw-badge {
     padding: 0.4rem 0.8rem;
     border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    font-family: var(--font-primary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: inline-flex;
@@ -26,28 +27,28 @@
 
   /* Remove hover effects for simple, clean styling */
 
-  /* Rarity Badges */
+  /* Rarity Badges - Use centralized utility classes */
   .hw-badge[data-rarity='EX'] {
-    background: #ffd700;
-    color: #1a1a1a;
-    font-weight: 700;
+    background: var(--hw-bg-solid-gold);
+    color: var(--hw-text-dark);
+    font-weight: var(--font-bold);
   }
 
   .hw-badge[data-rarity='SS'] {
-    background: #9c27b0;
-    color: #ffffff;
-    font-weight: 700;
+    background: var(--hw-bg-solid-purple);
+    color: var(--hw-text-white);
+    font-weight: var(--font-bold);
   }
 
   .hw-badge[data-rarity='S'] {
-    background: #1976d2;
-    color: #ffffff;
-    font-weight: 700;
+    background: var(--hw-bg-solid-blue);
+    color: var(--hw-text-white);
+    font-weight: var(--font-bold);
   }
 
   .hw-badge[data-rarity='A'] {
-    background: #4caf50;
-    color: #ffffff;
+    background: var(--hw-bg-solid-green);
+    color: var(--hw-text-white);
   }
 
   .hw-badge[data-rarity='B'] {
@@ -80,7 +81,7 @@
   .hw-badge[data-type*='Signature'] {
     background: #dc2626;
     color: #ffffff;
-    font-weight: 800;
+    font-weight: var(--font-extrabold);
   }
 
   /* Cost Badge */
@@ -88,8 +89,9 @@
   .cost-badge {
     background: var(--hw-primary-warm);
     color: #1a1a1a;
-    font-weight: 800;
-    font-size: 0.8rem;
+    font-weight: var(--font-extrabold);
+    font-size: var(--text-sm);
+    font-family: var(--font-primary);
     padding: 0.4rem 0.8rem;
     border-radius: 4px;
     text-transform: uppercase;
@@ -107,35 +109,36 @@
   .hw-badge[data-type='WeaponType'] {
     background: #ff6f61;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: var(--font-semibold);
   }
 
   /* Bonus Badge (for gift affection bonuses) */
   .hw-badge[data-type='Bonus'] {
     background: var(--hw-primary-warm);
     color: #1a1a1a;
-    font-weight: 600;
+    font-weight: var(--font-semibold);
   }
 
   /* Special Badge (for interested trait) */
   .hw-badge[data-type='Special'] {
     background: var(--hw-primary-warm);
     color: #1a1a1a;
-    font-weight: 600;
+    font-weight: var(--font-semibold);
   }
 
   /* Cost badge in mobile header - smaller, complementary to rarity badge */
   .header-badges .cost-badge {
-    font-size: 0.75rem;
+    font-size: var(--text-sm);
     padding: 0.35rem 0.7rem;
   }
 
-  /* Character Tag Categories for Mobile Cards */
+  /* Character Tag Categories for Mobile Cards - Use centralized variables */
   .character-tag {
     padding: 0.35rem 0.7rem;
     border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    font-family: var(--font-primary);
     text-transform: capitalize;
     border: 1px solid;
     display: inline-flex;
@@ -155,89 +158,65 @@
   /* Remove hover effects for simple, clean styling */
 
   .character-tag.damage-scaling {
-    background: rgba(255, 123, 123, 0.2); /* Fallback for color-mix() */
-    background: color-mix(in srgb, var(--hw-secondary-coral) 20%, transparent);
-    border-color: rgba(255, 123, 123, 0.5); /* Fallback for color-mix() */
-    border-color: color-mix(in srgb, var(--hw-secondary-coral) 50%, transparent);
-    color: rgba(255, 123, 123, 0.9); /* Fallback for color-mix() */
-    color: color-mix(in srgb, var(--hw-secondary-coral) 90%, transparent);
+    background: var(--hw-secondary-coral-20);
+    border-color: var(--hw-secondary-coral-50);
+    color: var(--hw-secondary-coral-90);
   }
 
   .character-tag.team-utility {
-    background: rgba(123, 179, 255, 0.2); /* Fallback for color-mix() */
-    background: color-mix(in srgb, var(--hw-tertiary-sky) 20%, transparent);
-    border-color: rgba(123, 179, 255, 0.5); /* Fallback for color-mix() */
-    border-color: color-mix(in srgb, var(--hw-tertiary-sky) 50%, transparent);
-    color: rgba(123, 179, 255, 0.9); /* Fallback for color-mix() */
-    color: color-mix(in srgb, var(--hw-tertiary-sky) 90%, transparent);
+    background: var(--hw-tertiary-sky-20);
+    border-color: var(--hw-tertiary-sky-50);
+    color: var(--hw-tertiary-sky-90);
   }
 
   .character-tag.self-utility {
-    background: rgba(123, 255, 179, 0.2); /* Fallback for color-mix() */
-    background: color-mix(in srgb, var(--hw-accent-mint) 20%, transparent);
-    border-color: rgba(123, 255, 179, 0.5); /* Fallback for color-mix() */
-    border-color: color-mix(in srgb, var(--hw-accent-mint) 50%, transparent);
-    color: rgba(123, 255, 179, 0.9); /* Fallback for color-mix() */
-    color: color-mix(in srgb, var(--hw-accent-mint) 90%, transparent);
+    background: var(--hw-accent-mint-20);
+    border-color: var(--hw-accent-mint-50);
+    color: var(--hw-accent-mint-90);
   }
 
   .character-tag.control {
-    background: rgba(179, 123, 255, 0.2); /* Fallback for color-mix() */
-    background: color-mix(in srgb, var(--hw-accent-lavender) 20%, transparent);
-    border-color: rgba(179, 123, 255, 0.5); /* Fallback for color-mix() */
-    border-color: color-mix(in srgb, var(--hw-accent-lavender) 50%, transparent);
-    color: rgba(179, 123, 255, 0.9); /* Fallback for color-mix() */
-    color: color-mix(in srgb, var(--hw-accent-lavender) 90%, transparent);
+    background: var(--hw-purple-20);
+    border-color: var(--hw-purple-50);
+    color: var(--hw-purple-90);
   }
 
   .character-tag.general-mechanic {
-    background: rgba(232, 165, 71, 0.2);
+    background: var(--hw-primary-warm-20);
     border-color: var(--hw-primary-warm);
     color: var(--hw-primary-warm);
-    font-weight: 700;
+    font-weight: var(--font-bold);
   }
 
   /* Mobile responsive character tags - Tablet/Large Mobile */
   @media (max-width: 768px) {
     /* Ensure color classes maintain their styling on mobile */
     .character-tag.damage-scaling {
-      background: rgba(255, 123, 123, 0.2); /* Fallback for color-mix() */
-      background: color-mix(in srgb, var(--hw-secondary-coral) 20%, transparent);
-      border-color: rgba(255, 123, 123, 0.5); /* Fallback for color-mix() */
-      border-color: color-mix(in srgb, var(--hw-secondary-coral) 50%, transparent);
-      color: rgba(255, 123, 123, 0.9); /* Fallback for color-mix() */
-      color: color-mix(in srgb, var(--hw-secondary-coral) 90%, transparent);
+      background: var(--hw-secondary-coral-20);
+      border-color: var(--hw-secondary-coral-50);
+      color: var(--hw-secondary-coral-90);
     }
 
     .character-tag.team-utility {
-      background: rgba(123, 179, 255, 0.2); /* Fallback for color-mix() */
-      background: color-mix(in srgb, var(--hw-tertiary-sky) 20%, transparent);
-      border-color: rgba(123, 179, 255, 0.5); /* Fallback for color-mix() */
-      border-color: color-mix(in srgb, var(--hw-tertiary-sky) 50%, transparent);
-      color: rgba(123, 179, 255, 0.9); /* Fallback for color-mix() */
-      color: color-mix(in srgb, var(--hw-tertiary-sky) 90%, transparent);
+      background: var(--hw-tertiary-sky-20);
+      border-color: var(--hw-tertiary-sky-50);
+      color: var(--hw-tertiary-sky-90);
     }
 
     .character-tag.self-utility {
-      background: rgba(123, 255, 179, 0.2); /* Fallback for color-mix() */
-      background: color-mix(in srgb, var(--hw-accent-mint) 20%, transparent);
-      border-color: rgba(123, 255, 179, 0.5); /* Fallback for color-mix() */
-      border-color: color-mix(in srgb, var(--hw-accent-mint) 50%, transparent);
-      color: rgba(123, 255, 179, 0.9); /* Fallback for color-mix() */
-      color: color-mix(in srgb, var(--hw-accent-mint) 90%, transparent);
+      background: var(--hw-accent-mint-20);
+      border-color: var(--hw-accent-mint-50);
+      color: var(--hw-accent-mint-90);
     }
 
     .character-tag.control {
-      background: rgba(179, 123, 255, 0.2); /* Fallback for color-mix() */
-      background: color-mix(in srgb, var(--hw-accent-lavender) 20%, transparent);
-      border-color: rgba(179, 123, 255, 0.5); /* Fallback for color-mix() */
-      border-color: color-mix(in srgb, var(--hw-accent-lavender) 50%, transparent);
-      color: rgba(179, 123, 255, 0.9); /* Fallback for color-mix() */
-      color: color-mix(in srgb, var(--hw-accent-lavender) 90%, transparent);
+      background: var(--hw-purple-20);
+      border-color: var(--hw-purple-50);
+      color: var(--hw-purple-90);
     }
 
     .character-tag.general-mechanic {
-      background: rgba(232, 165, 71, 0.2);
+      background: var(--hw-primary-warm-20);
       border-color: var(--hw-primary-warm);
       color: var(--hw-primary-warm);
     }
@@ -246,7 +225,7 @@
   /* Mobile responsive character tags - Small Mobile */
   @media (max-width: 480px) {
     .character-tag {
-      font-size: 0.65rem;
+      font-size: var(--text-xs);
       padding: 0.25rem 0.5rem;
       min-height: 28px;
       min-width: 40px;
@@ -262,7 +241,7 @@
     /* Base badge mobile optimization */
     .hw-badge {
       padding: 0.35rem 0.7rem;
-      font-size: 0.75rem;
+      font-size: var(--text-sm);
       min-height: 36px;
       min-width: 48px;
     }
@@ -270,7 +249,7 @@
     /* Cost badge mobile optimization */
     .cost-badge {
       padding: 0.35rem 0.7rem;
-      font-size: 0.75rem;
+      font-size: var(--text-sm);
       min-height: 36px;
       min-width: 48px;
     }
@@ -285,7 +264,7 @@
     /* Header badges specifically for mobile cards */
     .header-badges .hw-badge,
     .header-badges .cost-badge {
-      font-size: 0.7rem;
+      font-size: var(--text-sm);
       padding: 0.3rem 0.6rem;
       min-height: 32px;
       min-width: 44px;
@@ -294,7 +273,7 @@
     /* Character tags optimization */
     .character-tag {
       padding: 0.3rem 0.6rem;
-      font-size: 0.65rem;
+      font-size: var(--text-xs);
       min-height: 32px;
       min-width: 44px;
     }
@@ -318,7 +297,7 @@
     /* Base badge small mobile optimization */
     .hw-badge {
       padding: 0.3rem 0.6rem;
-      font-size: 0.7rem;
+      font-size: var(--text-sm);
       min-height: 32px;
       min-width: 44px;
     }
@@ -326,7 +305,7 @@
     /* Cost badge small mobile optimization */
     .cost-badge {
       padding: 0.3rem 0.6rem;
-      font-size: 0.7rem;
+      font-size: var(--text-sm);
       min-height: 32px;
       min-width: 44px;
     }
@@ -340,7 +319,7 @@
 
     .header-badges .hw-badge,
     .header-badges .cost-badge {
-      font-size: 0.65rem;
+      font-size: var(--text-xs);
       padding: 0.25rem 0.5rem;
       min-height: 28px;
       min-width: 40px;
@@ -349,7 +328,7 @@
     /* Character tags small mobile optimization */
     .character-tag {
       padding: 0.25rem 0.5rem;
-      font-size: 0.6rem;
+      font-size: var(--text-xs);
       min-height: 28px;
       min-width: 40px;
       border-radius: 10px;
@@ -364,14 +343,14 @@
     /* Special case for very small screens */
     @media (max-width: 360px) {
       .hw-badge {
-        font-size: 0.65rem;
+        font-size: var(--text-xs);
         padding: 0.25rem 0.5rem;
         min-height: 28px;
         min-width: 40px;
       }
 
       .character-tag {
-        font-size: 0.55rem;
+        font-size: var(--text-xs);
         padding: 0.2rem 0.4rem;
         min-height: 26px;
         min-width: 36px;
@@ -389,14 +368,14 @@
   @media (max-height: 500px) and (orientation: landscape) {
     .hw-badge {
       padding: 0.25rem 0.5rem;
-      font-size: 0.65rem;
+      font-size: var(--text-xs);
       min-height: 28px;
       min-width: 40px;
     }
 
     .character-tag {
       padding: 0.2rem 0.4rem;
-      font-size: 0.6rem;
+      font-size: var(--text-xs);
       min-height: 26px;
     }
   }

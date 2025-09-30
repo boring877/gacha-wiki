@@ -13,13 +13,14 @@
 
 /* Useability column styling */
 .useability-value {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--hw-text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--hw-text-light);
   padding: 0.25rem 0.5rem;
-  background: rgba(var(--hw-accent-rgb), 0.1);
-  border-radius: 4px;
-  border: 1px solid rgba(var(--hw-accent-rgb), 0.2);
+  background: var(--hw-primary-warm-10);
+  border-radius: var(--hw-radius-sm);
+  border: 1px solid var(--hw-primary-warm-20);
   text-align: center;
   display: inline-flex;
   align-items: center;
@@ -50,14 +51,14 @@
   }
 
   .mobile-character-card[data-useability] .character-tag {
-    font-size: 0.65rem;
+    font-size: var(--text-xs);
     padding: 0.25rem 0.5rem;
     min-height: 28px;
     min-width: 40px;
   }
 
   .mobile-character-card[data-useability] .useability-value {
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
     padding: 0.3rem 0.5rem;
     min-height: 32px;
     min-width: 44px;
@@ -72,14 +73,14 @@
   }
 
   .mobile-character-card[data-useability] .character-tag {
-    font-size: 0.6rem;
+    font-size: var(--text-xs);
     padding: 0.2rem 0.4rem;
     min-height: 26px;
     min-width: 36px;
   }
 
   .mobile-character-card[data-useability] .useability-value {
-    font-size: 0.65rem;
+    font-size: var(--text-xs);
     padding: 0.25rem 0.4rem;
     min-height: 28px;
     min-width: 40px;
@@ -88,17 +89,18 @@
 
 /* Useability filter styling */
 #useability-filter {
-  background: var(--hw-background-secondary);
-  border: 2px solid var(--hw-border-color);
-  color: var(--hw-text-primary);
-  border-radius: 6px;
+  font-family: var(--font-primary);
+  background: var(--hw-bg-dark);
+  border: 2px solid var(--hw-border-muted);
+  color: var(--hw-text-light);
+  border-radius: var(--hw-radius-md);
   padding: 0.5rem;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
 }
 
 #useability-filter:focus {
   outline: none;
-  border-color: var(--hw-accent-color);
+  border-color: var(--hw-primary-warm);
 }
 
 /* Table adjustments for mercenary-specific columns */
@@ -118,7 +120,8 @@
   .character-table th:nth-child(7),
   .character-table th:nth-child(8),
   .character-table th:nth-child(9) {
-    font-size: 0.8rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     padding: 0.5rem 0.25rem;
   }
 
@@ -126,7 +129,8 @@
   .character-table td:nth-child(7),
   .character-table td:nth-child(8),
   .character-table td:nth-child(9) {
-    font-size: 0.8rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     padding: 0.5rem 0.25rem;
   }
 }
@@ -153,9 +157,9 @@
 /* Dark mode specific adjustments for mercenary elements */
 @media (prefers-color-scheme: dark) {
   .useability-value {
-    background: rgba(var(--hw-accent-rgb), 0.15);
-    border-color: rgba(var(--hw-accent-rgb), 0.3);
-    color: var(--hw-text-primary);
+    background: var(--hw-primary-warm-20);
+    border-color: var(--hw-primary-warm-30);
+    color: var(--hw-text-light);
   }
 }
 
@@ -163,17 +167,19 @@
 .hw-no-mercenaries {
   text-align: center;
   padding: 3rem 1rem;
-  color: var(--hw-text-secondary);
+  color: var(--hw-text-muted);
 }
 
 .hw-no-mercenaries-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
   margin-bottom: 0.5rem;
-  color: var(--hw-text-primary);
+  color: var(--hw-text-light);
 }
 
 .hw-no-mercenaries-text {
-  font-size: 1rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
   line-height: 1.6;
 }

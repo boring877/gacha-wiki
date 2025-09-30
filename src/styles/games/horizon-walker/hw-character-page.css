@@ -12,9 +12,9 @@
   .content-section {
     background: var(--hw-gradient-content-section);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 18px;
-    padding: 2.5rem;
-    margin-bottom: 4rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-xl);
+    margin-bottom: var(--hw-spacing-xl);
     width: 100%;
     max-width: none;
     contain: paint;
@@ -24,8 +24,9 @@
   .section-title {
     /* Simplified - gradient text effect consolidated */
     color: var(--hw-primary-warm);
-    font-size: 2.2rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-extrabold);
     margin: 0 0 3.5rem 0;
     text-align: left;
     text-transform: uppercase;
@@ -43,14 +44,7 @@
     bottom: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      var(--hw-primary-warm) 0%,
-      var(--hw-secondary-coral) 25%,
-      transparent 50%,
-      var(--hw-secondary-coral) 75%,
-      var(--hw-primary-warm) 100%
-    );
+    background: var(--hw-gradient-section-title);
     opacity: 0.6;
   }
 
@@ -61,8 +55,8 @@
     bottom: -2px;
     width: 120px;
     height: 3px;
-    background: linear-gradient(90deg, var(--hw-primary-warm) 0%, var(--hw-secondary-coral) 100%);
-    border-radius: 2px;
+    background: var(--hw-gradient-header-primary);
+    border-radius: var(--hw-radius-sm);
   }
 
   /* ═══════════════════════════════════════════════════════════════════════ */
@@ -76,7 +70,7 @@
 
   .character-overview-flex {
     display: flex;
-    gap: 2.5rem;
+    gap: var(--hw-spacing-xl);
     align-items: stretch;
     flex-wrap: wrap;
     justify-content: center;
@@ -93,12 +87,13 @@
   }
 
   .character-hero-container {
+    /* Using consolidated background class - add hw-character-stats-bg class in HTML */
     background: var(--hw-gradient-character-stats);
-    border-radius: 18px;
+    border-radius: var(--hw-radius-lg);
     border: 1px solid var(--hw-border-muted);
-    padding: 2rem;
+    padding: var(--hw-spacing-lg);
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--hw-spacing-lg);
   }
 
   .character-portrait-container {
@@ -113,27 +108,30 @@
     width: 200px;
     height: 200px;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: var(--hw-radius-lg);
     border: 3px solid var(--hw-border-accent);
     display: block;
   }
 
   .character-name {
-    font-size: 2rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-extrabold);
     color: var(--hw-text-light);
     margin: 0 0 0.5rem 0;
   }
 
   .character-class-info {
-    font-size: 1.1rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-lg);
     color: var(--hw-primary-warm);
     margin: 0 0 1rem 0;
-    font-weight: 600;
+    font-weight: var(--font-semibold);
   }
 
   .character-description {
-    font-size: 0.95rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-text-muted);
     line-height: 1.5;
     margin: 0;
@@ -141,32 +139,34 @@
 
   /* Character Info Card */
   .character-info-card {
+    /* Using consolidated background class - add hw-character-info-bg class in HTML */
     background: var(--hw-gradient-character-info);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 15px;
-    padding: 1.5rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
     width: 100%;
   }
 
   .character-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: var(--hw-spacing-md);
+    margin-bottom: var(--hw-spacing-lg);
   }
 
   .character-info-item {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--hw-spacing-sm);
     align-items: center;
     text-align: center;
   }
 
   .character-info-label {
-    font-size: 0.85rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-text-muted);
-    font-weight: 600;
+    font-weight: var(--font-semibold);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -179,7 +179,7 @@
   .character-profile-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: var(--hw-spacing-sm);
     margin-top: 0.8rem;
   }
 
@@ -192,15 +192,17 @@
   }
 
   .profile-label {
-    font-size: 0.8rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-text-muted);
-    font-weight: 600;
+    font-weight: var(--font-semibold);
   }
 
   .profile-value {
-    font-size: 0.8rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-primary-warm);
-    font-weight: 500;
+    font-weight: var(--font-medium);
   }
 
   /* Character Stats Container */
@@ -213,22 +215,24 @@
   .character-stats-box {
     background: var(--hw-gradient-character-stats);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 18px;
-    padding: 2rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
     height: 100%;
   }
 
   .character-stats-title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
     color: var(--hw-text-light);
     margin: 0 0 1rem 0;
     text-align: center;
   }
 
   .character-stats-subtitle {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-family: var(--font-primary);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
     color: var(--hw-primary-warm);
     margin: 1.5rem 0 1rem 0;
     padding-bottom: 0.5rem;
@@ -237,7 +241,8 @@
 
   .character-stats-explanation,
   .skills-explanation {
-    font-size: 0.9rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-text-very-muted);
     text-align: center;
     margin: 0 0 1.5rem 0;
@@ -246,53 +251,54 @@
   .core-stats-explanation {
     background: var(--hw-black-20);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
+    border-radius: var(--hw-radius-md);
+    padding: var(--hw-spacing-md);
+    margin-bottom: var(--hw-spacing-md);
   }
 
   .stat-explanation-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 0.5rem;
-    font-size: 0.8rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-text-muted);
   }
 
   .stat-explanation-grid .stat-name {
-    font-weight: 600;
+    font-weight: var(--font-semibold);
     color: var(--hw-primary-warm-80);
   }
 
   .stat-explanation-grid .stat-description {
-    font-weight: 500;
+    font-weight: var(--font-medium);
     color: var(--hw-text-muted);
   }
 
   .character-stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: var(--hw-spacing-md);
+    margin-bottom: var(--hw-spacing-lg);
     contain: layout style;
   }
 
   .character-stats-grid.core-stats {
     grid-template-columns: repeat(5, 1fr);
-    gap: 1.2rem;
+    gap: var(--hw-spacing-lg);
   }
 
   @media (max-width: 768px) {
     .character-stats-grid.core-stats {
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      gap: var(--hw-spacing-md);
     }
   }
 
   @media (max-width: 480px) {
     .character-stats-grid.core-stats {
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.8rem;
+      gap: var(--hw-spacing-md);
     }
 
     .character-stats-grid.core-stats .stat-item:nth-child(5) {
@@ -301,43 +307,47 @@
     }
 
     .stat-item {
-      padding: 0.8rem;
+      padding: var(--hw-spacing-md);
       min-height: 80px;
     }
 
     .stat-value {
-      font-size: 1rem;
+      font-size: var(--text-base);
     }
   }
 
   .stat-item {
     background: var(--hw-black-30);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 10px;
-    padding: 0.8rem;
+    border-radius: var(--hw-radius-md);
+    padding: var(--hw-spacing-md);
     text-align: center;
   }
 
   .stat-label {
-    font-size: 0.8rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-text-muted);
-    font-weight: 500;
+    font-weight: var(--font-medium);
     margin-bottom: 0.3rem;
     display: block;
   }
 
   .stat-value {
-    font-size: 1rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
     color: var(--hw-primary-warm);
-    font-weight: 700;
+    font-weight: var(--font-bold);
   }
 
   .stat-label.small {
-    font-size: 0.75rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-xs);
   }
 
   .stat-value.small {
-    font-size: 0.9rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
   }
 
   /* Character Tags */
@@ -348,9 +358,10 @@
   }
 
   .character-tags-label {
-    font-size: 0.9rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-text-muted);
-    font-weight: 600;
+    font-weight: var(--font-semibold);
     margin-bottom: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -359,7 +370,7 @@
   .character-tags-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--hw-spacing-sm);
     justify-content: flex-start;
     align-items: center;
   }
@@ -371,12 +382,13 @@
   .character-story-content {
     background: var(--hw-black-20);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 15px;
-    padding: 2rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
   }
 
   .character-story-text {
-    font-size: 1rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
     line-height: 1.7;
     color: var(--hw-text-light);
     margin: 0;
@@ -387,17 +399,19 @@
   /* ═══════════════════════════════════════════════════════════════════════ */
 
   .skill-card {
+    /* Using consolidated background class - add hw-skill-card-bg class in HTML */
     background: var(--hw-gradient-skill-card);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
+    margin-bottom: var(--hw-spacing-lg);
     contain: layout style paint;
   }
 
   .skill-card.passive-skill {
     border-color: var(--hw-accent-mint-40);
-    background: linear-gradient(135deg, var(--hw-accent-mint-10), var(--hw-black-20));
+    /* Using consolidated background class - add hw-passive-skill-bg class in HTML */
+    background: var(--hw-gradient-mint-light);
   }
 
   .skill-header {
@@ -410,8 +424,9 @@
   }
 
   .skill-title {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
     color: var(--hw-text-light);
     margin: 0;
   }
@@ -419,43 +434,46 @@
   .skill-meta {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: var(--hw-spacing-md);
     flex-wrap: wrap;
   }
 
   .skill-cost,
   .skill-cooldown {
-    padding: 0.3rem 0.6rem;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    padding: var(--hw-spacing-sm);
+    border-radius: var(--hw-radius-md);
+    font-family: var(--font-primary);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
     background: var(--hw-tertiary-sky-20);
     color: var(--hw-tertiary-sky-90);
     border: 1px solid var(--hw-tertiary-sky-30);
   }
 
   .skill-description {
-    font-size: 0.95rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     line-height: 1.6;
     color: var(--hw-text-light);
     margin: 0 0 1rem 0;
   }
 
   .skill-damage {
-    padding: 0.8rem;
+    padding: var(--hw-spacing-md);
     background: var(--hw-secondary-coral-10);
     border: 1px solid var(--hw-secondary-coral-30);
-    border-radius: 10px;
-    font-size: 0.9rem;
+    border-radius: var(--hw-radius-md);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-secondary-coral-90);
   }
 
   .skill-damage .damage-label {
-    font-weight: 600;
+    font-weight: var(--font-semibold);
   }
 
   .skill-damage .damage-value {
-    font-weight: 700;
+    font-weight: var(--font-bold);
     color: var(--hw-secondary-coral-95);
   }
 
@@ -466,9 +484,9 @@
   .trait-card {
     background: var(--hw-gradient-skill-card);
     border: 1px solid var(--hw-accent-mint-30);
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
+    margin-bottom: var(--hw-spacing-lg);
     contain: layout style paint;
   }
 
@@ -482,14 +500,16 @@
   }
 
   .trait-title {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
     color: var(--hw-text-light);
     margin: 0;
   }
 
   .trait-description {
-    font-size: 0.95rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     line-height: 1.6;
     color: var(--hw-text-light);
     margin: 0;
@@ -509,13 +529,14 @@
   }
 
   .gift-affection-note {
+    font-family: var(--font-primary);
     color: var(--hw-text-light);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     line-height: 1.4;
     margin: 0;
     background: var(--hw-primary-warm-10);
-    padding: 0.8rem;
-    border-radius: 8px;
+    padding: var(--hw-spacing-md);
+    border-radius: var(--hw-radius-md);
     border-left: 3px solid var(--hw-primary-warm);
   }
 
@@ -529,8 +550,9 @@
   }
 
   .trait-bonuses strong {
+    font-family: var(--font-primary);
     color: var(--hw-primary-warm);
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     margin-bottom: 0.5rem;
     display: block;
   }
@@ -547,10 +569,11 @@
   .bonus-list li {
     background: var(--hw-accent-mint-15);
     color: var(--hw-text-light);
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    padding: var(--hw-spacing-sm) var(--hw-spacing-md);
+    border-radius: var(--hw-radius-md);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
     border: 1px solid var(--hw-accent-mint-30);
   }
 
@@ -560,9 +583,9 @@
 
   .effects-section {
     background: var(--hw-bg-dark);
-    border-radius: 20px;
-    padding: 2rem;
-    margin-bottom: 3rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
+    margin-bottom: var(--hw-spacing-xl);
     border: 1px solid var(--hw-border-accent);
   }
 
@@ -576,8 +599,8 @@
   .effect-item {
     background: var(--hw-gradient-skill-card);
     border: 1px solid var(--hw-tertiary-sky-30);
-    border-radius: 15px;
-    padding: 1.2rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
   }
 
   .effect-header {
@@ -587,16 +610,18 @@
   }
 
   .effect-name {
+    font-family: var(--font-display);
     color: var(--hw-tertiary-sky);
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
   }
 
   .effect-description {
+    font-family: var(--font-primary);
     color: var(--hw-text-light);
     line-height: 1.6;
     margin: 0;
-    font-size: 0.95rem;
+    font-size: var(--text-sm);
   }
 
   /* ═══════════════════════════════════════════════════════════════════════ */
@@ -605,7 +630,7 @@
 
   .weapon-flex {
     display: flex;
-    gap: 2.5rem;
+    gap: var(--hw-spacing-xl);
     align-items: stretch;
     flex-wrap: wrap;
     justify-content: center;
@@ -623,31 +648,32 @@
   .weapon-image-box {
     background: var(--hw-gradient-character-stats);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 18px;
-    padding: 2rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--hw-spacing-lg);
   }
 
   .weapon-image-wrapper img {
     width: 150px;
     height: auto;
     object-fit: contain;
-    border-radius: 10px;
+    border-radius: var(--hw-radius-md);
     border: 2px solid var(--hw-primary-warm-40);
   }
 
   .weapon-info-card {
     background: var(--hw-black-30);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 15px;
-    padding: 1.5rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
     flex: 1;
   }
 
   .weapon-info-title {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
     color: var(--hw-text-light);
     margin: 0 0 1rem 0;
     text-align: center;
@@ -668,16 +694,18 @@
   }
 
   .weapon-info-label {
-    font-size: 0.85rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-text-light);
-    font-weight: 600;
+    font-weight: var(--font-semibold);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
   .weapon-stats-title {
-    font-size: 1rem;
-    font-weight: 600;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
     color: var(--hw-primary-warm);
     margin: 1rem 0 0.8rem 0;
     text-align: center;
@@ -700,14 +728,15 @@
   .weapon-skills-box {
     background: var(--hw-gradient-character-stats);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 18px;
-    padding: 2rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
     height: 100%;
   }
 
   .weapon-skills-title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
     color: var(--hw-text-light);
     margin: 0 0 1.5rem 0;
     text-align: center;
@@ -716,9 +745,9 @@
   .weapon-skill-card {
     background: var(--hw-black-30);
     border: 1px solid var(--hw-secondary-coral-30);
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
+    margin-bottom: var(--hw-spacing-lg);
   }
 
   .weapon-skill-header {
@@ -731,28 +760,31 @@
   }
 
   .weapon-skill-title {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
     color: var(--hw-text-light);
     margin: 0;
   }
 
   .weapon-skill-description {
-    font-size: 0.95rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     line-height: 1.6;
     color: var(--hw-text-light);
     margin: 0 0 1rem 0;
   }
 
   .weapon-skill-note {
-    padding: 0.8rem;
+    padding: var(--hw-spacing-md);
     background: var(--hw-primary-warm-15);
     border: 1px solid var(--hw-primary-warm-30);
-    border-radius: 10px;
-    font-size: 0.85rem;
+    border-radius: var(--hw-radius-md);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-text-light);
-    font-weight: 500;
-    margin-top: 1rem;
+    font-weight: var(--font-medium);
+    margin-top: var(--hw-spacing-md);
     border-left: 4px solid var(--hw-primary-warm);
   }
 
@@ -820,7 +852,7 @@
     }
 
     .section-title {
-      font-size: 1.8rem;
+      font-size: var(--text-2xl);
     }
 
     /* Touch-optimized click targets */
@@ -842,7 +874,7 @@
     }
 
     .section-title {
-      font-size: 1.6rem;
+      font-size: var(--text-xl);
       margin-bottom: 2rem;
     }
 
@@ -861,7 +893,7 @@
     .weapon-skill-header {
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.8rem;
+      gap: var(--hw-spacing-md);
     }
 
     .trait-badges {
@@ -872,8 +904,8 @@
     }
 
     .gift-affection-note {
-      font-size: 0.8rem;
-      padding: 0.7rem;
+      font-size: var(--text-xs);
+      padding: var(--hw-spacing-md);
     }
 
     .bonus-list {
@@ -882,8 +914,8 @@
     }
 
     .bonus-list li {
-      font-size: 0.75rem;
-      padding: 0.35rem 0.6rem;
+      font-size: var(--text-xs);
+      padding: var(--hw-spacing-sm);
     }
 
     /* Reset min-widths for all containers */
@@ -904,7 +936,7 @@
     }
 
     .section-title {
-      font-size: 1.4rem;
+      font-size: var(--text-lg);
       padding-left: 0.8rem;
     }
 
@@ -923,7 +955,7 @@
     }
 
     .character-name {
-      font-size: 1.6rem;
+      font-size: var(--text-xl);
     }
 
     .character-stats-grid {
@@ -932,7 +964,7 @@
     }
 
     .stat-item {
-      padding: 0.6rem;
+      padding: var(--hw-spacing-sm);
     }
 
     .character-tags-wrapper {
@@ -947,7 +979,7 @@
     }
 
     .character-tags-label {
-      font-size: 0.8rem;
+      font-size: var(--text-xs);
       margin-bottom: 0.6rem;
     }
 
@@ -981,12 +1013,12 @@
   .hw-highlight-attributes,
   .hw-highlight-numbers {
     color: var(--hw-primary-warm);
-    font-weight: 600;
+    font-weight: var(--font-semibold);
   }
 
   .hw-highlight-keywords {
     color: var(--hw-primary-warm);
-    font-weight: 500;
+    font-weight: var(--font-medium);
     font-style: italic;
   }
 
@@ -995,7 +1027,8 @@
   /* ═══════════════════════════════════════════════════════════════════════ */
 
   .gift-explanation {
-    font-size: 0.9rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     color: var(--hw-text-very-muted);
     text-align: center;
     margin: 0 0 1.5rem 0;
@@ -1012,9 +1045,9 @@
   .level5-bonus-card {
     background: var(--hw-gradient-skill-card);
     border: 1px solid var(--hw-primary-warm-30);
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
+    margin-bottom: var(--hw-spacing-lg);
   }
 
   .level5-bonus-header {
@@ -1027,8 +1060,9 @@
   }
 
   .level5-bonus-title {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
     color: var(--hw-text-light);
     margin: 0;
   }
@@ -1037,17 +1071,20 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.95rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
   }
 
   .bonus-type {
+    font-family: var(--font-primary);
     color: var(--hw-text-light);
-    font-weight: 600;
+    font-weight: var(--font-semibold);
   }
 
   .bonus-value {
+    font-family: var(--font-primary);
     color: var(--hw-primary-warm-90);
-    font-weight: 700;
+    font-weight: var(--font-bold);
   }
 
   /* Gift Categories */
@@ -1056,8 +1093,9 @@
   }
 
   .gift-category-title {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
     color: var(--hw-text-light);
     margin: 0 0 0.8rem 0;
     padding-left: 0.8rem;
@@ -1065,8 +1103,9 @@
   }
 
   .gift-category-description {
+    font-family: var(--font-primary);
     color: var(--hw-text-medium);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     margin-bottom: 1rem;
     opacity: 0.8;
     line-height: 1.5;
@@ -1084,16 +1123,16 @@
   .gift-card {
     background: var(--hw-gradient-skill-card);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 15px;
-    padding: 1.5rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: var(--hw-spacing-md);
   }
 
   .gift-card.favorite-gift {
     border-color: var(--hw-primary-warm-40);
-    background: linear-gradient(135deg, var(--hw-primary-warm-10), var(--hw-black-20));
+    background: var(--hw-gradient-warm-coral-light);
   }
 
   .gift-card.liked-gift {
@@ -1102,7 +1141,7 @@
 
   .gift-card.high-value-gift {
     border-color: var(--hw-secondary-coral-40);
-    background: linear-gradient(135deg, var(--hw-secondary-coral-10), var(--hw-black-20));
+    background: var(--hw-gradient-coral-light);
   }
 
   /* Gift Image Container */
@@ -1115,7 +1154,7 @@
   }
 
   .gift-image {
-    border-radius: 8px;
+    border-radius: var(--hw-radius-md);
     width: 64px;
     height: 64px;
     object-fit: cover;
@@ -1126,7 +1165,8 @@
     position: absolute;
     top: -5px;
     right: -5px;
-    font-size: 0.65rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-xs);
   }
 
   /* Gift Info */
@@ -1138,9 +1178,10 @@
   }
 
   .gift-name {
+    font-family: var(--font-primary);
     color: var(--hw-text-light);
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
     margin: 0;
     line-height: 1.3;
   }
@@ -1151,19 +1192,22 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.3rem;
-    font-size: 0.8rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     line-height: 1.4;
   }
 
   .points-label {
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
     color: var(--hw-text-muted);
   }
 
   .points-value {
-    font-size: 1rem;
-    font-weight: 700;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
     color: var(--hw-primary-warm);
   }
 
@@ -1172,8 +1216,9 @@
   }
 
   .points-total {
-    font-size: 1rem;
-    font-weight: 800;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    font-weight: var(--font-extrabold);
     color: var(--hw-secondary-coral);
   }
 
@@ -1183,15 +1228,17 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.3rem;
-    font-size: 0.8rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     margin-top: 0.5rem;
     padding-top: 0.5rem;
     border-top: 1px solid var(--hw-border-muted-50);
   }
 
   .gift-max-affection .points-value {
-    font-size: 1rem;
-    font-weight: 700;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
     color: var(--hw-primary-warm);
   }
 
@@ -1200,15 +1247,17 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    font-size: 0.75rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-xs);
     margin-top: 0.5rem;
     padding-top: 0.5rem;
     border-top: 1px solid var(--hw-border-muted);
   }
 
   .sources-label {
+    font-family: var(--font-primary);
     color: var(--hw-text-medium);
-    font-weight: 500;
+    font-weight: var(--font-medium);
     margin-bottom: 0.3rem;
   }
 
@@ -1221,25 +1270,26 @@
   .gift-box-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.3rem 0.5rem;
+    gap: var(--hw-spacing-sm);
+    padding: var(--hw-spacing-sm);
     background: var(--hw-black-30);
-    border-radius: 6px;
+    border-radius: var(--hw-radius-md);
     border: 1px solid var(--hw-border-muted);
   }
 
   .gift-box-image {
     width: 24px;
     height: 24px;
-    border-radius: 4px;
+    border-radius: var(--hw-radius-sm);
     border: 1px solid var(--hw-border-muted);
     flex-shrink: 0;
   }
 
   .gift-box-name {
+    font-family: var(--font-primary);
     color: var(--hw-tertiary-sky-90);
-    font-weight: 600;
-    font-size: 0.7rem;
+    font-weight: var(--font-semibold);
+    font-size: var(--text-xs);
     line-height: 1.3;
   }
 
@@ -1247,8 +1297,8 @@
   .no-gifts-card {
     background: var(--hw-gradient-skill-card);
     border: 2px dashed var(--hw-border-muted);
-    border-radius: 15px;
-    padding: 2rem;
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
     text-align: center;
   }
 
@@ -1258,15 +1308,17 @@
   }
 
   .no-gifts-title {
+    font-family: var(--font-display);
     color: var(--hw-text-light);
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
     margin: 0 0 0.8rem 0;
   }
 
   .no-gifts-description {
+    font-family: var(--font-primary);
     color: var(--hw-text-medium);
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     margin: 0;
     opacity: 0.8;
     line-height: 1.6;
@@ -1280,7 +1332,7 @@
     }
 
     .gift-card {
-      padding: 1.25rem;
+      padding: var(--hw-spacing-lg);
     }
 
     .level5-bonus-header {

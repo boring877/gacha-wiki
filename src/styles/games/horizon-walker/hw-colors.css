@@ -10,14 +10,20 @@
   --hw-secondary-coral: #ff7b7b; /* Soft coral pink - cheerful, warm contrast */
   --hw-tertiary-sky: #7bb3ff; /* Bright sky blue - uplifting, peaceful */
   --hw-accent-mint: #7bffb3; /* Fresh mint green - energizing, positive */
-  --hw-accent-lavender: #b37bff; /* Soft lavender purple - calming, magical */
-  --hw-purple: #b37bff; /* Alias for accent-lavender - for backward compatibility */
-  --hw-accent-peach: #ffb37b; /* Warm peach - cozy, friendly */
+  --hw-purple: #b37bff; /* Soft lavender purple - calming, magical */
 
   /* === HW SPECIAL COLORS === */
   --hw-sunshine-gold: #ffd700; /* Bright sunshine gold - treasure, rewards */
-  --hw-happy-pink: #ff69b4; /* Happy pink - special highlights */
-  --hw-ocean-blue: #4fc3f7; /* Ocean blue - cool, refreshing accent */
+
+  /* Sunshine Gold opacity variants */
+  --hw-sunshine-gold-10: rgba(255, 215, 0, 0.1);
+  --hw-sunshine-gold-30: rgba(255, 215, 0, 0.3);
+
+  /* === HW SOLID BACKGROUND COLORS === */
+  --hw-bg-solid-gold: #ffd700; /* Solid gold background for badges */
+  --hw-bg-solid-purple: #9c27b0; /* Solid purple background for badges */
+  --hw-bg-solid-blue: #1976d2; /* Solid blue background for badges */
+  --hw-bg-solid-green: #4caf50; /* Solid green background for badges */
 
   /* === HW TEXT COLORS === */
   --hw-text-light: #ffffff; /* Pure white text for headings and titles */
@@ -34,7 +40,6 @@
   --hw-bg-light: #3a3a3a; /* Lighter background for hover states */
 
   /* === HW BORDER COLORS === */
-  --hw-border-gray: #4a4a4a; /* Clean gray borders for inputs and cards */
   --hw-border-light: #3a3a3a; /* Light borders for subtle separation */
   --hw-border-muted: rgba(232, 165, 71, 0.15); /* Very subtle warm border for containers */
   --hw-border-accent: rgba(232, 165, 71, 0.25); /* Slightly visible warm border for emphasis */
@@ -53,38 +58,37 @@
 
   /* === COLOR-MIX FALLBACK VARIABLES === */
   /* Primary Warm (#e8a547) */
-  --hw-primary-warm-05: rgba(232, 165, 71, 0.05);
   --hw-primary-warm-10: rgba(232, 165, 71, 0.1);
   --hw-primary-warm-15: rgba(232, 165, 71, 0.15);
   --hw-primary-warm-20: rgba(232, 165, 71, 0.2);
   --hw-primary-warm-30: rgba(232, 165, 71, 0.3);
   --hw-primary-warm-40: rgba(232, 165, 71, 0.4);
+  --hw-primary-warm-50: rgba(232, 165, 71, 0.5);
   --hw-primary-warm-80: rgba(232, 165, 71, 0.8);
   --hw-primary-warm-90: rgba(232, 165, 71, 0.9);
-  --hw-primary-warm-95: rgba(232, 165, 71, 0.95);
 
   /* Secondary Coral (#ff7b7b) */
-  --hw-secondary-coral-05: rgba(255, 123, 123, 0.05);
   --hw-secondary-coral-10: rgba(255, 123, 123, 0.1);
+  --hw-secondary-coral-15: rgba(255, 123, 123, 0.15);
   --hw-secondary-coral-20: rgba(255, 123, 123, 0.2);
   --hw-secondary-coral-30: rgba(255, 123, 123, 0.3);
   --hw-secondary-coral-40: rgba(255, 123, 123, 0.4);
   --hw-secondary-coral-50: rgba(255, 123, 123, 0.5);
+  --hw-secondary-coral-60: rgba(255, 123, 123, 0.6);
   --hw-secondary-coral-90: rgba(255, 123, 123, 0.9);
   --hw-secondary-coral-95: rgba(255, 123, 123, 0.95);
 
   /* Tertiary Sky (#7bb3ff) */
-  --hw-tertiary-sky-05: rgba(123, 179, 255, 0.05);
   --hw-tertiary-sky-10: rgba(123, 179, 255, 0.1);
   --hw-tertiary-sky-20: rgba(123, 179, 255, 0.2);
   --hw-tertiary-sky-30: rgba(123, 179, 255, 0.3);
+  --hw-tertiary-sky-40: rgba(123, 179, 255, 0.4);
   --hw-tertiary-sky-50: rgba(123, 179, 255, 0.5);
   --hw-tertiary-sky-80: rgba(123, 179, 255, 0.8);
   --hw-tertiary-sky-80-mix: color-mix(in srgb, var(--hw-tertiary-sky) 80%, transparent);
   --hw-tertiary-sky-90: rgba(123, 179, 255, 0.9);
 
   /* Accent Mint (#7bffb3) */
-  --hw-accent-mint-05: rgba(123, 255, 179, 0.05);
   --hw-accent-mint-10: rgba(123, 255, 179, 0.1);
   --hw-accent-mint-15: rgba(123, 255, 179, 0.15);
   --hw-accent-mint-20: rgba(123, 255, 179, 0.2);
@@ -100,6 +104,10 @@
   --hw-black-30: rgba(0, 0, 0, 0.3);
   --hw-black-40: rgba(0, 0, 0, 0.4);
 
+  /* Black opacity mix variants */
+  --hw-black-30-mix: color-mix(in srgb, var(--hw-black-30), transparent);
+  --hw-black-10-mix: color-mix(in srgb, var(--hw-black-10), transparent);
+
   /* White opacity */
   --hw-white-05: rgba(255, 255, 255, 0.05);
   --hw-white-10: rgba(255, 255, 255, 0.1);
@@ -114,11 +122,8 @@
   --hw-purple-90: rgba(156, 39, 176, 0.9);
 
   /* === HW RANKING COLORS === */
-  --hw-rankings-bg: linear-gradient(135deg, var(--hw-bg-darker) 0%, var(--hw-bg-dark) 100%);
-  --hw-rank-gold: #ffd700; /* Bright gold rank color */
-  --hw-rank-silver: #c0c0c0; /* Silver rank color */
-  --hw-rank-bronze: #cd7f32; /* Bronze rank color */
   --hw-error-red: #dc3545; /* Error/danger red color */
+  --hw-error-red-40: rgba(220, 53, 69, 0.4); /* Error red with opacity */
   --hw-muted-text: #999999; /* Clean muted text color */
 
   /* === HW GRADIENTS === */
@@ -129,14 +134,10 @@
   ); /* Bright sunshine gold badge gradient */
   --hw-silver-gradient-alt: linear-gradient(135deg, #c0c4c0, #a9ada9); /* Silver badge gradient */
   --hw-error-gradient: linear-gradient(135deg, #dc3545, #b22222); /* Error button gradient */
-  --hw-character-info-bg: linear-gradient(135deg, var(--hw-bg-darker) 0%, var(--hw-bg-dark) 100%);
   --hw-white: #ffffff; /* Pure white text */
 
   /* === HW UI ELEMENTS === */
   --hw-stat-bg: rgba(255, 255, 255, 0.1); /* Clean stat item background */
-  --hw-stat-border: rgba(255, 255, 255, 0.2); /* Clean stat item border */
-  --hw-rank-number-border: rgba(255, 255, 255, 0.2); /* Clean rank number border */
-  --hw-analysis-bg: rgba(60, 60, 60, 0.3); /* Clean character analysis background */
 
   /* === HW DIMENSIONS === */
   --hw-radius-sm: 4px; /* Small border radius */
@@ -148,35 +149,16 @@
   --hw-spacing-lg: 1.5rem; /* Large spacing */
   --hw-spacing-xl: 2rem; /* Extra large spacing */
 
-  /* === HW COMPLEX GRADIENTS === */
-  --hw-card-gradient: linear-gradient(135deg, var(--hw-card-bg), var(--hw-bg-darker));
-
   /* === RGBA UTILITY VARIABLES === */
   /* Common opacity levels for consistent styling */
-  --hw-opacity-02: 0.02;
-  --hw-opacity-04: 0.04;
-  --hw-opacity-05: 0.05;
-  --hw-opacity-08: 0.08;
-  --hw-opacity-10: 0.1;
-  --hw-opacity-15: 0.15;
   --hw-opacity-20: 0.2;
-  --hw-opacity-25: 0.25;
-  --hw-opacity-30: 0.3;
-  --hw-opacity-35: 0.35;
-  --hw-opacity-40: 0.4;
-  --hw-opacity-50: 0.5;
-  --hw-opacity-60: 0.6;
-
-  /* Text shadows removed for simple, clean styling */
 
   /* Common black/white overlays */
   --hw-black-overlay-02: rgba(0, 0, 0, 0.02);
-  --hw-black-overlay-10: rgba(0, 0, 0, 0.1);
   --hw-black-overlay-20: rgba(0, 0, 0, 0.2);
   --hw-black-overlay-25: rgba(0, 0, 0, 0.25);
   --hw-black-overlay-35: rgba(0, 0, 0, 0.35);
-  --hw-white-overlay-02: rgba(255, 255, 255, 0.02);
-  --hw-white-overlay-10: rgba(255, 255, 255, 0.1);
+  --hw-white-10: rgba(255, 255, 255, 0.1);
 
   /* === CONSOLIDATED GRADIENT PATTERNS === */
   /* Most commonly used gradients across components */
@@ -258,59 +240,6 @@
     rgba(59, 130, 246, 0.05),
     rgba(59, 130, 246, 0.08)
   );
-  --hw-gradient-rune-glow: linear-gradient(
-    135deg,
-    rgba(232, 165, 71, 0.4),
-    rgba(255, 123, 123, 0.3)
-  );
-  --hw-gradient-rune-border: linear-gradient(
-    135deg,
-    rgba(232, 165, 71, 0.3),
-    rgba(255, 123, 123, 0.2)
-  );
-  --hw-gradient-rune-light: linear-gradient(
-    135deg,
-    rgba(232, 165, 71, 0.1),
-    rgba(255, 123, 123, 0.1)
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════════════ */
-/*                            BACKGROUND LAYERS                            */
-/* ═══════════════════════════════════════════════════════════════════════ */
-
-/* Base background layer styling - Global for all HW pages */
-.bg-layer {
-  position: fixed;
-  inset: 0;
-}
-
-/* HW Background Layers - Global for client-side navigation */
-.hw-bg-primary {
-  background: linear-gradient(135deg, #1a1e1a 0%, #2a2e2a 50%, #1a1e1a 100%);
-}
-
-.hw-bg-accent-1 {
-  background: radial-gradient(circle at 15% 85%, rgba(232, 165, 71, 0.08), transparent 60%);
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.hw-bg-accent-2 {
-  background: radial-gradient(circle at 85% 15%, rgba(255, 123, 123, 0.06), transparent 60%);
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.hw-bg-accent-3 {
-  background: radial-gradient(circle at 50% 50%, rgba(123, 179, 255, 0.05), transparent 60%);
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.hw-bg-accent-5 {
-  background: radial-gradient(circle at 75% 75%, rgba(255, 179, 123, 0.06), transparent 70%);
-  pointer-events: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */

@@ -13,9 +13,10 @@
 
   /* Section Title - Main headings for each section */
   .section-title {
-    font-size: 2.5rem;
+    font-size: var(--text-4xl);
+    font-family: var(--font-display);
     margin-bottom: 1.5rem;
-    font-weight: 700;
+    font-weight: var(--font-bold);
     text-align: center;
     color: var(--hw-text-light);
     background: var(--hw-gradient-warm-to-coral);
@@ -27,7 +28,8 @@
   /* Game Description */
   .game-description {
     color: var(--hw-text-medium);
-    font-size: 1.2rem;
+    font-size: var(--text-lg);
+    font-family: var(--font-primary);
     line-height: 1.7;
     margin-bottom: 2rem;
     text-align: center;
@@ -40,9 +42,10 @@
   .last-updated {
     margin-top: 1.5rem;
     color: var(--hw-primary-warm);
-    font-size: 1rem;
+    font-size: var(--text-base);
+    font-family: var(--font-primary);
     text-align: center;
-    font-weight: 500;
+    font-weight: var(--font-medium);
     opacity: 0.9;
   }
 
@@ -53,8 +56,9 @@
 
   .platforms-container h3 {
     color: var(--hw-text-light);
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: var(--text-xl);
+    font-family: var(--font-display);
+    font-weight: var(--font-semibold);
     text-align: center;
     margin-bottom: 1rem;
     background: var(--hw-gradient-warm-to-coral);
@@ -67,7 +71,8 @@
     text-align: center;
     margin-bottom: 1.5rem;
     color: var(--hw-text-muted);
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
+    font-family: var(--font-primary);
     line-height: 1.5;
   }
 
@@ -101,8 +106,9 @@
     text-decoration: none;
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: var(--font-semibold);
+    font-size: var(--text-base);
+    font-family: var(--font-primary);
     border: none;
     min-height: 50px;
   }
@@ -115,8 +121,9 @@
 
   .social-links-container h4 {
     color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+    font-weight: var(--font-semibold);
     margin-bottom: 1rem;
   }
 
@@ -128,8 +135,9 @@
 
   .hw-social-links-container h4 {
     color: var(--hw-text-light);
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+    font-weight: var(--font-semibold);
     margin-bottom: 1rem;
   }
 
@@ -147,8 +155,9 @@
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: var(--text-sm);
+    font-family: var(--font-primary);
+    font-weight: var(--font-medium);
   }
 
   .hw-social-link:hover {
@@ -159,9 +168,10 @@
 
   /* HW Resources Title */
   .hw-resources-title {
-    font-size: 2.5rem;
+    font-size: var(--text-4xl);
+    font-family: var(--font-display);
     margin-bottom: 1.5rem;
-    font-weight: 700;
+    font-weight: var(--font-bold);
     text-align: center;
     color: var(--hw-text-light);
     background: var(--hw-gradient-warm-to-coral);
@@ -215,21 +225,23 @@
   }
 
   .hw-category-emoji {
-    font-size: 2rem;
+    font-size: var(--text-2xl);
     margin-bottom: 0.5rem;
     display: block;
   }
 
   .hw-category-header h3 {
     color: var(--hw-text-light);
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: var(--text-xl);
+    font-family: var(--font-display);
+    font-weight: var(--font-semibold);
     margin: 0 0 0.5rem 0;
   }
 
   .hw-category-description {
     color: var(--hw-text-muted);
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
+    font-family: var(--font-primary);
     line-height: 1.4;
     margin: 0;
   }
@@ -251,8 +263,9 @@
     border-radius: 12px;
     background: var(--hw-stat-bg);
     border: 1px solid var(--hw-border-light);
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: var(--text-sm);
+    font-family: var(--font-primary);
+    font-weight: var(--font-medium);
     text-align: center;
     height: 100%;
     display: flex;
@@ -282,21 +295,22 @@
 
     .hw-resource-button {
       padding: 0.75rem;
-      font-size: 0.85rem;
+      font-size: var(--text-sm);
+      font-family: var(--font-primary);
     }
   }
 
   /* Mobile */
   @media (max-width: 768px) {
     .hw-resources-title {
-      font-size: 2rem;
+      font-size: var(--text-3xl);
     }
     .content-section {
       padding: 1.5rem 1rem;
     }
 
     .section-title {
-      font-size: 2rem;
+      font-size: var(--text-3xl);
     }
 
     .platforms-grid {
@@ -306,11 +320,13 @@
 
     .platform-button {
       padding: 1rem;
-      font-size: 0.9rem;
+      font-size: var(--text-sm);
+      font-family: var(--font-primary);
     }
 
     .platform-notes {
-      font-size: 0.8rem;
+      font-size: var(--text-sm);
+      font-family: var(--font-primary);
     }
 
     /* Bento Grid Mobile */
@@ -335,7 +351,8 @@
     .hw-resource-button {
       box-sizing: border-box;
       padding: 1rem 0.75rem;
-      font-size: 0.9rem;
+      font-size: var(--text-sm);
+      font-family: var(--font-primary);
       min-height: 56px;
       line-height: 1.3;
       white-space: normal;
@@ -357,7 +374,7 @@
     }
 
     .section-title {
-      font-size: 1.8rem;
+      font-size: var(--text-2xl);
     }
 
     .platforms-grid {
@@ -367,15 +384,17 @@
 
     .platform-button {
       padding: 1rem;
-      font-size: 0.9rem;
+      font-size: var(--text-sm);
+      font-family: var(--font-primary);
     }
 
     .platforms-container h3 {
-      font-size: 1.2rem;
+      font-size: var(--text-lg);
     }
 
     .platform-notes {
-      font-size: 0.75rem;
+      font-size: var(--text-xs);
+      font-family: var(--font-primary);
     }
 
     /* Small Mobile Bento Grid */
@@ -401,7 +420,8 @@
     .hw-resource-button {
       box-sizing: border-box;
       padding: 0.875rem 0.625rem;
-      font-size: 0.875rem;
+      font-size: var(--text-sm);
+      font-family: var(--font-primary);
       min-height: 52px;
       border-radius: 10px;
       line-height: 1.2;
@@ -425,9 +445,10 @@
 
     .hw-resource-button {
       padding: 1rem;
-      font-size: 0.9rem;
+      font-size: var(--text-sm);
+      font-family: var(--font-primary);
       min-height: 48px;
-      font-weight: 500;
+      font-weight: var(--font-medium);
     }
 
     .hw-category-large,

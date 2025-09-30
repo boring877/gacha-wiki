@@ -19,8 +19,8 @@
 
 .hw-character-gift-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 700;
+  font-size: clamp(var(--text-4xl), 5vw, var(--text-5xl));
+  font-weight: var(--font-bold);
   /* Simplified gradient effect */
   color: var(--hw-primary-warm);
   margin: 0 0 1.5rem 0;
@@ -28,7 +28,8 @@
 }
 
 .hw-character-gift-subtitle {
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
+  font-family: var(--font-primary);
   color: var(--hw-text-medium);
   margin: 0 0 2rem 0;
   opacity: 0.9;
@@ -40,6 +41,7 @@
   border-radius: var(--hw-radius-lg);
   border: 1px solid var(--hw-border-accent);
   padding: 2.5rem;
+  /* Alternative: could use .hw-card-basic utility class */
 }
 
 /* Content Sections */
@@ -79,20 +81,22 @@
 }
 
 .hw-reward-name {
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
   color: var(--hw-text-medium);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
 }
 
 /* Simple highlight for key information */
 .hw-highlight {
   color: var(--hw-sunshine-gold);
-  font-weight: 700;
+  font-weight: var(--font-bold);
 }
 
 /* How to Gift Section */
 .hw-how-to-gift {
-  background: rgba(123, 158, 255, 0.1);
+  /* Using consolidated background class - add hw-info-box-howto-bg class in HTML */
+  background: var(--hw-tertiary-sky-10);
   border-left: 3px solid var(--hw-tertiary-sky);
   padding: 1rem 1.5rem;
   margin: 1.5rem 0;
@@ -103,25 +107,29 @@
   margin: 0;
   color: var(--hw-text-light);
   line-height: 1.6;
+  font-family: var(--font-primary);
 }
 
 .hw-how-to-label {
-  font-weight: 700;
+  font-weight: var(--font-bold);
+  font-family: var(--font-primary);
   color: var(--hw-tertiary-sky);
   margin-right: 0.5rem;
 }
 
 .hw-highlight-action {
   color: var(--hw-accent-mint);
-  font-weight: 700;
-  background: rgba(123, 255, 179, 0.15);
+  font-weight: var(--font-bold);
+  font-family: var(--font-primary);
+  background: var(--hw-accent-mint-15);
   padding: 0.1rem 0.4rem;
-  border-radius: 3px;
+  border-radius: var(--hw-radius-sm);
 }
 
 /* Consistent label styling for all key labels */
 .hw-label {
-  font-weight: 700;
+  font-weight: var(--font-bold);
+  font-family: var(--font-primary);
   color: var(--hw-accent-peach);
 }
 
@@ -132,8 +140,9 @@
 }
 
 .hw-section-title {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   color: var(--hw-primary-warm);
   margin: 0 0 2rem 0;
   padding-bottom: 1rem;
@@ -143,10 +152,12 @@
 .hw-section-content {
   color: var(--hw-text-medium);
   line-height: 1.8;
+  font-family: var(--font-primary);
 }
 
 .hw-section-content p {
   margin: 0 0 1.25rem 0;
+  font-family: var(--font-primary);
 }
 
 .hw-section-content p:last-child {
@@ -155,17 +166,18 @@
 
 /* Simple Tip Box */
 .hw-tip-box {
-  background: rgba(251, 146, 60, 0.1);
-  border: 1px solid rgba(251, 146, 60, 0.3);
+  background: var(--hw-secondary-coral-10);
+  border: 1px solid var(--hw-secondary-coral-30);
   border-radius: var(--hw-radius-md);
   padding: 1.5rem;
   margin: 2rem 0;
 }
 
 .hw-tip-box h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fb923c;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
+  color: var(--hw-secondary-coral);
   margin: 0 0 1rem 0;
 }
 
@@ -173,6 +185,7 @@
   margin: 0;
   color: var(--hw-text-medium);
   line-height: 1.6;
+  font-family: var(--font-primary);
 }
 
 /* Simple Info Section */
@@ -188,12 +201,14 @@
   border: 1px solid var(--hw-white-overlay-10);
   border-radius: var(--hw-radius-md);
   padding: 1.5rem;
+  /* Alternative: could use .hw-card-dark utility class */
 }
 
 .hw-info-item p {
   margin: 0 0 0.5rem 0;
   color: var(--hw-text-medium);
   line-height: 1.5;
+  font-family: var(--font-primary);
 }
 
 .hw-info-item p:last-child {
@@ -237,8 +252,9 @@
 }
 
 .hw-reward-item span {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   color: var(--hw-primary-warm);
 }
 
@@ -257,8 +273,9 @@
 }
 
 .hw-search-title {
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   color: var(--hw-secondary-coral);
   margin: 0 0 1.25rem 0;
 }
@@ -275,8 +292,9 @@
 }
 
 .hw-filter-title {
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   color: var(--hw-secondary-coral);
   margin: 0 0 1.25rem 0;
 }
@@ -294,8 +312,9 @@
   border: 2px solid var(--hw-white-overlay-10);
   border-radius: var(--hw-radius-md);
   color: var(--hw-text-medium);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   cursor: pointer;
   min-width: 60px;
 }
@@ -319,7 +338,8 @@
   border: 2px solid var(--hw-border-accent);
   border-radius: var(--hw-radius-lg);
   color: var(--hw-text-light);
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
+  font-family: var(--font-primary);
 }
 
 .hw-search-input::placeholder {
@@ -347,6 +367,7 @@
   padding: 2rem;
   position: relative;
   -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+  /* Alternative: could use .hw-card-dark utility class */
 }
 
 /* Character Header */
@@ -379,8 +400,9 @@
 }
 
 .hw-character-name {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   color: var(--hw-primary-warm);
   margin: 0 0 1rem 0;
   text-shadow: var(--hw-text-shadow-lg);
@@ -391,7 +413,7 @@
 }
 
 .hw-character-rarity .hw-badge {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   padding: 0.4rem 0.8rem;
 }
 
@@ -402,7 +424,8 @@
 
 /* Level 5 Combat Bonus Section */
 .hw-level5-bonus-section {
-  background: linear-gradient(135deg, var(--hw-bg-accent), var(--hw-bg-dark));
+  /* Using consolidated background class - add hw-level5-bonus-bg class in HTML */
+  background: var(--hw-gradient-dark-to-darker);
   border: 2px solid var(--hw-primary-warm);
   border-radius: var(--hw-radius-md);
   padding: 1.5rem;
@@ -410,8 +433,9 @@
 }
 
 .hw-level5-bonus-title {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   color: var(--hw-primary-warm);
   margin: 0 0 1rem 0;
   text-align: center;
@@ -431,16 +455,18 @@
 }
 
 .hw-bonus-type {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   color: var(--hw-text-medium);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .hw-bonus-value {
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   color: var(--hw-secondary-coral);
   text-shadow: var(--hw-text-shadow-lg);
 }
@@ -450,8 +476,9 @@
 }
 
 .hw-preference-title {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   color: var(--hw-primary-warm);
   margin: 0 0 1rem 0;
   text-transform: uppercase;
@@ -497,24 +524,27 @@
 }
 
 .hw-gift-preference-name {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   color: var(--hw-text-light);
   margin: 0 0 0.25rem 0;
   line-height: 1.2;
 }
 
 .hw-gift-preference-points {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--hw-primary-warm);
-  font-weight: 700;
+  font-weight: var(--font-bold);
+  font-family: var(--font-primary);
   margin: 0 0 0.25rem 0;
 }
 
 .hw-gifts-needed {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   color: var(--hw-text-muted);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   margin: 0 0 0.5rem 0;
   font-style: italic;
 }
@@ -525,9 +555,10 @@
 }
 
 .hw-sources-label {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   color: var(--hw-text-medium);
-  font-weight: 700;
+  font-weight: var(--font-bold);
+  font-family: var(--font-primary);
   display: block;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
@@ -561,8 +592,9 @@
 }
 
 .hw-source-item-name {
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   color: var(--hw-primary-warm);
 }
 
@@ -572,45 +604,51 @@
 }
 
 .hw-gift-preference-badge .hw-badge {
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   padding: 0.25rem 0.5rem;
 }
 
 /* Preference Level Styling */
 .hw-gift-preference-item[data-preference='favorites'] {
+  /* Using consolidated background class - add hw-gift-favorite-bg class in HTML */
   background: linear-gradient(135deg, var(--hw-bg-dark) 0%, rgba(220, 38, 38, 0.15) 100%);
   border-color: rgba(220, 38, 38, 0.4);
 }
 
 .hw-gift-preference-item[data-preference='likes'] {
+  /* Using consolidated background class - add hw-gift-likes-bg class in HTML */
   background: linear-gradient(135deg, var(--hw-bg-dark) 0%, rgba(34, 197, 94, 0.15) 100%);
   border-color: rgba(34, 197, 94, 0.4);
 }
 
 .hw-great-value-item {
+  /* Using consolidated background class - add hw-great-value-bg class in HTML */
   background: linear-gradient(135deg, var(--hw-bg-dark) 0%, rgba(251, 146, 60, 0.15) 100%);
   border-color: rgba(251, 146, 60, 0.4);
 }
 
 .hw-preference-level {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   padding: 0.3rem 0.6rem;
   border-radius: var(--hw-radius-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 700;
+  font-weight: var(--font-bold);
+  font-family: var(--font-primary);
   flex-shrink: 0;
 }
 
 .hw-preference-level[data-level='favorites'] {
-  background: linear-gradient(135deg, #dc2626, #ef4444);
-  color: #ffffff;
+  /* Using consolidated background class - add hw-preference-favorites-bg class in HTML */
+  background: var(--hw-error-gradient);
+  color: var(--hw-text-white);
   text-shadow: var(--hw-text-shadow-md);
 }
 
 .hw-preference-level[data-level='likes'] {
-  background: linear-gradient(135deg, #16a34a, #22c55e);
-  color: #ffffff;
+  /* Using consolidated background class - add hw-preference-likes-bg class in HTML */
+  background: var(--hw-bg-solid-green);
+  color: var(--hw-text-white);
   text-shadow: var(--hw-text-shadow-md);
 }
 
@@ -623,11 +661,12 @@
 }
 
 .hw-favorites-title {
-  color: #dc2626;
-  border-left-color: #dc2626;
+  color: var(--hw-error-red);
+  border-left-color: var(--hw-error-red);
   margin-bottom: 1.25rem;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
@@ -677,8 +716,8 @@
 }
 
 .hw-favorite-name {
-  font-size: 1.3rem;
-  font-weight: 800;
+  font-size: var(--text-xl);
+  font-weight: var(--font-extrabold);
   color: var(--hw-text-light);
   margin: 0;
   line-height: 1.2;
@@ -693,16 +732,16 @@
 }
 
 .hw-favorite-badges .hw-badge {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
   padding: 0.4rem 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .hw-badge-favorites {
-  background: linear-gradient(135deg, #dc2626, #ef4444);
-  color: #ffffff;
+  background: var(--hw-error-gradient);
+  color: var(--hw-text-white);
 }
 
 .hw-favorite-stats {
@@ -736,11 +775,12 @@
 }
 
 .hw-likes-title {
-  color: #22c55e;
-  border-left-color: #22c55e;
+  color: var(--hw-accent-mint);
+  border-left-color: var(--hw-accent-mint);
   margin-bottom: 1.25rem;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
@@ -790,8 +830,8 @@
 }
 
 .hw-like-name {
-  font-size: 1.3rem;
-  font-weight: 800;
+  font-size: var(--text-xl);
+  font-weight: var(--font-extrabold);
   color: var(--hw-text-light);
   margin: 0;
   line-height: 1.2;
@@ -806,16 +846,16 @@
 }
 
 .hw-like-badges .hw-badge {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
   padding: 0.4rem 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .hw-badge-likes {
-  background: linear-gradient(135deg, #16a34a, #22c55e);
-  color: #ffffff;
+  background: var(--hw-bg-solid-green);
+  color: var(--hw-text-white);
 }
 
 .hw-like-stats {
@@ -841,19 +881,20 @@
 }
 
 .hw-great-value-badge {
-  background: linear-gradient(135deg, #f59e0b, #fb923c);
-  color: #ffffff;
+  background: var(--hw-gold-gradient);
+  color: var(--hw-text-white);
   text-shadow: var(--hw-text-shadow-md);
 }
 
 .hw-great-value-note {
-  font-size: 0.75rem;
-  color: #f59e0b;
-  font-weight: 600;
+  font-size: var(--text-xs);
+  color: var(--hw-sunshine-gold);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   margin-top: 0.5rem;
   padding: 0.5rem;
-  background: rgba(251, 146, 60, 0.1);
-  border: 1px solid rgba(251, 146, 60, 0.3);
+  background: var(--hw-secondary-coral-10);
+  border: 1px solid var(--hw-secondary-coral-30);
   border-radius: var(--hw-radius-sm);
   line-height: 1.3;
 }
@@ -867,11 +908,12 @@
 }
 
 .hw-alternative-title {
-  color: #fb923c;
-  border-left-color: #fb923c;
+  color: var(--hw-secondary-coral);
+  border-left-color: var(--hw-secondary-coral);
   margin-bottom: 1.25rem;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
@@ -920,8 +962,8 @@
 }
 
 .hw-alternative-name {
-  font-size: 1.3rem;
-  font-weight: 800;
+  font-size: var(--text-xl);
+  font-weight: var(--font-extrabold);
   color: var(--hw-text-light);
   margin: 0;
   line-height: 1.2;
@@ -936,8 +978,8 @@
 }
 
 .hw-alternative-badges .hw-badge {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
   padding: 0.4rem 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -966,8 +1008,8 @@
 }
 
 .hw-stat-label {
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
   color: var(--hw-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -975,15 +1017,15 @@
 }
 
 .hw-stat-value {
-  font-size: 1.1rem;
-  font-weight: 800;
+  font-size: var(--text-lg);
+  font-weight: var(--font-extrabold);
   color: var(--hw-text-light);
   font-family: var(--font-display);
   text-shadow: var(--hw-text-shadow-sm);
 }
 
 .hw-stat-points {
-  color: #fb923c;
+  color: var(--hw-secondary-coral);
   text-shadow: 0 1px 2px rgba(251, 146, 60, 0.3);
 }
 
@@ -992,9 +1034,10 @@
 }
 
 .hw-sources-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fb923c;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
+  color: var(--hw-secondary-coral);
   margin: 0 0 1rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1006,14 +1049,14 @@
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 0.75rem;
-  background: rgba(251, 146, 60, 0.15);
-  border: 2px solid rgba(251, 146, 60, 0.4);
+  background: var(--hw-secondary-coral-15);
+  border: 2px solid var(--hw-secondary-coral-40);
   border-radius: var(--hw-radius-md);
 }
 
 .hw-source-box:hover {
-  background: rgba(251, 146, 60, 0.2);
-  border-color: rgba(251, 146, 60, 0.6);
+  background: var(--hw-secondary-coral-20);
+  border-color: var(--hw-secondary-coral-60);
 }
 
 .hw-source-box:last-child {
@@ -1027,15 +1070,16 @@
 }
 
 .hw-source-name {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  font-family: var(--font-primary);
   color: var(--hw-text-light);
 }
 
 .hw-badge-value {
-  background: linear-gradient(135deg, #f59e0b, #fb923c);
-  color: #ffffff;
-  font-size: 0.7rem;
+  background: var(--hw-gold-gradient);
+  color: var(--hw-text-white);
+  font-size: var(--text-xs);
   padding: 0.3rem 0.6rem;
 }
 
@@ -1076,8 +1120,9 @@
 }
 
 .hw-gift-box-name {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   color: var(--hw-text-light);
   line-height: 1.3;
 }
@@ -1088,6 +1133,7 @@
   color: var(--hw-text-muted);
   font-style: italic;
   padding: 1rem 0;
+  font-family: var(--font-primary);
 }
 
 /* Responsive Design */
@@ -1145,7 +1191,7 @@
 
   /* Rarity Filter Mobile */
   .hw-filter-title {
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
   }
 
   .hw-rarity-buttons {
@@ -1155,7 +1201,7 @@
 
   .hw-rarity-btn {
     padding: 0.6rem 1rem;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     min-height: 44px; /* Touch target size */
     min-width: 44px;
   }
@@ -1163,7 +1209,7 @@
   /* Better touch targets */
   .hw-search-input {
     min-height: 44px;
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px; /* Prevents zoom on iOS - keep as pixels for this specific case */
   }
 
   /* Improve info section on mobile */
@@ -1205,7 +1251,7 @@
   }
 
   .hw-character-name {
-    font-size: 1.2rem;
+    font-size: var(--text-lg);
   }
 
   .hw-gift-preference-item {
@@ -1220,7 +1266,7 @@
   }
 
   .hw-tip-box h3 {
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
 
   /* Better spacing for gift items */
@@ -1251,11 +1297,11 @@
 
   /* Font size adjustments for small screens */
   .hw-section-title {
-    font-size: 1.5rem;
+    font-size: var(--text-2xl);
   }
 
   .hw-info-item h4 {
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
   }
 
   /* Make level 5 bonus more readable on mobile */
@@ -1265,7 +1311,7 @@
   }
 
   .hw-level5-bonus-title {
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
 
   .hw-gift-preference-image {
@@ -1274,15 +1320,15 @@
   }
 
   .hw-gift-preference-name {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 
   .hw-gifts-needed {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
   }
 
   .hw-preference-title {
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
   }
 
   /* Alternative Section Mobile */
@@ -1291,7 +1337,7 @@
   }
 
   .hw-alternative-title {
-    font-size: 1rem;
+    font-size: var(--text-base);
     text-align: center;
   }
 
@@ -1321,7 +1367,7 @@
   }
 
   .hw-alternative-name {
-    font-size: 1.15rem;
+    font-size: var(--text-lg);
   }
 
   .hw-alternative-badges {
@@ -1330,7 +1376,7 @@
   }
 
   .hw-alternative-badges .hw-badge {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     padding: 0.3rem 0.6rem;
   }
 
@@ -1344,15 +1390,15 @@
   }
 
   .hw-stat-label {
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
   }
 
   .hw-stat-value {
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
 
   .hw-sources-title {
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
 
   .hw-source-box {
@@ -1367,7 +1413,7 @@
   }
 
   .hw-source-name {
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
   }
 
   /* Favorites Section Mobile */
@@ -1376,7 +1422,7 @@
   }
 
   .hw-favorites-title {
-    font-size: 1rem;
+    font-size: var(--text-base);
     text-align: center;
   }
 
@@ -1407,7 +1453,7 @@
   }
 
   .hw-favorite-name {
-    font-size: 1.15rem;
+    font-size: var(--text-lg);
   }
 
   .hw-favorite-badges {
@@ -1416,7 +1462,7 @@
   }
 
   .hw-favorite-badges .hw-badge {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     padding: 0.3rem 0.6rem;
   }
 
@@ -1435,7 +1481,7 @@
   }
 
   .hw-likes-title {
-    font-size: 1rem;
+    font-size: var(--text-base);
     text-align: center;
   }
 
@@ -1466,7 +1512,7 @@
   }
 
   .hw-like-name {
-    font-size: 1.15rem;
+    font-size: var(--text-lg);
   }
 
   .hw-like-badges {
@@ -1475,7 +1521,7 @@
   }
 
   .hw-like-badges .hw-badge {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     padding: 0.3rem 0.6rem;
   }
 
@@ -1490,7 +1536,7 @@
 
   /* Inline Gift Sources Mobile */
   .hw-sources-label {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
   }
 
   .hw-source-item {
@@ -1505,7 +1551,7 @@
   }
 
   .hw-source-item-name {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
   }
 
   /* Simple Mobile Styles */
@@ -1515,7 +1561,7 @@
   }
 
   .hw-tip-box h3 {
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
   }
 
   .hw-info-section {
@@ -1529,7 +1575,7 @@
   }
 
   .hw-info-item h4 {
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
 
   /* Reward Items Mobile */
@@ -1542,7 +1588,7 @@
   }
 
   .hw-reward-item span {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 
   /* Gift Boxes Mobile */
@@ -1558,6 +1604,6 @@
   }
 
   .hw-gift-box-name {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 }

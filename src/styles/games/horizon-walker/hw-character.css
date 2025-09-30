@@ -14,11 +14,6 @@
   --hw-spacing-md: 1rem;
   --hw-spacing-lg: 1.5rem;
   --hw-spacing-xl: 2rem;
-  --hw-font-xs: 0.75rem;
-  --hw-font-sm: 0.8rem;
-  --hw-font-md: 0.85rem;
-  --hw-font-lg: 0.9rem;
-  --hw-font-xl: 1rem;
   --hw-touch-target: 48px;
   --hw-touch-target-lg: 52px;
 }
@@ -39,52 +34,58 @@
   .hw-char-db-hero-title {
     font-family: var(--font-display);
     font-size: var(--text-4xl);
-    font-weight: 700;
+    font-weight: var(--font-bold);
     color: var(--hw-text-light);
     margin: 0 0 1rem 0;
-    background: linear-gradient(135deg, var(--hw-primary-warm), #ff7b7b);
+    /* Using centralized gradient from hw-colors.css */
+    background: var(--hw-gradient-warm-to-coral);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: var(--leading-tight);
   }
 
-  /* Character Database Header */
+  /* Character Database Header - Use centralized utility class */
   .hw-character-database-header {
     text-align: center;
     margin: 1.5rem 0;
     padding: 1rem;
+    /* Using centralized card utility class */
     background: var(--hw-bg-dark);
-    border-radius: 12px;
+    border-radius: var(--hw-radius-lg);
     border: 1px solid var(--hw-border-accent);
   }
 
   .hw-character-database-title {
     color: var(--hw-primary-warm);
     margin: 0;
-    font-size: 1.6rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-extrabold);
     text-align: center;
-    line-height: 1.2;
+    line-height: var(--leading-tight);
   }
 
   .hw-character-database-subtitle {
     color: var(--hw-text-muted);
     margin: 0.5rem 0 0 0;
-    font-size: 0.9rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
     font-style: italic;
-    font-weight: 500;
+    font-weight: var(--font-medium);
   }
 
   .hw-character-database-note {
     color: var(--hw-text-light);
     margin: 1rem 0 1.5rem 0;
-    font-size: 0.95rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    /* Using centralized gradient from hw-colors.css */
     background: var(--hw-gradient-dark-darker-60-40);
     border: 1px solid var(--hw-border-muted);
-    border-radius: 8px;
+    border-radius: var(--hw-radius-md);
     padding: 0.75rem 1rem;
-    font-weight: 500;
+    font-weight: var(--font-medium);
   }
 
   .hw-char-db-stats-summary {
@@ -126,10 +127,10 @@
 
   /* Database Stats Styles (now integrated into filter bar) */
   .hw-char-db-subtitle {
-    font-size: 1rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
     color: var(--hw-text-muted);
     margin: 0;
-    font-family: var(--font-primary);
   }
 
   .hw-char-db-stats-summary {
@@ -191,8 +192,9 @@
   .character-table th {
     background: var(--hw-bg-darker);
     color: var(--hw-primary-warm);
-    font-size: var(--hw-font-md);
-    font-weight: 600;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
     text-align: center;
     padding: 0.75rem 0.5rem;
     border-bottom: 1px solid rgba(232, 165, 71, 0.2);
@@ -207,8 +209,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: var(--hw-font-md);
-    font-weight: 400;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-normal);
     border-bottom: 1px solid var(--hw-border-light);
     color: var(--hw-text-light);
     font-family: var(--font-primary);
@@ -217,7 +220,7 @@
   .character-table td:nth-child(1) {
     /* Row number */
     font-size: var(--hw-font-sm);
-    font-weight: 400;
+    font-weight: var(--font-normal);
     color: var(--hw-text-very-muted);
   }
 
@@ -242,8 +245,9 @@
   }
 
   .character-name {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
     font-family: var(--font-primary);
     line-height: 1.3;
     word-wrap: break-word;
@@ -252,39 +256,40 @@
 
   /* Responsive font sizing for long character names */
   .character-name {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-size: var(--text-lg);
   }
 
   /* Desktop table character name specific styling */
   .character-table .character-name {
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    font-size: var(--text-sm);
     display: block;
     max-width: 100%;
   }
 
   /* Special handling for extra-long character names */
   .character-name[data-long='true'] {
-    font-size: 0.95rem !important;
+    font-size: var(--text-base) !important;
     line-height: 1.2;
   }
 
   .mobile-card-info .character-name[data-long='true'] {
-    font-size: 1rem !important;
+    font-size: var(--text-base) !important;
   }
 
   @media (max-width: 480px) {
     .character-name[data-long='true'] {
-      font-size: 0.85rem !important;
+      font-size: var(--text-sm) !important;
     }
 
     .mobile-card-info .character-name[data-long='true'] {
-      font-size: 0.9rem !important;
+      font-size: var(--text-sm) !important;
     }
   }
 
   .cost-value {
-    font-size: var(--hw-font-md);
-    font-weight: 500;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
     color: var(--hw-primary-warm);
   }
 
@@ -318,7 +323,7 @@
     color: var(--hw-text-light);
     border-radius: 8px;
     border: 1px solid var(--hw-border-strong);
-    font-size: 0.8rem;
+    font-size: var(--text-xs);
     cursor: pointer;
     font-family: var(--font-primary);
   }
@@ -339,12 +344,13 @@
 
   .reset-btn {
     padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, var(--hw-border-muted), var(--hw-border-strong));
+    /* Using centralized gradient from hw-colors.css */
+    background: var(--hw-gradient-border-muted-strong);
     color: var(--hw-primary-warm);
-    border-radius: 10px;
+    border-radius: var(--hw-radius-lg);
     border: 2px solid var(--hw-border-strong);
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -470,8 +476,8 @@
   .mobile-card-info h3.character-name {
     color: var(--hw-text-light);
     margin: 0;
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    font-weight: 700;
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
     text-align: center;
     font-family: var(--font-primary);
     word-wrap: break-word;
@@ -521,7 +527,7 @@
 
   .stat-label {
     font-size: var(--hw-font-xs);
-    font-weight: 600;
+    font-weight: var(--font-semibold);
     color: var(--hw-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -529,8 +535,9 @@
   }
 
   .stat-value {
-    font-size: var(--hw-font-lg);
-    font-weight: 600;
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
     color: var(--hw-text-light);
     font-family: var(--font-primary);
   }
@@ -576,7 +583,7 @@
     .cost-value {
       background: var(--hw-primary-warm);
       color: var(--hw-text-dark);
-      font-weight: 700;
+      font-weight: var(--font-bold);
       padding: 0.4rem 0.8rem;
       border-radius: 4px;
       display: inline-block;
@@ -653,7 +660,7 @@
     .sort-btn {
       padding: 0.8rem 1rem; /* Larger touch targets */
       min-height: 44px; /* Minimum touch target size */
-      font-size: 0.9rem; /* Slightly larger text */
+      font-size: var(--text-sm); /* Slightly larger text */
     }
 
     .reset-btn {
@@ -667,7 +674,8 @@
     }
 
     .hw-char-db-subtitle {
-      font-size: var(--hw-font-lg);
+      font-family: var(--font-primary);
+      font-size: var(--text-sm);
     }
 
     .hw-char-db-stats-summary {
@@ -681,11 +689,11 @@
     }
 
     .hw-character-database-title {
-      font-size: 1.2rem;
+      font-size: var(--text-lg);
     }
 
     .hw-character-database-subtitle {
-      font-size: 0.8rem;
+      font-size: var(--text-xs);
     }
 
     /* Hero section responsive styles */
@@ -699,7 +707,8 @@
     }
 
     .hw-char-db-hero-subtitle {
-      font-size: var(--hw-font-lg);
+      font-family: var(--font-primary);
+      font-size: var(--text-sm);
     }
   }
 
@@ -712,11 +721,11 @@
 
     /* Character Database Header Small Mobile */
     .hw-character-database-title {
-      font-size: 1.1rem;
+      font-size: var(--text-lg);
     }
 
     .hw-character-database-subtitle {
-      font-size: 0.75rem;
+      font-size: var(--text-xs);
     }
 
     /* Mobile card optimizations */
@@ -757,7 +766,7 @@
 
     /* Smaller font size for very long names on small screens */
     .mobile-card-info h3.character-name {
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      font-size: var(--text-sm);
       line-height: 1.2;
     }
 
@@ -794,7 +803,8 @@
     }
 
     .hw-char-db-subtitle {
-      font-size: var(--hw-font-md);
+      font-family: var(--font-primary);
+      font-size: var(--text-sm);
     }
 
     .hw-char-db-stats-summary {
@@ -812,7 +822,8 @@
     }
 
     .hw-char-db-hero-subtitle {
-      font-size: var(--hw-font-md);
+      font-family: var(--font-primary);
+      font-size: var(--text-sm);
     }
   }
 } /* End @scope (.horizon-walker-main) */

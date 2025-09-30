@@ -30,9 +30,10 @@
   }
 
   .hw-weapons-count .hw-badge {
-    font-size: 1rem;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
     padding: 0.6rem 1rem;
-    font-weight: 700;
+    font-weight: var(--font-bold);
     background: var(--hw-primary-warm);
     color: var(--hw-bg-dark);
     border-radius: 6px;
@@ -46,29 +47,31 @@
   }
 
   .hw-sort-label {
+    font-family: var(--font-primary);
     color: var(--hw-text-muted);
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
     text-transform: uppercase;
     margin-right: 0.25rem;
   }
 
   .hw-sort-btn {
+    font-family: var(--font-primary);
     padding: 0.5rem 0.9rem;
     background: var(--hw-bg-darker);
     border: 1px solid var(--hw-border-muted);
     color: var(--hw-text-light);
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
   }
 
   .hw-sort-btn.active {
     background: var(--hw-primary-warm);
     color: var(--hw-bg-dark);
     border-color: var(--hw-primary-warm);
-    font-weight: 600;
+    font-weight: var(--font-semibold);
   }
 
   /* Filter Controls Section */
@@ -87,9 +90,10 @@
   }
 
   .hw-filter-label {
+    font-family: var(--font-primary);
     color: var(--hw-primary-warm);
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-weight: var(--font-bold);
+    font-size: var(--text-sm);
     text-transform: uppercase;
     min-width: 5rem;
     display: flex;
@@ -97,21 +101,22 @@
   }
 
   .hw-filter-btn {
+    font-family: var(--font-primary);
     padding: 0.5rem 0.9rem;
     background: var(--hw-bg-darker);
     border: 1px solid var(--hw-border-muted);
     color: var(--hw-text-light);
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
   }
 
   .hw-filter-btn.active {
     background: var(--hw-primary-warm);
     color: var(--hw-bg-dark);
     border-color: var(--hw-primary-warm);
-    font-weight: 700;
+    font-weight: var(--font-bold);
   }
 
   /* Search Container */
@@ -123,6 +128,7 @@
   }
 
   .hw-search-input {
+    font-family: var(--font-primary);
     flex: 1;
     min-width: 250px;
     max-width: 400px;
@@ -131,7 +137,7 @@
     border: 1px solid var(--hw-border-muted);
     border-radius: 6px;
     color: var(--hw-text-light);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
   }
 
   .hw-search-input::placeholder {
@@ -145,14 +151,15 @@
   }
 
   .hw-reset-btn {
+    font-family: var(--font-primary);
     padding: 0.5rem 1rem;
     background: var(--hw-bg-darker);
     border: 1px solid #ff6b6b;
     color: #ff6b6b;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
   }
 }
 
@@ -208,25 +215,28 @@
 }
 
 .weapon-name {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
   color: var(--hw-primary-warm);
   margin: 0;
   line-height: 1.2;
 }
 
 .weapon-rarity {
-  font-size: 0.75rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
   padding: 0.25rem 0.5rem;
   flex-shrink: 0;
-  font-weight: 600;
+  font-weight: var(--font-semibold);
 }
 
 .weapon-type {
-  font-size: 0.95rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
   color: var(--hw-text-muted);
   margin: 0;
-  font-weight: 500;
+  font-weight: var(--font-medium);
 }
 
 .weapon-character {
@@ -237,34 +247,38 @@
 }
 
 .weapon-character-label {
-  font-size: 0.85rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
   color: var(--hw-text-muted);
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: var(--font-semibold);
 }
 
 .weapon-character-name {
-  font-size: 0.95rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
   color: var(--hw-text-light);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
 }
 
 /* No Results */
 .no-results {
+  font-family: var(--font-primary);
   text-align: center;
   padding: 4rem 1rem;
   color: var(--hw-text-muted);
 }
 
 .no-results-title {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
   margin-bottom: 0.5rem;
   color: var(--hw-text-light);
 }
 
 .no-results-text {
-  font-size: 1rem;
+  font-size: var(--text-base);
   color: var(--hw-text-muted);
 }
 
@@ -291,7 +305,7 @@
 
     .hw-weapons-count .hw-badge {
       padding: 0.75rem 1.25rem;
-      font-size: 1rem;
+      font-size: var(--text-base);
     }
 
     .hw-weapons-sort {
@@ -305,13 +319,13 @@
       grid-column: 1 / -1;
       text-align: center;
       margin-bottom: 0.25rem;
-      font-size: 0.9rem;
+      font-size: var(--text-sm);
     }
 
     .hw-sort-btn {
       min-height: 48px; /* Touch target minimum */
       padding: 0.75rem 0.5rem;
-      font-size: 0.85rem;
+      font-size: var(--text-sm);
     }
 
     .hw-weapons-filters {
@@ -328,13 +342,13 @@
     .hw-filter-label {
       min-width: auto;
       margin-bottom: 0.5rem;
-      font-size: 0.95rem;
+      font-size: var(--text-base);
     }
 
     .hw-filter-btn {
       min-height: 48px; /* Touch target minimum */
       padding: 0.75rem 1rem;
-      font-size: 0.9rem;
+      font-size: var(--text-base);
       text-align: center;
     }
 
@@ -349,14 +363,14 @@
       width: 100%;
       min-height: 48px; /* Touch target minimum */
       padding: 0.75rem 1rem;
-      font-size: 1rem; /* Prevent zoom on iOS */
+      font-size: var(--text-base); /* Prevent zoom on iOS */
     }
 
     .hw-reset-btn {
       width: 100%;
       min-height: 48px; /* Touch target minimum */
       padding: 0.75rem;
-      font-size: 0.9rem;
+      font-size: var(--text-base);
     }
   }
 
@@ -377,15 +391,15 @@
   }
 
   .weapon-name {
-    font-size: 1.15rem;
+    font-size: var(--text-lg);
   }
 
   .weapon-type {
-    font-size: 0.95rem;
+    font-size: var(--text-base);
   }
 
   .weapon-character-name {
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
   }
 }
 
@@ -402,16 +416,16 @@
     }
 
     .hw-sort-btn {
-      font-size: 0.8rem;
+      font-size: var(--text-sm);
       padding: 0.75rem 0.25rem;
     }
 
     .hw-filter-btn {
-      font-size: 0.85rem;
+      font-size: var(--text-sm);
     }
 
     .hw-search-input {
-      font-size: 16px; /* Prevents zoom on iOS */
+      font-size: var(--text-base); /* Prevents zoom on iOS */
     }
   }
 
@@ -430,19 +444,19 @@
   }
 
   .weapon-name {
-    font-size: 1.05rem;
+    font-size: var(--text-lg);
   }
 
   .weapon-type {
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
   }
 
   .weapon-character-label {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
   }
 
   .weapon-character-name {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
   }
 }
 
@@ -455,20 +469,20 @@
 
     .hw-weapons-count .hw-badge {
       padding: 0.6rem 1rem;
-      font-size: 0.9rem;
+      font-size: var(--text-sm);
     }
 
     .hw-sort-btn {
-      font-size: 0.75rem;
+      font-size: var(--text-xs);
     }
 
     .hw-filter-label {
-      font-size: 0.85rem;
+      font-size: var(--text-sm);
     }
 
     .hw-filter-btn {
       padding: 0.75rem 0.75rem;
-      font-size: 0.8rem;
+      font-size: var(--text-xs);
     }
   }
 
@@ -482,21 +496,21 @@
   }
 
   .weapon-name {
-    font-size: 1rem;
+    font-size: var(--text-base);
     word-break: break-word;
   }
 
   .weapon-rarity {
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
     padding: 0.2rem 0.4rem;
   }
 
   .weapon-type {
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
   }
 
   .weapon-character-label,
   .weapon-character-name {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
   }
 }

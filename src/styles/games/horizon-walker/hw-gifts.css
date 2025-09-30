@@ -7,20 +7,20 @@
 .hw-gift-main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: var(--hw-spacing-xl) var(--hw-spacing-md);
 }
 
 /* Gift Hero Section */
 .hw-gift-hero {
   text-align: center;
-  margin-bottom: 3rem;
-  padding: 2rem 0;
+  margin-bottom: var(--hw-spacing-xl);
+  padding: var(--hw-spacing-xl) 0;
 }
 
 .hw-gift-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 700;
+  font-size: clamp(var(--text-4xl), 5vw, var(--text-5xl));
+  font-weight: var(--font-bold);
   /* Simplified gradient effect */
   color: var(--hw-primary-warm);
   margin: 0 0 1.5rem 0;
@@ -28,7 +28,8 @@
 }
 
 .hw-gift-subtitle {
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
+  font-family: var(--font-primary);
   color: var(--hw-text-medium);
   margin: 0 0 2rem 0;
   opacity: 0.9;
@@ -44,7 +45,7 @@
 
 /* Content Sections */
 .hw-gift-section {
-  margin-bottom: 3rem;
+  margin-bottom: var(--hw-spacing-xl);
 }
 
 .hw-gift-section:last-child {
@@ -52,17 +53,19 @@
 }
 
 .hw-section-title {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   color: var(--hw-primary-warm);
-  margin: 0 0 2rem 0;
-  padding-bottom: 1rem;
+  margin: 0 0 var(--hw-spacing-lg) 0;
+  padding-bottom: var(--hw-spacing-md);
   border-bottom: 2px solid var(--hw-primary-warm-30);
 }
 
 .hw-section-content {
   color: var(--hw-text-medium);
   line-height: 1.8;
+  font-family: var(--font-primary);
 }
 
 .hw-section-content p {
@@ -79,12 +82,13 @@
   border: 1px solid var(--hw-primary-warm-30);
   border-radius: var(--hw-radius-md);
   padding: 1.5rem;
-  margin: 2rem 0;
+  margin: var(--hw-spacing-xl) 0;
 }
 
 .hw-info-box-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-display);
   color: var(--hw-primary-warm);
   margin: 0 0 0.75rem 0;
 }
@@ -92,6 +96,7 @@
 .hw-info-box-content {
   color: var(--hw-text-medium);
   line-height: 1.7;
+  font-family: var(--font-primary);
 }
 
 /* Link styling */
@@ -106,9 +111,10 @@
 
 /* Unique badge */
 .hw-badge-unique {
-  background: #ff6f61;
-  color: #ffffff;
-  font-size: 0.65rem;
+  background: var(--hw-secondary-coral);
+  color: var(--hw-text-white);
+  font-size: var(--text-xs);
+  font-family: var(--font-primary);
 }
 
 /* Unique gifts grid spacing */
@@ -131,8 +137,9 @@
 }
 
 .system-title {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-display);
   color: var(--hw-primary-warm);
   margin: 0;
 }
@@ -144,7 +151,8 @@
 .system-description p {
   color: var(--hw-text-medium);
   margin: 0 0 1rem 0;
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
 }
 
 .system-levels {
@@ -159,8 +167,9 @@
 
 .level-name {
   display: block;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   color: var(--hw-primary-warm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -169,24 +178,26 @@
 
 .level-desc {
   display: block;
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
+  font-family: var(--font-primary);
   color: var(--hw-text-muted);
 }
 
 .system-note {
   margin-top: 1rem;
   padding: 1rem;
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: var(--hw-sunshine-gold-10);
+  border: 1px solid var(--hw-sunshine-gold-30);
   border-radius: var(--hw-radius-sm);
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
   color: var(--hw-text-medium);
   line-height: 1.5;
 }
 
 .system-note strong {
   color: var(--hw-primary-warm);
-  font-weight: 600;
+  font-weight: var(--font-semibold);
 }
 
 /* Gift Box Styles */
@@ -234,8 +245,9 @@
 }
 
 .hw-gift-box-name {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
   color: var(--hw-primary-warm);
   margin: 0 0 0.5rem 0;
 }
@@ -245,7 +257,8 @@
 }
 
 .hw-gift-box-tier .hw-badge {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
+  font-family: var(--font-primary);
   padding: 0.3rem 0.6rem;
 }
 
@@ -253,6 +266,7 @@
   color: var(--hw-text-medium);
   margin: 0 0 1rem 0;
   line-height: 1.6;
+  font-family: var(--font-primary);
 }
 
 .hw-gift-box-stats {
@@ -265,8 +279,9 @@
   color: var(--hw-primary-warm);
   padding: 0.25rem 0.75rem;
   border-radius: var(--hw-radius-sm);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
 }
 
 /* Gift Items Grid */
@@ -288,7 +303,7 @@
 /* Touch-friendly hover states */
 @media (hover: hover) {
   .hw-gift-item:hover {
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--hw-black-40);
     border-color: var(--hw-primary-warm-30);
   }
 }
@@ -313,8 +328,9 @@
 }
 
 .hw-gift-item-name {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   color: var(--hw-text-light);
   margin: 0 0 0.25rem 0;
   line-height: 1.2;
@@ -323,7 +339,8 @@
 .hw-gift-item-info .hw-badge {
   margin: 0.25rem 0;
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
+  font-family: var(--font-primary);
 }
 
 .hw-gift-points {
@@ -342,7 +359,8 @@
 }
 
 .points-label {
-  font-size: 0.65rem;
+  font-size: var(--text-xs);
+  font-family: var(--font-primary);
   color: var(--hw-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -351,20 +369,23 @@
 }
 
 .points-value {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
   color: var(--hw-primary-warm);
   display: block;
 }
 
 /* Unique Gifts Styling */
 .hw-unique-gift {
-  background: linear-gradient(135deg, var(--hw-bg-darker) 0%, rgba(255, 111, 97, 0.1) 100%);
-  border: 1px solid rgba(255, 111, 97, 0.3);
+  /* Using consolidated background class - add hw-unique-gift-bg class in HTML */
+  background: var(--hw-gradient-coral-light);
+  border: 1px solid var(--hw-secondary-coral-30);
 }
 
 .hw-unique-description {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
   color: var(--hw-text-medium);
   margin: 0.5rem 0;
   line-height: 1.4;
@@ -437,11 +458,11 @@
 
   /* Improve readability on mobile */
   .hw-section-title {
-    font-size: 1.5rem;
+    font-size: var(--text-2xl);
   }
 
   .hw-info-box-title {
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
   }
 
   /* Better spacing for touch */
@@ -510,7 +531,7 @@
   }
 
   .system-title {
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
   }
 
   .level-item {
@@ -519,11 +540,11 @@
 
   /* Gift box name responsive */
   .hw-gift-box-name {
-    font-size: 1.2rem;
+    font-size: var(--text-lg);
   }
 
   /* Title adjustments */
   .hw-gift-title {
-    font-size: 2rem;
+    font-size: var(--text-3xl);
   }
 }
