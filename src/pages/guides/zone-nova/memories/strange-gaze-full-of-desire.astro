@@ -1,0 +1,12 @@
+---
+// Hela Memory Page
+import MemoryTemplate from '../../../../templates/zone-nova/MemoryTemplate.astro';
+import {
+  helaMemoryData,
+  helaMemorySEO,
+} from '../../../../data/zone-nova/memories/strange-gaze-full-of-desire.js';
+
+export const prerender = true;
+---
+
+<MemoryTemplate memoryData={helaMemoryData} memorySEO={helaMemorySEO} />

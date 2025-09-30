@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { helaData, helaSEO } from '../../../../data/zone-nova/characters/hela.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={helaSEO.title}
+  description={helaSEO.description}
+  gameTitle={helaData.name}
+  character={helaData}
+>
+  <CharacterPageTemplate characterData={helaData} />
+</CharacterIndividualLayout>

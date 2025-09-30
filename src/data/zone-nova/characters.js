@@ -651,6 +651,27 @@ export const ZONE_NOVA_CHARACTERS = [
     slug: 'freya',
     detailUrl: '/guides/zone-nova/characters/freya',
   },
+  {
+    id: 39,
+    name: 'Hela',
+    rarity: 'SSR',
+    element: 'Chaos',
+    role: 'DPS',
+    class: 'Rogue',
+    faction: getFactionByCharacter('Hela'),
+    tags: ['Enhanced Ultimate', 'Mode Switch', 'Crit Damage', 'Crit Rate', 'Ranged', 'Melee'],
+    stats: {
+      hp: 7308,
+      attack: 1193,
+      defense: 474,
+      energyRecovery: 0.25,
+      critRate: 16.8,
+      critDmg: 71.6,
+    },
+    image: '/images/games/zone-nova/characters/Hela.jpg',
+    slug: 'hela',
+    detailUrl: '/guides/zone-nova/characters/hela',
+  },
 ];
 
 // Metadata (unique, sorted)

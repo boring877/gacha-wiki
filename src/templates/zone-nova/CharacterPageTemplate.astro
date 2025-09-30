@@ -241,12 +241,14 @@ function getTagCategory(tag: string): string {
           <div class="stat-item">
             <div class="stat-label small">Crit Rate</div>
             <div class="stat-value small">
-              {characterData.stats?.critRate ? `${characterData.stats.critRate}%` : '0%'}
+              {characterData.stats?.critRate ? `${characterData.stats.critRate}` : '0%'}
             </div>
           </div>
           <div class="stat-item">
             <div class="stat-label small">Crit Damage</div>
-            <div class="stat-value small">50%</div>
+            <div class="stat-value small">
+              {characterData.stats?.critDamage ? `${characterData.stats.critDamage}` : '50%'}
+            </div>
           </div>
         </div>
 
