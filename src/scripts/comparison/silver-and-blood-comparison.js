@@ -12,6 +12,8 @@ class SilverBloodCharacterComparison {
     this.sortState = { column: null, asc: false };
     this.characterDataCache = new Map();
     this.characterModules = null;
+    this.eventListeners = new Map();
+    this.characterCardListeners = new WeakMap();
 
     this.init();
   }
@@ -47,10 +49,19 @@ class SilverBloodCharacterComparison {
 
   initializeComparisonControls() {
     const clearBtn = document.getElementById('clear-comparison');
-    clearBtn?.addEventListener('click', () => this.clearComparison());
+    if (clearBtn) {
+      const clearHandler = () => this.clearComparison();
+      clearBtn.addEventListener('click', clearHandler);
+      this.eventListeners.set('clear-comparison', () => {
+        clearBtn.removeEventListener('click', clearHandler);
+      });
+    }
   }
 
   initializeFilterControls() {
+    // Clean up existing filter listeners
+    this.cleanupFilterListeners();
+
     const rarityFilter = document.getElementById('rarity-filter');
     const classFilter = document.getElementById('class-filter');
     const factionFilter = document.getElementById('faction-filter');
@@ -58,14 +69,47 @@ class SilverBloodCharacterComparison {
     const sortBtns = document.querySelectorAll('.sort-btn');
     const clearFiltersBtn = document.getElementById('clear-filters');
 
-    rarityFilter?.addEventListener('change', () => this.applyFilters());
-    classFilter?.addEventListener('change', () => this.applyFilters());
-    factionFilter?.addEventListener('change', () => this.applyFilters());
-    moonphaseFilter?.addEventListener('change', () => this.applyFilters());
+    // Filter listeners
+    const filterHandler = () => this.applyFilters();
 
+    if (rarityFilter) {
+      rarityFilter.addEventListener('change', filterHandler);
+      this.eventListeners.set('rarity-filter', () => {
+        rarityFilter.removeEventListener('change', filterHandler);
+      });
+    }
+
+    if (classFilter) {
+      classFilter.addEventListener('change', filterHandler);
+      this.eventListeners.set('class-filter', () => {
+        classFilter.removeEventListener('change', filterHandler);
+      });
+    }
+
+    if (factionFilter) {
+      factionFilter.addEventListener('change', filterHandler);
+      this.eventListeners.set('faction-filter', () => {
+        factionFilter.removeEventListener('change', filterHandler);
+      });
+    }
+
+    if (moonphaseFilter) {
+      moonphaseFilter.addEventListener('change', filterHandler);
+      this.eventListeners.set('moonphase-filter', () => {
+        moonphaseFilter.removeEventListener('change', filterHandler);
+      });
+    }
+
+    // Sort button listeners
     sortBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
+      const sortHandler = () => {
         const col = btn.dataset.sort;
+        // Input validation
+        if (!col || typeof col !== 'string') {
+          console.warn('Invalid sort column:', col);
+          return;
+        }
+
         // Toggle sort direction if same column, otherwise start with ascending
         this.sortState.asc = this.sortState.column === col ? !this.sortState.asc : true;
         this.sortState.column = col;
@@ -75,10 +119,21 @@ class SilverBloodCharacterComparison {
         btn.classList.add('active');
 
         this.applyFilters();
+      };
+
+      btn.addEventListener('click', sortHandler);
+      this.eventListeners.set(`sort-${btn.dataset.sort}`, () => {
+        btn.removeEventListener('click', sortHandler);
       });
     });
 
-    clearFiltersBtn?.addEventListener('click', () => this.clearFilters());
+    if (clearFiltersBtn) {
+      const clearFiltersHandler = () => this.clearFilters();
+      clearFiltersBtn.addEventListener('click', clearFiltersHandler);
+      this.eventListeners.set('clear-filters', () => {
+        clearFiltersBtn.removeEventListener('click', clearFiltersHandler);
+      });
+    }
   }
 
   applyFilters() {
@@ -156,82 +211,116 @@ class SilverBloodCharacterComparison {
     const characterGrid = document.querySelector('.character-grid');
     if (!characterGrid) return;
 
-    const characterCards = this.filteredCharacters.map(character => {
-      const cardElement = document.createElement('button');
-      cardElement.className = 'character-select-card';
-      cardElement.dataset.characterId = character.id;
-      cardElement.dataset.selected = this.selectedCharacters.includes(character.id);
+    // Clean up existing character card listeners
+    this.cleanupCharacterCardListeners();
 
-      // Create elements safely without innerHTML to prevent XSS
-      const img = document.createElement('img');
-      img.src = character.image;
-      img.alt = character.name;
-      img.className = 'character-portrait';
-      img.width = 80;
-      img.height = 80;
+    // Use DocumentFragment for better performance
+    const fragment = document.createDocumentFragment();
+    const characterCards = this.filteredCharacters
+      .map(character => {
+        // Input validation
+        if (!character || typeof character !== 'object') {
+          console.warn('Invalid character data found:', character);
+          return null;
+        }
 
-      const characterInfo = document.createElement('div');
-      characterInfo.className = 'character-info';
+        const cardElement = document.createElement('button');
+        cardElement.className = 'character-select-card';
+        cardElement.dataset.characterId = character.id || '';
+        cardElement.dataset.selected = this.selectedCharacters.includes(character.id);
 
-      const h3 = document.createElement('h3');
-      h3.textContent = character.name;
+        // Create elements safely without innerHTML to prevent XSS
+        const img = document.createElement('img');
+        img.src = character.image || '/images/placeholder.png';
+        img.alt = character.name || 'Unknown Character';
+        img.className = 'character-portrait';
+        img.width = 80;
+        img.height = 80;
+        img.onerror = function () {
+          this.src = '/images/placeholder.png';
+        };
 
-      const badgesDiv = document.createElement('div');
-      badgesDiv.className = 'character-badges';
+        const characterInfo = document.createElement('div');
+        characterInfo.className = 'character-info';
 
-      const rarityBadge = document.createElement('span');
-      rarityBadge.className = `rarity-badge ${character.rarity.toLowerCase()}`;
-      rarityBadge.textContent = character.rarity;
+        const h3 = document.createElement('h3');
+        h3.textContent = character.name || 'Unknown';
 
-      const classBadge = document.createElement('span');
-      classBadge.className = `class-badge ${character.class.toLowerCase().replace(' ', '-')}`;
-      classBadge.textContent = character.class;
+        const badgesDiv = document.createElement('div');
+        badgesDiv.className = 'character-badges';
 
-      badgesDiv.appendChild(rarityBadge);
-      badgesDiv.appendChild(classBadge);
-      characterInfo.appendChild(h3);
-      characterInfo.appendChild(badgesDiv);
-      cardElement.appendChild(img);
-      cardElement.appendChild(characterInfo);
+        const rarityBadge = document.createElement('span');
+        rarityBadge.className = `rarity-badge ${(character.rarity || '').toLowerCase()}`;
+        rarityBadge.textContent = character.rarity || 'Unknown';
 
-      // Add click handler directly (more efficient than re-initializing)
-      cardElement.addEventListener('click', () => {
-        const characterId = cardElement.dataset.characterId;
-        const isSelected = cardElement.dataset.selected === 'true';
+        const classBadge = document.createElement('span');
+        classBadge.className = `class-badge ${(character.class || 'unknown').toLowerCase().replace(' ', '-')}`;
+        classBadge.textContent = character.class || 'Unknown';
 
-        if (isSelected) {
-          this.selectedCharacters = this.selectedCharacters.filter(id => id !== characterId);
-          cardElement.dataset.selected = 'false';
-        } else {
-          if (this.selectedCharacters.length < this.maxCharacters) {
-            this.selectedCharacters.push(characterId);
-            cardElement.dataset.selected = 'true';
-          } else {
-            const oldestId = this.selectedCharacters.shift();
-            this.selectedCharacters.push(characterId);
+        const factionBadge = document.createElement('span');
+        factionBadge.className = `faction-badge ${(character.faction || '').toLowerCase()}`;
+        factionBadge.textContent = character.faction || 'Unknown';
 
-            const oldCard = document.querySelector(`[data-character-id="${oldestId}"]`);
-            if (oldCard) {
-              oldCard.dataset.selected = 'false';
-            }
+        badgesDiv.appendChild(rarityBadge);
+        badgesDiv.appendChild(classBadge);
+        badgesDiv.appendChild(factionBadge);
+        characterInfo.appendChild(h3);
+        characterInfo.appendChild(badgesDiv);
+        cardElement.appendChild(img);
+        cardElement.appendChild(characterInfo);
 
-            cardElement.dataset.selected = 'true';
+        // Add click handler with proper tracking
+        const cardClickHandler = () => {
+          const characterId = cardElement.dataset.characterId;
+          const isSelected = cardElement.dataset.selected === 'true';
+
+          // Input validation
+          if (!characterId || typeof characterId !== 'string') {
+            console.warn('Invalid character ID found on card');
+            return;
           }
-        }
 
-        this.updateComparisonTable();
+          if (isSelected) {
+            this.selectedCharacters = this.selectedCharacters.filter(id => id !== characterId);
+            cardElement.dataset.selected = 'false';
+          } else {
+            if (this.selectedCharacters.length < this.maxCharacters) {
+              this.selectedCharacters.push(characterId);
+              cardElement.dataset.selected = 'true';
+            } else {
+              const oldestId = this.selectedCharacters.shift();
+              this.selectedCharacters.push(characterId);
 
-        if (this.selectedCharacters.length === this.maxCharacters) {
-          this.navigateToComparison();
-        }
-      });
+              const oldCard = document.querySelector(`[data-character-id="${oldestId}"]`);
+              if (oldCard) {
+                oldCard.dataset.selected = 'false';
+              }
 
-      return cardElement;
-    });
+              cardElement.dataset.selected = 'true';
+            }
+          }
 
-    // Clear grid and append new elements
-    characterGrid.innerHTML = '';
-    characterCards.forEach(card => characterGrid.appendChild(card));
+          this.updateComparisonTable();
+
+          if (this.selectedCharacters.length === this.maxCharacters) {
+            this.navigateToComparison();
+          }
+        };
+
+        cardElement.addEventListener('click', cardClickHandler);
+        this.characterCardListeners.set(cardElement, cardClickHandler);
+
+        return cardElement;
+      })
+      .filter(Boolean); // Remove any null cards
+
+    // Clear grid safely and append new elements
+    while (characterGrid.firstChild) {
+      characterGrid.removeChild(characterGrid.firstChild);
+    }
+
+    characterCards.forEach(card => fragment.appendChild(card));
+    characterGrid.appendChild(fragment);
   }
 
   updateComparisonTable() {
@@ -260,9 +349,6 @@ class SilverBloodCharacterComparison {
     for (let i = this.selectedCharacters.length + 1; i <= this.maxCharacters; i++) {
       this.hideCharacterColumn(i);
     }
-
-    // Update mobile view
-    this.updateMobileComparisonView();
   }
 
   populateCharacterColumn(character, columnIndex) {
@@ -285,25 +371,6 @@ class SilverBloodCharacterComparison {
     const nameEl = document.querySelector(`.character-name[data-name="${columnIndex}"]`);
     if (nameEl) {
       nameEl.textContent = character.name;
-    }
-
-    const badgesEl = document.querySelector(`.premium-badges[data-badges="${columnIndex}"]`);
-    if (badgesEl) {
-      // Clear existing content safely
-      badgesEl.innerHTML = '';
-
-      // Create rarity badge securely
-      const rarityBadge = document.createElement('span');
-      rarityBadge.className = `rarity-badge ${character.rarity.toLowerCase()}`;
-      rarityBadge.textContent = character.rarity;
-
-      // Create class badge securely
-      const classBadge = document.createElement('span');
-      classBadge.className = `class-badge ${character.class.toLowerCase().replace(' ', '-')}`;
-      classBadge.textContent = character.class;
-
-      badgesEl.appendChild(rarityBadge);
-      badgesEl.appendChild(classBadge);
     }
 
     // Populate stats
@@ -351,8 +418,10 @@ class SilverBloodCharacterComparison {
       badge.className = `${badgeClass} ${value.toLowerCase().replace(/\s+/g, '-')}`;
       badge.textContent = value;
 
-      // Clear existing content and add badge
-      el.innerHTML = '';
+      // Clear existing content safely and add badge
+      while (el.firstChild) {
+        el.removeChild(el.firstChild);
+      }
       el.appendChild(badge);
       el.classList.add('active');
       el.style.display = 'block';
@@ -393,126 +462,6 @@ class SilverBloodCharacterComparison {
     });
   }
 
-  updateMobileComparisonView() {
-    const mobileCardsContainer = document.getElementById('character-cards-container');
-    if (!mobileCardsContainer) return;
-
-    if (this.selectedCharacters.length === 0) {
-      mobileCardsContainer.innerHTML = '';
-      return;
-    }
-
-    // Clear container first
-    mobileCardsContainer.innerHTML = '';
-
-    this.selectedCharacters.forEach(characterId => {
-      const character = this.characterDataProcessed.characters.find(c => c.id === characterId);
-      if (!character) return;
-
-      const stats = character.stats || {};
-
-      // Create mobile card securely without innerHTML
-      const card = document.createElement('div');
-      card.className = 'character-comparison-card';
-
-      // Card header
-      const cardHeader = document.createElement('div');
-      cardHeader.className = 'card-header';
-
-      const img = document.createElement('img');
-      img.src = character.image;
-      img.alt = character.name;
-      img.className = 'card-portrait';
-
-      const cardInfo = document.createElement('div');
-      cardInfo.className = 'card-info';
-
-      const h3 = document.createElement('h3');
-      h3.textContent = character.name;
-
-      const badges = document.createElement('div');
-      badges.className = 'card-badges';
-
-      const rarityBadge = document.createElement('span');
-      rarityBadge.className = `rarity-badge ${character.rarity.toLowerCase()}`;
-      rarityBadge.textContent = character.rarity;
-
-      const classBadge = document.createElement('span');
-      classBadge.className = `class-badge ${character.class.toLowerCase().replace(' ', '-')}`;
-      classBadge.textContent = character.class;
-
-      const factionBadge = document.createElement('span');
-      factionBadge.className = `faction-badge ${character.faction.toLowerCase()}`;
-      factionBadge.textContent = character.faction;
-
-      badges.appendChild(rarityBadge);
-      badges.appendChild(classBadge);
-      badges.appendChild(factionBadge);
-      cardInfo.appendChild(h3);
-      cardInfo.appendChild(badges);
-      cardHeader.appendChild(img);
-      cardHeader.appendChild(cardInfo);
-      card.appendChild(cardHeader);
-
-      // Basic info section
-      const basicSection = this.createStatSection('Basic Info', [
-        { label: 'Equipment', value: character.equipmentType },
-        { label: 'Moon Phase', value: character.moonPhase },
-        { label: 'Attack Type', value: character.attackType },
-      ]);
-      card.appendChild(basicSection);
-
-      // Base stats section
-      const statsSection = this.createStatSection('Base Stats', [
-        { label: 'HP', value: stats.hp !== undefined ? stats.hp.toLocaleString() : 'N/A' },
-        { label: 'ATK', value: stats.atk !== undefined ? stats.atk.toLocaleString() : 'N/A' },
-        { label: 'P.DEF', value: stats.pDef !== undefined ? stats.pDef.toLocaleString() : 'N/A' },
-        { label: 'M.DEF', value: stats.mDef !== undefined ? stats.mDef.toLocaleString() : 'N/A' },
-        { label: 'ATK SPD', value: stats.atkSpd !== undefined ? stats.atkSpd + '%' : 'N/A' },
-        { label: 'CRIT Rate', value: stats.critRate !== undefined ? stats.critRate + '%' : 'N/A' },
-        {
-          label: 'CRIT DMG',
-          value: stats.critDmgIncrease !== undefined ? stats.critDmgIncrease + '%' : 'N/A',
-        },
-      ]);
-      card.appendChild(statsSection);
-
-      mobileCardsContainer.appendChild(card);
-    });
-  }
-
-  createStatSection(title, stats) {
-    const section = document.createElement('div');
-    section.className = 'card-section';
-
-    const h4 = document.createElement('h4');
-    h4.textContent = title;
-    section.appendChild(h4);
-
-    const statsDiv = document.createElement('div');
-    statsDiv.className = 'card-stats';
-
-    stats.forEach(stat => {
-      const statDiv = document.createElement('div');
-      statDiv.className = 'card-stat';
-
-      const label = document.createElement('span');
-      label.className = 'stat-label';
-      label.textContent = stat.label + ':';
-
-      const value = document.createElement('span');
-      value.className = 'stat-value';
-      value.textContent = stat.value;
-
-      statDiv.appendChild(label);
-      statDiv.appendChild(value);
-      statsDiv.appendChild(statDiv);
-    });
-
-    section.appendChild(statsDiv);
-    return section;
-  }
-
   navigateToComparison() {
     const comparisonSection = document.getElementById('comparison-table');
     if (comparisonSection) {
@@ -541,7 +490,67 @@ class SilverBloodCharacterComparison {
       comparisonTable.style.display = 'none';
     }
   }
+
+  // Cleanup functions to prevent memory leaks
+  cleanupCharacterCardListeners() {
+    const characterCards = document.querySelectorAll('.character-select-card');
+    characterCards.forEach(card => {
+      const handler = this.characterCardListeners.get(card);
+      if (handler) {
+        card.removeEventListener('click', handler);
+        this.characterCardListeners.delete(card);
+      }
+    });
+  }
+
+  cleanupFilterListeners() {
+    // Clean up all tracked event listeners
+    this.eventListeners.forEach((cleanupFn, key) => {
+      if (typeof cleanupFn === 'function') {
+        cleanupFn();
+      }
+    });
+    this.eventListeners.clear();
+  }
+
+  cleanup() {
+    console.log('Silver & Blood Comparison: Cleaning up resources...');
+
+    // Clear character card listeners
+    this.cleanupCharacterCardListeners();
+
+    // Clear filter listeners
+    this.cleanupFilterListeners();
+
+    // Clear caches
+    this.characterDataCache.clear();
+    this.selectedCharacters.length = 0;
+    this.filteredCharacters.length = 0;
+
+    // Reset state
+    this.sortState = { column: null, asc: false };
+    this.characterDataProcessed = null;
+    this.characterModules = null;
+
+    console.log('Silver & Blood Comparison: Cleanup completed');
+  }
 }
 
 // Initialize the comparison tool
 window.silverBloodCharacterComparison = new SilverBloodCharacterComparison();
+
+// Add cleanup on page unload to prevent memory leaks
+const cleanupHandler = () => {
+  if (
+    window.silverBloodCharacterComparison &&
+    typeof window.silverBloodCharacterComparison.cleanup === 'function'
+  ) {
+    window.silverBloodCharacterComparison.cleanup();
+  }
+};
+
+window.addEventListener('beforeunload', cleanupHandler);
+window.addEventListener('pagehide', cleanupHandler);
+
+// Export cleanup function for manual cleanup
+window.SILVER_BLOOD_COMPARISON_CLEANUP = cleanupHandler;

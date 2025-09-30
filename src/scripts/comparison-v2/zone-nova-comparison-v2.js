@@ -273,7 +273,11 @@ function initializeFilters() {
 function initializeDeckInteractions() {
   const iconsContainer = domCache.iconsContainer || document.getElementById('v2-character-icons');
   if (iconsContainer) {
+    console.log('Initializing deck interactions on container:', iconsContainer);
     iconsContainer.addEventListener('click', handleIconClick);
+    console.log('Event listener added to icons container');
+  } else {
+    console.error('Icons container not found during initialization');
   }
 }
 
@@ -374,19 +378,27 @@ function initializeArenaControls() {
  */
 function handleIconClick(event) {
   event.preventDefault(); // Prevent any default behavior
+  console.log('Icon clicked!', event.target);
 
   const icon = event.target.closest('.character-icon');
-  if (!icon) return;
+  if (!icon) {
+    console.log('No parent character-icon found');
+    return;
+  }
 
   const characterSlug = icon.dataset.characterSlug;
+  console.log('Character slug:', characterSlug);
   if (!characterSlug) {
     // Character slug not found on icon element
+    console.log('Character slug not found on icon element');
     return;
   }
 
   if (icon.classList.contains('selected')) {
+    console.log('Removing character:', characterSlug);
     removeCharacter(characterSlug);
   } else {
+    console.log('Adding character:', characterSlug);
     addCharacter(characterSlug);
   }
 }
@@ -570,15 +582,24 @@ function resetFilters() {
 function updateIconStates() {
   // Use cached container if available
   const container = domCache.iconsContainer || document.getElementById('v2-character-icons');
-  if (!container) return;
+  if (!container) {
+    console.warn('Character icons container not found');
+    return;
+  }
 
   const icons = container.querySelectorAll('.character-icon');
+  console.log(
+    `Found ${icons.length} character icons, filteredCharacters count: ${filteredCharacters.length}`
+  );
+
   const filteredSlugs = new Set(filteredCharacters.map(char => char.slug));
 
   icons.forEach(icon => {
     const characterSlug = icon.dataset.characterSlug;
     const isSelected = selectedCharacters.includes(characterSlug);
     const isFiltered = filteredSlugs.has(characterSlug);
+
+    console.log(`Character ${characterSlug}: selected=${isSelected}, isFiltered=${isFiltered}`);
 
     // Update selection state
     icon.classList.toggle('selected', isSelected);
@@ -1117,11 +1138,11 @@ function initializeModalControls(_modal) {
   const backdrop = document.getElementById('v2-modal-backdrop');
 
   if (closeBtn) {
-    closeBtn.addEventListener('click', () => window.closeMobileModal());
+    closeBtn.addEventListener('click', () => ZNComparisonV2.closeMobileModal?.());
   }
 
   if (backdrop) {
-    backdrop.addEventListener('click', () => window.closeMobileModal());
+    backdrop.addEventListener('click', () => ZNComparisonV2.closeMobileModal?.());
   }
 
   // Escape key handling is already done in initializeKeyboardNavigation
