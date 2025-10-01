@@ -1069,7 +1069,7 @@ import {
         throw new Error(`Invalid character slug: ${characterSlug}`);
       }
 
-      // Import the centralized data component
+      // Import the optimized data component
       const module = await import('/src/components/zone-nova/ZNCharacterData.astro');
 
       // Get the character data from the CHARACTER_DATA_MAP

@@ -85,23 +85,11 @@ import { sanitizedCharacters } from './ZNCharacterData.astro';
       }
 
       try {
-        // Import the centralized data component
+        // Import the optimized data component
         const module = await import('/src/components/zone-nova/ZNCharacterData.astro');
 
-        // Get the character data from the CHARACTER_DATA_MAP
-        let data = module.CHARACTER_DATA_MAP?.[slug];
-
-        // If not found, try looking for any character data object with teamSkill
-        if (!data) {
-          data = Object.values(module).find(val => val && typeof val === 'object' && val.teamSkill);
-        }
-
-        // If still not found, try looking for any character data object
-        if (!data) {
-          data = Object.values(module).find(
-            val => val && typeof val === 'object' && (val.name || val.skills)
-          );
-        }
+        // Use the new getCharacterData function (lazy loading)
+        const data = await module.getCharacterData(slug);
 
         this.characterDataCache.set(slug, data || null);
         return data || null;
