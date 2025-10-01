@@ -17,7 +17,7 @@ declare global {
 ---
 
 <!-- Set up data for external script -->
-<script define:vars={{ characterData: characters }}>
+<script define:vars={{ characterData: characters, characterDataMap: CHARACTER_DATA_MAP }}>
   // Set up global data for the external comparison script
   window.silverBloodComparisonData = {
     characterData: {
@@ -36,6 +36,7 @@ declare global {
         skills: char.skills || [],
       })),
     },
+    characterDataMap: characterDataMap,
   };
 </script>
 

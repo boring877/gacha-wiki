@@ -14,6 +14,7 @@ import {
   NEW_PLAYER_TIER_LIST,
   rankings,
   overallAnalysis,
+  CHARACTER_DATA_MAP,
 } from './ZNCharacterData.astro';
 ---
 
@@ -33,6 +34,7 @@ import {
     elements,
     factions,
     rarities,
+    characterDataMap: CHARACTER_DATA_MAP,
   }}
 >
   // Security: Freeze objects to prevent prototype pollution
@@ -55,6 +57,7 @@ import {
       factions: Object.freeze(factions),
       rarities: Object.freeze(rarities),
     }),
+    characterDataMap: Object.freeze(characterDataMap),
   });
 </script>
 
@@ -1049,11 +1052,11 @@ import {
   // Deprecated renderCharacterStats function removed - using createCharacterStatsDOM instead
 
   /**
-   * Load character data lazily using the centralized data component
+   * Load character data using the centralized data component
    * @param {string} characterSlug - The character slug to load data for
-   * @returns {Promise<void>}
+   * @returns {void}
    */
-  async function loadCharacterData(characterSlug) {
+  function loadCharacterData(characterSlug) {
     // Input validation
     if (!characterSlug || typeof characterSlug !== 'string') {
       // Invalid character slug provided to loadCharacterData
@@ -1069,11 +1072,8 @@ import {
         throw new Error(`Invalid character slug: ${characterSlug}`);
       }
 
-      // Import the optimized data component
-      const module = await import('/src/components/zone-nova/ZNCharacterData.astro');
-
-      // Get the character data from the CHARACTER_DATA_MAP
-      const characterData = module.CHARACTER_DATA_MAP?.[characterSlug];
+      // Get the character data from the global variable (passed from Astro)
+      const characterData = window.ZN_COMPARISON_V2_DATA?.characterDataMap?.[characterSlug];
 
       if (characterData && typeof characterData === 'object') {
         characterDataMap.set(characterSlug, characterData);

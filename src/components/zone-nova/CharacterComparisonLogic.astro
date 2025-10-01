@@ -1,10 +1,10 @@
 ---
 // Import centralized Zone Nova data component
-import { sanitizedCharacters } from './ZNCharacterData.astro';
+import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro';
 ---
 
 <!-- Setup data BEFORE loading the script -->
-<script define:vars={{ characterData: sanitizedCharacters }}>
+<script define:vars={{ characterData: sanitizedCharacters, characterDataMap: CHARACTER_DATA_MAP }}>
   // Set up global data for the external comparison script
   window.zoneNovaComparisonData = {
     characterData: {
@@ -20,6 +20,7 @@ import { sanitizedCharacters } from './ZNCharacterData.astro';
         stats: char.stats || {},
       })),
     },
+    characterDataMap: characterDataMap,
   };
 </script>
 
@@ -73,7 +74,7 @@ import { sanitizedCharacters } from './ZNCharacterData.astro';
     }
 
     // Character data loader (Cloudflare compatible)
-    async loadCharacterData(slug) {
+    loadCharacterData(slug) {
       // Input validation
       if (!slug || typeof slug !== 'string') {
         console.warn('Invalid character slug provided to loadCharacterData');
@@ -85,11 +86,8 @@ import { sanitizedCharacters } from './ZNCharacterData.astro';
       }
 
       try {
-        // Import the data component
-        const module = await import('/src/components/zone-nova/ZNCharacterData.astro');
-
-        // Use the synchronous getCharacterData function
-        const data = module.getCharacterData(slug);
+        // Get data from global variable (passed from Astro)
+        const data = window.zoneNovaComparisonData?.characterDataMap?.[slug];
 
         this.characterDataCache.set(slug, data || null);
         return data || null;
@@ -595,7 +593,7 @@ import { sanitizedCharacters } from './ZNCharacterData.astro';
       setBadgeValue('element', character.element, 'element');
 
       // Load team skill data and get detailed stats
-      const characterData = await this.loadCharacterData(character.slug);
+      const characterData = this.loadCharacterData(character.slug);
       const detailedStats = characterData?.stats || stats;
 
       // Combat stats - prioritize detailed character data, fallback to basic stats
