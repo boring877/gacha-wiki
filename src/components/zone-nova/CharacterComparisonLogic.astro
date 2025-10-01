@@ -1,352 +1,78 @@
 ---
-import { Image } from 'astro:assets';
 import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+
+// Define the character interface based on actual data structure
+interface ZoneNovaCharacter {
+  id: number;
+  name: string;
+  slug: string;
+  detailUrl: string;
+  image: string;
+  rarity: 'SSR' | 'SR' | 'R';
+  element: 'Fire' | 'Wind' | 'Holy' | 'Chaos' | 'Ice';
+  class: 'Guardian' | 'Warrior' | 'Rogue' | 'Mage' | 'Buffer' | 'Debuffer' | 'Healer';
+  role: 'Tank' | 'DPS' | 'Buffer' | 'Debuffer' | 'Healer';
+  stats: {
+    hp: number;
+    attack: number;
+    defense: number;
+    energyRecovery: number;
+    critRate: number;
+    critDmg: number;
+  };
+  faction: string;
+  teamSkill?: {
+    name: string;
+    description: string;
+    requirements: {
+      faction: string;
+      element: string;
+    };
+  };
+}
+
+// Security: Sanitize character data to prevent XSS
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
+    .replace(/'/g, '&#039;');
+}
+
+// Security: Validate image URLs
+function isValidImageUrl(url: string): boolean {
+  return (
+    /^https?:\/\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url) ||
+    /^\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url)
+  );
+}
+
+// Security: Sanitize and validate character data
+// Keep original names for data lookups, only escape for display
+const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
+  ...char,
+  originalName: char.name || '', // Keep original for tier lookups
+  displayName: escapeHtml(char.name || ''), // Escaped version for display
+  slug: char.slug?.replace(/[^a-zA-Z0-9-_]/g, '') || '',
+  role: char.role || '', // These are from controlled sources, no need to escape
+  class: char.class || '',
+  rarity: char.rarity || '',
+  element: char.element || '',
+  faction: char.faction || '', // Don't escape faction to preserve spaces for filtering
+  image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
+}));
 ---
 
-<div class="character-comparison-container">
-  <!-- Character Selection -->
-  <div class="character-selector">
-    <h2>Select Characters to Compare</h2>
-
-    <!-- Filters and Sort Controls -->
-    <div class="filter-bar">
-      <div class="filter-controls">
-        <select class="filter-select" id="role-filter">
-          <option value="">Role</option>
-          <option value="Tank">Tank</option>
-          <option value="DPS">DPS</option>
-          <option value="Buffer">Buffer</option>
-          <option value="Debuffer">Debuffer</option>
-          <option value="Healer">Healer</option>
-        </select>
-        <select class="filter-select" id="class-filter">
-          <option value="">Class</option>
-          <option value="Guardian">Guardian</option>
-          <option value="Warrior">Warrior</option>
-          <option value="Rogue">Rogue</option>
-          <option value="Mage">Mage</option>
-          <option value="Buffer">Buffer</option>
-          <option value="Debuffer">Debuffer</option>
-          <option value="Healer">Healer</option>
-        </select>
-        <select class="filter-select" id="rarity-filter">
-          <option value="">Rarity</option>
-          <option value="SSR">SSR</option>
-          <option value="SR">SR</option>
-          <option value="R">R</option>
-        </select>
-        <select class="filter-select" id="element-filter">
-          <option value="">Element</option>
-          <option value="Fire">Fire</option>
-          <option value="Ice">Ice</option>
-          <option value="Wind">Wind</option>
-          <option value="Holy">Holy</option>
-          <option value="Chaos">Chaos</option>
-        </select>
-        <select class="filter-select" id="faction-filter">
-          <option value="">Faction</option>
-          <option value="Unaffiliated">Unaffiliated</option>
-          <option value="Sapphire">Sapphire</option>
-          <option value="Chemic">Chemic</option>
-          <option value="Avalon">Avalon</option>
-          <option value="Odius">Odius</option>
-          <option value="A.S.A">A.S.A</option>
-          <option value="Pingjing City">Pingjing City</option>
-          <option value="Monochrome Nation">Monochrome Nation</option>
-          <option value="BICTA Tower">BICTA Tower</option>
-        </select>
-      </div>
-
-      <div class="controls-right">
-        <div class="sort-controls">
-          <button class="sort-btn" data-sort="hp">HP</button>
-          <button class="sort-btn" data-sort="attack">ATK</button>
-          <button class="sort-btn" data-sort="defense">DEF</button>
-        </div>
-        <button class="reset-btn" id="clear-filters">Reset</button>
-      </div>
-    </div>
-
-    <!-- Character Grid -->
-    <div class="character-grid" id="character-grid">
-      {
-        ZONE_NOVA_CHARACTERS.map((char: any) => (
-          <button
-            class="character-select-card"
-            data-character-slug={char.slug}
-            data-selected="false"
-          >
-            <Image
-              src={char.image}
-              alt={char.name}
-              class="character-portrait"
-              width={80}
-              height={80}
-              loading="lazy"
-              format="webp"
-              quality={85}
-            />
-            <div class="character-info">
-              <h3>{char.name}</h3>
-              <div class="character-badges">
-                <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
-                <span class={`class-badge ${char.class.toLowerCase().replace(' ', '-')}`}>
-                  {char.class}
-                </span>
-                <span class={`element-badge ${char.element.toLowerCase()}`}>{char.element}</span>
-                <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
-                <span class={`faction-badge ${char.faction.toLowerCase().replace(' ', '-')}`}>
-                  {char.faction}
-                </span>
-              </div>
-
-              {/* Character stats display from rankings */}
-              <div class="character-stats">
-                <div class="stat-item">
-                  <span class="stat-label">HP</span>
-                  <span class="stat-value">
-                    {char.stats?.hp ? char.stats.hp.toLocaleString() : 'N/A'}
-                  </span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-label">ATK</span>
-                  <span class="stat-value">
-                    {char.stats?.attack ? char.stats.attack.toLocaleString() : 'N/A'}
-                  </span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-label">DEF</span>
-                  <span class="stat-value">
-                    {char.stats?.defense ? char.stats.defense.toLocaleString() : 'N/A'}
-                  </span>
-                </div>
-                <div class="stat-item crit-rate">
-                  <span class="stat-label">CRIT</span>
-                  <span class="stat-value">
-                    {char.stats?.critRate ? char.stats.critRate + '%' : 'N/A'}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </button>
-        ))
-      }
-    </div>
-  </div>
-
-  <!-- Comparison Display -->
-  <div class="comparison-container" id="comparison-table">
-    <h2>Character Comparison</h2>
-
-    <div class="comparison-controls">
-      <button class="clear-btn" id="clear-comparison">Clear Comparison</button>
-    </div>
-
-    <div class="comparison-table-wrapper">
-      <!-- Premium Style Character Comparison -->
-      <div class="premium-comparison-container">
-        <!-- Character Headers -->
-        <div class="premium-character-headers">
-          <div class="premium-character-column" data-character="1">
-            <div class="premium-character-card">
-              <div class="character-portrait-container">
-                <img class="premium-portrait" data-portrait="1" />
-                <div class="portrait-glow"></div>
-              </div>
-              <h3 class="character-name" data-name="1"></h3>
-            </div>
-          </div>
-          <div class="premium-character-column" data-character="2">
-            <div class="premium-character-card">
-              <div class="character-portrait-container">
-                <img class="premium-portrait" data-portrait="2" />
-                <div class="portrait-glow"></div>
-              </div>
-              <h3 class="character-name" data-name="2"></h3>
-            </div>
-          </div>
-          <div class="premium-character-column" data-character="3">
-            <div class="premium-character-card">
-              <div class="character-portrait-container">
-                <img class="premium-portrait" data-portrait="3" />
-                <div class="portrait-glow"></div>
-              </div>
-              <h3 class="character-name" data-name="3"></h3>
-            </div>
-          </div>
-          <div class="premium-character-column" data-character="4">
-            <div class="premium-character-card">
-              <div class="character-portrait-container">
-                <img class="premium-portrait" data-portrait="4" />
-                <div class="portrait-glow"></div>
-              </div>
-              <h3 class="character-name" data-name="4"></h3>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stats Comparison -->
-        <div class="premium-stats-container">
-          <!-- Basic Info Section -->
-          <div class="premium-section">
-            <div class="premium-section-header">
-              <h4>Basic Information</h4>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">Rarity</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium" data-stat="rarity-1"></div>
-                <div class="stat-value-premium" data-stat="rarity-2"></div>
-                <div class="stat-value-premium" data-stat="rarity-3"></div>
-                <div class="stat-value-premium" data-stat="rarity-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">Class</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium" data-stat="class-1"></div>
-                <div class="stat-value-premium" data-stat="class-2"></div>
-                <div class="stat-value-premium" data-stat="class-3"></div>
-                <div class="stat-value-premium" data-stat="class-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">Role</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium" data-stat="role-1"></div>
-                <div class="stat-value-premium" data-stat="role-2"></div>
-                <div class="stat-value-premium" data-stat="role-3"></div>
-                <div class="stat-value-premium" data-stat="role-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">Faction</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium" data-stat="faction-1"></div>
-                <div class="stat-value-premium" data-stat="faction-2"></div>
-                <div class="stat-value-premium" data-stat="faction-3"></div>
-                <div class="stat-value-premium" data-stat="faction-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">Element</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium" data-stat="element-1"></div>
-                <div class="stat-value-premium" data-stat="element-2"></div>
-                <div class="stat-value-premium" data-stat="element-3"></div>
-                <div class="stat-value-premium" data-stat="element-4"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Combat Stats Section -->
-          <div class="premium-section">
-            <div class="premium-section-header">
-              <h4>Combat Stats</h4>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">HP</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium numeric" data-stat="hp-1"></div>
-                <div class="stat-value-premium numeric" data-stat="hp-2"></div>
-                <div class="stat-value-premium numeric" data-stat="hp-3"></div>
-                <div class="stat-value-premium numeric" data-stat="hp-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">ATK</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium numeric" data-stat="attack-1"></div>
-                <div class="stat-value-premium numeric" data-stat="attack-2"></div>
-                <div class="stat-value-premium numeric" data-stat="attack-3"></div>
-                <div class="stat-value-premium numeric" data-stat="attack-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">DEF</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium numeric" data-stat="defense-1"></div>
-                <div class="stat-value-premium numeric" data-stat="defense-2"></div>
-                <div class="stat-value-premium numeric" data-stat="defense-3"></div>
-                <div class="stat-value-premium numeric" data-stat="defense-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">Energy Recovery</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium numeric" data-stat="energy-1"></div>
-                <div class="stat-value-premium numeric" data-stat="energy-2"></div>
-                <div class="stat-value-premium numeric" data-stat="energy-3"></div>
-                <div class="stat-value-premium numeric" data-stat="energy-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">CRIT Rate</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium numeric" data-stat="crit-1"></div>
-                <div class="stat-value-premium numeric" data-stat="crit-2"></div>
-                <div class="stat-value-premium numeric" data-stat="crit-3"></div>
-                <div class="stat-value-premium numeric" data-stat="crit-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">CRIT DMG</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium numeric" data-stat="critdmg-1"></div>
-                <div class="stat-value-premium numeric" data-stat="critdmg-2"></div>
-                <div class="stat-value-premium numeric" data-stat="critdmg-3"></div>
-                <div class="stat-value-premium numeric" data-stat="critdmg-4"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Skill Section -->
-          <div class="premium-section">
-            <div class="premium-section-header">
-              <h4>Team Skill</h4>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">Skill Name</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium team-skill-name" data-stat="teamskillname-1"></div>
-                <div class="stat-value-premium team-skill-name" data-stat="teamskillname-2"></div>
-                <div class="stat-value-premium team-skill-name" data-stat="teamskillname-3"></div>
-                <div class="stat-value-premium team-skill-name" data-stat="teamskillname-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">Description</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium team-skill" data-stat="teamskill-1"></div>
-                <div class="stat-value-premium team-skill" data-stat="teamskill-2"></div>
-                <div class="stat-value-premium team-skill" data-stat="teamskill-3"></div>
-                <div class="stat-value-premium team-skill" data-stat="teamskill-4"></div>
-              </div>
-            </div>
-            <div class="premium-stat-row">
-              <div class="stat-label-premium">Requirements</div>
-              <div class="premium-stat-values">
-                <div class="stat-value-premium team-conditions" data-stat="teamconditions-1"></div>
-                <div class="stat-value-premium team-conditions" data-stat="teamconditions-2"></div>
-                <div class="stat-value-premium team-conditions" data-stat="teamconditions-3"></div>
-                <div class="stat-value-premium team-conditions" data-stat="teamconditions-4"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Set up data for external script -->
-<script define:vars={{ characterData: ZONE_NOVA_CHARACTERS }}>
+<!-- Setup data BEFORE loading the script -->
+<script define:vars={{ characterData: sanitizedCharacters }}>
   // Set up global data for the external comparison script
   window.zoneNovaComparisonData = {
     characterData: {
       characters: characterData.map(char => ({
         slug: char.slug,
-        name: char.name,
+        name: char.originalName,
         rarity: char.rarity,
         element: char.element,
         role: char.role,
@@ -360,7 +86,7 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 </script>
 
 <!-- Comparison script -->
-<script>
+<script type="module">
   /**
    * Zone Nova Character Comparison Tool
    * Secure, optimized character comparison functionality
@@ -403,7 +129,7 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
         this.characterModules = {};
         this.characterDataProcessed.characters.forEach(char => {
           this.characterModules[char.slug] = () =>
-            import(`../../data/zone-nova/characters/${char.slug}.js`);
+            import(`/src/data/zone-nova/characters/${char.slug}.js`);
         });
       } else {
         // Zone Nova comparison data not found
@@ -435,16 +161,25 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
         }
         const module = await moduleLoader();
 
-        // First try to find the character data with teamSkill
-        let data = Object.values(module).find(
-          val => val && typeof val === 'object' && val.teamSkill
-        );
+        // Try to find the character data using the expected export name pattern (characterSlug + 'Data')
+        const exportName = `${slug}Data`;
+        let data = module[exportName];
 
-        // If not found, try looking for any character data object
+        // If not found, try looking for any character data object with teamSkill
+        if (!data) {
+          data = Object.values(module).find(val => val && typeof val === 'object' && val.teamSkill);
+        }
+
+        // If still not found, try looking for any character data object
         if (!data) {
           data = Object.values(module).find(
             val => val && typeof val === 'object' && (val.name || val.skills)
           );
+        }
+
+        // If still not found, try the default export
+        if (!data && module.default) {
+          data = module.default;
         }
 
         this.characterDataCache.set(slug, data);

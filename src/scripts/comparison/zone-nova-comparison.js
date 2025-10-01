@@ -40,7 +40,7 @@ class ZoneNovaCharacterComparison {
       this.characterModules = {};
       this.characterDataProcessed.characters.forEach(char => {
         this.characterModules[char.slug] = () =>
-          import(`../../data/zone-nova/characters/${char.slug}.js`);
+          import(`/src/data/zone-nova/characters/${char.slug}.js`);
       });
     } else {
       // Zone Nova comparison data not found

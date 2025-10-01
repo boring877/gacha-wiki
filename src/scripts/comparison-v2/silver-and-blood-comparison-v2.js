@@ -1099,7 +1099,7 @@ async function loadCharacterData(characterSlug) {
     }
 
     // Dynamic import of individual character file
-    const module = await import(`../../data/silver-and-blood/characters/${characterSlug}.js`);
+    const module = await import(`/src/data/silver-and-blood/characters/${characterSlug}.js`);
 
     // Extract character data using expected export name pattern (camelCase)
     const exportName = characterSlug.replace(/-([a-z])/g, (_match, letter) => letter.toUpperCase());

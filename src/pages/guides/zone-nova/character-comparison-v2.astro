@@ -1,6 +1,41 @@
 ---
 import CharacterComparisonV2Layout from '../../../layouts/zone-nova/CharacterComparisonV2Layout.astro';
-import CharacterComparisonV2 from '../../../components/zone-nova/CharacterComparisonV2.astro';
+import CharacterComparisonV2Logic from '../../../components/zone-nova/CharacterComparisonV2Logic.astro';
+import { Image } from 'astro:assets';
+import { ZONE_NOVA_CHARACTERS } from '../../../data/zone-nova/characters.js';
+
+// Security: Sanitize character data to prevent XSS
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
+    .replace(/'/g, '&#039;');
+}
+
+// Security: Validate image URLs
+function isValidImageUrl(url: string): boolean {
+  return (
+    /^https?:\/\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url) ||
+    /^\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url)
+  );
+}
+
+// Security: Sanitize and validate character data
+// Keep original names for data lookups, only escape for display
+const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
+  ...char,
+  originalName: char.name || '', // Keep original for tier lookups
+  displayName: escapeHtml(char.name || ''), // Escaped version for display
+  slug: char.slug?.replace(/[^a-zA-Z0-9-_]/g, '') || '',
+  role: char.role || '', // These are from controlled sources, no need to escape
+  class: char.class || '',
+  rarity: char.rarity || '',
+  element: char.element || '',
+  faction: char.faction || '', // Don't escape faction to preserve spaces for filtering
+  image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
+}));
 ---
 
 <CharacterComparisonV2Layout
@@ -33,7 +68,234 @@ import CharacterComparisonV2 from '../../../components/zone-nova/CharacterCompar
       </div>
     </div>
 
-    <!-- Character Comparison V2 Component -->
-    <CharacterComparisonV2 />
+    <!-- Character Selection Header - Icon Bar -->
+    <div class="character-deck-header">
+      <div class="deck-header-container">
+        <!-- Header with Character Icons -->
+        <div class="deck-header-main">
+          <!-- Row 1: Title and Selected Count -->
+          <div class="deck-header-title-row">
+            <h2 class="deck-title">Character Comparison V2</h2>
+            <span class="selected-count" id="v2-selected-count">0/2 selected</span>
+          </div>
+
+          <!-- Row 2: Filters and Controls -->
+          <div class="deck-header-controls-row">
+            <div class="deck-header-controls">
+              <!-- Filters -->
+              <div class="deck-filters-compact">
+                <select class="filter-select-compact" id="v2-role-filter">
+                  <option value="">All Roles</option>
+                  <option value="DPS">DPS</option>
+                  <option value="Tank">Tank</option>
+                  <option value="Healer">Healer</option>
+                  <option value="Buffer">Buffer</option>
+                  <option value="Debuffer">Debuffer</option>
+                </select>
+
+                <select class="filter-select-compact" id="v2-class-filter">
+                  <option value="">All Classes</option>
+                  <option value="Guardian">Guardian</option>
+                  <option value="Warrior">Warrior</option>
+                  <option value="Rogue">Rogue</option>
+                  <option value="Mage">Mage</option>
+                  <option value="Buffer">Buffer</option>
+                  <option value="Debuffer">Debuffer</option>
+                  <option value="Healer">Healer</option>
+                </select>
+
+                <select class="filter-select-compact" id="v2-rarity-filter">
+                  <option value="">All Rarities</option>
+                  <option value="SSR">SSR</option>
+                  <option value="SR">SR</option>
+                  <option value="R">R</option>
+                </select>
+
+                <select class="filter-select-compact" id="v2-element-filter">
+                  <option value="">All Elements</option>
+                  <option value="Fire">Fire</option>
+                  <option value="Ice">Ice</option>
+                  <option value="Wind">Wind</option>
+                  <option value="Holy">Holy</option>
+                  <option value="Chaos">Chaos</option>
+                </select>
+
+                <select class="filter-select-compact" id="v2-faction-filter">
+                  <option value="">All Factions</option>
+                  <option value="Odius">Odius</option>
+                  <option value="Sapphire">Sapphire</option>
+                  <option value="Chemic">Chemic</option>
+                  <option value="Bicta Tower">Bicta Tower</option>
+                  <option value="Avalon">Avalon</option>
+                  <option value="Asa">Asa</option>
+                  <option value="Monochrome Nation">Monochrome Nation</option>
+                  <option value="Pingjing City">Pingjing City</option>
+                  <option value="Unaffiliated">Unaffiliated</option>
+                </select>
+              </div>
+              <div class="button-group">
+                <button class="reset-filters-btn" id="v2-reset-filters">Reset</button>
+                <button class="clear-all-btn" id="v2-clear-all">Clear All</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: Character Selection Area -->
+
+          <!-- Character Selection - Icons for Desktop, Dropdown for Mobile -->
+          <div class="character-selection-area">
+            <!-- Character Icons Strip (Desktop) -->
+            <div class="character-icons-strip desktop-only">
+              <div class="character-icons-container" id="v2-character-icons">
+                {
+                  sanitizedCharacters.map(character => (
+                    <div
+                      class="character-icon"
+                      data-character-slug={character.slug}
+                      data-role={character.role}
+                      data-class={character.class}
+                      data-rarity={character.rarity}
+                      data-element={character.element}
+                      data-faction={character.faction}
+                      title={`${character.originalName} (${character.rarity} ${character.element} ${character.class})`}
+                      role="button"
+                      tabindex="0"
+                      aria-label={`Select ${character.originalName}, ${character.rarity} ${character.element} ${character.class}`}
+                    >
+                      <Image
+                        src={character.image}
+                        alt={character.originalName}
+                        class="character-icon-img"
+                        width={60}
+                        height={80}
+                        loading="lazy"
+                        format="webp"
+                        quality={85}
+                      />
+                      <span class="character-icon-name" set:html={character.displayName} />
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- Character Selection Buttons (Mobile) -->
+            <div class="character-selection-area mobile-only">
+              <div class="character-selection-row">
+                <div class="character-selection-slot">
+                  <label class="character-slot-label">Character 1:</label>
+                  <button class="character-selection-button" id="v2-mobile-select-1" data-slot="1">
+                    <div class="selection-button-content" id="v2-mobile-display-1">
+                      <div class="selection-placeholder">
+                        <span class="selection-icon">+</span>
+                        <span class="selection-text">Select Character 1</span>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+                <div class="character-selection-slot">
+                  <label class="character-slot-label">Character 2:</label>
+                  <button class="character-selection-button" id="v2-mobile-select-2" data-slot="2">
+                    <div class="selection-button-content" id="v2-mobile-display-2">
+                      <div class="selection-placeholder">
+                        <span class="selection-icon">+</span>
+                        <span class="selection-text">Select Character 2</span>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Comparison Container - Full Width -->
+    <div class="comparison-container-external">
+      <div class="comparison-container">
+        <div class="comparison-header">
+          <h2 class="comparison-title">Character Comparison</h2>
+        </div>
+
+        <!-- Selected Characters Display -->
+        <div class="selected-characters-area" id="v2-selected-area">
+          <div class="empty-comparison-message" id="v2-empty-message">
+            <p>Select characters from the deck to start comparing</p>
+            <small>You can compare up to 2 characters at once</small>
+          </div>
+        </div>
+
+        <!-- Comparison Cards Container -->
+        <div class="comparison-cards-container hidden" id="v2-comparison-container">
+          <div class="comparison-cards-grid" id="v2-cards-grid">
+            <!-- Character cards will be dynamically inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Character Selection Modal -->
+    <div class="mobile-character-modal" id="v2-mobile-modal">
+      <div class="modal-backdrop" id="v2-modal-backdrop"></div>
+      <div class="modal-container">
+        <div class="modal-header">
+          <h3 class="modal-title" id="v2-modal-title">Select Character</h3>
+          <button
+            class="modal-close-btn"
+            id="v2-modal-close"
+            aria-label="Close character selection"
+          >
+            <span>×</span>
+          </button>
+        </div>
+
+        <div class="modal-search-bar">
+          <input
+            type="text"
+            class="modal-search-input"
+            id="v2-modal-search"
+            placeholder="Search characters..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="modal-character-grid" id="v2-modal-character-grid">
+          {
+            sanitizedCharacters.map(character => (
+              <div
+                class="modal-character-card"
+                data-character-slug={character.slug}
+                data-role={character.role}
+                data-class={character.class}
+                data-rarity={character.rarity}
+                data-element={character.element}
+                data-faction={character.faction}
+                role="button"
+                tabindex="0"
+                aria-label={`Select ${character.originalName}, ${character.rarity} ${character.element} ${character.class}`}
+              >
+                <Image
+                  src={character.image}
+                  alt={character.originalName}
+                  class="modal-character-image"
+                  width={80}
+                  height={80}
+                  loading="lazy"
+                  format="webp"
+                  quality={85}
+                />
+                <div class="modal-character-info">
+                  <span class="modal-character-name" set:html={character.displayName} />
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Character Comparison V2 Logic Component -->
+  <CharacterComparisonV2Logic />
 </CharacterComparisonV2Layout>

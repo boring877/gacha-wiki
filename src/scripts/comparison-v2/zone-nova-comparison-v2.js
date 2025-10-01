@@ -1007,7 +1007,7 @@ async function loadCharacterData(characterSlug) {
     }
 
     // Dynamic import of individual character file
-    const module = await import(`../../data/zone-nova/characters/${characterSlug}.js`);
+    const module = await import(`/src/data/zone-nova/characters/${characterSlug}.js`);
 
     // Extract character data using expected export name pattern (characterSlug + 'Data')
     const exportName = `${characterSlug}Data`;
