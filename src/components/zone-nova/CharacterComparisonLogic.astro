@@ -1,68 +1,6 @@
 ---
-import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
-
-// Define the character interface based on actual data structure
-interface ZoneNovaCharacter {
-  id: number;
-  name: string;
-  slug: string;
-  detailUrl: string;
-  image: string;
-  rarity: 'SSR' | 'SR' | 'R';
-  element: 'Fire' | 'Wind' | 'Holy' | 'Chaos' | 'Ice';
-  class: 'Guardian' | 'Warrior' | 'Rogue' | 'Mage' | 'Buffer' | 'Debuffer' | 'Healer';
-  role: 'Tank' | 'DPS' | 'Buffer' | 'Debuffer' | 'Healer';
-  stats: {
-    hp: number;
-    attack: number;
-    defense: number;
-    energyRecovery: number;
-    critRate: number;
-    critDmg: number;
-  };
-  faction: string;
-  teamSkill?: {
-    name: string;
-    description: string;
-    requirements: {
-      faction: string;
-      element: string;
-    };
-  };
-}
-
-// Security: Sanitize character data to prevent XSS
-function escapeHtml(unsafe: string): string {
-  return unsafe
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"')
-    .replace(/'/g, '&#039;');
-}
-
-// Security: Validate image URLs
-function isValidImageUrl(url: string): boolean {
-  return (
-    /^https?:\/\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url) ||
-    /^\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url)
-  );
-}
-
-// Security: Sanitize and validate character data
-// Keep original names for data lookups, only escape for display
-const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
-  ...char,
-  originalName: char.name || '', // Keep original for tier lookups
-  displayName: escapeHtml(char.name || ''), // Escaped version for display
-  slug: char.slug?.replace(/[^a-zA-Z0-9-_]/g, '') || '',
-  role: char.role || '', // These are from controlled sources, no need to escape
-  class: char.class || '',
-  rarity: char.rarity || '',
-  element: char.element || '',
-  faction: char.faction || '', // Don't escape faction to preserve spaces for filtering
-  image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
-}));
+// Import centralized Zone Nova data component
+import { sanitizedCharacters } from './ZNCharacterData.astro';
 ---
 
 <!-- Setup data BEFORE loading the script -->
@@ -100,7 +38,6 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
       this.filteredCharacters = [];
       this.sortState = { column: null, asc: false };
       this.characterDataCache = new Map();
-      this.characterModules = null;
       this.eventListeners = new Map();
       this.characterCardListeners = new WeakMap();
 
@@ -124,13 +61,6 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
         // Sort characters alphabetically by name for default order
         this.characterDataProcessed.characters.sort((a, b) => a.name.localeCompare(b.name));
         this.filteredCharacters = [...this.characterDataProcessed.characters];
-
-        // Create character modules dynamically on client-side
-        this.characterModules = {};
-        this.characterDataProcessed.characters.forEach(char => {
-          this.characterModules[char.slug] = () =>
-            import(`/src/data/zone-nova/characters/${char.slug}.js`);
-        });
       } else {
         // Zone Nova comparison data not found
         return;
@@ -155,15 +85,11 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
       }
 
       try {
-        const moduleLoader = this.characterModules[slug];
-        if (!moduleLoader) {
-          throw new Error(`No module loader for character: ${slug}`);
-        }
-        const module = await moduleLoader();
+        // Import the centralized data component
+        const module = await import('/src/components/zone-nova/ZNCharacterData.astro');
 
-        // Try to find the character data using the expected export name pattern (characterSlug + 'Data')
-        const exportName = `${slug}Data`;
-        let data = module[exportName];
+        // Get the character data from the CHARACTER_DATA_MAP
+        let data = module.CHARACTER_DATA_MAP?.[slug];
 
         // If not found, try looking for any character data object with teamSkill
         if (!data) {
@@ -177,13 +103,8 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
           );
         }
 
-        // If still not found, try the default export
-        if (!data && module.default) {
-          data = module.default;
-        }
-
-        this.characterDataCache.set(slug, data);
-        return data;
+        this.characterDataCache.set(slug, data || null);
+        return data || null;
       } catch (error) {
         console.error(`Failed to load character data for ${slug}:`, error);
         this.characterDataCache.set(slug, null);
@@ -874,7 +795,6 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
       // Reset state
       this.sortState = { column: null, asc: false };
       this.characterDataProcessed = null;
-      this.characterModules = null;
 
       console.log('Zone Nova Comparison: Cleanup completed');
     }

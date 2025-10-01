@@ -1,0 +1,208 @@
+---
+// Zone Nova Centralized Data Component
+// This component imports all character data files and provides them in a single module
+// This is more efficient for SSG as it avoids importing individual files in every component
+
+// Import other Zone Nova data
+import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+import {
+  PVE_TIER_LIST,
+  PVP_TIER_LIST,
+  RIFT_TIER_LIST,
+  GUILD_RAID_TIER_LIST,
+  NEW_PLAYER_TIER_LIST,
+} from '../../data/zone-nova/tier-lists.js';
+import { rankings, overallAnalysis } from '../../data/zone-nova/character-rankings.js';
+
+// Re-export ZONE_NOVA_CHARACTERS for easy access
+export { ZONE_NOVA_CHARACTERS };
+
+// Re-export tier lists
+export { PVE_TIER_LIST, PVP_TIER_LIST, RIFT_TIER_LIST, GUILD_RAID_TIER_LIST, NEW_PLAYER_TIER_LIST };
+
+// Re-export rankings and analysis
+export { rankings, overallAnalysis };
+
+// Import all character data files for SSG
+import afroditeData from '../../data/zone-nova/characters/afrodite.js';
+import anubisData from '../../data/zone-nova/characters/anubis.js';
+import apolloData from '../../data/zone-nova/characters/apollo.js';
+import artemisData from '../../data/zone-nova/characters/artemis.js';
+import arthurData from '../../data/zone-nova/characters/arthur.js';
+import athenaData from '../../data/zone-nova/characters/athena.js';
+import bastetData from '../../data/zone-nova/characters/bastet.js';
+import belphegarData from '../../data/zone-nova/characters/belphegar.js';
+import chiyaData from '../../data/zone-nova/characters/chiya.js';
+import cleopatraData from '../../data/zone-nova/characters/cleopatra.js';
+import freyeData from '../../data/zone-nova/characters/freye.js';
+import freyaData from '../../data/zone-nova/characters/freya.js';
+import { gaiaData } from '../../data/zone-nova/characters/gaia.js';
+import greedMammonData from '../../data/zone-nova/characters/greed-mammon.js';
+import guinevereData from '../../data/zone-nova/characters/guinevere.js';
+import helaData from '../../data/zone-nova/characters/hela.js';
+import heraData from '../../data/zone-nova/characters/hera.js';
+import horusData from '../../data/zone-nova/characters/horus.js';
+import jeanneDArcData from '../../data/zone-nova/characters/jeanne-darc.js';
+import kelaData from '../../data/zone-nova/characters/kela.js';
+import lancelotData from '../../data/zone-nova/characters/lancelot.js';
+import laviniaData from '../../data/zone-nova/characters/lavinia.js';
+import leviathanData from '../../data/zone-nova/characters/leviathan.js';
+import lokiData from '../../data/zone-nova/characters/loki.js';
+import lyraData from '../../data/zone-nova/characters/lyra.js';
+import merlinData from '../../data/zone-nova/characters/merlin.js';
+import mordredData from '../../data/zone-nova/characters/mordred.js';
+import naiyaData from '../../data/zone-nova/characters/naiya.js';
+import niniData from '../../data/zone-nova/characters/nini.js';
+import odinData from '../../data/zone-nova/characters/odin.js';
+import pennyData from '../../data/zone-nova/characters/penny.js';
+import roseData from '../../data/zone-nova/characters/rose.js';
+import shannaData from '../../data/zone-nova/characters/shanna.js';
+import shuData from '../../data/zone-nova/characters/shu.js';
+import snowGirlData from '../../data/zone-nova/characters/snow-girl.js';
+import tefnutData from '../../data/zone-nova/characters/tefnut.js';
+import thorData from '../../data/zone-nova/characters/thor.js';
+import uisData from '../../data/zone-nova/characters/yuis.js';
+import zashikiWarashiData from '../../data/zone-nova/characters/zashiki-warashi.js';
+
+// Create a mapping of all character data
+export const CHARACTER_DATA_MAP = {
+  afrodite: afroditeData,
+  anubis: anubisData,
+  apollo: apolloData,
+  artemis: artemisData,
+  arthur: arthurData,
+  athena: athenaData,
+  bastet: bastetData,
+  belphegar: belphegarData,
+  chiya: chiyaData,
+  cleopatra: cleopatraData,
+  freye: freyeData,
+  freya: freyaData,
+  gaia: gaiaData,
+  'greed-mammon': greedMammonData,
+  guinevere: guinevereData,
+  hela: helaData,
+  hera: heraData,
+  horus: horusData,
+  'jeanne-darc': jeanneDArcData,
+  kela: kelaData,
+  lancelot: lancelotData,
+  lavinia: laviniaData,
+  leviathan: leviathanData,
+  loki: lokiData,
+  lyra: lyraData,
+  merlin: merlinData,
+  mordred: mordredData,
+  naiya: naiyaData,
+  nini: niniData,
+  odin: odinData,
+  penny: pennyData,
+  rose: roseData,
+  shanna: shannaData,
+  shu: shuData,
+  'snow-girl': snowGirlData,
+  tefnut: tefnutData,
+  thor: thorData,
+  yuis: uisData,
+  'zashiki-warashi': zashikiWarashiData,
+};
+
+// Define the character interface based on actual data structure
+export interface ZoneNovaCharacter {
+  id: number;
+  name: string;
+  slug: string;
+  detailUrl: string;
+  image: string;
+  rarity: 'SSR' | 'SR' | 'R';
+  element: 'Fire' | 'Wind' | 'Holy' | 'Chaos' | 'Ice';
+  class: 'Guardian' | 'Warrior' | 'Rogue' | 'Mage' | 'Buffer' | 'Debuffer' | 'Healer';
+  role: 'Tank' | 'DPS' | 'Buffer' | 'Debuffer' | 'Healer';
+  stats: {
+    hp: number;
+    attack: number;
+    defense: number;
+    energyRecovery: number;
+    critRate: number;
+    critDmg: number;
+  };
+  faction: string;
+  teamSkill?: {
+    name: string;
+    description: string;
+    requirements: {
+      faction: string;
+      element: string;
+    };
+  };
+}
+
+// Security: Sanitize character data to prevent XSS
+export function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
+    .replace(/'/g, '&#039;');
+}
+
+// Security: Validate image URLs
+export function isValidImageUrl(url: string): boolean {
+  return (
+    /^https?:\/\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url) ||
+    /^\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url)
+  );
+}
+
+// Security: Sanitize and validate character data
+// Keep original names for data lookups, only escape for display
+export const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
+  ...char,
+  originalName: char.name || '', // Keep original for tier lookups
+  displayName: escapeHtml(char.name || ''), // Escaped version for display
+  slug: char.slug?.replace(/[^a-zA-Z0-9-_]/g, '') || '',
+  role: char.role || '', // These are from controlled sources, no need to escape
+  class: char.class || '',
+  rarity: char.rarity || '',
+  element: char.element || '',
+  faction: char.faction || '', // Don't escape faction to preserve spaces for filtering
+  image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
+}));
+
+// Get unique values for filters
+export const roles = [...new Set(ZONE_NOVA_CHARACTERS.map(c => c.role).filter(Boolean))].sort();
+export const classes = [...new Set(ZONE_NOVA_CHARACTERS.map(c => c.class).filter(Boolean))].sort();
+export const elements = [
+  ...new Set(ZONE_NOVA_CHARACTERS.map(c => c.element).filter(Boolean)),
+].sort();
+export const factions = [
+  ...new Set(ZONE_NOVA_CHARACTERS.map(c => c.faction).filter(Boolean)),
+].sort();
+export const rarities = ['SSR', 'SR', 'R'];
+
+// Export all data in a single object for easy consumption
+export const ZONE_NOVA_DATA = {
+  characters: ZONE_NOVA_CHARACTERS,
+  sanitizedCharacters,
+  characterDataMap: CHARACTER_DATA_MAP,
+  tierLists: {
+    pve: PVE_TIER_LIST,
+    pvp: PVP_TIER_LIST,
+    rift: RIFT_TIER_LIST,
+    guild: GUILD_RAID_TIER_LIST,
+    newPlayer: NEW_PLAYER_TIER_LIST,
+  },
+  rankings,
+  overallAnalysis,
+  filterOptions: {
+    roles,
+    classes,
+    elements,
+    factions,
+    rarities,
+  },
+};
+
+// This component doesn't render anything, it just provides data
+---

@@ -1,55 +1,22 @@
 ---
-import { characters } from '../../data/silver-and-blood/characters.js';
+// Import centralized Silver and Blood data component
 import {
+  characters,
+  sanitizedCharacters,
+  classes,
+  factions,
+  equipmentTypes,
+  moonPhases,
+  attackTypes,
+  rarities,
   PVE_TIER_LIST,
   PVP_TIER_LIST,
   CLAN_HUNT_TIER_LIST,
   BOSS_RAIDS_TIER_LIST,
   NEW_PLAYER_TIER_LIST,
-} from '../../data/silver-and-blood/tier-lists.js';
-import { rankings } from '../../data/silver-and-blood/character-rankings.js';
-
-// Security: Sanitize character data to prevent XSS
-function escapeHtml(unsafe: string): string {
-  return unsafe
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"')
-    .replace(/'/g, '&#039;');
-}
-
-// Security: Validate image URLs
-function isValidImageUrl(url: string): boolean {
-  return (
-    /^https?:\/\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url) ||
-    /^\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url)
-  );
-}
-
-// Security: Sanitize and validate character data
-// Keep original names for data lookups, only escape for display
-const sanitizedCharacters = characters.map(char => ({
-  ...char,
-  originalName: char.name || '', // Keep original for tier lookups
-  displayName: escapeHtml(char.name || ''), // Escaped version for display
-  slug: char.id?.replace(/[^a-zA-Z0-9-_]/g, '') || '', // Use id as slug
-  class: escapeHtml(char.class || ''),
-  rarity: escapeHtml(char.rarity || ''),
-  faction: escapeHtml(char.faction || ''),
-  equipmentType: escapeHtml(char.equipmentType || ''),
-  moonPhase: escapeHtml(char.moonPhase || ''),
-  attackType: escapeHtml(char.attackType || ''),
-  image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
-}));
-
-// Get unique values for filters
-const classes = [...new Set(characters.map(c => c.class).filter(Boolean))].sort();
-const factions = [...new Set(characters.map(c => c.faction).filter(Boolean))].sort();
-const equipmentTypes = [...new Set(characters.map(c => c.equipmentType).filter(Boolean))].sort();
-const moonPhases = [...new Set(characters.map(c => c.moonPhase).filter(Boolean))].sort();
-const attackTypes = [...new Set(characters.map(c => c.attackType).filter(Boolean))].sort();
-const rarities = ['SSR', 'SR', 'R'];
+  rankings,
+  CHARACTER_DATA_MAP,
+} from './SBCharacterData.astro';
 ---
 
 <!-- Setup data BEFORE loading the script -->
@@ -1178,7 +1145,7 @@ const rarities = ['SSR', 'SR', 'R'];
   }
 
   /**
-   * Load character data lazily using dynamic import
+   * Load character data lazily using the centralized data component
    * @param {string} characterSlug - The character slug to load data for
    * @returns {Promise<void>}
    */
@@ -1198,27 +1165,30 @@ const rarities = ['SSR', 'SR', 'R'];
         throw new Error(`Invalid character slug: ${characterSlug}`);
       }
 
-      // Dynamic import of individual character file
-      const module = await import(`/src/data/silver-and-blood/characters/${characterSlug}.js`);
+      // Import the centralized data component
+      const module = await import('/src/components/silver-and-blood/SBCharacterData.astro');
 
-      // Extract character data using expected export name pattern (camelCase)
-      const exportName = characterSlug.replace(/-([a-z])/g, (_match, letter) =>
-        letter.toUpperCase()
-      );
-      const characterData = module[exportName];
+      // Get the character data from the CHARACTER_DATA_MAP
+      let characterData = module.CHARACTER_DATA_MAP?.[characterSlug];
+
+      // If not found, try looking for any character data object with skills
+      if (!characterData) {
+        characterData = Object.values(module).find(
+          val => val && typeof val === 'object' && val.skills
+        );
+      }
+
+      // If still not found, try looking for any character data object
+      if (!characterData) {
+        characterData = Object.values(module).find(
+          val => val && typeof val === 'object' && (val.name || val.stats)
+        );
+      }
 
       if (characterData && typeof characterData === 'object') {
         characterDataMap.set(characterSlug, characterData);
       } else {
-        // Fallback: try to get first valid export
-        const exports = Object.values(module);
-        const firstValidExport = exports.find(exp => exp && typeof exp === 'object');
-
-        if (firstValidExport) {
-          characterDataMap.set(characterSlug, firstValidExport);
-        } else {
-          throw new Error(`No valid character data found in module for ${characterSlug}`);
-        }
+        throw new Error(`No valid character data found in module for ${characterSlug}`);
       }
 
       // Re-render the comparison cards to show loaded data

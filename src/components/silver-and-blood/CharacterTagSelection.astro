@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import { characters } from '../../data/silver-and-blood/characters.js';
+// Import centralized Silver and Blood data component
+import { characters } from './SBCharacterData.astro';
 
 // Extract all unique tags from characters and sort alphabetically
 const allTags = [...new Set(characters.flatMap(char => char.tags || []))].sort();

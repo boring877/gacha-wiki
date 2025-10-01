@@ -1,53 +1,20 @@
 ---
-import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+// Import centralized Zone Nova data component
 import {
+  sanitizedCharacters,
+  roles,
+  classes,
+  elements,
+  factions,
+  rarities,
   PVE_TIER_LIST,
   PVP_TIER_LIST,
   RIFT_TIER_LIST,
   GUILD_RAID_TIER_LIST,
   NEW_PLAYER_TIER_LIST,
-} from '../../data/zone-nova/tier-lists.js';
-import { rankings, overallAnalysis } from '../../data/zone-nova/character-rankings.js';
-
-// Security: Sanitize character data to prevent XSS
-function escapeHtml(unsafe: string): string {
-  return unsafe
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"')
-    .replace(/'/g, '&#039;');
-}
-
-// Security: Validate image URLs
-function isValidImageUrl(url: string): boolean {
-  return (
-    /^https?:\/\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url) ||
-    /^\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url)
-  );
-}
-
-// Security: Sanitize and validate character data
-// Keep original names for data lookups, only escape for display
-const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
-  ...char,
-  originalName: char.name || '', // Keep original for tier lookups
-  displayName: escapeHtml(char.name || ''), // Escaped version for display
-  slug: char.slug?.replace(/[^a-zA-Z0-9-_]/g, '') || '',
-  role: char.role || '', // These are from controlled sources, no need to escape
-  class: char.class || '',
-  rarity: char.rarity || '',
-  element: char.element || '',
-  faction: char.faction || '', // Don't escape faction to preserve spaces for filtering
-  image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
-}));
-
-// Get unique values for filters
-const roles = [...new Set(ZONE_NOVA_CHARACTERS.map(c => c.role).filter(Boolean))].sort();
-const classes = [...new Set(ZONE_NOVA_CHARACTERS.map(c => c.class).filter(Boolean))].sort();
-const elements = [...new Set(ZONE_NOVA_CHARACTERS.map(c => c.element).filter(Boolean))].sort();
-const factions = [...new Set(ZONE_NOVA_CHARACTERS.map(c => c.faction).filter(Boolean))].sort();
-const rarities = ['SSR', 'SR', 'R'];
+  rankings,
+  overallAnalysis,
+} from './ZNCharacterData.astro';
 ---
 
 <!-- Setup data BEFORE loading the script -->
@@ -1082,7 +1049,7 @@ const rarities = ['SSR', 'SR', 'R'];
   // Deprecated renderCharacterStats function removed - using createCharacterStatsDOM instead
 
   /**
-   * Load character data lazily using dynamic import
+   * Load character data lazily using the centralized data component
    * @param {string} characterSlug - The character slug to load data for
    * @returns {Promise<void>}
    */
@@ -1102,20 +1069,17 @@ const rarities = ['SSR', 'SR', 'R'];
         throw new Error(`Invalid character slug: ${characterSlug}`);
       }
 
-      // Dynamic import of individual character file
-      const module = await import(`/src/data/zone-nova/characters/${characterSlug}.js`);
+      // Import the centralized data component
+      const module = await import('/src/components/zone-nova/ZNCharacterData.astro');
 
-      // Extract character data using expected export name pattern (characterSlug + 'Data')
-      const exportName = `${characterSlug}Data`;
-      const characterData = module[exportName];
+      // Get the character data from the CHARACTER_DATA_MAP
+      const characterData = module.CHARACTER_DATA_MAP?.[characterSlug];
 
       if (characterData && typeof characterData === 'object') {
         characterDataMap.set(characterSlug, characterData);
       } else {
-        // Fallback: try to get first valid export
-        const exports = Object.values(module);
-        const firstValidExport = exports.find(exp => exp && typeof exp === 'object');
-        characterDataMap.set(characterSlug, firstValidExport || {});
+        // Set empty data if not found
+        characterDataMap.set(characterSlug, {});
       }
 
       // Re-render the comparison cards to show loaded data

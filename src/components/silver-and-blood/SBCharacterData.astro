@@ -1,0 +1,246 @@
+---
+// Silver and Blood Centralized Data Component
+// This component imports all character data files and provides them in a single module
+// This is more efficient for SSG as it avoids importing individual files in every component
+
+// Import other Silver and Blood data
+import { characters } from '../../data/silver-and-blood/characters.js';
+import {
+  PVE_TIER_LIST,
+  PVP_TIER_LIST,
+  CLAN_HUNT_TIER_LIST,
+  BOSS_RAIDS_TIER_LIST,
+  NEW_PLAYER_TIER_LIST,
+} from '../../data/silver-and-blood/tier-lists.js';
+import { rankings } from '../../data/silver-and-blood/character-rankings.js';
+
+// Import all character data files for SSG
+import { fleetingBella } from '../../data/silver-and-blood/characters/fleeting-bella.js';
+import { timelessAiona } from '../../data/silver-and-blood/characters/timeless-aiona.js';
+import { transcendentHati } from '../../data/silver-and-blood/characters/transcendent-hati.js';
+import { transcendentAmi } from '../../data/silver-and-blood/characters/transcendent-ami.js';
+import { limine } from '../../data/silver-and-blood/characters/limine.js';
+import { incendiaryAgares } from '../../data/silver-and-blood/characters/incendiary-agares.js';
+import { hati } from '../../data/silver-and-blood/characters/hati.js';
+import { vanHelsing } from '../../data/silver-and-blood/characters/van-helsing.js';
+import { transcendentNoah } from '../../data/silver-and-blood/characters/transcendent-noah.js';
+import { seth } from '../../data/silver-and-blood/characters/seth.js';
+import { acappella } from '../../data/silver-and-blood/characters/acappella.js';
+import { gilrain } from '../../data/silver-and-blood/characters/gilrain.js';
+import { joan } from '../../data/silver-and-blood/characters/joan.js';
+import { darcias } from '../../data/silver-and-blood/characters/darcias.js';
+import { ressa } from '../../data/silver-and-blood/characters/ressa.js';
+import { ottavia } from '../../data/silver-and-blood/characters/ottavia.js';
+import { pavana } from '../../data/silver-and-blood/characters/pavana.js';
+import { lamia } from '../../data/silver-and-blood/characters/lamia.js';
+import { cecia } from '../../data/silver-and-blood/characters/cecia.js';
+import { augustine } from '../../data/silver-and-blood/characters/augustine.js';
+import { starryEyedAiona } from '../../data/silver-and-blood/characters/starry-eyed-aiona.js';
+import { yggdrasill } from '../../data/silver-and-blood/characters/yggdrasill.js';
+import { friedrich } from '../../data/silver-and-blood/characters/friedrich.js';
+import { nicole } from '../../data/silver-and-blood/characters/nicole.js';
+import { edina } from '../../data/silver-and-blood/characters/edina.js';
+import { agares } from '../../data/silver-and-blood/characters/agares.js';
+import { bella } from '../../data/silver-and-blood/characters/bella.js';
+import { thibault } from '../../data/silver-and-blood/characters/thibault.js';
+import { theophane } from '../../data/silver-and-blood/characters/theophane.js';
+import { cain } from '../../data/silver-and-blood/characters/cain.js';
+import { selena } from '../../data/silver-and-blood/characters/selena.js';
+import { spectralGilrain } from '../../data/silver-and-blood/characters/spectral-gilrain.js';
+import { piera } from '../../data/silver-and-blood/characters/piera.js';
+import { ami } from '../../data/silver-and-blood/characters/ami.js';
+import { tris } from '../../data/silver-and-blood/characters/tris.js';
+import { mass } from '../../data/silver-and-blood/characters/mass.js';
+import { dalcarlo } from '../../data/silver-and-blood/characters/dalcarlo.js';
+import { sirene } from '../../data/silver-and-blood/characters/sirene.js';
+import { jinxedSelena } from '../../data/silver-and-blood/characters/jinxed-selena.js';
+import { lorelei } from '../../data/silver-and-blood/characters/lorelei.js';
+import { quinn } from '../../data/silver-and-blood/characters/quinn.js';
+import { agnes } from '../../data/silver-and-blood/characters/agnes.js';
+import { valora } from '../../data/silver-and-blood/characters/valora.js';
+import { julius } from '../../data/silver-and-blood/characters/julius.js';
+import { stella } from '../../data/silver-and-blood/characters/stella.js';
+import { regina } from '../../data/silver-and-blood/characters/regina.js';
+import { albrecht } from '../../data/silver-and-blood/characters/albrecht.js';
+
+// Create a mapping of all character data
+export const CHARACTER_DATA_MAP = {
+  'fleeting-bella': fleetingBella,
+  'timeless-aiona': timelessAiona,
+  'transcendent-hati': transcendentHati,
+  'transcendent-ami': transcendentAmi,
+  limine: limine,
+  'incendiary-agares': incendiaryAgares,
+  hati: hati,
+  'van-helsing': vanHelsing,
+  'transcendent-noah': transcendentNoah,
+  seth: seth,
+  acappella: acappella,
+  gilrain: gilrain,
+  joan: joan,
+  darcias: darcias,
+  ressa: ressa,
+  ottavia: ottavia,
+  pavana: pavana,
+  lamia: lamia,
+  cecia: cecia,
+  augustine: augustine,
+  'starry-eyed-aiona': starryEyedAiona,
+  yggdrasill: yggdrasill,
+  friedrich: friedrich,
+  nicole: nicole,
+  edina: edina,
+  agares: agares,
+  bella: bella,
+  thibault: thibault,
+  theophane: theophane,
+  cain: cain,
+  selena: selena,
+  'spectral-gilrain': spectralGilrain,
+  piera: piera,
+  ami: ami,
+  tris: tris,
+  mass: mass,
+  dalcarlo: dalcarlo,
+  sirene: sirene,
+  'jinxed-selena': jinxedSelena,
+  lorelei: lorelei,
+  quinn: quinn,
+  agnes: agnes,
+  valora: valora,
+  julius: julius,
+  stella: stella,
+  regina: regina,
+  albrecht: albrecht,
+};
+
+// Define the character interface based on actual data structure
+export interface SilverBloodCharacter {
+  id: string;
+  name: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  image: string;
+  tags?: string[];
+  rarity: 'SSR' | 'SR' | 'R';
+  class: 'Warrior' | 'Assassin' | 'Defender' | 'Marksman' | 'Sorcerer' | 'Enchanter';
+  faction: 'Kingdom' | 'Ancestors' | 'Church' | 'Bloodborn';
+  equipmentType: 'Light' | 'Medium' | 'Heavy';
+  moonPhase: 'New Moon' | 'Crescent Moon' | 'Full Moon';
+  attackType: 'P.DMG' | 'M.DMG' | 'Piercing DMG';
+  stats: {
+    hp: number;
+    atk: number;
+    pDef: number;
+    mDef: number;
+    atkSpd: number;
+    bloodsoulRecovery: number;
+    critRate: number;
+    critDmgIncrease: number;
+    allDmgBonus: number;
+    allDmgReduction: number;
+    pDmgBonus: number;
+    mDmgBonus: number;
+    receivedHealingBonus: number;
+    bloodPower: number;
+  };
+  skills: Array<{
+    name: string;
+    type: 'Normal Attack' | 'Special' | 'Passive' | 'Ultimate';
+    description: string;
+    cost?: number;
+  }>;
+  mechanics?: {
+    moonPhaseEffect?: string;
+    attackTypeInfo?: string;
+    equipmentNote?: string;
+  };
+  slug?: string;
+  detailUrl?: string;
+}
+
+// Security: Sanitize character data to prevent XSS
+export function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
+    .replace(/'/g, '&#039;');
+}
+
+// Security: Validate image URLs
+export function isValidImageUrl(url: string): boolean {
+  return (
+    /^https?:\/\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url) ||
+    /^\/[^\s<>"']+\.(jpg|jpeg|png|gif|webp)$/i.test(url)
+  );
+}
+
+// Security: Sanitize and validate character data
+// Keep original names for data lookups, only escape for display
+export const sanitizedCharacters = characters.map(char => ({
+  ...char,
+  originalName: char.name || '', // Keep original for tier lookups
+  displayName: escapeHtml(char.name || ''), // Escaped version for display
+  slug: char.id?.replace(/[^a-zA-Z0-9-_]/g, '') || '', // Use id as slug
+  class: escapeHtml(char.class || ''),
+  rarity: escapeHtml(char.rarity || ''),
+  faction: escapeHtml(char.faction || ''),
+  equipmentType: escapeHtml(char.equipmentType || ''),
+  moonPhase: escapeHtml(char.moonPhase || ''),
+  attackType: escapeHtml(char.attackType || ''),
+  image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
+}));
+
+// Get unique values for filters
+export const classes = [...new Set(characters.map(c => c.class).filter(Boolean))].sort();
+export const factions = [...new Set(characters.map(c => c.faction).filter(Boolean))].sort();
+export const equipmentTypes = [
+  ...new Set(characters.map(c => c.equipmentType).filter(Boolean)),
+].sort();
+export const moonPhases = [...new Set(characters.map(c => c.moonPhase).filter(Boolean))].sort();
+export const attackTypes = [...new Set(characters.map(c => c.attackType).filter(Boolean))].sort();
+export const rarities = ['SSR', 'SR', 'R'];
+
+// Re-export characters for easy access
+export { characters };
+
+// Re-export tier lists
+export {
+  PVE_TIER_LIST,
+  PVP_TIER_LIST,
+  CLAN_HUNT_TIER_LIST,
+  BOSS_RAIDS_TIER_LIST,
+  NEW_PLAYER_TIER_LIST,
+};
+
+// Re-export rankings
+export { rankings };
+
+// Export all data in a single object for easy consumption
+export const SB_DATA = {
+  characters,
+  sanitizedCharacters,
+  characterDataMap: CHARACTER_DATA_MAP,
+  tierLists: {
+    pve: PVE_TIER_LIST,
+    pvp: PVP_TIER_LIST,
+    clanHunt: CLAN_HUNT_TIER_LIST,
+    bossRaids: BOSS_RAIDS_TIER_LIST,
+    newPlayer: NEW_PLAYER_TIER_LIST,
+  },
+  rankings,
+  filterOptions: {
+    classes,
+    factions,
+    equipmentTypes,
+    moonPhases,
+    attackTypes,
+    rarities,
+  },
+};
+
+// This component doesn't render anything, it just provides data
+---
