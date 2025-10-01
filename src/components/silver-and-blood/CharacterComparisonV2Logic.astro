@@ -35,6 +35,7 @@ import {
     moonPhases,
     attackTypes,
     rarities,
+    characterDataMap: CHARACTER_DATA_MAP,
   }}
 >
   // Security: Freeze objects to prevent prototype pollution
@@ -57,6 +58,7 @@ import {
       attackTypes: Object.freeze(attackTypes),
       rarities: Object.freeze(rarities),
     }),
+    characterDataMap: Object.freeze(characterDataMap),
   });
 </script>
 
@@ -273,10 +275,10 @@ import {
       .filter(slug => POPULAR_CHARACTERS.includes(slug))
       .slice(0, PERFORMANCE_CONFIG.PRELOAD_POPULAR_COUNT);
 
-    const preloadPromises = availableCharacters.map(async slug => {
+    const preloadPromises = availableCharacters.map(slug => {
       try {
         if (!characterDataMap.has(slug)) {
-          await loadCharacterData(slug);
+          loadCharacterData(slug);
         }
       } catch (error) {
         ErrorLogger.log('preload', error, { characterSlug: slug });
@@ -284,7 +286,7 @@ import {
       }
     });
 
-    await Promise.allSettled(preloadPromises);
+    // No need to wait since loadCharacterData is now synchronous
     console.log(`Preloaded ${availableCharacters.length} popular characters`);
   }
 
@@ -1145,11 +1147,11 @@ import {
   }
 
   /**
-   * Load character data lazily using the centralized data component
+   * Load character data using the centralized data component
    * @param {string} characterSlug - The character slug to load data for
-   * @returns {Promise<void>}
+   * @returns {void}
    */
-  async function loadCharacterData(characterSlug) {
+  function loadCharacterData(characterSlug) {
     // Input validation
     if (!characterSlug || typeof characterSlug !== 'string') {
       ErrorLogger.log('loadCharacterData', new Error('Invalid character slug'), { characterSlug });
@@ -1165,30 +1167,13 @@ import {
         throw new Error(`Invalid character slug: ${characterSlug}`);
       }
 
-      // Import the centralized data component
-      const module = await import('/src/components/silver-and-blood/SBCharacterData.astro');
-
-      // Get the character data from the CHARACTER_DATA_MAP
-      let characterData = module.CHARACTER_DATA_MAP?.[characterSlug];
-
-      // If not found, try looking for any character data object with skills
-      if (!characterData) {
-        characterData = Object.values(module).find(
-          val => val && typeof val === 'object' && val.skills
-        );
-      }
-
-      // If still not found, try looking for any character data object
-      if (!characterData) {
-        characterData = Object.values(module).find(
-          val => val && typeof val === 'object' && (val.name || val.stats)
-        );
-      }
+      // Get the character data from the global variable (passed from Astro)
+      const characterData = window.SAB_COMPARISON_V2_DATA?.characterDataMap?.[characterSlug];
 
       if (characterData && typeof characterData === 'object') {
         characterDataMap.set(characterSlug, characterData);
       } else {
-        throw new Error(`No valid character data found in module for ${characterSlug}`);
+        throw new Error(`No valid character data found for ${characterSlug}`);
       }
 
       // Re-render the comparison cards to show loaded data
