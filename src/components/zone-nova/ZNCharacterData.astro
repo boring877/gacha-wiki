@@ -31,33 +31,93 @@ export function getCharacterBySlug(slug) {
   return CHARACTER_LOOKUP_MAP.get(slug);
 }
 
-// Lazy loading function for detailed character data (only when needed)
-export async function getCharacterData(slug) {
-  try {
-    const characterModule = await import(`../../data/zone-nova/characters/${slug}.js`);
-    return characterModule.default || characterModule[`${slug}Data`];
-  } catch (error) {
-    console.warn(`Character data not found for: ${slug}`);
-    return null;
-  }
-}
+// Import all character data files at build time (Cloudflare compatible)
+import afroditeData from '../../data/zone-nova/characters/afrodite.js';
+import anubisData from '../../data/zone-nova/characters/anubis.js';
+import apolloData from '../../data/zone-nova/characters/apollo.js';
+import artemisData from '../../data/zone-nova/characters/artemis.js';
+import arthurData from '../../data/zone-nova/characters/arthur.js';
+import athenaData from '../../data/zone-nova/characters/athena.js';
+import bastetData from '../../data/zone-nova/characters/bastet.js';
+import belphegarData from '../../data/zone-nova/characters/belphegar.js';
+import chiyaData from '../../data/zone-nova/characters/chiya.js';
+import cleopatraData from '../../data/zone-nova/characters/cleopatra.js';
+import freyeData from '../../data/zone-nova/characters/freye.js';
+import freyaData from '../../data/zone-nova/characters/freya.js';
+import { gaiaData } from '../../data/zone-nova/characters/gaia.js';
+import greedMammonData from '../../data/zone-nova/characters/greed-mammon.js';
+import guinevereData from '../../data/zone-nova/characters/guinevere.js';
+import helaData from '../../data/zone-nova/characters/hela.js';
+import heraData from '../../data/zone-nova/characters/hera.js';
+import horusData from '../../data/zone-nova/characters/horus.js';
+import jeanneDArcData from '../../data/zone-nova/characters/jeanne-darc.js';
+import kelaData from '../../data/zone-nova/characters/kela.js';
+import lancelotData from '../../data/zone-nova/characters/lancelot.js';
+import laviniaData from '../../data/zone-nova/characters/lavinia.js';
+import leviathanData from '../../data/zone-nova/characters/leviathan.js';
+import lokiData from '../../data/zone-nova/characters/loki.js';
+import lyraData from '../../data/zone-nova/characters/lyra.js';
+import merlinData from '../../data/zone-nova/characters/merlin.js';
+import mordredData from '../../data/zone-nova/characters/mordred.js';
+import naiyaData from '../../data/zone-nova/characters/naiya.js';
+import niniData from '../../data/zone-nova/characters/nini.js';
+import odinData from '../../data/zone-nova/characters/odin.js';
+import pennyData from '../../data/zone-nova/characters/penny.js';
+import roseData from '../../data/zone-nova/characters/rose.js';
+import shannaData from '../../data/zone-nova/characters/shanna.js';
+import shuData from '../../data/zone-nova/characters/shu.js';
+import snowGirlData from '../../data/zone-nova/characters/snow-girl.js';
+import tefnutData from '../../data/zone-nova/characters/tefnut.js';
+import thorData from '../../data/zone-nova/characters/thor.js';
+import uisData from '../../data/zone-nova/characters/yuis.js';
+import zashikiWarashiData from '../../data/zone-nova/characters/zashiki-warashi.js';
 
-// Create a mapping of all character data (kept for backward compatibility)
-export const CHARACTER_DATA_MAP = {};
-// This will be populated on-demand when characters are accessed
+// Create a mapping of all character data (Cloudflare compatible)
+export const CHARACTER_DATA_MAP = {
+  afrodite: afroditeData,
+  anubis: anubisData,
+  apollo: apolloData,
+  artemis: artemisData,
+  arthur: arthurData,
+  athena: athenaData,
+  bastet: bastetData,
+  belphegar: belphegarData,
+  chiya: chiyaData,
+  cleopatra: cleopatraData,
+  freye: freyeData,
+  freya: freyaData,
+  gaia: gaiaData,
+  'greed-mammon': greedMammonData,
+  guinevere: guinevereData,
+  hela: helaData,
+  hera: heraData,
+  horus: horusData,
+  'jeanne-darc': jeanneDArcData,
+  kela: kelaData,
+  lancelot: lancelotData,
+  lavinia: laviniaData,
+  leviathan: leviathanData,
+  loki: lokiData,
+  lyra: lyraData,
+  merlin: merlinData,
+  mordred: mordredData,
+  naiya: naiyaData,
+  nini: niniData,
+  odin: odinData,
+  penny: pennyData,
+  rose: roseData,
+  shanna: shannaData,
+  shu: shuData,
+  'snow-girl': snowGirlData,
+  tefnut: tefnutData,
+  thor: thorData,
+  yuis: uisData,
+  'zashiki-warashi': zashikiWarashiData,
+};
 
-// Populate the map lazily when first accessed
-export async function ensureCharacterDataMap() {
-  if (Object.keys(CHARACTER_DATA_MAP).length === 0) {
-    const slugs = ZONE_NOVA_CHARACTERS.map(char => char.slug);
-    for (const slug of slugs) {
-      const data = await getCharacterData(slug);
-      if (data) {
-        CHARACTER_DATA_MAP[slug] = data;
-      }
-    }
-  }
-  return CHARACTER_DATA_MAP;
+// Synchronous function for Cloudflare compatibility
+export function getCharacterData(slug) {
+  return CHARACTER_DATA_MAP[slug] || null;
 }
 
 // Define the character interface based on actual data structure
