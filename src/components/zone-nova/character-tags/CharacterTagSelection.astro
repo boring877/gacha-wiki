@@ -16,8 +16,8 @@
  * - Fallback JavaScript implementation for reliability
  */
 
-import { Image } from 'astro:assets';
-import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
+import { ZONE_NOVA_CHARACTERS } from '../../../data/zone-nova/characters.js';
+import { CharacterTagCard } from './index.astro';
 
 // Sort characters alphabetically by name for display
 const sortedCharacters = [...ZONE_NOVA_CHARACTERS].sort((a, b) => a.name.localeCompare(b.name));
@@ -62,6 +62,15 @@ const tagCategories = {
   ],
   'Control & Debuff': ['Debuff', 'Cooldown Increase', 'Ultimate Block'],
   'Range & Position': ['Melee', 'Ranged', 'Normal Attack'],
+};
+
+// Get image filename from character image path
+const getImageFilename = (imagePath: string): string => {
+  if (imagePath.includes('/')) {
+    const parts = imagePath.split('/');
+    return parts[parts.length - 1] || 'Afrodite.jpg';
+  }
+  return imagePath || 'Afrodite.jpg';
 };
 ---
 
@@ -137,61 +146,20 @@ const tagCategories = {
     <!--                         CHARACTER RESULTS DISPLAY                     -->
     <!-- ═══════════════════════════════════════════════════════════════════════ -->
 
-    <!-- Grid of filtered character cards - layout matches ZN rankings -->
+    <!-- Grid of filtered character cards - using dedicated CharacterTagCard component -->
     <div class="character-grid" id="character-results">
-      {
-        sortedCharacters.map(character => (
-          <a
-            href={character.detailUrl}
-            class="character-select-card character-link"
-            data-character-id={character.id}
-            data-tags={JSON.stringify(character.tags || [])}
-            data-rarity={character.rarity}
-            data-element={character.element}
-            data-role={character.role}
-            data-class={character.class}
-            data-faction={character.faction}
-          >
-            <div class="character-info">
-              <Image
-                src={character.image}
-                alt={character.name}
-                class="character-portrait"
-                width={80}
-                height={80}
-                loading="lazy"
-                format="webp"
-                quality={90}
-              />
-              <h3>{character.name}</h3>
-              <div class="character-badges">
-                <span class={`rarity-badge ${character.rarity.toLowerCase()}`}>
-                  {character.rarity}
-                </span>
-                <span class={`class-badge ${character.class.toLowerCase().replace(' ', '-')}`}>
-                  {character.class}
-                </span>
-              </div>
-              <div class="character-tags">
-                {character.tags?.map(tag => (
-                  <span class="character-tag">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </a>
-        ))
-      }
+      {sortedCharacters.map(character => <CharacterTagCard character={character} />)}
     </div>
   </div>
 </div>
 
-<script is:inline define:vars={{ characters: sortedCharacters }}>
+<script is:inline>
   document.addEventListener('DOMContentLoaded', function () {
     const tagButtons = document.querySelectorAll('.tag-btn');
     const customDropdowns = document.querySelectorAll('.custom-dropdown');
     const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
     const dropdownCheckboxes = document.querySelectorAll('.dropdown-option input[type="checkbox"]');
-    const characterCards = document.querySelectorAll('.character-select-card');
+    const characterCards = document.querySelectorAll('.character-tag-card');
     const matchCount = document.getElementById('match-count');
     const selectedTags = new Set();
 

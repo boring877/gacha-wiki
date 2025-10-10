@@ -7,7 +7,11 @@ import {
   overallAnalysis,
   totalCharacters,
   statNames,
+  filteredGroups,
+  sortedArrays,
+  viewIds,
 } from '../../../data/zone-nova/character-rankings.js';
+import CharacterRankingCard from '../../../components/zone-nova/CharacterRankingCard.astro';
 ---
 
 <CharacterRankingsLayout
@@ -73,73 +77,284 @@ import {
         </div>
       </div>
 
-      <!-- Character Grid -->
-      <div class="character-grid" id="character-grid">
-        {
-          ZONE_NOVA_CHARACTERS.sort(
-            (a: any, b: any) =>
-              overallAnalysis[a.id].overallRank - overallAnalysis[b.id].overallRank
-          ).map((char: any) => (
-            <button class="character-select-card" data-character-id={char.id}>
-              <div class="character-rank-number">{overallAnalysis[char.id].overallRank}</div>
-              <Image
-                src={char.image}
-                alt={char.name}
-                class="character-portrait"
-                width={80}
-                height={80}
-                loading="lazy"
-                format="webp"
-                quality={85}
-              />
-              <div class="character-info">
-                <h3>{char.name}</h3>
-                <div class="character-badges">
-                  <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
-                  <span class={`class-badge ${char.class.toLowerCase().replace(' ', '-')}`}>
-                    {char.class}
-                  </span>
-                </div>
-                <div class="character-stats">
-                  <div class="stat-item">
-                    <span class="stat-label">HP</span>
-                    <span class="stat-value">
-                      {typeof char.stats.hp === 'string'
-                        ? char.stats.hp
-                        : char.stats.hp?.toLocaleString() || 'N/A'}
-                    </span>
-                  </div>
-                  <div class="stat-item">
-                    <span class="stat-label">ATK</span>
-                    <span class="stat-value">
-                      {typeof char.stats.attack === 'string'
-                        ? char.stats.attack
-                        : char.stats.attack?.toLocaleString() || 'N/A'}
-                    </span>
-                  </div>
-                  <div class="stat-item">
-                    <span class="stat-label">DEF</span>
-                    <span class="stat-value">
-                      {typeof char.stats.defense === 'string'
-                        ? char.stats.defense
-                        : char.stats.defense?.toLocaleString() || 'N/A'}
-                    </span>
-                  </div>
-                  {char.stats.critRate !== undefined && (
-                    <div class="stat-item crit-rate">
-                      <span class="stat-label">CRIT</span>
-                      <span class="stat-value">
-                        {typeof char.stats.critRate === 'string'
-                          ? char.stats.critRate
-                          : `${char.stats.critRate}%`}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </button>
-          ))
-        }
+      <!-- Pre-rendered Character Views for Instant Filtering -->
+      <div class="character-views-container">
+        <!-- View: All Characters (Default) -->
+        <div id="view-all" class="character-view">
+          <div class="character-grid" id="character-grid">
+            {
+              ZONE_NOVA_CHARACTERS.sort(
+                (a: any, b: any) =>
+                  overallAnalysis[a.id].overallRank - overallAnalysis[b.id].overallRank
+              ).map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: By Role -->
+        <div id="view-tank" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byRole.tank.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="view-dps" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byRole.dps.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="view-buffer" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byRole.buffer.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="view-debuffer" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byRole.debuffer.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="view-healer" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byRole.healer.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: By Rarity -->
+        <div id="view-ssr" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byRarity.ssr.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="view-sr" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byRarity.sr.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="view-r" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byRarity.r.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: By Element -->
+        <div id="view-fire" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byElement.fire.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="view-ice" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byElement.ice.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="view-wind" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byElement.wind.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="view-holy" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byElement.holy.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="view-chaos" class="character-view hidden">
+          <div class="character-grid">
+            {
+              filteredGroups.byElement.chaos.map((char: any) => (
+                <CharacterRankingCard
+                  character={char}
+                  rank={overallAnalysis[char.id].overallRank}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: Sorted by HP (Descending) -->
+        <div id="sort-hp-desc" class="character-view hidden">
+          <div class="character-grid">
+            {
+              sortedArrays.hp.desc.map((char: any, index: number) => (
+                <CharacterRankingCard character={char} rank={index + 1} />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: Sorted by HP (Ascending) -->
+        <div id="sort-hp-asc" class="character-view hidden">
+          <div class="character-grid">
+            {
+              sortedArrays.hp.asc.map((char: any, index: number) => (
+                <CharacterRankingCard character={char} rank={index + 1} />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: Sorted by Attack (Descending) -->
+        <div id="sort-attack-desc" class="character-view hidden">
+          <div class="character-grid">
+            {
+              sortedArrays.attack.desc.map((char: any, index: number) => (
+                <CharacterRankingCard character={char} rank={index + 1} />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: Sorted by Attack (Ascending) -->
+        <div id="sort-attack-asc" class="character-view hidden">
+          <div class="character-grid">
+            {
+              sortedArrays.attack.asc.map((char: any, index: number) => (
+                <CharacterRankingCard character={char} rank={index + 1} />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: Sorted by Defense (Descending) -->
+        <div id="sort-defense-desc" class="character-view hidden">
+          <div class="character-grid">
+            {
+              sortedArrays.defense.desc.map((char: any, index: number) => (
+                <CharacterRankingCard character={char} rank={index + 1} />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: Sorted by Defense (Ascending) -->
+        <div id="sort-defense-asc" class="character-view hidden">
+          <div class="character-grid">
+            {
+              sortedArrays.defense.asc.map((char: any, index: number) => (
+                <CharacterRankingCard character={char} rank={index + 1} />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: Sorted by Crit Rate (Descending) -->
+        <div id="sort-critRate-desc" class="character-view hidden">
+          <div class="character-grid">
+            {
+              sortedArrays.critRate.desc.map((char: any, index: number) => (
+                <CharacterRankingCard character={char} rank={index + 1} />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- View: Sorted by Crit Rate (Ascending) -->
+        <div id="sort-critRate-asc" class="character-view hidden">
+          <div class="character-grid">
+            {
+              sortedArrays.critRate.asc.map((char: any, index: number) => (
+                <CharacterRankingCard character={char} rank={index + 1} />
+              ))
+            }
+          </div>
+        </div>
       </div>
     </div>
 
@@ -203,11 +418,6 @@ import {
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Back to Database Link -->
-    <div class="back-button-container">
-      <a href="/guides/zone-nova/characters/" class="back-button"> ← Back to Character Database </a>
     </div>
   </section>
 

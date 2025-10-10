@@ -26,7 +26,7 @@ export const ZONE_NOVA_FACTIONS = {
   Avalon: {
     name: 'Avalon',
     chineseName: '亚瓦隆',
-    characters: ['Arthur', 'Guinevere', "Jeanne d'Arc", 'Lancelot', 'Merlin', 'Mordred'],
+    characters: ['Arthur', 'Guinevere', 'Jeanne D Arc', 'Lancelot', 'Merlin', 'Mordred'],
     color: '#4caf50',
     description: 'The Avalon faction with Arthurian legend influences',
   },
@@ -37,12 +37,12 @@ export const ZONE_NOVA_FACTIONS = {
     color: '#9c27b0',
     description: 'The Odius faction with Greek mythology influences',
   },
-  Asa: {
-    name: 'Asa',
+  'A.S.A': {
+    name: 'A.S.A',
     chineseName: '亚萨',
     characters: ['Freye', 'Freya', 'Hela', 'Loki', 'Odin', 'Thor'],
     color: '#f44336',
-    description: 'The Asa faction with Norse mythology influences',
+    description: 'The A.S.A faction with Norse mythology influences',
   },
   'Pingjing City': {
     name: 'Pingjing City',

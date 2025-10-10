@@ -1,0 +1,126 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all Zone Nova character images once
+import AfroditeImg from '../../assets/images/games/zone-nova/characters/Afrodite.jpg';
+import AnubisImg from '../../assets/images/games/zone-nova/characters/Anubis.jpg';
+import ApolloImg from '../../assets/images/games/zone-nova/characters/Apollo.jpg';
+import ArtemisImg from '../../assets/images/games/zone-nova/characters/Artemis.jpg';
+import ArthurImg from '../../assets/images/games/zone-nova/characters/Arthur.jpg';
+import AthenaImg from '../../assets/images/games/zone-nova/characters/Athena.jpg';
+import BastetImg from '../../assets/images/games/zone-nova/characters/Bastet.jpg';
+import BelphegarImg from '../../assets/images/games/zone-nova/characters/belphegar.jpg';
+import ChiyaImg from '../../assets/images/games/zone-nova/characters/Chiya.jpg';
+import CleopatraImg from '../../assets/images/games/zone-nova/characters/Cleopatra.jpg';
+import FreyaImg from '../../assets/images/games/zone-nova/characters/Freya.jpg';
+import FreyeImg from '../../assets/images/games/zone-nova/characters/Freye.jpg';
+import GaiaImg from '../../assets/images/games/zone-nova/characters/Gaia.jpg';
+import GreedMammonImg from '../../assets/images/games/zone-nova/characters/GreedMammon.jpg';
+import GuinevereImg from '../../assets/images/games/zone-nova/characters/Guinevere.jpg';
+import HelaImg from '../../assets/images/games/zone-nova/characters/Hela.jpg';
+import HeraImg from '../../assets/images/games/zone-nova/characters/Hera.jpg';
+import HorusImg from '../../assets/images/games/zone-nova/characters/Horus.jpg';
+import JoanofArcImg from '../../assets/images/games/zone-nova/characters/JoanofArc.jpg';
+import KelaImg from '../../assets/images/games/zone-nova/characters/kela.jpg';
+import LancelotImg from '../../assets/images/games/zone-nova/characters/Lancelot.jpg';
+import LaviniaImg from '../../assets/images/games/zone-nova/characters/Lavinia.jpg';
+import LeviathanImg from '../../assets/images/games/zone-nova/characters/Leviathan.jpg';
+import LokiImg from '../../assets/images/games/zone-nova/characters/Loki.jpg';
+import LyraImg from '../../assets/images/games/zone-nova/characters/Lyra.jpg';
+import MerlinImg from '../../assets/images/games/zone-nova/characters/Merlin.jpg';
+import MordredImg from '../../assets/images/games/zone-nova/characters/Mordred.jpg';
+import NaiyaImg from '../../assets/images/games/zone-nova/characters/Naiya.jpg';
+import NiniImg from '../../assets/images/games/zone-nova/characters/Nini.jpg';
+import OdinImg from '../../assets/images/games/zone-nova/characters/Odin.jpg';
+import PennyImg from '../../assets/images/games/zone-nova/characters/penny.jpg';
+import RoseImg from '../../assets/images/games/zone-nova/characters/Rose.jpg';
+import ShannaImg from '../../assets/images/games/zone-nova/characters/Shanna.jpg';
+import ShuImg from '../../assets/images/games/zone-nova/characters/Shu.jpg';
+import SnowImg from '../../assets/images/games/zone-nova/characters/Snow.jpg';
+import TefnutImg from '../../assets/images/games/zone-nova/characters/Tefnut.jpg';
+import ThorImg from '../../assets/images/games/zone-nova/characters/Thor.jpg';
+import YuisImg from '../../assets/images/games/zone-nova/characters/Yuis.jpg';
+import ZashikiWarashiImg from '../../assets/images/games/zone-nova/characters/Zashiki-warashi.jpg';
+
+// Centralized character image mapping
+const characterImageMap = {
+  'Afrodite.jpg': AfroditeImg,
+  'Anubis.jpg': AnubisImg,
+  'Apollo.jpg': ApolloImg,
+  'Artemis.jpg': ArtemisImg,
+  'Arthur.jpg': ArthurImg,
+  'Athena.jpg': AthenaImg,
+  'Bastet.jpg': BastetImg,
+  'belphegar.jpg': BelphegarImg,
+  'Chiya.jpg': ChiyaImg,
+  'Cleopatra.jpg': CleopatraImg,
+  'Freya.jpg': FreyaImg,
+  'Freye.jpg': FreyeImg,
+  'Gaia.jpg': GaiaImg,
+  'GreedMammon.jpg': GreedMammonImg,
+  'Guinevere.jpg': GuinevereImg,
+  'Hela.jpg': HelaImg,
+  'Hera.jpg': HeraImg,
+  'Horus.jpg': HorusImg,
+  'JoanofArc.jpg': JoanofArcImg,
+  'kela.jpg': KelaImg,
+  'Lancelot.jpg': LancelotImg,
+  'Lavinia.jpg': LaviniaImg,
+  'Leviathan.jpg': LeviathanImg,
+  'Loki.jpg': LokiImg,
+  'Lyra.jpg': LyraImg,
+  'Merlin.jpg': MerlinImg,
+  'Mordred.jpg': MordredImg,
+  'Naiya.jpg': NaiyaImg,
+  'Nini.jpg': NiniImg,
+  'Odin.jpg': OdinImg,
+  'penny.jpg': PennyImg,
+  'Rose.jpg': RoseImg,
+  'Shanna.jpg': ShannaImg,
+  'Shu.jpg': ShuImg,
+  'Snow.jpg': SnowImg,
+  'Tefnut.jpg': TefnutImg,
+  'Thor.jpg': ThorImg,
+  'Yuis.jpg': YuisImg,
+  'Zashiki-warashi.jpg': ZashikiWarashiImg,
+};
+
+const {
+  imageName,
+  alt,
+  width = 300,
+  height = 300,
+  class: className = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Get the imported image object from the map
+// Handle full paths, with and without extension
+let imageKey = imageName;
+
+// Extract filename from full path if needed
+if (imageKey.includes('/')) {
+  const parts = imageKey.split('/');
+  imageKey = parts[parts.length - 1] || 'Afrodite.jpg';
+}
+
+// Add extension if missing
+if (!imageKey.includes('.')) {
+  imageKey = `${imageKey}.jpg`;
+}
+
+const imageSrc = characterImageMap[imageKey] || characterImageMap['Afrodite.jpg'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

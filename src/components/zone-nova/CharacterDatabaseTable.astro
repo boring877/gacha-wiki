@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { ZNCharacterImage, ZNClassImage } from './index.astro';
 import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 ---
 
@@ -35,15 +35,12 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
             <td>{idx + 1}</td>
             <td>
               <div style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--amber-glow); overflow: hidden;">
-                <Image
-                  src={char.image}
+                <ZNCharacterImage
+                  imageName={char.image}
                   alt={char.name}
                   class="character-img"
                   width={40}
                   height={40}
-                  format="webp"
-                  quality={85}
-                  loading="lazy"
                 />
               </div>
             </td>
@@ -64,16 +61,12 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
               </span>
             </td>
             <td style="text-align: center; vertical-align: middle;">
-              <Image
-                src={`/images/games/zone-nova/classes/1${char.class}.jpg`}
+              <ZNClassImage
+                className={char.class}
                 alt={char.class}
                 class="class-icon-standalone"
                 width={24}
                 height={24}
-                loading="lazy"
-                title={char.class}
-                format="webp"
-                quality={85}
               />
             </td>
             <td>

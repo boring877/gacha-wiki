@@ -11,7 +11,7 @@ export interface Props {
   } | null;
 }
 
-const { currentCharacterSlug, prevCharacter, nextCharacter } = Astro.props;
+const { prevCharacter, nextCharacter } = Astro.props;
 
 // Only create URLs if characters exist
 const prevUrl = prevCharacter ? `/guides/horizon-walker/characters/${prevCharacter.slug}` : '#';
@@ -74,6 +74,14 @@ const nextUrl = nextCharacter ? `/guides/horizon-walker/characters/${nextCharact
 </nav>
 
 <script>
+  // AddEventListenerOptions type definition
+  interface AddEventListenerOptions {
+    capture?: boolean;
+    once?: boolean;
+    passive?: boolean;
+    signal?: AbortSignal;
+  }
+
   // Optimized mobile navigation for Horizon Walker
   class HWMobileNavigation {
     private touchStartX = 0;

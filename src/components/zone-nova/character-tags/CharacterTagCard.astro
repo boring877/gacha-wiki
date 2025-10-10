@@ -1,0 +1,85 @@
+---
+/**
+ * Zone Nova Character Tag Card Component
+ * Created for SSG optimization with static image handling
+ * Minimal design matching character comparison style
+ */
+
+import { ZNCharacterImage } from '../index.astro';
+
+interface Props {
+  character: {
+    id: number;
+    name: string;
+    image: string;
+    rarity: string;
+    element: string;
+    role: string;
+    class: string;
+    faction: string;
+    tags?: string[];
+    detailUrl: string;
+  };
+}
+
+const { character } = Astro.props;
+
+// Get image filename from character image path
+const getImageFilename = (imagePath: string): string => {
+  if (imagePath.includes('/')) {
+    const parts = imagePath.split('/');
+    return parts[parts.length - 1] || 'Afrodite.jpg';
+  }
+  return imagePath || 'Afrodite.jpg';
+};
+---
+
+<a
+  href={character.detailUrl}
+  class="character-tag-card"
+  data-character-id={character.id}
+  data-tags={JSON.stringify(character.tags || [])}
+  data-rarity={character.rarity}
+  data-element={character.element}
+  data-role={character.role}
+  data-class={character.class}
+  data-faction={character.faction}
+>
+  <div class="character-tag-card-image">
+    <div class="character-portrait-container">
+      <ZNCharacterImage
+        imageName={getImageFilename(character.image)}
+        alt={character.name}
+        className="character-portrait-img"
+        width={200}
+        height={200}
+        loading="lazy"
+        format="webp"
+        quality={95}
+      />
+    </div>
+  </div>
+
+  <div class="character-tag-card-content">
+    <h3 class="character-tag-card-name">{character.name}</h3>
+
+    <div class="character-tag-card-badges">
+      <span class={`rarity-badge ${character.rarity.toLowerCase()}`}>
+        {character.rarity}
+      </span>
+      <span class={`class-badge ${character.class.toLowerCase().replace(' ', '-')}`}>
+        {character.class}
+      </span>
+    </div>
+
+    {
+      character.tags && character.tags.length > 0 && (
+        <div class="character-tag-card-tags">
+          {character.tags.map(tag => (
+            <span class="character-tag">{tag}</span>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</a>

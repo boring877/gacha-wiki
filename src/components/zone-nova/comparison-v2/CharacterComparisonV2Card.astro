@@ -1,0 +1,212 @@
+---
+import ZNCharacterImage from '../ZNCharacterImage.astro';
+
+interface Props {
+  character: {
+    id: number;
+    name: string;
+    originalName: string;
+    slug: string;
+    image: string;
+    rarity: 'SSR' | 'SR' | 'R';
+    element: 'Fire' | 'Wind' | 'Holy' | 'Chaos' | 'Ice';
+    class: 'Guardian' | 'Warrior' | 'Rogue' | 'Mage' | 'Buffer' | 'Debuffer' | 'Healer';
+    role: 'Tank' | 'DPS' | 'Buffer' | 'Debuffer' | 'Healer';
+    faction: string;
+    tags?: string[];
+    stats?: {
+      hp: number | string;
+      attack: number | string;
+      defense: number | string;
+      energyRecovery?: number;
+      critRate?: number;
+      critDmg?: number;
+    };
+  };
+}
+
+const { character } = Astro.props;
+
+// Helper function to format stat value
+function formatStatValue(value: number | string): string {
+  if (typeof value === 'number') {
+    return value.toLocaleString();
+  }
+  return value || '--';
+}
+
+// Security: Escape HTML to prevent XSS
+const escapeHtml = (unsafe: string): string => {
+  return unsafe
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
+    .replace(/'/g, '&#039;');
+};
+
+const displayName = escapeHtml(character.originalName || character.name);
+
+// Get image filename from character image path
+const getImageFilename = (imagePath: string): string => {
+  if (imagePath.includes('/')) {
+    const parts = imagePath.split('/');
+    return parts[parts.length - 1] || 'Afrodite.jpg';
+  }
+  return imagePath || 'Afrodite.jpg';
+};
+---
+
+<div
+  class="comparison-character-card"
+  id="comparison-card-{character.slug}"
+  data-character-slug={character.slug}
+>
+  <div class="comparison-card-header">
+    <div class="comparison-card-portrait-container">
+      <ZNCharacterImage
+        imageName={getImageFilename(character.image)}
+        alt={displayName}
+        className="comparison-card-portrait"
+        width={80}
+        height={80}
+        loading="lazy"
+        format="webp"
+        quality={85}
+      />
+    </div>
+    <div class="comparison-card-info">
+      <h3>{displayName}</h3>
+      <div class="comparison-card-badges">
+        <span class="rarity-badge {character.rarity.toLowerCase()}">{character.rarity}</span>
+        <span class="element-badge {character.element.toLowerCase()}">{character.element}</span>
+        <span class="role-badge {character.role.toLowerCase()}">{character.role}</span>
+        <span class="class-badge {character.class.toLowerCase()}">{character.class}</span>
+        <span class="faction-badge {character.faction.toLowerCase().replace(/\s+/g, '-')}"
+          >{character.faction}</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="comparison-card-stats">
+    <!-- Combat Stats Section -->
+    <div class="comparison-stat-section">
+      <h4>Combat Stats</h4>
+      <div class="comparison-stat-grid">
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">HP</span>
+          <span class="comparison-stat-value hp"
+            >{formatStatValue(character.stats?.hp || '--')}</span
+          >
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">ATK</span>
+          <span class="comparison-stat-value atk"
+            >{formatStatValue(character.stats?.attack || '--')}</span
+          >
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">DEF</span>
+          <span class="comparison-stat-value def"
+            >{formatStatValue(character.stats?.defense || '--')}</span
+          >
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">Crit Rate</span>
+          <span class="comparison-stat-value crit">
+            {
+              character.stats?.critRate !== null && character.stats?.critRate !== undefined
+                ? String(character.stats.critRate).includes('%')
+                  ? character.stats.critRate
+                  : `${character.stats.critRate}%`
+                : '--'
+            }
+          </span>
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">Crit DMG</span>
+          <span class="comparison-stat-value crit-dmg">
+            {
+              character.stats?.critDmg !== null && character.stats?.critDmg !== undefined
+                ? String(character.stats.critDmg).includes('%')
+                  ? character.stats.critDmg
+                  : `${character.stats.critDmg}%`
+                : '50%'
+            }
+          </span>
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">Energy Rec</span>
+          <span class="comparison-stat-value energy"
+            >{character.stats?.energyRecovery ? `${character.stats.energyRecovery}` : '--'}</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Character Details Section -->
+    <div class="comparison-stat-section">
+      <h4>Details</h4>
+      <div class="comparison-stat-grid">
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">Class</span>
+          <span class="comparison-stat-value">{character.class}</span>
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">Role</span>
+          <span class="comparison-stat-value">{character.role}</span>
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">Element</span>
+          <span class="comparison-stat-value">{character.element}</span>
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">Rarity</span>
+          <span class="comparison-stat-value">{character.rarity}</span>
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">Faction</span>
+          <span class="comparison-stat-value">{character.faction}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Character Tags Section -->
+    {
+      character.tags && character.tags.length > 0 ? (
+        <div class="comparison-stat-section">
+          <h4>Character Tags</h4>
+          <div class="comparison-tags-container">
+            {character.tags.map(tag => (
+              <span class="character-tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      ) : null
+    }
+
+    <!-- Tier Rankings Section -->
+    <div class="comparison-stat-section">
+      <h4>Tier Rankings</h4>
+      <div class="comparison-stat-grid">
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">PvE</span>
+          <span class="comparison-stat-value tier-unranked pve-tier">--</span>
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">PvP</span>
+          <span class="comparison-stat-value tier-unranked pvp-tier">--</span>
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">Boss</span>
+          <span class="comparison-stat-value tier-unranked boss-tier">--</span>
+        </div>
+        <div class="comparison-stat-item">
+          <span class="comparison-stat-label">Raid</span>
+          <span class="comparison-stat-value tier-unranked raid-tier">--</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

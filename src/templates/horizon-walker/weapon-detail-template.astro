@@ -1,11 +1,10 @@
 ---
 import WeaponDetailLayout from '../../layouts/horizon-walker/WeaponDetailLayout.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
-import WeaponImage from '../../components/horizon-walker/WeaponImage.astro';
+import { WeaponImage } from '../../components/horizon-walker/index.astro';
 
 // Import weapon data
 import { HORIZON_WALKER_WEAPONS } from '../../data/horizon-walker/weapons.js';
-
 
 // Get weapon slug from URL
 const { weapon: weaponSlug } = Astro.params;

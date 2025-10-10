@@ -47,7 +47,7 @@ export const ZONE_NOVA_RIFT_TEAMS = [
       { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
       { name: 'Apollo', image: '/images/games/zone-nova/characters/Apollo.jpg' },
       { name: 'Leviathan', image: '/images/games/zone-nova/characters/Leviathan.jpg' },
-      { name: "Jeanne d'Arc", image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
+      { name: 'Jeanne D Arc', image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
     ],
     notes:
       'This Team Fit with Map Element weakness and do alot of damage. only problem that leviathan is melee character which sometimes can be a problem.',
@@ -62,7 +62,7 @@ export const ZONE_NOVA_RIFT_TEAMS = [
       { name: 'Penny', image: '/images/games/zone-nova/characters/penny.jpg' },
       { name: 'Athena', image: '/images/games/zone-nova/characters/Athena.jpg' },
       { name: 'Naiya', image: '/images/games/zone-nova/characters/Naiya.jpg' },
-      { name: "Jeanne d'Arc", image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
+      { name: 'Jeanne D Arc', image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
     ],
     notes:
       'This team focuses on buffing. The map has a buff multiplier, so you will benefit more from the buff effects. Athena will be the main damage dealer.',
@@ -91,7 +91,7 @@ export const ZONE_NOVA_RIFT_TEAMS = [
       { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
       { name: 'Shu', image: '/images/games/zone-nova/characters/Shu.jpg' },
       { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
-      { name: "Jeanne d'Arc", image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
+      { name: 'Jeanne D Arc', image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
     ],
     notes: 'quite bit of DOT damage and fit well with map. also damage taken inc and  healing',
     elementWeakness: ['Fire', 'Wind'],
@@ -244,7 +244,7 @@ export const ZONE_NOVA_RIFT_TEAMS = [
     tier: RIFT_TEAM_TIERS.SS,
     characters: [
       { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
-      { name: "Jeanne d'Arc", image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
+      { name: 'Jeanne D Arc', image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
       { name: 'Hera', image: '/images/games/zone-nova/characters/Hera.jpg' },
       { name: 'Freye', image: '/images/games/zone-nova/characters/Freye.jpg' },
     ],
@@ -258,7 +258,7 @@ export const ZONE_NOVA_RIFT_TEAMS = [
     tier: RIFT_TEAM_TIERS.S,
     characters: [
       { name: 'Penny', image: '/images/games/zone-nova/characters/penny.jpg' },
-      { name: "Jeanne d'Arc", image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
+      { name: 'Jeanne D Arc', image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
       { name: 'Shu', image: '/images/games/zone-nova/characters/Shu.jpg' },
       { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
     ],

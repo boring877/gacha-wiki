@@ -292,6 +292,92 @@ strong {
   letter-spacing: var(--tracking-normal); /* Normal tracking for clarity */
 }
 
+/* === COMPARISON TOOL TYPOGRAPHY === */
+/* Specialized typography for character comparison tables and cards */
+
+/* Comparison section headers - for stat groupings (Combat Stats, Character Info, etc.) */
+.comparison-section-header {
+  font-family: var(--font-display); /* Display font for section emphasis */
+  font-size: 0.9rem; /* Optimized size for comparison cards */
+  font-weight: var(--font-medium); /* Medium weight for clear hierarchy */
+  line-height: var(--leading-normal); /* Normal leading for readability */
+  letter-spacing: 0.05em; /* Slightly wider tracking for uppercase text */
+  text-transform: uppercase; /* Uppercase for section distinction */
+  margin: 0 0 1rem 0; /* Consistent spacing */
+}
+
+/* Comparison stat labels - for left-side labels (HP, ATK, DEF, etc.) */
+.comparison-stat-label {
+  font-family: var(--font-primary); /* Primary font for readability */
+  font-size: 0.85rem; /* Optimized size for compact display */
+  font-weight: var(--font-medium); /* Medium weight for label emphasis */
+  line-height: var(--leading-normal); /* Normal leading for compact text */
+  letter-spacing: var(--tracking-wide); /* Wide tracking for uppercase readability */
+  text-transform: uppercase; /* Uppercase for clear label identification */
+}
+
+/* Comparison stat values - for right-side values (numbers, text) */
+.comparison-stat-value {
+  font-family: var(--font-primary); /* Primary font for consistency */
+  font-size: 0.85rem; /* Same size as labels for balance */
+  font-weight: var(--font-semibold); /* Slightly heavier for value emphasis */
+  line-height: var(--leading-normal); /* Normal leading for alignment */
+  letter-spacing: var(--tracking-normal); /* Normal tracking for values */
+  text-align: right; /* Right-aligned for clear distinction */
+}
+
+/* Comparison card titles - character names */
+.comparison-card-title {
+  font-family: var(--font-display); /* Display font for character names */
+  font-size: 1.2rem; /* Prominent size for character identification */
+  font-weight: var(--font-bold); /* Bold weight for emphasis */
+  line-height: var(--leading-tight); /* Tight leading for compact display */
+  letter-spacing: var(--tracking-normal); /* Normal tracking for readability */
+  margin: 0 0 0.8rem 0; /* Consistent spacing */
+}
+
+/* Team skill section headers */
+.comparison-team-header {
+  font-family: var(--font-display); /* Display font for team skill emphasis */
+  font-size: 0.9rem; /* Same as other section headers */
+  font-weight: var(--font-medium); /* Medium weight for hierarchy */
+  line-height: var(--leading-normal); /* Normal leading */
+  letter-spacing: 0.05em; /* Wide tracking for uppercase */
+  text-transform: uppercase; /* Uppercase for section distinction */
+  color: var(--zn-primary-teal); /* Theme color for team skills */
+  margin: 0 0 0.8rem 0; /* Consistent spacing */
+}
+
+/* Team skill names - skill titles */
+.comparison-team-skill-name {
+  font-family: var(--font-primary); /* Primary font for readability */
+  font-size: 0.9rem; /* Slightly larger for skill emphasis */
+  font-weight: var(--font-semibold); /* Semibold for skill names */
+  line-height: var(--leading-normal); /* Normal leading */
+  letter-spacing: var(--tracking-normal); /* Normal tracking */
+  margin-bottom: 0.5rem; /* Consistent spacing */
+}
+
+/* Team skill descriptions - detailed ability text */
+.comparison-team-skill-description {
+  font-family: var(--font-primary); /* Primary font for readability */
+  font-size: 0.85rem; /* Same as stat text for consistency */
+  font-weight: var(--font-normal); /* Normal weight for descriptions */
+  line-height: 1.4; /* Slightly relaxed leading for readability */
+  letter-spacing: var(--tracking-normal); /* Normal tracking */
+  margin-bottom: 0.5rem; /* Consistent spacing */
+}
+
+/* Team skill requirements - prerequisites text */
+.comparison-team-requirements {
+  font-family: var(--font-primary); /* Primary font for consistency */
+  font-size: 0.8rem; /* Slightly smaller for less emphasis */
+  font-weight: var(--font-medium); /* Medium weight for requirement emphasis */
+  font-style: italic; /* Italic for distinctive styling */
+  line-height: var(--leading-normal); /* Normal leading */
+  letter-spacing: var(--tracking-wide); /* Wide tracking for readability */
+}
+
 /* === RESPONSIVE TYPOGRAPHY === */
 /* Mobile optimization for better readability on smaller screens */
 @media (max-width: 768px) {

@@ -1,25 +1,12 @@
 ---
 // Import centralized Zone Nova data component
-import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro';
+import { CHARACTER_DATA_MAP } from './ZNCharacterData.astro';
 ---
 
 <!-- Setup data BEFORE loading the script -->
-<script define:vars={{ characterData: sanitizedCharacters, characterDataMap: CHARACTER_DATA_MAP }}>
+<script define:vars={{ characterDataMap: CHARACTER_DATA_MAP }}>
   // Set up global data for the external comparison script
   window.zoneNovaComparisonData = {
-    characterData: {
-      characters: characterData.map(char => ({
-        slug: char.slug,
-        name: char.originalName,
-        rarity: char.rarity,
-        element: char.element,
-        role: char.role,
-        class: char.class,
-        faction: char.faction,
-        image: char.image,
-        stats: char.stats || {},
-      })),
-    },
     characterDataMap: characterDataMap,
   };
 </script>
@@ -35,12 +22,17 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
     constructor() {
       this.selectedCharacters = [];
       this.maxCharacters = 4;
-      this.characterDataProcessed = null;
-      this.filteredCharacters = [];
-      this.sortState = { column: null, asc: false };
       this.characterDataCache = new Map();
       this.eventListeners = new Map();
       this.characterCardListeners = new WeakMap();
+      this.sortState = { column: null, asc: false };
+
+      // Faction abbreviation mapping for display
+      this.factionAbbreviations = {
+        'Monochrome Nation': 'Mono Nation',
+        'Pingjing City': 'Pingjing',
+        'Bicta Tower': 'Bicta',
+      };
 
       this.init();
     }
@@ -57,27 +49,25 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
     initializeApp() {
       // Get data from window global (set by Astro)
       if (window.zoneNovaComparisonData) {
-        this.characterDataProcessed = window.zoneNovaComparisonData.characterData;
-
-        // Sort characters alphabetically by name for default order
-        this.characterDataProcessed.characters.sort((a, b) => a.name.localeCompare(b.name));
-        this.filteredCharacters = [...this.characterDataProcessed.characters];
+        // Character cards are pre-rendered, no need to process data
       } else {
         // Zone Nova comparison data not found
+
         return;
       }
 
-      this.initializeCharacterSelection();
-      this.initializeComparisonControls();
-      this.initializeFilterControls();
-      this.renderCharacterGrid();
+      // Small delay to ensure DOM elements are fully rendered
+      setTimeout(() => {
+        this.initializeCharacterSelection();
+        this.initializeComparisonControls();
+        this.initializeFilterControls();
+      }, 100);
     }
 
     // Character data loader (Cloudflare compatible)
     loadCharacterData(slug) {
       // Input validation
       if (!slug || typeof slug !== 'string') {
-        console.warn('Invalid character slug provided to loadCharacterData');
         return null;
       }
 
@@ -91,8 +81,7 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
 
         this.characterDataCache.set(slug, data || null);
         return data || null;
-      } catch (error) {
-        console.error(`Failed to load character data for ${slug}:`, error);
+      } catch (_error) {
         this.characterDataCache.set(slug, null);
         return null;
       }
@@ -100,19 +89,25 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
 
     initializeCharacterSelection() {
       const characterCards = document.querySelectorAll('.character-select-card');
-      console.log('Zone Nova Comparison: Found', characterCards.length, 'character cards');
+
+      if (characterCards.length === 0) {
+        // Try again after a delay
+        setTimeout(() => this.initializeCharacterSelection(), 500);
+        return;
+      }
 
       // Clean up existing listeners
       this.cleanupCharacterCardListeners();
 
-      characterCards.forEach(card => {
-        const cardClickHandler = () => {
+      characterCards.forEach((card, _index) => {
+        const cardClickHandler = event => {
+          event.preventDefault();
+          event.stopPropagation();
+
           const characterSlug = card.dataset.characterSlug;
-          console.log('Zone Nova Comparison: Card clicked:', characterSlug);
 
           // Input validation
           if (!characterSlug || typeof characterSlug !== 'string') {
-            console.warn('Invalid character slug found on card');
             return;
           }
 
@@ -160,13 +155,51 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
 
     initializeComparisonControls() {
       const clearBtn = document.getElementById('clear-comparison');
+
       if (clearBtn) {
-        const clearHandler = () => this.clearComparison();
+        const clearHandler = () => {
+          this.clearComparison();
+        };
         clearBtn.addEventListener('click', clearHandler);
         this.eventListeners.set('clear-comparison', () => {
           clearBtn.removeEventListener('click', clearHandler);
         });
+      } else {
+        // Try to set up the button later when comparison table becomes visible
+        this.setupClearButtonWhenVisible();
       }
+    }
+
+    // Try to attach clear button event listener with retry mechanism
+    setupClearButtonWhenVisible() {
+      const tryAttachListener = () => {
+        const clearBtn = document.getElementById('clear-comparison');
+        if (clearBtn && !this.eventListeners.has('clear-comparison')) {
+          const clearHandler = () => {
+            this.clearComparison();
+          };
+          clearBtn.addEventListener('click', clearHandler);
+          this.eventListeners.set('clear-comparison', () => {
+            clearBtn.removeEventListener('click', clearHandler);
+          });
+
+          return true;
+        }
+        return false;
+      };
+
+      // Try immediately
+      if (tryAttachListener()) return;
+
+      // Try with increasing delays
+      const delays = [100, 500, 1000, 2000];
+      delays.forEach(delay => {
+        setTimeout(() => {
+          if (!this.eventListeners.has('clear-comparison')) {
+            tryAttachListener();
+          }
+        }, delay);
+      });
     }
 
     initializeFilterControls() {
@@ -225,7 +258,6 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
           const col = btn.dataset.sort;
           // Input validation
           if (!col || typeof col !== 'string') {
-            console.warn('Invalid sort column:', col);
             return;
           }
 
@@ -262,51 +294,72 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
       const elementFilter = document.getElementById('element-filter')?.value || '';
       const factionFilter = document.getElementById('faction-filter')?.value || '';
 
-      // Filter characters
-      this.filteredCharacters = this.characterDataProcessed.characters.filter(character => {
-        const matchesRarity = !rarityFilter || character.rarity === rarityFilter;
-        const matchesRole = !roleFilter || character.role === roleFilter;
-        const matchesClass = !classFilter || character.class === classFilter;
-        const matchesElement = !elementFilter || character.element === elementFilter;
-        const matchesFaction = !factionFilter || character.faction === factionFilter;
+      // Filter by showing/hiding pre-rendered character cards
+      document.querySelectorAll('.character-select-card').forEach(card => {
+        const cardRarity = card.dataset.rarity || '';
+        const cardRole = card.dataset.role || '';
+        const cardClass = card.dataset.class || '';
+        const cardElement = card.dataset.element || '';
+        const cardFaction = card.dataset.faction || '';
 
-        return matchesRarity && matchesRole && matchesClass && matchesElement && matchesFaction;
+        const matchesRarity = !rarityFilter || cardRarity === rarityFilter;
+        const matchesRole = !roleFilter || cardRole === roleFilter;
+        const matchesClass = !classFilter || cardClass === classFilter;
+        const matchesElement = !elementFilter || cardElement === elementFilter;
+        const matchesFaction = !factionFilter || cardFaction === factionFilter;
+
+        const shouldShow =
+          matchesRarity && matchesRole && matchesClass && matchesElement && matchesFaction;
+        card.style.display = shouldShow ? 'flex' : 'none';
       });
 
-      // Sort characters if a sort is active
+      // Apply sorting to visible cards
       if (this.sortState.column) {
-        this.sortCharacters(this.sortState.column, this.sortState.asc);
+        this.sortVisibleCharacters(this.sortState.column, this.sortState.asc);
       }
-
-      // Re-render grid
-      this.renderCharacterGrid();
     }
 
-    sortCharacters(sortOption, ascending) {
-      this.filteredCharacters.sort((a, b) => {
-        const aStats = a.stats || {};
-        const bStats = b.stats || {};
+    sortVisibleCharacters(sortOption, ascending) {
+      const characterGrid = document.querySelector('.character-grid');
+      if (!characterGrid) return;
 
-        let comparison = 0;
+      // Get all visible character cards
+      const visibleCards = Array.from(document.querySelectorAll('.character-select-card')).filter(
+        card => card.style.display !== 'none'
+      );
+
+      // Sort based on data attributes
+      visibleCards.sort((a, b) => {
+        let aValue, bValue;
+
         switch (sortOption) {
           case 'hp':
-            comparison = (bStats.hp || 0) - (aStats.hp || 0);
+            aValue = parseFloat(a.dataset.hp) || 0;
+            bValue = parseFloat(b.dataset.hp) || 0;
             break;
           case 'attack':
-            comparison = (bStats.attack || 0) - (aStats.attack || 0);
+            aValue = parseFloat(a.dataset.attack) || 0;
+            bValue = parseFloat(b.dataset.attack) || 0;
             break;
           case 'defense':
-            comparison = (bStats.defense || 0) - (aStats.defense || 0);
+            aValue = parseFloat(a.dataset.defense) || 0;
+            bValue = parseFloat(b.dataset.defense) || 0;
             break;
           case 'critRate':
-            comparison = (bStats.critRate || 0) - (aStats.critRate || 0);
+            aValue = parseFloat(a.dataset.critRate) || 0;
+            bValue = parseFloat(b.dataset.critRate) || 0;
             break;
           default:
-            comparison = 0;
+            return 0;
         }
 
-        // Apply direction multiplier
+        const comparison = bValue - aValue;
         return ascending ? comparison : -comparison;
+      });
+
+      // Reorder the cards in the DOM
+      visibleCards.forEach(card => {
+        characterGrid.appendChild(card);
       });
     }
 
@@ -318,187 +371,46 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
         'element-filter',
         'faction-filter',
       ];
+
+      // Clear all filter values with explicit reset
       filters.forEach(id => {
         const element = document.getElementById(id);
-        if (element) element.value = '';
+        if (element) {
+          element.value = '';
+          // Force change event to trigger filter update
+          element.dispatchEvent(new Event('change', { bubbles: true }));
+        }
       });
 
       // Clear active sort button and reset sort state
       document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
       this.sortState = { column: null, asc: false };
 
-      // Reset to alphabetical order (same as initial load)
-      this.filteredCharacters = [...this.characterDataProcessed.characters].sort((a, b) =>
-        a.name.localeCompare(b.name)
-      );
-      this.renderCharacterGrid();
-    }
-
-    renderCharacterGrid() {
+      // Show all character cards and reset to alphabetical order
       const characterGrid = document.querySelector('.character-grid');
-      if (!characterGrid) return;
+      if (characterGrid) {
+        const allCards = Array.from(document.querySelectorAll('.character-select-card'));
 
-      // Use DocumentFragment for better performance
-      const fragment = document.createDocumentFragment();
-      const characterCards = this.filteredCharacters
-        .map(character => {
-          // Input validation
-          if (!character || typeof character !== 'object') {
-            console.warn('Invalid character data found:', character);
-            return null;
-          }
+        // Sort by name using the character data
+        allCards.sort((a, b) => {
+          const nameA = a.querySelector('.character-name')?.textContent || '';
+          const nameB = b.querySelector('.character-name')?.textContent || '';
+          return nameA.localeCompare(nameB);
+        });
 
-          const stats = character.stats || {};
-
-          const cardElement = document.createElement('button');
-          cardElement.className = 'character-select-card';
-          cardElement.dataset.characterSlug = character.slug || '';
-          cardElement.dataset.selected = this.selectedCharacters.includes(character.slug);
-
-          // Create elements safely without innerHTML to prevent XSS
-          const img = document.createElement('img');
-          img.src = character.image || '/images/placeholder.png';
-          img.alt = character.name || 'Unknown Character';
-          img.className = 'character-portrait';
-          img.width = 80;
-          img.height = 80;
-          img.onerror = function () {
-            this.src = '/images/placeholder.png';
-          };
-
-          const characterInfo = document.createElement('div');
-          characterInfo.className = 'character-info';
-
-          const h3 = document.createElement('h3');
-          h3.textContent = character.name || 'Unknown';
-
-          const badgesDiv = document.createElement('div');
-          badgesDiv.className = 'character-badges';
-
-          const rarityBadge = document.createElement('span');
-          rarityBadge.className = `rarity-badge ${(character.rarity || '').toLowerCase()}`;
-          rarityBadge.textContent = character.rarity || 'Unknown';
-
-          const classBadge = document.createElement('span');
-          classBadge.className = `class-badge ${(character.class || 'unknown').toLowerCase().replace(' ', '-')}`;
-          classBadge.textContent = character.class || 'Unknown';
-
-          const elementBadge = document.createElement('span');
-          elementBadge.className = `element-badge ${(character.element || '').toLowerCase()}`;
-          elementBadge.textContent = character.element || 'Unknown';
-
-          const roleBadge = document.createElement('span');
-          roleBadge.className = `role-badge ${(character.role || '').toLowerCase()}`;
-          roleBadge.textContent = character.role || 'Unknown';
-
-          const factionBadge = document.createElement('span');
-          factionBadge.className = `faction-badge ${(character.faction || '').toLowerCase().replace(' ', '-')}`;
-          factionBadge.textContent = character.faction || 'Unknown';
-
-          const statsDiv = document.createElement('div');
-          statsDiv.className = 'character-stats';
-
-          // HP stat
-          const hpDiv = document.createElement('div');
-          hpDiv.className = 'stat-item';
-          const hpLabel = document.createElement('span');
-          hpLabel.className = 'stat-label';
-          hpLabel.textContent = 'HP';
-          const hpValue = document.createElement('span');
-          hpValue.className = 'stat-value';
-          hpValue.textContent =
-            stats.hp !== undefined
-              ? typeof stats.hp === 'string'
-                ? stats.hp
-                : stats.hp.toLocaleString()
-              : 'N/A';
-          hpDiv.appendChild(hpLabel);
-          hpDiv.appendChild(hpValue);
-
-          // ATK stat
-          const atkDiv = document.createElement('div');
-          atkDiv.className = 'stat-item';
-          const atkLabel = document.createElement('span');
-          atkLabel.className = 'stat-label';
-          atkLabel.textContent = 'ATK';
-          const atkValue = document.createElement('span');
-          atkValue.className = 'stat-value';
-          atkValue.textContent =
-            stats.attack !== undefined
-              ? typeof stats.attack === 'string'
-                ? stats.attack
-                : stats.attack.toLocaleString()
-              : 'N/A';
-          atkDiv.appendChild(atkLabel);
-          atkDiv.appendChild(atkValue);
-
-          // DEF stat
-          const defDiv = document.createElement('div');
-          defDiv.className = 'stat-item';
-          const defLabel = document.createElement('span');
-          defLabel.className = 'stat-label';
-          defLabel.textContent = 'DEF';
-          const defValue = document.createElement('span');
-          defValue.className = 'stat-value';
-          defValue.textContent =
-            stats.defense !== undefined
-              ? typeof stats.defense === 'string'
-                ? stats.defense
-                : stats.defense.toLocaleString()
-              : 'N/A';
-          defDiv.appendChild(defLabel);
-          defDiv.appendChild(defValue);
-
-          // CRIT stat if available
-          if (stats.critRate !== undefined) {
-            const critDiv = document.createElement('div');
-            critDiv.className = 'stat-item crit-rate';
-            const critLabel = document.createElement('span');
-            critLabel.className = 'stat-label';
-            critLabel.textContent = 'CRIT';
-            const critValue = document.createElement('span');
-            critValue.className = 'stat-value';
-            critValue.textContent =
-              typeof stats.critRate === 'string' ? stats.critRate : `${stats.critRate}%`;
-            critDiv.appendChild(critLabel);
-            critDiv.appendChild(critValue);
-            statsDiv.appendChild(critDiv);
-          }
-
-          // Assemble elements
-          badgesDiv.appendChild(rarityBadge);
-          badgesDiv.appendChild(classBadge);
-          badgesDiv.appendChild(elementBadge);
-          badgesDiv.appendChild(roleBadge);
-          badgesDiv.appendChild(factionBadge);
-          statsDiv.appendChild(hpDiv);
-          statsDiv.appendChild(atkDiv);
-          statsDiv.appendChild(defDiv);
-          characterInfo.appendChild(h3);
-          characterInfo.appendChild(badgesDiv);
-          characterInfo.appendChild(statsDiv);
-          cardElement.appendChild(img);
-          cardElement.appendChild(characterInfo);
-
-          return cardElement;
-        })
-        .filter(Boolean); // Remove any null cards
-
-      // Clear grid safely and append new elements
-      while (characterGrid.firstChild) {
-        characterGrid.removeChild(characterGrid.firstChild);
+        // Show all cards and reorder them
+        allCards.forEach(card => {
+          card.style.display = 'flex';
+          characterGrid.appendChild(card);
+        });
       }
-
-      characterCards.forEach(card => fragment.appendChild(card));
-      characterGrid.appendChild(fragment);
-
-      // Re-initialize selection functionality
-      this.initializeCharacterSelection();
     }
 
     async updateComparisonTable() {
       const comparisonTable = document.getElementById('comparison-table');
-      if (!comparisonTable) return;
+      if (!comparisonTable) {
+        return;
+      }
 
       if (this.selectedCharacters.length === 0) {
         comparisonTable.classList.remove('active');
@@ -507,16 +419,37 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
 
       comparisonTable.classList.add('active');
 
+      // Ensure clear button is attached when table becomes active
+      if (!this.eventListeners.has('clear-comparison')) {
+        this.setupClearButtonWhenVisible();
+      }
+
       // Clear existing data
       this.clearTableCells();
 
       // Populate table with selected characters
       const populationPromises = this.selectedCharacters.map(async (characterSlug, index) => {
-        const character = this.characterDataProcessed.characters.find(
-          c => c.slug === characterSlug
-        );
-        if (character) {
-          await this.populateCharacterColumn(character, index + 1);
+        const characterCard = document.querySelector(`[data-character-slug="${characterSlug}"]`);
+        if (characterCard) {
+          // Extract character data from the card
+          const characterData = {
+            name: characterCard.querySelector('.character-name')?.textContent || '',
+            image: characterCard.querySelector('.character-portrait')?.src || '',
+            rarity: characterCard.dataset.rarity || '',
+            element: characterCard.dataset.element || '',
+            class: characterCard.dataset.class || '',
+            role: characterCard.dataset.role || '',
+            faction: characterCard.dataset.faction || '',
+            stats: {
+              hp: parseFloat(characterCard.dataset.hp) || 0,
+              attack: parseFloat(characterCard.dataset.attack) || 0,
+              defense: parseFloat(characterCard.dataset.defense) || 0,
+              energyRecovery: parseFloat(characterCard.dataset.energyRecovery) || 0,
+              critRate: parseFloat(characterCard.dataset.critRate) || 0,
+              critDmg: parseFloat(characterCard.dataset.critDmg) || 0,
+            },
+          };
+          await this.populateCharacterColumn(characterData, index + 1);
         }
       });
 
@@ -526,6 +459,146 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
       for (let i = this.selectedCharacters.length + 1; i <= this.maxCharacters; i++) {
         this.hideCharacterColumn(i);
       }
+
+      // Generate mobile cards
+      this.generateMobileCards();
+    }
+
+    // Generate mobile character cards
+    generateMobileCards() {
+      const mobileCardsContainer = document.getElementById('mobile-comparison-cards');
+      if (!mobileCardsContainer) return;
+
+      console.log('Generating mobile cards for', this.selectedCharacters.length, 'characters');
+      mobileCardsContainer.innerHTML = '';
+
+      this.selectedCharacters.forEach((characterSlug, index) => {
+        const characterCard = document.querySelector(`[data-character-slug="${characterSlug}"]`);
+        if (characterCard) {
+          console.log('Creating mobile card for:', characterSlug);
+          const mobileCard = this.createMobileCard(characterCard, index + 1);
+          mobileCardsContainer.appendChild(mobileCard);
+        } else {
+          console.log('Character card not found for:', characterSlug);
+        }
+      });
+    }
+
+    // Create a mobile character card
+    createMobileCard(characterCard, columnIndex) {
+      const card = document.createElement('div');
+      card.className = 'character-comparison-card';
+
+      // Extract character data
+      const characterData = {
+        name: characterCard.querySelector('.character-name')?.textContent || '',
+        image: characterCard.querySelector('.character-portrait')?.src || '',
+        rarity: characterCard.dataset.rarity || '',
+        element: characterCard.dataset.element || '',
+        class: characterCard.dataset.class || '',
+        role: characterCard.dataset.role || '',
+        faction: characterCard.dataset.faction || '',
+        stats: {
+          hp: parseFloat(characterCard.dataset.hp) || 0,
+          attack: parseFloat(characterCard.dataset.attack) || 0,
+          defense: parseFloat(characterCard.dataset.defense) || 0,
+          energyRecovery: parseFloat(characterCard.dataset.energyRecovery) || 0,
+          critRate: parseFloat(characterCard.dataset.critRate) || 0,
+          critDmg: parseFloat(characterCard.dataset.critDmg) || 0,
+        },
+      };
+
+      // Get team skill data
+      const characterSlug =
+        characterCard.dataset.characterSlug || this.selectedCharacters[columnIndex - 1];
+      const characterDataFull = this.loadCharacterData(characterSlug);
+      const teamSkill = characterDataFull?.teamSkill;
+
+      // Debug logging
+      console.log('Mobile card debug:', {
+        characterSlug,
+        characterDataFull: characterDataFull ? 'found' : 'not found',
+        teamSkill: teamSkill ? 'found' : 'not found',
+      });
+
+      card.innerHTML = `
+        <div class="card-header">
+          <img src="${characterData.image}" alt="${characterData.name}" class="card-portrait">
+          <div class="card-info">
+            <h3>${characterData.name}</h3>
+            <div class="card-badges">
+              <span class="rarity-badge ${characterData.rarity.toLowerCase()}">${characterData.rarity}</span>
+              <span class="element-badge ${characterData.element.toLowerCase()}">${characterData.element}</span>
+              <span class="role-badge ${characterData.role.toLowerCase()}">${characterData.role}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-section">
+          <h4>Basic Information</h4>
+          <div class="card-stats">
+            <div class="card-stat">
+              <span class="stat-label">Class</span>
+              <span class="stat-value">${characterData.class}</span>
+            </div>
+            <div class="card-stat">
+              <span class="stat-label">Faction</span>
+              <span class="stat-value">${this.factionAbbreviations[characterData.faction] || characterData.faction}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-section">
+          <h4>Combat Stats</h4>
+          <div class="card-stats">
+            <div class="card-stat">
+              <span class="stat-label">HP</span>
+              <span class="stat-value">${characterData.stats.hp.toLocaleString()}</span>
+            </div>
+            <div class="card-stat">
+              <span class="stat-label">ATK</span>
+              <span class="stat-value">${characterData.stats.attack.toLocaleString()}</span>
+            </div>
+            <div class="card-stat">
+              <span class="stat-label">DEF</span>
+              <span class="stat-value">${characterData.stats.defense.toLocaleString()}</span>
+            </div>
+            <div class="card-stat">
+              <span class="stat-label">Energy</span>
+              <span class="stat-value">${characterData.stats.energyRecovery}</span>
+            </div>
+            <div class="card-stat">
+              <span class="stat-label">CRIT Rate</span>
+              <span class="stat-value">${characterData.stats.critRate}%</span>
+            </div>
+            <div class="card-stat">
+              <span class="stat-label">CRIT DMG</span>
+              <span class="stat-value">${characterData.stats.critDmg}%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-section">
+          <h4>Combo Skill</h4>
+          <div class="card-team-skill">
+            ${
+              teamSkill
+                ? `
+              <div class="team-skill-name">${teamSkill.name || 'Combo Skill'}</div>
+              <div class="team-skill-description">${teamSkill.description}</div>
+              <div class="team-skill-conditions">
+                <strong>Requirements:</strong> ${teamSkill.requirements?.faction || characterData.faction} + ${teamSkill.requirements?.element || characterData.element}
+              </div>
+            `
+                : `
+              <div class="team-skill-unknown">No team skill data available</div>
+            `
+            }
+          </div>
+        </div>
+      `;
+
+      return card;
     }
 
     async populateCharacterColumn(character, columnIndex) {
@@ -536,6 +609,8 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
       if (column) {
         column.classList.add('active');
         column.style.display = 'block';
+      } else {
+        return;
       }
 
       // Populate character header
@@ -558,42 +633,40 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
         if (el) {
           el.textContent = value;
           el.classList.add('active');
-          el.style.display = 'block';
+          el.style.display = 'flex';
+          el.style.visibility = 'visible';
         }
       };
 
-      const setBadgeValue = (statName, value, badgeType) => {
+      const setBadgeValue = (statName, value, badgeType, abbreviations = null) => {
         const el = document.querySelector(`[data-stat="${statName}-${columnIndex}"]`);
         if (el) {
           // Handle long faction names
           let displayValue = value;
-          if (badgeType === 'faction' && value.length > 12) {
-            const abbreviations = {
-              'Monochrome Nation': 'Mono Nation',
-              'Pingjing City': 'Pingjing',
-              'Bicta Tower': 'Bicta',
-            };
+          if (badgeType === 'faction' && abbreviations) {
             displayValue = abbreviations[value] || value;
           }
 
           const span = document.createElement('span');
-          span.className = `${badgeType}-badge ${value.toLowerCase().replace(/\s+/g, '-')}`;
+          span.className = `${badgeType}-badge ${value.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '-')}`;
           span.textContent = displayValue;
           el.innerHTML = '';
           el.appendChild(span);
           el.classList.add('active');
           el.style.display = 'block';
+          el.style.visibility = 'visible';
         }
       };
 
       setBadgeValue('rarity', character.rarity, 'rarity');
       setBadgeValue('class', character.class, 'class');
       setBadgeValue('role', character.role, 'role');
-      setBadgeValue('faction', character.faction, 'faction');
+      setBadgeValue('faction', character.faction, 'faction', this.factionAbbreviations);
       setBadgeValue('element', character.element, 'element');
 
-      // Load team skill data and get detailed stats
-      const characterData = this.loadCharacterData(character.slug);
+      // Get character slug from the original selected characters array
+      const characterSlug = this.selectedCharacters[columnIndex - 1];
+      const characterData = this.loadCharacterData(characterSlug);
       const detailedStats = characterData?.stats || stats;
 
       // Combat stats - prioritize detailed character data, fallback to basic stats
@@ -604,6 +677,9 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
         detailedStats.energyRegen || detailedStats.energyRecovery || stats.energyRecovery;
       const critRate = detailedStats.critRate || stats.critRate;
       const critDmg = detailedStats.critDamage || detailedStats.critDmg || stats.critDmg;
+
+      // Get team skill data from character data
+      const teamSkill = characterData?.teamSkill;
 
       setStatValue(
         'hp',
@@ -631,34 +707,30 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
       );
       setStatValue(
         'crit',
-        critRate !== undefined ? (typeof critRate === 'string' ? critRate : critRate + '%') : 'N/A'
+        critRate !== undefined ? (typeof critRate === 'string' ? critRate : critRate + '%') : '0%'
       );
       setStatValue(
         'critdmg',
         critDmg !== undefined ? (typeof critDmg === 'string' ? critDmg : critDmg + '%') : 'N/A'
       );
 
-      const teamSkill = characterData?.teamSkill;
-
-      // Team skill name
-      const teamSkillName = teamSkill?.name || 'No team skill';
+      // Team skill name - standardize to "Combo Skill" for consistency
+      const teamSkillName = teamSkill ? 'Combo Skill' : 'No Team Skill';
       setStatValue('teamskillname', teamSkillName);
 
       // Team skill description
-      const teamSkillValue = teamSkill?.description || 'No team skill available';
+      const teamSkillValue = teamSkill?.description || 'Team skill data not available';
       setStatValue('teamskill', teamSkillValue);
 
-      // Team skill requirements with better formatting
+      // Team skill requirements
       let teamConditionsValue = 'No requirements';
       if (teamSkill?.requirements) {
         const factionName = teamSkill.requirements.faction;
         const elementName = teamSkill.requirements.element;
-
-        if (factionName.length > 8) {
-          teamConditionsValue = `${factionName}\n${elementName}`;
-        } else {
-          teamConditionsValue = `${factionName} + ${elementName}`;
-        }
+        teamConditionsValue = `${factionName} + ${elementName}`;
+      } else if (teamSkill) {
+        // If team skill exists but no requirements, show character's own faction + element
+        teamConditionsValue = `${character.faction} + ${character.element}`;
       }
 
       // Set the value safely
@@ -676,6 +748,7 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
         }
         el.classList.add('active');
         el.style.display = 'block';
+        el.style.visibility = 'visible';
       }
     }
 
@@ -689,10 +762,18 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
         }
 
         // Clear all stat values for this column
-        document.querySelectorAll(`[data-stat$="-${i}"]`).forEach(el => {
-          el.textContent = '';
+        const statElements = document.querySelectorAll(`[data-stat$="-${i}"]`);
+
+        statElements.forEach(el => {
+          // For badge elements, we need to clear innerHTML to remove span elements
+          if (el.classList.contains('stat-value-premium')) {
+            el.innerHTML = '';
+          } else {
+            el.textContent = '';
+          }
           el.classList.remove('active');
           el.style.display = 'none';
+          el.style.visibility = 'hidden';
         });
       }
     }
@@ -708,17 +789,25 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
 
       // Hide all stat values for this column
       document.querySelectorAll(`[data-stat$="-${columnIndex}"]`).forEach(el => {
+        // For badge elements, we need to clear innerHTML to remove span elements
+        if (el.classList.contains('stat-value-premium')) {
+          el.innerHTML = '';
+        } else {
+          el.textContent = '';
+        }
         el.classList.remove('active');
         el.style.display = 'none';
+        el.style.visibility = 'hidden';
       });
     }
 
     navigateToComparison() {
-      const comparisonSection = document.getElementById('comparison-table');
-      if (comparisonSection) {
+      const targetElement = document.getElementById('comparison-table');
+
+      if (targetElement) {
         // Immediate scroll with minimal delay for DOM update
         requestAnimationFrame(() => {
-          comparisonSection.scrollIntoView({
+          targetElement.scrollIntoView({
             behavior: 'smooth',
             block: 'start',
           });
@@ -731,14 +820,26 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
 
       // Clear all selected states
       const characterCards = document.querySelectorAll('.character-select-card');
+
       characterCards.forEach(card => {
         card.dataset.selected = 'false';
+        // Also remove visual selection class if it exists
+        card.classList.remove('selected');
       });
+
+      // Clear table cells
+      this.clearTableCells();
 
       // Hide comparison table
       const comparisonTable = document.getElementById('comparison-table');
       if (comparisonTable) {
         comparisonTable.classList.remove('active');
+      }
+
+      // Clear mobile cards
+      const mobileCardsContainer = document.getElementById('mobile-comparison-cards');
+      if (mobileCardsContainer) {
+        mobileCardsContainer.innerHTML = '';
       }
     }
 
@@ -756,7 +857,7 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
 
     cleanupFilterListeners() {
       // Clean up all tracked event listeners
-      this.eventListeners.forEach((cleanupFn, key) => {
+      this.eventListeners.forEach((cleanupFn, _key) => {
         if (typeof cleanupFn === 'function') {
           cleanupFn();
         }
@@ -765,8 +866,6 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
     }
 
     cleanup() {
-      console.log('Zone Nova Comparison: Cleaning up resources...');
-
       // Clear character card listeners
       this.cleanupCharacterCardListeners();
 
@@ -776,13 +875,9 @@ import { sanitizedCharacters, CHARACTER_DATA_MAP } from './ZNCharacterData.astro
       // Clear caches
       this.characterDataCache.clear();
       this.selectedCharacters.length = 0;
-      this.filteredCharacters.length = 0;
 
       // Reset state
       this.sortState = { column: null, asc: false };
-      this.characterDataProcessed = null;
-
-      console.log('Zone Nova Comparison: Cleanup completed');
     }
   }
 

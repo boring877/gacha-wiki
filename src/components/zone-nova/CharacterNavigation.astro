@@ -170,7 +170,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
         znPerfManager.sessionCacheTime = now;
 
         return znPerfManager.sessionCache;
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         znPerfManager.sessionCache = {
           filters: {},
           sort: { column: 'name', asc: true },
@@ -400,17 +400,14 @@ const forceRender = charactersByDatabaseOrder.length > 0;
       }
 
       try {
-        // Add loading state to navigation panel only (safer than body manipulation)
-        const navPanel = elements.navPanel;
         // Navigate instantly without any loading indicator
         window.location.assign(url);
         return true;
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         // Reset navigation panel state on error
-        const navPanel = elements.navPanel;
-        if (navPanel) {
-          navPanel.style.opacity = '1';
-          navPanel.style.pointerEvents = '';
+        if (elements.navPanel) {
+          elements.navPanel.style.opacity = '1';
+          elements.navPanel.style.pointerEvents = '';
           const loadingIndicator = document.getElementById('zn-nav-loading');
           if (loadingIndicator) {
             loadingIndicator.remove();
@@ -448,7 +445,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
     if (elements.prevButton) {
       // Prefetch on hover for instant loading
       elements.prevButton.addEventListener('mouseenter', () => {
-        const url = elements.prevButton?.getAttribute('data-character-url');
+        const url = elements.prevButton?.getAttribute('data-character-url') || null;
         prefetchPage(url);
       });
 
@@ -462,7 +459,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
     if (elements.nextButton) {
       // Prefetch on hover for instant loading
       elements.nextButton.addEventListener('mouseenter', () => {
-        const url = elements.nextButton?.getAttribute('data-character-url');
+        const url = elements.nextButton?.getAttribute('data-character-url') || null;
         prefetchPage(url);
       });
 
@@ -501,7 +498,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
           prefetchPage(url);
           handleNavigation(url);
         }
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         // console.error('Keyboard navigation error:', error);
       }
     });
@@ -521,7 +518,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
 
       // Clean up all prefetch links
       document.querySelectorAll('link[rel="prefetch"]').forEach(link => {
-        if (link.dataset.timestamp) {
+        if ((link as HTMLElement).dataset.timestamp) {
           document.head.removeChild(link);
         }
       });

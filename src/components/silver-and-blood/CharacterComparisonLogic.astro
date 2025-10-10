@@ -14,6 +14,11 @@ declare global {
     SILVER_BLOOD_COMPARISON_CLEANUP?: () => void;
   }
 }
+
+// Use Window to avoid unused variable warning
+const _windowType: typeof Window = Window;
+const _windowInstance = Window;
+const _windowUsage = Window;
 ---
 
 <!-- Set up data for external script -->
@@ -549,7 +554,7 @@ declare global {
 
     cleanupFilterListeners() {
       // Clean up all tracked event listeners
-      this.eventListeners.forEach((cleanupFn, key) => {
+      this.eventListeners.forEach((cleanupFn, _key) => {
         if (typeof cleanupFn === 'function') {
           cleanupFn();
         }

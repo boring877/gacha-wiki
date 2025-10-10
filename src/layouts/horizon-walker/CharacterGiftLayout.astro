@@ -25,7 +25,7 @@ export interface Props {
   breadcrumbs?: Array<{ name: string; href?: string }>;
 }
 
-const { title, description, pageTitle, subtitle, breadcrumbs = [] } = Astro.props;
+const { title, description, pageTitle, breadcrumbs = [] } = Astro.props;
 
 // Default breadcrumbs if not provided
 const defaultBreadcrumbs = [

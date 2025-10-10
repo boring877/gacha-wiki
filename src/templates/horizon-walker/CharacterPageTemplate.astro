@@ -9,10 +9,12 @@ import { getCharacterById } from '../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../data/horizon-walker/gifts.js';
 import { getTagCategory } from '../../data/horizon-walker/characters.js';
 
-// Import centralized image components
-import CharacterImage from '../../components/horizon-walker/CharacterImage.astro';
-import WeaponImage from '../../components/horizon-walker/WeaponImage.astro';
-import GiftImage from '../../components/horizon-walker/GiftImage.astro';
+// Import image components from central location
+import {
+  CharacterImage,
+  WeaponImage,
+  GiftImage,
+} from '../../components/horizon-walker/index.astro';
 
 interface CharacterStats {
   strength: string;
@@ -122,7 +124,6 @@ interface CharacterData {
 interface Props {
   characterData: CharacterData;
 }
-
 
 const { characterData } = Astro.props;
 

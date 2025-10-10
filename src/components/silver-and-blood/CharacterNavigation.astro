@@ -188,7 +188,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
         perfManager.sessionCacheTime = now;
 
         return perfManager.sessionCache;
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         perfManager.sessionCache = {
           filters: {},
           sort: { column: 'name', asc: true },
@@ -435,12 +435,11 @@ const forceRender = charactersByDatabaseOrder.length > 0;
         // Navigate instantly without any loading indicator
         window.location.assign(url);
         return true;
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         // Reset navigation panel state on error
-        const navPanel = elements.navPanel;
-        if (navPanel) {
-          navPanel.style.opacity = '1';
-          navPanel.style.pointerEvents = '';
+        if (elements.navPanel) {
+          elements.navPanel.style.opacity = '1';
+          elements.navPanel.style.pointerEvents = '';
           const loadingIndicator = document.getElementById('sab-nav-loading');
           if (loadingIndicator) {
             loadingIndicator.remove();
@@ -531,7 +530,7 @@ const forceRender = charactersByDatabaseOrder.length > 0;
           prefetchPage(url);
           handleNavigation(url);
         }
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         // console.error('Keyboard navigation error:', error);
       }
     });

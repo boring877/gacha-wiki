@@ -68,7 +68,7 @@ const { prevCharacter, nextCharacter } = Astro.props;
         // Use replace for instant feel
         window.location.replace(url);
         return true;
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         // Reset element state on error
         const targetButton = document.querySelector(`[data-character-url="${url}"]`) as HTMLElement;
         if (targetButton) {
@@ -81,7 +81,7 @@ const { prevCharacter, nextCharacter } = Astro.props;
     }
 
     // Optimized touch handling
-    function handleMobileNavigation(element: HTMLElement | null, direction: string) {
+    function handleMobileNavigation(element: HTMLElement | null, _direction: string) {
       if (!element) return;
 
       element.addEventListener(
@@ -96,24 +96,24 @@ const { prevCharacter, nextCharacter } = Astro.props;
 
       element.addEventListener(
         'touchmove',
-        e => {
+        _e => {
           znMobilePerfManager.touchMoved = true;
         },
         { passive: true }
       );
 
-      element.addEventListener('touchend', e => {
+      element.addEventListener('touchend', _e => {
         const touchDuration = Date.now() - znMobilePerfManager.touchStartTime;
 
         if (!znMobilePerfManager.touchMoved && touchDuration < 400 && touchDuration > 50) {
-          e.preventDefault();
+          _e.preventDefault();
           const url = element.getAttribute('data-character-url');
           handleNavigation(url);
         }
       });
 
-      element.addEventListener('click', e => {
-        e.preventDefault();
+      element.addEventListener('click', _e => {
+        _e.preventDefault();
         const url = element.getAttribute('data-character-url');
         handleNavigation(url);
       });
@@ -123,8 +123,8 @@ const { prevCharacter, nextCharacter } = Astro.props;
     try {
       handleMobileNavigation(mobileSwipeLeft, 'prev');
       handleMobileNavigation(mobileSwipeRight, 'next');
-    } catch (error: unknown) {
-      console.warn('Failed to initialize Zone Nova mobile navigation:', error);
+    } catch (_error: unknown) {
+      console.warn('Failed to initialize Zone Nova mobile navigation:', _error);
     }
 
     // Optimized update function

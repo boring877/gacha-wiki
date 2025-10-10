@@ -1,5 +1,5 @@
 ---
-import MercenaryImage from '../../components/horizon-walker/MercenaryImage.astro';
+import { MercenaryImage } from '../../components/horizon-walker/index.astro';
 import { getTagCategory } from '../../data/horizon-walker/characters.js';
 
 interface Trait {
@@ -370,35 +370,33 @@ function getMercenaryDescription(usage: any): string {
         for your mercenaries! Some mercenaries have 1 or more fixed unique traits.
       </div>
 
-      {
-        (() => {
-          const traits = mercenaryData.traits || {};
-          return Object.keys(traits).map(key => {
-            const trait = traits[key] as Trait;
-            return (
-              <div class="trait-card">
-                <div class="trait-header">
-                  <h3 class="trait-title">{trait.name}</h3>
-                  <span class="hw-badge" data-type="Trait">
-                    Trait
-                  </span>
-                </div>
-                <p class="trait-description">{trait.description}</p>
-                {trait.characteristics && (
-                  <div class="trait-characteristics">
-                    <strong>Characteristics:</strong> {trait.characteristics}
-                  </div>
-                )}
-                {trait.notes && (
-                  <div class="trait-notes">
-                    <em>Note: {trait.notes}</em>
-                  </div>
-                )}
+      {(() => {
+        const traits = mercenaryData.traits || {};
+        return Object.keys(traits).map(key => {
+          const trait = traits[key] as Trait;
+          return (
+            <div class="trait-card">
+              <div class="trait-header">
+                <h3 class="trait-title">{trait.name}</h3>
+                <span class="hw-badge" data-type="Trait">
+                  Trait
+                </span>
               </div>
-            );
-          });
-        })()
-      }
+              <p class="trait-description">{trait.description}</p>
+              {trait.characteristics && (
+                <div class="trait-characteristics">
+                  <strong>Characteristics:</strong> {trait.characteristics}
+                </div>
+              )}
+              {trait.notes && (
+                <div class="trait-notes">
+                  <em>Note: {trait.notes}</em>
+                </div>
+              )}
+            </div>
+          );
+        });
+      })()}
     </section>
   )
 }

@@ -125,4 +125,159 @@ const statNames = {
   critRate: 'CRIT',
 };
 
-export { rankings, overallAnalysis, totalCharacters, statNames, parseStatValue };
+// ============================================
+// PRE-COMPUTED DATA FOR INSTANT FILTERING
+// ============================================
+
+/**
+ * Pre-compute filtered character groups for instant server-side rendering
+ */
+function computeFilteredGroups() {
+  const groups = {
+    // By Role
+    byRole: {
+      all: ZONE_NOVA_CHARACTERS,
+      tank: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'Tank'),
+      dps: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'DPS'),
+      buffer: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'Buffer'),
+      debuffer: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'Debuffer'),
+      healer: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'Healer'),
+    },
+
+    // By Class
+    byClass: {
+      all: ZONE_NOVA_CHARACTERS,
+      guardian: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Guardian'),
+      warrior: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Warrior'),
+      rogue: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Rogue'),
+      mage: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Mage'),
+      buffer: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Buffer'),
+      debuffer: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Debuffer'),
+      healer: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Healer'),
+    },
+
+    // By Rarity
+    byRarity: {
+      all: ZONE_NOVA_CHARACTERS,
+      ssr: ZONE_NOVA_CHARACTERS.filter(c => c.rarity === 'SSR'),
+      sr: ZONE_NOVA_CHARACTERS.filter(c => c.rarity === 'SR'),
+      r: ZONE_NOVA_CHARACTERS.filter(c => c.rarity === 'R'),
+    },
+
+    // By Element
+    byElement: {
+      all: ZONE_NOVA_CHARACTERS,
+      fire: ZONE_NOVA_CHARACTERS.filter(c => c.element === 'Fire'),
+      ice: ZONE_NOVA_CHARACTERS.filter(c => c.element === 'Ice'),
+      wind: ZONE_NOVA_CHARACTERS.filter(c => c.element === 'Wind'),
+      holy: ZONE_NOVA_CHARACTERS.filter(c => c.element === 'Holy'),
+      chaos: ZONE_NOVA_CHARACTERS.filter(c => c.element === 'Chaos'),
+    },
+  };
+
+  return groups;
+}
+
+/**
+ * Pre-compute sorted character arrays for instant sorting
+ */
+function computeSortedArrays() {
+  const sorted = {
+    // By HP (highest first)
+    hp: {
+      desc: [...ZONE_NOVA_CHARACTERS].sort(
+        (a, b) => parseStatValue(b.stats.hp) - parseStatValue(a.stats.hp)
+      ),
+      asc: [...ZONE_NOVA_CHARACTERS].sort(
+        (a, b) => parseStatValue(a.stats.hp) - parseStatValue(b.stats.hp)
+      ),
+    },
+
+    // By Attack (highest first)
+    attack: {
+      desc: [...ZONE_NOVA_CHARACTERS].sort(
+        (a, b) => parseStatValue(b.stats.attack) - parseStatValue(a.stats.attack)
+      ),
+      asc: [...ZONE_NOVA_CHARACTERS].sort(
+        (a, b) => parseStatValue(a.stats.attack) - parseStatValue(b.stats.attack)
+      ),
+    },
+
+    // By Defense (highest first)
+    defense: {
+      desc: [...ZONE_NOVA_CHARACTERS].sort(
+        (a, b) => parseStatValue(b.stats.defense) - parseStatValue(a.stats.defense)
+      ),
+      asc: [...ZONE_NOVA_CHARACTERS].sort(
+        (a, b) => parseStatValue(a.stats.defense) - parseStatValue(b.stats.defense)
+      ),
+    },
+
+    // By Crit Rate (highest first, only characters with crit rate)
+    critRate: {
+      desc: [...ZONE_NOVA_CHARACTERS]
+        .filter(c => c.stats.critRate > 0)
+        .sort((a, b) => parseStatValue(b.stats.critRate) - parseStatValue(a.stats.critRate)),
+      asc: [...ZONE_NOVA_CHARACTERS]
+        .filter(c => c.stats.critRate > 0)
+        .sort((a, b) => parseStatValue(a.stats.critRate) - parseStatValue(b.stats.critRate)),
+    },
+
+    // By Overall Rank (best first)
+    overallRank: {
+      desc: [...ZONE_NOVA_CHARACTERS].sort(
+        (a, b) => overallAnalysis[a.id].overallRank - overallAnalysis[b.id].overallRank
+      ),
+      asc: [...ZONE_NOVA_CHARACTERS].sort(
+        (a, b) => overallAnalysis[b.id].overallRank - overallAnalysis[a.id].overallRank
+      ),
+    },
+  };
+
+  return sorted;
+}
+
+/**
+ * Generate view IDs for all possible filter combinations
+ */
+function generateViewIds() {
+  const viewIds = [];
+  const roles = ['all', 'tank', 'dps', 'buffer', 'debuffer', 'healer'];
+  const classes = ['all', 'guardian', 'warrior', 'rogue', 'mage', 'buffer', 'debuffer', 'healer'];
+  const rarities = ['all', 'ssr', 'sr', 'r'];
+  const elements = ['all', 'fire', 'ice', 'wind', 'holy', 'chaos'];
+
+  // Generate all single filter views
+  roles.forEach(role => viewIds.push(`role-${role}`));
+  classes.forEach(cls => viewIds.push(`class-${cls}`));
+  rarities.forEach(rarity => viewIds.push(`rarity-${rarity}`));
+  elements.forEach(element => viewIds.push(`element-${element}`));
+
+  // Generate all sort views
+  const stats = ['hp', 'attack', 'defense', 'critRate', 'overallRank'];
+  const directions = ['desc', 'asc'];
+
+  stats.forEach(stat => {
+    directions.forEach(dir => {
+      viewIds.push(`sort-${stat}-${dir}`);
+    });
+  });
+
+  return viewIds;
+}
+
+// Calculate pre-computed data
+const filteredGroups = computeFilteredGroups();
+const sortedArrays = computeSortedArrays();
+const viewIds = generateViewIds();
+
+export {
+  rankings,
+  overallAnalysis,
+  totalCharacters,
+  statNames,
+  parseStatValue,
+  filteredGroups,
+  sortedArrays,
+  viewIds,
+};

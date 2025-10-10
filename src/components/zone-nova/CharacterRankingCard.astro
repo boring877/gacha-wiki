@@ -1,0 +1,88 @@
+---
+import { ZNCharacterImage } from './index.astro';
+
+const { character, rank, showStats = true } = Astro.props;
+
+// Extract image name from full path for better management
+const getImageName = (imagePath: string) => {
+  if (!imagePath) return 'Afrodite.jpg';
+
+  // Extract filename from full path
+  const parts = imagePath.split('/');
+  const filename = parts[parts.length - 1];
+
+  // Return just the filename (e.g., "Afrodite.jpg")
+  return filename || 'Afrodite.jpg';
+};
+
+const imageName = getImageName(character.image);
+---
+
+<button class="character-select-card" data-character-id={character.id}>
+  <div class="character-rank-number">{rank}</div>
+
+  <!-- Optimized Character Image with Astro -->
+  <ZNCharacterImage
+    imageName={imageName}
+    alt={character.name}
+    width={80}
+    height={80}
+    class="character-portrait"
+    loading="lazy"
+    format="webp"
+    quality={85}
+  />
+
+  <div class="character-info">
+    <h3>{character.name}</h3>
+    <div class="character-badges">
+      <span class={`rarity-badge ${character.rarity.toLowerCase()}`}>
+        {character.rarity}
+      </span>
+      <span class={`class-badge ${character.class.toLowerCase().replace(' ', '-')}`}>
+        {character.class}
+      </span>
+    </div>
+
+    {
+      showStats && (
+        <div class="character-stats">
+          <div class="stat-item">
+            <span class="stat-label">HP</span>
+            <span class="stat-value">
+              {typeof character.stats.hp === 'string'
+                ? character.stats.hp
+                : character.stats.hp?.toLocaleString() || 'N/A'}
+            </span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">ATK</span>
+            <span class="stat-value">
+              {typeof character.stats.attack === 'string'
+                ? character.stats.attack
+                : character.stats.attack?.toLocaleString() || 'N/A'}
+            </span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">DEF</span>
+            <span class="stat-value">
+              {typeof character.stats.defense === 'string'
+                ? character.stats.defense
+                : character.stats.defense?.toLocaleString() || 'N/A'}
+            </span>
+          </div>
+          {character.stats.critRate !== undefined && (
+            <div class="stat-item crit-rate">
+              <span class="stat-label">CRIT</span>
+              <span class="stat-value">
+                {typeof character.stats.critRate === 'string'
+                  ? character.stats.critRate
+                  : `${character.stats.critRate}%`}
+              </span>
+            </div>
+          )}
+        </div>
+      )
+    }
+  </div>
+</button>

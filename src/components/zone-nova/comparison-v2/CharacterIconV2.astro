@@ -1,0 +1,72 @@
+---
+import ZNCharacterImage from '../ZNCharacterImage.astro';
+
+interface Props {
+  character: {
+    id: number;
+    name: string;
+    originalName: string;
+    slug: string;
+    image: string;
+    rarity: 'SSR' | 'SR' | 'R';
+    element: 'Fire' | 'Wind' | 'Holy' | 'Chaos' | 'Ice';
+    class: 'Guardian' | 'Warrior' | 'Rogue' | 'Mage' | 'Buffer' | 'Debuffer' | 'Healer';
+    role: 'Tank' | 'DPS' | 'Buffer' | 'Debuffer' | 'Healer';
+    faction: string;
+  };
+  isSelected?: boolean;
+}
+
+const { character, isSelected = false } = Astro.props;
+
+// Security: Escape HTML for display
+const escapeHtml = (unsafe: string): string => {
+  return unsafe
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
+    .replace(/'/g, '&#039;');
+};
+
+const displayName = escapeHtml(character.originalName || character.name);
+
+// Get image filename from character image path
+const getImageFilename = (imagePath: string): string => {
+  if (imagePath.includes('/')) {
+    const parts = imagePath.split('/');
+    return parts[parts.length - 1] || 'Afrodite.jpg';
+  }
+  return imagePath || 'Afrodite.jpg';
+};
+---
+
+<div
+  class="character-icon"
+  data-character-slug={character.slug}
+  data-character-id={character.id}
+  data-selected={isSelected}
+  data-role={character.role}
+  data-class={character.class}
+  data-rarity={character.rarity}
+  data-element={character.element}
+  data-faction={character.faction}
+  title={`${character.originalName} (${character.rarity} ${character.element} ${character.class})`}
+  role="button"
+  tabindex="0"
+  aria-label={`Select ${character.originalName}, ${character.rarity} ${character.element} ${character.class}`}
+>
+  <div class="character-icon-img-container">
+    <ZNCharacterImage
+      imageName={getImageFilename(character.image)}
+      alt={character.originalName}
+      className="character-img"
+      width={120}
+      height={120}
+      loading="lazy"
+      format="webp"
+      quality={85}
+    />
+  </div>
+  <span class="character-icon-name">{displayName}</span>
+</div>

@@ -2,6 +2,12 @@
 import { getFactionData } from '../../data/zone-nova/factions.js';
 import { Image } from 'astro:assets';
 import {
+  ZNCharacterImage,
+  ZNClassImage,
+  ZNNodeTreeImage,
+  ZNMemoryImage,
+} from '../../components/zone-nova/index.astro';
+import {
   highlightAllSkills,
   highlightSkillText,
   defaultZNHighlightPatterns,
@@ -124,14 +130,11 @@ function getTagCategory(tag: string): string {
     <div class="character-hero-card">
       <div class="character-hero-container">
         <div class="character-portrait-container">
-          <Image
-            src={`/images/games/zone-nova/characters/${characterData.image}.jpg`}
+          <ZNCharacterImage
+            imageName={characterData.image}
             alt={`${characterData.name} - ${characterData.rarity} ${characterData.class} character from Zone Nova gacha game`}
             width={300}
             height={300}
-            format="webp"
-            quality={85}
-            loading="lazy"
             class="character-portrait"
           />
         </div>
@@ -255,15 +258,11 @@ function getTagCategory(tag: string): string {
         <!-- Class Section -->
         <h4 class="character-class-section character-stats-subtitle">Class</h4>
         <div class="character-class-box">
-          <Image
-            src={`/images/games/zone-nova/classes/1${characterData.class}.jpg`}
+          <ZNClassImage
+            className={characterData.class}
             alt={`${characterData.class} class icon`}
-            width={48}
-            height={48}
-            loading="lazy"
+            size="medium"
             class="character-class-icon"
-            format="webp"
-            quality={85}
           />
           <div class="character-class-content">
             <div class="character-class-badges">
@@ -380,15 +379,7 @@ function getTagCategory(tag: string): string {
   <div class="node-tree-description">
     <div class="description-content">
       <div class="description-image">
-        <Image
-          src="/images/games/zone-nova/nodetree/FullTree.jpg"
-          alt="Complete Node Tree"
-          width={120}
-          height={120}
-          loading="lazy"
-          format="webp"
-          quality={85}
-        />
+        <ZNNodeTreeImage imageName="FullTree" alt="Complete Node Tree" width={120} height={120} />
       </div>
       <div class="description-text">
         <p class="node-tree-intro">
@@ -420,15 +411,7 @@ function getTagCategory(tag: string): string {
 
   <div class="skill-levelup-section">
     <div class="skill-image">
-      <Image
-        src="/images/games/zone-nova/nodetree/skills.jpg"
-        alt="Skill Node Tree"
-        width={100}
-        height={100}
-        loading="lazy"
-        format="webp"
-        quality={85}
-      />
+      <ZNNodeTreeImage imageName="skills" alt="Skill Node Tree" width={100} height={100} />
     </div>
     <div class="skill-content">
       <div class="skill-types-box">
@@ -460,45 +443,21 @@ function getTagCategory(tag: string): string {
 
   <div class="atk-hp-nodes">
     <div class="node-tier tier-1">
-      <Image
-        src="/images/games/zone-nova/nodetree/1.jpg"
-        alt="10% ATK & HP Node"
-        width={45}
-        height={45}
-        loading="lazy"
-        format="webp"
-        quality={85}
-      />
+      <ZNNodeTreeImage imageName="1" alt="10% ATK & HP Node" width={45} height={45} />
       <div class="node-tier-content">
         <div class="node-tier-title">10% ATK & HP</div>
         <div class="node-tier-requirement">Rank 2 Required</div>
       </div>
     </div>
     <div class="node-tier tier-2">
-      <Image
-        src="/images/games/zone-nova/nodetree/2.jpg"
-        alt="15% ATK & HP Node"
-        width={45}
-        height={45}
-        loading="lazy"
-        format="webp"
-        quality={85}
-      />
+      <ZNNodeTreeImage imageName="2" alt="15% ATK & HP Node" width={45} height={45} />
       <div class="node-tier-content">
         <div class="node-tier-title">15% ATK & HP</div>
         <div class="node-tier-requirement">Rank 4 Required</div>
       </div>
     </div>
     <div class="node-tier tier-3">
-      <Image
-        src="/images/games/zone-nova/nodetree/3.jpg"
-        alt="20% ATK & HP Node"
-        width={45}
-        height={45}
-        loading="lazy"
-        format="webp"
-        quality={85}
-      />
+      <ZNNodeTreeImage imageName="3" alt="20% ATK & HP Node" width={45} height={45} />
       <div class="node-tier-content">
         <div class="node-tier-title">20% ATK & HP</div>
         <div class="node-tier-requirement">Rank 6 Required</div>
@@ -587,14 +546,11 @@ function getTagCategory(tag: string): string {
     <div class="memory-card-image-container">
       <div class="memory-card-image-box">
         <div class="memory-card-image-wrapper">
-          <Image
-            src={`/images/games/zone-nova/memories/${characterData.memoryCard.image}.jpg`}
+          <ZNMemoryImage
+            imageName={characterData.memoryCard.image}
             alt={characterData.memoryCard.name}
             width={200}
             height={300}
-            format="webp"
-            quality={85}
-            loading="lazy"
           />
         </div>
       </div>
@@ -653,14 +609,10 @@ function getTagCategory(tag: string): string {
           <div class="equipment-limitation-layout">
             {/* Image on Left */}
             <div class="equipment-limitation-image">
-              <Image
-                src={`/images/games/zone-nova/classes/1${characterData.class}.jpg`}
+              <ZNClassImage
+                className={characterData.class}
                 alt={characterData.class}
-                width={80}
-                height={80}
-                loading="lazy"
-                format="webp"
-                quality={85}
+                size="large"
               />
             </div>
 

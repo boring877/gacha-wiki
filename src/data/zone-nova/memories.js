@@ -917,7 +917,7 @@ export const ZONE_NOVA_MEMORIES = [
     image: '/images/games/zone-nova/memories/JoanofArccard.jpg',
     rarity: 'SSR',
     element: 'Wind',
-    character: "Jeanne d'Arc",
+    character: 'Jeanne D Arc',
     detailUrl: '/guides/zone-nova/memories/the-most-real-her/',
     stats: {
       hp: 6000,
@@ -1014,7 +1014,7 @@ export const MEMORY_METADATA = {
     'Guinevere',
     'Hera',
     'Horus',
-    "Jeanne d'Arc",
+    'Jeanne D Arc',
     'Kela',
     'Lancelot',
     'Leviathan',

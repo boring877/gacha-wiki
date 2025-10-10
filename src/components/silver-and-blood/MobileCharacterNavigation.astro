@@ -69,7 +69,7 @@ const { prevCharacter, nextCharacter } = Astro.props;
         // Use replace for instant feel
         window.location.replace(url);
         return true;
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         // Reset element state on error
         const targetButton = document.querySelector(`[data-character-url="${url}"]`) as HTMLElement;
         if (targetButton) {
@@ -82,16 +82,15 @@ const { prevCharacter, nextCharacter } = Astro.props;
     }
 
     // High-performance mobile touch handling
-    function handleMobileNavigation(element: HTMLElement | null, direction: string) {
+    function handleMobileNavigation(element: HTMLElement | null, _direction: string) {
       if (!element) return;
 
       // Handle touch start - optimized
       element.addEventListener(
         'touchstart',
-        e => {
+        _e => {
           mobilePerfManager.touchStartTime = Date.now();
           mobilePerfManager.touchMoved = false;
-          e.stopPropagation();
         },
         { passive: true }
       );
@@ -99,28 +98,26 @@ const { prevCharacter, nextCharacter } = Astro.props;
       // Track touch movement - optimized
       element.addEventListener(
         'touchmove',
-        e => {
+        _e => {
           mobilePerfManager.touchMoved = true;
         },
         { passive: true }
       );
 
       // Handle touch end with performance checks
-      element.addEventListener('touchend', e => {
+      element.addEventListener('touchend', _e => {
         const touchDuration = Date.now() - mobilePerfManager.touchStartTime;
 
         // Enhanced touch validation
         if (!mobilePerfManager.touchMoved && touchDuration < 400 && touchDuration > 50) {
           // Prevent accidental touches
-          e.preventDefault();
           const url = element.getAttribute('data-character-url');
           handleNavigation(url);
         }
       });
 
       // Optimized click handler with throttling
-      element.addEventListener('click', e => {
-        e.preventDefault();
+      element.addEventListener('click', _e => {
         const url = element.getAttribute('data-character-url');
         handleNavigation(url);
       });

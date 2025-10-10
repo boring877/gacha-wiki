@@ -2,8 +2,7 @@
 import CharacterGiftLayout from '../../../layouts/horizon-walker/CharacterGiftLayout.astro';
 import { CHARACTER_GIFT_PREFERENCES } from '../../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../../data/horizon-walker/gifts.js';
-import GiftImage from '../../../components/horizon-walker/GiftImage.astro';
-import CharacterImage from '../../../components/horizon-walker/CharacterImage.astro';
+import { GiftImage, CharacterImage } from '../../../components/horizon-walker/index.astro';
 
 // Create a mapping of gift ID to gift boxes that contain it
 const giftToBoxMapping = {};
@@ -232,7 +231,7 @@ const queensTiaraGift = {
             <div class="hw-character-header">
               <div class="hw-character-image">
                 <CharacterImage
-                  imageName={character.image.split('/').pop()}
+                  imageName={character.image.split('/').pop() || character.image}
                   alt={character.name}
                   class="character-img"
                   width={100}
@@ -272,7 +271,7 @@ const queensTiaraGift = {
                     <div class="hw-favorite-item">
                       <div class="hw-favorite-gift-image">
                         <GiftImage
-                          imageName={gift.image.split('/').pop()}
+                          imageName={gift.image.split('/').pop() || gift.image}
                           alt={gift.name}
                           class="gift-favorite-img"
                           width={70}
@@ -323,7 +322,7 @@ const queensTiaraGift = {
                                 {allBoxes.map(box => (
                                   <div class="hw-source-box">
                                     <GiftImage
-                                      imageName={box.image.split('/').pop()}
+                                      imageName={box.image.split('/').pop() || box.image}
                                       alt={box.name}
                                       class="hw-source-icon"
                                       width={40}
@@ -350,7 +349,7 @@ const queensTiaraGift = {
                     <div class="hw-like-item">
                       <div class="hw-like-gift-image">
                         <GiftImage
-                          imageName={gift.image.split('/').pop()}
+                          imageName={gift.image.split('/').pop() || gift.image}
                           alt={gift.name}
                           class="gift-like-img"
                           width={70}
@@ -401,7 +400,7 @@ const queensTiaraGift = {
                                 {allBoxes.map(box => (
                                   <div class="hw-source-box">
                                     <GiftImage
-                                      imageName={box.image.split('/').pop()}
+                                      imageName={box.image.split('/').pop() || box.image}
                                       alt={box.name}
                                       class="hw-source-icon"
                                       width={40}
@@ -434,7 +433,9 @@ const queensTiaraGift = {
                       <div class="hw-alternative-item">
                         <div class="hw-alternative-gift-image">
                           <GiftImage
-                            imageName={queensTiaraGift.image.split('/').pop()}
+                            imageName={
+                              queensTiaraGift.image.split('/').pop() || queensTiaraGift.image
+                            }
                             alt={queensTiaraGift.name}
                             class="gift-alternative-img"
                             width={70}
@@ -489,7 +490,7 @@ const queensTiaraGift = {
                                   {allBoxes.map(box => (
                                     <div class="hw-source-box">
                                       <GiftImage
-                                        imageName={box.image.split('/').pop()}
+                                        imageName={box.image.split('/').pop() || box.image}
                                         alt={box.name}
                                         class="hw-source-icon"
                                         width={40}

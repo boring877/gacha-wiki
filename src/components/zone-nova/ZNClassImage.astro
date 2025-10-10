@@ -1,0 +1,89 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all Zone Nova class images once
+import Buffer1Img from '../../assets/images/games/zone-nova/classes/1Buffer.jpg';
+import Debuffer1Img from '../../assets/images/games/zone-nova/classes/1Debuffer.jpg';
+import Guardian1Img from '../../assets/images/games/zone-nova/classes/1Guardian.jpg';
+import Healer1Img from '../../assets/images/games/zone-nova/classes/1Healer.jpg';
+import Mage1Img from '../../assets/images/games/zone-nova/classes/1Mage.jpg';
+import Rogue1Img from '../../assets/images/games/zone-nova/classes/1Rogue.jpg';
+import Warrior1Img from '../../assets/images/games/zone-nova/classes/1Warrior.jpg';
+import BufferImg from '../../assets/images/games/zone-nova/classes/Buffer.jpg';
+import DebufferImg from '../../assets/images/games/zone-nova/classes/Debuffer.jpg';
+import GuardianImg from '../../assets/images/games/zone-nova/classes/Guardian.jpg';
+import HealerImg from '../../assets/images/games/zone-nova/classes/Healer.jpg';
+import MageImg from '../../assets/images/games/zone-nova/classes/Mage.jpg';
+import RogueImg from '../../assets/images/games/zone-nova/classes/Rogue.jpg';
+import WarriorImg from '../../assets/images/games/zone-nova/classes/Warrior.jpg';
+
+// Centralized class image mapping
+const classImageMap = {
+  '1Buffer.jpg': Buffer1Img,
+  '1Debuffer.jpg': Debuffer1Img,
+  '1Guardian.jpg': Guardian1Img,
+  '1Healer.jpg': Healer1Img,
+  '1Mage.jpg': Mage1Img,
+  '1Rogue.jpg': Rogue1Img,
+  '1Warrior.jpg': Warrior1Img,
+  'Buffer.jpg': BufferImg,
+  'Debuffer.jpg': DebufferImg,
+  'Guardian.jpg': GuardianImg,
+  'Healer.jpg': HealerImg,
+  'Mage.jpg': MageImg,
+  'Rogue.jpg': RogueImg,
+  'Warrior.jpg': WarriorImg,
+};
+
+interface Props {
+  className: string;
+  alt: string;
+  size?: 'small' | 'medium' | 'large';
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'avif' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  className,
+  alt,
+  size,
+  width,
+  height,
+  class: classNameProp = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Size presets for class icons
+const sizePresets = {
+  small: { width: 24, height: 24 },
+  medium: { width: 48, height: 48 },
+  large: { width: 80, height: 80 },
+};
+
+// Use size preset if provided, otherwise use explicit dimensions
+const dimensions = size ? sizePresets[size] : { width: width || 48, height: height || 48 };
+
+// Get the class image from the imported assets
+// Try the "1" prefix first (as used in the template), then fallback
+const imageKey1 = `1${className}.jpg`;
+const imageKey2 = `${className}.jpg`;
+const imageSrc =
+  classImageMap[imageKey1] || classImageMap[imageKey2] || classImageMap['1Warrior.jpg'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={dimensions.width}
+  height={dimensions.height}
+  class={classNameProp}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

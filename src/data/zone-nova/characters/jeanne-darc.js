@@ -1,9 +1,9 @@
-// Jeanne d'Arc Character Data - Zone Nova
+// Jeanne D Arc Character Data - Zone Nova
 // Based on ZoneNovaCharacterTemplate.js
 
 export const jeanneDArcData = {
   // Basic Character Information
-  name: "Jeanne d'Arc",
+  name: 'Jeanne D Arc',
   chineseName: '贞德',
   image: 'JoanofArc', // Use format: charactername (e.g., 'JoanofArc')
   rarity: 'SSR', // SSR, SR, R
@@ -108,7 +108,7 @@ export const jeanneDArcData = {
   tags: ['Range', 'Healing', 'Revival', 'Reduced Damage', 'Continuously Heals'],
 };
 
-// SEO data for Jeanne d'Arc
+// SEO data for Jeanne D Arc
 export const jeanneDArcSEO = {
   title: `${jeanneDArcData.name} (${jeanneDArcData.chineseName}) - Zone Nova Character Guide`,
   description: `Complete guide for ${jeanneDArcData.name}, a ${jeanneDArcData.rarity} ${jeanneDArcData.element} ${jeanneDArcData.class} in Zone Nova. Includes skills, awakenings, builds, and team compositions.`,
@@ -117,7 +117,7 @@ export const jeanneDArcSEO = {
 // Export legacy structure for character registry compatibility
 export const jeanneDArc = {
   id: 'jeanne-darc',
-  name: "Jeanne d'Arc",
+  name: 'Jeanne D Arc',
   chineseName: '贞德',
   rarity: 'SSR',
   element: 'Wind',

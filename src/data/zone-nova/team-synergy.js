@@ -31,7 +31,7 @@ export const ZONE_NOVA_TEAMS = [
     characters: [
       { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
       { name: 'Apollo', image: '/images/games/zone-nova/characters/Apollo.jpg' },
-      { name: "Jeanne d'Arc", image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
+      { name: 'Jeanne D Arc', image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
       { name: 'Leviathan', image: '/images/games/zone-nova/characters/Leviathan.jpg' },
     ],
     notes:

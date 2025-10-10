@@ -1,7 +1,11 @@
 ---
 import CharacterComparisonV2Layout from '../../../layouts/zone-nova/CharacterComparisonV2Layout.astro';
-import CharacterComparisonV2Logic from '../../../components/zone-nova/CharacterComparisonV2Logic.astro';
-import { Image } from 'astro:assets';
+import {
+  CharacterComparisonV2Logic,
+  CharacterIconV2,
+  CharacterComparisonV2Card,
+  ModalCharacterCardV2,
+} from '../../../components/zone-nova/comparison-v2/index.astro';
 import { ZONE_NOVA_CHARACTERS } from '../../../data/zone-nova/characters.js';
 
 // Security: Sanitize character data to prevent XSS
@@ -29,11 +33,13 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
   originalName: char.name || '', // Keep original for tier lookups
   displayName: escapeHtml(char.name || ''), // Escaped version for display
   slug: char.slug?.replace(/[^a-zA-Z0-9-_]/g, '') || '',
-  role: char.role || '', // These are from controlled sources, no need to escape
-  class: char.class || '',
-  rarity: char.rarity || '',
-  element: char.element || '',
-  faction: char.faction || '', // Don't escape faction to preserve spaces for filtering
+  role: (char.role as 'Tank' | 'DPS' | 'Buffer' | 'Debuffer' | 'Healer') || 'DPS', // These are from controlled sources, no need to escape
+  class:
+    (char.class as 'Guardian' | 'Warrior' | 'Rogue' | 'Mage' | 'Buffer' | 'Debuffer' | 'Healer') ||
+    'Warrior',
+  rarity: (char.rarity as 'SSR' | 'SR' | 'R') || 'R',
+  element: (char.element as 'Fire' | 'Wind' | 'Holy' | 'Chaos' | 'Ice') || 'Fire',
+  faction: char.faction || 'Unaffiliated', // Don't escape faction to preserve spaces for filtering
   image: isValidImageUrl(char.image || '') ? char.image : '/images/placeholder.png',
 }));
 ---
@@ -50,21 +56,6 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
       <div class="seo-keywords" style="display: none;">
         Zone Nova character comparison, hero stats comparison, tier list rankings, PvE PvP analysis,
         team building guide, character skills breakdown, combat stats analysis, gacha game strategy
-      </div>
-
-      <!-- Usage Tips -->
-      <div class="usage-tips">
-        <h3>How to Use</h3>
-        <ul>
-          <li>
-            <strong>Desktop:</strong> Click character icons to select up to 2 heroes for comparison
-          </li>
-          <li><strong>Mobile:</strong> Tap character selection buttons to open modal picker</li>
-          <li>
-            Use filters to find specific characters by role, class, rarity, element, or faction
-          </li>
-          <li>Compare stats, tier rankings, and skills in the comparison cards below</li>
-        </ul>
       </div>
     </div>
 
@@ -135,7 +126,7 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
               </div>
               <div class="button-group">
                 <button class="reset-filters-btn" id="v2-reset-filters">Reset</button>
-                <button class="clear-all-btn" id="v2-clear-all">Clear All</button>
+                <button class="clear-all-btn" id="v2-clear-all">Clear all selection</button>
               </div>
             </div>
           </div>
@@ -147,35 +138,7 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
             <!-- Character Icons Strip (Desktop) -->
             <div class="character-icons-strip desktop-only">
               <div class="character-icons-container" id="v2-character-icons">
-                {
-                  sanitizedCharacters.map(character => (
-                    <div
-                      class="character-icon"
-                      data-character-slug={character.slug}
-                      data-role={character.role}
-                      data-class={character.class}
-                      data-rarity={character.rarity}
-                      data-element={character.element}
-                      data-faction={character.faction}
-                      title={`${character.originalName} (${character.rarity} ${character.element} ${character.class})`}
-                      role="button"
-                      tabindex="0"
-                      aria-label={`Select ${character.originalName}, ${character.rarity} ${character.element} ${character.class}`}
-                    >
-                      <Image
-                        src={character.image}
-                        alt={character.originalName}
-                        class="character-icon-img"
-                        width={60}
-                        height={80}
-                        loading="lazy"
-                        format="webp"
-                        quality={85}
-                      />
-                      <span class="character-icon-name" set:html={character.displayName} />
-                    </div>
-                  ))
-                }
+                {sanitizedCharacters.map(character => <CharacterIconV2 character={character} />)}
               </div>
             </div>
 
@@ -229,7 +192,12 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
         <!-- Comparison Cards Container -->
         <div class="comparison-cards-container hidden" id="v2-comparison-container">
           <div class="comparison-cards-grid" id="v2-cards-grid">
-            <!-- Character cards will be dynamically inserted here -->
+            <!-- Pre-render all character cards (hidden by default) -->
+            {
+              sanitizedCharacters.map(character => (
+                <CharacterComparisonV2Card character={character} />
+              ))
+            }
           </div>
         </div>
       </div>
@@ -261,36 +229,7 @@ const sanitizedCharacters = ZONE_NOVA_CHARACTERS.map(char => ({
         </div>
 
         <div class="modal-character-grid" id="v2-modal-character-grid">
-          {
-            sanitizedCharacters.map(character => (
-              <div
-                class="modal-character-card"
-                data-character-slug={character.slug}
-                data-role={character.role}
-                data-class={character.class}
-                data-rarity={character.rarity}
-                data-element={character.element}
-                data-faction={character.faction}
-                role="button"
-                tabindex="0"
-                aria-label={`Select ${character.originalName}, ${character.rarity} ${character.element} ${character.class}`}
-              >
-                <Image
-                  src={character.image}
-                  alt={character.originalName}
-                  class="modal-character-image"
-                  width={80}
-                  height={80}
-                  loading="lazy"
-                  format="webp"
-                  quality={85}
-                />
-                <div class="modal-character-info">
-                  <span class="modal-character-name" set:html={character.displayName} />
-                </div>
-              </div>
-            ))
-          }
+          {sanitizedCharacters.map(character => <ModalCharacterCardV2 character={character} />)}
         </div>
       </div>
     </div>

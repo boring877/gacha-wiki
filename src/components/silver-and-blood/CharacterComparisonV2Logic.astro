@@ -1,7 +1,6 @@
 ---
 // Import centralized Silver and Blood data component
 import {
-  characters,
   sanitizedCharacters,
   classes,
   factions,
@@ -275,7 +274,7 @@ import {
       .filter(slug => POPULAR_CHARACTERS.includes(slug))
       .slice(0, PERFORMANCE_CONFIG.PRELOAD_POPULAR_COUNT);
 
-    const preloadPromises = availableCharacters.map(slug => {
+    availableCharacters.forEach(slug => {
       try {
         if (!characterDataMap.has(slug)) {
           loadCharacterData(slug);

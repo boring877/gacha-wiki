@@ -1,0 +1,123 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  character: {
+    id: number;
+    name: string;
+    slug: string;
+    image: string;
+    rarity: 'SSR' | 'SR' | 'R';
+    element: 'Fire' | 'Wind' | 'Holy' | 'Chaos' | 'Ice';
+    class: 'Guardian' | 'Warrior' | 'Rogue' | 'Mage' | 'Buffer' | 'Debuffer' | 'Healer';
+    role: 'Tank' | 'DPS' | 'Buffer' | 'Debuffer' | 'Healer';
+    faction: string;
+    stats?: {
+      hp: number;
+      attack: number;
+      defense: number;
+      energyRecovery: number;
+      critRate: number;
+      critDmg: number;
+    };
+  };
+  isSelected?: boolean;
+}
+
+const { character, isSelected = false } = Astro.props;
+
+// Format stats for display
+const formatStat = (value: number | undefined, suffix = ''): string => {
+  if (value === undefined) return 'N/A';
+  return typeof value === 'string' ? value : value.toLocaleString() + suffix;
+};
+
+// Convert faction name to CSS class name
+const getFactionClassName = (faction: string): string => {
+  return faction.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '-');
+};
+
+// Faction abbreviation mapping for display
+const getFactionAbbreviation = (faction: string): string => {
+  const abbreviations = {
+    'Monochrome Nation': 'Mono Nation',
+    'Pingjing City': 'Pingjing',
+    'Bicta Tower': 'Bicta',
+  };
+  return abbreviations[faction] || faction;
+};
+---
+
+<button
+  class="character-select-card"
+  data-character-slug={character.slug}
+  data-character-id={character.id}
+  data-selected={isSelected}
+  data-rarity={character.rarity}
+  data-element={character.element}
+  data-class={character.class}
+  data-role={character.role}
+  data-faction={character.faction}
+  data-hp={character.stats?.hp || 0}
+  data-attack={character.stats?.attack || 0}
+  data-defense={character.stats?.defense || 0}
+  data-energy-recovery={character.stats?.energyRecovery || 0}
+  data-crit-rate={character.stats?.critRate || 0}
+  data-crit-dmg={character.stats?.critDmg || 0}
+>
+  <div class="character-portrait-container">
+    <Image
+      src={character.image}
+      alt={character.name}
+      width={80}
+      height={80}
+      format="webp"
+      quality={85}
+      loading="lazy"
+      class="character-portrait"
+      densities={[1, 2]}
+    />
+    <div class="portrait-glow"></div>
+  </div>
+
+  <div class="character-info">
+    <h3 class="character-name">{character.name}</h3>
+
+    <div class="character-badges">
+      <span class={`rarity-badge ${character.rarity.toLowerCase()}`}>{character.rarity}</span>
+      <span class={`class-badge ${character.class.toLowerCase().replace(' ', '-')}`}>
+        {character.class}
+      </span>
+      <span class={`element-badge ${character.element.toLowerCase()}`}>
+        {character.element}
+      </span>
+      <span class={`role-badge ${character.role.toLowerCase()}`}>{character.role}</span>
+      <span class={`faction-badge ${getFactionClassName(character.faction)}`}>
+        {getFactionAbbreviation(character.faction)}
+      </span>
+    </div>
+
+    <div class="character-stats">
+      <div class="stat-item">
+        <span class="stat-label">HP</span>
+        <span class="stat-value">{formatStat(character.stats?.hp)}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">ATK</span>
+        <span class="stat-value">{formatStat(character.stats?.attack)}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">DEF</span>
+        <span class="stat-value">{formatStat(character.stats?.defense)}</span>
+      </div>
+      {
+        character.stats?.critRate !== undefined && (
+          <div class="stat-item crit-rate">
+            <span class="stat-label">CRIT</span>
+            <span class="stat-value">{formatStat(character.stats.critRate, '%')}</span>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</button>

@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all Zone Nova memory images once
+import AfroditeCardImg from '../../assets/images/games/zone-nova/memories/Afroditecard.jpg';
+import AnubisCardImg from '../../assets/images/games/zone-nova/memories/Anubiscard.jpg';
+import ApolloCardImg from '../../assets/images/games/zone-nova/memories/Apollocard.jpg';
+import ArtemisCardImg from '../../assets/images/games/zone-nova/memories/Artemiscard.jpg';
+import ArthurCardImg from '../../assets/images/games/zone-nova/memories/Arthurcard.jpg';
+import AthenaCardImg from '../../assets/images/games/zone-nova/memories/Athenacard.jpg';
+import BastetCardImg from '../../assets/images/games/zone-nova/memories/Bastetcard.jpg';
+import BelphegarCardImg from '../../assets/images/games/zone-nova/memories/Belphegarcard.jpg';
+import ChiyaCardImg from '../../assets/images/games/zone-nova/memories/Chiyacard.jpg';
+import CleopatraCardImg from '../../assets/images/games/zone-nova/memories/Cleopatracard.jpg';
+import FreyaCardImg from '../../assets/images/games/zone-nova/memories/Freyacard.jpg';
+import FreyeCardImg from '../../assets/images/games/zone-nova/memories/Freyecard.jpg';
+import GaiaCardImg from '../../assets/images/games/zone-nova/memories/Gaiacard.jpg';
+import GreedMammonCardImg from '../../assets/images/games/zone-nova/memories/Greed-Mammon-card.jpg';
+import GuinevereCardImg from '../../assets/images/games/zone-nova/memories/Guinevere-card.jpg';
+import HelaCardImg from '../../assets/images/games/zone-nova/memories/Helacard.jpg';
+import HeraCardImg from '../../assets/images/games/zone-nova/memories/Heracard.jpg';
+import HorusCardImg from '../../assets/images/games/zone-nova/memories/Horuscard.jpg';
+import JoanofArcCardImg from '../../assets/images/games/zone-nova/memories/JoanofArccard.jpg';
+import KelaCardImg from '../../assets/images/games/zone-nova/memories/kelacard.jpg';
+import LancelotCardImg from '../../assets/images/games/zone-nova/memories/Lancelotcard.jpg';
+import LaviniaCardImg from '../../assets/images/games/zone-nova/memories/Laviniacard.jpg';
+import LeviathanCardImg from '../../assets/images/games/zone-nova/memories/Leviathancard.jpg';
+import LokiCardImg from '../../assets/images/games/zone-nova/memories/Lokicard.jpg';
+import LyraCardImg from '../../assets/images/games/zone-nova/memories/Lyracard.jpg';
+import MerlinCardImg from '../../assets/images/games/zone-nova/memories/Merlincard.jpg';
+import MordredCardImg from '../../assets/images/games/zone-nova/memories/mordredcard.jpg';
+import NaiyaCardImg from '../../assets/images/games/zone-nova/memories/naiyacard.jpg';
+import NiniCardImg from '../../assets/images/games/zone-nova/memories/ninicard.jpg';
+import OdinCardImg from '../../assets/images/games/zone-nova/memories/Odincard.jpg';
+import PennyCardImg from '../../assets/images/games/zone-nova/memories/pennycard.jpg';
+import RoseCardImg from '../../assets/images/games/zone-nova/memories/Rosecard.jpg';
+import ShannaCardImg from '../../assets/images/games/zone-nova/memories/Shannacard.jpg';
+import ShuCardImg from '../../assets/images/games/zone-nova/memories/shucard.jpg';
+import SnowCardImg from '../../assets/images/games/zone-nova/memories/Snowcard.jpg';
+import TefnutCardImg from '../../assets/images/games/zone-nova/memories/Tefnutcard.jpg';
+import YuiCardImg from '../../assets/images/games/zone-nova/memories/Yuiscard.jpg';
+
+// Centralized memory image mapping
+const memoryImageMap = {
+  'Afroditecard.jpg': AfroditeCardImg,
+  'Anubiscard.jpg': AnubisCardImg,
+  'Apollocard.jpg': ApolloCardImg,
+  'Artemiscard.jpg': ArtemisCardImg,
+  'Arthurcard.jpg': ArthurCardImg,
+  'Athenacard.jpg': AthenaCardImg,
+  'Bastetcard.jpg': BastetCardImg,
+  'Belphegarcard.jpg': BelphegarCardImg,
+  'Chiyacard.jpg': ChiyaCardImg,
+  'Cleopatracard.jpg': CleopatraCardImg,
+  'Freyacard.jpg': FreyaCardImg,
+  'Freyecard.jpg': FreyeCardImg,
+  'Gaiacard.jpg': GaiaCardImg,
+  'Greed-Mammon-card.jpg': GreedMammonCardImg,
+  'Guinevere-card.jpg': GuinevereCardImg,
+  'Helacard.jpg': HelaCardImg,
+  'Heracard.jpg': HeraCardImg,
+  'Horuscard.jpg': HorusCardImg,
+  'JoanofArccard.jpg': JoanofArcCardImg,
+  'kelacard.jpg': KelaCardImg,
+  'Lancelotcard.jpg': LancelotCardImg,
+  'Laviniacard.jpg': LaviniaCardImg,
+  'Leviathancard.jpg': LeviathanCardImg,
+  'Lokicard.jpg': LokiCardImg,
+  'Lyracard.jpg': LyraCardImg,
+  'Merlincard.jpg': MerlinCardImg,
+  'mordredcard.jpg': MordredCardImg,
+  'naiyacard.jpg': NaiyaCardImg,
+  'ninicard.jpg': NiniCardImg,
+  'Odincard.jpg': OdinCardImg,
+  'pennycard.jpg': PennyCardImg,
+  'Rosecard.jpg': RoseCardImg,
+  'Shannacard.jpg': ShannaCardImg,
+  'shucard.jpg': ShuCardImg,
+  'Snowcard.jpg': SnowCardImg,
+  'Tefnutcard.jpg': TefnutCardImg,
+  'Yuiscard.jpg': YuiCardImg,
+};
+
+interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'avif' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 200,
+  height = 300,
+  class: className = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Get the memory image from the imported assets
+// Handle both with and without extension
+let imageKey = imageName;
+if (!imageKey.includes('.')) {
+  imageKey = `${imageKey}.jpg`;
+}
+const imageSrc = memoryImageMap[imageKey] || memoryImageMap['Afroditecard.jpg'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

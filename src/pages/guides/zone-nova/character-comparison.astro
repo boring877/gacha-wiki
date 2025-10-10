@@ -1,8 +1,9 @@
 ---
 import CharacterComparisonLayout from '../../../layouts/zone-nova/CharacterComparisonLayout.astro';
 import CharacterComparisonLogic from '../../../components/zone-nova/CharacterComparisonLogic.astro';
-import { Image } from 'astro:assets';
+import CharacterCardComparison from '../../../components/zone-nova/CharacterCardComparison.astro';
 import { ZONE_NOVA_CHARACTERS } from '../../../data/zone-nova/characters.js';
+import { ZONE_NOVA_FACTIONS } from '../../../data/zone-nova/factions.js';
 
 // Define the character interface based on actual data structure
 interface ZoneNovaCharacter {
@@ -108,15 +109,11 @@ declare global {
             </select>
             <select class="filter-select" id="faction-filter">
               <option value="">Faction</option>
-              <option value="Unaffiliated">Unaffiliated</option>
-              <option value="Sapphire">Sapphire</option>
-              <option value="Chemic">Chemic</option>
-              <option value="Avalon">Avalon</option>
-              <option value="Odius">Odius</option>
-              <option value="A.S.A">A.S.A</option>
-              <option value="Pingjing City">Pingjing City</option>
-              <option value="Monochrome Nation">Monochrome Nation</option>
-              <option value="BICTA Tower">BICTA Tower</option>
+              {
+                Object.keys(ZONE_NOVA_FACTIONS).map(faction => (
+                  <option value={faction}>{faction}</option>
+                ))
+              }
             </select>
           </div>
 
@@ -130,70 +127,11 @@ declare global {
           </div>
         </div>
 
-        <!-- Character Grid -->
+        <!-- Character Grid - Pre-rendered with Astro Image optimization -->
         <div class="character-grid" id="character-grid">
           {
             ZONE_NOVA_CHARACTERS.map((char: any) => (
-              <button
-                class="character-select-card"
-                data-character-slug={char.slug}
-                data-selected="false"
-              >
-                <Image
-                  src={char.image}
-                  alt={char.name}
-                  class="character-portrait"
-                  width={80}
-                  height={80}
-                  loading="lazy"
-                  format="webp"
-                  quality={85}
-                />
-                <div class="character-info">
-                  <h3>{char.name}</h3>
-                  <div class="character-badges">
-                    <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
-                    <span class={`class-badge ${char.class.toLowerCase().replace(' ', '-')}`}>
-                      {char.class}
-                    </span>
-                    <span class={`element-badge ${char.element.toLowerCase()}`}>
-                      {char.element}
-                    </span>
-                    <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
-                    <span class={`faction-badge ${char.faction.toLowerCase().replace(' ', '-')}`}>
-                      {char.faction}
-                    </span>
-                  </div>
-
-                  {/* Character stats display from rankings */}
-                  <div class="character-stats">
-                    <div class="stat-item">
-                      <span class="stat-label">HP</span>
-                      <span class="stat-value">
-                        {char.stats?.hp ? char.stats.hp.toLocaleString() : 'N/A'}
-                      </span>
-                    </div>
-                    <div class="stat-item">
-                      <span class="stat-label">ATK</span>
-                      <span class="stat-value">
-                        {char.stats?.attack ? char.stats.attack.toLocaleString() : 'N/A'}
-                      </span>
-                    </div>
-                    <div class="stat-item">
-                      <span class="stat-label">DEF</span>
-                      <span class="stat-value">
-                        {char.stats?.defense ? char.stats.defense.toLocaleString() : 'N/A'}
-                      </span>
-                    </div>
-                    <div class="stat-item crit-rate">
-                      <span class="stat-label">CRIT</span>
-                      <span class="stat-value">
-                        {char.stats?.critRate ? char.stats.critRate + '%' : 'N/A'}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </button>
+              <CharacterCardComparison character={char} isSelected={false} />
             ))
           }
         </div>
@@ -204,7 +142,12 @@ declare global {
         <h2>Character Comparison</h2>
 
         <div class="comparison-controls">
-          <button class="clear-btn" id="clear-comparison">Clear Comparison</button>
+          <button
+            class="clear-btn"
+            id="clear-comparison"
+            onclick="if(window.zoneNovaCharacterComparison) window.zoneNovaCharacterComparison.clearComparison();"
+            >Clear Comparison</button
+          >
         </div>
 
         <div class="comparison-table-wrapper">
@@ -408,6 +351,14 @@ declare global {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Mobile Character Cards View -->
+      <div class="character-cards-view" id="character-cards-view">
+        <h3 class="cards-section-title">Character Comparison</h3>
+        <div id="mobile-comparison-cards">
+          <!-- Mobile character cards will be dynamically inserted here -->
         </div>
       </div>
     </div>

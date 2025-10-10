@@ -1,6 +1,9 @@
 ---
 import DamageMechanicsPageLayout from '../../../../layouts/zone-nova/DamageMechanicsPageLayout.astro';
+import { DamageCalculatorSvelte } from '../../../../components/zone-nova/damage-mechanics/index.astro';
 import { GAMES } from '../../../../consts';
+
+export const prerender = true;
 ---
 
 <DamageMechanicsPageLayout
@@ -8,240 +11,145 @@ import { GAMES } from '../../../../consts';
   description="Complete guide to Zone Nova's damage calculation system, defense mechanics, and damage reduction formulas"
   gameTitle="Core Damage Formulas"
 >
-  <section class="content-section">
-    <h2>Damage Calculator</h2>
-    <p>Use this calculator to test the Zone Nova damage formula with your own values:</p>
+  <div class="gaia-mechanics-main-container">
+    <section class="zn-cf-content-section">
+      <DamageCalculatorSvelte
+        title="Damage Calculator"
+        description="Use this calculator to test the Zone Nova damage formula with your own values:"
+        showFormula={false}
+        client:load
+      />
+    </section>
 
-    <div class="calculator">
-      <div class="input-group">
-        <label for="attack">Enemy Attack:</label>
-        <input type="number" id="attack" value="1000" min="1" oninput="calculateDamage()" />
+    <section class="zn-cf-content-section">
+      <h2>Zone Nova Defense Equation</h2>
+
+      <div class="zn-cf-formula-box">
+        <p>
+          <strong>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)</strong>
+        </p>
       </div>
 
-      <div class="input-group">
-        <label for="defense">Your Defense:</label>
-        <input
-          type="number"
-          id="defense"
-          value={GAMES.ZONE_NOVA.DAMAGE_K_VALUE}
-          min="0"
-          step="0.01"
-          oninput="calculateDamage()"
-        />
-      </div>
-
-      <div class="input-group">
-        <label for="damageReduction">Damage Reduction (%):</label>
-        <input
-          type="number"
-          id="damageReduction"
-          value="0"
-          min="0"
-          max="100"
-          oninput="calculateDamage()"
-        />
-      </div>
-
-      <div class="result" id="result">
-        <h3>Results:</h3>
-        <p id="finalDamage">Final Damage: 0</p>
-        <p id="percentage">Percentage of Attack: 0%</p>
-        <p id="calculation">Calculation: Enter values to see the math</p>
-      </div>
-    </div>
-
-    <hr />
-
-    <h2>Zone Nova defense equation</h2>
-
-    <div class="formula-box">
-      <p><strong>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)</strong></p>
-    </div>
-
-    <p>
-      <em
-        >Based on community research from <a
+      <p>
+        Based on community research from <a
           href="https://www.gamekee.com/jyzj/662393.html"
           target="_blank">GameKee.com</a
-        ></em
-      >
-    </p>
+        >
+      </p>
 
-    <hr />
+      <div class="zn-cf-divider"></div>
 
-    <p><strong>Attack</strong>: Is the enemy's attack power</p>
-    <p><strong>Defense</strong>: Is your defense stat</p>
-    <p>
-      <strong>K = Coefficient</strong>: Is a constant number set to {
-        GAMES.ZONE_NOVA.DAMAGE_K_VALUE
-      }. It controls how defense works. When your defense equals the Coefficient ({
-        GAMES.ZONE_NOVA.DAMAGE_K_VALUE
-      }), you take about 50% damage. Higher defense gives diminishing returns.
-    </p>
-    <p>
-      <strong>Damage Reduction (%)</strong>: Damage Reduction Calculated last After getting the
-      difference between atk and def, which make it quite powerful against bosses !
-    </p>
+      <p><strong>Attack</strong>: The enemy's attack power</p>
+      <p><strong>Defense</strong>: Your defense stat</p>
+      <p>
+        <strong>K = Coefficient</strong>: A constant set to {GAMES.ZONE_NOVA.DAMAGE_K_VALUE}. It
+        controls how defense works. When your defense equals the coefficient ({
+          GAMES.ZONE_NOVA.DAMAGE_K_VALUE
+        }), you take about 50% damage. Higher defense gives diminishing returns.
+      </p>
+      <p>
+        <strong>Damage Reduction (%)</strong>: Damage reduction calculated after getting the
+        difference between attack and defense, making it powerful against bosses.
+      </p>
 
-    <hr />
+      <div class="zn-cf-divider"></div>
 
-    <h2>How (K={GAMES.ZONE_NOVA.DAMAGE_K_VALUE}) Coefficient Works</h2>
-    <p>Using simplified example (Enemy Attack: 1000, Your Damage Reduction: 0%):</p>
+      <h2>How (K={GAMES.ZONE_NOVA.DAMAGE_K_VALUE}) Coefficient Works</h2>
+      <p>Using simplified example (Enemy Attack: 1000, Your Damage Reduction: 0%):</p>
 
-    <h3>Defense = 500 (Lower than Coefficient)</h3>
-    <div class="calculation-box">
-      <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
+      <h3>Defense = 500 (Lower than Coefficient)</h3>
+      <div class="zn-cf-calculation-box">
+        <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
 Final Damage = (1000 × {GAMES.ZONE_NOVA.DAMAGE_K_VALUE}) / (500 + {GAMES.ZONE_NOVA.DAMAGE_K_VALUE}) × (1 - 0)
 Final Damage = {(1000 * GAMES.ZONE_NOVA.DAMAGE_K_VALUE).toLocaleString()} / {(500 + GAMES.ZONE_NOVA.DAMAGE_K_VALUE).toFixed(2)} = {((1000 * GAMES.ZONE_NOVA.DAMAGE_K_VALUE) / (500 + GAMES.ZONE_NOVA.DAMAGE_K_VALUE)).toFixed(1)}</pre>
-    </div>
-    <p><strong>You take 66.07% of the enemy's attack</strong></p>
+      </div>
+      <p><strong>You take 66.07% of the enemy's attack</strong></p>
 
-    <h3>Defense = {GAMES.ZONE_NOVA.DAMAGE_K_VALUE} (Equal to Coefficient)</h3>
-    <div class="calculation-box">
-      <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
+      <h3>Defense = {GAMES.ZONE_NOVA.DAMAGE_K_VALUE} (Equal to Coefficient)</h3>
+      <div class="zn-cf-calculation-box">
+        <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
 Final Damage = (1000 × 972.95) / (972.95 + 972.95) × (1 - 0)
 Final Damage = 972,950 / 1,945.9 = 500.0</pre>
-    </div>
-    <p><strong>You take 50.0% of the enemy's attack</strong></p>
+      </div>
+      <p><strong>You take 50.0% of the enemy's attack</strong></p>
 
-    <h3>Defense = 2000 (Higher than Coefficient)</h3>
-    <div class="calculation-box">
-      <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
+      <h3>Defense = 2000 (Higher than Coefficient)</h3>
+      <div class="zn-cf-calculation-box">
+        <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
 Final Damage = (1000 × 972.95) / (2000 + 972.95) × (1 - 0)
 Final Damage = 972,950 / 2,972.95 = 327.2</pre>
-    </div>
-    <p><strong>You take 32.72% of the enemy's attack</strong></p>
+      </div>
+      <p><strong>You take 32.72% of the enemy's attack</strong></p>
 
-    <h3>Defense = 4000 (Much Higher than Coefficient)</h3>
-    <div class="calculation-box">
-      <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
+      <h3>Defense = 4000 (Much Higher than Coefficient)</h3>
+      <div class="zn-cf-calculation-box">
+        <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
 Final Damage = (1000 × 972.95) / (4000 + 972.95) × (1 - 0)
 Final Damage = 972,950 / 4,972.95 = 195.6</pre>
-    </div>
-    <p><strong>You take 19.56% of the enemy's attack</strong></p>
+      </div>
+      <p><strong>You take 19.56% of the enemy's attack</strong></p>
 
-    <h3>Defense = 6000 (Very High Defense)</h3>
-    <div class="calculation-box">
-      <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
+      <h3>Defense = 6000 (Very High Defense)</h3>
+      <div class="zn-cf-calculation-box">
+        <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
 Final Damage = (1000 × 972.95) / (6000 + 972.95) × (1 - 0)
 Final Damage = 972,950 / 6,972.95 = 139.5</pre>
-    </div>
-    <p><strong>You take 13.95% of the enemy's attack</strong></p>
+      </div>
+      <p><strong>You take 13.95% of the enemy's attack</strong></p>
 
-    <p>
-      <strong>Key Point</strong>: The coefficient ({GAMES.ZONE_NOVA.DAMAGE_K_VALUE}) is the middle
-      point where you take exactly 50% damage. Notice how the damage percentage drops quickly at
-      first, then more slowly at higher defense values.
-    </p>
+      <p class="zn-cf-key-point">
+        <strong>Key Point</strong>: The coefficient ({GAMES.ZONE_NOVA.DAMAGE_K_VALUE}) is the middle
+        point where you take exactly 50% damage. Notice how the damage percentage drops quickly at
+        first, then more slowly at higher defense values.
+      </p>
 
-    <hr />
+      <div class="zn-cf-divider"></div>
 
-    <h2>How Damage Reduction (%) Works:</h2>
-    <p>
-      Using Defense = {GAMES.ZONE_NOVA.DAMAGE_K_VALUE} (the coefficient) and Enemy Attack = 1000 to show
-      how powerful damage reduction is:
-    </p>
+      <h2>How Damage Reduction (%) Works:</h2>
+      <p>
+        Using Defense = {GAMES.ZONE_NOVA.DAMAGE_K_VALUE} (the coefficient) and Enemy Attack = 1000 to
+        show how powerful damage reduction is:
+      </p>
 
-    <h3>0% Damage Reduction</h3>
-    <div class="calculation-box">
-      <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
+      <h3>0% Damage Reduction</h3>
+      <div class="zn-cf-calculation-box">
+        <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
 Final Damage = (1000 × 972.95) / (972.95 + 972.95) × (1 - 0%)
 Final Damage = 972,950 / 1,945.9 × 1.0 = 500.0</pre>
-    </div>
-    <p><strong>You take 500.0 damage (50.0% of enemy attack)</strong></p>
+      </div>
+      <p><strong>You take 500.0 damage (50.0% of enemy attack)</strong></p>
 
-    <h3>25% Damage Reduction</h3>
-    <div class="calculation-box">
-      <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
+      <h3>25% Damage Reduction</h3>
+      <div class="zn-cf-calculation-box">
+        <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
 Final Damage = (1000 × 972.95) / (972.95 + 972.95) × (1 - 25%)
 Final Damage = 972,950 / 1,945.9 × 0.75 = 375.0</pre>
-    </div>
-    <p><strong>You take 375.0 damage (37.5% of enemy attack)</strong></p>
+      </div>
+      <p><strong>You take 375.0 damage (37.5% of enemy attack)</strong></p>
 
-    <h3>50% Damage Reduction</h3>
-    <div class="calculation-box">
-      <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
+      <h3>50% Damage Reduction</h3>
+      <div class="zn-cf-calculation-box">
+        <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
 Final Damage = (1000 × 972.95) / (972.95 + 972.95) × (1 - 50%)
 Final Damage = 972,950 / 1,945.9 × 0.5 = 250.0</pre>
-    </div>
-    <p><strong>You take 250.0 damage (25.0% of enemy attack)</strong></p>
+      </div>
+      <p><strong>You take 250.0 damage (25.0% of enemy attack)</strong></p>
 
-    <h3>75% Damage Reduction</h3>
-    <div class="calculation-box">
-      <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
+      <h3>75% Damage Reduction</h3>
+      <div class="zn-cf-calculation-box">
+        <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
 Final Damage = (1000 × 972.95) / (972.95 + 972.95) × (1 - 75%)
 Final Damage = 972,950 / 1,945.9 × 0.25 = 125.0</pre>
-    </div>
-    <p><strong>You take 125.0 damage (12.5% of enemy attack)</strong></p>
+      </div>
+      <p><strong>You take 125.0 damage (12.5% of enemy attack)</strong></p>
 
-    <p>
-      <strong>Key Point</strong>: Damage Reduction% is applied as the final step and affects ALL
-      damage equally! Even small amounts of damage reduction can be more effective than massive
-      defense increases. 25% damage reduction saves you 125 damage, which would require going from {
-        GAMES.ZONE_NOVA.DAMAGE_K_VALUE
-      } defense to about 3900 defense to achieve the same result. Very effective against bosses!
-    </p>
-  </section>
+      <p class="zn-cf-key-point">
+        <strong>Key Point</strong>: Damage Reduction% is applied as the final step and affects ALL
+        damage equally! Even small amounts of damage reduction can be more effective than massive
+        defense increases. 25% damage reduction saves you 125 damage, which would require going from {
+          GAMES.ZONE_NOVA.DAMAGE_K_VALUE
+        } defense to about 3900 defense to achieve the same result. Very effective against bosses!
+      </p>
+    </section>
+  </div>
 </DamageMechanicsPageLayout>
-
-<script define:vars={{ kValue: GAMES.ZONE_NOVA.DAMAGE_K_VALUE }}>
-  // Make calculateDamage function global
-  window.calculateDamage = function () {
-    // Get elements with null checks
-    const attackElement = document.getElementById('attack');
-    const defenseElement = document.getElementById('defense');
-    const damageReductionElement = document.getElementById('damageReduction');
-    const finalDamageElement = document.getElementById('finalDamage');
-    const percentageElement = document.getElementById('percentage');
-    const calculationElement = document.getElementById('calculation');
-
-    // Check if all elements exist
-    if (
-      !attackElement ||
-      !defenseElement ||
-      !damageReductionElement ||
-      !finalDamageElement ||
-      !percentageElement ||
-      !calculationElement
-    ) {
-      console.error('Calculator elements not found');
-      return;
-    }
-
-    // Get input values
-    const attack = parseFloat(attackElement.value) || 0;
-    const defense = parseFloat(defenseElement.value) || 0;
-    const damageReduction = parseFloat(damageReductionElement.value) || 0;
-
-    // Validate inputs
-    if (attack <= 0) {
-      finalDamageElement.textContent = 'Final Damage: Please enter valid attack value';
-      percentageElement.textContent = 'Percentage of Attack: 0%';
-      calculationElement.textContent = 'Calculation: Invalid inputs';
-      return;
-    }
-
-    // Zone Nova formula: Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
-    const K = kValue; // From consts.ts
-    const baseDamage = (attack * K) / (defense + K);
-    const finalDamage = baseDamage * (1 - damageReduction / 100);
-    const percentage = (finalDamage / attack) * 100;
-
-    // Display results
-    finalDamageElement.textContent = `Final Damage: ${finalDamage.toFixed(2)}`;
-    percentageElement.textContent = `Percentage of Attack: ${percentage.toFixed(2)}%`;
-
-    // Show calculation with proper formatting
-    const step1 = `(${attack} × ${K}) / (${defense} + ${K})`;
-    const step2 = `${(attack * K).toFixed(0)} / ${(defense + K).toFixed(2)}`;
-    const step3 = `${baseDamage.toFixed(2)} × (1 - ${damageReduction}%)`;
-    const step4 = `${baseDamage.toFixed(2)} × ${(1 - damageReduction / 100).toFixed(2)}`;
-
-    calculationElement.textContent = `Calculation: ${step1} = ${step2} = ${baseDamage.toFixed(2)}, then ${step3} = ${step4} = ${finalDamage.toFixed(2)}`;
-  };
-
-  // Calculate on page load
-  document.addEventListener('DOMContentLoaded', function () {
-    window.calculateDamage();
-  });
-</script>

@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all Zone Nova node tree images once
+import Node1Img from '../../assets/images/games/zone-nova/nodetree/1.jpg';
+import Node2Img from '../../assets/images/games/zone-nova/nodetree/2.jpg';
+import Node3Img from '../../assets/images/games/zone-nova/nodetree/3.jpg';
+import FullTreeImg from '../../assets/images/games/zone-nova/nodetree/FullTree.jpg';
+import SkillsImg from '../../assets/images/games/zone-nova/nodetree/skills.jpg';
+
+// Centralized node tree image mapping
+const nodeTreeImageMap = {
+  '1.jpg': Node1Img,
+  '2.jpg': Node2Img,
+  '3.jpg': Node3Img,
+  'FullTree.jpg': FullTreeImg,
+  'skills.jpg': SkillsImg,
+};
+
+interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'avif' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 100,
+  height = 100,
+  class: className = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Get the node tree image from the imported assets
+// Handle both with and without extension
+let imageKey = imageName;
+if (!imageKey.includes('.')) {
+  imageKey = `${imageKey}.jpg`;
+}
+const imageSrc = nodeTreeImageMap[imageKey] || nodeTreeImageMap['FullTree.jpg'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

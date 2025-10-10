@@ -1,0 +1,1378 @@
+---
+// Import centralized Zone Nova data component
+import {
+  sanitizedCharacters,
+  roles,
+  classes,
+  elements,
+  factions,
+  rarities,
+  PVE_TIER_LIST,
+  PVP_TIER_LIST,
+  RIFT_TIER_LIST,
+  GUILD_RAID_TIER_LIST,
+  NEW_PLAYER_TIER_LIST,
+  rankings,
+  overallAnalysis,
+  CHARACTER_DATA_MAP,
+} from '../ZNCharacterData.astro';
+---
+
+<!-- Setup data BEFORE loading the script -->
+<script
+  define:vars={{
+    characterData: sanitizedCharacters,
+    pveTier: PVE_TIER_LIST,
+    pvpTier: PVP_TIER_LIST,
+    riftTier: RIFT_TIER_LIST,
+    guildTier: GUILD_RAID_TIER_LIST,
+    newPlayerTier: NEW_PLAYER_TIER_LIST,
+    rankingsData: rankings,
+    overallAnalysisData: overallAnalysis,
+    roles,
+    classes,
+    elements,
+    factions,
+    rarities,
+    characterDataMap: CHARACTER_DATA_MAP,
+  }}
+>
+  // Security: Freeze objects to prevent prototype pollution
+  // Make character data available to inline JS
+  window.ZN_COMPARISON_V2_DATA = Object.freeze({
+    characters: Object.freeze([...characterData]),
+    tierLists: Object.freeze({
+      pve: Object.freeze(pveTier),
+      pvp: Object.freeze(pvpTier),
+      rift: Object.freeze(riftTier),
+      guild: Object.freeze(guildTier),
+      newPlayer: Object.freeze(newPlayerTier),
+    }),
+    rankings: Object.freeze(rankingsData),
+    overallAnalysis: Object.freeze(overallAnalysisData),
+    filterOptions: Object.freeze({
+      roles: Object.freeze(roles),
+      classes: Object.freeze(classes),
+      elements: Object.freeze(elements),
+      factions: Object.freeze(factions),
+      rarities: Object.freeze(rarities),
+    }),
+    characterDataMap: Object.freeze(characterDataMap),
+  });
+</script>
+
+<!-- Load external JS AFTER data is set up -->
+<script type="module">
+  // Zone Nova Character Comparison V2 - Card-based System
+  // JavaScript logic for character selection, card management, and comparison functionality
+  // No animations or hover effects as requested
+  //
+  // Security: All user inputs are sanitized, no eval() usage, safe DOM manipulation
+
+  'use strict';
+
+  // Global state - using const where possible for immutability
+  const selectedCharacters = [];
+  let filteredCharacters = [];
+  const characterDataMap = new Map(); // Use Map for better performance
+  const MAX_CHARACTERS = 2;
+
+  // Constants for magic numbers
+  const SEARCH_DEBOUNCE_MS = 150;
+  const NOTIFICATION_DURATION_MS = 3000;
+  const FOCUS_DELAY_MS = 100;
+
+  // Store global functions in a namespace to avoid pollution
+  const ZNComparisonV2 = {
+    getCurrentMobileSlot: null,
+    closeMobileModal: null,
+    searchTimeout: null,
+    activeAbortControllers: new Set(),
+  };
+
+  // Cache DOM elements and event listeners to avoid repeated queries and memory leaks
+  const domCache = {
+    iconsContainer: null,
+    selectedCount: null,
+    emptyMessage: null,
+    comparisonContainer: null,
+    cardsGrid: null,
+    initialized: false,
+  };
+
+  // Track event listeners for cleanup
+  const cardEventListeners = new WeakMap();
+
+  /**
+   * Get character tiers from all tier lists
+   * @param {string} characterName - The character name to lookup
+   * @returns {Object} Object containing tier for each list type
+   */
+  function getCharacterTiers(characterName) {
+    // Input validation
+    if (!characterName || typeof characterName !== 'string') return {};
+    if (!window.ZN_COMPARISON_V2_DATA?.tierLists) return {};
+
+    const { tierLists } = window.ZN_COMPARISON_V2_DATA;
+    const result = {};
+
+    // Use for...of for better performance than Object.keys().forEach()
+    for (const [listKey, tierList] of Object.entries(tierLists)) {
+      if (!tierList?.tiers) continue;
+
+      let tier = 'Unranked';
+      // Break early when found for performance
+      for (const [tierKey, characters] of Object.entries(tierList.tiers)) {
+        if (Array.isArray(characters) && characters.some(char => char.name === characterName)) {
+          tier = tierKey;
+          break;
+        }
+      }
+      result[listKey] = tier;
+    }
+
+    return result;
+  }
+
+  /**
+   * Get character stat rankings
+   * @param {string|number} characterId - The character ID to lookup
+   * @returns {Object} Object containing rankings for each stat
+   */
+  function getCharacterRankings(characterId) {
+    // Input validation - handle both string and number IDs
+    if (!characterId && characterId !== 0) return {};
+    if (!window.ZN_COMPARISON_V2_DATA?.rankings) return {};
+
+    const { rankings } = window.ZN_COMPARISON_V2_DATA;
+    const result = {};
+    const STAT_TYPES = ['hp', 'attack', 'defense']; // Constant array
+
+    // Convert to string for object key lookup
+    const keyId = String(characterId);
+
+    for (const stat of STAT_TYPES) {
+      const rankValue = rankings[stat]?.[keyId];
+      result[stat] = rankValue !== undefined ? rankValue : 'N/A';
+    }
+
+    return result;
+  }
+
+  /**
+   * Initialize modal filters
+   */
+  function initializeModalFilters() {
+    // Add modal-specific filters if needed in the future
+  }
+
+  /**
+   * Load character data asynchronously
+   * @param {string} characterSlug - Character slug to load data for
+   */
+  function loadCharacterData(characterSlug) {
+    // Input validation
+    if (!characterSlug || typeof characterSlug !== 'string') {
+      // Invalid character slug provided to loadCharacterData
+      return;
+    }
+
+    if (characterDataMap.has(characterSlug)) return;
+
+    try {
+      // Security: Validate against known character slugs to prevent path traversal
+      const validSlugs = window.ZN_COMPARISON_V2_DATA?.characters?.map(char => char.slug) || [];
+      if (!validSlugs.includes(characterSlug)) {
+        throw new Error(`Invalid character slug: ${characterSlug}`);
+      }
+
+      // Get the character data from the global variable (passed from Astro)
+      let characterData = window.ZN_COMPARISON_V2_DATA?.characterDataMap?.[characterSlug];
+
+      // If data not found in characterDataMap, try to find it in characters array and build complete data
+      if (!characterData && window.ZN_COMPARISON_V2_DATA?.characters) {
+        const basicCharacter = window.ZN_COMPARISON_V2_DATA.characters.find(
+          char => char.slug === characterSlug
+        );
+        if (basicCharacter) {
+          // Build complete character data including team skills
+          characterData = {
+            ...basicCharacter,
+            // Include team skill from detailed data if available
+            teamSkill:
+              window.ZN_COMPARISON_V2_DATA?.characterDataMap?.[characterSlug]?.teamSkill || null,
+            // Include other detailed data
+            stats:
+              window.ZN_COMPARISON_V2_DATA?.characterDataMap?.[characterSlug]?.stats ||
+              basicCharacter.stats,
+            skills: window.ZN_COMPARISON_V2_DATA?.characterDataMap?.[characterSlug]?.skills || null,
+            // Include tags from basic character data
+            tags: basicCharacter.tags || [],
+          };
+        }
+      }
+
+      if (characterData && typeof characterData === 'object') {
+        characterDataMap.set(characterSlug, characterData);
+      } else {
+        // Set empty data if not found
+        characterDataMap.set(characterSlug, {});
+      }
+
+      // Re-render the comparison cards to show loaded data
+      renderComparisonCards();
+    } catch (_error) {
+      // Error loading character data - continuing with empty data
+      // Set empty data to stop loading state
+      characterDataMap.set(characterSlug, {});
+      renderComparisonCards();
+    }
+  }
+
+  /**
+   * Initialize modal character grid interactions
+   */
+  function initializeModalCharacterGrid() {
+    const grid = document.getElementById('v2-modal-character-grid');
+    if (!grid) return;
+
+    grid.addEventListener('click', event => {
+      const card = event.target.closest('.modal-character-card');
+      if (!card) return;
+
+      const characterSlug = card.dataset.characterSlug;
+      if (!characterSlug) return;
+
+      const currentSlot = ZNComparisonV2.getCurrentMobileSlot();
+      if (!currentSlot) return;
+
+      // Remove existing character in this slot
+      if (selectedCharacters[currentSlot - 1]) {
+        const oldIndex = selectedCharacters.indexOf(selectedCharacters[currentSlot - 1]);
+        if (oldIndex > -1) {
+          selectedCharacters.splice(oldIndex, 1);
+        }
+      }
+
+      // Add new character or remove if already selected
+      const existingIndex = selectedCharacters.indexOf(characterSlug);
+      if (existingIndex > -1) {
+        selectedCharacters.splice(existingIndex, 1);
+      } else {
+        selectedCharacters[currentSlot - 1] = characterSlug;
+        // Load character data for mobile selection to include team skills
+        loadCharacterData(characterSlug);
+      }
+
+      // Update displays and close modal
+      updateAllDisplays();
+      ZNComparisonV2.closeMobileModal();
+    });
+  }
+
+  /**
+   * Format rank value for display
+   * @param {any} rankValue - The rank value to format
+   * @returns {string} Formatted rank value
+   */
+  function formatRankValue(rankValue) {
+    if (rankValue === undefined || rankValue === null || rankValue === 'N/A') {
+      return 'N/A';
+    }
+
+    const numericRank = parseFloat(rankValue);
+    if (isNaN(numericRank)) {
+      return 'N/A';
+    }
+
+    return String(Math.round(numericRank));
+  }
+
+  // Initialize when DOM is loaded - using arrow function for consistency
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeComparisonV2();
+  });
+
+  /**
+   * Initialize the V2 comparison system
+   * @returns {void}
+   */
+  function initializeComparisonV2() {
+    try {
+      // Validate required data
+      if (!window.ZN_COMPARISON_V2_DATA?.characters) {
+        throw new Error('Character data not available');
+      }
+
+      // Validate additional data structures
+
+      // Initialize DOM cache
+      initializeDOMCache();
+
+      // Set up initial data - defensive copy
+      filteredCharacters = [...window.ZN_COMPARISON_V2_DATA.characters];
+
+      // Initialize event listeners
+      initializeFilters();
+      initializeDeckInteractions();
+      initializeMobileModal();
+      initializeArenaControls();
+      initializeKeyboardNavigation();
+
+      // Render initial state
+      updateIconStates();
+      updateSelectedCount();
+    } catch (_error) {
+      // Failed to initialize comparison V2
+      showErrorMessage('Failed to load character comparison. Please refresh the page.');
+    }
+  }
+
+  /**
+   * Initialize DOM element cache for performance
+   * @returns {void}
+   */
+  function initializeDOMCache() {
+    domCache.iconsContainer = document.getElementById('v2-character-icons');
+    domCache.selectedCount = document.getElementById('v2-selected-count');
+    domCache.emptyMessage = document.getElementById('v2-empty-message');
+    domCache.comparisonContainer = document.getElementById('v2-comparison-container');
+    domCache.cardsGrid = document.getElementById('v2-cards-grid');
+    domCache.initialized = true;
+  }
+
+  /**
+   * Show error message to user
+   * @param {string} message - Error message to display
+   * @returns {void}
+   */
+  function showErrorMessage(message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    errorDiv.setAttribute('role', 'alert');
+    errorDiv.setAttribute('aria-live', 'assertive');
+
+    const container = document.querySelector('.comparison-container') || document.body;
+    container.insertBefore(errorDiv, container.firstChild);
+
+    // Auto-remove after duration
+    setTimeout(() => {
+      if (errorDiv.parentNode) {
+        errorDiv.remove();
+      }
+    }, NOTIFICATION_DURATION_MS * 2);
+  }
+
+  /**
+   * Initialize filter event listeners
+   */
+  function initializeFilters() {
+    const roleFilter = document.getElementById('v2-role-filter');
+    const classFilter = document.getElementById('v2-class-filter');
+    const rarityFilter = document.getElementById('v2-rarity-filter');
+    const elementFilter = document.getElementById('v2-element-filter');
+    const factionFilter = document.getElementById('v2-faction-filter');
+    const resetBtn = document.getElementById('v2-reset-filters');
+
+    [roleFilter, classFilter, rarityFilter, elementFilter, factionFilter].forEach(filter => {
+      if (filter) {
+        filter.addEventListener('change', applyFilters);
+      }
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', resetFilters);
+    }
+  }
+
+  /**
+   * Initialize character icon interactions
+   * @returns {void}
+   */
+  function initializeDeckInteractions() {
+    const iconsContainer = domCache.iconsContainer || document.getElementById('v2-character-icons');
+    if (iconsContainer) {
+      iconsContainer.addEventListener('click', handleIconClick);
+    }
+  }
+
+  /**
+   * Initialize mobile modal interactions for character selection
+   */
+  function initializeMobileModal() {
+    const modal = document.getElementById('v2-mobile-modal');
+    const selectButton1 = document.getElementById('v2-mobile-select-1');
+    const selectButton2 = document.getElementById('v2-mobile-select-2');
+
+    // Track current slot being selected
+    let currentSelectionSlot = null;
+
+    // Initialize selection buttons
+    if (selectButton1) {
+      selectButton1.addEventListener('click', () => openMobileModal(1));
+    }
+    if (selectButton2) {
+      selectButton2.addEventListener('click', () => openMobileModal(2));
+    }
+
+    // Initialize modal controls
+    initializeModalControls(modal);
+    initializeModalSearch();
+    initializeModalFilters();
+    initializeModalCharacterGrid();
+
+    // Store current slot getter in namespace
+    ZNComparisonV2.getCurrentMobileSlot = () => currentSelectionSlot;
+
+    function openMobileModal(slotNumber) {
+      if (!modal) return;
+
+      currentSelectionSlot = slotNumber;
+      const modalTitle = document.getElementById('v2-modal-title');
+
+      if (modalTitle) {
+        modalTitle.textContent = `Select Character ${slotNumber}`;
+      }
+
+      // Reset search to show all characters
+      const searchInput = document.getElementById('v2-modal-search');
+      if (searchInput) {
+        searchInput.value = '';
+      }
+
+      // Update character grid - show all characters and update selection states
+      updateModalCharacterGrid('');
+      updateModalCharacterStates();
+
+      // Open modal
+      modal.classList.add('open');
+
+      document.body.style.overflow = 'hidden';
+
+      // Focus search input for better UX
+      if (searchInput) {
+        setTimeout(() => searchInput.focus(), FOCUS_DELAY_MS);
+      }
+    }
+
+    function closeModal() {
+      if (!modal) return;
+
+      modal.classList.remove('open');
+
+      document.body.style.overflow = '';
+
+      currentSelectionSlot = null;
+
+      // Clear search when closing
+      const searchInput = document.getElementById('v2-modal-search');
+      if (searchInput) {
+        searchInput.value = '';
+      }
+      updateModalCharacterGrid();
+    }
+
+    // Store close function in namespace
+    ZNComparisonV2.closeMobileModal = closeModal;
+  }
+
+  /**
+   * Initialize modal controls
+   */
+  function initializeModalControls(modal) {
+    if (!modal) return;
+
+    const closeBtn = document.getElementById('v2-modal-close');
+    const backdrop = document.getElementById('v2-modal-backdrop');
+
+    // Close button functionality
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        ZNComparisonV2.closeMobileModal();
+      });
+    }
+
+    // Backdrop click to close
+    if (backdrop) {
+      backdrop.addEventListener('click', () => {
+        ZNComparisonV2.closeMobileModal();
+      });
+    }
+
+    // Escape key to close
+    const escapeHandler = event => {
+      if (event.key === 'Escape') {
+        ZNComparisonV2.closeMobileModal();
+      }
+    };
+    document.addEventListener('keydown', escapeHandler);
+
+    // Store cleanup function
+    ZNComparisonV2.activeAbortControllers.add(() => {
+      document.removeEventListener('keydown', escapeHandler);
+    });
+  }
+
+  /**
+   * Initialize modal search functionality
+   */
+  function initializeModalSearch() {
+    const searchInput = document.getElementById('v2-modal-search');
+    if (!searchInput) return;
+
+    let searchTimeout;
+
+    searchInput.addEventListener('input', e => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        updateModalCharacterGrid(e.target.value);
+      }, SEARCH_DEBOUNCE_MS);
+    });
+  }
+
+  /**
+   * Update modal character grid based on search query
+   */
+  function updateModalCharacterGrid(searchQuery = '') {
+    const grid = document.getElementById('v2-modal-character-grid');
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll('.modal-character-card');
+    const query = searchQuery.toLowerCase().trim();
+
+    cards.forEach(card => {
+      const characterSlug = card.dataset.characterSlug;
+      const characterName = card.dataset.characterName || '';
+
+      const matchesSearch =
+        !query ||
+        characterName.toLowerCase().includes(query) ||
+        characterSlug.toLowerCase().includes(query);
+
+      if (matchesSearch) {
+        card.style.display = '';
+        card.classList.remove('filtered-out');
+      } else {
+        card.style.display = 'none';
+        card.classList.add('filtered-out');
+      }
+    });
+  }
+
+  /**
+   * Update modal character selection states
+   */
+  function updateModalCharacterStates() {
+    const grid = document.getElementById('v2-modal-character-grid');
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll('.modal-character-card');
+
+    cards.forEach(card => {
+      const characterSlug = card.dataset.characterSlug;
+      const isSelected = selectedCharacters.includes(characterSlug);
+
+      if (isSelected) {
+        card.classList.add('selected');
+      } else {
+        card.classList.remove('selected');
+      }
+    });
+  }
+
+  /**
+   * Initialize keyboard navigation
+   */
+  function initializeKeyboardNavigation() {
+    document.addEventListener('keydown', event => {
+      // Close modal with Escape key
+      if (event.key === 'Escape') {
+        const modal = document.getElementById('v2-mobile-modal');
+        if (modal && modal.classList.contains('open')) {
+          ZNComparisonV2.closeMobileModal();
+          event.preventDefault();
+        }
+      }
+    });
+  }
+
+  /**
+   * Initialize arena control buttons
+   */
+  function initializeArenaControls() {
+    const clearAllBtn = document.getElementById('v2-clear-all');
+    if (clearAllBtn) {
+      clearAllBtn.addEventListener('click', clearAllCharacters);
+    }
+  }
+
+  /**
+   * Handle clicking on character icons
+   * @param {Event} event - Click event
+   * @returns {void}
+   */
+  function handleIconClick(event) {
+    event.preventDefault(); // Prevent any default behavior
+
+    const icon = event.target.closest('.character-icon');
+    if (!icon) {
+      return;
+    }
+
+    const characterSlug = icon.dataset.characterSlug;
+    if (!characterSlug) {
+      // Character slug not found on icon element
+      return;
+    }
+
+    if (icon.classList.contains('selected')) {
+      removeCharacter(characterSlug);
+    } else {
+      addCharacter(characterSlug);
+    }
+  }
+
+  /**
+   * Add character to comparison
+   * @param {string} characterSlug - The character slug to add
+   * @returns {boolean} Success status
+   */
+  function addCharacter(characterSlug) {
+    // Input validation
+    if (!characterSlug || typeof characterSlug !== 'string') {
+      // Invalid character slug provided to addCharacter
+      return false;
+    }
+
+    if (selectedCharacters.includes(characterSlug)) return false;
+
+    if (selectedCharacters.length >= MAX_CHARACTERS) {
+      // Use more user-friendly notification instead of alert()
+      showNotification(
+        `You can only compare up to ${MAX_CHARACTERS} characters at once.`,
+        'warning'
+      );
+      return false;
+    }
+
+    selectedCharacters.push(characterSlug);
+
+    // Single batch update
+    updateAllDisplays();
+
+    // Load character data lazily
+    loadCharacterData(characterSlug);
+
+    // Auto-scroll to comparison section when 2 characters are selected (desktop only)
+    if (selectedCharacters.length === MAX_CHARACTERS && window.innerWidth > 768) {
+      setTimeout(() => {
+        const comparisonContainer = document.getElementById('v2-comparison-container');
+        if (comparisonContainer && !comparisonContainer.classList.contains('hidden')) {
+          comparisonContainer.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
+          });
+        }
+      }, 100); // Small delay to ensure DOM is updated
+    }
+
+    return true;
+  }
+
+  /**
+   * Show user notification
+   * @param {string} message - Message to display
+   * @param {string} type - Notification type (info, warning, error)
+   * @returns {void}
+   */
+  function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.setAttribute('role', 'status');
+    notification.setAttribute('aria-live', 'polite');
+
+    document.body.appendChild(notification);
+
+    // Auto-remove after duration
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.remove();
+      }
+    }, NOTIFICATION_DURATION_MS);
+  }
+
+  /**
+   * Remove character from comparison
+   * @param {string} characterSlug - The character slug to remove
+   * @returns {boolean} Success status
+   */
+  function removeCharacter(characterSlug) {
+    // Input validation
+    if (!characterSlug || typeof characterSlug !== 'string') {
+      // Invalid character slug provided to removeCharacter
+      return false;
+    }
+
+    const index = selectedCharacters.indexOf(characterSlug);
+    if (index === -1) return false;
+
+    selectedCharacters.splice(index, 1);
+
+    // Single batch update
+    updateAllDisplays();
+
+    return true;
+  }
+
+  /**
+   * Apply filters to character list
+   */
+  function applyFilters() {
+    try {
+      const filters = {
+        role: document.getElementById('v2-role-filter')?.value || '',
+        class: document.getElementById('v2-class-filter')?.value || '',
+        rarity: document.getElementById('v2-rarity-filter')?.value || '',
+        element: document.getElementById('v2-element-filter')?.value || '',
+        faction: document.getElementById('v2-faction-filter')?.value || '',
+      };
+
+      if (window.ZN_COMPARISON_V2_DATA?.characters) {
+        filteredCharacters = window.ZN_COMPARISON_V2_DATA.characters.filter(character => {
+          return (
+            (!filters.role || character.role === filters.role) &&
+            (!filters.class || character.class === filters.class) &&
+            (!filters.rarity || character.rarity === filters.rarity) &&
+            (!filters.element || character.element === filters.element) &&
+            (!filters.faction || character.faction === filters.faction)
+          );
+        });
+
+        updateIconStates();
+      }
+    } catch (_error) {
+      // Error applying filters
+    }
+  }
+
+  /**
+   * Reset all filters
+   * @returns {void}
+   */
+  function resetFilters() {
+    try {
+      const filterIds = [
+        'v2-role-filter',
+        'v2-class-filter',
+        'v2-rarity-filter',
+        'v2-element-filter',
+        'v2-faction-filter',
+      ];
+
+      filterIds.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) element.value = '';
+      });
+
+      if (window.ZN_COMPARISON_V2_DATA?.characters) {
+        filteredCharacters = [...window.ZN_COMPARISON_V2_DATA.characters];
+        updateIconStates();
+      }
+    } catch (_error) {
+      // Error resetting filters
+    }
+  }
+
+  /**
+   * Update character icon states (selection and filtering)
+   */
+  function updateIconStates() {
+    // Use cached container if available
+    const container = domCache.iconsContainer || document.getElementById('v2-character-icons');
+    if (!container) {
+      // Character icons container not found
+      return;
+    }
+
+    const icons = container.querySelectorAll('.character-icon');
+
+    const filteredSlugs = new Set(filteredCharacters.map(char => char.slug));
+
+    icons.forEach(icon => {
+      const slug = icon.dataset.characterSlug;
+      if (!slug) return;
+
+      const isSelected = selectedCharacters.includes(slug);
+      const isFiltered = filteredSlugs.has(slug);
+
+      // Update selection state
+      if (isSelected) {
+        icon.classList.add('selected');
+      } else {
+        icon.classList.remove('selected');
+      }
+
+      // Update visibility
+      if (isFiltered) {
+        icon.style.display = '';
+      } else {
+        icon.style.display = 'none';
+      }
+    });
+  }
+
+  /**
+   * Render comparison cards
+   */
+  function renderComparisonCards() {
+    const container =
+      domCache.comparisonContainer || document.getElementById('v2-comparison-container');
+    const cardsGrid = domCache.cardsGrid || document.getElementById('v2-cards-grid');
+
+    if (!container || !cardsGrid) {
+      // Comparison container or cards grid not found
+      return;
+    }
+
+    // Clear existing cards
+    cardsGrid.innerHTML = '';
+
+    if (selectedCharacters.length === 0) {
+      container.classList.add('hidden');
+      return;
+    }
+
+    container.classList.remove('hidden');
+
+    // Create card for each selected character
+    selectedCharacters.forEach((characterSlug, index) => {
+      const character = filteredCharacters.find(char => char.slug === characterSlug);
+      const detailedData = characterDataMap.get(characterSlug) || {};
+
+      if (character) {
+        const card = createComparisonCard(character, detailedData, index + 1);
+        cardsGrid.appendChild(card);
+      }
+    });
+  }
+
+  /**
+   * Create a comparison card element
+   * @param {Object} character - Character data
+   * @param {Object} detailedData - Detailed character data
+   * @param {number} slotNumber - Slot number for this card
+   * @returns {HTMLElement} Card element
+   */
+  function createComparisonCard(character, detailedData, slotNumber) {
+    const cardDiv = document.createElement('div');
+    cardDiv.className = 'comparison-character-card';
+    cardDiv.dataset.slot = slotNumber;
+
+    // Create remove button
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'comparison-card-remove';
+    removeBtn.setAttribute('title', 'Remove character');
+    removeBtn.setAttribute('aria-label', `Remove ${character.originalName || character.name}`);
+    removeBtn.textContent = 'Remove';
+
+    // Create header section
+    const header = document.createElement('div');
+    header.className = 'comparison-card-header';
+
+    // Create portrait container
+    const portraitContainer = document.createElement('div');
+    portraitContainer.className = 'comparison-card-portrait-container';
+
+    const portrait = document.createElement('img');
+    portrait.src = character.image || '/images/placeholder.png';
+    portrait.alt = character.originalName || character.name || '';
+    portrait.className = 'comparison-card-portrait';
+    portrait.loading = 'lazy';
+    portrait.onerror = function () {
+      this.src = '/images/placeholder.png';
+    };
+
+    const info = document.createElement('div');
+    info.className = 'comparison-card-info';
+
+    const name = document.createElement('h3');
+    name.textContent = character.originalName || character.name || '';
+
+    const badges = document.createElement('div');
+    badges.className = 'comparison-card-badges';
+
+    // Create badges safely
+    const badgeData = [
+      { class: 'rarity-badge', value: character.rarity },
+      { class: 'element-badge', value: character.element },
+      { class: 'role-badge', value: character.role },
+      { class: 'class-badge', value: character.class },
+      { class: 'faction-badge', value: character.faction },
+    ];
+
+    badgeData.forEach(badge => {
+      if (badge.value) {
+        const span = document.createElement('span');
+        span.className = `${badge.class} ${badge.value.toLowerCase().replace(/\s+/g, '-')}`;
+        span.textContent = badge.value;
+        badges.appendChild(span);
+      }
+    });
+
+    // Add class icon after badges for better positioning
+    // Use the same paths as ZNClassImage component for consistency
+    const classIconMap = {
+      Guardian: '/images/games/zone-nova/classes/1Guardian.jpg',
+      Warrior: '/images/games/zone-nova/classes/1Warrior.jpg',
+      Rogue: '/images/games/zone-nova/classes/1Rogue.jpg',
+      Mage: '/images/games/zone-nova/classes/1Mage.jpg',
+      Buffer: '/images/games/zone-nova/classes/1Buffer.jpg',
+      Debuffer: '/images/games/zone-nova/classes/1Debuffer.jpg',
+      Healer: '/images/games/zone-nova/classes/1Healer.jpg',
+    };
+
+    let classIconContainer = null;
+    if (classIconMap[character.class]) {
+      classIconContainer = document.createElement('div');
+      classIconContainer.className = 'comparison-card-class-icon-container';
+
+      const classIcon = document.createElement('img');
+      classIcon.src = classIconMap[character.class];
+      classIcon.alt = `${character.class} class icon`;
+      classIcon.className = 'comparison-card-class-icon';
+      classIcon.width = '48'; // Much larger for better readability
+      classIcon.height = '48';
+      classIcon.loading = 'lazy';
+      classIcon.onerror = function () {
+        // Fallback to non-prefixed version if prefixed version fails
+        const fallbackPath = `/images/games/zone-nova/classes/${character.class}.jpg`;
+        this.src = fallbackPath;
+      };
+
+      classIconContainer.appendChild(classIcon);
+    }
+
+    // Assemble header
+    info.appendChild(name);
+    info.appendChild(badges);
+    if (classIconContainer) {
+      info.appendChild(classIconContainer);
+    }
+    portraitContainer.appendChild(portrait);
+    header.appendChild(portraitContainer);
+    header.appendChild(info);
+
+    // Create stats section using SAFE DOM methods - FIX XSS VULNERABILITY
+    const statsDiv = createCharacterStatsDOM(character, detailedData);
+
+    // Assemble card
+    cardDiv.appendChild(removeBtn);
+    cardDiv.appendChild(header);
+    cardDiv.appendChild(statsDiv);
+
+    // Add event listener for remove button with cleanup tracking
+    const removeHandler = () => {
+      removeCharacter(character.slug);
+    };
+    removeBtn.addEventListener('click', removeHandler);
+    cardEventListeners.set(removeBtn, removeHandler);
+
+    return cardDiv;
+  }
+
+  /**
+   * Create character stats DOM safely - NO HTML STRINGS
+   * @param {Object} character - Basic character data
+   * @param {Object} detailedData - Detailed character data (skills, team skill, etc.)
+   * @returns {HTMLElement} Stats container element
+   */
+  function createCharacterStatsDOM(character, detailedData) {
+    const statsContainer = document.createElement('div');
+    statsContainer.className = 'comparison-card-stats';
+
+    // Get tiers and rankings
+    const characterName = character.name || '';
+    const tiers = getCharacterTiers(characterName);
+    const rankings = getCharacterRankings(character.id);
+    const overallRank = getCompetitiveOverallRank(character.id, rankings);
+
+    // Combat Stats Section
+    const combatSection = createStatSection('Combat Stats');
+    const combatStats = [
+      { label: 'HP', value: formatStatValue(detailedData.stats?.hp || character.stats?.hp) },
+      {
+        label: 'ATK',
+        value: formatStatValue(detailedData.stats?.attack || character.stats?.attack),
+      },
+      {
+        label: 'DEF',
+        value: formatStatValue(detailedData.stats?.defense || character.stats?.defense),
+      },
+      {
+        label: 'Crit Rate',
+        value: (() => {
+          const critRate = detailedData.stats?.critRate || character.stats?.critRate;
+          if (critRate === null || critRate === undefined) return '--';
+          // Check if it already has a % sign to avoid double %%
+          const rateStr = String(critRate);
+          return rateStr.includes('%') ? rateStr : `${rateStr}%`;
+        })(),
+      },
+      {
+        label: 'Crit DMG',
+        value: (() => {
+          const critDmg = detailedData.stats?.critDmg || character.stats?.critDmg;
+          if (critDmg === null || critDmg === undefined) return '50%';
+          // Check if it already has a % sign to avoid double %%
+          const dmgStr = String(critDmg);
+          return dmgStr.includes('%') ? dmgStr : `${dmgStr}%`;
+        })(),
+      },
+    ];
+
+    combatStats.forEach(stat => {
+      combatSection.appendChild(createStatItem(stat.label, stat.value));
+    });
+    statsContainer.appendChild(combatSection);
+
+    // Character Info Section
+    const infoSection = createStatSection('Character Info');
+
+    // Create Class item
+    const classItem = createStatItem('Class', character.class || '--');
+    infoSection.appendChild(classItem);
+
+    // Create Role item
+    const roleItem = createStatItem('Role', character.role || '--');
+    infoSection.appendChild(roleItem);
+
+    // Create Element item
+    const elementItem = createStatItem('Element', character.element || '--');
+    infoSection.appendChild(elementItem);
+
+    // Create Rarity item
+    const rarityItem = createStatItem('Rarity', character.rarity || '--');
+    infoSection.appendChild(rarityItem);
+
+    // Create Faction item
+    const factionItem = createStatItem('Faction', character.faction || '--');
+    infoSection.appendChild(factionItem);
+
+    statsContainer.appendChild(infoSection);
+
+    // Character Tags Section
+    if (character.tags && character.tags.length > 0) {
+      const tagsSection = createStatSection('Character Tags');
+      const tagsContainer = document.createElement('div');
+      tagsContainer.className = 'comparison-tags-container';
+
+      character.tags.forEach(tag => {
+        const tagElement = document.createElement('span');
+        tagElement.className = 'character-tag';
+        tagElement.textContent = tag;
+        tagsContainer.appendChild(tagElement);
+      });
+
+      tagsSection.appendChild(tagsContainer);
+      statsContainer.appendChild(tagsSection);
+    }
+
+    // Rankings Section
+    const rankingsSection = createStatSection('Rankings');
+    const rankingStats = [
+      { label: 'HP Rank', value: formatRankValue(rankings.hp) },
+      { label: 'ATK Rank', value: formatRankValue(rankings.attack) },
+      { label: 'DEF Rank', value: formatRankValue(rankings.defense) },
+      { label: 'Overall Rank', value: formatRankValue(overallRank) },
+    ];
+
+    rankingStats.forEach(stat => {
+      rankingsSection.appendChild(createStatItem(stat.label, stat.value));
+    });
+    statsContainer.appendChild(rankingsSection);
+
+    // Tier List Section
+    const tierSection = createStatSection('Tier Rankings');
+    const tierStats = [
+      { label: 'PvE', value: tiers.pve || 'Unranked' },
+      { label: 'PvP', value: tiers.pvp || 'Unranked' },
+      { label: 'Rift', value: tiers.rift || 'Unranked' },
+      { label: 'Guild', value: tiers.guild || 'Unranked' },
+    ];
+
+    tierStats.forEach(stat => {
+      tierSection.appendChild(createStatItem(stat.label, stat.value));
+    });
+    statsContainer.appendChild(tierSection);
+
+    // Team Skill Section
+    if (detailedData.teamSkill) {
+      const teamSection = createStatSection('Team Skill');
+
+      // Create vertical layout items for team skill
+      const teamNameItem = createVerticalStatItem(
+        'Skill',
+        detailedData.teamSkill.name || 'Combo Skill'
+      );
+      const teamDescItem = createVerticalStatItem(
+        'Description',
+        detailedData.teamSkill.description || ''
+      );
+      const teamReqItem = createVerticalStatItem(
+        'Requirements',
+        detailedData.teamSkill.requirements
+          ? `${detailedData.teamSkill.requirements.faction || ''} + ${
+              detailedData.teamSkill.requirements.element || ''
+            }`
+          : ''
+      );
+
+      teamSection.appendChild(teamNameItem);
+      teamSection.appendChild(teamDescItem);
+      teamSection.appendChild(teamReqItem);
+      statsContainer.appendChild(teamSection);
+    }
+
+    return statsContainer;
+  }
+
+  /**
+   * Create a stats section
+   * @param {string} title - Section title
+   * @returns {HTMLElement} Section element
+   */
+  function createStatSection(title) {
+    const section = document.createElement('div');
+    section.className = 'comparison-stat-section';
+
+    const heading = document.createElement('h4');
+    heading.textContent = title;
+    section.appendChild(heading);
+
+    return section;
+  }
+
+  /**
+   * Create a stat item
+   * @param {string} label - Stat label
+   * @param {string} value - Stat value
+   * @returns {HTMLElement} Stat item element
+   */
+  function createStatItem(label, value) {
+    const item = document.createElement('div');
+    item.className = 'comparison-stat-item';
+
+    const labelEl = document.createElement('span');
+    labelEl.className = 'comparison-stat-label';
+    labelEl.textContent = label;
+
+    const valueEl = document.createElement('span');
+    valueEl.className = 'comparison-stat-value';
+    valueEl.textContent = value;
+
+    item.appendChild(labelEl);
+    item.appendChild(valueEl);
+
+    return item;
+  }
+
+  /**
+   * Create a vertical stat item (label on top, value on bottom)
+   * @param {string} label - Stat label
+   * @param {string} value - Stat value
+   * @returns {HTMLElement} Stat item element with vertical layout
+   */
+  function createVerticalStatItem(label, value) {
+    const item = document.createElement('div');
+    item.className = 'comparison-stat-item vertical-stat-item';
+
+    const labelEl = document.createElement('div');
+    labelEl.className = 'comparison-stat-label';
+    labelEl.textContent = label;
+
+    const valueEl = document.createElement('div');
+    valueEl.className = 'comparison-stat-value';
+    valueEl.textContent = value;
+
+    item.appendChild(labelEl);
+    item.appendChild(valueEl);
+
+    return item;
+  }
+
+  /**
+   * Format stat value for display
+   * @param {any} value - Value to format
+   * @returns {string} Formatted value
+   */
+  function formatStatValue(value) {
+    if (value === undefined || value === null || value === '') return '--';
+    if (typeof value === 'number') return value.toLocaleString();
+    return String(value);
+  }
+
+  /**
+   * Get competitive overall rank for a character
+   * @param {string|number} characterId - The character ID to lookup
+   * @param {Object} rankings - Character rankings object
+   * @returns {string} Overall rank value
+   */
+  function getCompetitiveOverallRank(characterId, rankings) {
+    // Input validation
+    if (!characterId && characterId !== 0) return 'N/A';
+    if (!rankings || typeof rankings !== 'object') return 'N/A';
+
+    // Calculate overall rank based on individual stat rankings
+    const hpRank = parseInt(rankings.hp) || 999;
+    const attackRank = parseInt(rankings.attack) || 999;
+    const defenseRank = parseInt(rankings.defense) || 999;
+
+    // Average the rankings (lower is better)
+    const overallRank = Math.round((hpRank + attackRank + defenseRank) / 3);
+
+    return overallRank >= 999 ? 'N/A' : String(overallRank);
+  }
+
+  /**
+   * Update selected character count
+   * @returns {void}
+   */
+  function updateSelectedCount() {
+    const countElement = domCache.selectedCount || document.getElementById('v2-selected-count');
+    if (!countElement) return;
+
+    const count = selectedCharacters.length;
+    const max = MAX_CHARACTERS;
+    countElement.textContent = `${count}/${max} selected`;
+  }
+
+  /**
+   * Update comparison container visibility
+   */
+  function updateComparisonContainer() {
+    renderComparisonCards();
+  }
+
+  /**
+   * Clear all selected characters
+   */
+  function clearAllCharacters() {
+    selectedCharacters.length = 0; // Clear array efficiently
+    updateAllDisplays();
+  }
+
+  /**
+   * Update mobile selection buttons
+   */
+  function updateMobileSelectionButtons() {
+    for (let i = 1; i <= MAX_CHARACTERS; i++) {
+      const button = document.getElementById(`v2-mobile-select-${i}`);
+      const buttonContent = document.getElementById(`v2-mobile-display-${i}`);
+
+      if (!button || !buttonContent) continue;
+
+      // Clear button content
+      buttonContent.innerHTML = '';
+
+      const characterSlug = selectedCharacters[i - 1];
+      const character = characterSlug
+        ? window.ZN_COMPARISON_V2_DATA?.characters?.find(char => char.slug === characterSlug)
+        : null;
+
+      if (character) {
+        // Create selected character display
+        const selectedDisplay = document.createElement('div');
+        selectedDisplay.className = 'selected-character-display';
+
+        const img = document.createElement('img');
+        img.src = character.image || '/images/placeholder.png';
+        img.alt = character.originalName || character.name || '';
+        img.className = 'selected-character-image';
+        img.onerror = function () {
+          this.src = '/images/placeholder.png';
+        };
+
+        const info = document.createElement('div');
+        info.className = 'selected-character-info';
+
+        const name = document.createElement('span');
+        name.className = 'selected-character-name';
+        name.textContent = character.originalName || character.name || '';
+
+        const details = document.createElement('span');
+        details.className = 'selected-character-details';
+        details.textContent = `${character.rarity || ''} ${character.element || ''}`;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'selection-remove-btn';
+        removeBtn.setAttribute('aria-label', `Remove ${character.originalName || character.name}`);
+        removeBtn.innerHTML = '&times;';
+        const removeHandler = e => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (characterSlug) {
+            const index = selectedCharacters.indexOf(characterSlug);
+            if (index > -1) {
+              selectedCharacters.splice(index, 1);
+            }
+          }
+          // Update displays
+          updateAllDisplays();
+        };
+
+        removeBtn.addEventListener('click', removeHandler);
+
+        // Store event listener for cleanup
+        if (!cardEventListeners.has(removeBtn)) {
+          cardEventListeners.set(removeBtn, removeHandler);
+        }
+
+        info.appendChild(name);
+        info.appendChild(details);
+        selectedDisplay.appendChild(img);
+        selectedDisplay.appendChild(info);
+        selectedDisplay.appendChild(removeBtn);
+        buttonContent.appendChild(selectedDisplay);
+      } else {
+        // Create placeholder display
+        const placeholder = document.createElement('div');
+        placeholder.className = 'selection-placeholder';
+
+        const icon = document.createElement('span');
+        icon.className = 'selection-icon';
+        icon.textContent = '+';
+
+        const text = document.createElement('span');
+        text.className = 'selection-text';
+        text.textContent = `Select Character ${i}`;
+
+        placeholder.appendChild(icon);
+        placeholder.appendChild(text);
+        buttonContent.appendChild(placeholder);
+      }
+    }
+  }
+
+  /**
+   * Centralized update function to batch DOM updates
+   */
+  function updateAllDisplays() {
+    requestAnimationFrame(() => {
+      updateIconStates();
+      updateMobileSelectionButtons();
+      updateComparisonContainer();
+      updateSelectedCount();
+    });
+  }
+
+  // Export cleanup function
+  window.ZN_COMPARISON_V2_CLEANUP = function () {
+    // Basic cleanup
+    selectedCharacters.length = 0;
+    filteredCharacters = [];
+    characterDataMap.clear();
+  };
+</script>

@@ -103,8 +103,16 @@ export function initializeCharacterDatabase() {
       try {
         sessionStorage.setItem('zone-nova-character-filters', JSON.stringify(activeFilters));
         // Dispatch custom event to notify navigation
-        document.dispatchEvent(new CustomEvent('character-database-updated'));
-      } catch (error) {
+        try {
+          if (typeof document !== 'undefined' && document.createEvent) {
+            const event = document.createEvent('Event');
+            event.initEvent('character-database-updated', true, true);
+            document.dispatchEvent(event);
+          }
+        } catch (_error) {
+          // Event dispatch failed
+        }
+      } catch (_error) {
         // Filter state save failed
       }
 
@@ -243,8 +251,16 @@ export function initializeCharacterDatabase() {
           })
         );
         // Dispatch custom event to notify navigation
-        document.dispatchEvent(new CustomEvent('character-database-updated'));
-      } catch (error) {
+        try {
+          if (typeof document !== 'undefined' && document.createEvent) {
+            const event = document.createEvent('Event');
+            event.initEvent('character-database-updated', true, true);
+            document.dispatchEvent(event);
+          }
+        } catch (_error) {
+          // Event dispatch failed
+        }
+      } catch (_error) {
         // Sort state save failed
       }
 
@@ -317,7 +333,7 @@ export function initializeCharacterDatabase() {
       try {
         sessionStorage.removeItem('zone-nova-character-filters');
         sessionStorage.removeItem('zone-nova-character-sort');
-      } catch (error) {
+      } catch (_error) {
         // SessionStorage clear failed
       }
     });
@@ -350,7 +366,7 @@ export function initializeCharacterDatabase() {
           asc: true,
         })
       );
-    } catch (error) {
+    } catch (_error) {
       // Default sort state save failed
     }
 

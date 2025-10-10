@@ -1,12 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import svelte from '@astrojs/svelte';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://gachawiki.info',
   output: 'static',
-  integrations: [sitemap()],
+  integrations: [sitemap(), svelte()],
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'zh'],

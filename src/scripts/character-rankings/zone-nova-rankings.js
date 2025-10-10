@@ -1,9 +1,9 @@
 /**
  * Zone Nova Character Rankings - Optimized Implementation
- * Handles filtering, sorting, and dynamic ranking updates with performance optimization
+ * Handles instant filtering/sorting with pre-rendered server-side views
  */
 
-class ZoneNovaRankingsManager {
+class ZoneNovaRankingsManagerOptimized {
   constructor(data) {
     // Data
     this.characters = data.characters;
@@ -13,9 +13,10 @@ class ZoneNovaRankingsManager {
     this.totalCharacters = data.totalCharacters;
 
     // State
-    this.sortState = { column: null, asc: false };
+    this.currentView = 'view-all';
+    this.selectedCharacter = null;
 
-    // Cached DOM elements - performance optimization
+    // Cached DOM elements
     this.elements = {};
 
     this.init();
@@ -25,8 +26,8 @@ class ZoneNovaRankingsManager {
     try {
       this.cacheElements();
       this.setupEventListeners();
-    } catch (_error) {
-      console.error('Error:', _error);
+    } catch (error) {
+      console.error('Error initializing rankings manager:', error);
     }
   }
 
@@ -34,9 +35,8 @@ class ZoneNovaRankingsManager {
    * Cache all DOM elements to avoid repeated queries
    */
   cacheElements() {
-    // Character cards and containers
-    this.elements.characterCards = document.querySelectorAll('.character-select-card');
-    this.elements.characterGrid = document.getElementById('character-grid');
+    // Character cards (from current visible view)
+    this.updateCharacterCards();
 
     // Filters
     this.elements.roleFilter = document.getElementById('role-filter');
@@ -62,19 +62,67 @@ class ZoneNovaRankingsManager {
     this.elements.top3Stats = document.getElementById('top3-stats');
     this.elements.top10Count = document.getElementById('top10-count');
     this.elements.top10Stats = document.getElementById('top10-stats');
+  }
 
-    // Cache ranking number elements for performance
-    this.elements.rankingNumbers = new Map();
+  /**
+   * Update character cards reference when switching views
+   */
+  updateCharacterCards() {
+    const activeView = document.querySelector('.character-view:not(.hidden)');
+    this.elements.characterCards = activeView
+      ? activeView.querySelectorAll('.character-select-card')
+      : [];
+
+    // Re-attach character card listeners for the new view
+    this.attachCharacterCardListeners();
+  }
+
+  /**
+   * Attach event listeners to character cards in the current view
+   */
+  attachCharacterCardListeners() {
+    // Remove existing listeners by cloning and replacing
     this.elements.characterCards.forEach(card => {
-      const rankingElement = card.querySelector('.character-rank-number');
-      if (rankingElement) {
-        this.elements.rankingNumbers.set(card, rankingElement);
-      }
+      const newCard = card.cloneNode(true);
+      card.parentNode.replaceChild(newCard, card);
     });
+
+    // Get fresh reference to the new cards
+    const activeView = document.querySelector('.character-view:not(.hidden)');
+    const freshCards = activeView ? activeView.querySelectorAll('.character-select-card') : [];
+
+    // Add click listeners to fresh cards
+    freshCards.forEach(card => {
+      card.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        try {
+          this.handleCharacterSelection(card);
+        } catch (error) {
+          console.error('Error handling character selection:', error);
+        }
+      });
+
+      // Add keyboard support
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.stopPropagation();
+          try {
+            this.handleCharacterSelection(card);
+          } catch (error) {
+            console.error('Error handling keyboard selection:', error);
+          }
+        }
+      });
+    });
+
+    // Update the cached reference
+    this.elements.characterCards = freshCards;
   }
 
   setupEventListeners() {
-    // Filter event listeners with error handling
+    // Filter event listeners
     const filterElements = [
       this.elements.roleFilter,
       this.elements.classFilter,
@@ -86,9 +134,9 @@ class ZoneNovaRankingsManager {
       if (filter) {
         filter.addEventListener('change', () => {
           try {
-            this.filterCharacters();
-          } catch (_error) {
-            console.error('Error:', _error);
+            this.handleFilterChange();
+          } catch (error) {
+            console.error('Error handling filter change:', error);
           }
         });
       }
@@ -98,10 +146,9 @@ class ZoneNovaRankingsManager {
     this.elements.sortButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         try {
-          const col = btn.dataset.sort;
-          this.handleSort(col, btn);
-        } catch (_error) {
-          console.error('Error:', _error);
+          this.handleSortClick(btn);
+        } catch (error) {
+          console.error('Error handling sort click:', error);
         }
       });
     });
@@ -111,71 +158,40 @@ class ZoneNovaRankingsManager {
       this.elements.resetBtn.addEventListener('click', () => {
         try {
           this.resetFilters();
-        } catch (_error) {
-          console.error('Error:', _error);
+        } catch (error) {
+          console.error('Error resetting filters:', error);
         }
       });
     }
 
-    // Character card listeners
-    this.elements.characterCards.forEach(card => {
-      // Click event
-      card.addEventListener('click', () => {
-        try {
-          this.handleCharacterSelection(card);
-        } catch (_error) {
-          console.error('Error:', _error);
+    // Character card listeners (delegated to handle dynamic content)
+    document.addEventListener('click', e => {
+      try {
+        if (e.target.closest('.character-select-card')) {
+          this.handleCharacterSelection(e.target.closest('.character-select-card'));
         }
-      });
-
-      // Keyboard navigation support
-      card.addEventListener('keydown', e => {
-        try {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.handleCharacterSelection(card);
-          }
-        } catch (_error) {
-          console.error('Error:', _error);
-        }
-      });
-    });
-  }
-
-  /**
-   * Helper function to parse stat values (client-side)
-   */
-  parseStatValue(value) {
-    return typeof value === 'string' ? parseFloat(value.replace(/[,%]/g, '')) || 0 : value || 0;
-  }
-
-  /**
-   * Update dynamic ranking numbers with batched DOM operations
-   */
-  updateRankingNumbers() {
-    const visibleCards = Array.from(this.elements.characterGrid.children).filter(
-      card => card.style.display !== 'none'
-    );
-
-    // Batch DOM updates for better performance
-    let visibleRank = 1;
-    const updates = [];
-
-    visibleCards.forEach(card => {
-      const rankingElement = this.elements.rankingNumbers.get(card);
-      if (rankingElement) {
-        updates.push({ element: rankingElement, rank: visibleRank });
-        visibleRank++;
+      } catch (error) {
+        console.error('Error handling character selection:', error);
       }
     });
 
-    // Apply all updates at once
-    updates.forEach(({ element, rank }) => {
-      element.textContent = rank;
+    // Keyboard navigation support
+    document.addEventListener('keydown', e => {
+      try {
+        if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.character-select-card')) {
+          e.preventDefault();
+          this.handleCharacterSelection(e.target.closest('.character-select-card'));
+        }
+      } catch (error) {
+        console.error('Error handling keyboard navigation:', error);
+      }
     });
   }
 
-  filterCharacters() {
+  /**
+   * Handle filter changes - INSTANT switching between pre-rendered views
+   */
+  handleFilterChange() {
     const filters = {
       role: this.elements.roleFilter?.value.toLowerCase() || '',
       class: this.elements.classFilter?.value.toLowerCase() || '',
@@ -183,65 +199,111 @@ class ZoneNovaRankingsManager {
       element: this.elements.elementFilter?.value.toLowerCase() || '',
     };
 
-    this.elements.characterCards.forEach(card => {
-      const characterId = parseInt(card.dataset.characterId || '0');
-      const character = this.characters.find(c => c.id === characterId);
-      if (!character) return;
+    // Determine which view to show based on active filters
+    const targetViewId = this.getTargetViewId(filters);
 
-      const matches = this.checkFilters(character, filters);
-      card.style.display = matches ? 'flex' : 'none';
-    });
-
-    this.updateRankingNumbers();
+    if (targetViewId && targetViewId !== this.currentView) {
+      this.switchView(targetViewId);
+    }
   }
 
-  checkFilters(character, filters) {
-    return Object.entries(filters).every(([key, value]) => {
-      if (!value) return true;
+  /**
+   * Determine target view ID based on current filters
+   */
+  getTargetViewId(filters) {
+    // Priority: role > class > rarity > element
+    if (filters.role) return `view-${filters.role}`;
+    if (filters.class) return `view-${filters.class}`;
+    if (filters.rarity) return `view-${filters.rarity}`;
+    if (filters.element) return `view-${filters.element}`;
 
-      const characterValue = character[key]?.toLowerCase();
-      return characterValue === value;
-    });
+    return 'view-all'; // Default view
   }
 
-  handleSort(column, button) {
-    const numericColumns = ['hp', 'attack', 'defense', 'critRate', 'speed', 'rank', 'rarity'];
-    const defaultAsc = !numericColumns.includes(column);
+  /**
+   * Switch between pre-rendered views - INSTANT!
+   */
+  switchView(viewId) {
+    // Hide current view
+    const currentViewElement = document.getElementById(this.currentView);
+    if (currentViewElement) {
+      currentViewElement.classList.add('hidden');
+    }
 
-    this.sortState.asc = this.sortState.column === column ? !this.sortState.asc : defaultAsc;
-    this.sortState.column = column;
+    // Show new view
+    const targetViewElement = document.getElementById(viewId);
+    if (targetViewElement) {
+      targetViewElement.classList.remove('hidden');
+    }
 
-    // Update button states
-    this.elements.sortButtons.forEach(b => b.classList.remove('active'));
-    button.classList.add('active');
+    // Update current view reference
+    this.currentView = viewId;
 
-    this.sortCharacters(column);
+    // Update character cards reference for the new view
+    this.updateCharacterCards();
+
+    // Clear sort button states
+    this.elements.sortButtons.forEach(btn => btn.classList.remove('active'));
   }
 
-  sortCharacters(column) {
-    const cards = Array.from(this.elements.characterCards);
-    const multiplier = this.sortState.asc ? 1 : -1;
+  /**
+   * Handle sort clicks - INSTANT switching to pre-sorted views
+   */
+  handleSortClick(button) {
+    const column = button.dataset.sort;
+    if (!column) return;
 
-    cards.sort((a, b) => {
-      const aChar = this.characters.find(c => c.id === parseInt(a.dataset.characterId || '0'));
-      const bChar = this.characters.find(c => c.id === parseInt(b.dataset.characterId || '0'));
+    // Determine sort direction (toggle on each click)
+    const currentSortState = this.getSortState(column);
+    const newDirection = currentSortState === 'desc' ? 'asc' : 'desc';
 
-      if (!aChar || !bChar) return 0;
+    const viewId = `sort-${column}-${newDirection}`;
 
-      const aValue = this.parseStatValue(aChar.stats[column]);
-      const bValue = this.parseStatValue(bChar.stats[column]);
+    if (document.getElementById(viewId)) {
+      // Hide current view
+      const currentViewElement = document.getElementById(this.currentView);
+      if (currentViewElement) {
+        currentViewElement.classList.add('hidden');
+      }
 
-      return (aValue - bValue) * multiplier;
-    });
+      // Show sorted view
+      const targetViewElement = document.getElementById(viewId);
+      if (targetViewElement) {
+        targetViewElement.classList.remove('hidden');
+      }
 
-    // Batch DOM updates
-    const fragment = document.createDocumentFragment();
-    cards.forEach(card => fragment.appendChild(card));
-    this.elements.characterGrid.appendChild(fragment);
+      // Update current view
+      this.currentView = viewId;
 
-    this.updateRankingNumbers();
+      // Update character cards reference
+      this.updateCharacterCards();
+
+      // Update button states
+      this.elements.sortButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // Store sort state
+      this.setSortState(column, newDirection);
+    }
   }
 
+  /**
+   * Get current sort state for a column
+   */
+  getSortState(column) {
+    return localStorage.getItem(`zn-rankings-sort-${column}`) || 'desc';
+  }
+
+  /**
+   * Store sort state for a column
+   */
+  setSortState(column, direction) {
+    localStorage.setItem(`zn-rankings-sort-${column}`, direction);
+  }
+
+  /**
+   * Reset all filters - return to default view
+   */
   resetFilters() {
     // Clear filter values
     [
@@ -253,45 +315,16 @@ class ZoneNovaRankingsManager {
       if (filter) filter.value = '';
     });
 
-    // Show all cards
-    this.elements.characterCards.forEach(card => {
-      card.style.display = 'flex';
-    });
+    // Clear sort states
+    this.elements.sortButtons.forEach(btn => btn.classList.remove('active'));
 
-    // Clear sort state
-    this.elements.sortButtons.forEach(b => b.classList.remove('active'));
-    this.sortState = { column: null, asc: false };
-
-    // Restore original ranking order
-    this.restoreOriginalOrder();
+    // Return to default view
+    this.switchView('view-all');
   }
 
-  restoreOriginalOrder() {
-    const cards = Array.from(this.elements.characterCards);
-
-    cards.sort((a, b) => {
-      const aId = parseInt(a.dataset.characterId || '0');
-      const bId = parseInt(b.dataset.characterId || '0');
-      const aRank = this.overallAnalysis[aId]?.overallRank || 999;
-      const bRank = this.overallAnalysis[bId]?.overallRank || 999;
-      return aRank - bRank;
-    });
-
-    // Batch DOM operations
-    const fragment = document.createDocumentFragment();
-    cards.forEach(card => fragment.appendChild(card));
-    this.elements.characterGrid.appendChild(fragment);
-
-    // Restore original ranking numbers
-    cards.forEach(card => {
-      const characterId = parseInt(card.dataset.characterId || '0');
-      const rankingElement = this.elements.rankingNumbers.get(card);
-      if (rankingElement && this.overallAnalysis[characterId]) {
-        rankingElement.textContent = this.overallAnalysis[characterId].overallRank;
-      }
-    });
-  }
-
+  /**
+   * Handle character selection - DYNAMIC FEATURE PRESERVED
+   */
   handleCharacterSelection(card) {
     const characterId = parseInt(card.dataset.characterId || '0');
     if (!characterId) return;
@@ -303,6 +336,7 @@ class ZoneNovaRankingsManager {
     const character = this.characters.find(c => c.id === characterId);
     if (!character) return;
 
+    this.selectedCharacter = character;
     this.updateCharacterDisplay(character);
     this.updateRankingsDisplay(characterId);
     this.updateCharacterAnalysis(characterId);
@@ -317,6 +351,9 @@ class ZoneNovaRankingsManager {
     }, 100);
   }
 
+  /**
+   * Update character display - DYNAMIC FEATURE PRESERVED
+   */
   updateCharacterDisplay(character) {
     if (this.elements.characterImage) {
       this.elements.characterImage.src = character.image;
@@ -332,12 +369,15 @@ class ZoneNovaRankingsManager {
     }
   }
 
+  /**
+   * Update rankings display - DYNAMIC FEATURE PRESERVED
+   */
   updateRankingsDisplay(characterId) {
     Object.keys(this.statNames).forEach(statKey => {
       const rank = this.rankings[statKey][characterId];
       const statValue = this.characters.find(c => c.id === characterId)?.stats[statKey];
 
-      // Special handling for crit rate - only show if > 0%
+      // Special handling for crit rate
       if (statKey === 'critRate') {
         const critVal = this.parseStatValue(statValue);
 
@@ -372,20 +412,9 @@ class ZoneNovaRankingsManager {
     });
   }
 
-  applyRankStyling(element, rank) {
-    // Remove existing rank classes
-    element.className = element.className.replace(/rank-(top3|top10|other)/g, '');
-
-    // Add appropriate rank class - CSS handles the styling
-    if (rank <= 3) {
-      element.classList.add('rank-top3');
-    } else if (rank <= 10) {
-      element.classList.add('rank-top10');
-    } else {
-      element.classList.add('rank-other');
-    }
-  }
-
+  /**
+   * Update character analysis - DYNAMIC FEATURE PRESERVED
+   */
   updateCharacterAnalysis(characterId) {
     const analysis = this.overallAnalysis[characterId];
     if (!analysis) return;
@@ -414,6 +443,9 @@ class ZoneNovaRankingsManager {
     }
   }
 
+  /**
+   * Update stat badges - DYNAMIC FEATURE PRESERVED
+   */
   updateStatBadges(top3Stats, top10Stats) {
     // Top 3 stats
     if (this.elements.top3Count) {
@@ -421,14 +453,13 @@ class ZoneNovaRankingsManager {
     }
 
     if (this.elements.top3Stats) {
-      // Clear existing content safely
       this.elements.top3Stats.replaceChildren();
 
       if (top3Stats.length > 0) {
         top3Stats.forEach(stat => {
           const span = document.createElement('span');
           span.className = 'stat-badge top3-badge';
-          span.textContent = stat; // Safe text content, prevents XSS
+          span.textContent = stat;
           this.elements.top3Stats.appendChild(span);
         });
       } else {
@@ -445,14 +476,13 @@ class ZoneNovaRankingsManager {
     }
 
     if (this.elements.top10Stats) {
-      // Clear existing content safely
       this.elements.top10Stats.replaceChildren();
 
       if (top10Stats.length > 0) {
         top10Stats.forEach(stat => {
           const span = document.createElement('span');
           span.className = 'stat-badge top10-badge';
-          span.textContent = stat; // Safe text content, prevents XSS
+          span.textContent = stat;
           this.elements.top10Stats.appendChild(span);
         });
       } else {
@@ -462,6 +492,30 @@ class ZoneNovaRankingsManager {
         this.elements.top10Stats.appendChild(span);
       }
     }
+  }
+
+  /**
+   * Apply rank styling - DYNAMIC FEATURE PRESERVED
+   */
+  applyRankStyling(element, rank) {
+    // Remove existing rank classes
+    element.className = element.className.replace(/rank-(top3|top10|other)/g, '');
+
+    // Add appropriate rank class
+    if (rank <= 3) {
+      element.classList.add('rank-top3');
+    } else if (rank <= 10) {
+      element.classList.add('rank-top10');
+    } else {
+      element.classList.add('rank-other');
+    }
+  }
+
+  /**
+   * Helper function to parse stat values - DYNAMIC FEATURE PRESERVED
+   */
+  parseStatValue(value) {
+    return typeof value === 'string' ? parseFloat(value.replace(/[,%]/g, '')) || 0 : value || 0;
   }
 }
 
@@ -498,15 +552,18 @@ document.addEventListener('DOMContentLoaded', () => {
       throw new Error('Invalid totalCharacters value');
     }
 
-    const rankingsManager = new ZoneNovaRankingsManager(data);
+    // Initialize optimized rankings manager
+    const rankingsManager = new ZoneNovaRankingsManagerOptimized(data);
 
-    // Store reference globally for debugging if needed
+    // Store reference globally for debugging
     window.rankingsManager = rankingsManager;
-  } catch (_error) {
-    console.error('Error:', _error);
+
+    console.log('✅ Zone Nova Character Rankings initialized with instant filtering!');
+  } catch (error) {
+    console.error('❌ Error initializing rankings:', error);
 
     // Show user-friendly error message
-    const errorContainer = document.getElementById('character-grid');
+    const errorContainer = document.querySelector('.character-views-container');
     if (errorContainer) {
       errorContainer.innerHTML = `
         <div class="rankings-error-container">
@@ -522,4 +579,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Export for potential external use
-window.ZoneNovaRankingsManager = ZoneNovaRankingsManager;
+window.ZoneNovaRankingsManagerOptimized = ZoneNovaRankingsManagerOptimized;
