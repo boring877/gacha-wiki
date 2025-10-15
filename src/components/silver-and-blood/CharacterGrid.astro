@@ -1,0 +1,31 @@
+---
+import CharacterCard from './CharacterCard.astro';
+import CharacterFilter from './character-comparison/CharacterFilter.svelte';
+import CharacterComparisonState from './character-comparison/CharacterComparisonState.svelte';
+import DynamicComparisonSection from './character-comparison/DynamicComparisonSection.astro';
+import { characters } from '../../data/silver-and-blood/characters.js';
+---
+
+<div id="character-grid-container" class="character-grid-page">
+  <!-- Filter Island -->
+  <CharacterFilter client:idle />
+
+  <!-- Character Grid -->
+  <div class="character-grid" id="character-grid">
+    {characters.map(character => <CharacterCard character={character} />)}
+  </div>
+
+  {
+    characters.length === 0 && (
+      <div class="no-characters">
+        <p>No characters found matching your filters.</p>
+      </div>
+    )
+  }
+</div>
+
+<!-- Dynamic Comparison Section -->
+<DynamicComparisonSection />
+
+<!-- Character Comparison State Management Island -->
+<CharacterComparisonState {characters} client:idle />

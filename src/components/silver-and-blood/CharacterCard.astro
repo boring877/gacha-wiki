@@ -1,0 +1,51 @@
+---
+import SABCharacterImage from './SABCharacterImage.astro';
+
+export interface Props {
+  character: any;
+}
+
+const { character }: Props = Astro.props;
+---
+
+<button
+  type="button"
+  class="character-card"
+  aria-label="Select {character?.name || 'Unknown'} for comparison"
+  aria-pressed="false"
+  data-character-id={character?.id || ''}
+  data-rarity={character?.rarity || ''}
+  data-class={character?.class || ''}
+  data-faction={character?.faction || ''}
+  data-equipment={character?.equipmentType || ''}
+  data-moon={character?.moonPhase || ''}
+  data-attack={character?.attackType || ''}
+  data-hp={character?.stats?.hp || 0}
+  data-atk={character?.stats?.atk || 0}
+  data-pDef={character?.stats?.pDef || 0}
+  data-mDef={character?.stats?.mDef || 0}
+>
+  <div class="character-card-portrait">
+    <SABCharacterImage
+      imageName={character?.id || 'acappella'}
+      alt={character?.name || 'Unknown character'}
+      size="card"
+      class="character-portrait"
+      loading="lazy"
+    />
+  </div>
+  <div class="character-card-content">
+    <h3 class="character-card-name">{character?.name || 'Unknown'}</h3>
+    <div class="character-badges">
+      <span class="rarity-badge {(character?.rarity || 'R').toLowerCase()}"
+        >{character?.rarity || 'R'}</span
+      >
+      <span class="class-badge {(character?.class || 'unknown').toLowerCase()}"
+        >{character?.class || 'Unknown'}</span
+      >
+      <span class="faction-badge {(character?.faction || 'unknown').toLowerCase()}"
+        >{character?.faction || 'Unknown'}</span
+      >
+    </div>
+  </div>
+</button>

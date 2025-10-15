@@ -1,0 +1,239 @@
+---
+/**
+ * DynamicComparisonSection - ZN-style table comparison for SAB characters
+ * Pre-renders all character columns with images, shows/hides via JavaScript
+ */
+import SABCharacterImage from '../SABCharacterImage.astro';
+import { characters } from '../../../data/silver-and-blood/characters.js';
+---
+
+<div class="comparison-section" style="display: none;" id="dynamic-comparison-section">
+  <div class="comparison-header">
+    <h2>Selected Characters (0/4)</h2>
+    <button class="clear-comparison-btn" id="clear-comparison">Clear Comparison</button>
+  </div>
+
+  <!-- DESKTOP: Table-style Comparison -->
+  <div class="comparison-table-wrapper">
+    <div class="comparison-table-container">
+      <!-- Character Headers (Portraits + Names in Columns) -->
+      <div class="comparison-character-headers">
+        {
+          characters.map((character, index) => {
+            const slotNum = index + 1;
+            return (
+              <div
+                class="comparison-character-column"
+                data-character-id={character.id}
+                style="display: none;"
+              >
+                <div class="comparison-character-card">
+                  <div class="character-portrait-container">
+                    <SABCharacterImage
+                      imageName={character.id}
+                      alt={character.name}
+                      size="comparison"
+                      class="comparison-portrait"
+                      loading="lazy"
+                    />
+                  </div>
+                  <h3 class="character-name">{character.name}</h3>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <!-- Stats Comparison Table -->
+      <div class="comparison-stats-container">
+        <!-- Basic Information Section -->
+        <div class="comparison-section-block">
+          <div class="comparison-section-header">
+            <h4>Basic Information</h4>
+          </div>
+
+          <div class="comparison-stat-row">
+            <div class="stat-label">Rarity</div>
+            <div class="stat-values">
+              <div class="stat-value" data-stat="rarity-1"></div>
+              <div class="stat-value" data-stat="rarity-2"></div>
+              <div class="stat-value" data-stat="rarity-3"></div>
+              <div class="stat-value" data-stat="rarity-4"></div>
+            </div>
+          </div>
+
+          <div class="comparison-stat-row">
+            <div class="stat-label">Class</div>
+            <div class="stat-values">
+              <div class="stat-value" data-stat="class-1"></div>
+              <div class="stat-value" data-stat="class-2"></div>
+              <div class="stat-value" data-stat="class-3"></div>
+              <div class="stat-value" data-stat="class-4"></div>
+            </div>
+          </div>
+
+          <div class="comparison-stat-row">
+            <div class="stat-label">Faction</div>
+            <div class="stat-values">
+              <div class="stat-value" data-stat="faction-1"></div>
+              <div class="stat-value" data-stat="faction-2"></div>
+              <div class="stat-value" data-stat="faction-3"></div>
+              <div class="stat-value" data-stat="faction-4"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combat Stats Section -->
+        <div class="comparison-section-block">
+          <div class="comparison-section-header">
+            <h4>Combat Stats</h4>
+          </div>
+
+          <div class="comparison-stat-row">
+            <div class="stat-label">HP</div>
+            <div class="stat-values">
+              <div class="stat-value numeric" data-stat="hp-1"></div>
+              <div class="stat-value numeric" data-stat="hp-2"></div>
+              <div class="stat-value numeric" data-stat="hp-3"></div>
+              <div class="stat-value numeric" data-stat="hp-4"></div>
+            </div>
+          </div>
+
+          <div class="comparison-stat-row">
+            <div class="stat-label">ATK</div>
+            <div class="stat-values">
+              <div class="stat-value numeric" data-stat="atk-1"></div>
+              <div class="stat-value numeric" data-stat="atk-2"></div>
+              <div class="stat-value numeric" data-stat="atk-3"></div>
+              <div class="stat-value numeric" data-stat="atk-4"></div>
+            </div>
+          </div>
+
+          <div class="comparison-stat-row">
+            <div class="stat-label">P.DEF</div>
+            <div class="stat-values">
+              <div class="stat-value numeric" data-stat="pDef-1"></div>
+              <div class="stat-value numeric" data-stat="pDef-2"></div>
+              <div class="stat-value numeric" data-stat="pDef-3"></div>
+              <div class="stat-value numeric" data-stat="pDef-4"></div>
+            </div>
+          </div>
+
+          <div class="comparison-stat-row">
+            <div class="stat-label">M.DEF</div>
+            <div class="stat-values">
+              <div class="stat-value numeric" data-stat="mDef-1"></div>
+              <div class="stat-value numeric" data-stat="mDef-2"></div>
+              <div class="stat-value numeric" data-stat="mDef-3"></div>
+              <div class="stat-value numeric" data-stat="mDef-4"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Character Details Section -->
+        <div class="comparison-section-block">
+          <div class="comparison-section-header">
+            <h4>Character Details</h4>
+          </div>
+
+          <div class="comparison-stat-row">
+            <div class="stat-label">Equipment Type</div>
+            <div class="stat-values">
+              <div class="stat-value" data-stat="equipment-1"></div>
+              <div class="stat-value" data-stat="equipment-2"></div>
+              <div class="stat-value" data-stat="equipment-3"></div>
+              <div class="stat-value" data-stat="equipment-4"></div>
+            </div>
+          </div>
+
+          <div class="comparison-stat-row">
+            <div class="stat-label">Moon Phase</div>
+            <div class="stat-values">
+              <div class="stat-value" data-stat="moon-1"></div>
+              <div class="stat-value" data-stat="moon-2"></div>
+              <div class="stat-value" data-stat="moon-3"></div>
+              <div class="stat-value" data-stat="moon-4"></div>
+            </div>
+          </div>
+
+          <div class="comparison-stat-row">
+            <div class="stat-label">Attack Type</div>
+            <div class="stat-values">
+              <div class="stat-value" data-stat="attack-1"></div>
+              <div class="stat-value" data-stat="attack-2"></div>
+              <div class="stat-value" data-stat="attack-3"></div>
+              <div class="stat-value" data-stat="attack-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE: Stacked character view -->
+  <div class="mobile-comparison-section">
+    {
+      characters.map(character => (
+        <div
+          class="mobile-comparison-character"
+          data-mobile-character-id={character.id}
+          style="display: none;"
+        >
+          <div class="mobile-character-header">
+            <SABCharacterImage
+              imageName={character.id}
+              alt={character.name}
+              size="mobile"
+              class="mobile-comparison-portrait"
+              loading="lazy"
+            />
+            <h4 class="mobile-character-name">{character.name}</h4>
+          </div>
+          <div class="mobile-character-stats">
+            <div class="mobile-stat-item">
+              <span class="mobile-stat-label">Rarity:</span>
+              <span class="mobile-stat-value" data-mobile-stat={`${character.id}-rarity`} />
+            </div>
+            <div class="mobile-stat-item">
+              <span class="mobile-stat-label">Class:</span>
+              <span class="mobile-stat-value" data-mobile-stat={`${character.id}-class`} />
+            </div>
+            <div class="mobile-stat-item">
+              <span class="mobile-stat-label">Faction:</span>
+              <span class="mobile-stat-value" data-mobile-stat={`${character.id}-faction`} />
+            </div>
+            <div class="mobile-stat-item">
+              <span class="mobile-stat-label">HP:</span>
+              <span class="mobile-stat-value" data-mobile-stat={`${character.id}-hp`} />
+            </div>
+            <div class="mobile-stat-item">
+              <span class="mobile-stat-label">ATK:</span>
+              <span class="mobile-stat-value" data-mobile-stat={`${character.id}-atk`} />
+            </div>
+            <div class="mobile-stat-item">
+              <span class="mobile-stat-label">P.DEF:</span>
+              <span class="mobile-stat-value" data-mobile-stat={`${character.id}-pDef`} />
+            </div>
+            <div class="mobile-stat-item">
+              <span class="mobile-stat-label">M.DEF:</span>
+              <span class="mobile-stat-value" data-mobile-stat={`${character.id}-mDef`} />
+            </div>
+            <div class="mobile-stat-item">
+              <span class="mobile-stat-label">Equipment:</span>
+              <span class="mobile-stat-value" data-mobile-stat={`${character.id}-equipment`} />
+            </div>
+            <div class="mobile-stat-item">
+              <span class="mobile-stat-label">Moon Phase:</span>
+              <span class="mobile-stat-value" data-mobile-stat={`${character.id}-moon`} />
+            </div>
+            <div class="mobile-stat-item">
+              <span class="mobile-stat-label">Attack Type:</span>
+              <span class="mobile-stat-value" data-mobile-stat={`${character.id}-attack`} />
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>

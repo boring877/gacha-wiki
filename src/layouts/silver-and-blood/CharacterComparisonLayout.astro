@@ -26,16 +26,12 @@ const { title, description } = Astro.props;
 
 <html lang="en">
   <head>
-    <SABBaseHead
-      title={title || ''}
-      description={description || ''}
-      shouldPreloadDefaultImage={false}
-    />
+    <SABBaseHead title={title || ''} description={description || ''} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
 
-    <!-- SAB comparison styles need to override global styles, so we load them last -->
+    <!-- SAB character comparison styles -->
     <style is:global>
-      @import '../../styles/games/silver-and-blood/sab-character-comparison.css';
+      @import '../../styles/games/silver-and-blood/sab-character-comparison-v1.css';
     </style>
 
     <slot name="head" />

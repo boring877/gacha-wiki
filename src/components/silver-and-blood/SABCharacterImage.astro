@@ -1,0 +1,155 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all Silver and Blood character images once
+import acappellaImg from '../../assets/images/games/silver-and-blood/characters/acappella.jpg';
+import agaresImg from '../../assets/images/games/silver-and-blood/characters/agares.jpg';
+import agnesImg from '../../assets/images/games/silver-and-blood/characters/agnes.jpg';
+import albrechtImg from '../../assets/images/games/silver-and-blood/characters/albrecht.jpg';
+import amiImg from '../../assets/images/games/silver-and-blood/characters/ami.jpg';
+import augustineImg from '../../assets/images/games/silver-and-blood/characters/augustine.jpg';
+import bellaImg from '../../assets/images/games/silver-and-blood/characters/bella.jpg';
+import cainImg from '../../assets/images/games/silver-and-blood/characters/cain.jpg';
+import ceciaImg from '../../assets/images/games/silver-and-blood/characters/cecia.jpg';
+import dalcarloImg from '../../assets/images/games/silver-and-blood/characters/dalcarlo.jpg';
+import darciasImg from '../../assets/images/games/silver-and-blood/characters/darcias.jpg';
+import edinaImg from '../../assets/images/games/silver-and-blood/characters/edina.jpg';
+import fleetingBellaImg from '../../assets/images/games/silver-and-blood/characters/fleeting-bella.jpg';
+import friedrichImg from '../../assets/images/games/silver-and-blood/characters/friedrich.jpg';
+import gilrainImg from '../../assets/images/games/silver-and-blood/characters/gilrain.jpg';
+import hatiImg from '../../assets/images/games/silver-and-blood/characters/hati.jpg';
+import incendiaryAgaresImg from '../../assets/images/games/silver-and-blood/characters/incendiary-agares.jpg';
+import jinxedSelenaImg from '../../assets/images/games/silver-and-blood/characters/jinxed-selena.jpg';
+import joanImg from '../../assets/images/games/silver-and-blood/characters/joan.jpg';
+import juliusImg from '../../assets/images/games/silver-and-blood/characters/julius.jpg';
+import lamiaImg from '../../assets/images/games/silver-and-blood/characters/lamia.jpg';
+import limineImg from '../../assets/images/games/silver-and-blood/characters/limine.jpg';
+import loreleiImg from '../../assets/images/games/silver-and-blood/characters/lorelei.jpg';
+import massImg from '../../assets/images/games/silver-and-blood/characters/mass.jpg';
+import nicoleImg from '../../assets/images/games/silver-and-blood/characters/nicole.jpg';
+import ottaviaImg from '../../assets/images/games/silver-and-blood/characters/ottavia.jpg';
+import pavanaImg from '../../assets/images/games/silver-and-blood/characters/pavana.jpg';
+import pieraImg from '../../assets/images/games/silver-and-blood/characters/piera.jpg';
+import quinnImg from '../../assets/images/games/silver-and-blood/characters/quinn.jpg';
+import reginaImg from '../../assets/images/games/silver-and-blood/characters/regina.jpg';
+import ressaImg from '../../assets/images/games/silver-and-blood/characters/ressa.jpg';
+import selenaImg from '../../assets/images/games/silver-and-blood/characters/selena.jpg';
+import sethImg from '../../assets/images/games/silver-and-blood/characters/seth.jpg';
+import sireneImg from '../../assets/images/games/silver-and-blood/characters/sirene.jpg';
+import spectralGilrainImg from '../../assets/images/games/silver-and-blood/characters/spectral-gilrain.jpg';
+import starryEyedAionaImg from '../../assets/images/games/silver-and-blood/characters/starry-eyed-aiona.jpg';
+import stellaImg from '../../assets/images/games/silver-and-blood/characters/stella.jpg';
+import theophaneImg from '../../assets/images/games/silver-and-blood/characters/theophane.jpg';
+import thibaultImg from '../../assets/images/games/silver-and-blood/characters/thibault.jpg';
+import timelessAionaImg from '../../assets/images/games/silver-and-blood/characters/timeless-aiona.jpg';
+import transcendentAmiImg from '../../assets/images/games/silver-and-blood/characters/transcendent-ami.jpg';
+import transcendentHatiImg from '../../assets/images/games/silver-and-blood/characters/transcendent-hati.jpg';
+import transcendentNoahImg from '../../assets/images/games/silver-and-blood/characters/transcendent-noah.jpg';
+import trisImg from '../../assets/images/games/silver-and-blood/characters/tris.jpg';
+import valoraImg from '../../assets/images/games/silver-and-blood/characters/valora.jpg';
+import vanHelsingImg from '../../assets/images/games/silver-and-blood/characters/van-helsing.jpg';
+import yggdrasillImg from '../../assets/images/games/silver-and-blood/characters/yggdrasill.jpg';
+
+// Centralized character image mapping - direct mapping with character IDs
+const characterImageMap = {
+  acappella: acappellaImg,
+  agares: agaresImg,
+  agnes: agnesImg,
+  albrecht: albrechtImg,
+  ami: amiImg,
+  augustine: augustineImg,
+  bella: bellaImg,
+  cain: cainImg,
+  cecia: ceciaImg,
+  dalcarlo: dalcarloImg,
+  darcias: darciasImg,
+  edina: edinaImg,
+  'fleeting-bella': fleetingBellaImg,
+  friedrich: friedrichImg,
+  gilrain: gilrainImg,
+  hati: hatiImg,
+  'incendiary-agares': incendiaryAgaresImg,
+  'jinxed-selena': jinxedSelenaImg,
+  joan: joanImg,
+  julius: juliusImg,
+  lamia: lamiaImg,
+  limine: limineImg,
+  lorelei: loreleiImg,
+  mass: massImg,
+  nicole: nicoleImg,
+  ottavia: ottaviaImg,
+  pavana: pavanaImg,
+  piera: pieraImg,
+  quinn: quinnImg,
+  regina: reginaImg,
+  ressa: ressaImg,
+  selena: selenaImg,
+  seth: sethImg,
+  sirene: sireneImg,
+  'spectral-gilrain': spectralGilrainImg,
+  'starry-eyed-aiona': starryEyedAionaImg,
+  stella: stellaImg,
+  theophane: theophaneImg,
+  thibault: thibaultImg,
+  'timeless-aiona': timelessAionaImg,
+  'transcendent-ami': transcendentAmiImg,
+  'transcendent-hati': transcendentHatiImg,
+  'transcendent-noah': transcendentNoahImg,
+  tris: trisImg,
+  valora: valoraImg,
+  'van-helsing': vanHelsingImg,
+  yggdrasill: yggdrasillImg,
+};
+
+// Define size presets for different contexts - increased for better face resolution
+const sizePresets = {
+  card: { width: 200, height: 200 },
+  comparison: { width: 180, height: 180 },
+  mobile: { width: 90, height: 90 },
+  thumbnail: { width: 100, height: 100 },
+  large: { width: 400, height: 400 },
+};
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  size?: 'card' | 'comparison' | 'mobile' | 'thumbnail' | 'large';
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  size = 'card',
+  width: customWidth,
+  height: customHeight,
+  class: className = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 95,
+} = Astro.props;
+
+// Use size preset or fall back to custom dimensions
+const { width, height } = sizePresets[size] || sizePresets.card;
+const finalWidth = customWidth || width;
+const finalHeight = customHeight || height;
+
+// Get the imported image object from the map - simplified direct mapping
+const imageSrc = characterImageMap[imageName] || characterImageMap['acappella'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={finalWidth}
+  height={finalHeight}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

@@ -7,7 +7,10 @@ import svelte from '@astrojs/svelte';
 export default defineConfig({
   site: 'https://gachawiki.info',
   output: 'static',
-  integrations: [sitemap(), svelte()],
+  integrations: [
+    sitemap(), 
+    svelte()
+  ],
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'zh'],
