@@ -144,20 +144,62 @@ const version = packageInfo.version;
     color: rgba(255, 183, 77, 0.8);
   }
 
-  /* Hide footer completely on touch devices and small screens for cleaner mobile experience */
-  @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
-    .footer {
+  /* Mobile Responsive Footer - Show simplified version */
+  @media (max-width: 1024px) {
+    .footer-container {
+      padding: 0.5rem;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      min-height: auto;
+    }
+
+    /* Hide version and license on mobile */
+    .footer-left {
       display: none;
     }
-  }
 
-  /* Note: Mobile responsive styles removed since footer is hidden on touch devices */
+    /* Center align copyright and social links */
+    .footer-center,
+    .footer-right {
+      justify-content: center;
+    }
+
+    .footer-center p {
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Adjust social links for mobile */
+    .social-links {
+      gap: 0.5rem;
+    }
+
+    .social-link {
+      padding: 0.5rem;
+      min-height: 40px;
+      min-width: 40px;
+    }
+
+    .rumble-text {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.6rem;
+    }
+  }
 
   /* Touch Device Optimizations */
   @media (hover: none) and (pointer: coarse) {
     .version-pill {
       min-height: 48px;
       padding: 0.75rem 1.25rem;
+    }
+
+    /* Ensure footer is visible on touch devices */
+    .footer {
+      display: block;
     }
   }
 
