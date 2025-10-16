@@ -15,6 +15,7 @@ import {
   NEW_PLAYER_TIER_LIST,
   rankings,
   CHARACTER_DATA_MAP,
+  CHARACTER_IMAGE_MAP,
 } from './SBCharacterData.astro';
 ---
 
@@ -35,6 +36,7 @@ import {
     attackTypes,
     rarities,
     characterDataMap: CHARACTER_DATA_MAP,
+    characterImageMap: CHARACTER_IMAGE_MAP,
   }}
 >
   // Security: Freeze objects to prevent prototype pollution
@@ -58,6 +60,7 @@ import {
       rarities: Object.freeze(rarities),
     }),
     characterDataMap: Object.freeze(characterDataMap),
+    characterImageMap: Object.freeze(characterImageMap),
   });
 </script>
 
@@ -889,10 +892,14 @@ import {
     header.className = 'comparison-card-header';
 
     const portrait = document.createElement('img');
-    portrait.src = character.image || '/images/placeholder.png';
+    // Use character image map from imported assets
+    const imageSlug = character.slug || characterSlug;
+    const imageUrl = window.SAB_COMPARISON_V2_DATA?.characterImageMap?.[imageSlug];
+    portrait.src = imageUrl || '/images/placeholder.png';
     portrait.alt = character.originalName || character.name || '';
     portrait.className = 'comparison-card-portrait';
     portrait.onerror = function () {
+      // Fallback to placeholder if image not found
       this.src = '/images/placeholder.png';
     };
 
@@ -1228,7 +1235,10 @@ import {
       selectedDisplay.className = 'selected-character-display';
 
       const img = document.createElement('img');
-      img.src = character.image || '/images/placeholder.png';
+      // Use character image map from imported assets
+      const characterSlug = character.slug || character.id;
+      const imageUrl = window.SAB_COMPARISON_V2_DATA?.characterImageMap?.[characterSlug];
+      img.src = imageUrl || '/images/placeholder.png';
       img.alt = character.originalName || character.name || '';
       img.className = 'selected-character-image';
       img.onerror = function () {

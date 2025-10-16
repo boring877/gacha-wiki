@@ -7,7 +7,7 @@ export const yggdrasill = {
   subtitle: '',
   description:
     'A powerful SSR defender from the Church faction who specializes in area healing, ally protection, and zone control with sustained regeneration abilities.',
-  image: '/images/games/silver-and-blood/characters/Yggdrasill.jpg',
+  image: 'yggdrasill',
   tags: ['Melee', 'Gather', 'Healing'],
 
   // Game Mechanics

@@ -139,8 +139,8 @@ const { width, height } = sizePresets[size] || sizePresets.card;
 const finalWidth = customWidth || width;
 const finalHeight = customHeight || height;
 
-// Get the imported image object from the map - simplified direct mapping
-const imageSrc = characterImageMap[imageName] || characterImageMap['acappella'];
+// Get the imported image object from the map - no fallback
+const imageSrc = characterImageMap[imageName];
 ---
 
 <Image

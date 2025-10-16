@@ -1,6 +1,6 @@
 ---
 import CharactersLayout from '../../../layouts/silver-and-blood/CharactersLayout.astro';
-import { Image } from 'astro:assets';
+import SABCharacterImage from '../../../components/silver-and-blood/SABCharacterImage.astro';
 import {
   characters as SILVER_AND_BLOOD_CHARACTERS,
   gameInfo,
@@ -103,16 +103,18 @@ import {
                     >
                       <td>{idx + 1}</td>
                       <td>
-                        <Image
-                          src={char.image}
-                          alt={char.name}
-                          class="character-img"
-                          width={60}
-                          height={60}
-                          format="webp"
-                          quality={85}
-                          loading="lazy"
-                        />
+                        <div style="width: 55px; height: 55px; border-radius: 8px; overflow: hidden;">
+                          <SABCharacterImage
+                            imageName={char.id}
+                            alt={char.name}
+                            class="character-img"
+                            width={220}
+                            height={220}
+                            format="jpg"
+                            quality={100}
+                            loading="lazy"
+                          />
+                        </div>
                       </td>
                       <td>{char.name}</td>
                       <td>
@@ -170,15 +172,17 @@ import {
                 style="cursor:pointer;"
               >
                 <div class="mobile-card-header">
-                  <Image
-                    src={char.image}
-                    alt={char.name}
-                    class="character-img"
-                    width={80}
-                    height={80}
-                    format="webp"
-                    quality={85}
-                  />
+                  <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0;">
+                    <SABCharacterImage
+                      imageName={char.id}
+                      alt={char.name}
+                      class="character-img"
+                      width={80}
+                      height={80}
+                      format="webp"
+                      quality={95}
+                    />
+                  </div>
                   <div class="mobile-card-title-group">
                     <h3>{char.name}</h3>
                     <div class="mobile-card-badges">

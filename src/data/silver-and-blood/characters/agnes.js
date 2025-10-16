@@ -7,7 +7,7 @@ export const agnes = {
   subtitle: '',
   description:
     'A powerful SSR warrior from the Kingdom faction who specializes in dimensional manipulation, area control, and debuffing enemies through her cartographic mastery.',
-  image: '/images/games/silver-and-blood/characters/Agnes.jpg', // official image
+  image: 'agnes', // official image
   tags: ['Melee', 'Debuff', 'Control'],
 
   // Game Mechanics

@@ -7,7 +7,7 @@ export const timelessAiona = {
   subtitle: '',
   description:
     'A powerful SSR marksman from the Ancestors faction who specializes in shield manipulation, ranged combat, and time-based abilities with unique effective range mechanics.',
-  image: '/images/games/silver-and-blood/characters/Timeless_Aiona.jpg',
+  image: 'timeless-aiona',
   tags: ['Ranged', 'Shield'],
 
   // Game Mechanics

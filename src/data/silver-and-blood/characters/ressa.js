@@ -7,7 +7,7 @@ export const ressa = {
   subtitle: '',
   description:
     'A powerful SSR warrior from the Kingdom faction who specializes in single-target damage, critical strike mechanics, and ultimate cost reduction.',
-  image: '/images/games/silver-and-blood/characters/Ressa.jpg',
+  image: 'ressa',
   tags: ['Melee', 'Single-Target DMG'],
 
   // Game Mechanics

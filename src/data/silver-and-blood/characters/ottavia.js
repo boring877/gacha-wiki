@@ -7,7 +7,7 @@ export const ottavia = {
   subtitle: '',
   description:
     'A powerful SSR warrior from the Bloodborn faction who specializes in single-target magical damage, defensive counterattacks, and survival mechanics.',
-  image: '/images/games/silver-and-blood/characters/Ottavia.jpg',
+  image: 'ottavia',
   tags: ['Melee', 'Single-Target DMG'],
 
   // Game Mechanics

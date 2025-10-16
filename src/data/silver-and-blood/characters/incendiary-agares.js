@@ -7,7 +7,7 @@ export const incendiaryAgares = {
   subtitle: 'The Beguiler',
   description:
     'A powerful SSR sorcerer who specializes in channeled fire magic and self-sacrifice mechanics for devastating damage output.',
-  image: '/images/games/silver-and-blood/characters/Incendiary_Agares.jpg', // official image
+  image: 'incendiary-agares', // official image
   tags: ['Mid-Range', 'Single-Target DMG', 'AoE DMG'],
 
   // Game Mechanics

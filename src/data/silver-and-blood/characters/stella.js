@@ -7,7 +7,7 @@ export const stella = {
   subtitle: '',
   description:
     'An SSR assassin from the Bloodborn faction who specializes in piercing damage, teleportation, and applying Stasis to enemies for devastating follow-up attacks.',
-  image: '/images/games/silver-and-blood/characters/Stella.jpg',
+  image: 'stella',
   tags: ['Melee', 'Teleport'],
 
   // Game Mechanics

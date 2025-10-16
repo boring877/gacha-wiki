@@ -7,7 +7,7 @@ export const edina = {
   subtitle: '',
   description:
     'A powerful SSR enchanter from the Church faction who specializes in mid-range support, multi-target healing, and damage reduction buffs with intelligent healing prioritization.',
-  image: '/images/games/silver-and-blood/characters/Edina.jpg',
+  image: 'edina',
   tags: ['Mid-Range', 'Healing'],
 
   // Game Mechanics

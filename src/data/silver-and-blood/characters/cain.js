@@ -7,7 +7,7 @@ export const cain = {
   subtitle: '',
   description:
     'A powerful SSR sorcerer from the Bloodborn faction who specializes in area-of-effect magical damage and explosive trap mechanics.',
-  image: '/images/games/silver-and-blood/characters/Cain.jpg',
+  image: 'cain',
   tags: ['Mid-Range', 'AoE DMG'],
 
   // Game Mechanics

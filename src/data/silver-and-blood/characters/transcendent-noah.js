@@ -7,7 +7,7 @@ export const transcendentNoah = {
   subtitle: 'The Apostate',
   description:
     'A powerful SSR marksman from the Ancestors faction who specializes in Shade summoning, effective range mechanics, and absorbing souls for devastating attacks.',
-  image: '/images/games/silver-and-blood/characters/Transcendent_Noah.jpg', // official image
+  image: 'transcendent-noah', // official image
   tags: ['Ranged', 'AoE DMG', 'Summon'],
 
   // Game Mechanics

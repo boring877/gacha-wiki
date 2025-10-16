@@ -7,7 +7,7 @@ export const agares = {
   subtitle: '',
   description:
     'A powerful SSR sorcerer from the Church faction who specializes in mid-range AoE damage, continuous affliction effects, and phoenix summoning with cooldown reduction mechanics.',
-  image: '/images/games/silver-and-blood/characters/Agares.jpg',
+  image: 'agares',
   tags: ['Mid-Range', 'AoE DMG', 'Continuous DMG'],
 
   // Game Mechanics

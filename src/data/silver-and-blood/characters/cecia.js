@@ -7,7 +7,7 @@ export const cecia = {
   subtitle: '',
   description:
     'A powerful SSR sorcerer from the Kingdom faction who specializes in mid-range bounce attacks, summon enhancement, and spirit channeling mechanics.',
-  image: '/images/games/silver-and-blood/characters/Cecia.jpg',
+  image: 'cecia',
   tags: ['Mid-Range', 'Bounce DMG'],
 
   // Game Mechanics

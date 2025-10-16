@@ -7,7 +7,7 @@ export const lorelei = {
   subtitle: '',
   description:
     'An SSR-ranked assassin vassal that excels at control and single-target elimination through sleep mechanics and form transformation.',
-  image: '/images/games/silver-and-blood/characters/Lorelei.jpg',
+  image: 'lorelei',
   tags: ['Single-Target DMG', 'Control', 'Teleport'],
 
   // Game Mechanics

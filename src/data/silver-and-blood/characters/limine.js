@@ -7,7 +7,7 @@ export const limine = {
   subtitle: '',
   description:
     'A powerful SSR sorcerer who commands blood magic and controls the battlefield through Blood Servant manipulation.',
-  image: '/images/games/silver-and-blood/characters/Limine.jpg', // official image
+  image: 'limine', // official image
   tags: ['Mid-Range', 'AoE DMG'],
 
   // Game Mechanics

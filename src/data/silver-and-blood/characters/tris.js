@@ -7,7 +7,7 @@ export const tris = {
   subtitle: '',
   description:
     'A powerful SSR marksman from the Church faction who specializes in ranged combat, single-target damage, and electromagnetic control through Induction stacking.',
-  image: '/images/games/silver-and-blood/characters/Tris.jpg',
+  image: 'tris',
   tags: ['Ranged', 'Single-Target DMG', 'Control'],
 
   // Game Mechanics

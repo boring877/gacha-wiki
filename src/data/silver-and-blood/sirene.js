@@ -9,6 +9,7 @@ export const sireneConfig = {
   },
 
   character: {
+    id: 'sirene',
     name: 'Sirene',
     image: 'https://res.cloudinary.com/dtiiaqlah/image/upload/v1752927611/SireneVault_ysfq7e.jpg',
   },

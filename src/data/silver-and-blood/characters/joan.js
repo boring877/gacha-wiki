@@ -7,7 +7,7 @@ export const joan = {
   subtitle: '',
   description:
     'A powerful SSR warrior from the Church faction who specializes in AoE damage, crowd control, and electric induction effects.',
-  image: '/images/games/silver-and-blood/characters/Joan.jpg',
+  image: 'joan',
   tags: ['Melee', 'AoE DMG', 'Control'],
 
   // Game Mechanics

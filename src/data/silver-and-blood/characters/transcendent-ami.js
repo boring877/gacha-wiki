@@ -7,7 +7,7 @@ export const transcendentAmi = {
   subtitle: 'The Atoll Devourer',
   description:
     'A powerful ancestral defender who commands the spirits of the lost Landis civilization, wielding ancient magic to protect and devastate.',
-  image: '/images/games/silver-and-blood/characters/Transcendent_Ami.jpg', // official image - updated path
+  image: 'transcendent-ami', // official image - updated path
   tags: ['Melee', 'Control'],
 
   // Game Mechanics

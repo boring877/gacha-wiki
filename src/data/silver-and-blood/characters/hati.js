@@ -7,7 +7,7 @@ export const hati = {
   subtitle: '',
   description:
     'A powerful SSR assassin from the Kingdom faction who specializes in rushing attacks, taunt control, and damage reduction debuffs.',
-  image: '/images/games/silver-and-blood/characters/Hati.jpg', // official image
+  image: 'hati', // official image
   tags: ['Melee', 'Rush'],
 
   // Game Mechanics

@@ -7,7 +7,7 @@ export const pavana = {
   subtitle: '',
   description:
     'A powerful SSR enchanter from the Church faction who specializes in ranged magical damage, AoE control, and sleep-based crowd control mechanics.',
-  image: '/images/games/silver-and-blood/characters/Pavana.jpg',
+  image: 'pavana',
   tags: ['Ranged', 'AoE DMG', 'Control'],
 
   // Game Mechanics

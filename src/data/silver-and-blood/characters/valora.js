@@ -7,7 +7,7 @@ export const valora = {
   subtitle: '',
   description:
     'A powerful SSR assassin from the Ancestors faction who specializes in melee combat, area damage, and debuff application with devastating rush attacks.',
-  image: '/images/games/silver-and-blood/characters/Valora.jpg',
+  image: 'valora',
   tags: ['Melee', 'AOE DMG', 'Debuff'],
 
   // Game Mechanics

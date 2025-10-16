@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import SABCharacterImage from '../../../../components/silver-and-blood/SABCharacterImage.astro';
 import AncestralVaultLayout from '../../../../layouts/silver-and-blood/AncestralVaultLayout.astro';
 import {
   sireneConfig,
@@ -30,8 +30,8 @@ const breadcrumbs = [
 >
   <!-- Sirene Character Image -->
   <div class="sirene-character-section">
-    <Image
-      src={character.image}
+    <SABCharacterImage
+      imageName={character.id}
       alt={character.name}
       class="sirene-character-image"
       width={200}

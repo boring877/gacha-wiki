@@ -7,7 +7,7 @@ export const regina = {
   subtitle: '',
   description:
     'An SR warrior from the Kingdom faction who specializes in single-target physical damage with shield mechanics and mark stacking for burst damage.',
-  image: '/images/games/silver-and-blood/characters/Regina.jpg',
+  image: 'regina',
   tags: ['Melee', 'Single-Target DMG'],
 
   // Game Mechanics

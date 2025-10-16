@@ -7,7 +7,7 @@ export const albrecht = {
   subtitle: '',
   description:
     'A powerful SSR enchanter from the Church faction who specializes in healing and debuff abilities through Silver Mist mechanics.',
-  image: '/images/games/silver-and-blood/characters/Albrecht.jpg',
+  image: 'albrecht',
   tags: ['Ranged', 'Debuff', 'Healing'],
 
   // Game Mechanics

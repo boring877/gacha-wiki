@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import SABCharacterImage from './SABCharacterImage.astro';
 // Import centralized Silver and Blood data component
 import { characters } from './SBCharacterData.astro';
 
@@ -55,8 +55,8 @@ const allTags = [...new Set(characters.flatMap(char => char.tags || []))].sort()
           data-faction={character.faction}
         >
           <div class="character-portrait">
-            <Image
-              src={character.image}
+            <SABCharacterImage
+              imageName={character.id}
               alt={character.name}
               loading="lazy"
               width={120}

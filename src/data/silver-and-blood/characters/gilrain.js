@@ -7,7 +7,7 @@ export const gilrain = {
   subtitle: '',
   description:
     'A powerful SSR assassin from the Kingdom faction who specializes in rushing attacks, stun control, and attack speed buffs.',
-  image: '/images/games/silver-and-blood/characters/Gilrain.jpg',
+  image: 'gilrain',
   tags: ['Melee', 'Rush'],
 
   // Game Mechanics

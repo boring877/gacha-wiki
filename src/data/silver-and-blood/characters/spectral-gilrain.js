@@ -7,7 +7,7 @@ export const spectralGilrain = {
   subtitle: '',
   description:
     'A powerful SSR assassin from the Bloodborn faction who specializes in melee combat, teleportation, and summoning shadowy apparitions.',
-  image: '/images/games/silver-and-blood/characters/Spectral_Gilrain.jpg',
+  image: 'spectral-gilrain',
   tags: ['Melee', 'Teleport'],
 
   // Game Mechanics

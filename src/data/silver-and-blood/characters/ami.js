@@ -7,7 +7,7 @@ export const ami = {
   subtitle: '',
   description:
     'A powerful SSR enchanter from the Kingdom faction who specializes in ranged support, ally gathering, and buff coordination through Soul Link mechanics.',
-  image: '/images/games/silver-and-blood/characters/Ami.jpg',
+  image: 'ami',
   tags: ['Ranged', 'Gather', 'Buff'],
 
   // Game Mechanics

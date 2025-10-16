@@ -1,0 +1,28 @@
+---
+import SABCharacterImage from '../SABCharacterImage.astro';
+import { characters } from '../../../data/silver-and-blood/characters.js';
+
+export interface Props {
+  showInMaker?: boolean;
+}
+
+const { showInMaker = false } = Astro.props;
+---
+
+<div class="pool-characters" id="character-pool">
+  {
+    characters.map(char => (
+      <div
+        class={`pool-character-card ${showInMaker ? 'draggable' : ''}`}
+        data-character={char.name}
+        draggable={showInMaker}
+      >
+        <SABCharacterImage imageName={char.image} alt={char.name} size="mobile" />
+        <div class="pool-character-name">{char.name}</div>
+        <div class="pool-character-badges">
+          <span class={`pool-mini-badge rarity-${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+        </div>
+      </div>
+    ))
+  }
+</div>

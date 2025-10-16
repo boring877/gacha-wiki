@@ -7,7 +7,7 @@ export const friedrich = {
   subtitle: '',
   description:
     'A powerful SSR defender from the Kingdom faction who specializes in shield mechanics, area damage, and magical damage resistance with counter-attack abilities.',
-  image: '/images/games/silver-and-blood/characters/Friedrich.jpg',
+  image: 'friedrich',
   tags: ['Melee', 'Shield'],
 
   // Game Mechanics

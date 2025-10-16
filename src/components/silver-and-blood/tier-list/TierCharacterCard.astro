@@ -1,0 +1,47 @@
+---
+import SABCharacterImage from '../SABCharacterImage.astro';
+
+export interface Props {
+  characterName: string;
+  characterId: string;
+  rarity: string;
+  detailUrl: string;
+  isDraggable?: boolean;
+  showRemoveButton?: boolean;
+  size?: 'card' | 'comparison' | 'mobile' | 'thumbnail' | 'large';
+}
+
+const {
+  characterName,
+  characterId,
+  rarity,
+  detailUrl,
+  isDraggable = false,
+  showRemoveButton = false,
+  size = 'card',
+} = Astro.props;
+
+// Set draggable attributes if needed
+---
+
+<div
+  class={`tier-character-card ${isDraggable ? 'draggable' : ''}`}
+  draggable={isDraggable}
+  data-character={characterName}
+  onclick={`window.location.href='${detailUrl}'`}
+>
+  <div class="character-image-wrapper">
+    <SABCharacterImage imageName={characterId} alt={characterName} size={size} loading="lazy" />
+  </div>
+  <div class="character-name">{characterName}</div>
+  <div class="character-badges">
+    <span class="mini-badge rarity-{rarity.toLowerCase()}">{rarity}</span>
+  </div>
+  {
+    showRemoveButton && (
+      <button class="remove-btn" title="Remove from tier">
+        ×
+      </button>
+    )
+  }
+</div>

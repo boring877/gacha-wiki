@@ -7,7 +7,7 @@ export const nicole = {
   subtitle: '',
   description:
     'A powerful SSR assassin from the Church faction who specializes in rush attacks, continuous bleed damage, and dynamic battlefield positioning with escalating ultimate costs.',
-  image: '/images/games/silver-and-blood/characters/Nicole.jpg',
+  image: 'nicole',
   tags: ['Melee', 'Rush', 'Continuous DMG'],
 
   // Game Mechanics

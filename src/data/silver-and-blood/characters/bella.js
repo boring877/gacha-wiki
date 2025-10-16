@@ -7,7 +7,7 @@ export const bella = {
   subtitle: '',
   description:
     'A powerful SSR defender from the Bloodborn faction who specializes in summoning puppets and providing support to allied summons.',
-  image: '/images/games/silver-and-blood/characters/Bella.jpg',
+  image: 'bella',
   tags: ['Mid-Range', 'Summon'],
 
   // Game Mechanics

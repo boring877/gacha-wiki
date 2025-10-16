@@ -6,7 +6,7 @@ export const transcendentHati = {
   title: 'Seed of Plague',
   subtitle: 'The Secondborn',
   description: 'An SS-ranked melee vassal that spreads plague and continuous AoE damage.',
-  image: '/images/games/silver-and-blood/characters/Transcendent_Hati.jpg', // official image
+  image: 'transcendent-hati', // official image
   tags: ['Melee', 'AoE DMG', 'Continuous DMG'],
 
   // Game Mechanics

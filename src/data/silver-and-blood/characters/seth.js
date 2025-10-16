@@ -7,7 +7,7 @@ export const seth = {
   subtitle: '',
   description:
     'A powerful SSR enchanter from the Ancestors faction who specializes in time-based healing, purification, and emergency support abilities.',
-  image: '/images/games/silver-and-blood/characters/Seth.jpg', // official image
+  image: 'seth', // official image
   tags: ['Mid-Range', 'Healing', 'Purify'],
 
   // Game Mechanics

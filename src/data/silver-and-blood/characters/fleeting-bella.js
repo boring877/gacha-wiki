@@ -7,7 +7,7 @@ export const fleetingBella = {
   subtitle: '',
   description:
     'A powerful SSR enchanter from the Kingdom faction who specializes in support magic through possession and healing abilities, transferring her power to allies while maintaining battlefield control.',
-  image: '/images/games/silver-and-blood/characters/Fleeting_Bella.jpg',
+  image: 'fleeting-bella',
   tags: ['Ranged', 'Healing', 'Buff'],
 
   // Game Mechanics

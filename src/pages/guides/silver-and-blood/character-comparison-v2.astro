@@ -1,7 +1,7 @@
 ---
 import CharacterComparisonV2Layout from '../../../layouts/silver-and-blood/CharacterComparisonV2Layout.astro';
 import CharacterComparisonV2Logic from '../../../components/silver-and-blood/CharacterComparisonV2Logic.astro';
-import { Image } from 'astro:assets';
+import SABCharacterImage from '../../../components/silver-and-blood/SABCharacterImage.astro';
 import { characters } from '../../../data/silver-and-blood/characters.js';
 
 const title = 'Character Comparison Tool V2 - Silver and Blood';
@@ -155,15 +155,15 @@ const rarities = ['SSR', 'SR', 'R'];
                       tabindex="0"
                       aria-label={`Select ${character.originalName}, ${character.rarity} ${character.faction} ${character.class}`}
                     >
-                      <Image
-                        src={character.image}
+                      <SABCharacterImage
+                        imageName={character.slug}
                         alt={character.originalName}
                         class="character-icon-img"
-                        width={36}
-                        height={36}
+                        width={144}
+                        height={144}
                         loading="lazy"
-                        format="webp"
-                        quality={90}
+                        format="jpg"
+                        quality={100}
                       />
                       <span class="character-icon-name" set:html={character.displayName} />
                     </div>
@@ -269,15 +269,15 @@ const rarities = ['SSR', 'SR', 'R'];
                 tabindex="0"
                 aria-label={`Select ${character.originalName}, ${character.rarity} ${character.faction} ${character.class}`}
               >
-                <Image
-                  src={character.image}
+                <SABCharacterImage
+                  imageName={character.slug}
                   alt={character.originalName}
                   class="modal-character-image"
-                  width={80}
-                  height={80}
+                  width={320}
+                  height={320}
                   loading="lazy"
-                  format="webp"
-                  quality={85}
+                  format="jpg"
+                  quality={100}
                 />
                 <div class="modal-character-info">
                   <span class="modal-character-name" set:html={character.displayName} />

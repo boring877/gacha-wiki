@@ -7,7 +7,7 @@ export const piera = {
   subtitle: '',
   description:
     'A powerful SSR sorcerer from the Church faction who specializes in summoning Spirit Bone Towers and providing magical support from mid-range.',
-  image: '/images/games/silver-and-blood/characters/Piera.jpg',
+  image: 'piera',
   tags: ['Mid-Range', 'Summon'],
 
   // Game Mechanics

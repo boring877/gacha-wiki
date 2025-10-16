@@ -123,6 +123,22 @@
   max-height: none;
   opacity: 1;
   visibility: visible;
+  /* Enhanced image rendering for supersampling */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
+  image-rendering: -webkit-auto;
+  image-rendering: -moz-auto;
+  image-rendering: -o-auto;
+  image-rendering: smooth;
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  /* Force GPU acceleration */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  will-change: transform;
 }
 
 .character-select-card {

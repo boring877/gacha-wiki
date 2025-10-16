@@ -7,7 +7,7 @@ export const sirene = {
   subtitle: '',
   description:
     'An SSR-ranked ranged vassal that excels at single-target damage and marking priority targets.',
-  image: '/images/games/silver-and-blood/characters/Sirene.jpg',
+  image: 'sirene',
   tags: ['Ranged', 'Single-Target DMG', 'Buff'],
 
   // Game Mechanics

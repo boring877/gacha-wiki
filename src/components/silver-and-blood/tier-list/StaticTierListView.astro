@@ -1,0 +1,54 @@
+---
+import SABCharacterImage from '../SABCharacterImage.astro';
+import { TIER_DEFINITIONS } from '../../../data/silver-and-blood/tier-lists.js';
+
+export interface Props {
+  tierListData: any;
+  characterMap: any;
+}
+
+const { tierListData, characterMap } = Astro.props;
+
+// Helper function to get tier class name
+function getTierClassName(tier: string): string {
+  return tier.toLowerCase().replace('+', '-plus').replace(/\s+/g, '-');
+}
+---
+
+<div class="tier-list-display">
+  {
+    Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
+      <div class="tier-row">
+        <div class={`tier-label tier-${getTierClassName(tier)}`}>{definition.label}</div>
+        <div class="tier-characters" data-tier={tier}>
+          {tierListData.tiers[tier]?.map(charInfo => {
+            const charData = characterMap[charInfo.name];
+            if (!charData) return null;
+
+            return (
+              <div
+                class="tier-character-card"
+                onclick={`window.location.href='${charData.detailUrl}'`}
+              >
+                <div class="character-image-wrapper">
+                  <SABCharacterImage
+                    imageName={charData.image}
+                    alt={charData.name}
+                    size="card"
+                    class="character-img"
+                  />
+                </div>
+                <div class="character-name">{charData.name}</div>
+                <div class="character-badges">
+                  <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
+                    {charData.rarity}
+                  </span>
+                </div>
+              </div>
+            );
+          }) || <div class="empty-tier">No characters in this tier</div>}
+        </div>
+      </div>
+    ))
+  }
+</div>

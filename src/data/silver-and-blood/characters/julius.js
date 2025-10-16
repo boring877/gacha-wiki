@@ -7,7 +7,7 @@ export const julius = {
   subtitle: '',
   description:
     'A powerful SSR warrior from the Bloodborn faction who specializes in melee combat and single-target damage with his phantasmic halberd and ethereal blades.',
-  image: '/images/games/silver-and-blood/characters/Julius.jpg',
+  image: 'julius',
   tags: ['Melee', 'Single-Target DMG'],
 
   // Game Mechanics

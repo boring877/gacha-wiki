@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import SABCharacterImage from '../../../components/silver-and-blood/SABCharacterImage.astro';
 import CharacterRankingsLayout from '../../../layouts/silver-and-blood/CharacterRankingsLayout.astro';
 import { characters } from '../../../data/silver-and-blood/characters.js';
 import {
@@ -91,16 +91,18 @@ import {
                 >
                   {overallAnalysis[char.id].overallRank}
                 </div>
-                <Image
-                  src={char.image}
-                  alt={`${char.name} portrait`}
-                  class="character-portrait"
-                  width={80}
-                  height={80}
-                  loading="lazy"
-                  format="webp"
-                  quality={85}
-                />
+                <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0;">
+                  <SABCharacterImage
+                    imageName={char.id}
+                    alt={`${char.name} portrait`}
+                    class="character-portrait"
+                    width={320}
+                    height={320}
+                    loading="lazy"
+                    format="jpg"
+                    quality={100}
+                  />
+                </div>
                 <div class="character-info">
                   <h3>{char.name}</h3>
                   <div class="character-badges">

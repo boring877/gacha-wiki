@@ -7,7 +7,7 @@ export const lamia = {
   subtitle: '',
   description:
     'A powerful SSR sorcerer from the Bloodborn faction who specializes in mid-range bounce attacks, summoning mechanics, and team healing support.',
-  image: '/images/games/silver-and-blood/characters/Lamia.jpg',
+  image: 'lamia',
   tags: ['Mid-Range', 'Bounce DMG', 'Healing'],
 
   // Game Mechanics

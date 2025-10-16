@@ -7,7 +7,7 @@ export const darcias = {
   subtitle: '',
   description:
     'A powerful SSR warrior from the Church faction who specializes in AoE damage, continuous damage over time, and bleed effects.',
-  image: '/images/games/silver-and-blood/characters/Darcias.jpg',
+  image: 'darcias',
   tags: ['Melee', 'AoE DMG', 'Continuous DMG'],
 
   // Game Mechanics

@@ -7,7 +7,7 @@ export const vanHelsing = {
   subtitle: '',
   description:
     'A powerful SSR marksman from the Church faction who specializes in ranged combat, weapon swapping, and effective range mechanics.',
-  image: '/images/games/silver-and-blood/characters/Van_Helsing.jpg', // official image
+  image: 'van-helsing', // official image
   tags: ['Ranged', 'AoE DMG'],
 
   // Game Mechanics

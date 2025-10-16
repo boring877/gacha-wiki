@@ -7,7 +7,7 @@ export const theophane = {
   subtitle: '',
   description:
     'A powerful SSR defender from the Church faction who specializes in melee combat, movement abilities, and crowd control through protective barriers.',
-  image: '/images/games/silver-and-blood/characters/Theophane.jpg',
+  image: 'theophane',
   tags: ['Melee', 'Move', 'Control'],
 
   // Game Mechanics

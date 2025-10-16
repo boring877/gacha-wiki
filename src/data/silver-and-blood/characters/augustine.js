@@ -7,7 +7,7 @@ export const augustine = {
   subtitle: '',
   description:
     'A powerful SSR warrior from the Bloodborn faction who specializes in mid-range combat, chain mechanics, and target marking with crowd control abilities.',
-  image: '/images/games/silver-and-blood/characters/Augustine.jpg',
+  image: 'augustine',
   tags: ['Mid-Range', 'Bounce DMG', 'Continuous DMG'],
 
   // Game Mechanics

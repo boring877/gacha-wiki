@@ -7,7 +7,7 @@ export const jinxedSelena = {
   subtitle: '',
   description:
     'An SR-ranked support vassal that excels at healing and debuffing enemies while providing sustained team utility.',
-  image: '/images/games/silver-and-blood/characters/JinxedSelena.jpg',
+  image: 'jinxed-selena',
   tags: ['Healing', 'Debuff'],
 
   // Game Mechanics

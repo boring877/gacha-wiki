@@ -44,9 +44,72 @@ h3 {
   color: var(--sab-text-light) !important;
 }
 
-/* ===== CHARACTER OVERVIEW SECTION ===== */
+/* ===== CHARACTER IMAGES ===== */
+/* Image container constraints - prevent containers from growing */
+.character-img,
+.character-icon-img,
+.modal-character-image,
+.character-portrait {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Global image sizing rules - handles all Astro Image component outputs */
+.character-img img,
+.character-img picture,
+.character-img picture img,
+.character-icon-img img,
+.character-icon-img picture,
+.character-icon-img picture img,
+.modal-character-image img,
+.modal-character-image picture,
+.modal-character-image picture img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Character portrait styling */
 .character-portrait {
   filter: brightness(1.1) contrast(1.05);
+}
+
+.character-portrait img,
+.character-portrait picture,
+.character-portrait picture img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* For main character portrait on character pages - use cover for consistent sizing */
+.silver-and-blood-main .character-portrait img,
+.silver-and-blood-main .character-portrait picture img {
+  object-fit: cover !important;
+}
+
+/* Character portrait container - ensure consistent sizing */
+.silver-and-blood-main .character-portrait-container {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+/* Ensure the image fills the container completely */
+.silver-and-blood-main .character-portrait-container .character-portrait {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 
 /* ===== STATS GRID ===== */
@@ -286,6 +349,18 @@ h3 {
     width: 280px !important;
     height: 280px !important;
   }
+
+  /* Ensure object-fit: cover is maintained on small screens */
+  .silver-and-blood-main .character-portrait img,
+  .silver-and-blood-main .character-portrait picture img {
+    object-fit: cover !important;
+  }
+
+  /* Adjust container size on small screens */
+  .silver-and-blood-main .character-portrait-container {
+    width: 300px !important;
+    height: 300px !important;
+  }
 }
 
 /* ===== PERFORMANCE OPTIMIZATIONS ===== */
@@ -428,11 +503,27 @@ table.character-table th {
 }
 
 .character-img {
-  width: 40px;
-  height: 40px;
+  width: 55px;
+  height: 55px;
   border-radius: 8px;
   object-fit: cover;
   border: 1px solid var(--sab-text-light);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
+  image-rendering: -webkit-auto;
+  image-rendering: -moz-auto;
+  image-rendering: -o-auto;
+  image-rendering: smooth;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  /* Ensure high-quality downsampling */
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  /* Force GPU acceleration */
+  will-change: transform;
 }
 
 /* Mobile card styles */
@@ -559,6 +650,12 @@ table.character-table th {
   .reset-btn {
     padding: 0.8rem 1.2rem; /* Larger touch target */
     min-height: 44px;
+  }
+
+  /* Keep original image size for mobile view */
+  .character-img {
+    width: 64px;
+    height: 64px;
   }
 }
 

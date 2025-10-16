@@ -7,7 +7,7 @@ export const starryEyedAiona = {
   subtitle: '',
   description:
     'A powerful SSR enchanter from the Kingdom faction who specializes in shield support, ally positioning, and protective buffs with healing over time.',
-  image: '/images/games/silver-and-blood/characters/Starry_Eyed_Aiona.jpg',
+  image: 'starry-eyed-aiona',
   tags: ['Mid-Range', 'Gather', 'Shield'],
 
   // Game Mechanics

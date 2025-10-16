@@ -7,7 +7,7 @@ export const quinn = {
   subtitle: '',
   description:
     'A powerful SSR defender from the Bloodborn faction who specializes in team protection, damage sharing, and healing support through her garden sanctuary.',
-  image: '/images/games/silver-and-blood/characters/Quinn.jpg', // official image
+  image: 'quinn', // official image
   tags: ['Melee', 'Buff', 'Healing'],
 
   // Game Mechanics
