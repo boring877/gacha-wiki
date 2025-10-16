@@ -17,7 +17,7 @@ const {
 
 <!-- Essential Metadata Only -->
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -129,13 +129,17 @@ const {
     min-height: 60vh;
   }
 
-  /* Disable animations on mobile for performance */
+  /* Mobile optimization without breaking layouts */
   @media (max-width: 768px) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
+    /* Optimize specific animations for mobile performance */
+    body {
+      animation: none;
+    }
+
+    /* Reduce motion for better performance while preserving layout */
+    * {
+      animation-duration: 0.2s !important;
+      transition-duration: 0.2s !important;
     }
   }
 </style>
