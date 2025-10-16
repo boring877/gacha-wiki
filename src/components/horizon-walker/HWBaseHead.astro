@@ -1,14 +1,16 @@
 ---
 // Lightweight BaseHead for Horizon Walker - Optimized for instant loading
-import GameIcon from '../../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
-
 export interface Props {
   title: string;
   description: string;
   image?: string;
 }
 
-const { title, description, image } = Astro.props;
+const {
+  title,
+  description,
+  image = '/images/games/horizon-walker/gameimg/gameicon.jpg',
+} = Astro.props;
 ---
 
 <!-- Essential Metadata Only -->
@@ -33,11 +35,53 @@ const { title, description, image } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={image || GameIcon.src} />
+<meta property="og:image" content={image} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={image || GameIcon.src} />
+<meta property="twitter:image" content={image} />
+
+<!-- Critical Background CSS - Prevents white flash -->
+<style>
+  body {
+    background: linear-gradient(135deg, #1a1e1a 0%, #2a2e2a 50%, #1a1e1a 100%) !important;
+  }
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+  }
+  .hw-bg-primary {
+    background: linear-gradient(135deg, #1a1e1a 0%, #2a2e2a 50%, #1a1e1a 100%) !important;
+  }
+  .hw-bg-accent-1 {
+    background: radial-gradient(
+      circle at 15% 85%,
+      rgba(232, 165, 71, 0.08),
+      transparent 60%
+    ) !important;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .hw-bg-accent-2 {
+    background: radial-gradient(
+      circle at 85% 15%,
+      rgba(255, 123, 123, 0.06),
+      transparent 60%
+    ) !important;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .hw-bg-accent-3 {
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(123, 179, 255, 0.05),
+      transparent 60%
+    ) !important;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+</style>
