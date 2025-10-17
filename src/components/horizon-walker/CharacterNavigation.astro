@@ -7,22 +7,40 @@ const currentIndex = HORIZON_WALKER_CHARACTERS.findIndex(
   char => char.slug === currentCharacterSlug
 );
 
+// If character not found, fallback to first character in list
 let prevUrl = '/guides/horizon-walker/characters';
 let nextUrl = '/guides/horizon-walker/characters';
+let prevCharacterName = '';
+let nextCharacterName = '';
 
 if (currentIndex !== -1) {
-  prevUrl =
-    currentIndex > 0
-      ? HORIZON_WALKER_CHARACTERS[currentIndex - 1].detailUrl
-      : HORIZON_WALKER_CHARACTERS[HORIZON_WALKER_CHARACTERS.length - 1].detailUrl;
-  nextUrl =
-    currentIndex < HORIZON_WALKER_CHARACTERS.length - 1
-      ? HORIZON_WALKER_CHARACTERS[currentIndex + 1].detailUrl
-      : HORIZON_WALKER_CHARACTERS[0].detailUrl;
+  // Previous character (wrap to end if at start)
+  const prevIndex = currentIndex > 0 ? currentIndex - 1 : HORIZON_WALKER_CHARACTERS.length - 1;
+  prevUrl = HORIZON_WALKER_CHARACTERS[prevIndex].detailUrl;
+  prevCharacterName =
+    HORIZON_WALKER_CHARACTERS[prevIndex].name || HORIZON_WALKER_CHARACTERS[prevIndex].id.toString();
+
+  // Next character (wrap to start if at end)
+  const nextIndex = currentIndex < HORIZON_WALKER_CHARACTERS.length - 1 ? currentIndex + 1 : 0;
+  nextUrl = HORIZON_WALKER_CHARACTERS[nextIndex].detailUrl;
+  nextCharacterName =
+    HORIZON_WALKER_CHARACTERS[nextIndex].name || HORIZON_WALKER_CHARACTERS[nextIndex].id.toString();
+} else {
+  // Character not found - log for debugging and use first character
+  console.warn(`Character not found: ${currentCharacterSlug}`);
+  if (HORIZON_WALKER_CHARACTERS.length > 0) {
+    prevUrl = HORIZON_WALKER_CHARACTERS[HORIZON_WALKER_CHARACTERS.length - 1].detailUrl;
+    nextUrl = HORIZON_WALKER_CHARACTERS[0].detailUrl;
+    prevCharacterName =
+      HORIZON_WALKER_CHARACTERS[HORIZON_WALKER_CHARACTERS.length - 1].name ||
+      HORIZON_WALKER_CHARACTERS[HORIZON_WALKER_CHARACTERS.length - 1].id.toString();
+    nextCharacterName =
+      HORIZON_WALKER_CHARACTERS[0].name || HORIZON_WALKER_CHARACTERS[0].id.toString();
+  }
 }
 ---
 
-<script define:vars={{ prevUrl, nextUrl }}>
+<script define:vars={{ prevUrl, nextUrl, prevCharacterName, nextCharacterName }}>
   document.addEventListener('keydown', e => {
     const target = e.target;
     if (
@@ -35,9 +53,11 @@ if (currentIndex !== -1) {
       return;
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
+      console.log(`Navigating to previous character: ${prevCharacterName}`);
       window.location.href = prevUrl;
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
+      console.log(`Navigating to next character: ${nextCharacterName}`);
       window.location.href = nextUrl;
     }
   });

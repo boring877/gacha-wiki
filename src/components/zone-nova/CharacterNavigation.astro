@@ -6,22 +6,39 @@ const { currentCharacterSlug } = Astro.props;
 // Get prev/next URLs (server-side)
 const currentIndex = ZONE_NOVA_CHARACTERS.findIndex(char => char.slug === currentCharacterSlug);
 
+// If character not found, fallback to first character in list
 let prevUrl = '/guides/zone-nova/characters';
 let nextUrl = '/guides/zone-nova/characters';
+let prevCharacterName = '';
+let nextCharacterName = '';
 
 if (currentIndex !== -1) {
-  prevUrl =
-    currentIndex > 0
-      ? ZONE_NOVA_CHARACTERS[currentIndex - 1].detailUrl
-      : ZONE_NOVA_CHARACTERS[ZONE_NOVA_CHARACTERS.length - 1].detailUrl;
-  nextUrl =
-    currentIndex < ZONE_NOVA_CHARACTERS.length - 1
-      ? ZONE_NOVA_CHARACTERS[currentIndex + 1].detailUrl
-      : ZONE_NOVA_CHARACTERS[0].detailUrl;
+  // Previous character (wrap to end if at start)
+  const prevIndex = currentIndex > 0 ? currentIndex - 1 : ZONE_NOVA_CHARACTERS.length - 1;
+  prevUrl = ZONE_NOVA_CHARACTERS[prevIndex].detailUrl;
+  prevCharacterName =
+    ZONE_NOVA_CHARACTERS[prevIndex].name || ZONE_NOVA_CHARACTERS[prevIndex].id.toString();
+
+  // Next character (wrap to start if at end)
+  const nextIndex = currentIndex < ZONE_NOVA_CHARACTERS.length - 1 ? currentIndex + 1 : 0;
+  nextUrl = ZONE_NOVA_CHARACTERS[nextIndex].detailUrl;
+  nextCharacterName =
+    ZONE_NOVA_CHARACTERS[nextIndex].name || ZONE_NOVA_CHARACTERS[nextIndex].id.toString();
+} else {
+  // Character not found - log for debugging and use first character
+  console.warn(`Character not found: ${currentCharacterSlug}`);
+  if (ZONE_NOVA_CHARACTERS.length > 0) {
+    prevUrl = ZONE_NOVA_CHARACTERS[ZONE_NOVA_CHARACTERS.length - 1].detailUrl;
+    nextUrl = ZONE_NOVA_CHARACTERS[0].detailUrl;
+    prevCharacterName =
+      ZONE_NOVA_CHARACTERS[ZONE_NOVA_CHARACTERS.length - 1].name ||
+      ZONE_NOVA_CHARACTERS[ZONE_NOVA_CHARACTERS.length - 1].id.toString();
+    nextCharacterName = ZONE_NOVA_CHARACTERS[0].name || ZONE_NOVA_CHARACTERS[0].id.toString();
+  }
 }
 ---
 
-<script define:vars={{ prevUrl, nextUrl }}>
+<script define:vars={{ prevUrl, nextUrl, prevCharacterName, nextCharacterName }}>
   document.addEventListener('keydown', e => {
     const target = e.target;
     if (
@@ -34,9 +51,11 @@ if (currentIndex !== -1) {
       return;
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
+      console.log(`Navigating to previous character: ${prevCharacterName}`);
       window.location.href = prevUrl;
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
+      console.log(`Navigating to next character: ${nextCharacterName}`);
       window.location.href = nextUrl;
     }
   });

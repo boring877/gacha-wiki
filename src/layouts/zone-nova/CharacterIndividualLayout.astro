@@ -110,6 +110,11 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
             )
           }
 
+          <!-- Navigation Note -->
+          <div class="navigation-note">
+            <p>Tip: Use ← → arrow keys to navigate between characters</p>
+          </div>
+
           <!-- Breadcrumb Navigation -->
           <Breadcrumb
             autoGenerate={true}
@@ -127,5 +132,23 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 
       <Footer />
     </div>
+
+    <style>
+      .navigation-note {
+        text-align: center;
+        margin: 1rem 0;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .navigation-note p {
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.8;
+        color: var(--zn-text-primary, #ffffff);
+      }
+    </style>
   </body>
 </html>

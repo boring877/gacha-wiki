@@ -6,24 +6,37 @@ const { currentCharacterSlug } = Astro.props;
 // Get prev/next URLs (server-side)
 const currentIndex = characters.findIndex(char => char.slug === currentCharacterSlug);
 
-// If character not found, default to first character navigation
+// If character not found, fallback to first character in list
 let prevUrl = '/guides/silver-and-blood/characters';
 let nextUrl = '/guides/silver-and-blood/characters';
+let prevCharacterName = '';
+let nextCharacterName = '';
 
 if (currentIndex !== -1) {
-  prevUrl =
-    currentIndex > 0
-      ? characters[currentIndex - 1].detailUrl
-      : characters[characters.length - 1].detailUrl;
-  nextUrl =
-    currentIndex < characters.length - 1
-      ? characters[currentIndex + 1].detailUrl
-      : characters[0].detailUrl;
+  // Previous character (wrap to end if at start)
+  const prevIndex = currentIndex > 0 ? currentIndex - 1 : characters.length - 1;
+  prevUrl = characters[prevIndex].detailUrl;
+  prevCharacterName = characters[prevIndex].name || characters[prevIndex].id;
+
+  // Next character (wrap to start if at end)
+  const nextIndex = currentIndex < characters.length - 1 ? currentIndex + 1 : 0;
+  nextUrl = characters[nextIndex].detailUrl;
+  nextCharacterName = characters[nextIndex].name || characters[nextIndex].id;
+} else {
+  // Character not found - log for debugging and use first character
+  console.warn(`Character not found: ${currentCharacterSlug}`);
+  if (characters.length > 0) {
+    prevUrl = characters[characters.length - 1].detailUrl;
+    nextUrl = characters[0].detailUrl;
+    prevCharacterName =
+      characters[characters.length - 1].name || characters[characters.length - 1].id;
+    nextCharacterName = characters[0].name || characters[0].id;
+  }
 }
 ---
 
 <!-- Client-side navigation script -->
-<script define:vars={{ prevUrl, nextUrl }}>
+<script define:vars={{ prevUrl, nextUrl, prevCharacterName, nextCharacterName }}>
   // Keyboard navigation
   document.addEventListener('keydown', e => {
     const target = e.target;
@@ -39,9 +52,11 @@ if (currentIndex !== -1) {
 
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
+      console.log(`Navigating to previous character: ${prevCharacterName}`);
       window.location.href = prevUrl;
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
+      console.log(`Navigating to next character: ${nextCharacterName}`);
       window.location.href = nextUrl;
     }
   });
