@@ -1,13 +1,14 @@
 // Summer Afternoon Nap Time Memory Data - Zone Nova
-// Disaster Memory Card (No specific character)
-
 export const summerAfternoonNapTimeData = {
-  // Basic Memory Information
+  id: 'summer-afternoon-nap-time',
+  slug: 'summer-afternoon-nap-time',
   name: 'Summer Afternoon Nap Time',
-  chineseName: '夏日午休时间',
   image: '/images/games/zone-nova/memories/Summer-Afternoon-Nap-Time.jpg',
   rarity: 'SR',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Mage', // Mage class
+  detailUrl: '/guides/zone-nova/memories/summer-afternoon-nap-time/',
 
   // Memory Stats
   stats: {
@@ -23,12 +24,6 @@ export const summerAfternoonNapTimeData = {
     'Attack power increased by 20%',
     'For each enemy on the field, attack power additionally increases by 5%, max 4 stacks',
   ],
-
-  // General Synergy Information (since no specific character)
-  synergy: {
-    description:
-      'This memory card is designed for disaster-class characters, providing scaling offensive power based on enemy count. The base 20% attack increase provides consistent damage enhancement, while the enemy-scaling mechanic (up to 4 stacks of 5% each) rewards disaster units for engaging multiple opponents. At maximum stacks against 4+ enemies, this memory provides a total of 40% attack power increase, making it extremely powerful in multi-enemy encounters and ideal for disaster units who excel at AoE damage.',
-  },
 };
 
 // SEO Data

@@ -3,10 +3,10 @@
 // Zone Nova Memory Page Template
 // This template creates individual memory pages with complete information
 import ZoneNovaLayout from '../../layouts/zone-nova/LandingLayout.astro';
-import { Image } from 'astro:assets';
+import ZNMemoryImage from '../../components/zone-nova/ZNMemoryImage.astro';
+import ZNClassImage from '../../components/zone-nova/ZNClassImage.astro';
 
-// Import the memory-specific CSS
-import '../../styles/games/zone-nova/zn-memory-pages.css';
+import { getCharacterClass } from '../../data/zone-nova/characters.js';
 
 export interface Props {
   memoryData: any;
@@ -15,9 +15,59 @@ export interface Props {
 
 const { memoryData, memorySEO } = Astro.props;
 
-// Get memory slug from props (available via the memory object)
-// The memory object comes from the page's props and has the slug
-const memorySlug = memoryData.slug || Astro.url.pathname.split('/').filter(Boolean).pop() || '';
+// Extract image filename from the path for ZNMemoryImage component
+const getImageFilename = (imagePath: string): string => {
+  if (!imagePath) return '';
+  return imagePath.split('/').pop() || '';
+};
+
+const memoryImageFilename = getImageFilename(memoryData.image);
+
+// Helper function to get memory class type from memory restrictions
+function getMemoryClass(memoryData: any): string {
+  // First check if memory has explicit class field
+  if (memoryData.class) {
+    return memoryData.class;
+  }
+  
+  // Check memory effects for class restrictions
+  if (memoryData.effects && memoryData.effects.length > 0) {
+    const effectsText = memoryData.effects.join(' ').toLowerCase();
+    
+    if (effectsText.includes('only effective for guardians') || effectsText.includes('guardian class restriction')) {
+      return 'Guardian';
+    }
+    if (effectsText.includes('only effective for healers') || effectsText.includes('healer class restriction')) {
+      return 'Healer';
+    }
+    if (effectsText.includes('only effective for warriors') || effectsText.includes('warrior class restriction')) {
+      return 'Warrior';
+    }
+    if (effectsText.includes('only effective for rogues') || effectsText.includes('rogue class restriction')) {
+      return 'Rogue';
+    }
+    if (effectsText.includes('only effective for mages') || effectsText.includes('mage class restriction')) {
+      return 'Mage';
+    }
+    if (effectsText.includes('only effective for buffers') || effectsText.includes('buffer class restriction')) {
+      return 'Buffer';
+    }
+    if (effectsText.includes('only effective for debuffers') || effectsText.includes('debuffer class restriction')) {
+      return 'Debuffer';
+    }
+    if (effectsText.includes('only effective for dps') || effectsText.includes('dps class restriction')) {
+      return 'DPS';
+    }
+  }
+  
+  // For character-specific memories, check the character's actual class
+  if (memoryData.character) {
+    const characterClass = getCharacterClass(memoryData.character);
+    if (characterClass) return characterClass;
+  }
+  
+  return 'Universal';
+}
 
 // Helper function to convert character names to URL slugs
 function getCharacterUrl(characterName: string): string {
@@ -39,34 +89,7 @@ function getCharacterUrl(characterName: string): string {
   return baseUrl + characterName.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '') + '/';
 }
 
-// Helper function to determine memory class subtitle
-function getClassMemorySubtitle(effects: string[]): string {
-  const effectsText = effects.join(' ').toLowerCase();
 
-  if (effectsText.includes('only effective for guardians')) {
-    return 'Guardian Class Memory Card';
-  } else if (effectsText.includes('only effective for healers')) {
-    return 'Healer Class Memory Card';
-  } else if (effectsText.includes('only effective for disaster')) {
-    return 'Disaster Class Memory Card';
-  } else if (effectsText.includes('only effective for strikers')) {
-    return 'Striker Class Memory Card';
-  } else if (effectsText.includes('only effective for supports')) {
-    return 'Support Class Memory Card';
-  } else if (effectsText.includes('only effective for disruptors')) {
-    return 'Disruptor Class Memory Card';
-  } else if (effectsText.includes('only effective for enhancers')) {
-    return 'Enhancer Class Memory Card';
-  } else if (effectsText.includes('only effective for berserker')) {
-    return 'Berserker Class Memory Card';
-  } else if (effectsText.includes('only effective for dps')) {
-    return 'DPS Class Memory Card';
-  } else if (effectsText.includes('only effective for debuffer')) {
-    return 'Debuffer Class Memory Card';
-  } else {
-    return 'Universal Memory Card';
-  }
-}
 ---
 
 <ZoneNovaLayout
@@ -74,155 +97,705 @@ function getClassMemorySubtitle(effects: string[]): string {
   description={memorySEO.description}
   gameTitle={`${memoryData.name} - Memory Card`}
 >
-  <Fragment slot="head">
-    <!-- Preload critical memory images for instant viewing -->
-    <link rel="preload" href={memoryData.image} as="image" fetchpriority="high" />
-
-    <!-- Preload related character images if available -->
-    {
-      memoryData.relatedCharacter && (
-        <link
-          rel="preload"
-          href={`/images/games/zone-nova/characters/${memoryData.relatedCharacter}.jpg`}
-          as="image"
-        />
-      )
-    }
-
-    <!-- Preload memory-specific CSS -->
-    <link rel="preload" href="/src/styles/games/zone-nova/zn-memory-pages.css" as="style" />
-  </Fragment>
-
   <div class="memory-page">
-    <!-- Premium Memory Overview Header -->
-    <section class="memory-overview-premium">
-      <div class="memory-hero-container">
-        <!-- Memory Card Display -->
-        <div class="memory-card-showcase">
+    <!-- Memory Card Header -->
+    <section class="memory-header">
+      <div class="memory-container">
+        <div class="memory-card-display">
           <div class="memory-card-frame">
-            <Image
-              src={memoryData.image}
+            <ZNMemoryImage
+              imageName={memoryImageFilename}
               alt={memoryData.name}
               width={200}
               height={300}
-              format="webp"
-              quality={85}
               loading="lazy"
-              class="memory-card-image-premium"
+              class="memory-card-image"
             />
-            <div class="memory-card-glow"></div>
-          </div>
-
-          <!-- Rarity Badge Overlay -->
-          <div class="memory-rarity-overlay">
-            <span class={`memory-rarity-badge-premium ${memoryData.rarity.toLowerCase()}`}>
-              {memoryData.rarity}
-            </span>
           </div>
         </div>
 
-        <!-- Memory Information Panel -->
-        <div class="memory-info-panel">
-          <div class="memory-header-section">
-            <h1 class="memory-title-premium">{memoryData.name}</h1>
-            <p class="memory-subtitle-premium">
-              {
-                memoryData.character
-                  ? `Exclusive Memory for ${memoryData.character}`
-                  : getClassMemorySubtitle(memoryData.effects)
-              }
+        <div class="memory-info">
+          <div class="memory-header-info">
+            <h1 class="memory-title">{memoryData.name}</h1>
+          </div>
+          
+          <div class="memory-details">
+            {memoryData.element && (
+              <div class="detail-item">
+                <span class="detail-label">Element</span>
+                <span class={`element-badge ${memoryData.element.toLowerCase()}`}>
+                  {memoryData.element}
+                </span>
+              </div>
+            )}
+            
+            {memoryData.character && (
+              <div class="detail-item">
+                <span class="detail-label">Character</span>
+                <span class="character-text">{memoryData.character}</span>
+              </div>
+            )}
+            
+            <div class="detail-item">
+              <span class="detail-label">Card Type</span>
+              <div class="card-type-info">
+                <ZNClassImage 
+                  className={getMemoryClass(memoryData)} 
+                  alt={getMemoryClass(memoryData)} 
+                  size="small"
+                  class="class-icon-small"
+                />
+                <span class="type-badge-text">
+                  {getMemoryClass(memoryData)}
+                  {memoryData.character ? ' - Exclusive' : ' - Universal'}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memory Stats -->
+    <section class="memory-stats">
+      <h2 class="section-title">Base Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-card hp">
+          <div class="stat-value">{memoryData.stats.hp.toLocaleString()}</div>
+          <div class="stat-label">HP</div>
+        </div>
+        <div class="stat-card attack">
+          <div class="stat-value">{memoryData.stats.attack.toLocaleString()}</div>
+          <div class="stat-label">Attack</div>
+        </div>
+        <div class="stat-card defense">
+          <div class="stat-value">{memoryData.stats.defense.toLocaleString()}</div>
+          <div class="stat-label">Defense</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memory Effects -->
+    <section class="memory-effects">
+      <h2 class="section-title">Card Effects</h2>
+      <div class="effects-container">
+        {memoryData.effects.map((effect, index) => (
+          <div class="effect-item" key={index}>
+            <div class="effect-number">{index + 1}</div>
+            <div class="effect-text">{effect}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Character Synergy -->
+    {memoryData.character && (
+      <section class="memory-synergy">
+        <h2 class="section-title">Character Synergy</h2>
+        <div class="synergy-card">
+          <div class="synergy-content">
+            <p>
+              This memory card is specifically designed for <strong>{memoryData.character}</strong> 
+              and provides optimal synergy with their abilities and playstyle. The effects complement 
+              their kit perfectly for maximum effectiveness.
             </p>
-
-            {
-              memoryData.element && (
-                <div class="memory-element-display">
-                  <span class={`memory-element-badge-premium ${memoryData.element.toLowerCase()}`}>
-                    {memoryData.element}
-                  </span>
-                </div>
-              )
-            }
-          </div>
-
-          <!-- Premium Stats Display -->
-          <div class="memory-stats-premium">
-            <h3 class="stats-section-title">Memory Stats</h3>
-            <div class="memory-stats-grid-premium">
-              <div class="memory-stat-premium hp">
-                <div class="stat-icon">❤️</div>
-                <div class="stat-info">
-                  <div class="stat-label">HP</div>
-                  <div class="stat-value">{memoryData.stats.hp.toLocaleString()}</div>
-                </div>
-              </div>
-              <div class="memory-stat-premium attack">
-                <div class="stat-icon">⚔️</div>
-                <div class="stat-info">
-                  <div class="stat-label">ATK</div>
-                  <div class="stat-value">{memoryData.stats.attack.toLocaleString()}</div>
-                </div>
-              </div>
-              <div class="memory-stat-premium defense">
-                <div class="stat-icon">🛡️</div>
-                <div class="stat-info">
-                  <div class="stat-label">DEF</div>
-                  <div class="stat-value">{memoryData.stats.defense.toLocaleString()}</div>
-                </div>
-              </div>
-            </div>
+            <a href={getCharacterUrl(memoryData.character)} class="symlink">
+              <span>View {memoryData.character} Character Guide</span>
+              <span class="arrow">→</span>
+            </a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Premium Memory Effects Section -->
-    <section class="memory-effects-premium">
-      <div class="effects-header">
-        <h2 class="effects-title-premium">Memory Effects</h2>
-        <p class="effects-subtitle">Abilities granted by this memory card</p>
-      </div>
-
-      <div class="effects-content-premium">
-        <ul class="effects-list-premium">
-          {memoryData.effects.map(effect => <li class="effect-item-premium">{effect}</li>)}
-        </ul>
-      </div>
-    </section>
-
-    <!-- Premium Character Synergy Section -->
-    {
-      memoryData.character && (
-        <section class="character-synergy-premium">
-          <div class="synergy-container">
-            <div class="synergy-header">
-              <h2 class="synergy-title-premium">Character Synergy</h2>
-              <div class="synergy-character-highlight">
-                <span class="character-name-premium">{memoryData.character}</span>
-                <span class="exclusive-badge">Exclusive</span>
-              </div>
-            </div>
-
-            <div class="synergy-content">
-              <p class="synergy-description">
-                This memory card is specifically designed for{' '}
-                <strong>{memoryData.character}</strong> and provides optimal synergy with their
-                abilities and playstyle. The effects complement their kit perfectly for maximum
-                effectiveness.
-              </p>
-
-              <a href={getCharacterUrl(memoryData.character)} class="character-guide-link-premium">
-                <div class="link-icon">
-                  <div class="icon-text">CHAR</div>
-                </div>
-                <div class="link-content">
-                  <span class="link-text">View {memoryData.character} Character Guide</span>
-                  <span class="link-arrow">→</span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
-      )
-    }
+      </section>
+    )}
   </div>
+
+  <style>
+    .memory-page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    .memory-header {
+      margin-bottom: 2rem;
+    }
+
+    .memory-container {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      background: var(--zn-bg-secondary);
+      border: 1px solid var(--zn-border-primary);
+      border-radius: 8px;
+      padding: 1.5rem;
+      align-items: start;
+    }
+
+    .memory-card-display {
+      position: relative;
+    }
+
+    .memory-card-frame {
+      background: var(--zn-bg-tertiary);
+      border: 1px solid var(--zn-border-primary);
+      border-radius: 6px;
+      padding: 0.75rem;
+    }
+
+    .memory-card-image {
+      border-radius: 4px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .memory-info {
+      padding-top: 0.5rem;
+    }
+
+    .memory-header-info {
+      margin-bottom: 1.5rem;
+    }
+
+    .memory-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--zn-text-primary);
+      line-height: 1.2;
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .memory-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem;
+      background: var(--zn-bg-tertiary);
+      border-radius: 6px;
+      border: 1px solid var(--zn-border-primary);
+    }
+
+    .detail-label {
+      color: var(--zn-text-primary);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .card-type-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .class-icon-small {
+      width: 24px;
+      height: 24px;
+    }
+
+    .element-badge {
+      padding: 0.375rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+
+    .element-badge.fire { background: var(--zn-badge-fire); color: var(--zn-badge-white); }
+    .element-badge.ice { background: var(--zn-badge-ice); color: var(--zn-badge-white); }
+    .element-badge.wind { background: var(--zn-badge-wind); color: var(--zn-badge-black); }
+    .element-badge.holy { background: var(--zn-badge-holy); color: var(--zn-badge-black); }
+    .element-badge.chaos { background: var(--zn-badge-chaos); color: var(--zn-badge-white); }
+
+    .type-badge-text {
+      color: var(--zn-text-primary);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .character-text {
+      color: var(--zn-text-primary);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--zn-primary-amber);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--zn-primary-amber);
+      padding-bottom: 0.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--zn-bg-secondary);
+      border: 1px solid var(--zn-border-primary);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--zn-text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--zn-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .effects-container {
+      background: var(--zn-bg-secondary);
+      border: 1px solid var(--zn-border-primary);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .effect-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--zn-border-primary);
+    }
+
+    .effect-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .effect-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--zn-primary-amber);
+      color: var(--zn-bg-primary);
+      border-radius: 50%;
+      font-weight: 600;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .effect-text {
+      color: var(--zn-text-secondary);
+      line-height: 1.5;
+      font-size: 0.9375rem;
+    }
+
+    .synergy-card {
+      background: var(--zn-bg-secondary);
+      border: 1px solid var(--zn-border-primary);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .synergy-content p {
+      color: var(--zn-text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .symlink {
+      color: var(--zn-primary-amber);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Tablet Optimization */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .memory-page {
+        padding: 1.25rem;
+        max-width: 900px;
+      }
+
+      .memory-container {
+        grid-template-columns: 180px 1fr;
+        gap: 1.5rem;
+        padding: 1.25rem;
+      }
+
+      .memory-title {
+        font-size: 1.75rem;
+      }
+
+      .memory-card-image {
+        max-width: 180px;
+        height: auto;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .detail-item {
+        padding: 0.65rem;
+      }
+    }
+
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+      .memory-page {
+        padding: 1rem;
+        max-width: 100%;
+      }
+
+      .memory-header {
+        margin-bottom: 1.5rem;
+      }
+
+      .memory-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+        padding: 1.25rem;
+      }
+
+      .memory-card-display {
+        max-width: 250px;
+        margin: 0 auto;
+      }
+
+      .memory-card-frame {
+        padding: 0.6rem;
+      }
+
+      .memory-card-image {
+        width: 100%;
+        height: auto;
+        max-width: 200px;
+        border-radius: 6px;
+      }
+
+      .memory-info {
+        padding-top: 0;
+      }
+
+      .memory-title {
+        font-size: 1.625rem;
+        text-align: center;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+      }
+
+      .memory-header-info {
+        margin-bottom: 1.25rem;
+      }
+
+      .memory-details {
+        gap: 0.875rem;
+      }
+
+      .detail-item {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .detail-label {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .card-type-info {
+        justify-content: center;
+        gap: 0.75rem;
+      }
+
+      .class-icon-small {
+        width: 28px;
+        height: 28px;
+      }
+
+      .type-badge-text,
+      .character-text {
+        font-size: 1rem;
+      }
+
+      .element-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        border-radius: 8px;
+      }
+
+      /* Section improvements */
+      .section-title {
+        font-size: 1.125rem;
+        margin-bottom: 0.875rem;
+        padding-bottom: 0.4rem;
+        text-align: center;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.875rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .stat-card {
+        padding: 1.25rem;
+        border-radius: 10px;
+      }
+
+      .stat-value {
+        font-size: 1.375rem;
+        margin-bottom: 0.375rem;
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+        letter-spacing: 0.6px;
+      }
+
+      .effects-container {
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+      }
+
+      .effect-item {
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+        padding-bottom: 1.25rem;
+        align-items: flex-start;
+      }
+
+      .effect-number {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .effect-text {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .synergy-card {
+        padding: 1.25rem;
+        border-radius: 10px;
+      }
+
+      .synergy-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.125rem;
+        text-align: center;
+      }
+
+      .symlink {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--zn-primary);
+        color: var(--zn-bg-primary);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+    }
+
+    /* Small Mobile Optimization */
+    @media (max-width: 480px) {
+      .memory-page {
+        padding: 0.875rem;
+      }
+
+      .memory-container {
+        gap: 1.25rem;
+        padding: 1rem;
+      }
+
+      .memory-card-display {
+        max-width: 220px;
+      }
+
+      .memory-card-image {
+        max-width: 180px;
+      }
+
+      .memory-title {
+        font-size: 1.5rem;
+      }
+
+      .memory-header {
+        margin-bottom: 1.25rem;
+      }
+
+      .memory-header-info {
+        margin-bottom: 1rem;
+      }
+
+      .memory-details {
+        gap: 0.75rem;
+      }
+
+      .detail-item {
+        padding: 0.875rem;
+        gap: 0.625rem;
+      }
+
+      .detail-label {
+        font-size: 0.925rem;
+      }
+
+      .type-badge-text,
+      .character-text {
+        font-size: 0.925rem;
+      }
+
+      .element-badge {
+        padding: 0.4rem 0.875rem;
+        font-size: 0.85rem;
+      }
+
+      .class-icon-small {
+        width: 24px;
+        height: 24px;
+      }
+
+      .section-title {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .stat-card {
+        padding: 1rem;
+      }
+
+      .stat-value {
+        font-size: 1.25rem;
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
+      }
+
+      .effects-container {
+        padding: 1rem;
+      }
+
+      .effect-item {
+        gap: 0.875rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      .effect-number {
+        width: 26px;
+        height: 26px;
+        font-size: 0.75rem;
+      }
+
+      .effect-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .synergy-card {
+        padding: 1rem;
+      }
+
+      .synergy-content p {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+
+      .symlink {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        margin: 0 auto;
+        display: flex;
+      }
+    }
+
+    /* Very Small Mobile Optimization */
+    @media (max-width: 380px) {
+      .memory-page {
+        padding: 0.75rem;
+      }
+
+      .memory-container {
+        gap: 1rem;
+        padding: 0.875rem;
+      }
+
+      .memory-card-image {
+        max-width: 160px;
+      }
+
+      .memory-title {
+        font-size: 1.375rem;
+      }
+
+      .detail-item {
+        padding: 0.75rem;
+      }
+
+      .stat-card {
+        padding: 0.875rem;
+      }
+
+      .stat-value {
+        font-size: 1.125rem;
+      }
+
+      .effects-container {
+        padding: 0.875rem;
+      }
+
+      .effect-text {
+        font-size: 0.9rem;
+      }
+
+      .synergy-card {
+        padding: 0.875rem;
+      }
+
+      .symlink {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+        max-width: 260px;
+      }
+    }
+  </style>
 </ZoneNovaLayout>

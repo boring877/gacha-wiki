@@ -12,7 +12,7 @@ export const ZONE_NOVA_FACTIONS = {
   Sapphire: {
     name: 'Sapphire',
     chineseName: '萨纳尔',
-    characters: ['Shanna', 'Penny', 'Chiya', 'Kela', 'Lavinia', 'Lyra', 'Naiya'],
+    characters: ['Shanna', 'Penny', 'Chiya', 'Kela', 'Lavinia', 'Lily', 'Lyra', 'Naiya'],
     color: '#2196f3',
     description: 'The Sapphire faction',
   },

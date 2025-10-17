@@ -1,13 +1,14 @@
 // Morning Sunlight Memory Data - Zone Nova
-// Support Memory Card (No specific character)
-
 export const morningSunlightData = {
-  // Basic Memory Information
+  id: 'morning-sunlight',
+  slug: 'morning-sunlight',
   name: 'Morning Sunlight',
-  chineseName: '晨曦的阳光',
   image: '/images/games/zone-nova/memories/Morning-Sunlight .jpg',
   rarity: 'SR',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Buffer', // Buffer class
+  detailUrl: '/guides/zone-nova/memories/morning-sunlight/',
 
   // Memory Stats
   stats: {

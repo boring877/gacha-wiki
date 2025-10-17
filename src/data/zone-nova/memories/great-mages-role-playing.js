@@ -1,13 +1,14 @@
 // Great Mage's Role Playing Memory Data - Zone Nova
-// Striker Memory Card (No specific character)
-
 export const greatMagesRolePlayingData = {
-  // Basic Memory Information
+  id: 'great-mages-role-playing',
+  slug: 'great-mages-role-playing',
   name: "Great Mage's Role Playing",
-  chineseName: '大魔法师的角色扮演',
   image: "/images/games/zone-nova/memories/Great-Mage's-Role-Playing.jpg",
   rarity: 'SR',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Rogue', // Rogue class
+  detailUrl: '/guides/zone-nova/memories/great-mages-role-playing/',
 
   // Memory Stats
   stats: {

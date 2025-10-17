@@ -1,13 +1,14 @@
 // Guerrilla User's Reminiscence Memory Data - Zone Nova
-// Universal Memory Card (No specific character or class restriction)
-
 export const guerrillaUsersReminiscenceData = {
-  // Basic Memory Information
+  id: 'guerrilla-users-reminiscence',
+  slug: 'guerrilla-users-reminiscence',
   name: "Guerrilla User's Reminiscence",
-  chineseName: '游击使追忆',
   image: '/images/games/zone-nova/memories/Increase-User-Attack-TwoSwords.jpg',
   rarity: 'R',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Rogue', // Rogue class
+  detailUrl: '/guides/zone-nova/memories/guerrilla-users-reminiscence/',
 
   // Memory Stats
   stats: {

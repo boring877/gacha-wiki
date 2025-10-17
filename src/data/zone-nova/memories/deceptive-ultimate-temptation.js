@@ -1,13 +1,14 @@
 // Deceptive Ultimate Temptation Memory Data - Zone Nova
-// Disruptor Memory Card (No specific character)
-
 export const deceptiveUltimateTemptationData = {
-  // Basic Memory Information
+  id: 'deceptive-ultimate-temptation',
+  slug: 'deceptive-ultimate-temptation',
   name: 'Deceptive Ultimate Temptation',
-  chineseName: '敗诈的极致诱惑',
   image: '/images/games/zone-nova/memories/Deceptive-Ultimate-Temptation.jpg',
   rarity: 'SR',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Debuffer', // Debuffer class
+  detailUrl: '/guides/zone-nova/memories/deceptive-ultimate-temptation/',
 
   // Memory Stats
   stats: {

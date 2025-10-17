@@ -1,13 +1,14 @@
 // Ancient Method to Eliminate Fatigue Memory Data - Zone Nova
-// Healer Memory Card (No specific character)
-
 export const ancientMethodToEliminateFatigueData = {
-  // Basic Memory Information
+  id: 'ancient-method-to-eliminate-fatigue',
+  slug: 'ancient-method-to-eliminate-fatigue',
   name: 'Ancient Method to Eliminate Fatigue',
-  chineseName: '消除疲劳的古法治疗',
   image: '/images/games/zone-nova/memories/Ancient-Method-to-Eliminate-Fatigue.jpg',
   rarity: 'SR',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Healer', // Healer class
+  detailUrl: '/guides/zone-nova/memories/ancient-method-to-eliminate-fatigue/',
 
   // Memory Stats
   stats: {
@@ -23,12 +24,6 @@ export const ancientMethodToEliminateFatigueData = {
     'Healing amount increased by 30%',
     'Each time healing, healing target gains +20% attack for 3 seconds',
   ],
-
-  // General Synergy Information (since no specific character)
-  synergy: {
-    description:
-      'This memory card is designed for healer-class characters, providing both enhanced healing capabilities and offensive support. The 30% healing boost makes healers more effective at sustaining the team, while the attack buff mechanic transforms healers into hybrid support units. Each heal grants a 3-second attack boost to the target, making this memory particularly valuable for sustained combat where frequent healing creates continuous damage amplification for the team.',
-  },
 };
 
 // SEO Data

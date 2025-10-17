@@ -1,13 +1,14 @@
 // Annihilation User's Reminiscence Memory Data - Zone Nova
-// Universal Memory Card (No specific character or class restriction)
-
 export const annihilationUsersReminiscenceData = {
-  // Basic Memory Information
+  id: 'annihilation-users-reminiscence',
+  slug: 'annihilation-users-reminiscence',
   name: 'Increase User Attack',
-  chineseName: '歼灭使追忆',
   image: '/images/games/zone-nova/memories/Increase-User-Attack.jpg',
   rarity: 'R',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Mage', // Mage class
+  detailUrl: '/guides/zone-nova/memories/annihilation-users-reminiscence/',
 
   // Memory Stats
   stats: {

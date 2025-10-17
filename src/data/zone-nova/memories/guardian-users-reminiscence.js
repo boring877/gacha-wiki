@@ -1,13 +1,14 @@
 // Guardian User's Reminiscence Memory Data - Zone Nova
-// Universal Memory Card (No specific character or class restriction)
-
 export const guardianUsersReminiscenceData = {
-  // Basic Memory Information
+  id: 'guardian-users-reminiscence',
+  slug: 'guardian-users-reminiscence',
   name: "Guardian User's Reminiscence",
-  chineseName: '守护使追忆',
   image: '/images/games/zone-nova/memories/Guardian-User-Defence.jpg',
   rarity: 'R',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Guardian', // Guardian class
+  detailUrl: '/guides/zone-nova/memories/guardian-users-reminiscence/',
 
   // Memory Stats
   stats: {

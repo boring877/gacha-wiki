@@ -1,13 +1,14 @@
 // Qianjue's Reminiscence Memory Data - Zone Nova
-// Universal Memory Card (No specific character or class restriction)
-
 export const qianjuesReminiscenceData = {
-  // Basic Memory Information
+  id: 'qianjues-reminiscence',
+  slug: 'qianjues-reminiscence',
   name: "Qianjue's Reminiscence",
-  chineseName: '千玦使追忆',
   image: "/images/games/zone-nova/memories/Qianjue's-Reminiscence.jpg",
   rarity: 'R',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Debuffer', // Debuffer class
+  detailUrl: '/guides/zone-nova/memories/qianjues-reminiscence/',
 
   // Memory Stats
   stats: {

@@ -971,6 +971,25 @@ export const ZONE_NOVA_MEMORIES = [
     ],
   },
   {
+    id: 'in-the-cafe-sneaking-a-bite',
+    slug: 'in-the-cafe-sneaking-a-bite',
+    name: 'In the Cafe, Sneaking a Bite',
+    image: '/images/games/zone-nova/memories/Lilycard.jpg',
+    rarity: 'SSR',
+    element: 'Ice',
+    character: 'Lily',
+    detailUrl: '/guides/zone-nova/memories/in-the-cafe-sneaking-a-bite/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    },
+    effects: [
+      'Defense increases by 64%',
+      'After successful mitigation, damage taken is reduced by 10% for 5 seconds. When the wearer has a shield, damage taken is reduced by 18%.',
+    ],
+  },
+  {
     id: 'night-assault-suspect',
     slug: 'night-assault-suspect',
     name: 'Night Assault Suspect',
@@ -1018,6 +1037,7 @@ export const MEMORY_METADATA = {
     'Kela',
     'Lancelot',
     'Leviathan',
+    'Lily',
     'Loki',
     'Lyra',
     'Merlin',

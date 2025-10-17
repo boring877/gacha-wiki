@@ -1,13 +1,14 @@
 // Swimsuit Sovereign Who Makes Hearts Flutter Memory Data - Zone Nova
-// Enhancer Memory Card (No specific character)
-
 export const swimsuitSovereignWhoMakesHeartsFlutterData = {
-  // Basic Memory Information
+  id: 'swimsuit-sovereign-who-makes-hearts-flutter',
+  slug: 'swimsuit-sovereign-who-makes-hearts-flutter',
   name: 'Swimsuit Sovereign Who Makes Hearts Flutter',
-  chineseName: '心动不已的泳装爱神',
   image: '/images/games/zone-nova/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg',
   rarity: 'SR',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Warrior', // Warrior class
+  detailUrl: '/guides/zone-nova/memories/swimsuit-sovereign-who-makes-hearts-flutter/',
 
   // Memory Stats
   stats: {

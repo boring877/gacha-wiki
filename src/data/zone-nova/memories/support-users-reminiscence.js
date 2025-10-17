@@ -1,13 +1,14 @@
 // Support User's Reminiscence Memory Data - Zone Nova
-// Universal Memory Card (No specific character or class restriction)
-
 export const supportUsersReminiscenceData = {
-  // Basic Memory Information
+  id: 'support-users-reminiscence',
+  slug: 'support-users-reminiscence',
   name: "Support User's Reminiscence",
-  chineseName: '支援使追忆',
   image: "/images/games/zone-nova/memories/Support-User's-Reminiscence.jpg",
   rarity: 'R',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Buffer', // Buffer class
+  detailUrl: '/guides/zone-nova/memories/support-users-reminiscence/',
 
   // Memory Stats
   stats: {

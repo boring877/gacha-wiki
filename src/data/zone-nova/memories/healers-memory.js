@@ -1,13 +1,14 @@
 // Healer's Memory Memory Data - Zone Nova
-// Healer Memory Card (No specific character)
-
 export const healersMemoryData = {
-  // Basic Memory Information
+  id: 'healers-memory',
+  slug: 'healers-memory',
   name: "Healer's Memory",
-  chineseName: '治愈使追忆',
   image: "/images/games/zone-nova/memories/Healer's-Memory.jpg",
   rarity: 'R',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Healer', // Healer class
+  detailUrl: '/guides/zone-nova/memories/healers-memory/',
 
   // Memory Stats
   stats: {

@@ -1,0 +1,11 @@
+---
+import MemoryTemplate from '../../../../templates/zone-nova/MemoryTemplate.astro';
+import {
+  inTheCafeSneakingABiteData,
+  inTheCafeSneakingABiteSEO,
+} from '../../../../data/zone-nova/memories/in-the-cafe-sneaking-a-bite.js';
+
+export const prerender = true;
+---
+
+<MemoryTemplate memoryData={inTheCafeSneakingABiteData} memorySEO={inTheCafeSneakingABiteSEO} />

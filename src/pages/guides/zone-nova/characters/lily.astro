@@ -1,0 +1,17 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
+import { lilyData, lilySEO } from '../../../../data/zone-nova/characters/lily.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={lilySEO.title}
+  description={lilySEO.description}
+  gameTitle={lilyData.name}
+  character={lilyData}
+>
+  <CharacterPageTemplate characterData={lilyData} />
+</CharacterIndividualLayout>

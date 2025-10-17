@@ -1,13 +1,14 @@
 // Sister Penny Trying on New Clothes Memory Data - Zone Nova
-// Guardian Memory Card (No specific character)
-
 export const sisterPennyTryingOnNewClothesData = {
-  // Basic Memory Information
+  id: 'sister-penny-trying-on-new-clothes',
+  slug: 'sister-penny-trying-on-new-clothes',
   name: 'Sister Penny Trying on New Clothes',
-  chineseName: '新衣试穿的潘妮妹妹',
   image: '/images/games/zone-nova/memories/Sister-Penny-Trying-on-New Clothes.jpg',
   rarity: 'SR',
-  character: null, // No specific character associated
+  element: null, // No specific element
+  character: null, // No specific character
+  class: 'Guardian', // Guardian class
+  detailUrl: '/guides/zone-nova/memories/sister-penny-trying-on-new-clothes/',
 
   // Memory Stats
   stats: {

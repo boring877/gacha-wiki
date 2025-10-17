@@ -2,6 +2,7 @@
 // Import your layout
 import ZoneNovaLayout from '../../../layouts/zone-nova/LandingLayout.astro';
 import { Image } from 'astro:assets';
+import ZNMemoryImage from '../../../components/zone-nova/ZNMemoryImage.astro';
 import '../../../styles/games/zone-nova/zn-badge-colour.css';
 import '../../../styles/games/zone-nova/zn-character.css';
 import '../../../styles/games/zone-nova/zn-memories-database.css';
@@ -13,6 +14,12 @@ import {
   getMemoriesByCharacter,
   getMemoryClass,
 } from '../../../data/zone-nova/memories.js';
+
+// Helper function to extract image filename
+const getImageFilename = (imagePath: string): string => {
+  if (!imagePath) return '';
+  return imagePath.split('/').pop() || '';
+};
 ---
 
 <ZoneNovaLayout
@@ -24,41 +31,47 @@ import {
     <div class="main-content-container">
       <div class="content-wrapper">
         {/* <!-- Filter Bar --> */}
-        <div class="filter-bar">
-          <div class="filter-group-left">
-            <div class="filter-section rarity-section">
-              <span class="filter-section-label">Rarity:</span>
-              <div class="filter-buttons">
-                <button class="rarity-filter-btn all active" data-rarity="">All</button>
-                <button class="rarity-filter-btn ssr" data-rarity="SSR">SSR</button>
-                <button class="rarity-filter-btn sr" data-rarity="SR">SR</button>
-                <button class="rarity-filter-btn r" data-rarity="R">R</button>
-              </div>
-            </div>
-
-            <div class="filter-section sort-section">
-              <span class="filter-section-label">Sort by:</span>
-              <div class="filter-buttons">
-                <button class="sort-btn" data-sort="hp">HP</button>
-                <button class="sort-btn" data-sort="attack">ATK</button>
-                <button class="sort-btn" data-sort="defense">DEF</button>
-                <button class="reset-btn" id="reset-table">Reset All</button>
-              </div>
-            </div>
+        <div class="filter-container">
+          <div class="filter-header">
+            <h2 class="filter-title">Filter Memory Cards</h2>
+            <button class="reset-btn" id="reset-table">Reset All</button>
           </div>
 
-          <div class="filter-group-right">
-            <div class="filter-section class-section">
-              <span class="filter-section-label">Class:</span>
-              <div class="filter-buttons">
-                <button class="class-filter-btn all active" data-class="">All</button>
-                {
-                  MEMORY_METADATA.classes.map(className => (
-                    <button class="class-filter-btn" data-class={className}>
-                      {className}
-                    </button>
-                  ))
-                }
+          <div class="filter-controls">
+            <div class="filter-row">
+              <div class="filter-group">
+                <label class="filter-label">Rarity</label>
+                <div class="button-group rarity-group">
+                  <button class="filter-btn all active" data-rarity="">All</button>
+                  <button class="filter-btn ssr" data-rarity="SSR">SSR</button>
+                  <button class="filter-btn sr" data-rarity="SR">SR</button>
+                  <button class="filter-btn r" data-rarity="R">R</button>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <label class="filter-label">Class</label>
+                <div class="button-group class-group">
+                  <button class="filter-btn all active" data-class="">All</button>
+                  {
+                    MEMORY_METADATA.classes.map(className => (
+                      <button class="filter-btn" data-class={className}>
+                        {className}
+                      </button>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-row">
+              <div class="filter-group">
+                <label class="filter-label">Sort By</label>
+                <div class="button-group sort-group">
+                  <button class="sort-btn" data-sort="hp">HP</button>
+                  <button class="sort-btn" data-sort="attack">ATK</button>
+                  <button class="sort-btn" data-sort="defense">DEF</button>
+                </div>
               </div>
             </div>
           </div>
@@ -92,8 +105,8 @@ import {
                   >
                     <td>{idx + 1}</td>
                     <td>
-                      <Image
-                        src={memory.image}
+                      <ZNMemoryImage
+                        imageName={getImageFilename(memory.image)}
                         alt={memory.name}
                         class="memory-img"
                         loading="lazy"
@@ -160,8 +173,8 @@ import {
                 style="cursor:pointer;"
               >
                 <div class="mobile-card-header">
-                  <Image
-                    src={memory.image}
+                  <ZNMemoryImage
+                    imageName={getImageFilename(memory.image)}
                     alt={memory.name}
                     class="memory-img"
                     width={80}
@@ -173,6 +186,14 @@ import {
                       <span class={`rarity-badge ${memory.rarity.toLowerCase()}`}>
                         {memory.rarity}
                       </span>
+                      {(() => {
+                        const memoryClass = getMemoryClass(memory);
+                        return memoryClass ? (
+                          <span class={`class-badge ${memoryClass.toLowerCase()}`}>
+                            {memoryClass}
+                          </span>
+                        ) : null;
+                      })()}
                     </div>
                   </div>
                 </div>
@@ -200,8 +221,10 @@ import {
     document.addEventListener('DOMContentLoaded', function () {
       const memoryTableBody = document.getElementById('memory-table-body');
       const mobileCardsContainer = document.getElementById('mobile-cards-container');
-      const rarityFilterButtons = document.querySelectorAll('.rarity-filter-btn');
-      const classFilterButtons = document.querySelectorAll('.class-filter-btn');
+      const rarityFilterButtons = document.querySelectorAll(
+        '.rarity-group .filter-btn[data-rarity]'
+      );
+      const classFilterButtons = document.querySelectorAll('.class-group .filter-btn[data-class]');
       const resetButton = document.getElementById('reset-table');
       const sortButtons = document.querySelectorAll('.sort-btn');
 
@@ -255,9 +278,11 @@ import {
       // Filter memories
       function filterMemories() {
         const activeRarityButton = document.querySelector(
-          '.rarity-filter-btn.active'
+          '.rarity-group .filter-btn.active'
         ) as HTMLElement;
-        const activeClassButton = document.querySelector('.class-filter-btn.active') as HTMLElement;
+        const activeClassButton = document.querySelector(
+          '.class-group .filter-btn.active'
+        ) as HTMLElement;
         const rarityValue = activeRarityButton?.dataset.rarity || '';
         const classValue = activeClassButton?.dataset.class || '';
 
@@ -331,11 +356,13 @@ import {
       function resetTable() {
         // Reset rarity filter to "All"
         rarityFilterButtons.forEach(btn => btn.classList.remove('active'));
-        document.querySelector('.rarity-filter-btn.all')?.classList.add('active');
+        document
+          .querySelector('.rarity-group .filter-btn[data-rarity=""]')
+          ?.classList.add('active');
 
         // Reset class filter to "All"
         classFilterButtons.forEach(btn => btn.classList.remove('active'));
-        document.querySelector('.class-filter-btn.all')?.classList.add('active');
+        document.querySelector('.class-group .filter-btn[data-class=""]')?.classList.add('active');
 
         // Clear sorting - show alphabetical order
         currentSortKey = '';
