@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { characters } from '../../data/silver-and-blood/characters.js';
+  import { characters } from '../../data/silver-and-blood/characters';
   import MobileCharacterNavigation from './MobileCharacterNavigation.svelte';
 
   export let currentCharacterSlug: string = '';
@@ -33,13 +33,13 @@
   }
 
   function handlePrevClick() {
-    if (prevCharacter) {
+    if (prevCharacter?.detailUrl) {
       navigateTo(prevCharacter.detailUrl);
     }
   }
 
   function handleNextClick() {
-    if (nextCharacter) {
+    if (nextCharacter?.detailUrl) {
       navigateTo(nextCharacter.detailUrl);
     }
   }

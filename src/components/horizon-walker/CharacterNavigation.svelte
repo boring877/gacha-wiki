@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { HORIZON_WALKER_CHARACTERS } from '../../data/horizon-walker/characters.js';
+  import { HORIZON_WALKER_CHARACTERS } from '../../data/horizon-walker/characters';
   import MobileCharacterNavigation from './MobileCharacterNavigation.svelte';
 
   export let currentCharacterSlug: string = '';
@@ -32,14 +32,14 @@
   }
 
   function handlePrevClick() {
-    if (prevCharacter) {
-      navigateTo(`/guides/horizon-walker/characters/${prevCharacter.slug}`);
+    if (prevCharacter?.detailUrl) {
+      navigateTo(prevCharacter.detailUrl);
     }
   }
 
   function handleNextClick() {
-    if (nextCharacter) {
-      navigateTo(`/guides/horizon-walker/characters/${nextCharacter.slug}`);
+    if (nextCharacter?.detailUrl) {
+      navigateTo(nextCharacter.detailUrl);
     }
   }
 
