@@ -1,28 +1,27 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { characters } from '../../data/silver-and-blood/characters.js';
-  import MobileCharacterNavigation from './MobileCharacterNavigation.svelte';
+  import { ZONE_NOVA_MEMORIES } from '../../data/zone-nova/memories.js';
+  import MobileMemoryNavigation from './MobileMemoryNavigation.svelte';
 
-  export let currentCharacterSlug: string = '';
+  export let currentMemorySlug: string = '';
 
   // Simple state
-  let prevCharacter: typeof characters[0] | null = null;
-  let nextCharacter: typeof characters[0] | null = null;
+  let prevMemory: typeof ZONE_NOVA_MEMORIES[0] | null = null;
+  let nextMemory: typeof ZONE_NOVA_MEMORIES[0] | null = null;
 
-  // Simple navigation - just get prev/next from the default character list
+  // Simple navigation - just get prev/next from the default memory list
   function updateNavigation() {
-    const index = characters.findIndex(char => char.slug === currentCharacterSlug);
+    const index = ZONE_NOVA_MEMORIES.findIndex(mem => mem.slug === currentMemorySlug);
     
     if (index === -1) {
-      prevCharacter = null;
-      nextCharacter = null;
+      prevMemory = null;
+      nextMemory = null;
       return;
     }
 
-    prevCharacter = characters[index > 0 ? index - 1 : characters.length - 1];
-    nextCharacter = characters[index < characters.length - 1 ? index + 1 : 0];
+    prevMemory = ZONE_NOVA_MEMORIES[index > 0 ? index - 1 : ZONE_NOVA_MEMORIES.length - 1];
+    nextMemory = ZONE_NOVA_MEMORIES[index < ZONE_NOVA_MEMORIES.length - 1 ? index + 1 : 0];
   }
-
 
 
   // Navigation handlers
@@ -33,19 +32,19 @@
   }
 
   function handlePrevClick() {
-    if (prevCharacter) {
-      navigateTo(prevCharacter.detailUrl);
+    if (prevMemory) {
+      navigateTo(`/guides/zone-nova/memories/${prevMemory.slug}`);
     }
   }
 
   function handleNextClick() {
-    if (nextCharacter) {
-      navigateTo(nextCharacter.detailUrl);
+    if (nextMemory) {
+      navigateTo(`/guides/zone-nova/memories/${nextMemory.slug}`);
     }
   }
 
-  // Reactive: Update navigation when character changes
-  $: if (currentCharacterSlug) {
+  // Reactive: Update navigation when memory changes
+  $: if (currentMemorySlug) {
     updateNavigation();
   }
 
@@ -83,7 +82,7 @@
 </script>
 
 <!-- No visible UI - keyboard navigation only -->
-{#if currentCharacterSlug && prevCharacter && nextCharacter}
+{#if currentMemorySlug && prevMemory && nextMemory}
   <!-- Mobile Navigation Component -->
-  <MobileCharacterNavigation {prevCharacter} {nextCharacter} />
+  <MobileMemoryNavigation {prevMemory} {nextMemory} />
 {/if}

@@ -3,7 +3,7 @@
 // Zone Nova Memory Page Template
 // This template creates individual memory pages with complete information
 import ZoneNovaLayout from '../../layouts/zone-nova/LandingLayout.astro';
-import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
+import MemoryNavigation from '../../components/zone-nova/MemoryNavigation.svelte';
 import { Image } from 'astro:assets';
 
 // Import the memory-specific CSS
@@ -15,6 +15,10 @@ export interface Props {
 }
 
 const { memoryData, memorySEO } = Astro.props;
+
+// Get memory slug from props (available via the memory object)
+// The memory object comes from the page's props and has the slug
+const memorySlug = memoryData.slug || Astro.url.pathname.split('/').filter(Boolean).pop() || '';
 
 // Helper function to convert character names to URL slugs
 function getCharacterUrl(characterName: string): string {
@@ -90,13 +94,8 @@ function getClassMemorySubtitle(effects: string[]): string {
     <link rel="preload" href="/src/styles/games/zone-nova/zn-memory-pages.css" as="style" />
   </Fragment>
 
-  <!-- Breadcrumb Navigation -->
-  <Breadcrumb
-    autoGenerate={true}
-    gameKey="zone-nova"
-    currentPageName={memoryData.name}
-    showBackButton={true}
-  />
+  <!-- Memory Navigation -->
+  <MemoryNavigation currentMemorySlug={memorySlug} client:load />
 
   <div class="memory-page">
     <!-- Premium Memory Overview Header -->

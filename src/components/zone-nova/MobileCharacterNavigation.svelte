@@ -36,8 +36,8 @@
         targetButton.style.pointerEvents = 'none';
       }
 
-      // Use replace for instant feel
-      window.location.replace(url);
+      // Use href for more reliable navigation
+      window.location.href = url;
       return true;
     } catch (error) {
       // Reset element state on error

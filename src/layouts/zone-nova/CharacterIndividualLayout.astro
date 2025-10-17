@@ -16,7 +16,6 @@ import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 import '../../styles/games/zone-nova/zn-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
-import '../../styles/components/zone-nova-character-navigation.css';
 import '../../styles/games/zone-nova/zn-layout.css';
 import '../../styles/games/zone-nova/zn-badge-colour.css';
 import '../../styles/games/zone-nova/zn-character-individual.css';
@@ -69,7 +68,7 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
       <MobileMenu />
 
       <!-- Character Navigation -->
-      <CharacterNavigation currentCharacterSlug={characterSlug} />
+      <CharacterNavigation currentCharacterSlug={characterSlug} client:load />
 
       <div class="zone-nova-container character-page-layout">
         <!-- Main Content Area -->

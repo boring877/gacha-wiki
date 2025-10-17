@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
 
-  export let prevCharacter: { name: string; detailUrl: string };
-  export let nextCharacter: { name: string; detailUrl: string };
+  export let prevMemory: { slug: string; name: string };
+  export let nextMemory: { slug: string; name: string };
 
   // Performance tracking
   let lastNavigation: number = 0;
   const navigationThrottle: number = 300;
 
   // Navigation handler
-  function handleNavigation(url: string) {
-    if (!url || typeof window === 'undefined') {
+  function handleNavigation(slug: string) {
+    if (!slug || typeof window === 'undefined') {
       return;
     }
 
@@ -22,8 +22,8 @@
     lastNavigation = now;
 
     try {
-      // Add visual feedback to navigation element
-      const targetButton = document.querySelector(`[data-character-url="${url}"]`) as HTMLElement;
+      const url = `/guides/zone-nova/memories/${slug}`;
+      const targetButton = document.querySelector(`[data-memory-slug="${slug}"]`) as HTMLElement;
       if (targetButton) {
         targetButton.style.opacity = '0.6';
         targetButton.style.transform = 'scale(0.95)';
@@ -31,11 +31,9 @@
         targetButton.style.pointerEvents = 'none';
       }
 
-      // Use href for more reliable navigation
       window.location.href = url;
     } catch (error) {
-      // Reset element state on error
-      const targetButton = document.querySelector(`[data-character-url="${url}"]`) as HTMLElement;
+      const targetButton = document.querySelector(`[data-memory-slug="${slug}"]`) as HTMLElement;
       if (targetButton) {
         targetButton.style.opacity = '1';
         targetButton.style.transform = 'scale(1)';
@@ -57,23 +55,23 @@
     touchMoved = true;
   }
 
-  function handleTouchEnd(e: TouchEvent, url: string) {
+  function handleTouchEnd(e: TouchEvent, slug: string) {
     const touchDuration = Date.now() - touchStartTime;
 
     // Enhanced touch validation
     if (!touchMoved && touchDuration < 400 && touchDuration > 50) {
-      handleNavigation(url);
+      handleNavigation(slug);
     }
   }
 
-  function handleClick(e: MouseEvent, url: string) {
-    handleNavigation(url);
+  function handleClick(e: MouseEvent, slug: string) {
+    handleNavigation(slug);
   }
 
-  function handleKeydown(e: KeyboardEvent, url: string) {
+  function handleKeydown(e: KeyboardEvent, slug: string) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      handleNavigation(url);
+      handleNavigation(slug);
     }
   }
 
@@ -88,12 +86,10 @@
   onMount(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('visibilitychange', handleVisibilityChange);
-    }
-  });
-
-  onDestroy(() => {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('visibilitychange', handleVisibilityChange);
+      
+      return () => {
+        window.removeEventListener('visibilitychange', handleVisibilityChange);
+      };
     }
   });
 </script>
@@ -103,29 +99,29 @@
   class="mobile-swipe-left"
   role="button"
   tabindex="0"
-  aria-label={`Previous character: ${prevCharacter.name}`}
+  aria-label={`Previous memory: ${prevMemory.name}`}
   data-direction="prev"
-  data-character-url={prevCharacter.detailUrl}
-  title={`Previous: ${prevCharacter.name}`}
+  data-memory-slug={prevMemory.slug}
+  title={`Previous: ${prevMemory.name}`}
   on:touchstart={handleTouchStart}
   on:touchmove={handleTouchMove}
-  on:touchend={(e) => handleTouchEnd(e, prevCharacter.detailUrl)}
-  on:click={(e) => handleClick(e, prevCharacter.detailUrl)}
-  on:keydown={(e) => handleKeydown(e, prevCharacter.detailUrl)}
+  on:touchend={(e) => handleTouchEnd(e, prevMemory.slug)}
+  on:click={(e) => handleClick(e, prevMemory.slug)}
+  on:keydown={(e) => handleKeydown(e, prevMemory.slug)}
 ></div>
 <div
   class="mobile-swipe-right"
   role="button"
   tabindex="0"
-  aria-label={`Next character: ${nextCharacter.name}`}
+  aria-label={`Next memory: ${nextMemory.name}`}
   data-direction="next"
-  data-character-url={nextCharacter.detailUrl}
-  title={`Next: ${nextCharacter.name}`}
+  data-memory-slug={nextMemory.slug}
+  title={`Next: ${nextMemory.name}`}
   on:touchstart={handleTouchStart}
   on:touchmove={handleTouchMove}
-  on:touchend={(e) => handleTouchEnd(e, nextCharacter.detailUrl)}
-  on:click={(e) => handleClick(e, nextCharacter.detailUrl)}
-  on:keydown={(e) => handleKeydown(e, nextCharacter.detailUrl)}
+  on:touchend={(e) => handleTouchEnd(e, nextMemory.slug)}
+  on:click={(e) => handleClick(e, nextMemory.slug)}
+  on:keydown={(e) => handleKeydown(e, nextMemory.slug)}
 ></div>
 
 <style>
@@ -161,7 +157,7 @@
   /* Visual feedback for accessibility */
   .mobile-swipe-left:focus,
   .mobile-swipe-right:focus {
-    outline: 2px solid var(--sab-calm-red, #dc3545);
+    outline: 2px solid var(--zn-accent-blue, #0891b2);
     outline-offset: 2px;
   }
 </style>

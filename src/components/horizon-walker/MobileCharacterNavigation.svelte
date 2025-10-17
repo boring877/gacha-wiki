@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
 
-  export let prevCharacter: { name: string; detailUrl: string };
-  export let nextCharacter: { name: string; detailUrl: string };
+  export let prevCharacter: { slug: string; name: string };
+  export let nextCharacter: { slug: string; name: string };
 
   // Performance tracking
   let lastNavigation: number = 0;
   const navigationThrottle: number = 300;
 
   // Navigation handler
-  function handleNavigation(url: string) {
-    if (!url || typeof window === 'undefined') {
+  function handleNavigation(slug: string) {
+    if (!slug || typeof window === 'undefined') {
       return;
     }
 
@@ -22,8 +22,8 @@
     lastNavigation = now;
 
     try {
-      // Add visual feedback to navigation element
-      const targetButton = document.querySelector(`[data-character-url="${url}"]`) as HTMLElement;
+      const url = `/guides/horizon-walker/characters/${slug}`;
+      const targetButton = document.querySelector(`[data-character-slug="${slug}"]`) as HTMLElement;
       if (targetButton) {
         targetButton.style.opacity = '0.6';
         targetButton.style.transform = 'scale(0.95)';
@@ -31,11 +31,9 @@
         targetButton.style.pointerEvents = 'none';
       }
 
-      // Use href for more reliable navigation
       window.location.href = url;
     } catch (error) {
-      // Reset element state on error
-      const targetButton = document.querySelector(`[data-character-url="${url}"]`) as HTMLElement;
+      const targetButton = document.querySelector(`[data-character-slug="${slug}"]`) as HTMLElement;
       if (targetButton) {
         targetButton.style.opacity = '1';
         targetButton.style.transform = 'scale(1)';
@@ -57,23 +55,23 @@
     touchMoved = true;
   }
 
-  function handleTouchEnd(e: TouchEvent, url: string) {
+  function handleTouchEnd(e: TouchEvent, slug: string) {
     const touchDuration = Date.now() - touchStartTime;
 
     // Enhanced touch validation
     if (!touchMoved && touchDuration < 400 && touchDuration > 50) {
-      handleNavigation(url);
+      handleNavigation(slug);
     }
   }
 
-  function handleClick(e: MouseEvent, url: string) {
-    handleNavigation(url);
+  function handleClick(e: MouseEvent, slug: string) {
+    handleNavigation(slug);
   }
 
-  function handleKeydown(e: KeyboardEvent, url: string) {
+  function handleKeydown(e: KeyboardEvent, slug: string) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      handleNavigation(url);
+      handleNavigation(slug);
     }
   }
 
@@ -88,12 +86,10 @@
   onMount(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('visibilitychange', handleVisibilityChange);
-    }
-  });
-
-  onDestroy(() => {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('visibilitychange', handleVisibilityChange);
+      
+      return () => {
+        window.removeEventListener('visibilitychange', handleVisibilityChange);
+      };
     }
   });
 </script>
@@ -105,13 +101,13 @@
   tabindex="0"
   aria-label={`Previous character: ${prevCharacter.name}`}
   data-direction="prev"
-  data-character-url={prevCharacter.detailUrl}
+  data-character-slug={prevCharacter.slug}
   title={`Previous: ${prevCharacter.name}`}
   on:touchstart={handleTouchStart}
   on:touchmove={handleTouchMove}
-  on:touchend={(e) => handleTouchEnd(e, prevCharacter.detailUrl)}
-  on:click={(e) => handleClick(e, prevCharacter.detailUrl)}
-  on:keydown={(e) => handleKeydown(e, prevCharacter.detailUrl)}
+  on:touchend={(e) => handleTouchEnd(e, prevCharacter.slug)}
+  on:click={(e) => handleClick(e, prevCharacter.slug)}
+  on:keydown={(e) => handleKeydown(e, prevCharacter.slug)}
 ></div>
 <div
   class="mobile-swipe-right"
@@ -119,13 +115,13 @@
   tabindex="0"
   aria-label={`Next character: ${nextCharacter.name}`}
   data-direction="next"
-  data-character-url={nextCharacter.detailUrl}
+  data-character-slug={nextCharacter.slug}
   title={`Next: ${nextCharacter.name}`}
   on:touchstart={handleTouchStart}
   on:touchmove={handleTouchMove}
-  on:touchend={(e) => handleTouchEnd(e, nextCharacter.detailUrl)}
-  on:click={(e) => handleClick(e, nextCharacter.detailUrl)}
-  on:keydown={(e) => handleKeydown(e, nextCharacter.detailUrl)}
+  on:touchend={(e) => handleTouchEnd(e, nextCharacter.slug)}
+  on:click={(e) => handleClick(e, nextCharacter.slug)}
+  on:keydown={(e) => handleKeydown(e, nextCharacter.slug)}
 ></div>
 
 <style>
@@ -161,7 +157,7 @@
   /* Visual feedback for accessibility */
   .mobile-swipe-left:focus,
   .mobile-swipe-right:focus {
-    outline: 2px solid var(--sab-calm-red, #dc3545);
+    outline: 2px solid var(--hw-primary-purple, #9333ea);
     outline-offset: 2px;
   }
 </style>

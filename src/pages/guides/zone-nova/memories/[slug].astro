@@ -15,6 +15,7 @@ const { memory } = Astro.props;
 
 // Convert memory database format to template format
 const memoryData = {
+  slug: memory.slug,
   name: memory.name,
   image: memory.image,
   rarity: memory.rarity,

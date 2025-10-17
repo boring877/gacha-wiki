@@ -1,17 +1,17 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { characters } from '../../data/silver-and-blood/characters.js';
+  import { HORIZON_WALKER_CHARACTERS } from '../../data/horizon-walker/characters.js';
   import MobileCharacterNavigation from './MobileCharacterNavigation.svelte';
 
   export let currentCharacterSlug: string = '';
 
   // Simple state
-  let prevCharacter: typeof characters[0] | null = null;
-  let nextCharacter: typeof characters[0] | null = null;
+  let prevCharacter: typeof HORIZON_WALKER_CHARACTERS[0] | null = null;
+  let nextCharacter: typeof HORIZON_WALKER_CHARACTERS[0] | null = null;
 
   // Simple navigation - just get prev/next from the default character list
   function updateNavigation() {
-    const index = characters.findIndex(char => char.slug === currentCharacterSlug);
+    const index = HORIZON_WALKER_CHARACTERS.findIndex(char => char.slug === currentCharacterSlug);
     
     if (index === -1) {
       prevCharacter = null;
@@ -19,10 +19,9 @@
       return;
     }
 
-    prevCharacter = characters[index > 0 ? index - 1 : characters.length - 1];
-    nextCharacter = characters[index < characters.length - 1 ? index + 1 : 0];
+    prevCharacter = HORIZON_WALKER_CHARACTERS[index > 0 ? index - 1 : HORIZON_WALKER_CHARACTERS.length - 1];
+    nextCharacter = HORIZON_WALKER_CHARACTERS[index < HORIZON_WALKER_CHARACTERS.length - 1 ? index + 1 : 0];
   }
-
 
 
   // Navigation handlers
@@ -34,13 +33,13 @@
 
   function handlePrevClick() {
     if (prevCharacter) {
-      navigateTo(prevCharacter.detailUrl);
+      navigateTo(`/guides/horizon-walker/characters/${prevCharacter.slug}`);
     }
   }
 
   function handleNextClick() {
     if (nextCharacter) {
-      navigateTo(nextCharacter.detailUrl);
+      navigateTo(`/guides/horizon-walker/characters/${nextCharacter.slug}`);
     }
   }
 

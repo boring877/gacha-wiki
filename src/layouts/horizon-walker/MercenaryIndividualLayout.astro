@@ -8,6 +8,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+import MercenaryNavigation from '../../components/horizon-walker/MercenaryNavigation.svelte';
 import { Image } from 'astro:assets';
 
 // Import CSS files properly
@@ -27,6 +28,10 @@ export interface Props {
 }
 
 const { title, description, gameTitle, heroImage, mercenary } = Astro.props;
+
+// Extract mercenary slug from URL path for navigation
+const urlParts = Astro.url.pathname.split('/');
+const mercenarySlug = urlParts[urlParts.length - 1] || '';
 ---
 
 <html lang="en">
@@ -62,6 +67,9 @@ const { title, description, gameTitle, heroImage, mercenary } = Astro.props;
       <Header />
       <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="horizon-walker" />
       <MobileMenu />
+
+      <!-- Mercenary Navigation -->
+      <MercenaryNavigation currentMercenarySlug={mercenarySlug} client:load />
 
       <div class="horizon-walker-container">
         <main class="horizon-walker-main" id="main-content">

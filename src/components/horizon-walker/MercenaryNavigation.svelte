@@ -1,28 +1,27 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { characters } from '../../data/silver-and-blood/characters.js';
-  import MobileCharacterNavigation from './MobileCharacterNavigation.svelte';
+  import { HORIZON_WALKER_MERCENARIES } from '../../data/horizon-walker/mercenaries.js';
+  import MobileMercenaryNavigation from './MobileMercenaryNavigation.svelte';
 
-  export let currentCharacterSlug: string = '';
+  export let currentMercenarySlug: string = '';
 
   // Simple state
-  let prevCharacter: typeof characters[0] | null = null;
-  let nextCharacter: typeof characters[0] | null = null;
+  let prevMercenary: typeof HORIZON_WALKER_MERCENARIES[0] | null = null;
+  let nextMercenary: typeof HORIZON_WALKER_MERCENARIES[0] | null = null;
 
-  // Simple navigation - just get prev/next from the default character list
+  // Simple navigation - just get prev/next from the default mercenary list
   function updateNavigation() {
-    const index = characters.findIndex(char => char.slug === currentCharacterSlug);
+    const index = HORIZON_WALKER_MERCENARIES.findIndex(merc => merc.slug === currentMercenarySlug);
     
     if (index === -1) {
-      prevCharacter = null;
-      nextCharacter = null;
+      prevMercenary = null;
+      nextMercenary = null;
       return;
     }
 
-    prevCharacter = characters[index > 0 ? index - 1 : characters.length - 1];
-    nextCharacter = characters[index < characters.length - 1 ? index + 1 : 0];
+    prevMercenary = HORIZON_WALKER_MERCENARIES[index > 0 ? index - 1 : HORIZON_WALKER_MERCENARIES.length - 1];
+    nextMercenary = HORIZON_WALKER_MERCENARIES[index < HORIZON_WALKER_MERCENARIES.length - 1 ? index + 1 : 0];
   }
-
 
 
   // Navigation handlers
@@ -33,19 +32,19 @@
   }
 
   function handlePrevClick() {
-    if (prevCharacter) {
-      navigateTo(prevCharacter.detailUrl);
+    if (prevMercenary) {
+      navigateTo(`/guides/horizon-walker/mercenaries/${prevMercenary.slug}`);
     }
   }
 
   function handleNextClick() {
-    if (nextCharacter) {
-      navigateTo(nextCharacter.detailUrl);
+    if (nextMercenary) {
+      navigateTo(`/guides/horizon-walker/mercenaries/${nextMercenary.slug}`);
     }
   }
 
-  // Reactive: Update navigation when character changes
-  $: if (currentCharacterSlug) {
+  // Reactive: Update navigation when mercenary changes
+  $: if (currentMercenarySlug) {
     updateNavigation();
   }
 
@@ -83,7 +82,7 @@
 </script>
 
 <!-- No visible UI - keyboard navigation only -->
-{#if currentCharacterSlug && prevCharacter && nextCharacter}
+{#if currentMercenarySlug && prevMercenary && nextMercenary}
   <!-- Mobile Navigation Component -->
-  <MobileCharacterNavigation {prevCharacter} {nextCharacter} />
+  <MobileMercenaryNavigation {prevMercenary} {nextMercenary} />
 {/if}

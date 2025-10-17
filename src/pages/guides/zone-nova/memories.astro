@@ -25,19 +25,32 @@ import {
       <div class="content-wrapper">
         {/* <!-- Filter Bar --> */}
         <div class="filter-bar">
-          <div class="filter-controls">
-            <div class="filter-row">
-              <div class="rarity-filter-group">
-                <span class="rarity-filter-label">Rarity:</span>
+          <div class="filter-group-left">
+            <div class="filter-section rarity-section">
+              <span class="filter-section-label">Rarity:</span>
+              <div class="filter-buttons">
                 <button class="rarity-filter-btn all active" data-rarity="">All</button>
                 <button class="rarity-filter-btn ssr" data-rarity="SSR">SSR</button>
                 <button class="rarity-filter-btn sr" data-rarity="SR">SR</button>
                 <button class="rarity-filter-btn r" data-rarity="R">R</button>
               </div>
             </div>
-            <div class="filter-row">
-              <div class="class-filter-group">
-                <span class="class-filter-label">Class:</span>
+
+            <div class="filter-section sort-section">
+              <span class="filter-section-label">Sort by:</span>
+              <div class="filter-buttons">
+                <button class="sort-btn" data-sort="hp">HP</button>
+                <button class="sort-btn" data-sort="attack">ATK</button>
+                <button class="sort-btn" data-sort="defense">DEF</button>
+                <button class="reset-btn" id="reset-table">Reset All</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group-right">
+            <div class="filter-section class-section">
+              <span class="filter-section-label">Class:</span>
+              <div class="filter-buttons">
                 <button class="class-filter-btn all active" data-class="">All</button>
                 {
                   MEMORY_METADATA.classes.map(className => (
@@ -48,13 +61,6 @@ import {
                 }
               </div>
             </div>
-          </div>
-          <div class="sort-controls">
-            <span class="sort-controls-label">Sort by:</span>
-            <button class="sort-btn" data-sort="hp">HP</button>
-            <button class="sort-btn" data-sort="attack">ATK</button>
-            <button class="sort-btn" data-sort="defense">DEF</button>
-            <button class="reset-btn" id="reset-table">Reset All</button>
           </div>
         </div>
 

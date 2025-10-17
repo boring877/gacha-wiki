@@ -1,28 +1,27 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { characters } from '../../data/silver-and-blood/characters.js';
-  import MobileCharacterNavigation from './MobileCharacterNavigation.svelte';
+  import { HORIZON_WALKER_WEAPONS } from '../../data/horizon-walker/weapons.js';
+  import MobileWeaponNavigation from './MobileWeaponNavigation.svelte';
 
-  export let currentCharacterSlug: string = '';
+  export let currentWeaponSlug: string = '';
 
   // Simple state
-  let prevCharacter: typeof characters[0] | null = null;
-  let nextCharacter: typeof characters[0] | null = null;
+  let prevWeapon: typeof HORIZON_WALKER_WEAPONS[0] | null = null;
+  let nextWeapon: typeof HORIZON_WALKER_WEAPONS[0] | null = null;
 
-  // Simple navigation - just get prev/next from the default character list
+  // Simple navigation - just get prev/next from the default weapon list
   function updateNavigation() {
-    const index = characters.findIndex(char => char.slug === currentCharacterSlug);
+    const index = HORIZON_WALKER_WEAPONS.findIndex(weapon => weapon.character.slug === currentWeaponSlug);
     
     if (index === -1) {
-      prevCharacter = null;
-      nextCharacter = null;
+      prevWeapon = null;
+      nextWeapon = null;
       return;
     }
 
-    prevCharacter = characters[index > 0 ? index - 1 : characters.length - 1];
-    nextCharacter = characters[index < characters.length - 1 ? index + 1 : 0];
+    prevWeapon = HORIZON_WALKER_WEAPONS[index > 0 ? index - 1 : HORIZON_WALKER_WEAPONS.length - 1];
+    nextWeapon = HORIZON_WALKER_WEAPONS[index < HORIZON_WALKER_WEAPONS.length - 1 ? index + 1 : 0];
   }
-
 
 
   // Navigation handlers
@@ -33,19 +32,19 @@
   }
 
   function handlePrevClick() {
-    if (prevCharacter) {
-      navigateTo(prevCharacter.detailUrl);
+    if (prevWeapon) {
+      navigateTo(`/guides/horizon-walker/weapons/${prevWeapon.character.slug}`);
     }
   }
 
   function handleNextClick() {
-    if (nextCharacter) {
-      navigateTo(nextCharacter.detailUrl);
+    if (nextWeapon) {
+      navigateTo(`/guides/horizon-walker/weapons/${nextWeapon.character.slug}`);
     }
   }
 
-  // Reactive: Update navigation when character changes
-  $: if (currentCharacterSlug) {
+  // Reactive: Update navigation when weapon changes
+  $: if (currentWeaponSlug) {
     updateNavigation();
   }
 
@@ -83,7 +82,7 @@
 </script>
 
 <!-- No visible UI - keyboard navigation only -->
-{#if currentCharacterSlug && prevCharacter && nextCharacter}
+{#if currentWeaponSlug && prevWeapon && nextWeapon}
   <!-- Mobile Navigation Component -->
-  <MobileCharacterNavigation {prevCharacter} {nextCharacter} />
+  <MobileWeaponNavigation {prevWeapon} {nextWeapon} />
 {/if}
