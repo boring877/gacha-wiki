@@ -7,7 +7,6 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import { Image } from 'astro:assets';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import CharacterNavigation from '../../components/silver-and-blood/CharacterNavigation.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
@@ -108,9 +107,6 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 			<GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
 			<MobileMenu />
 
-			<!-- Character Navigation -->
-			<CharacterNavigation currentCharacterSlug={characterSlug} />
-
 			<div class="sab-container">
 				<main class="silver-and-blood-main" id="main-content">
 					<!-- Character Title Section -->
@@ -123,11 +119,6 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 							<DecorativeLines />
 						</section>
 					)}
-
-					<!-- Navigation Note -->
-					<div class="navigation-note">
-						<p>Tip: Use ← → arrow keys to navigate between characters</p>
-					</div>
 
 					<!-- Breadcrumb Navigation -->
 					<Breadcrumb
@@ -148,22 +139,5 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 
 			<Footer />
 		</div>
-		<style>
-			.navigation-note {
-				text-align: center;
-				margin: 1rem 0;
-				padding: 0.5rem;
-				background: rgba(255, 255, 255, 0.1);
-				border-radius: 8px;
-				border: 1px solid rgba(255, 255, 255, 0.2);
-			}
-			
-			.navigation-note p {
-				margin: 0;
-				font-size: 0.9rem;
-				opacity: 0.8;
-				color: var(--sab-text-primary, #ffffff);
-			}
-		</style>
 	</body>
 </html>

@@ -8,7 +8,6 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
-import WeaponNavigation from '../../components/horizon-walker/WeaponNavigation.astro';
 import { WeaponImage } from '../../components/horizon-walker/index.astro';
 
 // Import CSS files properly
@@ -71,9 +70,6 @@ const breadcrumbs = [
       <Header />
       <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="horizon-walker" />
       <MobileMenu />
-
-      <!-- Weapon Navigation -->
-      <WeaponNavigation currentWeaponSlug={weaponSlug} />
 
       <div class="horizon-walker-container">
         <main class="horizon-walker-main" id="main-content">

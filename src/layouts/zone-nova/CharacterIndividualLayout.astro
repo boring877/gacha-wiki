@@ -9,7 +9,6 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
-import CharacterNavigation from '../../components/zone-nova/CharacterNavigation.astro';
 import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 
 // Import CSS files for individual character pages only
@@ -67,9 +66,6 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
       <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
       <MobileMenu />
 
-      <!-- Character Navigation -->
-      <CharacterNavigation currentCharacterSlug={characterSlug} />
-
       <div class="zone-nova-container character-page-layout">
         <!-- Main Content Area -->
         <main class="zone-nova-main character-main-content">
@@ -110,11 +106,6 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
             )
           }
 
-          <!-- Navigation Note -->
-          <div class="navigation-note">
-            <p>Tip: Use ← → arrow keys to navigate between characters</p>
-          </div>
-
           <!-- Breadcrumb Navigation -->
           <Breadcrumb
             autoGenerate={true}
@@ -132,23 +123,5 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 
       <Footer />
     </div>
-
-    <style>
-      .navigation-note {
-        text-align: center;
-        margin: 1rem 0;
-        padding: 0.5rem;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .navigation-note p {
-        margin: 0;
-        font-size: 0.9rem;
-        opacity: 0.8;
-        color: var(--zn-text-primary, #ffffff);
-      }
-    </style>
   </body>
 </html>

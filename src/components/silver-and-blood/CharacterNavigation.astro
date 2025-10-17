@@ -3,10 +3,9 @@ import { characters } from '../../data/silver-and-blood/characters';
 
 const { currentCharacterSlug } = Astro.props;
 
-// Get prev/next URLs (server-side)
+// Get prev/next URLs (server-side) - minimal approach
 const currentIndex = characters.findIndex(char => char.slug === currentCharacterSlug);
 
-// If character not found, fallback to first character in list
 let prevUrl = '/guides/silver-and-blood/characters';
 let nextUrl = '/guides/silver-and-blood/characters';
 let prevCharacterName = '';
@@ -23,8 +22,7 @@ if (currentIndex !== -1) {
   nextUrl = characters[nextIndex].detailUrl;
   nextCharacterName = characters[nextIndex].name || characters[nextIndex].id;
 } else {
-  // Character not found - log for debugging and use first character
-  console.warn(`Character not found: ${currentCharacterSlug}`);
+  // Character not found - fallback
   if (characters.length > 0) {
     prevUrl = characters[characters.length - 1].detailUrl;
     nextUrl = characters[0].detailUrl;
@@ -35,69 +33,104 @@ if (currentIndex !== -1) {
 }
 ---
 
+<!-- Minimal navigation data - only what's needed -->
+<div
+  id="character-navigation-data"
+  data-prev-url={prevUrl}
+  data-next-url={nextUrl}
+  data-prev-name={prevCharacterName}
+  data-next-name={nextCharacterName}
+  style="display: none;"
+>
+</div>
+
 <!-- Client-side navigation script -->
-<script define:vars={{ prevUrl, nextUrl, prevCharacterName, nextCharacterName }}>
-  // Keyboard navigation
-  document.addEventListener('keydown', e => {
-    const target = e.target;
-    if (
-      target?.tagName === 'INPUT' ||
-      target?.tagName === 'TEXTAREA' ||
-      e.ctrlKey ||
-      e.altKey ||
-      e.metaKey
-    ) {
-      return;
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navData = document.getElementById('character-navigation-data');
+    if (!navData) return;
+
+    const prevUrl = navData.dataset.prevUrl;
+    const nextUrl = navData.dataset.nextUrl;
+    const prevName = navData.dataset.prevName;
+    const nextName = navData.dataset.nextName;
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      const target = e.target as HTMLElement;
+      if (
+        target?.tagName === 'INPUT' ||
+        target?.tagName === 'TEXTAREA' ||
+        e.ctrlKey ||
+        e.altKey ||
+        e.metaKey
+      ) {
+        return;
+      }
+
+      if (e.key === 'ArrowLeft' && prevUrl && prevUrl !== '/guides/silver-and-blood/characters') {
+        e.preventDefault();
+        console.log(`Navigating to previous character: ${prevName}`);
+        window.location.href = prevUrl;
+      } else if (
+        e.key === 'ArrowRight' &&
+        nextUrl &&
+        nextUrl !== '/guides/silver-and-blood/characters'
+      ) {
+        e.preventDefault();
+        console.log(`Navigating to next character: ${nextName}`);
+        window.location.href = nextUrl;
+      }
+    });
+
+    // Mobile swipe zones
+    const leftZone = document.getElementById('mobile-swipe-left');
+    const rightZone = document.getElementById('mobile-swipe-right');
+
+    if (!leftZone || !rightZone) return;
+
+    let touchStartTime = 0;
+    let touchMoved = false;
+
+    function handleTouchStart() {
+      touchStartTime = Date.now();
+      touchMoved = false;
     }
 
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      console.log(`Navigating to previous character: ${prevCharacterName}`);
-      window.location.href = prevUrl;
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      console.log(`Navigating to next character: ${nextCharacterName}`);
-      window.location.href = nextUrl;
+    function handleTouchMove() {
+      touchMoved = true;
     }
-  });
 
-  // Mobile swipe zones
-  const leftZone = document.getElementById('mobile-swipe-left');
-  const rightZone = document.getElementById('mobile-swipe-right');
-
-  let touchStartTime = 0;
-  let touchMoved = false;
-
-  function handleTouchStart() {
-    touchStartTime = Date.now();
-    touchMoved = false;
-  }
-
-  function handleTouchMove() {
-    touchMoved = true;
-  }
-
-  if (leftZone) {
     leftZone.addEventListener('touchstart', handleTouchStart);
     leftZone.addEventListener('touchmove', handleTouchMove);
     leftZone.addEventListener('touchend', () => {
       const touchDuration = Date.now() - touchStartTime;
-      if (!touchMoved && touchDuration < 400 && touchDuration > 50) {
+      if (
+        !touchMoved &&
+        touchDuration < 400 &&
+        touchDuration > 50 &&
+        prevUrl &&
+        prevUrl !== '/guides/silver-and-blood/characters'
+      ) {
         window.location.href = prevUrl;
       }
     });
-  }
 
-  if (rightZone) {
     rightZone.addEventListener('touchstart', handleTouchStart);
     rightZone.addEventListener('touchmove', handleTouchMove);
     rightZone.addEventListener('touchend', () => {
       const touchDuration = Date.now() - touchStartTime;
-      if (!touchMoved && touchDuration < 400 && touchDuration > 50) {
+      if (
+        !touchMoved &&
+        touchDuration < 400 &&
+        touchDuration > 50 &&
+        nextUrl &&
+        nextUrl !== '/guides/silver-and-blood/characters'
+      ) {
         window.location.href = nextUrl;
       }
     });
-  }
+  });
 </script>
 
 <!-- Mobile Invisible Swipe Zones -->
