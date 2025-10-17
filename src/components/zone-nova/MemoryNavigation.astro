@@ -1,0 +1,94 @@
+---
+import { ZONE_NOVA_MEMORIES } from '../../data/zone-nova/memories';
+
+const { currentMemorySlug } = Astro.props;
+
+const currentIndex = ZONE_NOVA_MEMORIES.findIndex(memory => memory.slug === currentMemorySlug);
+const prevUrl =
+  currentIndex > 0
+    ? ZONE_NOVA_MEMORIES[currentIndex - 1].detailUrl
+    : ZONE_NOVA_MEMORIES[ZONE_NOVA_MEMORIES.length - 1].detailUrl;
+const nextUrl =
+  currentIndex < ZONE_NOVA_MEMORIES.length - 1
+    ? ZONE_NOVA_MEMORIES[currentIndex + 1].detailUrl
+    : ZONE_NOVA_MEMORIES[0].detailUrl;
+---
+
+<script define:vars={{ prevUrl, nextUrl }}>
+  document.addEventListener('keydown', e => {
+    const target = e.target;
+    if (
+      target?.tagName === 'INPUT' ||
+      target?.tagName === 'TEXTAREA' ||
+      e.ctrlKey ||
+      e.altKey ||
+      e.metaKey
+    )
+      return;
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      window.location.href = prevUrl;
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      window.location.href = nextUrl;
+    }
+  });
+
+  const leftZone = document.getElementById('mobile-swipe-left-memory');
+  const rightZone = document.getElementById('mobile-swipe-right-memory');
+  let touchStartTime = 0,
+    touchMoved = false;
+
+  function handleTouchStart() {
+    touchStartTime = Date.now();
+    touchMoved = false;
+  }
+  function handleTouchMove() {
+    touchMoved = true;
+  }
+
+  if (leftZone) {
+    leftZone.addEventListener('touchstart', handleTouchStart);
+    leftZone.addEventListener('touchmove', handleTouchMove);
+    leftZone.addEventListener('touchend', () => {
+      const touchDuration = Date.now() - touchStartTime;
+      if (!touchMoved && touchDuration < 400 && touchDuration > 50) window.location.href = prevUrl;
+    });
+  }
+
+  if (rightZone) {
+    rightZone.addEventListener('touchstart', handleTouchStart);
+    rightZone.addEventListener('touchmove', handleTouchMove);
+    rightZone.addEventListener('touchend', () => {
+      const touchDuration = Date.now() - touchStartTime;
+      if (!touchMoved && touchDuration < 400 && touchDuration > 50) window.location.href = nextUrl;
+    });
+  }
+</script>
+
+<div id="mobile-swipe-left-memory" class="mobile-swipe-zone"></div>
+<div id="mobile-swipe-right-memory" class="mobile-swipe-zone"></div>
+
+<style>
+  .mobile-swipe-zone {
+    position: fixed;
+    top: 0;
+    width: 80px;
+    height: 100vh;
+    z-index: 1000;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+  }
+  #mobile-swipe-left-memory {
+    left: 0;
+  }
+  #mobile-swipe-right-memory {
+    right: 0;
+  }
+  @media (min-width: 768px) {
+    .mobile-swipe-zone {
+      display: none;
+    }
+  }
+</style>

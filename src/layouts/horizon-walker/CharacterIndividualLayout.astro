@@ -9,7 +9,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
-import CharacterNavigation from '../../components/horizon-walker/CharacterNavigation.svelte';
+import CharacterNavigation from '../../components/horizon-walker/CharacterNavigation.astro';
 import { Image } from 'astro:assets';
 
 // Import CSS files properly
@@ -75,7 +75,7 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
       <MobileMenu />
 
       <!-- Character Navigation -->
-      <CharacterNavigation currentCharacterSlug={characterSlug} client:load />
+      <CharacterNavigation currentCharacterSlug={characterSlug} />
 
       <div class="horizon-walker-container">
         <main class="horizon-walker-main" id="main-content">

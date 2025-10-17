@@ -9,7 +9,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
-import CharacterNavigation from '../../components/zone-nova/CharacterNavigation.svelte';
+import CharacterNavigation from '../../components/zone-nova/CharacterNavigation.astro';
 import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 
 // Import CSS files for individual character pages only
@@ -68,7 +68,7 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
       <MobileMenu />
 
       <!-- Character Navigation -->
-      <CharacterNavigation currentCharacterSlug={characterSlug} client:load />
+      <CharacterNavigation currentCharacterSlug={characterSlug} />
 
       <div class="zone-nova-container character-page-layout">
         <!-- Main Content Area -->

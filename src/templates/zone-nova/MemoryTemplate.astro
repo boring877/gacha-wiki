@@ -3,7 +3,7 @@
 // Zone Nova Memory Page Template
 // This template creates individual memory pages with complete information
 import ZoneNovaLayout from '../../layouts/zone-nova/LandingLayout.astro';
-import MemoryNavigation from '../../components/zone-nova/MemoryNavigation.svelte';
+import MemoryNavigation from '../../components/zone-nova/MemoryNavigation.astro';
 import { Image } from 'astro:assets';
 
 // Import the memory-specific CSS
@@ -95,7 +95,7 @@ function getClassMemorySubtitle(effects: string[]): string {
   </Fragment>
 
   <!-- Memory Navigation -->
-  <MemoryNavigation currentMemorySlug={memorySlug} client:load />
+  <MemoryNavigation currentMemorySlug={memorySlug} />
 
   <div class="memory-page">
     <!-- Premium Memory Overview Header -->

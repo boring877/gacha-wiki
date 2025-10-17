@@ -1,0 +1,96 @@
+---
+import { HORIZON_WALKER_CHARACTERS } from '../../data/horizon-walker/characters';
+
+const { currentCharacterSlug } = Astro.props;
+
+const currentIndex = HORIZON_WALKER_CHARACTERS.findIndex(
+  char => char.slug === currentCharacterSlug
+);
+const prevUrl =
+  currentIndex > 0
+    ? HORIZON_WALKER_CHARACTERS[currentIndex - 1].detailUrl
+    : HORIZON_WALKER_CHARACTERS[HORIZON_WALKER_CHARACTERS.length - 1].detailUrl;
+const nextUrl =
+  currentIndex < HORIZON_WALKER_CHARACTERS.length - 1
+    ? HORIZON_WALKER_CHARACTERS[currentIndex + 1].detailUrl
+    : HORIZON_WALKER_CHARACTERS[0].detailUrl;
+---
+
+<script define:vars={{ prevUrl, nextUrl }}>
+  document.addEventListener('keydown', e => {
+    const target = e.target;
+    if (
+      target?.tagName === 'INPUT' ||
+      target?.tagName === 'TEXTAREA' ||
+      e.ctrlKey ||
+      e.altKey ||
+      e.metaKey
+    )
+      return;
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      window.location.href = prevUrl;
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      window.location.href = nextUrl;
+    }
+  });
+
+  const leftZone = document.getElementById('mobile-swipe-left');
+  const rightZone = document.getElementById('mobile-swipe-right');
+  let touchStartTime = 0,
+    touchMoved = false;
+
+  function handleTouchStart() {
+    touchStartTime = Date.now();
+    touchMoved = false;
+  }
+  function handleTouchMove() {
+    touchMoved = true;
+  }
+
+  if (leftZone) {
+    leftZone.addEventListener('touchstart', handleTouchStart);
+    leftZone.addEventListener('touchmove', handleTouchMove);
+    leftZone.addEventListener('touchend', () => {
+      const touchDuration = Date.now() - touchStartTime;
+      if (!touchMoved && touchDuration < 400 && touchDuration > 50) window.location.href = prevUrl;
+    });
+  }
+
+  if (rightZone) {
+    rightZone.addEventListener('touchstart', handleTouchStart);
+    rightZone.addEventListener('touchmove', handleTouchMove);
+    rightZone.addEventListener('touchend', () => {
+      const touchDuration = Date.now() - touchStartTime;
+      if (!touchMoved && touchDuration < 400 && touchDuration > 50) window.location.href = nextUrl;
+    });
+  }
+</script>
+
+<div id="mobile-swipe-left" class="mobile-swipe-zone"></div>
+<div id="mobile-swipe-right" class="mobile-swipe-zone"></div>
+
+<style>
+  .mobile-swipe-zone {
+    position: fixed;
+    top: 0;
+    width: 80px;
+    height: 100vh;
+    z-index: 1000;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+  }
+  #mobile-swipe-left {
+    left: 0;
+  }
+  #mobile-swipe-right {
+    right: 0;
+  }
+  @media (min-width: 768px) {
+    .mobile-swipe-zone {
+      display: none;
+    }
+  }
+</style>

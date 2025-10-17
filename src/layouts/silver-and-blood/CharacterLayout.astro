@@ -7,7 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import { Image } from 'astro:assets';
 import DecorativeLines from '../../components/DecorativeLines.astro';
-import CharacterNavigation from '../../components/silver-and-blood/CharacterNavigation.svelte';
+import CharacterNavigation from '../../components/silver-and-blood/CharacterNavigation.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
@@ -109,7 +109,7 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 			<MobileMenu />
 
 			<!-- Character Navigation -->
-			<CharacterNavigation currentCharacterSlug={characterSlug} client:load />
+			<CharacterNavigation currentCharacterSlug={characterSlug} />
 
 			<div class="sab-container">
 				<main class="silver-and-blood-main" id="main-content">
