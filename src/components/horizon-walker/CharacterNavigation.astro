@@ -6,14 +6,20 @@ const { currentCharacterSlug } = Astro.props;
 const currentIndex = HORIZON_WALKER_CHARACTERS.findIndex(
   char => char.slug === currentCharacterSlug
 );
-const prevUrl =
-  currentIndex > 0
-    ? HORIZON_WALKER_CHARACTERS[currentIndex - 1].detailUrl
-    : HORIZON_WALKER_CHARACTERS[HORIZON_WALKER_CHARACTERS.length - 1].detailUrl;
-const nextUrl =
-  currentIndex < HORIZON_WALKER_CHARACTERS.length - 1
-    ? HORIZON_WALKER_CHARACTERS[currentIndex + 1].detailUrl
-    : HORIZON_WALKER_CHARACTERS[0].detailUrl;
+
+let prevUrl = '/guides/horizon-walker/characters';
+let nextUrl = '/guides/horizon-walker/characters';
+
+if (currentIndex !== -1) {
+  prevUrl =
+    currentIndex > 0
+      ? HORIZON_WALKER_CHARACTERS[currentIndex - 1].detailUrl
+      : HORIZON_WALKER_CHARACTERS[HORIZON_WALKER_CHARACTERS.length - 1].detailUrl;
+  nextUrl =
+    currentIndex < HORIZON_WALKER_CHARACTERS.length - 1
+      ? HORIZON_WALKER_CHARACTERS[currentIndex + 1].detailUrl
+      : HORIZON_WALKER_CHARACTERS[0].detailUrl;
+}
 ---
 
 <script define:vars={{ prevUrl, nextUrl }}>

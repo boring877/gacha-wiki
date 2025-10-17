@@ -6,14 +6,20 @@ const { currentMercenarySlug } = Astro.props;
 const currentIndex = HORIZON_WALKER_MERCENARIES.findIndex(
   merc => merc.slug === currentMercenarySlug
 );
-const prevUrl =
-  currentIndex > 0
-    ? HORIZON_WALKER_MERCENARIES[currentIndex - 1].detailUrl
-    : HORIZON_WALKER_MERCENARIES[HORIZON_WALKER_MERCENARIES.length - 1].detailUrl;
-const nextUrl =
-  currentIndex < HORIZON_WALKER_MERCENARIES.length - 1
-    ? HORIZON_WALKER_MERCENARIES[currentIndex + 1].detailUrl
-    : HORIZON_WALKER_MERCENARIES[0].detailUrl;
+
+let prevUrl = '/guides/horizon-walker/mercenaries';
+let nextUrl = '/guides/horizon-walker/mercenaries';
+
+if (currentIndex !== -1) {
+  prevUrl =
+    currentIndex > 0
+      ? HORIZON_WALKER_MERCENARIES[currentIndex - 1].detailUrl
+      : HORIZON_WALKER_MERCENARIES[HORIZON_WALKER_MERCENARIES.length - 1].detailUrl;
+  nextUrl =
+    currentIndex < HORIZON_WALKER_MERCENARIES.length - 1
+      ? HORIZON_WALKER_MERCENARIES[currentIndex + 1].detailUrl
+      : HORIZON_WALKER_MERCENARIES[0].detailUrl;
+}
 ---
 
 <script define:vars={{ prevUrl, nextUrl }}>

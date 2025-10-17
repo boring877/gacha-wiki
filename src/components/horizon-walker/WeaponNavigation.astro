@@ -4,14 +4,20 @@ import { HORIZON_WALKER_WEAPONS } from '../../data/horizon-walker/weapons';
 const { currentWeaponSlug } = Astro.props;
 
 const currentIndex = HORIZON_WALKER_WEAPONS.findIndex(weapon => weapon.slug === currentWeaponSlug);
-const prevUrl =
-  currentIndex > 0
-    ? `/guides/horizon-walker/weapons/${HORIZON_WALKER_WEAPONS[currentIndex - 1].slug}`
-    : `/guides/horizon-walker/weapons/${HORIZON_WALKER_WEAPONS[HORIZON_WALKER_WEAPONS.length - 1].slug}`;
-const nextUrl =
-  currentIndex < HORIZON_WALKER_WEAPONS.length - 1
-    ? `/guides/horizon-walker/weapons/${HORIZON_WALKER_WEAPONS[currentIndex + 1].slug}`
-    : `/guides/horizon-walker/weapons/${HORIZON_WALKER_WEAPONS[0].slug}`;
+
+let prevUrl = '/guides/horizon-walker/weapons';
+let nextUrl = '/guides/horizon-walker/weapons';
+
+if (currentIndex !== -1) {
+  prevUrl =
+    currentIndex > 0
+      ? `/guides/horizon-walker/weapons/${HORIZON_WALKER_WEAPONS[currentIndex - 1].slug}`
+      : `/guides/horizon-walker/weapons/${HORIZON_WALKER_WEAPONS[HORIZON_WALKER_WEAPONS.length - 1].slug}`;
+  nextUrl =
+    currentIndex < HORIZON_WALKER_WEAPONS.length - 1
+      ? `/guides/horizon-walker/weapons/${HORIZON_WALKER_WEAPONS[currentIndex + 1].slug}`
+      : `/guides/horizon-walker/weapons/${HORIZON_WALKER_WEAPONS[0].slug}`;
+}
 ---
 
 <script define:vars={{ prevUrl, nextUrl }}>

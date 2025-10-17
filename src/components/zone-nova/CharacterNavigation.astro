@@ -5,14 +5,20 @@ const { currentCharacterSlug } = Astro.props;
 
 // Get prev/next URLs (server-side)
 const currentIndex = ZONE_NOVA_CHARACTERS.findIndex(char => char.slug === currentCharacterSlug);
-const prevUrl =
-  currentIndex > 0
-    ? ZONE_NOVA_CHARACTERS[currentIndex - 1].detailUrl
-    : ZONE_NOVA_CHARACTERS[ZONE_NOVA_CHARACTERS.length - 1].detailUrl;
-const nextUrl =
-  currentIndex < ZONE_NOVA_CHARACTERS.length - 1
-    ? ZONE_NOVA_CHARACTERS[currentIndex + 1].detailUrl
-    : ZONE_NOVA_CHARACTERS[0].detailUrl;
+
+let prevUrl = '/guides/zone-nova/characters';
+let nextUrl = '/guides/zone-nova/characters';
+
+if (currentIndex !== -1) {
+  prevUrl =
+    currentIndex > 0
+      ? ZONE_NOVA_CHARACTERS[currentIndex - 1].detailUrl
+      : ZONE_NOVA_CHARACTERS[ZONE_NOVA_CHARACTERS.length - 1].detailUrl;
+  nextUrl =
+    currentIndex < ZONE_NOVA_CHARACTERS.length - 1
+      ? ZONE_NOVA_CHARACTERS[currentIndex + 1].detailUrl
+      : ZONE_NOVA_CHARACTERS[0].detailUrl;
+}
 ---
 
 <script define:vars={{ prevUrl, nextUrl }}>

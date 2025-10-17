@@ -5,14 +5,21 @@ const { currentCharacterSlug } = Astro.props;
 
 // Get prev/next URLs (server-side)
 const currentIndex = characters.findIndex(char => char.slug === currentCharacterSlug);
-const prevUrl =
-  currentIndex > 0
-    ? characters[currentIndex - 1].detailUrl
-    : characters[characters.length - 1].detailUrl;
-const nextUrl =
-  currentIndex < characters.length - 1
-    ? characters[currentIndex + 1].detailUrl
-    : characters[0].detailUrl;
+
+// If character not found, default to first character navigation
+let prevUrl = '/guides/silver-and-blood/characters';
+let nextUrl = '/guides/silver-and-blood/characters';
+
+if (currentIndex !== -1) {
+  prevUrl =
+    currentIndex > 0
+      ? characters[currentIndex - 1].detailUrl
+      : characters[characters.length - 1].detailUrl;
+  nextUrl =
+    currentIndex < characters.length - 1
+      ? characters[currentIndex + 1].detailUrl
+      : characters[0].detailUrl;
+}
 ---
 
 <!-- Client-side navigation script -->

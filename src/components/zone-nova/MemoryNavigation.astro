@@ -4,14 +4,20 @@ import { ZONE_NOVA_MEMORIES } from '../../data/zone-nova/memories';
 const { currentMemorySlug } = Astro.props;
 
 const currentIndex = ZONE_NOVA_MEMORIES.findIndex(memory => memory.slug === currentMemorySlug);
-const prevUrl =
-  currentIndex > 0
-    ? ZONE_NOVA_MEMORIES[currentIndex - 1].detailUrl
-    : ZONE_NOVA_MEMORIES[ZONE_NOVA_MEMORIES.length - 1].detailUrl;
-const nextUrl =
-  currentIndex < ZONE_NOVA_MEMORIES.length - 1
-    ? ZONE_NOVA_MEMORIES[currentIndex + 1].detailUrl
-    : ZONE_NOVA_MEMORIES[0].detailUrl;
+
+let prevUrl = '/guides/zone-nova/memories';
+let nextUrl = '/guides/zone-nova/memories';
+
+if (currentIndex !== -1) {
+  prevUrl =
+    currentIndex > 0
+      ? ZONE_NOVA_MEMORIES[currentIndex - 1].detailUrl
+      : ZONE_NOVA_MEMORIES[ZONE_NOVA_MEMORIES.length - 1].detailUrl;
+  nextUrl =
+    currentIndex < ZONE_NOVA_MEMORIES.length - 1
+      ? ZONE_NOVA_MEMORIES[currentIndex + 1].detailUrl
+      : ZONE_NOVA_MEMORIES[0].detailUrl;
+}
 ---
 
 <script define:vars={{ prevUrl, nextUrl }}>
