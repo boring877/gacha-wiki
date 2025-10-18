@@ -79,7 +79,9 @@ import ZNCharacterImage from '../../../components/zone-nova/ZNCharacterImage.ast
       <!-- Character Grid -->
       <div class="character-grid" id="character-grid">
         {
-          ZONE_NOVA_CHARACTERS.map(char => (
+          ZONE_NOVA_CHARACTERS.sort(
+            (a, b) => overallAnalysis[a.id].overallRank - overallAnalysis[b.id].overallRank
+          ).map(char => (
             <article
               class="character-select-card"
               data-character-id={char.id}
@@ -120,6 +122,14 @@ import ZNCharacterImage from '../../../components/zone-nova/ZNCharacterImage.ast
                   >
                     {char.class}
                   </span>
+                  {char.faction && (
+                    <span
+                      class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '')}`}
+                      aria-label={`${char.faction} faction`}
+                    >
+                      {char.faction}
+                    </span>
+                  )}
                 </div>
                 <div class="character-stats" aria-label="Character statistics">
                   <div class="stat-item">

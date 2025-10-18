@@ -82,7 +82,8 @@ const getImageFilename = (imagePath: string): string => {
         <span class="element-badge {character.element.toLowerCase()}">{character.element}</span>
         <span class="role-badge {character.role.toLowerCase()}">{character.role}</span>
         <span class="class-badge {character.class.toLowerCase()}">{character.class}</span>
-        <span class="faction-badge {character.faction.toLowerCase().replace(/\s+/g, '-')}"
+        <span
+          class="faction-badge {character.faction.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '')}"
           >{character.faction}</span
         >
       </div>

@@ -76,7 +76,7 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
             </td>
             <td>
               <span
-                class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-')}`}
+                class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '')}`}
                 data-sort-key="faction"
               >
                 {char.faction}

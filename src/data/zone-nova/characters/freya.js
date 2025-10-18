@@ -1,5 +1,5 @@
 // Freya - Zone Nova Character Data
-// Ice Mage character from Asa faction
+// Ice Mage character from A.S.A faction
 
 export const freyaData = {
   // Basic Character Information
@@ -9,7 +9,7 @@ export const freyaData = {
   element: 'Ice',
   class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
   role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
-  faction: 'Asa',
+  faction: 'A.S.A',
 
   // Base Stats (Level 80)
   stats: {
@@ -50,7 +50,7 @@ export const freyaData = {
     description:
       'Critical Rate increases by 7.5%. At combat start: For every 15% Critical Rate, gain 7.5% Critical Damage (maximum 6 stacks, up to 45% bonus critical damage).',
     requirements: {
-      faction: 'Asa',
+      faction: 'A.S.A',
       element: 'Ice',
     },
   },
@@ -110,7 +110,7 @@ export const freyaData = {
 export const freyaSEO = {
   title: 'Freya - Zone Nova Character Guide | GachaWiki',
   description:
-    'Complete guide for Freya in Zone Nova. Learn about her Golden Desire state, ice damage abilities, critical rate synergies, and optimal build strategies for this powerful Asa faction ice mage.',
+    'Complete guide for Freya in Zone Nova. Learn about her Golden Desire state, ice damage abilities, critical rate synergies, and optimal build strategies for this powerful A.S.A faction ice mage.',
 };
 
 // Export default for easy importing

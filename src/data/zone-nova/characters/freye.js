@@ -10,7 +10,7 @@ export const freyeData = {
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
   role: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
-  faction: 'Asa', // Asa faction
+  faction: 'A.S.A', // A.S.A faction
 
   // Base Stats (Level 80)
   stats: {
@@ -50,7 +50,7 @@ export const freyeData = {
     description:
       'After combat starts, reduces total damage dealt by all enemy units by 2.5%. For every 1000 attack power Freye has, this effect increases by 100% (doubles), maximum increase of 300%. At 3000+ attack: 10% damage reduction (maximum).',
     requirements: {
-      faction: 'Asa', // Same as character faction
+      faction: 'A.S.A', // Same as character faction
       element: 'Chaos', // Same as character element
     },
   },

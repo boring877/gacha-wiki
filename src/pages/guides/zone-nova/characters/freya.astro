@@ -2,6 +2,17 @@
 import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 import { freyaData, freyaSEO } from '../../../../data/zone-nova/characters/freya.js';
+import { getFactionByCharacter, getFactionData } from '../../../../data/zone-nova/factions.js';
+
+// Get faction data from factions.js
+const factionName = getFactionByCharacter('Freya');
+const factionData = getFactionData(factionName);
+const characterData = {
+  ...freyaData,
+  faction: factionName,
+  factionDescription: factionData?.description,
+  factionChineseName: factionData?.chineseName,
+};
 
 export const prerender = true;
 ---
@@ -12,5 +23,5 @@ export const prerender = true;
   gameTitle={freyaData.name}
   character={freyaData}
 >
-  <CharacterPageTemplate characterData={freyaData} />
+  <CharacterPageTemplate characterData={characterData} />
 </CharacterIndividualLayout>

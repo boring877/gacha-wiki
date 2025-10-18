@@ -9,7 +9,7 @@ export const thorData = {
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
   class: 'Guardian', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
   role: 'Tank', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
-  faction: 'Asa', // Asa Norse mythology faction
+  faction: 'A.S.A', // A.S.A Norse mythology faction
 
   // Base Stats (Level 80)
   stats: {
@@ -47,9 +47,9 @@ export const thorData = {
   teamSkill: {
     name: 'Team Synergy', // Usually 'Combination Skill'
     description:
-      'When the team contains 2 [Asa] characters or 2 [Holy] characters: Own Defense increased by 15%. At the start of battle, every 500 Defense reduces team damage taken by 1.5%, maximum 6 stacks.',
+      'When the team contains 2 [A.S.A] characters or 2 [Holy] characters: Own Defense increased by 15%. At the start of battle, every 500 Defense reduces team damage taken by 1.5%, maximum 6 stacks.',
     requirements: {
-      faction: 'Asa', // Same as character faction
+      faction: 'A.S.A', // Same as character faction
       element: 'Holy', // Same as character element
     },
   },

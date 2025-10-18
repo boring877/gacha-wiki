@@ -12,7 +12,7 @@ export const helaData = {
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
   role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
-  faction: 'Asa', // Asa (亚萨)
+  faction: 'A.S.A', // A.S.A (亚萨)
 
   // Base Stats (Level 80)
   stats: {
@@ -68,9 +68,9 @@ export const helaData = {
     description:
       'ATK increases by 10%. At the start of battle, for every 500 ATK, increases own Chaos damage by 5% (max 6 stacks, up to 30% Chaos damage bonus)',
     requirements: {
-      faction: 'Asa',
+      faction: 'A.S.A',
       element: 'Chaos',
-      condition: '2 [Chaos] attribute characters and [ASA] characters',
+      condition: '2 [Chaos] attribute characters and [A.S.A] characters',
     },
   },
 
@@ -157,7 +157,7 @@ export const hela = {
   element: 'Chaos',
   role: 'DPS',
   class: 'Rogue',
-  faction: 'Asa',
+  faction: 'A.S.A',
   chineseFaction: '亚萨',
   maxLevel: 80,
 
@@ -178,7 +178,7 @@ export const hela = {
   tags: [
     'DPS',
     'Chaos',
-    'Asa',
+    'A.S.A',
     'Enhanced Ultimate',
     'Mode Switch',
     'Crit Damage',

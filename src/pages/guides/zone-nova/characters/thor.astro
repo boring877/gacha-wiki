@@ -3,6 +3,17 @@ import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIn
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 // Navigation removed
 import { thorData, thorSEO } from '../../../../data/zone-nova/characters/thor.js';
+import { getFactionByCharacter, getFactionData } from '../../../../data/zone-nova/factions.js';
+
+// Get faction data from factions.js
+const factionName = getFactionByCharacter('Thor');
+const factionData = getFactionData(factionName);
+const characterData = {
+  ...thorData,
+  faction: factionName,
+  factionDescription: factionData?.description,
+  factionChineseName: factionData?.chineseName,
+};
 
 export const prerender = true;
 ---
@@ -13,5 +24,5 @@ export const prerender = true;
   gameTitle={thorData.name}
   character={thorData}
 >
-  <CharacterPageTemplate characterData={thorData} />
+  <CharacterPageTemplate characterData={characterData} />
 </CharacterIndividualLayout>

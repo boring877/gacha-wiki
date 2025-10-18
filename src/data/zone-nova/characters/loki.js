@@ -9,7 +9,7 @@ export const lokiData = {
   element: 'Chaos',
   class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
   role: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
-  faction: 'Asa',
+  faction: 'A.S.A',
 
   // Base Stats (Level 80)
   stats: {
@@ -49,7 +49,7 @@ export const lokiData = {
     description:
       'Own attack power increases by 10%, At battle start, every 500 attack power can increase own chaos damage by 5%, up to 6 times',
     requirements: {
-      faction: 'Asa',
+      faction: 'A.S.A',
       element: 'Chaos',
     },
   },

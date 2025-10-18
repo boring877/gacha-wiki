@@ -121,7 +121,9 @@ function getTagCategory(tag: string): string {
           <span class={`element-badge ${char.element.toLowerCase()}`}>{char.element}</span>
           <span class={`role-badge ${char.role.toLowerCase()}`}>{char.role}</span>
           <span class={`class-badge ${char.class.toLowerCase()}`}>{char.class}</span>
-          <span class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-')}`}>
+          <span
+            class={`faction-badge ${char.faction.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '')}`}
+          >
             {char.faction}
           </span>
         </div>

@@ -9,7 +9,7 @@ export const odinData = {
   element: 'Fire', // Fire, Ice, Wind, Holy, Chaos
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
   role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
-  faction: 'Asa', // Should match faction names in factions.js
+  faction: 'A.S.A', // Should match faction names in factions.js
 
   // Base Stats (Level 80)
   stats: {
@@ -56,11 +56,11 @@ export const odinData = {
   teamSkill: {
     name: 'Combination Skill',
     description:
-      'If the party has 2 Asa or 2 Fire characters:\n' +
+      'If the party has 2 A.S.A or 2 Fire characters:\n' +
       'ATK +10%.\n' +
       'At battle start, every 500 ATK grants +3% Penetration (max 6 times).',
     requirements: {
-      faction: 'Asa',
+      faction: 'A.S.A',
       element: 'Fire',
     },
   },
