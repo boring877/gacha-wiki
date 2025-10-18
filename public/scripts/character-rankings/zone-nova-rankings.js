@@ -154,6 +154,7 @@ class ZoneNovaRankingsManager {
   init() {
     try {
       this.cacheElements();
+      this.storeOriginalState();
       this.setupEventListeners();
       this.initializeFromURL();
     } catch (error) {
@@ -207,27 +208,133 @@ class ZoneNovaRankingsManager {
   }
 
   /**
+   * Clear URL completely (remove all parameters)
+   */
+  clearURL() {
+    try {
+      // Update URL without any parameters
+      window.history.replaceState({}, '', window.location.pathname);
+    } catch (error) {
+      console.error('Error clearing URL:', error);
+    }
+  }
+
+  /**
+   * Store the original state of character cards for proper reset
+   */
+  storeOriginalState() {
+    try {
+      // The cards are already sorted by overallRank in the Astro template
+      // Just store the current order as the correct original state
+      this.originalCards = Array.from(this.elements.characterCards);
+
+      // Store the ranking numbers from the DOM (they're already correct)
+      this.originalRankings = new Map();
+      this.originalCards.forEach(card => {
+        const characterId = parseInt(card.dataset.characterId || '0');
+        const rankingElement = card.querySelector('.character-rank-number');
+        if (rankingElement) {
+          const rank = rankingElement.textContent;
+          this.originalRankings.set(characterId, rank);
+        }
+      });
+    } catch (error) {
+      console.error('Error storing original state:', error);
+    }
+  }
+
+  /**
+   * Restore the original order of characters based on overall ranking
+   */
+  restoreOriginalOrder() {
+    try {
+      if (!this.originalCards || !this.originalRankings) {
+        console.warn('Original cards or rankings not stored, cannot restore order');
+        return;
+      }
+
+      // Restore original card order
+      const fragment = document.createDocumentFragment();
+      this.originalCards.forEach(card => fragment.appendChild(card));
+      this.elements.characterGrid.replaceChildren(fragment);
+
+      // Restore original ranking numbers
+      this.originalCards.forEach(card => {
+        const characterId = parseInt(card.dataset.characterId || '0');
+        const rankingElement = this.elements.rankingNumbers.get(card);
+        const correctRank = this.originalRankings.get(characterId);
+
+        if (rankingElement && correctRank) {
+          rankingElement.textContent = correctRank;
+        }
+      });
+
+      // Recache elements since we changed the DOM
+      this.elements.characterCards = document.querySelectorAll('.character-select-card');
+      this.elements.rankingNumbers = new Map();
+      this.elements.characterCards.forEach(card => {
+        const rankingElement = card.querySelector('.character-rank-number');
+        if (rankingElement) {
+          this.elements.rankingNumbers.set(card, rankingElement);
+        }
+      });
+    } catch (error) {
+      console.error('Error restoring original order:', error);
+    }
+  }
+
+  /**
+   * Refresh the rankings display - reinitialize current state
+   */
+  refreshRankings() {
+    try {
+      // Recache DOM elements in case they changed
+      this.cacheElements();
+
+      // Reapply current filters
+      this.filterCharacters();
+
+      // If there's an active sort, reapply it
+      if (this.sortState.column) {
+        const sortButton = document.querySelector(`[data-sort="${this.sortState.column}"]`);
+        if (sortButton) {
+          this.sortCharacters(this.sortState.column);
+        }
+      } else {
+        // Otherwise restore original order
+        this.restoreOriginalOrder();
+      }
+    } catch (error) {
+      console.error('Error refreshing rankings:', error);
+    }
+  }
+
+  /**
    * Update URL with current filter and sort state
    */
   updateURL() {
-    const urlParams = new URLSearchParams();
+    try {
+      const urlParams = new URLSearchParams();
 
-    // Add filters to URL
-    if (this.filterState.role) urlParams.set('role', this.filterState.role);
-    if (this.filterState.class) urlParams.set('class', this.filterState.class);
-    if (this.filterState.rarity) urlParams.set('rarity', this.filterState.rarity);
-    if (this.filterState.element) urlParams.set('element', this.filterState.element);
+      // Add filters to URL only if they have values
+      if (this.filterState.role) urlParams.set('role', this.filterState.role);
+      if (this.filterState.class) urlParams.set('class', this.filterState.class);
+      if (this.filterState.rarity) urlParams.set('rarity', this.filterState.rarity);
+      if (this.filterState.element) urlParams.set('element', this.filterState.element);
 
-    // Add sort to URL
-    if (this.sortState.column) {
-      urlParams.set('sort', this.sortState.column);
-      urlParams.set('order', this.sortState.asc ? 'asc' : 'desc');
+      // Add sort to URL only if column is set
+      if (this.sortState.column) {
+        urlParams.set('sort', this.sortState.column);
+        urlParams.set('order', this.sortState.asc ? 'asc' : 'desc');
+      }
+
+      // Update URL without page reload
+      const newURL =
+        window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
+      window.history.replaceState({}, '', newURL);
+    } catch (error) {
+      console.error('Error updating URL:', error);
     }
-
-    // Update URL without page reload
-    const newURL =
-      window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
-    window.history.replaceState({}, '', newURL);
   }
 
   /**
@@ -235,9 +342,16 @@ class ZoneNovaRankingsManager {
    */
   cacheElements() {
     try {
+      // Clear existing cache
+      this.elements = {};
+
       // Character cards and containers
       this.elements.characterCards = document.querySelectorAll('.character-select-card');
       this.elements.characterGrid = document.getElementById('character-grid');
+
+      if (!this.elements.characterGrid) {
+        throw new Error('Character grid element not found');
+      }
 
       // Filters
       this.elements.roleFilter = document.getElementById('role-filter');
@@ -272,8 +386,19 @@ class ZoneNovaRankingsManager {
           this.elements.rankingNumbers.set(card, rankingElement);
         }
       });
+
+      // Validate essential elements exist
+      if (this.elements.characterCards.length === 0) {
+        console.warn('No character cards found');
+      }
     } catch (error) {
       console.error('Error caching DOM elements:', error);
+      // Re-initialize elements to prevent undefined errors
+      this.elements = {
+        characterCards: [],
+        characterGrid: null,
+        rankingNumbers: new Map(),
+      };
     }
   }
 
@@ -374,7 +499,7 @@ class ZoneNovaRankingsManager {
         }
       });
 
-      // Apply all updates at once
+      // Apply all updates at once - only update text content for character cards
       updates.forEach(({ element, rank }) => {
         element.textContent = rank;
       });
@@ -430,7 +555,7 @@ class ZoneNovaRankingsManager {
         rankMap.set(item.character.id, currentRank);
       });
 
-      // Apply ranking updates
+      // Apply ranking updates - only update text content, not styling for character cards
       const updates = [];
       visibleCards.forEach(card => {
         const characterId = parseInt(card.dataset.characterId || '0');
@@ -453,44 +578,52 @@ class ZoneNovaRankingsManager {
   }
 
   filterCharacters() {
-    const filters = {
-      role: this.elements.roleFilter?.value.toLowerCase() || '',
-      class: this.elements.classFilter?.value.toLowerCase() || '',
-      rarity: this.elements.rarityFilter?.value.toLowerCase() || '',
-      element: this.elements.elementFilter?.value.toLowerCase() || '',
-    };
+    try {
+      const filters = {
+        role: this.elements.roleFilter?.value.toLowerCase() || '',
+        class: this.elements.classFilter?.value.toLowerCase() || '',
+        rarity: this.elements.rarityFilter?.value.toLowerCase() || '',
+        element: this.elements.elementFilter?.value.toLowerCase() || '',
+      };
 
-    // Update filter state
-    this.filterState = filters;
+      // Update filter state
+      this.filterState = filters;
 
-    // Use pre-computed filtered groups for better performance
-    let filteredCharacters = this.characters;
+      // Use pre-computed filtered groups for better performance
+      let filteredCharacters = this.characters;
 
-    // Apply filters using pre-computed groups when possible
-    if (filters.role) {
-      filteredCharacters = this.filteredGroups.byRole?.[filters.role] || filteredCharacters;
+      // Apply filters using pre-computed groups when possible
+      if (filters.role && this.filteredGroups.byRole) {
+        filteredCharacters = this.filteredGroups.byRole[filters.role] || filteredCharacters;
+      }
+      if (filters.class && this.filteredGroups.byClass) {
+        filteredCharacters = this.filteredGroups.byClass[filters.class] || filteredCharacters;
+      }
+      if (filters.rarity && this.filteredGroups.byRarity) {
+        filteredCharacters = this.filteredGroups.byRarity[filters.rarity] || filteredCharacters;
+      }
+      if (filters.element && this.filteredGroups.byElement) {
+        filteredCharacters = this.filteredGroups.byElement[filters.element] || filteredCharacters;
+      }
+
+      // Create a Set of visible character IDs for fast lookup
+      const visibleCharacterIds = new Set(filteredCharacters.map(char => char.id));
+
+      // Update DOM efficiently
+      if (this.elements.characterCards && this.elements.characterCards.length > 0) {
+        this.elements.characterCards.forEach(card => {
+          const characterId = parseInt(card.dataset.characterId || '0');
+          card.style.display = visibleCharacterIds.has(characterId) ? 'flex' : 'none';
+        });
+
+        // Update ranking numbers for visible cards
+        this.updateRankingNumbers();
+      }
+
+      this.updateURL();
+    } catch (error) {
+      console.error('Error in filterCharacters:', error);
     }
-    if (filters.class) {
-      filteredCharacters = this.filteredGroups.byClass?.[filters.class] || filteredCharacters;
-    }
-    if (filters.rarity) {
-      filteredCharacters = this.filteredGroups.byRarity?.[filters.rarity] || filteredCharacters;
-    }
-    if (filters.element) {
-      filteredCharacters = this.filteredGroups.byElement?.[filters.element] || filteredCharacters;
-    }
-
-    // Create a Set of visible character IDs for fast lookup
-    const visibleCharacterIds = new Set(filteredCharacters.map(char => char.id));
-
-    // Update DOM efficiently
-    this.elements.characterCards.forEach(card => {
-      const characterId = parseInt(card.dataset.characterId || '0');
-      card.style.display = visibleCharacterIds.has(characterId) ? 'flex' : 'none';
-    });
-
-    this.updateRankingNumbers();
-    this.updateURL();
   }
 
   checkFilters(character, filters) {
@@ -551,64 +684,39 @@ class ZoneNovaRankingsManager {
   }
 
   resetFilters() {
-    // Clear filter values
-    [
-      this.elements.roleFilter,
-      this.elements.classFilter,
-      this.elements.rarityFilter,
-      this.elements.elementFilter,
-    ].forEach(filter => {
-      if (filter) filter.value = '';
-    });
+    try {
+      // Clear all filters
+      if (this.elements.roleFilter) this.elements.roleFilter.value = '';
+      if (this.elements.classFilter) this.elements.classFilter.value = '';
+      if (this.elements.rarityFilter) this.elements.rarityFilter.value = '';
+      if (this.elements.elementFilter) this.elements.elementFilter.value = '';
 
-    // Reset filter state
-    this.filterState = {
-      role: '',
-      class: '',
-      rarity: '',
-      element: '',
-    };
+      // Reset internal state
+      this.filterState = { role: '', class: '', rarity: '', element: '' };
+      this.sortState = { column: null, asc: false };
 
-    // Show all cards
-    this.elements.characterCards.forEach(card => {
-      card.style.display = 'flex';
-    });
+      // Clear sort button states
+      this.elements.sortButtons.forEach(b => b.classList.remove('active'));
 
-    // Clear sort state
-    this.elements.sortButtons.forEach(b => b.classList.remove('active'));
-    this.sortState = { column: null, asc: false };
-
-    // Restore original ranking order
-    this.restoreOriginalOrder();
-
-    // Update URL to clear all parameters
-    this.updateURL();
-  }
-
-  restoreOriginalOrder() {
-    const cards = Array.from(this.elements.characterCards);
-
-    cards.sort((a, b) => {
-      const aId = parseInt(a.dataset.characterId || '0');
-      const bId = parseInt(b.dataset.characterId || '0');
-      const aRank = this.overallAnalysis[aId]?.overallRank || 999;
-      const bRank = this.overallAnalysis[bId]?.overallRank || 999;
-      return aRank - bRank;
-    });
-
-    // Batch DOM operations
-    const fragment = document.createDocumentFragment();
-    cards.forEach(card => fragment.appendChild(card));
-    this.elements.characterGrid.appendChild(fragment);
-
-    // Restore original ranking numbers
-    cards.forEach(card => {
-      const characterId = parseInt(card.dataset.characterId || '0');
-      const rankingElement = this.elements.rankingNumbers.get(card);
-      if (rankingElement && this.overallAnalysis[characterId]) {
-        rankingElement.textContent = this.overallAnalysis[characterId].overallRank;
+      // Clear character selection and hide rankings display
+      this.elements.characterCards.forEach(card => card.classList.remove('selected'));
+      if (this.elements.rankingsDisplay) {
+        this.elements.rankingsDisplay.classList.remove('active');
       }
-    });
+
+      // Show all cards and restore original order
+      this.elements.characterCards.forEach(card => {
+        card.style.display = 'flex';
+      });
+
+      // Use the proper restore function to maintain correct rankings
+      this.restoreOriginalOrder();
+
+      // Clear URL
+      this.clearURL();
+    } catch (error) {
+      console.error('Error in resetFilters:', error);
+    }
   }
 
   handleCharacterSelection(card) {
