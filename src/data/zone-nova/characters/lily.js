@@ -36,12 +36,12 @@ export const lilyData = {
       cooldown: '1.0s',
       energyCost: '3',
       description:
-        'Deals ice damage equal to 240% of own defense to a designated enemy unit, gains 1 stack of [Battle Intention], and reduces self-damage taken by 24% for 10 seconds. [Enhanced Ultimate]: Clear all [Battle Intention] stacks, gain a shield with an amount equal to 24% of max HP, and for 10 seconds, nullify all incoming damage (increased to 100%), remove all ongoing damage effects, deal ice damage equal to 480% of own defense to a designated enemy unit, and reduce self-damage taken by 24% for 10 seconds.',
+        'Deals ice damage equal to 240% of own defense to a designated enemy unit, gains 1 stack of [Battle Intention], and reduces self-damage taken by 24% for 10 seconds.\n\n[Enhanced Ultimate]: Clear all [Battle Intention] stacks, gain a shield with an amount equal to 24% of max HP, and for 10 seconds, nullify all incoming damage (increased to 100%), remove all ongoing damage effects, deal ice damage equal to 480% of own defense to a designated enemy unit, and reduce self-damage taken by 24% for 10 seconds.',
     },
     passive: {
       name: 'Hundred-Battle Ice Bone',
       description:
-        'Effect 1: [Mitigation] After success, increase own defense by 60% for 5 seconds; repeated triggers can extend duration. Effect 2: [Mitigation] After success, gain 1 stack of [Battle Intention]; maximum 1 stack per second. When [Battle Intention] reaches 10 stacks, can cast [Enhanced Ultimate Skill]. Effect 3: After entering battle and when own HP drops to 70%/40%/10% or below, gain a shield; each shield can trigger at most once. Shield amount equals 24% of max HP, and within 10 seconds, mitigation rate rises to 100%, removing all ongoing damage effects. Effect 4: After gaining a shield each time, instantly recover 10% of max HP.',
+        'Effect 1: [Mitigation] After success, increase own defense by 60% for 5 seconds; repeated triggers can extend duration.\n\nEffect 2: [Mitigation] After success, gain 1 stack of [Battle Intention]; maximum 1 stack per second. When [Battle Intention] reaches 10 stacks, can cast [Enhanced Ultimate Skill].\n\nEffect 3: After entering battle and when own HP drops to 70%/40%/10% or below, gain a shield; each shield can trigger at most once. Shield amount equals 24% of max HP, and within 10 seconds, mitigation rate rises to 100%, removing all ongoing damage effects.\n\nEffect 4: After gaining a shield each time, instantly recover 10% of max HP.',
     },
   },
 
@@ -49,7 +49,7 @@ export const lilyData = {
   teamSkill: {
     name: 'Combination Skill',
     description:
-      'Effect 1: Own defense increases by 15%. Effect 2: At the start of battle, every 500 defense reduces team-wide damage taken by 1.5%, up to 6 times.',
+      'Effect 1: Own defense increases by 15%.\n\nEffect 2: At the start of battle, every 500 defense reduces team-wide damage taken by 1.5%, up to 6 times.',
     requirements: {
       faction: 'Sapphire',
       element: 'Ice',

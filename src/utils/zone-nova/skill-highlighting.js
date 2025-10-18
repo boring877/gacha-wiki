@@ -200,6 +200,14 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
     });
   }
 
+  // Convert newlines to HTML line breaks for better readability
+  highlightedText = highlightedText.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+
+  // Wrap in paragraphs if there were double newlines
+  if (highlightedText.includes('</p><p>')) {
+    highlightedText = '<p>' + highlightedText + '</p>';
+  }
+
   return highlightedText;
 }
 
