@@ -1,0 +1,651 @@
+/* Zone Nova EXP Requirements Page Styles */
+/* Clean design following Zone Nova patterns without animations or effects */
+
+/* Page Sections */
+.exp-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--zn-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--zn-border);
+}
+
+.exp-section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--zn-primary);
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.exp-section-description {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.exp-section-description p {
+  color: var(--zn-text-secondary);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Subsections */
+.exp-subsection {
+  margin-bottom: 2rem;
+}
+
+.exp-subsection:last-child {
+  margin-bottom: 0;
+}
+
+.exp-subsection-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--zn-text-primary);
+  margin: 0 0 1rem 0;
+  padding-left: 0.5rem;
+  border-left: 3px solid var(--zn-primary);
+}
+
+.exp-subsection-description {
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.exp-subsection-description p {
+  color: var(--zn-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* EXP Cards Grid */
+.exp-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.exp-card {
+  background: var(--zn-bg-primary);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid var(--zn-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exp-card-image {
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.exp-card-image img {
+  border-radius: 6px;
+  border: 1px solid var(--zn-border);
+}
+
+.exp-card-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--zn-text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.exp-card-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.exp-card-label {
+  font-size: 0.8rem;
+  color: var(--zn-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Card Variants - All cards use same border color */
+.exp-card-highest .exp-card-value {
+  color: var(--zn-legendary);
+}
+
+.exp-card-mid .exp-card-value {
+  color: var(--zn-primary);
+}
+
+.exp-card-low .exp-card-value {
+  color: var(--zn-rare);
+}
+
+.exp-card-high .exp-card-value {
+  color: var(--zn-legendary);
+}
+
+/* Table Styles */
+.character-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--zn-bg-primary);
+  border-radius: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  border: 1px solid var(--zn-border);
+}
+
+.character-table th {
+  background: var(--zn-primary);
+  color: #222;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--zn-border);
+}
+
+.character-table td {
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--zn-border);
+  color: var(--zn-text-primary);
+}
+
+.character-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.exp-amount {
+  color: var(--zn-primary);
+  font-weight: 600;
+}
+
+.credit-amount {
+  color: var(--zn-text-secondary);
+}
+
+/* Table Row Styles */
+.even-row {
+  background: var(--zn-bg-primary);
+}
+
+.odd-row {
+  background: var(--zn-bg-secondary);
+}
+
+/* Breakthrough Table */
+.breakthrough-table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--zn-border);
+}
+
+.breakthrough-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--zn-bg-primary);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.breakthrough-table th {
+  background: var(--zn-primary);
+  color: #222;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--zn-border);
+}
+
+.breakthrough-table td {
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--zn-border);
+  color: var(--zn-text-primary);
+}
+
+.breakthrough-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.breakthrough-level-cell {
+  color: var(--zn-primary);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.breakthrough-stone-cell {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.breakthrough-quantity-cell {
+  font-weight: 600;
+  color: var(--zn-text-secondary);
+}
+
+.stone-type-low {
+  color: var(--zn-rare);
+}
+
+.stone-type-mid {
+  color: var(--zn-primary);
+}
+
+.stone-type-high {
+  color: var(--zn-legendary);
+}
+
+.chip-type-low {
+  color: var(--zn-rare);
+}
+
+.chip-type-mid {
+  color: var(--zn-primary);
+}
+
+.chip-type-high {
+  color: var(--zn-legendary);
+}
+
+/* EXP Calculator Container */
+.exp-calculator-container {
+  background: var(--zn-bg-primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid var(--zn-border);
+}
+
+.exp-calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.calc-item {
+  background: var(--zn-bg-secondary);
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid var(--zn-border);
+}
+
+.calc-label {
+  color: var(--zn-text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.calc-value {
+  color: var(--zn-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.total-exp-needed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--zn-bg-secondary);
+  border-radius: 6px;
+  border: 1px solid var(--zn-border);
+}
+
+.total-label {
+  color: var(--zn-text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.total-value {
+  color: var(--zn-primary);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* Total Credits Container */
+.total-credits-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--zn-bg-secondary);
+  border-radius: 6px;
+  border: 1px solid var(--zn-border);
+}
+
+.total-credits-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.total-credits-label {
+  color: var(--zn-text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.total-credits-value {
+  color: var(--zn-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Rune Info Box */
+.rune-info-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.rune-detail {
+  background: var(--zn-bg-primary);
+  border-radius: 6px;
+  padding: 1rem;
+  border: 1px solid var(--zn-border);
+  text-align: center;
+}
+
+.rune-label {
+  color: var(--zn-text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.rune-value {
+  color: var(--zn-primary);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .exp-section {
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .exp-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .exp-calculator-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .rune-info-box {
+    grid-template-columns: 1fr;
+  }
+
+  /* Mobile table improvements */
+  .character-table,
+  .breakthrough-table {
+    font-size: 0.9rem;
+  }
+
+  .character-table th,
+  .character-table td,
+  .breakthrough-table th,
+  .breakthrough-table td {
+    padding: 0.6rem 0.3rem;
+  }
+
+  /* Mobile card improvements */
+  .exp-card {
+    padding: 0.75rem;
+  }
+
+  .exp-card-image img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .exp-card-title {
+    font-size: 0.8rem;
+  }
+
+  .exp-card-value {
+    font-size: 1.2rem;
+  }
+
+  .exp-card-label {
+    font-size: 0.75rem;
+  }
+
+  /* Mobile calc improvements */
+  .calc-item {
+    padding: 0.75rem;
+  }
+
+  .calc-label {
+    font-size: 0.8rem;
+  }
+
+  .calc-value {
+    font-size: 1.2rem;
+  }
+
+  /* Mobile total improvements */
+  .total-exp-needed,
+  .total-credits-container {
+    padding: 0.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .total-label,
+  .total-credits-label {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .total-value,
+  .total-credits-value {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  /* Mobile rune improvements */
+  .rune-detail {
+    padding: 0.75rem;
+  }
+
+  .rune-label {
+    font-size: 0.8rem;
+  }
+
+  .rune-value {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-section {
+    padding: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .exp-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .exp-card {
+    padding: 0.5rem;
+  }
+
+  .exp-card-image img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .exp-card-title {
+    font-size: 0.75rem;
+  }
+
+  .exp-card-value {
+    font-size: 1rem;
+  }
+
+  .exp-card-label {
+    font-size: 0.7rem;
+  }
+
+  .character-table,
+  .breakthrough-table {
+    font-size: 0.8rem;
+  }
+
+  .character-table th,
+  .character-table td,
+  .breakthrough-table th,
+  .breakthrough-table td {
+    padding: 0.5rem 0.2rem;
+  }
+
+  /* Smaller calc items on very small screens */
+  .calc-item {
+    padding: 0.5rem;
+  }
+
+  .calc-label {
+    font-size: 0.75rem;
+  }
+
+  .calc-value {
+    font-size: 1rem;
+  }
+
+  /* Improved totals for small mobile */
+  .total-exp-needed,
+  .total-credits-container {
+    padding: 0.5rem;
+  }
+
+  .total-label,
+  .total-credits-label {
+    font-size: 0.8rem;
+  }
+
+  .total-value,
+  .total-credits-value {
+    font-size: 1rem;
+  }
+
+  /* Compact rune info */
+  .rune-detail {
+    padding: 0.5rem;
+  }
+
+  .rune-label {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .rune-value {
+    font-size: 1rem;
+  }
+
+  /* Touch-friendly spacing */
+  .exp-subsection {
+    margin-bottom: 1.5rem;
+  }
+
+  .exp-calculator-grid {
+    gap: 0.5rem;
+  }
+
+  .breakthrough-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .character-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Very small mobile optimization */
+@media (max-width: 360px) {
+  .exp-section {
+    padding: 0.5rem;
+    margin: 0.75rem 0;
+  }
+
+  .exp-cards-grid {
+    gap: 0.4rem;
+  }
+
+  .exp-card {
+    padding: 0.4rem;
+  }
+
+  .exp-card-image img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .exp-card-title {
+    font-size: 0.7rem;
+  }
+
+  .exp-card-value {
+    font-size: 0.9rem;
+  }
+
+  .exp-card-label {
+    font-size: 0.65rem;
+  }
+
+  .character-table,
+  .breakthrough-table {
+    font-size: 0.7rem;
+  }
+
+  .character-table th,
+  .character-table td,
+  .breakthrough-table th,
+  .breakthrough-table td {
+    padding: 0.4rem 0.1rem;
+  }
+
+  .calc-item {
+    padding: 0.4rem;
+  }
+
+  .calc-label {
+    font-size: 0.7rem;
+  }
+
+  .calc-value {
+    font-size: 0.9rem;
+  }
+
+  .rune-detail {
+    padding: 0.4rem;
+  }
+
+  .rune-label {
+    font-size: 0.7rem;
+  }
+
+  .rune-value {
+    font-size: 0.9rem;
+  }
+}

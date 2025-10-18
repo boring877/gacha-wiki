@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all Zone Nova Rune images once
+import AlphaImg from '../../assets/images/games/zone-nova/runes/Alpha.jpg';
+import BethImg from '../../assets/images/games/zone-nova/runes/Beth.jpg';
+import DalethImg from '../../assets/images/games/zone-nova/runes/Daleth.jpg';
+import EpsilonImg from '../../assets/images/games/zone-nova/runes/Epsilon.jpg';
+import GiantsImg from '../../assets/images/games/zone-nova/runes/Giants.jpg';
+import GimelContinuousDamageImg from '../../assets/images/games/zone-nova/runes/Gimel-Continuous-Damage.jpg';
+import HertPursuitDamageImg from '../../assets/images/games/zone-nova/runes/Hert-Pursuit-Damage.jpg';
+import ShatteredFoundationImg from '../../assets/images/games/zone-nova/runes/Shattered-Foundation.jpg';
+import TideImg from '../../assets/images/games/zone-nova/runes/Tide.jpg';
+import ZahnImg from '../../assets/images/games/zone-nova/runes/Zahn.jpg';
+import ElementImg from '../../assets/images/games/zone-nova/runes/element.jpg';
+
+// Centralized Rune image mapping
+const runeImageMap = {
+  'Alpha.jpg': AlphaImg,
+  'Beth.jpg': BethImg,
+  'Daleth.jpg': DalethImg,
+  'Epsilon.jpg': EpsilonImg,
+  'Giants.jpg': GiantsImg,
+  'Gimel-Continuous-Damage.jpg': GimelContinuousDamageImg,
+  'Hert-Pursuit-Damage.jpg': HertPursuitDamageImg,
+  'Shattered-Foundation.jpg': ShatteredFoundationImg,
+  'Tide.jpg': TideImg,
+  'Zahn.jpg': ZahnImg,
+  'element.jpg': ElementImg,
+};
+
+const {
+  imageName,
+  alt,
+  width = 200,
+  height = 200,
+  class: className = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 95,
+} = Astro.props;
+
+// Get the imported image object from the map
+// Handle full paths, with and without extension
+let imageKey = imageName;
+
+// Extract filename from full path if needed
+if (imageKey.includes('/')) {
+  const parts = imageKey.split('/');
+  imageKey = parts[parts.length - 1] || 'Alpha.jpg';
+}
+
+// Add extension if missing
+if (!imageKey.includes('.')) {
+  imageKey = `${imageKey}.jpg`;
+}
+
+const imageSrc = runeImageMap[imageKey] || runeImageMap['Alpha.jpg'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

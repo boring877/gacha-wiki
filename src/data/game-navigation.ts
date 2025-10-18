@@ -95,6 +95,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Progression',
         links: [
+          { name: 'EXP Requirements', href: '/guides/zone-nova/exp-requirements/' },
           { name: 'Runes', href: '/guides/zone-nova/runes/' },
           { name: 'Crafting', href: '/guides/zone-nova/crafting/' },
           { name: 'Crafting Items', href: '/guides/zone-nova/crafting-items/' },

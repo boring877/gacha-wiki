@@ -113,6 +113,11 @@ export const zoneNovaConfig = {
       size: 'medium',
       guides: [
         {
+          id: 'exp-requirements',
+          title: 'EXP Requirements',
+          url: '/guides/zone-nova/exp-requirements/',
+        },
+        {
           id: 'runes',
           title: 'Runes',
           url: '/guides/zone-nova/runes/',
@@ -306,6 +311,16 @@ export const zoneNovaConfig = {
       url: '/guides/zone-nova/runes/',
       category: 'guides',
       size: 'small',
+    },
+    {
+      id: 'exp-requirements',
+      title: 'EXP Requirements',
+      emoji: '',
+      description:
+        'Complete guide to character and memory leveling requirements, breakthrough materials, and EXP costs.',
+      url: '/guides/zone-nova/exp-requirements/',
+      category: 'guides',
+      size: 'medium',
     },
     {
       id: 'crafting',

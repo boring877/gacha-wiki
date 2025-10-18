@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all Zone Nova EXP images once
+import HighgradeCubeImg from '../../assets/images/games/zone-nova/EXP/highgrade-cube.jpg';
+import HighgradeChipImg from '../../assets/images/games/zone-nova/EXP/highgrade-chip.jpg';
+import HighestgradeImg from '../../assets/images/games/zone-nova/EXP/highestgrade.jpg';
+import LowgradeCubeImg from '../../assets/images/games/zone-nova/EXP/lowgrade-cube.jpg';
+import LowgradeImg from '../../assets/images/games/zone-nova/EXP/lowgrade.jpg';
+import LowgradeChipImg from '../../assets/images/games/zone-nova/EXP/lowgrade-chip.jpg';
+import MidgradeCubeImg from '../../assets/images/games/zone-nova/EXP/midgrade-cube.jpg';
+import MidgradeImg from '../../assets/images/games/zone-nova/EXP/midgrade.jpg';
+import MidgradeChipImg from '../../assets/images/games/zone-nova/EXP/midgrade-chip.jpg';
+
+// Centralized EXP image mapping
+const expImageMap = {
+  'highgrade-cube.jpg': HighgradeCubeImg,
+  'highgrade-chip.jpg': HighgradeChipImg,
+  'highestgrade.jpg': HighestgradeImg,
+  'lowgrade-cube.jpg': LowgradeCubeImg,
+  'lowgrade.jpg': LowgradeImg,
+  'lowgrade-chip.jpg': LowgradeChipImg,
+  'midgrade-cube.jpg': MidgradeCubeImg,
+  'midgrade.jpg': MidgradeImg,
+  'midgrade-chip.jpg': MidgradeChipImg,
+};
+
+const {
+  imageName,
+  alt,
+  width = 200,
+  height = 200,
+  class: className = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 95,
+} = Astro.props;
+
+// Get the imported image object from the map
+// Handle full paths, with and without extension
+let imageKey = imageName;
+
+// Extract filename from full path if needed
+if (imageKey.includes('/')) {
+  const parts = imageKey.split('/');
+  imageKey = parts[parts.length - 1] || 'lowgrade.jpg';
+}
+
+// Add extension if missing
+if (!imageKey.includes('.')) {
+  imageKey = `${imageKey}.jpg`;
+}
+
+const imageSrc = expImageMap[imageKey] || expImageMap['lowgrade.jpg'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>
