@@ -104,9 +104,10 @@ function getTierClassName(tier: string): string {
                       <ZNCharacterImage
                         imageName={charData.image}
                         alt={charData.name}
-                        width={60}
-                        height={60}
+                        width={80}
+                        height={80}
                         loading="lazy"
+                        quality={100}
                       />
                     </div>
                     <div class="character-name">{charData.name}</div>
@@ -151,9 +152,10 @@ function getTierClassName(tier: string): string {
                       <ZNCharacterImage
                         imageName={charData.image}
                         alt={charData.name}
-                        width={60}
-                        height={60}
+                        width={80}
+                        height={80}
                         loading="lazy"
+                        quality={100}
                       />
                     </div>
                     <div class="character-name">{charData.name}</div>
@@ -198,9 +200,10 @@ function getTierClassName(tier: string): string {
                       <ZNCharacterImage
                         imageName={charData.image}
                         alt={charData.name}
-                        width={60}
-                        height={60}
+                        width={80}
+                        height={80}
                         loading="lazy"
+                        quality={100}
                       />
                     </div>
                     <div class="character-name">{charData.name}</div>
@@ -245,9 +248,10 @@ function getTierClassName(tier: string): string {
                       <ZNCharacterImage
                         imageName={charData.image}
                         alt={charData.name}
-                        width={60}
-                        height={60}
+                        width={80}
+                        height={80}
                         loading="lazy"
+                        quality={100}
                       />
                     </div>
                     <div class="character-name">{charData.name}</div>
@@ -292,9 +296,10 @@ function getTierClassName(tier: string): string {
                       <ZNCharacterImage
                         imageName={charData.image}
                         alt={charData.name}
-                        width={60}
-                        height={60}
+                        width={80}
+                        height={80}
                         loading="lazy"
+                        quality={100}
                       />
                     </div>
                     <div class="character-name">{charData.name}</div>
@@ -551,10 +556,15 @@ function getTierClassName(tier: string): string {
           ? charData.element.charAt(0).toUpperCase() + charData.element.slice(1).toLowerCase()
           : '';
 
-        // Use optimized image path for pool card
+        // Use optimized image path for pool card with higher quality
         const optimizedImagePath = optimizedImagePaths[charData.name] || charData.image;
+        // Add quality parameter to the image URL
+        const highQualityImagePath = optimizedImagePath.includes('?')
+          ? `${optimizedImagePath}&quality=100&w=80&h=80`
+          : `${optimizedImagePath}?quality=100&w=80&h=80`;
+
         card.innerHTML = `
-          <img src="${optimizedImagePath.replace(/"/g, '"')}" alt="${charData.name.replace(/"/g, '"')}" loading="lazy">
+          <img src="${highQualityImagePath.replace(/"/g, '"')}" alt="${charData.name.replace(/"/g, '"')}" loading="lazy" width="60" height="60">
           <div class="pool-character-name">${charData.name.replace(/</g, '<').replace(/>/g, '>')}</div>
           <div class="pool-character-badges">
             <span class="pool-mini-badge rarity-${charData.rarity.toLowerCase()}">${charData.rarity.replace(/</g, '<').replace(/>/g, '>')}</span>
@@ -642,11 +652,16 @@ function getTierClassName(tier: string): string {
           ? charData.element.charAt(0).toUpperCase() + charData.element.slice(1).toLowerCase()
           : '';
 
-        // Use optimized image path for draggable card
+        // Use optimized image path for draggable card with higher quality
         const optimizedImagePath = optimizedImagePaths[charData.name] || charData.image;
+        // Add quality parameter to the image URL
+        const highQualityImagePath = optimizedImagePath.includes('?')
+          ? `${optimizedImagePath}&quality=100&w=80&h=80`
+          : `${optimizedImagePath}?quality=100&w=80&h=80`;
+
         card.innerHTML = `
           <div class="character-image-wrapper">
-            <img src="${optimizedImagePath.replace(/"/g, '"')}" alt="${charData.name.replace(/"/g, '"')}" loading="lazy">
+            <img src="${highQualityImagePath.replace(/"/g, '"')}" alt="${charData.name.replace(/"/g, '"')}" loading="lazy" width="60" height="60">
           </div>
           <div class="character-name">${charData.name.replace(/</g, '<').replace(/>/g, '>')}</div>
           <div class="character-badges">

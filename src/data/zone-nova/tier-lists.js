@@ -34,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-09-19',
+  lastUpdated: '2025-10-18',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
     SSS: [{ name: 'Guinevere' }, { name: 'Athena' }, { name: 'Freya' }],
@@ -53,6 +53,8 @@ export const PVE_TIER_LIST = {
       { name: 'Hera' },
       { name: 'Afrodite' },
       { name: 'Jeanne D Arc' },
+      { name: 'Hela' },
+      { name: 'Lily' },
     ],
     S: [
       { name: 'Shu' },
@@ -83,10 +85,10 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2025-09-19',
+  lastUpdated: '2025-10-18',
   description: 'PvP character rankings.',
   tiers: {
-    SSS: [{ name: 'Guinevere' }],
+    SSS: [{ name: 'Guinevere' }, { name: 'Lily' }],
     SS: [
       { name: 'Odin' },
       { name: 'Freye' },
@@ -104,6 +106,7 @@ export const PVP_TIER_LIST = {
       { name: 'Thor' },
       { name: 'Chiya' },
       { name: 'Lyra' },
+      { name: 'Hela' },
     ],
     S: [
       { name: 'Arthur' },
@@ -129,7 +132,7 @@ export const PVP_TIER_LIST = {
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2025-09-19',
+  lastUpdated: '2025-10-18',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -141,6 +144,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Odin' },
       { name: 'Thor' },
       { name: 'Freya' },
+      { name: 'Hela' },
     ],
     SS: [
       { name: 'Freye' },
@@ -157,6 +161,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Kela' },
       { name: 'Naiya' },
       { name: 'Anubis' },
+      { name: 'Lily' },
     ],
     S: [
       { name: 'Shu' },
@@ -183,7 +188,7 @@ export const RIFT_TIER_LIST = {
 // Guild Raid Tier List
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
-  lastUpdated: '2025-09-19',
+  lastUpdated: '2025-10-18',
   description:
     'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
@@ -195,6 +200,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Odin' },
       { name: 'Afrodite' },
       { name: 'Freya' },
+      { name: 'Hela' },
     ],
     SS: [
       { name: 'Freye' },
@@ -222,6 +228,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Arthur' },
       { name: 'Kela' },
       { name: 'Anubis' },
+      { name: 'Lily' },
     ],
     A: [
       { name: 'Rose' },
@@ -237,7 +244,7 @@ export const GUILD_RAID_TIER_LIST = {
 // New Player Tier List (F2P Friendly)
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
-  lastUpdated: '2025-09-19',
+  lastUpdated: '2025-10-18',
   description:
     'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {
