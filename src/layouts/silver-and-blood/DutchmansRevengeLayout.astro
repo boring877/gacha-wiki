@@ -95,18 +95,33 @@ const { meta, intro, gameplayMechanics, chapterGuides, events } = data;
                 chapterGuides && chapterGuides.length > 0 && (
                   <div class="section">
                     <h2 class="section-title">Video Guides</h2>
-                    <p class="credit-text">Dutchman's Revenge - Game Story</p>
-                    <p class="credit-text">
-                      Credit to{' '}
-                      <a
-                        href="https://www.youtube.com/@neevee_o7/playlists"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="credit-link"
-                      >
-                        Neevee and Jamie
-                      </a>
-                    </p>
+                    <div class="credit-section">
+                      <h3 class="credit-title">Dutchman's Revenge - Game Story</h3>
+                      <div class="credit-list">
+                        <div class="credit-item">
+                          Credit to{' '}
+                          <a
+                            href="https://www.youtube.com/@neevee_o7/playlists"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="credit-link"
+                          >
+                            Neevee
+                          </a>
+                        </div>
+                        <div class="credit-item">
+                          Credit to{' '}
+                          <a
+                            href="https://www.youtube.com/@sad_jamie"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="credit-link"
+                          >
+                            Jamie
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                     <div class="chapter-guides">
                       {chapterGuides.map(guide => {
                         // Enhanced URL validation for security

@@ -90,6 +90,18 @@ export const dutchmansRevengeData = {
       name: 'The Psalm II',
       url: 'https://www.youtube.com/watch?v=ZoCKClf-e0I&list=PL7fr7OdbJvOAM9iPZektGdV-hYxHscfkn',
     },
+    {
+      name: 'Arsenal 1 | Orderly Fashion',
+      url: 'https://www.youtube.com/watch?v=0dsYPaMBAak',
+    },
+    {
+      name: 'Arsenal 1 | Come First, Serve Last',
+      url: 'https://www.youtube.com/watch?v=vVWYsS5dxo4',
+    },
+    {
+      name: 'Arsenal 1 | Stuck In Line',
+      url: 'https://www.youtube.com/watch?v=vXAI5VFTJEc&feature=youtu.be',
+    },
   ],
 
   events: {
