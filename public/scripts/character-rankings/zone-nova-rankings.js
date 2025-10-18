@@ -15,8 +15,19 @@ class ZoneNovaRankingsManager {
     this.statNames = data.statNames;
     this.totalCharacters = data.totalCharacters;
 
+    // Zone Nova specific pre-computed data
+    this.filteredGroups = data.filteredGroups || {};
+    this.sortedArrays = data.sortedArrays || {};
+    this.viewIds = data.viewIds || [];
+
     // State
     this.sortState = { column: null, asc: false };
+    this.filterState = {
+      role: '',
+      class: '',
+      rarity: '',
+      element: '',
+    };
 
     // Cached DOM elements - performance optimization
     this.elements = {};
@@ -144,52 +155,126 @@ class ZoneNovaRankingsManager {
     try {
       this.cacheElements();
       this.setupEventListeners();
+      this.initializeFromURL();
     } catch (error) {
       console.error('Failed to initialize Zone Nova rankings manager:', error);
     }
   }
 
   /**
+   * Initialize state from URL parameters
+   */
+  initializeFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Apply filters from URL
+    const role = urlParams.get('role') || '';
+    const classFilter = urlParams.get('class') || '';
+    const rarity = urlParams.get('rarity') || '';
+    const element = urlParams.get('element') || '';
+    const sortBy = urlParams.get('sort') || '';
+    const sortOrder = urlParams.get('order') || 'desc';
+
+    // Set filter values
+    if (role && this.elements.roleFilter) {
+      this.elements.roleFilter.value = role;
+      this.filterState.role = role.toLowerCase();
+    }
+    if (classFilter && this.elements.classFilter) {
+      this.elements.classFilter.value = classFilter;
+      this.filterState.class = classFilter.toLowerCase();
+    }
+    if (rarity && this.elements.rarityFilter) {
+      this.elements.rarityFilter.value = rarity;
+      this.filterState.rarity = rarity.toLowerCase();
+    }
+    if (element && this.elements.elementFilter) {
+      this.elements.elementFilter.value = element;
+      this.filterState.element = element.toLowerCase();
+    }
+
+    // Apply filters
+    this.filterCharacters();
+
+    // Apply sorting if specified
+    if (sortBy) {
+      const sortButton = document.querySelector(`[data-sort="${sortBy}"]`);
+      if (sortButton) {
+        this.sortState.asc = sortOrder === 'asc';
+        this.handleSort(sortBy, sortButton);
+      }
+    }
+  }
+
+  /**
+   * Update URL with current filter and sort state
+   */
+  updateURL() {
+    const urlParams = new URLSearchParams();
+
+    // Add filters to URL
+    if (this.filterState.role) urlParams.set('role', this.filterState.role);
+    if (this.filterState.class) urlParams.set('class', this.filterState.class);
+    if (this.filterState.rarity) urlParams.set('rarity', this.filterState.rarity);
+    if (this.filterState.element) urlParams.set('element', this.filterState.element);
+
+    // Add sort to URL
+    if (this.sortState.column) {
+      urlParams.set('sort', this.sortState.column);
+      urlParams.set('order', this.sortState.asc ? 'asc' : 'desc');
+    }
+
+    // Update URL without page reload
+    const newURL =
+      window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
+    window.history.replaceState({}, '', newURL);
+  }
+
+  /**
    * Cache all DOM elements to avoid repeated queries
    */
   cacheElements() {
-    // Character cards and containers
-    this.elements.characterCards = document.querySelectorAll('.character-select-card');
-    this.elements.characterGrid = document.getElementById('character-grid');
+    try {
+      // Character cards and containers
+      this.elements.characterCards = document.querySelectorAll('.character-select-card');
+      this.elements.characterGrid = document.getElementById('character-grid');
 
-    // Filters
-    this.elements.roleFilter = document.getElementById('role-filter');
-    this.elements.classFilter = document.getElementById('class-filter');
-    this.elements.rarityFilter = document.getElementById('rarity-filter');
-    this.elements.elementFilter = document.getElementById('element-filter');
+      // Filters
+      this.elements.roleFilter = document.getElementById('role-filter');
+      this.elements.classFilter = document.getElementById('class-filter');
+      this.elements.rarityFilter = document.getElementById('rarity-filter');
+      this.elements.elementFilter = document.getElementById('element-filter');
 
-    // Controls
-    this.elements.resetBtn = document.getElementById('clear-filters');
-    this.elements.sortButtons = document.querySelectorAll('.sort-btn');
+      // Controls
+      this.elements.resetBtn = document.getElementById('clear-filters');
+      this.elements.sortButtons = document.querySelectorAll('.sort-btn');
 
-    // Rankings display
-    this.elements.rankingsDisplay = document.getElementById('rankings-display');
-    this.elements.characterImage = document.getElementById('character-image');
-    this.elements.characterName = document.getElementById('character-name');
-    this.elements.characterClass = document.getElementById('character-class');
-    this.elements.characterAnalysis = document.getElementById('character-analysis');
-    this.elements.critCard = document.getElementById('crit-rate-card');
+      // Rankings display
+      this.elements.rankingsDisplay = document.getElementById('rankings-display');
+      this.elements.characterImage = document.getElementById('character-image');
+      this.elements.characterName = document.getElementById('character-name');
+      this.elements.characterClass = document.getElementById('character-class');
+      this.elements.characterAnalysis = document.getElementById('character-analysis');
+      this.elements.critCard = document.getElementById('crit-rate-card');
 
-    // Analysis elements
-    this.elements.overallRank = document.getElementById('overall-rank');
-    this.elements.top3Count = document.getElementById('top3-count');
-    this.elements.top3Stats = document.getElementById('top3-stats');
-    this.elements.top10Count = document.getElementById('top10-count');
-    this.elements.top10Stats = document.getElementById('top10-stats');
+      // Analysis elements
+      this.elements.overallRank = document.getElementById('overall-rank');
+      this.elements.top3Count = document.getElementById('top3-count');
+      this.elements.top3Stats = document.getElementById('top3-stats');
+      this.elements.top10Count = document.getElementById('top10-count');
+      this.elements.top10Stats = document.getElementById('top10-stats');
 
-    // Cache ranking number elements for performance
-    this.elements.rankingNumbers = new Map();
-    this.elements.characterCards.forEach(card => {
-      const rankingElement = card.querySelector('.character-rank-number');
-      if (rankingElement) {
-        this.elements.rankingNumbers.set(card, rankingElement);
-      }
-    });
+      // Cache ranking number elements for performance
+      this.elements.rankingNumbers = new Map();
+      this.elements.characterCards.forEach(card => {
+        const rankingElement = card.querySelector('.character-rank-number');
+        if (rankingElement) {
+          this.elements.rankingNumbers.set(card, rankingElement);
+        }
+      });
+    } catch (error) {
+      console.error('Error caching DOM elements:', error);
+    }
   }
 
   setupEventListeners() {
@@ -272,26 +357,99 @@ class ZoneNovaRankingsManager {
    * Update dynamic ranking numbers with batched DOM operations
    */
   updateRankingNumbers() {
-    const visibleCards = Array.from(this.elements.characterGrid.children).filter(
-      card => card.style.display !== 'none'
-    );
+    try {
+      const visibleCards = Array.from(this.elements.characterGrid.children).filter(
+        card => card.style.display !== 'none'
+      );
 
-    // Batch DOM updates for better performance
-    let visibleRank = 1;
-    const updates = [];
+      // Batch DOM updates for better performance
+      let visibleRank = 1;
+      const updates = [];
 
-    visibleCards.forEach(card => {
-      const rankingElement = this.elements.rankingNumbers.get(card);
-      if (rankingElement) {
-        updates.push({ element: rankingElement, rank: visibleRank });
-        visibleRank++;
-      }
-    });
+      visibleCards.forEach(card => {
+        const rankingElement = this.elements.rankingNumbers.get(card);
+        if (rankingElement && rankingElement.textContent !== undefined) {
+          updates.push({ element: rankingElement, rank: visibleRank });
+          visibleRank++;
+        }
+      });
 
-    // Apply all updates at once
-    updates.forEach(({ element, rank }) => {
-      element.textContent = rank;
-    });
+      // Apply all updates at once
+      updates.forEach(({ element, rank }) => {
+        element.textContent = rank;
+      });
+    } catch (error) {
+      console.error('Error updating ranking numbers:', error);
+    }
+  }
+
+  /**
+   * Helper function to compare floating-point numbers with epsilon
+   */
+  isFloatEqual(a, b, epsilon = 0.0001) {
+    return Math.abs(a - b) < epsilon;
+  }
+
+  /**
+   * Update ranking numbers to show the actual rank for a specific stat column
+   */
+  updateRankingNumbersForSort(column) {
+    try {
+      const visibleCards = Array.from(this.elements.characterGrid.children).filter(
+        card => card.style.display !== 'none'
+      );
+
+      // Sort visible characters by the current stat to get proper ranking with ties
+      const visibleCharacters = visibleCards
+        .map(card => {
+          const characterId = parseInt(card.dataset.characterId || '0');
+          const character = this.characters.find(c => c.id === characterId);
+          return { card, character, statValue: this.parseStatValue(character?.stats[column]) };
+        })
+        .filter(item => item.character && item.statValue !== undefined);
+
+      // Sort by stat value (descending for rankings)
+      visibleCharacters.sort((a, b) => b.statValue - a.statValue);
+
+      // Calculate ranks with proper tie handling using epsilon comparison
+      let currentRank = 1;
+      const rankMap = new Map();
+
+      visibleCharacters.forEach((item, index) => {
+        if (index > 0) {
+          const prevValue = visibleCharacters[index - 1].statValue;
+          const currValue = item.statValue;
+
+          // Use epsilon comparison for floating-point numbers
+          if (!this.isFloatEqual(currValue, prevValue)) {
+            currentRank = index + 1;
+          }
+          // If values are the same (within epsilon), keep the same rank
+        }
+
+        rankMap.set(item.character.id, currentRank);
+      });
+
+      // Apply ranking updates
+      const updates = [];
+      visibleCards.forEach(card => {
+        const characterId = parseInt(card.dataset.characterId || '0');
+        const rankingElement = this.elements.rankingNumbers.get(card);
+
+        if (rankingElement && characterId && rankMap.has(characterId)) {
+          updates.push({ element: rankingElement, rank: rankMap.get(characterId) });
+        }
+      });
+
+      // Apply all updates at once
+      updates.forEach(({ element, rank }) => {
+        if (element && element.textContent !== undefined) {
+          element.textContent = rank;
+        }
+      });
+    } catch (error) {
+      console.error('Error updating ranking numbers for sort:', error);
+    }
   }
 
   filterCharacters() {
@@ -302,16 +460,37 @@ class ZoneNovaRankingsManager {
       element: this.elements.elementFilter?.value.toLowerCase() || '',
     };
 
+    // Update filter state
+    this.filterState = filters;
+
+    // Use pre-computed filtered groups for better performance
+    let filteredCharacters = this.characters;
+
+    // Apply filters using pre-computed groups when possible
+    if (filters.role) {
+      filteredCharacters = this.filteredGroups.byRole?.[filters.role] || filteredCharacters;
+    }
+    if (filters.class) {
+      filteredCharacters = this.filteredGroups.byClass?.[filters.class] || filteredCharacters;
+    }
+    if (filters.rarity) {
+      filteredCharacters = this.filteredGroups.byRarity?.[filters.rarity] || filteredCharacters;
+    }
+    if (filters.element) {
+      filteredCharacters = this.filteredGroups.byElement?.[filters.element] || filteredCharacters;
+    }
+
+    // Create a Set of visible character IDs for fast lookup
+    const visibleCharacterIds = new Set(filteredCharacters.map(char => char.id));
+
+    // Update DOM efficiently
     this.elements.characterCards.forEach(card => {
       const characterId = parseInt(card.dataset.characterId || '0');
-      const character = this.characters.find(c => c.id === characterId);
-      if (!character) return;
-
-      const matches = this.checkFilters(character, filters);
-      card.style.display = matches ? 'flex' : 'none';
+      card.style.display = visibleCharacterIds.has(characterId) ? 'flex' : 'none';
     });
 
     this.updateRankingNumbers();
+    this.updateURL();
   }
 
   checkFilters(character, filters) {
@@ -338,27 +517,37 @@ class ZoneNovaRankingsManager {
   }
 
   sortCharacters(column) {
-    const cards = Array.from(this.elements.characterCards);
-    const multiplier = this.sortState.asc ? 1 : -1;
-
-    cards.sort((a, b) => {
-      const aChar = this.characters.find(c => c.id === parseInt(a.dataset.characterId || '0'));
-      const bChar = this.characters.find(c => c.id === parseInt(b.dataset.characterId || '0'));
-
-      if (!aChar || !bChar) return 0;
-
-      const aValue = this.parseStatValue(aChar.stats[column]);
-      const bValue = this.parseStatValue(bChar.stats[column]);
-
-      return (aValue - bValue) * multiplier;
+    // Get currently visible cards to avoid redundant filtering
+    const visibleCards = Array.from(this.elements.characterCards).filter(card => {
+      return card.style.display !== 'none';
     });
+
+    // Create array of character data for visible cards only
+    const visibleCharacters = visibleCards
+      .map(card => {
+        const characterId = parseInt(card.dataset.characterId || '0');
+        const character = this.characters.find(c => c.id === characterId);
+        return { card, character, statValue: this.parseStatValue(character?.stats[column]) };
+      })
+      .filter(item => item.character && item.statValue !== undefined);
+
+    // Sort visible characters by the selected stat
+    visibleCharacters.sort((a, b) => {
+      const multiplier = this.sortState.asc ? 1 : -1;
+      return (a.statValue - b.statValue) * multiplier;
+    });
+
+    // Extract sorted cards for DOM manipulation
+    const sortedCards = visibleCharacters.map(item => item.card);
 
     // Batch DOM updates
     const fragment = document.createDocumentFragment();
-    cards.forEach(card => fragment.appendChild(card));
+    sortedCards.forEach(card => fragment.appendChild(card));
     this.elements.characterGrid.appendChild(fragment);
 
-    this.updateRankingNumbers();
+    // Update ranking numbers to show the actual rank for the current sort column
+    this.updateRankingNumbersForSort(column);
+    this.updateURL();
   }
 
   resetFilters() {
@@ -372,6 +561,14 @@ class ZoneNovaRankingsManager {
       if (filter) filter.value = '';
     });
 
+    // Reset filter state
+    this.filterState = {
+      role: '',
+      class: '',
+      rarity: '',
+      element: '',
+    };
+
     // Show all cards
     this.elements.characterCards.forEach(card => {
       card.style.display = 'flex';
@@ -383,6 +580,9 @@ class ZoneNovaRankingsManager {
 
     // Restore original ranking order
     this.restoreOriginalOrder();
+
+    // Update URL to clear all parameters
+    this.updateURL();
   }
 
   restoreOriginalOrder() {
@@ -437,35 +637,41 @@ class ZoneNovaRankingsManager {
   }
 
   updateCharacterDisplay(character) {
-    // Validate character object before use
-    if (!character || typeof character !== 'object') {
-      console.error('Invalid character object provided to updateCharacterDisplay');
-      return;
-    }
+    try {
+      // Validate character object before use
+      if (!character || typeof character !== 'object') {
+        console.error('Invalid character object provided to updateCharacterDisplay');
+        return;
+      }
 
-    if (this.elements.characterImage) {
-      // Validate image URL for security
-      const imageUrl = this.sanitizeImageUrl(character.image);
-      this.elements.characterImage.src = imageUrl;
-      this.elements.characterImage.alt = this.sanitizeText(character.name) || 'Character Image';
-      // Add error handling for image loading
-      this.elements.characterImage.onerror = () => {
-        this.elements.characterImage.src = '/images/placeholder-character.png';
-      };
-    }
+      if (this.elements.characterImage) {
+        // Validate image URL for security
+        const imageUrl = this.sanitizeImageUrl(character.image);
+        this.elements.characterImage.src = imageUrl;
+        this.elements.characterImage.alt = this.sanitizeText(character.name) || 'Character Image';
+        // Add error handling for image loading
+        this.elements.characterImage.onerror = () => {
+          if (this.elements.characterImage) {
+            this.elements.characterImage.src = '/images/placeholder-character.png';
+          }
+        };
+      }
 
-    if (this.elements.characterName) {
-      this.elements.characterName.textContent =
-        this.sanitizeText(character.name) || 'Unknown Character';
-    }
+      if (this.elements.characterName) {
+        this.elements.characterName.textContent =
+          this.sanitizeText(character.name) || 'Unknown Character';
+      }
 
-    if (this.elements.characterClass) {
-      const rarity = this.sanitizeText(character.rarity) || 'Unknown';
-      const role = this.sanitizeText(character.role) || 'Unknown';
-      const charClass = this.sanitizeText(character.class) || 'Unknown';
-      const element = this.sanitizeText(character.element) || 'Unknown';
+      if (this.elements.characterClass) {
+        const rarity = this.sanitizeText(character.rarity) || 'Unknown';
+        const role = this.sanitizeText(character.role) || 'Unknown';
+        const charClass = this.sanitizeText(character.class) || 'Unknown';
+        const element = this.sanitizeText(character.element) || 'Unknown';
 
-      this.elements.characterClass.textContent = `${rarity} • Role: ${role} • Class: ${charClass} • ${element}`;
+        this.elements.characterClass.textContent = `${rarity} • Role: ${role} • Class: ${charClass} • ${element}`;
+      }
+    } catch (error) {
+      console.error('Error updating character display:', error);
     }
   }
 
