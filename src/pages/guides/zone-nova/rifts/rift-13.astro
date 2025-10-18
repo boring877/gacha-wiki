@@ -1,0 +1,122 @@
+---
+import ZoneNovaLayout from '../../../../layouts/zone-nova/LandingLayout.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+import { rift13Data } from '../../../../data/zone-nova/rifts/rift-13.js';
+import { getDynamicRiftStatus } from '../../../../data/zone-nova/rifts.js';
+
+// Use the imported rift data with dynamic status
+const riftData = {
+  ...rift13Data,
+  status: getDynamicRiftStatus(rift13Data),
+};
+---
+
+<ZoneNovaLayout
+  title="Rift XIII - Zone Nova Space-Time Rifts - GachaWiki"
+  description="Detailed law effects and mechanics for Rift XIII in Zone Nova featuring Mitigation-based team enhancement with AoE counter-attacks and stacking bonuses"
+  gameTitle="Rift XIII"
+>
+  <!-- Rift Overview -->
+  <section class="content-section">
+    <div class="rift-overview">
+      <div class="rift-header">
+        <h1 class="rift-title">{riftData.name}</h1>
+        <div class="rift-timer" id="rift-timer">Loading...</div>
+      </div>
+
+      <p class="rift-description">
+        Space-Time Rift XIII introduces the Mitigation Enhancement system, rewarding defensive team
+        compositions. Each successful mitigation triggers AoE damage, while stacking bonuses provide
+        progressive energy recovery and damage amplification for the entire team.
+      </p>
+
+      <div class="rift-meta">
+        <div class="meta-item">
+          <span class="meta-label">Status:</span>
+          <span class={`status-badge status-${riftData.status.toLowerCase()}`}
+            >{riftData.status.toUpperCase()}</span
+          >
+        </div>
+
+        {
+          riftData.eventPeriod && (
+            <div class="meta-item">
+              <span class="meta-label">Event Period:</span>
+              <span class="meta-value">{riftData.eventPeriod}</span>
+            </div>
+          )
+        }
+
+        <div class="meta-item">
+          <span class="meta-label">Effects:</span>
+          <span class="meta-value">{riftData.lawEffects.length} effects</span>
+        </div>
+
+        <div class="meta-item">
+          <span class="meta-label">Focus:</span>
+          <span class="meta-value">{riftData.focus}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Effects Section -->
+  <section class="content-section">
+    <h2 class="section-title">Rift Rule Effects</h2>
+
+    {
+      riftData.lawEffects.map((effect, index) => (
+        <div class="law-effect-card">
+          <div class="effect-number">{index + 1}</div>
+          <div class="effect-content">
+            <p
+              set:html={effect
+                .replace(/\【(.*?)\】/g, '<strong class="special-effect">【$1】</strong>')
+                .replace(/(\d+%)/g, '<strong>$1</strong>')
+                .replace(/(\d+\s+stacks?)/g, '<strong>$1</strong>')
+                .replace(/(\d+\s+seconds?)/g, '<strong>$1</strong>')
+                .replace(/(\d+\s+times?)/g, '<strong>$1</strong>')
+                .replace(/(Effect\s+\d+:)/g, '<strong class="effect-label">$1</strong>')
+                .replace(/(Duration:|Maximum:|Effect:)/g, '<strong>$1</strong>')
+                .replace(/(own\s+defense)/g, '<strong>$1</strong>')
+                .replace(/(nearby\s+enemies)/g, '<strong>$1</strong>')
+                .replace(/(entire\s+team)/g, '<strong>$1</strong>')}
+            />
+          </div>
+        </div>
+      ))
+    }
+  </section>
+
+  <script define:vars={{ riftData }}>
+    document.addEventListener('DOMContentLoaded', function () {
+      const endTime = new Date(riftData.endDate).getTime();
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const timeLeft = endTime - now;
+        const timerElement = document.getElementById('rift-timer');
+
+        if (timeLeft > 0) {
+          const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+
+          if (days > 0) {
+            timerElement.textContent = `${days}d ${hours}h remaining`;
+          } else if (hours > 0) {
+            timerElement.textContent = `${hours}h ${minutes}m remaining`;
+          } else {
+            timerElement.textContent = `${minutes}m remaining`;
+          }
+        } else {
+          timerElement.textContent = 'Event Ended';
+          timerElement.classList.add('timer-ended');
+        }
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 60000);
+    });
+  </script>
+</ZoneNovaLayout>
