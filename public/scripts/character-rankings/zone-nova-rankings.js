@@ -154,9 +154,10 @@ class ZoneNovaRankingsManager {
   init() {
     try {
       this.cacheElements();
-      this.storeOriginalState();
       this.setupEventListeners();
       this.initializeFromURL();
+      // Store original state AFTER URL initialization to prevent corruption
+      this.storeOriginalState();
     } catch (error) {
       console.error('Failed to initialize Zone Nova rankings manager:', error);
     }
@@ -224,20 +225,32 @@ class ZoneNovaRankingsManager {
    */
   storeOriginalState() {
     try {
-      // The cards are already sorted by overallRank in the Astro template
-      // Just store the current order as the correct original state
-      this.originalCards = Array.from(this.elements.characterCards);
+      // The cards should be sorted by overallRank in the Astro template
+      // Get current cards from DOM to ensure we have the correct order
+      const currentCards = document.querySelectorAll('.character-select-card');
+      this.originalCards = Array.from(currentCards);
 
-      // Store the ranking numbers from the DOM (they're already correct)
+      // Store the ranking numbers from the DOM (they should be correct from initial load)
       this.originalRankings = new Map();
       this.originalCards.forEach(card => {
         const characterId = parseInt(card.dataset.characterId || '0');
         const rankingElement = card.querySelector('.character-rank-number');
-        if (rankingElement) {
-          const rank = rankingElement.textContent;
+        if (rankingElement && rankingElement.textContent) {
+          const rank = rankingElement.textContent.trim();
           this.originalRankings.set(characterId, rank);
+        } else {
+          // Fallback to overallAnalysis if DOM ranking is missing
+          const overallRank = this.overallAnalysis[characterId]?.overallRank;
+          if (overallRank) {
+            this.originalRankings.set(characterId, overallRank.toString());
+          }
         }
       });
+
+      // Validate that we stored rankings for all characters
+      if (this.originalRankings.size !== this.originalCards.length) {
+        console.warn('Warning: Not all character rankings were stored properly');
+      }
     } catch (error) {
       console.error('Error storing original state:', error);
     }
@@ -258,19 +271,33 @@ class ZoneNovaRankingsManager {
       this.originalCards.forEach(card => fragment.appendChild(card));
       this.elements.characterGrid.replaceChildren(fragment);
 
-      // Restore original ranking numbers
-      this.originalCards.forEach(card => {
+      // Recache elements first since DOM has changed
+      this.refreshElementCache();
+
+      // Restore original ranking numbers using fresh DOM references
+      this.elements.characterCards.forEach(card => {
         const characterId = parseInt(card.dataset.characterId || '0');
-        const rankingElement = this.elements.rankingNumbers.get(card);
+        const rankingElement = card.querySelector('.character-rank-number');
         const correctRank = this.originalRankings.get(characterId);
 
         if (rankingElement && correctRank) {
           rankingElement.textContent = correctRank;
         }
       });
+    } catch (error) {
+      console.error('Error restoring original order:', error);
+    }
+  }
 
-      // Recache elements since we changed the DOM
+  /**
+   * Refresh element cache after DOM changes
+   */
+  refreshElementCache() {
+    try {
+      // Update cached character cards
       this.elements.characterCards = document.querySelectorAll('.character-select-card');
+
+      // Rebuild ranking numbers map
       this.elements.rankingNumbers = new Map();
       this.elements.characterCards.forEach(card => {
         const rankingElement = card.querySelector('.character-rank-number');
@@ -279,7 +306,7 @@ class ZoneNovaRankingsManager {
         }
       });
     } catch (error) {
-      console.error('Error restoring original order:', error);
+      console.error('Error refreshing element cache:', error);
     }
   }
 
@@ -616,8 +643,10 @@ class ZoneNovaRankingsManager {
           card.style.display = visibleCharacterIds.has(characterId) ? 'flex' : 'none';
         });
 
-        // Update ranking numbers for visible cards
-        this.updateRankingNumbers();
+        // Only update ranking numbers if there's no active sort (to preserve original rankings)
+        if (!this.sortState.column) {
+          this.updateRankingNumbers();
+        }
       }
 
       this.updateURL();
