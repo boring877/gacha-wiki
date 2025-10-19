@@ -3,9 +3,9 @@
 
 export const rebellionGilgameshConfig = {
   meta: {
-    title: 'Rebellion Gilgamesh Wiki - Character Guide, Club Management & Strategy | GachaWiki',
+    title: 'Rebellion Gilgamesh (ルーレット契約) - Download & Character Guide 2024 | GachaWiki',
     description:
-      'Complete guide for Rebellion Gilgamesh adult RPG. Character database, club management tips, special moves, and story walkthrough. Download and play the ultimate harem creation game.',
+      'Download Rebellion Gilgamesh adult RPG on Erolabs. Character database, club management tips, demon world story. Play the ultimate harem creation game.',
     gameTitle: 'Rebellion Gilgamesh ルーレット契約',
     heroImage: '/images/games/rebellion-gilgamesh/main-images/BG1.jpg',
   },
