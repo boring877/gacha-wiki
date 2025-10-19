@@ -7,6 +7,8 @@ import {
   MEMORY_CHIPS,
   MEMORY_BREAKTHROUGH,
   RUNE_DATA,
+  RUNE_LEVELING_DATA,
+  RUNE_EFFICIENCY_ANALYSIS,
   EXP_CUBES,
 } from '../../../data/zone-nova/exp-requirements.js';
 import { ZNEXPImage } from '../../../components/zone-nova/index.astro';
@@ -353,6 +355,130 @@ import { ZNEXPImage } from '../../../components/zone-nova/index.astro';
           credits.
         </p>
       </div>
+
+      <!-- Rune Efficiency Note -->
+      <div class="rune-efficiency-note">
+        <div class="efficiency-alert">
+          <strong>Important Efficiency Note:</strong>
+        </div>
+        <p class="efficiency-text">
+          Rune upgrades from levels <strong
+            >1→10 provide the best value, spending less resources to gain more stat bonuses.</strong
+          ><br />
+          <strong
+            >Levels 10→15 require three times more resources but provide less stat value per level.</strong
+          >
+        </p>
+      </div>
+
+      <!-- Rune Resource Cost Chart -->
+      <!-- Rune Resource Cost Chart -->
+      <div class="rune-cost-chart">
+        <h5 class="chart-title">Rune Leveling Resource Costs</h5>
+        <div class="chart-container">
+          <div class="line-chart">
+            <div class="chart-grid">
+              <!-- Y-axis labels -->
+              <div class="y-axis">
+                <div class="y-label">120k</div>
+                <div class="y-label">100k</div>
+                <div class="y-label">80k</div>
+                <div class="y-label">60k</div>
+                <div class="y-label">40k</div>
+                <div class="y-label">20k</div>
+                <div class="y-label">0</div>
+              </div>
+
+              <!-- Chart area -->
+              <div class="chart-area">
+                <!-- Grid lines -->
+                <div class="grid-lines">
+                  <div class="grid-line"></div>
+                  <div class="grid-line"></div>
+                  <div class="grid-line"></div>
+                  <div class="grid-line"></div>
+                  <div class="grid-line"></div>
+                  <div class="grid-line"></div>
+                </div>
+
+                <!-- Highlight area for levels 10-15 -->
+                <div class="steep-increase-highlight"></div>
+
+                <!-- Data lines -->
+                <svg class="chart-svg" viewBox="0 0 420 200" preserveAspectRatio="none">
+                  <!-- Credits line -->
+                  <polyline
+                    class="credit-line"
+                    points="0,190 30,185 60,180 90,175 120,170 150,165 180,160 210,155 240,150 270,145 300,125 330,105 360,85 390,65 420,45"
+                  ></polyline>
+
+                  <g class="credit-points">
+                    <circle cx="0" cy="190" r="3"></circle>
+                    <circle cx="30" cy="185" r="3"></circle>
+                    <circle cx="60" cy="180" r="3"></circle>
+                    <circle cx="90" cy="175" r="3"></circle>
+                    <circle cx="120" cy="170" r="3"></circle>
+                    <circle cx="150" cy="165" r="3"></circle>
+                    <circle cx="180" cy="160" r="3"></circle>
+                    <circle cx="210" cy="155" r="3"></circle>
+                    <circle cx="240" cy="150" r="3"></circle>
+                    <circle cx="270" cy="145" r="5" class="highlight-point"></circle>
+                    <circle cx="300" cy="125" r="5" class="highlight-point"></circle>
+                    <circle cx="330" cy="105" r="5" class="highlight-point"></circle>
+                    <circle cx="360" cy="85" r="5" class="highlight-point"></circle>
+                    <circle cx="390" cy="65" r="5" class="highlight-point"></circle>
+                    <circle cx="420" cy="45" r="5" class="highlight-point"></circle>
+                  </g>
+
+                  <!-- Vertical line at level 10 -->
+                  <line x1="270" y1="0" x2="270" y2="200" class="steep-increase-line"></line>
+                </svg>
+              </div>
+
+              <!-- Right Y-axis labels for scale reference -->
+              <div class="y-axis-right">
+                <div class="y-label-right">76k</div>
+                <div class="y-label-right">65k</div>
+                <div class="y-label-right">54k</div>
+                <div class="y-label-right">43k</div>
+                <div class="y-label-right">32k</div>
+                <div class="y-label-right">16k</div>
+                <div class="y-label-right">0</div>
+              </div>
+            </div>
+
+            <!-- X-axis labels -->
+            <div class="x-axis">
+              <div class="x-label">1</div>
+              <div class="x-label">2</div>
+              <div class="x-label">3</div>
+              <div class="x-label">4</div>
+              <div class="x-label">5</div>
+              <div class="x-label">6</div>
+              <div class="x-label">7</div>
+              <div class="x-label">8</div>
+              <div class="x-label">9</div>
+              <div class="x-label highlight-label">10</div>
+              <div class="x-label highlight-label">11</div>
+              <div class="x-label highlight-label">12</div>
+              <div class="x-label highlight-label">13</div>
+              <div class="x-label highlight-label">14</div>
+              <div class="x-label highlight-label">15</div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item">
+            <div class="legend-line credit-line"></div>
+            <span>Total Resource Cost</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-highlight"></div>
+            <span>Steep Increase: Levels 10→15</span>
+          </div>
+        </div>
+      </div>
+
       <div class="rune-info-box">
         <div class="rune-detail">
           <div class="rune-label">Level Range</div>

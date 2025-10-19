@@ -59,9 +59,47 @@ export const MEMORY_BREAKTHROUGH = [
 
 // Runes Leveling Data
 export const RUNE_DATA = {
-  levelRange: 'Lv 1 → LV 15',
+  levelRange: 'Lv 0 → LV 15',
   expRequired: 76000,
   creditCost: 114000,
+};
+
+// Detailed Rune Leveling Data for Efficiency Analysis
+export const RUNE_LEVELING_DATA = [
+  { level: 0, exp: 0, credits: 0 },
+  { level: 1, exp: 500, credits: 900 },
+  { level: 2, exp: 1400, credits: 2100 },
+  { level: 3, exp: 2400, credits: 3600 },
+  { level: 4, exp: 3800, credits: 5700 },
+  { level: 5, exp: 5500, credits: 8250 },
+  { level: 6, exp: 7500, credits: 11250 },
+  { level: 7, exp: 10200, credits: 15300 },
+  { level: 8, exp: 13400, credits: 20100 },
+  { level: 9, exp: 17500, credits: 26250 },
+  { level: 10, exp: 22700, credits: 34050 },
+  { level: 11, exp: 29000, credits: 43500 },
+  { level: 12, exp: 37000, credits: 55500 },
+  { level: 13, exp: 47400, credits: 71100 },
+  { level: 14, exp: 60400, credits: 90800 },
+  { level: 15, exp: 76000, credits: 114000 },
+];
+
+// Rune Efficiency Analysis
+export const RUNE_EFFICIENCY_ANALYSIS = {
+  earlyGame: {
+    levelRange: '1 → 10',
+    totalExpRequired: 22700,
+    totalCreditsRequired: 34050,
+    efficiency: 'Excellent',
+    description: 'Best value for resources spent',
+  },
+  lateGame: {
+    levelRange: '10 → 15',
+    totalExpRequired: 53300,
+    totalCreditsRequired: 79950,
+    efficiency: 'Poor',
+    description: '3x resources for less stat gains',
+  },
 };
 
 // EXP Cube Values
@@ -90,8 +128,8 @@ export function calculateCharacterExp(fromLevel, toLevel) {
 
   for (const range of levelRanges) {
     if (toLevel > range.start && fromLevel < range.end) {
-      const actualStart = Math.max(fromLevel, range.start);
-      const actualEnd = Math.min(toLevel, range.end);
+      const _actualStart = Math.max(fromLevel, range.start);
+      const _actualEnd = Math.min(toLevel, range.end);
 
       // For simplicity, we'll use the full range value for now
       // In a more detailed implementation, we'd calculate per-level requirements

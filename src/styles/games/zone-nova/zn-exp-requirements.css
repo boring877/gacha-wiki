@@ -581,6 +581,388 @@
   }
 }
 
+/* Rune Efficiency Styles */
+.rune-efficiency-note {
+  background: var(--zn-bg-primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--zn-border);
+}
+
+.efficiency-alert {
+  color: var(--zn-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.efficiency-text {
+  color: var(--zn-text-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+}
+
+.efficiency-text strong {
+  color: var(--zn-primary);
+  font-weight: 700;
+}
+
+/* Rune Cost Chart */
+.rune-cost-chart {
+  background: var(--zn-bg-primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--zn-border);
+}
+
+.chart-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--zn-text-primary);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.chart-container {
+  margin-bottom: 1.5rem;
+}
+
+.line-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chart-grid {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  min-height: 250px;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-right: 0.5rem;
+  min-width: 30px;
+}
+
+.y-label {
+  font-size: 0.75rem;
+  color: var(--zn-text-secondary);
+  text-align: right;
+}
+
+.chart-area {
+  flex: 1;
+  position: relative;
+  background: var(--zn-bg-secondary);
+  border: 1px solid var(--zn-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.grid-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.grid-line {
+  height: 1px;
+  background: var(--zn-border);
+  opacity: 0.5;
+}
+
+.chart-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.exp-line {
+  fill: none;
+  stroke: var(--zn-primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.credit-line {
+  fill: none;
+  stroke: var(--zn-rare);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.exp-points circle {
+  fill: var(--zn-primary);
+  stroke: var(--zn-bg-primary);
+  stroke-width: 1;
+}
+
+.exp-points .highlight-point {
+  fill: var(--zn-rare);
+  stroke: var(--zn-bg-primary);
+  stroke-width: 2;
+  r: 5;
+}
+
+.credit-points circle {
+  fill: var(--zn-rare);
+  stroke: var(--zn-bg-primary);
+  stroke-width: 1;
+}
+
+.credit-points .highlight-point {
+  fill: var(--zn-primary);
+  stroke: var(--zn-bg-primary);
+  stroke-width: 2;
+  r: 5;
+}
+
+.steep-increase-highlight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 37.5%;
+  height: 100%;
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 2px dashed rgba(239, 68, 68, 0.5);
+  pointer-events: none;
+}
+
+.steep-increase-line {
+  stroke: rgba(239, 68, 68, 0.8);
+  stroke-width: 2;
+  stroke-dasharray: 5, 5;
+}
+
+.x-axis {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 35px;
+  padding-top: 0.5rem;
+}
+
+.x-label {
+  font-size: 0.75rem;
+  color: var(--zn-text-secondary);
+  text-align: center;
+}
+
+.y-axis-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: 0.5rem;
+  min-width: 30px;
+}
+
+.y-label-right {
+  font-size: 0.75rem;
+  color: var(--zn-primary);
+  text-align: left;
+}
+
+.chart-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-top: 1px solid var(--zn-border);
+  padding-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.legend-line {
+  width: 30px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.legend-line.exp-line {
+  background: var(--zn-primary);
+}
+
+.legend-line.credit-line {
+  background: var(--zn-rare);
+}
+
+.legend-highlight {
+  width: 30px;
+  height: 12px;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px dashed rgba(239, 68, 68, 0.6);
+  border-radius: 2px;
+}
+
+.legend-item span {
+  color: var(--zn-text-secondary);
+  font-size: 0.9rem;
+}
+
+.highlight-label {
+  color: var(--zn-primary);
+  font-weight: 600;
+}
+
+/* Responsive Design for Rune Chart */
+@media (max-width: 768px) {
+  .rune-efficiency-note,
+  .rune-cost-chart {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .efficiency-alert {
+    font-size: 1rem;
+  }
+
+  .efficiency-text {
+    font-size: 0.9rem;
+  }
+
+  .chart-title {
+    font-size: 1.1rem;
+  }
+
+  .chart-grid {
+    min-height: 200px;
+  }
+
+  .y-label {
+    font-size: 0.7rem;
+  }
+
+  .x-label {
+    font-size: 0.7rem;
+  }
+
+  .y-label-right {
+    font-size: 0.7rem;
+  }
+
+  .chart-legend {
+    gap: 0.5rem;
+  }
+
+  .legend-item {
+    gap: 0.5rem;
+  }
+
+  .legend-item span {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rune-efficiency-note,
+  .rune-cost-chart {
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+  }
+
+  .efficiency-alert {
+    font-size: 0.9rem;
+  }
+
+  .efficiency-text {
+    font-size: 0.85rem;
+  }
+
+  .chart-title {
+    font-size: 1rem;
+  }
+
+  .chart-grid {
+    min-height: 180px;
+  }
+
+  .y-label {
+    font-size: 0.65rem;
+  }
+
+  .x-label {
+    font-size: 0.65rem;
+  }
+
+  .y-label-right {
+    font-size: 0.65rem;
+  }
+
+  .legend-item span {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .rune-efficiency-note,
+  .rune-cost-chart {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .efficiency-alert {
+    font-size: 0.85rem;
+  }
+
+  .efficiency-text {
+    font-size: 0.8rem;
+  }
+
+  .chart-title {
+    font-size: 0.9rem;
+  }
+
+  .chart-grid {
+    min-height: 160px;
+  }
+
+  .y-label {
+    font-size: 0.6rem;
+  }
+
+  .x-label {
+    font-size: 0.6rem;
+  }
+
+  .y-label-right {
+    font-size: 0.6rem;
+  }
+
+  .legend-line {
+    width: 25px;
+    height: 2px;
+  }
+
+  .legend-item span {
+    font-size: 0.75rem;
+  }
+}
+
 /* Very small mobile optimization */
 @media (max-width: 360px) {
   .exp-section {
