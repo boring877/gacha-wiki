@@ -271,6 +271,18 @@
   color: white;
 }
 
+.game-nav-desktop[data-game='rebellion-gilgamesh'] .game-title {
+  background: linear-gradient(135deg, var(--rg-primary), var(--rg-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.game-nav-desktop[data-game='rebellion-gilgamesh'] .dropdown-link.active {
+  background: linear-gradient(135deg, var(--rg-primary), var(--rg-accent));
+  color: white;
+}
+
 /* === RESPONSIVE DESIGN === */
 @media (max-width: 1200px) {
   .game-nav-desktop .game-nav-header {

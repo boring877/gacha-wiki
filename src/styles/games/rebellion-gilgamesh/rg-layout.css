@@ -1,0 +1,167 @@
+/* Rebellion Gilgamesh Layout Styles */
+/* Crimson/violet theme layout following other games pattern */
+
+/* Import base styles */
+@import '../../colors.css';
+@import '../../global.css';
+@import '../../typography.css';
+
+/* Body styling */
+.rebellion-gilgamesh-body {
+  background: var(--rg-bg-gradient-primary);
+  color: var(--rg-text-secondary);
+  min-height: 100vh;
+}
+
+/* Background layers */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.rebellion-gilgamesh-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Container */
+.rebellion-gilgamesh-container {
+  position: relative;
+}
+
+.rebellion-gilgamesh-main {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Hero section */
+.hero-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 3rem 1rem;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-image-container {
+  width: 100%;
+  max-width: 60rem;
+  height: 25rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(transparent, rgba(26, 10, 10, 0.9));
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  margin: 0;
+  line-height: var(--leading-normal);
+  /* Gradient for page title only */
+  background: linear-gradient(135deg, var(--rg-primary), var(--rg-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Title only section */
+.title-only-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+}
+
+.title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  margin: 0;
+  line-height: var(--leading-normal);
+  /* Gradient for page title only */
+  background: linear-gradient(135deg, var(--rg-primary), var(--rg-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Content area */
+.content-area {
+  position: relative;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .rebellion-gilgamesh-main {
+    padding: 1rem;
+  }
+
+  .hero-section {
+    padding: 2rem 1rem 3rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-image-container {
+    height: 15rem;
+    border-radius: 12px;
+    margin: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-3xl);
+  }
+
+  .title-only-section {
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+  }
+
+  .title-only-heading {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .rebellion-gilgamesh-main {
+    padding: 0.5rem;
+  }
+
+  .hero-image-container {
+    height: 12rem;
+    border-radius: 8px;
+    margin: 0 0.5rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-2xl);
+  }
+
+  .hero-section {
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .title-only-heading {
+    font-size: var(--text-2xl);
+  }
+}

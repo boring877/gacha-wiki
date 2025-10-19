@@ -1,0 +1,100 @@
+---
+import RebellionGilgameshLandingLayout from '../../layouts/rebellion-gilgamesh/LandingLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { rebellionGilgameshConfig } from '../../data/rebellion-gilgamesh/rebellion-gilgamesh.js';
+
+// Extract data for easier use in template
+const { meta, gameInfo, sections, story, features } = rebellionGilgameshConfig;
+
+// Breadcrumb data for SEO
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides' },
+  { name: 'Rebellion Gilgamesh', url: '/guides/rebellion-gilgamesh' },
+];
+---
+
+<RebellionGilgameshLandingLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  heroImage={meta.heroImage}
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Structured Data for Rebellion Gilgamesh -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Rebellion Gilgamesh Wiki & Download - Character Guide, Club Management & Strategy",
+      "url": "https://gachawiki.info/guides/rebellion-gilgamesh/",
+      "description": "Download Rebellion Gilgamesh - Adult fantasy RPG set in a demon-ruled world. Complete character guides, club management tips & strategy.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+
+  <!-- Game-specific structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Rebellion Gilgamesh ルーレット契約",
+      "genre": ["Adult RPG", "Fantasy", "Gacha", "Club Management"],
+      "description": "Adult fantasy RPG set in a demon-ruled world. As one of the 72 sons of a slave owner, run a club and save humanity. Features character collection, special moves, and club management mechanics.",
+      "applicationCategory": "Game",
+      "operatingSystem": "Android, iOS, Web"
+    }
+  </script>
+
+  <!-- Game Overview Section -->
+  <section class="content-section">
+    <h2 class="section-title">Game Introduction</h2>
+    <div class="story-content">
+      {story.content.map(paragraph => <p>{paragraph}</p>)}
+    </div>
+
+    <!-- Play Game Buttons -->
+    <div class="play-button-container">
+      <a href={gameInfo.playUrl} target="_blank" class="play-button">
+        Play on Erolabs
+        <span class="play-arrow">→</span>
+      </a>
+      <a href={gameInfo.socialLinks.dmm} target="_blank" class="play-button">
+        Play on DMM
+        <span class="play-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- Social Links -->
+    <div class="social-links-container">
+      <h4>Game Social:</h4>
+      <div class="social-links">
+        <a
+          href={gameInfo.socialLinks.twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          aria-label="Follow Rebellion Gilgamesh on Twitter/X"
+        >
+          Twitter/X
+        </a>
+      </div>
+    </div>
+
+    <p class="last-updated">
+      Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+    </p>
+  </section>
+
+  <!-- Coming Soon Section -->
+  <section class="content-section">
+    <h2 class="section-title">Game Resources</h2>
+    <div class="coming-soon-notice">
+      <p>🚧 Game guides and character database in development</p>
+      <p>Check back soon for Rebellion Gilgamesh resources and strategy content</p>
+    </div>
+  </section>
+</RebellionGilgameshLandingLayout>

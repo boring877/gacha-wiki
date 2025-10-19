@@ -1,4 +1,4 @@
-export type GameKey = 'silver-and-blood' | 'zone-nova' | 'horizon-walker';
+export type GameKey = 'silver-and-blood' | 'zone-nova' | 'horizon-walker' | 'rebellion-gilgamesh';
 
 export interface NavigationLink {
   name: string;
@@ -142,6 +142,28 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Character Gifts', href: '/guides/horizon-walker/character-gifts/' },
           { name: 'Clock', href: '/clock/horizon-walker/' },
         ],
+      },
+    ],
+  },
+  'rebellion-gilgamesh': {
+    name: 'Rebellion Gilgamesh',
+    image: '/src/assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg',
+    sections: [
+      {
+        title: 'Characters',
+        links: [],
+      },
+      {
+        title: 'Club Management',
+        links: [],
+      },
+      {
+        title: 'Combat',
+        links: [],
+      },
+      {
+        title: 'Resources',
+        links: [],
       },
     ],
   },

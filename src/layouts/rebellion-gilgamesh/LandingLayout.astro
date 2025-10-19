@@ -1,0 +1,153 @@
+---
+import RGBaseHead from '../../components/rebellion-gilgamesh/RGBaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import {
+  generateBreadcrumbs,
+  getParentBreadcrumb,
+  generateBackNavigation,
+} from '../../utils/breadcrumb-generator.js';
+import type { BreadcrumbItem, BackNavigation } from '../../utils/breadcrumb-generator.js';
+import GameImage from '../../components/rebellion-gilgamesh/GameImage.astro';
+
+// Import CSS files
+import '../../styles/games/rebellion-gilgamesh/rg-layout.css';
+import '../../styles/games/rebellion-gilgamesh/rg-colors.css';
+import '../../styles/games/rebellion-gilgamesh/rebellion-gilgamesh-landing.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  breadcrumbs?: { name: string; url: string }[];
+}
+
+const { title, description, gameTitle, heroImage } = Astro.props;
+
+// Simple breadcrumb for RG landing page - no duplication
+const breadcrumbItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Rebellion Gilgamesh ルーレット契約', href: null }, // Current page
+];
+
+const backNavigation = generateBackNavigation(Astro.url.pathname, {
+  gameKey: 'rebellion-gilgamesh',
+});
+---
+
+<html lang="en">
+  <head>
+    <RGBaseHead title={title} description={description} />
+    <slot name="head" />
+  </head>
+  <body class="rebellion-gilgamesh-body">
+    <CustomScrollbar />
+
+    <div class="rebellion-gilgamesh-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="rebellion-gilgamesh" />
+      <MobileMenu />
+
+      <div class="rebellion-gilgamesh-container">
+        <main class="rebellion-gilgamesh-main">
+          <!-- Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <GameImage
+                      imageName={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      width={1200}
+                      height={400}
+                      loading="eager"
+                      format="webp"
+                      quality={85}
+                    />
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+                <h1 class="hero-title">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Title Only Section -->
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          <nav class="rg-breadcrumb" aria-label="Breadcrumb navigation">
+            <div class="rg-breadcrumb-container">
+              {/* Back Button */}
+              {
+                backNavigation && (
+                  <a href={backNavigation.href} class="rg-breadcrumb-back">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                    <span class="rg-back-text">Back</span>
+                  </a>
+                )
+              }
+
+              {/* Breadcrumb Trail */}
+              <ol class="rg-breadcrumb-list">
+                {
+                  breadcrumbItems.map((item, index) => (
+                    <li class="rg-breadcrumb-item">
+                      {item.href ? (
+                        <a href={item.href} class="rg-breadcrumb-link">
+                          {item.name}
+                        </a>
+                      ) : (
+                        <span class="rg-breadcrumb-current" aria-current="page">
+                          {item.name}
+                        </span>
+                      )}
+                      {index < breadcrumbItems.length - 1 && (
+                        <span class="rg-breadcrumb-separator" aria-hidden="true">
+                          ›
+                        </span>
+                      )}
+                    </li>
+                  ))
+                }
+              </ol>
+            </div>
+          </nav>
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

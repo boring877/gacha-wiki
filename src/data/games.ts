@@ -1,6 +1,7 @@
 // Central games configuration
 // This file manages all games in the gacha wiki
 import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
+import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
 
 export interface Game {
   id: string;
@@ -15,6 +16,17 @@ export interface Game {
 }
 
 export const GAMES: Game[] = [
+  {
+    id: 'rebellion-gilgamesh',
+    name: 'Rebellion Gilgamesh ルーレット契約',
+    slug: 'rebellion-gilgamesh',
+    description: 'Adult Fantasy RPG • Characters • Club Management • Special Moves',
+    image: RGIcon,
+    url: '/guides/rebellion-gilgamesh/',
+    status: 'active',
+    sections: ['Characters', 'Club Management', 'Special Moves', 'Story', 'Events'],
+    lastUpdated: new Date(),
+  },
   {
     id: 'zone-nova',
     name: 'Zone Nova',

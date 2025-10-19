@@ -1,0 +1,184 @@
+/* Rebellion Gilgamesh Color System - Dark Theme with Red/Gold Accents */
+
+:root {
+  /* Primary Rebellion Gilgamesh brand colors - Red theme */
+  --rg-primary: #c26b6b;
+  --rg-primary-hover: #a64d4d;
+  --rg-primary-light: #d67e7e;
+  --rg-primary-dark: #8b3f3f;
+
+  /* Accent colors - Gold for highlights */
+  --rg-accent: #fbbf24;
+  --rg-accent-hover: #f59e0b;
+  --rg-accent-light: #fcd34d;
+
+  /* Background colors - Consistent with other games */
+  --rg-bg-primary: #1a1a1a;
+  --rg-bg-secondary: #2a2a2a;
+  --rg-bg-tertiary: #3a3a3a;
+  --rg-bg-card: #2d2d30;
+  --rg-bg-hover: #404046;
+
+  /* Text colors - Consistent with other games */
+  --rg-text-primary: #ffffff;
+  --rg-text-secondary: #b3b3b3;
+  --rg-text-tertiary: #999999;
+  --rg-text-muted: #666666;
+  --rg-text-light: #c0c0c0;
+
+  /* Border colors - Subtle and clean */
+  --rg-border: #404040;
+  --rg-border-light: #555555;
+  --rg-border-dark: #2a2a2a;
+
+  /* Status colors - Soft versions */
+  --rg-success: #10b981;
+  --rg-warning: #f59e0b;
+  --rg-error: #f87171;
+  --rg-info: #60a5fa;
+
+  /* Rarity colors for Rebellion Gilgamesh characters - Red/Gold theme */
+  --rg-legendary: #fbbf24;
+  --rg-epic: #c26b6b;
+  --rg-rare: #8b5cf6;
+  --rg-common: #9ca3af;
+  --rg-mythic: #dc2626;
+
+  /* Background Gradients - Only for page backgrounds */
+  --rg-gradient-primary: linear-gradient(
+    135deg,
+    var(--rg-bg-primary) 0%,
+    var(--rg-bg-secondary) 35%,
+    var(--rg-bg-tertiary) 100%
+  );
+  --rg-gradient-secondary: linear-gradient(
+    135deg,
+    var(--rg-bg-secondary) 0%,
+    var(--rg-bg-tertiary) 100%
+  );
+  --rg-gradient-card: linear-gradient(135deg, var(--rg-bg-card) 0%, var(--rg-bg-secondary) 100%);
+
+  /* Background gradients for main layout */
+  --rg-bg-gradient-primary: linear-gradient(
+    135deg,
+    var(--rg-bg-primary) 0%,
+    var(--rg-bg-secondary) 35%,
+    var(--rg-bg-tertiary) 100%
+  );
+  --rg-bg-gradient-subtle: linear-gradient(
+    135deg,
+    var(--rg-bg-secondary) 0%,
+    var(--rg-bg-tertiary) 100%
+  );
+  --rg-bg-gradient-hero: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.9) 0%,
+    rgba(58, 58, 58, 0.8) 100%
+  );
+
+  /* Shadows removed for clean flat design */
+
+  /* Transitions */
+  --rg-transition: all 0.2s ease-in-out;
+  --rg-transition-slow: all 0.3s ease-in-out;
+
+  /* Dimensions - Following other games pattern */
+  --rg-radius-sm: 4px; /* Small border radius */
+  --rg-radius-md: 8px; /* Medium border radius */
+  --rg-radius-lg: 12px; /* Large border radius */
+
+  /* Spacing - Following other games pattern */
+  --rg-spacing-xs: 0.25rem; /* Extra small spacing */
+  --rg-spacing-sm: 0.5rem; /* Small spacing */
+  --rg-spacing-md: 1rem; /* Medium spacing */
+  --rg-spacing-lg: 1.5rem; /* Large spacing */
+  --rg-spacing-xl: 2rem; /* Extra large spacing */
+
+  /* Font weights - Following global typography system */
+  --rg-font-normal: 400; /* Normal weight */
+  --rg-font-medium: 500; /* Medium weight */
+  --rg-font-semibold: 600; /* Semibold weight */
+  --rg-font-bold: 700; /* Bold weight */
+}
+
+/* Rebellion Gilgamesh specific component classes */
+.rg-card {
+  background: var(--rg-gradient-card);
+  border: 1px solid var(--rg-border);
+  border-radius: 12px;
+  transition: var(--rg-transition);
+}
+
+.rg-card:hover {
+  border-color: var(--rg-primary);
+  transform: translateY(-2px);
+}
+
+.rg-button {
+  background: var(--rg-gradient-primary);
+  color: var(--rg-text-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--rg-transition);
+}
+
+.rg-button:hover {
+  background: var(--rg-gradient-secondary);
+  transform: translateY(-1px);
+}
+
+.rg-text-gradient {
+  background: var(--rg-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Character rarity indicators */
+.rg-rarity-legendary {
+  color: var(--rg-legendary);
+}
+
+.rg-rarity-epic {
+  color: var(--rg-epic);
+}
+
+.rg-rarity-rare {
+  color: var(--rg-rare);
+}
+
+.rg-rarity-common {
+  color: var(--rg-common);
+}
+
+/* Utility classes */
+.rg-bg-primary {
+  background-color: var(--rg-bg-primary);
+}
+.rg-bg-secondary {
+  background-color: var(--rg-bg-secondary);
+}
+.rg-bg-tertiary {
+  background-color: var(--rg-bg-tertiary);
+}
+
+.rg-text-primary {
+  color: var(--rg-text-primary);
+}
+.rg-text-secondary {
+  color: var(--rg-text-secondary);
+}
+.rg-text-muted {
+  color: var(--rg-text-muted);
+}
+
+.rg-border {
+  border-color: var(--rg-border);
+}
+.rg-border-light {
+  border-color: var(--rg-border-light);
+}

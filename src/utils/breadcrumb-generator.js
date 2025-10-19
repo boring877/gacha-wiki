@@ -55,6 +55,22 @@ const GAME_CONFIG = {
       'ap-guide': 'AP Guide',
     },
   },
+  'rebellion-gilgamesh': {
+    name: 'Rebellion Gilgamesh',
+    basePath: '/guides/rebellion-gilgamesh',
+    patterns: {
+      characters: 'Characters',
+      'character-comparison': 'Character Comparison',
+      'character-rankings': 'Character Rankings',
+      'club-management': 'Club Management',
+      'club-guide': 'Club Guide',
+      'slave-management': 'Slave Management',
+      'special-moves': 'Special Moves',
+      'moves-database': 'Moves Database',
+      'combat-guide': 'Combat Guide',
+      'tier-list': 'Tier List',
+    },
+  },
 };
 
 /**

@@ -1,0 +1,231 @@
+---
+import { getGameById } from '../../data/games';
+
+export interface Props {
+  showBackButton?: boolean;
+  customBreadcrumbs?: { name: string; url: string }[];
+  autoGenerate?: boolean;
+  gameKey?: string;
+}
+
+const { showBackButton = true, customBreadcrumbs, autoGenerate = false, gameKey } = Astro.props;
+
+// Get current path for auto-generation
+const currentPath = Astro.url.pathname;
+const pathSegments = currentPath.split('/').filter(Boolean);
+
+// Auto-generate breadcrumbs if requested
+let breadcrumbs = customBreadcrumbs || [];
+
+if (autoGenerate && pathSegments.length > 0) {
+  let currentUrl = '';
+
+  // Always start with Home
+  breadcrumbs.push({ name: 'Home', url: '/' });
+
+  // Add path segments
+  pathSegments.forEach((segment, index) => {
+    currentUrl += `/${segment}`;
+
+    // Skip adding the current page if it's the last segment
+    if (index < pathSegments.length - 1) {
+      // Convert slug to readable name
+      const name = segment
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+
+      breadcrumbs.push({ name, url: currentUrl });
+    }
+  });
+
+  // Add current page as last breadcrumb
+  const lastSegment = pathSegments[pathSegments.length - 1];
+  const currentName = lastSegment
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  breadcrumbs.push({ name: currentName, url: currentPath });
+}
+
+// If no breadcrumbs provided and not auto-generating, create default
+if (breadcrumbs.length === 0) {
+  breadcrumbs = [
+    { name: 'Guides', url: '/guides' },
+    { name: 'Rebellion Gilgamesh', url: '/guides/rebellion-gilgamesh' },
+  ];
+}
+---
+
+<!-- Breadcrumb Navigation -->
+<nav class="rg-breadcrumb" aria-label="Breadcrumb navigation">
+  <div class="rg-breadcrumb-container">
+    <!-- Back Button -->
+    {
+      showBackButton && (
+        <a href="/guides" class="rg-breadcrumb-back">
+          <span class="rg-back-icon">←</span>
+          <span class="rg-back-text">Back to Guides</span>
+        </a>
+      )
+    }
+
+    <!-- Breadcrumb Trail -->
+    <ol class="rg-breadcrumb-list">
+      {
+        breadcrumbs.map((crumb, index) => (
+          <li class="rg-breadcrumb-item">
+            {index < breadcrumbs.length - 1 ? (
+              <>
+                <a href={crumb.url} class="rg-breadcrumb-link">
+                  {crumb.name}
+                </a>
+                <span class="rg-breadcrumb-separator">›</span>
+              </>
+            ) : (
+              <span class="rg-breadcrumb-current">{crumb.name}</span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</nav>
+
+<style>
+  /* Rebellion Gilgamesh Breadcrumb Styles */
+  .rg-breadcrumb {
+    margin: var(--rg-spacing-lg) 0;
+    padding: 0 var(--rg-spacing-md);
+  }
+
+  .rg-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: var(--rg-spacing-lg);
+    flex-wrap: wrap;
+  }
+
+  .rg-breadcrumb-back {
+    display: flex;
+    align-items: center;
+    gap: var(--rg-spacing-sm);
+    color: var(--rg-text-primary);
+    text-decoration: none;
+    padding: var(--rg-spacing-sm) var(--rg-spacing-md);
+    border-radius: var(--rg-radius-md);
+    background: var(--rg-primary);
+    border: 1px solid var(--rg-primary-hover);
+    transition: var(--rg-transition);
+    font-weight: 500;
+  }
+
+  .rg-breadcrumb-back:hover {
+    background: var(--rg-primary-hover);
+    transform: translateY(-1px);
+  }
+
+  .rg-back-icon {
+    font-size: 1.1rem;
+    transition: var(--rg-transition);
+  }
+
+  .rg-breadcrumb-back:hover .rg-back-icon {
+    transform: translateX(-2px);
+  }
+
+  .rg-back-text {
+    font-size: 0.9rem;
+  }
+
+  .rg-breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: var(--rg-spacing-sm);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  .rg-breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: var(--rg-spacing-sm);
+  }
+
+  .rg-breadcrumb-link {
+    color: var(--rg-text-secondary);
+    text-decoration: none;
+    padding: var(--rg-spacing-xs) var(--rg-spacing-sm);
+    border-radius: var(--rg-radius-sm);
+    transition: var(--rg-transition);
+    font-size: 0.9rem;
+  }
+
+  .rg-breadcrumb-link:hover {
+    color: var(--rg-text-primary);
+    background: var(--rg-primary-20);
+  }
+
+  .rg-breadcrumb-separator {
+    color: var(--rg-text-muted);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 var(--rg-spacing-xs);
+  }
+
+  .rg-breadcrumb-current {
+    color: var(--rg-accent);
+    font-weight: 600;
+    padding: var(--rg-spacing-xs) var(--rg-spacing-sm);
+    background: var(--rg-accent-20);
+    border-radius: var(--rg-radius-sm);
+    font-size: 0.9rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .rg-breadcrumb-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--rg-spacing-md);
+    }
+
+    .rg-breadcrumb-list {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .rg-breadcrumb-link,
+    .rg-breadcrumb-current {
+      font-size: 0.85rem;
+    }
+
+    .rg-back-text {
+      display: none;
+    }
+
+    .rg-breadcrumb-back {
+      padding: var(--rg-spacing-sm);
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .rg-breadcrumb {
+      margin: var(--rg-spacing-md) 0;
+      padding: 0 var(--rg-spacing-sm);
+    }
+
+    .rg-breadcrumb-list {
+      gap: var(--rg-spacing-xs);
+    }
+
+    .rg-breadcrumb-separator {
+      font-size: 1rem;
+      margin: 0 2px;
+    }
+  }
+</style>

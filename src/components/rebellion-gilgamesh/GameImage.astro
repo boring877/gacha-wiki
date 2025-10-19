@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import bg1 from '../../assets/images/games/rebellion-gilgamesh/main-images/BG1.jpg';
+import gameicon from '../../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 1200,
+  height = 400,
+  class: className,
+  loading = 'eager',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Map image names to imported image modules
+const imageMap = {
+  '/images/games/rebellion-gilgamesh/main-images/BG1.jpg': bg1,
+  '/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg': gameicon,
+  'BG1.jpg': bg1,
+  'bg1.jpg': bg1,
+  'Icon1.jpg': gameicon,
+  'icon1.jpg': gameicon,
+  'gameicon.jpg': gameicon,
+};
+
+// Get the image module based on the imageName
+const filename = imageName.split('/').pop() || 'BG1.jpg';
+const imageModule = imageMap[imageName] || imageMap[filename] || bg1;
+---
+
+<!-- Use Astro's Image component for optimization -->
+<Image
+  src={imageModule}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>
