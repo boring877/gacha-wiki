@@ -21,19 +21,9 @@ export interface Props {
   title: string;
   description: string;
   gameTitle?: string;
-  showBackButton?: boolean;
-  backButtonHref?: string;
-  backButtonText?: string;
 }
 
-const {
-  title,
-  description,
-  gameTitle = 'Zone Nova',
-  showBackButton = true,
-  backButtonHref = '/guides/zone-nova/characters/',
-  backButtonText = 'Back to Character Database',
-} = Astro.props;
+const { title, description, gameTitle = 'Zone Nova' } = Astro.props;
 ---
 
 <html lang="en">

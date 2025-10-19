@@ -28,11 +28,6 @@ export interface Props {
 }
 
 const { title, description, gameTitle, heroImage, character } = Astro.props;
-
-// Extract character slug from URL path for navigation
-// URL format: /guides/zone-nova/characters/character-name
-const urlParts = Astro.url.pathname.split('/');
-const characterSlug = urlParts[urlParts.length - 1] || '';
 ---
 
 <html lang="en">

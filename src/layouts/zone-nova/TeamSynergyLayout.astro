@@ -23,20 +23,14 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: string;
-  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
-const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
+const { title, description, gameTitle, heroImage } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <ZNBaseHead
-      title={title}
-      description={description || ''}
-      breadcrumbs={breadcrumbs}
-      shouldPreloadDefaultImage={false}
-    />
+    <ZNBaseHead title={title} description={description || ''} />
     <GameSEO
       gameKey="zone-nova"
       title={title}
@@ -86,8 +80,6 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
         'squad formations',
       ]}
     />
-
-    <!-- Image Preloading for Performance -->
 
     <slot name="head" />
   </head>

@@ -23,16 +23,14 @@ export interface Props {
   heroImage?: string;
   surveyTitle?: string;
   surveyMeta?: string;
-  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
-const { title, description, gameTitle, heroImage, surveyTitle, surveyMeta, breadcrumbs } =
-  Astro.props;
+const { title, description, gameTitle, heroImage, surveyTitle, surveyMeta } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <ZNBaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
+    <ZNBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
     <slot name="head" />
   </head>
@@ -118,5 +116,5 @@ const { title, description, gameTitle, heroImage, surveyTitle, surveyMeta, bread
 
       <Footer />
     </div>
-  </body><!-- Image Preloading for Performance -->
+  </body>
 </html>

@@ -148,6 +148,8 @@ import { julius } from './characters/julius.js';
 import { stella } from './characters/stella.js';
 import { regina } from './characters/regina.js';
 import { albrecht } from './characters/albrecht.js';
+import { fanny } from './characters/fanny.js';
+import { genevieve } from './characters/genevieve.js';
 
 // Characters array - Add new characters here
 const baseCharacters = [
@@ -198,6 +200,8 @@ const baseCharacters = [
   stella,
   regina,
   albrecht,
+  fanny,
+  genevieve,
   // Add more characters as they are created
 ];
 

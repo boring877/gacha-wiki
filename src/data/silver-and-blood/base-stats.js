@@ -854,5 +854,41 @@ export const baseStats = {
     bloodPower: 20760,
   },
 
+  // Genevieve
+  genevieve: {
+    hp: 164000, // 164K
+    atk: 9618,
+    pDef: 3959,
+    mDef: 3364,
+    atkSpd: 0, // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5, // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20859,
+  },
+
+  // Fanny
+  fanny: {
+    hp: 150000, // 150K
+    atk: 10345,
+    pDef: 3162,
+    mDef: 3480,
+    atkSpd: 0, // 0%
+    bloodsoulRecovery: 1000,
+    critRate: 5, // 5%
+    critDmgIncrease: 150, // 150%
+    allDmgBonus: 0,
+    allDmgReduction: 0,
+    pDmgBonus: 0,
+    mDmgBonus: 0,
+    receivedHealingBonus: 0,
+    bloodPower: 20907,
+  },
+
   // --- add more characters below ---
 };

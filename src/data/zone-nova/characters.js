@@ -385,7 +385,7 @@ export const ZONE_NOVA_CHARACTERS = [
       critRate: 0,
       critDmg: 50,
     },
-    image: '/assets/images/games/zone-nova/characters/Lily.jpg',
+    image: '/images/games/zone-nova/characters/Lily.jpg',
     slug: 'lily',
     detailUrl: '/guides/zone-nova/characters/lily',
   },
