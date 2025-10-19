@@ -13,6 +13,7 @@ const getRerollingCodes = () => {
     'B9ZV7F2222T',
     'BLOODMOON',
     'MOONGIFT',
+    'SILVER100D',
   ];
   return silverAndBloodRedeemCodes.availableCodes.filter(code => targetCodes.includes(code.code));
 };
