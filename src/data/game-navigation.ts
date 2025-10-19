@@ -17,6 +17,7 @@ export interface GameData {
 }
 
 import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
+import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
 
 export const GAMES_DATA: Record<GameKey, GameData> = {
   'silver-and-blood': {
@@ -147,7 +148,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
   },
   'rebellion-gilgamesh': {
     name: 'Rebellion Gilgamesh',
-    image: '/src/assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg',
+    image: RGIcon,
     sections: [
       {
         title: 'Characters',
