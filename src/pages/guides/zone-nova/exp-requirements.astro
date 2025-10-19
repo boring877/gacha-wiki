@@ -3,7 +3,6 @@ import ExpRequirementsLayout from '../../../layouts/zone-nova/ExpRequirementsLay
 import {
   EXP_GRADES,
   CHARACTER_LEVEL_RANGES,
-  CHARACTER_BREAKTHROUGH,
   MEMORY_LEVEL_RANGES,
   MEMORY_CHIPS,
   MEMORY_BREAKTHROUGH,
@@ -11,7 +10,6 @@ import {
   EXP_CUBES,
 } from '../../../data/zone-nova/exp-requirements.js';
 import { ZNEXPImage } from '../../../components/zone-nova/index.astro';
-import '../../../styles/games/zone-nova/zn-exp-requirements.css';
 ---
 
 <ExpRequirementsLayout
@@ -19,399 +17,399 @@ import '../../../styles/games/zone-nova/zn-exp-requirements.css';
   description="Complete guide to EXP requirements for characters, memories, runes, and EXP cubes in Zone Nova"
   gameTitle="EXP Requirements"
 >
-  <section class="page-flex">
-    <div class="main-content-container">
-      <div class="content-wrapper">
-        <!-- Characters Section -->
-        <div class="exp-section">
-          <h3 class="exp-section-title">Characters</h3>
-          <div class="exp-section-description">
-            <p>
-              This is just a quick summary about the EXP you need to level up your character to
-              level 80!
-            </p>
-          </div>
+  <!-- Credit Section -->
+  <div class="exp-section">
+    <h3 class="exp-section-title">Credits</h3>
+    <div class="exp-section-description">
+      <p>
+        <strong>Special thanks to TakeItEasy</strong> for helping compile and verify all the EXP requirements
+        data for Zone Nova characters, memories, runes, and EXP cubes. Your contributions have been invaluable
+        to the community!
+      </p>
+    </div>
+  </div>
 
-          <!-- EXP Grades -->
-          <div class="exp-subsection">
-            <h4 class="exp-subsection-title">EXP Grades</h4>
-            <div class="exp-subsection-description">
-              <p>
-                Different grades of EXP materials used for character leveling. Higher grade
-                materials provide more EXP per item.
-              </p>
-            </div>
-            <div class="exp-cards-grid">
-              {
-                Object.entries(EXP_GRADES).map(([key, grade]) => (
-                  <div class={`exp-card exp-card-${key.toLowerCase()}`}>
-                    <div class="exp-card-image">
-                      <ZNEXPImage
-                        imageName={
-                          key === 'HIGHEST'
-                            ? 'highestgrade'
-                            : key === 'MID'
-                              ? 'midgrade'
-                              : 'lowgrade'
-                        }
-                        alt={grade.name}
-                        width={80}
-                        height={80}
-                      />
-                    </div>
-                    <div class="exp-card-title">{grade.name}</div>
-                    <div class="exp-card-value">{grade.exp.toLocaleString()}</div>
-                    <div class="exp-card-label">EXP</div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
+  <!-- Characters Section -->
+  <div class="exp-section">
+    <h3 class="exp-section-title">Characters</h3>
+    <div class="exp-section-description">
+      <p>
+        This is just a quick summary about the EXP you need to level up your character to level 80!
+      </p>
+    </div>
 
-          <!-- Level Progression -->
-          <div class="exp-subsection">
-            <h4 class="exp-subsection-title">Level Progression</h4>
-            <div class="exp-subsection-description">
-              <p>
-                Total EXP and credit requirements for leveling characters through different level
-                ranges from 1 to 80.
-              </p>
-            </div>
-            <div class="character-table-container">
-              <table class="character-table">
-                <thead>
-                  <tr>
-                    <th>Level Range</th>
-                    <th>EXP Required</th>
-                    <th>Credit Cost</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    CHARACTER_LEVEL_RANGES.map((range, index) => (
-                      <tr class={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-                        <td>{range.range}</td>
-                        <td class="exp-amount">{range.expRequired.toLocaleString()}</td>
-                        <td class="credit-amount">{range.creditMoney.toLocaleString()}</td>
-                      </tr>
-                    ))
+    <!-- EXP Grades -->
+    <div class="exp-subsection">
+      <h4 class="exp-subsection-title">EXP Grades</h4>
+      <div class="exp-subsection-description">
+        <p>
+          Different grades of EXP materials used for character leveling. Higher grade materials
+          provide more EXP per item.
+        </p>
+      </div>
+      <div class="exp-cards-grid">
+        {
+          Object.entries(EXP_GRADES).map(([key, grade]) => (
+            <div class={`exp-card exp-card-${key.toLowerCase()}`}>
+              <div class="exp-card-image">
+                <ZNEXPImage
+                  imageName={
+                    key === 'HIGHEST' ? 'highestgrade' : key === 'MID' ? 'midgrade' : 'lowgrade'
                   }
-                </tbody>
-              </table>
+                  alt={grade.name}
+                  width={80}
+                  height={80}
+                />
+              </div>
+              <div class="exp-card-title">{grade.name}</div>
+              <div class="exp-card-value">{grade.exp.toLocaleString()}</div>
+              <div class="exp-card-label">EXP</div>
             </div>
-          </div>
+          ))
+        }
+      </div>
+    </div>
 
-          <!-- Breakthrough Requirements -->
-          <div class="exp-subsection">
-            <h4 class="exp-subsection-title">Breakthrough Stone Requirements</h4>
-            <div class="exp-subsection-description">
-              <p>
-                Chips required to unlock breakthrough levels (20, 30, 40, 50, 60, 70) and continue
-                leveling your memory cards.
-              </p>
-            </div>
-            <div class="breakthrough-table-container">
-              <table class="breakthrough-table">
-                <thead>
-                  <tr>
-                    <th>Level</th>
-                    <th>Chip Requirement</th>
-                    <th>Quantity</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    MEMORY_BREAKTHROUGH.map((breakthrough, index) => (
-                      <tr class={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-                        <td class="breakthrough-level-cell">{breakthrough.level}</td>
-                        <td class="breakthrough-stone-cell">
-                          <span class={`chip-type-${breakthrough.type}`}>
-                            {breakthrough.requirement.replace(/\d+\s+/g, '')}
-                          </span>
-                        </td>
-                        <td class="breakthrough-quantity-cell">{breakthrough.quantity}</td>
-                      </tr>
-                    ))
-                  }
-                </tbody>
-              </table>
-            </div>
-          </div>
+    <!-- Level Progression -->
+    <div class="exp-subsection">
+      <h4 class="exp-subsection-title">Level Progression</h4>
+      <div class="exp-subsection-description">
+        <p>
+          Total EXP and credit requirements for leveling characters through different level ranges
+          from 1 to 80.
+        </p>
+      </div>
+      <div class="character-table-container">
+        <table class="character-table">
+          <thead>
+            <tr>
+              <th>Level Range</th>
+              <th>EXP Required</th>
+              <th>Credit Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              CHARACTER_LEVEL_RANGES.map((range, index) => (
+                <tr class={index % 2 === 0 ? 'even-row' : 'odd-row'}>
+                  <td>{range.range}</td>
+                  <td class="exp-amount">{range.expRequired.toLocaleString()}</td>
+                  <td class="credit-amount">{range.creditMoney.toLocaleString()}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-          <!-- EXP Books/Scrolls Needed -->
-          <div class="exp-subsection">
-            <h4 class="exp-subsection-title">EXP Books & Scrolls Required</h4>
-            <div class="exp-subsection-description">
-              <p>
-                Calculate how many EXP books or scrolls you need to level up your character from
-                level 1 to 80.
-              </p>
-            </div>
-            <div class="exp-calculator-container">
-              <div class="exp-calculator-grid">
-                <div class="calc-item">
-                  <div class="calc-label">Highest Grade (20,000 EXP)</div>
-                  <div class="calc-value">279</div>
-                </div>
-                <div class="calc-item">
-                  <div class="calc-label">Mid Grade (5,000 EXP)</div>
-                  <div class="calc-value">2</div>
-                </div>
-                <div class="calc-item">
-                  <div class="calc-label">Low Grade (1,000 EXP)</div>
-                  <div class="calc-value">0</div>
-                </div>
-              </div>
-              <div class="total-exp-needed">
-                <div class="total-label">Total EXP Required:</div>
-                <div class="total-value">5,590,000</div>
-              </div>
-              <!-- Total Credits Section -->
-              <div class="total-credits-container">
-                <div class="total-credits-item">
-                  <div class="total-credits-label">Total Credits Needed (1→80):</div>
-                  <div class="total-credits-value">557,289</div>
-                </div>
-              </div>
-            </div>
+    <!-- Breakthrough Requirements -->
+    <div class="exp-subsection">
+      <h4 class="exp-subsection-title">Breakthrough Stone Requirements</h4>
+      <div class="exp-subsection-description">
+        <p>
+          Chips required to unlock breakthrough levels (20, 30, 40, 50, 60, 70) and continue
+          leveling your memory cards.
+        </p>
+      </div>
+      <div class="breakthrough-table-container">
+        <table class="breakthrough-table">
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Chip Requirement</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              MEMORY_BREAKTHROUGH.map((breakthrough, index) => (
+                <tr class={index % 2 === 0 ? 'even-row' : 'odd-row'}>
+                  <td class="breakthrough-level-cell">{breakthrough.level}</td>
+                  <td class="breakthrough-stone-cell">
+                    <span class={`chip-type-${breakthrough.type}`}>
+                      {breakthrough.requirement.replace(/\d+\s+/g, '')}
+                    </span>
+                  </td>
+                  <td class="breakthrough-quantity-cell">{breakthrough.quantity}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- EXP Books/Scrolls Needed -->
+    <div class="exp-subsection">
+      <h4 class="exp-subsection-title">EXP Books & Scrolls Required</h4>
+      <div class="exp-subsection-description">
+        <p>
+          Calculate how many EXP books or scrolls you need to level up your character from level 1
+          to 80.
+        </p>
+      </div>
+      <div class="exp-calculator-container">
+        <div class="exp-calculator-grid">
+          <div class="calc-item">
+            <div class="calc-label">Highest Grade (20,000 EXP)</div>
+            <div class="calc-value">279</div>
+          </div>
+          <div class="calc-item">
+            <div class="calc-label">Mid Grade (5,000 EXP)</div>
+            <div class="calc-value">2</div>
+          </div>
+          <div class="calc-item">
+            <div class="calc-label">Low Grade (1,000 EXP)</div>
+            <div class="calc-value">0</div>
           </div>
         </div>
-
-        <!-- Memories Section -->
-        <div class="exp-section">
-          <h3 class="exp-section-title">Memories</h3>
-          <div class="exp-section-description">
-            <p>
-              This is just a quick summary about the EXP you need to level up your memory cards to
-              level 80!
-            </p>
-          </div>
-
-          <!-- Memory Chips -->
-          <div class="exp-subsection">
-            <h4 class="exp-subsection-title">Memory Chip EXP Values</h4>
-            <div class="exp-subsection-description">
-              <p>
-                Different grades of memory chips used for memory leveling. Higher grade chips
-                provide more EXP per item.
-              </p>
-            </div>
-            <div class="exp-cards-grid">
-              {
-                Object.entries(MEMORY_CHIPS).map(([key, chip]) => (
-                  <div class={`exp-card exp-card-${key.toLowerCase()}`}>
-                    <div class="exp-card-image">
-                      <ZNEXPImage
-                        imageName={
-                          key === 'HIGH'
-                            ? 'highgrade-chip'
-                            : key === 'MID'
-                              ? 'midgrade-chip'
-                              : 'lowgrade-chip'
-                        }
-                        alt={chip.name}
-                        width={80}
-                        height={80}
-                      />
-                    </div>
-                    <div class="exp-card-title">{chip.name}</div>
-                    <div class="exp-card-value">{chip.exp.toLocaleString()}</div>
-                    <div class="exp-card-label">EXP</div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-
-          <!-- Memory Level Progression -->
-          <div class="exp-subsection">
-            <h4 class="exp-subsection-title">Level Progression</h4>
-            <div class="exp-subsection-description">
-              <p>
-                Total EXP and credit requirements for leveling memory cards through different level
-                ranges from 1 to 80.
-              </p>
-            </div>
-            <div class="character-table-container">
-              <table class="character-table">
-                <thead>
-                  <tr>
-                    <th>Level Range</th>
-                    <th>EXP Required</th>
-                    <th>Credit Cost</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    MEMORY_LEVEL_RANGES.map((range, index) => (
-                      <tr class={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-                        <td>{range.range}</td>
-                        <td class="exp-amount">{range.expRequired.toLocaleString()}</td>
-                        <td class="credit-amount">{range.creditMoney.toLocaleString()}</td>
-                      </tr>
-                    ))
-                  }
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Memory Breakthrough -->
-          <div class="exp-subsection">
-            <h4 class="exp-subsection-title">Memory Chip Requirements</h4>
-            <div class="exp-subsection-description">
-              <p>
-                Chips required to unlock breakthrough levels (20, 30, 40, 50, 60, 70) and continue
-                leveling your memory cards.
-              </p>
-            </div>
-
-            <div class="breakthrough-table-container">
-              <table class="breakthrough-table">
-                <thead>
-                  <tr>
-                    <th>Level</th>
-                    <th>Chip Requirement</th>
-                    <th>Quantity</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    MEMORY_BREAKTHROUGH.map((breakthrough, index) => (
-                      <tr class={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-                        <td class="breakthrough-level-cell">{breakthrough.level}</td>
-                        <td class="breakthrough-stone-cell">
-                          <span class={`chip-type-${breakthrough.type}`}>
-                            {breakthrough.requirement.replace(/\d+\s+/g, '')}
-                          </span>
-                        </td>
-                        <td class="breakthrough-quantity-cell">{breakthrough.quantity}</td>
-                      </tr>
-                    ))
-                  }
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Memory Chips Calculator -->
-          <div class="exp-subsection">
-            <h4 class="exp-subsection-title">Memory Chips Required</h4>
-            <div class="exp-subsection-description">
-              <p>
-                Calculate how many memory chips you need to level up your memory cards from level 1
-                to 80.
-              </p>
-            </div>
-            <div class="exp-calculator-container">
-              <div class="exp-calculator-grid">
-                <div class="calc-item">
-                  <div class="calc-label">Highgrade Chip (6,000 EXP)</div>
-                  <div class="calc-value">116</div>
-                </div>
-                <div class="calc-item">
-                  <div class="calc-label">Midgrade Chip (2,000 EXP)</div>
-                  <div class="calc-value">1</div>
-                </div>
-                <div class="calc-item">
-                  <div class="calc-label">Lowgrade Chip (500 EXP)</div>
-                  <div class="calc-value">3</div>
-                </div>
-              </div>
-              <div class="total-exp-needed">
-                <div class="total-label">Total EXP Required:</div>
-                <div class="total-value">699,500</div>
-              </div>
-              <!-- Total Credits Section -->
-              <div class="total-credits-container">
-                <div class="total-credits-item">
-                  <div class="total-credits-label">Total Credits Needed (1→80):</div>
-                  <div class="total-credits-value">391,795</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="total-exp-needed">
+          <div class="total-label">Total EXP Required:</div>
+          <div class="total-value">5,590,000</div>
         </div>
-
-        <!-- Runes & EXP Cubes Section -->
-        <div class="exp-section">
-          <h3 class="exp-section-title">Runes & EXP Cubes</h3>
-          <div class="exp-section-description">
-            <p>
-              This is just a quick summary about runes leveling and EXP cubes you need for leveling
-              up your characters and memories!
-            </p>
-          </div>
-
-          <!-- Runes Leveling -->
-          <div class="exp-subsection">
-            <h4 class="exp-subsection-title">Runes Leveling</h4>
-            <div class="exp-subsection-description">
-              <p>
-                Complete requirements to max level your runes from level 1 to 15 including EXP and
-                credits.
-              </p>
-            </div>
-            <div class="rune-info-box">
-              <div class="rune-detail">
-                <div class="rune-label">Level Range</div>
-                <div class="rune-value">{RUNE_DATA.levelRange}</div>
-              </div>
-              <div class="rune-detail">
-                <div class="rune-label">Experience Required</div>
-                <div class="rune-value">{RUNE_DATA.expRequired.toLocaleString()}</div>
-              </div>
-              <div class="rune-detail">
-                <div class="rune-label">Credit Cost</div>
-                <div class="rune-value">{RUNE_DATA.creditCost.toLocaleString()}</div>
-              </div>
-            </div>
-            <!-- Total Credits Section -->
-            <div class="total-credits-container">
-              <div class="total-credits-item">
-                <div class="total-credits-label">Total Credits Needed (1→15):</div>
-                <div class="total-credits-value">114,000</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- EXP Cubes -->
-          <div class="exp-subsection">
-            <h4 class="exp-subsection-title">EXP Cube Values</h4>
-            <div class="exp-subsection-description">
-              <p>
-                Different grades of EXP cubes used for character and memory leveling. Higher grade
-                cubes provide more EXP per item.
-              </p>
-            </div>
-            <div class="exp-cards-grid">
-              {
-                Object.entries(EXP_CUBES).map(([key, cube]) => (
-                  <div class={`exp-card exp-card-${key.toLowerCase()}`}>
-                    <div class="exp-card-image">
-                      <ZNEXPImage
-                        imageName={
-                          key === 'HIGH'
-                            ? 'highgrade-cube'
-                            : key === 'MID'
-                              ? 'midgrade-cube'
-                              : 'lowgrade-cube'
-                        }
-                        alt={cube.name}
-                        width={80}
-                        height={80}
-                      />
-                    </div>
-                    <div class="exp-card-title">{cube.name}</div>
-                    <div class="exp-card-value">{cube.exp.toLocaleString()}</div>
-                    <div class="exp-card-label">EXP</div>
-                  </div>
-                ))
-              }
-            </div>
+        <!-- Total Credits Section -->
+        <div class="total-credits-container">
+          <div class="total-credits-item">
+            <div class="total-credits-label">Total Credits Needed (1→80):</div>
+            <div class="total-credits-value">557,289</div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- Memories Section -->
+  <div class="exp-section">
+    <h3 class="exp-section-title">Memories</h3>
+    <div class="exp-section-description">
+      <p>
+        This is just a quick summary about the EXP you need to level up your memory cards to level
+        80!
+      </p>
+    </div>
+
+    <!-- Memory Chips -->
+    <div class="exp-subsection">
+      <h4 class="exp-subsection-title">Memory Chip EXP Values</h4>
+      <div class="exp-subsection-description">
+        <p>
+          Different grades of memory chips used for memory leveling. Higher grade chips provide more
+          EXP per item.
+        </p>
+      </div>
+      <div class="exp-cards-grid">
+        {
+          Object.entries(MEMORY_CHIPS).map(([key, chip]) => (
+            <div class={`exp-card exp-card-${key.toLowerCase()}`}>
+              <div class="exp-card-image">
+                <ZNEXPImage
+                  imageName={
+                    key === 'HIGH'
+                      ? 'highgrade-chip'
+                      : key === 'MID'
+                        ? 'midgrade-chip'
+                        : 'lowgrade-chip'
+                  }
+                  alt={chip.name}
+                  width={80}
+                  height={80}
+                />
+              </div>
+              <div class="exp-card-title">{chip.name}</div>
+              <div class="exp-card-value">{chip.exp.toLocaleString()}</div>
+              <div class="exp-card-label">EXP</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Memory Level Progression -->
+    <div class="exp-subsection">
+      <h4 class="exp-subsection-title">Level Progression</h4>
+      <div class="exp-subsection-description">
+        <p>
+          Total EXP and credit requirements for leveling memory cards through different level ranges
+          from 1 to 80.
+        </p>
+      </div>
+      <div class="character-table-container">
+        <table class="character-table">
+          <thead>
+            <tr>
+              <th>Level Range</th>
+              <th>EXP Required</th>
+              <th>Credit Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              MEMORY_LEVEL_RANGES.map((range, index) => (
+                <tr class={index % 2 === 0 ? 'even-row' : 'odd-row'}>
+                  <td>{range.range}</td>
+                  <td class="exp-amount">{range.expRequired.toLocaleString()}</td>
+                  <td class="credit-amount">{range.creditMoney.toLocaleString()}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Memory Breakthrough -->
+    <div class="exp-subsection">
+      <h4 class="exp-subsection-title">Memory Chip Requirements</h4>
+      <div class="exp-subsection-description">
+        <p>
+          Chips required to unlock breakthrough levels (20, 30, 40, 50, 60, 70) and continue
+          leveling your memory cards.
+        </p>
+      </div>
+
+      <div class="breakthrough-table-container">
+        <table class="breakthrough-table">
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Chip Requirement</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              MEMORY_BREAKTHROUGH.map((breakthrough, index) => (
+                <tr class={index % 2 === 0 ? 'even-row' : 'odd-row'}>
+                  <td class="breakthrough-level-cell">{breakthrough.level}</td>
+                  <td class="breakthrough-stone-cell">
+                    <span class={`chip-type-${breakthrough.type}`}>
+                      {breakthrough.requirement.replace(/\d+\s+/g, '')}
+                    </span>
+                  </td>
+                  <td class="breakthrough-quantity-cell">{breakthrough.quantity}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Memory Chips Calculator -->
+    <div class="exp-subsection">
+      <h4 class="exp-subsection-title">Memory Chips Required</h4>
+      <div class="exp-subsection-description">
+        <p>
+          Calculate how many memory chips you need to level up your memory cards from level 1 to 80.
+        </p>
+      </div>
+      <div class="exp-calculator-container">
+        <div class="exp-calculator-grid">
+          <div class="calc-item">
+            <div class="calc-label">Highgrade Chip (6,000 EXP)</div>
+            <div class="calc-value">116</div>
+          </div>
+          <div class="calc-item">
+            <div class="calc-label">Midgrade Chip (2,000 EXP)</div>
+            <div class="calc-value">1</div>
+          </div>
+          <div class="calc-item">
+            <div class="calc-label">Lowgrade Chip (500 EXP)</div>
+            <div class="calc-value">3</div>
+          </div>
+        </div>
+        <div class="total-exp-needed">
+          <div class="total-label">Total EXP Required:</div>
+          <div class="total-value">699,500</div>
+        </div>
+        <!-- Total Credits Section -->
+        <div class="total-credits-container">
+          <div class="total-credits-item">
+            <div class="total-credits-label">Total Credits Needed (1→80):</div>
+            <div class="total-credits-value">391,795</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Runes & EXP Cubes Section -->
+  <div class="exp-section">
+    <h3 class="exp-section-title">Runes & EXP Cubes</h3>
+    <div class="exp-section-description">
+      <p>
+        This is just a quick summary about runes leveling and EXP cubes you need for leveling up
+        your characters and memories!
+      </p>
+    </div>
+
+    <!-- Runes Leveling -->
+    <div class="exp-subsection">
+      <h4 class="exp-subsection-title">Runes Leveling</h4>
+      <div class="exp-subsection-description">
+        <p>
+          Complete requirements to max level your runes from level 1 to 15 including EXP and
+          credits.
+        </p>
+      </div>
+      <div class="rune-info-box">
+        <div class="rune-detail">
+          <div class="rune-label">Level Range</div>
+          <div class="rune-value">{RUNE_DATA.levelRange}</div>
+        </div>
+        <div class="rune-detail">
+          <div class="rune-label">Experience Required</div>
+          <div class="rune-value">{RUNE_DATA.expRequired.toLocaleString()}</div>
+        </div>
+        <div class="rune-detail">
+          <div class="rune-label">Credit Cost</div>
+          <div class="rune-value">{RUNE_DATA.creditCost.toLocaleString()}</div>
+        </div>
+      </div>
+      <!-- Total Credits Section -->
+      <div class="total-credits-container">
+        <div class="total-credits-item">
+          <div class="total-credits-label">Total Credits Needed (1→15):</div>
+          <div class="total-credits-value">114,000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXP Cubes -->
+    <div class="exp-subsection">
+      <h4 class="exp-subsection-title">EXP Cube Values</h4>
+      <div class="exp-subsection-description">
+        <p>
+          Different grades of EXP cubes used for character and memory leveling. Higher grade cubes
+          provide more EXP per item.
+        </p>
+      </div>
+      <div class="exp-cards-grid">
+        {
+          Object.entries(EXP_CUBES).map(([key, cube]) => (
+            <div class={`exp-card exp-card-${key.toLowerCase()}`}>
+              <div class="exp-card-image">
+                <ZNEXPImage
+                  imageName={
+                    key === 'HIGH'
+                      ? 'highgrade-cube'
+                      : key === 'MID'
+                        ? 'midgrade-cube'
+                        : 'lowgrade-cube'
+                  }
+                  alt={cube.name}
+                  width={80}
+                  height={80}
+                />
+              </div>
+              <div class="exp-card-title">{cube.name}</div>
+              <div class="exp-card-value">{cube.exp.toLocaleString()}</div>
+              <div class="exp-card-label">EXP</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </ExpRequirementsLayout>
