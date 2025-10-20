@@ -1,0 +1,149 @@
+---
+import SSBaseHead from '../../components/stella-sora/SSBaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import { generateBackNavigation } from '../../utils/breadcrumb-generator.js';
+import type { BackNavigation } from '../../utils/breadcrumb-generator.js';
+import GameImage from '../../components/stella-sora/GameImage.astro';
+
+// Import CSS files
+import '../../styles/games/stella-sora/ss-layout.css';
+import '../../styles/games/stella-sora/ss-colors.css';
+import '../../styles/games/stella-sora/stella-sora-landing.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  breadcrumbs?: { name: string; url: string }[];
+}
+
+const { title, description, gameTitle, heroImage } = Astro.props;
+
+// Simple breadcrumb for SS landing page - no duplication
+const breadcrumbItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Stella Sora ステラソラ', href: null }, // Current page
+];
+
+const backNavigation: BackNavigation | null = generateBackNavigation(Astro.url.pathname, {
+  gameKey: 'stella-sora',
+});
+---
+
+<html lang="en">
+  <head>
+    <SSBaseHead title={title} description={description} />
+    <slot name="head" />
+  </head>
+  <body class="stella-sora-body">
+    <CustomScrollbar />
+
+    <div class="stella-sora-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="stella-sora" />
+      <MobileMenu />
+
+      <div class="stella-sora-container">
+        <main class="stella-sora-main">
+          <!-- Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <GameImage
+                      imageName={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      width={1200}
+                      height={400}
+                      loading="eager"
+                      format="webp"
+                      quality={85}
+                    />
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+                <h1 class="hero-title">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Title Only Section -->
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          <nav class="ss-breadcrumb" aria-label="Breadcrumb navigation">
+            <div class="ss-breadcrumb-container">
+              {/* Back Button */}
+              {
+                backNavigation && (
+                  <a href={backNavigation.href} class="ss-breadcrumb-back">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                    <span class="ss-back-text">Back</span>
+                  </a>
+                )
+              }
+
+              {/* Breadcrumb Trail */}
+              <ol class="ss-breadcrumb-list">
+                {
+                  breadcrumbItems.map((item, index) => (
+                    <li class="ss-breadcrumb-item">
+                      {item.href ? (
+                        <a href={item.href} class="ss-breadcrumb-link">
+                          {item.name}
+                        </a>
+                      ) : (
+                        <span class="ss-breadcrumb-current" aria-current="page">
+                          {item.name}
+                        </span>
+                      )}
+                      {index < breadcrumbItems.length - 1 && (
+                        <span class="ss-breadcrumb-separator" aria-hidden="true">
+                          ›
+                        </span>
+                      )}
+                    </li>
+                  ))
+                }
+              </ol>
+            </div>
+          </nav>
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

@@ -7,7 +7,7 @@ export const rebellionGilgameshConfig = {
     description:
       'Download Rebellion Gilgamesh adult RPG on Erolabs. Character database, club management tips, demon world story. Play the ultimate harem creation game.',
     gameTitle: 'Rebellion Gilgamesh ルーレット契約',
-    heroImage: '/images/games/rebellion-gilgamesh/main-images/BG1.jpg',
+    heroImage: 'BG1.jpg',
   },
 
   gameInfo: {

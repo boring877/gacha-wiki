@@ -1,0 +1,232 @@
+---
+import { getGameById } from '../../data/games';
+
+export interface Props {
+  showBackButton?: boolean;
+  customBreadcrumbs?: { name: string; url: string }[];
+  autoGenerate?: boolean;
+  gameKey?: string;
+}
+
+const { showBackButton = true, customBreadcrumbs, autoGenerate = false, gameKey } = Astro.props;
+
+// Get current path for auto-generation
+const currentPath = Astro.url.pathname;
+const pathSegments = currentPath.split('/').filter(Boolean);
+
+// Auto-generate breadcrumbs if requested
+let breadcrumbs = customBreadcrumbs || [];
+
+if (autoGenerate && pathSegments.length > 0) {
+  let currentUrl = '';
+
+  // Always start with Home
+  breadcrumbs.push({ name: 'Home', url: '/' });
+
+  // Add path segments
+  pathSegments.forEach((segment, index) => {
+    currentUrl += `/${segment}`;
+
+    // Skip adding the current page if it's the last segment
+    if (index < pathSegments.length - 1) {
+      // Convert slug to readable name
+      const name = segment
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+
+      breadcrumbs.push({ name, url: currentUrl });
+    }
+  });
+
+  // Add current page as last breadcrumb
+  const lastSegment = pathSegments[pathSegments.length - 1];
+  const currentName = lastSegment
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  breadcrumbs.push({ name: currentName, url: currentPath });
+}
+
+// If no breadcrumbs provided and not auto-generating, create default
+if (breadcrumbs.length === 0) {
+  breadcrumbs = [
+    { name: 'Guides', url: '/guides' },
+    { name: 'Stella Sora', url: '/guides/stella-sora' },
+  ];
+}
+---
+
+<!-- Breadcrumb Navigation -->
+<nav class="ss-breadcrumb" aria-label="Breadcrumb navigation">
+  <div class="ss-breadcrumb-container">
+    <!-- Back Button -->
+    {
+      showBackButton && (
+        <a href="/guides" class="ss-breadcrumb-back">
+          <span class="ss-back-icon">←</span>
+          <span class="ss-back-text">Back to Guides</span>
+        </a>
+      )
+    }
+
+    <!-- Breadcrumb Trail -->
+    <ol class="ss-breadcrumb-list">
+      {
+        breadcrumbs.map((crumb, index) => (
+          <li class="ss-breadcrumb-item">
+            {index < breadcrumbs.length - 1 ? (
+              <>
+                <a href={crumb.url} class="ss-breadcrumb-link">
+                  {crumb.name}
+                </a>
+                <span class="ss-breadcrumb-separator">›</span>
+              </>
+            ) : (
+              <span class="ss-breadcrumb-current">{crumb.name}</span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</nav>
+
+<style>
+  /* Stella Sora Breadcrumb Styles */
+  .ss-breadcrumb {
+    margin: var(--ss-spacing-lg) 0;
+    padding: 0 var(--ss-spacing-md);
+  }
+
+  .ss-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: var(--ss-spacing-lg);
+    flex-wrap: wrap;
+  }
+
+  .ss-breadcrumb-back {
+    display: flex;
+    align-items: center;
+    gap: var(--ss-spacing-sm);
+    color: var(--ss-text-primary);
+    text-decoration: none;
+    padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+    border-radius: var(--ss-radius-md);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    transition: var(--ss-transition);
+    font-weight: 500;
+  }
+
+  .ss-breadcrumb-back:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  }
+
+  .ss-back-icon {
+    font-size: 1.1rem;
+    transition: var(--ss-transition);
+  }
+
+  .ss-breadcrumb-back:hover .ss-back-icon {
+    transform: translateX(-2px);
+  }
+
+  .ss-back-text {
+    font-size: 0.9rem;
+  }
+
+  .ss-breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: var(--ss-spacing-sm);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  .ss-breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: var(--ss-spacing-sm);
+  }
+
+  .ss-breadcrumb-link {
+    color: var(--ss-text-secondary);
+    text-decoration: none;
+    padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+    border-radius: var(--ss-radius-sm);
+    transition: var(--ss-transition);
+    font-size: 0.9rem;
+  }
+
+  .ss-breadcrumb-link:hover {
+    color: var(--ss-text-primary);
+    background: rgba(102, 126, 234, 0.1);
+  }
+
+  .ss-breadcrumb-separator {
+    color: var(--ss-text-muted);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 var(--ss-spacing-xs);
+  }
+
+  .ss-breadcrumb-current {
+    color: #667eea;
+    font-weight: 600;
+    padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: var(--ss-radius-sm);
+    font-size: 0.9rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .ss-breadcrumb-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--ss-spacing-md);
+    }
+
+    .ss-breadcrumb-list {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .ss-breadcrumb-link,
+    .ss-breadcrumb-current {
+      font-size: 0.85rem;
+    }
+
+    .ss-back-text {
+      display: none;
+    }
+
+    .ss-breadcrumb-back {
+      padding: var(--ss-spacing-sm);
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ss-breadcrumb {
+      margin: var(--ss-spacing-md) 0;
+      padding: 0 var(--ss-spacing-sm);
+    }
+
+    .ss-breadcrumb-list {
+      gap: var(--ss-spacing-xs);
+    }
+
+    .ss-breadcrumb-separator {
+      font-size: 1rem;
+      margin: 0 2px;
+    }
+  }
+</style>

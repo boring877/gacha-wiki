@@ -1,4 +1,9 @@
-export type GameKey = 'silver-and-blood' | 'zone-nova' | 'horizon-walker' | 'rebellion-gilgamesh';
+export type GameKey =
+  | 'silver-and-blood'
+  | 'zone-nova'
+  | 'horizon-walker'
+  | 'rebellion-gilgamesh'
+  | 'stella-sora';
 
 export interface NavigationLink {
   name: string;
@@ -18,6 +23,7 @@ export interface GameData {
 
 import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
+import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
 
 export const GAMES_DATA: Record<GameKey, GameData> = {
   'silver-and-blood': {
@@ -165,6 +171,19 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Resources',
         links: [],
+      },
+    ],
+  },
+  'stella-sora': {
+    name: 'Stella Sora',
+    image: StellaSoraIcon,
+    sections: [
+      {
+        title: 'Game Resources',
+        links: [
+          { name: 'Game Guide', href: '/guides/stella-sora/' },
+          { name: 'Official Website', href: 'https://stellasora.global/' },
+        ],
       },
     ],
   },

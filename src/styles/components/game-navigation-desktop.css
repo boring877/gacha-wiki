@@ -388,3 +388,18 @@
     border-color: var(--amber-glow);
   }
 }
+
+/* ============================================
+   STELLA SORA SPECIFIC STYLING
+   ============================================ */
+.game-nav-desktop[data-game='stella-sora'] .game-title {
+  background: linear-gradient(135deg, #7dd3fc, #6ee7b7, #bae6fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.game-nav-desktop[data-game='stella-sora'] .dropdown-link.active {
+  background: linear-gradient(135deg, #7dd3fc, #6ee7b7);
+  color: white;
+}

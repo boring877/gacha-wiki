@@ -9,12 +9,12 @@ export interface Props {
 
 const {
   title = SITE_TITLE,
-  description = 'Rebellion Gilgamesh Wiki - Adult Fantasy RPG Character Guide, Club Management & Strategy',
-  image = 'BG1.jpg',
+  description = 'Stella Sora Wiki - Fantasy RPG Trekker Guide, Nova Continent & Strategy',
+  image = '/images/games/stella-sora/gameimg/BG1.jpg',
 } = Astro.props;
 
 // Set meta tags
-const metaTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | Rebellion Gilgamesh Wiki`;
+const metaTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | Stella Sora Wiki`;
 const metaDescription = description;
 const metaImage = image;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
@@ -26,7 +26,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 <meta name="description" content={metaDescription} />
 <meta
   name="keywords"
-  content="Rebellion Gilgamesh, ルーレット契約, adult RPG, fantasy RPG, demon world, club management, character guide, gacha game, Rebellion Gilgamesh wiki, Rebellion Gilgamesh characters, Rebellion Gilgamesh download, harem creation, character collection, Erolabs, DMM, demon-ruled world"
+  content="Stella Sora, ステラソラ, fantasy RPG, Yostar, Nova Continent, Trekker collection, gacha game, Stella Sora wiki, Stella Sora characters, Stella Sora download, Cococha system, Star Towers, Demon King, Blank Brigade, top-down combat"
 />
 
 <!-- Open Graph / Facebook -->
@@ -37,7 +37,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 <meta property="og:image" content={metaImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:site_name" content="Rebellion Gilgamesh Wiki" />
+<meta property="og:site_name" content="Stella Sora Wiki" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -50,7 +50,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 <meta name="robots" content="index, follow" />
 <meta name="language" content="English" />
 <meta name="author" content="GachaWiki" />
-<meta name="theme-color" content="#4c1d95" />
+<meta name="theme-color" content="#7dd3fc" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -65,13 +65,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<!-- Rebellion Gilgamesh Specific Meta -->
-<meta name="game:title" content="Rebellion Gilgamesh ルーレット契約" />
-<meta name="game:genre" content="Adult RPG, Fantasy, Gacha, Club Management" />
-<meta name="game:platform" content="Android, iOS, Web" />
-<meta name="game:rating" content="Adults Only" />
-<meta name="game:developer" content="Rebellion Gilgamesh Team" />
-<meta name="game:publisher" content="Erolabs, DMM" />
+<!-- Stella Sora Specific Meta -->
+<meta name="game:title" content="Stella Sora ステラソラ" />
+<meta name="game:genre" content="Fantasy RPG, Gacha, Action Adventure, Top-Down Combat" />
+<meta name="game:platform" content="Android, iOS" />
+<meta name="game:rating" content="Teen" />
+<meta name="game:developer" content="Yostar Limited" />
+<meta name="game:publisher" content="Yostar Limited" />
 
 <!-- Structured Data for Game -->
 <script
@@ -79,20 +79,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
   set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
-    name: 'Rebellion Gilgamesh ルーレット契約',
-    alternateName: 'Rebellion Gilgamesh Roulette Contract',
+    name: 'Stella Sora ステラソラ',
+    alternateName: 'Stella Sora',
     description:
-      'Adult fantasy RPG set in a demon-ruled world. As one of the 72 sons of a slave owner, run a club and save humanity. Features character collection, special moves, and club management mechanics.',
-    genre: ['Adult RPG', 'Fantasy', 'Gacha', 'Club Management'],
+      'Fantasy RPG developed by Yostar, set in the mysterious Nova Continent. As the amnesiac Demon King, explore Star Towers, collect Trekkers, and uncover lost memories through the innovative Cococha system.',
+    genre: ['Fantasy RPG', 'Gacha', 'Action Adventure', 'Top-Down Combat'],
     applicationCategory: 'Game',
-    operatingSystem: 'Android, iOS, Web',
-    gamePlatform: ['Android', 'iOS', 'Web Browser'],
-    contentRating: 'Adults Only',
+    operatingSystem: 'Android, iOS',
+    gamePlatform: ['Android', 'iOS'],
+    contentRating: 'Teen',
     playMode: 'SinglePlayer',
     publisher: {
       '@type': 'Organization',
-      name: 'Erolabs',
-      url: 'https://game.erolabsshare.net/app/f302f717/Rebellion_Gilgamesh',
+      name: 'Yostar Limited',
+      url: 'https://yo-star.com',
     },
     offers: {
       '@type': 'Offer',
@@ -101,15 +101,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
       availability: 'https://schema.org/InStock',
       seller: {
         '@type': 'Organization',
-        name: 'Erolabs',
+        name: 'Yostar Limited',
       },
     },
     image: metaImage,
     url: canonicalURL,
     sameAs: [
-      'https://x.com/rebgilgame',
-      'https://game.erolabsshare.net/app/f302f717/Rebellion_Gilgamesh',
-      'https://rebgil.funyoursjapan.pink/res/rebgil.html',
+      'https://x.com/StellaSoraEN',
+      'https://x.com/StellaSoraJP',
+      'https://stellasora.global/',
+      'https://www.youtube.com/@StellaSoraJP',
     ],
   })}
 />
@@ -119,13 +120,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Rebellion Gilgamesh Wiki",
-    "alternateName": "Rebellion Gilgamesh ルーレット契約 Wiki",
-    "description": "Complete guide for Rebellion Gilgamesh adult RPG. Character database, club management tips, special moves, and story walkthrough.",
-    "url": "https://gachawiki.info/guides/rebellion-gilgamesh/",
+    "name": "Stella Sora Wiki",
+    "alternateName": "Stella Sora ステラソラ Wiki",
+    "description": "Complete guide for Stella Sora fantasy RPG. Trekker database, Nova Continent exploration, Cococha system, and strategy walkthrough.",
+    "url": "https://gachawiki.info/guides/stella-sora/",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://gachawiki.info/guides/rebellion-gilgamesh/characters/?search={search_term_string}",
+      "target": "https://gachawiki.info/guides/stella-sora/characters/?search={search_term_string}",
       "query-input": "required name=search_term_string"
     },
     "publisher": {
@@ -136,24 +137,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
   }
 </script>
 
-<!-- Adult Content Warning Meta -->
-<meta name="rating" content="adult" />
-<meta name="content-rating" content="adult" />
-<meta name="adult-content" content="true" />
-
-<!-- Rebellion Gilgamesh Theme CSS Variables (Inline for faster loading) -->
+<!-- Stella Sora Theme CSS Variables (Inline for faster loading) -->
 <style>
   :root {
-    --rg-theme-color: #4c1d95;
-    --rg-theme-color-dark: #3730a3;
-    --rg-theme-color-light: #6d28d9;
+    --ss-theme-color: #7dd3fc;
+    --ss-theme-color-dark: #0ea5e9;
+    --ss-theme-color-light: #bae6fd;
   }
 </style>
 
 <!-- Performance Optimization -->
-<link rel="dns-prefetch" href="//game.erolabsshare.net" />
+<link rel="dns-prefetch" href="//stellasora.global" />
 <link rel="dns-prefetch" href="//x.com" />
-<link rel="dns-prefetch" href="//rebgil.funyoursjapan.pink" />
+<link rel="dns-prefetch" href="//youtube.com" />
 
 <!-- Preload Critical Resources -->
 <!-- Image preloads removed since using Astro optimization -->

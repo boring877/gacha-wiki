@@ -9,6 +9,9 @@ interface Props {
 
 const { currentPath = '', gameKey } = Astro.props;
 
+// Import Stella Sora colors if needed
+const isStellaSora = gameKey === 'stella-sora';
+
 // Validate and sanitize gameKey
 const validatedGameKey = isValidGameKey(gameKey) ? gameKey : undefined;
 const game = getGameData(validatedGameKey);

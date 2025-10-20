@@ -1,0 +1,223 @@
+---
+import StellaSoraLandingLayout from '../../layouts/stella-sora/LandingLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { stellaSoraConfig } from '../../data/stella-sora/stella-sora.js';
+
+// Extract data for easier use in template
+const { meta, gameInfo, story } = stellaSoraConfig;
+
+// Breadcrumb data for SEO
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides' },
+  { name: 'Stella Sora', url: '/guides/stella-sora' },
+];
+---
+
+<StellaSoraLandingLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  heroImage={meta.heroImage}
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Comprehensive Structured Data for Stella Sora -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'WebSite',
+          name: 'Stella Sora Wiki & Download - Trekker Guide, Nova Continent & Strategy',
+          alternateName: 'Stella Sora ステラソラ Wiki',
+          url: 'https://gachawiki.info/guides/stella-sora/',
+          description:
+            "Download Stella Sora - Fantasy RPG set in Nova Continent. Complete character guides, Trekker collection tips & strategy for Yostar's latest adventure.",
+          inLanguage: ['en', 'ja'],
+          publisher: {
+            '@type': 'Organization',
+            name: 'GachaWiki',
+            url: 'https://gachawiki.info',
+          },
+          potentialAction: {
+            '@type': 'SearchAction',
+            target:
+              'https://gachawiki.info/guides/stella-sora/characters/?search={search_term_string}',
+            'query-input': 'required name=search_term_string',
+          },
+        },
+        {
+          '@type': 'VideoGame',
+          name: 'Stella Sora ステラソラ',
+          alternateName: 'Stella Sora',
+          description:
+            'Fantasy RPG developed by Yostar, set in the mysterious Nova Continent. As the amnesiac Demon King, explore Star Towers, collect Trekkers, and uncover lost memories through the innovative Cococha system.',
+          genre: ['Fantasy RPG', 'Gacha', 'Action Adventure', 'Top-Down Combat'],
+          applicationCategory: 'Game',
+          operatingSystem: ['Android', 'iOS'],
+          gamePlatform: ['Android', 'iOS'],
+          contentRating: 'Teen',
+          playMode: 'SinglePlayer',
+          publisher: {
+            '@type': 'Organization',
+            name: 'Yostar Limited',
+            url: 'https://yo-star.com',
+          },
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+            seller: {
+              '@type': 'Organization',
+              name: 'Yostar Limited',
+            },
+          },
+          sameAs: [
+            'https://x.com/StellaSoraEN',
+            'https://x.com/StellaSoraJP',
+            'https://stellasora.global/',
+            'https://www.youtube.com/@StellaSoraJP',
+          ],
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'What is Stella Sora?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Stella Sora is a fantasy RPG developed by Yostar, set in the Nova Continent where players control the amnesiac Demon King and explore Star Towers with Trekkers.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Where can I download Stella Sora?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'You can download Stella Sora from Google Play Store and Apple App Store. The game is available for Android and iOS platforms.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What platforms support Stella Sora?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Stella Sora is available on Android and iOS devices with top-down 3D action combat and auto mode support.',
+              },
+            },
+          ],
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: 'https://gachawiki.info',
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Guides',
+              item: 'https://gachawiki.info/guides/',
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: 'Stella Sora',
+              item: 'https://gachawiki.info/guides/stella-sora/',
+            },
+          ],
+        },
+      ],
+    })}
+  />
+
+  <!-- Hreflang tags for international SEO -->
+  <link rel="alternate" hreflang="en" href="https://gachawiki.info/guides/stella-sora/" />
+  <link rel="alternate" hreflang="ja" href="https://gachawiki.info/guides/stella-sora/" />
+  <link rel="alternate" hreflang="x-default" href="https://gachawiki.info/guides/stella-sora/" />
+
+  <!-- Game Overview Section -->
+  <section class="content-section">
+    <h2 class="section-title">Game Introduction</h2>
+    <div class="story-content">
+      {story.content.map(paragraph => <p>{paragraph}</p>)}
+    </div>
+
+    <!-- Play Game Buttons -->
+    <div class="play-button-container">
+      <a href={gameInfo.winUrl} target="_blank" class="play-button"> Win Client </a>
+      <a href={gameInfo.playUrl} target="_blank" class="play-button"> Play on Google Play </a>
+      <a href={gameInfo.iosUrl} target="_blank" class="play-button"> Play on App Store </a>
+    </div>
+
+    <!-- Social Links -->
+    <div class="social-links-container">
+      <h4>Game Social:</h4>
+      <div class="social-links">
+        <a
+          href={gameInfo.socialLinks.twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          aria-label="Follow Stella Sora on Twitter/X (English)"
+        >
+          Twitter/X (EN)
+        </a>
+        <a
+          href={gameInfo.socialLinks.twitterJP}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          aria-label="Follow Stella Sora on Twitter/X (Japanese)"
+        >
+          Twitter/X (JP)
+        </a>
+        <a
+          href={gameInfo.socialLinks.youtube}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          aria-label="Watch Stella Sora on YouTube"
+        >
+          YouTube
+        </a>
+        <a
+          href={gameInfo.socialLinks.website}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          aria-label="Visit Stella Sora Official Website"
+        >
+          Official Website
+        </a>
+        <a
+          href={gameInfo.socialLinks.discord}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          aria-label="Join Stella Sora Official Discord"
+        >
+          Discord
+        </a>
+      </div>
+    </div>
+
+    <p class="last-updated">
+      Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+    </p>
+  </section>
+
+  <!-- Coming Soon Section -->
+  <section class="content-section">
+    <h2 class="section-title">Game Resources</h2>
+    <div class="coming-soon-notice">
+      <p>🚧 Game guides and character database in development</p>
+      <p>Check back soon for Stella Sora resources and strategy content</p>
+    </div>
+  </section>
+</StellaSoraLandingLayout>

@@ -1,0 +1,201 @@
+/* Stella Sora Color System - Premium Happy & Light Fantasy Theme */
+
+:root {
+  /* Primary Stella Sora brand colors - Premium sky blue */
+  --ss-primary: #7dd3fc;
+  --ss-primary-hover: #38bdf8;
+  --ss-primary-light: #bae6fd;
+  --ss-primary-dark: #0ea5e9;
+
+  /* Accent colors - Premium mint green for highlights */
+  --ss-accent: #6ee7b7;
+  --ss-accent-hover: #34d399;
+  --ss-accent-light: #a7f3d0;
+  --ss-accent-20: rgba(110, 231, 183, 0.1);
+
+  /* Background colors - Original dark theme */
+  --ss-bg-primary: #1a1a1a;
+  --ss-bg-secondary: #2a2a2a;
+  --ss-bg-tertiary: #3a3a3a;
+  --ss-bg-card: #2d2d30;
+  --ss-bg-hover: #404046;
+
+  /* Text colors - Original light text for dark backgrounds */
+  --ss-text-primary: #ffffff;
+  --ss-text-secondary: #b3b3b3;
+  --ss-text-tertiary: #999999;
+  --ss-text-muted: #666666;
+  --ss-text-light: #c0c0c0;
+
+  /* Border colors - Original subtle borders */
+  --ss-border: #404040;
+  --ss-border-light: #555555;
+  --ss-border-dark: #2a2a2a;
+
+  /* Status colors - Soft versions */
+  --ss-success: #10b981;
+  --ss-warning: #f59e0b;
+  --ss-error: #f87171;
+  --ss-info: #60a5fa;
+
+  /* Rarity colors for Stella Sora characters - Premium happy theme */
+  --ss-legendary: #fbbf24;
+  --ss-epic: #6ee7b7;
+  --ss-rare: #7dd3fc;
+  --ss-common: #9ca3af;
+  --ss-mythic: #34d399;
+
+  /* Background Gradients - Original dark backgrounds with blue/green accents */
+  --ss-gradient-primary: linear-gradient(
+    135deg,
+    var(--ss-bg-primary) 0%,
+    var(--ss-bg-secondary) 35%,
+    var(--ss-bg-tertiary) 100%
+  );
+  --ss-gradient-secondary: linear-gradient(
+    135deg,
+    var(--ss-bg-secondary) 0%,
+    var(--ss-bg-tertiary) 100%
+  );
+  --ss-gradient-card: linear-gradient(135deg, var(--ss-bg-card) 0%, var(--ss-bg-secondary) 100%);
+
+  /* Background gradients for main layout */
+  --ss-bg-gradient-primary: linear-gradient(
+    135deg,
+    var(--ss-bg-primary) 0%,
+    var(--ss-bg-secondary) 35%,
+    var(--ss-bg-tertiary) 100%
+  );
+  --ss-bg-gradient-subtle: linear-gradient(
+    135deg,
+    var(--ss-bg-secondary) 0%,
+    var(--ss-bg-tertiary) 100%
+  );
+  --ss-bg-gradient-hero: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.9) 0%,
+    rgba(58, 58, 58, 0.8) 100%
+  );
+
+  /* Star-themed gradients for Nova Continent - Premium happy theme */
+  --ss-gradient-star: linear-gradient(135deg, #7dd3fc 0%, #6ee7b7 50%, #bae6fd 100%);
+  --ss-gradient-trekker: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
+  --ss-gradient-nature: linear-gradient(135deg, #0ea5e9 0%, #6ee7b7 50%, #a7f3d0 100%);
+
+  /* Transitions */
+  --ss-transition: all 0.2s ease-in-out;
+  --ss-transition-slow: all 0.3s ease-in-out;
+
+  /* Dimensions - Following other games pattern */
+  --ss-radius-sm: 4px; /* Small border radius */
+  --ss-radius-md: 8px; /* Medium border radius */
+  --ss-radius-lg: 12px; /* Large border radius */
+
+  /* Spacing - Following other games pattern */
+  --ss-spacing-xs: 0.25rem; /* Extra small spacing */
+  --ss-spacing-sm: 0.5rem; /* Small spacing */
+  --ss-spacing-md: 1rem; /* Medium spacing */
+  --ss-spacing-lg: 1.5rem; /* Large spacing */
+  --ss-spacing-xl: 2rem; /* Extra large spacing */
+
+  /* Font weights - Following global typography system */
+  --ss-font-normal: 400; /* Normal weight */
+  --ss-font-medium: 500; /* Medium weight */
+  --ss-font-semibold: 600; /* Semibold weight */
+  --ss-font-bold: 700; /* Bold weight */
+}
+
+/* Stella Sora specific component classes */
+.ss-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 12px;
+  transition: var(--ss-transition);
+}
+
+.ss-card:hover {
+  border-color: var(--ss-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.ss-button {
+  background: var(--ss-gradient-star);
+  color: var(--ss-text-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--ss-transition);
+}
+
+.ss-button:hover {
+  background: var(--ss-gradient-nature);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(125, 211, 252, 0.3);
+}
+
+.ss-text-gradient {
+  background: var(--ss-gradient-star);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Character/Trekker rarity indicators */
+.ss-rarity-legendary {
+  color: var(--ss-legendary);
+}
+
+.ss-rarity-epic {
+  color: var(--ss-epic);
+}
+
+.ss-rarity-rare {
+  color: var(--ss-rare);
+}
+
+.ss-rarity-common {
+  color: var(--ss-common);
+}
+
+/* Utility classes */
+.ss-bg-primary {
+  background-color: var(--ss-bg-primary);
+}
+.ss-bg-secondary {
+  background-color: var(--ss-bg-secondary);
+}
+.ss-bg-tertiary {
+  background-color: var(--ss-bg-tertiary);
+}
+
+.ss-text-primary {
+  color: var(--ss-text-primary);
+}
+.ss-text-secondary {
+  color: var(--ss-text-secondary);
+}
+.ss-text-muted {
+  color: var(--ss-text-muted);
+}
+
+.ss-border {
+  border-color: var(--ss-border);
+}
+.ss-border-light {
+  border-color: var(--ss-border-light);
+}
+
+/* Star Tower themed elements - Static */
+.ss-star-element {
+  background: var(--ss-gradient-nature);
+  border-radius: 50%;
+}
+
+.ss-happy-glow {
+  background: var(--ss-gradient-star);
+  border-radius: 12px;
+}

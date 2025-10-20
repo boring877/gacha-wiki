@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import bg1 from '../../assets/images/games/rebellion-gilgamesh/main-images/BG1.jpg';
-import gameicon from '../../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
+import bg1 from '../../assets/images/games/stella-sora/gameimg/BG1.jpg';
+import gameicon from '../../assets/images/games/stella-sora/gameimg/Icon.jpg';
 
 export interface Props {
   imageName: string;
@@ -25,13 +25,17 @@ const {
   quality = 85,
 } = Astro.props;
 
-// Map image names to imported image modules
+// Map image names to imported image modules - using actual game images
 const imageMap = {
   'BG1.jpg': bg1,
   'bg1.jpg': bg1,
-  'Icon1.jpg': gameicon,
-  'icon1.jpg': gameicon,
+  'hero.jpg': bg1,
+  'stella-sora-hero.jpg': bg1,
+  'stella-sora-bg1.jpg': bg1,
   'gameicon.jpg': gameicon,
+  'stella-sora-icon.jpg': gameicon,
+  'Icon.jpg': gameicon,
+  'icon.jpg': gameicon,
 };
 
 // Get the image module based on the imageName

@@ -2,6 +2,7 @@
 // This file manages all games in the gacha wiki
 import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
+import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
 
 export interface Game {
   id: string;
@@ -59,6 +60,17 @@ export const GAMES: Game[] = [
     url: '/guides/horizon-walker/',
     status: 'active',
     sections: ['Chosen Humans', 'Rift Combat', 'Transcendence', 'Survivor Resources'],
+    lastUpdated: new Date(),
+  },
+  {
+    id: 'stella-sora',
+    name: 'Stella Sora ステラソラ',
+    slug: 'stella-sora',
+    description: 'Fantasy RPG • Nova Continent Exploration • Trekker Collection • Top-Down Action',
+    image: StellaSoraIcon,
+    url: '/guides/stella-sora/',
+    status: 'active',
+    sections: ['Characters', 'Combat', 'Monoliths', 'Trekkers', 'Resources'],
     lastUpdated: new Date(),
   },
 ];

@@ -1,0 +1,166 @@
+/* Stella Sora Layout Styles */
+/* Purple/Blue fantasy theme layout following other games pattern */
+
+/* Import base styles */
+@import '../../colors.css';
+@import '../../global.css';
+@import '../../typography.css';
+
+/* Body styling */
+.stella-sora-body {
+  background: var(--ss-bg-gradient-primary);
+  color: var(--ss-text-secondary);
+  min-height: 100vh;
+}
+
+/* Background layers */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.stella-sora-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Container */
+.stella-sora-container {
+  position: relative;
+}
+
+.stella-sora-main {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Hero section */
+.hero-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 3rem 1rem;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-image-container {
+  width: 100%;
+  max-width: 60rem;
+  min-height: 20rem;
+  max-height: 40rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.hero-overlay {
+  display: none; /* Removed for full image display */
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  margin: 0;
+  line-height: var(--leading-normal);
+  /* Gradient for page title only */
+  background: var(--ss-gradient-star);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Title only section */
+.title-only-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+}
+
+.title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  margin: 0;
+  line-height: var(--leading-normal);
+  /* Gradient for page title only */
+  background: var(--ss-gradient-star);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Content area */
+.content-area {
+  position: relative;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .stella-sora-main {
+    padding: 1rem;
+  }
+
+  .hero-section {
+    padding: 2rem 1rem 3rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-image-container {
+    min-height: 15rem;
+    max-height: 25rem;
+    border-radius: 12px;
+    margin: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-3xl);
+  }
+
+  .title-only-section {
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+  }
+
+  .title-only-heading {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .stella-sora-main {
+    padding: 0.5rem;
+  }
+
+  .hero-image-container {
+    min-height: 12rem;
+    max-height: 20rem;
+    border-radius: 8px;
+    margin: 0 0.5rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-2xl);
+  }
+
+  .hero-section {
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .title-only-heading {
+    font-size: var(--text-2xl);
+  }
+}

@@ -143,6 +143,22 @@
   color: var(--hw-primary-warm, #e8a547);
 }
 
+.game-nav-mobile[data-game='stella-sora'] .game-title {
+  background: linear-gradient(135deg, #7dd3fc, #6ee7b7, #bae6fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.game-nav-mobile[data-game='rebellion-gilgamesh'] .game-title {
+  background: linear-gradient(135deg, var(--rg-primary, #c26b6b), var(--rg-accent, #fbbf24));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
 /* Game-specific mobile menu colors */
 
 /* Zone Nova - Inside Menu */
@@ -170,6 +186,36 @@
 
 .mobile-links[data-game='horizon-walker'] .mobile-section-title {
   color: var(--hw-primary-warm, #e8a547);
+}
+
+/* Stella Sora - Inside Menu */
+.mobile-links[data-game='stella-sora'] .mobile-game-name {
+  background: linear-gradient(135deg, #7dd3fc, #6ee7b7, #bae6fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.mobile-links[data-game='stella-sora'] .mobile-section-title {
+  color: #7dd3fc;
+}
+
+/* Rebellion Gilgamesh - Inside Menu */
+.mobile-links[data-game='rebellion-gilgamesh'] .mobile-game-name {
+  background: linear-gradient(135deg, var(--rg-primary, #c26b6b), var(--rg-accent, #fbbf24));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.mobile-links[data-game='rebellion-gilgamesh'] .mobile-section-title {
+  background: linear-gradient(135deg, var(--rg-primary, #c26b6b), var(--rg-accent, #fbbf24));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Mobile Navigation - Overlay System */
@@ -470,5 +516,24 @@
     .mobile-sections-wrapper {
       height: calc(100vh - 60px);
     }
+  }
+}
+
+/* ============================================
+   STELLA SORA MOBILE STYLING
+   ============================================ */
+.mobile-links[data-game='stella-sora'] {
+  .mobile-link {
+    border-bottom: 1px solid rgba(125, 211, 252, 0.2);
+  }
+
+  .mobile-link.active {
+    background: linear-gradient(135deg, #7dd3fc, #6ee7b7);
+    color: white;
+    border-left: 3px solid #6ee7b7;
+  }
+
+  .mobile-link:hover {
+    background: rgba(125, 211, 252, 0.1);
   }
 }
