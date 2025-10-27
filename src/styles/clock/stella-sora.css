@@ -1,0 +1,477 @@
+/**
+ * ==========================================
+ * STELLA SORA CLOCK THEME - GAME SPECIFIC STYLES
+ * ==========================================
+ *
+ * Stella Sora specific colors, themes, and styling overrides for the clock.
+ * This file extends the shared clock layout with Stella Sora's sky blue and mint green theme.
+ *
+ * Inherits: All layout and structure from clock/layout.css
+ * Provides: Stella Sora colors, accent elements, and theme-specific styling
+ *
+ * === WHAT STELLA-SORA.CSS SHOULD CONTAIN ===
+ * ✅ Stella Sora colors (sky blue, mint green, premium fantasy theme)
+ * ✅ Stella Sora themes (gradients, color schemes)
+ * ✅ Game-specific styling (card colors, brand elements)
+ * ✅ Stella Sora overrides (changing colors from layout defaults)
+ * ✅ Visual identity specific to Stella Sora game
+ * ✅ Stella Sora background accents and effects
+ * ✅ Stella Sora specific component colors
+ *
+ * === WHAT STELLA-SORA.CSS SHOULD NOT CONTAIN ===
+ * ❌ Structural layouts (use layout.css instead)
+ * ❌ Base component dimensions or spacing
+ * ❌ Generic animations or transitions
+ * ❌ Responsive breakpoints (unless Stella Sora specific)
+ * ❌ Typography scales (font sizes, weights)
+ *
+ * === ARCHITECTURE GOAL ===
+ * Future games should use:
+ * layout.css + their-game.css (following this same pattern)
+ */
+
+/* === STELLA SORA CLOCK COLORS === */
+/* Use existing SS color variables from colors.css - no new variables needed */
+
+/* === STELLA SORA BACKGROUND === */
+/* Background layers are handled by the main SS layout CSS (ss-layout.css) */
+/* No background definitions needed here - layout uses ss-bg-primary, ss-bg-accent-1, ss-bg-accent-2 */
+
+/* === STELLA SORA GAME IMAGE STYLING === */
+.game-image-container {
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(125, 211, 252, 0.1);
+  padding: 4px;
+}
+
+.game-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* === STELLA SORA THEME COLORS === */
+/* Stella Sora specific color overrides */
+.title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.ss-title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  background: linear-gradient(135deg, #7dd3fc 0%, #6ee7b7 50%, #bae6fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: relative;
+  line-height: var(--leading-tight);
+}
+
+.ss-game-name,
+.ss-timer-main-label,
+.server-reset-card .ss-timer-main-label {
+  color: var(--ss-primary);
+}
+
+.ss-timer-main-label {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  margin-bottom: 0.5rem;
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-normal);
+}
+
+.server-reset-card .ss-timer-main-label {
+  font-size: var(--text-4xl);
+  margin-bottom: 1rem;
+}
+
+/* === STELLA SORA TIMER CARD COLORS === */
+/* Main clock card styling */
+.master-clock {
+  border: 1px solid var(--ss-primary-border);
+  background: var(--ss-bg-card);
+  backdrop-filter: blur(10px);
+}
+
+/* === STELLA SORA TIMER DISPLAY === */
+.clock-display {
+  text-align: center;
+}
+
+.time-unit-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.time-value {
+  font-family: var(--font-mono);
+  font-size: 3.5rem;
+  font-weight: var(--font-bold);
+  color: var(--ss-primary);
+  line-height: 1;
+  display: block;
+}
+
+.time-label {
+  font-size: var(--text-sm);
+  color: var(--ss-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-top: 0.5rem;
+}
+
+.time-separator {
+  font-size: 3rem;
+  font-weight: var(--font-bold);
+  color: var(--ss-primary);
+  margin: 0 0.5rem;
+}
+
+/* === STELLA SORA SECONDARY TIMERS === */
+.secondary-timers-container {
+  margin-top: 2rem;
+}
+
+.game-timers-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.timer-subtitle {
+  font-size: var(--text-base);
+  color: var(--ss-text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* === STELLA SORA TIMER CARDS === */
+.timer-card {
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.timer-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ss-timer-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--ss-primary);
+}
+
+.timer-card-subtitle {
+  font-size: var(--text-sm);
+  color: var(--ss-text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* === STELLA SORA SERVER STATUS === */
+.server-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-online {
+  background-color: var(--ss-success);
+}
+
+.status-maintenance {
+  background-color: var(--ss-warning);
+}
+
+.status-coming-soon {
+  background-color: var(--ss-info);
+}
+
+.status-text {
+  font-size: var(--text-xs);
+  color: var(--ss-text-secondary);
+}
+
+/* === STELLA SORA LAUNCH COUNTDOWN === */
+.launch-countdown-card {
+  border-color: var(--ss-primary-border);
+  background: linear-gradient(135deg, var(--ss-bg-card), rgba(125, 211, 252, 0.05));
+}
+
+.launch-countdown {
+  text-align: center;
+}
+
+.launch-countdown-display {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-value {
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  font-weight: var(--font-bold);
+  color: var(--ss-primary);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: var(--text-xs);
+  color: var(--ss-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-top: 0.25rem;
+}
+
+.launch-date {
+  font-size: var(--text-sm);
+  color: var(--ss-text-secondary);
+}
+
+/* === STELLA SORA RESET TIMERS === */
+.weekly-card {
+  border-color: var(--ss-accent-20);
+}
+
+.reset-item {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.reset-item:last-child {
+  margin-bottom: 0;
+}
+
+.reset-name {
+  font-weight: var(--font-semibold);
+  color: var(--ss-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.reset-subtitle {
+  font-size: var(--text-sm);
+  color: var(--ss-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.reset-time {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--ss-accent);
+  text-align: right;
+}
+
+/* === STELLA SORA MAINTENANCE TIMER === */
+.maintenance-card {
+  border-color: var(--ss-warning);
+}
+
+.maintenance-item {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.maintenance-item:last-child {
+  margin-bottom: 0;
+}
+
+.maintenance-name {
+  font-weight: var(--font-semibold);
+  color: var(--ss-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.maintenance-time {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--ss-warning);
+  text-align: right;
+}
+
+.no-maintenance {
+  text-align: center;
+  padding: 2rem;
+}
+
+.no-maintenance .maintenance-name {
+  color: var(--ss-text-secondary);
+  font-weight: var(--font-normal);
+}
+
+/* === STELLA SORA LAUNCH CARD (Days Since) === */
+.launch-card {
+  border-color: var(--ss-primary-border);
+}
+
+.launch-card-content {
+  text-align: center;
+}
+
+.launch-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.launch-days {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: var(--font-bold);
+  color: var(--ss-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+/* === STELLA SORA HOLIDAY CARDS === */
+.halloween-card {
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.halloween-card .launch-days {
+  color: var(--ss-legendary);
+}
+
+.newyear-card {
+  border-color: var(--ss-primary-border);
+}
+
+/* === STELLA SORA EVENT CARDS === */
+.event-duration-card {
+  border-color: rgba(168, 85, 247, 0.3); /* Purple accent */
+}
+
+.event-duration-card .event-days {
+  color: var(--ss-epic);
+}
+
+.event-shop-card {
+  border-color: rgba(236, 72, 153, 0.3); /* Pink accent */
+}
+
+.event-shop-card .event-days {
+  color: var(--ss-legendary);
+}
+
+.event-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-days {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: var(--font-bold);
+  color: var(--ss-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.event-date {
+  font-size: var(--text-sm);
+  color: var(--ss-text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.event-period {
+  font-size: var(--text-xs);
+  color: var(--ss-text-muted);
+}
+
+/* === STELLA SORA RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .time-unit-group {
+    gap: 0.25rem;
+  }
+
+  .time-unit {
+    min-width: 60px;
+  }
+
+  .time-value {
+    font-size: 2.5rem;
+  }
+
+  .time-separator {
+    font-size: 2rem;
+  }
+
+  .launch-countdown-display {
+    gap: 0.5rem;
+  }
+
+  .countdown-value {
+    font-size: 2rem;
+  }
+
+  .launch-days {
+    font-size: 2.5rem;
+  }
+
+  .timer-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-unit {
+    min-width: 50px;
+  }
+
+  .time-value {
+    font-size: 2rem;
+  }
+
+  .time-separator {
+    font-size: 1.5rem;
+  }
+
+  .countdown-value {
+    font-size: 1.5rem;
+  }
+
+  .launch-days {
+    font-size: 2rem;
+  }
+}

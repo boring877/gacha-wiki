@@ -1,0 +1,75 @@
+---
+import EventsLayout from '../../../layouts/stella-sora/EventsLayout.astro';
+import { stellaSoraEvents } from '../../../data/stella-sora/events.js';
+
+// Get all events
+const allEvents = stellaSoraEvents;
+
+// SEO metadata
+const metaTitle = 'Stella Sora Events - Latest Updates & Special Occasions | GachaWiki';
+const metaDescription =
+  'Discover the latest Stella Sora events, updates, and special occasions. Get information about ongoing events, upcoming celebrations, and past events with rewards and timelines.';
+
+// Breadcrumb data
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides' },
+  { name: 'Stella Sora', url: '/guides/stella-sora' },
+  { name: 'Events', url: '/guides/stella-sora/events/' },
+];
+---
+
+<EventsLayout title={metaTitle} description={metaDescription} gameTitle="Events & Updates">
+  <!-- Structured Data for Events Page -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Stella Sora Events',
+      description: 'Complete list of Stella Sora events, updates, and special occasions',
+      url: 'https://gachawiki.info/guides/stella-sora/events/',
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: stellaSoraEvents.map((event, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'Event',
+            name: event.title,
+            description: event.description,
+            startDate: event.startDate,
+            endDate: event.endDate,
+            url: `https://gachawiki.info${event.url}`,
+            image: event.featuredImage,
+          },
+        })),
+      },
+    })}
+  />
+
+  <!-- Events Introduction -->
+  <section class="ss-events-intro">
+    <h2 class="ss-intro-title">Stella Sora Events</h2>
+    <p class="ss-intro-description">
+      Stay up to date with the latest events and special occasions in Stella Sora.
+    </p>
+  </section>
+
+  <!-- All Events -->
+  <section class="ss-current-events">
+    <h2 class="ss-section-title">All Events</h2>
+    <div class="ss-events-list">
+      {
+        allEvents.map(event => (
+          <a href={event.url} class="ss-event-item">
+            <h3 class="ss-event-title">{event.title}</h3>
+            <div class="ss-event-dates">
+              {new Date(event.startDate).toLocaleDateString()} -{' '}
+              {new Date(event.endDate).toLocaleDateString()}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</EventsLayout>

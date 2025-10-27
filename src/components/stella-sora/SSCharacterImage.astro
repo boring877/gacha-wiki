@@ -20,6 +20,9 @@ const {
   quality = 95,
   width = 75,
   height = 75,
+  mobileWidth = 60,
+  mobileHeight = 60,
+  mobileQuality = 85,
 } = Astro.props;
 
 // Get the imported image object from the map
@@ -31,15 +34,21 @@ if (!imageKey.includes('.')) {
 }
 
 const imageSrc = characterImageMap[imageKey] || characterImageMap['Chitose.jpg'];
+
+// Use higher resolution for better mobile display quality
+const finalWidth = Math.max(width, mobileWidth);
+const finalHeight = Math.max(height, mobileHeight);
+const finalQuality = Math.max(quality, mobileQuality);
 ---
 
 <Image
   src={imageSrc}
   alt={alt}
-  width={width}
-  height={height}
+  width={finalWidth}
+  height={finalHeight}
   class={`${className} character-img-fill`}
   loading={loading}
   format={format}
-  quality={quality}
+  quality={finalQuality}
+  sizes="(max-width: 768px) 60px, 75px"
 />

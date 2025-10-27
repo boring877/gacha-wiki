@@ -183,8 +183,16 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [{ name: 'Database', href: '/guides/stella-sora/characters/' }],
       },
       {
+        title: 'Events',
+        links: [{ name: 'Events', href: '/guides/stella-sora/events/' }],
+      },
+      {
         title: 'Game Resources',
-        links: [{ name: 'Official Website', href: 'https://stellasora.global/' }],
+        links: [
+          { name: 'Clock', href: '/clock/stella-sora/' },
+          { name: 'Redeem Codes', href: '/guides/stella-sora/redeem-codes/' },
+          { name: 'Official Website', href: 'https://stellasora.global/' },
+        ],
       },
     ],
   },

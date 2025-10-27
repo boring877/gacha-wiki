@@ -1,0 +1,204 @@
+/* Stella Sora Events Styles */
+/* Clean, functional event system with SS dark theme and no hover effects */
+
+/* Events Landing Page */
+
+/* Events Introduction */
+.ss-events-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--ss-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--ss-border-color);
+}
+
+.ss-intro-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ss-text-primary);
+}
+
+.ss-intro-description {
+  color: var(--ss-text-secondary);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 auto;
+}
+
+/* Section Titles */
+.ss-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--ss-text-primary);
+}
+
+/* Current Events */
+.ss-current-events {
+  margin-bottom: 2rem;
+}
+
+/* Events List - Minimal View */
+.ss-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ss-event-item {
+  display: block;
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.ss-event-item:hover {
+  border-color: var(--ss-accent-primary);
+}
+
+.ss-event-title {
+  color: var(--ss-text-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.ss-event-summary {
+  color: var(--ss-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.ss-event-meta {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ss-event-type {
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-secondary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.ss-event-dates {
+  color: var(--ss-text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Event Info Box */
+.ss-event-info-box {
+  margin-bottom: 2rem;
+}
+
+.ss-info-content {
+  background: var(--ss-bg-secondary);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--ss-border-color);
+}
+
+.ss-info-content p {
+  color: var(--ss-text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+/* Event Images Section */
+.ss-event-images {
+  margin-bottom: 2rem;
+}
+
+.ss-event-images-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ss-event-image-item {
+  width: 100%;
+}
+
+/* Individual Event Page Styles */
+
+/* Event Header Section */
+.ss-event-header-section {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: var(--ss-bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--ss-border-color);
+}
+
+.ss-event-meta-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ss-event-date-start,
+.ss-event-date-end {
+  color: var(--ss-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Removed unused sections CSS - keeping only needed styles */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ss-events-intro {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ss-intro-title {
+    font-size: 1.5rem;
+  }
+
+  .ss-event-item {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ss-events-intro {
+    padding: 0.75rem;
+  }
+
+  .ss-intro-title {
+    font-size: 1.3rem;
+  }
+
+  .ss-event-item {
+    padding: 0.75rem;
+  }
+}

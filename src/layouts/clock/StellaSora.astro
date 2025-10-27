@@ -1,0 +1,398 @@
+---
+// Stella Sora Clock Layout - Dedicated layout for Stella Sora clock page
+import SSBaseHead from '../../components/stella-sora/SSBaseHead.astro';
+import Header from '../../components/Header.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import Footer from '../../components/Footer.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GeneralSEO from '../../components/GeneralSEO.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
+import { Image } from 'astro:assets';
+
+// Import CSS files
+import '../../styles/games/stella-sora/ss-colors.css';
+import '../../styles/games/stella-sora/ss-layout.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/clock/layout.css';
+import '../../styles/clock/stella-sora.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  games: any[];
+}
+
+const { title, description, games } = Astro.props;
+const game = games[0]; // Stella Sora config
+
+// Generate initial date server-side to avoid "Loading..."
+const now = new Date();
+const dateOptions: Intl.DateTimeFormatOptions = {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+};
+const currentDateString = now.toLocaleDateString('en-US', dateOptions);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SSBaseHead title={title} description={description} />
+
+    <GeneralSEO
+      title={title}
+      description={description}
+      keywords={[
+        'Stella Sora clock',
+        'Stella Sora timer',
+        'Stella Sora daily reset',
+        'Stella Sora server time',
+        'Stella Sora maintenance',
+        'Stella Sora launch countdown',
+      ]}
+      pageType="webapp"
+    />
+  </head>
+
+  <body class="stella-sora-body">
+    <CustomScrollbar />
+
+    <!-- Optimized Background layers for better scroll performance -->
+    <div class="bg-layer ss-bg-primary"></div>
+    <div class="bg-layer ss-bg-accent-1"></div>
+    <div class="bg-layer ss-bg-accent-2"></div>
+
+    <div class="stella-sora-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="stella-sora" />
+      <MobileMenu />
+
+      <div class="clock-page-container">
+        <main class="modern-clock-page">
+          <div class="clock-container">
+            <!-- Page Title -->
+            <section class="title-only-section">
+              <h1 class="ss-title-only-heading">Stella Sora Clock</h1>
+              <DecorativeLines />
+            </section>
+
+            <!-- Breadcrumb Navigation -->
+            <Breadcrumb
+              items={[
+                { name: 'Home', href: '/' },
+                { name: 'Clocks', href: '/clock/' },
+                { name: 'Stella Sora Clock' },
+              ]}
+              showBackButton={true}
+            />
+
+            <!-- First Hero Card - Server Reset Timer -->
+            <div class="master-clock-container">
+              <div class="master-clock server-reset-card" id="masterClock">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
+
+                <!-- Top Section: UTC Note and Current Time -->
+                <div class="hero-top-section">
+                  <div class="utc-info">
+                    <p class="utc-note" id="utcNote">This is based on UTC-7</p>
+                  </div>
+                  <div class="current-time-info">
+                    <div class="current-date" id="currentDate">{currentDateString}</div>
+                    <div class="current-utc" id="currentUTC">UTC --:--:--</div>
+                  </div>
+                </div>
+
+                <!-- Main Content Section: Game Info and Timer -->
+                <div class="hero-main-content">
+                  <!-- Left Side: Game Info -->
+                  <div class="game-section">
+                    <div class="game-info-container">
+                      <div class="game-wrapper">
+                        <div class="game-image-container" id="clockGameImageContainer">
+                          <Image
+                            class="game-image"
+                            id="clockGameImage"
+                            src={game.image}
+                            alt={game.name}
+                            loading="eager"
+                            fetchpriority="high"
+                            width={200}
+                            height={200}
+                            format="webp"
+                            quality={90}
+                          />
+                        </div>
+                        <div class="game-info">
+                          <h3 class="ss-game-name" id="clockGameName">{game.name}</h3>
+                          <div class="region-badge">
+                            <span class="region-name">{game.server.name}</span>
+                          </div>
+                          <div class="game-status">{game.server.status}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right Side: Timer Display -->
+                  <div class="timer-section">
+                    <div class="timer-description-section">
+                      <div class="ss-timer-main-label" id="timerDescription">
+                        {game.timerDescription}
+                      </div>
+                    </div>
+
+                    <div class="clock-display">
+                      <div class="time-unit-group">
+                        <div class="time-unit">
+                          <span class="time-value" id="clockHours">--</span>
+                          <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockMinutes">--</span>
+                          <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockSeconds">--</span>
+                          <span class="time-label">Seconds</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Second Hero Card - All Other Timers -->
+            <div class="master-clock-container secondary-timers-container">
+              <div class="master-clock secondary-timers-card" id="secondaryTimers">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
+
+                <!-- Game Timers Header -->
+                <div class="game-timers-header">
+                  <div class="timer-description-section">
+                    <div class="ss-timer-main-label">Stella Sora Timers</div>
+                    <div class="timer-subtitle">
+                      Track all important Stella Sora events and resets
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Timers Grid Container -->
+                <div class="timers-grid-wrapper">
+                  <!-- Primary Timers Row (Most Important) -->
+                  <div class="timer-section-group primary-timers">
+                    <div class="timers-row">
+                      <!-- Launch Countdown Timer Card -->
+                      <div
+                        class="timer-card launch-countdown-card priority-card"
+                        id="launchCountdownCard"
+                      >
+                        <div class="timer-card-header">
+                          <div class="ss-timer-card-title">Global Launch Countdown</div>
+                          <div class="server-status">
+                            <div class="status-dot status-coming-soon" id="launchStatusDot"></div>
+                            <span class="status-text" id="launchStatusText">Coming Soon</span>
+                          </div>
+                        </div>
+                        <div class="timer-card-subtitle">
+                          {game.preLaunch.subtitle}
+                        </div>
+                        <div class="timer-card-content">
+                          <div class="launch-countdown">
+                            <div class="launch-countdown-display">
+                              <div class="countdown-unit">
+                                <span class="countdown-value" id="launchDays">--</span>
+                                <span class="countdown-label">Days</span>
+                              </div>
+                              <div class="countdown-unit">
+                                <span class="countdown-value" id="launchHours">--</span>
+                                <span class="countdown-label">Hours</span>
+                              </div>
+                              <div class="countdown-unit">
+                                <span class="countdown-value" id="launchMinutes">--</span>
+                                <span class="countdown-label">Minutes</span>
+                              </div>
+                              <div class="countdown-unit">
+                                <span class="countdown-value" id="launchSeconds">--</span>
+                                <span class="countdown-label">Seconds</span>
+                              </div>
+                            </div>
+                            <div class="launch-date">{game.displayDate}</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Weekly & Monthly Reset Timer Card -->
+                      <div class="timer-card weekly-card priority-card">
+                        <div class="timer-card-header">
+                          <div class="ss-timer-card-title">Weekly & Monthly Reset</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Weekly Reset -->
+                          <div class="reset-item">
+                            <div class="reset-name">Weekly Reset</div>
+                            <div class="reset-subtitle">Every Saturday at 13:00 UTC-7</div>
+                            <div class="reset-time" id="weeklyTime">--:--:--</div>
+                          </div>
+                          <!-- Monthly Reset -->
+                          <div class="reset-item">
+                            <div class="reset-name">Monthly Reset</div>
+                            <div class="reset-subtitle">1st of each month at 13:00 UTC-7</div>
+                            <div class="reset-time" id="monthlyTime">--:--:--</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Secondary Timers Row -->
+                  <div class="timer-section-group secondary-timers">
+                    <div class="timers-row">
+                      <!-- Launch Timer Card (Days Since Launch) -->
+                      <div
+                        class="timer-card launch-card"
+                        id="daysSinceLaunchCard"
+                        style="display: none;"
+                      >
+                        <div class="timer-card-header">
+                          <div class="ss-timer-card-title">Days Since Launch</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="launchDaysSince">---</div>
+                            <div class="launch-date">{game.displayDate}</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Maintenance Timer Card -->
+                      <div class="timer-card maintenance-card">
+                        <div class="timer-card-header">
+                          <div class="ss-timer-card-title">Maintenance</div>
+                          <div class="server-status">
+                            <div class="status-dot" id="serverStatusDot"></div>
+                            <span class="status-text" id="serverStatusText">Online</span>
+                          </div>
+                        </div>
+                        <div class="timer-card-subtitle">
+                          {game.maintenance.subtitle || 'No scheduled maintenance'}
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Maintenance Start Timer -->
+                          <div
+                            class="maintenance-item"
+                            id="maintenanceStartItem"
+                            style="display: none;"
+                          >
+                            <div class="maintenance-name" id="maintenanceStartLabel">
+                              Until Start
+                            </div>
+                            <div class="maintenance-time" id="maintenanceStartTime">--:--:--</div>
+                          </div>
+                          <!-- Maintenance End Timer -->
+                          <div
+                            class="maintenance-item"
+                            id="maintenanceEndItem"
+                            style="display: none;"
+                          >
+                            <div class="maintenance-name" id="maintenanceEndLabel">
+                              Servers Back
+                            </div>
+                            <div class="maintenance-time" id="maintenanceEndTime">--:--:--</div>
+                          </div>
+                          <!-- No Maintenance Message -->
+                          <div class="no-maintenance" id="noMaintenanceMessage">
+                            <div class="maintenance-name">No scheduled maintenance</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Halloween Timer Card -->
+                      <div class="timer-card halloween-card">
+                        <div class="timer-card-header">
+                          <div class="ss-timer-card-title">Halloween - Days Until</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="halloweenTime">---</div>
+                            <div class="launch-date">October 31st</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- New Year Timer Card -->
+                      <div class="timer-card newyear-card">
+                        <div class="timer-card-header">
+                          <div class="ss-timer-card-title">New Year - Days Until</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="newyearTime">---</div>
+                            <div class="launch-date">January 1st</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Event Timers Row -->
+                    <div class="timer-section-group event-timers">
+                      <div class="timers-row">
+                        <!-- Event Duration Timer Card -->
+                        <div class="timer-card event-duration-card">
+                          <div class="timer-card-header">
+                            <div class="ss-timer-card-title">Event Duration</div>
+                          </div>
+                          <div class="timer-card-content">
+                            <div class="event-counter">
+                              <div class="event-days" id="eventDurationTime">---</div>
+                              <div class="event-date">Event Period</div>
+                              <div class="event-period">Oct 27 – Nov 10 (UTC-7)</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Event Shop Timer Card -->
+                        <div class="timer-card event-shop-card">
+                          <div class="timer-card-header">
+                            <div class="ss-timer-card-title">Event Shop & Rewards</div>
+                          </div>
+                          <div class="timer-card-content">
+                            <div class="event-counter">
+                              <div class="event-days" id="eventShopTime">---</div>
+                              <div class="event-date">Shop Exchange</div>
+                              <div class="event-period">Oct 27 – Nov 17 (UTC-7)</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <Footer />
+
+    <!-- Pass config data to JavaScript -->
+    <script define:vars={{ config: game }}>
+      window.stellaSoraConfig = config;
+    </script>
+
+    <!-- Load Stella Sora clock timer script -->
+    <script src="../../scripts/clock/stella-sora.js"></script>
+  </body>
+</html>

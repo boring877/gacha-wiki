@@ -1,0 +1,91 @@
+---
+// Stella Sora Code Tutorial Image Component
+// Import all code tutorial images once and use mapping
+import { Image } from 'astro:assets';
+
+// Import all Stella Sora code tutorial images once
+import code1Image from '../../assets/images/games/stella-sora/code/1.jpg';
+import code2Image from '../../assets/images/games/stella-sora/code/2.jpg';
+import code3Image from '../../assets/images/games/stella-sora/code/3.jpg';
+import code4Image from '../../assets/images/games/stella-sora/code/4.jpg';
+
+// Centralized code image mapping
+const codeImageMap = {
+  '1.jpg': code1Image,
+  '2.jpg': code2Image,
+  '3.jpg': code3Image,
+  '4.jpg': code4Image,
+};
+
+const {
+  imageName, // This is now a string name, not an image object
+  alt,
+  class: className = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 95,
+  width = 400,
+  height = 300,
+} = Astro.props;
+
+// Get the imported image object from the map
+let imageKey = imageName;
+
+// Add extension if missing
+if (!imageKey.includes('.')) {
+  imageKey = `${imageKey}.jpg`;
+}
+
+const imageSrc = codeImageMap[imageKey] || codeImageMap['1.jpg'];
+---
+
+<div class={`code-tutorial-image ${className}`}>
+  <Image
+    src={imageSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    class="code-img-fill"
+    loading={loading}
+    format={format}
+    quality={quality}
+  />
+</div>
+
+<style>
+  .code-tutorial-image {
+    border-radius: var(--ss-radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--ss-border);
+    box-shadow: var(--ss-shadow-sm);
+    background: var(--ss-bg-card);
+    transition: var(--ss-transition);
+  }
+
+  .code-tutorial-image:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(125, 211, 252, 0.15);
+    border-color: var(--ss-primary-border);
+  }
+
+  .code-img-fill {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--ss-radius-lg);
+  }
+
+  /* Responsive sizing for mobile */
+  @media (max-width: 768px) {
+    .code-tutorial-image {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .code-tutorial-image {
+      border-radius: var(--ss-radius-md);
+    }
+  }
+</style>

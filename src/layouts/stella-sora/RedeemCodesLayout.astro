@@ -1,6 +1,6 @@
 ---
-// Stella Sora Landing Layout
-// Base layout for landing pages
+// Stella Sora Redeem Codes Layout
+// Dedicated layout for redeem codes pages
 
 import SSBaseHead from '../../components/stella-sora/SSBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
@@ -18,7 +18,7 @@ import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/stella-sora/ss-colors.css';
 import '../../styles/games/stella-sora/ss-layout.css';
-import '../../styles/games/stella-sora/stella-sora-landing.css';
+import '../../styles/games/stella-sora/ss-redeem-codes.css';
 
 export interface Props {
   title: string;
@@ -73,7 +73,6 @@ const { title, description, gameTitle, heroImage } = Astro.props;
                   </div>
                 </div>
                 <h1 class="hero-title">{gameTitle}</h1>
-                <div class="hero-version">Version 1.1</div>
                 <DecorativeLines />
               </section>
             )

@@ -13,12 +13,12 @@
   --ss-accent-light: #a7f3d0;
   --ss-accent-20: rgba(110, 231, 183, 0.1);
 
-  /* Background colors - Original dark theme */
+  /* Background colors - Dark theme with blue-green gradient accents */
   --ss-bg-primary: #1a1a1a;
-  --ss-bg-secondary: #2a2a2a;
-  --ss-bg-tertiary: #3a3a3a;
-  --ss-bg-card: #2d2d30;
-  --ss-bg-hover: #404046;
+  --ss-bg-secondary: #1f2422;
+  --ss-bg-tertiary: #252a29;
+  --ss-bg-card: #212426;
+  --ss-bg-hover: #262a2a;
 
   /* Text colors - Original light text for dark backgrounds */
   --ss-text-primary: #ffffff;
@@ -68,9 +68,11 @@
   /* Background gradients for main layout */
   --ss-bg-gradient-primary: linear-gradient(
     135deg,
-    var(--ss-bg-primary) 0%,
-    var(--ss-bg-secondary) 35%,
-    var(--ss-bg-tertiary) 100%
+    #1a1a1a 0%,
+    #1f2422 25%,
+    #212624 50%,
+    #1a1d1f 75%,
+    #1a1a1a 100%
   );
   --ss-bg-gradient-subtle: linear-gradient(
     135deg,
@@ -87,6 +89,16 @@
   --ss-gradient-star: linear-gradient(135deg, #7dd3fc 0%, #6ee7b7 50%, #bae6fd 100%);
   --ss-gradient-trekker: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
   --ss-gradient-nature: linear-gradient(135deg, #0ea5e9 0%, #6ee7b7 50%, #a7f3d0 100%);
+
+  /* Clock-specific gradient with blue-green in black */
+  --ss-bg-gradient-clock: linear-gradient(
+    135deg,
+    #1a1a1a 0%,
+    #1f2422 25%,
+    #212624 50%,
+    #1a1d1f 75%,
+    #1a1a1a 100%
+  );
 
   /* Transitions */
   --ss-transition: all 0.2s ease-in-out;

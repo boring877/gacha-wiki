@@ -34,10 +34,10 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-10-18',
+  lastUpdated: '2025-10-27',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
-    SSS: [{ name: 'Guinevere' }, { name: 'Athena' }, { name: 'Freya' }],
+    SSS: [{ name: 'Guinevere' }, { name: 'Athena' }, { name: 'Freya' }, { name: 'Hela' }],
     SS: [
       { name: 'Yuis' },
       { name: 'Thor' },
@@ -53,7 +53,6 @@ export const PVE_TIER_LIST = {
       { name: 'Hera' },
       { name: 'Afrodite' },
       { name: 'Jeanne D Arc' },
-      { name: 'Hela' },
       { name: 'Lily' },
     ],
     S: [

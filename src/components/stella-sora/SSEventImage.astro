@@ -1,0 +1,76 @@
+---
+// Stella Sora Event Image Component
+// Import all event images once and use mapping
+import { Image } from 'astro:assets';
+
+// Import all Stella Sora event images once
+import event1Image from '../../assets/images/games/stella-sora/events/1/1.jpg';
+import event2Image from '../../assets/images/games/stella-sora/events/1/2.jpg';
+import event3Image from '../../assets/images/games/stella-sora/events/1/3.jpg';
+import event4Image from '../../assets/images/games/stella-sora/events/1/4.jpg';
+
+// Import folder 2 event images
+import event2_1Image from '../../assets/images/games/stella-sora/events/2/1.jpg';
+import event2_2Image from '../../assets/images/games/stella-sora/events/2/2.jpg';
+import event2_3Image from '../../assets/images/games/stella-sora/events/2/3.jpg';
+import event2_4Image from '../../assets/images/games/stella-sora/events/2/4.jpg';
+
+// Centralized event image mapping
+const eventImageMap = {
+  '1/1': event1Image,
+  '1/2': event2Image,
+  '1/3': event3Image,
+  '1/4': event4Image,
+  '2/1': event2_1Image,
+  '2/2': event2_2Image,
+  '2/3': event2_3Image,
+  '2/4': event2_4Image,
+};
+
+const {
+  imageName,
+  alt = 'Event image',
+  class: className = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 85,
+  width = 1200,
+  height = 2000,
+} = Astro.props;
+
+// Get the imported image object from the map
+const imageSrc = eventImageMap[imageName] || event1Image;
+---
+
+<div class={`ss-event-image ${className}`}>
+  <Image
+    src={imageSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    format={format}
+    quality={quality}
+    style="object-fit: contain; border-radius: 8px; max-width: 100%; height: auto;"
+  />
+</div>
+
+<style>
+  .ss-event-image {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+    background: var(--ss-bg-secondary);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid var(--ss-border-color);
+    overflow-x: auto;
+  }
+
+  .ss-event-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+</style>

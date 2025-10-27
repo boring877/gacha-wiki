@@ -141,6 +141,30 @@
   background-clip: text;
 }
 
+.game-card[data-game-id='stella-sora'] .game-card-title {
+  background: linear-gradient(135deg, #7dd3fc 0%, #6ee7b7 50%, #bae6fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.game-card[data-game-id='stella-sora'] .game-card-image-container {
+  height: 180px;
+  background: rgba(125, 211, 252, 0.05);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.game-card[data-game-id='stella-sora'] .game-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
 .game-card-description {
   font-family: var(--font-primary); /* Use primary font from typography system */
   font-size: var(--text-sm); /* Use size from typography system */

@@ -4,16 +4,23 @@ import ClockLandingLayout from '../../layouts/clock/Landing.astro';
 import { getActiveLandingGames } from '../../data/clock/landing.js';
 import { Image } from 'astro:assets';
 import gameIcon from '../../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
+import stellaSoraIcon from '../../assets/images/games/stella-sora/gameimg/Icon.jpg';
 
 // Get all active games for the landing page
 let games = getActiveLandingGames();
 
-// Update the Horizon Walker game entry to use the imported image
+// Update the Horizon Walker and Stella Sora game entries to use the imported images
 games = games.map(game => {
   if (game.id === 'horizon-walker') {
     return {
       ...game,
       image: gameIcon,
+    };
+  }
+  if (game.id === 'stella-sora') {
+    return {
+      ...game,
+      image: stellaSoraIcon,
     };
   }
   return game;

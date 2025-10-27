@@ -60,6 +60,21 @@
   background-clip: text;
 }
 
+.hero-version {
+  font-size: var(--text-lg);
+  font-family: var(--font-display);
+  font-weight: var(--ss-font-semibold);
+  margin: 0.5rem 0 1rem 0;
+  line-height: var(--leading-normal);
+  /* Same gradient as the main title */
+  background: var(--ss-gradient-star);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
 /* Title Only Section */
 .title-only-section {
   text-align: center;
@@ -340,6 +355,11 @@
     line-height: 1.2;
   }
 
+  .hero-version {
+    font-size: var(--text-base);
+    margin: 0.25rem 0 0.75rem 0;
+  }
+
   /* Content Sections - Better Mobile Spacing */
   .content-section {
     padding: 2rem 1.5rem;
@@ -452,6 +472,11 @@
     font-size: var(--text-2xl);
     margin: 1rem 0;
     line-height: 1.2;
+  }
+
+  .hero-version {
+    font-size: var(--text-sm);
+    margin: 0.125rem 0 0.5rem 0;
   }
 
   .content-section {

@@ -1,0 +1,48 @@
+---
+import StellaSoraClockLayout from '../../layouts/clock/StellaSora.astro';
+import { stellaSoraConfig } from '../../data/clock/stella-sora.js';
+import GameIcon from '../../assets/images/games/stella-sora/gameimg/Icon.jpg';
+
+// Page metadata
+const title = 'Stella Sora Clock - Server Reset Timer & Launch Countdown | GachaWiki';
+const description =
+  'Stella Sora server reset timer and launch countdown - Track Stella Sora server resets and launch with real-time countdown timers. Never miss daily resets, weekly events, or the global launch with our precise UTC server time clock. Server resets at 00:00 UTC daily.';
+
+// Create a new config object with the imported image
+const games = [
+  {
+    ...stellaSoraConfig,
+    image: GameIcon,
+  },
+];
+---
+
+<StellaSoraClockLayout title={title} description={description} games={games}>
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Stella Sora Server Reset Clock & Launch Countdown",
+      "description": "Real-time server reset timer and launch countdown for Stella Sora gacha game. Daily reset at 00:00 UTC. Global launch countdown for Stella Sora dailies and events.",
+      "url": "https://gachawiki.info/clock/stella-sora",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "Stella Sora Reset Clock & Launch Timer",
+        "description": "Track Stella Sora server reset times and global launch countdown. Daily server reset at 00:00 UTC. Never miss Stella Sora daily quests, energy refills, farming cycles, and the global launch event.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+</StellaSoraClockLayout>

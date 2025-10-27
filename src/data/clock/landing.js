@@ -51,6 +51,23 @@ export const clockLandingGames = [
       icon: '',
     },
   },
+  {
+    id: 'stella-sora',
+    name: 'Stella Sora',
+    description: 'Fantasy RPG with Trekkers',
+    image: '/images/games/stella-sora/gameimg/Banner.jpg',
+    url: '/clock/stella-sora',
+    themeColor: 'var(--ss-primary)',
+    active: true,
+    // Simple timer info for preview
+    primaryTimer: {
+      name: 'Launch Countdown',
+      type: 'launch',
+      resetHour: 2, // Launch time (02:00 UTC = 19:00 UTC-7)
+      resetMinute: 0,
+      icon: '',
+    },
+  },
 ];
 
 /**
@@ -77,6 +94,10 @@ export function calculatePreviewTime(timer) {
     if (targetTime <= now) {
       targetTime.setUTCDate(targetTime.getUTCDate() + 1);
     }
+  } else if (timer.type === 'launch') {
+    // For launch timer, use the specific launch date (Oct 20, 2025 at 02:00 UTC)
+    targetTime.setUTCFullYear(2025, 9, 20); // October 20, 2025
+    targetTime.setUTCHours(timer.resetHour, timer.resetMinute || 0, 0, 0);
   }
 
   const timeDiff = targetTime.getTime() - now.getTime();
@@ -85,7 +106,7 @@ export function calculatePreviewTime(timer) {
     return {
       hours: 0,
       minutes: 0,
-      display: '0h 0m',
+      display: timer.type === 'launch' ? 'Launched!' : '0h 0m',
       expired: true,
     };
   }
@@ -96,7 +117,10 @@ export function calculatePreviewTime(timer) {
   return {
     hours,
     minutes,
-    display: `${hours}h ${minutes}m`,
+    display:
+      timer.type === 'launch' && hours > 24
+        ? `${Math.floor(hours / 24)}d ${hours % 24}h`
+        : `${hours}h ${minutes}m`,
     expired: false,
   };
 }

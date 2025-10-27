@@ -1,0 +1,271 @@
+---
+import StellaSoraRedeemLayout from '../../../layouts/stella-sora/RedeemCodesLayout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import SSCodeImage from '../../../components/stella-sora/SSCodeImage.astro';
+
+// Import redeem codes data and CSS
+import {
+  stellaSoraRedeemCodes,
+  generateRedeemCodesStructuredData,
+} from '../../../data/stella-sora/redeem-codes.js';
+import '../../../styles/games/stella-sora/ss-redeem-codes.css';
+
+// Extract data from the data file
+const { meta, availableCodes, expiredCodes, redeemInstructions, communitySection, warnings } =
+  stellaSoraRedeemCodes;
+
+// Page metadata
+const title = meta.title;
+const description = meta.description;
+const gameTitle = 'Redeem Codes';
+const lastUpdated = meta.lastUpdated;
+
+// Generate structured data for SEO
+const structuredData = generateRedeemCodesStructuredData();
+---
+
+<StellaSoraRedeemLayout title={title} description={description} gameTitle={gameTitle}>
+  <section class="page-content">
+    <!-- Single Main Container -->
+    <div class="main-container">
+      <!-- Header with Combined Warnings -->
+      <div class="header-section">
+        <p class="important-notice">{warnings.important}</p>
+        <h3>{warnings.noGuarantees.title}</h3>
+        <p>{warnings.noGuarantees.message}</p>
+        <p class="last-updated">
+          Last Updated: <FormattedDate date={lastUpdated} />
+        </p>
+      </div>
+
+      <!-- Available Codes -->
+      <div class="codes-section">
+        <h2 class="section-title">Available Codes</h2>
+        <p class="section-description">
+          These codes were shared by the community. They might work, they might not - try them and
+          see!
+        </p>
+
+        <div class="redeem-codes-grid">
+          {
+            availableCodes.map(codeData => (
+              <div class="redeem-code-card">
+                <div class="code-info">
+                  <div class="code-main">
+                    <div class="code-label">Redeem Code</div>
+                    <div class="code-value-display">{codeData.code}</div>
+                    <div class="code-meta">
+                      <span class={`code-status ${codeData.status}`}>
+                        {codeData.status === 'unknown' ? 'Unverified' : codeData.status}
+                      </span>
+                      <span class="code-date">Last checked: {codeData.lastChecked}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-action">
+                  <button class="copy-button" data-code={codeData.code}>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                    Copy
+                  </button>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="instructions-section">
+        <h2 class="section-title">{redeemInstructions.title}</h2>
+        <p class="section-description">{redeemInstructions.description}</p>
+
+        <h3>Step-by-Step Guide:</h3>
+        {
+          redeemInstructions.steps.map(step => (
+            <div class="instruction-step">
+              <div class="step-content">
+                <div class="step-text">
+                  <h4>{step.title}</h4>
+                  <p>{step.description}</p>
+                </div>
+                {step.image && (
+                  <div class="step-image">
+                    <SSCodeImage
+                      imageName={step.image}
+                      alt={step.imageAlt}
+                      width={350}
+                      height={250}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Expired Codes -->
+      <div class="expired-section">
+        <h2 class="section-title">Expired Codes</h2>
+        {
+          expiredCodes.length > 0 ? (
+            <>
+              <p class="section-description">
+                These codes are no longer active but kept for reference.
+              </p>
+              <div class="redeem-codes-grid expired-section">
+                {expiredCodes.map(codeData => (
+                  <div class="redeem-code-card expired">
+                    <div class="redeem-code-header">
+                      <span class="redeem-code-status expired">Expired</span>
+                    </div>
+                    <div class="redeem-code-value expired">
+                      <span class="redeem-code-text">{codeData.code}</span>
+                      <span class="expired-label">Expired</span>
+                    </div>
+                    <p class="code-expiry">Expired: {codeData.expiryDate}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div class="empty-section">
+              <p class="empty-message">
+                No expired codes yet! All available codes are still worth trying.
+              </p>
+            </div>
+          )
+        }
+      </div>
+
+      <!-- Community -->
+      <div class="community-section">
+        <h2 class="section-title">{communitySection.title}</h2>
+        <p class="section-description">{communitySection.description}</p>
+
+        <div class="community-buttons">
+          {
+            communitySection.buttons.map(button => (
+              <a
+                href={button.url}
+                class={`community-button ${button.type}`}
+                target={button.external ? '_blank' : '_self'}
+                rel={button.external ? 'noopener noreferrer' : ''}
+              >
+                {button.text}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+</StellaSoraRedeemLayout>
+
+<script>
+  // Simple copy functionality with multiple fallbacks
+  function copyCode(button) {
+    const code = button.getAttribute('data-code');
+    if (!code) return;
+
+    const originalHTML = button.innerHTML;
+    button.disabled = true;
+    button.textContent = 'Copying...';
+
+    // Try method 1: Modern Clipboard API
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard
+        .writeText(code)
+        .then(() => {
+          showSuccess(button, originalHTML);
+        })
+        .catch(() => {
+          // Try method 2: execCommand
+          tryExecCommand(button, originalHTML, code);
+        });
+    } else {
+      // Try method 2 directly
+      tryExecCommand(button, originalHTML, code);
+    }
+  }
+
+  function tryExecCommand(button, originalHTML, code) {
+    try {
+      // Create hidden textarea
+      const textarea = document.createElement('textarea');
+      textarea.value = code;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      textarea.style.left = '-9999px';
+      textarea.setAttribute('readonly', '');
+      document.body.appendChild(textarea);
+
+      // Select and copy
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+
+      const success = document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      if (success) {
+        showSuccess(button, originalHTML);
+      } else {
+        throw new Error('execCommand failed');
+      }
+    } catch (err) {
+      console.error('Copy failed:', err);
+      showError(button, originalHTML);
+    }
+  }
+
+  function showSuccess(button, originalHTML) {
+    button.textContent = 'Copied!';
+    button.style.background = '#10b981';
+    button.style.color = 'white';
+
+    setTimeout(() => {
+      button.innerHTML = originalHTML;
+      button.style.background = '';
+      button.style.color = '';
+      button.disabled = false;
+    }, 2000);
+  }
+
+  function showError(button, originalHTML) {
+    button.textContent = 'Try Again';
+    button.style.background = '#ef4444';
+    button.style.color = 'white';
+
+    setTimeout(() => {
+      button.innerHTML = originalHTML;
+      button.style.background = '';
+      button.style.color = '';
+      button.disabled = false;
+    }, 2000);
+  }
+
+  // Initialize copy buttons
+  document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.copy-button');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        copyCode(this);
+      });
+    });
+  });
+</script>

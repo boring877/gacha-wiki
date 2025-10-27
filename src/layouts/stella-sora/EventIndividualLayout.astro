@@ -1,6 +1,6 @@
 ---
-// Stella Sora Landing Layout
-// Base layout for landing pages
+// Stella Sora Individual Event Layout
+// Dedicated layout for individual event pages with proper footer positioning
 
 import SSBaseHead from '../../components/stella-sora/SSBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
@@ -11,24 +11,27 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
-import GameImage from '../../components/stella-sora/GameImage.astro';
+import { generateBackNavigation } from '../../utils/breadcrumb-generator.js';
+import type { BackNavigation } from '../../utils/breadcrumb-generator.js';
 
 // Import CSS files
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/stella-sora/ss-colors.css';
 import '../../styles/games/stella-sora/ss-layout.css';
-import '../../styles/games/stella-sora/stella-sora-landing.css';
+import '../../styles/games/stella-sora/ss-event-individual.css';
 
 export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  heroImage?: string;
-  breadcrumbs?: { name: string; url: string }[];
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle } = Astro.props;
+
+const backNavigation: BackNavigation | null = generateBackNavigation(Astro.url.pathname, {
+  gameKey: 'stella-sora',
+});
 ---
 
 <html lang="en">
@@ -37,7 +40,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
     <GameSEO gameKey="stella-sora" title={title} description={description} />
     <slot name="head" />
   </head>
-  <body class="stella-sora-body">
+  <body class="stella-sora-body ss-event-individual-body">
     <CustomScrollbar />
 
     <!-- Background layers for visual depth -->
@@ -46,54 +49,24 @@ const { title, description, gameTitle, heroImage } = Astro.props;
     <div class="bg-layer ss-bg-accent-2"></div>
     <div class="bg-layer ss-bg-accent-3"></div>
 
-    <div class="stella-sora-content">
+    <div class="stella-sora-content ss-event-individual-content">
       <Header />
       <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="stella-sora" />
       <MobileMenu />
 
-      <div class="stella-sora-container">
-        <main class="stella-sora-main">
-          <!-- Hero Section -->
-          {
-            heroImage && gameTitle && (
-              <section class="hero-section">
-                <div class="hero-image-wrapper">
-                  <div class="hero-image-container">
-                    <GameImage
-                      imageName={heroImage}
-                      alt={gameTitle}
-                      class="hero-image"
-                      width={1200}
-                      height={400}
-                      loading="eager"
-                      format="webp"
-                      quality={85}
-                    />
-                    <div class="hero-overlay" />
-                  </div>
-                </div>
-                <h1 class="hero-title">{gameTitle}</h1>
-                <div class="hero-version">Version 1.1</div>
-                <DecorativeLines />
-              </section>
-            )
-          }
-
-          <!-- Title Only Section -->
-          {
-            !heroImage && gameTitle && (
-              <section class="title-only-section">
-                <h1 class="title-only-heading">{gameTitle}</h1>
-                <DecorativeLines />
-              </section>
-            )
-          }
+      <div class="stella-sora-container ss-event-individual-container">
+        <main class="stella-sora-main ss-event-individual-main">
+          <!-- Title Section -->
+          <section class="title-only-section">
+            <h1 class="title-only-heading">{gameTitle}</h1>
+            <DecorativeLines />
+          </section>
 
           <!-- Breadcrumb Navigation -->
           <Breadcrumb autoGenerate={true} gameKey="stella-sora" showBackButton={true} />
 
           <!-- Content Area -->
-          <div class="content-area">
+          <div class="content-area ss-event-individual-content-area">
             <slot />
           </div>
         </main>

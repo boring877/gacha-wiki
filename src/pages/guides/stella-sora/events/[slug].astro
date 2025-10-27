@@ -1,0 +1,93 @@
+---
+import EventIndividualLayout from '../../../../layouts/stella-sora/EventIndividualLayout.astro';
+import { stellaSoraEvents } from '../../../../data/stella-sora/events.js';
+import SSEventImage from '../../../../components/stella-sora/SSEventImage.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+
+export async function getStaticPaths() {
+  const { stellaSoraEvents } = await import('../../../../data/stella-sora/events.js');
+
+  return stellaSoraEvents.map(event => ({
+    params: { slug: event.id },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+
+// SEO metadata
+const metaTitle = `${event.title} - Stella Sora Event | GachaWiki`;
+const metaDescription = event.description;
+
+// Get event data
+const currentEvent = stellaSoraEvents.find(e => e.id === event.id) || event;
+
+// Format dates
+const startDate = new Date(currentEvent.startDate);
+const endDate = new Date(currentEvent.endDate);
+
+// Breadcrumb data
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides' },
+  { name: 'Stella Sora', url: '/guides/stella-sora' },
+  { name: 'Events', url: '/guides/stella-sora/events/' },
+  { name: event.title, url: `/guides/stella-sora/events/${event.id}/` },
+];
+---
+
+<EventIndividualLayout title={metaTitle} description={metaDescription} gameTitle={event.title}>
+  <!-- Structured Data for Individual Event -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Event',
+      name: event.title,
+      description: event.description,
+      startDate: event.startDate,
+      endDate: event.endDate,
+      url: `https://gachawiki.info/guides/stella-sora/events/${event.id}/`,
+      image: event.featuredImage,
+      location: {
+        '@type': 'VirtualLocation',
+        url: 'https://stellasora.global/',
+      },
+      organizer: {
+        '@type': 'Organization',
+        name: 'Yostar Limited',
+        url: 'https://yo-star.com',
+      },
+      about: {
+        '@type': 'VideoGame',
+        name: 'Stella Sora',
+      },
+    })}
+  />
+
+  <!-- Event Info Box -->
+  <section class="ss-event-info-box">
+    <div class="ss-info-content">
+      <p>
+        Event information and details from the game. Images show official event announcements and
+        rewards.
+      </p>
+    </div>
+  </section>
+
+  <!-- Event Images -->
+  <section class="ss-event-images">
+    <div class="ss-event-images-list">
+      {
+        Array.from({ length: 4 }, (_, i) => (
+          <SSEventImage
+            imageName={`${currentEvent.id.includes('event-shop') ? '1' : '2'}/${i + 1}`}
+            alt={`${event.title} detail ${i + 1}`}
+            width={1200}
+            height={2000}
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
+        ))
+      }
+    </div>
+  </section>
+</EventIndividualLayout>
