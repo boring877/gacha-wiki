@@ -1,6 +1,24 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'october-28-maintenance',
+    title: 'October 28 Maintenance Update',
+    date: 'October 28, 2025',
+    type: 'maintenance',
+    summary:
+      "October 28, 2025 maintenance (14:00, ~2 hours) brings 7 major activities: \"Genius's End: The Conspiracy of the Mechanical Legion (Part 2)\" event, Nini limited recruitment (Assault Specialist, Ice), Wan Sheng Jie's Candy memory (Halloween), Suo'er character recall, Night Raid's Suspicion memory recall, Space-Time Rift: Scar Tide XIV, Halloween login rewards, limited gift packs, and Rune Subjugation double drops. Light Ether x300 compensation.",
+    url: '/guides/zone-nova/updates/maintenance-october-28-2025/',
+  },
+  {
+    id: 'nini-recruitment',
+    title: 'Limited Character Summon – Nini',
+    date: 'October 28, 2025',
+    type: 'recruitment',
+    summary:
+      'New Ice attribute Assault Specialist Nini available through Limited Character Summon from October 28 - November 11, 2025. BETA special squad member with oversized cannon, fierce front-line combat style, and exceptional combat intelligence. Cold with strangers but playful with the captain. Exclusive memory available through Limited Memory Summon.',
+    url: '/guides/zone-nova/updates/announcement-nini-recruitment/',
+  },
+  {
     id: 'september-30-maintenance',
     title: 'September 30 Maintenance Update',
     date: 'September 30, 2025',
