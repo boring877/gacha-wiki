@@ -1,0 +1,84 @@
+---
+// Stella Sora Character Database Filter Bar Component
+// Provides filtering and sorting controls for the character database
+
+import { gameInfo } from '../../data/stella-sora/characters.js';
+
+export interface Props {
+  showFilters?: boolean;
+}
+
+const { showFilters = true } = Astro.props;
+---
+
+{
+  showFilters && (
+    <div class="character-filter-bar">
+      <div class="filter-section">
+        <h3 class="filter-title">Filters</h3>
+        <div class="filter-controls">
+          <select class="filter-select" id="rarity-filter">
+            <option value="">Rarity</option>
+            {gameInfo.rarities.map(rarity => (
+              <option value={rarity}>{rarity}</option>
+            ))}
+          </select>
+
+          <select class="filter-select" id="element-filter">
+            <option value="">Element</option>
+            {gameInfo.elements.map(element => (
+              <option value={element.name}>{element.name}</option>
+            ))}
+          </select>
+
+          <select class="filter-select" id="role-filter">
+            <option value="">Role</option>
+            {gameInfo.roles.map(role => (
+              <option value={role.name}>{role.name}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h3 class="filter-title">Search</h3>
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search characters by name or tags..."
+          class="search-input"
+        />
+      </div>
+
+      <div class="filter-section">
+        <h3 class="filter-title">Sort By</h3>
+        <div class="sort-controls">
+          <button class="sort-btn" data-sort="name">
+            Name
+          </button>
+          <button class="sort-btn" data-sort="rarity">
+            Rarity
+          </button>
+          <button class="sort-btn" data-sort="hp">
+            HP
+          </button>
+          <button class="sort-btn" data-sort="attack">
+            ATK
+          </button>
+          <button class="sort-btn" data-sort="defense">
+            DEF
+          </button>
+          <button class="sort-btn" data-sort="critRate">
+            Crit Rate
+          </button>
+          <button class="sort-btn" data-sort="critDmg">
+            Crit DMG
+          </button>
+          <button class="reset-btn" id="reset-filters">
+            Reset All
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}

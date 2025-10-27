@@ -71,6 +71,22 @@ const GAME_CONFIG = {
       'tier-list': 'Tier List',
     },
   },
+  'stella-sora': {
+    name: 'Stella Sora',
+    basePath: '/guides/stella-sora',
+    patterns: {
+      characters: 'Characters',
+      'character-database': 'Character Database',
+      'character-comparison': 'Character Comparison',
+      'character-rankings': 'Character Rankings',
+      'beginner-guide': 'Beginner Guide',
+      'tier-list': 'Tier List',
+      'team-building': 'Team Building',
+      elements: 'Elements',
+      potentials: 'Potentials',
+      discs: 'Discs',
+    },
+  },
 };
 
 /**
@@ -80,7 +96,8 @@ const GAME_CONFIG = {
  * @returns {Array} Array of breadcrumb items with name and href
  */
 export function generateBreadcrumbs(pathname, options = {}) {
-  const { includeHome = true, currentPageName = null, gameKey = null } = options;
+  const { includeHome = true, gameKey = null } = options;
+  let currentPageName = options.currentPageName || null;
 
   const breadcrumbs = [];
 
@@ -130,14 +147,20 @@ export function generateBreadcrumbs(pathname, options = {}) {
         if (remainingSegments.length > 1) {
           const deeperSegments = remainingSegments.slice(1);
 
+          // Add all intermediate segments (except the last one which becomes current page)
           for (let i = 0; i < deeperSegments.length - 1; i++) {
             const segment = deeperSegments[i];
             const href = buildHref(segments.slice(0, 4 + i));
-
             breadcrumbs.push({
               name: formatSegmentName(segment),
               href: href,
             });
+          }
+
+          // The last deep segment becomes the current page name if not provided
+          if (!currentPageName && deeperSegments.length > 0) {
+            const lastSegment = deeperSegments[deeperSegments.length - 1];
+            currentPageName = formatSegmentName(lastSegment);
           }
         }
       }
@@ -161,6 +184,22 @@ export function generateBreadcrumbs(pathname, options = {}) {
       name: currentPageName,
       // No href for current page
     });
+  } else {
+    // If no current page name provided, try to extract from the last segment
+    const segments = pathname.split('/').filter(segment => segment.length > 0);
+    if (segments.length > 0) {
+      const lastSegment = segments[segments.length - 1];
+      const formattedName = formatSegmentName(lastSegment);
+
+      // Only add if this isn't already in breadcrumbs
+      const alreadyExists = breadcrumbs.some(crumb => crumb.name === formattedName);
+      if (!alreadyExists) {
+        breadcrumbs.push({
+          name: formattedName,
+          // No href for current page
+        });
+      }
+    }
   }
 
   return breadcrumbs;

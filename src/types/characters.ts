@@ -50,6 +50,61 @@ export interface SilverBloodCharacter extends BaseCharacter {
   skills: CharacterSkill[];
 }
 
+// Stella Sora specific character interface
+export interface StellaSoraCharacter extends BaseCharacter {
+  element: 'Fire' | 'Water' | 'Wind' | 'Earth' | 'Light' | 'Dark' | 'Aqua';
+  role: 'DPS' | 'Tank' | 'Healer' | 'Support' | 'Buffer' | 'Vanguard';
+  weapon: string;
+  cocochaLevel?: number; // Bond system level (optional)
+  tags: string[];
+
+  // Character metadata
+  level: number; // Character level
+  faction: string; // Character faction
+  trekkerStyle: string; // Trekker style
+
+  // Essential table stats (Level max)
+  stats: {
+    hp: number;
+    attack: number;
+    defense: number;
+    critRate: number; // As percentage (e.g., 5.0)
+    critDmg: number; // As percentage (e.g., 150.0)
+  };
+
+  // Additional combat stats
+  combatStats?: {
+    vulExploit: number; // As percentage (e.g., 0.0)
+    defPen: number; // DEF PEN value
+    ignoreDef: number; // As percentage (e.g., 0.0)
+  };
+
+  // Energy stats
+  energyStats?: {
+    maxEnergy: number;
+    chargeEfficiencyMain: number; // As percentage (e.g., 100.0)
+    chargeEfficiencySupport: number; // As percentage (e.g., 75.0)
+  };
+
+  // Elemental damage stats
+  elementalStats?: {
+    [element: string]: {
+      dmg: number; // As percentage (e.g., 100.0)
+      pen: number; // PEN value
+      ignoreRes: number; // As percentage (e.g., 0.0)
+    };
+  };
+
+  // Additional data for detailed pages
+  skills: CharacterSkill[];
+  story: string;
+  fullStats?: {
+    // Complete stats for individual character pages
+    speed: number;
+    // ... other game stats can be added later
+  };
+}
+
 // Character skill interface
 export interface CharacterSkill {
   name: string;

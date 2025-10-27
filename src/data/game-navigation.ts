@@ -179,11 +179,12 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     image: StellaSoraIcon,
     sections: [
       {
+        title: 'Characters',
+        links: [{ name: 'Database', href: '/guides/stella-sora/characters/' }],
+      },
+      {
         title: 'Game Resources',
-        links: [
-          { name: 'Game Guide', href: '/guides/stella-sora/' },
-          { name: 'Official Website', href: 'https://stellasora.global/' },
-        ],
+        links: [{ name: 'Official Website', href: 'https://stellasora.global/' }],
       },
     ],
   },

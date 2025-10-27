@@ -1,0 +1,19 @@
+---
+// HighlightedText Component - Reusable **markup** processor
+// Converts **text** to <strong>text</strong> with blue styling
+
+const { text, className = '' } = Astro.props;
+
+// Process the ** markup
+const parts = text ? text.split('**') : [''];
+---
+
+<span class={className}>
+  {
+    parts.map((part, index) => {
+      // Even indices (0, 2, 4...) are regular text
+      // Odd indices (1, 3, 5...) should be highlighted
+      return index % 2 === 0 ? <span>{part}</span> : <strong>{part}</strong>;
+    })
+  }
+</span>

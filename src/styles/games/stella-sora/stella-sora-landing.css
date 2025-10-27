@@ -488,6 +488,118 @@
   }
 }
 
+/* Stella Sora Resources Styles - Clean Bento Style */
+.ss-resources-title {
+  text-align: center;
+  font-size: var(--text-2xl);
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-primary);
+  margin-bottom: var(--ss-spacing-lg);
+}
+
+.ss-resources-title-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  margin: 0 auto;
+  max-width: fit-content;
+  transition: var(--ss-transition);
+}
+
+.ss-resources-title-link:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+.ss-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: var(--ss-spacing-lg);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ss-resource-category {
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.ss-resource-category h3 {
+  font-size: var(--text-base);
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+  margin: 0 0 var(--ss-spacing-sm) 0;
+  text-align: left;
+}
+
+.ss-buttons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.ss-resource-button {
+  box-sizing: border-box;
+  color: var(--ss-text-primary);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--ss-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 52px;
+}
+
+/* Responsive Design for Resources */
+@media (max-width: 768px) {
+  .ss-resources-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .ss-resource-category {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .ss-resource-button {
+    box-sizing: border-box;
+    padding: 0.875rem 0.625rem;
+    font-size: 0.875rem;
+    min-height: 52px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ss-resources-title {
+    font-size: var(--text-xl);
+  }
+
+  .ss-resource-category {
+    padding: 0.75rem;
+  }
+
+  .ss-resource-button {
+    padding: 1rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+    font-weight: 500;
+  }
+}
+
 /* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
   .play-button,

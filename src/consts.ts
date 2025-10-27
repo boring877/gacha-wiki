@@ -42,6 +42,13 @@ export const GAMES = {
     DAMAGE_K_VALUE: 1000,
     BASE_URL: '/guides/horizon-walker',
   },
+  STELLA_SORA: {
+    KEY: 'stella-sora',
+    NAME: 'Stella Sora',
+    THEME_COLOR: '#7c3aed',
+    DAMAGE_K_VALUE: 1000,
+    BASE_URL: '/guides/stella-sora',
+  },
 } as const;
 
 // URL patterns (centralized to prevent duplication)
@@ -87,6 +94,10 @@ export const URLS = {
     SUMMON_FAQ: '/guides/horizon-walker/summon-faq',
     REDEEM_CODES: '/guides/horizon-walker/redeem-codes',
     BEGINNER_GUIDE: '/guides/horizon-walker/beginner-guide',
+  },
+  STELLA_SORA: {
+    BASE: '/guides/stella-sora',
+    CHARACTERS: '/guides/stella-sora/characters',
   },
 } as const;
 

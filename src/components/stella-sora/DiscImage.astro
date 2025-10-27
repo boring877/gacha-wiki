@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 300,
+  height = 300,
+  loading = 'lazy',
+  class: className,
+  quality = 100,
+} = Astro.props;
+
+// Import the image from src/assets
+type ImageModule = { default: any } | undefined;
+const imageModules: Record<string, ImageModule> = import.meta.glob(
+  '/src/assets/images/games/stella-sora/disc/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+const imagePath = `/src/assets/images/games/stella-sora/disc/${imageName}`;
+const imageModule = imageModules[imagePath];
+
+let imageSrc: any;
+let imageAlt = alt;
+if (imageModule?.default) {
+  imageSrc = imageModule.default;
+} else {
+  // Fallback if image not found
+  imageSrc = '';
+  imageAlt = `Image not found: ${alt}`;
+}
+---
+
+{
+  imageSrc ? (
+    <Image
+      src={imageSrc}
+      alt={imageAlt}
+      width={width}
+      height={height}
+      loading={loading}
+      class={className}
+      quality={quality}
+      format="webp"
+    />
+  ) : (
+    <div
+      class={`disc-image-placeholder ${className || ''}`}
+      style={`width: ${width}px; height: ${height}px;`}
+    >
+      <span>Image not found</span>
+    </div>
+  )
+}

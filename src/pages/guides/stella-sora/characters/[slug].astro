@@ -1,0 +1,717 @@
+---
+// Stella Sora Individual Character Page - Dynamic Slug Template
+import CharacterIndividualLayout from '../../../../layouts/stella-sora/CharacterIndividualLayout.astro';
+import SSCharacterImage from '../../../../components/stella-sora/SSCharacterImage.astro';
+import SSElementImage from '../../../../components/stella-sora/SSElementImage.astro';
+import PotentialImage from '../../../../components/stella-sora/PotentialImage.astro';
+import DiscImage from '../../../../components/stella-sora/DiscImage.astro';
+import HighlightedText from '../../../../components/stella-sora/HighlightedText.astro';
+import { STELLA_SORA_CHARACTERS } from '../../../../data/stella-sora/characters.js';
+
+export async function getStaticPaths() {
+  return STELLA_SORA_CHARACTERS.map(character => {
+    return {
+      params: { slug: character.slug },
+      props: { character },
+    };
+  });
+}
+
+const { character } = Astro.props;
+
+// Safety check to ensure character data exists
+if (!character) {
+  return new Response('Character not found', { status: 404 });
+}
+---
+
+<CharacterIndividualLayout title={character.name} gameTitle={character.name} character={character}>
+  <div class="character-content">
+    <!-- Character Header -->
+    <section class="character-header">
+      <div class="character-basic-info">
+        <div class="character-image-large">
+          <SSCharacterImage
+            imageName={character.image}
+            alt={`${character.name} - ${character.rarity} ${character.element} ${character.role} character from Stella Sora`}
+            width="300"
+            height="300"
+            loading="eager"
+          />
+        </div>
+        <div class="character-details">
+          <h1>{character.name}</h1>
+          <div class="character-meta">
+            <span class={`rarity-badge ${(character.rarity || 'Unknown').toLowerCase()}`}
+              >{character.rarity || 'Unknown'}</span
+            >
+            <div class="element-badge-container">
+              <SSElementImage
+                elementName={character.element}
+                alt={character.element}
+                width={24}
+                height={24}
+              />
+              <span
+                class={`element-badge element-${(character.element || 'Unknown').toLowerCase()}`}
+                >{character.element || 'Unknown'}</span
+              >
+            </div>
+            <span class={`position-badge position-${(character.role || 'Unknown').toLowerCase()}`}
+              >{character.role || 'Unknown'}</span
+            >
+          </div>
+          <div class="character-lore">
+            <h3>Lore</h3>
+            <p>{character.story}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Character Statistics - Clean Table Layout -->
+    <section class="character-stats-container">
+      <h2>Character Statistics (Level {character.level || 90})</h2>
+
+      <div class="stats-list-layout">
+        <div class="stat-section-group">
+          <h3 class="stats-section-title">Basic Stats</h3>
+          <ul class="stat-list">
+            <li class="stat-list-item">
+              <div class="stat-item-content">
+                <span class="stat-item-label">HP</span>
+                <span class="stat-item-value large"
+                  >{character.stats?.hp?.toLocaleString() || 'N/A'}</span
+                >
+              </div>
+            </li>
+            <li class="stat-list-item">
+              <div class="stat-item-content">
+                <span class="stat-item-label">ATK</span>
+                <span class="stat-item-value large"
+                  >{character.stats?.attack?.toLocaleString() || 'N/A'}</span
+                >
+              </div>
+            </li>
+            <li class="stat-list-item">
+              <div class="stat-item-content">
+                <span class="stat-item-label">DEF</span>
+                <span class="stat-item-value large"
+                  >{character.stats?.defense?.toLocaleString() || 'N/A'}</span
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="stat-section-group">
+          <h3 class="stats-section-title">Combat Stats</h3>
+          <ul class="stat-list">
+            <li class="stat-list-item">
+              <div class="stat-item-content">
+                <span class="stat-item-label">Crit Rate</span>
+                <span class="stat-item-value">{character.stats.critRate}%</span>
+              </div>
+            </li>
+            <li class="stat-list-item">
+              <div class="stat-item-content">
+                <span class="stat-item-label">Crit DMG</span>
+                <span class="stat-item-value">{character.stats.critDmg}%</span>
+              </div>
+            </li>
+            {
+              character.combatStats && (
+                <>
+                  <li class="stat-list-item">
+                    <div class="stat-item-content">
+                      <div>
+                        <span class="stat-item-label">VUL Exploit</span>
+                        <div class="stat-item-description">
+                          Additional DMG multiplier against targets with negative Elemental RES.
+                        </div>
+                      </div>
+                      <span class="stat-item-value">{character.combatStats.vulExploit}%</span>
+                    </div>
+                  </li>
+                  <li class="stat-list-item">
+                    <div class="stat-item-content">
+                      <div>
+                        <span class="stat-item-label">DEF PEN</span>
+                        <div class="stat-item-description">
+                          Target DEF ignored when dealing DMG.
+                        </div>
+                      </div>
+                      <span class="stat-item-value">{character.combatStats.defPen}</span>
+                    </div>
+                  </li>
+                  <li class="stat-list-item">
+                    <div class="stat-item-content">
+                      <span class="stat-item-label">Ignore DEF</span>
+                      <span class="stat-item-value">{character.combatStats.ignoreDef}%</span>
+                    </div>
+                  </li>
+                </>
+              )
+            }
+          </ul>
+        </div>
+
+        {
+          character.energyStats && (
+            <div class="stat-section-group">
+              <h3 class="stats-section-title">Energy Stats</h3>
+              <ul class="stat-list">
+                <li class="stat-list-item">
+                  <div class="stat-item-content">
+                    <div>
+                      <span class="stat-item-label">Max Energy</span>
+                      <div class="stat-item-description">
+                        When reaching the Energy limit, the Trekker Ultimate becomes available.
+                      </div>
+                    </div>
+                    <span class="stat-item-value">{character.energyStats.maxEnergy}</span>
+                  </div>
+                </li>
+                <li class="stat-list-item">
+                  <div class="stat-item-content">
+                    <span class="stat-item-label">Charge Efficiency (Main)</span>
+                    <span class="stat-item-value">
+                      {character.energyStats.chargeEfficiencyMain}%
+                    </span>
+                  </div>
+                </li>
+                <li class="stat-list-item">
+                  <div class="stat-item-content">
+                    <span class="stat-item-label">Charge Efficiency (Support)</span>
+                    <span class="stat-item-value">
+                      {character.energyStats.chargeEfficiencySupport}%
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          )
+        }
+
+        {
+          character.elementalStats && (
+            <>
+              {Object.entries(character.elementalStats).map(([element, stats]) => (
+                <div class="stat-section-group">
+                  <h3 class="stats-section-title">Elemental Stats ({element})</h3>
+                  <ul class="stat-list">
+                    <li class="stat-list-item">
+                      <div class="stat-item-content">
+                        <div>
+                          <span class="stat-item-label">{element} DMG</span>
+                          <div class="stat-item-description">
+                            Additional DMG multiplier when dealing {element} DMG.
+                          </div>
+                        </div>
+                        <span class="stat-item-value">{stats.dmg}%</span>
+                      </div>
+                    </li>
+                    <li class="stat-list-item">
+                      <div class="stat-item-content">
+                        <span class="stat-item-label">{element} PEN</span>
+                        <span class="stat-item-value">{stats.pen}</span>
+                      </div>
+                    </li>
+                    <li class="stat-list-item">
+                      <div class="stat-item-content">
+                        <span class="stat-item-label">Ignore {element} RES</span>
+                        <span class="stat-item-value">{stats.ignoreRes}%</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              ))}
+            </>
+          )
+        }
+      </div>
+    </section>
+
+    <!-- Character Skills -->
+    <section class="character-skills">
+      <h2>Skills & Abilities</h2>
+      <div class="skills-list">
+        {
+          character.skills.map((skill, index) => (
+            <div class="skill-card">
+              <div class="skill-header">
+                <div class="skill-title-container">
+                  <h3 class="skill-name">{skill.name}</h3>
+                  <span
+                    class={`skill-type skill-type-${skill.type.toLowerCase().replace(' ', '-')}`}
+                  >
+                    {skill.type}
+                  </span>
+                </div>
+                <div class="skill-meta">
+                  {skill.level && <span class="skill-level">Lv. {skill.level}</span>}
+                  {skill.cooldown && (
+                    <span class="skill-cooldown">Cooldown: {skill.cooldown}s</span>
+                  )}
+                  {skill.energyCost && <span class="skill-energy">Energy: {skill.energyCost}</span>}
+                </div>
+              </div>
+
+              <div class="skill-damage">
+                {skill.description && <p>{skill.description}</p>}
+                {skill.damage && (
+                  <div>
+                    {skill.damage.normalCast && (
+                      <>
+                        {skill.damage.castDescription ? (
+                          <div set:html={skill.damage.castDescription} />
+                        ) : (
+                          <p>
+                            Deals <HighlightedText text={skill.damage.normalCast || ''} />
+                          </p>
+                        )}
+                      </>
+                    )}
+                    {skill.damage.strikes && (
+                      <div class="damage-strikes">
+                        <h4>Strikes:</h4>
+                        <ul>
+                          {skill.damage.strikes.map((strike, strikeIndex) => (
+                            <li>
+                              <strong>Strike {strikeIndex + 1}:</strong>{' '}
+                              <HighlightedText text={strike || ''} />
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {skill.damage.scaleVariant && (
+                      <p>
+                        {skill.damage.scaleDescription || (
+                          <>
+                            After every{' '}
+                            {skill.damage.type && skill.damage.type.includes('AoE') ? '3' : '2'}{' '}
+                            casts, the next cast becomes enhanced, dealing{' '}
+                            <HighlightedText text={skill.damage.scaleVariant || ''} />
+                          </>
+                        )}
+                      </p>
+                    )}
+                    {skill.damage.initialAttack && (
+                      <p>
+                        Initial Attack: <HighlightedText text={skill.damage.initialAttack || ''} />
+                      </p>
+                    )}
+                    {skill.damage.additionalAttack && (
+                      <p>
+                        <HighlightedText text={skill.damage.additionalAttack || ''} />
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Skill Effects */}
+              {skill.effects && skill.effects.length > 0 && (
+                <div class="skill-effects">
+                  <h4>Effects:</h4>
+                  <ul>
+                    {skill.effects.map(effect => (
+                      <li>
+                        <HighlightedText text={effect.description || ''} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          ))
+        }
+
+        {/* Status Effects - only show if character has status effects */}
+        {
+          character.statusEffects && character.statusEffects.length > 0 && (
+            <div class="skill-card">
+              <h3 class="skills-section-title">Status Effects</h3>
+              <div class="status-effects-list">
+                {character.statusEffects.map(effect => (
+                  <div class="status-effect-item">
+                    <h4 class="status-effect-name">{effect.name}</h4>
+                    <p class="status-effect-description">
+                      <HighlightedText text={effect.description || ''} />
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <!-- Character Talents -->
+    {
+      character.talents && character.talents.length > 0 && (
+        <section class="character-talents">
+          <h2>Talents (Dupes)</h2>
+          <div class="talents-list">
+            {character.talents.map(talent => (
+              <div class="talent-item">
+                <div class="talent-header">
+                  <span class="talent-number">{talent.id}</span>
+                  <h3 class="talent-name">{talent.name}</h3>
+                </div>
+                <p class="talent-description">
+                  <HighlightedText text={talent.description} />
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <!-- Potentials Summary Info Box -->
+    <section class="potentials-summary">
+      <h2>Potentials Overview</h2>
+      <div class="summary-grid">
+        <div class="summary-section">
+          <h3>Main Role</h3>
+          <div class="build-stats">
+            <div class="stat-item">
+              <span class="stat-label">Build 1 - Auto Attack:</span>
+              <span class="stat-value">5 cards</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Build 2 - Skill Damage:</span>
+              <span class="stat-value">5 cards</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Generic Cards:</span>
+              <span class="stat-value">6 cards</span>
+            </div>
+            <div class="stat-item total">
+              <span class="stat-label">Main Total:</span>
+              <span class="stat-value">16 cards</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-section">
+          <h3>Support Role</h3>
+          <div class="build-stats">
+            <div class="stat-item">
+              <span class="stat-label">Build 1 - Crit Build:</span>
+              <span class="stat-value">5 cards</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Build 2 - Mirror Image DPS:</span>
+              <span class="stat-value">5 cards</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Generic Cards:</span>
+              <span class="stat-value">6 cards</span>
+            </div>
+            <div class="stat-item total">
+              <span class="stat-label">Support Total:</span>
+              <span class="stat-value">16 cards</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-section overall">
+          <h3>Overall Summary</h3>
+          <div class="build-stats">
+            <div class="stat-group">
+              <div class="stat-item">
+                <span class="stat-label">Total Cards (with duplicates):</span>
+                <span class="stat-value">32 cards</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Unique Cards (without duplicates):</span>
+                <span class="stat-value">26 cards</span>
+              </div>
+            </div>
+
+            <div class="stat-group">
+              <div class="stat-item">
+                <span class="stat-label">Main Premium Cards:</span>
+                <span class="stat-value">4 cards</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Support Premium Cards:</span>
+                <span class="stat-value">4 cards</span>
+              </div>
+              <div class="stat-item total">
+                <span class="stat-label">Total Premium Cards:</span>
+                <span class="stat-value">8 cards</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Character Potentials - Main Position -->
+    {
+      character.mainPotentials && character.mainPotentials.length > 0 && (
+        <section class="character-potentials">
+          <h2>Potentials - Main</h2>
+          <div class="potentials-list">
+            {character.mainPotentials.map(potential => (
+              <>
+                {potential.isBuildHeader ? (
+                  <div class="potential-build-header">
+                    <h3 class="build-title">{potential.buildTitle}</h3>
+                    <h4 class="build-subtitle">{potential.buildSubtitle}</h4>
+                    <p class="build-description">{potential.buildDescription}</p>
+                  </div>
+                ) : (
+                  <div class="potential-item">
+                    <div class="potential-image">
+                      <PotentialImage
+                        imageName={potential.image || ''}
+                        alt={`${potential.name} - ${potential.level || 'Potential'}`}
+                        width={300}
+                        height={300}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    </div>
+                    <div class="potential-content">
+                      <div class="potential-header">
+                        <h4 class="potential-name">{potential.name}</h4>
+                        {potential.level && <span class="potential-level">{potential.level}</span>}
+                      </div>
+                      <div class="potential-description">
+                        <HighlightedText text={potential.description || ''} />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <!-- Character Potentials - Support Position -->
+    {
+      character.supportPotentials && character.supportPotentials.length > 0 && (
+        <section class="character-potentials">
+          <h2>Potentials - Support</h2>
+          <div class="potentials-list">
+            {character.supportPotentials.map(potential => (
+              <>
+                {potential.isBuildHeader ? (
+                  <div class="potential-build-header">
+                    <h3 class="build-title">{potential.buildTitle}</h3>
+                    <h4 class="build-subtitle">{potential.buildSubtitle}</h4>
+                    <p class="build-description">{potential.buildDescription}</p>
+                  </div>
+                ) : (
+                  <div class="potential-item">
+                    <div class="potential-image">
+                      <PotentialImage
+                        imageName={potential.image || ''}
+                        alt={`${potential.name} - ${potential.level || 'Potential'}`}
+                        width={300}
+                        height={300}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    </div>
+                    <div class="potential-content">
+                      <div class="potential-header">
+                        <h4 class="potential-name">{potential.name}</h4>
+                        {potential.level && <span class="potential-level">{potential.level}</span>}
+                      </div>
+                      <div class="potential-description">
+                        <HighlightedText text={potential.description || ''} />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <!-- Character Disc -->
+    {
+      character.disc && (
+        <section class="character-disc">
+          <h2>Disc</h2>
+
+          <div class="disc-hero">
+            <div class="disc-image-large">
+              <DiscImage
+                imageName={character.disc.image}
+                alt={`${character.disc.name} - ${character.disc.rarity} ${character.disc.element} Disc`}
+                width={500}
+                height={500}
+                loading="eager"
+              />
+            </div>
+            <div class="disc-hero-info">
+              <h3>{character.disc.name}</h3>
+              <div class="disc-meta">
+                <span class={`rarity-badge ${character.disc.rarity.toLowerCase()}`}>
+                  {character.disc.rarity}
+                </span>
+                <span class={`element-badge element-${character.disc.element.toLowerCase()}`}>
+                  {character.disc.element}
+                </span>
+              </div>
+              <div class="disc-tags">
+                {character.disc.tags.map(tag => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="disc-details-grid">
+            <div class="disc-card disc-stats-card">
+              <h4>Stats Details (LV. 90)</h4>
+              <div class="disc-stats-list">
+                <div class="disc-stat-item">
+                  <span class="stat-label">Basic ATK:</span>
+                  <span class="stat-value">{character.disc.stats.basicAtk.toLocaleString()}</span>
+                </div>
+                <div class="disc-stat-item">
+                  <span class="stat-label">Aqua DMG:</span>
+                  <span class="stat-value">{character.disc.stats.aquaDmg}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="disc-card disc-skills-card">
+              <h4>Skills</h4>
+              <div class="disc-skills-content">
+                <div class="disc-skill">
+                  <div class="disc-skill-header">
+                    <span class="skill-number">1</span>
+                    <div class="disc-skill-title">
+                      <h5>Melody Skill</h5>
+                      <h6>{character.disc.skills.melody.name}</h6>
+                    </div>
+                  </div>
+                  <div class="skill-description">
+                    <HighlightedText text={character.disc.skills.melody.effect} />
+                  </div>
+                </div>
+
+                <div class="disc-skill">
+                  <div class="disc-skill-header">
+                    <span class="skill-number">2</span>
+                    <div class="disc-skill-title">
+                      <h5>Harmony Skill</h5>
+                      <h6>{character.disc.skills.harmony.name}</h6>
+                    </div>
+                  </div>
+                  <div class="skill-level">Lv. {character.disc.skills.harmony.level}</div>
+                  <div class="skill-description">
+                    <HighlightedText text={character.disc.skills.harmony.effect} />
+                  </div>
+                  <div class="skill-requirements">
+                    <h6>Activation Requirements:</h6>
+                    {Object.entries(character.disc.skills.harmony.requirements).map(
+                      ([melody, requirement]) => (
+                        <div class="requirement">
+                          <span class="melody-name">{melody}</span>
+                          <span class="requirement-level">{requirement}</span>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                <div class="disc-skill">
+                  <div class="disc-skill-header">
+                    <span class="skill-number">3</span>
+                    <div class="disc-skill-title">
+                      <h5>Skill</h5>
+                      <h6>{character.disc.skills.skill.name}</h6>
+                    </div>
+                  </div>
+                  <div class="skill-level">Lv. {character.disc.skills.skill.level}</div>
+                  <div class="skill-description">
+                    <HighlightedText text={character.disc.skills.skill.effect} />
+                  </div>
+                  <div class="skill-requirements">
+                    <h6>Activation Requirements:</h6>
+                    {Object.entries(character.disc.skills.skill.requirements).map(
+                      ([melody, requirement]) => (
+                        <div class="requirement">
+                          <span class="melody-name">{melody}</span>
+                          <span class="requirement-level">{requirement}</span>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="disc-card disc-support-card">
+              <h4>Support Section (Max Level 99 Only)</h4>
+              <div class="disc-support-content">
+                <div class="musical-notes-source">
+                  <h5>Musical Notes Source</h5>
+                  <p>
+                    Musical Notes are obtained through{' '}
+                    <strong>{character.disc.support.musicalNotesSource}</strong>.
+                  </p>
+                </div>
+
+                <div class="melodies">
+                  <div class="melody-item">
+                    <h5>Melody of Luck</h5>
+                    <p>
+                      <strong>Base Effect:</strong>{' '}
+                      {character.disc.support.melodies.luck.baseEffect}
+                    </p>
+                    <p>
+                      <strong>Max Level (Lv.99) Effect:</strong>{' '}
+                      {character.disc.support.melodies.luck.maxEffect}
+                    </p>
+                  </div>
+
+                  <div class="melody-item">
+                    <h5>Melody of Ultimate</h5>
+                    <p>
+                      <strong>Base Effect:</strong>{' '}
+                      {character.disc.support.melodies.ultimate.baseEffect}
+                    </p>
+                    <p>
+                      <strong>Max Level (Lv.99) Effect:</strong>{' '}
+                      {character.disc.support.melodies.ultimate.maxEffect}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- Character Tags -->
+    {
+      character.tags && character.tags.length > 0 && (
+        <section class="character-tags">
+          <h2>Tags & Traits</h2>
+          <div class="tags-list">
+            {character.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </div>
+</CharacterIndividualLayout>

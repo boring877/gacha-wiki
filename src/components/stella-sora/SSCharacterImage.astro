@@ -1,0 +1,45 @@
+---
+// Stella Sora Character Image Component
+// Import all character images once and use mapping like other games
+import { Image } from 'astro:assets';
+
+// Import all Stella Sora character images once
+import chitoseImage from '../../assets/images/games/stella-sora/gameimg/characters/Chitose.jpg';
+
+// Centralized character image mapping
+const characterImageMap = {
+  'Chitose.jpg': chitoseImage,
+};
+
+const {
+  imageName, // This is now a string name, not an image object
+  alt,
+  class: className = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 95,
+  width = 75,
+  height = 75,
+} = Astro.props;
+
+// Get the imported image object from the map
+let imageKey = imageName;
+
+// Add extension if missing
+if (!imageKey.includes('.')) {
+  imageKey = `${imageKey}.jpg`;
+}
+
+const imageSrc = characterImageMap[imageKey] || characterImageMap['Chitose.jpg'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={`${className} character-img-fill`}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

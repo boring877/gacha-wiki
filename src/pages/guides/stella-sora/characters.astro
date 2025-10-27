@@ -1,0 +1,219 @@
+---
+// Stella Sora Characters Database Page
+import CharactersLayout from '../../../layouts/stella-sora/CharactersLayout.astro';
+import CharacterFilterBar from '../../../components/stella-sora/CharacterFilterBar.astro';
+import SSCharacterImage from '../../../components/stella-sora/SSCharacterImage.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import { STELLA_SORA_CHARACTERS } from '../../../data/stella-sora/characters.js';
+
+// Sort characters by name initially
+const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<CharactersLayout
+  title="Stella Sora Character Database - Complete Character List & Stats"
+  description="Browse all Stella Sora characters with detailed stats, skills, and information. Filter by rarity, element, role, and more. Complete character database for Trekker collection."
+  gameTitle="Character Database"
+>
+  <section class="page-content">
+    <div class="content-wrapper">
+      <!-- Filter Bar -->
+      <CharacterFilterBar showFilters={true} />
+
+      <!-- Character Statistics -->
+      <div class="stats-overview">
+        <h2>Character Overview</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">{STELLA_SORA_CHARACTERS.length}</div>
+            <div class="stat-label">Total Characters</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">
+              {STELLA_SORA_CHARACTERS.filter(c => c.rarity === 'SSR').length}
+            </div>
+            <div class="stat-label">SSR Characters</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">
+              {STELLA_SORA_CHARACTERS.filter(c => c.rarity === 'SR').length}
+            </div>
+            <div class="stat-label">SR Characters</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Character Database -->
+      <div class="character-database">
+        <div class="database-header">
+          <h2>All Characters</h2>
+          <p class="database-description">
+            All stats shown at maximum stats. Click on any character to view detailed information.
+          </p>
+        </div>
+
+        <!-- Desktop Table View -->
+        <div class="character-table-container">
+          <table class="character-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Rarity</th>
+                <th>Element</th>
+                <th>Icon</th>
+                <th>Position</th>
+                <th>Faction</th>
+                <th>Trekker Style</th>
+                <th>HP</th>
+                <th>ATK</th>
+                <th>DEF</th>
+                <th>Crit%</th>
+                <th>Crit DMG</th>
+              </tr>
+            </thead>
+            <tbody id="character-table-body">
+              {
+                sortedCharacters.map((char, idx) => (
+                  <tr
+                    data-character-id={char.id}
+                    data-slug={char.slug}
+                    data-url={char.detailUrl}
+                    data-tags={char.tags ? char.tags.join(' ') : ''}
+                    style="cursor: pointer;"
+                    onclick="window.location.href = this.dataset.url"
+                  >
+                    <td>{idx + 1}</td>
+                    <td>
+                      <div class="character-image-container">
+                        <SSCharacterImage imageName={char.image} alt={char.name} />
+                      </div>
+                    </td>
+                    <td class="character-name">{char.name}</td>
+                    <td>
+                      <span
+                        class={`rarity-badge ${char.rarity.toLowerCase()}`}
+                        data-sort-key="rarity"
+                      >
+                        {char.rarity}
+                      </span>
+                    </td>
+                    <td>
+                      <span
+                        class={`element-badge element-${char.element.toLowerCase()}`}
+                        data-sort-key="element"
+                      >
+                        {char.element}
+                      </span>
+                    </td>
+                    <td>
+                      <div class="element-icon-container">
+                        <SSElementImage elementName={char.element} alt={char.element} />
+                      </div>
+                    </td>
+                    <td>
+                      <span
+                        class={`position-badge position-${char.role.toLowerCase()}`}
+                        data-sort-key="role"
+                      >
+                        {char.role}
+                      </span>
+                    </td>
+                    <td>{char.faction}</td>
+                    <td>{char.trekkerStyle}</td>
+                    <td data-sort-value={char.stats.hp}>{char.stats.hp.toLocaleString()}</td>
+                    <td data-sort-value={char.stats.attack}>
+                      {char.stats.attack.toLocaleString()}
+                    </td>
+                    <td data-sort-value={char.stats.defense}>
+                      {char.stats.defense.toLocaleString()}
+                    </td>
+                    <td data-sort-value={char.stats.critRate}>{char.stats.critRate}%</td>
+                    <td data-sort-value={char.stats.critDmg}>{char.stats.critDmg}%</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Card View -->
+        <div class="character-cards-container" id="character-cards">
+          {
+            sortedCharacters.map(char => (
+              <div
+                class="character-card"
+                data-character-id={char.id}
+                data-slug={char.slug}
+                data-detail-url={char.detailUrl}
+                onclick="window.location.href = this.dataset.detailUrl"
+              >
+                <div class="card-header">
+                  <div class="character-image-wrapper">
+                    <SSCharacterImage
+                      imageName={char.image}
+                      alt={char.name}
+                      width={80}
+                      height={80}
+                    />
+                    <div class="element-icon-overlay">
+                      <SSElementImage elementName={char.element} alt={char.element} />
+                    </div>
+                  </div>
+                  <div class="character-basic-info">
+                    <h3 class="character-name">{char.name}</h3>
+                    <div class="character-meta">
+                      <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+                      <span class={`element-badge element-${char.element.toLowerCase()}`}>
+                        {char.element}
+                      </span>
+                      <span class={`position-badge position-${char.role.toLowerCase()}`}>
+                        {char.role}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-stats">
+                  <div class="character-info">
+                    <div class="stat-row">
+                      <span class="stat-label">Position:</span> {char.role}
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-label">Style:</span> {char.trekkerStyle}
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-label">Faction:</span> {char.faction}
+                    </div>
+                  </div>
+
+                  <div class="combat-stats">
+                    <div class="stat-row">
+                      <span class="stat-label">HP:</span> {char.stats.hp.toLocaleString()}
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-label">ATK:</span> {char.stats.attack.toLocaleString()}
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-label">DEF:</span> {char.stats.defense.toLocaleString()}
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-label">Crit%:</span> {char.stats.critRate}%
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-label">Crit DMG:</span> {char.stats.critDmg}%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</CharactersLayout>
+
+<!-- Load the character database script with sorting and filtering functionality -->
+<script src="/scripts/stella-sora/character-database.js" defer></script>

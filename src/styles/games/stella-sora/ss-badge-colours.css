@@ -1,0 +1,320 @@
+/* Stella Sora Badge Colours CSS */
+/* All badge styling for Stella Sora characters and elements */
+
+/* Universal Badge System */
+.rarity-badge,
+.element-badge,
+.position-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
+  min-width: fit-content;
+  border: none;
+}
+
+/* Rarity Badges */
+.rarity-badge {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rarity-badge.ssr {
+  background: var(--ss-legendary);
+  color: var(--ss-text-primary);
+}
+
+.rarity-badge.sr {
+  background: var(--ss-epic);
+  color: var(--ss-text-primary);
+}
+
+.rarity-badge.r {
+  background: var(--ss-rare);
+  color: var(--ss-text-primary);
+}
+
+/* Element Badges */
+.element-badge {
+  font-weight: 600;
+  text-transform: capitalize;
+  border: none;
+}
+
+.element-fire {
+  background: var(--ss-error);
+  color: var(--ss-text-primary);
+}
+
+.element-water {
+  background: var(--ss-info);
+  color: var(--ss-text-primary);
+}
+
+.element-wind {
+  background: var(--ss-success);
+  color: var(--ss-text-primary);
+}
+
+.element-earth {
+  background: var(--ss-warning);
+  color: var(--ss-text-primary);
+}
+
+.element-light {
+  background: var(--ss-common);
+  color: var(--ss-bg-primary);
+}
+
+.element-dark {
+  background: var(--ss-mythic);
+  color: var(--ss-text-primary);
+}
+
+.element-aqua {
+  background: #0ea5e9;
+  color: var(--ss-text-primary);
+}
+
+/* Position Badges */
+.position-badge {
+  background: var(--ss-primary);
+  color: var(--ss-text-primary);
+  border: none;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+/* Specific Position Badge Styling */
+.position-dps {
+  background: var(--ss-error);
+}
+
+.position-tank {
+  background: var(--ss-warning);
+}
+
+.position-healer {
+  background: var(--ss-success);
+}
+
+.position-support {
+  background: var(--ss-info);
+}
+
+.position-buffer {
+  background: var(--ss-epic);
+}
+
+.position-vanguard {
+  background: #dc2626;
+  color: var(--ss-text-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Table-specific badge styling */
+.character-table .position-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+/* Element Badge Container - for badges with icons */
+.element-badge-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1875rem 0.375rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+}
+
+/* Icon Container Styling */
+.element-icon-container {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.element-img-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Badge integration with icon */
+.element-badge-container .element-badge {
+  padding: 0.1875rem 0.375rem;
+  font-size: 0.75rem;
+  border: none;
+  /* Remove background: transparent to allow element-specific colors */
+}
+
+/* Skill Type Badges */
+.skill-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  font-family: var(--font-primary);
+  line-height: 1.2;
+  position: relative;
+  overflow: hidden;
+  min-width: fit-content;
+}
+
+/* Skill type color coding - using SS color system */
+.skill-type-attack {
+  background: rgba(248, 113, 113, 0.25);
+  color: #f87171;
+}
+
+.skill-type-main-skill {
+  background: rgba(125, 211, 252, 0.25);
+  color: #7dd3fc;
+}
+
+.skill-type-support-skill {
+  background: rgba(110, 231, 183, 0.25);
+  color: #6ee7b7;
+}
+
+.skill-type-ultimate {
+  background: rgba(251, 191, 36, 0.25);
+  color: #fbbf24;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* Modern Skill Meta Badges (Level, Cooldown, Energy) */
+.skill-level,
+.skill-cooldown,
+.skill-energy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  border: none;
+  font-family: var(--font-primary);
+  line-height: 1.2;
+  letter-spacing: 0.025em;
+  position: relative;
+  overflow: hidden;
+  min-width: fit-content;
+}
+
+/* Skill Level Badge - Purple theme */
+.skill-level {
+  background: var(--ss-level-purple);
+  color: var(--ss-level-color);
+  border: 1px solid var(--ss-level-border);
+}
+
+/* Skill Cooldown Badge - Blue theme */
+.skill-cooldown {
+  background: rgba(96, 165, 250, 0.15);
+  color: #60a5fa;
+}
+
+/* Skill Energy Badge - Green theme */
+.skill-energy {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+}
+
+/* ===== MOBILE BADGE OPTIMIZATION ===== */
+
+@media (max-width: 768px) {
+  .rarity-badge,
+  .element-badge,
+  .position-badge {
+    padding: 0.3125rem 0.625rem;
+    font-size: 0.8125rem;
+  }
+
+  .skill-type {
+    padding: 0.4375rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+
+  .skill-level,
+  .skill-cooldown,
+  .skill-energy {
+    padding: 0.3125rem 0.625rem;
+    font-size: 0.8125rem;
+  }
+
+  .element-icon-container {
+    width: 20px;
+    height: 20px;
+  }
+
+  .element-badge-container {
+    gap: 0.3125rem;
+    padding: 0.1875rem 0.4375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rarity-badge,
+  .element-badge,
+  .position-badge {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .skill-type {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .skill-level,
+  .skill-cooldown,
+  .skill-energy {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .element-icon-container {
+    width: 18px;
+    height: 18px;
+  }
+
+  .element-badge-container {
+    gap: 0.25rem;
+    padding: 0.125rem 0.375rem;
+  }
+}
