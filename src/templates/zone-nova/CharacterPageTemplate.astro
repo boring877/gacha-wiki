@@ -40,6 +40,32 @@ const highlightedAwakenings = characterData.awakenings
     }))
   : characterData.awakenings;
 
+// Helper function to render skill with conditional state descriptions
+function renderSkillWithState(skill, highlightedSkill) {
+  const hasState = skill.frostAshDescription ||
+                   (skill.description && skill.description.includes('【Frost Ash】'));
+
+  if (hasState) {
+    return {
+      hasDescription: true,
+      hasState: true,
+      description: highlightedSkill.description,
+      stateDescription: skill.frostAshDescription
+        ? highlightSkillText(skill.frostAshDescription, defaultZNHighlightPatterns)
+        : null,
+      stateName: "【Frost Ash】State"
+    };
+  } else {
+    return {
+      hasDescription: true,
+      hasState: false,
+      description: highlightedSkill.description,
+      stateDescription: null,
+      stateName: null
+    };
+  }
+}
+
 // Helper function to categorize character tags for styling
 function getTagCategory(tag: string): string {
   const lowerTag = tag.toLowerCase();
@@ -301,55 +327,128 @@ function getTagCategory(tag: string): string {
 <section class="content-section skills-section">
   <h2 class="section-title">Skills</h2>
 
-  <div class="skill-card normal-attack">
-    <div class="skill-header">
-      <h3 class="skill-title">
-        {characterData.skills.normal.name}
-      </h3>
-      <span class="skill-badge normal-attack"> Normal Attack </span>
-    </div>
-    <p class="skill-description" set:html={highlightedSkills.normal.description} />
-  </div>
+  {
+    (() => {
+      const normalSkillData = renderSkillWithState(characterData.skills.normal, highlightedSkills.normal);
+      return (
+        <div class="skill-card normal-attack">
+          <div class="skill-header">
+            <h3 class="skill-title">
+              {characterData.skills.normal.name}
+            </h3>
+            <span class="skill-badge normal-attack"> Normal Attack </span>
+          </div>
+          {normalSkillData.hasDescription && (
+            <p class="skill-description" set:html={normalSkillData.description} />
+          )}
+          {normalSkillData.hasState && normalSkillData.stateDescription && (
+            <div class="skill-state-section">
+              <h4 class="skill-state-title">{normalSkillData.stateName}</h4>
+              <p class="skill-state-description" set:html={normalSkillData.stateDescription} />
+            </div>
+          )}
+        </div>
+      );
+    })()
+  }
 
-  <div class="skill-card auto-skill">
-    <div class="skill-header">
-      <h3 class="skill-title">
-        {characterData.skills.auto.name}
-      </h3>
-      <div class="skill-meta">
-        <span class="skill-badge auto-skill"> Auto Skill </span>
-        <span class="skill-cooldown">
-          Cooldown: {characterData.skills.auto.cooldown}
-        </span>
-      </div>
-    </div>
-    <p class="skill-description" set:html={highlightedSkills.auto.description} />
-  </div>
+  {
+    (() => {
+      const autoSkillData = renderSkillWithState(characterData.skills.auto, highlightedSkills.auto);
+      return (
+        <div class="skill-card auto-skill">
+          <div class="skill-header">
+            <h3 class="skill-title">
+              {characterData.skills.auto.name}
+            </h3>
+            <div class="skill-meta">
+              <span class="skill-badge auto-skill"> Auto Skill </span>
+              <span class="skill-cooldown">
+                Cooldown: {characterData.skills.auto.cooldown}
+              </span>
+            </div>
+          </div>
+          {autoSkillData.hasDescription && (
+            <p class="skill-description" set:html={autoSkillData.description} />
+          )}
+          {autoSkillData.hasState && autoSkillData.stateDescription && (
+            <div class="skill-state-section">
+              <h4 class="skill-state-title">{autoSkillData.stateName}</h4>
+              <p class="skill-state-description" set:html={autoSkillData.stateDescription} />
+            </div>
+          )}
+        </div>
+      );
+    })()
+  }
 
-  <div class="skill-card ultimate">
-    <div class="skill-header">
-      <h3 class="skill-title">
-        {characterData.skills.ultimate.name}
-      </h3>
-      <div class="skill-meta">
-        <span class="skill-badge ultimate"> Ultimate </span>
-        <span class="skill-cost">
-          Cost: {characterData.skills.ultimate.energyCost}
-        </span>
-      </div>
-    </div>
-    <p class="skill-description" set:html={highlightedSkills.ultimate.description} />
-  </div>
+  {
+    (() => {
+      const ultimateSkillData = renderSkillWithState(characterData.skills.ultimate, highlightedSkills.ultimate);
+      const hasAdditionalRules = characterData.skills.ultimate.additionalRules &&
+                                characterData.skills.ultimate.additionalRules.length > 0;
 
-  <div class="skill-card passive">
-    <div class="skill-header">
-      <h3 class="skill-title">
-        {characterData.skills.passive.name}
-      </h3>
-      <span class="skill-badge passive"> Passive </span>
-    </div>
-    <p class="skill-description" set:html={highlightedSkills.passive.description} />
-  </div>
+      return (
+        <div class="skill-card ultimate">
+          <div class="skill-header">
+            <h3 class="skill-title">
+              {characterData.skills.ultimate.name}
+            </h3>
+            <div class="skill-meta">
+              <span class="skill-badge ultimate"> Ultimate </span>
+              <span class="skill-cost">
+                Cost: {characterData.skills.ultimate.energyCost}
+              </span>
+            </div>
+          </div>
+          {ultimateSkillData.hasDescription && (
+            <p class="skill-description" set:html={ultimateSkillData.description} />
+          )}
+          {ultimateSkillData.hasState && ultimateSkillData.stateDescription && (
+            <div class="skill-state-section">
+              <h4 class="skill-state-title">{ultimateSkillData.stateName}</h4>
+              <p class="skill-state-description" set:html={ultimateSkillData.stateDescription} />
+            </div>
+          )}
+          {hasAdditionalRules && (
+            <div class="skill-additional-rules">
+              <h4 class="skill-additional-rules-title">Additional Rules</h4>
+              <ul class="skill-additional-rules-list">
+                {characterData.skills.ultimate.additionalRules.map((rule) => (
+                  <li class="skill-additional-rule-item" set:html={highlightSkillText(rule, defaultZNHighlightPatterns)} />
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      );
+    })()
+  }
+
+  {
+    (() => {
+      const passiveSkillData = renderSkillWithState(characterData.skills.passive, highlightedSkills.passive);
+      return (
+        <div class="skill-card passive">
+          <div class="skill-header">
+            <h3 class="skill-title">
+              {characterData.skills.passive.name}
+            </h3>
+            <span class="skill-badge passive"> Passive </span>
+          </div>
+          {passiveSkillData.hasDescription && (
+            <p class="skill-description" set:html={passiveSkillData.description} />
+          )}
+          {passiveSkillData.hasState && passiveSkillData.stateDescription && (
+            <div class="skill-state-section">
+              <h4 class="skill-state-title">{passiveSkillData.stateName}</h4>
+              <p class="skill-state-description" set:html={passiveSkillData.stateDescription} />
+            </div>
+          )}
+        </div>
+      );
+    })()
+  }
 
   <!-- Team Skill -->
   <div class="skill-card team-skill">
