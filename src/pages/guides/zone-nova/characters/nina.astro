@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { ninaData, ninaSEO } from '../../../../data/zone-nova/characters/nina.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={ninaSEO.title}
+  description={ninaSEO.description}
+  gameTitle={ninaData.name}
+  character={ninaData}
+>
+  <CharacterPageTemplate characterData={ninaData} />
+</CharacterIndividualLayout>

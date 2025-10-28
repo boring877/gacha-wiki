@@ -36,6 +36,7 @@ const {
   quality = 85,
   width = 1200,
   height = 2000,
+  sizes = '(max-width: 480px) 100vw, (max-width: 768px) 90vw, 1200px',
 } = Astro.props;
 
 // Get the imported image object from the map
@@ -43,16 +44,20 @@ const imageSrc = eventImageMap[imageName] || event1Image;
 ---
 
 <div class={`ss-event-image ${className}`}>
-  <Image
-    src={imageSrc}
-    alt={alt}
-    width={width}
-    height={height}
-    loading={loading}
-    format={format}
-    quality={quality}
-    style="object-fit: contain; border-radius: 8px; max-width: 100%; height: auto;"
-  />
+  <picture>
+    <source srcset={imageSrc.src} type="image/webp" sizes={sizes} />
+    <Image
+      src={imageSrc}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      format={format}
+      quality={quality}
+      sizes={sizes}
+      style="object-fit: contain; border-radius: 8px; max-width: 100%; height: auto;"
+    />
+  </picture>
 </div>
 
 <style>
@@ -65,6 +70,7 @@ const imageSrc = eventImageMap[imageName] || event1Image;
     padding: 1rem;
     border: 1px solid var(--ss-border-color);
     overflow-x: auto;
+    will-change: transform; /* Optimize for mobile animations */
   }
 
   .ss-event-image img {
@@ -72,5 +78,44 @@ const imageSrc = eventImageMap[imageName] || event1Image;
     height: auto;
     display: block;
     border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Mobile-specific image optimizations */
+  @media (max-width: 768px) {
+    .ss-event-image {
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ss-event-image img {
+      border-radius: 6px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ss-event-image {
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 100%;
+    }
+
+    .ss-event-image img {
+      border-radius: 4px;
+    }
+  }
+
+  /* Prevent horizontal scroll on small screens */
+  @media (max-width: 360px) {
+    .ss-event-image {
+      padding: 0.25rem;
+      border-radius: 8px;
+    }
+
+    .ss-event-image img {
+      border-radius: 4px;
+    }
   }
 </style>

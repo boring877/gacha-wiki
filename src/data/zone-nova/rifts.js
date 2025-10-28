@@ -12,6 +12,7 @@ import { riftXData } from './rifts/rift-x.js';
 import { rift11Data } from './rifts/rift-11.js';
 import { rift12Data } from './rifts/rift-12.js';
 import { rift13Data } from './rifts/rift-13.js';
+import { rift14Data } from './rifts/rift-14.js';
 
 // Rift status constants
 export const RIFT_STATUS = {
@@ -23,6 +24,7 @@ export const RIFT_STATUS = {
 
 // Main rifts data array - imported from individual files
 export const zoneNovaRifts = [
+  rift14Data,
   rift13Data,
   rift12Data,
   rift11Data,

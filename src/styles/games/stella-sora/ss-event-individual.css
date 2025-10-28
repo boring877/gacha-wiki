@@ -76,6 +76,18 @@
   width: 100%;
 }
 
+/* Typography Scaling */
+.title-only-heading {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.ss-info-content p {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  line-height: 1.6;
+}
+
 /* Mobile Optimization */
 @media (max-width: 768px) {
   .ss-event-individual-main {
@@ -88,6 +100,21 @@
 
   .ss-event-images-list {
     gap: 1.5rem;
+  }
+
+  /* Improved typography for tablets */
+  .ss-info-content p {
+    font-size: 0.95rem;
+  }
+
+  /* Enhanced touch interactions */
+  .ss-info-content {
+    min-height: 44px; /* Touch target size */
+    touch-action: manipulation;
+  }
+
+  .ss-event-image-item {
+    touch-action: pan-y pinch-zoom;
   }
 }
 
@@ -102,5 +129,81 @@
 
   .ss-event-images-list {
     gap: 1rem;
+  }
+
+  /* Enhanced typography for mobile */
+  .ss-info-content p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  /* Better spacing for small screens */
+  .ss-event-info-box {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Enhanced mobile touch interactions */
+  .ss-info-content {
+    min-height: 48px; /* Larger touch target for mobile */
+    margin: 0.5rem 0;
+    transition: transform 0.2s ease;
+  }
+
+  .ss-info-content:active {
+    transform: scale(0.98);
+  }
+
+  /* Improved image interaction */
+  .ss-event-image-item {
+    cursor: pointer;
+    margin: 0.25rem 0;
+  }
+
+  /* Better scroll behavior */
+  .ss-event-images-list {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 360px) {
+  .ss-event-individual-main {
+    padding: 0.75rem;
+  }
+
+  .ss-info-content {
+    padding: 0.5rem;
+  }
+
+  .ss-info-content p {
+    font-size: 0.85rem;
+  }
+
+  /* Extra small screen optimizations */
+  .ss-info-content {
+    min-height: 52px; /* Even larger touch targets */
+    margin: 0.75rem 0;
+  }
+
+  /* Smaller gaps for compact screens */
+  .ss-event-images-list {
+    gap: 0.75rem;
+  }
+
+  /* Ensure content is accessible on very small screens */
+  .title-only-heading {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    margin-bottom: 0.75rem;
+  }
+
+  /* Optimize mobile navigation spacing */
+  .ss-event-individual-body {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent content jump when mobile menu opens */
+  .ss-event-individual-content {
+    transition: margin-right 0.3s ease;
   }
 }

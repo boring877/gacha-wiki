@@ -34,10 +34,16 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-10-27',
+  lastUpdated: '2025-10-28',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
-    SSS: [{ name: 'Guinevere' }, { name: 'Athena' }, { name: 'Freya' }, { name: 'Hela' }],
+    SSS: [
+      { name: 'Guinevere' },
+      { name: 'Athena' },
+      { name: 'Freya' },
+      { name: 'Hela' },
+      { name: 'Gaia' },
+    ],
     SS: [
       { name: 'Yuis' },
       { name: 'Thor' },
@@ -45,7 +51,6 @@ export const PVE_TIER_LIST = {
       { name: 'Freye' },
       { name: 'Chiya' },
       { name: 'Apollo' },
-      { name: 'Gaia' },
       { name: 'Leviathan' },
       { name: 'Naiya' },
       { name: 'Penny' },
@@ -131,7 +136,7 @@ export const PVP_TIER_LIST = {
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2025-10-18',
+  lastUpdated: '2025-10-28',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -144,10 +149,10 @@ export const RIFT_TIER_LIST = {
       { name: 'Thor' },
       { name: 'Freya' },
       { name: 'Hela' },
+      { name: 'Gaia' },
     ],
     SS: [
       { name: 'Freye' },
-      { name: 'Gaia' },
       { name: 'Jeanne D Arc' },
       { name: 'Penny' },
       { name: 'Chiya' },
