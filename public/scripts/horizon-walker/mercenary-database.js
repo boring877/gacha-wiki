@@ -1,482 +1,376 @@
 /**
- * Horizon Walker Mercenary Database JavaScript.
- * Handles filtering, sorting, and interaction logic for the mercenary database
- * Based on character-database.js structure
+ * ═══════════════════════════════════════════════════════════════════════
+ *                HORIZON WALKER MERCENARY DATABASE SCRIPT
+ *              Interactive functionality for mercenary database
+ * ═══════════════════════════════════════════════════════════════════════
  */
 
-'use strict';
-
-// Function to initialize - run immediately or when DOM is ready
-const initialize = () => {
-  // --- DOM references ---
-  const tableBody = document.getElementById('character-table-body');
-  const mobileCardsContainer = document.getElementById('mobile-cards-container');
-  const rarityFilter = document.getElementById('rarity-filter');
-  const useabilityFilter = document.getElementById('useability-filter');
-  const sortButtons = document.querySelectorAll('.sort-btn');
-  const resetButton = document.getElementById('reset-table');
-
-  // --- State ---
-  let currentSortKey = 'name';
-  let currentSortDirection = 'asc';
-
-  // Sort button states: normal -> asc -> desc -> normal (3-state cycle)
-  const filterStates = new Map();
-
-  // Early exit if required elements don't exist
-  if (!tableBody || !mobileCardsContainer) {
-    return;
-  }
-
-  // --- Helper Functions ---
-
-  /**
-   * Renumbers visible table rows sequentially
-   * Used after filtering to maintain proper row numbering
-   */
-  function renumberRows() {
-    let visibleIndex = 1;
-    Array.from(tableBody.children).forEach(row => {
-      if (row.style.display !== 'none') {
-        const firstCell = row.querySelector('td');
-        if (firstCell) {
-          firstCell.textContent = String(visibleIndex++);
-        }
-      }
-    });
-  }
-
-  /**
-   * Sorts elements numerically by specified criteria
-   * @param items - Array of DOM elements to sort
-   * @param columnIndex - Table column index for desktop sorting
-   * @param isDesktop - Whether sorting desktop table or mobile cards
-   * @returns Sorted array of elements
-   */
-  function sortByNumeric(items, columnIndex, isDesktop = true) {
-    return items.sort((a, b) => {
-      let valueA, valueB;
-
-      if (isDesktop) {
-        const cellA = a.querySelector(`td:nth-child(${columnIndex})`);
-        const cellB = b.querySelector(`td:nth-child(${columnIndex})`);
-        valueA = parseFloat((cellA?.textContent || '0').replace(/[,%]/g, ''));
-        valueB = parseFloat((cellB?.textContent || '0').replace(/[,%]/g, ''));
-      } else {
-        // Mobile cards - need to find the corresponding stat
-        const statLabelA = a.querySelector(`[data-stat="${currentSortKey}"]`);
-        const statLabelB = b.querySelector(`[data-stat="${currentSortKey}"]`);
-        valueA = parseFloat((statLabelA?.textContent || '0').replace(/[,%]/g, ''));
-        valueB = parseFloat((statLabelB?.textContent || '0').replace(/[,%]/g, ''));
-      }
-
-      return currentSortDirection === 'desc' ? valueB - valueA : valueA - valueB;
-    });
-  }
-
-  /**
-   * Applies sorting to both desktop table and mobile cards
-   * @param sortKey - The data attribute key to sort by
-   */
-  function applySort(sortKey) {
-    currentSortKey = sortKey;
-
-    // Sort desktop table
-    if (tableBody) {
-      const rows = Array.from(tableBody.children);
-      let sortedRows;
-
-      if (sortKey === 'name') {
-        // Sort by mercenary name
-        sortedRows = rows.sort((a, b) => {
-          const nameA = a.querySelector('.character-name')?.textContent || '';
-          const nameB = b.querySelector('.character-name')?.textContent || '';
-          return currentSortDirection === 'desc'
-            ? nameB.localeCompare(nameA)
-            : nameA.localeCompare(nameB);
-        });
-      } else if (sortKey === 'rarity') {
-        // Sort by rarity (special ordering: EX > SS > S > A > B)
-        const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
-        sortedRows = rows.sort((a, b) => {
-          const rarityA = a.querySelector('.hw-badge[data-rarity]')?.textContent?.trim() || '';
-          const rarityB = b.querySelector('.hw-badge[data-rarity]')?.textContent?.trim() || '';
-          const valueA = rarityOrder[rarityA] || 0;
-          const valueB = rarityOrder[rarityB] || 0;
-          return currentSortDirection === 'desc' ? valueB - valueA : valueA - valueB;
-        });
-      } else if (sortKey === 'useability') {
-        // Sort by useability text
-        sortedRows = rows.sort((a, b) => {
-          const useabilityA = a.querySelector('.useability-value')?.textContent || '';
-          const useabilityB = b.querySelector('.useability-value')?.textContent || '';
-          return currentSortDirection === 'desc'
-            ? useabilityB.localeCompare(useabilityA)
-            : useabilityA.localeCompare(useabilityB);
-        });
-      } else {
-        // Sort by data attribute instead of column index
-        sortedRows = rows.sort((a, b) => {
-          const cellA = a.querySelector(`td[data-sort-key="${sortKey}"]`);
-          const cellB = b.querySelector(`td[data-sort-key="${sortKey}"]`);
-
-          if (!cellA || !cellB) return 0;
-
-          // Get the actual value from the cell content
-          const valueA = parseFloat((cellA.textContent || '0').replace(/[,%]/g, ''));
-          const valueB = parseFloat((cellB.textContent || '0').replace(/[,%]/g, ''));
-
-          return currentSortDirection === 'desc' ? valueB - valueA : valueA - valueB;
-        });
-      }
-
-      // Re-append sorted rows
-      sortedRows.forEach(row => tableBody.appendChild(row));
-      renumberRows();
-    }
-
-    // Sort mobile cards
-    if (mobileCardsContainer) {
-      const cards = Array.from(mobileCardsContainer.children);
-      let sortedCards;
-
-      if (sortKey === 'name') {
-        // Name sorting for mobile cards - simple alphabetical
-        sortedCards = cards.sort((a, b) => {
-          const nameA = a.querySelector('.character-name')?.textContent || '';
-          const nameB = b.querySelector('.character-name')?.textContent || '';
-          return currentSortDirection === 'desc'
-            ? nameB.localeCompare(nameA)
-            : nameA.localeCompare(nameB);
-        });
-      } else if (sortKey === 'rarity') {
-        // Sort by rarity (special ordering: EX > SS > S > A > B)
-        const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
-        sortedCards = cards.sort((a, b) => {
-          const rarityA = a.querySelector('.hw-badge[data-rarity]')?.textContent?.trim() || '';
-          const rarityB = b.querySelector('.hw-badge[data-rarity]')?.textContent?.trim() || '';
-          const valueA = rarityOrder[rarityA] || 0;
-          const valueB = rarityOrder[rarityB] || 0;
-          return currentSortDirection === 'desc' ? valueB - valueA : valueA - valueB;
-        });
-      } else if (sortKey === 'cost') {
-        // Sort by cost for mobile cards
-        sortedCards = cards.sort((a, b) => {
-          const costA = parseInt(
-            a.querySelector('.cost-badge')?.textContent?.replace(/[^0-9]/g, '') || '0'
-          );
-          const costB = parseInt(
-            b.querySelector('.cost-badge')?.textContent?.replace(/[^0-9]/g, '') || '0'
-          );
-          return currentSortDirection === 'desc' ? costB - costA : costA - costB;
-        });
-      } else if (sortKey === 'useability') {
-        // Sort by useability for mobile cards
-        sortedCards = cards.sort((a, b) => {
-          const useabilityA = a.querySelector('[data-stat="useability"]')?.textContent || '';
-          const useabilityB = b.querySelector('[data-stat="useability"]')?.textContent || '';
-          return currentSortDirection === 'desc'
-            ? useabilityB.localeCompare(useabilityA)
-            : useabilityA.localeCompare(useabilityB);
-        });
-      } else {
-        sortedCards = sortByNumeric(cards, 0, false);
-      }
-
-      // Re-append sorted cards
-      sortedCards.forEach(card => mobileCardsContainer.appendChild(card));
-    }
-
-    // Save sort state to sessionStorage
-    try {
-      sessionStorage.setItem(
-        'hw-mercenary-sort',
-        JSON.stringify({
-          key: currentSortKey,
-          direction: currentSortDirection,
-        })
-      );
-    } catch (_error) {
-      // Ignore storage errors
-    }
-  }
-
-  /**
-   * Applies current filter settings to both desktop and mobile views
-   * Filters by rarity and useability, saves state to sessionStorage
-   */
-  function applyFilters() {
-    const rarityValue = rarityFilter?.value || '';
-    const useabilityValue = useabilityFilter?.value || '';
-
-    // Filter desktop table rows
-    if (tableBody) {
-      Array.from(tableBody.children).forEach(row => {
-        const rarityCell = row.querySelector('.hw-badge[data-rarity]');
-        const useabilityCell = row.querySelector('.useability-value');
-
-        const matchesRarity = !rarityValue || rarityCell?.textContent.trim() === rarityValue;
-        const matchesUseability =
-          !useabilityValue || useabilityCell?.textContent.trim() === useabilityValue;
-
-        const isVisible = matchesRarity && matchesUseability;
-        row.style.display = isVisible ? '' : 'none';
-      });
-
-      renumberRows();
-    }
-
-    // Filter mobile cards
-    if (mobileCardsContainer) {
-      Array.from(mobileCardsContainer.children).forEach(card => {
-        const rarityBadge = card.querySelector('.hw-badge[data-rarity]');
-        const useabilitySpan = card.querySelector('[data-stat="useability"]');
-
-        const matchesRarity = !rarityValue || rarityBadge?.textContent.trim() === rarityValue;
-        const matchesUseability =
-          !useabilityValue || useabilitySpan?.textContent.trim() === useabilityValue;
-
-        const isVisible = matchesRarity && matchesUseability;
-        card.style.display = isVisible ? '' : 'none';
-      });
-    }
-
-    // Save filter state to sessionStorage
-    const filterState = {
-      rarity: rarityValue || null,
-      useability: useabilityValue || null,
+class MercenaryDatabase {
+  constructor() {
+    this.mercenaries = [];
+    this.filteredMercenaries = [];
+    this.currentFilters = {
+      search: '',
+      rarity: 'all',
+    };
+    this.currentSort = {
+      field: 'name',
+      order: 'asc',
     };
 
-    const activeFilters = {};
-    Object.keys(filterState).forEach(key => {
-      if (filterState[key]) {
-        activeFilters[key] = filterState[key];
-      }
-    });
-
-    try {
-      if (Object.keys(activeFilters).length > 0) {
-        sessionStorage.setItem('hw-mercenary-filters', JSON.stringify(activeFilters));
-      } else {
-        sessionStorage.removeItem('hw-mercenary-filters');
-      }
-    } catch (_error) {
-      // Ignore storage errors
-    }
+    this.init();
   }
 
-  /**
-   * Resets all filters and sorting to default state
-   * Clears sessionStorage and shows all mercenaries
-   */
-  function resetDatabase() {
-    // Clear all filters
-    if (rarityFilter) rarityFilter.value = '';
-    if (useabilityFilter) useabilityFilter.value = '';
+  init() {
+    this.loadMercenaries();
+    this.bindEvents();
+    this.initializeFilters();
+    this.applyFiltersAndSort();
+  }
 
-    // Show all rows and cards
-    if (tableBody) {
-      Array.from(tableBody.children).forEach(row => {
-        row.style.display = '';
+  loadMercenaries() {
+    // Get mercenaries from the rendered DOM
+    const mercenaryCards = document.querySelectorAll('.hw-mercenary-card');
+    this.mercenaries = Array.from(mercenaryCards).map(card => ({
+      element: card,
+      name: card.querySelector('.hw-mercenary-name')?.textContent?.trim() || '',
+      rarity: card.getAttribute('data-rarity') || '',
+      cost: parseInt(card.getAttribute('data-cost') || '0'),
+      tags: (card.getAttribute('data-tags') || '').split(',').filter(tag => tag.trim()),
+    }));
+
+    this.filteredMercenaries = [...this.mercenaries];
+  }
+
+  bindEvents() {
+    // Search input
+    const searchInput = document.getElementById('mercenary-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', e => {
+        this.currentFilters.search = e.target.value.toLowerCase();
+        this.applyFiltersAndSort();
       });
     }
 
-    if (mobileCardsContainer) {
-      Array.from(mobileCardsContainer.children).forEach(card => {
-        card.style.display = '';
+    // Filter buttons
+    this.bindFilterButtons('.hw-rarity-btn', 'rarity');
+
+    // Sort select
+    const sortSelect = document.getElementById('mercenary-sort');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', e => {
+        const [field, order] = e.target.value.split('-');
+        this.currentSort = { field, order };
+        this.applyFiltersAndSort();
       });
     }
 
-    // Reset sort button states
-    sortButtons.forEach(btn => {
-      btn.classList.remove('active');
-      filterStates.set(btn, 'normal');
-
-      // Clear sort indicators from button text
-      const baseText = btn.textContent.replace(/ [↑↓]$/, '');
-      btn.textContent = baseText;
-    });
-
-    // Clear sessionStorage
-    try {
-      sessionStorage.removeItem('hw-mercenary-filters');
-      sessionStorage.removeItem('hw-mercenary-sort');
-    } catch (_error) {
-      // Ignore storage errors
+    // Clear filters button
+    const clearFiltersBtn = document.getElementById('clear-filters');
+    if (clearFiltersBtn) {
+      clearFiltersBtn.addEventListener('click', () => {
+        this.clearAllFilters();
+      });
     }
-
-    // Reset to default sort (name ascending)
-    currentSortKey = 'name';
-    currentSortDirection = 'asc';
-
-    // Apply default sort
-    applySort('name');
-
-    // Renumber both table rows and reset display order
-    renumberRows();
   }
 
-  function restoreState() {
-    // Restore filter state
-    try {
-      const savedFilters = sessionStorage.getItem('hw-mercenary-filters');
-      if (savedFilters) {
-        const filters = JSON.parse(savedFilters);
-        if (filters.rarity && rarityFilter) rarityFilter.value = filters.rarity;
-        if (filters.useability && useabilityFilter) useabilityFilter.value = filters.useability;
-        applyFilters();
-      }
-    } catch (_error) {
-      // Ignore storage errors
-    }
+  bindFilterButtons(selector, filterType) {
+    const buttons = document.querySelectorAll(selector);
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from siblings
+        buttons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
 
-    // Restore sort state
-    try {
-      const savedSort = sessionStorage.getItem('hw-mercenary-sort');
-      if (savedSort) {
-        const sortState = JSON.parse(savedSort);
-        currentSortKey = sortState.key || 'name';
-        currentSortDirection = sortState.direction || 'asc';
+        // Update filter
+        this.currentFilters[filterType] = button.getAttribute('data-' + filterType) || 'all';
+        this.applyFiltersAndSort();
+      });
+    });
+  }
 
-        const activeButton = document.querySelector(`[data-sort="${currentSortKey}"]`);
-        if (activeButton) {
-          // Update button visual state
-          activeButton.classList.add('active');
-          filterStates.set(activeButton, currentSortDirection);
+  initializeFilters() {
+    // Set initial active states
+    document.querySelector('[data-rarity="all"]')?.classList.add('active');
+  }
 
-          // Update visual indicator in button text
-          const baseText = activeButton.textContent.replace(/ [↑↓]$/, '');
-          if (currentSortDirection === 'desc') {
-            activeButton.textContent = baseText + ' ↑'; // Highest first
-          } else if (currentSortDirection === 'asc') {
-            activeButton.textContent = baseText + ' ↓'; // Lowest first
-          }
+  applyFiltersAndSort() {
+    // Apply filters
+    this.filteredMercenaries = this.mercenaries.filter(mercenary => {
+      // Search filter
+      if (this.currentFilters.search) {
+        const searchTerm = this.currentFilters.search;
+        const searchableText = [mercenary.name, mercenary.rarity, ...mercenary.tags]
+          .join(' ')
+          .toLowerCase();
 
-          applySort(currentSortKey);
+        if (!searchableText.includes(searchTerm)) {
+          return false;
         }
       }
-    } catch (_error) {
-      // Ignore storage errors
+
+      // Rarity filter
+      if (this.currentFilters.rarity !== 'all' && mercenary.rarity !== this.currentFilters.rarity) {
+        return false;
+      }
+
+      // Additional filters removed since fields were cleaned up
+
+      return true;
+    });
+
+    // Apply sorting
+    this.filteredMercenaries.sort((a, b) => {
+      let aValue, bValue;
+
+      switch (this.currentSort.field) {
+        case 'name':
+          aValue = a.name;
+          bValue = b.name;
+          break;
+        case 'rarity': {
+          // Custom rarity order: EX > SS > S > A > B
+          const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+          aValue = rarityOrder[a.rarity] || 0;
+          bValue = rarityOrder[b.rarity] || 0;
+          break;
+        }
+        case 'cost':
+          aValue = a.cost;
+          bValue = b.cost;
+          break;
+        // Removed sort cases for fields that no longer exist
+        default:
+          aValue = a.name;
+          bValue = b.name;
+      }
+
+      // Compare values
+      if (typeof aValue === 'string') {
+        const comparison = aValue.localeCompare(bValue);
+        return this.currentSort.order === 'asc' ? comparison : -comparison;
+      } else {
+        const comparison = aValue - bValue;
+        return this.currentSort.order === 'asc' ? comparison : -comparison;
+      }
+    });
+
+    this.updateDisplay();
+    this.updateStats();
+  }
+
+  updateDisplay() {
+    const container = document.getElementById('mercenary-grid');
+    if (!container) return;
+
+    // Hide all mercenaries
+    this.mercenaries.forEach(mercenary => {
+      mercenary.element.style.display = 'none';
+    });
+
+    // Show filtered mercenaries
+    this.filteredMercenaries.forEach(mercenary => {
+      mercenary.element.style.display = 'block';
+    });
+
+    // Update results count
+    this.updateResultsCount();
+
+    // Show/hide no results message
+    this.toggleNoResultsMessage();
+  }
+
+  updateResultsCount() {
+    const countElement = document.getElementById('results-count');
+    if (countElement) {
+      const total = this.mercenaries.length;
+      const filtered = this.filteredMercenaries.length;
+      countElement.textContent = `Showing ${filtered} of ${total} mercenaries`;
     }
   }
 
-  // --- Three-State Sort Button Functions ---
-  function initializeSortStates() {
-    sortButtons.forEach(btn => {
-      filterStates.set(btn, 'normal');
+  toggleNoResultsMessage() {
+    const noResultsElement = document.getElementById('no-results');
+    if (noResultsElement) {
+      if (this.filteredMercenaries.length === 0) {
+        noResultsElement.style.display = 'block';
+      } else {
+        noResultsElement.style.display = 'none';
+      }
+    }
+  }
+
+  updateStats() {
+    // Update filter counts if elements exist
+    const stats = this.calculateStats();
+
+    Object.entries(stats).forEach(([category, counts]) => {
+      Object.entries(counts).forEach(([key, count]) => {
+        const element = document.querySelector(`[data-stat="${category}-${key}"]`);
+        if (element) {
+          element.textContent = count;
+        }
+      });
     });
   }
 
-  function cycleSortState(sortButton) {
-    const currentState = filterStates.get(sortButton);
-    let nextState;
+  calculateStats() {
+    const stats = {
+      rarity: {},
+      class: {},
+      element: {},
+      faction: {},
+      useability: {},
+    };
 
-    switch (currentState) {
-      case 'normal':
-        nextState = 'desc'; // First click = highest values (↓ arrow)
-        break;
-      case 'desc':
-        nextState = 'asc'; // Second click = lowest values (↑ arrow)
-        break;
-      case 'asc':
-        nextState = 'normal'; // Third click = back to normal
-        break;
-      default:
-        nextState = 'normal';
-    }
+    this.filteredMercenaries.forEach(mercenary => {
+      // Count by rarity
+      stats.rarity[mercenary.rarity] = (stats.rarity[mercenary.rarity] || 0) + 1;
 
-    // Reset all other sort buttons to normal
-    sortButtons.forEach(btn => {
-      if (btn !== sortButton) {
-        btn.classList.remove('active');
-        filterStates.set(btn, 'normal');
-      }
+      // Count by class
+      stats.class[mercenary.class] = (stats.class[mercenary.class] || 0) + 1;
+
+      // Count by element
+      stats.element[mercenary.element] = (stats.element[mercenary.element] || 0) + 1;
+
+      // Count by faction
+      stats.faction[mercenary.faction] = (stats.faction[mercenary.faction] || 0) + 1;
+
+      // Count by useability
+      stats.useability[mercenary.useability] = (stats.useability[mercenary.useability] || 0) + 1;
     });
 
-    // Update clicked button state
-    if (nextState !== 'normal') {
-      sortButton.classList.add('active');
-      // Add visual indicator text to button
-      const existingIndicator = sortButton.textContent.match(/ [↑↓]$/);
-      const baseText = sortButton.textContent.replace(/ [↑↓]$/, '');
-      if (nextState === 'desc') {
-        sortButton.textContent = baseText + ' ↑'; // Highest first
-      } else if (nextState === 'asc') {
-        sortButton.textContent = baseText + ' ↓'; // Lowest first
-      }
-    } else {
-      sortButton.classList.remove('active');
-      // Remove visual indicator
-      const baseText = sortButton.textContent.replace(/ [↑↓]$/, '');
-      sortButton.textContent = baseText;
-    }
-
-    filterStates.set(sortButton, nextState);
-
-    // Apply sorting based on new state
-    if (nextState !== 'normal') {
-      const sortKey = sortButton.dataset.sort;
-      if (sortKey) {
-        currentSortKey = sortKey;
-        currentSortDirection = nextState; // 'asc' or 'desc'
-        applySort(sortKey);
-      }
-    }
+    return stats;
   }
 
-  // --- Event Listeners ---
+  clearAllFilters() {
+    // Reset filters
+    this.currentFilters = {
+      search: '',
+      rarity: 'all',
+      class: 'all',
+      element: 'all',
+      faction: 'all',
+      useability: 'all',
+    };
 
-  // Initialize sort button states
-  initializeSortStates();
+    // Reset sort
+    this.currentSort = {
+      field: 'name',
+      order: 'asc',
+    };
 
-  // Filter event listeners
-  if (rarityFilter) {
-    rarityFilter.addEventListener('change', applyFilters);
-  }
+    // Update UI
+    const searchInput = document.getElementById('mercenary-search');
+    if (searchInput) searchInput.value = '';
 
-  if (useabilityFilter) {
-    useabilityFilter.addEventListener('change', applyFilters);
-  }
+    const sortSelect = document.getElementById('mercenary-sort');
+    if (sortSelect) sortSelect.value = 'name-asc';
 
-  // Three-state sort button event listeners
-  sortButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      cycleSortState(btn);
+    // Reset all filter buttons
+    document.querySelectorAll('.hw-filter-btn').forEach(btn => {
+      btn.classList.remove('active');
     });
-  });
 
-  // Reset button event listener
-  if (resetButton) {
-    resetButton.addEventListener('click', resetDatabase);
+    // Activate "all" buttons
+    document
+      .querySelectorAll(
+        '[data-rarity="all"], [data-class="all"], [data-element="all"], [data-faction="all"], [data-useability="all"]'
+      )
+      .forEach(btn => {
+        btn.classList.add('active');
+      });
+
+    // Reapply filters
+    this.applyFiltersAndSort();
   }
 
-  // Mercenary card/row click navigation with touch optimization
-  // Use event delegation to handle both existing and future elements
-  document.addEventListener('click', e => {
-    const clickableElement = e.target?.closest('[data-url]');
-    if (clickableElement) {
-      e.preventDefault();
-      const url = clickableElement.dataset.url;
-      if (url) {
-        window.location.href = url;
-      }
-    }
-  });
+  // Export functionality for external use
+  exportFilteredData() {
+    return this.filteredMercenaries.map(mercenary => ({
+      name: mercenary.name,
+      rarity: mercenary.rarity,
+      class: mercenary.class,
+      element: mercenary.element,
+      faction: mercenary.faction,
+      useability: mercenary.useability,
+      cost: mercenary.cost,
+      tags: mercenary.tags,
+    }));
+  }
 
-  // Also set styles for existing elements
-  const clickableElements = document.querySelectorAll('[data-url]');
-  clickableElements.forEach(element => {
-    element.style.cursor = 'pointer';
-    element.style.touchAction = 'manipulation';
-  });
+  // Get current filter state
+  getCurrentFilters() {
+    return { ...this.currentFilters };
+  }
 
-  // Initialize with restored state
-  restoreState();
+  // Get current sort state
+  getCurrentSort() {
+    return { ...this.currentSort };
+  }
+}
+
+// Utility functions for external use
+window.MercenaryUtils = {
+  // Format rarity for display
+  formatRarity: rarity => {
+    const rarityMap = {
+      EX: 'EX',
+      SS: 'SS',
+      S: 'S',
+      A: 'A',
+      B: 'B',
+    };
+    return rarityMap[rarity] || rarity;
+  },
+
+  // Get rarity color
+  getRarityColor: rarity => {
+    const colorMap = {
+      EX: '#ff6b6b',
+      SS: '#ffd93d',
+      S: '#6bcf7f',
+      A: '#4dabf7',
+      B: '#dee2e6',
+    };
+    return colorMap[rarity] || '#dee2e6';
+  },
+
+  // Format cost display
+  formatCost: cost => {
+    return `${cost} Cost`;
+  },
+
+  // Get element icon
+  getElementIcon: element => {
+    const iconMap = {
+      Physical: '⚔️',
+      Magic: '✨',
+      Fire: '🔥',
+      Ice: '❄️',
+      Lightning: '⚡',
+      Dark: '🌑',
+      Light: '☀️',
+    };
+    return iconMap[element] || '❓';
+  },
 };
 
-// Run initialization - either immediately if DOM is ready, or wait for it
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initialize);
-} else {
-  initialize();
-}
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  // Only initialize if we're on the mercenary database page
+  if (document.getElementById('mercenary-grid')) {
+    window.mercenaryDatabase = new MercenaryDatabase();
+  }
+});
+
+// Handle browser back/forward navigation
+window.addEventListener('popstate', () => {
+  if (window.mercenaryDatabase) {
+    window.mercenaryDatabase.applyFiltersAndSort();
+  }
+});
+
+// Export for external use
+window.MercenaryDatabase = MercenaryDatabase;

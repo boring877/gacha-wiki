@@ -24,20 +24,36 @@
 .rarity-badge {
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--ss-border-subtle);
 }
 
-.rarity-badge.ssr {
-  background: var(--ss-legendary);
+.rarity-badge.five-star,
+.rarity-badge.four-star,
+.rarity-badge.three-star,
+.rarity-badge.\35-star,
+.rarity-badge.\34-star,
+.rarity-badge.\33-star {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.rarity-badge.five-star,
+.rarity-badge.\35-star {
+  background: var(--ss-five-star);
   color: var(--ss-text-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.rarity-badge.sr {
+.rarity-badge.four-star,
+.rarity-badge.\34-star {
   background: var(--ss-epic);
   color: var(--ss-text-primary);
 }
 
-.rarity-badge.r {
+.rarity-badge.three-star,
+.rarity-badge.\33-star {
   background: var(--ss-rare);
   color: var(--ss-text-primary);
 }
@@ -49,39 +65,16 @@
   border: none;
 }
 
-.element-fire {
-  background: var(--ss-error);
-  color: var(--ss-text-primary);
-}
-
-.element-water {
-  background: var(--ss-info);
-  color: var(--ss-text-primary);
-}
-
-.element-wind {
-  background: var(--ss-success);
-  color: var(--ss-text-primary);
-}
-
-.element-earth {
-  background: var(--ss-warning);
-  color: var(--ss-text-primary);
-}
-
-.element-light {
-  background: var(--ss-common);
-  color: var(--ss-bg-primary);
-}
-
-.element-dark {
-  background: var(--ss-mythic);
-  color: var(--ss-text-primary);
-}
+/* Unused element badges removed - only Aqua and Lux are used by actual characters */
 
 .element-aqua {
-  background: #0ea5e9;
+  background: var(--ss-primary-dark);
   color: var(--ss-text-primary);
+}
+
+.element-lux {
+  background: var(--ss-element-lux);
+  color: var(--ss-bg-primary);
 }
 
 /* Position Badges */
@@ -93,33 +86,29 @@
   font-weight: 600;
 }
 
-/* Specific Position Badge Styling */
-.position-dps {
-  background: var(--ss-error);
-}
-
-.position-tank {
-  background: var(--ss-warning);
-}
-
-.position-healer {
-  background: var(--ss-success);
-}
-
-.position-support {
-  background: var(--ss-info);
-}
-
-.position-buffer {
-  background: var(--ss-epic);
-}
-
+/* Only Vanguard role exists in actual character data */
 .position-vanguard {
-  background: #dc2626;
+  background: var(--ss-primary-dark);
   color: var(--ss-text-primary);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+/* Style Badges */
+.style-badge {
+  background: var(--ss-tertiary);
+  color: var(--ss-text-primary);
+  border: none;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+/* Style badge specific themes */
+.style-badge.empty {
+  background: transparent;
+  color: var(--ss-text-secondary);
+  border: 1px dashed var(--ss-border-subtle);
 }
 
 /* Table-specific badge styling */
@@ -142,21 +131,11 @@
   gap: 0.25rem;
   padding: 0.1875rem 0.375rem;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--ss-white-opacity-05);
   border: none;
 }
 
-/* Icon Container Styling */
-.element-icon-container {
-  width: 18px;
-  height: 18px;
-  border-radius: 4px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
+/* Icon Container Styling - MOVED TO ss-character-database.css for single source of truth */
 
 .element-img-fill {
   width: 100%;
@@ -194,23 +173,23 @@
 
 /* Skill type color coding - using SS color system */
 .skill-type-attack {
-  background: rgba(248, 113, 113, 0.25);
-  color: #f87171;
+  background: var(--ss-error-opacity-25);
+  color: var(--ss-error);
 }
 
 .skill-type-main-skill {
-  background: rgba(125, 211, 252, 0.25);
-  color: #7dd3fc;
+  background: var(--ss-primary-opacity-25);
+  color: var(--ss-primary);
 }
 
 .skill-type-support-skill {
-  background: rgba(110, 231, 183, 0.25);
-  color: #6ee7b7;
+  background: var(--ss-accent-opacity-25);
+  color: var(--ss-accent);
 }
 
 .skill-type-ultimate {
-  background: rgba(251, 191, 36, 0.25);
-  color: #fbbf24;
+  background: var(--ss-legendary-opacity-25);
+  color: var(--ss-legendary);
   font-weight: 700;
   letter-spacing: 0.1em;
 }
@@ -245,14 +224,14 @@
 
 /* Skill Cooldown Badge - Blue theme */
 .skill-cooldown {
-  background: rgba(96, 165, 250, 0.15);
-  color: #60a5fa;
+  background: var(--ss-info-opacity-15);
+  color: var(--ss-info);
 }
 
 /* Skill Energy Badge - Green theme */
 .skill-energy {
-  background: rgba(52, 211, 153, 0.15);
-  color: #34d399;
+  background: var(--ss-mythic-opacity-15);
+  color: var(--ss-mythic);
 }
 
 /* ===== MOBILE BADGE OPTIMIZATION ===== */
@@ -277,10 +256,7 @@
     font-size: 0.8125rem;
   }
 
-  .element-icon-container {
-    width: 20px;
-    height: 20px;
-  }
+  /* element-icon-container moved to ss-character-database.css */
 
   .element-badge-container {
     gap: 0.3125rem;
@@ -308,10 +284,7 @@
     font-size: 0.75rem;
   }
 
-  .element-icon-container {
-    width: 18px;
-    height: 18px;
-  }
+  /* element-icon-container moved to ss-character-database.css */
 
   .element-badge-container {
     gap: 0.25rem;

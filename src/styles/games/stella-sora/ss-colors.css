@@ -27,6 +27,22 @@
   --ss-text-muted: #666666;
   --ss-text-light: #c0c0c0;
 
+  /* Tertiary color for badges and special elements */
+  --ss-tertiary: #0ea5e9;
+
+  /* Element-specific colors */
+  --ss-element-lux: #ffd700;
+
+  /* Danger button colors */
+  --ss-danger: #ef4444;
+  --ss-danger-hover: #dc2626;
+
+  /* Common opacity patterns */
+  --ss-white-opacity-02: rgba(255, 255, 255, 0.02);
+  --ss-white-opacity-05: rgba(255, 255, 255, 0.05);
+  --ss-white-opacity-06: rgba(255, 255, 255, 0.06);
+  --ss-white-opacity-08: rgba(255, 255, 255, 0.08);
+
   /* Border colors - Original subtle borders */
   --ss-border: #404040;
   --ss-border-light: #555555;
@@ -46,6 +62,7 @@
 
   /* Rarity colors for Stella Sora characters - Premium happy theme */
   --ss-legendary: #fbbf24;
+  --ss-five-star: #ef4444; /* More distinct red for 5-star */
   --ss-epic: #6ee7b7;
   --ss-rare: #7dd3fc;
   --ss-common: #9ca3af;
@@ -126,6 +143,14 @@
   --ss-level-purple: rgba(167, 139, 250, 0.1);
   --ss-level-color: #a78bfa;
   --ss-level-border: rgba(167, 139, 250, 0.2);
+
+  /* Skill type opacity patterns */
+  --ss-error-opacity-25: rgba(248, 113, 113, 0.25);
+  --ss-primary-opacity-25: rgba(125, 211, 252, 0.25);
+  --ss-accent-opacity-25: rgba(110, 231, 183, 0.25);
+  --ss-legendary-opacity-25: rgba(251, 191, 36, 0.25);
+  --ss-info-opacity-15: rgba(96, 165, 250, 0.15);
+  --ss-mythic-opacity-15: rgba(52, 211, 153, 0.15);
 }
 
 /* Stella Sora specific component classes */

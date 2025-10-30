@@ -5,10 +5,12 @@ import { Image } from 'astro:assets';
 
 // Import all Stella Sora character images once
 import chitoseImage from '../../assets/images/games/stella-sora/gameimg/characters/Chitose.jpg';
+import shiaImage from '../../assets/images/games/stella-sora/gameimg/characters/Shia.jpg';
 
 // Centralized character image mapping
 const characterImageMap = {
   'Chitose.jpg': chitoseImage,
+  'Shia.jpg': shiaImage,
 };
 
 const {
@@ -18,11 +20,8 @@ const {
   loading = 'lazy',
   format = 'webp',
   quality = 95,
-  width = 75,
-  height = 75,
-  mobileWidth = 60,
-  mobileHeight = 60,
-  mobileQuality = 85,
+  width = 500,
+  height = 500,
 } = Astro.props;
 
 // Get the imported image object from the map
@@ -34,21 +33,16 @@ if (!imageKey.includes('.')) {
 }
 
 const imageSrc = characterImageMap[imageKey] || characterImageMap['Chitose.jpg'];
-
-// Use higher resolution for better mobile display quality
-const finalWidth = Math.max(width, mobileWidth);
-const finalHeight = Math.max(height, mobileHeight);
-const finalQuality = Math.max(quality, mobileQuality);
 ---
 
 <Image
   src={imageSrc}
   alt={alt}
-  width={finalWidth}
-  height={finalHeight}
+  width={width}
+  height={height}
   class={`${className} character-img-fill`}
   loading={loading}
   format={format}
-  quality={finalQuality}
-  sizes="(max-width: 768px) 60px, 75px"
+  quality={quality}
+  sizes="(max-width: 768px) 200px, 300px"
 />

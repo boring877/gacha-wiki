@@ -1,65 +1,74 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════
- *                HORIZON WALKER CHARACTER GIFTS FUNCTIONALITY
- *              Interactive features for the character gift preferences page
+ *                      HORIZON WALKER GIFTS SCRIPT
+ *                     JavaScript for gifts page functionality
  * ═══════════════════════════════════════════════════════════════════════
  */
 
+// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
-  // Character search functionality
-  const searchInput = document.getElementById('character-search');
-  const characterGrid = document.getElementById('character-grid');
-  const characterCards = characterGrid?.querySelectorAll('.hw-character-card');
-  const rarityButtons = document.querySelectorAll('.hw-rarity-btn');
-
-  let currentRarityFilter = 'all';
-
-  // Function to filter characters
-  function filterCharacters() {
-    if (!characterCards) return;
-
-    const searchTerm = searchInput?.value?.toLowerCase() || '';
-
-    characterCards.forEach(card => {
-      const characterName = card.querySelector('.hw-character-name')?.textContent?.toLowerCase();
-      const characterRarity = card.dataset.rarity;
-
-      const matchesSearch = !searchTerm || characterName?.includes(searchTerm);
-      const matchesRarity =
-        currentRarityFilter === 'all' || characterRarity === currentRarityFilter;
-
-      const shouldShow = matchesSearch && matchesRarity;
-
-      if (shouldShow) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
-
-  // Search input event listener
-  if (searchInput) {
-    searchInput.addEventListener('input', filterCharacters);
-  }
-
-  // Rarity filter event listeners
-  rarityButtons.forEach(button => {
-    button.addEventListener('click', e => {
-      // Remove active class from all buttons
-      rarityButtons.forEach(btn => btn.classList.remove('active'));
-
-      // Add active class to clicked button
-      e.target.classList.add('active');
-
-      // Update current filter
-      currentRarityFilter = e.target.dataset.rarity;
-
-      // Filter characters
-      filterCharacters();
-    });
-  });
-
-  // Optional: Add loading states or other interactive features
-  console.log('Character Gifts page loaded with', characterCards?.length || 0, 'characters');
+  // Initialize gift functionality
+  initializeGifts();
 });
+
+/**
+ * Initialize gift page functionality
+ */
+function initializeGifts() {
+  // Basic setup complete - ready for future functionality
+  setupBasicFunctionality();
+}
+
+/**
+ * Setup basic functionality without fancy effects
+ */
+function setupBasicFunctionality() {
+  // Basic logging for debugging
+  const _giftItems = document.querySelectorAll('.hw-gift-item');
+
+  // Future functionality can be added here when needed
+}
+
+/**
+ * Gift filtering functionality (placeholder)
+ */
+function filterGifts(_filterType, _filterValue) {
+  // This will be implemented when gift data is available
+}
+
+/**
+ * Gift sorting functionality (placeholder)
+ */
+function sortGifts(_sortType, _direction = 'asc') {
+  // This will be implemented when gift data is available
+}
+
+/**
+ * Gift search functionality (placeholder)
+ */
+function searchGifts(_searchTerm) {
+  // This will be implemented when gift data is available
+}
+
+/**
+ * Show gift details (placeholder)
+ */
+function showGiftDetails(_giftId) {
+  // This will be implemented when gift data is available
+}
+
+/**
+ * Toggle gift collection status (placeholder)
+ */
+function toggleGiftCollection(_giftId) {
+  // This will be implemented when gift data is available
+}
+
+// Export functions for external use if needed
+window.HorizonWalkerGifts = {
+  filterGifts,
+  sortGifts,
+  searchGifts,
+  showGiftDetails,
+  toggleGiftCollection,
+};

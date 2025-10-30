@@ -1,0 +1,322 @@
+---
+// Stella Sora Sorting Component
+// Provides sorting controls for character database
+---
+
+<div class="ss-sort-component">
+  <div class="sort-section">
+    <h3 class="sort-title">Sort By</h3>
+    <div class="sort-controls">
+      <button class="sort-btn" data-sort="name">
+        Name
+        <span class="sort-arrow"></span>
+      </button>
+
+      <button class="sort-btn" data-sort="hp">
+        HP
+        <span class="sort-arrow"></span>
+      </button>
+
+      <button class="sort-btn" data-sort="attack">
+        ATK
+        <span class="sort-arrow"></span>
+      </button>
+
+      <button class="sort-btn" data-sort="defense">
+        DEF
+        <span class="sort-arrow"></span>
+      </button>
+
+      <button class="sort-btn" data-sort="critRate">
+        Crit%
+        <span class="sort-arrow"></span>
+      </button>
+
+      <button class="sort-btn" data-sort="critDmg">
+        Crit DMG
+        <span class="sort-arrow"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // --- Sort Component State ---
+  let currentSortKey = null;
+  let currentSortDirection = 'normal';
+  let originalRows = [];
+  let originalCards = [];
+
+  // DOM references
+  let tableBody, mobileCardsContainer;
+
+  function initializeSorting() {
+    // Get DOM references
+    tableBody = document.getElementById('character-table-body');
+    mobileCardsContainer = document.getElementById('character-cards');
+
+    // Store original rows and cards for sorting
+    originalRows = tableBody ? Array.from(tableBody.querySelectorAll('.character-row')) : [];
+    originalCards = mobileCardsContainer
+      ? Array.from(mobileCardsContainer.querySelectorAll('.character-card'))
+      : [];
+
+    // Early exit if required elements don't exist
+    if (!tableBody || !mobileCardsContainer) {
+      console.error('Required elements not found!');
+      return;
+    }
+
+    // Restore saved state
+    restoreState();
+
+    // Setup event listeners
+    setupEventListeners();
+
+    // Listen for filter events from filter component
+    document.addEventListener('filtersApplied', handleFiltersApplied);
+    document.addEventListener('filtersReset', handleFiltersReset);
+  }
+
+  function setupEventListeners() {
+    // Sort buttons
+    const sortButtons = document.querySelectorAll('.sort-btn');
+    sortButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        cycleSortState(this);
+      });
+    });
+
+    // Add navigation listeners to character links
+    const characterLinks = document.querySelectorAll('.character-link');
+    characterLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const characterSlug = this.dataset.slug;
+        if (characterSlug) {
+          window.location.href = `/guides/stella-sora/characters/${characterSlug}`;
+        }
+      });
+    });
+  }
+
+  function cycleSortState(sortButton) {
+    const sortKey = sortButton.dataset.sort;
+
+    if (currentSortKey !== sortKey) {
+      // New sort field selected
+      currentSortKey = sortKey;
+      currentSortDirection = 'asc'; // Start with asc (up arrow) first
+    } else {
+      // Same field selected, cycle through states
+      if (currentSortDirection === 'normal') {
+        currentSortDirection = 'asc'; // Start with asc (up arrow)
+      } else if (currentSortDirection === 'asc') {
+        currentSortDirection = 'desc'; // Then desc (down arrow)
+      } else {
+        currentSortDirection = 'normal'; // Then back to normal
+        currentSortKey = null;
+      }
+    }
+
+    // Update button visual states
+    updateSortButtons();
+
+    // Apply sorting if we have a sort key
+    if (currentSortKey) {
+      applySort(currentSortKey);
+    } else {
+      // Reset to original order
+      resetToOriginalOrder();
+    }
+
+    // Save sort state
+    saveSortState();
+  }
+
+  function updateSortButtons() {
+    // Clear all sort states
+    const sortButtons = document.querySelectorAll('.sort-btn');
+    sortButtons.forEach(button => {
+      button.classList.remove('active');
+      const arrow = button.querySelector('.sort-arrow');
+      if (arrow) {
+        arrow.textContent = '';
+      }
+    });
+
+    // Set current sort button state
+    if (currentSortKey && currentSortDirection !== 'normal') {
+      const currentButton = document.querySelector(`[data-sort="${currentSortKey}"]`);
+      if (currentButton) {
+        currentButton.classList.add('active');
+        const arrow = currentButton.querySelector('.sort-arrow');
+        if (arrow) {
+          arrow.textContent = currentSortDirection === 'asc' ? ' ↑' : ' ↓';
+        }
+      }
+    }
+  }
+
+  function applySort(sortKey) {
+    // Get all visible rows and cards (not filtered out)
+    const visibleRows = originalRows.filter(row => row.style.display !== 'none');
+    const visibleCards = originalCards.filter(
+      (card, index) => originalRows[index].style.display !== 'none'
+    );
+
+    // Sort rows based on the sort key
+    const sortedRows = visibleRows.sort((a, b) => {
+      let valueA, valueB;
+
+      switch (sortKey) {
+        case 'name':
+          valueA = a.querySelector('.character-name')?.textContent || '';
+          valueB = b.querySelector('.character-name')?.textContent || '';
+          return currentSortDirection === 'asc'
+            ? valueA.localeCompare(valueB)
+            : valueB.localeCompare(valueA);
+
+        case 'hp':
+        case 'attack':
+        case 'defense':
+        case 'critRate':
+        case 'critDmg':
+          valueA = parseFloat(a.dataset[sortKey]) || 0;
+          valueB = parseFloat(b.dataset[sortKey]) || 0;
+          return currentSortDirection === 'asc' ? valueA - valueB : valueB - valueA;
+
+        default:
+          return 0;
+      }
+    });
+
+    // Sort cards to match rows
+    const sortedCards = sortedRows
+      .map(row => {
+        const rowIndex = originalRows.indexOf(row);
+        return originalCards[rowIndex];
+      })
+      .filter(Boolean);
+
+    // Re-append sorted content
+    if (tableBody) {
+      tableBody.innerHTML = '';
+      sortedRows.forEach(row => tableBody.appendChild(row));
+      if (typeof window.renumberRows === 'function') {
+        window.renumberRows();
+      }
+    }
+    if (mobileCardsContainer) {
+      mobileCardsContainer.innerHTML = '';
+      sortedCards.forEach(card => mobileCardsContainer.appendChild(card));
+    }
+  }
+
+  function resetToOriginalOrder() {
+    // Get all visible rows and cards
+    const visibleRows = originalRows.filter(row => row.style.display !== 'none');
+    const visibleCards = originalCards.filter(
+      (card, index) => originalRows[index].style.display !== 'none'
+    );
+
+    // Sort alphabetically by name
+    const sortedRows = visibleRows.sort((a, b) => {
+      const nameA = a.querySelector('.character-name')?.textContent || '';
+      const nameB = b.querySelector('.character-name')?.textContent || '';
+      return nameA.localeCompare(nameB);
+    });
+
+    const sortedCards = sortedRows
+      .map(row => {
+        const rowIndex = originalRows.indexOf(row);
+        return originalCards[rowIndex];
+      })
+      .filter(Boolean);
+
+    // Re-append sorted content
+    if (tableBody) {
+      tableBody.innerHTML = '';
+      sortedRows.forEach(row => tableBody.appendChild(row));
+      if (typeof window.renumberRows === 'function') {
+        window.renumberRows();
+      }
+    }
+    if (mobileCardsContainer) {
+      mobileCardsContainer.innerHTML = '';
+      sortedCards.forEach(card => mobileCardsContainer.appendChild(card));
+    }
+  }
+
+  function handleFiltersApplied(event) {
+    // Re-apply current sort when filters change
+    if (currentSortKey && currentSortDirection !== 'normal') {
+      applySort(currentSortKey);
+    } else {
+      if (typeof window.renumberRows === 'function') {
+        window.renumberRows();
+      }
+    }
+  }
+
+  function handleFiltersReset() {
+    // Reset sort state when filters are reset
+    currentSortKey = null;
+    currentSortDirection = 'normal';
+    updateSortButtons();
+
+    // Clear sort session storage
+    try {
+      sessionStorage.removeItem('ss-character-sort');
+    } catch (_error) {
+      // Ignore storage errors
+    }
+  }
+
+  function saveSortState() {
+    try {
+      sessionStorage.setItem(
+        'ss-character-sort',
+        JSON.stringify({
+          key: currentSortKey,
+          direction: currentSortDirection,
+        })
+      );
+    } catch (_error) {
+      // Ignore storage errors
+    }
+  }
+
+  function restoreState() {
+    // Restore sort state
+    try {
+      const savedSort = sessionStorage.getItem('ss-character-sort');
+      if (savedSort) {
+        const sortState = JSON.parse(savedSort);
+        // Only restore if we have valid saved state
+        if (sortState.key && sortState.direction) {
+          currentSortKey = sortState.key;
+          currentSortDirection = sortState.direction;
+          applySort(currentSortKey);
+        } else {
+          // Clear invalid session storage
+          sessionStorage.removeItem('ss-character-sort');
+        }
+      }
+    } catch (_error) {
+      // Clear corrupted session storage
+      try {
+        sessionStorage.removeItem('ss-character-sort');
+      } catch (_cleanupError) {
+        // Ignore cleanup errors
+      }
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeSorting);
+  } else {
+    initializeSorting();
+  }
+</script>

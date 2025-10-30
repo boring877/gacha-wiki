@@ -18,22 +18,28 @@ const {
   height = 200,
   loading = 'lazy',
   class: className,
-  quality = 100,
+  quality = 95,
 } = Astro.props;
 
 // Import the image from src/assets
 type ImageModule = { default: any } | undefined;
 const imageModules: Record<string, ImageModule> = import.meta.glob(
-  '/src/assets/images/games/stella-sora/potential/Chitose/*.{jpg,jpeg,png,webp}',
+  '/src/assets/images/games/stella-sora/potential/**/*.{jpg,jpeg,png,webp}',
   { eager: true }
 );
 
 // Try different path formats to find the image
 let imageModule: ImageModule = undefined;
 
-// Try with full path first
+// Try with full path first for different character folders
 let imagePath = `/src/assets/images/games/stella-sora/potential/Chitose/${imageName}`;
 imageModule = imageModules[imagePath];
+
+// If not found in Chitose folder, try Shia folder
+if (!imageModule) {
+  imagePath = `/src/assets/images/games/stella-sora/potential/Shia/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
 
 // If not found, try relative path
 if (!imageModule) {
@@ -41,13 +47,21 @@ if (!imageModule) {
   imageModule = imageModules[imagePath];
 }
 
-// If still not found, try just the filename
+// If still not found, try Shia relative path
 if (!imageModule) {
+  imagePath = `../../assets/images/games/stella-sora/potential/Shia/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
+// If still not found, try just the filename
+if (!imageModule && imageName) {
   const filename = imageName.split('/').pop(); // Get just the filename
-  for (const [key, value] of Object.entries(imageModules)) {
-    if (key.endsWith(filename)) {
-      imageModule = value;
-      break;
+  if (filename) {
+    for (const [key, value] of Object.entries(imageModules)) {
+      if (key.endsWith(filename)) {
+        imageModule = value;
+        break;
+      }
     }
   }
 }

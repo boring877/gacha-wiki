@@ -2,12 +2,13 @@
 // Stella Sora Characters Database Page
 import CharactersLayout from '../../../layouts/stella-sora/CharactersLayout.astro';
 import CharacterFilterBar from '../../../components/stella-sora/CharacterFilterBar.astro';
+import SSSortComponent from '../../../components/stella-sora/SSSortComponent.astro';
 import SSCharacterImage from '../../../components/stella-sora/SSCharacterImage.astro';
 import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
 import { STELLA_SORA_CHARACTERS } from '../../../data/stella-sora/characters.js';
 
-// Sort characters by name initially
-const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => a.name.localeCompare(b.name));
+// Sort characters by HP initially (descending)
+const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => b.stats.hp - a.stats.hp);
 ---
 
 <CharactersLayout
@@ -17,8 +18,29 @@ const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => a.name.local
 >
   <section class="page-content">
     <div class="content-wrapper">
-      <!-- Filter Bar -->
-      <CharacterFilterBar showFilters={true} />
+      <!-- Database Controls Container -->
+      <div class="database-controls-container">
+        <!-- Controls Header -->
+        <div class="controls-header">
+          <h2 class="controls-title">Character Controls</h2>
+          <!-- Global Clear Button -->
+          <div class="global-clear-container">
+            <button class="global-clear-btn" id="global-clear-btn">
+              <span class="clear-icon">✕</span>
+              <span class="clear-text">Clear All</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Controls Content -->
+        <div class="controls-content">
+          <!-- Filter Bar -->
+          <CharacterFilterBar showFilters={true} />
+
+          <!-- Sort Component -->
+          <SSSortComponent />
+        </div>
+      </div>
 
       <!-- Character Statistics -->
       <div class="stats-overview">
@@ -30,15 +52,15 @@ const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => a.name.local
           </div>
           <div class="stat-card">
             <div class="stat-number">
-              {STELLA_SORA_CHARACTERS.filter(c => c.rarity === 'SSR').length}
+              {STELLA_SORA_CHARACTERS.filter(c => c.rarity === '5-Star').length}
             </div>
-            <div class="stat-label">SSR Characters</div>
+            <div class="stat-label">5-Star Characters</div>
           </div>
           <div class="stat-card">
             <div class="stat-number">
-              {STELLA_SORA_CHARACTERS.filter(c => c.rarity === 'SR').length}
+              {STELLA_SORA_CHARACTERS.filter(c => c.rarity === '4-Star').length}
             </div>
-            <div class="stat-label">SR Characters</div>
+            <div class="stat-label">4-Star Characters</div>
           </div>
         </div>
       </div>
@@ -75,62 +97,69 @@ const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => a.name.local
             </thead>
             <tbody id="character-table-body">
               {
-                sortedCharacters.map((char, idx) => (
+                sortedCharacters.map((character, index) => (
                   <tr
-                    data-character-id={char.id}
-                    data-slug={char.slug}
-                    data-url={char.detailUrl}
-                    data-tags={char.tags ? char.tags.join(' ') : ''}
-                    style="cursor: pointer;"
-                    onclick="window.location.href = this.dataset.url"
+                    class="character-row clickable-row"
+                    data-name={character.name.toLowerCase()}
+                    data-rarity={character.rarity}
+                    data-element={character.element}
+                    data-role={character.role}
+                    data-slug={character.slug}
                   >
-                    <td>{idx + 1}</td>
+                    <td>{index + 1}</td>
                     <td>
                       <div class="character-image-container">
-                        <SSCharacterImage imageName={char.image} alt={char.name} />
+                        <SSCharacterImage
+                          imageName={character.image}
+                          alt={character.name}
+                          class="character-img"
+                          width={500}
+                          height={500}
+                        />
                       </div>
                     </td>
-                    <td class="character-name">{char.name}</td>
+                    <td class="character-name">{character.name}</td>
                     <td>
                       <span
-                        class={`rarity-badge ${char.rarity.toLowerCase()}`}
-                        data-sort-key="rarity"
+                        class={`rarity-badge ${character.rarity.toLowerCase().replace('-star', '-star').replace('5-star', 'five-star').replace('4-star', 'four-star').replace('3-star', 'three-star')}`}
                       >
-                        {char.rarity}
+                        {character.rarity}
                       </span>
                     </td>
                     <td>
-                      <span
-                        class={`element-badge element-${char.element.toLowerCase()}`}
-                        data-sort-key="element"
-                      >
-                        {char.element}
+                      <span class={`element-badge element-${character.element.toLowerCase()}`}>
+                        {character.element}
                       </span>
                     </td>
-                    <td>
+                    <td style="text-align: center; vertical-align: middle;">
                       <div class="element-icon-container">
-                        <SSElementImage elementName={char.element} alt={char.element} />
+                        <SSElementImage
+                          elementName={character.element}
+                          alt={character.element}
+                          class="element-icon"
+                          width={100}
+                          height={100}
+                        />
                       </div>
                     </td>
                     <td>
-                      <span
-                        class={`position-badge position-${char.role.toLowerCase()}`}
-                        data-sort-key="role"
-                      >
-                        {char.role}
+                      <span class={`position-badge position-${character.role.toLowerCase()}`}>
+                        {character.role}
                       </span>
                     </td>
-                    <td>{char.faction}</td>
-                    <td>{char.trekkerStyle}</td>
-                    <td data-sort-value={char.stats.hp}>{char.stats.hp.toLocaleString()}</td>
-                    <td data-sort-value={char.stats.attack}>
-                      {char.stats.attack.toLocaleString()}
+                    <td>{character.faction}</td>
+                    <td>
+                      <span class="trekker-style-text">{character.trekkerStyle || ''}</span>
                     </td>
-                    <td data-sort-value={char.stats.defense}>
-                      {char.stats.defense.toLocaleString()}
+                    <td data-hp={character.stats.hp}>{character.stats.hp.toLocaleString()}</td>
+                    <td data-attack={character.stats.attack}>
+                      {character.stats.attack.toLocaleString()}
                     </td>
-                    <td data-sort-value={char.stats.critRate}>{char.stats.critRate}%</td>
-                    <td data-sort-value={char.stats.critDmg}>{char.stats.critDmg}%</td>
+                    <td data-defense={character.stats.defense}>
+                      {character.stats.defense.toLocaleString()}
+                    </td>
+                    <td data-critRate={character.stats.critRate}>{character.stats.critRate}%</td>
+                    <td data-critDmg={character.stats.critDmg}>{character.stats.critDmg}%</td>
                   </tr>
                 ))
               }
@@ -141,71 +170,99 @@ const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => a.name.local
         <!-- Mobile Card View -->
         <div class="character-cards-container" id="character-cards">
           {
-            sortedCharacters.map(char => (
+            sortedCharacters.map(character => (
               <div
-                class="character-card"
-                data-character-id={char.id}
-                data-slug={char.slug}
-                data-detail-url={char.detailUrl}
-                onclick="window.location.href = this.dataset.detailUrl"
+                class="character-card clickable-card"
+                data-name={character.name.toLowerCase()}
+                data-rarity={character.rarity}
+                data-element={character.element}
+                data-role={character.role}
+                data-slug={character.slug}
               >
-                <div class="card-header">
-                  <div class="character-image-wrapper">
+                {/* Card Header: Image + Basic Info */}
+                <div class="mobile-card-header">
+                  <div class="character-image-container">
                     <SSCharacterImage
-                      imageName={char.image}
-                      alt={char.name}
-                      width={80}
-                      height={80}
-                      mobileWidth={75}
-                      mobileHeight={75}
-                      mobileQuality={90}
+                      imageName={character.image}
+                      alt={character.name}
+                      class="character-img"
+                      width={500}
+                      height={500}
                     />
-                    <div class="element-icon-overlay">
-                      <SSElementImage elementName={char.element} alt={char.element} />
-                    </div>
                   </div>
-                  <div class="character-basic-info">
-                    <h3 class="character-name">{char.name}</h3>
-                    <div class="character-meta">
-                      <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
-                      <span class={`element-badge element-${char.element.toLowerCase()}`}>
-                        {char.element}
-                      </span>
-                      <span class={`position-badge position-${char.role.toLowerCase()}`}>
-                        {char.role}
+                  <div class="mobile-card-title-group">
+                    <h3 class="character-name">{character.name}</h3>
+                    <div class="character-rarity">
+                      <span
+                        class={`rarity-badge ${character.rarity.toLowerCase().replace('-star', '-star').replace('5-star', 'five-star').replace('4-star', 'four-star').replace('3-star', 'three-star')}`}
+                      >
+                        {character.rarity}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div class="card-stats">
-                  <div class="character-info">
-                    <div class="stat-row">
-                      <span class="stat-label">Position:</span> {char.role}
+                {/* Section Divider */}
+                <div class="mobile-card-divider" />
+
+                {/* Primary Stats Section */}
+                <div class="mobile-card-section">
+                  <div class="section-title">Combat Stats</div>
+                  <div class="mobile-card-stats mobile-card-primary-stats">
+                    <div class="stat-item">
+                      <span class="stat-value">{character.stats.hp.toLocaleString()}</span>
+                      <span class="stat-label">HP</span>
                     </div>
-                    <div class="stat-row">
-                      <span class="stat-label">Style:</span> {char.trekkerStyle}
+                    <div class="stat-item">
+                      <span class="stat-value">{character.stats.attack.toLocaleString()}</span>
+                      <span class="stat-label">ATK</span>
                     </div>
-                    <div class="stat-row">
-                      <span class="stat-label">Faction:</span> {char.faction}
+                    <div class="stat-item">
+                      <span class="stat-value">{character.stats.defense.toLocaleString()}</span>
+                      <span class="stat-label">DEF</span>
                     </div>
                   </div>
+                </div>
 
-                  <div class="combat-stats">
-                    <div class="stat-row">
-                      <span class="stat-label">HP:</span> {char.stats.hp.toLocaleString()}
+                {/* Section Divider */}
+                <div class="mobile-card-divider" />
+
+                {/* Metadata Section */}
+                <div class="mobile-card-section">
+                  <div class="section-title">Character Info</div>
+                  <div class="mobile-card-metadata">
+                    <div class="metadata-badges">
+                      <span class={`element-badge element-${character.element.toLowerCase()}`}>
+                        <SSElementImage
+                          elementName={character.element}
+                          width={50}
+                          height={50}
+                          alt={`${character.element} element icon`}
+                        />
+                        <span>{character.element}</span>
+                      </span>
+                      <span class={`position-badge position-${character.role.toLowerCase()}`}>
+                        {character.role}
+                      </span>
+                      <span class="faction-badge">{character.faction}</span>
+                      {character.trekkerStyle && (
+                        <span class="trekker-style-text">{character.trekkerStyle}</span>
+                      )}
                     </div>
-                    <div class="stat-row">
-                      <span class="stat-label">ATK:</span> {char.stats.attack.toLocaleString()}
+                  </div>
+                </div>
+
+                {/* Advanced Stats Section */}
+                <div class="mobile-card-section mobile-card-advanced-stats">
+                  <div class="section-title">Advanced Stats</div>
+                  <div class="mobile-card-stats mobile-card-secondary-stats">
+                    <div class="stat-item">
+                      <span class="stat-value">{character.stats.critRate}%</span>
+                      <span class="stat-label">Crit%</span>
                     </div>
-                    <div class="stat-row">
-                      <span class="stat-label">DEF:</span> {char.stats.defense.toLocaleString()}
-                    </div>
-                    <div class="stat-row">
-                      <span class="stat-label">Crit%:</span> {char.stats.critRate}%
-                    </div>
-                    <div class="stat-row">
-                      <span class="stat-label">Crit DMG:</span> {char.stats.critDmg}%
+                    <div class="stat-item">
+                      <span class="stat-value">{character.stats.critDmg}%</span>
+                      <span class="stat-label">Crit DMG</span>
                     </div>
                   </div>
                 </div>
@@ -218,5 +275,58 @@ const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => a.name.local
   </section>
 </CharactersLayout>
 
-<!-- Load the character database script with sorting and filtering functionality -->
-<script src="/scripts/stella-sora/character-database.js" defer></script>
+<script>
+  // Character Navigation Script
+  // Handles click navigation to individual character pages
+
+  function initializeCharacterNavigation() {
+    // Get all clickable rows and cards
+    const clickableRows = document.querySelectorAll('.clickable-row');
+    const clickableCards = document.querySelectorAll('.clickable-card');
+
+    // Add click event listeners to desktop table rows
+    clickableRows.forEach(row => {
+      row.addEventListener('click', function () {
+        const slug = this.dataset.slug;
+        if (slug) {
+          window.location.href = `/guides/stella-sora/characters/${slug}`;
+        }
+      });
+
+      // Add hover effect for better UX
+      row.addEventListener('mouseenter', function () {
+        this.style.cursor = 'pointer';
+      });
+
+      row.addEventListener('mouseleave', function () {
+        this.style.cursor = 'default';
+      });
+    });
+
+    // Add click event listeners to mobile cards
+    clickableCards.forEach(card => {
+      card.addEventListener('click', function () {
+        const slug = this.dataset.slug;
+        if (slug) {
+          window.location.href = `/guides/stella-sora/characters/${slug}`;
+        }
+      });
+
+      // Add hover effect for better UX
+      card.addEventListener('mouseenter', function () {
+        this.style.cursor = 'pointer';
+      });
+
+      card.addEventListener('mouseleave', function () {
+        this.style.cursor = 'default';
+      });
+    });
+  }
+
+  // Initialize navigation when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeCharacterNavigation);
+  } else {
+    initializeCharacterNavigation();
+  }
+</script>

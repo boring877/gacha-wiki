@@ -2,6 +2,8 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
+import fs from 'fs';
+import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
@@ -94,6 +96,55 @@ export default defineConfig({
         },
       },
     },
+    // Custom plugin to copy JavaScript files from src/scripts to public/scripts
+    plugins: [
+      {
+        name: 'copy-scripts',
+        writeBundle() {
+          // This plugin runs after the build is complete
+          console.log('🔄 Copying JavaScript files from src/scripts to public/scripts...');
+
+          // Define script mappings from src to public
+          const scriptMappings = [
+            {
+              src: 'src/scripts/horizon-walker/character-database.js',
+              dest: 'public/scripts/horizon-walker/character-database.js'
+            },
+            {
+              src: 'src/scripts/horizon-walker/mercenary-database.js',
+              dest: 'public/scripts/horizon-walker/mercenary-database.js'
+            },
+            {
+              src: 'src/scripts/horizon-walker/gifts.js',
+              dest: 'public/scripts/horizon-walker/character-gifts.js'
+            }
+          ];
+
+          // Copy each script file
+          scriptMappings.forEach(mapping => {
+            try {
+              if (fs.existsSync(mapping.src)) {
+                // Ensure destination directory exists
+                const destDir = path.dirname(mapping.dest);
+                if (!fs.existsSync(destDir)) {
+                  fs.mkdirSync(destDir, { recursive: true });
+                }
+
+                // Copy the file
+                fs.copyFileSync(mapping.src, mapping.dest);
+                console.log(`✅ Copied ${mapping.src} → ${mapping.dest}`);
+              } else {
+                console.log(`⚠️ Source file not found: ${mapping.src}`);
+              }
+            } catch (error) {
+              console.error(`❌ Error copying ${mapping.src}:`, error.message);
+            }
+          });
+
+          console.log('✅ Script copying complete');
+        }
+      }
+    ],
     // Optimize dependencies
     optimizeDeps: {
       include: ['gsap', 'chart.js'],

@@ -142,27 +142,6 @@ const initialize = () => {
             ? nameB.localeCompare(nameA)
             : nameA.localeCompare(nameB);
         });
-      } else if (sortKey === 'rarity') {
-        // Sort by rarity (special ordering: EX > SS > S > A > B)
-        const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
-        sortedCards = cards.sort((a, b) => {
-          const rarityA = a.querySelector('.hw-badge[data-rarity]')?.textContent?.trim() || '';
-          const rarityB = b.querySelector('.hw-badge[data-rarity]')?.textContent?.trim() || '';
-          const valueA = rarityOrder[rarityA] || 0;
-          const valueB = rarityOrder[rarityB] || 0;
-          return currentSortDirection === 'desc' ? valueB - valueA : valueA - valueB;
-        });
-      } else if (sortKey === 'cost') {
-        // Sort by cost for mobile cards
-        sortedCards = cards.sort((a, b) => {
-          const costA = parseInt(
-            a.querySelector('.cost-badge')?.textContent?.replace(/[^0-9]/g, '') || '0'
-          );
-          const costB = parseInt(
-            b.querySelector('.cost-badge')?.textContent?.replace(/[^0-9]/g, '') || '0'
-          );
-          return currentSortDirection === 'desc' ? costB - costA : costA - costB;
-        });
       } else {
         sortedCards = sortByNumeric(cards, 0, false);
       }
@@ -264,12 +243,9 @@ const initialize = () => {
 
     // Reset sort button states
     sortButtons.forEach(btn => {
-      btn.classList.remove('active');
+      btn.classList.remove('active', 'state-asc', 'state-desc');
+      btn.classList.add('state-normal');
       filterStates.set(btn, 'normal');
-
-      // Clear sort indicators from button text
-      const baseText = btn.textContent.replace(/ [↑↓]$/, '');
-      btn.textContent = baseText;
     });
 
     // Clear sessionStorage
@@ -286,9 +262,6 @@ const initialize = () => {
 
     // Apply default sort
     applySort('name');
-
-    // Renumber both table rows and reset display order
-    renumberRows();
   }
 
   function restoreState() {
@@ -314,18 +287,7 @@ const initialize = () => {
 
         const activeButton = document.querySelector(`[data-sort="${currentSortKey}"]`);
         if (activeButton) {
-          // Update button visual state
           activeButton.classList.add('active');
-          filterStates.set(activeButton, currentSortDirection);
-
-          // Update visual indicator in button text
-          const baseText = activeButton.textContent.replace(/ [↑↓]$/, '');
-          if (currentSortDirection === 'desc') {
-            activeButton.textContent = baseText + ' ↓'; // Highest first
-          } else if (currentSortDirection === 'asc') {
-            activeButton.textContent = baseText + ' ↑'; // Lowest first
-          }
-
           applySort(currentSortKey);
         }
       }
@@ -338,6 +300,7 @@ const initialize = () => {
   function initializeSortStates() {
     sortButtons.forEach(btn => {
       filterStates.set(btn, 'normal');
+      btn.classList.add('state-normal');
     });
   }
 
@@ -347,13 +310,13 @@ const initialize = () => {
 
     switch (currentState) {
       case 'normal':
-        nextState = 'desc'; // First click = highest values (↓ arrow)
+        nextState = 'desc';
         break;
       case 'desc':
-        nextState = 'asc'; // Second click = lowest values (↑ arrow)
+        nextState = 'asc';
         break;
       case 'asc':
-        nextState = 'normal'; // Third click = back to normal
+        nextState = 'normal';
         break;
       default:
         nextState = 'normal';
@@ -362,29 +325,15 @@ const initialize = () => {
     // Reset all other sort buttons to normal
     sortButtons.forEach(btn => {
       if (btn !== sortButton) {
-        btn.classList.remove('active');
+        btn.classList.remove('state-normal', 'state-asc', 'state-desc', 'active');
+        btn.classList.add('state-normal');
         filterStates.set(btn, 'normal');
       }
     });
 
     // Update clicked button state
-    if (nextState !== 'normal') {
-      sortButton.classList.add('active');
-      // Add visual indicator text to button
-      const existingIndicator = sortButton.textContent.match(/ [↑↓]$/);
-      const baseText = sortButton.textContent.replace(/ [↑↓]$/, '');
-      if (nextState === 'desc') {
-        sortButton.textContent = baseText + ' ↓'; // Highest first
-      } else if (nextState === 'asc') {
-        sortButton.textContent = baseText + ' ↑'; // Lowest first
-      }
-    } else {
-      sortButton.classList.remove('active');
-      // Remove visual indicator
-      const baseText = sortButton.textContent.replace(/ [↑↓]$/, '');
-      sortButton.textContent = baseText;
-    }
-
+    sortButton.classList.remove('state-normal', 'state-asc', 'state-desc', 'active');
+    sortButton.classList.add(`state-${nextState}`);
     filterStates.set(sortButton, nextState);
 
     // Apply sorting based on new state

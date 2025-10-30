@@ -7,7 +7,7 @@ export interface BaseCharacter {
   slug: string;
   detailUrl: string;
   image: string;
-  rarity: 'SSR' | 'SR' | 'R';
+  rarity: '5-Star' | '4-Star' | '3-Star';
 }
 
 // Zone Nova specific character interface
@@ -52,8 +52,8 @@ export interface SilverBloodCharacter extends BaseCharacter {
 
 // Stella Sora specific character interface
 export interface StellaSoraCharacter extends BaseCharacter {
-  element: 'Fire' | 'Water' | 'Wind' | 'Earth' | 'Light' | 'Dark' | 'Aqua';
-  role: 'DPS' | 'Tank' | 'Healer' | 'Support' | 'Buffer' | 'Vanguard';
+  element: 'Aqua' | 'Lux';
+  role: 'Vanguard';
   weapon: string;
   cocochaLevel?: number; // Bond system level (optional)
   tags: string[];
@@ -134,7 +134,7 @@ export interface ZoneNovaMemory {
   id: number;
   name: string;
   slug: string;
-  rarity: 'SSR' | 'SR' | 'R';
+  rarity: '5-Star' | '4-Star' | '3-Star';
   type: 'Attack' | 'Defense' | 'Support' | 'Special';
   image: string;
   detailUrl: string;

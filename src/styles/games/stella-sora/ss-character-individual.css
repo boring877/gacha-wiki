@@ -25,12 +25,7 @@
   align-items: flex-start;
 }
 
-.character-image-large {
-  flex-shrink: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 3px solid var(--ss-primary);
-}
+/* character-image-large moved to ss-character-database.css as .character-image-detail */
 
 .character-details h1 {
   margin: 0 0 1rem 0;
@@ -852,21 +847,9 @@
   align-items: flex-start;
 }
 
-.potential-image {
-  flex-shrink: 0;
-  width: 150px;
-  height: 150px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 3px solid var(--ss-primary);
-}
+/* potential-image moved to ss-character-database.css as .potential-image-detail */
 
-.potential-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+/* potential-image img moved to centralized CSS */
 
 .potential-content {
   flex: 1;
@@ -1371,11 +1354,7 @@
     text-align: center;
   }
 
-  .character-image-large {
-    align-self: center;
-    max-width: 250px;
-    width: 100%;
-  }
+  /* character-image-large responsive moved to centralized CSS */
 
   /* Disc Section Mobile Adjustments */
   .character-disc {
@@ -1507,10 +1486,7 @@
     text-align: center;
   }
 
-  .potential-image {
-    width: 120px;
-    height: 120px;
-  }
+  /* potential-image responsive moved to centralized CSS */
 
   .potential-header {
     justify-content: center;
@@ -1845,10 +1821,7 @@
     gap: 1rem;
   }
 
-  .potential-image {
-    width: 100px;
-    height: 100px;
-  }
+  /* potential-image responsive moved to centralized CSS */
 
   .potential-name {
     font-size: var(--text-lg);

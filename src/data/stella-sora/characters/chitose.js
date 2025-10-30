@@ -5,7 +5,8 @@ export const chitoseData = {
   slug: 'chitose',
   detailUrl: '/guides/stella-sora/characters/chitose',
   image: 'Chitose.jpg',
-  rarity: 'SSR',
+  icon: 'Chitose.jpg',
+  rarity: '5-Star',
   element: 'Aqua',
   role: 'Vanguard',
   faction: 'Freelance Trekker',
@@ -436,7 +437,7 @@ export const chitoseData = {
   disc: {
     name: 'Sword Against Stream',
     image: 'sword_against_stream.jpg',
-    rarity: 'SSR',
+    rarity: '5-Star',
     element: 'Aqua',
     tags: ['Aqua', 'Element', 'Skills', 'ATK'],
     stats: {
@@ -555,6 +556,6 @@ export const chitoseData = {
 export const chitoseSEO = {
   title: 'Chitose - Stella Sora Character Guide',
   description:
-    'Complete guide for Chitose, an SSR Aque Vanguard in Stella Sora. Stats, skills, and detailed information.',
-  keywords: ['Chitose', 'Stella Sora', 'SSR', 'Aqua', 'Vanguard', 'character guide'],
+    'Complete guide for Chitose, an 5-Star Aqua Vanguard in Stella Sora. Stats, skills, and detailed information.',
+  keywords: ['Chitose', 'Stella Sora', '5-Star', 'Aqua', 'Vanguard', 'character guide'],
 };

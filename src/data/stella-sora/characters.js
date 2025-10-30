@@ -3,47 +3,24 @@
 // All character stats are based on maximum level
 
 import { chitoseData } from './characters/chitose.js';
+import { shiaData } from './characters/shia.js';
 
 // Game Mechanics Reference
 export const gameInfo = {
-  rarities: ['SSR', 'SR', 'R'],
+  rarities: ['5-Star', '4-Star', '3-Star'],
   elements: [
-    { name: 'Fire', color: '#DC2626', description: 'Fire element characters deal burning damage' },
-    {
-      name: 'Water',
-      color: '#0891B2',
-      description: 'Water element characters control flow and healing',
-    },
-    {
-      name: 'Wind',
-      color: '#10B981',
-      description: 'Wind element characters excel in speed and evasion',
-    },
-    { name: 'Earth', color: '#92400E', description: 'Earth element characters have high defense' },
-    {
-      name: 'Light',
-      color: '#F9FAFB',
-      description: 'Light element characters provide support and buffs',
-    },
-    {
-      name: 'Dark',
-      color: '#374151',
-      description: 'Dark element characters specialize in debuffs',
-    },
     {
       name: 'Aqua',
       color: '#0EA5E9',
       description: 'Aqua element characters command water and flow',
     },
+    {
+      name: 'Lux',
+      color: '#FFD700',
+      description: 'Lux element characters harness radiant light energy',
+    },
   ],
-  roles: [
-    { name: 'DPS', description: 'High damage output characters focused on dealing damage' },
-    { name: 'Tank', description: 'High survivability characters that protect allies' },
-    { name: 'Healer', description: 'Characters that restore health and provide recovery' },
-    { name: 'Support', description: 'Utility characters that provide various team benefits' },
-    { name: 'Buffer', description: 'Characters that enhance ally stats and abilities' },
-    { name: 'Vanguard', description: 'Front-line warriors who lead the charge' },
-  ],
+  roles: [{ name: 'Vanguard', description: 'Front-line warriors who lead the charge' }],
   weapons: [
     { name: 'Sword', description: 'Balanced melee weapon' },
     { name: 'Staff', description: 'Magic-focused weapon' },
@@ -59,7 +36,7 @@ export const gameInfo = {
 };
 
 // Character array - sorted alphabetically by name
-export const STELLA_SORA_CHARACTERS = [chitoseData];
+export const STELLA_SORA_CHARACTERS = [chitoseData, shiaData];
 
 // Utility functions
 export function getCharacterById(id) {

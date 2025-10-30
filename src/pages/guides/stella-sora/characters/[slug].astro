@@ -30,12 +30,10 @@ if (!character) {
     <!-- Character Header -->
     <section class="character-header">
       <div class="character-basic-info">
-        <div class="character-image-large">
+        <div class="character-image-detail">
           <SSCharacterImage
             imageName={character.image}
             alt={`${character.name} - ${character.rarity} ${character.element} ${character.role} character from Stella Sora`}
-            width="300"
-            height="300"
             loading="eager"
           />
         </div>
@@ -46,12 +44,9 @@ if (!character) {
               >{character.rarity || 'Unknown'}</span
             >
             <div class="element-badge-container">
-              <SSElementImage
-                elementName={character.element}
-                alt={character.element}
-                width={24}
-                height={24}
-              />
+              <div class="element-icon-detail">
+                <SSElementImage elementName={character.element} alt={character.element} />
+              </div>
               <span
                 class={`element-badge element-${(character.element || 'Unknown').toLowerCase()}`}
                 >{character.element || 'Unknown'}</span
@@ -468,14 +463,11 @@ if (!character) {
                   </div>
                 ) : (
                   <div class="potential-item">
-                    <div class="potential-image">
+                    <div class="potential-image-detail">
                       <PotentialImage
                         imageName={potential.image || ''}
                         alt={`${potential.name} - ${potential.level || 'Potential'}`}
-                        width={300}
-                        height={300}
                         loading="lazy"
-                        quality={100}
                       />
                     </div>
                     <div class="potential-content">
@@ -512,14 +504,11 @@ if (!character) {
                   </div>
                 ) : (
                   <div class="potential-item">
-                    <div class="potential-image">
+                    <div class="potential-image-detail">
                       <PotentialImage
                         imageName={potential.image || ''}
                         alt={`${potential.name} - ${potential.level || 'Potential'}`}
-                        width={300}
-                        height={300}
                         loading="lazy"
-                        quality={100}
                       />
                     </div>
                     <div class="potential-content">
@@ -583,8 +572,10 @@ if (!character) {
                   <span class="stat-value">{character.disc.stats.basicAtk.toLocaleString()}</span>
                 </div>
                 <div class="disc-stat-item">
-                  <span class="stat-label">Aqua DMG:</span>
-                  <span class="stat-value">{character.disc.stats.aquaDmg}</span>
+                  <span class="stat-label">{character.disc.element} DMG:</span>
+                  <span class="stat-value">
+                    {character.disc.stats[character.disc.element.toLowerCase() + 'Dmg']}
+                  </span>
                 </div>
               </div>
             </div>
