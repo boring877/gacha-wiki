@@ -690,19 +690,5 @@ if (!character) {
         </section>
       )
     }
-
-    <!-- Character Tags -->
-    {
-      character.tags && character.tags.length > 0 && (
-        <section class="character-tags">
-          <h2>Tags & Traits</h2>
-          <div class="tags-list">
-            {character.tags.map(tag => (
-              <span class="tag">{tag}</span>
-            ))}
-          </div>
-        </section>
-      )
-    }
   </div>
 </CharacterIndividualLayout>

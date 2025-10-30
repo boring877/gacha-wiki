@@ -12,18 +12,6 @@ export const shiaData = {
   faction: 'Freelance Trekker',
   trekkerStyle: 'Adventurous',
   level: 90,
-  tags: [
-    'Lux',
-    'Vanguard',
-    'Snow Rabbit',
-    'Night Rabbit',
-    'Surfing',
-    'Drones',
-    'Sigil of Lux',
-    'Auto Attack',
-    'Skill Damage',
-    'Ultimate Damage',
-  ],
 
   // Essential table stats (Level max)
   stats: {
