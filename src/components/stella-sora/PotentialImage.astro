@@ -41,6 +41,12 @@ if (!imageModule) {
   imageModule = imageModules[imagePath];
 }
 
+// If not found in Shia folder, try Nanoha folder
+if (!imageModule) {
+  imagePath = `/src/assets/images/games/stella-sora/potential/Nanoha/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
 // If not found, try relative path
 if (!imageModule) {
   imagePath = `../../assets/images/games/stella-sora/potential/Chitose/${imageName}`;
@@ -50,6 +56,12 @@ if (!imageModule) {
 // If still not found, try Shia relative path
 if (!imageModule) {
   imagePath = `../../assets/images/games/stella-sora/potential/Shia/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
+// If still not found, try Nanoha relative path
+if (!imageModule) {
+  imagePath = `../../assets/images/games/stella-sora/potential/Nanoha/${imageName}`;
   imageModule = imageModules[imagePath];
 }
 

@@ -25,7 +25,35 @@
   align-items: flex-start;
 }
 
-/* character-image-large moved to ss-character-database.css as .character-image-detail */
+/* Character Image Detail - Individual Pages */
+.character-image-detail {
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid var(--ss-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.character-image-detail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Character Image Fill - Applied by SSCharacterImage Component */
+.character-img-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
 
 .character-details h1 {
   margin: 0 0 1rem 0;

@@ -74,7 +74,7 @@ if (!character) {
           <ul class="stat-list">
             <li class="stat-list-item">
               <div class="stat-item-content">
-                <span class="stat-item-label">HP</span>
+                <span class="stat-item-label"><HighlightedText text="**HP**" /></span>
                 <span class="stat-item-value large"
                   >{character.stats?.hp?.toLocaleString() || 'N/A'}</span
                 >
@@ -82,7 +82,7 @@ if (!character) {
             </li>
             <li class="stat-list-item">
               <div class="stat-item-content">
-                <span class="stat-item-label">ATK</span>
+                <span class="stat-item-label"><HighlightedText text="**ATK**" /></span>
                 <span class="stat-item-value large"
                   >{character.stats?.attack?.toLocaleString() || 'N/A'}</span
                 >
@@ -90,7 +90,7 @@ if (!character) {
             </li>
             <li class="stat-list-item">
               <div class="stat-item-content">
-                <span class="stat-item-label">DEF</span>
+                <span class="stat-item-label"><HighlightedText text="**DEF**" /></span>
                 <span class="stat-item-value large"
                   >{character.stats?.defense?.toLocaleString() || 'N/A'}</span
                 >
@@ -104,13 +104,13 @@ if (!character) {
           <ul class="stat-list">
             <li class="stat-list-item">
               <div class="stat-item-content">
-                <span class="stat-item-label">Crit Rate</span>
+                <span class="stat-item-label"><HighlightedText text="**Crit Rate**" /></span>
                 <span class="stat-item-value">{character.stats.critRate}%</span>
               </div>
             </li>
             <li class="stat-list-item">
               <div class="stat-item-content">
-                <span class="stat-item-label">Crit DMG</span>
+                <span class="stat-item-label"><HighlightedText text="**Crit DMG**" /></span>
                 <span class="stat-item-value">{character.stats.critDmg}%</span>
               </div>
             </li>
@@ -120,7 +120,9 @@ if (!character) {
                   <li class="stat-list-item">
                     <div class="stat-item-content">
                       <div>
-                        <span class="stat-item-label">VUL Exploit</span>
+                        <span class="stat-item-label">
+                          <HighlightedText text="**VUL Exploit**" />
+                        </span>
                         <div class="stat-item-description">
                           Additional DMG multiplier against targets with negative Elemental RES.
                         </div>
@@ -131,7 +133,9 @@ if (!character) {
                   <li class="stat-list-item">
                     <div class="stat-item-content">
                       <div>
-                        <span class="stat-item-label">DEF PEN</span>
+                        <span class="stat-item-label">
+                          <HighlightedText text="**DEF PEN**" />
+                        </span>
                         <div class="stat-item-description">
                           Target DEF ignored when dealing DMG.
                         </div>
@@ -141,7 +145,9 @@ if (!character) {
                   </li>
                   <li class="stat-list-item">
                     <div class="stat-item-content">
-                      <span class="stat-item-label">Ignore DEF</span>
+                      <span class="stat-item-label">
+                        <HighlightedText text="**Ignore DEF**" />
+                      </span>
                       <span class="stat-item-value">{character.combatStats.ignoreDef}%</span>
                     </div>
                   </li>
@@ -159,7 +165,9 @@ if (!character) {
                 <li class="stat-list-item">
                   <div class="stat-item-content">
                     <div>
-                      <span class="stat-item-label">Max Energy</span>
+                      <span class="stat-item-label">
+                        <HighlightedText text="**Max Energy**" />
+                      </span>
                       <div class="stat-item-description">
                         When reaching the Energy limit, the Trekker Ultimate becomes available.
                       </div>
@@ -169,7 +177,9 @@ if (!character) {
                 </li>
                 <li class="stat-list-item">
                   <div class="stat-item-content">
-                    <span class="stat-item-label">Charge Efficiency (Main)</span>
+                    <span class="stat-item-label">
+                      <HighlightedText text="**Charge Efficiency (Main)**" />
+                    </span>
                     <span class="stat-item-value">
                       {character.energyStats.chargeEfficiencyMain}%
                     </span>
@@ -177,7 +187,9 @@ if (!character) {
                 </li>
                 <li class="stat-list-item">
                   <div class="stat-item-content">
-                    <span class="stat-item-label">Charge Efficiency (Support)</span>
+                    <span class="stat-item-label">
+                      <HighlightedText text="**Charge Efficiency (Support)**" />
+                    </span>
                     <span class="stat-item-value">
                       {character.energyStats.chargeEfficiencySupport}%
                     </span>
@@ -568,11 +580,15 @@ if (!character) {
               <h4>Stats Details (LV. 90)</h4>
               <div class="disc-stats-list">
                 <div class="disc-stat-item">
-                  <span class="stat-label">Basic ATK:</span>
+                  <span class="stat-label">
+                    <HighlightedText text="Basic ATK:" />
+                  </span>
                   <span class="stat-value">{character.disc.stats.basicAtk.toLocaleString()}</span>
                 </div>
                 <div class="disc-stat-item">
-                  <span class="stat-label">{character.disc.element} DMG:</span>
+                  <span class="stat-label">
+                    <HighlightedText text={`${character.disc.element} DMG:`} />
+                  </span>
                   <span class="stat-value">
                     {character.disc.stats[character.disc.element.toLowerCase() + 'Dmg']}
                   </span>
@@ -604,7 +620,9 @@ if (!character) {
                       <h6>{character.disc.skills.harmony.name}</h6>
                     </div>
                   </div>
-                  <div class="skill-level">Lv. {character.disc.skills.harmony.level}</div>
+                  <div class="skill-level">
+                    <HighlightedText text={`Lv. ${character.disc.skills.harmony.level}`} />
+                  </div>
                   <div class="skill-description">
                     <HighlightedText text={character.disc.skills.harmony.effect} />
                   </div>
@@ -629,7 +647,9 @@ if (!character) {
                       <h6>{character.disc.skills.skill.name}</h6>
                     </div>
                   </div>
-                  <div class="skill-level">Lv. {character.disc.skills.skill.level}</div>
+                  <div class="skill-level">
+                    <HighlightedText text={`Lv. ${character.disc.skills.skill.level}`} />
+                  </div>
                   <div class="skill-description">
                     <HighlightedText text={character.disc.skills.skill.effect} />
                   </div>

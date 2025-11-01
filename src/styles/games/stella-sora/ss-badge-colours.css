@@ -77,6 +77,11 @@
   color: var(--ss-bg-primary);
 }
 
+.element-ventus {
+  background: var(--ss-element-ventus);
+  color: var(--ss-text-primary);
+}
+
 /* Position Badges */
 .position-badge {
   background: var(--ss-primary);
@@ -232,6 +237,14 @@
 .skill-energy {
   background: var(--ss-mythic-opacity-15);
   color: var(--ss-mythic);
+}
+
+/* Strong tag styling within skill badges for HighlightedText component */
+.skill-level strong,
+.skill-cooldown strong,
+.skill-energy strong {
+  color: inherit;
+  font-weight: 700;
 }
 
 /* ===== MOBILE BADGE OPTIMIZATION ===== */

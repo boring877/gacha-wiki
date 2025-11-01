@@ -4,6 +4,7 @@
 
 import { chitoseData } from './characters/chitose.js';
 import { shiaData } from './characters/shia.js';
+import { nanohaData } from './characters/nanoha.js';
 
 // Game Mechanics Reference
 export const gameInfo = {
@@ -18,6 +19,11 @@ export const gameInfo = {
       name: 'Lux',
       color: '#FFD700',
       description: 'Lux element characters harness radiant light energy',
+    },
+    {
+      name: 'Ventus',
+      color: '#10B981',
+      description: 'Ventus element characters wield wind and flower ninjutsu',
     },
   ],
   roles: [{ name: 'Vanguard', description: 'Front-line warriors who lead the charge' }],
@@ -36,7 +42,7 @@ export const gameInfo = {
 };
 
 // Character array - sorted alphabetically by name
-export const STELLA_SORA_CHARACTERS = [chitoseData, shiaData];
+export const STELLA_SORA_CHARACTERS = [chitoseData, nanohaData, shiaData];
 
 // Utility functions
 export function getCharacterById(id) {

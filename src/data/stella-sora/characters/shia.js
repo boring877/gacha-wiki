@@ -51,7 +51,8 @@ export const shiaData = {
       name: 'Sail of Twin Moons',
       type: 'Attack',
       level: 10,
-      description: 'Commands drones to attack the target in turn.',
+      description:
+        'Commands **Snow Rabbit** and **Night Rabbit** drones to attack the target in turn.',
       damage: {
         type: 'Lux DMG',
         strikes: [
@@ -68,7 +69,7 @@ export const shiaData = {
       level: 10,
       cooldown: 14,
       description:
-        'Calls for support. Commands 2 Snow Rabbits and 1 Night Rabbit to circle and attack the target for 10s.',
+        'Calls for support. Commands **2 Snow Rabbits** and **1 Night Rabbit** to circle and attack the target for **10s**.',
       damage: {
         type: 'Lux DMG',
         strikes: [
@@ -81,7 +82,7 @@ export const shiaData = {
         {
           type: 'trigger',
           description:
-            '**Whirling Waves** (Main Skill) can trigger **Sigil of Lux**, dealing **241% of ATK** as **Lux DMG**.',
+            '**Whirling Waves** (Main Skill) can trigger **Sigil of Lux**, dealing **241% of ATK as Lux DMG**.',
         },
       ],
     },
@@ -90,7 +91,7 @@ export const shiaData = {
       type: 'Support Skill',
       level: 10,
       cooldown: 16,
-      description: 'Surfs 2 times, each dealing 215% of ATK ×2 as AoE Lux DMG.',
+      description: '**Surfs 2 times**, each dealing **215% of ATK ×2 as AoE Lux DMG**.',
       damage: {
         type: 'Lux DMG',
         strikes: [
@@ -102,7 +103,7 @@ export const shiaData = {
         {
           type: 'trigger',
           description:
-            '**Surfing Rondo** (Support Skill) can trigger **Sigil of Lux**, dealing **241% of ATK** as **Lux DMG**.',
+            '**Surfing Rondo** (Support Skill) can trigger **Sigil of Lux**, dealing **241% of ATK as Lux DMG**.',
         },
       ],
     },
@@ -113,16 +114,16 @@ export const shiaData = {
       cooldown: 40,
       energyCost: 340,
       description:
-        'Fires the laser cannon at the target, dealing 217% of ATK as Lux DMG multiple times for 5s.',
+        'Fires the **laser cannon** at the target, dealing **217% of ATK as Lux DMG** multiple times for **5s**.',
       damage: {
         type: 'Lux DMG',
-        normalCast: '217% of **ATK** as **Lux DMG** multiple times for 5s',
+        normalCast: '217% of **ATK as Lux DMG** multiple times for 5s',
       },
       effects: [
         {
           type: 'trigger',
           description:
-            'The Ultimate **Divine Deluge** can trigger **Sigil of Lux**, dealing **241% of ATK** as **Lux DMG**.',
+            'The Ultimate **Divine Deluge** can trigger **Sigil of Lux**, dealing **241% of ATK as Lux DMG**.',
         },
       ],
     },
@@ -134,30 +135,31 @@ export const shiaData = {
       id: '01',
       name: 'Sparkling Dawn',
       description:
-        'Whenever Shia deals Ultimate DMG to a target, increases her ATK by 1.4% for 25s, stacking up to 30 times.',
+        'Whenever Shia deals **Ultimate DMG** to a target, increases her **ATK** by **1.4%** for **25s**, stacking up to **30** times.',
     },
     {
       id: '02',
       name: "Tidecaller's Resonance",
-      description: "Increases Shia's Ultimate DMG dealt to elite or higher - tier targets by 60%.",
+      description:
+        "Increases Shia's **Ultimate DMG** dealt to **elite** or higher - tier targets by **60%**.",
     },
     {
       id: '03',
       name: "Meteor's Guidance",
       description:
-        'When Shia triggers **Sigil of Lux**, increases her Lux DMG by 4% for 6s, stacking up to 5 times.',
+        'When Shia triggers **Sigil of Lux**, increases her **Lux DMG** by **4%** for **6s**, stacking up to **5** times.',
     },
     {
       id: '04',
       name: 'Beyond the Horizon',
       description:
-        'After Shia deals Skill DMG to a target, her Ultimate DMG is increased by 1%, stacking up to 50 times. This effect is removed after Shia casts her Ultimate.',
+        'After Shia deals **Skill DMG** to a target, her **Ultimate DMG** is increased by **1%**, stacking up to **50** times. This effect is removed after Shia casts her **Ultimate**.',
     },
     {
       id: '05',
       name: 'Last Tear',
       description:
-        "When any Trekker inflicts **Sigil of Lux**, increases Shia's Lux DMG by 20% for 6s.",
+        "When any Trekker inflicts **Sigil of Lux**, increases Shia's **Lux DMG** by **20%** for **6s**.",
     },
   ],
 
@@ -174,20 +176,20 @@ export const shiaData = {
     {
       name: 'Phantom Step Radiance',
       description:
-        'When dealing Auto Attack DMG, Snow Rabbit inflicts Electro Music that deals additional DMG upon reaching the max stack limit.',
+        'When dealing **Auto Attack DMG**, **Snow Rabbit** inflicts **Electro Music** that deals additional DMG upon reaching the **max stack limit**.',
       image: 'Phantom_step_rediance.jpg',
     },
     {
       name: 'Rimecrystal Edge',
       description:
-        'The Main Skill summons a Snow Rabbit that inflicts Electro Music when dealing Skill DMG, dealing additional DMG upon reaching the max stack limit.',
+        'The **Main Skill** summons a **Snow Rabbit** that inflicts **Electro Music** when dealing **Skill DMG**, dealing additional DMG upon reaching the **max stack limit**.',
       image: 'Rimecrystal_edge.jpg',
     },
     {
       name: 'Subzero Dominion',
       level: 'Lv. 6',
       description:
-        "The Main Skill summons more Snow Rabbits. While the Main Skill is active, increases all Snow Rabbits' Lux DMG.",
+        "The **Main Skill** summons **more Snow Rabbits**. While the **Main Skill** is active, increases all **Snow Rabbits' Lux DMG**.",
       image: 'Subzero_dominion.jpg',
     },
     {
@@ -265,7 +267,7 @@ export const shiaData = {
       name: "Hare's Pursuit",
       level: 'Lv. 6',
       description:
-        'Shia can dodge one more time. When Shia triggers **Sigil of Lux** ✦, increases her ATK.',
+        'Shia can dodge one more time. When Shia triggers **Sigil of Lux**, increases her ATK.',
       image: "Hare's_Pursuit.jpg",
     },
     {
@@ -394,7 +396,7 @@ export const shiaData = {
     {
       name: 'Counter Current',
       level: 'Lv. 6',
-      description: 'Every time Shia triggers **Sigil of Lux** ✨, increases her ATK.',
+      description: 'Every time Shia triggers **Sigil of Lux**, increases her ATK.',
       image: 'Counter_current.jpg',
     },
     {
@@ -495,7 +497,7 @@ export const shiaData = {
     },
     {
       name: 'Counter Current',
-      description: 'Every time Shia triggers **Sigil of Lux** ✨, increases her ATK.',
+      description: 'Every time Shia triggers **Sigil of Lux**, increases her ATK.',
       image: 'Counter_current.jpg',
     },
     {
