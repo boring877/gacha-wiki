@@ -47,6 +47,12 @@ if (!imageModule) {
   imageModule = imageModules[imagePath];
 }
 
+// If not found in Nanoha folder, try Freesia folder
+if (!imageModule) {
+  imagePath = `/src/assets/images/games/stella-sora/potential/Freesia/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
 // If not found, try relative path
 if (!imageModule) {
   imagePath = `../../assets/images/games/stella-sora/potential/Chitose/${imageName}`;
@@ -65,12 +71,19 @@ if (!imageModule) {
   imageModule = imageModules[imagePath];
 }
 
-// If still not found, try just the filename
+// If still not found, try Freesia relative path
+if (!imageModule) {
+  imagePath = `../../assets/images/games/stella-sora/potential/Freesia/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
+// If still not found, try just the filename (case-insensitive)
 if (!imageModule && imageName) {
   const filename = imageName.split('/').pop(); // Get just the filename
   if (filename) {
     for (const [key, value] of Object.entries(imageModules)) {
-      if (key.endsWith(filename)) {
+      const keyFilename = key.split('/').pop(); // Get just the filename from the key
+      if (keyFilename && keyFilename.toLowerCase() === filename.toLowerCase()) {
         imageModule = value;
         break;
       }

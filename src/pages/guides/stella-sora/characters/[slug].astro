@@ -23,6 +23,59 @@ const { character } = Astro.props;
 if (!character) {
   return new Response('Character not found', { status: 404 });
 }
+
+// Function to count actual potential cards (excluding build headers)
+function countPotentialCards(potentials) {
+  if (!potentials) return 0;
+  return potentials.filter(p => !p.isBuildHeader).length;
+}
+
+// Function to count unique cards across main and support potentials
+function countUniqueCards(mainPotentials, supportPotentials) {
+  const allCards = [];
+
+  // Collect all actual cards from main potentials
+  if (mainPotentials) {
+    mainPotentials.forEach(p => {
+      if (!p.isBuildHeader && p.image) {
+        allCards.push(p.image);
+      }
+    });
+  }
+
+  // Collect all actual cards from support potentials
+  if (supportPotentials) {
+    supportPotentials.forEach(p => {
+      if (!p.isBuildHeader && p.image) {
+        allCards.push(p.image);
+      }
+    });
+  }
+
+  // Return count of unique images
+  return new Set(allCards).size;
+}
+
+// Function to count total cards (including duplicates)
+function countTotalCards(mainPotentials, supportPotentials) {
+  let total = 0;
+
+  if (mainPotentials) {
+    total += countPotentialCards(mainPotentials);
+  }
+
+  if (supportPotentials) {
+    total += countPotentialCards(supportPotentials);
+  }
+
+  return total;
+}
+
+// Calculate card counts for this character
+const mainCardsCount = countPotentialCards(character.mainPotentials);
+const supportCardsCount = countPotentialCards(character.supportPotentials);
+const totalCardsCount = countTotalCards(character.mainPotentials, character.supportPotentials);
+const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.supportPotentials);
 ---
 
 <CharacterIndividualLayout title={character.name} gameTitle={character.name} character={character}>
@@ -399,7 +452,7 @@ if (!character) {
             </div>
             <div class="stat-item total">
               <span class="stat-label">Main Total:</span>
-              <span class="stat-value">16 cards</span>
+              <span class="stat-value">{mainCardsCount} cards</span>
             </div>
           </div>
         </div>
@@ -421,7 +474,7 @@ if (!character) {
             </div>
             <div class="stat-item total">
               <span class="stat-label">Support Total:</span>
-              <span class="stat-value">16 cards</span>
+              <span class="stat-value">{supportCardsCount} cards</span>
             </div>
           </div>
         </div>
@@ -432,11 +485,11 @@ if (!character) {
             <div class="stat-group">
               <div class="stat-item">
                 <span class="stat-label">Total Cards (with duplicates):</span>
-                <span class="stat-value">32 cards</span>
+                <span class="stat-value">{totalCardsCount} cards</span>
               </div>
               <div class="stat-item">
                 <span class="stat-label">Unique Cards (without duplicates):</span>
-                <span class="stat-value">26 cards</span>
+                <span class="stat-value">{uniqueCardsCount} cards</span>
               </div>
             </div>
 

@@ -91,13 +91,23 @@
   font-weight: 600;
 }
 
-/* Only Vanguard role exists in actual character data */
+/* Position badges for different roles */
 .position-vanguard {
   background: var(--ss-primary-dark);
   color: var(--ss-text-primary);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.position-versatile {
+  background: var(--ss-versatile);
+  color: var(--ss-text-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--ss-versatile-dark);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
 }
 
 /* Style Badges */

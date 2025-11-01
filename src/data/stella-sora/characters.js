@@ -5,6 +5,7 @@
 import { chitoseData } from './characters/chitose.js';
 import { shiaData } from './characters/shia.js';
 import { nanohaData } from './characters/nanoha.js';
+import { freesiaData } from './characters/freesia.js';
 
 // Game Mechanics Reference
 export const gameInfo = {
@@ -26,7 +27,13 @@ export const gameInfo = {
       description: 'Ventus element characters wield wind and flower ninjutsu',
     },
   ],
-  roles: [{ name: 'Vanguard', description: 'Front-line warriors who lead the charge' }],
+  roles: [
+    { name: 'Vanguard', description: 'Front-line warriors who lead the charge' },
+    {
+      name: 'Versatile',
+      description: 'Flexible characters who can adapt to various combat situations',
+    },
+  ],
   weapons: [
     { name: 'Sword', description: 'Balanced melee weapon' },
     { name: 'Staff', description: 'Magic-focused weapon' },
@@ -42,7 +49,7 @@ export const gameInfo = {
 };
 
 // Character array - sorted alphabetically by name
-export const STELLA_SORA_CHARACTERS = [chitoseData, nanohaData, shiaData];
+export const STELLA_SORA_CHARACTERS = [chitoseData, freesiaData, nanohaData, shiaData];
 
 // Utility functions
 export function getCharacterById(id) {
