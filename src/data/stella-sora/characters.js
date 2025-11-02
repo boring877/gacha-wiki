@@ -3,10 +3,11 @@
 // All character stats are based on maximum level
 
 import { chitoseData } from './characters/chitose.js';
-import { shiaData } from './characters/shia.js';
-import { nanohaData } from './characters/nanoha.js';
 import { freesiaData } from './characters/freesia.js';
 import { minovaData } from './characters/minova.js';
+import { mistiqueData } from './characters/mistique.js';
+import { nanohaData } from './characters/nanoha.js';
+import { shiaData } from './characters/shia.js';
 
 // Game Mechanics Reference
 export const gameInfo = {
@@ -21,6 +22,11 @@ export const gameInfo = {
       name: 'Lux',
       color: '#FFD700',
       description: 'Lux element characters harness radiant light energy',
+    },
+    {
+      name: 'Umbra',
+      color: '#6B46C1',
+      description: 'Umbra element characters wield shadow and dark magic',
     },
     {
       name: 'Ventus',
@@ -50,7 +56,14 @@ export const gameInfo = {
 };
 
 // Character array - sorted alphabetically by name
-export const STELLA_SORA_CHARACTERS = [chitoseData, freesiaData, minovaData, nanohaData, shiaData];
+export const STELLA_SORA_CHARACTERS = [
+  chitoseData,
+  freesiaData,
+  minovaData,
+  mistiqueData,
+  nanohaData,
+  shiaData,
+];
 
 // Utility functions
 export function getCharacterById(id) {

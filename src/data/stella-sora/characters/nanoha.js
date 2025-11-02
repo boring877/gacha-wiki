@@ -67,12 +67,12 @@ export const nanohaData = {
       level: 10,
       cooldown: 10,
       description:
-        'Throws **two sunflower shurikens** that strike the target and return for **4 times**. Each hit deals **13.5% of ATK as Ventus DMG**.',
+        'Throws **two sunflower shurikens** that strike the target and return for **4 times**. Each hit deals **13.5% of ATK** as **Ventus DMG**.',
       damage: {
         type: 'Ventus DMG',
         strikes: [
-          '13.5% of **ATK as Ventus DMG** (each hit, 4 times)',
-          '104% of **ATK as AoE Ventus Mark DMG** (trigger)',
+          '13.5% of **ATK** as **Ventus DMG** (each hit, 4 times)',
+          '104% of **ATK** as **AoE Ventus Mark DMG** (trigger)',
         ],
       },
       effects: [
@@ -89,12 +89,12 @@ export const nanohaData = {
       level: 10,
       cooldown: 12,
       description:
-        'Conjures an **exploding sunflower** that fires **12 darts**, each dealing **72.3% of ATK as Ventus DMG**.',
+        'Conjures an **exploding sunflower** that fires **12 darts**, each dealing **72.3% of ATK** as **Ventus DMG**.',
       damage: {
         type: 'Ventus DMG',
         strikes: [
-          '72.3% of **ATK as Ventus DMG** (each dart, 12 darts)',
-          '104% of **ATK as AoE Ventus Mark DMG** (trigger)',
+          '72.3% of **ATK** as **Ventus DMG** (each dart, 12 darts)',
+          '104% of **ATK** as **AoE Ventus Mark DMG** (trigger)',
         ],
       },
       effects: [

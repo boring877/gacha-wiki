@@ -5,12 +5,14 @@ import { Image } from 'astro:assets';
 // Import all Stella Sora element images once
 import aquaImage from '../../assets/images/games/stella-sora/element/Aqua.jpg';
 import luxImage from '../../assets/images/games/stella-sora/element/Lux.jpg';
+import umbraImage from '../../assets/images/games/stella-sora/element/Umbra.jpg';
 import ventusImage from '../../assets/images/games/stella-sora/element/Ventus.jpg';
 
 // Centralized element image mapping
 const elementImageMap = {
   Aqua: aquaImage,
   Lux: luxImage,
+  Umbra: umbraImage,
   Ventus: ventusImage,
 };
 
@@ -25,7 +27,7 @@ export interface Props {
 const { elementName, alt, class: className = '', width = 32, height = 32 } = Astro.props;
 
 // Get the imported image object from the map
-const imageSrc = elementImageMap[elementName] || elementImageMap['Aqua'];
+const imageSrc = elementImageMap[elementName] || elementImageMap['Aqua']; // Keep Aqua as fallback for safety
 ---
 
 <Image

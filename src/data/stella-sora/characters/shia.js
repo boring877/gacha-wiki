@@ -82,7 +82,7 @@ export const shiaData = {
         {
           type: 'trigger',
           description:
-            '**Whirling Waves** (Main Skill) can trigger **Sigil of Lux**, dealing **241% of ATK as Lux DMG**.',
+            '**Whirling Waves** (Main Skill) can trigger **Sigil of Lux**, dealing **241% of ATK** as **Lux DMG**.',
         },
       ],
     },
@@ -103,7 +103,7 @@ export const shiaData = {
         {
           type: 'trigger',
           description:
-            '**Surfing Rondo** (Support Skill) can trigger **Sigil of Lux**, dealing **241% of ATK as Lux DMG**.',
+            '**Surfing Rondo** (Support Skill) can trigger **Sigil of Lux**, dealing **241% of ATK** as **Lux DMG**.',
         },
       ],
     },
@@ -114,16 +114,16 @@ export const shiaData = {
       cooldown: 40,
       energyCost: 340,
       description:
-        'Fires the **laser cannon** at the target, dealing **217% of ATK as Lux DMG** multiple times for **5s**.',
+        'Fires the **laser cannon** at the target, dealing **217% of ATK** as **Lux DMG** multiple times for **5s**.',
       damage: {
         type: 'Lux DMG',
-        normalCast: '217% of **ATK as Lux DMG** multiple times for 5s',
+        normalCast: '217% of **ATK** as **Lux DMG** multiple times for 5s',
       },
       effects: [
         {
           type: 'trigger',
           description:
-            'The Ultimate **Divine Deluge** can trigger **Sigil of Lux**, dealing **241% of ATK as Lux DMG**.',
+            'The Ultimate **Divine Deluge** can trigger **Sigil of Lux**, dealing **241% of ATK** as **Lux DMG**.',
         },
       ],
     },
