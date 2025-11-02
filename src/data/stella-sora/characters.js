@@ -6,6 +6,7 @@ import { chitoseData } from './characters/chitose.js';
 import { shiaData } from './characters/shia.js';
 import { nanohaData } from './characters/nanoha.js';
 import { freesiaData } from './characters/freesia.js';
+import { minovaData } from './characters/minova.js';
 
 // Game Mechanics Reference
 export const gameInfo = {
@@ -49,7 +50,7 @@ export const gameInfo = {
 };
 
 // Character array - sorted alphabetically by name
-export const STELLA_SORA_CHARACTERS = [chitoseData, freesiaData, nanohaData, shiaData];
+export const STELLA_SORA_CHARACTERS = [chitoseData, freesiaData, minovaData, nanohaData, shiaData];
 
 // Utility functions
 export function getCharacterById(id) {

@@ -733,29 +733,19 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
                 </div>
 
                 <div class="melodies">
-                  <div class="melody-item">
-                    <h5>Melody of Luck</h5>
-                    <p>
-                      <strong>Base Effect:</strong>{' '}
-                      {character.disc.support.melodies.luck.baseEffect}
-                    </p>
-                    <p>
-                      <strong>Max Level (Lv.99) Effect:</strong>{' '}
-                      {character.disc.support.melodies.luck.maxEffect}
-                    </p>
-                  </div>
-
-                  <div class="melody-item">
-                    <h5>Melody of Ultimate</h5>
-                    <p>
-                      <strong>Base Effect:</strong>{' '}
-                      {character.disc.support.melodies.ultimate.baseEffect}
-                    </p>
-                    <p>
-                      <strong>Max Level (Lv.99) Effect:</strong>{' '}
-                      {character.disc.support.melodies.ultimate.maxEffect}
-                    </p>
-                  </div>
+                  {Object.entries(character.disc.support.melodies || {}).map(
+                    ([melodyKey, melodyData]) => (
+                      <div class="melody-item">
+                        <h5>Melody of {melodyKey.charAt(0).toUpperCase() + melodyKey.slice(1)}</h5>
+                        <p>
+                          <strong>Base Effect:</strong> {melodyData.baseEffect}
+                        </p>
+                        <p>
+                          <strong>Max Level (Lv.99) Effect:</strong> {melodyData.maxEffect}
+                        </p>
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
             </div>
