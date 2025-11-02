@@ -462,7 +462,7 @@ class StellaSoraClockTimer {
   }
 
   /**
-   * Update weekly reset timer (Saturdays at 13:00 UTC-7)
+   * Update weekly reset timer (Mondays at 13:00 UTC-7)
    */
   updateWeeklyResetTimer() {
     if (!this.elements.weeklyTime) return;
@@ -470,10 +470,25 @@ class StellaSoraClockTimer {
     const now = new Date();
     const weeklyReset = new Date();
 
-    // Find next Saturday (0 = Sunday, 6 = Saturday)
+    // Find next Monday (0 = Sunday, 1 = Monday)
     const currentDay = now.getUTCDay();
-    const daysUntilSaturday = (6 - currentDay + 7) % 7 || 7;
-    weeklyReset.setUTCDate(now.getUTCDate() + daysUntilSaturday);
+    let daysUntilMonday = (1 - currentDay + 7) % 7;
+
+    // If today is Monday, check if the reset time has already passed
+    if (currentDay === 1) {
+      // Create a reset time for today (Monday at 20:00 UTC = 13:00 UTC-7)
+      const todayReset = new Date();
+      todayReset.setUTCDate(now.getUTCDate());
+      todayReset.setUTCHours(20, 0, 0, 0);
+
+      if (now >= todayReset) {
+        // Reset time has passed today, so next reset is next week (7 days)
+        daysUntilMonday = 7;
+      }
+      // If reset time hasn't passed today, daysUntilMonday stays 0
+    }
+
+    weeklyReset.setUTCDate(now.getUTCDate() + daysUntilMonday);
 
     // Set to 13:00 UTC-7 = 20:00 UTC
     weeklyReset.setUTCHours(20, 0, 0, 0);

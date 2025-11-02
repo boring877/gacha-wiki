@@ -32,7 +32,7 @@ export const stellaSoraConfig = {
   launchDate: SS_LAUNCH_DATE_UTC_MINUS_7,
   displayDate: 'October 19, 2025 at 19:00 (UTC-7)',
   timerDescription: 'Daily Server Reset',
-  weeklyResetDay: 6, // Saturday (0 = Sunday, 6 = Saturday)
+  weeklyResetDay: 1, // Monday (0 = Sunday, 1 = Monday)
 
   // Global server configuration (UTC-7 timezone)
   server: {
@@ -69,10 +69,10 @@ export const stellaSoraConfig = {
 
   // Additional timers
   timers: {
-    // Weekly reset timer (Saturdays at 13:00 UTC-7)
+    // Weekly reset timer (Mondays at 13:00 UTC-7)
     weeklyReset: {
       name: 'Weekly Reset',
-      day: 6, // Saturday
+      day: 1, // Monday
       hour: SS_RESET_HOUR_UTC_MINUS_7,
       minute: SS_RESET_MINUTE_UTC_MINUS_7,
       description: 'Weekly content and challenge reset',
