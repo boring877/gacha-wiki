@@ -81,7 +81,9 @@
   function setupEventListeners() {
     // Sort buttons
     const sortButtons = document.querySelectorAll('.sort-btn');
-    sortButtons.forEach(button => {
+
+    sortButtons.forEach((button, index) => {
+      const sortKey = button.dataset.sort;
       button.addEventListener('click', function () {
         cycleSortState(this);
       });
@@ -106,13 +108,13 @@
     if (currentSortKey !== sortKey) {
       // New sort field selected
       currentSortKey = sortKey;
-      currentSortDirection = 'asc'; // Start with asc (up arrow) first
+      currentSortDirection = 'desc'; // Start with desc (down arrow) first - highest first
     } else {
       // Same field selected, cycle through states
       if (currentSortDirection === 'normal') {
-        currentSortDirection = 'asc'; // Start with asc (up arrow)
-      } else if (currentSortDirection === 'asc') {
-        currentSortDirection = 'desc'; // Then desc (down arrow)
+        currentSortDirection = 'desc'; // Start with desc (down arrow) - highest first
+      } else if (currentSortDirection === 'desc') {
+        currentSortDirection = 'asc'; // Then asc (up arrow) - lowest first
       } else {
         currentSortDirection = 'normal'; // Then back to normal
         currentSortKey = null;
@@ -152,7 +154,7 @@
         currentButton.classList.add('active');
         const arrow = currentButton.querySelector('.sort-arrow');
         if (arrow) {
-          arrow.textContent = currentSortDirection === 'asc' ? ' ↑' : ' ↓';
+          arrow.textContent = currentSortDirection === 'asc' ? ' ↓' : ' ↑';
         }
       }
     }
@@ -182,8 +184,21 @@
         case 'defense':
         case 'critRate':
         case 'critDmg':
-          valueA = parseFloat(a.dataset[sortKey]) || 0;
-          valueB = parseFloat(b.dataset[sortKey]) || 0;
+          // Look for data attributes on the cells, not the row
+          const cellA = a.querySelector(`[data-${sortKey}]`);
+          const cellB = b.querySelector(`[data-${sortKey}]`);
+
+          valueA = cellA ? parseFloat(cellA.dataset[sortKey]) || 0 : 0;
+          valueB = cellB ? parseFloat(cellB.dataset[sortKey]) || 0 : 0;
+
+          // Handle cases where dataset attributes might be missing or malformed
+          if (isNaN(valueA)) {
+            valueA = 0;
+          }
+          if (isNaN(valueB)) {
+            valueB = 0;
+          }
+
           return currentSortDirection === 'asc' ? valueA - valueB : valueB - valueA;
 
         default:

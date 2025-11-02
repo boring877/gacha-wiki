@@ -79,6 +79,13 @@ export default defineConfig({
               '../src/data/silver-and-blood/events.js',
               '../src/data/silver-and-blood/damage-mechanics.js',
             ],
+            'stella-sora-data': [
+              '../src/data/stella-sora/characters.js',
+              '../src/data/stella-sora/skills.js',
+              '../src/data/stella-sora/talents.js',
+              '../src/data/stella-sora/potentials.js',
+              '../src/data/stella-sora/discs.js',
+            ],
 
             // Utility chunks
             utils: [
@@ -91,6 +98,8 @@ export default defineConfig({
             'character-components': [
               '../src/components/zone-nova/CharacterComparison.astro',
               '../src/components/silver-and-blood/CharacterComparison.astro',
+              '../src/components/stella-sora/SSSortComponent.astro',
+              '../src/layouts/stella-sora/CharacterIndividualLayout.astro',
             ],
           },
         },

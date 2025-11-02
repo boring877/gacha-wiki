@@ -9,6 +9,51 @@ import { STELLA_SORA_CHARACTERS } from '../../../data/stella-sora/characters.js'
 
 // Sort characters by HP initially (descending)
 const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => b.stats.hp - a.stats.hp);
+
+// Generate structured data for character database
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Stella Sora Character Database',
+  description:
+    'Browse all Stella Sora characters with detailed stats, skills, and information. Filter by rarity, element, role, and more.',
+  url: new URL(Astro.url.pathname, Astro.site),
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: STELLA_SORA_CHARACTERS.length,
+    itemListElement: sortedCharacters.slice(0, 20).map((character, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'VideoGameCharacter',
+        name: character.name,
+        description: `${character.rarity} ${character.element} ${character.role} character from Stella Sora`,
+        image: new URL(character.image, Astro.site).href,
+        isPartOf: {
+          '@type': 'VideoGame',
+          name: 'Stella Sora',
+        },
+        additionalProperty: [
+          {
+            '@type': 'PropertyValue',
+            name: 'Rarity',
+            value: character.rarity,
+          },
+          {
+            '@type': 'PropertyValue',
+            name: 'Element',
+            value: character.element,
+          },
+          {
+            '@type': 'PropertyValue',
+            name: 'Role',
+            value: character.role,
+          },
+        ],
+      },
+    })),
+  },
+};
 ---
 
 <CharactersLayout
@@ -16,6 +61,9 @@ const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => b.stats.hp -
   description="Browse all Stella Sora characters with detailed stats, skills, and information. Filter by rarity, element, role, and more. Complete character database for Trekker collection."
   gameTitle="Character Database"
 >
+  <!-- Structured Data for Character Database -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
   <section class="page-content">
     <div class="content-wrapper">
       <!-- Database Controls Container -->
@@ -111,7 +159,7 @@ const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => b.stats.hp -
                       <div class="character-image-container">
                         <SSCharacterImage
                           imageName={character.image}
-                          alt={character.name}
+                          alt={`${character.name} - ${character.rarity} ${character.element} ${character.role} character from Stella Sora`}
                           class="character-img"
                           width={500}
                           height={500}
@@ -178,13 +226,18 @@ const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => b.stats.hp -
                 data-element={character.element}
                 data-role={character.role}
                 data-slug={character.slug}
+                data-hp={character.stats.hp}
+                data-attack={character.stats.attack}
+                data-defense={character.stats.defense}
+                data-critRate={character.stats.critRate}
+                data-critDmg={character.stats.critDmg}
               >
                 {/* Card Header: Image + Basic Info */}
                 <div class="mobile-card-header">
                   <div class="character-image-container">
                     <SSCharacterImage
                       imageName={character.image}
-                      alt={character.name}
+                      alt={`${character.name} - ${character.rarity} ${character.element} ${character.role} character from Stella Sora`}
                       class="character-img"
                       width={500}
                       height={500}
