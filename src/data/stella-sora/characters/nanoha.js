@@ -121,7 +121,7 @@ export const nanohaData = {
         {
           type: 'trigger',
           description:
-            'When a clone deals DMG, it can trigger **Ventus Mark**, dealing **104% of ATK as AoE Ventus Mark DMG**.',
+            'When a clone deals DMG, it can trigger **Ventus Mark**, dealing **104% of ATK** as AoE **Ventus Mark DMG**.',
         },
         {
           type: 'duration',
@@ -184,7 +184,7 @@ export const nanohaData = {
     {
       name: 'Blossom Flurry',
       description:
-        'Within **10s** after casting **Flowers Dance (Main Skill)**, Nanoha fires **3 additional shurikens** with her **Auto Attacks** that can **pierce** through the target, each dealing **9.8% of ATK as Ventus Auto Attack DMG**.',
+        'Within **10s** after casting **Flowers Dance (Main Skill)**, Nanoha fires **3 additional shurikens** with her **Auto Attacks** that can **pierce** through the target, each dealing **9.8% of ATK** as **Ventus Auto Attack DMG**.',
       image: 'blossom_flurry.jpg',
     },
     {

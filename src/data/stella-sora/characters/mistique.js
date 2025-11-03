@@ -425,7 +425,7 @@ export const mistiqueData = {
   disc: {
     name: "Witch's Swing",
     image: "Witch's_swing.jpg",
-    rarity: '4-Star',
+    rarity: '5-Star',
     element: 'Umbra',
     tags: ['Umbra', 'Element', 'Ultimate', 'Minion'],
     stats: {

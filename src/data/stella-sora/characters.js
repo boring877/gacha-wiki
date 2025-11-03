@@ -3,6 +3,7 @@
 // All character stats are based on maximum level
 
 import { chitoseData } from './characters/chitose.js';
+import { chixiaData } from './characters/chixia.js';
 import { freesiaData } from './characters/freesia.js';
 import { minovaData } from './characters/minova.js';
 import { mistiqueData } from './characters/mistique.js';
@@ -27,6 +28,11 @@ export const gameInfo = {
       name: 'Umbra',
       color: '#6B46C1',
       description: 'Umbra element characters wield shadow and dark magic',
+    },
+    {
+      name: 'Ignis',
+      color: '#DC2626',
+      description: 'Ignis element characters command fire and flame',
     },
     {
       name: 'Ventus',
@@ -58,6 +64,7 @@ export const gameInfo = {
 // Character array - sorted alphabetically by name
 export const STELLA_SORA_CHARACTERS = [
   chitoseData,
+  chixiaData,
   freesiaData,
   minovaData,
   mistiqueData,
