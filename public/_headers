@@ -1,0 +1,30 @@
+# Header rules for Cloudflare Pages
+# This file should be placed in your public directory
+
+# Cache rules for JS files
+/assets/*.js
+  Cache-Control: public, max-age=86400
+
+# Cache rules for CSS files
+/assets/*.css
+  Cache-Control: public, max-age=86400
+
+# Cache rules for static assets (fonts, images)
+/assets/*.{woff2,woff,png,jpg,jpeg,gif,svg,webp,avif,ico}
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.{woff2,woff,png,jpg,jpeg,gif,svg,webp,avif,ico}
+  Cache-Control: public, max-age=31536000, immutable
+
+# No cache for HTML files
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# Security headers for all routes
+/*
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
