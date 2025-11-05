@@ -7,7 +7,7 @@ export const freesiaData = {
   image: 'Freesia.jpg',
   icon: 'Freesia.jpg',
   rarity: '5-Star',
-  element: 'Aqua',
+  element: 'Ventus',
   role: 'Versatile',
   faction: 'Post Haste',
   trekkerStyle: 'Adventurous',
@@ -52,67 +52,28 @@ export const freesiaData = {
       name: 'Power of Reason',
       type: 'Attack',
       level: 10,
-      description: 'Swings the great axe to attack the target.',
-      damage: {
-        type: 'Aqua DMG',
-        normal: [
-          '136% of **ATK** as **Aqua DMG**',
-          '189% of **ATK** as **Aqua DMG**',
-          '73.9% of **ATK** as **Aqua DMG**',
-          '118% of **ATK** as **Aqua DMG**',
-          '354% of **ATK** as **Aqua DMG**',
-        ],
-        berserk: [
-          '134% of **ATK** × 2 as **Aqua DMG**',
-          '100% of **ATK** × 2 as **Aqua DMG**',
-          '88% of **ATK**, 58.6% of **ATK** × 4, and 176% of **ATK** as **Aqua DMG**',
-        ],
-      },
-      effects: [
-        {
-          type: 'state',
-          description: 'In **Berserk** state, rapidly hacks at enemies instead.',
-        },
-      ],
+      cooldown: 0,
+      energyCost: 0,
+      description:
+        'Swings the great axe to attack the target.\n\n- **Strike 1**: 136% of ATK as Aqua DMG\n\n- **Strike 2**: 189% of ATK as Aqua DMG\n\n- **Strike 3**: 73.9% of ATK as Aqua DMG\n\n- **Strike 4**: 118% of ATK as Aqua DMG\n\n- **Strike 5**: 354% of ATK as Aqua DMG\n\n- **Berserk State**: Rapidly hacks at enemies instead:\n  - **Strike 1**: 134% of ATK × 2 as Aqua DMG\n  - **Strike 2**: 100% of ATK × 2 as Aqua DMG\n  - **Strike 3**: 88% of ATK, 58.6% of ATK × 4, and 176% of ATK as Aqua DMG',
     },
     {
       name: 'Freezing Swirl',
       type: 'Main Skill',
       level: 10,
       cooldown: 8,
+      energyCost: 0,
       description:
-        "Charges up to unleash a Whirlwind Slash, dealing AoE Aqua DMG to nearby targets. Charging increases the skill's duration.",
-      damage: {
-        type: 'Aqua DMG',
-        continuous: '70.2% of **ATK** as **Aqua DMG** to nearby targets every 0.3s',
-        trigger: '175% of **ATK** as **AoE Aqua Mark DMG**',
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            '**Freezing Swirl** (Main Skill) can trigger **Aqua Mark**, dealing **175% of ATK** as AoE Aqua Mark DMG and inflicting **Chill**.',
-        },
-      ],
+        "Charges up to unleash a Whirlwind Slash, dealing 70.2% of ATK as Aqua DMG to nearby targets every 0.3s. Charging increases the skill's duration.\n\nFreezing Swirl (Main Skill) can trigger Aqua Mark, dealing 175% of ATK as AoE Aqua Mark DMG and inflicting Chill.",
     },
     {
       name: 'Frost Bloom',
       type: 'Support Skill',
       level: 10,
       cooldown: 12,
+      energyCost: 0,
       description:
-        'Creates a field of Ice Flowers ahead, dealing AoE Aqua DMG. After 1s, the Ice Flowers burst, dealing additional AoE Aqua DMG.',
-      damage: {
-        type: 'Aqua DMG',
-        initial: '193% of **ATK** as **AoE Aqua DMG**',
-        burst: '173% of **ATK** as **AoE Aqua DMG**',
-      },
-      effects: [
-        {
-          type: 'inflict',
-          description: '**Frost Bloom** (Support Skill) can inflict **Aqua Mark: Stream**.',
-        },
-      ],
+        'Creates a field of Ice Flowers ahead, dealing 193% of ATK as AoE Aqua DMG.\n\nAfter 1s, the Ice Flowers burst, dealing 173% of ATK as AoE Aqua DMG.\n\nFrost Bloom (Support Skill) can inflict Aqua Mark: Stream.',
     },
     {
       name: 'Elegy of Frost',
@@ -121,23 +82,7 @@ export const freesiaData = {
       cooldown: 30,
       energyCost: 285,
       description:
-        'Freesia growls furiously, dealing massive Aqua DMG in a large area. She then deals additional AoE Aqua DMG and enters the **Berserk** status for 20s.',
-      damage: {
-        type: 'Aqua DMG',
-        roar: ['111% of **ATK** as **Aqua DMG**', '156% of **ATK** as **Aqua DMG**'],
-        final: '254% of **ATK** as **AoE Aqua DMG**',
-      },
-      effects: [
-        {
-          type: 'status',
-          description: 'Enters **Berserk** status for 20s.',
-        },
-        {
-          type: 'support',
-          description:
-            'When Freesia is in **Berserk** status as a support character, she will automatically attack nearby enemies.',
-        },
-      ],
+        'Freesia growls furiously, dealing 111% of ATK and 156% of ATK as Aqua DMG in a large area. She then deals 254% of ATK as AoE Aqua DMG and enters the Berserk status for 20s.\n\nWhen Freesia is in Berserk status as a support character, she will automatically attack nearby enemies.',
     },
   ],
 
@@ -450,7 +395,7 @@ export const freesiaData = {
     name: 'Sunlit Blossom',
     image: 'Sunlit_blossom.jpg',
     rarity: '5-Star',
-    element: 'Aqua',
+    element: 'Ventus',
     tags: ['Aqua', 'Auto Attack', 'Skills'],
     stats: {
       basicAtk: 1582,

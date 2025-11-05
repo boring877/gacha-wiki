@@ -1,19 +1,70 @@
 ---
 // HighlightedText Component - Reusable **markup** processor
 // Converts **text** to <strong>text</strong> with blue styling
+// Also handles bullet point conversion for strikes
 
 const { text, className = '' } = Astro.props;
 
-// Process the ** markup
-const parts = text ? text.split('**') : [''];
+// Function to process the text with bullet points and bold formatting only
+function processSkillText(inputText) {
+  if (!inputText) return '';
+
+  // Split by double newlines to handle paragraphs
+  const paragraphs = inputText.split('\n\n');
+
+  return paragraphs
+    .map((paragraph, pIndex) => {
+      // Split by newlines to handle individual lines
+      const lines = paragraph.split('\n');
+
+      return lines
+        .map((line, lIndex) => {
+          // Check if this is a strike line (starts with "- **")
+          if (line.trim().startsWith('- **')) {
+            // Convert to proper bullet point HTML
+            const strikeText = line.trim().substring(2); // Remove "- "
+            const parts = strikeText.split('**');
+            const processedStrike = parts
+              .map((part, index) => {
+                return index % 2 === 0 ? `<span>${part}</span>` : `<strong>${part}</strong>`;
+              })
+              .join('');
+
+            return `<li class="skill-strike">${processedStrike}</li>`;
+          } else if (line.trim().startsWith('- ')) {
+            // Handle regular bullet points
+            const bulletText = line.trim().substring(2); // Remove "- "
+            const parts = bulletText.split('**');
+            const processedBullet = parts
+              .map((part, index) => {
+                return index % 2 === 0 ? `<span>${part}</span>` : `<strong>${part}</strong>`;
+              })
+              .join('');
+
+            return `<li class="skill-bullet">${processedBullet}</li>`;
+          } else if (line.trim() === '') {
+            // Handle empty lines
+            return '';
+          } else {
+            // Handle regular text with **bold** formatting
+            const parts = line.split('**');
+            const processedText = parts
+              .map((part, index) => {
+                return index % 2 === 0 ? `<span>${part}</span>` : `<strong>${part}</strong>`;
+              })
+              .join('');
+
+            return processedText;
+          }
+        })
+        .filter(line => line !== '')
+        .join('<br>');
+    })
+    .filter(paragraph => paragraph.trim() !== '')
+    .join('<br><br>');
+}
+
+const processedContent = processSkillText(text);
 ---
 
-<span class={className}>
-  {
-    parts.map((part, index) => {
-      // Even indices (0, 2, 4...) are regular text
-      // Odd indices (1, 3, 5...) should be highlighted
-      return index % 2 === 0 ? <span>{part}</span> : <strong>{part}</strong>;
-    })
-  }
-</span>
+<div class={className} set:html={processedContent} />

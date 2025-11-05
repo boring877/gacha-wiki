@@ -369,6 +369,43 @@
   padding: 0;
 }
 
+/* Skill Strike and Bullet Point Styling */
+.skill-strike,
+.skill-bullet {
+  color: var(--ss-text-secondary);
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  font-family: var(--font-primary);
+  font-weight: var(--font-normal);
+  letter-spacing: var(--tracking-normal);
+  position: relative;
+  list-style: none;
+}
+
+.skill-strike::before,
+.skill-bullet::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--ss-primary);
+  font-weight: bold;
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.skill-strike strong,
+.skill-bullet strong {
+  color: var(--ss-primary);
+  font-weight: 700;
+}
+
+.skill-strike span,
+.skill-bullet span {
+  color: var(--ss-text-secondary);
+}
+
 .skill-damage {
   margin: 0 0 1.5rem 0;
   padding: 0;
@@ -464,6 +501,14 @@
 }
 
 /* Talents strong tag styling */
+.talent-description strong {
+  color: var(--ss-primary);
+  font-weight: var(--font-semibold);
+}
+
+/* Simple bold text styling matching potential approach */
+.skill-strike strong,
+.skill-bullet strong,
 .talent-description strong {
   color: var(--ss-primary);
   font-weight: var(--font-semibold);

@@ -51,55 +51,28 @@ export const minovaData = {
       name: 'Bat and Skate',
       type: 'Attack',
       level: 10,
-      description: 'Swings the baseball bat and kickflips the skateboard to attack the target.',
-      damage: {
-        type: 'Lux DMG',
-        strikes: [
-          '43.1% of **ATK** as **Lux DMG**',
-          '43.1% of **ATK** as **Lux DMG**',
-          '72% of **ATK** as **Lux DMG**',
-          '47.2% of **ATK** and **21.5% of ATK ×6** as **Lux DMG**',
-          '112% of **ATK** as **Lux DMG**',
-        ],
-      },
+      cooldown: 0,
+      energyCost: 0,
+      description:
+        'Swings the baseball bat and kickflips the skateboard to attack the target.\n\n- **Strike 1**: 43.1% of ATK as Lux DMG\n\n- **Strike 2**: 43.1% of ATK as Lux DMG\n\n- **Strike 3**: 72% of ATK as Lux DMG\n\n- **Strike 4**: 47.2% of ATK and 21.5% of ATK × 6 as Lux DMG\n\n- **Strike 5**: 112% of ATK as Lux DMG',
     },
     {
       name: 'Syou: Pulsar Streak',
       type: 'Main Skill',
       level: 10,
       cooldown: 14,
+      energyCost: 0,
       description:
-        'Swings the baseball bat, dealing 161% of ATK as Lux DMG. Then, activates the second phase, Two Base Hit: Charges at the target, delivering rapid strikes. Hold to deal 38.3% of ATK as Lux DMG every 0.3s for a total of 3s. Finishes with a powerful smash, dealing 174% of ATK as Lux DMG.',
-      damage: {
-        type: 'Lux DMG',
-        strikes: [
-          '161% of **ATK** as **Lux DMG** (initial swing)',
-          '38.3% of **ATK** as **Lux DMG** every 0.3s for 3s (Two Base Hit)',
-          '174% of **ATK** as **Lux DMG** (final smash)',
-        ],
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            'Both Syou: Pulsar Streak (Main Skill) and Two Base Hit can trigger **Lux Mark**, dealing **301% of ATK** as Lux Mark DMG.',
-        },
-      ],
+        'Swings the baseball bat, dealing 161% of ATK as Lux DMG. Then, activates the second phase, Two Base Hit: Charges at the target, delivering rapid strikes. Hold to deal 38.3% of ATK as Lux DMG every 0.3s for a total of 3s. Finishes with a powerful smash, dealing 174% of ATK as Lux DMG.\n\nBoth Syou: Pulsar Streak (Main Skill) and Two Base Hit can trigger Lux Mark☀, dealing 301% of ATK as Lux Mark DMG.',
     },
     {
       name: 'Gi: Supernova Burst',
       type: 'Support Skill',
       level: 10,
       cooldown: 16,
+      energyCost: 0,
       description:
-        'Radiates hyper concentrated starlight, dealing 847% of ATK as AoE Lux DMG and inflicting 2 stacks of Astral Hex.',
-      effects: [
-        {
-          type: 'periodic',
-          description:
-            'Every 3s, Astral Hex deals **473% of ATK** as AoE **Lux DMG** and inflicts **Lux Mark: Light**.',
-        },
-      ],
+        'Radiates hyper concentrated starlight, dealing 847% of ATK as Lux DMG and inflicting 2 stacks of Astral Hex.\n\nEvery 3s, Astral Hex deals 473% of ATK as AoE Lux DMG and inflicts Lux Mark: Light☀.',
     },
     {
       name: 'Ketsu: Entropic Convergence',
@@ -109,10 +82,6 @@ export const minovaData = {
       energyCost: 237,
       description:
         'Commands the Ashwind Clan members to attack the target, dealing 195% of ATK as AoE Lux DMG every 0.3s for a total of 5s.',
-      damage: {
-        type: 'Lux DMG',
-        normalCast: '195% of **ATK** as AoE **Lux DMG** every 0.3s for 5s',
-      },
     },
   ],
 

@@ -318,7 +318,11 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
               </div>
 
               <div class="skill-damage">
-                {skill.description && <p>{skill.description}</p>}
+                {skill.description && (
+                  <p>
+                    <HighlightedText text={skill.description} />
+                  </p>
+                )}
                 {skill.damage && (
                   <div>
                     {skill.damage.normalCast && (

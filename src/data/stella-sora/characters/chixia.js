@@ -52,68 +52,28 @@ export const chixiaData = {
       name: 'Mystic Brushstrokes',
       type: 'Attack',
       level: 10,
-      description: 'Waves the writing brush and inflicts Ink.',
-      damage: {
-        type: 'Ignis DMG',
-        strikes: [
-          '34% of **ATK** as **Ignis DMG**',
-          '41.1% of **ATK** as **Ignis DMG**',
-          '20.1% of **ATK** × 4 as **Ignis DMG**',
-          '18.8% of **ATK** × 3 as **Ignis DMG**',
-          '62.5% of **ATK** as **Ignis DMG**',
-        ],
-      },
+      cooldown: 0,
+      energyCost: 0,
+      description:
+        'Wields the writing brush and inflicts Ink.\n\n- **Strike 1**: 34% of ATK as Ignis DMG\n\n- **Strike 2**: 41.1% of ATK as Ignis DMG\n\n- **Strike 3**: 20.1% of ATK × 4 as Ignis DMG\n\n- **Strike 4**: 18.8% of ATK × 3 as Ignis DMG\n\n- **Strike 5**: 62.5% of ATK as Ignis DMG',
     },
     {
       name: 'Purifying Flames',
       type: 'Main Skill',
       level: 10,
       cooldown: 7,
+      energyCost: 0,
       description:
-        'Spreads out a torrent of flames, dealing AoE Ignis DMG. When dealing DMG to targets with Ink, inflicts Ignite.',
-      damage: {
-        type: 'Ignis DMG',
-        normalCast: '34% of **ATK** as **AoE Ignis DMG** every 0.2s for a total of 3s',
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            '**Purifying Flames** (Main Skill) can trigger **Ignis Mark**, dealing **95% of ATK** as **AoE Ignis Mark DMG**',
-        },
-        {
-          type: 'status',
-          description: 'When dealing DMG to targets with Ink, inflicts **Ignite**',
-        },
-      ],
+        'Spreads out a torrent of flames, dealing 34% of ATK as AoE Ignis DMG every 0.2s for a total of 3s. When dealing DMG to targets with Ink, inflicts Ignite.\n\nPurifying Flames (Main Skill) can trigger Ignis Mark, dealing 95% of ATK as AoE Ignis Mark DMG.',
     },
     {
       name: 'Awakening: Crimson Dragon',
       type: 'Support Skill',
       level: 10,
       cooldown: 18,
+      energyCost: 0,
       description:
-        'Summons a Crimson Dragon every 2s, up to 3 times. Each Crimson Dragon lasts for 8s and spits Ink at the target.',
-      damage: {
-        type: 'Ignis DMG',
-        normalCast: '109% of **ATK** as **Ignis DMG**',
-        vanishAttack: '158% of **ATK** as **AoE Ignis DMG**',
-      },
-      effects: [
-        {
-          type: 'summon',
-          description: 'Summons a **Crimson Dragon** every 2s, up to 3 times. Each lasts for 8s.',
-        },
-        {
-          type: 'trigger',
-          description: 'When Crimson Dragon deals DMG, inflicts **Ignis Mark: Divine Flame**',
-        },
-        {
-          type: 'mechanic',
-          description:
-            'Minions summoned by Awakening: Crimson Dragon will be removed when casting the Support Skill again.',
-        },
-      ],
+        'Summons a Crimson Dragon every 2s, up to 3 times. Each Crimson Dragon lasts for 8s and spits Ink at the target, dealing 109% of ATK as Ignis DMG. Upon vanishing, it charges toward the target, dealing 158% of ATK as AoE Ignis DMG.\n\nWhen Crimson Dragon deals DMG, inflicts Ignis Mark: Divine Flame.\n\nMinions summoned by Awakening: Crimson Dragon will be removed when casting the Support Skill again.',
     },
     {
       name: "Dragon's Ascension",
@@ -121,13 +81,8 @@ export const chixiaData = {
       level: 10,
       cooldown: 30,
       energyCost: 285,
-      description: 'Summons a Fire Dragon to circle around the target, dealing AoE Ignis DMG.',
-      damage: {
-        type: 'Ignis DMG',
-        normalCast:
-          '244% of **ATK** as **AoE Ignis DMG** in a large area every 0.3s for a total of 5s',
-      },
-      effects: [],
+      description:
+        'Summons a Fire Dragon to circle around the target, dealing 244% of ATK as Ignis DMG in a large area every 0.3s for a total of 5s.',
     },
   ],
 

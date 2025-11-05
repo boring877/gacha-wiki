@@ -51,61 +51,28 @@ export const shiaData = {
       name: 'Sail of Twin Moons',
       type: 'Attack',
       level: 10,
+      cooldown: 0,
+      energyCost: 0,
       description:
-        'Commands **Snow Rabbit** and **Night Rabbit** drones to attack the target in turn.',
-      damage: {
-        type: 'Lux DMG',
-        strikes: [
-          '22.3% of **ATK** as **Lux DMG** (Snow Rabbit)',
-          '44.5% of **ATK** as **Lux DMG** (Night Rabbit)',
-          '21.7% of **ATK** as **Lux DMG** (Snow Rabbit)',
-          '28.9% of **ATK** as **Lux DMG** (Night Rabbit)',
-        ],
-      },
+        'Commands drones to attack the target in turn.\n\n- **Strike 1**: Snow Rabbit fires bullets in a sweeping motion, dealing 22.3% of ATK as Lux DMG\n\n- **Strike 2**: Night Rabbit fires missiles, dealing 44.5% of ATK as Lux DMG\n\n- **Strike 3**: Snow Rabbit fires bullets in a sweeping motion, dealing 21.7% of ATK as Lux DMG\n\n- **Strike 4**: Night Rabbit fires missiles, dealing 28.9% of ATK as Lux DMG',
     },
     {
       name: 'Whirling Waves',
       type: 'Main Skill',
       level: 10,
       cooldown: 14,
+      energyCost: 0,
       description:
-        'Calls for support. Commands **2 Snow Rabbits** and **1 Night Rabbit** to circle and attack the target for **10s**.',
-      damage: {
-        type: 'Lux DMG',
-        strikes: [
-          '23.2% of **ATK** as **Lux DMG** (Snow Rabbits)',
-          '32.7% of **ATK** as **Lux DMG** (Night Rabbit)',
-          '34% of **ATK** as AoE **Lux DMG** (Night Rabbit explosion)',
-        ],
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            '**Whirling Waves** (Main Skill) can trigger **Sigil of Lux**, dealing **241% of ATK** as **Lux DMG**.',
-        },
-      ],
+        'Calls for support. Commands 2 Snow Rabbits and 1 Night Rabbit to circle and attack the target for 10s.\n\nSnow Rabbits fire bullets in a sweeping motion, dealing 23.2% of ATK as Lux DMG\n\nNight Rabbit fires missiles, dealing 32.7% of ATK as Lux DMG, and then explodes, dealing 34% of ATK as AoE Lux DMG\n\nWhirling Waves (Main Skill) can trigger Lux Mark, dealing 241% of ATK as Lux DMG.',
     },
     {
       name: 'Surfing Rondo',
       type: 'Support Skill',
       level: 10,
       cooldown: 16,
-      description: '**Surfs 2 times**, each dealing **215% of ATK ×2 as AoE Lux DMG**.',
-      damage: {
-        type: 'Lux DMG',
-        strikes: [
-          '100% of **ATK** as **Lux DMG** every 0.3s (Ride 1 - Snow Rabbit)',
-          '133% of **ATK** as **Lux DMG** (Ride 2 - Night Rabbit)',
-        ],
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            '**Surfing Rondo** (Support Skill) can trigger **Sigil of Lux**, dealing **241% of ATK** as **Lux DMG**.',
-        },
-      ],
+      energyCost: 0,
+      description:
+        'Surfs 2 times, each dealing 215% of ATK ×2 as AoE Lux DMG.\n\nRide 1: Snow Rabbit fires bullets in a sweeping motion, dealing 100% of ATK as Lux DMG every 0.3s\n\nRide 2: Night Rabbit fires missiles, each dealing 133% of ATK as Lux DMG\n\nSurfing Rondo (Support Skill) can trigger Lux Mark, dealing 241% of ATK as Lux DMG.',
     },
     {
       name: 'Divine Deluge',
@@ -114,18 +81,7 @@ export const shiaData = {
       cooldown: 40,
       energyCost: 340,
       description:
-        'Fires the **laser cannon** at the target, dealing **217% of ATK** as **Lux DMG** multiple times for **5s**.',
-      damage: {
-        type: 'Lux DMG',
-        normalCast: '217% of **ATK** as **Lux DMG** multiple times for 5s',
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            'The Ultimate **Divine Deluge** can trigger **Sigil of Lux**, dealing **241% of ATK** as **Lux DMG**.',
-        },
-      ],
+        'Fires the laser cannon at the target, dealing 217% of ATK as Lux DMG multiple times for 5s.\n\nThe Ultimate Divine Deluge can trigger Lux Mark, dealing 241% of ATK as Lux DMG.',
     },
   ],
 
@@ -147,7 +103,7 @@ export const shiaData = {
       id: '03',
       name: "Meteor's Guidance",
       description:
-        'When Shia triggers **Sigil of Lux**, increases her **Lux DMG** by **4%** for **6s**, stacking up to **5** times.',
+        'When Shia triggers **Lux Mark**, increases her **Lux DMG** by **4%** for **6s**, stacking up to **5** times.',
     },
     {
       id: '04',
@@ -159,7 +115,7 @@ export const shiaData = {
       id: '05',
       name: 'Last Tear',
       description:
-        "When any Trekker inflicts **Sigil of Lux**, increases Shia's **Lux DMG** by **20%** for **6s**.",
+        "When any Trekker inflicts **Lux Mark**, increases Shia's **Lux DMG** by **20%** for **6s**.",
     },
   ],
 
@@ -202,8 +158,7 @@ export const shiaData = {
     {
       name: 'Rimeheart Pulse',
       level: 'Lv. 6',
-      description:
-        "When a Snow Rabbit triggers **Sigil of Lux**, increases all the Snow Rabbits' ATK.",
+      description: "When a Snow Rabbit triggers **Lux Mark**, increases all the Snow Rabbits' ATK.",
       image: 'Rimeheart_pulse.jpg',
     },
 
@@ -267,7 +222,7 @@ export const shiaData = {
       name: "Hare's Pursuit",
       level: 'Lv. 6',
       description:
-        'Shia can dodge one more time. When Shia triggers **Sigil of Lux**, increases her ATK.',
+        'Shia can dodge one more time. When Shia triggers **Lux Mark**, increases her ATK.',
       image: "Hare's_Pursuit.jpg",
     },
     {
@@ -332,7 +287,7 @@ export const shiaData = {
     {
       name: 'Eclipse Blast',
       level: 'Lv. 6',
-      description: "When Shia triggers **Sigil of Lux**, increases Night Rabbit's Skill Damage.",
+      description: "When Shia triggers **Lux Mark**, increases Night Rabbit's Skill Damage.",
       image: 'Eclipse_blast.jpg',
     },
 
@@ -396,7 +351,7 @@ export const shiaData = {
     {
       name: 'Counter Current',
       level: 'Lv. 6',
-      description: 'Every time Shia triggers **Sigil of Lux**, increases her ATK.',
+      description: 'Every time Shia triggers **Lux Mark**, increases her ATK.',
       image: 'Counter_current.jpg',
     },
     {
@@ -477,7 +432,7 @@ export const shiaData = {
   // Status Effects
   statusEffects: [
     {
-      name: 'Sigil of Lux',
+      name: 'Lux Mark',
       description:
         "The generic name for all Lux Marks. When triggered by specific Lux Trekkers' attacks, the status is removed, and a special effect is activated.",
     },
@@ -497,7 +452,7 @@ export const shiaData = {
     },
     {
       name: 'Counter Current',
-      description: 'Every time Shia triggers **Sigil of Lux**, increases her ATK.',
+      description: 'Every time Shia triggers **Lux Mark**, increases her ATK.',
       image: 'Counter_current.jpg',
     },
     {

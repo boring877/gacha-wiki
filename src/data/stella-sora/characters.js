@@ -5,6 +5,7 @@
 import { chitoseData } from './characters/chitose.js';
 import { chixiaData } from './characters/chixia.js';
 import { freesiaData } from './characters/freesia.js';
+import { gerieData } from './characters/gerie.js';
 import { minovaData } from './characters/minova.js';
 import { mistiqueData } from './characters/mistique.js';
 import { nanohaData } from './characters/nanoha.js';
@@ -33,6 +34,11 @@ export const gameInfo = {
       name: 'Ignis',
       color: '#DC2626',
       description: 'Ignis element characters command fire and flame',
+    },
+    {
+      name: 'Terra',
+      color: '#8B4513',
+      description: 'Terra element characters command earth and stone',
     },
     {
       name: 'Ventus',
@@ -66,6 +72,7 @@ export const STELLA_SORA_CHARACTERS = [
   chitoseData,
   chixiaData,
   freesiaData,
+  gerieData,
   minovaData,
   mistiqueData,
   nanohaData,

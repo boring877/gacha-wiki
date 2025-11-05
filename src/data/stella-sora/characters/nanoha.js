@@ -51,59 +51,28 @@ export const nanohaData = {
       name: 'Flowers Scatter',
       type: 'Attack',
       level: 10,
-      description: 'Throws **multiple darts**.',
-      damage: {
-        type: 'Ventus DMG',
-        strikes: [
-          '30.7% of **ATK** ×2 as **Ventus DMG**',
-          '30.7% of **ATK** ×2 as **Ventus DMG**',
-          '44.9% of **ATK** ×3 as **Ventus DMG**',
-        ],
-      },
+      cooldown: 0,
+      energyCost: 0,
+      description:
+        'Throws multiple darts.\n\n- **Strike 1**: 30.7% of ATK × 2 as Ventus DMG\n\n- **Strike 2**: 30.7% of ATK × 2 as Ventus DMG\n\n- **Strike 3**: 44.9% of ATK × 3 as Ventus DMG',
     },
     {
       name: 'Flowers Dance',
       type: 'Main Skill',
       level: 10,
       cooldown: 10,
+      energyCost: 0,
       description:
-        'Throws **two sunflower shurikens** that strike the target and return for **4 times**. Each hit deals **13.5% of ATK** as **Ventus DMG**.',
-      damage: {
-        type: 'Ventus DMG',
-        strikes: [
-          '13.5% of **ATK** as **Ventus DMG** (each hit, 4 times)',
-          '104% of **ATK** as **AoE Ventus Mark DMG** (trigger)',
-        ],
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            '**Flowers Dance** (Main Skill) can trigger **Ventus Mark**, dealing **104% of ATK** as AoE **Ventus Mark** DMG.',
-        },
-      ],
+        'Throws two sunflower shurikens that strike the target and return for 4 times. Each hit deals 13.5% of ATK as Ventus DMG.\n\nFlowers Dance (Main Skill) can trigger Ventus Mark, dealing 104% of ATK as AoE Ventus Mark DMG.',
     },
     {
       name: 'Flowers Bloom',
       type: 'Support Skill',
       level: 10,
       cooldown: 12,
+      energyCost: 0,
       description:
-        'Conjures an **exploding sunflower** that fires **12 darts**, each dealing **72.3% of ATK** as **Ventus DMG**.',
-      damage: {
-        type: 'Ventus DMG',
-        strikes: [
-          '72.3% of **ATK** as **Ventus DMG** (each dart, 12 darts)',
-          '104% of **ATK** as **AoE Ventus Mark DMG** (trigger)',
-        ],
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            '**Flowers Bloom** (Support Skill) can trigger **Ventus Mark**, dealing **104% of ATK** as AoE **Ventus Mark** DMG.',
-        },
-      ],
+        'Conjures an exploding sunflower that fires 12 darts, each dealing 72.3% of ATK as Ventus DMG.\n\nFlowers Bloom (Support Skill) can trigger Ventus Mark, dealing 104% of ATK as AoE Ventus Mark DMG.',
     },
     {
       name: 'Flowers Thrice',
@@ -112,22 +81,7 @@ export const nanohaData = {
       cooldown: 30,
       energyCost: 285,
       description:
-        'Generates **2 stationary clones** that attack enemies with **darts**, dealing multiple instances of damage as **Ventus Ultimate DMG**. Each clone lasts for **10s**. Up to **2 clones** can be present simultaneously.',
-      damage: {
-        type: 'Ventus Ultimate DMG',
-        normalCast: 'Multiple damage instances as **Ventus Ultimate DMG** (clones)',
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            'When a clone deals DMG, it can trigger **Ventus Mark**, dealing **104% of ATK** as AoE **Ventus Mark DMG**.',
-        },
-        {
-          type: 'duration',
-          description: 'Each clone lasts for 10s. Up to 2 clones can be present simultaneously.',
-        },
-      ],
+        "Generates 2 stationary clones that attack enemies with darts, dealing 54.1% of Nanoha's ATK × 2, 54.1% of Nanoha's ATK × 2, and 79.4% of Nanoha's ATK × 3 as Ventus Ultimate DMG.\n\nEach clone lasts for 10s. Up to 2 clones can be present simultaneously.\n\nWhen a clone deals DMG, it can trigger Ventus Mark, dealing 104% of ATK as AoE Ventus Mark DMG.",
     },
   ],
 

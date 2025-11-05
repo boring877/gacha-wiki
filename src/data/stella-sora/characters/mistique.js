@@ -51,59 +51,28 @@ export const mistiqueData = {
       name: 'Comet Sweep',
       type: 'Attack',
       level: 10,
-      description: 'Sweeps her broom to attack repeatedly.',
-      damage: {
-        type: 'Umbra DMG',
-        strikes: [
-          '15.3% of **ATK** as **Umbra DMG**',
-          '10.9% of **ATK** as **Umbra DMG**',
-          '12% of **ATK** as **Umbra DMG**',
-          '16.9% of **ATK** as **Umbra DMG**',
-        ],
-      },
+      cooldown: 0,
+      energyCost: 0,
+      description:
+        'Sweeps her broom to attack repeatedly.\n\n- **Strike 1**: 15.3% of ATK as Umbra DMG\n\n- **Strike 2**: 10.9% of ATK as Umbra DMG\n\n- **Strike 3**: 12% of ATK as Umbra DMG\n\n- **Strike 4**: 16.9% of ATK as Umbra DMG',
     },
     {
       name: 'Pumpka Pummel',
       type: 'Main Skill',
       level: 10,
       cooldown: 11,
+      energyCost: 0,
       description:
-        "Mistique takes a photo to deal 91.6% of ATK as AoE Umbra Skill DMG, then enters Exposure status: Summons one Pumpka Phantom every 3s for 15s. Pumpka Phantoms automatically attack the target, dealing 9.1% of ATK and 7.8% of ATK as Umbra Minion DMG. Each Pumpka Phantom has 25% of Mistique's Base Max HP, 100% of her ATK, and lasts for 15s. Up to 4 Pumpka Phantoms can be present at the same time.",
-      damage: {
-        type: 'Umbra DMG',
-        strikes: [
-          '91.6% of **ATK** as AoE **Umbra Skill DMG**',
-          '9.1% of **ATK** as **Umbra Minion DMG** (Phantom attacks)',
-          '7.8% of **ATK** as **Umbra Minion DMG** (Phantom attacks)',
-        ],
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            'Pumpka Pummel (Main Skill) and Pumpka Phantoms can trigger **Umbra Mark**, dealing **24% of ATK** as Umbra Mark DMG and inflicting Umbra Burn, which deals DMG to the target every 0.5s for 5s, totaling to **4.1% of ATK** as Umbra Mark DMG.',
-        },
-        {
-          type: 'mechanic',
-          description:
-            'When Pumpka Pummel (Main Skill) is interrupted, its cooldown is partially reduced.',
-        },
-      ],
+        "Mistique takes a photo to deal 91.6% of ATK as AoE Umbra Skill DMG, then enters Exposure status:\n\nSummons one Pumpka Phantom every 3s for 15s. Pumpka Phantoms automatically attack the target, dealing 9.1% of ATK and 7.8% of ATK as Umbra Minion DMG.\n\nEach Pumpka Phantom has 25% of Mistique's Base Max HP, 100% of her ATK, and lasts for 15s. Up to 4 Pumpka Phantoms can be present at the same time.\n\nPumpka Pummel (Main Skill) and Pumpka Phantoms can trigger Umbra Mark, dealing 24% of ATK as Umbra Mark DMG and inflicting Umbra Burn, which deals DMG to the target every 0.5s for 5s, totaling to 4.1% of ATK as Umbra Mark DMG.\n\nWhen Pumpka Pummel (Main Skill) is interrupted, its cooldown is partially reduced.",
     },
     {
       name: 'Summoning Circle',
       type: 'Support Skill',
       level: 10,
       cooldown: 12,
+      energyCost: 0,
       description:
-        "Draws a magic circle on the ground, summoning a Lanterna Phantom every 0.5s for 6s. Lanterna Phantom will explode, dealing 220% of ATK as Umbra Minion DMG and inflicting **Umbra Mark: Dark Shadow**. Each Lanterna Phantom has 3% of Mistique's Base Max HP and 100% of her ATK, lasting for 8s.",
-      effects: [
-        {
-          type: 'explosion',
-          description:
-            'Lanterna Phantom explodes, dealing **220% of ATK** as **Umbra Minion DMG** and inflicting **Umbra Mark: Dark Shadow**.',
-        },
-      ],
+        "Draws a magic circle on the ground, summoning a Lanterna Phantom every 0.5s for 6s.\n\nLanterna Phantom will explode, dealing 220% of ATK as Umbra Minion DMG and inflicting Umbra Mark: Dark Shadow.\n\nEach Lanterna Phantom has 3% of Mistique's Base Max HP and 100% of her ATK, lasting for 8s.",
     },
     {
       name: 'Midnight Terror',
@@ -112,11 +81,7 @@ export const mistiqueData = {
       cooldown: 30,
       energyCost: 275,
       description:
-        'Summons a massive phantom, dealing 407% of ATK x8/814% of ATK as Umbra DMG in a large area.',
-      damage: {
-        type: 'Umbra DMG',
-        normalCast: '407% of **ATK** x8/**814% of ATK** as AoE **Umbra DMG**',
-      },
+        'Summons a massive phantom, dealing 407% of ATK × 8/814% of ATK as Umbra DMG in a large area.',
     },
   ],
 

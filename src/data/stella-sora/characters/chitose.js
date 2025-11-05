@@ -52,18 +52,8 @@ export const chitoseData = {
       name: 'Aeroflow',
       type: 'Attack',
       level: 10,
-      description: 'Wields the odachi to deal DMG multiple times.',
-      damage: {
-        type: 'Aqua DMG',
-        strikes: [
-          '25.6% of **ATK** × 2 as **Aqua DMG**',
-          '37.2% of **ATK** as **Aqua DMG**',
-          '31.4% of **ATK** and 73% of **ATK** as **Aqua DMG**',
-          '26.1% of **ATK** × 2 as **Aqua DMG**',
-          '28.2% of **ATK** × 2 and 56.4% of **ATK** as **Aqua DMG**',
-          '160% of **ATK** and 86% of **ATK** as **Aqua DMG**',
-        ],
-      },
+      description:
+        'Wields the odachi to deal DMG multiple times.\n\n- **Strike 1**: 25.6% of ATK ×2 as Aqua DMG\n\n- **Strike 2**: 37.2% of ATK as Aqua DMG\n\n- **Strike 3**: 31.4% of ATK and 73% of ATK as Aqua DMG\n\n- **Strike 4**: 26.1% of ATK ×2 as Aqua DMG\n\n- **Strike 5**: 28.2% of ATK ×2 and 56.4% of ATK as Aqua DMG\n\n- **Strike 6**: 160% of ATK and 86% of ATK as Aqua DMG',
     },
     {
       name: 'Torrent Flash',
@@ -71,42 +61,15 @@ export const chitoseData = {
       level: 10,
       cooldown: 8,
       description:
-        'Dashes forward to attack multiple times, transforming into Torrent Flash: Scale after a few casts.',
-      damage: {
-        type: 'Aqua DMG',
-        normalCast: '305% of **ATK** × 2 as **AoE Aqua DMG**',
-        scaleVariant: '356% of **ATK** × 3 as **AoE Aqua DMG**',
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            '**Torrent Flash** (Main Skill) and **Torrent Flash: Scale** can trigger **Aqua Mark** (dealing 104% of **ATK** as **AoE Aqua Mark DMG** and inflicting **Chill**)',
-        },
-      ],
+        'Dashes forward, dealing 305% of ATK ×2 as AoE Aqua DMG. It can be cast 2 times initially.\n\nAfter every 2 casts of Torrent Flash, the next Torrent Flash becomes **Torrent Flash: Scale**: Summons a Coiling Serpent, dealing 356% of ATK ×3 as AoE Aqua DMG.\n\n**Torrent Flash** (Main Skill) and **Torrent Flash: Scale** can trigger **Aqua Mark** (dealing 104% of ATK as AoE Aqua Mark DMG and inflicting Chill).',
     },
     {
       name: 'Water Surge',
       type: 'Support Skill',
       level: 10,
       cooldown: 12,
-      description: 'Delivers 3 rounds of rapid slashes with Mirror Images that assist in combat.',
-      damage: {
-        type: 'Aqua DMG',
-        normalCast: '27.3% of **ATK** × 4 as **AoE Aqua DMG** (3 rounds)',
-      },
-      effects: [
-        {
-          type: 'summon',
-          description:
-            'When casting the **Support Skill**, generates multiple **Mirror Images** nearby, dealing 51.5% of **ATK** as **Aqua DMG**. This effect can only be triggered up to 3 times.',
-        },
-        {
-          type: 'trigger',
-          description:
-            '**Water Surge** (Support Skill) can trigger **Aqua Mark** (dealing 104% of **ATK** as **AoE Aqua Mark DMG** and inflicting **Chill**)',
-        },
-      ],
+      description:
+        'Deliver 3 rounds of rapid slashes, each round dealing 27.3% of ATK ×4 as AoE Aqua DMG.\n\nWhen casting the Support Skill, generates multiple Mirror Images nearby, dealing 51.5% of ATK as Aqua DMG. This effect can only be triggered up to 3 times.\n\n**Water Surge** (Support Skill) can trigger **Aqua Mark** (dealing 104% of ATK as AoE Aqua Mark DMG and inflicting Chill).',
     },
     {
       name: 'Waves of Naraka',
@@ -115,19 +78,7 @@ export const chitoseData = {
       cooldown: 30,
       energyCost: 285,
       description:
-        'Dual-wields katanas in a large area, then summons a Coiling Serpent for massive damage.',
-      damage: {
-        type: 'Aqua DMG',
-        initialAttack: '193% of **ATK** × 11 as **Aqua DMG** in a large area',
-        coilingSerpent: '908% of **ATK** as **Aqua DMG** in a large area',
-      },
-      effects: [
-        {
-          type: 'trigger',
-          description:
-            '**Naraka Waves** (Ultimate) can trigger **Aqua Mark** (dealing 104% of **ATK** as **AoE Aqua Mark DMG** and inflicting **Chill**)',
-        },
-      ],
+        'Dual-wields katanas, dealing 193% of ATK ×11 as Aqua DMG in a large area. Then pulls in Coiling Serpent, dealing 908% of ATK as Aqua DMG in a large area.\n\n**Naraka Waves** (Ultimate) can trigger **Aqua Mark** (dealing 104% of ATK as AoE Aqua Mark DMG and inflicting Chill).',
     },
   ],
 
