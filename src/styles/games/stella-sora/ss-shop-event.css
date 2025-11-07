@@ -148,11 +148,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-.ss-shop-event-card:hover .ss-shop-event-image img {
-  transform: scale(1.05);
 }
 
 /* Responsive Design */
@@ -196,10 +191,6 @@
     aspect-ratio: 16/9;
   }
 
-  .ss-shop-event-card:hover .ss-shop-event-image img {
-    transform: scale(1.02);
-  }
-
   .event-dates {
     padding: var(--spacing-sm);
   }
@@ -231,10 +222,6 @@
     aspect-ratio: 4/3;
   }
 
-  .ss-shop-event-card:hover .ss-shop-event-image img {
-    transform: scale(1.01);
-  }
-
   .event-card-content {
     padding: var(--spacing-sm);
   }
@@ -259,15 +246,6 @@
 
   .ss-shop-events-grid {
     gap: var(--spacing-sm);
-  }
-
-  .ss-shop-event-card {
-    touch-action: manipulation;
-    transition: transform 0.2s ease;
-  }
-
-  .ss-shop-event-card:active {
-    transform: scale(0.98);
   }
 }
 
@@ -298,10 +276,6 @@
 
   .ss-shop-event-image {
     aspect-ratio: 3/2;
-  }
-
-  .ss-shop-event-card:hover .ss-shop-event-image img {
-    transform: none;
   }
 
   .event-card-content {
