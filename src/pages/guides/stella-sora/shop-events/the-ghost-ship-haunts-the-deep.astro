@@ -279,8 +279,16 @@ const questCategories = [
     completionRewards:
       '2x Sprout Ticket, 4000 Squid Rice Cracker, 10x Moonlit Companion, 20x Premium Disc Promotion Box, 100x Premium Cartridge Box, 3x Bottled Vigor Soda',
     quests: [
-      { name: 'Clear event Battle Stages 120 times', gem: 'x50', currency: 'x1000' },
-      { name: 'Clear event Battle Stages 160 times', gem: 'x50', currency: 'x1000' },
+      {
+        name: 'Clear event Battle Stages 120 times (repeat hard mode)',
+        gem: 'x50',
+        currency: 'x1000',
+      },
+      {
+        name: 'Clear event Battle Stages 160 times (repeat hard mode)',
+        gem: 'x50',
+        currency: 'x1000',
+      },
       { name: 'Collect 4 stars in Hard stages', gem: 'x50', currency: 'x1000' },
       { name: 'Collect 6 stars in Hard stages', gem: 'x50', currency: 'x1000' },
       { name: 'Collect 8 stars in Hard stages', gem: 'x50', currency: 'x1000' },
@@ -338,48 +346,30 @@ const totalCrackersFromStages = normalStagesCrackers + hardStagesCrackers;
 // Calculate total GEMs from all sources
 const totalGemsFromAllSources = totalGemsFromQuests + totalGemsFromStages;
 
-// Calculate GEMs from achievable quests (excluding problematic Adventure quests)
+// Calculate GEMs from all quests
 const achievableGemsFromQuests = questCategories.reduce((total, category) => {
   return (
     total +
     category.quests.reduce((categoryTotal, quest) => {
-      // Skip the two problematic Adventure quests
-      if (
-        quest.name.includes('Clear event Battle Stages 120 times') ||
-        quest.name.includes('Clear event Battle Stages 160 times')
-      ) {
-        return categoryTotal;
-      }
       const gems = 'gem' in quest ? parseInt(quest.gem.replace('x', '')) : 0;
       return categoryTotal + gems;
     }, 0)
   );
 }, 0);
 
-// Calculate Squid Rice Crackers from achievable quests (excluding problematic Adventure quests)
+// Calculate Squid Rice Crackers from all quests
 const achievableCrackersFromQuests = questCategories.reduce((total, category) => {
   return (
     total +
     category.quests.reduce((categoryTotal, quest) => {
-      // Skip the two problematic Adventure quests
-      if (
-        quest.name.includes('Clear event Battle Stages 120 times') ||
-        quest.name.includes('Clear event Battle Stages 160 times')
-      ) {
-        return categoryTotal;
-      }
       const crackers = parseInt(quest.currency.replace('x', ''));
       return categoryTotal + crackers;
     }, 0)
   );
 }, 0);
 
-// Calculate completion rewards from achievable quests (excluding problematic Adventure quests)
+// Calculate completion rewards from all quests
 const achievableCrackersFromCompletion = questCategories.reduce((total, category) => {
-  // Skip Adventure category entirely since it has the problematic quests
-  if (category.title === 'Adventure Quests') {
-    return total;
-  }
   const rewards = parseRewardText(category.completionRewards);
   const crackerReward = rewards.find(
     (reward: { name: string; quantity: string }) => reward.name === 'Squid Rice Cracker'
@@ -765,108 +755,13 @@ const remainingHours = totalHoursNeeded % 24;
               >
             </div>
           </div>
+        </div>
 
-          <div class="stat-list-item">
-            <span class="stat-label">Achievable Earnings</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value">{totalAchievableCrackers.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Needed for High Priority</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value f2p-needed"
-                >{
-                  Math.max(
-                    0,
-                    calculateTierCost([...itemPriorities.highest, ...itemPriorities.high]) -
-                      totalAchievableCrackers
-                  ).toLocaleString()
-                }</span
-              >
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Required Runs</span>
-            <span class="stat-value f2p-runs"
-              >{
-                Math.max(
-                  0,
-                  Math.ceil(
-                    Math.max(
-                      0,
-                      calculateTierCost([...itemPriorities.highest, ...itemPriorities.high]) -
-                        totalAchievableCrackers
-                    ) / 400
-                  )
-                )
-              }</span
-            >
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Required Stamina</span>
-            <span class="stat-value f2p-stamina"
-              >{
-                Math.max(
-                  0,
-                  Math.ceil(
-                    Math.max(
-                      0,
-                      calculateTierCost([...itemPriorities.highest, ...itemPriorities.high]) -
-                        totalAchievableCrackers
-                    ) / 400
-                  ) * 30
-                )
-              }</span
-            >
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Time (Natural Recovery)</span>
-            <span class="stat-value f2p-time">
-              {
-                (() => {
-                  const runsNeeded = Math.max(
-                    0,
-                    Math.ceil(
-                      Math.max(
-                        0,
-                        calculateTierCost([...itemPriorities.highest, ...itemPriorities.high]) -
-                          totalAchievableCrackers
-                      ) / 400
-                    )
-                  );
-                  const staminaNeeded = runsNeeded * 30;
-                  const minutesNeeded = staminaNeeded * 6;
-                  const hoursNeeded = Math.floor(minutesNeeded / 60);
-                  const remainingMinutes = minutesNeeded % 60;
-                  const daysNeeded = Math.floor(hoursNeeded / 24);
-                  const remainingHours = hoursNeeded % 24;
-
-                  return daysNeeded > 0
-                    ? `${daysNeeded}d ${remainingHours}h ${remainingMinutes}m`
-                    : hoursNeeded > 0
-                      ? `${hoursNeeded}h ${remainingMinutes}m`
-                      : `${minutesNeeded}m`;
-                })()
-              }
-            </span>
-          </div>
+        <div class="strategy-note">
+          <p>
+            <strong>F2P:</strong> Repeat hard mode until you finish the 160 quest to get as much currency
+            as possible.
+          </p>
         </div>
       </div>
 
@@ -988,65 +883,6 @@ const remainingHours = totalHoursNeeded % 24;
               />
               <span class="stat-value shop-total">{shopTotalCost.toLocaleString()}</span>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="cost-statistics unified-stats">
-        <div class="stats-header">
-          <h3 class="stats-title">Quest Earnings Comparison</h3>
-        </div>
-
-        <div class="stats-list">
-          <div class="stat-list-item">
-            <span class="stat-label">With Problematic Quests</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value">{totalCrackersFromAllSources.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Without Problematic Quests</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value">{totalAchievableCrackers.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Difference</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value difference"
-                >{(totalCrackersFromAllSources - totalAchievableCrackers).toLocaleString()}</span
-              >
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">GEMs With Problematic</span>
-            <span class="stat-value gem-total">{totalGemsFromAllSources.toLocaleString()}</span>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">GEMs Without Problematic</span>
-            <span class="stat-value gem-achievable">{totalAchievableGems.toLocaleString()}</span>
           </div>
         </div>
       </div>
@@ -1470,12 +1306,12 @@ const remainingHours = totalHoursNeeded % 24;
           quests easily and get all quest rewards.
         </li>
         <li>
-          <strong>Adventure Quests:</strong> The "Clear event Battle Stages 120 times" and "Clear event
-          Battle Stages 160 times" quests are problematic and not worth it due to high stamina cost!
+          <strong>Adventure Quests:</strong> All adventure quests including the stage clearing quests
+          are achievable as F2P.
         </li>
         <li>
-          <strong>Tip:</strong> If you finish the other quests (excluding the two problematic Adventure
-          quests), you should be able to clear the entire shop!
+          <strong>Tip:</strong> If you finish all the quests, you should be able to clear the entire
+          shop!
         </li>
       </ul>
     </div>
