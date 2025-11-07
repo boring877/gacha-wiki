@@ -1,0 +1,114 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all EventShop images
+import bg1event from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/bg1event.jpg';
+import squidRiceCracker from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Squid_rice_cracker.png';
+import summerSanctuary from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Summer_sanctuary.png';
+import summerSanctuaryMelody from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Summer_sanctuary_melodypng.png';
+import daringAdventureGhostShip from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Daring_Adventure!_The_Ghost_Ship_Haunts_the_Deep.png';
+import radiantFeatherCrown from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/radiant_feather_crown.png';
+import starEmblemPolisher from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Star_emblem_polisher.png';
+import chillingWindSpinner from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/chilling_wind_spinner.png';
+import starlitColoredGlass from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/starlit_colored_glass.png';
+import exquisiteBlower from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/exquisite_blower.png';
+import sproutTicket from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/sprout_ticket.png';
+import ceruleanTicket from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/cerulean_ticket.png';
+import moonlitCompanion from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/moonlit_companion.png';
+import novicediscPromotionBox from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Novice_disc_promotion_box.png';
+import noviceTrekkerPromotionBox from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Novice_trekker_promotion_box.png';
+import premiumDiscPromotionBox from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Premium_disc_promotion_box.png';
+import premiumTrekkerPromotionBox from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Premium_trekker_promotion_box.png';
+import barrageGameCartridge from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/barrage_game_cartridge.png';
+import demonBeeGameCartridge from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/demon_bee_game_cartridge.png';
+import beginnerCartridgeBox from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Beginner_cartridge_box.png';
+import premiumCartridgeBox from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Premium_cartridge_box.png';
+import bottledVigorSoda from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Bottled_vigor_soda.png';
+import cannedVigorSoda from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/Canned_vigor_soda.png';
+import duloosEssence from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/duloos_essence.png';
+import duloosSoulRemnant from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/duloos_soul_remnant.png';
+import monolithStairsPass from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/monolith_stairs_pass.png';
+import trekkersHandwrittenEncyclopedia from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/trekkers_handwritten_encyclopedia.png';
+import dorra from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/dorra.png';
+import countSCellaring from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/count_s_cellaring.png';
+import countSGift from '../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/count_s_gift.png';
+
+// Image mapping for easy reference
+const eventImageMap = {
+  'bg1event.jpg': bg1event,
+  'Squid_rice_cracker.png': squidRiceCracker,
+  'Summer_sanctuary.png': summerSanctuary,
+  'Summer_sanctuary_melodypng.png': summerSanctuaryMelody,
+  'Daring_Adventure!_The_Ghost_Ship_Haunts_the_Deep.png': daringAdventureGhostShip,
+  'radiant_feather_crown.png': radiantFeatherCrown,
+  'Star_emblem_polisher.png': starEmblemPolisher,
+  'chilling_wind_spinner.png': chillingWindSpinner,
+  'starlit_colored_glass.png': starlitColoredGlass,
+  'exquisite_blower.png': exquisiteBlower,
+  'sprout_ticket.png': sproutTicket,
+  'cerulean_ticket.png': ceruleanTicket,
+  'moonlit_companion.png': moonlitCompanion,
+  'Novice_disc_promotion_box.png': novicediscPromotionBox,
+  'Novice_trekker_promotion_box.png': noviceTrekkerPromotionBox,
+  'Premium_disc_promotion_box.png': premiumDiscPromotionBox,
+  'Premium_trekker_promotion_box.png': premiumTrekkerPromotionBox,
+  'barrage_game_cartridge.png': barrageGameCartridge,
+  'demon_bee_game_cartridge.png': demonBeeGameCartridge,
+  'Beginner_cartridge_box.png': beginnerCartridgeBox,
+  'Premium_cartridge_box.png': premiumCartridgeBox,
+  'Bottled_vigor_soda.png': bottledVigorSoda,
+  'Canned_vigor_soda.png': cannedVigorSoda,
+  'duloos_essence.png': duloosEssence,
+  'duloos_soul_remnant.png': duloosSoulRemnant,
+  'monolith_stairs_pass.png': monolithStairsPass,
+  'trekkers_handwritten_encyclopedia.png': trekkersHandwrittenEncyclopedia,
+  'dorra.png': dorra,
+  'count_s_cellaring.png': countSCellaring,
+  'count_s_gift.png': countSGift,
+};
+
+export interface Props {
+  imageSrc: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  useBackground?: boolean;
+}
+
+const { imageSrc, alt, width = 400, height = 300, useBackground = false } = Astro.props;
+
+// Extract filename from path to match with our mapping
+const getImageFromPath = (path: string) => {
+  const filename = path.split('/').pop() || 'bg1event.jpg';
+  return eventImageMap[filename] || bg1event;
+};
+
+const imageModule = getImageFromPath(imageSrc);
+---
+
+{
+  useBackground ? (
+    <div
+      class="ss-shop-event-image ss-shop-event-bg-image"
+      style={`background-image: url(${imageModule.src});`}
+    >
+      <div class="bg-image-overlay" />
+      <div class="bg-image-content">
+        <h3>{alt}</h3>
+      </div>
+    </div>
+  ) : (
+    <div class="ss-shop-event-image">
+      <Image
+        src={imageModule}
+        alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
+        format="webp"
+        quality={95}
+        sizes="(max-width: 768px) 400px, 800px"
+      />
+    </div>
+  )
+}

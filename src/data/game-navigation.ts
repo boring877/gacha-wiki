@@ -184,7 +184,10 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       },
       {
         title: 'Events',
-        links: [{ name: 'Events', href: '/guides/stella-sora/events/' }],
+        links: [
+          { name: 'Events', href: '/guides/stella-sora/events/' },
+          { name: 'Shop Events', href: '/guides/stella-sora/shop-events/' },
+        ],
       },
       {
         title: 'Game Resources',

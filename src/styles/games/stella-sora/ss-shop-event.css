@@ -1,0 +1,332 @@
+/* Stella Sora Shop Events Styles */
+/* Using Stella Sora color system and design patterns */
+
+/* Shop Events Introduction */
+.ss-shop-events-intro {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  background: var(--ss-bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--ss-border);
+}
+
+.ss-intro-title {
+  font-size: 2rem;
+  font-weight: var(--font-bold);
+  margin-bottom: var(--spacing-md);
+  color: var(--ss-text-primary);
+  background: var(--ss-gradient-star);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ss-intro-description {
+  color: var(--ss-text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 auto var(--spacing-md) auto;
+  max-width: 800px;
+}
+
+/* Section Title */
+.ss-section-title {
+  font-size: 1.75rem;
+  font-weight: var(--font-bold);
+  margin-bottom: var(--spacing-lg);
+  color: var(--ss-text-primary);
+  background: var(--ss-gradient-star);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  padding-left: var(--spacing-lg);
+}
+
+.ss-section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: var(--ss-primary);
+  border-radius: 2px;
+}
+
+/* Current Shop Events */
+.ss-current-shop-events {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Shop Events Grid */
+.ss-shop-events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+/* Shop Event Card */
+.ss-shop-event-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Event Card Image */
+.event-card-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.event-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Event Card Content */
+.event-card-content {
+  padding: var(--spacing-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-title {
+  font-size: 1.25rem;
+  font-weight: var(--font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+.event-dates {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--ss-primary);
+}
+
+.date-range {
+  font-size: 0.875rem;
+  font-weight: var(--font-normal);
+  color: var(--ss-text-primary);
+}
+
+.shop-end-date {
+  margin-top: var(--spacing-xs);
+  font-size: 0.8rem;
+  color: var(--ss-danger);
+  font-weight: var(--font-medium);
+}
+
+/* SSShopEventImage Component Styles */
+.ss-shop-event-image {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--ss-border);
+  aspect-ratio: 16/9;
+}
+
+.ss-shop-event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.ss-shop-event-card:hover .ss-shop-event-image img {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ss-shop-events-intro {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .ss-intro-title {
+    font-size: 1.75rem;
+  }
+
+  .ss-section-title {
+    font-size: 1.5rem;
+    padding-left: var(--spacing-md);
+  }
+
+  .ss-intro-description {
+    font-size: 0.95rem;
+  }
+
+  .ss-shop-events-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .event-card-content {
+    padding: var(--spacing-md);
+  }
+
+  .event-title {
+    font-size: 1.125rem;
+  }
+
+  .event-card-image {
+    height: 160px;
+  }
+
+  .ss-shop-event-image {
+    aspect-ratio: 16/9;
+  }
+
+  .ss-shop-event-card:hover .ss-shop-event-image img {
+    transform: scale(1.02);
+  }
+
+  .event-dates {
+    padding: var(--spacing-sm);
+  }
+
+  .ss-shop-event-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .ss-shop-events-intro {
+    padding: var(--spacing-md);
+  }
+
+  .ss-intro-title {
+    font-size: 1.5rem;
+  }
+
+  .ss-section-title {
+    font-size: 1.375rem;
+    padding-left: var(--spacing-sm);
+  }
+
+  .event-card-image {
+    height: 140px;
+  }
+
+  .ss-shop-event-image {
+    aspect-ratio: 4/3;
+  }
+
+  .ss-shop-event-card:hover .ss-shop-event-image img {
+    transform: scale(1.01);
+  }
+
+  .event-card-content {
+    padding: var(--spacing-sm);
+  }
+
+  .event-title {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .event-dates {
+    padding: var(--spacing-xs);
+    font-size: 0.8rem;
+  }
+
+  .date-range {
+    font-size: 0.8rem;
+  }
+
+  .shop-end-date {
+    font-size: 0.75rem;
+  }
+
+  .ss-shop-events-grid {
+    gap: var(--spacing-sm);
+  }
+
+  .ss-shop-event-card {
+    touch-action: manipulation;
+    transition: transform 0.2s ease;
+  }
+
+  .ss-shop-event-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Very Small Mobile Devices */
+@media (max-width: 360px) {
+  .ss-shop-events-intro {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .ss-intro-title {
+    font-size: 1.375rem;
+  }
+
+  .ss-section-title {
+    font-size: 1.25rem;
+    padding-left: var(--spacing-xs);
+  }
+
+  .ss-section-title::before {
+    height: 20px;
+    width: 3px;
+  }
+
+  .event-card-image {
+    height: 120px;
+  }
+
+  .ss-shop-event-image {
+    aspect-ratio: 3/2;
+  }
+
+  .ss-shop-event-card:hover .ss-shop-event-image img {
+    transform: none;
+  }
+
+  .event-card-content {
+    padding: var(--spacing-xs);
+  }
+
+  .event-title {
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .event-dates {
+    padding: var(--spacing-xs);
+    font-size: 0.75rem;
+  }
+
+  .date-range {
+    font-size: 0.75rem;
+  }
+
+  .shop-end-date {
+    font-size: 0.7rem;
+  }
+
+  .ss-shop-events-grid {
+    gap: var(--spacing-xs);
+  }
+}

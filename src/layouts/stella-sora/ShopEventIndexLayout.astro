@@ -1,6 +1,6 @@
 ---
-// Stella Sora Characters Layout
-// Base layout for character database pages
+// Stella Sora Shop Events Index Layout
+// Dedicated layout for shop events index pages
 
 import SSBaseHead from '../../components/stella-sora/SSBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
@@ -11,28 +11,29 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
+import GameImage from '../../components/stella-sora/GameImage.astro';
 
 // Import CSS files
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/stella-sora/ss-colors.css';
 import '../../styles/games/stella-sora/ss-layout.css';
-import '../../styles/games/stella-sora/ss-character-database.css';
-import '../../styles/games/stella-sora/ss-badge-colours.css';
+import '../../styles/games/stella-sora/ss-shop-event.css';
 
 export interface Props {
   title: string;
-  description: string;
-  gameTitle: string;
-  showBackButton?: boolean;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  breadcrumbs?: { name: string; url: string }[];
 }
 
-const { title, description, gameTitle, showBackButton = true } = Astro.props;
+const { title, description, gameTitle, heroImage } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <SSBaseHead title={title} description={description || ''} />
+    <SSBaseHead title={title} description={description} />
     <GameSEO gameKey="stella-sora" title={title} description={description} />
     <slot name="head" />
   </head>
@@ -52,9 +53,34 @@ const { title, description, gameTitle, showBackButton = true } = Astro.props;
 
       <div class="stella-sora-container">
         <main class="stella-sora-main">
-          <!-- Title Section -->
+          <!-- Hero Section -->
           {
-            gameTitle && (
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <GameImage
+                      imageName={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      width={1200}
+                      height={400}
+                      loading="eager"
+                      format="webp"
+                      quality={85}
+                    />
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+                <h1 class="hero-title">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Title Only Section -->
+          {
+            !heroImage && gameTitle && (
               <section class="title-only-section">
                 <h1 class="title-only-heading">{gameTitle}</h1>
                 <DecorativeLines />
@@ -63,10 +89,10 @@ const { title, description, gameTitle, showBackButton = true } = Astro.props;
           }
 
           <!-- Breadcrumb Navigation -->
-          <Breadcrumb autoGenerate={true} gameKey="stella-sora" showBackButton={showBackButton} />
+          <Breadcrumb autoGenerate={true} gameKey="stella-sora" showBackButton={true} />
 
           <!-- Content Area -->
-          <div class="content-area">
+          <div class="content-area shop-events-index">
             <slot />
           </div>
         </main>
@@ -74,12 +100,5 @@ const { title, description, gameTitle, showBackButton = true } = Astro.props;
 
       <Footer />
     </div>
-
-    <script>
-      // Basic functionality for character database
-      document.addEventListener('DOMContentLoaded', function () {
-        // No smooth scrolling - remove animations
-      });
-    </script>
   </body>
 </html>

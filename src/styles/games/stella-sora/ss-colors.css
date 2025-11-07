@@ -125,6 +125,13 @@
   --ss-transition: all 0.2s ease-in-out;
   --ss-transition-slow: all 0.3s ease-in-out;
 
+  /* Additional card and border variables for shop events */
+  --ss-bg-card: #212426;
+  --ss-gradient-card: linear-gradient(135deg, var(--ss-bg-card) 0%, var(--ss-bg-secondary) 100%);
+  --ss-primary-border: rgba(125, 211, 252, 0.3);
+  --ss-border: #404040;
+  --ss-shadow-sm: 0 2px 8px rgba(125, 211, 252, 0.2);
+
   /* Dimensions - Following other games pattern */
   --ss-radius-sm: 4px; /* Small border radius */
   --ss-radius-md: 8px; /* Medium border radius */
@@ -161,6 +168,38 @@
   --ss-legendary-opacity-25: rgba(251, 191, 36, 0.25);
   --ss-info-opacity-15: rgba(96, 165, 250, 0.15);
   --ss-mythic-opacity-15: rgba(52, 211, 153, 0.15);
+}
+
+/* Global Design Tokens - Required by shop event components */
+:root {
+  /* Global aliases for consistency with shop event CSS */
+  --spacing-xs: var(--ss-spacing-xs);
+  --spacing-sm: var(--ss-spacing-sm);
+  --spacing-md: var(--ss-spacing-md);
+  --spacing-lg: var(--ss-spacing-lg);
+  --spacing-xl: var(--ss-spacing-xl);
+
+  --radius-sm: var(--ss-radius-sm);
+  --radius-md: var(--ss-radius-md);
+  --radius-lg: var(--ss-radius-lg);
+
+  --font-normal: var(--ss-font-normal);
+  --font-medium: var(--ss-font-medium);
+  --font-semibold: var(--ss-font-semibold);
+  --font-bold: var(--ss-font-bold);
+}
+
+/* Background layer classes for visual depth */
+.ss-bg-accent-1 {
+  background: radial-gradient(circle at 20% 80%, rgba(125, 211, 252, 0.1) 0%, transparent 50%);
+}
+
+.ss-bg-accent-2 {
+  background: radial-gradient(circle at 80% 20%, rgba(110, 231, 183, 0.1) 0%, transparent 50%);
+}
+
+.ss-bg-accent-3 {
+  background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 70%);
 }
 
 /* Stella Sora specific component classes */
