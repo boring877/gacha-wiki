@@ -1,209 +1,305 @@
 /* Stella Sora Individual Event Page Styles */
-/* Proper layout and footer positioning for individual event pages */
+/* Following existing SS design patterns */
 
-/* Individual Event Page Layout */
-.ss-event-individual-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.ss-event-individual-content {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.ss-event-individual-container {
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.ss-event-individual-main {
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 2rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.ss-event-individual-content-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Event Info Box */
-.ss-event-info-box {
+.event-hero-section {
+  width: 100%;
   margin-bottom: 2rem;
-}
-
-.ss-info-content {
-  background: var(--ss-bg-secondary);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--ss-border-color);
-}
-
-.ss-info-content p {
-  color: var(--ss-text-secondary);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0;
   text-align: center;
 }
 
-/* Event Images Section */
-.ss-event-images {
-  margin-bottom: 2rem;
-  flex: 1;
+.event-hero-image {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ss-bg-card);
 }
 
-.ss-event-images-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 1200px;
+.event-hero-image img {
+  width: 100%;
+  height: auto;
+}
+
+.event-hero-content {
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+}
+
+.event-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--ss-primary);
+  line-height: 1.2;
+}
+
+.event-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--ss-text-secondary);
+  max-width: 800px;
   margin: 0 auto;
 }
 
-.ss-event-image-item {
-  width: 100%;
+/* CONTENT CONTAINER */
+.event-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem 1rem;
 }
 
-/* Typography Scaling */
-.title-only-heading {
-  font-size: clamp(1.75rem, 5vw, 3rem);
+/* Paper Document Styles with SS Colors */
+.paper-document {
+  background: var(--ss-bg-primary);
+  border: 1px solid var(--ss-border-color);
+  padding: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: var(--ss-text-primary);
+}
+
+/* Event Header */
+.event-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+.event-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin: 0;
   line-height: 1.2;
+}
+
+/* Event Introduction */
+.event-intro {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.event-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--ss-text-secondary);
+  margin: 0;
+  padding: 1.5rem;
+}
+
+/* Information Sections */
+.info-section {
+  margin-bottom: 2.5rem;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--ss-primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-left: 4px solid var(--ss-primary);
+  padding-left: var(--ss-spacing-sm);
+}
+
+/* Grid for structured data */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.ss-info-content p {
-  font-size: clamp(0.875rem, 2.5vw, 1rem);
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border-color);
+}
+
+.info-label {
+  font-weight: 600;
+  color: var(--ss-text-secondary);
+  font-size: 0.95rem;
+}
+
+.info-value {
+  color: var(--ss-primary);
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: right;
+  flex: 1;
+  margin-left: 1rem;
+}
+
+/* List for paragraph content */
+.info-list {
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border-color);
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.info-list p {
+  margin: 0.5rem 0;
   line-height: 1.6;
+  color: var(--ss-text-primary);
+}
+
+.info-list p:first-child {
+  margin-top: 0;
+}
+
+.info-list p:last-child {
+  margin-bottom: 0;
+}
+
+.note-text {
+  font-style: italic;
+  color: var(--ss-text-secondary);
+  margin: 1rem 0 0 0;
+  padding: 1rem;
+}
+
+/* Single container for all event content */
+.event-content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--ss-bg-secondary);
+  border: 1px solid #404040;
+  border-radius: 15px;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  padding: 0.8rem 0;
+  background: none;
+  color: var(--ss-primary);
+  border-bottom: none;
+  border-radius: 0;
+  text-align: left;
+  border-left: 4px solid var(--ss-primary);
+  padding-left: var(--ss-spacing-sm);
+}
+
+.event-content-container p {
+  color: var(--ss-text-primary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+.event-content-container strong {
+  color: var(--ss-text-secondary);
+  font-weight: 600;
+}
+
+.event-content-container span {
+  color: var(--ss-primary);
 }
 
 /* Mobile Optimization */
 @media (max-width: 768px) {
-  .ss-event-individual-main {
-    padding: 1.5rem;
+  /* Hero section adjustments */
+  .event-hero-section {
+    margin-bottom: 2rem;
+    border-radius: 0 0 15px 15px;
   }
 
-  .ss-info-content {
+  .event-title {
+    font-size: 1.8rem;
+  }
+
+  /* Paper document mobile adjustments */
+  .paper-document {
+    padding: 2rem 1.5rem;
+    margin: 0 0.5rem;
+  }
+
+  .event-description {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  /* Section titles mobile */
+  .section-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    padding-left: 0.5rem;
+  }
+
+  /* Info items mobile - stack vertically */
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .info-label {
+    margin-bottom: 0.25rem;
+  }
+
+  .info-value {
+    text-align: left;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* Info list mobile */
+  .info-list {
     padding: 1rem;
   }
 
-  .ss-event-images-list {
-    gap: 1.5rem;
+  /* Grid layout mobile - single column */
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
-  /* Improved typography for tablets */
-  .ss-info-content p {
-    font-size: 0.95rem;
-  }
-
-  /* Enhanced touch interactions */
-  .ss-info-content {
-    min-height: 44px; /* Touch target size */
-    touch-action: manipulation;
-  }
-
-  .ss-event-image-item {
-    touch-action: pan-y pinch-zoom;
+  /* Note text mobile */
+  .note-text {
+    padding: 0.75rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
-  .ss-event-individual-main {
-    padding: 1rem;
+  /* Very small mobile devices */
+  .paper-document {
+    padding: 1.5rem 1rem;
+    margin: 0 0.25rem;
   }
 
-  .ss-info-content {
+  .event-title {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .event-description {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .info-list {
     padding: 0.75rem;
   }
 
-  .ss-event-images-list {
-    gap: 1rem;
-  }
-
-  /* Enhanced typography for mobile */
-  .ss-info-content p {
-    font-size: 0.9rem;
-    line-height: 1.7;
-  }
-
-  /* Better spacing for small screens */
-  .ss-event-info-box {
-    margin-bottom: 1.5rem;
-  }
-
-  /* Enhanced mobile touch interactions */
-  .ss-info-content {
-    min-height: 48px; /* Larger touch target for mobile */
-    margin: 0.5rem 0;
-    transition: transform 0.2s ease;
-  }
-
-  .ss-info-content:active {
-    transform: scale(0.98);
-  }
-
-  /* Improved image interaction */
-  .ss-event-image-item {
-    cursor: pointer;
-    margin: 0.25rem 0;
-  }
-
-  /* Better scroll behavior */
-  .ss-event-images-list {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-@media (max-width: 360px) {
-  .ss-event-individual-main {
-    padding: 0.75rem;
-  }
-
-  .ss-info-content {
+  .note-text {
     padding: 0.5rem;
-  }
-
-  .ss-info-content p {
     font-size: 0.85rem;
-  }
-
-  /* Extra small screen optimizations */
-  .ss-info-content {
-    min-height: 52px; /* Even larger touch targets */
-    margin: 0.75rem 0;
-  }
-
-  /* Smaller gaps for compact screens */
-  .ss-event-images-list {
-    gap: 0.75rem;
-  }
-
-  /* Ensure content is accessible on very small screens */
-  .title-only-heading {
-    font-size: clamp(1.5rem, 6vw, 2.5rem);
-    margin-bottom: 0.75rem;
-  }
-
-  /* Optimize mobile navigation spacing */
-  .ss-event-individual-body {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Prevent content jump when mobile menu opens */
-  .ss-event-individual-content {
-    transition: margin-right 0.3s ease;
   }
 }

@@ -1,0 +1,138 @@
+---
+import { Image } from 'astro:assets';
+
+// Import character images
+import chitose from '../../assets/images/games/stella-sora/gameimg/characters/Chitose.jpg';
+import shia from '../../assets/images/games/stella-sora/gameimg/characters/Shia.jpg';
+import nanoha from '../../assets/images/games/stella-sora/gameimg/characters/Nanoha.jpg';
+
+// Import disc images
+import swordAgainstStream from '../../assets/images/games/stella-sora/disc/sword_against_stream.jpg';
+import ripplesOfNostalgia from '../../assets/images/games/stella-sora/disc/ripples_of_nostalgia.jpg';
+import daylightGarden from '../../assets/images/games/stella-sora/disc/daylight_garden.jpg';
+
+// Image mapping for banner images
+const bannerImageMap = {
+  chitose: chitose,
+  shia: shia,
+  nanoha: nanoha,
+  'sword-against-stream': swordAgainstStream,
+  'ripples-of-nostalgia': ripplesOfNostalgia,
+  'daylight-garden': daylightGarden,
+};
+
+export interface Props {
+  imageKey: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  type?: 'character' | 'disc' | 'banner';
+}
+
+const { imageKey, alt, width = 200, height = 200, type = 'character' } = Astro.props;
+
+// Get image from mapping with fallback handling
+const getImage = (key: string) => {
+  const normalizedKey = key.toLowerCase().replace(/\s+/g, '-');
+
+  // Check if the image exists in the mapping
+  if (bannerImageMap[normalizedKey]) {
+    return bannerImageMap[normalizedKey];
+  }
+
+  // Log warning for missing image
+  console.warn(`SSBannerImage: No image found for key "${key}" (normalized: "${normalizedKey}")`);
+
+  // Return appropriate fallback based on type
+  if (type === 'disc') {
+    return swordAgainstStream; // Fallback disc
+  } else {
+    return chitose; // Fallback character
+  }
+};
+
+const imageModule = getImage(imageKey);
+---
+
+<div class={`ss-banner-image ss-banner-image--${type}`}>
+  <Image
+    src={imageModule}
+    alt={alt}
+    width={width}
+    height={height}
+    loading="lazy"
+    format="webp"
+    quality={95}
+    sizes="(max-width: 320px) 48px, (max-width: 480px) 56px, (max-width: 768px) 64px, 80px"
+    class="ss-banner-image__img"
+  />
+</div>
+
+<style>
+  .ss-banner-image {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+  }
+
+  .ss-banner-image--character {
+    border: 2px solid var(--ss-primary);
+  }
+
+  .ss-banner-image--disc {
+    border: 2px solid var(--ss-secondary);
+  }
+
+  .ss-banner-image--banner {
+    border: 2px solid var(--ss-accent);
+  }
+
+  .ss-banner-image__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.2s ease;
+    display: block;
+    border-radius: inherit;
+  }
+
+  /* Mobile responsive image sizing */
+  @media (max-width: 768px) {
+    .ss-banner-image {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ss-banner-image {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .ss-banner-image {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+    }
+
+    .ss-banner-image--character,
+    .ss-banner-image--disc {
+      border-width: 1px;
+    }
+  }
+
+  /* Ensure images don't cause layout issues */
+  @media (max-width: 480px) {
+    .featured-item {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,0 +1,472 @@
+---
+import SSBannerImage from './SSBannerImage.astro';
+
+export interface Props {
+  banner: any;
+  status: 'current' | 'upcoming' | 'ended';
+  showCharacterBanner?: boolean;
+  showDiscBanner?: boolean;
+}
+
+const { banner, status, showCharacterBanner = true, showDiscBanner = true } = Astro.props;
+
+// Format dates for display
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+};
+
+const formatDateWithTime = (dateString: string) => {
+  const date = new Date(dateString);
+  return (
+    date.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    }) + ' (UTC-7)'
+  );
+};
+---
+
+<div class={`ss-banner-card ss-banner-card--${status}`}>
+  <div class="ss-banner-card__timeline-connector">
+    <div class="ss-banner-card__timeline-dot"></div>
+  </div>
+
+  <div class="ss-banner-card__content">
+    <!-- Banner Header -->
+    <div class="ss-banner-card__header">
+      <h3 class="ss-banner-card__id">
+        {banner.id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+      </h3>
+      <div class={`ss-banner-card__status ss-banner-card__status--${status}`}>
+        {status === 'current' ? '🔴 Current' : status === 'upcoming' ? '🔵 Upcoming' : '⚫ Ended'}
+      </div>
+    </div>
+
+    <!-- Character Banner -->
+    {
+      showCharacterBanner && banner.characterBanner && (
+        <div class="ss-banner-card__banner ss-banner-card__character">
+          <div class="ss-banner-card__banner-header">
+            <div class="ss-banner-card__banner-image">
+              <SSBannerImage
+                imageKey={banner.characterBanner.featuredCharacter.name.toLowerCase()}
+                alt={banner.characterBanner.featuredCharacter.name}
+                width={80}
+                height={80}
+                type="character"
+              />
+            </div>
+            <div class="ss-banner-card__banner-info">
+              <h4 class="ss-banner-card__banner-title">{banner.characterBanner.title}</h4>
+              <div class="ss-banner-card__featured">
+                <span class="rarity">{banner.characterBanner.featuredCharacter.rarity}</span>
+                <span class="name">{banner.characterBanner.featuredCharacter.name}</span>
+                <span class="type">{banner.characterBanner.featuredCharacter.type}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ss-banner-card__details">
+            <p class="ss-banner-card__description">{banner.characterBanner.description}</p>
+
+            <div class="ss-banner-card__period">
+              <div class="date-range">
+                <span class="date-label">Period:</span>
+                <span class="date-start">{formatDate(banner.characterBanner.startDate)}</span>
+                <span class="date-separator">→</span>
+                <span class="date-end">{formatDateWithTime(banner.characterBanner.endDate)}</span>
+              </div>
+            </div>
+
+            {banner.characterBanner.boostedCharacters &&
+              banner.characterBanner.boostedCharacters.length > 0 && (
+                <div class="ss-banner-card__boosted">
+                  <span class="boosted-label">Boosted ★4:</span>
+                  <div class="boosted-list">
+                    {banner.characterBanner.boostedCharacters.map(char => (
+                      <span class="boosted-item">{char.name}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+            {banner.characterBanner.bonusPity && (
+              <div class="ss-banner-card__bonus">
+                <span class="bonus-label">🎁 Bonus:</span>
+                <span class="bonus-text">{banner.characterBanner.bonusPity}</span>
+              </div>
+            )}
+
+            {banner.characterBanner.note && (
+              <div class="ss-banner-card__note">
+                <span class="note-label">ℹ️ Note:</span>
+                <span class="note-text">{banner.characterBanner.note}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )
+    }
+
+    <!-- Disc Banner -->
+    {
+      showDiscBanner && banner.discBanner && (
+        <div class="ss-banner-card__banner ss-banner-card__disc">
+          <div class="ss-banner-card__banner-header">
+            <div class="ss-banner-card__banner-image">
+              <SSBannerImage
+                imageKey={banner.discBanner.featuredDisc.name.toLowerCase().replace(/\s+/g, '-')}
+                alt={banner.discBanner.featuredDisc.name}
+                width={80}
+                height={80}
+                type="disc"
+              />
+            </div>
+            <div class="ss-banner-card__banner-info">
+              <h4 class="ss-banner-card__banner-title">{banner.discBanner.title}</h4>
+              <div class="ss-banner-card__featured">
+                <span class="rarity">{banner.discBanner.featuredDisc.rarity}</span>
+                <span class="name">{banner.discBanner.featuredDisc.name}</span>
+                <span class="type">{banner.discBanner.featuredDisc.type}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ss-banner-card__details">
+            <p class="ss-banner-card__description">{banner.discBanner.description}</p>
+
+            <div class="ss-banner-card__period">
+              <div class="date-range">
+                <span class="date-label">Period:</span>
+                <span class="date-start">{formatDate(banner.discBanner.startDate)}</span>
+                <span class="date-separator">→</span>
+                <span class="date-end">{formatDateWithTime(banner.discBanner.endDate)}</span>
+              </div>
+            </div>
+
+            {banner.discBanner.boostedDiscs && banner.discBanner.boostedDiscs.length > 0 && (
+              <div class="ss-banner-card__boosted">
+                <span class="boosted-label">Boosted ★4:</span>
+                <div class="boosted-list">
+                  {banner.discBanner.boostedDiscs.map(disc => (
+                    <span class="boosted-item">{disc.name}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {banner.discBanner.note && (
+              <div class="ss-banner-card__note">
+                <span class="note-label">ℹ️ Note:</span>
+                <span class="note-text">{banner.discBanner.note}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .ss-banner-card {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 3rem;
+  }
+
+  .ss-banner-card__timeline-connector {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--ss-primary), var(--ss-secondary));
+  }
+
+  .ss-banner-card__timeline-dot {
+    position: absolute;
+    left: -9px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--ss-bg-primary);
+    border: 3px solid var(--ss-primary);
+    z-index: 1;
+  }
+
+  .ss-banner-card--current .ss-banner-card__timeline-dot {
+    border-color: #ef4444;
+    background: #ef4444;
+  }
+
+  .ss-banner-card--upcoming .ss-banner-card__timeline-dot {
+    border-color: #3b82f6;
+    background: #3b82f6;
+  }
+
+  .ss-banner-card--ended .ss-banner-card__timeline-dot {
+    border-color: #6b7280;
+    background: #6b7280;
+  }
+
+  .ss-banner-card__content {
+    background: var(--ss-bg-card);
+    border-radius: 16px;
+    border: 1px solid var(--ss-border);
+    overflow: hidden;
+  }
+
+  .ss-banner-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--ss-bg-accent-1), var(--ss-bg-accent-2));
+    border-bottom: 1px solid var(--ss-border);
+  }
+
+  .ss-banner-card__id {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+    background: var(--ss-gradient-star);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ss-banner-card__status {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .ss-banner-card__status--current {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .ss-banner-card__status--upcoming {
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+
+  .ss-banner-card__status--ended {
+    background: rgba(107, 114, 128, 0.2);
+    color: #6b7280;
+    border: 1px solid rgba(107, 114, 128, 0.3);
+  }
+
+  .ss-banner-card__banner {
+    padding: 2rem;
+    border-bottom: 1px solid var(--ss-border);
+  }
+
+  .ss-banner-card__banner:last-child {
+    border-bottom: none;
+  }
+
+  .ss-banner-card__banner-header {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ss-banner-card__banner-image {
+    flex-shrink: 0;
+  }
+
+  .ss-banner-card__banner-info {
+    flex: 1;
+  }
+
+  .ss-banner-card__banner-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ss-text-primary);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--ss-primary), var(--ss-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ss-banner-card__featured {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .ss-banner-card__featured .rarity {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ss-rarity-5-star);
+  }
+
+  .ss-banner-card__featured .name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+  }
+
+  .ss-banner-card__featured .type {
+    font-size: 0.875rem;
+    color: var(--ss-text-secondary);
+    background: var(--ss-bg-accent-2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+  }
+
+  .ss-banner-card__details {
+    space-y: 1rem;
+  }
+
+  .ss-banner-card__description {
+    color: var(--ss-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .ss-banner-card__period {
+    background: var(--ss-bg-accent-1);
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .date-range {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .date-label {
+    font-weight: 600;
+    color: var(--ss-primary);
+  }
+
+  .date-start,
+  .date-end {
+    color: var(--ss-text-primary);
+    font-weight: 500;
+  }
+
+  .date-separator {
+    color: var(--ss-text-secondary);
+    font-weight: 600;
+  }
+
+  .ss-banner-card__boosted {
+    margin-bottom: 1rem;
+  }
+
+  .boosted-label {
+    font-weight: 600;
+    color: var(--ss-secondary);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .boosted-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .boosted-item {
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--ss-rarity-4-star);
+    padding: 0.375rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+  }
+
+  .ss-banner-card__bonus {
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.1), rgba(255, 215, 0, 0.1));
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(125, 211, 252, 0.2);
+  }
+
+  .bonus-label {
+    font-weight: 600;
+    color: var(--ss-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .bonus-text {
+    color: var(--ss-text-primary);
+    line-height: 1.5;
+  }
+
+  .ss-banner-card__note {
+    background: rgba(147, 51, 234, 0.1);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(147, 51, 234, 0.2);
+  }
+
+  .note-label {
+    font-weight: 600;
+    color: var(--ss-accent);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .note-text {
+    color: var(--ss-text-primary);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .ss-banner-card {
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .ss-banner-card__banner-header {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .ss-banner-card__banner {
+      padding: 1.5rem;
+    }
+
+    .date-range {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .ss-banner-card__featured {
+      justify-content: center;
+    }
+
+    .boosted-list {
+      justify-content: center;
+    }
+  }
+</style>

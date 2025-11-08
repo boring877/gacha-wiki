@@ -5,6 +5,61 @@
 
 export const stellaSoraEvents = [
   {
+    id: 'a-finale-echoing',
+    title: 'A Finale Echoing (Beta)',
+    date: '2025-11-10',
+    startDate: '2025-11-10',
+    endDate: '2025-11-16',
+    summary:
+      'Face Opera Ghost: Rovina in the Monolith! Collect Whispers of Decay and exchange for exclusive rewards including Exclusive ★5 Runic Disc, Sprout Ticket, Proving Grounds Gift Box, and Cartridge Box.',
+    description:
+      'Opera Ghost: Rovina is a formidable presence entrenched within the Monolith. She is like a persistent nightmare, appearing silently in the shadows. No one knows her past, and no one has witnessed her end. Only that lingering fear descends upon the heart of every person who utters her name. She wears fear as her etiquette and feeds despair with paranoia. In her repertoire, she performs the most ancient of nightmare.',
+    url: '/guides/stella-sora/events/a-finale-echoing/',
+    image: '/images/games/stella-sora/events/3/1.jpg',
+    rewards: [
+      'Exclusive ★5 Runic Disc',
+      'Whispers of Decay (Event Currency)',
+      'Artifact Wishing Eggs',
+      'Proving Grounds Gift Box',
+      'Sprout Ticket',
+      'Cartridge Box',
+      'Event Score Rewards',
+      'Ranking Tier Rewards',
+    ],
+    featuredImage: '/images/games/stella-sora/events/3/1.jpg',
+    enemyInfo: {
+      name: 'Opera Ghost: Rovina',
+      element: 'None',
+      difficulty: ['Normal', 'Hard', 'Extra Hard', 'Ultimate'],
+    },
+    eventPeriod: {
+      eventPeriod: 'Nov. 10, 2025 after maintenance – Nov. 16, 2025 06:59 (UTC-7)',
+      rankingRewardSettlement: 'Nov. 17, 2025 08:00 – 12:59:59 (UTC-7)',
+      rankingRewardClaimPeriod: 'Nov. 17, 2025 13:00 – Dec. 17, 2025 12:59:59 (UTC-7)',
+      challengesEndNote:
+        'You will not be able to select difficulty and start new challenges after Nov. 17, 2025 06:59:59 (UTC-7). All challenges that are in progress at that time will not be affected. You may continue to complete unfinished stages until Nov. 17, 2025 07:59:59 (UTC-7).',
+    },
+    participation: {
+      requirement:
+        'Challenging a stage requires Final Showdown. This item will be restored to maximum quantity daily (at 04:00, with a max limit of 3) during the event.',
+      quickBattle: 'Clear a stage once to unlock Quick Battle for this stage.',
+    },
+    awards: {
+      stageClear:
+        'After clearing a stage, you will earn a corresponding amount of Whispers of Decay based on the stage difficulty.',
+      eventScore:
+        'Clearing a stage also earns you event score. Accumulate event score to complete missions and obtain Whispers of Decay and Artifact Wishing Eggs.',
+      shopAccess:
+        'From the main screen, you can go to Purchase > A Finale Echoing, and use Whispers of Decay to purchase items including Exclusive ★5 Runic Disc, Sprout Ticket, Proving Grounds Gift Box, Cartridge Box and more!',
+      rankingRewards:
+        'After the event concludes, rewards will be distributed based on your final ranking tier. For more information, please check the reward details in game.',
+    },
+    requirements: {
+      authorizationLevel: 'Authorization Level ≥ 10',
+      team: 'Stella Sora Team',
+    },
+  },
+  {
     id: 'ghost-ship-event-shop',
     title: 'The Ghost Ship Haunts the Deep - Event Shop',
     date: '2025-10-27',

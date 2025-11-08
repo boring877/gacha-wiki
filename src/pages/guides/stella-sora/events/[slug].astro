@@ -64,30 +64,147 @@ const breadcrumbs = [
     })}
   />
 
-  <!-- Event Info Box -->
-  <section class="ss-event-info-box">
-    <div class="ss-info-content">
-      <p>
-        Event information and details from the game. Images show official event announcements and
-        rewards.
-      </p>
-    </div>
-  </section>
-
-  <!-- Event Images -->
-  <section class="ss-event-images">
-    <div class="ss-event-images-list">
+  <!-- Event Hero Image - AT THE TOP -->
+  <section class="event-hero-section">
+    <div class="event-hero-image">
       {
-        Array.from({ length: 4 }, (_, i) => (
+        currentEvent.id === 'a-finale-echoing' ? (
           <SSEventImage
-            imageName={`${currentEvent.id.includes('event-shop') ? '1' : '2'}/${i + 1}`}
-            alt={`${event.title} detail ${i + 1}`}
+            imageName="3/1"
+            alt={`${event.title} - Opera Ghost: Rovina`}
             width={1200}
-            height={2000}
-            loading={i === 0 ? 'eager' : 'lazy'}
+            height={600}
+            loading="eager"
           />
-        ))
+        ) : (
+          <SSEventImage
+            imageName={`${currentEvent.id.includes('event-shop') ? '1' : '2'}/1`}
+            alt={`${event.title} main image`}
+            width={1200}
+            height={600}
+            loading="eager"
+          />
+        )
       }
     </div>
   </section>
+
+  <!-- Event Content Container -->
+  <div class="event-content-wrapper">
+    <div class="paper-document">
+      <!-- Event Header -->
+      <header class="event-header">
+        <h1 class="event-title">{currentEvent.title}</h1>
+      </header>
+
+      <!-- Event Description -->
+      <section class="event-intro">
+        <p class="event-description">{currentEvent.description}</p>
+      </section>
+
+      <!-- Enemy Information -->
+      {
+        currentEvent.enemyInfo && (
+          <section class="info-section">
+            <h2 class="section-title">Enemy Information</h2>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">Name:</span>
+                <span class="info-value">{currentEvent.enemyInfo.name}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Element:</span>
+                <span class="info-value">{currentEvent.enemyInfo.element}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Difficulty:</span>
+                <span class="info-value">{currentEvent.enemyInfo.difficulty.join(', ')}</span>
+              </div>
+            </div>
+          </section>
+        )
+      }
+
+      <!-- Event Schedule -->
+      {
+        currentEvent.eventPeriod && (
+          <section class="info-section">
+            <h2 class="section-title">Event Schedule</h2>
+            <div class="info-list">
+              <div class="info-item">
+                <span class="info-label">Event Period:</span>
+                <span class="info-value">{currentEvent.eventPeriod.eventPeriod}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Ranking Reward Settlement:</span>
+                <span class="info-value">{currentEvent.eventPeriod.rankingRewardSettlement}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Ranking Reward Claim Period:</span>
+                <span class="info-value">{currentEvent.eventPeriod.rankingRewardClaimPeriod}</span>
+              </div>
+              {currentEvent.eventPeriod.challengesEndNote && (
+                <p class="note-text">*{currentEvent.eventPeriod.challengesEndNote}</p>
+              )}
+            </div>
+          </section>
+        )
+      }
+
+      <!-- Participation Details -->
+      {
+        currentEvent.participation && (
+          <section class="info-section">
+            <h2 class="section-title">Participation</h2>
+            <div class="info-list">
+              <p>{currentEvent.participation.requirement}</p>
+              <p>{currentEvent.participation.quickBattle}</p>
+            </div>
+          </section>
+        )
+      }
+
+      <!-- Awards -->
+      {
+        currentEvent.awards && (
+          <section class="info-section">
+            <h2 class="section-title">Awards</h2>
+            <div class="info-list">
+              <p>{currentEvent.awards.stageClear}</p>
+              <p>{currentEvent.awards.eventScore}</p>
+              <p>{currentEvent.awards.shopAccess}</p>
+              <p>{currentEvent.awards.rankingRewards}</p>
+            </div>
+          </section>
+        )
+      }
+
+      <!-- Requirements -->
+      {
+        currentEvent.requirements && (
+          <section class="info-section">
+            <h2 class="section-title">Requirements</h2>
+            <div class="info-list">
+              <p>{currentEvent.requirements.authorizationLevel}</p>
+              <p>{currentEvent.requirements.team}</p>
+            </div>
+          </section>
+        )
+      }
+
+      <!-- Available Rewards -->
+      {
+        currentEvent.rewards && currentEvent.rewards.length > 0 && (
+          <section class="info-section">
+            <h2 class="section-title">Available Rewards</h2>
+            <div class="info-list">
+              {currentEvent.rewards.map(reward => (
+                <p>{reward}</p>
+              ))}
+            </div>
+          </section>
+        )
+      }
+    </div>
+  </div>
 </EventIndividualLayout>

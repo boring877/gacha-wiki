@@ -475,3 +475,106 @@
     font-size: 2rem;
   }
 }
+
+/* Banner Timer Styles */
+.banner-timer-card {
+  background: linear-gradient(135deg, var(--ss-bg-accent-1), var(--ss-bg-accent-2));
+  border: 1px solid var(--ss-primary);
+}
+
+.banner-timer-display {
+  text-align: center;
+}
+
+.banner-countdown {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.banner-countdown .countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.banner-countdown .countdown-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ss-primary);
+  background: var(--ss-bg-card);
+  padding: 0.5rem;
+  border-radius: 6px;
+  min-width: 50px;
+  text-align: center;
+  border: 1px solid var(--ss-border);
+}
+
+.banner-countdown .countdown-label {
+  font-size: 0.75rem;
+  color: var(--ss-text-secondary);
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.banner-period {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.banner-featured {
+  font-size: 0.875rem;
+  color: var(--ss-primary);
+  font-weight: 600;
+}
+
+/* Mobile responsive for banner timer */
+@media (max-width: 768px) {
+  .banner-countdown {
+    gap: 0.5rem;
+  }
+
+  .banner-countdown .countdown-unit {
+    min-width: 50px;
+  }
+
+  .banner-countdown .countdown-value {
+    font-size: 1.125rem;
+    padding: 0.4rem;
+    min-width: 40px;
+  }
+
+  .banner-countdown .countdown-label {
+    font-size: 0.6875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-countdown {
+    gap: 0.4rem;
+  }
+
+  .banner-countdown .countdown-unit {
+    min-width: 45px;
+  }
+
+  .banner-countdown .countdown-value {
+    font-size: 1rem;
+    padding: 0.3rem;
+    min-width: 35px;
+  }
+
+  .banner-countdown .countdown-label {
+    font-size: 0.625rem;
+  }
+
+  .banner-period,
+  .banner-featured {
+    font-size: 0.8125rem;
+  }
+}

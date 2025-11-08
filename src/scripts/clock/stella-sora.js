@@ -220,6 +220,18 @@ class StellaSoraClockTimer {
       'noMaintenanceMessage',
       'maintenanceStartItem',
       'maintenanceEndItem',
+      'bannerDays',
+      'bannerHours',
+      'bannerMinutes',
+      'bannerSeconds',
+      'bannerStatusDot',
+      'bannerStatusText',
+      'bannerDays2',
+      'bannerHours2',
+      'bannerMinutes2',
+      'bannerSeconds2',
+      'bannerStatusDot2',
+      'bannerStatusText2',
     ];
 
     // Query all elements at once
@@ -455,6 +467,8 @@ class StellaSoraClockTimer {
     this.updateWeeklyResetTimer();
     this.updateMonthlyResetTimer();
     this.updateMaintenanceTimer();
+    this.updateBannerTimer();
+    this.updateBannerTimer2();
 
     if (this.isLaunched) {
       this.updateDaysSinceLaunch();
@@ -746,6 +760,122 @@ class StellaSoraClockTimer {
 
     if (this.elements.eventShopTime.textContent !== days.toString()) {
       this.elements.eventShopTime.textContent = days.toString();
+    }
+  }
+
+  /**
+   * Update banner timer countdown
+   */
+  updateBannerTimer() {
+    if (
+      !this.elements.bannerDays ||
+      !this.elements.bannerHours ||
+      !this.elements.bannerMinutes ||
+      !this.elements.bannerSeconds
+    ) {
+      return;
+    }
+
+    // Current banner: Tide to the Full Moon & Ocean Meets the Sky (Oct 27 - Nov 17, 2025)
+    const bannerEndDate = new Date('2025-11-17T12:59:00-07:00'); // Nov 17, 2025 12:59 UTC-7
+    const now = new Date();
+
+    // Calculate time difference
+    const timeDiff = bannerEndDate.getTime() - now.getTime();
+
+    if (timeDiff <= 0) {
+      // Banner has ended
+      this.elements.bannerDays.textContent = '0';
+      this.elements.bannerHours.textContent = '0';
+      this.elements.bannerMinutes.textContent = '0';
+      this.elements.bannerSeconds.textContent = '0';
+
+      // Update status to ended
+      if (this.elements.bannerStatusDot) {
+        this.elements.bannerStatusDot.className = 'status-dot status-ended';
+      }
+      if (this.elements.bannerStatusText) {
+        this.elements.bannerStatusText.textContent = 'Ended';
+      }
+      return;
+    }
+
+    // Banner is still active
+    const days = Math.floor(timeDiff / MS_PER_DAY);
+    const hours = Math.floor((timeDiff % MS_PER_DAY) / MS_PER_HOUR);
+    const minutes = Math.floor((timeDiff % MS_PER_HOUR) / MS_PER_MINUTE);
+    const seconds = Math.floor((timeDiff % MS_PER_MINUTE) / 1000);
+
+    // Update display
+    this.elements.bannerDays.textContent = days.toString().padStart(2, '0');
+    this.elements.bannerHours.textContent = hours.toString().padStart(2, '0');
+    this.elements.bannerMinutes.textContent = minutes.toString().padStart(2, '0');
+    this.elements.bannerSeconds.textContent = seconds.toString().padStart(2, '0');
+
+    // Update status to active
+    if (this.elements.bannerStatusDot) {
+      this.elements.bannerStatusDot.className = 'status-dot status-active';
+    }
+    if (this.elements.bannerStatusText) {
+      this.elements.bannerStatusText.textContent = 'Active';
+    }
+  }
+
+  /**
+   * Update second banner timer countdown (Chitose)
+   */
+  updateBannerTimer2() {
+    if (
+      !this.elements.bannerDays2 ||
+      !this.elements.bannerHours2 ||
+      !this.elements.bannerMinutes2 ||
+      !this.elements.bannerSeconds2
+    ) {
+      return;
+    }
+
+    // Current banner 2: Blades Beneath the Moon & Moon upon Still Waters (Oct 19 - Nov 10, 2025)
+    const bannerEndDate = new Date('2025-11-10T12:59:00-07:00'); // Nov 10, 2025 12:59 UTC-7
+    const now = new Date();
+
+    // Calculate time difference
+    const timeDiff = bannerEndDate.getTime() - now.getTime();
+
+    if (timeDiff <= 0) {
+      // Banner has ended
+      this.elements.bannerDays2.textContent = '0';
+      this.elements.bannerHours2.textContent = '0';
+      this.elements.bannerMinutes2.textContent = '0';
+      this.elements.bannerSeconds2.textContent = '0';
+
+      // Update status to ended
+      if (this.elements.bannerStatusDot2) {
+        this.elements.bannerStatusDot2.className = 'status-dot status-ended';
+      }
+      if (this.elements.bannerStatusText2) {
+        this.elements.bannerStatusText2.textContent = 'Ended';
+      }
+      return;
+    }
+
+    // Banner is still active
+    const days = Math.floor(timeDiff / MS_PER_DAY);
+    const hours = Math.floor((timeDiff % MS_PER_DAY) / MS_PER_HOUR);
+    const minutes = Math.floor((timeDiff % MS_PER_HOUR) / MS_PER_MINUTE);
+    const seconds = Math.floor((timeDiff % MS_PER_MINUTE) / 1000);
+
+    // Update display
+    this.elements.bannerDays2.textContent = days.toString().padStart(2, '0');
+    this.elements.bannerHours2.textContent = hours.toString().padStart(2, '0');
+    this.elements.bannerMinutes2.textContent = minutes.toString().padStart(2, '0');
+    this.elements.bannerSeconds2.textContent = seconds.toString().padStart(2, '0');
+
+    // Update status to active
+    if (this.elements.bannerStatusDot2) {
+      this.elements.bannerStatusDot2.className = 'status-dot status-active';
+    }
+    if (this.elements.bannerStatusText2) {
+      this.elements.bannerStatusText2.textContent = 'Active';
     }
   }
 
