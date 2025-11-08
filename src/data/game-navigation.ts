@@ -191,6 +191,10 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         ],
       },
       {
+        title: 'Emblems',
+        links: [{ name: 'Emblem Stats', href: '/guides/stella-sora/emblem-stats/' }],
+      },
+      {
         title: 'Game Resources',
         links: [
           { name: 'Exclusive Items', href: '/guides/stella-sora/exclusive-items/' },

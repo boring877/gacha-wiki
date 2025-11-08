@@ -1,0 +1,291 @@
+---
+import EmblemStatsLayout from '../../../layouts/stella-sora/EmblemStatsLayout.astro';
+import SSEmblemImage from '../../../components/stella-sora/SSEmblemImage.astro';
+import { emblemStats } from '../../../data/stella-sora/emblem-stats.js';
+
+const pageTitle = 'Emblem Stats Reference Guide';
+const pageDescription =
+  'Complete reference guide for Stella Sora emblem stats, availability by level, and rarity tiers.';
+---
+
+<EmblemStatsLayout title={pageTitle} description={pageDescription} gameTitle={emblemStats.title}>
+  {/* Hero Section */}
+  <section class="emblem-hero">
+    <div class="emblem-hero-content">
+      <p class="emblem-hero-description">{emblemStats.description}</p>
+      <div class="emblem-hero-stats">
+        <div class="stat-item">
+          <span class="stat-number"
+            >{emblemStats.stats.reduce((acc, cat) => acc + cat.items.length, 0)}</span
+          >
+          <span class="stat-label">Total Stats</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{emblemStats.rarities.length}</span>
+          <span class="stat-label">Rarity Tiers</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{emblemStats.levels.length}</span>
+          <span class="stat-label">Level Tiers</span>
+        </div>
+      </div>
+
+      {/* Rarity Tier Progression */}
+      <div class="hero-rarity-progression">
+        <h3 class="hero-rarity-title">Rarity Tier Progression</h3>
+        <div class="hero-rarity-progression">
+          <div class="hero-rarity-step green-step">
+            <div class="hero-rarity-info">
+              <h4>Green</h4>
+              <p>Basic tier stats</p>
+            </div>
+          </div>
+          <div class="hero-progression-arrow">→</div>
+          <div class="hero-rarity-step blue-step">
+            <div class="hero-rarity-info">
+              <h4>Blue</h4>
+              <p>Improved stats</p>
+            </div>
+          </div>
+          <div class="hero-progression-arrow">→</div>
+          <div class="hero-rarity-step gold-step">
+            <div class="hero-rarity-info">
+              <h4>Gold</h4>
+              <p>High-tier stats</p>
+            </div>
+          </div>
+          <div class="hero-progression-arrow">→</div>
+          <div class="hero-rarity-step rainbow-step">
+            <div class="hero-rarity-info">
+              <h4>Rainbow</h4>
+              <p>Premium stats (2x Gold)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Level Overview Section */}
+  <section class="emblem-level-overview">
+    <h2 class="section-title">Emblem Levels</h2>
+    <div class="level-overview-grid">
+      {
+        emblemStats.levels.map(level => (
+          <div class="level-overview-card">
+            <div class="level-overview-image">
+              <SSEmblemImage level={level.name} size="large" />
+            </div>
+            <div class="level-overview-info">
+              <h3 class="level-overview-name">{level.name}</h3>
+              <p class="level-overview-description">{level.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* Main Stats Table - Desktop */}
+  <section class="emblem-stats-table-section desktop-only">
+    <h2 class="section-title">Complete Emblem Stats Reference</h2>
+
+    <div class="table-wrapper">
+      <table class="emblem-stats-table">
+        <thead>
+          <tr>
+            <th class="stat-name-header">Stat Name</th>
+            <th class="level-header">
+              <div class="level-header-content">
+                <SSEmblemImage level="Lv.70" size="small" />
+                <span>Lv.70</span>
+              </div>
+            </th>
+            <th class="level-header">
+              <div class="level-header-content">
+                <SSEmblemImage level="Lv.80" size="small" />
+                <span>Lv.80</span>
+              </div>
+            </th>
+            <th class="level-header">
+              <div class="level-header-content">
+                <SSEmblemImage level="Lv.90" size="small" />
+                <span>Lv.90</span>
+              </div>
+            </th>
+            <th class="rarity-header green-rarity">Green</th>
+            <th class="rarity-header blue-rarity">Blue</th>
+            <th class="rarity-header gold-rarity">Gold</th>
+            <th class="rarity-header rainbow-rarity">Rainbow</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            emblemStats.stats.map(category => (
+              <>
+                {/* Category Header */}
+                <tr class="category-header">
+                  <td colspan="8">{category.category}</td>
+                </tr>
+
+                {/* Category Items */}
+                {category.items.map(item => (
+                  <tr class="stat-row">
+                    <td class="stat-name">{item.name}</td>
+                    <td class="level-cell">
+                      {item.levels[70] ? (
+                        <span class="available">O</span>
+                      ) : (
+                        <span class="unavailable">X</span>
+                      )}
+                    </td>
+                    <td class="level-cell">
+                      {item.levels[80] ? (
+                        <span class="available">O</span>
+                      ) : (
+                        <span class="unavailable">X</span>
+                      )}
+                    </td>
+                    <td class="level-cell">
+                      {item.levels[90] ? (
+                        <span class="available">O</span>
+                      ) : (
+                        <span class="unavailable">X</span>
+                      )}
+                    </td>
+                    <td class="rarity-cell green-cell">
+                      {item.values.green || <span class="unavailable">X</span>}
+                    </td>
+                    <td class="rarity-cell blue-cell">
+                      {item.values.blue || <span class="unavailable">X</span>}
+                    </td>
+                    <td class="rarity-cell gold-cell">
+                      {item.values.gold || <span class="unavailable">X</span>}
+                    </td>
+                    <td class="rarity-cell rainbow-cell">
+                      {item.values.rainbow || <span class="unavailable">X</span>}
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {/* Mobile Stats Cards */}
+  <section class="emblem-stats-cards-section mobile-only">
+    <h2 class="section-title">Complete Emblem Stats Reference</h2>
+
+    {
+      emblemStats.stats.map(category => (
+        <div class="stats-category">
+          <h3 class="mobile-category-title">{category.category}</h3>
+          <div class="stats-cards-grid">
+            {category.items.map(item => (
+              <div class="stat-card">
+                <div class="stat-card-header">
+                  <h4 class="stat-card-name">{item.name}</h4>
+                </div>
+
+                <div class="stat-card-content">
+                  {/* Level Availability */}
+                  <div class="stat-section">
+                    <h5 class="stat-section-title">Level Availability</h5>
+                    <div class="level-availability">
+                      <div class="level-item">
+                        <SSEmblemImage level="Lv.70" size="small" />
+                        <span>Lv.70:</span>
+                        <span class={item.levels[70] ? 'available' : 'unavailable'}>
+                          {item.levels[70] ? 'O' : 'X'}
+                        </span>
+                      </div>
+                      <div class="level-item">
+                        <SSEmblemImage level="Lv.80" size="small" />
+                        <span>Lv.80:</span>
+                        <span class={item.levels[80] ? 'available' : 'unavailable'}>
+                          {item.levels[80] ? 'O' : 'X'}
+                        </span>
+                      </div>
+                      <div class="level-item">
+                        <SSEmblemImage level="Lv.90" size="small" />
+                        <span>Lv.90:</span>
+                        <span class={item.levels[90] ? 'available' : 'unavailable'}>
+                          {item.levels[90] ? 'O' : 'X'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Rarity Values */}
+                  <div class="stat-section">
+                    <h5 class="stat-section-title">Rarity Values</h5>
+                    <div class="rarity-values">
+                      <div class="rarity-item">
+                        <span class="rarity-label green-label">Green:</span>
+                        <span class="rarity-value green-value">
+                          {item.values.green || <span class="unavailable">X</span>}
+                        </span>
+                      </div>
+                      <div class="rarity-item">
+                        <span class="rarity-label blue-label">Blue:</span>
+                        <span class="rarity-value blue-value">
+                          {item.values.blue || <span class="unavailable">X</span>}
+                        </span>
+                      </div>
+                      <div class="rarity-item">
+                        <span class="rarity-label gold-label">Gold:</span>
+                        <span class="rarity-value gold-value">
+                          {item.values.gold || <span class="unavailable">X</span>}
+                        </span>
+                      </div>
+                      <div class="rarity-item">
+                        <span class="rarity-label rainbow-label">Rainbow:</span>
+                        <span class="rarity-value rainbow-value">
+                          {item.values.rainbow || <span class="unavailable">X</span>}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </section>
+
+  {/* Rainbow Tier Summary */}
+  <section class="rainbow-summary-section">
+    <h2 class="section-title">Rainbow Tier Stats Summary</h2>
+    <p class="section-description">
+      Rainbow tier emblems provide significantly higher values, typically 2x Gold tier stats.
+    </p>
+
+    <div class="rainbow-container">
+      <ul class="rainbow-stats-list">
+        {
+          emblemStats.rainbowStats.map(stat => (
+            <li class="rainbow-stat-item">
+              <span class="rainbow-stat-name">{stat.stat}:</span>
+              <span class="rainbow-stat-value">{stat.value}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* Important Notes */}
+  <section class="emblem-notes-section">
+    <h2 class="section-title">Important Notes</h2>
+    <div class="notes-container">
+      <ul class="notes-list">
+        {emblemStats.notes.map(note => <li class="note-item">{note}</li>)}
+      </ul>
+    </div>
+  </section>
+</EmblemStatsLayout>

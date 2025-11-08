@@ -1,0 +1,1159 @@
+/* Stella Sora Emblem Stats CSS */
+/* Styling for the emblem stats reference guide page */
+
+/* ===== EMBLEM STATS CONTENT CONTAINER ===== */
+.emblem-stats-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ===== HERO SECTION ===== */
+.emblem-hero {
+  background: var(--ss-gradient-card);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--ss-border-subtle);
+}
+
+.emblem-hero-content {
+  text-align: center;
+}
+
+.emblem-hero-description {
+  font-size: 1.125rem;
+  color: var(--ss-text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.emblem-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+/* ===== HERO RARITY PROGRESSION ===== */
+.hero-rarity-progression {
+  margin-top: 2rem;
+}
+
+.hero-rarity-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: var(--font-primary);
+}
+
+.hero-rarity-progression .hero-rarity-progression {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-rarity-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.75rem;
+  border-radius: 8px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.hero-rarity-step.green-step,
+.hero-rarity-step.blue-step,
+.hero-rarity-step.gold-step,
+.hero-rarity-step.rainbow-step {
+  background: rgba(125, 211, 252, 0.15);
+  border: 2px solid var(--ss-primary);
+}
+
+.hero-rarity-info h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin-bottom: 0.25rem;
+  font-family: var(--font-primary);
+}
+
+.hero-rarity-info p {
+  font-size: 0.7rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.hero-progression-arrow {
+  font-size: 1.25rem;
+  color: var(--ss-primary);
+  font-weight: 700;
+  margin: 0 0.25rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ss-primary);
+  font-family: var(--font-primary);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin-bottom: 1rem;
+  font-family: var(--font-primary);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--ss-primary);
+  border-radius: 2px;
+}
+
+.section-description {
+  font-size: 1rem;
+  color: var(--ss-text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* ===== LEVEL OVERVIEW SECTION ===== */
+.emblem-level-overview {
+  margin-bottom: 3rem;
+}
+
+.level-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.level-overview-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.level-overview-image {
+  flex-shrink: 0;
+}
+
+.level-overview-info {
+  flex: 1;
+}
+
+.level-overview-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-primary);
+}
+
+.level-overview-description {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== MAIN STATS TABLE ===== */
+.emblem-stats-table-section {
+  margin-bottom: 3rem;
+}
+
+/* ===== MOBILE STATS CARDS ===== */
+.emblem-stats-cards-section {
+  margin-bottom: 3rem;
+  display: none;
+}
+
+.stats-category {
+  margin-bottom: 2rem;
+}
+
+.mobile-category-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ss-primary);
+  margin-bottom: 1rem;
+  font-family: var(--font-primary);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ss-primary);
+}
+
+.stats-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stat-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border-subtle);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-card-header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--ss-border-subtle);
+}
+
+.stat-card-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin: 0;
+  font-family: var(--font-primary);
+}
+
+.stat-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.stat-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stat-section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ss-primary);
+  margin: 0;
+  font-family: var(--font-primary);
+}
+
+.level-availability {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.level-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  background: var(--ss-bg-secondary);
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+.level-item span:first-of-type {
+  color: var(--ss-text-secondary);
+  font-weight: 500;
+  min-width: 45px;
+}
+
+.level-item .available {
+  color: var(--ss-success);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.level-item .unavailable {
+  color: var(--ss-error);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.rarity-values {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rarity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: var(--ss-bg-secondary);
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+.rarity-label {
+  font-weight: 600;
+  min-width: 60px;
+}
+
+.rarity-value {
+  font-weight: 600;
+  font-family: var(--font-primary);
+}
+
+.rarity-value .unavailable {
+  color: var(--ss-error);
+  font-weight: 700;
+}
+
+.green-label {
+  color: var(--ss-text-primary);
+}
+
+.green-value {
+  color: var(--ss-text-primary);
+}
+
+.blue-label {
+  color: var(--ss-text-primary);
+}
+
+.blue-value {
+  color: var(--ss-text-primary);
+}
+
+.gold-label {
+  color: var(--ss-text-primary);
+}
+
+.gold-value {
+  color: var(--ss-text-primary);
+}
+
+.rainbow-label {
+  color: var(--ss-primary);
+}
+
+.rainbow-value {
+  color: var(--ss-primary);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--ss-border-subtle);
+  background: var(--ss-bg-card);
+}
+
+.emblem-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.emblem-stats-table th {
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-primary);
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem 0.75rem;
+  border-bottom: 2px solid var(--ss-primary);
+  font-family: var(--font-primary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.stat-name-header {
+  text-align: left;
+  min-width: 200px;
+  font-weight: 700;
+}
+
+.level-header {
+  min-width: 80px;
+  font-weight: 600;
+  color: var(--ss-info);
+}
+
+.level-header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rarity-header {
+  min-width: 90px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.green-rarity {
+  color: var(--ss-rare);
+  background: rgba(125, 211, 252, 0.1);
+}
+
+.blue-rarity {
+  color: var(--ss-epic);
+  background: rgba(110, 231, 183, 0.1);
+}
+
+.gold-rarity {
+  color: var(--ss-legendary);
+  background: rgba(251, 191, 36, 0.1);
+}
+
+.rainbow-rarity {
+  color: var(--ss-five-star);
+  background: rgba(239, 68, 68, 0.1);
+  font-weight: 700;
+}
+
+/* Category Headers */
+.category-header td {
+  background: var(--ss-bg-secondary);
+  color: var(--ss-primary);
+  font-weight: 700;
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 2px solid var(--ss-primary);
+  font-family: var(--font-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+/* Table Rows */
+.stat-row:nth-child(even) {
+  background: var(--ss-white-opacity-02);
+}
+
+.stat-row td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--ss-border-subtle);
+  color: var(--ss-text-primary);
+  text-align: center;
+}
+
+.stat-name {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  font-family: var(--font-primary);
+}
+
+.level-cell {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.level-cell .available {
+  color: var(--ss-success);
+}
+
+.level-cell .unavailable {
+  color: var(--ss-error);
+}
+
+.rarity-cell .unavailable {
+  color: var(--ss-error);
+  font-style: italic;
+}
+
+.rarity-cell {
+  font-weight: 600;
+  font-family: var(--font-primary);
+}
+
+.green-cell {
+  color: var(--ss-rare);
+}
+
+.blue-cell {
+  color: var(--ss-epic);
+}
+
+.gold-cell {
+  color: var(--ss-legendary);
+}
+
+.rainbow-cell {
+  color: var(--ss-five-star);
+  font-weight: 700;
+}
+
+/* ===== RAINBOW SUMMARY SECTION ===== */
+.rainbow-summary-section {
+  margin-bottom: 3rem;
+}
+
+.rainbow-container {
+  background: var(--ss-gradient-card);
+  border: 2px solid var(--ss-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.rainbow-stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.rainbow-stat-item {
+  color: var(--ss-text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  padding: 0.75rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  border-bottom: 1px solid var(--ss-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rainbow-stat-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rainbow-stat-item:first-child {
+  padding-top: 0;
+}
+
+.rainbow-stat-item::before {
+  content: '*';
+  position: absolute;
+  left: 0;
+  color: var(--ss-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.rainbow-stat-name {
+  color: var(--ss-text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+.rainbow-stat-value {
+  color: var(--ss-primary);
+  font-weight: 700;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+}
+
+/* ===== NOTES SECTION ===== */
+.emblem-notes-section {
+  margin-bottom: 3rem;
+}
+
+.notes-container {
+  background: var(--ss-bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--ss-border-subtle);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.note-item {
+  color: var(--ss-text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  padding: 0.75rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  border-bottom: 1px solid var(--ss-border-subtle);
+}
+
+.note-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.note-item:first-child {
+  padding-top: 0;
+}
+
+.note-item::before {
+  content: '*';
+  position: absolute;
+  left: 0;
+  color: var(--ss-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ===== RARITY GUIDE SECTION ===== */
+.rarity-guide-section {
+  margin-bottom: 2rem;
+}
+
+.rarity-progression {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.rarity-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.green-step,
+.blue-step,
+.gold-step,
+.rainbow-step {
+  background: rgba(125, 211, 252, 0.15);
+  border: 2px solid var(--ss-primary);
+}
+
+.rarity-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin-bottom: 0.25rem;
+  font-family: var(--font-primary);
+}
+
+.rarity-info p {
+  font-size: 0.75rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.4;
+}
+
+.progression-arrow {
+  font-size: 1.5rem;
+  color: var(--ss-primary);
+  font-weight: 700;
+  margin: 0 0.5rem;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .emblem-stats-content {
+    padding: 1.5rem;
+  }
+
+  .emblem-hero-stats {
+    gap: 2rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .emblem-stats-table {
+    font-size: 0.8rem;
+  }
+
+  .emblem-stats-table th,
+  .stat-row td {
+    padding: 0.625rem 0.5rem;
+  }
+
+  .rainbow-stats-list {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .level-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .level-overview-card {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .rarity-progression {
+    gap: 0.5rem;
+  }
+
+  .rarity-step {
+    min-width: 100px;
+    padding: 1rem 0.75rem;
+  }
+
+  .progression-arrow {
+    font-size: 1.25rem;
+    margin: 0 0.25rem;
+  }
+
+  .hero-rarity-progression .hero-rarity-progression {
+    gap: 0.75rem;
+  }
+
+  .hero-rarity-step {
+    min-width: 90px;
+    padding: 0.875rem 0.625rem;
+  }
+
+  .hero-progression-arrow {
+    font-size: 1.125rem;
+    margin: 0 0.125rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .emblem-stats-content {
+    padding: 1rem;
+  }
+
+  /* Hide table on mobile, show cards */
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block !important;
+  }
+
+  .emblem-stats-cards-section {
+    display: block;
+  }
+
+  .emblem-hero {
+    padding: 1.5rem;
+  }
+
+  .emblem-hero-description {
+    font-size: 1rem;
+  }
+
+  .emblem-hero-stats {
+    gap: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  /* ===== TABLE MOBILE OPTIMIZATIONS ===== */
+  .table-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ss-primary) var(--ss-bg-card);
+  }
+
+  .table-wrapper::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .table-wrapper::-webkit-scrollbar-track {
+    background: var(--ss-bg-card);
+  }
+
+  .table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--ss-primary);
+    border-radius: 3px;
+  }
+
+  .emblem-stats-table {
+    min-width: 600px;
+    font-size: 0.8rem;
+  }
+
+  .emblem-stats-table th,
+  .stat-row td {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .stat-name-header {
+    min-width: 120px;
+    font-size: 0.8rem;
+  }
+
+  .level-header {
+    min-width: 50px;
+    font-size: 0.75rem;
+  }
+
+  .level-header-content {
+    gap: 0.25rem;
+  }
+
+  .rarity-header {
+    min-width: 60px;
+    font-size: 0.75rem;
+  }
+
+  .level-cell {
+    font-size: 0.9rem;
+  }
+
+  .rarity-cell {
+    font-size: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .emblem-stats-table {
+    font-size: 0.75rem;
+  }
+
+  .emblem-stats-table th,
+  .stat-row td {
+    padding: 0.5rem 0.375rem;
+  }
+
+  .stat-name-header {
+    min-width: 150px;
+  }
+
+  .level-header {
+    min-width: 60px;
+  }
+
+  .rarity-header {
+    min-width: 70px;
+  }
+
+  .category-header td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  /* ===== HERO RARITY PROGRESSION MOBILE ===== */
+  .hero-rarity-progression {
+    margin-top: 1.5rem;
+  }
+
+  .hero-rarity-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-rarity-progression .hero-rarity-progression {
+    gap: 0.5rem;
+  }
+
+  .hero-rarity-step {
+    min-width: 80px;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .hero-rarity-info h4 {
+    font-size: 0.8rem;
+    margin-bottom: 0.125rem;
+  }
+
+  .hero-rarity-info p {
+    font-size: 0.65rem;
+  }
+
+  .hero-progression-arrow {
+    font-size: 1rem;
+    margin: 0 0.125rem;
+  }
+
+  /* Fix hero progression on mobile too */
+  .hero-rarity-progression .hero-rarity-progression {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .hero-rarity-step {
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-progression-arrow {
+    transform: rotate(90deg);
+    margin: 0;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ===== RAINBOW SECTION MOBILE ===== */
+  .rainbow-stats-list {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .rainbow-container {
+    padding: 1rem;
+  }
+
+  .rainbow-stat-item {
+    padding: 0.5rem 0;
+    padding-left: 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .rainbow-stat-name {
+    font-size: 0.8rem;
+  }
+
+  .rainbow-stat-value {
+    font-size: 0.9rem;
+    align-self: flex-end;
+  }
+
+  /* ===== NOTES SECTION MOBILE ===== */
+  .notes-container {
+    padding: 1rem;
+  }
+
+  .note-item {
+    padding: 0.5rem 0;
+    padding-left: 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  /* ===== LEVEL OVERVIEW MOBILE ===== */
+  .level-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .level-overview-card {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .level-overview-name {
+    font-size: 1rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .level-overview-description {
+    font-size: 0.8rem;
+  }
+
+  /* ===== MAIN RARITY PROGRESSION MOBILE ===== */
+  .rarity-progression {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .rarity-step {
+    width: 100%;
+    max-width: 200px;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .progression-arrow {
+    transform: rotate(90deg);
+    margin: 0;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ===== MOBILE CARDS OPTIMIZATIONS ===== */
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-card-name {
+    font-size: 1rem;
+  }
+
+  .stat-section-title {
+    font-size: 0.875rem;
+  }
+
+  .level-item,
+  .rarity-item {
+    padding: 0.375rem;
+    font-size: 0.8rem;
+  }
+
+  .level-item span:first-of-type {
+    min-width: 40px;
+    font-size: 0.75rem;
+  }
+
+  .rarity-label {
+    min-width: 50px;
+    font-size: 0.75rem;
+  }
+
+  .rarity-value {
+    font-size: 0.8rem;
+  }
+
+  /* ===== TOUCH OPTIMIZATIONS ===== */
+  .emblem-image {
+    touch-action: manipulation;
+  }
+
+  .stat-card {
+    touch-action: manipulation;
+  }
+
+  .table-wrapper {
+    touch-action: pan-x;
+  }
+
+  .level-overview-card,
+  .rainbow-container,
+  .notes-container {
+    touch-action: manipulation;
+  }
+
+  /* ===== TAP TARGETS ===== */
+  .hero-rarity-step {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .rarity-step {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .emblem-hero {
+    padding: 1rem;
+  }
+
+  .emblem-hero-stats {
+    gap: 1rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .emblem-stats-table {
+    font-size: 0.7rem;
+  }
+
+  .emblem-stats-table th,
+  .stat-row td {
+    padding: 0.375rem 0.25rem;
+  }
+
+  .rainbow-stat-value {
+    font-size: 1.125rem;
+  }
+
+  .rarity-step {
+    padding: 0.75rem 0.5rem;
+    min-width: 80px;
+  }
+
+  .rarity-info h3 {
+    font-size: 0.875rem;
+  }
+
+  .rarity-info p {
+    font-size: 0.7rem;
+  }
+
+  .hero-rarity-step {
+    padding: 0.625rem 0.5rem;
+    min-width: 80px;
+  }
+
+  .hero-rarity-info h4 {
+    font-size: 0.8rem;
+  }
+
+  .hero-rarity-info p {
+    font-size: 0.65rem;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .emblem-stats-table th {
+    border-bottom: 3px solid var(--ss-primary);
+  }
+
+  .category-header td {
+    border-bottom: 3px solid var(--ss-primary);
+  }
+
+  .rarity-step {
+    border-width: 2px;
+  }
+}

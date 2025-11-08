@@ -1,0 +1,77 @@
+---
+// Stella Sora Emblem Image Component
+// Displays emblem images with proper sizing and fallbacks
+import { Image } from 'astro:assets';
+
+// Import all Stella Sora emblem images
+import lv70Image from '../../assets/images/games/stella-sora/emblem/lv70.jpg';
+import lv80Image from '../../assets/images/games/stella-sora/emblem/lv80.jpg';
+import lv90Image from '../../assets/images/games/stella-sora/emblem/lv90.jpg';
+
+// Centralized emblem image mapping
+const emblemImageMap = {
+  lv70: lv70Image,
+  lv80: lv80Image,
+  lv90: lv90Image,
+};
+
+export interface Props {
+  level: 'Lv.70' | 'Lv.80' | 'Lv.90';
+  rarity?: 'Green' | 'Blue' | 'Gold' | 'Rainbow';
+  size?: 'small' | 'medium' | 'large';
+  class?: string;
+  alt?: string;
+}
+
+const { level, rarity, size = 'medium', class: className = '', alt } = Astro.props;
+
+// Get the correct image based on level
+const getImageSrc = () => {
+  const levelMap = {
+    'Lv.70': 'lv70',
+    'Lv.80': 'lv80',
+    'Lv.90': 'lv90',
+  };
+
+  const levelKey = levelMap[level];
+  return emblemImageMap[levelKey];
+};
+
+// Size configurations
+const sizeConfig = {
+  small: { width: 24, height: 24 },
+  medium: { width: 32, height: 32 },
+  large: { width: 48, height: 48 },
+};
+
+const dimensions = sizeConfig[size];
+const imageSrc = getImageSrc();
+const altText = alt || `${level} Emblem`;
+---
+
+<div class={`emblem-image emblem-image-${size} ${className}`}>
+  <Image
+    src={imageSrc}
+    alt={altText}
+    width={dimensions.width}
+    height={dimensions.height}
+    class="emblem-img"
+    loading="lazy"
+    format="webp"
+    quality={90}
+  />
+</div>
+
+<style>
+  .emblem-image {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .emblem-img {
+    display: block;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+</style>
