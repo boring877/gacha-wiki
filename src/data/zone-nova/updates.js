@@ -1,6 +1,33 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'november-11-maintenance',
+    title: 'November 11 Maintenance Update',
+    date: 'November 7, 2025',
+    type: 'maintenance',
+    summary:
+      'Major maintenance on November 11, 2025 (14:00, ~2 hours) brings "Night Goddess: Evil Dream Test (Part 1)" event, Apep limited recruitment (Striker, Wind), "Error in Current Appearance" limited memory, Ferli Enchanting rerun, Space-Time Crack XV, Empress Olympatra battle, limited gift packs, double drops, and Pass update. Radiance Stone x300 compensation.',
+    url: '/guides/zone-nova/updates/maintenance-november-11-2025/',
+  },
+  {
+    id: 'google-play-security-warning',
+    title: 'Explanation Related to Google Play Security Warning',
+    date: 'November 7, 2025',
+    type: 'announcement',
+    summary:
+      'Google Play security warning due to Unity engine technical issue. No evidence of malicious exploitation. Team has resolved with security patches. Players should update to latest version. Prismatic Cube x5 compensation for all players who logged in before November 18, 2025.',
+    url: '/guides/zone-nova/updates/google-play-security-warning/',
+  },
+  {
+    id: 'apep-recruitment',
+    title: 'Limited Recruitment Character: Apep (阿佩普)',
+    date: 'November 7, 2025',
+    type: 'recruitment',
+    summary:
+      'New Legendary Character Apep (Striker, Wind) available through Limited Time Recruitment from November 11-25, 2025. Ancient evil god with scythe weapon, excellent sustained combat ability. Exclusive memory also available through Limited Memory Recruitment.',
+    url: '/guides/zone-nova/updates/announcement-apep-recruitment/',
+  },
+  {
     id: 'october-28-maintenance',
     title: 'October 28 Maintenance Update',
     date: 'October 28, 2025',

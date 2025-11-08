@@ -24,7 +24,7 @@ const shopItems = [
     stockLeft: 5,
     cost: 8000,
     quantity: 'x1',
-    image: 'Summer_sanctuary_melodypng.png',
+    image: 'Summer_sanctuary_melody.png',
     rarity: 'legendary',
   },
   {
@@ -174,7 +174,7 @@ const shopItems = [
 ];
 
 // Helper function to determine stock status
-const getStockStatus = stockLeft => {
+const getStockStatus = (stockLeft: number) => {
   if (stockLeft <= 2) return 'very-low';
   if (stockLeft <= 10) return 'low';
   return 'available';
@@ -184,7 +184,7 @@ const getStockStatus = stockLeft => {
 const totalCost = shopItems.reduce((sum, item) => sum + item.cost * item.stockLeft, 0);
 
 // Helper function to get image for reward items
-const getRewardImage = rewardName => {
+const getRewardImage = (rewardName: string) => {
   const rewardImageMap = {
     'Squid Rice Cracker': 'Squid_rice_cracker.png',
     'Sprout Ticket': 'sprout_ticket.png',
@@ -207,7 +207,7 @@ const getRewardImage = rewardName => {
 };
 
 // Helper function to parse reward text and return array of reward objects
-const parseRewardText = rewardsText => {
+const parseRewardText = (rewardsText: string) => {
   const rewardItems = rewardsText.split(',').map(reward => {
     const trimmedReward = reward.trim();
     const match = trimmedReward.match(/(\d+)x?\s*(.+)$/);
@@ -371,9 +371,7 @@ const achievableCrackersFromQuests = questCategories.reduce((total, category) =>
 // Calculate completion rewards from all quests
 const achievableCrackersFromCompletion = questCategories.reduce((total, category) => {
   const rewards = parseRewardText(category.completionRewards);
-  const crackerReward = rewards.find(
-    (reward: { name: string; quantity: string }) => reward.name === 'Squid Rice Cracker'
-  );
+  const crackerReward = rewards.find(reward => reward.name === 'Squid Rice Cracker');
   const amount = crackerReward ? parseInt(crackerReward.quantity) : 0;
   return total + amount;
 }, 0);
@@ -388,79 +386,99 @@ const itemPriorities = {
   highest: [
     {
       name: 'Summer Sanctuary',
+      reason: 'Limited-time legendary furniture - must buy for collection',
     },
     {
       name: 'Summer Sanctuary Melody',
+      reason: 'Legendary melody item - extremely rare and valuable',
     },
   ],
   high: [
     {
       name: 'Cerulean Ticket',
+      reason: 'Premium gacha ticket - very valuable for character collection',
     },
     {
       name: 'Sprout Ticket',
+      reason: 'Basic gacha ticket - useful for character collection',
     },
     {
       name: 'Radiant Feather Crown',
+      reason: 'Rare accessory with good stats',
     },
   ],
   medium: [
     {
       name: 'Demon Bee Game Cartridge',
+      reason: 'Useful material for character enhancement',
     },
     {
       name: 'Barrage Game Cartridge',
+      reason: 'Common enhancement material',
     },
     {
       name: 'Duloos Essence',
+      reason: 'Essential material for upgrades',
     },
     {
       name: "Count's Gift",
+      reason: 'Gift item for social features',
     },
     {
       name: 'Duloos Soul Remnant',
+      reason: 'Rare soul material for progression',
     },
     {
       name: "Count's Cellaring",
+      reason: 'Premium storage/crafting material',
     },
     {
       name: 'Starlit Colored Glass',
+      reason: 'Decoration/crafting material',
     },
     {
       name: "Trekker's Handwritten Encyclopedia",
+      reason: 'Knowledge/collection item',
     },
     {
       name: 'Monolith Stairs Pass',
+      reason: 'Access pass for special content',
     },
     {
       name: 'Star Emblem Polisher',
+      reason: 'Enhancement material for equipment',
     },
   ],
   low: [
     {
       name: 'Chilling Wind Spinner',
+      reason: 'Gift item - low priority',
     },
     {
       name: 'Moonlit Companion',
+      reason: 'Gift item - low priority',
     },
     {
       name: 'Exquisite Blower',
+      reason: 'Gift item - low priority',
     },
   ],
   optional: [
     {
       name: 'Dorra',
+      reason: 'Common currency - farmable elsewhere',
     },
     {
       name: 'Daring Adventure! The Ghost Ship Haunts the Deep',
+      reason: 'Story item - optional for collectors',
     },
   ],
 };
 
 // Calculate costs for priority tiers
-const calculateTierCost = tierItems => {
+const calculateTierCost = (tierItems: Array<{ name: string }>) => {
   return tierItems.reduce((total, priorityItem) => {
-    const shopItem = shopItems.find((item: { name: string }) => item.name === priorityItem.name);
+    const shopItem = shopItems.find(item => item.name === priorityItem.name);
     if (shopItem) {
       return total + shopItem.cost * shopItem.stockLeft;
     }
@@ -468,30 +486,17 @@ const calculateTierCost = tierItems => {
   }, 0);
 };
 
-// Calculate Squid Rice Cracker from quest completion
-const totalCrackersFromQuests = questCategories.reduce((total, category) => {
-  return (
-    total +
-    category.quests.reduce((categoryTotal, quest) => {
-      const crackers = parseInt(quest.currency.replace('x', ''));
-      return categoryTotal + crackers;
-    }, 0)
-  );
-}, 0);
-
 // Calculate Squid Rice Cracker from quest completion rewards
 const crackersFromCompletionRewards = questCategories.reduce((total, category) => {
   const rewards = parseRewardText(category.completionRewards);
-  const crackerReward = rewards.find(
-    (reward: { name: string; quantity: string }) => reward.name === 'Squid Rice Cracker'
-  );
+  const crackerReward = rewards.find(reward => reward.name === 'Squid Rice Cracker');
   const amount = crackerReward ? parseInt(crackerReward.quantity) : 0;
   return total + amount;
 }, 0);
 
 // Total Squid Rice Crackers from all sources except purchases
 const totalCrackersFromAllSources =
-  totalCrackersFromStages + totalCrackersFromQuests + crackersFromCompletionRewards;
+  totalCrackersFromStages + achievableCrackersFromQuests + crackersFromCompletionRewards;
 
 // Calculate how many more crackers needed and runs required
 const shopTotalCost = 133300;
@@ -616,7 +621,7 @@ const remainingHours = totalHoursNeeded % 24;
                 width={16}
                 height={16}
               />
-              <span class="stat-value">{totalCrackersFromQuests.toLocaleString()}</span>
+              <span class="stat-value">{achievableCrackersFromQuests.toLocaleString()}</span>
             </div>
           </div>
 
@@ -987,31 +992,33 @@ const remainingHours = totalHoursNeeded % 24;
               const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
               return (
                 <div class="priority-item">
-                  <div class="item-image-wrapper">
-                    <SSShopEventImage
-                      imageSrc={shopItem?.image}
-                      alt={item.name}
-                      width={60}
-                      height={60}
-                    />
-                  </div>
-                  <div class="item-info">
-                    <h4 class="item-name">{item.name}</h4>
-                    <p class="item-reason">{item.reason}</p>
-                    {shopItem && (
-                      <div class="item-cost">
+                  {shopItem && (
+                    <>
+                      <div class="item-image-wrapper">
                         <SSShopEventImage
-                          imageSrc="Squid_rice_cracker.png"
-                          alt="Squid Rice Cracker"
-                          width={16}
-                          height={16}
+                          imageSrc={shopItem.image}
+                          alt={item.name}
+                          width={60}
+                          height={60}
                         />
-                        <span>
-                          {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
-                        </span>
                       </div>
-                    )}
-                  </div>
+                      <div class="item-info">
+                        <h4 class="item-name">{item.name}</h4>
+                        <p class="item-reason">{item.reason}</p>
+                        <div class="item-cost">
+                          <SSShopEventImage
+                            imageSrc="Squid_rice_cracker.png"
+                            alt="Squid Rice Cracker"
+                            width={16}
+                            height={16}
+                          />
+                          <span>
+                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               );
             })
@@ -1042,31 +1049,33 @@ const remainingHours = totalHoursNeeded % 24;
               const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
               return (
                 <div class="priority-item">
-                  <div class="item-image-wrapper">
-                    <SSShopEventImage
-                      imageSrc={shopItem?.image}
-                      alt={item.name}
-                      width={60}
-                      height={60}
-                    />
-                  </div>
-                  <div class="item-info">
-                    <h4 class="item-name">{item.name}</h4>
-                    <p class="item-reason">{item.reason}</p>
-                    {shopItem && (
-                      <div class="item-cost">
+                  {shopItem && (
+                    <>
+                      <div class="item-image-wrapper">
                         <SSShopEventImage
-                          imageSrc="Squid_rice_cracker.png"
-                          alt="Squid Rice Cracker"
-                          width={16}
-                          height={16}
+                          imageSrc={shopItem.image}
+                          alt={item.name}
+                          width={60}
+                          height={60}
                         />
-                        <span>
-                          {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
-                        </span>
                       </div>
-                    )}
-                  </div>
+                      <div class="item-info">
+                        <h4 class="item-name">{item.name}</h4>
+                        <p class="item-reason">{item.reason}</p>
+                        <div class="item-cost">
+                          <SSShopEventImage
+                            imageSrc="Squid_rice_cracker.png"
+                            alt="Squid Rice Cracker"
+                            width={16}
+                            height={16}
+                          />
+                          <span>
+                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               );
             })
@@ -1097,31 +1106,33 @@ const remainingHours = totalHoursNeeded % 24;
               const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
               return (
                 <div class="priority-item compact">
-                  <div class="item-image-wrapper small">
-                    <SSShopEventImage
-                      imageSrc={shopItem?.image}
-                      alt={item.name}
-                      width={40}
-                      height={40}
-                    />
-                  </div>
-                  <div class="item-info">
-                    <h4 class="item-name">{item.name}</h4>
-                    <p class="item-reason">{item.reason}</p>
-                    {shopItem && (
-                      <div class="item-cost">
+                  {shopItem && (
+                    <>
+                      <div class="item-image-wrapper small">
                         <SSShopEventImage
-                          imageSrc="Squid_rice_cracker.png"
-                          alt="Squid Rice Cracker"
-                          width={14}
-                          height={14}
+                          imageSrc={shopItem.image}
+                          alt={item.name}
+                          width={40}
+                          height={40}
                         />
-                        <span>
-                          {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
-                        </span>
                       </div>
-                    )}
-                  </div>
+                      <div class="item-info">
+                        <h4 class="item-name">{item.name}</h4>
+                        <p class="item-reason">{item.reason}</p>
+                        <div class="item-cost">
+                          <SSShopEventImage
+                            imageSrc="Squid_rice_cracker.png"
+                            alt="Squid Rice Cracker"
+                            width={14}
+                            height={14}
+                          />
+                          <span>
+                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               );
             })
@@ -1152,31 +1163,33 @@ const remainingHours = totalHoursNeeded % 24;
               const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
               return (
                 <div class="priority-item">
-                  <div class="item-image-wrapper">
-                    <SSShopEventImage
-                      imageSrc={shopItem?.image}
-                      alt={item.name}
-                      width={60}
-                      height={60}
-                    />
-                  </div>
-                  <div class="item-info">
-                    <h4 class="item-name">{item.name}</h4>
-                    <p class="item-reason">{item.reason}</p>
-                    {shopItem && (
-                      <div class="item-cost">
+                  {shopItem && (
+                    <>
+                      <div class="item-image-wrapper">
                         <SSShopEventImage
-                          imageSrc="Squid_rice_cracker.png"
-                          alt="Squid Rice Cracker"
-                          width={16}
-                          height={16}
+                          imageSrc={shopItem.image}
+                          alt={item.name}
+                          width={60}
+                          height={60}
                         />
-                        <span>
-                          {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
-                        </span>
                       </div>
-                    )}
-                  </div>
+                      <div class="item-info">
+                        <h4 class="item-name">{item.name}</h4>
+                        <p class="item-reason">{item.reason}</p>
+                        <div class="item-cost">
+                          <SSShopEventImage
+                            imageSrc="Squid_rice_cracker.png"
+                            alt="Squid Rice Cracker"
+                            width={16}
+                            height={16}
+                          />
+                          <span>
+                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               );
             })
@@ -1207,31 +1220,33 @@ const remainingHours = totalHoursNeeded % 24;
               const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
               return (
                 <div class="priority-item">
-                  <div class="item-image-wrapper">
-                    <SSShopEventImage
-                      imageSrc={shopItem?.image}
-                      alt={item.name}
-                      width={60}
-                      height={60}
-                    />
-                  </div>
-                  <div class="item-info">
-                    <h4 class="item-name">{item.name}</h4>
-                    <p class="item-reason">{item.reason}</p>
-                    {shopItem && (
-                      <div class="item-cost">
+                  {shopItem && (
+                    <>
+                      <div class="item-image-wrapper">
                         <SSShopEventImage
-                          imageSrc="Squid_rice_cracker.png"
-                          alt="Squid Rice Cracker"
-                          width={16}
-                          height={16}
+                          imageSrc={shopItem.image}
+                          alt={item.name}
+                          width={60}
+                          height={60}
                         />
-                        <span>
-                          {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
-                        </span>
                       </div>
-                    )}
-                  </div>
+                      <div class="item-info">
+                        <h4 class="item-name">{item.name}</h4>
+                        <p class="item-reason">{item.reason}</p>
+                        <div class="item-cost">
+                          <SSShopEventImage
+                            imageSrc="Squid_rice_cracker.png"
+                            alt="Squid Rice Cracker"
+                            width={16}
+                            height={16}
+                          />
+                          <span>
+                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               );
             })
@@ -1344,7 +1359,7 @@ const remainingHours = totalHoursNeeded % 24;
               <thead>
                 <tr>
                   <th>Quest Name</th>
-                  {category.quests[0].shovel ? <th>Shovel Reward</th> : <th>GEM Reward</th>}
+                  {'shovel' in category.quests[0] ? <th>Shovel Reward</th> : <th>GEM Reward</th>}
                   <th>Squid Rice Cracker</th>
                 </tr>
               </thead>
