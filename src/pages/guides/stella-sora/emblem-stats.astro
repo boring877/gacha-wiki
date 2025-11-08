@@ -5,10 +5,44 @@ import { emblemStats } from '../../../data/stella-sora/emblem-stats.js';
 
 const pageTitle = 'Emblem Stats Reference Guide';
 const pageDescription =
-  'Complete reference guide for Stella Sora emblem stats, availability by level, and rarity tiers.';
+  'Complete Stella Sora emblem stats reference guide. Find all emblem statistics, level requirements (Lv.70, Lv.80, Lv.90), rarity tiers (Green, Blue, Gold, Rainbow), and optimal builds for your gameplay.';
 ---
 
 <EmblemStatsLayout title={pageTitle} description={pageDescription} gameTitle={emblemStats.title}>
+  <!-- Structured Data for Emblem Stats -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: pageTitle,
+      description: pageDescription,
+      url: 'https://gachawiki.info/guides/stella-sora/emblem-stats/',
+      inLanguage: 'en',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'Stella Sora Wiki',
+        url: 'https://gachawiki.info/guides/stella-sora/',
+      },
+      mainEntity: {
+        '@type': 'Dataset',
+        name: 'Stella Sora Emblem Stats Reference',
+        description:
+          'Complete reference guide for Stella Sora emblem statistics, availability by level, and rarity tiers',
+        provider: {
+          '@type': 'Organization',
+          name: 'GachaWiki',
+        },
+      },
+      about: {
+        '@type': 'VideoGame',
+        name: 'Stella Sora',
+        gamePlatform: ['Android', 'iOS'],
+        applicationCategory: 'Game',
+      },
+    })}
+  />
+
   {/* Hero Section */}
   <section class="emblem-hero">
     <div class="emblem-hero-content">
