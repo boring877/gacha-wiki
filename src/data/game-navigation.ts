@@ -193,6 +193,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Game Resources',
         links: [
+          { name: 'Exclusive Items', href: '/guides/stella-sora/exclusive-items/' },
           { name: 'Clock', href: '/clock/stella-sora/' },
           { name: 'Redeem Codes', href: '/guides/stella-sora/redeem-codes/' },
           { name: 'Official Website', href: 'https://stellasora.global/' },

@@ -1,0 +1,243 @@
+/**
+ * Stella Sora Exclusive Items Page Styles
+ * Simple, clean design with no animations, hover effects, shadows, or glow
+ */
+
+/* Main Content - works with SS layout */
+.content-area .items-container {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* Section Styles */
+.items-section {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  color: var(--ss-text-primary);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: none; /* Explicitly no text shadow */
+}
+
+/* Items Grid */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+/* Item Hero Cards - similar to character hero cards */
+.item-hero-card {
+  background-color: var(--ss-bg-card);
+  border: 1px solid var(--ss-accent-20);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: none; /* Explicitly no shadow */
+  transition: none; /* No hover effects */
+}
+
+.item-hero-card:hover {
+  box-shadow: none; /* Explicitly no hover shadow */
+  transform: none; /* Explicitly no hover transform */
+}
+
+.item-hero-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  text-align: left;
+}
+
+.item-text-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.item-name {
+  color: var(--ss-text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: none; /* Explicitly no text shadow */
+}
+
+.item-event-title {
+  color: var(--ss-accent);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.item-event-date {
+  color: var(--ss-text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.item-source {
+  color: var(--ss-text-tertiary);
+  font-size: 0.9rem;
+  margin: 0;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+  .item-hero-card {
+    touch-action: manipulation; /* Improve touch response */
+  }
+
+  .item-hero-container {
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+  }
+
+  /* Prevent zoom on input focus */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  /* Tablets */
+  .items-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .item-hero-card {
+    padding: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Small tablets and large phones */
+  .content-area .items-container {
+    padding: 0.75rem 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .items-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .items-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .item-hero-card {
+    padding: 1.5rem;
+  }
+
+  .item-hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Mobile phones */
+  .content-area .items-container {
+    padding: 0.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .items-section {
+    margin-bottom: 2rem;
+  }
+
+  .items-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .item-hero-card {
+    padding: 1rem;
+  }
+
+  .item-hero-container {
+    gap: 1rem;
+  }
+
+  .item-name {
+    font-size: 1.3rem;
+  }
+
+  .item-event-title {
+    font-size: 1rem;
+  }
+
+  .item-event-date {
+    font-size: 0.9rem;
+  }
+
+  .item-source {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Small mobile phones */
+  .content-area .items-container {
+    padding: 0.25rem 0;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .items-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .items-grid {
+    gap: 1.25rem;
+  }
+
+  .item-hero-card {
+    padding: 0.75rem;
+  }
+
+  .item-hero-container {
+    gap: 0.75rem;
+  }
+
+  .item-name {
+    font-size: 1.2rem;
+  }
+
+  .item-event-title {
+    font-size: 0.95rem;
+  }
+
+  .item-event-date {
+    font-size: 0.85rem;
+  }
+
+  .item-source {
+    font-size: 0.8rem;
+  }
+}

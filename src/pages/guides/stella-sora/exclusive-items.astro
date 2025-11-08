@@ -1,0 +1,101 @@
+---
+/**
+ * Stella Sora Exclusive Items Page
+ * Displays exclusive items available through events and special passes
+ */
+
+import ExclusiveItemsLayout from '../../../layouts/stella-sora/ExclusiveItemsLayout.astro';
+import { stellaSoraExclusiveItems } from '../../../data/stella-sora/exclusive-items.js';
+import SSItemImage from '../../../components/stella-sora/SSItemImage.astro';
+---
+
+<ExclusiveItemsLayout
+  title="Exclusive Items"
+  description="Exclusive items for Stella Sora game - limited-time discs and special skins"
+  gameTitle="Exclusive Items"
+>
+  <div class="items-container">
+    <!-- Discs Section -->
+    <section class="items-section">
+      <h2 class="section-title">Discs</h2>
+      <div class="items-grid">
+        <!-- Event Disc Item -->
+        <div class="item-hero-card">
+          <div class="item-hero-container">
+            <div class="item-portrait-container">
+              <SSItemImage
+                src={stellaSoraExclusiveItems[0].image}
+                alt={stellaSoraExclusiveItems[0].name}
+                class="item-portrait"
+              />
+            </div>
+            <div class="item-text-content">
+              <h3 class="item-name">{stellaSoraExclusiveItems[0].name}</h3>
+              <p class="item-event-title">{stellaSoraExclusiveItems[0].source.eventTitle}</p>
+              <p class="item-event-date">
+                {
+                  new Date(stellaSoraExclusiveItems[0].source.startDate).toLocaleDateString(
+                    'en-US',
+                    {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                    }
+                  )
+                } - {
+                  new Date(stellaSoraExclusiveItems[0].source.endDate).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                  })
+                }
+              </p>
+              <p class="item-source">Source: {stellaSoraExclusiveItems[0].source.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skins Section -->
+    <section class="items-section">
+      <h2 class="section-title">Skins</h2>
+      <div class="items-grid">
+        <!-- Royal Pass Skin Item -->
+        <div class="item-hero-card">
+          <div class="item-hero-container">
+            <div class="item-portrait-container">
+              <SSItemImage
+                src={stellaSoraExclusiveItems[1].image}
+                alt={stellaSoraExclusiveItems[1].name}
+                class="item-portrait"
+              />
+            </div>
+            <div class="item-text-content">
+              <h3 class="item-name">{stellaSoraExclusiveItems[1].name}</h3>
+              <p class="item-event-title">{stellaSoraExclusiveItems[1].source.passTitle}</p>
+              <p class="item-event-date">
+                {
+                  new Date(stellaSoraExclusiveItems[1].source.startDate).toLocaleDateString(
+                    'en-US',
+                    {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                    }
+                  )
+                } - {
+                  new Date(stellaSoraExclusiveItems[1].source.endDate).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                  })
+                }
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</ExclusiveItemsLayout>

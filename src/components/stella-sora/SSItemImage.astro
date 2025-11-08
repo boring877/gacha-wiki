@@ -1,0 +1,104 @@
+---
+/**
+ * SS Item Image Component
+ * Simple component for displaying item images in Stella Sora exclusive items page
+ */
+
+import { Image } from 'astro:assets';
+import summerSanctuary from '../../assets/images/games/stella-sora/Exclusive/Summer_sanctuary.jpg';
+import tipsyDaydream from '../../assets/images/games/stella-sora/Exclusive/Tipsy_Daydream.jpg';
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+}
+
+const { src, alt, class: className = '' } = Astro.props;
+
+// Map image paths to imported image modules
+const imageMap = {
+  '/images/games/stella-sora/Exclusive/Summer_sanctuary.jpg': summerSanctuary,
+  'Summer_sanctuary.jpg': summerSanctuary,
+  '/images/games/stella-sora/Exclusive/Tipsy_Daydream.jpg': tipsyDaydream,
+  'Tipsy_Daydream.jpg': tipsyDaydream,
+};
+
+// Get the image module based on the src
+const filename = src.split('/').pop() || 'Summer_sanctuary.jpg';
+const imageModule = imageMap[src] || imageMap[filename] || summerSanctuary;
+
+// Use consistent high-quality dimensions
+const finalWidth = 800;
+const finalHeight = 800;
+---
+
+<div class={`ss-item-image-container ${className}`}>
+  <Image
+    src={imageModule}
+    alt={alt}
+    width={finalWidth}
+    height={finalHeight}
+    class="ss-item-image"
+    loading="lazy"
+    format="webp"
+    quality={95}
+  />
+</div>
+
+<style>
+  .ss-item-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background: var(--ss-bg-tertiary);
+    border: 2px solid var(--ss-accent-20);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0; /* Prevent shrinking in flex layouts */
+  }
+
+  .ss-item-image {
+    transition: none; /* No hover effects */
+    object-fit: cover; /* Fill container consistently */
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .ss-item-image-container:hover .ss-item-image {
+    transform: none; /* No hover transform */
+  }
+
+  /* Responsive sizing */
+  @media (max-width: 1024px) {
+    .ss-item-image-container {
+      width: 190px;
+      height: 190px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .ss-item-image-container {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ss-item-image-container {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .ss-item-image-container {
+      width: 130px;
+      height: 130px;
+    }
+  }
+</style>
