@@ -60,10 +60,10 @@ if (!game) return;
         <button
           class="game-resources-btn"
           id="navToggle"
-          aria-label={`Browse ${game.name} Resources`}
+          aria-label={`Browse ${game.name} ${game.sections[game.sections.length - 1].title}`}
           aria-expanded="false"
         >
-          <h2 class="game-title">{game.name} Resources</h2>
+          <h2 class="game-title">{game.name} {game.sections[game.sections.length - 1].title}</h2>
         </button>
       </div>
     </div>
