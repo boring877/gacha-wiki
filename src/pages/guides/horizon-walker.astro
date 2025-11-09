@@ -9,12 +9,6 @@ import '../../styles/games/horizon-walker/hw-landing-page.css';
 // Extract data for easier use in template
 const { meta, gameInfo, categoryGroups } = horizonWalkerConfig;
 
-// Breadcrumb data for SEO
-const breadcrumbs = [
-  { name: 'Guides', url: '/guides' },
-  { name: 'Horizon Walker', url: '/guides/horizon-walker' },
-];
-
 // Helper function to check if platforms exist
 const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
 ---
@@ -24,7 +18,6 @@ const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
   description={meta.description}
   gameTitle={meta.gameTitle}
   heroImage={meta.heroImage}
-  breadcrumbs={breadcrumbs}
 >
   <!-- Structured Data for Horizon Walker -->
   <script type="application/ld+json">

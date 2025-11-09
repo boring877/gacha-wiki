@@ -53,3 +53,70 @@
   opacity: 1; /* Full opacity for visibility */
   color: #1a1a1a; /* Dark color to match text */
 }
+
+/* === MOND BUTTON SECTION === */
+/* Separate section for Mond link with additional spacing */
+.hero-mond-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem; /* Additional space above Mond section */
+}
+
+/* Mond button styling - subtle to not compete with main CTA */
+.mond-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.75rem 1.25rem;
+  background: rgba(28, 28, 28, 0.4); /* Subtle dark background like other secondary buttons */
+  border: 1px solid rgba(255, 183, 77, 0.2); /* Subtle amber border matching site theme */
+  border-radius: 8px;
+  color: var(--text-inverse);
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 160px; /* Smaller width to be less prominent */
+}
+
+.mond-button:hover {
+  background: rgba(28, 28, 28, 0.6);
+  border-color: rgba(255, 183, 77, 0.3);
+}
+
+.mond-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm); /* Smaller font size */
+  font-weight: var(--font-medium); /* Less bold weight */
+  color: var(--text-inverse);
+  margin-bottom: 0.25rem;
+}
+
+.mond-subtitle {
+  font-family: var(--font-primary);
+  font-size: 0.75rem; /* Even smaller subtitle */
+  font-weight: var(--font-normal);
+  color: var(--text-inverse);
+  opacity: 0.7; /* More subtle opacity */
+  line-height: var(--leading-tight);
+}
+
+/* Mobile responsiveness for Mond button */
+@media (max-width: 768px) {
+  .hero-mond-section {
+    margin-top: 1.5rem;
+  }
+
+  .mond-button {
+    padding: 0.625rem 1rem;
+    min-width: 140px;
+  }
+
+  .mond-text {
+    font-size: var(--text-xs);
+  }
+
+  .mond-subtitle {
+    font-size: 0.7rem;
+  }
+}

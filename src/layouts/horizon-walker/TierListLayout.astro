@@ -1,0 +1,86 @@
+---
+import HWBaseHead from '../../components/horizon-walker/HWBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+
+// Import CSS files
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-colors.css';
+import '../../styles/games/horizon-walker/hw-layout.css';
+import '../../styles/games/horizon-walker/hw-character.css';
+import '../../styles/games/horizon-walker/hw-tier-list.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  pageTitle: string;
+  subtitle?: string;
+  currentMode?: string;
+}
+
+const { title, description, pageTitle, subtitle, currentMode } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <HWBaseHead title={title} description={description} />
+    <GameSEO
+      gameKey="horizon-walker"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'horizon walker tier list',
+        'hw character rankings',
+        'horizon walker best characters',
+        'hw tier list',
+        'horizon walker ex weapons',
+        'hw character guide',
+        ...(currentMode ? [`horizon walker ${currentMode}`] : []),
+      ]}
+    />
+  </head>
+  <body class="horizon-walker-body">
+    <CustomScrollbar />
+
+    <!-- Horizon Walker Background Layers -->
+    <div class="bg-layer hw-bg-primary"></div>
+    <div class="bg-layer hw-bg-accent-1"></div>
+    <div class="bg-layer hw-bg-accent-2"></div>
+    <div class="bg-layer hw-bg-accent-3"></div>
+
+    <div class="horizon-walker-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="horizon-walker" />
+      <MobileMenu />
+
+      <div class="horizon-walker-container">
+        <main class="horizon-walker-main hw-tier-list-main">
+          <!-- Tier List Hero Section -->
+          <section class="hw-char-db-hero-section">
+            <h1 class="hw-char-db-hero-title">{pageTitle}</h1>
+            {subtitle && <p class="hw-char-db-hero-subtitle">{subtitle}</p>}
+            <DecorativeLines />
+          </section>
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb autoGenerate={true} gameKey="horizon-walker" showBackButton={true} />
+
+          <!-- Tier List Content Area -->
+          <div class="hw-tier-list-content">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

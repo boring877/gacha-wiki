@@ -1,0 +1,294 @@
+---
+import TierListLayout from '../../../layouts/horizon-walker/TierListLayout.astro';
+import { HORIZON_WALKER_TIER_LISTS } from '../../../data/horizon-walker/tier-lists.js';
+import { CharacterImage, MercenaryImage } from '../../../components/horizon-walker/index.astro';
+
+// Helper function to get tier class name
+function getTierClassName(tier: string): string {
+  return tier.toLowerCase().replace('+', '-plus').replace(/\s+/g, '-');
+}
+---
+
+<TierListLayout
+  title="Horizon Walker Tier List - Character Rankings & Meta Guide"
+  description="Comprehensive Horizon Walker tier lists for Map Clear, Special Operations, and Dopamin modes. Find the best characters with EX weapons for every game mode."
+  pageTitle="Horizon Walker Tier List"
+  subtitle="This tier list was made with consideration for EX weapons!"
+>
+  <div class="tier-list-container">
+    <!-- Tier List Type Selector -->
+    <div class="tier-list-selector">
+      <button class="tier-type-btn active" data-list-type="map-clear"> Map Clear & Mission </button>
+      <button class="tier-type-btn" data-list-type="special-operations">
+        Special Operations
+      </button>
+      <button class="tier-type-btn" data-list-type="dopamin"> Dopamin </button>
+      <button class="tier-type-btn" data-list-type="priorities"> Priorities Characters </button>
+    </div>
+
+    <!-- Tier List Info -->
+    <div class="tier-list-info" id="tier-list-info">
+      <h2 class="tier-list-title" id="list-title">Map Clear and Mission Tier List</h2>
+      <p class="tier-list-description" id="list-description">
+        Optimal characters for clearing story missions, exploration, and general map content.
+      </p>
+      <p class="tier-list-updated" id="list-updated">Last updated: 2025-11-09</p>
+    </div>
+
+    <!-- Map Clear Tier List Display (Visible by default) -->
+    <div class="tier-list-display" id="map-clear-tier-display">
+      {
+        (HORIZON_WALKER_TIER_LISTS['map-clear'] as any).tiers.map(tierData => (
+          <div class="tier-row" data-tier={tierData.tier}>
+            <div class={`tier-label tier-${getTierClassName(tierData.tier)}`}>
+              {tierData.definition.label}
+            </div>
+            <div class="tier-characters">
+              {tierData.characters.map(charData => (
+                <div
+                  class="tier-character-card"
+                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
+                >
+                  <div class="character-image-wrapper">
+                    {charData.isMercenary ? (
+                      <MercenaryImage
+                        imageName={charData.name}
+                        alt={charData.name}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : charData.image && charData.image.split('/').pop() ? (
+                      <CharacterImage
+                        imageName={charData.image.split('/').pop()}
+                        alt={charData.name}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : (
+                      <div class="character-placeholder">📷</div>
+                    )}
+                  </div>
+                  <div class="character-name">{charData.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Special Operations Tier List Display (Hidden by default) -->
+    <div class="tier-list-display" id="special-operations-tier-display" style="display: none;">
+      {
+        (HORIZON_WALKER_TIER_LISTS['special-operations'] as any).tiers.map(tierData => (
+          <div class="tier-row" data-tier={tierData.tier}>
+            <div class={`tier-label tier-${getTierClassName(tierData.tier)}`}>
+              {tierData.definition.label}
+            </div>
+            <div class="tier-characters">
+              {tierData.characters.map(charData => (
+                <div
+                  class="tier-character-card"
+                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
+                >
+                  <div class="character-image-wrapper">
+                    {charData.isMercenary ? (
+                      <MercenaryImage
+                        imageName={charData.name}
+                        alt={charData.name}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : charData.image && charData.image.split('/').pop() ? (
+                      <CharacterImage
+                        imageName={charData.image.split('/').pop()}
+                        alt={charData.name}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : (
+                      <div class="character-placeholder">📷</div>
+                    )}
+                  </div>
+                  <div class="character-name">{charData.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Dopamin Tier List Display (Hidden by default) -->
+    <div class="tier-list-display" id="dopamin-tier-display" style="display: none;">
+      {
+        (HORIZON_WALKER_TIER_LISTS['dopamin'] as any).tiers.map(tierData => (
+          <div class="tier-row" data-tier={tierData.tier}>
+            <div class={`tier-label tier-${getTierClassName(tierData.tier)}`}>
+              {tierData.definition.label}
+            </div>
+            <div class="tier-characters">
+              {tierData.characters.map(charData => (
+                <div
+                  class="tier-character-card"
+                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
+                >
+                  <div class="character-image-wrapper">
+                    {charData.isMercenary ? (
+                      <MercenaryImage
+                        imageName={charData.name}
+                        alt={charData.name}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : charData.image && charData.image.split('/').pop() ? (
+                      <CharacterImage
+                        imageName={charData.image.split('/').pop()}
+                        alt={charData.name}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : (
+                      <div class="character-placeholder">📷</div>
+                    )}
+                  </div>
+                  <div class="character-name">{charData.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Priorities Characters List Display (Hidden by default) -->
+    <div class="priorities-list-display" id="priorities-list-display" style="display: none;">
+      <div class="priorities-header">
+        <h3 class="priorities-title">These units should take care of you anywhere!</h3>
+        <p class="priorities-subtitle">Must-have characters with their EX weapons</p>
+      </div>
+      <div class="priorities-characters-grid">
+        {
+          (HORIZON_WALKER_TIER_LISTS['priorities'] as any).characters.map(charData => (
+            <div
+              class="priorities-character-card"
+              onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
+            >
+              <div class="character-image-wrapper">
+                {charData.image && charData.image.split('/').pop() ? (
+                  charData.isMercenary ? (
+                    <MercenaryImage
+                      imageName={charData.image.split('/').pop()}
+                      alt={charData.name}
+                      width={280}
+                      height={280}
+                      loading="lazy"
+                      quality={100}
+                    />
+                  ) : (
+                    <CharacterImage
+                      imageName={charData.image.split('/').pop()}
+                      alt={charData.name}
+                      width={280}
+                      height={280}
+                      loading="lazy"
+                      quality={100}
+                    />
+                  )
+                ) : (
+                  <div class="character-placeholder">📷</div>
+                )}
+              </div>
+              <div class="character-name">{charData.name}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <script define:vars={{ HORIZON_WALKER_TIER_LISTS }}>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Cache DOM elements
+        const listTitle = document.getElementById('list-title');
+        const listDescription = document.getElementById('list-description');
+        const listUpdated = document.getElementById('list-updated');
+        const typeButtons = document.querySelectorAll('.tier-type-btn');
+
+        // Current active tier list
+        let currentListType = 'map-clear';
+
+        // Function to switch tier list display
+        function switchTierList(listType) {
+          const tierList = HORIZON_WALKER_TIER_LISTS[listType];
+          if (!tierList) return;
+
+          // Update info
+          if (listTitle) listTitle.textContent = tierList.name;
+          if (listDescription) listDescription.textContent = tierList.description;
+          if (listUpdated) listUpdated.textContent = `Last updated: 2025-11-09`;
+
+          // Hide all tier list displays
+          const allDisplays = document.querySelectorAll('.tier-list-display');
+          allDisplays.forEach(display => {
+            if (display.id && display.id.includes('-tier-display')) {
+              display.style.display = 'none';
+            }
+          });
+
+          // Hide priorities display if showing tier list
+          const prioritiesDisplay = document.getElementById('priorities-list-display');
+          if (prioritiesDisplay) {
+            prioritiesDisplay.style.display = 'none';
+          }
+
+          // Show selected tier list display
+          const selectedDisplay = document.getElementById(`${listType}-tier-display`);
+          if (selectedDisplay) {
+            selectedDisplay.style.display = 'block';
+          }
+
+          // Special handling for priorities list
+          if (listType === 'priorities') {
+            const prioritiesDisplay = document.getElementById('priorities-list-display');
+            if (prioritiesDisplay) {
+              prioritiesDisplay.style.display = 'block';
+            }
+          }
+        }
+
+        // Add event listeners to type buttons
+        typeButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const listType = button.dataset.listType;
+            if (!listType || listType === currentListType) return;
+
+            // Update active button
+            typeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Update current list type
+            currentListType = listType;
+
+            // Switch tier list display
+            switchTierList(listType);
+          });
+        });
+
+        // Initial population - show Map Clear tier list by default
+        switchTierList('map-clear');
+      });
+    </script>
+  </div></TierListLayout
+>

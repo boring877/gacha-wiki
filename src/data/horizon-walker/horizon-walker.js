@@ -113,6 +113,11 @@ export const horizonWalkerConfig = {
       size: 'large',
       guides: [
         {
+          id: 'tier-list',
+          title: 'Tier List',
+          url: '/guides/horizon-walker/tier-list/',
+        },
+        {
           id: 'characters',
           title: 'Database',
           url: '/guides/horizon-walker/characters/',

@@ -47,6 +47,7 @@ const GAME_CONFIG = {
     name: 'Horizon Walker',
     basePath: '/guides/horizon-walker',
     patterns: {
+      'tier-list': 'Tier List',
       characters: 'Characters',
       mercenaries: 'Mercenaries',
       weapons: 'Weapons',
@@ -138,10 +139,18 @@ export function generateBreadcrumbs(pathname, options = {}) {
         const sectionKey = remainingSegments[0];
         const sectionName = config.patterns[sectionKey] || formatSegmentName(sectionKey);
 
-        breadcrumbs.push({
-          name: sectionName,
-          href: href,
-        });
+        // If this is the last segment, make it current page (no href)
+        if (remainingSegments.length === 1) {
+          breadcrumbs.push({
+            name: sectionName,
+            // No href for current page
+          });
+        } else {
+          breadcrumbs.push({
+            name: sectionName,
+            href: href,
+          });
+        }
 
         // Handle deeper paths (like individual character pages)
         if (remainingSegments.length > 1) {

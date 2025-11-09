@@ -59,7 +59,7 @@ export const GAMES: Game[] = [
     image: GameIcon,
     url: '/guides/horizon-walker/',
     status: 'active',
-    sections: ['Chosen Humans', 'Rift Combat', 'Transcendence', 'Survivor Resources'],
+    sections: ['Chosen Humans', 'Tier List', 'Rift Combat', 'Transcendence', 'Survivor Resources'],
     lastUpdated: new Date(),
   },
   {

@@ -302,6 +302,8 @@
     gap: var(--hw-spacing-lg);
     max-width: 1000px;
     margin: 0 auto var(--hw-spacing-lg) auto;
+    overflow: hidden;
+    contain: layout;
   }
 
   .character-stats-grid.core-stats .stat-item {
@@ -347,7 +349,7 @@
     }
 
     .stat-value {
-      font-size: var(--text-base);
+      font-size: var(--text-sm);
     }
   }
 
@@ -355,8 +357,10 @@
     background: var(--hw-black-30);
     border: 1px solid var(--hw-border-muted);
     border-radius: var(--hw-radius-md);
-    padding: var(--hw-spacing-md);
+    padding: var(--hw-spacing-sm) var(--hw-spacing-md);
     text-align: center;
+    overflow: hidden;
+    contain: layout;
   }
 
   .stat-label {
@@ -370,9 +374,12 @@
 
   .stat-value {
     font-family: var(--font-primary);
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     color: var(--hw-primary-warm);
     font-weight: var(--font-bold);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .stat-label.small {
@@ -382,7 +389,7 @@
 
   .stat-value.small {
     font-family: var(--font-primary);
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
   }
 
   /* Character Tags */

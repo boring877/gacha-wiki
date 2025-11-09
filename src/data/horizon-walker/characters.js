@@ -98,6 +98,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     image: '/images/games/horizon-walker/characters/Araha.jpg',
     slug: 'araha',
     detailUrl: '/guides/horizon-walker/characters/araha',
+    hasEXWeapon: true,
   },
   {
     id: 2,
@@ -145,6 +146,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     image: '/images/games/horizon-walker/characters/Bella.jpg',
     slug: 'bella',
     detailUrl: '/guides/horizon-walker/characters/bella',
+    hasEXWeapon: true,
   },
   {
     id: 3,
@@ -2244,8 +2246,97 @@ export const HORIZON_WALKER_CHARACTERS = [
     image: '/images/games/horizon-walker/characters/Kalma.jpg',
     slug: 'kalma',
     detailUrl: '/guides/horizon-walker/characters/kalma',
+    hasEXWeapon: true,
   },
 ];
+
+// Initialize EX Weapon availability based on tier lists
+const initializeEXWeapons = () => {
+  const charactersWithEX = new Set([
+    // SSS Tier
+    'Olivia',
+    'Yui',
+    'Cora',
+    'Yeonwoo',
+    'Kaul',
+
+    // SS Tier
+    'Valteta',
+    'Vlissing',
+    'Everette',
+    'Yvonna',
+    'Griselda',
+    'Efreeti',
+    'Juha',
+    'Berga',
+    'Korabi',
+    'Kalma',
+    'Luise',
+    'Lisandria',
+    'Headless Knight',
+    'Leah',
+    'Erneste',
+    'Nari',
+    'Mahari',
+    'Nika',
+    'Nymset',
+    'Bella',
+    'So Joo-Hee',
+    'Valeta',
+
+    // S Tier
+    'Yeon Chae-Young',
+    'Min Eun-Sol',
+    'Kalina',
+    'Kilon',
+    'Osla',
+    'Araha',
+    'Pantheri',
+    'Marhim',
+    'Matrotho',
+    'So Joo-Hee',
+    'Smarika',
+    'Ines',
+    'Fammene',
+    'Evertte',
+    'Samarika',
+    'Platina',
+    'Delia',
+    'Araha',
+
+    // A Tier
+    'Canisk',
+    'Rhasadina',
+    'Re-De-Da',
+    'Gulsni',
+    'Platina',
+    'Kim Ga-Young',
+    'Nonoha',
+    'Gulam',
+    'TX-Manticore',
+    'Yeon Chae-Young',
+    'Matrotho',
+
+    // Additional characters from tier lists
+    'Puppy Stepper',
+    'Puppy Shooter',
+    'Kobold Mercenary',
+    'Swamp Elf Vigilante',
+    'War Mercenary',
+    'Wizard Legionnaire',
+    'Imperial Shieldbearer',
+    'Goliath',
+    'Torta Warrior',
+    'Split Twigs Priest',
+  ]);
+
+  HORIZON_WALKER_CHARACTERS.forEach(character => {
+    character.hasEXWeapon = charactersWithEX.has(character.name);
+  });
+};
+
+// Initialize EX weapons
+initializeEXWeapons();
 
 // Utility functions
 export const getCharacterBySlug = slug => {
