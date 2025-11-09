@@ -194,7 +194,7 @@ const rawYuiData = {
       },
       soulResonance: {
         name: 'Yui Signature: Soul Resonance',
-        type: 'Yui Signature',
+        type: 'Signature',
         description:
           'During battle, increases Basic ATK DMG of both the user and their summons by 16%. The Weak Point Hit chance triggered by the Anarchic Barrage skill is doubled. When Anarchic Barrage targets 2 or fewer enemies: Against 2 enemies: temporarily increases Combat Skill DMG by 18% and restores 12 AP. Against 1 enemy: temporarily increases Combat Skill DMG by 36% and restores 24 AP.',
       },

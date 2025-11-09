@@ -935,7 +935,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                   <div class="skill-damage">
                     <span class="damage-label">Damage:</span>{' '}
                     <span class="damage-value">
-                      {triggerSkill.damage.value} of {triggerSkill.damage.type}
+                      {triggerSkill.damage.value || triggerSkill.damage.target} of {triggerSkill.damage.type}
+                      {triggerSkill.damage.splash && ` (+${triggerSkill.damage.splash} splash)`}
                     </span>
                   </div>
                 )}
@@ -971,7 +972,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                         <div class="skill-damage">
                           <span class="damage-label">Damage:</span>{' '}
                           <span class="damage-value">
-                            {pair.baseSkill.damage.value} of {pair.baseSkill.damage.type}
+                            {pair.baseSkill.damage.value || pair.baseSkill.damage.target} of {pair.baseSkill.damage.type}
+                            {pair.baseSkill.damage.splash && ` (+${pair.baseSkill.damage.splash} splash)`}
                           </span>
                         </div>
                       )}
@@ -1001,7 +1003,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                         <div class="skill-damage">
                           <span class="damage-label">Damage:</span>{' '}
                           <span class="damage-value">
-                            {pair.replacementSkill.damage.value} of {pair.replacementSkill.damage.type}
+                            {pair.replacementSkill.damage.value || pair.replacementSkill.damage.target} of {pair.replacementSkill.damage.type}
+                            {pair.replacementSkill.damage.splash && ` (+${pair.replacementSkill.damage.splash} splash)`}
                           </span>
                         </div>
                       )}
@@ -1035,7 +1038,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                 <div class="skill-damage">
                   <span class="damage-label">Damage:</span>{' '}
                   <span class="damage-value">
-                    {skill.damage.value} of {skill.damage.type}
+                    {skill.damage.value || skill.damage.target} of {skill.damage.type}
+                      {skill.damage.splash && ` (+${skill.damage.splash} splash)`}
                   </span>
                 </div>
               )}

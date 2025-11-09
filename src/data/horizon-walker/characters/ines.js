@@ -150,7 +150,7 @@ const rawInesData = {
     dividingTheEarth: {
       name: 'Dividing the Earth',
       level: 'Auto',
-      type: 'Support',
+      type: 'Skill',
       apCost: 0,
       cooldown: 0,
       damage: {
@@ -181,7 +181,7 @@ const rawInesData = {
       },
       theWinterDuchess: {
         name: 'Ines Signature: The Winter Duchess',
-        type: 'Character Signature',
+        type: 'Signature',
         description: "Reduces AP consumption for the 'World Cleaver' skill by 50% during combat.",
       },
     },

@@ -99,7 +99,7 @@ const rawKorabiData = {
       },
       bloomingBloodlust: {
         name: 'Blooming Bloodlust',
-        type: 'Korabi Signature',
+        type: 'Signature',
         description:
           "During combat, Additional Response triggered by the skill Timid, Yet Explosive! always activates at 100% chance. The [Burning Desire] effect granted by the skill Blood Pact increases the target ally's Slash Boost and Crush Boost by 50% of your Base Slash Boost, and increases their Melee ATK and Ranged ATK by 15% of your Base Magic ATK. Slash Boost and Crush Boost gained this way cannot exceed 30%. When using the skill Whirlwind of Bloodlust, removes Weak Points from all allies for 2 rounds.",
         note: 'This signature skill only activates when Korabi equips this weapon.',

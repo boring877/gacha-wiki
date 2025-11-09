@@ -186,7 +186,7 @@ const rawMatrothoData = {
       },
       theWindblade: {
         name: 'Matrotho Signature: The Windblade',
-        type: 'Character Signature',
+        type: 'Signature',
         description: 'Once per round, performs a support attack on successful attack.',
       },
     },

@@ -191,7 +191,7 @@ const rawBergaData = {
       },
       mirrorOfTheWild: {
         name: 'Berga Signature: Mirror of the Wild',
-        type: 'Berga Signature',
+        type: 'Signature',
         description:
           'At the start of battle, gain 2 stacks of [The Fire Within]. At the start of your first turn, gain 45 AP and increase SPD by 40% for that turn. When gaining the [Bloodrush] effect, CRIT Chance increases by an additional 33% for 2 rounds and grants immunity to [Taunt], [Fear], [Sleep], [Madness], [Stun], and [Focus Disruption].',
       },

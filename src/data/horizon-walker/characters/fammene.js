@@ -174,7 +174,7 @@ const rawFammeneData = {
       },
       windOfTragedy: {
         name: 'Fammene Signature: Wind of Tragedy',
-        type: 'Fammene Signature',
+        type: 'Signature',
         description:
           "Increases AP Recovery by 8%. Gains the [Whirling Wind] effect at the start of battle. (Same as the [Whirling Wind] effect caused by the level 1 'Wind's Gathering' skill.)",
       },

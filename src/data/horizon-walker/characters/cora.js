@@ -190,7 +190,7 @@ const rawCoraData = {
       },
       harmonyOfTheArchitect: {
         name: 'Harmony of the Architect',
-        type: 'Cora Signature',
+        type: 'Signature',
         description:
           'At the start of combat, for 3 uses only, the AP cost of "Summon Lava" becomes 0 and its cooldown is reduced by 1R. At the start of combat, gain a shield equal to 100% of base Magic ATK for 1R. The shield is removed at the end of the turn if damaged. During combat, Magic ATK and Heat Boost increase by 30%. The attack radius of "Summon Lava" and the radius of the [Lava] zone each increase by 1m. During combat, the AP cost of "Volcanic Eruption" decreases by 30, and the damage of "Forbidden Land" increases by 100%. If HP is at 100%, the AP cost of "Summon Energy" decreases by 40%.',
       },

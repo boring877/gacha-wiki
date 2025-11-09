@@ -103,7 +103,7 @@ if (autoGenerate) {
             )}
             {index < breadcrumbItems.length - 1 && (
               <span class="hw-breadcrumb-separator" aria-hidden="true">
-                →
+                ›
               </span>
             )}
           </li>
@@ -117,9 +117,6 @@ if (autoGenerate) {
   .hw-breadcrumb {
     margin-bottom: 2rem;
     /* Align with parent container */
-    max-width: 75rem;
-    margin-left: auto;
-    margin-right: auto;
     padding-left: 2rem;
     padding-right: 2rem;
     /* Ensure breadcrumb appears above other elements */
@@ -211,7 +208,7 @@ if (autoGenerate) {
   }
 
   .hw-breadcrumb-separator {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--hw-text-muted, rgba(232, 165, 71, 0.6));
     user-select: none;
     font-size: 1rem;
   }

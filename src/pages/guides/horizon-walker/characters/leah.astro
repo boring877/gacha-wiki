@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  leahData,
+  leahSEO,
+  leahHighlighting,
+} from '../../../../data/horizon-walker/characters/leah.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={leahSEO.title}
+  description={leahSEO.description}
+  gameTitle={leahData.name}
+  character={leahData}
+>
+  <CharacterPageTemplate characterData={{ ...leahData, highlightPatterns: leahHighlighting }} />
+</CharacterIndividualLayout>

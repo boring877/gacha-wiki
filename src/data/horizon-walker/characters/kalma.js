@@ -228,7 +228,7 @@ const rawKalmaData = {
       },
       clearYourMindAndShoot: {
         name: 'Kalma Signature: Clear Your Mind and Shoot',
-        type: 'Kalma Signature',
+        type: 'Signature',
         description:
           'During combat, Increases Crit Rate by 6.8%, and "Raging Thunderstorm" becomes a area-targeted attack, its attack radius increases by 1m, and its damage increases by 15%. When "Lightning Cascade" hits, temporarily reduces the target\'s Electric DEF by 240.',
       },

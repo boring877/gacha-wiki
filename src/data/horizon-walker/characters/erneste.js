@@ -76,6 +76,38 @@ const rawErnesteData = {
     blockRate: '0',
   },
 
+  // Weapon Information
+  weapon: {
+    name: 'Dawnbringer',
+    type: 'EX Two-handed sword',
+    image: '/images/games/horizon-walker/weapons/Erneste_WP.jpg',
+    rarity: 'EX',
+    stats: {
+      weaponMeleeAtk: 91.0,
+      meleeAtkPercent: 35.0,
+    },
+    uniqueSkills: {
+      frontlineCharisma: {
+        name: 'Frontline Charisma',
+        type: 'Unique',
+        description:
+          "During battle, increases Block Chance by 24%. After using a Support, Charge, Leap, Teleportation, or Self-Mobility skill, at the end of the turn, increases all allies' SPD by 63% for 2 Rounds. Stacks up to 3 times.",
+      },
+      ourProtector: {
+        name: 'Our Protector',
+        type: 'Signature',
+        description:
+          "Increases the caster's SPD by 70% during battle and boosts all allies' Basic ATK DMG (excluding the caster) by 10%. Extends the duration of [Declaration of Victory] to 3 rounds, additionally increasing the target ally's Melee ATK by 36% of the caster's base Melee ATK. Also increases each ally's Ranged ATK and Magic ATK by 55% of the total Melee ATK gained from [Declaration of Victory]. Unlocks the skill [Frontline Disruptor] for use.",
+      },
+      frontlineDisruptor: {
+        name: 'Frontline Disruptor',
+        type: 'Skill',
+        description:
+          "Leaps forward in a sweeping motion, striking nearby enemies. Gains the [Courageous Charge] effect for 2 rounds and deals Slash DMG equal to 120% of Melee ATK to enemies within a 2.5m radius at the target location. Knocks targets back and inflicts [Faultline]. [Courageous Charge]: Increases Elemental DEF by 60. Inflicts Fixed DMG equal to 340% of Melee ATK to countered enemies. [Faultline]: Increases DMG taken by 8%. Ends at the start of the caster's turn.",
+      },
+    },
+  },
+
   // Character Description
   description:
     "Daughter of the Imperial Mercenary Commander who took over the company at a young age, cursed with compulsive vile speech that led to abandonment by her subordinates before finding redemption through Yeon Chae-young's offer to serve the Federation.",
@@ -187,12 +219,12 @@ const rawHighlightPatterns = {
   damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
   effects: /\[([^[\]]{1,150})]/g,
   buffsDebuffs:
-    /\b(?:Snake-tongue|Tactical\s+Commander|Command|Declaration\s+of\s+Victory|block\s+chance|counterattack|morale|half-swording|knockback|fan-shaped\s+area|encouraging\s+word|Great\s+Escape)\b/gi,
+    /\b(?:Snake-tongue|Tactical\s+Commander|Command|Declaration\s+of\s+Victory|block\s+chance|counterattack|morale|half-swording|knockback|fan-shaped\s+area|encouraging\s+word|Great\s+Escape|Frontline\s+Charisma|Our\s+Protector|Frontline\s+Disruptor|Courageous\s+Charge|Faultline|Basic\s+ATK\s+DMG|Elemental\s+DEF|Fixed\s+DMG)\b/gi,
   percentages: /\b(\d{1,3}%)(?:\s*of\s+(?:the\s+caster's\s+)?(?:melee\s+ATK|Max\s+HP))?/g,
   statChanges:
     /\b(?:reduces?|increases?|decreases?|gains?|grants?|boosts?|knocks?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+(?:\.\d+)?m?)\b/gi,
   keywords:
-    /\b(?:Imperial\s+Mercenary\s+Commander|mercenary\s+company|sorcerer|cursed|vile\s+words|subordinates|notorious\s+reputation|Maximilia|Federation|Yeon\s+Chae-young|half-swording\s+technique|fan-shaped\s+area|Noctis\s+Nebula|The\s+Empire|Lamivia|Chosen\s+Human)\b/gi,
+    /\b(?:Imperial\s+Mercenary\s+Commander|mercenary\s+company|sorcerer|cursed|vile\s+words|subordinates|notorious\s+reputation|Maximilia|Federation|Yeon\s+Chae-young|half-swording\s+technique|fan-shaped\s+area|Noctis\s+Nebula|The\s+Empire|Lamivia|Chosen\s+Human|Dawnbringer|Two-handed\s+sword|Support|Charge|Leap|Teleportation|Self-Mobility|SPD|Rounds|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|duration|target|caster|base|Slash\s+DMG|radius|Courageous\s+Charge|Faultline)\b/gi,
   attributes:
     /\b(?:AP|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|Slash|Pierce|Crush|Heat|Cold|Electric|Immaterial|Poison|Max\s+HP|HP|SPD|ACC|Evasion|block\s+chance|counterattack)\b/gi,
 };
@@ -224,5 +256,13 @@ export const ernesteSEO = {
     'guide',
     'stats',
     'build',
+    'Dawnbringer',
+    'EX weapon',
+    'two-handed sword',
+    'Frontline Charisma',
+    'Our Protector',
+    'Frontline Disruptor',
+    'signature weapon',
+    'unique skill',
   ],
 };

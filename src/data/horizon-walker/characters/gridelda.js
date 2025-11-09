@@ -94,7 +94,7 @@ const rawGrideldaData = {
       },
       theRendezvous: {
         name: 'The Rendezvous',
-        type: 'Griselda Signature',
+        type: 'Signature',
         description:
           'Once per Round, when using the "Quantum Singularity" Skill, grants the [Arcane Purge] effect to allies excluding Arcane Elementals.',
         note: 'This signature skill only activates when Gridelda equips this weapon.',

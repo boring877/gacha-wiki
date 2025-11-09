@@ -1637,6 +1637,56 @@ export const CHARACTER_GIFT_PREFERENCES = [
       },
     ],
   },
+  {
+    id: 'leah',
+    name: 'Leah',
+    rarity: 'SS',
+    image: '/images/games/horizon-walker/characters/Leah.jpg',
+    level5Bonus: {
+      type: 'Evasion',
+      value: '10%',
+    },
+    favorites: [
+      {
+        id: 'catnip-pouch',
+        name: 'Catnip Pouch',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Catnip_Pouch.jpg',
+        basePoints: 10,
+        bonusPoints: 20,
+        totalPoints: 30,
+      },
+      {
+        id: 'mangrove-leaf',
+        name: 'Mangrove Leaf',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Mangrove_Leaf.jpg',
+        basePoints: 10,
+        bonusPoints: 20,
+        totalPoints: 30,
+      },
+      {
+        id: 'terrarium',
+        name: 'Terrarium',
+        rarity: 'A',
+        image: '../../assets/images/games/horizon-walker/Gifts/Terrarium.jpg',
+        basePoints: 20,
+        bonusPoints: 20,
+        totalPoints: 40,
+      },
+    ],
+    likes: [
+      {
+        id: 'hamburg-steak',
+        name: 'Hamburg Steak',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Hamburg_Steak.jpg',
+        basePoints: 10,
+        bonusPoints: 10,
+        totalPoints: 20,
+      },
+    ],
+  },
 ];
 
 // Helper functions

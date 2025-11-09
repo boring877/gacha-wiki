@@ -91,7 +91,7 @@ const rawEveretteData = {
       },
       eternalQueen: {
         name: 'The Eternal Queen',
-        type: 'Everette Signature',
+        type: 'Signature',
         description: 'AP Recovery increases by 12%.',
         note: 'This signature skill only activates when Everette equips this weapon.',
       },
@@ -170,7 +170,7 @@ const rawEveretteData = {
     delayedAurora: {
       name: 'Delayed Aurora',
       level: '10/10',
-      type: 'Support Skill',
+      type: 'Skill',
       apCost: 0,
       cooldown: 0,
       damage: {
@@ -201,7 +201,7 @@ const rawEveretteData = {
     starlightShower: {
       name: 'Starlight Shower',
       level: '10/10',
-      type: 'Ultimate Skill',
+      type: 'Skill',
       apCost: 100,
       cooldown: 0,
       damage: {
@@ -214,7 +214,7 @@ const rawEveretteData = {
     starlightShowerUltimate: {
       name: 'Starlight Shower - Ultimate',
       level: '10/10',
-      type: 'Ultimate Skill',
+      type: 'Skill',
       apCost: 200,
       cooldown: 0,
       damage: {

@@ -149,8 +149,8 @@ export function validateSkills(skills) {
 
     // Damage validation
     if (skill.damage) {
-      if (!skill.damage.type || !skill.damage.value) {
-        errors.push(`Skill ${skillKey} damage must have both type and value`);
+      if (!skill.damage.type || (!skill.damage.value && !skill.damage.target)) {
+        errors.push(`Skill ${skillKey} damage must have both type and value or target`);
       }
     }
 

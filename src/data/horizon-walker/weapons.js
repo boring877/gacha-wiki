@@ -6,6 +6,7 @@ import { bellaData } from './characters/bella.js';
 import { bergaData } from './characters/berga.js';
 import { coraData } from './characters/cora.js';
 import { efretiData } from './characters/efreeti.js';
+import { ernesteData } from './characters/erneste.js';
 import { everetteData } from './characters/everette.js';
 import { fammeneData } from './characters/fammene.js';
 import { grideldaData } from './characters/gridelda.js';
@@ -17,6 +18,7 @@ import { kaulData } from './characters/kaul.js';
 import { kalmaData } from './characters/kalma.js';
 import { kilonData } from './characters/kilon.js';
 import { korabiData } from './characters/korabi.js';
+import { leahData } from './characters/leah.js';
 import { lisandriaData } from './characters/lisandria.js';
 import { luiseData } from './characters/luise.js';
 import { mahariData } from './characters/mahari.js';
@@ -72,6 +74,7 @@ const CHARACTER_DATA = {
   berga: bergaData,
   cora: coraData,
   efreeti: efretiData,
+  erneste: ernesteData,
   everette: everetteData,
   fammene: fammeneData,
   gridelda: grideldaData,
@@ -81,6 +84,7 @@ const CHARACTER_DATA = {
   kalina: kalinaData,
   kaul: kaulData,
   kalma: kalmaData,
+  leah: leahData,
   kilon: kilonData,
   korabi: korabiData,
   lisandria: lisandriaData,

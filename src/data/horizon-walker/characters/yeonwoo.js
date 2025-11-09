@@ -170,7 +170,7 @@ const rawYeonwooData = {
     boomBoomSlam: {
       name: 'Boom Boom Slam!!',
       level: 'Transform',
-      type: 'Transform Skill',
+      type: 'Skill',
       apCost: 15,
       cooldown: 1,
       damage: {
@@ -192,7 +192,7 @@ const rawYeonwooData = {
     yumYummyBeam: {
       name: 'Yum-Yummy Beam!!',
       level: 'Ultimate',
-      type: 'Transform Skill',
+      type: 'Skill',
       apCost: 0,
       cooldown: 0,
       damage: {
@@ -254,7 +254,7 @@ const rawYeonwooData = {
       },
       everythingsTastyAndHappy: {
         name: "Yeonwoo Signature: Everything's Tasty And Happy",
-        type: 'Yeonwoo Signature',
+        type: 'Signature',
         description:
           "If Munch O'Clock grants only 1 stack of [Gluttony], gain 1 additional stack. When gaining AP at the end of any turn via the Rapid-Fire Food Fight effect, gain an additional 50% of that AP.",
       },

@@ -169,7 +169,7 @@ const rawTxManticoreData = {
     detectionShot: {
       name: 'Detection Shot',
       level: 'Support',
-      type: 'Support',
+      type: 'Skill',
       apCost: 0,
       cooldown: 0,
       damage: {
@@ -199,7 +199,7 @@ const rawTxManticoreData = {
       },
       oppressor: {
         name: 'TX - Manticore Signature: Oppressor',
-        type: 'TX - Manticore Signature',
+        type: 'Signature',
         description:
           "The [Fatigue Issue] effect's ACC and ATK reduction applies at 3x the usual value, and using the 'Delayed Bombardment' skill increases Aggro Adjustment by 30 for 1R.",
       },

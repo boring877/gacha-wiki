@@ -164,7 +164,7 @@ const rawYvonnaData = {
     gatheredFrost: {
       name: 'Gathered Frost',
       level: 'Support',
-      type: 'Support Skill',
+      type: 'Skill',
       apCost: 0,
       cooldown: 0,
       damage: {
@@ -208,7 +208,7 @@ const rawYvonnaData = {
       },
       frozenSmile: {
         name: 'Yvonna Signature: Frozen Smile',
-        type: 'Yvonna Signature',
+        type: 'Signature',
         description:
           'When successfully attacking with an action other than a response, gains an additional [Chill] effect at the end of the turn.',
       },

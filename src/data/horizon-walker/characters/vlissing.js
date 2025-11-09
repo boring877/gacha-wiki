@@ -177,7 +177,7 @@ const rawVlissingData = {
       },
       sacredFlow: {
         name: 'Vlissing Signature: Sacred Flow',
-        type: 'Character Signature',
+        type: 'Signature',
         description:
           'During combat, Max HP +8% and Additional DMG Boost +36%. Changes "Sharp Wave" to a Directional attack. On hit, enemies have a chance equal to your current Additional DMG Boost to gain 1 stack of [Tangled Flow]. When hitting an enemy that already has [Tangled Flow] with an Active skill, deals additional Slash DMG equal to 120% of Magic ATK. At the start of each Round, allies with [Clean Flow] gain +18% All ATK for 1 Round.',
       },

@@ -184,7 +184,7 @@ const rawHeadlessKnightData = {
     rake: {
       name: 'Rake',
       level: '1/1',
-      type: 'Unique Skill',
+      type: 'Skill',
       apCost: 15,
       cooldown: 0,
       damage: {
@@ -216,7 +216,7 @@ const rawHeadlessKnightData = {
       },
       madGeneral: {
         name: 'Headless Knight Signature: The Mad General',
-        type: 'Headless Knight Signature',
+        type: 'Signature',
         description:
           'On successful attack, increases CRIT rate by 2% and CRIT DMG by 4%. Can stack up to 20 times.',
       },
