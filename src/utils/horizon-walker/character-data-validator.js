@@ -118,7 +118,7 @@ export function validateSkills(skills) {
       errors.push(`Skill ${skillKey} missing valid name`);
     }
 
-    if (!skill.type || !['Skill', 'Passive'].includes(skill.type)) {
+    if (!skill.type || !['Skill', 'Passive', 'Unique', 'Signature'].includes(skill.type)) {
       errors.push(`Skill ${skillKey} has invalid type: ${skill.type}`);
     }
 

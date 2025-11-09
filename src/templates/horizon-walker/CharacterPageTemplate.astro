@@ -203,6 +203,13 @@ function reportErrors(validationErrors, highlightingErrors, htmlValidationErrors
   }
 }
 
+// Execute safe highlighting (moved here to ensure highlightingErrors is available before reportErrors call)
+const highlightingResult = safeHighlightSkills();
+const { highlightedSkills, highlightedTraits, highlightedWeaponSkills, errors: highlightingErrors } = highlightingResult;
+
+// Batch validate all HTML content (moved here to ensure htmlValidationResult is available before reportErrors call)
+const htmlValidationResult = batchValidateAllHtmlContent();
+
 // Report any errors for monitoring
 reportErrors(validationResult.errors, highlightingErrors, htmlValidationResult.hasErrors);
 
@@ -292,10 +299,10 @@ function safeHighlightSkills() {
     const highlightPatterns = (characterData as any).highlightPatterns || defaultHWHighlightPatterns;
     const highlightOptions = { isTrustedContent: true };
 
-    let highlightedSkills = null;
-    let highlightedTraits = null;
-    let highlightedWeaponSkills = null;
-    const errors = [];
+    let highlightedSkills: any = null;
+    let highlightedTraits: any = null;
+    let highlightedWeaponSkills: any = null;
+    const errors: string[] = [];
 
     // Safe skill highlighting with error handling
     if (characterData.skills) {
@@ -350,9 +357,6 @@ function safeHighlightSkills() {
   }
 }
 
-// Execute safe highlighting
-const highlightingResult = safeHighlightSkills();
-const { highlightedSkills, highlightedTraits, highlightedWeaponSkills, errors: highlightingErrors } = highlightingResult;
 
 // Safe HTML rendering wrapper
 function safeRenderHtml(htmlContent, fallbackText = '') {
@@ -414,9 +418,6 @@ function batchValidateAllHtmlContent() {
     return { results: {}, hasErrors: true, overallValid: false };
   }
 }
-
-// Pre-validate all HTML content
-const htmlValidationResult = batchValidateAllHtmlContent();
 
 // Get character gift data
 // Convert character name to gift data ID format (handle spaces and special chars)
@@ -534,7 +535,12 @@ function groupSkillsByReplacement(skills: Record<string, any>) {
     if (processedSkills.has(triggerKey)) continue;
 
     const triggerReplacements = triggerSkill.triggersReplacements || [];
-    const replacementPairs = [];
+    const replacementPairs: Array<{
+      baseKey: string;
+      baseSkill: any;
+      replacementKey: any;
+      replacementSkill: any;
+    }> = [];
 
     // Optimized replacement pair lookup
     for (const baseSkillKey of triggerReplacements) {
@@ -1385,10 +1391,10 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                       <GiftImage
                         imageName={gift.image}
                         alt={gift.name}
-                        width={80}
-                        height={80}
+                        width={200}
+                        height={200}
                         format="webp"
-                        quality={85}
+                        quality={90}
                         loading="lazy"
                         class="gift-image"
                       />
