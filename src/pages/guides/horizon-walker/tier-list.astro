@@ -28,11 +28,15 @@ function getTierClassName(tier: string): string {
 
     <!-- Tier List Info -->
     <div class="tier-list-info" id="tier-list-info">
-      <h2 class="tier-list-title" id="list-title">Map Clear and Mission Tier List</h2>
-      <p class="tier-list-description" id="list-description">
-        Optimal characters for clearing story missions, exploration, and general map content.
+      <h2 class="tier-list-title" id="list-title" data-initial-type="map-clear">
+        {HORIZON_WALKER_TIER_LISTS['map-clear'].name}
+      </h2>
+      <p class="tier-list-description" id="list-description" data-initial-type="map-clear">
+        {HORIZON_WALKER_TIER_LISTS['map-clear'].description}
       </p>
-      <p class="tier-list-updated" id="list-updated">Last updated: 2025-11-09</p>
+      <p class="tier-list-updated" id="list-updated" data-initial-type="map-clear">
+        Last updated: 2025-11-09
+      </p>
     </div>
 
     <!-- Map Clear Tier List Display (Visible by default) -->
@@ -234,10 +238,16 @@ function getTierClassName(tier: string): string {
           const tierList = HORIZON_WALKER_TIER_LISTS[listType];
           if (!tierList) return;
 
-          // Update info
-          if (listTitle) listTitle.textContent = tierList.name;
-          if (listDescription) listDescription.textContent = tierList.description;
-          if (listUpdated) listUpdated.textContent = `Last updated: 2025-11-09`;
+          // Update info only if the content is different to prevent unnecessary DOM updates
+          if (listTitle && listTitle.textContent !== tierList.name) {
+            listTitle.textContent = tierList.name;
+          }
+          if (listDescription && listDescription.textContent !== tierList.description) {
+            listDescription.textContent = tierList.description;
+          }
+          if (listUpdated && listUpdated.textContent !== `Last updated: 2025-11-09`) {
+            listUpdated.textContent = `Last updated: 2025-11-09`;
+          }
 
           // Hide all tier list displays
           const allDisplays = document.querySelectorAll('.tier-list-display');
@@ -286,8 +296,11 @@ function getTierClassName(tier: string): string {
           });
         });
 
-        // Initial population - show Map Clear tier list by default
-        switchTierList('map-clear');
+        // Only initialize if not already showing the correct content (prevents flicker)
+        const initialType = listTitle?.dataset.initialType;
+        if (initialType !== 'map-clear') {
+          switchTierList('map-clear');
+        }
       });
     </script>
   </div></TierListLayout
