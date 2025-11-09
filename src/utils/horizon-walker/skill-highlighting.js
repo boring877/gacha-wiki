@@ -241,8 +241,12 @@ export function highlightAllSkills(skills, highlightPatterns, options = {}) {
         ...skill,
         description: highlightSkillText(skill.description, patterns, options),
       };
+      // Remove level property to prevent it from being displayed
+      delete highlightedSkills[skillKey].level;
     } else {
       highlightedSkills[skillKey] = skill;
+      // Also remove level from non-highlighted skills
+      delete highlightedSkills[skillKey].level;
     }
   });
 

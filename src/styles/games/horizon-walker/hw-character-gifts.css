@@ -373,11 +373,13 @@
 /* Character Header */
 .hw-character-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
   border-bottom: 2px solid var(--hw-primary-warm-20);
+  text-align: center;
 }
 
 .hw-character-image {
@@ -396,7 +398,11 @@
 }
 
 .hw-character-info {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 }
 
 .hw-character-name {
@@ -409,7 +415,8 @@
 }
 
 .hw-character-rarity {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
 }
 
 .hw-character-rarity .hw-badge {
@@ -1133,6 +1140,32 @@
   color: var(--hw-text-muted);
   font-style: italic;
   padding: 1rem 0;
+  font-family: var(--font-primary);
+}
+
+/* No Results Message */
+.hw-no-results-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--hw-black-overlay-20);
+  border: 2px dashed var(--hw-white-overlay-20);
+  border-radius: var(--hw-radius-lg);
+  margin: 2rem 0;
+}
+
+.hw-no-results-content h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
+  color: var(--hw-secondary-coral);
+  margin: 0 0 1rem 0;
+}
+
+.hw-no-results-content p {
+  font-size: var(--text-base);
+  color: var(--hw-text-medium);
+  margin: 0;
   font-family: var(--font-primary);
 }
 

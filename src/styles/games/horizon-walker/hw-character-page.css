@@ -22,7 +22,6 @@
   }
 
   .section-title {
-    /* Simplified - gradient text effect consolidated */
     color: var(--hw-primary-warm);
     font-family: var(--font-display);
     font-size: var(--text-3xl);
@@ -87,13 +86,16 @@
   }
 
   .character-hero-container {
-    /* Using consolidated background class - add hw-character-stats-bg class in HTML */
     background: var(--hw-gradient-character-stats);
     border-radius: var(--hw-radius-lg);
     border: 1px solid var(--hw-border-muted);
     padding: var(--hw-spacing-lg);
     text-align: center;
     margin-bottom: var(--hw-spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .character-portrait-container {
@@ -102,15 +104,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    min-height: 200px;
+    text-align: center;
   }
 
-  .character-portrait {
+  .character-portrait-container .hw-character-portrait {
     width: 200px;
     height: 200px;
     object-fit: cover;
     border-radius: var(--hw-radius-lg);
     border: 3px solid var(--hw-border-accent);
+    flex-shrink: 0;
     display: block;
+    margin: 0 auto;
+    align-self: center;
+  }
+
+  /* Ensure all images within portrait container are centered */
+  .character-portrait-container img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--hw-radius-lg);
+    border: 3px solid var(--hw-border-accent);
+    flex-shrink: 0;
+    display: block;
+    margin: 0 auto;
+    align-self: center;
   }
 
   .character-name {
@@ -119,14 +140,6 @@
     font-weight: var(--font-extrabold);
     color: var(--hw-text-light);
     margin: 0 0 0.5rem 0;
-  }
-
-  .character-class-info {
-    font-family: var(--font-primary);
-    font-size: var(--text-lg);
-    color: var(--hw-primary-warm);
-    margin: 0 0 1rem 0;
-    font-weight: var(--font-semibold);
   }
 
   .character-description {
@@ -139,7 +152,6 @@
 
   /* Character Info Card */
   .character-info-card {
-    /* Using consolidated background class - add hw-character-info-bg class in HTML */
     background: var(--hw-gradient-character-info);
     border: 1px solid var(--hw-border-muted);
     border-radius: var(--hw-radius-lg);
@@ -284,26 +296,49 @@
   }
 
   .character-stats-grid.core-stats {
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--hw-spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto var(--hw-spacing-lg) auto;
+  }
+
+  .character-stats-grid.core-stats .stat-item {
+    flex: 0 1 calc(20% - var(--hw-spacing-lg));
+    min-width: 120px;
+    max-width: 180px;
   }
 
   @media (max-width: 768px) {
     .character-stats-grid.core-stats {
-      grid-template-columns: repeat(3, 1fr);
       gap: var(--hw-spacing-md);
+    }
+
+    .character-stats-grid.core-stats .stat-item {
+      flex: 0 1 calc(33.333% - var(--hw-spacing-md));
+      min-width: 100px;
+      max-width: 140px;
+    }
+
+    .character-stats-grid.core-stats .stat-item:nth-child(5) {
+      flex: 0 1 calc(100% - var(--hw-spacing-md));
+      max-width: 200px;
+      margin: 0 auto;
     }
   }
 
   @media (max-width: 480px) {
-    .character-stats-grid.core-stats {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--hw-spacing-md);
+    .character-stats-grid.core-stats .stat-item {
+      flex: 0 1 calc(50% - var(--hw-spacing-md));
+      min-width: 80px;
+      max-width: 120px;
     }
 
     .character-stats-grid.core-stats .stat-item:nth-child(5) {
-      grid-column: span 2;
-      text-align: center;
+      flex: 0 1 calc(100% - var(--hw-spacing-md));
+      max-width: 200px;
+      margin: 0 auto;
     }
 
     .stat-item {
@@ -399,7 +434,6 @@
   /* ═══════════════════════════════════════════════════════════════════════ */
 
   .skill-card {
-    /* Using consolidated background class - add hw-skill-card-bg class in HTML */
     background: var(--hw-gradient-skill-card);
     border: 1px solid var(--hw-border-muted);
     border-radius: var(--hw-radius-lg);
@@ -410,8 +444,124 @@
 
   .skill-card.passive-skill {
     border-color: var(--hw-accent-mint-40);
-    /* Using consolidated background class - add hw-passive-skill-bg class in HTML */
     background: var(--hw-gradient-mint-light);
+  }
+
+  /* Skill Replacement Grouping System */
+  .skill-trigger-complete-group {
+    margin-bottom: var(--hw-spacing-2xl);
+    contain: layout style paint;
+  }
+
+  .skill-replacement-group {
+    background: var(--hw-gradient-skill-card);
+    border: 2px solid var(--hw-accent-mint-30);
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
+    margin-top: var(--hw-spacing-lg);
+    contain: layout style paint;
+    position: relative;
+  }
+
+  /* Remove transformation tag to reduce crowding */
+
+  .skill-replacement-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--hw-spacing-lg);
+    padding: var(--hw-spacing-md) var(--hw-spacing-lg);
+    background: var(--hw-gradient-mint-light);
+    border: 1px solid var(--hw-accent-mint-40);
+    border-radius: var(--hw-radius-md);
+    text-align: center;
+  }
+
+  .skill-replacement-condition {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--hw-accent-mint-80);
+    margin: 0;
+  }
+
+  .skill-replacement-pair {
+    display: flex;
+    flex-direction: column;
+    gap: var(--hw-spacing-lg);
+    position: relative;
+  }
+
+  /* Replacement arrow connector */
+  .skill-replacement-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--hw-spacing-lg) 0;
+    position: relative;
+    height: 60px;
+  }
+
+  .skill-replacement-arrow::before {
+    content: '';
+    width: 4px;
+    height: 50px;
+    background: var(--hw-accent-coral-40);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+  }
+
+  .skill-replacement-arrow::after {
+    content: '⇓';
+    font-size: var(--text-3xl);
+    color: var(--hw-secondary-coral-60);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Base skill styling - simplified without badge */
+  .skill-card.skill-base {
+    border-color: var(--hw-primary-warm-40);
+    border-width: 2px;
+    position: relative;
+  }
+
+  /* Replacement skill styling - simplified without badge */
+  .skill-card.skill-replacement {
+    border-color: var(--hw-accent-coral-40);
+    border-width: 2px;
+    position: relative;
+  }
+
+  /* Trigger passive styling - simplified but still prominent */
+  .skill-card.skill-trigger {
+    border-color: var(--hw-accent-mint-40);
+    border-width: 3px;
+    position: relative;
+  }
+
+  /* Responsive design for replacement groups */
+  @media (max-width: 768px) {
+    .skill-replacement-group {
+      padding: var(--hw-spacing-md);
+    }
+
+    .skill-replacement-condition {
+      font-size: var(--text-base);
+    }
+
+    .skill-replacement-arrow::before {
+      height: 30px;
+    }
+
+    .skill-replacement-arrow::after {
+      font-size: var(--text-xl);
+    }
   }
 
   .skill-header {
@@ -660,6 +810,8 @@
     object-fit: contain;
     border-radius: var(--hw-radius-md);
     border: 2px solid var(--hw-primary-warm-40);
+    margin: 0 auto;
+    display: block;
   }
 
   .weapon-info-card {
@@ -949,7 +1101,8 @@
       max-width: none;
     }
 
-    .character-portrait {
+    /* Responsive portrait sizing */
+    .character-portrait-container .hw-character-portrait {
       width: 150px;
       height: 150px;
     }

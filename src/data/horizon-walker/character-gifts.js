@@ -564,6 +564,47 @@ export const CHARACTER_GIFT_PREFERENCES = [
     ],
   },
   {
+    id: 'kaul',
+    name: 'Kaul',
+    rarity: 'EX',
+    image: '/images/games/horizon-walker/characters/Kaul.jpg',
+    level5Bonus: {
+      type: 'Crit DMG',
+      value: '16%',
+    },
+    favorites: [
+      {
+        id: 'human-hair',
+        name: 'Human Hair',
+        rarity: 'SS',
+        image: '../../assets/images/games/horizon-walker/Gifts/Human_Hair.jpg',
+        basePoints: 50,
+        bonusPoints: 20,
+        totalPoints: 70,
+      },
+    ],
+    likes: [
+      {
+        id: '300-kg-dumbbell',
+        name: '300 KG Dumbbell',
+        rarity: 'A',
+        image: '../../assets/images/games/horizon-walker/Gifts/300_KG_Dumbbell_A.jpg',
+        basePoints: 20,
+        bonusPoints: 10,
+        totalPoints: 30,
+      },
+      {
+        id: 'lamora-military-ration',
+        name: 'Lamora Military Ration',
+        rarity: 'A',
+        image: '../../assets/images/games/horizon-walker/Gifts/Lamora_Millitary_Ration.jpg',
+        basePoints: 20,
+        bonusPoints: 10,
+        totalPoints: 30,
+      },
+    ],
+  },
+  {
     id: 'kilon',
     name: 'Kilon',
     rarity: 'SS',
