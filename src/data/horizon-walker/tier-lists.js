@@ -270,6 +270,8 @@ const DOPAMIN_CHARACTERS = {
     'Mahari',
     'juha',
     'korabi',
+    'Leah',
+    'nymset',
   ],
   SS: [
     'Kalina',
@@ -284,9 +286,7 @@ const DOPAMIN_CHARACTERS = {
     'so joo-hee',
     'Nika',
     'berga',
-    'nymset',
     'Headless knight',
-    'Leah',
     'puppy stepper',
   ],
   S: [
