@@ -191,7 +191,7 @@ const MAP_CLEAR_CHARACTERS = {
 };
 
 const SPECIAL_OPERATIONS_CHARACTERS = {
-  SSS: ['Cora', 'Yeonwoo', 'Yui'],
+  SSS: ['Cora', 'Yeonwoo', 'Yui', 'Leah'],
   SS: [
     'Olivia',
     'So Joo-Hee',
@@ -202,13 +202,13 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Mahari',
     'Juha',
     'Valeta',
-    'Leah',
     'Griselda',
     'Erneste',
     'Bella',
     'Luise',
     'Nari',
     'Efreeti',
+    'Nymset',
   ],
   S: [
     'Everette',
@@ -223,7 +223,6 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Marhim',
     'Nika',
     'Berga',
-    'nymset',
     'Headless knight',
     'TX - Manticore',
     'Kaul',
