@@ -190,7 +190,7 @@ const MAP_CLEAR_CHARACTERS = {
 };
 
 const SPECIAL_OPERATIONS_CHARACTERS = {
-  SSS: ['Cora', 'Yeonwoo', 'Yui', 'Leah'],
+  SSS: ['Cora', 'Yeonwoo', 'Yui', 'Leah', 'Nymset'],
   SS: [
     'Olivia',
     'So Joo-Hee',
@@ -207,7 +207,6 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Luise',
     'Nari',
     'Efreeti',
-    'Nymset',
   ],
   S: [
     'Everette',
