@@ -341,6 +341,7 @@ const PRIORITIES_CHARACTERS = [
   'So joo-hee',
   'Korabi',
   'Bella',
+  'Nymset',
 ];
 
 // Process all character lists to create tier lists with valid characters
