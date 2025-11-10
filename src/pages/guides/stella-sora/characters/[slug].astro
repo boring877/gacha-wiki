@@ -32,13 +32,13 @@ function countPotentialCards(potentials) {
 
 // Function to count unique cards across main and support potentials
 function countUniqueCards(mainPotentials, supportPotentials) {
-  const allCards = [];
+  const allCards: string[] = [];
 
   // Collect all actual cards from main potentials
   if (mainPotentials) {
     mainPotentials.forEach(p => {
       if (!p.isBuildHeader && p.image) {
-        allCards.push(p.image);
+        allCards.push(p.image as string);
       }
     });
   }
@@ -47,7 +47,7 @@ function countUniqueCards(mainPotentials, supportPotentials) {
   if (supportPotentials) {
     supportPotentials.forEach(p => {
       if (!p.isBuildHeader && p.image) {
-        allCards.push(p.image);
+        allCards.push(p.image as string);
       }
     });
   }
@@ -93,7 +93,8 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
         <div class="character-details">
           <h1>{character.name}</h1>
           <div class="character-meta">
-            <span class={`rarity-badge ${(character.rarity || 'Unknown').toLowerCase()}`}
+            <span
+              class={`rarity-badge ${(character.rarity || 'Unknown').toLowerCase().replace('-star', '-star').replace('5-star', 'five-star').replace('4-star', 'four-star').replace('3-star', 'three-star')}`}
               >{character.rarity || 'Unknown'}</span
             >
             <div class="element-badge-container">
@@ -256,7 +257,7 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
         {
           character.elementalStats && (
             <>
-              {Object.entries(character.elementalStats).map(([element, stats]) => (
+              {Object.entries(character.elementalStats).map(([element, stats]: [string, any]) => (
                 <div class="stat-section-group">
                   <h3 class="stats-section-title">Elemental Stats ({element})</h3>
                   <ul class="stat-list">
@@ -617,7 +618,9 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
             <div class="disc-hero-info">
               <h3>{character.disc.name}</h3>
               <div class="disc-meta">
-                <span class={`rarity-badge ${character.disc.rarity.toLowerCase()}`}>
+                <span
+                  class={`rarity-badge ${character.disc.rarity.toLowerCase().replace('-star', '-star').replace('5-star', 'five-star').replace('4-star', 'four-star').replace('3-star', 'three-star')}`}
+                >
                   {character.disc.rarity}
                 </span>
                 <span class={`element-badge element-${character.disc.element.toLowerCase()}`}>
@@ -625,7 +628,7 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
                 </span>
               </div>
               <div class="disc-tags">
-                {character.disc.tags.map(tag => (
+                {character.disc.tags.map((tag: string) => (
                   <span class="tag">{tag}</span>
                 ))}
               </div>
@@ -638,18 +641,42 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
               <div class="disc-stats-list">
                 <div class="disc-stat-item">
                   <span class="stat-label">
-                    <HighlightedText text="Basic ATK:" />
-                  </span>
-                  <span class="stat-value">{character.disc.stats.basicAtk.toLocaleString()}</span>
-                </div>
-                <div class="disc-stat-item">
-                  <span class="stat-label">
-                    <HighlightedText text={`${character.disc.element} DMG:`} />
+                    <HighlightedText
+                      text={
+                        character.disc.stats.baseATk || character.disc.stats.baseATK
+                          ? 'Base ATK:'
+                          : 'Basic ATK:'
+                      }
+                    />
                   </span>
                   <span class="stat-value">
-                    {character.disc.stats[character.disc.element.toLowerCase() + 'Dmg']}
+                    {(
+                      character.disc.stats.baseATk ||
+                      character.disc.stats.baseATK ||
+                      character.disc.stats.basicAtk
+                    )?.toLocaleString() || 'N/A'}
                   </span>
                 </div>
+                {character.disc.stats.baseHP && (
+                  <div class="disc-stat-item">
+                    <span class="stat-label">
+                      <HighlightedText text="Base HP:" />
+                    </span>
+                    <span class="stat-value">
+                      {character.disc.stats.baseHP?.toLocaleString() || 'N/A'}
+                    </span>
+                  </div>
+                )}
+                {character.disc.stats[character.disc.element.toLowerCase() + 'Dmg'] && (
+                  <div class="disc-stat-item">
+                    <span class="stat-label">
+                      <HighlightedText text={`${character.disc.element} DMG:`} />
+                    </span>
+                    <span class="stat-value">
+                      {character.disc.stats[character.disc.element.toLowerCase() + 'Dmg']}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -669,59 +696,98 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
                   </div>
                 </div>
 
-                <div class="disc-skill">
-                  <div class="disc-skill-header">
-                    <span class="skill-number">2</span>
-                    <div class="disc-skill-title">
-                      <h5>Harmony Skill</h5>
-                      <h6>{character.disc.skills.harmony.name}</h6>
+                {/* Handle Harmony Skills - can be single object or array */}
+                {Array.isArray(character.disc.skills.harmony) ? (
+                  (character.disc.skills.harmony as any[]).map(
+                    (harmonySkill: any, harmonyIndex: number) => (
+                      <div class="disc-skill">
+                        <div class="disc-skill-header">
+                          <span class="skill-number">2.{harmonyIndex + 1}</span>
+                          <div class="disc-skill-title">
+                            <h5>Harmony Skill</h5>
+                            <h6>{harmonySkill.name}</h6>
+                          </div>
+                        </div>
+                        <div class="skill-level">
+                          <HighlightedText text={`Lv. ${harmonySkill.level}`} />
+                        </div>
+                        <div class="skill-description">
+                          <HighlightedText text={harmonySkill.effect} />
+                        </div>
+                        {harmonySkill.requirements && (
+                          <div class="skill-requirements">
+                            <h6>Activation Requirements:</h6>
+                            {Object.entries(harmonySkill.requirements).map(
+                              ([melody, requirement]) => (
+                                <div class="requirement">
+                                  <span class="melody-name">{melody}</span>
+                                  <span class="requirement-level">{requirement}</span>
+                                </div>
+                              )
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  )
+                ) : (
+                  <div class="disc-skill">
+                    <div class="disc-skill-header">
+                      <span class="skill-number">2</span>
+                      <div class="disc-skill-title">
+                        <h5>Harmony Skill</h5>
+                        <h6>{character.disc.skills.harmony.name}</h6>
+                      </div>
+                    </div>
+                    <div class="skill-level">
+                      <HighlightedText text={`Lv. ${character.disc.skills.harmony.level}`} />
+                    </div>
+                    <div class="skill-description">
+                      <HighlightedText text={character.disc.skills.harmony.effect} />
+                    </div>
+                    <div class="skill-requirements">
+                      <h6>Activation Requirements:</h6>
+                      {Object.entries(character.disc.skills.harmony.requirements).map(
+                        ([melody, requirement]) => (
+                          <div class="requirement">
+                            <span class="melody-name">{melody}</span>
+                            <span class="requirement-level">{requirement}</span>
+                          </div>
+                        )
+                      )}
                     </div>
                   </div>
-                  <div class="skill-level">
-                    <HighlightedText text={`Lv. ${character.disc.skills.harmony.level}`} />
-                  </div>
-                  <div class="skill-description">
-                    <HighlightedText text={character.disc.skills.harmony.effect} />
-                  </div>
-                  <div class="skill-requirements">
-                    <h6>Activation Requirements:</h6>
-                    {Object.entries(character.disc.skills.harmony.requirements).map(
-                      ([melody, requirement]) => (
-                        <div class="requirement">
-                          <span class="melody-name">{melody}</span>
-                          <span class="requirement-level">{requirement}</span>
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
+                )}
 
-                <div class="disc-skill">
-                  <div class="disc-skill-header">
-                    <span class="skill-number">3</span>
-                    <div class="disc-skill-title">
-                      <h5>Skill</h5>
-                      <h6>{character.disc.skills.skill.name}</h6>
+                {/* Optional Skill section - not all discs have this */}
+                {character.disc.skills.skill && (
+                  <div class="disc-skill">
+                    <div class="disc-skill-header">
+                      <span class="skill-number">3</span>
+                      <div class="disc-skill-title">
+                        <h5>Skill</h5>
+                        <h6>{character.disc.skills.skill.name}</h6>
+                      </div>
+                    </div>
+                    <div class="skill-level">
+                      <HighlightedText text={`Lv. ${character.disc.skills.skill.level}`} />
+                    </div>
+                    <div class="skill-description">
+                      <HighlightedText text={character.disc.skills.skill.effect} />
+                    </div>
+                    <div class="skill-requirements">
+                      <h6>Activation Requirements:</h6>
+                      {Object.entries(character.disc.skills.skill.requirements).map(
+                        ([melody, requirement]) => (
+                          <div class="requirement">
+                            <span class="melody-name">{melody}</span>
+                            <span class="requirement-level">{requirement}</span>
+                          </div>
+                        )
+                      )}
                     </div>
                   </div>
-                  <div class="skill-level">
-                    <HighlightedText text={`Lv. ${character.disc.skills.skill.level}`} />
-                  </div>
-                  <div class="skill-description">
-                    <HighlightedText text={character.disc.skills.skill.effect} />
-                  </div>
-                  <div class="skill-requirements">
-                    <h6>Activation Requirements:</h6>
-                    {Object.entries(character.disc.skills.skill.requirements).map(
-                      ([melody, requirement]) => (
-                        <div class="requirement">
-                          <span class="melody-name">{melody}</span>
-                          <span class="requirement-level">{requirement}</span>
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
+                )}
               </div>
             </div>
 
@@ -738,7 +804,7 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
 
                 <div class="melodies">
                   {Object.entries(character.disc.support.melodies || {}).map(
-                    ([melodyKey, melodyData]) => (
+                    ([melodyKey, melodyData]: [string, any]) => (
                       <div class="melody-item">
                         <h5>Melody of {melodyKey.charAt(0).toUpperCase() + melodyKey.slice(1)}</h5>
                         <p>

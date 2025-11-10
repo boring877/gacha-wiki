@@ -9,7 +9,10 @@ import { gerieData } from './characters/gerie.js';
 import { minovaData } from './characters/minova.js';
 import { mistiqueData } from './characters/mistique.js';
 import { nanohaData } from './characters/nanoha.js';
+import { nazunaData } from './characters/nazuna.js';
 import { shiaData } from './characters/shia.js';
+import { tiliaData } from './characters/tilia.js';
+import { jinglinData } from './characters/jinglin.js';
 
 // Game Mechanics Reference
 export const gameInfo = {
@@ -52,6 +55,11 @@ export const gameInfo = {
       name: 'Versatile',
       description: 'Flexible characters who can adapt to various combat situations',
     },
+    {
+      name: 'Support',
+      description:
+        'Characters who enhance team performance through buffs, healing, and tactical abilities',
+    },
   ],
   weapons: [
     { name: 'Sword', description: 'Balanced melee weapon' },
@@ -73,10 +81,13 @@ export const STELLA_SORA_CHARACTERS = [
   chixiaData,
   freesiaData,
   gerieData,
+  jinglinData,
   minovaData,
   mistiqueData,
   nanohaData,
+  nazunaData,
   shiaData,
+  tiliaData,
 ];
 
 // Utility functions

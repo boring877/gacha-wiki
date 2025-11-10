@@ -30,7 +30,7 @@ const breadcrumbs = [
       url: 'https://gachawiki.info/guides/stella-sora/events/',
       mainEntity: {
         '@type': 'ItemList',
-        itemListElement: stellaSoraEvents.map((event, index) => ({
+        itemListElement: stellaSoraEvents.map((event: any, index: number) => ({
           '@type': 'ListItem',
           position: index + 1,
           item: {
@@ -60,7 +60,7 @@ const breadcrumbs = [
     <h2 class="ss-section-title">All Events</h2>
     <div class="ss-events-list">
       {
-        allEvents.map(event => (
+        allEvents.map((event: any) => (
           <a href={event.url} class="ss-event-item">
             <h3 class="ss-event-title">{event.title}</h3>
             <div class="ss-event-dates">
