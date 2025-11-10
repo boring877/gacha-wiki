@@ -127,10 +127,9 @@ export const GAME_MODES = {
 
 // Character lists from your tier list data (only characters with EX Weapons)
 const MAP_CLEAR_CHARACTERS = {
-  SSS: ['Olivia', 'Yui'],
+  SSS: ['Olivia', 'Yui', 'Vlissing'],
   SS: [
     'Valeta',
-    'Vlissing',
     'Everette',
     'Yvonna',
     'Cora',
