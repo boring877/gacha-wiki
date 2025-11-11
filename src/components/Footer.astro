@@ -151,26 +151,21 @@ const version = packageInfo.version;
     }
 
     .footer-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      grid-template-columns: 1fr;
       gap: 0.75rem;
       padding: 0.75rem 0;
       min-height: auto;
     }
 
-    /* Completely hide version and license on mobile */
+    /* Hide version and license on mobile */
     .footer-left {
       display: none;
     }
 
-    /* Stack copyright and social links vertically and center them */
-    .footer-center {
-      order: 1;
-    }
-
+    /* Center align copyright and social links */
+    .footer-center,
     .footer-right {
-      order: 2;
+      justify-content: center;
     }
 
     .footer-center p {
