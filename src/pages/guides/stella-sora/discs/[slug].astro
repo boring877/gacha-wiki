@@ -1,0 +1,214 @@
+---
+// Stella Sora Individual Disc Page
+// Dynamic route for individual disc pages using slug
+
+import DiscIndividualLayout from '../../../../layouts/stella-sora/DiscIndividualLayout.astro';
+import DiscImage from '../../../../components/stella-sora/DiscImage.astro';
+import HighlightedText from '../../../../components/stella-sora/HighlightedText.astro';
+import { getDiscBySlug, getAllDiscs } from '../../../../data/stella-sora/discs.js';
+
+export async function getStaticPaths() {
+  const discs = getAllDiscs();
+
+  return discs.map(disc => ({
+    params: { slug: disc.slug },
+    props: { disc },
+  }));
+}
+
+const { disc } = Astro.props;
+
+// SEO and layout props
+const title = `${disc.name} - Stella Sora Disc`;
+const description = `Complete information about ${disc.name} disc in Stella Sora. Stats, skills (Melody, Harmony, Skill), support info, and character association.`;
+const discName = disc.name;
+---
+
+<DiscIndividualLayout title={title} description={description} discName={discName}>
+  <div class="disc-detail">
+    <!-- Hero Section -->
+    <section class="disc-hero">
+      <DiscImage
+        imageName={disc.image}
+        alt={disc.name}
+        width={512}
+        height={512}
+        class="disc-hero-image"
+      />
+
+      <div class="disc-hero-info">
+        <h1 class="disc-hero-name">{disc.name}</h1>
+
+        <div class="disc-hero-meta">
+          <span class="disc-badge" data-element={disc.element.toLowerCase()}>
+            {disc.element}
+          </span>
+          <span class="disc-badge" data-rarity={disc.rarity.toLowerCase()}>
+            {disc.rarity}
+          </span>
+        </div>
+
+        <div class="disc-tags">
+          {disc.tags.map(tag => <span class="disc-tag">{tag}</span>)}
+        </div>
+
+        <p class="disc-hero-description">
+          {disc.description}
+        </p>
+      </div>
+    </section>
+
+    <!-- Basic Stats Section -->
+    <section class="disc-section">
+      <h2 class="disc-section-title">Basic Stats</h2>
+      <div class="disc-stats-grid">
+        {
+          Object.entries(disc.stats).map(([key, value]) => {
+            const statName =
+              key === 'basicAtk'
+                ? 'Basic ATK'
+                : key === 'baseATK'
+                  ? 'Base ATK'
+                  : key === 'baseHP'
+                    ? 'Base HP'
+                    : key === 'aquaDmg'
+                      ? 'Aqua DMG'
+                      : key === 'ignisDmg'
+                        ? 'Ignis DMG'
+                        : key === 'skillDmg'
+                          ? 'Skill DMG'
+                          : key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+
+            return (
+              <div class="disc-stat-item">
+                <div class="disc-stat-label">{statName}</div>
+                <div class="disc-stat-value">{value}</div>
+              </div>
+            );
+          })
+        }
+
+        <div class="disc-stat-item">
+          <div class="disc-stat-label">Character</div>
+          <div class="disc-stat-value">{disc.character}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="disc-section">
+      <h2 class="disc-section-title">Disc Skills</h2>
+
+      <div class="disc-skill">
+        <div class="disc-skill-header">
+          <h3 class="disc-skill-name">{disc.skills.melody.name}</h3>
+          <span class="disc-skill-type">Melody</span>
+        </div>
+        <div class="disc-skill-effect">
+          <HighlightedText text={disc.skills.melody.effect} />
+        </div>
+      </div>
+
+      {
+        Array.isArray(disc.skills.harmony) ? (
+          disc.skills.harmony.map(harmonySkill => (
+            <div class="disc-skill">
+              <div class="disc-skill-header">
+                <h3 class="disc-skill-name">{harmonySkill.name}</h3>
+                <span class="disc-skill-type">Harmony (Lv. {harmonySkill.level})</span>
+              </div>
+              <div class="disc-skill-effect">
+                <HighlightedText text={harmonySkill.effect} />
+              </div>
+              {harmonySkill.requirements && (
+                <div class="disc-skill-requirements">
+                  <strong>Requirements:</strong>
+                  {Object.entries(harmonySkill.requirements).map(([reqName, reqValue]) => (
+                    <div>
+                      • {reqName}: {reqValue}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))
+        ) : (
+          <div class="disc-skill">
+            <div class="disc-skill-header">
+              <h3 class="disc-skill-name">{disc.skills.harmony.name}</h3>
+              <span class="disc-skill-type">Harmony (Lv. {disc.skills.harmony.level})</span>
+            </div>
+            <div class="disc-skill-effect">
+              <HighlightedText text={disc.skills.harmony.effect} />
+            </div>
+            {disc.skills.harmony.requirements && (
+              <div class="disc-skill-requirements">
+                <strong>Requirements:</strong>
+                {Object.entries(disc.skills.harmony.requirements).map(([reqName, reqValue]) => (
+                  <div>
+                    • {reqName}: {reqValue}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )
+      }
+
+      {
+        disc.skills.skill && (
+          <div class="disc-skill">
+            <div class="disc-skill-header">
+              <h3 class="disc-skill-name">{disc.skills.skill.name}</h3>
+              <span class="disc-skill-type">Skill (Lv. {disc.skills.skill.level})</span>
+            </div>
+            <div class="disc-skill-effect">
+              <HighlightedText text={disc.skills.skill.effect} />
+            </div>
+            {disc.skills.skill.requirements && (
+              <div class="disc-skill-requirements">
+                <strong>Requirements:</strong>
+                {Object.entries(disc.skills.skill.requirements).map(([reqName, reqValue]) => (
+                  <div>
+                    • {reqName}: {reqValue}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )
+      }
+    </section>
+
+    <!-- Support Information Section -->
+    <section class="disc-section">
+      <h2 class="disc-section-title">Support Information</h2>
+
+      <div class="disc-support-info">
+        <div class="disc-support-source">
+          <strong>Musical Notes Source:</strong>
+          {disc.support.musicalNotesSource}
+        </div>
+
+        <h4 style="margin-top: var(--ss-spacing-md); margin-bottom: var(--ss-spacing-sm);">
+          Available Melodies:
+        </h4>
+        <div class="disc-melodies-grid">
+          {
+            Object.entries(disc.support.melodies).map(([melodyType, melodyData]) => (
+              <div class="disc-melody">
+                <div class="disc-melody-name">
+                  {melodyType.charAt(0).toUpperCase() + melodyType.slice(1)}
+                </div>
+                <div class="disc-melody-effect">{melodyData.baseEffect}</div>
+                <div class="disc-melody-effect" style="font-weight: bold;">
+                  {melodyData.maxEffect}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+</DiscIndividualLayout>

@@ -1,0 +1,387 @@
+/* Stella Sora Individual Disc Page Styles
+ * Dedicated styles for individual disc detail pages
+ * Index page styles have been moved to ss-discs-index.css
+ */
+
+/* Individual Disc Page Hero Section */
+.disc-hero {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-xl);
+  margin-bottom: var(--ss-spacing-xl);
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-xl);
+}
+
+.disc-hero-image {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--ss-radius-md);
+  object-fit: cover;
+  border: 3px solid var(--ss-border);
+}
+
+.disc-hero-info {
+  flex: 1;
+}
+
+.disc-hero-name {
+  font-size: 2.5rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.disc-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.disc-hero-description {
+  color: var(--ss-text-secondary);
+  line-height: 1.6;
+  font-size: 1.125rem;
+}
+
+/* Individual Disc Page Sections */
+.disc-section {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-xl);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.disc-section-title {
+  font-size: 1.75rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-lg);
+  padding-bottom: var(--ss-spacing-md);
+  border-bottom: 2px solid var(--ss-border);
+}
+
+/* Disc Stats Display */
+.disc-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--ss-spacing-md);
+}
+
+.disc-stat-item {
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+}
+
+.disc-stat-label {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+  margin-bottom: var(--ss-spacing-xs);
+  text-transform: uppercase;
+  font-weight: var(--ss-font-medium);
+}
+
+.disc-stat-value {
+  font-size: 1.125rem;
+  color: var(--ss-text-primary);
+  font-weight: var(--ss-font-bold);
+}
+
+/* Individual Disc Skills */
+.disc-skill {
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-lg);
+}
+
+.disc-skill:last-child {
+  margin-bottom: 0;
+}
+
+.disc-skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.disc-skill-name {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+}
+
+.disc-skill-type {
+  background: var(--ss-accent-20);
+  color: var(--ss-accent);
+  padding: 6px 12px;
+  border-radius: var(--ss-radius-sm);
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-medium);
+  text-transform: uppercase;
+}
+
+.disc-skill-effect {
+  color: var(--ss-text-secondary);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.disc-skill-requirements {
+  margin-top: var(--ss-spacing-md);
+  padding-top: var(--ss-spacing-md);
+  border-top: 1px solid var(--ss-border);
+  font-size: 0.875rem;
+  color: var(--ss-text-muted);
+}
+
+/* Disc Support Information */
+.disc-support-info {
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.disc-support-source {
+  font-size: 1.125rem;
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-lg);
+  font-weight: var(--ss-font-medium);
+}
+
+.disc-melodies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--ss-spacing-lg);
+}
+
+.disc-melody {
+  background: var(--ss-bg-primary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+}
+
+.disc-melody-name {
+  font-size: 1rem;
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-sm);
+  font-weight: var(--ss-font-medium);
+  text-transform: uppercase;
+}
+
+.disc-melody-effect {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.4;
+  margin-bottom: var(--ss-spacing-xs);
+}
+
+/* Simple highlighting for disc pages - Matching character database */
+.disc-skill-effect strong,
+.disc-support-info strong {
+  color: var(--ss-primary);
+  font-weight: 700;
+}
+
+/* Responsive Design for Individual Disc Pages */
+@media (max-width: 1024px) {
+  .disc-hero {
+    gap: var(--ss-spacing-lg);
+  }
+
+  .disc-section {
+    padding: var(--ss-spacing-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .disc-hero {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--ss-spacing-lg);
+    padding: var(--ss-spacing-lg);
+  }
+
+  .disc-hero-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .disc-hero-name {
+    font-size: 2.25rem;
+    line-height: 1.2;
+  }
+
+  .disc-hero-description {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .disc-section {
+    padding: var(--ss-spacing-md);
+    margin-bottom: var(--ss-spacing-lg);
+  }
+
+  .disc-section-title {
+    font-size: 1.5rem;
+  }
+
+  .disc-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--ss-spacing-sm);
+  }
+
+  .disc-stat-item {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .disc-skill {
+    padding: var(--ss-spacing-md);
+    margin-bottom: var(--ss-spacing-md);
+  }
+
+  .disc-skill-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ss-spacing-sm);
+  }
+
+  .disc-skill-name {
+    font-size: 1.125rem;
+  }
+
+  .disc-skill-effect {
+    font-size: 0.9rem;
+  }
+
+  .disc-support-info {
+    padding: var(--ss-spacing-md);
+  }
+
+  .disc-melodies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--ss-spacing-md);
+  }
+
+  .disc-melody {
+    padding: var(--ss-spacing-sm);
+  }
+}
+
+@media (max-width: 640px) {
+  .disc-hero-name {
+    font-size: 2rem;
+  }
+
+  .disc-hero-meta {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .disc-section {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .disc-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .disc-skill-header {
+    align-items: center;
+  }
+
+  .disc-melodies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--ss-spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .disc-hero {
+    padding: var(--ss-spacing-md);
+  }
+
+  .disc-hero-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .disc-hero-name {
+    font-size: 1.75rem;
+  }
+
+  .disc-hero-description {
+    font-size: 0.9rem;
+  }
+
+  .disc-section {
+    padding: var(--ss-spacing-sm);
+    margin-bottom: var(--ss-spacing-md);
+  }
+
+  .disc-section-title {
+    font-size: 1.375rem;
+    margin-bottom: var(--ss-spacing-md);
+  }
+
+  .disc-stat-item {
+    padding: var(--ss-spacing-xs);
+  }
+
+  .disc-stat-label {
+    font-size: 0.75rem;
+  }
+
+  .disc-stat-value {
+    font-size: 1rem;
+  }
+
+  .disc-skill {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .disc-skill-name {
+    font-size: 1rem;
+  }
+
+  .disc-skill-effect {
+    font-size: 0.875rem;
+  }
+
+  .disc-skill-type {
+    font-size: 0.625rem;
+    padding: 4px 8px;
+  }
+
+  .disc-support-info {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .disc-melodies-grid {
+    grid-template-columns: 1fr;
+    gap: var(--ss-spacing-sm);
+  }
+
+  .disc-melody {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .disc-melody-name {
+    font-size: 0.875rem;
+  }
+
+  .disc-melody-effect {
+    font-size: 0.75rem;
+  }
+}

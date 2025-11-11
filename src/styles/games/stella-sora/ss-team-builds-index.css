@@ -1,0 +1,321 @@
+/* Stella Sora Team Builds Index Page Styling */
+/* Styles specifically for the team builds index/list page */
+
+/* Team Build Index Page Styles */
+.team-builds-index {
+  padding: var(--ss-spacing-lg);
+  background: var(--ss-bg-gradient-primary);
+  min-height: 100vh;
+  position: relative;
+}
+
+.team-builds-index::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(110, 231, 183, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.team-builds-hero {
+  text-align: center;
+  margin-bottom: var(--ss-spacing-xl);
+  position: relative;
+  z-index: 1;
+}
+
+.team-builds-title {
+  font-size: 3rem;
+  font-weight: var(--ss-font-bold);
+  margin-bottom: var(--ss-spacing-md);
+  background: var(--ss-gradient-star);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.team-builds-subtitle {
+  font-size: 1.25rem;
+  color: var(--ss-text-secondary);
+  margin-bottom: var(--ss-spacing-lg);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-builds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--ss-spacing-lg);
+  position: relative;
+  z-index: 1;
+}
+
+/* Team Build Card Styles */
+.team-build-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.team-build-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 380px;
+  will-change: transform;
+}
+
+/* Card Header */
+.card-header {
+  padding: var(--ss-spacing-md) var(--ss-spacing-lg);
+  background: var(--ss-bg-primary);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin: 0 0 var(--ss-spacing-xs) 0;
+  line-height: 1.3;
+}
+
+.card-description {
+  font-size: 0.85rem;
+  color: var(--ss-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Character Showcase - Index Page Layout */
+.character-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-md);
+  padding: var(--ss-spacing-lg);
+}
+
+.character-item {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  padding: var(--ss-spacing-md);
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-md);
+  border: 1px solid var(--ss-border);
+  transition: none;
+}
+
+.character-item.main-character {
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.character-avatar {
+  flex-shrink: 0;
+}
+
+.character-image-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--ss-border);
+}
+
+.character-image-wrapper.main-character-image {
+  width: 100px;
+  height: 100px;
+}
+
+.character-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.character-name {
+  font-size: 1rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin: 0 0 var(--ss-spacing-xs) 0;
+  line-height: 1.3;
+}
+
+.character-name.main-character-name {
+  color: var(--ss-danger);
+  font-size: 1.1rem;
+}
+
+.character-badges {
+  display: flex;
+  gap: var(--ss-spacing-xs);
+  flex-wrap: wrap;
+}
+
+.character-badges .element-badge,
+.character-badges .rarity-badge {
+  font-size: 0.625rem;
+  padding: 2px 6px;
+  border-radius: var(--ss-radius-sm);
+  font-weight: var(--ss-font-semibold);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Empty State */
+.team-builds-empty {
+  text-align: center;
+  padding: var(--ss-spacing-xl);
+  color: var(--ss-text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .team-builds-index {
+    padding: var(--ss-spacing-md);
+  }
+
+  .team-builds-grid {
+    grid-template-columns: 1fr;
+    gap: var(--ss-spacing-md);
+  }
+
+  .team-build-card {
+    min-height: auto;
+  }
+
+  .card-header {
+    padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-description {
+    font-size: 0.8rem;
+  }
+
+  .character-showcase {
+    gap: var(--ss-spacing-sm);
+    padding: var(--ss-spacing-md);
+  }
+
+  .character-item {
+    gap: var(--ss-spacing-sm);
+    padding: var(--ss-spacing-sm);
+  }
+
+  .character-image-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .character-image-wrapper.main-character-image {
+    width: 56px;
+    height: 56px;
+  }
+
+  .character-name {
+    font-size: 0.9rem;
+  }
+
+  .character-name.main-character-name {
+    font-size: 1rem;
+  }
+
+  .character-badges .element-badge,
+  .character-badges .rarity-badge {
+    font-size: 0.5625rem;
+    padding: 1px 4px;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .team-builds-index {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .team-builds-grid {
+    gap: var(--ss-spacing-sm);
+  }
+
+  .character-showcase {
+    padding: var(--ss-spacing-sm);
+    gap: var(--ss-spacing-xs);
+  }
+
+  .character-item {
+    padding: var(--ss-spacing-xs);
+    gap: var(--ss-spacing-xs);
+  }
+
+  .character-image-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+
+  .character-image-wrapper.main-character-image {
+    width: 52px;
+    height: 52px;
+  }
+
+  .character-name {
+    font-size: 0.85rem;
+  }
+
+  .character-name.main-character-name {
+    font-size: 0.95rem;
+  }
+
+  .character-badges .element-badge,
+  .character-badges .rarity-badge {
+    font-size: 0.5rem;
+    padding: 1px 3px;
+  }
+
+  /* Touch-friendly tap targets */
+  .team-build-card-link {
+    min-height: 44px; /* iOS touch target minimum */
+  }
+
+  .character-item {
+    min-height: 48px; /* Better touch target */
+  }
+}
+
+/* Performance optimizations */
+.team-builds-grid {
+  contain: layout style;
+}
+
+.character-image-wrapper {
+  contain: layout paint;
+}
+
+.character-item {
+  contain: layout style;
+}

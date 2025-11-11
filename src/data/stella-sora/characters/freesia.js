@@ -7,7 +7,7 @@ export const freesiaData = {
   image: 'Freesia.jpg',
   icon: 'Freesia.jpg',
   rarity: '5-Star',
-  element: 'Ventus',
+  element: 'Aqua',
   role: 'Versatile',
   faction: 'Post Haste',
   trekkerStyle: 'Adventurous',

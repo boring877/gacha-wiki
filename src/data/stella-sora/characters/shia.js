@@ -125,40 +125,40 @@ export const shiaData = {
     {
       isBuildHeader: true,
       buildTitle: 'Shia: Main Build 1',
-      buildSubtitle: 'Snow Rabbit Focus',
       buildDescription:
         'A build that enhances the Snow Rabbit drone, ideal for fighting a single target.',
     },
     {
       name: 'Phantom Step Radiance',
       description:
-        'When dealing **Auto Attack DMG**, **Snow Rabbit** inflicts **Electro Music** that deals additional DMG upon reaching the **max stack limit**.',
+        "When Snow Rabbit deals Auto Attack DMG, it inflicts Electro Music, stacking up to **20 times**. Upon reaching the max stack limit, Electro Music's stacks are removed, dealing **369% of ATK** as **Lux Skill DMG**.",
       image: 'Phantom_step_rediance.jpg',
     },
     {
       name: 'Rimecrystal Edge',
       description:
-        'The **Main Skill** summons a **Snow Rabbit** that inflicts **Electro Music** when dealing **Skill DMG**, dealing additional DMG upon reaching the **max stack limit**.',
+        "Whirling Waves (Main Skill) summons a Snow Rabbit, dealing **592% of ATK** as **Lux Skill DMG** upon entering combat. Every time Snow Rabbit deals Skill DMG, it inflicts Electro Music, stacking up to **20 times**. Upon reaching the max stack limit, Electro Music's stacks are removed, dealing **369% of ATK** as **Lux Skill DMG**.",
       image: 'Rimecrystal_edge.jpg',
     },
     {
       name: 'Subzero Dominion',
       level: 'Lv. 6',
       description:
-        "The **Main Skill** summons **more Snow Rabbits**. While the **Main Skill** is active, increases all **Snow Rabbits' Lux DMG**.",
+        "Whirling Waves (Main Skill) summons **1 additional Snow Rabbit**. While the Main Skill is active, increases all Snow Rabbits' **Lux DMG** by **171%**.",
       image: 'Subzero_dominion.jpg',
     },
     {
       name: 'Glacial Dash',
       level: 'Lv. 6',
       description:
-        "Increases Snow Rabbit's Auto Attack DMG. Bullets from Auto Attacks can pierce through targets.",
+        "Increases Snow Rabbit's Auto Attack DMG by **603%**. Bullets from Auto Attacks can pierce through targets.",
       image: 'Glacial_dash.jpg',
     },
     {
       name: 'Rimeheart Pulse',
       level: 'Lv. 6',
-      description: "When a Snow Rabbit triggers **Lux Mark**, increases all the Snow Rabbits' ATK.",
+      description:
+        "When a Snow Rabbit triggers **Lux Mark**, increases all the Snow Rabbits' **ATK** by **22%** for **5s**, stacking up to **6 times**.",
       image: 'Rimeheart_pulse.jpg',
     },
 
@@ -166,88 +166,88 @@ export const shiaData = {
     {
       isBuildHeader: true,
       buildTitle: 'Shia: Main Build 2',
-      buildSubtitle: 'Night Rabbit Focus',
       buildDescription:
         'A build that enhances the Night Rabbit drone, ideal for fighting multiple targets.',
     },
     {
       name: 'Moonlight Overflow',
       description:
-        'Night Rabbit fires tracking bullets at nearby targets during Auto Attacks. When the tracking bullets deal DMG, Night Rabbit gains Moongaze, increasing its DMG.',
+        'During Auto Attacks, Night Rabbit locks up to **4 targets** and fires a tracking bullet at each, each dealing **118% of ATK** as **AoE Lux DMG**.',
       image: 'Moonlight_overflow.jpg',
     },
     {
       name: 'Astral Pirouette',
       description:
-        'Night Rabbit summoned by the Main Skill fires tracking bullets at nearby targets when attacking. When the tracking bullets deal DMG, Night Rabbit gains Moongaze, increasing its DMG.',
+        'Night Rabbit summoned by the Main Skill locks up to **2 targets** and fires a tracking bullet at each, each dealing **120% of ATK** as **AoE Lux DMG**.',
       image: 'Astral_pirouette.jpg',
     },
     {
       name: 'Lunar Detonation',
       level: 'Lv. 6',
       description:
-        "Night Rabbit's missile splits after hitting a target, dealing DMG to nearby targets.",
+        "Night Rabbit's missile splits after hitting a target, dealing DMG to up to **3 nearby targets**, dealing **63% of ATK** as **Lux Skill DMG** to each.",
       image: 'Lunar_detonation.jpg',
     },
     {
       name: 'Final Crescent',
       level: 'Lv. 6',
       description:
-        "Based on the number of targets hit by Night Rabbit's Auto Attack, increases the DMG of its next Auto Attack.",
+        'During Auto Attacks, every time Night Rabbit deals DMG to a different target, increases the DMG of its next Auto Attack by **117%**, stacking up to **5 times**.',
       image: 'Final_crescent.jpg',
     },
     {
       name: 'Lunar Combo',
       level: 'Lv. 6',
       description:
-        'Reduces the Attack Interval of Night Rabbits summoned by the Main Skill and increases Skill Damage.',
+        'Reduces the Attack Interval of Night Rabbits summoned by Whirling Waves (Main Skill) by **40%**, and increases Skill DMG by **73%**.',
       image: 'Lunar_combo.jpg',
     },
 
     // === GENERIC MAIN ROLE CARDS ===
     {
       isBuildHeader: true,
-      buildTitle: 'Shia: Main Generic Cards',
-      buildSubtitle: 'Universal Enhancements',
-      buildDescription: 'General purpose cards that work well in any Main role setup.',
+      buildTitle: 'Generic',
+      buildDescription: 'Universal enhancements that work well in any Main role setup.',
     },
     {
       name: 'Leporine Gale',
       level: 'Lv. 6',
       description:
-        "While **Whirling Waves** (Main Skill) is active, increases Shia's Movement Speed. When there are no nearby targets, increases Shia's Lux DMG.",
+        "While Whirling Waves (Main Skill) is active, increases Shia's Movement Speed by **30%**. When there are no nearby targets, increases Shia's **Lux DMG** by **96%**.",
       image: 'Leporing_gale.jpg',
     },
     {
       name: "Hare's Pursuit",
       level: 'Lv. 6',
       description:
-        'Shia can dodge one more time. When Shia triggers **Lux Mark**, increases her ATK.',
+        'Shia can dodge one more time. When Shia triggers **Lux Mark**, increases her **ATK** by **19%** for **8s**, stacking up to **2 times**.',
       image: "Hare's_Pursuit.jpg",
     },
     {
       name: "Rabbit's Beam",
       level: 'Lv. 6',
-      description: "Increases Shia's Lux DMG to a target with less than 50% HP.",
+      description: "Increases Shia's **Lux DMG** to a target with less than **50% HP** by **96%**.",
       image: "Rabbit's_Beam.jpg",
     },
     {
       name: 'Howl to the Moon',
       level: 'Lv. 6',
-      description: "Every time the Ultimate lands a Crit Hit, increases Shia's ATK.",
+      description:
+        "Every time Divine Deluge (Ultimate) lands a Crit Hit, increases Shia's **ATK** by **8%** for **10s**, stacking up to **20 times**.",
       image: 'Howl_to_the_moon.jpg',
     },
     {
       name: 'Silent Tide',
       level: 'Lv. 6',
       description:
-        "When Shia casts the Ultimate, if other squadmates' Ultimates are all on cooldown, increases this cast's Ultimate DMG.",
+        "When Shia casts Divine Deluge (Ultimate), if other squadmates' Ultimates are all on cooldown, increases this cast's Ultimate DMG by **129%**.",
       image: 'Silent_tide.jpg',
     },
     {
       name: 'Wave to Oblivion',
       level: 'Lv. 6',
-      description: "Increases Shia's Ultimate DMG and reduces the Ultimate's Attack Interval.",
+      description:
+        'Reduces the interval between bombs of Divine Deluge (Ultimate) by **30%** and increases its Ultimate DMG by **129%**.',
       image: 'Wave_to_oblivion.jpg',
     },
   ],
@@ -257,37 +257,39 @@ export const shiaData = {
     {
       isBuildHeader: true,
       buildTitle: 'Shia: Support Build 1',
-      buildSubtitle: 'Drone Summon Build',
       buildDescription:
         'A support build that summons multiple drones after the skill ends to deal continuous DMG.',
     },
     {
       name: 'Kindred Bound',
       description:
-        'After casting the Support Skill, summons Snow Rabbits that follow the main Shia and attack targets.',
+        'When Surfing Rondo (Support Skill) ends, summons **2 Snow Rabbits** that follow the main Trekker and fire bullets to attack targets, dealing **5.6% of ATK** as **Lux Skill DMG** for **8s**.',
       image: 'Kindred_bound.jpg',
     },
     {
       name: 'Twin Moons',
-      description: 'After casting the Support Skill, summons Night Rabbits that attack targets.',
+      description:
+        'When Surfing Rondo (Support Skill) ends, summons **2 Night Rabbits** that fire missiles to attack targets, dealing **11.5% of ATK** as **Lux Skill DMG** for **4s**.',
       image: 'Twin_moons.jpg',
     },
     {
       name: 'Dance of the Riptide',
       level: 'Lv. 6',
-      description: "Increases the drones' DMG based on the number of drones on the battlefield.",
+      description: "For each drone on the battlefield, increases the drones' DMG by **32%**.",
       image: 'Dance_of_the_riptide.jpg',
     },
     {
       name: "Snowfall's Heartbeat",
       level: 'Lv. 6',
-      description: 'When Snow Rabbit deals DMG, increases Skill Damage.',
+      description:
+        "Every time Snow Rabbit deals DMG, increases Shia's Skill DMG by **5.4%**, stacking up to **24 times**. When casting Surfing Rondo (Support Skill), resets this effect.",
       image: "Snowfall's_heartbeat.jpg",
     },
     {
       name: 'Eclipse Blast',
       level: 'Lv. 6',
-      description: "When Shia triggers **Lux Mark**, increases Night Rabbit's Skill Damage.",
+      description:
+        'When Shia triggers Lux Mark, increases Skill DMG of Night Rabbit by **135%** for **5s**.',
       image: 'Eclipse_blast.jpg',
     },
 
@@ -295,82 +297,88 @@ export const shiaData = {
     {
       isBuildHeader: true,
       buildTitle: 'Shia: Support Build 2',
-      buildSubtitle: 'Surfing Burst Build',
       buildDescription:
         'A support build that deals burst DMG by triggering more surfing attacks when the skill is active.',
     },
     {
       name: 'Bunny Torrent',
-      description: 'Increases the number of times Shia can surf and the DMG dealt by each ride.',
+      description:
+        'Increases the number of times Shia can surf by **100%** and the DMG dealt by each ride by **41%**.',
       image: 'Bunny_torrent.jpg',
     },
     {
       name: 'Rabbit Flip',
-      description: 'Shia leaves behind a charged area as she surfs, dealing DMG over time.',
+      description:
+        'Shia leaves behind a charged area as she surfs, dealing **4.7% AoE Lux Skill DMG** every **0.3s**, lasting for **1s**.',
       image: 'Rabbit_flip.jpg',
     },
     {
       name: 'Flow Reversal',
       level: 'Lv. 6',
       description:
-        'When Shia deals DMG with surfing, stuns the target. Increases Skill Damage of her rides.',
+        'When Shia deals DMG with surfing, stuns the target for **3s**. Increases Skill DMG of her rides by **223%**.',
       image: 'Flow_reversal.jpg',
     },
     {
       name: 'Kick the Wave',
       level: 'Lv. 6',
-      description: 'When Shia deals DMG with surfing, increases the DMG taken by the target.',
+      description:
+        'When Shia deals DMG with surfing, increases the surfing DMG taken by the target by **95%** for **30s**, stacking up to **5 times**.',
       image: 'Kick_the_wave.jpg',
     },
     {
       name: 'Catch the Wave',
       level: 'Lv. 6',
-      description: "While the Support Skill is active, increases Shia's ATK over time.",
+      description:
+        "While Surfing Rondo (Support Skill) is active, increases Shia's ATK by **4.6%** per second, stacking up to **12 times**.",
       image: 'Catch_the_wave.jpg',
     },
 
     // === GENERIC SUPPORT CARDS ===
     {
       isBuildHeader: true,
-      buildTitle: 'Shia: Support Generic Cards',
-      buildSubtitle: 'Universal Enhancements',
-      buildDescription: 'General purpose cards that work well in any Support role setup.',
+      buildTitle: 'Generic Cards',
+      buildDescription: 'Universal enhancements that work well in any Support role setup.',
     },
     {
       name: 'Moonfall',
       level: 'Lv. 6',
-      description: "Increases Lux Trekkers' Crit DMG.",
+      description: "Increases Lux Trekkers' Crit DMG by **120%**.",
       image: 'Moonfall.jpg',
     },
     {
       name: 'Tidal Charge',
       level: 'Lv. 6',
-      description: 'Every time Shia kills a target, increases her ATK.',
+      description:
+        'Every time Shia kills a target, increases her ATK by **6.7%** for **15s**, stacking up to **6 times**.',
       image: 'Tidal_charge.jpg',
     },
     {
       name: 'Counter Current',
       level: 'Lv. 6',
-      description: 'Every time Shia triggers **Lux Mark**, increases her ATK.',
+      description:
+        'Every time Shia triggers Lux Mark, increases her ATK by **6.7%** for **15s**, stacking up to **6 times**.',
       image: 'Counter_current.jpg',
     },
     {
       name: 'Howl to the Moon',
       level: 'Lv. 6',
-      description: "Every time the Ultimate lands a Crit Hit, increases Shia's ATK.",
+      description:
+        "Every time Divine Deluge (Ultimate) lands a Crit Hit, increases Shia's ATK by **8%** for **10s**, stacking up to **20 times**.",
       image: 'Howl_to_the_moon.jpg',
     },
     {
       name: 'Silent Tide',
       level: 'Lv. 6',
       description:
-        "When Shia casts the Ultimate, if other squadmates' Ultimates are all on cooldown, increases this cast's Ultimate DMG.",
+        "When Shia casts Divine Deluge (Ultimate), if other squadmates' Ultimates are all on cooldown, increases this cast's Ultimate DMG by **129%**.",
       image: 'Silent_tide.jpg',
     },
     {
       name: 'Wave to Oblivion',
       level: 'Lv. 6',
-      description: "Increases Shia's Ultimate DMG and reduces the Ultimate's Attack Interval.",
+      description:
+        'Reduces the interval between bombs of Divine Deluge (Ultimate) by **30%** and increases its Ultimate DMG by **129%**.',
       image: 'Wave_to_oblivion.jpg',
     },
   ],
@@ -442,33 +450,43 @@ export const shiaData = {
   genericCards: [
     {
       name: 'Moonfall',
-      description: "Increases Lux Trekkers' Crit DMG.",
+      level: 'Lv. 6',
+      description: "Increases Lux Trekkers' Crit DMG by **120%**.",
       image: 'Moonfall.jpg',
     },
     {
       name: 'Tidal Charge',
-      description: 'Every time Shia kills a target, increases her ATK.',
+      level: 'Lv. 6',
+      description:
+        'Every time Shia kills a target, increases her ATK by **6.7%** for **15s**, stacking up to **6 times**.',
       image: 'Tidal_charge.jpg',
     },
     {
       name: 'Counter Current',
-      description: 'Every time Shia triggers **Lux Mark**, increases her ATK.',
+      level: 'Lv. 6',
+      description:
+        'Every time Shia triggers Lux Mark, increases her ATK by **6.7%** for **15s**, stacking up to **6 times**.',
       image: 'Counter_current.jpg',
     },
     {
       name: 'Howl to the Moon',
-      description: "Every time the Ultimate lands a Crit Hit, increases Shia's ATK.",
+      level: 'Lv. 6',
+      description:
+        "Every time Divine Deluge (Ultimate) lands a Crit Hit, increases Shia's ATK by **8%** for **10s**, stacking up to **20 times**.",
       image: 'Howl_to_the_moon.jpg',
     },
     {
       name: 'Silent Tide',
+      level: 'Lv. 6',
       description:
-        "When Shia casts the Ultimate, if other squadmates' Ultimates are all on cooldown, increases this cast's Ultimate DMG.",
+        "When Shia casts Divine Deluge (Ultimate), if other squadmates' Ultimates are all on cooldown, increases this cast's Ultimate DMG by **129%**.",
       image: 'Silent_tide.jpg',
     },
     {
       name: 'Wave to Oblivion',
-      description: "Increases Shia's Ultimate DMG and reduces the Ultimate's Attack Interval.",
+      level: 'Lv. 6',
+      description:
+        'Reduces the interval between bombs of Divine Deluge (Ultimate) by **30%** and increases its Ultimate DMG by **129%**.',
       image: 'Wave_to_oblivion.jpg',
     },
   ],

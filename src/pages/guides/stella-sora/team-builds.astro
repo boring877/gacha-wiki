@@ -1,0 +1,88 @@
+---
+// Stella Sora Team Builds Index Page
+// Simple index page with title and links to team builds
+
+import TeamBuildLayout from '../../../layouts/stella-sora/TeamBuildLayout.astro';
+import SSCharacterImage from '../../../components/stella-sora/SSCharacterImage.astro';
+import { getAllTeamBuilds } from '../../../data/stella-sora/team-builds.js';
+
+// Get all team builds
+const teamBuilds = getAllTeamBuilds();
+
+// Layout props
+const title = 'Stella Sora Team Builds';
+const description =
+  'Complete collection of optimal team compositions for Stella Sora. Find the best character combinations for all game modes and content types.';
+const gameTitle = 'Team Builds';
+---
+
+<TeamBuildLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="team-builds-index">
+    <!-- Team Builds Grid -->
+    {
+      teamBuilds.length > 0 ? (
+        <div class="team-builds-grid">
+          {teamBuilds.map(teamBuild => (
+            <a
+              href={`/guides/stella-sora/team-builds/${teamBuild.slug}`}
+              class="team-build-card-link"
+            >
+              <div class="team-build-card">
+                {/* Header */}
+                <div class="card-header">
+                  <h3 class="card-title">{teamBuild.name}</h3>
+                  <p class="card-description">{teamBuild.description}</p>
+                </div>
+
+                {/* Character Showcase */}
+                <div class="character-showcase">
+                  {teamBuild.characters.map(character => (
+                    <div
+                      class={`character-item ${character.name === teamBuild.mainDps ? 'main-character' : ''}`}
+                    >
+                      <div class="character-avatar">
+                        <div
+                          class={`character-image-wrapper ${character.name === teamBuild.mainDps ? 'main-character-image' : ''}`}
+                        >
+                          <SSCharacterImage
+                            imageName={character.image}
+                            alt={`${character.name} character`}
+                            width={300}
+                            height={300}
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div class="character-details">
+                        <h4
+                          class={`character-name ${character.name === teamBuild.mainDps ? 'main-character-name' : ''}`}
+                        >
+                          {character.name}
+                        </h4>
+                        <div class="character-badges">
+                          <span class={`element-badge element-${character.element.toLowerCase()}`}>
+                            {character.element}
+                          </span>
+                          <span
+                            class={`rarity-badge ${character.rarity.toLowerCase().replace('5-star', 'five-star').replace('4-star', 'four-star').replace('3-star', 'three-star')}`}
+                          >
+                            {character.rarity}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="team-builds-empty">
+          <h3>No Team Builds Available</h3>
+          <p>Team builds are coming soon! Check back later for optimal team compositions.</p>
+        </div>
+      )
+    }
+  </div>
+</TeamBuildLayout>

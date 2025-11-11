@@ -1,0 +1,90 @@
+---
+// Stella Sora Disc Index Page
+// Lists all available discs with filtering and navigation
+
+import DiscLayout from '../../../layouts/stella-sora/DiscLayout.astro';
+import DiscImage from '../../../components/stella-sora/DiscImage.astro';
+import { getAllDiscs, getElementsByDisc } from '../../../data/stella-sora/discs.js';
+
+const discs = getAllDiscs();
+const elements = getElementsByDisc();
+
+const title = 'Stella Sora Discs Database';
+const description =
+  'Complete list of all discs in Stella Sora with detailed stats, skills, and character information.';
+const gameTitle = 'Discs Database';
+---
+
+<DiscLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="discs-index">
+    <!-- Discs Grid -->
+    <div class="discs-grid">
+      {
+        discs.map(disc => (
+          <a href={`/guides/stella-sora/discs/${disc.slug}`} class="disc-card-link">
+            <div class="disc-card">
+              {/* Disc Header with Image and Basic Info */}
+              <div class="disc-card-header">
+                <DiscImage
+                  imageName={disc.image}
+                  alt={disc.name}
+                  width={256}
+                  height={256}
+                  class="disc-card-image"
+                />
+                <div class="disc-card-info">
+                  <h2 class="disc-card-name">{disc.name}</h2>
+                  <p class="disc-card-character">{disc.character}</p>
+                </div>
+              </div>
+
+              {/* Disc Meta Information */}
+              <div class="disc-card-meta">
+                <span class="disc-badge" data-element={disc.element.toLowerCase()}>
+                  {disc.element}
+                </span>
+                <span class="disc-badge" data-rarity={disc.rarity.toLowerCase()}>
+                  {disc.rarity}
+                </span>
+              </div>
+
+              {/* Disc Tags */}
+              <div class="disc-tags">
+                {disc.tags.map(tag => (
+                  <span class="disc-tag">{tag}</span>
+                ))}
+              </div>
+
+              {/* Disc Description */}
+              <p class="disc-card-description">{disc.description}</p>
+
+              {/* Basic Stats Preview */}
+              <div class="disc-card-stats">
+                {Object.entries(disc.stats)
+                  .slice(0, 2)
+                  .map(([key, value]) => {
+                    const statName =
+                      key === 'basicAtk'
+                        ? 'ATK'
+                        : key === 'baseATK'
+                          ? 'ATK'
+                          : key === 'baseHP'
+                            ? 'HP'
+                            : key.includes('Dmg')
+                              ? key.replace('Dmg', ' DMG')
+                              : key.replace(/([A-Z])/g, ' ').trim();
+
+                    return (
+                      <span class="disc-stat">
+                        {statName.toUpperCase()}: {value}
+                      </span>
+                    );
+                  })}
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</DiscLayout>

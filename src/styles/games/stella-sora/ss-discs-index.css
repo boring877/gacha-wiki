@@ -1,0 +1,253 @@
+/* Stella Sora Disc Index Page Styles
+ * Dedicated styles for the disc index/grid page
+ * Separated from individual disc page styles for better organization
+ */
+
+/* Main Discs Index Container */
+.discs-index {
+  padding: var(--ss-spacing-xl) 0;
+}
+
+/* Discs Grid Layout */
+.discs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--ss-spacing-xl);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+/* Disc Card Container */
+.disc-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.disc-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Disc Card Header - Image and Basic Info */
+.disc-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.disc-card-image {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--ss-radius-md);
+  object-fit: cover;
+  border: 2px solid var(--ss-border);
+  flex-shrink: 0;
+}
+
+.disc-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.disc-card-name {
+  font-size: 1.125rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-xs);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.disc-card-character {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Disc Card Meta Information - Badges */
+.disc-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-sm);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+/* Disc Tags */
+.disc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-xs);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.disc-tag {
+  background: var(--ss-accent-20);
+  color: var(--ss-accent);
+  border: 1px solid var(--ss-accent);
+  padding: 2px 8px;
+  border-radius: var(--ss-radius-sm);
+  font-size: 0.625rem;
+  font-weight: var(--ss-font-medium);
+  text-transform: uppercase;
+}
+
+/* Disc Card Description */
+.disc-card-description {
+  color: var(--ss-text-secondary);
+  line-height: 1.5;
+  font-size: 0.875rem;
+  margin-bottom: var(--ss-spacing-md);
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Disc Card Stats Preview */
+.disc-card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-sm);
+  margin-top: auto;
+}
+
+.disc-stat {
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-primary);
+  padding: 4px 8px;
+  border-radius: var(--ss-radius-sm);
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-medium);
+  border: 1px solid var(--ss-border);
+}
+
+/* Responsive Design for Index Page */
+@media (max-width: 1024px) {
+  .discs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .discs-index {
+    padding: var(--ss-spacing-lg) var(--ss-spacing-md);
+  }
+
+  .discs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--ss-spacing-lg);
+  }
+
+  .disc-card {
+    padding: var(--ss-spacing-md);
+  }
+
+  .disc-card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--ss-spacing-md);
+  }
+
+  .disc-card-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .disc-card-name {
+    font-size: 1.125rem;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
+  }
+
+  .disc-card-character {
+    font-size: 1rem;
+  }
+
+  .disc-card-meta {
+    justify-content: center;
+    margin-bottom: var(--ss-spacing-lg);
+  }
+
+  .disc-tags {
+    justify-content: center;
+  }
+
+  .disc-card-description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .disc-card-stats {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .discs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--ss-spacing-md);
+  }
+
+  .disc-card {
+    padding: var(--ss-spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .discs-index {
+    padding: var(--ss-spacing-md) var(--ss-spacing-sm);
+  }
+
+  .discs-grid {
+    grid-template-columns: 1fr;
+    gap: var(--ss-spacing-md);
+  }
+
+  .disc-card {
+    padding: var(--ss-spacing-md);
+  }
+
+  .disc-card-header {
+    gap: var(--ss-spacing-sm);
+  }
+
+  .disc-card-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .disc-card-name {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .disc-card-character {
+    font-size: 0.875rem;
+  }
+
+  .disc-card-description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    -webkit-line-clamp: 2;
+  }
+
+  .disc-stat {
+    font-size: 0.625rem;
+    padding: 3px 6px;
+  }
+}
