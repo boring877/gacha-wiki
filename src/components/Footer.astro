@@ -29,7 +29,7 @@ const version = packageInfo.version;
 
       <!-- Center: Copyright -->
       <div class="footer-center">
-        <p>© {today.getFullYear()} - I Hope You Have Wonderful Day</p>
+        <p>© {today.getFullYear()} - I Hope You Have Wonderful Day ✨</p>
       </div>
 
       <!-- Right Side: Social Links -->
@@ -144,74 +144,20 @@ const version = packageInfo.version;
     color: rgba(255, 183, 77, 0.8);
   }
 
-  /* Tablet Responsive Footer */
-  @media (max-width: 1024px) and (min-width: 768px) {
-    .footer-container {
-      padding: 0.5rem;
-    }
-
-    .footer-content {
-      grid-template-columns: 1fr auto 1fr;
-      gap: 0.75rem;
-      padding: 0.75rem 0;
-      min-height: auto;
-    }
-
-    .version-license-row {
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: flex-start;
-    }
-
-    .footer-center p {
-      font-size: 0.8rem;
+  /* Hide footer completely on touch devices and small screens for cleaner mobile experience */
+  @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+    .footer {
+      display: none;
     }
   }
 
-  /* Mobile Responsive Footer */
-  @media (max-width: 767px) {
-    .footer-container {
-      padding: 0.5rem;
-    }
-
-    .footer-content {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      padding: 1rem 0;
-      min-height: auto;
-      text-align: center;
-    }
-
-    /* Center align all footer sections */
-    .footer-left,
-    .footer-center,
-    .footer-right {
-      justify-content: center;
-    }
-
-    /* Simplify version and license for mobile */
-    .version-license-row {
-      flex-direction: column;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .footer-center p {
-      font-size: 0.8rem;
-      margin-bottom: 0.5rem;
-    }
-  }
+  /* Note: Mobile responsive styles removed since footer is hidden on touch devices */
 
   /* Touch Device Optimizations */
   @media (hover: none) and (pointer: coarse) {
     .version-pill {
       min-height: 48px;
       padding: 0.75rem 1.25rem;
-    }
-
-    /* Ensure footer is visible on touch devices */
-    .footer {
-      display: block;
     }
   }
 
