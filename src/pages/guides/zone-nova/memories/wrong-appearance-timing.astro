@@ -1,0 +1,11 @@
+---
+import MemoryTemplate from '../../../../templates/zone-nova/MemoryTemplate.astro';
+import {
+  memoryData,
+  memorySEO,
+} from '../../../../data/zone-nova/memories/wrong-appearance-timing.js';
+
+export const prerender = true;
+---
+
+<MemoryTemplate memoryData={memoryData} memorySEO={memorySEO} />

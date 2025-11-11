@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { apepData, apepSEO } from '../../../../data/zone-nova/characters/apep.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={apepSEO.title}
+  description={apepSEO.description}
+  gameTitle={apepData.name}
+  character={apepData}
+>
+  <CharacterPageTemplate characterData={apepData} />
+</CharacterIndividualLayout>

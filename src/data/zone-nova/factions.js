@@ -19,7 +19,7 @@ export const ZONE_NOVA_FACTIONS = {
   Chemic: {
     name: 'Chemic',
     chineseName: '凯米奇',
-    characters: ['Anubis', 'Shu', 'Bastet', 'Tefnut', 'Horus', 'Cleopatra'],
+    characters: ['Anubis', 'Shu', 'Bastet', 'Tefnut', 'Horus', 'Cleopatra', 'Apep'],
     color: '#ff9800',
     description: 'The Chemic faction with Egyptian mythology influences',
   },

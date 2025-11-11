@@ -132,12 +132,6 @@
   user-select: none;
 }
 
-.filter-btn:hover {
-  border-color: var(--zn-primary);
-  color: var(--zn-text-primary);
-  background: var(--zn-bg-secondary);
-}
-
 .filter-btn.active {
   border-color: var(--zn-primary);
   background: var(--zn-primary);
@@ -149,16 +143,6 @@
 /* Touch feedback for better mobile UX */
 .filter-btn:active {
   transform: scale(0.95);
-}
-
-@media (hover: hover) {
-  .filter-btn:hover {
-    transform: translateY(-1px);
-  }
-
-  .filter-btn:active {
-    transform: translateY(0);
-  }
 }
 
 /* Rarity-specific colors */
@@ -188,12 +172,6 @@
   padding: 0.3rem 0.6rem;
 }
 
-.sort-btn:hover {
-  border-color: var(--zn-primary);
-  color: var(--zn-primary);
-  background: var(--zn-bg-secondary);
-}
-
 .sort-btn.active {
   background: var(--zn-primary);
   border-color: var(--zn-primary);
@@ -219,12 +197,6 @@
   border-radius: 4px;
   white-space: nowrap;
   min-height: 32px;
-}
-
-.reset-btn:hover {
-  background: var(--zn-primary);
-  color: #000;
-  border-color: var(--zn-primary);
 }
 
 /* ===== TABLE STYLES ===== */
@@ -337,7 +309,6 @@ table.memory-table th {
   gap: 1rem;
   border: 2px solid var(--amber-glow, #ffe066);
   cursor: pointer;
-  transition: all 0.2s ease;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }

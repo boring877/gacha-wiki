@@ -1029,6 +1029,26 @@ export const ZONE_NOVA_MEMORIES = [
       'When the equipper deals continuous damage to enemy targets, increase damage taken by the target by 15% for 5 seconds',
     ],
   },
+  {
+    id: 'wrong-appearance-timing',
+    slug: 'wrong-appearance-timing',
+    name: 'Wrong Appearance Timing',
+    image: '/images/games/zone-nova/memories/Apepcard.jpg',
+    rarity: 'SSR',
+    element: 'Wind',
+    character: 'Apep',
+    detailUrl: '/guides/zone-nova/memories/wrong-appearance-timing/',
+    stats: {
+      hp: 8800,
+      attack: 480,
+      defense: 690,
+    },
+    effects: [
+      'Defense increased by 64%',
+      'When HP is above 50%, after the wearer attacks, recover 2% max HP',
+      'When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%',
+    ],
+  },
 ];
 
 // Memory metadata for filters
@@ -1037,8 +1057,10 @@ export const MEMORY_METADATA = {
   elements: ['Fire', 'Ice', 'Wind', 'Holy', 'Chaos'],
   classes: ['Guardian', 'Warrior', 'Rogue', 'Mage', 'Buffer', 'Debuffer', 'Healer'],
   characters: [
+    'Afrodite',
     'Anubis',
     'Apollo',
+    'Apep',
     'Artemis',
     'Arthur',
     'Athena',
@@ -1051,11 +1073,13 @@ export const MEMORY_METADATA = {
     'Gaia',
     'Greed Mammon',
     'Guinevere',
+    'Hela',
     'Hera',
     'Horus',
     'Jeanne D Arc',
     'Kela',
     'Lancelot',
+    'Lavinia',
     'Leviathan',
     'Lily',
     'Loki',
