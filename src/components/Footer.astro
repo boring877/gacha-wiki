@@ -47,9 +47,6 @@ const version = packageInfo.version;
     backdrop-filter: blur(12px);
     border-top: 1px solid rgba(255, 183, 77, 0.3);
     margin-top: auto;
-    /* Prevent flash of unstyled content in production */
-    opacity: 1;
-    visibility: visible;
   }
 
   .footer-container {
@@ -154,26 +151,26 @@ const version = packageInfo.version;
     }
 
     .footer-content {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 0.75rem;
       padding: 0.75rem 0;
       min-height: auto;
     }
 
-    /* Hide version and license on mobile - use opacity to prevent layout shift */
+    /* Completely hide version and license on mobile */
     .footer-left {
-      opacity: 0;
-      visibility: hidden;
-      height: 0;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
+      display: none;
     }
 
-    /* Center align copyright and social links */
-    .footer-center,
+    /* Stack copyright and social links vertically and center them */
+    .footer-center {
+      order: 1;
+    }
+
     .footer-right {
-      justify-content: center;
+      order: 2;
     }
 
     .footer-center p {
