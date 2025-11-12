@@ -1,0 +1,1181 @@
+---
+import ShopEventLayout from '../../../../layouts/stella-sora/ShopEventLayout.astro';
+import { getShopEventBySlug } from '../../../../data/stella-sora/shop-events.js';
+import SSShopEventImage from '../../../../components/stella-sora/SSShopEventImage.astro';
+
+const event = getShopEventBySlug('a-finale-echoing');
+
+if (!event) {
+  return Astro.redirect('/guides/stella-sora/shop-events/');
+}
+
+// Shop items data for A Finale Echoing event
+const shopItems = [
+  {
+    name: 'New Star Prelude',
+    stockLeft: 1,
+    cost: 7000,
+    quantity: 'x1',
+    image: 'New_Star_Prelude.jpg',
+    rarity: 'legendary',
+  },
+  {
+    name: 'Prayer Beneath Light',
+    stockLeft: 1,
+    cost: 7000,
+    quantity: 'x1',
+    image: 'Prayer_Beneath_Light.jpg',
+    rarity: 'legendary',
+  },
+  {
+    name: 'Summer Afternoon Rain',
+    stockLeft: 1,
+    cost: 7000,
+    quantity: 'x1',
+    image: 'Summer_Afternoon_Rain.jpg',
+    rarity: 'legendary',
+  },
+  {
+    name: 'Those with Ambition',
+    stockLeft: 1,
+    cost: 7000,
+    quantity: 'x1',
+    image: 'Those_With_Ambition.jpg',
+    rarity: 'legendary',
+  },
+  {
+    name: 'Voyage Blueprint',
+    stockLeft: 1,
+    cost: 7000,
+    quantity: 'x1',
+    image: 'Voyage_Blueprint.jpg',
+    rarity: 'legendary',
+  },
+  {
+    name: 'Sweet Times',
+    stockLeft: 1,
+    cost: 7000,
+    quantity: 'x1',
+    image: 'Sweet_Times.jpg',
+    rarity: 'legendary',
+  },
+  {
+    name: 'Chess Piece of Skill',
+    stockLeft: 400,
+    cost: 15,
+    quantity: 'x1',
+    image: 'Chess_Piece_of_Skill.jpg',
+    rarity: 'rare',
+  },
+  {
+    name: 'Proving Grounds Gift Box',
+    stockLeft: 6,
+    cost: 200,
+    quantity: 'x1',
+    image: 'Proving_Grounds_gift_box.jpg',
+    rarity: 'rare',
+  },
+  {
+    name: 'Premium Cartridge Box',
+    stockLeft: 60,
+    cost: 30,
+    quantity: 'x1',
+    image: 'Premium_Cartridge_Box.jpg',
+    rarity: 'uncommon',
+  },
+  {
+    name: 'Deluxe Cartridge Box',
+    stockLeft: 20,
+    cost: 90,
+    quantity: 'x1',
+    image: 'Deluxe_Cartridge_box.jpg',
+    rarity: 'uncommon',
+  },
+  {
+    name: 'Beginner Cartridge Box',
+    stockLeft: 30,
+    cost: 10,
+    quantity: 'x1',
+    image: 'Beginner_Cartridge_Box.jpg',
+    rarity: 'common',
+  },
+  {
+    name: 'Sprout Ticket',
+    stockLeft: 10,
+    cost: 150,
+    quantity: 'x1',
+    image: 'Sprout_Ticket.jpg',
+    rarity: 'uncommon',
+  },
+  {
+    name: 'Dorra',
+    stockLeft: 60,
+    cost: 100,
+    quantity: 'x1',
+    image: 'Dorra.jpg',
+    rarity: 'common',
+  },
+];
+
+// Helper function to determine stock status
+const getStockStatus = (stockLeft: number) => {
+  if (stockLeft <= 2) return 'very-low';
+  if (stockLeft <= 10) return 'low';
+  return 'available';
+};
+
+// Calculate total cost to buy all items
+const totalCost = shopItems.reduce((sum, item) => sum + item.cost * item.stockLeft, 0);
+
+// Helper function to get image for reward items
+const getRewardImage = (rewardName: string) => {
+  const rewardImageMap = {
+    'Sprout Ticket': 'Sprout_Ticket.jpg',
+    'Proving Grounds Gift Box': 'Proving_Grounds_gift_box.jpg',
+    'Beginner Cartridge Box': 'Beginner_Cartridge_Box.jpg',
+    'Premium Cartridge Box': 'Premium_Cartridge_Box.jpg',
+    'Deluxe Cartridge Box': 'Deluxe_Cartridge_box.jpg',
+    'Chess Piece of Skill': 'Chess_Piece_of_Skill.jpg',
+    Dorra: 'Dorra.jpg',
+  };
+
+  // Handle quantity prefix like "1x", "90x", etc.
+  const cleanName = rewardName.replace(/^\d+x\s*/, '');
+  return rewardImageMap[cleanName] || null;
+};
+
+// Helper function to parse reward text and return array of reward objects
+const parseRewardText = (rewardsText: string) => {
+  const rewardItems = rewardsText.split(',').map(reward => {
+    const trimmedReward = reward.trim();
+    const match = trimmedReward.match(/(\d+)x?\s*(.+)$/);
+
+    if (match) {
+      const quantity = match[1];
+      const name = match[2].trim();
+      return {
+        displayText: trimmedReward,
+        quantity: quantity,
+        name: name,
+        imageName: getRewardImage(name),
+      };
+    }
+
+    return {
+      displayText: trimmedReward,
+      quantity: '1',
+      name: trimmedReward,
+      imageName: getRewardImage(trimmedReward),
+    };
+  });
+
+  return rewardItems;
+};
+
+// Quest data with rewards - Only Score Milestone Quests available for this event
+const questCategories = [
+  {
+    title: 'Score Milestone Quests',
+    completionRewards: '1x Sprout Ticket, 10x Chess Piece of Skill',
+    quests: [
+      { name: 'Reach 12,852,000 score', artifactWishingEgg: 'x10', currency: 'x400' },
+      { name: 'Reach 20,520,000 score', artifactWishingEgg: 'x15', currency: 'x500' },
+      { name: 'Reach 25,164,000 score', artifactWishingEgg: 'x20', currency: 'x600' },
+      { name: 'Reach 28,866,000 score', artifactWishingEgg: 'x25', currency: 'x700' },
+      { name: 'Reach 35,036,000 score', artifactWishingEgg: 'x30', currency: 'x800' },
+      { name: 'Reach 39,252,000 score', artifactWishingEgg: 'x40', currency: 'x900' },
+      { name: 'Reach 41,380,000 score', artifactWishingEgg: 'x50', currency: 'x1000' },
+    ],
+  },
+];
+
+// Calculate total Artifact Wishing Eggs gained from quests
+const totalArtifactWishingEggsFromQuests = questCategories.reduce((total, category) => {
+  return (
+    total +
+    category.quests.reduce((categoryTotal, quest) => {
+      const eggs =
+        'artifactWishingEgg' in quest ? parseInt(quest.artifactWishingEgg.replace('x', '')) : 0;
+      return categoryTotal + eggs;
+    }, 0)
+  );
+}, 0);
+
+// Calculate Whispers of Decay from stage first clears (only 4 maps available)
+const normalStagesWhispers = 200; // Normal stage first clear
+const hardStagesWhispers = 300; // Hard stage first clear
+const extraHardStagesWhispers = 400; // Extra Hard stage first clear
+const ultimateStagesWhispers = 500; // Ultimate stage first clear
+const totalWhispersFromStages =
+  normalStagesWhispers + hardStagesWhispers + extraHardStagesWhispers + ultimateStagesWhispers;
+
+// Calculate Whispers of Decay from score milestone quests (these are the quest currency rewards)
+const whispersFromScoreMilestones = questCategories.reduce((total, category) => {
+  return (
+    total +
+    category.quests.reduce((categoryTotal, quest) => {
+      const whispers = parseInt(quest.currency.replace('x', ''));
+      return categoryTotal + whispers;
+    }, 0)
+  );
+}, 0);
+
+// Calculate Whispers of Decay from Ultimate stage repeats (14 tickets left after first clear × 500 each)
+const ultimateStageRepeatWhispers = 14 * 500;
+
+// Calculate total Artifact Wishing Eggs from all sources
+const totalArtifactWishingEggsFromAllSources = totalArtifactWishingEggsFromQuests;
+
+// Calculate total achievable earnings (no double counting)
+const totalAchievableWhispers =
+  totalWhispersFromStages + whispersFromScoreMilestones + ultimateStageRepeatWhispers;
+const totalAchievableArtifactWishingEggs = totalArtifactWishingEggsFromQuests;
+
+// Item priority data
+const itemPriorities = {
+  highest: [
+    {
+      name: 'Sweet Times',
+      reason: 'Best legendary Disc for current team composition and future content',
+    },
+    {
+      name: 'Voyage Blueprint',
+      reason: 'Essential legendary Disc for exploration and resource gathering',
+    },
+    {
+      name: 'New Star Prelude',
+      reason: 'Limited-time legendary Disc - only available in this event',
+    },
+    {
+      name: 'Those with Ambition',
+      reason: 'Exclusive legendary Disc with ambition-based powers',
+    },
+    {
+      name: 'Prayer Beneath Light',
+      reason: 'Exclusive legendary Disc with light-based abilities',
+    },
+    {
+      name: 'Summer Afternoon Rain',
+      reason: 'Exclusive legendary Disc with summer rain abilities',
+    },
+  ],
+  high: [
+    {
+      name: 'Deluxe Cartridge Box',
+      reason: 'Rare enhancement materials - excellent value for cost',
+    },
+    {
+      name: 'Sprout Ticket',
+      reason: 'Premium gacha ticket - very valuable for character collection',
+    },
+  ],
+  medium: [
+    {
+      name: 'Proving Grounds Gift Box',
+      reason: 'Useful gift box with valuable rewards',
+    },
+    {
+      name: 'Chess Piece of Skill',
+      reason: 'Valuable skill enhancement material - great value for cost',
+    },
+    {
+      name: 'Premium Cartridge Box',
+      reason: 'High-quality enhancement materials at good price',
+    },
+    {
+      name: 'Beginner Cartridge Box',
+      reason: 'Good value for new players',
+    },
+    {
+      name: 'Dorra',
+      reason: 'Common currency - useful for daily needs',
+    },
+  ],
+  low: [
+    // No low priority items currently
+  ],
+  optional: [
+    // No optional items for this event
+  ],
+};
+
+// Calculate costs for priority tiers
+const calculateTierCost = (tierItems: Array<{ name: string }>) => {
+  return tierItems.reduce((total, priorityItem) => {
+    const shopItem = shopItems.find(item => item.name === priorityItem.name);
+    if (shopItem) {
+      return total + shopItem.cost * shopItem.stockLeft;
+    }
+    return total;
+  }, 0);
+};
+
+// Total Whispers of Decay from all sources except purchases
+const totalWhispersFromAllSources =
+  totalWhispersFromStages + whispersFromScoreMilestones + ultimateStageRepeatWhispers;
+---
+
+<ShopEventLayout
+  title={`${event.title} - ${event.subtitle} | Stella Sora Shop Event`}
+  description={event.description}
+  gameTitle={`${event.title} - ${event.subtitle}`}
+  endDate={event.endDate}
+  currency={event.currency}
+>
+  <!-- Shop Event Cost Breakdown Section -->
+  <section class="ss-cost-breakdown">
+    <h2 class="ss-shop-items-title">Breakdown of Shop Event Cost</h2>
+
+    <div class="cost-overview">
+      <div class="currency-info">
+        <div class="currency-header">
+          <SSShopEventImage
+            imageSrc={event.currency.icon}
+            alt={event.currency.name}
+            width={24}
+            height={24}
+          />
+          <h3 class="currency-name">{event.currency.name}</h3>
+        </div>
+
+        <div class="currency-sources">
+          <h4 class="sources-title">How to Obtain:</h4>
+          <ul class="sources-list">
+            {event.currency.sources.map(source => <li class="source-item">{source}</li>)}
+          </ul>
+        </div>
+
+        <div class="currency-capacity">
+          <span class="capacity-label">Capacity:</span>
+          <span class="capacity-value">{event.currency.capacity}</span>
+        </div>
+      </div>
+
+      <div class="cost-statistics unified-stats">
+        <div class="stats-header">
+          <h3 class="stats-title">Shop Overview</h3>
+        </div>
+
+        <div class="stats-list">
+          <div class="stat-list-item">
+            <span class="stat-label">Total Items</span>
+            <span class="stat-value">{shopItems.length}</span>
+          </div>
+
+          <div class="stat-list-item total-cost-item">
+            <span class="stat-label">Total Cost (All Items)</span>
+            <div class="total-cost-display">
+              <SSShopEventImage
+                imageSrc={event.currency.icon}
+                alt={event.currency.name}
+                width={16}
+                height={16}
+              />
+              <span class="stat-value cost-total">{totalCost.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Highest Cost</span>
+            <span class="stat-value cost-highest">
+              {Math.max(...shopItems.map(item => item.cost))}
+            </span>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Lowest Cost</span>
+            <span class="stat-value cost-lowest">
+              {Math.min(...shopItems.map(item => item.cost))}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cost-statistics unified-stats">
+        <div class="stats-header">
+          <h3 class="stats-title">Whispers of Decay Earned</h3>
+        </div>
+
+        <div class="stats-list">
+          <div class="stat-list-item">
+            <span class="stat-label">From Stage First Clears</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value">{totalWhispersFromStages.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">From Score Milestone Quests</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value">{whispersFromScoreMilestones.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">From Ultimate Stage Repeats</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value">{ultimateStageRepeatWhispers.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Total Earned (All Sources)</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value cracker-grand-total"
+                >{totalWhispersFromAllSources.toLocaleString()}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cost-statistics unified-stats">
+        <div class="stats-header">
+          <h3 class="stats-title">F2P Best Strategy</h3>
+        </div>
+
+        <div class="stats-list">
+          <div class="stat-list-item">
+            <span class="stat-label">High Priority Items Cost</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value"
+                >{
+                  calculateTierCost([
+                    ...itemPriorities.highest,
+                    ...itemPriorities.high,
+                  ]).toLocaleString()
+                }</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="strategy-note">
+          <p>
+            <strong>F2P:</strong> Focus on the 6 exclusive Discs first, then farm Ultimate stage repeats
+            (14 repeats available after using 4 tickets for first clears) to get additional Whispers
+            of Decay.
+          </p>
+        </div>
+      </div>
+
+      <div class="cost-statistics unified-stats">
+        <div class="stats-header">
+          <h3 class="stats-title">Priority Shopping Summary</h3>
+        </div>
+
+        <div class="stats-list">
+          <div class="stat-list-item">
+            <span class="stat-label">Most Important (6 Discs)</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value"
+                >{calculateTierCost(itemPriorities.highest).toLocaleString()}</span
+              >
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Important Items</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value"
+                >{
+                  calculateTierCost([
+                    ...itemPriorities.highest,
+                    ...itemPriorities.high,
+                  ]).toLocaleString()
+                }</span
+              >
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">All Priority Items</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value"
+                >{
+                  calculateTierCost([
+                    ...itemPriorities.highest,
+                    ...itemPriorities.high,
+                    ...itemPriorities.medium,
+                  ]).toLocaleString()
+                }</span
+              >
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Complete Shop</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value shop-total">{totalCost.toLocaleString()}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ss-shop-event-items">
+    <h2 class="ss-shop-items-title">Shop Event Items</h2>
+
+    <div class="shop-items-grid">
+      {
+        shopItems.map(item => {
+          const stockStatus = getStockStatus(item.stockLeft);
+
+          return (
+            <div class="shop-item-card" data-rarity={item.rarity} data-stock={stockStatus}>
+              <div class="item-image-wrapper">
+                <SSShopEventImage imageSrc={item.image} alt={item.name} width={80} height={80} />
+                <div class="rarity-dot" />
+              </div>
+
+              <div class="item-info">
+                <h3 class="item-title">{item.name}</h3>
+
+                <div class="item-stats">
+                  <div class="stat-row">
+                    <span class="stat-label">Stock:</span>
+                    <span class="stat-value stock-amount">{item.stockLeft}</span>
+                  </div>
+
+                  <div class="stat-row">
+                    <span class="stat-label">Cost:</span>
+                    <div class="cost-display">
+                      <SSShopEventImage
+                        imageSrc="Whispers_of_Decay.jpg"
+                        alt="Whispers of Decay"
+                        width={16}
+                        height={16}
+                      />
+                      <span class="stat-value item-cost">{item.cost}</span>
+                    </div>
+                  </div>
+
+                  <div class="stat-row">
+                    <span class="stat-label">Qty:</span>
+                    <span class="stat-value">{item.quantity}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- Item Priority Section -->
+  <section class="item-priority-section">
+    <h2 class="ss-shop-items-title">Item Priority Guide</h2>
+    <p class="priority-intro">
+      Since you can't buy all items from the shop, focus on these priorities based on your available
+      Whispers of Decay. The 6 exclusive Discs are only available in this event!
+    </p>
+
+    <div class="priority-tiers">
+      <!-- Highest Priority -->
+      <div class="priority-tier">
+        <h3 class="tier-title highest-priority">
+          Most Important - Must Buy (Event Exclusive Discs)
+        </h3>
+
+        <div class="priority-items-grid">
+          {
+            itemPriorities.highest.map(item => {
+              const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
+              return (
+                <div class="priority-item compact">
+                  {shopItem && (
+                    <>
+                      <div class="item-image-wrapper small">
+                        <SSShopEventImage
+                          imageSrc={shopItem.image}
+                          alt={item.name}
+                          width={40}
+                          height={40}
+                        />
+                      </div>
+                      <div class="item-info">
+                        <h4 class="item-name">{item.name}</h4>
+                        <p class="item-reason">{item.reason}</p>
+                        <div class="item-cost">
+                          <SSShopEventImage
+                            imageSrc="Whispers_of_Decay.jpg"
+                            alt="Whispers of Decay"
+                            width={14}
+                            height={14}
+                          />
+                          <span>
+                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              );
+            })
+          }
+        </div>
+
+        <div class="tier-cost">
+          Tier Total Cost (All 6 Discs):
+          <div class="cost-display">
+            <SSShopEventImage
+              imageSrc="Whispers_of_Decay.jpg"
+              alt="Whispers of Decay"
+              width={16}
+              height={16}
+            />
+            <span>{calculateTierCost(itemPriorities.highest).toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- High Priority -->
+      <div class="priority-tier">
+        <h3 class="tier-title high-priority">High Priority</h3>
+
+        <div class="priority-items">
+          {
+            itemPriorities.high.map(item => {
+              const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
+              return (
+                <div class="priority-item">
+                  {shopItem && (
+                    <>
+                      <div class="item-image-wrapper">
+                        <SSShopEventImage
+                          imageSrc={shopItem.image}
+                          alt={item.name}
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                      <div class="item-info">
+                        <h4 class="item-name">{item.name}</h4>
+                        <p class="item-reason">{item.reason}</p>
+                        <div class="item-cost">
+                          <SSShopEventImage
+                            imageSrc="Whispers_of_Decay.jpg"
+                            alt="Whispers of Decay"
+                            width={16}
+                            height={16}
+                          />
+                          <span>
+                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              );
+            })
+          }
+        </div>
+
+        <div class="tier-cost">
+          Tier Total Cost:
+          <div class="cost-display">
+            <SSShopEventImage
+              imageSrc="Whispers_of_Decay.jpg"
+              alt="Whispers of Decay"
+              width={16}
+              height={16}
+            />
+            <span>{calculateTierCost(itemPriorities.high).toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medium Priority -->
+      <div class="priority-tier">
+        <h3 class="tier-title medium-priority">Medium Priority</h3>
+
+        <div class="priority-items-grid">
+          {
+            itemPriorities.medium.map(item => {
+              const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
+              return (
+                <div class="priority-item compact">
+                  {shopItem && (
+                    <>
+                      <div class="item-image-wrapper small">
+                        <SSShopEventImage
+                          imageSrc={shopItem.image}
+                          alt={item.name}
+                          width={40}
+                          height={40}
+                        />
+                      </div>
+                      <div class="item-info">
+                        <h4 class="item-name">{item.name}</h4>
+                        <p class="item-reason">{item.reason}</p>
+                        <div class="item-cost">
+                          <SSShopEventImage
+                            imageSrc="Whispers_of_Decay.jpg"
+                            alt="Whispers of Decay"
+                            width={14}
+                            height={14}
+                          />
+                          <span>
+                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              );
+            })
+          }
+        </div>
+
+        <div class="tier-cost">
+          Tier Total Cost:
+          <div class="cost-display">
+            <SSShopEventImage
+              imageSrc="Whispers_of_Decay.jpg"
+              alt="Whispers of Decay"
+              width={16}
+              height={16}
+            />
+            <span>{calculateTierCost(itemPriorities.medium).toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="priority-summary">
+      <h3>Summary:</h3>
+      <ul>
+        <li>
+          <strong>Most Important (6 Discs):</strong>
+          {calculateTierCost(itemPriorities.highest).toLocaleString()} Whispers of Decay
+        </li>
+        <li>
+          <strong>Important Items:</strong>
+          {calculateTierCost([...itemPriorities.highest, ...itemPriorities.high]).toLocaleString()} Whispers
+          of Decay
+        </li>
+        <li>
+          <strong>All Priority Items:</strong>
+          {
+            calculateTierCost([
+              ...itemPriorities.highest,
+              ...itemPriorities.high,
+              ...itemPriorities.medium,
+            ]).toLocaleString()
+          } Whispers of Decay
+        </li>
+        <li>
+          <strong>Complete Shop:</strong>
+          {totalCost.toLocaleString()} Whispers of Decay
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Disc Priority Ranking Section -->
+  <section class="ss-cost-breakdown">
+    <h2 class="ss-shop-items-title">Disc Priority Ranking</h2>
+
+    <div class="cost-overview">
+      <div class="disc-ranking-tiers">
+        <!-- Top Priority Discs -->
+        <div class="disc-ranking-tier top-tier">
+          <h3 class="tier-title">Top Priority</h3>
+
+          <div class="disc-items-grid">
+            <div class="disc-item top-disc">
+              <div class="item-image-wrapper">
+                <SSShopEventImage
+                  imageSrc="Sweet_Times.jpg"
+                  alt="Sweet Times"
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <div class="item-info">
+                <h4 class="item-name">Sweet Times</h4>
+                <div class="item-cost">
+                  <SSShopEventImage
+                    imageSrc="Whispers_of_Decay.jpg"
+                    alt="Whispers of Decay"
+                    width={14}
+                    height={14}
+                  />
+                  <span>7,000 Whispers</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="disc-item top-disc">
+              <div class="item-image-wrapper">
+                <SSShopEventImage
+                  imageSrc="Voyage_Blueprint.jpg"
+                  alt="Voyage Blueprint"
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <div class="item-info">
+                <h4 class="item-name">Voyage Blueprint</h4>
+                <div class="item-cost">
+                  <SSShopEventImage
+                    imageSrc="Whispers_of_Decay.jpg"
+                    alt="Whispers of Decay"
+                    width={14}
+                    height={14}
+                  />
+                  <span>7,000 Whispers</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other Discs -->
+        <div class="disc-ranking-tier other-tier">
+          <h3 class="tier-title">Other Discs</h3>
+
+          <div class="disc-items-grid">
+            <div class="disc-item other-disc">
+              <div class="item-image-wrapper">
+                <SSShopEventImage
+                  imageSrc="New_Star_Prelude.jpg"
+                  alt="New Star Prelude"
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <div class="item-info">
+                <h4 class="item-name">New Star Prelude</h4>
+                <div class="item-cost">
+                  <SSShopEventImage
+                    imageSrc="Whispers_of_Decay.jpg"
+                    alt="Whispers of Decay"
+                    width={14}
+                    height={14}
+                  />
+                  <span>7,000 Whispers</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="disc-item other-disc">
+              <div class="item-image-wrapper">
+                <SSShopEventImage
+                  imageSrc="Those_with_Ambition.jpg"
+                  alt="Those with Ambition"
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <div class="item-info">
+                <h4 class="item-name">Those with Ambition</h4>
+                <div class="item-cost">
+                  <SSShopEventImage
+                    imageSrc="Whispers_of_Decay.jpg"
+                    alt="Whispers of Decay"
+                    width={14}
+                    height={14}
+                  />
+                  <span>7,000 Whispers</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="disc-item other-disc">
+              <div class="item-image-wrapper">
+                <SSShopEventImage
+                  imageSrc="Prayer_Beneath_Light.jpg"
+                  alt="Prayer Beneath Light"
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <div class="item-info">
+                <h4 class="item-name">Prayer Beneath Light</h4>
+                <div class="item-cost">
+                  <SSShopEventImage
+                    imageSrc="Whispers_of_Decay.jpg"
+                    alt="Whispers of Decay"
+                    width={14}
+                    height={14}
+                  />
+                  <span>7,000 Whispers</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="disc-item other-disc">
+              <div class="item-image-wrapper">
+                <SSShopEventImage
+                  imageSrc="Summer_Afternoon_Rain.jpg"
+                  alt="Summer Afternoon Rain"
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <div class="item-info">
+                <h4 class="item-name">Summer Afternoon Rain</h4>
+                <div class="item-cost">
+                  <SSShopEventImage
+                    imageSrc="Whispers_of_Decay.jpg"
+                    alt="Whispers of Decay"
+                    width={14}
+                    height={14}
+                  />
+                  <span>7,000 Whispers</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Recommendation Section -->
+  <section class="personal-recommendation-section">
+    <div class="recommendation-header">
+      <h2 class="recommendation-title">Personal Recommendation</h2>
+      <p class="recommendation-subtitle">
+        This is what I thought important, If we had 14k currency I would gone to 2 disc.
+      </p>
+    </div>
+
+    <div class="recommendation-content">
+      <div class="budget-summary">
+        <div class="summary-item">
+          <div class="summary-label">Available</div>
+          <div class="summary-value">13,300</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Recommended Items</div>
+          <div class="summary-value">2 Items</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Total Cost</div>
+          <div class="summary-value cost">8,500</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Remaining</div>
+          <div class="summary-value remaining">4,800</div>
+        </div>
+      </div>
+
+      <div class="recommended-picks">
+        <h3 class="picks-title">Recommended Picks</h3>
+
+        <div class="picks-grid">
+          <div class="pick-card primary">
+            <div class="pick-image">
+              <SSShopEventImage
+                imageSrc="Sweet_Times.jpg"
+                alt="Sweet Times"
+                width={60}
+                height={60}
+              />
+            </div>
+            <div class="pick-info">
+              <div class="pick-name">Sweet Times</div>
+              <div class="pick-cost">
+                <SSShopEventImage
+                  imageSrc="Whispers_of_Decay.jpg"
+                  alt="Whispers of Decay"
+                  width={14}
+                  height={14}
+                />
+                <span>7,000</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pick-card">
+            <div class="pick-image">
+              <SSShopEventImage
+                imageSrc="Sprout_Ticket.jpg"
+                alt="Sprout Ticket"
+                width={60}
+                height={60}
+              />
+            </div>
+            <div class="pick-info">
+              <div class="pick-name">Sprout Ticket</div>
+              <div class="pick-cost">
+                <SSShopEventImage
+                  imageSrc="Whispers_of_Decay.jpg"
+                  alt="Whispers of Decay"
+                  width={14}
+                  height={14}
+                />
+                <span>1,500</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quest Rewards Section -->
+  <section class="quest-rewards-section">
+    <h2 class="ss-shop-items-title">Quest Rewards</h2>
+
+    <div class="quest-note important-note">
+      <p><strong>Quest Guide:</strong></p>
+      <ul>
+        <li>
+          <strong>Score Milestone Quests:</strong> Reach specific score thresholds to earn bonus Whispers
+          of Decay, from 400 to 1000 per milestone. Complete all 7 milestones for maximum rewards.
+        </li>
+        <li>
+          <strong>Ultimate Stage:</strong> Available for 6 days with 3 tickets per day = 18 total tickets
+          (4 used for first clears, 14 left for repeats) at 500 Whispers each = 7,000 bonus Whispers.
+        </li>
+        <li>
+          <strong>Strategy:</strong> Focus on getting all 6 exclusive Discs first, then use remaining
+          Whispers for high-value materials like Chess Piece of Skill.
+        </li>
+      </ul>
+    </div>
+
+    {
+      questCategories.map(category => (
+        <div class="quest-category">
+          <h3 class="quest-category-title">{category.title}</h3>
+
+          <div class="quest-table-container">
+            <table class="quest-table">
+              <thead>
+                <tr>
+                  <th>Quest Name</th>
+                  <th>Artifact Wishing Egg Reward</th>
+                  <th>Whispers of Decay</th>
+                </tr>
+              </thead>
+              <tbody>
+                {category.quests.map(quest => (
+                  <tr>
+                    <td>{quest.name}</td>
+                    <td>{quest.artifactWishingEgg}</td>
+                    <td>{quest.currency}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ))
+    }
+
+    <!-- Stage Rewards -->
+    <div class="quest-category">
+      <h3 class="quest-category-title">Stage First Clear Rewards</h3>
+      <p class="quest-note">
+        Ultimate stage can be repeated 18 times (6 days × 3 tickets) for 500 Whispers each
+      </p>
+
+      <div class="stage-rewards-grid">
+        <div class="stage-reward-group">
+          <h4 class="stage-reward-subtitle">Available Stages (First Clear Rewards)</h4>
+          <div class="stage-table-container">
+            <table class="stage-table">
+              <thead>
+                <tr>
+                  <th>Stage Name</th>
+                  <th>Whispers of Decay</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Normal Stage</td>
+                  <td>200 Whispers of Decay</td>
+                </tr>
+                <tr>
+                  <td>Hard Stage</td>
+                  <td>300 Whispers of Decay</td>
+                </tr>
+                <tr>
+                  <td>Extra Hard Stage</td>
+                  <td>400 Whispers of Decay</td>
+                </tr>
+                <tr>
+                  <td>Ultimate Stage (First Clear)</td>
+                  <td>500 Whispers of Decay</td>
+                </tr>
+                <tr>
+                  <td>Ultimate Stage (Repeats)</td>
+                  <td>500 Whispers of Decay × 14 repeats</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="total-reward">
+            Total First Clear Rewards: <strong>1,400</strong> Whispers of Decay
+          </p>
+          <p class="total-reward">
+            Total with Repeats: <strong>8,400</strong> Whispers of Decay (1,400 + 7,000 from repeats)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ShopEventLayout>

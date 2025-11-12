@@ -1019,6 +1019,465 @@
   }
 }
 
+/* Disc Ranking Additional Styles */
+.ranking-intro {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: var(--ss-text-light);
+  text-align: center;
+}
+
+.disc-ranking-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.disc-ranking-tier {
+  padding: 1rem;
+}
+
+.tier-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--ss-text-light);
+  border-bottom: 2px solid var(--ss-accent-color);
+  padding-bottom: 0.5rem;
+}
+
+.disc-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.disc-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--ss-secondary-border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.disc-item.top-disc {
+  border-color: var(--ss-accent-color);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.disc-item .item-image-wrapper {
+  flex-shrink: 0;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  border: 1px solid var(--ss-secondary-border);
+}
+
+.disc-item .item-info {
+  flex: 1;
+}
+
+.disc-item .item-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--ss-text-light);
+  margin: 0 0 0.8rem 0;
+}
+
+.disc-item .item-cost {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--ss-accent-color);
+}
+
+.tier-note {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--ss-secondary-border);
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.tier-note p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--ss-text-light);
+}
+
+.tier-note strong {
+  color: var(--ss-accent-color);
+}
+
+.disc-ranking-summary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--ss-secondary-border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.disc-ranking-summary p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--ss-text-light);
+}
+
+.disc-ranking-summary strong {
+  color: var(--ss-accent-color);
+}
+
+/* Responsive Design for Disc Ranking */
+@media (max-width: 768px) {
+  .disc-items-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .disc-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .disc-item .item-image-wrapper {
+    align-self: center;
+    margin-bottom: 0.8rem;
+  }
+
+  .disc-item .item-cost {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .disc-ranking-section {
+    margin: 1rem 0;
+  }
+
+  .disc-item {
+    padding: 0.8rem;
+  }
+
+  .tier-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Personal Recommendation Section */
+.recommended-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.recommended-item {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border-subtle);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.recommended-item:hover {
+  transform: translateY(-2px);
+}
+
+.recommended-item .ss-shop-event-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+}
+
+.recommended-item .item-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.recommended-item .item-cost {
+  font-size: 0.9rem;
+  color: var(--ss-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.item-note {
+  font-size: 0.8rem;
+  color: var(--ss-text-secondary);
+  font-style: italic;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ss-border-subtle);
+}
+
+/* Responsive adjustments for recommendation section */
+@media (max-width: 768px) {
+  .recommended-items {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .recommended-item {
+    padding: 1rem;
+  }
+
+  .recommended-item .ss-shop-event-image img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Personal Recommendation Section - Minimal Styling */
+.personal-recommendation-section {
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.recommendation-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.recommendation-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ss-text-secondary);
+  margin: 0 0 0.5rem 0;
+  text-align: left;
+  padding-left: 0.5rem;
+  border-left: 3px solid var(--ss-primary);
+}
+
+.recommendation-subtitle {
+  font-size: 0.95rem;
+  color: var(--ss-text-secondary);
+  margin: 0;
+  text-align: left;
+  padding-left: 0.5rem;
+}
+
+.recommendation-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.budget-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.summary-item {
+  background: var(--ss-bg-primary);
+  border: 1px solid var(--ss-border-subtle);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.summary-label {
+  font-size: 0.85rem;
+  color: var(--ss-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.summary-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+}
+
+.summary-value.cost {
+  color: var(--ss-warning);
+}
+
+.summary-value.remaining {
+  color: var(--ss-success);
+}
+
+.recommended-picks {
+  margin-top: 1rem;
+}
+
+.picks-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin-bottom: 1rem;
+}
+
+.picks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.pick-card {
+  background: var(--ss-bg-primary);
+  border: 1px solid var(--ss-border-subtle);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pick-card.primary {
+  border-color: var(--ss-primary);
+}
+
+.pick-image {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pick-image .ss-shop-event-image {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.pick-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pick-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.pick-cost {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ss-primary);
+}
+
+.pick-cost .ss-shop-event-image {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* Responsive Design for Personal Recommendation */
+@media (max-width: 1024px) {
+  .budget-summary {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .summary-item {
+    padding: 1rem 0.75rem;
+  }
+
+  .summary-value {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .personal-recommendation-section {
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .recommendation-title {
+    font-size: 1.2rem;
+  }
+
+  .recommendation-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .budget-summary {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 1rem;
+  }
+
+  .summary-label {
+    margin-bottom: 0;
+  }
+
+  .summary-value {
+    font-size: 1rem;
+  }
+
+  .picks-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pick-card {
+    padding: 1rem;
+  }
+
+  .pick-image .ss-shop-event-image {
+    width: 45px !important;
+    height: 45px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .personal-recommendation-section {
+    padding: 0.75rem;
+    margin: 1rem 0;
+  }
+
+  .recommendation-title {
+    font-size: 1.1rem;
+  }
+
+  .recommendation-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .pick-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .pick-name {
+    font-size: 0.95rem;
+  }
+}
+
 /* Print Styles */
 @media print {
   .event-status-bar {

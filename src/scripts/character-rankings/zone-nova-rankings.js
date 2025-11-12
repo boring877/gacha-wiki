@@ -557,8 +557,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Store reference globally for debugging
     window.rankingsManager = rankingsManager;
-
-    console.log('✅ Zone Nova Character Rankings initialized with instant filtering!');
   } catch (error) {
     console.error('❌ Error initializing rankings:', error);
 

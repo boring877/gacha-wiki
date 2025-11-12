@@ -226,7 +226,7 @@ export function initializeHomepage(clockGames, showcaseGames) {
       switchToGame(nextIndex, 'auto');
       // Sync showcase with clock
       updateShowcase(nextIndex);
-    }, 6000); // Switch every 6 seconds - TODO: import from timing-constants.ts
+    }, 6000); // Switch every 6 seconds
   }
 
   // Stop auto-rotation
@@ -281,7 +281,7 @@ export function initializeHomepage(clockGames, showcaseGames) {
     const savedGameId = localStorage.getItem('master-clock-game');
     const lastInteraction = localStorage.getItem('master-clock-last-interaction');
     const now = Date.now();
-    const oneHour = 60 * 60 * 1000; // TODO: import from timing-constants.ts
+    const oneHour = 60 * 60 * 1000;
 
     if (savedGameId && lastInteraction && now - parseInt(lastInteraction) < oneHour) {
       const foundIndex = clockGames.findIndex(game => game.id === savedGameId);
@@ -353,7 +353,7 @@ export function initializeHomepage(clockGames, showcaseGames) {
 
     // Start clock updates
     updateClock();
-    clockUpdateInterval = setInterval(updateClock, 1000); // TODO: import from timing-constants.ts
+    clockUpdateInterval = setInterval(updateClock, 1000);
 
     // Start auto-rotation
     if (isAutoRotating) {

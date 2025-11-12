@@ -19,10 +19,10 @@ const SS_MAINTENANCE_END_UTC_MINUS_7 = '2025-10-28T09:00:00Z';
 
 // A Finale Echoing Event periods in UTC-7
 // Event Duration: Nov 10, 2025 after maintenance – Nov 16, 2025 06:59 (UTC-7)
-// Event Shop & Reward Exchange: Nov 10, 2025 after maintenance – Dec 17, 2025 12:59 (UTC-7)
+// Event Shop & Reward Exchange: Nov 10, 2025 after maintenance – Nov 30, 2025 08:00 (UTC-7)
 const SS_EVENT_START_UTC_MINUS_7 = '2025-11-10T19:00:00Z'; // Nov 10, 2025 after maintenance (estimated 12:00 UTC-7) = Nov 10, 2025 19:00:00Z (UTC)
 const SS_EVENT_DURATION_END_UTC_MINUS_7 = '2025-11-16T13:59:00Z'; // Nov 16, 2025 06:59 UTC-7 = Nov 16, 2025 13:59:00Z (UTC)
-const SS_EVENT_SHOP_END_UTC_MINUS_7 = '2025-12-17T19:59:00Z'; // Dec 17, 2025 12:59 UTC-7 = Dec 17, 2025 19:59:00Z (UTC)
+const SS_EVENT_SHOP_END_UTC_MINUS_7 = '2025-11-30T15:00:00Z'; // Nov 30, 2025 08:00 UTC-7 = Nov 30, 2025 15:00:00Z (UTC)
 
 export const stellaSoraConfig = {
   id: 'stella-sora',
