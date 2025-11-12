@@ -40,7 +40,7 @@ const shopItems = [
     stockLeft: 1,
     cost: 7000,
     quantity: 'x1',
-    image: 'Those_With_Ambition.jpg',
+    image: 'Those_with_Ambition.jpg',
     rarity: 'legendary',
   },
   {
@@ -450,42 +450,6 @@ const totalWhispersFromAllSources =
               >
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="cost-statistics unified-stats">
-        <div class="stats-header">
-          <h3 class="stats-title">F2P Best Strategy</h3>
-        </div>
-
-        <div class="stats-list">
-          <div class="stat-list-item">
-            <span class="stat-label">High Priority Items Cost</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Whispers_of_Decay.jpg"
-                alt="Whispers of Decay"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value"
-                >{
-                  calculateTierCost([
-                    ...itemPriorities.highest,
-                    ...itemPriorities.high,
-                  ]).toLocaleString()
-                }</span
-              >
-            </div>
-          </div>
-        </div>
-
-        <div class="strategy-note">
-          <p>
-            <strong>F2P:</strong> Focus on the 6 exclusive Discs first, then farm Ultimate stage repeats
-            (14 repeats available after using 4 tickets for first clears) to get additional Whispers
-            of Decay.
-          </p>
         </div>
       </div>
 
