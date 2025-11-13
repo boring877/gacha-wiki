@@ -61,6 +61,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
+<!-- DNS prefetch for game-related domains -->
+<link rel="dns-prefetch" href="//stellasora.global" />
+<link rel="dns-prefetch" href="//x.com" />
+<link rel="dns-prefetch" href="//youtube.com" />
+<link rel="dns-prefetch" href="//yo-star.com" />
+
+<!-- Preload critical resources -->
+<link
+  rel="preload"
+  href="/images/games/stella-sora/gameimg/BG1.jpg"
+  as="image"
+  fetchpriority="high"
+/>
+
 <!-- Stella Sora Specific Meta -->
 <meta name="game:title" content="Stella Sora ステラソラ" />
 <meta name="game:genre" content="Fantasy RPG, Gacha, Action Adventure, Top-Down Combat" />
@@ -142,11 +156,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
   }
 </style>
 
-<!-- Performance Optimization -->
-<link rel="dns-prefetch" href="//stellasora.global" />
-<link rel="dns-prefetch" href="//x.com" />
-<link rel="dns-prefetch" href="//youtube.com" />
-
-<!-- Preload Critical Resources -->
-<!-- Image preloads removed since using Astro optimization -->
-<!-- CSS preloads removed as they're imported directly -->
+<!-- Additional Performance Optimization -->
+<link rel="preconnect" href="https://stellasora.global" />
+<link rel="preconnect" href="https://x.com" />
+<link rel="preconnect" href="https://youtube.com" />

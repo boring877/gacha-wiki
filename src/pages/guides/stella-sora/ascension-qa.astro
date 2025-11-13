@@ -1,0 +1,113 @@
+---
+import AscensionQALayout from '../../../layouts/stella-sora/AscensionQALayout.astro';
+
+const questions = [
+  {
+    id: 1,
+    question: 'How would you define aiming high?',
+    options: [
+      'Live however you please.',
+      'Make a plan and follow it through.',
+      'Follow the crowd.',
+    ],
+    correctAnswer: 1,
+    reward: 'Random Musical Note ×10!',
+  },
+  {
+    id: 2,
+    question: 'Quiz time: What is 2 to the power of 10?',
+    options: ['64?', '1024?', '65536?'],
+    correctAnswer: 1,
+    reward: 'Random Rare Potential ×1!',
+  },
+  {
+    id: 3,
+    question: "Take a guess... What's the Monolith's favorite number?",
+    options: [
+      '3? Because there are always three options...',
+      '4? Because there are 4 of you...',
+      '5? Because I always end up with 5 coins left...',
+    ],
+    correctAnswer: 2,
+    reward: 'Random Potential ×1!',
+  },
+  {
+    id: 4,
+    question: 'Which of the following helps with maintaining your health?',
+    options: ['Balanced Diet?', 'Turn into a Stellaroid?', 'Overeating?'],
+    correctAnswer: 0,
+    reward: 'Random Musical Note ×10!',
+  },
+  {
+    id: 5,
+    question: 'What time do you think counts as "staying up late"?',
+    options: ["Nine o'clock?", "Twelve o'clock?", "Eight o'clock tomorrow morning?"],
+    correctAnswer: 1,
+    reward: 'Random Musical Note ×10!',
+  },
+  {
+    id: 6,
+    question: 'Quiz time: How many faces does a cube have?',
+    options: ['5?', '6?', '7?'],
+    correctAnswer: 1,
+    reward: 'Random Rare Potential ×1!',
+  },
+  {
+    id: 7,
+    question: 'Which of the following should you do less of for the sake of your health?',
+    options: ["Don't sit too long?", 'Less time in the sun?', 'Less exercise?'],
+    correctAnswer: 0,
+    reward: 'Random Rare Potential ×1!',
+  },
+];
+---
+
+<AscensionQALayout
+  title="Stella Sora Ascension Q&A - Quiz Questions & Answers"
+  description="Complete guide to Ascension quiz questions in Stella Sora. Find all questions, correct answers, and rewards including Musical Notes and Potential items."
+  gameTitle="Ascension Q&A"
+>
+  <div class="ascension-qa-container">
+    <!-- Stats Section -->
+    <section class="qa-stats-section">
+      <div class="qa-stats">
+        <div class="stat-item">
+          <span class="stat-number">{questions.length}</span>
+          <span class="stat-label">Questions</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Questions Section -->
+    <section class="questions-section">
+      <h2 class="section-title">Quiz Questions & Answers</h2>
+      <div class="questions-grid">
+        {
+          questions.map(q => (
+            <div class="question-card">
+              <div class="question-header">
+                <span class="question-number">Question {q.id}</span>
+              </div>
+              <h3 class="question-text">{q.question}</h3>
+
+              <div class="options-list">
+                {q.options.map((option, index) => (
+                  <div class={`option ${index === q.correctAnswer ? 'correct' : 'incorrect'}`}>
+                    <span class="option-marker">{index === q.correctAnswer ? '✓' : '✗'}</span>
+                    <span class="option-text">{option}</span>
+                    {index === q.correctAnswer && <span class="correct-label">Correct Answer</span>}
+                  </div>
+                ))}
+              </div>
+
+              <div class="reward">
+                <span class="reward-label">Reward:</span>
+                <span class="reward-text">{q.reward}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</AscensionQALayout>

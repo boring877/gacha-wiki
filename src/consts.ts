@@ -45,7 +45,7 @@ export const GAMES = {
   STELLA_SORA: {
     KEY: 'stella-sora',
     NAME: 'Stella Sora',
-    THEME_COLOR: '#7c3aed',
+    THEME_COLOR: '#7dd3fc',
     DAMAGE_K_VALUE: 1000,
     BASE_URL: '/guides/stella-sora',
   },
@@ -98,6 +98,17 @@ export const URLS = {
   STELLA_SORA: {
     BASE: '/guides/stella-sora',
     CHARACTERS: '/guides/stella-sora/characters',
+    CHARACTER_COMPARISON: '/guides/stella-sora/character-comparison',
+    CHARACTER_RANKINGS: '/guides/stella-sora/character-rankings',
+    DISCS: '/guides/stella-sora/discs',
+    EVENTS: '/guides/stella-sora/events',
+    SHOP_EVENTS: '/guides/stella-sora/shop-events',
+    BANNER_TIMELINE: '/guides/stella-sora/banner-timeline',
+    EMBLEMS: '/guides/stella-sora/emblem-stats',
+    EXCLUSIVE_ITEMS: '/guides/stella-sora/exclusive-items',
+    REDEEM_CODES: '/guides/stella-sora/redeem-codes',
+    CLOCK: '/clock/stella-sora',
+    TEAM_BUILDS: '/guides/stella-sora/team-builds',
   },
 } as const;
 
