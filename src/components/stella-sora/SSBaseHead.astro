@@ -1,5 +1,9 @@
 ---
 import { SITE_TITLE } from '../../consts';
+import { Image } from 'astro:assets';
+
+// Import the default background image
+import bgImage from '../../assets/images/games/stella-sora/gameimg/BG1.jpg';
 
 export interface Props {
   title?: string;
@@ -10,7 +14,7 @@ export interface Props {
 const {
   title = SITE_TITLE,
   description = 'Stella Sora Wiki - Fantasy RPG Trekker Guide, Nova Continent & Strategy',
-  image = '/images/games/stella-sora/gameimg/BG1.jpg',
+  image = bgImage.src,
 } = Astro.props;
 
 // Set meta tags
@@ -68,12 +72,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 <link rel="dns-prefetch" href="//yo-star.com" />
 
 <!-- Preload critical resources -->
-<link
-  rel="preload"
-  href="/images/games/stella-sora/gameimg/BG1.jpg"
-  as="image"
-  fetchpriority="high"
-/>
+<link rel="preload" href={bgImage.src} as="image" fetchpriority="high" />
 
 <!-- Stella Sora Specific Meta -->
 <meta name="game:title" content="Stella Sora ステラソラ" />

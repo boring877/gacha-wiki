@@ -5,6 +5,56 @@
 
 export const stellaSoraEvents = [
   {
+    id: 'version-1-2-new-trekker-fuyuka',
+    title: 'Version 1.2 and new ★5 Trekker: Fuyuka',
+    date: '2025-11-17',
+    startDate: '2025-11-17',
+    endDate: '2025-12-08',
+    summary:
+      'Celebrate the Version 1.2 update with the introduction of new ★5 Trekker: Fuyuka! Special login bonuses, limited-time events, and exclusive rewards await all players.',
+    description:
+      'The Version 1.2 update brings exciting new content to Stella Sora, featuring the introduction of Fuyuka, a powerful ★5 Trekker with unique abilities and story. This major update includes enhanced gameplay mechanics, new story chapters, quality of life improvements, and special celebration events. Join us for this milestone update and discover the new adventures that await!',
+    url: '/guides/stella-sora/events/version-1-2-new-trekker-fuyuka/',
+    image: '/images/games/stella-sora/events/4/1.jpg',
+    rewards: [
+      'New ★5 Trekker: Fuyuka',
+      'Version 1.2 Celebration Rewards',
+      'Limited-Time Login Bonuses',
+      'Special Anniversary Currency',
+      'Exclusive Title and Profile Frame',
+      'Enhancement Materials',
+      'Story Unlocks',
+    ],
+    featuredImage: '/images/games/stella-sora/events/4/1.jpg',
+    eventPeriod: {
+      eventPeriod: 'Nov. 17, 2025 after maintenance – Dec. 8, 2025 06:59 (UTC-7)',
+      celebrationPeriod: 'Nov. 17, 2025 – Dec. 15, 2025 23:59 (UTC-7)',
+      bonusPeriod:
+        'Special login bonuses and celebration events run throughout the version celebration period.',
+    },
+    participation: {
+      requirement:
+        'All players with Authorization Level ≥ 5 can participate in the celebration events and claim Fuyuka rewards.',
+      specialEvents:
+        'Complete daily missions, story chapters, and special challenges to unlock exclusive Fuyuka content.',
+    },
+    awards: {
+      loginBonus:
+        'Log in daily during the celebration period to receive special rewards including Fuyuka summoning tickets and enhancement materials.',
+      missionRewards:
+        'Complete version celebration missions to earn Fuyuka fragments, exclusive cosmetics, and premium currency.',
+      storylineContent:
+        'Unlock new story chapters featuring Fuyuka and discover her background, abilities, and connections to the main story.',
+      qualityUpdates:
+        'Experience new gameplay improvements including enhanced UI, performance optimizations, and quality of life features.',
+    },
+    requirements: {
+      authorizationLevel: 'Authorization Level ≥ 5',
+      team: 'Stella Sora Team',
+      version: 'Game Version 1.2 or higher',
+    },
+  },
+  {
     id: 'a-finale-echoing',
     title: 'A Finale Echoing (Beta)',
     date: '2025-11-10',
