@@ -1,0 +1,132 @@
+---
+import CharacterBuildsIndexLayout from '../../../../layouts/zone-nova/CharacterBuildsIndexLayout.astro';
+import ZNCharacterImage from '../../../../components/zone-nova/ZNCharacterImage.astro';
+import ZNClassImage from '../../../../components/zone-nova/ZNClassImage.astro';
+import { ALL_CHARACTER_BUILDS } from '../../../../data/zone-nova/character-builds.js';
+import { ZONE_NOVA_CHARACTERS } from '../../../../data/zone-nova/characters.js';
+
+export const prerender = true;
+
+// Get all character builds and sort them
+const allBuilds = Object.values(ALL_CHARACTER_BUILDS).sort((a, b) => a.name.localeCompare(b.name));
+
+// Helper function to get badge class names
+function getElementBadgeClass(element) {
+  return `element-badge ${element?.toLowerCase() || 'unknown'}`;
+}
+
+function getRarityBadgeClass(rarity) {
+  return `rarity-badge ${rarity?.toLowerCase() || 'unknown'}`;
+}
+---
+
+<CharacterBuildsIndexLayout
+  title="Zone Nova Character Builds"
+  description="Complete character build guides for all Zone Nova characters. Find optimal equipment, skill priorities, and team compositions."
+  gameTitle="Character Builds"
+>
+  <section class="builds-content-section">
+    <h2 class="builds-section-title">Character Build Guides</h2>
+    <p style="color: var(--zn-text-secondary); margin-bottom: 2rem; line-height: 1.6;">
+      Comprehensive build guides for Zone Nova characters. Each guide includes optimal equipment
+      choices, skill priorities, memory card recommendations, and team synergy suggestions to
+      maximize your character's potential.
+    </p>
+
+    <div
+      style="background-color: var(--zn-bg-card); border: 1px solid var(--zn-primary); border-radius: 4px; padding: 1.5rem; margin-bottom: 2rem;"
+    >
+      <div style="text-align: center; margin-bottom: 1rem;">
+        <div
+          style="color: var(--zn-primary); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;"
+        >
+          Featured Build
+        </div>
+        <div style="color: var(--zn-text-secondary); font-size: 0.9rem;">
+          Currently Available Character
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="builds-content-section">
+    <h2 class="builds-section-title">Available Character Builds</h2>
+
+    <div class="character-builds-grid">
+      {
+        allBuilds.map(build => (
+          <a
+            href={`/guides/zone-nova/character-builds/${build.character?.slug || 'apep'}`}
+            class="character-build-card"
+          >
+            <div class="character-card-header">
+              <div class="character-card-portrait">
+                <ZNCharacterImage
+                  imageName={build.character?.image || 'Apep.jpg'}
+                  alt={`${build.name} portrait`}
+                  width={100}
+                  height={100}
+                  loading="eager"
+                />
+              </div>
+
+              <div class="character-card-info">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                  <h3 class="character-card-name">{build.name}</h3>
+                  <ZNClassImage
+                    className={build.character?.class || 'Warrior'}
+                    alt={`${build.character?.class || 'Warrior'} class icon`}
+                    size="small"
+                  />
+                </div>
+                <div class="character-card-class">{build.character?.class || 'Unknown'}</div>
+                <div class="character-card-faction">
+                  {build.character?.faction || 'Unknown Faction'}
+                </div>
+              </div>
+            </div>
+
+            <div class="character-card-badges">
+              <span class={getRarityBadgeClass(build.character?.rarity)}>
+                {build.character?.rarity || 'N/A'}
+              </span>
+
+              <span class={getElementBadgeClass(build.character?.element)}>
+                {build.character?.element || 'N/A'}
+              </span>
+
+              <span class="role-badge tank">{build.role}</span>
+            </div>
+
+            <div class="character-card-preview">
+              <>
+                <strong>{build.buildType}</strong>
+                <br />
+              </>
+              {build.description}
+            </div>
+
+            <div style="margin-top: 1rem;">
+              <div style="color: var(--zn-text-tertiary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                Key Features:
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.25rem;">
+                {build.character?.tags?.slice(0, 3).map(tag => (
+                  <span
+                    style="background-color: var(--zn-bg-tertiary);
+                           color: var(--zn-text-secondary);
+                           padding: 0.2rem 0.4rem;
+                           border-radius: 2px;
+                           font-size: 0.7rem;"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</CharacterBuildsIndexLayout>

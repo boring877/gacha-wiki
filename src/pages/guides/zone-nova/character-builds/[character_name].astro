@@ -1,0 +1,587 @@
+---
+import CharacterBuildIndividualLayout from '../../../../layouts/zone-nova/CharacterBuildIndividualLayout.astro';
+import ZNCharacterImage from '../../../../components/zone-nova/ZNCharacterImage.astro';
+import ZNClassImage from '../../../../components/zone-nova/ZNClassImage.astro';
+import ZNMemoryImage from '../../../../components/zone-nova/ZNMemoryImage.astro';
+import ZNRunesImage from '../../../../components/zone-nova/ZNRunesImage.astro';
+import { ALL_CHARACTER_BUILDS } from '../../../../data/zone-nova/character-builds.js';
+import { getCharacterBySlug } from '../../../../data/zone-nova/characters.js';
+import { apepData } from '../../../../data/zone-nova/characters/apep.js';
+
+export const prerender = true;
+
+// Generate static paths for all available character builds
+export async function getStaticPaths() {
+  const builds = Object.values(ALL_CHARACTER_BUILDS);
+
+  return builds.map(build => ({
+    params: { character_name: build.character?.slug || 'apep' },
+    props: {
+      character: build.character,
+      build: build,
+    },
+  }));
+}
+
+// Get the character slug from the URL
+const { character_name } = Astro.params;
+
+// Get character data and build data from props (from getStaticPaths)
+const { character, build } = Astro.props;
+
+// Get fallback data if character or build not found
+const fallbackCharacter = {
+  name: character_name,
+  class: 'Unknown',
+  role: 'Unknown',
+  faction: 'Unknown',
+  element: 'Unknown',
+  rarity: 'Unknown',
+  image: null,
+};
+
+const fallbackBuild = {
+  name: character_name,
+  role: 'DPS',
+  buildType: 'Basic Build',
+  description: 'Build information is not available for this character yet.',
+  skillPriority: [],
+  recommendedMemoryCards: [],
+  alternativeMemoryCards: [],
+  runes: { primary: 'Attack', secondary: 'HP', stats: [] },
+  teamSynergy: { goodWith: [], description: '' },
+  tips: ['Build information coming soon.'],
+};
+
+const finalCharacter = character || fallbackCharacter;
+const finalBuild = build || fallbackBuild;
+
+// Get character-specific data for Apep
+const characterData = finalCharacter.slug === 'apep' ? apepData : null;
+
+// Helper function to get badge class names
+function getElementBadgeClass(element) {
+  return `element-badge ${element?.toLowerCase() || 'unknown'}`;
+}
+
+function getRarityBadgeClass(rarity) {
+  return `rarity-badge ${rarity?.toLowerCase() || 'unknown'}`;
+}
+
+// Generate page title
+const pageTitle = `${finalCharacter.name} Build Guide - Zone Nova`;
+const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone Nova. Optimal equipment, skill priorities, memory cards, and team compositions.`;
+---
+
+<CharacterBuildIndividualLayout
+  title={pageTitle}
+  description={pageDescription}
+  gameTitle={`${finalCharacter.name} Build Guide`}
+  character={finalCharacter}
+>
+  <!-- Build Overview Section -->
+  <section class="build-overview">
+    <div class="build-overview-header">
+      <div class="build-character-portrait">
+        <ZNCharacterImage
+          imageName={finalCharacter.image || 'Apep.jpg'}
+          alt={`${finalCharacter.name} portrait`}
+          width={100}
+          height={100}
+          loading="eager"
+        />
+      </div>
+
+      <div class="build-character-info">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+          <h1>{finalCharacter.name}</h1>
+          <ZNClassImage
+            className={finalCharacter.class || 'Warrior'}
+            alt={`${finalCharacter.class || 'Warrior'} class icon`}
+            size="medium"
+          />
+        </div>
+        <div class="build-character-faction">{finalCharacter.faction}</div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+      <span class={getRarityBadgeClass(finalCharacter.rarity)}>
+        {finalCharacter.rarity}
+      </span>
+      <span class={getElementBadgeClass(finalCharacter.element)}>
+        {finalCharacter.element}
+      </span>
+      <span class="class-badge warrior">
+        {finalCharacter.class}
+      </span>
+      <span class="role-badge tank">
+        {finalCharacter.role}
+      </span>
+    </div>
+
+    <p style="color: var(--zn-text-primary); font-size: 1.1rem; line-height: 1.6;">
+      {finalBuild.description}
+    </p>
+  </section>
+
+  <!-- Skill Priority Section -->
+  <section class="build-section">
+    <h2>Skill Priority</h2>
+    <p style="color: var(--zn-text-secondary); margin-bottom: 1.5rem;">
+      Skill level recommendations for F2P non-spender:
+    </p>
+
+    <div class="skill-priority-list">
+      {
+        finalBuild.skillPriority.map((skill, index) => {
+          // Get real skill description from apep.js if available
+          let skillDescription = skill.description;
+          if (characterData && characterData.skills) {
+            const skillKey = skill.skill.toLowerCase().replace(' ', '');
+            if (skillKey === 'passive' && characterData.skills.passive) {
+              skillDescription = characterData.skills.passive.description;
+            } else if (skillKey === 'autoskill' && characterData.skills.auto) {
+              skillDescription = characterData.skills.auto.description;
+            } else if (skillKey === 'ultimate' && characterData.skills.ultimate) {
+              skillDescription = characterData.skills.ultimate.description;
+            } else if (skillKey === 'normalattack' && characterData.skills.normal) {
+              skillDescription = characterData.skills.normal.description;
+            }
+          }
+
+          return (
+            <div class="skill-priority-item">
+              <div class="skill-priority-number">{skill.priority}</div>
+              <div class="skill-priority-info">
+                <div class="skill-priority-name">{skill.skill}</div>
+                <div class="skill-priority-level">{skill.level}</div>
+                <div class="skill-priority-description">{skillDescription}</div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- Recommended Memory Cards Section -->
+  <section class="build-section">
+    <h2>Recommended Memory Cards</h2>
+    <p style="color: var(--zn-text-secondary); margin-bottom: 1.5rem;">
+      These are the best memory cards for {finalCharacter.name}:
+    </p>
+
+    <div class="memory-cards-grid">
+      {
+        finalBuild.recommendedMemoryCards.map(card => {
+          // Get real memory card data if it's Apep's own card
+          type MemoryCardData = {
+            name: string;
+            image: string;
+            description?: string;
+            stats: {
+              hp: string;
+              attack: string;
+              defense: string;
+            };
+            effects: string[];
+          };
+
+          let memoryDetails: MemoryCardData | null = null;
+          if (characterData && characterData.memoryCard && card.characterSpecific) {
+            memoryDetails = characterData.memoryCard as MemoryCardData;
+          }
+
+          return (
+            <div class={`memory-card-item ${card.characterSpecific ? 'character-specific' : ''}`}>
+              <div class="memory-card-horizontal">
+                {memoryDetails && (
+                  <div class="memory-card-image-container">
+                    <ZNMemoryImage
+                      imageName={memoryDetails.image}
+                      alt={`${card.name} memory card`}
+                      width={60}
+                      height={60}
+                      loading="eager"
+                    />
+                  </div>
+                )}
+                <div class="memory-card-content">
+                  <div class="memory-card-header">
+                    <div class="memory-card-name">
+                      {card.name}
+                      {card.characterSpecific && (
+                        <span class="memory-card-exclusive">★ Exclusive</span>
+                      )}
+                    </div>
+                    {card.priority && (
+                      <div>
+                        <span
+                          class={`memory-card-badge ${card.priority === 'Highly Recommended' ? 'highly-recommended' : card.priority.toLowerCase()}`}
+                        >
+                          {card.priority}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div class="memory-card-effect">{memoryDetails?.description || card.effect}</div>
+                  {memoryDetails && (
+                    <div class="memory-card-stats">
+                      <strong>Stats:</strong> HP {memoryDetails.stats.hp} / ATK{' '}
+                      {memoryDetails.stats.attack} / DEF {memoryDetails.stats.defense}
+                    </div>
+                  )}
+                  {card.characterSpecific && (
+                    <div class="memory-card-link-container">
+                      <a
+                        href="/guides/zone-nova/memories/wrong-appearance-timing/"
+                        class="memory-card-link"
+                      >
+                        View Details →
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- Alternative Memory Cards Section -->
+  <section class="build-section">
+    <h2>Alternative Memory Cards</h2>
+    <p style="color: var(--zn-text-secondary); margin-bottom: 1.5rem;">
+      Good alternative options if you don't have the recommended cards:
+    </p>
+
+    <div class="memory-cards-grid">
+      {
+        finalBuild.alternativeMemoryCards.map(card => {
+          // Create memory details object for enhanced layout
+          type AlternativeMemoryCardData = {
+            name: string;
+            image: string;
+            description?: string;
+            stats: {
+              hp: string;
+              attack: string;
+              defense: string;
+            };
+          };
+
+          let memoryDetails: AlternativeMemoryCardData | null = null;
+          if (card.memoryImage && card.memoryStats) {
+            memoryDetails = {
+              name: card.name,
+              image: card.memoryImage,
+              stats: card.memoryStats,
+              description: card.description,
+            } as AlternativeMemoryCardData;
+          }
+
+          return (
+            <div class={`memory-card-item ${card.characterSpecific ? 'character-specific' : ''}`}>
+              <div class="memory-card-horizontal">
+                {memoryDetails && (
+                  <div class="memory-card-image-container">
+                    <ZNMemoryImage
+                      imageName={memoryDetails.image}
+                      alt={`${card.name} memory card`}
+                      width={60}
+                      height={60}
+                      loading="eager"
+                    />
+                  </div>
+                )}
+                <div class="memory-card-content">
+                  <div class="memory-card-header">
+                    <div class="memory-card-name">{card.name}</div>
+                  </div>
+                  <div class="memory-card-effect">{memoryDetails?.description || card.effect}</div>
+                  {memoryDetails && (
+                    <div class="memory-card-stats">
+                      <strong>Stats:</strong> HP {memoryDetails.stats.hp} / ATK{' '}
+                      {memoryDetails.stats.attack} / DEF {memoryDetails.stats.defense}
+                    </div>
+                  )}
+                  <div class="memory-card-link-container">
+                    <a
+                      href="/guides/zone-nova/memories/behind-the-regret/"
+                      class="memory-card-link"
+                    >
+                      View Details →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- Runes Section -->
+  <section class="build-section">
+    <h2>Runes Priorities</h2>
+    <p style="color: var(--zn-text-secondary); margin-bottom: 1.5rem;">
+      Focus on these rune stats for {finalCharacter.name}:
+    </p>
+
+    <div
+      style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1.5rem; margin-bottom: 1rem;"
+    >
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;"
+      >
+        <div>
+          <div style="color: var(--zn-text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">
+            Primary Stat:
+          </div>
+          <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1.1rem;">
+            {finalBuild.runes.primary}
+          </div>
+        </div>
+        <div>
+          <div style="color: var(--zn-text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">
+            Secondary Stat:
+          </div>
+          <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1.1rem;">
+            {finalBuild.runes.secondary}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Highly Recommended Stats:</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+      {
+        ['DEF%', 'HP%', 'DEF', 'HP'].map(stat => (
+          <span
+            style="background-color: var(--zn-primary);
+                    color: #000000;
+                    font-weight: 600;
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    border: 1px solid var(--zn-primary);"
+          >
+            {stat}
+          </span>
+        ))
+      }
+    </div>
+
+    <h3>Additional Stats:</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+      {
+        ['Crit Rate', 'Crit Damage', 'Penetration'].map(stat => (
+          <span
+            style="background-color: var(--zn-bg-tertiary);
+                    color: var(--zn-text-primary);
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    border: 1px solid var(--zn-border-light);"
+          >
+            {stat}
+          </span>
+        ))
+      }
+    </div>
+
+    <h3>Recommended Rune Sets:</h3>
+    <div
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;"
+    >
+      {
+        finalBuild.runes.recommendedSets.map(runeSet => (
+          <div style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1rem; text-align: center;">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <div style="text-align: center;">
+                <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <ZNRunesImage
+                    imageName={runeSet.mainRune}
+                    alt={`${runeSet.mainRune} rune (4-piece)`}
+                    width={64}
+                    height={64}
+                    loading="eager"
+                    style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                  />
+                </div>
+                <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
+                  4-piece
+                </div>
+              </div>
+              <div style="font-size: 1.5rem; color: var(--zn-text-secondary); font-weight: 600;">
+                +
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <ZNRunesImage
+                    imageName={runeSet.secondaryRune}
+                    alt={`${runeSet.secondaryRune} rune (2-piece)`}
+                    width={64}
+                    height={64}
+                    loading="eager"
+                    style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                  />
+                </div>
+                <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
+                  2-piece
+                </div>
+              </div>
+            </div>
+            <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
+              {runeSet.englishName}
+            </div>
+            <div style="margin-top: 0.75rem; text-align: left;">
+              <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                <strong style="color: var(--zn-primary);">2-piece ({runeSet.mainRune}):</strong>{' '}
+                {runeSet.mainRune2Piece}
+              </div>
+              <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                <strong style="color: var(--zn-primary);">4-piece ({runeSet.mainRune}):</strong>{' '}
+                {runeSet.mainRune4Piece}
+              </div>
+              <div style="font-size: 0.9rem; color: var(--zn-text-secondary);">
+                <strong style="color: var(--zn-primary);">
+                  2-piece ({runeSet.secondaryRune}):
+                </strong>{' '}
+                {runeSet.secondaryRuneEffect}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    {
+      finalBuild.runes.alternativeSets && finalBuild.runes.alternativeSets.length > 0 && (
+        <>
+          <h3>Alternative Builds:</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            {finalBuild.runes.alternativeSets.map(runeSet => (
+              <div style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1rem; text-align: center;">
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                  <div style="text-align: center;">
+                    <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                      <ZNRunesImage
+                        imageName={runeSet.mainRune}
+                        alt={`${runeSet.mainRune} rune (4-piece)`}
+                        width={64}
+                        height={64}
+                        loading="eager"
+                        style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                      />
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
+                      4-piece
+                    </div>
+                  </div>
+                  <div style="font-size: 1.5rem; color: var(--zn-text-secondary); font-weight: 600;">
+                    +
+                  </div>
+                  <div style="text-align: center;">
+                    <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                      <ZNRunesImage
+                        imageName={runeSet.secondaryRune}
+                        alt={`${runeSet.secondaryRune} rune (2-piece)`}
+                        width={64}
+                        height={64}
+                        loading="eager"
+                        style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                      />
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
+                      2-piece
+                    </div>
+                  </div>
+                </div>
+                <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
+                  {runeSet.englishName}
+                </div>
+                <div style="margin-top: 0.75rem; text-align: left;">
+                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                    <strong style="color: var(--zn-primary);">2-piece ({runeSet.mainRune}):</strong>{' '}
+                    {runeSet.mainRune2Piece}
+                  </div>
+                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                    <strong style="color: var(--zn-primary);">4-piece ({runeSet.mainRune}):</strong>{' '}
+                    {runeSet.mainRune4Piece}
+                  </div>
+                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary);">
+                    <strong style="color: var(--zn-primary);">
+                      2-piece ({runeSet.secondaryRune}):
+                    </strong>{' '}
+                    {runeSet.secondaryRuneEffect}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )
+    }
+  </section>
+
+  <!-- Main Stats by Position Section -->
+  <section class="build-section">
+    <h2>Main Stats by Position</h2>
+    <p style="color: var(--zn-text-secondary); margin-bottom: 1.5rem;">
+      Recommended main stats for each rune position for {finalCharacter.name}:
+    </p>
+
+    <div class="main-stats-grid">
+      {
+        Object.entries(finalBuild.mainStatsByPosition).map(([position, data]) => (
+          <div class="main-stat-card">
+            <h3>{data.name}</h3>
+
+            {data.isFixed ? (
+              <div class="main-stat-fixed">
+                <div class="main-stat-fixed-value">{data.stat}</div>
+              </div>
+            ) : (
+              <div class="main-stat-variable">
+                <div class="main-stat-recommended">Recommended: {data.recommendedStat}</div>
+                <div class="main-stat-options-label">
+                  <strong>Available Options:</strong>
+                </div>
+                <div class="main-stat-options-list">
+                  {data.availableStats.map(stat => (
+                    <span
+                      class={`main-stat-option ${stat === data.recommendedStat ? 'recommended' : ''}`}
+                    >
+                      {stat}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <p class="main-stat-description">{data.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Team Synergy Section -->
+  <section class="build-section">
+    <h2>Team Synergy</h2>
+    <h3>Good Teammates:</h3>
+    <div class="synergy-character-list">
+      {finalBuild.teamSynergy.goodWith.map(ally => <span class="synergy-character">{ally}</span>)}
+    </div>
+    {
+      finalBuild.teamSynergy.note && (
+        <p style="color: var(--zn-text-secondary); font-style: italic; margin-top: 1rem;">
+          {finalBuild.teamSynergy.note}
+        </p>
+      )
+    }
+  </section>
+</CharacterBuildIndividualLayout>

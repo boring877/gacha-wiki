@@ -65,6 +65,11 @@ export const zoneNovaConfig = {
           url: '/guides/zone-nova/character-comparison-v2/',
         },
         {
+          id: 'character-builds',
+          title: 'Character Builds',
+          url: '/guides/zone-nova/character-builds/',
+        },
+        {
           id: 'character-tags',
           title: 'Tags',
           url: '/guides/zone-nova/character-tags/',
@@ -254,6 +259,16 @@ export const zoneNovaConfig = {
       url: '/guides/zone-nova/character-rankings/',
       category: 'guides',
       size: 'medium',
+    },
+    {
+      id: 'character-builds',
+      title: 'Character Builds',
+      emoji: '',
+      description:
+        'Complete build guides for all Zone Nova characters. Find optimal equipment, skill priorities, and team compositions.',
+      url: '/guides/zone-nova/character-builds/',
+      category: 'guides',
+      size: 'large',
     },
     {
       id: 'character-tags',

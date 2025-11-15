@@ -86,6 +86,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Rankings', href: '/guides/zone-nova/character-rankings/' },
           { name: 'Comparison', href: '/guides/zone-nova/character-comparison/' },
           { name: 'Comparison V2', href: '/guides/zone-nova/character-comparison-v2/' },
+          { name: 'Character Builds', href: '/guides/zone-nova/character-builds/' },
           { name: 'Tags', href: '/guides/zone-nova/character-tags/' },
         ],
       },
