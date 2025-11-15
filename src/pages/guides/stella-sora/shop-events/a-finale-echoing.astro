@@ -313,6 +313,12 @@ const calculateTierCost = (tierItems: Array<{ name: string }>) => {
 // Total Whispers of Decay from all sources except purchases
 const totalWhispersFromAllSources =
   totalWhispersFromStages + whispersFromScoreMilestones + ultimateStageRepeatWhispers;
+
+// Calculate Whispers of Decay from ranking rewards (Top 10%: 2400)
+const rankingRewardsWhispers = 2400;
+
+// Calculate total including ranking rewards (Top 10%)
+const totalWhispersWithRanking = totalWhispersFromAllSources + rankingRewardsWhispers;
 ---
 
 <ShopEventLayout
@@ -437,6 +443,19 @@ const totalWhispersFromAllSources =
           </div>
 
           <div class="stat-list-item">
+            <span class="stat-label">From Ranking Rewards (Top 10%)</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value">{rankingRewardsWhispers.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
             <span class="stat-label">Total Earned (All Sources)</span>
             <div class="currency-display">
               <SSShopEventImage
@@ -447,6 +466,21 @@ const totalWhispersFromAllSources =
               />
               <span class="stat-value cracker-grand-total"
                 >{totalWhispersFromAllSources.toLocaleString()}</span
+              >
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Total with Ranking (Top 10%)</span>
+            <div class="currency-display">
+              <SSShopEventImage
+                imageSrc="Whispers_of_Decay.jpg"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value cracker-grand-total"
+                >{totalWhispersWithRanking.toLocaleString()}</span
               >
             </div>
           </div>
@@ -961,27 +995,29 @@ const totalWhispersFromAllSources =
     <div class="recommendation-header">
       <h2 class="recommendation-title">Personal Recommendation</h2>
       <p class="recommendation-subtitle">
-        This is what I thought important, If we had 14k currency I would gone to 2 disc.
+        Updated strategy with Top 10% ranking rewards included for optimal shop planning.
       </p>
     </div>
 
     <div class="recommendation-content">
       <div class="budget-summary">
         <div class="summary-item">
-          <div class="summary-label">Available</div>
-          <div class="summary-value">13,300</div>
+          <div class="summary-label">Base Available</div>
+          <div class="summary-value">{totalWhispersWithRanking.toLocaleString()}</div>
         </div>
         <div class="summary-item">
           <div class="summary-label">Recommended Items</div>
-          <div class="summary-value">2 Items</div>
+          <div class="summary-value">3 Items</div>
         </div>
         <div class="summary-item">
           <div class="summary-label">Total Cost</div>
-          <div class="summary-value cost">8,500</div>
+          <div class="summary-value cost">15,200</div>
         </div>
         <div class="summary-item">
           <div class="summary-label">Remaining</div>
-          <div class="summary-value remaining">4,800</div>
+          <div class="summary-value remaining">
+            {(totalWhispersWithRanking - 15200).toLocaleString()}
+          </div>
         </div>
       </div>
 
@@ -1000,6 +1036,29 @@ const totalWhispersFromAllSources =
             </div>
             <div class="pick-info">
               <div class="pick-name">Sweet Times</div>
+              <div class="pick-cost">
+                <SSShopEventImage
+                  imageSrc="Whispers_of_Decay.jpg"
+                  alt="Whispers of Decay"
+                  width={14}
+                  height={14}
+                />
+                <span>7,000</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pick-card">
+            <div class="pick-image">
+              <SSShopEventImage
+                imageSrc="Voyage_Blueprint.jpg"
+                alt="Voyage Blueprint"
+                width={60}
+                height={60}
+              />
+            </div>
+            <div class="pick-info">
+              <div class="pick-name">Voyage Blueprint</div>
               <div class="pick-cost">
                 <SSShopEventImage
                   imageSrc="Whispers_of_Decay.jpg"
@@ -1140,6 +1199,48 @@ const totalWhispersFromAllSources =
           </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Ranking Rewards Section -->
+  <section class="ranking-rewards-section">
+    <h2 class="ss-shop-items-title">Ranking Rewards</h2>
+
+    <div class="ranking-table-container">
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th>Rank Range</th>
+            <th>Rewards</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Top 10%</td>
+            <td>Avatar Frame ×1, Whispers of Decay ×2400, Gem ×2000</td>
+          </tr>
+          <tr>
+            <td>10% (exclusive) to 20%</td>
+            <td>Avatar Frame ×1, Whispers of Decay ×2200, Gem ×2000</td>
+          </tr>
+          <tr>
+            <td>20% (exclusive) to 30%</td>
+            <td>Avatar Frame ×1, Whispers of Decay ×2000, Gem ×2000</td>
+          </tr>
+          <tr>
+            <td>30% (exclusive) to 50%</td>
+            <td>Whispers of Decay ×1800, Gem ×1800</td>
+          </tr>
+          <tr>
+            <td>50% (exclusive) to 70%</td>
+            <td>Whispers of Decay ×1600, Gem ×1500</td>
+          </tr>
+          <tr>
+            <td>Below Top 70%</td>
+            <td>Whispers of Decay ×1400, Gem ×1200</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 </ShopEventLayout>

@@ -1478,6 +1478,64 @@
   }
 }
 
+/* Ranking Rewards Section */
+.ranking-rewards-section {
+  margin-bottom: 2rem;
+}
+
+.ranking-table-container {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.ranking-table th {
+  background: var(--ss-primary-subtle);
+  color: var(--ss-text-primary);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 2px solid var(--ss-primary-border);
+}
+
+.ranking-table td {
+  color: var(--ss-text-secondary);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--ss-border-subtle);
+}
+
+.ranking-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Ranking Rewards Responsive Design */
+@media (max-width: 768px) {
+  .ranking-table {
+    font-size: 0.8rem;
+  }
+
+  .ranking-table th,
+  .ranking-table td {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ranking-table {
+    font-size: 0.75rem;
+  }
+
+  .ranking-table th,
+  .ranking-table td {
+    padding: 0.4rem;
+  }
+}
+
 /* Print Styles */
 @media print {
   .event-status-bar {
