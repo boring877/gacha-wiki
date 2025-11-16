@@ -1,0 +1,331 @@
+---
+import StigmaLayout from '../../../../layouts/horizon-walker/StigmaLayout.astro';
+import { StigmaImage } from '../../../../components/horizon-walker/index.astro';
+import { stigmas } from '../../../../data/horizon-walker/stigmas.js';
+
+// Helper function to determine image name for a stigma
+function getStigmaImageName(stigmaName: string, rarity: string): string {
+  // Special mappings for complex stigma names to actual image filenames
+  const specialMappings = {
+    "Jester's Mask": `Jester${rarity}`,
+    'Reckoning of Sin': `Reckoning_of_Sin${rarity}`,
+    Jupiter: `Jupiter${rarity}`,
+    Harmony: `Harmony${rarity}`,
+    'Phantom Banquet': `Phantom_Banquet${rarity}`,
+    'The Brilliant Touch of Earth': `The_Brilliant_Touch_of_Earth${rarity}`,
+    'The Eternal Battle': `The_Eternal_Battle${rarity}`,
+    'The Knight of the Seven Petals': `The_Knight_of_the_Seven_Petals${rarity}`,
+    'The Four Horsemen': `The_Four_Horsemen${rarity}`,
+    'The Wind that Wanders the World': 'The_Wind_that_Wanders_the_WorldEX',
+    'The Thousand Mile Weave': 'The_Thousand_Mile_WeaveEX',
+    'The Ship of Theseus': 'The_Ship_of_TheseusSS',
+    "The Noble's Tactics": "The_Noble's_TacticsSS",
+    'The Blacksmith Blessing': 'The_BlackSmith_BlessingSS',
+    'The Record of Orphan': 'The_Record_of_OrphanSS',
+    'The Irreversible Box of Secrets': 'The_Irreversible_Box_of_SecretsSS',
+    'Thorned Heart': 'Thorned_HeartSS',
+    Beast: `Beast${rarity}`,
+    Titan: `Titan${rarity}`,
+    Mage: `Mage${rarity}`,
+    Marksman: `Marksman${rarity}`,
+    Fighter: `Fighter${rarity}`,
+  };
+
+  return specialMappings[stigmaName];
+}
+---
+
+<StigmaLayout
+  title="Horizon Walker Stigmas"
+  description="Complete collection of all Horizon Walker stigmas organized by rarity including EX, SS, S, and A grade stigmas with set bonuses and piece information."
+>
+  <!-- EX Rarity Stigmas -->
+  {
+    stigmas.EX && stigmas.EX.length > 0 && (
+      <section class="content-section stigma-rarity-section">
+        <h2 class="rarity-title ex-rarity">EX Stigmas</h2>
+        <div class="stigma-grid">
+          {stigmas.EX.map((stigma: any) => (
+            <div class="stigma-card ex-card">
+              <div class="stigma-header">
+                <div class="stigma-image-container">
+                  <StigmaImage
+                    imageName={getStigmaImageName(stigma.name, 'EX')}
+                    alt={`${stigma.name} EX stigma icon`}
+                    width={80}
+                    height={80}
+                    loading="eager"
+                    class="stigma-icon"
+                  />
+                </div>
+                <div class="stigma-title-container">
+                  <h3 class="stigma-name">{stigma.name}</h3>
+                  <span class="hw-badge" data-rarity="EX">
+                    EX
+                  </span>
+                </div>
+              </div>
+
+              <div class="stigma-bonuses">
+                <div class="bonus-section">
+                  <h4>2-Set Bonus</h4>
+                  <p>{stigma.twoSet}</p>
+                </div>
+
+                <div class="bonus-section">
+                  <h4>4-Set Bonus</h4>
+                  <p>{stigma.fourSet}</p>
+                  {stigma.specialEffect && (
+                    <div class="special-effect">
+                      <strong>[{stigma.specialEffect.name}]:</strong>{' '}
+                      {stigma.specialEffect.description}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div class="stigma-pieces">
+                <h4>Set Pieces</h4>
+                <div class="pieces-grid">
+                  <div class="piece-item">
+                    <div class="piece-slot">Top</div>
+                    <div class="piece-name">{stigma.pieces.top.name}</div>
+                    <div class="piece-stat">{stigma.pieces.top.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Bottom</div>
+                    <div class="piece-name">{stigma.pieces.bottom.name}</div>
+                    <div class="piece-stat">{stigma.pieces.bottom.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Left</div>
+                    <div class="piece-name">{stigma.pieces.left.name}</div>
+                    <div class="piece-stat">{stigma.pieces.left.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Right</div>
+                    <div class="piece-name">{stigma.pieces.right.name}</div>
+                    <div class="piece-stat">{stigma.pieces.right.stat}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- SS Rarity Stigmas -->
+  {
+    stigmas.SS && stigmas.SS.length > 0 && (
+      <section class="content-section stigma-rarity-section">
+        <h2 class="rarity-title ss-rarity">SS Stigmas</h2>
+        <div class="stigma-grid">
+          {stigmas.SS.map((stigma: any) => (
+            <div class="stigma-card ss-card">
+              <div class="stigma-header">
+                <div class="stigma-image-container">
+                  <StigmaImage
+                    imageName={getStigmaImageName(stigma.name, 'SS')}
+                    alt={`${stigma.name} SS stigma icon`}
+                    width={80}
+                    height={80}
+                    loading="eager"
+                    class="stigma-icon"
+                  />
+                </div>
+                <div class="stigma-title-container">
+                  <h3 class="stigma-name">{stigma.name}</h3>
+                  <span class="hw-badge" data-rarity="SS">
+                    SS
+                  </span>
+                </div>
+              </div>
+
+              <div class="stigma-bonuses">
+                <div class="bonus-section">
+                  <h4>2-Set Bonus</h4>
+                  <p>{stigma.twoSet}</p>
+                </div>
+
+                <div class="bonus-section">
+                  <h4>4-Set Bonus</h4>
+                  <p>{stigma.fourSet}</p>
+                  {stigma.specialEffect && (
+                    <div class="special-effect">
+                      <strong>[{stigma.specialEffect.name}]:</strong>{' '}
+                      {stigma.specialEffect.description}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div class="stigma-pieces">
+                <h4>Set Pieces</h4>
+                <div class="pieces-grid">
+                  <div class="piece-item">
+                    <div class="piece-slot">Top</div>
+                    <div class="piece-name">{stigma.pieces.top.name}</div>
+                    <div class="piece-stat">{stigma.pieces.top.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Bottom</div>
+                    <div class="piece-name">{stigma.pieces.bottom.name}</div>
+                    <div class="piece-stat">{stigma.pieces.bottom.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Left</div>
+                    <div class="piece-name">{stigma.pieces.left.name}</div>
+                    <div class="piece-stat">{stigma.pieces.left.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Right</div>
+                    <div class="piece-name">{stigma.pieces.right.name}</div>
+                    <div class="piece-stat">{stigma.pieces.right.stat}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- S Rarity Stigmas -->
+  {
+    stigmas.S && stigmas.S.length > 0 && (
+      <section class="content-section stigma-rarity-section">
+        <h2 class="rarity-title s-rarity">S Stigmas</h2>
+        <div class="stigma-grid">
+          {stigmas.S.map((stigma: any) => (
+            <div class="stigma-card s-card">
+              <div class="stigma-header">
+                <div class="stigma-image-container">
+                  <StigmaImage
+                    imageName={getStigmaImageName(stigma.name, 'S')}
+                    alt={`${stigma.name} S stigma icon`}
+                    width={80}
+                    height={80}
+                    loading="eager"
+                    class="stigma-icon"
+                  />
+                </div>
+                <div class="stigma-title-container">
+                  <h3 class="stigma-name">{stigma.name}</h3>
+                  <span class="hw-badge" data-rarity="S">
+                    S
+                  </span>
+                </div>
+              </div>
+
+              <div class="stigma-bonuses">
+                <div class="bonus-section">
+                  <h4>2-Set Bonus</h4>
+                  <p>{stigma.twoSet}</p>
+                </div>
+
+                <div class="bonus-section">
+                  <h4>4-Set Bonus</h4>
+                  <p>{stigma.fourSet}</p>
+                </div>
+              </div>
+
+              <div class="stigma-pieces">
+                <h4>Set Pieces</h4>
+                <div class="pieces-grid">
+                  <div class="piece-item">
+                    <div class="piece-slot">Top</div>
+                    <div class="piece-name">{stigma.pieces.top.name}</div>
+                    <div class="piece-stat">{stigma.pieces.top.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Bottom</div>
+                    <div class="piece-name">{stigma.pieces.bottom.name}</div>
+                    <div class="piece-stat">{stigma.pieces.bottom.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Left</div>
+                    <div class="piece-name">{stigma.pieces.left.name}</div>
+                    <div class="piece-stat">{stigma.pieces.left.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Right</div>
+                    <div class="piece-name">{stigma.pieces.right.name}</div>
+                    <div class="piece-stat">{stigma.pieces.right.stat}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- A Rarity Stigmas -->
+  {
+    stigmas.A && stigmas.A.length > 0 && (
+      <section class="content-section stigma-rarity-section">
+        <h2 class="rarity-title a-rarity">A Stigmas</h2>
+        <div class="stigma-grid">
+          {stigmas.A.map((stigma: any) => (
+            <div class="stigma-card a-card">
+              <div class="stigma-header">
+                <div class="stigma-image-container">
+                  <StigmaImage
+                    imageName={getStigmaImageName(stigma.name, 'A')}
+                    alt={`${stigma.name} A stigma icon`}
+                    width={80}
+                    height={80}
+                    loading="eager"
+                    class="stigma-icon"
+                  />
+                </div>
+                <div class="stigma-title-container">
+                  <h3 class="stigma-name">{stigma.name}</h3>
+                  <span class="hw-badge" data-rarity="A">
+                    A
+                  </span>
+                </div>
+              </div>
+
+              {stigma.description && (
+                <div class="stigma-description">
+                  <p>{stigma.description}</p>
+                </div>
+              )}
+
+              <div class="stigma-pieces">
+                <h4>Set Pieces</h4>
+                <div class="pieces-grid">
+                  <div class="piece-item">
+                    <div class="piece-slot">Top</div>
+                    <div class="piece-name">{stigma.pieces.top.name}</div>
+                    <div class="piece-stat">{stigma.pieces.top.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Bottom</div>
+                    <div class="piece-name">{stigma.pieces.bottom.name}</div>
+                    <div class="piece-stat">{stigma.pieces.bottom.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Left</div>
+                    <div class="piece-name">{stigma.pieces.left.name}</div>
+                    <div class="piece-stat">{stigma.pieces.left.stat}</div>
+                  </div>
+                  <div class="piece-item">
+                    <div class="piece-slot">Right</div>
+                    <div class="piece-name">{stigma.pieces.right.name}</div>
+                    <div class="piece-stat">{stigma.pieces.right.stat}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+</StigmaLayout>

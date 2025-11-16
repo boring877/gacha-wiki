@@ -1,0 +1,374 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                        HORIZON WALKER STIGMA STYLES                     */
+/*                      Clean styling with no visual effects                 */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Stigma Page Title Section */
+.stigma-title-section {
+  text-align: center;
+  margin-bottom: var(--hw-spacing-xl);
+  padding: var(--hw-spacing-lg) 0;
+}
+
+.stigma-page-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  background: var(--hw-gradient-warm-to-coral);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 0 0 1rem 0;
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Stigma Content Area */
+.stigma-content-area {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--hw-spacing-md);
+}
+
+/* Stigma Overview Section */
+.stigma-overview-section {
+  margin-bottom: var(--hw-spacing-2xl);
+  padding: var(--hw-spacing-lg);
+  background: var(--hw-gradient-dark-to-darker);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+}
+
+.stigma-intro {
+  text-align: center;
+}
+
+.stigma-description {
+  font-size: 1.1rem;
+  color: var(--hw-text-medium);
+  line-height: 1.6;
+  margin: var(--hw-spacing-md) 0 0 0;
+}
+
+/* Rarity Section Titles */
+.rarity-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--hw-text-light);
+  margin: 0 0 var(--hw-spacing-2xl) 0;
+  padding: var(--hw-spacing-sm) var(--hw-spacing-md);
+  border-left: 4px solid;
+  background: var(--hw-gradient-dark-darker-60-40);
+  border-radius: 0 var(--hw-radius-md) var(--hw-radius-md) 0;
+}
+
+.ex-rarity {
+  border-color: #ffd700; /* Gold for EX */
+  color: #ffd700;
+}
+
+.ss-rarity {
+  border-color: #c0c0c0; /* Silver for SS */
+  color: #c0c0c0;
+}
+
+.s-rarity {
+  border-color: #cd7f32; /* Bronze for S */
+  color: #cd7f32;
+}
+
+.a-rarity {
+  border-color: #7bb3ff; /* Blue for A */
+  color: #7bb3ff;
+}
+
+/* Stigma Rarity Section */
+.stigma-rarity-section {
+  margin-bottom: var(--hw-spacing-3xl);
+  margin-top: var(--hw-spacing-xl);
+}
+
+.stigma-rarity-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Extra spacing for S section specifically */
+.stigma-rarity-section:nth-child(3) {
+  margin-bottom: var(--hw-spacing-4xl);
+}
+
+/* Mobile adjustments for section spacing */
+@media (max-width: 768px) {
+  .stigma-rarity-section {
+    margin-bottom: var(--hw-spacing-2xl);
+    margin-top: var(--hw-spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .stigma-rarity-section {
+    margin-bottom: var(--hw-spacing-xl);
+    margin-top: var(--hw-spacing-md);
+  }
+}
+
+/* Stigma Grid Layout */
+.stigma-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: var(--hw-spacing-lg);
+  margin-top: 0;
+}
+
+/* Stigma Cards */
+.stigma-card {
+  background: var(--hw-card-bg);
+  border: 1px solid var(--hw-card-border);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  transition: none; /* Explicitly disable transitions */
+}
+
+.stigma-card.ex-card {
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.stigma-card.ss-card {
+  border-color: rgba(192, 192, 192, 0.3);
+}
+
+.stigma-card.s-card {
+  border-color: rgba(205, 127, 50, 0.3);
+}
+
+.stigma-card.a-card {
+  border-color: rgba(123, 179, 255, 0.3);
+}
+
+/* Stigma Header */
+.stigma-header {
+  display: flex;
+  align-items: center;
+  gap: var(--hw-spacing-lg);
+  margin-bottom: var(--hw-spacing-lg);
+  padding-bottom: var(--hw-spacing-md);
+  border-bottom: 1px solid var(--hw-border-light);
+}
+
+/* Stigma Image Container */
+.stigma-image-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stigma-icon {
+  border-radius: var(--hw-radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--hw-spacing-xs);
+  box-sizing: content-box;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Stigma Title Container */
+.stigma-title-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hw-spacing-sm);
+  flex: 1;
+  justify-content: space-between;
+}
+
+.stigma-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--hw-text-light);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* HW Badge System - using existing hw-badges.css */
+
+/* Stigma Bonuses */
+.stigma-bonuses {
+  margin-bottom: var(--hw-spacing-lg);
+}
+
+.bonus-section {
+  margin-bottom: var(--hw-spacing-md);
+  padding: var(--hw-spacing-md);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--hw-radius-md);
+  border-left: 3px solid var(--hw-primary-warm);
+}
+
+.bonus-section:last-child {
+  margin-bottom: 0;
+}
+
+.bonus-section h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--hw-primary-warm);
+  margin: 0 0 var(--hw-spacing-sm) 0;
+}
+
+.bonus-section p {
+  color: var(--hw-text-medium);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Special Effect */
+.special-effect {
+  margin-top: var(--hw-spacing-sm);
+  padding: var(--hw-spacing-sm);
+  background: rgba(232, 165, 71, 0.1);
+  border-left: 3px solid var(--hw-primary-warm);
+  border-radius: 0 var(--hw-radius-sm) var(--hw-radius-sm) 0;
+}
+
+.special-effect strong {
+  color: var(--hw-primary-warm);
+}
+
+/* Stigma Description for A-rarity */
+.stigma-description {
+  margin-bottom: var(--hw-spacing-lg);
+  padding: var(--hw-spacing-md);
+  background: rgba(123, 179, 255, 0.1);
+  border-radius: var(--hw-radius-md);
+}
+
+.stigma-description p {
+  color: var(--hw-text-medium);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Stigma Pieces */
+.stigma-pieces h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--hw-accent-mint);
+  margin: 0 0 var(--hw-spacing-md) 0;
+}
+
+.pieces-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--hw-spacing-md);
+}
+
+.piece-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hw-border-light);
+  border-radius: var(--hw-radius-md);
+  padding: var(--hw-spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--hw-spacing-xs);
+}
+
+.piece-slot {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--hw-tertiary-sky);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.piece-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--hw-text-medium);
+  margin-bottom: var(--hw-spacing-sm);
+  line-height: 1.3;
+  text-align: center;
+}
+
+.piece-stat {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hw-primary-warm);
+  margin-bottom: 0;
+  text-align: center;
+  font-style: normal;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .stigma-page-title {
+    font-size: 2rem;
+  }
+
+  .stigma-grid {
+    grid-template-columns: 1fr;
+    gap: var(--hw-spacing-md);
+  }
+
+  .pieces-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stigma-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--hw-spacing-md);
+  }
+
+  .stigma-title-container {
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rarity-title {
+    font-size: 1.5rem;
+    margin: 0 0 var(--hw-spacing-lg) 0;
+  }
+
+  .bonus-section {
+    padding: var(--hw-spacing-sm);
+  }
+
+  .piece-item {
+    padding: var(--hw-spacing-sm);
+  }
+
+  .piece-stat {
+    font-size: 0.95rem;
+    padding: var(--hw-spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .stigma-content-area {
+    padding: 0 var(--hw-spacing-sm);
+  }
+
+  .stigma-page-title {
+    font-size: 1.75rem;
+  }
+
+  .stigma-card {
+    padding: var(--hw-spacing-md);
+  }
+
+  .rarity-title {
+    font-size: 1.3rem;
+    padding: var(--hw-spacing-xs) var(--hw-spacing-sm);
+  }
+
+  .stigma-icon {
+    width: 64px;
+    height: 64px;
+  }
+}

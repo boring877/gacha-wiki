@@ -132,6 +132,11 @@ export const horizonWalkerConfig = {
           title: 'Weapons',
           url: '/guides/horizon-walker/weapons/',
         },
+        {
+          id: 'stigmas',
+          title: 'Stigmas',
+          url: '/guides/horizon-walker/stigmas/',
+        },
       ],
     },
     {

@@ -1,0 +1,194 @@
+---
+import { Image } from 'astro:assets';
+
+// EX Stigma Images
+import JesterEXImg from '../../assets/images/games/horizon-walker/Stigma/JesterEX.jpg';
+import Reckoning_of_SinEXImg from '../../assets/images/games/horizon-walker/Stigma/Reckoning_of_SinEX.jpg';
+import JupiterEXImg from '../../assets/images/games/horizon-walker/Stigma/JupiterEX.jpg';
+import HarmonyEXImg from '../../assets/images/games/horizon-walker/Stigma/HarmonyEX.jpg';
+import Phantom_BanquetEXImg from '../../assets/images/games/horizon-walker/Stigma/Phantom_BanquetEX.jpg';
+import The_Brilliant_Touch_of_EarthEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Brilliant_Touch_of_EarthEX.jpg';
+import The_Eternal_BattleEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Eternal_BattleEX.jpg';
+import The_Knight_of_the_Seven_PetalsEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Knight_of_the_Seven_PetalsEX.jpg';
+import The_Four_HorsemenEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Four_HorsemenEX.jpg';
+import The_Wind_that_Wanders_the_WorldEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Wind_that_Wanders_the_WorldEX.jpg';
+import The_Thousand_Mile_WeaveEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Thousand_Mile_WeaveEX.jpg';
+
+// SS Stigma Images
+import JesterSSImg from '../../assets/images/games/horizon-walker/Stigma/JesterSS.jpg';
+import Reckoning_of_SinSSImg from '../../assets/images/games/horizon-walker/Stigma/Reckoning_of_SinSS.jpg';
+import JupiterSSImg from '../../assets/images/games/horizon-walker/Stigma/JupiterSS.jpg';
+import HarmonySSImg from '../../assets/images/games/horizon-walker/Stigma/HarmonySS.jpg';
+import The_Ship_of_TheseusSSImg from '../../assets/images/games/horizon-walker/Stigma/The_Ship_of_TheseusSS.jpg';
+import The_Noble_s_TacticsSSImg from "../../assets/images/games/horizon-walker/Stigma/The_Noble's_TacticsSS.jpg";
+import The_BlackSmith_BlessingSSImg from '../../assets/images/games/horizon-walker/Stigma/The_BlackSmith_BlessingSS.jpg';
+import The_Record_of_OrphanSSImg from '../../assets/images/games/horizon-walker/Stigma/The_Record_of_OrphanSS.jpg';
+import The_Irreversible_Box_of_SecretsSSImg from '../../assets/images/games/horizon-walker/Stigma/The_Irreversible_Box_of_SecretsSS.jpg';
+import Thorned_HeartSSImg from '../../assets/images/games/horizon-walker/Stigma/Thorned_HeartSS.jpg';
+
+// S Stigma Images
+import JesterSImg from '../../assets/images/games/horizon-walker/Stigma/JesterS.jpg';
+import BeastSImg from '../../assets/images/games/horizon-walker/Stigma/BeastS.jpg';
+import TitanSImg from '../../assets/images/games/horizon-walker/Stigma/TitanS.jpg';
+
+// A Stigma Images
+import MageAImg from '../../assets/images/games/horizon-walker/Stigma/MageA.jpg';
+import MarksmanAImg from '../../assets/images/games/horizon-walker/Stigma/MarksmanA.jpg';
+import FighterAImg from '../../assets/images/games/horizon-walker/Stigma/FighterA.jpg';
+
+// Default fallback image
+import defaultStigmaImg from '../../assets/images/games/horizon-walker/Stigma/JesterEX.jpg';
+
+// Centralized stigma image mapping
+const stigmaImageMap = {
+  // EX Stigmas
+  'JesterEX.jpg': JesterEXImg,
+  'Reckoning_of_SinEX.jpg': Reckoning_of_SinEXImg,
+  'JupiterEX.jpg': JupiterEXImg,
+  'HarmonyEX.jpg': HarmonyEXImg,
+  'Phantom_BanquetEX.jpg': Phantom_BanquetEXImg,
+  'The_Brilliant_Touch_of_EarthEX.jpg': The_Brilliant_Touch_of_EarthEXImg,
+  'The_Eternal_BattleEX.jpg': The_Eternal_BattleEXImg,
+  'The_Knight_of_the_Seven_PetalsEX.jpg': The_Knight_of_the_Seven_PetalsEXImg,
+  'The_Four_HorsemenEX.jpg': The_Four_HorsemenEXImg,
+  'The_Wind_that_Wanders_the_WorldEX.jpg': The_Wind_that_Wanders_the_WorldEXImg,
+  'The_Thousand_Mile_WeaveEX.jpg': The_Thousand_Mile_WeaveEXImg,
+
+  // SS Stigmas
+  'JesterSS.jpg': JesterSSImg,
+  'Reckoning_of_SinSS.jpg': Reckoning_of_SinSSImg,
+  'JupiterSS.jpg': JupiterSSImg,
+  'HarmonySS.jpg': HarmonySSImg,
+  'The_Ship_of_TheseusSS.jpg': The_Ship_of_TheseusSSImg,
+  "The_Noble's_TacticsSS.jpg": The_Noble_s_TacticsSSImg,
+  'The_BlackSmith_BlessingSS.jpg': The_BlackSmith_BlessingSSImg,
+  'The_Record_of_OrphanSS.jpg': The_Record_of_OrphanSSImg,
+  'The_Irreversible_Box_of_SecretsSS.jpg': The_Irreversible_Box_of_SecretsSSImg,
+  'Thorned_HeartSS.jpg': Thorned_HeartSSImg,
+
+  // S Stigmas
+  'JesterS.jpg': JesterSImg,
+  'BeastS.jpg': BeastSImg,
+  'TitanS.jpg': TitanSImg,
+
+  // A Stigmas
+  'MageA.jpg': MageAImg,
+  'MarksmanA.jpg': MarksmanAImg,
+  'FighterA.jpg': FighterAImg,
+};
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 120,
+  height = 120,
+  class: className,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 85,
+} = Astro.props;
+
+// Get the imported image object from the map
+// Handle both full paths and filenames with/without extension
+let imageKey = imageName;
+
+// Check if imageName is undefined or null
+if (!imageKey) {
+  // Use the default image as a fallback
+  imageKey = 'JesterEX.jpg';
+}
+
+// If it's a full path, extract just the filename
+if (imageKey.includes('/')) {
+  imageKey = imageKey.split('/').pop() || imageKey;
+}
+
+// Convert stigma name to image filename with rarity
+// This handles the case where we're passing stigma names instead of image filenames
+if (!imageKey.includes('.')) {
+  // Extract rarity from the end if present
+  const rarity = imageKey.match(/[A-Z]$/) ? imageKey.slice(-1) : '';
+  const nameWithoutRarity = rarity ? imageKey.slice(0, -1) : imageKey;
+
+  // Special case mappings for stigma names to filenames
+  const nameToFilenameMap = {
+    // EX Stigmas
+    "Jester's Mask": 'JesterEX.jpg',
+    'Reckoning of Sin': 'Reckoning_of_SinEX.jpg',
+    Jupiter: 'JupiterEX.jpg',
+    Harmony: 'HarmonyEX.jpg',
+    'Phantom Banquet': 'Phantom_BanquetEX.jpg',
+    'The Brilliant Touch of Earth': 'The_Brilliant_Touch_of_EarthEX.jpg',
+    'The Eternal Battle': 'The_Eternal_BattleEX.jpg',
+    'The Knight of the Seven Petals': 'The_Knight_of_the_Seven_PetalsEX.jpg',
+    'The Four Horsemen': 'The_Four_HorsemenEX.jpg',
+    'The Wind that Wanders the World': 'The_Wind_that_Wanders_the_WorldEX.jpg',
+    'The Thousand Mile Weave': 'The_Thousand_Mile_WeaveEX.jpg',
+
+    // SS Stigmas
+    JesterSS: 'JesterSS.jpg',
+    'Reckoning of SinSS': 'Reckoning_of_SinSS.jpg',
+    JupiterSS: 'JupiterSS.jpg',
+    HarmonySS: 'HarmonySS.jpg',
+    'The Ship of Theseus': 'The_Ship_of_TheseusSS.jpg',
+    "The Noble's TacticsSS": "The_Noble's_TacticsSS.jpg",
+    'The Blacksmith BlessingSS': 'The_BlackSmith_BlessingSS.jpg',
+    'The Record of OrphanSS': 'The_Record_of_OrphanSS.jpg',
+    'The Irreversible Box of SecretsSS': 'The_Irreversible_Box_of_SecretsSS.jpg',
+    'Thorned HeartSS': 'Thorned_HeartSS.jpg',
+
+    // S Stigmas
+    JesterS: 'JesterS.jpg',
+    BeastS: 'BeastS.jpg',
+    TitanS: 'TitanS.jpg',
+
+    // A Stigmas
+    MageA: 'MageA.jpg',
+    MarksmanA: 'MarksmanA.jpg',
+    FighterA: 'FighterA.jpg',
+  };
+
+  // Use the mapping if available
+  imageKey = nameToFilenameMap[imageKey] || `${imageKey}.jpg`;
+}
+
+const imageSrc = stigmaImageMap[imageKey];
+
+// Fallback to a default image if the specific image is not found
+let finalImageSrc = imageSrc;
+if (!finalImageSrc) {
+  // Try to find a partial match
+  const partialMatchKey = Object.keys(stigmaImageMap).find(key =>
+    key.toLowerCase().includes(imageKey.toLowerCase().replace('.jpg', ''))
+  );
+
+  if (partialMatchKey) {
+    finalImageSrc = stigmaImageMap[partialMatchKey];
+  } else {
+    // Use the default image as a last resort
+    finalImageSrc = defaultStigmaImg;
+  }
+}
+---
+
+<Image
+  src={finalImageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>
