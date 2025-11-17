@@ -151,6 +151,11 @@ export const horizonWalkerConfig = {
           title: 'AP Guide',
           url: '/guides/horizon-walker/ap-guide',
         },
+        {
+          id: 'traits',
+          title: 'Traits',
+          url: '/guides/horizon-walker/traits/',
+        },
       ],
     },
     {

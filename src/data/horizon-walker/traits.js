@@ -631,4 +631,16 @@ export const hwTraits = {
   ],
 };
 
-export const totalTraits = 97;
+// Calculate unique trait count (removing duplicates across categories)
+const uniqueTraitNames = new Set();
+Object.values(hwTraits).forEach(categoryTraits => {
+  categoryTraits.forEach(trait => {
+    uniqueTraitNames.add(trait.name);
+  });
+});
+
+export const totalTraits = uniqueTraitNames.size; // 98 unique traits
+export const totalCategorizedEntries = Object.values(hwTraits).reduce(
+  (sum, category) => sum + category.length,
+  0
+);
