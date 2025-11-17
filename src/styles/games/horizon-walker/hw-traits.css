@@ -1,0 +1,259 @@
+/* Horizon Walker Traits Page - Simple Clean Styling */
+.hw-traits-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.hw-traits-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hw-traits-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--hw-text-light);
+  margin-bottom: 1rem;
+}
+
+.hw-traits-subtitle {
+  font-size: 1.1rem;
+  color: var(--hw-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.hw-traits-total {
+  font-size: 1rem;
+  color: var(--hw-accent-blue);
+  font-weight: 500;
+}
+
+.hw-traits-section {
+  margin-bottom: 3rem;
+}
+
+.hw-traits-category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hw-traits-category-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--hw-primary-warm);
+  border-bottom: 2px solid var(--hw-primary-warm);
+  padding-bottom: 0.5rem;
+  margin: 0;
+}
+
+.hw-traits-category-count {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--hw-text-muted);
+  background: var(--hw-surface-medium);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid var(--hw-border-primary);
+}
+
+.hw-traits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hw-trait-card {
+  background: var(--hw-surface-dark);
+  border: 1px solid var(--hw-border-primary);
+  padding: 1.25rem;
+  border-radius: 4px;
+}
+
+.hw-trait-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--hw-text-light);
+  margin-bottom: 0.75rem;
+}
+
+.hw-trait-effects {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hw-trait-effect {
+  font-size: 0.95rem;
+  color: var(--hw-text-muted);
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.hw-trait-effect:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--hw-accent-blue);
+}
+
+.hw-trait-effect:last-child {
+  margin-bottom: 0;
+}
+
+/* Simple category navigation */
+.hw-traits-nav {
+  background: var(--hw-surface-medium);
+  border: 1px solid var(--hw-border-primary);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+}
+
+.hw-traits-nav-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hw-text-light);
+  margin-bottom: 0.75rem;
+}
+
+.hw-traits-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: var(--hw-surface-dark);
+  border: 1px solid var(--hw-border-primary);
+  border-radius: 4px;
+}
+
+/* Custom scrollbar for navigation */
+.hw-traits-nav-links::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hw-traits-nav-links::-webkit-scrollbar-track {
+  background: var(--hw-surface-medium);
+  border-radius: 3px;
+}
+
+.hw-traits-nav-links::-webkit-scrollbar-thumb {
+  background: var(--hw-border-primary);
+  border-radius: 3px;
+}
+
+.hw-traits-nav-links::-webkit-scrollbar-thumb:hover {
+  background: var(--hw-text-muted);
+}
+
+.hw-traits-nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  background: var(--hw-surface-medium);
+  border: 1px solid var(--hw-border-primary);
+  color: var(--hw-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  min-width: fit-content;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hw-traits-nav-link:hover {
+  color: var(--hw-text-light);
+  border-color: var(--hw-accent-blue);
+  background: var(--hw-surface-light);
+}
+
+.hw-traits-nav-link.active {
+  background: var(--hw-primary-warm);
+  color: var(--hw-text-light);
+  border-color: var(--hw-primary-warm);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hw-traits-container {
+    padding: 1rem 0.75rem;
+  }
+
+  .hw-traits-title {
+    font-size: 2rem;
+  }
+
+  .hw-traits-category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .hw-traits-category-title {
+    font-size: 1.5rem;
+  }
+
+  .hw-traits-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .hw-traits-nav-links {
+    max-height: 200px;
+    justify-content: flex-start;
+  }
+
+  .hw-traits-nav-link {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hw-traits-container {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .hw-traits-title {
+    font-size: 1.75rem;
+  }
+
+  .hw-traits-category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .hw-traits-category-title {
+    font-size: 1.4rem;
+  }
+
+  .hw-traits-category-count {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .hw-trait-card {
+    padding: 1rem;
+  }
+
+  .hw-traits-nav-links {
+    max-height: 150px;
+  }
+
+  .hw-traits-nav-link {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+}

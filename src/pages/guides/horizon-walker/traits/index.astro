@@ -1,0 +1,79 @@
+---
+import TraitsLayout from '../../../../layouts/horizon-walker/TraitsLayout.astro';
+import { hwTraits, totalTraits } from '../../../../data/horizon-walker/traits.js';
+
+const title = 'Traits';
+const description = `Complete list of all ${totalTraits} Horizon Walker general traits with their effects and bonuses.`;
+
+// Get category names for navigation
+const categoryNames = Object.keys(hwTraits).sort();
+
+// Function to create anchor-safe ID
+function createAnchorId(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]/g, '-');
+}
+---
+
+<TraitsLayout title={title} description={description}>
+  <div class="hw-traits-container">
+    <!-- Header Section -->
+    <div class="hw-traits-header">
+      <h1 class="hw-traits-title">General Traits</h1>
+      <p class="hw-traits-subtitle">Complete list of all character traits and their effects</p>
+      <p class="hw-traits-total">Total Traits: {totalTraits}</p>
+    </div>
+
+    <!-- Category Navigation -->
+    <nav class="hw-traits-nav" role="navigation" aria-label="Category navigation">
+      <h2 class="hw-traits-nav-title">Jump to Category:</h2>
+      <div class="hw-traits-nav-links">
+        {
+          categoryNames.map(category => {
+            const categoryId = createAnchorId(category);
+            return (
+              <a
+                href={`#${categoryId}`}
+                class="hw-traits-nav-link"
+                aria-label={`Go to ${category} traits`}
+              >
+                {category}
+              </a>
+            );
+          })
+        }
+      </div>
+    </nav>
+
+    <!-- Traits Categories -->
+    {
+      categoryNames.map(categoryName => {
+        const traitsInCategory = hwTraits[categoryName];
+        if (!traitsInCategory || traitsInCategory.length === 0) return null;
+
+        const categoryId = createAnchorId(categoryName);
+        const traitCount = traitsInCategory.length;
+
+        return (
+          <section class="hw-traits-section" id={categoryId}>
+            <div class="hw-traits-category-header">
+              <h2 class="hw-traits-category-title">{categoryName}</h2>
+              <span class="hw-traits-category-count">({traitCount} traits)</span>
+            </div>
+            <div class="hw-traits-grid">
+              {traitsInCategory.map(trait => (
+                <div class="hw-trait-card">
+                  <h3 class="hw-trait-name">{trait.name}</h3>
+                  <ul class="hw-trait-effects">
+                    {trait.effects.map(effect => (
+                      <li class="hw-trait-effect">{effect}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      })
+    }
+  </div>
+</TraitsLayout>

@@ -1,0 +1,216 @@
+---
+import LandingLayout from '../../../layouts/horizon-walker/LandingLayout.astro';
+import GameImage from '../../../components/horizon-walker/GameImage.astro';
+
+const title = 'Horizon Walker Guide - Complete Walkthrough, Characters & Resources | GachaWiki';
+const description =
+  'Ultimate Horizon Walker guide with character database, tier lists, stigmas, weapons, AP mechanics, traits, and comprehensive resources for all players.';
+const gameTitle = 'Horizon Walker';
+---
+
+<LandingLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="game-overview">
+    <div class="overview-header">
+      <GameImage />
+      <h1>Horizon Walker Complete Guide</h1>
+      <p class="overview-description">
+        Welcome to the ultimate Horizon Walker resource hub. Find everything you need about
+        characters, stigmas, weapons, game mechanics, and more.
+      </p>
+    </div>
+
+    <div class="guide-sections">
+      <!-- Characters Section -->
+      <section class="guide-section">
+        <h2>Characters & Database</h2>
+        <div class="guide-cards">
+          <a href="/guides/horizon-walker/characters/" class="guide-card">
+            <h3>Character Database</h3>
+            <p>Complete list of all characters with stats, abilities, and detailed information</p>
+          </a>
+          <a href="/guides/horizon-walker/tier-list/" class="guide-card">
+            <h3>Tier List</h3>
+            <p>Rankings and ratings for all characters to help you build the best teams</p>
+          </a>
+          <a href="/guides/horizon-walker/mercenaries/" class="guide-card">
+            <h3>Mercenaries</h3>
+            <p>Information about mercenary units and their usage in combat</p>
+          </a>
+          <a href="/guides/horizon-walker/weapons/" class="guide-card">
+            <h3>Weapons</h3>
+            <p>Complete weapon database with stats and upgrade paths</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Equipment Section -->
+      <section class="guide-section">
+        <h2>Equipment & Stigmas</h2>
+        <div class="guide-cards">
+          <a href="/guides/horizon-walker/stigmas/" class="guide-card">
+            <h3>Stigmas</h3>
+            <p>Complete stigma guide with effects, sets, and character recommendations</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Game Mechanics Section -->
+      <section class="guide-section">
+        <h2>Game Mechanics</h2>
+        <div class="guide-cards">
+          <a href="/guides/horizon-walker/ap-guide/" class="guide-card">
+            <h3>AP Guide</h3>
+            <p>Complete guide to Action Points system and management strategies</p>
+          </a>
+          <a href="/guides/horizon-walker/traits/" class="guide-card">
+            <h3>Traits</h3>
+            <p>Complete list of all 97 character traits and their effects</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Resources Section -->
+      <section class="guide-section">
+        <h2>Resources & Tools</h2>
+        <div class="guide-cards">
+          <a href="/guides/horizon-walker/gifts/" class="guide-card">
+            <h3>Gifts</h3>
+            <p>Complete gift guide for character affinity and relationships</p>
+          </a>
+          <a href="/guides/horizon-walker/character-gifts/" class="guide-card">
+            <h3>Character Gifts</h3>
+            <p>Detailed gift preferences for each character</p>
+          </a>
+          <a href="/clock/horizon-walker/" class="guide-card">
+            <h3>Event Clock</h3>
+            <p>Real-time countdown for all game events and resets</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <style>
+    .game-overview {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .overview-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .overview-header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--hw-text-light);
+      margin: 2rem 0 1rem 0;
+    }
+
+    .overview-description {
+      font-size: 1.2rem;
+      color: var(--hw-text-muted);
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.6;
+    }
+
+    .guide-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .guide-section {
+      background: var(--hw-surface-dark);
+      border: 1px solid var(--hw-border-primary);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
+    .guide-section h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--hw-primary-warm);
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--hw-primary-warm);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .guide-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .guide-card {
+      background: var(--hw-surface-medium);
+      border: 1px solid var(--hw-border-primary);
+      padding: 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .guide-card:hover {
+      border-color: var(--hw-accent-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .guide-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--hw-text-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .guide-card p {
+      font-size: 0.95rem;
+      color: var(--hw-text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .game-overview {
+        padding: 1rem 0.75rem;
+      }
+
+      .overview-header h1 {
+        font-size: 2.2rem;
+      }
+
+      .overview-description {
+        font-size: 1.1rem;
+      }
+
+      .guide-section {
+        padding: 1.5rem;
+      }
+
+      .guide-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .overview-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .guide-section {
+        padding: 1rem;
+      }
+
+      .guide-card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</LandingLayout>

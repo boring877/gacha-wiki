@@ -143,7 +143,10 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       },
       {
         title: 'Game Mechanics',
-        links: [{ name: 'AP Guide', href: '/guides/horizon-walker/ap-guide' }],
+        links: [
+          { name: 'AP Guide', href: '/guides/horizon-walker/ap-guide' },
+          { name: 'Traits', href: '/guides/horizon-walker/traits/' },
+        ],
       },
       {
         title: 'Resources',
