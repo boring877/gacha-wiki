@@ -1,0 +1,95 @@
+/* Main container following HW patterns */
+.hw-stigma-sub-stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Content section with HW background styling */
+.hw-stigma-sub-stats-content {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-accent);
+  border-radius: var(--hw-radius-lg);
+  padding: 2rem;
+}
+
+/* Table following HW table patterns */
+.hw-stigma-sub-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border);
+  border-radius: var(--hw-border-radius-lg);
+  overflow: hidden;
+}
+
+.hw-stigma-sub-stats-table th {
+  background: var(--hw-bg-darker);
+  color: var(--hw-primary-warm);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid rgba(232, 165, 71, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hw-stigma-sub-stats-table td {
+  padding: 1.2rem 1.5rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  border-bottom: 1px solid var(--hw-border-light);
+  color: var(--hw-text-light);
+}
+
+.hw-stigma-sub-stats-table tr:last-child td {
+  border-bottom: none;
+}
+
+.hw-stigma-sub-stats-table .stat-name {
+  font-weight: 500;
+  color: var(--hw-text-light);
+}
+
+.hw-stigma-sub-stats-table .stat-scale {
+  text-align: right;
+  font-family: var(--font-mono);
+  color: var(--hw-primary-warm);
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hw-stigma-sub-stats-container {
+    padding: 1rem;
+  }
+
+  .hw-stigma-sub-stats-content {
+    padding: 1.5rem;
+  }
+
+  .hw-stigma-sub-stats-table th,
+  .hw-stigma-sub-stats-table td {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hw-stigma-sub-stats-container {
+    padding: 0.5rem;
+  }
+
+  .hw-stigma-sub-stats-content {
+    padding: 1rem;
+  }
+
+  .hw-stigma-sub-stats-table th,
+  .hw-stigma-sub-stats-table td {
+    padding: 0.5rem 0.75rem;
+    font-size: var(--text-xs);
+  }
+
+  .hw-stigma-sub-stats-table .stat-scale {
+    text-align: left;
+  }
+}

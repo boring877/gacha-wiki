@@ -136,6 +136,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [
           { name: 'Database', href: '/guides/horizon-walker/characters/' },
           { name: 'Tier List', href: '/guides/horizon-walker/tier-list/' },
+          { name: 'Builds', href: '/guides/horizon-walker/builds/' },
           { name: 'Mercenaries', href: '/guides/horizon-walker/mercenaries/' },
           { name: 'Weapons', href: '/guides/horizon-walker/weapons/' },
           { name: 'Stigmas', href: '/guides/horizon-walker/stigmas/' },
@@ -146,6 +147,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [
           { name: 'AP Guide', href: '/guides/horizon-walker/ap-guide' },
           { name: 'Traits', href: '/guides/horizon-walker/traits/' },
+          { name: 'Stigma Sub Stats', href: '/guides/horizon-walker/stigma-sub-stats/' },
         ],
       },
       {

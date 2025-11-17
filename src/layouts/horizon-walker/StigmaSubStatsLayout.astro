@@ -1,0 +1,67 @@
+---
+import HWBaseHead from '../../components/horizon-walker/HWBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+
+// Import CSS files properly
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-colors.css';
+import '../../styles/games/horizon-walker/hw-layout.css';
+import '../../styles/games/horizon-walker/stigma.css';
+import '../../styles/games/horizon-walker/hw-stigma-sub-stats.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+}
+
+const { title, description, gameTitle } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <HWBaseHead title={title} description={description || ''} />
+    <GameSEO gameKey="horizon-walker" title={title} description={description} />
+  </head>
+  <body class="horizon-walker-body">
+    <CustomScrollbar />
+    <!-- Background layers -->
+    <div class="bg-layer hw-bg-primary"></div>
+    <div class="bg-layer hw-bg-accent-1"></div>
+    <div class="bg-layer hw-bg-accent-2"></div>
+
+    <div class="horizon-walker-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="horizon-walker" />
+      <MobileMenu />
+
+      <div class="horizon-walker-container">
+        <main class="horizon-walker-main" id="main-content">
+          <!-- Title Section -->
+          <section class="stigma-title-section">
+            <h1 class="stigma-page-title">{gameTitle || title}</h1>
+            <DecorativeLines />
+          </section>
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb autoGenerate={true} gameKey="horizon-walker" showBackButton={true} />
+
+          <!-- Content Area -->
+          <div class="stigma-content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

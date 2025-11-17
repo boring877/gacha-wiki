@@ -1,0 +1,195 @@
+/* Horizon Walker Builds Page CSS - Simple, Clean Design */
+/* No hover effects, no shadows, no glows, no animations */
+
+/* Scope all HW builds styles to the main content area */
+@scope (.horizon-walker-main) {
+  /* Container */
+  .hw-builds-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  /* Rarity Sections */
+  .hw-builds-rarity-section {
+    margin-bottom: 3rem;
+  }
+
+  .hw-builds-rarity-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--hw-border-secondary);
+  }
+
+  .hw-builds-rarity-count {
+    color: var(--hw-text-muted);
+    font-size: 1.1rem;
+    font-weight: var(--font-semibold);
+  }
+
+  /* Builds Grid */
+  .hw-builds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Build Card Link */
+  .hw-build-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+  }
+
+  /* Build Card */
+  .hw-build-card {
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hw-build-card-disabled {
+    opacity: 0.7;
+  }
+
+  /* Build Card Header */
+  .hw-build-card-header {
+    padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--hw-border-light);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hw-build-character-image {
+    flex-shrink: 0;
+  }
+
+  .hw-character-portrait {
+    border-radius: 8px;
+    border: 2px solid var(--hw-border-muted);
+    background: var(--hw-bg-medium);
+  }
+
+  .hw-build-character-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .hw-build-character-name {
+    font-size: 1.3rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-text-light);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .hw-build-character-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hw-build-coming-soon {
+    padding: 0.6rem 1.2rem;
+    background: var(--hw-surface-medium);
+    color: var(--hw-text-muted);
+    font-weight: var(--font-semibold);
+    font-size: 0.95rem;
+    border-radius: 6px;
+    border: 1px solid var(--hw-border-primary);
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Coming Soon Section */
+  .hw-builds-coming-soon {
+    margin-top: 3rem;
+  }
+
+  .hw-builds-coming-soon-title {
+    font-size: 1.5rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-text-muted);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .hw-builds-coming-soon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Mobile Responsive Design */
+  @media (max-width: 768px) {
+    .hw-builds-container {
+      padding: 0.75rem;
+    }
+
+    .hw-builds-grid,
+    .hw-builds-coming-soon-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .hw-build-card-header {
+      padding: 1rem;
+      gap: 0.75rem;
+    }
+
+    .hw-character-portrait {
+      width: 60px !important;
+      height: 60px !important;
+    }
+
+    .hw-build-character-name {
+      font-size: 1.2rem;
+    }
+
+    .hw-build-character-meta {
+      gap: 0.4rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hw-builds-container {
+      padding: 0.5rem;
+    }
+
+    .hw-build-card-header {
+      padding: 0.875rem;
+    }
+
+    .hw-build-character-name {
+      font-size: 1.1rem;
+    }
+
+    .hw-build-coming-soon {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      min-height: 36px;
+    }
+  }
+
+  /* Performance Optimizations */
+  .hw-builds-container {
+    contain: layout style paint;
+  }
+
+  .hw-build-card {
+    contain: layout style paint;
+    will-change: auto;
+  }
+} /* End @scope (.horizon-walker-main) */

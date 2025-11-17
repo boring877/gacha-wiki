@@ -1,0 +1,889 @@
+/* Horizon Walker Character Build Page CSS - Simple, Clean Design */
+/* No hover effects, no shadows, no glows, no animations */
+
+/* Scope all HW character build styles to the main content area */
+@scope (.horizon-walker-main) {
+  /* Content Area Container */
+  .character-build-content-area {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  /* Character Build Header */
+  .character-build-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: 12px;
+  }
+
+  .character-build-image {
+    flex-shrink: 0;
+  }
+
+  .character-build-portrait {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    border: 3px solid var(--hw-border-muted);
+    background: var(--hw-bg-medium);
+  }
+
+  .character-build-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .character-build-name {
+    font-size: 2.5rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-text-light);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .character-build-badges {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* Build Sections */
+  .character-build-section {
+    margin-bottom: 3rem;
+  }
+
+  .character-build-section-title {
+    font-size: 1.8rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-text-light);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--hw-border-secondary);
+  }
+
+  /* Core Stats Grid */
+  .core-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .core-stat-card {
+    background: var(--hw-bg-medium);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .core-stat-title {
+    font-size: 0.9rem;
+    font-weight: var(--font-semibold);
+    color: var(--hw-text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .core-stat-value {
+    font-size: 1.2rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+  }
+
+  /* Core Stats Explanation */
+  .core-stats-explanation {
+    background: var(--hw-bg-medium);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-explanation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .stat-explanation-grid span {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .stat-name {
+    font-weight: var(--font-semibold);
+    color: var(--hw-primary-warm);
+    white-space: nowrap;
+  }
+
+  .stat-description {
+    color: var(--hw-text-medium);
+  }
+
+  /* Strategy Box */
+  .strategy-box {
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .strategy-title {
+    font-size: 1.2rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    margin: 0 0 1rem 0;
+  }
+
+  .strategy-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .strategy-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--hw-bg-surface);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 8px;
+  }
+
+  .strategy-text {
+    flex: 1;
+    line-height: 1.5;
+    color: var(--hw-text-medium);
+  }
+
+  .strategy-text strong {
+    color: var(--hw-text-light);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Recommended Stigma Section */
+  .stigma-container {
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .stigma-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--hw-border-light);
+  }
+
+  .stigma-title-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .stigma-image-container {
+    flex-shrink: 0;
+  }
+
+  .stigma-portrait-small {
+    border-radius: 8px;
+    border: 2px solid var(--hw-border-gray);
+  }
+
+  .stigma-title-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .stigma-name {
+    font-size: 1.3rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .stigma-bonuses {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stigma-set-bonus {
+    background: var(--hw-bg-surface);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .stigma-set-bonus h5 {
+    margin: 0 0 0.75rem 0;
+    color: var(--hw-primary-warm);
+    font-weight: var(--font-semibold);
+    font-size: 1rem;
+  }
+
+  .stigma-set-bonus p {
+    margin: 0;
+    color: var(--hw-text-medium);
+    line-height: 1.5;
+    font-size: 0.9rem;
+  }
+
+  .stigma-pieces h5 {
+    margin: 0 0 1rem 0;
+    color: var(--hw-text-light);
+    font-weight: var(--font-semibold);
+    font-size: 1.1rem;
+  }
+
+  .stigma-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .stigma-piece {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--hw-bg-medium);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 8px;
+  }
+
+  .piece-slot {
+    background: var(--hw-primary-warm);
+    color: white;
+    font-weight: var(--font-bold);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .piece-info {
+    flex: 1;
+  }
+
+  .piece-name {
+    font-weight: var(--font-semibold);
+    color: var(--hw-text-light);
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+  }
+
+  .piece-stat {
+    color: var(--hw-text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Recommended Sub Stats */
+  .recommended-substats {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--hw-border-light);
+  }
+
+  .recommended-substats h5 {
+    margin: 0 0 1rem 0;
+    color: var(--hw-text-light);
+    font-weight: var(--font-semibold);
+    font-size: 1.1rem;
+  }
+
+  .substats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .substat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--hw-bg-surface);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 6px;
+  }
+
+  .substat-item.priority-best {
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-gray);
+  }
+
+  .substat-item.priority-alternative {
+    opacity: 0.8;
+  }
+
+  .substat-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .substat-name {
+    font-weight: var(--font-semibold);
+    color: var(--hw-text-light);
+    font-size: 0.95rem;
+  }
+
+  .substat-priority {
+    font-size: 0.8rem;
+    font-weight: var(--font-medium);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .priority-best .substat-priority {
+    background: var(--hw-bg-medium);
+    color: var(--hw-primary-warm);
+    border: 1px solid var(--hw-primary-warm);
+  }
+
+  .priority-alternative .substat-priority {
+    background: var(--hw-bg-medium);
+    color: var(--hw-text-secondary);
+  }
+
+  .priority-optional .substat-priority {
+    background: var(--hw-bg-medium);
+    color: var(--hw-text-muted);
+    font-style: italic;
+  }
+
+  .priority-optional {
+    opacity: 0.7;
+  }
+
+  .substat-scale {
+    font-size: 0.9rem;
+    color: var(--hw-primary-warm);
+    font-weight: var(--font-medium);
+  }
+
+  .substats-note {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--hw-text-medium);
+    line-height: 1.4;
+  }
+
+  .substats-note strong {
+    color: var(--hw-text-light);
+  }
+
+  /* Weapon Section */
+  .weapon-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    align-items: start;
+  }
+
+  .weapon-info {
+    flex: 1;
+  }
+
+  .weapon-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .weapon-name {
+    font-size: 1.3rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-text-light);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .weapon-meta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .weapon-type {
+    color: var(--hw-text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .weapon-stats {
+    background: var(--hw-bg-surface);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .weapon-stats h5 {
+    margin: 0 0 1rem 0;
+    color: var(--hw-text-light);
+    font-weight: var(--font-semibold);
+    font-size: 1rem;
+  }
+
+  .weapon-stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--hw-border-muted);
+  }
+
+  .weapon-stat-item:last-child {
+    border-bottom: none;
+  }
+
+  .weapon-stat-item .stat-label {
+    color: var(--hw-text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .weapon-stat-item .stat-value {
+    color: var(--hw-primary-warm);
+    font-weight: var(--font-medium);
+    font-size: 0.95rem;
+  }
+
+  .weapon-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .weapon-portrait {
+    border-radius: 8px;
+    border: 2px solid var(--hw-border-gray);
+    transition: border-color 0.2s ease;
+  }
+
+  .weapon-portrait:hover {
+    border-color: var(--hw-primary-warm);
+  }
+
+  .weapon-skills {
+    margin-top: 2rem;
+  }
+
+  .weapon-skills h5 {
+    margin: 0 0 1rem 0;
+    color: var(--hw-text-light);
+    font-weight: var(--font-semibold);
+    font-size: 1.1rem;
+  }
+
+  .weapon-skill-card {
+    background: var(--hw-bg-medium);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .weapon-skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .weapon-skill-name {
+    font-size: 1rem;
+    font-weight: var(--font-semibold);
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .weapon-skill-description {
+    color: var(--hw-text-medium);
+    line-height: 1.5;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .weapon-skill-note {
+    background: var(--hw-bg-dark);
+    padding: 0.5rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--hw-accent-cold);
+    font-size: 0.9rem;
+    color: var(--hw-text-secondary);
+  }
+
+  .weapon-skill-note strong {
+    color: var(--hw-text-light);
+  }
+
+  /* Traits Section */
+  .recommended-traits {
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .traits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .trait-item {
+    background: var(--hw-bg-surface);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .trait-item.priority-best {
+    border-color: var(--hw-border-gray);
+    background: var(--hw-bg-surface);
+  }
+
+  .trait-item.priority-alternative {
+    border-color: var(--hw-border-gray);
+    background: var(--hw-bg-surface);
+  }
+
+  .trait-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    min-width: 120px;
+  }
+
+  .trait-name {
+    font-weight: var(--font-semibold);
+    color: var(--hw-text-light);
+    font-size: 0.95rem;
+  }
+
+  .trait-priority {
+    font-size: 0.8rem;
+    font-weight: var(--font-medium);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .priority-best .trait-priority {
+    background: var(--hw-bg-medium);
+    color: #3b82f6;
+    border: 1px solid #3b82f6;
+  }
+
+  .priority-alternative .trait-priority {
+    background: var(--hw-bg-medium);
+    color: var(--hw-primary-warm);
+    border: 1px solid var(--hw-primary-warm);
+  }
+
+  .trait-effects {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+    flex: 1;
+  }
+
+  .trait-effect {
+    font-size: 0.85rem;
+    color: var(--hw-text-secondary);
+    background: var(--hw-bg-medium);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .priority-best .trait-effect {
+    background: var(--hw-bg-medium);
+    color: var(--hw-text-secondary);
+  }
+
+  .priority-alternative .trait-effect {
+    background: var(--hw-bg-medium);
+    color: var(--hw-text-secondary);
+  }
+
+  .traits-note {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--hw-bg-medium);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--hw-text-medium);
+  }
+
+  .traits-note strong {
+    color: var(--hw-text-light);
+  }
+
+  /* Mobile Responsive Design */
+  @media (max-width: 768px) {
+    .character-build-content-area {
+      padding: 0.75rem;
+    }
+
+    .character-build-header {
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .character-build-portrait {
+      width: 100px;
+      height: 100px;
+    }
+
+    .character-build-name {
+      font-size: 2rem;
+    }
+
+    .character-build-badges {
+      justify-content: center;
+    }
+
+    .character-build-section-title {
+      font-size: 1.5rem;
+    }
+
+    .core-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .core-stat-card {
+      padding: 0.75rem;
+    }
+
+    .core-stat-value {
+      font-size: 1.1rem;
+    }
+
+    .core-stats-explanation {
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-explanation-grid {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .skills-section .skill-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .skills-section .skill-meta {
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .skills-section .skill-cost {
+      justify-content: flex-start;
+    }
+
+    .weapon-container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .weapon-image {
+      order: -1;
+      text-align: center;
+    }
+
+    .weapon-portrait {
+      width: 150px;
+      height: 225px;
+    }
+
+    .weapon-header {
+      text-align: center;
+    }
+
+    .weapon-meta {
+      justify-content: center;
+    }
+
+    .stigma-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+      text-align: center;
+    }
+
+    .stigma-bonuses {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .stigma-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stigma-piece {
+      padding: 0.75rem;
+    }
+
+    .stigma-title-section {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .stigma-title-info {
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .stigma-portrait-small {
+      width: 50px;
+      height: 50px;
+    }
+
+    .substat-item {
+      padding: 0.5rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+
+    .substat-scale {
+      align-self: flex-end;
+    }
+
+    .strategy-point {
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: center;
+    }
+
+    .strategy-text {
+      text-align: center;
+    }
+
+    .traits-list {
+      gap: 0.5rem;
+    }
+
+    .trait-item {
+      flex-direction: column;
+      padding: 0.75rem;
+    }
+
+    .trait-info {
+      min-width: auto;
+    }
+
+    .trait-effects {
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .trait-effect {
+      white-space: normal;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .character-build-content-area {
+      padding: 0.5rem;
+    }
+
+    .character-build-header {
+      padding: 1rem;
+    }
+
+    .character-build-portrait {
+      width: 80px;
+      height: 80px;
+    }
+
+    .character-build-name {
+      font-size: 1.8rem;
+    }
+
+    .character-build-section-title {
+      font-size: 1.4rem;
+    }
+
+    .core-stats-grid {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .core-stat-card {
+      padding: 0.5rem;
+    }
+
+    .core-stat-title {
+      font-size: 0.8rem;
+    }
+
+    .core-stat-value {
+      font-size: 1rem;
+    }
+  }
+
+  /* Performance Optimizations */
+  .character-build-content-area {
+    contain: layout style paint;
+  }
+
+  .character-build-header {
+    contain: layout style paint;
+    will-change: auto;
+  }
+
+  /* Reduce motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .character-build-header {
+      transition: none;
+    }
+  }
+}

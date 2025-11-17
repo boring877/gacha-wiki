@@ -1,0 +1,39 @@
+---
+import StigmaSubStatsLayout from '../../../layouts/horizon-walker/StigmaSubStatsLayout.astro';
+import { stigmaSubStats } from '../../../data/horizon-walker/stigma-sub-stats.js';
+---
+
+<StigmaSubStatsLayout
+  title="Stigma Sub Stats"
+  description="Horizon Walker stigma sub stats scaling values"
+  gameTitle="Stigma Sub Stats"
+>
+  <div class="hw-stigma-sub-stats-container">
+    <div class="hw-stigma-sub-stats-content">
+      <table
+        class="hw-stigma-sub-stats-table"
+        role="table"
+        aria-label="Stigma sub stats scaling values"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Stat</th>
+            <th scope="col">Scale</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            stigmaSubStats.map(item => (
+              <tr>
+                <td class="stat-name">{item.stat}</td>
+                <td class="stat-scale" aria-label={`Scale: ${item.scale}`}>
+                  {item.scale}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</StigmaSubStatsLayout>

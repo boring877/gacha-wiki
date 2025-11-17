@@ -118,6 +118,11 @@ export const horizonWalkerConfig = {
           url: '/guides/horizon-walker/tier-list/',
         },
         {
+          id: 'builds',
+          title: 'Builds',
+          url: '/guides/horizon-walker/builds/',
+        },
+        {
           id: 'characters',
           title: 'Database',
           url: '/guides/horizon-walker/characters/',
