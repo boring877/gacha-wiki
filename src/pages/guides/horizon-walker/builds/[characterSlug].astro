@@ -2,10 +2,9 @@
 import CharacterBuildLayout from '../../../../layouts/horizon-walker/CharacterBuildLayout.astro';
 import CharacterImage from '../../../../components/horizon-walker/CharacterImage.astro';
 import StigmaImage from '../../../../components/horizon-walker/StigmaImage.astro';
-import { getEnhancedBuilds, getBuildByCharacter } from '../../../../data/horizon-walker/builds/builds-data.js';
-import { HORIZON_WALKER_CHARACTERS, getCharacterBySlug } from '../../../../data/horizon-walker/characters.js';
+import { getEnhancedBuilds } from '../../../../data/horizon-walker/builds/builds-data.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
 import { stigmas } from '../../../../data/horizon-walker/stigmas.js';
-import { hwTraits } from '../../../../data/horizon-walker/traits.js';
 
 export async function getStaticPaths() {
   const characters = HORIZON_WALKER_CHARACTERS;
@@ -13,13 +12,15 @@ export async function getStaticPaths() {
 
   // Only create paths for characters that have builds
   const paths = characters
-    .filter(character => builds.some(build => build.characterSlug === character.slug && build.available))
+    .filter(character =>
+      builds.some(build => build.characterSlug === character.slug && build.available)
+    )
     .map(character => ({
       params: { characterSlug: character.slug },
       props: {
         character,
-        build: builds.find(build => build.characterSlug === character.slug && build.available)
-      }
+        build: builds.find(build => build.characterSlug === character.slug && build.available),
+      },
     }));
 
   return paths;
@@ -36,10 +37,19 @@ const title = `${character.name} Build - Horizon Walker`;
 const description = `Complete build guide for ${character.name} in Horizon Walker. Includes optimal equipment, stats, and strategies.`;
 
 // Find the recommended stigma: "The Wind that Wanders the World"
-const recommendedStigma = [...(stigmas.EX || []), ...(stigmas.SS || []), ...(stigmas.S || []), ...(stigmas.A || [])].find(
-  stigma => stigma.name === 'The Wind that Wanders the World'
-);
-
+let recommendedStigma = null;
+if (stigmas.EX && stigmas.EX.length > 0) {
+  recommendedStigma = stigmas.EX.find(stigma => stigma.name === 'The Wind that Wanders the World');
+}
+if (!recommendedStigma && stigmas.SS && stigmas.SS.length > 0) {
+  recommendedStigma = stigmas.SS.find(stigma => stigma.name === 'The Wind that Wanders the World');
+}
+if (!recommendedStigma && stigmas.S && stigmas.S.length > 0) {
+  recommendedStigma = stigmas.S.find(stigma => stigma.name === 'The Wind that Wanders the World');
+}
+if (!recommendedStigma && stigmas.A && stigmas.A.length > 0) {
+  recommendedStigma = stigmas.A.find(stigma => stigma.name === 'The Wind that Wanders the World');
+}
 ---
 
 <CharacterBuildLayout title={title} description={description} characterName={character.name}>
@@ -70,11 +80,26 @@ const recommendedStigma = [...(stigmas.EX || []), ...(stigmas.SS || []), ...(sti
     <!-- Core Stats Explanation -->
     <div class="core-stats-explanation">
       <div class="stat-explanation-grid">
-        <span><span class="stat-name">Strength:</span> <span class="stat-description">Increases Melee ATK</span></span>
-        <span><span class="stat-name">Technic:</span> <span class="stat-description">Increases Ranged ATK</span></span>
-        <span><span class="stat-name">Intelligence:</span> <span class="stat-description">Increases Magic ATK</span></span>
-        <span><span class="stat-name">Vitality:</span> <span class="stat-description">Increases Max HP</span></span>
-        <span><span class="stat-name">Agility:</span> <span class="stat-description">Increases evasion and AP Recovery</span></span>
+        <span
+          ><span class="stat-name">Strength:</span>
+          <span class="stat-description">Increases Melee ATK</span></span
+        >
+        <span
+          ><span class="stat-name">Technic:</span>
+          <span class="stat-description">Increases Ranged ATK</span></span
+        >
+        <span
+          ><span class="stat-name">Intelligence:</span>
+          <span class="stat-description">Increases Magic ATK</span></span
+        >
+        <span
+          ><span class="stat-name">Vitality:</span>
+          <span class="stat-description">Increases Max HP</span></span
+        >
+        <span
+          ><span class="stat-name">Agility:</span>
+          <span class="stat-description">Increases evasion and AP Recovery</span></span
+        >
       </div>
     </div>
     <div class="core-stats-grid">
@@ -109,17 +134,22 @@ const recommendedStigma = [...(stigmas.EX || []), ...(stigmas.SS || []), ...(sti
       <div class="strategy-content">
         <div class="strategy-point">
           <div class="strategy-text">
-            <strong>Stack more Ranged ATK for "The Executioner" buff</strong> - "The Executioner" is a buff that increases based on your base Ranged ATK. Increasing your base Ranged ATK directly increases the buff effectiveness.
+            <strong>Stack more Ranged ATK for "The Executioner" buff</strong> - "The Executioner" is
+            a buff that increases based on your base Ranged ATK. Increasing your base Ranged ATK directly
+            increases the buff effectiveness.
           </div>
         </div>
         <div class="strategy-point">
           <div class="strategy-text">
-            <strong>Don't need full AP build</strong> - Since there aren't many good stigma sets that increase Ranged ATK, AP recovery only option we have!
+            <strong>Don't need full AP build</strong> - Since there aren't many good stigma sets that
+            increase Ranged ATK, AP recovery only option we have!
           </div>
         </div>
         <div class="strategy-point">
           <div class="strategy-text">
-            <strong>Full AP Recovery vs Ranged ATK</strong> - The reason why you might go for full AP recovery for sub stats is to be able to activate The Executioner twice! However, The Executioner does not stack up twice, so going full AP not that worth it.
+            <strong>Full AP Recovery vs Ranged ATK</strong> - The reason why you might go for full AP
+            recovery for sub stats is to be able to activate The Executioner twice! However, The Executioner
+            does not stack up twice, so going full AP not that worth it.
           </div>
         </div>
       </div>
@@ -127,134 +157,181 @@ const recommendedStigma = [...(stigmas.EX || []), ...(stigmas.SS || []), ...(sti
   </section>
 
   <!-- Recommended Stigma Section -->
-  {recommendedStigma && (
-    <section class="character-build-section">
-      <h3 class="character-build-section-title">Recommended Stigma</h3>
-      <div class="stigma-container">
-        <div class="stigma-header">
-          <div class="stigma-title-section">
-            <div class="stigma-image-container">
-              <StigmaImage
-                imageName={recommendedStigma.name}
-                alt={`${recommendedStigma.name} stigma`}
-                width={60}
-                height={60}
-                class="stigma-portrait-small"
-                loading="eager"
-              />
-            </div>
-            <div class="stigma-title-info">
-              <h4 class="stigma-name">{recommendedStigma.name}</h4>
-              <span class="hw-badge" data-rarity="EX">EX</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="stigma-bonuses">
-          <div class="stigma-set-bonus">
-            <h5>2-Set Bonus</h5>
-            <p>{recommendedStigma.twoSet}</p>
-          </div>
-          <div class="stigma-set-bonus">
-            <h5>4-Set Bonus</h5>
-            <p>{recommendedStigma.fourSet}</p>
-          </div>
-        </div>
-
-        <div class="stigma-pieces">
-          <h5>Stigma Pieces</h5>
-          <div class="stigma-grid">
-            <div class="stigma-piece">
-              <div class="piece-slot">Top</div>
-              <div class="piece-info">
-                <div class="piece-stat">{recommendedStigma.pieces.top.stat}</div>
-              </div>
-            </div>
-            <div class="stigma-piece">
-              <div class="piece-slot">Bottom</div>
-              <div class="piece-info">
-                <div class="piece-stat">{recommendedStigma.pieces.bottom.stat}</div>
-              </div>
-            </div>
-            <div class="stigma-piece">
-              <div class="piece-slot">Left</div>
-              <div class="piece-info">
-                <div class="piece-stat">{recommendedStigma.pieces.left.stat}</div>
-              </div>
-            </div>
-            <div class="stigma-piece">
-              <div class="piece-slot">Right</div>
-              <div class="piece-info">
-                <div class="piece-stat">{recommendedStigma.pieces.right.stat}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="recommended-substats">
-          <h5>Recommended Sub Stats</h5>
-          <div class="substats-list">
-            {[
-              { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
-              { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
-              { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
-              { stat: 'AP Recovery', scale: '1% - 2%', priority: 'Good Alternative' },
-              { stat: 'Starting AP', scale: '3 - 5', priority: 'Optional' }
-            ].map((substat, index) => (
-              <div class={`substat-item ${index < 3 ? 'priority-best' : index === 3 ? 'priority-alternative' : 'priority-optional'}`}>
-                <div class="substat-info">
-                  <div class="substat-name">{substat.stat}</div>
-                  <div class="substat-priority">{substat.priority}</div>
-                </div>
-                <div class="substat-scale">{substat.scale}</div>
-              </div>
-            ))}
-          </div>
-          <div class="substats-note">
-            <strong>Priority:</strong> Ranged ATK (3 slots) → AP Recovery → Starting AP (optional)
-          </div>
-        </div>
-      </div>
-    </section>
-  )}
-
-  {character && (
-    <>
-      {/* Recommended Traits Section */}
+  {
+    recommendedStigma && (
       <section class="character-build-section">
-        <h3 class="character-build-section-title">Recommended Traits</h3>
-        <div class="recommended-traits">
-          <h5>Best Traits for Ranged ATK (Max 5 Traits)</h5>
-          <div class="traits-list">
-            {[
-              { name: 'Barraging', effects: ['Ranged ATK: +5%', 'Accuracy: -2%'], priority: 'Best' },
-              { name: 'Technical', effects: ['Ranged ATK: +3%'], priority: 'Best' },
-              { name: 'Overworked', effects: ['AP Recovery: +4%', 'Max HP: -5%'], priority: 'Best' },
-              { name: 'Efficient', effects: ['Immaterial DEF: -50', 'AP Recovery: +3%'], priority: 'Best' },
-              { name: 'Righteous', effects: ['Melee ATK: +2%', 'Ranged ATK: +2%', 'Magic ATK: +2%', 'Max HP: +2%'], priority: 'Best' },
-              { name: 'Persistent', effects: ['Starting AP: -5', 'AP Recovery: +4%'], priority: 'Alternative' },
-              { name: 'Methodical', effects: ['Starting AP: 10', 'AP Recovery: -3%'], priority: 'Alternative' },
-              { name: 'Professional', effects: ['Ranged ATK: +2%', 'Accuracy: +3%'], priority: 'Alternative' },
-              { name: 'Radical', effects: ['Melee ATK: +3%', 'Ranged ATK: +3%', 'Magic ATK: +3%', 'Aggro Adjustment: +15'], priority: 'Alternative' }
-          ].map((trait, index) => (
-            <div class={`trait-item ${index < 5 ? 'priority-best' : 'priority-alternative'}`}>
-              <div class="trait-info">
-                <div class="trait-name">{trait.name}</div>
-                <div class="trait-priority">{trait.priority}</div>
+        <h3 class="character-build-section-title">Recommended Stigma</h3>
+        <div class="stigma-container">
+          <div class="stigma-header">
+            <div class="stigma-title-section">
+              <div class="stigma-image-container">
+                <StigmaImage
+                  imageName={recommendedStigma.name}
+                  alt={`${recommendedStigma.name} stigma`}
+                  width={60}
+                  height={60}
+                  class="stigma-portrait-small"
+                  loading="eager"
+                />
               </div>
-              <div class="trait-effects">
-                {trait.effects.map(effect => (
-                  <div class="trait-effect">{effect}</div>
-                ))}
+              <div class="stigma-title-info">
+                <h4 class="stigma-name">{recommendedStigma.name}</h4>
+                <span class="hw-badge" data-rarity="EX">
+                  EX
+                </span>
               </div>
             </div>
-          ))}
-        </div>
-        <div class="traits-note">
-          <strong>Recommended Selection:</strong> Barraging → Technical → Overworked → Efficient → Righteous (Core build) → Alternatives: Persistent/Methodical for AP management, Professional/Radical for damage focus
-        </div>
-      </div>
-    </section>
-  )}
+          </div>
 
-  </CharacterBuildLayout>
+          <div class="stigma-bonuses">
+            <div class="stigma-set-bonus">
+              <h5>2-Set Bonus</h5>
+              <p>{recommendedStigma.twoSet}</p>
+            </div>
+            <div class="stigma-set-bonus">
+              <h5>4-Set Bonus</h5>
+              <p>{recommendedStigma.fourSet}</p>
+            </div>
+          </div>
+
+          <div class="stigma-pieces">
+            <h5>Stigma Pieces</h5>
+            <div class="stigma-grid">
+              <div class="stigma-piece">
+                <div class="piece-slot">Top</div>
+                <div class="piece-info">
+                  <div class="piece-stat">{recommendedStigma.pieces.top.stat}</div>
+                </div>
+              </div>
+              <div class="stigma-piece">
+                <div class="piece-slot">Bottom</div>
+                <div class="piece-info">
+                  <div class="piece-stat">{recommendedStigma.pieces.bottom.stat}</div>
+                </div>
+              </div>
+              <div class="stigma-piece">
+                <div class="piece-slot">Left</div>
+                <div class="piece-info">
+                  <div class="piece-stat">{recommendedStigma.pieces.left.stat}</div>
+                </div>
+              </div>
+              <div class="stigma-piece">
+                <div class="piece-slot">Right</div>
+                <div class="piece-info">
+                  <div class="piece-stat">{recommendedStigma.pieces.right.stat}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recommended-substats">
+            <h5>Recommended Sub Stats</h5>
+            <div class="substats-list">
+              {[
+                { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
+                { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
+                { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
+                { stat: 'AP Recovery', scale: '1% - 2%', priority: 'Good Alternative' },
+                { stat: 'Starting AP', scale: '3 - 5', priority: 'Optional' },
+              ].map((substat, index) => (
+                <div
+                  class={`substat-item ${index < 3 ? 'priority-best' : index === 3 ? 'priority-alternative' : 'priority-optional'}`}
+                >
+                  <div class="substat-info">
+                    <div class="substat-name">{substat.stat}</div>
+                    <div class="substat-priority">{substat.priority}</div>
+                  </div>
+                  <div class="substat-scale">{substat.scale}</div>
+                </div>
+              ))}
+            </div>
+            <div class="substats-note">
+              <strong>Priority:</strong> Ranged ATK (3 slots) → AP Recovery → Starting AP (optional)
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    character && (
+      <>
+        {/* Recommended Traits Section */}
+        <section class="character-build-section">
+          <h3 class="character-build-section-title">Recommended Traits</h3>
+          <div class="recommended-traits">
+            <h5>Best Traits for Ranged ATK (Max 5 Traits)</h5>
+            <div class="traits-list">
+              {[
+                {
+                  name: 'Barraging',
+                  effects: ['Ranged ATK: +5%', 'Accuracy: -2%'],
+                  priority: 'Best',
+                },
+                { name: 'Technical', effects: ['Ranged ATK: +3%'], priority: 'Best' },
+                {
+                  name: 'Overworked',
+                  effects: ['AP Recovery: +4%', 'Max HP: -5%'],
+                  priority: 'Best',
+                },
+                {
+                  name: 'Efficient',
+                  effects: ['Immaterial DEF: -50', 'AP Recovery: +3%'],
+                  priority: 'Best',
+                },
+                {
+                  name: 'Righteous',
+                  effects: ['Melee ATK: +2%', 'Ranged ATK: +2%', 'Magic ATK: +2%', 'Max HP: +2%'],
+                  priority: 'Best',
+                },
+                {
+                  name: 'Persistent',
+                  effects: ['Starting AP: -5', 'AP Recovery: +4%'],
+                  priority: 'Alternative',
+                },
+                {
+                  name: 'Methodical',
+                  effects: ['Starting AP: 10', 'AP Recovery: -3%'],
+                  priority: 'Alternative',
+                },
+                {
+                  name: 'Professional',
+                  effects: ['Ranged ATK: +2%', 'Accuracy: +3%'],
+                  priority: 'Alternative',
+                },
+                {
+                  name: 'Radical',
+                  effects: [
+                    'Melee ATK: +3%',
+                    'Ranged ATK: +3%',
+                    'Magic ATK: +3%',
+                    'Aggro Adjustment: +15',
+                  ],
+                  priority: 'Alternative',
+                },
+              ].map((trait, index) => (
+                <div class={`trait-item ${index < 5 ? 'priority-best' : 'priority-alternative'}`}>
+                  <div class="trait-info">
+                    <div class="trait-name">{trait.name}</div>
+                    <div class="trait-priority">{trait.priority}</div>
+                  </div>
+                  <div class="trait-effects">
+                    {trait.effects.map(effect => (
+                      <div class="trait-effect">{effect}</div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="traits-note">
+              <strong>Recommended Selection:</strong> Barraging → Technical → Overworked → Efficient
+              → Righteous (Core build) → Alternatives: Persistent/Methodical for AP management,
+              Professional/Radical for damage focus
+            </div>
+          </div>
+        </section>
+      </>
+    )
+  }
+</CharacterBuildLayout>
