@@ -1,6 +1,15 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'november-18-maintenance',
+    title: 'November 18 Maintenance Update',
+    date: 'November 18, 2025',
+    type: 'maintenance',
+    summary:
+      'Maintenance on November 18, 2025 (14:00, ~1 hour) brings Pass Accumulation Storage activity and First Double Bonus reset. New top-up accumulation event with generous rewards, double Lumina Stone bonuses restored, and 300 Lumina Stones compensation for players who log in before November 25, 2025.',
+    url: '/guides/zone-nova/updates/maintenance-november-18-2025/',
+  },
+  {
     id: 'november-11-maintenance',
     title: 'November 11 Maintenance Update',
     date: 'November 7, 2025',
