@@ -7,6 +7,7 @@ import ZNRunesImage from '../../../../components/zone-nova/ZNRunesImage.astro';
 import { ALL_CHARACTER_BUILDS } from '../../../../data/zone-nova/character-builds.js';
 import { getCharacterBySlug } from '../../../../data/zone-nova/characters.js';
 import { apepData } from '../../../../data/zone-nova/characters/apep.js';
+import { helaData } from '../../../../data/zone-nova/characters/hela.js';
 
 export const prerender = true;
 
@@ -56,8 +57,9 @@ const fallbackBuild = {
 const finalCharacter = character || fallbackCharacter;
 const finalBuild = build || fallbackBuild;
 
-// Get character-specific data for Apep
-const characterData = finalCharacter.slug === 'apep' ? apepData : null;
+// Get character-specific data for Apep and Hela
+const characterData =
+  finalCharacter.slug === 'apep' ? apepData : finalCharacter.slug === 'hela' ? helaData : null;
 
 // Helper function to get badge class names
 function getElementBadgeClass(element) {
@@ -235,7 +237,11 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                   {card.characterSpecific && (
                     <div class="memory-card-link-container">
                       <a
-                        href="/guides/zone-nova/memories/wrong-appearance-timing/"
+                        href={
+                          finalCharacter.slug === 'hela'
+                            ? '/guides/zone-nova/memories/strange-gaze-full-of-desire/'
+                            : '/guides/zone-nova/memories/wrong-appearance-timing/'
+                        }
                         class="memory-card-link"
                       >
                         View Details →
@@ -310,7 +316,11 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                   )}
                   <div class="memory-card-link-container">
                     <a
-                      href="/guides/zone-nova/memories/behind-the-regret/"
+                      href={
+                        card.name === 'Heroes, Never Stop'
+                          ? '/guides/zone-nova/memories/heroes-never-stop/'
+                          : '/guides/zone-nova/memories/behind-the-regret/'
+                      }
                       class="memory-card-link"
                     >
                       View Details →
@@ -360,7 +370,7 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
     <h3>Highly Recommended Stats:</h3>
     <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
       {
-        ['DEF%', 'HP%', 'DEF', 'HP'].map(stat => (
+        finalBuild.runes.stats.slice(0, 4).map(stat => (
           <span
             style="background-color: var(--zn-primary);
                     color: #000000;
@@ -375,22 +385,26 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
       }
     </div>
 
-    <h3>Additional Stats:</h3>
-    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-      {
-        ['Crit Rate', 'Crit Damage', 'Penetration'].map(stat => (
-          <span
-            style="background-color: var(--zn-bg-tertiary);
-                    color: var(--zn-text-primary);
-                    padding: 0.5rem 1rem;
-                    border-radius: 4px;
-                    border: 1px solid var(--zn-border-light);"
-          >
-            {stat}
-          </span>
-        ))
-      }
-    </div>
+    {
+      finalBuild.runes.stats.length > 4 && (
+        <>
+          <h3>Additional Stats:</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            {finalBuild.runes.stats.slice(4).map(stat => (
+              <span
+                style="background-color: var(--zn-bg-tertiary);
+                      color: var(--zn-text-primary);
+                      padding: 0.5rem 1rem;
+                      border-radius: 4px;
+                      border: 1px solid var(--zn-border-light);"
+              >
+                {stat}
+              </span>
+            ))}
+          </div>
+        </>
+      )
+    }
 
     <h3>Recommended Rune Sets:</h3>
     <div
