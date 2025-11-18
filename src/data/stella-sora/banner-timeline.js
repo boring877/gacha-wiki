@@ -1,5 +1,44 @@
 export const bannerTimelineData = [
   {
+    id: 'fuyuka-fireworks-events',
+    characterBanner: {
+      title: 'Trekker Fuyuka',
+      featuredCharacter: {
+        name: 'Fuyuka',
+        rarity: '★★★★★',
+        type: 'Trekker',
+      },
+      boostedCharacters: [
+        { name: 'Flora', rarity: '★★★★', type: 'Trekker' },
+        { name: 'Canace', rarity: '★★★★', type: 'Trekker' },
+      ],
+      startDate: '2025-11-17T00:00:00-07:00',
+      endDate: '2025-12-08T19:59:59-07:00',
+      description:
+        "Limited recruitment event: Trekker Fuyuka begins now! During the event period, there's a higher chance to get the new ★5 Trekker, Fuyuka.",
+      note: 'After this recruitment event ends, ★5 Trekker Fuyuka will not immediately enter the Permanent Trekker Banner.',
+    },
+    discBanner: {
+      title: 'Disc Fireworks',
+      featuredDisc: {
+        name: 'Fireworks',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+      },
+      boostedDiscs: [
+        { name: 'Unknown Fragrance', rarity: '★★★★', type: 'Runic Disc' },
+        { name: 'Cage of Roses', rarity: '★★★★', type: 'Runic Disc' },
+      ],
+      startDate: '2025-11-17T00:00:00-07:00',
+      endDate: '2025-12-08T19:59:59-07:00',
+      description:
+        "Limited recruitment event: Disc Fireworks begins now! During the event period, there's a higher chance to get the new ★5 Runic Disc, Fireworks.",
+      note: 'After this recruitment event ends, ★5 Disc Fireworks will not immediately enter the Permanent Disc Banner.',
+    },
+    status: 'current',
+    image: 'fuyuka-banner.jpg',
+  },
+  {
     id: 'blades-beneath-the-moon',
     characterBanner: {
       title: 'Blades Beneath the Moon',

@@ -5,14 +5,15 @@
 import { chitoseData } from './characters/chitose.js';
 import { chixiaData } from './characters/chixia.js';
 import { freesiaData } from './characters/freesia.js';
+import { fuyukaData } from './characters/fuyuka.js';
 import { gerieData } from './characters/gerie.js';
+import { jinglinData } from './characters/jinglin.js';
 import { minovaData } from './characters/minova.js';
 import { mistiqueData } from './characters/mistique.js';
 import { nanohaData } from './characters/nanoha.js';
 import { nazunaData } from './characters/nazuna.js';
 import { shiaData } from './characters/shia.js';
 import { tiliaData } from './characters/tilia.js';
-import { jinglinData } from './characters/jinglin.js';
 
 // Game Mechanics Reference
 export const gameInfo = {
@@ -80,6 +81,7 @@ export const STELLA_SORA_CHARACTERS = [
   chitoseData,
   chixiaData,
   freesiaData,
+  fuyukaData,
   gerieData,
   jinglinData,
   minovaData,
