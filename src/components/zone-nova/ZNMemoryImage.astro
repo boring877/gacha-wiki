@@ -157,7 +157,10 @@ let imageKey = imageName;
 if (!imageKey.includes('.')) {
   imageKey = `${imageKey}.jpg`;
 }
-const imageSrc = memoryImageMap[imageKey] || memoryImageMap['Afroditecard.jpg'];
+
+// Use the specific image if found, otherwise use a generic placeholder
+// For now, we'll use a neutral card as fallback instead of always defaulting to Afrodite
+const imageSrc = memoryImageMap[imageKey] || memoryImageMap['Helacard.jpg'];
 ---
 
 <Image

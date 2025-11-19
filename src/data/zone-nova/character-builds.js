@@ -46,22 +46,29 @@ export const CHARACTER_BUILDS = {
     ],
     recommendedMemoryCards: [
       {
-        name: 'Strange Gaze Full of Desire',
+        name: 'Heroes, Never Stop',
         effect:
-          "Hela's exclusive memory card. Crit Rate +34%, and when allies cast ultimates, damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage).",
+          "SR memory card that provides Crit Damage increase, excellent for boosting Hela's already high damage output. Works best with 2 or fewer enemies.",
         priority: 'Highly Recommended',
-        characterSpecific: true,
+        characterSpecific: false,
+        memoryImage: 'Shannacard.jpg',
+        memoryStats: { hp: '4,200', attack: '650', defense: '395' },
+        description:
+          'When the number of enemies on field is less than 2: Increase critical hit damage by 72%',
       },
     ],
     alternativeMemoryCards: [
       {
-        name: 'Heroes, Never Stop',
+        name: 'Strange Gaze Full of Desire',
         effect:
-          "SR memory card that provides Crit Damage increase, excellent for boosting Hela's already high damage output. Works best with 2 or fewer enemies.",
-        characterSpecific: false,
-        memoryImage: 'heroes-never-stop',
-        memoryStats: { hp: '3,000', attack: '600', defense: '300' },
-        description: 'Crit Damage increased by 25% (effective against 2 or fewer enemies)',
+          "Hela's exclusive memory card. Crit Rate +34%, and when allies cast ultimates, damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage).",
+        characterSpecific: true,
+        memoryImage: 'Helacard.jpg',
+        memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+        description:
+          'Crit Rate +34%, and when allies cast ultimates, damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage)',
+        spendingNote:
+          "If you're a heavy spender, this memory is better, but due to cost and benefit, Heroes Never Stop is better for most players.",
       },
     ],
     runes: {

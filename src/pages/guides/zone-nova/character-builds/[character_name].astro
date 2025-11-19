@@ -193,6 +193,14 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
           let memoryDetails: MemoryCardData | null = null;
           if (characterData && characterData.memoryCard && card.characterSpecific) {
             memoryDetails = characterData.memoryCard as MemoryCardData;
+          } else if (card.memoryImage && card.memoryStats) {
+            memoryDetails = {
+              name: card.name,
+              image: card.memoryImage,
+              stats: card.memoryStats,
+              description: card.description,
+              effects: card.effects || [],
+            } as MemoryCardData;
           }
 
           return (
@@ -228,6 +236,15 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                     )}
                   </div>
                   <div class="memory-card-effect">{memoryDetails?.description || card.effect}</div>
+
+                  {/* Spending recommendation note */}
+                  {card.spendingNote && (
+                    <div class="memory-card-spending-note">
+                      <span class="note-title">Spending Recommendation:</span>
+                      <span class="note-content">{card.spendingNote}</span>
+                    </div>
+                  )}
+
                   {memoryDetails && (
                     <div class="memory-card-stats">
                       <strong>Stats:</strong> HP {memoryDetails.stats.hp} / ATK{' '}
@@ -308,6 +325,15 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                     <div class="memory-card-name">{card.name}</div>
                   </div>
                   <div class="memory-card-effect">{memoryDetails?.description || card.effect}</div>
+
+                  {/* Spending recommendation note */}
+                  {card.spendingNote && (
+                    <div class="memory-card-spending-note">
+                      <span class="note-title">Spending Recommendation:</span>
+                      <span class="note-content">{card.spendingNote}</span>
+                    </div>
+                  )}
+
                   {memoryDetails && (
                     <div class="memory-card-stats">
                       <strong>Stats:</strong> HP {memoryDetails.stats.hp} / ATK{' '}
