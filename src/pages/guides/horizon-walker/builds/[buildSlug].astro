@@ -1,0 +1,623 @@
+---
+import CharacterBuildLayout from '../../../../layouts/horizon-walker/CharacterBuildLayout.astro';
+import CharacterImage from '../../../../components/horizon-walker/CharacterImage.astro';
+import StigmaImage from '../../../../components/horizon-walker/StigmaImage.astro';
+import { getEnhancedBuilds } from '../../../../data/horizon-walker/builds/builds-data.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { stigmas } from '../../../../data/horizon-walker/stigmas.js';
+
+export async function getStaticPaths() {
+  const characters = HORIZON_WALKER_CHARACTERS;
+  const builds = getEnhancedBuilds();
+
+  // Only create paths for characters that have builds
+  const paths = characters
+    .filter(character =>
+      builds.some(build => build.buildSlug === character.slug && build.available)
+    )
+    .map(character => ({
+      params: { buildSlug: character.slug },
+      props: {
+        character,
+        build: builds.find(build => build.buildSlug === character.slug && build.available),
+      },
+    }));
+
+  return paths;
+}
+
+const { character, build } = Astro.props;
+
+// Validate that we have both character and build data
+if (!character || !build) {
+  return Astro.redirect('/guides/horizon-walker/builds/');
+}
+
+const title = `${character.name} Build - Horizon Walker`;
+const description = `Complete build guide for ${character.name} in Horizon Walker. Includes optimal equipment, stats, and strategies.`;
+
+// Character-specific build configurations
+const isVlissing = character.slug === 'vlissing';
+const isJuha = character.slug === 'juha';
+
+// Determine recommended stigma based on character
+let recommendedStigma: any = null;
+let recommendedStigmaName = isVlissing
+  ? 'The Eternal Battle'
+  : isJuha
+    ? "The Noble's Tactics"
+    : 'The Wind that Wanders the World';
+
+if (stigmas.EX && stigmas.EX.length > 0) {
+  recommendedStigma = stigmas.EX.find(stigma => stigma.name === recommendedStigmaName);
+}
+if (!recommendedStigma && stigmas.SS && stigmas.SS.length > 0) {
+  recommendedStigma = stigmas.SS.find(stigma => stigma.name === recommendedStigmaName);
+}
+if (!recommendedStigma && stigmas.S && stigmas.S.length > 0) {
+  recommendedStigma = stigmas.S.find(stigma => stigma.name === recommendedStigmaName);
+}
+if (!recommendedStigma && stigmas.A && stigmas.A.length > 0) {
+  recommendedStigma = stigmas.A.find(stigma => stigma.name === recommendedStigmaName);
+}
+---
+
+<CharacterBuildLayout title={title} description={description} characterName={character.name}>
+  <div class="character-build-header">
+    <div class="character-build-image">
+      <CharacterImage
+        imageName={character.name}
+        alt={`${character.name} character portrait`}
+        width={120}
+        height={120}
+        class="character-build-portrait"
+        loading="eager"
+      />
+    </div>
+    <div class="character-build-info">
+      <h2 class="character-build-name">{character.name} Build</h2>
+      <div class="character-build-badges">
+        <span class="hw-badge" data-type="Cost">{build.cost}</span>
+        <span class="hw-badge" data-rarity={build.rarity}>{build.rarity}</span>
+        <span class="character-tag damage-scaling"
+          >{isVlissing ? 'Magic ATK' : isJuha ? 'Ranged ATK + Team Support' : 'Ranged ATK'}</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Stats Section -->
+  <section class="character-build-section">
+    <h3 class="character-build-section-title">Core Stats</h3>
+    <!-- Core Stats Explanation -->
+    <div class="core-stats-explanation">
+      <div class="stat-explanation-grid">
+        <span
+          ><span class="stat-name">Strength:</span>
+          <span class="stat-description">Increases Melee ATK</span></span
+        >
+        <span
+          ><span class="stat-name">Technic:</span>
+          <span class="stat-description">Increases Ranged ATK</span></span
+        >
+        <span
+          ><span class="stat-name">Intelligence:</span>
+          <span class="stat-description">Increases Magic ATK</span></span
+        >
+        <span
+          ><span class="stat-name">Vitality:</span>
+          <span class="stat-description">Increases Max HP</span></span
+        >
+        <span
+          ><span class="stat-name">Agility:</span>
+          <span class="stat-description">Increases evasion and AP Recovery</span></span
+        >
+      </div>
+    </div>
+    <div class="core-stats-grid">
+      <div class="core-stat-card">
+        <div class="core-stat-title">Strength</div>
+        <div class="core-stat-value">{character.stats?.strength || 'N/A'}</div>
+      </div>
+      <div class="core-stat-card">
+        <div class="core-stat-title">Technic</div>
+        <div class="core-stat-value">{character.stats?.technic || 'N/A'}</div>
+      </div>
+      <div class="core-stat-card">
+        <div class="core-stat-title">Intelligence</div>
+        <div class="core-stat-value">{character.stats?.intelligence || 'N/A'}</div>
+      </div>
+      <div class="core-stat-card">
+        <div class="core-stat-title">Vitality</div>
+        <div class="core-stat-value">{character.stats?.vitality || 'N/A'}</div>
+      </div>
+      <div class="core-stat-card">
+        <div class="core-stat-title">Agility</div>
+        <div class="core-stat-value">{character.stats?.agility || 'N/A'}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Build Strategy Box -->
+  <section class="character-build-section">
+    <h3 class="character-build-section-title">Build Note</h3>
+    <div class="strategy-box">
+      <h4 class="strategy-title">
+        {
+          isVlissing
+            ? 'The Flow Guardian Support'
+            : isJuha
+              ? 'The Saint of Bullet Team Buffer'
+              : 'The Executioner Focus'
+        }
+      </h4>
+      <div class="strategy-content">
+        {
+          isVlissing ? (
+            <>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>Maximize Magic ATK for healing and damage</strong> - Vlissing's "Ebb and
+                  Flow" and "Tangled Flow" both scale with Magic ATK. Higher Magic ATK means
+                  stronger healing (60% of Magic ATK + 12% of target's Max HP) and higher tangled
+                  flow damage (400% of Magic ATK).
+                </div>
+              </div>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>Level 10 skills are essential</strong> - Both "Ebb and Flow" and "Flooding
+                  Flow" must be at level 10 to get the full damage potential from Tangled Flow
+                  debuff. I personlly use Vlissing for daily tasks and story clearing!
+                </div>
+              </div>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>The Eternal Battle Stigma</strong> - The 4-set bonus (+35% Magic ATK when
+                  hitting 3+ enemies) works well with Vlissing's AOE "Sharp Wave" and makes her
+                  busted for daily clear maps.
+                </div>
+              </div>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>Balance AP Recovery with Magic ATK</strong> - While Magic ATK is a must,
+                  getting AP Recovery help you with doing skills or healing. But its not the main
+                  focus.
+                </div>
+              </div>
+            </>
+          ) : isJuha ? (
+            <>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>Maximize Ranged ATK for "The Executioner" scaling</strong> - "The
+                  Executioner" increases ally Ranged ATK by 76% of Juja's base Ranged ATK. Higher
+                  base Ranged ATK = dramatically stronger team buff for all firearm users.
+                </div>
+              </div>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>Team buffer role optimization</strong> - "Blessing of Firepower" grants
+                  allies +52% Ranged ATK and +28.5% AP Recovery. Position Juja to maximize buff
+                  coverage for firearm-based allies and coordinate skill timing for maximum team
+                  impact.
+                </div>
+              </div>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>Balance AP Recovery for skill rotation</strong> - While Ranged ATK is
+                  primary, adequate AP Recovery ensures consistent "The Executioner" uptime and
+                  skill usage. Consider 2-3 Ranged ATK substats with 1-2 AP Recovery substats for
+                  optimal sustain.
+                </div>
+              </div>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>Synergy with firearm-based allies</strong> - "The Noble's Tactics" stigma
+                  (+9% Ranged ATK, +20% Crit Rate) and team abilities specifically benefit firearm
+                  users. Build team compositions around other ranged attackers for devastating
+                  synergy.
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>Stack more Ranged ATK for "The Executioner" buff</strong> - "The
+                  Executioner" is a buff that increases based on your base Ranged ATK. Increasing
+                  your base Ranged ATK directly increases the buff effectiveness.
+                </div>
+              </div>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>Don't need full AP build</strong> - Since there aren't many good stigma
+                  sets that increase Ranged ATK, AP recovery only option we have!
+                </div>
+              </div>
+              <div class="strategy-point">
+                <div class="strategy-text">
+                  <strong>Full AP Recovery vs Ranged ATK</strong> - The reason why you might go for
+                  full AP recovery for sub stats is to be able to activate The Executioner twice!
+                  However, The Executioner does not stack up twice, so going full AP not that worth
+                  it.
+                </div>
+              </div>
+            </>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended Stigma Section -->
+  {
+    recommendedStigma && (
+      <section class="character-build-section">
+        <h3 class="character-build-section-title">Recommended Stigma</h3>
+        <div class="stigma-container">
+          <div class="stigma-header">
+            <div class="stigma-title-section">
+              <div class="stigma-image-container">
+                <StigmaImage
+                  imageName={recommendedStigma.name}
+                  alt={`${recommendedStigma.name} stigma`}
+                  width={60}
+                  height={60}
+                  class="stigma-portrait-small"
+                  loading="eager"
+                />
+              </div>
+              <div class="stigma-title-info">
+                <h4 class="stigma-name">{recommendedStigma.name}</h4>
+                <span class="hw-badge" data-rarity="EX">
+                  EX
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stigma-bonuses">
+            <div class="stigma-set-bonus">
+              <h5>2-Set Bonus</h5>
+              <p>{recommendedStigma.twoSet}</p>
+            </div>
+            <div class="stigma-set-bonus">
+              <h5>4-Set Bonus</h5>
+              <p>{recommendedStigma.fourSet}</p>
+            </div>
+          </div>
+
+          <div class="stigma-pieces">
+            <h5>Stigma Pieces</h5>
+            <div class="stigma-grid">
+              <div class="stigma-piece">
+                <div class="piece-slot">Top</div>
+                <div class="piece-info">
+                  <div class="piece-stat">{recommendedStigma.pieces.top.stat}</div>
+                </div>
+              </div>
+              <div class="stigma-piece">
+                <div class="piece-slot">Bottom</div>
+                <div class="piece-info">
+                  <div class="piece-stat">{recommendedStigma.pieces.bottom.stat}</div>
+                </div>
+              </div>
+              <div class="stigma-piece">
+                <div class="piece-slot">Left</div>
+                <div class="piece-info">
+                  <div class="piece-stat">{recommendedStigma.pieces.left.stat}</div>
+                </div>
+              </div>
+              <div class="stigma-piece">
+                <div class="piece-slot">Right</div>
+                <div class="piece-info">
+                  <div class="piece-stat">{recommendedStigma.pieces.right.stat}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recommended-substats">
+            <h5>Recommended Sub Stats</h5>
+            <div class="substats-list">
+              {isVlissing
+                ? [
+                    { stat: 'Magic ATK', scale: '3% - 5%', priority: 'Best' },
+                    { stat: 'Magic ATK', scale: '3% - 5%', priority: 'Best' },
+                    { stat: 'Magic ATK', scale: '3% - 5%', priority: 'Best' },
+                    { stat: 'AP Recovery', scale: '1% - 2%', priority: 'Good Alternative' },
+                    { stat: 'Max HP', scale: '3% - 5%', priority: 'Optional' },
+                  ].map((substat, index) => (
+                    <div
+                      class={`substat-item ${index < 3 ? 'priority-best' : index === 3 ? 'priority-alternative' : 'priority-optional'}`}
+                    >
+                      <div class="substat-info">
+                        <div class="substat-name">{substat.stat}</div>
+                        <div class="substat-priority">{substat.priority}</div>
+                      </div>
+                      <div class="substat-scale">{substat.scale}</div>
+                    </div>
+                  ))
+                : isJuha
+                  ? [
+                      { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
+                      { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
+                      { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
+                      { stat: 'AP Recovery', scale: '1% - 2%', priority: 'Good Alternative' },
+                      { stat: 'Accuracy', scale: '3 - 5', priority: 'Optional' },
+                    ].map((substat, index) => (
+                      <div
+                        class={`substat-item ${index < 3 ? 'priority-best' : index === 3 ? 'priority-alternative' : 'priority-optional'}`}
+                      >
+                        <div class="substat-info">
+                          <div class="substat-name">{substat.stat}</div>
+                          <div class="substat-priority">{substat.priority}</div>
+                        </div>
+                        <div class="substat-scale">{substat.scale}</div>
+                      </div>
+                    ))
+                  : [
+                      { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
+                      { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
+                      { stat: 'Ranged ATK', scale: '3% - 5%', priority: 'Best' },
+                      { stat: 'AP Recovery', scale: '1% - 2%', priority: 'Good Alternative' },
+                      { stat: 'Starting AP', scale: '3 - 5', priority: 'Optional' },
+                    ].map((substat, index) => (
+                      <div
+                        class={`substat-item ${index < 3 ? 'priority-best' : index === 3 ? 'priority-alternative' : 'priority-optional'}`}
+                      >
+                        <div class="substat-info">
+                          <div class="substat-name">{substat.stat}</div>
+                          <div class="substat-priority">{substat.priority}</div>
+                        </div>
+                        <div class="substat-scale">{substat.scale}</div>
+                      </div>
+                    ))}
+            </div>
+            <div class="substats-note">
+              <strong>Priority:</strong>{' '}
+              {isVlissing
+                ? 'Magic ATK (3 slots) → AP Recovery → Max HP (optional)'
+                : isJuha
+                  ? 'Ranged ATK (3 slots) → AP Recovery → Accuracy (optional)'
+                  : 'Ranged ATK (3 slots) → AP Recovery → Starting AP (optional)'}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    character && (
+      <>
+        {/* Recommended Traits Section */}
+        <section class="character-build-section">
+          <h3 class="character-build-section-title">Recommended Traits</h3>
+          <div class="recommended-traits">
+            <h5>
+              Best Traits for{' '}
+              {isVlissing
+                ? 'Magic Healer/Support'
+                : isJuha
+                  ? 'Ranged ATK + Team Buffer'
+                  : 'Ranged ATK'}{' '}
+              (Max 5 Traits)
+            </h5>
+            <div class="traits-list">
+              {isVlissing
+                ? [
+                    {
+                      name: 'Rational',
+                      effects: ['Crit Rate: -2%', 'Magic ATK: +6%'],
+                      priority: 'Best',
+                    },
+                    {
+                      name: 'Mysterious',
+                      effects: ['Magic ATK: +5%'],
+                      priority: 'Best',
+                    },
+                    {
+                      name: 'Bright',
+                      effects: ['Magic ATK: +4%'],
+                      priority: 'Best',
+                    },
+                    {
+                      name: 'Intelligent',
+                      effects: ['Magic ATK: +3%'],
+                      priority: 'Best',
+                    },
+                    {
+                      name: 'Righteous',
+                      effects: [
+                        'Melee ATK: +2%',
+                        'Ranged ATK: +2%',
+                        'Magic ATK: +2%',
+                        'Max HP: +2%',
+                      ],
+                      priority: 'Best',
+                    },
+                    {
+                      name: 'Persistent',
+                      effects: ['Starting AP: -5', 'AP Recovery: +4%'],
+                      priority: 'Alternative',
+                    },
+                    {
+                      name: 'Uncanny',
+                      effects: ['Magic ATK: +4%', 'Max HP: -3%'],
+                      priority: 'Alternative',
+                    },
+                    {
+                      name: 'Efficient',
+                      effects: ['Immaterial DEF: -50', 'AP Recovery: +3%'],
+                      priority: 'Alternative',
+                    },
+                  ].map((trait, index) => (
+                    <div
+                      class={`trait-item ${index < 5 ? 'priority-best' : 'priority-alternative'}`}
+                    >
+                      <div class="trait-info">
+                        <div class="trait-name">{trait.name}</div>
+                        <div class="trait-priority">{trait.priority}</div>
+                      </div>
+                      <div class="trait-effects">
+                        {trait.effects.map(effect => (
+                          <div class="trait-effect">{effect}</div>
+                        ))}
+                      </div>
+                    </div>
+                  ))
+                : isJuha
+                  ? [
+                      {
+                        name: 'Barraging',
+                        effects: ['Ranged ATK: +5%', 'Accuracy: -2%'],
+                        priority: 'Best',
+                      },
+                      {
+                        name: 'Technical',
+                        effects: ['Ranged ATK: +3%'],
+                        priority: 'Best',
+                      },
+                      {
+                        name: 'Professional',
+                        effects: ['Ranged ATK: +2%', 'Accuracy: +3%'],
+                        priority: 'Best',
+                      },
+                      {
+                        name: 'Overworked',
+                        effects: ['AP Recovery: +4%', 'Max HP: -5%'],
+                        priority: 'Best',
+                      },
+                      {
+                        name: 'Righteous',
+                        effects: [
+                          'Melee ATK: +2%',
+                          'Ranged ATK: +2%',
+                          'Magic ATK: +2%',
+                          'Max HP: +2%',
+                        ],
+                        priority: 'Best',
+                      },
+                      {
+                        name: 'Persistent',
+                        effects: ['Starting AP: -5', 'AP Recovery: +4%'],
+                        priority: 'Alternative',
+                      },
+                      {
+                        name: 'Methodical',
+                        effects: ['Starting AP: 10', 'AP Recovery: -3%'],
+                        priority: 'Alternative',
+                      },
+                      {
+                        name: 'Efficient',
+                        effects: ['Immaterial DEF: -50', 'AP Recovery: +3%'],
+                        priority: 'Alternative',
+                      },
+                      {
+                        name: 'Radical',
+                        effects: [
+                          'Melee ATK: +3%',
+                          'Ranged ATK: +3%',
+                          'Magic ATK: +3%',
+                          'Aggro Adjustment: +15',
+                        ],
+                        priority: 'Alternative',
+                      },
+                    ].map((trait, index) => (
+                      <div
+                        class={`trait-item ${index < 5 ? 'priority-best' : 'priority-alternative'}`}
+                      >
+                        <div class="trait-info">
+                          <div class="trait-name">{trait.name}</div>
+                          <div class="trait-priority">{trait.priority}</div>
+                        </div>
+                        <div class="trait-effects">
+                          {trait.effects.map(effect => (
+                            <div class="trait-effect">{effect}</div>
+                          ))}
+                        </div>
+                      </div>
+                    ))
+                  : [
+                      {
+                        name: 'Barraging',
+                        effects: ['Ranged ATK: +5%', 'Accuracy: -2%'],
+                        priority: 'Best',
+                      },
+                      { name: 'Technical', effects: ['Ranged ATK: +3%'], priority: 'Best' },
+                      {
+                        name: 'Overworked',
+                        effects: ['AP Recovery: +4%', 'Max HP: -5%'],
+                        priority: 'Best',
+                      },
+                      {
+                        name: 'Efficient',
+                        effects: ['Immaterial DEF: -50', 'AP Recovery: +3%'],
+                        priority: 'Best',
+                      },
+                      {
+                        name: 'Righteous',
+                        effects: [
+                          'Melee ATK: +2%',
+                          'Ranged ATK: +2%',
+                          'Magic ATK: +2%',
+                          'Max HP: +2%',
+                        ],
+                        priority: 'Best',
+                      },
+                      {
+                        name: 'Persistent',
+                        effects: ['Starting AP: -5', 'AP Recovery: +4%'],
+                        priority: 'Alternative',
+                      },
+                      {
+                        name: 'Methodical',
+                        effects: ['Starting AP: 10', 'AP Recovery: -3%'],
+                        priority: 'Alternative',
+                      },
+                      {
+                        name: 'Professional',
+                        effects: ['Ranged ATK: +2%', 'Accuracy: +3%'],
+                        priority: 'Alternative',
+                      },
+                      {
+                        name: 'Radical',
+                        effects: [
+                          'Melee ATK: +3%',
+                          'Ranged ATK: +3%',
+                          'Magic ATK: +3%',
+                          'Aggro Adjustment: +15',
+                        ],
+                        priority: 'Alternative',
+                      },
+                    ].map((trait, index) => (
+                      <div
+                        class={`trait-item ${index < 5 ? 'priority-best' : 'priority-alternative'}`}
+                      >
+                        <div class="trait-info">
+                          <div class="trait-name">{trait.name}</div>
+                          <div class="trait-priority">{trait.priority}</div>
+                        </div>
+                        <div class="trait-effects">
+                          {trait.effects.map(effect => (
+                            <div class="trait-effect">{effect}</div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+            </div>
+            <div class="traits-note">
+              <strong>Recommended Selection:</strong>{' '}
+              {isVlissing
+                ? 'Rational → Mysterious → Bright → Overworked → Righteous (Core Magic ATK build: +20% Magic ATK, +4% AP Recovery) → Alternatives: Persistent for more AP, Intelligent/Uncanny for extra Magic ATK'
+                : isJuha
+                  ? 'Barraging → Technical → Professional → Overworked → Righteous (Core Ranged ATK + Team Buffer build: +12% Ranged ATK, +4% AP Recovery) → Alternatives: Persistent/Methodical for AP management, Efficient/Radical for different playstyles'
+                  : 'Barraging → Technical → Overworked → Efficient → Righteous (Core build) → Alternatives: Persistent/Methodical for AP management, Professional/Radical for damage focus'}
+            </div>
+          </div>
+        </section>
+      </>
+    )
+  }
+</CharacterBuildLayout>

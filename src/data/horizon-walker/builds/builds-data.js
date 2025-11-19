@@ -10,8 +10,15 @@ import { getCharacterBySlug } from '../characters.js';
 const characterBuilds = [
   {
     id: 1,
-    characterSlug: 'juha',
+    buildSlug: 'juha',
     displayName: 'Juha',
+    rarity: 'EX',
+    available: true,
+  },
+  {
+    id: 2,
+    buildSlug: 'vlissing',
+    displayName: 'Vlissing',
     rarity: 'EX',
     available: true,
   },
@@ -43,15 +50,15 @@ export function getTotalBuilds() {
   return characterBuilds.filter(build => build.available).length;
 }
 
-// Get builds by character slug
+// Get builds by build slug
 export function getBuildByCharacter(slug) {
-  return characterBuilds.find(build => build.characterSlug === slug && build.available);
+  return characterBuilds.find(build => build.buildSlug === slug && build.available);
 }
 
 // Enhanced build data with character information
 export function getEnhancedBuilds() {
   return characterBuilds.map(build => {
-    const characterData = getCharacterBySlug(build.characterSlug);
+    const characterData = getCharacterBySlug(build.buildSlug);
     return {
       ...build,
       cost: characterData?.cost || 0, // Use character database cost, fallback to 0 if not found
@@ -61,12 +68,12 @@ export function getEnhancedBuilds() {
   });
 }
 
-// Get enhanced build by character slug
+// Get enhanced build by build slug
 export function getEnhancedBuildByCharacter(slug) {
-  const build = characterBuilds.find(build => build.characterSlug === slug && build.available);
+  const build = characterBuilds.find(build => build.buildSlug === slug && build.available);
   if (!build) return null;
 
-  const characterData = getCharacterBySlug(build.characterSlug);
+  const characterData = getCharacterBySlug(build.buildSlug);
   return {
     ...build,
     characterData: characterData || null,
@@ -78,16 +85,20 @@ export { characterBuilds };
 
 // Export metadata for SEO
 export const buildsSEO = {
-  title: 'Horizon Walker Character Builds - Juha Build Guide',
+  title: 'Horizon Walker Character Builds - Juha & Vlissing Build Guides',
   description:
-    'Complete build guide for Juha, the Saint of Bullet in Horizon Walker. Featuring optimized ranged DPS build with critical focus and team buff support.',
+    'Complete build guides for Horizon Walker characters. Featuring Juha ranged DPS build and Vlissing magic healer/support build with optimized equipment and strategies.',
   keywords: [
     'Horizon Walker',
     'Juha build',
     'Saint of Bullet',
+    'Vlissing build',
+    'Flow Guardian',
     'character builds',
     'build guides',
     'ranged DPS',
+    'magic healer',
+    'support build',
     'archer build',
     'critical damage',
     'team buffer',

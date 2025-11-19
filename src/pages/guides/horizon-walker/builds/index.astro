@@ -50,7 +50,7 @@ const buildsByRarity = {
             <div class="hw-builds-grid">
               {builds.map(build => (
                 <a
-                  href={build.characterSlug}
+                  href={`/guides/horizon-walker/builds/${build.buildSlug}`}
                   class="hw-build-card-link"
                   aria-label={`View ${build.characterData?.name || build.displayName} build`}
                 >
@@ -61,8 +61,8 @@ const buildsByRarity = {
                         <CharacterImage
                           imageName={build.displayName}
                           alt={`${build.displayName} character portrait`}
-                          width={100}
-                          height={100}
+                          width={300}
+                          height={300}
                           class="hw-character-portrait"
                           loading="eager"
                         />
