@@ -22,7 +22,12 @@ const metaDescription = event.description;
 const currentEvent = stellaSoraEvents.find(e => e.id === event.id) || event;
 ---
 
-<EventIndividualLayout title={metaTitle} description={metaDescription} gameTitle={event.title}>
+<EventIndividualLayout
+  title={metaTitle}
+  description={metaDescription}
+  gameTitle={event.title}
+  image={event.featuredImage}
+>
   <!-- Structured Data for Individual Event -->
   <script
     type="application/ld+json"
@@ -59,6 +64,8 @@ const currentEvent = stellaSoraEvents.find(e => e.id === event.id) || event;
         ) : currentEvent.id === 'ghost-ship-event-shop' ? (
           <div />
         ) : currentEvent.id === 'ghost-ship-event-details' ? (
+          <div />
+        ) : currentEvent.id === 'guild-sweet-guild' ? (
           <div />
         ) : currentEvent.id === 'a-finale-echoing' ? (
           <SSEventImage
@@ -188,11 +195,48 @@ const currentEvent = stellaSoraEvents.find(e => e.id === event.id) || event;
       )
     }
 
+    <!-- Guild Sweet Guild Images Only -->
+    {
+      currentEvent.id === 'guild-sweet-guild' && (
+        <div>
+          <SSEventImage
+            imageName="5/1"
+            alt={`${event.title}`}
+            width={1200}
+            height={800}
+            loading="lazy"
+          />
+          <SSEventImage
+            imageName="5/2"
+            alt={`${event.title}`}
+            width={1200}
+            height={800}
+            loading="lazy"
+          />
+          <SSEventImage
+            imageName="5/3"
+            alt={`${event.title}`}
+            width={1200}
+            height={800}
+            loading="lazy"
+          />
+          <SSEventImage
+            imageName="5/4"
+            alt={`${event.title}`}
+            width={1200}
+            height={800}
+            loading="lazy"
+          />
+        </div>
+      )
+    }
+
     <!-- All other events content -->
     {
       currentEvent.id !== 'version-1-2-new-trekker-fuyuka' &&
         currentEvent.id !== 'ghost-ship-event-shop' &&
-        currentEvent.id !== 'ghost-ship-event-details' && (
+        currentEvent.id !== 'ghost-ship-event-details' &&
+        currentEvent.id !== 'guild-sweet-guild' && (
           <div class="paper-document">
             <header class="event-header">
               <h1 class="event-title">{currentEvent.title}</h1>

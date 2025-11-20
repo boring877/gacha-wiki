@@ -5,6 +5,19 @@
 
 export const stellaSoraEvents = [
   {
+    id: 'guild-sweet-guild',
+    title: 'Guild Sweet Guild',
+    date: '2025-11-20',
+    startDate: '2025-11-20',
+    endDate: '2025-12-01',
+    summary: 'Guild Sweet Guild event with exclusive rewards and activities',
+    description: 'Join the Guild Sweet Guild event for special activities and rewards',
+    url: '/guides/stella-sora/events/guild-sweet-guild/',
+    image: '/images/games/stella-sora/events/5/1.jpg',
+    rewards: ['Guild Sweet Guild Exclusive Rewards', 'Event Currency', 'Special Cosmetics'],
+    featuredImage: '/images/games/stella-sora/events/5/1.jpg',
+  },
+  {
     id: 'version-1-2-new-trekker-fuyuka',
     title: 'Version 1.2 and new ★5 Trekker: Fuyuka',
     date: '2025-11-17',

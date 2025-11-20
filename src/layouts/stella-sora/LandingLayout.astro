@@ -33,7 +33,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
 <html lang="en">
   <head>
-    <SSBaseHead title={title} description={description} />
+    <SSBaseHead title={title} description={description} image={heroImage} />
     <GameSEO gameKey="stella-sora" title={title} description={description} />
     <slot name="head" />
   </head>

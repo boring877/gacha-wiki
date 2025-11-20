@@ -25,9 +25,10 @@ export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
+  image?: string;
 }
 
-const { title, description, gameTitle } = Astro.props;
+const { title, description, gameTitle, image } = Astro.props;
 
 const backNavigation: BackNavigation | null = generateBackNavigation(Astro.url.pathname, {
   gameKey: 'stella-sora',
@@ -36,7 +37,7 @@ const backNavigation: BackNavigation | null = generateBackNavigation(Astro.url.p
 
 <html lang="en">
   <head>
-    <SSBaseHead title={title} description={description} />
+    <SSBaseHead title={title} description={description} image={image} />
     <GameSEO gameKey="stella-sora" title={title} description={description} />
     <slot name="head" />
   </head>
