@@ -14,6 +14,14 @@ import MobileHeader from './MobileHeader.astro';
         <DesktopHeader />
       </div>
       <div class="right-elements">
+        <a
+          href="https://www.youtube.com/@GachaJunkie888"
+          class="youtube-button"
+          title="Please help reach 1000 subscribers on YouTube!"
+        >
+          <span class="youtube-icon">▶</span>
+          <span class="youtube-text">Please help reach 1000 subscribers</span>
+        </a>
         <MobileHeader />
       </div>
     </div>
@@ -108,6 +116,35 @@ import MobileHeader from './MobileHeader.astro';
     height: fit-content;
   }
 
+  .youtube-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ff4444;
+    touch-action: manipulation;
+    white-space: normal;
+    max-width: 180px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .youtube-icon {
+    font-size: 0.75rem;
+    color: #ff0000;
+  }
+
+  .youtube-text {
+    color: var(--amber-glow);
+    font-weight: 500;
+  }
+
   /* Touch Device & Mobile Responsive Design */
   @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
     /* Remove sticky positioning on touch devices for smoother scrolling */
@@ -164,12 +201,23 @@ import MobileHeader from './MobileHeader.astro';
       font-size: 1.1rem !important;
       padding: 0.5rem 0.75rem !important;
     }
+
+    .youtube-text {
+      font-size: 0.65rem;
+    }
+
+    .youtube-button {
+      padding: 0.5rem 0.6rem;
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
 
   /* Reduce motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
     .simple-title,
-    .logo-title {
+    .logo-title,
+    .youtube-button {
       transition: none !important;
       animation: none !important;
     }

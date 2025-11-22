@@ -1,0 +1,55 @@
+---
+// Reward image mapping for A Finale Echoing event
+import finale1_artifact_wishing_egg from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_artifact_wishing_egg.png';
+import finale1_Beginner_Cartridge_Box from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Beginner_Cartridge_Box.jpg';
+import finale1_Chess_Piece_of_Skill from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Chess_Piece_of_Skill.jpg';
+import finale1_Deluxe_Cartridge_box from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Deluxe_Cartridge_box.jpg';
+import finale1_Dorra from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Dorra.jpg';
+import finale1_New_Star_Prelude from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_New_Star_Prelude.jpg';
+import finale1_Prayer_Beneath_Light from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Prayer_Beneath_Light.jpg';
+import finale1_Premium_Cartridge_Box from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Premium_Cartridge_Box.jpg';
+import finale1_Proving_Grounds_gift_box from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Proving_Grounds_gift_box.jpg';
+import finale1_Sprout_Ticket from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg';
+import finale1_Summer_Afternoon_Rain from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Summer_Afternoon_Rain.jpg';
+import finale1_Sweet_Times from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sweet_Times.jpg';
+import finale1_Those_with_Ambition from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Those_with_Ambition.jpg';
+import finale1_Voyage_Blueprint from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Voyage_Blueprint.jpg';
+import finale1_Whispers_of_Decay from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Whispers_of_Decay.jpg';
+
+const finaleRewardMap = {
+  'Sprout Ticket': finale1_Sprout_Ticket,
+  Dorra: finale1_Dorra,
+  'New Star Prelude': finale1_New_Star_Prelude,
+  'Prayer Beneath Light': finale1_Prayer_Beneath_Light,
+  'Summer Afternoon Rain': finale1_Summer_Afternoon_Rain,
+  'Those with Ambition': finale1_Those_with_Ambition,
+  'Voyage Blueprint': finale1_Voyage_Blueprint,
+  'Sweet Times': finale1_Sweet_Times,
+  'Whispers of Decay': finale1_Whispers_of_Decay,
+  'Chess Piece of Skill': finale1_Chess_Piece_of_Skill,
+  'Proving Grounds gift box': finale1_Proving_Grounds_gift_box,
+  'Beginner Cartridge Box': finale1_Beginner_Cartridge_Box,
+  'Premium Cartridge Box': finale1_Premium_Cartridge_Box,
+  'Deluxe Cartridge box': finale1_Deluxe_Cartridge_box,
+  'artifact wishing egg': finale1_artifact_wishing_egg,
+} as const;
+
+export interface Props {
+  rewardName: string;
+}
+
+const { rewardName } = Astro.props;
+
+// Get the image for this reward or fallback to Dorra
+const rewardImage = finaleRewardMap[rewardName as keyof typeof finaleRewardMap] || finale1_Dorra;
+const imageSrc = rewardImage.src;
+---
+
+<img
+  src={imageSrc}
+  alt={rewardName}
+  width="80"
+  height="80"
+  loading="lazy"
+  style="object-fit: cover; width: 80px; height: 80px;"
+/>

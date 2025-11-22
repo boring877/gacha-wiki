@@ -1,13 +1,17 @@
 /**
- * Stella Sora Shop Events Data (Legacy File)
- * This file now serves as a compatibility layer that imports from the new modular structure
+ * Stella Sora Shop Events Aggregation
+ * Imports and exports all individual event data files
  */
 
-// Import all events from the new modular structure
-import { stellaSoraShopEvents as newEvents } from './events/index.js';
+import { aFinaleEchoingEvent } from './a-finale-echoing.js';
+import { theGhostShipHauntsTheDeepEvent } from './the-ghost-ship-haunts-the-deep.js';
+import { guildSweetGuildEvent } from './guild-sweet-guild.js';
 
-// Re-export for backward compatibility
-export const stellaSoraShopEvents = newEvents;
+export const stellaSoraShopEvents = [
+  aFinaleEchoingEvent,
+  theGhostShipHauntsTheDeepEvent,
+  guildSweetGuildEvent,
+];
 
 /**
  * Get shop event by slug or ID
@@ -33,3 +37,8 @@ export const getAllShopEvents = () => {
 export const getFeaturedShopEvents = () => {
   return stellaSoraShopEvents.filter(event => event.featured !== false);
 };
+
+// Export individual events for direct access
+export { aFinaleEchoingEvent } from './a-finale-echoing.js';
+export { theGhostShipHauntsTheDeepEvent } from './the-ghost-ship-haunts-the-deep.js';
+export { guildSweetGuildEvent } from './guild-sweet-guild.js';

@@ -42,10 +42,10 @@
 
 <script>
   // --- Sort Component State ---
-  let currentSortKey = null;
+  let currentSortKey: string | null = null;
   let currentSortDirection = 'normal';
-  let originalRows = [];
-  let originalCards = [];
+  let originalRows: HTMLElement[] = [];
+  let originalCards: HTMLElement[] = [];
 
   // DOM references
   let tableBody, mobileCardsContainer;
@@ -55,16 +55,30 @@
     tableBody = document.getElementById('character-table-body');
     mobileCardsContainer = document.getElementById('character-cards');
 
-    // Store original rows and cards for sorting
-    originalRows = tableBody ? Array.from(tableBody.querySelectorAll('.character-row')) : [];
-    originalCards = mobileCardsContainer
-      ? Array.from(mobileCardsContainer.querySelectorAll('.character-card'))
-      : [];
-
     // Early exit if required elements don't exist
     if (!tableBody || !mobileCardsContainer) {
-      console.error('Required elements not found!');
+      console.error('Required elements not found:', {
+        tableBody: !!tableBody,
+        mobileCardsContainer: !!mobileCardsContainer,
+      });
       return;
+    }
+
+    // Store original rows and cards for sorting
+    try {
+      originalRows = Array.from(tableBody.querySelectorAll('.character-row'));
+      originalCards = Array.from(mobileCardsContainer.querySelectorAll('.character-card'));
+    } catch (error) {
+      console.error('Error storing original rows and cards:', error);
+      return;
+    }
+
+    // Validate that we found elements to sort
+    if (originalRows.length === 0) {
+      console.warn('No character rows found for sorting');
+    }
+    if (originalCards.length === 0) {
+      console.warn('No character cards found for sorting');
     }
 
     // Restore saved state
@@ -82,32 +96,44 @@
     // Sort buttons
     const sortButtons = document.querySelectorAll('.sort-btn');
 
-    sortButtons.forEach((button, index) => {
-      const sortKey = button.dataset.sort;
+    if (sortButtons.length === 0) {
+      console.warn('No sort buttons found');
+      return;
+    }
+
+    sortButtons.forEach(button => {
+      const sortKey = (button as HTMLElement).dataset.sort;
+      if (!sortKey) {
+        console.warn('Sort button missing data-sort attribute:', button);
+        return;
+      }
+
       button.addEventListener('click', function () {
         cycleSortState(this);
       });
     });
 
-    // Add navigation listeners to character links
+    // Add navigation listeners to character links (if they exist)
     const characterLinks = document.querySelectorAll('.character-link');
-    characterLinks.forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        const characterSlug = this.dataset.slug;
-        if (characterSlug) {
-          window.location.href = `/guides/stella-sora/characters/${characterSlug}`;
-        }
+    if (characterLinks.length > 0) {
+      characterLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const characterSlug = (this as HTMLElement).dataset.slug;
+          if (characterSlug) {
+            window.location.href = `/guides/stella-sora/characters/${characterSlug}`;
+          }
+        });
       });
-    });
+    }
   }
 
-  function cycleSortState(sortButton) {
+  function cycleSortState(sortButton: HTMLElement) {
     const sortKey = sortButton.dataset.sort;
 
     if (currentSortKey !== sortKey) {
       // New sort field selected
-      currentSortKey = sortKey;
+      currentSortKey = sortKey || null;
       currentSortDirection = 'desc'; // Start with desc (down arrow) first - highest first
     } else {
       // Same field selected, cycle through states
@@ -139,6 +165,11 @@
   function updateSortButtons() {
     // Clear all sort states
     const sortButtons = document.querySelectorAll('.sort-btn');
+    if (sortButtons.length === 0) {
+      console.warn('No sort buttons found to update');
+      return;
+    }
+
     sortButtons.forEach(button => {
       button.classList.remove('active');
       const arrow = button.querySelector('.sort-arrow');
@@ -156,25 +187,48 @@
         if (arrow) {
           arrow.textContent = currentSortDirection === 'asc' ? ' ↓' : ' ↑';
         }
+      } else {
+        console.warn(`Sort button with key "${currentSortKey}" not found`);
       }
     }
   }
 
   function applySort(sortKey) {
+    // Early return if we don't have data to sort
+    if (
+      !originalRows ||
+      !originalCards ||
+      originalRows.length === 0 ||
+      originalCards.length === 0
+    ) {
+      console.warn('No data available for sorting');
+      return;
+    }
+
     // Get all visible rows and cards (not filtered out)
-    const visibleRows = originalRows.filter(row => row.style.display !== 'none');
+    const visibleRows = originalRows.filter(
+      row => row && row.style && row.style.display !== 'none'
+    );
     const visibleCards = originalCards.filter(
-      (card, index) => originalRows[index].style.display !== 'none'
+      (card, index) =>
+        originalRows[index] &&
+        originalRows[index].style &&
+        originalRows[index].style.display !== 'none'
     );
 
     // Sort rows based on the sort key
     const sortedRows = visibleRows.sort((a, b) => {
+      // Safety checks for elements
+      if (!a || !b) return 0;
+
       let valueA, valueB;
 
       switch (sortKey) {
         case 'name':
-          valueA = a.querySelector('.character-name')?.textContent || '';
-          valueB = b.querySelector('.character-name')?.textContent || '';
+          const nameElementA = a.querySelector('.character-name');
+          const nameElementB = b.querySelector('.character-name');
+          valueA = nameElementA?.textContent || '';
+          valueB = nameElementB?.textContent || '';
           return currentSortDirection === 'asc'
             ? valueA.localeCompare(valueB)
             : valueB.localeCompare(valueA);
@@ -185,18 +239,21 @@
         case 'critRate':
         case 'critDmg':
           // Look for data attributes on the cells, not the row
-          const cellA = a.querySelector(`[data-${sortKey}]`);
-          const cellB = b.querySelector(`[data-${sortKey}]`);
+          const cellA = a.querySelector(`[data-${sortKey}]`) as HTMLElement;
+          const cellB = b.querySelector(`[data-${sortKey}]`) as HTMLElement;
 
-          valueA = cellA ? parseFloat(cellA.dataset[sortKey]) || 0 : 0;
-          valueB = cellB ? parseFloat(cellB.dataset[sortKey]) || 0 : 0;
+          valueA = 0;
+          valueB = 0;
 
-          // Handle cases where dataset attributes might be missing or malformed
-          if (isNaN(valueA)) {
-            valueA = 0;
+          // Safely extract and parse values from data attributes
+          if (cellA && cellA.dataset && cellA.dataset[sortKey]) {
+            const parsedValue = parseFloat(cellA.dataset[sortKey]);
+            valueA = isNaN(parsedValue) ? 0 : parsedValue;
           }
-          if (isNaN(valueB)) {
-            valueB = 0;
+
+          if (cellB && cellB.dataset && cellB.dataset[sortKey]) {
+            const parsedValue = parseFloat(cellB.dataset[sortKey]);
+            valueB = isNaN(parsedValue) ? 0 : parsedValue;
           }
 
           return currentSortDirection === 'asc' ? valueA - valueB : valueB - valueA;
@@ -218,8 +275,8 @@
     if (tableBody) {
       tableBody.innerHTML = '';
       sortedRows.forEach(row => tableBody.appendChild(row));
-      if (typeof window.renumberRows === 'function') {
-        window.renumberRows();
+      if (typeof (window as any).renumberRows === 'function') {
+        (window as any).renumberRows();
       }
     }
     if (mobileCardsContainer) {
@@ -229,16 +286,37 @@
   }
 
   function resetToOriginalOrder() {
+    // Early return if we don't have data to sort
+    if (
+      !originalRows ||
+      !originalCards ||
+      originalRows.length === 0 ||
+      originalCards.length === 0
+    ) {
+      console.warn('No data available for reset to original order');
+      return;
+    }
+
     // Get all visible rows and cards
-    const visibleRows = originalRows.filter(row => row.style.display !== 'none');
+    const visibleRows = originalRows.filter(
+      row => row && row.style && row.style.display !== 'none'
+    );
     const visibleCards = originalCards.filter(
-      (card, index) => originalRows[index].style.display !== 'none'
+      (card, index) =>
+        originalRows[index] &&
+        originalRows[index].style &&
+        originalRows[index].style.display !== 'none'
     );
 
     // Sort alphabetically by name
     const sortedRows = visibleRows.sort((a, b) => {
-      const nameA = a.querySelector('.character-name')?.textContent || '';
-      const nameB = b.querySelector('.character-name')?.textContent || '';
+      // Safety checks for elements
+      if (!a || !b) return 0;
+
+      const nameElementA = a.querySelector('.character-name');
+      const nameElementB = b.querySelector('.character-name');
+      const nameA = nameElementA?.textContent || '';
+      const nameB = nameElementB?.textContent || '';
       return nameA.localeCompare(nameB);
     });
 
@@ -253,8 +331,8 @@
     if (tableBody) {
       tableBody.innerHTML = '';
       sortedRows.forEach(row => tableBody.appendChild(row));
-      if (typeof window.renumberRows === 'function') {
-        window.renumberRows();
+      if (typeof (window as any).renumberRows === 'function') {
+        (window as any).renumberRows();
       }
     }
     if (mobileCardsContainer) {
@@ -268,8 +346,8 @@
     if (currentSortKey && currentSortDirection !== 'normal') {
       applySort(currentSortKey);
     } else {
-      if (typeof window.renumberRows === 'function') {
-        window.renumberRows();
+      if (typeof (window as any).renumberRows === 'function') {
+        (window as any).renumberRows();
       }
     }
   }

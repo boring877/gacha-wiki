@@ -184,17 +184,17 @@ const rawSoJooHeeData = {
       spdBonus: '+49.0%',
     },
     uniqueSkills: {
-      traceOfVanity: {
-        name: 'Trace of Vanity',
+      traceOfWeakness: {
+        name: 'Trace of Weakness',
         type: 'Unique',
         description:
-          'On Weakness Attack, grants one stack of [Mark of Vanity] that lasts for 2 Rounds. Additionally, on successful attack, grants the target an additional stack of [Mark of Vanity] and increases ally ACC by 40%. [Mark of Vanity]: Reduces all DEF of the target by 320 and further reduces Pierce DEF by an additional 280. Can stack up to 2 times.',
+          'On Weakness Attack, grants one stack of [Mark of Weakness] that lasts for 2 Rounds. Additionally, on successful attack, grants the target an additional stack of [Mark of Weakness] and increases ally ACC by 40%. [Mark of Weakness]: Reduces all DEF of the target by 320 and further reduces Pierce DEF by an additional 280. Can stack up to 2 times.',
       },
       magnifique: {
         name: 'Character Signature: Magnifique',
         type: 'Signature',
         description:
-          "[Mark of Vanity] effect's DEF reduction is applied at 2 times the usual value. At the start of the next turn after ending your own turn, if there is an ally within a 3m range who is not in a Stealth or Banish state, gain the [Conceal: Stealth] effect.",
+          "[Mark of Weakness] effect's DEF reduction is applied at 2 times the usual value. At the start of the next turn after ending your own turn, if there is an ally within a 3m range who is not in a Stealth or Banish state, gain the [Conceal: Stealth] effect.",
       },
     },
   },
@@ -214,7 +214,7 @@ const rawHighlightPatterns = {
   damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
   effects: /\[([^[\]]{1,150})]/g,
   buffsDebuffs:
-    /\b(?:Upstart's\s+Pride|Unearned\s+Confidence|Concentration|Conceal:\s+Stealth|Mark\s+of\s+Vanity|Trace\s+of\s+Vanity|Magnifique|optical\s+camouflage|weak\s+point|weakness\s+attack|point-blank\s+shot|rapid\s+shot|distributed\s+attack|counterattack\s+effects|stealth\s+or\s+banish\s+state)\b/gi,
+    /\b(?:Upstart's\s+Pride|Unearned\s+Confidence|Concentration|Conceal:\s+Stealth|Mark\s+of\s+Weakness|Trace\s+of\s+Weakness|Magnifique|optical\s+camouflage|weak\s+point|weakness\s+attack|point-blank\s+shot|rapid\s+shot|distributed\s+attack|counterattack\s+effects|stealth\s+or\s+banish\s+state)\b/gi,
   percentages: /\b(\d{1,3}%)\b/g,
   statChanges:
     /\b(?:reduces?|increases?|decreases?|grants?|vanishes?|ignores?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,

@@ -162,6 +162,62 @@
   margin-top: 0.5rem;
 }
 
+/* === STELLA SORA IMPROVED GRID ORGANIZATION === */
+/* Organize grid layout for better visual hierarchy */
+
+.timers-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timer-section-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Priority timers - Launch countdown takes 1 column, Weekly/Monthly takes full width */
+.primary-timers .timers-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Weekly card takes full width on mobile */
+@media (max-width: 768px) {
+  .primary-timers .timers-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Secondary timers - 2 columns for server status */
+.secondary-timers .timers-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Event timers - 2 columns for better organization */
+.event-timers .timers-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* For small screens, keep single column */
+@media (max-width: 768px) {
+  .secondary-timers .timers-row,
+  .event-timers .timers-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 /* === STELLA SORA TIMER CARDS === */
 .timer-card {
   background: var(--ss-bg-card);
@@ -354,7 +410,7 @@
 
 .launch-days {
   font-family: var(--font-mono);
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: var(--font-bold);
   color: var(--ss-primary);
   line-height: 1;
@@ -363,38 +419,47 @@
 
 /* === STELLA SORA HOLIDAY CARDS === */
 .halloween-card {
-  border-color: rgba(251, 191, 36, 0.3);
+  border-color: var(--ss-primary-border); /* Blue border like other timers */
 }
 
 .halloween-card .launch-days {
-  color: var(--ss-legendary);
+  color: var(--ss-primary); /* Blue to match theme */
 }
 
 .newyear-card {
-  border-color: var(--ss-primary-border);
+  border-color: var(--ss-primary-border); /* Blue border for New Year */
+}
+
+.newyear-card .launch-days {
+  color: var(--ss-primary); /* Blue for New Year */
 }
 
 /* === STELLA SORA EVENT CARDS === */
 .event-duration-card {
-  border-color: rgba(168, 85, 247, 0.3); /* Purple accent */
+  border-color: var(--ss-primary-border); /* Blue border like other timers */
 }
 
 .event-duration-card .event-days {
-  color: var(--ss-epic);
+  color: var(--ss-primary); /* Blue to match other timer colors */
+  font-size: 2rem; /* Consistent font size */
 }
 
 .event-shop-card {
-  border-color: rgba(236, 72, 153, 0.3); /* Pink accent */
+  border-color: var(--ss-primary-border); /* Blue border to match color */
 }
 
 .event-shop-card .event-days {
-  color: var(--ss-legendary);
+  color: var(--ss-primary);
+  font-size: 2rem; /* Smaller font size like other timers */
 }
 
 .event-counter {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  justify-content: center;
+  min-height: 80px;
 }
 
 .event-days {

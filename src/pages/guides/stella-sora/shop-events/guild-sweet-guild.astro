@@ -1,10 +1,10 @@
 ---
 import ShopEventLayout from '../../../../layouts/stella-sora/ShopEventLayout.astro';
-import AFinaleEchoingImages from '../../../../components/stella-sora/shop-events/AFinaleEchoingImages.astro';
-import { aFinaleEchoingEvent } from '../../../../data/stella-sora/events/a-finale-echoing.js';
+import GuildSweetGuildImages from '../../../../components/stella-sora/shop-events/GuildSweetGuildImages.astro';
+import { guildSweetGuildEvent } from '../../../../data/stella-sora/events/guild-sweet-guild.js';
 
 // Use the event data directly
-const event = aFinaleEchoingEvent;
+const event = guildSweetGuildEvent;
 
 // Set metadata
 const title = `${event.title} - ${event.subtitle}`;
@@ -21,8 +21,8 @@ const description = event.description;
   <div class="event-content">
     <!-- Featured Image -->
     <div class="featured-image-section">
-      <AFinaleEchoingImages
-        imageName="1_Dorra.jpg"
+      <GuildSweetGuildImages
+        imageName="2_guild_bg1.jpg"
         alt={event.title}
         className="featured-image"
         loading="eager"
@@ -63,7 +63,7 @@ const description = event.description;
           event.shopItems.map(item => (
             <div class={`item-card ${item.featured ? 'featured' : ''}`}>
               <div class="item-header">
-                <AFinaleEchoingImages
+                <GuildSweetGuildImages
                   imageName={item.image}
                   alt={item.name}
                   className="item-image"
@@ -77,8 +77,8 @@ const description = event.description;
               </div>
               <div class="item-details">
                 <div class="item-price">
-                  <AFinaleEchoingImages
-                    imageName="1_Whispers_of_Decay.jpg"
+                  <GuildSweetGuildImages
+                    imageName="2_guild_glass_marble.jpg"
                     alt={item.currency.name}
                     className="price-icon"
                   />

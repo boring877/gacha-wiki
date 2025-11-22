@@ -1,1493 +1,237 @@
 ---
 import ShopEventLayout from '../../../../layouts/stella-sora/ShopEventLayout.astro';
-import { getShopEventBySlug } from '../../../../data/stella-sora/shop-events.js';
-import SSShopEventImage from '../../../../components/stella-sora/SSShopEventImage.astro';
+import TheGhostShipImages from '../../../../components/stella-sora/shop-events/TheGhostShipImages.astro';
+import { theGhostShipHauntsTheDeepEvent } from '../../../../data/stella-sora/events/the-ghost-ship-haunts-the-deep.js';
 
-const event = getShopEventBySlug('the-ghost-ship-haunts-the-deep');
+// Use the event data directly
+const event = theGhostShipHauntsTheDeepEvent;
 
-if (!event) {
-  return Astro.redirect('/guides/stella-sora/shop-events/');
-}
-
-// Shop items data for The Ghost Ship Haunts the Deep event
-const shopItems = [
-  {
-    name: 'Summer Sanctuary',
-    stockLeft: 1,
-    cost: 8000,
-    quantity: 'x1',
-    image: 'Summer_sanctuary.png',
-    rarity: 'legendary',
-  },
-  {
-    name: 'Summer Sanctuary Melody',
-    stockLeft: 5,
-    cost: 8000,
-    quantity: 'x1',
-    image: 'Summer_sanctuary_melody.png',
-    rarity: 'legendary',
-  },
-  {
-    name: 'Daring Adventure! The Ghost Ship Haunts the Deep',
-    stockLeft: 1,
-    cost: 5000,
-    quantity: 'x1',
-    image: 'Daring_Adventure!_The_Ghost_Ship_Haunts_the_Deep.png',
-    rarity: 'epic',
-  },
-  {
-    name: 'Radiant Feather Crown',
-    stockLeft: 12,
-    cost: 1600,
-    quantity: 'x1',
-    image: 'radiant_feather_crown.png',
-    rarity: 'rare',
-  },
-  {
-    name: 'Star Emblem Polisher',
-    stockLeft: 5,
-    cost: 1600,
-    quantity: 'x2',
-    image: 'Star_emblem_polisher.png',
-    rarity: 'rare',
-  },
-  {
-    name: 'Cerulean Ticket',
-    stockLeft: 5,
-    cost: 500,
-    quantity: 'x1',
-    image: 'cerulean_ticket.png',
-    rarity: 'uncommon',
-  },
-  {
-    name: 'Sprout Ticket',
-    stockLeft: 5,
-    cost: 500,
-    quantity: 'x1',
-    image: 'sprout_ticket.png',
-    rarity: 'uncommon',
-  },
-  {
-    name: 'Exquisite Blower',
-    stockLeft: 2,
-    cost: 250,
-    quantity: 'x5',
-    image: 'exquisite_blower.png',
-    rarity: 'common',
-  },
-  {
-    name: 'Chilling Wind Spinner',
-    stockLeft: 2,
-    cost: 250,
-    quantity: 'x5',
-    image: 'chilling_wind_spinner.png',
-    rarity: 'common',
-  },
-  {
-    name: 'Moonlit Companion',
-    stockLeft: 2,
-    cost: 250,
-    quantity: 'x5',
-    image: 'moonlit_companion.png',
-    rarity: 'common',
-  },
-  {
-    name: "Count's Gift",
-    stockLeft: 6,
-    cost: 250,
-    quantity: 'x5',
-    image: 'count_s_gift.png',
-    rarity: 'common',
-  },
-  {
-    name: 'Demon Bee Game Cartridge',
-    stockLeft: 10,
-    cost: 250,
-    quantity: 'x5',
-    image: 'demon_bee_game_cartridge.png',
-    rarity: 'common',
-  },
-  {
-    name: 'Duloos Essence',
-    stockLeft: 10,
-    cost: 250,
-    quantity: 'x5',
-    image: 'duloos_essence.png',
-    rarity: 'common',
-  },
-  {
-    name: 'Monolith Stairs Pass',
-    stockLeft: 10,
-    cost: 200,
-    quantity: 'x2',
-    image: 'monolith_stairs_pass.png',
-    rarity: 'common',
-  },
-  {
-    name: "Trekker's Handwritten Encyclopedia",
-    stockLeft: 30,
-    cost: 150,
-    quantity: 'x5',
-    image: 'trekkers_handwritten_encyclopedia.png',
-    rarity: 'common',
-  },
-  {
-    name: 'Starlit Colored Glass',
-    stockLeft: 40,
-    cost: 150,
-    quantity: 'x5',
-    image: 'starlit_colored_glass.png',
-    rarity: 'common',
-  },
-  {
-    name: "Count's Cellaring",
-    stockLeft: 40,
-    cost: 80,
-    quantity: 'x5',
-    image: 'count_s_cellaring.png',
-    rarity: 'common',
-  },
-  {
-    name: 'Barrage Game Cartridge',
-    stockLeft: 90,
-    cost: 80,
-    quantity: 'x5',
-    image: 'barrage_game_cartridge.png',
-    rarity: 'common',
-  },
-  {
-    name: 'Duloos Soul Remnant',
-    stockLeft: 90,
-    cost: 80,
-    quantity: 'x5',
-    image: 'duloos_soul_remnant.png',
-    rarity: 'common',
-  },
-  {
-    name: 'Dorra',
-    stockLeft: 1000,
-    cost: 10,
-    quantity: 'x3000',
-    image: 'dorra.png',
-    rarity: 'common',
-  },
-];
-
-// Helper function to determine stock status
-const getStockStatus = (stockLeft: number) => {
-  if (stockLeft <= 2) return 'very-low';
-  if (stockLeft <= 10) return 'low';
-  return 'available';
-};
-
-// Calculate total cost to buy all items
-const totalCost = shopItems.reduce((sum, item) => sum + item.cost * item.stockLeft, 0);
-
-// Helper function to get image for reward items
-const getRewardImage = (rewardName: string) => {
-  const rewardImageMap = {
-    'Squid Rice Cracker': 'Squid_rice_cracker.png',
-    'Sprout Ticket': 'sprout_ticket.png',
-    'Exquisite Blower': 'exquisite_blower.png',
-    'Chilling Wind Spinner': 'chilling_wind_spinner.png',
-    'Moonlit Companion': 'moonlit_companion.png',
-    'Canned Vigor Soda': 'Canned_vigor_soda.png',
-    'Bottled Vigor Soda': 'Bottled_vigor_soda.png',
-    'Novice Trekker Promotion Box': 'Novice_trekker_promotion_box.png',
-    'Premium Trekker Promotion Box': 'Premium_trekker_promotion_box.png',
-    'Novice Disc Promotion Box': 'Novice_disc_promotion_box.png',
-    'Premium Disc Promotion Box': 'Premium_disc_promotion_box.png',
-    'Beginner Cartridge Box': 'Beginner_cartridge_box.png',
-    'Premium Cartridge Box': 'Premium_cartridge_box.png',
-  };
-
-  // Handle quantity prefix like "1x", "90x", etc.
-  const cleanName = rewardName.replace(/^\d+x\s*/, '');
-  return rewardImageMap[cleanName] || null;
-};
-
-// Helper function to parse reward text and return array of reward objects
-const parseRewardText = (rewardsText: string) => {
-  const rewardItems = rewardsText.split(',').map(reward => {
-    const trimmedReward = reward.trim();
-    const match = trimmedReward.match(/(\d+)x?\s*(.+)$/);
-
-    if (match) {
-      const quantity = match[1];
-      const name = match[2].trim();
-      return {
-        displayText: trimmedReward,
-        quantity: quantity,
-        name: name,
-        imageName: getRewardImage(name),
-      };
-    }
-
-    return {
-      displayText: trimmedReward,
-      quantity: '1',
-      name: trimmedReward,
-      imageName: getRewardImage(trimmedReward),
-    };
-  });
-
-  return rewardItems;
-};
-
-// Quest data with rewards
-const questCategories = [
-  {
-    title: 'Common Quests',
-    completionRewards:
-      '1x Sprout Ticket, 4000 Squid Rice Cracker, 10x Exquisite Blower, 90x Novice Trekker Promotion Box, 60x Novice Disc Promotion Box, 4x Canned Vigor Soda',
-    quests: [
-      { name: 'Clear Hexhorn Whale Showdown (Normal)', shovel: 'x20', currency: 'x1000' },
-      { name: 'Clear Summer Brawl I', shovel: 'x10', currency: 'x1000' },
-      { name: 'Clear Summer Brawl III', shovel: 'x10', currency: 'x1000' },
-      { name: 'Clear Summer Brawl V', shovel: 'x10', currency: 'x1000' },
-      { name: 'Clear Treasure Raider I', shovel: 'x20', currency: 'x1000' },
-      { name: 'Clear Treasure Raider II', shovel: 'x20', currency: 'x1000' },
-      { name: 'Clear Treasure Raider III', shovel: 'x20', currency: 'x1000' },
-      { name: 'Read event story: Flickering Glow', shovel: 'x10', currency: 'x1000' },
-      { name: 'Read event story: Mysteries and Scents', shovel: 'x10', currency: 'x1000' },
-      { name: 'Read event story: Seeing is Deceiving', shovel: 'x10', currency: 'x1000' },
-      { name: 'Read event story: The Land of Echoes', shovel: 'x10', currency: 'x1000' },
-      { name: 'Read event story: The Secret of the Ocean', shovel: 'x10', currency: 'x1000' },
-    ],
-  },
-  {
-    title: 'Challenge Quests',
-    completionRewards:
-      '1x Sprout Ticket, 4000 Squid Rice Cracker, 10x Chilling Wind Spinner, 50x Premium Trekker Promotion Box, 150x Beginner Cartridge Box, 4x Canned Vigor Soda',
-    quests: [
-      { name: 'Clear event Battle Stages 30 times', shovel: 'x30', currency: 'x1000' },
-      { name: 'Clear event Battle Stages 50 times', shovel: 'x30', currency: 'x1000' },
-      { name: 'Clear event Battle Stages 80 times', shovel: 'x30', currency: 'x1000' },
-      { name: 'Clear event Battle Stages 100 times', shovel: 'x30', currency: 'x1000' },
-      { name: 'Clear Hexhorn Whale Showdown (Normal) with 3★', shovel: 'x10', currency: 'x1000' },
-      { name: 'Clear Summer Brawl I with 3★', shovel: 'x10', currency: 'x1000' },
-      { name: 'Clear Summer Brawl II with 3★', shovel: 'x10', currency: 'x1000' },
-      { name: 'Clear Summer Brawl III with 3★', shovel: 'x10', currency: 'x1000' },
-      { name: 'Clear Summer Brawl IV with 3★', shovel: 'x10', currency: 'x1000' },
-      { name: 'Clear Summer Brawl V with 3★', shovel: 'x10', currency: 'x1000' },
-      { name: 'Clear Summer Brawl VI with 3★', shovel: 'x10', currency: 'x1000' },
-      { name: 'Clear Summer Brawl VII with 3★', shovel: 'x10', currency: 'x1000' },
-    ],
-  },
-  {
-    title: 'Adventure Quests',
-    completionRewards:
-      '2x Sprout Ticket, 4000 Squid Rice Cracker, 10x Moonlit Companion, 20x Premium Disc Promotion Box, 100x Premium Cartridge Box, 3x Bottled Vigor Soda',
-    quests: [
-      {
-        name: 'Clear event Battle Stages 120 times (repeat hard mode)',
-        gem: 'x50',
-        currency: 'x1000',
-      },
-      {
-        name: 'Clear event Battle Stages 160 times (repeat hard mode)',
-        gem: 'x50',
-        currency: 'x1000',
-      },
-      { name: 'Collect 4 stars in Hard stages', gem: 'x50', currency: 'x1000' },
-      { name: 'Collect 6 stars in Hard stages', gem: 'x50', currency: 'x1000' },
-      { name: 'Collect 8 stars in Hard stages', gem: 'x50', currency: 'x1000' },
-      { name: 'Collect 10 stars in Hard stages', gem: 'x50', currency: 'x1000' },
-      { name: 'Collect 12 stars in Hard stages', gem: 'x50', currency: 'x1000' },
-      { name: 'Obtain Squid Rice Cracker x35000 during the event', gem: 'x50', currency: 'x1000' },
-      { name: 'Obtain Squid Rice Cracker x50000 during the event', gem: 'x50', currency: 'x1000' },
-      { name: 'Use Squid Rice Cracker x80000 during the event', gem: 'x50', currency: 'x1000' },
-      { name: 'Use Squid Rice Cracker x100000 during the event', gem: 'x50', currency: 'x1000' },
-      { name: 'Use Squid Rice Cracker x120000 during the event', gem: 'x50', currency: 'x1000' },
-    ],
-  },
-  {
-    title: 'Special Quests',
-    completionRewards:
-      '1x Sprout Ticket, 4000 Squid Rice Cracker, 80x Premium Trekker Promotion Box, 150x Premium Cartridge Box, 60x Novice Disc Promotion Box, 3x Bottled Vigor Soda',
-    quests: [
-      { name: 'Gain 200 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 500 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 1000 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 1500 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 2000 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 2500 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 3000 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 3500 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 4000 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 4500 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 5000 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-      { name: 'Gain 5500 points in Lucky Treasure Shovel in total', gem: 'x50', currency: 'x1000' },
-    ],
-  },
-];
-
-// Calculate total GEM gained from quests
-const totalGemsFromQuests = questCategories.reduce((total, category) => {
-  return (
-    total +
-    category.quests.reduce((categoryTotal, quest) => {
-      const gems = 'gem' in quest ? parseInt(quest.gem.replace('x', '')) : 0;
-      return categoryTotal + gems;
-    }, 0)
-  );
-}, 0);
-
-// Calculate GEM from stage first clears
-const normalStagesGems = 7 * 50 + 100; // 7 Summer Brawl stages × 50 GEM + Hexhorn Whale Normal × 100 GEM
-const hardStagesGems = 3 * 80 + 120; // 3 Treasure Raider stages × 80 GEM + Hexhorn Whale Hard × 120 GEM
-const totalGemsFromStages = normalStagesGems + hardStagesGems;
-
-// Calculate Squid Rice Cracker from stage first clears
-const normalStagesCrackers = 300 + 350 + 400 + 450 + 500 + 550 + 600 + 650; // Sum of all normal stage first clears
-const hardStagesCrackers = 600 + 800 + 1000 + 1200; // Sum of all hard stage first clears
-const totalCrackersFromStages = normalStagesCrackers + hardStagesCrackers;
-
-// Calculate total GEMs from all sources
-const totalGemsFromAllSources = totalGemsFromQuests + totalGemsFromStages;
-
-// Calculate GEMs from all quests
-const achievableGemsFromQuests = questCategories.reduce((total, category) => {
-  return (
-    total +
-    category.quests.reduce((categoryTotal, quest) => {
-      const gems = 'gem' in quest ? parseInt(quest.gem.replace('x', '')) : 0;
-      return categoryTotal + gems;
-    }, 0)
-  );
-}, 0);
-
-// Calculate Squid Rice Crackers from all quests
-const achievableCrackersFromQuests = questCategories.reduce((total, category) => {
-  return (
-    total +
-    category.quests.reduce((categoryTotal, quest) => {
-      const crackers = parseInt(quest.currency.replace('x', ''));
-      return categoryTotal + crackers;
-    }, 0)
-  );
-}, 0);
-
-// Calculate completion rewards from all quests
-const achievableCrackersFromCompletion = questCategories.reduce((total, category) => {
-  const rewards = parseRewardText(category.completionRewards);
-  const crackerReward = rewards.find(reward => reward.name === 'Squid Rice Cracker');
-  const amount = crackerReward ? parseInt(crackerReward.quantity) : 0;
-  return total + amount;
-}, 0);
-
-// Calculate total achievable earnings
-const totalAchievableCrackers =
-  totalCrackersFromStages + achievableCrackersFromQuests + achievableCrackersFromCompletion;
-const totalAchievableGems = achievableGemsFromQuests + totalGemsFromStages;
-
-// Item priority data
-const itemPriorities = {
-  highest: [
-    {
-      name: 'Summer Sanctuary',
-      reason: 'Limited-time legendary furniture - must buy for collection',
-    },
-    {
-      name: 'Summer Sanctuary Melody',
-      reason: 'Legendary melody item - extremely rare and valuable',
-    },
-  ],
-  high: [
-    {
-      name: 'Cerulean Ticket',
-      reason: 'Premium gacha ticket - very valuable for character collection',
-    },
-    {
-      name: 'Sprout Ticket',
-      reason: 'Basic gacha ticket - useful for character collection',
-    },
-    {
-      name: 'Radiant Feather Crown',
-      reason: 'Rare accessory with good stats',
-    },
-  ],
-  medium: [
-    {
-      name: 'Demon Bee Game Cartridge',
-      reason: 'Useful material for character enhancement',
-    },
-    {
-      name: 'Barrage Game Cartridge',
-      reason: 'Common enhancement material',
-    },
-    {
-      name: 'Duloos Essence',
-      reason: 'Essential material for upgrades',
-    },
-    {
-      name: "Count's Gift",
-      reason: 'Gift item for social features',
-    },
-    {
-      name: 'Duloos Soul Remnant',
-      reason: 'Rare soul material for progression',
-    },
-    {
-      name: "Count's Cellaring",
-      reason: 'Premium storage/crafting material',
-    },
-    {
-      name: 'Starlit Colored Glass',
-      reason: 'Decoration/crafting material',
-    },
-    {
-      name: "Trekker's Handwritten Encyclopedia",
-      reason: 'Knowledge/collection item',
-    },
-    {
-      name: 'Monolith Stairs Pass',
-      reason: 'Access pass for special content',
-    },
-    {
-      name: 'Star Emblem Polisher',
-      reason: 'Enhancement material for equipment',
-    },
-  ],
-  low: [
-    {
-      name: 'Chilling Wind Spinner',
-      reason: 'Gift item - low priority',
-    },
-    {
-      name: 'Moonlit Companion',
-      reason: 'Gift item - low priority',
-    },
-    {
-      name: 'Exquisite Blower',
-      reason: 'Gift item - low priority',
-    },
-  ],
-  optional: [
-    {
-      name: 'Dorra',
-      reason: 'Common currency - farmable elsewhere',
-    },
-    {
-      name: 'Daring Adventure! The Ghost Ship Haunts the Deep',
-      reason: 'Story item - optional for collectors',
-    },
-  ],
-};
-
-// Calculate costs for priority tiers
-const calculateTierCost = (tierItems: Array<{ name: string }>) => {
-  return tierItems.reduce((total, priorityItem) => {
-    const shopItem = shopItems.find(item => item.name === priorityItem.name);
-    if (shopItem) {
-      return total + shopItem.cost * shopItem.stockLeft;
-    }
-    return total;
-  }, 0);
-};
-
-// Calculate Squid Rice Cracker from quest completion rewards
-const crackersFromCompletionRewards = questCategories.reduce((total, category) => {
-  const rewards = parseRewardText(category.completionRewards);
-  const crackerReward = rewards.find(reward => reward.name === 'Squid Rice Cracker');
-  const amount = crackerReward ? parseInt(crackerReward.quantity) : 0;
-  return total + amount;
-}, 0);
-
-// Total Squid Rice Crackers from all sources except purchases
-const totalCrackersFromAllSources =
-  totalCrackersFromStages + achievableCrackersFromQuests + crackersFromCompletionRewards;
-
-// Calculate how many more crackers needed and runs required
-const shopTotalCost = 133300;
-const crackersNeeded = Math.max(0, shopTotalCost - totalCrackersFromAllSources);
-const crackersPerNormalRun = 400; // Repeated normal stages give 400
-const runsNeeded = Math.ceil(crackersNeeded / crackersPerNormalRun);
-
-// Calculate stamina requirements
-const staminaPerRun = 30;
-const totalStaminaNeeded = runsNeeded * staminaPerRun;
-
-// Calculate time requirements
-const minutesPerStamina = 6;
-const totalMinutesNeeded = totalStaminaNeeded * minutesPerStamina;
-const totalHoursNeeded = Math.floor(totalMinutesNeeded / 60);
-const remainingMinutes = totalMinutesNeeded % 60;
-const totalDaysNeeded = Math.floor(totalHoursNeeded / 24);
-const remainingHours = totalHoursNeeded % 24;
+// Set metadata
+const title = `${event.title} - ${event.subtitle}`;
+const description = event.description;
 ---
 
 <ShopEventLayout
-  title={`${event.title} - ${event.subtitle} | Stella Sora Shop Event`}
-  description={event.description}
-  gameTitle={`${event.title} - ${event.subtitle}`}
-  endDate={event.endDate}
+  title={title}
+  description={description}
+  gameTitle={event.title}
+  endDate={event.shopEndDate}
   currency={event.currency}
 >
-  <!-- Shop Event Cost Breakdown Section -->
-  <section class="ss-cost-breakdown">
-    <h2 class="ss-shop-items-title">Breakdown of Shop Event Cost</h2>
-
-    <div class="cost-overview">
-      <div class="currency-info">
-        <div class="currency-header">
-          <SSShopEventImage
-            imageSrc={event.currency.icon}
-            alt={event.currency.name}
-            width={24}
-            height={24}
-          />
-          <h3 class="currency-name">{event.currency.name}</h3>
-        </div>
-
-        <div class="currency-sources">
-          <h4 class="sources-title">How to Obtain:</h4>
-          <ul class="sources-list">
-            {event.currency.sources.map(source => <li class="source-item">{source}</li>)}
-          </ul>
-        </div>
-
-        <div class="currency-capacity">
-          <span class="capacity-label">Capacity:</span>
-          <span class="capacity-value">{event.currency.capacity}</span>
-        </div>
-      </div>
-
-      <div class="cost-statistics unified-stats">
-        <div class="stats-header">
-          <h3 class="stats-title">Shop Overview</h3>
-        </div>
-
-        <div class="stats-list">
-          <div class="stat-list-item">
-            <span class="stat-label">Total Items</span>
-            <span class="stat-value">{shopItems.length}</span>
-          </div>
-
-          <div class="stat-list-item total-cost-item">
-            <span class="stat-label">Total Cost (All Items)</span>
-            <div class="total-cost-display">
-              <SSShopEventImage
-                imageSrc={event.currency.icon}
-                alt={event.currency.name}
-                width={16}
-                height={16}
-              />
-              <span class="stat-value cost-total">{totalCost.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Highest Cost</span>
-            <span class="stat-value cost-highest">
-              {Math.max(...shopItems.map(item => item.cost))}
-            </span>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Lowest Cost</span>
-            <span class="stat-value cost-lowest">
-              {Math.min(...shopItems.map(item => item.cost))}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cost-statistics unified-stats">
-        <div class="stats-header">
-          <h3 class="stats-title">Squid Rice Crackers Earned</h3>
-        </div>
-
-        <div class="stats-list">
-          <div class="stat-list-item">
-            <span class="stat-label">From Stage First Clears</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value">{totalCrackersFromStages.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">From Quest Completion</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value">{achievableCrackersFromQuests.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">From Quest Rewards</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value">{crackersFromCompletionRewards.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Total Earned (All Sources)</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value cracker-grand-total"
-                >{totalCrackersFromAllSources.toLocaleString()}</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="cost-statistics unified-stats">
-        <div class="stats-header">
-          <h3 class="stats-title">Farming for Full Shop</h3>
-        </div>
-
-        <div class="stats-list">
-          <div class="stat-list-item">
-            <span class="stat-label">Total Shop Cost</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value">{shopTotalCost.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Still Needed</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value needed-amount">{crackersNeeded.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Normal Stage Runs Needed</span>
-            <span class="stat-value runs-needed">{runsNeeded.toLocaleString()}</span>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Per Run (400 each)</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value">{crackersPerNormalRun}</span>
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Stamina Cost Per Run</span>
-            <span class="stat-value stamina-cost">{staminaPerRun}</span>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Total Stamina Needed</span>
-            <span class="stat-value stamina-total">{totalStaminaNeeded.toLocaleString()}</span>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Recovery Rate</span>
-            <span class="stat-value">6 min/stamina</span>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Time Needed (Natural Recovery)</span>
-            <span class="stat-value time-total">
-              {
-                totalDaysNeeded > 0
-                  ? `${totalDaysNeeded}d ${remainingHours}h ${remainingMinutes}m`
-                  : totalHoursNeeded > 0
-                    ? `${totalHoursNeeded}h ${remainingMinutes}m`
-                    : `${totalMinutesNeeded}m`
-              }
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cost-statistics unified-stats">
-        <div class="stats-header">
-          <h3 class="stats-title">F2P Best Strategy</h3>
-        </div>
-
-        <div class="stats-list">
-          <div class="stat-list-item">
-            <span class="stat-label">High Priority Items Cost</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value"
-                >{
-                  calculateTierCost([
-                    ...itemPriorities.highest,
-                    ...itemPriorities.high,
-                  ]).toLocaleString()
-                }</span
-              >
-            </div>
-          </div>
-        </div>
-
-        <div class="strategy-note">
-          <p>
-            <strong>F2P:</strong> Repeat hard mode until you finish the 160 quest to get as much currency
-            as possible.
-          </p>
-        </div>
-      </div>
-
-      <div class="cost-statistics unified-stats">
-        <div class="stats-header">
-          <h3 class="stats-title">Priority Shopping Summary</h3>
-        </div>
-
-        <div class="stats-list">
-          <div class="stat-list-item">
-            <span class="stat-label">Most Important</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value"
-                >{calculateTierCost(itemPriorities.highest).toLocaleString()}</span
-              >
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Important Items</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value"
-                >{
-                  calculateTierCost([
-                    ...itemPriorities.highest,
-                    ...itemPriorities.high,
-                  ]).toLocaleString()
-                }</span
-              >
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">All Priority Items</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value"
-                >{
-                  calculateTierCost([
-                    ...itemPriorities.highest,
-                    ...itemPriorities.high,
-                    ...itemPriorities.medium,
-                  ]).toLocaleString()
-                }</span
-              >
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">All Including Gifts</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value"
-                >{
-                  calculateTierCost([
-                    ...itemPriorities.highest,
-                    ...itemPriorities.high,
-                    ...itemPriorities.medium,
-                    ...itemPriorities.low,
-                  ]).toLocaleString()
-                }</span
-              >
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Optional / Vanity</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value"
-                >{
-                  calculateTierCost([
-                    ...itemPriorities.highest,
-                    ...itemPriorities.high,
-                    ...itemPriorities.medium,
-                    ...itemPriorities.low,
-                    ...itemPriorities.optional,
-                  ]).toLocaleString()
-                }</span
-              >
-            </div>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Complete Shop</span>
-            <div class="currency-display">
-              <SSShopEventImage
-                imageSrc="Squid_rice_cracker.png"
-                alt="Squid Rice Cracker"
-                width={16}
-                height={16}
-              />
-              <span class="stat-value shop-total">{shopTotalCost.toLocaleString()}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="cost-statistics unified-stats">
-        <div class="stats-header">
-          <h3 class="stats-title">Gems</h3>
-        </div>
-
-        <div class="stats-list">
-          <div class="stat-list-item">
-            <span class="stat-label">Total GEMs from Quests</span>
-            <span class="stat-value gem-total">
-              {totalGemsFromQuests.toLocaleString()}
-            </span>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">GEMs from Stage First Clears</span>
-            <span class="stat-value gem-stage">
-              {totalGemsFromStages.toLocaleString()}
-            </span>
-          </div>
-
-          <div class="stat-list-item">
-            <span class="stat-label">Total GEMs (All Sources)</span>
-            <span class="stat-value gem-grand-total">
-              {totalGemsFromAllSources.toLocaleString()}
-            </span>
-          </div>
-        </div>
-      </div>
+  <div class="event-content">
+    <!-- Featured Image -->
+    <div class="featured-image-section">
+      <TheGhostShipImages
+        imageName="3_bg1event.jpg"
+        alt={event.title}
+        className="featured-image"
+        loading="eager"
+      />
     </div>
-  </section>
 
-  <section class="ss-shop-event-items">
-    <h2 class="ss-shop-items-title">Shop Event Items</h2>
+    <!-- Event Summary -->
+    <section class="event-overview">
+      <h2>Event Overview</h2>
+      <p>{event.summary}</p>
+      <p>{event.description}</p>
+    </section>
 
-    <div class="shop-items-grid">
-      {
-        shopItems.map(item => {
-          const stockStatus = getStockStatus(item.stockLeft);
+    <!-- Event Dates -->
+    <section class="event-dates">
+      <h2>Event Schedule</h2>
+      <div class="dates-grid">
+        <div class="date-item">
+          <div class="date-label">Start Date</div>
+          <div class="date-value">{event.startDate}</div>
+        </div>
+        <div class="date-item">
+          <div class="date-label">End Date</div>
+          <div class="date-value">{event.endDate}</div>
+        </div>
+        <div class="date-item">
+          <div class="date-label">Shop Closes</div>
+          <div class="date-value">{event.shopEndDate}</div>
+        </div>
+      </div>
+    </section>
 
-          return (
-            <div class="shop-item-card" data-rarity={item.rarity} data-stock={stockStatus}>
-              <div class="item-image-wrapper">
-                <SSShopEventImage imageSrc={item.image} alt={item.name} width={80} height={80} />
-                <div class="rarity-dot" />
-              </div>
-
-              <div class="item-info">
-                <h3 class="item-title">{item.name}</h3>
-
-                <div class="item-stats">
-                  <div class="stat-row">
-                    <span class="stat-label">Stock:</span>
-                    <span class="stat-value stock-amount">{item.stockLeft}</span>
-                  </div>
-
-                  <div class="stat-row">
-                    <span class="stat-label">Cost:</span>
-                    <div class="cost-display">
-                      <SSShopEventImage
-                        imageSrc="Squid_rice_cracker.png"
-                        alt="Squid Rice Cracker"
-                        width={16}
-                        height={16}
-                      />
-                      <span class="stat-value item-cost">{item.cost}</span>
-                    </div>
-                  </div>
-
-                  <div class="stat-row">
-                    <span class="stat-label">Qty:</span>
-                    <span class="stat-value">{item.quantity}</span>
-                  </div>
+    <!-- Shop Items Grid -->
+    <section class="shop-items-section">
+      <h2>Shop Items</h2>
+      <div class="items-grid">
+        {
+          event.shopItems.map(item => (
+            <div class={`item-card ${item.featured ? 'featured' : ''}`}>
+              <div class="item-header">
+                <TheGhostShipImages imageName={item.image} alt={item.name} className="item-image" />
+                <div class="item-info">
+                  <h3 class="item-name">{item.name}</h3>
+                  <span class="item-rarity">
+                    {item.rarity} {item.type}
+                  </span>
                 </div>
               </div>
-            </div>
-          );
-        })
-      }
-    </div>
-  </section>
-
-  <!-- Item Priority Section -->
-  <section class="item-priority-section">
-    <h2 class="ss-shop-items-title">Item Priority Guide</h2>
-    <p class="priority-intro">
-      Since you can't buy all items from the shop, focus on these priorities based on your available
-      Squid Rice Crackers.
-    </p>
-
-    <div class="priority-tiers">
-      <!-- Highest Priority -->
-      <div class="priority-tier">
-        <h3 class="tier-title highest-priority">Most Important - Must Buy</h3>
-
-        <div class="priority-items">
-          {
-            itemPriorities.highest.map(item => {
-              const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
-              return (
-                <div class="priority-item">
-                  {shopItem && (
-                    <>
-                      <div class="item-image-wrapper">
-                        <SSShopEventImage
-                          imageSrc={shopItem.image}
-                          alt={item.name}
-                          width={60}
-                          height={60}
-                        />
-                      </div>
-                      <div class="item-info">
-                        <h4 class="item-name">{item.name}</h4>
-                        <p class="item-reason">{item.reason}</p>
-                        <div class="item-cost">
-                          <SSShopEventImage
-                            imageSrc="Squid_rice_cracker.png"
-                            alt="Squid Rice Cracker"
-                            width={16}
-                            height={16}
-                          />
-                          <span>
-                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
-                          </span>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              );
-            })
-          }
-        </div>
-
-        <div class="tier-cost">
-          Tier Total Cost:
-          <div class="cost-display">
-            <SSShopEventImage
-              imageSrc="Squid_rice_cracker.png"
-              alt="Squid Rice Cracker"
-              width={16}
-              height={16}
-            />
-            <span>{calculateTierCost(itemPriorities.highest).toLocaleString()}</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- High Priority -->
-      <div class="priority-tier">
-        <h3 class="tier-title high-priority">High Priority</h3>
-
-        <div class="priority-items">
-          {
-            itemPriorities.high.map(item => {
-              const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
-              return (
-                <div class="priority-item">
-                  {shopItem && (
-                    <>
-                      <div class="item-image-wrapper">
-                        <SSShopEventImage
-                          imageSrc={shopItem.image}
-                          alt={item.name}
-                          width={60}
-                          height={60}
-                        />
-                      </div>
-                      <div class="item-info">
-                        <h4 class="item-name">{item.name}</h4>
-                        <p class="item-reason">{item.reason}</p>
-                        <div class="item-cost">
-                          <SSShopEventImage
-                            imageSrc="Squid_rice_cracker.png"
-                            alt="Squid Rice Cracker"
-                            width={16}
-                            height={16}
-                          />
-                          <span>
-                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
-                          </span>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              );
-            })
-          }
-        </div>
-
-        <div class="tier-cost">
-          Tier Total Cost:
-          <div class="cost-display">
-            <SSShopEventImage
-              imageSrc="Squid_rice_cracker.png"
-              alt="Squid Rice Cracker"
-              width={16}
-              height={16}
-            />
-            <span>{calculateTierCost(itemPriorities.high).toLocaleString()}</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Medium Priority -->
-      <div class="priority-tier">
-        <h3 class="tier-title medium-priority">Medium Priority</h3>
-
-        <div class="priority-items-grid">
-          {
-            itemPriorities.medium.map(item => {
-              const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
-              return (
-                <div class="priority-item compact">
-                  {shopItem && (
-                    <>
-                      <div class="item-image-wrapper small">
-                        <SSShopEventImage
-                          imageSrc={shopItem.image}
-                          alt={item.name}
-                          width={40}
-                          height={40}
-                        />
-                      </div>
-                      <div class="item-info">
-                        <h4 class="item-name">{item.name}</h4>
-                        <p class="item-reason">{item.reason}</p>
-                        <div class="item-cost">
-                          <SSShopEventImage
-                            imageSrc="Squid_rice_cracker.png"
-                            alt="Squid Rice Cracker"
-                            width={14}
-                            height={14}
-                          />
-                          <span>
-                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
-                          </span>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              );
-            })
-          }
-        </div>
-
-        <div class="tier-cost">
-          Tier Total Cost:
-          <div class="cost-display">
-            <SSShopEventImage
-              imageSrc="Squid_rice_cracker.png"
-              alt="Squid Rice Cracker"
-              width={16}
-              height={16}
-            />
-            <span>{calculateTierCost(itemPriorities.medium).toLocaleString()}</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Low Priority Gift Items -->
-      <div class="priority-tier">
-        <h3 class="tier-title low-priority">Low Priority - Gift Items</h3>
-
-        <div class="priority-items">
-          {
-            itemPriorities.low.map(item => {
-              const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
-              return (
-                <div class="priority-item">
-                  {shopItem && (
-                    <>
-                      <div class="item-image-wrapper">
-                        <SSShopEventImage
-                          imageSrc={shopItem.image}
-                          alt={item.name}
-                          width={60}
-                          height={60}
-                        />
-                      </div>
-                      <div class="item-info">
-                        <h4 class="item-name">{item.name}</h4>
-                        <p class="item-reason">{item.reason}</p>
-                        <div class="item-cost">
-                          <SSShopEventImage
-                            imageSrc="Squid_rice_cracker.png"
-                            alt="Squid Rice Cracker"
-                            width={16}
-                            height={16}
-                          />
-                          <span>
-                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
-                          </span>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              );
-            })
-          }
-        </div>
-
-        <div class="tier-cost">
-          Tier Total Cost:
-          <div class="cost-display">
-            <SSShopEventImage
-              imageSrc="Squid_rice_cracker.png"
-              alt="Squid Rice Cracker"
-              width={16}
-              height={16}
-            />
-            <span>{calculateTierCost(itemPriorities.low).toLocaleString()}</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Optional Items -->
-      <div class="priority-tier">
-        <h3 class="tier-title optional-priority">Optional / Vanity</h3>
-
-        <div class="priority-items">
-          {
-            itemPriorities.optional.map(item => {
-              const shopItem = shopItems.find(shopItem => shopItem.name === item.name);
-              return (
-                <div class="priority-item">
-                  {shopItem && (
-                    <>
-                      <div class="item-image-wrapper">
-                        <SSShopEventImage
-                          imageSrc={shopItem.image}
-                          alt={item.name}
-                          width={60}
-                          height={60}
-                        />
-                      </div>
-                      <div class="item-info">
-                        <h4 class="item-name">{item.name}</h4>
-                        <p class="item-reason">{item.reason}</p>
-                        <div class="item-cost">
-                          <SSShopEventImage
-                            imageSrc="Squid_rice_cracker.png"
-                            alt="Squid Rice Cracker"
-                            width={16}
-                            height={16}
-                          />
-                          <span>
-                            {shopItem.cost.toLocaleString()} × {shopItem.stockLeft}
-                          </span>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              );
-            })
-          }
-        </div>
-
-        <div class="tier-cost">
-          Tier Total Cost:
-          <div class="cost-display">
-            <SSShopEventImage
-              imageSrc="Squid_rice_cracker.png"
-              alt="Squid Rice Cracker"
-              width={16}
-              height={16}
-            />
-            <span>{calculateTierCost(itemPriorities.optional).toLocaleString()}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="priority-summary">
-      <h3>Summary:</h3>
-      <ul>
-        <li>
-          <strong>Most Important:</strong>
-          {calculateTierCost(itemPriorities.highest).toLocaleString()} Squid Rice Crackers
-        </li>
-        <li>
-          <strong>Important Items:</strong>
-          {calculateTierCost([...itemPriorities.highest, ...itemPriorities.high]).toLocaleString()} Squid
-          Rice Crackers
-        </li>
-        <li>
-          <strong>All Priority Items:</strong>
-          {
-            calculateTierCost([
-              ...itemPriorities.highest,
-              ...itemPriorities.high,
-              ...itemPriorities.medium,
-            ]).toLocaleString()
-          } Squid Rice Crackers
-        </li>
-        <li>
-          <strong>All Including Gifts:</strong>
-          {
-            calculateTierCost([
-              ...itemPriorities.highest,
-              ...itemPriorities.high,
-              ...itemPriorities.medium,
-              ...itemPriorities.low,
-            ]).toLocaleString()
-          } Squid Rice Crackers
-        </li>
-        <li>
-          <strong>Complete Shop:</strong>
-          {shopTotalCost.toLocaleString()} Squid Rice Crackers
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Quest Rewards Section -->
-  <section class="quest-rewards-section">
-    <h2 class="ss-shop-items-title">Quest Rewards</h2>
-
-    <div class="quest-note important-note">
-      <p><strong>Quest Guide:</strong></p>
-      <ul>
-        <li>
-          <strong>Common, Challenge, and Special Quests:</strong> You should be able to finish these
-          quests easily and get all quest rewards.
-        </li>
-        <li>
-          <strong>Adventure Quests:</strong> All adventure quests including the stage clearing quests
-          are achievable as F2P.
-        </li>
-        <li>
-          <strong>Tip:</strong> If you finish all the quests, you should be able to clear the entire
-          shop!
-        </li>
-      </ul>
-    </div>
-
-    {
-      questCategories.map(category => (
-        <div class="quest-category">
-          <h3 class="quest-category-title">{category.title}</h3>
-          <p class="quest-completion-reward">
-            After finishing all the quests you get these rewards!
-          </p>
-          <div class="quest-rewards-summary">
-            {parseRewardText(category.completionRewards).map((reward, index) => (
-              <div class="reward-item">
-                {reward.imageName && (
-                  <SSShopEventImage
-                    imageSrc={reward.imageName}
-                    alt={reward.displayText}
-                    width={16}
-                    height={16}
+              <div class="item-details">
+                <div class="item-price">
+                  <TheGhostShipImages
+                    imageName="3_Squid_rice_cracker.png"
+                    alt={item.currency.name}
+                    className="price-icon"
                   />
-                )}
-                <span>{reward.displayText}</span>
+                  <span class="price-value">{item.price}</span>
+                </div>
+                <div class="item-stock">
+                  Stock:{' '}
+                  {item.stock.type === 'limited'
+                    ? `${item.stock.quantity} (max ${item.stock.maxPurchase})`
+                    : 'Unlimited'}
+                </div>
+                <p class="item-description">{item.description}</p>
               </div>
-            ))}
-          </div>
-
-          <div class="quest-table-container">
-            <table class="quest-table">
-              <thead>
-                <tr>
-                  <th>Quest Name</th>
-                  {'shovel' in category.quests[0] ? <th>Shovel Reward</th> : <th>GEM Reward</th>}
-                  <th>Squid Rice Cracker</th>
-                </tr>
-              </thead>
-              <tbody>
-                {category.quests.map(quest => (
-                  <tr>
-                    <td>{quest.name}</td>
-                    {quest.shovel ? <td>{quest.shovel}</td> : <td>{quest.gem}</td>}
-                    <td>{quest.currency}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      ))
-    }
-
-    <!-- Stage Rewards -->
-    <div class="quest-category">
-      <h3 class="quest-category-title">Stage First Clear Rewards</h3>
-      <p class="quest-note">Repeated normal stages give you 400 Squid Rice Cracker</p>
-
-      <div class="stage-rewards-grid">
-        <div class="stage-reward-group">
-          <h4 class="stage-reward-subtitle">Normal Stages</h4>
-          <div class="stage-table-container">
-            <table class="stage-table">
-              <thead>
-                <tr>
-                  <th>Stage Name</th>
-                  <th>GEM Reward</th>
-                  <th>Squid Rice Cracker</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Summer Brawl I</td>
-                  <td>x50</td>
-                  <td>300 Squid Rice Cracker</td>
-                </tr>
-                <tr>
-                  <td>Summer Brawl II</td>
-                  <td>x50</td>
-                  <td>350 Squid Rice Cracker</td>
-                </tr>
-                <tr>
-                  <td>Summer Brawl III</td>
-                  <td>x50</td>
-                  <td>400 Squid Rice Cracker</td>
-                </tr>
-                <tr>
-                  <td>Summer Brawl IV</td>
-                  <td>x50</td>
-                  <td>450 Squid Rice Cracker</td>
-                </tr>
-                <tr>
-                  <td>Summer Brawl V</td>
-                  <td>x50</td>
-                  <td>500 Squid Rice Cracker</td>
-                </tr>
-                <tr>
-                  <td>Summer Brawl VI</td>
-                  <td>x50</td>
-                  <td>550 Squid Rice Cracker</td>
-                </tr>
-                <tr>
-                  <td>Summer Brawl VII</td>
-                  <td>x50</td>
-                  <td>600 Squid Rice Cracker</td>
-                </tr>
-                <tr>
-                  <td>Hexhorn Whale (Normal)</td>
-                  <td>x100</td>
-                  <td>650 Squid Rice Cracker</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="total-reward">
-            Total First Clear Rewards: <strong>3,800</strong> Squid Rice Crackers, <strong
-              >450</strong
-            > GEMs
-          </p>
-        </div>
-
-        <div class="stage-reward-group">
-          <h4 class="stage-reward-subtitle">Hard Stages</h4>
-          <div class="stage-table-container">
-            <table class="stage-table">
-              <thead>
-                <tr>
-                  <th>Stage Name</th>
-                  <th>GEM Reward</th>
-                  <th>Squid Rice Cracker</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Treasure Raider I</td>
-                  <td>x80</td>
-                  <td>600 Squid Rice Cracker</td>
-                </tr>
-                <tr>
-                  <td>Treasure Raider II</td>
-                  <td>x80</td>
-                  <td>800 Squid Rice Cracker</td>
-                </tr>
-                <tr>
-                  <td>Treasure Raider III</td>
-                  <td>x80</td>
-                  <td>1000 Squid Rice Cracker</td>
-                </tr>
-                <tr>
-                  <td>Hexhorn Whale (Hard)</td>
-                  <td>x120</td>
-                  <td>1200 Squid Rice Cracker</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="total-reward">
-            Total First Clear Rewards: <strong>3,600</strong> Squid Rice Crackers, <strong
-              >360</strong
-            > GEMs
-          </p>
-        </div>
+            </div>
+          ))
+        }
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </ShopEventLayout>
+
+<style>
+  .event-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .featured-image-section {
+    margin-bottom: 2rem;
+  }
+
+  .featured-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .event-overview {
+    background: var(--ss-card-bg);
+    border: 1px solid var(--ss-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .event-dates {
+    background: var(--ss-card-bg);
+    border: 1px solid var(--ss-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .dates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .date-item {
+    text-align: center;
+  }
+
+  .date-label {
+    font-size: 0.875rem;
+    color: var(--ss-text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .date-value {
+    font-weight: 600;
+    color: var(--ss-text-primary);
+  }
+
+  .shop-items-section {
+    margin-bottom: 2rem;
+  }
+
+  .items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .item-card {
+    background: var(--ss-card-bg);
+    border: 1px solid var(--ss-border);
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  .item-card.featured {
+    border-color: var(--ss-accent-primary);
+    background: linear-gradient(
+      135deg,
+      var(--ss-card-bg) 0%,
+      rgba(var(--ss-accent-primary-rgb), 0.1) 100%
+    );
+  }
+
+  .item-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .item-image {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-right: 0.75rem;
+  }
+
+  .item-name {
+    font-weight: 600;
+    color: var(--ss-text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .item-rarity {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    background: var(--ss-accent-secondary);
+    color: white;
+  }
+
+  .item-details {
+    space-y: 0.5rem;
+  }
+
+  .item-price {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+  }
+
+  .price-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+  }
+
+  .item-stock {
+    color: var(--ss-text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .item-description {
+    color: var(--ss-text-secondary);
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+</style>

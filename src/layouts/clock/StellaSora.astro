@@ -356,7 +356,9 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                             <div class="event-counter">
                               <div class="event-days" id="eventDurationTime">---</div>
                               <div class="event-date">Event Period</div>
-                              <div class="event-period">Oct 27 – Nov 10 (UTC-7)</div>
+                              <div class="event-period" id="eventPeriodDuration">
+                                Oct 27 – Nov 10 (UTC-7)
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -370,7 +372,9 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                             <div class="event-counter">
                               <div class="event-days" id="eventShopTime">---</div>
                               <div class="event-date">Shop Exchange</div>
-                              <div class="event-period">Oct 27 – Nov 17 (UTC-7)</div>
+                              <div class="event-period" id="eventPeriodShop">
+                                Nov 18 – Dec 8, 2025 (UTC-7)
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -384,9 +388,7 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                               <span class="status-text" id="bannerStatusText">Active</span>
                             </div>
                           </div>
-                          <div class="timer-card-subtitle">
-                            Tide to the Full Moon & Ocean Meets the Sky
-                          </div>
+                          <div class="timer-card-subtitle">Fuyuka Fireworks Events</div>
                           <div class="timer-card-content">
                             <div class="banner-timer-display">
                               <div class="banner-countdown">
@@ -407,13 +409,13 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                                   <span class="countdown-label">Seconds</span>
                                 </div>
                               </div>
-                              <div class="banner-period">Oct 27 – Nov 17, 2025 (UTC-7)</div>
-                              <div class="banner-featured">★5 Shia & Ripples of Nostalgia</div>
+                              <div class="banner-period">Nov 17 – Dec 8, 2025 (UTC-7)</div>
+                              <div class="banner-featured">★5 Fuyuka & Fireworks</div>
                             </div>
                           </div>
                         </div>
 
-                        <!-- Current Banner Timer Card 2 (Chitose) -->
+                        <!-- Current Banner Timer Card 2 (Nanoha) -->
                         <div class="timer-card banner-timer-card">
                           <div class="timer-card-header">
                             <div class="ss-timer-card-title">Current Banner #2</div>
@@ -423,7 +425,7 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                             </div>
                           </div>
                           <div class="timer-card-subtitle">
-                            Blades Beneath the Moon & Moon upon Still Waters
+                            A Fateful Encounter & A Heart-Tuned Melody
                           </div>
                           <div class="timer-card-content">
                             <div class="banner-timer-display">
@@ -445,8 +447,8 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                                   <span class="countdown-label">Seconds</span>
                                 </div>
                               </div>
-                              <div class="banner-period">Oct 19 – Nov 10, 2025 (UTC-7)</div>
-                              <div class="banner-featured">★5 Chitose & Sword Against Stream</div>
+                              <div class="banner-period">Nov 10 – Dec 1, 2025 (UTC-7)</div>
+                              <div class="banner-featured">★5 Nanoha & Daylight Garden</div>
                             </div>
                           </div>
                         </div>
@@ -462,13 +464,5 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
     </div>
 
     <Footer />
-
-    <!-- Pass config data to JavaScript -->
-    <script define:vars={{ config: game }}>
-      window.stellaSoraConfig = config;
-    </script>
-
-    <!-- Load Stella Sora clock timer script -->
-    <script src="../../scripts/clock/stella-sora.js"></script>
   </body>
 </html>

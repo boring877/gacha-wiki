@@ -1,0 +1,613 @@
+---
+// Dynamic Shop Event Page - Replaces all individual event pages
+import ShopEventLayout from '../../../../layouts/stella-sora/ShopEventLayout.astro';
+import { getShopEventBySlug, getAllShopEvents } from '../../../../data/stella-sora/shop-events.js';
+import SSShopEventImage from '../../../../components/stella-sora/SSShopEventImage.astro';
+import RewardImage from '../../../../components/stella-sora/RewardImage.astro';
+
+export async function getStaticPaths() {
+  // Get all available events
+  const events = getAllShopEvents();
+
+  // Generate paths for all events using their URL slugs
+  return events.map(event => {
+    // Extract slug from URL (e.g., "/guides/stella-sora/shop-events/a-finale-echoing/" -> "a-finale-echoing")
+    const slug = event.url.split('/').filter(Boolean).pop() || event.id;
+    return {
+      params: { slug },
+      props: { event },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+const { event: propsEvent } = Astro.props;
+
+// Get event data either from props or by slug lookup
+const event = propsEvent || getShopEventBySlug(slug);
+
+// Redirect if event not found
+if (!event) {
+  return Astro.redirect('/guides/stella-sora/shop-events/');
+}
+
+// Helper function to determine stock status
+const getStockStatus = (stockLeft: number) => {
+  if (stockLeft <= 2) return 'very-low';
+  if (stockLeft <= 10) return 'low';
+  return 'available';
+};
+
+// Helper function to parse reward text and return array of reward objects
+const parseRewardText = (rewardsText: string) => {
+  const rewardItems = rewardsText.split(',').map(reward => {
+    const trimmedReward = reward.trim();
+    const match = trimmedReward.match(/(\d+)\s*x?\s*(.+)$/);
+
+    if (match) {
+      const quantity = match[1];
+      const name = match[2].trim();
+      return {
+        displayText: trimmedReward,
+        quantity: quantity,
+        name: name,
+      };
+    }
+
+    return {
+      displayText: trimmedReward,
+      quantity: '1',
+      name: trimmedReward,
+    };
+  });
+
+  return rewardItems;
+};
+
+// Transform shop items from data structure to match existing page structure
+const shopItems = event.shopItems.map(item => ({
+  name: item.name,
+  stockLeft: item.stock?.quantity || 1,
+  cost: item.price || item.cost || 0,
+  quantity: item.quantity?.toString() || '1',
+  image: item.image,
+  rarity: item.rarity?.toLowerCase() || 'common',
+}));
+
+// Calculate total cost to buy all items
+const totalCost = shopItems.reduce(
+  (sum, item) => sum + (item.price || item.cost || 0) * item.stockLeft,
+  0
+);
+
+// Calculate currency from quests (if quest data exists)
+let totalCurrencyFromQuests = 0;
+let questCategories: Array<{
+  title: string;
+  completionRewards: string;
+  quests: Array<{
+    name: string;
+    currency?: string;
+    description?: string;
+    marbleReward?: number;
+    artifactWishingEgg?: string;
+    shovel?: string;
+    gem?: string;
+  }>;
+}> = [];
+
+if (event.quests) {
+  questCategories = Object.values(event.quests).map((category: any) => ({
+    title: category.title,
+    completionRewards: category.completionRewards?.items?.join(', ') || '',
+    quests:
+      category.quests?.map(quest => ({
+        name: quest.name,
+        // Handle different currency field names across events
+        ...(quest.artifactWishingEgg && { artifactWishingEgg: quest.artifactWishingEgg }),
+        ...(quest.shovel && { shovel: quest.shovel }),
+        ...(quest.gem && { gem: quest.gem }),
+        ...(quest.crystalReward && { gem: `x${quest.crystalReward}` }),
+        // Handle different currency reward field names
+        ...(quest.whispersReward && { currency: `x${quest.whispersReward}` }),
+        ...(quest.squidRiceCrackerReward && { currency: `x${quest.squidRiceCrackerReward}` }),
+        ...(quest.currency && { currency: quest.currency }),
+      })) || [],
+  }));
+
+  // Calculate total currency from quests
+  totalCurrencyFromQuests = questCategories.reduce((total, category) => {
+    return (
+      total +
+      category.quests.reduce((categoryTotal, quest) => {
+        const currencyMatch = quest.currency?.match(/x(\d+)/);
+        const currencyAmount = currencyMatch ? parseInt(currencyMatch[1]) : 0;
+        return categoryTotal + currencyAmount;
+      }, 0)
+    );
+  }, 0);
+}
+
+// Calculate stage first clear rewards (separate Cookie Workshop from regular stages)
+let stageFirstClearRewards = 0;
+let cookieWorkshopStageRewards = 0;
+let regularStageRewards = 0;
+
+if (event.stages) {
+  Object.values(event.stages).forEach((stageType: any) => {
+    if (stageType.stages) {
+      const stageTypeRewards = stageType.stages.reduce((total, stage) => {
+        return total + (stage.firstClearReward || stage.glassMarbleReward || 0);
+      }, 0);
+
+      stageFirstClearRewards += stageTypeRewards;
+
+      // Separate Cookie Workshop from regular stages
+      if (stageType.title && stageType.title.toLowerCase().includes('cookie')) {
+        cookieWorkshopStageRewards += stageTypeRewards;
+      } else if (stageType.title && stageType.title.toLowerCase().includes('workshop')) {
+        cookieWorkshopStageRewards += stageTypeRewards;
+      } else {
+        regularStageRewards += stageTypeRewards;
+      }
+    }
+  });
+}
+
+// Calculate total achievable earnings
+const totalAchievableCurrency = totalCurrencyFromQuests + stageFirstClearRewards;
+---
+
+<ShopEventLayout
+  title={`${event.title} - ${event.subtitle || 'Stella Sora Shop Event'}`}
+  description={event.description}
+  gameTitle={event.title}
+  endDate={event.shopEndDate || event.endDate}
+  currency={event.currency}
+>
+  <!-- Shop Event Cost Breakdown Section -->
+  <section class="ss-cost-breakdown">
+    <h2 class="ss-shop-items-title">Breakdown of Shop Event Cost</h2>
+
+    <div class="cost-overview">
+      <div class="currency-info">
+        <div class="currency-header">
+          <SSShopEventImage
+            imageSrc={event.currency.icon}
+            alt={event.currency.name}
+            width={24}
+            height={24}
+            eventType={event.id}
+          />
+          <h3 class="currency-name">{event.currency.name}</h3>
+        </div>
+
+        <div class="currency-sources">
+          <h4 class="sources-title">How to Obtain:</h4>
+          <ul class="sources-list">
+            {event.currency.sources.map(source => <li class="source-item">{source}</li>)}
+          </ul>
+        </div>
+
+        {
+          event.currency.capacity && (
+            <div class="currency-capacity">
+              <span class="capacity-label">Capacity:</span>
+              <span class="capacity-value">{event.currency.capacity}</span>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="cost-statistics unified-stats">
+        <div class="stats-header">
+          <h3 class="stats-title">Shop Overview</h3>
+        </div>
+
+        <div class="stats-list">
+          <div class="stat-list-item">
+            <span class="stat-label">Total Items</span>
+            <span class="stat-value">{shopItems.length}</span>
+          </div>
+
+          <div class="stat-list-item total-cost-item">
+            <span class="stat-label">Total Cost (All Items)</span>
+            <div class="total-cost-display">
+              <SSShopEventImage
+                imageSrc={event.currency.icon}
+                alt={event.currency.name}
+                width={16}
+                height={16}
+              />
+              <span class="stat-value cost-total">{totalCost.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Highest Cost</span>
+            <span class="stat-value cost-highest">
+              {Math.max(...shopItems.map(item => item.price || item.cost || 0))}
+            </span>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Lowest Cost</span>
+            <span class="stat-value cost-lowest">
+              {Math.min(...shopItems.map(item => item.price || item.cost || 0))}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {
+        totalAchievableCurrency > 0 && (
+          <div class="cost-statistics unified-stats">
+            <div class="stats-header">
+              <h3 class="stats-title">{event.currency.name} Earned</h3>
+            </div>
+
+            <div class="stats-list">
+              {regularStageRewards > 0 && (
+                <div class="stat-list-item">
+                  <span class="stat-label">From Regular Stage First Clears</span>
+                  <div class="currency-display">
+                    <SSShopEventImage
+                      imageSrc={event.currency.icon}
+                      alt={event.currency.name}
+                      width={16}
+                      height={16}
+                    />
+                    <span class="stat-value">{regularStageRewards.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              {cookieWorkshopStageRewards > 0 && (
+                <div class="stat-list-item">
+                  <span class="stat-label">From Cookie Workshop Stages</span>
+                  <div class="currency-display">
+                    <SSShopEventImage
+                      imageSrc={event.currency.icon}
+                      alt={event.currency.name}
+                      width={16}
+                      height={16}
+                    />
+                    <span class="stat-value">{cookieWorkshopStageRewards.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              {totalCurrencyFromQuests > 0 && (
+                <div class="stat-list-item">
+                  <span class="stat-label">From Quest Completions</span>
+                  <div class="currency-display">
+                    <SSShopEventImage
+                      imageSrc={event.currency.icon}
+                      alt={event.currency.name}
+                      width={16}
+                      height={16}
+                    />
+                    <span class="stat-value">{totalCurrencyFromQuests.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              <div class="stat-list-item">
+                <span class="stat-label">Total Earned (All Sources)</span>
+                <div class="currency-display">
+                  <SSShopEventImage
+                    imageSrc={event.currency.icon}
+                    alt={event.currency.name}
+                    width={16}
+                    height={16}
+                  />
+                  <span class="stat-value cracker-grand-total">
+                    {totalAchievableCurrency.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Stamina Calculator Section - Only for Guild Sweet Guild -->
+  {
+    event.id === 'guild-sweet-guild' && event.staminaCosts && (
+      <section class="stamina-calculator">
+        <h2 class="ss-shop-items-title">Full Shop Clear</h2>
+
+        {/* Calculate required stamina */}
+        {(() => {
+          const totalShopCost = shopItems.reduce(
+            (sum, item) => sum + (item.price || item.cost || 0) * item.stockLeft,
+            0
+          );
+          const currencyPerRun = event.staminaCosts.marblePerRun; // 500 marble from regular stages only
+          const staminaPerRun = event.staminaCosts.runCost;
+          const marblePerStamina = event.staminaCosts.marblePerStamina;
+
+          // Calculate currency earned from quests and ALL stage first clears (including Cookie Workshop)
+          const earnedFromQuests = totalCurrencyFromQuests || 0;
+          const earnedFromStages = stageFirstClearRewards || 0; // Include both regular stages AND Cookie Workshop stages
+          const totalEarnedCurrency = earnedFromQuests + earnedFromStages;
+          const actualCostToFarm = Math.max(0, totalShopCost - totalEarnedCurrency);
+
+          const runsNeeded = Math.ceil(actualCostToFarm / currencyPerRun);
+          const totalStaminaNeeded = runsNeeded * staminaPerRun;
+          const daysNeeded = Math.ceil(totalStaminaNeeded / event.staminaCosts.totalDailyStamina);
+
+          return (
+            <div class="stamina-calculation">
+              <div class="calculation-overview">
+                <div class="overview-cards">
+                  <div class="calc-card">
+                    <h3>Actual to Farm</h3>
+                    <div class="currency-display">
+                      <SSShopEventImage
+                        imageSrc={event.currency.icon}
+                        alt={event.currency.name}
+                        width={24}
+                        height={24}
+                        eventType={event.id}
+                      />
+                      <span class="actual-to-farm-main">{actualCostToFarm.toLocaleString()}</span>
+                    </div>
+                    <div class="calculation-breakdown">
+                      <small>
+                        Calculation: {totalShopCost.toLocaleString()} - (
+                        {earnedFromQuests.toLocaleString()} + {earnedFromStages.toLocaleString()}) ={' '}
+                        {actualCostToFarm.toLocaleString()}
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="calc-card">
+                    <h3>Normal Stage Run</h3>
+                    <div class="run-info">
+                      <div class="run-stats">
+                        <span>{staminaPerRun} stamina</span>
+                        <span>→</span>
+                        <div class="currency-display">
+                          <SSShopEventImage
+                            imageSrc={event.currency.icon}
+                            alt={event.currency.name}
+                            width={16}
+                            height={16}
+                            eventType={event.id}
+                          />
+                          <span>{currencyPerRun} marble</span>
+                        </div>
+                      </div>
+                      <div class="efficiency-rate">
+                        {marblePerStamina.toFixed(2)} marble/stamina
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="required-runs">
+                <h3>Runs Required for Full Shop</h3>
+                <div class="runs-grid">
+                  <div class="run-stat">
+                    <span class="label">Total Runs Needed</span>
+                    <span class="value runs-needed">{runsNeeded} runs</span>
+                  </div>
+                  <div class="run-stat">
+                    <span class="label">Total Stamina Required</span>
+                    <span class="value stamina-needed">
+                      {totalStaminaNeeded.toLocaleString()} stamina
+                    </span>
+                  </div>
+                  <div class="run-stat">
+                    <span class="label">Days to Complete</span>
+                    <span class="value days-needed">{daysNeeded} days</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="daily-stamina-breakdown">
+                <h3>Daily Stamina Sources</h3>
+                <div class="stamina-sources">
+                  <div class="stamina-source">
+                    <span class="source-name">Natural Regeneration</span>
+                    <span class="source-amount">
+                      +{event.staminaCosts.dailyRegeneration} stamina
+                    </span>
+                  </div>
+                  <div class="stamina-source">
+                    <span class="source-name">Daily Tasks</span>
+                    <span class="source-amount">+{event.staminaCosts.dailyTaskReward} stamina</span>
+                  </div>
+                  <div class="stamina-source">
+                    <span class="source-name">Mail Rewards</span>
+                    <span class="source-amount">+{event.staminaCosts.dailyMailReward} stamina</span>
+                  </div>
+                  <div class="stamina-source total">
+                    <span class="source-name">Total Daily Stamina</span>
+                    <span class="source-amount">
+                      +{event.staminaCosts.totalDailyStamina} stamina
+                    </span>
+                  </div>
+                </div>
+                <div class="stamina-note">
+                  <p>
+                    <strong>Note:</strong> Stamina regenerates at 1 stamina per{' '}
+                    {event.staminaCosts.staminaRegenerationTime} minutes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+      </section>
+    )
+  }
+
+  <section class="ss-shop-event-items">
+    <h2 class="ss-shop-items-title">Shop Event Items</h2>
+
+    <div class="shop-items-grid">
+      {
+        shopItems.map(item => {
+          const stockStatus = getStockStatus(item.stockLeft);
+
+          return (
+            <div class="shop-item-card" data-rarity={item.rarity} data-stock={stockStatus}>
+              <div class="item-image-wrapper">
+                <SSShopEventImage
+                  imageSrc={item.image}
+                  alt={item.name}
+                  width={80}
+                  height={80}
+                  eventType={event.id}
+                />
+              </div>
+
+              <div class="item-info">
+                <h3 class="item-title">{item.name}</h3>
+
+                <div class="item-stats">
+                  <div class="stat-row">
+                    <span class="stat-label">Stock:</span>
+                    <span class="stat-value stock-amount">{item.stockLeft}</span>
+                  </div>
+
+                  <div class="stat-row">
+                    <span class="stat-label">Cost:</span>
+                    <div class="cost-display">
+                      <SSShopEventImage
+                        imageSrc={event.currency.icon}
+                        alt={event.currency.name}
+                        width={16}
+                        height={16}
+                        eventType={event.id}
+                      />
+                      <span class="stat-value item-cost">{item.price || item.cost || 0}</span>
+                    </div>
+                  </div>
+
+                  <div class="stat-row">
+                    <span class="stat-label">Qty:</span>
+                    <span class="stat-value">{item.quantity}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- Quest Rewards Section (if data exists) -->
+  {
+    questCategories.length > 0 && (
+      <section class="quest-rewards-section">
+        <h2 class="ss-shop-items-title">Quest Rewards</h2>
+
+        {questCategories.map(category => (
+          <div class="quest-category">
+            <h3 class="quest-category-title">{category.title}</h3>
+
+            {category.completionRewards && (
+              <>
+                <p class="quest-completion-reward">
+                  After finishing all the quests you get these rewards!
+                </p>
+                <div class="quest-rewards-summary">
+                  {parseRewardText(category.completionRewards).map((reward, index) => (
+                    <div class="reward-item">
+                      <div class="reward-quantity">x{reward.quantity}</div>
+                      <RewardImage rewardName={reward.name} eventId={event.id} />
+                      <div class="reward-name">{reward.name}</div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {category.quests.length > 0 && (
+              <div class="quest-table-container">
+                <table class="quest-table">
+                  <thead>
+                    <tr>
+                      <th>Quest Name</th>
+                      {category.quests[0].artifactWishingEgg && (
+                        <th>Artifact Wishing Egg Reward</th>
+                      )}
+                      {category.quests[0].shovel && <th>Shovel Reward</th>}
+                      {category.quests[0].gem && <th>GEM Reward</th>}
+                      <th>{event.currency.name}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {category.quests.map(quest => (
+                      <tr>
+                        <td>{quest.name}</td>
+                        {quest.artifactWishingEgg && <td>{quest.artifactWishingEgg}</td>}
+                        {quest.shovel && <td>{quest.shovel}</td>}
+                        {quest.gem && <td>{quest.gem}</td>}
+                        <td>{quest.currency}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        ))}
+      </section>
+    )
+  }
+
+  <!-- Stage Rewards Section (if data exists) -->
+  {
+    event.stages && (
+      <section class="quest-rewards-section">
+        <h2 class="ss-shop-items-title">Stage Rewards</h2>
+
+        <div class="stage-rewards-grid">
+          {Object.entries(event.stages).map(([stageTypeKey, stageType]: [string, any]) => (
+            <div class="stage-reward-group">
+              <h3>{stageType.title}</h3>
+              <div class="stage-table-container">
+                <table class="stage-table">
+                  <thead>
+                    <tr>
+                      <th>Stage Name</th>
+                      <th>{event.currency.name}</th>
+                      {stageType.stages?.[0]?.gemsReward && <th>GEM Reward</th>}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {stageType.stages?.map(stage => (
+                      <tr>
+                        <td>{stage.name}</td>
+                        <td>{stage.firstClearReward || stage.glassMarbleReward || 0}</td>
+                        {stageType.stages[0]?.gemsReward && (
+                          <td>{stage.gemsReward ? `x${stage.gemsReward}` : '—'}</td>
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {stageType.totalFirstClearRewards && (
+                <p class="total-reward">
+                  Total First Clear Rewards:{' '}
+                  <strong>{stageType.totalFirstClearRewards.toLocaleString()}</strong>{' '}
+                  {event.currency.name}
+                  {stageTypeKey === 'normal' && ' + GEMs'}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+</ShopEventLayout>

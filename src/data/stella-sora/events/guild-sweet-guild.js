@@ -1,0 +1,993 @@
+/**
+ * Guild Sweet Guild Event Data
+ * Cookie Workshop Event
+ */
+
+// Image imports for Guild Sweet Guild event
+import glassMarble from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_glass_marble.jpg';
+import fistOfCourage from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_fist_of_courage.jpg';
+import fistOfCourageMelody from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_fist_of_courage_melody.jpg';
+import guildSweetGuild from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_guild_sweet_guild.jpg';
+import colossusCore from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Colossus_Core.jpg';
+import ceruleanTicket from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_cerulean_ticket.jpg';
+import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg';
+import starEmblemPolisher from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_star_emblem_polisher.jpg';
+import reflectivePhotoCapturer from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_reflective_photo_capturer.jpg';
+import moonlitCompanion from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_moonlit_companion.jpg';
+import blossomPorcelainCup from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Blossom_Porcelain_cup.jpg';
+import countsGift from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_count_gift.jpg';
+import demonBeeGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Demon_Bee_Game_Cartridge.jpg';
+import frenziedWaltzEssence from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Frenzied_Waltz_Essence.jpg';
+import monolithStairsPass from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Monolith_Stairs_Pass.jpg';
+import trekkersHandwrittenEncyclopedia from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_trekkers_handwritten_encyclopedia.jpg';
+import starlitColoredGlass from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Starlit_Colored_Glass.jpg';
+import countsCellaring from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_count_cellaring.jpg';
+import barrageGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Barrage_Game_Cartridge.jpg';
+import phantomStepRemnant from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Phantom_Step_Remnant.jpg';
+import noviceTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Novice_Trekker_promotion_box.jpg';
+import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Beginner_Cartridge_box.jpg';
+import noviceDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Novice_Disc_Promotion_Box.jpg';
+import dorra from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_dorra.jpg';
+import bg1event from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_bg1.jpg';
+
+export const guildSweetGuildEvent = {
+  id: 'guild-sweet-guild',
+  title: 'Guild Sweet Guild',
+  subtitle: 'Cookie Workshop Event',
+  date: '2025-11-18',
+  startDate: '2025-11-18',
+  endDate: '2025-12-01',
+  shopEndDate: '2025-12-08',
+  summary:
+    'Cookie Workshop event featuring exclusive weapons, materials, and sweet rewards. Exchange Glass Marble for special items.',
+  description:
+    'Join the Guild Sweet Guild Cookie Workshop event! Complete stages, participate in cookie-making mini-games, and collect Glass Marble to exchange for exclusive weapons including the Fist of Courage, valuable materials, and limited-time rewards.',
+  url: '/guides/stella-sora/shop-events/guild-sweet-guild/',
+  image: bg1event,
+  featuredImage: bg1event,
+  currency: {
+    name: 'Glass Marble',
+    icon: glassMarble,
+    sources: [
+      'Stage clears: Normal (500-800), Hard (800-1000), Cookie Workshop (300-3000)',
+      'Normal stage repeats: 500 Glass Marble per run',
+      'Quest completions: 500-1000 Glass Marble each',
+      'Cookie Workshop mini-games: 300-3000 Glass Marble',
+    ],
+  },
+  staminaCosts: {
+    runCost: 30, // Each run costs 30 stamina
+    marblePerRun: 500, // Each run gives 500 Glass Marble (repeatable normal stages only)
+    marblePerStamina: 500 / 30, // ~16.67 marble per stamina
+    dailyRegeneration: 240, // 240 stamina regenerates daily (6 min per stamina)
+    dailyTaskReward: 120, // 120 stamina from daily tasks
+    dailyMailReward: 60, // 60 stamina from mail
+    totalDailyStamina: 420, // Total stamina available per day
+    staminaRegenerationTime: 6, // 6 minutes per stamina
+  },
+  shopItems: [
+    {
+      id: 'fist-of-courage',
+      name: 'Fist of Courage',
+      type: 'weapon',
+      rarity: 'legendary',
+      price: 8000,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
+      quantity: 1,
+      description:
+        'Event-exclusive legendary weapon. Must-have collection item with powerful abilities.',
+      image: fistOfCourage,
+      featured: true,
+      category: 'weapons',
+    },
+    {
+      id: 'fist-of-courage-melody',
+      name: 'Fist of Courage Melody',
+      type: 'equipment',
+      rarity: 'legendary',
+      price: 8000,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 5, maxPurchase: 5 },
+      quantity: 1,
+      description: 'Essential upgrade material for Fist of Courage. Limited stock available.',
+      image: fistOfCourageMelody,
+      featured: true,
+      category: 'materials',
+    },
+    {
+      id: 'guild-sweet-guild',
+      name: 'Guild Sweet Guild',
+      type: 'furniture',
+      rarity: 'legendary',
+      price: 5000,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
+      quantity: 1,
+      description: 'Event-exclusive furniture piece for your guild. Valuable collection item.',
+      image: guildSweetGuild,
+      featured: false,
+      category: 'furniture',
+    },
+    {
+      id: 'colossus-core',
+      name: 'Colossus Core',
+      type: 'material',
+      rarity: 'epic',
+      price: 1600,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 12, maxPurchase: 12 },
+      quantity: 1,
+      description: 'Important enhancement material for late-game progression.',
+      image: colossusCore,
+      featured: false,
+      category: 'materials',
+    },
+    {
+      id: 'cerulean-ticket',
+      name: 'Cerulean Ticket',
+      type: 'ticket',
+      rarity: 'rare',
+      price: 500,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 5, maxPurchase: 5 },
+      quantity: 1,
+      description: 'Premium gacha ticket for character acquisition. Very valuable.',
+      image: ceruleanTicket,
+      featured: false,
+      category: 'tickets',
+    },
+    {
+      id: 'sprout-ticket',
+      name: 'Sprout Ticket',
+      type: 'ticket',
+      rarity: 'rare',
+      price: 500,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 5, maxPurchase: 5 },
+      quantity: 1,
+      description: 'Premium gacha ticket for banner pulls. Excellent value.',
+      image: sproutTicket,
+      featured: false,
+      category: 'tickets',
+    },
+    {
+      id: 'star-emblem-polisher',
+      name: 'Star Emblem Polisher',
+      type: 'material',
+      rarity: 'rare',
+      price: 400,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 10, maxPurchase: 10 },
+      quantity: 1,
+      description: 'Useful enhancement material for equipment upgrades.',
+      image: starEmblemPolisher,
+      featured: false,
+      category: 'materials',
+    },
+    {
+      id: 'reflective-photo-capturer',
+      name: 'Reflective Photo Capturer',
+      type: 'vanity',
+      rarity: 'uncommon',
+      price: 250,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 2, maxPurchase: 2 },
+      quantity: 5,
+      description: 'Optional collection piece.',
+      image: reflectivePhotoCapturer,
+      featured: false,
+      category: 'vanity',
+    },
+    {
+      id: 'moonlit-companion',
+      name: 'Moonlit Companion',
+      type: 'vanity',
+      rarity: 'uncommon',
+      price: 250,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 2, maxPurchase: 2 },
+      quantity: 5,
+      description: 'Optional companion item.',
+      image: moonlitCompanion,
+      featured: false,
+      category: 'vanity',
+    },
+    {
+      id: 'blossom-porcelain-cup',
+      name: 'Blossom Porcelain Cup',
+      type: 'vanity',
+      rarity: 'uncommon',
+      price: 250,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 2, maxPurchase: 2 },
+      quantity: 5,
+      description: 'Decorative furniture item - optional.',
+      image: blossomPorcelainCup,
+      featured: false,
+      category: 'vanity',
+    },
+    {
+      id: 'counts-gift',
+      name: "Count's Gift",
+      type: 'material',
+      rarity: 'uncommon',
+      price: 250,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 6, maxPurchase: 6 },
+      quantity: 5,
+      description: 'Useful gift item for character relationships.',
+      image: countsGift,
+      featured: false,
+      category: 'materials',
+    },
+    {
+      id: 'demon-bee-game-cartridge',
+      name: 'Demon Bee Game Cartridge',
+      type: 'material',
+      rarity: 'uncommon',
+      price: 250,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 10, maxPurchase: 10 },
+      quantity: 5,
+      description: 'Enhancement material for disc upgrades.',
+      image: demonBeeGameCartridge,
+      featured: false,
+      category: 'materials',
+    },
+    {
+      id: 'frenzied-waltz-essence',
+      name: 'Frenzied Waltz Essence',
+      type: 'material',
+      rarity: 'uncommon',
+      price: 250,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 10, maxPurchase: 10 },
+      quantity: 5,
+      description: 'Enhancement material for skill upgrades.',
+      image: frenziedWaltzEssence,
+      featured: false,
+      category: 'materials',
+    },
+    {
+      id: 'monolith-stairs-pass',
+      name: 'Monolith Stairs Pass',
+      type: 'special',
+      rarity: 'uncommon',
+      price: 200,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 10, maxPurchase: 10 },
+      quantity: 2,
+      description: 'Special item for exclusive content access.',
+      image: monolithStairsPass,
+      featured: false,
+      category: 'special',
+    },
+    {
+      id: 'trekkers-handwritten-encyclopedia',
+      name: "Trekker's Handwritten Encyclopedia",
+      type: 'material',
+      rarity: 'common',
+      price: 150,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 30, maxPurchase: 30 },
+      quantity: 5,
+      description: 'Knowledge enhancement material.',
+      image: trekkersHandwrittenEncyclopedia,
+      featured: false,
+      category: 'materials',
+    },
+    {
+      id: 'starlit-colored-glass',
+      name: 'Starlit Colored Glass',
+      type: 'material',
+      rarity: 'common',
+      price: 150,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 40, maxPurchase: 40 },
+      quantity: 5,
+      description: 'Crafting material for equipment enhancement.',
+      image: starlitColoredGlass,
+      featured: false,
+      category: 'materials',
+    },
+    {
+      id: 'counts-cellaring',
+      name: "Count's Cellaring",
+      type: 'material',
+      rarity: 'common',
+      price: 80,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 40, maxPurchase: 40 },
+      quantity: 5,
+      description: 'Enhancement material for equipment upgrades.',
+      image: countsCellaring,
+      featured: false,
+      category: 'materials',
+    },
+    {
+      id: 'barrage-game-cartridge',
+      name: 'Barrage Game Cartridge',
+      type: 'material',
+      rarity: 'common',
+      price: 80,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 90, maxPurchase: 90 },
+      quantity: 5,
+      description: 'Enhancement material for skill upgrades.',
+      image: barrageGameCartridge,
+      featured: false,
+      category: 'materials',
+    },
+    {
+      id: 'phantom-step-remnant',
+      name: 'Phantom Step Remnant',
+      type: 'material',
+      rarity: 'common',
+      price: 80,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 90, maxPurchase: 90 },
+      quantity: 5,
+      description: 'Material for character enhancement.',
+      image: phantomStepRemnant,
+      featured: false,
+      category: 'materials',
+    },
+    {
+      id: 'novice-trekker-promotion-box',
+      name: 'Novice Trekker Promotion Box',
+      type: 'promotion',
+      rarity: 'common',
+      price: 25,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 20, maxPurchase: 20 },
+      quantity: 5,
+      description: 'Common promotion material - easily farmable.',
+      image: noviceTrekkerPromotionBox,
+      featured: false,
+      category: 'promotion',
+    },
+    {
+      id: 'beginner-cartridge-box',
+      name: 'Beginner Cartridge Box',
+      type: 'promotion',
+      rarity: 'common',
+      price: 25,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 45, maxPurchase: 45 },
+      quantity: 5,
+      description: 'Basic enhancement material - readily available.',
+      image: beginnerCartridgeBox,
+      featured: false,
+      category: 'promotion',
+    },
+    {
+      id: 'novice-disc-promotion-box',
+      name: 'Novice Disc Promotion Box',
+      type: 'promotion',
+      rarity: 'common',
+      price: 25,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 20, maxPurchase: 20 },
+      quantity: 5,
+      description: 'Common disc material - can be farmed elsewhere.',
+      image: noviceDiscPromotionBox,
+      featured: false,
+      category: 'promotion',
+    },
+    {
+      id: 'dorra',
+      name: 'Dorra',
+      type: 'currency',
+      rarity: 'common',
+      price: 10,
+      currency: {
+        name: 'Glass Marble',
+        icon: glassMarble,
+      },
+      stock: { type: 'limited', quantity: 1000, maxPurchase: 1000 },
+      quantity: 3000,
+      description: 'Basic in-game currency - always available.',
+      image: dorra,
+      featured: false,
+      category: 'currency',
+    },
+  ],
+
+  // Quest System
+  quests: {
+    common: {
+      title: 'Common Quests',
+      description: 'Complete basic event tasks to earn rewards',
+      completionRewards: {
+        items: [
+          '1 x Sprout Ticket Guild',
+          '10 x Reflective Photo Capturer',
+          "10 x Count's Cellaring Guild",
+          '20 x Barrage Game Cartridge Guild',
+          '10 x Phantom Step Remnant',
+          '100 x Chess Piece of Skill',
+        ],
+      },
+      quests: [
+        {
+          id: 'clear-main-story-1',
+          name: 'Clear Main Story Chapter 3: Interlude II',
+          currency: 'x500',
+          description: 'Complete the main story chapter',
+        },
+        {
+          id: 'clear-main-story-2',
+          name: 'Clear Main Story Chapter 3: Measure of Power',
+          currency: 'x500',
+          description: 'Complete the main story chapter',
+        },
+        {
+          id: 'clear-main-story-3',
+          name: 'Clear Main Story Chapter 3: The Unwanted Weakling',
+          currency: 'x500',
+          description: 'Complete the main story chapter',
+        },
+        {
+          id: 'clear-main-story-4',
+          name: 'Clear Main Story Chapter 3: Spirit of Brutality',
+          currency: 'x500',
+          description: 'Complete the main story chapter',
+        },
+        {
+          id: 'clear-main-story-5',
+          name: 'Clear Main Story Chapter 3: The Last Monster',
+          currency: 'x500',
+          description: 'Complete the main story chapter',
+        },
+        {
+          id: 'clear-operation-1',
+          name: 'Clear Operation Green Sweep II',
+          currency: 'x500',
+          description: 'Complete Operation Green Sweep II',
+        },
+        {
+          id: 'clear-operation-2',
+          name: 'Clear Operation Green Sweep III',
+          currency: 'x500',
+          description: 'Complete Operation Green Sweep III',
+        },
+        {
+          id: 'clear-operation-3',
+          name: 'Clear Operation Green Sweep IV',
+          currency: 'x500',
+          description: 'Complete Operation Green Sweep IV',
+        },
+        {
+          id: 'clear-operation-4',
+          name: 'Clear Operation Green Sweep V',
+          currency: 'x500',
+          description: 'Complete Operation Green Sweep V',
+        },
+        {
+          id: 'clear-operation-5',
+          name: 'Clear Operation Green Sweep VI',
+          currency: 'x500',
+          description: 'Complete Operation Green Sweep VI',
+        },
+        {
+          id: 'clear-operation-6',
+          name: 'Clear Operation Green Sweep VII',
+          currency: 'x500',
+          description: 'Complete Operation Green Sweep VII',
+        },
+        {
+          id: 'clear-crab-normal',
+          name: 'Clear Logging Crab Showdown (Normal)',
+          currency: 'x500',
+          description: 'Defeat the Logging Crab in Normal difficulty',
+        },
+      ],
+    },
+
+    challenge: {
+      title: 'Challenge Quests',
+      description: 'Complete advanced challenges for premium rewards',
+      completionRewards: {
+        items: [
+          '1 x Sprout Ticket Guild',
+          '10 x Moonlit Companion',
+          "10 x Count's Cellaring Guild",
+          '20 x Barrage Game Cartridge Guild',
+          '10 x Phantom Step Remnant',
+          '100 x Chess Piece of Skill',
+        ],
+      },
+      quests: [
+        {
+          id: 'clear-stages-30',
+          name: 'Clear event Battle Stages 30 times',
+          currency: 'x1000',
+          description: 'Complete any event battle stages 30 times',
+        },
+        {
+          id: 'clear-stages-50',
+          name: 'Clear event Battle Stages 50 times',
+          currency: 'x1000',
+          description: 'Complete any event battle stages 50 times',
+        },
+        {
+          id: 'clear-stages-80',
+          name: 'Clear event Battle Stages 80 times',
+          currency: 'x1000',
+          description: 'Complete any event battle stages 80 times',
+        },
+        {
+          id: 'clear-stages-100',
+          name: 'Clear event Battle Stages 100 times',
+          currency: 'x1000',
+          description: 'Complete any event battle stages 100 times',
+        },
+        {
+          id: '3star-operation-1',
+          name: 'Clear Operation Green Sweep I with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating in Operation Green Sweep I',
+        },
+        {
+          id: '3star-operation-2',
+          name: 'Clear Operation Green Sweep II with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating in Operation Green Sweep II',
+        },
+        {
+          id: '3star-operation-3',
+          name: 'Clear Operation Green Sweep III with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating in Operation Green Sweep III',
+        },
+        {
+          id: '3star-operation-4',
+          name: 'Clear Operation Green Sweep IV with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating in Operation Green Sweep IV',
+        },
+        {
+          id: '3star-operation-5',
+          name: 'Clear Operation Green Sweep V with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating in Operation Green Sweep V',
+        },
+        {
+          id: '3star-operation-6',
+          name: 'Clear Operation Green Sweep VI with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating in Operation Green Sweep VI',
+        },
+        {
+          id: '3star-operation-7',
+          name: 'Clear Operation Green Sweep VII with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating in Operation Green Sweep VII',
+        },
+        {
+          id: '3star-crab-normal',
+          name: 'Clear Logging Crab Showdown (Normal) with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating against Logging Crab',
+        },
+      ],
+    },
+
+    adventure: {
+      title: 'Adventure Quests',
+      description: 'Complete epic adventure quests for exclusive rewards',
+      completionRewards: {
+        items: [
+          '2 x Sprout Ticket Guild',
+          '10 x Blossom Porcelain Cup',
+          "10 x Count's Cellaring Guild",
+          '20 x Barrage Game Cartridge Guild',
+          '10 x Phantom Step Remnant',
+          '100 x Chess Piece of Skill',
+        ],
+      },
+      quests: [
+        {
+          id: 'clear-mech-1',
+          name: 'Clear Mech Rampant I',
+          currency: 'x1000',
+          description: 'Complete Mech Rampant I stage',
+        },
+        {
+          id: 'clear-mech-2',
+          name: 'Clear Mech Rampant I with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating in Mech Rampant I',
+        },
+        {
+          id: 'clear-mech-3',
+          name: 'Clear Mech Rampant II',
+          currency: 'x1000',
+          description: 'Complete Mech Rampant II stage',
+        },
+        {
+          id: 'clear-mech-4',
+          name: 'Clear Mech Rampant II with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating in Mech Rampant II',
+        },
+        {
+          id: 'clear-mech-5',
+          name: 'Clear Mech Rampant III',
+          currency: 'x1000',
+          description: 'Complete Mech Rampant III stage',
+        },
+        {
+          id: 'clear-mech-6',
+          name: 'Clear Mech Rampant III with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating in Mech Rampant III',
+        },
+        {
+          id: 'clear-crab-hard',
+          name: 'Clear Logging Crab Assault (Hard)',
+          currency: 'x1000',
+          description: 'Complete Logging Crab Assault in Hard difficulty',
+        },
+        {
+          id: 'clear-crab-hard-3star',
+          name: 'Clear Logging Crab Assault (Hard) with 3★',
+          currency: 'x1000',
+          description: 'Achieve 3-star rating against Logging Crab Hard',
+        },
+        {
+          id: 'obtain-marble-40k',
+          name: 'Obtain Glass Marble ×40,000 during the event',
+          currency: 'x1000',
+          description: 'Collect 40,000 Glass Marble total',
+        },
+        {
+          id: 'obtain-marble-60k',
+          name: 'Obtain Glass Marble ×60,000 during the event',
+          currency: 'x1000',
+          description: 'Collect 60,000 Glass Marble total',
+        },
+        {
+          id: 'obtain-marble-80k',
+          name: 'Obtain Glass Marble ×80,000 during the event',
+          currency: 'x1000',
+          description: 'Collect 80,000 Glass Marble total',
+        },
+        {
+          id: 'obtain-marble-100k',
+          name: 'Obtain Glass Marble ×100,000 during the event',
+          currency: 'x1000',
+          description: 'Collect 100,000 Glass Marble total',
+        },
+      ],
+    },
+
+    special: {
+      title: 'Special Quests',
+      description: 'Complete Cookie Workshop mini-game challenges',
+      completionRewards: {
+        items: [
+          '1 x Sprout Ticket Guild',
+          "10 x Count's Cellaring Guild",
+          '20 x Barrage Game Cartridge Guild',
+          '10 x Phantom Step Remnant',
+          '100 x Chess Piece of Skill',
+          '100000 Dorra',
+        ],
+      },
+      quests: [
+        {
+          id: 'cookie-exact-1',
+          name: 'Pack 3 boxes of cookies in Cookie Workshop: Exact Copy I',
+          currency: 'x500',
+          description: 'Complete Exact Copy I mini-game',
+        },
+        {
+          id: 'cookie-exact-2',
+          name: 'Pack 5 boxes of cookies in Cookie Workshop: Exact Copy II',
+          currency: 'x500',
+          description: 'Complete Exact Copy II mini-game',
+        },
+        {
+          id: 'cookie-exact-3',
+          name: 'Pack 6 boxes of cookies in Cookie Workshop: Exact Copy III',
+          currency: 'x500',
+          description: 'Complete Exact Copy III mini-game',
+        },
+        {
+          id: 'cookie-sweet-1',
+          name: 'Pack 5 boxes of cookies in Cookie Workshop: Sweet Delight I',
+          currency: 'x500',
+          description: 'Complete Sweet Delight I mini-game',
+        },
+        {
+          id: 'cookie-sweet-2',
+          name: 'Pack 6 boxes of cookies in Cookie Workshop: Sweet Delight II',
+          currency: 'x500',
+          description: 'Complete Sweet Delight II mini-game',
+        },
+        {
+          id: 'cookie-perfect-50',
+          name: 'Achieve 50 PERFECT ratings in Cookie Workshop: Fun Rhythm',
+          currency: 'x500',
+          description: 'Get 50 PERFECT ratings in Fun Rhythm',
+        },
+        {
+          id: 'cookie-marvelous-10',
+          name: 'Achieve 10 MARVELOUS ratings in Cookie Workshop: Fun Rhythm',
+          currency: 'x500',
+          description: 'Get 10 MARVELOUS ratings in Fun Rhythm',
+        },
+        {
+          id: 'cookie-sweetheart-30',
+          name: 'Pack 30 boxes of cookies in Cookie Workshop: Sweetheart Mode',
+          currency: 'x500',
+          description: 'Complete Sweetheart Mode mini-game',
+        },
+        {
+          id: 'cookie-cuirkie-10',
+          name: 'Pack 10 boxes of cookies in Cookie Workshop: Cuirkie Mode',
+          currency: 'x500',
+          description: 'Complete Cuirkie Mode mini-game',
+        },
+        {
+          id: 'cookie-cuirkie-100',
+          name: 'Pack 100 boxes of cookies in Cookie Workshop: Cuirkie Mode',
+          currency: 'x500',
+          description: 'Complete extensive Cuirkie Mode gameplay',
+        },
+        {
+          id: 'cookie-cuirkie-perfect-20',
+          name: 'Achieve 20 PERFECT ratings in Cookie Workshop: Cuirkie Mode',
+          currency: 'x500',
+          description: 'Get 20 PERFECT ratings in Cuirkie Mode',
+        },
+        {
+          id: 'cookie-cuirkie-marvelous-10',
+          name: 'Achieve 10 MARVELOUS ratings in Cookie Workshop: Cuirkie Mode',
+          currency: 'x500',
+          description: 'Get 10 MARVELOUS ratings in Cuirkie Mode',
+        },
+      ],
+    },
+  },
+
+  // Stage System
+  stages: {
+    normal: {
+      title: 'Normal Stages',
+      description: 'Complete normal difficulty stages for rewards',
+      replayReward: 500,
+      stages: [
+        {
+          id: 'operation-green-sweep-1',
+          name: 'Operation Green Sweep I',
+          firstClearReward: 500,
+          glassMarbleReward: 500,
+        },
+        {
+          id: 'operation-green-sweep-2',
+          name: 'Operation Green Sweep II',
+          firstClearReward: 500,
+          glassMarbleReward: 500,
+        },
+        {
+          id: 'operation-green-sweep-3',
+          name: 'Operation Green Sweep III',
+          firstClearReward: 500,
+          glassMarbleReward: 500,
+        },
+        {
+          id: 'operation-green-sweep-4',
+          name: 'Operation Green Sweep IV',
+          firstClearReward: 500,
+          glassMarbleReward: 500,
+        },
+        {
+          id: 'operation-green-sweep-5',
+          name: 'Operation Green Sweep V',
+          firstClearReward: 500,
+          glassMarbleReward: 500,
+        },
+        {
+          id: 'operation-green-sweep-6',
+          name: 'Operation Green Sweep VI',
+          firstClearReward: 500,
+          glassMarbleReward: 500,
+        },
+        {
+          id: 'operation-green-sweep-7',
+          name: 'Operation Green Sweep VII',
+          firstClearReward: 500,
+          glassMarbleReward: 500,
+        },
+        {
+          id: 'logging-crab-normal',
+          name: 'Logging Crab Assault (Normal)',
+          firstClearReward: 800,
+          glassMarbleReward: 800,
+        },
+      ],
+      totalFirstClearRewards: 4600,
+    },
+    hard: {
+      title: 'Hard Stages',
+      description: 'Challenge yourself with hard difficulty stages for premium rewards',
+      replayReward: 800,
+      stages: [
+        {
+          id: 'mech-rampant-1',
+          name: 'Mech Rampant I',
+          firstClearReward: 800,
+          glassMarbleReward: 800,
+          gemsReward: 180,
+        },
+        {
+          id: 'mech-rampant-2',
+          name: 'Mech Rampant II',
+          firstClearReward: 800,
+          glassMarbleReward: 800,
+          gemsReward: 180,
+        },
+        {
+          id: 'mech-rampant-3',
+          name: 'Mech Rampant III',
+          firstClearReward: 800,
+          glassMarbleReward: 800,
+          gemsReward: 180,
+        },
+        {
+          id: 'logging-crab-hard',
+          name: 'Logging Crab Assault (Hard)',
+          firstClearReward: 1000,
+          glassMarbleReward: 1000,
+          gemsReward: 320,
+        },
+      ],
+      totalFirstClearRewards: 3400,
+    },
+    cookieWorkshop: {
+      title: 'Cookie Workshop',
+      description: 'Cookie Workshop mini-games with special rewards',
+      replayReward: 0,
+      stages: [
+        {
+          id: 'exact-copy-1',
+          name: 'Exact Copy I',
+          firstClearReward: 300,
+          glassMarbleReward: 300,
+          gemsReward: 50,
+        },
+        {
+          id: 'exact-copy-2',
+          name: 'Exact Copy II',
+          firstClearReward: 400,
+          glassMarbleReward: 400,
+          gemsReward: 50,
+        },
+        {
+          id: 'exact-copy-3',
+          name: 'Exact Copy III',
+          firstClearReward: 600,
+          glassMarbleReward: 600,
+          gemsReward: 100,
+        },
+        {
+          id: 'sweet-delight-1',
+          name: 'Sweet Delight I',
+          firstClearReward: 800,
+          glassMarbleReward: 800,
+          gemsReward: 100,
+        },
+        {
+          id: 'sweet-delight-2',
+          name: 'Sweet Delight II',
+          firstClearReward: 1000,
+          glassMarbleReward: 1000,
+          gemsReward: 100,
+        },
+        {
+          id: 'fun-rhythm-1',
+          name: 'Fun Rhythm I',
+          firstClearReward: 2000,
+          glassMarbleReward: 2000,
+          gemsReward: 100,
+        },
+        {
+          id: 'fun-rhythm-2',
+          name: 'Fun Rhythm II',
+          firstClearReward: 3000,
+          glassMarbleReward: 3000,
+          gemsReward: 100,
+        },
+      ],
+      totalFirstClearRewards: 8100,
+    },
+  },
+
+  rewards: [
+    'Fist of Courage (Exclusive Weapon)',
+    'Fist of Courage Melody (Equipment)',
+    'Guild Sweet Guild (Furniture)',
+    'Cerulean & Sprout Tickets',
+    'Enhancement Materials',
+    'Cookie Workshop Mini-Game Content',
+  ],
+  highlights: [
+    'Exclusive Fist of Courage Weapon',
+    '23 Shop Items with Stock Management',
+    'Cookie Workshop Mini-Games',
+    'Premium Ticket Rewards',
+    'Event Currency: Glass Marble',
+    'Complete Quest & Stage System',
+  ],
+};
+
+export default guildSweetGuildEvent;

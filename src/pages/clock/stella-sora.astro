@@ -46,3 +46,379 @@ const games = [
     }
   </script>
 </StellaSoraClockLayout>
+
+<!-- Simple inline clock script moved to page -->
+<script define:vars={{ config: stellaSoraConfig }}>
+  // Simple clock implementation
+  let clockInterval;
+
+  // Initialize clock when page loads
+  function initClock() {
+    updateClock();
+    updateBanners();
+    updateCurrentTime();
+    updateWeeklyReset();
+    updateMonthlyReset();
+    updateLaunchInfo();
+    updateHolidays();
+    updateEvents();
+    updateEventDisplay();
+    updateMaintenance();
+
+    // Update every second
+    clockInterval = setInterval(() => {
+      updateClock();
+      updateBanners();
+      updateCurrentTime();
+      updateWeeklyReset();
+      updateMonthlyReset();
+      updateLaunchInfo();
+      updateHolidays();
+      updateEvents();
+      updateMaintenance();
+    }, 1000);
+  }
+
+  // Update main clock (daily reset countdown)
+  function updateClock() {
+    const now = new Date();
+
+    // Calculate time until next daily reset (13:00 UTC-7 = 20:00 UTC)
+    const resetTime = new Date();
+    resetTime.setUTCHours(20, 0, 0, 0);
+
+    // If reset time has passed today, set for tomorrow
+    if (resetTime <= now) {
+      resetTime.setUTCDate(resetTime.getUTCDate() + 1);
+    }
+
+    const timeDiff = resetTime.getTime() - now.getTime();
+
+    if (timeDiff > 0) {
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      // Update main clock display
+      const hoursEl = document.getElementById('clockHours');
+      const minutesEl = document.getElementById('clockMinutes');
+      const secondsEl = document.getElementById('clockSeconds');
+
+      if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+      if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+      if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+    }
+  }
+
+  // Update banner countdowns
+  function updateBanners() {
+    const now = new Date();
+
+    // Banner 1: Fuyuka Fireworks Events (Dec 8, 2025 19:59 UTC-7)
+    const banner1End = new Date('2025-12-08T19:59:59-07:00');
+    updateBanner('banner', banner1End, now);
+
+    // Banner 2: A Fateful Encounter (Dec 1, 2025 12:59 UTC-7)
+    const banner2End = new Date('2025-12-01T12:59:59-07:00');
+    updateBanner('banner2', banner2End, now);
+  }
+
+  // Update individual banner
+  function updateBanner(prefix, endDate, now) {
+    const timeDiff = endDate.getTime() - now.getTime();
+
+    // Fix element ID construction for banner 2 (put number at the end)
+    const basePrefix = prefix.replace('2', '');
+    const suffix = prefix.includes('2') ? '2' : '';
+
+    const daysEl = document.getElementById(basePrefix + 'Days' + suffix);
+    const hoursEl = document.getElementById(basePrefix + 'Hours' + suffix);
+    const minutesEl = document.getElementById(basePrefix + 'Minutes' + suffix);
+    const secondsEl = document.getElementById(basePrefix + 'Seconds' + suffix);
+    const statusDot = document.getElementById(basePrefix + 'StatusDot' + suffix);
+    const statusText = document.getElementById(basePrefix + 'StatusText' + suffix);
+
+    if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+    if (timeDiff <= 0) {
+      // Banner ended
+      daysEl.textContent = '00';
+      hoursEl.textContent = '00';
+      minutesEl.textContent = '00';
+      secondsEl.textContent = '00';
+
+      if (statusDot) statusDot.className = 'status-dot status-ended';
+      if (statusText) statusText.textContent = 'Ended';
+    } else {
+      // Banner active
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      daysEl.textContent = days.toString().padStart(2, '0');
+      hoursEl.textContent = hours.toString().padStart(2, '0');
+      minutesEl.textContent = minutes.toString().padStart(2, '0');
+      secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+      if (statusDot) statusDot.className = 'status-dot status-active';
+      if (statusText) statusText.textContent = 'Active';
+    }
+  }
+
+  // Update current time display
+  function updateCurrentTime() {
+    const now = new Date();
+
+    // Update current date (UTC-7)
+    const currentDateEl = document.getElementById('currentDate');
+    if (currentDateEl) {
+      const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+      currentDateEl.textContent = now.toLocaleDateString('en-US', {
+        ...dateOptions,
+        timeZone: 'America/Los_Angeles',
+      });
+    }
+
+    // Update current UTC-7 time
+    const currentUTCEl = document.getElementById('currentUTC');
+    if (currentUTCEl) {
+      const utcTime = now.toLocaleTimeString('en-US', {
+        hour12: false,
+        timeZone: 'America/Los_Angeles',
+      });
+      currentUTCEl.textContent = `UTC-7 ${utcTime}`;
+    }
+  }
+
+  // Update weekly reset timer (Mondays at 13:00 UTC-7)
+  function updateWeeklyReset() {
+    const weeklyEl = document.getElementById('weeklyTime');
+    if (!weeklyEl) return;
+
+    const now = new Date();
+    const resetTime = new Date();
+
+    // Set to next Monday at 13:00 UTC-7 (20:00 UTC)
+    resetTime.setUTCHours(20, 0, 0, 0);
+    const daysUntilMonday = (1 + 7 - now.getUTCDay()) % 7 || 7; // Monday = 1
+    resetTime.setUTCDate(now.getUTCDate() + daysUntilMonday);
+
+    const timeDiff = resetTime.getTime() - now.getTime();
+    if (timeDiff > 0) {
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      let timeString = '';
+      if (days > 0) timeString += `${days}d `;
+      timeString += `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      weeklyEl.textContent = timeString;
+    } else {
+      weeklyEl.textContent = '00:00:00';
+    }
+  }
+
+  // Update monthly reset timer (1st of each month at 13:00 UTC-7)
+  function updateMonthlyReset() {
+    const monthlyEl = document.getElementById('monthlyTime');
+    if (!monthlyEl) return;
+
+    const now = new Date();
+    const resetTime = new Date();
+
+    // Set to 1st of next month at 13:00 UTC-7 (20:00 UTC)
+    resetTime.setUTCHours(20, 0, 0, 0);
+    resetTime.setUTCDate(1);
+    resetTime.setUTCMonth(now.getUTCMonth() + 1);
+
+    const timeDiff = resetTime.getTime() - now.getTime();
+    if (timeDiff > 0) {
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      let timeString = '';
+      if (days > 0) timeString += `${days}d `;
+      timeString += `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      monthlyEl.textContent = timeString;
+    } else {
+      monthlyEl.textContent = '00:00:00';
+    }
+  }
+
+  // Update launch information (days since launch)
+  function updateLaunchInfo() {
+    const launchDate = new Date('2025-10-20T02:00:00Z'); // Oct 19, 2025 19:00 UTC-7
+    const now = new Date();
+
+    // Show days since launch (launch has already occurred)
+    const daysSinceLaunch = Math.floor(
+      (now.getTime() - launchDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
+
+    const launchDaysSinceEl = document.getElementById('launchDaysSince');
+    if (launchDaysSinceEl) {
+      launchDaysSinceEl.textContent = daysSinceLaunch.toString();
+    }
+
+    // Update launch status
+    const launchStatusDot = document.getElementById('launchStatusDot');
+    const launchStatusText = document.getElementById('launchStatusText');
+
+    if (launchStatusDot && launchStatusText) {
+      launchStatusDot.className = 'status-dot status-active';
+      launchStatusText.textContent = 'Launched';
+    }
+
+    // Hide countdown card, show days since card
+    const launchCountdownCard = document.getElementById('launchCountdownCard');
+    const daysSinceLaunchCard = document.getElementById('daysSinceLaunchCard');
+
+    if (launchCountdownCard && daysSinceLaunchCard) {
+      launchCountdownCard.style.display = 'none';
+      daysSinceLaunchCard.style.display = 'block';
+    }
+  }
+
+  // Update holiday timers (Halloween and New Year)
+  function updateHolidays() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+
+    // Halloween timer (October 31st)
+    const halloweenEl = document.getElementById('halloweenTime');
+    if (halloweenEl) {
+      const halloween = new Date(`${currentYear}-10-31T23:59:59-07:00`);
+      if (halloween < now) {
+        halloween.setFullYear(currentYear + 1);
+      }
+
+      const timeDiff = halloween.getTime() - now.getTime();
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      halloweenEl.textContent = `${days} days`;
+    }
+
+    // New Year timer (January 1st)
+    const newyearEl = document.getElementById('newyearTime');
+    if (newyearEl) {
+      const newYear = new Date(`${currentYear + 1}-01-01T00:00:00-07:00`);
+
+      const timeDiff = newYear.getTime() - now.getTime();
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      newyearEl.textContent = `${days} days`;
+    }
+  }
+
+  // Update event timers (duration and shop)
+  function updateEvents() {
+    const now = new Date();
+
+    // Update event period display text
+    updateEventDisplay();
+
+    // Event duration timer (Nov 18, 2025 to Dec 1, 2025 at 12:59 UTC-7)
+    const eventDurationEl = document.getElementById('eventDurationTime');
+    if (eventDurationEl) {
+      const eventEnd = new Date('2025-12-01T12:59:59-07:00');
+      const timeDiff = eventEnd.getTime() - now.getTime();
+
+      if (timeDiff > 0) {
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+
+        let timeString = '';
+        if (days > 0) timeString += `${days}d `;
+        timeString += `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        eventDurationEl.textContent = timeString;
+      } else {
+        eventDurationEl.textContent = 'Ended';
+      }
+    }
+
+    // Event shop timer (Nov 18, 2025 to Dec 8, 2025 at 15:00 UTC-7)
+    const eventShopEl = document.getElementById('eventShopTime');
+    if (eventShopEl) {
+      const shopEnd = new Date('2025-12-08T15:00:00-07:00');
+      const timeDiff = shopEnd.getTime() - now.getTime();
+
+      if (timeDiff > 0) {
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+
+        let timeString = '';
+        if (days > 0) timeString += `${days}d `;
+        timeString += `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        eventShopEl.textContent = timeString;
+      } else {
+        eventShopEl.textContent = 'Ended';
+      }
+    }
+  }
+
+  // Update event display text (period dates)
+  function updateEventDisplay() {
+    // Update event duration period display
+    const eventPeriodDurationEl = document.getElementById('eventPeriodDuration');
+    if (eventPeriodDurationEl) {
+      eventPeriodDurationEl.textContent = 'Nov 18 – Dec 1, 2025 (UTC-7)';
+    }
+
+    // Update event shop period display
+    const eventPeriodShopEl = document.getElementById('eventShopPeriod');
+    if (eventPeriodShopEl) {
+      eventPeriodShopEl.textContent = 'Nov 18 – Dec 8, 2025 (UTC-7)';
+    }
+  }
+
+  // Update maintenance timer
+  function updateMaintenance() {
+    const serverStatusDot = document.getElementById('serverStatusDot');
+    const serverStatusText = document.getElementById('serverStatusText');
+
+    if (!serverStatusDot || !serverStatusText) return;
+
+    const now = new Date();
+
+    // Check if currently in maintenance window (Oct 27-28, 2025 - maintenance has ended)
+    const maintenanceStart = new Date('2025-10-27T20:00:00-07:00');
+    const maintenanceEnd = new Date('2025-10-28T23:00:00-07:00');
+
+    if (now >= maintenanceStart && now <= maintenanceEnd) {
+      // Currently in maintenance
+      serverStatusDot.className = 'status-dot status-maintenance';
+      serverStatusText.textContent = 'Maintenance';
+
+      const maintenanceEndTime = document.getElementById('maintenanceEndTime');
+      if (maintenanceEndTime) {
+        const timeDiff = maintenanceEnd.getTime() - now.getTime();
+        const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        maintenanceEndTime.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    } else {
+      // Online - no current maintenance
+      serverStatusDot.className = 'status-dot status-online';
+      serverStatusText.textContent = 'Online';
+    }
+  }
+
+  // Start clock when page is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initClock);
+  } else {
+    initClock();
+  }
+
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    if (clockInterval) {
+      clearInterval(clockInterval);
+    }
+  });
+</script>

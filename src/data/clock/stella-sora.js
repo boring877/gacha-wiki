@@ -18,10 +18,10 @@ const SS_MAINTENANCE_START_UTC_MINUS_7 = '2025-10-28T03:00:00Z';
 const SS_MAINTENANCE_END_UTC_MINUS_7 = '2025-10-28T09:00:00Z';
 
 // A Finale Echoing Event periods in UTC-7
-// Event Duration: Nov 10, 2025 after maintenance – Nov 16, 2025 06:59 (UTC-7)
+// Event Duration: Nov 10, 2025 after maintenance – Nov 17, 2025 12:59 (UTC-7) - Extended to align with Banner 1
 // Event Shop & Reward Exchange: Nov 10, 2025 after maintenance – Nov 30, 2025 08:00 (UTC-7)
 const SS_EVENT_START_UTC_MINUS_7 = '2025-11-10T19:00:00Z'; // Nov 10, 2025 after maintenance (estimated 12:00 UTC-7) = Nov 10, 2025 19:00:00Z (UTC)
-const SS_EVENT_DURATION_END_UTC_MINUS_7 = '2025-11-16T13:59:00Z'; // Nov 16, 2025 06:59 UTC-7 = Nov 16, 2025 13:59:00Z (UTC)
+const SS_EVENT_DURATION_END_UTC_MINUS_7 = '2025-11-17T19:59:00Z'; // Nov 17, 2025 12:59 UTC-7 = Nov 17, 2025 19:59:00Z (UTC) - Extended to match banner end
 const SS_EVENT_SHOP_END_UTC_MINUS_7 = '2025-11-30T15:00:00Z'; // Nov 30, 2025 08:00 UTC-7 = Nov 30, 2025 15:00:00Z (UTC)
 
 export const stellaSoraConfig = {
@@ -65,6 +65,28 @@ export const stellaSoraConfig = {
     durationEnd: SS_EVENT_DURATION_END_UTC_MINUS_7,
     shopEnd: SS_EVENT_SHOP_END_UTC_MINUS_7,
     subtitle: 'Beta Event - Face Opera Ghost: Rovina in the Monolith',
+  },
+
+  // Banner information - centralized banner data for clock display
+  banners: {
+    // Banner 1: Fuyuka Fireworks Events (Active until Dec 8, 2025)
+    banner1: {
+      title: 'Fuyuka Fireworks Events',
+      character: 'Fuyuka',
+      disc: 'Fireworks',
+      startDate: '2025-11-17T00:00:00-07:00',
+      endDate: '2025-12-08T19:59:59-07:00', // Dec 8, 2025 19:59 UTC-7
+      type: 'character-and-disc',
+    },
+    // Banner 2: A Fateful Encounter (Nanoha) & A Heart-Tuned Melody (Disc) (Active until Dec 1, 2025)
+    banner2: {
+      title: 'A Fateful Encounter & A Heart-Tuned Melody',
+      character: 'Nanoha',
+      disc: 'Daylight Garden',
+      startDate: '2025-11-10T00:00:00-07:00',
+      endDate: '2025-12-01T12:59:59-07:00', // Dec 1, 2025 12:59 UTC-7
+      type: 'character-and-disc',
+    },
   },
 
   // Additional timers

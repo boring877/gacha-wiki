@@ -9,6 +9,10 @@ declare global {
     calculateDamage?: () => void;
     calculateGaiaEffects?: () => void;
     createGaiaChart?: () => void;
+
+    // Stella Sora character database functions
+    renumberRows?: () => void;
+    resetFilters?: () => void;
   }
 
   interface NodeJS {

@@ -1,6 +1,6 @@
 ---
-// Stella Sora Individual Shop Event Layout
-// Dedicated layout for individual shop event pages with proper footer positioning
+// Unified Shop Event Layout - Replaces all individual event layouts
+// Uses unified CSS for all event types
 
 import SSBaseHead from '../../components/stella-sora/SSBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
@@ -14,13 +14,6 @@ import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
 import SSShopEventImage from '../../components/stella-sora/SSShopEventImage.astro';
 import { generateBackNavigation } from '../../utils/breadcrumb-generator.js';
 import type { BackNavigation } from '../../utils/breadcrumb-generator.js';
-
-// Import CSS files
-import '../../styles/global.css';
-import '../../styles/typography.css';
-import '../../styles/games/stella-sora/ss-colors.css';
-import '../../styles/games/stella-sora/ss-layout.css';
-import '../../styles/games/stella-sora/ss-shop-event-individual.css';
 
 export interface Props {
   title: string;
@@ -38,6 +31,15 @@ const { title, description, gameTitle, endDate, currency } = Astro.props;
 const backNavigation: BackNavigation | null = generateBackNavigation(Astro.url.pathname, {
   gameKey: 'stella-sora',
 });
+
+// Import base CSS files
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/stella-sora/ss-colors.css';
+import '../../styles/games/stella-sora/ss-layout.css';
+
+// Import unified shop events CSS
+import '../../styles/games/stella-sora/shop-events.css';
 ---
 
 <html lang="en">

@@ -1,0 +1,94 @@
+---
+/**
+ * A Finale Echoing Event Images Component
+ * Handles image imports and mapping for the A Finale Echoing event
+ */
+
+// Import all images for A Finale Echoing event
+import whispersOfDecay from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Whispers_of_Decay.jpg';
+import newStarPrelude from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_New_Star_Prelude.jpg';
+import prayerBeneathLight from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Prayer_Beneath_Light.jpg';
+import summerAfternoonRain from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Summer_Afternoon_Rain.jpg';
+import thoseWithAmbition from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Those_with_Ambition.jpg';
+import voyageBlueprint from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Voyage_Blueprint.jpg';
+import sweetTimes from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sweet_Times.jpg';
+import chessPieceOfSkill from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Chess_Piece_of_Skill.jpg';
+import provingGroundsGiftBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Proving_Grounds_gift_box.jpg';
+import premiumCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Premium_Cartridge_Box.jpg';
+import deluxeCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Deluxe_Cartridge_box.jpg';
+import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Beginner_Cartridge_Box.jpg';
+import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg';
+import dorra from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Dorra.jpg';
+
+// Image mapping object for easy access
+const imageMap = {
+  '1_Whispers_of_Decay.jpg': whispersOfDecay,
+  '1_New_Star_Prelude.jpg': newStarPrelude,
+  '1_Prayer_Beneath_Light.jpg': prayerBeneathLight,
+  '1_Summer_Afternoon_Rain.jpg': summerAfternoonRain,
+  '1_Those_with_Ambition.jpg': thoseWithAmbition,
+  '1_Voyage_Blueprint.jpg': voyageBlueprint,
+  '1_Sweet_Times.jpg': sweetTimes,
+  '1_Chess_Piece_of_Skill.jpg': chessPieceOfSkill,
+  '1_Proving_Grounds_gift_box.jpg': provingGroundsGiftBox,
+  '1_Premium_Cartridge_Box.jpg': premiumCartridgeBox,
+  '1_Deluxe_Cartridge_box.jpg': deluxeCartridgeBox,
+  '1_Beginner_Cartridge_Box.jpg': beginnerCartridgeBox,
+  '1_Sprout_Ticket.jpg': sproutTicket,
+  '1_Dorra.jpg': dorra,
+};
+
+// Props interface
+interface Props {
+  imageName: string | any;
+  alt?: string;
+  className?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  imageName,
+  alt = '',
+  className = '',
+  width = undefined,
+  height = undefined,
+  loading = 'lazy',
+} = Astro.props;
+
+// Handle both string names and image objects
+let imageSrc = null;
+
+if (typeof imageName === 'string') {
+  // If it's a string, try to get it from the mapping
+  imageSrc = imageMap[imageName];
+} else if (imageName && typeof imageName === 'object') {
+  // If it's already an image object, use it directly
+  imageSrc = imageName;
+}
+
+// If image not found, use a placeholder or fallback
+if (!imageSrc) {
+  const nameStr = typeof imageName === 'string' ? imageName : 'unknown';
+  console.warn(`Image "${nameStr}" not found in A Finale Echoing image mapping`);
+}
+---
+
+{
+  imageSrc ? (
+    <img
+      src={imageSrc}
+      alt={alt || imageName.replace(/_/g, ' ').replace('.jpg', '').replace('.png', '')}
+      class={className}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding="async"
+    />
+  ) : (
+    <div class={`image-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>
+      <span>Image not found: {imageName}</span>
+    </div>
+  )
+}
