@@ -6,22 +6,6 @@
 // Import clock configuration for dynamic event dates
 import { stellaSoraConfig } from '../../clock/stella-sora.js';
 
-// Image imports for A Finale Echoing event
-import whispersOfDecay from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Whispers_of_Decay.jpg';
-import newStarPrelude from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_New_Star_Prelude.jpg';
-import prayerBeneathLight from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Prayer_Beneath_Light.jpg';
-import summerAfternoonRain from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Summer_Afternoon_Rain.jpg';
-import thoseWithAmbition from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Those_with_Ambition.jpg';
-import voyageBlueprint from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Voyage_Blueprint.jpg';
-import sweetTimes from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sweet_Times.jpg';
-import chessPieceOfSkill from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Chess_Piece_of_Skill.jpg';
-import provingGroundsGiftBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Proving_Grounds_gift_box.jpg';
-import premiumCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Premium_Cartridge_Box.jpg';
-import deluxeCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Deluxe_Cartridge_box.jpg';
-import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Beginner_Cartridge_Box.jpg';
-import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg';
-import dorra from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Dorra.jpg';
-
 /**
  * Get current event period from clock configuration
  * @returns {Object} Current event period information
@@ -69,16 +53,12 @@ export const aFinaleEchoingEvent = {
   description:
     'A Finale Echoing is a special Stella Sora event featuring exclusive rewards and powerful items. Complete quests, clear stages, and collect Whispers of Decay to obtain premium content including limited Discs only available in this event, valuable skill materials, and rare tickets.',
   url: '/guides/stella-sora/shop-events/a-finale-echoing/',
-  image: dorra,
-  featuredImage: dorra,
   currency: {
     name: 'Whispers of Decay',
-    icon: whispersOfDecay,
     sources: [
       'Stage first clears: Normal (200), Hard (300), Extra Hard (400), Ultimate (500)',
       'Score milestone quests: Reach score targets for 400-1000 Whispers each',
       'Ultimate stage repeats: 14 repeats available at 500 Whispers each',
-      'Quest completion rewards: Sprout Ticket and Chess Piece of Skill',
     ],
     capacity: 'No known limit',
   },
@@ -91,13 +71,12 @@ export const aFinaleEchoingEvent = {
       price: 7000,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
       quantity: 1,
+      image: '1_New_Star_Prelude.jpg',
       description:
         'Exclusive Disc only available in this event. Powerful new star-themed abilities.',
-      image: newStarPrelude,
       featured: true,
       category: 'discs',
     },
@@ -109,12 +88,11 @@ export const aFinaleEchoingEvent = {
       price: 7000,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Prayer_Beneath_Light.jpg',
       description: 'Exclusive Disc with light-based prayer abilities. Limited event availability.',
-      image: prayerBeneathLight,
       featured: true,
       category: 'discs',
     },
@@ -126,12 +104,11 @@ export const aFinaleEchoingEvent = {
       price: 7000,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Summer_Afternoon_Rain.jpg',
       description: 'Exclusive Disc with summer rain abilities. Only available in this event.',
-      image: summerAfternoonRain,
       featured: true,
       category: 'discs',
     },
@@ -143,12 +120,11 @@ export const aFinaleEchoingEvent = {
       price: 7000,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Those_with_Ambition.jpg',
       description: 'Exclusive Disc that grants ambition-based powers. Event exclusive.',
-      image: thoseWithAmbition,
       featured: true,
       category: 'discs',
     },
@@ -160,12 +136,11 @@ export const aFinaleEchoingEvent = {
       price: 7000,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Voyage_Blueprint.jpg',
       description: 'Exclusive Disc with voyage-themed abilities. Limited to this event.',
-      image: voyageBlueprint,
       featured: true,
       category: 'discs',
     },
@@ -177,12 +152,11 @@ export const aFinaleEchoingEvent = {
       price: 7000,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Sweet_Times.jpg',
       description: 'Exclusive Disc with sweet-themed abilities. Only found in this shop.',
-      image: sweetTimes,
       featured: true,
       category: 'discs',
     },
@@ -194,12 +168,11 @@ export const aFinaleEchoingEvent = {
       price: 15,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 400, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Chess_Piece_of_Skill.jpg',
       description: 'Valuable skill enhancement material in the form of chess pieces.',
-      image: chessPieceOfSkill,
       featured: false,
       category: 'materials',
     },
@@ -211,12 +184,11 @@ export const aFinaleEchoingEvent = {
       price: 200,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 6, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Proving_Grounds_gift_box.jpg',
       description: 'Gift box containing items from the Proving Grounds with valuable rewards.',
-      image: provingGroundsGiftBox,
       featured: false,
       category: 'consumables',
     },
@@ -228,12 +200,11 @@ export const aFinaleEchoingEvent = {
       price: 30,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 60, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Premium_Cartridge_Box.jpg',
       description: 'Premium box containing high-quality game cartridges with special content.',
-      image: premiumCartridgeBox,
       featured: false,
       category: 'consumables',
     },
@@ -245,12 +216,11 @@ export const aFinaleEchoingEvent = {
       price: 90,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 20, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Deluxe_Cartridge_box.jpg',
       description: 'Deluxe box containing rare game cartridges with exclusive content.',
-      image: deluxeCartridgeBox,
       featured: false,
       category: 'consumables',
     },
@@ -262,12 +232,11 @@ export const aFinaleEchoingEvent = {
       price: 10,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 30, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Beginner_Cartridge_Box.jpg',
       description: 'Box containing game cartridges perfect for beginners.',
-      image: beginnerCartridgeBox,
       featured: false,
       category: 'consumables',
     },
@@ -279,12 +248,11 @@ export const aFinaleEchoingEvent = {
       price: 150,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 10, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Sprout_Ticket.jpg',
       description: 'Special ticket for obtaining Sprout-themed rewards and bonuses.',
-      image: sproutTicket,
       featured: false,
       category: 'tickets',
     },
@@ -296,12 +264,11 @@ export const aFinaleEchoingEvent = {
       price: 100,
       currency: {
         name: 'Whispers of Decay',
-        icon: whispersOfDecay,
       },
       stock: { type: 'limited', quantity: 60, maxPurchase: 1 },
       quantity: 1,
+      image: '1_Dorra.jpg',
       description: 'Basic currency material commonly used for various purposes and exchanges.',
-      image: dorra,
       featured: false,
       category: 'currency',
     },
@@ -621,6 +588,30 @@ export const aFinaleEchoingEvent = {
     'Score Milestone Rewards',
     'Skill Materials and Enhancement Items',
     'Limited Stock Management Strategy',
+  ],
+
+  // Tier recommendations for shop items - following Guild Sweet Guild structure
+  shopItemTiers: [
+    {
+      tier: 1,
+      items: [
+        'new-star-prelude',
+        'prayer-beneath-light',
+        'summer-afternoon-rain',
+        'those-with-ambition',
+        'voyage-blueprint',
+        'sweet-times',
+        'sprout-ticket',
+      ],
+    },
+    {
+      tier: 2,
+      items: ['chess-piece-of-skill', 'proving-grounds-gift-box', 'deluxe-cartridge-box', 'dorra'],
+    },
+    {
+      tier: 3,
+      items: ['premium-cartridge-box', 'beginner-cartridge-box'],
+    },
   ],
 };
 

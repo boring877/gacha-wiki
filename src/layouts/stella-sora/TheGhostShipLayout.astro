@@ -1,6 +1,5 @@
 ---
-// Unified Shop Event Layout - Replaces all individual event layouts
-// Uses unified CSS for all event types
+// The Ghost Ship Haunts the Deep Event Specific Layout
 
 import SSBaseHead from '../../components/stella-sora/SSBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
@@ -11,7 +10,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
-import SSShopEventImage from '../../components/stella-sora/SSShopEventImage.astro';
+import TheGhostShipImages from '../../components/stella-sora/shop-events/TheGhostShipImages.astro';
 import { generateBackNavigation } from '../../utils/breadcrumb-generator.js';
 import type { BackNavigation } from '../../utils/breadcrumb-generator.js';
 
@@ -38,8 +37,9 @@ import '../../styles/typography.css';
 import '../../styles/games/stella-sora/ss-colors.css';
 import '../../styles/games/stella-sora/ss-layout.css';
 
-// Import unified shop events CSS
+// Import unified and event-specific CSS
 import '../../styles/games/stella-sora/shop-events.css';
+import '../../styles/games/stella-sora/events/the-ghost-ship-haunts-the-deep.css';
 ---
 
 <html lang="en">
@@ -83,8 +83,8 @@ import '../../styles/games/stella-sora/shop-events.css';
                     <span class="currency-label">Currency:</span>
                     <span class="currency-name">{currency.name}</span>
                     {currency.icon && (
-                      <SSShopEventImage
-                        imageSrc={currency.icon}
+                      <TheGhostShipImages
+                        imageName={currency.icon}
                         alt={currency.name}
                         width={20}
                         height={20}

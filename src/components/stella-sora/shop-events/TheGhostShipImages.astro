@@ -4,6 +4,8 @@
  * Handles image imports and mapping for The Ghost Ship Haunts the Deep event
  */
 
+import { Image } from 'astro:assets';
+
 // Import all images for The Ghost Ship Haunts the Deep event
 import squidRiceCracker from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Squid_rice_cracker.png';
 import summerSanctuary from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Summer_sanctuary.png';
@@ -12,32 +14,33 @@ import daringAdventure from '../../../assets/images/games/stella-sora/EventShop/
 import radiantFeatherCrown from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_radiant_feather_crown.png';
 import starEmblemPolisher from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Star_emblem_polisher.png';
 import ceruleanTicket from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_cerulean_ticket.png';
-import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg';
+import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_sprout_ticket.png';
 import exquisiteBlower from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_exquisite_blower.png';
 import chillingWindSpinner from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_chilling_wind_spinner.png';
 import moonlitCompanion from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_moonlit_companion.png';
-import countsGift from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_count_s_cellaring.png';
+import countsGift from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_count_s_gift.png';
+import countsCellaring from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_count_s_cellaring.png';
 import demonBeeGameCartridge from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_demon_bee_game_cartridge.png';
 import duloosEssence from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_duloos_essence.png';
 import monolithStairsPass from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_monolith_stairs_pass.png';
 import trekkersHandwrittenEncyclopedia from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_trekkers_handwritten_encyclopedia.png';
 import starlitColoredGlass from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_starlit_colored_glass.png';
-import countsCellaring from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_count_s_cellaring.png';
 import barrageGameCartridge from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_barrage_game_cartridge.png';
 import duloosSoulRemnant from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_duloos_soul_remnant.png';
-import dorra from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Dorra.jpg';
+import dorra from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_dorra.png';
 import bottledVigorSoda from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Bottled_vigor_soda.png';
 import cannedVigorSoda from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Canned_vigor_soda.png';
 import noviceDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Novice_disc_promotion_box.png';
 import noviceTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Novice_trekker_promotion_box.png';
 import premiumDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Premium_disc_promotion_box.png';
 import premiumTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Premium_trekker_promotion_box.png';
-import premiumCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Premium_Cartridge_Box.jpg';
-import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Beginner_Cartridge_Box.jpg';
+import premiumCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Premium_cartridge_box.png';
+import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Beginner_cartridge_box.png';
 import bg1event from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_bg1event.jpg';
 
-// Image mapping object for easy access
+// Clean, unified image mapping for The Ghost Ship Haunts the Deep - supports both original filenames and semantic camelCase keys
 const imageMap = {
+  // Original filenames from data (with extensions)
   '3_Squid_rice_cracker.png': squidRiceCracker,
   '3_Summer_sanctuary.png': summerSanctuary,
   '3_Summer_sanctuary_melodypng.png': summerSanctuaryMelody,
@@ -45,82 +48,123 @@ const imageMap = {
   '3_radiant_feather_crown.png': radiantFeatherCrown,
   '3_Star_emblem_polisher.png': starEmblemPolisher,
   '3_cerulean_ticket.png': ceruleanTicket,
-  '1_Sprout_Ticket.jpg': sproutTicket,
+  '3_sprout_ticket.png': sproutTicket,
   '3_exquisite_blower.png': exquisiteBlower,
   '3_chilling_wind_spinner.png': chillingWindSpinner,
   '3_moonlit_companion.png': moonlitCompanion,
-  '3_count_s_cellaring.png': countsGift,
+  '3_count_s_gift.png': countsGift,
+  '3_count_s_cellaring.png': countsCellaring,
   '3_demon_bee_game_cartridge.png': demonBeeGameCartridge,
   '3_duloos_essence.png': duloosEssence,
   '3_monolith_stairs_pass.png': monolithStairsPass,
   '3_trekkers_handwritten_encyclopedia.png': trekkersHandwrittenEncyclopedia,
   '3_starlit_colored_glass.png': starlitColoredGlass,
-  '3_count_s_cellaring.png': countsCellaring,
   '3_barrage_game_cartridge.png': barrageGameCartridge,
   '3_duloos_soul_remnant.png': duloosSoulRemnant,
-  '1_Dorra.jpg': dorra,
+  '3_dorra.png': dorra,
   '3_Bottled_vigor_soda.png': bottledVigorSoda,
   '3_Canned_vigor_soda.png': cannedVigorSoda,
   '3_Novice_disc_promotion_box.png': noviceDiscPromotionBox,
   '3_Novice_trekker_promotion_box.png': noviceTrekkerPromotionBox,
   '3_Premium_disc_promotion_box.png': premiumDiscPromotionBox,
   '3_Premium_trekker_promotion_box.png': premiumTrekkerPromotionBox,
-  '1_Premium_Cartridge_Box.jpg': premiumCartridgeBox,
-  '1_Beginner_Cartridge_Box.jpg': beginnerCartridgeBox,
+  '3_Premium_cartridge_box.png': premiumCartridgeBox,
+  '3_Beginner_cartridge_box.png': beginnerCartridgeBox,
   '3_bg1event.jpg': bg1event,
+
+  // Semantic name variations for easier usage
+  'Squid Rice Cracker': squidRiceCracker,
+  'Summer Sanctuary': summerSanctuary,
+  'Summer Sanctuary Melody': summerSanctuaryMelody,
+  'Daring Adventure': daringAdventure,
+  'Radiant Feather Crown': radiantFeatherCrown,
+  'Star Emblem Polisher': starEmblemPolisher,
+  'Cerulean Ticket': ceruleanTicket,
+  'Sprout Ticket': sproutTicket,
+  'Exquisite Blower': exquisiteBlower,
+  'Chilling Wind Spinner': chillingWindSpinner,
+  'Moonlit Companion': moonlitCompanion,
+  "Count's Gift": countsGift,
+  "Count's Cellaring": countsCellaring,
+  'Demon Bee Game Cartridge': demonBeeGameCartridge,
+  "Duloo's Essence": duloosEssence,
+  'Monolith Stairs Pass': monolithStairsPass,
+  "Trekker's Handwritten Encyclopedia": trekkersHandwrittenEncyclopedia,
+  'Starlit Colored Glass': starlitColoredGlass,
+  'Barrage Game Cartridge': barrageGameCartridge,
+  "Duloo's Soul Remnant": duloosSoulRemnant,
+  Dorra: dorra,
+  'Bottled Vigor Soda': bottledVigorSoda,
+  'Bottled Vigor soda': bottledVigorSoda,
+  'Canned Vigor Soda': cannedVigorSoda,
+  'Canned Bigor Soda': cannedVigorSoda,
+  'Novice Disc Promotion Box': noviceDiscPromotionBox,
+  'Novice Discs Promotion Box': noviceDiscPromotionBox,
+  'Novice disc promotion box': noviceDiscPromotionBox,
+  'Novice Trekker Promotion Box': noviceTrekkerPromotionBox,
+  'Novice Trekker promotion box': noviceTrekkerPromotionBox,
+  'Premium Disc Promotion Box': premiumDiscPromotionBox,
+  'Premium Disc promotion box': premiumDiscPromotionBox,
+  'Premium Trekker Promotion Box': premiumTrekkerPromotionBox,
+  'Premium Trekker promotion box': premiumTrekkerPromotionBox,
+  'Premium Cartridge Box': premiumCartridgeBox,
+  'Premium Cartridge box': premiumCartridgeBox,
+  'Premium cartridge box': premiumCartridgeBox,
+  'Beginner Cartridge Box': beginnerCartridgeBox,
+  'Beginner Cartridge box': beginnerCartridgeBox,
+  Background: bg1event,
 };
 
 // Props interface
 interface Props {
-  imageName: string | any;
+  imageName: string;
   alt?: string;
+  class?: string;
   className?: string;
   width?: number;
   height?: number;
   loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
 }
 
 const {
   imageName,
   alt = '',
-  className = '',
-  width = undefined,
-  height = undefined,
+  class: classNameFromClass,
+  className,
+  width = 80,
+  height = 80,
   loading = 'lazy',
+  format = 'webp',
+  quality = 95,
 } = Astro.props;
 
-// Handle both string names and image objects
-let imageSrc = null;
+// Use either className or class (for backwards compatibility)
+const finalClassName = className || classNameFromClass || '';
 
-if (typeof imageName === 'string') {
-  // If it's a string, try to get it from the mapping
-  imageSrc = imageMap[imageName];
-} else if (imageName && typeof imageName === 'object') {
-  // If it's already an image object, use it directly
-  imageSrc = imageName;
-}
-
-// If image not found, use a placeholder or fallback
-if (!imageSrc) {
-  const nameStr = typeof imageName === 'string' ? imageName : 'unknown';
-  console.warn(`Image "${nameStr}" not found in The Ghost Ship Haunts the Deep image mapping`);
-}
+// Get the image module based on the imageName - use filename fallback like other components
+const imageNameStr = String(imageName || '');
+const filename = imageNameStr.split('/').pop() || '3_Squid_rice_cracker.png';
+const convertedFilenameJpg = filename.replace(/ /g, '_') + '.jpg';
+const convertedFilenamePng = filename.replace(/ /g, '_') + '.png';
+const imageModule =
+  imageMap[imageName] ||
+  imageMap[convertedFilenameJpg] ||
+  imageMap[convertedFilenamePng] ||
+  imageMap[filename + '.jpg'] ||
+  imageMap[filename + '.png'] ||
+  squidRiceCracker;
 ---
 
-{
-  imageSrc ? (
-    <img
-      src={imageSrc}
-      alt={alt || imageName.replace(/_/g, ' ').replace('.jpg', '').replace('.png', '')}
-      class={className}
-      width={width}
-      height={height}
-      loading={loading}
-      decoding="async"
-    />
-  ) : (
-    <div class={`image-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>
-      <span>Image not found: {imageName}</span>
-    </div>
-  )
-}
+<!-- Use Astro's Image component for optimization -->
+<Image
+  src={imageModule}
+  alt={alt || imageName.replace(/_/g, ' ').replace('.jpg', '').replace('.png', '')}
+  width={width}
+  height={height}
+  class={finalClassName}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

@@ -3,33 +3,6 @@
  * Cookie Workshop Event
  */
 
-// Image imports for Guild Sweet Guild event
-import glassMarble from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_glass_marble.jpg';
-import fistOfCourage from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_fist_of_courage.jpg';
-import fistOfCourageMelody from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_fist_of_courage_melody.jpg';
-import guildSweetGuild from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_guild_sweet_guild.jpg';
-import colossusCore from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Colossus_Core.jpg';
-import ceruleanTicket from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_cerulean_ticket.jpg';
-import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg';
-import starEmblemPolisher from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_star_emblem_polisher.jpg';
-import reflectivePhotoCapturer from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_reflective_photo_capturer.jpg';
-import moonlitCompanion from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_moonlit_companion.jpg';
-import blossomPorcelainCup from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Blossom_Porcelain_cup.jpg';
-import countsGift from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_count_gift.jpg';
-import demonBeeGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Demon_Bee_Game_Cartridge.jpg';
-import frenziedWaltzEssence from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Frenzied_Waltz_Essence.jpg';
-import monolithStairsPass from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Monolith_Stairs_Pass.jpg';
-import trekkersHandwrittenEncyclopedia from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_trekkers_handwritten_encyclopedia.jpg';
-import starlitColoredGlass from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Starlit_Colored_Glass.jpg';
-import countsCellaring from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_count_cellaring.jpg';
-import barrageGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Barrage_Game_Cartridge.jpg';
-import phantomStepRemnant from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Phantom_Step_Remnant.jpg';
-import noviceTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Novice_Trekker_promotion_box.jpg';
-import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Beginner_Cartridge_box.jpg';
-import noviceDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Novice_Disc_Promotion_Box.jpg';
-import dorra from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_dorra.jpg';
-import bg1event from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_bg1.jpg';
-
 export const guildSweetGuildEvent = {
   id: 'guild-sweet-guild',
   title: 'Guild Sweet Guild',
@@ -43,11 +16,11 @@ export const guildSweetGuildEvent = {
   description:
     'Join the Guild Sweet Guild Cookie Workshop event! Complete stages, participate in cookie-making mini-games, and collect Glass Marble to exchange for exclusive weapons including the Fist of Courage, valuable materials, and limited-time rewards.',
   url: '/guides/stella-sora/shop-events/guild-sweet-guild/',
-  image: bg1event,
-  featuredImage: bg1event,
+  image: 'BG1.jpg',
+  featuredImage: 'BG1.jpg',
   currency: {
     name: 'Glass Marble',
-    icon: glassMarble,
+    icon: 'Glass_Marble.jpg',
     sources: [
       'Stage clears: Normal (500-800), Hard (800-1000), Cookie Workshop (300-3000)',
       'Normal stage repeats: 500 Glass Marble per run',
@@ -65,6 +38,55 @@ export const guildSweetGuildEvent = {
     totalDailyStamina: 420, // Total stamina available per day
     staminaRegenerationTime: 6, // 6 minutes per stamina
   },
+  shopItemTiers: [
+    {
+      tier: 1,
+      description: 'Must-have event-exclusive items - get these first!',
+      recommendation:
+        'Limited-time legendary weapons and materials that cannot be obtained elsewhere',
+      items: ['fist-of-courage', 'fist-of-courage-melody'],
+      color: '#ff6b6b',
+    },
+    {
+      tier: 2,
+      description: 'Premium progression items with high value',
+      recommendation: 'Important gacha tickets and enhancement materials for character development',
+      items: ['cerulean-ticket', 'sprout-ticket', 'colossus-core', 'star-emblem-polisher', 'dorra'],
+      color: '#4ecdc4',
+    },
+    {
+      tier: 3,
+      description: 'Useful materials and resources',
+      recommendation: 'Good value materials if you have spare currency after priority tiers',
+      items: [
+        'demon-bee-game-cartridge',
+        'monolith-stairs-pass',
+        'starlit-colored-glass',
+        'counts-cellaring',
+        'frenzied-waltz-essence',
+        'counts-gift',
+      ],
+      color: '#45b7d1',
+    },
+    {
+      tier: 4,
+      description: 'Optional items for completionists',
+      recommendation:
+        'Nice-to-have items but not essential for progression. Get only if you have plenty of spare currency',
+      items: [
+        'reflective-photo-capturer',
+        'moonlit-companion',
+        'blossom-porcelain-cup',
+        'trekkers-handwritten-encyclopedia',
+        'barrage-game-cartridge',
+        'beginner-cartridge-box',
+        'phantom-step-remnant',
+        'novice-trekker-promotion-box',
+        'novice-disc-promotion-box',
+      ],
+      color: '#96ceb4',
+    },
+  ],
   shopItems: [
     {
       id: 'fist-of-courage',
@@ -74,15 +96,16 @@ export const guildSweetGuildEvent = {
       price: 8000,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
       quantity: 1,
       description:
         'Event-exclusive legendary weapon. Must-have collection item with powerful abilities.',
-      image: fistOfCourage,
+      image: 'Fist_of_Courage.jpg',
       featured: true,
       category: 'weapons',
+      tier: 1,
     },
     {
       id: 'fist-of-courage-melody',
@@ -92,14 +115,15 @@ export const guildSweetGuildEvent = {
       price: 8000,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 5, maxPurchase: 5 },
       quantity: 1,
       description: 'Essential upgrade material for Fist of Courage. Limited stock available.',
-      image: fistOfCourageMelody,
+      image: 'Fist_of_Courage_Melody.jpg',
       featured: true,
       category: 'materials',
+      tier: 1,
     },
     {
       id: 'guild-sweet-guild',
@@ -109,12 +133,12 @@ export const guildSweetGuildEvent = {
       price: 5000,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
       quantity: 1,
       description: 'Event-exclusive furniture piece for your guild. Valuable collection item.',
-      image: guildSweetGuild,
+      image: 'Guild_Sweet_Guild.jpg',
       featured: false,
       category: 'furniture',
     },
@@ -126,12 +150,12 @@ export const guildSweetGuildEvent = {
       price: 1600,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 12, maxPurchase: 12 },
       quantity: 1,
       description: 'Important enhancement material for late-game progression.',
-      image: colossusCore,
+      image: 'Colossus_Core.jpg',
       featured: false,
       category: 'materials',
     },
@@ -143,12 +167,12 @@ export const guildSweetGuildEvent = {
       price: 500,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 5, maxPurchase: 5 },
       quantity: 1,
       description: 'Premium gacha ticket for character acquisition. Very valuable.',
-      image: ceruleanTicket,
+      image: 'Cerulean_Ticket.jpg',
       featured: false,
       category: 'tickets',
     },
@@ -160,12 +184,12 @@ export const guildSweetGuildEvent = {
       price: 500,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 5, maxPurchase: 5 },
       quantity: 1,
       description: 'Premium gacha ticket for banner pulls. Excellent value.',
-      image: sproutTicket,
+      image: 'Sprout_Ticket.jpg',
       featured: false,
       category: 'tickets',
     },
@@ -177,12 +201,12 @@ export const guildSweetGuildEvent = {
       price: 400,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 10, maxPurchase: 10 },
       quantity: 1,
       description: 'Useful enhancement material for equipment upgrades.',
-      image: starEmblemPolisher,
+      image: 'Star_Emblem_Polisher.jpg',
       featured: false,
       category: 'materials',
     },
@@ -194,12 +218,12 @@ export const guildSweetGuildEvent = {
       price: 250,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 2, maxPurchase: 2 },
       quantity: 5,
       description: 'Optional collection piece.',
-      image: reflectivePhotoCapturer,
+      image: 'Reflective_Photo_Capturer.jpg',
       featured: false,
       category: 'vanity',
     },
@@ -211,12 +235,12 @@ export const guildSweetGuildEvent = {
       price: 250,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 2, maxPurchase: 2 },
       quantity: 5,
       description: 'Optional companion item.',
-      image: moonlitCompanion,
+      image: 'Moonlit_Companion.jpg',
       featured: false,
       category: 'vanity',
     },
@@ -228,12 +252,12 @@ export const guildSweetGuildEvent = {
       price: 250,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 2, maxPurchase: 2 },
       quantity: 5,
       description: 'Decorative furniture item - optional.',
-      image: blossomPorcelainCup,
+      image: 'Blossom_Porcelain_cup.jpg',
       featured: false,
       category: 'vanity',
     },
@@ -245,12 +269,12 @@ export const guildSweetGuildEvent = {
       price: 250,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 6, maxPurchase: 6 },
       quantity: 5,
       description: 'Useful gift item for character relationships.',
-      image: countsGift,
+      image: "Count's_Gift.jpg",
       featured: false,
       category: 'materials',
     },
@@ -262,12 +286,12 @@ export const guildSweetGuildEvent = {
       price: 250,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 10, maxPurchase: 10 },
       quantity: 5,
       description: 'Enhancement material for disc upgrades.',
-      image: demonBeeGameCartridge,
+      image: 'Demon_Bee_Game_Cartridge.jpg',
       featured: false,
       category: 'materials',
     },
@@ -279,12 +303,12 @@ export const guildSweetGuildEvent = {
       price: 250,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 10, maxPurchase: 10 },
       quantity: 5,
       description: 'Enhancement material for skill upgrades.',
-      image: frenziedWaltzEssence,
+      image: 'Frenzied_Waltz_Essence.jpg',
       featured: false,
       category: 'materials',
     },
@@ -296,12 +320,12 @@ export const guildSweetGuildEvent = {
       price: 200,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 10, maxPurchase: 10 },
       quantity: 2,
       description: 'Special item for exclusive content access.',
-      image: monolithStairsPass,
+      image: 'Monolith_Stairs_Pass.jpg',
       featured: false,
       category: 'special',
     },
@@ -313,12 +337,12 @@ export const guildSweetGuildEvent = {
       price: 150,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 30, maxPurchase: 30 },
       quantity: 5,
       description: 'Knowledge enhancement material.',
-      image: trekkersHandwrittenEncyclopedia,
+      image: "Trekker's_Handwritten_Encyclopedia.jpg",
       featured: false,
       category: 'materials',
     },
@@ -330,12 +354,12 @@ export const guildSweetGuildEvent = {
       price: 150,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 40, maxPurchase: 40 },
       quantity: 5,
       description: 'Crafting material for equipment enhancement.',
-      image: starlitColoredGlass,
+      image: 'Starlit_Colored_Glass.jpg',
       featured: false,
       category: 'materials',
     },
@@ -347,12 +371,12 @@ export const guildSweetGuildEvent = {
       price: 80,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 40, maxPurchase: 40 },
       quantity: 5,
       description: 'Enhancement material for equipment upgrades.',
-      image: countsCellaring,
+      image: "Count's_Cellaring.jpg",
       featured: false,
       category: 'materials',
     },
@@ -364,12 +388,12 @@ export const guildSweetGuildEvent = {
       price: 80,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 90, maxPurchase: 90 },
       quantity: 5,
       description: 'Enhancement material for skill upgrades.',
-      image: barrageGameCartridge,
+      image: 'Barrage_Game_Cartridge.jpg',
       featured: false,
       category: 'materials',
     },
@@ -381,12 +405,12 @@ export const guildSweetGuildEvent = {
       price: 80,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 90, maxPurchase: 90 },
       quantity: 5,
       description: 'Material for character enhancement.',
-      image: phantomStepRemnant,
+      image: 'Phantom_Step_Remnant.jpg',
       featured: false,
       category: 'materials',
     },
@@ -398,12 +422,12 @@ export const guildSweetGuildEvent = {
       price: 25,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 20, maxPurchase: 20 },
       quantity: 5,
       description: 'Common promotion material - easily farmable.',
-      image: noviceTrekkerPromotionBox,
+      image: 'Novice_Trekker_promotion_box.jpg',
       featured: false,
       category: 'promotion',
     },
@@ -415,12 +439,12 @@ export const guildSweetGuildEvent = {
       price: 25,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 45, maxPurchase: 45 },
       quantity: 5,
       description: 'Basic enhancement material - readily available.',
-      image: beginnerCartridgeBox,
+      image: 'Beginner_Cartridge_box.jpg',
       featured: false,
       category: 'promotion',
     },
@@ -432,12 +456,12 @@ export const guildSweetGuildEvent = {
       price: 25,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 20, maxPurchase: 20 },
       quantity: 5,
       description: 'Common disc material - can be farmed elsewhere.',
-      image: noviceDiscPromotionBox,
+      image: 'Novice_Disc_Promotion_Box.jpg',
       featured: false,
       category: 'promotion',
     },
@@ -449,12 +473,12 @@ export const guildSweetGuildEvent = {
       price: 10,
       currency: {
         name: 'Glass Marble',
-        icon: glassMarble,
+        icon: 'Glass_Marble.jpg',
       },
       stock: { type: 'limited', quantity: 1000, maxPurchase: 1000 },
       quantity: 3000,
       description: 'Basic in-game currency - always available.',
-      image: dorra,
+      image: 'Dorra.jpg',
       featured: false,
       category: 'currency',
     },
@@ -585,7 +609,7 @@ export const guildSweetGuildEvent = {
         },
         {
           id: 'clear-stages-100',
-          name: 'Clear event Battle Stages 100 times',
+          name: 'Clear event Battle Stages 100 times (Hard mode can be repeated - no stamina cost!)',
           currency: 'x1000',
           description: 'Complete any event battle stages 100 times',
         },

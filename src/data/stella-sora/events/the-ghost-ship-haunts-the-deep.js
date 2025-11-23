@@ -6,38 +6,6 @@
 // Import clock configuration for dynamic event dates
 import { stellaSoraConfig } from '../../clock/stella-sora.js';
 
-// Image imports for The Ghost Ship Haunts the Deep event
-import squidRiceCracker from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Squid_rice_cracker.png';
-import summerSanctuary from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Summer_sanctuary.png';
-import summerSanctuaryMelody from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Summer_sanctuary_melodypng.png';
-import daringAdventure from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Daring_Adventure!_The_Ghost_Ship_Haunts_the_Deep.png';
-import radiantFeatherCrown from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_radiant_feather_crown.png';
-import starEmblemPolisher from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Star_emblem_polisher.png';
-import ceruleanTicket from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_cerulean_ticket.png';
-import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg';
-import exquisiteBlower from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_exquisite_blower.png';
-import chillingWindSpinner from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_chilling_wind_spinner.png';
-import moonlitCompanion from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_moonlit_companion.png';
-import countsGift from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_count_s_cellaring.png';
-import demonBeeGameCartridge from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_demon_bee_game_cartridge.png';
-import duloosEssence from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_duloos_essence.png';
-import monolithStairsPass from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_monolith_stairs_pass.png';
-import trekkersHandwrittenEncyclopedia from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_trekkers_handwritten_encyclopedia.png';
-import starlitColoredGlass from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_starlit_colored_glass.png';
-import countsCellaring from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_count_s_cellaring.png';
-import barrageGameCartridge from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_barrage_game_cartridge.png';
-import duloosSoulRemnant from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_duloos_soul_remnant.png';
-import dorra from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Dorra.jpg';
-import bottledVigorSoda from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Bottled_vigor_soda.png';
-import cannedVigorSoda from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Canned_vigor_soda.png';
-import noviceDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Novice_disc_promotion_box.png';
-import noviceTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Novice_trekker_promotion_box.png';
-import premiumDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Premium_disc_promotion_box.png';
-import premiumTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Premium_trekker_promotion_box.png';
-import premiumCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Premium_Cartridge_Box.jpg';
-import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Beginner_Cartridge_Box.jpg';
-import bg1event from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_bg1event.jpg';
-
 /**
  * Get current event period from clock configuration
  * @returns {Object} Current event period information
@@ -79,18 +47,17 @@ export const theGhostShipHauntsTheDeepEvent = {
   description:
     'The Ghost Ship Haunts the Deep is a summer adventure event featuring exclusive Trekkers, powerful items, and limited-time rewards. Complete quests, clear stages, and collect Squid Rice Crackers to obtain premium content including the Summer Sanctuary Trekker and valuable promotion items.',
   url: '/guides/stella-sora/shop-events/the-ghost-ship-haunts-the-deep/',
-  image: bg1event,
-  featuredImage: bg1event,
+  image: '3_bg1event.jpg',
+  featuredImage: '3_bg1event.jpg',
   currency: {
     name: 'Squid Rice Cracker',
-    icon: squidRiceCracker,
+    icon: '3_Squid_rice_cracker.png',
     sources: [
       'Stage completions: 400 per replay',
       'Quest completions: 1000-1200 per quest',
       'First-time stage clears: bonus amounts',
       'Special event bonuses',
     ],
-    capacity: 'No known limit',
   },
   shopItems: [
     {
@@ -101,13 +68,13 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 8000,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
       quantity: 1,
       description:
         'Exclusive summer event Trekker with special abilities and unique summer-themed appearance.',
-      image: summerSanctuary,
+      image: '3_Summer_sanctuary.png',
       featured: true,
       category: 'trekker',
     },
@@ -119,12 +86,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 8000,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 5, maxPurchase: 1 },
       quantity: 1,
       description: 'Powerful summer-themed equipment with special melody-based abilities.',
-      image: summerSanctuaryMelody,
+      image: '3_Summer_sanctuary_melodypng.png',
       featured: true,
       category: 'equipment',
     },
@@ -136,13 +103,13 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 5000,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 1, maxPurchase: 1 },
       quantity: 1,
       description:
         'Exclusive furniture item featuring the Ghost Ship from the summer adventure event.',
-      image: daringAdventure,
+      image: '3_Daring_Adventure!_The_Ghost_Ship_Haunts_the_Deep.png',
       featured: true,
       category: 'furniture',
     },
@@ -154,13 +121,13 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 1600,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 12, maxPurchase: 1 },
       quantity: 1,
       description:
         'Beautiful crown adorned with radiant feathers, perfect for summer celebrations.',
-      image: radiantFeatherCrown,
+      image: '3_radiant_feather_crown.png',
       featured: true,
       category: 'cosmetic',
     },
@@ -172,12 +139,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 1600,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 5, maxPurchase: 1 },
       quantity: 2,
       description: 'Polishing material for star emblems, enhances equipment performance.',
-      image: starEmblemPolisher,
+      image: '3_Star_emblem_polisher.png',
       featured: false,
       category: 'materials',
     },
@@ -189,12 +156,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 500,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 5, maxPurchase: 1 },
       quantity: 1,
       description: 'Special ticket for accessing exclusive summer event content and rewards.',
-      image: ceruleanTicket,
+      image: '3_cerulean_ticket.png',
       featured: false,
       category: 'tickets',
     },
@@ -206,12 +173,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 500,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 5, maxPurchase: 1 },
       quantity: 1,
       description: 'Ticket for obtaining special Sprout-themed rewards and bonuses.',
-      image: sproutTicket,
+      image: '3_sprout_ticket.png',
       featured: false,
       category: 'tickets',
     },
@@ -223,12 +190,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 250,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 2, maxPurchase: 1 },
       quantity: 5,
       description: 'Exquisite blowing equipment with enhanced performance and summer effects.',
-      image: exquisiteBlower,
+      image: '3_exquisite_blower.png',
       featured: false,
       category: 'equipment',
     },
@@ -240,12 +207,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 250,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 2, maxPurchase: 1 },
       quantity: 5,
       description: 'Wind manipulation equipment with chilling summer breezes.',
-      image: chillingWindSpinner,
+      image: '3_chilling_wind_spinner.png',
       featured: false,
       category: 'equipment',
     },
@@ -257,12 +224,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 250,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 2, maxPurchase: 1 },
       quantity: 5,
       description: 'Companion equipment enhanced by moonlight for summer adventures.',
-      image: moonlitCompanion,
+      image: '3_moonlit_companion.png',
       featured: false,
       category: 'equipment',
     },
@@ -274,12 +241,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 250,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 6, maxPurchase: 1 },
       quantity: 5,
       description: 'Special gift from the Count containing rare materials and items.',
-      image: countsGift,
+      image: '3_count_s_gift.png',
       featured: false,
       category: 'materials',
     },
@@ -291,12 +258,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 250,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 10, maxPurchase: 1 },
       quantity: 5,
       description: 'Game cartridge featuring Demon Bee mini-games with special rewards.',
-      image: demonBeeGameCartridge,
+      image: '3_demon_bee_game_cartridge.png',
       featured: false,
       category: 'consumables',
     },
@@ -308,12 +275,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 250,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 10, maxPurchase: 1 },
       quantity: 5,
       description: 'Essence extracted from Duloos, containing powerful enhancement properties.',
-      image: duloosEssence,
+      image: '3_duloos_essence.png',
       featured: false,
       category: 'materials',
     },
@@ -325,12 +292,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 200,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 10, maxPurchase: 1 },
       quantity: 2,
       description: 'Pass for accessing special Monolith Stairs content and rewards.',
-      image: monolithStairsPass,
+      image: '3_monolith_stairs_pass.png',
       featured: false,
       category: 'tickets',
     },
@@ -342,12 +309,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 150,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 30, maxPurchase: 1 },
       quantity: 5,
       description: 'Handwritten encyclopedia containing valuable Trekker knowledge and strategies.',
-      image: trekkersHandwrittenEncyclopedia,
+      image: '3_trekkers_handwritten_encyclopedia.png',
       featured: false,
       category: 'materials',
     },
@@ -359,12 +326,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 150,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 40, maxPurchase: 1 },
       quantity: 5,
       description: 'Beautiful colored glass infused with starlight for crafting purposes.',
-      image: starlitColoredGlass,
+      image: '3_starlit_colored_glass.png',
       featured: false,
       category: 'materials',
     },
@@ -376,12 +343,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 80,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 40, maxPurchase: 1 },
       quantity: 5,
       description: "Cellaring materials from the Count's collection for enhancement purposes.",
-      image: countsCellaring,
+      image: '3_count_s_cellaring.png',
       featured: false,
       category: 'materials',
     },
@@ -393,12 +360,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 80,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 90, maxPurchase: 1 },
       quantity: 5,
       description: 'Game cartridge featuring Barrage mini-games with exciting challenges.',
-      image: barrageGameCartridge,
+      image: '3_barrage_game_cartridge.png',
       featured: false,
       category: 'consumables',
     },
@@ -410,12 +377,12 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 80,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
       stock: { type: 'limited', quantity: 90, maxPurchase: 1 },
       quantity: 5,
       description: 'Soul remnant from Duloos containing spiritual enhancement properties.',
-      image: duloosSoulRemnant,
+      image: '3_duloos_soul_remnant.png',
       featured: false,
       category: 'materials',
     },
@@ -427,150 +394,14 @@ export const theGhostShipHauntsTheDeepEvent = {
       price: 10,
       currency: {
         name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
+        icon: '3_Squid_rice_cracker.png',
       },
-      stock: { type: 'unlimited', quantity: 1000, maxPurchase: 1 },
+      stock: { type: 'limited', quantity: 1000, maxPurchase: 1 },
       quantity: 3000,
       description: 'Basic currency material commonly used for various purposes and exchanges.',
-      image: dorra,
+      image: '3_dorra.png',
       featured: false,
       category: 'currency',
-    },
-    {
-      id: 'bottled-vigor-soda',
-      name: 'Bottled Vigor Soda',
-      type: 'consumable',
-      rarity: 'A',
-      price: 40,
-      currency: {
-        name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
-      },
-      stock: { type: 'unlimited', quantity: 999, maxPurchase: 1 },
-      quantity: 3,
-      description: 'Refreshing soda that restores vigor and energy for adventures.',
-      image: bottledVigorSoda,
-      featured: false,
-      category: 'consumables',
-    },
-    {
-      id: 'canned-vigor-soda',
-      name: 'Canned Vigor Soda',
-      type: 'consumable',
-      rarity: 'A',
-      price: 80,
-      currency: {
-        name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
-      },
-      stock: { type: 'unlimited', quantity: 999, maxPurchase: 1 },
-      quantity: 2,
-      description: 'Premium canned vigor soda with enhanced restoration effects.',
-      image: cannedVigorSoda,
-      featured: false,
-      category: 'consumables',
-    },
-    {
-      id: 'novice-disc-promotion-box',
-      name: 'Novice Disc Promotion Box',
-      type: 'material',
-      rarity: 'B',
-      price: 200,
-      currency: {
-        name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
-      },
-      stock: { type: 'limited', quantity: 60, maxPurchase: 1 },
-      quantity: 5,
-      description: 'Box containing materials for promoting novice-level discs.',
-      image: noviceDiscPromotionBox,
-      featured: false,
-      category: 'materials',
-    },
-    {
-      id: 'novice-trekker-promotion-box',
-      name: 'Novice Trekker Promotion Box',
-      type: 'material',
-      rarity: 'B',
-      price: 150,
-      currency: {
-        name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
-      },
-      stock: { type: 'limited', quantity: 90, maxPurchase: 1 },
-      quantity: 5,
-      description: 'Box containing materials for promoting novice-level trekkers.',
-      image: noviceTrekkerPromotionBox,
-      featured: false,
-      category: 'materials',
-    },
-    {
-      id: 'premium-disc-promotion-box',
-      name: 'Premium Disc Promotion Box',
-      type: 'material',
-      rarity: 'A',
-      price: 600,
-      currency: {
-        name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
-      },
-      stock: { type: 'limited', quantity: 30, maxPurchase: 1 },
-      quantity: 3,
-      description: 'Premium box containing high-quality materials for disc promotion.',
-      image: premiumDiscPromotionBox,
-      featured: false,
-      category: 'materials',
-    },
-    {
-      id: 'premium-trekker-promotion-box',
-      name: 'Premium Trekker Promotion Box',
-      type: 'material',
-      rarity: 'A',
-      price: 800,
-      currency: {
-        name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
-      },
-      stock: { type: 'limited', quantity: 20, maxPurchase: 1 },
-      quantity: 3,
-      description: 'Premium box containing high-quality materials for trekker promotion.',
-      image: premiumTrekkerPromotionBox,
-      featured: false,
-      category: 'materials',
-    },
-    {
-      id: 'premium-cartridge-box',
-      name: 'Premium Cartridge Box',
-      type: 'consumable',
-      rarity: 'S',
-      price: 1200,
-      currency: {
-        name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
-      },
-      stock: { type: 'limited', quantity: 10, maxPurchase: 1 },
-      quantity: 3,
-      description: 'Premium box containing high-quality game cartridges with special content.',
-      image: premiumCartridgeBox,
-      featured: false,
-      category: 'consumables',
-    },
-    {
-      id: 'beginner-cartridge-box',
-      name: 'Beginner Cartridge Box',
-      type: 'consumable',
-      rarity: 'C',
-      price: 300,
-      currency: {
-        name: 'Squid Rice Cracker',
-        icon: squidRiceCracker,
-      },
-      stock: { type: 'limited', quantity: 50, maxPurchase: 1 },
-      quantity: 3,
-      description: 'Box containing game cartridges perfect for beginners.',
-      image: beginnerCartridgeBox,
-      featured: false,
-      category: 'consumables',
     },
   ],
 

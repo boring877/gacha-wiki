@@ -1,5 +1,7 @@
-/* Stella Sora Shop Events Styles */
-/* Using Stella Sora color system and design patterns */
+/* The Ghost Ship Haunts the Deep Event Specific Styles */
+/* Complete CSS with all shared and event-specific styles */
+
+/* ===== SHARED STYLES FROM ss-shop-event.css ===== */
 
 /* Shop Events Introduction */
 .ss-shop-events-intro {
@@ -79,6 +81,11 @@
   overflow: hidden;
   text-decoration: none;
   color: inherit;
+  /* Mobile touch optimizations */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  /* Enable smooth scrolling */
+  scroll-behavior: smooth;
 }
 
 /* Event Card Image */
@@ -86,9 +93,11 @@
   position: relative;
   height: 180px;
   overflow: hidden;
+  background: var(--ss-bg-tertiary);
 }
 
-.event-card-image img {
+.event-card-image img,
+.event-card-image .ss-shop-event-banner-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -150,7 +159,151 @@
   display: block;
 }
 
-/* Responsive Design */
+/* ===== EVENT SPECIFIC STYLES ===== */
+
+.event-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.featured-image-section {
+  margin-bottom: 2rem;
+}
+
+.featured-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.event-overview {
+  background: var(--ss-card-bg);
+  border: 1px solid var(--ss-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.event-dates-overview {
+  background: var(--ss-card-bg);
+  border: 1px solid var(--ss-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.date-item {
+  text-align: center;
+}
+
+.date-label {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.date-value {
+  font-weight: 600;
+  color: var(--ss-text-primary);
+}
+
+.shop-items-section {
+  margin-bottom: 2rem;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.item-card {
+  background: var(--ss-card-bg);
+  border: 1px solid var(--ss-border);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.item-card.featured {
+  border-color: var(--ss-accent-primary);
+  background: linear-gradient(
+    135deg,
+    var(--ss-card-bg) 0%,
+    rgba(var(--ss-accent-primary-rgb), 0.1) 100%
+  );
+}
+
+.item-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.item-image {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-right: 0.75rem;
+}
+
+.item-name {
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.item-rarity {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  background: var(--ss-accent-secondary);
+  color: white;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item-price {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+}
+
+.price-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.25rem;
+}
+
+.item-stock {
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+}
+
+.item-description {
+  color: var(--ss-text-secondary);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Responsive Design - Tablet and Mobile */
 @media (max-width: 768px) {
   .ss-shop-events-intro {
     padding: var(--spacing-lg);
@@ -197,9 +350,26 @@
 
   .ss-shop-event-card {
     min-height: auto;
+    /* Larger touch targets on mobile */
+    min-height: 44px; /* iOS touch target minimum */
+  }
+
+  /* Event specific responsive styles */
+  .event-content {
+    padding: 1rem;
+  }
+
+  .featured-image {
+    max-height: 300px;
+  }
+
+  .items-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
+/* Mobile Phones */
 @media (max-width: 480px) {
   .ss-shop-events-intro {
     padding: var(--spacing-md);
@@ -207,6 +377,9 @@
 
   .ss-intro-title {
     font-size: 1.5rem;
+    /* Better text rendering on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .ss-section-title {
@@ -229,6 +402,10 @@
   .event-title {
     font-size: 1rem;
     margin-bottom: var(--spacing-sm);
+    /* Better text wrapping */
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .event-dates {
@@ -246,6 +423,8 @@
 
   .ss-shop-events-grid {
     gap: var(--spacing-sm);
+    /* Optimize scrolling for mobile */
+    scroll-padding: var(--spacing-md);
   }
 }
 
@@ -302,5 +481,52 @@
 
   .ss-shop-events-grid {
     gap: var(--spacing-xs);
+  }
+
+  /* Extra small screen optimizations */
+  .ss-shop-event-card {
+    /* Ensure minimum touch target size */
+    min-height: 48px;
+    /* Reduce padding to save space */
+    padding: 0;
+  }
+
+  .event-card-content {
+    padding: var(--spacing-xs) !important;
+  }
+}
+
+/* Additional Mobile Optimizations */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .ss-shop-event-card {
+    border-width: 2px;
+  }
+
+  .event-dates {
+    border-left-width: 4px;
+  }
+}
+
+/* Dark mode support for mobile */
+@media (prefers-color-scheme: dark) {
+  .event-card-image {
+    background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  }
+}
+
+/* Landscape mobile optimizations */
+@media (max-width: 768px) and (orientation: landscape) {
+  .ss-shop-events-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .event-card-image {
+    height: 120px;
+  }
+
+  .ss-shop-events-intro {
+    padding: var(--spacing-md);
   }
 }

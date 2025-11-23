@@ -1,241 +1,562 @@
 ---
-import ShopEventLayout from '../../../../layouts/stella-sora/ShopEventLayout.astro';
+import AFinaleEchoingLayout from '../../../../layouts/stella-sora/AFinaleEchoingLayout.astro';
 import AFinaleEchoingImages from '../../../../components/stella-sora/shop-events/AFinaleEchoingImages.astro';
 import { aFinaleEchoingEvent } from '../../../../data/stella-sora/events/a-finale-echoing.js';
 
-// Use the event data directly
 const event = aFinaleEchoingEvent;
 
 // Set metadata
 const title = `${event.title} - ${event.subtitle}`;
 const description = event.description;
+
+// Transform shop items from event data
+const shopItems = event.shopItems.map(item => ({
+  name: item.name,
+  stockLeft: item.stock?.quantity || item.quantity || 1,
+  cost: item.price || item.cost || 0,
+  quantity: `x${item.stock?.quantity || item.quantity || 1}`,
+  image: item.image,
+  rarity: item.rarity || 'common',
+}));
+
+// Calculate total cost to buy all items
+const totalCost = shopItems.reduce((sum, item) => sum + item.cost * item.stockLeft, 0);
+
+// Helper function to parse reward text and return array of reward objects
+const parseRewardText = (rewardsText: string) => {
+  const rewardItems = rewardsText.split(',').map(reward => {
+    const trimmedReward = reward.trim();
+    const match = trimmedReward.match(/(\d+)\s*x?\s*(.+)$/);
+
+    if (match) {
+      const quantity = match[1];
+      const name = match[2].trim();
+      return {
+        displayText: trimmedReward,
+        quantity: quantity,
+        name: name,
+      };
+    }
+
+    return {
+      displayText: trimmedReward,
+      quantity: '1',
+      name: trimmedReward,
+    };
+  });
+
+  return rewardItems;
+};
+
+// Quest data from event - Only Score Milestone Quests available for this event
+const questCategories = [
+  {
+    title: event.quests?.special?.title || 'Score Milestone Quests',
+    description:
+      event.quests?.special?.description ||
+      'Reach score milestones to earn bonus Whispers of Decay',
+    completionRewards:
+      event.quests?.special?.completionRewards?.items?.join(', ') ||
+      '1 x Sprout Ticket, 4000 Whispers of Decay, 10 x Chess Piece of Skill',
+    quests: event.quests?.special?.quests || [],
+  },
+];
+
+// Calculate total rewards gained from quests
+const totalRewardsFromQuests = questCategories.reduce((total, category) => {
+  return (
+    total +
+    category.quests.reduce((categoryTotal, quest) => {
+      const crystals = 'crystalReward' in quest ? quest.crystalReward || 0 : 0;
+      const whispers = 'whispersReward' in quest ? quest.whispersReward || 0 : 0;
+      return categoryTotal + crystals + whispers;
+    }, 0)
+  );
+}, 0);
+
+// Calculate Whispers of Decay from stage first clears (only 4 maps available)
+const normalStagesWhispers = 200; // Normal stage first clear
+const hardStagesWhispers = 300; // Hard stage first clear
+const extraHardStagesWhispers = 400; // Extra Hard stage first clear
+const ultimateStagesWhispers = 500; // Ultimate stage first clear
+const totalWhispersFromStages =
+  normalStagesWhispers + hardStagesWhispers + extraHardStagesWhispers + ultimateStagesWhispers;
+
+// Calculate Whispers of Decay from score milestone quests (these are the quest currency rewards)
+const whispersFromScoreMilestones = questCategories.reduce((total, category) => {
+  return (
+    total +
+    category.quests.reduce((categoryTotal, quest) => {
+      const whispers = quest.whispersReward || 0;
+      return categoryTotal + whispers;
+    }, 0)
+  );
+}, 0);
+
+// Calculate Whispers of Decay from Ultimate stage repeats (14 tickets left after first clear × 500 each)
+const ultimateStageRepeatWhispers = 14 * 500;
+
+// Total Whispers of Decay from all sources except purchases
+const totalWhispersFromAllSources =
+  totalWhispersFromStages + whispersFromScoreMilestones + ultimateStageRepeatWhispers;
+
+// Calculate Whispers of Decay from ranking rewards (Top 10%: 2400)
+const rankingRewardsWhispers = 2400;
+
+// Calculate total including ranking rewards (Top 10%)
+const totalWhispersWithRanking = totalWhispersFromAllSources + rankingRewardsWhispers;
 ---
 
-<ShopEventLayout
-  title={title}
+<AFinaleEchoingLayout
+  title={`${title} Strategy Guide | GachaWiki`}
   description={description}
   gameTitle={event.title}
-  endDate={event.shopEndDate}
+  endDate={event.endDisplay}
   currency={event.currency}
 >
-  <div class="event-content">
-    <!-- Featured Image -->
-    <div class="featured-image-section">
-      <AFinaleEchoingImages
-        imageName="1_Dorra.jpg"
-        alt={event.title}
-        className="featured-image"
-        loading="eager"
-      />
+  <!-- Event Status Bar -->
+  <section class="event-status-bar">
+    <div class="event-timer">
+      <span class="timer-label">Event Ends:</span>
+      <span class="timer-date">{event.endDisplay}</span>
     </div>
-
-    <!-- Event Summary -->
-    <section class="event-overview">
-      <h2>Event Overview</h2>
-      <p>{event.summary}</p>
-      <p>{event.description}</p>
-    </section>
-
-    <!-- Event Dates -->
-    <section class="event-dates">
-      <h2>Event Schedule</h2>
-      <div class="dates-grid">
-        <div class="date-item">
-          <div class="date-label">Start Date</div>
-          <div class="date-value">{event.startDate}</div>
+    {
+      event.currency && (
+        <div class="event-currency">
+          <span class="currency-label">Currency:</span>
+          <span class="currency-name">{event.currency.name}</span>
+          <AFinaleEchoingImages
+            imageName={event.currency.name}
+            alt={event.currency.name}
+            width={20}
+            height={20}
+          />
         </div>
-        <div class="date-item">
-          <div class="date-label">End Date</div>
-          <div class="date-value">{event.endDate}</div>
+      )
+    }
+  </section>
+
+  <!-- Shop Event Cost Breakdown Section -->
+  <section class="ss-cost-breakdown">
+    <h2 class="ss-shop-items-title">Breakdown of Shop Event Cost</h2>
+
+    <div class="cost-overview">
+      <div class="currency-info">
+        <div class="currency-header">
+          <AFinaleEchoingImages
+            imageName={event.currency.name}
+            alt={event.currency.name}
+            width={24}
+            height={24}
+          />
+          <h3 class="currency-name">{event.currency.name}</h3>
         </div>
-        <div class="date-item">
-          <div class="date-label">Shop Closes</div>
-          <div class="date-value">{event.shopEndDate}</div>
+
+        <div class="currency-sources">
+          <h4 class="sources-title">How to Obtain:</h4>
+          <ul class="sources-list">
+            {event.currency.sources.map(source => <li class="source-item">{source}</li>)}
+          </ul>
         </div>
       </div>
-    </section>
 
-    <!-- Shop Items Grid -->
-    <section class="shop-items-section">
-      <h2>Shop Items</h2>
-      <div class="items-grid">
-        {
-          event.shopItems.map(item => (
-            <div class={`item-card ${item.featured ? 'featured' : ''}`}>
-              <div class="item-header">
+      <div class="cost-statistics unified-stats">
+        <div class="stats-header">
+          <h3 class="stats-title">Shop Overview</h3>
+        </div>
+
+        <div class="stats-list">
+          <div class="stat-list-item">
+            <span class="stat-label">Total Items</span>
+            <span class="stat-value">{shopItems.length}</span>
+          </div>
+
+          <div class="stat-list-item total-cost-item">
+            <span class="stat-label">Total Cost (All Items)</span>
+            <div class="total-cost-display">
+              <AFinaleEchoingImages
+                imageName={event.currency.name}
+                alt={event.currency.name}
+                width={16}
+                height={16}
+              />
+              <span class="stat-value cost-total">{totalCost.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Highest Cost</span>
+            <span class="stat-value cost-highest">
+              {Math.max(...shopItems.map(item => item.cost))}
+            </span>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Lowest Cost</span>
+            <span class="stat-value cost-lowest">
+              {Math.min(...shopItems.map(item => item.cost))}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cost-statistics unified-stats">
+        <div class="stats-header">
+          <h3 class="stats-title">Whispers of Decay Earned</h3>
+        </div>
+
+        <div class="stats-list">
+          <div class="stat-list-item">
+            <span class="stat-label">From Stage First Clears</span>
+            <div class="currency-display">
+              <AFinaleEchoingImages
+                imageName="whispersOfDecay"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value">{totalWhispersFromStages.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">From Score Milestone Quests</span>
+            <div class="currency-display">
+              <AFinaleEchoingImages
+                imageName="whispersOfDecay"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value">{whispersFromScoreMilestones.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">From Ultimate Stage Repeats</span>
+            <div class="currency-display">
+              <AFinaleEchoingImages
+                imageName="whispersOfDecay"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value">{ultimateStageRepeatWhispers.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Total Earned (All Sources)</span>
+            <div class="currency-display">
+              <AFinaleEchoingImages
+                imageName="whispersOfDecay"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value cracker-grand-total"
+                >{totalWhispersFromAllSources.toLocaleString()}</span
+              >
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">From Ranking Rewards (Top 10%)</span>
+            <div class="currency-display">
+              <AFinaleEchoingImages
+                imageName="whispersOfDecay"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value">{rankingRewardsWhispers.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Total with Ranking (Top 10%)</span>
+            <div class="currency-display">
+              <AFinaleEchoingImages
+                imageName="whispersOfDecay"
+                alt="Whispers of Decay"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value cracker-grand-total"
+                >{totalWhispersWithRanking.toLocaleString()}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ss-shop-event-items">
+    <h2 class="ss-shop-items-title">Shop Event Items</h2>
+
+    <div class="shop-items-grid">
+      {
+        shopItems.map(item => {
+          return (
+            <div class="shop-item-card" data-rarity={item.rarity}>
+              <div class="item-image-wrapper">
                 <AFinaleEchoingImages
                   imageName={item.image}
                   alt={item.name}
-                  className="item-image"
+                  width={80}
+                  height={80}
                 />
-                <div class="item-info">
-                  <h3 class="item-name">{item.name}</h3>
-                  <span class="item-rarity">
-                    {item.rarity} {item.type}
-                  </span>
-                </div>
               </div>
-              <div class="item-details">
-                <div class="item-price">
-                  <AFinaleEchoingImages
-                    imageName="1_Whispers_of_Decay.jpg"
-                    alt={item.currency.name}
-                    className="price-icon"
-                  />
-                  <span class="price-value">{item.price}</span>
+
+              <div class="item-info">
+                <h3 class="item-title">{item.name}</h3>
+
+                <div class="item-stats">
+                  <div class="stat-row">
+                    <span class="stat-label">Stock:</span>
+                    <span class="stat-value stock-amount">{item.stockLeft}</span>
+                  </div>
+
+                  <div class="stat-row">
+                    <span class="stat-label">Cost:</span>
+                    <div class="cost-display">
+                      <AFinaleEchoingImages
+                        imageName="whispersOfDecay"
+                        alt="Whispers of Decay"
+                        width={16}
+                        height={16}
+                      />
+                      <span class="stat-value item-cost">{item.cost}</span>
+                    </div>
+                  </div>
+
+                  <div class="stat-row">
+                    <span class="stat-label">Qty:</span>
+                    <span class="stat-value">{item.quantity}</span>
+                  </div>
                 </div>
-                <div class="item-stock">
-                  Stock:{' '}
-                  {item.stock.type === 'limited'
-                    ? `${item.stock.quantity} (max ${item.stock.maxPurchase})`
-                    : 'Unlimited'}
-                </div>
-                <p class="item-description">{item.description}</p>
               </div>
             </div>
-          ))
-        }
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- Shop Item Tier Recommendations Section -->
+  {
+    event.shopItemTiers && (
+      <>
+        {/* Monthly Shop Reset Notice */}
+        <div class="shop-reset-notice">
+          <p class="notice-text">
+            <strong>Important:</strong> The shop resets monthly, and this event has occurred once
+            per month so far. This means players can typically purchase only 2 Discs and 10 Pulls
+            per month from this event shop.
+          </p>
+        </div>
+
+        {event.shopItemTiers.map(tier => {
+          // Calculate tier total cost
+          const tierItems = tier.items
+            .map(itemId => event.shopItems.find(shopItem => shopItem.id === itemId))
+            .filter(item => Boolean(item)) as typeof event.shopItems;
+
+          const tierTotalCost = tierItems.reduce((total, item) => {
+            const itemPrice = item.price || item.cost || 0;
+            const quantity = item.stock?.quantity || item.quantity || 1;
+            const cost = itemPrice * quantity;
+            return total + cost;
+          }, 0);
+
+          return (
+            <section class="ss-shop-event-items tier-section" data-tier={tier.tier}>
+              <h2 class="ss-shop-items-title">Tier {tier.tier}</h2>
+
+              <div class="tier-summary">
+                <div class="tier-total-cost">
+                  <span class="cost-label">Total Tier Cost:</span>
+                  <div class="cost-display">
+                    <AFinaleEchoingImages
+                      imageName="whispersOfDecay"
+                      alt={event.currency.name}
+                      className="price-icon"
+                      width={32}
+                      height={32}
+                    />
+                    <span class="cost-total">{tierTotalCost.toLocaleString()}</span>
+                  </div>
+                </div>
+                <div class="tier-items-count">
+                  <span class="items-count">{tierItems.length} items</span>
+                </div>
+              </div>
+
+              <div class="shop-items-grid">
+                {tierItems.map(item => (
+                  <div class="shop-item-card" data-rarity={item.rarity}>
+                    <div class="item-image-wrapper">
+                      <AFinaleEchoingImages
+                        imageName={item.image}
+                        alt={item.name}
+                        className="item-image"
+                        width={200}
+                        height={200}
+                      />
+                    </div>
+
+                    <div class="item-info">
+                      <h3 class="item-title">{item.name}</h3>
+
+                      <div class="item-stats">
+                        <div class="stat-row">
+                          <span class="stat-label">Price:</span>
+                          <div class="cost-display">
+                            <AFinaleEchoingImages
+                              imageName="whispersOfDecay"
+                              alt={event.currency.name}
+                              className="price-icon"
+                              width={20}
+                              height={20}
+                            />
+                            <span class="stat-value">
+                              {(item.price || item.cost || 0).toLocaleString()}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="stat-row">
+                          <span class="stat-label">Stock:</span>
+                          <span class="stat-value">{item.stock?.quantity || 1}</span>
+                        </div>
+
+                        <div class="stat-row total-cost-row">
+                          <span class="stat-label">Total:</span>
+                          <div class="cost-display">
+                            <AFinaleEchoingImages
+                              imageName="whispersOfDecay"
+                              alt={event.currency.name}
+                              className="price-icon"
+                              width={20}
+                              height={20}
+                            />
+                            <span class="stat-value cost-total">
+                              {(
+                                (item.price || item.cost || 0) * (item.stock?.quantity || 1)
+                              ).toLocaleString()}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </>
+    )
+  }
+
+  <!-- Personal Recommendation Section -->
+  <section class="personal-recommendation">
+    <h2 class="ss-shop-items-title">Personal Recommendation</h2>
+
+    <div class="recommendation-notice">
+      <p>
+        <strong
+          >I would recommend getting 2 Discs every month and 10 Pulls, which would cost 15,000
+          Whispers. You would be left with 700 Whispers that you can use to buy Proving Grounds Gift
+          Box.</strong
+        >
+      </p>
+
+      <p>
+        <strong>Note:</strong> The last event ran for 6 days. The next one might run for 7 days, but
+        we will visit that when it comes out!
+      </p>
+    </div>
+  </section>
+
+  {
+    questCategories.map(category => (
+      <div class="quest-category">
+        <h3 class="quest-category-title">{category.title}</h3>
+
+        <div class="quest-table-container">
+          <table class="quest-table">
+            <thead>
+              <tr>
+                <th>Quest Name</th>
+                <th>Whispers of Decay</th>
+              </tr>
+            </thead>
+            <tbody>
+              {category.quests.map(quest => (
+                <tr>
+                  <td>{quest.name}</td>
+                  <td>{quest.currency}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </section>
+    ))
+  }
+
+  <!-- Stage Rewards -->
+  <div class="quest-category">
+    <h3 class="quest-category-title">Stage First Clear Rewards</h3>
+    <p class="quest-note">
+      Ultimate stage can be repeated 15 times across 6 days (18 total tickets - 4 used for first
+      clears) for 500 Whispers each
+    </p>
+
+    <div class="stage-rewards-grid">
+      <div class="stage-reward-group">
+        <h4 class="stage-reward-subtitle">Available Stages (First Clear Rewards)</h4>
+        <div class="stage-table-container">
+          <table class="stage-table">
+            <thead>
+              <tr>
+                <th>Stage Name</th>
+                <th>Whispers of Decay</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Normal Stage</td>
+                <td>200 Whispers of Decay</td>
+              </tr>
+              <tr>
+                <td>Hard Stage</td>
+                <td>300 Whispers of Decay</td>
+              </tr>
+              <tr>
+                <td>Extra Hard Stage</td>
+                <td>400 Whispers of Decay</td>
+              </tr>
+              <tr>
+                <td>Ultimate Stage (First Clear)</td>
+                <td>500 Whispers of Decay</td>
+              </tr>
+              <tr>
+                <td>Ultimate Stage (Repeats)</td>
+                <td>500 Whispers of Decay × 14 repeats</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="total-reward">
+          Total First Clear Rewards: <strong>1,400</strong> Whispers of Decay
+        </p>
+        <p class="total-reward">
+          Total with Repeats: <strong>8,400</strong> Whispers of Decay (1,400 + 7,000 from repeats)
+        </p>
+      </div>
+    </div>
   </div>
-</ShopEventLayout>
-
-<style>
-  .event-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  .featured-image-section {
-    margin-bottom: 2rem;
-  }
-
-  .featured-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 1rem;
-  }
-
-  .event-overview {
-    background: var(--ss-card-bg);
-    border: 1px solid var(--ss-border);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .event-dates {
-    background: var(--ss-card-bg);
-    border: 1px solid var(--ss-border);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .dates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .date-item {
-    text-align: center;
-  }
-
-  .date-label {
-    font-size: 0.875rem;
-    color: var(--ss-text-secondary);
-    margin-bottom: 0.5rem;
-  }
-
-  .date-value {
-    font-weight: 600;
-    color: var(--ss-text-primary);
-  }
-
-  .shop-items-section {
-    margin-bottom: 2rem;
-  }
-
-  .items-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  .item-card {
-    background: var(--ss-card-bg);
-    border: 1px solid var(--ss-border);
-    border-radius: 1rem;
-    padding: 1rem;
-  }
-
-  .item-card.featured {
-    border-color: var(--ss-accent-primary);
-    background: linear-gradient(
-      135deg,
-      var(--ss-card-bg) 0%,
-      rgba(var(--ss-accent-primary-rgb), 0.1) 100%
-    );
-  }
-
-  .item-header {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-  }
-
-  .item-image {
-    width: 4rem;
-    height: 4rem;
-    object-fit: cover;
-    border-radius: 0.5rem;
-    margin-right: 0.75rem;
-  }
-
-  .item-name {
-    font-weight: 600;
-    color: var(--ss-text-primary);
-    margin-bottom: 0.25rem;
-  }
-
-  .item-rarity {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    background: var(--ss-accent-secondary);
-    color: white;
-  }
-
-  .item-details {
-    space-y: 0.5rem;
-  }
-
-  .item-price {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    color: var(--ss-text-primary);
-  }
-
-  .price-icon {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.25rem;
-  }
-
-  .item-stock {
-    color: var(--ss-text-secondary);
-    font-size: 0.875rem;
-  }
-
-  .item-description {
-    color: var(--ss-text-secondary);
-    font-size: 0.75rem;
-    line-height: 1.4;
-  }
-</style>
+</AFinaleEchoingLayout>

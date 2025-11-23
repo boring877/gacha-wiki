@@ -4,6 +4,8 @@
  * Handles image imports and mapping for the A Finale Echoing event
  */
 
+import { Image } from 'astro:assets';
+
 // Import all images for A Finale Echoing event
 import whispersOfDecay from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Whispers_of_Decay.jpg';
 import newStarPrelude from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_New_Star_Prelude.jpg';
@@ -22,6 +24,7 @@ import dorra from '../../../assets/images/games/stella-sora/EventShop/A_Finale_E
 
 // Image mapping object for easy access
 const imageMap = {
+  // Original filenames with extensions
   '1_Whispers_of_Decay.jpg': whispersOfDecay,
   '1_New_Star_Prelude.jpg': newStarPrelude,
   '1_Prayer_Beneath_Light.jpg': prayerBeneathLight,
@@ -36,6 +39,31 @@ const imageMap = {
   '1_Beginner_Cartridge_Box.jpg': beginnerCartridgeBox,
   '1_Sprout_Ticket.jpg': sproutTicket,
   '1_Dorra.jpg': dorra,
+
+  // Semantic keys for easier use
+  whispersOfDecay: whispersOfDecay,
+  currency: whispersOfDecay,
+  'whispers of decay': whispersOfDecay,
+  'Whispers of Decay': whispersOfDecay,
+
+  // Shop item names
+  'New Star Prelude': newStarPrelude,
+  'Prayer Beneath Light': prayerBeneathLight,
+  'Summer Afternoon Rain': summerAfternoonRain,
+  'Those with Ambition': thoseWithAmbition,
+  'Voyage Blueprint': voyageBlueprint,
+  'Sweet Times': sweetTimes,
+  'Chess Piece of Skill': chessPieceOfSkill,
+  'Proving Grounds Gift Box': provingGroundsGiftBox,
+  'Premium Cartridge Box': premiumCartridgeBox,
+  'Deluxe Cartridge Box': deluxeCartridgeBox,
+  'Beginner Cartridge Box': beginnerCartridgeBox,
+  'Sprout Ticket': sproutTicket,
+  Dorra: dorra,
+
+  // Common variations to prevent missing images
+  'x Sprout Ticket': sproutTicket,
+  'x Chess Piece of Skill': chessPieceOfSkill,
 };
 
 // Props interface
@@ -77,7 +105,7 @@ if (!imageSrc) {
 
 {
   imageSrc ? (
-    <img
+    <Image
       src={imageSrc}
       alt={alt || imageName.replace(/_/g, ' ').replace('.jpg', '').replace('.png', '')}
       class={className}
@@ -85,6 +113,9 @@ if (!imageSrc) {
       height={height}
       loading={loading}
       decoding="async"
+      format="webp"
+      quality={95}
+      sizes="(max-width: 480px) 100vw, (max-width: 768px) 90vw, 1200px"
     />
   ) : (
     <div class={`image-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>

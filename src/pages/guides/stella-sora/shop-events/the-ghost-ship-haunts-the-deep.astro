@@ -1,7 +1,7 @@
 ---
-import ShopEventLayout from '../../../../layouts/stella-sora/ShopEventLayout.astro';
-import TheGhostShipImages from '../../../../components/stella-sora/shop-events/TheGhostShipImages.astro';
+import TheGhostShipLayout from '../../../../layouts/stella-sora/TheGhostShipLayout.astro';
 import { theGhostShipHauntsTheDeepEvent } from '../../../../data/stella-sora/events/the-ghost-ship-haunts-the-deep.js';
+import TheGhostShipImages from '../../../../components/stella-sora/shop-events/TheGhostShipImages.astro';
 
 // Use the event data directly
 const event = theGhostShipHauntsTheDeepEvent;
@@ -9,229 +9,438 @@ const event = theGhostShipHauntsTheDeepEvent;
 // Set metadata
 const title = `${event.title} - ${event.subtitle}`;
 const description = event.description;
+
+// Helper function to parse reward text and return array of reward objects
+const parseRewardText = rewardsText => {
+  const rewardItems = rewardsText.split(',').map(reward => {
+    const trimmedReward = reward.trim();
+    const match = trimmedReward.match(/(\d+)\s*x?\s*(.+)$/);
+
+    if (match) {
+      const quantity = match[1];
+      const name = match[2].trim();
+      return {
+        displayText: trimmedReward,
+        quantity: quantity,
+        name: name,
+      };
+    }
+
+    return {
+      displayText: trimmedReward,
+      quantity: '1',
+      name: trimmedReward,
+    };
+  });
+
+  return rewardItems;
+};
+
+// Transform shop items from data structure to match existing page structure
+const shopItems = event.shopItems.map(item => ({
+  name: item.name,
+  stockLeft: item.stock?.type === 'unlimited' ? 0 : item.stock?.quantity || 1,
+  cost: item.price || item.cost || 0,
+  quantity: item.quantity || 1,
+  image: item.image,
+  rarity: item.rarity?.toLowerCase() || 'common',
+  price: item.price || item.cost || 0,
+  stockType: item.stock?.type || 'limited',
+}));
+
+// Calculate total cost to buy all available limited items (stock quantity x price)
+const totalCost = shopItems.reduce((sum, item) => {
+  // Only count limited stock items, not unlimited items
+  if (item.stockType === 'limited') {
+    // Multiply stock quantity by price
+    return sum + (item.price || item.cost || 0) * (item.stockLeft || 1);
+  }
+  return sum;
+}, 0);
+
+// Calculate currency from quests (if quest data exists)
+let totalCurrencyFromQuests = 0;
+let questCategories: any[] = [];
+
+if (event.quests) {
+  questCategories = Object.values(event.quests).map(category => ({
+    title: category.title,
+    completionRewards: category.completionRewards?.items?.join(', ') || '',
+    quests:
+      category.quests?.map(quest => {
+        const mappedQuest: any = { name: quest.name };
+
+        // Handle currency reward field names - only care about Squid Rice Crackers
+        if (quest.squidRiceCrackerReward) {
+          mappedQuest.currency = `x${quest.squidRiceCrackerReward}`;
+          mappedQuest.squidRiceCrackerReward = quest.squidRiceCrackerReward;
+        }
+
+        return mappedQuest;
+      }) || [],
+  }));
+
+  // Calculate total currency from quests
+  totalCurrencyFromQuests = questCategories.reduce((total, category) => {
+    return (
+      total +
+      category.quests.reduce((categoryTotal, quest) => {
+        // Only count Squid Rice Cracker rewards
+        const currencyReward = quest.squidRiceCrackerReward;
+        const currencyAmount = typeof currencyReward === 'number' ? currencyReward : 0;
+        return categoryTotal + currencyAmount;
+      }, 0)
+    );
+  }, 0);
+}
+
+// Calculate stage first clear rewards (separate Cookie Workshop from regular stages)
+let stageFirstClearRewards = 0;
+let cookieWorkshopStageRewards = 0;
+let regularStageRewards = 0;
+
+if (event.stages) {
+  Object.values(event.stages).forEach(stageType => {
+    if (stageType.stages) {
+      const stageTypeRewards = stageType.stages.reduce((total, stage) => {
+        return total + (stage.firstClearReward || stage.glassMarbleReward || 0);
+      }, 0);
+
+      stageFirstClearRewards += stageTypeRewards;
+
+      // Separate Cookie Workshop from regular stages
+      if (stageType.title && stageType.title.toLowerCase().includes('cookie')) {
+        cookieWorkshopStageRewards += stageTypeRewards;
+      } else if (stageType.title && stageType.title.toLowerCase().includes('workshop')) {
+        cookieWorkshopStageRewards += stageTypeRewards;
+      } else {
+        regularStageRewards += stageTypeRewards;
+      }
+    }
+  });
+}
+
+// Calculate total achievable earnings
+const totalAchievableCurrency = totalCurrencyFromQuests + stageFirstClearRewards;
 ---
 
-<ShopEventLayout
+<TheGhostShipLayout
   title={title}
   description={description}
   gameTitle={event.title}
   endDate={event.shopEndDate}
   currency={event.currency}
 >
-  <div class="event-content">
-    <!-- Featured Image -->
-    <div class="featured-image-section">
-      <TheGhostShipImages
-        imageName="3_bg1event.jpg"
-        alt={event.title}
-        className="featured-image"
-        loading="eager"
-      />
-    </div>
+  <!-- Shop Event Cost Breakdown Section -->
+  <section class="ss-cost-breakdown">
+    <h2 class="ss-shop-items-title">Breakdown of Shop Event Cost</h2>
 
-    <!-- Event Summary -->
-    <section class="event-overview">
-      <h2>Event Overview</h2>
-      <p>{event.summary}</p>
-      <p>{event.description}</p>
-    </section>
+    <div class="cost-overview">
+      <div class="currency-info">
+        <div class="currency-header">
+          <TheGhostShipImages
+            imageName="3_Squid_rice_cracker.png"
+            alt={event.currency.name}
+            className="currency-icon"
+            width={50}
+            height={50}
+          />
+          <h3 class="currency-name">{event.currency.name}</h3>
+        </div>
 
-    <!-- Event Dates -->
-    <section class="event-dates">
-      <h2>Event Schedule</h2>
-      <div class="dates-grid">
-        <div class="date-item">
-          <div class="date-label">Start Date</div>
-          <div class="date-value">{event.startDate}</div>
+        <div class="currency-sources">
+          <h4 class="sources-title">How to Obtain:</h4>
+          <ul class="sources-list">
+            {event.currency.sources.map(source => <li class="source-item">{source}</li>)}
+          </ul>
         </div>
-        <div class="date-item">
-          <div class="date-label">End Date</div>
-          <div class="date-value">{event.endDate}</div>
+
+        {
+          event.currency.capacity && (
+            <div class="currency-capacity">
+              <span class="capacity-label">Capacity:</span>
+              <span class="capacity-value">{event.currency.capacity}</span>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="cost-statistics unified-stats">
+        <div class="stats-header">
+          <h3 class="stats-title">Shop Overview</h3>
         </div>
-        <div class="date-item">
-          <div class="date-label">Shop Closes</div>
-          <div class="date-value">{event.shopEndDate}</div>
+
+        <div class="stats-list">
+          <div class="stat-list-item">
+            <span class="stat-label">Total Items</span>
+            <span class="stat-value">{shopItems.length}</span>
+          </div>
+
+          <div class="stat-list-item total-cost-item">
+            <span class="stat-label">Total Cost (All Items)</span>
+            <div class="total-cost-display">
+              <TheGhostShipImages
+                imageName="3_Squid_rice_cracker.png"
+                alt={event.currency.name}
+                className="price-icon"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value cost-total">{totalCost.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Highest Cost</span>
+            <span class="stat-value cost-highest">
+              {Math.max(...shopItems.map(item => item.price || item.cost || 0))}
+            </span>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Lowest Cost</span>
+            <span class="stat-value cost-lowest">
+              {Math.min(...shopItems.map(item => item.price || item.cost || 0))}
+            </span>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- Shop Items Grid -->
-    <section class="shop-items-section">
-      <h2>Shop Items</h2>
-      <div class="items-grid">
-        {
-          event.shopItems.map(item => (
-            <div class={`item-card ${item.featured ? 'featured' : ''}`}>
-              <div class="item-header">
-                <TheGhostShipImages imageName={item.image} alt={item.name} className="item-image" />
-                <div class="item-info">
-                  <h3 class="item-name">{item.name}</h3>
-                  <span class="item-rarity">
-                    {item.rarity} {item.type}
+      {
+        totalAchievableCurrency > 0 && (
+          <div class="cost-statistics unified-stats">
+            <div class="stats-header">
+              <h3 class="stats-title">{event.currency.name} Earned</h3>
+            </div>
+
+            <div class="stats-list">
+              {regularStageRewards > 0 && (
+                <div class="stat-list-item">
+                  <span class="stat-label">From Regular Stage First Clears</span>
+                  <div class="currency-display">
+                    <TheGhostShipImages
+                      imageName="3_Squid_rice_cracker.png"
+                      alt={event.currency.name}
+                      className="price-icon"
+                      width={16}
+                      height={16}
+                    />
+                    <span class="stat-value">{regularStageRewards.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              {cookieWorkshopStageRewards > 0 && (
+                <div class="stat-list-item">
+                  <span class="stat-label">From Cookie Workshop Stages</span>
+                  <div class="currency-display">
+                    <TheGhostShipImages
+                      imageName="3_Squid_rice_cracker.png"
+                      alt={event.currency.name}
+                      className="price-icon"
+                      width={16}
+                      height={16}
+                    />
+                    <span class="stat-value">{cookieWorkshopStageRewards.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              {totalCurrencyFromQuests > 0 && (
+                <div class="stat-list-item">
+                  <span class="stat-label">From Quest Completions</span>
+                  <div class="currency-display">
+                    <TheGhostShipImages
+                      imageName="3_Squid_rice_cracker.png"
+                      alt={event.currency.name}
+                      className="price-icon"
+                      width={16}
+                      height={16}
+                    />
+                    <span class="stat-value">{totalCurrencyFromQuests.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              <div class="stat-list-item">
+                <span class="stat-label">Total Earned (All Sources)</span>
+                <div class="currency-display">
+                  <TheGhostShipImages
+                    imageName="3_Squid_rice_cracker.png"
+                    alt={event.currency.name}
+                    className="price-icon"
+                    width={500}
+                    height={500}
+                  />
+                  <span class="stat-value cracker-grand-total">
+                    {totalAchievableCurrency.toLocaleString()}
                   </span>
                 </div>
               </div>
-              <div class="item-details">
-                <div class="item-price">
-                  <TheGhostShipImages
-                    imageName="3_Squid_rice_cracker.png"
-                    alt={item.currency.name}
-                    className="price-icon"
-                  />
-                  <span class="price-value">{item.price}</span>
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="ss-shop-event-items">
+    <h2 class="ss-shop-items-title">Shop Event Items</h2>
+
+    <div class="shop-items-grid">
+      {
+        shopItems.map(item => (
+          <div class="shop-item-card" data-rarity={item.rarity}>
+            <div class="item-image-wrapper">
+              <TheGhostShipImages imageName={item.image} alt={item.name} className="item-image" />
+            </div>
+
+            <div class="item-info">
+              <h3 class="item-title">{item.name}</h3>
+
+              <div class="item-stats">
+                <div class="stat-row">
+                  <span class="stat-label">Stock:</span>
+                  <span class="stat-value stock-amount">{item.stockLeft}</span>
                 </div>
-                <div class="item-stock">
-                  Stock:{' '}
-                  {item.stock.type === 'limited'
-                    ? `${item.stock.quantity} (max ${item.stock.maxPurchase})`
-                    : 'Unlimited'}
+
+                <div class="stat-row">
+                  <span class="stat-label">Cost:</span>
+                  <div class="cost-display">
+                    <TheGhostShipImages
+                      imageName="3_Squid_rice_cracker.png"
+                      alt={event.currency.name}
+                      className="price-icon"
+                    />
+                    <span class="stat-value item-cost">{item.price || item.cost || 0}</span>
+                  </div>
                 </div>
-                <p class="item-description">{item.description}</p>
+
+                <div class="stat-row">
+                  <span class="stat-label">Qty:</span>
+                  <span class="stat-value">x{item.quantity}</span>
+                </div>
               </div>
             </div>
-          ))
-        }
-      </div>
-    </section>
-  </div>
-</ShopEventLayout>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-<style>
-  .event-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+  <!-- Quest Rewards Section (if data exists) -->
+  {
+    questCategories.length > 0 && (
+      <section class="quest-rewards-section">
+        <h2 class="ss-shop-items-title">Quest Rewards</h2>
+
+        {questCategories.map(category => (
+          <div class="quest-category">
+            <h3 class="quest-category-title">{category.title}</h3>
+
+            {category.completionRewards && (
+              <>
+                <p class="quest-completion-reward">
+                  After finishing all the quests you get these rewards!
+                </p>
+                <div class="quest-rewards-summary">
+                  {parseRewardText(category.completionRewards).map((reward, index) => (
+                    <div class="reward-item">
+                      <TheGhostShipImages
+                        imageName={reward.name}
+                        alt={reward.name}
+                        className="reward-image"
+                        width={500}
+                        height={500}
+                      />
+                      <div class="reward-info">
+                        <div class="reward-quantity">x{reward.quantity}</div>
+                        <div class="reward-name">{reward.name}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {category.quests.length > 0 && (
+              <div class="quest-table-container">
+                <table class="quest-table">
+                  <thead>
+                    <tr>
+                      <th>Quest Name</th>
+                      {category.quests[0].artifactWishingEgg && (
+                        <th>Artifact Wishing Egg Reward</th>
+                      )}
+                      {category.quests[0].shovel && <th>Shovel Reward</th>}
+                      {category.quests[0].gem && <th>GEM Reward</th>}
+                      <th>{event.currency.name}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {category.quests.map(quest => (
+                      <tr>
+                        <td>{quest.name}</td>
+                        {quest.artifactWishingEgg && <td>{quest.artifactWishingEgg}</td>}
+                        {quest.shovel && <td>{quest.shovel}</td>}
+                        {quest.gem && <td>{quest.gem}</td>}
+                        <td>{quest.currency}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        ))}
+      </section>
+    )
   }
 
-  .featured-image-section {
-    margin-bottom: 2rem;
-  }
+  <!-- Stage Rewards Section (if data exists) -->
+  {
+    event.stages && (
+      <section class="quest-rewards-section">
+        <h2 class="ss-shop-items-title">Stage Rewards</h2>
 
-  .featured-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 1rem;
+        <div class="stage-rewards-grid">
+          {Object.entries(event.stages).map(([stageTypeKey, stageType]) => (
+            <div class="stage-reward-group">
+              <h3>{stageType.title}</h3>
+              <div class="stage-table-container">
+                <table class="stage-table">
+                  <thead>
+                    <tr>
+                      <th>Stage Name</th>
+                      <th>{event.currency.name}</th>
+                      {stageType.stages?.[0]?.gemsReward && <th>GEM Reward</th>}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {stageType.stages?.map(stage => (
+                      <tr>
+                        <td>{stage.name}</td>
+                        <td>{stage.firstClearReward || stage.glassMarbleReward || 0}</td>
+                        {stageType.stages[0]?.gemsReward && (
+                          <td>{stage.gemsReward ? `x${stage.gemsReward}` : '—'}</td>
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {stageType.totalFirstClearRewards && (
+                <p class="total-reward">
+                  Total First Clear Rewards:{' '}
+                  <strong>{stageType.totalFirstClearRewards.toLocaleString()}</strong>{' '}
+                  {event.currency.name}
+                  {stageTypeKey === 'normal' && ' + GEMs'}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    )
   }
-
-  .event-overview {
-    background: var(--ss-card-bg);
-    border: 1px solid var(--ss-border);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .event-dates {
-    background: var(--ss-card-bg);
-    border: 1px solid var(--ss-border);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .dates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .date-item {
-    text-align: center;
-  }
-
-  .date-label {
-    font-size: 0.875rem;
-    color: var(--ss-text-secondary);
-    margin-bottom: 0.5rem;
-  }
-
-  .date-value {
-    font-weight: 600;
-    color: var(--ss-text-primary);
-  }
-
-  .shop-items-section {
-    margin-bottom: 2rem;
-  }
-
-  .items-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  .item-card {
-    background: var(--ss-card-bg);
-    border: 1px solid var(--ss-border);
-    border-radius: 1rem;
-    padding: 1rem;
-  }
-
-  .item-card.featured {
-    border-color: var(--ss-accent-primary);
-    background: linear-gradient(
-      135deg,
-      var(--ss-card-bg) 0%,
-      rgba(var(--ss-accent-primary-rgb), 0.1) 100%
-    );
-  }
-
-  .item-header {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-  }
-
-  .item-image {
-    width: 4rem;
-    height: 4rem;
-    object-fit: cover;
-    border-radius: 0.5rem;
-    margin-right: 0.75rem;
-  }
-
-  .item-name {
-    font-weight: 600;
-    color: var(--ss-text-primary);
-    margin-bottom: 0.25rem;
-  }
-
-  .item-rarity {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    background: var(--ss-accent-secondary);
-    color: white;
-  }
-
-  .item-details {
-    space-y: 0.5rem;
-  }
-
-  .item-price {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    color: var(--ss-text-primary);
-  }
-
-  .price-icon {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.25rem;
-  }
-
-  .item-stock {
-    color: var(--ss-text-secondary);
-    font-size: 0.875rem;
-  }
-
-  .item-description {
-    color: var(--ss-text-secondary);
-    font-size: 0.75rem;
-    line-height: 1.4;
-  }
-</style>
+</TheGhostShipLayout>

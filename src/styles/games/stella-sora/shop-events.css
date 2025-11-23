@@ -5,6 +5,7 @@
  *
  * Unified styling for all Stella Sora event shop pages.
  * This file works with the dynamic slug-based system and contains:
+ * - Shop events index page styles
  * - Base shop event styles
  * - Individual event layout styles
  * - Event status bar styles
@@ -12,6 +13,119 @@
  * - Color theming and visual identity
  * - Responsive design for all devices
  */
+
+/* ==========================================
+ * SHOP EVENTS INDEX PAGE STYLES
+ * ==========================================
+ */
+
+/* Shop Events Introduction Section */
+.ss-shop-events-intro {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.ss-intro-title {
+  font-size: 2rem;
+  font-weight: var(--font-bold);
+  margin-bottom: 1rem;
+  color: var(--ss-text-primary);
+}
+
+.ss-intro-description {
+  font-size: 1.1rem;
+  color: var(--ss-text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* All Shop Events Section */
+.ss-current-shop-events {
+  margin-bottom: 2rem;
+}
+
+.ss-section-title {
+  font-size: 1.75rem;
+  font-weight: var(--font-bold);
+  margin-bottom: 1.5rem;
+  color: var(--ss-text-primary);
+}
+
+/* Shop Events Grid - Mobile Optimized */
+.ss-shop-events-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Shop Event Card - Simplified */
+.ss-shop-event-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Event Card Image - Fixed size */
+.event-card-image {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: var(--ss-bg-primary);
+}
+
+.event-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Event Card Content - Mobile optimized */
+.event-card-content {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.event-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Event Dates */
+.event-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.date-range {
+  color: var(--ss-text-secondary);
+  font-weight: 500;
+}
+
+.shop-end-date {
+  color: var(--ss-warning);
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--ss-border);
+  display: inline-block;
+  width: fit-content;
+}
 
 /* ==========================================
  * INDIVIDUAL SHOP EVENT LAYOUT STYLES
@@ -89,1466 +203,63 @@
 }
 
 /* ==========================================
- * BASE SHOP EVENT STYLES
+ * MOBILE-FIRST RESPONSIVE DESIGN
  * ==========================================
  */
 
-/* Cost Breakdown Section */
-.ss-cost-breakdown {
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+/* Larger screens - desktop/tablet */
+@media (min-width: 768px) {
+  .ss-shop-events-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
 
-.ss-shop-items-title {
-  font-size: 1.75rem;
-  font-weight: var(--font-bold);
-  margin-bottom: 1.5rem;
-  color: var(--ss-text-primary);
-  background: var(--ss-gradient-star);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-  padding-left: 1rem;
-}
+  .ss-intro-title {
+    font-size: 2.25rem;
+  }
 
-.ss-shop-items-title::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 24px;
-  background: var(--ss-primary);
-  border-radius: 2px;
-}
+  .ss-section-title {
+    font-size: 2rem;
+  }
 
-/* Cost Overview */
-.cost-overview {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+  .event-card-image {
+    height: 200px;
+  }
 
-.currency-info {
-  background: var(--ss-gradient-card);
-  border: 1px solid var(--ss-border);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-}
+  .event-card-content {
+    padding: 1.25rem;
+  }
 
-.currency-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.currency-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin: 0;
-}
-
-.currency-sources {
-  margin-top: 1rem;
-}
-
-.sources-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin-bottom: 0.75rem;
-}
-
-.sources-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.source-item {
-  padding: 0.5rem 0;
-  font-size: 0.9rem;
-  color: var(--ss-text-secondary);
-  border-bottom: 1px solid var(--ss-border-subtle);
-}
-
-.source-item:last-child {
-  border-bottom: none;
-}
-
-/* Cost Statistics */
-.cost-statistics {
-  background: var(--ss-gradient-card);
-  border: 1px solid var(--ss-border);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-}
-
-.unified-stats {
-  display: flex;
-  flex-direction: column;
-}
-
-.stats-header {
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--ss-border);
-}
-
-.stats-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin: 0;
-}
-
-.stats-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.stat-list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0;
-}
-
-.stat-label {
-  color: var(--ss-text-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.stat-value {
-  color: var(--ss-text-primary);
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.total-cost-display,
-.currency-display {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.cost-total {
-  color: var(--ss-primary);
-  font-weight: 700;
-}
-
-/* Shop Items Section */
-.ss-shop-event-items {
-  margin-bottom: 2rem;
-}
-
-.shop-items-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.shop-item-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--ss-gradient-card);
-  border: 1px solid var(--ss-border);
-  border-radius: 0.75rem;
-  overflow: hidden;
-}
-
-.item-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--ss-bg-primary);
-  padding: 1rem;
-}
-
-.item-info {
-  padding: 1.5rem;
-  flex: 1;
-}
-
-.item-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin: 0 0 1rem 0;
-  line-height: 1.3;
-}
-
-.item-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0;
-}
-
-.cost-display {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.item-cost {
-  color: var(--ss-primary);
-  font-weight: 600;
-}
-
-.stock-amount {
-  color: var(--ss-warning);
-  font-weight: 600;
+  .event-title {
+    font-size: 1.3rem;
+  }
 }
 
 /* ==========================================
- * DYNAMIC CATEGORY THEMING SYSTEM
- * ==========================================
- */
-
-/* Default category styling - will be overridden by event-specific theming */
-.shop-item-card[data-category] {
-  position: relative;
-}
-
-/* Event category theming - applied via data attributes */
-.shop-item-card[data-category='echoes'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(138, 43, 226, 0.1));
-  border-color: rgba(138, 43, 226, 0.3);
-}
-
-.shop-item-card[data-category='finale'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(255, 215, 0, 0.1));
-  border-color: rgba(255, 215, 0, 0.3);
-}
-
-.shop-item-card[data-category='memories'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(75, 0, 130, 0.1));
-  border-color: rgba(75, 0, 130, 0.3);
-}
-
-.shop-item-card[data-category='decay'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(105, 105, 105, 0.1));
-  border-color: rgba(105, 105, 105, 0.3);
-}
-
-.shop-item-card[data-category='navigation'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(70, 130, 180, 0.1));
-  border-color: rgba(70, 130, 180, 0.3);
-}
-
-.shop-item-card[data-category='treasure'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(255, 215, 0, 0.1));
-  border-color: rgba(255, 215, 0, 0.3);
-}
-
-.shop-item-card[data-category='crew'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(176, 224, 230, 0.1));
-  border-color: rgba(176, 224, 230, 0.3);
-}
-
-.shop-item-card[data-category='ship-supplies'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(139, 69, 19, 0.1));
-  border-color: rgba(139, 69, 19, 0.3);
-}
-
-.shop-item-card[data-category='baking'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(255, 182, 193, 0.1));
-  border-color: rgba(255, 182, 193, 0.3);
-}
-
-.shop-item-card[data-category='decoration'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(255, 228, 196, 0.1));
-  border-color: rgba(255, 228, 196, 0.3);
-}
-
-.shop-item-card[data-category='guild-items'] {
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(221, 160, 221, 0.1));
-  border-color: rgba(221, 160, 221, 0.3);
-}
-
-/* Enhanced available states for all categories */
-.shop-item-card[data-category].available {
-  border-width: 2px;
-}
-
-/* Tier Priority Classes - Universal */
-.shop-item-card.tier-1 {
-  border-color: var(--ss-danger) !important;
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(239, 68, 68, 0.1)) !important;
-}
-
-.shop-item-card.tier-2 {
-  border-color: var(--ss-warning) !important;
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(234, 179, 8, 0.1)) !important;
-}
-
-.shop-item-card.tier-3 {
-  border-color: var(--ss-primary) !important;
-  background: linear-gradient(135deg, var(--ss-gradient-card), rgba(59, 130, 246, 0.1)) !important;
-}
-
-.shop-item-card.tier-4 {
-  border-color: var(--ss-text-secondary) !important;
-  background: linear-gradient(
-    135deg,
-    var(--ss-gradient-card),
-    rgba(107, 114, 128, 0.05)
-  ) !important;
-}
-
-/* Universal value classes */
-.achievable-total {
-  color: var(--ss-accent);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.difference {
-  color: var(--ss-warning);
-  font-weight: 600;
-  font-size: 1.05rem;
-}
-
-/* Event-specific currency total classes - unified styling */
-.whispers-grand-total,
-.ectoplasm-grand-total,
-.cracker-grand-total {
-  color: var(--ss-primary);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.needed-amount {
-  color: var(--ss-warning);
-  font-weight: 600;
-}
-
-.runs-needed {
-  color: var(--ss-warning);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.stamina-cost {
-  color: var(--ss-accent);
-  font-weight: 500;
-}
-
-.stamina-total {
-  color: var(--ss-warning);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.time-total {
-  color: var(--ss-warning);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.shop-total {
-  color: var(--ss-primary);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-/* ==========================================
- * PRIORITY GUIDE SECTION STYLES
- * ==========================================
- */
-
-.item-priority-section {
-  margin: 2rem 0;
-}
-
-.priority-intro {
-  color: var(--ss-text-secondary);
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-}
-
-.priority-tiers {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.priority-tier {
-  background: var(--ss-bg-secondary);
-  border: 1px solid var(--ss-border);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-}
-
-.tier-title {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--ss-text-primary);
-}
-
-.tier-title.highest-priority {
-  color: var(--ss-danger);
-}
-
-.tier-title.high-priority {
-  color: var(--ss-warning);
-}
-
-.tier-title.medium-priority {
-  color: var(--ss-primary);
-}
-
-.tier-title.low-priority {
-  color: var(--ss-text-secondary);
-}
-
-.tier-description {
-  color: var(--ss-text-secondary);
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-.priority-items-grid-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.priority-item-card {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  padding: 1.25rem;
-  background: var(--ss-gradient-card);
-  border: 1px solid var(--ss-border-subtle);
-  border-radius: 0.75rem;
-}
-
-.priority-item-card .item-image-wrapper {
-  position: relative;
-  flex-shrink: 0;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--ss-bg-primary);
-  border-radius: 0.5rem;
-  border: 1px solid var(--ss-border);
-  padding: 0.25rem;
-}
-
-.priority-item-card .item-image-wrapper .ss-shop-event-image {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-  border-radius: 0.25rem;
-}
-
-/* Fix Item Priority Guide image dimensions - maintain aspect ratios */
-.priority-item-card > .ss-shop-event-image {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  border-radius: 0.5rem;
-  border: 1px solid var(--ss-border);
-  background: var(--ss-bg-primary);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.priority-item-card > .ss-shop-event-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-/* Small currency icons in cost displays */
-.item-cost .ss-shop-event-image,
-.tier-cost .ss-shop-event-image,
-.cost-display .ss-shop-event-image {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.item-cost .ss-shop-event-image img,
-.tier-cost .ss-shop-event-image img,
-.cost-display .ss-shop-event-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.priority-item-card .item-info {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.priority-item-card .item-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin: 0;
-  line-height: 1.3;
-  word-break: break-word;
-}
-
-.tier-cost {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  background: var(--ss-bg-primary);
-  border: 1px solid var(--ss-border-subtle);
-  border-radius: 0.5rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  font-size: 0.95rem;
-}
-
-/* ==========================================
- * QUEST AND STAGE REWARDS SECTION STYLES
- * ==========================================
- */
-
-.quest-rewards-section,
-.stage-rewards-section {
-  margin-bottom: 2rem;
-}
-
-.quest-category {
-  background: var(--ss-gradient-card);
-  border: 1px solid var(--ss-border-subtle);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.quest-category-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin-bottom: 0.75rem;
-  padding-left: 0.5rem;
-  border-left: 3px solid var(--ss-primary);
-}
-
-.quest-completion-reward {
-  color: var(--ss-text-secondary);
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-  font-style: italic;
-}
-
-.quest-rewards-summary {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
-  padding: 1.25rem;
-  background: var(--ss-bg-secondary);
-  border-radius: 0.5rem;
-  border: 1px solid var(--ss-border-subtle);
-}
-
-.quest-rewards-summary > div {
-  text-align: center;
-  position: relative;
-}
-
-.reward-item {
-  font-size: 0.9rem;
-  color: var(--ss-text-primary);
-  background: var(--ss-bg-card);
-  padding: 1.25rem 1rem;
-  border-radius: 0.75rem;
-  border: 1px solid var(--ss-border-subtle);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  font-weight: 500;
-  position: relative;
-}
-
-.reward-name {
-  text-align: center;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  line-height: 1.3;
-  margin: 0.5rem 0 0 0;
-  font-size: 0.75rem;
-  min-height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  word-break: break-word;
-  hyphens: auto;
-  max-width: 100%;
-}
-
-.reward-quantity {
-  display: inline-block;
-  background: var(--ss-primary);
-  color: white;
-  font-weight: 700;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
-  margin-bottom: 0.5rem;
-  min-width: 2rem;
-}
-
-.reward-image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.reward-item:hover {
-  background: var(--ss-bg-tertiary);
-  border-color: var(--ss-border);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.reward-image-container .ss-shop-event-image,
-.quest-rewards-summary .ss-shop-event-image {
-  width: 80px !important;
-  height: 80px !important;
-  flex-shrink: 0;
-  border-radius: 0.5rem;
-  border: 2px solid var(--ss-border-subtle);
-  background: var(--ss-bg-primary);
-  padding: 4px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
-}
-
-.reward-image-container .ss-shop-event-image img,
-.quest-rewards-summary .ss-shop-event-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  transition: transform 0.2s ease;
-}
-
-.reward-item:hover .ss-shop-event-image {
-  transform: scale(1.05);
-  border-color: var(--ss-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Ensure reward images maintain consistent size */
-.ss-shop-event-image.reward-image,
-.quest-rewards-summary .ss-shop-event-image.reward-image {
-  width: 80px !important;
-  height: 80px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-  position: relative !important;
-  flex-shrink: 0 !important;
-}
-
-.ss-shop-event-image.reward-image img,
-.quest-rewards-summary .ss-shop-event-image.reward-image img {
-  position: absolute !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  display: block !important;
-  top: 0 !important;
-  left: 0 !important;
-}
-
-/* Fallback style for missing images */
-.reward-image-container .ss-shop-event-image[data-fallback='true'] {
-  background: linear-gradient(45deg, var(--ss-bg-tertiary), var(--bg-secondary));
-  border: 1px solid var(--ss-border);
-  position: relative;
-}
-
-.reward-image-container .ss-shop-event-image[data-fallback='true']:after {
-  content: '?';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--ss-text-secondary);
-}
-
-/* ==========================================
- * TABLE STYLES
- * ==========================================
- */
-
-.quest-table-container,
-.stage-table-container {
-  overflow-x: auto;
-  margin-bottom: 1rem;
-}
-
-.quest-table,
-.stage-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-}
-
-.quest-table th,
-.stage-table th {
-  background: var(--ss-primary-subtle);
-  color: var(--ss-text-primary);
-  font-weight: 600;
-  text-align: left;
-  padding: 0.75rem;
-  border-bottom: 2px solid var(--ss-primary-border);
-}
-
-.quest-table td,
-.stage-table td {
-  color: var(--ss-text-secondary);
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid var(--ss-border-subtle);
-}
-
-.quest-table tr:last-child td,
-.stage-table tr:last-child td {
-  border-bottom: none;
-}
-
-.stage-rewards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 1rem;
-}
-
-.stage-reward-group {
-  background: var(--ss-bg-tertiary);
-  border: 1px solid var(--ss-border-subtle);
-  border-radius: 0.5rem;
-  padding: 1rem;
-}
-
-.stage-reward-group h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin-bottom: 0.75rem;
-}
-
-.total-reward {
-  color: var(--ss-text-primary);
-  font-size: 0.9rem;
-  margin-top: 0.75rem;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-  width: 100%;
-}
-
-.total-reward strong {
-  color: var(--ss-success);
-  white-space: nowrap;
-}
-
-.quest-note {
-  color: var(--ss-warning);
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-  font-style: italic;
-}
-
-.quest-note.important-note {
-  background: rgba(234, 88, 12, 0.15);
-  border: 2px solid rgba(234, 88, 12, 0.4);
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  margin-bottom: 1.5rem;
-  font-style: normal;
-}
-
-.quest-note.important-note p {
-  margin: 0;
-  color: var(--ss-text-primary);
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.4;
-}
-
-.quest-note.important-note ul {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.quest-note.important-note li {
-  margin-bottom: 0.5rem;
-  color: var(--ss-text-secondary);
-  font-size: 0.85rem;
-}
-
-.quest-note.important-note li:last-child {
-  margin-bottom: 0;
-}
-
-/* ==========================================
- * STAMINA CALCULATOR STYLES
- * ==========================================
- */
-
-.stamina-calculator {
-  margin: 2rem 0;
-  background: var(--ss-gradient-card);
-  border: 1px solid var(--ss-border);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-}
-
-.calculation-overview {
-  margin-bottom: 2rem;
-}
-
-.overview-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.calc-card {
-  background: var(--ss-bg-primary);
-  border: 1px solid var(--ss-border);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  text-align: center;
-}
-
-.calc-card h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin: 0 0 1rem 0;
-}
-
-.calc-card .currency-display {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--ss-primary);
-}
-
-.calc-card .total-cost {
-  font-size: 1.8rem;
-  color: var(--ss-primary);
-}
-
-.calc-card .actual-to-farm-main {
-  font-size: 2rem;
-  color: var(--ss-warning);
-  font-weight: 700;
-}
-
-.cost-breakdown {
-  margin-top: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.75rem;
-  color: var(--ss-text-secondary);
-}
-
-.calculation-breakdown {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background: var(--ss-bg-tertiary);
-  border-radius: 0.25rem;
-  border: 1px solid var(--ss-border-subtle);
-}
-
-.calculation-breakdown small {
-  color: var(--ss-text-secondary);
-  font-size: 0.75rem;
-  line-height: 1.3;
-  word-break: break-all;
-}
-
-.run-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.run-stats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.run-stats span:first-child {
-  color: var(--ss-accent);
-}
-
-.run-stats span:nth-child(2) {
-  color: var(--ss-text-secondary);
-}
-
-.run-stats .currency-display {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.efficiency-rate {
-  font-size: 0.85rem;
-  color: var(--ss-success);
-  font-weight: 600;
-  background: rgba(34, 197, 94, 0.1);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  display: inline-block;
-}
-
-.required-runs {
-  margin-bottom: 2rem;
-}
-
-.required-runs h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin: 0 0 1rem 0;
-  padding-left: 0.5rem;
-  border-left: 3px solid var(--ss-primary);
-}
-
-.runs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.run-stat {
-  background: var(--ss-bg-primary);
-  border: 1px solid var(--ss-border-subtle);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.run-stat .label {
-  font-size: 0.85rem;
-  color: var(--ss-text-secondary);
-  text-align: center;
-}
-
-.run-stat .value {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--ss-text-primary);
-}
-
-.run-stat .runs-needed {
-  color: var(--ss-warning);
-}
-
-.run-stat .stamina-needed {
-  color: var(--ss-accent);
-}
-
-.run-stat .days-needed {
-  color: var(--ss-primary);
-}
-
-.daily-stamina-breakdown {
-  background: var(--ss-bg-primary);
-  border: 1px solid var(--ss-border-subtle);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-}
-
-.daily-stamina-breakdown h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin: 0 0 1rem 0;
-  padding-left: 0.5rem;
-  border-left: 3px solid var(--ss-success);
-}
-
-.stamina-sources {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.stamina-source {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem;
-  background: var(--ss-bg-secondary);
-  border-radius: 0.375rem;
-  border: 1px solid var(--ss-border-subtle);
-}
-
-.stamina-source.total {
-  background: linear-gradient(135deg, var(--ss-bg-secondary), rgba(34, 197, 94, 0.1));
-  border-color: rgba(34, 197, 94, 0.3);
-  font-weight: 600;
-}
-
-.stamina-source .source-name {
-  color: var(--ss-text-secondary);
-  font-size: 0.9rem;
-}
-
-.stamina-source .source-amount {
-  color: var(--ss-success);
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.stamina-source.total .source-amount {
-  color: var(--ss-primary);
-  font-size: 1.1rem;
-}
-
-.stamina-note {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  border-radius: 0.5rem;
-}
-
-.stamina-note p {
-  margin: 0;
-  color: var(--ss-text-secondary);
-  font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-.stamina-note strong {
-  color: var(--ss-accent);
-}
-
-/* ==========================================
- * FARMING CALCULATION STYLES
- * ==========================================
- */
-
-.farming-calculation {
-  margin: 2rem 0;
-  background: var(--ss-gradient-card);
-  border: 1px solid var(--ss-border-subtle);
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-
-.farming-title {
-  background: linear-gradient(90deg, var(--ss-primary-subtle), transparent);
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--ss-border-subtle);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--ss-text-primary);
-  margin: 0;
-}
-
-.farming-stats-list {
-  padding: 0;
-}
-
-.farming-stat-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--ss-border-subtle);
-}
-
-.farming-stat-item:last-child {
-  border-bottom: none;
-}
-
-.farming-stat-label {
-  color: var(--ss-text-secondary);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.farming-stat-value {
-  color: var(--ss-text-primary);
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.farming-stat-item .currency-display {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.farming-stat-item .ss-shop-event-image {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-}
-
-/* Color-coded feasibility indicators */
-.farming-stat-value.deficit {
-  color: var(--ss-warning);
-  font-weight: 700;
-}
-
-.farming-stat-value.no-deficit {
-  color: var(--ss-success);
-  font-weight: 600;
-}
-
-.farming-stat-value.positive-source {
-  color: var(--ss-success);
-  font-weight: 600;
-}
-
-.farming-stat-value.positive-source span {
-  color: var(--ss-success);
-  font-weight: 600;
-}
-
-.farming-stat-value.status-achievable {
-  color: var(--ss-success);
-  font-weight: 700;
-}
-
-.farming-stat-value.status-challenging {
-  color: var(--ss-warning);
-  font-weight: 700;
-}
-
-.farming-stat-value.status-difficult {
-  color: #ff6b35;
-  font-weight: 700;
-}
-
-.farming-stat-value.status-very-difficult {
-  color: var(--ss-danger);
-  font-weight: 700;
-}
-
-/* ==========================================
- * RESPONSIVE DESIGN
+ * RESPONSIVE DESIGN FOR INDIVIDUAL PAGES
  * ==========================================
  */
 
 /* Tablet and Mobile Devices */
 @media (max-width: 768px) {
-  /* Main layout adjustments */
   .ss-shop-event-individual-main {
     padding: 1rem;
   }
 
-  /* Event status bar responsive */
   .event-status-bar {
     padding: 1rem;
     flex-direction: column;
     align-items: flex-start;
   }
-
-  /* Shop items grid responsive */
-  .shop-items-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-  }
-
-  /* Priority items grid responsive */
-  .priority-items-grid-cards {
-    grid-template-columns: 1fr;
-  }
-
-  /* Stage rewards grid responsive */
-  .stage-rewards-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Shop item card adjustments */
-  .item-image-wrapper {
-    height: 150px;
-  }
-
-  .item-info {
-    padding: 1rem;
-  }
-
-  /* Cost statistics adjustments */
-  .cost-statistics {
-    padding: 1rem;
-  }
-
-  /* Currency info adjustments */
-  .currency-info {
-    padding: 1rem;
-  }
-
-  /* Title adjustments */
-  .ss-shop-items-title {
-    font-size: 1.5rem;
-  }
-
-  /* Farming calculation adjustments */
-  .farming-calculation {
-    margin: 1.5rem 0;
-  }
-
-  /* Tier adjustments */
-  .priority-tier {
-    padding: 1rem;
-  }
 }
 
 /* Small Mobile Devices */
 @media (max-width: 480px) {
-  /* Main layout adjustments */
   .ss-shop-event-individual-main {
     padding: 0.5rem;
   }
 
-  /* Shop items grid responsive */
-  .shop-items-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Shop item card adjustments */
-  .item-image-wrapper {
-    height: 120px;
-  }
-
-  .item-info {
-    padding: 0.75rem;
-  }
-
-  /* Cost statistics adjustments */
-  .cost-statistics {
-    padding: 0.75rem;
-  }
-
-  .currency-info {
-    padding: 0.75rem;
-  }
-
-  /* Stat row adjustments */
-  .stat-row {
-    font-size: 0.9rem;
-  }
-
-  /* Title adjustments */
-  .ss-shop-items-title {
-    font-size: 1.3rem;
-    padding-left: 0.75rem;
-  }
-
-  .ss-shop-items-title::before {
-    height: 20px;
-    width: 3px;
-  }
-
-  /* Farming calculation adjustments */
-  .farming-calculation {
-    margin: 1rem 0;
-  }
-
-  /* Tier adjustments */
-  .priority-tier {
-    padding: 0.75rem;
-  }
-
-  /* Priority item card adjustments */
-  .priority-item-card {
-    padding: 1rem;
-  }
-
-  .priority-item-card .item-image-wrapper {
-    width: 60px;
-    height: 60px;
-  }
-
-  .priority-item-card .item-image-wrapper .ss-shop-event-image {
-    width: 50px;
-    height: 50px;
-  }
-
-  /* Stage table adjustments */
-  .quest-table,
-  .stage-table {
-    font-size: 0.8rem;
-  }
-
-  .quest-table th,
-  .stage-table th,
-  .quest-table td,
-  .stage-table td {
-    padding: 0.5rem;
-  }
-
-  /* Event status bar adjustments */
   .event-status-bar {
     padding: 0.75rem;
-  }
-
-  /* Reward item adjustments */
-  .reward-item {
-    font-size: 0.9rem;
-    padding: 0.75rem;
-    gap: 0.75rem;
-  }
-
-  .reward-item .ss-shop-event-image,
-  .quest-rewards-summary .ss-shop-event-image,
-  .ss-shop-event-image.reward-image,
-  .quest-rewards-summary .ss-shop-event-image.reward-image {
-    width: 60px !important;
-    height: 60px !important;
-  }
-
-  .reward-item .ss-shop-event-image.reward-image img,
-  .quest-rewards-summary .ss-shop-event-image.reward-image img {
-    width: 60px !important;
-    height: 60px !important;
-    max-width: 60px !important;
-    max-height: 60px !important;
-  }
-}
-
-/* Very Small Mobile devices */
-@media (max-width: 360px) {
-  /* Title adjustments */
-  .ss-shop-items-title {
-    font-size: 1.2rem;
-  }
-
-  /* Shop item card adjustments */
-  .item-image-wrapper {
-    height: 100px;
-  }
-
-  .item-info {
-    padding: 0.5rem;
-  }
-
-  /* Cost statistics adjustments */
-  .cost-statistics,
-  .currency-info {
-    padding: 0.5rem;
-  }
-
-  /* Tier adjustments */
-  .priority-tier {
-    padding: 0.5rem;
-  }
-
-  /* Priority item card adjustments */
-  .priority-item-card {
-    padding: 0.75rem;
-  }
-
-  .priority-item-card .item-image-wrapper {
-    width: 50px;
-    height: 50px;
-  }
-
-  .priority-item-card .item-image-wrapper .ss-shop-event-image {
-    width: 40px;
-    height: 40px;
-  }
-
-  /* Stage table adjustments */
-  .quest-table,
-  .stage-table {
-    font-size: 0.75rem;
-  }
-
-  /* Event status bar adjustments */
-  .event-status-bar {
-    padding: 0.5rem;
-  }
-
-  /* Farming calculation adjustments */
-  .farming-calculation {
-    margin: 0.75rem 0;
-  }
-
-  /* Reward item adjustments */
-  .reward-item {
-    font-size: 0.8rem;
-    padding: 0.5rem;
-    gap: 0.5rem;
-  }
-
-  .reward-item .ss-shop-event-image,
-  .quest-rewards-summary .ss-shop-event-image,
-  .ss-shop-event-image.reward-image,
-  .quest-rewards-summary .ss-shop-event-image.reward-image {
-    width: 50px !important;
-    height: 50px !important;
-  }
-
-  .reward-item .ss-shop-event-image.reward-image img,
-  .quest-rewards-summary .ss-shop-event-image.reward-image img {
-    width: 50px !important;
-    height: 50px !important;
-    max-width: 50px !important;
-    max-height: 50px !important;
   }
 }

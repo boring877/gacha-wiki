@@ -4,113 +4,125 @@
  * Handles image imports and mapping for the Guild Sweet Guild event
  */
 
-// Import all images for Guild Sweet Guild event
-import glassMarble from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_glass_marble.jpg';
-import fistOfCourage from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_fist_of_courage.jpg';
-import fistOfCourageMelody from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_fist_of_courage_melody.jpg';
-import guildSweetGuild from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_guild_sweet_guild.jpg';
-import colossusCore from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Colossus_Core.jpg';
-import ceruleanTicket from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_cerulean_ticket.jpg';
-import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg';
-import starEmblemPolisher from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_star_emblem_polisher.jpg';
-import reflectivePhotoCapturer from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_reflective_photo_capturer.jpg';
-import moonlitCompanion from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_moonlit_companion.jpg';
-import blossomPorcelainCup from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Blossom_Porcelain_cup.jpg';
-import countsGift from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_count_gift.jpg';
-import demonBeeGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Demon_Bee_Game_Cartridge.jpg';
-import frenziedWaltzEssence from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Frenzied_Waltz_Essence.jpg';
-import monolithStairsPass from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Monolith_Stairs_Pass.jpg';
-import trekkersHandwrittenEncyclopedia from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_trekkers_handwritten_encyclopedia.jpg';
-import starlitColoredGlass from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Starlit_Colored_Glass.jpg';
-import countsCellaring from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_count_cellaring.jpg';
-import barrageGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Barrage_Game_Cartridge.jpg';
-import phantomStepRemnant from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Phantom_Step_Remnant.jpg';
-import noviceTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Novice_Trekker_promotion_box.jpg';
-import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Beginner_Cartridge_box.jpg';
-import noviceDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_Novice_Disc_Promotion_Box.jpg';
-import dorra from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_dorra.jpg';
-import bg1event from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/2_guild_bg1.jpg';
+import { Image } from 'astro:assets';
 
-// Image mapping object for easy access
+// Import all images for Guild Sweet Guild event
+import glassMarble from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Glass_Marble.jpg';
+import fistOfCourage from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Fist_of_Courage.jpg';
+import fistOfCourageMelody from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Fist_of_Courage_Melody.jpg';
+import guildSweetGuild from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Guild_Sweet_Guild.jpg';
+import colossusCore from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Colossus_Core.jpg';
+import ceruleanTicket from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Cerulean_Ticket.jpg';
+import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Sprout_Ticket.jpg';
+import starEmblemPolisher from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Star_Emblem_Polisher.jpg';
+import reflectivePhotoCapturer from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Reflective_Photo_Capturer.jpg';
+import moonlitCompanion from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Moonlit_Companion.jpg';
+import blossomPorcelainCup from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Blossom_Porcelain_cup.jpg';
+import countsGift from "../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Count's_Gift.jpg";
+import demonBeeGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Demon_Bee_Game_Cartridge.jpg';
+import frenziedWaltzEssence from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Frenzied_Waltz_Essence.jpg';
+import monolithStairsPass from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Monolith_Stairs_Pass.jpg';
+import trekkersHandwrittenEncyclopedia from "../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Trekker's_Handwritten_Encyclopedia.jpg";
+import starlitColoredGlass from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Starlit_Colored_Glass.jpg';
+import countsCellaring from "../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Count's_Cellaring.jpg";
+import barrageGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Barrage_Game_Cartridge.jpg';
+import phantomStepRemnant from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Phantom_Step_Remnant.jpg';
+import noviceTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Novice_Trekker_promotion_box.jpg';
+import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Beginner_Cartridge_box.jpg';
+import noviceDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Novice_Disc_Promotion_Box.jpg';
+import dorra from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Dorra.jpg';
+import bg1event from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/BG1.jpg';
+import gem from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/Gem.jpg';
+import chessPieceOfSkill from '../../../assets/images/games/stella-sora/EventShop/Guild_sweet_guild/chess_piece_of_skill.png';
+
+// Clean, unified image mapping for Guild Sweet Guild - supports both original filenames and semantic camelCase keys
 const imageMap = {
-  '2_guild_glass_marble.jpg': glassMarble,
-  '2_guild_fist_of_courage.jpg': fistOfCourage,
-  '2_guild_fist_of_courage_melody.jpg': fistOfCourageMelody,
-  '2_guild_guild_sweet_guild.jpg': guildSweetGuild,
-  '2_Colossus_Core.jpg': colossusCore,
-  '2_guild_cerulean_ticket.jpg': ceruleanTicket,
-  '1_Sprout_Ticket.jpg': sproutTicket,
-  '2_guild_star_emblem_polisher.jpg': starEmblemPolisher,
-  '2_guild_reflective_photo_capturer.jpg': reflectivePhotoCapturer,
-  '2_guild_moonlit_companion.jpg': moonlitCompanion,
-  '2_Blossom_Porcelain_cup.jpg': blossomPorcelainCup,
-  '2_guild_count_gift.jpg': countsGift,
-  '2_Demon_Bee_Game_Cartridge.jpg': demonBeeGameCartridge,
-  '2_Frenzied_Waltz_Essence.jpg': frenziedWaltzEssence,
-  '2_Monolith_Stairs_Pass.jpg': monolithStairsPass,
-  '2_guild_trekkers_handwritten_encyclopedia.jpg': trekkersHandwrittenEncyclopedia,
-  '2_Starlit_Colored_Glass.jpg': starlitColoredGlass,
-  '2_guild_count_cellaring.jpg': countsCellaring,
-  '2_Barrage_Game_Cartridge.jpg': barrageGameCartridge,
-  '2_Phantom_Step_Remnant.jpg': phantomStepRemnant,
-  '2_Novice_Trekker_promotion_box.jpg': noviceTrekkerPromotionBox,
-  '2_Beginner_Cartridge_box.jpg': beginnerCartridgeBox,
-  '2_Novice_Disc_Promotion_Box.jpg': noviceDiscPromotionBox,
-  '2_guild_dorra.jpg': dorra,
-  '2_guild_bg1.jpg': bg1event,
+  // Original filenames from data (with .jpg extension)
+  'Fist_of_Courage.jpg': fistOfCourage,
+  'Fist_of_Courage_Melody.jpg': fistOfCourageMelody,
+  'Guild_Sweet_Guild.jpg': guildSweetGuild,
+  'Colossus_Core.jpg': colossusCore,
+  'Cerulean_Ticket.jpg': ceruleanTicket,
+  'Sprout_Ticket.jpg': sproutTicket,
+  'Monolith_Stairs_Pass.jpg': monolithStairsPass,
+  'Star_Emblem_Polisher.jpg': starEmblemPolisher,
+  'Reflective_Photo_Capturer.jpg': reflectivePhotoCapturer,
+  'Moonlit_Companion.jpg': moonlitCompanion,
+  'Blossom_Porcelain_cup.jpg': blossomPorcelainCup,
+  "Count's_Gift.jpg": countsGift,
+  'Demon_Bee_Game_Cartridge.jpg': demonBeeGameCartridge,
+  'Frenzied_Waltz_Essence.jpg': frenziedWaltzEssence,
+  "Trekker's_Handwritten_Encyclopedia.jpg": trekkersHandwrittenEncyclopedia,
+  'Starlit_Colored_Glass.jpg': starlitColoredGlass,
+  "Count's_Cellaring.jpg": countsCellaring,
+  'Barrage_Game_Cartridge.jpg': barrageGameCartridge,
+  'Phantom_Step_Remnant.jpg': phantomStepRemnant,
+  'Novice_Trekker_promotion_box.jpg': noviceTrekkerPromotionBox,
+  'Beginner_Cartridge_box.jpg': beginnerCartridgeBox,
+  'Novice_Disc_Promotion_Box.jpg': noviceDiscPromotionBox,
+  'Dorra.jpg': dorra,
+  'BG1.jpg': bg1event,
+  'Gem.jpg': gem,
+  'Glass_Marble.jpg': glassMarble,
+  'chess_piece_of_skill.png': chessPieceOfSkill,
+
+  // Quest reward variations (only for special cases with "Guild" suffix or different naming)
+  'Sprout Ticket Guild': sproutTicket,
+  "Count's Cellaring Guild": countsCellaring,
+  'Barrage Game Cartridge Guild': barrageGameCartridge,
+  'Chess Piece of Skill': chessPieceOfSkill, // Direct mapping for PNG file
+  'Blossom Porcelain Cup': blossomPorcelainCup, // Direct mapping for case-sensitive filename
 };
 
 // Props interface
 interface Props {
-  imageName: string | any;
+  imageName: string;
   alt?: string;
+  class?: string;
   className?: string;
   width?: number;
   height?: number;
   loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
 }
 
 const {
   imageName,
   alt = '',
-  className = '',
-  width = undefined,
-  height = undefined,
+  class: classNameFromClass,
+  className,
+  width = 500,
+  height = 500,
   loading = 'lazy',
+  format = 'webp',
+  quality = 100,
 } = Astro.props;
 
-// Handle both string names and image objects
-let imageSrc = null;
+// Use either className or class (for backwards compatibility)
+const finalClassName = className || classNameFromClass || '';
 
-if (typeof imageName === 'string') {
-  // If it's a string, try to get it from the mapping
-  imageSrc = imageMap[imageName];
-} else if (imageName && typeof imageName === 'object') {
-  // If it's already an image object, use it directly
-  imageSrc = imageName;
-}
-
-// If image not found, use a placeholder or fallback
-if (!imageSrc) {
-  const nameStr = typeof imageName === 'string' ? imageName : 'unknown';
-  console.warn(`Image "${nameStr}" not found in Guild Sweet Guild image mapping`);
-}
+// Get the image module based on the imageName - use filename fallback like other components
+const filename = imageName.split('/').pop() || 'Glass_Marble.jpg';
+const convertedFilenameJpg = filename.replace(/ /g, '_') + '.jpg';
+const convertedFilenamePng = filename.replace(/ /g, '_') + '.png';
+const imageModule =
+  imageMap[imageName] ||
+  imageMap[convertedFilenameJpg] ||
+  imageMap[convertedFilenamePng] ||
+  imageMap[filename + '.jpg'] ||
+  imageMap[filename + '.png'] ||
+  glassMarble;
 ---
 
-{
-  imageSrc ? (
-    <img
-      src={imageSrc}
-      alt={alt || imageName.replace(/_/g, ' ').replace('.jpg', '').replace('.png', '')}
-      class={className}
-      width={width}
-      height={height}
-      loading={loading}
-      decoding="async"
-    />
-  ) : (
-    <div class={`image-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>
-      <span>Image not found: {imageName}</span>
-    </div>
-  )
-}
+<!-- Use Astro's Image component for optimization -->
+<Image
+  src={imageModule}
+  alt={alt || imageName.replace(/_/g, ' ').replace('.jpg', '').replace('.png', '')}
+  width={width}
+  height={height}
+  class={finalClassName}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

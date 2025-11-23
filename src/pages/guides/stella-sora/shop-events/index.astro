@@ -1,7 +1,7 @@
 ---
 import ShopEventIndexLayout from '../../../../layouts/stella-sora/ShopEventIndexLayout.astro';
 import { getAllShopEvents } from '../../../../data/stella-sora/shop-events.js';
-import SSShopEventImage from '../../../../components/stella-sora/SSShopEventImage.astro';
+import SSShopEventBannerImage from '../../../../components/stella-sora/SSShopEventBannerImage.astro';
 
 // SEO metadata
 const metaTitle = 'Stella Sora Shop Events - Exclusive Rewards & Limited-Time Offers | GachaWiki';
@@ -67,8 +67,8 @@ const allShopEvents = getAllShopEvents();
         allShopEvents.map(event => (
           <a href={event.url} class="ss-shop-event-card">
             <div class="event-card-image">
-              <SSShopEventImage
-                imageSrc={event.featuredImage}
+              <SSShopEventBannerImage
+                imageName={event.id}
                 alt={event.title}
                 width={300}
                 height={200}
