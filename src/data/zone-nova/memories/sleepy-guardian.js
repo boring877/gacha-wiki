@@ -16,11 +16,7 @@ export const sleepyGuardianData = {
   },
 
   // Memory Effects
-  effects: [
-    'Debuff application rate increased by 30%',
-    'When equipped character applies debuff: Team gains 10% damage reduction for 5 seconds',
-    'Critical rate reduction effects are 50% more effective',
-  ],
+  effects: ['Ultimate skill can reduce targets energy regen by 18%'],
 
   // Character Synergy
   synergy: {

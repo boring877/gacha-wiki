@@ -18,8 +18,8 @@ export const secretGardenData = {
   // Memory Effects
   effects: [
     'Attack power increased by 40%',
-    'When equipped character releases enhanced ultimate or higher: Damage increased by 40% for 10 seconds',
-    'Total Potential: 40% base attack + 40% conditional damage boost with enhanced ultimates',
+    'If the equipped units Ultimate costs higher than 8 Energy and used ultimate: Damage increased by 40% for 10 seconds',
+    'Total Potential: 40% base attack + 40% conditional damage boost with high-cost ultimates',
   ],
 
   // Character Synergy

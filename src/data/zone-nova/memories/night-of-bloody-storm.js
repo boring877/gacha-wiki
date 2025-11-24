@@ -19,7 +19,7 @@ export const nightOfBloodStormData = {
   // Memory Effects
   effects: [
     'Attack power increased by 40%',
-    "After an ally in [Support Position] uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds",
+    "After an ally buffers uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds",
     'Total Potential: 40% base attack + 40% conditional ultimate damage boost',
   ],
 

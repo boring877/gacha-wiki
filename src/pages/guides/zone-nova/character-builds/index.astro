@@ -71,7 +71,9 @@ function getRarityBadgeClass(rarity) {
                 {build.character?.element || 'N/A'}
               </span>
 
-              <span class="role-badge tank">{build.role}</span>
+              <span class={`role-badge ${build.role?.toLowerCase() || 'unknown'}`}>
+                {build.role}
+              </span>
             </div>
 
             <div class="character-card-preview">

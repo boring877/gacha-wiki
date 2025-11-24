@@ -58,7 +58,7 @@ export const ZONE_NOVA_MEMORIES = [
       defense: 600,
     },
     effects: [
-      'After battle start: All allies defense +40%, normal attack damage +40%',
+      'After battle start: All allies damage +40%, normal attack damage +40%',
       'When equipped character deals 5 normal attack damage: All team attack power +40% for 5 seconds',
     ],
   },
@@ -77,8 +77,7 @@ export const ZONE_NOVA_MEMORIES = [
       defense: 600,
     },
     effects: [
-      'Attack power increased by 40%',
-      'Team Must-Kill Damage increased by 40% for 5 seconds after Ultimate: Enhances team finishing power after ultimate usage',
+      'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 30 seconds',
     ],
   },
   {
@@ -247,7 +246,10 @@ export const ZONE_NOVA_MEMORIES = [
       attack: 600,
       defense: 600,
     },
-    effects: ['Battle start damage boost and energy efficiency boost'],
+    effects: [
+      "Battle start: All allied characters' damage increases by 40%, pursuit damage additionally increases by 40%",
+      "When equipped character releases ultimate or energy >8: All allied characters' energy acquisition efficiency increases by 100% for 10 seconds",
+    ],
   },
   {
     id: 'lancelot-hertrainer',
@@ -282,7 +284,9 @@ export const ZONE_NOVA_MEMORIES = [
       attack: 650,
       defense: 395,
     },
-    effects: ['Ultimate damage scaling based on enemy count'],
+    effects: [
+      'When releasing ultimate skill: For each enemy on the field, ultimate skill damage increases by 12%, up to 5 stacks, lasting 5 seconds maximum bonus of 60% (12% × 5 stacks)',
+    ],
   },
   {
     id: 'simple-birdcage',
@@ -487,8 +491,8 @@ export const ZONE_NOVA_MEMORIES = [
     },
     effects: [
       'Attack power increased by 40%',
-      'When equipped character releases enhanced ultimate or higher: Damage increased by 40% for 10 seconds',
-      'Total Potential: 40% base attack + 40% conditional damage boost with enhanced ultimates',
+      'If the equipped units Ultimate costs higher than 8 Energy and used ultimate: Damage increased by 40% for 10 seconds',
+      'Total Potential: 40% base attack + 40% conditional damage boost with high-cost ultimates',
     ],
   },
   {
@@ -784,11 +788,7 @@ export const ZONE_NOVA_MEMORIES = [
       attack: 420,
       defense: 380,
     },
-    effects: [
-      'Debuff application rate increased by 30%',
-      'When equipped character applies debuff: Team gains 10% damage reduction for 5 seconds',
-      'Critical rate reduction effects are 50% more effective',
-    ],
+    effects: ['Ultimate skill can reduce targets energy regen by 18%'],
   },
   {
     id: 'lonely-dark-deep-night',
@@ -806,7 +806,7 @@ export const ZONE_NOVA_MEMORIES = [
     },
     effects: [
       'Critical Damage increased by 60%',
-      'Kill Stacking: After equipped character kills an enemy, increase attack power by 10% for this battle',
+      'Kill Stacking: After equipped character kills an enemy, increase attack power by 10% for this battle and stay until the end of the battle',
       'Maximum 4 stacks (up to 40% attack power increase)',
     ],
   },
@@ -945,7 +945,7 @@ export const ZONE_NOVA_MEMORIES = [
     },
     effects: [
       'Attack power increased by 40%',
-      "After an ally in [Support Position] uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds",
+      "After an ally buffers uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds",
       'Total Potential: 40% base attack + 40% conditional ultimate damage boost',
     ],
   },

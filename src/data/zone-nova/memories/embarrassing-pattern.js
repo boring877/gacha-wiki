@@ -20,7 +20,7 @@ export const embarrassingPatternData = {
 
   // Memory Effects
   effects: [
-    'After battle start: All allies defense +40%, normal attack damage +40%',
+    'After battle start: All allies damage +40%, normal attack damage +40%',
     'When equipped character deals 5 normal attack damage: All team attack power +40% for 5 seconds',
   ],
 };

@@ -18,7 +18,7 @@ export const lonelyDarkDeepNightData = {
   // Memory Effects
   effects: [
     'Critical Damage increased by 60%',
-    'Kill Stacking: After equipped character kills an enemy, increase attack power by 10% for this battle',
+    'Kill Stacking: After equipped character kills an enemy, increase attack power by 10% for this battle and stay until the end of the battle',
     'Maximum 4 stacks (up to 40% attack power increase)',
   ],
 

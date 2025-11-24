@@ -1,0 +1,692 @@
+// Zone Nova Character Builds Data
+import { ZONE_NOVA_CHARACTERS } from './characters.js';
+import { helaBuild } from './character-builds/hela.js';
+import { apepBuild } from './character-builds/apep.js';
+import { naiyaBuild } from './character-builds/naiya.js';
+
+// Character builds data structure - imports from individual character build files
+export const CHARACTER_BUILDS = {
+  // Hela Build - SSR Chaos DPS
+  hela: helaBuild,
+
+  // Naiya Build - SSR Ice Buffer
+  naiya: naiyaBuild,
+
+  // Apep Build - SSR Wind Tank
+  apep: apepBuild,
+};
+
+// Helper function - keeping the old inline structure temporarily
+const legacyHela = {
+    name: 'Hela',
+    role: 'DPS',
+    buildType: 'Single Target Chaos Nuker',
+    description:
+      'Hela is a single-target nuker who deals massive damage through her ultimate scaling and critical damage. She can one-shot bosses with her 2160% ATK ultimate and has a unique mode-switching mechanic between [Termination] and [Death Silence] modes.',
+    skillPriority: [
+      {
+        skill: 'Auto Skill: Death Silence Prelude',
+        priority: 1,
+        level: 'Level 10',
+        reason: 'Primary damage source with high scaling and mode switching utility',
+        description:
+          'Cooldown: 5.0s\n[Termination] Mode: Deals 360% attack power Chaos damage to designated enemy unit\n[Death Silence] Mode: Moves 5 meters toward the enemy unit with the highest ATK and deals 360% attack power Chaos damage to them',
+      },
+      {
+        skill: 'Ultimate: Domination Authority - Chaotic Death',
+        priority: 2,
+        level: 'Level 10',
+        reason: 'Massive 2160% ATK damage that can one-shot bosses, core to her nuker role',
+        description:
+          'Cooldown: 1.0s | Energy Cost: 1\nEnters [Termination] mode at start of battle. Ultimate can switch between [Termination] or [Death Silence] modes.\n\n[Passive Mechanic]: When allies cast ultimates, gains layers of [Domination Authority: Chaotic Death] equal to energy consumed (max 5 per cast). At 10 layers, can consume all to cast [Enhanced Ultimate].\n\n[Enhanced Ultimate]:\n[Termination] Mode: 2160% ATK Chaos damage to target\n[Death Silence] Mode: Moves to highest ATK enemy and deals total 2160% ATK Chaos damage',
+      },
+      {
+        skill: 'Passive: Termination Echo',
+        priority: 3,
+        level: 'Level 10',
+        reason: 'Essential for crit damage scaling and resistance penetration',
+        description:
+          "[Termination] Mode: All damage penetrates 24% of target's resistance\n[Death Silence] Mode: All damage reduces target's total damage output by 36%\n\n[Battle Start Bonus]: With 1+ other Chaos character, Hela's Crit Damage increases by 60%",
+      },
+      {
+        skill: 'Normal Attack: Nether Touch',
+        priority: 4,
+        level: 'Level 7',
+        reason: 'Basic damage filler, scales well with crit builds',
+        description:
+          'Cooldown: 2.0s\n[Termination] Mode: Deals 120% attack power Chaos damage to designated enemy unit\n[Death Silence] Mode: Moves in front of enemy with highest ATK and deals 120% attack power Chaos damage to them',
+      },
+    ],
+    recommendedMemoryCards: [
+      {
+        name: 'Heroes, Never Stop',
+        effect:
+          "SR memory card that provides Crit Damage increase, excellent for boosting Hela's already high damage output. Works best with 2 or fewer enemies.",
+        priority: 'Highly Recommended',
+        characterSpecific: false,
+        memoryImage: 'Shannacard.jpg',
+        memoryStats: { hp: '4,200', attack: '650', defense: '395' },
+        description:
+          'When the number of enemies on field is less than 2: Increase critical hit damage by 72%',
+      },
+    ],
+    alternativeMemoryCards: [
+      {
+        name: 'Strange Gaze Full of Desire',
+        effect:
+          "Hela's exclusive memory card. Crit Rate +34%, and when allies cast ultimates, damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage).",
+        characterSpecific: true,
+        memoryImage: 'Helacard.jpg',
+        memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+        description:
+          'Crit Rate +34%, and when allies cast ultimates, damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage)',
+        spendingNote:
+          "If you're a heavy spender, this memory is better, but due to cost and benefit, Heroes Never Stop is better for most players.",
+      },
+    ],
+    runes: {
+      primary: 'Critical Damage',
+      secondary: 'Critical Rate',
+      stats: ['Crit DMG%', 'Crit Rate%', 'ATK%', 'ATK', 'Penetration'],
+      recommendedSets: [
+        {
+          name: 'Beth 4-piece + Alpha 2-piece',
+          englishName: 'Beth 4-piece + Alpha 2-piece',
+          mainRune: 'Beth',
+          secondaryRune: 'Alpha',
+          mainRune2Piece: '2-piece: Crit Rate +6%',
+          mainRune4Piece: '4-piece: When HP >80%: Critical Hit Damage +24%',
+          secondaryRuneEffect: '2-piece: Attack Power +8%',
+        },
+        {
+          name: 'Beth 4-piece + Epsilon 2-piece',
+          englishName: 'Beth 4-piece + Epsilon 2-piece',
+          mainRune: 'Beth',
+          secondaryRune: 'Epsilon',
+          mainRune2Piece: '2-piece: Crit Rate +6%',
+          mainRune4Piece: '4-piece: When HP >80%: Critical Hit Damage +24%',
+          secondaryRuneEffect: '2-piece: Attack Power +8%',
+        },
+        {
+          name: 'Beth 4-piece + Giants 2-piece',
+          englishName: 'Beth 4-piece + Giants 2-piece',
+          mainRune: 'Beth',
+          secondaryRune: 'Giants',
+          mainRune2Piece: '2-piece: Crit Rate +6%',
+          mainRune4Piece: '4-piece: When HP >80%: Critical Hit Damage +24%',
+          secondaryRuneEffect: '2-piece: Attack power increased by 8%',
+        },
+      ],
+      alternativeSets: [
+        {
+          name: 'Beth 4-piece + Zahn 2-piece',
+          englishName: 'Beth 4-piece + Zahn 2-piece',
+          mainRune: 'Beth',
+          secondaryRune: 'Zahn',
+          mainRune2Piece: '2-piece: Crit Rate +6%',
+          mainRune4Piece: '4-piece: When HP >80%: Critical Hit Damage +24%',
+          secondaryRuneEffect: '2-piece: HP +8%',
+        },
+      ],
+    },
+    mainStatsByPosition: {
+      1: {
+        name: 'Position 1 — Fixed Main Stat',
+        stat: 'HP (Flat Value)',
+        description: 'Always HP - no other options',
+        isFixed: true,
+      },
+      2: {
+        name: 'Position 2 — Fixed Main Stat',
+        stat: 'Attack (Flat Value)',
+        description: 'Always Attack - no other options',
+        isFixed: true,
+      },
+      3: {
+        name: 'Position 3 — Fixed Main Stat',
+        stat: 'Defense (Flat Value)',
+        description: 'Always Defense - no other options',
+        isFixed: true,
+      },
+      4: {
+        name: 'Position 4 — Variable Main Stats',
+        recommendedStat: 'Critical Damage (%)',
+        availableStats: [
+          'Healing Effectiveness (%)',
+          'Critical Rate (%)',
+          'Critical Damage (%)',
+          'Attack Penetration (%)',
+          'Attack (%)',
+          'HP (%)',
+          'Defense (%)',
+        ],
+        description: 'Choose Crit Damage % for maximum damage output',
+      },
+      5: {
+        name: 'Position 5 — Variable Main Stats',
+        recommendedStat: 'Chaos Attribute Damage (%)',
+        availableStats: [
+          'Chaos Attribute Damage (%)',
+          'Fire Attribute Damage (%)',
+          'Ice Attribute Damage (%)',
+          'Holy Attribute Damage (%)',
+          'Attack (%)',
+          'HP (%)',
+          'Defense (%)',
+        ],
+        description:
+          'Chaos Attribute Damage % recommended for Chaos characters, or choose other elements for different team compositions',
+      },
+      6: {
+        name: 'Position 6 — Variable Main Stats',
+        recommendedStat: 'Attack (%)',
+        availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
+        description: 'Attack % for maximum damage scaling',
+      },
+    },
+    awakenings: {
+      priority: 'Level 6 is essential for maximizing damage output',
+      keyMilestones: [
+        {
+          level: 1,
+          effect:
+            'After battle starts, ATK increases by 30%. When switching modes, damage taken is reduced by 50%',
+          importance: 'High',
+        },
+        {
+          level: 2,
+          effect:
+            '[Termination] Mode: Crit Damage increases by 30%. [Death Silence] Mode: Damage taken is reduced by 20%',
+          importance: 'Critical',
+        },
+        {
+          level: 4,
+          effect: 'Chaos damage increases by 30%',
+          importance: 'High',
+        },
+        {
+          level: 6,
+          effect: 'All damage dealt by Hela penetrates 20% of all resistances',
+          importance: 'Essential',
+        },
+      ],
+    },
+    teamSkill: {
+      name: 'Combination Skill',
+      activationCondition: 'Team contains 2 [Chaos] attribute characters and [ASA] characters',
+      effects: [
+        'ATK increases by 10%',
+        'At the start of battle, for every 500 ATK, increases own Chaos damage by 5% (max 6 stacks, up to 30% Chaos damage bonus)',
+      ],
+    },
+    teamSynergy: {
+      goodWith: ['Other Chaos characters', 'ASA characters'],
+      note: 'Hela benefits greatly from another Chaos character in the team due to her passive bonus of +60% Crit Damage when there is at least 1 other Chaos attribute character. Team skill requires 2 Chaos + ASA characters for 10% ATK and up to 30% Chaos damage bonus.',
+    },
+  },
+
+  // Naiya Build
+  naiya: {
+    name: 'Naiya',
+    role: 'Buffer',
+    buildType: 'ATK Scaling Hyper-Carry Buffer',
+    description:
+      'Naiya is a buffer who focuses on buffing the highest ATK character on the team. Her buffs scale with her ATK power - the higher her ATK, the stronger the ATK. She also provide Crit Damage buffs. She also have energy recovery when Enemy is killed die, and massive total damage boosts. Her Dupe 4 awakening is very strong.',
+    skillPriority: [
+      {
+        skill: 'Auto Skill: War Intent Detection',
+        priority: 1,
+        level: 'Level 10',
+        reason: 'Core buff ability - grants 168% ATK buff to highest ATK character, scales directly with Naiya\'s ATK',
+        description:
+          'Auto-trigger: 5.0s\nThe friendly character with the highest attack power gains [Battle Intent]. Increases attack power by 168%, but the increased attack power cannot exceed 84% of Naiya\'s attack power. Lasts 15 seconds',
+      },
+      {
+        skill: 'Ultimate: Hyper-Carry Awakening',
+        priority: 2,
+        level: 'Level 10',
+        reason: 'Massive team buff - 36% ATK + 53.6% Crit Damage to all allies, plus good damage',
+        description:
+          'Energy Cost: 3\nDeals 480% attack power Ice damage to enemy unit. [Interrupts] their casting skill. Increases all friendly units\' attack power by 36% and crit damage by 53.6% for 10 seconds',
+      },
+      {
+        skill: 'Passive: Tactical Analysis',
+        priority: 3,
+        level: 'Level 10',
+        reason: 'Energy recovery and damage amp when Battle Intent character kills enemies - crucial for team cycling',
+        description:
+          'When a character with [Battle Intent] kills an enemy, damage increases by 17% for 10 seconds, max 3 stacks. Immediately recovers 1 energy point for the entire team, can trigger once per second maximum',
+      },
+      {
+        skill: 'Normal Attack: Frost Strike',
+        priority: 4,
+        level: 'Level 7',
+        reason: 'Basic damage filler, benefits from ATK scaling',
+        description:
+          'Deals 120% attack power as ice damage to enemy unit',
+      },
+    ],
+    recommendedMemoryCards: [
+      {
+        name: 'Frost Dominion',
+        effect:
+          "Naiya's exclusive memory card. +40% Attack Power and after she uses ultimate, entire team gains +40% ultimate damage for 30 seconds. Perfectly complements her buffer role.",
+        priority: 'Highly Recommended',
+        characterSpecific: true,
+        memoryImage: 'naiyacard.jpg',
+        memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+        description: 'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 30 seconds',
+      },
+    ],
+    alternativeMemoryCards: [
+      {
+        name: 'Heroes, Never Stop',
+        effect:
+          "SR memory card that provides Crit Damage increase, excellent for boosting Naiya's own damage and works well with her Crit Damage buffs to the team.",
+        characterSpecific: false,
+        memoryImage: 'Shannacard.jpg',
+        memoryStats: { hp: '4,200', attack: '650', defense: '395' },
+        description: 'When the number of enemies on field is less than 2: Increase critical hit damage by 72%',
+      },
+      {
+        name: 'Behind the Regret',
+        effect:
+          "SR memory card that provides HP increase and healing boost, good for survivability since Naiya's buffs scale with her survivability.",
+        characterSpecific: false,
+        memoryImage: 'mordredcard.jpg',
+        memoryStats: { hp: '5,000', attack: '500', defense: '500' },
+        description: 'HP increased by 24%, Self healing amount increased by 30%',
+      },
+    ],
+    runes: {
+      primary: 'Attack',
+      secondary: 'Critical Rate',
+      stats: ['ATK%', 'ATK', 'Crit Rate%', 'Crit DMG%', 'HP%', 'DEF%'],
+      recommendedSets: [
+        {
+          name: 'Alpha 4-piece + Beth 2-piece',
+          englishName: 'Alpha 4-piece + Beth 2-piece',
+          mainRune: 'Alpha',
+          secondaryRune: 'Beth',
+          mainRune2Piece: '2-piece: Attack Power +8%',
+          mainRune4Piece: '4-piece: When attacking, additional damage equal to 12% of character\'s attack power',
+          secondaryRuneEffect: '2-piece: Crit Rate +6%',
+        },
+        {
+          name: 'Alpha 4-piece + Giants 2-piece',
+          englishName: 'Alpha 4-piece + Giants 2-piece',
+          mainRune: 'Alpha',
+          secondaryRune: 'Giants',
+          mainRune2Piece: '2-piece: Attack Power +8%',
+          mainRune4Piece: '4-piece: When attacking, additional damage equal to 12% of character\'s attack power',
+          secondaryRuneEffect: '2-piece: Attack power increased by 8%',
+        },
+        {
+          name: 'Alpha 4-piece + Epsilon 2-piece',
+          englishName: 'Alpha 4-piece + Epsilon 2-piece',
+          mainRune: 'Alpha',
+          secondaryRune: 'Epsilon',
+          mainRune2Piece: '2-piece: Attack Power +8%',
+          mainRune4Piece: '4-piece: When attacking, additional damage equal to 12% of character\'s attack power',
+          secondaryRuneEffect: '2-piece: Attack Power +8%',
+        },
+      ],
+      alternativeSets: [
+        {
+          name: 'Tide 4-piece + Alpha 2-piece',
+          englishName: 'Tide [Energy] 4-piece + Alpha 2-piece',
+          mainRune: 'Tide',
+          secondaryRune: 'Alpha',
+          mainRune2Piece: '2-piece: Defense increased by 12%',
+          mainRune4Piece: "4-piece: Within 10 seconds after combat starts, your team's energy gain efficiency is increased by 30%",
+          secondaryRuneEffect: '2-piece: Attack Power +8%',
+          description: 'Focus on faster ultimate cycling to apply buffs more frequently',
+        },
+      ],
+    },
+    mainStatsByPosition: {
+      1: {
+        name: 'Position 1 — Fixed Main Stat',
+        stat: 'HP (Flat Value)',
+        description: 'Always HP - no other options',
+        isFixed: true,
+      },
+      2: {
+        name: 'Position 2 — Fixed Main Stat',
+        stat: 'Attack (Flat Value)',
+        description: 'Always Attack - no other options',
+        isFixed: true,
+      },
+      3: {
+        name: 'Position 3 — Fixed Main Stat',
+        stat: 'Defense (Flat Value)',
+        description: 'Always Defense - no other options',
+        isFixed: true,
+      },
+      4: {
+        name: 'Position 4 — Variable Main Stats',
+        recommendedStat: 'Attack (%)',
+        availableStats: [
+          'Healing Effectiveness (%)',
+          'Critical Rate (%)',
+          'Critical Damage (%)',
+          'Attack Penetration (%)',
+          'Attack (%)',
+          'HP (%)',
+          'Defense (%)',
+        ],
+        description: 'Attack % for maximum scaling on her buffs and damage',
+      },
+      5: {
+        name: 'Position 5 — Variable Main Stats',
+        recommendedStat: 'Ice Attribute Damage (%)',
+        availableStats: [
+          'Chaos Attribute Damage (%)',
+          'Fire Attribute Damage (%)',
+          'Ice Attribute Damage (%)',
+          'Holy Attribute Damage (%)',
+          'Attack (%)',
+          'HP (%)',
+          'Defense (%)',
+        ],
+        description: 'Ice Attribute Damage % recommended for Ice characters, or choose other elements for different team compositions',
+      },
+      6: {
+        name: 'Position 6 — Variable Main Stats',
+        recommendedStat: 'Attack (%)',
+        availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
+        description: 'Attack % for maximum buff scaling and damage output',
+      },
+    },
+    awakenings: {
+      priority: 'Level 6 is game-changing for ultimate duration and damage, Level 4 is crucial for extra damage',
+      keyMilestones: [
+        {
+          level: 1,
+          effect: "After using ultimate: All friendly units' attack power increased by 20% for 20 seconds",
+          importance: 'High',
+        },
+        {
+          level: 2,
+          effect: 'When characters with [Battle Intent] defeat an enemy: Recovers 1 energy for the team (additional to passive), can trigger at most once per second',
+          importance: 'High',
+        },
+        {
+          level: 3,
+          effect: 'Skill and Normal Attack: Level and level cap increased by +4',
+          importance: 'Medium',
+        },
+        {
+          level: 4,
+          effect: 'Characters with [Battle Intent] when attacking: Deal an additional 500% attack power as ice damage. Triggers at most once every 10 seconds',
+          importance: 'Game-Changing',
+        },
+        {
+          level: 5,
+          effect: 'Ultimate Skill and Passive: Level and level cap increased by +4',
+          importance: 'High',
+        },
+        {
+          level: 6,
+          effect: 'Ultimate skill duration extended to 20 seconds. Damage increased by 100%',
+          importance: 'Game-Changing',
+        },
+      ],
+    },
+    teamSkill: {
+      name: 'Combination Skill',
+      activationCondition: 'Battle Start: All team damage +10%. Every 500 attack power, all team damage additionally +5%, max 6 times (30%)',
+      requirements: 'Sapphire Faction + Ice Element characters',
+      effects: [
+        'Battle Start: All team damage +10%',
+        'Every 500 attack power, all team damage additionally +5%, max 6 times (30%)',
+      ],
+    },
+    teamSynergy: {
+      goodWith: ['High ATK DPS characters', 'Ice characters', 'Sapphire faction characters'],
+      note: 'Naiya excels when paired with high ATK damage dealers who can make full use of her 168% ATK buff and energy recovery. She works exceptionally well in Ice/Sapphire teams for her team skill. Position her so she survives to maintain buffs, while ensuring the Battle Intent target can eliminate enemies to trigger energy recovery and damage amp.',
+    },
+  },
+
+  // Apep Build
+  apep: {
+    name: 'Apep',
+    role: 'Tank',
+    buildType: 'Tank Sub-DPS Wind',
+    description:
+      'Apep is a sub-DPS tank unit; she scales with DEF and can generate her self-shield and also heal herself. Her ultimate is only 2 cost!',
+    skillPriority: [
+      {
+        skill: 'Passive',
+        priority: 1,
+        level: 'Level 10',
+        reason: 'Enhances defense scaling and survivability - max level for F2P efficiency',
+        description: 'Scales DEF to ATK and provides self-shield generation',
+      },
+      {
+        skill: 'Auto Skill',
+        priority: 2,
+        level: 'Level 8',
+        reason: 'Core tank ability - provides defense scaling and shield generation',
+        description: 'Generates shields based on DEF and provides team protection',
+      },
+      {
+        skill: 'Ultimate',
+        priority: 3,
+        level: 'Level 8',
+        reason: 'Very efficient 2-cost ultimate for damage and defense',
+        description: '2-cost ability that deals wind damage and provides shields',
+      },
+      {
+        skill: 'Normal Attack',
+        priority: 4,
+        level: 'Level 7',
+        reason: 'Sub-DPS damage that scales with defense and provides self-healing',
+        description: 'Basic attack that scales with DEF and provides healing',
+      },
+    ],
+    recommendedMemoryCards: [
+      {
+        name: 'Wrong Appearance Timing',
+        effect:
+          "Apep's exclusive memory card. Defense increased by 64%, HP recovery when above 50% HP, and damage reduction/damage increase buffs.",
+        priority: 'Highly Recommended',
+        characterSpecific: true,
+      },
+    ],
+    alternativeMemoryCards: [
+      {
+        name: 'Behind the Regret',
+        effect:
+          "SR memory card that provides HP increase and healing boost, enhancing Apep's survivability and sustain",
+        characterSpecific: false,
+        memoryImage: 'mordredcard',
+        memoryStats: { hp: '5,000', attack: '500', defense: '500' },
+        description: 'HP increased by 24%, Self healing amount increased by 30%',
+      },
+    ],
+    runes: {
+      primary: 'Defense',
+      secondary: 'HP',
+      stats: ['DEF%', 'HP%', 'DEF', 'HP', 'Crit Rate', 'Crit Damage', 'Penetration'],
+      recommendedSets: [
+        {
+          name: 'Zahn 4-piece + Tide 2-piece',
+          englishName: 'Zahn (札恩) 4-piece + Tide [Energy] 2-piece',
+          mainRune: 'Zahn',
+          secondaryRune: 'Tide',
+          mainRune2Piece: '2-piece: HP +8%',
+          mainRune4Piece: '4-piece: After Ultimate: Take 5% less damage (10s)',
+          secondaryRuneEffect: '2-piece: Defense increased by 12%',
+        },
+        {
+          name: 'Zahn 4-piece + Shattered Foundation 2-piece',
+          englishName: 'Zahn (札恩) 4-piece + Shattered Foundation (碎基) 2-piece',
+          mainRune: 'Zahn',
+          secondaryRune: 'Shattered-Foundation',
+          mainRune2Piece: '2-piece: HP +8%',
+          mainRune4Piece: '4-piece: After Ultimate: Take 5% less damage (10s)',
+          secondaryRuneEffect: '2-piece: Defense +12%',
+        },
+      ],
+      alternativeSets: [
+        {
+          name: 'Tide 4-piece + Zahn 2-piece',
+          englishName: 'Tide [Energy] (潮汐 [能量]) 4-piece + Zahn (札恩) 2-piece',
+          mainRune: 'Tide',
+          secondaryRune: 'Zahn',
+          mainRune2Piece: '2-piece: Defense increased by 12%',
+          mainRune4Piece:
+            "4-piece: Within 10 seconds after combat starts, your team's energy gain efficiency is increased by 30%",
+          secondaryRuneEffect: '2-piece: HP +8%',
+        },
+        {
+          name: 'Tide 4-piece + Shattered Foundation 2-piece',
+          englishName: 'Tide [Energy] (潮汐 [能量]) 4-piece + Shattered Foundation (碎基) 2-piece',
+          mainRune: 'Tide',
+          secondaryRune: 'Shattered-Foundation',
+          mainRune2Piece: '2-piece: Defense increased by 12%',
+          mainRune4Piece:
+            "4-piece: Within 10 seconds after combat starts, your team's energy gain efficiency is increased by 30%",
+          secondaryRuneEffect: '2-piece: Defense +12%',
+        },
+      ],
+    },
+    mainStatsByPosition: {
+      1: {
+        name: 'Position 1 — Fixed Main Stat',
+        stat: 'HP (Flat Value)',
+        description: 'Always HP - no other options',
+        isFixed: true,
+      },
+      2: {
+        name: 'Position 2 — Fixed Main Stat',
+        stat: 'Attack (Flat Value)',
+        description: 'Always Attack - no other options',
+        isFixed: true,
+      },
+      3: {
+        name: 'Position 3 — Fixed Main Stat',
+        stat: 'Defense (Flat Value)',
+        description: 'Always Defense - no other options',
+        isFixed: true,
+      },
+      4: {
+        name: 'Position 4 — Variable Main Stats',
+        recommendedStat: 'Defense (%)',
+        availableStats: [
+          'Healing Effectiveness (%)',
+          'Critical Rate (%)',
+          'Critical Damage (%)',
+          'Attack Penetration (%)',
+          'Attack (%)',
+          'HP (%)',
+          'Defense (%)',
+        ],
+        description:
+          'Most diverse options including utility stats and exclusive Attack Penetration (%)',
+      },
+      5: {
+        name: 'Position 5 — Variable Main Stats',
+        recommendedStat: 'Defense (%)',
+        availableStats: [
+          'Wind Attribute Damage (%)',
+          'Fire Attribute Damage (%)',
+          'Ice Attribute Damage (%)',
+          'Holy Attribute Damage (%)',
+          'Chaos Attribute Damage (%)',
+          'Attack (%)',
+          'HP (%)',
+          'Defense (%)',
+        ],
+        description: 'Core stats plus elemental damage increases - all percentages',
+      },
+      6: {
+        name: 'Position 6 — Variable Main Stats',
+        recommendedStat: 'Defense (%)',
+        availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
+        description: 'Focus on core percentage stat increases only',
+      },
+    },
+    teamSynergy: {
+      goodWith: ['Nina', 'Hela', 'Shu'],
+      note: 'This unit has no clear synergy with other characters, but this is the best I could think of right now! She is more PVP focused than PVE.',
+    },
+  },
+};
+
+// Generate builds for available characters only
+export function getAllCharacterBuilds() {
+  const builds = {};
+
+  // Only include characters that have explicit builds defined
+  Object.keys(CHARACTER_BUILDS).forEach(characterSlug => {
+    const character = ZONE_NOVA_CHARACTERS.find(c => c.slug === characterSlug);
+    if (character) {
+      builds[characterSlug] = {
+        ...CHARACTER_BUILDS[characterSlug],
+        character: character,
+      };
+    }
+  });
+
+  return builds;
+}
+
+// Helper functions for generating default builds
+function getDefaultBuildType(role, characterClass) {
+  const buildTypes = {
+    DPS: {
+      Warrior: 'Frontline Fighter',
+      Mage: 'Magic Damage Dealer',
+      Rogue: 'Critical Striker',
+    },
+    Tank: {
+      Guardian: 'Defensive Guardian',
+    },
+    Healer: {
+      Healer: 'Support Healer',
+    },
+    Buffer: {
+      Buffer: 'Team Support',
+    },
+    Debuffer: {
+      Debuffer: 'Control Specialist',
+    },
+  };
+
+  return buildTypes[role]?.[characterClass] || 'Balanced Build';
+}
+
+function getDefaultDescription(role, characterClass) {
+  const descriptions = {
+    DPS: 'Focus on maximizing damage output through appropriate stat building and skill prioritization.',
+    Tank: 'Prioritize defense and HP to protect allies and control the battlefield.',
+    Healer: 'Maximize healing output and support capabilities to keep the team alive.',
+    Buffer: 'Enhance team performance through strategic buff application and support.',
+    Debuffer: 'Control enemies through debuffs and crowd management techniques.',
+  };
+
+  return descriptions[role] || "A balanced build optimized for the character's abilities and role.";
+}
+
+// Get specific character build
+export function getCharacterBuild(slug) {
+  const allBuilds = getAllCharacterBuilds();
+  return allBuilds[slug];
+}
+
+// Get builds by role
+export function getBuildsByRole(role) {
+  const allBuilds = getAllCharacterBuilds();
+  return Object.values(allBuilds).filter(build => build.role === role);
+}
+
+// Get builds by class
+export function getBuildsByClass(characterClass) {
+  const allBuilds = getAllCharacterBuilds();
+  return Object.values(allBuilds).filter(build => build.character?.class === characterClass);
+}
+
+// Export all character builds for easy access
+export const ALL_CHARACTER_BUILDS = getAllCharacterBuilds();

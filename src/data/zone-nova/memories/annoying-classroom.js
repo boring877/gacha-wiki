@@ -20,7 +20,7 @@ export const annoyingClassroomData = {
 
   // Memory Effects
   effects: [
-    'When releasing ultimate skill: For each enemy on the field, ultimate skill damage increases by 12%, up to 5 stacks, lasting 5 seconds',
+    'When releasing ultimate skill: For each enemy on the field, ultimate skill damage increases by 12%, up to 5 stacks, lasting 5 seconds maximum bonus of 60% (12% × 5 stacks)',
   ],
 };
 
