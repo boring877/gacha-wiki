@@ -4,6 +4,7 @@ import { helaBuild } from './character-builds/hela.js';
 import { apepBuild } from './character-builds/apep.js';
 import { naiyaBuild } from './character-builds/naiya.js';
 import { pennyBuild } from './character-builds/penny.js';
+import { apolloBuild } from './character-builds/apollo.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -18,6 +19,9 @@ export const CHARACTER_BUILDS = {
 
   // Penny Build - SSR Wind Tank
   penny: pennyBuild,
+
+  // Apollo Build - SSR Fire Buffer
+  apollo: apolloBuild,
 };
 
 // Generate builds for available characters only

@@ -20,8 +20,8 @@ export const theLoneliestMomentData = {
 
   // Memory Effects
   effects: [
-    "Battle start: All allied characters' damage increases by 40%, pursuit damage additionally increases by 40%",
-    "When equipped character releases ultimate or energy >8: All allied characters' energy acquisition efficiency increases by 100% for 10 seconds",
+    "Battle start: All allied characters' damage increases by 40%, Extra Attack damage additionally increases by 40%",
+    "When equipped character releases ultimate That cost higher then 8: All allied characters' energy efficiency increases by 100% for 10 seconds",
   ],
 };
 

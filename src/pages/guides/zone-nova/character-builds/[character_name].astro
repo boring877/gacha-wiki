@@ -10,6 +10,7 @@ import { apepData } from '../../../../data/zone-nova/characters/apep.js';
 import { helaData } from '../../../../data/zone-nova/characters/hela.js';
 import { naiyaData } from '../../../../data/zone-nova/characters/naiya.js';
 import { pennyData } from '../../../../data/zone-nova/characters/penny.js';
+import { apolloData } from '../../../../data/zone-nova/characters/apollo.js';
 
 export const prerender = true;
 
@@ -69,7 +70,9 @@ const characterData =
         ? naiyaData
         : finalCharacter.slug === 'penny'
           ? pennyData
-          : null;
+          : finalCharacter.slug === 'apollo'
+            ? apolloData
+            : null;
 
 // Memory card URL mapping for easy maintenance
 const memoryCardUrls = {
@@ -78,6 +81,7 @@ const memoryCardUrls = {
   'Frost Dominion': '/guides/zone-nova/memories/frost-dominion/',
   'Her Trainer': '/guides/zone-nova/memories/her-trainer/',
   'Wrong Appearance Timing': '/guides/zone-nova/memories/wrong-appearance-timing/',
+  'The Loneliest Moment': '/guides/zone-nova/memories/the-loneliest-moment/',
 
   // Alternative memory cards
   'Lancelot-HerTrainer': '/guides/zone-nova/memories/lancelot-hertrainer/',
@@ -169,14 +173,27 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
           let skillDescription = skill.description;
           if (characterData && characterData.skills) {
             const skillKey = skill.skill.toLowerCase().replace(' ', '');
-            if (skillKey === 'passive' && characterData.skills.passive) {
-              skillDescription = characterData.skills.passive.description;
-            } else if (skillKey === 'autoskill' && characterData.skills.auto) {
-              skillDescription = characterData.skills.auto.description;
-            } else if (skillKey === 'ultimate' && characterData.skills.ultimate) {
-              skillDescription = characterData.skills.ultimate.description;
-            } else if (skillKey === 'normalattack' && characterData.skills.normal) {
-              skillDescription = characterData.skills.normal.description;
+            let specificSkill: any = null;
+
+            if (skillKey === 'passive') {
+              specificSkill = characterData.skills.passive;
+            } else if (skillKey === 'autoskill') {
+              specificSkill = characterData.skills.auto;
+            } else if (skillKey === 'ultimate') {
+              specificSkill = characterData.skills.ultimate;
+            } else if (skillKey === 'normalattack') {
+              specificSkill = characterData.skills.normal;
+            }
+
+            if (specificSkill) {
+              skillDescription = specificSkill.description;
+              // Prepend Energy Cost or Cooldown if available
+              if (specificSkill.energyCost) {
+                skillDescription = `Energy Cost: ${specificSkill.energyCost}\n${skillDescription}`;
+              }
+              if (specificSkill.cooldown) {
+                skillDescription = `Auto-trigger: ${specificSkill.cooldown}\n${skillDescription}`;
+              }
             }
           }
 
@@ -451,6 +468,17 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
       )
     }
 
+    {
+      finalBuild.runes.buildNote && (
+        <div style="background-color: var(--zn-bg-tertiary); border: 1px solid var(--zn-border-light); border-radius: 4px; padding: 1rem; margin: 2rem 0;">
+          <div style="color: var(--zn-text-secondary); font-size: 0.9rem; font-style: italic;">
+            <strong style="color: var(--zn-primary);">Build Note:</strong>{' '}
+            {finalBuild.runes.buildNote}
+          </div>
+        </div>
+      )
+    }
+
     <h3>Recommended Rune Sets:</h3>
     <div
       style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;"
@@ -613,64 +641,159 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
         <>
           <h3>Alternative Builds:</h3>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
-            {finalBuild.runes.alternativeSets.map(runeSet => (
-              <div style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1rem; text-align: center;">
-                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                  <div style="text-align: center;">
-                    <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                      <ZNRunesImage
-                        imageName={runeSet.mainRune}
-                        alt={`${runeSet.mainRune} rune (4-piece)`}
-                        width={64}
-                        height={64}
-                        loading="eager"
-                        style="width: 100%; height: 100%; object-fit: contain; display: block;"
-                      />
+            {finalBuild.runes.alternativeSets.map(runeSet => {
+              // Check if this is a 3-set configuration (all separate 2-piece runes)
+              const isThreeSetConfig = runeSet.shatteredFoundation && runeSet.tide && runeSet.zahn;
+
+              if (isThreeSetConfig) {
+                // Render 3 separate 2-piece rune sets
+                return (
+                  <div style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1rem; text-align: center;">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                      <div style="text-align: center;">
+                        <div style="width: 58px; height: 58px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                          <ZNRunesImage
+                            imageName="Shattered-Foundation"
+                            alt="Shattered Foundation rune (2-piece)"
+                            width={58}
+                            height={58}
+                            loading="eager"
+                            style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                          />
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--zn-text-secondary); margin-top: 0.25rem;">
+                          2-piece
+                        </div>
+                      </div>
+                      <div style="font-size: 1.2rem; color: var(--zn-text-secondary); font-weight: 600;">
+                        +
+                      </div>
+                      <div style="text-align: center;">
+                        <div style="width: 58px; height: 58px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                          <ZNRunesImage
+                            imageName="Tide"
+                            alt="Tide rune (2-piece)"
+                            width={58}
+                            height={58}
+                            loading="eager"
+                            style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                          />
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--zn-text-secondary); margin-top: 0.25rem;">
+                          2-piece
+                        </div>
+                      </div>
+                      <div style="font-size: 1.2rem; color: var(--zn-text-secondary); font-weight: 600;">
+                        +
+                      </div>
+                      <div style="text-align: center;">
+                        <div style="width: 58px; height: 58px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                          <ZNRunesImage
+                            imageName="Zahn"
+                            alt="Zahn rune (2-piece)"
+                            width={58}
+                            height={58}
+                            loading="eager"
+                            style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                          />
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--zn-text-secondary); margin-top: 0.25rem;">
+                          2-piece
+                        </div>
+                      </div>
                     </div>
-                    <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
-                      4-piece
+                    <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
+                      {runeSet.englishName}
+                    </div>
+                    <div style="margin-top: 0.75rem; text-align: left;">
+                      <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                        <strong style="color: var(--zn-primary);">
+                          2-piece (Shattered Foundation):
+                        </strong>{' '}
+                        {runeSet.shatteredFoundation.effect}
+                      </div>
+                      <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                        <strong style="color: var(--zn-primary);">2-piece (Tide):</strong>{' '}
+                        {runeSet.tide.effect}
+                      </div>
+                      <div style="font-size: 0.9rem; color: var(--zn-text-secondary);">
+                        <strong style="color: var(--zn-primary);">2-piece (Zahn):</strong>{' '}
+                        {runeSet.zahn.effect}
+                      </div>
+                      {runeSet.description && (
+                        <div style="font-size: 0.85rem; color: var(--zn-text-muted); margin-top: 0.5rem; font-style: italic;">
+                          {runeSet.description}
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div style="font-size: 1.5rem; color: var(--zn-text-secondary); font-weight: 600;">
-                    +
-                  </div>
-                  <div style="text-align: center;">
-                    <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                      <ZNRunesImage
-                        imageName={runeSet.secondaryRune}
-                        alt={`${runeSet.secondaryRune} rune (2-piece)`}
-                        width={64}
-                        height={64}
-                        loading="eager"
-                        style="width: 100%; height: 100%; object-fit: contain; display: block;"
-                      />
+                );
+              } else {
+                // Render traditional 4-piece + 2-piece configuration
+                return (
+                  <div style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1rem; text-align: center;">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                      <div style="text-align: center;">
+                        <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                          <ZNRunesImage
+                            imageName={runeSet.mainRune}
+                            alt={`${runeSet.mainRune} rune (4-piece)`}
+                            width={64}
+                            height={64}
+                            loading="eager"
+                            style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                          />
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
+                          4-piece
+                        </div>
+                      </div>
+                      <div style="font-size: 1.5rem; color: var(--zn-text-secondary); font-weight: 600;">
+                        +
+                      </div>
+                      <div style="text-align: center;">
+                        <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                          <ZNRunesImage
+                            imageName={runeSet.secondaryRune}
+                            alt={`${runeSet.secondaryRune} rune (2-piece)`}
+                            width={64}
+                            height={64}
+                            loading="eager"
+                            style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                          />
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
+                          2-piece
+                        </div>
+                      </div>
                     </div>
-                    <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
-                      2-piece
+                    <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
+                      {runeSet.englishName}
+                    </div>
+                    <div style="margin-top: 0.75rem; text-align: left;">
+                      <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                        <strong style="color: var(--zn-primary);">
+                          2-piece ({runeSet.mainRune}):
+                        </strong>{' '}
+                        {runeSet.mainRune2Piece}
+                      </div>
+                      <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                        <strong style="color: var(--zn-primary);">
+                          4-piece ({runeSet.mainRune}):
+                        </strong>{' '}
+                        {runeSet.mainRune4Piece}
+                      </div>
+                      <div style="font-size: 0.9rem; color: var(--zn-text-secondary);">
+                        <strong style="color: var(--zn-primary);">
+                          2-piece ({runeSet.secondaryRune}):
+                        </strong>{' '}
+                        {runeSet.secondaryRuneEffect}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
-                  {runeSet.englishName}
-                </div>
-                <div style="margin-top: 0.75rem; text-align: left;">
-                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
-                    <strong style="color: var(--zn-primary);">2-piece ({runeSet.mainRune}):</strong>{' '}
-                    {runeSet.mainRune2Piece}
-                  </div>
-                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
-                    <strong style="color: var(--zn-primary);">4-piece ({runeSet.mainRune}):</strong>{' '}
-                    {runeSet.mainRune4Piece}
-                  </div>
-                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary);">
-                    <strong style="color: var(--zn-primary);">
-                      2-piece ({runeSet.secondaryRune}):
-                    </strong>{' '}
-                    {runeSet.secondaryRuneEffect}
-                  </div>
-                </div>
-              </div>
-            ))}
+                );
+              }
+            })}
           </div>
         </>
       )

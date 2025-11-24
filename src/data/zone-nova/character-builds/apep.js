@@ -18,7 +18,7 @@ export const apepBuild = {
     {
       skill: 'Auto Skill',
       priority: 2,
-      level: 'Level 8',
+      level: 'Level 10',
       reason: 'Core tank ability - provides defense scaling and shield generation',
       description: 'Generates shields based on DEF and provides team protection',
     },
