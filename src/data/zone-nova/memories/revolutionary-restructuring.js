@@ -18,8 +18,8 @@ export const revolutionaryRestructuringData = {
   // Memory Effects
   effects: [
     'Attack increases by 40%',
-    'Infiltration Effect: When skill hits target, additionally adds one layer [Infiltration]',
-    '[Infiltration]: Every 2 seconds deals 15% Chaos damage, maximum 5 layers, lasts 10 seconds',
+    'Infiltration Effect: When skill hits target, additionally adds one layer [Erosion]',
+    '[Erosion]: Every 1 second deals 15% Chaos damage, maximum 5 layers, lasts 10 seconds',
   ],
 
   // Character Synergy

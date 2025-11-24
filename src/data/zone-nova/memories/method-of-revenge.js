@@ -17,7 +17,7 @@ export const methodOfRevengeData = {
 
   // Memory Effects
   effects: [
-    'Support Synergy: When a support character uses their ultimate, own ultimate damage increases by 60% for 10 seconds',
+    'Support Synergy: When a Buffer character uses their ultimate, own ultimate damage increases by 60% for 10 seconds',
   ],
 
   // Character Synergy

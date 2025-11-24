@@ -3,6 +3,7 @@ import { ZONE_NOVA_CHARACTERS } from './characters.js';
 import { helaBuild } from './character-builds/hela.js';
 import { apepBuild } from './character-builds/apep.js';
 import { naiyaBuild } from './character-builds/naiya.js';
+import { pennyBuild } from './character-builds/penny.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -14,6 +15,9 @@ export const CHARACTER_BUILDS = {
 
   // Apep Build - SSR Wind Tank
   apep: apepBuild,
+
+  // Penny Build - SSR Wind Tank
+  penny: pennyBuild,
 };
 
 // Generate builds for available characters only

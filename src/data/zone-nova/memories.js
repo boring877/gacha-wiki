@@ -212,7 +212,7 @@ export const ZONE_NOVA_MEMORIES = [
     },
     effects: [
       'Attack increased by 40%',
-      'Must kill damage increased by 40% when the target is the only enemy',
+      'Execute Damage increased by 40% when the target is the only enemy',
       'Critical rate increased by 12%',
     ],
   },
@@ -826,8 +826,8 @@ export const ZONE_NOVA_MEMORIES = [
     },
     effects: [
       'Attack increases by 40%',
-      'Infiltration Effect: When skill hits target, additionally adds one layer [Infiltration]',
-      '[Infiltration]: Every 2 seconds deals 15% Chaos damage, maximum 5 layers, lasts 10 seconds',
+      'Infiltration Effect: When skill hits target, additionally adds one layer [Erosion]',
+      '[Erosion]: Every 1 second deals 15% Chaos damage, maximum 5 layers, lasts 10 seconds',
     ],
   },
   {
@@ -845,7 +845,7 @@ export const ZONE_NOVA_MEMORIES = [
       defense: 395,
     },
     effects: [
-      'Support Synergy: When a support character uses their ultimate, own ultimate damage increases by 60% for 10 seconds',
+      'Support Synergy: When a Buffer character uses their ultimate, own ultimate damage increases by 60% for 10 seconds',
     ],
   },
   {

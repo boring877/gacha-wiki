@@ -42,16 +42,16 @@ const {
 
 // Get the imported image object from the map
 // Handle full paths, with and without extension
-let imageKey = imageName;
+let imageKey = imageName || 'Alpha.jpg';
 
 // Extract filename from full path if needed
-if (imageKey.includes('/')) {
+if (imageKey && imageKey.includes('/')) {
   const parts = imageKey.split('/');
   imageKey = parts[parts.length - 1] || 'Alpha.jpg';
 }
 
 // Add extension if missing
-if (!imageKey.includes('.')) {
+if (imageKey && !imageKey.includes('.')) {
   imageKey = `${imageKey}.jpg`;
 }
 

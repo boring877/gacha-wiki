@@ -21,7 +21,7 @@ export const kingsSwordData = {
   // Memory Effects
   effects: [
     'Attack increased by 40%',
-    'Must kill damage increased by 40% when the target is the only enemy',
+    'Execute Damage increased by 40% when the target is the only enemy',
     'Critical rate increased by 12%',
   ],
 };

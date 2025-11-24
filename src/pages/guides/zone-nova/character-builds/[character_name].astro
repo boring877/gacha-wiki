@@ -9,6 +9,7 @@ import { getCharacterBySlug } from '../../../../data/zone-nova/characters.js';
 import { apepData } from '../../../../data/zone-nova/characters/apep.js';
 import { helaData } from '../../../../data/zone-nova/characters/hela.js';
 import { naiyaData } from '../../../../data/zone-nova/characters/naiya.js';
+import { pennyData } from '../../../../data/zone-nova/characters/penny.js';
 
 export const prerender = true;
 
@@ -58,7 +59,7 @@ const fallbackBuild = {
 const finalCharacter = character || fallbackCharacter;
 const finalBuild = build || fallbackBuild;
 
-// Get character-specific data for Apep, Hela, and Naiya
+// Get character-specific data for Apep, Hela, Naiya, and Penny
 const characterData =
   finalCharacter.slug === 'apep'
     ? apepData
@@ -66,7 +67,25 @@ const characterData =
       ? helaData
       : finalCharacter.slug === 'naiya'
         ? naiyaData
-        : null;
+        : finalCharacter.slug === 'penny'
+          ? pennyData
+          : null;
+
+// Memory card URL mapping for easy maintenance
+const memoryCardUrls = {
+  // Character-specific memory cards
+  'Strange Gaze Full of Desire': '/guides/zone-nova/memories/strange-gaze-full-of-desire/',
+  'Frost Dominion': '/guides/zone-nova/memories/frost-dominion/',
+  'Her Trainer': '/guides/zone-nova/memories/her-trainer/',
+  'Wrong Appearance Timing': '/guides/zone-nova/memories/wrong-appearance-timing/',
+
+  // Alternative memory cards
+  'Lancelot-HerTrainer': '/guides/zone-nova/memories/lancelot-hertrainer/',
+  'Sleep Treasure': '/guides/zone-nova/memories/sleep-treasure/',
+  Mordred: '/guides/zone-nova/memories/mordred/',
+  'Heroes, Never Stop': '/guides/zone-nova/memories/heroes-never-stop/',
+  'Behind the Regret': '/guides/zone-nova/memories/behind-the-regret/',
+};
 
 // Helper function to get badge class names
 function getElementBadgeClass(element) {
@@ -246,7 +265,7 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                       </div>
                     )}
                   </div>
-                  <div class="memory-card-effect">{memoryDetails?.description || card.effect}</div>
+                  <div class="memory-card-effect">{card.description || card.effect}</div>
 
                   {/* Spending recommendation note */}
                   {card.spendingNote && (
@@ -262,18 +281,9 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                       {memoryDetails.stats.attack} / DEF {memoryDetails.stats.defense}
                     </div>
                   )}
-                  {card.characterSpecific && (
+                  {memoryCardUrls[card.name] && (
                     <div class="memory-card-link-container">
-                      <a
-                        href={
-                          finalCharacter.slug === 'hela'
-                            ? '/guides/zone-nova/memories/strange-gaze-full-of-desire/'
-                            : finalCharacter.slug === 'naiya'
-                              ? '/guides/zone-nova/memories/frost-dominion/'
-                              : '/guides/zone-nova/memories/wrong-appearance-timing/'
-                        }
-                        class="memory-card-link"
-                      >
+                      <a href={memoryCardUrls[card.name]} class="memory-card-link">
                         View Details →
                       </a>
                     </div>
@@ -337,7 +347,7 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                   <div class="memory-card-header">
                     <div class="memory-card-name">{card.name}</div>
                   </div>
-                  <div class="memory-card-effect">{memoryDetails?.description || card.effect}</div>
+                  <div class="memory-card-effect">{card.description || card.effect}</div>
 
                   {/* Spending recommendation note */}
                   {card.spendingNote && (
@@ -353,18 +363,14 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                       {memoryDetails.stats.attack} / DEF {memoryDetails.stats.defense}
                     </div>
                   )}
-                  <div class="memory-card-link-container">
-                    <a
-                      href={
-                        card.name === 'Heroes, Never Stop'
-                          ? '/guides/zone-nova/memories/heroes-never-stop/'
-                          : '/guides/zone-nova/memories/behind-the-regret/'
-                      }
-                      class="memory-card-link"
-                    >
-                      View Details →
-                    </a>
-                  </div>
+                  {/* Only show "View Details" for memory cards with dedicated pages */}
+                  {memoryCardUrls[card.name] && (
+                    <div class="memory-card-link-container">
+                      <a href={memoryCardUrls[card.name]} class="memory-card-link">
+                        View Details →
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -450,64 +456,155 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
       style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;"
     >
       {
-        finalBuild.runes.recommendedSets.map(runeSet => (
-          <div style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1rem; text-align: center;">
-            <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-              <div style="text-align: center;">
-                <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                  <ZNRunesImage
-                    imageName={runeSet.mainRune}
-                    alt={`${runeSet.mainRune} rune (4-piece)`}
-                    width={64}
-                    height={64}
-                    loading="eager"
-                    style="width: 100%; height: 100%; object-fit: contain; display: block;"
-                  />
+        finalBuild.runes.recommendedSets.map(runeSet => {
+          // Check if this is a 3-set configuration (all separate 2-piece runes)
+          const isThreeSetConfig = runeSet.shatteredFoundation && runeSet.tide && runeSet.zahn;
+
+          if (isThreeSetConfig) {
+            // Render 3 separate 2-piece rune sets
+            return (
+              <div style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1rem; text-align: center;">
+                <div style="display: flex; justify-content: center; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                  <div style="text-align: center;">
+                    <div style="width: 58px; height: 58px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                      <ZNRunesImage
+                        imageName="Shattered-Foundation"
+                        alt="Shattered Foundation rune (2-piece)"
+                        width={58}
+                        height={58}
+                        loading="eager"
+                        style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                      />
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--zn-text-secondary); margin-top: 0.25rem;">
+                      2-piece
+                    </div>
+                  </div>
+                  <div style="font-size: 1.2rem; color: var(--zn-text-secondary); font-weight: 600;">
+                    +
+                  </div>
+                  <div style="text-align: center;">
+                    <div style="width: 58px; height: 58px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                      <ZNRunesImage
+                        imageName="Tide"
+                        alt="Tide rune (2-piece)"
+                        width={58}
+                        height={58}
+                        loading="eager"
+                        style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                      />
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--zn-text-secondary); margin-top: 0.25rem;">
+                      2-piece
+                    </div>
+                  </div>
+                  <div style="font-size: 1.2rem; color: var(--zn-text-secondary); font-weight: 600;">
+                    +
+                  </div>
+                  <div style="text-align: center;">
+                    <div style="width: 58px; height: 58px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                      <ZNRunesImage
+                        imageName="Zahn"
+                        alt="Zahn rune (2-piece)"
+                        width={58}
+                        height={58}
+                        loading="eager"
+                        style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                      />
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--zn-text-secondary); margin-top: 0.25rem;">
+                      2-piece
+                    </div>
+                  </div>
                 </div>
-                <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
-                  4-piece
+                <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
+                  {runeSet.englishName}
+                </div>
+                <div style="margin-top: 0.75rem; text-align: left;">
+                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                    <strong style="color: var(--zn-primary);">
+                      2-piece (Shattered Foundation):
+                    </strong>{' '}
+                    {runeSet.shatteredFoundation.effect}
+                  </div>
+                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                    <strong style="color: var(--zn-primary);">2-piece (Tide):</strong>{' '}
+                    {runeSet.tide.effect}
+                  </div>
+                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary);">
+                    <strong style="color: var(--zn-primary);">2-piece (Zahn):</strong>{' '}
+                    {runeSet.zahn.effect}
+                  </div>
+                  {runeSet.description && (
+                    <div style="font-size: 0.85rem; color: var(--zn-text-muted); margin-top: 0.5rem; font-style: italic;">
+                      {runeSet.description}
+                    </div>
+                  )}
                 </div>
               </div>
-              <div style="font-size: 1.5rem; color: var(--zn-text-secondary); font-weight: 600;">
-                +
-              </div>
-              <div style="text-align: center;">
-                <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                  <ZNRunesImage
-                    imageName={runeSet.secondaryRune}
-                    alt={`${runeSet.secondaryRune} rune (2-piece)`}
-                    width={64}
-                    height={64}
-                    loading="eager"
-                    style="width: 100%; height: 100%; object-fit: contain; display: block;"
-                  />
+            );
+          } else {
+            // Render traditional 4-piece + 2-piece configuration
+            return (
+              <div style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1rem; text-align: center;">
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                  <div style="text-align: center;">
+                    <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                      <ZNRunesImage
+                        imageName={runeSet.mainRune}
+                        alt={`${runeSet.mainRune} rune (4-piece)`}
+                        width={64}
+                        height={64}
+                        loading="eager"
+                        style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                      />
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
+                      4-piece
+                    </div>
+                  </div>
+                  <div style="font-size: 1.5rem; color: var(--zn-text-secondary); font-weight: 600;">
+                    +
+                  </div>
+                  <div style="text-align: center;">
+                    <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                      <ZNRunesImage
+                        imageName={runeSet.secondaryRune}
+                        alt={`${runeSet.secondaryRune} rune (2-piece)`}
+                        width={64}
+                        height={64}
+                        loading="eager"
+                        style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                      />
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
+                      2-piece
+                    </div>
+                  </div>
                 </div>
-                <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
-                  2-piece
+                <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
+                  {runeSet.englishName}
+                </div>
+                <div style="margin-top: 0.75rem; text-align: left;">
+                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                    <strong style="color: var(--zn-primary);">2-piece ({runeSet.mainRune}):</strong>{' '}
+                    {runeSet.mainRune2Piece}
+                  </div>
+                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+                    <strong style="color: var(--zn-primary);">4-piece ({runeSet.mainRune}):</strong>{' '}
+                    {runeSet.mainRune4Piece}
+                  </div>
+                  <div style="font-size: 0.9rem; color: var(--zn-text-secondary);">
+                    <strong style="color: var(--zn-primary);">
+                      2-piece ({runeSet.secondaryRune}):
+                    </strong>{' '}
+                    {runeSet.secondaryRuneEffect}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
-              {runeSet.englishName}
-            </div>
-            <div style="margin-top: 0.75rem; text-align: left;">
-              <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
-                <strong style="color: var(--zn-primary);">2-piece ({runeSet.mainRune}):</strong>{' '}
-                {runeSet.mainRune2Piece}
-              </div>
-              <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
-                <strong style="color: var(--zn-primary);">4-piece ({runeSet.mainRune}):</strong>{' '}
-                {runeSet.mainRune4Piece}
-              </div>
-              <div style="font-size: 0.9rem; color: var(--zn-text-secondary);">
-                <strong style="color: var(--zn-primary);">
-                  2-piece ({runeSet.secondaryRune}):
-                </strong>{' '}
-                {runeSet.secondaryRuneEffect}
-              </div>
-            </div>
-          </div>
-        ))
+            );
+          }
+        })
       }
     </div>
 
@@ -589,7 +686,7 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
 
     <div class="main-stats-grid">
       {
-        Object.entries(finalBuild.mainStatsByPosition).map(([position, data]) => (
+        Object.entries(finalBuild.mainStatsByPosition).map(([position, data]: [string, any]) => (
           <div class="main-stat-card">
             <h3>{data.name}</h3>
 
@@ -621,68 +718,6 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
       }
     </div>
   </section>
-
-  <!-- Awakening Section -->
-  {
-    finalBuild.awakenings && (
-      <section class="build-section">
-        <h2>Awakening Priorities</h2>
-        <p style="color: var(--zn-text-secondary); margin-bottom: 1.5rem;">
-          {finalBuild.awakenings.priority}
-        </p>
-
-        <div class="awakening-list">
-          {finalBuild.awakenings.keyMilestones.map(milestone => (
-            <div
-              class={`awakening-item ${milestone.importance?.toLowerCase() === 'game-changing' ? 'game-changing' : milestone.importance?.toLowerCase() === 'essential' ? 'essential' : milestone.importance?.toLowerCase() === 'critical' ? 'critical' : 'normal'}`}
-            >
-              <div class="awakening-level">Level {milestone.level}</div>
-              <div class="awakening-content">
-                <div class="awakening-effect">{milestone.effect}</div>
-                <div class={`awakening-importance ${milestone.importance?.toLowerCase()}`}>
-                  {milestone.importance}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    )
-  }
-
-  <!-- Team Skill Section -->
-  {
-    finalBuild.teamSkill && (
-      <section class="build-section">
-        <h2>Team Skill</h2>
-        <div style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1.5rem; margin-bottom: 1.5rem;">
-          <h3 style="color: var(--zn-text-primary); margin-bottom: 1rem;">
-            {finalBuild.teamSkill.name}
-          </h3>
-          {finalBuild.teamSkill.requirements && (
-            <div style="margin-bottom: 1rem;">
-              <strong style="color: var(--zn-primary);">Requirements:</strong>{' '}
-              {finalBuild.teamSkill.requirements}
-            </div>
-          )}
-          {finalBuild.teamSkill.activationCondition && (
-            <div style="margin-bottom: 1rem;">
-              <strong style="color: var(--zn-primary);">Activation:</strong>{' '}
-              {finalBuild.teamSkill.activationCondition}
-            </div>
-          )}
-          <div>
-            <strong style="color: var(--zn-primary);">Effects:</strong>
-            <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--zn-text-secondary);">
-              {finalBuild.teamSkill.effects.map(effect => (
-                <li>{effect}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-    )
-  }
 
   <!-- Team Synergy Section -->
   <section class="build-section">
