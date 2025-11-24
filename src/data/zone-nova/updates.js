@@ -1,6 +1,24 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'november-25-maintenance',
+    title: 'November 25 Maintenance Update',
+    date: 'November 25, 2025',
+    type: 'maintenance',
+    summary:
+      'Major maintenance on November 25, 2025 (14:00, ~2 hours) brings Goddess of Night: Nightmare\'s Trial Part 2, Morgan Le Fay (Supporter, Holy) recruitment, "Absolutely Perfect Hips" memory, Freya rerun, "Servant\'s Wish" memory rerun, Rift Wave XVI, event packs, Rune Stone Dungeon double drops, and 300 Luminite compensation.',
+    url: '/guides/zone-nova/updates/maintenance-november-25-2025/',
+  },
+  {
+    id: 'morgan-le-fay-recruitment',
+    title: 'Limited Recruitment Character: Morgan Le Fay',
+    date: 'November 25, 2025',
+    type: 'recruitment',
+    summary:
+      'New Legendary character Morgan Le Fay (Supporter, Holy) available through Limited Recruitment from November 25 - December 9, 2025. A magic holy sword awakened to become the Witch Queen who strengthens allies and serves as a blade on the battlefield.',
+    url: '/guides/zone-nova/updates/announcement-morgan-le-fay-recruitment/',
+  },
+  {
     id: 'november-18-maintenance',
     title: 'November 18 Maintenance Update',
     date: 'November 18, 2025',
