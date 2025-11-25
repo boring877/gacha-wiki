@@ -34,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-11-15',
+  lastUpdated: '2025-11-25',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
     SSS: [
@@ -44,6 +44,7 @@ export const PVE_TIER_LIST = {
       { name: 'Hela' },
       { name: 'Gaia' },
       { name: 'Nina' },
+      { name: 'Morgan Le Fay' },
     ],
     SS: [
       { name: 'Yuis' },
@@ -60,6 +61,7 @@ export const PVE_TIER_LIST = {
       { name: 'Afrodite' },
       { name: 'Jeanne D Arc' },
       { name: 'Lily' },
+      { name: 'APEP' },
     ],
     S: [
       { name: 'Shu' },
@@ -90,10 +92,10 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2025-11-15',
+  lastUpdated: '2025-11-25',
   description: 'PvP character rankings.',
   tiers: {
-    SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }],
+    SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }],
     SS: [
       { name: 'Odin' },
       { name: 'Freye' },
@@ -128,6 +130,7 @@ export const PVP_TIER_LIST = {
       { name: 'Shanna' },
       { name: 'Zashiki-warashi' },
       { name: 'Lavinia' },
+      { name: 'APEP' },
     ],
     A: [{ name: 'Tefnut' }, { name: 'Rose' }, { name: 'Mordred' }, { name: 'Leviathan' }],
     Situational: [{ name: 'Loki' }, { name: 'Belphegar' }, { name: 'Nini' }],
@@ -137,7 +140,7 @@ export const PVP_TIER_LIST = {
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2025-11-15',
+  lastUpdated: '2025-11-25',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -152,6 +155,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Hela' },
       { name: 'Gaia' },
       { name: 'Nina' },
+      { name: 'Morgan Le Fay' },
     ],
     SS: [
       { name: 'Freye' },
@@ -168,6 +172,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Naiya' },
       { name: 'Anubis' },
       { name: 'Lily' },
+      { name: 'APEP' },
     ],
     S: [
       { name: 'Shu' },
@@ -194,7 +199,7 @@ export const RIFT_TIER_LIST = {
 // Guild Raid Tier List
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
-  lastUpdated: '2025-11-15',
+  lastUpdated: '2025-11-25',
   description:
     'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
@@ -208,6 +213,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Freya' },
       { name: 'Hela' },
       { name: 'Nina' },
+      { name: 'Morgan Le Fay' },
     ],
     SS: [
       { name: 'Freye' },
@@ -236,6 +242,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Kela' },
       { name: 'Anubis' },
       { name: 'Lily' },
+      { name: 'APEP' },
     ],
     A: [
       { name: 'Rose' },
@@ -324,6 +331,16 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2025-11-25',
+    changes: [
+      'Morgan Le Fay added to SSS tier across all game modes',
+      'New Holy buffer provides massive ATK/DEF buffs and damage reduction',
+      'Ultimate cost of only 3 energy enables frequent buff cycles',
+      'Stat transfer mechanic makes her versatile for all team compositions',
+      'APEP added: SS in PvE, S in PvP, SS in Rifts, S in Guild Raid',
+    ],
+  },
   {
     date: '2025-08-05',
     changes: [

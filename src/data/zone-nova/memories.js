@@ -252,6 +252,28 @@ export const ZONE_NOVA_MEMORIES = [
     ],
   },
   {
+    id: 'absolutely-perfect-arms',
+    slug: 'absolutely-perfect-arms',
+    name: 'Absolutely Perfect Arms',
+    image: '/images/games/zone-nova/memories/Morgancard.jpg',
+    rarity: 'SSR',
+    element: 'Holy',
+    character: 'Morgan Le Fay',
+    class: 'Buffer',
+    detailUrl: '/guides/zone-nova/memories/absolutely-perfect-arms/',
+    stats: {
+      hp: 7800,
+      attack: 780,
+      defense: 780,
+    },
+    effects: [
+      'ATK increased by 30%',
+      'DEF increased by 30%',
+      'HP increased by 30%',
+      "When the equipper is of Holy attribute, after dealing Normal Attack DMG, all allies' Energy gain efficiency is increased by 18%, stacking up to 4 times, lasting 5s",
+    ],
+  },
+  {
     id: 'lancelot-hertrainer',
     slug: 'lancelot-hertrainer',
     name: 'Lancelot-HerTrainer',

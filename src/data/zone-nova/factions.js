@@ -26,7 +26,15 @@ export const ZONE_NOVA_FACTIONS = {
   Avalon: {
     name: 'Avalon',
     chineseName: '亚瓦隆',
-    characters: ['Arthur', 'Guinevere', 'Jeanne D Arc', 'Lancelot', 'Merlin', 'Mordred'],
+    characters: [
+      'Arthur',
+      'Guinevere',
+      'Jeanne D Arc',
+      'Lancelot',
+      'Merlin',
+      'Mordred',
+      'Morgan Le Fay',
+    ],
     color: '#4caf50',
     description: 'The Avalon faction with Arthurian legend influences',
   },

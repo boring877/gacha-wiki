@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
+import {
+  morganLeFayData,
+  morganLeFaySEO,
+} from '../../../../data/zone-nova/characters/morgan-le-fay.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={morganLeFaySEO.title}
+  description={morganLeFaySEO.description}
+  gameTitle={morganLeFayData.name}
+  character={morganLeFayData}
+>
+  <CharacterPageTemplate characterData={morganLeFayData} />
+</CharacterIndividualLayout>

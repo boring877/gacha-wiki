@@ -1,0 +1,200 @@
+---
+import ZNRunesImage from './ZNRunesImage.astro';
+
+interface Props {
+  runeSet: any;
+}
+
+const { runeSet } = Astro.props;
+
+// Function to determine the rune configuration type and extract rune data
+function getRuneConfiguration(runeSet) {
+  // Check if this is a 3-set configuration (separate 2-piece runes)
+  if (
+    (runeSet.shatteredFoundation && runeSet.tide && runeSet.zahn) ||
+    (runeSet.giants && runeSet.epsilon && runeSet.alpha)
+  ) {
+    const runes = [];
+    const effects = [];
+
+    // Giants + Epsilon + Alpha configuration
+    if (runeSet.giants && runeSet.epsilon && runeSet.alpha) {
+      runes.push(
+        { name: 'Giants', pieces: '2-piece', effect: runeSet.giants.effect },
+        { name: 'Epsilon', pieces: '2-piece', effect: runeSet.epsilon.effect },
+        { name: 'Alpha', pieces: '2-piece', effect: runeSet.alpha.effect }
+      );
+    }
+    // Shattered Foundation + Tide + Zahn configuration
+    else if (runeSet.shatteredFoundation && runeSet.tide && runeSet.zahn) {
+      runes.push(
+        {
+          name: 'Shattered-Foundation',
+          pieces: '2-piece',
+          effect: runeSet.shatteredFoundation.effect,
+        },
+        { name: 'Tide', pieces: '2-piece', effect: runeSet.tide.effect },
+        { name: 'Zahn', pieces: '2-piece', effect: runeSet.zahn.effect }
+      );
+    }
+
+    return {
+      type: '3-set',
+      runes: runes,
+      name: runeSet.englishName || runeSet.name,
+    };
+  }
+
+  // Check if this is a standard 4-piece + 2-piece configuration
+  else if (runeSet.mainRune && runeSet.secondaryRune) {
+    const mainRune4Piece = runeSet.mainRune4Piece || '';
+    const mainRune2Piece = runeSet.mainRune2Piece || '';
+    const secondaryRuneEffect = runeSet.secondaryRuneEffect || '';
+
+    return {
+      type: '4+2',
+      mainRune: runeSet.mainRune,
+      secondaryRune: runeSet.secondaryRune,
+      mainRune4Piece: mainRune4Piece,
+      mainRune2Piece: mainRune2Piece,
+      secondaryRuneEffect: secondaryRuneEffect,
+      name: runeSet.englishName || runeSet.name,
+    };
+  }
+
+  // Fallback for unknown configurations
+  return {
+    type: 'unknown',
+    name: runeSet.englishName || runeSet.name || 'Unknown Rune Set',
+    runes: [],
+  };
+}
+
+const config = getRuneConfiguration(runeSet);
+---
+
+<div
+  style="background-color: var(--zn-bg-secondary); border: 1px solid var(--zn-border); border-radius: 4px; padding: 1rem; text-align: center;"
+>
+  {
+    config.type === '3-set' ? (
+      <>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap;">
+          {config.runes.map((rune, index) => (
+            <>
+              <div style="text-align: center;">
+                <div style="width: 58px; height: 58px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <ZNRunesImage
+                    imageName={rune.name}
+                    alt={`${rune.name} rune (${rune.pieces})`}
+                    width={58}
+                    height={58}
+                    loading="eager"
+                    style="width: 100%; height: 100%; object-fit: contain; display: block;"
+                  />
+                </div>
+                <div style="font-size: 0.7rem; color: var(--zn-text-secondary); margin-top: 0.25rem;">
+                  {rune.pieces}
+                </div>
+              </div>
+              {index < config.runes.length - 1 && (
+                <div style="font-size: 1.2rem; color: var(--zn-text-secondary); font-weight: 600;">
+                  +
+                </div>
+              )}
+            </>
+          ))}
+        </div>
+        <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
+          {config.name}
+        </div>
+        <div style="margin-top: 0.75rem; text-align: left;">
+          {config.runes.map(rune => (
+            <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+              <strong style="color: var(--zn-primary);">{rune.name.replace('-', ' ')}:</strong>{' '}
+              {rune.effect.replace(/^2-piece:\s*/, '')}
+            </div>
+          ))}
+          {runeSet.description && (
+            <div style="font-size: 0.85rem; color: var(--zn-text-muted); margin-top: 0.5rem; font-style: italic;">
+              {runeSet.description}
+            </div>
+          )}
+        </div>
+      </>
+    ) : config.type === '4+2' ? (
+      <>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="text-align: center;">
+            <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <ZNRunesImage
+                imageName={config.mainRune}
+                alt={`${config.mainRune} rune (4-piece)`}
+                width={64}
+                height={64}
+                loading="eager"
+                style="width: 100%; height: 100%; object-fit: contain; display: block;"
+              />
+            </div>
+            <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
+              4-piece
+            </div>
+          </div>
+          <div style="font-size: 1.5rem; color: var(--zn-text-secondary); font-weight: 600;">+</div>
+          <div style="text-align: center;">
+            <div style="width: 64px; height: 64px; border-radius: 4px; border: 1px solid var(--zn-border-light); background-color: var(--zn-bg-tertiary); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <ZNRunesImage
+                imageName={config.secondaryRune}
+                alt={`${config.secondaryRune} rune (2-piece)`}
+                width={64}
+                height={64}
+                loading="eager"
+                style="width: 100%; height: 100%; object-fit: contain; display: block;"
+              />
+            </div>
+            <div style="font-size: 0.75rem; color: var(--zn-text-secondary); margin-top: 0.5rem;">
+              2-piece
+            </div>
+          </div>
+        </div>
+        <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
+          {config.name}
+        </div>
+        <div style="margin-top: 0.75rem; text-align: left;">
+          {config.mainRune2Piece && (
+            <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+              <strong style="color: var(--zn-primary);">2-piece ({config.mainRune}):</strong>{' '}
+              {config.mainRune2Piece}
+            </div>
+          )}
+          {config.mainRune4Piece && (
+            <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
+              <strong style="color: var(--zn-primary);">4-piece ({config.mainRune}):</strong>{' '}
+              {config.mainRune4Piece}
+            </div>
+          )}
+          {config.secondaryRuneEffect && (
+            <div style="font-size: 0.9rem; color: var(--zn-text-secondary);">
+              <strong style="color: var(--zn-primary);">2-piece ({config.secondaryRune}):</strong>{' '}
+              {config.secondaryRuneEffect}
+            </div>
+          )}
+          {runeSet.description && (
+            <div style="font-size: 0.85rem; color: var(--zn-text-muted); margin-top: 0.5rem; font-style: italic;">
+              {runeSet.description}
+            </div>
+          )}
+        </div>
+      </>
+    ) : (
+      <>
+        <div style="color: var(--zn-text-primary); font-weight: 600; font-size: 1rem;">
+          {config.name}
+        </div>
+        <div style="margin-top: 0.75rem; text-align: left; color: var(--zn-text-secondary);">
+          Rune set configuration not recognized
+        </div>
+      </>
+    )
+  }
+</div>
