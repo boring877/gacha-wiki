@@ -1,0 +1,127 @@
+---
+import ZoneNovaLayout from '../../../../layouts/zone-nova/LandingLayout.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+import { rift16Data } from '../../../../data/zone-nova/rifts/rift-16.js';
+import { getDynamicRiftStatus } from '../../../../data/zone-nova/rifts.js';
+
+// Use the imported rift data with dynamic status
+const riftData = {
+  ...rift16Data,
+  status: getDynamicRiftStatus(rift16Data),
+};
+---
+
+<ZoneNovaLayout
+  title="Rift XVI - Warrior & Buffer Synergy - Zone Nova Space-Time Rifts - GachaWiki"
+  description="Detailed law effects and mechanics for Rift XVI in Zone Nova featuring Warrior ultimate enhancements, energy bonuses for Warriors and Buffers, and enhanced energy recovery mechanics"
+  gameTitle="Rift XVI"
+>
+  <!-- Rift Overview -->
+  <section class="content-section">
+    <div class="rift-overview">
+      <div class="rift-header">
+        <h1 class="rift-title">{riftData.name}</h1>
+        <div class="rift-timer" id="rift-timer">Loading...</div>
+      </div>
+
+      <p class="rift-description">
+        {riftData.fullDescription}
+      </p>
+
+      <div class="rift-meta">
+        <div class="meta-item">
+          <span class="meta-label">Status:</span>
+          <span class={`status-badge status-${riftData.status.toLowerCase()}`}
+            >{riftData.status.toUpperCase()}</span
+          >
+        </div>
+
+        {
+          riftData.eventPeriod && (
+            <div class="meta-item">
+              <span class="meta-label">Event Period:</span>
+              <span class="meta-value">{riftData.eventPeriod}</span>
+            </div>
+          )
+        }
+
+        <div class="meta-item">
+          <span class="meta-label">Effects:</span>
+          <span class="meta-value">{riftData.lawEffects.length} effects</span>
+        </div>
+
+        <div class="meta-item">
+          <span class="meta-label">Focus:</span>
+          <span class="meta-value">{riftData.focus}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Effects Section -->
+  <section class="content-section">
+    <h2 class="section-title">Rift Law Effects</h2>
+
+    {
+      riftData.lawEffects.map((effect, index) => (
+        <div class="law-effect-card">
+          <div class="effect-number">{index + 1}</div>
+          <div class="effect-content">
+            <p
+              set:html={effect
+                .replace(/\【(.*?)\】/g, '<strong class="special-effect">【$1】</strong>')
+                .replace(/(\d+%)/g, '<strong>$1</strong>')
+                .replace(/(\d+\s+stacks?)/g, '<strong>$1</strong>')
+                .replace(/(\d+\s+seconds?)/g, '<strong>$1</strong>')
+                .replace(/(\d+\s+times?)/g, '<strong>$1</strong>')
+                .replace(/(Effect\s+\d+:)/g, '<strong class="effect-label">$1</strong>')
+                .replace(/(Duration:|Maximum:|Effect:)/g, '<strong>$1</strong>')
+                .replace(/(party\'s\s+)/g, '<strong>$1</strong>')
+                .replace(/(Warrior\s+character)/g, '<strong>$1</strong>')
+                .replace(/(Buffer\s+character)/g, '<strong>$1</strong>')
+                .replace(/(Ultimate\s+skill)/g, '<strong>$1</strong>')
+                .replace(/(Elemental\s+Weakness)/g, '<strong>$1</strong>')
+                .replace(/(Energy\s+Points)/g, '<strong>$1</strong>')
+                .replace(/(battle\s+start)/g, '<strong>$1</strong>')
+                .replace(/(Energy\s+recovery\s+speed)/g, '<strong>$1</strong>')
+                .replace(/(Allies|allies')/g, '<strong>$1</strong>')
+                .replace(/(attribute\s+resistance)/g, '<strong>$1</strong>')}
+            />
+          </div>
+        </div>
+      ))
+    }
+  </section>
+
+  <script define:vars={{ riftData }}>
+    document.addEventListener('DOMContentLoaded', function () {
+      const endTime = new Date(riftData.endDate).getTime();
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const timeLeft = endTime - now;
+        const timerElement = document.getElementById('rift-timer');
+
+        if (timeLeft > 0) {
+          const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+
+          if (days > 0) {
+            timerElement.textContent = `${days}d ${hours}h remaining`;
+          } else if (hours > 0) {
+            timerElement.textContent = `${hours}h ${minutes}m remaining`;
+          } else {
+            timerElement.textContent = `${minutes}m remaining`;
+          }
+        } else {
+          timerElement.textContent = 'Rift Ended';
+          timerElement.classList.add('timer-ended');
+        }
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 60000);
+    });
+  </script>
+</ZoneNovaLayout>

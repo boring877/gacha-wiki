@@ -31,7 +31,9 @@ const allRifts = riftsWithStatus.sort((a, b) => {
 
   // Within same status, sort by rift number descending (extract number from ID)
   const getNumberFromId = id => {
-    const match = id.match(/(\d+)$/);
+    // Convert id to string if it's a number, then extract number
+    const idString = String(id);
+    const match = idString.match(/(\d+)$/);
     return match ? parseInt(match[1]) : 0;
   };
 
