@@ -7,6 +7,7 @@ import { pennyBuild } from './character-builds/penny.js';
 import { apolloBuild } from './character-builds/apollo.js';
 import { morganLeFayBuild } from './character-builds/morgan-le-fay.js';
 import { thorBuild } from './character-builds/thor.js';
+import { freyaBuild } from './character-builds/freya.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -30,6 +31,9 @@ export const CHARACTER_BUILDS = {
 
   // Thor Build - SSR Holy Guardian Tank
   thor: thorBuild,
+
+  // Freya Build - SSR Ice Attack Speed Carry
+  freya: freyaBuild,
 };
 
 // Generate builds for available characters only

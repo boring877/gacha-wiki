@@ -1,13 +1,20 @@
 ---
-// During Military Academy Training Memory Page
 import MemoryTemplate from '../../../../templates/zone-nova/MemoryTemplate.astro';
-import {
-  duringMilitaryAcademyTrainingData,
-  duringMilitaryAcademyTrainingSEO,
-} from '../../../../data/zone-nova/memories/during-military-academy-training.js';
+import { duringMilitaryAcademyTrainingData } from '../../../../data/zone-nova/memories/during-military-academy-training.js';
+
+export const prerender = true;
+
+// Memory-specific data
+const memoryData = {
+  ...duringMilitaryAcademyTrainingData,
+};
+
+// SEO data
+const memorySEO = {
+  title: 'During Military Academy Training - Rose Memory Card | Zone Nova | GachaWiki',
+  description:
+    'Complete guide to During Military Academy Training memory card for Rose in Zone Nova. SR memory with post-ultimate damage amplification bonuses.',
+};
 ---
 
-<MemoryTemplate
-  memoryData={duringMilitaryAcademyTrainingData}
-  memorySEO={duringMilitaryAcademyTrainingSEO}
-/>
+<MemoryTemplate memoryData={memoryData} memorySEO={memorySEO} />
