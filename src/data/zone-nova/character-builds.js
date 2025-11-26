@@ -6,6 +6,7 @@ import { naiyaBuild } from './character-builds/naiya.js';
 import { pennyBuild } from './character-builds/penny.js';
 import { apolloBuild } from './character-builds/apollo.js';
 import { morganLeFayBuild } from './character-builds/morgan-le-fay.js';
+import { thorBuild } from './character-builds/thor.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -26,6 +27,9 @@ export const CHARACTER_BUILDS = {
 
   // Morgan Le Fay Build - SSR Holy Buffer
   'morgan-le-fay': morganLeFayBuild,
+
+  // Thor Build - SSR Holy Guardian Tank
+  thor: thorBuild,
 };
 
 // Generate builds for available characters only

@@ -1,0 +1,20 @@
+---
+import MemoryTemplate from '../../../../templates/zone-nova/MemoryTemplate.astro';
+import { nightAssaultSuspectData } from '../../../../data/zone-nova/memories/night-assault-suspect.js';
+
+export const prerender = true;
+
+// Memory-specific data
+const memoryData = {
+  ...nightAssaultSuspectData,
+};
+
+// SEO data
+const memorySEO = {
+  title: 'Night Assault Suspect - Thor Memory Card | Zone Nova | GachaWiki',
+  description:
+    'Complete guide to Night Assault Suspect memory card for Thor in Zone Nova. SSR Holy memory with 64% Defense increase and shield synergy bonuses.',
+};
+---
+
+<MemoryTemplate memoryData={memoryData} memorySEO={memorySEO} />
