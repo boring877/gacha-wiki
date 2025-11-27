@@ -8,6 +8,10 @@
 import {
   generateGameKeywords,
   generateCharacterStructuredData,
+  generateBreadcrumbStructuredData,
+  generateFAQStructuredData,
+  generateCharacterBreadcrumbs,
+  generateCharacterFAQs,
   generateTitle,
   generateDescription,
   getGameConfig,
@@ -56,12 +60,21 @@ const keywords = generateGameKeywords(gameKey, [
 const title = customTitle || generateTitle(gameKey, 'character', character);
 const description = customDescription || generateDescription(gameKey, 'character', character);
 const structuredData = generateCharacterStructuredData(gameKey, character);
+
+// Generate additional structured data
+const breadcrumbs = generateCharacterBreadcrumbs(gameKey, gameConfig.gameName, character.name);
+const breadcrumbStructuredData = generateBreadcrumbStructuredData(breadcrumbs);
+const characterFAQs = generateCharacterFAQs(character.name, gameConfig.gameName, character);
+const faqStructuredData = generateFAQStructuredData(characterFAQs);
 ---
 
 <!-- Character-Specific SEO Meta Tags -->
 <meta name="keywords" content={keywords} />
 <meta name="author" content={GLOBAL_SEO.author} />
-<meta name="robots" content="index, follow" />
+<meta
+  name="robots"
+  content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+/>
 
 <!-- Open Source Project Meta Tags -->
 <meta name="project:type" content="open-source" />
@@ -69,15 +82,17 @@ const structuredData = generateCharacterStructuredData(gameKey, character);
 <meta name="project:repository" content={GLOBAL_SEO.social.github} />
 <meta name="project:status" content="active" />
 
-<!-- Mobile Optimization -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<!-- Game-specific Mobile Optimization -->
 <meta name="theme-color" content={gameConfig.themeColor} />
-
-<!-- Canonical URL -->
-<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 
 <!-- Schema.org Structured Data for Character -->
 {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
+
+<!-- Breadcrumb Structured Data -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbStructuredData)} />
+
+<!-- FAQ Structured Data for Character Information -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify(faqStructuredData)} />
 
 <!-- Character-specific Open Graph tags -->
 <meta property="og:type" content="profile" />
@@ -85,14 +100,32 @@ const structuredData = generateCharacterStructuredData(gameKey, character);
 <meta property="og:site_name" content={GLOBAL_SEO.siteName} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-{character.image && <meta property="og:image" content={new URL(character.image, Astro.site)} />}
+{
+  character.image && (
+    <>
+      <meta
+        property="og:image"
+        content={new URL(character.image, Astro.site || 'https://gachawiki.info')}
+      />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    </>
+  )
+}
 
 <!-- Twitter Card tags -->
 <meta name="twitter:card" content="summary_large_image" />
 {GLOBAL_SEO.social.x && <meta name="twitter:site" content={GLOBAL_SEO.social.x} />}
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-{character.image && <meta name="twitter:image" content={new URL(character.image, Astro.site)} />}
+{
+  character.image && (
+    <meta
+      name="twitter:image"
+      content={new URL(character.image, Astro.site || 'https://gachawiki.info')}
+    />
+  )
+}
 
 <!-- Character-specific meta tags -->
 <meta name="character:name" content={character.name} />

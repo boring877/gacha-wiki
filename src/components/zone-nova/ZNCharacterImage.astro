@@ -104,27 +104,35 @@ const {
   quality = 95,
 } = Astro.props;
 
-// Get the imported image object from the map
-// Handle full paths, with and without extension
-let imageKey = imageName;
+// Generate descriptive alt text if not provided
+const generateAltText = (imageKey: string) => {
+  const characterName = imageKey
+    .replace('.jpg', '')
+    .replace(/([A-Z])/g, ' $1')
+    .trim();
+  return `${characterName} - Zone Nova character portrait and artwork`;
+};
 
-// Extract filename from full path if needed
-if (imageKey.includes('/')) {
-  const parts = imageKey.split('/');
-  imageKey = parts[parts.length - 1] || 'Afrodite.jpg';
-}
+// Process image key and get the imported image object from the map
+const processedImageKey = (() => {
+  let key = imageName;
+  if (key.includes('/')) {
+    const parts = key.split('/');
+    key = parts[parts.length - 1] || 'Afrodite.jpg';
+  }
+  if (!key.includes('.')) {
+    key = `${key}.jpg`;
+  }
+  return key;
+})();
 
-// Add extension if missing
-if (!imageKey.includes('.')) {
-  imageKey = `${imageKey}.jpg`;
-}
-
-const imageSrc = characterImageMap[imageKey] || characterImageMap['Afrodite.jpg'];
+const finalAlt = alt || generateAltText(processedImageKey);
+const imageSrc = characterImageMap[processedImageKey] || characterImageMap['Afrodite.jpg'];
 ---
 
 <Image
   src={imageSrc}
-  alt={alt}
+  alt={finalAlt}
   width={width}
   height={height}
   class={className}

@@ -526,4 +526,179 @@ export function validateSEOData(data: {
   };
 }
 
+// Additional structured data types for enhanced SEO
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface HowToStep {
+  name: string;
+  text: string;
+  image?: string;
+}
+
+export interface StructuredDataBreadcrumb {
+  '@context': 'https://schema.org';
+  '@type': 'BreadcrumbList';
+  itemListElement: Array<{
+    '@type': 'ListItem';
+    position: number;
+    name: string;
+    item: string;
+  }>;
+}
+
+export interface StructuredDataFAQ {
+  '@context': 'https://schema.org';
+  '@type': 'FAQPage';
+  mainEntity: Array<{
+    '@type': 'Question';
+    name: string;
+    acceptedAnswer: {
+      '@type': 'Answer';
+      text: string;
+    };
+  }>;
+}
+
+export interface StructuredDataHowTo {
+  '@context': 'https://schema.org';
+  '@type': 'HowTo';
+  name: string;
+  description: string;
+  image?: string;
+  step: Array<{
+    '@type': 'HowToStep';
+    name: string;
+    text: string;
+    image?: string;
+  }>;
+}
+
+/**
+ * Generate breadcrumb structured data for navigation hierarchy
+ * @param breadcrumbs - Array of breadcrumb items with name and URL
+ * @returns Breadcrumb structured data object
+ */
+export function generateBreadcrumbStructuredData(
+  breadcrumbs: BreadcrumbItem[]
+): StructuredDataBreadcrumb {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: crumb.url,
+    })),
+  };
+}
+
+/**
+ * Generate FAQ structured data for question-answer content
+ * @param faqs - Array of FAQ items with questions and answers
+ * @returns FAQ structured data object
+ */
+export function generateFAQStructuredData(faqs: FAQItem[]): StructuredDataFAQ {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+/**
+ * Generate HowTo structured data for tutorials and guides
+ * @param name - Name of the tutorial/guide
+ * @param description - Description of what the guide teaches
+ * @param steps - Array of steps in the tutorial
+ * @param image - Optional main image for the guide
+ * @returns HowTo structured data object
+ */
+export function generateHowToStructuredData(
+  name: string,
+  description: string,
+  steps: HowToStep[],
+  image?: string
+): StructuredDataHowTo {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: name,
+    description: description,
+    image: image,
+    step: steps.map(step => ({
+      '@type': 'HowToStep',
+      name: step.name,
+      text: step.text,
+      image: step.image,
+    })),
+  };
+}
+
+/**
+ * Generate breadcrumb data for character pages
+ * @param gameKey - The game identifier
+ * @param gameName - The game display name
+ * @param characterName - The character name
+ * @returns Array of breadcrumb items
+ */
+export function generateCharacterBreadcrumbs(
+  gameKey: string,
+  gameName: string,
+  characterName: string
+): BreadcrumbItem[] {
+  return [
+    { name: 'Home', url: 'https://gachawiki.info/' },
+    { name: gameName, url: `https://gachawiki.info/guides/${gameKey}/` },
+    { name: 'Characters', url: `https://gachawiki.info/guides/${gameKey}/characters/` },
+    {
+      name: characterName,
+      url: `https://gachawiki.info/guides/${gameKey}/characters/${characterName.toLowerCase().replace(/\s+/g, '-')}/`,
+    },
+  ];
+}
+
+/**
+ * Generate FAQ data for character pages
+ * @param characterName - The character name
+ * @param gameName - The game name
+ * @param characterData - Character-specific data
+ * @returns Array of FAQ items
+ */
+export function generateCharacterFAQs(
+  characterName: string,
+  gameName: string,
+  characterData?: any
+): FAQItem[] {
+  return [
+    {
+      question: `What is the best build for ${characterName} in ${gameName}?`,
+      answer: `The optimal build for ${characterName} focuses on ${characterData?.class || 'their'} strengths with recommended memory cards, proper node tree upgrades, and ideal team compositions.`,
+    },
+    {
+      question: `How do I get ${characterName} in ${gameName}?`,
+      answer: `${characterName} can be obtained through the standard banner with ${characterData?.rarity || 'base'} rarity rates. Special events may feature increased drop rates.`,
+    },
+    {
+      question: `What are ${characterName}'s skills and abilities?`,
+      answer: `${characterName} has unique skills including normal attacks, auto skills, ultimate abilities, and passives that make them effective in ${characterData?.role || 'combat'} situations.`,
+    },
+  ];
+}
+
 // Types are already exported above with their definitions
