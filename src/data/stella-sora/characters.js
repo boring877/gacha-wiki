@@ -2,12 +2,15 @@
 // This file contains character data and metadata for the Stella Sora wiki
 // All character stats are based on maximum level
 
+import { amberData } from './characters/amber.js';
 import { chitoseData } from './characters/chitose.js';
 import { chixiaData } from './characters/chixia.js';
+import { floraData } from './characters/flora.js';
 import { freesiaData } from './characters/freesia.js';
 import { fuyukaData } from './characters/fuyuka.js';
 import { gerieData } from './characters/gerie.js';
 import { jinglinData } from './characters/jinglin.js';
+import { kasimiraData } from './characters/kasimira.js';
 import { minovaData } from './characters/minova.js';
 import { mistiqueData } from './characters/mistique.js';
 import { nanohaData } from './characters/nanoha.js';
@@ -78,12 +81,15 @@ export const gameInfo = {
 
 // Character array - sorted alphabetically by name
 export const STELLA_SORA_CHARACTERS = [
+  amberData,
   chitoseData,
   chixiaData,
+  floraData,
   freesiaData,
   fuyukaData,
   gerieData,
   jinglinData,
+  kasimiraData,
   minovaData,
   mistiqueData,
   nanohaData,

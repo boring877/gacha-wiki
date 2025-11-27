@@ -61,7 +61,7 @@ export const PVE_TIER_LIST = {
       { name: 'Afrodite' },
       { name: 'Jeanne D Arc' },
       { name: 'Lily' },
-      { name: 'APEP' },
+      { name: 'Apep' },
     ],
     S: [
       { name: 'Shu' },
@@ -130,7 +130,7 @@ export const PVP_TIER_LIST = {
       { name: 'Shanna' },
       { name: 'Zashiki-warashi' },
       { name: 'Lavinia' },
-      { name: 'APEP' },
+      { name: 'Apep' },
     ],
     A: [{ name: 'Tefnut' }, { name: 'Rose' }, { name: 'Mordred' }, { name: 'Leviathan' }],
     Situational: [{ name: 'Loki' }, { name: 'Belphegar' }, { name: 'Nini' }],
@@ -172,7 +172,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Naiya' },
       { name: 'Anubis' },
       { name: 'Lily' },
-      { name: 'APEP' },
+      { name: 'Apep' },
     ],
     S: [
       { name: 'Shu' },
@@ -242,7 +242,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Kela' },
       { name: 'Anubis' },
       { name: 'Lily' },
-      { name: 'APEP' },
+      { name: 'Apep' },
     ],
     A: [
       { name: 'Rose' },

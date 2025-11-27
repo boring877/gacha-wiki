@@ -53,6 +53,24 @@ if (!imageModule) {
   imageModule = imageModules[imagePath];
 }
 
+// If not found in Freesia folder, try Flora folder
+if (!imageModule) {
+  imagePath = `/src/assets/images/games/stella-sora/potential/Flora/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
+// If not found in Flora folder, try Kasimira folder
+if (!imageModule) {
+  imagePath = `/src/assets/images/games/stella-sora/potential/Kasimira/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
+// If not found in Kasimira folder, try Amber folder
+if (!imageModule) {
+  imagePath = `/src/assets/images/games/stella-sora/potential/Amber/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
 // If not found, try relative path
 if (!imageModule) {
   imagePath = `../../assets/images/games/stella-sora/potential/Chitose/${imageName}`;
@@ -74,6 +92,24 @@ if (!imageModule) {
 // If still not found, try Freesia relative path
 if (!imageModule) {
   imagePath = `../../assets/images/games/stella-sora/potential/Freesia/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
+// If still not found, try Flora relative path
+if (!imageModule) {
+  imagePath = `../../assets/images/games/stella-sora/potential/Flora/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
+// If still not found, try Kasimira relative path
+if (!imageModule) {
+  imagePath = `../../assets/images/games/stella-sora/potential/Kasimira/${imageName}`;
+  imageModule = imageModules[imagePath];
+}
+
+// If still not found, try Amber relative path
+if (!imageModule) {
+  imagePath = `../../assets/images/games/stella-sora/potential/Amber/${imageName}`;
   imageModule = imageModules[imagePath];
 }
 
