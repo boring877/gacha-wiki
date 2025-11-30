@@ -62,41 +62,40 @@ export const horusBuild = {
     {
       name: 'Battlefield Flower',
       effect:
-        "SR memory card that increases damage by 20% for each negative effect on the target (max 3 stacks) - synergizes well with Horus's [Piercing] DOT debuffs",
+        'SR memory card that increases damage by 20% for each negative effect on the target (max 3 stacks)',
       characterSpecific: false,
       memoryImage: 'ninicard.jpg',
       memoryStats: { hp: '5,000', attack: '500', defense: '500' },
       description:
-        "For each negative effect on the target, damage dealt increases by 20%, maximum 3 stacks. This synergizes perfectly with Horus's [Piercing] debuffs applied through his skills.",
+        'For each negative effect on the target, damage dealt increases by 20%, maximum 3 stacks.',
     },
     {
       name: 'Deceptive Ultimate Temptation',
       effect:
-        "SR memory card designed for Debuffer class that provides attack boost and increased damage against enemies with negative status - perfect synergy with Horus's debuff-focused kit",
+        'SR memory card designed for Debuffer class that provides attack boost and increased damage against enemies with negative status',
       characterSpecific: false,
       memoryImage: 'Deceptive-Ultimate-Temptation.jpg',
       memoryStats: { hp: '5,000', attack: '500', defense: '500' },
       description:
-        "Attack increased by 20%. When attacking enemies with negative status, damage increased by 20%. This card is specifically designed for Debuffer class and enhances Horus's damage output when enemies have [Piercing] debuffs.",
+        'Attack increased by 20%. When attacking enemies with negative status, damage increased by 20%.',
     },
     {
       name: 'True Order (真正的秩序)',
       effect:
-        'SSR memory card that provides massive 32% damage increase when attacking enemies with negative status effects - highest damage amplification for debuff-based characters like Horus',
+        'SSR memory card that provides massive 32% damage increase when attacking enemies with negative status effects',
       characterSpecific: false,
       memoryImage: 'Lokicard.jpg',
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
-      description:
-        'When attacking enemies with negative status effects, damage increases by 32%. This provides the highest damage amplification for Horus when enemies have [Piercing] debuffs, making it an excellent SSR alternative to his exclusive card.',
+      description: 'When attacking enemies with negative status effects, damage increases by 32%.',
     },
   ],
   runes: {
     primary: 'Attack',
     secondary: 'Penetration',
     stats: ['ATK%', 'Penetration'],
-    additionalStats: ['ATK'],
+    additionalStats: ['ATK', 'HP', 'DEF'],
     buildNote:
-      "Focus on maximizing attack percentage since all of Horus's damage scales with ATK. Giants [Vulnerability] set enhances damage against debuffed enemies, while Gimel Continuous Damage set amplifies DOT effects.",
+      'Atk% and Penetration are good, but the damage still weak. Her DOT stacking and Damage taken is not bad too. Taking HP and DEF is not bad too, its better then crit rate and crit damage beucase you do not really benift much since you deal DOT damage.',
     recommendedSets: [
       {
         name: 'Giants 4-piece + Gimel 2-piece',

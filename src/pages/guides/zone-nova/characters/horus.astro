@@ -3,6 +3,17 @@ import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIn
 import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
 // Navigation removed
 import { horusData, horusSEO } from '../../../../data/zone-nova/characters/horus.js';
+import { getFactionByCharacter, getFactionData } from '../../../../data/zone-nova/factions.js';
+
+// Get faction data from factions.js
+const factionName = getFactionByCharacter('Horus');
+const factionData = getFactionData(factionName);
+const characterData = {
+  ...horusData,
+  faction: factionName,
+  factionDescription: factionData?.description,
+  factionChineseName: factionData?.chineseName,
+};
 
 export const prerender = true;
 ---

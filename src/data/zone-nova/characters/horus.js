@@ -16,6 +16,9 @@ export const horusData = {
     hp: '8,033',
     attack: '1,461',
     defense: '530',
+    energyRecovery: 0.25,
+    critRate: 0,
+    critDmg: 50,
   },
 
   // Skills
