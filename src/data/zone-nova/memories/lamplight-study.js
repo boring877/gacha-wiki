@@ -20,7 +20,6 @@ export const lamplightStudyData = {
   effects: [
     'Attack power increased by 40%',
     'Ultimate skill damage can apply 【Fate Bind】. Each stack of 【Fate Bind】 increases damage taken by 3.6%, lasts 10 seconds, maximum 10 stacks',
-    'Total Potential: 40% base attack + up to 36% damage amplification through Fate Bind stacks (10 stacks × 3.6%)',
   ],
 
   // Character Synergy

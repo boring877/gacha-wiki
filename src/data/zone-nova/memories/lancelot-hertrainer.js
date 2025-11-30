@@ -20,12 +20,7 @@ export const lancelotHertrainerData = {
 
   // Memory Effects
   effects: [
-    'Only effective for Guardian class',
-    '5th Stage Awakening',
-    'Ability: Knight of the Tidal Lake (潮水的湖中骑士)',
-    'Passive: Defense increased by 36%',
-    'Team Buff: After entering battle, all allied characters take 8% less damage',
-    'Note: Same skill effects cannot stack',
+    'Defense increased by 36%, After entering battle, all our characters take 8% less damage, same skill effects cannot stack',
   ],
 };
 

@@ -20,8 +20,7 @@ export const gaiamemoryData = {
   effects: [
     'Max HP +40%',
     'Healing output +40%',
-    'If wearer healed within last 1 second: additional +40% healing output',
-    'Total Potential: Up to 80% healing output (40% base + 40% conditional)',
+    'If wearer healed within last 1 second, additional +40% healing output',
   ],
 };
 

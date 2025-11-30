@@ -17,7 +17,7 @@ export const battlefieldFlowerData = {
 
   // Memory Effects
   effects: [
-    'Battlefield Flower: For each negative effect on the target, damage dealt increases by 20%, maximum 3 stacks',
+    'For each negative effect on the attacked target, this character damage increases by 20%, maximum stacking 3 layers (60%)',
   ],
 
   // Character Synergy Information

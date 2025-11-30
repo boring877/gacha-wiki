@@ -9,6 +9,7 @@ import { morganLeFayBuild } from './character-builds/morgan-le-fay.js';
 import { thorBuild } from './character-builds/thor.js';
 import { freyaBuild } from './character-builds/freya.js';
 import { horusBuild } from './character-builds/horus.js';
+import { odinBuild } from './character-builds/odin.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -38,6 +39,9 @@ export const CHARACTER_BUILDS = {
 
   // Horus Build - SSR Holy DOT Debuffer
   horus: horusBuild,
+
+  // Odin Build - SSR Fire DOT Controller
+  odin: odinBuild,
 };
 
 // Generate builds for available characters only
