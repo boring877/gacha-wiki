@@ -8,6 +8,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import only essential CSS files
@@ -33,6 +34,7 @@ const { meta, intro, summonTypes, pitySystem, currencies, selectionSystem, faq }
   <head>
     <SABBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+    <Analytics />
   </head>
   <body class="sab-body">
     <CustomScrollbar />

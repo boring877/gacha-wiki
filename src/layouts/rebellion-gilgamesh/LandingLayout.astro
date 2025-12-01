@@ -6,6 +6,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import Analytics from '../../components/Analytics.astro';
 import {
   generateBreadcrumbs,
   getParentBreadcrumb,
@@ -43,6 +44,7 @@ const backNavigation = generateBackNavigation(Astro.url.pathname, {
 <html lang="en">
   <head>
     <RGBaseHead title={title} description={description} />
+    <Analytics />
     <slot name="head" />
   </head>
   <body class="rebellion-gilgamesh-body">

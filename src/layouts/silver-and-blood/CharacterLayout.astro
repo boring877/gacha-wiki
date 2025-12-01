@@ -8,6 +8,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import { Image } from 'astro:assets';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import Silver and Blood specific styles
@@ -93,6 +94,7 @@ const characterSlug = urlParts[urlParts.length - 1] || '';
 		</script>
 
 		<slot name="head" />
+    <Analytics />
 	</head>
 	<body class="sab-body">
 		<CustomScrollbar />

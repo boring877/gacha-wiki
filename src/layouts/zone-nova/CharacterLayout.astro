@@ -9,6 +9,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
+import Analytics from '../../components/Analytics.astro';
 
 // Import CSS files properly
 import '../../styles/games/zone-nova/zn-colors.css';
@@ -43,7 +44,7 @@ const {
   <head>
     <ZNBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
-
+    <Analytics />
     <slot name="head" />
   </head>
   <body class="zone-nova-body">

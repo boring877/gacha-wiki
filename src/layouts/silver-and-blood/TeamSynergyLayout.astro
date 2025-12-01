@@ -6,6 +6,7 @@ import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 import { Image } from 'astro:assets';
@@ -58,6 +59,7 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
     />
 
     <slot name="head" />
+    <Analytics />
   </head>
   <body class="sab-body">
     <CustomScrollbar />

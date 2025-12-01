@@ -7,6 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
+import Analytics from '../../components/Analytics.astro';
 
 import '../../styles/games/zone-nova/zn-colors.css';
 import '../../styles/global.css';
@@ -28,7 +29,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
   <head>
     <ZNBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="zone-nova" title={title} description={description} />
-
+    <Analytics />
     <slot name="head" />
   </head>
   <body class="zone-nova-body zn-layout-override">

@@ -5,6 +5,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
@@ -35,6 +36,7 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
     <SABBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
     <slot name="head" />
+    <Analytics />
   </head>
   <body class="sab-body">
     <CustomScrollbar />

@@ -7,6 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 import SABCharacterImage from '../../components/silver-and-blood/SABCharacterImage.astro';
 
@@ -83,6 +84,7 @@ const { intro, steps, expectedResources, redeemCodes, timelessAiona } = data;
         />
       )
     }
+    <Analytics />
   </head>
   <body class="sab-body">
     <CustomScrollbar />

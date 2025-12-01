@@ -7,6 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
 
 // Import CSS files properly
@@ -48,6 +49,7 @@ const { title, description, gameTitle } = Astro.props;
         'horizon walker support units',
       ]}
     />
+    <Analytics />
   </head>
   <body class="horizon-walker-body">
     <CustomScrollbar />

@@ -9,6 +9,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
 
 // Import CSS files for individual character pages only
@@ -47,6 +48,7 @@ const { title, description, gameTitle, heroImage, character } = Astro.props;
     }
 
     <slot name="head" />
+    <Analytics />
   </head>
   <body class="stella-sora-body">
     <CustomScrollbar />

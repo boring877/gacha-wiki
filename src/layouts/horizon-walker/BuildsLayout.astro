@@ -6,6 +6,7 @@ import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
 
@@ -29,6 +30,7 @@ const { title, description } = Astro.props;
   <head>
     <HWBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="horizon-walker" title={title} description={description} />
+    <Analytics />
   </head>
   <body class="horizon-walker-body">
     <CustomScrollbar />

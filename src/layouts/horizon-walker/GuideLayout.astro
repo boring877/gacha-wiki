@@ -8,6 +8,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+import Analytics from '../../components/Analytics.astro';
 
 // Import CSS files
 import '../../styles/global.css';
@@ -44,6 +45,7 @@ const defaultBreadcrumbs = [
       description={description}
       additionalKeywords={['horizon walker guide', 'horizon walker tutorial', 'hw game mechanics']}
     />
+    <Analytics />
   </head>
   <body class="horizon-walker-body">
     <CustomScrollbar />

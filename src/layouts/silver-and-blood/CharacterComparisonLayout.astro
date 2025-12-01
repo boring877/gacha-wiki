@@ -7,6 +7,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import Silver and Blood specific styles
@@ -35,6 +36,7 @@ const { title, description } = Astro.props;
     </style>
 
     <slot name="head" />
+    <Analytics />
   </head>
   <body class="sab-body">
     <CustomScrollbar />

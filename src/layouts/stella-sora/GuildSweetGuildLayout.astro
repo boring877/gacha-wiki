@@ -9,6 +9,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
 import GuildSweetGuildImages from '../../components/stella-sora/shop-events/GuildSweetGuildImages.astro';
 
@@ -40,6 +41,7 @@ import '../../styles/games/stella-sora/events/guild-sweet-guild.css';
     <SSBaseHead title={title} description={description} />
     <GameSEO gameKey="stella-sora" title={title} description={description} />
     <slot name="head" />
+    <Analytics />
   </head>
   <body class="stella-sora-body ss-shop-event-individual-body">
     <CustomScrollbar />

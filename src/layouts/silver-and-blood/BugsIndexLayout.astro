@@ -9,6 +9,7 @@ import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+import Analytics from '../../components/Analytics.astro';
 
 // Import essential CSS files
 import '../../styles/games/silver-and-blood/sab-colors.css';
@@ -55,6 +56,7 @@ const { meta, bugs, generalInfo } = data;
     <meta property="article:tag" content="bug fixes" />
     <meta property="article:tag" content="technical support" />
     <meta property="article:tag" content="troubleshooting" />
+    <Analytics />
   </head>
   <body class="sab-body">
     <CustomScrollbar />

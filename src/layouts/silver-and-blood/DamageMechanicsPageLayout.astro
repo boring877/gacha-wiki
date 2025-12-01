@@ -7,6 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import CSS files properly
@@ -41,6 +42,7 @@ const {
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
 
     <slot name="head" />
+    <Analytics />
   </head>
   <body class="sab-body sab-layout-override">
     <CustomScrollbar />

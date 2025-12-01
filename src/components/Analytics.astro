@@ -1,6 +1,5 @@
 ---
 // Google Analytics component for GA4 integration
-// Only loads in production when PUBLIC_GA_ID is set
 const gaId = import.meta.env.PUBLIC_GA_ID;
 const isDev = import.meta.env.DEV;
 ---
@@ -8,11 +7,21 @@ const isDev = import.meta.env.DEV;
 {
   gaId && !isDev && (
     <>
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
-      <script is:inline>
-        window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments)}
-        gtag('js', new Date()); gtag('config', gaId);
-      </script>
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+        data-cfasync="false"
+      />
+      <script
+        is:inline
+        data-cfasync="false"
+        set:html={`window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', '${gaId}');`}
+      />
     </>
   )
 }

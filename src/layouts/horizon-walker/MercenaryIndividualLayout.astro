@@ -7,6 +7,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
 import { Image } from 'astro:assets';
 
@@ -53,6 +54,7 @@ const mercenarySlug = urlParts[urlParts.length - 1] || '';
         'horizon walker guide 2025',
       ]}
     />
+    <Analytics />
   </head>
   <body class="horizon-walker-body">
     <CustomScrollbar />

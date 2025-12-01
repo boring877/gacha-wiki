@@ -10,6 +10,7 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
 import GameImage from '../../components/stella-sora/GameImage.astro';
 
@@ -36,6 +37,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
     <SSBaseHead title={title} description={description} />
     <GameSEO gameKey="stella-sora" title={title} description={description} />
     <slot name="head" />
+    <Analytics />
   </head>
   <body class="stella-sora-body">
     <CustomScrollbar />

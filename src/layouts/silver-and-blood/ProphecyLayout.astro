@@ -8,6 +8,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+import Analytics from '../../components/Analytics.astro';
 
 // Import CSS files properly
 import '../../styles/games/silver-and-blood/sab-colors.css';
@@ -57,7 +58,7 @@ const { title, description, gameTitle, breadcrumbs } = Astro.props;
         'silver and blood end game content',
       ]}
     />
-
+    <Analytics />
     <slot name="head" />
   </head>
   <body class="sab-body">

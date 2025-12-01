@@ -6,8 +6,6 @@ export interface Props {
   image?: string;
 }
 
-import Analytics from '../Analytics.astro';
-
 const {
   title,
   description,
@@ -49,6 +47,3 @@ const {
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image} />
-
-<!-- Google Analytics -->
-<Analytics />

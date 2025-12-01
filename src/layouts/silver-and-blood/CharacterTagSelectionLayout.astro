@@ -8,6 +8,7 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import { Image } from 'astro:assets';
 import GameSEO from '../../components/GameSEO.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
 
 // Import CSS files properly
@@ -32,8 +33,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
   <head>
     <SABBaseHead title={title} description={description || ""} />
     <GameSEO gameKey="silver-and-blood" title={title} description={description} />
-    
-    
+    <Analytics />
     <slot name="head" />
   </head>
 
