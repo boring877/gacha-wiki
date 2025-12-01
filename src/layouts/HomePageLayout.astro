@@ -2,6 +2,7 @@
 // Home Page Layout - Dedicated layout for the homepage
 import HomeLayout from './HomeLayout.astro';
 import GeneralSEO from '../components/GeneralSEO.astro';
+import Analytics from '../components/Analytics.astro';
 
 export interface Props {
   title: string;
@@ -28,6 +29,7 @@ const { title, description } = Astro.props;
     ]}
     pageType="website"
   />
+  <Analytics slot="head" />
 
   <!-- Fonts now self-hosted, no external prefetch needed -->
 
