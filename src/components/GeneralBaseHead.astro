@@ -6,6 +6,8 @@ export interface Props {
   image?: string;
 }
 
+import Analytics from './Analytics.astro';
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = '/images/games/gacha-wikis-library.jpg' } = Astro.props;
@@ -47,3 +49,6 @@ const { title, description, image = '/images/games/gacha-wikis-library.jpg' } = 
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.site || 'https://gachawiki.info')} />
+
+<!-- Google Analytics -->
+<Analytics />

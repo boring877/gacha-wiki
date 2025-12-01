@@ -4,7 +4,7 @@
 export const freyaBuild = {
   name: 'Freya',
   role: 'DPS',
-  buildType: 'Ice Attack Speed Carry',
+  buildType: 'Normal ATK & Speed Carry',
   description:
     'Freya is a normal attack-focused speed DPS who enters [Golden Desire] state to deal massive rapid-fire damage with AOE capabilities. Her ultimate enhances normal attacks with +50% attack speed and multi-hit mechanics, making her Strong at both single-target and AOE damage.',
   skillPriority: [

@@ -4,7 +4,7 @@
 export const horusBuild = {
   name: 'Horus',
   role: 'Debuffer',
-  buildType: 'Holy DOT Controller',
+  buildType: 'Holy DOT Debuffer',
   description:
     'Horus is a debuffer and DOT Damage Character, she scales with attack power. Her Ultimate can interrupt skill casting. She mainly focus on ATK and Penetration.',
   skillPriority: [

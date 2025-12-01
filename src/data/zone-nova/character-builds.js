@@ -8,6 +8,7 @@ import { apolloBuild } from './character-builds/apollo.js';
 import { morganLeFayBuild } from './character-builds/morgan-le-fay.js';
 import { thorBuild } from './character-builds/thor.js';
 import { freyaBuild } from './character-builds/freya.js';
+import { gaiaBuild } from './character-builds/gaia.js';
 import { horusBuild } from './character-builds/horus.js';
 import { odinBuild } from './character-builds/odin.js';
 
@@ -36,6 +37,9 @@ export const CHARACTER_BUILDS = {
 
   // Freya Build - SSR Ice Attack Speed Carry
   freya: freyaBuild,
+
+  // Gaia Build - SSR Holy HP Scaling Healer
+  gaia: gaiaBuild,
 
   // Horus Build - SSR Holy DOT Debuffer
   horus: horusBuild,

@@ -4,7 +4,7 @@
 export const morganLeFayBuild = {
   name: 'Morgan Le Fay',
   role: 'Buffer',
-  buildType: 'Holy Sword Buffer',
+  buildType: 'Holy Buffer',
   description:
     'This buffer really unique, she can provide both offensive and defensive buffs through her Holy Sword abilities. She can boost team ATK, DEF, and damage reduction while providing consistent energy generation. Some characters scale with DEF and HP when dealing DMG so she has potential to be a very strong buffer.',
   skillPriority: [

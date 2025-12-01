@@ -12,6 +12,7 @@ import { helaData } from '../../../../data/zone-nova/characters/hela.js';
 import { naiyaData } from '../../../../data/zone-nova/characters/naiya.js';
 import { pennyData } from '../../../../data/zone-nova/characters/penny.js';
 import { apolloData } from '../../../../data/zone-nova/characters/apollo.js';
+import { gaiaData } from '../../../../data/zone-nova/characters/gaia.js';
 import { morganLeFayData } from '../../../../data/zone-nova/characters/morgan-le-fay.js';
 
 export const prerender = true;
@@ -74,13 +75,18 @@ const characterData =
           ? pennyData
           : finalCharacter.slug === 'apollo'
             ? apolloData
-            : finalCharacter.slug === 'morgan-le-fay'
-              ? morganLeFayData
-              : null;
+            : finalCharacter.slug === 'gaia'
+              ? gaiaData
+              : finalCharacter.slug === 'morgan-le-fay'
+                ? morganLeFayData
+                : null;
 
 // Memory card URL mapping for easy maintenance
 const memoryCardUrls = {
   // Character-specific memory cards
+  'The Beauty of Heijing Castle': '/guides/zone-nova/memories/the-beauty-of-heijing-castle/',
+  'A Smile That Topples Cities': '/guides/zone-nova/memories/a-smile-that-topples-cities/',
+  'Solitary Realm': '/guides/zone-nova/memories/solitary-realm/',
   'Strange Gaze Full of Desire': '/guides/zone-nova/memories/strange-gaze-full-of-desire/',
   'Frost Dominion': '/guides/zone-nova/memories/frost-dominion/',
   'Her Trainer': '/guides/zone-nova/memories/her-trainer/',
