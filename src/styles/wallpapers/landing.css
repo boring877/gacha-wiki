@@ -260,6 +260,135 @@
   line-height: var(--leading-normal); /* Use leading from typography system */
 }
 
+/* Password Section */
+.password-section {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 183, 77, 0.08);
+  border: 1px solid rgba(255, 183, 77, 0.15);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.password-section p {
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
+  color: rgba(255, 183, 77, 0.9);
+  line-height: var(--leading-normal); /* Use leading from typography system */
+}
+
+.password-section code {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: var(--text-sm); /* Use size from typography system */
+  color: rgba(255, 255, 255, 0.9);
+  word-break: break-all;
+  line-height: var(--leading-normal); /* Use leading from typography system */
+  user-select: all; /* Make it easy to copy the password */
+}
+
+/* Credit Section */
+.credit-section {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.credit-section p {
+  margin: 0;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  line-height: var(--leading-normal); /* Use leading from typography system */
+}
+
+.credit-section strong {
+  color: rgba(255, 183, 77, 0.9);
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
+}
+
+.credit-section a {
+  color: var(--amber-glow);
+  text-decoration: none;
+  font-weight: var(--font-medium); /* Use medium weight from typography system */
+  transition: color 0.2s ease;
+}
+
+.credit-section a:hover {
+  color: rgba(255, 183, 77, 0.8);
+  text-decoration: underline;
+}
+
+/* Download Note */
+.download-note {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  color: rgba(255, 255, 255, 0.8);
+  line-height: var(--leading-normal); /* Use leading from typography system */
+}
+
+.download-note p {
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
+  color: rgba(255, 255, 255, 0.9);
+  line-height: var(--leading-normal); /* Use leading from typography system */
+}
+
+.download-note ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style-type: disc;
+}
+
+.download-note li {
+  margin-bottom: 0.25rem;
+  line-height: var(--leading-normal); /* Use leading from typography system */
+}
+
+/* Disclaimer Section */
+.disclaimer-section {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  border-radius: 6px;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  color: rgba(255, 255, 255, 0.8);
+  line-height: var(--leading-normal); /* Use leading from typography system */
+}
+
+.disclaimer-section p {
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
+  color: rgba(255, 107, 107, 0.9);
+  line-height: var(--leading-normal); /* Use leading from typography system */
+}
+
+.disclaimer-section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style-type: disc;
+}
+
+.disclaimer-section li {
+  margin-bottom: 0.25rem;
+  line-height: var(--leading-normal); /* Use leading from typography system */
+}
+
 /* Seeding Community Note */
 .seeding-note {
   margin-top: 1rem;
