@@ -4,7 +4,7 @@
 export const artemisBuild = {
   name: 'Artemis',
   role: 'DPS',
-  buildType: 'Wind Berserker DPS',
+  buildType: 'PVP Wind DPS',
   description:
     'Artemis is a PVP unit, she is really weak at PVE to the point she is useless. her use case is PVP one shoting Targets with her ultimate.',
   skillPriority: [
