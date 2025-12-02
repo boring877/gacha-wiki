@@ -16,6 +16,7 @@ import { gaiaData } from '../../../../data/zone-nova/characters/gaia.js';
 import { morganLeFayData } from '../../../../data/zone-nova/characters/morgan-le-fay.js';
 import { guinevereData } from '../../../../data/zone-nova/characters/guinevere.js';
 import { artemisData } from '../../../../data/zone-nova/characters/artemis.js';
+import { freyeData } from '../../../../data/zone-nova/characters/freye.js';
 
 export const prerender = true;
 
@@ -65,7 +66,7 @@ const fallbackBuild = {
 const finalCharacter = character || fallbackCharacter;
 const finalBuild = build || fallbackBuild;
 
-// Get character-specific data for Apep, Hela, Naiya, Penny, Apollo, Morgan Le Fay, Guinevere, and Artemis
+// Get character-specific data for Apep, Hela, Naiya, Penny, Apollo, Morgan Le Fay, Guinevere, Artemis, and Freye
 const characterData =
   finalCharacter.slug === 'apep'
     ? apepData
@@ -85,7 +86,9 @@ const characterData =
                   ? guinevereData
                   : finalCharacter.slug === 'artemis'
                     ? artemisData
-                    : null;
+                    : finalCharacter.slug === 'freye'
+                      ? freyeData
+                      : null;
 
 // Memory card URL mapping for easy maintenance
 const memoryCardUrls = {
@@ -126,6 +129,10 @@ const memoryCardUrls = {
   // Artemis memory cards
   'Halloween Candy': '/guides/zone-nova/memories/halloween-candy/',
   'The World Seems to Have Stopped': '/guides/zone-nova/memories/the-world-seems-to-have-stopped/',
+
+  // Freye memory cards
+  'Lamplight Study': '/guides/zone-nova/memories/lamplight-study/',
+  'Sleepy Guardian': '/guides/zone-nova/memories/sleepy-guardian/',
 };
 
 // Helper function to get badge class names
@@ -324,8 +331,16 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                   {/* Spending recommendation note */}
                   {card.spendingNote && (
                     <div class="memory-card-spending-note">
-                      <span class="note-title">Spending Recommendation:</span>
+                      <span class="note-title">Note:</span>
                       <span class="note-content">{card.spendingNote}</span>
+                    </div>
+                  )}
+
+                  {/* General note */}
+                  {card.note && (
+                    <div class="memory-card-spending-note">
+                      <span class="note-title">Note:</span>
+                      <span class="note-content">{card.note}</span>
                     </div>
                   )}
 
@@ -406,8 +421,16 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                   {/* Spending recommendation note */}
                   {card.spendingNote && (
                     <div class="memory-card-spending-note">
-                      <span class="note-title">Spending Recommendation:</span>
+                      <span class="note-title">Note:</span>
                       <span class="note-content">{card.spendingNote}</span>
+                    </div>
+                  )}
+
+                  {/* General note */}
+                  {card.note && (
+                    <div class="memory-card-spending-note">
+                      <span class="note-title">Note:</span>
+                      <span class="note-content">{card.note}</span>
                     </div>
                   )}
 

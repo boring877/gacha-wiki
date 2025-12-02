@@ -7,12 +7,13 @@ import { pennyBuild } from './character-builds/penny.js';
 import { apolloBuild } from './character-builds/apollo.js';
 import { morganLeFayBuild } from './character-builds/morgan-le-fay.js';
 import { thorBuild } from './character-builds/thor.js';
-import { freyaBuild } from './character-builds/freya.js';
 import { gaiaBuild } from './character-builds/gaia.js';
 import { horusBuild } from './character-builds/horus.js';
 import { odinBuild } from './character-builds/odin.js';
 import { guinevereBuild } from './character-builds/guinevere.js';
 import { artemisBuild } from './character-builds/artemis.js';
+import { freyeChaosBuild } from './character-builds/freye.js';
+import { freyaBuild } from './character-builds/freya.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -37,9 +38,6 @@ export const CHARACTER_BUILDS = {
   // Thor Build - SSR Holy Guardian Tank
   thor: thorBuild,
 
-  // Freya Build - SSR Ice Attack Speed Carry
-  freya: freyaBuild,
-
   // Gaia Build - SSR Holy HP Scaling Healer
   gaia: gaiaBuild,
 
@@ -54,6 +52,12 @@ export const CHARACTER_BUILDS = {
 
   // Artemis Build - SSR Wind Berserker DPS
   artemis: artemisBuild,
+
+  // Freye Build - SSR Chaos DOT Debuffer
+  freye: freyeChaosBuild,
+
+  // Freya Build - SSR Ice Normal Attack Speed Carry
+  freya: freyaBuild,
 };
 
 // Generate builds for available characters only

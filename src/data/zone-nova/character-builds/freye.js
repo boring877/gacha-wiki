@@ -1,12 +1,12 @@
 // Freye Build - Zone Nova Character Build
 // SSR Chaos character - Chaos Debuffer with DOT and Damage Amplification
 
-export const freyeBuild = {
+export const freyeChaosBuild = {
   name: 'Freye',
   role: 'Debuffer',
-  buildType: 'Chaos DOT Debuffer',
+  buildType: 'Chaos Debuffer',
   description:
-    'Freye is a powerful Chaos debuffer who excels at damage amplification and DOT damage. She applies resistance reduction, Divine Meteor stacks for continuous damage, and significantly increases enemy damage taken through her ultimate skills. Her kit is designed around making enemies more vulnerable while dealing substantial chaos damage over time.',
+    'Freye is Chaos debuffer that can reduce enemy resistance, and increase damage taken. She also can reduce enemy energy gain and defense. ',
   skillPriority: [
     {
       skill: 'Ultimate: Dark Fate',
@@ -15,7 +15,7 @@ export const freyeBuild = {
       reason:
         'Massive damage amplification - 60% increased damage taken with enhanced ultimate, core to her debuff role',
       description:
-        "Energy Cost: 3\nSummons black holes dealing damage to enemies within range. Enhanced version (available after awakening) increases enemy damage taken by 60% for 10 seconds and deals 180% total chaos damage. This is Freye's primary damage amplification tool.",
+        'Energy Cost: 3\nSummons a small black hole that deals damage to designated enemy units and surrounding enemies within a 3-meter range, hitting up to 12 times. Total damage is 60% chaos damage. If the enemy takes damage within 10 seconds, damage taken is increased by 36%. Next ultimate skill is enhanced. Enhanced Ultimate: Summons a large black hole that deals damage to designated enemy units and surrounding enemies within a 5-meter range, hitting up to 12 times. Total damage is 180% chaos damage. Additionally, within 10 seconds, enemy damage taken is increased by 60%.',
     },
     {
       skill: 'Passive: Meteor Storm',
@@ -24,7 +24,7 @@ export const freyeBuild = {
       reason:
         'Core DOT mechanic - Divine Meteor stacks provide consistent damage and enhance ultimate capabilities',
       description:
-        'When using attacks or skills, applies 【Divine Meteor】 stacks. Each stack deals 19.2% attack power chaos damage every 3 seconds (max 10 stacks). With enhanced ultimate, also reduces enemy energy gain by 100% and defense by 20%.',
+        'When using basic attacks or skills to deal damage, applies one stack of 【Divine Meteor】. When using ultimate skill to deal damage to the same target 4 times, applies one stack of 【Divine Meteor】. 【Divine Meteor】: Every 3 seconds deals 19.2% attack power as chaos damage, can stack up to 10 times, lasts 10 seconds. Passive Effect: When a large black hole exists (Enhanced Ultimate), all enemy units have their energy gain reduced by 50% and total defense reduced by 10%. Enhanced: Energy gain reduced by 100% and total defense reduced by 20%.',
     },
     {
       skill: 'Auto Skill: Attribute Break',
@@ -33,7 +33,7 @@ export const freyeBuild = {
       reason:
         'Critical resistance reduction - 15% resistance debuff that enables higher damage output for entire team',
       description:
-        'Cooldown: 5.0s\nApplies weakness attribute and reduces corresponding enemy resistance by 15% for 10 seconds. Deals 360% attack power damage of matching attribute. Essential for increasing team damage output.',
+        'Cooldown: 5.0s\nApplies a weakness attribute to the designated enemy unit, prioritizing the attribute of the 4th character in your team, and reduces the corresponding attribute resistance by 15% for 10 seconds. Deals 360% attack power damage of the corresponding attribute to that target.',
     },
     {
       skill: 'Normal Attack: Chaos Strike',
@@ -59,42 +59,23 @@ export const freyeBuild = {
   ],
   alternativeMemoryCards: [
     {
-      name: 'True Order (真正的秩序)',
+      name: 'Sleepy Guardian',
       effect:
-        "SSR memory card that provides significant damage boost against enemies with negative status effects, perfect for Freye's debuff playstyle.",
+        "This memory is good for PVP to help reduce the target's energy recovery, preventing enemies from using their ultimate skills frequently.",
       characterSpecific: false,
-      memoryImage: 'Lokicard.jpg',
-      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
-      description: 'When attacking enemies with negative status effects, damage increases by 32%',
-    },
-    {
-      name: 'Battlefield Flower',
-      effect:
-        "SR memory card that provides scaling damage based on negative effects, excellent for amplifying Freye's debuff damage output.",
-      characterSpecific: false,
-      memoryImage: 'ninicard.jpg',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      description:
-        'For each negative effect on the target, damage dealt increases by 20%, maximum 3 stacks (60% total)',
-    },
-    {
-      name: 'Deceptive Ultimate Temptation',
-      effect:
-        'SR memory card designed specifically for Debuffer class characters with attack boost and debuff synergy.',
-      characterSpecific: false,
-      memoryImage: 'Deceptive-Ultimate-Temptation.jpg',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      description:
-        'Attack increased by 20%. When attacking enemies with negative status, damage increased by 20%',
+      memoryImage: 'Belphegarcard.jpg',
+      memoryStats: { hp: '5,200', attack: '420', defense: '380' },
+      description: 'Ultimate skill can reduce targets energy regen by 18%.',
+      note: 'Excellent PVP memory to control enemy ultimate skill timing.',
     },
   ],
   runes: {
-    primary: 'Attack',
+    primary: 'Attack % ',
     secondary: 'Penetration',
     stats: ['ATK%', 'Penetration'],
     additionalStats: ['ATK', 'HP', 'DEF'],
     buildNote:
-      'Attack and Penetration are primary for maximizing debuff potency and DOT damage. While Freya deals substantial DOT, her damage amplification role benefits greatly from raw attack power to make enemies more vulnerable to team damage.',
+      'Her AOE damage is not bad but not strong enough, Some people go tank with her and little of ATK. She is a Debuffer mainly deal DOT damage and  increase damage taken and lower resistance.',
     recommendedSets: [
       {
         name: 'Giants 4-piece + Gimel 2-piece',
@@ -108,6 +89,16 @@ export const freyeBuild = {
       },
     ],
     alternativeSets: [
+      {
+        name: 'Giants 4-piece + Alpha 2-piece',
+        englishName: 'Giants [Vulnerability] 4-piece + Alpha 2-piece',
+        mainRune: 'Giants',
+        secondaryRune: 'Alpha',
+        mainRune2Piece: '2-piece: Attack power increased by 8%',
+        mainRune4Piece:
+          '4-piece: When equipped character is "Debuff" class, casting ultimate skill damage causes targets to take 10% increased damage for 5 seconds',
+        secondaryRuneEffect: '2-piece: Attack Power increased by 8%',
+      },
       {
         name: 'Gimel 4-piece + Giants 2-piece',
         englishName: 'Gimel [Continuous Damage] 4-piece + Giants [Vulnerability] 2-piece',
@@ -151,8 +142,7 @@ export const freyeBuild = {
         'HP (%)',
         'Defense (%)',
       ],
-      description:
-        "Attack % for maximum debuff potency and DOT damage scaling. Freye's abilities scale directly with attack power.",
+      description: 'Attack Penetration for DOT damage if you want !. ',
     },
     5: {
       name: 'Position 5 — Variable Main Stats',
@@ -167,8 +157,6 @@ export const freyeBuild = {
         'HP (%)',
         'Defense (%)',
       ],
-      description:
-        'Chaos Attribute Damage % for maximizing all chaos damage output including DOT and ultimate damage.',
     },
     6: {
       name: 'Position 6 — Variable Main Stats',
@@ -217,14 +205,15 @@ export const freyeBuild = {
   },
   teamSkill: {
     name: 'Divine Protection',
-    activationCondition: 'Team contains 2 [Chemic] characters or 2 [Chaos] characters',
+    activationCondition: 'Team contains 2 [A.S.A] characters or 2 [Chaos] characters',
     effects: [
-      'Self attack power increases by 10%',
-      'At battle start, every 500 attack power adds 3% penetration, maximum 6 times (18% max)',
+      'After combat starts, reduces total damage dealt by all enemy units by 2.5%',
+      'For every 1000 attack power Freye has, this effect increases by 100% (doubles), maximum increase of 300%',
+      'At 3000+ attack: 10% damage reduction (maximum)',
     ],
   },
   teamSynergy: {
-    goodWith: ['Chaos characters', 'DOT characters', 'High damage DPS characters'],
-    note: 'Freye excels in teams that can capitalize on enemy vulnerability. Her resistance reduction and damage amplification make her an excellent support for high-damage DPS characters. Works particularly well with other Chaos characters for team skill benefits and DOT stacking teams.',
+    goodWith: ['DOT characters', 'High damage DPS characters', 'Chaos characters'],
+    note: 'She is strong PVE, she can help clear things up and increase damage taken. also she is strong in PVP to stop the enemy from using their ultimate skill. However she is not busted !.',
   },
 };
