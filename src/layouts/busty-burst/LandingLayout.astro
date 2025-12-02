@@ -1,0 +1,91 @@
+---
+import BBBaseHead from '../../components/busty-burst/BBBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
+import GameImage from '../../components/busty-burst/GameImage.astro';
+
+// Import CSS files properly
+import '../../styles/games/busty-burst/busty-burst-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/busty-burst/busty-burst-layout.css';
+import '../../styles/games/busty-burst/busty-burst-landing.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+}
+
+const { title, description, gameTitle, heroImage } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BBBaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="busty-burst"
+      title={title}
+      description={description}
+      customImage={heroImage || '/assets/images/games/Busty_Burst/BG/bg_02.webp'}
+    />
+    <slot name="head" />
+  </head>
+  <body class="busty-burst-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+
+    <div class="busty-burst-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="busty-burst" />
+      <MobileMenu />
+
+      <div class="busty-burst-container">
+        <main class="busty-burst-main">
+          <!-- Busty Burst Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                <GameImage
+                  imageName={heroImage}
+                  alt={gameTitle}
+                  class="hero-image"
+                  width={1200}
+                  height={400}
+                  loading="eager"
+                  format="webp"
+                  quality={90}
+                />
+                <h1 class="hero-title">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb autoGenerate={true} gameKey="busty-burst" showBackButton={true} />
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

@@ -80,6 +80,11 @@
   min-height: 44px;
   flex: 1;
   max-width: 350px;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
 }
 
 .game-nav-mobile .game-resources-btn:active {
@@ -113,7 +118,7 @@
 
 .game-nav-mobile .game-title {
   margin: 0;
-  font-family: var(--font-primary);
+  font-family: var(--font-display);
   font-size: var(--text-base);
   font-weight: var(--font-semibold);
   color: #ffffff;
@@ -123,6 +128,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
 }
 
 /* Visual feedback when menu is open */
@@ -157,6 +163,15 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+}
+
+.game-nav-mobile[data-game='busty-burst'] .game-title {
+  background: linear-gradient(135deg, #4a8399, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
 }
 
 /* Game-specific mobile menu colors */
@@ -216,6 +231,25 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+}
+
+/* Busty Burst - Inside Menu */
+.mobile-links[data-game='busty-burst'] .mobile-game-name {
+  background: linear-gradient(135deg, #4a8399, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.mobile-links[data-game='busty-burst'] .mobile-section-title {
+  background: linear-gradient(135deg, #4a8399, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
 }
 
 /* Mobile Navigation - Overlay System */
@@ -331,7 +365,7 @@
 }
 
 .mobile-game-name {
-  font-family: var(--font-primary);
+  font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: var(--font-bold);
   color: #ffffff;
@@ -340,6 +374,7 @@
   text-overflow: ellipsis;
   max-width: 240px;
   line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-tight);
 }
 
 .mobile-game-subtitle {
@@ -349,6 +384,7 @@
   color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
   line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
 }
 
 /* MOBILE ONLY: Match menu button colors exactly */
@@ -375,13 +411,13 @@
 }
 
 .mobile-section-title {
-  font-family: var(--font-primary);
+  font-family: var(--font-display);
   font-weight: var(--font-semibold);
   color: #ffffff;
   font-size: var(--text-lg);
   letter-spacing: var(--tracking-tight);
   margin-bottom: 1rem;
-  line-height: var(--leading-normal);
+  line-height: var(--leading-tight);
 }
 
 /* MOBILE ONLY: Match menu button colors exactly */
@@ -395,8 +431,11 @@
     background: rgba(255, 255, 255, 0.08);
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: var(--font-primary);
     font-size: var(--text-base);
     font-weight: var(--font-medium);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
     min-height: 48px;
     align-items: center;
     touch-action: manipulation;
@@ -433,9 +472,11 @@
 .mobile-link.active {
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
+  font-family: var(--font-primary);
   font-weight: var(--font-semibold);
   border-color: rgba(255, 255, 255, 0.4);
   line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
 }
 
 /* Enhanced Focus Indicators for Modal Behavior */
@@ -535,5 +576,24 @@
 
   .mobile-link:hover {
     background: rgba(125, 211, 252, 0.1);
+  }
+}
+
+/* ============================================
+   BUSTY BURST MOBILE STYLING
+   ============================================ */
+.mobile-links[data-game='busty-burst'] {
+  .mobile-link {
+    border-bottom: 1px solid rgba(46, 82, 102, 0.2);
+  }
+
+  .mobile-link.active {
+    background: linear-gradient(135deg, #2e5266, #4a8399);
+    color: white;
+    border-left: 3px solid #4a8399;
+  }
+
+  .mobile-link:hover {
+    background: rgba(46, 82, 102, 0.1);
   }
 }

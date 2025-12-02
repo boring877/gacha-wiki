@@ -49,6 +49,13 @@ export const GAMES = {
     DAMAGE_K_VALUE: 1000,
     BASE_URL: '/guides/stella-sora',
   },
+  BUSTY_BURST: {
+    KEY: 'busty-burst',
+    NAME: 'Busty Burst Fantasy',
+    THEME_COLOR: '#FF1493',
+    DAMAGE_K_VALUE: 1000,
+    BASE_URL: '/guides/busty-burst',
+  },
 } as const;
 
 // URL patterns (centralized to prevent duplication)
@@ -109,6 +116,15 @@ export const URLS = {
     REDEEM_CODES: '/guides/stella-sora/redeem-codes',
     CLOCK: '/clock/stella-sora',
     TEAM_BUILDS: '/guides/stella-sora/team-builds',
+  },
+  BUSTY_BURST: {
+    BASE: '/guides/busty-burst',
+    CHARACTERS: '/guides/busty-burst/paladins',
+    BEGINNER_GUIDE: '/guides/busty-burst/beginner-guide',
+    GAME_SYSTEMS: '/guides/busty-burst/game-systems',
+    REDEEM_CODES: '/guides/busty-burst/redeem-codes',
+    EVENTS: '/guides/busty-burst/events',
+    CLOCK: '/clock/busty-burst',
   },
 } as const;
 

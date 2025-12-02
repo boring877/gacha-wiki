@@ -1,0 +1,346 @@
+/* Busty Burst Fantasy Layout Styles */
+/* Base layout, hero sections, and shared animations for adult fantasy theme */
+
+/* Body Styles */
+.busty-burst-body {
+  background: linear-gradient(
+    135deg,
+    var(--bb-bg-primary) 0%,
+    var(--bb-bg-secondary) 50%,
+    var(--bb-bg-primary) 100%
+  );
+  color: var(--bb-text-primary);
+  min-height: 100vh;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Background Layers - Teal/Blue theme */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+}
+
+.bg-primary {
+  background: linear-gradient(
+    135deg,
+    var(--bb-bg-primary) 0%,
+    var(--bb-bg-secondary) 50%,
+    var(--bb-bg-primary) 100%
+  );
+}
+
+.bg-accent-1 {
+  background: radial-gradient(circle at 20% 80%, rgba(46, 82, 102, 0.08), transparent);
+  pointer-events: none;
+}
+
+.bg-accent-2 {
+  background: radial-gradient(circle at 80% 20%, rgba(30, 58, 95, 0.06), transparent);
+  pointer-events: none;
+}
+
+.busty-burst-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Container Styles */
+.busty-burst-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+.busty-burst-main {
+  width: 100%;
+  position: relative;
+}
+
+/* Hero Section */
+.hero-section {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
+  background: var(--bb-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Content Area */
+.content-area {
+  width: 100%;
+  position: relative;
+}
+
+/* Content Sections */
+.content-section {
+  margin-bottom: 3rem;
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.section-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-display);
+  color: var(--bb-primary-light);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+
+.resources-title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
+  color: var(--bb-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+  background: var(--bb-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Game Description */
+.game-description {
+  font-size: var(--text-lg);
+  font-family: var(--font-primary);
+  line-height: var(--leading-relaxed);
+  color: var(--bb-text-secondary);
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Story Content */
+.story-content {
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  line-height: var(--leading-relaxed);
+  color: var(--bb-text-secondary);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  letter-spacing: var(--tracking-normal);
+}
+
+.story-content p {
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  margin-bottom: 1.2rem;
+  text-align: center;
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Play Button */
+.play-button-container {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.play-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bb-gradient-primary);
+  color: var(--bb-text-primary);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: var(--font-semibold);
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  border: none;
+  cursor: pointer;
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--leading-normal);
+}
+
+.play-arrow {
+  font-size: 1.2rem;
+}
+
+/* Last Updated */
+.last-updated {
+  text-align: center;
+  color: var(--bb-text-muted);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  margin-top: 1.5rem;
+  font-style: italic;
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .busty-burst-container {
+    padding: 0 15px;
+  }
+
+  .hero-section {
+    margin-bottom: 2rem;
+  }
+
+  .hero-image {
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-3xl);
+  }
+
+  .content-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: var(--text-2xl);
+  }
+
+  .resources-title {
+    font-size: var(--text-3xl);
+  }
+
+  .game-description {
+    font-size: var(--text-base);
+  }
+
+  .story-content {
+    max-width: 90%;
+    font-size: var(--text-base);
+  }
+
+  .story-content p {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+  }
+}
+
+/* Game Notes Section */
+.game-notes-section {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.game-notes-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  color: var(--bb-primary-light);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.game-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.game-note-item {
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.game-note-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--bb-primary-light);
+  margin-bottom: 0.75rem;
+}
+
+.game-note-content {
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--bb-text-secondary);
+}
+
+/* Mobile Responsive for Game Notes */
+@media (max-width: 768px) {
+  .game-notes-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .game-notes-title {
+    font-size: var(--text-xl);
+    margin-bottom: 1.25rem;
+  }
+
+  .game-notes-list {
+    gap: 1.25rem;
+  }
+
+  .game-note-item {
+    padding: 1.25rem;
+  }
+
+  .game-note-title {
+    font-size: var(--text-base);
+    margin-bottom: 0.625rem;
+  }
+
+  .game-note-content {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+}
+
+@media (max-width: 480px) {
+  .game-notes-section {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .game-notes-title {
+    font-size: var(--text-lg);
+  }
+
+  .game-note-item {
+    padding: 1rem;
+  }
+
+  .game-note-content {
+    font-size: var(--text-sm);
+  }
+}

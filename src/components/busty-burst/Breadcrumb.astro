@@ -1,0 +1,309 @@
+---
+import {
+  generateBreadcrumbs,
+  getParentBreadcrumb,
+  generateBackNavigation,
+} from '../../utils/breadcrumb-generator.js';
+import type { BreadcrumbItem, BackNavigation } from '../../utils/breadcrumb-generator.js';
+
+export interface Props {
+  // Manual breadcrumb items (legacy support)
+  items?: Array<{
+    name: string;
+    href?: string;
+  }>;
+  // Auto-generation options
+  autoGenerate?: boolean;
+  gameKey?: string;
+  currentPageName?: string;
+  includeHome?: boolean;
+  showBackButton?: boolean;
+}
+
+const {
+  items,
+  autoGenerate = false,
+  gameKey,
+  currentPageName,
+  includeHome = true,
+  showBackButton = true,
+} = Astro.props;
+
+// Generate breadcrumbs automatically if requested, otherwise use provided items
+let breadcrumbItems: BreadcrumbItem[] = items || [];
+let backNavigation: BackNavigation | null = null;
+
+if (autoGenerate) {
+  breadcrumbItems = generateBreadcrumbs(Astro.url.pathname, {
+    includeHome,
+    currentPageName,
+    gameKey,
+  });
+
+  if (showBackButton) {
+    backNavigation = generateBackNavigation(Astro.url.pathname, { gameKey });
+  }
+} else if (showBackButton && items) {
+  // Generate back navigation from provided items
+  const parent = getParentBreadcrumb(items);
+  if (parent) {
+    backNavigation = {
+      href: parent.href || '/',
+      text: `Back to ${parent.name}`,
+      parentName: parent.name,
+    };
+  }
+}
+---
+
+<nav class="bb-breadcrumb" aria-label="Breadcrumb">
+  <div class="bb-breadcrumb-container">
+    {/* Back Button */}
+    {
+      backNavigation && (
+        <button
+          type="button"
+          class="bb-back-button"
+          onclick={`window.location.href='${backNavigation.href}'`}
+          aria-label={backNavigation.text}
+          title={backNavigation.text}
+        >
+          <svg
+            class="bb-back-arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 18l-6-6 6-6"
+            />
+          </svg>
+          <span class="bb-back-text">Back</span>
+        </button>
+      )
+    }
+
+    {/* Breadcrumb Trail */}
+    <ol class="bb-breadcrumb-list">
+      {
+        breadcrumbItems.map((item, index) => (
+          <li class="bb-breadcrumb-item">
+            {item.href ? (
+              <a href={item.href} class="bb-breadcrumb-link">
+                {item.name}
+              </a>
+            ) : (
+              <span class="bb-breadcrumb-current" aria-current="page">
+                {item.name}
+              </span>
+            )}
+            {index < breadcrumbItems.length - 1 && (
+              <span class="bb-breadcrumb-separator" aria-hidden="true">
+                ›
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .bb-breadcrumb {
+    margin-bottom: 2rem;
+    /* Align with parent container */
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    /* Ensure breadcrumb appears above other elements */
+    position: relative;
+    z-index: 20;
+  }
+
+  .bb-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Back Button Styles - Busty Burst */
+  .bb-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--bb-bg-secondary);
+    border: 1px solid var(--bb-border);
+    border-radius: 6px;
+    color: var(--bb-primary-light);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
+    /* Touch-friendly sizing */
+    min-height: 48px;
+    /* Touch optimization */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .bb-back-button:focus-visible {
+    outline: 2px solid var(--bb-accent-light);
+    outline-offset: 2px;
+  }
+
+  .bb-back-arrow {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  .bb-back-text {
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
+  }
+
+  /* Breadcrumb Trail Styles */
+  .bb-breadcrumb-list {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--bb-text-secondary);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
+    flex-wrap: wrap;
+    align-items: center;
+    flex: 1;
+  }
+
+  .bb-breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .bb-breadcrumb-link {
+    color: var(--bb-primary-light);
+    text-decoration: none;
+    padding: 0.75rem;
+    border-radius: 6px;
+    /* Touch-friendly link area */
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .bb-breadcrumb-current {
+    color: var(--bb-text-primary);
+    font-family: var(--font-primary);
+    font-weight: var(--font-semibold);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
+    padding: 0.75rem;
+  }
+
+  .bb-breadcrumb-separator {
+    color: var(--bb-primary-light);
+    user-select: none;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    font-weight: var(--font-normal);
+    line-height: var(--leading-normal);
+    opacity: 0.7;
+  }
+
+  /* Mobile optimization */
+  @media (max-width: 768px) {
+    .bb-breadcrumb {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .bb-breadcrumb-container {
+      gap: 1rem;
+    }
+
+    .bb-back-button {
+      padding: 0.75rem 1rem;
+      font-size: var(--text-sm);
+      min-height: 48px;
+    }
+
+    .bb-breadcrumb-list {
+      font-size: var(--text-sm);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bb-breadcrumb {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .bb-breadcrumb-container {
+      gap: 0.75rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .bb-back-button {
+      padding: 0.75rem 1rem;
+      font-size: var(--text-sm);
+      min-height: 48px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .bb-breadcrumb-list {
+      font-size: var(--text-sm);
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .bb-breadcrumb-item {
+      gap: 0.5rem;
+    }
+
+    .bb-breadcrumb-link,
+    .bb-breadcrumb-current {
+      padding: 0.75rem;
+      min-height: 48px;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .bb-back-button {
+      border-color: currentColor;
+    }
+
+    .bb-breadcrumb-link {
+      text-decoration: underline;
+    }
+  }
+</style>

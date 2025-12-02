@@ -14,6 +14,7 @@ import { guinevereBuild } from './character-builds/guinevere.js';
 import { artemisBuild } from './character-builds/artemis.js';
 import { freyeChaosBuild } from './character-builds/freye.js';
 import { freyaBuild } from './character-builds/freya.js';
+import { athenaBuild } from './character-builds/athena.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -58,6 +59,9 @@ export const CHARACTER_BUILDS = {
 
   // Freya Build - SSR Ice Normal Attack Speed Carry
   freya: freyaBuild,
+
+  // Athena Build - SSR Wind Normal Attack Speed Buffer
+  athena: athenaBuild,
 };
 
 // Generate builds for available characters only

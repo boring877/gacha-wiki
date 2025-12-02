@@ -79,7 +79,8 @@ export const naiyaBuild = {
         mainRune: 'Epsilon',
         secondaryRune: 'Alpha',
         mainRune2Piece: '2-piece: Attack Power +8%',
-        mainRune4Piece: '4-piece: When dealing damage, ignores 30% of enemy defense',
+        mainRune4Piece:
+          '4-piece: After activating ultimate skill, entire team damage increased by 10%, lasts 10 seconds',
         secondaryRuneEffect: '2-piece: Attack Power +8%',
       },
       {
@@ -88,7 +89,8 @@ export const naiyaBuild = {
         mainRune: 'Epsilon',
         secondaryRune: 'Giants',
         mainRune2Piece: '2-piece: Attack Power +8%',
-        mainRune4Piece: '4-piece: When dealing damage, ignores 30% of enemy defense',
+        mainRune4Piece:
+          '4-piece: After activating ultimate skill, entire team damage increased by 10%, lasts 10 seconds',
         secondaryRuneEffect: '2-piece: Attack power increased by 8%',
       },
     ],
@@ -99,7 +101,8 @@ export const naiyaBuild = {
         mainRune: 'Epsilon',
         secondaryRune: 'Beth',
         mainRune2Piece: '2-piece: Attack Power +8%',
-        mainRune4Piece: '4-piece: When dealing damage, ignores 30% of enemy defense',
+        mainRune4Piece:
+          '4-piece: After activating ultimate skill, entire team damage increased by 10%, lasts 10 seconds',
         secondaryRuneEffect: '2-piece: Crit Rate +6%',
       },
     ],

@@ -1,0 +1,132 @@
+---
+import BustyBurstLandingLayout from '../../layouts/busty-burst/LandingLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { bustyBurstConfig } from '../../data/busty-burst/busty-burst.js';
+
+// Extract data for easier use in template
+const { meta, gameInfo, categoryGroups, gameNotes } = bustyBurstConfig;
+---
+
+<BustyBurstLandingLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  heroImage={meta.heroImage}
+>
+  <!-- Structured Data for Busty Burst Fantasy -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Busty Burst Fantasy Wiki & Guide - Download, Global Version & Paladin Database",
+      "url": "https://gachawiki.info/guides/busty-burst/",
+      "description": "Download Busty Burst Fantasy global version - Complete paladin database, tier lists, summoning guides and lord system mechanics. Free download link, latest updates and team building strategies.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gachawiki.info/guides/busty-burst/paladins?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+
+  <!-- Game-specific structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Busty Burst Fantasy",
+      "alternateName": ["巨乳ファンタジーバースト", "kyonyu burst", "busty burst"],
+      "genre": ["Adult RPG", "Gacha", "Fantasy"],
+      "description": "Adult fantasy RPG where Rufus, a lord from the frontier region, must summon powerful otherworldly paladins from the abandoned Goddess Ruin to save his lordship through strategic duels among subordinate paladins.",
+      "keywords": "Busty Burst Fantasy, 巨乳ファンタジーバースト, kyonyu burst, download, global version, free download, adult gacha game, paladin summoning, lord system, duel combat, Rufus story, Kingdom of Vern, Goddess Ruin, otherworldly paladins",
+      "applicationCategory": "Game",
+      "operatingSystem": "Android, iOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  </script>
+
+  <!-- Game Overview Section -->
+  <section class="content-section">
+    <h2 class="section-title">About Busty Burst Fantasy</h2>
+    <div class="game-description">
+      <p>
+        The online game Kyonyuu Fantasy Burst! (Busty Fantasy Burst!), adapted from the popular
+        Japanese PC game series Kyonyuu Fantasy which has been going strong for over 10 years, is
+        finally available in English!
+      </p>
+    </div>
+
+    <!-- Play Game Button -->
+    <div class="play-button-container">
+      <a href={gameInfo.playUrl} target="_blank" class="play-button">
+        Play Busty Burst Fantasy
+        <span class="play-arrow">→</span>
+      </a>
+    </div>
+
+    <p class="last-updated">
+      Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+    </p>
+  </section>
+
+  <!-- Game Story Section -->
+  <section class="content-section">
+    <h2 class="section-title">Rufus's Story</h2>
+    <div class="story-content">
+      <p>Rufus, a lord from the frontier region, resides in the Kingdom of Vern.</p>
+      <p>
+        Here, a lord's rank is determined by<br />
+        the outcome of duels among their subordinate paladins.
+      </p>
+
+      <p>Tragically however, Rufus is currently second-to-last.</p>
+      <p>
+        Should he lose the next match,<br />
+        he will forfeit his lordship and face a dire crisis.
+      </p>
+
+      <p>
+        Desperate to turn the tide, Rufus attempts to<br />
+        summon paladins from another world.
+      </p>
+      <p>
+        His journey leads him to the long-abandoned Goddess Ruin,<br />
+        where powerful otherworldly paladins await...
+      </p>
+    </div>
+  </section>
+
+  <!-- Game Notes Section -->
+  <section class="game-notes-section">
+    <h2 class="game-notes-title">{gameNotes.title}</h2>
+    <div class="game-notes-list">
+      {
+        gameNotes.notes.map(note => (
+          <div class="game-note-item">
+            <h3 class="game-note-title">{note.title}</h3>
+            <p class="game-note-content">{note.content}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Resources Section -->
+  <section class="content-section">
+    <h2 class="resources-title">Resources & Guides</h2>
+
+    <p class="coming-soon-text">
+      Guides and resources are coming soon. Check back later for detailed game information.
+    </p>
+  </section>
+</BustyBurstLandingLayout>

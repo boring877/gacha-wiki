@@ -21,7 +21,8 @@ const isActive = (href: string) => {
     href.endsWith('/zone-nova/') ||
     href.endsWith('/silver-and-blood/') ||
     href.endsWith('/horizon-walker/') ||
-    href.endsWith('/stella-sora/')
+    href.endsWith('/stella-sora/') ||
+    href.endsWith('/busty-burst/')
   ) {
     return currentPath === href;
   }
@@ -65,7 +66,9 @@ if (!game) return;
                 ? '/guides/rebellion-gilgamesh/'
                 : validatedGameKey === 'stella-sora'
                   ? '/guides/stella-sora/'
-                  : '/guides/silver-and-blood/'}
+                  : validatedGameKey === 'busty-burst'
+                    ? '/guides/busty-burst/'
+                    : '/guides/silver-and-blood/'}
           class="game-link"
         >
           <div class="game-image-container">

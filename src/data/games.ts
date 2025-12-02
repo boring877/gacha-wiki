@@ -3,6 +3,7 @@
 import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
 import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
+import BustyBurstIcon from '../assets/images/games/Busty_Burst/BG/Icon.png';
 
 export interface Game {
   id: string;
@@ -71,6 +72,17 @@ export const GAMES: Game[] = [
     url: '/guides/stella-sora/',
     status: 'active',
     sections: ['Characters', 'Combat', 'Monoliths', 'Trekkers', 'Resources'],
+    lastUpdated: new Date(),
+  },
+  {
+    id: 'busty-burst',
+    name: 'Busty Burst Fantasy 巨乳ファンタジーバースト',
+    slug: 'busty-burst',
+    description: 'Fantasy RPG • Character Guides • Game Systems • Strategies',
+    image: BustyBurstIcon,
+    url: '/guides/busty-burst/',
+    status: 'active',
+    sections: ['Beginner Guide', 'Tier List', 'Game Systems', 'Redeem Codes', 'Events'],
     lastUpdated: new Date(),
   },
 ];

@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import bgImage from '../../assets/images/games/Busty_Burst/BG/bg_02.webp';
+import gameLogo from '../../assets/images/games/Busty_Burst/BG/gameLogo.webp';
+import gameIcon from '../../assets/images/games/Busty_Burst/BG/Icon.png';
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 1200,
+  height = 400,
+  class: className,
+  loading = 'eager',
+  format = 'webp',
+  quality = 90,
+} = Astro.props;
+
+// Map image names to imported image modules - using actual Busty Burst game images
+const imageMap = {
+  'bg_02.webp': bgImage,
+  'gameLogo.webp': gameLogo,
+  'Icon.png': gameIcon,
+  'icon.png': gameIcon,
+  'hero.webp': gameLogo,
+  'busty-burst-hero.webp': gameLogo,
+  'busty-burst-bg.webp': bgImage,
+  'busty-burst-logo.webp': gameLogo,
+  'busty-burst-icon.webp': gameIcon,
+  'BG/bg_02.webp': bgImage,
+  'BG/gameLogo.webp': gameLogo,
+  'BG/Icon.png': gameIcon,
+};
+
+// Get the image module based on the imageName
+const filename = imageName.split('/').pop() || 'gameLogo.webp';
+const imageModule = imageMap[imageName] || imageMap[filename] || gameLogo;
+---
+
+<!-- Use Astro's Image component for optimization -->
+<Image
+  src={imageModule}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

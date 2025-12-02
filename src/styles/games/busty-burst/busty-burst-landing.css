@@ -1,0 +1,204 @@
+/* Busty Burst Fantasy Landing Page Specific Styles */
+/* Resource grids, features, and landing page components */
+
+/* Coming Soon Text */
+.coming-soon-text {
+  text-align: center;
+  color: var(--bb-text-tertiary);
+  font-size: 1.1rem;
+  font-style: italic;
+  margin: 2rem 0;
+}
+
+/* Resources Grid */
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.resource-category {
+  background: var(--bb-gradient-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.resource-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--bb-gradient-primary);
+}
+
+/* Category Size Variations */
+.category-large {
+  grid-column: span 2;
+}
+
+.category-medium {
+  grid-column: span 1;
+}
+
+.category-small {
+  grid-column: span 1;
+}
+
+/* Category Header */
+.category-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.category-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.category-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--bb-primary);
+  margin-bottom: 0.5rem;
+}
+
+.category-description {
+  color: var(--bb-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Buttons Grid */
+.buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.resource-button {
+  display: block;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  color: var(--bb-text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-item {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.feature-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--bb-gradient-primary);
+  border-radius: 16px 16px 0 0;
+}
+
+.feature-item h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--bb-primary);
+  margin-bottom: 1rem;
+}
+
+.feature-item p {
+  color: var(--bb-text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .category-large {
+    grid-column: span 1;
+  }
+
+  .buttons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .resource-category {
+    padding: 1.5rem;
+  }
+
+  .feature-item {
+    padding: 1.5rem;
+  }
+
+  .category-emoji {
+    font-size: 2rem;
+  }
+
+  .category-header h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .resource-category,
+  .feature-item {
+    padding: 1rem;
+  }
+
+  .category-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .buttons-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .resource-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .feature-item h3 {
+    font-size: 1.2rem;
+  }
+
+  .feature-item p {
+    font-size: 0.9rem;
+  }
+}

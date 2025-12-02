@@ -3,7 +3,8 @@ export type GameKey =
   | 'zone-nova'
   | 'horizon-walker'
   | 'rebellion-gilgamesh'
-  | 'stella-sora';
+  | 'stella-sora'
+  | 'busty-burst';
 
 export interface NavigationLink {
   name: string;
@@ -24,6 +25,7 @@ export interface GameData {
 import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
 import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
+import BustyBurstIcon from '../assets/images/games/Busty_Burst/BG/Icon.png';
 
 export const GAMES_DATA: Record<GameKey, GameData> = {
   'silver-and-blood': {
@@ -218,6 +220,16 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Redeem Codes', href: '/guides/stella-sora/redeem-codes/' },
           { name: 'Official Website', href: 'https://stellasora.global/' },
         ],
+      },
+    ],
+  },
+  'busty-burst': {
+    name: 'Busty Burst Fantasy',
+    image: BustyBurstIcon,
+    sections: [
+      {
+        title: 'Resources',
+        links: [{ name: 'Coming Soon', href: '#' }],
       },
     ],
   },
