@@ -11,6 +11,7 @@ import { freyaBuild } from './character-builds/freya.js';
 import { gaiaBuild } from './character-builds/gaia.js';
 import { horusBuild } from './character-builds/horus.js';
 import { odinBuild } from './character-builds/odin.js';
+import { guinevereBuild } from './character-builds/guinevere.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -46,6 +47,9 @@ export const CHARACTER_BUILDS = {
 
   // Odin Build - SSR Fire DOT Controller
   odin: odinBuild,
+
+  // Guinevere Build - SSR Fire Defense Scaling Tank
+  guinevere: guinevereBuild,
 };
 
 // Generate builds for available characters only

@@ -14,6 +14,7 @@ import { pennyData } from '../../../../data/zone-nova/characters/penny.js';
 import { apolloData } from '../../../../data/zone-nova/characters/apollo.js';
 import { gaiaData } from '../../../../data/zone-nova/characters/gaia.js';
 import { morganLeFayData } from '../../../../data/zone-nova/characters/morgan-le-fay.js';
+import { guinevereData } from '../../../../data/zone-nova/characters/guinevere.js';
 
 export const prerender = true;
 
@@ -63,7 +64,7 @@ const fallbackBuild = {
 const finalCharacter = character || fallbackCharacter;
 const finalBuild = build || fallbackBuild;
 
-// Get character-specific data for Apep, Hela, Naiya, Penny, Apollo, and Morgan Le Fay
+// Get character-specific data for Apep, Hela, Naiya, Penny, Apollo, Morgan Le Fay, and Guinevere
 const characterData =
   finalCharacter.slug === 'apep'
     ? apepData
@@ -79,7 +80,9 @@ const characterData =
               ? gaiaData
               : finalCharacter.slug === 'morgan-le-fay'
                 ? morganLeFayData
-                : null;
+                : finalCharacter.slug === 'guinevere'
+                  ? guinevereData
+                  : null;
 
 // Memory card URL mapping for easy maintenance
 const memoryCardUrls = {
@@ -100,12 +103,15 @@ const memoryCardUrls = {
   'Deceptive Ultimate Temptation': '/guides/zone-nova/memories/deceptive-ultimate-temptation/',
   'True Order (真正的秩序)': '/guides/zone-nova/memories/true-order/',
   'Shared Bath Time': '/guides/zone-nova/memories/shared-bath-time/',
+  'Simple Birdcage': '/guides/zone-nova/memories/simple-birdcage/',
 
   'Hera Memory': '/guides/zone-nova/memories/black-face-ugly-person/',
   'Secret Room Reality': '/guides/zone-nova/memories/secret-room-reality/',
 
   // Alternative memory cards
   'Lancelot-HerTrainer': '/guides/zone-nova/memories/lancelot-hertrainer/',
+  'Sister Penny Trying on New Clothes':
+    '/guides/zone-nova/memories/sister-penny-trying-on-new-clothes/',
   'Sleep Treasure': '/guides/zone-nova/memories/sleep-treasure/',
   Mordred: '/guides/zone-nova/memories/mordred/',
   'Heroes, Never Stop': '/guides/zone-nova/memories/heroes-never-stop/',
