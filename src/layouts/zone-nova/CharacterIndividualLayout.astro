@@ -43,7 +43,12 @@ const { title, description, gameTitle, heroImage, character } = Astro.props;
           customDescription={description}
         />
       ) : (
-        <GameSEO gameKey="zone-nova" title={title} description={description} />
+        <GameSEO
+          gameKey="zone-nova"
+          title={title}
+          description={description}
+          customImage={heroImage || '/images/games/zone-nova/zonenova.jpg'}
+        />
       )
     }
 

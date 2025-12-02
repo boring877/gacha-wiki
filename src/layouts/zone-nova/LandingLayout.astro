@@ -34,7 +34,12 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 <html lang="en">
   <head>
     <ZNBaseHead title={title} description={description || ''} />
-    <GameSEO gameKey="zone-nova" title={title} description={description} />
+    <GameSEO
+      gameKey="zone-nova"
+      title={title}
+      description={description}
+      customImage={heroImage || '/images/games/zone-nova/zonenova.jpg'}
+    />
     <slot name="head" />
   </head>
   <body class="zone-nova-body zn-layout-override">

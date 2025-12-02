@@ -15,6 +15,7 @@ import { apolloData } from '../../../../data/zone-nova/characters/apollo.js';
 import { gaiaData } from '../../../../data/zone-nova/characters/gaia.js';
 import { morganLeFayData } from '../../../../data/zone-nova/characters/morgan-le-fay.js';
 import { guinevereData } from '../../../../data/zone-nova/characters/guinevere.js';
+import { artemisData } from '../../../../data/zone-nova/characters/artemis.js';
 
 export const prerender = true;
 
@@ -64,7 +65,7 @@ const fallbackBuild = {
 const finalCharacter = character || fallbackCharacter;
 const finalBuild = build || fallbackBuild;
 
-// Get character-specific data for Apep, Hela, Naiya, Penny, Apollo, Morgan Le Fay, and Guinevere
+// Get character-specific data for Apep, Hela, Naiya, Penny, Apollo, Morgan Le Fay, Guinevere, and Artemis
 const characterData =
   finalCharacter.slug === 'apep'
     ? apepData
@@ -82,7 +83,9 @@ const characterData =
                 ? morganLeFayData
                 : finalCharacter.slug === 'guinevere'
                   ? guinevereData
-                  : null;
+                  : finalCharacter.slug === 'artemis'
+                    ? artemisData
+                    : null;
 
 // Memory card URL mapping for easy maintenance
 const memoryCardUrls = {
@@ -119,6 +122,10 @@ const memoryCardUrls = {
   'Morning Sunlight': '/guides/zone-nova/memories/morning-sunlight/',
   'During Military Academy Training':
     '/guides/zone-nova/memories/during-military-academy-training/',
+
+  // Artemis memory cards
+  'Halloween Candy': '/guides/zone-nova/memories/halloween-candy/',
+  'The World Seems to Have Stopped': '/guides/zone-nova/memories/the-world-seems-to-have-stopped/',
 };
 
 // Helper function to get badge class names

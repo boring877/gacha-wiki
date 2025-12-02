@@ -368,14 +368,11 @@ function getTierClassName(tier: string): string {
       characterMap,
       TIER_DEFINITIONS,
       optimizedImagePaths: (() => {
-        // Create optimized image mapping that uses the same public paths as ZNCharacterImage
+        // Use the original character image paths directly
         const paths = {};
         ZONE_NOVA_CHARACTERS.forEach(char => {
-          // Extract filename from full path (same as ZNCharacterImage does)
-          const filename = char.image.split('/').pop();
-          // Use the public path that Astro's Image component generates
-          // These are the same paths that ZNCharacterImage outputs after optimization
-          paths[char.name] = `/images/games/zone-nova/characters/${filename}`;
+          // Use the exact path from character data
+          paths[char.name] = char.image;
         });
         return paths;
       })(),

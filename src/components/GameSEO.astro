@@ -29,6 +29,8 @@ export interface Props {
   themeColor?: string;
   /** Whether to include canonical URL (default: true) */
   includeCanonical?: boolean;
+  /** Custom Open Graph image - will override default image */
+  customImage?: string;
 }
 
 const {
@@ -39,6 +41,7 @@ const {
   structuredData,
   themeColor,
   includeCanonical = true,
+  customImage,
 } = Astro.props;
 
 // Validate required props
@@ -116,14 +119,14 @@ const canonicalURL = includeCanonical ? new URL(Astro.url.pathname, Astro.site) 
 <meta property="og:url" content={canonicalURL?.toString() || Astro.url.href} />
 {title && <meta property="og:title" content={title} />}
 {description && <meta property="og:description" content={description} />}
-<meta property="og:image" content={new URL(GLOBAL_SEO.defaultImage, Astro.site)} />
+<meta property="og:image" content={new URL(customImage || GLOBAL_SEO.defaultImage, Astro.site)} />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 {GLOBAL_SEO.social.x && <meta name="twitter:site" content={GLOBAL_SEO.social.x} />}
 {title && <meta name="twitter:title" content={title} />}
 {description && <meta name="twitter:description" content={description} />}
-<meta name="twitter:image" content={new URL(GLOBAL_SEO.defaultImage, Astro.site)} />
+<meta name="twitter:image" content={new URL(customImage || GLOBAL_SEO.defaultImage, Astro.site)} />
 
 <!-- Game-specific metadata -->
 <meta name="application-name" content={gameConfig.gameName} />

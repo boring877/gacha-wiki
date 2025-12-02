@@ -34,7 +34,12 @@ const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Ast
 <html lang="en">
   <head>
     <SABBaseHead title={title} description={description || ''} />
-    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      customImage="/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg"
+    />
     <slot name="head" />
     <Analytics />
   </head>
