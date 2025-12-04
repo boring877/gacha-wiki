@@ -82,6 +82,10 @@ export const hwTraits = {
       effects: ['Slash DEF: +30', 'Pierce DEF: +30', 'Crush DEF: +30', 'Melee ATK: +2%'],
     },
     {
+      name: 'Ferocious',
+      effects: ['Melee ATK: +7%', 'Max HP: -5%'],
+    },
+    {
       name: 'Radical',
       effects: ['Melee ATK: +3%', 'Ranged ATK: +3%', 'Magic ATK: +3%', 'Aggro Adjustment: +15'],
     },
