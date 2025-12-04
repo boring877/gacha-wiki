@@ -13,7 +13,8 @@ export const bustyBurstConfig = {
   gameInfo: {
     description:
       'Rufus, a lord from the frontier region residing in the Kingdom of Vern, faces a crisis where lordship is determined by duels among subordinate paladins. Currently second-to-last in rank, he must summon powerful otherworldly paladins from the abandoned Goddess Ruin to avoid losing his lordship.',
-    playUrl: 'https://game.ero-labs.world/en/prereg_iframe.html?id=52&hgame_id=223', // Preregistration link
+    playUrl: 'https://game.erolabsshare.live/app/f302f717/Busty_Fantasy_Burst', // Main game link
+    discordUrl: 'https://discord.gg/invite/MD4p8wgxdU', // Discord community link
     lastUpdated: new Date(), // This will be dynamically generated
   },
 

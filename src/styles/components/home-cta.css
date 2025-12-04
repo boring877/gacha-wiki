@@ -46,9 +46,6 @@
   min-height: 48px; /* WCAG minimum touch target */
   min-width: 44px; /* WCAG minimum touch target */
   cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    background-color 0.2s ease;
 }
 
 /* === CTA BUTTON CONTENT === */
@@ -84,35 +81,11 @@
   color: var(--text-inverse);
   text-decoration: none;
   backdrop-filter: blur(10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 160px; /* Smaller width to be less prominent */
 
   /* Touch accessibility improvements */
   min-height: 44px; /* WCAG minimum touch target */
   cursor: pointer;
-}
-
-.mond-button:hover {
-  background: rgba(28, 28, 28, 0.6);
-  border-color: rgba(255, 183, 77, 0.3);
-  transform: translateY(-1px); /* Subtle lift effect */
-}
-
-.mond-button:active {
-  transform: translateY(0); /* Return to normal position */
-  background: rgba(28, 28, 28, 0.8);
-}
-
-/* CTA button hover effects */
-.cta-button:hover {
-  background: rgba(255, 183, 77, 1); /* Solid amber on hover */
-  transform: translateY(-2px); /* Lift effect */
-  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3); /* Subtle shadow */
-}
-
-.cta-button:active {
-  transform: translateY(0); /* Return to normal position */
-  box-shadow: 0 2px 6px rgba(255, 183, 77, 0.2); /* Reduced shadow */
 }
 
 .mond-text {

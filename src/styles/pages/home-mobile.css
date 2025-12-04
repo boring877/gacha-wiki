@@ -423,21 +423,7 @@
   /* === TOUCH FEEDBACK ENHANCEMENTS === */
   /* Improved touch feedback for navigation buttons */
   .nav-btn {
-    transition:
-      transform 0.15s ease,
-      background-color 0.15s ease;
     cursor: pointer;
-  }
-
-  .nav-btn:hover,
-  .nav-btn:focus {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  .nav-btn:active {
-    transform: scale(0.95);
-    background: rgba(255, 255, 255, 0.25);
   }
 
   /* === INDICATOR DOTS TOUCH OPTIMIZATION === */
@@ -451,7 +437,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.15s ease;
   }
 
   .indicator-dot::after {
@@ -460,11 +445,6 @@
     height: 12px;
     border-radius: 50%;
     background: inherit;
-  }
-
-  .indicator-dot:hover::after,
-  .indicator-dot:focus::after {
-    transform: scale(1.2);
   }
 }
 

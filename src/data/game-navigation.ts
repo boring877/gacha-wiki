@@ -228,6 +228,19 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     image: BustyBurstIcon,
     sections: [
       {
+        title: 'Game Access',
+        links: [
+          {
+            name: 'Play Now',
+            href: 'https://game.erolabsshare.live/app/f302f717/Busty_Fantasy_Burst',
+          },
+        ],
+      },
+      {
+        title: 'Community',
+        links: [{ name: 'Discord', href: 'https://discord.gg/invite/MD4p8wgxdU' }],
+      },
+      {
         title: 'Resources',
         links: [{ name: 'Coming Soon', href: '#' }],
       },

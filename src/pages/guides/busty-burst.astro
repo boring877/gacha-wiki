@@ -74,6 +74,22 @@ const { meta, gameInfo, categoryGroups, gameNotes } = bustyBurstConfig;
       </a>
     </div>
 
+    <!-- Social Links -->
+    <div class="social-links-container">
+      <h4>Game Social:</h4>
+      <div class="social-links">
+        <a
+          href={gameInfo.discordUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          aria-label="Join Busty Burst Fantasy Discord"
+        >
+          Discord
+        </a>
+      </div>
+    </div>
+
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
     </p>
