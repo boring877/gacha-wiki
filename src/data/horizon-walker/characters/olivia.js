@@ -92,7 +92,7 @@ const rawOliviaData = {
       },
       novaStrike: {
         name: 'Nova Strike',
-        type: 'Olivia Signature',
+        type: 'Signature',
         description:
           'After using "Thousandfold Execution", gain 1 stack of [Transcendence]. Upon reaching 2 stacks of [Transcendence], perform an additional counterattack with "Nova Strike" instead of "Thousandfold Execution". (All [Transcendence] stacks are reset afterward.) Nova Strike: Swings the blade in a wide arc, slashing all nearby enemies. Deals 150% Slash DMG based on "Thousandfold Execution" to enemies within an 8m radius and sets AP to 159.',
         note: 'This signature skill only activates when Olivia equips this weapon.',
@@ -185,7 +185,7 @@ const rawOliviaData = {
     thousandExecution: {
       name: 'Thousand Execution',
       level: '10/10',
-      type: 'Counterattack Skill',
+      type: 'Skill',
       apCost: 0,
       cooldown: 0,
       damage: {

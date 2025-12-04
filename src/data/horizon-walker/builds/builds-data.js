@@ -22,6 +22,13 @@ const characterBuilds = [
     rarity: 'EX',
     available: true,
   },
+  {
+    id: 3,
+    buildSlug: 'olivia',
+    displayName: 'Olivia',
+    rarity: 'EX',
+    available: true,
+  },
 ];
 
 // Helper function to get rarity badge class
@@ -85,20 +92,26 @@ export { characterBuilds };
 
 // Export metadata for SEO
 export const buildsSEO = {
-  title: 'Horizon Walker Character Builds - Juha & Vlissing Build Guides',
+  title: 'Horizon Walker Character Builds - Juha, Vlissing & Olivia Build Guides',
   description:
-    'Complete build guides for Horizon Walker characters. Featuring Juha ranged DPS build and Vlissing magic healer/support build with optimized equipment and strategies.',
+    'Complete build guides for Horizon Walker characters. Featuring Juha ranged DPS build, Vlissing magic healer/support build, and Olivia melee counterattack build with optimized equipment and strategies.',
   keywords: [
     'Horizon Walker',
     'Juha build',
     'Saint of Bullet',
     'Vlissing build',
     'Flow Guardian',
+    'Olivia build',
+    'Valiant Duke',
     'character builds',
     'build guides',
     'ranged DPS',
     'magic healer',
     'support build',
+    'melee DPS',
+    'counterattack build',
+    'slash damage',
+    'warrior build',
     'archer build',
     'critical damage',
     'team buffer',

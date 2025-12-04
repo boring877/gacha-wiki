@@ -178,8 +178,10 @@
   }
 
   .nav-btn {
-    width: 36px;
-    height: 36px;
+    width: 44px; /* WCAG minimum touch target size */
+    height: 44px; /* WCAG minimum touch target size */
+    min-width: 44px; /* Ensure minimum size */
+    min-height: 44px; /* Ensure minimum size */
   }
 
   .nav-btn svg {
@@ -249,6 +251,15 @@
 /* === SMALL MOBILE BREAKPOINT (480px and below) === */
 /* Optimizations for smaller mobile phones with limited screen space */
 @media (max-width: 480px) {
+  /* === NAVIGATION TOUCH TARGETS === */
+  /* Larger touch targets for small mobile devices */
+  .nav-btn {
+    width: 48px; /* Larger on small screens for better accessibility */
+    height: 48px; /* Larger on small screens for better accessibility */
+    min-width: 48px; /* Ensure minimum size */
+    min-height: 48px; /* Ensure minimum size */
+  }
+
   /* === MASTER CLOCK SMALL MOBILE === */
   /* Further size reductions for very small screens */
   .master-clock-container {
@@ -407,6 +418,53 @@
   /* Reduce backdrop blur complexity on mobile */
   .master-clock {
     backdrop-filter: blur(20px) !important;
+  }
+
+  /* === TOUCH FEEDBACK ENHANCEMENTS === */
+  /* Improved touch feedback for navigation buttons */
+  .nav-btn {
+    transition:
+      transform 0.15s ease,
+      background-color 0.15s ease;
+    cursor: pointer;
+  }
+
+  .nav-btn:hover,
+  .nav-btn:focus {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .nav-btn:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* === INDICATOR DOTS TOUCH OPTIMIZATION === */
+  /* Larger touch areas for indicator dots */
+  .indicator-dot {
+    width: 12px;
+    height: 12px;
+    min-width: 44px; /* Invisible expanded touch area */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+
+  .indicator-dot::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: inherit;
+  }
+
+  .indicator-dot:hover::after,
+  .indicator-dot:focus::after {
+    transform: scale(1.2);
   }
 }
 

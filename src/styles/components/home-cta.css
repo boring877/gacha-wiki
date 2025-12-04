@@ -29,6 +29,7 @@
 .cta-button {
   display: inline-flex; /* Flexbox for content layout */
   align-items: center; /* Vertically center content */
+  justify-content: center; /* Center content horizontally */
   gap: 0.75rem; /* Space between text and icon */
   padding: 1.25rem 2.5rem; /* Larger padding for prominence */
   background: rgba(255, 183, 77, 0.9); /* Bright amber background */
@@ -40,6 +41,14 @@
   font-weight: var(--font-bold); /* Bold for emphasis */
   font-size: var(--text-lg); /* Larger for prominence */
   backdrop-filter: blur(12px); /* Glass effect */
+
+  /* Touch accessibility improvements */
+  min-height: 48px; /* WCAG minimum touch target */
+  min-width: 44px; /* WCAG minimum touch target */
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 /* === CTA BUTTON CONTENT === */
@@ -77,11 +86,33 @@
   backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 160px; /* Smaller width to be less prominent */
+
+  /* Touch accessibility improvements */
+  min-height: 44px; /* WCAG minimum touch target */
+  cursor: pointer;
 }
 
 .mond-button:hover {
   background: rgba(28, 28, 28, 0.6);
   border-color: rgba(255, 183, 77, 0.3);
+  transform: translateY(-1px); /* Subtle lift effect */
+}
+
+.mond-button:active {
+  transform: translateY(0); /* Return to normal position */
+  background: rgba(28, 28, 28, 0.8);
+}
+
+/* CTA button hover effects */
+.cta-button:hover {
+  background: rgba(255, 183, 77, 1); /* Solid amber on hover */
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 0 4px 12px rgba(255, 183, 77, 0.3); /* Subtle shadow */
+}
+
+.cta-button:active {
+  transform: translateY(0); /* Return to normal position */
+  box-shadow: 0 2px 6px rgba(255, 183, 77, 0.2); /* Reduced shadow */
 }
 
 .mond-text {
@@ -94,22 +125,32 @@
 
 .mond-subtitle {
   font-family: var(--font-primary);
-  font-size: 0.75rem; /* Even smaller subtitle */
+  font-size: 0.875rem; /* Larger for readability - above minimum */
   font-weight: var(--font-normal);
   color: var(--text-inverse);
   opacity: 0.7; /* More subtle opacity */
   line-height: var(--leading-tight);
 }
 
-/* Mobile responsiveness for Mond button */
+/* Mobile responsiveness for buttons */
 @media (max-width: 768px) {
   .hero-mond-section {
     margin-top: 1.5rem;
   }
 
+  /* Enhanced CTA button for mobile */
+  .cta-button {
+    width: 100%; /* Full width on mobile */
+    max-width: 320px; /* Reasonable maximum width */
+    min-height: 52px; /* Larger on small screens */
+    font-size: 1.125rem; /* Slightly smaller for mobile */
+    padding: 1rem 2rem; /* Adjusted padding */
+  }
+
   .mond-button {
     padding: 0.625rem 1rem;
     min-width: 140px;
+    min-height: 48px; /* Ensure WCAG compliance on mobile */
   }
 
   .mond-text {
@@ -117,6 +158,6 @@
   }
 
   .mond-subtitle {
-    font-size: 0.7rem;
+    font-size: 0.8rem; /* Improved readability on mobile */
   }
 }

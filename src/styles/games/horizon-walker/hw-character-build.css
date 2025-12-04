@@ -198,6 +198,35 @@
     gap: 1rem;
   }
 
+  /* Mixed Stigma Header Styling */
+  .stigma-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .stigma-plus-sign {
+    font-size: 1.5rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    padding: 0 1rem;
+  }
+
+  .stigma-name-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .stigma-name-label h5 {
+    margin: 0;
+    color: var(--hw-text-light);
+    font-weight: var(--font-semibold);
+    font-size: 1rem;
+  }
+
   .stigma-image-container {
     flex-shrink: 0;
   }
@@ -298,6 +327,23 @@
 
   .piece-stat {
     color: var(--hw-text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Mixed Stigma Pieces Specific Styling */
+  .piece-set-name {
+    font-weight: var(--font-semibold);
+    color: var(--hw-text-light);
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+  }
+
+  .piece-stat-value {
+    margin-top: 4px;
+    font-weight: 600;
+    color: var(--hw-primary-warm);
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
