@@ -168,6 +168,45 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* Video Links */
+.video-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.video-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.75rem;
+  background: rgba(255, 0, 0, 0.1);
+  border: 2px solid rgba(255, 0, 0, 0.3);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.video-button:hover {
+  background: rgba(255, 0, 0, 0.15);
+  border-color: rgba(255, 0, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+.video-text {
+  font-family: var(--font-primary); /* Use primary font from typography system */
+  font-size: var(--text-sm); /* Use size from typography system */
+  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
+  color: #ff4444;
+  line-height: var(--leading-normal); /* Use leading from typography system */
+}
+
+.video-icon {
+  color: #ff4444;
+}
+
 /* File Security Information */
 .file-security-info {
   margin-top: 1.5rem;
@@ -616,6 +655,14 @@
     gap: 0.75rem;
   }
 
+  .video-button {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .video-text {
+    font-size: var(--text-xs); /* Use size from typography system */
+  }
+
   .games-list-content {
     padding: 1.5rem;
   }
@@ -671,6 +718,11 @@
   }
 
   .download-links {
+    gap: 0.5rem;
+  }
+
+  .video-button {
+    padding: 0.625rem 1.25rem;
     gap: 0.5rem;
   }
 
