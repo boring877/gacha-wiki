@@ -36,7 +36,7 @@
 /* === GAMES GRID === */
 .games-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1.5rem;
   padding: 2rem 0;
 }
@@ -224,9 +224,9 @@
     padding: 2rem 1rem;
   }
 
-  /* Adjust grid for tablet */
+  /* Adjust grid for tablet - force single column on smaller screens */
   .games-section {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Smaller minimum width */
+    grid-template-columns: 1fr; /* Single column on tablets and mobile */
     padding: 2rem 0.5rem; /* Less padding on smaller screens */
   }
 
@@ -279,30 +279,31 @@
   }
 
   .main-content {
-    padding: 1.5rem 0; /* Zero horizontal padding on mobile */
+    padding: 1rem 0.5rem; /* Small but non-zero horizontal padding */
   }
 
   /* Adjust grid for mobile - single column */
   .games-section {
     grid-template-columns: 1fr; /* Single column on mobile */
-    padding: 0.25rem 0; /* Minimal horizontal padding on mobile */
-    gap: 0.75rem; /* Smaller gap between cards */
+    padding: 0 0.5rem; /* Proper horizontal padding */
+    gap: 0.5rem; /* Minimal gap between cards */
   }
 
   .game-card {
-    padding: 0.6rem; /* Even less internal padding on mobile */
+    padding: 0.5rem; /* Minimal internal padding on mobile */
     height: auto; /* Allow flexible height */
-    min-height: 90px; /* Much smaller minimum height for mobile */
+    min-height: 75px; /* Even smaller minimum height for mobile */
+    width: 100%; /* Full width of container */
   }
 
   .game-header {
-    gap: 0.8rem;
+    gap: 0.6rem;
   }
 
   .game-icon img {
     /* Much smaller responsive sizing for mobile */
-    width: clamp(35px, 10vw, 45px);
-    height: clamp(35px, 10vw, 45px);
+    width: 35px;
+    height: 35px;
   }
 
   .game-title {
@@ -326,7 +327,7 @@
 
   /* Improve game sections text on mobile */
   .game-sections {
-    font-size: 14px; /* Larger on mobile for better readability */
+    font-size: 11px; /* Consistent with description size */
     line-height: 1.3; /* Slightly tighter line height on mobile */
     min-height: 1.3em; /* Adjust for new line height */
     max-height: 1.3em; /* Fixed max height */
@@ -336,17 +337,23 @@
 /* Extra small mobile breakpoint for very small screens */
 @media (max-width: 400px) {
   .main-content {
-    padding: 1rem 0; /* Zero horizontal padding */
+    padding: 0.5rem 0.25rem; /* Minimal horizontal padding */
   }
 
   .games-section {
-    padding: 0.1rem 0;
-    gap: 0.5rem;
+    padding: 0 0.25rem; /* Minimal horizontal padding */
+    gap: 0.4rem; /* Even smaller gap */
   }
 
   .game-card {
     padding: 0.4rem; /* Ultra-minimal internal padding */
-    min-height: 80px;
+    min-height: 70px; /* Even smaller minimum height */
+    width: 100%; /* Ensure full width */
+  }
+
+  .game-icon img {
+    width: 32px;
+    height: 32px;
   }
 }
 
@@ -354,9 +361,9 @@
 /* Performance optimizations for users with motion sensitivity */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important; /* Near-instant animations */
-    animation-iteration-count: 1 !important; /* Run animations only once */
-    transition-duration: 0.01ms !important; /* Near-instant transitions */
+    animation-duration: 0.01ms; /* Near-instant animations */
+    animation-iteration-count: 1; /* Run animations only once */
+    transition-duration: 0.01ms; /* Near-instant transitions */
   }
 }
 
