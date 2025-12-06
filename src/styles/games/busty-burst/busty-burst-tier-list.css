@@ -14,6 +14,10 @@
   margin: 0 auto;
   padding: 1rem;
   background: var(--bb-bg-primary);
+  position: relative;
+  z-index: 1;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
 }
 
 /* Tier List Header */
@@ -212,6 +216,11 @@
 /* Ensure consistent spacing */
 .tier-list-section {
   margin-bottom: 3rem;
+  background: var(--bb-bg-primary);
+  border-radius: 8px;
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
 }
 
 /* Legend/Info Box */
