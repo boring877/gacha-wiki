@@ -18,20 +18,20 @@ const gameTitle = 'Tier List';
 
 <TierListLayout title={title} description={description} gameTitle={gameTitle}>
   <!-- Tier List Section -->
-  <section id="tier-list" class="tier-list-section">
-    <div class="tier-list-header">
-      <h1 class="tier-list-title">Beginner Tier List</h1>
-      <p class="tier-list-description">
+  <section id="tier-list" class="bb-tier-list-section">
+    <div class="bb-tier-list-header">
+      <h1 class="bb-tier-list-title">Beginner Tier List</h1>
+      <p class="bb-tier-list-description">
         {
           tierList?.description ||
             'This tier list gives a general idea of what to pick early on. It is not the final tier list.'
         }
       </p>
-      <p class="tier-list-last-updated">Last updated: {tierList?.lastUpdated || '2025-12-06'}</p>
+      <p class="bb-tier-list-last-updated">Last updated: {tierList?.lastUpdated || '2025-12-06'}</p>
     </div>
 
     <!-- Info Box -->
-    <div class="tier-list-info">
+    <div class="bb-tier-list-info">
       <h3>About This Tier List</h3>
       <p>
         This tier list is a work in progress and is subject to change. It is not a final tier list
@@ -41,15 +41,17 @@ const gameTitle = 'Tier List';
     </div>
 
     <!-- Tier List Display -->
-    <div class="tier-list-container">
+    <div class="bb-tier-list-container">
       {
         tierList?.tiers.map(tier => (
-          <div class="tier-row">
-            <div class={`tier-label tier-${tier.tier.toLowerCase()}`}>{tier.definition.label}</div>
-            <div class="tier-characters">
+          <div class="bb-tier-row">
+            <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
+              {tier.definition.label}
+            </div>
+            <div class="bb-tier-characters">
               {tier.characters.map(character => (
-                <div class="tier-character-card">
-                  <div class="character-image-wrapper">
+                <div class="bb-tier-character-card">
+                  <div class="bb-character-image-wrapper">
                     <PaladinImage
                       fileName={`${character.fileName || character.name.replace(/\s+/g, '_')}.jpg`}
                       alt={character.name}
@@ -58,7 +60,7 @@ const gameTitle = 'Tier List';
                       loading="lazy"
                     />
                   </div>
-                  <div class="character-name">{character.name}</div>
+                  <div class="bb-character-name">{character.name}</div>
                   <div class="bb-badge" data-rarity={character.rarity || 'SR'}>
                     {character.rarity || 'SR'}
                   </div>
