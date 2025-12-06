@@ -153,6 +153,7 @@ const MAP_CLEAR_CHARACTERS = {
     'Bella',
     'Kaul',
     'Puppy Stepper',
+    'Emilia',
   ],
   S: [
     'Yeon Chae-young',
@@ -207,6 +208,7 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Luise',
     'Nari',
     'Efreeti',
+    'Emilia',
   ],
   S: [
     'Everette',
@@ -288,6 +290,7 @@ const DOPAMIN_CHARACTERS = {
     'berga',
     'Headless knight',
     'puppy stepper',
+    'Emilia',
   ],
   S: [
     'Min un-sol',

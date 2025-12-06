@@ -5,6 +5,7 @@ import {
   juhaBuildConfig,
   vlissingBuildConfig,
   oliviaBuildConfig,
+  emiliaBuildConfig,
   defaultBuildConfig,
 } from './characters/index.js';
 
@@ -12,6 +13,7 @@ export const characterBuildConfigs = {
   juha: juhaBuildConfig,
   vlissing: vlissingBuildConfig,
   olivia: oliviaBuildConfig,
+  emilia: emiliaBuildConfig,
   default: defaultBuildConfig,
 };
 

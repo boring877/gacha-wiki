@@ -81,8 +81,12 @@ export function validateCharacterData(characterData) {
         errors.push(`Stat ${key} must be a string or number`);
       }
       // Validate stat values are reasonable (prevent injection via large numbers)
-      if (typeof value === 'number' && (value < 0 || value > 999999)) {
-        errors.push(`Stat ${key} must be between 0 and 999999`);
+      // Some stats like rangedAtk can be negative
+      const allowNegative = ['rangedAtk', 'rangedatk'].includes(key);
+      const minValue = allowNegative ? -999 : 0;
+      const maxValue = 999999;
+      if (typeof value === 'number' && (value < minValue || value > maxValue)) {
+        errors.push(`Stat ${key} must be between ${minValue} and ${maxValue}`);
       }
     });
   }

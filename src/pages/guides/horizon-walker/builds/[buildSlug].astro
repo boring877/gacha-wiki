@@ -40,11 +40,17 @@ const description = `Complete build guide for ${character.name} in Horizon Walke
 // Get character-specific build configuration
 const buildConfig = getCharacterBuildConfig(character.slug);
 
-// Determine if this is a mixed 2-set stigma build
-const isMixedStigma = buildConfig.recommendedStigma.includes('Mixed 2-Set');
+// Determine the type of stigma recommendation
+const isMixedStigma =
+  typeof buildConfig.recommendedStigma === 'string' &&
+  buildConfig.recommendedStigma.includes('Mixed 2-Set');
+const isObjectRecommendation =
+  typeof buildConfig.recommendedStigma === 'object' && buildConfig.recommendedStigma !== null;
 
 // Get stigma data for display
 let recommendedStigma: any = null;
+let recommendedStigmaZeroDupe: any = null;
+let recommendedStigmaFullEx5: any = null;
 let mixedStigmaPieces: any = null;
 
 if (isMixedStigma) {
@@ -64,8 +70,40 @@ if (isMixedStigma) {
       twoSetBonus2: thousandMileWeave.twoSet, // Melee ATK +10% during battle
     };
   }
+} else if (isObjectRecommendation) {
+  // Handle object-based recommendations (like Emilia)
+  const zeroDupeName = buildConfig.recommendedStigma.zeroDupe;
+  const fullEx5Name = buildConfig.recommendedStigma.fullEx5;
+
+  // Find zero dupe stigma
+  if (stigmas.EX && stigmas.EX.length > 0) {
+    recommendedStigmaZeroDupe = stigmas.EX.find(stigma => stigma.name === zeroDupeName);
+  }
+  if (!recommendedStigmaZeroDupe && stigmas.SS && stigmas.SS.length > 0) {
+    recommendedStigmaZeroDupe = stigmas.SS.find(stigma => stigma.name === zeroDupeName);
+  }
+  if (!recommendedStigmaZeroDupe && stigmas.S && stigmas.S.length > 0) {
+    recommendedStigmaZeroDupe = stigmas.S.find(stigma => stigma.name === zeroDupeName);
+  }
+  if (!recommendedStigmaZeroDupe && stigmas.A && stigmas.A.length > 0) {
+    recommendedStigmaZeroDupe = stigmas.A.find(stigma => stigma.name === zeroDupeName);
+  }
+
+  // Find full EX5 stigma
+  if (stigmas.EX && stigmas.EX.length > 0) {
+    recommendedStigmaFullEx5 = stigmas.EX.find(stigma => stigma.name === fullEx5Name);
+  }
+  if (!recommendedStigmaFullEx5 && stigmas.SS && stigmas.SS.length > 0) {
+    recommendedStigmaFullEx5 = stigmas.SS.find(stigma => stigma.name === fullEx5Name);
+  }
+  if (!recommendedStigmaFullEx5 && stigmas.S && stigmas.S.length > 0) {
+    recommendedStigmaFullEx5 = stigmas.S.find(stigma => stigma.name === fullEx5Name);
+  }
+  if (!recommendedStigmaFullEx5 && stigmas.A && stigmas.A.length > 0) {
+    recommendedStigmaFullEx5 = stigmas.A.find(stigma => stigma.name === fullEx5Name);
+  }
 } else {
-  // Handle single stigma set builds
+  // Handle single stigma set builds (string recommendation)
   const recommendedStigmaName = buildConfig.recommendedStigma;
 
   if (stigmas.EX && stigmas.EX.length > 0) {
@@ -178,7 +216,10 @@ if (isMixedStigma) {
 
   <!-- Recommended Stigma Section -->
   {
-    (recommendedStigma || mixedStigmaPieces) && (
+    (recommendedStigma ||
+      recommendedStigmaZeroDupe ||
+      recommendedStigmaFullEx5 ||
+      mixedStigmaPieces) && (
       <section class="character-build-section">
         <h3 class="character-build-section-title">Recommended Stigma</h3>
         <div class="stigma-container">
@@ -274,6 +315,165 @@ if (isMixedStigma) {
                 </div>
               </div>
             </>
+          ) : isObjectRecommendation ? (
+            // Object-based Stigma Recommendations (like Emilia)
+            <>
+              <div class="stigma-header">
+                <div class="stigma-title-section">
+                  <div class="stigma-recommendation-group">
+                    <div class="stigma-info-container">
+                      <div class="stigma-label">Zero Dupe / Low Investment:</div>
+                      <div class="stigma-image-container">
+                        <StigmaImage
+                          imageName={recommendedStigmaZeroDupe.name}
+                          alt={`${recommendedStigmaZeroDupe.name} stigma`}
+                          width={60}
+                          height={60}
+                          class="stigma-portrait-small"
+                          loading="eager"
+                        />
+                      </div>
+                      <div class="stigma-title-info">
+                        <h5 class="stigma-name">{recommendedStigmaZeroDupe.name}</h5>
+                        <span class="hw-badge" data-rarity="EX">
+                          EX
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="stigma-recommendation-group">
+                    <div class="stigma-info-container">
+                      <div class="stigma-label">Full EX 5 Weapon:</div>
+                      <div class="stigma-image-container">
+                        <StigmaImage
+                          imageName={recommendedStigmaFullEx5.name}
+                          alt={`${recommendedStigmaFullEx5.name} stigma`}
+                          width={60}
+                          height={60}
+                          class="stigma-portrait-small"
+                          loading="eager"
+                        />
+                      </div>
+                      <div class="stigma-title-info">
+                        <h5 class="stigma-name">{recommendedStigmaFullEx5.name}</h5>
+                        <span class="hw-badge" data-rarity="EX">
+                          EX
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stigma-bonuses">
+                <div class="stigma-set-bonus">
+                  <h5>{recommendedStigmaZeroDupe.name} - 2-Set Bonus</h5>
+                  <p>{recommendedStigmaZeroDupe.twoSet}</p>
+                </div>
+                {recommendedStigmaZeroDupe.fourSet && (
+                  <div class="stigma-set-bonus">
+                    <h5>{recommendedStigmaZeroDupe.name} - 4-Set Bonus</h5>
+                    <p>{recommendedStigmaZeroDupe.fourSet}</p>
+                  </div>
+                )}
+                <div class="stigma-set-bonus">
+                  <h5>{recommendedStigmaFullEx5.name} - 2-Set Bonus</h5>
+                  <p>{recommendedStigmaFullEx5.twoSet}</p>
+                </div>
+                {recommendedStigmaFullEx5.fourSet && (
+                  <div class="stigma-set-bonus">
+                    <h5>{recommendedStigmaFullEx5.name} - 4-Set Bonus</h5>
+                    <p>{recommendedStigmaFullEx5.fourSet}</p>
+                  </div>
+                )}
+              </div>
+
+              <div class="stigma-pieces">
+                <h5>Stigma Pieces</h5>
+                <div class="stigma-pieces-grid">
+                  <div class="stigma-piece-group">
+                    <h6>{recommendedStigmaZeroDupe.name}</h6>
+                    <div class="stigma-grid">
+                      <div class="stigma-piece">
+                        <div class="piece-slot">Top</div>
+                        <div class="piece-info">
+                          <div class="piece-name">{recommendedStigmaZeroDupe.pieces.top.name}</div>
+                          <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.top.stat}</div>
+                        </div>
+                      </div>
+                      <div class="stigma-piece">
+                        <div class="piece-slot">Bottom</div>
+                        <div class="piece-info">
+                          <div class="piece-name">
+                            {recommendedStigmaZeroDupe.pieces.bottom.name}
+                          </div>
+                          <div class="piece-stat">
+                            {recommendedStigmaZeroDupe.pieces.bottom.stat}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="stigma-piece">
+                        <div class="piece-slot">Left</div>
+                        <div class="piece-info">
+                          <div class="piece-name">{recommendedStigmaZeroDupe.pieces.left.name}</div>
+                          <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.left.stat}</div>
+                        </div>
+                      </div>
+                      <div class="stigma-piece">
+                        <div class="piece-slot">Right</div>
+                        <div class="piece-info">
+                          <div class="piece-name">
+                            {recommendedStigmaZeroDupe.pieces.right.name}
+                          </div>
+                          <div class="piece-stat">
+                            {recommendedStigmaZeroDupe.pieces.right.stat}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="stigma-piece-group">
+                    <h6>{recommendedStigmaFullEx5.name}</h6>
+                    <div class="stigma-grid">
+                      <div class="stigma-piece">
+                        <div class="piece-slot">Top</div>
+                        <div class="piece-info">
+                          <div class="piece-name">{recommendedStigmaFullEx5.pieces.top.name}</div>
+                          <div class="piece-stat">{recommendedStigmaFullEx5.pieces.top.stat}</div>
+                        </div>
+                      </div>
+                      <div class="stigma-piece">
+                        <div class="piece-slot">Bottom</div>
+                        <div class="piece-info">
+                          <div class="piece-name">
+                            {recommendedStigmaFullEx5.pieces.bottom.name}
+                          </div>
+                          <div class="piece-stat">
+                            {recommendedStigmaFullEx5.pieces.bottom.stat}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="stigma-piece">
+                        <div class="piece-slot">Left</div>
+                        <div class="piece-info">
+                          <div class="piece-name">{recommendedStigmaFullEx5.pieces.left.name}</div>
+                          <div class="piece-stat">{recommendedStigmaFullEx5.pieces.left.stat}</div>
+                        </div>
+                      </div>
+                      <div class="stigma-piece">
+                        <div class="piece-slot">Right</div>
+                        <div class="piece-info">
+                          <div class="piece-name">{recommendedStigmaFullEx5.pieces.right.name}</div>
+                          <div class="piece-stat">{recommendedStigmaFullEx5.pieces.right.stat}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
           ) : (
             // Single Stigma Set Display (like Juha, Vlissing)
             <>
@@ -363,6 +563,68 @@ if (isMixedStigma) {
             <div class="substats-note">
               <strong>Priority:</strong> {buildConfig.substatsPriority}
             </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* Alternative Build Strategies Section */}
+  {
+    buildConfig.alternativeBuilds && buildConfig.alternativeBuilds.length > 0 && (
+      <section class="character-build-section">
+        <h3 class="character-build-section-title">Alternative Build Strategies</h3>
+        <div class="alternative-builds-container">
+          <div class="alternative-builds-grid">
+            {buildConfig.alternativeBuilds.map(build => (
+              <div class="alternative-build-card">
+                <div class="alternative-build-header">
+                  <h4 class="alternative-build-title">{build.title}</h4>
+                  {build.recommendedStigma && (
+                    <div class="alternative-build-stigma">
+                      <div class="stigma-image-container">
+                        <StigmaImage
+                          imageName={build.recommendedStigma}
+                          alt={`${build.recommendedStigma} stigma`}
+                          width={64}
+                          height={64}
+                          class="stigma-portrait-medium"
+                          loading="eager"
+                        />
+                      </div>
+                      <div class="stigma-info">
+                        <div class="stigma-label">Recommended Stigma</div>
+                        <div class="stigma-name">{build.recommendedStigma}</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div class="alternative-build-content">
+                  <p class="alternative-build-description">{build.description}</p>
+
+                  {build.playstyle && (
+                    <div class="alternative-build-playstyle">
+                      <h5>Playstyle</h5>
+                      <p>{build.playstyle}</p>
+                    </div>
+                  )}
+
+                  {build.substatsFocus && (
+                    <div class="alternative-build-substats">
+                      <h5>Substats Priority</h5>
+                      <p>{build.substatsFocus}</p>
+                    </div>
+                  )}
+
+                  {build.note && (
+                    <div class="alternative-build-note">
+                      <h5>Traits Build Note</h5>
+                      <p>{build.note}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

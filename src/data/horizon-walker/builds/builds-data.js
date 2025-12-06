@@ -29,6 +29,13 @@ const characterBuilds = [
     rarity: 'EX',
     available: true,
   },
+  {
+    id: 4,
+    buildSlug: 'emilia',
+    displayName: 'Emilia',
+    rarity: 'EX',
+    available: true,
+  },
 ];
 
 // Helper function to get rarity badge class

@@ -270,6 +270,35 @@ export const stigmas = {
         },
       },
     },
+    {
+      name: "Dawn's Grace",
+      twoSet: 'Reduces DMG taken by 12% during battle.',
+      fourSet:
+        'Increases Crit Rate by 6% during battle. Once per round, after using a Support Skill (excluding Standby), gains AP equal to 8% of Base AP Recovery. The user of this Stigma effect cannot receive the following effect: When an ally (excluding the user) with 90% HP or less uses an Attack Skill, increases Elemental Boost by 6% until the end of that turn, stacking up to 2 times. This effect can only be triggered by one Stigma at a time.',
+      specialEffect: {
+        name: "Dawn's Blessing",
+        description:
+          'When an ally (excluding the user) with 90% HP or less uses an Attack Skill, increases Elemental Boost by 6% until the end of that turn, stacking up to 2 times. This effect can only be triggered by one Stigma at a time.',
+      },
+      pieces: {
+        top: {
+          name: 'Oath of Dawn',
+          stat: 'Magic ATK',
+        },
+        bottom: {
+          name: 'Ray of Dawn',
+          stat: 'Crit Rate',
+        },
+        left: {
+          name: 'Harvest of Dawn',
+          stat: 'Magic ATK',
+        },
+        right: {
+          name: 'Warmth of Dawn',
+          stat: 'Max HP',
+        },
+      },
+    },
   ],
   SS: [
     {

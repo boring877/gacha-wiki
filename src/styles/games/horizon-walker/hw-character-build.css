@@ -926,6 +926,237 @@
     will-change: auto;
   }
 
+  /* Object-based Stigma Recommendations Styles */
+  .stigma-recommendation-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .stigma-label {
+    font-weight: var(--font-semibold);
+    color: var(--hw-text-muted);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stigma-pieces-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .stigma-piece-group {
+    background: var(--hw-bg-surface);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .stigma-piece-group h6 {
+    margin: 0 0 1rem 0;
+    color: var(--hw-text-light);
+    font-weight: var(--font-semibold);
+    font-size: 1rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--hw-border-light);
+  }
+
+  /* Alternative Build Strategies Styles */
+  .alternative-builds-container {
+    margin-top: 1rem;
+  }
+
+  .alternative-builds-intro {
+    color: var(--hw-text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .alternative-builds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .alternative-build-card {
+    background: var(--hw-bg-surface);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: 100%;
+  }
+
+  .alternative-build-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--hw-border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .alternative-build-title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .alternative-build-title {
+    font-size: 1.2rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-text-light);
+    margin: 0;
+    flex: 1;
+  }
+
+  .alternative-build-stigma {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 0.75rem;
+  }
+
+  .alternative-build-stigma .stigma-image-container {
+    flex-shrink: 0;
+  }
+
+  .alternative-build-stigma .stigma-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .alternative-build-stigma .stigma-label {
+    font-size: 0.75rem;
+    color: var(--hw-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: var(--font-medium);
+  }
+
+  .alternative-build-stigma .stigma-name {
+    font-size: 0.95rem;
+    color: var(--hw-text-light);
+    font-weight: var(--font-semibold);
+  }
+
+  .stigma-portrait-medium {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .stigma-portrait-medium:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .alternative-build-stigma .stigma-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .alternative-build-stigma .stigma-label {
+    font-size: 0.9rem;
+    color: var(--hw-text-muted);
+    font-weight: var(--font-semibold);
+  }
+
+  .alternative-build-stigma .stigma-name {
+    font-size: 0.9rem;
+    color: var(--hw-primary-warm);
+    font-weight: var(--font-semibold);
+  }
+
+  .alternative-build-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .alternative-build-description {
+    color: var(--hw-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .alternative-build-playstyle,
+  .alternative-build-substats,
+  .alternative-build-note {
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: 6px;
+    padding: 0.75rem;
+  }
+
+  .alternative-build-playstyle h5,
+  .alternative-build-substats h5,
+  .alternative-build-note h5 {
+    font-size: 0.95rem;
+    font-weight: var(--font-semibold);
+    color: var(--hw-text-light);
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .alternative-build-playstyle p,
+  .alternative-build-substats p,
+  .alternative-build-note p {
+    font-size: 0.9rem;
+    color: var(--hw-text-secondary);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .alternative-build-note {
+    background: rgba(255, 215, 0, 0.05);
+    border-color: rgba(255, 215, 0, 0.2);
+  }
+
+  .alternative-build-note h5 {
+    color: var(--hw-primary-warm);
+  }
+
+  /* Responsive adjustments for alternative builds grid */
+  @media (max-width: 768px) {
+    .alternative-builds-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .alternative-build-card {
+      padding: 1rem;
+    }
+  }
+
+  /* Responsive adjustments for stigma pieces grid */
+  @media (max-width: 768px) {
+    .stigma-pieces-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
   /* Reduce motion support */
   @media (prefers-reduced-motion: reduce) {
     .character-build-header {

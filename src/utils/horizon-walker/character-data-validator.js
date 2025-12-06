@@ -270,12 +270,20 @@ export function validateStats(stats) {
   });
 
   // Combat stats validation
-  const combatStats = ['meleeAtk', 'rangedAtk', 'magicAtk', 'maxHp', 'spd'];
-  combatStats.forEach(stat => {
-    if (stats[stat] !== undefined) {
-      const value = parseInt(stats[stat]);
-      if (isNaN(value) || value < 0 || value > 9999) {
-        errors.push(`Invalid ${stat} value: ${stats[stat]}. Must be between 0 and 9999`);
+  const combatStats = [
+    { key: 'meleeAtk', allowNegative: false },
+    { key: 'rangedAtk', allowNegative: true },
+    { key: 'magicAtk', allowNegative: false },
+    { key: 'maxHp', allowNegative: false },
+    { key: 'spd', allowNegative: false },
+  ];
+
+  combatStats.forEach(({ key, allowNegative }) => {
+    if (stats[key] !== undefined) {
+      const value = parseInt(stats[key]);
+      const minValue = allowNegative ? -999 : 0;
+      if (isNaN(value) || value < minValue || value > 9999) {
+        errors.push(`Invalid ${key} value: ${stats[key]}. Must be between ${minValue} and 9999`);
       }
     }
   });

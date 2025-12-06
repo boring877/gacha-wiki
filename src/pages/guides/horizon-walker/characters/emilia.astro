@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  emiliaData,
+  emiliaSEO,
+  emiliaHighlighting,
+} from '../../../../data/horizon-walker/characters/emilia.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={emiliaSEO.title}
+  description={emiliaSEO.description}
+  gameTitle={emiliaData.name}
+  character={emiliaData}
+>
+  <CharacterPageTemplate characterData={{ ...emiliaData, highlightPatterns: emiliaHighlighting }} />
+</CharacterIndividualLayout>
