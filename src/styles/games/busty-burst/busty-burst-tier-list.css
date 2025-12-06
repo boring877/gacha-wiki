@@ -1,29 +1,45 @@
-/* Busty Burst Tier List Styles - Simple and Clean */
-/* Based on Horizon Walker pattern but adapted for Busty Burst */
+/* Busty Burst Tier List Styles - Clean Production Version */
+/* Fixed version to prevent background bleed and layout issues */
 
 /* Page Title Section */
 .page-title-section {
   text-align: center;
   margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--bb-bg-primary);
+  border-radius: 8px;
+}
+
+/* Tier List Section - Main container */
+.tier-list-section {
+  background: var(--bb-bg-primary);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   position: relative;
+  isolation: isolate; /* Creates new stacking context */
 }
 
 /* Tier List Container */
 .tier-list-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem;
   background: var(--bb-bg-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
   position: relative;
-  z-index: 1;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
+  isolation: isolate; /* Creates new stacking context */
 }
 
 /* Tier List Header */
 .tier-list-header {
   margin-bottom: 2rem;
   text-align: center;
+  padding: 1.5rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--bb-border);
 }
 
 .tier-list-title {
@@ -46,14 +62,36 @@
   color: var(--bb-text-muted);
 }
 
+/* Info Box */
+.tier-list-info {
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.tier-list-info h3 {
+  color: var(--bb-primary);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.tier-list-info p {
+  color: var(--bb-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
 /* Tier Rows */
 .tier-row {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  align-items: center; /* Center align the tier label with the characters */
+  align-items: stretch;
   border-bottom: 2px solid var(--bb-border-light);
+  background: var(--bb-bg-primary);
 }
 
 /* Remove border from last tier row */
@@ -65,7 +103,6 @@
 /* Tier Labels */
 .tier-label {
   width: 100px;
-  height: auto;
   min-height: 100px;
   display: flex;
   align-items: center;
@@ -121,7 +158,6 @@
   background: var(--bb-bg-card);
   border: 2px solid var(--bb-border);
   border-radius: 8px;
-  /* No hover effects or animations as requested */
 }
 
 /* Character Image Wrapper */
@@ -159,6 +195,10 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .tier-list-section {
+    padding: 1rem;
+  }
+
   .tier-list-container {
     padding: 0.5rem;
   }
@@ -203,43 +243,4 @@
   .tier-character-card {
     width: calc(50% - 0.5rem);
   }
-}
-
-/* No animations or transitions as per requirements */
-.tier-character-card,
-.character-image-wrapper,
-.character-image {
-  transition: none;
-  transform: none;
-}
-
-/* Ensure consistent spacing */
-.tier-list-section {
-  margin-bottom: 3rem;
-  background: var(--bb-bg-primary);
-  border-radius: 8px;
-  position: relative;
-  z-index: 1;
-  padding: 1rem;
-}
-
-/* Legend/Info Box */
-.tier-list-info {
-  background: var(--bb-bg-secondary);
-  border: 1px solid var(--bb-border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.tier-list-info h3 {
-  color: var(--bb-primary);
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-}
-
-.tier-list-info p {
-  color: var(--bb-text-secondary);
-  line-height: 1.6;
-  margin-bottom: 0.5rem;
 }

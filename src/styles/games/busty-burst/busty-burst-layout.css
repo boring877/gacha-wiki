@@ -3,12 +3,7 @@
 
 /* Body Styles */
 .busty-burst-body {
-  background: linear-gradient(
-    135deg,
-    var(--bb-bg-primary) 0%,
-    var(--bb-bg-secondary) 50%,
-    var(--bb-bg-primary) 100%
-  );
+  background: var(--bb-bg-primary);
   color: var(--bb-text-primary);
   min-height: 100vh;
   font-family: var(--font-primary);
@@ -21,6 +16,7 @@
 .bg-layer {
   position: fixed;
   inset: 0;
+  z-index: 0;
 }
 
 .bg-primary {
@@ -30,24 +26,22 @@
     var(--bb-bg-secondary) 50%,
     var(--bb-bg-primary) 100%
   );
-  z-index: -1;
 }
 
 .bg-accent-1 {
   background: radial-gradient(circle at 20% 80%, rgba(46, 82, 102, 0.08), transparent);
   pointer-events: none;
-  z-index: -1;
 }
 
 .bg-accent-2 {
   background: radial-gradient(circle at 80% 20%, rgba(30, 58, 95, 0.06), transparent);
   pointer-events: none;
-  z-index: -1;
 }
 
 .busty-burst-content {
   position: relative;
-  z-index: 10;
+  z-index: 1;
+  isolation: isolate; /* Creates new stacking context */
 }
 
 /* Container Styles */
@@ -61,7 +55,7 @@
 .busty-burst-main {
   width: 100%;
   position: relative;
-  z-index: 1;
+  isolation: isolate; /* Creates new stacking context */
 }
 
 /* Hero Section */
@@ -97,7 +91,7 @@
 .content-area {
   width: 100%;
   position: relative;
-  z-index: 1;
+  isolation: isolate; /* Creates new stacking context */
   background: var(--bb-bg-primary);
   border-radius: 8px;
 }
