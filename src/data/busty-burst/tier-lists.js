@@ -70,6 +70,62 @@ export const BUSTY_BURST_TIER_LISTS = {
       },
     ],
   },
+  aethersteel: {
+    name: "Aethersteel's Tier List",
+    description: 'Tier list created by Aethersteel with different rankings',
+    lastUpdated: '2025-12-06',
+    tiers: [
+      {
+        tier: 'SSS',
+        definition: {
+          label: 'SSS',
+          description: 'Top tier characters by Aethersteel',
+          color: '#ff6b6b',
+        },
+        characters: ['festive_attire_estiriel', 'liesel', 'messeria'],
+      },
+      {
+        tier: 'SS',
+        definition: {
+          label: 'SS',
+          description: 'Excellent choices by Aethersteel',
+          color: '#feca57',
+        },
+        characters: ['frey', 'teresia', 'dark_knight', 'artia', 'gemini', 'luca'],
+      },
+      {
+        tier: 'S',
+        definition: {
+          label: 'S',
+          description: 'Strong characters according to Aethersteel',
+          color: '#48dbfb',
+        },
+        characters: [
+          'festival_empress_shamshel',
+          'elegant_shamshel',
+          'nerys',
+          'soltina',
+          'estiriel',
+          'hildis',
+          'stenlina',
+          'bianca',
+          'venus',
+          'luceria',
+          'ishtovia',
+          'nora',
+        ],
+      },
+      {
+        tier: 'A',
+        definition: {
+          label: 'A',
+          description: 'Good options by Aethersteel',
+          color: '#1dd1a1',
+        },
+        characters: ['natasha', 'meinias', 'yu_lima_elka', 'festive_natasha', 'sobrina', 'marina'],
+      },
+    ],
+  },
 };
 
 export const getTierList = (listName = 'beginner') => {

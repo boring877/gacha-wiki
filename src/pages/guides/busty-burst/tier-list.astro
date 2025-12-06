@@ -1,75 +1,139 @@
 ---
 import TierListLayout from '../../../layouts/busty-burst/TierListLayout.astro';
 import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
-import { getTierList } from '../../../data/busty-burst/tier-lists.js';
+import { getTierList, getAllTierLists } from '../../../data/busty-burst/tier-lists.js';
 
 // Import badge styles directly to ensure they're loaded
 import '../../../styles/games/busty-burst/busty-burst-badges.css';
 
-// Get the beginner tier list data
-const tierList = getTierList('beginner');
+// Get all tier lists
+const allTierLists = getAllTierLists();
+const beginnerTierList = getTierList('beginner');
+const aethersteelTierList = getTierList('aethersteel');
 
 // Page metadata
-const title = 'Tier List';
+const title = 'BBB Busty - Tier Lists';
 const description =
-  'Beginner tier list for BBB Busty game. Find the best paladins to pick early on in your journey.';
-const gameTitle = 'Tier List';
+  'Multiple tier lists for BBB Busty game. Compare rankings from different creators to find the best paladins.';
+const gameTitle = 'Tier Lists';
 ---
 
 <TierListLayout title={title} description={description} gameTitle={gameTitle}>
   <!-- Tier List Section -->
   <section id="tier-list" class="bb-tier-list-section">
-    <div class="bb-tier-list-header">
-      <h1 class="bb-tier-list-title">Beginner Tier List</h1>
-      <p class="bb-tier-list-description">
+    <!-- Tab Navigation -->
+    <div class="bb-tier-list-tabs">
+      <button class="bb-tab-button active" data-tab="beginner"> EcchiPen Tier List </button>
+      <button class="bb-tab-button" data-tab="aethersteel"> Aethersteel's Tier List </button>
+    </div>
+
+    <!-- Beginner Tier List Content -->
+    <div id="beginner" class="bb-tab-content active">
+      <div class="bb-tier-list-header">
+        <h1 class="bb-tier-list-title">EcchiPen Tier List</h1>
+        <p class="bb-tier-list-description">
+          {
+            beginnerTierList?.description ||
+              'This tier list gives a general idea of what to pick early on.'
+          }
+        </p>
+        <p class="bb-tier-list-last-updated">
+          Last updated: {beginnerTierList?.lastUpdated || '2025-12-06'}
+        </p>
+      </div>
+
+      <!-- Info Box -->
+      <div class="bb-tier-list-info">
+        <h3>About This Tier List</h3>
+        <p>
+          This tier list is a work in progress and is subject to change. It is not a final tier list
+          and is not intended to be a guide for optimal play. It is simply a guide to help players
+          make informed decisions about which characters to pick.
+        </p>
+      </div>
+
+      <!-- Tier List Display -->
+      <div class="bb-tier-list-container">
         {
-          tierList?.description ||
-            'This tier list gives a general idea of what to pick early on. It is not the final tier list.'
+          beginnerTierList?.tiers.map(tier => (
+            <div class="bb-tier-row">
+              <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
+                {tier.definition.label}
+              </div>
+              <div class="bb-tier-characters">
+                {tier.characters.map(character => (
+                  <div class="bb-tier-character-card">
+                    <div class="bb-character-image-wrapper">
+                      <PaladinImage
+                        fileName={`${character.fileName || character.name.replace(/\s+/g, '_')}.jpg`}
+                        alt={character.name}
+                        width={140}
+                        height={140}
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="bb-character-name">{character.name}</div>
+                    <div class="bb-badge" data-rarity={character.rarity || 'SR'}>
+                      {character.rarity || 'SR'}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
         }
-      </p>
-      <p class="bb-tier-list-last-updated">Last updated: {tierList?.lastUpdated || '2025-12-06'}</p>
+      </div>
     </div>
 
-    <!-- Info Box -->
-    <div class="bb-tier-list-info">
-      <h3>About This Tier List</h3>
-      <p>
-        This tier list is a work in progress and is subject to change. It is not a final tier list
-        and is not intended to be a guide for optimal play. It is simply a guide to help players
-        make informed decisions about which characters to pick.
-      </p>
-    </div>
+    <!-- Aethersteel Tier List Content -->
+    <div id="aethersteel" class="bb-tab-content">
+      <div class="bb-tier-list-header">
+        <h1 class="bb-tier-list-title">Aethersteel's Tier List</h1>
+        <p class="bb-tier-list-description">
+          {aethersteelTierList?.description || 'Tier list created by Aethersteel'}
+        </p>
+        <p class="bb-tier-list-last-updated">
+          Last updated: {aethersteelTierList?.lastUpdated || '2025-12-06'}
+        </p>
+      </div>
 
-    <!-- Tier List Display -->
-    <div class="bb-tier-list-container">
-      {
-        tierList?.tiers.map(tier => (
-          <div class="bb-tier-row">
-            <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
-              {tier.definition.label}
-            </div>
-            <div class="bb-tier-characters">
-              {tier.characters.map(character => (
-                <div class="bb-tier-character-card">
-                  <div class="bb-character-image-wrapper">
-                    <PaladinImage
-                      fileName={`${character.fileName || character.name.replace(/\s+/g, '_')}.jpg`}
-                      alt={character.name}
-                      width={140}
-                      height={140}
-                      loading="lazy"
-                    />
+      <!-- Info Box -->
+      <div class="bb-tier-list-info">
+        <h3>About Aethersteel's Tier List</h3>
+        <p>game start tier list</p>
+      </div>
+
+      <!-- Tier List Display -->
+      <div class="bb-tier-list-container">
+        {
+          aethersteelTierList?.tiers.map(tier => (
+            <div class="bb-tier-row">
+              <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
+                {tier.definition.label}
+              </div>
+              <div class="bb-tier-characters">
+                {tier.characters.map(character => (
+                  <div class="bb-tier-character-card">
+                    <div class="bb-character-image-wrapper">
+                      <PaladinImage
+                        fileName={`${character.fileName || character.name.replace(/\s+/g, '_')}.jpg`}
+                        alt={character.name}
+                        width={140}
+                        height={140}
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="bb-character-name">{character.name}</div>
+                    <div class="bb-badge" data-rarity={character.rarity || 'SR'}>
+                      {character.rarity || 'SR'}
+                    </div>
                   </div>
-                  <div class="bb-character-name">{character.name}</div>
-                  <div class="bb-badge" data-rarity={character.rarity || 'SR'}>
-                    {character.rarity || 'SR'}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
   </section>
 
@@ -79,4 +143,38 @@ const gameTitle = 'Tier List';
       scroll-behavior: smooth;
     }
   </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get all tab buttons and contents
+      const tabButtons = document.querySelectorAll('.bb-tab-button');
+      const tabContents = document.querySelectorAll('.bb-tab-content');
+
+      // Add click event listeners to tab buttons
+      tabButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const tabName = this.getAttribute('data-tab');
+
+          // Hide all tab contents
+          tabContents.forEach(content => {
+            content.classList.remove('active');
+          });
+
+          // Remove active class from all buttons
+          tabButtons.forEach(btn => {
+            btn.classList.remove('active');
+          });
+
+          // Show selected tab content
+          const targetContent = document.getElementById(tabName);
+          if (targetContent) {
+            targetContent.classList.add('active');
+          }
+
+          // Add active class to clicked button
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
 </TierListLayout>
