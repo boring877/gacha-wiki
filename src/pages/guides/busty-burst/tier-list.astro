@@ -3,14 +3,17 @@ import TierListLayout from '../../../layouts/busty-burst/TierListLayout.astro';
 import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
 import { getTierList } from '../../../data/busty-burst/tier-lists.js';
 
+// Import badge styles directly to ensure they're loaded
+import '../../../styles/games/busty-burst/busty-burst-badges.css';
+
 // Get the beginner tier list data
 const tierList = getTierList('beginner');
 
 // Page metadata
-const title = 'BBB Busty - Beginner Paladin Tier List';
+const title = 'Tier List';
 const description =
   'Beginner tier list for BBB Busty game. Find the best paladins to pick early on in your journey.';
-const gameTitle = 'BBB Busty - Paladin Tier List';
+const gameTitle = 'Tier List';
 ---
 
 <TierListLayout title={title} description={description} gameTitle={gameTitle}>

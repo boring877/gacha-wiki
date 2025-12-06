@@ -5,9 +5,9 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Analytics from '../../components/Analytics.astro';
-import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
 
 // Import CSS files
@@ -54,6 +54,16 @@ const { title, description, gameTitle } = Astro.props;
         <main class="busty-burst-main">
           <!-- Breadcrumb Navigation -->
           <Breadcrumb autoGenerate={true} gameKey="busty-burst" showBackButton={true} />
+
+          <!-- Page Title Section -->
+          {
+            gameTitle && (
+              <section class="page-title-section">
+                <h1 class="hero-title">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
 
           <!-- Content Area -->
           <div class="content-area">
