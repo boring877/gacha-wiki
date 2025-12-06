@@ -1,0 +1,77 @@
+---
+import TierListLayout from '../../../layouts/busty-burst/TierListLayout.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import { getTierList } from '../../../data/busty-burst/tier-lists.js';
+
+// Get the beginner tier list data
+const tierList = getTierList('beginner');
+
+// Page metadata
+const title = 'BBB Busty - Beginner Paladin Tier List';
+const description =
+  'Beginner tier list for BBB Busty game. Find the best paladins to pick early on in your journey.';
+const gameTitle = 'BBB Busty - Paladin Tier List';
+---
+
+<TierListLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Tier List Section -->
+  <section id="tier-list" class="tier-list-section">
+    <div class="tier-list-header">
+      <h1 class="tier-list-title">Beginner Tier List</h1>
+      <p class="tier-list-description">
+        {
+          tierList?.description ||
+            'This tier list gives a general idea of what to pick early on. It is not the final tier list.'
+        }
+      </p>
+      <p class="tier-list-last-updated">Last updated: {tierList?.lastUpdated || '2025-12-06'}</p>
+    </div>
+
+    <!-- Info Box -->
+    <div class="tier-list-info">
+      <h3>About This Tier List</h3>
+      <p>
+        This tier list is a work in progress and is subject to change. It is not a final tier list
+        and is not intended to be a guide for optimal play. It is simply a guide to help players
+        make informed decisions about which characters to pick.
+      </p>
+    </div>
+
+    <!-- Tier List Display -->
+    <div class="tier-list-container">
+      {
+        tierList?.tiers.map(tier => (
+          <div class="tier-row">
+            <div class={`tier-label tier-${tier.tier.toLowerCase()}`}>{tier.definition.label}</div>
+            <div class="tier-characters">
+              {tier.characters.map(character => (
+                <div class="tier-character-card">
+                  <div class="character-image-wrapper">
+                    <PaladinImage
+                      fileName={`${character.fileName || character.name.replace(/\s+/g, '_')}.jpg`}
+                      alt={character.name}
+                      width={140}
+                      height={140}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="character-name">{character.name}</div>
+                  <div class="bb-badge" data-rarity={character.rarity || 'SR'}>
+                    {character.rarity || 'SR'}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <style>
+    /* Ensure proper scrolling for long content */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</TierListLayout>

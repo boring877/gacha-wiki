@@ -1,0 +1,87 @@
+/* Busty Burst Badge Color System */
+/* Reusable badge styles for rarity indicators */
+
+.bb-badge {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  text-align: center;
+  min-width: 40px;
+}
+
+/* Rarity Badge Colors */
+.bb-badge[data-rarity='SSR'] {
+  background: #ffd700;
+  color: #1a1a1a;
+}
+
+.bb-badge[data-rarity='SR'] {
+  background: #9c27b0;
+  color: #ffffff;
+}
+
+.bb-badge[data-rarity='R'] {
+  background: #1976d2;
+  color: #ffffff;
+}
+
+.bb-badge[data-rarity='N'] {
+  background: #757575;
+  color: #ffffff;
+}
+
+.bb-badge[data-rarity='EX'] {
+  background: linear-gradient(135deg, #ff6b6b, #feca57);
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Alternative class-based badges (for compatibility) */
+.bb-badge-ssr {
+  background: #ffd700;
+  color: #1a1a1a;
+}
+
+.bb-badge-sr {
+  background: #9c27b0;
+  color: #ffffff;
+}
+
+.bb-badge-r {
+  background: #1976d2;
+  color: #ffffff;
+}
+
+.bb-badge-n {
+  background: #757575;
+  color: #ffffff;
+}
+
+.bb-badge-ex {
+  background: linear-gradient(135deg, #ff6b6b, #feca57);
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Responsive Badge Styles */
+@media (max-width: 768px) {
+  .bb-badge {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+    min-width: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-badge {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.6rem;
+    min-width: 32px;
+  }
+}

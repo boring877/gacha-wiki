@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all character images as assets for optimization
+import ArtemisImg from '../../assets/images/games/Busty_Burst/CharImg/Artemis.jpg';
+import ArtiaImg from '../../assets/images/games/Busty_Burst/CharImg/Artia.jpg';
+import BiancaImg from '../../assets/images/games/Busty_Burst/CharImg/Bianca.jpg';
+import Elegant_Portrait_ShamshelImg from '../../assets/images/games/Busty_Burst/CharImg/Elegant_Portrait_Shamshel.jpg';
+import EstirielImg from '../../assets/images/games/Busty_Burst/CharImg/Estiriel.jpg';
+import Festive_Attire_EstirielImg from '../../assets/images/games/Busty_Burst/CharImg/Festive_Attire_Estiriel.jpg';
+import Festival_Empress_ShamshelImg from '../../assets/images/games/Busty_Burst/CharImg/Festival_Empress_Shamshel.jpg';
+import Festive_Costume_NatashaImg from '../../assets/images/games/Busty_Burst/CharImg/Festive_Costume_Natasha.jpg';
+import FreyImg from '../../assets/images/games/Busty_Burst/CharImg/Frey.jpg';
+import GeminiImg from '../../assets/images/games/Busty_Burst/CharImg/Gemini.jpg';
+import HildisImg from '../../assets/images/games/Busty_Burst/CharImg/Hildis.jpg';
+import HisaraImg from '../../assets/images/games/Busty_Burst/CharImg/Hisara.jpg';
+import Lie_Img from '../../assets/images/games/Busty_Burst/CharImg/Liesel.jpg';
+import LucaImg from '../../assets/images/games/Busty_Burst/CharImg/Luca.jpg';
+import Magical_Princess_LuceriaImg from '../../assets/images/games/Busty_Burst/CharImg/Magical Princess Luceria.jpg';
+import MarinaImg from '../../assets/images/games/Busty_Burst/CharImg/Marina.jpg';
+import MeiniasImg from '../../assets/images/games/Busty_Burst/CharImg/Meinias.jpg';
+import Messenge_of_Stone_soldiers_NerysImg from '../../assets/images/games/Busty_Burst/CharImg/Messenge_of_Stone_soldiers_Nerys.jpg';
+import NoraImg from '../../assets/images/games/Busty_Burst/CharImg/Nora.jpg';
+import Pious_Healer_IshtoviaImg from '../../assets/images/games/Busty_Burst/CharImg/Pious_Healer_Ishtovia.jpg';
+import SoltinaImg from '../../assets/images/games/Busty_Burst/CharImg/Soltina.jpg';
+import StenlinaImg from '../../assets/images/games/Busty_Burst/CharImg/Stenlina.jpg';
+import Swift_Chant_Sorceress_SobrinaImg from '../../assets/images/games/Busty_Burst/CharImg/Swift-Chant_Sorceress_Sobrina.jpg';
+import TeresiaImg from '../../assets/images/games/Busty_Burst/CharImg/Teresia.jpg';
+import The_Dark_KnightImg from '../../assets/images/games/Busty_Burst/CharImg/The_Dark_Knight.jpg';
+import Trance_Dancer_MesseriaImg from '../../assets/images/games/Busty_Burst/CharImg/Trance_Dancer_Messeria.jpg';
+import VenusImg from '../../assets/images/games/Busty_Burst/CharImg/Venus.jpg';
+import Yu_Lima_ElkaImg from '../../assets/images/games/Busty_Burst/CharImg/Yu_Lima_Elka.jpg';
+import NatashaImg from '../../assets/images/games/Busty_Burst/CharImg/Natasha.jpg';
+
+export interface Props {
+  fileName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  fileName,
+  alt,
+  width = 140,
+  height = 140,
+  class: className,
+  loading = 'lazy',
+  format = 'jpg',
+  quality = 85,
+} = Astro.props;
+
+// Map file names to imported image modules
+const imageMap = {
+  'Artemis.jpg': ArtemisImg,
+  'Artia.jpg': ArtiaImg,
+  'Bianca.jpg': BiancaImg,
+  'Elegant_Portrait_Shamshel.jpg': Elegant_Portrait_ShamshelImg,
+  'Estiriel.jpg': EstirielImg,
+  'Festive_Attire_Estiriel.jpg': Festive_Attire_EstirielImg,
+  'Festival_Empress_Shamshel.jpg': Festival_Empress_ShamshelImg,
+  'Festive_Costume_Natasha.jpg': Festive_Costume_NatashaImg,
+  'Frey.jpg': FreyImg,
+  'Gemini.jpg': GeminiImg,
+  'Hildis.jpg': HildisImg,
+  'Hisara.jpg': HisaraImg,
+  'Liesel.jpg': Lie_Img,
+  'Luca.jpg': LucaImg,
+  'Magical Princess Luceria.jpg': Magical_Princess_LuceriaImg,
+  'Marina.jpg': MarinaImg,
+  'Meinias.jpg': MeiniasImg,
+  'Messenge_of_Stone_soldiers_Nerys.jpg': Messenge_of_Stone_soldiers_NerysImg,
+  'Nora.jpg': NoraImg,
+  'Pious_Healer_Ishtovia.jpg': Pious_Healer_IshtoviaImg,
+  'Soltina.jpg': SoltinaImg,
+  'Stenlina.jpg': StenlinaImg,
+  'Swift-Chant_Sorceress_Sobrina.jpg': Swift_Chant_Sorceress_SobrinaImg,
+  'Teresia.jpg': TeresiaImg,
+  'The_Dark_Knight.jpg': The_Dark_KnightImg,
+  'Trance_Dancer_Messeria.jpg': Trance_Dancer_MesseriaImg,
+  'Venus.jpg': VenusImg,
+  'Yu_Lima_Elka.jpg': Yu_Lima_ElkaImg,
+  'Natasha.jpg': NatashaImg,
+};
+
+// Get the image module based on the fileName
+const imageModule = imageMap[fileName] || EstirielImg; // Default to Estiriel if not found
+---
+
+<!-- Character image wrapper with proper styling -->
+<div class={`paladin-image-wrapper ${className || ''}`}>
+  <Image
+    src={imageModule}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    format={format}
+    quality={quality}
+    class="paladin-image"
+    style="object-fit: cover; border-radius: 6px; border: 2px solid var(--bb-border-light);"
+  />
+</div>
+
+<style>
+  .paladin-image-wrapper {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .paladin-image {
+    transition: none; /* No animations as requested */
+  }
+
+  /* Ensure images maintain aspect ratio */
+  .paladin-image-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+</style>

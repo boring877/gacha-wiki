@@ -57,117 +57,16 @@ export const bustyBurstConfig = {
   // Main Category Groups
   categoryGroups: [
     {
-      id: 'beginner-essentials',
-      title: 'Beginner Essentials',
+      id: 'guides',
+      title: 'Guides',
       emoji: '',
-      description: 'Getting started guides, Lord system basics, and fundamental game mechanics',
+      description: 'Game guides and character information',
       size: 'large',
       guides: [
-        {
-          id: 'getting-started',
-          title: 'Getting Started',
-          url: '/guides/busty-burst/beginner-guide#getting-started',
-        },
-        {
-          id: 'lord-system',
-          title: 'Lord System',
-          url: '/guides/busty-burst/beginner-guide#lord-system',
-        },
-        {
-          id: 'basic-mechanics',
-          title: 'Basic Mechanics',
-          url: '/guides/busty-burst/beginner-guide#mechanics',
-        },
-      ],
-    },
-    {
-      id: 'paladin-collection',
-      title: 'Paladin Collection',
-      emoji: '',
-      description: 'Paladin database, summoning guide, team building, and character strategies',
-      size: 'large',
-      guides: [
-        {
-          id: 'paladins',
-          title: 'Paladin Database',
-          url: '/guides/busty-burst/paladins',
-        },
-        {
-          id: 'summoning-guide',
-          title: 'Summoning Guide',
-          url: '/guides/busty-burst/paladins#summoning',
-        },
-        {
-          id: 'team-building',
-          title: 'Team Building',
-          url: '/guides/busty-burst/paladins#teams',
-        },
         {
           id: 'paladin-tier-list',
-          title: 'Paladin Tier List',
-          url: '/guides/busty-burst/paladins#tier-list',
-        },
-      ],
-    },
-    {
-      id: 'game-mechanics',
-      title: 'Game Mechanics',
-      emoji: '',
-      description: 'Duel system, progression mechanics, and Goddess Ruin exploration',
-      size: 'medium',
-      guides: [
-        {
-          id: 'duel-system',
-          title: 'Duel System',
-          url: '/guides/busty-burst/game-systems#duels',
-        },
-        {
-          id: 'progression',
-          title: 'Progression',
-          url: '/guides/busty-burst/game-systems#progression',
-        },
-        {
-          id: 'goddess-ruin',
-          title: 'Goddess Ruin',
-          url: '/guides/busty-burst/game-systems#goddess-ruin',
-        },
-      ],
-    },
-    {
-      id: 'resources',
-      title: 'Resources',
-      emoji: '',
-      description: 'Utility tools, codes, and game information',
-      size: 'medium',
-      guides: [
-        {
-          id: 'redeem-codes',
-          title: 'Redeem Codes',
-          url: '/guides/busty-burst/redeem-codes',
-        },
-        {
-          id: 'clock',
-          title: 'Clock',
-          url: '/clock/busty-burst/',
-        },
-      ],
-    },
-    {
-      id: 'community',
-      title: 'Community',
-      emoji: '',
-      description: 'Events, updates, and community content',
-      size: 'medium',
-      guides: [
-        {
-          id: 'events',
-          title: 'Current Events',
-          url: '/guides/busty-burst/events',
-        },
-        {
-          id: 'event-history',
-          title: 'Event History',
-          url: '/guides/busty-burst/events#history',
+          title: 'Tier List',
+          url: '/guides/busty-burst/tier-list#tier-list',
         },
       ],
     },
@@ -176,104 +75,14 @@ export const bustyBurstConfig = {
   // Original guides array (kept for backward compatibility)
   guides: [
     {
-      id: 'getting-started',
-      title: 'Getting Started',
+      id: 'paladin-tier-list',
+      title: 'Beginner Tier List',
       emoji: '',
       description:
-        'Complete beginner guide for Busty Burst Fantasy. Learn the basics of the Lord system, paladin summoning, and how to climb the ranks.',
-      url: '/guides/busty-burst/beginner-guide#getting-started',
+        'Beginner tier list for BBB Busty game. Find the best paladins to pick early on in your journey.',
+      url: '/guides/busty-burst/tier-list#tier-list',
       category: 'guides',
       size: 'large',
-    },
-    {
-      id: 'paladins',
-      title: 'Paladin Database',
-      emoji: '',
-      description:
-        'Complete database of all summonable paladins from other worlds. Find detailed stats, abilities, and team composition strategies.',
-      url: '/guides/busty-burst/paladins',
-      category: 'guides',
-      size: 'large',
-    },
-    {
-      id: 'summoning-guide',
-      title: 'Summoning Guide',
-      emoji: '',
-      description:
-        'Learn the mechanics of summoning otherworldly paladins from the Goddess Ruin. Rates, strategies, and optimal summoning methods.',
-      url: '/guides/busty-burst/paladins#summoning',
-      category: 'guides',
-      size: 'medium',
-    },
-    {
-      id: 'lord-system',
-      title: 'Lord System',
-      emoji: '',
-      description:
-        'Complete guide to the Lord ranking system in the Kingdom of Vern. Understand how paladin duels affect your standing.',
-      url: '/guides/busty-burst/beginner-guide#lord-system',
-      category: 'guides',
-      size: 'medium',
-    },
-    {
-      id: 'duel-system',
-      title: 'Duel System',
-      emoji: '',
-      description:
-        'Master the combat mechanics of paladin duels. Strategy guide for winning battles and climbing the lord rankings.',
-      url: '/guides/busty-burst/game-systems#duels',
-      category: 'guides',
-      size: 'medium',
-    },
-    {
-      id: 'team-building',
-      title: 'Team Building',
-      emoji: '',
-      description:
-        'Optimal team compositions and synergy strategies for your paladin roster. Build teams that dominate duels.',
-      url: '/guides/busty-burst/paladins#teams',
-      category: 'guides',
-      size: 'medium',
-    },
-    {
-      id: 'goddess-ruin',
-      title: 'Goddess Ruin',
-      emoji: '',
-      description:
-        'Explore the abandoned Goddess Ruin where powerful otherworldly paladins await discovery. Location guide and unlock requirements.',
-      url: '/guides/busty-burst/game-systems#goddess-ruin',
-      category: 'guides',
-      size: 'small',
-    },
-    {
-      id: 'redeem-codes',
-      title: 'Redeem Codes',
-      emoji: '',
-      description:
-        'Active redeem codes for free summons, resources, and exclusive rewards. Updated regularly with new codes.',
-      url: '/guides/busty-burst/redeem-codes',
-      category: 'rewards',
-      size: 'small',
-    },
-    {
-      id: 'events',
-      title: 'Current Events',
-      emoji: '',
-      description:
-        "Limited-time events, special summoning banners, and exclusive rewards. Don't miss out on time-limited content.",
-      url: '/guides/busty-burst/events',
-      category: 'info',
-      size: 'small',
-    },
-    {
-      id: 'clock',
-      title: 'Game Clock',
-      emoji: '',
-      description:
-        'Track Busty Burst Fantasy daily reset times, energy refills, and event schedules. Never miss important game timings.',
-      url: '/clock/busty-burst/',
-      category: 'tools',
-      size: 'small',
     },
   ],
 };
