@@ -51,6 +51,60 @@
 }
 
 /* Resources Grid */
+.bb-resources-title {
+  text-align: center;
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--bb-primary);
+  margin-bottom: 1.5rem;
+}
+
+.bb-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bb-resource-category {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.bb-resource-category h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.bb-buttons-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.bb-resource-button {
+  display: block;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--bb-text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Resources Grid */
 .resources-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -179,6 +233,24 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .bb-resources-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .bb-resource-category {
+    padding: 1rem;
+  }
+
+  .bb-buttons-grid {
+    gap: 0.5rem;
+  }
+
+  .bb-resource-button {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
   .resources-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
