@@ -1,65 +1,35 @@
 ---
+// Rebellion Gilgamesh BaseHead - Game-specific meta tags only
+// Standard SEO tags (og:*, twitter:*, canonical) are handled by GameSEO
 import { SITE_TITLE } from '../../consts';
 
 export interface Props {
   title?: string;
   description?: string;
-  image?: string;
 }
 
 const {
   title = SITE_TITLE,
   description = 'Rebellion Gilgamesh Wiki - Adult Fantasy RPG Character Guide, Club Management & Strategy',
-  image = 'BG1.jpg',
 } = Astro.props;
 
-// Set meta tags
 const metaTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | Rebellion Gilgamesh Wiki`;
-const metaDescription = description;
-const metaImage = image;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
-<!-- Meta Tags -->
+<!-- Essential Metadata Only -->
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content={metaDescription} />
-<meta
-  name="keywords"
-  content="Rebellion Gilgamesh, ルーレット契約, adult RPG, fantasy RPG, demon world, club management, character guide, gacha game, Rebellion Gilgamesh wiki, Rebellion Gilgamesh characters, Rebellion Gilgamesh download, harem creation, character collection, Erolabs, DMM, demon-ruled world"
-/>
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={metaTitle} />
-<meta property="og:description" content={metaDescription} />
-<meta property="og:image" content={metaImage} />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:site_name" content="Rebellion Gilgamesh Wiki" />
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={metaTitle} />
-<meta property="twitter:description" content={metaDescription} />
-<meta property="twitter:image" content={metaImage} />
-
-<!-- Additional SEO Meta -->
-<meta name="robots" content="index, follow" />
-<meta name="language" content="English" />
-<meta name="author" content="GachaWiki" />
-<meta name="theme-color" content="#4c1d95" />
-
-<!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
 
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+<!-- Primary Meta Tags -->
+<title>{metaTitle}</title>
+<meta name="title" content={metaTitle} />
+<meta name="description" content={description} />
 
 <!-- Preconnect for external resources -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -104,7 +74,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
         name: 'Erolabs',
       },
     },
-    image: metaImage,
     url: canonicalURL,
     sameAs: [
       'https://x.com/rebgilgame',
@@ -154,7 +123,3 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 <link rel="dns-prefetch" href="//game.erolabsshare.net" />
 <link rel="dns-prefetch" href="//x.com" />
 <link rel="dns-prefetch" href="//rebgil.funyoursjapan.pink" />
-
-<!-- Preload Critical Resources -->
-<!-- Image preloads removed since using Astro optimization -->
-<!-- CSS preloads removed as they're imported directly -->

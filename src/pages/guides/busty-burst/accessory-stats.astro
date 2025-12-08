@@ -212,9 +212,11 @@ const gameTitle = 'Accessory Stats';
         // Add active to clicked tab and target content
         tab.classList.add('active');
         const targetId = tab.getAttribute('data-target');
-        const targetContent = document.getElementById(targetId);
-        if (targetContent) {
-          targetContent.classList.add('active');
+        if (targetId) {
+          const targetContent = document.getElementById(targetId);
+          if (targetContent) {
+            targetContent.classList.add('active');
+          }
         }
       });
     });

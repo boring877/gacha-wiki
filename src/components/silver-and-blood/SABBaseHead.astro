@@ -1,49 +1,23 @@
 ---
-// Lightweight BaseHead for Silver & Blood - Optimized for instant loading
+// Silver & Blood BaseHead - Game-specific meta tags only
+// Standard SEO tags (og:*, twitter:*, canonical) are handled by GameSEO
 export interface Props {
   title: string;
   description: string;
-  image?: string;
 }
 
-const {
-  title,
-  description,
-  image = '/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg',
-} = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!-- Essential Metadata Only -->
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-
-<!-- Theme Color for Mobile Browser UI -->
-<meta name="theme-color" content="#1a1a1a" />
-<meta name="msapplication-TileColor" content="#1a1a1a" />
 
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-
-<!-- Canonical URL -->
-<link rel="canonical" href={Astro.url} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <meta name="generator" content={Astro.generator} />
-
-<!-- Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={image} />
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={image} />
