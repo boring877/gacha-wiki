@@ -45,12 +45,6 @@ export const bustyBurstConfig = {
         content:
           '"Busty Fantasy Burst" (English Edition) will run on a separate server. Game content and event schedules will be different from the Chinese version, and progress from the Chinese version cannot be transferred. If you\'d like to start fresh and experience the story and events in English, we warmly invite you to pre-register and stay tuned for the latest updates on "Busty Fantasy Burst" (English Edition)!',
       },
-      {
-        id: 'content-changes',
-        title: 'Content Subject to Change',
-        content:
-          'Game-related content is subject to change based on actual development progress. Please refer to official in-game announcements and the final released content for the most accurate information.',
-      },
     ],
   },
 

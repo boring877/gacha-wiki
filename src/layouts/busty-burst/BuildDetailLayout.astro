@@ -1,0 +1,165 @@
+---
+import BBBaseHead from '../../components/busty-burst/BBBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
+import PaladinImage from '../../components/busty-burst/PaladinImage.astro';
+import WeaponImage from '../../components/busty-burst/WeaponImage.astro';
+import AccessoryImage from '../../components/busty-burst/AccessoryImage.astro';
+
+// Import CSS files
+import '../../styles/games/busty-burst/busty-burst-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/busty-burst/busty-burst-layout.css';
+import '../../styles/games/busty-burst/busty-burst-build.css';
+import '../../styles/games/busty-burst/busty-burst-badges.css';
+import '../../styles/games/busty-burst/busty-burst-build-detail.css';
+
+export interface Props {
+  build: {
+    slug: string;
+    character: {
+      name: string;
+      fileName: string;
+    };
+    weapon: {
+      name: string;
+      image: string;
+      effect: string;
+    };
+    accessory: {
+      name: string;
+      images?: string[];
+      setEffects: Array<{ pieces: number; effect: string }>;
+    };
+  };
+}
+
+const { build } = Astro.props;
+const title = `${build.character.name} Build - Busty Burst`;
+const description = `Build guide for ${build.character.name} in Busty Burst`;
+---
+
+<html lang="en">
+  <head>
+    <BBBaseHead title={title} description={description} />
+    <GameSEO
+      gameKey="busty-burst"
+      title={title}
+      description={description}
+      customImage="/assets/images/games/Busty_Burst/BG/bg_02.webp"
+    />
+  </head>
+  <body class="busty-burst-body">
+    <CustomScrollbar />
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+
+    <div class="busty-burst-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="busty-burst" />
+      <MobileMenu />
+
+      <div class="busty-burst-container">
+        <main class="busty-burst-main">
+          <!-- Title Section -->
+          <section class="bb-title-only-section">
+            <h1 class="bb-title-only-heading">Character Build</h1>
+            <DecorativeLines />
+          </section>
+
+          <Breadcrumb autoGenerate={true} gameKey="busty-burst" showBackButton={true} />
+
+          <div class="content-area">
+            <div class="bb-build-detail-container">
+              <!-- Character Header -->
+              <div class="bb-build-detail-header">
+                <div class="bb-build-detail-char-image">
+                  <PaladinImage
+                    fileName={`${build.character.fileName}.jpg`}
+                    alt={build.character.name}
+                    width={120}
+                    height={120}
+                    loading="eager"
+                  />
+                </div>
+                <h1 class="bb-build-detail-title">{build.character.name} Build</h1>
+              </div>
+
+              <!-- Weapon Section -->
+              <section class="bb-build-detail-section">
+                <h2 class="bb-build-section-title">Weapon</h2>
+                <div class="bb-build-detail-card">
+                  <div class="bb-build-item-row">
+                    <div class="bb-build-item-image">
+                      <WeaponImage
+                        fileName={build.weapon.image}
+                        alt={build.weapon.name}
+                        width={80}
+                        height={80}
+                        loading="eager"
+                      />
+                    </div>
+                    <div class="bb-build-item-info">
+                      <h3 class="bb-build-item-name">{build.weapon.name}</h3>
+                      <p class="bb-build-item-effect">{build.weapon.effect}</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Accessory Section -->
+              <section class="bb-build-detail-section">
+                <h2 class="bb-build-section-title">Accessory</h2>
+                <div class="bb-build-detail-card">
+                  <h3 class="bb-build-item-name">{build.accessory.name}</h3>
+
+                  {
+                    build.accessory.images && build.accessory.images.length > 0 && (
+                      <div class="bb-build-accessory-images">
+                        {build.accessory.images.map(img => (
+                          <div class="bb-build-accessory-item">
+                            <AccessoryImage
+                              fileName={img}
+                              alt={img.replace('.png', '').replace(/_/g, ' ')}
+                              width={60}
+                              height={60}
+                              loading="eager"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )
+                  }
+
+                  <div class="bb-build-set-effects">
+                    {
+                      build.accessory.setEffects.map(effect => (
+                        <div class="bb-build-set-effect-row">
+                          <span class="bb-build-set-pieces">{effect.pieces}-set effect</span>
+                          <span class="bb-build-set-value">{effect.effect}</span>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

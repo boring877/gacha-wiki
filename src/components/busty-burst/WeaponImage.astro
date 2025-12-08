@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+
+// Import weapon images
+import MagicGrenadeImg from '../../assets/images/games/Busty_Burst/WPImg/Magic_Grenade_of_annihilation.png';
+
+export interface Props {
+  fileName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { fileName, alt, width = 80, height = 80, class: className, loading = 'lazy' } = Astro.props;
+
+// Map file names to imported image modules
+const imageMap: Record<string, ImageMetadata> = {
+  'Magic_Grenade_of_annihilation.png': MagicGrenadeImg,
+};
+
+// Get the image module based on the fileName
+const imageModule = imageMap[fileName];
+---
+
+{
+  imageModule && (
+    <div class={`weapon-image-wrapper ${className || ''}`}>
+      <Image
+        src={imageModule}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        class="weapon-image"
+      />
+    </div>
+  )
+}
+
+<style>
+  .weapon-image-wrapper {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .weapon-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+</style>

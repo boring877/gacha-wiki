@@ -18,7 +18,7 @@ const description =
 const gameTitle = 'Tier Lists';
 ---
 
-<TierListLayout title={title} description={description} gameTitle={gameTitle}>
+<TierListLayout title={title} description={description} gameTitle={gameTitle} showTitle={true}>
   <!-- Tier List Section -->
   <section id="tier-list" class="bb-tier-list-section">
     <!-- Tab Navigation -->
@@ -30,7 +30,7 @@ const gameTitle = 'Tier Lists';
     <!-- Beginner Tier List Content -->
     <div id="beginner" class="bb-tab-content active">
       <div class="bb-tier-list-header">
-        <h1 class="bb-tier-list-title">EcchiPen Tier List</h1>
+        <h2 class="bb-tier-list-title">EcchiPen Tier List</h2>
         <p class="bb-tier-list-description">
           {
             beginnerTierList?.description ||
@@ -88,7 +88,7 @@ const gameTitle = 'Tier Lists';
     <!-- Aethersteel Tier List Content -->
     <div id="aethersteel" class="bb-tab-content">
       <div class="bb-tier-list-header">
-        <h1 class="bb-tier-list-title">Aethersteel's Tier List</h1>
+        <h2 class="bb-tier-list-title">Aethersteel's Tier List</h2>
         <p class="bb-tier-list-description">
           {aethersteelTierList?.description || 'Tier list created by Aethersteel'}
         </p>

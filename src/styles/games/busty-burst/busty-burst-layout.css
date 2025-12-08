@@ -1,6 +1,26 @@
 /* Busty Burst Fantasy Layout Styles */
 /* Base layout, hero sections, and shared animations for adult fantasy theme */
 
+/* Title Only Section - Used across all Busty Burst pages */
+.bb-title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 1rem 1rem;
+  position: relative;
+}
+
+.bb-title-only-heading {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--bb-primary);
+  margin: 0 0 2rem 0;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* NO SHADOW, NO ANIMATION - FLAT DESIGN */
+}
+
 /* Body Styles */
 .busty-burst-body {
   background: var(--bb-bg-primary);
@@ -42,14 +62,24 @@
   position: relative;
   z-index: 1;
   isolation: isolate; /* Creates new stacking context */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Container Styles */
 .busty-burst-container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
+  padding-bottom: 2rem;
+  flex: 1 0 auto;
+}
+
+.busty-burst-content > footer {
+  flex-shrink: 0;
 }
 
 .busty-burst-main {
@@ -75,16 +105,13 @@
 
 .hero-title {
   font-size: var(--text-4xl);
-  font-weight: var(--font-bold);
+  font-weight: 700;
   font-family: var(--font-display);
-  background: var(--bb-gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  color: var(--bb-primary);
   margin: 0;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
+  /* NO SHADOW, NO ANIMATION, NO GRADIENT - FLAT DESIGN */
 }
 
 /* Content Area */
@@ -92,8 +119,7 @@
   width: 100%;
   position: relative;
   isolation: isolate; /* Creates new stacking context */
-  background: var(--bb-bg-primary);
-  border-radius: 8px;
+  background: transparent;
 }
 
 /* Content Sections */
@@ -118,17 +144,14 @@
 
 .resources-title {
   font-size: var(--text-4xl);
-  font-weight: var(--font-bold);
+  font-weight: 700;
   font-family: var(--font-display);
   color: var(--bb-primary);
   margin-bottom: 2rem;
   text-align: center;
-  background: var(--bb-gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
+  /* NO SHADOW, NO ANIMATION, NO GRADIENT - FLAT DESIGN */
 }
 
 /* Game Description */
@@ -223,6 +246,11 @@
 
   .hero-title {
     font-size: var(--text-3xl);
+  }
+
+  .bb-title-only-heading {
+    font-size: 2.2rem;
+    letter-spacing: 1.5px;
   }
 
   .content-section {
@@ -328,6 +356,11 @@
 }
 
 @media (max-width: 480px) {
+  .bb-title-only-heading {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
   .game-notes-section {
     padding: 1.25rem;
     margin-bottom: 1.5rem;

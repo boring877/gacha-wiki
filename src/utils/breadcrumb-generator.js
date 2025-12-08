@@ -88,6 +88,14 @@ const GAME_CONFIG = {
       discs: 'Discs',
     },
   },
+  'busty-burst': {
+    name: 'Busty Burst',
+    basePath: '/guides/busty-burst',
+    patterns: {
+      'tier-list': 'Tier List',
+      build: 'Character Builds',
+    },
+  },
 };
 
 /**

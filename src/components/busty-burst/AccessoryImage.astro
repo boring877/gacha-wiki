@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+
+// Import accessory images
+import EmeraldRingImg from '../../assets/images/games/Busty_Burst/Accessory/Emerald_Ring.png';
+import EmeraldBraceletImg from '../../assets/images/games/Busty_Burst/Accessory/Emerald_Bracelet.png';
+import EmeraldNecklaceImg from '../../assets/images/games/Busty_Burst/Accessory/Emerald_Necklace.png';
+import EmeraldEarringsImg from '../../assets/images/games/Busty_Burst/Accessory/Emerald_Earrings.png';
+import EmeraldTiaraImg from '../../assets/images/games/Busty_Burst/Accessory/Emerald_Tiara.png';
+
+export interface Props {
+  fileName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { fileName, alt, width = 60, height = 60, class: className, loading = 'lazy' } = Astro.props;
+
+// Map file names to imported image modules
+const imageMap: Record<string, ImageMetadata> = {
+  'Emerald_Ring.png': EmeraldRingImg,
+  'Emerald_Bracelet.png': EmeraldBraceletImg,
+  'Emerald_Necklace.png': EmeraldNecklaceImg,
+  'Emerald_Earrings.png': EmeraldEarringsImg,
+  'Emerald_Tiara.png': EmeraldTiaraImg,
+};
+
+// Get the image module based on the fileName
+const imageModule = imageMap[fileName];
+---
+
+{
+  imageModule && (
+    <div class={`accessory-image-wrapper ${className || ''}`}>
+      <Image
+        src={imageModule}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        class="accessory-image"
+      />
+    </div>
+  )
+}
+
+<style>
+  .accessory-image-wrapper {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .accessory-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+</style>

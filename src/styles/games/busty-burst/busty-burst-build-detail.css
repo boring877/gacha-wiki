@@ -1,0 +1,288 @@
+/* Busty Burst Build Detail Page Styles */
+
+.bb-build-detail-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Character Header */
+.bb-build-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+}
+
+.bb-build-detail-char-image {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--bb-border-light);
+}
+
+.bb-build-detail-char-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-build-detail-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin: 0;
+}
+
+/* Section Styles */
+.bb-build-detail-section {
+  margin-bottom: 1.5rem;
+}
+
+/* Card Styles */
+.bb-build-detail-card {
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+/* Item Row (Weapon/Accessory with image) */
+.bb-build-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.bb-build-item-image {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  background: var(--bb-bg-primary);
+  border: 1px solid var(--bb-border);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-build-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.bb-build-item-info {
+  flex: 1;
+}
+
+.bb-build-item-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.bb-build-item-effect {
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Accessory Images Grid */
+.bb-build-accessory-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bb-build-accessory-item {
+  width: 60px;
+  height: 60px;
+  background: var(--bb-bg-primary);
+  border: 1px solid var(--bb-border);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-build-accessory-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Set Effects */
+.bb-build-set-effects {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bb-build-set-effect-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-build-set-effect-row:last-child {
+  border-bottom: none;
+}
+
+.bb-build-set-pieces {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--bb-text-secondary);
+  text-transform: capitalize;
+}
+
+.bb-build-set-value {
+  font-size: 0.9rem;
+  color: var(--bb-text-primary);
+  font-weight: 500;
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 768px) {
+  .bb-build-detail-container {
+    padding: 0 0.75rem;
+  }
+
+  .bb-build-detail-header {
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .bb-build-detail-char-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .bb-build-detail-title {
+    font-size: 1.35rem;
+  }
+
+  .bb-build-accessory-item {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 600px) {
+  .bb-build-detail-container {
+    padding: 0 0.5rem;
+  }
+
+  .bb-build-detail-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .bb-build-detail-char-image {
+    width: 90px;
+    height: 90px;
+  }
+
+  .bb-build-detail-title {
+    font-size: 1.2rem;
+  }
+
+  .bb-build-item-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bb-build-item-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .bb-build-item-name {
+    font-size: 1rem;
+  }
+
+  .bb-build-item-effect {
+    font-size: 0.85rem;
+  }
+
+  .bb-build-detail-card {
+    padding: 1rem;
+  }
+
+  .bb-build-accessory-images {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .bb-build-accessory-item {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bb-build-set-effect-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .bb-build-set-pieces {
+    font-size: 0.8rem;
+  }
+
+  .bb-build-set-value {
+    font-size: 0.85rem;
+  }
+}
+
+/* Responsive Design - Small Mobile */
+@media (max-width: 400px) {
+  .bb-build-detail-container {
+    padding: 0 0.375rem;
+  }
+
+  .bb-build-detail-header {
+    padding: 0.75rem;
+  }
+
+  .bb-build-detail-char-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .bb-build-detail-title {
+    font-size: 1.1rem;
+  }
+
+  .bb-build-item-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .bb-build-detail-card {
+    padding: 0.75rem;
+  }
+
+  .bb-build-accessory-item {
+    width: 45px;
+    height: 45px;
+  }
+}

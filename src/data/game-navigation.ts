@@ -228,8 +228,11 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     image: BustyBurstIcon,
     sections: [
       {
-        title: 'Guides',
-        links: [{ name: 'Tier List', href: '/guides/busty-burst/tier-list#tier-list' }],
+        title: 'Characters',
+        links: [
+          { name: 'Tier List', href: '/guides/busty-burst/tier-list#tier-list' },
+          { name: 'Build', href: '/guides/busty-burst/build' },
+        ],
       },
     ],
   },

@@ -1,0 +1,15 @@
+---
+import BuildDetailLayout from '../../../../layouts/busty-burst/BuildDetailLayout.astro';
+import { characterBuilds } from '../../../../data/busty-burst/character-builds.js';
+
+export function getStaticPaths() {
+  return Object.values(characterBuilds).map(build => ({
+    params: { slug: build.slug },
+    props: { build },
+  }));
+}
+
+const { build } = Astro.props;
+---
+
+<BuildDetailLayout build={build} />

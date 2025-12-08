@@ -24,49 +24,60 @@
   color: #ffffff;
 }
 
-.bb-badge[data-rarity='R'] {
-  background: #1976d2;
-  color: #ffffff;
+/* Element Badge Colors */
+.bb-badge[data-element='Fire'] {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.4);
 }
 
-.bb-badge[data-rarity='N'] {
-  background: #757575;
-  color: #ffffff;
+.bb-badge[data-element='Water'] {
+  background: rgba(77, 171, 247, 0.2);
+  color: #4dabf7;
+  border: 1px solid rgba(77, 171, 247, 0.4);
 }
 
-.bb-badge[data-rarity='EX'] {
-  background: linear-gradient(135deg, #ff6b6b, #feca57);
-  color: #ffffff;
-  font-weight: 800;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+.bb-badge[data-element='Wind'] {
+  background: rgba(105, 219, 124, 0.2);
+  color: #69db7c;
+  border: 1px solid rgba(105, 219, 124, 0.4);
 }
 
-/* Alternative class-based badges (for compatibility) */
-.bb-badge-ssr {
-  background: #ffd700;
-  color: #1a1a1a;
+.bb-badge[data-element='Light'] {
+  background: rgba(255, 212, 59, 0.2);
+  color: #ffd43b;
+  border: 1px solid rgba(255, 212, 59, 0.4);
 }
 
-.bb-badge-sr {
-  background: #9c27b0;
-  color: #ffffff;
+.bb-badge[data-element='Dark'] {
+  background: rgba(151, 117, 250, 0.2);
+  color: #9775fa;
+  border: 1px solid rgba(151, 117, 250, 0.4);
 }
 
-.bb-badge-r {
-  background: #1976d2;
-  color: #ffffff;
+/* Role Badge Colors */
+.bb-badge[data-role='DPS'] {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff8787;
+  border: 1px solid rgba(255, 107, 107, 0.3);
 }
 
-.bb-badge-n {
-  background: #757575;
-  color: #ffffff;
+.bb-badge[data-role='Support'] {
+  background: rgba(77, 171, 247, 0.15);
+  color: #74c0fc;
+  border: 1px solid rgba(77, 171, 247, 0.3);
 }
 
-.bb-badge-ex {
-  background: linear-gradient(135deg, #ff6b6b, #feca57);
-  color: #ffffff;
-  font-weight: 800;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+.bb-badge[data-role='Healer'] {
+  background: rgba(105, 219, 124, 0.15);
+  color: #8ce99a;
+  border: 1px solid rgba(105, 219, 124, 0.3);
+}
+
+.bb-badge[data-role='Summoner'] {
+  background: rgba(151, 117, 250, 0.15);
+  color: #b197fc;
+  border: 1px solid rgba(151, 117, 250, 0.3);
 }
 
 /* Mobile Responsive Badge Styles */

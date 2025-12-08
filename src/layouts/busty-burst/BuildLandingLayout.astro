@@ -5,9 +5,9 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
-import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
 
 // Import CSS files
@@ -15,7 +15,7 @@ import '../../styles/games/busty-burst/busty-burst-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/busty-burst/busty-burst-layout.css';
-import '../../styles/games/busty-burst/busty-burst-tier-list.css';
+import '../../styles/games/busty-burst/busty-burst-build.css';
 import '../../styles/games/busty-burst/busty-burst-badges.css';
 
 export interface Props {
@@ -25,7 +25,7 @@ export interface Props {
   showTitle?: boolean;
 }
 
-const { title, description, gameTitle, showTitle = true } = Astro.props;
+const { title, description, gameTitle, showTitle = false } = Astro.props;
 ---
 
 <html lang="en">
@@ -35,7 +35,7 @@ const { title, description, gameTitle, showTitle = true } = Astro.props;
       gameKey="busty-burst"
       title={title}
       description={description}
-      customImage="/assets/images/games/Busty_Burst/BG/gameLogo.webp"
+      customImage="/assets/images/games/Busty_Burst/BG/bg_02.webp"
     />
     <slot name="head" />
   </head>
@@ -53,7 +53,7 @@ const { title, description, gameTitle, showTitle = true } = Astro.props;
 
       <div class="busty-burst-container">
         <main class="busty-burst-main">
-          <!-- Title Section -->
+          <!-- Title Section (only when showTitle is true) -->
           {
             showTitle && gameTitle && (
               <section class="bb-title-only-section">
