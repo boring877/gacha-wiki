@@ -208,8 +208,16 @@ export function generateBreadcrumbs(pathname, options = {}) {
       const lastSegment = segments[segments.length - 1];
       const formattedName = formatSegmentName(lastSegment);
 
-      // Only add if this isn't already in breadcrumbs
-      const alreadyExists = breadcrumbs.some(crumb => crumb.name === formattedName);
+      // Check if the last segment is already represented in breadcrumbs
+      // This handles cases where pattern config maps 'build' -> 'Character Builds'
+      const detectedGameKey = gameKey || (segments[0] === 'guides' && segments[1]);
+      const config = detectedGameKey ? GAME_CONFIG[detectedGameKey] : null;
+      const patternName = config?.patterns?.[lastSegment];
+
+      // Only add if this segment isn't already in breadcrumbs (check both formatted and pattern name)
+      const alreadyExists = breadcrumbs.some(
+        crumb => crumb.name === formattedName || crumb.name === patternName
+      );
       if (!alreadyExists) {
         breadcrumbs.push({
           name: formattedName,
