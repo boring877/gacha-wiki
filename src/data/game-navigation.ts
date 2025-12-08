@@ -240,11 +240,15 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Accessory Stats', href: '/guides/busty-burst/accessory-stats' },
           { name: 'Accessory Items', href: '/guides/busty-burst/accessory-items' },
           { name: 'Accessory Guide', href: '/guides/busty-burst/accessory-guide' },
+          { name: 'Raid Drops', href: '/guides/busty-burst/raid-drops' },
         ],
       },
       {
         title: 'Resources',
-        links: [{ name: 'Clock', href: '/clock/busty-burst/' }],
+        links: [
+          { name: 'Clock', href: '/clock/busty-burst/' },
+          { name: 'Redeem Codes', href: '/guides/busty-burst/redeem-codes' },
+        ],
       },
     ],
   },

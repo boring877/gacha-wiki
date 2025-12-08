@@ -1,0 +1,206 @@
+/**
+ * Busty Burst Fantasy - Raid Drops Page Styles
+ */
+
+/* === PAGE CONTAINER === */
+.bb-raid-drops-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* === SECTION === */
+.bb-raid-section {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-raid-section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+/* === DROP TABLE === */
+.bb-drop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bb-drop-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 8px;
+}
+
+/* === SLOT COLUMN === */
+.bb-drop-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.bb-slot-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: center;
+  max-width: 140px;
+}
+
+.bb-drop-slot-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  text-align: center;
+}
+
+/* === ARROW === */
+.bb-drop-arrow {
+  color: var(--bb-text-secondary);
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+}
+
+/* === BOSSES COLUMN === */
+.bb-drop-bosses {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.bb-boss-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(46, 82, 102, 0.2);
+  border-radius: 6px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.bb-boss-image {
+  flex-shrink: 0;
+}
+
+.bb-boss-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bb-boss-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+}
+
+.bb-boss-element {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.bb-element-name {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .bb-raid-drops-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .bb-drop-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .bb-drop-slot {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .bb-slot-images {
+    max-width: 180px;
+  }
+
+  .bb-drop-arrow {
+    display: none;
+  }
+
+  .bb-drop-bosses {
+    width: 100%;
+  }
+
+  .bb-boss-card {
+    min-width: calc(50% - 0.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-raid-section {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .bb-drop-row {
+    padding: 0.5rem;
+  }
+
+  .bb-drop-slot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .bb-slot-images {
+    max-width: 100%;
+    gap: 0.2rem;
+  }
+
+  .bb-slot-images img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .bb-drop-slot-name {
+    font-size: var(--text-xs);
+  }
+
+  .bb-drop-bosses {
+    gap: 0.5rem;
+  }
+
+  .bb-boss-card {
+    min-width: 100%;
+    padding: 0.4rem 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .bb-boss-name {
+    font-size: var(--text-xs);
+  }
+
+  .bb-element-name {
+    font-size: 0.6rem;
+  }
+}

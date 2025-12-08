@@ -1,0 +1,57 @@
+---
+import RaidDropsLayout from '../../../layouts/busty-burst/RaidDropsLayout.astro';
+import AccessoryImage from '../../../components/busty-burst/AccessoryImage.astro';
+import RaidImage from '../../../components/busty-burst/RaidImage.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import { raidDrops } from '../../../data/busty-burst/raid-drops.js';
+
+const title = 'Raid Drops - Busty Burst Fantasy | GachaWiki';
+const description =
+  'Accessory raid drops guide for Busty Burst Fantasy. Learn which raid bosses drop each accessory piece.';
+const gameTitle = 'Raid Drops';
+---
+
+<RaidDropsLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-raid-drops-container">
+    <section class="bb-raid-section">
+      <h2 class="bb-raid-section-title">Accessory Drops by Slot</h2>
+      <div class="bb-drop-list">
+        {
+          raidDrops.map(drop => (
+            <div class="bb-drop-row">
+              <div class="bb-drop-slot">
+                <div class="bb-slot-images">
+                  {drop.slotImages.map(img => (
+                    <AccessoryImage fileName={img} alt={drop.slot} width={32} height={32} />
+                  ))}
+                </div>
+                <span class="bb-drop-slot-name">{drop.slot}</span>
+              </div>
+              <span class="bb-drop-arrow">←</span>
+              <div class="bb-drop-bosses">
+                {drop.bosses.map(boss => (
+                  <div class="bb-boss-card">
+                    <RaidImage
+                      fileName={boss.image}
+                      alt={boss.name}
+                      width={50}
+                      height={50}
+                      class="bb-boss-image"
+                    />
+                    <div class="bb-boss-info">
+                      <span class="bb-boss-name">{boss.name}</span>
+                      <div class="bb-boss-element">
+                        <ElementImage element={boss.element} width={16} height={16} />
+                        <span class="bb-element-name">{boss.element}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</RaidDropsLayout>

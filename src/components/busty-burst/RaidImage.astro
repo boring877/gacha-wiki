@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all raid boss images
+import Boar_Beast from '../../assets/images/games/Busty_Burst/RaidImg/Boar_Beast.png';
+import Canine_Beast from '../../assets/images/games/Busty_Burst/RaidImg/Canine_Beast.png';
+import Avian_Beast from '../../assets/images/games/Busty_Burst/RaidImg/Avian_Beast.png';
+import Paladin from '../../assets/images/games/Busty_Burst/RaidImg/Paladin.png';
+import Assassin from '../../assets/images/games/Busty_Burst/RaidImg/Assassin.png';
+import The_Dark_Knight from '../../assets/images/games/Busty_Burst/RaidImg/The_Dark_Knight.png';
+
+const imageMap: Record<string, ImageMetadata> = {
+  'Boar_Beast.png': Boar_Beast,
+  'Canine_Beast.png': Canine_Beast,
+  'Avian_Beast.png': Avian_Beast,
+  'Paladin.png': Paladin,
+  'Assassin.png': Assassin,
+  'The_Dark_Knight.png': The_Dark_Knight,
+};
+
+interface Props {
+  fileName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { fileName, alt, width = 80, height = 80, class: className } = Astro.props;
+const imageSrc = imageMap[fileName];
+---
+
+{imageSrc && <Image src={imageSrc} alt={alt} width={width} height={height} class={className} />}

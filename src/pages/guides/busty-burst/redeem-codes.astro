@@ -1,0 +1,46 @@
+---
+import RedeemCodesLayout from '../../../layouts/busty-burst/RedeemCodesLayout.astro';
+import { redeemCodes } from '../../../data/busty-burst/redeem-codes.js';
+
+const title = 'Redeem Codes - Busty Burst Fantasy | GachaWiki';
+const description =
+  'Active redeem codes for Busty Burst Fantasy. Copy and redeem for free rewards.';
+const gameTitle = 'Redeem Codes';
+---
+
+<RedeemCodesLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-redeem-container">
+    <div class="bb-codes-list">
+      {
+        redeemCodes.map(item => (
+          <div class="bb-code-card">
+            <div class="bb-code-info">
+              <span class="bb-code-text">{item.code}</span>
+              <span class="bb-code-valid">Valid through: {item.validThrough}</span>
+            </div>
+            <button class="bb-copy-btn" data-code={item.code}>
+              Copy
+            </button>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</RedeemCodesLayout>
+
+<script>
+  document.querySelectorAll('.bb-copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const code = btn.getAttribute('data-code');
+      if (code) {
+        await navigator.clipboard.writeText(code);
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      }
+    });
+  });
+</script>

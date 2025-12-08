@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all element images
+import Fire from '../../assets/images/games/Busty_Burst/Elements/Fire.png';
+import Water from '../../assets/images/games/Busty_Burst/Elements/Water.png';
+import Wind from '../../assets/images/games/Busty_Burst/Elements/Wind.png';
+import Light from '../../assets/images/games/Busty_Burst/Elements/Light.png';
+import Dark from '../../assets/images/games/Busty_Burst/Elements/Dark.png';
+import Mind from '../../assets/images/games/Busty_Burst/Elements/Mind.png';
+
+const imageMap: Record<string, ImageMetadata> = {
+  Fire: Fire,
+  Water: Water,
+  Wind: Wind,
+  Light: Light,
+  Dark: Dark,
+  Mind: Mind,
+};
+
+interface Props {
+  element: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { element, width = 24, height = 24, class: className } = Astro.props;
+const imageSrc = imageMap[element];
+---
+
+{imageSrc && <Image src={imageSrc} alt={element} width={width} height={height} class={className} />}
