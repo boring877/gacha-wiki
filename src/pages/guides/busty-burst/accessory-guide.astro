@@ -1,0 +1,128 @@
+---
+import AccessoryGuideLayout from '../../../layouts/busty-burst/AccessoryGuideLayout.astro';
+import AccessoryImage from '../../../components/busty-burst/AccessoryImage.astro';
+import {
+  mainStats,
+  subStats,
+  subStatTips,
+  setRatings,
+  recommendedBuilds,
+  quickTips,
+} from '../../../data/busty-burst/accessory-guide.js';
+
+const title = 'Accessory Guide - Busty Burst Fantasy | GachaWiki';
+const description =
+  'Complete accessory guide for Busty Burst Fantasy. Learn about main stats, sub stats, set ratings, and recommended builds for all roles.';
+const gameTitle = 'Accessory Guide';
+---
+
+<AccessoryGuideLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-accessory-guide-container">
+    <!-- Quick Tips -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Quick Tips</h2>
+      <ul class="bb-tips-list">
+        {quickTips.map(tip => <li>{tip}</li>)}
+      </ul>
+    </section>
+
+    <!-- Recommended Builds -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Recommended Builds</h2>
+      <div class="bb-builds-grid">
+        {
+          recommendedBuilds.map(build => (
+            <div class="bb-build-item">
+              <div class="bb-build-role">{build.role}</div>
+              <div class="bb-build-sets">
+                {build.sets.map((set, index) => (
+                  <>
+                    {index > 0 && <span class="bb-build-plus">+</span>}
+                    <div class="bb-build-set">
+                      <AccessoryImage
+                        fileName={set.imageFile}
+                        alt={set.name}
+                        width={32}
+                        height={32}
+                      />
+                      <span class="bb-build-set-pieces">{set.pieces}</span>
+                    </div>
+                  </>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Set Ratings -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Set Ratings</h2>
+      <div class="bb-ratings-list">
+        {
+          setRatings.map(tier => (
+            <div class="bb-rating-tier">
+              <div class={`bb-tier-label ${tier.tier.toLowerCase()}`}>{tier.tier}</div>
+              <div class="bb-tier-sets">
+                {tier.sets.map(set => (
+                  <div class="bb-tier-set">
+                    <AccessoryImage
+                      fileName={set.imageFile}
+                      alt={set.name}
+                      width={36}
+                      height={36}
+                    />
+                    <div class="bb-tier-set-info">
+                      <span class="bb-tier-set-name">{set.name}</span>
+                      <span class="bb-tier-set-note">{set.note}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Stats Guide</h2>
+
+      <!-- Main Stats -->
+      <h3 class="bb-guide-subtitle">Best Main Stats by Slot</h3>
+      <div class="bb-main-stats-row">
+        {
+          mainStats.map(item => (
+            <div class="bb-main-stat-item">
+              <AccessoryImage fileName={item.imageFile} alt={item.slot} width={40} height={40} />
+              <span class="bb-slot-name">{item.slot}</span>
+              <span class="bb-slot-best">{item.best}</span>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Substats -->
+      <h3 class="bb-guide-subtitle">Substat Priority</h3>
+      <div class="bb-substats-row">
+        <div class="bb-substat-group">
+          <span class="bb-substat-label aim">Priority:</span>
+          <div class="bb-substat-values">
+            {subStats.priority.map(stat => <span class="bb-substat-value">{stat}</span>)}
+          </div>
+        </div>
+        <div class="bb-substat-group">
+          <span class="bb-substat-label secondary">Secondary:</span>
+          <div class="bb-substat-values">
+            {subStats.secondary.map(stat => <span class="bb-substat-value">{stat}</span>)}
+          </div>
+        </div>
+      </div>
+      <ul class="bb-tips-list">
+        {subStatTips.map(tip => <li>{tip}</li>)}
+      </ul>
+    </section>
+  </div>
+</AccessoryGuideLayout>

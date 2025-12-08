@@ -1,12 +1,62 @@
 ---
 import { Image } from 'astro:assets';
 
-// Import accessory images
+// Import all accessory images
+// Emerald
 import EmeraldRingImg from '../../assets/images/games/Busty_Burst/Accessory/Emerald_Ring.png';
 import EmeraldBraceletImg from '../../assets/images/games/Busty_Burst/Accessory/Emerald_Bracelet.png';
 import EmeraldNecklaceImg from '../../assets/images/games/Busty_Burst/Accessory/Emerald_Necklace.png';
 import EmeraldEarringsImg from '../../assets/images/games/Busty_Burst/Accessory/Emerald_Earrings.png';
 import EmeraldTiaraImg from '../../assets/images/games/Busty_Burst/Accessory/Emerald_Tiara.png';
+
+// Diamond
+import DiamondRingImg from '../../assets/images/games/Busty_Burst/Accessory/Diamond_Ring.png';
+import DiamondBraceletImg from '../../assets/images/games/Busty_Burst/Accessory/Diamond_Bracelet.png';
+import DiamondNecklaceImg from '../../assets/images/games/Busty_Burst/Accessory/Diamond_Necklace.png';
+import DiamondEarringsImg from '../../assets/images/games/Busty_Burst/Accessory/Diamond_Earrings.png';
+import DiamondTiaraImg from '../../assets/images/games/Busty_Burst/Accessory/Diamond_Tiara.png';
+
+// Amethyst
+import AmethystRingImg from '../../assets/images/games/Busty_Burst/Accessory/Amethyst_Ring.png';
+import AmethystBraceletImg from '../../assets/images/games/Busty_Burst/Accessory/Amethyst_Bracelet.png';
+import AmethystNecklaceImg from '../../assets/images/games/Busty_Burst/Accessory/Amethyst_Necklace.png';
+import AmethystEarringImg from '../../assets/images/games/Busty_Burst/Accessory/Amethyst_Earring.png';
+import AmethystTiaraImg from '../../assets/images/games/Busty_Burst/Accessory/Amethyst_Tiara.png';
+
+// Gold
+import GoldRingImg from '../../assets/images/games/Busty_Burst/Accessory/Gold_Ring.png';
+import GoldBraceletImg from '../../assets/images/games/Busty_Burst/Accessory/Gold_Bracelet.png';
+import GoldNecklaceImg from '../../assets/images/games/Busty_Burst/Accessory/Gold_Necklace.png';
+import GoldEarringsImg from '../../assets/images/games/Busty_Burst/Accessory/Gold_Earrings.png';
+import GoldTiaraImg from '../../assets/images/games/Busty_Burst/Accessory/Gold_Tiara.png';
+
+// Pearl
+import PearlRingImg from '../../assets/images/games/Busty_Burst/Accessory/Pearl_Ring.png';
+import PearlBraceletImg from '../../assets/images/games/Busty_Burst/Accessory/Pearl_Bracelet.png';
+import PearlNecklaceImg from '../../assets/images/games/Busty_Burst/Accessory/Pearl_Necklace.png';
+import PearlEarringsImg from '../../assets/images/games/Busty_Burst/Accessory/Pearl_Earrings.png';
+import PearlTiaraImg from '../../assets/images/games/Busty_Burst/Accessory/Pearl_Tiara.png';
+
+// Ruby
+import RubyRingImg from '../../assets/images/games/Busty_Burst/Accessory/Ruby_Ring.png';
+import RubyBraceletImg from '../../assets/images/games/Busty_Burst/Accessory/Ruby_Bracelet.png';
+import RubyNecklaceImg from '../../assets/images/games/Busty_Burst/Accessory/Ruby_Necklace.png';
+import RubyEarringImg from '../../assets/images/games/Busty_Burst/Accessory/Ruby_Earring.png';
+import RubyTiaraImg from '../../assets/images/games/Busty_Burst/Accessory/Ruby_Tiara.png';
+
+// Sapphire
+import SapphireRingImg from '../../assets/images/games/Busty_Burst/Accessory/Sapphire_Ring.png';
+import SapphireBraceletImg from '../../assets/images/games/Busty_Burst/Accessory/Sapphire_Bracelet.png';
+import SapphireNecklaceImg from '../../assets/images/games/Busty_Burst/Accessory/Sapphire_Necklace.png';
+import SapphireEarringImg from '../../assets/images/games/Busty_Burst/Accessory/Sapphire_Earring.png';
+import SapphireTiaraImg from '../../assets/images/games/Busty_Burst/Accessory/Sapphire_Tiara.png';
+
+// Amber
+import AmberRingImg from '../../assets/images/games/Busty_Burst/Accessory/Amber_Ring.png';
+import AmberBraceletImg from '../../assets/images/games/Busty_Burst/Accessory/Amber_Bracelet.png';
+import AmberNecklaceImg from '../../assets/images/games/Busty_Burst/Accessory/Amber_Necklace.png';
+import AmberEarringImg from '../../assets/images/games/Busty_Burst/Accessory/Amber_Earring.png';
+import AmberTiaraImg from '../../assets/images/games/Busty_Burst/Accessory/Amber_Tiara.png';
 
 export interface Props {
   fileName: string;
@@ -21,11 +71,54 @@ const { fileName, alt, width = 60, height = 60, class: className, loading = 'laz
 
 // Map file names to imported image modules
 const imageMap: Record<string, ImageMetadata> = {
+  // Emerald
   'Emerald_Ring.png': EmeraldRingImg,
   'Emerald_Bracelet.png': EmeraldBraceletImg,
   'Emerald_Necklace.png': EmeraldNecklaceImg,
   'Emerald_Earrings.png': EmeraldEarringsImg,
   'Emerald_Tiara.png': EmeraldTiaraImg,
+  // Diamond
+  'Diamond_Ring.png': DiamondRingImg,
+  'Diamond_Bracelet.png': DiamondBraceletImg,
+  'Diamond_Necklace.png': DiamondNecklaceImg,
+  'Diamond_Earrings.png': DiamondEarringsImg,
+  'Diamond_Tiara.png': DiamondTiaraImg,
+  // Amethyst
+  'Amethyst_Ring.png': AmethystRingImg,
+  'Amethyst_Bracelet.png': AmethystBraceletImg,
+  'Amethyst_Necklace.png': AmethystNecklaceImg,
+  'Amethyst_Earring.png': AmethystEarringImg,
+  'Amethyst_Tiara.png': AmethystTiaraImg,
+  // Gold
+  'Gold_Ring.png': GoldRingImg,
+  'Gold_Bracelet.png': GoldBraceletImg,
+  'Gold_Necklace.png': GoldNecklaceImg,
+  'Gold_Earrings.png': GoldEarringsImg,
+  'Gold_Tiara.png': GoldTiaraImg,
+  // Pearl
+  'Pearl_Ring.png': PearlRingImg,
+  'Pearl_Bracelet.png': PearlBraceletImg,
+  'Pearl_Necklace.png': PearlNecklaceImg,
+  'Pearl_Earrings.png': PearlEarringsImg,
+  'Pearl_Tiara.png': PearlTiaraImg,
+  // Ruby
+  'Ruby_Ring.png': RubyRingImg,
+  'Ruby_Bracelet.png': RubyBraceletImg,
+  'Ruby_Necklace.png': RubyNecklaceImg,
+  'Ruby_Earring.png': RubyEarringImg,
+  'Ruby_Tiara.png': RubyTiaraImg,
+  // Sapphire
+  'Sapphire_Ring.png': SapphireRingImg,
+  'Sapphire_Bracelet.png': SapphireBraceletImg,
+  'Sapphire_Necklace.png': SapphireNecklaceImg,
+  'Sapphire_Earring.png': SapphireEarringImg,
+  'Sapphire_Tiara.png': SapphireTiaraImg,
+  // Amber
+  'Amber_Ring.png': AmberRingImg,
+  'Amber_Bracelet.png': AmberBraceletImg,
+  'Amber_Necklace.png': AmberNecklaceImg,
+  'Amber_Earring.png': AmberEarringImg,
+  'Amber_Tiara.png': AmberTiaraImg,
 };
 
 // Get the image module based on the fileName

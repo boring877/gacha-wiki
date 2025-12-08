@@ -1,0 +1,372 @@
+/**
+ * Busty Burst Fantasy - Accessory Guide Page Styles
+ */
+
+/* === PAGE CONTAINER === */
+.bb-accessory-guide-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* === SECTION === */
+.bb-guide-section {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-guide-section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-guide-subtitle {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  margin: 1.5rem 0 1rem 0;
+}
+
+.bb-guide-subtitle:first-of-type {
+  margin-top: 0;
+}
+
+.bb-guide-tip {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 4px;
+}
+
+/* === QUICK TIPS === */
+.bb-tips-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bb-tips-list li {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.bb-tips-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--bb-primary-light);
+}
+
+/* === BUILDS GRID === */
+.bb-builds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.bb-build-item {
+  padding: 0.75rem;
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 6px;
+}
+
+.bb-build-role {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.bb-build-sets {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.bb-build-set {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.bb-build-set-pieces {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+}
+
+.bb-build-plus {
+  color: var(--bb-text-secondary);
+  font-size: var(--text-xs);
+}
+
+/* === SET RATINGS === */
+.bb-ratings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bb-rating-tier {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  background: rgba(46, 82, 102, 0.1);
+  border-radius: 6px;
+}
+
+.bb-tier-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  min-width: 80px;
+  text-align: center;
+}
+
+.bb-tier-label.best {
+  background: rgba(105, 219, 124, 0.2);
+  color: #69db7c;
+  border: 1px solid rgba(105, 219, 124, 0.4);
+}
+
+.bb-tier-label.good {
+  background: rgba(77, 171, 247, 0.2);
+  color: #4dabf7;
+  border: 1px solid rgba(77, 171, 247, 0.4);
+}
+
+.bb-tier-label.situational {
+  background: rgba(255, 212, 59, 0.2);
+  color: #ffd43b;
+  border: 1px solid rgba(255, 212, 59, 0.4);
+}
+
+.bb-tier-label.skip {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+}
+
+.bb-tier-sets {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bb-tier-set {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-tier-set-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.bb-tier-set-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+}
+
+.bb-tier-set-note {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+}
+
+/* === MAIN STATS ROW === */
+.bb-main-stats-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.bb-main-stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 6px;
+  gap: 0.35rem;
+}
+
+.bb-slot-name {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+}
+
+.bb-slot-best {
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+}
+
+/* === SUBSTATS === */
+.bb-substats-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.bb-substat-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 6px;
+  flex: 1;
+  min-width: 220px;
+}
+
+.bb-substat-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.bb-substat-label.aim {
+  background: rgba(105, 219, 124, 0.2);
+  color: #69db7c;
+  border: 1px solid rgba(105, 219, 124, 0.4);
+}
+
+.bb-substat-label.secondary {
+  background: rgba(77, 171, 247, 0.2);
+  color: #4dabf7;
+  border: 1px solid rgba(77, 171, 247, 0.4);
+}
+
+.bb-substat-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bb-substat-value {
+  font-size: var(--text-sm);
+  color: var(--bb-text-primary);
+  background: rgba(46, 82, 102, 0.3);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .bb-accessory-guide-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .bb-builds-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bb-rating-tier {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .bb-main-stats-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .bb-main-stat-item {
+    flex: 0 0 calc(33.33% - 0.35rem);
+    padding: 0.5rem 0.35rem;
+  }
+
+  .bb-slot-best {
+    font-size: 0.65rem;
+  }
+
+  .bb-substats-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .bb-substat-group {
+    min-width: unset;
+    padding: 0.6rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-guide-section {
+    padding: 1rem 0.75rem;
+  }
+
+  .bb-builds-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bb-main-stats-row {
+    gap: 0.35rem;
+  }
+
+  .bb-main-stat-item {
+    flex: 0 0 calc(50% - 0.2rem);
+    padding: 0.4rem 0.25rem;
+  }
+
+  .bb-slot-name {
+    font-size: 0.6rem;
+  }
+
+  .bb-slot-best {
+    font-size: 0.6rem;
+  }
+
+  .bb-tier-sets {
+    gap: 0.5rem;
+  }
+
+  .bb-tier-label {
+    min-width: 70px;
+    font-size: var(--text-xs);
+  }
+
+  .bb-substat-group {
+    gap: 0.5rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .bb-substat-label {
+    font-size: var(--text-xs);
+    padding: 0.15rem 0.4rem;
+  }
+
+  .bb-substat-value {
+    font-size: var(--text-xs);
+    padding: 0.2rem 0.4rem;
+  }
+
+  .bb-tips-list li {
+    font-size: var(--text-xs);
+  }
+}

@@ -1,0 +1,124 @@
+---
+import AccessoryItemsLayout from '../../../layouts/busty-burst/AccessoryItemsLayout.astro';
+import AccessoryImage from '../../../components/busty-burst/AccessoryImage.astro';
+import { accessoryItems } from '../../../data/busty-burst/accessory-items.js';
+
+const title = 'Accessory Items - Busty Burst Fantasy | GachaWiki';
+const description =
+  'Complete accessory items guide for Busty Burst Fantasy. View all SSR and SR accessory sets with their effects including Diamond, Amethyst, Gold, Pearl, Ruby, Sapphire, Amber, and Emerald.';
+const gameTitle = 'Accessory Items';
+---
+
+<AccessoryItemsLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-accessory-items-container">
+    <!-- Rarity Tabs -->
+    <div class="bb-items-tabs">
+      <button class="bb-items-tab bb-badge active" data-rarity="SSR" data-target="ssr-content"
+        >SSR</button
+      >
+      <button class="bb-items-tab bb-badge" data-rarity="SR" data-target="sr-content">SR</button>
+    </div>
+
+    <!-- SSR Content -->
+    <div id="ssr-content" class="bb-items-content active">
+      <h2 class="bb-items-section-title">SSR Accessories</h2>
+      {
+        accessoryItems.SSR.map(set => (
+          <div class="bb-accessory-set">
+            <div class="bb-set-header">
+              <span class="bb-badge" data-rarity={set.rarity}>
+                {set.rarity}
+              </span>
+              <span class="bb-set-name">{set.name}</span>
+            </div>
+            <div class="bb-pieces-row">
+              {set.pieces.map(piece => (
+                <div class="bb-piece-item">
+                  <AccessoryImage
+                    fileName={piece.imageFile}
+                    alt={`${set.name} ${piece.type}`}
+                    width={60}
+                    height={60}
+                  />
+                </div>
+              ))}
+            </div>
+            <div class="bb-set-effects">
+              {set.setEffects.map(effect => (
+                <div class="bb-set-effect">
+                  <span class="bb-effect-pieces">{effect.pieces}</span>
+                  <span class="bb-effect-stat">{effect.stat}</span>
+                  <span class="bb-effect-value">{effect.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- SR Content -->
+    <div id="sr-content" class="bb-items-content">
+      <h2 class="bb-items-section-title">SR Accessories</h2>
+      {
+        accessoryItems.SR.map(set => (
+          <div class="bb-accessory-set">
+            <div class="bb-set-header">
+              <span class="bb-badge" data-rarity={set.rarity}>
+                {set.rarity}
+              </span>
+              <span class="bb-set-name">{set.name}</span>
+            </div>
+            <div class="bb-pieces-row">
+              {set.pieces.map(piece => (
+                <div class="bb-piece-item">
+                  <AccessoryImage
+                    fileName={piece.imageFile}
+                    alt={`${set.name} ${piece.type}`}
+                    width={60}
+                    height={60}
+                  />
+                </div>
+              ))}
+            </div>
+            <div class="bb-set-effects">
+              {set.setEffects.map(effect => (
+                <div class="bb-set-effect">
+                  <span class="bb-effect-pieces">{effect.pieces}</span>
+                  <span class="bb-effect-stat">{effect.stat}</span>
+                  <span class="bb-effect-value">{effect.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</AccessoryItemsLayout>
+
+<script>
+  // Tab switching functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.bb-items-tab');
+    const contents = document.querySelectorAll('.bb-items-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Add active to clicked tab and target content
+        tab.classList.add('active');
+        const targetId = tab.getAttribute('data-target');
+        if (targetId) {
+          const targetContent = document.getElementById(targetId);
+          if (targetContent) {
+            targetContent.classList.add('active');
+          }
+        }
+      });
+    });
+  });
+</script>

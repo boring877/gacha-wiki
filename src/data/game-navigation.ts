@@ -236,7 +236,11 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       },
       {
         title: 'Equipment',
-        links: [{ name: 'Accessory Stats', href: '/guides/busty-burst/accessory-stats' }],
+        links: [
+          { name: 'Accessory Stats', href: '/guides/busty-burst/accessory-stats' },
+          { name: 'Accessory Items', href: '/guides/busty-burst/accessory-items' },
+          { name: 'Accessory Guide', href: '/guides/busty-burst/accessory-guide' },
+        ],
       },
       {
         title: 'Resources',
