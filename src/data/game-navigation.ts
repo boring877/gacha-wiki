@@ -234,6 +234,10 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Build', href: '/guides/busty-burst/build' },
         ],
       },
+      {
+        title: 'Resources',
+        links: [{ name: 'Clock', href: '/clock/busty-burst/' }],
+      },
     ],
   },
 };

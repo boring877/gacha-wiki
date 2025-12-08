@@ -5,6 +5,7 @@ import { getActiveLandingGames } from '../../data/clock/landing.js';
 import { Image } from 'astro:assets';
 import gameIcon from '../../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 import stellaSoraIcon from '../../assets/images/games/stella-sora/gameimg/Icon.jpg';
+import bustyBurstIcon from '../../assets/images/games/Busty_Burst/BG/Icon.png';
 
 // Get all active games for the landing page
 let games = getActiveLandingGames();
@@ -21,6 +22,12 @@ games = games.map(game => {
     return {
       ...game,
       image: stellaSoraIcon,
+    };
+  }
+  if (game.id === 'busty-burst') {
+    return {
+      ...game,
+      image: bustyBurstIcon,
     };
   }
   return game;

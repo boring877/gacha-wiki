@@ -1,0 +1,281 @@
+---
+import BustyBurstClockLayout from '../../layouts/clock/BustyBurst.astro';
+import { bustyBurstConfig } from '../../data/clock/busty-burst.js';
+import GameIcon from '../../assets/images/games/Busty_Burst/BG/Icon.png';
+
+// Page metadata
+const title = 'Busty Burst Clock - Server Reset Timer & Launch Countdown | GachaWiki';
+const description =
+  'Busty Burst Fantasy server reset timer and launch countdown - Track Busty Burst server resets and launch with real-time countdown timers. Never miss daily resets, weekly events with our precise UTC server time clock. Server resets at 03:00 UTC daily.';
+
+// Create a new config object with the imported image
+const games = [
+  {
+    ...bustyBurstConfig,
+    image: GameIcon,
+  },
+];
+---
+
+<BustyBurstClockLayout title={title} description={description} games={games}>
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Busty Burst Fantasy Server Reset Clock",
+      "description": "Real-time server reset timer for Busty Burst Fantasy gacha game. Daily reset at 03:00 UTC. Track Busty Burst dailies and events.",
+      "url": "https://gachawiki.info/clock/busty-burst",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "Busty Burst Reset Clock & Timer",
+        "description": "Track Busty Burst Fantasy server reset times. Daily server reset at 03:00 UTC. Never miss Busty Burst daily quests, energy refills, and farming cycles.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+</BustyBurstClockLayout>
+
+<!-- Simple inline clock script -->
+<script define:vars={{ config: bustyBurstConfig }}>
+  // Simple clock implementation
+  let clockInterval;
+
+  // Initialize clock when page loads
+  function initClock() {
+    updateClock();
+    updateCurrentTime();
+    updateWeeklyReset();
+    updateMonthlyReset();
+    updateLaunchInfo();
+    updateHolidays();
+    updateMaintenance();
+
+    // Update every second
+    clockInterval = setInterval(() => {
+      updateClock();
+      updateCurrentTime();
+      updateWeeklyReset();
+      updateMonthlyReset();
+      updateLaunchInfo();
+      updateHolidays();
+      updateMaintenance();
+    }, 1000);
+  }
+
+  // Update main clock (daily reset countdown)
+  function updateClock() {
+    const now = new Date();
+
+    // Calculate time until next daily reset (03:00 UTC)
+    const resetTime = new Date();
+    resetTime.setUTCHours(3, 0, 0, 0);
+
+    // If reset time has passed today, set for tomorrow
+    if (resetTime <= now) {
+      resetTime.setUTCDate(resetTime.getUTCDate() + 1);
+    }
+
+    const timeDiff = resetTime.getTime() - now.getTime();
+
+    if (timeDiff > 0) {
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      // Update main clock display
+      const hoursEl = document.getElementById('clockHours');
+      const minutesEl = document.getElementById('clockMinutes');
+      const secondsEl = document.getElementById('clockSeconds');
+
+      if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+      if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+      if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+    }
+  }
+
+  // Update current time display
+  function updateCurrentTime() {
+    const now = new Date();
+
+    // Update current date (UTC)
+    const currentDateEl = document.getElementById('currentDate');
+    if (currentDateEl) {
+      const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+      currentDateEl.textContent = now.toLocaleDateString('en-US', {
+        ...dateOptions,
+        timeZone: 'UTC',
+      });
+    }
+
+    // Update current UTC time
+    const currentUTCEl = document.getElementById('currentUTC');
+    if (currentUTCEl) {
+      const utcTime = now.toLocaleTimeString('en-US', {
+        hour12: false,
+        timeZone: 'UTC',
+      });
+      currentUTCEl.textContent = `UTC ${utcTime}`;
+    }
+  }
+
+  // Update weekly reset timer (Mondays at 03:00 UTC)
+  function updateWeeklyReset() {
+    const weeklyEl = document.getElementById('weeklyTime');
+    if (!weeklyEl) return;
+
+    const now = new Date();
+    const resetTime = new Date();
+
+    // Set to next Monday at 03:00 UTC
+    resetTime.setUTCHours(3, 0, 0, 0);
+    const daysUntilMonday = (1 + 7 - now.getUTCDay()) % 7 || 7; // Monday = 1
+    resetTime.setUTCDate(now.getUTCDate() + daysUntilMonday);
+
+    const timeDiff = resetTime.getTime() - now.getTime();
+    if (timeDiff > 0) {
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      let timeString = '';
+      if (days > 0) timeString += `${days}d `;
+      timeString += `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      weeklyEl.textContent = timeString;
+    } else {
+      weeklyEl.textContent = '00:00:00';
+    }
+  }
+
+  // Update monthly reset timer (1st of each month at 03:00 UTC)
+  function updateMonthlyReset() {
+    const monthlyEl = document.getElementById('monthlyTime');
+    if (!monthlyEl) return;
+
+    const now = new Date();
+    const resetTime = new Date();
+
+    // Set to 1st of next month at 03:00 UTC
+    resetTime.setUTCHours(3, 0, 0, 0);
+    resetTime.setUTCDate(1);
+    resetTime.setUTCMonth(now.getUTCMonth() + 1);
+
+    const timeDiff = resetTime.getTime() - now.getTime();
+    if (timeDiff > 0) {
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      let timeString = '';
+      if (days > 0) timeString += `${days}d `;
+      timeString += `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      monthlyEl.textContent = timeString;
+    } else {
+      monthlyEl.textContent = '00:00:00';
+    }
+  }
+
+  // Update launch information (days since launch)
+  function updateLaunchInfo() {
+    const launchDate = new Date('2025-12-04T00:00:00Z'); // Dec 4, 2025 00:00 UTC
+    const now = new Date();
+
+    // Show days since launch
+    const daysSinceLaunch = Math.floor(
+      (now.getTime() - launchDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
+
+    const launchDaysSinceEl = document.getElementById('launchDaysSince');
+    if (launchDaysSinceEl) {
+      if (daysSinceLaunch >= 0) {
+        launchDaysSinceEl.textContent = daysSinceLaunch.toString();
+      } else {
+        // If before launch, show countdown
+        const daysUntilLaunch = Math.abs(daysSinceLaunch);
+        launchDaysSinceEl.textContent = `-${daysUntilLaunch}`;
+      }
+    }
+
+    // Update launch status
+    const launchStatusDot = document.getElementById('launchStatusDot');
+    const launchStatusText = document.getElementById('launchStatusText');
+
+    if (launchStatusDot && launchStatusText) {
+      if (daysSinceLaunch >= 0) {
+        launchStatusDot.className = 'status-dot status-active';
+        launchStatusText.textContent = 'Launched';
+      } else {
+        launchStatusDot.className = 'status-dot status-coming-soon';
+        launchStatusText.textContent = 'Coming Soon';
+      }
+    }
+  }
+
+  // Update holiday timers (Halloween and New Year)
+  function updateHolidays() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+
+    // Halloween timer (October 31st)
+    const halloweenEl = document.getElementById('halloweenTime');
+    if (halloweenEl) {
+      const halloween = new Date(`${currentYear}-10-31T23:59:59Z`);
+      if (halloween < now) {
+        halloween.setFullYear(currentYear + 1);
+      }
+
+      const timeDiff = halloween.getTime() - now.getTime();
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      halloweenEl.textContent = `${days} days`;
+    }
+
+    // New Year timer (January 1st)
+    const newyearEl = document.getElementById('newyearTime');
+    if (newyearEl) {
+      const newYear = new Date(`${currentYear + 1}-01-01T00:00:00Z`);
+
+      const timeDiff = newYear.getTime() - now.getTime();
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      newyearEl.textContent = `${days} days`;
+    }
+  }
+
+  // Update maintenance timer
+  function updateMaintenance() {
+    const serverStatusDot = document.getElementById('serverStatusDot');
+    const serverStatusText = document.getElementById('serverStatusText');
+
+    if (!serverStatusDot || !serverStatusText) return;
+
+    // Currently no scheduled maintenance
+    serverStatusDot.className = 'status-dot status-online';
+    serverStatusText.textContent = 'Online';
+  }
+
+  // Start clock when page is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initClock);
+  } else {
+    initClock();
+  }
+
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    if (clockInterval) {
+      clearInterval(clockInterval);
+    }
+  });
+</script>

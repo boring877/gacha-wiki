@@ -68,6 +68,22 @@ export const clockLandingGames = [
       icon: '',
     },
   },
+  {
+    id: 'busty-burst',
+    name: 'Busty Burst Fantasy',
+    description: 'Adult fantasy RPG',
+    image: '', // Image will be imported directly in the Astro page
+    url: '/clock/busty-burst',
+    themeColor: 'var(--bb-primary)',
+    active: true,
+    primaryTimer: {
+      name: 'Daily Reset',
+      type: 'daily',
+      resetHour: 3, // UTC (03:00 UTC)
+      resetMinute: 0,
+      icon: '',
+    },
+  },
 ];
 
 /**

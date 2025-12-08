@@ -1,0 +1,385 @@
+/**
+ * ==========================================
+ * BUSTY BURST CLOCK THEME - GAME SPECIFIC STYLES
+ * ==========================================
+ *
+ * Busty Burst specific colors, themes, and styling overrides for the clock.
+ * This file extends the shared clock layout with Busty Burst's dark teal theme.
+ *
+ * Inherits: All layout and structure from clock/layout.css
+ * Provides: Busty Burst colors, accent elements, and theme-specific styling
+ */
+
+/* === BUSTY BURST GAME IMAGE STYLING === */
+.game-image-container {
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(46, 82, 102, 0.1);
+  padding: 4px;
+}
+
+.game-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* === BUSTY BURST THEME COLORS === */
+.bb-game-name,
+.bb-timer-main-label,
+.server-reset-card .bb-timer-main-label {
+  color: var(--bb-primary-light);
+}
+
+.bb-timer-main-label {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  margin-bottom: 0.5rem;
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-normal);
+}
+
+.server-reset-card .bb-timer-main-label {
+  font-size: var(--text-4xl);
+  margin-bottom: 1rem;
+}
+
+/* === BUSTY BURST TIMER CARD COLORS === */
+/* Main clock card styling */
+.master-clock {
+  border: 1px solid var(--bb-border);
+  background: var(--bb-bg-card);
+  backdrop-filter: blur(10px);
+}
+
+/* === BUSTY BURST TIMER DISPLAY === */
+.clock-display {
+  text-align: center;
+}
+
+.time-unit-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.time-value {
+  font-family: var(--font-mono);
+  font-size: 3.5rem;
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  line-height: 1;
+  display: block;
+}
+
+.time-label {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-top: 0.5rem;
+}
+
+.time-separator {
+  font-size: 3rem;
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  margin: 0 0.5rem;
+}
+
+/* === BUSTY BURST SECONDARY TIMERS === */
+.secondary-timers-container {
+  margin-top: 2rem;
+}
+
+.game-timers-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.timer-subtitle {
+  font-size: var(--text-base);
+  color: var(--bb-text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* === BUSTY BURST IMPROVED GRID ORGANIZATION === */
+.timers-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timer-section-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Priority timers - Launch countdown takes 1 column, Weekly/Monthly takes full width */
+.primary-timers .timers-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Weekly card takes full width on mobile */
+@media (max-width: 768px) {
+  .primary-timers .timers-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Secondary timers - 3 columns */
+.secondary-timers .timers-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* For small screens, keep single column */
+@media (max-width: 768px) {
+  .secondary-timers .timers-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* === BUSTY BURST TIMER CARDS === */
+.timer-card {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.timer-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.bb-timer-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+}
+
+.timer-card-subtitle {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* === BUSTY BURST SERVER STATUS === */
+.server-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-online,
+.status-active {
+  background-color: var(--bb-success);
+}
+
+.status-maintenance {
+  background-color: var(--bb-warning);
+}
+
+.status-coming-soon {
+  background-color: var(--bb-info);
+}
+
+.status-text {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+}
+
+/* === BUSTY BURST LAUNCH CARD (Days Since) === */
+.launch-card {
+  border-color: var(--bb-primary);
+  background: linear-gradient(135deg, var(--bb-bg-card), rgba(46, 82, 102, 0.05));
+}
+
+.launch-card-content {
+  text-align: center;
+}
+
+.launch-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.launch-days {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.launch-date {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+}
+
+/* === BUSTY BURST RESET TIMERS === */
+.weekly-card {
+  border-color: var(--bb-accent);
+}
+
+.reset-item {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.reset-item:last-child {
+  margin-bottom: 0;
+}
+
+.reset-name {
+  font-weight: var(--font-semibold);
+  color: var(--bb-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.reset-subtitle {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.reset-time {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--bb-accent-light);
+  text-align: right;
+}
+
+/* === BUSTY BURST MAINTENANCE TIMER === */
+.maintenance-card {
+  border-color: var(--bb-warning);
+}
+
+.maintenance-item {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.maintenance-item:last-child {
+  margin-bottom: 0;
+}
+
+.maintenance-name {
+  font-weight: var(--font-semibold);
+  color: var(--bb-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.maintenance-time {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--bb-warning);
+  text-align: right;
+}
+
+.no-maintenance {
+  text-align: center;
+  padding: 2rem;
+}
+
+.no-maintenance .maintenance-name {
+  color: var(--bb-text-secondary);
+  font-weight: var(--font-normal);
+}
+
+/* === BUSTY BURST HOLIDAY CARDS === */
+.halloween-card {
+  border-color: var(--bb-primary);
+}
+
+.halloween-card .launch-days {
+  color: var(--bb-primary-light);
+}
+
+.newyear-card {
+  border-color: var(--bb-primary);
+}
+
+.newyear-card .launch-days {
+  color: var(--bb-primary-light);
+}
+
+/* === BUSTY BURST RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .time-unit-group {
+    gap: 0.25rem;
+  }
+
+  .time-unit {
+    min-width: 60px;
+  }
+
+  .time-value {
+    font-size: 2.5rem;
+  }
+
+  .time-separator {
+    font-size: 2rem;
+  }
+
+  .launch-days {
+    font-size: 2.5rem;
+  }
+
+  .timer-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-unit {
+    min-width: 50px;
+  }
+
+  .time-value {
+    font-size: 2rem;
+  }
+
+  .time-separator {
+    font-size: 1.5rem;
+  }
+
+  .launch-days {
+    font-size: 2rem;
+  }
+}

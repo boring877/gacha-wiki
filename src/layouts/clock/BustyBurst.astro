@@ -1,0 +1,321 @@
+---
+// Busty Burst Fantasy Clock Layout - Dedicated layout for Busty Burst clock page
+import BBBaseHead from '../../components/busty-burst/BBBaseHead.astro';
+import Header from '../../components/Header.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import Footer from '../../components/Footer.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GeneralSEO from '../../components/GeneralSEO.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+
+// Import CSS files
+import '../../styles/games/busty-burst/busty-burst-colors.css';
+import '../../styles/games/busty-burst/busty-burst-layout.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/clock/layout.css';
+import '../../styles/clock/busty-burst.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  games: any[];
+}
+
+const { title, description, games } = Astro.props;
+const game = games[0]; // Busty Burst config
+
+// Generate initial date server-side to avoid "Loading..."
+const now = new Date();
+const dateOptions: Intl.DateTimeFormatOptions = {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+};
+const currentDateString = now.toLocaleDateString('en-US', dateOptions);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BBBaseHead title={title} description={description} />
+
+    <GeneralSEO
+      title={title}
+      description={description}
+      keywords={[
+        'Busty Burst Fantasy clock',
+        'Busty Burst timer',
+        'Busty Burst daily reset',
+        'Busty Burst server time',
+        'Busty Burst maintenance',
+        'Busty Burst launch countdown',
+        'kyonyu burst timer',
+      ]}
+      pageType="webapp"
+    />
+  </head>
+
+  <body class="busty-burst-body">
+    <CustomScrollbar />
+
+    <!-- Optimized Background layers for better scroll performance -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+
+    <div class="busty-burst-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="busty-burst" />
+      <MobileMenu />
+
+      <div class="clock-page-container">
+        <main class="modern-clock-page">
+          <div class="clock-container">
+            <!-- Page Title -->
+            <section class="bb-title-only-section">
+              <h1 class="bb-title-only-heading">Busty Burst Clock</h1>
+              <DecorativeLines />
+            </section>
+
+            <!-- Breadcrumb Navigation -->
+            <Breadcrumb
+              items={[
+                { name: 'Home', href: '/' },
+                { name: 'Clocks', href: '/clock/' },
+                { name: 'Busty Burst Clock' },
+              ]}
+              showBackButton={true}
+            />
+
+            <!-- First Hero Card - Server Reset Timer -->
+            <div class="master-clock-container">
+              <div class="master-clock server-reset-card" id="masterClock">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
+
+                <!-- Top Section: UTC Note and Current Time -->
+                <div class="hero-top-section">
+                  <div class="utc-info">
+                    <p class="utc-note" id="utcNote">This is based on UTC</p>
+                  </div>
+                  <div class="current-time-info">
+                    <div class="current-date" id="currentDate">{currentDateString}</div>
+                    <div class="current-utc" id="currentUTC">UTC --:--:--</div>
+                  </div>
+                </div>
+
+                <!-- Main Content Section: Game Info and Timer -->
+                <div class="hero-main-content">
+                  <!-- Left Side: Game Info -->
+                  <div class="game-section">
+                    <div class="game-info-container">
+                      <div class="game-wrapper">
+                        <div class="game-image-container" id="clockGameImageContainer">
+                          <Image
+                            class="game-image"
+                            id="clockGameImage"
+                            src={game.image}
+                            alt={game.name}
+                            loading="eager"
+                            fetchpriority="high"
+                            width={200}
+                            height={200}
+                            format="webp"
+                            quality={90}
+                          />
+                        </div>
+                        <div class="game-info">
+                          <h3 class="bb-game-name" id="clockGameName">{game.name}</h3>
+                          <div class="region-badge">
+                            <span class="region-name">{game.server.name}</span>
+                          </div>
+                          <div class="game-status">{game.server.status}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right Side: Timer Display -->
+                  <div class="timer-section">
+                    <div class="timer-description-section">
+                      <div class="bb-timer-main-label" id="timerDescription">
+                        {game.timerDescription}
+                      </div>
+                    </div>
+
+                    <div class="clock-display">
+                      <div class="time-unit-group">
+                        <div class="time-unit">
+                          <span class="time-value" id="clockHours">--</span>
+                          <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockMinutes">--</span>
+                          <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockSeconds">--</span>
+                          <span class="time-label">Seconds</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Second Hero Card - All Other Timers -->
+            <div class="master-clock-container secondary-timers-container">
+              <div class="master-clock secondary-timers-card" id="secondaryTimers">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
+
+                <!-- Game Timers Header -->
+                <div class="game-timers-header">
+                  <div class="timer-description-section">
+                    <div class="bb-timer-main-label">Busty Burst Timers</div>
+                    <div class="timer-subtitle">
+                      Track all important Busty Burst events and resets
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Timers Grid Container -->
+                <div class="timers-grid-wrapper">
+                  <!-- Primary Timers Row (Most Important) -->
+                  <div class="timer-section-group primary-timers">
+                    <div class="timers-row">
+                      <!-- Days Since Launch Timer Card -->
+                      <div class="timer-card launch-card" id="daysSinceLaunchCard">
+                        <div class="timer-card-header">
+                          <div class="bb-timer-card-title">Days Since Launch</div>
+                          <div class="server-status">
+                            <div class="status-dot status-active" id="launchStatusDot"></div>
+                            <span class="status-text" id="launchStatusText">Launched</span>
+                          </div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="launchDaysSince">---</div>
+                            <div class="launch-date">{game.displayDate}</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Weekly & Monthly Reset Timer Card -->
+                      <div class="timer-card weekly-card priority-card">
+                        <div class="timer-card-header">
+                          <div class="bb-timer-card-title">Weekly & Monthly Reset</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Weekly Reset -->
+                          <div class="reset-item">
+                            <div class="reset-name">Weekly Reset</div>
+                            <div class="reset-subtitle">Every Monday at 03:00 UTC</div>
+                            <div class="reset-time" id="weeklyTime">--:--:--</div>
+                          </div>
+                          <!-- Monthly Reset -->
+                          <div class="reset-item">
+                            <div class="reset-name">Monthly Reset</div>
+                            <div class="reset-subtitle">1st of each month at 03:00 UTC</div>
+                            <div class="reset-time" id="monthlyTime">--:--:--</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Secondary Timers Row -->
+                  <div class="timer-section-group secondary-timers">
+                    <div class="timers-row">
+                      <!-- Maintenance Timer Card -->
+                      <div class="timer-card maintenance-card">
+                        <div class="timer-card-header">
+                          <div class="bb-timer-card-title">Maintenance</div>
+                          <div class="server-status">
+                            <div class="status-dot" id="serverStatusDot"></div>
+                            <span class="status-text" id="serverStatusText">Online</span>
+                          </div>
+                        </div>
+                        <div class="timer-card-subtitle">
+                          {game.maintenance.subtitle || 'No scheduled maintenance'}
+                        </div>
+                        <div class="timer-card-content">
+                          <!-- Maintenance Start Timer -->
+                          <div
+                            class="maintenance-item"
+                            id="maintenanceStartItem"
+                            style="display: none;"
+                          >
+                            <div class="maintenance-name" id="maintenanceStartLabel">
+                              Until Start
+                            </div>
+                            <div class="maintenance-time" id="maintenanceStartTime">--:--:--</div>
+                          </div>
+                          <!-- Maintenance End Timer -->
+                          <div
+                            class="maintenance-item"
+                            id="maintenanceEndItem"
+                            style="display: none;"
+                          >
+                            <div class="maintenance-name" id="maintenanceEndLabel">
+                              Servers Back
+                            </div>
+                            <div class="maintenance-time" id="maintenanceEndTime">--:--:--</div>
+                          </div>
+                          <!-- No Maintenance Message -->
+                          <div class="no-maintenance" id="noMaintenanceMessage">
+                            <div class="maintenance-name">No scheduled maintenance</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Halloween Timer Card -->
+                      <div class="timer-card halloween-card">
+                        <div class="timer-card-header">
+                          <div class="bb-timer-card-title">Halloween - Days Until</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="halloweenTime">---</div>
+                            <div class="launch-date">October 31st</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- New Year Timer Card -->
+                      <div class="timer-card newyear-card">
+                        <div class="timer-card-header">
+                          <div class="bb-timer-card-title">New Year - Days Until</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="newyearTime">---</div>
+                            <div class="launch-date">January 1st</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <Footer />
+
+    <Analytics />
+  </body>
+</html>
