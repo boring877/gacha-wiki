@@ -1,0 +1,222 @@
+---
+import AccessoryStatsLayout from '../../../layouts/busty-burst/AccessoryStatsLayout.astro';
+import {
+  accessoryStats,
+  accessoryTypes,
+  accessoryTypeLabels,
+} from '../../../data/busty-burst/accessory-stats.js';
+
+const title = 'Accessory Stats - Busty Burst Fantasy | GachaWiki';
+const description =
+  'Complete accessory stats guide for Busty Burst Fantasy. View SSR and SR main stats, sub stats, and enhancement info for Tiara, Earrings, Necklace, Bracelet, and Ring.';
+const gameTitle = 'Accessory Stats';
+---
+
+<AccessoryStatsLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-accessory-stats-container">
+    <!-- Rarity Tabs -->
+    <div class="bb-accessory-tabs">
+      <button class="bb-accessory-tab bb-badge active" data-rarity="SSR" data-target="ssr-content"
+        >SSR</button
+      >
+      <button class="bb-accessory-tab bb-badge" data-rarity="SR" data-target="sr-content">SR</button
+      >
+    </div>
+
+    <!-- SSR Content -->
+    <div id="ssr-content" class="bb-accessory-content active">
+      <!-- Main Stats Section -->
+      <section class="bb-accessory-section">
+        <h2 class="bb-accessory-section-title">SSR Main Stats</h2>
+        <div class="bb-accessory-table-wrapper">
+          <table class="bb-accessory-table">
+            <thead>
+              <tr>
+                {accessoryTypes.map(type => <th>{accessoryTypeLabels[type]}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {
+                  accessoryTypes.map(type => (
+                    <td data-label={accessoryTypeLabels[type]}>
+                      {accessoryStats.SSR.mainStats[type].map(stat => (
+                        <div class="bb-stat-item">
+                          <span class="bb-stat-name">{stat.stat}</span>
+                          <div class="bb-stat-values">
+                            <span class="bb-stat-total">{stat.base + stat.max}</span>
+                            <span class="bb-stat-breakdown">
+                              {stat.base} base + {stat.max} at Lv20
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </td>
+                  ))
+                }
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Sub Stats Section -->
+      <section class="bb-accessory-section">
+        <h2 class="bb-accessory-section-title">SSR Sub Stats</h2>
+        <div class="bb-sub-stats-grid">
+          {
+            accessoryStats.SSR.subStats.map(stat => (
+              <div class="bb-sub-stat-item">
+                <span class="bb-sub-stat-name">{stat.stat}</span>
+                <span class="bb-sub-stat-value">+{stat.value}</span>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Enhancement Section -->
+      <section class="bb-accessory-section">
+        <h2 class="bb-accessory-section-title">SSR Enhancement</h2>
+        <div class="bb-enhancement-grid">
+          <div class="bb-enhancement-card">
+            <h3 class="bb-enhancement-title">Sub-Addition</h3>
+            <div class="bb-enhancement-levels">
+              {
+                accessoryStats.SSR.enhancement.subAddition.levels.map(lv => (
+                  <span class="bb-enhancement-level">Lv{lv}</span>
+                ))
+              }
+            </div>
+            <p class="bb-enhancement-desc">
+              {accessoryStats.SSR.enhancement.subAddition.description}
+            </p>
+          </div>
+          <div class="bb-enhancement-card">
+            <h3 class="bb-enhancement-title">Sub-Enhancement</h3>
+            <div class="bb-enhancement-levels">
+              {
+                accessoryStats.SSR.enhancement.subEnhancement.levels.map(lv => (
+                  <span class="bb-enhancement-level">Lv{lv}</span>
+                ))
+              }
+            </div>
+            <p class="bb-enhancement-desc">
+              {accessoryStats.SSR.enhancement.subEnhancement.description}
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SR Content -->
+    <div id="sr-content" class="bb-accessory-content">
+      <!-- Main Stats Section -->
+      <section class="bb-accessory-section">
+        <h2 class="bb-accessory-section-title">SR Main Stats</h2>
+        <div class="bb-accessory-table-wrapper">
+          <table class="bb-accessory-table">
+            <thead>
+              <tr>
+                {accessoryTypes.map(type => <th>{accessoryTypeLabels[type]}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {
+                  accessoryTypes.map(type => (
+                    <td data-label={accessoryTypeLabels[type]}>
+                      {accessoryStats.SR.mainStats[type].map(stat => (
+                        <div class="bb-stat-item">
+                          <span class="bb-stat-name">{stat.stat}</span>
+                          <div class="bb-stat-values">
+                            <span class="bb-stat-total">{stat.base + stat.max}</span>
+                            <span class="bb-stat-breakdown">
+                              {stat.base} base + {stat.max} at Lv20
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </td>
+                  ))
+                }
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Sub Stats Section -->
+      <section class="bb-accessory-section">
+        <h2 class="bb-accessory-section-title">SR Sub Stats</h2>
+        <div class="bb-sub-stats-grid">
+          {
+            accessoryStats.SR.subStats.map(stat => (
+              <div class="bb-sub-stat-item">
+                <span class="bb-sub-stat-name">{stat.stat}</span>
+                <span class="bb-sub-stat-value">+{stat.value}</span>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Enhancement Section -->
+      <section class="bb-accessory-section">
+        <h2 class="bb-accessory-section-title">SR Enhancement</h2>
+        <div class="bb-enhancement-grid">
+          <div class="bb-enhancement-card">
+            <h3 class="bb-enhancement-title">Sub-Addition</h3>
+            <div class="bb-enhancement-levels">
+              {
+                accessoryStats.SR.enhancement.subAddition.levels.map(lv => (
+                  <span class="bb-enhancement-level">Lv{lv}</span>
+                ))
+              }
+            </div>
+            <p class="bb-enhancement-desc">
+              {accessoryStats.SR.enhancement.subAddition.description}
+            </p>
+          </div>
+          <div class="bb-enhancement-card">
+            <h3 class="bb-enhancement-title">Sub-Enhancement</h3>
+            <div class="bb-enhancement-levels">
+              {
+                accessoryStats.SR.enhancement.subEnhancement.levels.map(lv => (
+                  <span class="bb-enhancement-level">Lv{lv}</span>
+                ))
+              }
+            </div>
+            <p class="bb-enhancement-desc">
+              {accessoryStats.SR.enhancement.subEnhancement.description}
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</AccessoryStatsLayout>
+
+<script>
+  // Tab switching functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.bb-accessory-tab');
+    const contents = document.querySelectorAll('.bb-accessory-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Add active to clicked tab and target content
+        tab.classList.add('active');
+        const targetId = tab.getAttribute('data-target');
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+  });
+</script>

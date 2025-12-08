@@ -37,12 +37,12 @@ export const bustyBurstConfig = {
     subtitle: 'Global Launch - Completed',
   },
 
-  // Maintenance information (no scheduled maintenance yet)
+  // Maintenance information
   maintenance: {
-    start: null,
-    end: null,
-    duration: 0,
-    subtitle: 'No scheduled maintenance',
+    start: '2025-12-09T03:00:00Z',
+    end: '2025-12-09T06:00:00Z',
+    duration: 3, // hours
+    subtitle: 'Dec 9, 2025 03:00 – 06:00 UTC',
   },
 
   // Additional timers

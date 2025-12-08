@@ -257,12 +257,61 @@ const games = [
   function updateMaintenance() {
     const serverStatusDot = document.getElementById('serverStatusDot');
     const serverStatusText = document.getElementById('serverStatusText');
+    const maintenanceStartItem = document.getElementById('maintenanceStartItem');
+    const maintenanceEndItem = document.getElementById('maintenanceEndItem');
+    const noMaintenanceMessage = document.getElementById('noMaintenanceMessage');
+    const maintenanceStartTime = document.getElementById('maintenanceStartTime');
+    const maintenanceEndTime = document.getElementById('maintenanceEndTime');
 
     if (!serverStatusDot || !serverStatusText) return;
 
-    // Currently no scheduled maintenance
-    serverStatusDot.className = 'status-dot status-online';
-    serverStatusText.textContent = 'Online';
+    const now = new Date();
+    const maintenanceStart = new Date('2025-12-09T03:00:00Z');
+    const maintenanceEnd = new Date('2025-12-09T06:00:00Z');
+
+    if (now < maintenanceStart) {
+      // Before maintenance - show countdown to start
+      serverStatusDot.className = 'status-dot status-online';
+      serverStatusText.textContent = 'Online';
+
+      if (maintenanceStartItem) maintenanceStartItem.style.display = 'block';
+      if (maintenanceEndItem) maintenanceEndItem.style.display = 'none';
+      if (noMaintenanceMessage) noMaintenanceMessage.style.display = 'none';
+
+      const timeDiff = maintenanceStart.getTime() - now.getTime();
+      const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      if (maintenanceStartTime) {
+        maintenanceStartTime.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    } else if (now >= maintenanceStart && now < maintenanceEnd) {
+      // During maintenance - show countdown to end
+      serverStatusDot.className = 'status-dot status-maintenance';
+      serverStatusText.textContent = 'Maintenance';
+
+      if (maintenanceStartItem) maintenanceStartItem.style.display = 'none';
+      if (maintenanceEndItem) maintenanceEndItem.style.display = 'block';
+      if (noMaintenanceMessage) noMaintenanceMessage.style.display = 'none';
+
+      const timeDiff = maintenanceEnd.getTime() - now.getTime();
+      const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      if (maintenanceEndTime) {
+        maintenanceEndTime.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    } else {
+      // After maintenance - show online
+      serverStatusDot.className = 'status-dot status-online';
+      serverStatusText.textContent = 'Online';
+
+      if (maintenanceStartItem) maintenanceStartItem.style.display = 'none';
+      if (maintenanceEndItem) maintenanceEndItem.style.display = 'none';
+      if (noMaintenanceMessage) noMaintenanceMessage.style.display = 'block';
+    }
   }
 
   // Start clock when page is ready

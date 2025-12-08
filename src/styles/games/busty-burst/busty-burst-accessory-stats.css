@@ -1,0 +1,305 @@
+/**
+ * Busty Burst Fantasy - Accessory Stats Page Styles
+ */
+
+/* === PAGE CONTAINER === */
+.bb-accessory-stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.bb-accessory-stats-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* === RARITY TABS === */
+.bb-accessory-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Tab styling - extends bb-badge */
+.bb-accessory-tab.bb-badge {
+  padding: 0.6rem 1.5rem;
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.5;
+  border: 2px solid transparent;
+}
+
+.bb-accessory-tab.bb-badge:hover {
+  opacity: 0.75;
+}
+
+.bb-accessory-tab.bb-badge.active {
+  opacity: 1;
+}
+
+/* === CONTENT PANELS === */
+.bb-accessory-content {
+  display: none;
+}
+
+.bb-accessory-content.active {
+  display: block;
+}
+
+/* === SECTION HEADERS === */
+.bb-accessory-section {
+  margin-bottom: 2rem;
+}
+
+.bb-accessory-section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+/* === MAIN STATS TABLE === */
+.bb-accessory-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.bb-accessory-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bb-accessory-table th,
+.bb-accessory-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-accessory-table th {
+  background: rgba(46, 82, 102, 0.3);
+  font-family: var(--font-display);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  text-transform: capitalize;
+}
+
+.bb-accessory-table td {
+  vertical-align: top;
+}
+
+.bb-accessory-table tr:last-child td {
+  border-bottom: none;
+}
+
+.bb-stat-item {
+  background: rgba(46, 82, 102, 0.25);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
+}
+
+.bb-stat-item:last-child {
+  margin-bottom: 0;
+}
+
+.bb-stat-name {
+  color: var(--bb-text-secondary);
+  font-weight: var(--font-medium);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bb-stat-values {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bb-stat-total {
+  color: var(--bb-primary-light);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  line-height: 1.2;
+}
+
+.bb-stat-breakdown {
+  color: var(--bb-text-secondary);
+  font-size: var(--text-xs);
+  opacity: 0.6;
+  margin-top: 0.25rem;
+}
+
+/* === SUB STATS GRID === */
+.bb-sub-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.bb-sub-stat-item {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bb-sub-stat-name {
+  color: var(--bb-text-primary);
+  font-weight: var(--font-medium);
+}
+
+.bb-sub-stat-value {
+  color: var(--bb-accent-light);
+  font-family: var(--font-mono);
+  font-weight: var(--font-bold);
+}
+
+/* === ENHANCEMENT INFO === */
+.bb-enhancement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.bb-enhancement-card {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.bb-enhancement-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  margin-bottom: 0.5rem;
+}
+
+.bb-enhancement-levels {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.bb-enhancement-level {
+  background: rgba(107, 184, 208, 0.2);
+  border: 1px solid var(--bb-primary);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--bb-primary-light);
+}
+
+.bb-enhancement-desc {
+  color: var(--bb-text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .bb-accessory-stats-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .bb-accessory-stats-title {
+    font-size: var(--text-2xl);
+  }
+
+  .bb-accessory-tabs {
+    gap: 0.5rem;
+  }
+
+  .bb-accessory-tab.bb-badge {
+    padding: 0.5rem 1.25rem;
+  }
+
+  /* Stack table into cards on mobile */
+  .bb-accessory-table,
+  .bb-accessory-table thead,
+  .bb-accessory-table tbody,
+  .bb-accessory-table tr,
+  .bb-accessory-table th,
+  .bb-accessory-table td {
+    display: block;
+  }
+
+  .bb-accessory-table thead tr {
+    display: none;
+  }
+
+  .bb-accessory-table td {
+    padding: 0.75rem;
+    border-bottom: none;
+    margin-bottom: 1rem;
+    background: var(--bb-bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--bb-border);
+  }
+
+  .bb-accessory-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-display);
+    font-weight: var(--font-bold);
+    color: var(--bb-primary-light);
+    margin-bottom: 0.75rem;
+    text-align: center;
+    font-size: var(--text-lg);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bb-border);
+  }
+
+  .bb-stat-item {
+    padding: 0.5rem;
+  }
+
+  .bb-stat-total {
+    font-size: var(--text-xl);
+  }
+
+  .bb-sub-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bb-enhancement-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-sub-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bb-stat-breakdown {
+    font-size: 0.65rem;
+  }
+}
