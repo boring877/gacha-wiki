@@ -1,53 +1,17 @@
 /**
  * A Finale Echoing Event Data
  * Stella Sora Shop Event
+ * Historical Event: Nov 24, 2025 - Dec 8, 2025
  */
-
-// Import clock configuration for dynamic event dates
-import { stellaSoraConfig } from '../../clock/stella-sora.js';
-
-/**
- * Get current event period from clock configuration
- * @returns {Object} Current event period information
- */
-function getCurrentEventPeriod() {
-  const eventStart = new Date(stellaSoraConfig.event.start);
-  const eventEnd = new Date(stellaSoraConfig.event.durationEnd);
-  const shopEnd = new Date(stellaSoraConfig.event.shopEnd);
-
-  return {
-    startDate: eventStart.toISOString().split('T')[0],
-    endDate: eventEnd.toISOString().split('T')[0],
-    shopEndDate: shopEnd.toISOString().split('T')[0],
-    startDisplay: eventStart.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    }),
-    endDisplay: eventEnd.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    }),
-    shopEndDisplay: shopEnd.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    }),
-  };
-}
-
-// Get current event period dates
-const eventPeriod = getCurrentEventPeriod();
 
 export const aFinaleEchoingEvent = {
   id: 'a-finale-echoing',
   title: 'A Finale Echoing',
   subtitle: 'Stella Sora Event',
-  date: eventPeriod.startDate,
-  startDate: eventPeriod.startDate,
-  endDate: eventPeriod.endDate,
-  shopEndDate: eventPeriod.shopEndDate,
+  date: '2025-11-24',
+  startDate: '2025-11-24',
+  endDate: '2025-12-08',
+  shopEndDate: '2025-12-15',
   summary:
     'Experience the grand finale! Exchange Whispers of Decay for exclusive rewards including limited Discs, skill materials, and special tickets.',
   description:

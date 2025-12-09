@@ -64,9 +64,6 @@ export default defineConfig({
           assetFileNames: 'assets/[name]-[hash][extname]',
           // Advanced manual chunks for better caching
           manualChunks: {
-            // Vendor libraries
-            vendor: ['gsap'],
-
             // Game-specific data chunks
             'zone-nova-data': [
               '../src/data/zone-nova/characters.js',
@@ -156,7 +153,7 @@ export default defineConfig({
     ],
     // Optimize dependencies
     optimizeDeps: {
-      include: ['gsap', 'chart.js'],
+      include: ['chart.js'],
     },
     // Enable esbuild for faster builds with Bun
     esbuild: {

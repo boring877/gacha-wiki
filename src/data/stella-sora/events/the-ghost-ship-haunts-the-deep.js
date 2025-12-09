@@ -1,47 +1,17 @@
 /**
  * The Ghost Ship Haunts the Deep Event Data
  * Stella Sora Summer Adventure Event
+ * Historical Event: Nov 2, 2025 - Nov 16, 2025
  */
-
-// Import clock configuration for dynamic event dates
-import { stellaSoraConfig } from '../../clock/stella-sora.js';
-
-/**
- * Get current event period from clock configuration
- * @returns {Object} Current event period information
- */
-function getCurrentEventPeriod() {
-  const eventStart = new Date(stellaSoraConfig.event.start);
-  const eventEnd = new Date(stellaSoraConfig.event.durationEnd);
-
-  return {
-    startDate: eventStart.toISOString().split('T')[0],
-    endDate: eventEnd.toISOString().split('T')[0],
-    shopEndDate: '2025-11-16', // Shop closes when event ends
-    startDisplay: eventStart.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    }),
-    endDisplay: eventEnd.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    }),
-  };
-}
-
-// Get current event period dates
-const eventPeriod = getCurrentEventPeriod();
 
 export const theGhostShipHauntsTheDeepEvent = {
   id: 'the-ghost-ship-haunts-the-deep',
   title: 'The Ghost Ship Haunts the Deep',
   subtitle: 'Summer Adventure Event',
-  date: eventPeriod.startDate,
-  startDate: eventPeriod.startDate,
-  endDate: eventPeriod.endDate,
-  shopEndDate: '2025-11-16', // Shop closes when event ends
+  date: '2025-11-02',
+  startDate: '2025-11-02',
+  endDate: '2025-11-16',
+  shopEndDate: '2025-11-16',
   summary:
     'Join the summer adventure! Exchange Squid Rice Crackers for exclusive rewards including Summer Sanctuary, Radiant Feather Crown, and special tickets.',
   description:
