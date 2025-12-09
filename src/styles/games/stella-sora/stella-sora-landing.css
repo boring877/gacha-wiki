@@ -60,6 +60,19 @@
   background-clip: text;
 }
 
+.hero-version-link {
+  text-decoration: none;
+  display: inline-block;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.hero-version-link:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
 .hero-version {
   font-size: var(--text-lg);
   font-family: var(--font-display);

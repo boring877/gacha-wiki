@@ -1,6 +1,6 @@
 ---
-// Stella Sora Landing Layout
-// Base layout for landing pages
+// Stella Sora Event Individual Layout
+// Dedicated layout for individual event pages
 
 import SSBaseHead from '../../components/stella-sora/SSBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
@@ -12,30 +12,27 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
-import GameImage from '../../components/stella-sora/GameImage.astro';
-import { stellaSoraConfig } from '../../data/stella-sora/stella-sora.js';
 
 // Import CSS files
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/stella-sora/ss-colors.css';
 import '../../styles/games/stella-sora/ss-layout.css';
-import '../../styles/games/stella-sora/stella-sora-landing.css';
+import '../../styles/games/stella-sora/ss-events.css';
 
 export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  heroImage?: string;
-  breadcrumbs?: { name: string; url: string }[];
+  image?: string;
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle, image } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <SSBaseHead title={title} description={description} image={heroImage} />
+    <SSBaseHead title={title} description={description} />
     <GameSEO gameKey="stella-sora" title={title} description={description} />
     <slot name="head" />
     <Analytics />
@@ -56,37 +53,9 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
       <div class="stella-sora-container">
         <main class="stella-sora-main">
-          <!-- Hero Section -->
+          <!-- Title Section -->
           {
-            heroImage && gameTitle && (
-              <section class="hero-section">
-                <div class="hero-image-wrapper">
-                  <div class="hero-image-container">
-                    <GameImage
-                      imageName={heroImage}
-                      alt={gameTitle}
-                      class="hero-image"
-                      width={1200}
-                      height={400}
-                      loading="eager"
-                      format="webp"
-                      quality={85}
-                    />
-                    <div class="hero-overlay" />
-                  </div>
-                </div>
-                <h1 class="hero-title">{gameTitle}</h1>
-                <a href={stellaSoraConfig.version.eventPageUrl} class="hero-version-link">
-                  <div class="hero-version">Version {stellaSoraConfig.version.current}</div>
-                </a>
-                <DecorativeLines />
-              </section>
-            )
-          }
-
-          <!-- Title Only Section -->
-          {
-            !heroImage && gameTitle && (
+            gameTitle && (
               <section class="title-only-section">
                 <h1 class="title-only-heading">{gameTitle}</h1>
                 <DecorativeLines />

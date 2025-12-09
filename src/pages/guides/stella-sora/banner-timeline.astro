@@ -1,12 +1,25 @@
 ---
 import BannerTimelineLayout from '../../../layouts/stella-sora/BannerTimelineLayout.astro';
 import SSBannerImage from '../../../components/stella-sora/SSBannerImage.astro';
+import { bannerTimelineData } from '../../../data/stella-sora/banner-timeline.js';
 
 // SEO metadata
 const pageTitle = 'Stella Sora Banner Timeline - Limited Recruitment Events';
 const pageDescription =
   'Chronological timeline of limited recruitment banners in Stella Sora. View current and past character and disc recruitment events organized by date from newest to oldest.';
 const gameTitle = 'Banner Timeline';
+
+// Helper function to format date
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
+};
+
+// Helper function to get image key from character/disc name
+const getImageKey = (name: string) => {
+  return name.toLowerCase().replace(/\s+/g, '-');
+};
 ---
 
 <BannerTimelineLayout title={pageTitle} description={pageDescription} gameTitle={gameTitle}>
@@ -30,283 +43,97 @@ const gameTitle = 'Banner Timeline';
       <p class="intro-text">All the banner timeline here !</p>
     </header>
 
-    <!-- Banner 1: Fuyuka (Newest) -->
-    <article class="banner-section">
-      <header class="banner-header">
-        <h2>#4 November - December 2025 Recruitment Events</h2>
-      </header>
+    {
+      bannerTimelineData.map((banner, index) => (
+        <article class="banner-section">
+          <header class="banner-header">
+            <h2>#{bannerTimelineData.length - index} Recruitment Events</h2>
+          </header>
 
-      <section class="banner-content">
-        <section class="banner-subsection">
-          <div class="banner-info">
-            <h3>Character Banner: Trekker Fuyuka</h3>
-            <div class="featured-item">
-              <SSBannerImage
-                imageKey="fuyuka"
-                alt="Fuyuka"
-                width={200}
-                height={200}
-                type="character"
-              />
-              <div class="featured-details">
-                <p><strong>Featured:</strong> ★5 Trekker Fuyuka</p>
-                <p>
-                  <strong>Period:</strong> Nov. 17, 2025 After Maintenance - Dec. 08, 2025 19:59 (UTC-7)
-                </p>
+          <section class="banner-content">
+            {/* Character Banner */}
+            <section class="banner-subsection">
+              <div class="banner-info">
+                <h3>Character Banner: {banner.characterBanner.title}</h3>
+                <div class="featured-item">
+                  <SSBannerImage
+                    imageKey={getImageKey(banner.characterBanner.featuredCharacter.name)}
+                    alt={banner.characterBanner.featuredCharacter.name}
+                    width={200}
+                    height={200}
+                    type="character"
+                  />
+                  <div class="featured-details">
+                    <p>
+                      <strong>Featured:</strong> {banner.characterBanner.featuredCharacter.rarity}{' '}
+                      {banner.characterBanner.featuredCharacter.type}{' '}
+                      {banner.characterBanner.featuredCharacter.name}
+                    </p>
+                    <p>
+                      <strong>Period:</strong> {formatDate(banner.characterBanner.startDate)} -{' '}
+                      {formatDate(banner.characterBanner.endDate)} (UTC-7)
+                    </p>
+                  </div>
+                </div>
+                <div class="banner-details">
+                  <p>
+                    <strong>Details:</strong> {banner.characterBanner.description}
+                  </p>
+                  <p>
+                    <strong>Boosted ★4 Trekkers:</strong>{' '}
+                    {banner.characterBanner.boostedCharacters.map(c => c.name).join(' and ')}
+                  </p>
+                  {banner.characterBanner.note && (
+                    <p>
+                      <strong>Note:</strong> {banner.characterBanner.note}
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-            <div class="banner-details">
-              <p>
-                <strong>Details:</strong> During the event period, the chance for getting ★5 Trekker
-                Fuyuka is boosted!
-              </p>
-              <p><strong>Boosted ★4 Trekkers:</strong> Flora and Canace</p>
-              <p>
-                <strong>Note:</strong> After this recruitment event ends, ★5 Trekker Fuyuka will not
-                immediately enter the Permanent Trekker Banner. This recruitment is a limited Trekker
-                banner.
-              </p>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="banner-subsection">
-          <div class="banner-info">
-            <h3>Disc Banner: Disc Fireworks</h3>
-            <div class="featured-item">
-              <SSBannerImage
-                imageKey="fireworks"
-                alt="Fireworks"
-                width={200}
-                height={200}
-                type="disc"
-              />
-              <div class="featured-details">
-                <p><strong>Featured:</strong> ★5 Runic Disc Fireworks</p>
-                <p>
-                  <strong>Period:</strong> Nov. 17, 2025 After Maintenance - Dec. 08, 2025 19:59 (UTC-7)
-                </p>
+            {/* Disc Banner */}
+            <section class="banner-subsection">
+              <div class="banner-info">
+                <h3>Disc Banner: {banner.discBanner.title}</h3>
+                <div class="featured-item">
+                  <SSBannerImage
+                    imageKey={getImageKey(banner.discBanner.featuredDisc.name)}
+                    alt={banner.discBanner.featuredDisc.name}
+                    width={200}
+                    height={200}
+                    type="disc"
+                  />
+                  <div class="featured-details">
+                    <p>
+                      <strong>Featured:</strong> {banner.discBanner.featuredDisc.rarity}{' '}
+                      {banner.discBanner.featuredDisc.type} {banner.discBanner.featuredDisc.name}
+                    </p>
+                    <p>
+                      <strong>Period:</strong> {formatDate(banner.discBanner.startDate)} -{' '}
+                      {formatDate(banner.discBanner.endDate)} (UTC-7)
+                    </p>
+                  </div>
+                </div>
+                <div class="banner-details">
+                  <p>
+                    <strong>Details:</strong> {banner.discBanner.description}
+                  </p>
+                  <p>
+                    <strong>Boosted ★4 Discs:</strong>{' '}
+                    {banner.discBanner.boostedDiscs.map(d => d.name).join(' and ')}
+                  </p>
+                  {banner.discBanner.note && (
+                    <p>
+                      <strong>Note:</strong> {banner.discBanner.note}
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-            <div class="banner-details">
-              <p>
-                <strong>Details:</strong> During the event period, the chance for getting ★5 Disc Fireworks
-                is boosted!
-              </p>
-              <p><strong>Boosted ★4 Discs:</strong> Unknown Fragrance and Cage of Roses</p>
-              <p>
-                <strong>Note:</strong> After this recruitment event ends, ★5 Disc Fireworks will not
-                immediately enter the Permanent Disc Banner. This recruitment is a limited Disc banner.
-              </p>
-            </div>
-          </div>
-        </section>
-      </section>
-    </article>
-
-    <!-- Banner 2: Nanoha -->
-    <article class="banner-section">
-      <header class="banner-header">
-        <h2>#3 November 2025 Recruitment Events</h2>
-      </header>
-
-      <section class="banner-content">
-        <section class="banner-subsection">
-          <div class="banner-info">
-            <h3>Character Banner: A Fateful Encounter</h3>
-            <div class="featured-item">
-              <SSBannerImage
-                imageKey="nanoha"
-                alt="Nanoha"
-                width={200}
-                height={200}
-                type="character"
-              />
-              <div class="featured-details">
-                <p><strong>Featured:</strong> ★5 Trekker Nanoha</p>
-                <p><strong>Period:</strong> Nov. 10, 2025 - Dec. 01, 2025 12:59 (UTC-7)</p>
-              </div>
-            </div>
-            <div class="banner-details">
-              <p>
-                <strong>Details:</strong> During the event period, the chance for getting ★5 Trekker
-                Nanoha is boosted!
-              </p>
-              <p><strong>Boosted ★4 Trekkers:</strong> Tilia and Kasimira</p>
-              <p><strong>Note:</strong> Skip banner - Nanoha is available in normal banner.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="banner-subsection">
-          <div class="banner-info">
-            <h3>Disc Banner: A Heart-Tuned Melody</h3>
-            <div class="featured-item">
-              <SSBannerImage
-                imageKey="daylight-garden"
-                alt="Daylight Garden"
-                width={200}
-                height={200}
-                type="disc"
-              />
-              <div class="featured-details">
-                <p><strong>Featured:</strong> ★5 Runic Disc Daylight Garden</p>
-                <p><strong>Period:</strong> Nov. 10, 2025 - Dec. 01, 2025 12:59 (UTC-7)</p>
-              </div>
-            </div>
-            <div class="banner-details">
-              <p>
-                <strong>Details:</strong> During the event period, the chance for getting ★5 Disc Daylight
-                Garden is boosted!
-              </p>
-              <p><strong>Boosted ★4 Discs:</strong> Tranquil Retreat and ★Bam Bam Girl★</p>
-              <p>
-                <strong>Note:</strong> Skip banner - Daylight Garden is available in normal banner.
-              </p>
-            </div>
-          </div>
-        </section>
-      </section>
-    </article>
-
-    <!-- Banner 3: Shia -->
-    <article class="banner-section">
-      <header class="banner-header">
-        <h2>#2 Late October - November 2025 Recruitment Events</h2>
-      </header>
-
-      <section class="banner-content">
-        <section class="banner-subsection">
-          <div class="banner-info">
-            <h3>Character Banner: Tide to the Full Moon</h3>
-            <div class="featured-item">
-              <SSBannerImage imageKey="shia" alt="Shia" width={200} height={200} type="character" />
-              <div class="featured-details">
-                <p><strong>Featured:</strong> ★5 Trekker Shia</p>
-                <p><strong>Period:</strong> Oct. 27, 2025 - Nov. 17, 2025 12:59 (UTC-7)</p>
-              </div>
-            </div>
-            <div class="banner-details">
-              <p>
-                <strong>Details:</strong> During the event period, the chance for getting ★5 Trekker
-                Shia is boosted! The first 120 recruitments grant you Shia×1. This bonus is limited to
-                once, and the recruitment count for getting this bonus will be reset when this event
-                ends.
-              </p>
-              <p><strong>Boosted ★4 Trekkers:</strong> Tilia and Kasimira</p>
-              <p>
-                <strong>Note:</strong> After this recruitment event ends, ★5 Trekker Shia will not immediately
-                enter the Permanent Trekker Banner. This recruitment is a limited Trekker banner.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="banner-subsection">
-          <div class="banner-info">
-            <h3>Disc Banner: Ocean Meets the Sky</h3>
-            <div class="featured-item">
-              <SSBannerImage
-                imageKey="ripples-of-nostalgia"
-                alt="Ripples of Nostalgia"
-                width={200}
-                height={200}
-                type="disc"
-              />
-              <div class="featured-details">
-                <p><strong>Featured:</strong> ★5 Runic Disc Ripples of Nostalgia</p>
-                <p><strong>Period:</strong> Oct. 27, 2025 - Nov. 17, 2025 12:59 (UTC-7)</p>
-              </div>
-            </div>
-            <div class="banner-details">
-              <p>
-                <strong>Details:</strong> During the event period, the chance for getting ★5 Disc Ripples
-                of Nostalgia is boosted!
-              </p>
-              <p><strong>Boosted ★4 Discs:</strong> Good Night and Twin Moon Mischief</p>
-              <p>
-                <strong>Note:</strong> After this recruitment event ends, ★5 Disc Ripples of Nostalgia
-                will not immediately enter the Permanent Disc Banner. This recruitment is a limited Disc
-                banner.
-              </p>
-            </div>
-          </div>
-        </section>
-      </section>
-    </article>
-
-    <!-- Banner 4: Chitose (Oldest) -->
-    <article class="banner-section">
-      <header class="banner-header">
-        <h2>#1 October 2025 Recruitment Events</h2>
-      </header>
-
-      <section class="banner-content">
-        <section class="banner-subsection">
-          <div class="banner-info">
-            <h3>Character Banner: Blades Beneath the Moon</h3>
-            <div class="featured-item">
-              <SSBannerImage
-                imageKey="chitose"
-                alt="Chitose"
-                width={200}
-                height={200}
-                type="character"
-              />
-              <div class="featured-details">
-                <p><strong>Featured:</strong> ★5 Trekker Chitose</p>
-                <p><strong>Period:</strong> Oct. 19, 2025 - Nov. 10, 2025 12:59 (UTC-7)</p>
-              </div>
-            </div>
-            <div class="banner-details">
-              <p>
-                <strong>Details:</strong> During the event period, the chance for getting ★5 Trekker
-                Chitose is boosted! The first 120 recruitments grant you Chitose×1. This bonus is limited
-                to once, and the recruitment count for getting this bonus will be reset when this event
-                ends.
-              </p>
-              <p><strong>Boosted ★4 Trekkers:</strong> Teresa and Jinglin</p>
-              <p>
-                <strong>Note:</strong> After this recruitment event ends, ★5 Trekker Chitose will not
-                immediately enter the Permanent Trekker Banner. This recruitment is a limited Trekker
-                banner. All the recruitment you perform before getting ★5 Trekker Chitose will accumulate
-                across limited Trekker banners.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="banner-subsection">
-          <div class="banner-info">
-            <h3>Disc Banner: Moon upon Still Waters</h3>
-            <div class="featured-item">
-              <SSBannerImage
-                imageKey="sword-against-stream"
-                alt="Sword Against Stream"
-                width={200}
-                height={200}
-                type="disc"
-              />
-              <div class="featured-details">
-                <p><strong>Featured:</strong> ★5 Runic Disc Sword Against Stream</p>
-                <p><strong>Period:</strong> Oct. 19, 2025 - Nov. 10, 2025 12:59 (UTC-7)</p>
-              </div>
-            </div>
-            <div class="banner-details">
-              <p>
-                <strong>Details:</strong> During the event period, the chance for getting ★5 Disc Sword
-                Against Stream is boosted!
-              </p>
-              <p><strong>Boosted ★4 Discs:</strong> Rainy Tune and ★Bam Bam Girl★</p>
-              <p>
-                <strong>Note:</strong> After this recruitment event ends, ★5 Disc Sword Against Stream
-                will not immediately enter the Permanent Disc Banner. This recruitment is a limited Disc
-                banner.
-              </p>
-            </div>
-          </div>
-        </section>
-      </section>
-    </article>
+            </section>
+          </section>
+        </article>
+      ))
+    }
   </main>
 </BannerTimelineLayout>

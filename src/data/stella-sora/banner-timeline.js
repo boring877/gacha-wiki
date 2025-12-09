@@ -1,5 +1,83 @@
 export const bannerTimelineData = [
   {
+    id: 'nazuka-a-breezy-romance',
+    characterBanner: {
+      title: 'A Breezy Romance',
+      featuredCharacter: {
+        name: 'Nazuka',
+        rarity: '★★★★★',
+        type: 'Trekker',
+      },
+      boostedCharacters: [
+        { name: 'Ann', rarity: '★★★★', type: 'Trekker' },
+        { name: 'Kasimira', rarity: '★★★★', type: 'Trekker' },
+      ],
+      startDate: '2025-12-08T00:00:00-07:00',
+      endDate: '2025-12-29T12:59:59-07:00',
+      description:
+        "Limited recruitment event: A Breezy Romance will begin soon! During the event period, there's a higher chance to get the new ★5 Trekker, Nazuka.",
+      note: '*For more recruitment information, please tap the Details button in the bottom-left corner of the recruitment screen.',
+    },
+    discBanner: {
+      title: 'Afternoon Glimmer into the Green',
+      featuredDisc: {
+        name: "Deer's Song",
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+      },
+      boostedDiscs: [
+        { name: 'Emerald Dream', rarity: '★★★★', type: 'Runic Disc' },
+        { name: "Scorching Night's End", rarity: '★★★★', type: 'Runic Disc' },
+      ],
+      startDate: '2025-12-08T00:00:00-07:00',
+      endDate: '2025-12-29T12:59:59-07:00',
+      description:
+        "Limited recruitment event: Afternoon Glimmer into the Green will begin soon! During the event period, there's a higher chance to get the new ★5 Runic Disc, Deer's Song.",
+      note: '*For more recruitment information, please tap the Details button in the bottom-left corner of the recruitment screen.',
+    },
+    status: 'current',
+    image: 'nazuka-banner.png',
+  },
+  {
+    id: 'gerie-a-fateful-encounter',
+    characterBanner: {
+      title: 'A Fateful Encounter',
+      featuredCharacter: {
+        name: 'Gerie',
+        rarity: '★★★★★',
+        type: 'Trekker',
+      },
+      boostedCharacters: [
+        { name: 'Flora', rarity: '★★★★', type: 'Trekker' },
+        { name: 'Canace', rarity: '★★★★', type: 'Trekker' },
+      ],
+      startDate: '2025-12-01T00:00:00-07:00',
+      endDate: '2025-12-22T19:59:59-07:00',
+      description:
+        "Limited recruitment event: A Fateful Encounter will begin soon! During the event period, there's a higher chance to get the ★5 Trekker, Gerie.",
+      note: '*For more recruitment information, please check the Details of the trekker recruitment in game.',
+    },
+    discBanner: {
+      title: 'A Heart-Tuned Melody',
+      featuredDisc: {
+        name: 'The Lost Pilgrim',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+      },
+      boostedDiscs: [
+        { name: 'The Shining', rarity: '★★★★', type: 'Runic Disc' },
+        { name: 'Twin Moon Mischief', rarity: '★★★★', type: 'Runic Disc' },
+      ],
+      startDate: '2025-12-01T00:00:00-07:00',
+      endDate: '2025-12-22T19:59:59-07:00',
+      description:
+        "Limited recruitment event: A Heart-Tuned Melody will begin soon! During the event period, there's a higher chance to get the ★5 Runic Disc, The Lost Pilgrim.",
+      note: '*For more recruitment information, please check the Details of the trekker recruitment in game.',
+    },
+    status: 'current',
+    image: 'gerie-banner.jpg',
+  },
+  {
     id: 'fuyuka-fireworks-events',
     characterBanner: {
       title: 'Trekker Fuyuka',

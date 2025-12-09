@@ -10,7 +10,7 @@
   padding: 1.5rem;
   background: var(--ss-bg-secondary);
   border-radius: 8px;
-  border: 1px solid var(--ss-border-color);
+  border: 1px solid var(--ss-border);
 }
 
 .ss-intro-title {
@@ -53,7 +53,7 @@
 .ss-event-item {
   display: block;
   background: var(--ss-bg-secondary);
-  border: 1px solid var(--ss-border-color);
+  border: 1px solid var(--ss-border);
   border-radius: 8px;
   padding: 1.5rem;
   text-decoration: none;
@@ -62,7 +62,7 @@
 }
 
 .ss-event-item:hover {
-  border-color: var(--ss-accent-primary);
+  border-color: var(--ss-primary);
 }
 
 .ss-event-title {
@@ -115,7 +115,7 @@
   background: var(--ss-bg-secondary);
   padding: 1.5rem;
   border-radius: 12px;
-  border: 1px solid var(--ss-border-color);
+  border: 1px solid var(--ss-border);
 }
 
 .ss-info-content p {
@@ -146,13 +146,164 @@
 
 /* Individual Event Page Styles */
 
+/* Paper Document Container */
+.paper-document {
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.event-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.event-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin: 0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ss-primary);
+  margin-bottom: 1rem;
+}
+
+.subsection-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.event-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.event-description {
+  color: var(--ss-text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.info-section {
+  margin-bottom: 2rem;
+}
+
+.info-list {
+  color: var(--ss-text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.info-list p {
+  margin-bottom: 0.5rem;
+}
+
+.info-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.info-item {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.info-label {
+  font-weight: 600;
+  color: var(--ss-text-primary);
+}
+
+.info-value {
+  color: var(--ss-text-secondary);
+}
+
+.note-text {
+  font-size: 0.9rem;
+  color: var(--ss-text-secondary);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* Lists for events */
+.enemy-zones,
+.merchandise-list {
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: var(--ss-text-secondary);
+  margin: 0.5rem 0 1rem 0;
+}
+
+.enemy-zones li,
+.merchandise-list li {
+  margin-bottom: 0.25rem;
+  line-height: 1.5;
+}
+
+/* Event Footer */
+.event-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ss-border);
+  text-align: center;
+  color: var(--ss-text-secondary);
+}
+
+.event-footer p {
+  margin-bottom: 0.5rem;
+}
+
+.reference-link {
+  font-size: 0.9rem;
+}
+
+.reference-link a {
+  color: var(--ss-primary);
+  text-decoration: none;
+}
+
+.reference-link a:hover {
+  text-decoration: underline;
+}
+
+/* Event Hero Section */
+.event-hero-section {
+  margin-bottom: 2rem;
+}
+
+.event-hero-image {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 /* Event Header Section */
 .ss-event-header-section {
   margin-bottom: 2rem;
   padding: 2rem;
   background: var(--ss-bg-secondary);
   border-radius: 12px;
-  border: 1px solid var(--ss-border-color);
+  border: 1px solid var(--ss-border);
 }
 
 .ss-event-meta-info {
@@ -187,6 +338,26 @@
   .ss-event-item {
     padding: 1rem;
   }
+
+  .paper-document {
+    padding: 1.5rem;
+  }
+
+  .event-title {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .subsection-title {
+    font-size: 1.15rem;
+  }
+
+  .event-subtitle {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -200,5 +371,31 @@
 
   .ss-event-item {
     padding: 0.75rem;
+  }
+
+  .paper-document {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .event-title {
+    font-size: 1.3rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .subsection-title {
+    font-size: 1.1rem;
+  }
+
+  .event-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .event-description,
+  .info-list {
+    font-size: 0.95rem;
   }
 }

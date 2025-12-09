@@ -59,7 +59,11 @@ const currentEvent = stellaSoraEvents.find(e => e.id === event.id) || event;
   <section class="event-hero-section">
     <div class="event-hero-image">
       {
-        currentEvent.id === 'version-1-2-new-trekker-fuyuka' ? (
+        currentEvent.id === 'version-1-3-a-breezy-romance' ? (
+          <div />
+        ) : currentEvent.id === 'version-1-2-new-trekker-fuyuka' ? (
+          <div />
+        ) : currentEvent.id === 'beyond-the-dream-limited-event' ? (
           <div />
         ) : currentEvent.id === 'ghost-ship-event-shop' ? (
           <div />
@@ -231,12 +235,223 @@ const currentEvent = stellaSoraEvents.find(e => e.id === event.id) || event;
       )
     }
 
+    <!-- Beyond the Dream Limited Event Images Only -->
+    {
+      currentEvent.id === 'beyond-the-dream-limited-event' && (
+        <div>
+          <SSEventImage
+            imageName="7/1"
+            alt={`${event.title}`}
+            width={1200}
+            height={800}
+            loading="lazy"
+          />
+          <SSEventImage
+            imageName="7/2"
+            alt={`${event.title}`}
+            width={1200}
+            height={800}
+            loading="lazy"
+          />
+          <SSEventImage
+            imageName="7/3"
+            alt={`${event.title}`}
+            width={1200}
+            height={800}
+            loading="lazy"
+          />
+          <SSEventImage
+            imageName="7/4"
+            alt={`${event.title}`}
+            width={1200}
+            height={800}
+            loading="lazy"
+          />
+        </div>
+      )
+    }
+
+    <!-- Version 1.3: A Breezy Romance Content with Images and Text -->
+    {
+      currentEvent.id === 'version-1-3-a-breezy-romance' && (
+        <div class="paper-document">
+          <header class="event-header">
+            <h2 class="section-title">New Content</h2>
+          </header>
+
+          <section class="info-section">
+            <h3 class="subsection-title">New Trekker and Runic Disc</h3>
+            <p class="event-description">
+              New ★5 Ventus Trekker: <strong>Nazuka</strong> can be recruited from the event limited
+              banner: <em>A Breezy Romance</em>.
+            </p>
+            <SSEventImage
+              imageName="6/1"
+              alt="New ★5 Ventus Trekker: Nazuka - A Breezy Romance Banner"
+              width={1200}
+              height={800}
+              loading="lazy"
+            />
+
+            <p class="event-description">
+              New ★5 Ventus Disc: <strong>Deer's Song</strong> can be recruited from the event
+              limited banner: <em>Afternoon Glimmer into the Green</em>.
+            </p>
+            <SSEventImage
+              imageName="6/2"
+              alt="New ★5 Ventus Disc: Deer's Song - Afternoon Glimmer into the Green Banner"
+              width={1200}
+              height={800}
+              loading="lazy"
+            />
+          </section>
+
+          <section class="info-section">
+            <h3 class="subsection-title">New Story</h3>
+            <h4 class="event-subtitle">Main Story Chapter Four: Beyond the Dream</h4>
+            <p class="event-description">The hunt for the Big Three has reached its climax.</p>
+            <p class="event-description">
+              The truth behind the parting of friends, the secrets hidden within the monsters, the
+              shadowy figure stirring behind the scenes... Can you wield the power as the Tyrant,
+              overcome all obstacles, and reach that happy ending, filled with laughter and joy for
+              all?
+            </p>
+            <p class="event-description">
+              <strong>Period:</strong> Permanent after Dec. 08, 2025 after Maintenance
+            </p>
+            <SSEventImage
+              imageName="6/3"
+              alt="Main Story Chapter Four: Beyond the Dream"
+              width={1200}
+              height={800}
+              loading="lazy"
+            />
+          </section>
+
+          <section class="info-section">
+            <h3 class="subsection-title">New Event</h3>
+
+            <h4 class="event-subtitle">Main Story Update Event: Beyond the Dream</h4>
+            <div class="info-list">
+              <p>
+                <strong>Period:</strong> Dec. 08, 2025 after Maintenance – Dec. 22, 2025 12:59:59
+                (UTC-7)
+              </p>
+              <p>
+                <strong>Event Shop & Reward Exchange:</strong> Dec. 08, 2025 after Maintenance – Dec
+                29, 2025, 12:59:59 (UTC-7)
+              </p>
+              <p>
+                <strong>Details:</strong> Eliminate monsters and protect the forest! Complete
+                missions to get ★5 Runic Disc: One, Two, Three, Jump!, Honor Title: Beyond the
+                Dream, Stellanite Dust, Sprout Ticket, Cerulean Ticket, Trekker and Disc tier-up
+                materials, and more!
+              </p>
+            </div>
+            <SSEventImage
+              imageName="6/4"
+              alt="Main Story Update Event: Beyond the Dream"
+              width={1200}
+              height={800}
+              loading="lazy"
+            />
+
+            <h4 class="event-subtitle">Lucky Treasure Shovel</h4>
+            <div class="info-list">
+              <p>
+                <strong>Period:</strong> Dec. 08, 2025 after Maintenance – Dec. 22, 2025 12:59:59
+                (UTC-7)
+              </p>
+              <p>
+                <strong>Details:</strong> Areas hiding precious treasures await exploration! During
+                the event, you can use Treasure Shovels to uncover the treasures with your Trekkers,
+                and accumulate points to complete quests, which will reward you with Stellanite
+                Dust, Healthy Rice Ball, and more.
+              </p>
+              <p>
+                <strong>Requirements:</strong> Authorization Level ≥ 5
+              </p>
+            </div>
+            <SSEventImage
+              imageName="6/5"
+              alt="Lucky Treasure Shovel Event"
+              width={1200}
+              height={800}
+              loading="lazy"
+            />
+
+            <h4 class="event-subtitle">Cataclysm Survivor Event Details</h4>
+            <div class="info-list">
+              <p>
+                <strong>Period:</strong> Dec. 08, 2025 after Maintenance – Dec. 22, 2025 19:59:59
+                (UTC-7)
+              </p>
+              <p>
+                <strong>Details:</strong> Join the defense battle and complete the missions to
+                obtain Stellanite Dust and Defender's Medal. Catastrophe zones will change with
+                version updates. Clearing Catastrophe zones and reaching the designated score will
+                grant additional Defender's Medal rewards.
+              </p>
+              <p>
+                <strong>Catastrophe Enemy Information:</strong>
+              </p>
+              <ul class="enemy-zones">
+                <li>Zone 1: Enemy Vulnerability: Ventus, Ignis</li>
+                <li>Zone 2: Enemy Vulnerability: Ventus, Lux</li>
+              </ul>
+              <p>
+                <strong>Requirements:</strong> Authorization Level ≥ 5
+              </p>
+            </div>
+            <SSEventImage
+              imageName="6/6"
+              alt="Cataclysm Survivor Event Details"
+              width={1200}
+              height={800}
+              loading="lazy"
+            />
+          </section>
+
+          <section class="info-section">
+            <h3 class="subsection-title">New Limited-time Merchandise</h3>
+            <h4 class="event-subtitle">Trekker's Picks: Stellar Special</h4>
+            <ul class="merchandise-list">
+              <li>A Breezy Romance: Cerulean Ticket Set</li>
+              <li>A Breezy Romance: Gold Disc Set</li>
+              <li>A Breezy Romance: Heartfelt Bundle</li>
+              <li>A Breezy Romance: Trekker Boost Bundle</li>
+            </ul>
+            <p>
+              <strong>Period:</strong> Dec. 08, 2025 after Maintenance – Dec. 29, 2025 12:59:59
+              (UTC-7)
+            </p>
+          </section>
+
+          <footer class="event-footer">
+            <p>Stella Sora Team</p>
+            <p class="reference-link">
+              Reference:{' '}
+              <a
+                href="https://stellasora.global/news/2114"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://stellasora.global/news/2114
+              </a>
+            </p>
+          </footer>
+        </div>
+      )
+    }
+
     <!-- All other events content -->
     {
-      currentEvent.id !== 'version-1-2-new-trekker-fuyuka' &&
+      currentEvent.id !== 'version-1-3-a-breezy-romance' &&
+        currentEvent.id !== 'version-1-2-new-trekker-fuyuka' &&
         currentEvent.id !== 'ghost-ship-event-shop' &&
         currentEvent.id !== 'ghost-ship-event-details' &&
-        currentEvent.id !== 'guild-sweet-guild' && (
+        currentEvent.id !== 'guild-sweet-guild' &&
+        currentEvent.id !== 'beyond-the-dream-limited-event' && (
           <div class="paper-document">
             <header class="event-header">
               <h1 class="event-title">{currentEvent.title}</h1>

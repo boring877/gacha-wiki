@@ -5,6 +5,107 @@
 
 export const stellaSoraEvents = [
   {
+    id: 'beyond-the-dream-limited-event',
+    title: 'Beyond the Dream Limited Event Overview',
+    date: '2025-12-08',
+    startDate: '2025-12-08',
+    endDate: '2025-12-29',
+    summary: 'Beyond the Dream limited event with exclusive rewards and activities.',
+    description: 'Join the Beyond the Dream limited event for special activities and rewards.',
+    url: '/guides/stella-sora/events/beyond-the-dream-limited-event/',
+    image: '/images/games/stella-sora/events/7/1.jpg',
+    rewards: ['Beyond the Dream Event Rewards'],
+    featuredImage: '/images/games/stella-sora/events/7/1.jpg',
+    images: ['7/1', '7/2', '7/3', '7/4'],
+  },
+  {
+    id: 'version-1-3-a-breezy-romance',
+    title: 'Version 1.3: A Breezy Romance',
+    date: '2025-12-08',
+    startDate: '2025-12-08',
+    endDate: '2025-12-29',
+    summary:
+      "Version 1.3 brings new ★5 Ventus Trekker Nazuka, new ★5 Ventus Disc Deer's Song, Main Story Chapter Four: Beyond the Dream, and multiple exciting events!",
+    description:
+      "The Version 1.3 update introduces Nazuka, a powerful ★5 Ventus Trekker available from the A Breezy Romance limited banner, along with the new ★5 Ventus Disc: Deer's Song from the Afternoon Glimmer into the Green banner. Experience the climax of the hunt for the Big Three in Main Story Chapter Four: Beyond the Dream, and participate in multiple events including Beyond the Dream, Lucky Treasure Shovel, and Cataclysm Survivor!",
+    url: '/guides/stella-sora/events/version-1-3-a-breezy-romance/',
+    image: '/images/games/stella-sora/events/6/1.png',
+    rewards: [
+      'New ★5 Ventus Trekker: Nazuka',
+      "New ★5 Ventus Disc: Deer's Song",
+      '★5 Runic Disc: One, Two, Three, Jump!',
+      'Honor Title: Beyond the Dream',
+      'Stellanite Dust',
+      'Sprout Ticket',
+      'Cerulean Ticket',
+      'Trekker and Disc tier-up materials',
+      'Healthy Rice Ball',
+      "Defender's Medal",
+    ],
+    featuredImage: '/images/games/stella-sora/events/6/1.png',
+    newContent: {
+      trekker: {
+        name: 'Nazuka',
+        rarity: '★5',
+        element: 'Ventus',
+        banner: 'A Breezy Romance',
+      },
+      disc: {
+        name: "Deer's Song",
+        rarity: '★5',
+        element: 'Ventus',
+        banner: 'Afternoon Glimmer into the Green',
+      },
+      story: {
+        title: 'Main Story Chapter Four: Beyond the Dream',
+        description:
+          'The hunt for the Big Three has reached its climax. The truth behind the parting of friends, the secrets hidden within the monsters, the shadowy figure stirring behind the scenes... Can you wield the power as the Tyrant, overcome all obstacles, and reach that happy ending, filled with laughter and joy for all?',
+        availability: 'Permanent after Dec. 08, 2025 after Maintenance',
+      },
+    },
+    events: [
+      {
+        name: 'Main Story Update Event: Beyond the Dream',
+        period: 'Dec. 08, 2025 after Maintenance – Dec. 22, 2025 12:59:59 (UTC-7)',
+        shopPeriod: 'Dec. 08, 2025 after Maintenance – Dec 29, 2025, 12:59:59 (UTC-7)',
+        details:
+          'Eliminate monsters and protect the forest! Complete missions to get ★5 Runic Disc: One, Two, Three, Jump!, Honor Title: Beyond the Dream, Stellanite Dust, Sprout Ticket, Cerulean Ticket, Trekker and Disc tier-up materials, and more!',
+      },
+      {
+        name: 'Lucky Treasure Shovel',
+        period: 'Dec. 08, 2025 after Maintenance – Dec. 22, 2025 12:59:59 (UTC-7)',
+        details:
+          'Areas hiding precious treasures await exploration! During the event, you can use Treasure Shovels to uncover the treasures with your Trekkers, and accumulate points to complete quests, which will reward you with Stellanite Dust, Healthy Rice Ball, and more.',
+        requirements: 'Authorization Level ≥ 5',
+      },
+      {
+        name: 'Cataclysm Survivor Event Details',
+        period: 'Dec. 08, 2025 after Maintenance – Dec. 22, 2025 19:59:59 (UTC-7)',
+        details:
+          "Join the defense battle and complete the missions to obtain Stellanite Dust and Defender's Medal. Catastrophe zones will change with version updates. Clearing Catastrophe zones and reaching the designated score will grant additional Defender's Medal rewards.",
+        enemyInfo: {
+          zone1: 'Enemy Vulnerability: Ventus, Ignis',
+          zone2: 'Enemy Vulnerability: Ventus, Lux',
+        },
+        requirements: 'Authorization Level ≥ 5',
+      },
+    ],
+    merchandise: {
+      name: "Trekker's Picks: Stellar Special",
+      period: 'Dec. 08, 2025 after Maintenance – Dec. 29, 2025 12:59:59 (UTC-7)',
+      items: [
+        'A Breezy Romance: Cerulean Ticket Set',
+        'A Breezy Romance: Gold Disc Set',
+        'A Breezy Romance: Heartfelt Bundle',
+        'A Breezy Romance: Trekker Boost Bundle',
+      ],
+    },
+    requirements: {
+      authorizationLevel: 'Authorization Level ≥ 5',
+      team: 'Stella Sora Team',
+    },
+  },
+  {
     id: 'guild-sweet-guild',
     title: 'Guild Sweet Guild',
     date: '2025-11-20',

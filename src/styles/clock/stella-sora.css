@@ -177,41 +177,74 @@
   gap: 1.5rem;
 }
 
-/* Priority timers - Launch countdown takes 1 column, Weekly/Monthly takes full width */
+/* Priority timers - Weekly/Monthly takes full width (Launch countdown is hidden after launch) */
 .primary-timers .timers-row {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   align-items: stretch;
 }
 
-/* Weekly card takes full width on mobile */
+/* Weekly card styling for full width display */
+.primary-timers .weekly-card {
+  max-width: 100%;
+}
+
+/* Weekly card reset items in row on larger screens */
+.primary-timers .weekly-card .timer-card-content {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-around;
+}
+
+.primary-timers .weekly-card .reset-item {
+  flex: 1;
+  text-align: center;
+}
+
+.primary-timers .weekly-card .reset-time {
+  text-align: center;
+}
+
+/* Stack reset items on mobile */
 @media (max-width: 768px) {
-  .primary-timers .timers-row {
-    grid-template-columns: 1fr;
+  .primary-timers .weekly-card .timer-card-content {
+    flex-direction: column;
     gap: 1rem;
+  }
+
+  .primary-timers .weekly-card .reset-item {
+    text-align: left;
+  }
+
+  .primary-timers .weekly-card .reset-time {
+    text-align: right;
   }
 }
 
-/* Secondary timers - 2 columns for server status */
+/* Secondary timers - 2x2 grid for Days Since Launch, Maintenance, Halloween, New Year */
 .secondary-timers .timers-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   align-items: stretch;
 }
 
-/* Event timers - 2 columns for better organization */
+/* Event timers - 2x2 grid for Event Duration, Event Shop, Banner 1, Banner 2 */
 .event-timers .timers-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   align-items: stretch;
 }
 
 /* For small screens, keep single column */
 @media (max-width: 768px) {
-  .secondary-timers .timers-row,
+  .secondary-timers .timers-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .event-timers .timers-row {
     grid-template-columns: 1fr;
     gap: 1rem;

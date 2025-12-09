@@ -7,6 +7,14 @@ export const stellaSoraConfig = {
     heroImage: '/images/games/stella-sora/gameimg/BG1.jpg',
   },
 
+  // Current game version info
+  version: {
+    current: '1.3',
+    name: 'A Breezy Romance',
+    releaseDate: '2025-12-08',
+    eventPageUrl: '/guides/stella-sora/events/version-1-3-a-breezy-romance/',
+  },
+
   gameInfo: {
     playUrl: 'https://play.google.com/store/apps/details?id=com.YoStarEN.StellaSora',
     iosUrl: 'https://apps.apple.com/app/stella-sora/id6737498123',
