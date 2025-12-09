@@ -1,0 +1,932 @@
+---
+import BeyondTheDreamLayout from '../../../../layouts/stella-sora/BeyondTheDreamLayout.astro';
+import { beyondTheDreamEvent } from '../../../../data/stella-sora/events/beyond-the-dream.js';
+import BeyondTheDreamImages from '../../../../components/stella-sora/shop-events/BeyondTheDreamImages.astro';
+
+// Use the event data directly
+const event = beyondTheDreamEvent;
+
+// Set metadata
+const title = `${event.title} - ${event.subtitle}`;
+const description = event.description;
+
+// Transform shop items from data structure to match existing page structure
+const shopItems = event.shopItems.map(item => ({
+  name: item.name,
+  stockLeft: item.stock?.type === 'unlimited' ? 0 : item.stock?.quantity || 1,
+  cost: item.price || item.cost || 0,
+  quantity: item.quantity || 1,
+  image: item.image,
+  rarity: item.rarity?.toLowerCase() || 'common',
+  price: item.price || item.cost || 0,
+  stockType: item.stock?.type || 'limited',
+}));
+
+// Calculate total cost to buy all available limited items (stock quantity x price)
+const totalCost = shopItems.reduce((sum, item) => {
+  // Only count limited stock items, not unlimited items
+  if (item.stockType === 'limited') {
+    // Multiply stock quantity by price
+    return sum + (item.price || item.cost || 0) * (item.stockLeft || 1);
+  }
+  return sum;
+}, 0);
+
+// Calculate currency from quests (if quest data exists)
+let totalCurrencyFromQuests = 0;
+let questCategories: any[] = [];
+
+if (event.quests) {
+  questCategories = Object.values(event.quests).map(category => ({
+    title: category.title,
+    completionRewards: category.completionRewards?.items?.join(', ') || '',
+    quests:
+      category.quests?.map(quest => {
+        const mappedQuest: any = { name: quest.name };
+
+        // Handle currency reward field names - Healthy Rice Ball
+        if (quest.healthyRiceBallReward) {
+          mappedQuest.currency = `x${quest.healthyRiceBallReward}`;
+          mappedQuest.healthyRiceBallReward = quest.healthyRiceBallReward;
+        }
+
+        // Handle gems reward
+        if (quest.gemsReward) {
+          mappedQuest.gemsReward = quest.gemsReward;
+        }
+
+        return mappedQuest;
+      }) || [],
+  }));
+
+  // Calculate total currency from quests
+  totalCurrencyFromQuests = questCategories.reduce((total, category) => {
+    return (
+      total +
+      category.quests.reduce((categoryTotal, quest) => {
+        // Only count Healthy Rice Ball rewards
+        const currencyReward = quest.healthyRiceBallReward;
+        const currencyAmount = typeof currencyReward === 'number' ? currencyReward : 0;
+        return categoryTotal + currencyAmount;
+      }, 0)
+    );
+  }, 0);
+}
+
+// Calculate stage first clear rewards
+let stageFirstClearRewards = 0;
+let normalStageRewards = 0;
+let hardStageRewards = 0;
+let totalGemsFromStages = 0;
+
+if (event.stages) {
+  Object.values(event.stages).forEach(stageType => {
+    if (stageType.stages) {
+      const stageTypeRewards = stageType.stages.reduce((total, stage) => {
+        return total + (stage.firstClearReward || 0);
+      }, 0);
+
+      const stageTypeGems = stageType.stages.reduce((total, stage) => {
+        return total + (stage.gemsReward || 0);
+      }, 0);
+
+      stageFirstClearRewards += stageTypeRewards;
+      totalGemsFromStages += stageTypeGems;
+
+      // Separate Normal from Hard stages
+      if (stageType.title && stageType.title.toLowerCase().includes('normal')) {
+        normalStageRewards += stageTypeRewards;
+      } else if (stageType.title && stageType.title.toLowerCase().includes('hard')) {
+        hardStageRewards += stageTypeRewards;
+      }
+    }
+  });
+}
+
+// Calculate total achievable earnings
+const totalAchievableCurrency = totalCurrencyFromQuests + stageFirstClearRewards;
+
+// Farming Calculator Constants
+const STAMINA_PER_RUN = 30;
+const RICE_PER_RUN = 500;
+const MINUTES_PER_STAMINA = 6;
+const DAILY_STAMINA_FROM_DAILIES = 120;
+const STAMINA_PER_DAY_FROM_REGEN = 240; // 24 hours * 60 min / 6 min per stamina = 240
+
+// Calculate farming requirements
+const riceNeededFromFarming = Math.max(0, totalCost - totalAchievableCurrency);
+const runsNeeded = Math.ceil(riceNeededFromFarming / RICE_PER_RUN);
+const totalStaminaNeeded = runsNeeded * STAMINA_PER_RUN;
+const totalMinutesForStamina = totalStaminaNeeded * MINUTES_PER_STAMINA;
+const totalHoursForStamina = Math.floor(totalMinutesForStamina / 60);
+const remainingMinutes = totalMinutesForStamina % 60;
+const totalDaysForStamina = (totalMinutesForStamina / 60 / 24).toFixed(1);
+
+// Daily stamina breakdown (with dailies)
+const totalDailyStamina = DAILY_STAMINA_FROM_DAILIES + STAMINA_PER_DAY_FROM_REGEN; // 360 per day
+const daysNeededWithDailies = Math.ceil(totalStaminaNeeded / totalDailyStamina);
+const runsPerDayWithDailies = Math.floor(totalDailyStamina / STAMINA_PER_RUN); // 12 runs per day
+const ricePerDayWithDailies = runsPerDayWithDailies * RICE_PER_RUN; // 6000 rice per day
+
+// Priority Rank calculations (Rank 1 + Rank 2 only)
+// Rank 1: One, Two, Three, Jump! (8000x1) + One, Two, Three, Jump! Melody (8000x5) = 48,000
+const rank1Cost = 8000 * 1 + 8000 * 5; // 48,000
+// Rank 2: Wind Essence (1600x12) + Cerulean Ticket (500x5) + Sprout Ticket (500x5) + Star Emblem Polisher (400x10) + Magic Sound Game Cartridge (250x10) + Duloos Essence (250x10) + Eternal Gloom Core (250x6) = 34,700
+const rank2Cost = 1600 * 12 + 500 * 5 + 500 * 5 + 400 * 10 + 250 * 10 + 250 * 10 + 250 * 6; // 34,700
+const rank1And2Cost = rank1Cost + rank2Cost; // 82,700
+
+// Calculate farming for Rank 1+2 only
+const riceNeededForRank1And2 = Math.max(0, rank1And2Cost - totalAchievableCurrency);
+const runsNeededForRank1And2 = Math.ceil(riceNeededForRank1And2 / RICE_PER_RUN);
+const staminaNeededForRank1And2 = runsNeededForRank1And2 * STAMINA_PER_RUN;
+const daysNeededForRank1And2 = Math.ceil(staminaNeededForRank1And2 / totalDailyStamina);
+---
+
+<BeyondTheDreamLayout
+  title={title}
+  description={description}
+  gameTitle={event.title}
+  endDate={event.shopEndDate}
+  currency={event.currency}
+>
+  <!-- Shop Event Cost Breakdown Section -->
+  <section class="ss-cost-breakdown">
+    <h2 class="ss-shop-items-title">Breakdown of Shop Event Cost</h2>
+
+    <div class="cost-overview">
+      <div class="currency-info">
+        <div class="currency-header">
+          <BeyondTheDreamImages
+            imageName="Healthy_Rice_Ball.jpg"
+            alt={event.currency.name}
+            className="currency-icon"
+            width={50}
+            height={50}
+          />
+          <h3 class="currency-name">{event.currency.name}</h3>
+        </div>
+
+        <div class="currency-sources">
+          <h4 class="sources-title">How to Obtain:</h4>
+          <ul class="sources-list">
+            {event.currency.sources.map(source => <li class="source-item">{source}</li>)}
+          </ul>
+        </div>
+
+        {
+          event.currency.capacity && (
+            <div class="currency-capacity">
+              <span class="capacity-label">Capacity:</span>
+              <span class="capacity-value">{event.currency.capacity}</span>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="cost-statistics unified-stats">
+        <div class="stats-header">
+          <h3 class="stats-title">Shop Overview</h3>
+        </div>
+
+        <div class="stats-list">
+          <div class="stat-list-item">
+            <span class="stat-label">Total Items</span>
+            <span class="stat-value">{shopItems.length}</span>
+          </div>
+
+          <div class="stat-list-item total-cost-item">
+            <span class="stat-label">Total Cost (All Items)</span>
+            <div class="total-cost-display">
+              <BeyondTheDreamImages
+                imageName="Healthy_Rice_Ball.jpg"
+                alt={event.currency.name}
+                className="price-icon"
+                width={16}
+                height={16}
+              />
+              <span class="stat-value cost-total">{totalCost.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Highest Cost</span>
+            <span class="stat-value cost-highest">
+              {Math.max(...shopItems.map(item => item.price || item.cost || 0))}
+            </span>
+          </div>
+
+          <div class="stat-list-item">
+            <span class="stat-label">Lowest Cost</span>
+            <span class="stat-value cost-lowest">
+              {Math.min(...shopItems.map(item => item.price || item.cost || 0))}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {
+        totalAchievableCurrency > 0 && (
+          <div class="cost-statistics unified-stats">
+            <div class="stats-header">
+              <h3 class="stats-title">{event.currency.name} Earned</h3>
+            </div>
+
+            <div class="stats-list">
+              {normalStageRewards > 0 && (
+                <div class="stat-list-item">
+                  <span class="stat-label">From Normal Stage First Clears</span>
+                  <div class="currency-display">
+                    <BeyondTheDreamImages
+                      imageName="Healthy_Rice_Ball.jpg"
+                      alt={event.currency.name}
+                      className="price-icon"
+                      width={16}
+                      height={16}
+                    />
+                    <span class="stat-value">{normalStageRewards.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              {hardStageRewards > 0 && (
+                <div class="stat-list-item">
+                  <span class="stat-label">From Hard Stage First Clears</span>
+                  <div class="currency-display">
+                    <BeyondTheDreamImages
+                      imageName="Healthy_Rice_Ball.jpg"
+                      alt={event.currency.name}
+                      className="price-icon"
+                      width={16}
+                      height={16}
+                    />
+                    <span class="stat-value">{hardStageRewards.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              {totalCurrencyFromQuests > 0 && (
+                <div class="stat-list-item">
+                  <span class="stat-label">From Quest Completions</span>
+                  <div class="currency-display">
+                    <BeyondTheDreamImages
+                      imageName="Healthy_Rice_Ball.jpg"
+                      alt={event.currency.name}
+                      className="price-icon"
+                      width={16}
+                      height={16}
+                    />
+                    <span class="stat-value">{totalCurrencyFromQuests.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              <div class="stat-list-item">
+                <span class="stat-label">Total Earned (All Sources)</span>
+                <div class="currency-display">
+                  <BeyondTheDreamImages
+                    imageName="Healthy_Rice_Ball.jpg"
+                    alt={event.currency.name}
+                    className="price-icon"
+                    width={500}
+                    height={500}
+                  />
+                  <span class="stat-value cracker-grand-total">
+                    {totalAchievableCurrency.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+
+              {totalGemsFromStages > 0 && (
+                <div class="stat-list-item">
+                  <span class="stat-label">Total Gems from Stages</span>
+                  <span class="stat-value">{totalGemsFromStages.toLocaleString()} Gems</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Farming Calculator Section -->
+  <section class="ss-farming-calculator">
+    <h2 class="ss-shop-items-title">Farming Calculator</h2>
+
+    <div class="farming-overview">
+      <div class="farming-summary">
+        <div class="farming-stat highlight">
+          <span class="farming-label">Rice Needed from Farming</span>
+          <div class="farming-value-wrapper">
+            <BeyondTheDreamImages
+              imageName="Healthy_Rice_Ball.jpg"
+              alt={event.currency.name}
+              className="price-icon"
+              width={24}
+              height={24}
+            />
+            <span class="farming-value">{riceNeededFromFarming.toLocaleString()}</span>
+          </div>
+        </div>
+
+        <div class="farming-stat">
+          <span class="farming-label">Total Shop Cost</span>
+          <span class="farming-value">{totalCost.toLocaleString()}</span>
+        </div>
+
+        <div class="farming-stat">
+          <span class="farming-label">Free from Quests & Stages</span>
+          <span class="farming-value">{totalAchievableCurrency.toLocaleString()}</span>
+        </div>
+      </div>
+
+      <div class="farming-details">
+        <h3 class="farming-subtitle">Stamina Farming Requirements</h3>
+
+        <div class="farming-grid">
+          <div class="farming-item">
+            <span class="farming-item-label">Rice per Run</span>
+            <span class="farming-item-value">{RICE_PER_RUN}</span>
+          </div>
+
+          <div class="farming-item">
+            <span class="farming-item-label">Stamina per Run</span>
+            <span class="farming-item-value">{STAMINA_PER_RUN}</span>
+          </div>
+
+          <div class="farming-item">
+            <span class="farming-item-label">Runs Needed</span>
+            <span class="farming-item-value">{runsNeeded.toLocaleString()}</span>
+          </div>
+
+          <div class="farming-item">
+            <span class="farming-item-label">Total Stamina Needed</span>
+            <span class="farming-item-value">{totalStaminaNeeded.toLocaleString()}</span>
+          </div>
+        </div>
+
+        <div class="farming-time">
+          <h4 class="farming-time-title">Time to Regenerate Stamina (1 stamina per 6 min)</h4>
+          <div class="farming-time-values">
+            <div class="time-item">
+              <span class="time-value">{totalHoursForStamina}</span>
+              <span class="time-label">hours</span>
+            </div>
+            <div class="time-item">
+              <span class="time-value">{remainingMinutes}</span>
+              <span class="time-label">minutes</span>
+            </div>
+            <div class="time-item">
+              <span class="time-value">~{totalDaysForStamina}</span>
+              <span class="time-label">days</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="farming-daily-breakdown">
+          <h4 class="farming-time-title">Daily Farming Breakdown (with Daily Quests)</h4>
+          <p class="daily-stamina-info">
+            Doing daily quests gives you <strong>{DAILY_STAMINA_FROM_DAILIES}</strong> stamina per day,
+            plus <strong>{STAMINA_PER_DAY_FROM_REGEN}</strong> from natural regen = <strong
+              >{totalDailyStamina}</strong
+            > total stamina/day
+          </p>
+
+          <div class="farming-time-values">
+            <div class="time-item">
+              <span class="time-value">{runsPerDayWithDailies}</span>
+              <span class="time-label">runs/day</span>
+            </div>
+            <div class="time-item">
+              <span class="time-value">{ricePerDayWithDailies.toLocaleString()}</span>
+              <span class="time-label">rice/day</span>
+            </div>
+            <div class="time-item highlight-days">
+              <span class="time-value">{daysNeededWithDailies}</span>
+              <span class="time-label">days needed</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="farming-priority-breakdown">
+          <h4 class="farming-time-title">Rank 1 + Rank 2 Only (Priority Items)</h4>
+          <p class="daily-stamina-info">
+            Focus on high priority items first: <strong>{rank1Cost.toLocaleString()}</strong> (Rank 1)
+            + <strong>{rank2Cost.toLocaleString()}</strong> (Rank 2) = <strong
+              >{rank1And2Cost.toLocaleString()}</strong
+            > total
+          </p>
+
+          <div class="farming-time-values">
+            <div class="time-item">
+              <span class="time-value">{riceNeededForRank1And2.toLocaleString()}</span>
+              <span class="time-label">rice to farm</span>
+            </div>
+            <div class="time-item">
+              <span class="time-value">{runsNeededForRank1And2}</span>
+              <span class="time-label">runs needed</span>
+            </div>
+            <div class="time-item">
+              <span class="time-value">{staminaNeededForRank1And2.toLocaleString()}</span>
+              <span class="time-label">stamina needed</span>
+            </div>
+            <div class="time-item highlight-days">
+              <span class="time-value">{daysNeededForRank1And2}</span>
+              <span class="time-label">days needed</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="farming-note">
+          Note: Using stamina potions or gems to refill will reduce the time needed further.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Priority Section -->
+  <section class="ss-priority-section">
+    <h2 class="ss-shop-items-title">Shop Priority Guide</h2>
+    <p class="priority-intro">
+      Not sure what to buy first? Here's the recommended priority order for the shop items:
+    </p>
+
+    <!-- Rank 1 - Highest Priority -->
+    <div class="priority-rank-section">
+      <div class="priority-rank-header rank-1">
+        <span class="rank-badge">Rank 1</span>
+        <span class="rank-label">Highest Priority</span>
+      </div>
+      <div class="priority-items-grid">
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="One_Two_Three_Jump!.jpg"
+              alt="One, Two, Three, Jump!"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">One, Two, Three, Jump!</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="One_Two_Three_Jump!_Melody.jpg"
+              alt="One, Two, Three, Jump! Melody"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">One, Two, Three, Jump! Melody</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rank 2 - High Priority -->
+    <div class="priority-rank-section">
+      <div class="priority-rank-header rank-2">
+        <span class="rank-badge">Rank 2</span>
+        <span class="rank-label">High Priority</span>
+      </div>
+      <div class="priority-items-grid">
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Wind_Essence.jpg"
+              alt="Wind Essence"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Wind Essence</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Cerulean_Ticket.jpg"
+              alt="Cerulean Ticket"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Cerulean Ticket</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Sprout_Ticket.jpg"
+              alt="Sprout Ticket"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Sprout Ticket</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Star_Emblem_Polisher.jpg"
+              alt="Star Emblem Polisher"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Star Emblem Polisher</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Magic_Sound_game_cartridge.jpg"
+              alt="Magic Sound Game Cartridge"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Magic Sound Game Cartridge</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Duloos_Essence.jpg"
+              alt="Duloos Essence"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Duloos Essence</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Eternal_Gloom_core.jpg"
+              alt="Eternal Gloom Core"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Eternal Gloom Core</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rank 3 - Medium Priority -->
+    <div class="priority-rank-section">
+      <div class="priority-rank-header rank-3">
+        <span class="rank-badge">Rank 3</span>
+        <span class="rank-label">Medium Priority</span>
+      </div>
+      <div class="priority-items-grid">
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Starlit_Colored_Glass.jpg"
+              alt="Starlit Colored Glass"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Starlit Colored Glass</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Monolith_Stairs_Pass.jpg"
+              alt="Monolith Stairs Pass"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Monolith Stairs Pass</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Duloos_soul_remnant.jpg"
+              alt="Duloos Soul Remnant"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Duloos Soul Remnant</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Luman_Essence.jpg"
+              alt="Lumen Essence"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Lumen Essence</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Rhythm_game_cartridge.jpg"
+              alt="Rhythm Game Cartridge"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Rhythm Game Cartridge</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Novice_Trekker_Promotion_Box.jpg"
+              alt="Novice Trekker Promotion Box"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Novice Trekker Promotion Box</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Beginner_cartridge_Box.jpg"
+              alt="Beginner Cartridge Box"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Beginner Cartridge Box</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Novice_Disc_Promotion_Box.jpg"
+              alt="Novice Disc Promotion Box"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Novice Disc Promotion Box</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rank 4 - Low Priority -->
+    <div class="priority-rank-section">
+      <div class="priority-rank-header rank-4">
+        <span class="rank-badge">Rank 4</span>
+        <span class="rank-label">Low Priority</span>
+      </div>
+      <div class="priority-items-grid">
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Beyond_the_dream.jpg"
+              alt="Beyond the Dream"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Beyond the Dream</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Blossom_Porcelain_Cup.jpg"
+              alt="Blossom Porcelain Cup"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Blossom Porcelain Cup</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Chilling_Wind_Spinner.jpg"
+              alt="Chilling Wind Spinner"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Chilling Wind Spinner</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Fragrant_Ice_Delight.jpg"
+              alt="Fragrant Ice Delight"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Fragrant Ice Delight</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages
+              imageName="Trekker's_Handwritten_Encyclopedia.jpg"
+              alt="Trekker's Handwritten Encyclopedia"
+              className="item-image"
+            />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Trekker's Handwritten Encyclopedia</h3>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-image">
+            <BeyondTheDreamImages imageName="Dorra.jpg" alt="Dorra" className="item-image" />
+          </div>
+          <div class="priority-card-info">
+            <h3 class="priority-card-title">Dorra</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ss-shop-event-items">
+    <h2 class="ss-shop-items-title">Shop Event Items</h2>
+
+    <div class="shop-items-grid">
+      {
+        shopItems.map(item => (
+          <div class="shop-item-card" data-rarity={item.rarity}>
+            <div class="item-image-wrapper">
+              <BeyondTheDreamImages imageName={item.image} alt={item.name} className="item-image" />
+            </div>
+
+            <div class="item-info">
+              <h3 class="item-title">{item.name}</h3>
+
+              <div class="item-stats">
+                <div class="stat-row">
+                  <span class="stat-label">Stock:</span>
+                  <span class="stat-value stock-amount">
+                    {item.stockType === 'unlimited' ? '∞' : item.stockLeft}
+                  </span>
+                </div>
+
+                <div class="stat-row">
+                  <span class="stat-label">Cost:</span>
+                  <div class="cost-display">
+                    <BeyondTheDreamImages
+                      imageName="Healthy_Rice_Ball.jpg"
+                      alt={event.currency.name}
+                      className="price-icon"
+                    />
+                    <span class="stat-value item-cost">{item.price || item.cost || 0}</span>
+                  </div>
+                </div>
+
+                <div class="stat-row">
+                  <span class="stat-label">Qty:</span>
+                  <span class="stat-value">x{item.quantity}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Quest Rewards Section (if data exists) -->
+  {
+    questCategories.length > 0 && (
+      <section class="quest-rewards-section">
+        <h2 class="ss-shop-items-title">Quest Rewards</h2>
+
+        {questCategories.map(category => {
+          // Map category title to banner image
+          const bannerMap = {
+            'Common Quests': 'CommonQuestBanner.jpg',
+            'Challenge Quests': 'ChallengeQuestBanner.jpg',
+            'Adventure Quests': 'AdventureQuestBanner.jpg',
+            'Special Quests': 'SpecialQuestBanner.jpg',
+          };
+          const bannerImage = bannerMap[category.title] || 'CommonQuestBanner.jpg';
+
+          return (
+            <div class="quest-category">
+              <div class="quest-banner-wrapper">
+                <BeyondTheDreamImages
+                  imageName={bannerImage}
+                  alt={category.title}
+                  className="quest-banner-image"
+                  width={1200}
+                  height={400}
+                  quality={95}
+                />
+              </div>
+
+              <h3 class="quest-category-title">{category.title}</h3>
+
+              {category.completionRewards && (
+                <div class="quest-completion-rewards">
+                  <p class="quest-completion-label">
+                    After finishing all quests you get these rewards:
+                  </p>
+                  <p class="quest-rewards-text">{category.completionRewards}</p>
+                </div>
+              )}
+
+              {category.quests.length > 0 && (
+                <div class="quest-table-container">
+                  <table class="quest-table">
+                    <thead>
+                      <tr>
+                        <th>Quest Name</th>
+                        <th>{event.currency.name}</th>
+                        {category.quests.some(q => q.gemsReward) && <th>Gems</th>}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {category.quests.map(quest => (
+                        <tr>
+                          <td>{quest.name}</td>
+                          <td>{quest.currency}</td>
+                          {category.quests.some(q => q.gemsReward) && (
+                            <td>{quest.gemsReward ? `x${quest.gemsReward}` : '—'}</td>
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </section>
+    )
+  }
+
+  <!-- Stage Rewards Section (if data exists) -->
+  {
+    event.stages && (
+      <section class="quest-rewards-section">
+        <h2 class="ss-shop-items-title">Stage Rewards</h2>
+
+        <div class="stage-rewards-grid">
+          {Object.entries(event.stages).map(([stageTypeKey, stageType]) => (
+            <div class="stage-reward-group">
+              <h3>{stageType.title}</h3>
+              <div class="stage-table-container">
+                <table class="stage-table">
+                  <thead>
+                    <tr>
+                      <th>Stage Name</th>
+                      <th>{event.currency.name}</th>
+                      {stageType.stages?.[0]?.gemsReward !== undefined && <th>Gems</th>}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {stageType.stages?.map(stage => (
+                      <tr>
+                        <td>{stage.name}</td>
+                        <td>{stage.firstClearReward || 0}</td>
+                        {stageType.stages[0]?.gemsReward !== undefined && (
+                          <td>{stage.gemsReward ? `x${stage.gemsReward}` : '—'}</td>
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {stageType.totalFirstClearRewards && (
+                <p class="total-reward">
+                  Total First Clear Rewards:{' '}
+                  <strong>{stageType.totalFirstClearRewards.toLocaleString()}</strong>{' '}
+                  {event.currency.name}
+                  {stageType.totalGemsRewards && (
+                    <span> + {stageType.totalGemsRewards.toLocaleString()} Gems</span>
+                  )}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+</BeyondTheDreamLayout>

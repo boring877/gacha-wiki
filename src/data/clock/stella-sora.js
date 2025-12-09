@@ -17,12 +17,12 @@ const SS_RESET_MINUTE_UTC_MINUS_7 = 0;
 const SS_MAINTENANCE_START_UTC_MINUS_7 = '2025-10-28T03:00:00Z';
 const SS_MAINTENANCE_END_UTC_MINUS_7 = '2025-10-28T09:00:00Z';
 
-// A Finale Echoing Event periods in UTC-7
-// Event Duration: Nov 10, 2025 after maintenance – Nov 17, 2025 12:59 (UTC-7) - Extended to align with Banner 1
-// Event Shop & Reward Exchange: Nov 10, 2025 after maintenance – Nov 30, 2025 08:00 (UTC-7)
-const SS_EVENT_START_UTC_MINUS_7 = '2025-11-10T19:00:00Z'; // Nov 10, 2025 after maintenance (estimated 12:00 UTC-7) = Nov 10, 2025 19:00:00Z (UTC)
-const SS_EVENT_DURATION_END_UTC_MINUS_7 = '2025-11-17T19:59:00Z'; // Nov 17, 2025 12:59 UTC-7 = Nov 17, 2025 19:59:00Z (UTC) - Extended to match banner end
-const SS_EVENT_SHOP_END_UTC_MINUS_7 = '2025-11-30T15:00:00Z'; // Nov 30, 2025 08:00 UTC-7 = Nov 30, 2025 15:00:00Z (UTC)
+// Beyond the Dream Event periods in UTC-7
+// Event Duration: Dec 8, 2025 after maintenance – Dec 22, 2025 12:59 (UTC-7)
+// Event Shop & Reward Exchange: Dec 8, 2025 after maintenance – Dec 29, 2025 12:59 (UTC-7)
+const SS_EVENT_START_UTC_MINUS_7 = '2025-12-08T19:00:00Z'; // Dec 8, 2025 after maintenance (estimated 12:00 UTC-7) = Dec 8, 2025 19:00:00Z (UTC)
+const SS_EVENT_DURATION_END_UTC_MINUS_7 = '2025-12-22T19:59:00Z'; // Dec 22, 2025 12:59 UTC-7 = Dec 22, 2025 19:59:00Z (UTC)
+const SS_EVENT_SHOP_END_UTC_MINUS_7 = '2025-12-29T19:59:00Z'; // Dec 29, 2025 12:59 UTC-7 = Dec 29, 2025 19:59:00Z (UTC)
 
 export const stellaSoraConfig = {
   id: 'stella-sora',
@@ -60,11 +60,11 @@ export const stellaSoraConfig = {
 
   // Event information
   event: {
-    name: 'A Finale Echoing',
+    name: 'Beyond the Dream',
     start: SS_EVENT_START_UTC_MINUS_7,
     durationEnd: SS_EVENT_DURATION_END_UTC_MINUS_7,
     shopEnd: SS_EVENT_SHOP_END_UTC_MINUS_7,
-    subtitle: 'Beta Event - Face Opera Ghost: Rovina in the Monolith',
+    subtitle: 'Event Shop - Exchange Healthy Rice Balls for exclusive rewards',
   },
 
   // Banner information - centralized banner data for clock display

@@ -118,8 +118,8 @@ const games = [
     const banner1End = new Date('2025-12-29T12:59:59-07:00');
     updateBanner('banner', banner1End, now);
 
-    // Banner 2: A Fateful Encounter - Gerie (Dec 22, 2025 19:59 UTC-7)
-    const banner2End = new Date('2025-12-22T19:59:59-07:00');
+    // Banner 2: A Fateful Encounter - Gerie (Dec 22, 2025 12:59 UTC-7)
+    const banner2End = new Date('2025-12-22T12:59:59-07:00');
     updateBanner('banner2', banner2End, now);
   }
 
@@ -319,10 +319,10 @@ const games = [
     // Update event period display text
     updateEventDisplay();
 
-    // Event duration timer (Nov 18, 2025 to Dec 1, 2025 at 12:59 UTC-7)
+    // Beyond the Dream Event duration timer (Dec 8, 2025 to Dec 22, 2025 at 12:59 UTC-7)
     const eventDurationEl = document.getElementById('eventDurationTime');
     if (eventDurationEl) {
-      const eventEnd = new Date('2025-12-01T12:59:59-07:00');
+      const eventEnd = new Date('2025-12-22T12:59:59-07:00');
       const timeDiff = eventEnd.getTime() - now.getTime();
 
       if (timeDiff > 0) {
@@ -339,10 +339,10 @@ const games = [
       }
     }
 
-    // Event shop timer (Nov 18, 2025 to Dec 8, 2025 at 15:00 UTC-7)
+    // Beyond the Dream Event shop timer (Dec 8, 2025 to Dec 29, 2025 at 12:59 UTC-7)
     const eventShopEl = document.getElementById('eventShopTime');
     if (eventShopEl) {
-      const shopEnd = new Date('2025-12-08T15:00:00-07:00');
+      const shopEnd = new Date('2025-12-29T12:59:59-07:00');
       const timeDiff = shopEnd.getTime() - now.getTime();
 
       if (timeDiff > 0) {
@@ -365,13 +365,13 @@ const games = [
     // Update event duration period display
     const eventPeriodDurationEl = document.getElementById('eventPeriodDuration');
     if (eventPeriodDurationEl) {
-      eventPeriodDurationEl.textContent = 'Nov 18 – Dec 1, 2025 (UTC-7)';
+      eventPeriodDurationEl.textContent = 'Dec 8 – Dec 22, 2025 (UTC-7)';
     }
 
     // Update event shop period display
     const eventPeriodShopEl = document.getElementById('eventShopPeriod');
     if (eventPeriodShopEl) {
-      eventPeriodShopEl.textContent = 'Nov 18 – Dec 8, 2025 (UTC-7)';
+      eventPeriodShopEl.textContent = 'Dec 8 – Dec 29, 2025 (UTC-7)';
     }
   }
 

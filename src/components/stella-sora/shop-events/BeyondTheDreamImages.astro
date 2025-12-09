@@ -1,0 +1,155 @@
+---
+/**
+ * Beyond the Dream Event Images Component
+ * Handles image imports and mapping for Beyond the Dream event
+ */
+
+import { Image } from 'astro:assets';
+
+// Import all images for Beyond the Dream event
+import healthyRiceBall from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Healthy_Rice_Ball.jpg';
+import oneTwoThreeJump from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/One_Two_Three_Jump!.jpg';
+import oneTwoThreeJumpMelody from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/One_Two_Three_Jump!_Melody.jpg';
+import beyondTheDream from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Beyond_the_dream.jpg';
+import windEssence from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Wind_Essence.jpg';
+import ceruleanTicket from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Cerulean_Ticket.jpg';
+import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Sprout_Ticket.jpg';
+import starEmblemPolisher from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Star_Emblem_Polisher.jpg';
+import blossomPorcelainCup from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Blossom_Porcelain_Cup.jpg';
+import chillingWindSpinner from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Chilling_Wind_Spinner.jpg';
+import fragrantIceDelight from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Fragrant_Ice_Delight.jpg';
+import eternalGloomCore from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Eternal_Gloom_core.jpg';
+import magicSoundGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Magic_Sound_game_cartridge.jpg';
+import duloosEssence from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Duloos_Essence.jpg';
+import monolithStairsPass from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Monolith_Stairs_Pass.jpg';
+import trekkersHandwrittenEncyclopedia from "../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Trekker's_Handwritten_Encyclopedia.jpg";
+import starlitColoredGlass from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Starlit_Colored_Glass.jpg';
+import lumenEssence from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Luman_Essence.jpg';
+import rhythmGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Rhythm_game_cartridge.jpg';
+import duloosSoulRemnant from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Duloos_soul_remnant.jpg';
+import noviceTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Novice_Trekker_Promotion_Box.jpg';
+import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Beginner_cartridge_Box.jpg';
+import noviceDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Novice_Disc_Promotion_Box.jpg';
+import dorra from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/Dorra.jpg';
+
+// Import quest banners
+import commonQuestBanner from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/CommonQuestBanner.jpg';
+import challengeQuestBanner from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/ChallengeQuestBanner.jpg';
+import adventureQuestBanner from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/AdventureQuestBanner.jpg';
+import specialQuestBanner from '../../../assets/images/games/stella-sora/EventShop/Beyond_the_dream/SpecialQuestBanner.jpg';
+
+// Clean, unified image mapping for Beyond the Dream - supports both original filenames and semantic camelCase keys
+const imageMap = {
+  // Original filenames from data (with extensions)
+  'Healthy_Rice_Ball.jpg': healthyRiceBall,
+  'One_Two_Three_Jump!.jpg': oneTwoThreeJump,
+  'One_Two_Three_Jump!_Melody.jpg': oneTwoThreeJumpMelody,
+  'Beyond_the_dream.jpg': beyondTheDream,
+  'Wind_Essence.jpg': windEssence,
+  'Cerulean_Ticket.jpg': ceruleanTicket,
+  'Sprout_Ticket.jpg': sproutTicket,
+  'Star_Emblem_Polisher.jpg': starEmblemPolisher,
+  'Blossom_Porcelain_Cup.jpg': blossomPorcelainCup,
+  'Chilling_Wind_Spinner.jpg': chillingWindSpinner,
+  'Fragrant_Ice_Delight.jpg': fragrantIceDelight,
+  'Eternal_Gloom_core.jpg': eternalGloomCore,
+  'Magic_Sound_game_cartridge.jpg': magicSoundGameCartridge,
+  'Duloos_Essence.jpg': duloosEssence,
+  'Monolith_Stairs_Pass.jpg': monolithStairsPass,
+  "Trekker's_Handwritten_Encyclopedia.jpg": trekkersHandwrittenEncyclopedia,
+  'Starlit_Colored_Glass.jpg': starlitColoredGlass,
+  'Luman_Essence.jpg': lumenEssence,
+  'Rhythm_game_cartridge.jpg': rhythmGameCartridge,
+  'Duloos_soul_remnant.jpg': duloosSoulRemnant,
+  'Novice_Trekker_Promotion_Box.jpg': noviceTrekkerPromotionBox,
+  'Beginner_cartridge_Box.jpg': beginnerCartridgeBox,
+  'Novice_Disc_Promotion_Box.jpg': noviceDiscPromotionBox,
+  'Dorra.jpg': dorra,
+  'CommonQuestBanner.jpg': commonQuestBanner,
+  'ChallengeQuestBanner.jpg': challengeQuestBanner,
+  'AdventureQuestBanner.jpg': adventureQuestBanner,
+  'SpecialQuestBanner.jpg': specialQuestBanner,
+
+  // Semantic name variations for easier usage
+  'Healthy Rice Ball': healthyRiceBall,
+  'One, Two, Three, Jump!': oneTwoThreeJump,
+  'One, Two, Three, Jump! Melody': oneTwoThreeJumpMelody,
+  'Beyond the Dream': beyondTheDream,
+  'Wind Essence': windEssence,
+  'Cerulean Ticket': ceruleanTicket,
+  'Sprout Ticket': sproutTicket,
+  'Star Emblem Polisher': starEmblemPolisher,
+  'Blossom Porcelain Cup': blossomPorcelainCup,
+  'Chilling Wind Spinner': chillingWindSpinner,
+  'Fragrant Ice Delight': fragrantIceDelight,
+  'Eternal Gloom Core': eternalGloomCore,
+  'Magic Sound Game Cartridge': magicSoundGameCartridge,
+  'Duloos Essence': duloosEssence,
+  'Monolith Stairs Pass': monolithStairsPass,
+  "Trekker's Handwritten Encyclopedia": trekkersHandwrittenEncyclopedia,
+  'Starlit Colored Glass': starlitColoredGlass,
+  'Lumen Essence': lumenEssence,
+  'Luman Essence': lumenEssence,
+  'Rhythm Game Cartridge': rhythmGameCartridge,
+  'Duloos Soul Remnant': duloosSoulRemnant,
+  'Novice Trekker Promotion Box': noviceTrekkerPromotionBox,
+  'Beginner Cartridge Box': beginnerCartridgeBox,
+  'Novice Disc Promotion Box': noviceDiscPromotionBox,
+  Dorra: dorra,
+  'Chess Piece of Skill': dorra, // fallback since we don't have this image
+  'Chess piece of skill': dorra,
+};
+
+// Props interface
+interface Props {
+  imageName: string;
+  alt?: string;
+  class?: string;
+  className?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt = '',
+  class: classNameFromClass,
+  className,
+  width = 400,
+  height = 400,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 90,
+} = Astro.props;
+
+// Use either className or class (for backwards compatibility)
+const finalClassName = className || classNameFromClass || '';
+
+// Get the image module based on the imageName - use filename fallback like other components
+const imageNameStr = String(imageName || '');
+const filename = imageNameStr.split('/').pop() || 'Healthy_Rice_Ball.jpg';
+const convertedFilenameJpg = filename.replace(/ /g, '_') + '.jpg';
+const convertedFilenamePng = filename.replace(/ /g, '_') + '.png';
+const imageModule =
+  imageMap[imageName] ||
+  imageMap[convertedFilenameJpg] ||
+  imageMap[convertedFilenamePng] ||
+  imageMap[filename + '.jpg'] ||
+  imageMap[filename + '.png'] ||
+  healthyRiceBall;
+---
+
+<!-- Use Astro's Image component for optimization -->
+<Image
+  src={imageModule}
+  alt={alt || imageName.replace(/_/g, ' ').replace('.jpg', '').replace('.png', '')}
+  width={width}
+  height={height}
+  class={finalClassName}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

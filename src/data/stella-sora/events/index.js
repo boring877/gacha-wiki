@@ -6,11 +6,13 @@
 import { aFinaleEchoingEvent } from './a-finale-echoing.js';
 import { theGhostShipHauntsTheDeepEvent } from './the-ghost-ship-haunts-the-deep.js';
 import { guildSweetGuildEvent } from './guild-sweet-guild.js';
+import { beyondTheDreamEvent } from './beyond-the-dream.js';
 
 export const stellaSoraShopEvents = [
   aFinaleEchoingEvent,
   theGhostShipHauntsTheDeepEvent,
   guildSweetGuildEvent,
+  beyondTheDreamEvent,
 ];
 
 /**
@@ -42,3 +44,4 @@ export const getFeaturedShopEvents = () => {
 export { aFinaleEchoingEvent } from './a-finale-echoing.js';
 export { theGhostShipHauntsTheDeepEvent } from './the-ghost-ship-haunts-the-deep.js';
 export { guildSweetGuildEvent } from './guild-sweet-guild.js';
+export { beyondTheDreamEvent } from './beyond-the-dream.js';
