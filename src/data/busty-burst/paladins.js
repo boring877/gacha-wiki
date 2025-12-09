@@ -289,6 +289,16 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Healer',
     tier: 'A',
   },
+  {
+    id: 'shaty',
+    name: 'Shaty',
+    fileName: 'Shaty',
+    image: '/images/games/Busty_Burst/CharImg/Shaty.png',
+    rarity: 'SSR',
+    element: 'Wind',
+    role: 'DPS',
+    tier: 'SS',
+  },
 ];
 
 export const getPaladinById = id => {

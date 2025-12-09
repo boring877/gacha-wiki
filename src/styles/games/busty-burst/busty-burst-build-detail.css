@@ -53,6 +53,25 @@
   padding: 1.25rem;
 }
 
+/* Character Info Row (Position & Attack Type) */
+.bb-build-info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.bb-build-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bb-build-info-label {
+  font-size: 0.95rem;
+  color: var(--bb-text-primary);
+  font-weight: 500;
+}
+
 /* Item Row (Weapon/Accessory with image) */
 .bb-build-item-row {
   display: flex;
@@ -155,6 +174,103 @@
   font-size: 0.9rem;
   color: var(--bb-text-primary);
   font-weight: 500;
+}
+
+/* Main Stats Grid */
+.bb-build-main-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.bb-build-main-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  background: var(--bb-bg-primary);
+  border-radius: 6px;
+  border: 1px solid var(--bb-border);
+}
+
+.bb-build-main-stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bb-build-main-stat-slot {
+  font-size: 0.8rem;
+  color: var(--bb-text-secondary);
+  font-weight: 500;
+}
+
+.bb-build-main-stat-value {
+  font-size: 0.9rem;
+  color: var(--bb-text-primary);
+  font-weight: 600;
+}
+
+.bb-build-main-stat-substat {
+  font-size: 0.75rem;
+  color: var(--bb-text-secondary);
+  font-style: italic;
+}
+
+/* Substat Priority */
+.bb-build-substat-priority {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bb-build-substat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bb-build-substat-label {
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary);
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.bb-build-substat-values {
+  font-size: 0.95rem;
+  color: var(--bb-text-primary);
+  font-weight: 500;
+}
+
+/* Substat Tips */
+.bb-build-substat-tips {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bb-border);
+}
+
+.bb-build-tips-label {
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.bb-build-tips-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.bb-build-tip-item {
+  font-size: 0.85rem;
+  color: var(--bb-text-primary);
+  line-height: 1.4;
 }
 
 /* Responsive Design - Tablet */

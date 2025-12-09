@@ -23,7 +23,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Excellent choices for early progression',
           color: '#feca57',
         },
-        characters: ['messeria', 'teresia', 'dark_knight'],
+        characters: ['messeria', 'teresia', 'dark_knight', 'shaty'],
       },
       {
         tier: 'S',

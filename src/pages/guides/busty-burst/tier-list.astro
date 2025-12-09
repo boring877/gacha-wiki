@@ -65,7 +65,11 @@ const gameTitle = 'Tier Lists';
                   <div class="bb-tier-character-card">
                     <div class="bb-character-image-wrapper">
                       <PaladinImage
-                        fileName={`${character.fileName || character.name.replace(/\s+/g, '_')}.jpg`}
+                        fileName={
+                          character.image
+                            ? character.image.split('/').pop()
+                            : `${character.fileName || character.name.replace(/\s+/g, '_')}.jpg`
+                        }
                         alt={character.name}
                         width={140}
                         height={140}
@@ -116,7 +120,11 @@ const gameTitle = 'Tier Lists';
                   <div class="bb-tier-character-card">
                     <div class="bb-character-image-wrapper">
                       <PaladinImage
-                        fileName={`${character.fileName || character.name.replace(/\s+/g, '_')}.jpg`}
+                        fileName={
+                          character.image
+                            ? character.image.split('/').pop()
+                            : `${character.fileName || character.name.replace(/\s+/g, '_')}.jpg`
+                        }
                         alt={character.name}
                         width={140}
                         height={140}

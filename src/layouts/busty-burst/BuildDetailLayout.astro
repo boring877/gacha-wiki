@@ -12,6 +12,8 @@ import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
 import PaladinImage from '../../components/busty-burst/PaladinImage.astro';
 import WeaponImage from '../../components/busty-burst/WeaponImage.astro';
 import AccessoryImage from '../../components/busty-burst/AccessoryImage.astro';
+import PositionImage from '../../components/busty-burst/PositionImage.astro';
+import TypeofATKImage from '../../components/busty-burst/TypeofATKImage.astro';
 
 // Import CSS files
 import '../../styles/games/busty-burst/busty-burst-colors.css';
@@ -28,6 +30,15 @@ export interface Props {
     character: {
       name: string;
       fileName: string;
+      imageExt?: string;
+    };
+    position?: {
+      name: string;
+      image: string;
+    };
+    attackType?: {
+      name: string;
+      image: string;
     };
     weapon: {
       name: string;
@@ -38,6 +49,13 @@ export interface Props {
       name: string;
       images?: string[];
       setEffects: Array<{ pieces: number; effect: string }>;
+      mainStats?: Array<{ slot: string; imageFile: string; best: string; substat?: string }>;
+      substatPriority?: {
+        priority: string[];
+        secondary: string[];
+        other?: string[];
+        tips?: string[];
+      };
     };
   };
 }
@@ -84,7 +102,7 @@ const description = `Build guide for ${build.character.name} in Busty Burst`;
               <div class="bb-build-detail-header">
                 <div class="bb-build-detail-char-image">
                   <PaladinImage
-                    fileName={`${build.character.fileName}.jpg`}
+                    fileName={`${build.character.fileName}.${build.character.imageExt || 'jpg'}`}
                     alt={build.character.name}
                     width={120}
                     height={120}
@@ -93,6 +111,45 @@ const description = `Build guide for ${build.character.name} in Busty Burst`;
                 </div>
                 <h1 class="bb-build-detail-title">{build.character.name} Build</h1>
               </div>
+
+              <!-- Position & Attack Type Section -->
+              {
+                (build.position || build.attackType) && (
+                  <section class="bb-build-detail-section">
+                    <h2 class="bb-build-section-title">Character Info</h2>
+                    <div class="bb-build-detail-card">
+                      <div class="bb-build-info-row">
+                        {build.position && (
+                          <div class="bb-build-info-item">
+                            <PositionImage
+                              fileName={build.position.image}
+                              alt={build.position.name}
+                              width={40}
+                              height={40}
+                              loading="eager"
+                            />
+                            <span class="bb-build-info-label">Position: {build.position.name}</span>
+                          </div>
+                        )}
+                        {build.attackType && (
+                          <div class="bb-build-info-item">
+                            <TypeofATKImage
+                              fileName={build.attackType.image}
+                              alt={build.attackType.name}
+                              width={40}
+                              height={40}
+                              loading="eager"
+                            />
+                            <span class="bb-build-info-label">
+                              Attack Type: {build.attackType.name}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </section>
+                )
+              }
 
               <!-- Weapon Section -->
               <section class="bb-build-detail-section">
@@ -152,6 +209,82 @@ const description = `Build guide for ${build.character.name} in Busty Burst`;
                   </div>
                 </div>
               </section>
+
+              <!-- Best Main Stats Section -->
+              {
+                build.accessory.mainStats && build.accessory.mainStats.length > 0 && (
+                  <section class="bb-build-detail-section">
+                    <h2 class="bb-build-section-title">Best Main Stats by Slot</h2>
+                    <div class="bb-build-detail-card">
+                      <div class="bb-build-main-stats-grid">
+                        {build.accessory.mainStats.map(stat => (
+                          <div class="bb-build-main-stat-item">
+                            <AccessoryImage
+                              fileName={stat.imageFile}
+                              alt={stat.slot}
+                              width={40}
+                              height={40}
+                              loading="lazy"
+                            />
+                            <div class="bb-build-main-stat-info">
+                              <span class="bb-build-main-stat-slot">{stat.slot}</span>
+                              <span class="bb-build-main-stat-value">{stat.best}</span>
+                              {stat.substat && (
+                                <span class="bb-build-main-stat-substat">Sub: {stat.substat}</span>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </section>
+                )
+              }
+
+              <!-- Substat Priority Section -->
+              {
+                build.accessory.substatPriority && (
+                  <section class="bb-build-detail-section">
+                    <h2 class="bb-build-section-title">Substat Priority</h2>
+                    <div class="bb-build-detail-card">
+                      <div class="bb-build-substat-priority">
+                        <div class="bb-build-substat-row">
+                          <span class="bb-build-substat-label">Priority:</span>
+                          <span class="bb-build-substat-values">
+                            {build.accessory.substatPriority.priority.join(', ')}
+                          </span>
+                        </div>
+                        <div class="bb-build-substat-row">
+                          <span class="bb-build-substat-label">Secondary:</span>
+                          <span class="bb-build-substat-values">
+                            {build.accessory.substatPriority.secondary.join(', ')}
+                          </span>
+                        </div>
+                        {build.accessory.substatPriority.other &&
+                          build.accessory.substatPriority.other.length > 0 && (
+                            <div class="bb-build-substat-row">
+                              <span class="bb-build-substat-label">Other:</span>
+                              <span class="bb-build-substat-values">
+                                {build.accessory.substatPriority.other.join(', ')}
+                              </span>
+                            </div>
+                          )}
+                      </div>
+                      {build.accessory.substatPriority.tips &&
+                        build.accessory.substatPriority.tips.length > 0 && (
+                          <div class="bb-build-substat-tips">
+                            <span class="bb-build-tips-label">Tips:</span>
+                            <ul class="bb-build-tips-list">
+                              {build.accessory.substatPriority.tips.map(tip => (
+                                <li class="bb-build-tip-item">{tip}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                    </div>
+                  </section>
+                )
+              }
             </div>
           </div>
         </main>

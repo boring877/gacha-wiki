@@ -1,9 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 
-// Import weapon images
-import MagicGrenadeImg from '../../assets/images/games/Busty_Burst/WPImg/Magic_Grenade_of_annihilation.png';
-import CrowbowImg from '../../assets/images/games/Busty_Burst/WPImg/Crowwbow_of_annihilation.png';
+// Import position images
+import BackImg from '../../assets/images/games/Busty_Burst/Position/Back.png';
+import FrontImg from '../../assets/images/games/Busty_Burst/Position/Front.png';
+import MidImg from '../../assets/images/games/Busty_Burst/Position/Mid.png';
 
 export interface Props {
   fileName: string;
@@ -14,12 +15,13 @@ export interface Props {
   loading?: 'lazy' | 'eager';
 }
 
-const { fileName, alt, width = 80, height = 80, class: className, loading = 'lazy' } = Astro.props;
+const { fileName, alt, width = 40, height = 40, class: className, loading = 'lazy' } = Astro.props;
 
 // Map file names to imported image modules
 const imageMap: Record<string, ImageMetadata> = {
-  'Magic_Grenade_of_annihilation.png': MagicGrenadeImg,
-  'Crowwbow_of_annihilation.png': CrowbowImg,
+  'Back.png': BackImg,
+  'Front.png': FrontImg,
+  'Mid.png': MidImg,
 };
 
 // Get the image module based on the fileName
@@ -28,26 +30,26 @@ const imageModule = imageMap[fileName];
 
 {
   imageModule && (
-    <div class={`weapon-image-wrapper ${className || ''}`}>
+    <div class={`position-image-wrapper ${className || ''}`}>
       <Image
         src={imageModule}
         alt={alt}
         width={width}
         height={height}
         loading={loading}
-        class="weapon-image"
+        class="position-image"
       />
     </div>
   )
 }
 
 <style>
-  .weapon-image-wrapper {
+  .position-image-wrapper {
     display: inline-block;
     overflow: hidden;
   }
 
-  .weapon-image {
+  .position-image {
     width: 100%;
     height: 100%;
     object-fit: contain;

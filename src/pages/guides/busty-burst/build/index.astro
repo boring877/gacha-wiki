@@ -21,7 +21,7 @@ const { meta, characters } = buildConfig;
             <a href={character.buildLink} class="bb-build-card">
               <div class="bb-build-card-image">
                 <PaladinImage
-                  fileName={`${character.fileName}.jpg`}
+                  fileName={`${character.fileName}.${character.imageExt || 'jpg'}`}
                   alt={character.name}
                   width={100}
                   height={100}

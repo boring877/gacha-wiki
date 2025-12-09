@@ -19,5 +19,18 @@ export const buildConfig = {
       tier: 'SSS',
       buildLink: '/guides/busty-burst/build/festive-attire-estiriel',
     },
+    {
+      id: 'shaty',
+      name: 'Shaty',
+      fileName: 'Shaty',
+      imageExt: 'png',
+      rarity: 'SSR',
+      element: 'Wind',
+      role: 'DPS',
+      skills: ['Physical'],
+      actionSpeed: 'Normal',
+      tier: 'SS',
+      buildLink: '/guides/busty-burst/build/shaty',
+    },
   ],
 };
