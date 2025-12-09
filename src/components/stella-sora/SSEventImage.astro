@@ -92,20 +92,17 @@ const imageSrc = eventImageMap[imageName] || event1Image;
 ---
 
 <div class={`ss-event-image ${className}`}>
-  <picture>
-    <source srcset={imageSrc.src} type="image/webp" sizes={sizes} />
-    <Image
-      src={imageSrc}
-      alt={alt}
-      width={width}
-      height={height}
-      loading={loading}
-      format={format}
-      quality={quality}
-      sizes={sizes}
-      style="object-fit: contain; border-radius: 8px; max-width: 100%; height: auto;"
-    />
-  </picture>
+  <Image
+    src={imageSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    format={format}
+    quality={quality}
+    sizes={sizes}
+    style="object-fit: contain; border-radius: 8px; max-width: 100%; height: auto;"
+  />
 </div>
 
 <style>

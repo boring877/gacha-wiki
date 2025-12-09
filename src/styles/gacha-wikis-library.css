@@ -36,9 +36,19 @@
 /* === GAMES GRID === */
 .games-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem 0;
+  /* Single column on mobile, auto-fit for larger screens */
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+/* Two columns on tablet and larger */
+@media (min-width: 768px) {
+  .games-section {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
 }
 
 /* === GAME CARD === */
@@ -214,27 +224,21 @@
 /* Mobile tablet breakpoint optimizations */
 @media (max-width: 768px) {
   .main-content {
-    padding: 2rem 1rem;
-  }
-
-  /* Adjust grid for tablet - force single column on smaller screens */
-  .games-section {
-    grid-template-columns: 1fr; /* Single column on tablets and mobile */
-    padding: 2rem 0.5rem; /* Less padding on smaller screens */
+    padding: 1.5rem 1rem;
   }
 
   .page-title {
-    font-size: var(--text-3xl); /* Use size from typography system */
+    font-size: var(--text-3xl);
   }
 
   .hero-title {
-    font-size: var(--text-3xl); /* Use size from typography system */
+    font-size: var(--text-3xl);
   }
 
   .game-card {
-    padding: 0.8rem;
+    padding: 1rem;
     height: auto;
-    min-height: 100px;
+    min-height: 90px;
   }
 
   .game-header {
@@ -242,111 +246,91 @@
   }
 
   .game-icon img {
-    /* Responsive sizing handled by clamp() in main styles */
-    /* These smaller mobile-specific sizes override clamp() if needed */
-    width: clamp(45px, 10vw, 65px);
-    height: clamp(45px, 10vw, 65px);
+    width: 60px;
+    height: 60px;
   }
 
   .game-title {
-    font-size: var(--text-lg); /* Use size from typography system */
+    font-size: var(--text-lg);
   }
 
   .game-description {
-    font-size: var(--text-xs); /* Use size from typography system */
+    font-size: var(--text-sm);
+    -webkit-line-clamp: 2;
+    min-height: 2.8em;
+    max-height: 2.8em;
   }
 
   .game-arrow {
-    font-size: var(--text-xl); /* Use size from typography system */
+    font-size: var(--text-xl);
   }
 }
 
 /* Mobile phone breakpoint optimizations */
 @media (max-width: 480px) {
   .page-title {
-    font-size: var(--text-2xl); /* Use size from typography system */
+    font-size: var(--text-2xl);
   }
 
   .hero-title {
-    font-size: var(--text-xl); /* Use size from typography system */
+    font-size: var(--text-xl);
   }
 
   .main-content {
-    padding: 1rem 0.5rem; /* Small but non-zero horizontal padding */
-  }
-
-  /* Adjust grid for mobile - single column */
-  .games-section {
-    grid-template-columns: 1fr; /* Single column on mobile */
-    padding: 0 0.5rem; /* Proper horizontal padding */
-    gap: 0.5rem; /* Minimal gap between cards */
+    padding: 1rem 0.75rem;
   }
 
   .game-card {
-    padding: 0.5rem; /* Minimal internal padding on mobile */
-    height: auto; /* Allow flexible height */
-    min-height: 75px; /* Even smaller minimum height for mobile */
-    width: 100%; /* Full width of container */
+    padding: 0.875rem;
+    height: auto;
+    min-height: 80px;
+    width: 100%;
   }
 
   .game-header {
-    gap: 0.6rem;
+    gap: 0.75rem;
   }
 
   .game-icon img {
-    /* Much smaller responsive sizing for mobile */
-    width: 35px;
-    height: 35px;
+    width: 55px;
+    height: 55px;
   }
 
   .game-title {
-    font-size: var(--text-sm); /* Smaller for mobile */
+    font-size: var(--text-base);
   }
 
   .game-description {
-    font-size: 11px; /* Even smaller on mobile */
-    -webkit-line-clamp: 1; /* Only 1 line on mobile for compactness */
-    min-height: 1.4em;
-    max-height: 1.4em;
+    font-size: var(--text-xs);
+    -webkit-line-clamp: 2;
+    min-height: 2.8em;
+    max-height: 2.8em;
   }
 
   .game-sections {
-    font-size: 11px; /* Smaller on mobile */
+    font-size: 11px;
   }
 
   .game-arrow {
-    font-size: var(--text-lg); /* Use size from typography system */
-  }
-
-  /* Improve game sections text on mobile */
-  .game-sections {
-    font-size: 11px; /* Consistent with description size */
-    line-height: 1.3; /* Slightly tighter line height on mobile */
-    min-height: 1.3em; /* Adjust for new line height */
-    max-height: 1.3em; /* Fixed max height */
+    font-size: var(--text-lg);
   }
 }
 
 /* Extra small mobile breakpoint for very small screens */
 @media (max-width: 400px) {
   .main-content {
-    padding: 0.5rem 0.25rem; /* Minimal horizontal padding */
-  }
-
-  .games-section {
-    padding: 0 0.25rem; /* Minimal horizontal padding */
-    gap: 0.4rem; /* Even smaller gap */
+    padding: 0.75rem 0.5rem;
   }
 
   .game-card {
-    padding: 0.4rem; /* Ultra-minimal internal padding */
-    min-height: 70px; /* Even smaller minimum height */
-    width: 100%; /* Ensure full width */
+    padding: 0.75rem;
+    min-height: 75px;
+    width: 100%;
   }
 
   .game-icon img {
-    width: 32px;
-    height: 32px;
+    width: 50px;
+    height: 50px;
   }
 }
 
