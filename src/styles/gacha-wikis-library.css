@@ -56,6 +56,9 @@
   text-decoration: none;
   color: inherit;
   display: block;
+  /* Prevent link from overflowing */
+  min-width: 0;
+  max-width: 100%;
 }
 
 .game-card {
@@ -70,6 +73,9 @@
   min-height: 120px;
   display: flex;
   flex-direction: column;
+  /* Prevent card from overflowing */
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* === GAME CARD COMPONENTS === */
@@ -78,6 +84,9 @@
   align-items: center;
   gap: 1rem;
   flex: 1;
+  /* Prevent overflow */
+  min-width: 0;
+  max-width: 100%;
 }
 
 .game-icon {
@@ -115,6 +124,7 @@
   flex-direction: column;
   justify-content: center;
   min-height: 0;
+  min-width: 0;
   overflow: hidden;
 }
 
