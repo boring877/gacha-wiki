@@ -1,6 +1,24 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'december-9-maintenance',
+    title: 'December 9 Maintenance Update',
+    date: 'December 9, 2025',
+    type: 'maintenance',
+    summary:
+      'Major maintenance on December 9, 2025 (14:00, ~2 hours) brings "The Fake Villain\'s Daughter: Red-Clad Saint Snow (Part 1)" event, Ibaraki-doji (Debuffer, Fire) recruitment, "Perfect Makeup?" memory, Lavinia rerun, Rift Wave XVII, Annihilation Battle [Queen] Guinevere, Battle Pass update, and 300 Luminite Crystal compensation.',
+    url: '/guides/zone-nova/updates/maintenance-december-9-2025/',
+  },
+  {
+    id: 'ibaraki-doji-recruitment',
+    title: 'Limited Recruitment Character: Ibaraki-doji',
+    date: 'December 9, 2025',
+    type: 'recruitment',
+    summary:
+      'New SSR character Ibaraki-doji (Debuffer, Fire) available through Limited Recruitment from December 9 - December 23, 2025. Fire-attribute ranged archer whose ultimate skill inflicts [Curse] on enemies, enabling teammates to deal more damage.',
+    url: '/guides/zone-nova/updates/announcement-ibaraki-doji-recruitment/',
+  },
+  {
     id: 'november-25-maintenance',
     title: 'November 25 Maintenance Update',
     date: 'November 25, 2025',

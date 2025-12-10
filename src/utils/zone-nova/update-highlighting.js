@@ -36,11 +36,11 @@ function cleanUpdateCache() {
 export const updateHighlightPatterns = {
   // Character names (including current and popular characters)
   characters:
-    /\b(?:Ravinia|Gaia|Yuis|Thor|Odin|Athena|Freyja|Freya|Guinevere|Cleopatra|Apollo|Artemis|Hera|Loki|Lancelot|Jeanne\s+d'Arc|Jeanne-d'Arc|Anubis|Bastet|Horus|Tefnut|Shu|Afrodite|Rose|Penny|Naiya|Nini|Shanna|Kela|Chiya|Leviathan|Snow\s+Girl|Zashiki\s+Warashi|Belphegar|Master\s+Mother|Legendary\s+Character|SSR\s+Character)\b/gi,
+    /\b(?:Ibaraki-dōji|Ibaraki-doji|Shuten-dōji|Shuten-doji|Tamamo-no-Mae|Lavinia|Ravinia|Gaia|Yuis|Thor|Odin|Athena|Freyja|Freya|Guinevere|Cleopatra|Apollo|Artemis|Hera|Loki|Lancelot|Jeanne\s+d'Arc|Jeanne-d'Arc|Anubis|Bastet|Horus|Tefnut|Shu|Afrodite|Rose|Penny|Naiya|Nini|Shanna|Kela|Chiya|Leviathan|Snow\s+Girl|Zashiki\s+Warashi|Belphegar|Master\s+Mother|Legendary\s+Character|SSR\s+Character)\b/gi,
 
   // Event types and activities
   events:
-    /\b(?:Limited\s+(?:Time\s+)?(?:Character\s+)?Recruitment|Limited\s+Pursuit\s+Recruitment|Maintenance|Battle\s+Pass|Space-Time\s+Rift|Rift\s+Tide|Rift\s+Surge|BETA\s+Squad|Divine\s+Spirit\s+Trial|Apocalypse\s+Battle|Guild\s+(?:War|Raid|Trials)|Arena|Dungeon|Resource\s+Dungeon|Character\s+(?:Promotion|Awakening)\s+Dungeon|Pursuit\s+Promotion\s+Dungeon|Double\s+Rewards|Login\s+Rewards|Military\s+Supply|Activity\s+Packages?|Celebration|Popularity\s+(?:Vote|Voting)|Thunder\s+King|Divine\s+Twilight|Twilight\s+of\s+the\s+(?:Divine|Ancients?)|Winter's\s+Prelude|Ice\s+Sealed\s+(?:Mist|Finale)|Harmony\s+Generation)\b/gi,
+    /\b(?:Limited\s+(?:Time\s+)?(?:Character\s+)?Recruitment|Limited\s+(?:Remembrance|Memory)\s+Recruitment|Limited\s+Pursuit\s+Recruitment|Maintenance|Battle\s+Pass|Space-Time\s+Rift|Rift\s+Tide|Rift\s+Surge|BETA\s+Squad|Divine\s+Spirit\s+Trial|Apocalypse\s+Battle|Guild\s+(?:War|Raid|Trials)|Arena|Dungeon|Resource\s+Dungeon|Character\s+(?:Promotion|Awakening)\s+Dungeon|Pursuit\s+Promotion\s+Dungeon|Double\s+Rewards|Login\s+Rewards|Military\s+Supply|Activity\s+Packages?|Celebration|Popularity\s+(?:Vote|Voting)|Thunder\s+King|Divine\s+Twilight|Twilight\s+of\s+the\s+(?:Divine|Ancients?)|Winter's\s+Prelude|Ice\s+Sealed\s+(?:Mist|Finale)|Harmony\s+Generation|Hyakki\s+Yagyō)\b/gi,
 
   // Rewards and compensation
   rewards:
@@ -52,7 +52,7 @@ export const updateHighlightPatterns = {
 
   // Game mechanics and attributes
   mechanics:
-    /\b(?:Healer|Guardian|Destroyer|Rogue|Buffer|DPS|Support|Tank|Furnace\s+Attribute|Holy|Fire|Ice|Wind|Chaos|Divine\s+Saint?|close-combat\s+support|long-range\s+attacks?|large-scale\s+killing\s+damage|DoT-based\s+damage|consecutive\s+ultimate\s+skills?|high\s+mobility|enhanced\s+bullets?|attack\s+speed\s+boost|exclusive\s+(?:memory|SSR\s+memories)|awakening\s+level|energy\s+recovery)\b/gi,
+    /\b(?:Healer|Guardian|Destroyer|Rogue|Buffer|DPS|Support|Tank|Interference\s+Master|Furnace\s+Attribute|Holy|Fire|Ice|Wind|Chaos|Divine\s+Saint?|close-combat\s+support|long-range\s+attacks?|ranged\s+archer|large-scale\s+killing\s+damage|DoT-based\s+damage|consecutive\s+ultimate\s+skills?|high\s+mobility|enhanced\s+bullets?|attack\s+speed\s+boost|exclusive\s+(?:memory|memories|SSR\s+memories)|awakening\s+level|energy\s+recovery|\[Curse\]|Curse)\b/gi,
 
   // Special announcement terms
   announcements:
