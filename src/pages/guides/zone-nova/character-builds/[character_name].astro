@@ -17,6 +17,7 @@ import { morganLeFayData } from '../../../../data/zone-nova/characters/morgan-le
 import { guinevereData } from '../../../../data/zone-nova/characters/guinevere.js';
 import { artemisData } from '../../../../data/zone-nova/characters/artemis.js';
 import { freyeData } from '../../../../data/zone-nova/characters/freye.js';
+import { ibarakiDojiData } from '../../../../data/zone-nova/characters/ibaraki-doji.js';
 
 export const prerender = true;
 
@@ -88,7 +89,9 @@ const characterData =
                     ? artemisData
                     : finalCharacter.slug === 'freye'
                       ? freyeData
-                      : null;
+                      : finalCharacter.slug === 'ibaraki-doji'
+                        ? ibarakiDojiData
+                        : null;
 
 // Memory card URL mapping for easy maintenance
 const memoryCardUrls = {
@@ -134,6 +137,9 @@ const memoryCardUrls = {
   // Freye memory cards
   'Lamplight Study': '/guides/zone-nova/memories/lamplight-study/',
   'Sleepy Guardian': '/guides/zone-nova/memories/sleepy-guardian/',
+
+  // Ibaraki-doji memory cards
+  'A Perfect Makeup Look?': '/guides/zone-nova/memories/a-perfect-makeup-look/',
 };
 
 // Helper function to get badge class names

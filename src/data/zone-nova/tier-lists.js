@@ -34,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-11-25',
+  lastUpdated: '2025-12-10',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
     SSS: [
@@ -85,14 +85,19 @@ export const PVE_TIER_LIST = {
       { name: 'Bastet' },
       { name: 'Rose' },
     ],
-    Situational: [{ name: 'Nini' }, { name: 'Loki' }, { name: 'Belphegar' }],
+    Situational: [
+      { name: 'Nini' },
+      { name: 'Loki' },
+      { name: 'Belphegar' },
+      { name: 'Ibaraki-doji' },
+    ],
   },
 };
 
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2025-11-25',
+  lastUpdated: '2025-12-10',
   description: 'PvP character rankings.',
   tiers: {
     SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }],
@@ -133,14 +138,19 @@ export const PVP_TIER_LIST = {
       { name: 'Apep' },
     ],
     A: [{ name: 'Tefnut' }, { name: 'Rose' }, { name: 'Mordred' }, { name: 'Leviathan' }],
-    Situational: [{ name: 'Loki' }, { name: 'Belphegar' }, { name: 'Nini' }],
+    Situational: [
+      { name: 'Loki' },
+      { name: 'Belphegar' },
+      { name: 'Nini' },
+      { name: 'Ibaraki-doji' },
+    ],
   },
 };
 
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2025-11-25',
+  lastUpdated: '2025-12-10',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -192,14 +202,19 @@ export const RIFT_TIER_LIST = {
       { name: 'Artemis' },
       { name: 'Snow Girl' },
     ],
-    Situational: [{ name: 'Loki' }, { name: 'Belphegar' }, { name: 'Nini' }],
+    Situational: [
+      { name: 'Loki' },
+      { name: 'Belphegar' },
+      { name: 'Nini' },
+      { name: 'Ibaraki-doji' },
+    ],
   },
 };
 
 // Guild Raid Tier List
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
-  lastUpdated: '2025-11-25',
+  lastUpdated: '2025-12-10',
   description:
     'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
@@ -251,7 +266,12 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Artemis' },
       { name: 'Snow Girl' },
     ],
-    Situational: [{ name: 'Loki' }, { name: 'Belphegar' }, { name: 'Nini' }],
+    Situational: [
+      { name: 'Loki' },
+      { name: 'Belphegar' },
+      { name: 'Nini' },
+      { name: 'Ibaraki-doji' },
+    ],
   },
 };
 

@@ -15,6 +15,7 @@ import { artemisBuild } from './character-builds/artemis.js';
 import { freyeChaosBuild } from './character-builds/freye.js';
 import { freyaBuild } from './character-builds/freya.js';
 import { athenaBuild } from './character-builds/athena.js';
+import { ibarakiDojiBuild } from './character-builds/ibaraki-doji.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -62,6 +63,9 @@ export const CHARACTER_BUILDS = {
 
   // Athena Build - SSR Wind Normal Attack Speed Buffer
   athena: athenaBuild,
+
+  // Ibaraki-doji Build - SSR Fire Ultimate Damage Amplification Debuffer
+  'ibaraki-doji': ibarakiDojiBuild,
 };
 
 // Generate builds for available characters only

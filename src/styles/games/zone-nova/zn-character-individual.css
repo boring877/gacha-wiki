@@ -1546,4 +1546,241 @@
   border-radius: 3px;
 }
 
-/* Animation for skill state title pulse effect */
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                          DAMAGE ANALYSIS SECTION                        */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.damage-analysis-section {
+  margin-bottom: 3rem;
+}
+
+.damage-analysis-description {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 172, 193, 0.1) 0%, rgba(0, 150, 136, 0.05) 100%);
+  border-radius: 12px;
+  border-left: 4px solid var(--teal-crystal);
+}
+
+.damage-breakdown-container {
+  margin-bottom: 2rem;
+}
+
+.damage-breakdown-title {
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.damage-breakdown-table {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  border: 1px solid var(--amber-glow);
+  overflow: hidden;
+}
+
+.damage-breakdown-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 0.8fr;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--amber-glow) 0%, #ff9800 100%);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.damage-breakdown-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 0.8fr;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 183, 77, 0.2);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease;
+}
+
+.damage-breakdown-row:last-child {
+  border-bottom: none;
+}
+
+.damage-breakdown-row:hover {
+  background: rgba(255, 183, 77, 0.05);
+}
+
+.breakdown-col {
+  display: flex;
+  align-items: center;
+}
+
+.breakdown-col.source {
+  font-weight: 600;
+}
+
+.breakdown-col.value.highlight {
+  color: var(--teal-crystal);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.breakdown-col.type {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.breakdown-col.duration {
+  color: var(--rose-quartz);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.damage-totals-container {
+  margin-top: 2rem;
+}
+
+.damage-totals-title {
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.damage-totals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.damage-total-card {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 2px solid var(--teal-crystal);
+  position: relative;
+  overflow: hidden;
+}
+
+.damage-total-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal-crystal) 0%, var(--amber-glow) 100%);
+}
+
+.damage-total-label {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.damage-total-value {
+  color: var(--teal-crystal);
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0 0 0.75rem 0;
+  background: linear-gradient(135deg, var(--teal-crystal), var(--amber-glow));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.damage-total-calculation {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem 0;
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.damage-total-note {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  margin: 0;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Damage Analysis Mobile Responsive */
+@media (max-width: 768px) {
+  .damage-breakdown-header,
+  .damage-breakdown-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .damage-breakdown-header {
+    display: none;
+  }
+
+  .damage-breakdown-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--bg-primary);
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 183, 77, 0.3);
+  }
+
+  .damage-breakdown-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .breakdown-col::before {
+    font-weight: 700;
+    color: var(--amber-glow);
+    margin-right: 0.5rem;
+  }
+
+  .breakdown-col.source::before {
+    content: 'Source: ';
+  }
+
+  .breakdown-col.value::before {
+    content: 'Value: ';
+  }
+
+  .breakdown-col.type::before {
+    content: 'Type: ';
+  }
+
+  .breakdown-col.duration::before {
+    content: 'Duration: ';
+  }
+
+  .damage-totals-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .damage-total-value {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .damage-analysis-description {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .damage-total-card {
+    padding: 1.2rem;
+  }
+
+  .damage-total-value {
+    font-size: 1.6rem;
+  }
+}

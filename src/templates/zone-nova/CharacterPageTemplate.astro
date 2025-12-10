@@ -470,6 +470,48 @@ function getTagCategory(tag: string): string {
   </div>
 </section>
 
+<!-- Damage Analysis Section (if available) -->
+{characterData.damageAnalysis && (
+  <section class="content-section damage-analysis-section">
+    <h2 class="section-title">{characterData.damageAnalysis.title}</h2>
+    <p class="damage-analysis-description">{characterData.damageAnalysis.description}</p>
+
+    <div class="damage-breakdown-container">
+      <h3 class="damage-breakdown-title">Debuff Breakdown</h3>
+      <div class="damage-breakdown-table">
+        <div class="damage-breakdown-header">
+          <span class="breakdown-col source">Source</span>
+          <span class="breakdown-col value">Value</span>
+          <span class="breakdown-col type">Type</span>
+          <span class="breakdown-col duration">Duration</span>
+        </div>
+        {characterData.damageAnalysis.breakdown.map((item) => (
+          <div class="damage-breakdown-row">
+            <span class="breakdown-col source">{item.source}</span>
+            <span class="breakdown-col value highlight">{item.value}</span>
+            <span class="breakdown-col type">{item.type}</span>
+            <span class="breakdown-col duration">{item.duration}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="damage-totals-container">
+      <h3 class="damage-totals-title">Total Debuffs</h3>
+      <div class="damage-totals-grid">
+        {characterData.damageAnalysis.totals.map((total) => (
+          <div class="damage-total-card">
+            <div class="damage-total-label">{total.label}</div>
+            <div class="damage-total-value">{total.value}</div>
+            <div class="damage-total-calculation">{total.calculation}</div>
+            {total.note && <div class="damage-total-note">{total.note}</div>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
 <!-- Node Tree Section -->
 <section class="content-section">
   <h2 class="section-title">Node Tree</h2>

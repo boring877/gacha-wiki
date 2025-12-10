@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import {
+  ibarakiDojiData,
+  ibarakiDojiSEO,
+} from '../../../../data/zone-nova/characters/ibaraki-doji.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={ibarakiDojiSEO.title}
+  description={ibarakiDojiSEO.description}
+  gameTitle={ibarakiDojiData.name}
+  character={ibarakiDojiData}
+>
+  <CharacterPageTemplate characterData={ibarakiDojiData} />
+</CharacterIndividualLayout>
