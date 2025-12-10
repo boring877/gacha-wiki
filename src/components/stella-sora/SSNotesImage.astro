@@ -1,0 +1,89 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+  imageName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  width = 60,
+  height = 60,
+  loading = 'lazy',
+  class: className,
+  quality = 90,
+} = Astro.props;
+
+// Import all notes images from src/assets
+type ImageModule = { default: any } | undefined;
+const imageModules: Record<string, ImageModule> = import.meta.glob(
+  '/src/assets/images/games/stella-sora/Notes/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+
+// Build the image path - handle both with and without extension
+let imageKey = imageName;
+if (!imageKey.includes('.')) {
+  imageKey = `${imageKey}.jpg`;
+}
+
+const imagePath = `/src/assets/images/games/stella-sora/Notes/${imageKey}`;
+const imageModule = imageModules[imagePath];
+
+let imageSrc: any;
+let imageAlt = alt;
+if (imageModule?.default) {
+  imageSrc = imageModule.default;
+} else {
+  // Fallback if image not found
+  imageSrc = '';
+  imageAlt = `Image not found: ${alt}`;
+}
+---
+
+{
+  imageSrc ? (
+    <Image
+      src={imageSrc}
+      alt={imageAlt}
+      width={width}
+      height={height}
+      loading={loading}
+      class={`notes-image ${className || ''}`}
+      quality={quality}
+      format="webp"
+    />
+  ) : (
+    <div
+      class={`notes-image-placeholder ${className || ''}`}
+      style={`width: ${width}px; height: ${height}px;`}
+    >
+      <span>?</span>
+    </div>
+  )
+}
+
+<style>
+  .notes-image {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .notes-image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ss-bg-tertiary, #1a1a2e);
+    border: 1px solid var(--ss-border, #333);
+    border-radius: 8px;
+    color: var(--ss-text-secondary, #888);
+    font-size: 0.75rem;
+  }
+</style>

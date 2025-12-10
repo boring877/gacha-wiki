@@ -5,6 +5,7 @@ import SSCharacterImage from '../../../../components/stella-sora/SSCharacterImag
 import SSElementImage from '../../../../components/stella-sora/SSElementImage.astro';
 import PotentialImage from '../../../../components/stella-sora/PotentialImage.astro';
 import DiscImage from '../../../../components/stella-sora/DiscImage.astro';
+import SSNotesImage from '../../../../components/stella-sora/SSNotesImage.astro';
 import HighlightedText from '../../../../components/stella-sora/HighlightedText.astro';
 import { STELLA_SORA_CHARACTERS } from '../../../../data/stella-sora/characters.js';
 
@@ -717,14 +718,24 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
                         {harmonySkill.requirements && (
                           <div class="skill-requirements">
                             <h6>Activation Requirements:</h6>
-                            {Object.entries(harmonySkill.requirements).map(
-                              ([melody, requirement]) => (
-                                <div class="requirement">
-                                  <span class="melody-name">{melody}</span>
-                                  <span class="requirement-level">{requirement}</span>
-                                </div>
-                              )
-                            )}
+                            <div class="requirements-list">
+                              {Object.entries(harmonySkill.requirements).map(
+                                ([melody, requirement]) => (
+                                  <div class="requirement">
+                                    <SSNotesImage
+                                      imageName={`${melody.replace(/ /g, '_')}.jpg`}
+                                      alt={melody}
+                                      width={32}
+                                      height={32}
+                                    />
+                                    <div class="requirement-info">
+                                      <span class="melody-name">{melody}</span>
+                                      <span class="requirement-level">{requirement}</span>
+                                    </div>
+                                  </div>
+                                )
+                              )}
+                            </div>
                           </div>
                         )}
                       </div>
@@ -747,14 +758,24 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
                     </div>
                     <div class="skill-requirements">
                       <h6>Activation Requirements:</h6>
-                      {Object.entries(character.disc.skills.harmony.requirements).map(
-                        ([melody, requirement]) => (
-                          <div class="requirement">
-                            <span class="melody-name">{melody}</span>
-                            <span class="requirement-level">{requirement}</span>
-                          </div>
-                        )
-                      )}
+                      <div class="requirements-list">
+                        {Object.entries(character.disc.skills.harmony.requirements).map(
+                          ([melody, requirement]) => (
+                            <div class="requirement">
+                              <SSNotesImage
+                                imageName={`${melody.replace(/ /g, '_')}.jpg`}
+                                alt={melody}
+                                width={32}
+                                height={32}
+                              />
+                              <div class="requirement-info">
+                                <span class="melody-name">{melody}</span>
+                                <span class="requirement-level">{requirement}</span>
+                              </div>
+                            </div>
+                          )
+                        )}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -777,14 +798,24 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
                     </div>
                     <div class="skill-requirements">
                       <h6>Activation Requirements:</h6>
-                      {Object.entries(character.disc.skills.skill.requirements).map(
-                        ([melody, requirement]) => (
-                          <div class="requirement">
-                            <span class="melody-name">{melody}</span>
-                            <span class="requirement-level">{requirement}</span>
-                          </div>
-                        )
-                      )}
+                      <div class="requirements-list">
+                        {Object.entries(character.disc.skills.skill.requirements).map(
+                          ([melody, requirement]) => (
+                            <div class="requirement">
+                              <SSNotesImage
+                                imageName={`${melody.replace(/ /g, '_')}.jpg`}
+                                alt={melody}
+                                width={32}
+                                height={32}
+                              />
+                              <div class="requirement-info">
+                                <span class="melody-name">{melody}</span>
+                                <span class="requirement-level">{requirement}</span>
+                              </div>
+                            </div>
+                          )
+                        )}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -806,13 +837,25 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
                   {Object.entries(character.disc.support.melodies || {}).map(
                     ([melodyKey, melodyData]: [string, any]) => (
                       <div class="melody-item">
-                        <h5>Melody of {melodyKey.charAt(0).toUpperCase() + melodyKey.slice(1)}</h5>
-                        <p>
-                          <strong>Base Effect:</strong> {melodyData.baseEffect}
-                        </p>
-                        <p>
-                          <strong>Max Level (Lv.99) Effect:</strong> {melodyData.maxEffect}
-                        </p>
+                        <div class="melody-header">
+                          <SSNotesImage
+                            imageName={`Melody_of_${melodyKey.charAt(0).toUpperCase() + melodyKey.slice(1)}.jpg`}
+                            alt={`Melody of ${melodyKey.charAt(0).toUpperCase() + melodyKey.slice(1)}`}
+                            width={50}
+                            height={50}
+                          />
+                          <h5>
+                            Melody of {melodyKey.charAt(0).toUpperCase() + melodyKey.slice(1)}
+                          </h5>
+                        </div>
+                        <div class="melody-effects">
+                          <p>
+                            <strong>Base Effect:</strong> {melodyData.baseEffect}
+                          </p>
+                          <p>
+                            <strong>Max Level (Lv.99) Effect:</strong> {melodyData.maxEffect}
+                          </p>
+                        </div>
                       </div>
                     )
                   )}
