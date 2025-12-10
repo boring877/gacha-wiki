@@ -14,6 +14,7 @@ import { kasimiraData } from './characters/kasimira.js';
 import { minovaData } from './characters/minova.js';
 import { mistiqueData } from './characters/mistique.js';
 import { nanohaData } from './characters/nanoha.js';
+import { nazukaData } from './characters/nazuka.js';
 import { nazunaData } from './characters/nazuna.js';
 import { shiaData } from './characters/shia.js';
 import { tiliaData } from './characters/tilia.js';
@@ -93,6 +94,7 @@ export const STELLA_SORA_CHARACTERS = [
   minovaData,
   mistiqueData,
   nanohaData,
+  nazukaData,
   nazunaData,
   shiaData,
   tiliaData,
