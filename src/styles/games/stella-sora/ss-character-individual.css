@@ -3,12 +3,25 @@
 
 /* ===== INDIVIDUAL CHARACTER PAGE STYLES ===== */
 
+/* Prevent horizontal scroll on mobile */
+.stella-sora-body {
+  overflow-x: hidden;
+}
+
+.stella-sora-main,
+.stella-sora-container {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 .character-content {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
+  max-width: 100%;
   padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 /* Character Header Section */
@@ -1409,11 +1422,44 @@
 
 /* ===== RESPONSIVE DESIGN FOR INDIVIDUAL CHARACTER PAGES ===== */
 
+/* Tablet - First breakpoint for medium screens */
+@media (max-width: 1024px) {
+  .character-content {
+    padding: 0 1rem;
+    gap: 1.75rem;
+  }
+
+  .character-header {
+    padding: 1.75rem;
+  }
+
+  .character-image-detail {
+    width: 250px;
+    height: 250px;
+  }
+
+  .disc-image-large {
+    width: 250px;
+    height: 250px;
+  }
+
+  .potential-item {
+    padding: 1.25rem;
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
 /* Mobile - Responsive adjustments for clean table layout */
 @media (max-width: 768px) {
   .character-content {
     padding: 0 0.75rem;
     gap: 1.5rem;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .character-header {
@@ -1427,7 +1473,27 @@
     text-align: center;
   }
 
-  /* character-image-large responsive moved to centralized CSS */
+  .character-image-detail {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* Force single column grid on mobile */
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Touch-friendly badge sizes */
+  .rarity-badge,
+  .element-badge,
+  .position-badge,
+  .skill-type {
+    min-height: 32px;
+    padding: 0.5rem 0.75rem;
+    display: inline-flex;
+    align-items: center;
+  }
 
   /* Disc Section Mobile Adjustments */
   .character-disc {
@@ -1767,8 +1833,9 @@
     gap: 1rem;
   }
 
-  .character-image-large {
-    max-width: 200px;
+  .character-image-detail {
+    width: 150px;
+    height: 150px;
   }
 
   .character-details h1 {
