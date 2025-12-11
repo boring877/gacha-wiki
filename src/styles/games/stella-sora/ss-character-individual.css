@@ -933,9 +933,25 @@
   align-items: flex-start;
 }
 
-/* potential-image moved to ss-character-database.css as .potential-image-detail */
+/* Potential Image Container */
+.potential-image-detail {
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid var(--ss-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/* potential-image img moved to centralized CSS */
+.potential-image-detail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 .potential-content {
   flex: 1;
@@ -1668,23 +1684,38 @@
   .potential-item {
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    gap: 1rem;
+    padding: 1.25rem;
     text-align: center;
   }
 
-  /* potential-image responsive moved to centralized CSS */
+  .potential-image-detail {
+    width: 200px;
+    height: 200px;
+  }
+
+  .potential-content {
+    width: 100%;
+  }
 
   .potential-header {
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .potential-name {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
+    text-align: center;
+  }
+
+  .potential-level {
+    margin: 0;
   }
 
   .potential-description {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     text-align: left;
   }
 
@@ -2006,13 +2037,21 @@
 
   .potential-item {
     padding: 1rem;
-    gap: 1rem;
+    gap: 0.75rem;
   }
 
-  /* potential-image responsive moved to centralized CSS */
+  .potential-image-detail {
+    width: 150px;
+    height: 150px;
+  }
 
   .potential-name {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
+  }
+
+  .potential-level {
+    font-size: var(--text-xs);
+    padding: 0.25rem 0.5rem;
   }
 
   .potential-description {

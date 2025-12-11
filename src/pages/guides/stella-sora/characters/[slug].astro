@@ -312,10 +312,12 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
                 </div>
                 <div class="skill-meta">
                   {skill.level && <span class="skill-level">Lv. {skill.level}</span>}
-                  {skill.cooldown && (
+                  {skill.cooldown !== undefined && skill.cooldown > 0 && (
                     <span class="skill-cooldown">Cooldown: {skill.cooldown}s</span>
                   )}
-                  {skill.energyCost && <span class="skill-energy">Energy: {skill.energyCost}</span>}
+                  {skill.energyCost !== undefined && skill.energyCost > 0 && (
+                    <span class="skill-energy">Energy: {skill.energyCost}</span>
+                  )}
                 </div>
               </div>
 

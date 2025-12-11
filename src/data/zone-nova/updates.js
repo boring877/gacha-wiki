@@ -1,6 +1,24 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'december-16-event-announcement',
+    title: 'December 16 Event Announcement',
+    date: 'December 16, 2025',
+    type: 'announcement',
+    summary:
+      'Major update on December 16, 2025 brings Sigurd (Rogue, Fire) limited character gacha, "I Am Your Christmas Present" limited remembrance gacha, Battle Pass cumulative recharge and gacha missions, and Christmas Login Event with up to 20 Mirage Cubes.',
+    url: '/guides/zone-nova/updates/announcement-december-16-2025/',
+  },
+  {
+    id: 'sigurd-recruitment',
+    title: 'Limited Character Gacha: Sigurd',
+    date: 'December 16, 2025',
+    type: 'recruitment',
+    summary:
+      "New SSR character Sigurd (Rogue, Fire) available through Limited Character Gacha from December 16 - December 30, 2025. One of Hela's servants, bathed in dragon blood with near-immortal defensive abilities. Frigga's adopted daughter from Asar Manor.",
+    url: '/guides/zone-nova/updates/announcement-sigurd-recruitment/',
+  },
+  {
     id: 'december-9-maintenance',
     title: 'December 9 Maintenance Update',
     date: 'December 9, 2025',

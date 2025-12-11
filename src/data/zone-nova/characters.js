@@ -654,6 +654,7 @@ export const ZONE_NOVA_CHARACTERS = [
     slug: 'shanna',
     detailUrl: '/guides/zone-nova/characters/shanna',
   },
+  // Sigurd (id: 45) - TBA, will be added when stats are available
   {
     id: 23,
     name: 'Shu',
