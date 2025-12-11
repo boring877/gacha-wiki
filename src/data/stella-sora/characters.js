@@ -3,6 +3,8 @@
 // All character stats are based on maximum level
 
 import { amberData } from './characters/amber.js';
+import { annData } from './characters/ann.js';
+import { canaceData } from './characters/canace.js';
 import { chitoseData } from './characters/chitose.js';
 import { chixiaData } from './characters/chixia.js';
 import { floraData } from './characters/flora.js';
@@ -16,6 +18,7 @@ import { mistiqueData } from './characters/mistique.js';
 import { nanohaData } from './characters/nanoha.js';
 import { nazukaData } from './characters/nazuka.js';
 import { nazunaData } from './characters/nazuna.js';
+import { noyaData } from './characters/noya.js';
 import { shiaData } from './characters/shia.js';
 import { tiliaData } from './characters/tilia.js';
 
@@ -83,6 +86,8 @@ export const gameInfo = {
 // Character array - sorted alphabetically by name
 export const STELLA_SORA_CHARACTERS = [
   amberData,
+  annData,
+  canaceData,
   chitoseData,
   chixiaData,
   floraData,
@@ -96,6 +101,7 @@ export const STELLA_SORA_CHARACTERS = [
   nanohaData,
   nazukaData,
   nazunaData,
+  noyaData,
   shiaData,
   tiliaData,
 ];

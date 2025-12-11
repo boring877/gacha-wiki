@@ -1,0 +1,141 @@
+---
+// Stella Sora Skill Image Component
+// Skill images are banner format (wide, not square)
+import { Image } from 'astro:assets';
+
+export interface Props {
+  characterName: string;
+  skillName: string;
+  alt: string;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+}
+
+const { characterName, skillName, alt, loading = 'lazy', class: className } = Astro.props;
+
+// Convert skill name to filename format
+// Remove special characters like colons, replace spaces with underscores
+const cleanSkillName = skillName
+  .replace(/:/g, '') // Remove colons
+  .replace(/ +/g, '_') // Replace spaces with underscores
+  .trim();
+const skillFileName = cleanSkillName + '.jpg';
+
+// Import all skill images using glob
+type ImageModule = { default: any } | undefined;
+const imageModules: Record<string, ImageModule> = import.meta.glob(
+  '/src/assets/images/games/stella-sora/SkillImg/**/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+
+// Try to find the image by character name and skill name
+let imageModule: ImageModule = undefined;
+const imagePath = `/src/assets/images/games/stella-sora/SkillImg/${characterName}/${skillFileName}`;
+imageModule = imageModules[imagePath];
+
+// If not found, try partial matching (skill name might be shortened in filename)
+if (!imageModule && skillFileName) {
+  // Get the first part of the skill name (before any colon or long description)
+  const skillNameParts = skillName.split(/[:\-]/)[0].trim().replace(/ +/g, '_');
+
+  for (const [key, value] of Object.entries(imageModules)) {
+    // Check if path contains character name
+    if (!key.toLowerCase().includes(characterName.toLowerCase())) continue;
+
+    // Get filename from path
+    const fileName =
+      key.split('/').pop()?.replace('.jpg', '').replace('.png', '').replace('.webp', '') || '';
+
+    // Try exact match first
+    if (fileName.toLowerCase() === cleanSkillName.toLowerCase()) {
+      imageModule = value;
+      break;
+    }
+
+    // Try partial match (filename contains the first part of skill name)
+    if (
+      fileName.toLowerCase().includes(skillNameParts.toLowerCase()) ||
+      skillNameParts.toLowerCase().includes(fileName.toLowerCase())
+    ) {
+      imageModule = value;
+      break;
+    }
+  }
+}
+
+let imageSrc: any;
+let imageAlt = alt;
+if (imageModule?.default) {
+  imageSrc = imageModule.default;
+} else {
+  // Fallback if image not found
+  imageSrc = '';
+  imageAlt = `Image not found: ${alt}`;
+}
+---
+
+<div class={`skill-image-container ${className || ''}`}>
+  {
+    imageSrc ? (
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        width={390}
+        height={110}
+        loading={loading}
+        class="skill-image"
+        quality={100}
+        format="webp"
+      />
+    ) : (
+      <div class="skill-image-placeholder">
+        <span>No Image</span>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .skill-image-container {
+    width: 100%;
+    max-width: 390px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      var(--ss-bg-tertiary, #1a1a2e) 0%,
+      var(--ss-bg-secondary, #252540) 100%
+    );
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--ss-border, #333);
+  }
+
+  .skill-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .skill-image-placeholder {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ss-bg-tertiary, #1a1a2e);
+    border: 1px dashed var(--ss-border, #333);
+    border-radius: 10px;
+  }
+
+  .skill-image-placeholder span {
+    font-size: 0.8rem;
+    color: var(--ss-text-muted, #666);
+  }
+
+  @media (max-width: 768px) {
+    .skill-image-container {
+      max-width: 100%;
+    }
+  }
+</style>

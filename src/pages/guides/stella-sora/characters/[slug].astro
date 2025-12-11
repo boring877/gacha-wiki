@@ -3,6 +3,7 @@
 import CharacterIndividualLayout from '../../../../layouts/stella-sora/CharacterIndividualLayout.astro';
 import SSCharacterImage from '../../../../components/stella-sora/SSCharacterImage.astro';
 import SSElementImage from '../../../../components/stella-sora/SSElementImage.astro';
+import SSSkillImage from '../../../../components/stella-sora/SSSkillImage.astro';
 import PotentialImage from '../../../../components/stella-sora/PotentialImage.astro';
 import DiscImage from '../../../../components/stella-sora/DiscImage.astro';
 import SSNotesImage from '../../../../components/stella-sora/SSNotesImage.astro';
@@ -301,23 +302,38 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
         {
           character.skills.map((skill, index) => (
             <div class="skill-card">
-              <div class="skill-header">
-                <div class="skill-title-container">
-                  <h3 class="skill-name">{skill.name}</h3>
-                  <span
-                    class={`skill-type skill-type-${skill.type.toLowerCase().replace(' ', '-')}`}
-                  >
-                    {skill.type}
-                  </span>
+              <div class="skill-card-top">
+                <div class="skill-info-section">
+                  <div class="skill-header">
+                    <div class="skill-title-row">
+                      <h3 class="skill-name">{skill.name}</h3>
+                      <span
+                        class={`skill-type skill-type-${skill.type.toLowerCase().replace(' ', '-')}`}
+                      >
+                        {skill.type}
+                      </span>
+                      {skill.level && <span class="skill-level">Lv. {skill.level}</span>}
+                    </div>
+                    {(skill.cooldown !== undefined && skill.cooldown > 0) ||
+                    (skill.energyCost !== undefined && skill.energyCost > 0) ? (
+                      <div class="skill-meta">
+                        {skill.cooldown !== undefined && skill.cooldown > 0 && (
+                          <span class="skill-cooldown">CD: {skill.cooldown}s</span>
+                        )}
+                        {skill.energyCost !== undefined && skill.energyCost > 0 && (
+                          <span class="skill-energy">Energy: {skill.energyCost}</span>
+                        )}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
-                <div class="skill-meta">
-                  {skill.level && <span class="skill-level">Lv. {skill.level}</span>}
-                  {skill.cooldown !== undefined && skill.cooldown > 0 && (
-                    <span class="skill-cooldown">Cooldown: {skill.cooldown}s</span>
-                  )}
-                  {skill.energyCost !== undefined && skill.energyCost > 0 && (
-                    <span class="skill-energy">Energy: {skill.energyCost}</span>
-                  )}
+
+                <div class="skill-banner">
+                  <SSSkillImage
+                    characterName={character.name}
+                    skillName={skill.name}
+                    alt={`${skill.name} - ${skill.type}`}
+                  />
                 </div>
               </div>
 

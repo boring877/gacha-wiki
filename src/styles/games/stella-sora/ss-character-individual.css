@@ -337,20 +337,31 @@
 
 /* Removed horizontal dividers between skills - they were causing visual issues */
 
+/* Skill Card Top - horizontal layout with info on left, banner on right */
+.skill-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.skill-info-section {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Skill Header - contains title, type badge, and meta info */
 .skill-header {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--ss-primary-subtle);
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.skill-title-container {
+.skill-title-row {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
@@ -363,12 +374,18 @@
   font-family: var(--font-primary);
 }
 
+/* Skill Banner - displays the skill image as a banner on right side */
+.skill-banner {
+  flex-shrink: 0;
+}
+
 /* Badge styles moved to ss-badge-colours.css */
 
 .skill-meta {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .skill-description {
@@ -1809,18 +1826,22 @@
     padding-bottom: 1rem;
   }
 
-  .skill-header {
+  /* Skill Card Top - Stack vertically on mobile */
+  .skill-card-top {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
+    gap: 1rem;
   }
 
-  .skill-title-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+  .skill-banner {
+    width: 100%;
+  }
+
+  .skill-header {
+    gap: 0.4rem;
+  }
+
+  .skill-title-row {
+    gap: 0.75rem;
   }
 
   .skill-name {
@@ -1830,7 +1851,7 @@
   /* Skill type styles moved to ss-badge-colours.css */
 
   .skill-meta {
-    align-items: flex-start;
+    gap: 0.4rem;
   }
 
   .skill-description {
@@ -2119,14 +2140,26 @@
     font-size: 1.4rem;
   }
 
+  /* Skill Card Top - Stack vertically on small mobile */
+  .skill-card-top {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
   .skill-header {
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
+    gap: 0.3rem;
+  }
+
+  .skill-title-row {
     gap: 0.5rem;
   }
 
   .skill-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .skill-meta {
+    gap: 0.3rem;
   }
 
   /* Skill type styles moved to ss-badge-colours.css */
