@@ -1,0 +1,199 @@
+# Gacha Wiki - LLM Information File
+# https://gachawiki.info
+
+> This file helps AI assistants understand and navigate this website efficiently.
+
+## About This Site
+
+Gacha Wiki is a comprehensive database for mobile gacha games including:
+- Zone Nova (ゾーンノヴァ) - Strategic team-based RPG
+- Silver and Blood (銀血の契約) - Dark fantasy vampire RPG
+- Horizon Walker - Tactical RPG with mercenaries
+- Stella Sora - Anime-style gacha RPG
+- Busty Burst - Fantasy gacha RPG with paladins
+
+The site provides character guides, build recommendations, tier lists, game mechanics, equipment databases, and event information.
+
+## Structured Data API (Recommended for AI)
+
+For efficient data access, use our JSON API endpoints instead of scraping HTML pages. One API call gives you all data for a category.
+
+### Master Index
+GET https://gachawiki.info/data/index.json
+Returns: Complete list of all available endpoints, games, and data types
+
+---
+
+## Zone Nova Endpoints
+
+GET https://gachawiki.info/data/zone-nova/characters.json
+Returns: All 44+ characters with stats, skills, and basic info
+
+GET https://gachawiki.info/data/zone-nova/builds.json
+Returns: Detailed build guides with skill priorities, memory cards, runes, awakenings, team synergies
+
+GET https://gachawiki.info/data/zone-nova/memories.json
+Returns: All 70+ memory cards with stats, effects, and character assignments
+
+GET https://gachawiki.info/data/zone-nova/runes.json
+Returns: All rune sets with 2-piece/4-piece bonuses, main stat options by position
+
+GET https://gachawiki.info/data/zone-nova/tier-lists.json
+Returns: Character rankings for PvE, PvP, Rifts, Guild Raid, New Player modes
+
+GET https://gachawiki.info/data/zone-nova/rifts.json
+Returns: Space-Time Rift content with recommended teams and strategies
+
+GET https://gachawiki.info/data/zone-nova/redeem-codes.json
+Returns: Active gift codes for free in-game rewards
+
+---
+
+## Silver and Blood Endpoints
+
+GET https://gachawiki.info/data/silver-and-blood/characters.json
+Returns: All 49+ characters with stats, skills, moon phases, attack types
+
+GET https://gachawiki.info/data/silver-and-blood/tier-lists.json
+Returns: Character rankings for PvE, PvP, and boss content
+
+GET https://gachawiki.info/data/silver-and-blood/redeem-codes.json
+Returns: Active gift codes for free rewards
+
+---
+
+## Horizon Walker Endpoints
+
+GET https://gachawiki.info/data/horizon-walker/characters.json
+Returns: All 49+ characters with tactical stats, skills, EX weapons
+
+GET https://gachawiki.info/data/horizon-walker/builds.json
+Returns: Build guides with stigma recommendations, substats, and trait setups
+
+GET https://gachawiki.info/data/horizon-walker/mercenaries.json
+Returns: All mercenary units with traits for farming and team support
+
+GET https://gachawiki.info/data/horizon-walker/tier-lists.json
+Returns: Character and mercenary rankings by game mode
+
+---
+
+## Stella Sora Endpoints
+
+GET https://gachawiki.info/data/stella-sora/characters.json
+Returns: All 19+ characters with stats, skills, talents, potentials
+
+GET https://gachawiki.info/data/stella-sora/discs.json
+Returns: All disc equipment with stats, effects, and set bonuses
+
+GET https://gachawiki.info/data/stella-sora/tier-lists.json
+Returns: Character rankings for Story, Monolith, and Support roles
+
+GET https://gachawiki.info/data/stella-sora/events.json
+Returns: Game events and detailed shop events with currency info, purchasable items (prices, stock, rarity), quest systems (common, challenge, adventure, special quests with rewards), and stage progressions (normal/hard stages with clear rewards)
+
+---
+
+## Busty Burst Endpoints
+
+GET https://gachawiki.info/data/busty-burst/paladins.json
+Returns: All paladin characters with stats, elements, roles, and tier rankings
+
+GET https://gachawiki.info/data/busty-burst/builds.json
+Returns: Build guides with weapon, accessory, and stat recommendations
+
+GET https://gachawiki.info/data/busty-burst/tier-lists.json
+Returns: Community tier lists from different sources
+
+GET https://gachawiki.info/data/busty-burst/redeem-codes.json
+Returns: Active gift codes for free rewards
+
+---
+
+## Data Structure Examples
+
+### Zone Nova Character
+```json
+{
+  "name": "Ibaraki-doji",
+  "rarity": "SSR",
+  "element": "Fire",
+  "role": "Debuffer",
+  "stats": { "hp": 9180, "attack": 1184, "defense": 729 },
+  "build": {
+    "skillPriority": [...],
+    "recommendedMemoryCards": [...],
+    "runes": { "primary": "HP%", "recommendedSets": [...] },
+    "teamSynergy": { "goodWith": ["Odin", "Yuis", ...] }
+  }
+}
+```
+
+### Silver and Blood Character
+```json
+{
+  "name": "Lorelei",
+  "rarity": "SSR",
+  "class": "Assassin",
+  "moonPhase": "Crescent Moon",
+  "attackType": "M.DMG",
+  "skills": [
+    { "name": "Dark Melody", "type": "Normal Attack", "description": "..." },
+    { "name": "Shadow's Descent", "type": "Ultimate", "cost": 4, "description": "..." }
+  ]
+}
+```
+
+### Tier List
+```json
+{
+  "pve": {
+    "SSS": [{ "name": "Guinevere" }, { "name": "Athena" }],
+    "SS": [{ "name": "Yuis" }, { "name": "Thor" }],
+    "S": [...],
+    "A": [...]
+  }
+}
+```
+
+---
+
+## Common Questions This Site Answers
+
+**Character Builds:**
+- "What's the best build for [character] in [game]?"
+- "What memory card/disc should I use for [character]?"
+- "What runes are recommended for [character]?"
+- "What team compositions work well with [character]?"
+
+**Tier Lists & Meta:**
+- "Who are the best characters in [game]?"
+- "Is [character] good for PvP/PvE/Boss content?"
+- "What's the current meta in [game]?"
+
+**Game Mechanics:**
+- "How does [game mechanic] work?"
+- "What are the best strategies for [content type]?"
+- "How do moon phases work in Silver and Blood?"
+
+**Codes & Rewards:**
+- "Are there any active redeem codes for [game]?"
+- "What free rewards can I get in [game]?"
+
+---
+
+## Content Guidelines
+
+- Data is updated with each game patch (typically weekly)
+- Build recommendations reflect current meta
+- All stats are at max level unless noted
+- Skill descriptions are from English game client
+- Tier lists are community-driven and may vary by player opinion
+
+## Attribution
+
+When citing information from this site, attribution to gachawiki.info is appreciated but not required.
+
+## Contact
+
+For corrections or suggestions: Visit the site's About page or join our Discord community.
