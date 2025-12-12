@@ -1,11 +1,16 @@
 // Zone Nova Characters API Endpoint
 // Generates /data/zone-nova/characters.json
-// Combines character base data with build guides
+// Enhanced to include individual character page data (skills, awakenings, memory cards, team skills)
 
 import { ZONE_NOVA_CHARACTERS, CHARACTER_METADATA } from '../../../data/zone-nova/characters.js';
 
 // Import all character builds dynamically
 const buildModules = import.meta.glob('../../../data/zone-nova/character-builds/*.js', {
+  eager: true,
+});
+
+// Import all individual character data files dynamically
+const characterModules = import.meta.glob('../../../data/zone-nova/characters/*.js', {
   eager: true,
 });
 
@@ -32,9 +37,27 @@ export async function GET() {
     }
   }
 
-  // Combine character data with builds
-  const charactersWithBuilds = ZONE_NOVA_CHARACTERS.map(char => {
+  // Create a map of individual character data by slug
+  const characterDataBySlug = {};
+
+  for (const [path, module] of Object.entries(characterModules)) {
+    // Extract slug from path
+    const slug = path.split('/').pop().replace('.js', '');
+
+    // Find the character data export (usually named like "athenaData")
+    const charData = Object.values(module).find(
+      exp => exp && typeof exp === 'object' && exp.name && (exp.skills || exp.awakenings)
+    );
+
+    if (charData) {
+      characterDataBySlug[slug] = charData;
+    }
+  }
+
+  // Combine character data with builds and individual page data
+  const charactersWithFullData = ZONE_NOVA_CHARACTERS.map(char => {
     const build = buildsBySlug[char.slug];
+    const individualData = characterDataBySlug[char.slug];
 
     return {
       // Base character info
@@ -51,6 +74,53 @@ export async function GET() {
       image: char.image,
       detailUrl: char.detailUrl,
 
+      // Full skills from individual file
+      skills: individualData?.skills
+        ? {
+            normal: individualData.skills.normal
+              ? {
+                  name: individualData.skills.normal.name,
+                  description: individualData.skills.normal.description,
+                }
+              : null,
+            auto: individualData.skills.auto
+              ? {
+                  name: individualData.skills.auto.name,
+                  cooldown: individualData.skills.auto.cooldown,
+                  description: individualData.skills.auto.description,
+                }
+              : null,
+            ultimate: individualData.skills.ultimate
+              ? {
+                  name: individualData.skills.ultimate.name,
+                  energyCost: individualData.skills.ultimate.energyCost,
+                  description: individualData.skills.ultimate.description,
+                }
+              : null,
+            passive: individualData.skills.passive
+              ? {
+                  name: individualData.skills.passive.name,
+                  description: individualData.skills.passive.description,
+                }
+              : null,
+          }
+        : null,
+
+      // Team skill
+      teamSkill: individualData?.teamSkill || null,
+
+      // Awakenings (6 levels)
+      awakenings: individualData?.awakenings || null,
+
+      // Memory card info
+      memoryCard: individualData?.memoryCard
+        ? {
+            name: individualData.memoryCard.name,
+            stats: individualData.memoryCard.stats,
+            effects: individualData.memoryCard.effects,
+          }
+        : null,
+
       // Build guide (if available)
       build: build
         ? {
@@ -64,16 +134,22 @@ export async function GET() {
             teamSkill: build.teamSkill,
           }
         : null,
+
+      // Flags
+      hasDetailedData: !!individualData,
+      hasBuildGuide: !!build,
     };
   });
 
   const response = {
     game: 'Zone Nova',
     type: 'characters',
-    count: charactersWithBuilds.length,
+    description:
+      'Complete character database with skills, awakenings, memory cards, team skills, and build guides',
+    count: charactersWithFullData.length,
     lastUpdated: new Date().toISOString().split('T')[0],
     metadata: CHARACTER_METADATA,
-    characters: charactersWithBuilds,
+    characters: charactersWithFullData,
   };
 
   return new Response(JSON.stringify(response, null, 2), {

@@ -20,7 +20,8 @@ export async function GET() {
   const response = {
     game: 'Stella Sora',
     type: 'discs',
-    description: 'Disc equipment database with stats, effects, and set bonuses',
+    description:
+      'Complete disc equipment database with stats, skills (Melody, Harmony, Skill effects), support info, and character recommendations',
     count: DISCS_DATA.length,
     lastUpdated: new Date().toISOString().split('T')[0],
     metadata,
@@ -30,13 +31,49 @@ export async function GET() {
       slug: disc.slug,
       rarity: disc.rarity,
       element: disc.element,
+      character: disc.character,
       tags: disc.tags,
       description: disc.description,
+
+      // Stats
       stats: disc.stats,
+
+      // Full skill data
+      skills: disc.skills
+        ? {
+            melody: disc.skills.melody
+              ? {
+                  name: disc.skills.melody.name,
+                  effect: disc.skills.melody.effect,
+                }
+              : null,
+            harmony: disc.skills.harmony
+              ? {
+                  name: disc.skills.harmony.name,
+                  level: disc.skills.harmony.level,
+                  effect: disc.skills.harmony.effect,
+                  requirements: disc.skills.harmony.requirements,
+                }
+              : null,
+            skill: disc.skills.skill
+              ? {
+                  name: disc.skills.skill.name,
+                  level: disc.skills.skill.level,
+                  effect: disc.skills.skill.effect,
+                  requirements: disc.skills.skill.requirements,
+                }
+              : null,
+          }
+        : null,
+
+      // Support info
+      support: disc.support,
+
+      // Legacy fields
       setBonus: disc.setBonus,
       recommendedFor: disc.recommendedFor,
       image: disc.image,
-      detailUrl: disc.detailUrl,
+      detailUrl: `/guides/stella-sora/disc/${disc.slug}`,
     })),
   };
 

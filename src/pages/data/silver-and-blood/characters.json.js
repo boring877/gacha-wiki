@@ -1,5 +1,6 @@
 // Silver and Blood Characters API Endpoint
 // Generates /data/silver-and-blood/characters.json
+// Complete character database with skills, mechanics, stats, moon phases, and attack types
 
 // Import all character modules dynamically
 const characterModules = import.meta.glob('../../../data/silver-and-blood/characters/*.js', {
@@ -18,9 +19,19 @@ export async function GET() {
     );
 
     if (charData) {
+      // Generate slug from character id or name
+      const slug =
+        charData.id ||
+        charData.name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-|-$/g, '');
+
       characters.push({
         id: charData.id,
         name: charData.name,
+        slug: slug,
         title: charData.title,
         subtitle: charData.subtitle,
         description: charData.description,
@@ -38,11 +49,14 @@ export async function GET() {
         // Stats
         stats: charData.stats,
 
-        // Skills
+        // Skills (full skill data with descriptions)
         skills: charData.skills,
 
-        // Mechanics info
+        // Mechanics info (moon phase effects, attack type info, equipment notes)
         mechanics: charData.mechanics,
+
+        // Detail URL
+        detailUrl: `/guides/silver-and-blood/characters/${slug}`,
       });
     }
   }
@@ -63,6 +77,8 @@ export async function GET() {
   const response = {
     game: 'Silver and Blood',
     type: 'characters',
+    description:
+      'Complete character database with skills, mechanics, stats, moon phases, attack types, and faction info',
     count: characters.length,
     lastUpdated: new Date().toISOString().split('T')[0],
     metadata,

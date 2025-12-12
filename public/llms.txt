@@ -9,8 +9,9 @@ Gacha Wiki is a comprehensive database for mobile gacha games including:
 - Zone Nova (ゾーンノヴァ) - Strategic team-based RPG
 - Silver and Blood (銀血の契約) - Dark fantasy vampire RPG
 - Horizon Walker - Tactical RPG with mercenaries
-- Stella Sora - Anime-style gacha RPG
-- Busty Burst - Fantasy gacha RPG with paladins
+- Stella Sora (ステラソラ) - Anime-style adventure RPG
+- Busty Burst Fantasy - Fantasy gacha RPG with paladins
+- Rebellion Gilgamesh (ルーレット契約) - Harem management RPG (New)
 
 The site provides character guides, build recommendations, tier lists, game mechanics, equipment databases, and event information.
 
@@ -22,12 +23,20 @@ For efficient data access, use our JSON API endpoints instead of scraping HTML p
 GET https://gachawiki.info/data/index.json
 Returns: Complete list of all available endpoints, games, and data types
 
+### Global Endpoints (Cross-Game)
+
+GET https://gachawiki.info/data/games.json
+Returns: Complete overview of all 6 games on Gacha Wiki with introductions, descriptions, game lore/story, features, available wiki content, platform links (Google Play, iOS, Steam, etc.), social links, and lists of API endpoints for each game. Perfect starting point for AI to understand what games and content are available.
+
+GET https://gachawiki.info/data/clock.json
+Returns: Server reset times, maintenance schedules, event timers, and banner countdowns for all games. Includes daily/weekly/monthly reset times, regional server info (APAC, US, Global), current events, and active banners with countdown dates. All times in ISO 8601 UTC format.
+
 ---
 
 ## Zone Nova Endpoints
 
 GET https://gachawiki.info/data/zone-nova/characters.json
-Returns: All 44+ characters with stats, skills, and basic info
+Returns: Complete character database for all 44+ characters with full stats, skills (normal/auto/ultimate/passive with descriptions), team skills, 6-level awakening effects, memory cards (stats and effects), and detailed build guides with skill priorities, rune recommendations, and team synergies
 
 GET https://gachawiki.info/data/zone-nova/builds.json
 Returns: Detailed build guides with skill priorities, memory cards, runes, awakenings, team synergies
@@ -44,6 +53,18 @@ Returns: Character rankings for PvE, PvP, Rifts, Guild Raid, New Player modes
 GET https://gachawiki.info/data/zone-nova/rifts.json
 Returns: Space-Time Rift content with recommended teams and strategies
 
+GET https://gachawiki.info/data/zone-nova/damage-mechanics.json
+Returns: Complete damage calculation system including defense formula (coefficient 972.95), damage reduction mechanics, reference tables, and character-specific mechanics (Gaia's HP manipulation, healing calculations, awakening effects)
+
+GET https://gachawiki.info/data/zone-nova/exp-requirements.json
+Returns: Complete leveling data for characters (Lv 1-80), memories (Lv 1-80), and runes (Lv 0-15). Includes EXP values by grade, credit costs per level range, breakthrough material requirements, rune efficiency analysis, and quick reference for material planning
+
+GET https://gachawiki.info/data/zone-nova/crafting-items.json
+Returns: Crafting items guide for rune customization including Dice (reroll substats), Card (choose substats), and Laser Machine (choose main stats). Includes all possible rune substats, rune position info, usage tips, and priority recommendations
+
+GET https://gachawiki.info/data/zone-nova/updates.json
+Returns: Complete update history with 45+ entries including maintenance notes, character recruitment announcements, limited-time events, and developer notes. Each update includes title, date, type (maintenance/recruitment/announcement/event), TL;DR summary, and full official content. Grouped by type and sorted by date.
+
 GET https://gachawiki.info/data/zone-nova/redeem-codes.json
 Returns: Active gift codes for free in-game rewards
 
@@ -52,7 +73,7 @@ Returns: Active gift codes for free in-game rewards
 ## Silver and Blood Endpoints
 
 GET https://gachawiki.info/data/silver-and-blood/characters.json
-Returns: All 49+ characters with stats, skills, moon phases, attack types
+Returns: Complete character database for all 49+ characters with full stats, skills (Normal Attack, Special, Passive, Ultimate with costs and full descriptions), moon phases, attack types (P.DMG/M.DMG), equipment types, factions, and mechanics info explaining moon phase effects, attack type interactions, and equipment bonuses
 
 GET https://gachawiki.info/data/silver-and-blood/tier-lists.json
 Returns: Character rankings for PvE, PvP, and boss content
@@ -65,7 +86,7 @@ Returns: Active gift codes for free rewards
 ## Horizon Walker Endpoints
 
 GET https://gachawiki.info/data/horizon-walker/characters.json
-Returns: All 49+ characters with tactical stats, skills, EX weapons
+Returns: Complete character database for all 49+ characters with detailed tactical stats (Melee/Ranged/Magic ATK, HP, SPD, AP, Accuracy, Evade, Crit), full skills (with AP costs, cooldowns, damage values, descriptions), unique traits, EX weapon data (stats, unique skills with signature abilities), character profiles (age, homeland, height, birthday), stories, and deployment costs
 
 GET https://gachawiki.info/data/horizon-walker/builds.json
 Returns: Build guides with stigma recommendations, substats, and trait setups
@@ -81,16 +102,25 @@ Returns: Character and mercenary rankings by game mode
 ## Stella Sora Endpoints
 
 GET https://gachawiki.info/data/stella-sora/characters.json
-Returns: All 19+ characters with stats, skills, talents, potentials
+Returns: Complete character database for all 19+ Trekkers with full stats (HP, ATK, DEF, Crit, combat stats, energy stats, elemental stats), 4 skills each (Attack, Main Skill, Support Skill, Ultimate with cooldowns and descriptions), talents (dupe bonuses), main potentials (build guides with Snow Rabbit vs Night Rabbit paths), support potentials, generic cards, signature disc info, status effects, and story
 
 GET https://gachawiki.info/data/stella-sora/discs.json
-Returns: All disc equipment with stats, effects, and set bonuses
+Returns: Complete disc equipment database with full skill data (Melody, Harmony, Skill effects with level requirements), stats, support info, and character recommendations
+
+GET https://gachawiki.info/data/stella-sora/banners.json
+Returns: Banner timeline with character and disc recruitment events - features 5-star characters, rate-up 4-stars, limited-time discs, start/end dates, pity info, and status (current/upcoming/ended)
 
 GET https://gachawiki.info/data/stella-sora/tier-lists.json
 Returns: Character rankings for Story, Monolith, and Support roles
 
 GET https://gachawiki.info/data/stella-sora/events.json
 Returns: Game events and detailed shop events with currency info, purchasable items (prices, stock, rarity), quest systems (common, challenge, adventure, special quests with rewards), and stage progressions (normal/hard stages with clear rewards)
+
+GET https://gachawiki.info/data/stella-sora/emblems.json
+Returns: Complete emblem stats reference with all levels (70/80/90), rarities (Green/Blue/Gold/Rainbow), stat values by category (ATK%, HP%, Crit, DMG types, Skill Level Ups, Trekker Potentials)
+
+GET https://gachawiki.info/data/stella-sora/potentials.json
+Returns: Character potentials (ascension abilities) for Trekkers like Shia, Tilia, Minova with skill descriptions, level requirements, and build recommendations (Snow Rabbit vs Night Rabbit builds)
 
 ---
 
@@ -101,6 +131,9 @@ Returns: All paladin characters with stats, elements, roles, and tier rankings
 
 GET https://gachawiki.info/data/busty-burst/builds.json
 Returns: Build guides with weapon, accessory, and stat recommendations
+
+GET https://gachawiki.info/data/busty-burst/equipment.json
+Returns: Complete accessory/equipment guide with all sets (SSR/SR), main stats by slot, sub stats, enhancement system, set ratings, recommended builds by role (Physical DPS, Magic DPS, Support, Tank), and raid boss farming locations
 
 GET https://gachawiki.info/data/busty-burst/tier-lists.json
 Returns: Community tier lists from different sources

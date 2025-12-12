@@ -11,6 +11,11 @@ export async function GET() {
     version: '2.0.0',
     baseUrl: 'https://gachawiki.info',
     lastUpdated: new Date().toISOString().split('T')[0],
+    // Cross-game endpoints
+    globalEndpoints: {
+      games: '/data/games.json',
+      clock: '/data/clock.json',
+    },
     games: [
       {
         id: 'zone-nova',
@@ -23,6 +28,10 @@ export async function GET() {
           runes: '/data/zone-nova/runes.json',
           tierLists: '/data/zone-nova/tier-lists.json',
           rifts: '/data/zone-nova/rifts.json',
+          damageMechanics: '/data/zone-nova/damage-mechanics.json',
+          expRequirements: '/data/zone-nova/exp-requirements.json',
+          craftingItems: '/data/zone-nova/crafting-items.json',
+          updates: '/data/zone-nova/updates.json',
           redeemCodes: '/data/zone-nova/redeem-codes.json',
         },
         webPages: {
@@ -74,6 +83,9 @@ export async function GET() {
         endpoints: {
           characters: '/data/stella-sora/characters.json',
           discs: '/data/stella-sora/discs.json',
+          banners: '/data/stella-sora/banners.json',
+          emblems: '/data/stella-sora/emblems.json',
+          potentials: '/data/stella-sora/potentials.json',
           tierLists: '/data/stella-sora/tier-lists.json',
           events: '/data/stella-sora/events.json',
         },
@@ -92,6 +104,7 @@ export async function GET() {
         endpoints: {
           paladins: '/data/busty-burst/paladins.json',
           builds: '/data/busty-burst/builds.json',
+          equipment: '/data/busty-burst/equipment.json',
           tierLists: '/data/busty-burst/tier-lists.json',
           redeemCodes: '/data/busty-burst/redeem-codes.json',
         },
@@ -109,18 +122,39 @@ export async function GET() {
       cors: 'CORS enabled for all origins',
     },
     dataTypes: {
+      games:
+        'Complete overview of all 6 games with introductions, descriptions, features, lore, available content, and API endpoint lists',
       characters: 'Character stats, skills, equipment recommendations, team synergies',
       builds: 'Detailed build guides with skill priorities, equipment, substats, traits',
       memories: 'Memory cards/equipment with stats and effects (Zone Nova)',
       runes: 'Rune sets with 2-piece/4-piece bonuses and main stat options (Zone Nova)',
-      discs: 'Disc equipment with set bonuses (Stella Sora)',
+      discs:
+        'Disc equipment with full skill data (Melody, Harmony, Skill effects), stats, and support info (Stella Sora)',
+      banners:
+        'Banner timeline with character/disc recruitment events, rate-ups, and schedules (Stella Sora)',
       mercenaries: 'Hireable units with traits (Horizon Walker)',
       paladins: 'Paladin characters with elements and roles (Busty Burst)',
       tierLists: 'Character rankings by game mode (PvE, PvP, Boss, etc.)',
       rifts: 'Limited-time challenge content with recommended teams (Zone Nova)',
+      damageMechanics:
+        'Damage calculation formulas, defense coefficient, damage reduction mechanics, and character-specific calculations like Gaia (Zone Nova)',
+      expRequirements:
+        'Complete leveling data for characters, memories, and runes with EXP values, credit costs, breakthrough materials, and efficiency analysis (Zone Nova)',
+      craftingItems:
+        'Crafting items for rune customization including Dice, Card, and Laser Machine with substat info and usage tips (Zone Nova)',
+      updates:
+        'Game update history with maintenance notes, character recruitment announcements, events, and TL;DR summaries (Zone Nova)',
       redeemCodes: 'Active gift codes for free in-game rewards',
       events:
         'Game events with shop items, quests, stages, currency info, and rewards (Stella Sora)',
+      equipment:
+        'Accessory sets, stats, enhancement system, farming locations, and build recommendations (Busty Burst)',
+      clock:
+        'Server reset times, maintenance schedules, event timers, and banner countdowns for all games',
+      emblems:
+        'Emblem stat reference with all levels (70/80/90) and rarities (Green/Blue/Gold/Rainbow) (Stella Sora)',
+      potentials:
+        'Character potentials/ascension abilities that enhance Trekker skills (Stella Sora)',
     },
   };
 
