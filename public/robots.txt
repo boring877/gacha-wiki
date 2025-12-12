@@ -4,42 +4,14 @@ Allow: /
 # Sitemap location
 Sitemap: https://gachawiki.info/sitemap-index.xml
 
-# Disallow specific paths if needed
+# Disallow non-public paths
 Disallow: /admin
 Disallow: /private
-Disallow: /api/*.json$
-Disallow: /data/*.json$
 Disallow: /dist/
 Disallow: /node_modules/
-Disallow: /scripts/
-Disallow: /src/
 
-# Common wiki exclusions
-Disallow: /search?
-Disallow: /*?action=
-
-# Allow important game directories
-Allow: /guides/
-Allow: /guides/zone-nova/
-Allow: /guides/silver-and-blood/
-Allow: /guides/horizon-walker/
-Allow: /guides/rebellion-gilgamesh/
-Allow: /guides/stella-sora/
-Allow: /images/
-Allow: /about/
-
-# Gaming content allowances
-Allow: /characters/
-Allow: /items/
-Allow: /events/
-Allow: /tier-lists/
-
-# AI crawler controls
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
-
-# Crawl delay (optional, good for smaller sites)
+# Crawl delay (good for smaller sites)
 Crawl-delay: 1
+
+# AI crawlers are welcome - we're LLM-friendly!
+# GPTBot, ChatGPT-User, CCBot, Google-Extended, anthropic-ai all allowed

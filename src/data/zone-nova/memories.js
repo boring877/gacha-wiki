@@ -1071,25 +1071,6 @@ export const ZONE_NOVA_MEMORIES = [
       'When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%',
     ],
   },
-  {
-    id: 'i-am-your-christmas-present',
-    slug: 'i-am-your-christmas-present',
-    name: 'I Am Your Christmas Present',
-    image: '/images/games/zone-nova/memories/Sigurdcard.jpg',
-    rarity: 'SSR',
-    element: 'Fire',
-    character: 'Sigurd',
-    class: 'Rogue',
-    detailUrl: '/guides/zone-nova/memories/i-am-your-christmas-present/',
-    stats: null, // TBA
-    effects: [], // TBA
-    lore: 'As you are reading documents, you hear a soft whisper behind you. "Christmas...what do you want?" Turning around, you see her striking a seductive pose, reclining on the bed, her posture languid and alluring. Her once spirited eyes are now gazing at you like melting honey. The rose in her vibrant under the lamplight, is no longer just an everyday decoration, but the perfect finishing touch to a gift box, signifying its uniqueness. Undoubtedly, on this cold winter night, no gift could be more touching than this surprise filled with love and warmth. You slowly walk towards her; it seems tonight will be more passionate than any other winter night before.',
-    banner: {
-      type: 'Limited Remembrance Gacha',
-      startDate: '2025-12-16T14:15:00',
-      endDate: '2025-12-30T03:59:00',
-    },
-  },
 ];
 
 // Memory metadata for filters
@@ -1135,7 +1116,6 @@ export const MEMORY_METADATA = {
     'Rose',
     'Shanna',
     'Shu',
-    'Sigurd',
     'Snow Girl',
     'Tefnut',
     'Thor',
